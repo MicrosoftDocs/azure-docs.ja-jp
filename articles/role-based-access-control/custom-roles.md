@@ -82,7 +82,7 @@ JSON 形式で表示されるカスタム ロールの例を次に示します�
 
     カスタム ロールを作成したら、それをテストして期待どおりに動作することを確認する必要があります。 後で調整する必要がある場合は、カスタム ロールを更新できます。
 
-カスタム ロールの作成方法に関するステップ倍ステップのチュートリアルが必要な場合は、「[チュートリアル: Azure PowerShell を使用してカスタム ロールを作成する](tutorial-custom-role-powershell.md)」か「[チュートリアル: Azure CLI を使用してカスタム ロールを作成する](tutorial-custom-role-cli.md)」を参照してください。
+カスタム ロールの作成方法に関するステップ バイ ステップのチュートリアルが必要な場合は、「[チュートリアル: Azure PowerShell を使用してカスタム ロールを作成する](tutorial-custom-role-powershell.md)」か「[チュートリアル: Azure CLI を使用してカスタム ロールを作成する](tutorial-custom-role-cli.md)」を参照してください。
 
 ## <a name="custom-role-properties"></a>カスタム ロールのプロパティ
 
