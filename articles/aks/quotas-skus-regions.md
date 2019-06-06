@@ -53,7 +53,7 @@ VM の種類とそのコンピューティング リソースの詳細につい�
 
 <!-- LINKS - External -->
 [azure-support]: https://support.azure.cn/zh-cn/support/support-azure/
-[region-availability]: https://www.azure.cn/zh-cn/home/features/products-by-region
+[region-availability]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 
 <!-- LINKS - Internal -->
 [vm-skus]: ../virtual-machines/linux/sizes.md
