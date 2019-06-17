@@ -92,6 +92,7 @@ Azure Disk Encryption では、Active Directory、Key Vault、Storage、パッ�
 | KeyVaultResourceId | リソース URI | 文字列 |
 | KekVaultResourceId | リソース URI | 文字列 |
 | KeyVaultURL | url | 文字列 |
+| (省略可能) Passphrase | password | string | 
 | SequenceVersion | uniqueidentifier | 文字列 |
 | VolumeType | OS、Data、All | 文字列 |
 
