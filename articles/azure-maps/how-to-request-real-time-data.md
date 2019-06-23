@@ -113,22 +113,23 @@ Azure Maps 公共輸送 API を呼び出すには、Maps アカウントとキ�
             }
         ]
     }
+    ```
 
 
-## Real-time data for bike docking station
+## 自転車ドック ステーションのリアルタイム データ
 
-The [Get Transit Dock Info API](https://aka.ms/AzureMapsMobilityTransitDock) of the Azure Maps Mobility Service, allows to request static and real-time information such as availability and vacancy information for a given bike or scooter docking station. We will make a request to get real-time data for a docking station for bikes.
+Azure Maps Mobility Service の [Get Transit Dock Info API](https://aka.ms/AzureMapsMobilityTransitDock) では、与えられた自転車またはスクーターのドック ステーションに関する、利用可能であるかどうかや空き状況のような、静的な情報やリアルタイムの情報を要求することができます。要求を行って、自転車のドック ステーションのリアルタイム データを取得してみましょう。
 
-In order to make a request to the Get Transit Dock Info API, you will need the **dockId** for that station. You can get the dock ID by making a search request to the [Get Nearby Transit API](https://aka.ms/AzureMapsMobilityNearbyTransit) and setting the **objectType** parameter to "bikeDock". Follow the steps below to get real-time data of a docking station for bikes.
+トランジット ドック情報の取得 API への要求を行うためには、対象のステーションの **dockId** が必要です。 [Get Nearby Transit API](https://aka.ms/AzureMapsMobilityNearbyTransit) の要求を作成し、**objectType** パラメーターに "bikeDock" を設定することで、ドック ID を取得することができます。以下の手順に従って、自転車のドック ステーションのリアルタイム データを取得します。
 
 
-### Get dock ID
+### ドック ID を取得する
 
-To get **dockID**, follow the steps below to make a request to the Get Nearby Transit API:
+**dockID** を取得するには、以下の手順に従って、 Get Nearby Transit API の要求を行います。
 
-1. In Postman, click **New Request** | **GET request** and name it **Get dock ID**.
+1. Postman で、 **[New Request]\(新しい要求\)** | **[GET request]\(GET 要求\)** をクリックし、「**Get dock ID**」という名前を付けます。
 
-2.  On the Builder tab, select the **GET** HTTP method, enter the following request URL, and click **Send**.
+2.  [Builder]\(ビルダー\) タブで、 **GET** HTTP メソッドを選択し、次の要求 URL を入力して **[Send]\(送信\)** をクリックします。
  
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/nearby/json?subscription-key={subscription-key}&api-version=1.0&metroId=121&query=40.7663753,-73.9627498&radius=100&objectType=bikeDock
