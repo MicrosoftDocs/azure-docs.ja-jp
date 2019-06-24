@@ -3584,9 +3584,9 @@ ms.locfileid: "65962119"
 > | Action | Microsoft.Network/azurefirewalls/delete | Azure Firewall を削除します |
 > | Action | Microsoft.Network/azurefirewalls/read | Azure Firewall を取得します |
 > | Action | Microsoft.Network/azurefirewalls/write | Azure Firewall を作成または更新します |
-> | Action | Microsoft.Network/bastionHosts/delete | 要塞ホストを削除します |
-> | Action | Microsoft.Network/bastionHosts/read | 要塞ホストを取得します |
-> | Action | Microsoft.Network/bastionHosts/write | 要塞ホストを作成または更新します |
+> | Action | Microsoft.Network/bastionHosts/delete | 踏み台ホストを削除します |
+> | Action | Microsoft.Network/bastionHosts/read | 踏み台ホストを取得します |
+> | Action | Microsoft.Network/bastionHosts/write | 踏み台ホストを作成または更新します |
 > | Action | Microsoft.Network/bgpServiceCommunities/read | BGP サービス コミュニティを取得します。 |
 > | Action | Microsoft.Network/checkFrontDoorNameAvailability/action | フロントドア名が使用可能かどうかを確認します |
 > | Action | Microsoft.Network/checkTrafficManagerNameAvailability/action | Traffic Manager の相対 DNS 名を使用できるかどうかを確認します。 |
