@@ -6,7 +6,7 @@
       href: bastion-overview.md
 - name: ハウツー ガイド
   items:
-    - name: 要塞ホストの作成
+    - name: 踏み台ホストの作成
       href: bastion-create-host-portal.md
     - name: 仮想マシンへの接続
       items:
