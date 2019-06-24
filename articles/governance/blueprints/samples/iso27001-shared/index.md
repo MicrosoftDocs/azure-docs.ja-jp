@@ -35,7 +35,7 @@ VDC は、Microsoft がその最大規模のエンタープライズのお客様
   - SysOps ロールには、サブスクリプション内で [Azure ポリシー](../../../policy/overview.md)を定義し、環境全体のその他の運用権限の中で [Log Analytics](../../../../azure-monitor/overview.md) を管理するのに必要な権限があります。
 - [Log Analytics](../../../../azure-monitor/overview.md) は、セキュリティで保護されたデプロイの開始以降、すべてのアクションとサービス ログを一元化する最初の Azure サービスとしてデプロイされます。
 - オンプレミス データセンター、インターネット接続用のイングレス/エグレス スタック、および以下を含むフル マイクロセグメンテーション用に NSG および ASG を使用する共有サービス サブネットへの折り返し接続用のサブネットをサポートする仮想ネットワーク。
-  - 管理目的で使用されるジャンプボックスまたは要塞ホスト。イングレス スタック サブネットにデプロイされた [Azure Firewall](../../../../firewall/overview.md) 経由でのみアクセスできます。
+  - 管理目的で使用されるジャンプボックスまたは踏み台ホスト。イングレス スタック サブネットにデプロイされた [Azure Firewall](../../../../firewall/overview.md) 経由でのみアクセスできます。
   - ジャンプボックスからのみアクセスできる Active Directory Domain Services (ADDS) および DNS を実行する 2 つの仮想マシン。VPN または [ExpressRoute](../../../../expressroute/expressroute-introduction.md) 接続 (ブループリントでデプロイされていない) 経由で AD をレプリケートするためだけに構成できます。
   - [Azure Net Watcher](../../../../network-watcher/network-watcher-monitoring-overview.md) と標準 DDoS 保護の使用
 - [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) インスタンス。共有サービス環境にデプロイされた VM 用に使用されるシークレットをホストします。
