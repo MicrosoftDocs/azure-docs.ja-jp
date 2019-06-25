@@ -27,7 +27,7 @@ PCI DSS への準拠を達成するには、お客様の実稼働ソリューシ
 
 ## <a name="architecture-diagram-and-components"></a>アーキテクチャ ダイアグラムとコンポーネント
 
-このソリューションは、バックエンドに SQL Server を使用する IaaS Web アプリケーション向けのリファレンス アーキテクチャをデプロイします。 アーキテクチャには、Web 層、データ層、Active Directory インフラストラクチャ、Application Gateway、および Load Balancer が含まれています。 Web 層とデータ層にデプロイされる仮想マシンは可用性セット内に構成され、SQL Server インスタンスは高可用性のために Always On 可用性グループ内に構成されます。 仮想マシンはドメインに参加し、Active Directory グループ ポリシーを使用して、オペレーティング システム レベルでセキュリティとコンプライアンスの構成が適用されます。 管理要塞ホストは、デプロイされたリソースにアクセスするためのセキュリティで保護された接続を管理者に提供します。 **Azure では、参照アーキテクチャのサブネットに対する管理とデータ インポートのために、VPN または ExpressRoute 接続を構成することを推奨しています。**
+このソリューションは、バックエンドに SQL Server を使用する IaaS Web アプリケーション向けのリファレンス アーキテクチャをデプロイします。 アーキテクチャには、Web 層、データ層、Active Directory インフラストラクチャ、Application Gateway、および Load Balancer が含まれています。 Web 層とデータ層にデプロイされる仮想マシンは可用性セット内に構成され、SQL Server インスタンスは高可用性のために Always On 可用性グループ内に構成されます。 仮想マシンはドメインに参加し、Active Directory グループ ポリシーを使用して、オペレーティング システム レベルでセキュリティとコンプライアンスの構成が適用されます。 管理踏み台ホストは、デプロイされたリソースにアクセスするためのセキュリティで保護された接続を管理者に提供します。 **Azure では、参照アーキテクチャのサブネットに対する管理とデータ インポートのために、VPN または ExpressRoute 接続を構成することを推奨しています。**
 
 ![PCI DSS のための IaaS Web アプリケーションの参照アーキテクチャ ダイアグラム](images/pcidss-iaaswa-architecture.png "PCI DSS のための IaaS Web アプリケーションの参照アーキテクチャ ダイアグラム")
 
@@ -51,7 +51,7 @@ PCI DSS への準拠を達成するには、お客様の実稼働ソリューシ
 - Azure Storage
     - (7) Geo 冗長ストレージ アカウント
 - Azure Virtual Machines
-    - (1) 管理/要塞 (Windows Server 2016 Datacenter)
+    - (1) 管理/踏み台 (Windows Server 2016 Datacenter)
     - (2) Active Directory ドメイン コントローラー (Windows Server 2016 Datacenter)
     - (2) SQL Server クラスター ノード (Windows Server 2016 上の SQL Server 2017)
     - (2) Web/IIS (Windows Server 2016 Datacenter)
@@ -66,9 +66,9 @@ PCI DSS への準拠を達成するには、お客様の実稼働ソリューシ
 
 次のセクションで、デプロイと実装の要素について詳しく説明します。
 
-**要塞ホスト**:要塞ホストは、この環境にデプロイされたリソースへのユーザーのアクセスを許可する単一エントリ ポイントです。 要塞ホストは、セーフ リスト上のパブリック IP アドレスからのリモート トラフィックのみを許可することで、デプロイ済みのリソースへのセキュリティで保護された接続を提供します。 リモート デスクトップ (RDP) トラフィックを許可するには、トラフィックのソースがネットワーク セキュリティ グループに定義されている必要があります。
+**踏み台ホスト**:踏み台ホストは、この環境にデプロイされたリソースへのユーザーのアクセスを許可する単一エントリ ポイントです。 踏み台ホストは、セーフ リスト上のパブリック IP アドレスからのリモート トラフィックのみを許可することで、デプロイ済みのリソースへのセキュリティで保護された接続を提供します。 リモート デスクトップ (RDP) トラフィックを許可するには、トラフィックのソースがネットワーク セキュリティ グループに定義されている必要があります。
 
-このソリューションでは、次の構成を持つドメイン参加済み要塞ホストとして仮想マシンを作成します。
+このソリューションでは、次の構成を持つドメイン参加済み踏み台ホストとして仮想マシンを作成します。
 -   [マルウェア対策拡張機能](https://docs.microsoft.com/azure/security/azure-security-antimalware)
 -   [Azure Diagnostics 拡張機能](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
 -   Azure Key Vault を使用した [Azure ディスクの暗号化](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
@@ -85,7 +85,7 @@ PCI DSS への準拠を達成するには、お客様の実稼働ソリューシ
 
 各サブネットには、専用のネットワーク セキュリティ グループがあります。
 - Application Gateway 用の 1 つのネットワーク セキュリティ グループ (LBNSG)
-- 要塞ホスト用の 1 つのネットワーク セキュリティ グループ (MGTNSG)
+- 踏み台ホスト用の 1 つのネットワーク セキュリティ グループ (MGTNSG)
 - プライマリおよびバックアップ ドメイン コントローラー用の 1 つのネットワーク セキュリティ グループ (ADNSG)
 - SQL Server とクラウド監視用の 1 つのネットワーク セキュリティ グループ (SQLNSG)
 - Web 層用の 1 つのネットワーク セキュリティ グループ (WEBNSG)
