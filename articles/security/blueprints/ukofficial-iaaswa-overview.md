@@ -77,7 +77,7 @@ ms.locfileid: "60609489"
     - デプロイの一部として作成されるドメイン
 
 
-- (1) ジャンプボックス (要塞ホスト) 管理 VM
+- (1) ジャンプボックス (踏み台ホスト) 管理 VM
   - パブリック IP アドレスを持つ管理 VNet に 1 枚の NIC
     - 特定のソースへのトラフィック (入力/出力) の制限に NSG を使用
   - ドメイン不参加
@@ -145,7 +145,7 @@ Storage
 
 **管理 VNet**: この [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) には、運用 VNet で実行されているワークロードの管理および監視機能を実装するリソースが含まれます。
 
-**ジャンプボックス**: [要塞ホスト](https://en.wikipedia.org/wiki/Bastion_host)とも呼ばれ、運用 VNet で VM に接続するために管理者が使用する、ネットワーク上の安全な VM です。 jumpbox の NSG は、セーフ リストにあるパブリック IP アドレスからのリモート トラフィックのみを許可します。 リモート デスクトップ (RDP) トラフィックを許可するには、トラフィックのソースが NSG で定義されている必要があります。 運用リソースの管理は、セキュリティで保護されたジャンプボックス VM を使用して RDP を介して行われます。
+**ジャンプボックス**: [踏み台ホスト](https://en.wikipedia.org/wiki/Bastion_host)とも呼ばれ、運用 VNet で VM に接続するために管理者が使用する、ネットワーク上の安全な VM です。 jumpbox の NSG は、セーフ リストにあるパブリック IP アドレスからのリモート トラフィックのみを許可します。 リモート デスクトップ (RDP) トラフィックを許可するには、トラフィックのソースが NSG で定義されている必要があります。 運用リソースの管理は、セキュリティで保護されたジャンプボックス VM を使用して RDP を介して行われます。
 
 **ユーザー定義ルート**: [ユーザー定義ルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)は、Azure VNet 内の IP トラフィックのフローを定義するために使用されます。
 
