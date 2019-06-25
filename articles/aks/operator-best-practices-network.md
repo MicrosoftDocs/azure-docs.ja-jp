@@ -148,15 +148,15 @@ spec:
 
 ポリシーの概要については、「[Secure traffic between pods using network policies in Azure Kubernetes Service (AKS) (Azure Kubernetes Service (AKS) のネットワーク ポリシーを使用したポッド間のトラフィックの保護)][use-network-policies]」を参照してください。
 
-## <a name="securely-connect-to-nodes-through-a-bastion-host"></a>要塞ホストを介してノードに安全に接続する
+## <a name="securely-connect-to-nodes-through-a-bastion-host"></a>踏み台ホストを介してノードに安全に接続する
 
-**ベスト プラクティス ガイダンス** - AKS ノードへのリモート接続は公開しないでください。 管理仮想ネットワーク内に要塞ホスト (jump box) を作成します。 要塞ホストを使用すると、AKS クラスターへのトラフィックをリモート管理タスクに安全にルーティングできます。
+**ベスト プラクティス ガイダンス** - AKS ノードへのリモート接続は公開しないでください。 管理仮想ネットワーク内に踏み台ホスト (jump box) を作成します。 踏み台ホストを使用すると、AKS クラスターへのトラフィックをリモート管理タスクに安全にルーティングできます。
 
-AKS のほとんどの操作は、Azure 管理ツールを使用するか Kubernetes API サーバー経由で完了することができます。 AKS ノードは、パブリック インターネットには接続されず、プライベート ネットワークでのみ使用できます。 ノードに接続し、問題のメンテナンスまたはトラブルシューティングを実行するには、要塞ホスト (jump box) を介して接続をルーティングします。 このホストは、AKS クラスター仮想ネットワークに安全にピアリングされている別個の管理仮想ネットワーク内に存在しなければなりません。
+AKS のほとんどの操作は、Azure 管理ツールを使用するか Kubernetes API サーバー経由で完了することができます。 AKS ノードは、パブリック インターネットには接続されず、プライベート ネットワークでのみ使用できます。 ノードに接続し、問題のメンテナンスまたはトラブルシューティングを実行するには、踏み台ホスト (jump box) を介して接続をルーティングします。 このホストは、AKS クラスター仮想ネットワークに安全にピアリングされている別個の管理仮想ネットワーク内に存在しなければなりません。
 
-![要塞ホスト (jump box) を使用して AKS ノードに接続する](media/operator-best-practices-network/connect-using-bastion-host-simplified.png)
+![踏み台ホスト (jump box) を使用して AKS ノードに接続する](media/operator-best-practices-network/connect-using-bastion-host-simplified.png)
 
-要塞ホストの管理ネットワークは、セキュリティで保護する必要もあります。 [Azure ExpressRoute][expressroute] または [VPN Gateway][vpn-gateway] を使用してオンプレミス ネットワークに接続し、ネットワーク セキュリティ グループを使用してアクセスを制御します。
+踏み台ホストの管理ネットワークは、セキュリティで保護する必要もあります。 [Azure ExpressRoute][expressroute] または [VPN Gateway][vpn-gateway] を使用してオンプレミス ネットワークに接続し、ネットワーク セキュリティ グループを使用してアクセスを制御します。
 
 ## <a name="next-steps"></a>次の手順
 

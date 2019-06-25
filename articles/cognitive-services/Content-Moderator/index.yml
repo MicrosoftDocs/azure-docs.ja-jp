@@ -50,7 +50,7 @@ sections:
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph
-        text: 矢印リンクを選択して Content Moderator の使用を開始する方法について説明します <img src="images/index/link.jpg" height="15" width="15"></img>。
+        text: 矢印リンク <img src="images/index/link.jpg" height="15" width="15"></img> を選択して Content Moderator の使用を開始する方法について学習します。
       - type: table
         style: dataMatrix
         columns:
