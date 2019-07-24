@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/14/2018
 ms.author: mjbrown
-ms.openlocfilehash: 25824b9959a4fef536ca9fe247f29fc9aaece1f7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: bb5997c2ae8f93068b0ad2a77b5109f6c79b9b30
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626462"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003514"
 ---
-# <a name="how-to-configure-time-to-live-in-azure-cosmos-db"></a>Azure Cosmos DB で Time to Live を構成する方法
+# <a name="configure-time-to-live-in-azure-cosmos-db"></a>Azure Cosmos DB で Time to Live を構成する
 
 Azure Cosmos DB では、コンテナー レベルで Time to Live (TTL) の構成を選択することも、コンテナーでの設定後に項目レベルでそれをオーバーライドすることもできます。 Azure portal または言語固有の SDK を使用して、コンテナーの TTL を構成できます。 項目レベルの TTL オーバーライドは、SDK を使用して構成できます。
 
@@ -72,6 +72,20 @@ DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionA
     new RequestOptions { OfferThroughput = 20000 });
 ```
 
+### <a id="nodejs-enable-withexpiry"></a>NodeJS SDK
+
+```javascript
+const containerDefinition = {
+          id: "sample container1",
+        };
+
+async function createcontainerWithTTL(db: Database, containerDefinition: ContainerDefinition, collId: any, defaultTtl: number) {
+      containerDefinition.id = collId;
+      containerDefinition.defaultTtl = defaultTtl;
+      await db.containers.create(containerDefinition);
+}
+```
+
 ## <a name="set-time-to-live-on-an-item"></a>項目の Time to Live を設定する
 
 コンテナーに既定の Time to Live を設定するだけでなく、項目の Time to Live を設定することもできます。 項目レベルで Time to Live を設定すると、そのコンテナーに含まれている項目の既定の TTL がオーバーライドされます。
@@ -81,6 +95,37 @@ DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionA
 * 項目に TTL フィールドがない場合、既定では、コンテナーに設定された TTL が項目に適用されます。
 
 * TTL がコンテナー レベルで無効になっている場合、TTL がコンテナーで再び有効になるまで、項目の TTL フィールドは無視されます。
+
+### <a id="portal-set-ttl-item"></a>Azure Portal
+
+項目に対して Time to Live を有効にするには、次の手順を使用します。
+
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+
+2. 新しい Azure Cosmos アカウントを作成するか、既存のアカウントを選択します。
+
+3. **[データ エクスプローラー]** ウィンドウを開きます。
+
+4. 既存のコンテナーを選択し、展開して以下の値を変更します。
+
+   * **[Scale & Settings]\(スケールと設定\)** ウィンドウを開きます。
+   * **[設定]** で **[Time to Live]** を探します。
+   * **[オン (既定値なし)]** または **[オン]** を選択し、TTL 値を設定します。 
+   * **[保存]** をクリックして変更を保存します。
+
+5. 次に、Time to Live を設定する項目に移動し、`ttl` プロパティを追加して **[更新]** を選択します。 
+
+   ```json
+   {
+    "id": "1",
+    "_rid": "Jic9ANWdO-EFAAAAAAAAAA==",
+    "_self": "dbs/Jic9AA==/colls/Jic9ANWdO-E=/docs/Jic9ANWdO-EFAAAAAAAAAA==/",
+    "_etag": "\"0d00b23f-0000-0000-0000-5c7712e80000\"",
+    "_attachments": "attachments/",
+    "ttl": 10,
+    "_ts": 1551307496
+   }
+   ```
 
 ### <a id="dotnet-set-ttl-item"></a>.NET SDK
 
@@ -94,7 +139,7 @@ public class SalesOrder
     public string CustomerId { get; set; }
     // used to set expiration policy
     [JsonProperty(PropertyName = "ttl", NullValueHandling = NullValueHandling.Ignore)]
-    public int? TimeToLive { get; set; }
+    public int? ttl { get; set; }
 
     //...
 }
@@ -103,9 +148,21 @@ SalesOrder salesOrder = new SalesOrder
 {
     Id = "SO05",
     CustomerId = "CO18009186470",
-    TimeToLive = 60 * 60 * 24 * 30;  // Expire sales orders in 30 days
+    ttl = 60 * 60 * 24 * 30;  // Expire sales orders in 30 days
 };
 ```
+
+### <a id="nodejs-set-ttl-item"></a>NodeJS SDK
+
+```javascript
+const itemDefinition = {
+          id: "doc",
+          name: "sample Item",
+          key: "value", 
+          ttl: 2
+        };
+```
+
 
 ## <a name="reset-time-to-live"></a>Time to Live をリセットする
 
@@ -121,7 +178,7 @@ response = await client.ReadDocumentAsync(
     new RequestOptions { PartitionKey = new PartitionKey("CO18009186470") });
 
 Document readDocument = response.Resource;
-readDocument.TimeToLive = 60 * 30 * 30; // update time to live
+readDocument.ttl = 60 * 30 * 30; // update time to live
 response = await client.ReplaceDocumentAsync(readDocument);
 ```
 
@@ -139,14 +196,14 @@ response = await client.ReadDocumentAsync(
     new RequestOptions { PartitionKey = new PartitionKey("CO18009186470") });
 
 Document readDocument = response.Resource;
-readDocument.TimeToLive = null; // inherit the default TTL of the collection
+readDocument.ttl = null; // inherit the default TTL of the collection
 
 response = await client.ReplaceDocumentAsync(readDocument);
 ```
 
 ## <a name="disable-time-to-live"></a>Time to Live を無効にする
 
-コンテナーの Time to Live を無効にし、バックグラウンド プロセスによる期限切れ項目の確認を停止するには、コンテナーの `DefaultTimeToLive` プロパティを削除する必要があります。 このプロパティの削除は、-1 に設定することとは異なります。 -1 に設定した場合は、コンテナーに追加される新しい項目が無期限になりますが、コンテナーに含まれている特定の項目についてこの値をオーバーライドできます。 コンテナーから TTL プロパティを削除した場合は、以前の既定の TTL が明示的にオーバーライドされていても、項目は期限切れになります。
+コンテナーの Time to Live を無効にし、バックグラウンド プロセスによる期限切れ項目の確認を停止するには、コンテナーの `DefaultTimeToLive` プロパティを削除する必要があります。 このプロパティの削除は、-1 に設定することとは異なります。 -1 に設定した場合は、コンテナーに追加される新しい項目が無期限になりますが、コンテナーに含まれている特定の項目についてこの値をオーバーライドできます。 コンテナーから TTL プロパティを削除した場合は、以前の既定の TTL が明示的にオーバーライドされていても、項目が期限切れになることはありません。
 
 ### <a id="dotnet-disable-ttl"></a>.NET SDK
 

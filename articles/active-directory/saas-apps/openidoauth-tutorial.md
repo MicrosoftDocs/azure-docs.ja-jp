@@ -4,22 +4,23 @@ description: Azure AD アプリ ギャラリーの OpenID および OAuth アプ
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: daveba
+ms.reviewer: barbkess
 ms.assetid: eedebb76-e78c-428f-9cf0-5891852e79fb
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/25/2018
+ms.topic: tutorial
+ms.date: 01/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 04639e6d27854d9c25b97936b163cfaaa25fc375
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 713e4e7874b2ca650ab669d52f9d3026b5e80899
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287440"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780985"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Azure AD アプリ ギャラリーの OpenID および OAuth アプリケーションを構成する
 
@@ -27,19 +28,19 @@ ms.locfileid: "51287440"
 
 1. [Azure Portal](https://portal.azure.com) の左側のウィンドウで、**[Azure Active Directory]** を選択します。 
 
-    ![[Azure Active Directory] ボタン](./media/openidoauth-tutorial/tutorial_general_01.png)
+    ![Azure Active Directory のボタン](common/select-azuread.png))
 
 2. **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** の順に移動します。
 
-    ![[エンタープライズ アプリケーション] ブレード](./media/openidoauth-tutorial/tutorial_general_02.png)
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
 3. ダイアログの上部にある **[新しいアプリケーション]** を選択します。
 
-    ![[新しいアプリケーション] ボタン](./media/openidoauth-tutorial/tutorial_general_03.png)
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
 4. 検索ボックスに、アプリケーション名を入力します。 検索パネルで目的のアプリケーションを選択して、アプリケーションにサインアップします。
 
-    ![アプリケーションの追加](./media/openidoauth-tutorial/addfromgallery.png)
+    ![結果一覧の Openid](common/search-new-app.png)
 
     > [!NOTE]
     > OpenID Connect と OAuth アプリでは、**[追加]** ボタンは既定で無効になっています。 ここでテナント管理者は、サインアップ ボタンを選択して、アプリケーションに同意する必要があります。 これでアプリケーションが顧客テナントに追加され、必要な構成を行うことができます。 アプリケーションを明示的に追加する必要はありません。

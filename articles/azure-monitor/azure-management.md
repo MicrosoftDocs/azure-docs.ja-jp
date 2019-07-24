@@ -5,19 +5,18 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
-ms.service: monitoring
-ms.devlang: na
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/07/2018
 ms.author: bwren
-ms.openlocfilehash: 30898be58db228484bcd85e8896da10d0bfc29dd
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b56993b9ad03f2ab50fe3954ab5e8855d0d8bc0f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277462"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770019"
 ---
 # <a name="azure-management---monitoring"></a>Azure の管理 - 監視
 
@@ -38,7 +37,7 @@ Azure の管理には、その一部として監視が含まれています。  
 監視とは、ビジネス アプリケーションやそのアプリが使用するリソースのパフォーマンス、正常性、可用性を見極めるために、データを収集し、分析することを指します。 効果的な監視戦略を策定すれば、アプリケーションの各種コンポーネントの動作状況を詳細に把握できるだけでなく、問題が顕在化する前に対処できるよう、重大な問題を事前に通知させることでアップタイムを向上できます。 Azure の監視は主に [Azure Monitor](../azure-monitor/overview.md) によって提供されます。これにより、監視データを格納するための一般的なストア、ご自身のアプリケーションをサポートしているさまざまな階層からデータを収集するための複数のデータ ソース、および収集されたデータを分析して応答する機能が提供されます。
 
 ## <a name="configure"></a>構成
-構成は、アプリケーションおよびリソースの初期デプロイと構成のほか、パッチと更新プログラムによる継続的なメンテナンスを指します。  スクリプトとポリシーを通じてこれらのタスクを自動化すれば、冗長性を排除し、時間と手間を最小限に抑えて正確性と効率性を高めることができます。  [Azure Automation](..\automation\automation-intro.md) は、構成タスクを自動化するためのサービスを多数提供します。  プロセスを自動化する Runbook に加えて、構成および更新管理を提供します。これは、ポリシーを通じて構成を管理したり、更新プログラムの特定とデプロイを行ったりする際に役に立ちます。
+構成は、アプリケーションおよびリソースの初期デプロイと構成のほか、パッチと更新プログラムによる継続的なメンテナンスを指します。  スクリプトとポリシーを通じてこれらのタスクを自動化すれば、冗長性を排除し、時間と手間を最小限に抑えて正確性と効率性を高めることができます。  [Azure Automation](../automation/automation-intro.md) は、構成タスクを自動化するためのサービスを多数提供します。  プロセスを自動化する Runbook に加えて、構成および更新管理を提供します。これは、ポリシーを通じて構成を管理したり、更新プログラムの特定とデプロイを行ったりする際に役に立ちます。
 
 ## <a name="govern"></a>ガバナンス
 ガバナンスは、Azure のアプリケーションとリソースに対するコントロールを維持するメカニズムとプロセスを提供します。  これには、イニシアチブの計画と戦略的な優先順位の設定が含まれます。  Azure におけるガバナンスは、主に 2 つのサービスで実装されます。  [Azure Policy](../governance/policy/overview.md) では、ポリシー定義を作成、割り当て、管理できます。このポリシー定義で、リソースにさまざまなルールとアクションを適用し、会社の標準とサービス レベル アグリーメントへのリソースの準拠が維持されるようにします。 [Azure Cost Management by Cloudyn](../cost-management/overview.md) では、クラウドの使用状況と、Azure リソースおよび AWS や Google などの他のクラウド プロバイダーに対する支出を追跡することができます。
@@ -53,13 +52,3 @@ Azure の管理には、その一部として監視が含まれています。  
 ## <a name="migrate"></a>移行 
 移行とは、現在オンプレミスで実行されているワークロードを Azure クラウドに切り替えることを指します。  [Azure Migrate](../migrate/migrate-overview.md) は、オンプレミスの仮想マシンを Azure に移行する場合の適合性 (パフォーマンスベースのサイズとコストの見積もりなど) を評価するうえで役に立ちます。  Azure Site Recovery は、[オンプレミス](../site-recovery/migrate-tutorial-on-premises-azure.md)または[アマゾン ウェブ サービス](../site-recovery/migrate-tutorial-aws-azure.md)から仮想マシンを実際に移行する際に役に立ちます。  [Azure Database Migration](../dms/dms-overview.md) は、複数のデータベース ソースを Azure データ プラットフォームに移行する際に便利です。
 
-
-## <a name="operations-management-suite"></a>Operations Management Suite
-Azure の管理に関する以前のテクニカル ドキュメントには、Operations Management Suite (OMS) に関する内容が含まれていました。OMS は、Azure の管理に使用する次のサービスをバンドルとしてまとめたものです。
-
-- Azure Automation
-- Azure Backup
-- Log Analytics
-- Site Recovery
-
-Microsoft では現在、Azure の管理に関与するサービスが増えたことを受けて、テクニカル ドキュメントから OMS に関する記述の削除を進めています。 OMS に含まれるサービスに変更はありません。Azure のアプリケーションとリソースの管理では、それぞれのサービスが依然として重要な役割を担っています。 今後は、実行が必要な管理タスクと、各タスクの実行を担うさまざまな Azure サービスに集中できるようになります。

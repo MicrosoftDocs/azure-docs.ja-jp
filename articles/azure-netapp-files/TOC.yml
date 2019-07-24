@@ -1,0 +1,60 @@
+items:
+- name: Azure NetApp Files のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+  - name: Azure NetApp Files の概要
+    href: azure-netapp-files-introduction.md
+  - name: ストレージ階層の理解
+    href: azure-netapp-files-understand-storage-hierarchy.md
+- name: クイック スタート
+  items:
+  - name: Azure NetApp Files の設定とボリュームの作成
+    href: azure-netapp-files-quickstart-set-up-account-create-volumes.md
+  expanded: true
+- name: 概念
+  items:
+  - name: Azure NetApp Files のサービス レベル
+    href: azure-netapp-files-service-levels.md
+  - name: Azure NetApp Files のリソース制限
+    href: azure-netapp-files-resource-limits.md
+  - name: Azure NetApp Files のメトリック
+    href: azure-netapp-files-metrics.md
+- name: ハウツー ガイド
+  items:
+  - name: Azure NetApp Files に登録する
+    href: azure-netapp-files-register.md
+  - name: NetApp アカウントを作成する
+    href: azure-netapp-files-create-netapp-account.md
+  - name: 容量プールを設定する
+    href: azure-netapp-files-set-up-capacity-pool.md
+  - name: サブネットを Azure NetApp Files に委任する
+    href: azure-netapp-files-delegate-subnet.md
+  - name: Azure NetApp Files のボリュームを作成する
+    href: azure-netapp-files-create-volumes.md
+  - name: NFS ボリュームのエクスポート ポリシーを構成する
+    href: azure-netapp-files-configure-export-policy.md
+  - name: ボリュームを管理する
+    href: azure-netapp-files-manage-volumes.md
+  - name: Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する
+    href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
+  - name: スナップショットを管理する
+    href: azure-netapp-files-manage-snapshots.md
+  - name: 容量プールまたはボリュームをサイズ変更する
+    href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+  - name: 開発
+    items:
+    - name: REST
+      href: azure-netapp-files-develop-with-rest-api.md
+- name: リファレンス
+  items:
+  - name: REST
+    href: https://docs.microsoft.com/rest/api/netapp/
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.netapp/allversions
+ms.openlocfilehash: 1380aa56161e7c1f0f3d72aae36c834a087e1040
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545929"

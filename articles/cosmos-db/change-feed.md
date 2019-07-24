@@ -1,19 +1,21 @@
 ---
 title: Azure Cosmos DB での Change Feed サポートの使用
 description: Azure Cosmos DB の Change Feed サポートを使用して、ドキュメントの変更を追跡し、トリガーなどのイベント ベースの処理を実行したり、キャッシュや分析システムを最新の状態に維持したりします。
-author: rafats
+author: rimman
+ms.author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.author: rafats
-ms.openlocfilehash: 4edf637d97070416c0dc2970f4bed483e5f4f34d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.reviewer: sngun
+ms.custom: seodec18
+ms.openlocfilehash: 85a1dad9feb15550cf27cf032802af5055fdf155
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621311"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525638"
 ---
-# <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード
+# <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB の変更フィード - 概要
 
 Azure Cosmos DB の変更フィードのサポートは、Azure Cosmos DB コンテナーの変更をリッスンすることで機能します。 変更されたドキュメントは、変更された順に並べ替えられた一覧に出力されます。 変更は保持され、非同期的に増分処理できます。また、出力を 1 つ以上のコンシューマーに分散させて並列処理することもできます。 
 
@@ -31,12 +33,12 @@ Azure Cosmos DB の変更フィードにより、次の図のようにこれら�
 
 この機能は現在、次の Azure Cosmos DB API とクライアント SDK でサポートされています。
 
-| **クライアント ドライバー** | **Azure CLI** | **SQL API** | **Cassandra API** | **MongoDB API** | **Gremlin API**|**テーブル API** |
+| **クライアント ドライバー** | **Azure CLI** | **SQL API** | **Cassandra API** | **Azure Cosmos DB の MongoDB 用 API** | **Gremlin API**|**テーブル API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | 該当なし | [はい] | いいえ  | いいえ  | はい | いいえ  |
-|Java|該当なし|[はい]|いいえ |いいえ |はい|いいえ |
-|Python|該当なし|[はい]|いいえ |いいえ |はい|いいえ |
-|Node/JS|該当なし|[はい]|いいえ |いいえ |はい|いいえ |
+| .NET | NA | はい | いいえ  | いいえ  | はい | いいえ  |
+|Java|NA|はい|いいえ |いいえ |はい|いいえ |
+|Python|NA|はい|いいえ |いいえ |はい|いいえ |
+|Node/JS|NA|はい|いいえ |いいえ |はい|いいえ |
 
 ## <a name="change-feed-and-different-operations"></a>変更フィードとさまざまな操作
 
@@ -56,7 +58,7 @@ Azure Cosmos DB の変更フィードにより、次の図のようにこれら�
 
 ### <a name="change-feed-and-etag-lsn-or-ts"></a>変更フィードと _etag、_lsn、_ts
 
-_etag は内部形式であり、いつでも変更され得るため、これに依存することはできません。 _ts は、変更または作成のタイムスタンプです。 _ts は時系列比較に利用できます。 _lsn は変更フィードのみに追加されるバッチ ID であり、トランザクション ID を表します。多数の項目に同じ _lsn が付くことがあります。 FeedResponse の ETag は、項目にある _etag とは異なります。 _etag は内部識別子であり、コンカレンシー制御に使用され、項目のバージョンを伝えますが、ETag はフィードのシーケンス処理に使用されます。
+_etag は内部形式であり、いつでも変更され得るため、これに依存することはできません。 _ts は、変更または作成のタイムスタンプです。 _ts は時系列比較に利用できます。 _lsn は変更フィードに対してのみ追加されるバッチ ID であり、トランザクション ID を表します。 多数の項目に同じ _lsn が付くことがあります。 FeedResponse の ETag は、項目にある _etag とは異なります。 _etag は内部識別子であり、コンカレンシー制御に使用され、項目のバージョンを伝えますが、ETag はフィードのシーケンス処理に使用されます。
 
 ## <a name="change-feed-use-cases-and-scenarios"></a>変更フィードのユース ケースとシナリオ
 
@@ -82,7 +84,7 @@ _etag は内部形式であり、いつでも変更され得るため、これ�
 
 変更フィードで簡単に実装できるシナリオの例を以下にいくつか示します。
 
-* [サーバーレス](http://azure.com/serverless) Web やモバイル アプリ内で、お客様のプロファイル、設定、場所のすべての変更などのイベントを追跡し、[Azure Functions](#azure-functions) を使用して各デバイスにプッシュ通知を送信するなど、特定のアクションをトリガーできます。 
+* [サーバーレス](https://azure.microsoft.com/solutions/serverless/) Web やモバイル アプリ内で、お客様のプロファイル、設定、場所のすべての変更などのイベントを追跡し、[Azure Functions](change-feed-functions.md) を使用して各デバイスにプッシュ通知を送信するなど、特定のアクションをトリガーできます。
 
 * たとえば、Azure Cosmos DB を使用してゲームを構築する場合、Change Feed を使用して完了したゲームのスコアに基づくリアルタイムのスコアボードを実装できます。
 
@@ -120,8 +122,8 @@ _etag は内部形式であり、いつでも変更され得るため、これ�
 
 ## <a name="next-steps"></a>次の手順
 
-以下の記事を参照すれば、変更フィードに関してさらに詳しく知ることができます。
+以下の記事で、変更フィードに関してさらに詳しく知ることができます。
 
 * [変更フィードを読み取るオプション](read-change-feed.md)
 * [変更フィードと Azure Functions の併用](change-feed-functions.md)
-* [変更フィード プロセッサ ライブラリの使用](change-feed-processor.md)
+* [Change Feed Processor ライブラリの使用](change-feed-processor.md)

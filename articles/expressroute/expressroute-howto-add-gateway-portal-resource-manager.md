@@ -1,90 +1,82 @@
 ---
-title: 'ExpressRoute の VNet への仮想ネットワーク ゲートウェイの追加: Portal: Azure | Microsoft Docs'
-description: この記事では、ExpressRoute の作成済みの Resource Manager VNet に仮想ネットワーク ゲートウェイを追加する方法を説明します。
-documentationcenter: na
+title: 'Add a gateway to an Azure VNet for ExpressRoute: Portal | Microsoft Docs'
+description: This article walks you through adding a virtual network gateway to an already created Resource Manager VNet for ExpressRoute.
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/17/2017
+ms.date: 12/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6198c8723ccbb225a4cc60526e66f4651390b26c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 68376751a3c673b2d89d028312f992aec40d4dee
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255695"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534618"
 ---
-# <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Azure Portal を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
+# <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Configure a virtual network gateway for ExpressRoute using the Azure portal
 > [!div class="op_single_selector"]
-> * [Resource Manager - Azure Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
+> * [Resource Manager - Azure portal](expressroute-howto-add-gateway-portal-resource-manager.md)
 > * [Resource Manager - PowerShell](expressroute-howto-add-gateway-resource-manager.md)
-> * [クラシック - PowerShell](expressroute-howto-add-gateway-classic.md)
-> * [ビデオ - Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
+> * [Classic - PowerShell](expressroute-howto-add-gateway-classic.md)
+> * [Video - Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
 > 
 > 
 
-この記事では、既存の VNet 用の仮想ネットワーク ゲートウェイを追加する手順を説明します。 この記事では、既存の仮想ネットワーク (VNet) 用の VNet ゲートウェイを追加、サイズ変更、および削除する手順を説明します。 この構成の手順は、Resource Manager デプロイ モデルを使用して作成され、ExpressRoute 構成で使用される予定の VNet 専用です。 ExpressRoute の仮想ネットワーク ゲートウェイとゲートウェイ構成設定の詳細については、[ExpressRoute 用の仮想ネットワーク ゲートウェイについて](expressroute-about-virtual-network-gateways.md)を参照してください。 
+This article walks you through the steps to add a virtual network gateway for a pre-existing VNet. This article walks you through the steps to add, resize, and remove a virtual network (VNet) gateway for a pre-existing VNet. The steps for this configuration are specifically for VNets that were created using the Resource Manager deployment model that will be used in an ExpressRoute configuration. For more information about virtual network gateways and gateway configuration settings for ExpressRoute, see [About virtual network gateways for ExpressRoute](expressroute-about-virtual-network-gateways.md). 
 
 
-## <a name="before-beginning"></a>作業を開始する前に
+## <a name="before-beginning"></a>Before beginning
 
-このタスクの手順では、以下の構成参照一覧の値に基づいて VNet を使用します。 この一覧は、手順例で使用します。 参照として使用する一覧をコピーし、値を独自の値で置き換えることができます。
+The steps for this task use a VNet based on the values in the following configuration reference list. We use this list in our example steps. You can copy the list to use as a reference, replacing the values with your own.
 
-**構成参照一覧**
+**Configuration reference list**
 
-* Virtual Network 名 = "TestVNet"
-* Virtual Network のアドレス空間 = 192.168.0.0/16
-* サブネット名 = "FrontEnd" 
-    * サブネットのアドレス空間 = "192.168.1.0/24"
-* リソース グループ = "TestRG"
-* 場所 = "米国東部"
-* ゲートウェイ サブネット名: "GatewaySubnet"。ゲートウェイ サブネットには、常に *GatewaySubnet* という名前を付ける必要があります。
-    * ゲートウェイ サブネットのアドレス空間 = "192.168.200.0/26"
-* ゲートウェイ名 = "ERGW"
-* ゲートウェイの IP 名 = "MyERGWVIP"
-* ゲートウェイの種類 = "ExpressRoute"。ExpressRoute 構成には、この種類が必須です。
-* ゲートウェイのパブリック IP 名 = "MyERGWVIP"
+* Virtual Network Name = "TestVNet"
+* Virtual Network address space = 192.168.0.0/16
+* Subnet Name = "FrontEnd" 
+    * Subnet address space = "192.168.1.0/24"
+* Resource Group = "TestRG"
+* Location = "East US"
+* Gateway Subnet name: "GatewaySubnet" You must always name a gateway subnet *GatewaySubnet*.
+    * Gateway Subnet address space = "192.168.200.0/26"
+* Gateway Name = "ERGW"
+* Gateway Public IP Name = "MyERGWVIP"
+* Gateway type = "ExpressRoute" This type is required for an ExpressRoute configuration.
 
-構成を開始する前に、これらの手順の[ビデオ](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)を表示できます。
+You can view a [Video](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network) of these steps before beginning your configuration.
 
-## <a name="create-the-gateway-subnet"></a>ゲートウェイ サブネットを作成する
+## <a name="create-the-gateway-subnet"></a>Create the gateway subnet
 
-1. [ポータル](http://portal.azure.com)で、仮想ネットワーク ゲートウェイを作成する Resource Manager 仮想ネットワークに移動します。
-2. VNet のブレードの **[設定]** セクションで、**[サブネット]** をクリックして [サブネット] ブレードを展開します。
-3. **[サブネット]** ブレードで **[+ゲートウェイ サブネット]** をクリックして、**[サブネットの追加]** ブレードを開きます。 
+1. In the [portal](https://portal.azure.com), navigate to the Resource Manager virtual network for which you want to create a virtual network gateway.
+2. In the **Settings** section of your VNet blade, click **Subnets** to expand the Subnets blade.
+3. On the **Subnets** blade, click **+Gateway subnet** to open the **Add subnet** blade. 
    
-    ![ゲートウェイ サブネットの追加](./media/expressroute-howto-add-gateway-portal-resource-manager/addgwsubnet.png "ゲートウェイ サブネットの追加")
+    ![Add the gateway subnet](./media/expressroute-howto-add-gateway-portal-resource-manager/addgwsubnet.png "Add the gateway subnet")
 
 
-4. サブネットの **[名前]** には、"GatewaySubnet" という値が自動的に入力されます。 この値は、Azure がゲートウェイ サブネットとしてこのサブネットを認識するために必要になります。 自動入力される **[アドレス範囲]** の値は、実際の構成要件に合わせて調整してください。 /27 以上 (/26 や /25 など) のゲートウェイ サブネットを作成することをお勧めします。 次に、**[OK]** をクリックして値を保存し、ゲートウェイ サブネットを作成します。
+4. The **Name** for your subnet is automatically filled in with the value 'GatewaySubnet'. This value is required in order for Azure to recognize the subnet as the gateway subnet. Adjust the auto-filled **Address range** values to match your configuration requirements. We recommend creating a gateway subnet with a /27 or larger (/26, /25, etc.). Then, click **OK** to save the values and create the gateway subnet.
 
-    ![サブネットの追加](./media/expressroute-howto-add-gateway-portal-resource-manager/addsubnetgw.png "サブネットの追加")
+    ![Adding the subnet](./media/expressroute-howto-add-gateway-portal-resource-manager/addsubnetgw.png "Adding the subnet")
 
-## <a name="create-the-virtual-network-gateway"></a>仮想ネットワーク ゲートウェイを作成する
+## <a name="create-the-virtual-network-gateway"></a>Create the virtual network gateway
 
-1. ポータルで、左側の **[+]** をクリックし、検索ボックスに「Virtual Network ゲートウェイ」と入力します。 検索結果で "**仮想ネットワーク ゲートウェイ**" を探してその項目をクリックします。 **[Virtual Network ゲートウェイ]** ブレードで、下部にある **[作成]** をクリックします。 **[仮想ネットワーク ゲートウェイの作成]** ブレードが開きます。
-2. **[Virtual Network ゲートウェイの作成]** ブレードで、Virtual Network ゲートウェイの値を入力します。
+1. In the portal, on the left side, click **+** and type 'Virtual Network Gateway' in search. Locate **Virtual network gateway** in the search return and click the entry. On the **Virtual network gateway** blade, click **Create** at the bottom of the blade. This opens the **Create virtual network gateway** blade.
+2. On the **Create virtual network gateway** blade, fill in the values for your virtual network gateway.
 
-    ![[Virtual Network ゲートウェイの作成] ブレードのフィールド](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "[Virtual Network ゲートウェイの作成] ブレードのフィールド")
-3. **[名前]**: ゲートウェイに名前を付けます。 これは、ゲートウェイ サブネットの名前付けと同じではありません。 作成するゲートウェイ オブジェクトの名前です。
-4. **[ゲートウェイの種類]**: **[ExpressRoute]** を選択します。
-5. **[SKU]**: ゲートウェイの SKU をドロップダウン リストから選択します。
-6. **[場所]**: 仮想ネットワークの場所を指すように、**[場所]** フィールドを調整します。 対象の仮想ネットワークが存在するリージョンをこの場所が指していない場合、仮想ネットワークは [仮想ネットワークの選択] ボックスの一覧に表示されません。
-7. このゲートウェイの追加先の仮想ネットワークを選択します。 **[仮想ネットワーク]** をクリックして **[仮想ネットワークの選択]** ブレードを開きます。 VNet を選択します。 VNet が表示されない場合は、実際の仮想ネットワークがあるリージョンが **[場所]** フィールドに指定されていることを確認してください。
-9. パブリック IP アドレスを選択します。 **[パブリック IP アドレス]** をクリックして、**[パブリック IP アドレスの選択]** ブレードを開きます。 **[+新規作成]** をクリックして、**[パブリック IP アドレスの作成]** ブレードを開きます。 パブリック IP アドレスの名前を入力します。 このブレードで、パブリック IP アドレス オブジェクトが作成されます。このオブジェクトにパブリック IP アドレスが動的に割り当てられます。 **[OK]** をクリックして、このブレードへの変更を保存します。
-10. **[サブスクリプション]**: 正しいサブスクリプションが選択されていることを確認します。
-11. **[リソース グループ]**: この設定は、選択した Virtual Network によって決定されます。
-12. 上記の設定を指定した後に **[場所]** を調整しないでください。
-13. 設定を確認します。 ゲートウェイをダッシュボードに表示する場合は、ブレードの下部にある **[ダッシュボードにピン留めする]** を選択します。
-14. **[作成]** をクリックして、ゲートウェイの作成を開始します。 設定が検証されて、ゲートウェイが作動します。 仮想ネットワーク ゲートウェイの作成は、完了するまでに最大で 45 分かかる場合があります。
+    ![Create virtual network gateway blade fields](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "Create virtual network gateway blade fields")
+3. **Name**: Name your gateway. This is not the same as naming a gateway subnet. It's the name of the gateway object you are creating.
+4. **Gateway type**: Select **ExpressRoute**.
+5. **SKU**: Select the gateway SKU from the dropdown.
+6. **Location**: Adjust the **Location** field to point to the location where your virtual network is located. If the location is not pointing to the region where your virtual network resides, the virtual network doesn't appear in the 'Choose a virtual network' dropdown.
+7. Choose the virtual network to which you want to add this gateway. Click **Virtual network** to open the **Choose a virtual network** blade. Select the VNet. If you don't see your VNet, make sure the **Location** field is pointing to the region in which your virtual network is located.
+9. Choose a public IP address. Click **Public IP address** to open the **Choose public IP address** blade. Click **+Create New** to open the **Create public IP address blade**. Input a name for your public IP address. This blade creates a public IP address object to which a public IP address will be dynamically assigned. Click **OK** to save your changes to this blade.
+10. **Subscription**: Verify that the correct subscription is selected.
+11. **Resource group**: This setting is determined by the Virtual Network that you select.
+12. Don't adjust the **Location** after you've specified the previous settings.
+13. Verify the settings. If you want your gateway to appear on the dashboard, you can select **Pin to dashboard** at the bottom of the blade.
+14. Click **Create** to begin creating the gateway. The settings are validated and the gateway deploys. Creating virtual network gateway can take up to 45 minutes to complete.
 
-## <a name="next-steps"></a>次の手順
-VNet ゲートウェイを作成したので、ExpressRoute 回線に VNet をリンクできるようになりました。 「 [ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-portal-resource-manager.md)」を参照してください。
+## <a name="next-steps"></a>Next steps
+After you have created the VNet gateway, you can link your VNet to an ExpressRoute circuit. See [Link a Virtual Network to an ExpressRoute circuit](expressroute-howto-linkvnet-portal-resource-manager.md).

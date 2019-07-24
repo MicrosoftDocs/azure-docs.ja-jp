@@ -1,25 +1,26 @@
 ---
-title: Azure Active Directory を使用してグループのメンバーを追加または削除する方法 | Microsoft Docs
-description: Azure Active Directory を使用してグループのユーザーとデバイスを追加または削除する方法を説明します。
+title: グループ メンバーを追加または削除する - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory を使用してグループに対してメンバーを追加または削除する方法について説明します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: lizross
-ms.custom: it-pro
+ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 7c1a83d83dcbf247550c66602a6f53d4ef0d7930
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3dafdf4c67e8d3d74109b3879fb0deacd79b1774
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733366"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182240"
 ---
-# <a name="how-to-add-or-remove-group-members-using-azure-active-directory"></a>方法: Azure Active Directory を使用してグループのメンバーを追加または削除する
+# <a name="add-or-remove-group-members-using-azure-active-directory"></a>Azure Active Directory を使用してグループのメンバーを追加または削除する
 Azure Active Directory を使用して、グループのメンバーの追加と削除を続けることができます。
 
 ## <a name="to-add-group-members"></a>グループのメンバーを追加するには
@@ -58,8 +59,8 @@ Azure Active Directory を使用して、グループのメンバーの追加と
 
 - [グループの設定を編集する](active-directory-groups-settings-azure-portal.md)
 
-- [グループを使用してリソースへのアクセスを管理する](active-directory-manage-groups.md)
+- [グループを使用したリソースへのアクセス管理](active-directory-manage-groups.md)
 
 - [グループ内のユーザーの動的ルールの管理](../users-groups-roles/groups-create-rule.md)
 
-- [Azure サブスクリプションを Azure Active Directory に関連付けるかまたは追加する](active-directory-how-subscriptions-associated-directory.md)
+- [Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する](active-directory-how-subscriptions-associated-directory.md)

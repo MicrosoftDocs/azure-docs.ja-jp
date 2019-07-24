@@ -23,7 +23,7 @@ items:
     href: stream-analytics-javascript-user-defined-functions.md
   - name: 4 - Azure Pipelines での CI/CD によるデプロイ
     href: stream-analytics-tools-visual-studio-cicd-vsts.md
-  - name: 5 - Edge での C# UDF の実行
+  - name: 5 - IoT Edge での C# UDF の実行
     href: stream-analytics-edge-csharp-udf.md
 - name: サンプル
   items:
@@ -32,21 +32,25 @@ items:
 - name: 概念
   items:
   - name: ジョブの入力の種類
-    href: stream-analytics-add-inputs.md
     items:
+    - name: 入力の概要
+      href: stream-analytics-add-inputs.md
     - name: ストリーミング データの入力
       href: stream-analytics-define-inputs.md
     - name: 参照データ入力
       href: stream-analytics-use-reference-data.md
   - name: ジョブの出力の種類
-    href: stream-analytics-define-outputs.md
     items:
+    - name: 出力の概要
+      href: stream-analytics-define-outputs.md
     - name: Cosmos DB に出力する
       href: stream-analytics-documentdb-output.md
     - name: Azure SQL DB に出力する
       href: stream-analytics-sql-output-perf.md
     - name: BLOB のカスタム パス パターン
       href: stream-analytics-custom-path-patterns-blob-storage-output.md
+  - name: ジョブの状態
+    href: job-states.md
   - name: ウィンドウ関数
     href: stream-analytics-window-functions.md
   - name: 地理空間の関数
@@ -57,20 +61,24 @@ items:
     href: stream-analytics-stream-analytics-query-patterns.md
   - name: JSON および AVRO データの解析
     href: stream-analytics-parsing-json.md
-  - name: イベントの順序に関する考慮事項
-    href: stream-analytics-out-of-order-and-late-events.md
+  - name: 時間の処理に関する考慮事項
+    href: stream-analytics-time-handling.md
   - name: チェックポイントと再生
     href: stream-analytics-concepts-checkpoint-replay.md
   - name: エラー ポリシー
-    href: output-error-policy.md
+    href: stream-analytics-output-error-policy.md
 - name: ハウツーガイド
   items:
   - name: 管理
     items:
     - name: 資格情報の更新
       href: stream-analytics-login-credentials-inputs-outputs.md
+    - name: イベント順序ポリシーを構成する
+      href: event-ordering.md
     - name: アラートを構成する
       href: stream-analytics-set-up-alerts.md
+    - name: ジョブを開始する
+      href: start-job.md
     - name: ジョブをテストする
       href: stream-analytics-test-query.md
     - name: ダッシュボードに結果を表示する
@@ -81,6 +89,8 @@ items:
       href: stream-analytics-job-reliability.md
     - name: マネージド ID による認証
       href: stream-analytics-managed-identities-adls.md
+    - name: SQL リファレンス データを使用する
+      href: sql-reference-data.md
   - name: ソリューションを構築する
     items:
     - name: Twitter センチメントの分析
@@ -97,11 +107,13 @@ items:
       href: stream-analytics-high-frequency-trading.md
     - name: IoT ストリーミング データを処理する
       href: stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md
-    - name: しきい値に基づく規則
+    - name: しきい値に基づくルール
       href: stream-analytics-threshold-based-rules.md
     - name: Kafka イベントを処理する
       href: ../event-hubs/event-hubs-kafka-stream-analytics.md
       maintainContext: true
+    - name: 地理空間のシナリオ
+      href: geospatial-scenarios.md
   - name: 監視
     items:
     - name: ジョブの監視 - Azure Portal
@@ -116,9 +128,10 @@ items:
     items:
     - name: ストリーミング ユニットを利用したスケーリング
       href: stream-analytics-streaming-unit-consumption.md
-    - name: クエリ並列処理を使用したスケーリング
-      href: stream-analytics-parallelization.md
+    - name: 並列処理を使用したスケーリング
       items:
+      - name: クエリ並列処理
+        href: stream-analytics-parallelization.md
       - name: スループットの向上
         href: stream-analytics-scale-jobs.md
     - name: ML 関数を利用したスケーリング
@@ -129,6 +142,8 @@ items:
       href: stream-analytics-dotnet-management-sdk.md
     - name: Azure PowerShell の使用
       href: https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick
+    - name: IoT Edge ジョブへの API の使用
+      href: stream-analytics-cicd-api.md
   - name: Visual Studio Tools
     items:
     - name: ツールをインストールする
@@ -139,11 +154,11 @@ items:
       href: stream-analytics-live-data-local-testing.md
     - name: Visual Studio でのジョブの表示
       href: stream-analytics-vs-tools.md
-    - name: Edge ジョブの開発
+    - name: エッジ ジョブの開発
       href: stream-analytics-tools-for-visual-studio-edge-jobs.md
     - name: CI/CD パイプラインの設定
       href: stream-analytics-tools-for-visual-studio-cicd.md
-    - name: Edge 用に .NET UDF を記述する
+    - name: Edge 用の .NET UDF の記述
       href: stream-analytics-edge-csharp-udf-methods.md
   - name: トラブルシューティング
     items:
@@ -153,7 +168,7 @@ items:
       href: stream-analytics-troubleshoot-output.md
     - name: クエリ ロジック
       href: stream-analytics-troubleshoot-query.md
-    - name: 診断ログ
+    - name: アクティビティ ログと診断ログ
       href: stream-analytics-job-diagnostic-logs.md
   - name: Machine Learning との統合
     items:
@@ -166,184 +181,267 @@ items:
   - name: ジョブ ダイアグラムを使用したデバッグ
     href: stream-analytics-job-diagram-with-metrics.md
 - name: Stream Analytics クエリ言語
-  href: /stream-analytics-query/stream-analytics-query-language-reference
   items:
   - name: 組み込み関数
     items:
     - name: 組み込み関数の概要
       href: /stream-analytics-query/built-in-functions-azure-stream-analytics
+      maintainContext: true
     - name: 集計関数
       items:
       - name: 集計関数の概要
         href: /stream-analytics-query/aggregate-functions-azure-stream-analytics
+        maintainContext: true
       - name: AVG
         href: /stream-analytics-query/avg-azure-stream-analytics
+        maintainContext: true
       - name: COUNT
         href: /stream-analytics-query/count-azure-stream-analytics
+        maintainContext: true
       - name: Collect
         href: /stream-analytics-query/collect-azure-stream-analytics
+        maintainContext: true
       - name: CollectTOP
         href: /stream-analytics-query/collecttop-azure-stream-analytics
+        maintainContext: true
       - name: MAX
         href: /stream-analytics-query/max-azure-stream-analytics
+        maintainContext: true
       - name: MIN
         href: /stream-analytics-query/min-azure-stream-analytics
+        maintainContext: true
       - name: PERCENTILE_CONT
         href: /stream-analytics-query/percentile-cont-azure-stream-analytics
+        maintainContext: true
       - name: PERCENTILE_DISC
         href: /stream-analytics-query/percentile-disc-azure-stream-analytics
+        maintainContext: true
       - name: STDEV
         href: /stream-analytics-query/stdev-azure-stream-analytics
+        maintainContext: true
       - name: STDEVP
         href: /stream-analytics-query/stdevp-azure-stream-analytics
+        maintainContext: true
       - name: SUM
         href: /stream-analytics-query/sum-azure-stream-analytics
+        maintainContext: true
       - name: TopOne
         href: /stream-analytics-query/topone-azure-stream-analytics
+        maintainContext: true
       - name: VAR
         href: /stream-analytics-query/var-azure-stream-analytics
+        maintainContext: true
       - name: VARP
         href: /stream-analytics-query/varp-azure-stream-analytics
+        maintainContext: true
     - name: 分析関数
       items:
       - name: 分析関数の概要
         href: /stream-analytics-query/analytic-functions-azure-stream-analytics
+        maintainContext: true
+      - name: AnomalyDetection_SpikeAndDip
+        href: /stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+        maintainContext: true
+      - name: AnomalyDetection_ChangePoint
+        href: /stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics
+        maintainContext: true
       - name: ISFIRST
         href: /stream-analytics-query/isfirst-azure-stream-analytics
+        maintainContext: true
       - name: LAG
         href: /stream-analytics-query/lag-azure-stream-analytics
+        maintainContext: true
       - name: LAST
         href: /stream-analytics-query/last-azure-stream-analytics
-      - name: AnomalyDetection
-        href: /stream-analytics-query/anomaly-detection-azure-stream-analytics
+        maintainContext: true
     - name: 配列関数
       items:
       - name: 配列関数の概要
         href: /stream-analytics-query/array-functions-stream-analytics
+        maintainContext: true
       - name: GetArrayLength
         href: /stream-analytics-query/getarraylength-azure-stream-analytics
+        maintainContext: true
       - name: GetArrayElement
         href: /stream-analytics-query/getarrayelement-azure-stream-analytics
+        maintainContext: true
       - name: GetArrayElements
         href: /stream-analytics-query/getarrayelements-azure-stream-analytics
+        maintainContext: true
     - name: 変換関数
       items:
       - name: 変換関数の概要
         href: /stream-analytics-query/conversion-functions-azure-stream-analytics
+        maintainContext: true
       - name: CAST
         href: /stream-analytics-query/cast-azure-stream-analytics
+        maintainContext: true
       - name: GetType
         href: /stream-analytics-query/gettype-azure-stream-analytics
+        maintainContext: true
       - name: TRY_CAST
         href: /stream-analytics-query/try-cast-azure-stream-analytics
+        maintainContext: true
     - name: 日付と時刻関数
       items:
       - name: 日付と時刻関数の概要
         href: /stream-analytics-query/date-and-time-functions-azure-stream-analytics
+        maintainContext: true
       - name: DATEADD
         href: /stream-analytics-query/dateadd-azure-stream-analytics
+        maintainContext: true
       - name: DATEDIFF
         href: /stream-analytics-query/datediff-azure-stream-analytics
+        maintainContext: true
       - name: DATENAME
         href: /stream-analytics-query/datename-azure-stream-analytics
+        maintainContext: true
       - name: DATEPART
         href: /stream-analytics-query/datepart-azure-stream-analytics
+        maintainContext: true
       - name: DATETIMEFROMPARTS
         href: /stream-analytics-query/datetimefromparts-azure-stream-analytics
+        maintainContext: true
       - name: DAY
         href: /stream-analytics-query/day-azure-stream-analytics
+        maintainContext: true
       - name: MONTH
         href: /stream-analytics-query/month-azure-stream-analytics
+        maintainContext: true
       - name: YEAR
         href: /stream-analytics-query/year-azure-stream-analytics
+        maintainContext: true
     - name: 地理空間関数
       items:
       - name: 地理空間関数の概要
         href: /stream-analytics-query/geospatial-functions
+        maintainContext: true
       - name: CreateLineString
         href: /stream-analytics-query/createlinestring
+        maintainContext: true
       - name: CreatePoint
         href: /stream-analytics-query/createpoint
+        maintainContext: true
       - name: CreatePolygon
         href: /stream-analytics-query/createpolygon
+        maintainContext: true
       - name: ST_DISTANCE
         href: /stream-analytics-query/st-distance
+        maintainContext: true
       - name: ST_OVERLAPS
         href: /stream-analytics-query/st-overlaps
+        maintainContext: true
       - name: ST_INTERSECTS
         href: /stream-analytics-query/st-intersects
+        maintainContext: true
       - name: ST_WITHIN
         href: /stream-analytics-query/st-within
+        maintainContext: true
     - name: 入力メタデータ関数
       items:
       - name: 入力メタデータ関数の概要
         href: /stream-analytics-query/input-metadata-functions
+        maintainContext: true
       - name: GetMetadataPropertyValue
         href: /stream-analytics-query/getmetadatapropertyvalue
+        maintainContext: true
     - name: 数学関数
       items:
       - name: 数学関数の概要
         href: /stream-analytics-query/mathematical-functions-azure-stream-analytics
+        maintainContext: true
       - name: ABS
         href: /stream-analytics-query/abs-azure-stream-analytics
+        maintainContext: true
       - name: CEILING
         href: /stream-analytics-query/ceiling-azure-stream-analytics
+        maintainContext: true
       - name: EXP
         href: /stream-analytics-query/exp-azure-stream-analytics
+        maintainContext: true
       - name: FLOOR
         href: /stream-analytics-query/floor-azure-stream-analytics
+        maintainContext: true
       - name: POWER
         href: /stream-analytics-query/power-azure-stream-analytics
+        maintainContext: true
+      - name: ROUND
+        href: /stream-analytics-query/round-azure-stream-analytics.md
+        maintainContext: true
       - name: SIGN
         href: /stream-analytics-query/sign-azure-stream-analytics
+        maintainContext: true
       - name: SQUARE
         href: /stream-analytics-query/square-azure-stream-analytics
+        maintainContext: true
       - name: SQRT
         href: /stream-analytics-query/sqrt-azure-stream-analytics
+        maintainContext: true
     - name: レコード関数
       items:
       - name: レコード関数の概要
         href: /stream-analytics-query/record-functions-azure-stream-analytics
+        maintainContext: true
       - name: GetRecordProperties
         href: /stream-analytics-query/getrecordproperties-azure-stream-analytics
+        maintainContext: true
       - name: GetRecordPropertyValue
         href: /stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics
+        maintainContext: true
     - name: 文字列関数
       items:
       - name: 文字列関数の概要
         href: /stream-analytics-query/string-functions-azure-stream-analytics
+        maintainContext: true
       - name: CHARINDEX
         href: /stream-analytics-query/charindex-azure-stream-analytics
+        maintainContext: true
       - name: CONCAT
         href: /stream-analytics-query/concat-azure-stream-analytics
+        maintainContext: true
       - name: LEN
         href: /stream-analytics-query/len-azure-stream-analytics
+        maintainContext: true
       - name: LOWER
         href: /stream-analytics-query/lower-azure-stream-analytics
+        maintainContext: true
       - name: PATINDEX
         href: /stream-analytics-query/patindex-azure-stream-analytics
+        maintainContext: true
       - name: REGEXMATCH
         href: /stream-analytics-query/regexmatch-azure-stream-analytics
+        maintainContext: true
+      - name: REPLACE
+        href: /stream-analytics-query/replace-azure-stream-analytics.md
+        maintainContext: true
       - name: SUBSTRING
         href: /stream-analytics-query/substring-azure-stream-analytics
+        maintainContext: true
       - name: UPPER
         href: /stream-analytics-query/upper-azure-stream-analytics
+        maintainContext: true
     - name: ウィンドウ関数
       items:
       - name: ウィンドウ関数の概要
         href: /stream-analytics-query/windowing-azure-stream-analytics
+        maintainContext: true
       - name: ホッピング ウィンドウ
         href: /stream-analytics-query/hopping-window-azure-stream-analytics
+        maintainContext: true
       - name: セッション ウィンドウ
         href: /stream-analytics-query/session-window-azure-stream-analytics
+        maintainContext: true
       - name: スライディング ウィンドウ
         href: /stream-analytics-query/sliding-window-azure-stream-analytics
+        maintainContext: true
       - name: タンブリング ウィンドウ
         href: /stream-analytics-query/tumbling-window-azure-stream-analytics
+        maintainContext: true
   - name: データ型
     items:
     - name: データ型の概要
       href: /stream-analytics-query/data-types-azure-stream-analytics
+      maintainContext: true
     - name: JSON データと AVRO データの解析
       href: stream-analytics-parsing-json.md
       maintainContext: true
@@ -351,54 +449,76 @@ items:
     items:
     - name: クエリ言語要素の概要
       href: /stream-analytics-query/query-language-elements-azure-stream-analytics
+      maintainContext: true
     - name: APPLY
       href: /stream-analytics-query/apply-azure-stream-analytics
+      maintainContext: true
     - name: CASE
       href: /stream-analytics-query/case-azure-stream-analytics
+      maintainContext: true
+    - name: COALESCE
+      href: /stream-analytics-query/coalesce-azure-stream-analytics.md
+      maintainContext: true
     - name: CREATE TABLE
       href: /stream-analytics-query/create-table-stream-analytics
+      maintainContext: true
     - name: FROM
       href: /stream-analytics-query/from-azure-stream-analytics
+      maintainContext: true
     - name: GROUP BY
       href: /stream-analytics-query/group-by-azure-stream-analytics
+      maintainContext: true
     - name: HAVING
       href: /stream-analytics-query/having-azure-stream-analytics
+      maintainContext: true
     - name: INTO
       href: /stream-analytics-query/into-azure-stream-analytics
+      maintainContext: true
     - name: JOIN
       href: /stream-analytics-query/join-azure-stream-analytics
+      maintainContext: true
     - name: 参照データの JOIN
       href: /stream-analytics-query/reference-data-join-azure-stream-analytics
+      maintainContext: true
     - name: SELECT
       href: /stream-analytics-query/select-azure-stream-analytics
+      maintainContext: true
     - name: UNION
       href: /stream-analytics-query/union-azure-stream-analytics
+      maintainContext: true
     - name: WHERE
       href: /stream-analytics-query/where-azure-stream-analytics
+      maintainContext: true
     - name: WITH
       href: /stream-analytics-query/with-azure-stream-analytics
-    expanded: true
+      maintainContext: true
   - name: 時間管理
     items:
     - name: 時間管理の概要
       href: /stream-analytics-query/time-management-azure-stream-analytics
+      maintainContext: true
     - name: System.Timestamp
       href: /stream-analytics-query/system-timestamp-stream-analytics
+      maintainContext: true
     - name: TIMESTAMP BY
       href: /stream-analytics-query/timestamp-by-azure-stream-analytics
+      maintainContext: true
     - name: 時間のずれに関するポリシー
       href: /stream-analytics-query/time-skew-policies-azure-stream-analytics
+      maintainContext: true
   - name: イベント配信の保証
     href: /stream-analytics-query/event-delivery-guarantees-azure-stream-analytics
-  maintainContext: true
+    maintainContext: true
 - name: リファレンス
   items:
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.streamanalytics
+    href: /powershell/module/az.streamanalytics
   - name: .NET
     href: /dotnet/api/microsoft.azure.management.streamanalytics
-  - name: REST ()
+  - name: REST
     href: /rest/api/streamanalytics
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.streamanalytics/allversions
 - name: リソース
   items:
   - name: Stream Analytics プレビュー
@@ -406,7 +526,7 @@ items:
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
   - name: ブログ
-    href: https://blogs.msdn.com/b/streamanalytics/
+    href: https://azure.microsoft.com/blog/tag/azure-stream-analytics/
   - name: フィードバック フォーラム
     href: https://feedback.azure.com/forums/270577-azure-stream-analytics
   - name: フォーラム
@@ -418,16 +538,16 @@ items:
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=stream-analytics
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-stream-analytics
+    href: https://stackoverflow.com/questions/tagged/azure-stream-analytics
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest
   - name: お客様導入事例
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: ホワイトペーパー - リアルタイム イベント処理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: bcc4a9e82e5cf44c16bb1b597a9b4f9962318b5e
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: ddb035686e8788710aeea5c6dc532ef6a87310a0
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275449"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609355"

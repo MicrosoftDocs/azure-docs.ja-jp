@@ -6,17 +6,17 @@ documentationcenter: ''
 author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: kumud
-ms.openlocfilehash: 28ea626adf87ad9f115b5acc5452dfc91ad833c5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0832010707fc9b5d5f435aac29940db6905d18d7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245009"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009293"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>エンドポイントの追加、削除、有効化、無効化
 
@@ -29,7 +29,7 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 
 ## <a name="to-add-a-cloud-service-or-an-app-service-endpoint-to-a-traffic-manager-profile"></a>クラウド サービスまたは App Service のエンドポイントを Traffic Manager プロファイルに追加するには
 
-1. ブラウザーから [Azure Portal](http://portal.azure.com) にサインインします。
+1. ブラウザーから [Azure Portal](https://portal.azure.com) にサインインします。
 2. ポータルの検索バーで、変更の対象となる **Traffic Manager プロファイル**名を検索し、表示された結果内で Traffic Manager プロファイルをクリックします。
 3. **[Traffic Manager プロファイル]** ブレードの **[設定]** セクションで、**[エンドポイント]** をクリックします。
 4. 表示された **[エンドポイント]** ブレードで、**[追加]** をクリックします。
@@ -49,7 +49,7 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 
 ## <a name="to-disable-an-endpoint"></a>エンドポイントを無効にするには
 
-1. ブラウザーから [Azure Portal](http://portal.azure.com) にサインインします。
+1. ブラウザーから [Azure Portal](https://portal.azure.com) にサインインします。
 2. ポータルの検索バーで、変更の対象となる **Traffic Manager プロファイル**名を検索し、表示された結果内で Traffic Manager プロファイルをクリックします。
 3. **[Traffic Manager プロファイル]** ブレードの **[設定]** セクションで、**[エンドポイント]** をクリックします。 
 4. 無効にするエンドポイントをクリックし、表示された **[エンドポイント]** ブレードの **[編集]** をクリックします。
@@ -58,7 +58,7 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 
 ## <a name="to-enable-an-endpoint"></a>エンドポイントを有効にするには
 
-1. ブラウザーから [Azure Portal](http://portal.azure.com) にサインインします。
+1. ブラウザーから [Azure Portal](https://portal.azure.com) にサインインします。
 2. ポータルの検索バーで、変更の対象となる **Traffic Manager プロファイル**名を検索し、表示された結果内で Traffic Manager プロファイルをクリックします。
 3. **[Traffic Manager プロファイル]** ブレードの **[設定]** セクションで、**[エンドポイント]** をクリックします。 
 4. 無効にするエンドポイントをクリックし、表示された **[エンドポイント]** ブレードの **[編集]** をクリックします。
@@ -67,7 +67,7 @@ Traffic Manager プロファイルを構成する個々のエンドポイント�
 
 ## <a name="to-delete-an-endpoint"></a>エンドポイントを削除するには
 
-1. ブラウザーから [Azure Portal](http://portal.azure.com) にサインインします。
+1. ブラウザーから [Azure Portal](https://portal.azure.com) にサインインします。
 2. ポータルの検索バーで、変更の対象となる **Traffic Manager プロファイル**名を検索し、表示された結果内で Traffic Manager プロファイルをクリックします。
 3. **[Traffic Manager プロファイル]** ブレードの **[設定]** セクションで、**[エンドポイント]** をクリックします。 
 4. 無効にするエンドポイントをクリックし、表示された **[エンドポイント]** ブレードの **[編集]** をクリックします。

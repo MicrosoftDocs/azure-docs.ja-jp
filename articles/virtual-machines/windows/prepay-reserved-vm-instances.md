@@ -11,14 +11,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/14/2018
-ms.author: yashar
-ms.openlocfilehash: 02c54bef1da5972d4bf43cfbedb9a3911bf07f0d
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.date: 04/13/2019
+ms.author: banders
+ms.openlocfilehash: e0fc5935790640cd30bbd52a2d2f93d18a7249f2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307579"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998058"
 ---
 [!INCLUDE [virtual-machines-buy-compute-reservations](../../../includes/virtual-machines-common-prepay-reserved-vm-instances.md)]
-

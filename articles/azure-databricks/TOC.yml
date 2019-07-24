@@ -1,75 +1,78 @@
-items:
 - name: Azure Databricks のドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: Azure Databricks とは
-    href: what-is-azure-databricks.md
+    - name: Azure Databricks とは
+      href: what-is-azure-databricks.md
 - name: クイック スタート
-  items:
-  - name: Databricks ワークスペースの作成 - ポータル
-    href: quickstart-create-databricks-workspace-portal.md
-  - name: Databricks ワークスペースの作成 - Resource Manager テンプレート
-    href: quickstart-create-databricks-workspace-resource-manager-template.md
   expanded: true
+  items:
+    - name: Databricks ワークスペースの作成 - ポータル
+      href: quickstart-create-databricks-workspace-portal.md
+    - name: Databricks ワークスペースの作成 - Resource Manager テンプレート
+      href: quickstart-create-databricks-workspace-resource-manager-template.md
+    - name: Databricks ワークスペースの作成 - 仮想ネットワーク
+      href: quickstart-create-databricks-workspace-vnet-injection.md
 - name: チュートリアル
   items:
-  - name: ETL 操作の実行
-    href: databricks-extract-load-sql-data-warehouse.md
-  - name: Event Hubs を使用したデータのストリーミング
-    href: databricks-stream-from-eventhubs.md
-  - name: Cognitive Services を使用した感情分析
-    href: databricks-sentiment-analysis-cognitive-services.md
-  - name: HDInsight Kafka からのデータのストリーム配信
-    href: https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html
+    - name: Docker コンテナーで稼働している SQL Server に対するクエリ
+      href: vnet-injection-sql-server.md
+    - name: ETL 操作の実行
+      href: databricks-extract-load-sql-data-warehouse.md
+    - name: Event Hubs を使用したデータのストリーミング
+      href: databricks-stream-from-eventhubs.md
+    - name: Cognitive Services を使用した感情分析
+      href: databricks-sentiment-analysis-cognitive-services.md
+    - name: HDInsight Kafka からのデータのストリーム配信
+      href: 'https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html'
 - name: ハウツー ガイド
   items:
-  - name: Spark クラスターの作成
-    href: https://docs.azuredatabricks.net/user-guide/clusters/index.html
-  - name: Notebook の使用
-    href: https://docs.azuredatabricks.net/user-guide/notebooks/index.html
-  - name: Spark ジョブの実行
-    href: https://docs.azuredatabricks.net/user-guide/jobs.html
-  - name: データ ソースへの接続
-    href: databricks-connect-to-data-sources.md
-  - name: Azure Data Factory での使用
-    href: ../data-factory/transform-data-using-databricks-notebook.md
-    maintainContext: true
-  - name: Excel、R、Python を使用した接続
-    href: connect-databricks-excel-python-r.md
-  - name: Azure Cloud Shell からの Databricks CLI の使用
-    href: databricks-cli-from-azure-cloud-shell.md
-  - name: BI ツールの使用
-    href: https://docs.azuredatabricks.net/user-guide/bi/index.html
-  - name: ディザスター リカバリーの計画
-    href: howto-regional-disaster-recovery.md
+    - name: Spark クラスターの作成
+      href: 'https://docs.azuredatabricks.net/user-guide/clusters/index.html'
+    - name: Notebook の使用
+      href: 'https://docs.azuredatabricks.net/user-guide/notebooks/index.html'
+    - name: Spark ジョブの実行
+      href: 'https://docs.azuredatabricks.net/user-guide/jobs.html'
+    - name: データ ソースへの接続
+      href: databricks-connect-to-data-sources.md
+    - name: VNet インジェクションの使用
+      href: vnet-injection.md
+    - name: Azure Data Factory での使用
+      href: ../data-factory/transform-data-using-databricks-notebook.md
+      maintainContext: true
+    - name: Excel、R、Python を使用した接続
+      href: connect-databricks-excel-python-r.md
+    - name: Azure Cloud Shell からの Databricks CLI の使用
+      href: databricks-cli-from-azure-cloud-shell.md
+    - name: BI ツールの使用
+      href: 'https://docs.azuredatabricks.net/user-guide/bi/index.html'
+    - name: ディザスター リカバリーの計画
+      href: howto-regional-disaster-recovery.md
+    - name: MLflow のガイド
+      href: 'https://docs.azuredatabricks.net/applications/mlflow/index.html'
 - name: リファレンス
   items:
-  - name: REST API
-    href: /rest/api/databricks
+    - name: REST API
+      href: /rest/api/databricks
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.databricks/workspaces
 - name: リソース
   items:
-  - name: 一般的な質問
-    href: frequently-asked-questions-databricks.md
-  - name: リリース ノート
-    href: https://docs.azuredatabricks.net/release-notes/index.html
-  - name: Databricks のドキュメント
-    href: https://docs.azuredatabricks.net/user-guide/index.html
-  - name: R 開発者ガイド
-    href: ../machine-learning/r-developers-guide.md
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/?category=analytics
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/databricks/
-  - name: スタック オーバーフロー
-    href: https://stackoverflow.com/questions/tagged/azure-databricks
-  - name: 利用可能なリージョン
-    href: https://azure.microsoft.com/regions/services/
-  - name: サポート オプション
-    href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 87ad5331f017901a8d96e5230e63412a03898823
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036178"
+    - name: 一般的な質問
+      href: frequently-asked-questions-databricks.md
+    - name: リリース ノート
+      href: 'https://docs.azuredatabricks.net/release-notes/index.html'
+    - name: Databricks のドキュメント
+      href: 'https://docs.azuredatabricks.net/user-guide/index.html'
+    - name: R 開発者ガイド
+      href: ../machine-learning/r-developers-guide.md
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=analytics'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/databricks/'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-databricks'
+    - name: 利用可能なリージョン
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: サポート オプション
+      href: 'https://azure.microsoft.com/support/options/'

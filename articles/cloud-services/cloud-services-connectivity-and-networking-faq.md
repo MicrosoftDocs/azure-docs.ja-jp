@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: defd623eff76a4e37a9d88c4f59d2edaa71e34e0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2a46879a6882e6d45e4a7ccce59e4a02feea9005
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227452"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805588"
 ---
-# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の接続とネットワークの問題についてよくあるご質問 (FAQ)
+# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の接続とネットワークの問題:よく寄せられる質問 (FAQ)
 
 この記事では、[Azure Cloud Services](https://azure.microsoft.com/services/cloud-services) の接続とネットワークの問題についてよくあるご質問を紹介します。 サイズについては、[Cloud Services VM サイズのページ](cloud-services-sizes-specs.md)を参照してください。
 
@@ -63,51 +63,52 @@ RDP の設定で構成されている有効期限の日付を無視すると、"
 
 使用される分散アルゴリズムは、使用可能なサーバーにトラフィックをマップする 5 組 (ソース IP、ソース ポート、接続先 IP、接続先ポート、プロトコルの種類) のハッシュです。 これは、トランスポート セッション内でのみ持続性を提供します。 TCP または UDP の同じセッション内のパケットは、負荷分散されたエンドポイントの背後にある同じデータセンターの IP (DIP) インスタンスに送信されます。 クライアントが接続を閉じてからもう一度接続を開くか、同じソース IP から新しいセッションを開始すると、ソース ポートが変更され、トラフィックは別の DIP エンドポイントに送信されます。
 
-## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>自分のクラウド サービスの既定の URL への着信トラフィックをカスタム URL にリダイレクトするにはどうすればよいですか。 
+## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>自分のクラウド サービスの既定の URL への着信トラフィックをカスタム URL にリダイレクトするにはどうすればよいですか。
 
-IIS の URL の書き換えモジュールを使って、クラウド サービスの既定の URL (例: \*.cloudapp.net) への着信トラフィックをカスタムの名前または URL にリダイレクトすることができます。 URL の書き換えモジュールは Web ロール上で既定で有効になっており、そのルールはアプリケーションの web.config に構成されているので、再起動や再イメージ化にかかわりなく、いつでも VM で使用可能です。 詳細については、次を参照してください。
+IIS の URL の書き換えモジュールを使って、クラウド サービスの既定の URL (例: \*.cloudapp.net) への着信トラフィックをカスタムの名前または URL にリダイレクトすることができます。 URL の書き換えモジュールは Web ロール上で既定で有効になっており、そのルールはアプリケーションの web.config に構成されているので、再起動や再イメージ化にかかわりなく、いつでも VM で使用可能です。詳細については、次を参照してください。
 
 - [URL の書き換えモジュールの書き換えルールを作成する](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [既定のリンクを削除する](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
-## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>自分のクラウド サービスの既定の URL への着信トラフィックをブロックまたは無効にするにはどうすればよいですか。 
+## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>自分のクラウド サービスの既定の URL への着信トラフィックをブロックまたは無効にするにはどうすればよいですか。
 
-クラウド サービスの既定の URL または名前 (例: \*.cloudapp.net) への着信トラフィックを防ぐことができます。 そのためには、次のように、クラウド サービス定義 (*.csdef) ファイル内のサイト バインド構成でホスト ヘッダーをカスタムの DNS 名 (例: www.MyCloudService.com) に設定します。 
- 
+クラウド サービスの既定の URL または名前 (例: \*.cloudapp.net) への着信トラフィックを防ぐことができます。 そのためには、次のように、クラウド サービス定義 (*.csdef) ファイル内のサイト バインド構成でホスト ヘッダーをカスタムの DNS 名 (例: www.MyCloudService.com) に設定します。
 
-    <?xml version="1.0" encoding="utf-8"?> 
-    <ServiceDefinition name="AzureCloudServicesDemo" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6"> 
-      <WebRole name="MyWebRole" vmsize="Small"> 
-        <Sites> 
-          <Site name="Web"> 
-            <Bindings> 
-              <Binding name="Endpoint1" endpointName="Endpoint1" hostHeader="www.MyCloudService.com" /> 
-            </Bindings> 
-          </Site> 
-        </Sites> 
-        <Endpoints> 
-          <InputEndpoint name="Endpoint1" protocol="http" port="80" /> 
-        </Endpoints> 
-        <ConfigurationSettings> 
-          <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" /> 
-        </ConfigurationSettings> 
-      </WebRole> 
-    </ServiceDefinition> 
- 
-このホスト ヘッダー バインドは csdef ファイルを介して強制されるため、サービスはカスタム名 "www.MyCloudService.com" を介してのみアクセスできます。 "*.cloudapp.net" ドメインへのすべての着信要求は常に失敗します。 サービス内でカスタム SLB プローブまたは内部ロード バランサーを使用している場合は、サービスの既定の URL や名前をブロックすると、プローブの動作を妨害する可能性があります。 
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="AzureCloudServicesDemo" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
+    <WebRole name="MyWebRole" vmsize="Small">
+        <Sites>
+            <Site name="Web">
+            <Bindings>
+                <Binding name="Endpoint1" endpointName="Endpoint1" hostHeader="www.MyCloudService.com" />
+            </Bindings>
+            </Site>
+        </Sites>
+        <Endpoints>
+            <InputEndpoint name="Endpoint1" protocol="http" port="80" />
+        </Endpoints>
+        <ConfigurationSettings>
+            <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
+        </ConfigurationSettings>
+    </WebRole>
+</ServiceDefinition>
+```
+
+このホスト ヘッダー バインドは csdef ファイルを介して強制されるため、サービスはカスタム名 "www.MyCloudService.com" を介してのみアクセスできます。 "*.cloudapp.net" ドメインへのすべての着信要求は常に失敗します。 サービス内でカスタム SLB プローブまたは内部ロード バランサーを使用している場合は、サービスの既定の URL や名前をブロックすると、プローブの動作を妨害する可能性があります。
 
 ## <a name="how-can-i-make-sure-the-public-facing-ip-address-of-a-cloud-service-never-changes"></a>クラウド サービスのパブリックに公開された IP アドレスが変更されないようにするにはどうすればよいですか。
 
 クラウド サービスのパブリックに公開された IP アドレス (別名、VIP) が変わらないようにして、いくつかの特定のクライアントで習慣的にホワイトリストに登録できるようにするには、予約済み IP を関連付けることをお勧めします。 それ以外の場合、Azure によって提供される仮想 IP は、デプロイを削除するとサブスクリプションから割り当て解除されます。 VIP スワップ操作を成功させるには、運用スロットとステージング スロットの両方について個々の予約済み IP が必要です。 これがないと、スワップ操作は失敗します。 IP アドレスを予約してクラウド サービスに関連付けるには、次の記事を参照してください。
- 
+
 - [既存のクラウド サービスの IP アドレスを予約する](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-- [サービス構成ファイルを使用してクラウド サービスに予約済み IP を関連付ける](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file) 
+- [サービス構成ファイルを使用してクラウド サービスに予約済み IP を関連付ける](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
-お使いのロールに複数のインスタンスがある場合、クラウド サービスに RIP を関連付けることでダウンタイムが発生することはありません。 また、お使いの Azure データセンターの IP 範囲をホワイトリストに登録することができます。 [Microsoft ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=41653)で、Azure IP 範囲の一覧を入手できます。 
+お使いのロールに複数のインスタンスがある場合、クラウド サービスに RIP を関連付けることでダウンタイムが発生することはありません。また、お使いの Azure データセンターの IP 範囲をホワイトリストに登録することができます。[Microsoft ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=41653)で、Azure IP 範囲の一覧を入手できます。
 
-このファイルには、Azure データセンターで使用される IP アドレス範囲 (計算、SQL、およびストレージの範囲を含む) が含まれています。 毎週投稿される最新のファイルには、現在デプロイされている範囲と今後変更される IP 範囲が反映されています。 このファイルに現れる新しい範囲は、少なくとも 1 週間はデータセンターで使用されません。 Azure で実行されているサービスを正しく識別するために、毎週新しい xml ファイルをダウンロードし、サイトで必要な変更を実行してください。 Azure ExpressRoute ユーザーは、このファイルを使用して、毎月第 1 週に Azure 領域の BGP アドバタイズが更新されていることに気付くかもしれません。 
+このファイルには、Azure データセンターで使用される IP アドレス範囲 (計算、SQL、およびストレージの範囲を含む) が含まれています。 毎週投稿される最新のファイルには、現在デプロイされている範囲と今後変更される IP 範囲が反映されています。 このファイルに現れる新しい範囲は、少なくとも 1 週間はデータセンターで使用されません。 Azure で実行されているサービスを正しく識別するために、毎週新しい xml ファイルをダウンロードし、サイトで必要な変更を実行してください。 Azure ExpressRoute ユーザーは、このファイルを使用して、毎月第 1 週に Azure 領域の BGP アドバタイズが更新されていることに気付くかもしれません。
 
-## <a name="how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services"></a>Azure Resource Manager 仮想ネットワークをクラウド サービスと共に使用するにはどうすればよいですか。 
+## <a name="how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services"></a>Azure Resource Manager 仮想ネットワークをクラウド サービスと共に使用するにはどうすればよいですか。
 
 クラウド サービスを Azure Resource Manager 仮想ネットワークに配置することはできません。 Resource Manager 仮想ネットワークと従来のデプロイ仮想ネットワークは、ピアリングによって接続できます。 詳細については、「[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)」をご覧ください。
 
@@ -116,13 +117,15 @@ IIS の URL の書き換えモジュールを使って、クラウド サービ�
 
 次の PS スクリプトを使用してお使いのサブスクリプションのクラウド サービスのパブリック IP の一覧を取得します。
 
-    $services = Get-AzureService  | Group-Object -Property ServiceName
+```powershell
+$services = Get-AzureService  | Group-Object -Property ServiceName
 
-    foreach ($service in $services) 
-    {
-        "Cloud Service '$($service.Name)'"
+foreach ($service in $services)
+{
+    "Cloud Service '$($service.Name)'"
 
-        $deployment = Get-AzureDeployment -ServiceName $service.Name 
-        "VIP - " +  $deployment.VirtualIPs[0].Address
-        "================================="
-    }
+    $deployment = Get-AzureDeployment -ServiceName $service.Name
+    "VIP - " +  $deployment.VirtualIPs[0].Address
+    "================================="
+}
+```

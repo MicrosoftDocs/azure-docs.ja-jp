@@ -1,18 +1,18 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ceab905b2baf87446238d44151146b5066e55335
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 1ed169d248fce28a668c1c93fe2d9796b59547bd
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079742"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619222"
 documentType: LandingData
-title: Azure portal のカスタマイズのドキュメント
+title: Azure Portal のドキュメント
 metadata:
-  description: Azure portal のカスタマイズ方法について説明します。
+  description: Azure portal を使用してカスタム ダッシュボードを作成する方法について説明します。
   services: azure portal
   documentationcenter: ''
-  author: cwatson-cat
-  manager: dougeby
+  author: kfollis
+  manager: mtillman
   editor: ''
   ms.assetid: 3e12c488-9c8c-4d0d-9b07-e018dec42fc6
   ms.service: azure-portal
@@ -21,7 +21,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.workload: na
   ms.date: 10/08/2018
-  ms.author: cwatson
+  ms.author: kfollis
 abstract:
   description: Azure portal は Web ベースの統合コンソールで、簡単な Web アプリから複雑なクラウド アプリケーションまですべてを構築、管理、監視することができます。 これには、カスタマイズ可能なダッシュボードとユーザー補助オプションが用意されています。
 sections:

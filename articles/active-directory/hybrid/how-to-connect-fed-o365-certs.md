@@ -4,23 +4,24 @@ description: この記事では、証明書の更新を通知する電子メー�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 543b7dc1-ccc9-407f-85a1-a9944c0ba1be
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/20/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 311c16ba0c6b3378fd743b77e263a5d91f8b6a37
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d98a1aabef2de505e66b2127226b9e89cd791e20
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237097"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58883447"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Office 365 および Azure Active Directory 用のフェデレーション証明書の更新
 ## <a name="overview"></a>概要
@@ -35,7 +36,7 @@ Azure Active Directory (Azure AD) と Active Directory Federation Services (AD F
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>トークン署名証明書に使用する AD FS の既定の構成
 通常、トークン署名証明書とトークン暗号化解除証明書は自己署名証明書であり、有効期間は 1 年です。 AD FS には **AutoCertificateRollover**と呼ばれる自動更新プロセスが既定で含まれています。 AD FS 2.0 以降を使用している場合、Office 365 と Azure AD では、証明書は期限切れになる前に自動的に更新されます。
 
-### <a name="renewal-notification-from-the-office-365-portal-or-an-email"></a>Office 365 ポータルまたは電子メールからの更新通知
+### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>Microsoft 365 管理センターからの更新の通知またはメール
 > [!NOTE]
 > Office の証明書を更新するよう求める電子メールまたはポータル通知が届いた場合は、 [トークン署名証明書に対する変更の管理](#managecerts) についての記載を参照して、何らかの対処が必要かどうかを確認してください。 実際には対処が不要であるにもかかわらず証明書の更新を求める通知が送信される問題が確認されています。
 >
@@ -43,8 +44,8 @@ Azure Active Directory (Azure AD) と Active Directory Federation Services (AD F
 
 Azure AD は、フェデレーション メタデータを監視し、その結果に応じてトークン署名証明書の更新を試みます。 トークン署名証明書の有効期限が切れる 30 日前に、Azure AD がフェデレーション メタデータをポーリングして新しい証明書が利用可能かどうかをチェックします。
 
-* フェデレーション メタデータをポーリングして新しい証明書を取得できた場合は、電子メール通知も Office 365 ポータルの警告もユーザーには送信されません。
-* フェデレーション メタデータにアクセスできないか、証明書の自動ロールオーバーが有効になっていないことが原因で、新しいトークン署名証明書を取得できない場合は、Azure AD によって、Office 365 ポータルで電子メール通知と警告が発行されます。
+* フェデレーション メタデータをポーリングして新しい証明書を取得できた場合は、Microsoft 365 管理センターでのメール通知も警告もユーザーには送信されません。
+* フェデレーション メタデータにアクセスできないか、証明書の自動ロールオーバーが有効になっていないことが原因で、新しいトークン署名証明書を取得できない場合は、Azure AD によって、Microsoft 365 管理センターでメール通知と警告が発行されます。
 
 ![Office 365 portal notification](./media/how-to-connect-fed-o365-certs/notification.png)
 
@@ -58,7 +59,7 @@ Azure AD は、フェデレーション メタデータを監視し、その結�
 >
 
 ## 証明書の更新が必要かどうかを確認する <a name="managecerts"></a>
-### <a name="step-1-check-the-autocertificaterollover-state"></a>手順 1: AutoCertificateRollover の状態を確認する
+### <a name="step-1-check-the-autocertificaterollover-state"></a>手順 1:AutoCertificateRollover の状態を確認する
 AD FS サーバーで PowerShell を開きます。 AutoCertificateRollover の値が True に設定されていることを確認します。
 
     Get-Adfsproperties
@@ -68,7 +69,7 @@ AD FS サーバーで PowerShell を開きます。 AutoCertificateRollover の�
 >[!NOTE] 
 >AD FS 2.0 を使用している場合は、最初に Add-Pssnapin Microsoft.Adfs.Powershell を実行してください。
 
-### <a name="step-2-confirm-that-ad-fs-and-azure-ad-are-in-sync"></a>手順 2: AD FS と Azure AD が同期されていることを確認する
+### <a name="step-2-confirm-that-ad-fs-and-azure-ad-are-in-sync"></a>手順 2:AD FS と Azure AD が同期されていることを確認する
 AD FS Server で MSOnline PowerShell プロンプトを開き、Azure AD に接続します。
 
 > [!NOTE]
@@ -92,13 +93,13 @@ AD FS と Azure AD との間の信頼関係のプロパティで証明書が構�
 
 両方の出力結果において拇印が一致した場合、Azure AD 側と証明書が同期されています。
 
-### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>手順 3: 証明書の有効期限が迫っているかどうかを確認する
+### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>手順 3:証明書の有効期限が迫っているかどうかを確認する
 Get-MsolFederationProperty または Get-AdfsCertificate の出力結果で、"有効期間の終了時刻" の日付を確認します。 今日の日付から 30 日未満である場合、期限切れに対処する必要があります。
 
 | AutoCertificateRollover | Azure AD 側と証明書が同期されている | フェデレーション メタデータにパブリックにアクセス可能 | 有効期限までの日数 | Action |
 |:---:|:---:|:---:|:---:|:---:|
-| [はい] |はい |[はい] |- |対処は必要ありません。 「 [トークン署名証明書を自動的に更新する](#autorenew)」を参照してください。 |
-| [はい] |いいえ  |- |15 日未満 |すぐに更新してください。 「 [トークン署名証明書を手動で更新する](#manualrenew)」を参照してください。 |
+| はい |はい |はい |- |対処は必要ありません。 「 [トークン署名証明書を自動的に更新する](#autorenew)」を参照してください。 |
+| はい |いいえ  |- |15 日未満 |すぐに更新してください。 「 [トークン署名証明書を手動で更新する](#manualrenew)」を参照してください。 |
 | いいえ  |- |- |30 日未満 |すぐに更新してください。 「 [トークン署名証明書を手動で更新する](#manualrenew)」を参照してください。 |
 
 \[-] 該当せず
@@ -113,11 +114,11 @@ Get-MsolFederationProperty または Get-AdfsCertificate の出力結果で、"�
 
 **1.AD FS の AutoCertificateRollover プロパティが True に設定されている。** これは、有効期限が切れる前に、AD FS が新しいトークン署名証明書とトークン暗号化解除証明書を自動的に生成することを示します。
 
-**2.AD FS のフェデレーション メタデータへのパブリック アクセスが確保されている。** (社内ネットワークの外部の) パブリック インターネット上のコンピューターで次の URL に移動して、フェデレーション メタデータにパブリックにアクセスできることを確認します。
+**2.AD FS のフェデレーション メタデータへのパブリック アクセスが確保されている。**  (社内ネットワークの外部の) パブリック インターネット上のコンピューターで次の URL に移動して、フェデレーション メタデータにパブリックにアクセスできることを確認します。
 
 https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
-この `(your_FS_name) `は、fs.contoso.com など、組織で使用しているフェデレーション サービスのホスト名に置き換えます。  どちらの設定も適切であることを確認できた場合、他の作業は不要です。  
+この `(your_FS_name)` は、fs.contoso.com など、組織で使用しているフェデレーション サービスのホスト名に置き換えます。  どちらの設定も適切であることを確認できた場合、他の作業は不要です。  
 
 例: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
 ## トークン署名証明書を手動で更新する <a name="manualrenew"></a>
@@ -128,7 +129,7 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
 このようなシナリオでは、トークン署名証明書を更新するたびに、PowerShell コマンド Update-MsolFederatedDomain を使って Office 365 ドメインも更新する必要があります。
 
-### <a name="step-1-ensure-that-ad-fs-has-new-token-signing-certificates"></a>手順 1: AD FS のトークン署名証明書を更新する
+### <a name="step-1-ensure-that-ad-fs-has-new-token-signing-certificates"></a>手順 1:AD FS のトークン署名証明書が新しいことを確認する
 **既定の構成が変更されている場合**
 
 AD FS の既定の構成が変更されている (**AutoCertificateRollover** が **False** に設定されている) 場合、(自己署名ではない) カスタムの証明書が使用されていると考えられます。 AD FS トークン署名証明書の更新方法の詳細については、「 [AD FS 自己署名証明書を使用しないお客様へのガイダンス](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert)」を参照してください。
@@ -149,11 +150,11 @@ AD FS の既定の構成が変更されている (**AutoCertificateRollover** �
 3. コマンドの出力に表示されたすべての証明書を確認します。 新しい証明書が AD FS によって生成されている場合は、出力に 2 つの証明書が表示されます。1 つは **IsPrimary** 値が **True** で **NotAfter** の日付が 5 日以内、もう 1 つは **IsPrimary** 値が **False** で **NotAfter** の日付が約 1 年後です。
 4. 証明書が 1 つしか表示されず、その **NotAfter** の日付が 5 日以内の場合は、新しい証明書を生成する必要があります。
 5. 新しい証明書を生成するには、PowerShell コマンド プロンプトで次のコマンドを実行します: `PS C:\>Update-ADFSCertificate –CertificateType token-signing`。
-6. 次のコマンドを再度実行して、更新内容を確認します。PS C:\>Get-ADFSCertificate –CertificateType token-signing
+6. 次のコマンドを再実行して更新を確認します。PS C:\>Get-ADFSCertificate –CertificateType token-signing
 
 これで、2 つの証明書が表示されます。1 つは **NotAfter** の日付が約 1 年後で、**IsPrimary** の値が **False** です。
 
-### <a name="step-2-update-the-new-token-signing-certificates-for-the-office-365-trust"></a>手順 2: Office 365 の信頼を得るために新しいトークン署名証明書を更新する
+### <a name="step-2-update-the-new-token-signing-certificates-for-the-office-365-trust"></a>手順 2:Office 365 の信頼のために新しいトークン署名証明書を更新する
 次のように、信頼に使用できるように、新しいトークン署名証明書で Office 365 を更新します。
 
 1. Windows PowerShell 用 Microsoft Azure Active Directory モジュールを開きます。

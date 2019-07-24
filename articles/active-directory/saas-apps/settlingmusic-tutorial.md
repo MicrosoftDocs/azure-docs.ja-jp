@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と楽楽精算の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と楽楽精算の統合 | Microsoft Docs
 description: Azure Active Directory と楽楽精算の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 6f86a8a2-4bd0-40cc-b1b4-752fce123328
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: jeedes
-ms.openlocfilehash: fda6ca2efb670c8087252428e417a3e0901fa748
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0b7dee41b226cdacea1d9c7f1cf581d9f095977e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449065"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190774"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-settling-music"></a>チュートリアル: Azure Active Directory と楽楽精算の統合
+# <a name="tutorial-azure-active-directory-integration-with-settling-music"></a>チュートリアル:Azure Active Directory と楽楽精算の統合
 
 このチュートリアルでは、楽楽精算と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -151,7 +152,7 @@ Azure AD への楽楽精算の統合を構成するには、ギャラリーか�
 
     c. **[ID プロバイダーのログアウト URL]** ボックスに、Azure portal からコピーした **サインアウト URL** の値を貼り付けます。
 
-    d. **[Choose File]** をクリックして、Azure portal からダウンロードした**証明書 (Base64)** をアップロードします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Choose File]** をクリックして、Azure portal からダウンロードした**証明書 (Base64)** をアップロードします。
 
     e. **[保存]** ボタンをクリックします。
 
@@ -185,11 +186,11 @@ Azure AD への楽楽精算の統合を構成するには、ギャラリーか�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-settling-music-test-user"></a>楽楽精算テスト ユーザーの作成
 
-このセクションでは、楽楽精算で Britta Simon というユーザーを作成します。 [楽楽精算クライアント サポート チーム](https://rakurakuseisan.jp/)と連携し、楽楽精算プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、楽楽精算で Britta Simon というユーザーを作成します。  [楽楽精算クライアント サポート チーム](https://rakurakuseisan.jp/)と連携し、楽楽精算プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -226,7 +227,7 @@ Azure AD への楽楽精算の統合を構成するには、ギャラリーか�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [楽楽精算] タイルをクリックすると、自動的に楽楽精算アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

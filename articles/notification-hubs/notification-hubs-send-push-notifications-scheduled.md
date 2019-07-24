@@ -4,8 +4,8 @@ description: このトピックでは、Azure Notification Hubs でスケジュ�
 services: notification-hubs
 documentationcenter: .net
 keywords: プッシュ通知,プッシュ通知,プッシュ通知のスケジュール設定
-author: dimazaid
-manager: kpiteira
+author: jwargo
+manager: patniko
 editor: spelluru
 ms.assetid: 6b718c75-75dd-4c99-aee3-db1288235c1a
 ms.service: notification-hubs
@@ -13,27 +13,43 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/14/2018
-ms.author: dimazaid
-ms.openlocfilehash: 0f4055a11d22604c0936685a7a2be3d56b259a5b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 01/04/2019
+ms.author: jowargo
+ms.openlocfilehash: af0de9e8c18644f4ae200f6546c0dd0a41320f9f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776979"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471839"
 ---
-# <a name="how-to-send-scheduled-notifications"></a>方法: スケジュール設定された通知の送信
-## <a name="overview"></a>概要
+# <a name="how-to-send-scheduled-notifications"></a>方法:スケジュール設定された通知を送信する
+
 未来のある時点で通知を送信することが必要なシナリオに対して、通知を送信するためのバックエンド コードの簡単なウェイクアップ方法がないような場合、 Standard レベルの通知ハブは、通知を最大 7 日先までスケジュールできる機能をサポートしています。
 
-通知を送信する場合は、次の例に示すように Notification Hubs SDK の [ScheduledNotification](https://msdn.microsoft.com/library/microsoft.azure.notificationhubs.schedulednotification.aspx) クラスを使用します。
 
-    Notification notification = new AppleNotification("{\"aps\":{\"alert\":\"Happy birthday!\"}}");
-    var scheduled = await hub.ScheduleNotificationAsync(notification, new DateTime(2014, 7, 19, 0, 0, 0));
+## <a name="schedule-your-notifications"></a>通知をスケジュール設定する
+通知を送信する場合は、次の例に示すように Notification Hubs SDK の [`ScheduledNotification` クラス](https://msdn.microsoft.com/library/microsoft.azure.notificationhubs.schedulednotification.aspx)を使用します。
 
+```c#
+Notification notification = new AppleNotification("{\"aps\":{\"alert\":\"Happy birthday!\"}}");
+var scheduled = await hub.ScheduleNotificationAsync(notification, new DateTime(2014, 7, 19, 0, 0, 0));
+```
+
+## <a name="cancel-scheduled-notifications"></a>スケジュールされた通知を取り消す
 また、既にスケジュール設定されている通知を、その notificationId を使用して取り消すこともできます。
 
-    await hub.CancelNotificationAsync(scheduled.ScheduledNotificationId);
+```c#
+await hub.CancelNotificationAsync(scheduled.ScheduledNotificationId);
+```
 
 スケジュール設定された、送信可能な通知の数に制限はありません。
 
+## <a name="next-steps"></a>次の手順
+
+次のチュートリアルを参照してください。
+
+ - [すべての登録済みデバイスにプッシュ通知を送信する](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
+ - [特定のデバイスにプッシュ通知を送信する](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md)
+ - [ローカライズしたプッシュ通知を送信する](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
+ - [特定のユーザーにプッシュ通知を送信する](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) 
+ - [場所に基づいたプッシュ通知を送信する](notification-hubs-push-bing-spatial-data-geofencing-notification.md)

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 10/3/2018
 ms.author: genli
-ms.openlocfilehash: fadff0e3cab98f7b0aa69a6fe29c3d9ace31face
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 1fdf195e5d02c9264bf24d9cf3ac8b1a47ed850b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465493"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878032"
 ---
 # <a name="troubleshooting-azure-virtual-machines"></a>Azure Virtual Machines のトラブルシューティング
 
@@ -61,7 +61,7 @@ ms.locfileid: "49465493"
     - [Windows](troubleshoot-deploy-vm-windows.md)
 - [デバイス名が変更されている](troubleshoot-device-names-problems.md)
 - VM の復旧方法
-    - Windows
+    -  Windows
         - [PowerShell](troubleshoot-recovery-disks-windows.md)
         - [Azure Portal](troubleshoot-recovery-disks-portal-windows.md)
     - Linux

@@ -1,5 +1,5 @@
 ---
-title: コグニティブ検索のドキュメント リソース (Azure Search) | Microsoft Docs
+title: コグニティブ検索のドキュメント リソース - Azure Search
 description: Azure Search でのコグニティブ検索ワークロードに関する記事、チュートリアル、サンプル、およびブログ記事の注釈付きの一覧です。
 services: search
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: heidist
-ms.openlocfilehash: bad73d2bf8bdf4adee4ce6e40550e506a35a2083
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: seodec2018
+ms.openlocfilehash: 609b5d990cffce10733f6fc82e6b1032ad0f06bb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165679"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314603"
 ---
 # <a name="documentation-resources-for-cognitive-search-workloads"></a>コグニティブ検索ワークロードに関するドキュメント リソース
 
@@ -24,8 +25,8 @@ ms.locfileid: "49165679"
 
 ## <a name="getting-started"></a>使用の開始
 + [コグニティブ検索とは](cognitive-search-concept-intro.md)
-+ [クイック スタート: ポータルでコグニティブ検索を使ってみる](cognitive-search-quickstart-blob.md)
-+ [チュートリアル: コグニティブ検索 API について学習する](cognitive-search-tutorial-blob.md)
++ [クイック スタート:ポータルでコグニティブ検索を使ってみる](cognitive-search-quickstart-blob.md)
++ [チュートリアル:コグニティブ検索 API について学習する](cognitive-search-tutorial-blob.md)
 + [例: カスタム スキルの作成](cognitive-search-create-custom-skill-example.md)
 
 ## <a name="how-to-guidance"></a>使用方法に関するガイダンス

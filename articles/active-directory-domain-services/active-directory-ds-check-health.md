@@ -4,23 +4,23 @@ description: Azure Portal の正常性ページを使用して、マネージド
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: a9248e2310e509bbc4f527608246b47543a03fc4
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 03cbf5dd466af5413aee5e0f5f285bc53de292ad
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502179"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160155"
 ---
 # <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインの正常性を確認する
 
@@ -32,7 +32,7 @@ Azure Portal の正常性ページを使用して、マネージド ドメイン
 2. 正常性を表示するドメインをクリックします。
 3. 左側のナビゲーション ウィンドウで、**[正常性]** をクリックします。
 
-次の図は、正常性ページの例を示しています。![正常性ページの例](.\media\active-directory-domain-services-alerts\health-page.png)
+次の図は、正常性ページの例を示しています。![正常性ページの例](./media/active-directory-domain-services-alerts/health-page.png)
 
 >[!NOTE]
 > マネージド ドメインの正常性は 1 時間ごとに評価されます。 マネージド ドメインに変更を加えたら、次の評価サイクルで、マネージド ドメインの更新された正常性が表示されるまで待ちます。 右上隅にある "最終評価" タイムスタンプは、マネージド ドメインの正常性が最後に評価された日時を示しています。
@@ -43,16 +43,16 @@ Azure Portal の正常性ページを使用して、マネージド ドメイン
 
 | Status | アイコン | 説明 |
 | --- | :----: | --- |
-| 実行中 | <img src= ".\media\active-directory-domain-services-alerts\running-icon.png" width = "15"> | マネージド ドメインはスムーズに実行されています。重大なアラートまたは警告アラートはありません。 このドメインでは、情報アラートが発生している場合があります。 |
-| 要注意 (警告) | <img src= ".\media\active-directory-domain-services-alerts\warning-icon.png" width = "15"> | マネージド ドメインに重大なアラートはありませんが、対処する必要がある 1 つ以上の警告アラートがあります。 |
-| 要注意 (重大) | <img src= ".\media\active-directory-domain-services-alerts\critical-icon.png" width = "15"> | マネージド ドメインに 1 つ以上の重大なアラートがあります。 警告/情報アラートが発生している場合もあります。 |
-| デプロイ中 | <img src= ".\media\active-directory-domain-services-alerts\deploying-icon.png" width = "15"> | ドメインはデプロイ中です。 |
+| 実行中 | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15"> | マネージド ドメインはスムーズに実行されています。重大なアラートまたは警告アラートはありません。 このドメインでは、情報アラートが発生している場合があります。 |
+| 要注意 (警告) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15"> | マネージド ドメインに重大なアラートはありませんが、対処する必要がある 1 つ以上の警告アラートがあります。 |
+| 要注意 (重大) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15"> | マネージド ドメインに 1 つ以上の重大なアラートがあります。 警告/情報アラートが発生している場合もあります。 |
+| デプロイ中 | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15"> | ドメインはデプロイ中です。 |
 
 ## <a name="monitors"></a>モニター
 モニターは、Azure AD Domain Services が定期的に監視するマネージド ドメインの諸側面です。 モニターを正常な状態に保つには、マネージド ドメインのアクティブなアラートを解決するのが最も効果的です。
 
 Azure AD Domain Services の現在の監視対象を次に示します。
- - Backup
+ - バックアップ
  - Azure AD での同期
 
 ### <a name="the-backup-monitor"></a>"バックアップ" モニター
@@ -74,14 +74,11 @@ Azure AD Domain Services を実行するために対処する必要がある、�
 ### <a name="alert-severity"></a>アラートの重大度
 アラートの重大度は、重大、警告、情報の 3 つのレベルに分類されます。
 
- * 
-  **重大なアラート**は、マネージド ドメインに深刻な影響を与える問題です。 このアラートには直ちに対処する必要があります。Microsoft は、マネージド ドメインに対する監視、管理、修正プログラムの適用、および同期を実行できません。 
- * 
-  **警告アラート**は、将来的にマネージド ドメインに影響を与える可能性のある問題を通知します。 このアラートは、マネージド ドメインをセキュリティで保護するための推奨事項を提供します。
+ * **重大なアラート**は、マネージド ドメインに深刻な影響を与える問題です。 このアラートには直ちに対処する必要があります。Microsoft は、マネージド ドメインに対する監視、管理、修正プログラムの適用、および同期を実行できません。 
+ * **警告アラート**は、将来的にマネージド ドメインに影響を与える可能性のある問題を通知します。 このアラートは、マネージド ドメインをセキュリティで保護するための推奨事項を提供します。
  * **情報アラート**は通知であり、ドメインに悪影響を及ぼすことはありません。 情報アラートの目的は、ドメインおよび Azure AD Domain Services の状況に関する情報を提供することです。
 
 ## <a name="next-steps"></a>次の手順
-- 
-  [マネージド ドメインのアラートを解決する](active-directory-ds-troubleshoot-alerts.md)
+- [マネージド ドメインのアラートを解決する](active-directory-ds-troubleshoot-alerts.md)
 - [Azure AD Domain Services の詳細を確認する](active-directory-ds-overview.md)
 - [製品チームに連絡する](active-directory-ds-contact-us.md)

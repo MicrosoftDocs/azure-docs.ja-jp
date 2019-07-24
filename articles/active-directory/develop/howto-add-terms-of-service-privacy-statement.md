@@ -1,5 +1,5 @@
 ---
-title: Azure AD アプリのサービス利用規約とプライバシーに関する声明 | Microsoft Docs
+title: アプリのサービス利用規約とプライバシーに関する声明 | Azure
 description: Azure AD を使用するために登録されているアプリに対してサービス利用規約とプライバシーに関する声明を設定する方法について説明します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -16,14 +16,15 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 2195a43665f99e8388b13fc6dc3e528496bd3901
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 97728fa70f0c5f58510e0e68d27a379b20887703
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242689"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59500302"
 ---
-# <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>登録済み Azure Active Directory アプリのサービス利用規約とプライバシーに関する声明
+# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>方法:アプリのサービス利用規約とプライバシーに関する声明を構成する
 
 Azure Active Directory (Azure AD) アカウントおよび Microsoft アカウントと統合されているアプリをビルドして管理する開発者は、アプリのサービス利用規約とプライバシーに関する声明へのリンクを含める必要があります。 サービス利用規約とプライバシーに関する声明は、ユーザーの同意エクスペリエンスからユーザーに提示されます。 これは、ユーザーがアプリを信頼できることを知るのに役立ちます。 サービス利用規約とプライバシーに関する声明は、ユーザー向けマルチテナント アプリに特に重要です。アプリは複数のディレクトリによって使用され、すべての Microsoft アカウントで利用できます。
 
@@ -46,7 +47,7 @@ Azure Active Directory (Azure AD) アカウントおよび Microsoft アカウ�
 | ガイドライン     | 説明                           |
 |---------------|---------------------------------------|
 | 形式        | 有効な URL                             |
-| 有効なスキーマ | HTTP および HTTPS</br>HTTPS を推奨 |
+| 有効なスキーマ | HTTP および HTTPS<br/>HTTPS を推奨 |
 | 最大長    | 2048 文字                       |
 
 例: `https://myapp.com/terms-of-service`、`https://myapp.com/privacy-statement`
@@ -64,10 +65,10 @@ Azure Active Directory (Azure AD) アカウントおよび Microsoft アカウ�
 
 Azure portal でアプリを登録した場合、次の手順に従います。
 
-1.  [Azure portal](https://portal.azure.com/) にサインインします。
-2. [ **アプリの登録**] セクションに移動して、自分のアプリを選択します。  
-3. アプリの **[プロパティ]** セクションを開きます。
-4. [ **サービス利用規約 URL** ]と **[プライバシーに関する声明 URL]** フィールドに入力します。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+2. **[アプリの登録]** セクションに移動して、自分のアプリを選択します。
+3. アプリの **[プロパティ]** セクションを開きます。
+4. **[サービス利用規約 URL]** と **[プライバシーに関する声明 URL]** フィールドを入力します。
 5. 変更を保存します。
 
     ![サービス利用規約 URL とプライバシーに関する声明 URL を含むアプリのプロパティ セクション](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
@@ -76,9 +77,9 @@ Azure portal でアプリを登録した場合、次の手順に従います。
 
 アプリケーション登録ポータルまたはデベロッパー センターでアプリを登録した場合、次の手順に従います。
 
-1.  [アプリケーション登録ポータル](https://apps.dev.microsoft.com/)にサインインします。
-2. 自分のアプリを選択して、 **[プロファイル]**  セクションまでスクロールします。
-3. [ **サービス利用規約 URL** ]と **[プライバシーに関する声明 URL]** フィールドに入力します。
+1. [アプリケーション登録ポータル](https://apps.dev.microsoft.com/)にサインインします。
+2. 自分のアプリを選択して、**[プロファイル]** セクションまでスクロールします。
+3. **[サービス利用規約 URL]** と **[プライバシーに関する声明 URL]** フィールドを入力します。
 4. 変更を保存します。
 
     ![サービス利用規約 URL とプライバシーに関する声明 URL を含むアプリのプロファイル セクション](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)

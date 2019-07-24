@@ -1,38 +1,38 @@
 ---
-title: 'クイック スタート: C# で検索を実行する - Bing Web Search API'
+title: クイック スタート:C# を使用して Web 検索を実行する - Bing Web Search REST API
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、C# を使用して Bing Web Search API を初めて呼び出し、JSON 応答を受け取る方法について説明します。
+description: このクイック スタートを使用して、C# を使って Bing Web Search REST API に要求を送信し、JSON 応答を受信します
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 8/16/2018
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: d868bec1e19ddde556f3c387646c5d7aa898b7d9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 871cca9fe2b3ff50202feb4925a267b93d432700
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313488"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842075"
 ---
-# <a name="quickstart-use-c-to-call-the-bing-web-search-api"></a>クイック スタート: C# を使用して Bing Web Search API を呼び出す  
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>クイック スタート:Bing Web Search REST API と C# を使用して Web を検索する
 
-このクイック スタートを使用すると、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。  
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
-
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
+このクイック スタートを使用すると、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 この C# アプリケーションは、API に検索要求を送信してその応答を表示します。 このアプリケーションは C# で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 ## <a name="prerequisites"></a>前提条件
+
 このクイック スタートを実行するには、以下のものが必要です。
 
-* Windows: [Visual Studio 2017](https://www.visualstudio.com/downloads/)
-* Linux/macOS: [Mono](http://www.mono-project.com/)  
+* Windows:[Visual Studio 2017](https://www.visualstudio.com/downloads/)
+* Linux/macOS:[モノラル](https://www.mono-project.com/)  
 * サブスクリプション キー
 
 このサンプル プログラムは、.NET Core クラスのみを使用します。
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-declare-dependencies"></a>プロジェクトの作成と依存関係の宣言
 
@@ -62,7 +62,7 @@ namespace BingSearchApisQuickstart
 
 ## <a name="define-variables"></a>変数の定義
 
-先に進む前に、いくつかの変数を設定する必要があります。 `uriBase` が有効であることを確認し、`accessKey` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `searchTerm` の値を置き換えると、検索クエリを自由にカスタマイズすることができます。
+先に進む前に、いくつかの変数を設定する必要があります。 `uriBase` が有効であることを確認し、`accessKey` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `searchTerm` の値を置き換えると、検索クエリを自由にカスタマイズすることができます。 前述のように、忘れずにこのコードを `Program` クラスに追加してください。
 
 ```csharp
 // Enter a valid subscription key.
@@ -78,7 +78,7 @@ const string searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="declare-the-main-method"></a>Main メソッドの宣言
 
-`Main()` は必須であり、プログラムの起動時に最初に呼び出されるメソッドです。 このアプリケーションでは、main メソッドが `accessKey` の検証、要求の実行、および応答の出力を行います。
+`Main()` メソッドは必須であり、プログラムの起動時に最初に呼び出されるメソッドです。 このアプリケーションでは、main メソッドが `accessKey` の検証、要求の実行、および応答の出力を行います。
 
 `main()` は次のいくつかのセクションで作成されるメソッドに依存していることに注意してください。
 

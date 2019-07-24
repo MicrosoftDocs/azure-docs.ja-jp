@@ -4,20 +4,21 @@ titleSuffix: Azure Cognitive Services
 description: Azure 上の Microsoft Cognitive Services で Microsoft Translator Text API の使用をすぐに開始するために役立つ Go REST ベースの情報とコード サンプルを提供します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 02/13/2019
 ms.author: diberry
-ms.openlocfilehash: b9451d51bf0c0c684cebf89ad448b66fee59d9ea
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.custom: seodec18
+ms.openlocfilehash: f16909a9504b2868c1eecf849b9a1fd537cd6048
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210705"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244260"
 ---
-# <a name="qna-maker-rest-api-with-go"></a>Go での QnA Maker REST API 
+# <a name="how-to-use-the-qna-maker-rest-api-with-go"></a>Go で QnA Maker REST API を使用する方法 
 <a name="HOLTop"></a>
 
 この記事では、Go で [Microsoft QnA Maker API](../Overview/overview.md)  を使用し、次を行う方法について説明します。
@@ -34,8 +35,8 @@ ms.locfileid: "50210705"
 - [サポート技術情報を削除します。](#Delete)
 - [現在のエンドポイント キーを取得します。](#GetKeys)
 - [現在のエンドポイント キーを再生成します。](#PutKeys)
-- [現在の一連の単語変更を取得します。](#GetAlterations)
-- [現在の一連の単語変更を置換します。](#PutAlterations)
+- [大文字と小文字が区別される、現在の一連の単語変更を取得します。](#GetAlterations)
+- [大文字と小文字が区別される、現在の一連の単語変更を置換します。](#PutAlterations)
 
 ## <a name="prerequisites"></a>前提条件
 

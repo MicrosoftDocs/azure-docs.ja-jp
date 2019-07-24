@@ -1,5 +1,4 @@
 - name: Translator Speech API のドキュメント
-  href: index.yml
 - name: 概要
   items:
     - name: Translator Speech API について
@@ -24,14 +23,10 @@
   items:
     - name: GitHub のサンプル
       href: 'https://aka.ms/TranslatorGitHub'
-- name: ハウツー ガイド
-  items:
-    - name: Translator Speech API へのサインアップ
-      href: translator-speech-how-to-signup.md
 - name: リファレンス
   href: reference.md
   items:
-    - name: 言語
+    - name: Languages
       href: languages-reference.md
 - name: リソース
   items:

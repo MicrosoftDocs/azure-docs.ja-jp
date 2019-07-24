@@ -3,21 +3,22 @@ title: Azure AD Connect と Azure AD Connect Health のインストール ロー
 description: このドキュメントでは、Azure AD Connect および Connect Health のインストールに使用できるインストール オプションとパスの概要について説明します。
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 09/18/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5da946ff0c9bdda91668999db2fccdd12a67c0d2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ee64fe8643362c6a75e288d78e163317fd8a44d8
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253195"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193155"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect と Azure AD Connect Health のインストール ロードマップ
 
@@ -45,17 +46,17 @@ Azure AD Connect は [Microsoft ダウンロード センター](https://go.micr
 |Express 設定を使用したインストール | [Azure AD Connect の高速インストール](./how-to-connect-install-express.md)|
 |カスタマイズした設定を使用したインストール | [Azure AD Connect のカスタム インストール](./how-to-connect-install-custom.md)|
 |DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](./how-to-dirsync-upgrade-get-started.md)|
-|インストール後に | [インストールの確認とライセンスの割り当て ](how-to-connect-post-installation.md)|
+|インストール後に | [インストールの確認とライセンスの割り当て](how-to-connect-post-installation.md)|
 
 ### <a name="learn-more-about-install-azure-ad-connect"></a>Azure AD Connect のインストールの詳細
-[運用](how-to-connect-sync-operations.md) 上の問題への備えも必要になることがあります。 [障害](how-to-connect-sync-operations.md#disaster-recovery)が発生したときにフェールオーバーできるように、スタンバイ サーバーを用意するという方法もあります。 頻繁に構成を変更する予定がある場合は、 [ステージング モード](how-to-connect-sync-operations.md#staging-mode) サーバーについて計画してください。
+[運用](how-to-connect-sync-operations.md) 上の問題への備えも必要になることがあります。 [障害](how-to-connect-sync-staging-server.md#disaster-recovery)が発生したときにフェールオーバーできるように、スタンバイ サーバーを用意するという方法もあります。 頻繁に構成を変更する予定がある場合は、 [ステージング モード](how-to-connect-sync-staging-server.md) サーバーについて計画してください。
 
 |トピック |リンク|  
 | --- | --- |
 |サポートされているトポロジ | [Azure AD Connect のトポロジ](plan-connect-topologies.md)|
 |設計概念 | [Azure AD Connect の設計概念](plan-connect-design-concepts.md)|
 |インストールで使用するアカウント | [Azure AD Connect の資格情報とアクセス許可の詳細](reference-connect-accounts-permissions.md)|
-|運用計画 | [Azure AD Connect Sync: 操作タスクおよび考慮事項](how-to-connect-sync-operations.md)|
+|運用計画 | [Azure AD Connect 同期:操作タスクおよび考慮事項](how-to-connect-sync-operations.md)|
 |ユーザーのサインイン オプション | [Azure AD Connect ユーザーのサインイン オプション](plan-connect-user-signin.md)|
 
 ## <a name="configure-sync-features"></a>同期機能を構成する
@@ -76,13 +77,13 @@ Azure AD Connect には、必要に応じて有効にすることができる機
 ### <a name="next-steps-to-configure-sync-features"></a>同期機能を構成する次のステップ
 |トピック |Link|  
 | --- | --- |
-|フィルター処理の構成 | [Azure AD Connect Sync: フィルター処理の構成](how-to-connect-sync-configure-filtering.md)|
+|フィルター処理の構成 | [Azure AD Connect 同期:フィルター処理の構成](how-to-connect-sync-configure-filtering.md)|
 |パスワード ハッシュの同期 | [パスワード ハッシュの同期](how-to-connect-password-hash-synchronization.md)|
 |パススルー認証 | [パススルー認証](how-to-connect-pta.md)
 |パスワードの書き戻し | [パスワード管理の概要](../authentication/quickstart-sspr.md)|
 |デバイスの書き戻し | [Azure AD Connect でのデバイスの書き戻しの有効化](how-to-connect-device-writeback.md)|
-|誤って削除されないように保護する | [Azure AD Connect Sync: 誤って削除されないように保護する](how-to-connect-sync-feature-prevent-accidental-deletes.md)|
-|自動アップグレード | [Azure AD Connect: 自動アップグレード](how-to-connect-install-automatic-upgrade.md)|
+|誤って削除されないように保護する | [Azure AD Connect 同期:誤って削除されないように保護する](how-to-connect-sync-feature-prevent-accidental-deletes.md)|
+|自動アップグレード | [Azure AD Connect:自動アップグレード](how-to-connect-install-automatic-upgrade.md)|
 
 ## <a name="customize-azure-ad-connect-sync"></a>Azure AD Connect Sync のカスタマイズ
 Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応した既定の構成が設定されています。 とはいえ、既定の構成ではうまくいかず、調整が必要な場面も必ず存在します。 このセクションとリンク先のトピックにまとめられているように、構成は変更できます。
@@ -97,9 +98,9 @@ Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応�
 |トピック |Link|  
 | --- | --- |
 |Azure AD Connect Sync に関するすべての記事 | [Azure AD Connect Sync](how-to-connect-sync-whatis.md)|
-|技術的概念 | [Azure AD Connect Sync: 技術的概念](how-to-connect-sync-technical-concepts.md)|
-|既定の構成について | [Azure AD Connect Sync: 既定の構成について](concept-azure-ad-connect-sync-default-configuration.md)|
-|ユーザーと連絡先について | [Azure AD Connect Sync: ユーザーと連絡先について](concept-azure-ad-connect-sync-user-and-contacts.md)|
+|技術的概念 | [Azure AD Connect 同期:技術的概念](how-to-connect-sync-technical-concepts.md)|
+|既定の構成について | [Azure AD Connect 同期:既定の構成について](concept-azure-ad-connect-sync-default-configuration.md)|
+|ユーザーと連絡先について | [Azure AD Connect 同期:ユーザーと連絡先について](concept-azure-ad-connect-sync-user-and-contacts.md)|
 |宣言型のプロビジョニング | [Azure AD Connect Sync: 宣言型のプロビジョニングの式について](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)|
 |既定の構成の変更 | [既定の構成の変更するためのベスト プラクティス](how-to-connect-sync-best-practices-changing-default-configuration.md)|
 
@@ -158,11 +159,11 @@ Azure AD Connect Health ポータルでは、アラート、パフォーマン�
     
 ![Azure AD Connect Health ポータル](./media/whatis-hybrid-identity-health/portalsidebar.png)
 
-* **[クイック スタート]**: このオプションを選択すると、**[クイック スタート]** ブレードが開きます。 **[ツールの入手]** を選択することで、Azure AD Connect Health エージェントをダウンロードできます。 ドキュメントの利用とフィードバックの提供もできます。
+* **[クイック スタート]**:このオプションを選択すると、**[クイック スタート]** ブレードが開きます。 **[ツールの入手]** を選択することで、Azure AD Connect Health エージェントをダウンロードできます。 ドキュメントの利用とフィードバックの提供もできます。
 * **[Azure Active Directory Connect (Sync)]**: このオプションを選択すると、Azure AD Connect Health が現在監視している Azure AD Connect サーバーが表示されます。 **[同期エラー]** エントリは、カテゴリごとに、最初のオンボード同期サービスの基本的な同期エラーを示します。 **[同期サービス]** エントリを選択すると、ブレードが開いて Azure AD Connect サーバーに関する情報が表示されます。 [Azure AD Connect Health for Sync の使用](how-to-connect-health-sync.md)に関するページで各種機能を参照してください。
 * **[Active Directory フェデレーション サービス]**: このオプションを選択すると、Azure AD Connect Health が現在監視しているすべての AD FS サービスが表示されます。 インスタンスを選択すると、ブレードが開いてそのサービス インスタンスに関する情報が表示されます。 この情報には、概要、プロパティ、アラート、監視、使用状況の分析などが含まれます。 [AD FS での Azure AD Connect Health の使用](how-to-connect-health-adfs.md)に関するページで各種機能を参照してください。
 * **[Active Directory Domain Services]**: このオプションを選択すると、Azure AD Connect Health が現在監視しているすべての AD DS フォレストが表示されます。 フォレストを選択すると、ブレードが開いてそのフォレストに関する情報が表示されます。 この情報には、重要度のきわめて高い情報、ドメイン コントローラーのダッシュボード、レプリケーションの状態のダッシュボード、アラート、監視の概要が含まれます。 「[AD DS での Azure AD Connect Health の使用](how-to-connect-health-adds.md)」で各種機能を参照してください。
-* **[構成]**: このセクションには、次の機能をオンまたはオフに切り替えるオプションがあります。
+* **構成する**:このセクションには、次の機能をオンまたはオフに切り替えるオプションがあります。
 
   - **[設定]** エントリには、エージェントの基本的な構成が含まれています。 自動アップグレード設定は、Azure AD Connect Health エージェントの最新バージョンへの自動更新を可能にします。Azure AD Connect Health Agent の最新バージョンが利用可能になると、自動的に更新されます。 この機能は、既定では有効になっています。 Microsoft がトラブルシューティングの目的でのみ Azure AD ディレクトリの正常性データにアクセスすることを許可する: この機能が有効になっていると、ユーザーに表示されているのと同じデータを Microsoft でも表示できます。 この情報は問題のトラブルシューティングと支援に役立ちます。 この機能は、既定では無効になっています。
 * **[ロール ベースのアクセス制御 (IAM)]** は、ロール ベースの Connect Health データへのアクセスを管理するためのセクションです。 

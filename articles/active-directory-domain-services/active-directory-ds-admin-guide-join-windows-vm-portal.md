@@ -1,26 +1,26 @@
 ---
-title: 'Azure Active Directory Domain Services: Windows Server VM のマネージド ドメインへの参加 | Microsoft Docs'
+title: 'Azure Active Directory Domain Services: Windows Server VM をマネージド ドメインに参加させる | Microsoft Docs'
 description: Windows Server 仮想マシンの Azure AD DS への参加
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 29316313-c76c-4fb9-8954-5fa5ec82609e
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: 753818526ad637db0baa13c92e92d2725b19dbf8
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f18d3409d53123733d7f423c77864cd0739765eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158331"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900592"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Windows Server 仮想マシンのマネージド ドメインへの参加
 この記事では、Azure Portal を使用して Windows Server 仮想マシンをデプロイする方法を示します。 その後、仮想マシンを Azure Active Directory Domain Services (Azure AD DS) のマネージド ドメインに参加させる方法を示します。
@@ -30,7 +30,7 @@ ms.locfileid: "50158331"
 ## <a name="step-1-create-a-windows-server-virtual-machine"></a>ステップ 1: Windows Server 仮想マシンを作成する
 Azure AD DS を有効にした仮想ネットワークに参加する Windows 仮想マシンを作成するには、次の手順を実行します。
 
-1. [Azure Portal](http://portal.azure.com) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側のウィンドウの上部にある **[新規]** を選択します。
 3. **[コンピューティング]**、**[Windows Server 2016 Datacenter]** の順に選択します。
 
@@ -84,7 +84,7 @@ Azure AD DS を有効にした仮想ネットワークに参加する Windows �
 この時点で、ローカル管理者の資格情報を使用して、新しく作成した Windows 仮想マシンにログオンしている必要があります。 次のステップでは、仮想マシンをドメインに参加させます。
 
 
-## <a name="step-3-join-the-windows-server-virtual-machine-to-the-azure-ad-ds-managed-domain"></a>ステップ 3: Windows Server 仮想マシンを Azure AD DS 管理対象ドメインに参加させる
+## <a name="step-3-join-the-windows-server-virtual-machine-to-the-azure-ad-ds-managed-domain"></a>ステップ 3: Windows Server 仮想マシンを Azure AD DS マネージド ドメインに参加させる
 Windows Server 仮想マシンを Azure AD DS のマネージド ドメインに参加させるには、次の手順を実行します。
 
 1. ステップ 2 で示したように、Windows Server VM に接続します。 **スタート**画面で、**サーバー マネージャー**を開きます。
@@ -107,7 +107,7 @@ Windows Server 仮想マシンを Azure AD DS のマネージド ドメインに
 
 7. 次のいずれかの方法で、資格情報を指定できます。
 
-   * **UPN 形式**: (推奨) Azure AD で構成したように、ユーザー アカウントのユーザー プリンシパル名 (UPN) サフィックスを指定します。 この例では、ユーザー *bob* の UPN サフィックスは *bob@domainservicespreview.onmicrosoft.com* です。
+   * **UPN 形式**: (推奨) Azure AD で構成されているユーザー アカウントのユーザー プリンシパル名 (UPN) サフィックスを指定します。 この例では、ユーザー *bob* の UPN サフィックスは、*bob\@domainservicespreview.onmicrosoft.com* です。
 
    * **SAMAccountName 形式**: SAMAccountName 形式でアカウント名を指定できます。 この例では、ユーザー *bob* は、「*CONTOSO100\bob*」と入力する必要があります。
 
@@ -146,7 +146,7 @@ Windows Server 仮想マシンを Azure AD DS のマネージド ドメインに
 
 * マネージド ドメインとの[パスワード同期を有効にしている](active-directory-ds-getting-started-password-sync.md)ことを確認します。
 
-* Azure AD で構成されているユーザーの UPN (例: *bob@domainservicespreview.onmicrosoft.com*) をサインインに使用したことを確認します。
+* Azure AD 内で構成されているユーザーの UPN (例: *bob\@domainservicespreview.onmicrosoft.com*) をサインインに使用したことを確認します。
 
 * ファースト ステップ ガイドで指定されているとおり、パスワード同期が完了するまで十分な時間待機します。
 

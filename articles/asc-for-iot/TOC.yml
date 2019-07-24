@@ -1,0 +1,77 @@
+items:
+- name: Azure Security Center (ASC) for IoT プレビューのドキュメント
+  href: index.yml
+- name: 概要
+  href: overview.md
+  items:
+  - name: ソリューションのアーキテクチャ
+    href: architecture.md
+  - name: セキュリティ エージェント
+    href: security-agent-architecture.md
+  - name: Edge のセキュリティ モジュール
+    href: security-edge-architecture.md
+  - name: サービスの前提条件
+    href: service-prerequisites.md
+  - name: ASC for IoT を使用して作業を開始する
+    href: getting-started.md
+- name: クイック スタート
+  items:
+  - name: IoT Hub で ASC for IoT を有効にする
+    href: quickstart-onboard-iot-hub.md
+  - name: ソリューションを構成する
+    href: quickstart-configure-your-solution.md
+  - name: ASC for IoT モジュール ツインを作成する
+    href: quickstart-create-security-twin.md
+  - name: カスタムのセキュリティのアラートを作成する
+    href: quickstart-create-custom-alerts.md
+  expanded: true
+- name: 概念
+  items:
+  - name: セキュリティ エージェントの認証
+    href: concept-security-agent-authentication-methods.md
+  - name: セキュリティ モジュール
+    href: concept-security-module.md
+  - name: セキュリティのアラート
+    href: concept-security-alerts.md
+  - name: セキュリティに関する推奨事項
+    href: concept-recommendations.md
+  - name: 価格と関連コスト
+    href: concept-pricing.md
+- name: ハウツー ガイド
+  items:
+  - name: デプロイが推奨されるエージェント
+    items:
+    - name: デプロイするエージェントを選択する
+      href: how-to-deploy-agent.md
+    - name: C# ベースのセキュリティ エージェントを Windows デバイスにデプロイする
+      href: how-to-deploy-windows-cs.md
+    - name: C# ベースのセキュリティ エージェントを Linux デバイスにデプロイする
+      href: how-to-deploy-linux-cs.md
+    - name: C ベースのセキュリティ エージェントを Linux デバイスにデプロイする
+      href: how-to-deploy-linux-c.md
+  - name: Edge のセキュリティ モジュールをデプロイする
+    href: how-to-deploy-edge.md
+  - name: セキュリティ エージェントを構成する
+    href: how-to-agent-configuration.md
+  - name: 独自のセキュリティ メッセージを送信する
+    href: how-to-send-security-messages.md
+  - name: 未加工のセキュリティ データにアクセスする
+    href: how-to-security-data-access.md
+  - name: デバイスを調査する
+    href: how-to-investigate-device.md
+- name: リソース
+  items:
+  - name: よく寄せられる質問
+    href: resources-frequently-asked-questions.md
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/?category=security-identity
+  - name: Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ
+    href: http://blogs.msdn.com/b/azuresecurity/
+  - name: リージョン別の提供状況
+    href: https://azure.microsoft.com/regions/services/
+ms.openlocfilehash: 1d9d2b51fb1a07081c4ac2f4b115363c74cca6d0
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754577"

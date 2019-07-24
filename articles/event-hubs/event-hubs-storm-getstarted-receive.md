@@ -1,6 +1,6 @@
 ---
-title: Apache Storm を使用して Azure Event Hubs からイベントを受信する | Microsoft Docs
-description: Apache Storm を使用して Event Hubs からの受信を開始する
+title: Apache Storm を使用してイベントを受信する - Azure Event Hubs | Microsoft Docs
+description: この記事では、Apache Storm を使用して Azure Event Hubs からイベントを受信する方法について説明します。
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: java
 ms.devlang: multiple
 ms.topic: article
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c70096796bb038c27d18bb3467d7c425dafd5c5b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 3c50916f648a2bce634f7aeb109147a873de1de6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42140570"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094612"
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>Apache Storm を使用して Azure Event Hubs からイベントを受信する
 
@@ -40,7 +41,7 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
     ```
 4. Eclipse で、新しい Maven プロジェクトを作成します (**[ファイル]**、**[新規作成]**、**[プロジェクト]** の順にクリックします)。
    
-    ![][12]
+    ![[ファイル] > [新規作成] > [プロジェクト]][12]
 5. **[既定のワークスペースの場所を使用する]** を選択し、**[次へ]** をクリックします。
 6. **maven-archetype-quickstart** アーキタイプを選択し、**[次へ]** をクリックします。
 7. **GroupID** と **ArtifactID** を挿入し、**[完了]** をクリックします。

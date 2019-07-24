@@ -1,25 +1,25 @@
 ---
 title: 画像のモデレーション - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: 画像のモデレーションを使用して、不適切な画像をモデレートします。
+description: Content Moderator のコンピューター支援型画像モデレーションと human-in-the-loop (人間参加) レビュー ツールを使用して、成人向けコンテンツとわいせつなコンテンツの画像をモデレートします。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/20/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 6c5fed78c67f974a2af11efd133e9a79ec52124b
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 9f1df23d1f0f24787bb9267064ffd647eda2cb74
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219653"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756046"
 ---
-# <a name="image-moderation"></a>画像のモデレート
+# <a name="learn-image-moderation-concepts"></a>画像モデレーションの概念を確認する
 
-Content Moderator のコンピューター支援型画像モデレーションと[目視レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)を使用して、成人向けコンテンツとわいせつなコンテンツの画像をモデレートします。 テキスト コンテンツの画像をスキャンしてそのテキストを抽出し、顔を検出します。 カスタム リストと画像を照合し、さらにアクションを実行できます。
+Content Moderator のコンピューター支援型画像モデレーションと [human-in-the-loop (人間参加) レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)を使用して、成人向けコンテンツとわいせつなコンテンツの画像をモデレートします。 テキスト コンテンツの画像をスキャンしてそのテキストを抽出し、顔を検出します。 カスタム リストと画像を照合し、さらにアクションを実行できます。
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>成人向けコンテンツとわいせつなコンテンツの評価
 
@@ -35,12 +35,11 @@ Content Moderator のコンピューター支援型画像モデレーション�
       ],
 
 > [!NOTE]
-
+> 
 > - `isImageAdultClassified` は、特定の状況で露骨な性表現や成人向けの表現と考えられる画像の潜在的な存在を表します。
 > - `isImageRacyClassified` は、特定の状況で性的な示唆や成人向けの表現と考えられる画像の潜在的な存在を表します。
 > - スコアは 0 ～ 1 です。 このモデルでは、スコアが高いほど、そのカテゴリに該当する可能性が高いと予測しています。 このプレビューは、人がコーディングした結果ではなく、統計モデルに依存しています。 独自のコンテンツを使用してテストを行い、実際の要件に合うように各カテゴリをどのように設定するかを決めることをお勧めします。
 > - ブール値は、内部スコアのしきい値に応じて true または false のどちらかになります。 ユーザーは、この値を使用するか、独自のコンテンツ ポリシーに基づいてカスタムしきい値を決めるかを見極める必要があります。
->
 
 ## <a name="detecting-text-with-optical-character-recognition-ocr"></a>光学式文字認識 (OCR) でのテキストの検出
 
@@ -67,7 +66,7 @@ Content Moderator のコンピューター支援型画像モデレーション�
 
 ## <a name="detecting-faces"></a>顔の検出
 
-顔の検出は、画像内の顔などの個人を特定できる情報 (PII) の検出に役立ちます。 各画像内で、潜在的な顔および潜在的な顔の数を検出します。
+顔の検出は、画像内の顔などの個人データの検出に役立ちます。 各画像内で、潜在的な顔および潜在的な顔の数を検出します。
 
 応答には次の情報が含まれます。
 

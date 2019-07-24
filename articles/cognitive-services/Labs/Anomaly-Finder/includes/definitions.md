@@ -5,17 +5,17 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.component: anomaly-finder
+ms.subservice: anomaly-finder
 ms.topic: include
 ms.date: 04/13/2018
 ms.author: chliang
 ms.custom: include file
-ms.openlocfilehash: a49df0c18ef9db9d0d41ca2e714474e6386ae7d1
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 5ad589c4adb60369f81979e214935f73d9eb0755
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48904622"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228918"
 ---
 <a name="definitions"></a>
 ## <a name="definitions"></a>定義
@@ -50,7 +50,7 @@ ms.locfileid: "48904622"
 |**LowerMargin**  <br>*省略可能*|ExpectedValue から LowerMarginを引いた値が、データ ポイントが正常であると判断される下限値となります。 入力データ ポイントがタイムスタンプの昇順で並んでいる場合には、配列のインデックスを使って予測値と元の値をマップできます。|< 数値 (倍精度浮動小数点型) > 配列|
 |**期間**  <br>*省略可能*|API が異常なポイントの検出に使用した期間。|数値 (浮動小数点型)|
 |**UpperMargin**  <br>*省略可能*|ExpectedValue と UpperMargin の合計が、データ ポイントが正常であると判断される上限値となります。 入力データ ポイントがタイムスタンプの昇順で並んでいる場合には、配列のインデックスを使って予測値と元の値をマップできます。|< 数値 (倍精度浮動小数点型) > 配列|
-|**WarningText**  <br>*省略可能*|入力データ ポイントが API で求められるルールに従っていないものの、そのデータを API が依然として検出できる場合には、API がそのデータを分析し、このフィールドに警告情報を追加します。|string|
+|**WarningText**  <br>*省略可能*|入力データ ポイントが API で求められるルールに従っていないものの、そのデータを API が依然として検出できる場合には、API がそのデータを分析し、このフィールドに警告情報を追加します。|文字列|
 
 
 

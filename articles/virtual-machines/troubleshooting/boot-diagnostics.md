@@ -10,20 +10,18 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: 9341458336e4c95b84590eadbc86073e7dbf09a0
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 59602977c1b7f6dd0524c6535d8458d3eb1a3f26
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419556"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425579"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>ブート診断を使用して、Azure 内の仮想マシンをトラブルシューティングする方法
 
-Azure で新たに 2 つのデバッグ機能が利用できるようになりました。Azure Virtual Machines Resource Manager デプロイ モデルでコンソール出力とスクリーンショットがサポートされます。 
+仮想マシンは、さまざまな理由で起動できない状態になる可能性があります。 Resource Manager デプロイ モデルを使用して作成した仮想マシンの問題に対処するために、Azure 仮想マシンに対してサポートされているコンソール出力とスクリーン ショットというデバッグ機能を使用できます。 
 
-独自のイメージを Azure に導入した場合に限らず、いずれかのプラットフォーム イメージをブートするときでも、仮想マシンは、さまざまな理由で起動できない状態に陥ることがあります。 これらの機能を利用することで仮想マシンを簡単に診断し、起動エラーから復旧することができます。
-
-Linux 仮想マシンについては、コンソール ログの出力をポータルから簡単に表示できます。 Azure では、Windows 仮想マシンと Linux 仮想マシンの両方に関して、ハイパーバイザーからの VM のスクリーンショットを表示することもできます。 この 2 つの機能は、すべてのリージョンの Azure Virtual Machines でサポートされます。 スクリーンショットと出力結果がストレージ アカウントに表示されるまでに最大 10 分かかる場合があります。
+Linux 仮想マシンについては、コンソール ログの出力をポータルから表示できます。 Azure では、Windows 仮想マシンと Linux 仮想マシンの両方に関して、ハイパーバイザーからの VM のスクリーンショットを表示できます。 どちらの機能も、すべてのリージョンの Azure Virtual Machines でサポートされています。 スクリーンショットと出力結果がストレージ アカウントに表示されるまでに最大 10 分かかる場合があります。
 
 **[ブート診断]** オプションを選択すると、ログとスクリーンショットを表示できます。
 
@@ -45,54 +43,58 @@ Linux 仮想マシンについては、コンソール ログの出力をポー�
 - [An operating system wasn't found (オペレーティング システムが見つかりませんでした)](https://support.microsoft.com/help/4010142)
 - [Boot failure or INACCESSIBLE_BOOT_DEVICE (起動エラーまたは INACCESSIBLE_BOOT_DEVICE)](https://support.microsoft.com/help/4010143)
 
-## <a name="enable-diagnostics-on-a-new-virtual-machine"></a>新しい仮想マシンで診断を有効にする
-1. Azure Portal から新しい仮想マシンを作成するときに、デプロイメント モデルのドロップダウンから **[Azure Resource Manager]** を選択します。
+## <a name="enable-diagnostics-on-a-virtual-machine-created-using-the-azure-portal"></a>Azure Portal を使用して作成された仮想マシンの診断を有効にする
+
+次の手順は、Resource Manager デプロイ モデルを使用して作成された Azure 仮想マシン向けです。
+
+**[管理]** タブの **[監視]** セクションで、**[ブート診断]** がオンになっていることを確認します。 **[診断ストレージ アカウント]** ドロップダウン リストから、診断ファイルの配置先となるストレージ アカウントを選択します。
  
-    ![リソース マネージャー](./media/virtual-machines-common-boot-diagnostics/screenshot3.jpg)
+![VM を作成する](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
-2. **[設定]** で、**[ブート診断]** を有効にし、これらの診断ファイルを配置するストレージ アカウントを選択します。
- 
-    ![VM を作成する](./media/virtual-machines-common-boot-diagnostics/create-storage-account.png)
+> [!NOTE]
+> ブート診断機能では、Premium ストレージ アカウントはサポートされていません。 ブート診断に Premium ストレージ アカウントを使用すると、VM の起動時に StorageAccountTypeNotSupported エラーが表示されることがあります。
+>
 
-    > [!NOTE]
-    > ブート診断機能では、Premium ストレージ アカウントはサポートされていません。 ブート診断に Premium ストレージ アカウントを使用すると、VM の起動時に StorageAccountTypeNotSupported エラーが表示されることがあります。
-    >
-    > 
+### <a name="deploying-from-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートからのデプロイ
 
-3. Azure Resource Manager テンプレートからデプロイする場合は、ご利用の仮想マシン リソースに移動し、診断プロファイル セクションを追加します。 必ず "2015-06-15" という API バージョン ヘッダーを使用してください。
+Azure Resource Manager テンプレートからデプロイする場合は、ご利用の仮想マシン リソースに移動し、診断プロファイル セクションを追加します。 API バージョン ヘッダーを "2015-06-15" またはそれ以降に設定します。 最新バージョンは "2018-10-01" です。
 
-    ```json
-    {
-          "apiVersion": "2015-06-15",
-          "type": "Microsoft.Compute/virtualMachines",
-          … 
-    ```
+```json
+{
+  "apiVersion": "2018-10-01",
+  "type": "Microsoft.Compute/virtualMachines",
+  … 
+```
 
-4. これらのログの格納先となるストレージ アカウントは、診断プロファイルによって選択することができます。
+これらのログの格納先となるストレージ アカウントは、診断プロファイルによって選択することができます。
 
-    ```json
-            "diagnosticsProfile": {
-                "bootDiagnostics": {
-                "enabled": true,
-                "storageUri": "[concat('https://', parameters('newStorageAccountName'), '.blob.core.windows.net')]"
-                }
-            }
-            }
-        }
-    ```
+```json
+    "diagnosticsProfile": {
+    "bootDiagnostics": {
+    "enabled": true,
+    "storageUri": "[concat('https://', parameters('newStorageAccountName'), '.blob.core.windows.net')]"
+    }
+    }
+    }
+}
+```
 
-ブート診断が有効な状態でサンプル仮想マシンをデプロイするには、ここでリポジトリをチェックアウトします。
+テンプレートを使用したリソースのデプロイの詳細については、「[クイック スタート:Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)」を参照してください。
 
 ## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>既存の仮想マシンでブート診断を有効にする 
 
 既存の仮想マシンでブート診断を有効にするには、次の手順に従います。
 
 1. [Azure portal](https://portal.azure.com) にサインインし、仮想マシンを選択します。
-2. **[サポート + トラブルシューティング]** で、**[ブート診断]** > **[設定]** を選択し、状態を **[オン]** に変更して、ストレージ アカウントを選びます。 
-4. ブート診断オプションが選択されていることを確認し、変更を保存します。
+2. **[サポート + トラブルシューティング]** セクションで **[ブート診断]** を選択し、**[設定]** タブを選択します。
+3. **[ブート診断]** 設定で、状態を **[オン]** に変更し、**[ストレージ アカウント]** ドロップダウン リストからストレージ アカウントを選択します。 
+4. 変更を保存します。
 
     ![既存の VM の更新](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)
 
-3. VM を再起動すると変更が反映されます。
+変更を有効にするには、仮想マシンを再起動する必要があります。
 
+### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>Azure CLI を使用してブート診断を有効にする
 
+Azure CLI を使用して、既存の Azure 仮想マシンでブート診断を有効にすることができます。 詳細については、[az vm boot-diagnostics](
+https://docs.microsoft.com/cli/azure/vm/boot-diagnostics?view=azure-cli-latest) を参照してください。

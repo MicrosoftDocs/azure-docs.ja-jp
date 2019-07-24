@@ -12,17 +12,17 @@ ms.devlang: java
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/23/2017
+ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 97dcde4cd3597262b49000f2330e487e4fa48188
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2c98b069e042f9cbd07ccee643028ac84b3471c6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241890"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886689"
 ---
-# <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>クイック スタート: Java Spring Boot アプリケーションを Service Fabric にデプロイする
+# <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>クイック スタート:Java Spring Boot アプリケーションを Service Fabric にデプロイする
 
 Azure Service Fabric は、マイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。
 
@@ -34,7 +34,6 @@ Azure Service Fabric は、マイクロサービスとコンテナーのデプ�
 
 * Spring Boot アプリケーションを Service Fabric にデプロイする
 * アプリケーションをローカル クラスターにデプロイする
-* アプリケーションを Azure のクラスターにデプロイする
 * 複数のノードにアプリケーションをスケールアウトする
 * 可用性に影響を与えることなくサービスのフェールオーバーを実行する
 
@@ -106,7 +105,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <ServiceManifest Name="SpringGettingStartedPkg" Version="1.0.0"
-                     xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+                     xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" >
 
        <ServiceTypes>
           <StatelessServiceType ServiceTypeName="SpringGettingStartedType" UseImplicitHost="true">
@@ -162,73 +161,11 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     ./install.sh
     ```
 
-1. 使い慣れた Web ブラウザーを開き、**http://localhost:8080** に接続してアプリケーションにアクセスします。
+1. 使い慣れた Web ブラウザーを開き、`http://localhost:8080` に接続してアプリケーションにアクセスします。
 
     ![ローカルのアプリケーション フロントエンド](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
 
 これで、Azure Service Fabric クラスターに展開された Spring Boot アプリケーションにアクセスできるようになりました。
-
-## <a name="deploy-the-application-to-azure"></a>Azure にアプリケーションを展開する
-
-### <a name="set-up-your-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターの設定
-
-Azure 内のクラスターにアプリケーションをデプロイするには、独自のクラスターを作成します。
-
-パーティー クラスターは、Azure でホストされ、Service Fabric チームによって実行される期間限定の無料 Service Fabric クラスターです。 パーティ クラスターは、アプリケーションをデプロイしてプラットフォームについて学習するために使用できます。 このクラスターでは、ノード間のセキュリティおよびクライアントとノードの間のセキュリティに単一の自己署名証明書が使用されます。
-
-サインインして、[Linux クラスター](https://aka.ms/tryservicefabric)に参加します。 **[PFX]** リンクをクリックして、PFX 証明書をコンピューターにダウンロードします。 **[ReadMe]** リンクをクリックして、証明書パスワードと、証明書を使用するさまざまな環境を構成する方法についての手順を探します。 **ウェルカム** ページと **ReadMe** ページをどちらも開いたままにして、次の手順にある指示のいくつかを使用します。
-
-> [!Note]
-> 1 時間あたりに使用可能なパーティ クラスターの数には制限があります。 パーティ クラスターへのサインアップ時にエラーが発生する場合は、少し待ってからやり直してください。または、[Azure での Service Fabric クラスターの作成](service-fabric-tutorial-create-vnet-and-linux-cluster.md)に関するページの手順に従って、サブスクリプションにクラスターを作成することもできます。
->
-> Spring Boot サービスは、ポート 8080 で受信トラフィックをリッスンする構成になっています。 このポートがクラスターで開放されていることを確認してください。 パーティ クラスターを使用している場合、このポートは開放されています。
->
-
-Service Fabric には、クラスターとそのアプリケーションを管理するために使用できるツールがいくつか用意されています。
-
-* ブラウザーベースのツールである Service Fabric Explorer。
-* Azure CLI 上で実行される Service Fabric コマンド ライン インターフェイス (CLI)。
-* PowerShell コマンド。
-
-このクイック スタートでは、Service Fabric CLI と Service Fabric Explorer を使用します。
-
-CLI を使用するには、ダウンロードした PFX ファイルに基づいて PEM ファイルを作成する必要があります。 ファイルを変換するには、次のコマンドを使用します  (パーティー クラスターでは、**ReadMe** ページにある手順から PFX ファイルに固有のコマンドをコピーできます)。
-
-```bash
-openssl pkcs12 -in party-cluster-1486790479-client-cert.pfx -out party-cluster-1486790479-client-cert.pem -nodes -passin pass:1486790479
-``` 
-
-Service Fabric Explorer を使用するには、パーティ クラスターの Web サイトからダウンロードした証明書 PFX ファイルを、ご使用の証明書ストア (Windows または Mac) あるいはブラウザー本体 (Ubuntu) にインポートする必要があります。 **ReadMe** ページから取得できる PFX 秘密キー パスワードが必要です。
-
-お使いのシステムに証明書をインポートするのに最適な任意の方法を使用します。 例: 
-
-* Windows の場合: PFX ファイルをダブルクリックし、プロンプトに従って個人用ストア `Certificates - Current User\Personal\Certificates` に証明書をインストールします。 または、**ReadMe** 手順の PowerShell コマンドを使用できます。
-* Mac の場合: PFX ファイルをダブルクリックし、プロンプトに従ってキーチェーンに証明書をインストールします。
-* Ubuntu の場合: Mozilla Firefox は、Ubuntu 16.04 の既定のブラウザーです。 証明書を Firefox にインポートするには、ブラウザーの右上隅にあるメニュー ボタンをクリックし、**[オプション]** をクリックします。 **環境設定**ページで、検索ボックスを使用して "証明書" を検索します。 **[証明書を表示]** をクリックし、**[あなたの証明書]** タブを選択します。次に、**[インポート]** をクリックし、プロンプトに従って証明書をインポートします。
-
-   ![Firefox での証明書のインストール](./media/service-fabric-quickstart-java-spring-boot/install-cert-firefox.png)
-
-### <a name="deploy-the-application-using-cli"></a>CLI を使用したアプリケーションのデプロイ
-
-アプリケーションとクラスターの準備ができましたので、コマンド ラインから直接クラスターにデプロイできます。
-
-1. `gs-spring-boot/SpringServiceFabric` フォルダーに移動します。
-1. 次のコマンドを実行して、Azure クラスターに接続します。
-
-    ```bash
-    sfctl cluster select --endpoint https://<ConnectionIPOrURL>:19080 --pem <path_to_certificate> --no-verify
-    ```
-1. `install.sh` スクリプトを実行します。
-
-    ```bash
-    ./install.sh
-    ```
-
-1. Web ブラウザーを開き、**http://\<ConnectionIPOrUrl>:8080** に接続してアプリケーションにアクセスします。
-
-    ![ローカルのアプリケーション フロントエンド](./media/service-fabric-quickstart-java-spring-boot/springbootsfazure.png)
-
-これで、Azure 上の Service Fabric クラスターで実行されている Spring Boot アプリケーションにアクセスできます。
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>クラスター内のアプリケーションとサービスをスケールする
 
@@ -283,7 +220,6 @@ Web フロントエンド サービスをスケーリングするには、以下
 
 * Spring Boot アプリケーションを Service Fabric にデプロイする
 * アプリケーションをローカル クラスターにデプロイする
-* アプリケーションを Azure のクラスターにデプロイする
 * 複数のノードにアプリケーションをスケールアウトする
 * 可用性に影響を与えることなくサービスのフェールオーバーを実行する
 

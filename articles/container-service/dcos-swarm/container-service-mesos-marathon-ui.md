@@ -1,5 +1,5 @@
 ---
-title: Marathon UI を使用した Azure DC/OS クラスターの管理
+title: (非推奨) Marathon UI を使用した Azure DC/OS クラスターの管理
 description: Marathon Web UI を使用して Azure コンテナー サービスのクラスター サービスにコンテナーをデプロイします。
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: a22bddf48f97d961d481e2aedb42f7d645f3e678
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 16c16c0217a796ffbb57e10430f90cb4a7660ac6
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903083"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317614"
 ---
-# <a name="manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>Marathon Web UI による Azure Container Service DC/OS クラスターの管理
+# <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>(非推奨) Marathon Web UI による Azure Container Service DC/OS クラスターの管理
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 DC/OS はクラスター化されたワークロードをデプロイし、スケールするための環境を提供すると共に、基礎となるハードウェアを抽象化します。 DC/OS に加え、コンピューティング ワークロードのスケジュールと実行を管理するフレームワークもあります。
 
@@ -34,12 +36,12 @@ DC/OS はクラスター化されたワークロードをデプロイし、ス�
 >
 
 ## <a name="explore-the-dcos-ui"></a>DC/OS UI を操作する
-Secure Shell (SSH) トンネルを[確立](../container-service-connect.md)したら、http://localhost/ に移動します。 DC/OS Web UI が読み込まれ、使用リソース、アクティブなエージェント、実行中のサービスなど、クラスターに関する情報が表示されます。
+Secure Shell (SSH) トンネルを[確立](../container-service-connect.md)したら、http:\//localhost/ に移動します。 DC/OS Web UI が読み込まれ、使用リソース、アクティブなエージェント、実行中のサービスなど、クラスターに関する情報が表示されます。
 
 ![DC/OS UI](./media/container-service-mesos-marathon-ui/dcos2.png)
 
 ## <a name="explore-the-marathon-ui"></a>Marathon UI について知る
-Marathon UI を参照するには、http://localhost/marathon に移動します。 この画面から、Azure コンテナー サービス DC/OS クラスターで新しいコンテナーやその他のアプリケーションを開始できます。 コンテナーとアプリケーションの実行に関する情報も確認できます。  
+Marathon UI を表示するには、http:\//localhost/marathon に移動します。 この画面から、Azure コンテナー サービス DC/OS クラスターで新しいコンテナーやその他のアプリケーションを開始できます。 コンテナーとアプリケーションの実行に関する情報も確認できます。  
 
 ![Marathon UI](./media/container-service-mesos-marathon-ui/dcos3.png)
 
@@ -50,7 +52,7 @@ Marathon を使用して新しいコンテナーをデプロイするには、**
 | --- | --- |
 | ID |nginx |
 | メモリ | 32 |
-| イメージ |nginx |
+| Image |nginx |
 | ネットワーク |ブリッジ |
 | ホスト ポート |80 |
 | プロトコル |TCP |
@@ -83,7 +85,7 @@ Marathon メイン ページに戻ると、コンテナーのデプロイの状�
 
 ![Marathon main page UI--container deployment status](./media/container-service-mesos-marathon-ui/dcos7.png)
 
-DC/OS の Web UI (http://localhost/)) に戻ると、タスク (この場合は Docker 形式のコンテナー) が DC/OS クラスターで実行されていることがわかります。
+DC/OS の Web UI (http:\//localhost/) に戻ると、タスク (この場合は Docker 形式のコンテナー) が DC/OS クラスターで実行されていることがわかります。
 
 ![DC/OS web UI--task running on the cluster](./media/container-service-mesos-marathon-ui/dcos8.png)
 

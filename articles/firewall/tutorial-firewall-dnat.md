@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 11/28/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: e37d5b050c5ca957b59c1e0a60c88171c1fc4a23
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: df57faad770b252228b6c55d4caff775acfe3594
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582243"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531166"
 ---
-# <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>チュートリアル: Azure portal で Azure Firewall DNAT を使用して受信トラフィックをフィルター処理する
+# <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>チュートリアル:Azure portal で Azure Firewall DNAT を使用して受信トラフィックをフィルター処理する
 
 受信トラフィックの変換とサブネットに対するフィルター処理を行うように Azure Firewall 宛先ネットワーク アドレス変換 (DNAT) を構成できます。 DNAT を構成すると、NAT ルール コレクションの動作は、**Dnat** に設定されます。 その後、NAT ルール コレクション内の各ルールを使用して、ファイアウォールのパブリック IP およびポートをプライベート IP およびポートに変換できます。 DNAT ルールは、変換されたトラフィックを許可するための対応するネットワーク ルールを暗黙的に追加します。 この動作は、変換されたトラフィックに一致する拒否ルールを使用してネットワーク ルール コレクションを明示的に追加することで、オーバーライドすることができます。 Azure Firewall ルール処理ロジックの詳細については、「[Azure Firewall ルール処理ロジック](rule-processing.md)」を参照してください。
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-1. Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサインインします。
+1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 2. Azure portal のホーム ページで **[リソース グループ]** をクリックし、**[追加]** をクリックします。
 3. **[リソース グループ名]** に「**RG-DNAT-Test**」と入力します。
 4. **[サブスクリプション]** で、ご使用のサブスクリプションを選択します。
@@ -152,9 +152,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    |---------|---------|
    |Name     |FW-DNAT-test|
    |サブスクリプション     |\<該当するサブスクリプション\>|
-   |リソース グループ     |**既存のものを使用**: RG-DNAT-Test |
+   |リソース グループ     |**[Use Existing]\(既存の使用\)**: RG-DNAT-Test |
    |Location     |以前使用したのと同じ場所を選択します|
-   |仮想ネットワークの選択     |**既存のものを使用**: VN-Hub|
+   |仮想ネットワークの選択     |**[Use Existing]\(既存の使用\)**: VN-Hub|
    |パブリック IP アドレス     |**新規作成**。 パブリック IP アドレスは、Standard SKU タイプであることが必要です。|
 
 5. **[Review + create]\(レビュー + 作成\)** をクリックします。
@@ -229,4 +229,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 次に、Azure Firewall のログを監視することができます。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: Azure Firewall のログを監視する](./tutorial-diagnostics.md)
+> [チュートリアル:Azure Firewall のログを監視する](./tutorial-diagnostics.md)

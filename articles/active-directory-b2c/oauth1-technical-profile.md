@@ -3,29 +3,29 @@ title: Azure Active Directory B2C 内のカスタム ポリシーで OAuth1 技�
 description: Azure Active Directory B2C 内のカスタム ポリシーで OAuth1 技術プロファイルを定義します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 10c90b060c184bb911ac149640e8a9570b59e2fb
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.subservice: B2C
+ms.openlocfilehash: 86de73394d96d1122abce44504d2b0fd99a01841
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44382822"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915784"
 ---
-# <a name="define-a-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth1 技術プロファイルを定義する
+# <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth1 技術プロファイルを定義する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C では、[OAuth 1.0 プロトコル](http://tools.ietf.org/html/rfc5849) の ID プロバイダーにサポートを提供しています。 この記事では、この標準化されたプロトコルをサポートするクレーム プロバイダーとやりとりするための、技術プロファイルの詳細について説明します。 OAuth1 技術プロファイルを使用すると、Twitter などの OAuth1 ベースの ID プロバイダーと連携することができ、ユーザーは既存のソーシャル ID またはエンタープライズ ID でサインインできるようになります。
+Azure Active Directory (Azure AD) B2C では、[OAuth 1.0 プロトコル](https://tools.ietf.org/html/rfc5849) の ID プロバイダーにサポートを提供しています。 この記事では、この標準化されたプロトコルをサポートするクレーム プロバイダーとやりとりするための、技術プロファイルの詳細について説明します。 OAuth1 技術プロファイルを使用すると、Twitter などの OAuth1 ベースの ID プロバイダーと連携することができ、ユーザーは既存のソーシャル ID またはエンタープライズ ID でサインインできるようになります。
 
-## <a name="protocol"></a>プロトコル
+## <a name="protocol"></a>Protocol
 
-**Protocol** 要素の **Name** 属性は、`OAuth1` に設定する必要があります。 たとえば、**Twitter-OAUTH1** 技術プロファイル用のプロトコルは `OAuth1` です。
+**Protocol** 要素の **Name** 属性は `OAuth1` に設定する必要があります。 たとえば、**Twitter-OAUTH1** 技術プロファイル用のプロトコルは `OAuth1` です。
 
 ```XML
 <TechnicalProfile Id="Twitter-OAUTH1">
@@ -69,11 +69,11 @@ Azure Active Directory (Azure AD) B2C では、[OAuth 1.0 プロトコル](http:
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| client_id | [はい] | ID プロバイダーのアプリケーション識別子。 |
+| client_id | はい | ID プロバイダーのアプリケーション識別子。 |
 | ProviderName | いいえ  | ID プロバイダーの名前。 |
-| request_token_endpoint | [はい] | RFC 5849 に準拠した要求トークン エンドポイントの URL。 |
-| authorization_endpoint | [はい] | RFC 5849 に準拠した承認エンドポイントの URL。 |
-| access_token_endpoint | [はい] | RFC 5849 に準拠したトークン エンドポイントの URL。 |
+| request_token_endpoint | はい | RFC 5849 に準拠した要求トークン エンドポイントの URL。 |
+| authorization_endpoint | はい | RFC 5849 に準拠した承認エンドポイントの URL。 |
+| access_token_endpoint | はい | RFC 5849 に準拠したトークン エンドポイントの URL。 |
 | ClaimsEndpoint | いいえ  | ユーザー情報エンドポイントの URL。 | 
 | ClaimsResponseFormat | いいえ  | 要求応答の形式。|
 
@@ -83,7 +83,7 @@ Azure Active Directory (Azure AD) B2C では、[OAuth 1.0 プロトコル](http:
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| client_secret | [はい] | ID プロバイダー アプリケーションのクライアント シークレット。   | 
+| client_secret | はい | ID プロバイダー アプリケーションのクライアント シークレット。   | 
 
 ## <a name="redirect-uri"></a>リダイレクト URI
 

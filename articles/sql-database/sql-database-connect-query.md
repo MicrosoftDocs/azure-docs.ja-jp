@@ -3,7 +3,7 @@ title: Azure SQL Database の接続とクエリに関するクイック スタ�
 description: Azure SQL Database の各種クイック スタートでは、Azure SQL データベースに接続してクエリを実行する方法を紹介しています。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: 01f1ac19cbab5ec60034b75fb15ccdb45df8541e
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 12/18/2018
+ms.openlocfilehash: 1bf9c0b1393abfcad6646624301c4f131c8790a6
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913310"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447975"
 ---
-# <a name="quickstarts-azure-sql-database-connect-and-query"></a>クイック スタート: Azure SQL Database の接続とクエリ
+# <a name="quickstarts-azure-sql-database-connect-and-query"></a>クイック スタート:Azure SQL Database の接続とクエリ
 
 次のドキュメントは、Azure SQL データベースに接続してクエリを実行する例を紹介した Azure ページへのリンク集です。 トランスポート レベルのセキュリティについての推奨事項も提供されています。
 
@@ -53,6 +53,51 @@ ms.locfileid: "50913310"
 
 Microsoft 以外のドライバーは、既定では TLS を使用しない場合があります。 これは Azure SQL Database に接続するときに問題になる可能性があります。 埋め込みドライバーを使用するアプリケーションでは、これらの接続設定を制御できない場合があります。 このようなドライバーおよびアプリケーションについては、機密データを操作するシステムで使う前に、そのセキュリティを調べることをお勧めします。
 
+## <a name="libraries"></a>ライブラリ
+
+さまざまなライブラリとフレームワークを使用して、Azure SQL Database に接続できます。 C#、Java、Node.js、PHP、Python などのプログラミング言語を手軽に始めるには、[開始にあたってのチュートリアル](https://aka.ms/sqldev)をご覧ください。 次に Linux、Windows、または macOS 上の Docker で SQL Server を使用してアプリを構築します。
+
+次の表は、クライアント アプリケーションがさまざまな言語から SQL Server への接続に使用できる接続ライブラリや*ドライバー*を示しています。クライアント アプリケーションはオンプレミスおよびクラウドで実行される SQL Server と共にこれらを使用できます。 Linux、Windows、または Docker でこれらを使用して、Azure SQL Database や Azure SQL Data Warehouse に接続できます。 
+
+| 言語 | プラットフォーム | その他のリソース | ダウンロード | 作業開始 |
+| :-- | :-- | :-- | :-- | :-- |
+| C# | Windows、Linux、macOS | [SQL Server 用 Microsoft ADO.NET](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-for-sql-server) | [ダウンロード](https://www.microsoft.com/net/download/) | [作業開始](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
+| Java | Windows、Linux、macOS | [SQL Server 用 Microsoft JDBC ドライバー](https://msdn.microsoft.com/library/mt484311.aspx) | [ダウンロード](https://go.microsoft.com/fwlink/?linkid=852460) |  [作業開始](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
+| PHP | Windows、Linux、macOS| [SQL Server 用 PHP SQL ドライバー](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [ダウンロード](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [作業開始](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
+| Node.js | Windows、Linux、macOS | [SQL Server 用 Node.js ドライバー](https://msdn.microsoft.com/library/mt652093.aspx) | [インストール](https://msdn.microsoft.com/library/mt652094.aspx) |  [作業開始](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
+| Python | Windows、Linux、macOS | [Python SQL ドライバー](https://msdn.microsoft.com/library/mt652092.aspx) | インストール オプション:  <br/> \* [pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \* [pyodbc](https://msdn.microsoft.com/library/mt763257.aspx) |  [作業開始](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
+| Ruby | Windows、Linux、macOS | [SQL Server 用 Ruby ドライバー](https://msdn.microsoft.com/library/mt691981.aspx) | [インストール](https://msdn.microsoft.com/library/mt711041.aspx) | [作業開始](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
+| C++ | Windows、Linux、macOS | [SQL Server 用 Microsoft ODBC ドライバー](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) | [ダウンロード](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) |  
+
+次の表は、クライアント アプリケーションがオンプレミスまたはクラウドで SQL Server と共に使用できる、オブジェクト リレーショナル マッピング (ORM) フレームワークおよび Web フレームワークの例を示しています。 Linux、Windows、または Docker でフレームワークを使用して SQL Database および SQL Data Warehouse に接続できます。 
+
+| 言語 | プラットフォーム | ORM |
+| :-- | :-- | :-- |
+| C# | Windows、Linux、macOS | [Entity Framework](https://docs.microsoft.com/ef)<br>[Entity Framework Core](https://docs.microsoft.com/ef/core/index) |
+| Java | Windows、Linux、macOS |[Hibernate ORM](https://hibernate.org/orm)|
+| PHP | Windows、Linux、macOS | [Laravel (Eloquent)](https://laravel.com/docs/eloquent)<br>[Doctrine](https://www.doctrine-project.org/projects/orm.html) |
+| Node.js | Windows、Linux、macOS | [Sequelize ORM](https://docs.sequelizejs.com) |
+| Python | Windows、Linux、macOS |[Django](https://www.djangoproject.com/) |
+| Ruby | Windows、Linux、macOS | [Ruby on Rails](https://rubyonrails.org/) |
+||||
+
 ## <a name="next-steps"></a>次の手順
 
-接続アーキテクチャについては、「[Azure SQL Database 接続アーキテクチャ](sql-database-connectivity-architecture.md)」をご覧ください。
+- 接続アーキテクチャについては、「[Azure SQL Database 接続アーキテクチャ](sql-database-connectivity-architecture.md)」をご覧ください。
+- クライアント アプリケーションからの接続に使用する [SQL Server 用ドライバー](https://msdn.microsoft.com/library/mt654049.aspx)を探します
+- SQL Database への接続:
+  - [.NET (C#) を使用して SQL Database に接続する](sql-database-connect-query-dotnet.md) 
+  - [PHP を使用して SQL Database に接続する](sql-database-connect-query-php.md) 
+  - [Node.js を使用して SQL Database に接続する](sql-database-connect-query-nodejs.md) 
+  - [Java を使用して SQL Database に接続する](sql-database-connect-query-java.md) 
+  - [Python を使用して SQL Database に接続する](sql-database-connect-query-python.md)
+  - [Ruby を使用して SQL Database に接続する](sql-database-connect-query-ruby.md)
+- 再試行ロジックのコード例:
+  - [ADO.NET を使用して SQL に弾性的に接続する][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+  - [PHP を使用して SQL に弾性的に接続する][step-4-connect-resiliently-to-sql-with-php-p42h]
+
+<!-- Link references. -->
+
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-to-sql-with-ado-net
+
+[step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php

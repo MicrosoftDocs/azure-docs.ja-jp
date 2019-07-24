@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 03/18/2019
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 19cb1e414ba4a486139a502034e958907d027470
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: e9bd7fb147f9789120776bc603768b4ace59e693
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275269"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181080"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>チュートリアル: Cloudyn のデータへのアクセス権を割り当てる
 
@@ -47,7 +47,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ユーザーについて必要な情報を入力します。 **ログイン ID** は、有効な電子メール アドレスにする必要があります。 ユーザー管理を許可する権限を選択し、そのユーザーが他のユーザーを作成し変更できるようにします。 受信者リストの管理で、そのユーザーに受信者リストの編集を許可します。 **[ユーザーにメールでも通知する]** を選択すると、サインイン情報の付いたリンクが Cloudyn から電子メールでユーザーに送信されます。 パスワードは、初回サインイン時にユーザーが設定します。
 
 **[User has admin access]\(ユーザーの管理者アクセス権\)** では、組織のルート エンティティが選択されています。 ルートが選択されたままにして、ユーザー情報を保存します。 ルート エンティティを選択すると、そのユーザーに、そのツリー内のルート エンティティに対してだけでなく、その下にあるすべてのエンティティへの管理者権限を許可します。  
-  ![管理者アクセス権を持つ新規ユーザーの追加](.\media\tutorial-user-access\new-admin-access.png)
+  ![[新しいユーザーの追加] ボックスの管理者アクセス権の表示例](./media/tutorial-user-access/new-admin-access.png)
 
 ## <a name="create-a-user-with-user-access"></a>ユーザー アクセス権を持つユーザーを作成する
 ダッシュボードやレポートといった Cloudyn データへのアクセスを必要とする一般的なユーザーには、それらを表示するためのユーザー アクセス権が必要です。 ユーザー アクセス権を持つ新しいユーザーを作成します。これは管理者アクセス権での作成と似ていますが、以下の相違点があります。
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - **[User has user access]\(ユーザーのユーザーアクセス権\)** リストで、ユーザーがアクセスを必要とするエンティティを選択します。
 - 必要に応じて特定のエンティティへのアクセスを管理者に許可することもできます。
 
-![ユーザー アクセス権を持つ新規ユーザーの追加](.\media\tutorial-user-access\new-user-access.png)
+![[新しいユーザーの追加] ボックスのユーザー アクセス権の表示例](./media/tutorial-user-access/new-user-access.png)
 
 ユーザーの追加に関するチュートリアル ビデオを見るには、[Cloudyn へのユーザーの追加](https://youtu.be/Nzn7GLahx30)に関するページをご覧ください。
 
@@ -88,11 +88,11 @@ Cloudyn で Azure の契約またはアカウントを登録したときに、�
 
 Cloudyn ポータルで、右上にある歯車アイコンをクリックして **[Cloud Accounts]\(クラウド アカウント\)** を選択します。 1 つのエンティティ (ルート) から始めて、そのルートの下に自分のエンティティ ツリーを構築します。 エンティティの階層構造の例を示します。多くの IT 組織ではツリー完了後はこのようになります。
 
-![エンティティ ツリー](.\media\tutorial-user-access\entity-tree.png)
+![[アカウント管理] ページに表示されるエンティティ ツリーの例](./media/tutorial-user-access/entity-tree.png)
 
 **[エンティティ]** の横にある **[エンティティの追加]** をクリックします。 追加する人または部門に関する情報を入力します。 **[フル ネーム]** および **[電子メール]** フィールドは、既存のユーザーと一致する必要はありません。 アクセス レベルの一覧を表示する場合は、ヘルプで「*エンティティを追加する*」を検索します。
 
-![エンティティの追加](.\media\tutorial-user-access\add-entity.png)
+![[エンティティの追加] ボックスにエンティティ名とアクセス レベルを表示した例](./media/tutorial-user-access/add-entity.png)
 
 完了したら、エンティティを **[保存]** します。
 

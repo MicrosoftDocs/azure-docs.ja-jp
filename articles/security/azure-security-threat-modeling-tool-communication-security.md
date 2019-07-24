@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bc724f57a25e2ca12d334192d2171899345e72de
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8534f30c17208e77adfa47ea41506a3a61d3548d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247383"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897301"
 ---
-# <a name="security-frame-communication-security--mitigations"></a>セキュリティ フレーム: 通信セキュリティの | 対応策 
+# <a name="security-frame-communication-security--mitigations"></a>セキュリティ フレーム: 通信のセキュリティ | 軽減策 
 | 製品/サービス | 記事 |
 | --------------- | ------- |
 | **Azure Event Hub** | <ul><li>[SSL/TLS を使用して Event Hub への通信をセキュリティで保護する](#comm-ssltls)</li></ul> |
@@ -34,7 +34,7 @@ ms.locfileid: "51247383"
 | **モバイル クライアント** | <ul><li>[証明書のピン留めを実装する](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[HTTPS - セキュリティで保護されたトランスポート チャネルを有効にする](#https-transport)</li><li>[WCF: メッセージのセキュリティ保護レベルを EncryptAndSign に設定する](#message-protection)</li><li>[WCF: 最小権限のアカウントを使用して WCF サービスを実行する](#least-account-wcf)</li></ul> |
 | **Web API** | <ul><li>[Web API へのすべてのトラフィックに HTTPS 接続を強制する](#webapi-https)</li></ul> |
-| **Azure Redis Cache** | <ul><li>[Azure Redis Cache への通信が SSL 経由であることを確認する](#redis-ssl)</li></ul> |
+| **Azure Cache for Redis** | <ul><li>[Azure Cache for Redis への通信が SSL 経由であることを確認する](#redis-ssl)</li></ul> |
 | **IoT フィールド ゲートウェイ** | <ul><li>[デバイスからフィールド ゲートウェイへの通信をセキュリティで保護する](#device-field)</li></ul> |
 | **IoT クラウド ゲートウェイ** | <ul><li>[デバイスからクラウド ゲートウェイへの通信を SSL/TLS を使用してセキュリティで保護する](#device-cloud)</li></ul> |
 
@@ -146,7 +146,7 @@ ms.locfileid: "51247383"
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [OWASP HTTP Strict Transport Security チート シートを有効にする](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
-| **手順** | <p>HTTP Strict Transport Security (HSTS) は、特別な応答ヘッダーを使用して Web アプリケーションで指定されるオプトイン セキュリティ拡張機能です。 サポートされているブラウザーがこのヘッダーを受け取ると、そのブラウザーでは、指定したドメインへの HTTP 経由の通信を送信できなくなり、代わりにすべての通信が HTTPS 経由で送信されます。 HTTPS クリックスルー メッセージもブラウザーに表示されなくなります。</p><p>HSTS を実装するには、コードまたは config で、応答ヘッダー Strict-Transport-Security: max-age=300; includeSubDomains を、Web サイトに対してグローバルに構成する必要があります。HSTS では、次の脅威に対応します。</p><ul><li>ユーザーが http://example.com をブックマークするか手動で入力し、man-in-the middle 攻撃を受けている: HSTS は、HTTP 要求を対象ドメインの HTTPS に自動的にリダイレクトします</li><li>HTTPS のみを対象とする Web アプリケーションに不注意で HTTP リンクが含まれている、または HTTP 経由でコンテンツを提供している: HSTS は、HTTP 要求を対象ドメインの HTTPS に自動的にリダイレクトします</li><li>man-in-the-middle 攻撃者が、無効な証明書を使用して攻撃対象ユーザーからのトラフィックを傍受しようとしており、そのユーザーが不正な証明書を受け入れることを期待している: HSTS は、ユーザーによる無効な証明書メッセージのオーバーライドを許可しません</li></ul>|
+| **手順** | <p>HTTP Strict Transport Security (HSTS) は、特別な応答ヘッダーを使用して Web アプリケーションで指定されるオプトイン セキュリティ拡張機能です。 サポートされているブラウザーがこのヘッダーを受け取ると、そのブラウザーでは、指定したドメインへの HTTP 経由の通信を送信できなくなり、代わりにすべての通信が HTTPS 経由で送信されます。 HTTPS クリックスルー メッセージもブラウザーに表示されなくなります。</p><p>HSTS を実装するには、コードまたは config で、応答ヘッダー Strict-Transport-Security: max-age=300; includeSubDomains を、Web サイトに対してグローバルに構成する必要があります。HSTS では、次の脅威に対応します。</p><ul><li>ユーザーは https://example.com をブックマークするか手動で入力し、中間者攻撃を受ける。HSTS は HTTP 要求をターゲット ドメインの HTTPS に自動的にリダイレクトします。</li><li>HTTPS のみを目的とした Web アプリケーションで、うっかり HTTP リンクを含めてしまうかまたは HTTP 経由でコンテンツを提供する。HSTS は HTTP 要求をターゲット ドメインの HTTPS に自動的にリダイレクトします。</li><li>中間者攻撃で、無効な証明書を使用して攻撃対象ユーザーからのトラフィックを傍受しようとしており、ユーザーに不正な証明書を受け入れさせようとしている。HSTS は、無効な証明書のメッセージを上書きするユーザーを許可しません。</li></ul>|
 
 ## <a id="sqlserver-validation"></a>SQL Server 接続の暗号化と証明書の検証を確認する
 
@@ -313,7 +313,7 @@ public interface IService
 ```
 
 ### <a name="example"></a>例
-`ProtectionLevel.Sign` の操作コントラクトの例 (詳細な制御): OperationContract レベルで `ProtectionLevel.Sign` を使用する例を次に示します。
+`ProtectionLevel.Sign` の操作コントラクトの例 (詳細な制御): 次に示すのは、`ProtectionLevel.Sign`OperationContract レベルでの使用例です。
 
 ```
 [OperationContract(ProtectionLevel=ProtectionLevel.Sign] 
@@ -339,7 +339,7 @@ string GetData(int value);
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | MVC5、MVC6 |
 | **属性**              | 該当なし  |
-| **参照**              | [Web API コント ローラーでの SSL の適用](http://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
+| **参照**              | [Web API コント ローラーでの SSL の適用](https://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
 | **手順** | アプリケーションに HTTPS と HTTP の両方のバインドがある場合、クライアントは引き続き HTTP を使用してサイトにアクセスできます。 これを防ぐには、アクション フィルターを使用して、保護された API への要求が常に HTTPS を経由するように指定します。|
 
 ### <a name="example"></a>例 
@@ -372,16 +372,16 @@ public class ValuesController : ApiController
 }
 ```
  
-## <a id="redis-ssl"></a>Azure Redis Cache への通信が SSL 経由であることを確認する
+## <a id="redis-ssl"></a>Azure Cache for Redis への通信が SSL 経由であることを確認する
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure Redis Cache | 
+| **コンポーネント**               | Azure Cache for Redis | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Azure Redis SSL サポート](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
-| **手順** | Redis サーバーは既定で SSL をサポートしませんが、Azure Redis Cache では SSL がサポートされます。 Azure Redis Cache に接続するときに、クライアントが StackExchange.Redis のように SSL をサポートしている場合は、SSL を使用する必要があります。 既定では、新しい Azure Redis Cache インスタンスに対して非 SSL ポートが無効になっています。 Redis クライアントの SSL サポートに対する依存関係がない限り、このセキュリティで保護された既定値が変更されていないことを確認してください。 |
+| **手順** | Redis サーバーは既定で SSL をサポートしませんが、Azure Cache for Redis では SSL がサポートされます。 Azure Cache for Redis に接続しようとしていて、クライアントが StackExchange.Redis のように SSL をサポートしている場合は、SSL を使用する必要があります。 既定では、新しい Azure Cache for Redis インスタンスの SSL 以外のポートは無効になっています。 Redis クライアントの SSL サポートに対する依存関係がない限り、このセキュリティで保護された既定値が変更されていないことを確認してください。 |
 
 Redis は、信頼された環境の信頼されたクライアントによってアクセスされるように設計されています。 つまり、Redis インスタンスを、インターネット (一般的には、信頼されていないクライアントが Redis TCP ポートまたは UNIX ソケットに直接アクセスする環境) に直接公開することはお勧めしません。 
 

@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: d0008c19ed96f731f7b57c5d8aa41cd9f128bc20
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6004c02f190bbfcf374b3b5d2a5c478f0e52c961
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296038"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58165902"
 ---
 # <a name="get-started-with-the-informix-connector"></a>Informix コネクタの概要
 Microsoft Connector for Informix は、IBM Informix データベースに格納されているリソースに Logic Apps を接続します。 Informix コネクタには、TCP/IP ネットワーク経由でリモート Informix サーバー コンピューターと通信する Microsoft クライアントが含まれています。 これには、Azure 仮想化で実行されている IBM Informix for Windows などのクラウド データベースと、オンプレミス データ ゲートウェイを使用するオンプレミス データベースが含まれます。 (このトピックの) IBM Informix のプラットフォームとバージョンの [サポート対象一覧](connectors-create-api-informix.md#supported-informix-platforms-and-versions) をご覧ください。
@@ -47,7 +47,7 @@ Logic Apps の詳細については、 [ロジック アプリの作成](../logi
 ## <a name="list-tables"></a>テーブルをリストする
 操作に関するロジック アプリの作成は、Microsoft Azure ポータルを通じて実行する多くの手順で構成されています。
 
-ロジック アプリ内で、Informix データベースのテーブルのリストを表示するアクションを追加できます。 このアクションでは、Informix スキーマ ステートメント ( `CALL SYSIBM.SQLTABLES`など) を処理するようコネクタに指示します。
+ロジック アプリ内で、Informix データベースのテーブルのリストを表示するアクションを追加できます。 このアクションでは、Informix スキーマ ステートメント (`CALL SYSIBM.SQLTABLES` など) を処理するようコネクタに指示します。
 
 ### <a name="create-a-logic-app"></a>ロジック アプリを作成します
 1. **Azure のスタート画面**で、**[+]** (プラス記号)、**[Web + モバイル]**、**[Logic App]** の順に選択します。
@@ -82,12 +82,12 @@ Logic Apps の詳細については、 [ロジック アプリの作成](../logi
 
 | プロパティ | 説明 |
 | --- | --- |
-| [サーバー] |必須。 (コロンで区切られた後に) TCP/IP ポート番号が続く、IPv4 または IPv6 形式の TCP/IP アドレスまたはエイリアスを表す文字列値を受け入れます。 |
-| [データベース] |必須。 DRDA リレーショナル データベース名 (RDBNAM) を表す文字列値を受け入れます。 Informix は、128 バイトの文字列を受け入れます (database は IBM Informix データベース名 (dbname) です)。 |
-| [認証] |省略可能。 リスト項目値 (Basic または Windows (kerberos)) を受け入れます。 |
-| [ユーザー名] |必須。 文字列値を受け入れます。 |
+| サーバー |必須。 (コロンで区切られた後に) TCP/IP ポート番号が続く、IPv4 または IPv6 形式の TCP/IP アドレスまたはエイリアスを表す文字列値を受け入れます。 |
+| database |必須。 DRDA リレーショナル データベース名 (RDBNAM) を表す文字列値を受け入れます。 Informix は、128 バイトの文字列を受け入れます (database は IBM Informix データベース名 (dbname) です)。 |
+| 認証 |省略可能。 リスト項目値 (Basic または Windows (kerberos)) を受け入れます。 |
+| ユーザー名 |必須。 文字列値を受け入れます。 |
 | password |必須。 文字列値を受け入れます。 |
-| [ゲートウェイ] |必須。 ストレージ グループ内の Logic Apps に定義されたオンプレミス データ ゲートウェイを表す、リスト項目値を受け入れます。 |
+| ゲートウェイ |必須。 ストレージ グループ内の Logic Apps に定義されたオンプレミス データ ゲートウェイを表す、リスト項目値を受け入れます。 |
 
 ## <a name="create-the-on-premises-gateway-connection"></a>オンプレミス ゲートウェイ接続を作成する
 このコネクタは、オンプレミス データ ゲートウェイを使用してオンプレミスの Informix データベースにアクセスできます。 詳細については、ゲートウェイのトピックをご覧ください。 
@@ -154,7 +154,7 @@ Informix テーブル内のすべての行を取得するロジック アプリ�
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowsOutputs.png)
 
 ## <a name="add-one-row-using-insert"></a>INSERT を使用した 1 つの行の追加
-Informix テーブル内の 1 つの行を追加するロジック アプリのアクションを作成できます。 このアクションでは、Informix の INSERT ステートメント ( `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`など) を処理するようコネクタに指示します。
+Informix テーブル内の 1 つの行を追加するロジック アプリのアクションを作成できます。 このアクションでは、Informix INSERT ステートメント (`INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)` など) を処理するようコネクタに指示します。
 
 ### <a name="create-a-logic-app"></a>ロジック アプリを作成します
 1. **Azure のスタート画面**で、**[+]** (プラス記号)、**[Web + モバイル]**、**[Logic App]** の順に選択します。
@@ -181,7 +181,7 @@ Informix テーブル内の 1 つの行を追加するロジック アプリの�
     ![](./media/connectors-create-api-informix/InformixconnectorInsertRowOutputs.png)
 
 ## <a name="fetch-one-row-using-select"></a>SELECT を使用して 1 つの行を取得する
-Informix テーブル内の 1 つの行を取得するロジック アプリのアクションを作成できます。 このアクションでは、Informix の SELECT WHERE ステートメント ( `SELECT FROM AREA WHERE AREAID = '99999'`など) を処理するようコネクタに指示します。
+Informix テーブル内の 1 つの行を取得するロジック アプリのアクションを作成できます。 このアクションでは、Informix の SELECT WHERE ステートメント (`SELECT FROM AREA WHERE AREAID = '99999'` など) を処理するようコネクタに指示します。
 
 ### <a name="create-a-logic-app"></a>ロジック アプリを作成します
 1. **Azure のスタート画面**で、**[+]** (プラス記号)、**[Web + モバイル]**、**[Logic App]** の順に選択します。
@@ -209,7 +209,7 @@ Informix テーブル内の 1 つの行を取得するロジック アプリの�
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowOutputs.png)
 
 ## <a name="change-one-row-using-update"></a>UPDATE を使用して 1 つの行を変更する
-Informix テーブル内の 1 つの行を変更するロジック アプリのアクションを作成できます。 このアクションでは、Informix の UPDATE ステートメント ( `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`など) を処理するようコネクタに指示します。
+Informix テーブル内の 1 つの行を変更するロジック アプリのアクションを作成できます。 このアクションでは、Informix の UPDATE ステートメント (`UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)` など) を処理するようコネクタに指示します。
 
 ### <a name="create-a-logic-app"></a>ロジック アプリを作成します
 1. **Azure のスタート画面**で、**[+]** (プラス記号)、**[Web + モバイル]**、**[Logic App]** の順に選択します。
@@ -236,7 +236,7 @@ Informix テーブル内の 1 つの行を変更するロジック アプリの�
     ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowOutputs.png)
 
 ## <a name="remove-one-row-using-delete"></a>DELETE を使用した 1 つの行の削除
-Informix テーブル内の 1 つの行を削除するロジック アプリのアクションを作成できます。 このアクションでは、Informix の DELETE ステートメント ( `DELETE FROM AREA WHERE AREAID = '99999'`など) を処理するようコネクタに指示します。
+Informix テーブル内の 1 つの行を削除するロジック アプリのアクションを作成できます。 このアクションでは、Informix の DELETE ステートメント (`DELETE FROM AREA WHERE AREAID = '99999'` など) を処理するようコネクタに指示します。
 
 ### <a name="create-a-logic-app"></a>ロジック アプリを作成します
 1. **Azure のスタート画面**で、**[+]** (プラス記号)、**[Web + モバイル]**、**[Logic App]** の順に選択します。

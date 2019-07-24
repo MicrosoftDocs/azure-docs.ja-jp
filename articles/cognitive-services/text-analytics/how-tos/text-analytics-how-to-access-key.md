@@ -3,19 +3,19 @@ title: Text Analytics API のアクセス キーを取得する
 titleSuffix: Azure Cognitive Services
 description: Text Analytics 操作に対してアクセス キーを取得し、Cognitive Services で処理するために生テキストを送信します。
 services: cognitive-services
-author: HeidiSteen
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/12/2018
-ms.author: heidist
-ms.openlocfilehash: b9945aece34bd7fa83eeb5c982693c4c3b898613
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: 813659b9b1a25e03bf599b0aa1dc9d6af67f1935
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603415"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002206"
 ---
 # <a name="how-to-find-endpoints-and-access-keys-for-the-text-analytics-cognitive-service"></a>Text Analytics Cognitive Service のエンドポイントとアクセス キーを見つける方法
 
@@ -33,7 +33,7 @@ Text Analytics にサインアップするとき、ご自身のサブスクリ�
 
 4. リンクをクリックすると、サービス ブレードが開きます。 **[リソース] > [キー]** から、または [要点] ウィンドウの **[Show access keys]\(アクセス キーを表示\)** をクリックすることで、キーを取得できます。 [要点] ウィンドウには、エンドポイントも表示されます。
 
- ![エンドポイントとキーを含むポータル ページ](../media/portal-keys-endpoint.png)
+   ![エンドポイントとキーを含むポータル ページ](../media/portal-keys-endpoint.png)
 
 ## <a name="see-also"></a>関連項目 
 

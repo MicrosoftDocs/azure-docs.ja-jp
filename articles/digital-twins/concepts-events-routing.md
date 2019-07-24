@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: a1a31ec7ee0d1daea9f178e51dc860279d3787ec
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: b7ace0718ea0fad0b746a40c90acff487ae314d5
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615349"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035697"
 ---
 # <a name="routing-events-and-messages"></a>ルーティング イベントおよびメッセージ
 
@@ -23,9 +23,9 @@ IoT ソリューションでは、多くの場合、ストレージ、分析、�
 
 Azure Digital Twins には、IoT イベントを他の Azure サービスやビジネス アプリケーションに統合するための 2 つの方法が用意されています。
 
-* **Digital Twins イベントのルーティング**: Azure Digital Twins イベントは、空間グラフ内のオブジェクトが変化したとき、テレメトリ データが受信されたとき、または事前定義された条件に基づいてユーザー定義関数が通知を作成したときにトリガーされます。 ユーザーは、さらに処理するために、これらのイベントを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)、[Azure Service Bus トピック](https://azure.microsoft.com/services/service-bus/)、または [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) に送信できます。
+* **Azure Digital Twins イベントのルーティング**:Azure Digital Twins イベントは、空間グラフ内のオブジェクトが変化したとき、テレメトリ データが受信されたとき、または事前定義された条件に基づいてユーザー定義関数が通知を作成したときにトリガーされます。 ユーザーは、さらに処理するために、これらのイベントを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)、[Azure Service Bus トピック](https://azure.microsoft.com/services/service-bus/)、または [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) に送信できます。
 
-* **デバイス テレメトリのルーティング**: イベントのルーティングだけでなく、Azure Digital Twins では生デバイス テレメトリ メッセージを Event Hubs にルーティングして、さらに洞察と分析を行うことができます。 この種のメッセージは、Azure Digital Twins によって処理されません。 これらはイベント ハブにのみ転送されます。
+* **デバイス テレメトリのルーティング**:イベントのルーティングだけでなく、Azure Digital Twins では生デバイス テレメトリ メッセージを Event Hubs にルーティングして、さらに解析や分析を行うことができます。 この種のメッセージは、Azure Digital Twins によって処理されません。 これらはイベント ハブにのみ転送されます。
 
 ユーザーは、イベントの送信またはメッセージの転送のためのエグレス エンドポイントを 1 つ以上指定できます。 イベントとメッセージは、これらの定義済みのルーティング設定に従って、エンドポイントに送信されます。 つまり、ユーザーは、グラフ操作イベントの受信用に特定のエンドポイントを指定し、デバイスのテレメトリ イベントの受信用に別のエンドポイントを指定できます。
 
@@ -65,6 +65,7 @@ Azure Digital Twins サービスでは、現在、以下の **EndpointTypes** �
 ## <a name="next-steps"></a>次の手順
 
 - Azure Digital Twins のプレビューの制限については、「[パブリック プレビューのサービスの制限](concepts-service-limits.md)」をご覧ください。
+
 - Azure Digital Twins のサンプルを試すには、[使用可能な部屋を検索するクイック スタート](quickstart-view-occupancy-dotnet.md)のページをご覧ください。
 
 <!-- Images -->

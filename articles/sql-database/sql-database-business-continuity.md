@@ -4,25 +4,25 @@ description: Azure SQL Database がどのようにクラウド ビジネス継�
 keywords: ビジネス継続性, クラウド ビジネス継続性, データベースの障害復旧, データベース復旧
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 10/23/2018
-ms.openlocfilehash: 9dab136795094350abe29e7d779a22ec1c94ef70
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 04/04/2019
+ms.openlocfilehash: dfa5d4cb2d782f1466329300157a64fd17765460
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986661"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59797695"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Database によるビジネス継続性の概要
 
-Azure SQL Database は、Azure クラウド環境用に構成および最適化された最新の安定した SQL Server データベース エンジンの実装であり、ビジネス プロセスに影響を与える可能性があるエラーに対する[高可用性](sql-database-high-availability.md)と回復力を提供します。 Azure SQL Database での**ビジネス継続性**とは、中断 (特にそのコンピューティング インフラストラクチャに対する) が発生した場合でもビジネス活動を続けることができるようにするメカニズム、ポリシー、手順のことです。 ほとんどの場合、Azure SQL Database はクラウド環境で発生する可能性がある破壊的なイベントを処理し、ビジネス プロセスの実行を維持します。 ただし、次のような SQL Database では対処できない破壊的なイベントがあります。
+Azure SQL Database での**ビジネス継続性**とは、中断 (特にそのコンピューティング インフラストラクチャに対する) が発生した場合でもビジネス活動を続けることができるようにするメカニズム、ポリシー、手順を指します。 ほとんどの場合、Azure SQL Database はクラウド環境で発生する可能性がある破壊的なイベントを処理し、アプリケーションとビジネス プロセスの実行を維持します。 ただし、次のような SQL Database では対処できない破壊的なイベントがあります。
 
 - ユーザーが誤ってテーブルの行を削除または更新した。
 - 悪意のある攻撃者がデータの削除やデータベースの削除に成功した。
@@ -46,23 +46,28 @@ SQL Database には、自動バックアップやオプションのデータベ�
 
 - [テンポラル テーブル](sql-database-temporal-tables.md)では、任意の時点から行バージョンを復元することができます。
 - [組み込み自動バックアップ](sql-database-automated-backups.md)と[ポイントイン タイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)では、過去 35 日以内のいずれかの時点にデータベース全体を復元することができます。
-- **論理サーバーが削除されていない**場合は、[削除されたデータベースを削除された時点に戻す](sql-database-recovery-using-backups.md#deleted-database-restore)ことができます。
+- **SQL Database サーバーが削除されていない**場合は、[削除されたデータベースを削除された時点に戻す](sql-database-recovery-using-backups.md#deleted-database-restore)ことができます。
 - [長期的なバックアップ保有期間](sql-database-long-term-retention.md)では、バックアップを 10 年間保持することができます。
-- [自動フェールオーバー グループ](sql-database-geo-replication-overview.md#auto-failover-group-capabilities)を使用すると、データ センター規模の機能停止が発生した場合に、アプリケーションを自動的に復旧することができます。
+- データ センターの停止またはアプリケーションのアップグレードが発生した場合に、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)を使って、読み取り可能レプリカを作成し、手動で任意のレプリカにフェールオーバーできます。
+- [自動フェールオーバー グループ](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities)を使用すると、データ センターの機能停止が発生した場合に、アプリケーションを自動的に復旧することができます。
 
 推定復旧時間 (ERT) と、最近のトランザクションに対する潜在的なデータ損失の特徴が、それぞれ異なります。 オプションについて理解したら、その中から適切なものを選択できます。これらのオプションは、ほとんどの場合、さまざまなシナリオに対して組み合わせて使用できます。 ビジネス継続性計画を開発するときは、破壊的なイベントが発生してから、アプリケーションが完全に復旧するまでの最大許容時間について理解する必要があります。 アプリケーションを完全に復旧するために必要な時間は、目標復旧時間 (RTO) と呼ばれます。 さらに、破壊的なイベントの発生後、復旧中にアプリケーションが損失を許容できる最大データ更新 (期間) 量についても理解しなければなりません。 損失を許容できる更新の期間は、目標復旧時点 (RPO) と呼ばれます。
 
-次の表では、最も一般的な 3 つのシナリオについて、各サービス レベルの ERT と RPO を比較しています。
+次の表では、最も一般的なシナリオについて、サービス レベルごとの ERT と RPO を比較しています。
 
 | 機能 | Basic | 標準 | Premium | 汎用 | Business Critical
 | --- | --- | --- | --- |--- |--- |
 | バックアップからのポイントインタイム リストア |7 日間以内のあらゆる復元ポイント |35 日間以内のあらゆる復元ポイント |35 日間以内のあらゆる復元ポイント |構成済み期間内の任意の復元ポイント (最大 35 日間)|構成済み期間内の任意の復元ポイント (最大 35 日間)|
 | Geo レプリケーション バックアップからの geo リストア |ERT < 12 時間<br> RPO < 1 時間 |ERT < 12 時間<br>RPO < 1 時間 |ERT < 12 時間<br>RPO < 1 時間 |ERT < 12 時間<br>RPO < 1 時間|ERT < 12 時間<br>RPO < 1 時間|
 | 自動フェールオーバー グループ |RTO = 1 時間<br>RPO < 5 秒 |RTO = 1 時間<br>RPO < 5 秒 |RTO = 1 時間<br>RPO < 5 秒 |RTO = 1 時間<br>RPO < 5 秒|RTO = 1 時間<br>RPO < 5 秒|
+| 手動のデータベース フェールオーバー |ERT = 30 秒<br>RPO < 5 秒 |ERT = 30 秒<br>RPO < 5 秒 |ERT = 30 秒<br>RPO < 5 秒 |ERT = 30 秒<br>RPO < 5 秒|ERT = 30 秒<br>RPO < 5 秒|
+
+> [!NOTE]
+> *手動のデータベース フェールオーバー*は、[計画外モード](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities)を使用して、単一データベースをその geo レプリケートされたセカンダリにフェールオーバーすることを指します。
 
 ## <a name="recover-a-database-to-the-existing-server"></a>既存のサーバーにデータベースを復旧する
 
-SQL Database は、データ損失からビジネスを守るために、データベースの完全バックアップ (毎週)、データベースの差分バックアップ (通常は 12 時間ごと)、およびトランザクション ログのバックアップ (5 - 10 分ごと) を組み合わせて自動的に実行します。 バックアップは、Basic DTU サービス レベルを除くすべてのサービス レベルで 35 日間 RA-GRS ストレージに保持されます。Basic DTU サービス レベルのバックアップは 7 日間保持されます。 詳細については、[データベースの自動バックアップ](sql-database-automated-backups.md)に関するページをご覧ください。 Azure portal、PowerShell、または REST API を使用して、既存のデータベースを同じ論理サーバー上の新しいデータベースとして、自動バックアップから以前の時点に復元できます。 詳細については、「[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)」をご覧ください。
+SQL Database は、データ損失からビジネスを守るために、データベースの完全バックアップ (毎週)、データベースの差分バックアップ (通常は 12 時間ごと)、およびトランザクション ログのバックアップ (5 - 10 分ごと) を組み合わせて自動的に実行します。 バックアップは、Basic DTU サービス レベルを除くすべてのサービス レベルで 35 日間 RA-GRS ストレージに保持されます。Basic DTU サービス レベルのバックアップは 7 日間保持されます。 詳細については、[データベースの自動バックアップ](sql-database-automated-backups.md)に関するページをご覧ください。 Azure portal、PowerShell、または REST API を使用して、既存のデータベースを同じ SQL Database サーバー上の新しいデータベースとして、自動バックアップから以前の時点に復元できます。 詳細については、「[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)」をご覧ください。
 
 サポートされているポイントインタイム リストア (PITR) リテンション期間がアプリケーションにとって十分でない場合は、データベースの長期リテンション期間 (LTR) ポリシーを構成することで、リテンション期間を拡張できます。 詳細については、「[Long-term backup retention](sql-database-long-term-retention.md)」(長期バックアップ リテンション) をご覧ください。
 
@@ -75,8 +80,7 @@ SQL Database は、データ損失からビジネスを守るために、デー�
 - データ変更率 (1 時間あたりのトランザクション数など) が低く、最大 1 時間分の変更に対するデータ損失を許容できる。
 - コスト重視である。
 
-さらに迅速な復旧が必要な場合は、[フェールオーバー グループ](sql-database-geo-replication-overview.md#auto-failover-group-capabilities
-) (後述) を使用してください。 35 日より前の期間のデータを回復する能力が必要な場合は、[長期リテンション期間](sql-database-long-term-retention.md)を使用します。
+迅速に復旧する必要がある場合は、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)または[自動フェールオーバー グループ](sql-database-auto-failover-group.md)を使用してください。 35 日より前の期間のデータを回復する能力が必要な場合は、[長期リテンション期間](sql-database-long-term-retention.md)を使用します。
 
 ## <a name="recover-a-database-to-another-region"></a>別のリージョンにデータベースを復旧する
 
@@ -84,14 +88,14 @@ SQL Database は、データ損失からビジネスを守るために、デー�
 
 - オプションの 1 つは、データ センターの停止が終了し、データベースがオンラインに戻るのを待つことです。 このオプションは、オフラインのデータベースが許容されるアプリケーションで有効です。 たとえば、常時作業する必要のない開発プロジェクトや無料試用版がこれに該当します。 また、データ センターが停止したときに、復旧までの時間を予測できないため、当面はデータベースが必要ない場合にのみ使用できます。
 - もう 1 つのオプションは、[geo 冗長データベース バックアップ](sql-database-recovery-using-backups.md#geo-restore) (geo リストア) を使用して、任意の Azure リージョン内の任意のサーバーにデータベースを復元する方法です。 geo リストアではソースとして geo 冗長バックアップが使用され、障害によってデータベースまたはデータセンターにアクセスできない場合でも、geo リストアを使用してデータベースを復旧できます。
-- 最後に、ご利用のデータベース (複数可) に[自動フェールオーバー グループ](sql-database-geo-replication-overview.md#auto-failover-group-capabilities)を構成しておけば、機能停止の状態から迅速に復旧することができます。 フェールオーバー ポリシーをカスタマイズして、自動フェールオーバーまたは手動フェールオーバーを使用することができます。 フェールオーバーそのものにかかる時間はほんの数秒ですが、サービスをアクティブにするために少なくとも 1 時間はかかります。 これは、機能停止の規模に見合ったフェールオーバーを確実に行ううえで必要な時間です。 また、非同期レプリケーションの特性上、フェールオーバーによって少量のデータが失われることがあります。 自動フェールオーバーの RTO と RPO について詳しくは、この記事の前出の表を参照してください。
+- 最後に、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)を使用した geo セカンダリか、または 1 つまたは複数のデータベースの[自動フェールオーバー グループ](sql-database-auto-failover-group.md)のどちらかを構成している場合は、障害からすばやく復旧できます。 選択するテクノロジに応じて、手動または自動フェールオーバーを使用できます。 フェールオーバーそのものにかかる時間はほんの数秒ですが、サービスをアクティブにするために少なくとも 1 時間はかかります。 これは、機能停止の規模に見合ったフェールオーバーを確実に行ううえで必要な時間です。 また、非同期レプリケーションの特性上、フェールオーバーによって少量のデータが失われることがあります。 自動フェールオーバーの RTO と RPO について詳しくは、この記事の前出の表を参照してください。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
 >
 > [!IMPORTANT]
 > アクティブ geo レプリケーションと自動フェールオーバー グループを使用するには、サブスクリプション所有者であるか、SQL Server の管理アクセス許可を持っている必要があります。 Azure ポータル、PowerShell、または REST API で構成およびフェールオーバーを行う場合は、Azure サブスクリプションのアクセス許可を使用できます。Transact-SQL で行う場合は、SQL Server のアクセス許可を使用できます。
 
-アクティブ自動フェールオーバー グループは、アプリケーションが次のいずれかの条件を満たす場合に使用します。
+自動フェールオーバー グループは、アプリケーションが次のいずれかの条件を満たす場合に使用します。
 
 - ミッション クリティカルである。
 - サービス レベル アグリーメント (SLA) で 12 時間以上のダウンタイムが許可されていない。
@@ -101,13 +105,14 @@ SQL Database は、データ損失からビジネスを守るために、デー�
 
 アクションを実行するタイミング、復旧にかかる時間、および発生するデータ損失の量は、ビジネス継続性機能をアプリケーションでどのように使用するかによって異なります。 実際は、アプリケーションの要件に応じて、データベース バックアップとアクティブ geo レプリケーションを組み合わせて使用できます。 ビジネス継続性機能を使用したスタンドアロン データベースおよびエラスティック プール用アプリケーション設計に関する考慮事項については、[クラウド ディザスター リカバリー用のアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページと [Elastic Pool のディザスター リカバリー戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。
 
+
 以下のセクションでは、データベース バックアップまたは アクティブ geo レプリケーションのいずれかを使用して復旧する手順の概要について説明します。 要件の計画、復旧後の手順、障害をシミュレートしてディザスター リカバリー訓練を実施する方法など、詳細な手順については、[障害からの SQL Database 復旧](sql-database-disaster-recovery.md)に関するページをご覧ください。
 
 ### <a name="prepare-for-an-outage"></a>障害に備える
 
 使用するビジネス継続性機能に関係なく、次の操作を行う必要があります。
 
-- サーバー レベルのファイアウォール規則、ログイン、マスター データベース レベルのアクセス許可など、ターゲット サーバーを特定して準備します。
+- サーバー レベルの IP ファイアウォール規則、ログイン、マスター データベース レベルのアクセス許可など、ターゲット サーバーを特定して準備します。
 - クライアントとクライアント アプリケーションを、新しいサーバーにリダイレクトする方法を決めます
 - 監査の設定、アラートなど、他の依存関係を文書化します
 
@@ -115,7 +120,7 @@ SQL Database は、データ損失からビジネスを守るために、デー�
 
 ### <a name="fail-over-to-a-geo-replicated-secondary-database"></a>geo レプリケートされたセカンダリ データベースにフェールオーバーする
 
-アクティブ geo レプリケーションと自動フェールオーバー グループを復旧メカニズムとして使用している場合は、自動フェールオーバー ポリシーを構成するか[手動フェールオーバー](sql-database-disaster-recovery.md#fail-over-to-geo-replicated-secondary-server-in-the-failover-group)を使用できます。 いったん開始すると、フェールオーバーによってセカンダリは新しいプライマリになり、新しいトランザクションを記録してクエリに応答できるようになります。失われるのは、レプリケートされなかった最小限のデータだけです。 フェールオーバー プロセスの設計については、[クラウド障害復旧用のアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページをご覧ください。
+復旧メカニズムとしてアクティブ geo レプリケーションまたは自動フェールオーバー グループを使用している場合は、自動フェールオーバー ポリシーを構成するか、または[手動の計画外フェールオーバー](sql-database-active-geo-replication-portal.md#initiate-a-failover)を使用できます。 いったん開始すると、フェールオーバーによってセカンダリは新しいプライマリになり、新しいトランザクションを記録してクエリに応答できるようになります。失われるのは、レプリケートされなかった最小限のデータだけです。 フェールオーバー プロセスの設計については、[クラウド障害復旧用のアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページをご覧ください。
 
 > [!NOTE]
 > データ センターがオンラインに戻ると、古いプライマリは自動的に新しいプライマリに再接続し、セカンダリ データベースになります。 プライマリを元のリージョンに再配置する場合は、計画されたフェールオーバーを手動で開始することができます (フェールバック)。
@@ -132,7 +137,7 @@ geo 冗長ストレージ (既定で有効) で自動バックアップを使用
 復旧にどちらのメカニズムを使ったとしても、ユーザーおよびアプリケーションの動作を元に戻す前に、次の追加タスクを実行する必要があります。
 
 - クライアントとクライアント アプリケーションを、新しいサーバーおよび復元されたサーバーにリダイレクトする
-- ユーザーが接続できるように、適切なサーバー レベルのファイアウォール規則が適用されていることを確認する (または [データベース レベルのファイアウォール](sql-database-firewall-configure.md#creating-and-managing-firewall-rules)を使用する)
+- ユーザーが接続できるように、適切なサーバー レベルの IP ファイアウォール規則が適用されていることを確認する。または、[データベース レベルのファイアウォール](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-the-azure-portal)を使用して、適切な規則を有効にする。
 - 適切なログインとマスター データベース レベルのアクセス許可が適切に指定されていることを確認する (または [包含ユーザー](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)を使用する)
 - 必要に応じて、監査を構成する
 - 必要に応じて、アラートを構成する

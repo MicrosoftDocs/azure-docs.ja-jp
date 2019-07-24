@@ -2,18 +2,18 @@
 title: Azure Data Catalog 開発者の概念
 description: Catalog REST API によって公開される Azure Data Catalog 概念モデルの主要な概念の概要を説明します。
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 97dafe01db4779332a530dc8981b3d6ada8c9df9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 42e4b545a48bcbd0ad4b7faf077ebdbfe21648b1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406517"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006694"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog 開発者の概念
 Microsoft **Azure Data Catalog** は、データ ソース検出およびデータ ソース メタデータのクラウド ソーシングの機能を提供する、フル マネージドのクラウド サービスです。 開発者は、REST API を介してサービスを使用できます。 開発者が **Azure Data Catalog**を使いこなすには、サービスに実装されている概念を理解することが重要です。
@@ -78,7 +78,7 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 「主要な概念」セクションで説明したように、 **Azure Data Catalog** オブジェクト モデルには、資産または注釈を指定できる項目が含まれます。 項目には、省略可能または必須のプロパティがあります。 一部のプロパティは、すべての項目に適用されます。 一部のプロパティは、すべての資産に適用されます。 一部のプロパティは、特定の資産の型のみに適用されます。
 
 ### <a name="system-properties"></a>システム プロパティ
-<table><tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>timestamp</td><td>Datetime</td><td>項目が最後に変更された日時。 このフィールドは、項目が挿入されたときと、項目が更新されるたびに、サーバーによって生成されます。 公開操作の入力時に、このプロパティの値は無視されます。</td></tr><tr><td>id</td><td>Uri</td><td>項目の絶対 URL (読み取り専用)。 項目に対する一意のアドレス可能 URI です。  公開操作の入力時に、このプロパティの値は無視されます。</td></tr><tr><td>type</td><td>String</td><td>資産の型 (読み取り専用)。</td></tr><tr><td>etag</td><td>String</td><td>カタログ内の項目を更新する操作を実行するときに、オプティミスティック同時実行制御に使用できる項目のバージョンに対応する文字列。 *" を使用して任意の値と照合することができます。</td></tr></table>
+<table><tr><td><b>プロパティ名</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>項目が最後に変更された日時。 このフィールドは、項目が挿入されたときと、項目が更新されるたびに、サーバーによって生成されます。 公開操作の入力時に、このプロパティの値は無視されます。</td></tr><tr><td>id</td><td>Uri</td><td>項目の絶対 URL (読み取り専用)。 項目に対する一意のアドレス可能 URI です。  公開操作の入力時に、このプロパティの値は無視されます。</td></tr><tr><td>type</td><td>String</td><td>資産の型 (読み取り専用)。</td></tr><tr><td>etag</td><td>String</td><td>カタログ内の項目を更新する操作を実行するときに、オプティミスティック コンカレンシーに使用できる項目のバージョンに対応する文字列。 *" を使用して任意の値と照合することができます。</td></tr></table>
 
 ### <a name="common-properties"></a>共通のプロパティ
 これらのプロパティは、すべてのルート資産の型とすべての注釈の型に適用されます。
@@ -105,7 +105,7 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 ### <a name="root-asset-types"></a>ルート資産の型
 ルート資産の型は、カタログに登録できるデータ資産のさまざまな種類を表す型です。 ルート型ごとにビューがあり、ビューに含まれる資産と注釈が説明されています。 ビュー名は、REST API を使用して資産を発行するときに、対応する {view_name} url セグメントで使用する必要があります。
 
-<table><tr><td><b>資産の種類 (ビュー名)</b></td><td><b>追加のプロパティ</b></td><td><b>データ型</b></td><td><b>使用できる注釈</b></td><td><b>説明</b></td></tr><tr><td>Table ("tables")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>スキーマ<p>ColumnDescription<p>ColumnTag<p> エキスパート<p>プレビュー<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>ドキュメント<p></td><td>テーブルは、表形式のデータを表します。  例: SQL テーブル、SQL ビュー、Analysis Services 表形式テーブル、Analysis Services 多次元ディメンション、Oracle テーブルなど。   </td></tr><tr><td>Measure ("measures")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント<p></td><td>この型は、Analysis Services のメジャーを表します。</td></tr><tr><td></td><td>measure</td><td>分割</td><td></td><td>メジャーを説明するメタデータ。</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td></td><td>メジャーが計算されるかどうかを指定します。</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>メジャーの物理的なコンテナー。</td></tr><td>KPI ("kpis")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント</td><td></td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>メジャーの物理的なコンテナー。</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>KPI の対象の値を返す MDX 数値式または計算。</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>KPI の実際の値を返す MDX 数値式。</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>指定された時点での KPI の状態を表す MDX 式。</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>時間ごとに KPI の値を評価する MDX 式。 トレンドには、特定のビジネス コンテキストで役立つ、時間ベースの任意の条件を指定できます。</td>
+<table><tr><td><b>資産の種類 (ビュー名)</b></td><td><b>追加のプロパティ</b></td><td><b>データ型</b></td><td><b>使用できる注釈</b></td><td><b>説明</b></td></tr><tr><td>Table ("tables")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>スキーマ<p>ColumnDescription<p>ColumnTag<p> エキスパート<p>プレビュー<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>ドキュメント<p></td><td>テーブルは、表形式のデータを表します。  例: SQL テーブル、SQL ビュー、Analysis Services 表形式テーブル、Analysis Services 多次元ディメンション、Oracle テーブルなど。   </td></tr><tr><td>Measure ("measures")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント<p></td><td>この型は、Analysis Services のメジャーを表します。</td></tr><tr><td></td><td>measure</td><td>列</td><td></td><td>メジャーを説明するメタデータ。</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td></td><td>メジャーが計算されるかどうかを指定します。</td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>メジャーの物理的なコンテナー。</td></tr><td>KPI ("kpis")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント</td><td></td></tr><tr><td></td><td>measureGroup</td><td>String</td><td></td><td>メジャーの物理的なコンテナー。</td></tr><tr><td></td><td>goalExpression</td><td>String</td><td></td><td>KPI の対象の値を返す MDX 数値式または計算。</td></tr><tr><td></td><td>valueExpression</td><td>String</td><td></td><td>KPI の実際の値を返す MDX 数値式。</td></tr><tr><td></td><td>statusExpression</td><td>String</td><td></td><td>指定された時点での KPI の状態を表す MDX 式。</td></tr><tr><td></td><td>trendExpression</td><td>String</td><td></td><td>時間ごとに KPI の値を評価する MDX 式。 トレンドには、特定のビジネス コンテキストで役立つ、時間ベースの任意の条件を指定できます。</td>
 <tr><td>Report ("reports")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント<p></td><td>この型は、SQL Server Reporting Services のレポートを表します。 </td></tr><tr><td></td><td>assetCreatedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>String</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>String</td><td></td><td></td></tr><tr><td>Container ("containers")</td><td></td><td></td><td>説明<p>FriendlyName<p>タグ<p>エキスパート<p>AccessInstruction<p>ドキュメント<p></td><td>この型は、SQL データベース、Azure BLOB コンテナー、Analysis Services モデルなど、その他の資産のコンテナーを表します。</td></tr></table>
 
 ### <a name="annotation-types"></a>注釈の型
@@ -167,15 +167,15 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 共通の型は、プロパティの型として使用できますが、項目ではありません。
 
 <table>
-<tr><td><b>共通の型</b></td><td><b>Properties</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr>
+<tr><td><b>共通の型</b></td><td><b>プロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr>
 <tr><td>DataSourceInfo</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>sourceType</td><td>string</td><td>データ ソースの種類について説明します。  例: SQL Server、Oracle Database など。  </td></tr>
-<tr><td></td><td>ObjectType</td><td>string</td><td>データ ソース内のオブジェクトの種類について説明します。 例: SQL Server のテーブル、ビューなど。</td></tr>
+<tr><td></td><td>ObjectType</td><td>string</td><td>データ ソース内のオブジェクトの種類について説明します。 例: SQL Server のテーブル、ビュー。</td></tr>
 
 <tr><td>DataSourceLocation</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>protocol</td><td>string</td><td>必須。 データ ソースとの通信に使用されるプロトコルについて説明します。 例: SQl Server の "tds"、Oracle の "oracle" など。現在サポートされているプロトコルの一覧については、[データ ソース参照の仕様の DSL 構造体](data-catalog-dsr.md)を参照してください。</td></tr>
+<tr><td></td><td>protocol</td><td>string</td><td>必須。 データ ソースとの通信に使用されるプロトコルについて説明します。 例: SQl Server の "tds"、Oracle の "oracle" など。現在サポートされているプロトコルの一覧については、<a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">データ ソース参照の仕様の DSL 構造体</a>を参照してください。</td></tr>
 <tr><td></td><td>address</td><td>Dictionary<string, object></td><td>必須。 アドレスは、参照対象データ ソースの識別に使用されるプロトコルに固有の一連のデータです。 特定のプロトコルを対象にしたアドレス データ。つまり、プロトコルが不明な場合は意味がありません。</td></tr>
-<tr><td></td><td>[認証]</td><td>string</td><td>省略可能。 データ ソースとの通信に使用される認証スキーマ。 例: windows、oauth など。</td></tr>
+<tr><td></td><td>認証</td><td>string</td><td>省略可能。 データ ソースとの通信に使用される認証スキーマ。 例: windows、oauth など。</td></tr>
 <tr><td></td><td>connectionProperties</td><td>Dictionary<string, object></td><td>省略可能。 データ ソースに接続する方法の追加情報。</td></tr>
 
 <tr><td>SecurityPrincipal</td><td></td><td></td><td>バックエンドでは公開時に AAD に対して指定されたプロパティの検証は実行されません。</td></tr>
@@ -184,7 +184,7 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 <tr><td></td><td>firstName</td><td>string</td><td>ユーザーの名前 (表示用)。 省略可能。 "lastRegisteredBy" プロパティのコンテキストでのみ有効です。 "roles"、"permissions"、および "experts" のセキュリティ プリンシパルを指定するときに、この値を指定することはできません。</td></tr>
 <tr><td></td><td>lastName</td><td>string</td><td>ユーザーの姓 (表示用)。 省略可能。 "lastRegisteredBy" プロパティのコンテキストでのみ有効です。 "roles"、"permissions"、および "experts" のセキュリティ プリンシパルを指定するときに、この値を指定することはできません。</td></tr>
 
-<tr><td>分割</td><td></td><td></td><td></td></tr>
+<tr><td>列</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>name</td><td>string</td><td>列または属性の名前。</td></tr>
 <tr><td></td><td>type</td><td>string</td><td>列または属性のデータ型。 使用可能な型は、資産の sourceType データによって異なります。  型のサブセットのみがサポートされます。</td></tr>
 <tr><td></td><td>maxLength</td><td>int</td><td>列または属性に使用できる最大長。 データ ソースから派生します。 一部のソースの種類のみに適用されます。</td></tr>
@@ -213,7 +213,7 @@ Azure Data Catalog には、組み込みのデータ ソース プロトコル�
 
 ### <a name="custom-data-source-protocol-specification"></a>カスタム データ ソース プロトコルの仕様
 <table>
-<tr><td><b>種類</b></td><td><b>プロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr>
+<tr><td><b>Type</b></td><td><b>プロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr>
 
 <tr><td>DataSourceProtocol</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>namespace</td><td>string</td><td>プロトコルの名前空間。 名前空間の長さは 1 ～ 255 文字で、ドット (.) で区切られた 1 つ以上の空ではない部分を含める必要があります。 各部分の長さは 1 ～ 255 文字で、先頭には英字を指定し、英数字のみを使用する必要があります。</td></tr>
@@ -243,7 +243,7 @@ Azure Data Catalog では、次の 2 つの承認機構が使用されます。
 * アクセス許可ベースの承認
 
 ### <a name="roles"></a>ロール
-**管理者**、**所有者**、**共同作成者**の 3 つのロールがあります。  各ロールは、次の表に示すスコープと権限を持ちます。
+次の 3 つのロールがあります。**管理者**、**所有者**、**共同作成者**。  各ロールは、次の表に示すスコープと権限を持ちます。
 
 <table><tr><td><b>ロール</b></td><td><b>スコープ</b></td><td><b>権限</b></td></tr><tr><td>管理者</td><td>カタログ (カタログ内のすべての資産と注釈)</td><td>Read Delete ViewRoles
 
@@ -273,14 +273,14 @@ ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Contributor</t
 > 
 > **所有者** ロールは、ルート項目のみに適用されます。
 > 
-> 既定では、カタログで項目が作成されると、その**共同作成者**が、現在認証されているユーザーに設定されます。 すべてのユーザーが項目を更新できるようにする必要がある場合は、項目を最初に公開するときに、**roles** プロパティで**共同作成者**を &lt;Everyone&gt; (特別なセキュリティ プリンシパル) に設定する必要があります (次の例を参照)。 **共同作成者**は変更することができず、項目の有効期間中同じままになります (**管理者**または**所有者**であっても、**共同作成者**を変更する権限がありません)。 **共同作成者**の明示的な設定でサポートされている唯一の値は &lt;Everyone&gt; です。つまり、**共同作成者**には、項目を作成したユーザーまたは &lt;Everyone&gt; のみを指定できます。
+> 既定では、カタログで項目が作成されると、その**共同作成者**が、現在認証されているユーザーに設定されます。 すべてのユーザーが項目を更新できるようにする必要がある場合は、項目を最初に公開するときに、**roles** プロパティで**共同作成者**を &lt;Everyone&gt; (特別なセキュリティ プリンシパル) に設定する必要があります (次の例を参照)。 **共同作成者**は変更することができず、項目の有効期間中同じままになります (**管理者**または**所有者**であっても、**共同作成者**を変更する権限がありません)。 **共同作成者**の明示的な設定でサポートされている唯一の値は &lt;Everyone&gt; です。**共同作成者**には、項目を作成したユーザーまたは &lt;Everyone&gt; のみを指定できます。
 > 
 > 
 
 ### <a name="examples"></a>例
 **項目を公開するときに、共同作成者を &lt;Everyone&gt; に設定します。**
 特別なセキュリティ プリンシパル &lt;Everyone&gt; の objectId は、"00000000-0000-0000-0000-000000000201" です。
-  **POST** https://api.azuredatacatalog.com/catalogs/default/views/tables/?api-version=2016-03-30
+  **POST** https:\//api.azuredatacatalog.com/catalogs/default/views/tables/?api-version=2016-03-30
 
 > [!NOTE]
 > HTTP クライアント実装の中には、サーバーからの 302 に対する応答として要求を自動的に再発行するものもありますが、通常は要求から Authorization ヘッダーが削除されます。 Authorization ヘッダーは Azure Data Catalog への要求に必要であるため、Azure Data Catalog で指定されたリダイレクト場所に要求を再発行する際は、Authorization ヘッダーが引き続き提供されるようにする必要があります。 以下のサンプル コードは、.NET HttpWebRequest オブジェクトを使用してこれを実現する方法を示しています。
@@ -302,7 +302,7 @@ ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Contributor</t
         ]
     }
 
-  **所有者を割り当て、既存のルート項目の表示を制限する**: **PUT** https://api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
+  **所有者を割り当て、既存のルート項目の表示を制限する**:**PUT** https:\//api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
 
     {
         "roles": [
@@ -347,7 +347,7 @@ ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Contributor</t
     }
 
 > [!NOTE]
-> PUT では、本文に項目のペイロードを指定する必要はありません。 PUT は、ロールまたはアクセス許可だけを更新するために使用できます。
+> PUT では、本文に項目のペイロードを指定する必要はありません。PUT は、ロールまたはアクセス許可だけを更新するために使用できます。
 > 
 > 
 

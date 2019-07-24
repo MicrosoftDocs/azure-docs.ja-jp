@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 65845d3f46732772a0e181b6409554b64075fe30
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274372"
 documentType: LandingData
 title: Azure Digital Twins のドキュメント
 metadata:
@@ -20,18 +14,18 @@ metadata:
 abstract:
   description: Azure Digital Twins を使って、人、場所、物を繋ぎ、空間インテリジェンスにより IoT ソリューションを構築します。 クイック スタートとチュートリアルを通じて、仮想スマート ビルディングを監視し、概要の詳細について学び、物理環境をモデル化する次世代の IoT ソリューションを作成します。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: <a href="quickstart-view-occupancy-dotnet">Azure Digital Twins .NET サンプルを使って、大気質の良い利用可能な部屋を見つける</a>方法を説明します。
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Azure Digital Twins ソリューションをカスタマイズまたは使用して、施設を監視する方法を説明します。
-  - type: list
-    style: ordered
+  - title: 5 分間のクイック スタート
     items:
-    - html: <a href="/azure/digital-twins/tutorial-facilities-setup">サンプル ビルディングをプロビジョニングする</a>
-    - html: <a href="/azure/digital-twins/tutorial-facilities-udf">ビルディングの状態を監視する</a>
-    - html: <a href="/azure/digital-twins/tutorial-facilities-events">ビルディングから通知を受け取る</a>
-    - html: <a href="/azure/digital-twins/tutorial-facilities-analyze">ビルディングからのイベントを分析する</a>
+      - type: paragraph
+        text: <a href="quickstart-view-occupancy-dotnet">Azure Digital Twins .NET サンプルを使って、大気質の良い利用可能な部屋を見つける</a>方法を説明します。
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: Azure Digital Twins ソリューションをカスタマイズまたは使用して、施設を監視する方法を説明します。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/digital-twins/tutorial-facilities-setup">サンプル ビルディングをプロビジョニングする</a>
+          - html: <a href="/azure/digital-twins/tutorial-facilities-udf">ビルディングの状態を監視する</a>
+          - html: <a href="/azure/digital-twins/tutorial-facilities-events">ビルディングから通知を受け取る</a>
+          - html: <a href="/azure/digital-twins/tutorial-facilities-analyze">ビルディングからのイベントを分析する</a>

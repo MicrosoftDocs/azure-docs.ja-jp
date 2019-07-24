@@ -1,26 +1,27 @@
 ---
 title: データ サイエンス仮想マシンにアクセス資格情報を安全に保存する - Azure | Microsoft Docs
-description: データ サイエンス仮想マシンにアクセス資格情報を安全に保存します。
+description: Data Science Virtual Machine にアクセス資格情報を安全に保存する方法を説明します。 マネージド サービス ID と Azure Key Vault を使用してアクセス資格情報を格納する方法を学習します。
 keywords: ディープ ラーニング, AI, データ サイエンス ツール, データ サイエンス仮想マシン, 地理空間分析, チーム データ サイエンス プロセス
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 1bf3150fc79f86e196be120fef78b76be8e47f63
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 79dba586a5f7102d0012c381593551a951f1b38e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344508"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451294"
 ---
 # <a name="store-access-credentials-on-the-data-science-virtual-machine-securely"></a>データ サイエンス仮想マシンにアクセス資格情報を安全に保存する
 

@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: cf183b0a78ff3f7e442ea8052f37fc2df58aac54
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: f88a560d4fa819a055534530ddc0862e4aa330fe
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262320"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351883"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -29,12 +29,12 @@ ms.locfileid: "51262320"
 Microsoft Azure Storage を使用してクライアント アプリケーションのトラブルシューティングを実施する場合、問題がいつ発生したのか、原因は何なのかを見極めるために複数のツールを組み合わせて使用することができます。 これには以下のツールが含まれます。
 
 * **Azure Storage Analytics**。 [Azure Storage Analytics](/rest/api/storageservices/Storage-Analytics) では、Azure Storage 向けのメトリックとログが利用できます。
-  
+
   * **ストレージ メトリック** は、ストレージ アカウントのトランザクション メトリックと容量メトリックを追跡するためのものです。 メトリックを使用すると、アプリケーションがどのように機能しているかを、さまざまな基準に従って判断できます。 Storage Analytics が追跡するメトリックの種類の詳細については、「 [Storage Analytics Metrics のテーブル スキーマ](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema) 」を参照してください。
   * **ストレージ ログ** は、Azure Storage サービスへの各要求をサーバー側のログに記録します。 このログは、実行された操作、操作のステータス、遅延情報などを含む各要求の詳細データを追跡します。 Storage Analytics がログに書き込む要求および応答データの詳細については、「 [Storage Analytics のログの形式](/rest/api/storageservices/Storage-Analytics-Log-Format) 」を参照してください。
 
 * **Azure Portal** [Azure Portal](https://portal.azure.com) では、ストレージ アカウントのメトリックとログを構成することができます。 アプリケーションの経時的な動作を表すチャートやグラフを表示できるほか、指定したメトリックに関してアプリケーションが予期しない動作をした場合に通知するよう、アラートを構成することもできます。
-  
+
     Azure Portal での監視の構成については、「[Azure Portal でのストレージ アカウントの監視](storage-monitor-storage-account.md)」をご覧ください。
 * **AzCopy**。 Azure Storage のサーバー ログは BLOB として格納されているので、AzCopy を使用してログ BLOB をローカル ディレクトリにコピーし、Microsoft Message Analyzer による分析に使用することができます。 AzCopy の詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」をご覧ください。
 * **Microsoft Message Analyzer**。 Message Analyzer はログ ファイルを使用してログ データを画像形式で表示するツールです。これにより、ログ データのフィルター処理や検索のほか、エラーやパフォーマンス問題の分析に使用できる有用なデータ セットへのグループ化が容易になります。 Message Analyzer の詳細については、[Microsoft Message Analyzer の操作ガイド](https://technet.microsoft.com/library/jj649776.aspx)を参照してください。
@@ -79,49 +79,7 @@ BLOB またはコンテナーが見つからないことが原因で、それら
 * **HTTP ネットワーク トレース ログ**は、HTTP/HTTPS の要求および応答データを収集しますが、これには Azure Storage に対する操作についてのデータも含まれます。 このチュートリアルでは、Message Analyzer を使用してネットワーク トレースを生成します。
 
 ### <a name="configure-server-side-logging-and-metrics"></a>サーバー側のログとメトリックを構成する
-まず、クライアント アプリケーションから分析用データを取得できるよう、Azure Storage のログとメトリックを構成する必要があります。 [Azure Portal](https://portal.azure.com) や PowerShell を使用する方法、プログラミングによって構成する方法など、さまざまな方法でログとメトリックを構成することができます。 ログとメトリックの構成について詳しくは、MSDN の「[ストレージ メトリックの有効化とメトリック データの表示](https://msdn.microsoft.com/library/azure/dn782843.aspx)」および「[ストレージ ログの有効化とログ データへのアクセス](https://msdn.microsoft.com/library/azure/dn782840.aspx)」をご覧ください。
-
-**Azure Portal の使用**
-
-[Azure Portal](https://portal.azure.com) を使用してストレージ アカウントのログとメトリックを構成するには、「[Azure Portal でのストレージ アカウントの監視](storage-monitor-storage-account.md)」の手順に従ってください。
-
-> [!NOTE]
-> Azure Portal を使用して分単位メトリックを設定することはできません。 ただし、このチュートリアルのため、さらにアプリケーションが抱えるパフォーマンスの問題を調査するためにも、これを設定することをお勧めします。 分単位メトリックは、PowerShell (以下を参照)、プログラム、ストレージ クライアント ライブラリのいずれかを使用して設定できます。
-> 
-> Azure Portal で表示できるのは時間単位メトリックのみであり、分単位メトリックは表示できない点に注意してください。
-> 
-> 
-
-**PowerShell を使用**
-
-Azure の PowerShell を使用するには、 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)に関するページを参照してください。
-
-1. [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0) コマンドレットを使用して、Azure ユーザー アカウントを PowerShell ウィンドウに追加します。
-   
-    ```powershell
-    Add-AzureAccount
-    ```
-
-2. **[Microsoft Azure へのサインイン]** ウィンドウで、アカウントに関連付けられた電子メール アドレスとパスワードを入力します。 Azure により資格情報が認証および保存され、ウィンドウが閉じます。
-3. PowerShell ウィンドウで次のコマンドを実行し、既定のストレージ アカウントをチュートリアル用に使用しているストレージ アカウントに設定します。
-   
-    ```powershell
-    $SubscriptionName = 'Your subscription name'
-    $StorageAccountName = 'yourstorageaccount'
-    Set-AzureSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName
-    ```
-
-4. Blob service のストレージ ログを有効にします。
-   
-    ```powershell
-    Set-AzureStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write,Delete -PassThru -RetentionDays 7 -Version 1.0
-    ```
-
-5. Blob service のストレージ メトリックを有効にしますが、その際、**-MetricsType** を `Minute` に設定します。
-   
-    ```powershell
-    Set-AzureStorageServiceMetricsProperty -ServiceType Blob -MetricsType Minute -MetricsLevel ServiceAndApi -PassThru -RetentionDays 7 -Version 1.0
-    ```
+まず、サービス側から分析用データを取得できるよう、Azure Storage のログとメトリックを構成する必要があります。 [Azure Portal](https://portal.azure.com) や PowerShell を使用する方法、プログラミングによって構成する方法など、さまざまな方法でログとメトリックを構成することができます。 ログとメトリックの構成の詳細については、[メトリックの有効化](storage-analytics-metrics.md#enable-metrics-using-the-azure-portal)に関するページと[ログの有効化](storage-analytics-logging.md#enable-storage-logging)に関するページをご覧ください。
 
 ### <a name="configure-net-client-side-logging"></a>.NET のクライアント側のログを構成する
 .NET アプリケーションのクライアント側のログを構成するには、アプリケーションの構成ファイル (web.config または app.config) 内で .NET 診断を有効にします。 詳しくは、MSDN の「[.NET ストレージ クライアント ライブラリと、クライアント側のログ記録](https://msdn.microsoft.com/library/azure/dn782839.aspx)」および「[Microsoft Azure Storage SDK for Java によるクライアント側のログ](https://msdn.microsoft.com/library/azure/dn782844.aspx)」をご覧ください。
@@ -131,9 +89,9 @@ Azure の PowerShell を使用するには、 [Azure PowerShell のインスト�
 ストレージ クライアント ライブラリは、クライアント側のログ データをアプリケーションの構成ファイル (web.config または app.config) 内で指定した場所に格納します。
 
 ### <a name="collect-a-network-trace"></a>ネットワーク トレースを収集する
-Message Analyzer を使用して、クライアント アプリケーションの動作時の HTTP/HTTPS ネットワーク トレースを収集することができます。 Message Analyzer は、バックエンドで [Fiddler](http://www.telerik.com/fiddler) を使用します。 ネットワーク トレースを収集する前に、暗号化されていない HTTPS トラフィックを記録するよう、Fiddler を構成することをお勧めします。
+Message Analyzer を使用して、クライアント アプリケーションの動作時の HTTP/HTTPS ネットワーク トレースを収集することができます。 Message Analyzer は、バックエンドで [Fiddler](https://www.telerik.com/fiddler) を使用します。 ネットワーク トレースを収集する前に、暗号化されていない HTTPS トラフィックを記録するよう、Fiddler を構成することをお勧めします。
 
-1. [Fiddler](http://www.telerik.com/download/fiddler)をインストールします。
+1. [Fiddler](https://www.telerik.com/download/fiddler)をインストールします。
 2. Fiddler を起動します。
 3. **[Tools]、[Fiddler Options]** の順に選択します。
 4. Options ダイアログで、以下に示すように **[Capture HTTPS CONNECTs]** と **[Decrypt HTTPS Traffic]** が両方とも選択されている状態にします。
@@ -157,8 +115,8 @@ Message Analyzer を使用して、クライアント アプリケーション�
 
 > [!NOTE]
 > ネットワーク トレースの収集が完了したら、Fiddler で変更した HTTPS トラフィックを復号化する設定を元に戻すことを強くお勧めします。 [Fiddler Options] ダイアログで、**[Capture HTTPS CONNECTs]** および **[Decrypt HTTPS Traffic]** チェックボックスをオフにします。
-> 
-> 
+>
+>
 
 詳細については、Technet の [ネットワーク トレース機能の使用](https://technet.microsoft.com/library/jj674819.aspx) に関するページを参照してください。
 
@@ -173,8 +131,8 @@ Message Analyzer を使用して、クライアント アプリケーション�
 
 > [!NOTE]
 > ストレージ メトリックを有効にした後、Azure Portal にメトリック データが表示されるまでには少し時間がかかる場合があります。 これは、1 つ前の時間単位メトリックが、現在の単位時間が経過するまでは Azure Portal に表示されないためです。 また、分単位メトリックについては現在のところ Azure Portal には表示されません。 つまり、メトリックを有効にしたタイミングによっては、メトリック データが表示されるまでに最大で 2 時間を要する可能性があります。
-> 
-> 
+>
+>
 
 ## <a name="use-azcopy-to-copy-server-logs-to-a-local-directory"></a>AzCopy を使用してサーバー ログをローカル ディレクトリにコピーする
 Azure Storage は、サーバー ログ データを BLOB に書き込みますが、メトリックについてはテーブルに書き込みます。 ログ BLOB は、ストレージ アカウントの `$logs` コンテナー内にあります。 ログ BLOB は、年、月、日、時間により階層的に名前が付けられるので、調査する時間範囲が簡単に見つかります。 たとえば、`storagesample` アカウントでの、2015 年 1 月 2 日の午前 8 時から 9 時に記録されたログ BLOB のコンテナーは、`https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800` です。 このコンテナー内の個々の BLOB は、 `000000.log`から始まる連番で名前が付けられます。
@@ -198,19 +156,19 @@ Message Analyzer には、サーバー、クライアント、およびネット
 2. Message Analyzer を起動します。
 3. **[ツール]** メニューの **[資産マネージャー]** を選択します。 **[資産マネージャー]** ダイアログで、**[ダウンロード]** を選択し、**Azure Storage** をフィルター処理します。 以下の画像のように、Azure Storage アセットが表示されます。
 4. **[Sync All Displayed Items]** をクリックして、Azure Storage アセットをインストールします。 以下に利用できるアセットを挙げます。
-   * **Azure Storage Color Rules:** Azure Storage カラー ルールにより、色、テキスト、およびフォント スタイルを使用する特別なフィルターを定義し、トレース内の特定の情報を含むメッセージを強調表示することができます。
-   * **Azure Storage Charts:** Azure Storage チャートは、サーバー ログ データをグラフ化する定義済みのチャートです。 現時点で Azure Storage チャートを使用する場合、Analysis Grid に読み込むことができるのはサーバー ログのみである点に注意してください。
-   * **Azure Storage Parsers:** Azure Storage パーサーは、Azure Storage クライアント、サーバー、および HTTP のログを解析して Analysis Grid に表示します。
-   * **Azure Storage Filters:** Azure Storage フィルターは、Analysis Grid でデータのクエリに使用できる、定義済みの条件です。
-   * **Azure Storage View Layouts:** Azure Storage ビュー レイアウトは、列の定義済みレイアウトであり、Analysis Grid 内のグループです。
+   * **Azure Storage の色ルール:** Azure Storage の色ルールにより、色、テキスト、およびフォント スタイルを使用する特別なフィルターを定義し、トレース内の特定の情報を含むメッセージを強調表示することができます。
+   * **Azure Storage チャート:** Azure Storage チャートは、サーバー ログ データをグラフ化する定義済みのチャートです。 現時点で Azure Storage チャートを使用する場合、Analysis Grid に読み込むことができるのはサーバー ログのみである点に注意してください。
+   * **Azure Storage パーサー:** Azure Storage パーサーは、Azure Storage クライアント、サーバー、および HTTP のログを解析して Analysis Grid に表示します。
+   * **Azure Storage フィルター:** Azure Storage フィルターは、Analysis Grid でデータのクエリに使用できる、定義済みの条件です。
+   * **Azure Storage ビュー レイアウト:** Azure Storage ビュー レイアウトは、列の定義済みレイアウトであり、Analysis Grid 内のグループです。
 5. アセットのインストール後に、Message Analyzer を再起動します。
 
 ![Message Analyzer の資産マネージャー](./media/storage-e2e-troubleshooting/mma-start-page-1.png)
 
 > [!NOTE]
 > このチュートリアルのために、表示された Azure Storage アセットはすべてインストールしてください。
-> 
-> 
+>
+>
 
 ### <a name="import-your-log-files-into-message-analyzer"></a>ログ ファイルを Message Analyzer にインポートする
 すべての保存済みログ ファイル (サーバー側、クライアント側、ネットワーク) を、分析のために Microsoft Message Analyzer 内の単一のセッションにインポートできます。
@@ -253,8 +211,8 @@ Message Analyzer 向けの Storage アセットには Azure Storage View Layouts
 
 > [!NOTE]
 > ログ ファイルの種類によって含まれる列は異なるため、Analysis Grid に複数のログ ファイルのデータが表示された場合、いくつかの列は任意の行に何のデータも含まれていない場合があります。 たとえば前の図では、**[Timestamp]**、**[TimeElapsed]**、**[Source]**、**[Destination]** の各列について、クライアント ログの行には何のデータも表示されていませんが、この原因は、クライアント ログにはこれらの列が存在せず、ネットワーク トレースには存在するためです。 同様に、**[Timestamp]** 列にはサーバー ログのタイムスタンプ データが表示されていますが、サーバー ログには含まれていない **[TimeElapsed]**、**[Source]**、**[Destination]** の各列には何も表示されていません。
-> 
-> 
+>
+>
 
 Azure Storage ビュー レイアウトを使用するだけでなく、独自のビュー レイアウトを定義して保存することもできます。 データのグループ化に必要なその他のフィールドを選択し、そのグループをカスタム レイアウトの一部として保存することができます。
 
@@ -287,12 +245,12 @@ Azure Storage カラー ルールを使用するだけでなく、独自のカ�
 
 > [!NOTE]
 > ステータス コードが null であるログ エントリを含むフィルターに式を追加すると、 **[StatusCode]** 列によるフィルターを適用しつつ、クライアント ログを含む 3 つのログすべてのデータを表示することができます。 このフィルター式を作成するには、以下を使用します:
-> 
+>
 > <code>&#42;StatusCode >= 400 or !&#42;StatusCode</code>
-> 
+>
 > このフィルターは、クライアント ログのすべての行を返し、サーバー ログと HTTP ログからは状態コードが 400 を超える行のみを返します。 クライアント要求 ID とモジュールによりグループ化したビュー レイアウトにこれを適用した場合、ログ エントリを検索するか下へスクロールすれば、3 つのログがすべて表示されている場所を見つけることができます。   
-> 
-> 
+>
+>
 
 ### <a name="filter-log-data-to-find-404-errors"></a>ログ データにフィルターを適用して 404 エラーを見つける
 Storage アセットには定義済みのフィルターが含まれており、これを使用してログ データを絞り込み、探しているエラーや傾向を見つけることができます。 次は、2 つの定義済みフィルターを適用します。1 つは 404 エラーについてサーバーおよびネットワーク トレース ログに適用するフィルターで、もう 1 つは指定した時間範囲についてそれらのデータに適用するフィルターです。

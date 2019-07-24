@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 46cd16c1667d3b33501c1b5680baabf243509f67
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: c00e62e237fe263f54926c8e74fb6211a2e5a4e4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288546"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993048"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>リモート監視ソリューション アクセラレータのローカルでのデプロイ - Docker
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-この記事では、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターにデプロイする方法を示します。 また、ローカルの Docker コンテナーに、マイクロサービスをデプロイする方法も示します。 ローカルのマイクロサービス デプロイで使用するクラウド サービスは、クラウド内の IoT Hub、Cosmos DB、Azure Stream Analytics、および Azure Time Series Insights サービスです。
+この記事では、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターにデプロイする方法を示します。 また、ローカルの Docker コンテナーに、マイクロサービスをデプロイする方法も示します。 ローカルのマイクロサービス デプロイで使用するクラウド サービスは、ローカルのマイクロサービス デプロイで使用するクラウド サービスは、クラウド内の IoT Hub、Cosmos DB、Azure Stream Analytics、および Azure Time Series Insights サービスです。
 
 リモート監視ソリューション アクセラレータをローカル コンピューター上の IDE で実行する場合は、「[Deploy the Remote Monitoring solution accelerator locally - Visual Studio](iot-accelerators-remote-monitoring-deploy-local.md)」を参照してください。
 
@@ -27,7 +27,7 @@ ms.locfileid: "51288546"
 
 リモート監視ソリューション アクセラレータによって使用される Azure サービスをデプロイするには、アクティブな Azure サブスクリプションが必要です。
 
-アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](http://azure.microsoft.com/pricing/free-trial/)を参照してください。
+アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
 ### <a name="machine-setup"></a>コンピューターのセットアップ
 
@@ -35,7 +35,7 @@ ms.locfileid: "51288546"
 
 * [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
-* [Visual Studio](https://visualstudio.microsoft.com/)
+* [Visual Studio](https://visualstudio.microsoft.com/) - マイクロサービスに対して変更を行う予定の場合。
 * [Node.js v8](https://nodejs.org/) - このソフトウェアは、スクリプトが Azure リソースを作成するために使用する PCS CLI の前提条件です。 Node.js v10 は使用しないでください。
 
 > [!NOTE]
@@ -54,6 +54,8 @@ set PCS
 このコマンドは、**start.cmd** スクリプトによって設定されたすべての環境変数を表示します。
 
 ローカル コンピューターで Docker が実行されていることを確認します。
+> [!NOTE]
+> Docker は、Windows で実行されている場合は [Linux コンテナー](https://docs.docker.com/docker-for-windows/)を実行している必要があります。
 
 ローカルの Docker コンテナーで実行されているマイクロサービスは、Azure クラウド サービスにアクセスする必要があります。 次のコマンドを使用して、お使いの Docker 環境のインターネット接続をテストできます。このコマンドは、コンテナー内からインターネット アドレスを ping します。
 
@@ -67,16 +69,19 @@ docker run --rm -ti library/alpine ping google.com
 docker-compose up
 ```
 
+> [!NOTE] 
+> `docker-compose up` を実行する前に、Docker と[ローカル ドライブを共有している](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115)ことを確認します。
+
 このコマンドを初めて実行すると、Docker は Docker ハブからマイクロサービス イメージをダウンロードして、コンテナーをローカルに構築します。 以降の実行では、Docker はコンテナーを直ちに実行します。
 
 > [!TIP]
 > マイクロソフトは、新しい機能を備えた新しい Docker イメージを頻繁に公開しています。 最新のものをプルする前に、次のコマンド セットを使用して、ローカルの Docker コンテナーと対応するイメージをクリーン アップすることができます。
 
-    ```cmd/sh
-    docker list
-    docker rm <list_of_containers>
-    docker rmi <list_of_images>
-    ```
+```cmd/sh
+docker list
+docker rm <list_of_containers>
+docker rmi <list_of_images>
+```
 
 個別のシェルを使用して、コンテナーからのログを表示できます。 最初に、`docker ps` コマンドを使用してコンテナー ID を見つけます。 次に、`docker logs {container-id} --tail 1000` を使用して、指定したコンテナーの最後の 1000 個のエントリを表示します。
 
@@ -91,7 +96,7 @@ Stream Analytics ジョブを開始するには、次の手順に従います。
 
 ### <a name="connect-to-the-dashboard"></a>ダッシュボードに接続する
 
-リモート監視ソリューションのダッシュボードにアクセスするには、ブラウザーで [http://localhost:8080](http://localhost:8080) に移動します。 Web UI とローカルのマイクロサービスを使用することができます。
+リモート監視ソリューションのダッシュボードにアクセスするには、ブラウザーで `http://localhost:8080` に移動します。 Web UI とローカルのマイクロサービスを使用することができます。
 
 ## <a name="clean-up"></a>クリーンアップ
 

@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Workpath の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Workpath の統合 | Microsoft Docs
 description: Azure Active Directory と Workpath の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 320b0daf-14be-4813-b59b-25a6a5070690
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 894304081fb8206b2137c9ed6124b306111eb6cf
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2e8b334998983684d50c4faddceb03a0f30fd257
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433619"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58878164"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workpath"></a>チュートリアル: Azure Active Directory と Workpath の統合
+# <a name="tutorial-azure-active-directory-integration-with-workpath"></a>チュートリアル:Azure Active Directory と Workpath の統合
 
 このチュートリアルでは、Workpath と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +89,7 @@ Workpath で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユー
 
 Workpath で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Workpath テスト ユーザーの作成](#creating-a-workpath-test-user)** - Workpath で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -120,7 +121,7 @@ Workpath で Azure AD のシングル サインオンを構成してテストす
 
     ![Configure single sign-on](./media/workpath-tutorial/tutorial_workpath_url1.png)
 
-    **[サインオン URL]** ボックスに、`https://<subdomain>.workpath.com/ ` のパターンを使用して URL を入力します。
+    **[サインオン URL]** ボックスに、`https://<subdomain>.workpath.com/` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Workpath サポート チーム](https://help.workpath.com)に連絡してください。
@@ -166,7 +167,7 @@ Workpath で Azure AD のシングル サインオンを構成してテストす
 1. **Workpath** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML**、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [Workpath サポート チーム](https://help.workpath.com)に送る必要があります。 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -202,7 +203,7 @@ Workpath で Azure AD のシングル サインオンを構成してテストす
  
 ### <a name="creating-a-workpath-test-user"></a>Workpath テスト ユーザーの作成
 
-Workpath は、ジャストインタイム ユーザー プロビジョニングをサポートしています。 認証の後、アプリケーションでユーザーが自動的に作成されます。 
+Workpath は、ジャストインタイム ユーザー プロビジョニングをサポートしています。 認証の後、アプリケーションでユーザーが自動的に作成されます。 
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て

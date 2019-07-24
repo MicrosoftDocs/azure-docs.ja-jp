@@ -3,8 +3,8 @@ title: Azure 請求書の確認 | Microsoft Docs
 description: Azure サブスクリプションの使用状況と課金内容を確認し、理解する方法について説明します。
 services: ''
 documentationcenter: ''
-author: tonguyen10
-manager: tonguyen
+author: bandersmsft
+manager: jureid
 editor: ''
 tags: billing
 ms.service: billing
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
-ms.author: cwatson
-ms.openlocfilehash: 4bfaaa51e39a7db297626a8009306eef9e3efa80
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: banders
+ms.openlocfilehash: 77c1a85136b2117af7396b8eec2d8b92b335d61d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393783"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897454"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Microsoft Azure の請求書の用語を確認します。
 
@@ -114,5 +114,6 @@ ms.locfileid: "47393783"
 ## <a name="how-do-i-make-sure-that-the-charges-in-my-invoice-are-correct"></a>請求書の料金が正しいことを確認する方法
 請求書に詳細を確認したい料金がある場合は、[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)に関する記事をご覧ください。
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
-お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
+
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

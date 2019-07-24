@@ -1,67 +1,65 @@
 ---
-title: 'チュートリアル 4: 完全なテキスト一致 - LUIS リスト エンティティ'
+title: 完全なテキスト一致
 titleSuffix: Azure Cognitive Services
 description: 事前に定義された項目の一覧に一致するデータを取得します。 一覧の各項目には、同様に完全に一致するシノニムを含めることができます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 2ce6e7c796faf0c7377a33dabe1e8c05e81fde2f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 9083227dd81dca219666e07b70f487069413855d
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280710"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521273"
 ---
-# <a name="tutorial-4-extract-exact-text-matches"></a>チュートリアル 4: 完全なテキスト一致を抽出する
-このチュートリアルでは、事前に定義された項目の一覧に一致するデータを取得する方法について説明します。 一覧の各項目には、シノニムの一覧を含めることができます。 人事アプリの場合、従業員は、名前、電子メール、電話番号、米国連邦税 ID などのいくつかの重要な情報で識別できます。 
+# <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>チュートリアル:発話から完全なテキスト一致データを取得する
 
-人事アプリは、あるビルから別のビルにどの従業員が移動するかを特定する必要があります。 従業員の移動に関する発話の場合、LUIS はその意図を特定し、従業員を移動するための標準的な指示をクライアント アプリケーションが作成できるように従業員を抽出します。
-
-このアプリは、リスト エンティティを使用して従業員を抽出します。 従業員は、名前、会社の内線番号、携帯電話番号、電子メール、または米国連邦政府の社会保障番号を使用して参照できます。 
-
-リスト エンティティがこのデータの種類に適しているのは次の場合です。
-
-* データ値が既知のセットである。
-* セットがこのエンティティ型の最大 LUIS [境界](luis-boundaries.md)を超えていない。
-* 発話内のテキストがシノニムまたは正規名に完全に一致している。 
+このチュートリアルでは、事前に定義された項目の一覧に一致するエンティティ データを取得する方法について説明します。 
 
 **このチュートリアルで学習する内容は次のとおりです。**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * 既存のチュートリアル アプリを使用する
-> * MoveEmployee 意図を追加する
+> * アプリを作成する
+> * 意図を追加する
 > * リスト エンティティを追加する 
 > * トレーニング 
-> * [発行]
+> * 発行
 > * エンドポイントから意図とエンティティを取得する
 
-[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>既存のアプリを使用する
-最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
+## <a name="what-is-a-list-entity"></a>リスト エンティティとは
 
-以前のチュートリアルの HumanResources アプリがない場合は、次の手順を使用します。
+リスト エンティティは、発話内の単語に対する完全なテキストの一致です。 
 
-1.  [アプリの JSON ファイル](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-regex-HumanResources.json)をダウンロードして保存します。
+一覧の各項目には、シノニムの一覧を含めることができます。 人事管理アプリの場合、正式な名称、一般的な略語、請求部門コードなど、いくつかの重要な情報で会社の部門を識別できます。 
 
-2. JSON を新しいアプリにインポートします。
+人事管理アプリでは、従業員の異動先の部門を決定する必要があります。 
 
-3. **[管理]** セクションの **[バージョン]** タブで、バージョンを複製し、それに `list` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 バージョン名は URL ルートの一部として使用されるため、URL 内で有効ではない文字を名前に含めることはできません。 
+リスト エンティティがこのデータの種類に適しているのは次の場合です。
 
+* データ値が既知のセットである。
+* セットがこのエンティティ型の最大 LUIS [境界](luis-boundaries.md)を超えていない。
+* 発話内のテキストがシノニムまたは正規名に完全に一致している。 LUIS では、完全なテキストの一致以外にリストは使用されません。 語幹抽出、複数形、その他のバリエーションは、リスト エンティティだけでは解決されません。 バリエーションを管理するには、オプションのテキスト構文で[パターン](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance)を使用することを検討します。 
 
-## <a name="moveemployee-intent"></a>MoveEmployee 意図
+## <a name="create-a-new-app"></a>新しいアプリの作成
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
+
+## <a name="create-an-intent-to-transfer-employees-to-a-different-department"></a>従業員を別の部門に異動させる意図を作成する
+
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. **[Create new intent]\(意図の新規作成\)** を選択します。 
 
-3. ポップアップ ダイアログ ボックスに「`MoveEmployee`」と入力して、**[完了]** を選択します。 
+3. ポップアップ ダイアログ ボックスに「`TransferEmployeeToDepartment`」と入力して、**[完了]** を選択します。 
 
     ![新しい意図の作成ダイアログのスクリーンショット](./media/luis-quickstart-intent-and-list-entity/hr-create-new-intent-ddl.png)
 
@@ -69,206 +67,123 @@ ms.locfileid: "51280710"
 
     |発話の例|
     |--|
-    |John W. Smith を B-1234 から H-4452 に移動する|
-    |john.w.smith@mycompany.com をオフィス b-1234 からオフィス h-4452 に移動する|
-    |明日 x12345 を h-1234 にシフトする|
-    |425-555-1212 を HH-2345 に配置する|
-    |123-45-6789 を A-4321 から J-23456 に移動する|
-    |Jill Jones を D-2345 から J-23456 に移動する|
-    |jill-jones@mycompany.com を M-12345 にシフトする|
-    |x23456 を M-12345 に|
-    |425-555-0000 を h-4452 に|
-    |234-56-7891 を hh-2345 に|
+    |move John W. Smith to the accounting department (John W. Smith を会計部門に異動させる)|
+    |transfer Jill Jones from to R&D (Jill Jones を R&D に異動させる)|
+    |Dept 1234 has a new member named Bill Bradstreet (部門 1234 に Bill Bradstreet という名前の新しいメンバーが加わる)|
+    |Place John Jackson in Engineering (John Jackson をエンジニアリングに配属する) |
+    |move Debra Doughtery to Inside Sales (Debra Doughtery を社内販売に移す)|
+    |mv Jill Jones to IT (Jill Jones を IT にやる)|
+    |Shift Alice Anderson to DevOps (Alice Anderson を DevOps にシフトする)|
+    |Carl Chamerlin to Finance (Carl Chamerlin を財務に)|
+    |Steve Standish to 1234 (Steve Standish を 1234 へ)|
+    |Tanner Thompson to 3456 (Tanner Thompson を 3456 に)|
 
-    [ ![新しい発話が強調表示されている [Intents]\(意図\) ページのスクリーンショット](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png) ](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png#lightbox)
+    [![発話例での意図のスクリーンショット](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png "発話例での意図のスクリーンショット ショット")](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png#lightbox)
 
-    番号と datetimeV2 が前のチュートリアルで追加され、いずれかの発話の例に見つかると自動的にラベルが付けられることに注意してください。
+    [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
-    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+## <a name="department-list-entity"></a>部門リスト エンティティ
 
-## <a name="employee-list-entity"></a>従業員のリスト エンティティ
-これで **MoveEmployee** 意図に発話の例が含まれたので、LUIS は従業員が何かを理解する必要があります。 
+これで **TransferEmployeeToDepartment** 意図に発話の例が含まれたので、LUIS では部門が何かを理解する必要があります。 
 
-各項目のプライマリ (_正規_) 名は従業員番号です。 このドメインの場合、各正規名のシノニムの例は次のとおりです。 
+各項目のプライマリ ("_正規_") 名は部門名です。 各正規名のシノニムの例は次のとおりです。 
 
-|シノニムの目的|シノニムの値|
+|正規名|シノニム|
 |--|--|
-|Name|John W. Smith|
-|電子メール アドレス|john.w.smith@mycompany.com|
-|電話の内線番号|x12345|
-|個人の携帯電話番号|425-555-1212|
-|米国連邦政府の社会保障番号|123-45-6789|
-
+|会計|acct<br>accting<br>3456|
+|Development Operations|Devops<br>4949|
+|Engineering|eng<br>enging<br>4567|
+|Finance|fin<br>2020|
+|Information Technology|IT<br>2323|
+|Inside Sales|isale<br>insale<br>1414|
+|Research and Development|R&D<br>1234|
 
 1. 左のパネルで **[エンティティ]** を選びます。
 
-2. **[Create new entity]\(新しいエンティティの作成\)** を選択します。
+1. **[Create new entity]\(新しいエンティティの作成\)** を選択します。
 
-3. エンティティ ポップアップ ダイアログで、エンティティ名として「`Employee`」を入力し、エンティティ型として **[リスト]** を指定します。 **[完了]** を選択します。  
+1. エンティティ ポップアップ ダイアログで、エンティティ名として「`Department`」を入力し、エンティティ型として **[リスト]** を指定します。 **[完了]** を選択します。  
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png "新しいエンティティの作成ポップアップ ダイアログのスクリーンショット")](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png#lightbox)
+    [![新しいエンティティ作成のポップアップ ダイアログのスクリーンショット](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "新しいエンティティ作成のポップアップ ダイアログのスクリーンショット")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
 
-4. 従業員エンティティ ページで、新しい値として「`Employee-24612`」と入力します。
+1. 部門エンティティ ページで、新しい値として「`Accounting`」と入力します。
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "値の入力のスクリーンショット")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
+    [![値入力のスクリーンショット](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "値入力のスクリーンショット")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
 
-5. シノニムについては、次の値を追加します。
+1. シノニムに対しては、前の表からシノニムを追加します。
 
-    |シノニムの目的|シノニムの値|
-    |--|--|
-    |Name|John W. Smith|
-    |電子メール アドレス|john.w.smith@mycompany.com|
-    |電話の内線番号|x12345|
-    |個人の携帯電話番号|425-555-1212|
-    |米国連邦政府の社会保障番号|123-45-6789|
+    [![シノニム入力のスクリーンショット](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "シノニム入力のスクリーンショット")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "シノニムの入力のスクリーンショット")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
+1. 続けてすべての正規名とそのシノニムを追加します。 
 
-6. 新しいシノニムとして「`Employee-45612`」と入力します。
+## <a name="add-example-utterances-to-the-none-intent"></a>発話の例を None 意図に追加する 
 
-7. シノニムについては、次の値を追加します。
+[!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-    |シノニムの目的|シノニムの値|
-    |--|--|
-    |Name|Jill Jones|
-    |電子メール アドレス|jill-jones@mycompany.com|
-    |電話の内線番号|x23456|
-    |個人の携帯電話番号|425-555-0000|
-    |米国連邦政府の社会保障番号|234-56-7891|
-
-## <a name="train"></a>トレーニング
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>意図への変更をテストできるようにアプリをトレーニングする 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>[発行]
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>トレーニング済みのモデルがエンドポイントからクエリ可能になるようにアプリを発行する
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>エンドポイントから意図とエンティティを取得する
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>エンドポイントから意図およびエンティティ予測を取得する
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
-2. アドレスの URL の末尾に移動し、「`shift 123-45-6789 from Z-1242 to T-54672`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 ラベル付けされた発話に、この発話と一致するものはありません。したがって、テストは適切で、`MoveEmployee` 意図が返され `Employee` が抽出されるはずです。
+1. アドレスの URL の末尾に移動し、「`shift Joe Smith to IT`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 ラベル付けされた発話に、この発話と一致するものはありません。したがって、テストは適切で、`TransferEmployeeToDepartment` 意図が返され `Department` が抽出されるはずです。
 
-  ```JSON
-  {
-    "query": "shift 123-45-6789 from Z-1242 to T-54672",
-    "topScoringIntent": {
-      "intent": "MoveEmployee",
-      "score": 0.9882801
-    },
-    "intents": [
-      {
-        "intent": "MoveEmployee",
-        "score": 0.9882801
+   ```json
+    {
+      "query": "shift Joe Smith to IT",
+      "topScoringIntent": {
+        "intent": "TransferEmployeeToDepartment",
+        "score": 0.9775754
       },
-      {
-        "intent": "FindForm",
-        "score": 0.016044287
-      },
-      {
-        "intent": "GetJobInformation",
-        "score": 0.007611245
-      },
-      {
-        "intent": "ApplyForJob",
-        "score": 0.007063288
-      },
-      {
-        "intent": "Utilities.StartOver",
-        "score": 0.00684710965
-      },
-      {
-        "intent": "None",
-        "score": 0.00304174074
-      },
-      {
-        "intent": "Utilities.Help",
-        "score": 0.002981
-      },
-      {
-        "intent": "Utilities.Confirm",
-        "score": 0.00212222221
-      },
-      {
-        "intent": "Utilities.Cancel",
-        "score": 0.00191026414
-      },
-      {
-        "intent": "Utilities.Stop",
-        "score": 0.0007461446
-      }
-    ],
-    "entities": [
-      {
-        "entity": "123 - 45 - 6789",
-        "type": "Employee",
-        "startIndex": 6,
-        "endIndex": 16,
-        "resolution": {
-          "values": [
-            "Employee-24612"
-          ]
+      "intents": [
+        {
+          "intent": "TransferEmployeeToDepartment",
+          "score": 0.9775754
+        },
+        {
+          "intent": "None",
+          "score": 0.0154493852
         }
-      },
-      {
-        "entity": "123",
-        "type": "builtin.number",
-        "startIndex": 6,
-        "endIndex": 8,
-        "resolution": {
-          "value": "123"
+      ],
+      "entities": [
+        {
+          "entity": "it",
+          "type": "Department",
+          "startIndex": 19,
+          "endIndex": 20,
+          "resolution": {
+            "values": [
+              "Information Technology"
+            ]
+          }
         }
-      },
-      {
-        "entity": "45",
-        "type": "builtin.number",
-        "startIndex": 10,
-        "endIndex": 11,
-        "resolution": {
-          "value": "45"
-        }
-      },
-      {
-        "entity": "6789",
-        "type": "builtin.number",
-        "startIndex": 13,
-        "endIndex": 16,
-        "resolution": {
-          "value": "6789"
-        }
-      },
-      {
-        "entity": "-1242",
-        "type": "builtin.number",
-        "startIndex": 24,
-        "endIndex": 28,
-        "resolution": {
-          "value": "-1242"
-        }
-      },
-      {
-        "entity": "-54672",
-        "type": "builtin.number",
-        "startIndex": 34,
-        "endIndex": 39,
-        "resolution": {
-          "value": "-54672"
-        }
-      }
-    ]
-  }
-  ```
-
-  従業員が見つかり、その従業員は `Employee` 型として返され、値 `Employee-24612` に解決されました。
+      ]
+    }
+   ```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
+## <a name="related-information"></a>関連情報
+
+* [リスト エンティティ](luis-concept-entity-types.md#list-entity)の概念に関する情報
+* [トレーニング方法](luis-how-to-train.md)
+* [発行方法](luis-how-to-publish-app.md)
+* [LUIS ポータルでのテスト方法](luis-interactive-test.md)
+
+
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、新しい意図を作成し、発話の例を追加した後、発話から完全なテキスト一致を抽出するためのリスト エンティティを作成しました。 トレーニングおよびアプリの発行後、エンドポイントのクエリによって意図を識別し、抽出されたデータを取得しました。
 
+引き続きこのアプリで、[複合エンティティを追加します](luis-tutorial-composite-entity.md)。
+
 > [!div class="nextstepaction"]
-> [階層エンティティをアプリに追加する](luis-quickstart-intent-and-hier-entity.md)
+> [ロールを持つ事前構築済みエンティティをアプリに追加する](tutorial-entity-roles.md)
 

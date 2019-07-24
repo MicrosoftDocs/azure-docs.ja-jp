@@ -1,0 +1,209 @@
+items:
+- name: 概要
+  items:
+  - name: 開発者ガイド
+    href: azure-developer-guide.md
+  - name: SDK とツール
+    href: https://docs.microsoft.com/azure/index#pivot=sdkstools
+- name: クイック スタート
+  items:
+  - name: Web Apps
+    href: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html
+  - name: 仮想マシン
+    items:
+    - name: Linux
+      href: https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal
+    - name: " Windows"
+      href: https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal
+  - name: サーバーレス
+    href: https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function
+  - name: マイクロサービス
+    items:
+    - name: Service Fabric
+      href: https://docs.microsoft.com/azure/service-fabric/service-fabric-create-your-first-application-in-visual-studio
+    - name: Container Service
+      href: https://docs.microsoft.com/azure/container-service/dcos-swarm/container-service-deployment
+- name: チュートリアル
+  items:
+  - name: Web アプリを作成してデプロイする
+    items:
+    - name: .NET と SQL DB
+      href: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase
+    - name: Node.js と Mongo DB
+      href: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app
+    - name: PHP と MySQL
+      href: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-php-mysql
+    - name: Java と MySQL
+      href: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-java-mysql
+  - name: 複雑な VM テンプレートをデプロイする
+    items:
+    - name: Linux
+      href: https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm
+    - name: " Windows"
+      href: https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm
+  - name: Azure 接続関数を作成する
+    href: https://docs.microsoft.com/azure/azure-functions/functions-create-an-azure-connected-function
+  - name: Docker で Web アプリを Linux にデプロイする
+    href: https://docs.microsoft.com/azure/app-service/containers/quickstart-docker-go
+- name: サンプル
+  items:
+  - name: Azure CLI
+    items:
+    - name: Web Apps
+      href: https://docs.microsoft.com/azure/app-service/samples-cli
+    - name: Linux VM
+      href: https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples
+    - name: Windows VM
+      href: https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples
+  - name: Azure PowerShell
+    items:
+    - name: Web Apps
+      href: https://docs.microsoft.com/azure/app-service/samples-powershell
+    - name: Linux VM
+      href: https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples
+    - name: Windows VM
+      href: https://docs.microsoft.com/azure/virtual-machines/windows/powershell-samples
+- name: 概念
+  items:
+  - name: 請求とサブスクリプション
+    href: https://docs.microsoft.com/azure/billing/billing-getting-started
+  - name: ホスティングの比較
+    href: https://docs.microsoft.com/azure/app-service/overview-compare
+  - name: App Service とは
+    href: https://docs.microsoft.com/azure/app-service/overview
+  - name: 仮想マシン
+    items:
+    - name: Linux VM
+      href: https://docs.microsoft.com/azure/virtual-machines/linux/overview
+    - name: Windows VM
+      href: https://docs.microsoft.com/azure/virtual-machines/windows/overview
+  - name: Service Fabric の概要
+    href: https://docs.microsoft.com/azure/service-fabric/service-fabric-overview
+- name: ハウツー ガイド
+  items:
+  - name: プラン
+    items:
+    - name: Web アプリケーションのアーキテクチャ
+      href: https://docs.microsoft.com/azure/architecture/reference-architectures/managed-web-app/
+    - name: VM のアーキテクチャ
+      href: https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/
+    - name: オンプレミス ネットワークへの接続
+      href: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/
+    - name: マイクロサービスのパターンおよびシナリオ
+      href: https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-and-scenarios
+  - name: 開発
+    items:
+    - name: Linux VM
+      href: https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-secured-vm-from-template
+    - name: Windows VM
+      href: https://docs.microsoft.com/azure/virtual-machines/windows/ps-template
+    - name: サーバーレス アプリ
+      href: https://docs.microsoft.com/azure/azure-functions/functions-reference
+    - name: マイクロサービス クラスター
+      href: https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal
+  - name: デプロイ
+    items:
+    - name: ソース管理からの Web アプリとモバイル アプリ
+      href: https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment
+    - name: ローカルなマイクロサービス
+      href: https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-with-a-local-cluster
+    - name: Linux VM
+      href: https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm
+    - name: Windows VM
+      href: https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm
+  - name: データの保存
+    items:
+    - name: BLOB
+      href: https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs
+    - name: ファイル共有
+      href: https://docs.microsoft.com/azure/storage/files/storage-dotnet-how-to-use-files
+    - name: キー/値ペア
+      href: https://docs.microsoft.com/azure/cosmos-db/create-table-dotnet
+    - name: JSON ドキュメント
+      href: https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet
+    - name: リレーショナル テーブル
+      href: https://docs.microsoft.com/azure/sql-database/sql-database-get-started
+    - name: メッセージ キュー
+      href: https://docs.microsoft.com/azure/storage/queues/storage-dotnet-how-to-use-queues
+  - name: スケール
+    items:
+    - name: Web アプリとモバイル アプリ
+      href: https://docs.microsoft.com/azure/app-service/web-sites-scale
+    - name: 仮想マシン
+      href: https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview
+    - name: マイクロサービス アプリ
+      href: https://docs.microsoft.com/azure/service-fabric/service-fabric-concepts-scalability
+  - name: セキュリティ保護
+    items:
+    - name: Web アプリとモバイル アプリ
+      href: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl
+  - name: バックアップ
+    items:
+    - name: Web アプリとモバイル アプリ
+      href: https://docs.microsoft.com/azure/app-service/manage-backup
+    - name: 仮想マシン
+      href: https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction
+  - name: 監視
+    items:
+    - name: Web アプリとモバイル アプリ
+      href: https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs
+    - name: Linux VM
+      href: https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitoring
+    - name: Windows VM
+      href: https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-monitoring
+    - name: マイクロサービス
+      href: https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-overview
+    - name: 課金アラート
+      href: https://docs.microsoft.com/azure/billing/billing-set-up-alerts
+  - name: 自動化
+    items:
+    - name: Linux VM のスケーリング
+      href: https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-create-vmss
+    - name: Windows VM のスケーリング
+      href: https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-create-vmss
+- name: リファレンス
+  items:
+  - name: REST
+    href: https://docs.microsoft.com/rest/api/
+  - name: SDK
+    items:
+    - name: .NET
+      href: https://go.microsoft.com/fwlink/?linkid=834925
+    - name: Java
+      href: https://docs.microsoft.com/java/api/
+    - name: Node.js
+      href: https://azure.github.io/azure-sdk-for-node/
+    - name: PHP
+      href: https://github.com/Azure/azure-sdk-for-php/blob/master/README.md
+    - name: Python
+      href: http://azure-sdk-for-python.readthedocs.io/en/latest/
+    - name: Ruby
+      href: https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md
+  - name: コマンド ライン インターフェイス
+    items:
+    - name: Azure CLI
+      href: https://docs.microsoft.com/cli/azure/
+    - name: Azure PowerShell
+      href: https://docs.microsoft.com/powershell/
+  - name: 課金
+    href: https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview
+- name: リソース
+  items:
+  - name: Azure の制限とクォータ
+    href: ../../azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json
+  - name: Azure Azure リージョン
+    href: https://azure.microsoft.com/regions/
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: サンプル
+    href: https://azure.microsoft.com/resources/samples/
+  - name: ビデオ
+    href: https://azure.microsoft.com/resources/videos/home/
+ms.openlocfilehash: 33b715c595c22c5561c3ab61af9d96eebb9fc991
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341239"

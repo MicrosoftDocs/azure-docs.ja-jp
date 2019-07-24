@@ -4,7 +4,7 @@ description: クラウドベースのコンピューティング サービスに
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a56d595ca88541779f5213c6b0ec88fc87913b6a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f5d1c66cb049ab9ec52db619d55a4bb3e485e4b2
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239051"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109845"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 ##  <a name="introduction"></a>はじめに
@@ -121,7 +121,7 @@ ISO/IEC 27001 など監査済み認証を備えたビジネス サービスは�
 
 お客様がデータを削除すると、Microsoft Azure によって、キャッシュされたデータやバックアップ コピーも含めて、データが削除されます。 対象サービスでは、この削除はリテンション期間終了後 90 日以内に行われます (対象サービスは、[オンライン サービス条件](https://aka.ms/Online-Services-Terms)の「データ処理条件」セクションで定義されています)。
 
-格納に使用されるディスク ドライブでハードウェア障害が発生した場合、ディスク ドライブを確実に[消去または破棄](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data)してから、交換または修理のために製造元に返します。 ドライブ上のデータは上書きされ、どのような手段でもデータを回復できないようにされます。
+格納に使用されるディスク ドライブでハードウェア障害が発生した場合、ディスク ドライブを確実に[消去または破棄](https://microsoft.com/trustcenter/privacy/you-own-your-data)してから、交換または修理のために製造元に返します。 ドライブ上のデータは上書きされ、どのような手段でもデータを回復できないようにされます。
 
 ## <a name="compute-isolation"></a>コンピューティングの分離
 Microsoft Azure ではクラウドベースのコンピューティング サービスが提供されます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。 これらのコンピューティング インスタンスおよびサービスでは、複数のレベルで分離が提供され、お客様が求める構成の柔軟性を損なわずにデータを保護することができます。
@@ -149,9 +149,7 @@ Azure のコンピューティング プラットフォームは、コンピュ�
 
 また、各ノードには 1 つの特別なルート VM があり、ホスト OS を実行しています。 重要な境界は、ルート VM とゲスト VM の分離と、ハイパーバイザーとルート OS によって管理される各ゲスト VM の分離です。 ハイパーバイザー/ルート OS のペアは、Microsoft のオペレーティング システム セキュリティに関する数十年の経験と、Microsoft Hyper-V の最近の研究を活用したものであり、ゲスト VM の強力な分離を提供します。
 
-Azure プラットフォームでは、仮想化された環境を使用します。 ユーザー インスタンスは、物理ホスト サーバーへのアクセス権を持たないスタンドアロン仮想マシンとして動作し、この分離は物理プロセッサ (リング 0/リング 3) 特権レベルによって強制されます。
-
-リング 0 は最も高い特権で、3 は最も低い特権です。 ゲスト OS はより低い特権であるリング 1 で実行し、アプリケーションは最低の特権であるリング 3 で実行します。 この物理リソースの仮想化によって、ゲスト OS とハイパーバイザーが明確に分離され、この 2 つの間に追加のセキュリティ分離が生じます。
+Azure プラットフォームでは、仮想化された環境を使用します。 ユーザー インスタンスは、物理ホスト サーバーへのアクセス権を持たないスタンドアロン仮想マシンとして動作します。
 
 Azure のハイパーバイザーは、マイクロ カーネルのように動作し、ゲスト仮想マシンからのすべてのハードウェア アクセス要求を、VMBus と呼ばれる共有メモリ インターフェイスを使用して処理するために、ホストに渡します。 そうすることで、ユーザーがシステムへの生の読み取り/書き込み/実行アクセスを取得できないようにし、共有システム リソースのリスクを軽減します。
 
@@ -189,7 +187,7 @@ Azure ハイパーバイザー、ルート OS/FA、顧客 VM/GA のコレクシ�
 
 -   **マシン構成またはインフラストラクチャの規則:** 既定では、すべての通信がブロックされています。 仮想マシンに DHCP および DNS トラフィックの送受信を許可する例外があります。 仮想マシンは、トラフィックを "パブリック" インターネットに送信したり、トラフィックを同じ Azure Virtual Network 内の他の仮想マシンや OS ライセンス認証サーバーに送信したりすることもできます。 仮想マシンの発信先の許可リストには、Azure ルーター サブネット、Azure 管理、およびその他の Microsoft サービスは含まれていません。
 
--   **ロール構成ファイル:** テナントのサービス モデルに基づいて受信アクセス制御リスト (ACL) を定義します。
+-   **ロール構成ファイル:** テナントのサービス モデルに基づいてインバウンド アクセス制御リスト (ACL) を定義します。
 
 ### <a name="vlan-isolation"></a>VLAN の分離
 各クラスターには、次の 3 つの VLAN があります。
@@ -240,7 +238,7 @@ Azure では、データを保護するために次の種類の暗号化が提�
 -   [クライアント側の暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage)(Storage にデータを転送する前にデータを暗号化し、Storage からデータを転送した後にデータを復号化します)。
 
 #### <a name="encryption-at-rest"></a>保存時の暗号化
-多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保するうえで [保存データの暗号化](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) は欠かせません。 Azure には、“保存時の“ データの暗号化を提供する機能が 3 つあります。
+多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保するうえで [保存データの暗号化](https://docs.microsoft.com/azure/security/azure-isolation) は欠かせません。 Azure には、“保存時の“ データの暗号化を提供する機能が 3 つあります。
 
 -   [Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) を使用すると、ストレージ サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。
 
@@ -344,9 +342,9 @@ Azure デプロイでは、複数の層でネットワークの分離を行う�
 
 ![ネットワークの分離](./media/azure-isolation/azure-isolation-fig13.png)
 
-**トラフィックの分離**: [仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)は、Azure Platform でのトラフィックの分離境界となります。 ある仮想ネットワーク内の仮想マシン (VM) と別の仮想ネットワーク内の VM は、両方の仮想ネットワークを同じ顧客が作成した場合でも、直接通信することはできません。 分離は、顧客の VM と通信が仮想ネットワーク内でプライベートであることを保証する重要な特性です。
+**トラフィックの分離**: [仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)は、Azure プラットフォームでのトラフィックの分離境界となります。 ある仮想ネットワーク内の仮想マシン (VM) と別の仮想ネットワーク内の VM は、両方の仮想ネットワークを同じ顧客が作成した場合でも、直接通信することはできません。 分離は、顧客の VM と通信が仮想ネットワーク内でプライベートであることを保証する重要な特性です。
 
-[サブネット](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#subnets)によって、IP 範囲に基づいて仮想ネットワーク内に分離の層がさらに提供されます。 仮想ネットワーク内の IP アドレスを使用して、仮想ネットワークを組織とセキュリティ用に複数のサブネットに分割することができます。 VNet 内の (同じまたは異なる) サブネットにデプロイした VM と PaaS ロール インスタンスは、追加の構成をしなくても互いに通信できます。 また、[ネットワーク セキュリティ グループ (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#network-security-groups-nsg) を構成し、NSG のアクセス制御リスト (ACL) に構成した規則に基づいて VM インスタンスに対するネットワーク トラフィックを許可または禁止することもできます。 NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。
+[サブネット](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)によって、IP 範囲に基づいて仮想ネットワーク内に分離の層がさらに提供されます。 仮想ネットワーク内の IP アドレスを使用して、仮想ネットワークを組織とセキュリティ用に複数のサブネットに分割することができます。 VNet 内の (同じまたは異なる) サブネットにデプロイした VM と PaaS ロール インスタンスは、追加の構成をしなくても互いに通信できます。 また、[ネットワーク セキュリティ グループ (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) を構成し、NSG のアクセス制御リスト (ACL) に構成した規則に基づいて VM インスタンスに対するネットワーク トラフィックを許可または禁止することもできます。 NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。
 
 ## <a name="next-steps"></a>次の手順
 

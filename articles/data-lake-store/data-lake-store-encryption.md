@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: df89f8fd4dd5c7690d858009e250a474f702f1a8
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a009f212bd8baaa353d602dc6090aeeccddd4936
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125036"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098136"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 でのデータの暗号化
 
@@ -120,17 +120,17 @@ Data Lake Storage Gen1 アカウントを設定するときに、独自キーの
 
     ![Key Vault のスクリーンショット](./media/data-lake-store-encryption/keyvault.png)
 
-3.  Data Lake Storage Gen1 アカウントに関連付けられているキーを選択し、このキーの新しいバージョンを作成します。 現在 Data Lake Storage Gen1 でサポートされるのは新しいバージョンのキーへの交換だけであることに注意してください。 異なるキーへの交換はサポートされません。
+3. Data Lake Storage Gen1 アカウントに関連付けられているキーを選択し、このキーの新しいバージョンを作成します。 現在 Data Lake Storage Gen1 でサポートされるのは新しいバージョンのキーへの交換だけであることに注意してください。 異なるキーへの交換はサポートされません。
 
    ![[キー] ウィンドウのスクリーンショット ([新しいバージョン] に注目)](./media/data-lake-store-encryption/keynewversion.png)
 
-4.  Data Lake Storage Gen1 アカウントに移動して **[暗号化]** を選択します。
+4. Data Lake Storage Gen1 アカウントに移動して **[暗号化]** を選択します。
 
-    ![Data Lake Storage Gen1 アカウント ウィンドウのスクリーンショット ([暗号化] を強調表示)](./media/data-lake-store-encryption/select-encryption.png)
+   ![Data Lake Storage Gen1 アカウント ウィンドウのスクリーンショット ([暗号化] を強調表示)](./media/data-lake-store-encryption/select-encryption.png)
 
-5.  新しいバージョンのキーが利用可能であることを伝えるメッセージが表示されます。 **[回転キー]** をクリックすると、キーが新しいバージョンに更新されます。
+5. 新しいバージョンのキーが利用可能であることを伝えるメッセージが表示されます。 **[回転キー]** をクリックすると、キーが新しいバージョンに更新されます。
 
-    ![Data Lake Storage Gen1 ウィンドウのスクリーンショット (メッセージとキーの交換を強調表示)](./media/data-lake-store-encryption/rotatekey.png)
+   ![Data Lake Storage Gen1 ウィンドウのスクリーンショット (メッセージとキーの交換を強調表示)](./media/data-lake-store-encryption/rotatekey.png)
 
 この処理は 2 分未満で完了します。キーの交換が原因でダウンタイムは発生しないものと思われます。 処理が完了したら、新しいバージョンのキーが使用中の状態になります。
 

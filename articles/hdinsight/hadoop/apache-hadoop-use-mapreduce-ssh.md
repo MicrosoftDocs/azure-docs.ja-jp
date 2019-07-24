@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: df6a96d8bbf1c77d279806e69e7aa7f65387dd4b
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: bce79aed49b94071b4e83524de2d599fca182256
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632528"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438573"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>HDInsight 上の Apache Hadoop で MapReduce と SSH を使用する
 
@@ -63,7 +63,7 @@ SSH の使用方法の詳細については、[HDInsight での SSH の使用](.
     このコマンドは、`hadoop-mapreduce-examples.jar` ファイルに含まれている `wordcount` クラスを起動します。 入力として `/example/data/gutenberg/davinci.txt` ドキュメントを使用し、出力を `/example/data/WordCountOutput` に格納します。
 
     > [!NOTE]
-    > この MapReduce ジョブとサンプル データの詳細については、「 [HDInsight での Hadoop MapReduce の使用](hdinsight-use-mapreduce.md)」をご覧ください。
+    > この MapReduce ジョブとサンプル データの詳細については、「[HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)」をご覧ください。
 
 2. 処理中に詳細が生成され、ジョブが完了すると、次のテキストのような情報が返されます。
 
@@ -80,7 +80,7 @@ SSH の使用方法の詳細については、[HDInsight での SSH の使用](.
 
     このコマンドは、`_SUCCESS` と `part-r-00000` の 2 つのファイルを表示します。 `part-r-00000` ファイルには、このジョブの出力が含まれています。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 一部の MapReduce ジョブでは、複数の **part-r-#####** ファイルに結果が分割される場合があります。 このとき、ファイルの順番を特定するには ##### サフィックスを使用します。
 
 4. 出力を表示するには、次のコマンドを使用します。
@@ -111,5 +111,5 @@ HDInsight での MapReduce ジョブに関する全般的な情報:
 
 HDInsight での Hadoop のその他の使用方法に関する情報
 
-* [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
-* [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
+* [HDInsight 上の Apache Hadoop で Apache Hive を使用する](hdinsight-use-hive.md)
+* [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)

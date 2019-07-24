@@ -3,22 +3,22 @@ title: Azure Service Bus のエンドツーエンド トレースと診断 | Mic
 description: Service Bus のクライアント診断とエンドツーエンド トレースの概要
 services: service-bus-messaging
 documentationcenter: ''
-author: lmolkova
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
-ms.author: lmolkova
-ms.openlocfilehash: 770d8950e25431e1edc496e0710cf199b45e5847
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 6e5895392db1d75a985674bf2f878a84bc8dd926
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283837"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107037"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Service Bus メッセージングを介した分散トレースおよび相関付け
 
@@ -45,9 +45,9 @@ Microsoft Azure Service Bus メッセージングによってペイロード プ
 [Microsoft Application Insights](https://azure.microsoft.com/services/application-insights/) では、自動的な要求と依存関係の追跡も含め、豊富なパフォーマンス監視機能が提供されます。
 
 プロジェクト タイプに応じて次のいずれかの Application Insights SDK をインストールします。
-- [ASP.NET](../application-insights/app-insights-asp-net.md) - バージョン 2.5-beta2 以上をインストールします
-- [ASP.NET Core](../application-insights/app-insights-asp-net-core.md) - バージョン 2.2.0-beta2 以上をインストールします。
-これらのリンクには、SDK のインストール、リソースの作成、SDK の構成 (必要な場合) に関する説明があります。 ASP.NET 以外のアプリケーションについては、[コンソール アプリケーションのための Azure Application Insights](../application-insights/application-insights-console.md) に関する記事をご覧ください。
+- [ASP.NET](../azure-monitor/app/asp-net.md) - バージョン 2.5-beta2 以上をインストールします
+- [ASP.NET Core](../azure-monitor/app/asp-net-core.md) - バージョン 2.2.0-beta2 以上をインストールします。
+これらのリンクには、SDK のインストール、リソースの作成、SDK の構成 (必要な場合) に関する説明があります。 ASP.NET 以外のアプリケーションについては、[コンソール アプリケーションのための Azure Application Insights](../azure-monitor/app/console.md) に関する記事をご覧ください。
 
 [メッセージ ハンドラー パターン](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler)を使用してメッセージを処理すると、それで完了です。サービスによって実行されたすべての Service Bus の呼び出しは自動的に追跡され、他のテレメトリ項目と関連付けられます。 それ以外の場合は、手動でのメッセージ追跡について次の例をご覧ください。
 
@@ -83,7 +83,7 @@ async Task ProcessAsync(Message message)
 この例では、処理されるメッセージごとに、タイムスタンプ、期間、結果 (成功) を含む `RequestTelemetry` が報告されます。 テレメトリには、相関関係プロパティのセットも含まれます。
 メッセージ処理中に報告された入れ子のトレースと例外にも、`RequestTelemetry` の "子" であることを表す相関関係プロパティがスタンプされます。
 
-メッセージ処理中にサポートされる外部コンポーネントへの呼び出しを行った場合は、それらの呼び出しも自動的に追跡されて相関付けられます。 手動での追跡と相関付けについて詳しくは、「[Application Insights .NET SDK でカスタム操作を追跡する](../application-insights/application-insights-custom-operations-tracking.md)」をご覧ください。
+メッセージ処理中にサポートされる外部コンポーネントへの呼び出しを行った場合は、それらの呼び出しも自動的に追跡されて相関付けられます。 手動での追跡と相関付けについて詳しくは、「[Application Insights .NET SDK でカスタム操作を追跡する](../azure-monitor/app/custom-operations-tracking.md)」をご覧ください。
 
 ### <a name="tracking-without-tracing-system"></a>トレース システムなしで追跡する
 ご使用のトレーシング システムで自動的な Service Bus 呼び出し追跡がサポートされない場合は、トレーシング システムまたはアプリケーションにそのようなサポートを追加することを検討してください。 このセクションでは、Service Bus .NET クライアントによって送信される診断イベントについて説明します。  
@@ -141,7 +141,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 #### <a name="events"></a>events
 
-どの操作でも、'Start' と 'Stop' の 2 つのイベントは送信されます。 おそらく、ユーザーにとって関心があるのは 'Stop' イベントのみです。 これにより、操作の結果の他に開始時刻と期間が Activity プロパティとして提供されます。
+どの操作でも、次の 2 つのイベントが送信されます:"Start" と "Stop"。 おそらく、ユーザーにとって関心があるのは 'Stop' イベントのみです。 これにより、操作の結果の他に開始時刻と期間が Activity プロパティとして提供されます。
 
 イベントのペイロードがリスナーに操作のコンテキストを提供すると、リスナーが API 入力パラメーターと戻り値をレプリケートします。 'Stop' イベントのペイロードは、'Start' イベントのペイロードのプロパティをすべて含んでいるため、'Start' イベントは完全に無視することができます。
 
@@ -155,27 +155,27 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 | 操作の名前 | 追跡される API | 固有のペイロード プロパティ|
 |----------------|-------------|---------|
-| Microsoft.Azure.ServiceBus.Send | [MessageSender.SendAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.sendasync) | IList<Message> Messages - 送信されるメッセージの一覧 |
-| Microsoft.Azure.ServiceBus.ScheduleMessage | [MessageSender.ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.schedulemessageasync) | Message Message - 処理されるメッセージ<br/>DateTimeOffset ScheduleEnqueueTimeUtc - スケジュールされたメッセージ オフセット<br/>long SequenceNumber - スケジュールされたメッセージのシーケンス番号 ('Stop' イベント ペイロード) |
-| Microsoft.Azure.ServiceBus.Cancel | [MessageSender.CancelScheduledMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.cancelscheduledmessageasync) | long SequenceNumber - 取り消されるメッセージのシーケンス番号 | 
-| Microsoft.Azure.ServiceBus.Receive | [MessageReceiver.ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) |int RequestedMessageCount - 受信できたメッセージの最大数。<br/>IList<Message> Messages -受信したメッセージの一覧 ('Stop' イベント ペイロード) |
-| Microsoft.Azure.ServiceBus.Peek | [MessageReceiver.PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync) | int FromSequenceNumber - メッセージのバッチの参照を開始する始点。<br/>int RequestedMessageCount - 取得するメッセージ数。<br/>IList<Message> Messages - 受信したメッセージの一覧 ('Stop' イベント ペイロード) |
-| Microsoft.Azure.ServiceBus.ReceiveDeferred | [MessageReceiver.ReceiveDeferredMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receivedeferredmessageasync) | IEnumerable<long> SequenceNumbers - 受信するシーケンス番号を含む一覧。<br/>IList<Message> Messages - 受信したメッセージの一覧 ('Stop' イベント ペイロード) |
-| Microsoft.Azure.ServiceBus.Complete | [MessageReceiver.CompleteAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.completeasync) | IList<string> LockTokens - 完了させるメッセージに対応するロック トークンを含む一覧。|
-| Microsoft.Azure.ServiceBus.Abandon | [MessageReceiver.AbandonAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.abandonasync) | string LockToken - 中止するメッセージに対応するロック トークン。 |
-| Microsoft.Azure.ServiceBus.Defer | [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) | string LockToken - 遅延させるメッセージに対応するロック トークン。 | 
-| Microsoft.Azure.ServiceBus.DeadLetter | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | string LockToken - 配信不能にするメッセージに対応するロック トークン。 | 
-| Microsoft.Azure.ServiceBus.RenewLock | [MessageReceiver.RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | string LockToken - ロックを更新するメッセージに対応するロック トークン。<br/>DateTime LockedUntilUtc - 新しいロック トークンの有効期限の日時 (UTC 形式)。 ('Stop' イベント ペイロード)|
-| Microsoft.Azure.ServiceBus.Process | [IReceiverClient.RegisterMessageHandler](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) で提供されるメッセージ ハンドラーのラムダ関数 | Message Message - 処理されるメッセージ。 |
-| Microsoft.Azure.ServiceBus.ProcessSession | [IQueueClient.RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) で提供されるメッセージ せしょん ハンドラーのラムダ関数 | Message Message - 処理されるメッセージ。<br/>IMessageSession Session - 処理されるセッション |
-| Microsoft.Azure.ServiceBus.AddRule | [SubscriptionClient.AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | RuleDescription Rule - 追加するルールを提供するルールの説明。 |
-| Microsoft.Azure.ServiceBus.RemoveRule | [SubscriptionClient.RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | string RuleName - 削除するルールの名前。 |
-| Microsoft.Azure.ServiceBus.GetRules | [SubscriptionClient.GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | IEnumerable<RuleDescription> Rules- サブスクリプションに関連付けられているすべてのルール。 ('Stop' ペイロードのみ) |
-| Microsoft.Azure.ServiceBus.AcceptMessageSession | [ISessionClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.azure.servicebus.isessionclient.acceptmessagesessionasync) | string SessionId - メッセージに存在する sessionId。 |
-| Microsoft.Azure.ServiceBus.GetSessionState | [IMessageSession.GetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.getstateasync) | string SessionId - メッセージに存在する sessionId。<br/>byte [] State - セッション状態 ('Stop' イベント ペイロード) |
-| Microsoft.Azure.ServiceBus.SetSessionState | [IMessageSession.SetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.setstateasync) | string SessionId - メッセージに存在する sessionId。<br/>byte [] State - セッション状態 |
-| Microsoft.Azure.ServiceBus.RenewSessionLock | [IMessageSession.RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | string SessionId - メッセージに存在する sessionId。 |
-| Microsoft.Azure.ServiceBus.Exception | インストルメント化された任意の API| Exception Exception - 例外インスタンス |
+| Microsoft.Azure.ServiceBus.Send | [MessageSender.SendAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.sendasync) | `IList<Message> Messages` - 送信されるメッセージの一覧 |
+| Microsoft.Azure.ServiceBus.ScheduleMessage | [MessageSender.ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.schedulemessageasync) | `Message Message` - 処理されるメッセージ<br/>`DateTimeOffset ScheduleEnqueueTimeUtc` - スケジュールされたメッセージのオフセット<br/>`long SequenceNumber` - スケジュールされたメッセージのシーケンス番号 ('Stop' イベント ペイロード) |
+| Microsoft.Azure.ServiceBus.Cancel | [MessageSender.CancelScheduledMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.cancelscheduledmessageasync) | `long SequenceNumber` - 取り消されるメッセージのシーケンス番号 | 
+| Microsoft.Azure.ServiceBus.Receive | [MessageReceiver.ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) | `int RequestedMessageCount` - 受信できたメッセージの最大数<br/>`IList<Message> Messages` - 受信したメッセージの一覧 ('Stop' イベント ペイロード) |
+| Microsoft.Azure.ServiceBus.Peek | [MessageReceiver.PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync) | `int FromSequenceNumber` - メッセージのバッチの参照を開始する始点<br/>`int RequestedMessageCount` - 取得するメッセージの最大数<br/>`IList<Message> Messages` - 受信したメッセージの一覧 ('Stop' イベント ペイロード) |
+| Microsoft.Azure.ServiceBus.ReceiveDeferred | [MessageReceiver.ReceiveDeferredMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receivedeferredmessageasync) | `IEnumerable<long> SequenceNumbers` - 受信するシーケンス番号を含む一覧<br/>`IList<Message> Messages` - 受信したメッセージの一覧 ('Stop' イベント ペイロード) |
+| Microsoft.Azure.ServiceBus.Complete | [MessageReceiver.CompleteAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.completeasync) | `IList<string> LockTokens` - 完了させるメッセージに対応するロック トークンを含む一覧|
+| Microsoft.Azure.ServiceBus.Abandon | [MessageReceiver.AbandonAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.abandonasync) | `string LockToken` - 中止するメッセージに対応するロック トークン |
+| Microsoft.Azure.ServiceBus.Defer | [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) | `string LockToken` - 保留するメッセージに対応するロック トークン | 
+| Microsoft.Azure.ServiceBus.DeadLetter | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | `string LockToken` - 配信不能に対応するメッセージのロック トークン | 
+| Microsoft.Azure.ServiceBus.RenewLock | [MessageReceiver.RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | `string LockToken` - ロックの更新に対応するメッセージのロック トークン<br/>`DateTime LockedUntilUtc` - 新しいロック トークンの有効期限の日時 (UTC 形式)  ('Stop' イベント ペイロード)|
+| Microsoft.Azure.ServiceBus.Process | [IReceiverClient.RegisterMessageHandler](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) で提供されるメッセージ ハンドラーのラムダ関数 | `Message Message` - 処理されるメッセージ |
+| Microsoft.Azure.ServiceBus.ProcessSession | [IQueueClient.RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) で提供されるメッセージ せしょん ハンドラーのラムダ関数 | `Message Message` - 処理されるメッセージ<br/>`IMessageSession Session` - 処理されるセッション |
+| Microsoft.Azure.ServiceBus.AddRule | [SubscriptionClient.AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | `RuleDescription Rule` - 追加するルールを提供するルールの説明 |
+| Microsoft.Azure.ServiceBus.RemoveRule | [SubscriptionClient.RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | `string RuleName`- 削除するルールの名前 |
+| Microsoft.Azure.ServiceBus.GetRules | [SubscriptionClient.GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | `IEnumerable<RuleDescription> Rules`- サブスクリプションに関連付けられているすべてのルール  ('Stop' ペイロードのみ) |
+| Microsoft.Azure.ServiceBus.AcceptMessageSession | [ISessionClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.azure.servicebus.isessionclient.acceptmessagesessionasync) | `string SessionId` - メッセージ内に存在する sessionId |
+| Microsoft.Azure.ServiceBus.GetSessionState | [IMessageSession.GetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.getstateasync) | `string SessionId` - メッセージ内に存在する sessionId<br/>`byte [] State` - セッション状態 ('Stop' イベント ペイロード) |
+| Microsoft.Azure.ServiceBus.SetSessionState | [IMessageSession.SetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.setstateasync) | `string SessionId` - メッセージ内に存在する sessionId<br/>`byte [] State` - セッションの状態 |
+| Microsoft.Azure.ServiceBus.RenewSessionLock | [IMessageSession.RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | `string SessionId` - メッセージ内に存在する sessionId |
+| Microsoft.Azure.ServiceBus.Exception | インストルメント化された任意の API| `Exception Exception` - 例外インスタンス |
 
 すべてのイベントで、現在の操作コンテキストを保持する `Activity.Current` にアクセスできます。
 
@@ -213,7 +213,7 @@ serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, D
 
 1. `IsEnabled(<OperationName>, string entity, null)` を、たとえば、`IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")` と指定します。 最後に 'Start' も 'Stop' もないことに注意してください。 これを使用して、特定の操作またはキューをフィルター処理で除外します。 コールバックから `false` が返されると、その操作のイベントは送信されません。
 
-  * 'Process' 操作および 'ProcessSession' 操作では `IsEnabled(<OperationName>, string entity, Activity activity)` コールバックも受け取ります。 これを使用して、`activity.Id` または Tags プロパティに基づいてイベントをフィルター処理します。
+   * 'Process' 操作および 'ProcessSession' 操作では `IsEnabled(<OperationName>, string entity, Activity activity)` コールバックも受け取ります。 これを使用して、`activity.Id` または Tags プロパティに基づいてイベントをフィルター処理します。
   
 2. `IsEnabled(<OperationName>.Start)` を、たとえば `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")` と指定します。 'Start' イベントが起動されるかどうかを確認します。 この結果は 'Start' イベントのみに影響し、それ以降のインストルメンテーションが依存することはありません。
 
@@ -227,6 +227,6 @@ serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, D
 
 ## <a name="next-steps"></a>次の手順
 
-* [Application Insights の相関付け](../application-insights/application-insights-correlation.md)
-* [Application Insights による依存関係の監視](../application-insights/app-insights-asp-net-dependencies.md): REST、SQL、その他の外部リソースによる処理速度の低下が発生しているかどうかを確認します。
-* [Application Insights .NET SDK でカスタム操作を追跡する](../application-insights/application-insights-custom-operations-tracking.md)
+* [Application Insights の相関付け](../azure-monitor/app/correlation.md)
+* [Application Insights による依存関係の監視](../azure-monitor/app/asp-net-dependencies.md): REST、SQL、その他の外部リソースによる処理速度の低下が発生しているかどうかを確認します。
+* [Application Insights .NET SDK でカスタム操作を追跡する](../azure-monitor/app/custom-operations-tracking.md)

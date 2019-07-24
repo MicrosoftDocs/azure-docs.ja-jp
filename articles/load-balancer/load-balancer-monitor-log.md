@@ -1,5 +1,6 @@
 ---
-title: パブリックな Basic Load Balancer の操作、イベント、およびカウンターを監視する | Microsoft Docs
+title: パブリックな Basic Load Balancer の操作、イベント、カウンターを監視する
+titlesuffix: Azure Load Balancer
 description: パブリックな Basic Load Balancer でアラート イベントとプローブの正常性状態のログを有効にする方法について説明します
 services: load-balancer
 documentationcenter: na
@@ -7,21 +8,22 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2018
 ms.author: kumud
-ms.openlocfilehash: e8d38aaff2e7f20a3935608bcf4d610828d2b84f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0d7c792c5230a5d82e97f4598a5dcfb864cead74
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261504"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847146"
 ---
-# <a name="log-analytics-for-public-basic-load-balancer"></a>パブリックな Basic Load Balancer の Log Analytics
+# <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>パブリック Basic ロード バランサーの Azure Monitor ログ
 
 >[!IMPORTANT] 
->Azure Load Balancer では、Basic と Standard の 2 種類がサポートされています。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer の詳細については、「[Standard Load Balancer の概要](load-balancer-standard-overview.md)」を参照してください。Azure Monitor での多次元メトリックによるテレメトリが公開されています。
+>Azure Load Balancer では、2 種類がサポートされています。Basic と Standard です。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer の詳細については、「[Standard Load Balancer の概要](load-balancer-standard-overview.md)」を参照してください。Azure Monitor での多次元メトリックによるテレメトリが公開されています。
 
 Azure の各種ログを使用して、Basic Load Balancer の管理やトラブルシューティングを行うことができます。 一部のログにはポータルからアクセスできます。 どのログも Azure Blob Storage から抽出し、Excel や PowerBI などのさまざまなツールで表示できます。 各種ログの詳細については、以下の一覧を参照してください。
 
@@ -30,13 +32,13 @@ Azure の各種ログを使用して、Basic Load Balancer の管理やトラブ
 * **正常性プローブ ログ:** 正常性プローブによって検出された問題 (バックエンド プールの中で、正常性プローブの障害が原因でロード バランサーから要求を受信していないインスタンスの数など) は、このログで確認できます。 このログは、正常性プローブの状態に変化があったときに書き込まれます。
 
 > [!IMPORTANT]
-> ログ分析は、現在、パブリックな Basic ロード バランサーに対してのみ機能します。 ログは、Resource Manager デプロイ モデルでデプロイされたリソースについてのみ使用できます。 クラシック デプロイ モデルのリソースには使用できません。 これらのデプロイ モデルの詳細については、[Resource Manager デプロイとクラシック デプロイ](../azure-resource-manager/resource-manager-deployment-model.md)に関する記事をご覧ください。
+> Azure Monitor ログは、現在、パブリック Basic ロード バランサーに対してのみ機能します。 ログは、Resource Manager デプロイ モデルでデプロイされたリソースについてのみ使用できます。 クラシック デプロイ モデルのリソースには使用できません。 これらのデプロイ モデルの詳細については、[Resource Manager デプロイとクラシック デプロイ](../azure-resource-manager/resource-manager-deployment-model.md)に関する記事をご覧ください。
 
 ## <a name="enable-logging"></a>ログの有効化
 
 監査ログは、リソース マネージャーのすべてのリソースで自動的に有効になります。 イベント ログと正常性プローブ ログでデータの収集を開始するには、ログを有効にする必要があります。 ログ記録を有効にするには、次の手順に従います。
 
-[Azure ポータル](http://portal.azure.com)にサインインします。 ロード バランサーをまだ作成していない場合は、先に進む前に [ロード バランサーを作成](load-balancer-get-started-internet-arm-ps.md) します。
+[Azure ポータル](https://portal.azure.com)にサインインします。 ロード バランサーをまだ作成していない場合は、先に進む前に [ロード バランサーを作成](load-balancer-get-started-internet-arm-ps.md) します。
 
 1. ポータルで **[参照]** をクリックします。
 2. **[ロード バランサー]** を選択します。
@@ -132,7 +134,7 @@ JSON 形式の出力でプロパティ フィールドを見れば、プロー�
 次のいずれかの方法を使用して、監査ログのデータを表示および分析できます。
 
 * **Azure Tools:** Azure PowerShell、Azure コマンド ライン インターフェイス (CLI)、Azure REST API、または Azure プレビュー ポータルを使用して、監査ログから情報を取得します。 それぞれの方法の詳細な手順については、「 [リソース マネージャーの監査操作](../azure-resource-manager/resource-group-audit.md) 」を参照してください。
-* **Power BI:** [Power BI](https://powerbi.microsoft.com/pricing) アカウントがまだない場合は、無料で試すことができます。 [Power BI 用 Azure 監査ログ コンテンツ パック](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs)を使用すると、構成済みのダッシュボードでデータを分析できます。また、要件に合わせてビューをカスタマイズすることもできます。
+* **Power BI:** [Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだお持ちではない場合は、無料で試すことができます。 [Power BI 用 Azure 監査ログ コンテンツ パック](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs)を使用すると、構成済みのダッシュボードでデータを分析できます。また、要件に合わせてビューをカスタマイズすることもできます。
 
 ## <a name="view-and-analyze-the-health-probe-and-event-log"></a>正常性プローブ ログとイベント ログの表示と分析
 

@@ -3,7 +3,7 @@ title: スケールアウトされたクラウド データベース間のデー
 description: エラスティック データベース API を使用して、シャードを操作し、自己ホスト サービス経由でデータを移動する方法について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: fb87a67d84588b5199a5d31530530d5afb7985e7
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 03/12/2019
+ms.openlocfilehash: 2127c05d7e52b0103d91ecfac4fb5977a4815f31
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353684"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901935"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>スケールアウトされたクラウド データベース間のデータ移動
 
@@ -27,9 +27,9 @@ Split-Merge ツールは、Azure Web サービスとして実行されます。 
 
 ![概要][1]
 
-## <a name="download"></a>[ダウンロード]
+## <a name="download"></a>ダウンロード
 
-[Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
+[Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
 ## <a name="documentation"></a>ドキュメント
 
@@ -136,7 +136,7 @@ Split-Merge サービス パッケージには、worker ロールと Web ロー�
 
 - **シャード マップ**
 
- 要求パラメーターの次のセクションでは、シャード マップと、シャード マップをホストするデータベースに関する情報を指定します。 具体的には、Azure SQL Database サーバーの名前、シャード マップをホストするデータベース、シャード マップ データベースに接続するための資格情報、および最後にシャード マップの名前を指定する必要があります。 現時点では、1 つの資格情報のセットのみを指定できます。 これらの資格情報には、シャード上のユーザー データだけでなく、シャード マップに対する変更を実行するための十分な権限が与えられている必要があります。
+  要求パラメーターの次のセクションでは、シャード マップと、シャード マップをホストするデータベースに関する情報を指定します。 具体的には、Azure SQL Database サーバーの名前、シャード マップをホストするデータベース、シャード マップ データベースに接続するための資格情報、および最後にシャード マップの名前を指定する必要があります。 現時点では、1 つの資格情報のセットのみを指定できます。 これらの資格情報には、シャード上のユーザー データだけでなく、シャード マップに対する変更を実行するための十分な権限が与えられている必要があります。
 
 - **ソースの範囲 (分割/マージ)**
 
@@ -210,18 +210,22 @@ Split-Merge サービスでは、完了した要求と実行中の要求を監�
 
   詳細な進捗状況レポートを提供する XML 値。 行のセットがソースからターゲットにコピーされるときに、進捗状況レポートが定期的に更新されます。 エラーまたは例外が発生した場合、この列にはエラーに関するより詳細な情報も含まれます。
 
-### <a name="azure-diagnostics"></a>Azure 診断
+### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-Split-Merge サービスは、監視と診断を行うために Azure SDK 2.5 に基づく Azure 診断を使用します。 「 [Azure Cloud Services および Virtual Machines の診断機能](../cloud-services/cloud-services-dotnet-diagnostics.md)」で説明したように、診断構成を制御します。 ダウンロード パッケージには、Web ロール用と worker ロール用の 2 つの診断構成が含まれています。 これには、パフォーマンス カウンター、IIS ログ、Windows イベント ログ、および Split-Merge アプリケーション イベント ログを記録するための定義が含まれます。
+Split-Merge サービスは、監視と診断を行うために Azure SDK 2.5 に基づく Azure Diagnostics を使用します。 診断構成を制御する方法については、次の記事で説明されています。[Azure Cloud Services と Virtual Machines の診断機能の有効化に関する記事](../cloud-services/cloud-services-dotnet-diagnostics.md) ダウンロード パッケージには、Web ロール用と worker ロール用の 2 つの診断構成が含まれています。 これには、パフォーマンス カウンター、IIS ログ、Windows イベント ログ、および Split-Merge アプリケーション イベント ログを記録するための定義が含まれます。
 
 ## <a name="deploy-diagnostics"></a>診断のデプロイ
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
 NuGet パッケージで提供される Web ロール用と worker ロール用の診断構成を使用して、監視と診断を有効にするには、Azure PowerShell を使用して次のコマンドを実行します。
 
 ```powershell
     $storage_name = "<YourAzureStorageAccount>"
     $key = "<YourAzureStorageAccountKey"
-    $storageContext = New-AzureStorageContext -StorageAccountName $storage_name -StorageAccountKey $key  
+    $storageContext = New-AzStorageContext -StorageAccountName $storage_name -StorageAccountKey $key  
     $config_path = "<YourFilePath>\SplitMergeWebContent.diagnostics.xml"
     $service_name = "<YourCloudServiceName>"
     Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWeb"
@@ -230,7 +234,7 @@ NuGet パッケージで提供される Web ロール用と worker ロール用�
     Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWorker"
 ```
 
-診断設定を構成してデプロイする方法の詳細については、「 [Azure Cloud Services および Virtual Machines の診断機能](../cloud-services/cloud-services-dotnet-diagnostics.md)」を参照してください。
+診断設定を構成してデプロイする方法の詳細については、次の記事で説明されています:[Azure Cloud Services と Virtual Machines の診断機能の有効化に関する記事](../cloud-services/cloud-services-dotnet-diagnostics.md)
 
 ## <a name="retrieve-diagnostics"></a>診断の取得
 
@@ -242,7 +246,7 @@ NuGet パッケージで提供される Web ロール用と worker ロール用�
 
 ![構成][3]
 
-## <a name="performance"></a>[パフォーマンス]
+## <a name="performance"></a>パフォーマンス
 
 一般に、Azure SQL Database の上位のより高パフォーマンスのサービス階層ほど、より高いパフォーマンスを期待できます。 上位のサービス階層で提供されるより優れた IO、CPU、およびメモリ割り当ては、Split-Merge サービスが使用する一括コピーおよび削除操作に役立ちます。 そのため、定義された一定期間のデータベースに対してのみサービス階層を増やします。
 

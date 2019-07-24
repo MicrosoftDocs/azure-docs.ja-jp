@@ -1,5 +1,5 @@
 ---
-title: Azure Event Hubs のスループット単位を自動的にスケールアップする | Microsoft Docs
+title: スループットユニットを自動的にスケールアップする - Azure Event Hubs | Microsoft Docs
 description: 名前空間の自動インフレを有効にしてスループット単位を自動的にスケールアップします
 services: event-hubs
 documentationcenter: na
@@ -10,19 +10,19 @@ ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 19525086b1bd41afcc730fb3860d7a01875e4832
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: d705993c7cd3816e89da21625dc5b003435b9128
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987003"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408164"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Azure Event Hubs のスループット単位を自動的にスケールアップする
-
 Azure Event Hubs は、拡張性の高いデータ ストリーミング プラットフォームです。 そのため、Event Hubs の使用は、多くの場合、サービスの利用開始後に増えます。 このような使用では、Event Hubs のスケーリングとより大きな転送率の処理を行うために、事前に定義された[スループット単位](event-hubs-features.md#throughput-units)を増やす必要があります。 Event Hubs の**自動インフレ**機能は、使用量のニーズに合わせてスループット単位の数を増やすことで、自動的にスケールアップします。 スループット単位を増やすことで、以下の状況で必要になる調整シナリオを防ぐことができます。
 
 * データの受信レートが、設定されたスループット単位を超えている。
@@ -47,15 +47,25 @@ Event Hubs 名前空間の自動インフレを有効または無効にするに
 
 ### <a name="enable-auto-inflate-through-the-portal"></a>ポータルで自動インフレを有効にする
 
-自動インフレ機能は、Event Hubs 名前空間を作成するときに有効にできます。
+
+#### <a name="enable-at-the-time-of-creation"></a>作成時に有効にする 
+自動インフレ機能は、**Event Hubs 名前空間の作成時**に有効にできます。
  
-![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
+![イベント ハブの作成時に自動インフレを有効にする](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 
 このオプションを有効にすると、小さなスループット単位で開始し、使用量のニーズの増加に合わせてスケールアップできます。 インフレの上限はすぐには料金に影響しません。料金は 1 時間ごとに使用されるスループット単位の数によって決まります。
 
-自動インフレは、ポータルの設定ウィンドウにある **[スケール]** オプションを使用して有効にすることもできます。
+#### <a name="enable-auto-inflate-for-an-existing-event-hub"></a>既存のイベント ハブの自動インフレを有効にする
+自動インフレ機能を有効にし、次の手順を使用してその設定を変更することもできます。 
  
-![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate2.png)
+1. **[Event Hubs 名前空間**] ページの **[Auto-inflate throughput units](自動インフレのスループット ユニット)** で **[無効]** を選択します。  
+
+    ![[Event Hubs 名前空間] ページでスループット ユニットを選択する](./media/event-hubs-auto-inflate/select-throughput-units.png)
+2. **[スケールの設定**] ページで、**[有効]** のチェック ボックスをオンにします (自動スケール機能が有効になっていなかった場合)。
+
+    ![[有効] を選択する](./media/event-hubs-auto-inflate/scale-settings.png)
+3. スループット ユニットの**最大**数を入力するか、スクロール バーを使用して値を設定します。 
+4. (省略可能) このページの上部でスループット ユニットの**最小**数を更新します。 
 
 
 > [!NOTE]

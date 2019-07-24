@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と XaitPorter の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と XaitPorter の統合 | Microsoft Docs
 description: Azure Active Directory と XaitPorter の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d33c7cb7-0550-425b-882a-619a713a71b7
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 12fb8e5b2b940c48de766a48f59ed0cc342b5356
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6cd4f9e561a55c010273b48fb4232348baad3582
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421068"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200940"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>チュートリアル: Azure Active Directory と XaitPorter の統合
+# <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>チュートリアル:Azure Active Directory と XaitPorter の統合
 
 このチュートリアルでは、XaitPorter と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -147,7 +148,7 @@ XaitPorter で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[Enable Autocreation of Users]\(ユーザーの自動作成を有効にする\)** を選択します。
 
-    d. Click **OK**.
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Click **OK**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -179,11 +180,11 @@ XaitPorter で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-xaitporter-test-user"></a>XaitPorter のテスト ユーザーを作成する
 
-このセクションでは、XaitPorter で Britta Simon というユーザーを作成します。 XaitPorter プラットフォームでユーザーを追加するには、[XaitPorter クライアント サポート チーム](https://www.xait.com/support/)に問い合わせてください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、XaitPorter で Britta Simon というユーザーを作成します。 XaitPorter プラットフォームでユーザーを追加するには、 [XaitPorter クライアント サポート チーム](https://www.xait.com/support/) に問い合わせてください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -220,7 +221,7 @@ XaitPorter で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [XaitPorter] タイルをクリックすると、自動的に XaitPorter アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

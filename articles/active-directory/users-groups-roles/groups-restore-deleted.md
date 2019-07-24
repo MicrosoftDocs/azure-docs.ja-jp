@@ -1,71 +1,87 @@
 ---
-title: Azure AD で削除された Office 365 グループを復元する | Microsoft Docs
+title: 削除された Office 365 グループを復元する - Azure AD | Microsoft Docs
 description: Azure Active Directory で、削除されたグループを復元する方法、復元可能なグループを表示する方法、およびグループを完全に削除する方法
 services: active-directory
-documentationcenter: ''
-author: eross-msft
-manager: mtillman
-editor: ''
+author: curtand
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 08/28/2017
-ms.author: lizross
+ms.date: 03/18/2019
+ms.author: curtand
 ms.reviewer: krbain
-ms.custom: it-pro
-ms.openlocfilehash: 3b2264817dce63885ce0c428fe4df8427f7cdde6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.custom: it-pro, seo-update-azuread-jan
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 32511b638d4674198ce919b8b3a90e67b1c3cfc7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049248"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58793256"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Azure Active Directory で削除された Office 365 グループを復元する
 
-Azure Active Directory (Azure AD) で Office 365 グループを削除すると、削除されたグループは表示されなくなりますが、削除日から 30 日間は保持されます。 この動作は、必要に応じて、グループとその内容を復元できるようにするためです。 この機能は、Azure AD の Office 365 グループに限定されます。 セキュリティ グループや配布グループでは使用できません。
+Azure Active Directory (Azure AD) で Office 365 グループを削除すると、削除されたグループは表示されなくなりますが、削除日から 30 日間は保持されます。 この動作は、必要に応じて、グループとその内容を復元できるようにするためです。 この機能は、Azure AD の Office 365 グループに限定されます。 セキュリティ グループや配布グループでは使用できません。 30 日間のグループの復元期間はカスタマイズできないことに注意してください。
 
 > [!NOTE]
-> `Remove-MsolGroup`は使用しないでください。グループが完全に消去されます。 O365 グループを削除する場合は、常に `Remove-AzureADMSGroup` を使用してください。
+> `Remove-MsolGroup`は使用しないでください。グループが完全に消去されます。 Office 365 グループを削除する場合は、常に `Remove-AzureADMSGroup` を使用してください。
 
 グループを復元するために必要なアクセス許可は、次のいずれかになります。
 
 Role | アクセス許可
 --------- | ---------
-会社の管理者、パートナー レベル 2 のサポート、InTune サービス管理者 | 削除されたすべての Office 365 グループを復元できます。
-ユーザー アカウント管理者、パートナー レベル 1 のサポート | 会社の管理者ロールに割り当てられているグループを除き、削除されたすべての Office 365 グループを復元できます。
+グローバル管理者、パートナー レベル 2 のサポート、Intune 管理者 | 削除されたすべての Office 365 グループを復元できます。
+ユーザー管理者、パートナー レベル 1 のサポート | 会社の管理者ロールに割り当てられているグループを除き、削除されたすべての Office 365 グループを復元できます。
 User | ユーザーが所有する、削除されたすべての Office 365 グループを復元できます。
 
+## <a name="view-and-manage-the-deleted-office-365-groups-that-are-available-to-restore"></a>復元可能な削除済み Office 365 グループの表示と管理を行う
 
-## <a name="view-the-deleted-office-365-groups-that-are-available-to-restore"></a>復元可能な削除済み Office 365 グループを表示する
+1. ユーザー管理者アカウントを使用して [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+2. **[グループ]** を選択した後、**[削除したグループ]** を選択して、復元可能な削除されたグループを表示します。
+
+    ![復元可能なグループを表示する](media/groups-lifecycle/deleted-groups3.png)
+
+3. **[削除されたグループ]** ブレードで、以下を実行できます。
+
+   - **[グループの復元]** を選択して、削除されたグループとその内容を復元します。
+   - **[完全に削除]** を選択して、削除されたグループを完全に削除します。 グループを完全に削除するには、自分が管理者である必要があります。
+
+## <a name="view-the-deleted-office-365-groups-that-are-available-to-restore-using-powershell"></a>Powershell を使用して復元可能な削除済み Office 365 グループを表示する
 
 次のコマンドレットを使用すると、削除されたグループを表示して、目的のグループがまだ完全には削除されていないことを確認できます。 これらのコマンドレットは、[Azure AD PowerShell モジュール](https://www.powershellgallery.com/packages/AzureAD/)に含まれています。 このモジュールの詳細については、「[Azure Active Directory PowerShell Version 2 (Azure Active Directory PowerShell バージョン 2)](/powershell/azure/install-adv2?view=azureadps-2.0)」をご覧ください。
 
 1.  次のコマンドレットを実行して、テナント内のまだ復元可能なすべての削除済み Office 365 グループを表示します。
    
-  ```
-  Get-AzureADMSDeletedGroup
-  ```
+
+    ```powershell
+    Get-AzureADMSDeletedGroup
+    ```
 
 2.  特定のグループの objectID がわかっている場合 (手順 1 のコマンドレットで objectID を取得できる場合) は、次のコマンドレットを実行して、削除された特定のグループがまだ完全には削除されていないことを確認できます。
-  
-  ```
-  Get-AzureADMSDeletedGroup –Id <objectId>
-  ```
 
-## <a name="how-to-restore-your-deleted-office-365-group"></a>削除された Office 365 グループを復元する方法
+    ```
+    Get-AzureADMSDeletedGroup –Id <objectId>
+    ```
+
+## <a name="how-to-restore-your-deleted-office-365-group-using-powershell"></a>削除された Office 365 グループを Powershell を使用して復元する方法
+
 グループがまだ復元可能であることを確認したら、次のいずれかの手順を実行して削除されたグループを復元します。 グループにドキュメント、SP サイト、または他の永続的なオブジェクトが含まれている場合、グループとその内容を完全に復元するまでに最大 24 時間かかることがあります。
 
-1.  次のコマンドレットを実行して、グループとその内容を復元します。
+1. 次のコマンドレットを実行して、グループとその内容を復元します。
  
- ```
- Restore-AzureADMSDeletedDirectoryObject –Id <objectId>
- ``` 
 
-また、次のコマンドレットを実行して、削除されたグループを完全に削除することもできます。
- ```
- Remove-AzureADMSDeletedDirectoryObject –Id <objectId>
- ```
+   ```
+    Restore-AzureADMSDeletedDirectoryObject –Id <objectId>
+    ``` 
+
+2. また、次のコマンドレットを実行して、削除されたグループを完全に削除することもできます。
+    
+
+    ```
+    Remove-AzureADMSDeletedDirectoryObject –Id <objectId>
+    ```
 
 ## <a name="how-do-you-know-this-worked"></a>グループが復元されたことを確認する方法
 
@@ -73,10 +89,11 @@ Office 365 グループが正常に復元されたことを確認するには、
 
 - Exchange の左側のナビゲーション バーにグループが表示されます。
 - Planner にグループのプランが表示されます。
-- Sharepoint サイトとそのすべてのコンテンツを利用できるようになります。
+- SharePoint サイトとそのすべてのコンテンツを利用できるようになります。
 - Exchange エンドポイントと、Office 365 グループをサポートする他の Office 365 ワークロードからグループにアクセスできます。
 
 ## <a name="next-steps"></a>次の手順
+
 次の記事は、Azure Active Directory グループに関する追加情報を提供します。
 
 * [既存のグループの表示](../fundamentals/active-directory-groups-view-azure-portal.md)

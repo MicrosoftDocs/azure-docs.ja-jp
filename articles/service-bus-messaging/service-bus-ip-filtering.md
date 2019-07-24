@@ -1,38 +1,36 @@
 ---
-title: Azure Service Bus の IP 接続フィルター | Microsoft Docs
-description: IP フィルター処理を使用して特定の IP アドレスから Azure Service Bus への接続をブロックする方法。
+title: Azure Service Bus のファイアウォール ルール | Microsoft Docs
+description: ファイアウォール ルールを使用して、特定の IP アドレスから Azure Service Bus への接続を許可する方法です。
 services: service-bus
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
-ms.author: clemensv
-ms.openlocfilehash: c6e9eef762d4a9eb95685d94c61ce10d499bb155
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 52475a3976ef8897ffed07c499eb06e7476c0156
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884805"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58136295"
 ---
-# <a name="use-ip-filters"></a>IP フィルターの使用
+# <a name="use-firewall-rules"></a>ファイアウォール ルールを使用する
 
-Azure Service Bus が特定の既知のサイトからのみアクセスできるシナリオでは、"*IP フィルター*" 機能により、特定の IPv4 アドレスからのトラフィックの拒否または受け入れのルールを構成することができます。 たとえば、これらのアドレスは、企業の NAT ゲートウェイのアドレスである可能性があります。
+Azure Service Bus が特定の既知のサイトからのみアクセスできるシナリオでは、ファイアウォール ルールにより、特定の IPv4 アドレスからのトラフィックの受け入れのルールを構成することができます。 たとえば、これらのアドレスは、企業の NAT ゲートウェイのアドレスである可能性があります。
 
 ## <a name="when-to-use"></a>いつ使用するか
 
-特定の IP アドレスの Service Bus エンドポイントをブロックすると有用な特定のユース ケースには、次の 2 つがあります。
-
-- Service Bus が指定された範囲の IP アドレスからのトラフィックのみを受信し、それ以外のトラフィックをすべて拒否する必要がある場合。 たとえば、Service Bus を [Azure Express Route][express-route] と共に使用して、オンプレミス インフラストラクチャへのプライベート接続を作成する場合が該当します。
-- Service Bus の管理者によって疑わしいと識別された IP アドレスからのトラフィックを拒否する必要がある場合。
+指定した IP アドレス範囲からのトラフィックのみを受信し、それ以外のすべてを拒否するように、Service Bus を設定する必要がある場合は、"*ファイアウォール*" を利用して Service Bus エンドポイントを他の IP アドレスからブロックすることができます。 たとえば、Service Bus を [Azure Express Route][express-route] と共に使用して、オンプレミス インフラストラクチャへのプライベート接続を作成する場合が該当します。 
 
 ## <a name="how-filter-rules-are-applied"></a>フィルター規則の適用方法
 
 IP フィルター規則は、Service Bus 名前空間レベルで適用されます。 したがって、規則は、サポートされているプロトコルを使用するクライアントからのすべての接続に適用されます。
 
-Service Bus 名前空間上の拒否 IP 規則に一致する IP アドレスからの接続試行は未承認として拒否されます。 IP 規則に関する記述は応答に含まれません。
+Service Bus 名前空間上の許可 IP 規則に一致しない IP アドレスからの接続試行は、未承認として拒否されます。 IP 規則に関する記述は応答に含まれません。
 
 ## <a name="default-setting"></a>既定の設定
 
@@ -42,67 +40,107 @@ Service Bus 名前空間上の拒否 IP 規則に一致する IP アドレスか
 
 IP フィルター規則は順に適用され、IP アドレスと一致する最初の規則に基づいて許可アクションまたは拒否アクションが決定されます。
 
-たとえば、範囲 70.37.104.0/24 内のアドレスを許可し、それ以外のアドレスをすべて拒否するには、グリッドの最初の規則でアドレス範囲 70.37.104.0/24 を許可する必要があります。 さらに、次の規則で範囲 0.0.0.0/0 を使用してすべてのアドレスを拒否する必要があります。
+>[!WARNING]
+> ファイアウォール ルールを実装すると、他の Azure サービスが Service Bus と対話するのを禁止できます。
+>
+> IP フィルター処理 (ファイアウォール ルール) が実装されているときは信頼できる Microsoft サービスはサポートされませんが、近日中に使用できるようになります。
+>
+> IP フィルター処理では動作しない Azure の一般的なシナリオは次のとおりです (網羅的なリストでは**ない**ことに注意してください)
+> - Azure Monitor
+> - Azure Stream Analytics
+> - Azure Event Grid との統合
+> - Azure IoT Hub ルート
+> - Azure IoT Device Explorer
+> - Azure データ エクスプローラー
+>
+> 次の Microsoft サービスが仮想ネットワーク上に存在する必要があります
+> - Azure App Service
+> - Azure Functions
 
-> [!NOTE]
-> IP アドレスを拒否すると、他の Azure サービス (Azure Stream Analytics、Azure Virtual Machines、ポータルの Device Explorer など) が Service Bus と対話できなくなる可能性があります。
+### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して仮想ネットワークとファイアウォール ルールを作成する
 
-### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して仮想ネットワーク ルールを作成する
-
-> ![重要] 仮想ネットワークは、Service Bus の **Premium レベル**でのみサポートされます。
+> [!IMPORTANT]
+> ファイアウォールと仮想ネットワークは、Service Bus の **Premium** レベルでのみサポートされます。
 
 次の Resource Manager テンプレートでは、既存の Service Bus 名前空間に仮想ネットワーク ルールを追加できます。
 
 テンプレート パラメーター:
 
-- **ipFilterRuleName** は一意であり、長さが最大 128 文字の大文字と小文字を区別しない英数字である必要があります。
-- **ipFilterAction** は IP フィルター規則に適用するアクションとして **Reject** または **Accept** である必要があります。
 - **ipMask** は、1 つの IPv4 アドレスか、または CIDR 表記法で記述した IP アドレス ブロックです。 たとえば、CIDR 表記では、70.37.104.0/24 は 70.37.104.0 から 70.37.104.255 までの 256 個の IPv4 アドレスを表し、24 は範囲に対する有効プレフィックス ビット数を示します。
 
+> [!NOTE]
+> 可能な拒否ルールはありませんが、Azure Resource Manager テンプレートには、接続を制限しない **"Allow"** に設定された既定のアクション セットがあります。
+> 仮想ネットワークまたはファイアウォールのルールを作成するときは、***"defaultAction"*** を変更する必要があります。
+> 
+> from
+> ```json
+> "defaultAction": "Allow"
+> ```
+> to
+> ```json
+> "defaultAction": "Deny"
+> ```
+>
+
 ```json
-{  
-   "$schema":"http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-   "contentVersion":"1.0.0.0",
-   "parameters":{     
-          "namespaceName":{  
-             "type":"string",
-             "metadata":{  
-                "description":"Name of the namespace"
-             }
-          },
-          "ipFilterRuleName":{  
-             "type":"string",
-             "metadata":{  
-                "description":"Name of the Authorization rule"
-             }
-          },
-          "ipFilterAction":{  
-             "type":"string",
-             "allowedValues": ["Reject", "Accept"],
-             "metadata":{  
-                "description":"IP Filter Action"
-             }
-          },
-          "IpMask":{  
-             "type":"string",
-             "metadata":{  
-                "description":"IP Mask"
-             }
-          }
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "servicebusNamespaceName": {
+        "type": "string",
+        "metadata": {
+          "description": "Name of the Service Bus namespace"
+        }
       },
+      "location": {
+        "type": "string",
+        "metadata": {
+          "description": "Location for Namespace"
+        }
+      }
+    },
+    "variables": {
+      "namespaceNetworkRuleSetName": "[concat(parameters('servicebusNamespaceName'), concat('/', 'default'))]",
+    },
     "resources": [
-        {
-            "apiVersion": "2018-01-01-preview",
-            "name": "[concat(parameters('namespaceName'), '/', parameters('ipFilterRuleName'))]",
-            "type": "Microsoft.ServiceBus/Namespaces/IPFilterRules",
-            "properties": {
-                "FilterName":"[parameters('ipFilterRuleName')]",
-                "Action":"[parameters('ipFilterAction')]",              
-                "IpMask": "[parameters('IpMask')]"
+      {
+        "apiVersion": "2018-01-01-preview",
+        "name": "[parameters('servicebusNamespaceName')]",
+        "type": "Microsoft.ServiceBus/namespaces",
+        "location": "[parameters('location')]",
+        "sku": {
+          "name": "Standard",
+          "tier": "Standard"
+        },
+        "properties": { }
+      },
+      {
+        "apiVersion": "2018-01-01-preview",
+        "name": "[variables('namespaceNetworkRuleSetName')]",
+        "type": "Microsoft.ServiceBus/namespaces/networkruleset",
+        "dependsOn": [
+          "[concat('Microsoft.ServiceBus/namespaces/', parameters('servicebusNamespaceName'))]"
+        ],
+        "properties": {
+          "virtualNetworkRules": [<YOUR EXISTING VIRTUAL NETWORK RULES>],
+          "ipRules": 
+          [
+            {
+                "ipMask":"10.1.1.1",
+                "action":"Allow"
+            },
+            {
+                "ipMask":"11.0.0.0/24",
+                "action":"Allow"
             }
-        } 
-    ]
-}
+          ],
+          "defaultAction": "Deny"
+        }
+      }
+    ],
+    "outputs": { }
+  }
 ```
 
 テンプレートをデプロイするには、[Azure Resource Manager][lnk-deploy] の手順に従います。

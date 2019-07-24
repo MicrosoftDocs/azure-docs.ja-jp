@@ -6,14 +6,14 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 08/06/2018
+ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: a56cb92dc8870bf3fff6de0b1d5d907a0898c216
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 9accb41cdb4d780bf137d6872cca022226f902e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364297"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58180757"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータでロール ベースのアクセス制御を構成する
 
@@ -21,31 +21,35 @@ ms.locfileid: "46364297"
 
 ## <a name="default-settings"></a>既定の設定
 
-リモート監視ソリューションの初めてのデプロイでは、**管理**と**読み取り専用**という 2 つのロールが含まれます。
+リモート監視ソリューションの初めてのデプロイでは、2 つのロールが含まれます (**管理**と**読み取り専用**)。
 
-**管理**ロールのユーザーは、ソリューションに対するフルアクセスを持ちます。 **読み取り専用**ロールのユーザーは、次のタスクのいずれも実行できません。
+**管理**ロールのすべてのユーザーには、以下のアクセス許可を含む、ソリューションへのフル アクセス権があります。 **読み取り専用**ロールのユーザーには、ソリューションを表示するアクセス権のみがあります。
 
-- アラームの更新
-- アラームの削除
-- デバイスの作成
-- デバイスの更新
-- デバイスの削除
-- デバイス グループの作成
-- デバイス グループの更新
-- デバイス グループの削除
-- 規則の作成
-- 規則の更新
-- 規則の削除
-- ジョブの作成
-- SIM 管理の更新
+| アクセス許可            | [Admin] | 読み取り専用 |
+|----------------       |-------|-----------|
+| ソリューションの表示         | はい   | はい       |
+| アラームの更新         | はい   | いいえ         |
+| アラームの削除         | はい   | いいえ         |
+| デバイスの作成        | はい   | いいえ         |
+| デバイスの更新        | はい   | いいえ         |
+| デバイスの削除        | はい   | いいえ         |
+| デバイス グループの作成  | はい   | いいえ         |
+| デバイス グループの更新  | はい   | いいえ         |
+| デバイス グループの削除  | はい   | いいえ         |
+| 規則の作成          | はい   | いいえ         |
+| 規則の更新          | はい   | いいえ         |
+| 規則の削除          | はい   | いいえ         |
+| ジョブの作成           | はい   | いいえ         |
+| SIM 管理の更新 | はい   | いいえ         |
 
-リモート監視ソリューションのデプロイを実行するユーザーには**管理者**ロールが自動的に割り当てられ、そのユーザーが Azure Active Directory アプリケーション所有者になります。 アプリケーション所有者は、Azure Portal で他のユーザーにロールを割り当てることができます。
+既定では、ソリューションをデプロイしたユーザーに**管理者**ロールが自動的に割り当てられ、そのユーザーが Azure Active Directory アプリケーション所有者になります。 アプリケーション所有者は、Azure Portal から他のユーザーにロールを割り当てることができます。 別のユーザーがソリューションのロールを割り当てられるようにする場合は、Azure Portal でそのユーザーをアプリケーション所有者として設定する必要があります。
 
-別のユーザーがソリューションのロールを割り当てられるようにする場合は、Azure Portal でそのユーザーをアプリケーション所有者として設定する必要があります。
+> [!NOTE]
+> ソリューションをデプロイしたユーザーは、作成された直後に表示できる**唯一の人**です。 読み取り専用、管理者、またはカスタム ロールのいずれかとして他のユーザーにアプリケーションを表示するアクセス許可を付与するには、ユーザーの追加または削除に関する以下の手順を参照してください。
 
 ## <a name="add-or-remove-users"></a>ユーザーを追加または削除する
 
-リモート監視ソリューションに対してユーザーの追加または削除を行うには、Azure Portal を使用します。 次の手順では、リモート監視ソリューションのデプロイ時に作成された [Azure Active Directory エンタープライズ アプリケーション](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application)を使用しています。
+Azure Active Directory アプリケーション所有者は、Azure Portal を使用して、リモート監視ソリューションからロールに対してユーザーを追加または削除することができます。 次の手順では、リモート監視ソリューションのデプロイ時に作成された [Azure Active Directory エンタープライズ アプリケーション](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application)を使用しています。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -245,5 +249,5 @@ public async Task DeleteAsync(string id)
 
 リモート監視ソリューション アクセラレータの概念に関する詳細については、[リモート監視のアーキテクチャ](iot-accelerators-remote-monitoring-sample-walkthrough.md)に関するページをご覧ください
 
-リモート監視ソリューションのカスタマイズの詳細については、「[マイクロサービスをカスタマイズして再展開する](iot-accelerators-microservices-example.md)
-<!-- Next tutorials in the sequence -->」をご覧ください。
+リモート監視ソリューションのカスタマイズの詳細については、「[Customize and redeploy a microservice](iot-accelerators-microservices-example.md)」 (マイクロサービスのカスタマイズと再デプロイ) をご覧ください
+<!-- Next tutorials in the sequence -->

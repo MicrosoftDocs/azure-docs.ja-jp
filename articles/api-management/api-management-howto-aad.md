@@ -13,29 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: 4c1696fc373975eb9857c40366829fbe6a535911
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 10792c912e3028cd12eedb83b1b211bab20bc5a7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391880"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961065"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを承認する
 
 この記事では、Azure Active Directory (Azure AD) 内のユーザーに対して開発者ポータルへのアクセスを有効にする方法について説明します。 また、Azure AD ユーザーが含まれた外部グループを追加することで Azure AD ユーザーのグループを管理する方法についても説明します。
 
-> [!NOTE]
-> Azure AD 統合は、[Developer、Standard、および Premium](https://azure.microsoft.com/pricing/details/api-management/) の各レベルでのみ使用可能です。
-
 ## <a name="prerequisites"></a>前提条件
 
-- [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
+- 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)。
 - Azure API Management インスタンスをインポートして発行します。 詳細については、[インポートと発行](import-and-publish.md)に関するページを参照してください。
+
+[!INCLUDE [premium-dev-standard.md](../../includes/api-management-availability-premium-dev-standard.md)]
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Azure AD を使用して開発者アカウントを承認する
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。 
-1. elect ![矢印](./media/api-management-howto-aad/arrow.png).
+1. Select ![矢印](./media/api-management-howto-aad/arrow.png)。
 1. 検索ボックスに、「**api**」と入力します。
 1. **[API Management サービス]** を選択します。
 1. お使いの API Management サービス インスタンスを選択します。
@@ -52,7 +51,7 @@ ms.locfileid: "44391880"
    ![Azure Portal で ID プロバイダーを追加するための手順](./media/api-management-howto-aad/api-management-with-aad001.png)  
 1. ブラウザーで別のタブを開きます。 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
-1. elect ![矢印](./media/api-management-howto-aad/arrow.png).
+1. Select ![矢印](./media/api-management-howto-aad/arrow.png)。
 1. 「**active**」と入力します。 **[Azure Active Directory]** ウィンドウが表示されます。
 1. **[Azure Active Directory]** を選択します。
 1. **[管理]** の **[アプリの登録]** を選択します。
@@ -190,9 +189,9 @@ Azure AD インスタンス内のユーザーのアクセスを有効にした�
 [Caching policies]: api-management-policy-reference.md#caching-policies
 [Create an API Management service instance]: get-started-create-service-instance.md
 
-[http://oauth.net/2/]: http://oauth.net/2/
+[https://oauth.net/2/]: https://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-[Accessing the Graph API]: http://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
+[Accessing the Graph API]: https://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
 
 [Prerequisites]: #prerequisites
 [Configure an OAuth 2.0 authorization server in API Management]: #step1

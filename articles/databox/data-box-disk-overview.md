@@ -6,27 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 10/30/2018
+ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: f965d455b3ada48caabb80458d44e841329cf787
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 96ff843ada9d9043d2c10f479d488617ae56da41
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229613"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497722"
 ---
-# <a name="what-is-azure-data-box-disk-preview"></a>Azure Data Box Disk とは (プレビュー)
+# <a name="what-is-azure-data-box-disk"></a>Azure Data Box Disk とは
 
 Microsoft Azure Data Box Disk ソリューションを使用すると、迅速かつ安価な信頼性の高い方法で、数テラバイトのオンプレミス データを Azure に送信できます。 1 から 5 台のソリッドステート ディスク (SSD) を出荷することで、安全なデータ転送が促進されます。 これらの暗号化された 8 TB ディスクは、地域の運送業者を通じてデータセンターに届けられます。 
 
 Azure portal で Data Box サービスを使用して、ディスクの構成、接続、ロック解除をすばやく行うことができます。 データをディスクにコピーしたら、ディスクを Azure に返送します。 Azure データセンターでは、高速のプライベート ネットワーク アップロード リンクを使用して、データがドライブからクラウドに自動的にアップロードされます。
-
-
-> [!IMPORTANT]
-> - Data Box Disk はプレビュー段階にあります。 このソリューションを展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。 
-> - このサービスにサインアップする必要があります。 サインアップするには、[プレビュー ポータル](https://aka.ms/azuredataboxfromdiskdocs)に移動します。
-> - プレビュー期間中、Data Box Disk は、米国および欧州連合のお客様に出荷できます。 詳細については、「[Region availability (利用可能なリージョン)](#region-availability)」をご覧ください。
 
 ## <a name="use-cases"></a>ユース ケース
 
@@ -83,7 +77,7 @@ Data Box Disk は、ネットワークに影響を与えずに大量のデータ
 | 仕様                                          | 説明              |
 |---------------------------------------------------------|--------------------------|
 | Weight                                                  | ボックスあたり 約 900 g (2 lbs.) 未満。 ボックスに最大 5 台のディスク                |
-| ディメンション                                              | ディスク - 2.5 インチ SSD |            
+| Dimensions                                              | ディスク - 2.5 インチ SSD |            
 | ケーブル                                                  | ディスクごとに USB 3.1 ケーブルが 1 本|
 | 1 注文あたりのストレージ容量                              | 40 TB (使用可能な容量は最大 35 TB)|
 | ディスク ストレージ容量                                   | 8 TB (使用可能な容量は最大 7 TB)|
@@ -95,7 +89,7 @@ Data Box Disk は、ネットワークに影響を与えずに大量のデータ
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
-プレビュー期間中、Data Box Disk では次の Azure リージョンにデータを転送できます。
+現在、Data Box Disk では次の Azure リージョンにデータを転送できます。
 
 
 |Azure リージョン  |Azure リージョン  |
@@ -108,11 +102,12 @@ Data Box Disk は、ネットワークに影響を与えずに大量のデータ
 |米国中北部  |オーストラリア南東部   |
 |米国東部      |オーストラリア中部 |
 |米国東部 2     |オーストラリア中部 2|
+|東日本     |韓国中部 |
 
 
 ## <a name="pricing"></a>価格
 
-価格については、[プレビューの価格のページ](https://azure.microsoft.com/pricing/details/storage/databox/disk/)を参照してください。
+価格については、[価格に関するページ](https://azure.microsoft.com/pricing/details/databox/disk/)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

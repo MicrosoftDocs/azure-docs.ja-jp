@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: bbb0bbc6ddbbabb37932edc6946394b020631231
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 484a0043b9b5eefa5491dee75e87244d1c001620
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45636428"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342325"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>Red Hat Enterprise Linux for SAP NetWeaver における Azure VM での GlusterFS
 
@@ -110,10 +110,10 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 1. 可用性セットを作成します  
    更新ドメインの最大数を設定します
 1. 仮想マシン 1 を作成します  
-   この Red Hat Enterprise Linux 7.4 イメージの例では、RHEL 7 以上を使用します<https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   この Red Hat Enterprise Linux 7.4 イメージの例では、RHEL 7 以上を使用します<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    前に作成された可用性セットを選択します  
 1. 仮想マシン 2 を作成します  
-   この Red Hat Enterprise Linux 7.4 イメージの例では、RHEL 7 以上を使用します<https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   この Red Hat Enterprise Linux 7.4 イメージの例では、RHEL 7 以上を使用します<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    前に作成された可用性セットを選択します  
 1. SAP システムごとに 1 つのデータ ディスクを両方の仮想マシンに追加します。
 

@@ -13,21 +13,21 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
-ms.openlocfilehash: c219b2fb58d46d9280ef5c022140e0499e3ac54c
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 81a3064290e0aa720a4fe6b0fa0d8eb13cfe6903
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51347512"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141800"
 ---
 #  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>静的 IP のために Azure Virtual Machines にリモート デスクトップ接続できない
 
 この記事では、Azure Windows Virtual Machines (VM) に静的 IP を構成した後で VM にリモート デスクトップ接続できない問題について説明します。
 
-> [!NOTE] 
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイ モデルの使用方法について説明しています。最新のデプロイでは、クラシック デプロイ モデルではなくこのモデルを使用することをお勧めします。 
+> [!NOTE]
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイ モデルがあります。 この記事では、Resource Manager デプロイ モデルの使用方法について説明しています。最新のデプロイでは、クラシック デプロイ モデルではなくこのモデルを使用することをお勧めします。
 
-## <a name="symptoms"></a>現象 
+## <a name="symptoms"></a>現象
 
 Azure の VM に RDP 接続を行うと、次のようなエラー メッセージを受け取ります。
 
@@ -47,7 +47,7 @@ Azure portal で[ブート診断](../troubleshooting/boot-diagnostics.md)のス�
 
 VM には、Windows 内のネットワーク インターフェイスで定義されている静的 IP アドレスが設定されています。 この IP アドレスが、Azure portal で定義されているアドレスと異なります。
 
-## <a name="solution"></a>解決策 
+## <a name="solution"></a>解決策
 
 これらの手順を実行する前に、バックアップとして、影響を受ける VM の OS ディスクのスナップショットを取得します。 詳細については、[ディスクのスナップショット](../windows/snapshot-copy-managed-disk.md)に関する記事を参照してください。
 
@@ -55,7 +55,7 @@ VM には、Windows 内のネットワーク インターフェイスで定義�
 
 ### <a name="use-serial-control"></a>シリアル コントロールを使用する
 
-1. [シリアル コンソールに接続し、CMD インスタンスを開きます](./serial-console-windows.md#open-cmd-or-powershell-in-serial-console
+1. [シリアル コンソールに接続し、CMD インスタンスを開きます](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 )。 VM でシリアル コンソールが有効になっていない場合は、「[ネットワーク インターフェイスをリセットする](reset-network-interface.md)」をご覧ください。
 2. ネットワーク インターフェイスで DHCP が無効になっているかどうかを確認します。
 
@@ -63,7 +63,7 @@ VM には、Windows 内のネットワーク インターフェイスで定義�
 3. DHCP が無効になっている場合は、DHCP を使用するようにネットワーク インターフェイスの構成を戻します。
 
         netsh interface ip set address name="<NIC Name>" source=dhc
-        
+
     たとえば、ネットワーク インターフェイスの名前が "Ethernet 2" の場合は、次のコマンドを実行します。
 
         netsh interface ip set address name="Ethernet 2" source=dhc

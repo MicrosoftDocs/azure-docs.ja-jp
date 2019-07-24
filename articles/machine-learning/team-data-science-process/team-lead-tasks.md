@@ -1,27 +1,23 @@
 ---
-title: Team Data Science Process のチーム リーダーのタスク - Azure | Microsoft Docs
-description: データ サイエンス チーム プロジェクトのチーム リーダーのタスクの概要を説明します。
-documentationcenter: ''
-author: deguhath
+title: Team Data Science Process チームでのチーム リーダーのタスク
+description: データ サイエンス チーム プロジェクトのチーム リーダーがデータ サイエンス チームのために遂行する必要があるタスクの概要を説明します。
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
-ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: deguhath
-ms.openlocfilehash: 86ab49cb0acd9ffee47fb1f8f531c3a0cd6e6730
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 45be3d7f865c7b72ae62efbf99dbbb4594b1846f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297963"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465267"
 ---
-# <a name="team-lead-tasks"></a>チーム リーダーのタスク
+# <a name="tasks-for-the-team-lead-in-the-team-data-science-process-team"></a>Team Data Science Process チームでのチーム リーダーのタスク
 
 このトピックでは、チーム リーダーがデータ サイエンス チームのために遂行する必要があるタスクの概要を説明します。 [Team Data Science Process](overview.md) (TDSP) を標準とするチーム コラボレーション環境を確立することを目標とします。 TDSP は、予測分析ソリューションとインテリジェント アプリケーションを効率的に実現するアジャイルで反復的なデータ サイエンス手法です。 コラボレーションとチーム学習の向上を支援することを目的としています。 このプロセスは、企業が分析プログラムのメリットを完全に実現できるように、データ サイエンスへの取り組みの実施を成功に導くために必要なベスト プラクティスと構造を Microsoft と業界から抽出したものです。 このプロセスを標準とするデータ サイエンス チームの人員の役割とそれに関連したタスクの概要については、「[Team Data Science Process Roles and tasks (Team Data Science Process での役割とタスク)](roles-tasks.md)」をご覧ください。
 
@@ -49,12 +45,12 @@ ms.locfileid: "44297963"
 
 このトピックでは、リポジトリとディレクトリの省略名を使用します。 これらの名前により、リポジトリとディレクトリ間での操作がわかりやすくなります。 以降のセクションでは次の表記を使用します (**R** は Git リポジトリを表し、**D** は DSVM 上のローカル ディレクトリを表します)。
 
-- **R1**: グループ マネージャーが Azure DevOps グループ サーバーで設定する Git 上の **GroupProjectTemplate** リポジトリ。
-- **R3**: チーム リーダーが設定する Git の **ProjectTemplate** チーム リポジトリ。
-- **R4**: チーム リーダーが設定する Git の **TeamUtilities** リポジトリ。
-- **D1**: R1 から複製され、D3 にコピーされるローカル ディレクトリ。
-- **D3**: R3 から複製され、カスタマイズされた後 R3 にコピーされて戻されるローカル ディレクトリ。
-- **D4**: R4 から複製され、カスタマイズされた後 R4 にコピーされて戻されるローカル ディレクトリ。
+- **R1**:グループ マネージャーが Azure DevOps グループ サーバーで設定する Git 上の **GroupProjectTemplate** リポジトリ。
+- **R3**:チーム リーダーが設定する Git の **ProjectTemplate** チーム リポジトリ。
+- **R4**:チーム リーダーが設定する Git の **TeamUtilities** リポジトリ。
+- **D1**:R1 から複製され、D3 にコピーされるローカル ディレクトリ。
+- **D3**:R3 から複製され、カスタマイズされた後 R3 にコピーされて戻されるローカル ディレクトリ。
+- **D4**:R4 から複製され、カスタマイズされた後 R4 にコピーされて戻されるローカル ディレクトリ。
 
 このチュートリアルでリポジトリやディレクトリに指定されている名前は、より大きなデータ サイエンス グループ内の独自のチーム用に個別のプロジェクトを確立することが目的であるという前提の下に提供されています。 ただし、チーム リーダーには他の選択肢もあります。
 
@@ -144,9 +140,9 @@ ms.locfileid: "44297963"
 
 - グループ リポジトリをローカル ディレクトリに複製する: チーム リポジトリ R1 をローカル ディレクトリ D1 に複製
 - チーム リポジトリをローカル ディレクトリに複製する: チーム リポジトリ R3 と R4 をローカル ディレクトリ D3 と D4 に複製
-- グループ プロジェクト テンプレートの内容をローカル チーム フォルダーにコピーする: D1 の内容を D3 にコピー
+- グループ プロジェクト テンプレートの内容をローカル チーム フォルダーにコピーする:D1 の内容を D3 にコピー
 - (省略可能) ローカル ディレクトリ D3 と D4 をカスタマイズする
-- ローカル ディレクトリの内容をチーム リポジトリにプッシュする: D3 と D4 の内容をチーム リポジトリ R3 と R4 に追加
+- ローカル ディレクトリの内容をチーム リポジトリにプッシュする:D3 と D4 のコンテンツをチーム R3 と R4 に追加
 
 
 ### <a name="initialize-the-team-repositories"></a>チーム リポジトリを初期化する
@@ -161,8 +157,8 @@ ms.locfileid: "44297963"
 この手順を開始するには、次の作業を行います。
 
 - ローカル コンピューターにディレクトリを作成します。
-    - **Windows** の場合: **C:\GitRepos\GroupCommon** と **C:\GitRepos\MyTeam** を作成
-    - **Linux** の場合: ホーム ディレクトリに **GitRepos\GroupCommon** と **GitRepos\MyTeam** を作成 
+    - **Windows** の場合:**C:\GitRepos\GroupCommon** と **C:\GitRepos\MyTeam** を作成
+    - **Linux** の場合:ホーム ディレクトリに **GitRepos\GroupCommon** と **GitRepos\MyTeam** を作成 
 - **GitRepos\GroupCommon** ディレクトリに変更します。
 - ローカル コンピューターのオペレーティング システムで、必要に応じて次のコマンドを実行します。
 

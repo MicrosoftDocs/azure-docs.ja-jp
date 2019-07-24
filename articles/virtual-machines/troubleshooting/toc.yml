@@ -8,6 +8,7 @@ items:
   - name: クラシック デプロイの割り当ての失敗
     href: allocation-failure-classic.md
 - name: RDP
+  href: rdp.md
   items:
   - name: RDP のリセット
     href: reset-rdp.md
@@ -55,6 +56,12 @@ items:
   items:
   - name: SSH のトラブルシューティング
     href: troubleshoot-ssh-connection.md
+  - name: ファイル システム エラーのトラブルシューティング
+    href: https://support.microsoft.com/help/3213321
+  - name: カーネルに関連するブートの問題のトラブルシューティング
+    href: https://support.microsoft.com/help/4091524
+  - name: fstab エラーのトラブルシューティング
+    href: https://support.microsoft.com/help/3206699
   - name: SSH のトラブルシューティングの詳細
     href: detailed-troubleshoot-ssh-connection.md
 - name: 一般的なエラー メッセージ
@@ -100,10 +107,14 @@ items:
       href: serial-console-cmd-ps-commands.md
 - name: ストレージ リソースの削除時のエラー
   href: storage-resource-deletion-errors.md
+- name: クラシック ストレージ リソースの削除時のエラー
+  href: storage-classic-cannot-delete-storage-account-container-vhd.md
 - name: 接続された VHD による VM の予期しない再起動
   href: unexpected-reboots-attached-vhds.md
 - name: Windows のライセンス認証に関する問題
   href: troubleshoot-activation-problems.md
+- name: 強制トンネリングを使用したアクティブ化の問題
+  href: custom-routes-enable-kms-activation.md
 - name: アプリケーション アクセスに関する問題
   href: troubleshoot-app-connection.md
 - name: 新しい VM のデプロイ
@@ -161,9 +172,9 @@ items:
   href: understand-vm-reboot.md
 - name: リモートのトラブルシューティング ツール
   href: remote-tools-troubleshoot-azure-vm-issues.md
-ms.openlocfilehash: 933976034950fbd454789dc620aa34ec9b1598c1
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 7ba013c372eefcbf83bb141ba44fcea9b68064de
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52306473"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382968"

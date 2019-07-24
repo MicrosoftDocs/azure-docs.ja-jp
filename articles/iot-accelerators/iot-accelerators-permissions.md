@@ -1,106 +1,72 @@
 ---
-title: Azure IoT ソリューション アクセラレータと Azure Active Directory | Microsoft Docs
-description: Azure IoT ソリューション アクセラレータ が Azure Active Directory を使用してアクセス許可を管理する方法を説明します。
+title: Azure IoT ソリューション サイトを使用する - Azure | Microsoft Docs
+description: AzureIoTSolutions.com の Web サイトを使用してソリューション アクセラレータをデプロイする方法について説明します。
 author: dominicbetts
-manager: timlt
+manager: philmea
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 11/10/2017
+ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: e45954389c8dd1b484a7009460c541bf35266973
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713852"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601085"
 ---
-# <a name="permissions-on-the-azureiotsolutionscom-site"></a>azureiotsolutions.com サイトでのアクセス許可
+# <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>azureiotsolutions.com サイトを使用してソリューション アクセラレータをデプロイする
 
-## <a name="what-happens-when-you-sign-in"></a>サインイン時に行われること
+Azure IoT ソリューション アクセラレータを [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) から Azure サブスクリプションにデプロイできます。 AzureIoTSolutions.com は、Microsoft オープンソースとパートナーの両方のソリューション アクセラレータをホストします。 これらのソリューション アクセラレータは、[Azure IoT 参照アーキテクチャ](https://aka.ms/iotrefarchitecture)と連携します。 このサイトを使用すると、ソリューション アクセラレータをデモまたは運用環境としてすばやくデプロイできます。
 
-ユーザーが [azureiotsuite.com][lnk-azureiotsolutions] に初めてサインインすると、選択されている Azure Active Directory (AAD) テナントと Azure サブスクリプションに基づいて、ユーザーのアクセス許可レベルが決定されます。
+![AzureIoTSolutions.com](media/iot-accelerators-permissions/iotsolutionscom.png)
 
-1. サイトは最初に、ログイン ユーザー名の隣に表示されるテナントの一覧を設定するため、Azure からユーザーが属している AAD テナントを取得します。 現時点では、サイトは一度に 1 つのテナントのユーザー トークンしか取得できません。 このため、ユーザーが右上隅のドロップダウンを使用してテナントを切り替えると、サイトはユーザーをそのテナントにログインさせて、そのテナントのトークンを取得します。
+> [!TIP]
+> デプロイ プロセスに対するよりきめ細かな制御が必要な場合は、[CLI を使用してソリューション アクセラレータをデプロイ](iot-accelerators-remote-monitoring-deploy-cli.md)できます。
 
-2. 次に、サイトは、ユーザーが選択されているテナントと関連付けているサブスクリプションを Azure から検索します。 ユーザーが新しいソリューション アクセラレータを作成するときに、使用できるサブスクリプションが表示されます。
+ソリューション アクセラレータは、次の構成でデプロイできます。
 
-3. 最後に、サイトはサブスクリプション内およびソリューション アクセラレータというタグが付いているリソース グループ内のすべてのリソースを取得して、ホーム ページのタイトルを設定します。
+* **Standard**:運用環境を開発するための拡張インフラストラクチャ デプロイ。 Azure Container Service により、マイクロサービスが複数の Azure 仮想マシンにデプロイされます。 個々のマイクロサービスをホストする Docker コンテナーは、Kubernetes によって調整されます。
+* **Basic**:デモンストレーションのため、またはデプロイをテストするための低コスト バージョン。 すべてのマイクロサービスが 1 つの Azure 仮想マシンにデプロイされます。
+* **ローカル**:テストと開発のためのローカル コンピューターのデプロイ。 このアプローチでは、マイクロサービスをローカル Docker コンテナーにデプロイし、クラウド内の IoT Hub、Azure Cosmos DB、および Azure Storage サービスに接続します。
 
-以下のセクションでは、ソリューション アクセラレータへのアクセスを制御するロールについて説明します。
+各ソリューション アクセラレータは、IoT Hub、Azure Stream Analytics、Cosmos DB など、Azure サービスの異なる組み合わせを使用します。 詳細については、[AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators) にアクセスしてソリューション アクセラレータを選択してください。
 
-## <a name="aad-roles"></a>AAD のロール
+## <a name="sign-in-at-azureiotsolutionscom"></a>azureiotsolutions.com でサインインする
 
-AAD のロールは、ソリューション アクセラレータをプロビジョニングし、ソリューション アクセラレータ内のユーザーや一部の Azure サービスを管理する権限を制御します。
+ソリューション アクセラレータをデプロイするには、Azure サブスクリプションに関連付けられた資格情報を使用して AzureIoTSolutions.com でサインインする必要があります。 アカウントが複数の Microsoft Azure Active Directory (AD) テナントに関連付けられている場合は、**アカウント選択のドロップダウン**を使用して、使用するディレクトリを選択できます。
 
-ADD の管理者ロールの詳細については、「[Azure AD での管理者ロールの割り当て][lnk-aad-admin]」を参照してください。 この記事では、主にソリューション アクセラレータで使用される**グローバル管理者**ロールと**ユーザー** ディレクトリ ロールに重点を置いて説明しています。
+ソリューション アクセラレータをデプロイし、ユーザーを管理し、Azure サービスを管理するためのアクセス許可は、選択されたディレクトリ内のロールによって異なります。 ソリューション アクセラレータに関連付けられた一般的な Azure AD ロールは次のとおりです。
 
-### <a name="global-administrator"></a>全体管理者
+* **全体管理者**: Azure AD テナントごとに多数の[全体管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md)がいてもかまいません。
 
-AAD テナントごとに多数のグローバル管理者がいてもかまいません。
+  * Azure AD テナントを作成したユーザーは、既定でそのテナントの全体管理者になります。
+  * 全体管理者は、基本的なソリューション アクセラレータと標準のソリューション アクセラレータをデプロイできます。
 
-* AAD テナントを作成したユーザーは、既定でそのテナントのグローバル管理者になります。
-* 全体管理者は、基本と標準のソリューション アクセラレータをプロビジョニングできます (基本的なデプロイは単一の Azure 仮想マシンを使います)。
+* **ドメイン ユーザー**: Azure AD テナントごとに多数のドメイン ユーザーがいてもかまいません。 ドメイン ユーザーは、基本的なソリューション アクセラレータをデプロイできます。
 
-### <a name="domain-user"></a>ドメイン ユーザー
+* **ゲスト ユーザー**: Azure AD テナントごとに多数のゲスト ユーザーがいてもかまいません。 ゲスト ユーザーは、Azure AD テナントでソリューション アクセラレータをデプロイできません。
 
-AAD テナントごとに多数のドメイン ユーザーがいてもかまいません。
+Azure AD 内のユーザーとロールの詳細については、次のリソースを参照してください。
 
-* ドメイン ユーザーは、[azureiotsolutions.com][lnk-azureiotsolutions] サイトを使用して基本的なソリューション アクセラレータをプロビジョニングできます。
-* ドメイン ユーザーは CLI を使用して基本的なソリューション アクセラレータを作成できます。
+* [Azure Active Directory でのユーザーの作成](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
+* [ユーザーをアプリに割り当てる](../active-directory/manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="guest-user"></a>ゲスト ユーザー
+## <a name="choose-your-device"></a>デバイスを選択する
 
-AAD テナントごとに多数のゲスト ユーザーがいてもかまいません。 ゲスト ユーザーの AAD テナントでの権限セットは制限されています。 したがって、ゲスト ユーザーは AAD テナントでソリューション アクセラレータをプロビジョニングできません。
+AzureIoTSolutions.com サイトは、[Azure Certified for IoT デバイス カタログ](https://catalog.azureiotsolutions.com/)にリンクします。
 
-AAD におけるユーザーとロールの詳細については、次のリソースを参照してください。
+このカタログには、ユーザーが IoT ソリューションの構築を開始するためにソリューション アクセラレータに接続できる数百の認定された IoT ハードウェア デバイスが一覧表示されています。
 
-* [Azure AD でユーザーを作成する][lnk-create-edit-users]
-* [ユーザーをアプリに割り当てる][lnk-assign-app-roles]
+![デバイス カタログ](media/iot-accelerators-permissions/devicecatalog.png)
 
-## <a name="azure-subscription-administrator-roles"></a>Azure サブスクリプション管理者ロール
-
-Azure 管理者ロールは、Azure サブスクリプションを AAD テナントにマップする機能を制御します。
-
-Azure 管理者ロールの詳細については、「[Azure サブスクリプション管理者を追加または変更する][lnk-admin-roles]」の記事を参照してください。
-
-## <a name="faq"></a>FAQ
-
-### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-aad-tenant-how-do-i-complete-this-task"></a>サービス管理者が自分のサブスクリプションと特定の AAD テナントの間のディレクトリ マッピングを変更する必要がある場合は、 どうすればよいですか
-
-「[既存のサブスクリプションを Azure AD ディレクトリに追加する方法](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory)」をご覧ください
-
-### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organizational-account"></a>組織アカウントでログインするときにサービス管理者または共同管理者を変更するにはどうすればよいですか
-
-[組織アカウントでログインしたときのサービス管理者および共同管理者の変更][lnk-service-admins]に関するサポート記事をご覧ください。
-
-### <a name="why-am-i-seeing-this-error-your-account-does-not-have-the-proper-permissions-to-create-a-solution-please-check-with-your-account-administrator-or-try-with-a-different-account"></a>次のエラーが表示されるのはなぜですか。 「お使いのアカウントにはソリューションを作成する適切なアクセス許可がありません。 アカウント管理者に確認するか、別のアカウントを使用してください。」
-
-次の図を見てみましょう。
-
-![][img-flowchart]
-
-> [!NOTE]
-> 自分が AAD テナントの全体管理者になっていることとサブスクリプションの共同管理者になっていることを確認した後もエラーが表示される場合は、ユーザーを削除してから必要なアクセス許可を再度割り当てるよう、アカウント管理者に依頼してください。 その場合はまず、ユーザーを全体管理者として追加したうえで、Azure サブスクリプションの共同管理者としてそのユーザーを追加することになります。 問題が解決しない場合は、[ヘルプとサポート][lnk-help-support]にお問い合わせください。
-
-### <a name="why-am-i-seeing-this-error-when-i-have-an-azure-subscription-an-azure-subscription-is-required-to-create-pre-configured-solutions-you-can-create-a-free-trial-account-in-just-a-couple-of-minutes"></a>Azure サブスクリプションがあるのに次のエラーが表示されるのはなぜですか。 「構成済みソリューションを作成するには Azure サブスクリプションが必要です。 数分で無料試用版のアカウントを作成することができます。」
-
-Azure サブスクリプションが確かにある場合は、サブスクリプションのテナント マッピングを調べ、ドロップダウンで正しいテナントが選択されていることを確認してください。 目的のテナントが正しいことを確認できた場合は、上の図に従って、サブスクリプションとこの AAD テナントのマッピングを確認してください。
+ユーザーがハードウェア製造元である場合は、**[パートナーになる]** をクリックして、Certified for IoT プログラムでの Microsoft とのパートナー提携について確認してください。
 
 ## <a name="next-steps"></a>次の手順
-IoT Suite ソリューション アクセラレータについて引き続き学習するには、[ソリューション アクセラレータをカスタマイズする][lnk-customize]方法を参照してください。
 
-[img-flowchart]: media/iot-accelerators-permissions/flowchart.png
+IoT ソリューション アクセラレータの 1 つを試してみるには、クイック スタートを参照してください。
 
-[lnk-azureiotsolutions]: https://www.azureiotsolutions.com
-[lnk-rm-github-repo]: https://github.com/Azure/remote-monitoring-services-dotnet
-[lnk-pm-github-repo]: https://github.com/Azure/azure-iot-predictive-maintenance
-[lnk-cf-github-repo]: https://github.com/Azure/azure-iot-connected-factory
-[lnk-aad-admin]:../active-directory/users-groups-roles/directory-assign-admin-roles.md
-[lnk-portal]: https://portal.azure.com
-[lnk-create-edit-users]:../active-directory/fundamentals/active-directory-users-profile-azure-portal.md
-[lnk-assign-app-roles]:../active-directory/manage-apps/assign-user-or-group-access-portal.md
-[lnk-service-admins]: https://azure.microsoft.com/support/changing-service-admin-and-co-admin
-[lnk-admin-roles]: ../billing/billing-add-change-azure-subscription-administrator.md
-[lnk-help-support]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade
-[lnk-customize]: iot-accelerators-remote-monitoring-customize.md
+* [リモート監視ソリューションを試す](quickstart-remote-monitoring-deploy.md)
+* [接続済みファクトリ ソリューションを試す](quickstart-connected-factory-deploy.md)
+* [予測メンテナンス ソリューションを試す](quickstart-predictive-maintenance-deploy.md)
+* [デバイス シミュレーション ソリューションを試す](quickstart-device-simulation-deploy.md)

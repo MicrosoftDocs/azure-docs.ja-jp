@@ -1,20 +1,20 @@
 ---
-title: Azure IoT ソリューション アクセラレータの概要 | Microsoft Docs
+title: IoT ソリューション アクセラレータの概要 - Azure | Microsoft Docs
 description: Azure IoT ソリューション アクセラレータについて説明します。 IoT ソリューション アクセラレータは、すぐにデプロイできるエンドツーエンドの完全な IoT ソリューションです。
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/09/2018
+ms.date: 03/09/2019
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 6fed0c5e3f24fbcefec427cf56a625d1d8d7aba2
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 042c3c2925e9d537847f16f02d841d793456fb03
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824542"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58172820"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Azure IoT ソリューション アクセラレータとは
 
@@ -34,7 +34,7 @@ IoT ソリューション アクセラレータは、一般的な IoT シナリ�
 
 ### <a name="remote-monitoring"></a>リモート監視
 
-このソリューション アクセラレータは、リモート デバイスからテレメトリを収集し、それらを制御するために使用します。 デバイスの例としては、オンプレミスに設置されている冷却装置や、リモートのポンプ設備に設置されているバルブなどが挙げられます。
+[リモート監視ソリューション アクセラレータ](iot-accelerators-remote-monitoring-sample-walkthrough.md)は、リモート デバイスからテレメトリを収集し、それらを制御するために使用します。 デバイスの例としては、オンプレミスに設置されている冷却装置や、リモートのポンプ設備に設置されているバルブなどが挙げられます。
 
 リモート監視ダッシュボードを使用して、接続されたデバイスからのテレメトリの表示、新しいデバイスのプロビジョニング、接続されたデバイスのファームウェアのアップグレードなどを行うことができます。
 
@@ -42,7 +42,7 @@ IoT ソリューション アクセラレータは、一般的な IoT シナリ�
 
 ### <a name="connected-factory"></a>接続済みファクトリ
 
-このソリューション アクセラレータは、[OPC Unified Architecture](https://opcfoundation.org/about/opc-technologies/opc-ua/) インターフェイスを使用して工業資産からテレメトリを収集し、それらを制御するために使用します。 工業資産には、工場の生産ラインで組み立てやテストを行う作業場が含まれる場合があります。
+[接続済みファクトリ ソリューション アクセラレータ](iot-accelerators-connected-factory-sample-walkthrough.md)は、[OPC Unified Architecture](https://opcfoundation.org/about/opc-technologies/opc-ua/) インターフェイスを使用して工業資産からテレメトリを収集し、それらを制御するために使用します。 工業資産には、工場の生産ラインで組み立てやテストを行う作業場が含まれる場合があります。
 
 接続済みファクトリのダッシュボードを使用して、産業用デバイスを監視および管理することができます。
 
@@ -50,7 +50,7 @@ IoT ソリューション アクセラレータは、一般的な IoT シナリ�
 
 ### <a name="predictive-maintenance"></a>予測メンテナンス
 
-このソリューション アクセラレータは、リモート デバイスが故障する前にメンテナンスを行えるよう、その故障時期を予測するために使用します。 このソリューション アクセラレータは機械学習アルゴリズムを使用して、デバイスのテレメトリからエラーを予測します。 デバイスの例として、航空機のエンジンやエレベーターが挙げられる場合があります。
+[予測メンテナンス ソリューション アクセラレータ](iot-accelerators-predictive-walkthrough.md)は、リモート デバイスが故障する前にメンテナンスを行えるよう、その故障時期を予測するために使用します。 このソリューション アクセラレータは機械学習アルゴリズムを使用して、デバイスのテレメトリからエラーを予測します。 デバイスの例として、航空機のエンジンやエレベーターが挙げられる場合があります。
 
 予測メンテナンス ダッシュボードを使用して、予測メンテナンス分析を表示できます。
 
@@ -58,7 +58,7 @@ IoT ソリューション アクセラレータは、一般的な IoT シナリ�
 
 ### <a name="device-simulation"></a>デバイスのシミュレーション
 
-このソリューション アクセラレータは、現実のテレメトリを生成する、シミュレートされたデバイスを実行するために使用します。 このソリューション アクセラレータを使用して、他のソリューション アクセラレータの動作をテストしたり、独自のカスタム IoT ソリューションをテストしたりできます。
+[デバイスのシミュレーション ソリューション アクセラレータ](iot-accelerators-device-simulation-overview.md)は、現実のテレメトリを生成する、シミュレートされたデバイスを実行するために使用します。 このソリューション アクセラレータを使用して、他のソリューション アクセラレータの動作をテストしたり、独自のカスタム IoT ソリューションをテストしたりできます。
 
 デバイス シミュレーション Web アプリを使用して、シミュレーションを構成および実行できます。
 
@@ -85,7 +85,7 @@ IoT ソリューション アクセラレータは、一般的な IoT シナリ�
 | 接続済みファクトリ      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
 | デバイスのシミュレーション      | マイクロサービス | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
 
-マイクロサービス アーキテクチャの詳細については、「[.NET Application Architecture (.NET アプリケーション アーキテクチャ)](https://www.microsoft.com/net/learn/architecture)」および「[Microservices: An application revolution powered by the cloud. (マイクロサービス: クラウドによって実現されるアプリケーションの革命)](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)」を参照してください。
+マイクロサービス アーキテクチャの詳細については、「[Introduction to the Azure IoT reference architecture (Azure IoT リファレンス アーキテクチャの概要)](iot-accelerators-architecture-overview.md)」を参照してください。
 
 ## <a name="deployment-options"></a>デプロイ オプション
 
@@ -95,7 +95,7 @@ IoT ソリューション アクセラレータは、一般的な IoT シナリ�
 
 * **Standard:** 運用環境のデプロイを開発するための拡張インフラストラクチャ デプロイ。 Azure Container Service により、マイクロサービスが複数の Azure 仮想マシンにデプロイされます。 個々のマイクロサービスをホストする Docker コンテナーは、Kubernetes によって調整されます。
 * **Basic:** デモまたはデプロイ テストのための低コスト バージョン。 すべてのマイクロサービスが 1 つの Azure 仮想マシンにデプロイされます。
-* **Local:** テストおよび開発用のローカル コンピューターのデプロイ。 このアプローチでは、マイクロサービスをローカル Docker コンテナーにデプロイし、クラウド内で IoT Hub、Azure Cosmos DB、および Azure Storage サービスに接続します。
+* **ローカル:** テストおよび開発用のローカル コンピューターのデプロイ。 このアプローチでは、マイクロサービスをローカル Docker コンテナーにデプロイし、クラウド内で IoT Hub、Azure Cosmos DB、および Azure Storage サービスに接続します。
 
 ソリューション アクセラレータを実行するコストは、[基礎となる Azure サービスの実行コスト](https://azure.microsoft.com/pricing)の総計です。 デプロイのオプションを選択するときに、使用する Azure サービスの詳細が表示されます。
 

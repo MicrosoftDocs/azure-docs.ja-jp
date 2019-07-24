@@ -3,12 +3,12 @@ layout: HubPage
 hide_bc: true
 title: Microsoft Azure のドキュメント
 description: Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。
-ms.openlocfilehash: a2c778f38c4a211f9a2ba1b73317478202adfcd5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1d45b815b9becae6f6f8e8e3ea17dd0c7cb9245f
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232680"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571184"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -208,7 +208,7 @@ ms.locfileid: "51232680"
                             <li></li>
                             <li class="bottomRightItem">
                                 <a href="https://aka.ms/j3wr7y">
-                                <button style="cursor: pointer;position: relative; background: #0050C5; border:none; padding:8px 16px; padding-right:30px;color: white; font-size:14px;">すべての Azure サービスを表示する<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 14" style="fill:white;height: 14px;position: absolute;bottom: 13px;right: 12px;width: 1em;"><path d="M7.4 7L1 .6l.6-.6 7 7-7 7-.6-.7L7.4 7z"/></svg></button>
+                                <button style="cursor: pointer;position: relative; background: #0050C5; border:none; padding:8px 16px; padding-right:30px;color: white; font-size:14px;">すべての Azure サービスを表示する<svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 10 14" style="fill:white;height: 14px;position: absolute;bottom: 13px;right: 12px;width: 1em;"><path d="M7.4 7L1 .6l.6-.6 7 7-7 7-.6-.7L7.4 7z"/></svg></button>
                                 </a>
                             </li>
                             </li>
@@ -321,9 +321,9 @@ ms.locfileid: "51232680"
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/redis-cache/">
+                                            <a href="/azure/azure-cache-for-redis/">
                                                 <img src="media/index/RedisCache.svg" alt="" />
-                                                <p>Redis Cache</p>
+                                                <p>Azure Cache for Redis</p>
                                             </a>
                                         </li>
                                         <li>
@@ -783,7 +783,7 @@ ms.locfileid: "51232680"
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/services/devtest-lab/">
+                                            <a href="/azure/lab-services/">
                                                 <img src="media/index/DevTestLabs.svg" alt="" />
                                                 <p>Azure DevTest Labs</p>
                                             </a>
@@ -1874,7 +1874,7 @@ ms.locfileid: "51232680"
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/redis-cache/">
+                                <a href="/azure/azure-cache-for-redis/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -1884,8 +1884,8 @@ ms.locfileid: "51232680"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Redis Cache</h3>
-                                                    <p>スループット向上とデータ アクセスの待機時間の短縮により、高速で拡張性の高いアプリケーションを作成します</p>
+                                                    <h3>Azure Cache for Redis</h3>
+                                                    <p>スループット向上とデータ アクセスの待機時間の短縮により、高速でスケーラブルなアプリケーションを作成</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2721,7 +2721,7 @@ ms.locfileid: "51232680"
                                 </a>
                             </li>
                             <li>
-                                <a href="/services/devtest-lab/">
+                                <a href="/azure/lab-services/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -3155,10 +3155,10 @@ ms.locfileid: "51232680"
                                                     <a href="https://www.npmjs.com/package/azure">Node.js SDK の入手</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="http://azure.github.io/azure-sdk-for-node/">作業開始</a>
+                                                    <a href="https://azure.github.io/azure-sdk-for-node/">作業開始</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://azure.github.io/azure-sdk-for-node/">API リファレンス</a>
+                                                    <a href="https://azure.github.io/azure-sdk-for-node/">API リファレンス</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://azure.microsoft.com/documentation/samples/?platform=nodejs">サンプルを入手する</a>
@@ -3318,7 +3318,7 @@ ms.locfileid: "51232680"
                                                     <a href="/powershell/azure/get-started-azureps">作業開始</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/powershell/azure/install-azurerm-ps">PowerShell のダウンロード</a>
+                                                    <a href="/powershell/azure/install-Az-ps">Azure PowerShell のダウンロード</a>
                                                 </p>
                                                 <p>
                                                     <a href="/powershell/azure/overview">リファレンス</a>
@@ -3447,7 +3447,7 @@ ms.locfileid: "51232680"
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="http://storageexplorer.com">Storage Explorer</a>
+                                                    <a href="https://storageexplorer.com">Storage Explorer</a>
                                                 </h3>
                                                 <p>
                                                     <a href="/azure/vs-azure-tools-storage-manage-with-storage-explorer">作業開始</a>

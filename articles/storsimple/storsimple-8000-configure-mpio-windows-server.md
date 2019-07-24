@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 4f2b094604f486d283574f4669fcad6f72bd4431
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: eda134257edb851eea076459b44e02fc59028f46
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30245739"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078144"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>StorSimple デバイスのマルチパス IO の構成
 
@@ -35,14 +35,14 @@ MPIO はオプションの機能であり、Windows サーバーに既定では�
 
 次の手順に従って、StorSimple デバイスに MPIO を構成します。
 
-* 手順 1. Windows Server ホストに MPIO をインストールする
-* 手順 2. StorSimple ボリュームの MPIO を構成する
-* 手順 3. ホストに StorSimple ボリュームをマウントする
-* 手順 4. 高可用性と負荷分散のために MPIO を構成する
+* 手順 1:Windows Server ホストに MPIO をインストールする
+* 手順 2:StorSimple ボリュームの MPIO を構成する
+* 手順 3:ホストに StorSimple ボリュームをマウントする
+* 手順 4:高可用性と負荷分散のために MPIO を構成する
 
 上記の各手順については、以降のセクションで説明します。
 
-## <a name="step-1-install-mpio-on-the-windows-server-host"></a>手順 1. Windows Server ホストに MPIO をインストールする
+## <a name="step-1-install-mpio-on-the-windows-server-host"></a>手順 1:Windows Server ホストに MPIO をインストールする
 
 Windows Server ホストにこの機能をインストールするには、次の手順を実行します。
 
@@ -73,7 +73,7 @@ Windows Server ホストにこの機能をインストールするには、次�
    
        ![役割と機能の追加ウィザード 9](./media/storsimple-configure-mpio-windows-server/IC741002.png)
 
-## <a name="step-2-configure-mpio-for-storsimple-volumes"></a>手順 2. StorSimple ボリュームの MPIO を構成する
+## <a name="step-2-configure-mpio-for-storsimple-volumes"></a>手順 2:StorSimple ボリュームの MPIO を構成する
 
 StorSimple ボリュームを識別するには、MPIO を構成する必要があります。 StorSimple ボリュームを認識するように MPIO を構成するには、次の手順を実行します。
 
@@ -91,7 +91,7 @@ StorSimple ボリュームを識別するには、MPIO を構成する必要が�
     ![MPIO サポートの追加](./media/storsimple-configure-mpio-windows-server/IC741005.png)
 7. メッセージが表示されたら、サーバーを再起動します。
 
-## <a name="step-3-mount-storsimple-volumes-on-the-host"></a>手順 3. ホストに StorSimple ボリュームをマウントする
+## <a name="step-3-mount-storsimple-volumes-on-the-host"></a>手順 3:ホストに StorSimple ボリュームをマウントする
 
 Windows Server で MPIO が構成されると、StorSimple デバイスに作成されたボリュームをマウントし、MPIO を活用して冗長性を確保できます。 ボリュームをマウントするには、次の手順を実行します。
 
@@ -104,8 +104,8 @@ Windows Server で MPIO が構成されると、StorSimple デバイスに作成
    1. StorSimple デバイスの DATA ポートの IP アドレスを入力します (たとえば、「DATA 0」と入力します)。
    2. **[OK]** をクリックして、**[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスに戻ります。
      
-     > [!IMPORTANT]
-     > **iSCSI 接続のプライベート ネットワークを使用している場合は、プライベート ネットワークに接続されている DATA ポートの IP アドレスを入力します。**
+      > [!IMPORTANT]
+      > **iSCSI 接続のプライベート ネットワークを使用している場合は、プライベート ネットワークに接続されている DATA ポートの IP アドレスを入力します。**
     
 4. デバイスの 2 番目のネットワーク インターフェイス (DATA 1 など) に対して手順 2. ～ 3. を繰り返します。 これらのインターフェイスは iSCSI に対応している必要があることに注意してください。 詳細については、[ネットワーク インターフェイスの変更](storsimple-8000-modify-device-config.md#modify-network-interfaces)をご覧ください。
 5. **[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスで、**[ターゲット]** タブを選択します。 **[検出されたターゲット]** に StorSimple デバイスのターゲット IQN が表示されます。
@@ -148,7 +148,7 @@ Windows Server で MPIO が構成されると、StorSimple デバイスに作成
 > **既定のパラメーターは変更しないでください。**
 
 
-## <a name="step-4-configure-mpio-for-high-availability-and-load-balancing"></a>手順 4. 高可用性と負荷分散のために MPIO を構成する
+## <a name="step-4-configure-mpio-for-high-availability-and-load-balancing"></a>手順 4:高可用性と負荷分散のために MPIO を構成する
 
 高可用性と負荷分散を基にしたマルチパスでは、複数のセッションを手動で追加し、利用可能なさまざまなパスを宣言する必要があります。 たとえば、ホストの 2 つのインターフェイスが iSCSI ネットワークに接続されていて、デバイスの 2 つのインターフェイスが iSCSI ネットワークに接続されている場合は、4 つのセッションに適切なパスの順列を構成する必要があります (各 DATA インターフェイスおよびホスト インターフェイスが異なる IP サブネット上にあってルーティング可能ではない場合は、必要なセッションは 2 つだけです)。
 

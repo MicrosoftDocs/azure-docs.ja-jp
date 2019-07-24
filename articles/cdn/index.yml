@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 07a24db7d611f7d29b7fcf9feb22d6fab208c89e
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781940"
 documentType: LandingData
 title: Azure CDN のドキュメント
 metadata:
@@ -22,65 +16,65 @@ metadata:
 abstract:
   description: Azure Content Delivery Network (CDN) は、高帯域幅コンテンツを配信するためのグローバル CDN ソリューションです。 これは、Azure またはその他の場所でホストできます。 Azure CDN では、最も近いポイント オブ プレゼンス (POP) サーバーを使用して、Azure Blob Storage、Web アプリケーション、またはパブリックにアクセスできる Web サーバーから読み込まれた静的オブジェクトをキャッシュすることができます。 さらに Azure CDN では、各種のネットワーク最適化とルーティング最適化を利用して、キャッシュできない動的なコンテンツも高速化できます。
 sections:
-- title: 
-  items:
-  - type: list
-    style: icon48
+  - title: null
     items:
-    - image:
-        src: media/index/cdn.svg
-      text: Azure CDN について
-      href: /azure/cdn/cdn-overview
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: CDN プロファイルと CDN エンドポイントを作成することで Azure CDN を有効にする方法を紹介します。
-  - type: list
-    style: icon48
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/cdn.svg
+            text: Azure CDN について
+            href: /azure/cdn/cdn-overview
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: media/index/get-started.svg
-      text: Azure CDN を使ってみる
-      href: /azure/cdn/cdn-create-new-endpoint
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: ニーズに応じた Azure CDN の構成方法を説明します。
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: CDN プロファイルと CDN エンドポイントを作成することで Azure CDN を有効にする方法を紹介します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/get-started.svg
+            text: Azure CDN を使ってみる
+            href: /azure/cdn/cdn-create-new-endpoint
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/cdn/cdn-map-content-to-custom-domain">カスタム ドメインを CDN エンドポイントに追加する</a>
-    - html: <a href="/azure/cdn/cdn-custom-ssl">カスタム ドメインで HTTPS を構成する</a>
-    - html: <a href="/azure/cdn/cdn-caching-rules-tutorial">キャッシュ規則を設定する</a>
-- title: ビデオ
-  items:
-  - type: paragraph
-    text: Azure CDN のしくみを示すビデオをご覧ください。
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: ニーズに応じた Azure CDN の構成方法を説明します。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/cdn/cdn-map-content-to-custom-domain">カスタム ドメインを CDN エンドポイントに追加する</a>
+          - html: <a href="/azure/cdn/cdn-custom-ssl">カスタム ドメインで HTTPS を構成する</a>
+          - html: <a href="/azure/cdn/cdn-caching-rules-tutorial">キャッシュ規則を設定する</a>
+  - title: ビデオ
     items:
-    - image:
-        src: media/index/video-library.svg
-      text: Azure CDN のビデオ ライブラリ
-      href: https://azure.microsoft.com/documentation/videos/index/?services=cdn
-- title: サンプル
-  items:
-  - type: paragraph
-    text: 一般的なタスクを管理するためのスクリプトを探します。
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: Azure CDN のしくみを示すビデオをご覧ください。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/video-library.svg
+            text: Azure CDN のビデオ ライブラリ
+            href: 'https://azure.microsoft.com/documentation/videos/index/?services=cdn'
+  - title: サンプル
     items:
-    - html: <a href="https://azure.microsoft.com/resources/samples/?service=cdn">コード サンプル</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 一般的なタスクを管理するためのスクリプトを探します。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="https://azure.microsoft.com/resources/samples/?service=cdn">コード サンプル</a>'
+  - title: リファレンス
     items:
-    - title: コマンド ライン
-      html: <p><a href="/powershell/module/azurerm.cdn">PowerShell</a></p>
-    - title: Languages
-      html: <p><a href="/dotnet/api/microsoft.azure.management.cdn">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.cdn">Java</a></p>
-    - title: REST ()
-      html: <p><a href="/rest/api/cdn/">REST API リファレンス</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="/powershell/module/az.cdn">PowerShell</a></p>
+          - title: Languages
+            html: <p><a href="/dotnet/api/microsoft.azure.management.cdn">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.cdn">Java</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/cdn/">REST API リファレンス</a></p>

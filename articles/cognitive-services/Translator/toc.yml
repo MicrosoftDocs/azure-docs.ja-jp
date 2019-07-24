@@ -1,247 +1,244 @@
-items:
 - name: Translator Text のドキュメント
   href: index.yml
 - name: Translator Text API
   items:
-  - name: 概要
-    items:
-    - name: Translator Text API とは
-      href: translator-info-overview.md
-  - name: クイック スタート
-    items:
-    - name: テキストを翻訳する
+    - name: 概要
       items:
-      - name: C# (REST)
-        href: quickstart-csharp-translate.md
-      - name: Go (REST)
-        href: quickstart-go-translate.md
-      - name: Java (REST)
-        href: quickstart-java-translate.md
-      - name: Node.js (REST)
-        href: quickstart-nodejs-translate.md
-      - name: PHP (REST)
-        href: quickstart-php-translate.md
-      - name: Python (REST)
-        href: quickstart-python-translate.md
-      - name: Ruby (REST)
-        href: quickstart-ruby-translate.md
-    - name: テキストを表記変換する
+        - name: Translator Text API とは
+          href: translator-info-overview.md
+    - name: クイック スタート
       items:
-      - name: C# (REST)
-        href: quickstart-csharp-transliterate.md
-      - name: Go (REST)
-        href: quickstart-go-transliterate.md
-      - name: Java (REST)
-        href: quickstart-java-transliterate.md
-      - name: Node.js (REST)
-        href: quickstart-nodejs-transliterate.md
-      - name: PHP (REST)
-        href: quickstart-php-transliterate.md
-      - name: Python (REST)
-        href: quickstart-python-transliterate.md
-      - name: Ruby (REST)
-        href: quickstart-ruby-transliterate.md
-    - name: 言語を特定する
+        - name: テキストを翻訳する
+          items:
+            - name: 'C# (REST)'
+              href: quickstart-csharp-translate.md
+            - name: Go (REST)
+              href: quickstart-go-translate.md
+            - name: Java (REST)
+              href: quickstart-java-translate.md
+            - name: Node.js (REST)
+              href: quickstart-nodejs-translate.md
+            - name: PHP (REST)
+              href: quickstart-php-translate.md
+            - name: Python (REST)
+              href: quickstart-python-translate.md
+            - name: Ruby (REST)
+              href: quickstart-ruby-translate.md
+        - name: テキストを表記変換する
+          items:
+            - name: 'C# (REST)'
+              href: quickstart-csharp-transliterate.md
+            - name: Go (REST)
+              href: quickstart-go-transliterate.md
+            - name: Java (REST)
+              href: quickstart-java-transliterate.md
+            - name: Node.js (REST)
+              href: quickstart-nodejs-transliterate.md
+            - name: PHP (REST)
+              href: quickstart-php-transliterate.md
+            - name: Python (REST)
+              href: quickstart-python-transliterate.md
+            - name: Ruby (REST)
+              href: quickstart-ruby-transliterate.md
+        - name: 言語を特定する
+          items:
+            - name: 'C# (REST)'
+              href: quickstart-csharp-detect.md
+            - name: Go (REST)
+              href: quickstart-go-detect.md
+            - name: Java (REST)
+              href: quickstart-java-detect.md
+            - name: Node.js (REST)
+              href: quickstart-nodejs-detect.md
+            - name: PHP (REST)
+              href: quickstart-php-detect.md
+            - name: Python (REST)
+              href: quickstart-python-detect.md
+            - name: Ruby (REST)
+              href: quickstart-ruby-detect.md
+        - name: 単語の訳を検索する
+          items:
+            - name: 'C# (REST)'
+              href: quickstart-csharp-dictionary.md
+            - name: Go (REST)
+              href: quickstart-go-dictionary.md
+            - name: Java (REST)
+              href: quickstart-java-dictionary.md
+            - name: Node.js (REST)
+              href: quickstart-nodejs-dictionary.md
+            - name: PHP (REST)
+              href: quickstart-php-dictionary.md
+            - name: Python (REST)
+              href: quickstart-python-dictionary.md
+            - name: Ruby (REST)
+              href: quickstart-ruby-dictionary.md
+        - name: サポートされている言語を取得する
+          items:
+            - name: 'C# (REST)'
+              href: quickstart-csharp-languages.md
+            - name: Go (REST)
+              href: quickstart-go-languages.md
+            - name: Java (REST)
+              href: quickstart-java-languages.md
+            - name: Node.js (REST)
+              href: quickstart-nodejs-languages.md
+            - name: PHP (REST)
+              href: quickstart-php-languages.md
+            - name: Python (REST)
+              href: quickstart-python-languages.md
+            - name: Ruby (REST)
+              href: quickstart-ruby-languages.md
+        - name: 文の長さを決定する
+          items:
+            - name: 'C# (REST)'
+              href: quickstart-csharp-sentences.md
+            - name: Go (REST)
+              href: quickstart-go-sentences.md
+            - name: Java (REST)
+              href: quickstart-java-sentences.md
+            - name: Node.js (REST)
+              href: quickstart-nodejs-sentences.md
+            - name: PHP (REST)
+              href: quickstart-php-sentences.md
+            - name: Python (REST)
+              href: quickstart-python-sentences.md
+            - name: Ruby (REST)
+              href: quickstart-ruby-sentences.md
+    - name: チュートリアル
       items:
-      - name: C# (REST)
-        href: quickstart-csharp-detect.md
-      - name: Go (REST)
-        href: quickstart-go-detect.md
-      - name: Java (REST)
-        href: quickstart-java-detect.md
-      - name: Node.js (REST)
-        href: quickstart-nodejs-detect.md
-      - name: PHP (REST)
-        href: quickstart-php-detect.md
-      - name: Python (REST)
-        href: quickstart-python-detect.md
-      - name: Ruby (REST)
-        href: quickstart-ruby-detect.md
-    - name: 別の翻訳を取得する
+        - name: Translator Text の WPF アプリの作成
+          href: tutorial-wpf-translation-csharp.md
+        - name: Flask 翻訳アプリの作成
+          href: tutorial-build-flask-app-translation-synthesis.md
+    - name: 概念
       items:
-      - name: C# (REST)
-        href: quickstart-csharp-dictionary.md
-      - name: Go (REST)
-        href: quickstart-go-dictionary.md
-      - name: Java (REST)
-        href: quickstart-java-dictionary.md
-      - name: Node.js (REST)
-        href: quickstart-nodejs-dictionary.md
-      - name: PHP (REST)
-        href: quickstart-php-dictionary.md
-      - name: Python (REST)
-        href: quickstart-python-dictionary.md
-      - name: Ruby (REST)
-        href: quickstart-ruby-dictionary.md
-    - name: サポートされている言語を取得する
+        - name: テキストの翻訳をカスタマイズおよび改善する
+          href: customization.md
+        - name: API が文字数をカウントする方法
+          href: character-counts.md
+    - name: ハウツー ガイド
       items:
-      - name: C# (REST)
-        href: quickstart-csharp-languages.md
-      - name: Go (REST)
-        href: quickstart-go-languages.md
-      - name: Java (REST)
-        href: quickstart-java-languages.md
-      - name: Node.js (REST)
-        href: quickstart-nodejs-languages.md
-      - name: PHP (REST)
-        href: quickstart-php-languages.md
-      - name: Python (REST)
-        href: quickstart-python-languages.md
-      - name: Ruby (REST)
-        href: quickstart-ruby-languages.md
-    - name: 文の長さを決定する
+        - name: Translator Text API にサインアップする
+          href: translator-text-how-to-signup.md
+        - name: V3 Text API に移行する
+          href: migrate-to-v3.md
+        - name: 不適切な表現のフィルターを追加する
+          href: profanity-filtering.md
+        - name: 単語アラインメント情報を受信する
+          href: word-alignment.md
+        - name: コンテンツの翻訳を防止する
+          href: prevent-translation.md
+        - name: 動的ディクショナリ機能を使用する
+          href: dynamic-dictionary.md
+        - name: ファイアウォールの内側で翻訳する
+          href: firewalls.md
+    - name: リファレンス
       items:
-      - name: C# (REST)
-        href: quickstart-csharp-sentences.md
-      - name: Go (REST)
-        href: quickstart-go-sentences.md
-      - name: Java (REST)
-        href: quickstart-java-sentences.md
-      - name: Node.js (REST)
-        href: quickstart-nodejs-sentences.md
-      - name: PHP (REST)
-        href: quickstart-php-sentences.md
-      - name: Python (REST)
-        href: quickstart-python-sentences.md
-      - name: Ruby (REST)
-        href: quickstart-ruby-sentences.md
-  - name: チュートリアル
-    items:
-    - name: Translator Text の WPF アプリの作成
-      href: tutorial-wpf-translation-csharp.md
-  - name: 概念
-    items:
-    - name: テキストの翻訳をカスタマイズおよび改善する
-      href: customization.md
-    - name: API が文字数をカウントする方法
-      href: character-counts.md
-  - name: ハウツー ガイド
-    items:
-    - name: Translator Text API にサインアップする
-      href: translator-text-how-to-signup.md
-    - name: V3 Text API に移行する
-      href: migrate-to-v3.md
-    - name: 不適切な表現のフィルターを追加する
-      href: profanity-filtering.md
-    - name: 単語アラインメント情報を受信する
-      href: word-alignment.md
-    - name: コンテンツの翻訳を防止する
-      href: prevent-translation.md
-    - name: 動的ディクショナリ機能を使用する
-      href: dynamic-dictionary.md
-    - name: ファイアウォールの内側で翻訳する
-      href: firewalls.md
-  - name: リファレンス
-    items:
-    - name: v3 Translator Text API のリファレンス
-      href: reference/v3-0-reference.md
+        - name: v3 Translator Text API のリファレンス
+          href: reference/v3-0-reference.md
+          items:
+            - name: Languages
+              href: reference/v3-0-languages.md
+            - name: Translate
+              href: reference/v3-0-translate.md
+            - name: Transliterate
+              href: reference/v3-0-transliterate.md
+            - name: Detect
+              href: reference/v3-0-detect.md
+            - name: BreakSentence
+              href: reference/v3-0-break-sentence.md
+            - name: 辞書検索
+              href: reference/v3-0-dictionary-lookup.md
+            - name: 辞書の例
+              href: reference/v3-0-dictionary-examples.md
+        - name: v2 Translator Text API のリファレンス (非推奨)
+          href: reference/v2-0-reference.md
+          items:
+            - name: テキストの変換
+              href: transform-text.md
+            - name: コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法
+              href: ctf-reporting.md
+            - name: N-Best の翻訳結果を返す
+              href: return-n-best-translations.md
+    - name: リソース
       items:
-      - name: Languages
-        href: reference/v3-0-languages.md
-      - name: Translate
-        href: reference/v3-0-translate.md
-      - name: Transliterate
-        href: reference/v3-0-transliterate.md
-      - name: Detect
-        href: reference/v3-0-detect.md
-      - name: BreakSentence
-        href: reference/v3-0-break-sentence.md
-      - name: 辞書検索
-        href: reference/v3-0-dictionary-lookup.md
-      - name: 辞書の例
-        href: reference/v3-0-dictionary-examples.md
-    - name: v2 Translator Text API のリファレンス (非推奨)
-      href: reference/v2-0-reference.md
-      items:
-      - name: テキストの変換
-        href: transform-text.md
-      - name: コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法
-        href: ctf-reporting.md
-      - name: N-Best の翻訳結果を返す
-        href: return-n-best-translations.md
-  - name: リソース
-    items:
-    - name: コード サンプル (GitHub)
-      href: https://aka.ms/TranslatorGitHub
-    - name: FAQ
-      href: https://www.microsoft.com/translator/faq.aspx
-    - name: ナレッジ ベース
-      href: https://cognitive.uservoice.com/knowledgebase/topics/132647-translator
-    - name: 言語とリージョンのサポート
-      href: language-support.md
-    - name: 価格
-      href: https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/
-    - name: リージョン別の提供状況
-      href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-    - name: 要求の制限
-      href: request-limits.md
-    - name: スタック オーバーフロー
-      href: https://stackoverflow.com/questions/tagged/microsoft-translator
-    - name: UserVoice
-      href: https://cognitive.uservoice.com/forums/558796-translator
+        - name: コード サンプル (GitHub)
+          href: 'https://aka.ms/TranslatorGitHub'
+        - name: FAQ
+          href: 'https://www.microsoft.com/translator/faq.aspx'
+        - name: ナレッジ ベース
+          href: 'https://cognitive.uservoice.com/knowledgebase/topics/132647-translator'
+        - name: 言語とリージョンのサポート
+          href: language-support.md
+        - name: 価格
+          href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
+        - name: リージョン別の提供状況
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: 要求の制限
+          href: request-limits.md
+        - name: スタック オーバーフロー
+          href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
+        - name: UserVoice
+          href: 'https://cognitive.uservoice.com/forums/558796-translator'
 - name: Custom Translator
   items:
-  - name: 概要
-    items:
-    - name: Custom Translator とは
-      href: custom-translator/overview.md
-  - name: クイック スタート
-    items:
-    - name: カスタム モデルの構築
-      href: custom-translator/quickstart-build-deploy-custom-model.md
-  - name: 概念
-    items:
-    - name: ワークスペースとプロジェクト
-      href: custom-translator/workspace-and-project.md
-    - name: 並列のドキュメント
-      href: custom-translator/what-are-parallel-documents.md
-    - name: Dictionary
-      href: custom-translator/what-is-dictionary.md
-    - name: ドキュメントの形式
-      href: custom-translator/document-formats-naming-convention.md
-    - name: 文の配置
-      href: custom-translator/sentence-alignment.md
-    - name: トレーニングとモデル
-      href: custom-translator/training-and-model.md
-    - name: BLEU スコア
-      href: custom-translator/what-is-bleu-score.md
-  - name: ハウツー ガイド
-    items:
-    - name: プロジェクトの作成
-      href: custom-translator/how-to-create-project.md
-    - name: プロジェクトの管理
-      href: custom-translator/how-to-search-edit-delete-projects.md
-    - name: ドキュメントのアップロード
-      href: custom-translator/how-to-upload-document.md
-    - name: ドキュメントの詳細の表示
-      href: custom-translator/how-to-view-document-details.md
-    - name: モデルをトレーニングする
-      href: custom-translator/how-to-train-model.md
-    - name: モデルの詳細の表示
-      href: custom-translator/how-to-view-model-details.md
-    - name: システムのテスト結果の表示
-      href: custom-translator/how-to-view-system-test-results.md
-    - name: 設定の管理
-      href: custom-translator/how-to-manage-settings.md
-    - name: Hub からの移行
-      href: custom-translator/how-to-migrate.md
-  - name: リソース
-    items:
-    - name: 言語のサポート
-      href: https://docs.microsoft.com/azure/cognitive-services/translator/language-support
-    - name: 用語集
-      href: custom-translator/glossary.md
-    - name: FAQ
-      href: custom-translator/faq.md
-    - name: 価格
-      href: https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/
-    - name: スタック オーバーフロー
-      href: https://stackoverflow.com/questions/tagged/microsoft-translator
-    - name: UserVoice
-      href: https://cognitive.uservoice.com/knowledgebase/articles/1855897-custom-translator-preview-resource-guide
-ms.openlocfilehash: 4a1d51ba49f50ba5450a725e530a490f32b4acf4
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678408"
+    - name: 概要
+      items:
+        - name: Custom Translator とは
+          href: custom-translator/overview.md
+    - name: クイック スタート
+      items:
+        - name: カスタム モデルの構築
+          href: custom-translator/quickstart-build-deploy-custom-model.md
+    - name: 概念
+      items:
+        - name: ワークスペースとプロジェクト
+          href: custom-translator/workspace-and-project.md
+        - name: 並列のドキュメント
+          href: custom-translator/what-are-parallel-documents.md
+        - name: Dictionary
+          href: custom-translator/what-is-dictionary.md
+        - name: ドキュメントの形式
+          href: custom-translator/document-formats-naming-convention.md
+        - name: 文の配置
+          href: custom-translator/sentence-alignment.md
+        - name: データのフィルタリング
+          href: custom-translator/data-filtering.md
+        - name: トレーニングとモデル
+          href: custom-translator/training-and-model.md
+        - name: BLEU スコア
+          href: custom-translator/what-is-bleu-score.md
+    - name: ハウツー ガイド
+      items:
+        - name: プロジェクトの作成
+          href: custom-translator/how-to-create-project.md
+        - name: プロジェクトの管理
+          href: custom-translator/how-to-search-edit-delete-projects.md
+        - name: ドキュメントのアップロード
+          href: custom-translator/how-to-upload-document.md
+        - name: ドキュメントの詳細の表示
+          href: custom-translator/how-to-view-document-details.md
+        - name: モデルをトレーニングする
+          href: custom-translator/how-to-train-model.md
+        - name: モデルの詳細の表示
+          href: custom-translator/how-to-view-model-details.md
+        - name: システムのテスト結果の表示
+          href: custom-translator/how-to-view-system-test-results.md
+        - name: 設定の管理
+          href: custom-translator/how-to-manage-settings.md
+        - name: Hub からの移行
+          href: custom-translator/how-to-migrate.md
+    - name: リソース
+      items:
+        - name: 言語のサポート
+          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
+        - name: 用語集
+          href: custom-translator/glossary.md
+        - name: FAQ
+          href: custom-translator/faq.md
+        - name: 価格
+          href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
+        - name: スタック オーバーフロー
+          href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
+        - name: UserVoice
+          href: 'https://cognitive.uservoice.com/knowledgebase/articles/1855897-custom-translator-preview-resource-guide'

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: bb00ef0f76b71d0a4748a319c9f2a5d64dffa251
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 2bec33a4a8540f9599cf1d479f1f59c4cde39bd2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233312"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861589"
 ---
 # <a name="add-and-run-custom-code-snippets-in-azure-logic-apps-with-azure-functions"></a>Azure Functions を使用して Azure Logic Apps にカスタム コード スニペットを追加して実行する
 
@@ -44,7 +44,7 @@ ms.locfileid: "50233312"
     HTTP トリガー テンプレートは、ロジック アプリから `application/json` 型のコンテンツを受け入れることができます。 
     Azure 関数をロジック アプリに追加した場合、Logic App Designer ではお使いの Azure サブスクリプション内にこのテンプレートから作成したカスタム関数が表示されます。 
 
-  * 以前は [Swagger ファイル](http://swagger.io/)として知られていた [OpenAPI 定義](../azure-functions/functions-openapi-definition.md)を定義済みでない限り、お使いの関数ではカスタム ルートを使用しません。 
+  * 以前は [Swagger ファイル](https://swagger.io/)として知られていた [OpenAPI 定義](../azure-functions/functions-openapi-definition.md)を定義済みでない限り、お使いの関数ではカスタム ルートを使用しません。 
   
   * 関数の OpenAPI 定義を定義済みの場合、Logic Apps Designer では、関数パラメーターを操作するための豊富なエクスペリエンスが提供されます。 OpenAPI 定義を含む関数をロジック アプリが見つけてアクセスできるようにするには、[以下の手順に従って関数アプリを設定](#function-swagger)します。
 
@@ -52,7 +52,7 @@ ms.locfileid: "50233312"
 
   関数を実行できるアクションを追加可能にする前に、ロジック アプリがトリガーで始まる必要があります。
 
-  ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と「[クイックスタート: 初めてのロジック アプリ ワークフローの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)」を参照してください。
+  ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[クイック スタートの初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
 <a name="create-function-external"></a>
 
@@ -67,7 +67,7 @@ Azure 関数の初心者の方は、[Azure Portal で初めての関数を作成
 
 <a name="function-swagger"></a>
 
-* 必要に応じて、関数のために、以前 [Swagger ファイル](http://swagger.io/)と呼ばれていた [API 定義を生成](../azure-functions/functions-openapi-definition.md)すると、ロジック アプリ デザイナーでより豊富なエクスペリエンスを使用して関数パラメーターを操作できます。 お使いのロジック アプリで Swagger の記述を含む関数を検索して使用できるように、関数アプリを設定するために、次の手順を実行します。
+* 必要に応じて、関数のために、以前 [Swagger ファイル](https://swagger.io/)と呼ばれていた [API 定義を生成](../azure-functions/functions-openapi-definition.md)すると、ロジック アプリ デザイナーでより豊富なエクスペリエンスを使用して関数パラメーターを操作できます。 お使いのロジック アプリで Swagger の記述を含む関数を検索して使用できるように、関数アプリを設定するために、次の手順を実行します。
 
   1. 関数アプリがアクティブに実行されていることを確認します。
 
@@ -125,11 +125,11 @@ Azure 関数を作成できたので、[ロジック アプリに関数を追加
    * ロジック アプリのワークフローの既存のステップ間で、矢印の上にマウスを移動して、プラス (+) 記号を選択し、**[アクションの追加]** を選択します。
 
 3. 検索ボックスで、フィルターとして「azure functions」と入力します。
-アクションの一覧で、**[Azure 関数を選択する - Azure Functions]** というアクションを選択します。 
+アクションの一覧から、次のアクションを選択します。**[Azure 関数を選択する - Azure Functions]** アクションを選択します。 
 
    !["Azure functions" を探す](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
-4. 関数アプリの一覧で、関数アプリを選択します。 アクションの一覧が開いたら、**[Azure Functions - 新しい関数を作成する]** というアクションを選択します。
+4. 関数アプリの一覧で、関数アプリを選択します。 アクションの一覧が開いたら、次のアクションを選択します。**Azure Functions - 新しい関数を作成する**
 
    ![関数アプリを選択する](./media/logic-apps-azure-functions/select-function-app-create-function.png)
 
@@ -181,7 +181,7 @@ Azure 関数を作成できたので、[ロジック アプリに関数を追加
 2. 関数を追加するステップの下で、**[新しいステップ]** > **[アクションの追加]** の順にクリックします。 
 
 3. 検索ボックスで、フィルターとして「azure functions」と入力します。
-アクションの一覧で、**[Azure 関数を選択する - Azure Functions]** というアクションを選択します。 
+アクションの一覧から、次のアクションを選択します。**[Azure 関数を選択する - Azure Functions]** アクションを選択します。 
 
    !["Azure functions" を探す](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: f63dcc73532426b07f792f631f934587fca08605
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f22311af277f860c1501287b5be0f5dc149880b9
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128998"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317726"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Square からデータをコピーする (プレビュー)
 
@@ -45,11 +44,11 @@ Square のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **Square** に設定する必要があります。 | [はい] |
-| host | Square インスタンスの URL。 (例: mystore.mysquare.com)  | [はい] |
-| clientId | Square アプリケーションに関連付けられているクライアント ID。  | [はい] |
-| clientSecret | Square アプリケーションに関連付けられているクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
-| redirectUri | Square アプリケーションのダッシュボードで割り当てられるリダイレクト URL。 (例: http://localhost:2500)  | [はい] |
+| type | type プロパティは、次のように設定する必要があります: **Square** | はい |
+| host | Square インスタンスの URL。 (例: mystore.mysquare.com)  | はい |
+| clientId | Square アプリケーションに関連付けられているクライアント ID。  | はい |
+| clientSecret | Square アプリケーションに関連付けられているクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| redirectUri | Square アプリケーションのダッシュボードで割り当てられるリダイレクト URL。 (例: http:\//localhost:2500)  | はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
 | usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |
@@ -78,7 +77,12 @@ Square のリンクされたサービスでは、次のプロパティがサポ�
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Square データセットでサポートされるプロパティの一覧を示します。
 
-Square からデータをコピーするには、データセットの type プロパティを **SquareObject** に設定します。 この種類のデータセットに追加の種類固有のプロパティはありません。
+Square からデータをコピーするには、データセットの type プロパティを **SquareObject** に設定します。 次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | データセットの type プロパティは、次のように設定する必要があります: **SquareObject** | はい |
+| tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
 
@@ -90,7 +94,8 @@ Square からデータをコピーするには、データセットの type プ�
         "linkedServiceName": {
             "referenceName": "<Square linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -99,14 +104,14 @@ Square からデータをコピーするには、データセットの type プ�
 
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、Square ソース でサポートされるプロパティの一覧を示します。
 
-### <a name="squaresource-as-source"></a>ソースとしての SquareSource
+### <a name="square-as-source"></a>ソースとしての Square
 
 Square からデータをコピーするには、コピー アクティビティのソースの種類を **SquareSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **SquareSource** に設定する必要があります。 | [はい] |
-| query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Business"`」のように入力します。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります: **SquareSource** | はい |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Business"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 

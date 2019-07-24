@@ -3,24 +3,25 @@ title: ネイティブ クライアント アプリの発行 - Azure AD | Micros
 description: ネイティブ クライアント アプリケーションが Azure AD Application Proxy Connector と通信して、オンプレミス アプリケーションに対して安全なリモート アクセスを提供する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: b4476579665b0e6b574827d1bec06233560038a8
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 21e101dee878a48cce1005d51ad5e59166b0cfa1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621090"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193120"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>プロキシ アプリケーションからネイティブ クライアント アプリケーションを操作する方法
 
@@ -34,10 +35,10 @@ Azure Active Directory アプリケーション プロキシを使用すると�
 
 この記事では、アプリケーション プロキシと Azure AD Authentication Library を使用してネイティブ アプリケーションを発行するための 4 つの手順を説明します。 
 
-## <a name="step-1-publish-your-application"></a>手順 1: アプリケーションの発行
-他のアプリケーションと同様にプロキシ アプリケーションを発行し、アプリケーションにアクセスするユーザーを割り当てます。 詳細については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-publish-azure-portal.md)」を参照してください。
+## <a name="step-1-publish-your-application"></a>手順 1:アプリケーションの発行
+他のアプリケーションと同様にプロキシ アプリケーションを発行し、アプリケーションにアクセスするユーザーを割り当てます。 詳細については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-add-on-premises-application.md)」を参照してください。
 
-## <a name="step-2-configure-your-application"></a>手順 2: アプリケーションの構成
+## <a name="step-2-configure-your-application"></a>手順 2:アプリケーションの作成
 ネイティブ アプリケーションを次のように構成します。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
@@ -51,12 +52,12 @@ Azure Active Directory アプリケーション プロキシを使用すると�
 新しいアプリ登録の作成について詳しくは、「[Azure Active Directory とアプリケーションの統合](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)」をご覧ください。
 
 
-## <a name="step-3-grant-access-to-other-applications"></a>手順 3: 他のアプリケーションに対するアクセスの許可
+## <a name="step-3-grant-access-to-other-applications"></a>手順 3:他のアプリケーションに対するアクセスの許可
 ディレクトリ内の他のアプリケーションに公開するネイティブ アプリケーションを有効にします。
 
 1. 引き続き、**[アプリ登録]** で、作成したばかりの新しいネイティブ アプリケーションを選択します。
-2. **[必要なアクセス許可]** を選択します。
-3. **[追加]** を選択します。
+2. **[API のアクセス許可]** を選択します。
+3. **[アクセス許可の追加]** を選択します。
 4. 最初の手順 **[API を選択します]** を開きます。
 5. 検索バーを使用して、最初のセクションで発行したアプリケーション プロキシ アプリを探します。 アプリを選択して、**[選択]** をクリックします。 
 
@@ -68,7 +69,7 @@ Azure Active Directory アプリケーション プロキシを使用すると�
 8. **[完了]** を選択します。
 
 
-## <a name="step-4-edit-the-active-directory-authentication-library"></a>手順 4: Active Directory 認証ライブラリの編集
+## <a name="step-4-edit-the-active-directory-authentication-library"></a>手順 4:Active Directory 認証ライブラリの編集
 Active Directory Authentication Library (ADAL) の認証コンテキストのネイティブ アプリケーション コードを編集して、次のテキストを含めます。
 
 ```

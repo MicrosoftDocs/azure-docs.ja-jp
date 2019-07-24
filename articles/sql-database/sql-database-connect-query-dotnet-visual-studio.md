@@ -1,6 +1,6 @@
 ---
-title: Visual Studio と .NET を使用して Azure SQL Database に照会する | Microsoft Docs
-description: このトピックでは、Azure SQL Database に接続して Transact-SQL ステートメントでデータベースに照会するプログラムを Visual Studio で作成する方法について説明します。
+title: Visual Studio で .NET および C# を使用して SQL Database に対してクエリを実行する | Microsoft Docs
+description: Visual Studio を使用して、Azure SQL Database に接続し、それに対して Transact-SQL ステートメントを使用してクエリを実行する C# アプリを作成します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,127 +11,139 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: 5b458c881496a887d1415e115bf2b94c674be029
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 03/25/2019
+ms.openlocfilehash: 7c444235ed7aa641fe218b4d1667e661ff05d77e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50911763"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443668"
 ---
-# <a name="quickstart-use-net-c-with-visual-studio-to-connect-and-query-an-azure-sql-database"></a>クイック スタート: .NET (C#) と Visual Studio を使用して Azure SQL Database に接続してクエリを実行する
+# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>クイック スタート:Visual Studio で .NET と C# を使用して Azure SQL データベースに接続してクエリを実行する
 
-このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントでデータを照会する C# プログラムを Visual Studio と [.NET Framework](https://www.microsoft.com/net/) を使って作成する方法について説明します。
+このクイック スタートでは、Visual Studio で [.NET Framework](https://www.microsoft.com/net/) と C# コードを使用し、Azure SQL データベースに対して Transact-SQL ステートメントを使用してクエリを実行する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、以下のものが必要です。
+このクイック スタートを完了するには、次のものが必要です。
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+- Azure SQL Database。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
 
-- このクイック スタートに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](sql-database-get-started-portal-firewall.md)。
+  || 単一データベース | マネージド インスタンス |
+  |:--- |:--- |:---|
+  | Create| [ポータル](sql-database-single-database-get-started.md) | [ポータル](sql-database-managed-instance-get-started.md) |
+  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
+  | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|
+  |||[オンサイトからの接続](sql-database-managed-instance-configure-p2s.md)
+  |データを読み込む|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
+  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) の [BACPAC](sql-database-import.md) ファイルから Adventure Works を復元またはインポートする|
+  |||
 
-- [Visual Studio Community 2017、Visual Studio Professional 2017、Visual Studio Enterprise 2017 のいずれか](https://www.visualstudio.com/downloads/)のインストール。
+  > [!IMPORTANT]
+  > この記事のスクリプトは、Adventure Works データベースを使用するように記述されています。 マネージド インスタンスの場合は、Adventure Works データベースをインスタンス データベースにインポートするか、Wide World Importers データベースを使用するようにこの記事のスクリプトを修正する必要があります。
 
-## <a name="sql-server-connection-information"></a>SQL Server の接続情報
+- [Visual Studio 2017](https://www.visualstudio.com/downloads/) Community、Professional、または Enterprise エディション。
 
-[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
+## <a name="get-sql-server-connection-information"></a>SQL サーバーの接続情報を取得する
 
-#### <a name="for-adonet"></a>ADO.NET の場合
+Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
 
-1. **[データベース接続文字列の表示]** をクリックして先に進みます。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-2. 完全な **ADO.NET** 接続文字列を確認します。
+2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
 
-    ![ADO.NET の接続文字列](./media/sql-database-connect-query-dotnet/adonet-connection-string.png)
+3. **[概要]** ページで、単一データベースの場合は **[サーバー名]** の横の完全修飾サーバー名を確認し、マネージド インスタンスの場合は **[ホスト]** の横の完全修飾サーバー名を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。 
 
-> [!IMPORTANT]
-> このチュートリアルを実行するコンピューターのパブリック IP アドレスに対してファイアウォール規則を設定しておく必要があります。 別のコンピューターから実行する場合または別のパブリック IP アドレスがある場合は、[Azure Portal でサーバー レベルのファイアウォール規則](sql-database-get-started-portal-firewall.md)を作成してください。 
->
-  
-## <a name="create-a-new-visual-studio-project"></a>新しい Visual Studio プロジェクトの作成
+## <a name="create-code-to-query-the-sql-database"></a>SQL データベースに対してクエリを実行するコードを作成する
 
-1. Visual Studio で **[ファイル]**、**[新規作成]**、**[プロジェクト]** の順に選択します。 
-2. **[新しいプロジェクト]** ダイアログで **[Visual C#]** を展開します。
-3. **[コンソール アプリケーション]** を選択し、プロジェクト名に「*sqltest*」と入力します。
-4. **[OK]** をクリックして新しいプロジェクトを作成し、Visual Studio で開きます。
-4. ソリューション エクスプローラーで、**[sqltest]** を右クリックし、**[NuGet パッケージの管理]** をクリックします。 
-5. **[参照]** タブで ```System.Data.SqlClient``` を探し、見つかったらそれを選択します。
-6. **[System.Data.SqlClient]** ページで **[インストール]** をクリックします。
-7. インストールが完了したら変更を確認し、**[OK]** をクリックして **[プレビュー]** ウィンドウを閉じます。 
-8. **[ライセンスへの同意]** ウィンドウが表示された場合は **[同意する]** をクリックします。
-
-## <a name="insert-code-to-query-sql-database"></a>SQL Database に照会するコードの挿入
-1. **Program.cs** に切り替えます (または必要に応じて開きます)。
-
-2. **Program.cs** の内容を次のコードで置き換えます。サーバー、データベース、ユーザー、パスワードには、実際の値を追加してください。
-
-```csharp
-using System;
-using System.Data.SqlClient;
-using System.Text;
-
-namespace sqltest
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            try 
-            { 
-                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-                builder.DataSource = "your_server.database.windows.net"; 
-                builder.UserID = "your_user";            
-                builder.Password = "your_password";     
-                builder.InitialCatalog = "your_database";
-
-                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
-                {
-                    Console.WriteLine("\nQuery data example:");
-                    Console.WriteLine("=========================================\n");
-                    
-                    connection.Open();       
-                    StringBuilder sb = new StringBuilder();
-                    sb.Append("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName ");
-                    sb.Append("FROM [SalesLT].[ProductCategory] pc ");
-                    sb.Append("JOIN [SalesLT].[Product] p ");
-                    sb.Append("ON pc.productcategoryid = p.productcategoryid;");
-                    String sql = sb.ToString();
-
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
-                            }
-                        }
-                    }                    
-                }
-            }
-            catch (SqlException e)
-            {
-                Console.WriteLine(e.ToString());
-            }
-            Console.ReadLine();
-        }
-    }
-}
-```
+1. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]** の順に選択します。 
+   
+1. **[新しいプロジェクト]** ダイアログで、**[Visual C#]**、**[コンソール アプリ (.NET Framework)]** の順に選択します。
+   
+1. プロジェクトの名前に「*sqltest*」と入力して、**[OK]** を選択します。 新しいプロジェクトが作成されます。 
+   
+1. **[プロジェクト]** > **[NuGet パッケージの管理]** の順に選択します。 
+   
+1. **[NuGet パッケージ マネージャー]** で **[参照]** タブを選択し、**System.Data.SqlClient** を検索して選択します。
+   
+1. **[System.Data.SqlClient]** ページで **[インストール]** を選択します。 
+   - プロンプトが表示されたら、**[OK]** を選択してインストールを続行します。 
+   - **[ライセンスへの同意]** ウィンドウが表示された場合は **[同意する]** を選択します。
+   
+1. インストールが完了すると、**[NuGet パッケージ マネージャー]** を閉じることができます。 
+   
+1. コード エディターで **Program.cs** の内容を次のコードに置き換えます。 `<server>`、`<username>`、`<password>`、`<database>` の値に置き換えます。
+   
+   >[!IMPORTANT]
+   >この例のコードでは、サンプル データ AdventureWorksLT を使用します。これは、データベースの作成時にソースとして選択できます。 データベースに別のデータがある場合は、SELECT クエリで独自のデータベースからのテーブルを使用します。 
+   
+   ```csharp
+   using System;
+   using System.Data.SqlClient;
+   using System.Text;
+   
+   namespace sqltest
+   {
+       class Program
+       {
+           static void Main(string[] args)
+           {
+               try 
+               { 
+                   SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                   builder.DataSource = "<server>.database.windows.net"; 
+                   builder.UserID = "<username>";            
+                   builder.Password = "<password>";     
+                   builder.InitialCatalog = "<database>";
+   
+                   using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                   {
+                       Console.WriteLine("\nQuery data example:");
+                       Console.WriteLine("=========================================\n");
+                       
+                       connection.Open();       
+                       StringBuilder sb = new StringBuilder();
+                       sb.Append("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName ");
+                       sb.Append("FROM [SalesLT].[ProductCategory] pc ");
+                       sb.Append("JOIN [SalesLT].[Product] p ");
+                       sb.Append("ON pc.productcategoryid = p.productcategoryid;");
+                       String sql = sb.ToString();
+   
+                       using (SqlCommand command = new SqlCommand(sql, connection))
+                       {
+                           using (SqlDataReader reader = command.ExecuteReader())
+                           {
+                               while (reader.Read())
+                               {
+                                   Console.WriteLine("{0} {1}", reader.GetString(0), reader.GetString(1));
+                               }
+                           }
+                       }                    
+                   }
+               }
+               catch (SqlException e)
+               {
+                   Console.WriteLine(e.ToString());
+               }
+               Console.ReadLine();
+           }
+       }
+   }
+   ```
 
 ## <a name="run-the-code"></a>コードの実行
 
-1. **F5** キーを押してアプリケーションを実行します。
-2. 先頭から 20 行が返されることを確認して、アプリケーション ウィンドウを閉じます。
+1. アプリを実行するには、**[デバッグ]** > **[デバッグの開始]** の順に選択するか、ツールバーの **[開始]** を選択するか、**F5** キーを押します。
+1. データベースの上位 20 のカテゴリ/製品行が返されていることを確認し、アプリ ウィンドウを閉じます。
 
 ## <a name="next-steps"></a>次の手順
 
-- Windows/Linux/macOS で [.NET Core を使い Azure SQL Database に接続してデータベースに照会](sql-database-connect-query-dotnet-core.md)する方法についての情報を入手します。  
+- Windows/Linux/macOS 上で [.NET Core を使用して Azure SQL データベースに接続し、クエリを実行する](sql-database-connect-query-dotnet-core.md)方法について学びます。  
 - [Windows/Linux/macOS の .NET Core でのコマンド ラインの使用に関する概要](/dotnet/core/tutorials/using-with-xplat-cli)を把握します。
 - [SSMS で初めての Azure SQL Database を設計](sql-database-design-first-database.md)する方法や [.NET で初めての Azure SQL Database を設計](sql-database-design-first-database-csharp.md)する方法についての情報を入手します。
 - .NET の詳細については、[.NET のドキュメント](https://docs.microsoft.com/dotnet/)を参照してください。
-- [再試行ロジックの例: ADO.NET を使用して SQL に弾性的に接続する][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+- 再試行ロジックの例:[ADO.NET を使用して SQL に弾性的に接続する][step-4-connect-resiliently-to-sql-with-ado-net-a78n]。
 
 
 <!-- Link references. -->

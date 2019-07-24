@@ -1,20 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4c9f26c36b0cf79c8bd28e57fc7bdec5dda22764
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45636327"
 documentType: LandingData
 title: Azure Active Directory の基礎のドキュメント
 metadata:
-  document_id: 
+  document_id: null
   title: Azure Active Directory の基礎のドキュメント
   description: Azure Active Directory を使用するときの基本的な概念とプロセスについて説明します。
   services: active-directory
-  ms.component: fundamentals
+  ms.subservice: fundamentals
   author: eross-msft
-  manager: mtillman
+  manager: daveba
   ms.service: active-directory
   ms.topic: landing-page
   ms.date: 09/07/2018
@@ -22,32 +16,32 @@ metadata:
 abstract:
   description: 基本的な Azure Active Directory (Azure AD) の概念とプロセス (基本的なユーザー、グループを作成したり、基本的な環境を作成したりして作業を開始する方法など) を説明します。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: Azure Active Directory ポータルで作業を開始する方法を説明します。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: ./media/index/i_portal.png
-      text: Azure AD にアクセスしてテナントを作成する
-      href: active-directory-access-create-new-tenant.md
-    - image:
-        src: ./media/index/i_tasks.png
-      text: グループとメンバーを表示する
-      href: active-directory-groups-view-azure-portal.md
-- title: ステップバイステップ ガイド
-  items:
-  - type: paragraph
-    text: Azure Active Directory 環境でセットアップする基本的なタスクを実行する方法について説明します
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: Azure Active Directory ポータルで作業を開始する方法を説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: ./media/index/i_portal.png
+            text: Azure AD にアクセスしてテナントを作成する
+            href: active-directory-access-create-new-tenant.md
+          - image:
+              src: ./media/index/i_tasks.png
+            text: グループとメンバーを表示する
+            href: active-directory-groups-view-azure-portal.md
+  - title: ステップバイステップ ガイド
     items:
-    - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Azure AD Premium へのサインアップ</a>
-    - html: <a href="/azure/active-directory/fundamentals/add-custom-domain">カスタム ドメイン名を追加する方法</a>
-    - html: <a href="/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal">基本的なグループを作成し、メンバーを追加する方法</a>
-    - html: <a href="/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners">グループ所有者を追加する方法</a>
-    - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">新しいユーザーを追加する方法</a>
-    - html: <a href="/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal">ユーザーにロールを割り当てる方法</a>
-    - html: <a href="/azure/active-directory/fundamentals/license-users-groups">ユーザーにライセンスを割り当てる方法</a>
+      - type: paragraph
+        text: Azure Active Directory 環境でセットアップする基本的なタスクを実行する方法について説明します
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Azure AD Premium へのサインアップ</a>
+          - html: <a href="/azure/active-directory/fundamentals/add-custom-domain">カスタム ドメイン名を追加する方法</a>
+          - html: <a href="/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal">基本的なグループを作成し、メンバーを追加する方法</a>
+          - html: <a href="/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners">グループ所有者を追加する方法</a>
+          - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">新しいユーザーを追加する方法</a>
+          - html: <a href="/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal">ユーザーにロールを割り当てる方法</a>
+          - html: <a href="/azure/active-directory/fundamentals/license-users-groups">ユーザーにライセンスを割り当てる方法</a>

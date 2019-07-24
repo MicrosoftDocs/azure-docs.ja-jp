@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 130cc66831b25621cb022eb19005c624fcd71b9e
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 4c5b4c5eacd4be751004af551e3753a61873c7a7
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40105508"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551645"
 ---
-**ドキュメントの最終更新日**: 2018 年 8 月 14 日午前 10:00 (PST)。
+**ドキュメントの最終更新日**:2018 年 8 月 14 日午前 10:00 (PST)。
 
 投機的実行のサイドチャネル攻撃として知られる[新たな CPU 脆弱性クラス](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)を開示したところ、よりわかりやすい説明を求めて、お客様からさまざまな質問が寄せられています。  
 
 Microsoft は、クラウド サービス全体に軽減策を展開しました。 Azure を実行し、顧客ワークロードを互いに分離するインフラストラクチャは保護されています。 つまり同じインフラストラクチャを使用する潜在的な攻撃者が、これらの脆弱性を利用してお客様のアプリケーションを攻撃することはできません。
 
-Azure では、可能な限り[メモリ保持メンテナンス](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#memory-preserving-maintenance)を利用することで、お客様への影響を極力少なくし、再起動を不要にしています。 システム全体に及ぶ更新をホストに対して行う際は、引き続きこうした手法を活用しながらお客様を保護してまいります。
+Azure では、可能な限り[メモリ保持メンテナンス](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-not-requiring-a-reboot)を利用することで、お客様への影響を極力少なくし、再起動を不要にしています。 システム全体に及ぶ更新をホストに対して行う際は、引き続きこうした手法を活用しながらお客様を保護してまいります。
 
 Azure にさまざまな角度から組み込まれているセキュリティについて詳しくは、「[Azure のセキュリティのドキュメント](https://docs.microsoft.com/azure/security/)」サイトをご覧ください。 
 
@@ -66,21 +66,21 @@ Azure 上で実行するアプリケーションを他の Azure ユーザーか�
 
 VM 内または Cloud Services 内で追加的なセキュリティ機能を有効にすることができます。
 
-### <a name="windows"></a>Windows 
+### <a name="windows"></a> Windows 
 
 そうした追加的なセキュリティ機能を有効にするためには、対象のオペレーティング システムが最新の状態にあることが必要です。 投機的実行のサイドチャネルに関しては、さまざまな軽減策が既定で有効になっていますが、ここで説明する追加的な機能は手動で有効にする必要があり、またパフォーマンスに影響を及ぼすことがあります。 
 
-**手順 1**: [Azure サポートに連絡](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)して、ご利用の Virtual Machines に最新のファームウェア (マイクロコード) を公開してもらいます。 
+**手順 1.**:[Azure サポートに連絡](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)して、ご利用の Virtual Machines に最新のファームウェア (マイクロコード) を公開してもらいます。 
 
-**手順 2**: Kernel Virtual Address Shadowing (KVAS) と Branch Target Injection (BTI) OS サポートを有効にします。 [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の指示に従い、`Session Manager` のレジストリ キーで保護を有効にします。 再起動が必要となります。 
+**手順 2**:Kernel Virtual Address Shadowing (KVAS) と Branch Target Injection (BTI) OS サポートを有効にします。 [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の指示に従い、`Session Manager` のレジストリ キーで保護を有効にします。 再起動が必要となります。 
 
-**手順 3**: [入れ子になった仮想化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)を使ったデプロイの場合 (D3 と E3 のみ): これらの手順は、Hyper-V ホストとして使用している VM 内でのみ当てはまります。 
+**手順 3**:[入れ子式の仮想化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)でデプロイする場合 (D3 と E3 のみ):これらの手順は、Hyper-V ホストとして使用している VM 内で適用されます。 
 
 1. [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の指示に従い、`MinVmVersionForCpuBasedMitigations` のレジストリ キーで保護を有効にします。  
  
 1. [こちら](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types)の手順に従って、ハイパーバイザーのスケジューラの種類を **[コア]** に設定します。 
 
-**手順 4**: [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の手順に従い、[SpeculationControl](https://aka.ms/SpeculationControlPS) PowerShell モジュールを使って、保護が有効になっていることを確認します。 
+**手順 4**:[KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の手順に従い、[SpeculationControl](https://aka.ms/SpeculationControlPS) PowerShell モジュールを使って、保護が有効になっていることを確認します。 
 
 > [!NOTE]
 > このモジュールをダウンロード済みであっても、インストールするのは最新バージョンであることが必要です。
@@ -101,11 +101,11 @@ L1TFWindowsSupportEnabled: True
 
 <a name="linux"></a>追加的なセキュリティ機能一式を内部で有効にするためには、対象のオペレーティング システムが完全に最新の状態にあることが必要です。 一部の軽減策については、既定で有効になります。 次のセクションで説明している内容は、既定でオフになっている機能や、ハードウェア サポート (マイクロコード) に依存している機能が対象となります。 これらの機能を有効にすると、パフォーマンスに影響が生じることがあります。 詳しい手順については、オペレーティング システムの提供元のドキュメントを参照してください。
  
-**手順 1**: [Azure サポートに連絡](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)して、ご利用の Virtual Machines に最新のファームウェア (マイクロコード) を公開してもらいます。
+**手順 1.**:[Azure サポートに連絡](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)して、ご利用の Virtual Machines に最新のファームウェア (マイクロコード) を公開してもらいます。
  
-**手順 2**: CVE-2017-5715 (Spectre Variant 2) を軽減するために、オペレーティング システムの提供元のドキュメントに従って、Branch Target Injection (BTI) OS サポートを有効にします。 
+**手順 2**:CVE-2017-5715 (Spectre Variant 2) を軽減するために、オペレーティング システムの提供元のドキュメントに従って、Branch Target Injection (BTI) OS サポートを有効にします。 
  
-**手順 3**: CVE-2017-5754 (Meltdown Variant 3) を軽減するために、オペレーティング システムの提供元のドキュメントに従って、Kernel Page Table Isolation (KPTI) を有効にします。 
+**手順 3**:CVE-2017-5754 (Meltdown Variant 3) を軽減するために、オペレーティング システムの提供元のドキュメントに従って、Kernel Page Table Isolation (KPTI) を有効にします。 
  
 詳しい情報については、オペレーティング システムの提供元から入手してください。  
  

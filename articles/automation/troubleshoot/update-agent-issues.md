@@ -1,68 +1,70 @@
 ---
-title: Azure Update Management でのエージェント チェック結果について
+title: Azure Update Management での Windows エージェント チェック結果について
 description: Update Management エージェントの問題をトラブルシューティングする方法を説明します。
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 12/14/2018
 ms.topic: conceptual
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 20323afe79ad3de1e3dfccd4752c4f7e28d22266
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: d4331942526b3dbda376605db2618ceeaec3f60a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095373"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58166000"
 ---
-# <a name="understand-the-agent-check-results-in-update-management"></a>Update Management でのエージェント チェック結果について
+# <a name="understand-the-windows-agent-check-results-in-update-management"></a>Update Management での Windows エージェント チェック結果について
 
-Azure 以外のマシンの Update Management では、いくつかの理由で**準備完了**と表示されないことがあります。 Update Management では、Hybrid Worker エージェントの正常性を検査して背後にある問題を判別することができます。 この記事では、トラブルシューティング ツールを Azure portal から、およびオフライン時に実行する方法について説明します。
+Update Management でマシンに**準備完了**が表示されない理由は多数存在する可能性があります。 Update Management では、Hybrid Worker エージェントの正常性を検査して背後にある問題を判別することができます。 この記事では、Azure portal から Azure マシンを対象として、また、[オフラインのシナリオ](#troubleshoot-offline)で Azure 以外のマシンを対象としてトラブルシューティング ツールを実行する方法について説明します。
+
+次の一覧は、マシンが取り得る 3 つの準備状態です。
+
+* **Ready (準備完了)** - Update エージェントがデプロイされ、最後に表示されてから 1 時間以内である。
+* **Disconnected (切断)** -  Update エージェントがデプロイされ、最後に表示されてから 1 時間以上になった。
+* **Not configured (未構成)** - Update エージェントが見つからないか、オンボードを終了していない。
 
 ## <a name="start-the-troubleshooter"></a>トラブルシューティングの開始
 
-ポータルの **[Update Agent Readiness (Update エージェントの準備)]** 列の下の **[トラブルシューティング]** リンクをクリックすると、**Troubleshoot Update Agent (Update エージェントのトラブルシューティング)** ページが起動します。 このページには、エージェントの問題とともにこの記事へのリンクが表示され、問題のトラブルシューティングに役立ちます。
+Azure マシンの場合は、ポータルの **[Update エージェントの準備]** 列にある **[トラブルシューティング]** リンクをクリックすると、**[Update エージェントのトラブルシューティング]** ページが起動されます。 Azure 以外のマシンの場合は、リンクをクリックすると、この記事が表示されます。 Azure 以外のマシンをトラブルシューティングするには、[オフラインの手順](#troubleshoot-offline)を参照してください。
 
-![VM リスト ページ](../media/update-agent-issues/vm-list.png)
+![仮想マシンの管理の一覧の更新](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
-> 検査を行うには VM が実行中である必要があります。 VM が実行されていない場合、**[VM の開始]** ボタンが表示されます。
+> エージェントの正常性を確認するには、VM が実行されている必要があります。 VM が実行されていない場合は、**[Start the VM]\(VM を起動\)** ボタンが表示されます。
 
-**Troubleshoot Update Agent (Update エージェントのトラブルシューティング)** ページで **[チェックの実行]** をクリックすると、トラブルシューティング ツールが開始します。 トラブルシューティング ツールでは [[コマンドの実行]](../../virtual-machines/windows/run-command.md) を使ってマシンに対してスクリプトを実行し、エージェントの依存関係を検証します。 トラブルシューティング ツールの実行が完了すると、チェック結果が返されます。
+「**Update エージェントのトラブルシューティング**」のページで **[チェックの実行]** を選択すると、トラブルシューティング ツールが開始します。 トラブルシューティング ツールでは [[実行コマンド]](../../virtual-machines/windows/run-command.md) を使ってマシンに対してスクリプトを実行し、エージェントの依存関係を検証します。 トラブルシューティング ツールが終了すると、チェック結果が返されます。
 
-![トラブルシューティング ページ](../media/update-agent-issues/troubleshoot-page.png)
+![「Update エージェントのトラブルシューティング」のページ](../media/update-agent-issues/troubleshoot-page.png)
 
-完了すると、結果がウィンドウに返されます。 [チェック セクション](#pre-requisistes-checks)には、各チェックの対象が示されます。
+準備ができると、結果がページに表示されます。 チェックのセクションには、各チェックに含まれる内容が表示されます。
 
-![Update エージェントのチェック ページ](../media/update-agent-issues/update-agent-checks.png)
+![「Update エージェントのトラブルシューティング」のチェック](../media/update-agent-issues/update-agent-checks.png)
 
 ## <a name="prerequisite-checks"></a>前提条件のチェック
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-OS チェックでは、Hybrid Runbook Worker が次のいずれかのオペレーティング システムを実行しているかどうかを検証します。 
+オペレーティング システムのチェックでは、Hybrid Runbook Worker が次のいずれかのオペレーティング システムを実行しているかどうかを検証します。
 
 |オペレーティング システム  |メモ  |
 |---------|---------|
-|Windows Server 2008、Windows Server 2008 R2 RTM    | 更新プログラムの評価のみをサポートします。         |
-|Windows Server 2008 R2 SP1 以降     |.NET Framework 4.5.1 以降が必要です。 ([.NET Framework のダウンロード](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0 以降が必要です。 ([WMF 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。<br/> より高い信頼性を確保するには Windows PowerShell 5.1 を使用することをお勧めします   ([WMF 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))        |
-|CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。 分類に基づく修正プログラムでは、CentOS に既定では設定されていない、セキュリティ データを返すための 'yum' が必須です。         |
-|Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
-|SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
-|Ubuntu 14.04 LTS、16.04 LTS、および 18.04 LTS (x86/x64)      |Linux エージェントは、更新リポジトリへのアクセスが必要です。         |
+|Windows Server 2008 R2 RTM、Windows Server 2008 | 更新プログラムの評価のみをサポートします。         |
+|Windows Server 2008 R2 SP1 以降 |.NET Framework 4.5.1 以降が必要です。 ([.NET Framework のダウンロード](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0 以降が必要です  ([Windows Management Framework 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))<br/> より高い信頼性を確保するには Windows PowerShell 5.1 を使用することをお勧めします   ([Windows Management Framework 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))        |
 
 ### <a name="net-451"></a>.NET 4.5.1
 
-.NET Framework チェックでは、最小要件の [.NET Framework 4.5.1](https://www.microsoft.com/download/details.aspx?id=30653) がシステムに存在するかどうか検証します。
+.NET Framework チェックでは、最小要件の [.NET Framework 4.5.1](https://www.microsoft.com/download/details.aspx?id=30653) がインストールされているかどうかを検証します。
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-WMF チェックでは、必要なバージョンの Windows Management Framework がシステムに存在するかどうか検証します。 サポートされる最小バージョンは [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) です。 Hybrid Runbook Worker の信頼性を向上させるには [Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616) をインストールすることをお勧めします。
+WMF チェックでは、必要なバージョンの Windows Management Framework (WMF) がシステムに存在するかどうかを検証します。 サポートされる最小バージョンは [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) です。 Hybrid Runbook Worker の信頼性を向上させるには [Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616) をインストールすることをお勧めします。
 
 ### <a name="tls-12"></a>TLS 1.2
 
-このチェックでは、TLS 1.2 を使って通信を暗号化しているかどうか判別します。 TLS 1.0 はプラットフォームでサポートされなくなったので、クライアントで TLS 1.2 を使用して Update Management と通信することをお勧めします。
+このチェックでは、TLS 1.2 を使って通信を暗号化しているかどうかを判別します。 TLS 1.0 は、プラットフォームでサポートされなくなりました。 Update Management と通信するには、クライアントで TLS 1.2 を使用することをお勧めします。
 
 ## <a name="connectivity-checks"></a>接続チェック
 
@@ -70,13 +72,13 @@ WMF チェックでは、必要なバージョンの Windows Management Framewor
 
 このチェックでは、エージェントがエージェント サービスと正しく通信できるかどうかを判別します。
 
-Hybrid Runbook Worker エージェントが登録エンドポイントと通信できるように、プロキシとファイアウォールが構成されている必要があります。 アドレスと開くポートの一覧については、[Hybrid Worker 用のネットワーク計画](../automation-hybrid-runbook-worker.md#network-planning)を参照してください
+Hybrid Runbook Worker エージェントが登録エンドポイントと通信できるように、プロキシとファイアウォールが構成されている必要があります。 アドレスと開くポートの一覧については、[Hybrid Worker 用のネットワーク計画](../automation-hybrid-runbook-worker.md#network-planning)に関する記事を参照してください。
 
 ### <a name="operations-endpoint"></a>操作エンドポイント
 
 このチェックでは、エージェントが Job Runtime Data Service と正しく通信できるかどうかを判別します。
 
-Hybrid Runbook Worker エージェントが Job Runtime Data Service と通信できるように、プロキシとファイアウォールが構成されている必要があります。 アドレスと開くポートの一覧については、「[Hybrid Worker 用のネットワーク計画](../automation-hybrid-runbook-worker.md#network-planning)」を参照してください
+Hybrid Runbook Worker エージェントが Job Runtime Data Service と通信できるように、プロキシとファイアウォールが構成されている必要があります。 アドレスと開くポートの一覧については、[Hybrid Worker 用のネットワーク計画](../automation-hybrid-runbook-worker.md#network-planning)に関する記事を参照してください。
 
 ## <a name="vm-service-health-checks"></a>VM サービス正常性チェック
 
@@ -86,11 +88,11 @@ Hybrid Runbook Worker エージェントが Job Runtime Data Service と通信�
 
 このサービスのトラブルシューティングの詳細については、「[Microsoft Monitoring Agent が実行されていない場合](hybrid-runbook-worker.md#mma-not-running)」を参照してください。
 
-Microsoft Monitoring Agent をインストールするには、「[Microsoft Monitoring Agent のインストールと構成](/log-analytics/log-analytics-concept-hybrid.md#install-and-configure-agent)」を参照してください
+Microsoft Monitoring Agent を再インストールするには、[Microsoft Monitoring Agent のインストールと構成](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)に関する記事を参照してください。
 
 ### <a name="monitoring-agent-service-events"></a>エージェント サービス イベントの監視
 
-このチェックでは、過去 24 時間にマシン上の Operations Manager ログに `4502` イベントが記録されているかどうか判別します。
+このチェックでは、過去 24 時間にマシン上の Azure Operations Manager ログに `4502` イベントが表示されているかどうかを判別します。
 
 このイベントの詳細については、このイベントに関する[トラブルシューティング ガイド](hybrid-runbook-worker.md#event-4502)を参照してください。
 
@@ -98,11 +100,11 @@ Microsoft Monitoring Agent をインストールするには、「[Microsoft Mon
 
 ### <a name="machinekeys-folder-access"></a>MachineKeys フォルダー アクセス
 
-暗号化フォルダー アクセス チェックでは、ローカル システム アカウントから `C:\ProgramData\Microsoft\Crypto\RSA` にアクセスできるかどうかを検査します
+Crypto フォルダー アクセスのチェックでは、ローカル システム アカウントが C:\ProgramData\Microsoft\Crypto\RSA にアクセスできるかどうかを判別します。
 
 ## <a name="troubleshoot-offline"></a>オフライン トラブルシューティング
 
-スクリプトをローカルに実行することで、Hybrid Runbook Worker のトラブルシューティング ツールをオフラインで使用できます。 このスクリプト ([Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration)) は PowerShell ギャラリーに含まれています。 このスクリプトの出力例を次に示します。
+スクリプトをローカルに実行することで、Hybrid Runbook Worker のトラブルシューティング ツールをオフラインで使用できます。 このスクリプト ([Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration)) は PowerShell ギャラリーで入手できます。 このスクリプトの出力は次の例のようになります。
 
 ```output
 RuleId                      : OperatingSystemCheck
@@ -117,7 +119,7 @@ CheckResultMessageArguments : {}
 
 RuleId                      : DotNetFrameworkInstalledCheck
 RuleGroupId                 : prerequisites
-RuleName                    : .Net Framework 4.5+
+RuleName                    : .NET Framework 4.5+
 RuleGroupName               : Prerequisite Checks
 RuleDescription             : .NET Framework version 4.5 or higher is required
 CheckResult                 : Passed
@@ -198,4 +200,5 @@ CheckResultMessageArguments : {}
 
 ## <a name="next-steps"></a>次の手順
 
-Hybrid Runbook Worker のその他の問題をトラブルシューティングする方法については、「[Hybrid Runbook Worker のトラブルシューティング](hybrid-runbook-worker.md)」を参照してください
+Hybrid Runbook Worker のその他の問題をトラブルシューティングする方法については、「[Hybrid Runbook Worker のトラブルシューティング](hybrid-runbook-worker.md)」を参照してください。
+

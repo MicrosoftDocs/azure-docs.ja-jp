@@ -1,32 +1,33 @@
 ---
-title: Azure Active Directory を使用してグループを削除する方法 | Microsoft Docs
-description: Azure Active Directory を使用してグループを削除する方法を説明します。
+title: グループを削除する - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory を使用したグループの削除方法に関する手順です。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: lizross
 ms.reviewer: krbain
-ms.custom: it-pro
-ms.openlocfilehash: 014fe487d23a6c75e94ca2708ed15044bd6cf53b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.custom: it-pro, seodec18
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d9543908aafbb4ecd8f642f766f656f780706a36
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574333"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207213"
 ---
-# <a name="how-to-delete-a-group-using-azure-active-directory"></a>方法: Azure Active Directory を使用してグループを削除する
-グループはさまざまな理由で削除されますが、通常は次のために行います。
+# <a name="delete-a-group-using-azure-active-directory"></a>Azure Active Directory を使用してグループを削除する
+Azure Active Directory (Azure AD) グループはさまざまな理由で削除されますが、通常は次のために行います。
 
-- 不正なオプションで**グループの種類**を設定してしまった
+- 不正なオプションで**グループの種類**を設定してしまった。
 
-- 誤って不正なグループを作成したか、重複して作成してしまった 
+- 誤って不正なグループを作成したか、重複して作成してしまった。 
 
-- グループが不要になった
+- グループが不要になった。
 
 ## <a name="to-delete-a-group"></a>グループを削除するには
 1. ディレクトリの全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。

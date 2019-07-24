@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 8d83af114ebb5e5ff78372897d3e08ed592d4012
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.subservice: disks
+ms.openlocfilehash: 81fbf650597813baaf6618f82ef55a937f1870d9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093903"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476028"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Azure portal を使用して Windows VM にマネージド データ ディスクを接続する
 
@@ -41,7 +42,7 @@ ms.locfileid: "49093903"
 
 ## <a name="initialize-a-new-data-disk"></a>新しいデータ ディスクの初期化
 
-1. VM に接続します。
+1. VM に接続します
 1. 実行中の VM 内で Windows の**スタート** メニューを選択し、検索ボックスに「**diskmgmt.msc**」と入力します。 **[ディスクの管理]** コンソールが開きます。
 2. 新しい未初期化ディスクがディスクの管理によって認識され、**[ディスクの初期化]** ウィンドウが表示されます。
 3. 新しいディスクが選択されていることを確認し、**[OK]** をクリックしてディスクを初期化します。
@@ -52,30 +53,6 @@ ms.locfileid: "49093903"
 8. **[新しいディスクのフォーマット]** ウィンドウで設定を確認し、**[開始]** を選択します。
 9. ディスクをフォーマットするとデータがすべて削除されることを警告するメッセージが表示されます。 **[OK]** を選択します。
 10. フォーマットが完了したら、**[OK]** を選択します。
-
-## <a name="use-trim-with-standard-storage"></a>Standard Storage での TRIM の使用
-
-Standard Storage (HDD) を使用する場合は、**TRIM** コマンドを有効にする必要があります。 **TRIM** コマンドはディスク上の未使用のブロックを破棄するため、実際に使用しているストレージにのみ課金されます。 **TRIM** を使用することにより、サイズの大きいファイルを作成した後に削除した場合、コストを節約できます。 
-
-**TRIM** の設定を確認するには、Windows VM 上でコマンド プロンプトを開き、次のコマンドを入力します。
-
-```
-fsutil behavior query DisableDeleteNotify
-```
-
-このコマンドが 0 を返す場合、**TRIM** は適切に有効化されています。 1 が返される場合は、次のコマンドを実行して **TRIM** を有効にします。
-
-```
-fsutil behavior set DisableDeleteNotify 0
-```
-
-ディスクからデータを削除した後は、**TRIM** でデフラグを実行して、**TRIM** 操作が確実に正しくフラッシュするようになります。
-
-```
-defrag.exe <volume:> -l
-```
-
-ボリュームをフォーマットすることによって、ボリューム全体を確実に削除することもできます。
 
 ## <a name="next-steps"></a>次の手順
 

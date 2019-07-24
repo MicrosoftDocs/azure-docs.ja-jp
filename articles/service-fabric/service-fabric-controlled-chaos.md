@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/05/2018
 ms.author: motanv
-ms.openlocfilehash: 3774ae0572a87129fb089064cec9bb7957a98c22
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: a1b334b34e8e234d9ce5cc5ad5cd77bf5ba7118c
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113241"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555525"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Service Fabric クラスターでの制御された混乱の誘発
 クラウド インフラストラクチャのような大規模な分散システムは、本質的に信頼性の低いものです。 Azure Service Fabric を使用すると、開発者が、信頼性の低いインフラストラクチャ上で信頼できる分散サービスのコードを記述できます。 信頼性の低いインフラストラクチャ上に強固な分散サービスを作成するために、開発者は、基になる信頼性の低いインフラストラクチャで障害のために複雑な状態遷移が発生している状態で、サービスの安定性をテストできる必要があります。
@@ -34,7 +34,7 @@ ms.locfileid: "39113241"
 > 最新の形式では、混乱は、安全な障害のみを発生させ、外部障害がなければ、クォーラム損失またはデータの損失は起こりません。
 >
 
-混乱の実行中は、その時点での実行状態をキャプチャするさまざまなイベントが生成されます。 たとえば、ExecutingFaultsEvent には、混乱がその反復で実行することを決定したすべての障害が含まれています。 ValidationFailedEvent には、クラスターの検証中に検出された検証エラー (正常性または安定性の問題) の詳細が含まれています。 GetChaosReport API (C#、Powershell、または REST) を呼び出して、混乱実行のレポートを取得できます。 これらのイベントは、[信頼性の高いディクショナリ](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections)で永続化され、**MaxStoredChaosEventCount** (既定値は 25000) と**StoredActionCleanupIntervalInSeconds** (既定値は 3600) という 2 つの構成で既定される切り捨てポリシーが適用されます。 すべての *StoredActionCleanupIntervalInSeconds* 混乱チェックおよびほとんどのすべての最新の *MaxStoredChaosEventCount* イベントが、信頼性の高いディクショナリから削除されます。
+混乱の実行中は、その時点での実行状態をキャプチャするさまざまなイベントが生成されます。 たとえば、ExecutingFaultsEvent には、混乱がその反復で実行することを決定したすべての障害が含まれています。 ValidationFailedEvent には、クラスターの検証中に検出された検証エラー (正常性または安定性の問題) の詳細が含まれています。 GetChaosReport API (C#、Powershell、または REST) を呼び出して、混乱実行のレポートを取得できます。 これらのイベントは、[リライアブル ディクショナリ](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections)内に永続化されます。それには、次の 2 つの構成によって決定される切り捨てポリシーがあります。**MaxStoredChaosEventCount** (既定値は 25,000) と **StoredActionCleanupIntervalInSeconds** (既定値は 3,600)。 すべての *StoredActionCleanupIntervalInSeconds* 混乱チェックおよびほとんどのすべての最新の *MaxStoredChaosEventCount* イベントが、信頼性の高いディクショナリから削除されます。
 
 ## <a name="faults-induced-in-chaos"></a>混乱で誘発される障害
 混乱により、Service Fabric クラスター全体で数か月または数年の間に発生する障害が、数時間に圧縮され生成されます。 障害率の高い交互に配置された障害の組み合わせにより、通常は見過ごされるめったに発生しないケースが検出されます。 この混乱を実施することで、サービスのコードの品質が大幅に向上します。
@@ -53,27 +53,27 @@ ms.locfileid: "39113241"
 混乱が誘発させた障害を取得するには、GetChaosReport API (Powershell、C#、または REST) を使用できます。 この API は、渡された継続トークン、または渡された時間範囲に基づく混乱レポートの次のセグメントを取得します。 混乱レポートの次のセグメントを取得するように ContinuationToken を指定するか、StartTimeUtc と EndTimeUtc を使用して時間範囲を指定することができますが、同じ呼び出しで、ContinuationToken と時間範囲の両方を指定することはできません。 100 を超える混乱イベントが存在する場合、混乱レポートがセグメントで返され、セグメントに 100 を超える混乱イベントが含まれています。
 
 ## <a name="important-configuration-options"></a>重要な構成オプション
-* **TimeToRun**: 混乱が正常に完了するまでの実行時間の合計。 実行中の混乱は、TimeToRun で指定された期間が経過する前に、StopChaos API で停止できます。
+* **TimeToRun**:混乱が正常に完了するまでの実行時間の合計。 実行中の混乱は、TimeToRun で指定された期間が経過する前に、StopChaos API で停止できます。
 
-* **MaxClusterStabilizationTimeout**: ValidationFailedEvent を生成する前に、クラスターが正常になるまで待機する最大時間。 この待機は、回復中のクラスターの負荷を軽減するためのものです。 次のチェックが実行されます。
+* **MaxClusterStabilizationTimeout**:ValidationFailedEvent を生成する前に、クラスターが正常になるまで待機する最大時間。 この待機は、回復中のクラスターの負荷を軽減するためのものです。 次のチェックが実行されます。
   * クラスターの正常性に問題がないかどうか
   * サービスの正常性に問題がないかどうか
   * サービス パーティションの対象となるレプリカ セットのサイズに達しているかどうか
   * InBuild レプリカが存在しないかどうか
-* **MaxConcurrentFaults**: それぞれの反復で誘発される同時実行のエラーの最大数。 数が多いほど、混乱が激しくなり、クラスターで経験するフェイルオーバーと状態遷移の組み合わせが複雑になります。 
+* **MaxConcurrentFaults**:それぞれの反復で誘発される同時実行のエラーの最大数。 数が多いほど、混乱が激しくなり、クラスターで経験するフェイルオーバーと状態遷移の組み合わせが複雑になります。 
 
 > [!NOTE]
 > *MaxConcurrentFaults* の値がどれだけ大きいかに関係なく、混乱では、外部障害が存在しない場合、クォーラム損失またはデータ損失は発生しません。
 >
 
-* **EnableMoveReplicaFaults**: プライマリ レプリカまたはセカンダリ レプリカの移動を発生させる障害を有効または無効にします。 これらの障害は、既定で有効になっています。
-* **WaitTimeBetweenIterations**: 反復の間の待機時間。 つまり、一巡の障害を実行し、クラスターの正常性の対応する検証を完了した後に混乱が一時停止する時間の長さ。 値が大きいほど、平均障害挿入率は低くなります。
-* **WaitTimeBetweenFaults**: 1 つの反復における 2 つの連続する障害間の待機時間。 値が大きいほど、障害の同時実行 (または重複) が少なくなります。
-* **ClusterHealthPolicy**: クラスターの正常性ポリシーは、混乱の反復の間にクラスターの正常性の検証に使用されます。 クラスターの正常性に問題がある場合または障害の実行中に予期しない例外が発生した場合は、混乱は、クラスターが回復する時間を提供するために、次の正常性チェックの前に 30 分間待機します。
-* **コンテキスト**: (文字列, 文字列) 型のキーと値のペアのコレクション。 マップを使用して、混乱の実行に関する情報を記録できます。 このようなペアが 100 を超えることはできませんし、各文字列 (キーまたは値) の最大は 4095 文字です。 このマップは、オプションで特定の実行に関するコンテキストを格納するために、混乱実行を開始するユーザーによって設定されます。
-* **ChaosTargetFilter**: このフィルターを使用して、混乱による障害のターゲットを特定のノードの種類またはアプリケーション インスタンスに限定することができます。 ChaosTargetFilter が使用されない場合、混乱による障害のターゲットはすべてのクラスターのエンティティになります。 ChaosTargetFilter が使用された場合、ChaosTargetFilter の指定に合致するエンティティのみに、混乱による障害が発生します。 NodeTypeInclusionList と ApplicationInclusionList では、和集合セマンティクスのみが可能です。 つまり、NodeTypeInclusionList と ApplicationInclusionList の積集合を指定することはできません。 たとえば、"アプリケーションが特定のノードの種類上にある場合のみ障害を発生させる" と指定することはできません。 エンティティが NodeTypeInclusionList または ApplicationInclusionList のどちらかに含まれている時点で、ChaosTargetFilter を使用してエンティティを除外することはできません。 applicationX が ApplicationInclusionList に含まれていない場合でも、そのアプリケーションが NodeTypeInclusionList に含まれている nodeTypeY のノード上にあるという理由で、何らかの混乱の反復処理中にそのアプリケーションで障害が発生する可能性があります。 NodeTypeInclusionList と ApplicationInclusionList の両方が null または空の場合は、ArgumentException がスローされます。
-    * **NodeTypeInclusionList**: 混乱による障害のターゲットとなるノードの種類の一覧。 すべての種類の障害 (ノードの再起動、コード パッケージの再起動、レプリカの削除、レプリカの再起動、プライマリの移動、およびセカンダリの移動) は、指定されたノードの種類のノードで有効になります。 ノードの種類 (たとえば NodeTypeX) が NodeTypeInclusionList に含まれていない場合、ノード レベルの障害 (ノードの再起動など) が NodeTypeX のノードで有効になることはありませんが、ApplicationInclusionList 内のアプリケーションが NodeTypeX のノードに存在する場合、コード パッケージ障害とレプリカ障害が NodeTypeX のノードで有効になる可能性があります。 この一覧には最大 100 種のノードの種類を含めることができ、この数を増やすには、MaxNumberOfNodeTypesInChaosTargetFilter 構成をアップグレードする必要があります。
-    * **ApplicationInclusionList**: 混乱による障害のターゲットとなるアプリケーションの URI の一覧。 指定されたアプリケーションのサービスに属すすべてのレプリカは、混乱によって誘発されるレプリカ障害 (レプリカの再起動、レプリカの削除、プライマリの移動、およびセカンダリの移動) を受け入れます。 コード パッケージがこれらのアプリケーションのレプリカをホストしている場合のみ、混乱は、コード パッケージを再起動できます。 アプリケーションがこの一覧に含まれていない場合でも、NodeTypeInclusionList に含まれるノードの種類のノード上にアプリケーションが存在する場合は、混乱の反復処理によって障害が発生する可能性があります。 ただし、applicationX が配置制約によって nodeTypeY に関連付けられているときに、applicationX が ApplicationInclusionList になく、nodeTypeY が NodeTypeInclusionList にない場合、applicationX で障害が発生することはありません。 この一覧には最大 1,000 個のアプリケーションの名前を含めることができ、この数を増やすには、MaxNumberOfApplicationsInChaosTargetFilter 構成をアップグレードする必要があります。
+* **EnableMoveReplicaFaults**:プライマリ レプリカまたはセカンダリ レプリカの移動を発生させる障害を有効または無効にします。 これらの障害は、既定で有効になっています。
+* **WaitTimeBetweenIterations**:反復の間の待機時間。 つまり、一巡の障害を実行し、クラスターの正常性の対応する検証を完了した後に混乱が一時停止する時間の長さ。 値が大きいほど、平均障害挿入率は低くなります。
+* **WaitTimeBetweenFaults**:1 つの反復における 2 つの連続する障害間の待機時間。 値が大きいほど、障害のコンカレンシー (または重複) が少なくなります。
+* **ClusterHealthPolicy**:クラスターの正常性ポリシーは、混乱の反復の間にクラスターの正常性の検証に使用されます。 クラスターの正常性に問題がある場合または障害の実行中に予期しない例外が発生した場合は、混乱は、クラスターが回復する時間を提供するために、次の正常性チェックの前に 30 分間待機します。
+* **コンテキスト**:(文字列, 文字列) 型のキーと値のペアのコレクション。 マップを使用して、混乱の実行に関する情報を記録できます。 このようなペアが 100 を超えることはできませんし、各文字列 (キーまたは値) の最大は 4095 文字です。 このマップは、オプションで特定の実行に関するコンテキストを格納するために、混乱実行を開始するユーザーによって設定されます。
+* **ChaosTargetFilter**:このフィルターを使用して、混乱による障害のターゲットを特定のノードの種類またはアプリケーション インスタンスに限定することができます。 ChaosTargetFilter が使用されない場合、混乱による障害のターゲットはすべてのクラスターのエンティティになります。 ChaosTargetFilter が使用された場合、ChaosTargetFilter の指定に合致するエンティティのみに、混乱による障害が発生します。 NodeTypeInclusionList と ApplicationInclusionList では、和集合セマンティクスのみが可能です。 つまり、NodeTypeInclusionList と ApplicationInclusionList の積集合を指定することはできません。 たとえば、"アプリケーションが特定のノードの種類上にある場合のみ障害を発生させる" と指定することはできません。 エンティティが NodeTypeInclusionList または ApplicationInclusionList のどちらかに含まれている時点で、ChaosTargetFilter を使用してエンティティを除外することはできません。 applicationX が ApplicationInclusionList に含まれていない場合でも、そのアプリケーションが NodeTypeInclusionList に含まれている nodeTypeY のノード上にあるという理由で、何らかの混乱の反復処理中にそのアプリケーションで障害が発生する可能性があります。 NodeTypeInclusionList と ApplicationInclusionList の両方が null または空の場合は、ArgumentException がスローされます。
+    * **NodeTypeInclusionList**:混乱による障害のターゲットとなるノードの種類の一覧。 すべての種類の障害 (ノードの再起動、コード パッケージの再起動、レプリカの削除、レプリカの再起動、プライマリの移動、およびセカンダリの移動) は、指定されたノードの種類のノードで有効になります。 ノードの種類 (たとえば NodeTypeX) が NodeTypeInclusionList に含まれていない場合、ノード レベルの障害 (ノードの再起動など) が NodeTypeX のノードで有効になることはありませんが、ApplicationInclusionList 内のアプリケーションが NodeTypeX のノードに存在する場合、コード パッケージ障害とレプリカ障害が NodeTypeX のノードで有効になる可能性があります。 この一覧には最大 100 種のノードの種類を含めることができ、この数を増やすには、MaxNumberOfNodeTypesInChaosTargetFilter 構成をアップグレードする必要があります。
+    * **ApplicationInclusionList**:混乱による障害のターゲットとなるアプリケーションの URI の一覧。 指定されたアプリケーションのサービスに属すすべてのレプリカは、混乱によって誘発されるレプリカ障害 (レプリカの再起動、レプリカの削除、プライマリの移動、およびセカンダリの移動) を受け入れます。 コード パッケージがこれらのアプリケーションのレプリカをホストしている場合のみ、混乱は、コード パッケージを再起動できます。 アプリケーションがこの一覧に含まれていない場合でも、NodeTypeInclusionList に含まれるノードの種類のノード上にアプリケーションが存在する場合は、混乱の反復処理によって障害が発生する可能性があります。 ただし、applicationX が配置制約によって nodeTypeY に関連付けられているときに、applicationX が ApplicationInclusionList になく、nodeTypeY が NodeTypeInclusionList にない場合、applicationX で障害が発生することはありません。 この一覧には最大 1,000 個のアプリケーションの名前を含めることができ、この数を増やすには、MaxNumberOfApplicationsInChaosTargetFilter 構成をアップグレードする必要があります。
 
 ## <a name="how-to-run-chaos"></a>混乱を実行する方法
 

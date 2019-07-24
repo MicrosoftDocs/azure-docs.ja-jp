@@ -8,14 +8,14 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1c2294004245e0ef64b9b708a5b57ec0d34cc45f
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 95e10f4727de239016a2e3c88571e74267e3967b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321990"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482989"
 ---
-# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure のセキュリティとコンプライアンスのブループリント: UK OFFICIAL ワークロード向け PaaS Web アプリケーション ホスティング
+# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure のセキュリティとコンプライアンスのブループリント:UK OFFICIAL ワークロード向け PaaS Web アプリケーション ホスティング
 
 ## <a name="azure-security-and-compliance-blueprints"></a>Azure のセキュリティとコンプライアンスのブループリント
 
@@ -29,21 +29,21 @@ Azure Blueprint は、認定またはコンプライアンスの要件がある�
 
 このアーキテクチャは、Azure [PaaS (サービスとしてのプラットフォーム)](https://azure.microsoft.com/overview/what-is-paas/) コンポーネントを使用しています。これによって、ソフトウェア ライセンスの購入、基礎となるアプリケーション インフラストラクチャの管理、ミドルウェアまたは開発ツールの管理、およびその他のリソースの費用と複雑さを回避することができます。 お客様は、自社で開発したアプリケーションとサービスを管理し、ビジネス価値の実現に集中できます。一方、Microsoft Azure が仮想マシン、ストレージ、ネットワークなどの Azure リソースを管理するため、インフラストラクチャ管理の[責任分担](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility)は Azure プラットフォームの方が重くなります。 [Azure App Services](https://azure.microsoft.com/services/app-service/) では、自動スケール、高可用性が実現されるほか、Windows と Linux がサポートされています。さらに、既定のサービスとして GitHub、Azure DevOps、または任意の Git リポジトリからの自動デプロイが可能になります。 App Services を使用すると、インフラストラクチャ管理のオーバーヘッドがないので、開発者はビジネス価値の実現に集中できます。 画期的な Java、PHP、Node.js、Python、HTML、または C# Web アプリケーションを構築することも、既存のクラウドまたはオンプレミス Web アプリケーションを Azure App Services に移行することもできます (ただし、パフォーマンスを確認するための徹底的なデュー デリジェンスとテストは必要です)。
 
-このブループリントは、公的機関およびバック オフィスのユーザー向けに、セキュリティで保護された基盤である[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/)の Web ベース インターフェイスを提供することに焦点を当てています。 このブループリントの設計シナリオでは、パブリック ユーザーが機密データを安全に提出、表示、管理できる、また、バック オフィスや政府機関のオペレーターがパブリック ユーザーが提出した機密データを安全に処理できる、Azure ホステッド Web ベース サービスの使用を考慮しています。 このシナリオには、次のようなユース ケースがあります。
+このブループリントは、公的機関およびバックオフィスのユーザー向けに、セキュリティで保護された基盤である[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/)の Web ベース インターフェイスを提供することに焦点を当てています。 このブループリントの設計シナリオでは、パブリック ユーザーが機密データを安全に提出、表示、管理できる、また、バック オフィスや政府機関のオペレーターがパブリック ユーザーが提出した機密データを安全に処理できる、Azure ホステッド Web ベース サービスの使用を考慮しています。 このシナリオには、次のようなユース ケースがあります。
 
 - 納税申告書を提出するユーザーと、提出を処理する政府機関のオペレーター。
-- Web ベースのアプリケーションを介してサービスを要求するユーザーと、そのサービスを検証および提供するバック オフィス ユーザー。または
+- Web ベースのアプリケーションを介してサービスを要求するユーザーと、そのサービスを検証および提供するバックオフィス ユーザー。または
 - 政府機関のサービスに関するパブリック ドメイン ヘルプ情報を探して閲覧するユーザー。
 
 このブループリントは、[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) テンプレートと Azure Command Line Interface スクリプトを使用して、英国立サーバー セキュリティ センター (NCSC) の 14 の[クラウド セキュリティに関する原則](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)と Center for Internet Security (CIS) の[重要なセキュリティ コントロール](https://www.cisecurity.org/critical-controls.cfm)に準拠する環境をデプロイします。 NCSC は、顧客がそのクラウド セキュリティに関する原則を使用してサービスのセキュリティ プロパティを評価し、顧客とサプライヤー間での責任分担の理解に役立てるよう推奨しています。 Microsoft では、お客様が責任の分担をより理解できるように、これらの各原則に関する情報を提供しています。 このアーキテクチャおよび対応する Azure Resource Manager テンプレートは、Microsoft ホワイト ペーパー「[14 Cloud Security Controls for UK cloud Using Microsoft Azure (Microsoft Azure を使用した英国クラウド向けの 14 のクラウド セキュリティ コントロール)」](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1)でサポートされています。 このアーキテクチャは NCSC によってレビューされています。また、英国 NCSC の 14 のクラウド セキュリティに関する原則に準拠しています。そのため、公的機関は、グローバルに、また英国で Microsoft Azure クラウドのクラウドベース サービスを使用してコンプライアンス義務を果たす能力を迅速に実現できます。 このテンプレートは、ワークロードのインフラストラクチャをデプロイします。 お客様は、アプリケーション コードとビジネス層およびデータ層のサポート ソフトウェアをインストールし、構成する必要があります。 詳しいデプロイ手順については、[こちら](https://aka.ms/ukofficial-paaswa-repo/)をご覧ください。
 
 このブループリントは基盤のアーキテクチャです。 お客様は、OFFICIAL 分類の Web ベースの ワークロードの基礎としてこのブループリントを使用し、それぞれの要件に合わせてテンプレートとリソースを拡張することができます。 このブループリントは、Web ベースのワークロードをホスティングする [IaaS (サービスとしてのインフラストラクチャ)](https://azure.microsoft.com/overview/what-is-iaas/) と PaaS 両方の実装の選択肢をお客様に提供するために、[UK-OFFICAL Three-Tier IaaS Web Applications ブループリント](https://aka.ms/ukofficial-iaaswa)の原則に基づいて構築されています。
 
-このブループリントをデプロイするには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、「Azure を使ってみる」で無料ですばやく簡単にサインアップできます。 デプロイ手順については、[ここ](https://aka.ms/ukofficial-paaswa-repo/)をクリックしてください。
+このブループリントをデプロイするには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、無料ですばやく簡単にサインアップできます:Azure を使ってみる。 デプロイ手順については、[ここ](https://aka.ms/ukofficial-paaswa-repo/)をクリックしてください。
 
 ## <a name="architecture-and-components"></a>アーキテクチャとコンポーネント
 
-このブループリントでは、UK OFFICIAL ワークロードをサポートする Web アプリケーション ホスティング ソリューションを Azure クラウド環境で提供しています。 このアーキテクチャは、サービス機能として Azure プラットフォームを活用するセキュリティで保護された環境を実現しています。 この環境内には、2 つの App Service Web アプリ (パブリック ユーザー用とバック オフィス ユーザー用) と、Web フロント エンド向けのビジネス サービスを提供する API アプリケーション層がデプロイされています。 Azure SQL Database は、アプリケーションのマネージド リレーショナル データ ストアとしてデプロイされています。 このプラットフォームの外部からこれらのコンポーネントへの接続と、これらすべてのコンポーネント間の接続は、TLS 1.2 で暗号化され、Azure Active Directory によって認証されたアクセス権を使用することで、送信時のデータの機密性を保護しています。
+このブループリントでは、UK OFFICIAL ワークロードをサポートする Web アプリケーション ホスティング ソリューションを Azure クラウド環境で提供しています。 このアーキテクチャは、サービス機能として Azure プラットフォームを活用するセキュリティで保護された環境を実現しています。 この環境内には、2 つの App Service Web アプリ (パブリック ユーザー用とバックオフィス ユーザー用) と、Web フロント エンド向けのビジネス サービスを提供する API アプリケーション層がデプロイされています。 Azure SQL Database は、アプリケーションのマネージド リレーショナル データ ストアとしてデプロイされています。 このプラットフォームの外部からこれらのコンポーネントへの接続と、これらすべてのコンポーネント間の接続は、TLS 1.2 で暗号化され、Azure Active Directory によって認証されたアクセス権を使用することで、送信時のデータの機密性を保護しています。
 
 ![UK OFFICIAL ワークロード向け PaaS Web アプリケーション ホスティングの参照アーキテクチャ図](images/ukofficial-paaswa-architecture.png?raw=true "UK OFFICIAL ワークロード向け PaaS Web アプリケーション ホスティングの参照アーキテクチャ図")
 
@@ -57,9 +57,8 @@ Azure Blueprint は、認定またはコンプライアンスの要件がある�
 - API アプリ
 - Azure DNS
 - Key Vault
-- Azure Monitor
+- Azure Monitor (ログ)
 - Application Insights
-- Log Analytics
 - Azure Resource Manager
 - Azure Security Center
 - Azure SQL Database
@@ -73,13 +72,13 @@ Azure Blueprint は、認定またはコンプライアンスの要件がある�
 
 #### <a name="identity-and-authentication"></a>ID と認証
 
-このブループリントは、ディレクトリおよび ID 管理サービスを使用してリソースへのアクセスを確実に保護しています。 このアーキテクチャは、[セキュリティ境界としての ID](https://docs.microsoft.com/azure/security/security-paas-deployments#identity-as-the-primary-security-perimeter) をフルに活用しています。 
+このブループリントは、ディレクトリおよび ID 管理サービスを使用してリソースへのアクセスを確実に保護しています。 このアーキテクチャは、[セキュリティ境界としての ID](https://docs.microsoft.com/azure/security/security-paas-deployments) をフルに活用しています。 
 
 次のテクノロジによって、Azure 環境に ID 管理機能が提供されます。
 
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) は、マイクロソフトが提供する、マルチテナントに対応したクラウドベースのディレクトリおよび ID の管理サービスです。 ソリューションのすべてのユーザー (SQL Database にアクセスするユーザーを含む) は、Azure Active Directory で作成されています。
 - Web アプリケーションを使用するオペレーターと Azure リソースの管理機能へのアクセスに対する認証には Azure AD が使用されます。 詳細については、「[Azure Active Directory とアプリケーションの統合](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)」をご覧ください。
-- データベース列の暗号化では、アプリケーションを Azure SQL Database に対して認証するために Azure AD が使用されます。 詳細については、「[Always Encrypted: Protect sensitive data in SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)」(Always Encrypted: SQL Database で機密データを保護する) をご覧ください。
+- データベース列の暗号化では、アプリケーションを Azure SQL Database に対して認証するために Azure AD が使用されます。 詳細については、[Always Encrypted:SQL データベースの機密データの保護](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)に関するページを参照してください。
 - パブリック アクセス用に、Web アプリケーションを使用する一般市民が構成されています。 Active Directory またはソーシャル ネットワーク ID プロバイダーを介してアカウントの作成と認証を実行する場合、必要に応じて [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) を統合できます。
 - [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) は、脆弱性と危険なアカウントを検出し、組織の ID のセキュリティ体制を強化する推奨事項を提供し、組織の ID に関連する疑わしいアクションに対する自動応答を構成します。さらに、疑わしいインシデントを調査し、適切なアクションを実行してそれらを解決します。
 - [Azure のロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) は、Azure の厳密に対象を絞ったアクセス管理を実現します。 サブスクリプションへのアクセスはサブスクリプション管理者に制限され、Azure Key Vault へのアクセスは、重要な管理アクセス権が必要なユーザーのみに制限されます。
@@ -102,17 +101,17 @@ Azure Blueprint は、認定またはコンプライアンスの要件がある�
 
 #### <a name="azure-app-service"></a>Azure App Service
 
-Azure Web Apps は、Java、PHP、Node.js Python、HTML、および C# で開発された Web アプリケーション向けにフル マネージド Web ホスティング環境を用意しています。インフラストラクチャを管理する必要はありません。 自動スケールと高可用性が実現されるほか、Windows と Linux の両方がサポートされています。さらに、[Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/)または任意の Git ベースのリポジトリからの自動デプロイが可能になります。
+Azure App Service は、Java、PHP、Node.js Python、HTML、および C# で開発された Web アプリケーション向けにフル マネージド Web ホスティング環境を用意しています。インフラストラクチャを管理する必要はありません。 自動スケールと高可用性が実現されるほか、Windows と Linux の両方がサポートされています。さらに、[Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/)または任意の Git ベースのリポジトリからの自動デプロイが可能になります。
 
-App Service は [ISO、SOC、および PCI](https://www.microsoft.com/TrustCenter/) に準拠しています。また、ユーザー認証には、[Azure Active Directory](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication) またはソーシャル ログイン ([Google](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-google-authentication)、[Facebook](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-facebook-authentication)、[Twitter](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-twitter-authentication)、および [Microsoft 認証](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-microsoft-authentication)) を使用できます。
+App Service は [ISO、SOC、および PCI](https://www.microsoft.com/TrustCenter/) に準拠しています。また、ユーザー認証には、[Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) またはソーシャル ログイン ([Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google)、[Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook)、[Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter)、および [Microsoft 認証](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft)) を使用できます。
 
-Basic、Standard、および Premium プランは運用ワークロード向けで、専用の仮想マシン インスタンスで稼働します。 各インスタンスでは、複数のアプリケーションとドメインがサポートされます。 App Service は、必要に応じて信頼できる IP アドレスへのトラフィックをセキュリティで保護するために、[IP アドレス制限](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)もサポートしています。また、[Key Vault](https://azure.microsoft.com/services/key-vault/) や [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) などの PaaS サービスに安全に接続するために、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) もサポートしています。 さらに高度なセキュリティが必要な場合は Isolated プランをご利用ください。このプランは、プライベートな専用の Azure 環境内のアプリをホストするため、オンプレミスのネットワークとのセキュリティ保護された接続や、追加のパフォーマンスおよびスケールが必要なアプリに最適です。
+Basic、Standard、および Premium プランは運用ワークロード向けで、専用の仮想マシン インスタンスで稼働します。 各インスタンスでは、複数のアプリケーションとドメインがサポートされます。 App Service は、必要に応じて信頼できる IP アドレスへのトラフィックをセキュリティで保護するために、[IP アドレス制限](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)もサポートしています。また、[Key Vault](https://azure.microsoft.com/services/key-vault/) や [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) などの PaaS サービスに安全に接続するために、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/app-service/overview-managed-identity) もサポートしています。 さらに高度なセキュリティが必要な場合は Isolated プランをご利用ください。このプランは、プライベートな専用の Azure 環境内のアプリをホストするため、オンプレミスのネットワークとのセキュリティ保護された接続や、追加のパフォーマンスおよびスケールが必要なアプリに最適です。
 
 このテンプレートは、次の App Service 機能をデプロイします。
 
-- [Standard](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview) App Service プラン レベル
-- 複数の Web アプリケーション [デプロイ スロット](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing): 開発、プレビュー、QA、UAT、そして当然ながら運用 (既定スロット)。
-- [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) に接続するための [Azure リソースのマネージド ID](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) ([Azure SQL Database](https://azure.microsoft.com/services/sql-database/) へのアクセスを提供する場合にも使用できます) 
+- [Standard](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) App Service プラン レベル
+- 複数の Azure App Service [デプロイ スロット](https://docs.microsoft.com/azure/app-service/deploy-staging-slots):開発、プレビュー、QA、UAT、そして当然ながら運用 (既定スロット)。
+- [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) に接続するための [Azure リソースのマネージド ID](https://docs.microsoft.com/azure/app-service/overview-managed-identity) ([Azure SQL Database](https://azure.microsoft.com/services/sql-database/) へのアクセスを提供する場合にも使用できます) 
 - パフォーマンスを監視する [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-azure-web-apps) との統合
 - [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) 
 - メトリック [アラート](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) 
@@ -120,11 +119,11 @@ Basic、Standard、および Premium プランは運用ワークロード向け�
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
 
-SQL Database は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Microsoft Azure における汎用リレーショナル データベース管理サービスです。 SQL Database には、マネージド シングル SQL データベース、[エラスティック プール](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)内のマネージド SQL データベース、および SQL [マネージド インスタンス](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) (パブリック プレビュー) が用意されています。 これによって、[動的にスケーラブルなパフォーマンス])https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers)を実現しています。また、徹底的な解析的分析とレポートを行うための[列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)や、極度のトランザクション処理を行うための[インメモリ OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory) などのオプションが用意されています。 SQL コード ベースに対するパッチの適用と更新を Microsoft がすべてシームレスで処理するため、基になるインフラストラクチャの管理はすべて不要になります。
+SQL Database は、リレーショナル データ、JSON、空間、XML などの構造をサポートする、Microsoft Azure における汎用リレーショナル データベース管理サービスです。 SQL Database には、マネージド シングル SQL データベース、[エラスティック プール](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)内のマネージド SQL データベース、および SQL [マネージド インスタンス](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) (パブリック プレビュー) が用意されています。 それは、[動的にスケーラブルなパフォーマンス](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers)を提供し、徹底的な解析的分析とレポートを行うための[列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)や、極度のトランザクション処理を行うための[インメモリ OLTP](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory) などのオプションを備えています。 SQL コード ベースに対するパッチの適用と更新を Microsoft がすべてシームレスで処理するため、基になるインフラストラクチャの管理はすべて不要になります。
 
 このブループリントの Azure SQL Database
 
-Azure SQL Database インスタンスは、次のデータベース セキュリティ対策を使用します。
+Azure SQL データベース インスタンスは、次のデータベース セキュリティ対策を使用します。
 
 - [サーバー レベルおよびデータベース レベルのファイアウォール ルール](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)、または[仮想ネットワーク ルール](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)を使用した[仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
 - [透過的なデータ暗号化](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)によって、悪意のあるアクティビティの脅威から Azure SQL Database と Azure Data Warehouse の保護を支援します。 データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、アプリケーションに変更を加えずに暗号化を行うことができます。
@@ -163,17 +162,17 @@ Azure Storage のセキュリティ保護の詳細については、[セキュ�
 
 #### <a name="azure-key-vault-in-this-blueprint"></a>このブループリントの Azure Key Vault
 
-- ストレージ アクセス キーを保持し、Web アプリを使用するユーザーの[マネージド ID](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) に読み取りアクセス権を付与します。
+- ストレージ アクセス キーを保持し、Web アプリを使用するユーザーの[マネージド ID](https://docs.microsoft.com/azure/app-service/overview-managed-identity) に読み取りアクセス権を付与します。
 - SQL Server DBA のパスワードを (別のコンテナー内に) 保持します。
 - 診断ログ
 
 ### <a name="monitoring-logging-and-audit"></a>監視、ログ、監査
 
-#### <a name="log-analytics"></a>Log Analytics
+#### <a name="azure-monitor-logs"></a>Azure Monitor ログ
 
-[Log Analytics](https://azure.microsoft.com/services/log-analytics/) は Azure のサービスであり、クラウドおよびオンプレミスの環境内にあるリソースで生成されたデータを収集して分析するのに役立ちます。
+[Azure Monitor ログ](https://azure.microsoft.com/services/log-analytics/)は Azure のサービスであり、ご利用のクラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータを収集して分析するのに役立ちます。
 
-#### <a name="log-analytics-in-this-blueprint"></a>このブループリントの Log Analytics
+#### <a name="azure-monitor-logs-in-this-blueprint"></a>このブループリントの Azure Monitor ログ
 
 - SQL の評価
 - Key Vault の診断
@@ -182,7 +181,7 @@ Azure Storage のセキュリティ保護の詳細については、[セキュ�
 
 #### <a name="application-insights"></a>Application Insights
 
-[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスは、Web アプリケーションをリアルタイムで監視するために使用され、パフォーマンスの異常を自動的に検出する機能、パフォーマンスの分析機能、問題の診断機能があり、ユーザーのアプリの操作方法を理解できます。 Application Insights は、.NET、Node.js、J2EE など、オンプレミスまたはクラウドでホストされているプラットフォームにデプロイできます。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。
+[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスは、Web アプリケーションをリアルタイムで監視するために使用され、パフォーマンスの異常を自動的に検出する機能、パフォーマンスの分析機能、問題の診断機能があり、ユーザーのアプリの操作方法を理解できます。 Application Insights は、.NET、Node.js、Java EE など、オンプレミスまたはクラウドでホストされているプラットフォームにデプロイできます。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。
 
 #### <a name="application-insights-in-this-blueprint"></a>このブループリントの Application Insights
 
@@ -220,7 +219,7 @@ Crown Commercial Service (政府による商業および調達アクティビテ
 
 このブループリントは、英国国立サイバー セキュリティ センター (NCSC) によってレビューされ、NCSC 14 クラウド セキュリティ原則に適合しています。
 
-自動化テンプレートは、英国の Customer Success Unit Azure Cloud Solution Architect チームと Microsoft パートナーの [Ampliphae](http://www.ampliphae.com/) によってテストされています。
+自動化テンプレートは、英国の Customer Success Unit Azure Cloud Solution Architect チームと Microsoft パートナーの [Ampliphae](https://www.ampliphae.com/) によってテストされています。
 
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
@@ -230,9 +229,9 @@ Crown Commercial Service (政府による商業および調達アクティビテ
 デプロイには 3 つのアプローチが用意されています。シンプルな "express (高速)" バージョンの [Azure CLI 2](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) は、迅速にテスト環境を構築するために適しています。パラメーター化された [Azure CLI 2](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) は、ワークロード環境に合わせてより大規模な構成を提供するアプローチです。Azure portal ベースのデプロイでは、オペレーターが Azure portal を使用してデプロイ パラメーターを指定できます。 
 
 1.  [この](https://aka.ms/ukofficial-paaswa-repo) GitHub リポジトリをローカル ワークステーションに複製するかダウンロードします。
-2.  [方法 1: Azure CLI 2 (Express バージョン)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) に関するページを確認し、用意されているコマンドを実行します。
-3.  [方法 1a: Azure CLI 2 (スクリプト引数を使用したデプロイの構成)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) に関するページを確認し、用意されているコマンドを実行します。
-4.  [方法 2: Azure portal のデプロイ プロセス](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process)に関するページを確認し、記載されているコマンドを実行します。
+2.  [方法 1:Azure CLI 2 (Express バージョン)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) に関するページを確認し、用意されているコマンドを実行します。
+3.  [方法 1a:Azure CLI 2 (スクリプト引数を使用したデプロイの構成)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) に関するページを確認し、用意されているコマンドを実行します
+4.  [方法 2:Azure portal のデプロイ プロセス](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process)に関するページを確認し、記載されているコマンドを実行します
 
 ## <a name="guidance-and-recommendations"></a>ガイダンスと推奨事項
 

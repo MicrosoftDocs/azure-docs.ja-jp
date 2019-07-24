@@ -3,8 +3,8 @@ title: コンテナー内の .NET アプリを Azure Service Fabric にデプロ
 description: Visual Studio を使って既存の .NET アプリケーションをコンテナーに格納し、Service Fabric 内のコンテナーをローカルでデバッグする方法を紹介します。 コンテナーに格納されたアプリケーションは Azure のコンテナー レジストリにプッシュされ、Service Fabric クラスターにデプロイされます。 Azure にデプロイされたアプリケーションは、データの保持に Azure SQL DB を使用します。
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,15 +13,15 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
-ms.author: twhitney
-ms.openlocfilehash: 2b53b8a97f4e794110dc482db09a0d376247a678
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.author: aljo
+ms.openlocfilehash: 33f742c7de340df41f5d946c891e9896d7d2a012
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299641"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59048471"
 ---
-# <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>チュートリアル: Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする
+# <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>チュートリアル:Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする
 
 このチュートリアルでは、既存の ASP.NET アプリケーションをコンテナーに格納して Service Fabric アプリケーションとしてパッケージ化する方法を説明します。  ローカルの Service Fabric 開発クラスターでコンテナーを実行した後、アプリケーションを Azure にデプロイします。  アプリケーションは、[Azure SQL Database](/azure/sql-database/sql-database-technical-overview) にデータを保持します。 
 
@@ -32,6 +32,9 @@ ms.locfileid: "51299641"
 > * Azure SQL データベースの作成
 > * Azure コンテナー レジストリの作成
 > * Azure への Service Fabric アプリケーションのデプロイ
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -67,7 +70,7 @@ Microsoft では、[Azure SQL Database](/azure/sql-database/sql-database-get-sta
 $subscriptionID="<subscription ID>"
 
 # Sign in to your Azure account and select your subscription.
-Login-AzureRmAccount -SubscriptionId $subscriptionID 
+Login-AzAccount -SubscriptionId $subscriptionID 
 
 # The data center and resource name for your resources.
 $dbresourcegroupname = "fabrikam-fiber-db-group"
@@ -88,21 +91,21 @@ $clientIP = "<client IP>"
 $databasename = "call-center-db"
 
 # Create a new resource group for your deployment and give it a name and a location.
-New-AzureRmResourceGroup -Name $dbresourcegroupname -Location $location
+New-AzResourceGroup -Name $dbresourcegroupname -Location $location
 
 # Create the SQL server.
-New-AzureRmSqlServer -ResourceGroupName $dbresourcegroupname `
+New-AzSqlServer -ResourceGroupName $dbresourcegroupname `
     -ServerName $servername `
     -Location $location `
     -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $adminlogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
 
 # Create the firewall rule to allow your development computer to access the server.
-New-AzureRmSqlServerFirewallRule -ResourceGroupName $dbresourcegroupname `
+New-AzSqlServerFirewallRule -ResourceGroupName $dbresourcegroupname `
     -ServerName $servername `
     -FirewallRuleName "AllowClient" -StartIpAddress $clientIP -EndIpAddress $clientIP
 
 # Creeate the database in the server.
-New-AzureRmSqlDatabase  -ResourceGroupName $dbresourcegroupname `
+New-AzSqlDatabase  -ResourceGroupName $dbresourcegroupname `
     -ServerName $servername `
     -DatabaseName $databasename `
     -RequestedServiceObjectiveName "S0"
@@ -136,9 +139,9 @@ $acrresourcegroupname = "fabrikam-acr-group"
 $location = "southcentralus"
 $registryname="fabrikamregistry$(Get-Random)"
 
-New-AzureRmResourceGroup -Name $acrresourcegroupname -Location $location
+New-AzResourceGroup -Name $acrresourcegroupname -Location $location
 
-$registry = New-AzureRMContainerRegistry -ResourceGroupName $acrresourcegroupname -Name $registryname -EnableAdminUser -Sku Basic
+$registry = New-AzContainerRegistry -ResourceGroupName $acrresourcegroupname -Name $registryname -EnableAdminUser -Sku Basic
 ```
 
 ## <a name="create-a-service-fabric-cluster-on-azure"></a>Azure に Service Fabric クラスターを作成する
@@ -164,7 +167,7 @@ Service Fabric アプリケーションは、ネットワークに接続され�
 
     a. **[クラスター名]** フィールドでクラスターの名前を指定します。また、使用するサブスクリプションと場所を指定します。 クラスター リソース グループの名前をメモしておいてください。
 
-    b. 省略可能: ノードの数を変更できます。 既定では、Service Fabric のシナリオをテストするのに最低限必要な 3 ノードになっています。
+    b. 省略可能:ノードの数を変更できます。 既定では、Service Fabric のシナリオをテストするのに最低限必要な 3 ノードになっています。
 
     c. **[証明書]** タブを選択します。このタブでは、クラスターの証明書をセキュリティで保護するために使用されるパスワードを入力します。 この証明書は、クラスターのセキュリティ保護に役立ちます。 また、証明書を保存したい場所にパスを変更することもできます。 アプリケーションをクラスターに発行するうえで必要な手順であるため、Visual Studio では証明書を自動でインポートすることもできます。
 
@@ -185,20 +188,20 @@ Service Fabric アプリケーションは、ネットワークに接続され�
 ```powershell
 # Create a virtual network service endpoint
 $clusterresourcegroup = "<cluster resource group>"
-$resource = Get-AzureRmResource -ResourceGroupName $clusterresourcegroup -ResourceType Microsoft.Network/virtualNetworks | Select-Object -first 1
+$resource = Get-AzResource -ResourceGroupName $clusterresourcegroup -ResourceType Microsoft.Network/virtualNetworks | Select-Object -first 1
 $vnetName = $resource.Name
 
 Write-Host 'Virtual network name: ' $vnetName 
 
 # Get the virtual network by name.
-$vnet = Get-AzureRmVirtualNetwork `
+$vnet = Get-AzVirtualNetwork `
   -ResourceGroupName $clusterresourcegroup `
   -Name              $vnetName
 
 Write-Host "Get the subnet in the virtual network:"
 
 # Get the subnet, assume the first subnet contains the Service Fabric cluster.
-$subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet | Select-Object -first 1
+$subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $vnet | Select-Object -first 1
 
 $subnetName = $subnet.Name
 $subnetID = $subnet.Id
@@ -207,21 +210,21 @@ $addressPrefix = $subnet.AddressPrefix
 Write-Host "Subnet name: " $subnetName " Address prefix: " $addressPrefix " ID: " $subnetID
 
 # Assign a Virtual Service endpoint 'Microsoft.Sql' to the subnet.
-$vnet = Set-AzureRmVirtualNetworkSubnetConfig `
+$vnet = Set-AzVirtualNetworkSubnetConfig `
   -Name            $subnetName `
   -AddressPrefix   $addressPrefix `
   -VirtualNetwork  $vnet `
-  -ServiceEndpoint Microsoft.Sql | Set-AzureRmVirtualNetwork
+  -ServiceEndpoint Microsoft.Sql | Set-AzVirtualNetwork
 
 $vnet.Subnets[0].ServiceEndpoints;  # Display the first endpoint.
 
 # Add a SQL DB firewall rule for the virtual network service endpoint
-$subnet = Get-AzureRmVirtualNetworkSubnetConfig `
+$subnet = Get-AzVirtualNetworkSubnetConfig `
   -Name           $subnetName `
   -VirtualNetwork $vnet;
 
 $VNetRuleName="ServiceFabricClusterVNetRule"
-$vnetRuleObject1 = New-AzureRmSqlServerVirtualNetworkRule `
+$vnetRuleObject1 = New-AzSqlServerVirtualNetworkRule `
   -ResourceGroupName      $dbresourcegroupname `
   -ServerName             $servername `
   -VirtualNetworkRuleName $VNetRuleName `
@@ -232,7 +235,7 @@ $vnetRuleObject1 = New-AzureRmSqlServerVirtualNetworkRule `
 
 ![アプリケーションの発行][publish-app]
 
-出力ウィンドウでデプロイの進行状況を確認します。  アプリケーションのデプロイが終わったらブラウザーを開き、クラスターのアドレスとアプリケーション ポートを入力します。 たとえば、「 http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/ 」のように入力します。
+出力ウィンドウでデプロイの進行状況を確認します。  アプリケーションのデプロイが終わったらブラウザーを開き、クラスターのアドレスとアプリケーション ポートを入力します。 たとえば、「http:\//fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/」と入力します。
 
 ![Fabrikam の Web のサンプル][fabrikam-web-page-deployed]
 
@@ -248,13 +251,13 @@ $acrresourcegroupname = "fabrikam-acr-group"
 $clusterresourcegroupname="fabrikamcallcentergroup"
 
 # Remove the Azure SQL DB
-Remove-AzureRmResourceGroup -Name $dbresourcegroupname
+Remove-AzResourceGroup -Name $dbresourcegroupname
 
 # Remove the container registry
-Remove-AzureRmResourceGroup -Name $acrresourcegroupname
+Remove-AzResourceGroup -Name $acrresourcegroupname
 
 # Remove the Service Fabric cluster
-Remove-AzureRmResourceGroup -Name $clusterresourcegroupname
+Remove-AzResourceGroup -Name $clusterresourcegroupname
 ```
 
 ## <a name="next-steps"></a>次の手順
@@ -269,11 +272,10 @@ Remove-AzureRmResourceGroup -Name $clusterresourcegroupname
 このチュートリアルの次の部分では、[CI/CD を使用して Service Fabric クラスターへコンテナー アプリケーションをデプロイする](service-fabric-tutorial-deploy-container-app-with-cicd-vsts.md)方法について説明します。
 
 [link-fabrikam-github]: https://aka.ms/fabrikamcontainer
-[link-azure-powershell-install]: /powershell/azure/install-azurerm-ps
+[link-azure-powershell-install]: /powershell/azure/install-Az-ps
 [link-servicefabric-create-secure-clusters]: service-fabric-cluster-creation-via-arm.md
 [link-visualstudio-cd-extension]: https://aka.ms/cd4vs
 [link-servicefabric-containers]: service-fabric-get-started-containers.md
-[link-servicefabric-createapp]: service-fabric-create-your-first-application-in-visual-studio.md
 [link-azure-portal]: https://portal.azure.com
 [link-sf-clustertemplate]: https://aka.ms/securepreviewonelineclustertemplate
 [link-azure-pricing-calculator]: https://azure.microsoft.com/pricing/calculator/
@@ -282,5 +284,8 @@ Remove-AzureRmResourceGroup -Name $clusterresourcegroupname
 [link-azure-sql]: /azure/sql-database/
 
 [fabrikam-web-page]: media/service-fabric-host-app-in-a-container/fabrikam-web-page.png
+[fabrikam-web-page-deployed]: media/service-fabric-host-app-in-a-container/fabrikam-web-page-deployed.png
+[publish-app]: media/service-fabric-host-app-in-a-container/publish-app.png
+m-web-page.png
 [fabrikam-web-page-deployed]: media/service-fabric-host-app-in-a-container/fabrikam-web-page-deployed.png
 [publish-app]: media/service-fabric-host-app-in-a-container/publish-app.png

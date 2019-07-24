@@ -1,28 +1,29 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Yonyx Interactive Guides の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Yonyx Interactive Guides の統合 | Microsoft Docs
 description: Azure Active Directory と Yonyx Interactive Guides の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 07db4e01-319b-4cb6-9b93-4577bffd3cbc
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2017
 ms.author: jeedes
-ms.openlocfilehash: a7166ac295c8bac3c7bb8d2e053a6f49fe533cc8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: fce7653770d0fb3134f266137e167125b9161865
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448952"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097595"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>チュートリアル: Azure Active Directory と Yonyx Interactive Guides の統合
+# <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>チュートリアル:Azure Active Directory と Yonyx Interactive Guides の統合
 
 このチュートリアルでは、Yonyx Interactive Guides と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -132,7 +133,7 @@ Yonyx Interactive Guides で Azure AD のシングル サインオンを構成�
 1. **Yonyx Interactive Guides** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**サインアウト URL**、**SAML シングル サインオン サービス URL**、**SAML エンティティ ID** を [Yonyx Interactive Guides サポート チーム](mailto:support@yonyx.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -173,8 +174,8 @@ Yonyx Interactive Guides で Azure AD のシングル サインオンを構成�
 
 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Yonyx Interactive Guides ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
 
->[!NOTE]
->ユーザーを手動で作成する必要がある場合は、Yonyx Interactive Guides サポート チーム (<mailto:support@yonyx.com>) にお問い合わせください。 
+> [!NOTE]
+> ユーザーを手動で作成する必要がある場合は、Yonyx Interactive Guides サポート チーム (<mailto:support@yonyx.com>) にお問い合わせください。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

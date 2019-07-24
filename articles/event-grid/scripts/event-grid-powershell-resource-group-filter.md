@@ -9,14 +9,14 @@ ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/02/2018
+ms.date: 12/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: ed77e8f09af841a1414212d7df6b60655ac158cd
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 069762659560d1eb60ecf28267ecfa0e80a7f6e8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39482585"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181182"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-powershell"></a>PowerShell を使用したリソース グループのイベントのサブスクライブとリソースのフィルタリング
 
@@ -24,33 +24,27 @@ ms.locfileid: "39482585"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a>サンプル スクリプト
+## <a name="sample-script---stable"></a>サンプル スクリプト - 安定版
 
-```powershell
-# Provide an endpoint for handling the events.
-$myEndpoint = "<endpoint URL>"
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-# Select the Azure subscription that contains the resource group.
-Set-AzureRmContext -Subscription "Contoso Subscription"
+[!code-powershell[main](../../../powershell_scripts/event-grid/filter-events/filter-events.ps1 "Filter events")]
 
-# Get the resource ID to filter events
-$resourceId = (Get-AzureRmResource -ResourceName demoSecurityGroup -ResourceGroupName myResourceGroup).ResourceId
+## <a name="sample-script---preview-module"></a>サンプル スクリプト - プレビュー モジュール
 
-# Subscribe to the resource group. Provide the name of the resource group you want to subscribe to.
-New-AzureRmEventGridSubscription `
-  -Endpoint $myEndpoint `
-  -EventSubscriptionName demoSubscriptionToResourceGroup `
-  -ResourceGroupName myResourceGroup `
-  -SubjectBeginsWith $resourceId
-```
+[!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
+
+プレビュー版サンプル スクリプトには、Event Grid モジュールが必要です。 インストールするには、`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery` を実行します
+
+[!code-powershell[main](../../../powershell_scripts/event-grid/filter-events-preview/filter-events-preview.ps1 "Filter events")]
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
 このスクリプトは、次のコマンドを使用してイベント サブスクリプションを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
-| [New-AzureRmEventGridSubscription](https://docs.microsoft.com/powershell/module/azurerm.eventgrid/new-azurermeventgridsubscription) | Event Grid のサブスクリプションを作成する。 |
+| [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Event Grid のサブスクリプションを作成する。 |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -16,16 +16,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/18/2017
 ms.author: manayar
-ms.openlocfilehash: be56fd80229010090216413a7c1833d94e8bac25
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: b2d1738b85799079b3af7ab39c5cb1799a38d382
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739568"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339877"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>スケール セット テンプレートをマネージド ディスク スケール セット テンプレートに変換する
 
-Resource Manager テンプレートを基にマネージド ディスクを使用しないスケール セットを作成している場合、マネージド ディスクを使用するようにそのテンプレートを変更することができます。 この記事では、「[Azure Quickstart Templates (Azure クイック スタート テンプレート)](https://github.com/Azure/azure-quickstart-templates)」ページ (コミュニティにより運営されている、サンプルの Resource Manager テンプレートを集めたリポジトリ) に登録されているプル要求の例を使用して、マネージド ディスクの使用方法を示します。 完全なプル要求については、[https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998) で確認できます。diff の関連する部分と説明を以下に示します。
+Resource Manager テンプレートを基にマネージド ディスクを使用しないスケール セットを作成している場合、マネージド ディスクを使用するようにそのテンプレートを変更することができます。 この記事では、「[Azure Quickstart Templates (Azure クイック スタート テンプレート)](https://github.com/Azure/azure-quickstart-templates)」ページ (コミュニティにより運営されている、サンプルの Resource Manager テンプレートを集めたリポジトリ) に登録されている Pull Request の例を使用して、マネージド ディスクの使用方法を示します。 完全な Pull Request、[https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998) で確認できます。diff の関連する部分と説明を以下に示します。
 
 ## <a name="making-the-os-disks-managed"></a>OS ディスクを管理ディスクにする
 
@@ -126,7 +126,7 @@ Resource Manager テンプレートを基にマネージド ディスクを使�
 
 ## <a name="data-disks"></a>データ ディスク
 
-上記の変更により、スケール セットで OS ディスクにマネージド ディスクが使用されるようになります。それでは、データ ディスクの場合はどうでしょうか。 データ ディスクを追加するには、"storageProfile" の下の "osDisk" と同じレベルに "dataDisks" プロパティを追加します。 このプロパティの値には、オブジェクトの JSON リストを指定します。それぞれのオブジェクトには、次の例に示すとおり、"lun" (VM 上のデータ ディスクごとに一意である必要があります)、"createOption" (現在、"empty" のみがサポートされています)、および "diskSizeGB" (ギガバイト単位のディスク サイズ。0 より大きく 1,024 未満の値である必要があります) の各プロパティがあります。 
+上記の変更により、スケール セットで OS ディスクにマネージド ディスクが使用されるようになります。それでは、データ ディスクの場合はどうでしょうか。 データ ディスクを追加するには、"storageProfile" の下の "osDisk" と同じレベルに "dataDisks" プロパティを追加します。 このプロパティの値には、オブジェクトの JSON リストを指定します。それぞれのオブジェクトには、次の例に示すとおり、"lun" (VM 上のデータ ディスクごとに一意である必要があります)、"createOption" (現在、"empty" のみがサポートされています)、および "diskSizeGB" (ギガバイト単位のディスク サイズ。0 より大きく 1,024 未満の値である必要があります) の各プロパティがあります。
 
 ```
 "dataDisks": [
@@ -144,7 +144,7 @@ Resource Manager テンプレートを基にマネージド ディスクを使�
 
 
 ## <a name="next-steps"></a>次の手順
-スケール セットを使用した Resource Manager テンプレートの例については、 [Azure クイックスタート テンプレートの GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)で "vmss" を検索してください。
+スケール セットを使用した Resource Manager テンプレートの例については、[Azure クイック スタート テンプレートの GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)で "vmss" を検索してください。
 
-全般的な情報については、 [VM スケール セットのメイン ランディング ページ](https://azure.microsoft.com/services/virtual-machine-scale-sets/)をご覧ください。
+全般的な情報については、 [スケール セットのメイン ランディング ページ](https://azure.microsoft.com/services/virtual-machine-scale-sets/)をご覧ください。
 

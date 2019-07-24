@@ -5,21 +5,28 @@ description: 並列ドキュメントは、一方がもう一方の翻訳であ�
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: e9214314bab40e3ce402fed84f429f3542519240
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.topic: conceptual
+ms.openlocfilehash: fa3abb9fc7b899fa5c74d6f1cd73ebbbb72b6047
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627030"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776633"
 ---
 # <a name="what-are-parallel-documents"></a>並列ドキュメントとは
 
 並列ドキュメントは、一方がもう一方の翻訳であるドキュメントのペアです。 ペアの一方のドキュメントにはソース言語の文が含まれ、もう一方のドキュメントにはターゲット言語に翻訳されたこれらの文が含まれています。
 "ソース" とマークされている言語と "ターゲット" とマークされている言語にかかわらず、並列ドキュメントを使用して、いずれの方向でも翻訳システムをトレーニングできます。
+
+## <a name="requirements"></a>必要条件
+
+システムをトレーニングするには、10,000 以上の一意の並列文が必要です。 翻訳システムの品質を改善するには、並列コンテンツを継続的に追加して保持することをお勧めします。
+
+Microsoft では、Custom Translator にアップロードするドキュメントが、第三者の著作権または知的財産に違反していないことを必須にしています。 詳細については、[使用条件](https://azure.microsoft.com/support/legal/cognitive-services-terms/)に関するページを参照してください。
+ポータルを使用してドキュメントをアップロードしても、ドキュメント自体の知的財産の所有権は変わりません。
 
 ## <a name="use-of-parallel-documents"></a>並列ドキュメントの使用
 
@@ -31,16 +38,11 @@ ms.locfileid: "51627030"
 
 ソース言語とターゲット言語のバージョンのドキュメント間には、1 対 1 の文の対応を付けることをお勧めします。
 
-アップロードされたドキュメントは各ワークスペース専用であり、任意の数のプロジェクトやトレーニングで使用できます。 ドキュメントから抽出された文は、プレーンな Unicode テキスト ファイルとしてリポジトリ内で別に保存され、削除することもできます。 Custom Translator をドキュメント リポジトリとして使用しないでください。アップロードしたドキュメントをアップロードした形式でダウンロードできなくなります。
-
-## <a name="recommendations"></a>Recommendations
-
 プロジェクトがドメイン (カテゴリ) 固有である場合、ドキュメントはそのカテゴリ内の用語で一貫している必要があります。 結果の翻訳システムの品質は、ドキュメント セット内の文の数と文の品質によって変わります。 カテゴリに固有の単語のさまざまな用途共に、ドキュメントに含まれている例が多くなればなるほど、翻訳時にシステムで実行できるジョブが改善されます。
 
-システムをトレーニングするには、10,000 以上の並列文が必要です。 翻訳システムの品質を改善するには、並列コンテンツを継続的に追加して保持することをお勧めします。
+アップロードされたドキュメントは各ワークスペース専用であり、任意の数のプロジェクトやトレーニングで使用できます。 ドキュメントから抽出された文は、プレーンな Unicode テキスト ファイルとしてリポジトリ内で別に保存され、削除することもできます。 Custom Translator をドキュメント リポジトリとして使用しないでください。アップロードしたドキュメントをアップロードした形式でダウンロードできなくなります。
 
-Microsoft では、Custom Translator にアップロードするドキュメントが、第三者の著作権または知的財産に違反していないことを必須にしています。 詳細については、[使用条件](https://azure.microsoft.com/support/legal/cognitive-services-terms/)に関するページを参照してください。
-ポータルを使用してドキュメントをアップロードしても、ドキュメント自体の知的財産の所有権は変わりません。
+
 
 ## <a name="next-steps"></a>次の手順
 

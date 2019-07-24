@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 2e8b2753a441b0d7f27745fdf622b26dcee7784a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 125f1a2a041c8c05289c95bd12c10618bfc622a8
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572389"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246996"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク
 
@@ -51,7 +51,7 @@ Premium Storage の使用を開始するには、[無料の Azure アカウン�
 
 * **Premium Storage ディスク**
 
-    Premium Storage では、特定のサイズ シリーズの VM に接続できる VM ディスクがサポートされています。 Premium Storage では、さまざまな Azure VM をサポートします。 P4 (32 GiB)、P6 (64 GiB)、P10 (128 GiB)、P15 (256 GiB)、P20 (512 GiB)、P30 (1,024 GiB)、P40 (2,048 GiB)、P50 (4,095 GiB) という 8 種類の GA ディスク サイズから選択できます。 また、P60 8,192 GiB (8 TiB)、P70 16,348 (16 TiB)、P80 32,767 GiB (32 TiB) の 3 つのプレビュー ディスク サイズもあります。 P4、P6、P15、P60、P70、P80 ディスク サイズは、現在、Managed Disks のみでサポートされています。 各ディスク サイズは、それぞれ独自のパフォーマンス仕様があります。 アプリケーションの要件に応じて、VM には 1 つ以上のディスクを接続できます。 仕様の詳細については、[Premium Storage のスケーラビリティとパフォーマンスのターゲット](#scalability-and-performance-targets)に関するセクションで説明します。
+    Premium Storage では、特定のサイズ シリーズの VM に接続できる VM ディスクがサポートされています。 Premium Storage では、さまざまな Azure VM をサポートします。 8 つの GA ディスク サイズの選択肢があります:P4 (32 GiB)、P6 (64 GiB)、P10 (128 GiB)、P15 (256 GiB)、P20 (512 GiB)、P30 (1,024 GiB)、P40 (2,048 GiB)、P50 (4,095 GiB)。 プレビュー段階の 3 つのディスク サイズもあります:P60 8,192 GiB (8 TiB)、P70 16,348 GiB (16 TiB)、P80 32,767 GiB (32 TiB)。 P4、P6、P15、P60、P70、P80 ディスク サイズは、現在、Managed Disks のみでサポートされています。 各ディスク サイズは、それぞれ独自のパフォーマンス仕様があります。 アプリケーションの要件に応じて、VM には 1 つ以上のディスクを接続できます。 仕様の詳細については、[Premium Storage のスケーラビリティとパフォーマンスのターゲット](#scalability-and-performance-targets)に関するセクションで説明します。
 
 * **Premium ページ BLOB**
 
@@ -67,7 +67,7 @@ Premium Storage の使用を開始するには、[無料の Azure アカウン�
     - [Azure Storage 用の Azure CLI](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
     - [Azure Storage Resource Provider REST API](https://docs.microsoft.com/rest/api/storagerp) (Azure Resource Manager デプロイメント向け)、または Azure Storage リソース プロバイダーのクライアント ライブラリのいずれか
 
-    Premium Storage アカウントの制限については、[Premium Storage のスケーラビリティとパフォーマンスのターゲット](#premium-storage-scalability-and-performance-targets)に関するセクションを参照してください。
+    Premium Storage アカウントの制限については、Premium Storage のスケーラビリティとパフォーマンスのターゲットに関するセクションを参照してください。
 
 * **Premium ローカル冗長ストレージ**
 
@@ -113,7 +113,7 @@ Premium Storage に対応した VM では、次に示すいくつかの機能が
 
 * **Analytics**
 
-    Premium Storage のディスクを使用して VM のパフォーマンスを分析するには、[Azure Portal](https://portal.azure.com) で VM の診断を有効にします。 詳細については、[Azure 診断の拡張機能を使用した Azure VM の監視](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/)に関する記事を参照してください。 
+    Premium Storage のディスクを使用して VM のパフォーマンスを分析するには、[Azure Portal](https://portal.azure.com) で VM の診断を有効にします。 詳細については、[Azure Diagnostics の拡張機能を使用した Azure VM の監視](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/)に関する記事を参照してください。 
 
     ディスクのパフォーマンスを確認するには、[Windows パフォーマンス モニター](https://technet.microsoft.com/library/cc749249.aspx) (Windows VM の場合) や [iostat](http://linux.die.net/man/1/iostat) コマンド (Linux VM の場合) などのオペレーティング システム ベースのツールを使用します。
 
@@ -138,7 +138,7 @@ Premium Storage アカウントのスケーラビリティ ターゲットは、
 
 | 合計アカウント容量 | ローカル冗長ストレージ アカウントの合計帯域幅 |
 | --- | --- | 
-| ディスク容量: 35 TB <br>スナップショット容量: 10 TB | 受信<sup>1</sup> と送信<sup>2</sup> を合わせて最大 50 GB/秒 |
+| ディスク容量:35 TB <br>スナップショット容量:10 TB | 受信<sup>1</sup> と送信<sup>2</sup> を合わせて最大 50 GB/秒 |
 
 <sup>1</sup> ストレージ アカウントに送信されるすべてのデータ (要求)
 
@@ -149,7 +149,7 @@ Premium Storage アカウントのスケーラビリティ ターゲットは、
 非管理対象ディスクに Premium Storage アカウントを使用しており、アプリケーションが 1 つのストレージ アカウントのスケーラビリティ ターゲットを超えた場合、管理ディスクへの移行が必要になることがあります。 管理ディスクに移行しない場合は、複数のストレージ アカウントを使用するようにアプリケーションを作成します。 その後、それらのストレージ アカウント間でデータをパーティション分割します。 たとえば、複数の VM で合計 51 TB のディスクを接続する場合、ディスクを 2 つのストレージ アカウントに分散します。 Premium Storage アカウント 1 つあたりの上限は 35 TB です。 1 つの Premium Storage アカウントでプロビジョニングするディスクの容量が 35 TB を超えることがないようにしてください。
 
 ### <a name="premium-storage-disk-limits"></a>Premium Storage ディスクの制限
-Premium Storage ディスクをプロビジョニングする場合、ディスクのサイズによって最大 IOPS とスループット (帯域幅) が決まります。 Azure では、Premium Storage ディスクとして P4 (Managed Disks のみ)、P6 (Managed Disks のみ)、P10、P15 (Managed Disks のみ)、P20、P30、P40、P50 の 8 種類の GA を提供しています。 プレビュー段階の 3 つのディスク サイズ (P60、P70、P80) もあります。 Premium Storage ディスクの種類それぞれには、IOPS とスループットに関する固有の制限があります。 ディスクの種類の制限については、次の表で説明します。
+Premium Storage ディスクをプロビジョニングする場合、ディスクのサイズによって最大 IOPS とスループット (帯域幅) が決まります。 Azure では、Premium Storage ディスクとして 8 種類の GA を提供しています:P4 (Managed Disks のみ)、P6 (Managed Disks のみ)、P10、P15 (Managed Disks のみ)、P20、P30、P40、P50。 プレビュー段階の 3 つのディスク サイズもあります:P60、P70、P80。 Premium Storage ディスクの種類それぞれには、IOPS とスループットに関する固有の制限があります。 ディスクの種類の制限については、次の表で説明します。
 
 アスタリスクで示されるサイズはプレビュー中です。
 
@@ -160,7 +160,7 @@ Premium Storage ディスクをプロビジョニングする場合、ディス�
 | ディスクあたりのスループット | 25 MB/秒 | 50 MB/秒 | 100 MB/秒 | 125 MB/秒 | 150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 | 480 MB/秒 | 750 MB/秒 | 750 MB/秒 |
 
 > [!NOTE]
-> [Premium Storage でサポートされる VM](#premium-storage-supported-vms) に関するセクションの説明に従って、ディスク トラフィックを促進するために、VM で十分な帯域幅を使用できることを確認してください。 確認できない場合、ディスクのスループットと IOPS の値は低くなります。 スループットと IOPS の最大値は、上記の表で説明したディスクの制限ではなく、VM の制限に基づきます。  
+> [Premium Storage でサポートされる VM]() に関するセクションの説明に従って、ディスク トラフィックを促進するために、VM で十分な帯域幅を使用できることを確認してください。 確認できない場合、ディスクのスループットと IOPS の値は低くなります。 スループットと IOPS の最大値は、上記の表で説明したディスクの制限ではなく、VM の制限に基づきます。  
 > Azure では、超並列のプラットフォームとして Premium Storage が設計されました。 アプリケーションをマルチスレッド形式に設計することで、より大きなディスク サイズで高いパフォーマンス目標を達成できます。
 
 Premium Storage のスケーラビリティとパフォーマンスのターゲットについか知っておくべき重要事項をいくつか説明します。
@@ -194,7 +194,7 @@ Premium Storage のスケーラビリティとパフォーマンスのターゲ�
 
     キャッシュ ヒット数には、ディスクの割り当て済みの IOPS またはスループットによる制限はありません。 たとえば、Premium Storage でサポートされている VM でキャッシュが **ReadOnly** に設定されているデータ ディスクを使用する場合、そのキャッシュからの読み取りは、ディスクの IOPS とスループットの上限の対象にはなりません。 ディスクのワークロードの大部分が読み取りの場合、スループットが非常に高くなる可能性があります。 キャッシュには、VM サイズに基づいて、VM レベルで IOPS とスループットの制限が個別に適用されます。 DS シリーズの VM では、IOPS が約 4,000、キャッシュとローカル SSD の I/O のコアあたりのスループットが 33 MB/秒になります。 GS シリーズの VM には、IOPS が 5,000 まで、キャッシュとローカル SSD の I/O のコアあたりのスループットが 50 MB/秒までという制限があります。
 
-## <a name="throttling"></a>調整
+## <a name="throttling"></a>Throttling
 
 アプリケーションの IOPS またはスループットが Premium Storage ディスクに割り当てられている制限を超えた場合、調整が行われることがあります。 また、VM 上のすべてのディスクのディスク トラフィックの合計がその VM で使用可能なディスク帯域幅の上限を超えた場合にも調整が行われることがあります。 調整を回避するには、ディスクの保留中の I/O 要求の数を制限することをお勧めします。 プロビジョニングしたディスクのスケーラビリティとパフォーマンスのターゲットに基づいた制限や、VM で使用可能なディスク帯域幅に基づいた制限を使用してください。  
 
@@ -294,7 +294,7 @@ Premium Storage の使用時には、課金に関する次の考慮事項が適�
 
 * **Premium Storage のディスク/BLOB サイズ**
 
-    Premium Storage ディスクまたは BLOB への課金は、ディスクまたは BLOB のプロビジョニング済みサイズによって異なります。 Azure では、プロビジョニング済みサイズ (切り上げたもの) を、最も近い Premium Storage ディスク オプションにマップします。 詳細については、[Premium Storage のスケーラビリティとパフォーマンスのターゲット](#premium-storage-scalability-and-performance-targets)に関するセクションの表を参照してください。 各ディスクは、サポートされているプロビジョニング済みディスク サイズにマップされ、それに応じて課金されます。 プロビジョニングされたディスクには、Premium Storage プランの月額料金を使用して、時間割りで計算して課金されます。 たとえば、P10 ディスクをプロビジョニングし、20 時間後にそのディスクを削除した場合は、P10 製品の 20 時間分に対して課金されます。 これは、実際にディスクに書き込まれたデータの量や、使用された IOPS およびスループットには関係ありません。
+    Premium Storage ディスクまたは BLOB への課金は、ディスクまたは BLOB のプロビジョニング済みサイズによって異なります。 Azure では、プロビジョニング済みサイズ (切り上げたもの) を、最も近い Premium Storage ディスク オプションにマップします。 詳細については、[Premium Storage のスケーラビリティとパフォーマンスのターゲット]()に関するセクションの表を参照してください。 各ディスクは、サポートされているプロビジョニング済みディスク サイズにマップされ、それに応じて課金されます。 プロビジョニングされたディスクには、Premium Storage プランの月額料金を使用して、時間割りで計算して課金されます。 たとえば、P10 ディスクをプロビジョニングし、20 時間後にそのディスクを削除した場合は、P10 製品の 20 時間分に対して課金されます。 これは、実際にディスクに書き込まれたデータの量や、使用された IOPS およびスループットには関係ありません。
 
 * **Premium 非管理対象ディスクのスナップショット**
 

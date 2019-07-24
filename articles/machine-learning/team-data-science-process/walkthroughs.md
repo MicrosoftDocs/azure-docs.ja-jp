@@ -1,26 +1,22 @@
 ---
-title: Azure で Team Data Science Process を実行するチュートリアル | Microsoft Docs
+title: Azure での Team Data Science Process の実行に関するチュートリアル
 description: クラウドとオンプレミスのツールとサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明します。
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: aa63d5a5-25ee-4c4b-9a4c-7553b98d7f6e
 ms.service: machine-learning
-ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: deguhath
-ms.openlocfilehash: 86024316344ccbce87f48adbc0598c94e61c5e6d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 98595ea0ef5b6d9d4cef0f239390b364fb1e4e75
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253569"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476980"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Team Data Science Process を実行するチュートリアル
 
@@ -32,7 +28,6 @@ ms.locfileid: "51253569"
 以下に、各プラットフォームのチュートリアルで例示されている内容を簡単に説明します。
 
 
-- [Azure Machine Learning Workbench](walkthroughs-aml-with-tdsp.md) これらのチュートリアルとサンプルでは、Azure Machine Learning Workbench で自然言語処理と分類を行う Team Data Science 体系化プロジェクトを作成する方法を示します。
 - [PySpark と Scala を使用した HDInsight Spark のチュートリアル](walkthroughs-spark.md) Azure Spark クラスターで PySpark と Scala を使って予測分析を行うチュートリアルを紹介します。
 - [Hive を使用した HDInsight Hadoop のチュートリアル](walkthroughs-hdinsight-hadoop.md) Hive と HDInsight Hadoop クラスターを使って予測分析を行うチュートリアルを紹介します。
 - [U-SQL を使用した Azure Data Lake のチュートリアル](walkthroughs-azure-data-lake.md) U-SQL と Azure Data Lake を使って予測分析を行うチュートリアルを紹介します。
@@ -47,5 +42,5 @@ Team Data Science Process を構成する主な要素については、[Team Dat
 
 データ サイエンス プロジェクトの構築に使用できる Team Data Science Process のライフサイクルについては、「[Team Data Science Process ライフサイクル](lifecycle.md)」を参照してください。 このライフサイクルは、プロジェクトを実行する際に、その開始から終了までにわたって進められる通常のステップを大まかにまとめたものです。 
 
-Azure でのデータ サイエンス プロセスを構成するタスクについて説明したトピックの概要については、 [データ サイエンス プロセス](https://aka.ms/datascienceprocess)に関するページをご覧ください。 
+Azure でのデータ サイエンス プロセスを構成するタスクについて説明したトピックの概要については、 [データ サイエンス プロセス](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)に関するページをご覧ください。 
 

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Workspot Control の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Workspot Control の統合 | Microsoft Docs
 description: Azure Active Directory と Workspot Control の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 520e625ba9689ebf35e985fe95609c62102e2493
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 97f375c6f48d3dc497eb59e76f19fc64cf906b56
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311943"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886509"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>チュートリアル: Azure Active Directory と Workspot Control の統合
+# <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>チュートリアル:Azure Active Directory と Workspot Control の統合
 
 このチュートリアルでは、Workspot Control と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -119,12 +120,12 @@ Workspot Control で Azure AD のシングル サインオンを構成してテ�
 
      ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_url1.png)
 
-    **[サインオン URL]** ボックスに、`https://<INSTANCENAME>-saml.workspot.com/` という形式で URL を入力します
+    **[サインオン URL]** ボックスに、`https://<INSTANCENAME>-saml.workspot.com/` という形式で URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Workspot Control クライアント サポート チーム](mailto:support@workspot.com)に問い合わせてください。 
 
-5. **[Set up Single Sign-On with SAML]\(SAML でのシングル サインオンの設定\)** ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、**[Download]\(ダウンロード\)** をクリックして**証明書(Base64)** をダウンロードして、コンピューターに保存します。
+5. **[Set up Single Sign-On with SAML]\(SAML でのシングル サインオンの設定\)** ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、**[Download]\(ダウンロード\)** をクリックして**証明書 (Base64)** をダウンロードし、コンピューターに保存します。
 
     ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_certficate.png) 
 
@@ -142,7 +143,7 @@ Workspot Control で Azure AD のシングル サインオンを構成してテ�
 
 7. 異なる Web ブラウザー ウィンドウで、セキュリティ管理者として Workspot Control にログインします。
 
-8. ページの上部にあるツール バーで、**[Setup]\(セットアップ\)** をクリックし、**[SAML]** に移動します。
+8. ページの上部にあるツール バーで、 **[Setup]\(セットアップ\)** をクリックし、 **[SAML]** に移動します。
 
     ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
 
@@ -150,7 +151,7 @@ Workspot Control で Azure AD のシングル サインオンを構成してテ�
  
     ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_saml.png)
 
-    a. **[Entity ID]\(エンティティ ID\)** テキスト ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。   
+    a. **[Entity ID]\(エンティティ ID\)** テキスト ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。   
 
     b. **[Signon Service URL]\(サインオン サービス URL\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
@@ -172,13 +173,13 @@ Workspot Control で Azure AD のシングル サインオンを構成してテ�
 
     ![image](./media/workspotcontrol-tutorial/d_adduser.png)
 
-3. [ユーザーのプロパティ] で、次の手順を実行します。
+3. [ユーザーのプロパティ] で、次の手順のようにします。
 
     ![image](./media/workspotcontrol-tutorial/d_userproperties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに、**brittasimon@yourcompanydomain.extension** と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
@@ -193,7 +194,7 @@ Azure AD ユーザーが Workspot Control にログインできるようにす�
 
 1. セキュリティ管理者として Workspot Control にログインします。
 
-2. ページの上部にあるツール バーで、**[Users]\(ユーザー\)** をクリックし、**[Add User]\(ユーザーの追加\)** に移動します。
+2. ページの上部にあるツール バーで、 **[Users]\(ユーザー\)** をクリックし、 **[Add User]\(ユーザーの追加\)** に移動します。
 
     ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_adduser.png)
 
@@ -205,7 +206,7 @@ Azure AD ユーザーが Workspot Control にログインできるようにす�
 
     b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **simon**)。
 
-    c. **[Email]\(電子メール\)** ボックスに、ユーザーのメール アドレスを入力します (例: **Brittasimon@contoso.com**)。
+    c. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (**Brittasimon\@contoso.com** など) を入力します。
 
     d. **[Role]\(ロール\)** ドロップダウンから適切なユーザー ロールを選択します。
 
@@ -233,7 +234,7 @@ Azure AD ユーザーが Workspot Control にログインできるようにす�
 
     ![image](./media/workspotcontrol-tutorial/d_assign_user.png)
 
-4. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+4. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **Britta Simon** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
 5. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンを選択します。
     
@@ -242,7 +243,7 @@ Azure AD ユーザーが Workspot Control にログインできるようにす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Workspot Control] タイルをクリックすると、自動的に Workspot Control アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

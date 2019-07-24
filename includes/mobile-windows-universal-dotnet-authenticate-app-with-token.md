@@ -1,4 +1,16 @@
-
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: crdun
+ms.openlocfilehash: d71d52257b6e8cfa243207c9bfdb5c7de7d3dd37
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59804462"
+---
 1. MainPage.xaml.cs プロジェクト ファイルを開き、次の **using** ステートメントを追加します。
    
         using System.Linq;        
@@ -38,7 +50,7 @@
                 App.MobileService.CurrentUser = user;
    
                 // Consider adding a check to determine if the token is 
-                // expired, as shown in this post: http://aka.ms/jww5vp.
+                // expired, as shown in this post: https://aka.ms/jww5vp.
    
                 success = true;
                 message = string.Format("Cached credentials for user - {0}", user.UserId);

@@ -1,0 +1,101 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: b97629551823cfc77d0d88dbd6a19fe1a6ba2b70
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852306"
+documentType: LandingData
+title: Azure SQL Database - 高度なセキュリティ
+metadata:
+  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
+  title: Azure SQL Database - 高度なセキュリティ
+  meta.description: Learn about the Advanced security capabilities of Azure SQL Database.
+  services: sql-database
+  ms.subservice: security
+  author: jovanpop-msft
+  manager: craigg
+  requires-business-manager-approval: false
+  ms.service: sql-database
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: overview
+  ms.date: 02/07/2019
+  ms.author: jovanpop-msft
+sections:
+- items:
+  - type: paragraph
+    text: Azure SQL Database には、お客様のデータベースを保護するために役立つ高度なセキュリティ機能が組み込まれています。
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - title: 概要
+      href: /azure/sql-database/sql-database-security-overview
+      html: <p>Azure SQL Database には、お客様のデータを安全に保つために役立つ一連の高度なセキュリティ機能が用意されています。</p>
+    - title: 脅威の検出
+      href: /azure/sql-database/sql-database-threat-detection
+      html: <p>データベースにアクセスしたりデータベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試みを示唆する異常なアクティビティが検出されます。</p>
+    - title: 脆弱性評価
+      href: /azure/sql-database/sql-vulnerability-assessment
+      html: <p>脆弱性評価を使用して、データベースの潜在的な脆弱性を検出、追跡、および修復できます。</p>
+    - title: 保存時の暗号化
+      href: /azure/sql-database/transparent-data-encryption-azure-sql
+      html: <p>透過的なデータ暗号化 (TDE) によって、お客様のデータベース内の情報が透過的に暗号化されます。</p>
+    - title: データの検出と分類
+      href: /azure/sql-database/sql-database-data-discovery-and-classification
+      html: <p>データの検出と分類を使用して、お客様のデータベース内の機微なデータを検出、分類、ラベル付け、および保護できます。</p>
+    - title: Azure Active Directory
+      href: /azure/sql-database/sql-database-aad-authentication
+      html: <p>Azure SQL Database では、Azure Active Directory (Azure AD) 内の ID を使用して、お客様のデータベースに接続できます。</p>
+- title: 5 分間のクイック スタート
+  items:
+  - type: paragraph
+    text: Azure portal、Azure CLI、または PowerShell を使用して、Azure SQL Database のセキュリティ機能を設定して管理します。
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/portal.svg
+      title: Azure ポータル
+    - image:
+        src: media/index/cli.svg
+      title: Azure CLI
+    - image:
+        src: media/index/logo_powershell.svg
+      title: PowerShell
+    rows:
+    - title: 1 つのデータベースに対する脅威の検出の設定
+      values:
+      - href: /azure/sql-database/sql-database-threat-detection#set-up-threat-detection-for-your-database-in-the-azure-portal
+      - href: 
+      - href: /azure/sql-database/scripts/sql-database-auditing-and-threat-detection-powershell
+    - title: マネージド インスタンスに対する脅威の検出の設定
+      values:
+      - href: /azure/sql-database/sql-database-managed-instance-threat-detection#set-up-threat-detection-for-your-managed-instance-in-the-azure-portal
+      - href: 
+      - href: 
+    - title: 1 つのデータベースに対するデータベース サーバー ファイアウォール規則の設定
+      values:
+      - href: /azure/sql-database/sql-database-firewall-configure
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-server-level-ip-firewall-rules-using-azure-cli
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-server-level-ip-firewall-rules-using-azure-powershell
+    - title: 脆弱性評価規則の管理
+      values:
+      - href: /azure/sql-database/sql-vulnerability-assessment#implementing-vulnerability-assessment
+      - href: 
+      - href: /azure/sql-database/sql-vulnerability-assessment#manage-vulnerability-assessments-using-azure-powershell
+- title: その他のリソース
+  items:
+  - type: paragraph
+    text: Azure SQL Database には、お客様のデータベースのセキュリティを向上させることができる一連の追加機能が組み込まれています。
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/sql-database/sql-database-managed-instance-threat-detection">マネージド インスタンス</a>と<a href="/azure/sql-database/sql-database-threat-detection">データベース</a>に対する脅威保護では、データベースにアクセスしたりデータベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試みを示唆する異常なアクティビティが検出されます。
+    - html: <a href="/azure/sql-database/sql-database-managed-instance-auditing">マネージド インスタンス</a>と<a href="/azure/sql-database/sql-database-auditing">データベース</a>の監査では、データベース イベントを追跡し、Azure ストレージ アカウント、OMS ワークスペース、または Event Hubs の監査ログにイベントが書き込まれます。
+    - html: 1 つのデータベースに対する<a href="/azure/sql-database/sql-database-firewall-configure">データベース サーバー ファイアウォール規則</a>を使用して、お客様のデータベースにアクセスできる IP アドレスを制御できます。
+    - html: マネージド インスタンスに対する <a href="/azure/sql-database/sql-database-managed-instance-vnet-configuration">VNet 統合</a>を使用して、お客様のプライベート アドレス空間にデータベースを配置できます。
+    - html: 機微なデータは <a href="/azure/sql-database/sql-database-always-encrypted">Always Encrypted</a> によって暗号化され、サーバー上に保存されているときでも、クライアントとサーバー間を移動しているときでも、使用されているときでも、常に保護されます。データベース システム内で機微なデータがプレーンテキストとして表示されることはありません。
+    - html: <a href="/azure/sql-database/sql-database-dynamic-data-masking-get-started">動的データ マスク</a>では、機微なデータをどの程度公開するかをお客様が指定できるようにすることで機微なデータに対する未承認のアクセスを防止して、アプリケーション レイヤーへの影響を最小限に抑えます。

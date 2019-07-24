@@ -7,23 +7,23 @@ services: microsoft-genomics
 author: ruchir
 editor: jasonwhowell
 ms.author: ruchir
-ms.service: microsoft-genomics
+ms.service: genomics
 ms.workload: genomics
 ms.topic: article
 ms.date: 10/29/2018
-ms.openlocfilehash: 2c10259e4b9fa180d09ceef0359e7ec99e8200b1
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 78084e6beac7b390b1ea1afe888030c5224856b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239901"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078059"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
 Microsoft Genomics サービス MSGEN の使用時に直面する可能性がある一般的な問題のトラブルシューティングのヒントをいくつか以下に示します。
 
  トラブルシューティングに関連しない FAQ については、[よく寄せられる質問](frequently-asked-questions-genomics.md)のページを参照してください。
-## <a name="step-1-locate-error-codes-associated-with-the-workflow"></a>手順 1: ワークフローに関連付けられたエラー コードを見つける
+## <a name="step-1-locate-error-codes-associated-with-the-workflow"></a>手順 1:ワークフローに関連付けられたエラー コードを見つける
 
 次を行うことによって、ワークフローに関連付けられたエラー メッセージを見つけることができます。
 
@@ -73,8 +73,8 @@ msgen status -u URL -k KEY -w ID
                 Bases Processed : 1,348,613,600 (1 GBase)
         ```
 
- > [!NOTE]
- >  また、URL と KEY を直接入力する代わりに、構成ファイルのパスを含めることもできます。 これらの引数をコマンド ラインと構成ファイルに含めた場合、コマンド ラインの引数が優先されます。  
+  > [!NOTE]
+  >  また、URL と KEY を直接入力する代わりに、構成ファイルのパスを含めることもできます。 これらの引数をコマンド ラインと構成ファイルに含めた場合、コマンド ラインの引数が優先されます。  
 
 ワークフロー ID 1001 で、config.txt ファイルが msgen 実行可能ファイルと同じパスに配置されている場合、コマンドは次のようになります。
 
@@ -93,14 +93,14 @@ msgen status -w 1001 -f "config.txt"
 トラブルシューティングでは、standardoutput.txt の内容を調べて、表示されるすべてのエラー メッセージを書き留めます。
 
 
-## <a name="step-2-try-recommended-steps-for-common-errors"></a>手順 2: 一般的なエラーについて推奨される手順を試す
+## <a name="step-2-try-recommended-steps-for-common-errors"></a>手順 2:一般的なエラーについて推奨される手順を試す
 
 このセクションでは、Microsoft Genomics サービス (msgen) による一般的なエラー出力と、それらを解決するために使用できる方法について簡単に説明します。 
 
 Microsoft Genomics サービス (msgen) では、次の 2 種類のエラーがスローされる可能性があります。
 
-1. 内部サービス エラー: パラメーターや入力ファイルを修正して解決されない可能性があるサービス内部のエラー。 ワークフローを再送信すると、これらのエラーが修正される可能性があります。
-2. 入力エラー: 正しい引数を使用するか、ファイル形式を修正して解決できるエラー。
+1. 内部サービス エラー:パラメーターや入力ファイルを修正しても解決できない可能性があるサービス内部のエラー。 ワークフローを再送信すると、これらのエラーが修正される可能性があります。
+2. 入力エラー:正しい引数を使用するか、ファイル形式を修正して解決できるエラー。
 
 ### <a name="1-internal-service-errors"></a>1.内部サービス エラー
 
@@ -116,9 +116,9 @@ Microsoft Genomics サービス (msgen) では、次の 2 種類のエラーが�
 
 | ファイルの種類 | エラー コード | エラー メッセージ                                                                           | 推奨されるトラブルシューティングの手順                                                                                         |
 |--------------|------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| 任意          | 701        | Read [readId] has [numberOfBases] bases, but the limit is [maxReadLength]\(読み取り [readId] に [numberOfBases] ベースありますが、制限は [maxReadLength] です\)           | このエラーの最も一般的な理由は、2 つの読み取りの連結につながるファイルの破損です。 入力ファイルを確認してください。 |                                |
+| 任意          | 701        | Read [readId] has [numberOfBases] bases, but the limit is [maxReadLength]\(読み取り [readId] に [numberOfBases] ベースありますが、制限は [maxReadLength] です\)           | このエラーの最も一般的な理由は、2 つの読み取りの連結につながるファイルの破損です。 入力ファイルを確認してください。 |
 | BAM          | 200        |   ファイル '[yourFileName]' を読み取ることができません。                                                                                       | BAM ファイルの形式を確認してください。 正しく書式設定されたファイルを使用して、ワークフローを再送信します。                                                                           |
-| BAM          | 201        |  Unable to read BAM file [File_name].\(BAM ファイル [File_name] を読み取ることができません。\)                                                                                      |BAM ファイルの形式を確認してください。  正しく書式設定されたファイルを使用して、ワークフローを送信します。                                                                            |
+| BAM          | 201        |  Unable to read BAM file [File_name].                                                                                      |BAM ファイルの形式を確認してください。  正しく書式設定されたファイルを使用して、ワークフローを送信します。                                                                            |
 | BAM          | 202        | Unable to read BAM file [File_name]. File too small and missing header.\(BAM ファイル [File_name] を読み取ることができません。ファイルが小さすぎ、ヘッダーがありません。\)                                                                                        | BAM ファイルの形式を確認してください。  正しく書式設定されたファイルを使用して、ワークフローを送信します。                                                                            |
 | BAM          | 203        |   Unable to read BAM file [File_name]. Header of file was corrupt.\(BAM ファイル [File_name] を読み取ることができません。ファイルのヘッダーが破損しています。\)                                                                                      |BAM ファイルの形式を確認してください。  正しく書式設定されたファイルを使用して、ワークフローを送信します。                                                                           |
 | BAM          | 204        |    Unable to read BAM file [File_name]. Header of file was corrupt.\(BAM ファイル [File_name] を読み取ることができません。ファイルのヘッダーが破損しています。\)                                                                                     | BAM ファイルの形式を確認してください。  正しく書式設定されたファイルを使用して、ワークフローを送信します。                                                                           |
@@ -137,7 +137,7 @@ Microsoft Genomics サービス (msgen) では、次の 2 種類のエラーが�
 | FASTQ        | 308        |  FASTQ read error. Reads of both ends responded differently. Did you choose the correct FASTQ files?\(FASTQ 読み取りエラー。両端の読み取りの応答が異なります。正しい FASTQ ファイルを選択しましたか?\)                                                                                       | FASTQ ファイルの形式を修正して、ワークフローを再送信します。                                                                         |
 |        |       |                                                                                        |                                                                           |
 
-## <a name="step-3-contact-microsoft-genomics-support"></a>手順 3: Microsoft Genomics サポートに問い合わせる
+## <a name="step-3-contact-microsoft-genomics-support"></a>手順 3:Microsoft Genomics サポートに問い合わせる
 
 ジョブのエラーが解決しない場合や、その他の質問がある場合は、Azure Portal の Microsoft Genomics サポートに問い合わせてください。 サポート要求を送信する方法の詳細については、[こちら](file-support-ticket-genomics.md)を参照してください。
 

@@ -1,72 +1,63 @@
 ---
-title: 'クイック スタート: Python を使用してエンドポイントを呼び出す - Bing Custom Search'
+title: クイック スタート:Python を使用して Bing Custom Search エンドポイントを呼び出す | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: このクイックスタートでは、Python を利用して Bing Custom Search エンドポイントを呼び出すことで、カスタム検索インスタンスから検索結果を要求する方法について紹介します。
+description: このクイック スタートでは、Python を使用して、Bing Custom Search インスタンスに検索結果を要求します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 05/07/2018
+ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: d7977f49a484665f133a119f491bd8986c0b6fc4
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a6f8d3964c71d036053fe0d4136468fde690f872
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310721"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337279"
 ---
-# <a name="quickstart-call-bing-custom-search-endpoint-python"></a>クイック スタート: Bing Custom Search エンドポイントを呼び出す (Python)
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-python"></a>クイック スタート:Python を使用して Bing Custom Search エンドポイントを呼び出す
 
-このクイックスタートでは、Python を利用して Bing Custom Search エンドポイントを呼び出すことで、カスタム検索インスタンスから検索結果を要求する方法について紹介します。 
+このクイック スタートでは、Bing Custom Search インスタンスに検索結果を要求します。 このアプリケーションは Python で記述されていますが、Bing Custom Search API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingCustomSearchv7.py) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、次のものが必要です。
+- Bing Custom Search インスタンス。 「[クイック スタート:初めての Bing Custom Search インスタンスを作成する](quick-start.md)」で詳細を確認する。
+- [Python](https://www.python.org/) 2.x または 3.x
 
-- すぐに使用できるカスタム検索インスタンス。 「[Create your first Bing Custom Search instance](quick-start.md)」 (最初の Bing Custom Search インスタンスを作成する) を参照してください。
-- [Python](https://www.python.org/) がインストールされていること。
-- サブスクリプション キー。 [無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)をアクティブにすると、サブスクリプション キーを取得できます。または Azure ダッシュボードから有料のサブスクリプション キーを使用することもできます ([Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を参照してください)。   「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
+[!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
 
-## <a name="run-the-code"></a>コードの実行
+## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
-この例を実行するには、次の手順に従います。
+1. お気に入りの IDE またはエディターで新しい Python ファイルを作成し、次の import ステートメントを追加します。 サブスクリプション キー、カスタム構成 ID、検索語句に使用する変数を作成します。 
 
-1. コードのフォルダーを作成します。  
-  
-2. 管理者コマンド プロンプトまたはターミナルから、先ほど作成したフォルダーに移動します。  
-  
-3. **requests** python モジュールをインストールします。  
-  
-    <pre>
-    pip install pipenv
-    pipenv install requests
-    </pre>  
-      
-4. 作成したフォルダー内に BingCustomSearch.py という名前のファイルを作成し、次のコードをコピーします。 **YOUR-SUBSCRIPTION-KEY** と **YOUR-CUSTOM-CONFIG-ID** を、自分のサブスクリプション キーと構成 ID に置き換えます。  
-  
-    ``` Python
+    ```python
     import json
     import requests
     
     subscriptionKey = "YOUR-SUBSCRIPTION-KEY"
     customConfigId = "YOUR-CUSTOM-CONFIG-ID"
     searchTerm = "microsoft"
-    
-    url = 'https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?q=' + searchTerm + '&customconfig=' + customConfigId
+    ```
+
+## <a name="send-and-receive-a-search-request"></a>検索要求の送信と受信 
+
+1. 検索語句を `q=` クエリ パラメーターに、また検索インスタンスのカスタム構成 ID を `customconfig=` に追加して要求 URL を作成します。 パラメーターの区切りには、`&` 文字を使用します。 
+
+    ```python
+    url = 'https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?' + 'q=' + searchTerm + '&' + 'customconfig=' + customConfigId
+    ```
+
+2. Bing Custom Search インスタンスに要求を送信し、返された検索結果を出力します。  
+
+    ```python
     r = requests.get(url, headers={'Ocp-Apim-Subscription-Key': subscriptionKey})
     print(r.text)
-    ```  
-  
-7. 次のコマンドでコードを実行します。  
-  
-    ```
-    python BingCustomSearch.py
     ```
 
 ## <a name="next-steps"></a>次の手順
-- [ホストされている UI エクスペリエンスの構成](./hosted-ui.md)
-- [装飾マーカーを使用してテキストを強調表示する](./hit-highlighting.md)
-- [Web ページのページング](./page-webpages.md)
+
+> [!div class="nextstepaction"]
+> [Custom Search Web アプリの作成](./tutorials/custom-search-web-page.md)

@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: cbedb17bb7563620d0d9db81333d9a79301b4ee0
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 831f6b4bdc99e63859b390f8a9bb88d74301284e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42817510"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997535"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Mobile Apps Node.js SDK の使用方法
 
@@ -135,7 +135,7 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
 
     ファイルを保存します。
 
-1. アプリケーションをローカルで実行するか (API は http://localhost:3000) で動作します)、Azure に発行します。
+1. アプリケーションをローカルで実行するか (API は `http://localhost:3000` で動作します)、Azure に発行します。
 
 ### <a name="create-node-backend-portal"></a>Azure Portal を使用して Node.js バックエンドを作成する
 
@@ -152,15 +152,15 @@ Mobile Apps バックエンドは、[Azure Portal] ですぐに作成できま�
 
 次の手順では、Git リポジトリを使用して、クイック スタート プロジェクトのコードをダウンロードします。
 
-1. Git をまだインストールしていない場合はインストールします。 Git をインストールするために必要な手順は、オペレーティング システムによって異なります。 オペレーティング システム固有の配布とインストールのガイダンスについては、[Git のインストール](http://git-scm.com/book/en/Getting-Started-Installing-Git)に関するページを参照してください。
-1. バックエンド サイトの Git リポジトリを有効にする方法については、「[リポジトリを準備する](../app-service/app-service-deploy-local-git.md#prepare-your-repository)」を参照してください。 デプロイ用のユーザー名とパスワードをメモしておきます。
-1. Mobile Apps バックエンドのウィンドウで、**[Git クローン URL]** の設定をメモしておきます。
-1. Git クローン URL を使用して `git clone` コマンドを実行します。 次の例のように、必要に応じてパスワードを入力します。
+1. Git をまだインストールしていない場合はインストールします。 Git をインストールするために必要な手順は、オペレーティング システムによって異なります。 オペレーティング システム固有の配布とインストールのガイダンスについては、[Git のインストール](https://git-scm.com/book/en/Getting-Started-Installing-Git)に関するページを参照してください。
+2. バックエンド サイトの Git リポジトリを有効にする方法については、「[リポジトリを準備する](../app-service/deploy-local-git.md#prepare-your-repository)」を参照してください。 デプロイ用のユーザー名とパスワードをメモしておきます。
+3. Mobile Apps バックエンドのウィンドウで、**[Git クローン URL]** の設定をメモしておきます。
+4. Git クローン URL を使用して `git clone` コマンドを実行します。 次の例のように、必要に応じてパスワードを入力します。
 
         $ git clone https://username@todolist.scm.azurewebsites.net:443/todolist.git
 
-1. ローカル ディレクトリ (前の例では `/todolist`) を参照し、プロジェクト ファイルがダウンロードされていることを確認します。 `/tables` ディレクトリ内にある todoitem.json ファイルを見つけます。 このファイルでは、テーブルに対するアクセス許可を定義します。 同じディレクトリ内にある todoitem.js ファイルも見つけます。 このファイルには、テーブルの CRUD 操作スクリプトが定義されています。
-1. プロジェクト ファイルを変更した後、次のコマンドを実行して変更を追加してコミットし、サイトにアップロードします。
+5. ローカル ディレクトリ (前の例では `/todolist`) を参照し、プロジェクト ファイルがダウンロードされていることを確認します。 `/tables` ディレクトリ内にある todoitem.json ファイルを見つけます。 このファイルでは、テーブルに対するアクセス許可を定義します。 同じディレクトリ内にある todoitem.js ファイルも見つけます。 このファイルには、テーブルの CRUD 操作スクリプトが定義されています。
+6. プロジェクト ファイルを変更した後、次のコマンドを実行して変更を追加してコミットし、サイトにアップロードします。
 
         $ git commit -m "updated the table script"
         $ git push origin master
@@ -364,7 +364,7 @@ module.exports = {
 };
 ```
 
-パスワードがクラウドに保存されないように、**azureMobile.js** を **.gitignore** ファイル (または他のソース コード管理の無視ファイル) に追加することをお勧めします。 運用環境の設定は、必ず **Azure Portal** の [Azure Portal] で構成してください。
+パスワードがクラウドに保存されないように、**azureMobile.js** を **.gitignore** ファイル (または他のソース コード管理の無視ファイル) に追加することをお勧めします。 運用環境の設定は、必ず [Azure Portal] の **[アプリ設定]** で構成してください。
 
 ### <a name="howto-appsettings"></a>モバイル アプリのアプリ設定を構成する
 
@@ -382,7 +382,7 @@ azureMobile.js ファイル内のほとんどの設定には、[Azure Portal] �
 
 アプリ設定を設定するには:
 
-1. [Azure Portal]にサインインします。
+1. [Azure Portal] にサインインします。
 1. **[すべてのリソース]** または **[App Services]** を選択し、モバイル アプリの名前をクリックします。
 1. **[設定]** ウィンドウが既定で開きます。 開かない場合は、**[すべての設定]** を選択します。
 1. **[全般]** メニューの **[アプリケーション設定]** を選択します。
@@ -399,7 +399,7 @@ azureMobile.js ファイル内のほとんどの設定には、[Azure Portal] �
 
 Azure SQL Database をデータ ストアとして使用する方法は、Azure App Service アプリケーションのすべての種類で同じです。 Mobile Apps バックエンドをまだ作成していない場合は、次の手順に従って作成します。
 
-1. [Azure Portal]にサインインします。
+1. [Azure Portal] にサインインします。
 1. ウィンドウの左上で、**[+ 新規]**、**[Web + モバイル]** > **[モバイル アプリ]** の順に選択し、Mobile Apps バックエンドの名前を指定します。
 1. **[リソース グループ]** ボックスで、アプリと同じ名前を入力します。
 1. 既定の App Service プランが選択されています。 App Service プランを変更する場合:
@@ -433,7 +433,7 @@ Mobile Apps バックエンドのプロビジョニングには数分かかる�
 
 <!--- END OF ALTERNATE INCLUDE -->
 
-データベースの作成には数分かかる場合があります。 **[通知]** 領域を使用して、デプロイの進行状況を監視します。 データベースのデプロイが正常に完了するまで、先に進まないでください。 データベースがデプロイされると、Mobile Apps バックエンドの [アプリ設定] で、SQL Database インスタンスの接続文字列が作成されます。 このアプリ設定を確認するには、**[設定]** > **[アプリケーション設定]** > **[接続文字列]** を順に選択します。
+データベースの作成には数分かかる場合があります。 **[通知]** 領域を使用して、デプロイの進行状況を監視します。 データベースのデプロイが正常に完了するまで、先に進まないでください。 データベースがデプロイされると、Mobile Apps バックエンドの [アプリ設定] で、SQL データベース インスタンスの接続文字列が作成されます。 このアプリ設定を確認するには、**[設定]** > **[アプリケーション設定]** > **[接続文字列]** を順に選択します。
 
 ### <a name="howto-tables-auth"></a>テーブルへのアクセスに認証を要求する
 
@@ -794,7 +794,7 @@ var api = {
 module.exports = api;
 ```
 
-各パラメーターは、標準的な RESTful 動詞 (GET、POST、PATCH または DELETE) のいずれかです。 メソッドは、必要な出力を送信する標準的な [ExpressJS ミドルウェア]関数です。
+各パラメーターは、標準的な RESTful 動詞(GET、POST、PATCH または DELETE) のいずれかです。 メソッドは、必要な出力を送信する標準的な [ExpressJS ミドルウェア]関数です。
 
 ### <a name="howto-customapi-auth"></a>カスタム API へのアクセスに認証を要求する
 
@@ -918,13 +918,13 @@ App Service Editor を使用してテーブルの操作を編集することも�
 
 テーブル用のコマンド バーには、次のコマンドが用意されています。
 
-* **[アクセス許可の変更]**: テーブルに対する読み取り、挿入、更新、削除操作のアクセス許可を変更します。
+* **[アクセス許可の変更]**:テーブルに対する読み取り、挿入、更新、削除操作のアクセス許可を変更します。
  匿名アクセスを許可するオプション、認証を要求するオプション、操作に対するすべてのアクセスを無効にするオプションがあります。
-* **[スクリプトの編集]**: テーブルのスクリプト ファイルは、App Service Editor で開きます。
-* **[スキーマの管理]**: 列の追加または削除やテーブルのインデックスの変更を実行します。
-* **[テーブルのクリア]**: 既存のテーブルですべてのデータ行が削除されるように切り捨てます。ただし、スキーマは変更されません。
-* **[行の削除]**: 個々のデータ行を削除します。
-* **[ストリーミング ログの表示]**: サイトのストリーミング ログ サービスに接続します。
+* **[スクリプトの編集]**:テーブルのスクリプト ファイルは、App Service Editor で開きます。
+* **[スキーマの管理]**:列の追加または削除やテーブルのインデックスの変更を実行します。
+* **[テーブルのクリア]**:既存のテーブルですべてのデータ行が削除されるように切り捨てます。ただし、スキーマは変更されません。
+* **[行の削除]**:個々のデータ行を削除します。
+* **[ストリーミング ログの表示]**:サイトのストリーミング ログ サービスに接続します。
 
 ### <a name="work-easy-apis"></a>Azure Portal で [API の簡単操作] を使用する
 
@@ -963,24 +963,24 @@ Azure Portal では、ローカル コンピューターにプロジェクトを
 [Xamarin.Forms クライアントのクイックスタート]: app-service-mobile-xamarin-forms-get-started.md
 [Windows ストア クライアントのクイックスタート]: app-service-mobile-windows-store-dotnet-get-started.md
 [オフライン データ同期]: app-service-mobile-offline-data-sync.md
-[Azure Active Directory 認証を構成する]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
-[Facebook 認証を構成する]: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md
-[Google 認証を構成する]: ../app-service/app-service-mobile-how-to-configure-google-authentication.md
-[Microsoft 認証を構成する]: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md
-[Twitter 認証を構成する]: ../app-service/app-service-mobile-how-to-configure-twitter-authentication.md
-[Azure App Service のデプロイ ガイド]: ../app-service/app-service-deploy-local-git.md
+[Azure Active Directory 認証を構成する]: ../app-service/configure-authentication-provider-aad.md
+[Facebook 認証を構成する]: ../app-service/configure-authentication-provider-facebook.md
+[Google 認証を構成する]: ../app-service/configure-authentication-provider-google.md
+[Microsoft 認証を構成する]: ../app-service/configure-authentication-provider-microsoft.md
+[Twitter 認証を構成する]: ../app-service/configure-authentication-provider-twitter.md
+[Azure App Service のデプロイ ガイド]: ../app-service/deploy-local-git.md
 [Azure App Service の監視]: ../app-service/web-sites-monitor.md
-[Azure App Service での診断ログの有効化]: ../app-service/web-sites-enable-diagnostic-log.md
-[Visual Studio での Azure App Service のトラブルシューティング]: ../app-service/web-sites-dotnet-troubleshoot-visual-studio.md
+[Azure App Service での診断ログの有効化]: ../app-service/troubleshoot-diagnostic-logs.md
+[Visual Studio での Azure App Service のトラブルシューティング]: ../app-service/troubleshoot-dotnet-visual-studio.md
 [Node のバージョンを指定する]: ../nodejs-specify-node-version-azure-apps.md
 [Node モジュールを使用する]: ../nodejs-use-node-modules-azure-apps.md
 [Create a new Azure App Service]: ../app-service/
 [azure-mobile-apps]: https://www.npmjs.com/package/azure-mobile-apps
-[Express]: http://expressjs.com/
-[Swagger]: http://swagger.io/
+[Express]: https://expressjs.com/
+[Swagger]: https://swagger.io/
 
 [Azure Portal]: https://portal.azure.com/
-[OData]: http://www.odata.org
+[OData]: https://www.odata.org
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [GitHub の basicapp サンプル]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app
 [GitHub の todo サンプル]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/todo
@@ -989,6 +989,6 @@ Azure Portal では、ローカル コンピューターにプロジェクトを
 [QueryJS]: https://github.com/Azure/queryjs
 [Node.js Tools 1.1 for Visual Studio]: https://github.com/Microsoft/nodejstools/releases/tag/v1.1-RC.2.1
 [mssql Node.js パッケージ]: https://www.npmjs.com/package/mssql
-[Microsoft SQL Server 2014 Express]: http://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
-[ExpressJS ミドルウェア]: http://expressjs.com/guide/using-middleware.html
+[Microsoft SQL Server 2014 Express]: https://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
+[ExpressJS ミドルウェア]: https://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston

@@ -4,24 +4,25 @@ description: 定義したビジネス要件を満たすために、ハイブリ�
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: e76fd1f4-340a-492a-84d9-e05f3b7cc396
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 9f02c6779b3561f6eea57512ecb27dd2fd451d90
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3c5cad3f735494ee74156e22a9bf150911c36eb0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238150"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091479"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのデータ保護戦略の定義
 このタスクでは、次のトピックで定義したビジネス要件を満たすために、ハイブリッド ID ソリューションのデータ保護戦略を定義します。
@@ -92,7 +93,7 @@ Azure AD で使うことができる認証、承認、アクセス制御の機�
 
 一元管理および他のディレクトリとの完全統合
 
-Azure Active Directory では、何千もの SaaS アプリケーションやオンプレミスの Web アプリケーションにシングル サインオンを提供しています。 マイクロソフトによってテストされた SSO サードパーティの詳細については、[Azure Active Directory のフェデレーション互換性リスト: シングル サインオンの実装に使用できるサード パーティ ID プロバイダー](https://msdn.microsoft.com/library/azure/jj679342.aspx)に関するページをご覧ください。 この機能により、組織は ID とアクセス管理の制御を維持しながら、さまざまな B2B のシナリオを実装できます。 ただし、B2B の設計プロセスで重要なのは、パートナーが使う認証方法を理解し、その方法が Azure でサポートされているかどうかを検証することです。 現在、Azure AD では次の方法がサポートされています。
+Azure Active Directory では、何千もの SaaS アプリケーションやオンプレミスの Web アプリケーションにシングル サインオンを提供しています。 マイクロソフトによってテストされた SSO サードパーティの詳細については、[Azure Active Directory のフェデレーション互換性リスト: シングル サインオンの実装に使用できるサード パーティ ID プロバイダー](how-to-connect-fed-compatibility.md)に関するページをご覧ください。 この機能により、組織は ID とアクセス管理の制御を維持しながら、さまざまな B2B のシナリオを実装できます。 ただし、B2B の設計プロセスで重要なのは、パートナーが使う認証方法を理解し、その方法が Azure でサポートされているかどうかを検証することです。 現在、Azure AD では次の方法がサポートされています。
 
 * Security Assertion Markup Language (SAML)
 * OAuth
@@ -118,21 +119,21 @@ Azure AD を使ってユーザーが認証されたら、そのユーザーが�
 
 図 X に示した個々のやり取りは、Azure AD で対応できる 1 つのアクセス制御シナリオを表しています。 各シナリオの説明を以下に示します。
 
-  1. オンプレミスでホストされるアプリケーションへの条件付きアクセス: Windows Server 2012 R2 で AD FS を使用するように構成されたアプリケーションに対して、アクセス ポリシーの登録済みのデバイスを使用できます。
+1. オンプレミスでホストされるアプリケーションへの条件付きアクセス: Windows Server 2012 R2 で AD FS を使用するように構成されたアプリケーションに対して、アクセス ポリシーの登録済みのデバイスを使用できます。
 
-  2. Azure Portal へのアクセス制御: Azure では、ロールベースのアクセス制御 (RBAC) を使用して、ポータルへのアクセスを制御することもできます。 この方法により、ユーザーが Azure Portal で実行できる操作の数を会社が制限できます。 RBAC を使用してポータルへのアクセスを制御することで、IT 管理者は、次のアクセスの管理方法を使用してアクセスを委任できます。
+2. Azure portal へのアクセス制御: Azure では、ロールベースのアクセス制御 (RBAC) を使用して、ポータルへのアクセスを制御することもできます。 この方法により、ユーザーが Azure Portal で実行できる操作の数を会社が制限できます。 RBAC を使用してポータルへのアクセスを制御することで、IT 管理者は、次のアクセスの管理方法を使用してアクセスを委任できます。
 
-   - グループベースのロールの割り当て: ローカルの Active Directory から同期できる Azure AD グループにアクセスを割り当てることができます。 これにより、グループ管理用のツールとプロセスに組織が費やした既存の投資を活用できます。 また、Azure AD Premium の委任されたグループ管理機能も使用できます。
-   - Azure の組み込みロールの使用: 所有者、共同作業者、閲覧者の 3 つのロールを使って、ジョブの実行に必要なタスクのみを実行する権限をユーザーとグループに付与できます。
+   - グループベースのロールの割り当て: ご利用のローカルの Active Directory から同期できる Azure AD グループにアクセスを割り当てることができます。 これにより、グループ管理用のツールとプロセスに組織が費やした既存の投資を活用できます。 また、Azure AD Premium の委任されたグループ管理機能も使用できます。
+   - Azure の組み込みロールの使用: 所有者、共同作成者、閲覧者の 3 つのロールを使って、ジョブの実行に必要なタスクのみを実行する権限をユーザーとグループに確実に付与できます。
    -  リソースへのきめ細かなアクセス: 特定のサブスクリプションのユーザーとグループ、リソース グループ、Web サイトやデータベースなどの個々の Azure リソースにロールを割り当てることができます。 このように、ユーザーが必要なすべてのリソースにアクセスし、管理する必要のないリソースには一切アクセスできないようにすることができます。
 
    > [!NOTE]
    > アプリケーションをビルドしていて、それらのアクセスの制御をカスタマイズする必要がある場合、Azure AD アプリケーション ロールを使用して承認を実行することもできます。 この機能を使用するアプリケーションをビルドする方法については、こちらの [WebApp-RoleClaims-DotNet の例](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) を参照してください。
 
 
-  3. Microsoft Intune を使用した Office 365 アプリケーションへの条件付きアクセス: IT 管理者は、条件付きアクセスのデバイス ポリシーをプロビジョニングすることで、会社リソースをセキュリティで保護し、同時にインフォメーション ワーカーに準拠しているデバイスからサービスへのアクセスを許可できます。 
+3. Microsoft Intune を使用した Office 365 アプリケーションへの条件付きアクセス: IT 管理者は、条件付きアクセスのデバイス ポリシーをプロビジョニングすることで、会社リソースをセキュリティで保護し、同時にインフォメーション ワーカーに準拠しているデバイスからサービスへのアクセスを許可できます。 
   
-  4. Saas アプリの条件付きアクセス: [この機能](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/)を使用すると、アプリケーションごとの Multi-Factor Authentication のアクセス規則と、信頼されたネットワークを使用していないユーザーのアクセスをブロックする機能を構成できます。 Multi-Factor Authentication の規則は、アプリケーションに割り当てられているすべてのユーザーに適用することも、指定したセキュリティ グループのユーザーにのみ適用することもできます。 ユーザーが組織のネットワーク内の IP アドレスからアプリケーションにアクセスしている場合は、そのユーザーを Multi-Factor Authentication の要件から除外できます。
+4. SaaS アプリ向けの条件付きアクセス: [この機能](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/)を使用すると、アプリケーションごとの多要素認証のアクセス規則と、信頼されたネットワークにないユーザーのアクセスをブロックする機能を構成できます。 Multi-Factor Authentication の規則は、アプリケーションに割り当てられているすべてのユーザーに適用することも、指定したセキュリティ グループのユーザーにのみ適用することもできます。 ユーザーが組織のネットワーク内の IP アドレスからアプリケーションにアクセスしている場合は、そのユーザーを Multi-Factor Authentication の要件から除外できます。
 
 アクセス制御のオプションでは複数層のアプローチを使用しているため、オプションを比較することはこのタスクには適しません。 必ず、リソースへのアクセスを制御する必要があるシナリオごとに使用可能なすべてのオプションを使用してください。
 

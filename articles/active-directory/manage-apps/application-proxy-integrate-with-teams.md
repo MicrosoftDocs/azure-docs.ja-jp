@@ -3,24 +3,25 @@ title: Teams からの Azure AD アプリケーション プロキシ アプリ�
 description: Azure AD アプリケーション プロキシを使用して、Microsoft Teams からオンプレミス アプリケーションにアクセスします。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 1269dfb3aec33e781601a1d885004ddf80127160
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 660d05146e82ab85136cac715b56cb1ee89b002f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39367200"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210953"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Microsoft Teams からのオンプレミス アプリケーションへのアクセス
 
@@ -31,7 +32,7 @@ Azure Active Directory アプリケーション プロキシを使用すると�
 
 ## <a name="install-the-application-proxy-connector-and-publish-your-app"></a>アプリケーション プロキシ コネクタのインストールとアプリの公開
 
-まだ実行していない場合は、[テナントのアプリケーション プロキシを構成し、コネクタをインストール](application-proxy-enable.md)します。 次に、リモート アクセス用に[オンプレミス アプリケーションを公開](application-proxy-publish-azure-portal.md)します。 アプリケーションを公開するときに、外部 URL を書き留めておきます。これは、Teams にアプリを追加するときに必要になります。
+まだ実行していない場合は、[テナントのアプリケーション プロキシを構成し、コネクタをインストール](application-proxy-add-on-premises-application.md)します。 次に、リモート アクセス用に[オンプレミス アプリケーションを公開](application-proxy-add-on-premises-application.md)します。 アプリケーションを公開するときに、外部 URL を書き留めておきます。これは、Teams にアプリを追加するときに必要になります。
 
 既にアプリケーションを公開していて、その外部 URL がわからない場合は、[Azure Portal](https://portal.azure.com) で確認できます。 ポータルにサインインしたら、**[Azure Active Directory]** > **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** に移動し、アプリケーションを選び、**[アプリケーション プロキシ]** を選択します。
 

@@ -1,31 +1,26 @@
 ---
-title: Machine Learning Studio での実験イテレーションの管理 | Microsoft Docs
-description: Azure Machine Learning Studio での実験イテレーションの管理方法
+title: 実験イテレーションの管理
+titleSuffix: Azure Machine Learning Studio
+description: Azure Machine Learning Studio での実験イテレーションの管理方法。 これまでの前提条件を厳密に調べ、再検討し、最終的に確定または改善するために、いつでも以前に実行した実験を見直すことができます。
 services: machine-learning
-documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
-editor: cgronlun
-ms.assetid: 6a53530f-20d5-40ae-9b49-7b499ccb44b7
 ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: studio
+ms.topic: conceptual
+author: xiaoharper
+ms.author: amlstudiodocs
+ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 4dcae0bb3cb89e65079b88f7be68ddf360ce1b8c
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 34a72f2e7b6be90654c0f053d5b8978b0283d56c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834813"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890520"
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio での実験イテレーションの管理
 予測可能な分析モデルの開発では、十分にトレーニングされた有効なモデルが作成されるまで、実験におけるさまざまな関数とパラメーターを繰り返し調整します。 このプロセスでは、実験パラメーターと構成のさまざまなイテレーションを追跡することが重要になります。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 これまでの前提条件を厳密に調べ、再検討し、最終的に確定または改善するために、いつでも以前に実行した実験を見直すことができます。 実験を実行すると、Machine Learning Studio はデータセット、モジュール、ポートの接続、パラメーターなどの実行履歴を保持します。 さらにこの履歴には、結果と、開始時刻や停止時刻などのランタイム情報、ログ メッセージ、実行状態などが記録されます。 任意の時点でこれらの実行内容をさかのぼって見ることで、時系列の実験結果と中間結果を確認できます。 シンプルなモデリング ソリューションや複雑なモデリング ソリューションのほか、モデリング ソリューションの組み合わせなどを作成する過程で、以前の実験の実行を使用して、照会と検索の新しいフェーズを開始できます。
 
@@ -53,7 +48,7 @@ ms.locfileid: "34834813"
 
 **[実行履歴を表示]** をクリックすると、これらの実行すべてがリストに表示されます。
 
-![実行履歴の例][runhistory]
+![実行履歴の例](./media/manage-experiment-iterations/viewrunhistory.jpg)
 
 いずれかの実行をクリックし、実験を実行した時点のスナップショットを表示します。 構成、パラメーター値、コメント、結果はすべて、実験の実行の完全な記録として保持されています。
 
@@ -78,10 +73,6 @@ Machine Learning Studio の **[EXPERIMENTS]** タブの実験のリストには�
 5. **[実行]** をクリックします。
 
 これで、このバージョンの実験を引き続き変更、実行して、作業を記録する新しい実行履歴をビルドできます。
-
-<!-- Images -->
-[runhistory]:./media/manage-experiment-iterations/viewrunhistory.jpg
-
 
 <!-- Module References -->
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/

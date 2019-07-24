@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 1bf93ce9aa1733634b46c2a15b587d4cc0826ba1
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 718e34cdba31b3b747ebb5c10f5c5708c0572448
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090935"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436597"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Azure Data Factory を使って複数のテーブルを一括コピーする
 このチュートリアルでは、**Azure SQL Database から Azure SQL Data Warehouse に多数のテーブルをコピーする方法**について説明します。 同じパターンは他のコピー シナリオでも適用できます。 たとえば、SQL Server/Oracle から Azure SQL Database/Data Warehouse/Azure BLOB にテーブルをコピーしたり、BLOB から Azure SQL Database テーブルにさまざまなパスをコピーしたりするシナリオが該当します。
@@ -47,7 +46,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure PowerShell**。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)に関するページに記載されている手順に従います。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+* **Azure PowerShell**。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)に関するページに記載されている手順に従います。
 * **Azure Storage アカウント**。 この Azure ストレージ アカウントは、一括コピー操作のステージング BLOB ストレージとして使用されます。 
 * **Azure SQL データベース**。 ソース データが格納されているデータベースです。 
 * **Azure SQL Data Warehouse**。 SQL データベースからコピーされたデータは、このデータ ウェアハウスに格納されます。 
@@ -79,24 +80,24 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
         
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
     次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
 
     ```powershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
     次のコマンドを実行して、使用するサブスクリプションを選択します。 **SubscriptionId** は、実際の Azure サブスクリプションの ID に置き換えてください。
 
     ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"
+    Select-AzSubscription -SubscriptionId "<SubscriptionId>"
     ```
-2. **Set-AzureRmDataFactoryV2** コマンドレットを実行してデータ ファクトリを作成します。 各プレースホルダーを実際の値に置き換えてからコマンドを実行してください。 
+2. **Set-AzDataFactoryV2** コマンドレットを実行してデータ ファクトリを作成します。 各プレースホルダーを実際の値に置き換えてからコマンドを実行してください。 
 
     ```powershell
     $resourceGroupName = "<your resource group to create the factory>"
     $dataFactoryName = "<specify the name of data factory to create. It must be globally unique.>"
-    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName
+    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName
     ```
 
     以下の点に注意してください。
@@ -108,7 +109,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
         ```
 
     * Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
-    * 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+    * 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。(「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 
@@ -116,7 +117,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>ソース Azure SQL Database のリンクされたサービスを作成する
 
-1. 以下の内容を記述した **AzureSqlDatabaseLinkedService.json** という名前の JSON ファイルを **C:\ADFv2TutorialBulkCopy** フォルダー内に作成します (ADFv2TutorialBulkCopy フォルダーがない場合は作成します)。
+1. 次の内容を記述した **AzureSqlDatabaseLinkedService.json** という名前の JSON ファイルを **C:\ADFv2TutorialBulkCopy** フォルダーに作成します。(ADFv2TutorialBulkCopy フォルダーがまだ存在しない場合は作成してください)。
 
     > [!IMPORTANT]
     > &lt;servername&gt;、&lt;databasename&gt;、&lt;username&gt;@&lt;servername&gt;、&lt;password&gt; を実際の Azure SQL データベースの値に置き換えてからファイルを保存してください。
@@ -138,10 +139,10 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 
 2. **Azure PowerShell** で **ADFv2TutorialBulkCopy** フォルダーに切り替えます。
 
-3. **Set-AzureRmDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス **AzureSqlDatabaseLinkedService** を作成します。 
+3. **Set-AzDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス**AzureSqlDatabaseLinkedService** を作成します。 
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
     ```
 
     出力例を次に示します。
@@ -175,10 +176,10 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     }
     ```
 
-2. リンクされたサービス **AzureSqlDWLinkedService** を作成するには、**Set-AzureRmDataFactoryV2LinkedService** コマンドレットを実行します。
+2. リンクされたサービス **AzureSqlDWLinkedService** を作成するには、**Set-AzDataFactoryV2LinkedService** コマンドレットを実行します。
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWLinkedService" -File ".\AzureSqlDWLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWLinkedService" -File ".\AzureSqlDWLinkedService.json"
     ```
 
     出力例を次に示します。
@@ -214,10 +215,10 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     }
     ```
 
-2. リンクされたサービス **AzureStorageLinkedService** を作成するには、**Set-AzureRmDataFactoryV2LinkedService** コマンドレットを実行します。
+2. リンクされたサービス **AzureStorageLinkedService** を作成するには、**Set-AzDataFactoryV2LinkedService** コマンドレットを実行します。
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
     ```
 
     出力例を次に示します。
@@ -253,10 +254,10 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     }
     ```
 
-2. データセット **AzureSqlDatabaseDataset** を作成するには、**Set-AzureRmDataFactoryV2Dataset** コマンドレットを実行します。
+2. データセット **AzureSqlDatabaseDataset** を作成するには、**Set-AzDataFactoryV2Dataset** コマンドレットを実行します。
 
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseDataset" -File ".\AzureSqlDatabaseDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseDataset" -File ".\AzureSqlDatabaseDataset.json"
     ```
 
     出力例を次に示します。
@@ -271,7 +272,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 
 ### <a name="create-a-dataset-for-sink-sql-data-warehouse"></a>シンク SQL Data Warehouse のデータセットを作成する
 
-1. **C:\ADFv2TutorialBulkCopy** フォルダーに、**AzureSqlDWDataset.json** という名前で以下の内容の JSON ファイルを作成します。"tableName" がパラメーターとして設定されています。後で、このデータセットを参照するコピー アクティビティによって、実際の値がデータセットに渡されます。
+1. 次の内容を記述した **AzureSqlDWDataset.json** という名前の JSON ファイルを **C:\ADFv2TutorialBulkCopy** フォルダーに作成します。"tableName" はパラメーターとして設定されています。後で、このデータセットを参照するコピー アクティビティを使用して、実際の値をデータセットに渡します。
 
     ```json
     {
@@ -297,10 +298,10 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     }
     ```
 
-2. データセット **AzureSqlDWDataset** を作成するには、**Set-AzureRmDataFactoryV2Dataset** コマンドレットを実行します。
+2. データセット **AzureSqlDWDataset** を作成するには、**Set-AzDataFactoryV2Dataset** コマンドレットを実行します。
 
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWDataset" -File ".\AzureSqlDWDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWDataset" -File ".\AzureSqlDWDataset.json"
     ```
 
     出力例を次に示します。
@@ -389,10 +390,10 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     }
     ```
 
-2. パイプライン **IterateAndCopySQLTables** を作成するには、**Set-AzureRmDataFactoryV2Pipeline** コマンドレットを実行します。
+2. パイプライン **IterateAndCopySQLTables** を作成するには、**Set-AzDataFactoryV2Pipeline** コマンドレットを実行します。
 
     ```powershell
-    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IterateAndCopySQLTables" -File ".\IterateAndCopySQLTables.json"
+    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IterateAndCopySQLTables" -File ".\IterateAndCopySQLTables.json"
     ```
 
     出力例を次に示します。
@@ -465,10 +466,10 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     }
     ```
 
-2. パイプライン **GetTableListAndTriggerCopyData** を作成するには、**Set-AzureRmDataFactoryV2Pipeline** コマンドレットを実行します。
+2. パイプライン **GetTableListAndTriggerCopyData** を作成するには、**Set-AzDataFactoryV2Pipeline** コマンドレットを実行します。
 
     ```powershell
-    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "GetTableListAndTriggerCopyData" -File ".\GetTableListAndTriggerCopyData.json"
+    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "GetTableListAndTriggerCopyData" -File ".\GetTableListAndTriggerCopyData.json"
     ```
 
     出力例を次に示します。
@@ -486,14 +487,14 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 1. 主なパイプラインである "GetTableListAndTriggerCopyData" の実行を開始し、後で監視できるようパイプライン実行 ID をキャプチャします。 この ID の下で、ExecutePipeline アクティビティに指定されたパイプライン "IterateAndCopySQLTables" の実行がトリガーされます。
 
     ```powershell
-    $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName 'GetTableListAndTriggerCopyData'
+    $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName 'GetTableListAndTriggerCopyData'
     ```
 
 2.  次のスクリプトを実行して、パイプライン **GetTableListAndTriggerCopyData** の状態を常時チェックし、最終的なパイプライン実行とアクティビティ実行の結果を出力します。
 
     ```powershell
     while ($True) {
-        $run = Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
+        $run = Get-AzDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
 
         if ($run) {
             if ($run.Status -ne 'InProgress') {
@@ -508,7 +509,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
         Start-Sleep -Seconds 15
     }
 
-    $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+    $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
     Write-Host "Activity run details:" -foregroundcolor "Yellow"
     $result
     ```
@@ -575,7 +576,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     ```
 
     ```powershell
-    $result2 = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId <copy above run ID> -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+    $result2 = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId <copy above run ID> -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
     $result2
     ```
 

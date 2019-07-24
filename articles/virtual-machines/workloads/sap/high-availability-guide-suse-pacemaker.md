@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 9d3d1e5ba7ebc7e2afefb31df3be9f2a8f43e153
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 62356ee35631373b5a5d38ed356bbb2fb489807b
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685397"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577797"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする
 
@@ -28,8 +28,8 @@ ms.locfileid: "51685397"
 [deployment-guide]:deployment-guide.md
 [dbms-guide]:dbms-guide.md
 [sap-hana-ha]:sap-hana-high-availability.md
-[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#memory-preserving-maintenance
-[virtual-machines-windows-maintenance]:../../windows/maintenance-and-updates.md#memory-preserving-maintenance
+[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-not-requiring-a-reboot
+[virtual-machines-windows-maintenance]:../../windows/maintenance-and-updates.md#maintenance-not-requiring-a-reboot
 [sles-nfs-guide]:high-availability-guide-suse-nfs.md
 [sles-guide]:high-availability-guide-suse.md
 
@@ -84,7 +84,7 @@ SBD デバイスをフェンスに使用する場合は、次の手順に従っ�
 
 すべての **iSCSI ターゲット仮想マシン**に対して次のコマンドを実行し、SAP システムによって使用されるクラスター用の iSCSI ディスクを作成します。 次の例では、複数のクラスターに対して SBD デバイスが作成されています。 この例では、複数のクラスターに対して 1 つの iSCSI ターゲット サーバーを使用する方法を示しています。 SBD デバイスは OS ディスク上に配置されます。 十分な容量があることを確認してください。
 
-**nfs** は、NFS クラスターを識別するために使用されます。**ascsnw1** は **NW1** の ASCS クラスターを識別するために使用され、**dbnw1** は **NW1** のデータベース クラスターを識別するために使用されます。**nfs 0** と **nfs 1** は、NFS クラスター ノードのホスト名で、**nw1-xscs-0** と **nw1-xscs-1** は、**NW1** の ASCS クラスター ノードのホスト名です。**nw1-db-0** と **nw1-db-1** は、データベース クラスター ノードのホスト名です。 これらは、実際のクラスター ノードのホスト名と、実際の SAP システムの SID に置き換えてください。
+**`nfs`** は、NFS クラスターを識別するために使用されます。**ascsnw1** は **NW1** の ASCS クラスターを識別するために使用され、**dbnw1** は **NW1** のデータベース クラスターを識別するために使用されます。**nfs-0** と **nfs-1** は、NFS クラスター ノードのホスト名で、**nw1-xscs-0** と **nw1-xscs-1** は、**NW1** の ASCS クラスター ノードのホスト名です。**nw1-db-0** と **nw1-db-1** は、データベース クラスター ノードのホスト名です。 これらは、実際のクラスター ノードのホスト名と、実際の SAP システムの SID に置き換えてください。
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -302,7 +302,7 @@ o- / ...........................................................................
    <b>SBD_WATCHDOG="yes"</b>
    </code></pre>
 
-   softdog 構成ファイルを作成します
+   `softdog` 構成ファイルを作成します
 
    <pre><code>echo softdog | sudo tee /etc/modules-load.d/softdog.conf
    </code></pre>
@@ -346,6 +346,18 @@ o- / ...........................................................................
    # Change/set the following settings
    vm.dirty_bytes = 629145600
    vm.dirty_background_bytes = 314572800
+   </code></pre>
+
+1. **[A]** HA クラスター用に cloud-netconfig-azure を構成します
+
+   クラウド ネットワーク プラグインによって仮想 IP アドレスが削除されるのを防ぐために、次に示すようにネットワーク インターフェイスの構成ファイルを変更します (Pacemaker で VIP の割り当てを制御する必要があります)。 詳細については、[SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633) を参照してください。 
+
+   <pre><code># Edit the configuration file
+   sudo vi /etc/sysconfig/network/ifcfg-eth0 
+   
+   # Change CLOUD_NETCONFIG_MANAGE
+   # CLOUD_NETCONFIG_MANAGE="yes"
+   CLOUD_NETCONFIG_MANAGE="no"
    </code></pre>
 
 1. **[1]** SSH アクセスを有効にします
@@ -436,7 +448,7 @@ o- / ...........................................................................
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   値が無いか、異なる場合は、次の太字の内容をファイルに追加します。 トークンを 30000 に変更してメモリ保持メンテナンスを可能にします。 詳しくは、[Linux の場合はこちらの記事][virtual-machines-linux-maintenance]、[Windows の場合はこちらの記事][virtual-machines-windows-maintenance]をご覧ください。
+   値が無いか、異なる場合は、次の太字の内容をファイルに追加します。 トークンを 30000 に変更してメモリ保持メンテナンスを可能にします。 詳しくは、[Linux の場合はこちらの記事][virtual-machines-linux-maintenance]、[Windows の場合はこちらの記事][virtual-machines-windows-maintenance]をご覧ください。 また、必ずパラメーター mcastaddr を削除してください。
 
    <pre><code>[...]
      <b>token:          30000
@@ -449,6 +461,8 @@ o- / ...........................................................................
         [...] 
      }
      <b>transport:      udpu</b>
+     # remove parameter mcastaddr
+     <b># mcastaddr: IP</b>
    } 
    <b>nodelist {
      node {
@@ -481,12 +495,12 @@ o- / ...........................................................................
 
 STONITH デバイスは、サービス プリンシパルを使用して Microsoft Azure を承認します。 サービス プリンシパルを作成するには、次に手順に従います。
 
-1. <https://portal.azure.com> に移動します
+1. [https://portal.azure.com](https://portal.azure.com) に移動します
 1. [Azure Active Directory] ブレードを開きます  
    [プロパティ] に移動し、ディレクトリ ID をメモします。 これは、**テナント ID** です。
 1. [アプリの登録] を選択します
 1. [追加] をクリックします。
-1. 名前を入力して、アプリケーションの種類に [Web アプリ/API] を選択し、サインオン URL (例: http://localhost)) を入力します。その後、[作成] をクリックします
+1. [名前] を入力し、[アプリケーションの種類] に [Web アプリ/API] を選択し、サインオン URL (たとえば http\://localhost) を入力して、[作成] をクリックします
 1. サインオン URL は使用されず、任意の有効な URL を指定することができます
 1. 新しいアプリを選択し、[設定] タブで [キー] をクリックします
 1. 新しいキーの説明を入力し、[Never expires] \(有効期限なし) を選択して [保存] をクリックします
@@ -495,7 +509,7 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** フェンス エージェントのカスタム ロールを作成する
 
-既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (割り当て解除) する権限を、サービス プリンシパルに付与する必要があります。 まだカスタム ロールを作成していない場合は、[PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell#create-a-custom-role) または [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli#create-a-custom-role) を使って作成してください
+既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (割り当て解除) する権限を、サービス プリンシパルに付与する必要があります。 まだカスタム ロールを作成していない場合は、[PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) または [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) を使って作成してください
 
 入力ファイルには次の内容を使用します。 実際のサブスクリプションに合わせて内容を調整する必要があります。つまり、c276fc76-9cd4-44c9-99a7-4fd71546436e and e91d47c4-76f3-4271-a796-21b4ecfe3624 は、ご利用のサブスクリプションの ID に置き換えます。 ご利用のサブスクリプションが 1 つしかない場合は、AssignableScopes の 2 つ目のエントリは削除してください。
 
@@ -519,18 +533,18 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 }
 ```
 
-### <a name="1-assign-the-custom-role-to-the-service-principal"></a>**[1]** サービス プリンシパルにカスタム ロールを割り当てる
+### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** サービス プリンシパルにカスタム ロールを割り当てる
 
 最後の章で作成したカスタム ロール "Linux Fence Agent Role" をサービス プリンシパルに割り当てます。 所有者ロールは今後使わないでください。
 
-1. https://portal.azure.com に移動します
+1. [https://portal.azure.com](https://portal.azure.com) に移動します
 1. [All resources] \(すべてのリソース) ブレードを開きます
 1. 1 つ目のクラスター ノードの仮想マシンを選択します
 1. [アクセス制御 (IAM)] を選択します
-1. [追加] をクリックします。
+1. [ロールの割り当ての追加] をクリックします
 1. "Linux Fence Agent Role" ロールを選択します
 1. 上記で作成したアプリケーションの名前を入力します
-1. [OK] をクリックします
+1. [保存] をクリックします。
 
 2 つ目のクラスター ノードについても上記の手順を繰り返します。
 
@@ -561,6 +575,36 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
    params pcmk_delay_max="15" \
    op monitor interval="15" timeout="15"
 </code></pre>
+
+## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Azure のスケジュール化されたイベントの Pacemaker 構成
+
+Azure では、[スケジュール化されたイベント](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/scheduled-events)が提供されています。 スケジュール化されたイベントは、メタデータ サービスを介して提供され、VM のシャットダウンや VM の再デプロイなどのイベントに対して準備する時間をアプリケーションに与えます。リソース エージェント **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** では、スケジュール化された Azure イベントが監視されます。 イベントが検出された場合、エージェントは影響を受ける VM 上のすべてのリソースを停止してクラスター内の別のノードに移動しようとします。 これを実現するには、追加の Pacemaker リソースを構成する必要があります。 
+
+1. **[A]** **azure-events** エージェントをインストールします。 
+
+<pre><code>sudo zypper install resource-agents
+</code></pre>
+
+2. **[1]** Pacemaker 内でリソースを構成します。 
+
+<pre><code>
+#Place the cluster in maintenance mode
+sudo crm configure property maintenance-mode=true
+
+#Create Pacemaker resources for the Azure agent
+sudo crm configure primitive rsc_azure-events ocf:heartbeat:azure-events op monitor interval=10s
+sudo crm configure clone cln_azure-events rsc_azure-events
+
+#Take the cluster out of maintenance mode
+sudo crm configure property maintenance-mode=false
+</code></pre>
+
+   > [!NOTE]
+   > azure-events エージェントの Pacemaker リソースを構成した後、クラスターのメンテナンス モードを設定または設定解除すると、次のような警告メッセージが表示されることがあります。  
+     警告: cib-bootstrap-options: 属性 'hostName_  <strong>hostname</strong>' が不明です  
+     警告: cib-bootstrap-options: 属性 'azure-events_globalPullState' が不明です  
+     警告: cib-bootstrap-options: 属性 'hostName_ <strong>hostname</strong>' が不明です  
+   > これらの警告メッセージは無視できます。
 
 ## <a name="next-steps"></a>次の手順
 

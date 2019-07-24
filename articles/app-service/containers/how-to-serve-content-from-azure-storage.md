@@ -1,19 +1,20 @@
 ---
-title: Linux 上の App Service 内の Azure Storage からコンテンツを提供する
+title: Linux 上の Azure Storage からコンテンツを提供する - App Service
 description: Linux 上の Azure App Service 内の Azure Storage を構成してコンテンツを提供する方法を説明します。
 author: msangapu
 manager: jeconnoc
 ms.service: app-service
 ms.workload: web
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 2/04/2019
 ms.author: msangapu
-ms.openlocfilehash: 8d4444aac7f84753f55c434d0a3f5ef0edcfb1c4
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.custom: seodec18
+ms.openlocfilehash: 29f2b725972f5ce92e756cb21621a19850ba9386
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980242"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732942"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Linux 上の App Service 内の Azure Storage からコンテンツを提供する
 
@@ -48,7 +49,7 @@ az storage container create --name <storage_container_name> --account-name <stor
 az storage blob upload-batch -d <full_path_to_local_directory> --account-name <storage_account_name> --account-key "<access_key>" -s <source_location_name>
 ```
 
-## <a name="link-storage-to-your-web-app"></a>ストレージを Web アプリにリンクする
+## <a name="link-storage-to-your-web-app-preview"></a>ストレージを Web アプリにリンクする (プレビュー)
 
 > [!CAUTION]
 > Web アプリ内の既存のディレクトリをストレージ アカウントにリンクすると、ディレクトリの内容が削除されます。 既存アプリのファイルを移行する場合は、始める前に、アプリとその内容をバックアップしてください。
@@ -67,7 +68,7 @@ az webapp config storage-account add --resource-group <group_name> --name <app_n
 ストレージ コンテナーを Web アプリにリンクしたら、次のコマンドを実行してこれを確認できます。
 
 ```azurecli
-az webapp conf storage-account list --resource-group <group_name> --name <app_name>
+az webapp config storage-account list --resource-group <group_name> --name <app_name>
 ```
 
 ## <a name="next-steps"></a>次の手順

@@ -3,19 +3,19 @@ title: Azure Active Directory B2C のユーザー アカウントの概要 | Mic
 description: Azure Active Directory B2C のユーザー アカウントについて説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 2354bf02b47c9fbc74dbc0dab07e30ca321279cf
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.subservice: B2C
+ms.openlocfilehash: 9d4bcc66cfd82fee13ce57d096e061ddd8706720
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43670078"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100127"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー アカウントの概要
 
@@ -25,11 +25,11 @@ Azure Active Directory (Azure AD) B2C では、さまざまな種類のアカウ
 
 - **職場アカウント** - 職場アカウントは、テナントのリソースにアクセスでき、管理者ロールを使用してテナントを管理できます。
 - **ゲスト アカウント** - ゲスト アカウントは、Microsoft アカウント、またはアプリケーションにアクセスするかテナントを管理するために使用できる Azure Active Directory ユーザーのみが可能です。 
-- **コンシューマー アカウント** - コンシューマー アカウントは、Azure AD B2C アプリケーションのサインアップ ポリシーまたは Azure AD Graph API を使用して作成され、Azure AD B2C に登録されているアプリケーションのユーザーによって使用されます。 
+- **コンシューマー アカウント** - コンシューマー アカウントは、Azure AD B2C アプリケーションのサインアップ ユーザー フローまたは Azure AD Graph API を使用して作成され、Azure AD B2C に登録されているアプリケーションのユーザーによって使用されます。 
 
 ## <a name="work-account"></a>職場アカウント
 
-職場アカウントは、Azure AD に基づいて、すべてのテナントに対して同じ方法で作成されます。 職場アカウントを作成するには、「[クイック スタート: Azure Active Directory に新しいユーザーを追加する](../active-directory/fundamentals/add-users-azure-active-directory.md)」の情報を使用できます。 職場アカウントは、Azure portal で **[新しいユーザー]** を選択して作成できます。
+職場アカウントは、Azure AD に基づいて、すべてのテナントに対して同じ方法で作成されます。 職場アカウントを作成するには、「[クイック スタート:Azure Active Directory に新しいユーザーを追加する](../active-directory/fundamentals/add-users-azure-active-directory.md)」を参照してください。 職場アカウントは、Azure portal で **[新しいユーザー]** を選択して作成できます。
 
 新しい職場アカウントを追加する場合は、次の構成設定を考慮する必要があります。
 
@@ -47,33 +47,33 @@ Azure Active Directory (Azure AD) B2C では、さまざまな種類のアカウ
 次の情報を使用して、新しい職場アカウントを作成できます。
 
 - [Azure Portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
-- [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_post_users)
+- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 
 ### <a name="update-a-user-profile"></a>ユーザー アカウントを更新する
 
 次の情報を使用して、ユーザーのプロファイルを更新できます。
 
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
-- [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_update)
+- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ### <a name="reset-a-password-for-a-user"></a>ユーザーのパスワードをリセットする
 
 次の情報を使用して、ユーザーのパスワードをリセットできます。 
 
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
-- [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_update)
+- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ## <a name="guest-user"></a>ゲスト ユーザー
 
 外部ユーザーをゲスト ユーザーとしてテナントに招待できます。 ゲスト ユーザーを Azure AD B2C テナントに招待する一般的なシナリオは、管理責任を共有することです。 ゲスト アカウントの使用例は、「[Azure Active Directory B2B コラボレーション ユーザーのプロパティ](../active-directory/b2b/user-properties.md)」を参照してください。
 
-ゲスト ユーザーをテナントに招待するときは、受信者の電子メール アドレスと、招待であることを説明するメッセージを指定します。 ユーザーは招待リンクによって同意ページに移動します。そのページで、**[作業開始]** ボタンを選択し、アクセス許可を受け取ったことを確認します。 受信トレイが電子メール アドレスにアタッチされていない場合、ユーザーは、招待資格情報を使用して Microsoft ページに移動することで、同意ページに移動できます。 その後、ユーザーは、電子メール内のリンクのクリックと同じ方法で招待を受け入れます。 例: `https://myapps.microsoft.com/B2CTENANTNAME`
+ゲスト ユーザーをテナントに招待するときは、受信者の電子メール アドレスと、招待であることを説明するメッセージを指定します。 ユーザーは招待リンクによって同意ページに移動します。そのページで、**[作業開始]** ボタンを選択し、アクセス許可を受け取ったことを確認します。 受信トレイが電子メール アドレスにアタッチされていない場合、ユーザーは、招待資格情報を使用して Microsoft ページに移動することで、同意ページに移動できます。 その後、ユーザーは、電子メール内のリンクのクリックと同じ方法で招待を受け入れます。 (例: `https://myapps.microsoft.com/B2CTENANTNAME`)。
 
-ゲスト ユーザーは、[Microsoft Graph API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/invitation_post) を使用して招待することもできます。
+ゲスト ユーザーは、[Microsoft Graph API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-beta) を使用して招待することもできます。
 
 ## <a name="consumer-user"></a>コンシューマー ユーザー
 
-コンシューマー ユーザーは、Azure AD B2C によってセキュリティで保護されているアプリケーションにサインインできますが、Azure portal などの Azure リソースにはアクセスできません。  コンシューマー ユーザーは、ローカル アカウントまたは Facebook や Twitter などのフェデレーション アカウントを使用できます。 コンシューマー アカウントは、[サインアップまたはサインイン ポリシー](../active-directory-b2c/active-directory-b2c-reference-policies.md)を使用して作成されます。
+コンシューマー ユーザーは、Azure AD B2C によってセキュリティで保護されているアプリケーションにサインインできますが、Azure portal などの Azure リソースにはアクセスできません。  コンシューマー ユーザーは、ローカル アカウントまたは Facebook や Twitter などのフェデレーション アカウントを使用できます。 コンシューマー アカウントは、[サインアップまたはサインイン ユーザー フロー](../active-directory-b2c/active-directory-b2c-reference-policies.md)を使用して作成されます。
 
 コンシューマー ユーザー アカウントを作成するときに、カスタム ユーザー属性を使用して、収集されるデータを指定できます。 詳細については、「[Azure Active Directory B2C でカスタム属性を定義する](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md)」を参照してください。
 

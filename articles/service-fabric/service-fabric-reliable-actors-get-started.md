@@ -4,7 +4,7 @@ description: C# で Service Fabric Reliable Actors を使用して、最初の�
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: d4aebe72-1551-4062-b1eb-54d83297f139
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: 4ff896902c1a92c244c3bcd147c3daeeb9e49c77
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: b6ca4810d86bb3c8413f0a740ac4483a848b8e10
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054759"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661090"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors の使用
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Visual Studio 2015 以降を管理者として起動し、新しい **Service Fa
 
 ![Visual Studio 用の Service Fabric ツール - 新しいプロジェクト][1]
 
-次のダイアログ ボックスで、**[.Net Core 2.0]** の下の **[アクター サービス]** を選択し、サービスの名前を入力します。
+次のダイアログ ボックスで、**[.NET Core 2.0]** の下の **[アクター サービス]** を選択し、サービスの名前を入力します。
 
 ![Service Fabric プロジェクトのテンプレート][5]
 
@@ -54,7 +54,7 @@ Visual Studio 2015 以降を管理者として起動し、新しい **Service Fa
 
 * **インターフェイス プロジェクト (HelloWorld.Interfaces)**。 このプロジェクトには、アクターのインターフェイス定義が含まれています。 アクター インターフェイスは、任意の名前の任意のプロジェクトで定義できます。  このインターフェイスは、アクター コントラクトを定義します。コントラクトは、アクター実装と、アクターを呼び出すクライアントによって共有されます。  クライアント プロジェクトがこれに依存する可能性があるため、通常は、アクター実装とは別のアセンブリで定義するのが妥当です。
 
-* **アクター サービス プロジェクト (HelloWorld)**。 このプロジェクトは、アクターをホストする Service Fabric サービスを定義します。 これには、アクターの実装である *HellowWorld.cs* が含まれています。 アクター実装は、基本型 `Actor` から派生し、*MyActor.Interfaces* プロジェクトで定義されたインターフェイスを実装するクラスです。 またアクター クラスは、`ActorService` インスタンスおよび `ActorId` を受け取り、ベース `Actor` クラスに渡すコンストラクターを実装する必要があります。
+* **アクター サービス プロジェクト (HelloWorld)**。 このプロジェクトは、アクターをホストする Service Fabric サービスを定義します。 これには、アクターの実装である *HelloWorld.cs* が含まれています。 アクター実装は、基本型 `Actor` から派生し、*MyActor.Interfaces* プロジェクトで定義されたインターフェイスを実装するクラスです。 またアクター クラスは、`ActorService` インスタンスおよび `ActorId` を受け取り、ベース `Actor` クラスに渡すコンストラクターを実装する必要があります。
     
     このプロジェクトには *Program.cs* も含まれています。これは、`ActorRuntime.RegisterActorAsync<T>()` を使用して、アクター クラスを Service Fabric ランタイムに登録します。 `HelloWorld` クラスは既に登録されています。 プロジェクトに追加された追加アクター実装も、`Main()` メソッドに登録する必要があります。
 

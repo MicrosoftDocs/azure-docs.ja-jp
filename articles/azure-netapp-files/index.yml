@@ -1,0 +1,35 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure NetApp Files のドキュメント
+metadata:
+  title: Azure NetApp Files のドキュメント
+  description: Azure NetApp Files サービスを使用してボリュームの設定、アクセス、管理を行う方法について説明します。
+  author: b-juche
+  ms.author: b-juche
+  ms.service: azure-netapp-files
+  ms.topic: landing-page
+  ms.date: 04/10/2019
+abstract:
+  description: Azure NetApp Files を使用して、NetApp のアカウント、容量プール、ボリュームの作成および管理、エクスポート ポリシーの構成、仮想マシンのボリュームのマウント、スナップショットの管理を行う方法について説明します。 <p>Azure NetApp Files を使用するには、パブリック プレビュー プログラムに参加する必要があります。 さらに、Microsoft.NetApp Azure リソースプロバイダーにアクセスするためのホワイトリストに登録される必要があります。 パブリック プレビュー プログラムへの参加を要求するには、「<a href="azure-netapp-files-register">Azure NetApp Files に登録する</a>」を参照してください。</p>
+sections:
+  - title: 5 分間のクイックスタート
+    items:
+      - type: paragraph
+        text: 以下を使用し、Azure NetApp Files を設定してボリュームを作成する方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/azure-netapp-files/media/index/get-started.svg'
+            text: Azure ポータル
+            href: /azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/rest/api/netapp/">REST API</a></p>'
+          - title: Azure Resource Manager
+            html: '<p><a href="https://docs.microsoft.com/azure/templates/microsoft.netapp/allversions">Resource Manager テンプレート</a></p>'

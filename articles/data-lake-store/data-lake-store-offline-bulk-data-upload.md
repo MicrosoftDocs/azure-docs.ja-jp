@@ -3,21 +3,21 @@ title: オフライン メソッドを使用して大量のデータを Azure Da
 description: AdlCopy ツールを使用して Azure Storage BLOB から Azure Data Lake Storage Gen1 にデータをコピーする
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 45321f6a-179f-4ee4-b8aa-efa7745b8eb6
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: fc70089517bbc1aa90f95f1e0231f2c67f930090
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: twooley
+ms.openlocfilehash: 4a8126d658f227d9eed372cd51cf06f8f12c99f9
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242196"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58885527"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-azure-data-lake-storage-gen1"></a>Azure Import/Export サービスを使用した Azure Data Lake Storage Gen1 へのデータのオフライン コピー
 この記事では、[Azure Import/Export サービス](../storage/common/storage-import-export-service.md)などのオフライン コピー メソッドを使用して、大きなデータセット (200 GB 超) を Azure Data Lake Storage Gen1 にコピーする方法について説明します。 具体的には、この記事の例では、ディスク上で 339,420,860,416 バイト、つまり約 319 GB のファイルを使用します。 このファイルに 319GB.tsv と名前を付けます。
@@ -54,9 +54,9 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
 2. Azure ストレージ アカウントを指定します。データは、Azure データセンターへの発送後そのアカウントにコピーされます。
 3. コマンドライン ユーティリティの一種である [Azure Import/Export ツール](https://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)を使用します。 ツールの使用方法を示すサンプル スニペットを次に示します。
 
-    ````
+    ```
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
-    ````
+    ```
     さらに複雑なスニペットについては、[Azure Import/Export サービスの使用](../storage/common/storage-import-export-service.md)に関するページを参照してください。
 4. 上記のコマンドを実行すると、指定した場所にジャーナル ファイルが作成されます。 このジャーナル ファイルを使用して、[Azure Portal](https://portal.azure.com) でインポート ジョブを作成します。
 
@@ -72,7 +72,7 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
 このセクションでは、データをコピーするための Azure Data Factory パイプラインの作成に使用できる JSON 定義を示します。 JSON 定義は、[Azure portal](../data-factory/tutorial-copy-data-portal.md) または [Visual Studio](../data-factory/tutorial-copy-data-dot-net.md) で使用できます。
 
 ### <a name="source-linked-service-azure-storage-blob"></a>ソース リンク サービス (Azure Storage BLOB)
-````
+```
 {
     "name": "AzureStorageLinkedService",
     "properties": {
@@ -83,10 +83,10 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
         }
     }
 }
-````
+```
 
 ### <a name="target-linked-service-azure-data-lake-storage-gen1"></a>ターゲット リンク サービス (Azure Data Lake Storage Gen1)
-````
+```
 {
     "name": "AzureDataLakeStorageGen1LinkedService",
     "properties": {
@@ -99,9 +99,9 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
         }
     }
 }
-````
+```
 ### <a name="input-data-set"></a>入力データ セット
-````
+```
 {
     "name": "InputDataSet",
     "properties": {
@@ -119,9 +119,9 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
         "policy": {}
     }
 }
-````
+```
 ### <a name="output-data-set"></a>出力データ セット
-````
+```
 {
 "name": "OutputDataSet",
 "properties": {
@@ -137,9 +137,9 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
     }
   }
 }
-````
+```
 ### <a name="pipeline-copy-activity"></a>パイプライン (コピー アクティビティ)
-````
+```
 {
     "name": "CopyImportedData",
     "properties": {
@@ -186,26 +186,29 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
         "pipelineMode": "Scheduled"
     }
 }
-````
+```
 詳細については、[Azure Data Factory を使用した Azure Storage BLOB から Azure Data Lake Storage Gen1 へのデータの移動](../data-factory/connector-azure-data-lake-store.md)に関するページを参照してください。
 
 ## <a name="reconstruct-the-data-files-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 内でデータ ファイルを再構築する
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 初めに、319 GB のファイルを用意して、Azure Import/Export サービスを使用して転送できるように小さなサイズのファイルに分割しました。 データが Azure Data Lake Storage Gen1 内に置かれたので、ファイルを元のサイズに再構築することができます。 これは、次の Azure PowerShell コマンドレットを使用して実行します。
 
 ```
 # Login to our account
-Connect-AzureRmAccount
+Connect-AzAccount
 
 # List your subscriptions
-Get-AzureRmSubscription
+Get-AzSubscription
 
 # Switch to the subscription you want to work with
-Set-AzureRmContext -SubscriptionId
-Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
+Set-AzContext -SubscriptionId
+Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
 # Join  the files
-Join-AzureRmDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
-````
+Join-AzDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
+```
 
 ## <a name="next-steps"></a>次の手順
 * [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)

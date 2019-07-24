@@ -1,6 +1,6 @@
 ---
-title: Custom Vision を Azure IoT Edge デバイスにデプロイする | Microsoft Docs
-description: Custom Vision と IoT Edge を使用して、コンピューター ビジョン モデルをコンテナーとして実行する方法について説明します。
+title: 'チュートリアル: デバイスに Custom Vision 分類器をデプロイする - Azure IoT Edge | Microsoft Docs'
+description: このチュートリアルでは、Custom Vision と IoT Edge を使用して、コンピューター ビジョン モデルをコンテナーとして実行する方法について説明します。
 services: iot-edge
 author: kgremban
 manager: philmea
@@ -8,13 +8,13 @@ ms.author: kgremban
 ms.date: 11/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: a8f72c62393f6ba470c31a55668382ae0beb290e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 7a5a92635114be87e59fe8f779c36d4c401a1427
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566484"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087161"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>チュートリアル: Custom Vision Service を使用してエッジで画像の分類を実行する
 
@@ -22,13 +22,18 @@ Azure IoT Edge では、ワークロードをクラウドからエッジに移�
 
 たとえば、IoT Edge デバイス上の Custom Vision では、高速道路の交通量が通常よりも多いか少ないかや、駐車場に連続した駐車スペースがあるかどうかを判断することができます。 これらの分析情報は、アクションを実行する別のサービスと共有できます。 
 
-
 このチュートリアルでは、以下の内容を学習します。 
 
 > [!div class="checklist"]
+>
 > * Custom Vision を使用して、画像分類器を構築する。
 > * デバイス上の Custom Vision Web サーバーに対してクエリを実行する IoT Edge モジュールを開発する。
 > * 画像分類器の結果を IoT Hub に送信する。
+
+<center>
+
+![図 - チュートリアルのアーキテクチャ、分類器のステージングとデプロイ](./media/tutorial-deploy-custom-vision/custom-vision-architecture.png)
+</center>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,7 +48,7 @@ Azure IoT Edge デバイス:
 
 * Azure の Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。 
 * コンテナー レジストリ。 このチュートリアルでは、[Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) を使用します。 
-    * コンテナー レジストリの[管理者アカウント](../container-registry/container-registry-authentication.md#admin-account)の資格情報を把握している必要があります。
+* コンテナー レジストリの[管理者アカウント](../container-registry/container-registry-authentication.md#admin-account)の資格情報を把握している必要があります。
 
 開発リソース:
 
@@ -99,7 +104,7 @@ Azure IoT Edge デバイス:
 
 5. **[Upload 10 files]\(10 ファイルをアップロード\)** を選択します。 
 
-   ![hemlock というタグの付いたファイルをアップロードする](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
+   ![Custom Vision にドクニンジンのタグが付けられたファイルをアップロードする](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
 
 6. 画像が正常にアップロードされたら、**[完了]** を選択します。
 
@@ -117,7 +122,7 @@ Azure IoT Edge デバイス:
 
 1. 分類器をトレーニングした後、分類器の [パフォーマンス] ページで **[エクスポート]** を選択します。 
 
-   ![画像分類器をエクスポートする](./media/tutorial-deploy-custom-vision/export.png)
+   ![トレーニング済みの画像分類器をエクスポートする](./media/tutorial-deploy-custom-vision/export.png)
 
 2. プラットフォームとして **[DockerFile]** を選択します。 
 
@@ -423,7 +428,7 @@ Azure Container Registry を使用している場合は、[管理者アカウン
 
 次に、Visual Studio Code 内から IoT Hub へのアクセスを設定します。 
 
-1. VS Code コマンド パレットで、**Azure IoT Hub: Select IoT Hub** を選択します。
+1. VS Code コマンド パレットで、**Azure IoT Hub: Select IoT Hub\(Azure IoT Hub: IoT ハブの選択\)** を選びます。
 2. プロンプトに従って Azure アカウントにサインインします。 
 3. コマンド パレットで、Azure サブスクリプション、IoT ハブの順に選択します。 
 

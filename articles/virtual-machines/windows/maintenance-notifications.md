@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: 609a688ba2915e57916a6e5e9ea0cbdc66ccdd6a
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: db8fd40b9c573d04d9442c64fb058902a771eca0
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069558"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418875"
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Windows 仮想マシンに対する計画メンテナンスの通知の処理
 
@@ -32,7 +32,7 @@ Azure は、定期的に更新を行い、仮想マシンのホスト インフ�
 
 再起動が必要な計画済みメンテナンスは、段階的にスケジュールされます。 各段階のスコープ (リージョン) はそれぞれ異なります。
 
-- 段階はお客様への通知で始まります。 既定では、サブスクリプションの所有者と共同所有者に通知が送信されます。 Azure [アクティビティ ログ アラート](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)を使用して、通知の受信者、および電子メール、SMS、webhook などのメッセージング オプションを通知に追加できます。  
+- 段階はお客様への通知で始まります。 既定では、サブスクリプションの所有者と共同所有者に通知が送信されます。 Azure [アクティビティ ログ アラート](../../azure-monitor/platform/activity-logs-overview.md)を使用して、通知の受信者、および電子メール、SMS、webhook などのメッセージング オプションを通知に追加できます。  
 - 通知の時点で、"*セルフサービス期間*" が使用できるようになります。 この期間中は、この段階に含まれている仮想マシンを確認し、自身のスケジュールのニーズに従って、プロアクティブにメンテナンスを開始できます。
 - セルフサービス期間が過ぎると、"*予定メンテナンス期間*" が始まります。 この期間のある時点で、Azure は、仮想マシンに対して必要なメンテナンスをスケジュールし、適用します。 
 
@@ -77,30 +77,33 @@ Azure ポータル、PowerShell、REST API、CLI を使用して、VM のメン�
 
 ## <a name="check-maintenance-status-using-powershell"></a>PowerShell を使用してメンテナンスの状態を確認する
 
-Azure Powershell を使用して、VM のメンテナンスの予定を確認することもできます。 計画済みメンテナンスに関する情報は、[Get AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) コマンドレットに `-status` パラメーターを指定することで取得できます。
+Azure Powershell を使用して、VM のメンテナンスの予定を確認することもできます。 計画メンテナンスに関する情報は、[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) コマンドレットに `-status` パラメーターを指定することで取得できます。
  
 計画メンテナンスがある場合にのみ、メンテナンス情報が返されます。 VM に影響を及ぼすメンテナンスがスケジュールされていない場合、コマンドレットはメンテナンス情報を返しません。 
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
 ```powershell
-Get-AzureRmVM -ResourceGroupName rgName -Name vmName -Status
+Get-AzVM -ResourceGroupName rgName -Name vmName -Status
 ```
 
 MaintenanceRedeployStatus では、次のプロパティが返されます。 
+
 | 値 | 説明   |
 |-------|---------------|
-| IsCustomerInitiatedMaintenanceAllowed | この時点で VM に対してメンテナンスを開始できるかどうかを示します。 ||
-| PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 ||
-| PreMaintenanceWindowEndTime           | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の終わりです。 ||
-| MaintenanceWindowStartTime            | Azure が VM に対してメンテナンスを開始する、予定メンテナンスの始まりです。 ||
-| MaintenanceWindowEndTime              | Azure が VM に対してメンテナンスを開始する、予定メンテナンス期間の終わりです。 ||
-| LastOperationResultCode               | VM に対して最後にメンテナンスを試みたときの結果です。 ||
+| IsCustomerInitiatedMaintenanceAllowed | この時点で VM に対してメンテナンスを開始できるかどうかを示します。 |
+| PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 |
+| PreMaintenanceWindowEndTime           | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の終わりです。 |
+| MaintenanceWindowStartTime            | Azure が VM に対してメンテナンスを開始する、予定メンテナンスの始まりです。 |
+| MaintenanceWindowEndTime              | Azure が VM に対してメンテナンスを開始する、予定メンテナンス期間の終わりです。 |
+| LastOperationResultCode               | VM に対して最後にメンテナンスを試みたときの結果です。 |
 
 
 
-また、VM を指定しないで [Get AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) を実行すると、リソース グループ内のすべての VM のメンテナンス状態を取得することもできます。
+また、VM を指定しないで [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) を実行すると、リソース グループ内のすべての VM のメンテナンス状態を取得することもできます。
  
 ```powershell
-Get-AzureRmVM -ResourceGroupName rgName -Status
+Get-AzVM -ResourceGroupName rgName -Status
 ```
 
 次の PowerShell 関数は、サブスクリプション ID を取り、メンテナンスがスケジュールされている VM の一覧を出力します。
@@ -109,18 +112,18 @@ Get-AzureRmVM -ResourceGroupName rgName -Status
 
 function MaintenanceIterator
 {
-    Select-AzureRmSubscription -SubscriptionId $args[0]
+    Select-AzSubscription -SubscriptionId $args[0]
 
-    $rgList= Get-AzureRmResourceGroup 
+    $rgList= Get-AzResourceGroup 
 
     for ($rgIdx=0; $rgIdx -lt $rgList.Length ; $rgIdx++)
     {
         $rg = $rgList[$rgIdx]        
-    $vmList = Get-AzureRMVM -ResourceGroupName $rg.ResourceGroupName 
+    $vmList = Get-AzVM -ResourceGroupName $rg.ResourceGroupName 
         for ($vmIdx=0; $vmIdx -lt $vmList.Length ; $vmIdx++)
         {
             $vm = $vmList[$vmIdx]
-            $vmDetails = Get-AzureRMVM -ResourceGroupName $rg.ResourceGroupName -Name $vm.Name -Status
+            $vmDetails = Get-AzVM -ResourceGroupName $rg.ResourceGroupName -Name $vm.Name -Status
               if ($vmDetails.MaintenanceRedeployStatus )
             {
                 Write-Output "VM: $($vmDetails.Name)  IsCustomerInitiatedMaintenanceAllowed: $($vmDetails.MaintenanceRedeployStatus.IsCustomerInitiatedMaintenanceAllowed) $($vmDetails.MaintenanceRedeployStatus.LastOperationMessage)"               
@@ -136,7 +139,7 @@ function MaintenanceIterator
 **IsCustomerInitiatedMaintenanceAllowed** が true に設定されている場合、前のセクションの関数から取得した情報を使用して、次のように VM に対するメンテナンスを開始します。
 
 ```powershell
-Restart-AzureRmVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceGroupName 
+Restart-AzVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceGroupName 
 ```
 
 ## <a name="classic-deployments"></a>クラシック デプロイ
@@ -159,48 +162,48 @@ Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 ## <a name="faq"></a>FAQ
 
 
-**Q: 仮想マシンを今すぐ再起動する必要があるのはなぜですか?**
+**Q:仮想マシンを今すぐ再起動する必要があるのはなぜですか?**
 
 **A:** Azure プラットフォームの更新とアップグレードの大半は仮想マシンの可用性に影響を及ぼしませんが、Azure でホストされている仮想マシンの再起動を避けられない場合があります。 累積された複数の変更があり、サーバーを再起動する必要がある場合、仮想マシンを再起動することになります。
 
-**Q: 可用性セットを使用して高可用性に関する推奨事項に従えば安全ですか?**
+**Q:可用性セットを使用して高可用性に関する推奨事項に従えば安全ですか?**
 
 **A:** 可用性セットまたは仮想マシン スケール セットにデプロイされた仮想マシンには、更新ドメイン (UD) の概念があります。 メンテナンスを実行するときに、Azure では UD の制約が遵守され、(同じ可用性セット内の) 別の UD の仮想マシンは再起動されません。  また、Azure は仮想マシンの次のグループに移行する前に少なくとも 30 分待機します。 
 
 高可用性の詳細については、「[Azure の仮想マシンのリージョンと可用性について](regions-and-availability.MD)」を参照してください。
 
-**Q: 計画済みメンテナンスに関する通知を受け取るにはどうすればよいですか?**
+**Q:計画メンテナンスに関する通知を受け取るにはどうすればよいですか?**
 
 **A:** 計画済みメンテナンス ウェーブは、1 つ以上の Azure リージョンにスケジュールを設定することで開始されます。 開始直後に、電子メール通知がサブスクリプションの所有者に送信されます (サブスクリプションごとに 1 メール)。 この通知の追加のチャネルと受信者は、アクティビティ ログ アラートを使用して構成できます。 計画済みメンテナンスが既にスケジュールされているリージョンに仮想マシンをデプロイした場合、通知を受け取ることはできないため、その VM のメンテナンスの状態を確認する必要があります。
 
-**Q: ポータル、PowerShell、または CLI に計画済みメンテナンスの情報が表示されません。何がおかしいのでしょうか?**
+**Q:ポータル、PowerShell、または CLI に計画メンテナンスの情報が表示されません。何がおかしいのでしょうか?**
 
-**A:** 計画済みメンテナンスに関する情報は、計画済みメンテナンス ウェーブ中にのみ、影響を受ける VM に提供されます。 つまり、データが表示されない場合、メンテナンス ウェーブが既に完了している (または、まだ開始されていない) か、更新されたサーバーで仮想マシンが既にホストされていると考えられます。
+**A:** 計画メンテナンスに関する情報は、計画メンテナンス ウェーブ中にのみ、影響を受ける VM に提供されます。 つまり、データが表示されない場合、メンテナンス ウェーブが既に完了している (または、まだ開始されていない) か、更新されたサーバーで仮想マシンが既にホストされていると考えられます。
 
-**Q: 仮想マシンが影響を受けるのはいつであるかを正確に把握する方法はありますか?**
+**Q:仮想マシンが影響を受けるタイミングを正確に把握する方法はありますか?**
 
 **A:** スケジュールを設定するときに、数日間の時間枠が設けられています。 ただし、この時間枠内でのサーバー (および VM) の正確な優先順位付けは不明です。 VM の正確な時間を把握したいお客様は、仮想マシン内から[スケジュールされたイベント](scheduled-events.md)とクエリを使用し、VM が再起動される 15 分前に通知を受け取ることができます。
 
-**Q: 仮想マシンの再起動にはどれくらいの時間がかかりますか?**
+**Q:仮想マシンの再起動にはどれくらいの時間がかかりますか?**
 
 **A:** セルフサービス メンテナンス期間中、VM のサイズによっては、再起動に最大数分かかることがあります。 予定メンテナンス期間中の Azure によって開始される再起動の場合は、再起動に通常約 25 分かかります。 Cloud Services (Web/worker ロール)、VM Scale Sets、または可用性セットを使用している場合、予定メンテナンス期間中は VM の各グループ (UD) 間に 30 分の間隔が空けられます。 
 
-**Q: Virtual Machine Scale Sets ではどのようになりますか?**
+**Q:Virtual Machine Scale Sets ではどのようになりますか?**
 
 **A:** Virtual Machine Scale Sets で計画メンテナンスが使用できるようになりました。 セルフサービス メンテナンスを開始する方法については、[VMSS の計画的なメンテナンス](../../virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications.md)に関するドキュメントを参照してください。
 
-**Q: Cloud Services (Web/worker ロール)、および Service Fabric ではどのようになりますか?**
+**Q:Cloud Services (Web/worker ロール)、および Service Fabric ではどのようになりますか?**
 
 **A:** これらのプラットフォームは計画済みメンテナンスの影響を受けますが、影響を受けるのは、常に 1 つのアップグレード ドメイン (UD) の VM だけであることから、これらのプラットフォームを使用しているお客様は安全とみなされます。 セルフサービス メンテナンスは、現在、Cloud Services (Web/worker ロール)、および Service Fabric では使用できません。
 
-**Q: VM のメンテナンス情報が表示されません。何が問題だったのでしょうか?**
+**Q:VM のメンテナンス情報が表示されません。何が問題だったのでしょうか?**
 
 **A:** VM のメンテナンス情報が表示されない理由はいくつかあります。
 1.  Microsoft 社内としてマークされたサブスクリプションを使用している。
 2.  VM のメンテナンスがスケジュールされていない。 メンテナンス ウェーブが終了しているか、取り消しまたは変更が行われたため、VM が影響を受けなくなっていると考えられます。
 3.  VM リスト ビューに **[メンテナンス]** 列が追加されていない。 この列は既定のビューに追加されていますが、既定以外の列を表示するように構成しているお客様は、VM リスト ビューに **[メンテナンス]** 列を手動で追加する必要があります。
 
-**Q: VM の 2 回目のメンテナンスがスケジュールされています。なぜですか?**
+**Q:VM の 2 回目のメンテナンスがスケジュールされています。なぜですか?**
 
 **A:** メンテナンスの再デプロイが既に完了した後に、VM のメンテナンスがスケジュールされるユース ケースがいくつかあります。
 1.  メンテナンス ウェーブが取り消され、別のペイロードで再開された場合。 エラーが発生したペイロードが検出されたため、Microsoft が追加のペイロードをデプロイする必要があったと考えられます。

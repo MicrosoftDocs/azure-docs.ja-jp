@@ -1,20 +1,17 @@
 ---
 title: Azure Portal を使用した Azure Database for MySQL サーバーの作成と管理
 description: この記事では、Azure Portal を使用して Azure Database for MySQL サーバーをすばやく作成して管理する方法について説明します。
-services: mysql
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-manager: kfile
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 065eb708a1d80b0eac618bd9039a859db6ef1340
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 6d6f24475497382dd9e04d3335fb89d6f0bdd514
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265586"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57528680"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL サーバーの作成と管理
 このトピックでは、新しい Azure Database for MySQL サーバーをすばやく作成する方法について説明します。 Azure Portal を使用したサーバーの管理方法に関する情報も含まれています。 サーバーの管理には、サーバーの詳細とデータベースの表示、パスワードのリセット、リソースのスケーリング、サーバーの削除が含まれます。
@@ -37,17 +34,17 @@ ms.locfileid: "35265586"
 
     | **フォームのフィールド** | **フィールドの説明** |
     |----------------|-----------------------|
-    | *[サーバー名]* | mydemoserver (サーバー名はグローバルに一意である必要があります) |
+    | *サーバー名* | mydemoserver (サーバー名はグローバルに一意である必要があります) |
     | *サブスクリプション* | mysubscription (ドロップダウン メニューから選びます) |
-    | *[リソース グループ]* | myresourcegroup (新しいリソース グループを作成するか既存のリソース グループを使います) |
-    | *[ソースの選択]* | 空白 (空の MySQL サーバーを作成します) |
-    | *[サーバー管理者ログイン]* | myadmin (管理者アカウント名をセットアップ) |
+    | *リソース グループ* | myresourcegroup (新しいリソース グループを作成するか既存のリソース グループを使います) |
+    | *ソースの選択* | 空白 (空の MySQL サーバーを作成します) |
+    | *サーバー管理者ログイン* | myadmin (管理者アカウント名をセットアップ) |
     | *パスワード* | 管理者アカウントのパスワードを設定します |
     | *パスワードの確認* | 管理者アカウントのパスワードを確認 |
     | *場所* | 東南アジア (北ヨーロッパまたは米国西部を選びます) |
     | *バージョン* | 5.7 (Azure Database for MySQL サーバーのバージョンを選びます) |
 
-4. **[価格レベル]** をクリックして、新しいサーバーのサービス レベルとパフォーマンス レベルを指定します。 **[汎用]** タブを選びます。*Gen 4*、"*2 仮想コア*"、*5 GB*、および "*7 日*" は、それぞれ **[コンピューティング世代]**、**[仮想コア]**、**[ストレージ]**、および **[バックアップの保有期間]** の既定値です。 これらのスライダーはそのままにします。 サーバー バックアップを geo 冗長ストレージで有効にするには、**[バックアップ冗長オプション]** から **[地理冗長]** を選択します。
+4. **[価格レベル]** をクリックして、新しいサーバーのサービス レベルとパフォーマンス レベルを指定します。 **[汎用]** タブを選びます。*Gen 5*、*2 仮想コア*、*5 GB*、および *7 日* は、それぞれ **[コンピューティング世代]**、**[仮想コア]**、**[ストレージ]**、および **[バックアップの保有期間]** の既定値です。 これらのスライダーはそのままにします。 サーバー バックアップを geo 冗長ストレージで有効にするには、**[バックアップ冗長オプション]** から **[地理冗長]** を選択します。
 
    ![create-server-pricing-tier](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
 
@@ -93,7 +90,7 @@ ms.locfileid: "35265586"
 
 1. サーバーの **[概要]** から **[削除]** ボタンをクリックして、削除確認プロンプトを開きます。
 
-    ![削除](./media/howto-create-manage-server-portal/delete.png)
+    ![delete](./media/howto-create-manage-server-portal/delete.png)
 
 2. 二重確認のために入力ボックスにサーバーの名前を入力します。
 
@@ -109,8 +106,8 @@ ms.locfileid: "35265586"
 ## <a name="show-details-of-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの詳細を表示する
 サーバーに関する詳細情報を表示するには、**[設定]** の下にある **[プロパティ]** をクリックします。
 
-![プロパティ](./media/howto-create-manage-server-portal/properties.png)
+![properties](./media/howto-create-manage-server-portal/properties.png)
 
 ## <a name="next-steps"></a>次の手順
 
-[クイックスタート: Azure Portal を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-portal.md)
+[クイック スタート:Azure portal を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-portal.md)

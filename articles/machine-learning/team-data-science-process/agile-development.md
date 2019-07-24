@@ -1,25 +1,21 @@
 ---
-title: データ サイエンス プロジェクトのアジャイル開発 - Azure Machine Learning | Microsoft Docs
+title: データ サイエンス プロジェクトのアジャイル開発 - Team Data Science Process
 description: 開発者が Team Data Science Process を使用して、プロジェクト チーム内でバージョン コントロールされた体系的、協調的な方法でデータ サイエンス プロジェクトをどのようにして実行できるかについて説明します。
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
-ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: deguhath
-ms.openlocfilehash: a032127d249f944d08cc6578a03f1a7e5a658361
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: adf713fc3f875168f99b302b0a9affef88e8414f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301091"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457685"
 ---
 # <a name="agile-development-of-data-science-projects"></a>データ サイエンス プロジェクトのアジャイル開発
 
@@ -42,20 +38,20 @@ ms.locfileid: "44301091"
 
 ##  1.<a name='Terminology-1'></a>用語 
 
-TDSP スプリント計画フレームワークには、よく使用される 4 種類の**作業項目** (**機能**、**ユーザー ストーリー**、**タスク**、**バグ**) があります。 各プロジェクトでは、すべての作業項目の 1 つのバックログを維持します。 プロジェクト下での Git リポジトリ レベルにバックログがありません。 その定義を次に示します。
+TDSP スプリント計画フレームワークには、よく使用される 4 種類の**作業項目**(**機能**、**ユーザー ストーリー**、**タスク**、**バグ**) があります。 各プロジェクトでは、すべての作業項目の 1 つのバックログを維持します。 プロジェクト下での Git リポジトリ レベルにバックログがありません。 その定義を次に示します。
 
-- **機能**: 機能はプロジェクト契約に対応しています。 クライアントとのさまざまな契約が、それぞれ異なる機能と見なされます。 同様に、クライアントとのプロジェクトのさまざまなフェーズをそれぞれ異なる機能と見なすことが最適です。 ***ClientName EngagementName*** などのスキーマを選択して機能に名前を付けると、名前自体からプロジェクト/契約のコンテキストを簡単に認識できます。
-- **ストーリー**: ストーリーは、機能 (プロジェクト) をエンド ツー エンドで完了するために必要な別の作業項目です。 ストーリーの例を次に示します。
+- **機能**:機能はプロジェクト契約に対応しています。 クライアントとのさまざまな契約が、それぞれ異なる機能と見なされます。 同様に、クライアントとのプロジェクトのさまざまなフェーズをそれぞれ異なる機能と見なすことが最適です。 ***ClientName EngagementName*** などのスキーマを選択して機能に名前を付けると、名前自体からプロジェクト/契約のコンテキストを簡単に認識できます。
+- **ストーリー**:ストーリーは、機能 (プロジェクト) をエンド ツー エンドで完了するために必要な別の作業項目です。 ストーリーの例を次に示します。
     - データの取得 
     - データの探索 
     - 機能の生成
     - モデルのビルド
     - モデルの運用 
     - モデルの再トレーニング
-- **タスク**: タスクは、特定のストーリーを完了するために実行する必要がある割り当て可能なコードまたはドキュメント作業項目やその他のアクティビティです。 たとえば、ストーリー "*データの取得*" のタスクは次のようになります。
+- **タスク**:タスクは、特定のストーリーを完了するために実行する必要がある割り当て可能なコードまたはドキュメント作業項目やその他のアクティビティです。 たとえば、ストーリー "*データの取得*" のタスクは次のようになります。
     -  SQL Server の資格情報の取得 
     -  SQL Data Warehouse へのデータのアップロード。 
-- **バグ**: バグは通常、タスクの完了時に実行される既存のコードまたはドキュメントに必要な修正を表します。 バグの原因がステージまたはタスクの不足の場合は、それぞれストーリーまたはタスクにエスカレートできます。 
+- **バグ**:バグは通常、タスクの完了時に実行される既存のコードまたはドキュメントに必要な修正を表します。 バグの原因がステージまたはタスクの不足の場合は、それぞれストーリーまたはタスクにエスカレートできます。 
 
 > [!NOTE]
 > ソフトウェア コード管理 (SCM) における機能、ストーリー、タスク、バグの概念を借用して、データ サイエンスで使用します。 これらは、従来の SCM 定義とは若干異なる場合があります。

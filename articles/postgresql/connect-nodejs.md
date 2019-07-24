@@ -1,24 +1,21 @@
 ---
 title: Node.js を使用して Azure Database for PostgreSQL に接続する
 description: このクイックスタートでは、Azure Database for PostgreSQL に接続してデータを照会するために使用できる、Node.js コード サンプルを紹介します。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc, devcenter
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: ddccefd4d39de49809e5648454c8d9f50b34a7c5
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 4c7f2f71ff302cbaa0aab66f97b93cb1c5b9e5e4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29691945"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541117"
 ---
-# <a name="azure-database-for-postgresql-use-nodejs-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Node.js を使用した接続とデータの照会
+# <a name="azure-database-for-postgresql-use-nodejs-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Node.js を使った接続とデータの照会
 このクイックスタートでは、[Node.js](https://nodejs.org/) アプリケーションを使用して Azure Database for PostgreSQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事の手順では、Node.js を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
@@ -27,7 +24,7 @@ ms.locfileid: "29691945"
 - [DB の作成 - CLI](quickstart-create-server-database-azure-cli.md)
 
 さらに、以下を実行する必要があります。
-- [Node.js](https://nodejs.org)
+-  [Node.js](https://nodejs.org)
 
 ## <a name="install-pg-client"></a>pg クライアントのインストール
 [pg](https://www.npmjs.com/package/pg) をインストールします。pg は、Node.js 用の PostgreSQL クライアントです。

@@ -1,163 +1,130 @@
 ---
-title: コンテナーの構成
-titlesuffix: Computer Vision - Cognitive Services - Azure
-description: Computer Vision でのコンテナーの構成設定。
+title: コンテナーを構成する - Computer Vision
+titlesuffix: Azure Cognitive Services
+description: Computer Vision で、テキスト認識コンテナーのさまざまな設定を構成します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 8df293878486a9cd4ded6e899871c30498c4b68f
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.custom: seodec18
+ms.openlocfilehash: db33ce748928b954f5447a82550c6ecde2188abf
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634969"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877127"
 ---
-# <a name="configure-containers"></a>コンテナーの構成
+# <a name="configure-recognize-text-docker-containers"></a>テキスト認識 Docker コンテナーを構成する
 
-Computer Vision には、一般的な構成フレームワークによるテキスト認識コンテナーが用意されているため、コンテナーのストレージ、ログとテレメトリ、セキュリティの設定を簡単に構成して、管理できます。
+**テキスト認識**コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 このコンテナーには、いくつかの必須の設定と省略可能な設定があります。 いくつかのコマンドの[例](#example-docker-run-commands)をご覧ください。 このコンテナーに固有の設定は、課金設定です。 
 
 ## <a name="configuration-settings"></a>構成設定
 
-Computer Vision コンテナーの構成設定は階層構造であり、すべてのコンテナーで、次の最上位レベル構造に基づいて、共有の階層が使われます。
+[!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
-* [ApiKey](#apikey-configuration-setting)
-* [ApplicationInsights](#applicationinsights-configuration-settings)
-* [認証](#authentication-configuration-settings)
-* [課金](#billing-configuration-setting)
-* [Eula](#eula-configuration-setting)
-* [Fluentd](#fluentd-configuration-settings)
-* [ログ](#logging-configuration-settings)
-* [Mounts](#mounts-configuration-settings)
-
-Computer Vision コンテナーからコンテナーをインスタンス化する場合、[環境変数](#configuration-settings-as-environment-variables)または[コマンドライン引数](#configuration-settings-as-command-line-arguments)を使用して、構成設定を指定できます。
-
-環境変数の値によってコマンドライン引数の値がオーバーライドされ、さらにコンテナー イメージの既定値がオーバーライドされます。 つまり、`Logging:Disk:LogLevel` などの同じ構成設定に、環境変数とコマンドライン引数で異なる値を指定した場合、インスタンス化されたコンテナーによって、環境変数の値が使われます。
-
-### <a name="configuration-settings-as-environment-variables"></a>環境変数としての構成設定
-
-[ASP.NET Core 環境変数構文](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#configuration-by-environment)を使用して、構成設定を指定できます。
-
-コンテナーは、インスタンス化されるときに、ユーザー環境変数を読み取ります。 環境変数が存在する場合、環境変数の値によって、指定された構成設定の既定値がオーバーライドされます。 環境変数を使用する利点は、コンテナーをインスタンス化する前に複数の構成設定を設定でき、複数のコンテナーで、同じ一連の構成設定を自動的に使用できることです。
-
-たとえば、次のコマンドでは環境変数を使用して、コンソール ログ レベルを [LogLevel.Information](https://msdn.microsoft.com) に構成し、次にテキスト認識コンテナー イメージからコンテナーをインスタンス化しています。 環境変数の値によって、既定の構成設定がオーバーライドされます。
-
-  ```Docker
-  SET Logging:Console:LogLevel=Information
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0 ApiKey=0123456789
-  ```
-
-### <a name="configuration-settings-as-command-line-arguments"></a>コマンドライン引数としての構成設定
-
-[ASP.NET Core コマンドライン引数構文](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.1&tabs=basicconfiguration#arguments)を使用して、構成設定を指定できます。
-
-構成設定は、ダウンロードしたコンテナー イメージからコンテナーをインスタンス化するために使用する [docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドのオプションの `ARGS` パラメーターに指定できます。 コマンドライン引数を使用する利点は、各コンテナーで、構成設定のさまざまなカスタム セットを使用できることです。
-
-たとえば、次のコマンドでは、テキスト認識コンテナー イメージからコンテナーをインスタンス化し、コンソール ログ レベルを LogLevel.Information に構成して、既定の構成設定をオーバーライドしています。
-
-  ```Docker
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0 ApiKey=0123456789 Logging:Console:LogLevel=Information
-  ```
+> [!IMPORTANT]
+> [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting)、[`Eula`](#eula-setting) の各設定は一緒に使用されるため、それらの 3 つすべてに有効な値を指定する必要があります。そうしないと、お客様のコンテナーは起動しません。 これらの構成設定を使用してコンテナーをインスタンス化する方法の詳細については、「[課金](computer-vision-how-to-install-containers.md)」を参照してください。
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 構成設定
 
-`ApiKey` 構成設定は、コンテナーの課金情報を追跡するために使用される Azure の Computer Vision リソースの構成キーを指定します。 この構成設定の値を指定する必要があり、その値は [`Billing`](#billing-configuration-setting) 構成設定に指定された Computer Vision リソースの有効な構成キーである必要があります。
+`ApiKey` 設定では、コンテナーの課金情報を追跡するために使用される Azure リソース キーを指定します。 ApiKey の値を指定する必要があります。また、その値は、[`Billing`](#billing-configuration-setting) 構成設定に指定された _Computer Vision_ リソースの有効なキーであることが必要です。
 
-> [!IMPORTANT]
-> [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting)、[`Eula`](#eula-configuration-setting) 構成設定は一緒に使用し、それらの 3 つすべてに有効な値を指定する必要があります。そうしないと、コンテナーは起動しません。 これらの構成設定を使用してコンテナーをインスタンス化する方法の詳細については、「[課金](computer-vision-how-to-install-containers.md#billing)」を参照してください。
+この設定は次の場所で確認できます。
 
-## <a name="applicationinsights-configuration-settings"></a>ApplicationInsights 構成設定
+* Azure portal:**Computer Vision の** [リソース管理] の **[キー]** の下
 
-`ApplicationInsights` セクションの構成設定により、[Azure Application Insights](https://docs.microsoft.com/azure/application-insights) テレメトリ サポートをコンテナーに追加できます。 Application Insights では、コンテナーをコード レベルまで詳細に監視できます。 コンテナーの可用性、パフォーマンス、利用状況を簡単に監視できます。 さらに、コンテナーのエラーを、ユーザーからの報告を待つことなく、迅速に特定して診断することもできます。
+## <a name="applicationinsights-setting"></a>ApplicationInsights 設定
 
-次の表に、`ApplicationInsights` セクションでサポートされている構成設定について説明します。
-
-| Name | データ型 | 説明 |
-|------|-----------|-------------|
-| `InstrumentationKey` | String | コンテナーのテレメトリ データの送信先の Application Insights インスタンスのインストルメンテーション キー。 詳細については、「[Application Insights for ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core)」を参照してください。 |
-
-## <a name="authentication-configuration-settings"></a>Authentication 構成設定
-
-`Authentication` 構成設定は、コンテナーの Azure セキュリティ オプションを提供します。 このセクションの構成設定を使用できますが、テキスト認識コンテナーでは、このセクションが使われません。
+[!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
 ## <a name="billing-configuration-setting"></a>Billing 構成設定
 
-`Billing` 構成設定は、コンテナーの課金情報を追跡するために使用される Azure の Computer Vision リソースのエンドポイント URI を指定します。 この構成設定の値を指定する必要があり、値は Azure の Computer Vision リソースの有効なエンドポイント URI である必要があります。
+`Billing` 設定は、コンテナーの課金情報を測定するために使用される Azure の _Computer Vision_ リソースのエンドポイント URI を指定します。 この構成設定の値を指定する必要があり、値は Azure の _Computer Vision_ リソースの有効なエンドポイント URI である必要があります。 コンテナーから、約 10 ～ 15 分ごとに使用状況が報告されます。
+
+この設定は次の場所で確認できます。
+
+* Azure portal:**Computer Vision**  の [概要]、ラベル:  `Endpoint`
+
+|必須| 名前 | データ型 | 説明 |
+|--|------|-----------|-------------|
+|はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
+
+## <a name="eula-setting"></a>Eula 設定
+
+[!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
+
+## <a name="fluentd-settings"></a>Fluentd の設定
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
+
+## <a name="http-proxy-credentials-settings"></a>Http プロキシ資格情報設定
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+
+## <a name="logging-settings"></a>Logging の設定
+ 
+[!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
+
+## <a name="mount-settings"></a>マウントの設定
+
+コンテナーとの間でデータを読み書きするには、バインド マウントを使用します。 入力マウントまたは出力マウントは、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドで `--mount` オプションを指定することによって指定できます。
+
+Computer Vision コンテナーでは、トレーニングやサービスのデータを格納するために入力マウントまたは出力マウントが使用されることはありません。 
+
+ホストのマウント場所の厳密な構文は、ホスト オペレーティング システムによって異なります。 また、Docker サービス アカウントによって使用されるアクセス許可とホストのマウント場所のアクセス許可とが競合するために、[ホスト コンピューター](computer-vision-how-to-install-containers.md#the-host-computer)のマウント場所にアクセスできないこともあります。 
+
+|省略可能| 名前 | データ型 | 説明 |
+|-------|------|-----------|-------------|
+|禁止| `Input` | String | Computer Vision コンテナーでは、これは使用されません。|
+|省略可能| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 これには、コンテナーのログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
+
+## <a name="example-docker-run-commands"></a>docker run コマンドの例 
+
+以下の例では、`docker run` コマンドの記述方法と使用方法を示す構成設定が使用されています。  コンテナーは一度実行すると、お客様が[停止](computer-vision-how-to-install-containers.md#stop-the-container)するまで動作し続けます。
+
+* **行連結文字**: 以降のセクションの Docker コマンドには、行連結文字としてバック スラッシュ (`\`) が使用されています。 お客様のホスト オペレーティング システムの要件に応じて、置換または削除してください。 
+* **引数の順序**: Docker コンテナーについて高度な知識がある場合を除き、引数の順序は変更しないでください。
+
+{_<引数名>_} はお客様独自の値に置き換えてください。
+
+| プレースホルダー | 値 | 形式または例 |
+|-------------|-------|---|
+|{BILLING_KEY} | Computer Vision リソースのエンドポイント キー。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{BILLING_ENDPOINT_URI} | リージョンを含む課金エンドポイントの値。|`https://westcentralus.api.cognitive.microsoft.com/vision/v1.0`|
 
 > [!IMPORTANT]
-> [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting)、[`Eula`](#eula-configuration-setting) 構成設定は一緒に使用し、それらの 3 つすべてに有効な値を指定する必要があります。そうしないと、コンテナーは起動しません。 これらの構成設定を使用してコンテナーをインスタンス化する方法の詳細については、「[課金](computer-vision-how-to-install-containers.md#billing)」を参照してください。
+> コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](computer-vision-how-to-install-containers.md#billing)」を参照してください。
+> ApiKey の値は、Computer Vision リソース キー ページからの**キー**です。 
 
-## <a name="eula-configuration-setting"></a>Eula 構成設定
+## <a name="recognize-text-container-docker-examples"></a>テキスト認識コンテナーの Docker の例
 
-`Eula` 構成設定は、コンテナーのライセンスに同意したことを示します。 この構成設定の値を指定する必要があり、値を `accept` に設定する必要があります。
+次の Docker の例は、テキスト認識コンテナーに関するものです。 
 
-> [!IMPORTANT]
-> [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting)、[`Eula`](#eula-configuration-setting) 構成設定は一緒に使用し、それらの 3 つすべてに有効な値を指定する必要があります。そうしないと、コンテナーは起動しません。 これらの構成設定を使用してコンテナーをインスタンス化する方法の詳細については、「[課金](computer-vision-how-to-install-containers.md#billing)」を参照してください。
+### <a name="basic-example"></a>基本的な例 
 
-## <a name="fluentd-configuration-settings"></a>Fluentd 構成設定
-
-`Fluentd` セクションは、統合ログのためのオープン ソースのデータ コレクター [Fluentd](https://www.fluentd.org) の構成設定を管理します。 Computer Vision コンテナーには、コンテナーがログ、および必要に応じてメトリック データを Fluentd サーバーに書き込むことができる Fluentd ログ プロバイダーが含まれます。
-
-次の表に、`Fluentd` セクションでサポートされている構成設定について説明します。
-
-| Name | データ型 | 説明 |
-|------|-----------|-------------|
-| `Host` | String | Fluentd サーバーの IP アドレスまたは DNS ホスト名。 |
-| `Port` | 整数 | Fluentd サーバーのポート。<br/> 既定値は 24224 です。 |
-| `HeartbeatMs` | 整数 | ハートビート間隔 (ミリ秒)。 この間隔が期限切れになるまでにイベント トラフィックが送信されなかった場合、ハートビートが Fluentd サーバーに送信されます。 既定値は、60000 ミリ秒 (1 分) です。 |
-| `SendBufferSize` | 整数 | 送信操作用に割り当てられたネットワーク バッファー領域 (バイト数)。 既定値は、32,768 バイト (32 キロバイト) です。 |
-| `TlsConnectionEstablishmentTimeoutMs` | 整数 | Fluentd サーバーとの SSL または TLS 接続を確立するためのタイムアウト (ミリ秒)。 既定値は、10000 ミリ秒 (10 秒) です。<br/> `UseTLS` が false に設定されている場合、この値は無視されます。 |
-| `UseTLS` | Boolean | コンテナーで、Fluentd サーバーとの通信に SSL または TLS を使用する必要があるかどうかを示します。 既定値は false です。 |
-
-## <a name="logging-configuration-settings"></a>Logging 構成設定
-
-`Logging` 構成設定は、コンテナーの ASP.NET Core ログ サポートを管理します。 ASP.NET Core アプリケーションに対して使用できる同じ構成設定と値をコンテナーに使用できます。 次のログ プロバイダーが Computer Vision コンテナーでサポートされています。
-
-* [Console](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#console-provider)  
-  ASP.NET Core `Console` ログ プロバイダー。 このログ プロバイダーのすべての ASP.NET Core 構成設定と既定値がサポートされています。
-* [デバッグ](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#debug-provider)  
-  ASP.NET Core `Debug` ログ プロバイダー。 このログ プロバイダーのすべての ASP.NET Core 構成設定と既定値がサポートされています。
-* ディスク  
-  JSON ログ プロバイダー。 このログ プロバイダーは、ログ データを出力マウントに書き込みます。  
-  `Disk` ログ プロバイダーでは、次の構成設定がサポートされます。  
-
-  | Name | データ型 | 説明 |
-  |------|-----------|-------------|
-  | `Format` | String | ログ ファイルの出力形式。<br/> **注:** ログ プロバイダーを有効にするためにこの値を `json` に設定する必要があります。 コンテナーのインスタンス化中に、出力マウントを指定せずに、この値を指定した場合、エラーが発生します。 |
-  | `MaxFileSize` | 整数 | ログ ファイルの最大サイズ (メガバイト (MB))。 現在のログ ファイルのサイズがこの値を満たしているか、または超えている場合、ログ プロバイダーによって新しいログ ファイルが開始されます。 -1 が指定されている場合、ログ ファイルのサイズは、出力マウントの最大ファイル サイズ (存在する場合) によってのみ制限されます。 既定値は 1 です。 |
-
-ASP.NET Core ログのサポートを構成する方法の詳細については、[設定ファイル構成](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#settings-file-configuration)に関するページを参照してください。
-
-## <a name="mounts-configuration-settings"></a>Mounts 構成設定
-
-Computer Vision によって提供される Docker コンテナーは、ステートレスと不変のどちらにもなるように設計されています。 つまり、コンテナー内に作成されたファイルは、書き込み可能なコンテナー レイヤーに格納され、コンテナーの実行中にのみ維持され、簡単にアクセスできません。 そのコンテナーが停止するか、または削除された場合、そのコンテナー内に共に作成されたファイルは破棄されます。
-
-ただし、それらは Docker コンテナーであるため、ボリュームやバインド マウントなどの Docker ストレージ オプションを使用して、コンテナーでサポートされていれば、コンテナーの外部から永続化されたデータを読み書きできます。 Docker ストレージ オプションを指定して、管理する方法の詳細については、「[Manage data in Docker](https://docs.docker.com/storage/)」 (Docker でのデータの管理) を参照してください。
-
-> [!NOTE]
-> 通常、これらの構成設定の値を変更する必要はありません。 代わりに、コンテナーの入力マウントと出力マウントを指定する際に、宛先としてこれらの構成設定で指定された値を使用します。 入力マウントと出力マウントを指定する詳細については、「[入力マウントと出力マウント](#input-and-output-mounts)」を参照してください。
-
-次の表に、`Mounts` セクションでサポートされている構成設定について説明します。
-
-| Name | データ型 | 説明 |
-|------|-----------|-------------|
-| `Input` | String | 入力マウントのターゲット。 既定値は `/input` です。 |
-| `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 |
-
-### <a name="input-and-output-mounts"></a>入力マウントと出力マウント
-
-既定で各コンテナーでは、コンテナーがデータを読み取ることができる*入力マウント*とコンテナーがデータを書き込むことができる*出力マウント*をサポートできます。 入力マウントまたは出力マウントをサポートするために、コンテナーは必要ありませんが、各コンテナーでは、Computer Vision コンテナーによってサポートされるログ オプションに加えて、コンテナー固有の目的で入力マウントと出力マウントの両方を使用することができます。
-
-テキスト認識コンテナーでは、入力マウントがサポートされず、必要に応じて出力マウントがサポートされます。
-
-入力マウントまたは出力マウントを指定するには、ダウンロードしたコンテナー イメージからコンテナーをインスタンス化するために使用する [docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドで `--mount` オプションを指定します。 既定で、入力マウントではその宛先として、`/input` が使われ、出力マウントではその宛先として `/output` が使われます。 Docker コンテナー ホストで使用できるすべての Docker ストレージ オプションは、`--mount` オプションで指定できます。
-
-たとえば、次のコマンドでは Docker バインド マウントを、出力マウントとしてホスト コンピューター上の `D:\Output` フォルダーに定義し、さらにテキスト認識コンテナー イメージからコンテナーをインスタンス化し、ログ ファイルを JSON 形式で出力マウントに保存しています。
-
-  ```Docker
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 --mount type=bind,source=D:\Output,destination=/output containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0 ApiKey=0123456789 Logging:Disk:Format=json
   ```
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  Eula=accept \
+  Billing={BILLING_ENDPOINT_URI} \
+  ApiKey={BILLING_KEY} 
+  ```
+
+### <a name="logging-example"></a>ログの例 
+
+  ```
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  Eula=accept \
+  Billing={BILLING_ENDPOINT_URI} \
+  ApiKey={BILLING_KEY} \
+  Logging:Console:LogLevel:Default=Information
+  ```
+
+## <a name="next-steps"></a>次の手順
+
+* [コンテナーのインストール方法と実行方法](computer-vision-how-to-install-containers.md)を確認する。

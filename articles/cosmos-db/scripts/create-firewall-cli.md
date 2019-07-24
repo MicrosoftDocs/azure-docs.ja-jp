@@ -1,19 +1,21 @@
 ---
-title: Azure CLI スクリプト - Azure Cosmos DB のファイアウォールを作成する | Microsoft Docs
+title: Azure CLI スクリプト - Azure Cosmos DB のファイアウォールを作成する
 description: Azure CLI のサンプル スクリプト - Azure Cosmos DB のファイアウォールを作成する
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: b43fff02f247e557d018a74772ca115543d904bf
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.reviewer: sngun
+ms.openlocfilehash: efe69ef80be81d0423310d220304e719036266d2
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013039"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042718"
 ---
-# <a name="azure-cosmos-db-create-a-firewall-using-azure-cli"></a>Azure Cosmos DB: Azure CLI を使用してファイアウォールを作成する
+# <a name="azure-cosmos-db-create-a-firewall-using-azure-cli"></a>Azure Cosmos DB は:Azure CLI を使用してファイアウォールを作成する
 
 この CLI サンプル スクリプトでは、任意の種類の Azure Cosmos DB アカウントのファイアウォール ポリシーを作成します。
 

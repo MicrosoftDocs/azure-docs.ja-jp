@@ -1,5 +1,5 @@
 ---
-title: Azure Container Service エンジンと Swarm Mode による CI/CD
+title: (非推奨) Azure Container Service エンジンと Swarm Mode による CI/CD
 description: Azure Container Service Engine、Docker Swarm Mode、Azure Container Registry、および Azure DevOps を使用して、複数コンテナー .NET Core アプリケーションを継続的に配信します
 services: container-service
 author: diegomrtnzg
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: 296c097ee3302eaa39210274b16c6352866eac8a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 8aa62e4ed65f8223071786ac165f8343cb6901d5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299578"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079096"
 ---
-# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>Azure DevOps で ACS エンジンと Docker Swarm Mode を使用して Azure Container Service に複数コンテナー アプリケーションをデプロイする完全な CI/CD パイプライン
+# <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(非推奨) Azure DevOps で ACS エンジンと Docker Swarm Mode を使用して Azure Container Service に複数コンテナー アプリケーションをデプロイする完全な CI/CD パイプライン
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 *この記事は、[Azure DevOps で Docker Swarm を使用して Azure Container Service に複数コンテナー アプリケーションをデプロイする完全な CI/CD パイプライン](container-service-docker-swarm-setup-ci-cd.md)に関するドキュメントに基づいています*
 
@@ -92,7 +94,7 @@ CI/CD パイプラインに進む前の最後の手順は、Azure 内の Docker 
 
 これで、すべての構成は完了です。 次の手順では、アプリケーションをビルドし、Docker Swarm クラスターにデプロイする CI/CD パイプラインを作成します。 
 
-## <a name="step-2-create-the-build-pipeline"></a>手順 2: ビルド パイプラインの作成
+## <a name="step-2-create-the-build-pipeline"></a>手順 2: ビルド パイプラインを作成する
 
 この手順では、Azure DevOps プロジェクトのビルド パイプラインを設定し、コンテナー イメージのビルド ワークフローを定義します
 
@@ -106,7 +108,7 @@ CI/CD パイプラインに進む前の最後の手順は、Azure 内の Docker 
 
     ![Azure DevOps - 新しい空のビルド パイプライン](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/create-empty-build-vsts.PNG)
 
-4. 次に、**[変数]** タブをクリックし、2 つの新しい変数 (**RegistryURL**  と **AgentURL**) を作成します。 レジストリとクラスター エージェントの DNS の値を貼り付けます。
+4. 次に、**[変数]** タブをクリックし、2 つの新しい変数(**RegistryURL**  と **AgentURL**) を作成します。 レジストリとクラスター エージェントの DNS の値を貼り付けます。
 
     ![Azure DevOps - ビルド変数の構成](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-variables.png)
 
@@ -129,7 +131,7 @@ CI/CD パイプラインに進む前の最後の手順は、Azure 内の Docker 
 * ProductsApi
 * プロキシ
 * RatingsApi
-* RecommandationsApi
+* RecommendationsApi
 * ShopFront
 
 イメージごとに 2 つの Docker ステップ (イメージをビルドするステップと Azure コンテナー レジストリにイメージをプッシュするステップ) が必要です。 
@@ -161,21 +163,21 @@ CI/CD パイプラインに進む前の最後の手順は、Azure 内の Docker 
 
    ![Azure DevOps - コマンド ライン タスクの追加](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-command-task.png)
 
-      1. bash スクリプトを使用して、docker-compose.yml ファイル内に出現する *RegistryURL* を RegistryURL 変数に置き換えるコマンド ライン タスク。 
+   1. bash スクリプトを使用して、docker-compose.yml ファイル内に出現する *RegistryURL* を RegistryURL 変数に置き換えるコマンド ライン タスク。 
     
-          ```-c "sed -i 's/RegistryUrl/$(RegistryURL)/g' src/docker-compose-v3.yml"```
+       ```-c "sed -i 's/RegistryUrl/$(RegistryURL)/g' src/docker-compose-v3.yml"```
 
-          ![Azure DevOps - レジストリ URL による compose ファイルの更新](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-replace-registry.png)
+       ![Azure DevOps - レジストリ URL による compose ファイルの更新](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-replace-registry.png)
 
-      2. bash スクリプトを使用して、docker-compose.yml ファイル内に出現する *AgentURL* を AgentURL 変数に置き換えるコマンド ライン タスク。
+   2. bash スクリプトを使用して、docker-compose.yml ファイル内に出現する *AgentURL* を AgentURL 変数に置き換えるコマンド ライン タスク。
   
-          ```-c "sed -i 's/AgentUrl/$(AgentURL)/g' src/docker-compose-v3.yml"```
+       ```-c "sed -i 's/AgentUrl/$(AgentURL)/g' src/docker-compose-v3.yml"```
 
-     3. 更新された compose ファイルをビルド成果物としてドロップし、リリースで使用できるようにするタスク。 詳細については、次の画面を参照してください。
+      1. 更新された compose ファイルをビルド成果物としてドロップし、リリースで使用できるようにするタスク。 詳細については、次の画面を参照してください。
 
-         ![Azure DevOps - 成果物の発行](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish.png) 
+      ![Azure DevOps - 成果物の発行](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish.png) 
 
-         ![Azure DevOps - compose ファイルの発行](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish-compose.png) 
+      ![Azure DevOps - compose ファイルの発行](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish-compose.png) 
 
 5. **[保存してキューに登録]** をクリックして、ビルド パイプラインをテストします。
 
@@ -185,7 +187,7 @@ CI/CD パイプラインに進む前の最後の手順は、Azure 内の Docker 
 
 6. **ビルド**が適切であれば、次の画面が表示されます。
 
-  ![Azure DevOps - ビルド成功](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-succeeded.png) 
+   ![Azure DevOps - ビルド成功](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-succeeded.png) 
 
 ## <a name="step-3-create-the-release-pipeline"></a>手順 3: リリース パイプラインの作成
 
@@ -225,20 +227,22 @@ Azure DevOps を使用すると、[複数の環境のリリースを管理](http
 
 2. bash コマンドを実行して、マスター ノードで `docker` コマンドと `docker stack deploy` コマンドを実行する 2 つ目のタスクを構成します。 詳細については、次の画面を参照してください。
 
-    ```docker login -u $(docker.username) -p $(docker.password) $(docker.registry) && export DOCKER_HOST=:2375 && cd deploy && docker stack deploy --compose-file docker-compose-v3.yml myshop --with-registry-auth```
+    ```
+    docker login -u $(docker.username) -p $(docker.password) $(docker.registry) && export DOCKER_HOST=:2375 && cd deploy && docker stack deploy --compose-file docker-compose-v3.yml myshop --with-registry-auth
+    ```
 
     ![Azure DevOps - リリース Bash](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-bash.png)
 
     マスターで実行されるコマンドでは、Docker CLI と Docker-Compose CLI を使用して、次のタスクを実行します。
 
-    - Azure コンテナー レジストリにログインします (**[変数]** タブに定義されている 3 つのビルド変数を使用します)。
-    - Swarm エンドポイント (:2375) を使用するよう **DOCKER_HOST** 変数を定義します。
-    - 前の安全なコピー タスクによって作成された、docker-compose.yml ファイルを含む *deploy* フォルダーに移動します。 
-    - 新しいイメージの取得とコンテナーの作成を行う `docker stack deploy` コマンドを実行します。
+   - Azure コンテナー レジストリにログインします (**[変数]** タブに定義されている 3 つのビルド変数を使用します)。
+   - Swarm エンドポイント (:2375) を使用するよう **DOCKER_HOST** 変数を定義します。
+   - 前の安全なコピー タスクによって作成された、docker-compose.yml ファイルを含む *deploy* フォルダーに移動します。 
+   - 新しいイメージの取得とコンテナーの作成を行う `docker stack deploy` コマンドを実行します。
 
-    >[!IMPORTANT]
-    > 前の画面に示すように、**[STDERR でのエラー]** チェック ボックスはオフのままにします。 この設定により、`docker-compose` が (コンテナーの停止や削除などの) 診断メッセージを標準エラー出力に出力することで、リリース プロセスを完了できます。 このチェック ボックスをオンにすると、すべてうまくいった場合でも、Azure DevOps からリリース中にエラーが発生したと報告されます。
-    >
+     >[!IMPORTANT]
+     > 前の画面に示すように、**[STDERR でのエラー]** チェック ボックスはオフのままにします。 この設定により、`docker-compose` が (コンテナーの停止や削除などの) 診断メッセージを標準エラー出力に出力することで、リリース プロセスを完了できます。 このチェック ボックスをオンにすると、すべてうまくいった場合でも、Azure DevOps からリリース中にエラーが発生したと報告されます。
+     >
 3. この新しいリリース パイプラインを保存します。
 
 ## <a name="step-4-test-the-cicd-pipeline"></a>手順 4: CI/CD パイプラインのテスト

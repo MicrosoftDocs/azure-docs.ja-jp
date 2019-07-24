@@ -8,20 +8,20 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: c453998eea2a747b2cb608482f0ef9c1ee197ee0
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: b07e21131d9560a49d99644525835ac5ee3bac9e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185433"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606794"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>SIM データをリモート監視ソリューションに統合する
 
 IoT デバイスは、どこからでもデータ ストリームを送信できるようにする SIM カードを使用してクラウドに接続することがよくあります。 Azure IoT リモート監視ソリューションによって IoT 管理接続データの統合が可能になるため、オペレーターは、IoT SIM が提供するデータによってデバイスの正常性を追跡することもできます。
 
-リモート監視は、追加設定なしで Telefónica IoT Connectivity との統合を可能にするため、IoT Connectivity Platform を使用しているユーザーはデバイスの SIM 接続性データをソリューションと同期できるようになります。 このソリューションは、GitHub [リポジトリ](http://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)を介して他の IoT Connectivity プロバイダーをサポートするように拡張することができます。
+リモート監視は、追加設定なしで Telefónica IoT Connectivity との統合を可能にするため、IoT Connectivity Platform を使用しているユーザーはデバイスの SIM 接続性データをソリューションと同期できるようになります。 このソリューションは、GitHub [リポジトリ](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)を介して他の IoT Connectivity プロバイダーをサポートするように拡張することができます。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 * Telefónica IoT SIM データをリモート監視ソリューションに統合する
 * テレメトリをリアルタイムで表示する

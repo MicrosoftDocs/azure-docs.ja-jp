@@ -2,7 +2,6 @@
 title: SAP システムに接続する - Azure Logic Apps | Microsoft Docs
 description: Azure Logic Apps を使用してワークフローを自動化することにより、SAP のリソースにアクセスしてそれを管理する方法について説明します。
 author: ecfan
-manager: jeconnoc
 ms.author: estfan
 ms.date: 05/31/2018
 ms.topic: article
@@ -11,18 +10,17 @@ services: logic-apps
 ms.reviewer: klam, divswa, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 77d1e11c1400f9a3d6bb6bda8e935cd4d24a195e
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d677c0eae9c92f90783ed4ebd95a528b34c872ec
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230898"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170838"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
 > [!NOTE]
-> この SAP コネクタは間もなく非推奨となる予定です。 さらに高度な新しい SAP コネクタがリリースされています。この[新しい SAP コネクタ](./logic-apps-using-sap-connector.md)を選択するか、この新しいコネクタに移行することをお勧めします。
->  
+> この SAP コネクタは非推奨になる予定です。 [より新しくより高度な SAP コネクタ](./logic-apps-using-sap-connector.md)を使用するか、それに移行してください。 
 
 この記事では、SAP アプリケーション サーバー コネクタと SAP メッセージ サーバー コネクタを使用して、ロジック アプリ内から SAP のリソースにアクセスする方法を紹介します。 これにより、SAP のデータやリソースを管理するタスク、プロセス、ワークフローを自動化することができます。
 
@@ -38,7 +36,7 @@ Azure サブスクリプションがない場合は、<a href="https://azure.mic
 
 この記事に沿って作業を行うには、次の要件を満たす必要があります。
 
-* SAP システムへのアクセスに使用するロジック アプリとそのロジック アプリのワークフローを開始するトリガー。 現在 SAP コネクタに用意されているのはアクションだけです。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と「[クイックスタート: 初めてのロジック アプリ ワークフローの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)」を参照してください。
+* SAP システムへのアクセスに使用するロジック アプリとそのロジック アプリのワークフローを開始するトリガー。 現在 SAP コネクタに用意されているのはアクションだけです。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[クイック スタートの初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
 * <a href="https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server" target="_blank">SAP アプリケーション サーバー</a>または <a href="https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm" target="_blank">SAP メッセージ サーバー</a>。
 
@@ -67,7 +65,7 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 1. Azure portal で空のロジック アプリを作成して、ロジック アプリ デザイナーを開きます。 
 
-2. 検索ボックスに、フィルターとして「HTTP 要求」と入力します。 トリガーの一覧から、**[要求 - HTTP 要求の受信時]** というトリガーを選択します。
+2. 検索ボックスに、フィルターとして「HTTP 要求」と入力します。 トリガーの一覧から、**[要求 - HTTP 要求の受信時]** を選択します。
 
    ![HTTP 要求トリガーの追加](./media/logic-apps-using-sap-connector-old/add-trigger.png)
 
@@ -93,7 +91,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
    * **[SAP Application Server - Send to SAP]\(SAP アプリケーション サーバー - SAP に送信\)**
    * **[SAP Message Server - Send to SAP]\(SAP メッセージ サーバー - SAP に送信\)**
 
-   この例では、**[SAP Application Server - Send to SAP]\(SAP アプリケーション サーバー - SAP に送信\)** アクションを使用しています。
+   この例では、次のアクションを使用します。**[SAP Application Server - Send to SAP]\(SAP アプリケーション サーバー - SAP に送信\)**
 
    !["SAP アプリケーション サーバー" または "SAP メッセージ サーバー" を選択](media/logic-apps-using-sap-connector-old/select-sap-action.png)
 
@@ -154,7 +152,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 1. ロジック アプリ デザイナーで、SAP アクションの下に表示される **[新しいステップ]** > **[アクションの追加]** を順に選択します。
 
-2. 検索ボックスに、フィルターとして「応答」と入力します。 アクションの一覧から、**[要求 - 応答]** アクションを選択します。
+2. 検索ボックスに、フィルターとして「応答」と入力します。 アクションの一覧から、次のアクションを選択します。**[要求と応答]**
 
 3. **[本文]** ボックス内をクリックして、動的コンテンツ リストを表示します。 このリストの **[Send to SAP]\(SAP に送信\)** で、**[本文]** フィールドを選択します。 
 

@@ -1,0 +1,59 @@
+items:
+- name: 概要
+  href: overview.md
+- name: クイック スタート
+  items:
+  - name: Bash - クイック スタート
+    href: quickstart.md
+  - name: PowerShell - クイック スタート
+    href: quickstart-powershell.md
+- name: 機能とツール
+  items:
+  - name: 機能とツール
+    href: features.md
+- name: チュートリアル
+  items:
+  - name: Ansible
+    items:
+    - name: Ansible プレイブックの実行
+      href: /azure/ansible/ansible-run-playbook-in-cloudshell?toc=/azure/cloud-shell/toc.json&bc=/azure/bread/toc.json
+    - name: Azure の動的インベントリの管理
+      href: /azure/ansible/ansible-manage-azure-dynamic-inventories?toc=/azure/cloud-shell/toc.json&bc=/azure/bread/toc.json
+  - name: Terraform
+    items:
+    - name: 実行プランの作成
+      href: example-terraform-bash.md
+- name: ハウツー ガイド
+  items:
+  - name: Windows ユーザー向けの PowerShell Cloud Shell
+    href: cloud-shell-windows-users.md
+  - name: ストレージのファイルの永続化
+    href: persisting-shell-storage.md
+  - name: ウィンドウの使用
+    href: using-the-shell-window.md
+  - name: Cloud Shell での MSI の使用
+    href: msi-authorization.md
+  - name: Cloud Shell の埋め込み
+    href: embed-cloud-shell.md
+- name: Cloud Shell エディターの使用
+  href: using-cloud-shell-editor.md
+- name: トラブルシューティングと制限事項
+  href: troubleshooting.md
+- name: リファレンス
+  items:
+  - name: Azure CLI
+    href: /cli/azure
+  - name: Azure PowerShell
+    href: /powershell/azure
+- name: リソース
+  items:
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/?category=monitoring-management
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+ms.openlocfilehash: 873308d775fd7451d89bd05771d3a1c5f5e22995
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341307"

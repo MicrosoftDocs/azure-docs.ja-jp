@@ -1,5 +1,5 @@
 ---
-title: Azure App Service Environment でのネットワークの考慮事項
+title: App Service Environment でのネットワークの考慮事項 - Azure
 description: ASE ネットワーク トラフィックと、ASE を使用して NSG と UDR を設定する方法について説明します
 services: app-service
 documentationcenter: na
@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2018
+ms.date: 03/14/2019
 ms.author: ccompy
-ms.openlocfilehash: 535f70658593ff5a9ae1642ae7a97646e3fefb63
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.custom: seodec18
+ms.openlocfilehash: 73175b326c25d5d9a78155d0d9d888b655da1bfd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288256"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124135"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment のネットワークの考慮事項 #
 
@@ -26,10 +27,10 @@ ms.locfileid: "51288256"
 
  Azure [App Service Environment][Intro] は、Azure 仮想ネットワーク (VNet) 内のサブネットへの Azure App Service のデプロイです。 App Service Environment (ASE) のデプロイの種類には、次の 2 つがあります。
 
-- **外部 ASE**: ASE でホストされたアプリをインターネット アクセス可能な IP アドレスで公開します。 詳細については、[外部 ASE の作成][MakeExternalASE]に関するページを参照してください。
-- **ILB ASE**: ASE でホストされたアプリを VNet 内部の IP アドレスで公開します。 内部エンドポイントは内部ロード バランサー (ILB) であるため、ILB ASE と呼ばれています。 詳細については、[ILB ASE の作成と使用][MakeILBASE]に関するページを参照してください。
+- **外部 ASE**:ASE でホストされたアプリをインターネット アクセス可能な IP アドレスで公開します。 詳細については、[外部 ASE の作成][MakeExternalASE]に関するページを参照してください。
+- **ILB ASE**:ASE でホストされたアプリを VNet 内部の IP アドレスで公開します。 内部エンドポイントは内部ロード バランサー (ILB) であるため、ILB ASE と呼ばれています。 詳細については、[ILB ASE の作成と使用][MakeILBASE]に関するページを参照してください。
 
-App Service Environment には、ASEv1 と ASEv2 の 2 つのバージョンがあります。 ASEv1 については、「[App Service Environment v1 の概要][ASEv1Intro]」をご覧ください。 ASEv1 は、クラシックまたは Resource Manager VNet にデプロイできます。 ASEv2 は、Resource Manager VNet にのみデプロイできます。
+App Service Environment には 2 つのバージョンがあります。ASEv1 と ASEv2 です。 ASEv1 については、「[App Service Environment v1 の概要][ASEv1Intro]」をご覧ください。 ASEv1 は、クラシックまたは Resource Manager VNet にデプロイできます。 ASEv2 は、Resource Manager VNet にのみデプロイできます。
 
 インターネットにアクセスする ASE からのすべての呼び出しは、ASE に割り当てられた VIP を経由して VNet から出ます。 この VIP のパブリック IP は、インターネットにアクセスする ASE からのすべての呼び出しのための送信元 IP になります。 ASE 内のアプリが VNet 内のリソースまたは VPN 全体にわたるリソースへの呼び出しを行う場合、ソース IP は、その ASE によって使用されるサブネット内の IP のいずれかです。 ASE は VNet 内にあるため、追加の構成をしなくても、VNet 内のリソースにもアクセスできます。 VNet がオンプレミスのネットワークに接続されている場合、追加の構成なしで ASE 内のアプリもそこにあるリソースにアクセスできます。
 
@@ -53,6 +54,7 @@ ILB ASE が存在する場合、ILB のアドレスは、HTTP/S、FTP/S、Web �
 |  HTTP/HTTPS  | ユーザーが構成可能 |  80、443 |
 |  FTP/FTPS    | ユーザーが構成可能 |  21、990、10001-10020 |
 |  Visual Studio リモート デバッグ  |  ユーザーが構成可能 |  4020、4022、4024 |
+|  Web 配置サービス | ユーザーが構成可能 | 8172 |
 
 これは、ユーザーが外部 ASE または ILB ASE にいる場合に当てはまります。 外部 ASE にいる場合は、パブリック VIP でこれらのポートにヒットします。 ILB ASE にいる場合は、ILB でこれらのポートにヒットします。 ポート 443 をロックダウンすると、ポータルで公開されている一部の機能に影響が出る場合があります。 詳細については、「[ポータルの依存関係](#portaldep)」を参照してください。
 
@@ -73,10 +75,10 @@ ASE の受信アクセス依存関係は次のとおりです。
 
 | 用途 | ソース | ターゲット |
 |-----|------|----|
-| 管理 | App Service の管理アドレス | ASE サブネット: 454、455 |
-|  ASE 内部通信 | ASE サブネット: すべてのポート | ASE サブネット: すべてのポート
-|  Azure Load Balancer の着信を許可 | Azure Load Balancer | ASE サブネット: すべてのポート
-|  アプリに割り当てられた IP アドレス | アプリに割り当てられたアドレス | ASE サブネット: すべてのポート
+| 管理 | App Service の管理アドレス | ASE サブネット:454、455 |
+|  ASE 内部通信 | ASE サブネット:すべてのポート | ASE サブネット:すべてのポート
+|  Azure Load Balancer の着信を許可 | Azure Load Balancer | ASE サブネット:すべてのポート
+|  アプリに割り当てられた IP アドレス | アプリに割り当てられたアドレス | ASE サブネット:すべてのポート
 
 受信管理トラフィックでは、システムの監視に加え、ASE のコマンドと制御が提供されます。 このトラフィックのソース アドレスは、[ASE 管理アドレス][ASEManagement]に関するドキュメントにリストされています。 ネットワーク セキュリティ構成では、ポート 454 および 455 上のすべての IP からのアクセスを許可する必要があります。 これらのアドレスからのアクセスをブロックすると、ASE が正常でなくなり、中断されます。
 
@@ -114,7 +116,7 @@ ASE の機能的な依存関係に加えて、ポータルのエクスペリエ�
 -   Functions
 -   ログ ストリーミング
 -   Kudu
--   拡張機能
+-   Extensions
 -   プロセス エクスプローラー
 -   コンソール
 
@@ -130,16 +132,16 @@ ILB ASE がドメイン名 *contoso.net* であり、アプリ名が *testapp* �
 
 ## <a name="functions-and-web-jobs"></a>関数と Web ジョブ ##
 
-関数と Web ジョブはどちらも SCM サイトによって異なりますが、アプリが ILB ASE 内にある場合でも、ブラウザーで SCM サイトに到達できる限り、ポータルでの使用がサポートされます。  ILB ASE で自己署名証明書を使用している場合は、ブラウザーがその証明書を信頼するようにできる必要があります。  IE と Edge の場合には、証明書がコンピューターのトラスト ストア内に存在している必要があることになります。  Chrome を使用している場合は、ブラウザーで事前に証明書を受け入れたことになります。SCM サイトに直接到達することによるものと考えられます。  最も良い方法として、ブラウザーの信頼チェーンにある商用証明書を使用することをお勧めします。  
+関数と Web ジョブはどちらも SCM サイトによって異なりますが、アプリが ILB ASE 内にある場合でも、ブラウザーで SCM サイトに到達できる限り、ポータルでの使用がサポートされます。  ILB ASE で自己署名証明書を使用している場合は、ブラウザーがその証明書を信頼するようにできる必要があります。  IE と Microsoft Edge の場合には、証明書がコンピューターのトラスト ストア内に存在している必要があることになります。  Chrome を使用している場合は、ブラウザーで事前に証明書を受け入れたことになります。SCM サイトに直接到達することによるものと考えられます。  最も良い方法として、ブラウザーの信頼チェーンにある商用証明書を使用することをお勧めします。  
 
 ## <a name="ase-ip-addresses"></a>ASE IP アドレス ##
 
 ASE で認識されている必要のある IP アドレスがいくつかあります。 次に例を示します。
 
-- **パブリック受信 IP アドレス**: 外部 ASE でのアプリ トラフィック、および外部 ASE と ILB ASE の両方での管理トラフィックに使用されます。
-- **送信パブリック IP**: VPN 経由でルーティングされない、VNet を離れる ASE からの送信接続の "発信元" IP として使用されます。
-- **ILB IP アドレス**: ILB ASE を使用する場合。
-- **アプリに割り当てられた IP ベースの SSL アドレス**: 外部 ASE でのみ、かつ IP ベースの SSL が構成されている場合にのみ可能です。
+- **パブリック受信 IP アドレス**:外部 ASE でのアプリ トラフィック、および外部 ASE と ILB ASE の両方での管理トラフィックに使用されます。
+- **送信パブリック IP**:VPN 経由でルーティングされない、VNet を離れる ASE からの送信接続の "発信元" IP として使用されます。
+- **ILB IP アドレス**:ILB ASE を使用する場合。
+- **アプリに割り当てられた IP ベースの SSL アドレス**:外部 ASE でのみ、かつ IP ベースの SSL が構成されている場合にのみ可能です。
 
 これらすべての IP アドレスは、ASE UI から Azure Portal の ASEv2 で簡単に確認できます。 ILB ASE が存在する場合は、ILB の IP が一覧表示されます。
 
@@ -150,7 +152,7 @@ ASE で認識されている必要のある IP アドレスがいくつかあり
 
 ### <a name="app-assigned-ip-addresses"></a>アプリに割り当てられた IP アドレス ###
 
-外部 ASE では、個々のアプリに IP アドレスを割り当てることができます。 これは ILB ASE では実行できません。 独自の IP アドレスを持つようにアプリを構成する方法の詳細については、「[既存のカスタム SSL 証明書の Azure Web Apps へのバインド](../app-service-web-tutorial-custom-ssl.md)」をご覧ください。
+外部 ASE では、個々のアプリに IP アドレスを割り当てることができます。 これは ILB ASE では実行できません。 独自の IP アドレスを持つようにアプリを構成する方法の詳細については、「[既存のカスタム SSL 証明書の Azure App Service へのバインド](../app-service-web-tutorial-custom-ssl.md)」をご覧ください。
 
 アプリに独自の IP ベースの SSL アドレスがある場合、ASE はその IP アドレスにマップするために 2 つのポートを予約します。 1 つのポートは HTTP トラフィック用であり、もう 1 つのポートは HTTPS 用です。 これらのポートは、ASE UI の [IP アドレス] セクションに表示されます。 トラフィックは、VIP からこれらのポートに到達できる必要があります。そうでないと、アプリにアクセスできません。 この要件は、ネットワーク セキュリティ グループ (NSG) を構成するときに思い出すことが重要です。
 
@@ -234,10 +236,10 @@ VNet でルートを設定し、送信トラフィックがインターネット
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: http://azure.microsoft.com/pricing/details/app-service/
+[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
 [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
-[Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
+[Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [ASEManagement]: ./management-addresses.md

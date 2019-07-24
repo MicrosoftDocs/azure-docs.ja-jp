@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 32f3f4fd3f4f299c9b084ab8604b56ea70e639a4
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 7763338a5c2d5ccb58fe912d9989ab5bb57d5932
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368230"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258498"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護
 Azure Media Services では、次の形式を使用して HTTP ライブ ストリーミング (HLS) コンテンツを動的に暗号化することができます。  
@@ -60,7 +60,7 @@ Media Services キーの配信側で次の設定が必要です。
 
       次の手順では、FairPlay 用の .pfx 証明書ファイルを生成する方法について説明します。
 
-    1. https://slproweb.com/products/Win32OpenSSL.html から OpenSSL をインストールします。
+    1.  https://slproweb.com/products/Win32OpenSSL.html から OpenSSL をインストールします。
 
         Apple によって提供される FairPlay 証明書とその他のファイルが含まれるフォルダーに移動します。
     2. コマンド ラインから次のコマンドを実行します。 このコマンドにより、.cer ファイルが .pem ファイルに変換されます。
@@ -71,9 +71,9 @@ Media Services キーの配信側で次の設定が必要です。
         "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12 -export -out FairPlay-out.pfx -inkey privatekey.pem -in FairPlay-out.pem -passin file:privatekey-pem-pass.txt
   * **アプリ証明書パスワード**: .pfx ファイルを作成するためのパスワード。
   * **アプリ証明書パスワード ID**: 他の Media Services キーをアップロードするのと同様の方法で、パスワードをアップロードする必要があります。 **ContentKeyType.FairPlayPfxPassword** 列挙値を使用して、Media Services ID を取得します。 これは、キー配信ポリシー オプションの内部で使用する必要がある ID です。
-  * **iv**: 16 バイトのランダム値。 資産配信ポリシーの iv と一致している必要があります。 iv を生成し、アセット配信ポリシーとキー配信ポリシー オプションの両方に配置します。
+  * **iv**: これは 16 バイトのランダム値です。 資産配信ポリシーの iv と一致している必要があります。 iv を生成し、アセット配信ポリシーとキー配信ポリシー オプションの両方に配置します。
   * **ASK**: このキーは、Apple 開発者ポータルを使用して証明書を生成したときに受け取ります。 開発チームごとに一意の ASK が割り当てられます。 ASK のコピーを保存して、安全な場所に保管してください。 後から ASK を FairPlayAsk として Media services に構成する必要があります。
-  * **ASK ID**: この ID は、ASK を Media Services にアップロードするときに取得されます。 **ContentKeyType.FairPlayASk** 列挙値を使用して ASK をアップロードする必要があります。 これにより Media Services ID が返されます。これは、キー配信ポリシー オプションを設定するときに使用する ID です。
+  * **ASK ID**: この ID は、ASK を Media Services にアップロードすると取得されます。 **ContentKeyType.FairPlayASk** 列挙値を使用して ASK をアップロードする必要があります。 これにより Media Services ID が返されます。これは、キー配信ポリシー オプションを設定するときに使用する ID です。
 
 FPS のクライアント側で、次の設定が必要です。
 
@@ -85,7 +85,7 @@ FairPlay で暗号化されたストリームを再生するには、まず実�
   * .pfx ファイル
   * .pfx のパスワード
 
-**AES-128 CBC** 暗号化で HLS をサポートしているクライアントは、OS X 上の Safari、Apple TV、iOS です。
+次のクライアントは、**AES-128 CBC** 暗号化で HLS をサポートしています。Safari on OS X、Apple TV、iOS。
 
 ## <a name="configure-fairplay-dynamic-encryption-and-license-delivery-services"></a>FairPlay の動的暗号化とライセンス配信サービスの構成
 以下では、Media Services ライセンス配信サービスと動的暗号化を使用して、FairPlay で資産を保護するための一般的な手順について説明します。
@@ -139,7 +139,7 @@ FairPlay で暗号化されたストリームを再生するには、まず実�
 * 暗号化タイプでは大文字と小文字が区別されます。
 * 指定できる暗号化タイプは次のとおりです。  
   * **cenc**: 共通暗号化 (PlayReady または Widevine)
-  * **cbcs-aapl**: Fairplay
+  * **cbcs-aapl**: FairPlay
   * **cbc**: AES エンベロープ暗号化
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
@@ -550,7 +550,7 @@ namespace DynamicEncryptionWithFairPlay
 }
 ```
 
-## <a name="next-steps-media-services-learning-paths"></a>次のステップ: Media Services のラーニング パス
+## <a name="next-steps-media-services-learning-paths"></a>次のステップ:Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供

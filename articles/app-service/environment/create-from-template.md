@@ -1,5 +1,5 @@
 ---
-title: Resource Manager テンプレートを使用して Azure App Service Environment を作成する
+title: Resource Manager テンプレートを使用して App Service Environment を作成する - Azure
 description: Resource Manager テンプレートを使用して、外部または ILB Azure App Service Environment を作成する方法について説明します。
 services: app-service
 documentationcenter: na
@@ -13,16 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 62eecaba261ac2478ab6d1c7d47067f43a58d976
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.custom: seodec18
+ms.openlocfilehash: bdf722ffa7a7c499ff256392886e0f229f27c7a5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231357"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109896"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して ASE を作成する
 
 ## <a name="overview"></a>概要
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Azure App Service Environment (ASE) は、インターネットでアクセス可能なエンドポイントまたは Azure Virtual Network (VNet) の内部アドレスのエンドポイントを使用して作成できます。 内部エンドポイントを使用して作成すると、内部ロード バランサー (ILB) と呼ばれる Azure コンポーネントによってそのエンドポイントが提供されます。 内部 IP アドレスの ASE は、ILB ASE と呼ばれます。 パブリック エンドポイントを持つ ASE は、外部 ASE と呼ばれます。 
 
 ASE は、Azure Portal または Azure Resource Manager テンプレートを使用して作成できます。 この記事では、Resource Manager テンプレートを使用して外部 ASE または ILB ASE を作成するために必要な手順と構文について説明します。 Azure Portal で ASE を作成する方法については、[外部 ASE の作成][MakeExternalASE]に関するページ、または [ILB ASE の作成][MakeILBASE]に関するページをご覧ください。
@@ -49,9 +53,9 @@ ASE および関連するパラメーター ファイルを作成する Resource
 
 ILB ASE を作成する場合は、これらの Resource Manager テンプレートの[例][quickstartilbasecreate]を使用します。 これらのテンプレートは、ILB ASE の作成に対応します。 *azuredeploy.parameters.json* ファイルのほとんどのパラメーターは、ILB ASE と外部 ASE の作成に共通するパラメーターです。 以下の一覧では、ILB ASE を作成するうえで特に注意が必要なパラメーターや、固有のパラメーターについて説明します。
 
-* *internalLoadBalancingMode*: ほとんどの場合、これは 3 に設定します。この設定により、ポート 80/443 の HTTP/HTTPS トラフィックと、ASE 上の FTP サービスによってリッスンされているコントロール/データ チャネル ポートは、ILB が割り当てられた仮想ネットワークの内部アドレスにバインドされます。 このプロパティを 2 に設定すると、FTP サービスに関連するポート (コントロール チャネルとデータ チャネルの両方) のみが ILB アドレスにバインドされます。 HTTP/HTTPS トラフィックは、パブリック VIP 上に留まります。
-* *dnsSuffix*: このパラメーターでは、ASE に割り当てられる既定のルート ドメインを定義します。 Azure App Service のパブリック版では、すべての Web アプリの既定のルート ドメインは *azurewebsites.net*です。 ILB ASE はユーザーの仮想ネットワークの内部にあるため、パブリック サービスの既定のルート ドメインを使用しても意味がありません。 ILB ASE には、会社の内部仮想ネットワーク内での使用に適した既定のルート ドメインを用意する必要があります。 たとえば、Contoso Corporation では、Contoso の仮想ネットワーク内でのみ解決およびアクセス可能になるよう設計されたアプリに対して、*internal-contoso.com* という既定のルート ドメインを使用できます。 
-* *ipSslAddressCount*: ILB ASE には単一の ILB アドレスしかないため、このパラメーターは、*azuredeploy.json* ファイル内で自動的に既定値の 0 に設定されます。 ILB ASE 向けの明示的な IP SSL アドレスはありません。 そのため、ILB ASE の IP SSL アドレス プールは、0 に設定する必要があります。 それ以外の場合、プロビジョニングのエラーが発生します。 
+* *internalLoadBalancingMode*:ほとんどの場合、これは 3 に設定します。この設定により、ポート 80/443 の HTTP/HTTPS トラフィックと、ASE 上の FTP サービスによってリッスンされているコントロール/データ チャネル ポートは、ILB が割り当てられた仮想ネットワークの内部アドレスにバインドされます。 このプロパティを 2 に設定すると、FTP サービスに関連するポート (コントロール チャネルとデータ チャネルの両方) のみが ILB アドレスにバインドされます。 HTTP/HTTPS トラフィックは、パブリック VIP 上に留まります。
+* *dnsSuffix*:このパラメーターでは、ASE に割り当てられる既定のルート ドメインを定義します。 Azure App Service のパブリック版では、すべての Web アプリの既定のルート ドメインは *azurewebsites.net*です。 ILB ASE はユーザーの仮想ネットワークの内部にあるため、パブリック サービスの既定のルート ドメインを使用しても意味がありません。 ILB ASE には、会社の内部仮想ネットワーク内での使用に適した既定のルート ドメインを用意する必要があります。 たとえば、Contoso Corporation では、Contoso の仮想ネットワーク内でのみ解決およびアクセス可能になるよう設計されたアプリに対して、*internal-contoso.com* という既定のルート ドメインを使用できます。 
+* *ipSslAddressCount*:ILB ASE には単一の ILB アドレスしかないため、このパラメーターは、*azuredeploy.json* ファイル内で自動的に既定値の 0 に設定されます。 ILB ASE 向けの明示的な IP SSL アドレスはありません。 そのため、ILB ASE の IP SSL アドレス プールは、0 に設定する必要があります。 それ以外の場合、プロビジョニングのエラーが発生します。 
 
 *azuredeploy.parameters.json* ファイルに入力した後で、PowerShell コード スニペットを使用して、ASE を作成します。 ファイル パスは、コンピューター上の Resource Manager テンプレート ファイルの場所に一致するように変更してください。 Resource Manager のデプロイ名とリソース グループ名に独自の値を指定することも忘れずに行ってください。
 
@@ -59,7 +63,7 @@ ILB ASE を作成する場合は、これらの Resource Manager テンプレー
 $templatePath="PATH\azuredeploy.json"
 $parameterPath="PATH\azuredeploy.parameters.json"
 
-New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 ```
 
 ASE の作成には 1 時間ほどかかります。 続いて、ポータルの、デプロイをトリガーしたサブスクリプションの ASE の一覧に、作成した ASE が表示されます。
@@ -69,8 +73,8 @@ SSL 証明書は、アプリへの SSL 接続を確立するために使用す�
 
 内部証明機関を利用する、外部の発行者から証明書を購入する、自己署名証明書を使用する、のいずれかの手段で有効な SSL 証明書を取得します。 どのようなソースから SSL 証明書を取得した場合でも、以下の証明書属性を適切に構成する必要があります。
 
-* **Subject**: この属性は、**.your-root-domain-here.com* に設定する必要があります。
-* **Subject Alternative Name**: この属性は、**.your-root-domain-here.com* と **.scm.your-root-domain-here.com* を両方とも含むように設定する必要があります。 各アプリに関連付けられた SCM/Kudu サイトへの SSL 接続で、*your-app-name.scm.your-root-domain-here.com* 形式のアドレスが使用されます。
+* **Subject**:この属性は、**.your-root-domain-here.com* に設定する必要があります。
+* **Subject Alternative Name**:この属性には、**.your-root-domain-here.com* と **.scm.your-root-domain-here.com* の両方が含まれている必要があります。 各アプリに関連付けられた SCM/Kudu サイトへの SSL 接続で、*your-app-name.scm.your-root-domain-here.com* 形式のアドレスが使用されます。
 
 有効な SSL 証明書を取得した後は、さらに 2 つの準備手順を実行する必要があります。 SSL 証明書を .pfx ファイルとして変換/保存します。 .pfx ファイルには、すべての中間証明書とルート証明書を忘れずに含めてください。 パスワードで保護してください。
 
@@ -103,18 +107,18 @@ SSL 証明書が正常に生成され、base64 でエンコードされた文字
 
 *azuredeploy.parameters.json* ファイル内の各パラメーターを以下に示します。
 
-* *appServiceEnvironmentName*: 構成対象の ILB ASE の名前。
-* *existingAseLocation*: ILB ASE のデプロイ先の Azure リージョンを含むテキスト文字列。  たとえば、"South Central US" のようになります。
-* *pfxBlobString*: based64 でエンコードされた .pfx ファイルの文字列表現。 前述のコード スニペットを使用し、"exportedcert.pfx.b64" に含まれる文字列をコピーします。 *pfxBlobString* 属性の値として貼り付けます。
-* *password*: .pfx ファイルの保護に使用されるパスワード。
-* *certificateThumbprint*: 証明書の拇印。 この値 (前述のコード スニペットにある *$certificate.Thumbprint* など) を PowerShell から取得した場合、値はそのまま使用できます。 この値を Windows 証明書のダイアログ ボックスからコピーした場合は、忘れずに余分なスペースを削除してください。 *certificateThumbprint* は、AF3143EB61D43F6727842115BB7F17BBCECAECAE のようになります。
-* *certificateName*: 証明書の識別に使用される、独自に選択したわかりやすい文字列識別子。 この名前は、SSL 証明書を表す *Microsoft.Web/certificates* エンティティで、一意の Resource Manager 識別子の一部として使用されます。 この名前は、サフィックス \_yourASENameHere_InternalLoadBalancingASE で終わる*必要があります*。 このサフィックスは、ILB が有効な ASE を保護するためにこの証明書が使用されることを示す標識として、Azure Portal で使用されます。
+* *appServiceEnvironmentName*:構成対象の ILB ASE の名前。
+* *existingAseLocation*:ILB ASE のデプロイ先の Azure リージョンを含むテキスト文字列。  例: "South Central US"。
+* *pfxBlobString*:based64 でエンコードされた .pfx ファイルの文字列表現。 前述のコード スニペットを使用し、"exportedcert.pfx.b64" に含まれる文字列をコピーします。 *pfxBlobString* 属性の値として貼り付けます。
+* *password*:pfx ファイルの保護に使用されるパスワード。
+* *certificateThumbprint*:証明書のサムプリント。 この値 (前述のコード スニペットにある *$certificate.Thumbprint* など) を PowerShell から取得した場合、値はそのまま使用できます。 この値を Windows 証明書のダイアログ ボックスからコピーした場合は、忘れずに余分なスペースを削除してください。 *certificateThumbprint* は、AF3143EB61D43F6727842115BB7F17BBCECAECAE のようになります。
+* *certificateName*:証明書の識別に使用される、独自に選択したわかりやすい文字列識別子。 この名前は、SSL 証明書を表す *Microsoft.Web/certificates* エンティティで、一意の Resource Manager 識別子の一部として使用されます。 この名前は、サフィックス \_yourASENameHere_InternalLoadBalancingASE で終わる*必要があります*。 このサフィックスは、ILB が有効な ASE を保護するためにこの証明書が使用されることを示す標識として、Azure Portal で使用されます。
 
 一部省略した *azuredeploy.parameters.json* の例を次に示します。
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "appServiceEnvironmentName": {
@@ -145,7 +149,7 @@ SSL 証明書が正常に生成され、base64 でエンコードされた文字
 $templatePath="PATH\azuredeploy.json"
 $parameterPath="PATH\azuredeploy.parameters.json"
 
-New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 ```
 
 変更を適用するには ASE フロントエンドあたり約 40 分かかります。 たとえば、2 つのフロントエンドを使用する既定サイズの ASE では、テンプレートが完了するまでに約 1 時間 20 分かかります。 テンプレートの実行中に、ASE をスケーリングすることはできません。  
@@ -165,11 +169,11 @@ Resource Manager テンプレートを使用して ASEv1 を作成するには�
 
 
 <!--Links-->
-[quickstartilbasecreate]: http://azure.microsoft.com/documentation/templates/201-web-app-asev2-ilb-create
-[quickstartasev2create]: http://azure.microsoft.com/documentation/templates/201-web-app-asev2-create
-[quickstartconfiguressl]: http://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-configure-default-ssl
-[quickstartwebapponasev2create]: http://azure.microsoft.com/documentation/templates/201-web-app-asp-app-on-asev2-create
-[examplebase64encoding]: http://powershellscripts.blogspot.com/2007/02/base64-encode-file.html 
+[quickstartilbasecreate]: https://azure.microsoft.com/documentation/templates/201-web-app-asev2-ilb-create
+[quickstartasev2create]: https://azure.microsoft.com/documentation/templates/201-web-app-asev2-create
+[quickstartconfiguressl]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-configure-default-ssl
+[quickstartwebapponasev2create]: https://azure.microsoft.com/documentation/templates/201-web-app-asp-app-on-asev2-create
+[examplebase64encoding]: https://powershellscripts.blogspot.com/2007/02/base64-encode-file.html 
 [configuringDefaultSSLCertificate]: https://azure.microsoft.com/documentation/templates/201-web-app-ase-ilb-configure-default-ssl/
 [Intro]: ./intro.md
 [MakeExternalASE]: ./create-external-ase.md
@@ -183,10 +187,10 @@ Resource Manager テンプレートを使用して ASEv1 を作成するには�
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: http://azure.microsoft.com/pricing/details/app-service/
+[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
 [ConfigureSSL]: ../../app-service/web-sites-purchase-ssl-web-site.md
-[Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
+[Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [ILBASEv1Template]: app-service-app-service-environment-create-ilb-ase-resourcemanager.md

@@ -10,14 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 02/11/2019
 ms.author: spelluru
-ms.openlocfilehash: 2d17f4471383be623cb40276ec1e51257bf3fbce
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.reviewer: christianreddington,anthdela,juselph
+ms.openlocfilehash: c5514a43602106cf045b575d289e02b591468359
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740384"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338463"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Azure DevTest Labs インフラストラクチャのガバナンス - リソース
 この記事では、組織内での DevTest Labs 用リソースの調整と管理について説明します。 
@@ -35,7 +36,7 @@ Azure サブスクリプション内に DevTest Labs リソースをどのよう
 - 開発環境と運用環境を分離するためにセグメント化が必要ですか? 
 - 長期的な管理、安定性、成長を容易にするためにどのような制御が導入されますか?
 
-**最初の推奨される方法**は、運用サブスクリプションと開発サブスクリプションの間の境界が線引きされている組織の Azure 分類を確認することです。 次の図では、提案される分類は開発/テスト環境と運用環境の論理的な分離に対応しています。 この方法では、組織は環境ごとに個別に関連するコストを追跡するための部門コードを導入できます。 詳細については、「[Prescriptive subscription governance](/architecture/cloud-adoption/appendix/azure-scaffold)」(サブスクリプションの規範的なガバナンス) をご覧ください。 さらに、[Azure タグ](../azure-resource-manager/resource-group-using-tags.md)を使用して、追跡用と課金用のリソースを整理できます。
+**最初の推奨される方法**は、運用サブスクリプションと開発サブスクリプションの間の境界が線引きされている組織の Azure 分類を確認することです。 次の図では、提案される分類は開発/テスト環境と運用環境の論理的な分離に対応しています。 この方法では、組織は環境ごとに個別に関連するコストを追跡するための部門コードを導入できます。 詳細については、「[Prescriptive subscription governance](/azure/architecture/cloud-adoption/appendix/azure-scaffold)」(サブスクリプションの規範的なガバナンス) をご覧ください。 さらに、[Azure タグ](../azure-resource-manager/resource-group-using-tags.md)を使用して、追跡用と課金用のリソースを整理できます。
 
 **2 番目の推奨される方法**は、Azure Enterprise Portal 内で DevTest サブスクリプションを有効にすることです。 これにより、組織は Azure エンタープライズ サブスクリプションでは通常使用できないクライアント オペレーティング システムを実行できます。 そして、計算に対してのみ支払い、ライセンスの心配はしなくてもよい、エンタープライズ ソフトウェアを使います。 Microsoft SQL Server などの IaaS 内のギャラリー イメージを含む指定されたサービスの課金が消費量のみに基づくことが保証されます。 Azure DevTest サブスクリプションの詳細については、Enterprise Agreement (EA) のお客様の場合は[こちら](https://azure.microsoft.com/offers/ms-azr-0148p/)を、従量課金制のお客様の場合は[こちら](https://azure.microsoft.com/offers/ms-azr-0023p/)をご覧ください。
 
@@ -55,7 +56,7 @@ DevTest Labs 環境全体で名前付け規則を維持するにはどうすれ�
 ### <a name="answer"></a>Answer
 現在の社内の名前付け規則を Azure の運用環境にまで拡張し、DevTest Labs 環境全体で一貫性を持たせたいことがあります。
 
-DevTest Labs をデプロイするときは、開始時のポリシーを具体的に設けることをお勧めします。 一元化されたスクリプトと JSON テンプレートを使用してポリシーをデプロイすることで、一貫性を適用できます。 名前付けポリシーは、サブスクリプション レベルで適用される Azure のポリシーによって実装できます。 Azure Policy の JSON サンプルについては、「[Azure Policy のサンプル](../azure-policy/json-samples.md)」をご覧ください。
+DevTest Labs をデプロイするときは、開始時のポリシーを具体的に設けることをお勧めします。 一元化されたスクリプトと JSON テンプレートを使用してポリシーをデプロイすることで、一貫性を適用できます。 名前付けポリシーは、サブスクリプション レベルで適用される Azure のポリシーによって実装できます。 Azure Policy の JSON サンプルについては、「[Azure Policy のサンプル](../governance/policy/samples/index.md)」をご覧ください。
 
 ## <a name="number-of-users-per-lab-and-labs-per-organization"></a>ラボあたりのユーザーの数と組織あたりのラボの数
 
@@ -75,7 +76,7 @@ DevTest Labs をデプロイするときは、開始時のポリシーを具体�
 ラボ内のリソースの削除を防ぐにはどうすればよいですか?
 
 ### <a name="answer"></a>Answer
-ラボ レベルで適切なアクセス許可を設定し、承認されたユーザーのみがリソースを削除したりラボのポリシーを変更したりできるようにすることをお勧めします。 開発者は、**DevTest Labs ユーザー** グループ内に配置する必要があります。 開発リーダーまたはインフラストラクチャ リーダーが、**DevTest Labs 所有者**になる必要があります。 ラボの所有者は 2 人だけにすることをお勧めします。 破損を防ぐため、このポリシーをコード リポジトリに拡張します。 ラボのユーザーは、リソースを使用する権限はありますが、ラボのポリシーを更新することはできません。 各組み込みグループがラボ内で持っているロールと権限の一覧については、「[Azure DevTest Labs での所有者とユーザーの追加](devtest-lab-add-devtest-user.md)」をご覧ください。
+ラボ レベルで適切なアクセス許可を設定し、承認されたユーザーのみがリソースを削除したりラボのポリシーを変更したりできるようにすることをお勧めします。 開発者は、**DevTest Labs ユーザー** グループ内に配置する必要があります。 開発リーダーまたはインフラストラクチャ リーダーが、**DevTest Labs 所有者**になる必要があります。 ラボの所有者は 2 人だけにすることをお勧めします。 破損を防ぐため、このポリシーをコード リポジトリに拡張します。 ラボのユーザーは、リソースを使用する権限はありますが、ラボのポリシーを更新することはできません。 各組み込みグループがラボ内で持っているロールと権限の一覧については、「[Azure DevTest Labs での所有者とユーザーの追加](devtest-lab-add-devtest-user.md)」を参照してください。
 
 ## <a name="move-lab-to-another-resource-group"></a>ラボを別のリソース グループに移動する 
 

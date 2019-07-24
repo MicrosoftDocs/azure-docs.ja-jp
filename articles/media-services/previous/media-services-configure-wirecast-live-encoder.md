@@ -4,7 +4,7 @@ description: 'このトピックでは、Wirecast ライブ エンコーダー�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 03/14/2019
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: 6cc4c0b01511309766e48c3d671ee897e5d6f326
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: d0da69601bfc6fd09c10b30d45195722781d87d6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669115"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890051"
 ---
-# <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Wirecast エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
+# <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Wirecast エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する 
 > [!div class="op_single_selector"]
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
@@ -29,7 +29,7 @@ ms.locfileid: "43669115"
 >
 >
 
-この記事では、[Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) ライブ エンコーダーを構成して、ライブ エンコードが有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。  詳細については、「 [Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
+この記事では、[Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) ライブ エンコーダーを構成して、ライブ エンコードが有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。  詳細については、「 [Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
 
 このチュートリアルでは、Azure Media Service Explorer (AMSE) ツールを使用して、Azure Media Services (AMS) を管理する方法を示します。 このツールは、Windows PC でのみ実行されます。 Mac または Linux の場合は、Azure Portal を使用して、[チャネル](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)と[プログラム](media-services-portal-creating-live-encoder-enabled-channel.md)を作成します。
 
@@ -45,7 +45,7 @@ ms.locfileid: "43669115"
 * ソフトウェア ベースのエンコーダーを使用する際は、不要なプログラムを終了します。
 
 ## <a name="create-a-channel"></a>チャネルの作成
-1. AMSE ツールで、**[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]** を選択します。
+1. AMSE ツールで、**[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]**  を選択します。
 
     ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
 
@@ -69,22 +69,22 @@ ms.locfileid: "43669115"
 >
 >
 
-## <a name="a-idconfigurewirecastrtmp-aconfigure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" /a>Telestream Wirecast エンコーダーを構成する
+## <a name="a-idconfigurewirecastrtmp-configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />Telestream Wirecast エンコーダーを構成する
 このチュートリアルでは、次の出力設定が使用されます。 このセクションの残りの部分では、構成の手順の詳細について説明します。
 
 **ビデオ**:
 
-* コーデック: H.264
-* プロファイル: 高 (レベル 4.0)
-* ビットレート: 5000 kbps
-* キーフレーム: 2 秒 (60 秒)
-* フレーム レート: 30
+* コーデック:H.264
+* プロファイル:高 (レベル 4.0)
+* ビットレート:5000 kbps
+* キーフレーム:2 秒 (60 秒)
+* フレーム レート:30
 
 **オーディオ**:
 
-* コーデック: AAC (LC)
-* ビットレート: 192 kbps
-* サンプル レート: 44.1 kHz
+* コーデック:AAC (LC)
+* ビットレート:192 kbps
+* サンプル レート:44.1 kHz
 
 ### <a name="configuration-steps"></a>構成の手順
 1. 使用中のコンピューターで、Telestream Wirecast アプリケーションを開き、RTMP ストリーミング用の設定を行います。
@@ -103,16 +103,16 @@ ms.locfileid: "43669115"
 
     **ビデオ**
 
-   * エンコーダー: MainConcept H.264
-   * 1 秒あたりのフレーム数: 30
-   * 平均ビットレート: 5000 kbps (ネットワークの制限に基づいて調整可能)
-   * プロファイル: メイン
-   * キーフレームの距離: 60 フレーム
+   * エンコーダー:MainConcept H.264
+   * 1 秒あたりのフレーム数:30
+   * 平均ビットレート:5000 kbps (ネットワークの制限に基づいて調整可能)
+   * プロファイル:メイン
+   * キー フレームの距離:60 フレーム
 
-    **オーディオ**
+     **オーディオ**
 
-   * ターゲットのビットレート: 192 kbps
-   * サンプル レート: 44.100 kHz
+   * ターゲットのビットレート:192 kbps
+   * サンプル レート:44.100 kHz
 
      ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
 6. **[保存]** をクリックします。
@@ -134,7 +134,7 @@ ms.locfileid: "43669115"
 1. **[OK]** を選択します。
 2. メインの **[Wirecast]** 画面で、ビデオとオーディオの入力ソースの準備が整っていることを確認し、左上隅の **[ストリーム]** をクリックします。
 
-   ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
+    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
 
 > [!IMPORTANT]
 > **[ストリーム]** をクリックする前に、チャネルの準備が整っていることを確認する**必要があります**。

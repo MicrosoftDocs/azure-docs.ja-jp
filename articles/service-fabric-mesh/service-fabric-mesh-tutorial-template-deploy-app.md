@@ -3,7 +3,7 @@ title: チュートリアル - Azure Service Fabric Mesh にアプリをデプ�
 description: このチュートリアルでは、テンプレートを使用して Service Fabric Mesh にアプリケーションをデプロイする方法について説明します。
 services: service-fabric-mesh
 documentationcenter: .net
-author: rwike77
+author: dkkapur
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -12,17 +12,17 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/18/2018
-ms.author: ryanwi
+ms.date: 01/11/2019
+ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cca18b2aa5cb6f27df45e4b63e55251bea058625
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 825f667029aeb1d75bfdaf52b1084ff5133b5774
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968851"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527338"
 ---
-# <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>チュートリアル: テンプレートを使用して Service Fabric Mesh にアプリケーションをデプロイする
+# <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>チュートリアル:テンプレートを使用して Azure Service Fabric Mesh にアプリケーションをデプロイする
 
 このチュートリアルは、シリーズの第 1 部です。 テンプレートを使用して Azure Service Fabric Mesh アプリケーションをデプロイする方法について説明します。  アプリケーションは ASP.NET Web フロントエンド サービスと ASP.NET Core Web API バックエンド サービスで構成されており、これらは Docker Hub にあります。  2 つのコンテナー イメージを Docker Hub からプルして、独自のプライベート レジストリにプッシュします。 その後、アプリケーション用の Azure RM テンプレートを作成し、コンテナー レジストリから Service Fabric Mesh にアプリケーションをデプロイします。 完了すると、Service Fabric Mesh で実行される簡単な To Do List アプリケーションができあがります。
 
@@ -51,7 +51,7 @@ ms.locfileid: "46968851"
 
 * [Docker のインストール](service-fabric-mesh-howto-setup-developer-environment-sdk.md#install-docker)
 
-* [Azure CLI と Service Fabric Mesh CLI をローカルにインストールします](service-fabric-mesh-howto-setup-cli.md#install-the-service-fabric-mesh-cli-locally)。
+* [Azure CLI と Service Fabric Mesh CLI をローカルにインストールします](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli)。
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
@@ -109,7 +109,7 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry --sku 
 
 ## <a name="push-the-images-to-azure-container-registry"></a>Azure Container Registry にイメージをプッシュする
 
-このチュートリアルでは、例として To Do List サンプル アプリケーションを使います。  [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) および [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) サービスのコンテナー イメージは、Docker Hub にあります。 Visual Studio でアプリケーションをビルドする方法については、[Servic Fabric Mesh Web アプリのビルド](service-fabric-mesh-tutorial-create-dotnetcore.md)に関するページをご覧ください。 Service Fabric Mesh では、Windows または Linux の Docker コンテナーを実行できます。  Linux コンテナーを使用している場合は、Docker で **[Switch to Linux containers]\(Linux コンテナーに切り替える\)** を選択します。  Windows コンテナーを使用している場合は、Docker で **[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を選択します。
+このチュートリアルでは、例として To Do List サンプル アプリケーションを使います。  [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) および [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) サービスのコンテナー イメージは、Docker Hub にあります。 Visual Studio でアプリケーションをビルドする方法については、[Service Fabric Mesh Web アプリのビルド](service-fabric-mesh-tutorial-create-dotnetcore.md)に関するページを参照してください。 Service Fabric Mesh では、Windows または Linux の Docker コンテナーを実行できます。  Linux コンテナーを使用している場合は、Docker で **[Switch to Linux containers]\(Linux コンテナーに切り替える\)** を選択します。  Windows コンテナーを使用している場合は、Docker で **[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を選択します。
 
 ACR のインスタンスにイメージをプッシュするには、まずコンテナー イメージを用意する必要があります。 ローカル コンテナー イメージがまだない場合は、[docker pull](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して、[WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) イメージと [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) イメージを Docker Hub からプルします。
 
@@ -211,7 +211,7 @@ parameters セクションは、デプロイ テンプレートの先頭の、*r
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
     "contentVersion": "1.0.0.0",
     "parameters": {
       ...
@@ -229,14 +229,14 @@ parameters セクションは、デプロイ テンプレートの先頭の、*r
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     ...
   },
   "resources": [
     {
-      "apiVersion": "2018-07-01-preview",
+      "apiVersion": "2018-09-01-preview",
       "name": "MyMeshApplication",
       "type": "Microsoft.ServiceFabricMesh/applications",
       "location": "[parameters('location')]",
@@ -319,7 +319,7 @@ parameters セクションは、デプロイ テンプレートの先頭の、*r
       }
     },
     {
-      "apiVersion": "2018-07-01-preview",
+      "apiVersion": "2018-09-01-preview",
       "name": "ServiceAVolume",
       "type": "Microsoft.ServiceFabricMesh/volumes",
       "location": "[parameters('location')]",
@@ -344,14 +344,15 @@ To Do List アプリケーションの仕様については、[mesh_rp.windows.j
 次のコマンドを使用して、アプリケーションおよび関連リソースを作成し、前の「[レジストリの資格情報を取得する](#retrieve-credentials-for-the-registry)」ステップからの資格情報を指定します。
 
 パラメーター ファイルでは、次のパラメーター値を更新します。
+
 |パラメーター|値|
 |---|---|
 |location|アプリケーションをデプロイするリージョン。  たとえば、"eastus"。|
 |registryPassword|前の「[レジストリの資格情報を取得する](#retrieve-credentials-for-the-registry)」で取得したパスワード。 テンプレートのこのパラメーターはセキュリティで保護された文字列であり、デプロイの状態または `az mesh service show` コマンドでは表示されません。|
 |registryUserName|「[レジストリの資格情報を取得する](#retrieve-credentials-for-the-registry)」で取得したユーザー名。|
 |registryServer|「[レジストリの資格情報を取得する](#retrieve-credentials-for-the-registry)」で取得したレジストリ サーバー名。|
-|frontEndImage|フロントエンド サービスのコンテナー イメージ。  たとえば、"<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709"。|
-|serviceImage|バックエンド サービスのコンテナー イメージ。  たとえば、"<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709"。|
+|frontEndImage|フロントエンド サービスのコンテナー イメージ。  たとえば、「 `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709` 」のように入力します。|
+|serviceImage|バックエンド サービスのコンテナー イメージ。  たとえば、「 `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709` 」のように入力します。|
 
 アプリケーションをデプロイするには、次のコマンドを実行します。
 
@@ -359,16 +360,34 @@ To Do List アプリケーションの仕様については、[mesh_rp.windows.j
 az mesh deployment create --resource-group myResourceGroup --template-file c:\temp\mesh_rp.windows.json --parameters c:\temp\mesh_rp.windows.parameters.json
 ```
 
-数分間で次のように表示されます。
+このコマンドを実行すると、次のような JSON スニペットが生成されます。 JSON 出力の ```outputs``` セクションで、```publicIPAddress``` プロパティをコピーします。
 
-`todolistappNetwork has been deployed successfully on todolistappNetwork with public ip address <IP Address>`
+```json
+"outputs": {
+    "publicIPAddress": {
+    "type": "String",
+    "value": "40.83.78.216"
+    }
+}
+```
+
+この情報は、ARM テンプレートの ```outputs``` セクションから取得されます。 下記のように、このセクションではゲートウェイ リソースを参照してパブリック IP アドレスをフェッチします。 
+
+```json
+  "outputs": {
+    "publicIPAddress": {
+      "value": "[reference('todolistappGateway').ipAddress]",
+      "type": "string"
+    }
+  }
+```
 
 ## <a name="open-the-application"></a>アプリケーションを開く
 
 アプリケーションが正常にデプロイされたら、サービス エンドポイントのパブリック IP アドレスを取得します。 deployment コマンドは、サービス エンドポイントのパブリック IP アドレスを返します。 必要に応じて、ネットワーク リソースにクエリを送信して、サービス エンドポイントのパブリック IP アドレスを見つけることもできます。 このアプリケーションのネットワーク リソース名は `todolistappNetwork` です。次のコマンドを使用して、その情報を取得します。 
 
 ```azurecli
-az mesh network show --resource-group myResourceGroup --name todolistappNetwork
+az mesh gateway show --resource-group myResourceGroup --name todolistappGateway
 ```
 
 Web ブラウザーで IP アドレスに移動します。

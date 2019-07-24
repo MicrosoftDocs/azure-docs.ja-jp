@@ -4,18 +4,18 @@ description: Azure のリソースに対するアクセスは、ロールベー�
 keywords: Automation RBAC, ロールベースのアクセス制御, Azure RBAC
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fe35f26fe73661901fa85da65e353fe66adf5d47
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: bcbda2464a4607aaa0b1bb96ef8f34c8713cb5f1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094219"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58918792"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure Automation におけるロールベースのアクセス制御
 
@@ -33,8 +33,8 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 | Automation Operator |Automation オペレーター ロールでは、Runbook の名前とプロパティの表示、Automation アカウント内のすべての Runbook のジョブの作成と管理を実行できます。 Automation アカウントのリソース (資格情報アセットや Runbook など) を閲覧したり改変したりできないよう保護したうえで、同じ組織のメンバーにのみ、それらの Runbook の実行を許可する必要がある場合、このロールを活用できます。 |
 |Automation ジョブ オペレーター|Automation ジョブ オペレーター ロールでは、Automation アカウント内のすべての Runbook のジョブの作成と管理を実行できます。|
 |Automation Runbook オペレーター|Automation Runbook オペレーター ロールでは、Runbook の名前とプロパティを表示できます。|
-| Log Analytics 共同作成者 | Log Analytics 共同作成者ロールでは、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、Automation アカウントの作成と構成、ソリューションの追加、すべての Azure リソースでの Azure 診断の構成が含まれます。|
-| Log Analytics 閲覧者 | Log Analytics 閲覧者ロールでは、すべての監視データの表示と検索、および監視設定の表示を行うことができます。 これには、すべての Azure リソースに対する Azure 診断の構成の表示が含まれます。 |
+| Log Analytics 共同作成者 | Log Analytics 共同作成者ロールでは、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、Automation アカウントの作成と構成、ソリューションの追加、すべての Azure リソースでの Azure Diagnostics の構成が含まれます。|
+| Log Analytics 閲覧者 | Log Analytics 閲覧者ロールでは、すべての監視データの表示と検索、および監視設定の表示を行うことができます。 これには、すべての Azure リソースに対する Azure Diagnostics の構成の表示が含まれます。 |
 | Monitoring Contributor | 共同作成者の監視ロールでは、すべての監視データを読み取り、監視設定を更新できます。|
 | Monitoring Reader | 閲覧者の監視ロールでは、すべての監視データを読み取ることができます。 |
 | User Access Administrator |Azure Automation アカウントに対するユーザー アクセスは、ユーザー アクセスの管理者ロールで管理できます。 |
@@ -73,7 +73,7 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 
 ### <a name="automation-operator"></a>Automation Operator
 
-Automation オペレーターは、ジョブの作成と管理、Automation アカウント内のすべての Runbook の名前とプロパティの読み取りを実行できます。  注: 個々の Runbook に対するオペレーターのアクセスを制御する場合は、このロールを設定しないでください。代わりに、"Automation ジョブ オペレーター" ロールと "Automation Runbook オペレーター" ロールを組み合わせて使用してください。 次の表は、このロールに付与されるアクセス許可を示しています。
+Automation オペレーターは、ジョブの作成と管理、Automation アカウント内のすべての Runbook の名前とプロパティの読み取りを実行できます。  注:個々の Runbook に対するオペレーターのアクセスを制御する場合は、このロールを設定しないでください。代わりに、"Automation ジョブ オペレーター" ロールと "Automation Runbook オペレーター" ロールを組み合わせて使用してください。 次の表は、このロールに付与されるアクセス許可を示しています。
 
 |**アクション**  |**説明**  |
 |---------|---------|
@@ -131,7 +131,7 @@ Automation Runbook オペレーター ロールは、Runbook のスコープで�
 
 ### <a name="log-analytics-contributor"></a>Log Analytics 共同作成者
 
-Log Analytics 共同作成者は、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、Automation アカウントの作成と構成、ソリューションの追加、すべての Azure リソースでの Azure 診断の構成が含まれます。 次の表は、このロールに付与されるアクセス許可を示しています。
+Log Analytics 共同作成者は、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、Automation アカウントの作成と構成、ソリューションの追加、すべての Azure リソースでの Azure Diagnostics の構成が含まれます。 次の表は、このロールに付与されるアクセス許可を示しています。
 
 |**アクション**  |**説明**  |
 |---------|---------|
@@ -142,7 +142,7 @@ Log Analytics 共同作成者は、すべての監視データを読み取り、
 |Microsoft.Compute/virtualMachines/extensions/*|従来の仮想マシン拡張機能の作成と管理。|
 |Microsoft.Insights/alertRules/*|アラート ルールの読み取り/書き込み/削除を実行します。|
 |Microsoft.Insights/diagnosticSettings/*|診断設定の読み取り/書き込み/削除を実行します。|
-|Microsoft.OperationalInsights/*|Log Analytics の管理。|
+|Microsoft.OperationalInsights/*|Azure Monitor ログの管理。|
 |Microsoft.OperationsManagement/*|ワークスペースでのソリューションの管理。|
 |Microsoft.Resources/deployments/*|リソース グループ デプロイの作成と管理。|
 |Microsoft.Resources/subscriptions/resourcegroups/deployments/*|リソース グループ デプロイの作成と管理。|
@@ -151,13 +151,13 @@ Log Analytics 共同作成者は、すべての監視データを読み取り、
 
 ### <a name="log-analytics-reader"></a>Log Analytics 閲覧者
 
-Log Analytics 閲覧者は、すべての監視データの表示と検索、およびすべての Azure リソース上の Azure 診断構成の表示など、監視設定の表示を行うことができます。 次の表は、このロールに付与または否認されるアクセス許可を示しています。
+Log Analytics 閲覧者は、すべての監視データの表示と検索、およびすべての Azure リソース上の Azure Diagnostics 構成の表示など、監視設定の表示を行うことができます。 次の表は、このロールに付与または否認されるアクセス許可を示しています。
 
 |**アクション**  |**説明**  |
 |---------|---------|
 |*/read|機密データを除くあらゆる種類のリソースの読み取り|
-|Microsoft.OperationalInsights/workspaces/analytics/query/action|Log Analytics でのクエリの管理。|
-|Microsoft.OperationalInsights/workspaces/search/action|Log Analytics データの検索。|
+|Microsoft.OperationalInsights/workspaces/analytics/query/action|Azure Monitor ログのクエリの管理。|
+|Microsoft.OperationalInsights/workspaces/search/action|Azure Monitor ログのデータの検索。|
 |Microsoft.Support/*|サポート チケットの作成と管理。|
 |**否認されるアクション**| |
 |Microsoft.OperationalInsights/workspaces/sharedKeys/read|共有アクセス キーを読み取ることはできません。|
@@ -180,11 +180,11 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 |Microsoft.Insights/Metrics/*|リソースのメトリックを読み取ります。|
 |Microsoft.Insights/Register/Action|Microsoft Insights プロバイダーを登録します。|
 |Microsoft.Insights/webtests/*|Application Insights の Web テストの管理。|
-|Microsoft.OperationalInsights/workspaces/intelligencepacks/*|Log Analytics のソリューション パックの管理。|
-|Microsoft.OperationalInsights/workspaces/savedSearches/*|Log Analytics の保存した検索条件の管理。|
+|Microsoft.OperationalInsights/workspaces/intelligencepacks/*|Azure Monitor ログのソリューション パックの管理。|
+|Microsoft.OperationalInsights/workspaces/savedSearches/*|Azure Monitor ログの保存した検索条件の管理。|
 |Microsoft.OperationalInsights/workspaces/search/action|Log Analytics ワークスペースを検索します。|
 |Microsoft.OperationalInsights/workspaces/sharedKeys/action|Log Analytics ワークスペースのキーを一覧表示します。|
-|Microsoft.OperationalInsights/workspaces/storageinsightconfigs/*|Log Analytics ストレージ分析情報構成の管理。|
+|Microsoft.OperationalInsights/workspaces/storageinsightconfigs/*|Azure Monitor ログのストレージ分析情報構成の管理。|
 |Microsoft.Support/*|サポート チケットの作成と管理。|
 |Microsoft.WorkloadMonitor/workloads/*|ワークロードの管理。|
 
@@ -231,6 +231,9 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 |オンボード状態の確認 - ソリューションを読み取る      | Microsoft.OperationalInsights/workspaces/intelligencepacks/read          | 解決策         |
 |オンボード状態の確認 - VM を読み取る      | Microsoft.Compute/virtualMachines/read         | 仮想マシン         |
 |オンボード状態の確認 - アカウントを読み取る      | Microsoft.Automation/automationAccounts/read  |  Automation アカウント   |
+| VM のオンボード ワークスペース確認<sup>1</sup>       | Microsoft.OperationalInsights/workspaces/read         | サブスクリプション         |
+
+<sup>1</sup> VM ポータル エクスペリエンス経由でオンボードするには、このアクセス許可が必要です。
 
 ### <a name="onboarding-from-automation-account"></a>Automation アカウントからのオンボード
 
@@ -274,12 +277,13 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 
 1. [Azure Portal](https://portal.azure.com/) にログインし、[Automation アカウント] ページから、ご利用の Automation アカウントを開きます。
 2. 左上隅にある **[アクセス制御 (IAM)]** コントロールをクリックします。 表示された **[アクセス制御 (IAM)]** ページでは、ご利用の Automation アカウントを管理するための新しいユーザー、グループ、アプリケーションを追加できるほか、その Automation アカウント用に構成できる既存のロールを確認できます。
+3. **[ロールの割り当て]** タブをクリックします。
 
    ![Access button](media/automation-role-based-access-control/automation-01-access-button.png)
 
 #### <a name="add-a-new-user-and-assign-a-role"></a>新しいユーザーの追加とロールの割り当て
 
-1. **[アクセス制御 (IAM)]** ページの **[+ 追加]** をクリックして **[アクセス許可の追加]** ページを開きます。このページでは、ユーザー、グループ、アプリケーションを追加し、それらにロールを割り当てることができます。
+1. **[アクセス制御 (IAM)]** ページの **[+ ロールの割り当ての追加]** をクリックして **[ロールの割り当ての追加]** ページを開きます。このページでは、ユーザー、グループ、アプリケーションを追加し、それらにロールを割り当てることができます。
 
 2. 利用可能なロールの一覧からロールを選択します。 Automation アカウントでサポートされている任意の組み込みロールを選択してもかまいません。また、自分で定義したカスタム ロールを選択することもできます。
 
@@ -313,7 +317,7 @@ Automation アカウントの管理に関与しないユーザーや既に退社
 
 Automation アカウントに対するロールベースのアクセス制御は、次の [Azure PowerShell コマンドレット](../role-based-access-control/role-assignments-powershell.md)を使用して構成することもできます。
 
-[Get-AzureRmRoleDefinition](https://msdn.microsoft.com/library/mt603792.aspx): Azure Active Directory で利用できるすべての RBAC ロールを一覧表示します。 このコマンドに **Name** プロパティを組み合わせることで、特定のロールで実行できるすべてのアクションを一覧表示できます。
+[Get-AzureRmRoleDefinition](/previous-versions/azure/mt603792(v=azure.100)): Azure Active Directory で利用できるすべての RBAC ロールを一覧表示します。 このコマンドに **Name** プロパティを組み合わせることで、特定のロールで実行できるすべてのアクションを一覧表示できます。
 
 ```azurepowershell-interactive
 Get-AzureRmRoleDefinition -Name 'Automation Operator'
@@ -332,7 +336,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt619413.aspx): 特定のスコープにおける Azure AD RBAC ロールの割り当てを一覧表示します。 このコマンドにパラメーターを指定しなかった場合、対象サブスクリプションで行われたすべてのロールの割り当てが返されます。 指定したユーザーと、そのユーザーが属するグループへのアクセス権の割り当てを一覧表示するには、 **ExpandPrincipalGroups** パラメーターを使用します。
+[Get-AzureRmRoleAssignment](/previous-versions/azure/mt619413(v=azure.100)): 特定のスコープにおける Azure AD RBAC ロールの割り当てを一覧表示します。 このコマンドにパラメーターを指定しなかった場合、対象サブスクリプションで行われたすべてのロールの割り当てが返されます。 指定したユーザーと、そのユーザーが属するグループへのアクセス権の割り当てを一覧表示するには、 **ExpandPrincipalGroups** パラメーターを使用します。
     **例:** Automation アカウント内のすべてのユーザーとそのロールを一覧表示するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
@@ -353,7 +357,7 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-[New-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603580.aspx): 特定のスコープのユーザー、グループ、アプリケーションにアクセス権を割り当てます。
+[New-AzureRmRoleAssignment](/previous-versions/azure/mt603580(v=azure.100)): 特定のスコープのユーザー、グループ、アプリケーションにアクセス権を割り当てます。
     **例:** Automation アカウント スコープのユーザーに対して "Automation オペレーター" ロールを割り当てるには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
@@ -374,7 +378,7 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-[Remove-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603781.aspx): 特定のスコープの指定したユーザー、グループ、またはアプリケーションのアクセス権を削除します。
+[Remove-AzureRmRoleAssignment](/previous-versions/azure/mt603781(v=azure.100)): 特定のスコープの指定したユーザー、グループ、またはアプリケーションのアクセス権を削除します。
     **例:** Automation アカウント スコープの "Automation オペレーター" ロールからユーザーを削除するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
@@ -427,3 +431,4 @@ Runbook スコープ ビューで Automation オペレーター ロールに割�
 * Azure Automation の RBAC を構成する各種の方法については、 [Azure PowerShell を使用した RBAC の管理](../role-based-access-control/role-assignments-powershell.md)に関する記事を参照してください。
 * Runbook を開始するさまざまな方法については、 [Runbook の開始](automation-starting-a-runbook.md)
 * Runbook のさまざまな種類については、「 [Azure Automation の Runbook の種類](automation-runbook-types.md)
+

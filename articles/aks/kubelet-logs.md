@@ -1,22 +1,28 @@
 ---
 title: Azure Kubernetes Service (AKS) で kubelet ログを表示する
-description: Azure Kubernetes Service (AKS) ノードから kubelet ログのトラブルシューティング情報を表示する方法です
+description: Azure Kubernetes Service (AKS) ノードから kubelet ログのトラブルシューティング情報を表示する方法について説明します
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/21/2018
+ms.date: 03/05/2019
 ms.author: iainfou
-ms.openlocfilehash: aeab24685f3663ba2c50205344d33db3d34676c2
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: b381145fef7e6fb399fac3387ab01fdc9a51b154
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42441950"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534022"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Azure Kubernetes Service (AKS) クラスター ノードから kubelet ログを取得する
 
-場合によっては、トラブルシューティングの目的で、Azure Kubernetes Service (AKS) ノードから *kubelet* ログを取得しなければならないことがあります。 この記事では、`journalctl` を使用して *kubelet* ログを表示する方法を示します。
+場合によっては、AKS クラスターの操作の一環として、ログを確認して問題のトラブルシューティングを行う必要があります。 Azure portal には、[AKS マスター コンポーネント][aks-master-logs]や [AKS クラスター内のコンテナー][azure-container-logs]のログを表示する機能が組み込まれています。 場合によっては、トラブルシューティングの目的で、AKS ノードから *kubelet* ログを取得しなければならない可能性があります。
+
+この記事では、`journalctl` を使用して AKS ノード上の *kubelet* ログを表示する方法を示します。
+
+## <a name="before-you-begin"></a>開始する前に
+
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
 
 ## <a name="create-an-ssh-connection"></a>SSH 接続を作成する
 
@@ -63,3 +69,7 @@ Kubernetes マスターからさらにトラブルシューティング情報が
 <!-- LINKS - internal -->
 [aks-ssh]: ssh.md
 [aks-master-logs]: view-master-logs.md
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[aks-master-logs]: view-master-logs.md
+[azure-container-logs]: ../azure-monitor/insights/container-insights-overview.md

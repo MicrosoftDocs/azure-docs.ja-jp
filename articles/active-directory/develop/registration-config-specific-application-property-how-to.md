@@ -7,19 +7,20 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: 83694f121fb17f90aa89fb9ba99e8514cadd5b09
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1e4362e45ff8eee13b9203b9103266c60b4833a9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44723702"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173200"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>独自に開発したアプリケーションの特定のフィールドを指定する方法
 
@@ -41,8 +42,8 @@ ms.locfileid: "44723702"
 | フィールド            | 説明                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
 | Name             | アプリケーションの名前です。 4 文字以上にする必要があります。                |
-| アプリケーションの種類 | **Web アプリ/Web API**: Web アプリケーション、Web API、またはその両方を表すアプリケーションです。 
-| |**ネイティブ**: ユーザーのデバイスまたはコンピューターにインストールできるアプリケーションです。           |
+| アプリケーションの種類 | **Web アプリ/Web API**:Web アプリケーションまたは Web API、あるいはその両方を表すアプリケーションを追加します。 
+| |**ネイティブ**:ユーザーのデバイスまたはコンピューターにインストールできるアプリケーションです。           |
 | [サインオン URL]      | アプリケーションを使用するためにユーザーがサインインする URL です。                                  |
 
 上記のフィールドに入力すると、Azure portal でアプリケーションの登録が行われ、アプリケーション ページにリダイレクトされます。 アプリケーション ウィンドウの **[設定]** ボタンをクリックすると、[設定] ページが開きます。このページには、アプリケーションをカスタマイズするためのその他のフィールドが表示されます。 次の表では、[設定] ページのすべてのフィールドについて説明します。 Web アプリケーションとネイティブ アプリケーションのどちらを作成したかに応じて、これらのフィールドの一部のみが表示されることに注意してください。

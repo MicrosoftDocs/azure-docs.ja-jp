@@ -1,10 +1,10 @@
 ---
 title: Azure で Service Fabric クラスターをスケーリングする | Microsoft Docs
-description: このチュートリアルでは、Azure で Service Fabric クラスターをすばやくスケーリングする方法を説明します。
+description: このチュートリアルでは、Azure 内で Service Fabric クラスターをすばやくスケーリングする方法を説明します。
 services: service-fabric
 documentationcenter: .net
-author: rwike77
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -12,243 +12,863 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 010/01/2018
-ms.author: ryanwi
+ms.date: 03/19/2019
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 54433aa9e618bdde7badec3be8a786f943f88198
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fa9b091beacbc98c6939ec0454bd04da2b7561e7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236915"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59278702"
 ---
-# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure で Service Fabric クラスターをスケーリングする
+# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric クラスターのスケーリングを行う
 
-このチュートリアルはシリーズ第 2 部で、既存のクラスターをスケールアウトおよびスケールインする方法を示します。 このチュートリアルを終了すると、クラスターをスケールする方法や残ったリソースをクリーンアップする方法について知ることができます。
+このチュートリアルはシリーズ第 3 部で、既存のクラスターをスケールアウトおよびスケールインする方法を示します。 このチュートリアルを終了すると、クラスターをスケールする方法や残ったリソースをクリーンアップする方法について知ることができます。  Azure 内で実行されているクラスターのスケーリングの詳細については、[Service Fabric クラスターのスケーリング](service-fabric-cluster-scaling.md)に関するページを参照してください。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * クラスター ノード数を読み取る
-> * クラスター ノードを追加する (スケールアウト)
-> * クラスター ノードを削除する (スケールイン)
+> * ノードを追加および削除する (スケールアウトおよびスケールイン)
+> * ノード タイプを追加および削除する (スケールアウトおよびスケールイン)
+> * ノード リソースを増加する (スケールアップ)
 
 このチュートリアル シリーズで学習する内容は次のとおりです。
 > [!div class="checklist"]
-> * テンプレートを使用して、セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)または [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md)を Azure に作成する
+> * テンプレートを使用して Azure にセキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を作成する
+> * [クラスターを監視する](service-fabric-tutorial-monitor-cluster.md)
 > * クラスターをスケールインまたはスケールアウトする
 > * [クラスターのランタイムをアップグレードする](service-fabric-tutorial-upgrade-cluster.md)
 > * [クラスターの削除](service-fabric-tutorial-delete-cluster.md)
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを開始する前に
 
-* Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
-* [Azure PowerShell モジュールのバージョン 4.1 以上](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)または [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
-* セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)または [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md)を Azure に作成します。
-* Windows クラスターをデプロイする場合は、Windows 開発環境を設定します。 [Visual Studio 2017](https://www.visualstudio.com)、**Azure 開発**ワークロード、**ASP.NET および Web 開発**ワークロード、**.NET Core クロス プラットフォーム開発**ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
-* Linux クラスターをデプロイする場合は、Java 開発環境を [Linux](service-fabric-get-started-linux.md) または [MacOS](service-fabric-get-started-mac.md) にセットアップします。  [Service Fabric CLI](service-fabric-cli.md) をインストールします。
+* Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
+* [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールする。
+* セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を Azure に作成します
 
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
+## <a name="important-considerations-and-guidelines"></a>重要な考慮事項とガイドライン
 
-Azure アカウントにサインインし、Azure のコマンドを実行する前にサブスクリプションを選択します。
+アプリケーションのワークロードが時間の経過と共に変化し、既存のサービスに対してリソースの増加 (または減少) が必要か。  クラスター リソースを増減させるには、1 つのノード タイプの[ノードを追加または削除](#add-nodes-to-or-remove-nodes-from-a-node-type)します。
+
+100 を超えるノードをクラスターに追加する必要があるか。  Service Fabric の 1 つのノード タイプ/スケール セットには、VM あたり 100 を超えるノードを含めることはできません。  100 ノードを超えてクラスターをスケーリングするには、[別のノード タイプを追加](#add-nodes-to-or-remove-nodes-from-a-node-type)します。
+
+アプリケーションに複数のサービスが存在するか、またその中に、外部に公開 (インターネットに接続) しなければならないサービスはあるか。  標準的なアプリケーションには、クライアントからの入力を受け取るフロントエンド ゲートウェイ サービスと、そのフロントエンド サービスと通信するバックエンド サービスが存在します。 この場合は、クラスターに[少なくとも 2 つのノード タイプを追加](#add-nodes-to-or-remove-nodes-from-a-node-type)することをお勧めします。  
+
+インフラストラクチャ ニーズの異なる複数のサービスが存在するか (大容量の RAM が必要、高い CPU 処理能力が必要など)。 たとえば、ご自分のアプリケーションにフロントエンド サービスとバックエンド サービスが含まれているとします。 フロントエンド サービスはバックエンド サービスよりも小さい VM (D2 など) で実行できますが、インターネットに対してポートを開放する必要があります。 一方バックエンド サービスは計算負荷が高く、より大きな VM (D4、D6、D15 など) で実行する必要はありますが、インターネット接続は不要です。 この場合、クラスターに [2 つ以上のノード タイプを追加](#add-nodes-to-or-remove-nodes-from-a-node-type)することをお勧めします。 そうすることでノード タイプごとに、インターネットの接続性や VM サイズなど異なる特性を持たせることができます。 VM 数を個別に増減させることもできます。
+
+Azure クラスターをスケーリングするときには、次のガイドラインに留意してください。
+
+* Service Fabric の 1 つのノード タイプ/スケール セットには、VM あたり 100 を超えるノードを含めることはできません。  100 ノードを超えてクラスターをスケーリングするには、別のノード タイプを追加します。
+* 実稼働ワークロードを実行するプライマリ ノード タイプの場合、[持続性レベル][durability]が Gold または Silver であり、必ず 5 つ以上のノードが必要です。
+* ステートフルの実稼働ワークロードを実行する非プライマリ ノード タイプの場合、必ず 5 つ以上のノードが必要です。
+* ステートレスの実稼働ワークロードを実行する非プライマリ ノード タイプの場合、必ず 2 つ以上のノードが必要です。
+* [持続性レベル][durability]が Gold または Silver であるノードの場合、どのタイプであっても必ず 5 つ以上のノードが必要です。
+* プライマリ ノード タイプをスケールインする (ノードを削除する) 場合、[信頼性レベル][reliability]で必要な数を下回るまでインスタンスの数を減らさないでください。
+
+詳細については、[クラスター容量のガイダンス](service-fabric-cluster-capacity.md)を参照してください。
+
+## <a name="export-the-template-for-the-resource-group"></a>リソース グループのテンプレートをエクスポートする
+
+セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を作成し、リソース グループを正常に設定したら、リソース グループの Resource Manager テンプレートをエクスポートします。 テンプレートをエクスポートすると、クラスターとそのリソースの将来のデプロイを簡単に自動化できます。これは、テンプレートに完全なインフラストラクチャが含まれているためです。  テンプレートのエクスポートの詳細については、「[Manage Azure Resource Manager resource groups by using the Azure portal (Azure portal を使用して Azure Resource Manager リソース グループを管理する)](/azure/azure-resource-manager/manage-resource-groups-portal)」を参照してください。
+
+1. [Azure portal](https://portal.azure.com) で、目的のクラスターを含むリソース グループ (このチュートリアルに従っている場合は **sfclustertutorialgroup**) に移動します。 
+
+2. 左側のウィンドウで、**[デプロイ]** を選択するか、**[デプロイ]** の下にあるリンクを選択します。 
+
+3. 最新の正常なデプロイを一覧から選択します。
+
+4. 左側のウィンドウで、**[テンプレート]**、**[ダウンロード]** の順に選択して、テンプレートを ZIP ファイルとしてエクスポートします。  テンプレートとパラメーターをご自分のローカル コンピューターに保存します。
+
+## <a name="add-nodes-to-or-remove-nodes-from-a-node-type"></a>ノード タイプのノードを追加または削除する
+
+スケールインおよびスケールアウト (水平スケーリング) では、クラスター内のノードの数を変更します。 スケールインまたはスケールアウトする場合には、スケール セットに仮想マシン インスタンスを追加します。 これらのインスタンスは、Service Fabric で使用されるノードになります。 Service Fabric は、(スケールアウトによって) スケール セットにインスタンスがいつ追加されるかを認識し、自動的に反応します。 クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。
+
+### <a name="update-the-template"></a>テンプレートを更新する
+
+リソース グループから最新のデプロイの[テンプレートとパラメーター ファイルをエクスポート](#export-the-template-for-the-resource-group)します。  *parameters.json* ファイルを開きます。  このチュートリアルの[サンプル テンプレート][template]を使用してクラスターをデプロイした場合は、クラスター内に 3 つのノード タイプがあり、各ノード タイプのノード数を設定する 3 つのパラメーター (*nt0InstanceCount*、*nt1InstanceCount*、および *nt2InstanceCount*) があります。  たとえば、*nt1InstanceCount* パラメーターは 2 つ目のノード タイプのインスタンスの数を設定し、関連付けられている仮想マシン スケール セット内の VM の数を設定します。
+
+そのため、*nt1InstanceCount* の値を更新すると、2 つ目のノード タイプのノードの数が変更されます。  100 ノードを超えてノード タイプをスケールアウトすることができない点に注意してください。  ステートフルの実稼働ワークロードを実行する非プライマリ ノード タイプの場合、必ず 5 つ以上のノードが必要です。 ステートレスの実稼働ワークロードを実行する非プライマリ ノード タイプの場合、必ず 2 つ以上のノードが必要です。
+
+[持続性レベル][durability]が Bronze のノード タイプをスケールインする (ノードを削除する) 場合、[それらのノードの状態を手動で削除](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)する必要があります。  持続性レベルが Silver および Gold の場合、これらの手順はプラットフォームによって自動的に行われます。
+
+### <a name="deploy-the-updated-template"></a>更新したテンプレートをデプロイする
+*template.json* ファイルと *parameters.json* ファイルに対する変更を保存します。  アップロードしたテンプレートをデプロイするには、次のコマンドを実行します。
 
 ```powershell
-Connect-AzureRmAccount
-Get-AzureRmSubscription
-Set-AzureRmContext -SubscriptionId <guid>
+New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
+```
+または、次の Azure CLI コマンドを使用します。
+```azure-cli
+az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
-```azurecli
-az login
-az account set --subscription <guid>
+## <a name="add-a-node-type-to-the-cluster"></a>クラスターにノード タイプを追加する
+
+Azure 内で実行されている Service Fabric クラスターで定義されているすべてのノード タイプは、[個別の仮想マシン スケール セット](service-fabric-cluster-nodetypes.md)として設定されます。 その後は、ノードの種類ごとに個別に管理できます。 各ノードの種類は、個別にスケールアップまたはスケールダウンしたり、異なるポートのセットを開いたり、別の容量メトリックを使用したりすることができます。 各クラスター ノード上で実行される OS SKU は個別に変更することもできますが、サンプル クラスター内で Windows と Linux を混在させて実行させることはできない点に注意してください。 1 つのノード タイプ/スケール セットには、100 を超えるノードを含めることはできません。  100 ノードを超えてクラスターを水平方向にスケーリングするには、別のノード タイプ/スケール セットを追加します。 クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。
+
+### <a name="update-the-template"></a>テンプレートを更新する
+
+リソース グループから最新のデプロイの[テンプレートとパラメーター ファイルをエクスポート](#export-the-template-for-the-resource-group)します。  *parameters.json* ファイルを開きます。  このチュートリアルの[サンプル テンプレート][template]を使用してクラスターをデプロイした場合は、クラスター内に 3 つのノード タイプがあります。  このセクションでは、Resource Manager テンプレートを更新し、デプロイして、4 つ目のノード タイプを追加します。 
+
+新しいノード タイプだけでなく、関連付けられている仮想マシン スケール セット (仮想ネットワークの別のサブネット内で実行されます) とネットワーク セキュリティ グループも追加します。  新しいスケール セットのために、新規または既存のパブリック IP アドレスと Azure Load Balancer のリソースを追加できます。  新しいノード タイプは、[持続性レベル][durability]が Silver で、サイズが "Standard_D2_V2" です。
+
+*template.json* ファイル内で、次の新しいパラメーターを追加します。
+```json
+"nt3InstanceCount": {
+    "defaultValue": 5,
+    "type": "Int",
+    "metadata": {
+        "description": "Instance count for node type"
+    }
+},
+"vmNodeType3Size": {
+    "defaultValue": "Standard_D2_V2",
+    "type": "String"
+},
 ```
 
-## <a name="connect-to-the-cluster"></a>クラスターへの接続
+*template.json* ファイル内で、次の新しい変数を追加します。
+```json
+"lbID3": "[resourceId('Microsoft.Network/loadBalancers',concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType3Name')))]",
+"lbIPConfig3": "[concat(variables('lbID3'),'/frontendIPConfigurations/LoadBalancerIPConfig')]",
+"lbPoolID3": "[concat(variables('lbID3'),'/backendAddressPools/LoadBalancerBEAddressPool')]",
+"lbProbeID3": "[concat(variables('lbID3'),'/probes/FabricGatewayProbe')]",
+"lbHttpProbeID3": "[concat(variables('lbID3'),'/probes/FabricHttpGatewayProbe')]",
+"lbNatPoolID3": "[concat(variables('lbID3'),'/inboundNatPools/LoadBalancerBEAddressNatPool')]",
+"vmNodeType3Name": "[toLower(concat('NT4', variables('vmName')))]",
+"vmStorageAccountName3": "[toLower(concat(uniqueString(resourceGroup().id), '1', '3' ))]",
+"nt3applicationStartPort": "20000",
+"nt3applicationEndPort": "30000",
+"nt3ephemeralStartPort": "49152",
+"nt3ephemeralEndPort": "65534",
+"nt3fabricTcpGatewayPort": "19000",
+"nt3fabricHttpGatewayPort": "19080",
+"nt3reverseProxyEndpointPort": "19081",
+"subnet3Name": "Subnet-3",
+"subnet3Prefix": "10.0.3.0/24",
+"subnet3Ref": "[concat(variables('vnetID'),'/subnets/',variables('subnet3Name'))]",
+```
 
-チュートリアルのこのパートを正常に完了するには、Service Fabric クラスターと、(クラスターをホストする) 仮想マシン スケール セットの両方に接続する必要があります。 仮想マシン スケール セットとは、Azure で Service Fabric をホストする Azure リソースのことです。
+*template.json* ファイル内で、仮想ネットワーク リソースに新しいサブネットを追加します。
+```json
+{
+    "type": "Microsoft.Network/virtualNetworks",
+    "name": "[variables('virtualNetworkName')]",
+    "apiVersion": "2018-08-01",
+    "location": "[variables('computeLocation')]",
+    "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "[parameters('clusterName')]"
+    },
+    "properties": {
+        "addressSpace": {
+            "addressPrefixes": [
+                "[variables('addressPrefix')]"
+            ]
+        },
+        "subnets": [
+            ...
+            {
+                "name": "[variables('subnet3Name')]",
+                "properties": {
+                    "addressPrefix": "[variables('subnet3Prefix')]",
+                    "networkSecurityGroup": {
+                        "id": "[resourceId('Microsoft.Network/networkSecurityGroups', concat('nsg', variables('subnet3Name')))]"
+                    }
+                }
+            }
+        ]
+    },
+    "dependsOn": [
+        ...
+        "[concat('Microsoft.Network/networkSecurityGroups/', concat('nsg', variables('subnet3Name')))]"
+    ]
+},
+```
 
-クラスターに接続すると、クラスターでクエリを実行して情報を取得できます。 このクラスターを使用して、クラスターで認識されているノードを知ることができます。 次のコードでクラスターに接続する場合、このシリーズの最初のパートで作成したのと同じ証明書が使用されます。 値に変数 `$endpoint` と `$thumbprint` が設定されていることを確認してください。
+*template.json* ファイル内で、新しいパブリック IP アドレスと Load Balancer のリソースを追加します。
+```json
+{
+    "type": "Microsoft.Network/publicIPAddresses",
+    "name": "[concat(variables('lbIPName'),'-',variables('vmNodeType3Name'))]",
+    "apiVersion": "2018-08-01",
+    "location": "[variables('computeLocation')]",
+    "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "[parameters('clusterName')]"
+    },
+    "properties": {
+        "dnsSettings": {
+            "domainNameLabel": "[concat(variables('dnsName'),'-','nt4')]"
+        },
+        "publicIPAllocationMethod": "Dynamic"
+    }
+},
+        {
+    "type": "Microsoft.Network/loadBalancers",
+    "name": "[concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType3Name'))]",
+    "apiVersion": "2018-08-01",
+    "location": "[variables('computeLocation')]",
+    "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "[parameters('clusterName')]"
+    },
+    "properties": {
+        "frontendIPConfigurations": [
+            {
+                "name": "LoadBalancerIPConfig",
+                "properties": {
+                    "publicIPAddress": {
+                        "id": "[resourceId('Microsoft.Network/publicIPAddresses',concat(variables('lbIPName'),'-',variables('vmNodeType3Name')))]"
+                    }
+                }
+            }
+        ],
+        "backendAddressPools": [
+            {
+                "name": "LoadBalancerBEAddressPool",
+                "properties": {}
+            }
+        ],
+        "loadBalancingRules": [
+            {
+                "name": "LBRule",
+                "properties": {
+                    "backendAddressPool": {
+                        "id": "[variables('lbPoolID3')]"
+                    },
+                    "backendPort": "[variables('nt3fabricTcpGatewayPort')]",
+                    "enableFloatingIP": "false",
+                    "frontendIPConfiguration": {
+                        "id": "[variables('lbIPConfig3')]"
+                    },
+                    "frontendPort": "[variables('nt3fabricTcpGatewayPort')]",
+                    "idleTimeoutInMinutes": "5",
+                    "probe": {
+                        "id": "[variables('lbProbeID3')]"
+                    },
+                    "protocol": "tcp"
+                }
+            },
+            {
+                "name": "LBHttpRule",
+                "properties": {
+                    "backendAddressPool": {
+                        "id": "[variables('lbPoolID3')]"
+                    },
+                    "backendPort": "[variables('nt3fabricHttpGatewayPort')]",
+                    "enableFloatingIP": "false",
+                    "frontendIPConfiguration": {
+                        "id": "[variables('lbIPConfig3')]"
+                    },
+                    "frontendPort": "[variables('nt3fabricHttpGatewayPort')]",
+                    "idleTimeoutInMinutes": "5",
+                    "probe": {
+                        "id": "[variables('lbHttpProbeID3')]"
+                    },
+                    "protocol": "tcp"
+                }
+            },
+            {
+                "name": "AppPortLBRule1",
+                "properties": {
+                    "backendAddressPool": {
+                        "id": "[variables('lbPoolID3')]"
+                    },
+                    "backendPort": "[parameters('loadBalancedAppPort1')]",
+                    "enableFloatingIP": "false",
+                    "frontendIPConfiguration": {
+                        "id": "[variables('lbIPConfig3')]"
+                    },
+                    "frontendPort": "[parameters('loadBalancedAppPort1')]",
+                    "idleTimeoutInMinutes": "5",
+                    "probe": {
+                        "id": "[concat(variables('lbID3'),'/probes/AppPortProbe1')]"
+                    },
+                    "protocol": "tcp"
+                }
+            },
+            {
+                "name": "AppPortLBRule2",
+                "properties": {
+                    "backendAddressPool": {
+                        "id": "[variables('lbPoolID3')]"
+                    },
+                    "backendPort": "[parameters('loadBalancedAppPort2')]",
+                    "enableFloatingIP": "false",
+                    "frontendIPConfiguration": {
+                        "id": "[variables('lbIPConfig3')]"
+                    },
+                    "frontendPort": "[parameters('loadBalancedAppPort2')]",
+                    "idleTimeoutInMinutes": "5",
+                    "probe": {
+                        "id": "[concat(variables('lbID3'),'/probes/AppPortProbe2')]"
+                    },
+                    "protocol": "tcp"
+                }
+            }
+        ],
+        "probes": [
+            {
+                "name": "FabricGatewayProbe",
+                "properties": {
+                    "intervalInSeconds": 5,
+                    "numberOfProbes": 2,
+                    "port": "[variables('nt3fabricTcpGatewayPort')]",
+                    "protocol": "tcp"
+                }
+            },
+            {
+                "name": "FabricHttpGatewayProbe",
+                "properties": {
+                    "intervalInSeconds": 5,
+                    "numberOfProbes": 2,
+                    "port": "[variables('nt3fabricHttpGatewayPort')]",
+                    "protocol": "tcp"
+                }
+            },
+            {
+                "name": "AppPortProbe1",
+                "properties": {
+                    "intervalInSeconds": 5,
+                    "numberOfProbes": 2,
+                    "port": "[parameters('loadBalancedAppPort1')]",
+                    "protocol": "tcp"
+                }
+            },
+            {
+                "name": "AppPortProbe2",
+                "properties": {
+                    "intervalInSeconds": 5,
+                    "numberOfProbes": 2,
+                    "port": "[parameters('loadBalancedAppPort2')]",
+                    "protocol": "tcp"
+                }
+            }
+        ],
+        "inboundNatPools": [
+            {
+                "name": "LoadBalancerBEAddressNatPool",
+                "properties": {
+                    "backendPort": "3389",
+                    "frontendIPConfiguration": {
+                        "id": "[variables('lbIPConfig3')]"
+                    },
+                    "frontendPortRangeEnd": "4500",
+                    "frontendPortRangeStart": "3389",
+                    "protocol": "tcp"
+                }
+            }
+        ]
+    },
+    "dependsOn": [
+        "[concat('Microsoft.Network/publicIPAddresses/',concat(variables('lbIPName'),'-',variables('vmNodeType3Name')))]"
+    ]
+},
+```
+
+*template.json* ファイル内で、新しいネットワーク セキュリティ グループと仮想マシン スケール セットのリソースを追加します。  仮想マシン スケール セットの Service Fabric 拡張機能プロパティ内にある NodeTypeRef プロパティにより、指定されたノード タイプがスケール セットにマップされます。
+
+```json
+{
+    "type": "Microsoft.Network/networkSecurityGroups",
+    "name": "[concat('nsg', variables('subnet3Name'))]",
+    "apiVersion": "2018-08-01",
+    "location": "[resourceGroup().location]",
+    "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "[parameters('clusterName')]"
+    },
+    "properties": {
+        "securityRules": [
+            {
+                "name": "allowSvcFabSMB",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "445",
+                    "direction": "Inbound",
+                    "priority": 3950,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "VirtualNetwork",
+                    "sourcePortRange": "*",
+                    "description": "allow SMB traffic within the net, used by fabric to move packages around"
+                }
+            },
+            {
+                "name": "allowSvcFabCluser",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "1025-1027",
+                    "direction": "Inbound",
+                    "priority": 3920,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "VirtualNetwork",
+                    "sourcePortRange": "*",
+                    "description": "allow ports within vnet that are used by the fabric to talk between nodes"
+                }
+            },
+            {
+                "name": "allowSvcFabEphemeral",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "[concat(variables('nt3ephemeralStartPort'), '-', variables('nt3ephemeralEndPort'))]",
+                    "direction": "Inbound",
+                    "priority": 3930,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "VirtualNetwork",
+                    "sourcePortRange": "*",
+                    "description": "allow fabric ephemeral ports within the vnet"
+                }
+            },
+            {
+                "name": "allowSvcFabPortal",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "[variables('nt3fabricHttpGatewayPort')]",
+                    "direction": "Inbound",
+                    "priority": 3900,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "*",
+                    "sourcePortRange": "*",
+                    "description": "allow port used to access the fabric cluster web portal"
+                }
+            },
+            {
+                "name": "allowSvcFabClient",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "[variables('nt3fabricTcpGatewayPort')]",
+                    "direction": "Inbound",
+                    "priority": 3910,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "*",
+                    "sourcePortRange": "*",
+                    "description": "allow port used by the fabric client (includes powershell)"
+                }
+            },
+            {
+                "name": "allowSvcFabApplication",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "[concat(variables('nt3applicationStartPort'), '-', variables('nt3applicationEndPort'))]",
+                    "direction": "Inbound",
+                    "priority": 3940,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "*",
+                    "sourcePortRange": "*",
+                    "description": "allow fabric application ports within the vnet"
+                }
+            },
+            {
+                "name": "blockAll",
+                "properties": {
+                    "access": "Deny",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "*",
+                    "direction": "Inbound",
+                    "priority": 4095,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "*",
+                    "sourcePortRange": "*",
+                    "description": "block all traffic except what we've explicitly allowed"
+                }
+            },
+            {
+                "name": "allowVNetRDP",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "3389",
+                    "direction": "Inbound",
+                    "priority": 3960,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "*",
+                    "sourcePortRange": "*",
+                    "description": "allow RDP within the net"
+                }
+            },
+            {
+                "name": "allowSvcFabReverseProxy",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "[variables('nt3reverseProxyEndpointPort')]",
+                    "direction": "Inbound",
+                    "priority": 3980,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "*",
+                    "sourcePortRange": "*",
+                    "description": "allow port used to access the fabric cluster using reverse proxy"
+                }
+            },
+            {
+                "name": "allowAppPort1",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "[parameters('loadBalancedAppPort1')]",
+                    "direction": "Inbound",
+                    "priority": 2001,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "*",
+                    "sourcePortRange": "*",
+                    "description": "allow public application port 1"
+                }
+            },
+            {
+                "name": "allowAppPort2",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "[parameters('loadBalancedAppPort2')]",
+                    "direction": "Inbound",
+                    "priority": 2002,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "*",
+                    "sourcePortRange": "*",
+                    "description": "allow public application port 2"
+                }
+            }
+        ]
+    }
+},
+{
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+    "sku": {
+        "name": "[parameters('vmNodeType3Size')]",
+        "capacity": "[parameters('nt3InstanceCount')]",
+        "tier": "Standard"
+    },
+    "name": "[variables('vmNodeType3Name')]",
+    "apiVersion": "2018-10-01",
+    "location": "[variables('computeLocation')]",
+    "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "[parameters('clusterName')]"
+    },
+    "properties": {
+        "overprovision": "[variables('overProvision')]",
+        "upgradePolicy": {
+            "mode": "Automatic"
+        },
+        "virtualMachineProfile": {
+            "extensionProfile": {
+                "extensions": [
+                    {
+                        "name": "[concat(variables('vmNodeType3Name'),'OMS')]",
+                        "properties": {
+                            "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+                            "type": "MicrosoftMonitoringAgent",
+                            "typeHandlerVersion": "1.0",
+                            "autoUpgradeMinorVersion": true,
+                            "settings": {
+                                "workspaceId": "[reference(resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename')), '2015-11-01-preview').customerId]"
+                            },
+                            "protectedSettings": {
+                                "workspaceKey": "[listKeys(resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename')),'2015-11-01-preview').primarySharedKey]"
+                            }
+                        }
+                    },
+                    {
+                        "name": "[concat('ServiceFabricNodeVmExt','_vmNodeType3Name')]",
+                        "properties": {
+                            "type": "ServiceFabricNode",
+                            "autoUpgradeMinorVersion": true,
+                            "protectedSettings": {
+                                "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
+                                "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key2]"
+                            },
+                            "publisher": "Microsoft.Azure.ServiceFabric",
+                            "settings": {
+                                "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
+                                "nodeTypeRef": "[variables('vmNodeType3Name')]",
+                                "dataPath": "D:\\SvcFab",
+                                "durabilityLevel": "Silver",
+                                "enableParallelJobs": true,
+                                "nicPrefixOverride": "[variables('subnet3Prefix')]",
+                                "certificate": {
+                                    "thumbprint": "[parameters('certificateThumbprint')]",
+                                    "x509StoreName": "[parameters('certificateStoreValue')]"
+                                }
+                            },
+                            "typeHandlerVersion": "1.0"
+                        }
+                    },
+                    {
+                        "name": "[concat('VMDiagnosticsVmExt','_vmNodeType3Name')]",
+                        "properties": {
+                            "type": "IaaSDiagnostics",
+                            "autoUpgradeMinorVersion": true,
+                            "protectedSettings": {
+                                "storageAccountName": "[variables('applicationDiagnosticsStorageAccountName')]",
+                                "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('applicationDiagnosticsStorageAccountName')),'2015-05-01-preview').key1]",
+                                "storageAccountEndPoint": "https://core.windows.net/"
+                            },
+                            "publisher": "Microsoft.Azure.Diagnostics",
+                            "settings": {
+                                "WadCfg": {
+                                    "DiagnosticMonitorConfiguration": {
+                                        "overallQuotaInMB": "50000",
+                                        "EtwProviders": {
+                                            "EtwEventSourceProviderConfiguration": [
+                                                {
+                                                    "provider": "Microsoft-ServiceFabric-Actors",
+                                                    "scheduledTransferKeywordFilter": "1",
+                                                    "scheduledTransferPeriod": "PT5M",
+                                                    "DefaultEvents": {
+                                                        "eventDestination": "ServiceFabricReliableActorEventTable"
+                                                    }
+                                                },
+                                                {
+                                                    "provider": "Microsoft-ServiceFabric-Services",
+                                                    "scheduledTransferPeriod": "PT5M",
+                                                    "DefaultEvents": {
+                                                        "eventDestination": "ServiceFabricReliableServiceEventTable"
+                                                    }
+                                                }
+                                            ],
+                                            "EtwManifestProviderConfiguration": [
+                                                {
+                                                    "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
+                                                    "scheduledTransferLogLevelFilter": "Information",
+                                                    "scheduledTransferKeywordFilter": "4611686018427387904",
+                                                    "scheduledTransferPeriod": "PT5M",
+                                                    "DefaultEvents": {
+                                                        "eventDestination": "ServiceFabricSystemEventTable"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                },
+                                "StorageAccount": "[variables('applicationDiagnosticsStorageAccountName')]"
+                            },
+                            "typeHandlerVersion": "1.5"
+                        }
+                    },
+                    {
+                        "name": "[concat('VMIaaSAntimalware','_vmNodeType3Name')]",
+                        "properties": {
+                            "publisher": "Microsoft.Azure.Security",
+                            "type": "IaaSAntimalware",
+                            "typeHandlerVersion": "1.5",
+                            "settings": {
+                                "AntimalwareEnabled": "true",
+                                "Exclusions": {
+                                    "Paths": "D:\\SvcFab;D:\\SvcFab\\Log;C:\\Program Files\\Microsoft Service Fabric",
+                                    "Processes": "Fabric.exe;FabricHost.exe;FabricInstallerService.exe;FabricSetup.exe;FabricDeployer.exe;ImageBuilder.exe;FabricGateway.exe;FabricDCA.exe;FabricFAS.exe;FabricUOS.exe;FabricRM.exe;FileStoreService.exe"
+                                },
+                                "RealtimeProtectionEnabled": "true",
+                                "ScheduledScanSettings": {
+                                    "isEnabled": "true",
+                                    "scanType": "Quick",
+                                    "day": "7",
+                                    "time": "120"
+                                }
+                            },
+                            "protectedSettings": null
+                        }
+                    }
+                ]
+            },
+            "networkProfile": {
+                "networkInterfaceConfigurations": [
+                    {
+                        "name": "[concat(variables('nicName'), '-2')]",
+                        "properties": {
+                            "ipConfigurations": [
+                                {
+                                    "name": "[concat(variables('nicName'),'-',2)]",
+                                    "properties": {
+                                        "loadBalancerBackendAddressPools": [
+                                            {
+                                                "id": "[variables('lbPoolID3')]"
+                                            }
+                                        ],
+                                        "loadBalancerInboundNatPools": [
+                                            {
+                                                "id": "[variables('lbNatPoolID3')]"
+                                            }
+                                        ],
+                                        "subnet": {
+                                            "id": "[variables('subnet3Ref')]"
+                                        }
+                                    }
+                                }
+                            ],
+                            "primary": true
+                        }
+                    }
+                ]
+            },
+            "osProfile": {
+                "adminPassword": "[parameters('adminPassword')]",
+                "adminUsername": "[parameters('adminUsername')]",
+                "computernamePrefix": "[variables('vmNodeType3Name')]",
+                "secrets": [
+                    {
+                        "sourceVault": {
+                            "id": "[parameters('sourceVaultValue')]"
+                        },
+                        "vaultCertificates": [
+                            {
+                                "certificateStore": "[parameters('certificateStoreValue')]",
+                                "certificateUrl": "[parameters('certificateUrlValue')]"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "storageProfile": {
+                "imageReference": {
+                    "publisher": "[parameters('vmImagePublisher')]",
+                    "offer": "[parameters('vmImageOffer')]",
+                    "sku": "[parameters('vmImageSku')]",
+                    "version": "[parameters('vmImageVersion')]"
+                },
+                "osDisk": {
+                    "caching": "ReadOnly",
+                    "createOption": "FromImage",
+                    "managedDisk": {
+                        "storageAccountType": "[parameters('storageAccountType')]"
+                    }
+                }
+            }
+        }
+    },
+    "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
+        "[concat('Microsoft.Network/loadBalancers/', concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType3Name')))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]",
+        "[concat('Microsoft.Storage/storageAccounts/', variables('applicationDiagnosticsStorageAccountName'))]"
+    ]
+},
+```
+
+*template.json* ファイル内で、クラスター リソースを更新し、新しいノード タイプを追加します。
+```json
+{
+    "type": "Microsoft.ServiceFabric/clusters",
+    "name": "[parameters('clusterName')]",
+    "apiVersion": "2018-02-01",
+    "location": "[parameters('clusterLocation')]",
+    "tags": {
+        "resourceType": "Service Fabric",
+        "clusterName": "[parameters('clusterName')]"
+    },
+    "properties": {
+        "nodeTypes": [
+            ...
+            {
+                "name": "[variables('vmNodeType3Name')]",
+                "applicationPorts": {
+                    "endPort": "[variables('nt3applicationEndPort')]",
+                    "startPort": "[variables('nt3applicationStartPort')]"
+                },
+                "clientConnectionEndpointPort": "[variables('nt3fabricTcpGatewayPort')]",
+                "durabilityLevel": "Silver",
+                "ephemeralPorts": {
+                    "endPort": "[variables('nt3ephemeralEndPort')]",
+                    "startPort": "[variables('nt3ephemeralStartPort')]"
+                },
+                "httpGatewayEndpointPort": "[variables('nt3fabricHttpGatewayPort')]",
+                "isPrimary": false,
+                "reverseProxyEndpointPort": "[variables('nt3reverseProxyEndpointPort')]",
+                "vmInstanceCount": "[parameters('nt3InstanceCount')]"
+            }
+        ],    
+    }
+}                
+```
+
+*parameters.json* ファイル内で、次の新しいパラメーターと値を追加します。
+```json
+"nt3InstanceCount": {
+    "Value": 5    
+},
+"vmNodeType3Size": {
+    "Value": "Standard_D2_V2"
+},
+```
+
+### <a name="deploy-the-updated-template"></a>更新したテンプレートをデプロイする
+*template.json* ファイルと *parameters.json* ファイルに対する変更を保存します。  アップロードしたテンプレートをデプロイするには、次のコマンドを実行します。
 
 ```powershell
-$endpoint = "<mycluster>.southcentralus.cloudapp.azure.com:19000"
-$thumbprint = "63EB5BA4BC2A3BADC42CA6F93D6F45E5AD98A1E4"
+New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
+```
+または、次の Azure CLI コマンドを使用します。
+```azure-cli
+az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
+```
 
-Connect-ServiceFabricCluster -ConnectionEndpoint $endpoint `
+## <a name="remove-a-node-type-from-the-cluster"></a>ノード タイプをクラスターから削除する
+Service Fabric クラスターを作成した後は、ノード タイプ (仮想マシン スケール セット) とそのノードすべてを削除することで、クラスターを水平方向にスケーリングできます。 クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。 クラスターをスケーリングすると、アプリケーションも自動的にスケーリングされます。
+
+> [!WARNING]
+> 運用環境のクラスターからノード タイプを削除するために Remove-AzServiceFabricNodeType を使用することは、頻繁に使用する方法としては推奨されません。 ノード タイプの背後にある仮想マシン スケール セット リソースが削除されるため、危険なコマンドです。 
+
+ノード タイプを削除するには、[Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) コマンドレットを実行します。  ノード タイプの[持続性レベル][durability]は Silver または Gold でなければなりません。このコマンドレットは、ノード タイプに関連付けられているスケール セットを削除します。完了するまでに時間がかかります。  その後、削除する各ノードに対して [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) コマンドレットを実行します。これにより、ノードの状態が削除され、クラスターからノードが削除されます。 そのノード上にサービスが存在する場合、それらのサービスは最初に別のノードに移動されます。 クラスター マネージャーで、レプリカ/サービス用のノードを見つけられない場合、操作は遅延またはブロックされます。
+
+```powershell
+$groupname = "sfclustertutorialgroup"
+$nodetype = "nt4vm"
+$clustername = "mysfcluster123"
+
+Remove-AzServiceFabricNodeType -Name $clustername  -NodeType $nodetype -ResourceGroupName $groupname
+
+Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.eastus.cloudapp.azure.com:19000 `
           -KeepAliveIntervalInSec 10 `
-          -X509Credential -ServerCertThumbprint $thumbprint `
-          -FindType FindByThumbprint -FindValue $thumbprint `
+          -X509Credential -ServerCertThumbprint <thumbprint> `
+          -FindType FindByThumbprint -FindValue <thumbprint> `
           -StoreLocation CurrentUser -StoreName My
 
-Get-ServiceFabricClusterHealth
-```
+$nodes = Get-ServiceFabricNode | Where-Object {$_.NodeType -eq $nodetype} | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending
 
-```azurecli
-sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.azure.com:19080 \
---pem ./aztestcluster201709151446.pem --no-verify
-```
-
-これで接続されたので、コマンドを使用してクラスター内の各ノードの状態を取得できます。 **PowerShell** では `Get-ServiceFabricClusterHealth` コマンドを使用し、**sfctl** では `sfctl cluster select` コマンドを使用します。
-
-## <a name="scale-out"></a>スケールアウト
-
-スケールアウトする場合には、スケール セットに仮想マシン インスタンスを追加します。 これらのインスタンスは、Service Fabric で使用されるノードになります。 Service Fabric は、(スケールアウトによって) スケール セットにインスタンスがいつ追加されるかを認識し、自動的に反応します。 次のコードでは、スケール セットを名前で取得し、スケール セットの**容量**を 1 ずつ増やします。
-
-```powershell
-$scaleset = Get-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
-$scaleset.Sku.Capacity += 1
-
-Update-AzureRmVmss -ResourceGroupName $scaleset.ResourceGroupName -VMScaleSetName $scaleset.Name -VirtualMachineScaleSet $scaleset
-```
-
-このコードでは容量を 6 に設定します。
-
-```azurecli
-# Get the name of the node with
-az vmss list-instances -n nt1vm -g sfclustertutorialgroup --query [*].name
-
-# Use the name to scale
-az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 6
-```
-
-## <a name="scale-in"></a>スケールイン
-
-スケールインは、使用する**容量**の値が小さい点以外はスケールアウトと同じです。 スケール セットをスケールインする場合、スケール セットから仮想マシン インスタンスを削除します。 通常、Service Fabric では発生している状況が認識できず、ノードがなくなったと認識します。 そのため、Service Fabric はクラスターに対して異常な状態を報告します。 そのような不適切な状態を防ぐためには、ノードがなくなることを Service Fabric に伝える必要があります。
-
-### <a name="remove-the-service-fabric-node"></a>Service Fabric ノードの削除
-
-> [!NOTE]
-> このパートは *Bronze* 耐久性レベルにのみ適用されます。 耐久性の詳細については、[Service Fabric クラスターの容量計画][durability]に関する記事をご覧ください。
-
-クラスターのノードをアップグレード ドメインと障害ドメインに均等に分散させ続け、それによって均等な使用を実現するためには、最も最近作成されたノードが最初に削除されるようにする必要があります。 言い換えれば、ノードは作成とは逆の順序で削除される必要があります。 最も最近作成されたノードは、`virtual machine scale set InstanceId` プロパティの値が最大のノードです。 下のコード例では、最も最近作成されたノードが返されます。
-
-```powershell
-Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
-```
-
-```azurecli
-sfctl node list --query "sort_by(items[*], &name)[-1]"
-```
-
-Service Fabric クラスターは、このノードが削除されることを認識する必要があります。 以下の 3 つの手順を実行する必要があります。
-
-1. ノードを無効にして、ノードがデータのレプリケートとならないようにします。  
-PowerShell: `Disable-ServiceFabricNode`  
-sfctl: `sfctl node disable`
-
-2. ノードを停止して、Service Fabric ランタイムが完全にシャット ダウンされ、アプリが中断要求を取得できるようにします。  
-PowerShell: `Start-ServiceFabricNodeTransition -Stop`  
-sfctl: `sfctl node transition --node-transition-type Stop`
-
-2. クラスターからノードを削除します。  
-PowerShell: `Remove-ServiceFabricNodeState`  
-sfctl: `sfctl node remove-state`
-
-これら 3 つの手順がノードに適用されたら、ノードをスケール セットから削除できます。 [Bronze][durability] 以外の耐久性レベルを利用している場合には、スケール セット インスタンスが削除されるときに、これらの手順が自動的に行われます。
-
-次のコード ブロックは、最後に作成されたノードを取得して、そのノードを無効化して停止し、クラスターから削除します。
-
-```powershell
-#### After you've connected.....
-# Get the node that was created last
-$node = Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
-
-# Node details for the disable/stop process
-$nodename = $node.NodeName
-$nodeid = $node.NodeInstanceId
-
-$loopTimeout = 10
-
-# Run disable logic
-Disable-ServiceFabricNode -NodeName $nodename -Intent RemoveNode -TimeoutSec 300 -Force
-
-$state = Get-ServiceFabricNode | Where-Object NodeName -eq $nodename | Select-Object -ExpandProperty NodeStatus
-
-while (($state -ne [System.Fabric.Query.NodeStatus]::Disabled) -and ($loopTimeout -ne 0))
+Foreach($node in $nodes)
 {
-    Start-Sleep 5
-    $loopTimeout -= 1
-    $state = Get-ServiceFabricNode | Where-Object NodeName -eq $nodename | Select-Object -ExpandProperty NodeStatus
-    Write-Host "Checking state... $state found"
-}
-
-# Exit if the node was unable to be disabled
-if ($state -ne [System.Fabric.Query.NodeStatus]::Disabled)
-{
-    Write-Error "Disable failed with state $state"
-}
-else
-{
-    # Stop node
-    $stopid = New-Guid
-    Start-ServiceFabricNodeTransition -Stop -OperationId $stopid -NodeName $nodename -NodeInstanceId $nodeid -StopDurationInSeconds 300
-
-    $state = (Get-ServiceFabricNodeTransitionProgress -OperationId $stopid).State
-    $loopTimeout = 10
-
-    # Watch the transaction
-    while (($state -eq [System.Fabric.TestCommandProgressState]::Running) -and ($loopTimeout -ne 0))
-    {
-        Start-Sleep 5
-        $state = (Get-ServiceFabricNodeTransitionProgress -OperationId $stopid).State
-        Write-Host "Checking state... $state found"
-    }
-
-    if ($state -ne [System.Fabric.TestCommandProgressState]::Completed)
-    {
-        Write-Error "Stop transaction failed with $state"
-    }
-    else
-    {
-        # Remove the node from the cluster
-        Remove-ServiceFabricNodeState -NodeName $nodename -TimeoutSec 300 -Force
-    }
+    Remove-ServiceFabricNodeState -NodeName $node.NodeName -TimeoutSec 300 -Force 
 }
 ```
 
-以下の **sfctl** コードでは、コマンド `sfctl node list --query "sort_by(items[*], &name)[-1].name"` を使用して、最後に作成されたノードの **node-name** 値を取得します。
+## <a name="increase-node-resources"></a>ノード リソースを増加する 
+Service Fabric クラスターを作成した後は、クラスターのノード タイプを垂直方向にスケーリング (ノードのリソースを変更) するか、そのノード タイプの VM のオペレーティング システムをアップグレードすることができます。  
 
-```azurecli
-# Inform the node that it is going to be removed
-sfctl node disable --node-name _nt1vm_5 --deactivation-intent 4 -t 300
+> [!WARNING]
+> Silver 以上の持続性で実行されている場合を除き、スケール セット/ノード タイプの VM SKU は変更しないことをお勧めします。 VM SKU のサイズ変更は、データを破壊する、インプレース インフラストラクチャ操作です。 この変更を遅らせたり監視したりする機能がないと、この操作により、ステートレス サービスのデータの消失が発生する可能性があります。また、ステートレス ワークロードに対しても、他の予期できない運用上の問題が発生する可能性があります。
 
-# Stop the node using a random guid as our operation id
-sfctl node transition --node-instance-id 131541348482680775 --node-name _nt1vm_5 --node-transition-type Stop --operation-id c17bb4c5-9f6c-4eef-950f-3d03e1fef6fc --stop-duration-in-seconds 14400 -t 300
+> [!WARNING]
+> プライマリ ノード タイプの VM SKU は変更しないことをお勧めします。これは危険な操作で、サポートされていません。  クラスター容量を増やす必要がある場合、VM インスタンスまたは別のノード タイプを追加できます。  それが不可能な場合は、新しいクラスターを作成し、古いクラスターから[アプリケーション状態を復元する](service-fabric-reliable-services-backup-restore.md)ことができます (妥当な場合)。  それが不可能な場合は、[プライマリ ノード タイプの VM SKU を変更](service-fabric-scale-up-node-type.md)できます。
 
-# Remove the node from the cluster
-sfctl node remove-state --node-name _nt1vm_5
-```
+### <a name="update-the-template"></a>テンプレートを更新する
 
-> [!TIP]
-> 以下の **sfctl** クエリを使用して、各ステップの状態を確認します。
->
-> **非アクティブ化状態を確認する**
-> `sfctl node list --query "sort_by(items[*], &name)[-1].nodeDeactivationInfo"`
->
-> **停止状態を確認する**
-> `sfctl node list --query "sort_by(items[*], &name)[-1].isStopped"`
->
+リソース グループから最新のデプロイの[テンプレートとパラメーター ファイルをエクスポート](#export-the-template-for-the-resource-group)します。  *parameters.json* ファイルを開きます。  このチュートリアルの[サンプル テンプレート][template]を使用してクラスターをデプロイした場合は、クラスター内に 3 つのノード タイプがあります。  
 
-### <a name="scale-in-the-scale-set"></a>スケール セットのスケールイン
+2 つ目のノード タイプの VM のサイズは、*vmNodeType1Size* パラメーターで設定されています。  *vmNodeType1Size* パラメーターの値を Standard_D2_V2 から [Standard_D3_V2](/azure/virtual-machines/windows/sizes-general#dv2-series) に変更します。そうすると、各 VM インスタンスのリソースが 2 倍になります。
 
-これで Service Fabric ノードがクラスターから削除されたので、仮想マシン スケール セットをスケールインできます。 次の例では、スケール セットの容量が 1 ずつ減少します。
+3 つすべてのノード タイプの VM SKU は、*vmImageSku* パラメーターで設定されています。  繰り返しになりますが、ノード タイプの VM SKU の変更は慎重に行う必要があり、プライマリ ノード タイプではお勧めしません。
+
+### <a name="deploy-the-updated-template"></a>更新したテンプレートをデプロイする
+*template.json* ファイルと *parameters.json* ファイルに対する変更を保存します。  アップロードしたテンプレートをデプロイするには、次のコマンドを実行します。
 
 ```powershell
-$scaleset = Get-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
-$scaleset.Sku.Capacity -= 1
-
-Update-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm -VirtualMachineScaleSet $scaleset
+New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
 ```
-
-このコードでは容量を 5 に設定します。
-
-```azurecli
-# Get the name of the node with
-az vmss list-instances -n nt1vm -g sfclustertutorialgroup --query [*].name
-
-# Use the name to scale
-az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
+または、次の Azure CLI コマンドを使用します。
+```azure-cli
+az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="next-steps"></a>次の手順
@@ -256,12 +876,27 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
 このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
-> * クラスター ノード数を読み取る
-> * クラスター ノードを追加する (スケールアウト)
-> * クラスター ノードを削除する (スケールイン)
+> * ノードを追加および削除する (スケールアウトおよびスケールイン)
+> * ノード タイプを追加および削除する (スケールアウトおよびスケールイン)
+> * ノード リソースを増加する (スケールアップ)
 
 次のチュートリアルでは、クラスターのランタイムをアップグレードする方法について説明します。
 > [!div class="nextstepaction"]
 > [クラスターのランタイムをアップグレードする](service-fabric-tutorial-upgrade-cluster.md)
 
 [durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
+[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
+およびスケールイン))
+> * ノード タイプを追加および削除する (スケールアウトおよびスケールイン)
+> * ノード リソースを増加する (スケールアップ)
+
+次のチュートリアルでは、クラスターのランタイムをアップグレードする方法について説明します。
+> [!div class="nextstepaction"]
+> [クラスターのランタイムをアップグレードする](service-fabric-tutorial-upgrade-cluster.md)
+
+[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
+[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json

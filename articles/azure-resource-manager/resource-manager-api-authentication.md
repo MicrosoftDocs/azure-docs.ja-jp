@@ -4,35 +4,34 @@ description: アプリケーションを他の Azure サブスクリプション
 services: azure-resource-manager,active-directory
 documentationcenter: na
 author: dushyantgill
-manager: timlt
-editor: tysonn
 ms.assetid: 17b2b40d-bf42-4c7d-9a88-9938409c5088
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2018
+ms.date: 04/05/2019
 ms.author: dugill
-ms.openlocfilehash: 69127702a7d8e7027e78a8e04a4e8e1bc3e36b65
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: ae405d5dd99a0e2acced924ccccab292b4489cde
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956342"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59791912"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>サブスクリプションにアクセスするための Resource Manager 認証 API の使用
-## <a name="introduction"></a>はじめに
+
 この記事では、顧客の Azure リソースを管理するアプリを作成する必要があるソフトウェア開発者向けに、Azure Resource Manager API を使用して認証し、他のサブスクリプションのリソースにアクセスできるようにする方法について説明します。
 
 アプリケーションは、次の 2 とおりの方法で Resource Manager API にアクセスできます。
 
-1. **ユーザー + アプリケーション アクセス**: サインインしたユーザーに代わってリソースにアクセスするアプリケーションの場合。 この方法は、Web アプリケーションやコマンド ライン ツールなど、Azure リソースの "対話形式の管理" だけに対応するアプリケーションに適しています。
+1. **ユーザー + アプリケーション アクセス**: サインインしたユーザーのリソースにアクセスするアプリケーションの場合。 この方法は、Web アプリケーションやコマンド ライン ツールなど、Azure リソースの "対話形式の管理" だけに対応するアプリケーションに適しています。
 2. **アプリケーション専用アクセス**: デーモン サービスやスケジュールされたジョブを実行するアプリケーションの場合。 アプリケーションの ID にリソースへの直接アクセスを許可します。 この方法は、Azure への長期間のヘッドレス (無人) アクセスを必要とするアプリケーションに適しています。
 
 この記事では、この両方の承認方法を使用するアプリを作成する手順を説明します。 REST API または C# で各手順を実行する方法を紹介します。 完全な ASP.NET MVC アプリケーションは、[https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense) で入手できます。
 
 ## <a name="what-the-web-app-does"></a>Web アプリケーションで実行する内容
+
 Web アプリケーションで実行する内容は次のとおりです。
 
 1. Azure ユーザーをサインインさせます。
@@ -67,29 +66,11 @@ Web アプリケーションのフローを次に示します。
 ![サブスクリプションの接続](./media/resource-manager-api-authentication/sample-ux-7.png)
 
 ## <a name="register-application"></a>アプリケーションを登録する
-コーディングを開始する前に、Web アプリケーションを Azure Active Directory (AD) に登録します。 アプリケーションの登録により、Azure AD にアプリケーションの主要 ID が作成されます。 この ID には、OAuth クライアント ID、応答 URL、アプリケーションが Azure Resource Manager API に対する認証とアクセスに使用する資格情報など、アプリケーションに関する基本情報が保持されます。 また、アプリケーションの登録により、アプリケーションがユーザーに代わって Microsoft API にアクセスするときに必要となる委任された各種アクセス許可が記録されます。
+コーディングを開始する前に、Web アプリケーションを Azure Active Directory (AD) に登録します。 アプリケーションの登録により、Azure AD にアプリケーションの主要 ID が作成されます。 この ID には、OAuth クライアント ID、応答 URL、アプリケーションが Azure Resource Manager API に対する認証とアクセスに使用する資格情報など、アプリケーションに関する基本情報が保持されます。 また、アプリケーションの登録により、アプリケーションがユーザーの Microsoft API にアクセスするときに必要となる委任された各種アクセス許可が記録されます。
 
-アプリケーションは他のサブスクリプションにアクセスするため、アプリケーションをマルチテナント アプリケーションとして構成する必要があります。 検証に合格するには、Azure Active Directory に関連付けられているドメインを指定します。 Azure Active Directory に関連付けられているドメインを表示するには、ポータルにサインインします。
+アプリを登録する場合は、「[クイック スタート: Microsoft ID プラットフォームにアプリケーションを登録する](../active-directory/develop/quickstart-register-app.md)」を参照してください。 アプリに名前を付けて、サポートされているアカウントの種類で **[任意の組織のディレクトリ内のアカウント]** を選択します。 リダイレクト URL で、Azure Active Directory に関連付けられているドメインを指定します。
 
-次の例は、Azure PowerShell を使用してアプリケーションを登録する方法を示しています。 このコマンドを機能させるには、Azure PowerShell の最新バージョン (2016 年 8 月) が必要です。
-
-```azurepowershell-interactive
-$app = New-AzureRmADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
-```
-
-AD アプリケーションとしてサインインするには、アプリケーション ID とパスワードが必要です。 前のコマンドから返されたアプリケーション ID を表示するには、次のコマンドを使用します。
-
-```azurepowershell-interactive
-$app.ApplicationId
-```
-
-次の例は、Azure CLI を使用してアプリケーションを登録する方法を示しています。
-
-```azurecli-interactive
-az ad app create --display-name {app name} --homepage https://{your domain}/{app name} --identifier-uris https://{your domain}/{app name} --password {your password} --available-to-other-tenants true
-```
-
-結果には、アプリケーションとして認証するときに必要な AppId が含まれています。
+AD アプリケーションとしてサインインするには、アプリケーション ID とシークレットが必要です。 アプリケーション ID はアプリケーションの概要に表示されます。 シークレットを作成し、API のアクセス許可を要求する場合は、「[クイック スタート: Web API にアクセスするようにクライアント アプリケーションを構成する](../active-directory/develop/quickstart-configure-app-access-web-apis.md)」を参照してください。 新しいクライアント シークレットを指定します。 API のアクセス許可で、**[Azure Service Management]** を選択します。 **[委任されたアクセス許可]** と **[user_impersonation]** を選択します。
 
 ### <a name="optional-configuration---certificate-credential"></a>オプションの構成 - 証明書資格情報
 Azure AD では、アプリケーションの証明書資格情報もサポートしています。自己署名証明書を作成し、秘密キーを保持して、Azure AD アプリケーションの登録に公開キーを追加します。 認証では、アプリケーションが秘密キーを使用して署名された小さなペイロードを Azure AD に送信すると、Azure AD は登録済みの公開キーを使用して署名を検証します。
@@ -106,7 +87,7 @@ Resource Manager の呼び出しに使用できるトークンを要求するに
 ## <a name="get-user--app-access-token"></a>ユーザー + アプリケーション アクセス トークンを取得する
 アプリケーションは、ユーザーの資格情報を認証し、認証コードを返すために、OAuth 2.0 承認要求と共にユーザーを Azure AD にリダイレクトします。 アプリケーションは、認証コードを使用して Resource Manager のアクセス トークンを取得します。 [ConnectSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/Controllers/HomeController.cs#L42) メソッドが承認要求を作成します。
 
-この記事では、ユーザーを認証するための REST API 要求を示します。 ヘルパー ライブラリを使用して、コードで認証を実行することもできます。 これらのライブラリの詳細については、「[Azure Active Directory 認証ライブラリ](../active-directory/active-directory-authentication-libraries.md)」をご覧ください。 アプリケーションでの ID 管理の統合に関するガイダンスについては、「[Azure Active Directory 開発者ガイド](../active-directory/develop/v1-overview.md)」をご覧ください。
+この記事では、ユーザーを認証するための REST API 要求を示します。 ヘルパー ライブラリを使用して、コードで認証することもできます。 これらのライブラリの詳細については、「[Azure Active Directory 認証ライブラリ](../active-directory/active-directory-authentication-libraries.md)」をご覧ください。 アプリケーションでの ID 管理の統合に関するガイダンスについては、「[Azure Active Directory 開発者ガイド](../active-directory/develop/v1-overview.md)」をご覧ください。
 
 ### <a name="auth-request-oauth-20"></a>承認要求 (OAuth 2.0)
 Azure AD 承認エンドポイントに Open ID Connect/OAuth 2.0 承認要求を発行します。
@@ -124,7 +105,7 @@ Azure AD がユーザーを認証し、必要に応じて、アプリケーシ�
     code=AAABAAAAiL****FDMZBUwZ8eCAA&session_state=2d16bbce-d5d1-443f-acdf-75f6b0ce8850
 
 ### <a name="auth-request-open-id-connect"></a>承認要求 (Open ID Connect)
-ユーザーに代わって Azure Resource Manager にアクセスするだけでなく、ユーザーが Azure AD アカウントを使用してアプリケーションにサインインできるようにする場合は、Open ID Connect 承認要求を発行します。 Open ID Connect により、アプリケーションはユーザーのサインインに使用できる id_token も Azure AD から受け取ります。
+ユーザーの Azure Resource Manager にアクセスするだけでなく、ユーザーが各自の Azure AD アカウントを使用して、アプリケーションにサインインできるようにする場合は、Open ID Connect 承認要求を発行します。 Open ID Connect により、アプリケーションはユーザーのサインインに使用できる id_token も Azure AD から受け取ります。
 
 この要求で使用できるクエリ文字列パラメーターについては、「[サインイン要求を送信する](../active-directory/develop/v1-protocols-openid-connect-code.md#send-the-sign-in-request)」を参照してください。
 
@@ -156,7 +137,7 @@ Open ID Connect 応答の例を次に示します。
 
 証明書資格情報を使用する場合は、JSON Web トークン (JWT) を作成し、アプリケーションの証明書資格情報の秘密キーを使用して署名 (RSA SHA256) します。 このトークンのビルドは、[クライアントの視覚情報フロー](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#second-case-access-token-request-with a-certificate)に示されます。  クライアント アサーション JWT トークンの署名については、 [Active Directory 認証ライブラリ (.NET) のコード](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/dev/src/ADAL.PCL.Desktop/CryptographyHelper.cs) を参照してください。
 
-クライアント認証の詳細については、 [Open ID Connect 仕様](http://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) をご覧ください。
+クライアント認証の詳細については、 [Open ID Connect 仕様](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) をご覧ください。
 
 証明書資格情報を使用したコード付与トークンの要求の例を次に示します。
 
@@ -174,7 +155,7 @@ Open ID Connect 応答の例を次に示します。
     {"token_type":"Bearer","expires_in":"3599","expires_on":"1432039858","not_before":"1432035958","resource":"https://management.core.windows.net/","access_token":"eyJ0eXAiOiJKV1Q****M7Cw6JWtfY2lGc5A","refresh_token":"AAABAAAAiL9Kn2Z****55j-sjnyYgAA","scope":"user_impersonation","id_token":"eyJ0eXAiOiJKV*****-drP1J3P-HnHi9Rr46kGZnukEBH4dsg"}
 
 #### <a name="handle-code-grant-token-response"></a>コード付与トークン応答を処理する
-正常なトークン応答には、Azure Resource Manager の (ユーザー + アプリケーション) アクセス トークンが含まれています。 アプリケーションは、このアクセス トークンを使用して、ユーザーに代わって Resource Manager にアクセスします。 Azure AD によって発行されたアクセス トークンの有効期間は 1 時間です。 Web アプリケーションが (ユーザー + アプリケーション) アクセス トークンを更新する必要があることはほとんどありません。 アクセス トークンを更新する必要がある場合は、アプリケーションがトークン応答で受け取った更新トークンを使用します。 OAuth 2.0 トークン要求を Azure AD トークン エンドポイントに送ります。
+正常なトークン応答には、Azure Resource Manager の (ユーザー + アプリケーション) アクセス トークンが含まれています。 アプリケーションは、このアクセス トークンを使用して、ユーザーの Resource Manager にアクセスします。 Azure AD によって発行されたアクセス トークンの有効期間は 1 時間です。 Web アプリケーションが (ユーザー + アプリケーション) アクセス トークンを更新する必要があることはほとんどありません。 アクセス トークンを更新する必要がある場合は、アプリケーションがトークン応答で受け取った更新トークンを使用します。 OAuth 2.0 トークン要求を Azure AD トークン エンドポイントに送ります。
 
     https://login.microsoftonline.com/{tenant-id}/OAuth2/Token
 
@@ -192,7 +173,7 @@ Open ID Connect 応答の例を次に示します。
 更新トークンを使用して Azure Resource Manager の新しいアクセス トークンを取得できますが、更新トークンはアプリケーションによるオフライン アクセスには適していません。 更新トークンの有効期間は限られています。また、更新トークンはユーザーにバインドされています。 ユーザーが組織を離れた場合、更新トークンを使用するアプリケーションはアクセスできなくなります。 このアプローチは、Azure リソースを管理するためにチームで使用されるアプリケーションには適していません。
 
 ## <a name="check-if-user-can-assign-access-to-subscription"></a>ユーザーがサブスクリプションへのアクセスを割り当てることができるかどうかを確認する
-アプリケーションは、ユーザーに代わって Azure Resource Manager にアクセスするためのトークンを取得しました。 次に、アプリケーションをサブスクリプションに接続します。 サブスクリプションに接続すると、ユーザーが不在の場合でも、アプリケーションはそのサブスクリプションを管理できます (長期間のオフライン アクセス)。
+アプリケーションは、ユーザーの Azure Resource Manager にアクセスするためのトークンを取得しました。 次に、アプリケーションをサブスクリプションに接続します。 サブスクリプションに接続すると、ユーザーが不在の場合でも、アプリケーションはそのサブスクリプションを管理できます (長期間のオフライン アクセス)。
 
 接続するサブスクリプションごとに、[Resource Manager List Permissions](https://docs.microsoft.com/rest/api/authorization/permissions) API を呼び出して、ユーザーがサブスクリプションのアクセス管理権限を持っているかどうかを確認します。
 
@@ -231,7 +212,8 @@ Azure Resource Manager のアクセス トークンしかないため、Azure AD
 <a id="app-azure-ad-graph" />
 
 ### <a name="get-app-only-access-token-for-azure-ad-graph-api"></a>Azure AD Graph API のアプリケーション専用アクセス トークンを取得する
-アプリケーションを認証し、Azure AD Graph API へのトークンを取得するには、OAuth 2.0 クライアント資格情報付与フロー トークン要求を Azure AD トークン エンドポイント (**https://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token**) に発行します。
+
+アプリケーションを認証し、Azure AD Graph API へのトークンを取得するには、OAuth 2.0 クライアント資格情報付与フロー トークン要求を Azure AD トークン エンドポイント (**https:\//login.microsoftonline.com/{directory_domain_name}/OAuth2/Token**) に発行します。
 
 ASP.NET MVC サンプル アプリケーションの [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs) メソッドは、Active Directory Authentication Library for .NET を使用して、Graph API のアプリケーション専用アクセス トークンを取得します。
 
@@ -251,7 +233,7 @@ ASP.NET MVC サンプル アプリケーションの [GetObjectIdOfServicePrinci
     {"token_type":"Bearer","expires_in":"3599","expires_on":"1432039862","not_before":"1432035962","resource":"https://graph.windows.net/","access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLndpbmRv****G5gUTV-kKorR-pg"}
 
 ### <a name="get-objectid-of-application-service-principal-in-user-azure-ad"></a>ユーザーの Azure AD でのアプリケーション サービス プリンシパルの ObjectId を取得する
-次に、アプリ専用アクセス トークンを使用して、[Azure AD Graph Service Principals](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) API にクエリを実行し、ディレクトリに登録されているアプリケーションのサービス プリンシパルのオブジェクト ID を特定します。
+次に、アプリ専用アクセス トークンを使用して、[Azure AD Graph Service Principals](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity) API にクエリを実行し、ディレクトリに登録されているアプリケーションのサービス プリンシパルのオブジェクト ID を特定します。
 
 ASP.NET MVC サンプル アプリケーションの [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs#) メソッドは、この呼び出しを実装しています。
 
@@ -279,7 +261,7 @@ ASP.NET MVC サンプル アプリケーションの [GetObjectIdOfServicePrinci
 
 アプリケーションの役割の割り当てはユーザーに表示されるので、最低限必要な権限を選択します。
 
-[Resource Manager Role Definition API](https://docs.microsoft.com/rest/api/authorization/roledefinitions) を呼び出してすべての Azure RBAC 役割の一覧を表示し、結果を順に調べて目的の役割定義を名前で検索します。
+[Resource Manager Role Definition API](https://docs.microsoft.com/rest/api/authorization/roledefinitions) を呼び出してすべての Azure RBAC 役割の一覧を表示し、結果を順に調べて、役割定義を名前で検索します。
 
 ASP.NET MVC サンプル アプリケーションの [GetRoleId](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L246) メソッドは、この呼び出しを実装しています。
 
@@ -326,7 +308,7 @@ ASP.NET MVC サンプル アプリケーションの [GrantRoleToServicePrincipa
     Content-Type: application/json
     Content-Length: 230
 
-    {"properties": {"roleDefinitionId":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7","principalId":"c3097b31-7309-4c59-b4e3-770f8406bad2"}}
+    {"properties": {"roleDefinitionId":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c","principalId":"c3097b31-7309-4c59-b4e3-770f8406bad2"}}
 
 この要求では、次の値が使用されています。
 
@@ -334,17 +316,17 @@ ASP.NET MVC サンプル アプリケーションの [GrantRoleToServicePrincipa
 | --- | --- |
 | 09cbd307-aa71-4aca-b346-5f253e6e3ebb |サブスクリプションの ID |
 | c3097b31-7309-4c59-b4e3-770f8406bad2 |アプリケーションのサービス プリンシパルのオブジェクト ID |
-| acdd72a7-3385-48ef-bd42-f606fba81ae7 |閲覧者役割の ID |
+| b24988ac-6180-42a0-ab88-20f7382dd24c |共同作成者の役割の ID |
 | 4f87261d-2816-465d-8311-70a27558df4c |新しい役割の割り当て用に作成された新しい GUID |
 
 応答は次の形式になります。
 
     HTTP/1.1 201 Created
 
-    {"properties":{"roleDefinitionId":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7","principalId":"c3097b31-7309-4c59-b4e3-770f8406bad2","scope":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb"},"id":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleAssignments/4f87261d-2816-465d-8311-70a27558df4c","type":"Microsoft.Authorization/roleAssignments","name":"4f87261d-2816-465d-8311-70a27558df4c"}
+    {"properties":{"roleDefinitionId":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c","principalId":"c3097b31-7309-4c59-b4e3-770f8406bad2","scope":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb"},"id":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleAssignments/4f87261d-2816-465d-8311-70a27558df4c","type":"Microsoft.Authorization/roleAssignments","name":"4f87261d-2816-465d-8311-70a27558df4c"}
 
 ### <a name="get-app-only-access-token-for-azure-resource-manager"></a>Azure Resource Manager のアプリケーション専用アクセス トークンを取得する
-アプリケーションがサブスクリプションで必要なアクセス権を持っていることを検証するには、アプリケーション専用トークンを使用してサブスクリプションでテスト タスクを実行します。
+アプリケーションがサブスクリプションにアクセスできることを検証するには、アプリケーション専用トークンを使用してサブスクリプションでテスト タスクを実行します。
 
 アプリケーション専用アクセス トークンを取得するには、「[Azure AD Graph API のアプリケーション専用アクセス トークンを取得する](#app-azure-ad-graph)」の手順に従います。リソース パラメーターには別の値を指定します。
 
@@ -353,7 +335,7 @@ ASP.NET MVC サンプル アプリケーションの [GrantRoleToServicePrincipa
 ASP.NET MVC サンプル アプリケーションの [ServicePrincipalHasReadAccessToSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L110) メソッドは、Active Directory Authentication Library for .Net を使用して、Azure Resource Manager のアプリケーション専用アクセス トークンを取得します。
 
 #### <a name="get-applications-permissions-on-subscription"></a>サブスクリプションに対するアプリケーションのアクセス許可を取得する
-アプリケーションが Azure サブスクリプションで必要なアクセス権を持っていることを確認する場合、[Resource Manager Permissions](https://docs.microsoft.com/rest/api/authorization/permissions) API を呼び出すこともできます。 これは、ユーザーがサブスクリプションのアクセス管理権限を持っているかどうかを確認したときと同様の方法です。 ただし、今回は、前の手順で取得したアプリケーション専用アクセス トークンを使用して Permissions API を呼び出します。
+アプリケーションが Azure サブスクリプションにアクセスできることを確認するには、[Resource Manager Permissions](https://docs.microsoft.com/rest/api/authorization/permissions) API を呼び出すこともできます。 これは、ユーザーがサブスクリプションのアクセス管理権限を持っているかどうかを確認したときと同様の方法です。 ただし、今回は、前の手順で取得したアプリケーション専用アクセス トークンを使用して Permissions API を呼び出します。
 
 ASP.NET MVC サンプル アプリケーションの [ServicePrincipalHasReadAccessToSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L110) メソッドは、この呼び出しを実装しています。
 
@@ -363,7 +345,7 @@ ASP.NET MVC サンプル アプリケーションの [ServicePrincipalHasReadAcc
 サブスクリプション所有者が、ポータルまたはコマンド ライン ツールを使用して、アプリケーションのロールの割り当てを削除した場合、アプリケーションはそのサブスクリプションにアクセスできなくなります。 その場合、サブスクリプションとの接続がアプリケーションの外部から提供されていたことをユーザーに通知し、接続を "修復" するオプションを提供する必要があります。 "修復" により、オフラインで削除されたロールの割り当てが再作成されます。
 
 ユーザーがサブスクリプションをアプリケーションに接続できるようにしたときと同様に、ユーザーがサブスクリプションを切断することもできるようにする必要があります。 アクセス管理の観点から言うと、切断はアプリケーションのサービス プリンシパルがサブスクリプションで持つ役割の割り当てを削除することを意味します。 必要に応じて、サブスクリプションでのアプリケーションの状態も削除される場合があります。
-サブスクリプションでアクセス管理アクセス許可を持つユーザーだけがサブスクリプションを切断できます。
+サブスクリプションへのアクセス管理アクセス許可を持つユーザーだけがサブスクリプションを切断できます。
 
 ASP.NET MVC サンプル アプリケーションの [RevokeRoleFromServicePrincipalOnSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L200) メソッドは、この呼び出しを実装しています。
 

@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: 接続に関する問題のトラブルシューティング | Microsoft Docs'
+title: Azure AD Connect:接続に関する問題のトラブルシューティング | Microsoft Docs
 description: Azure AD Connect での接続に関する問題のトラブルシューティング方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 3aa41bb5-6fcb-49da-9747-e7a3bd780e64
 ms.service: active-directory
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7f34b0015a4a6d7b8c2c23f539cf21232adaec58
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c0afc31bf08a5037d91885bc6a85c6aeaf858825
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46304671"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436665"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Azure AD Connect での接続に関する問題のトラブルシューティング
 この記事では、Azure AD Connect と Azure AD の間の接続のしくみと、接続に関する問題のトラブルシューティング方法について説明します。 このような問題は、プロキシ サーバーを備えた環境において発生する可能性が最も高くなります。
@@ -46,7 +47,7 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |CRL リストのダウンロードに使用します。 |
 | \*.verisign.com |HTTP/80 |CRL リストのダウンロードに使用します。 |
-| \*.entrust.com |HTTP/80 |MFA の CRL リストのダウンロードに使用します。 |
+| \*.entrust.net |HTTP/80 |MFA の CRL リストのダウンロードに使用します。 |
 | \*.windows.net |HTTPS/443 |Azure AD へのサインインに使用します。 |
 | secure.aadcdn.microsoftonline-p.com |HTTPS/443 |MFA に使用します。 |
 | \*.microsoftonline.com |HTTPS/443 |Azure AD ディレクトリの構成とデータのインポート/エクスポートに使用します。 |
@@ -75,7 +76,7 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 
 ### <a name="the-password-cannot-be-verified"></a>パスワードを確認できない
 インストール ウィザードによる Azure AD への接続は成功したものの、パスワード自体を確認できない場合に、このエラーが表示されます。  
-![badpassword](./media/tshoot-connect-connectivity/badpassword.png)
+![間違ったパスワード。](./media/tshoot-connect-connectivity/badpassword.png)
 
 * そのパスワードは一時パスワードで、変更が必要ではないでしょうか。 また、本当に正しいパスワードでしょうか。 Azure AD Connect サーバーとは別のコンピューターで https://login.microsoftonline.com へのサインインを試し、アカウントが使用可能であることを確認してください。
 
@@ -164,20 +165,55 @@ Azure AD ディレクトリが見つからないか、解決できません。 �
 ### <a name="authorization-failure"></a>Authorization Failure (認可エラー)
 Azure AD で操作を実行するユーザーを承認できませんでした。
 
-### <a name="authentication-cancelled"></a>認証が取り消された
+### <a name="authentication-canceled"></a>Authentication Canceled (認証が取り消されました)
 Multi-Factor Authentication (MFA) 要求が取り消されました。
+
+<div id="connect-msolservice-failed">
+<!--
+  Empty div just to act as an alias for the "Connect To MS Online Failed" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
 
 ### <a name="connect-to-ms-online-failed"></a>Connect To MS Online Failed (MS Online への接続に失敗しました)
 認証は成功しましたが、Azure AD PowerShell に認証の問題があります。
 
+<div id="get-msoluserrole-failed">
+<!--
+  Empty div just to act as an alias for the "Azure AD Global Admin Role Needed" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
+
 ### <a name="azure-ad-global-admin-role-needed"></a>Azure AD Global Admin Role Needed (Azure AD の全体管理者ロールが必要です)
 ユーザーは正常に認証されました。 ただし、ユーザーに全体管理者ロールが割り当てられていません。 ユーザーに[全体管理者ロールを割り当てる方法](../users-groups-roles/directory-assign-admin-roles.md)に関するページを参照してください。 
+
+<div id="privileged-identity-management">
+<!--
+  Empty div just to act as an alias for the "Privileged Identity Management Enabled" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
 
 ### <a name="privileged-identity-management-enabled"></a>Privileged Identity Management Enabled (Privileged Identity Management が有効です)
 認証に成功しました。 Privileged Identity Management が有効になっており、現時点では全体管理者ではありません。 詳細については、[Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) に関するページをご覧ください。
 
+<div id="get-msolcompanyinformation-failed">
+<!--
+  Empty div just to act as an alias for the "Company Information Unavailable" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
+
 ### <a name="company-information-unavailable"></a>Company Information Unavailable (会社情報が利用できません)
 認証に成功しました。 Azure AD から会社情報を取得できませんでした。
+
+<div id="get-msoldomain-failed">
+<!--
+  Empty div just to act as an alias for the "Domain Information Unavailable" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
 
 ### <a name="domain-information-unavailable"></a>Domain Information Unavailable (ドメイン情報が利用できません)
 認証に成功しました。 Azure AD からドメイン情報を取得できませんでした。

@@ -4,7 +4,7 @@ description: このチュートリアルでは、複数コンテナーの Servic
 services: service-fabric
 documentationcenter: ''
 author: suhuruli
-manager: timlt
+manager: chackdan
 editor: suhuruli
 tags: servicefabric
 keywords: Docker, コンテナー, マイクロサービス, Service Fabric, Azure
@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0dc92524843f47b1327af5e9d3f237656cad2a37
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c081a6296e1fae89f24a2c3ddb1ae66f7a3f94aa
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947536"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662552"
 ---
-# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>チュートリアル: Linux Service Fabric クラスター上にコンテナー イメージを作成する
+# <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>チュートリアル:Linux Service Fabric クラスターにコンテナー イメージを作成する
 
 このチュートリアルは、Linux Service Fabric クラスター内のコンテナーの使い方を実演するるチュートリアル シリーズの第 1 部です。 このチュートリアルでは、複数コンテナーのアプリケーションを Service Fabric で使うことができるように準備します。 以降のチュートリアルでは、これらのイメージを Service Fabric アプリケーションの一部として使います。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -190,7 +190,7 @@ docker push コマンドが完了までに数分かかります。
 
 ## <a name="list-images-in-registry"></a>レジストリ内のイメージの一覧表示
 
-お使いの Azure Container Registry にプッシュされたイメージの一覧を返すには、[az acr repository list](/cli/azure/acr/repository#az_acr_repository_list) コマンドを使用します。 ACR のインスタンス名でコマンドを更新します。
+お使いの Azure Container Registry にプッシュされたイメージの一覧を返すには、[az acr repository list](/cli/azure/acr/repository) コマンドを使用します。 ACR のインスタンス名でコマンドを更新します。
 
 ```bash
 az acr repository list --name <acrName> --output table
@@ -208,7 +208,7 @@ azure-vote-front
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、アプリケーションを Github から取得し、コンテナー イメージを作成して、レジストリにプッシュしました。 次の手順を完了しました。
+このチュートリアルでは、アプリケーションを GitHub から取得し、コンテナー イメージを作成して、レジストリにプッシュしました。 次の手順を完了しました。
 
 > [!div class="checklist"]
 > * GitHub からアプリケーション ソースを複製する

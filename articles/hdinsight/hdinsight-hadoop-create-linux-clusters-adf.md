@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 12/29/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1e55da981daf29aca491c480d58f399bc681fd27
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 8b65cb05643ffca3cbf25a207dce683d2d60fd64
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499560"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361576"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>チュートリアル: Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -37,7 +37,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure PowerShell。 手順については、 [Azure PowerShell のインストールおよび構成に関するページ](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0)を参照してください。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+- Azure PowerShell。 手順については、 [Azure PowerShell のインストールおよび構成に関するページ](https://docs.microsoft.com/powershell/azure/install-az-ps)を参照してください。
 
 - Azure Active Directory サービス プリンシパル。 サービス プリンシパルを作成したら、リンク先の記事の手順に従って、**アプリケーション ID** と**認証キー**を必ず取得してください。 このチュートリアルで、後ほどこれらの値が必要になります。 また、サービス プリンシパルが、サブスクリプションまたはクラスターが作成されるリソース グループの*共同作成者*ロールのメンバーであることを確認してください。 必要な値を取得し、適切なロールを割り当てる手順については、[Azure Active Directory サービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関する記事をご覧ください。
 
@@ -55,7 +57,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 
 **Azure PowerShell を使用してストレージ アカウントを作成し、ファイルをコピーするには:**
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > スクリプトを使って作成する Azure リソース グループと Azure ストレージ アカウントの名前を指定します。
 > スクリプトによって出力された**リソース グループ名**、**ストレージ アカウント名**、**ストレージ アカウント キー**を書き留めます。 これらは、次のセクションで必要になります。
 
@@ -75,7 +77,7 @@ $destContainerName = "adfgetstarted" # don't change this value.
 ####################################
 #region - Connect to Azure subscription
 Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
-Login-AzureRmAccount
+Login-AzAccount
 #endregion
 
 ####################################
@@ -85,25 +87,25 @@ Login-AzureRmAccount
 #region - create Azure resources
 Write-Host "`nCreating resource group, storage account and blob container ..." -ForegroundColor Green
 
-New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-New-AzureRmStorageAccount `
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+New-AzStorageAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $destStorageAccountName `
     -type Standard_LRS `
     -Location $location
 
-$destStorageAccountKey = (Get-AzureRmStorageAccountKey `
+$destStorageAccountKey = (Get-AzStorageAccountKey `
     -ResourceGroupName $resourceGroupName `
     -Name $destStorageAccountName)[0].Value
 
-$sourceContext = New-AzureStorageContext `
+$sourceContext = New-AzStorageContext `
     -StorageAccountName $sourceStorageAccountName `
     -Anonymous
-$destContext = New-AzureStorageContext `
+$destContext = New-AzStorageContext `
     -StorageAccountName $destStorageAccountName `
     -StorageAccountKey $destStorageAccountKey
 
-New-AzureStorageContainer -Name $destContainerName -Context $destContext
+New-AzStorageContainer -Name $destContainerName -Context $destContext
 #endregion
 
 ####################################
@@ -112,16 +114,16 @@ New-AzureStorageContainer -Name $destContainerName -Context $destContext
 #region - copy files
 Write-Host "`nCopying files ..." -ForegroundColor Green
 
-$blobs = Get-AzureStorageBlob `
+$blobs = Get-AzStorageBlob `
     -Context $sourceContext `
     -Container $sourceContainerName
 
-$blobs|Start-AzureStorageBlobCopy `
+$blobs|Start-AzStorageBlobCopy `
     -DestContext $destContext `
     -DestContainer $destContainerName
 
 Write-Host "`nCopied files ..." -ForegroundColor Green
-Get-AzureStorageBlob -Context $destContext -Container $destContainerName
+Get-AzStorageBlob -Context $destContext -Container $destContainerName
 #endregion
 
 Write-host "`nYou will use the following values:" -ForegroundColor Green
@@ -166,7 +168,11 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
 
-1. Azure Portal 上で、**[リソースの作成]** > **[データ + 分析]** > **[Data Factory]** を選択します。
+1. 左側のメニューで、**[+ リソースの作成]** を選択します。
+
+1. **[Azure Marketplace]** の **[分析]** を選択します。
+
+1.  **[おすすめ]** の **[Data Factory]** を選択します。
 
     ![ポータルの Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "ポータルの Azure Data Factory")
 
@@ -176,24 +182,23 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
     次の値を入力または選択します。
     
-    |プロパティ  |[説明]  |
+    |プロパティ  |説明  |
     |---------|---------|
     |**名前** |  データ ファクトリの名前を入力します。 この名前はグローバルに一意である必要があります。|
     |**サブスクリプション**     |  Azure サブスクリプションを選択します。 |
     |**[リソース グループ]**     | **[既存のものを使用]** を選択し、PowerShell スクリプトを使用して作成したリソース グループを選択します。 |
-    |**バージョン**     | **[V2 (プレビュー)]** を選択します。 |
-    |**場所**     | 場所は、リソース グループの作成時に指定した場所に自動的に設定されます。 このチュートリアルでは、場所は **[米国東部 2]** に設定されます。 |
+    |**バージョン**     | **[V2]** を選択します。 |
+    |**場所**     | 場所は、リソース グループの作成時に指定した場所に自動的に設定されます。 このチュートリアルでは、場所は **[米国東部]** に設定されます。 |
     
 
-1. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** を選択します。 ポータルのダッシュボードに、**[デプロイを送信しています]** という新しいタイルが表示されます。 データ ファクトリの作成には、2 ～ 4 分ほどかかることがあります。
+1. **作成**を選択します。 データ ファクトリの作成には、2 ～ 4 分ほどかかることがあります。
 
-    ![テンプレートのデプロイの進行状況](./media/hdinsight-hadoop-create-linux-clusters-adf/deployment-progress-tile.png "テンプレートのデプロイの進行状況") 
- 
-1. データ ファクトリが作成されると、ポータルにデータ ファクトリの概要が表示されます。
 
-    ![Azure Data Factory の概要](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure Data Factory の概要")
+1. データ ファクトリが作成されると、**[リソースに移動]** ボタンを含む**デプロイ成功**通知が届きます。  **[リソースに移動]** を選択して、Data Factory の既定のビューを開きます。
 
 1. **[作成と監視]** を選択して、Azure Data Factory の作成および監視ポータルを起動します。
+
+    ![Azure Data Factory の概要](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure Data Factory の概要")
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 
@@ -234,7 +239,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
     次の値を入力し、残りは既定値のままにしておきます。
 
-    | プロパティ | [説明] |
+    | プロパティ | 説明 |
     | --- | --- |
     | Name | HDInsight のリンクされたサービスの名前を入力します。 |
     | type | **[On-demand HDInsight]\(オンデマンド HDInsight\)** を選択します。 |

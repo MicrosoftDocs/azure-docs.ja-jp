@@ -6,21 +6,21 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 36db91cd7c4dad3c28c0c110ee837ca6d1284959
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c3de7b46449b8075d17a19733eda88d692b1d876
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575386"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243081"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での分散テーブルの設計に関するガイダンス
 Azure SQL Data Warehouse のハッシュ分散テーブルおよびラウンド ロビン分散テーブルを設計するための推奨事項。
 
-この記事では、読者が SQL Data Warehouse のデータ分散とデータ移動の概念を理解していることを前提としています。  詳細については、「[Azure SQL Data Warehouse - 超並列処理 (MPP) アーキテクチャ](massively-parallel-processing-mpp-architecture.md)」を参照してください。 
+この記事では、読者が SQL Data Warehouse のデータ分散とデータ移動の概念を理解していることを前提としています。  詳細については、「[Azure SQL Data Warehouse - 超並列処理 (MPP) アーキテクチャ](massively-parallel-processing-mpp-architecture.md)」を参照してください。 
 
 ## <a name="what-is-a-distributed-table"></a>分散テーブルについて
 分散テーブルは単一のテーブルとして表示されますが、実際には、行が 60 のディストリビューションにわたって格納されています。 行はハッシュ アルゴリズムまたはラウンド ロビン アルゴリズムを使って、分散されます。  
@@ -29,11 +29,11 @@ Azure SQL Data Warehouse のハッシュ分散テーブルおよびラウンド 
 
 もう 1 つのテーブル ストレージの選択肢としては、すべての計算ノードにわたって小規模なテーブルをレプリケートする方法があります。 詳しくは、[レプリケート テーブルを使用するための設計ガイダンス](design-guidance-for-replicated-tables.md)に関する記事をご覧ください。 3 つの選択肢から簡単に選ぶには、[テーブルの概要](sql-data-warehouse-tables-overview.md)を示した記事の「分散テーブル」を参照してください。 
 
-テーブル設計の一環として、ご利用のデータと、そのデータを照会する方法についてできる限り理解してください。  たとえば、次のような質問を考えてみます。
+テーブル設計の一環として、ご利用のデータと、そのデータを照会する方法についてできる限り理解してください。  たとえば、次のような質問を考えてみます。
 
-- テーブルの大きさはどの程度か。   
-- どの程度の頻度でテーブルが更新されるか。   
-- データ ウェアハウス内にファクト テーブルとディメンション テーブルがあるか。   
+- テーブルの大きさはどの程度か。   
+- どの程度の頻度でテーブルが更新されるか。   
+- データ ウェアハウス内にファクト テーブルとディメンション テーブルがあるか。   
 
 
 ### <a name="hash-distributed"></a>ハッシュによる分散
@@ -147,7 +147,7 @@ where two_part_name in
     from dbo.vTableSizes
     where row_count > 0
     group by two_part_name
-    having min(row_count * 1.000)/max(row_count * 1.000) > .10
+    having (max(row_count * 1.000) - min(row_count * 1.000))/max(row_count * 1.000) >= .10
     )
 order by two_part_name, row_count
 ;

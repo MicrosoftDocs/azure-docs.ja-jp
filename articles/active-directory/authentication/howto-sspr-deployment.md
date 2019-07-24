@@ -3,19 +3,20 @@ title: セルフサービスによるパスワードのリセットのデプロ�
 description: Azure AD のセルフ サービスによるパスワードのリセットを正常に展開するためのヒント
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: f786a20f61c8851c1d50a89edd392b9b974db076
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cb9333845a78204ea1c6e56e17b3b6f9e5513c9c
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622322"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370687"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>セルフサービスによるパスワードのリセットを適切にロールアウトする方法
 
@@ -24,7 +25,7 @@ Azure Active Directory (Azure AD) のセルフサービスによるパスワー�
 > [!VIDEO https://www.youtube.com/embed/OZn5btP6ZXw]
 
 1. 組織の一部でパイロット ロールアウトを完了します。
-   * パイロットの方法については、「[チュートリアル: Azure AD のセルフ サービスによるパスワードのリセットのパイロット展開を完了する](tutorial-sspr-pilot.md)」を参照してください。
+   * パイロットの方法については、「[チュートリアル: Azure AD のセルフサービスによるパスワードのリセットのパイロット展開を完了する](tutorial-sspr-pilot.md)」を参照してください。
 1. ヘルプデスクを教育します。
    * ユーザーをどのように支援しますか。
    * SSPR の使用をユーザーに強制して、ヘルプデスクがユーザーを支援しないようにしますか。
@@ -48,7 +49,7 @@ Azure Active Directory (Azure AD) のセルフサービスによるパスワー�
 * **SSPR テーブル テント**: ユーザーによる登録の完了を促すためにランチ ルーム、会議室、またはデスクに配置できるテーブル カードです。
 * **SSPR ステッカー**: カスタマイズして印刷できるステッカーのテンプレートです。SSPR にアクセスする方法を忘れないよう、ノート PC、モニター、キーボード、または携帯電話に貼ることができます。
 
-![SSPR メール サンプル][Email]
+![ユーザーへのロールアウト用 SSPR 電子メールのサンプル][Email]
 
 ## <a name="create-your-own-password-portal"></a>独自のパスワードのポータルを作成する
 

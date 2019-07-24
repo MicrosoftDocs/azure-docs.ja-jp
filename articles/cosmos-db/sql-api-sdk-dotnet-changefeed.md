@@ -1,23 +1,21 @@
 ---
-title: Azure Cosmos DB .NET Change Feed Processor API、SDK およびリソース | Microsoft Docs
+title: 'Azure Cosmos DB: .NET Change Feed Processor API、SDK、およびリソース'
 description: リリース日、提供終了日、.NET Change Feed Processor SDK の各バージョン間の変更など、Change Feed Processor API と SDK に関するあらゆる詳細を提供します。
-services: cosmos-db
 author: ealsur
-manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 10/24/2018
+ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 327873d228fe92a9da495f802c97eb73612caef9
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: a878ab1937b06f06a27b18f793fc1bfa190969ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632485"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090340"
 ---
-# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor SDK: ダウンロードおよびリリース ノート
+# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor SDK:ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
@@ -26,9 +24,9 @@ ms.locfileid: "52632485"
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST ()](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -42,6 +40,16 @@ ms.locfileid: "52632485"
 ## <a name="release-notes"></a>リリース ノート
 
 ### <a name="v2-builds"></a>v2 のビルド
+
+### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
+* オブザーバーの例外の処理が改善されました。
+* オブザーバーのエラーに関する情報がより方法になりました。
+  * オブザーバーの ProcessChangesAsync によってスローされた例外によりオブザーバーが閉じられると、CloseAsync が ChangeFeedObserverCloseReason.ObserverError に設定された reason パラメーターを受け取るようになりました。
+  * オブザーバーでユーザー コード内のエラーを識別するためにトレースが追加されました。
+
+### <a name="a-name225225"></a><a name="2.2.5"/>2.2.5
+* 共有データベースのスループットを使用するコレクション内の分割を処理するためのサポートが追加されました。
+  * このリリースでは、共有データベースのスループットを使用するコレクション内の分割中に発生する可能性がある、分割によってパーティションのリバランスが発生して子のパーティションキー範囲が 2 つではなく 1 つだけになるという問題が修正されました。 これが発生した場合、Change Feed Processor による古いパーティション キー範囲のリースを削除することができなくなり、新しいリースが作成されない可能性があります。 この問題は今回のリリースで修正されました。
 
 ### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
 * 要求の継続トークンからの変更フィードの開始をサポートするための新しいプロパティ ChangeFeedProcessorOptions.StartContinuation が追加されました。 これは、リース コレクションが空であるか、リースに ContinuationToken セットがない場合にのみ使用されます。 ContinuationToken セットがあるリース コレクション内のリースの場合は、ContinuationToken が使用され、ChangeFeedProcessorOptions.StartContinuation は無視されます。
@@ -155,6 +163,11 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.2.6](#2.2.6) |2019 年 1 月 29 日 |--- |
+| [2.2.5](#2.2.5) |2018 年 12 月 13 日 |--- |
+| [2.2.4](#2.2.4) |2018 年 11 月 29 日 |--- |
+| [2.2.3](#2.2.3) |2018 年 11 月 19 日 |--- |
+| [2.2.2](#2.2.2) |2018 年 10 月 31 日 |--- |
 | [2.2.1](#2.2.1) |2018 年 10 月 24 日 |--- |
 | [1.3.3](#1.3.3) |2018 年 5 月 8 日 |--- |
 | [1.3.2](#1.3.2) |2018 年 4 月 18 日 |--- |

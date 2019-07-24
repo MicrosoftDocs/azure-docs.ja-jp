@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 04/08/2019
 ms.author: raynew
-ms.openlocfilehash: 5fb618c0b4923b811f90f931649ca36de113eb55
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 60ca12e5b362a37eb9f85c9a0d1fc23ca99e9edc
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496533"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59360798"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Hyper-V VM のセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
 
@@ -55,15 +55,15 @@ Windows Server 2012 R2 | Windows Server 2012 R2 の [Hyper-V でサポートさ�
 
 **構成** | **サポートされています**  
 --- | --- 
-ホスト - NIC チーミング | [はい] 
-ホスト - VLAN | [はい] 
-ホスト - IPv4 | [はい] 
+ホスト - NIC チーミング | はい 
+ホスト - VLAN | はい 
+ホスト - IPv4 | はい 
 ホスト - IPv6 | いいえ  
 ゲスト VM - NIC チーミング | いいえ 
-ゲスト VM - IPv4 | [はい]
+ゲスト VM - IPv4 | はい
 ゲスト VM - IPv6 | いいえ 
-Gues VM - Windows/Linux - 静的 IP アドレス | [はい]
-ゲスト VM - マルチ NIC | [はい]
+Guest VM - Windows/Linux - 静的 IP アドレス | はい
+ゲスト VM - マルチ NIC | はい
 
 
 ## <a name="storage"></a>Storage
@@ -73,9 +73,9 @@ Gues VM - Windows/Linux - 静的 IP アドレス | [はい]
 **ストレージ (ホスト)** | **サポートされています**
 --- | --- 
 NFS | 該当なし
-SMB 3.0 |  [はい]
-SAN (ISCSI) | [はい]
-マルチパス (MPIO) | [はい]
+SMB 3.0 |  はい
+SAN (ISCSI) | はい
+マルチパス (MPIO) | はい
 
 ### <a name="guest-or-physical-server-storage"></a>ゲストまたは物理サーバーのストレージ
 
@@ -83,19 +83,19 @@ SAN (ISCSI) | [はい]
 --- | --- | 
 VMDK |  該当なし
 VHD/VHDX | はい (最大 16 個のディスク)
-第 2 世代 VM | [はい]
+第 2 世代 VM | はい
 共有クラスター ディスク | いいえ 
 暗号化されたディスク | いいえ 
 UEFI| 該当なし
 NFS | いいえ 
 SMB 3.0 | いいえ 
 RDM | 該当なし
-1 TB より大きいディスク | [はい]
-ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM | [はい]
-記憶域 | [はい]
+1 TB より大きいディスク | はい
+ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM | はい
+記憶域 | はい
 ディスクのホット アド/削除 | いいえ 
-ディスクの除外 | [はい]
-マルチパス (MPIO) | [はい]
+ディスクの除外 | はい
+マルチパス (MPIO) | はい
 
 ## <a name="vaults"></a>資格情報コンテナー
 
@@ -109,7 +109,7 @@ RDM | 該当なし
 プロバイダーは VMM サーバー間の通信を調整します。 
 
 **最新** | **更新プログラム**
---- | --- | --- | --- | ---
+--- | --- 
 5.1.19 ([ポータルから入手可能](https://aka.ms/downloaddra) | [最新の機能と修正](https://support.microsoft.com/kb/3155002)
 
 

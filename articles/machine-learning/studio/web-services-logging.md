@@ -1,36 +1,35 @@
 ---
-title: Machine Learning Studio Web サービスのログ記録 | Microsoft Docs
-description: Machine Learning Web サービスのログ記録を有効にする方法について説明します。 ログ記録では、API のトラブルシューティングに役立つ追加情報を提供します。
+title: Web サービスのログ記録 - Azure Machine Learning Studio | Microsoft Docs
+description: Machine Learning Studio Web サービスのログ記録を有効にする方法について説明します。 ログ記録では、API のトラブルシューティングに役立つ追加情報を提供します。
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+author: xiaoharper
+ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: c54d41e1-0300-46ef-bbfc-d6f7dca85086
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.openlocfilehash: 5ac8712b1f5dbea4ed3225e87b1a6f51312c3529
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 727379edb60756ca8cb3e5ebdc29cd38858945e4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310414"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857557"
 ---
-# <a name="enable-logging-for-machine-learning-studio-web-services"></a>Machine Learning Studio Web サービスのログ記録を有効にする
-このドキュメントは、Machine Learning Web サービスのログ記録機能について説明します。 ログ機能を使用すると、エラー番号とメッセージの他に追加の情報を得ることができ、Machine Learning API の呼び出しをトラブルシューティングするときに役立ちます。  
+# <a name="enable-logging-for-azure-machine-learning-studio-web-services"></a>Azure Machine Learning Studio Web サービスのログ記録を有効にする
+このドキュメントでは、Machine Learning Studio Web サービスのログ記録機能について説明します。 ログ機能を使用すると、エラー番号とメッセージの他に追加の情報を得ることができ、Machine Learning Studio API の呼び出しをトラブルシューティングするときに役立ちます。  
 
 ## <a name="how-to-enable-logging-for-a-web-service"></a>Web サービスでのログ記録を有効にする方法
 
-[Azure Machine Learning Web Services](https://services.azureml.net) ポータルからログ記録を有効にすることができます。 
+[Azure Machine Learning Studio Web サービス](https://services.azureml.net) ポータルからログ記録を有効にすることができます。 
 
-1. Azure Machine Learning Web サービス ポータル （[https://services.azureml.net](https://services.azureml.net)） にサインインします。 クラシック Web サービスの場合は、Machine Learning Studio の Machine Learning Web サービス ページで **[New Web Services Experience] \(新しい Web サービス エクスペリエンス\)** をクリックします。
+1. Azure Machine Learning Studio Web サービス ポータル ([https://services.azureml.net](https://services.azureml.net)) にサインインします。 クラシック Web サービスの場合は、Machine Learning Studio の [Machine Learning Studio Web サービス] ページで **[New Web Services Experience]\(新しい Web サービス エクスペリエンス\)** をクリックすることで、ポータルにアクセスすることもできます。
 
    ![[New Web Services Experience] \(新しい Web サービス エクスペリエンス\) リンク](./media/web-services-logging/new-web-services-experience-link.png)
 
@@ -58,7 +57,7 @@ ms.locfileid: "52310414"
 
    3. コンテナー **ml-diagnostics** が存在しない場合は、**[ コンテナー]** をクリックし、コンテナーに "ml-diagnostics" という名前を付け、**[アクセスの種類]** を "BLOB" に設定します。 Click **OK**.
 
-      ![ログ記録レベルの選択](./media/web-services-logging/create-ml-diagnostics-container.png)
+      ![自分の診断ログを格納する新しいコンテナーを作成する](./media/web-services-logging/create-ml-diagnostics-container.png)
 
 > [!TIP]
 >

@@ -1,22 +1,20 @@
 ---
-title: Ruby から Azure Table Storage と Azure Cosmos DB Table API を使用する方法 | Microsoft Docs
+title: Ruby から Azure Table Storage と Azure Cosmos DB Table API を使用する方法
 description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
-services: cosmos-db
-author: SnehaGunda
-manager: kfile
-editor: ''
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: ruby
 ms.topic: sample
 ms.date: 04/05/2018
-ms.author: sngun
-ms.openlocfilehash: d1583001550f5f272f4070006a4a6ac3be000de6
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+author: wmengmsft
+ms.author: wmeng
+ms.reviewer: sngun
+ms.openlocfilehash: 3603455674485a505a7dbc969554a881947940ae
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798272"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036258"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Ruby から Azure Table Storage と Azure Cosmos DB Table API を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -49,7 +47,7 @@ require "azure/storage/table"
 ```
 
 ## <a name="add-an-azure-storage-connection"></a>Azure Storage 接続を追加する
-Azure Storage モジュールは、Azure ストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE_STORAGE_ACCOUNT** と **AZURE_STORAGE_ACCESS_KEY** を読み取ります。 これらの環境変数が設定されていない場合は、**Azure::Storage::Table::TableService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
+Azure Storage モジュールは、Azure Storage アカウントに接続するために必要な情報として、環境変数 **AZURE_STORAGE_ACCOUNT** と **AZURE_STORAGE_ACCESS_KEY** を読み取ります。 これらの環境変数が設定されていない場合は、**Azure::Storage::Table::TableService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
 
 ```ruby
 Azure.config.storage_account_name = "<your Azure Storage account>"
@@ -96,9 +94,9 @@ azure_table_service.insert_entity("testtable", entity)
 ## <a name="update-an-entity"></a>エンティティを更新する
 既存のエンティティを更新するには、複数のメソッドがあります。
 
-* **update_entity():** 既存のエンティティを、置換することで更新します。
+* **update_entity():** 既存のエンティティを置換することで更新します。
 * **merge_entity():** 新しいプロパティ値を既存のエンティティにマージすることで既存のエンティティを更新します。
-* **insert_or_merge_entity():** 既存のエンティティを、置換することで更新します。 エンティティが存在しない場合は、新しいエンティティが挿入されます。
+* **insert_or_merge_entity():** 既存のエンティティを置換することで更新します。 エンティティが存在しない場合は、新しいエンティティが挿入されます。
 * **insert_or_replace_entity():** 新しいプロパティ値を既存のエンティティにマージすることで既存のエンティティを更新します。 エンティティが存在しない場合は、新しいエンティティが挿入されます。
 
 次の例は、**update_entity()** を使用してエンティティを更新する方法を示しています。

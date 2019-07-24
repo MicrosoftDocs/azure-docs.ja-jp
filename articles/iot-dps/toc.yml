@@ -1,6 +1,4 @@
 items:
-- name: Azure IoT の基礎
-  href: ../iot-fundamentals/index.yml
 - name: Azure IoT Hub Device Provisioning Service のドキュメント
   href: index.yml
 - name: 概要
@@ -148,6 +146,8 @@ items:
   items:
   - name: REST API
     href: /rest/api/iot-dps
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.devices/deviceprovisioning-allversions
   - name: Azure IoT SDK for C
     href: https://github.com/Azure/azure-iot-sdk-c
   - name: Azure IoT SDK for Python
@@ -199,7 +199,7 @@ items:
   - name: Azure IoT Hub
     href: https://azure.microsoft.com/services/iot-hub/
   - name: IoT デバイス カタログ向けの Azure 認定
-    href: https://catalog.azureiotsuite.com/
+    href: https://catalog.azureiotsolutions.com/
   - name: Azure IoT デベロッパー センター
     href: https://azure.microsoft.com/develop/iot/
   - name: 顧客データ要求
@@ -219,14 +219,14 @@ items:
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=iot-hub
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-iot-hub
+    href: https://stackoverflow.com/questions/tagged/azure-iot-hub
   - name: 技術的なケース スタディ
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: fe4a2c1e64b1a5054bfc9c4bbc9d136f93848a1c
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 8b48f3ffa0f647faeb4284ea636b572a2a404e95
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616515"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533121"

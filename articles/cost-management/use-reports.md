@@ -1,23 +1,23 @@
 ---
 title: Azure での Cloudyn レポートの使用 | Microsoft Docs
-description: この記事では、Cloudyn ポータルでさまざまなレポートを使用する方法について説明します。
+description: この記事では、効率的に使用するのに役立つように、Cloudyn ポータルに含まれている Cloudyn レポートの目的について説明します。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: 8267401a0dade0ca7cfb1dbf69d2fdfd6786f1df
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: benshy
+ms.custom: seodec18
+ms.openlocfilehash: 484b39de52cef4e4772745eed38e8461a5594601
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976789"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182525"
 ---
-# <a name="use-cloudyn-reports"></a>Cloudyn レポートの使用
+# <a name="reports-available-in-the-cloudyn-portal"></a>Cloudyn ポータルで利用できるレポート
 
 この記事では、Cloudyn ポータルに含まれている Cloudyn レポートの目的について説明します。 また、レポートを効果的に使用する方法についても説明します。 ほとんどのレポートは、直感的で、統一感のある外観になっています。 あるレポートで実行できるほとんどのアクションは、他のレポートでも行うことができます。 カスタマイズして保存する方法や、レポートをスケジュールする方法など、Cloudyn レポートの全体的な使用方法については、「[コスト レポートについて](understanding-cost-reports.md)」を参照してください。
 
@@ -59,11 +59,11 @@ Cloudyn のダッシュボードには、レポートの高レベルのビュー
 
 ## <a name="budget-information-in-reports"></a>レポートの予算情報
 
-多くの Cloudyn レポートでは、予算を手動で作成した後に、予算情報が表示されます。 したがって、予算を作成するまで予算情報はレポートに表示されません。 詳細については、「[予算設定](#budget-settings)」を参照してください。
+多くの Cloudyn レポートでは、予算を手動で作成した後に、予算情報が表示されます。 したがって、予算を作成するまで予算情報はレポートに表示されません。 詳細については、「[予算管理設定](#budget-management-settings)」を参照してください。
 
 ## <a name="reports-and-reporting-features"></a>レポートおよびレポート機能
 
-Clouydn には次のレポートおよびレポート機能があります。
+Cloudyn には次のレポートおよびレポート機能があります。
 
 ### <a name="cost-navigator-report"></a>コスト ナビゲーター レポート
 
@@ -208,7 +208,7 @@ _料金がエンティティに割り当てられているとき、ユーザー�
 
 Cost Allocation 360 を使用して、消費されたクラウド リソースにコストを割り当てるためのカスタムのコスト割り当てモデルを作成します。 多くのレポートでは、カスタムのコスト モデルで作成したカスタムのコスト モデルからの情報が表示されます。 一部のレポートでは、原価配賦を使用してカスタムのコスト モデルを作成した後にのみ情報が表示されます。
 
-カスタム コスト モデルを作成する方法の詳細については、「[チュートリアル: Cloudyn を使用したコスト管理](tutorial-manage-costs.md)」を参照してください。
+カスタム コスト モデルを作成する方法の詳細については、「[チュートリアル: Cloudyn を使用してコストを管理する](tutorial-manage-costs.md)」を参照してください。
 
 ### <a name="cost-vs-budget-over-time-report"></a>コストと予算の時系列比較のレポート
 

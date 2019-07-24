@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: b842a80762989c34ae278a397cc49c088ff77fb2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 00e226134039d29efd744290c4bc63abd50adc89
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525520"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697834"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Azure Import/Export サービスのログ ファイルの形式
 Microsoft Azure Import/Export サービスが、インポート ジョブまたはエクスポート ジョブの一部としてドライブでアクションを実行する場合、そのジョブに関連付けられているストレージ アカウントのブロック BLOB にログが書き込まれます。  
@@ -22,7 +22,7 @@ Import/Export サービスによって書き込まれるログは 2 種類あり
   
 -   エラー ログは、エラーが発生したときに常に生成されます。  
   
--   詳細ログは既定では無効になっていますが、[Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) または [Update Job Properties](/rest/api/storageimportexport/jobs#Jobs_Update) 操作で `EnableVerboseLog` プロパティを設定すると有効にできます。  
+-   詳細ログは既定では無効になっていますが、[Put Job](/rest/api/storageimportexport/jobs) または [Update Job Properties](/rest/api/storageimportexport/jobs) 操作で `EnableVerboseLog` プロパティを設定すると有効にできます。  
   
 ## <a name="log-file-location"></a>ログ ファイルの保存先  
 ログは、`Put Job` 操作で設定できる `ImportExportStatesPath` 設定で指定されるコンテナーまたは仮想ディレクトリでブロック BLOB に書き込まれます。 ログの書き込み先となる場所は、ジョブに認証を指定する方法と `ImportExportStatesPath` で指定される値と共によって異なります。 ジョブの認証はストレージ アカウント キーまたはコンテナーの SAS (共有アクセス署名) を通じて指定できます。  
@@ -38,7 +38,7 @@ Import/Export サービスによって書き込まれるログは 2 種類あり
 |コンテナー SAS|既定値|`waimportexport` という名前の仮想ディレクトリ。これは SAS で指定されたコンテナーの下にある既定の名前です。<br /><br /> たとえば、ジョブに指定された SAS が `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue` の場合、ログの場所は `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport` になります。|  
 |コンテナー SAS|ユーザーが指定した値|SAS で指定されたコンテナーの下にあるユーザーが指定した仮想ディレクトリ。<br /><br /> たとえば、ジョブに指定された SAS が `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue` で、指定された仮想ディレクトリの名前が `mylogblobs` の場合、ログの場所は `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs` になります。|  
   
-[Get Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) 操作を呼び出すことで、エラー ログと詳細ログの URL が取得できます。 ログは、ドライブの処理が完了すると利用できます。  
+[Get Job](/rest/api/storageimportexport/jobs) 操作を呼び出すことで、エラー ログと詳細ログの URL が取得できます。 ログは、ドライブの処理が完了すると利用できます。  
   
 ## <a name="log-file-format"></a>ログ ファイルの形式  
 両方のログの形式は同じで、ハード ドライブとお客様のアカウント間で BLOB をコピーする間に発生したイベントの XML の説明が格納される BLOB です。  
@@ -74,7 +74,7 @@ page-range-list ::=
 <PageRangeList>  
       [<PageRange Offset="page-range-offset" Length="page-range-length"   
        [Hash="md5-hash"] Status="page-range-status"/>]  
-      [<PageRange Offset="page-range-offset" Length="page-range-length"   
+      [<PageRange Offset="page-range-offset" Length="page-range-length"   
        [Hash="md5-hash"] Status="page-range-status"/>]  
 </PageRangeList>  
   
@@ -82,7 +82,7 @@ block-list ::=
 <BlockList>  
       [<Block Offset="block-offset" Length="block-length" [Id="block-id"]  
        [Hash="md5-hash"] Status="block-status"/>]  
-      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
+      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
        [Hash="md5-hash"] Status="block-status"/>]  
 </BlockList>  
   
@@ -110,9 +110,9 @@ properties-status ::=
 |`Blob`|入れ子になった XML 要素|BLOB を表します。|  
 |`Blob/BlobPath`|String|BLOB の URI。|  
 |`Blob/FilePath`|String|ドライブ上のファイルの相対パス。|  
-|`Blob/Snapshot`|Datetime|BLOB のスナップショット バージョン (エクスポート ジョブの場合のみ)。|  
+|`Blob/Snapshot`|DateTime|BLOB のスナップショット バージョン (エクスポート ジョブの場合のみ)。|  
 |`Blob/Length`|整数|BLOB の長さの合計 (単位: バイト)。|  
-|`Blob/LastModified`|Datetime|BLOB の最終変更日時 (エクスポート ジョブの場合のみ)。|  
+|`Blob/LastModified`|DateTime|BLOB の最終変更日時 (エクスポート ジョブの場合のみ)。|  
 |`Blob/ImportDisposition`|String|BLOB のインポート処理 (インポート ジョブの場合のみ)。|  
 |`Blob/ImportDisposition/@Status`|属性、String|インポート処理の状態です。|  
 |`PageRangeList`|入れ子になった XML 要素|ページ BLOB のページ範囲の一覧を表します。|  
@@ -142,7 +142,7 @@ properties-status ::=
 |`Properties/Path/@Hash`|属性、String|プロパティ ファイルの Base16 エンコード MD5 ハッシュ。|  
 |`Blob/Status`|String|BLOB の処理状態です。|  
   
-# <a name="drive-status-codes"></a>ドライブの状態コード  
+## <a name="drive-status-codes"></a>ドライブの状態コード  
 次の表は、ドライブの処理に関する状態コードを示します。  
   
 |状態コード|説明|  

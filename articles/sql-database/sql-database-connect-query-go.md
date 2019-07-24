@@ -11,37 +11,55 @@ author: David-Engel
 ms.author: v-daveng
 ms.reviewer: MightyPen
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: c270fef40b732f170add32ef52eeadc790d8cd83
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 02/12/2019
+ms.openlocfilehash: 0014dc0edde0eafc153b40eec06c6bd6dc8446b5
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913508"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447867"
 ---
-# <a name="quickstart-use-go-to-query-an-azure-sql-database"></a>クイック スタート: Go を使用して Azure SQL Database に照会する
+# <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>クイック スタート:Golang を使用して Azure SQL Database に照会する
 
-このクイックスタートでは、[Go](https://godoc.org/github.com/denisenkom/go-mssqldb) を使用して Azure SQL データベースに接続する方法を紹介します。 Transact-SQL ステートメントを使用してデータを照会および変更する方法についても説明します。
+このクイック スタートでは、[Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) プログラミング言語を使用して、Azure SQL Database に接続します。 その後、Transact-SQL ステートメントを実行して、データの照会と変更を行います。 [Golang](https://golang.org/) は、シンプルで信頼性と効率性の高いソフトウェアを簡単に構築できるオープン ソース プログラミング言語です。  
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、次の前提条件を満たしている必要があります。
+このチュートリアルを完了するには、次のものが必要です。
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+- Azure SQL Database。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
 
-- このクイック スタートに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](sql-database-get-started-portal-firewall.md)。
+  || 単一データベース | マネージド インスタンス |
+  |:--- |:--- |:---|
+  | Create| [ポータル](sql-database-single-database-get-started.md) | [ポータル](sql-database-managed-instance-get-started.md) |
+  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
+  | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|
+  |||[オンサイトからの接続](sql-database-managed-instance-configure-p2s.md)
+  |データを読み込む|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
+  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) の [BACPAC](sql-database-import.md) ファイルから Adventure Works を復元またはインポートする|
+  |||
 
-- ご使用のオペレーティング システムに対応した Go とそれに関連するソフトウェアをインストール済みであること。
+  > [!IMPORTANT]
+  > この記事のスクリプトは、Adventure Works データベースを使用するように記述されています。 マネージド インスタンスの場合は、Adventure Works データベースをインスタンス データベースにインポートするか、Wide World Importers データベースを使用するようにこの記事のスクリプトを修正する必要があります。
 
-    - **MacOS**: Homebrew と GoLang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/) を参照してください。
-    - **Ubuntu**: - GoLang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/) を参照してください。
-    - **Windows**: - GoLang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/) を参照してください。    
+- インストールされているオペレーティング システムに応じた、以下の Golang と関連ソフトウェア。
 
-## <a name="sql-server-connection-information"></a>SQL Server の接続情報
+  - **MacOS**: Homebrew と Golang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/) を参照してください。
+  - **Ubuntu**:Golang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/) を参照してください。
+  - **Windows**:Golang をインストールします。 [手順 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/) を参照してください。
 
-[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
+## <a name="get-sql-server-connection-information"></a>SQL サーバーの接続情報を取得する
 
-## <a name="create-go-project-and-dependencies"></a>Go プロジェクトと依存関係の作成
+Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
+
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+
+2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
+
+3. **[概要]** ページで、単一データベースの場合は **[サーバー名]** の横の完全修飾サーバー名を確認し、マネージド インスタンスの場合は **[ホスト]** の横の完全修飾サーバー名を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。
+
+## <a name="create-golang-project-and-dependencies"></a>Golang プロジェクトと依存関係の作成
 
 1. ターミナルから、**SqlServerSample** という名前の新しいプロジェクト フォルダーを作成します。 
 
@@ -49,7 +67,7 @@ ms.locfileid: "50913508"
    mkdir SqlServerSample
    ```
 
-2. ディレクトリを **SqlServerSample** に変更し、Go の SQL Server ドライバーを取得してインストールします。
+2. **SqlServerSample** に移動し、Go の SQL Server ドライバーをインストールします。
 
    ```bash
    cd SqlServerSample
@@ -59,7 +77,7 @@ ms.locfileid: "50913508"
 
 ## <a name="create-sample-data"></a>サンプル データの作成
 
-1. 任意のテキスト エディターを使用して、**SqlServerSample**フォルダーに **CreateTestData.sql** という名前のファイルを作成します。 その中に次の T-SQL コードをコピーして貼り付けます。 このコードは、スキーマとテーブルを作成し、数行を挿入します。
+1. テキスト エディターで、**SqlServerSample** フォルダーに **CreateTestData.sql** という名前のファイルを作成します。 そのファイルに、次の T-SQL コードを貼り付けます。このコードは、スキーマとテーブルを作成し、数行を挿入します。
 
    ```sql
    CREATE SCHEMA TestSchema;
@@ -82,17 +100,17 @@ ms.locfileid: "50913508"
    GO
    ```
 
-2. Sqlcmd を使用してデータベースに接続し、SQL スクリプトを実行してスキーマを作成し、数行を挿入します。 サーバー、データベース、ユーザー名、パスワードを適切な値に置き換えてください。
+2. `sqlcmd` を使用してデータベースに接続し、新しく作成した SQL スクリプトを実行します。 サーバー、データベース、ユーザー名、パスワードを適切な値に置き換えてください。
 
    ```bash
-   sqlcmd -S your_server.database.windows.net -U your_username -P your_password -d your_database -i ./CreateTestData.sql
+   sqlcmd -S <your_server>.database.windows.net -U <your_username> -P <your_password> -d <your_database> -i ./CreateTestData.sql
    ```
 
 ## <a name="insert-code-to-query-sql-database"></a>SQL Database に照会するコードの挿入
 
 1. **sample.go**という名前のファイルを **SqlServerSample** フォルダーに作成します。
 
-2. そのファイルを開いて、その内容を次のコードに置き換えます。 適切なサーバー、データベース、ユーザー名、パスワードを追加します。 この例では、GoLang Context メソッドを使用して、データベース サーバーにアクティブな接続があることを確認します。
+2. そのファイルに、以下のコードを貼り付けます。 サーバー、データベース、ユーザー名、およびパスワードの値を追加します。 この例では、Golang [コンテキスト メソッド](https://golang.org/pkg/context/)を使用して、アクティブなデータベース サーバー接続があることを確認します。
 
    ```go
    package main
@@ -108,11 +126,11 @@ ms.locfileid: "50913508"
 
    var db *sql.DB
 
-   var server = "your_server.database.windows.net"
+   var server = "<your_server.database.windows.net>"
    var port = 1433
-   var user = "your_username"
-   var password = "your_password"
-   var database = "your_database"
+   var user = "<your_username>"
+   var password = "<your_password>"
+   var database = "<your_database>"
 
    func main() {
        // Build connection string
@@ -311,6 +329,6 @@ ms.locfileid: "50913508"
 ## <a name="next-steps"></a>次の手順
 
 - [最初の Azure SQL Database の設計](sql-database-design-first-database.md)
-- [Microsoft SQL Server 用 Go ドライバー](https://github.com/denisenkom/go-mssqldb)
+- [Microsoft SQL Server 用 Golang ドライバー](https://github.com/denisenkom/go-mssqldb)
 - [問題の報告と質問](https://github.com/denisenkom/go-mssqldb/issues)
 

@@ -2,19 +2,19 @@
 title: Terraform と HCL を使用して VM クラスターを作成する
 description: Azure で Terraform と HashiCorp Configuration Language (HCL) を使ってロード バランサーを備えた Linux 仮想マシン クラスターを作成する方法について説明します
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: Terraform、DevOps、仮想マシン、ネットワーク、モジュール
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/13/2017
-ms.openlocfilehash: fffaf275a98791885b87ee8ffdc275e911b26341
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: a0358859d6f806a94c529bae2eb6fa9d1ab82963
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667602"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077838"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Terraform と HCL を使用して VM クラスターを作成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "43667602"
 ## <a name="1-set-up-azure-authentication"></a>1.Azure 認証をセットアップする
 
 > [!NOTE]
-> [Terraform 環境変数を使う](/azure/virtual-machines/linux/terraform-install-configure#set-environment-variables)場合、または [Azure Cloud Shell](terraform-cloud-shell.md) でこのチュートリアルを実行する場合は、このセクションを省略します。
+> [Terraform 環境変数を使う](/azure/virtual-machines/linux/terraform-install-configure)場合、または [Azure Cloud Shell](terraform-cloud-shell.md) でこのチュートリアルを実行する場合は、このセクションを省略します。
 
 このセクションでは、Azure のサービス プリンシパルと、セキュリティ プリンシパルからの資格情報を含む 2 つの Terraform 構成ファイルを生成します。
 
@@ -46,30 +46,30 @@ ms.locfileid: "43667602"
 
 5. 変数宣言ファイルに次のコードをコピーします。
 
-  ```tf
-  variable subscription_id {}
-  variable tenant_id {}
-  variable client_id {}
-  variable client_secret {}
+   ```tf
+   variable subscription_id {}
+   variable tenant_id {}
+   variable client_id {}
+   variable client_secret {}
   
-  provider "azurerm" {
+   provider "azurerm" {
       subscription_id = "${var.subscription_id}"
       tenant_id = "${var.tenant_id}"
       client_id = "${var.client_id}"
       client_secret = "${var.client_secret}"
-  }
-  ```
+   }
+   ```
 
 6. Terraform の変数の値を含む新しいファイルを作成します。 Terraform は現在のディレクトリにある `terraform.tfvars` という名前のファイル (または `*.auto.tfvars` というパターンのファイル) を自動的に読み込むので、Terraform 変数ファイルの名前は `terraform.tfvars` にするのが一般的です。 
 
-7. 変数ファイルに次のコードをコピーします。 プレースホルダーは次のように置き換えます。`subscription_id` には、`az account set` を実行するときに指定した Azure サブスクリプション ID を使います。 `tenant_id` には、`az ad sp create-for-rbac` から返された `tenant` の値を使います。 `client_id` には、`az ad sp create-for-rbac` から返された `appId` の値を使います。 `client_secret` には、`az ad sp create-for-rbac` から返された `password` の値を使います。
+7. 変数ファイルに次のコードをコピーします。 次のように、必ずプレースホルダーを置き換えます。`subscription_id` には、`az account set` の実行時に指定した Azure サブスクリプション ID を使用します。 `tenant_id` には、`az ad sp create-for-rbac` から返された `tenant` の値を使います。 `client_id` には、`az ad sp create-for-rbac` から返された `appId` の値を使います。 `client_secret` には、`az ad sp create-for-rbac` から返された `password` の値を使います。
 
-  ```tf
-  subscription_id = "<azure-subscription-id>"
-  tenant_id = "<tenant-returned-from-creating-a-service-principal>"
-  client_id = "<appId-returned-from-creating-a-service-principal>"
-  client_secret = "<password-returned-from-creating-a-service-principal>"
-  ```
+   ```tf
+   subscription_id = "<azure-subscription-id>"
+   tenant_id = "<tenant-returned-from-creating-a-service-principal>"
+   client_id = "<appId-returned-from-creating-a-service-principal>"
+   client_secret = "<password-returned-from-creating-a-service-principal>"
+   ```
 
 ## <a name="2-create-a-terraform-configuration-file"></a>2.Terraform 構成ファイルを作成する
 
@@ -79,34 +79,34 @@ ms.locfileid: "43667602"
 
 2. 次のサンプル リソース定義を、新しく作成した `main.tf` ファイルにコピーします。 
 
-  ```tf
-  resource "azurerm_resource_group" "test" {
+   ```tf
+   resource "azurerm_resource_group" "test" {
     name     = "acctestrg"
     location = "West US 2"
-  }
+   }
 
-  resource "azurerm_virtual_network" "test" {
+   resource "azurerm_virtual_network" "test" {
     name                = "acctvn"
     address_space       = ["10.0.0.0/16"]
     location            = "${azurerm_resource_group.test.location}"
     resource_group_name = "${azurerm_resource_group.test.name}"
-  }
+   }
 
-  resource "azurerm_subnet" "test" {
+   resource "azurerm_subnet" "test" {
     name                 = "acctsub"
     resource_group_name  = "${azurerm_resource_group.test.name}"
     virtual_network_name = "${azurerm_virtual_network.test.name}"
     address_prefix       = "10.0.2.0/24"
-  }
+   }
 
-  resource "azurerm_public_ip" "test" {
+   resource "azurerm_public_ip" "test" {
     name                         = "publicIPForLB"
     location                     = "${azurerm_resource_group.test.location}"
     resource_group_name          = "${azurerm_resource_group.test.name}"
     public_ip_address_allocation = "static"
-  }
+   }
 
-  resource "azurerm_lb" "test" {
+   resource "azurerm_lb" "test" {
     name                = "loadBalancer"
     location            = "${azurerm_resource_group.test.location}"
     resource_group_name = "${azurerm_resource_group.test.name}"
@@ -115,15 +115,15 @@ ms.locfileid: "43667602"
       name                 = "publicIPAddress"
       public_ip_address_id = "${azurerm_public_ip.test.id}"
     }
-  }
+   }
 
-  resource "azurerm_lb_backend_address_pool" "test" {
+   resource "azurerm_lb_backend_address_pool" "test" {
     resource_group_name = "${azurerm_resource_group.test.name}"
     loadbalancer_id     = "${azurerm_lb.test.id}"
     name                = "BackEndAddressPool"
-  }
+   }
 
-  resource "azurerm_network_interface" "test" {
+   resource "azurerm_network_interface" "test" {
     count               = 2
     name                = "acctni${count.index}"
     location            = "${azurerm_resource_group.test.location}"
@@ -135,9 +135,9 @@ ms.locfileid: "43667602"
       private_ip_address_allocation = "dynamic"
       load_balancer_backend_address_pools_ids = ["${azurerm_lb_backend_address_pool.test.id}"]
     }
-  }
+   }
 
-  resource "azurerm_managed_disk" "test" {
+   resource "azurerm_managed_disk" "test" {
     count                = 2
     name                 = "datadisk_existing_${count.index}"
     location             = "${azurerm_resource_group.test.location}"
@@ -145,18 +145,18 @@ ms.locfileid: "43667602"
     storage_account_type = "Standard_LRS"
     create_option        = "Empty"
     disk_size_gb         = "1023"
-  }
+   }
 
-  resource "azurerm_availability_set" "avset" {
+   resource "azurerm_availability_set" "avset" {
     name                         = "avset"
     location                     = "${azurerm_resource_group.test.location}"
     resource_group_name          = "${azurerm_resource_group.test.name}"
     platform_fault_domain_count  = 2
     platform_update_domain_count = 2
     managed                      = true
-  }
+   }
 
-  resource "azurerm_virtual_machine" "test" {
+   resource "azurerm_virtual_machine" "test" {
     count                 = 2
     name                  = "acctvm${count.index}"
     location              = "${azurerm_resource_group.test.location}"
@@ -215,8 +215,8 @@ ms.locfileid: "43667602"
     tags {
       environment = "staging"
     }
-  }
-  ```
+   }
+   ```
 
 ## <a name="3-initialize-terraform"></a>手順 3.Terraform を初期化する 
 

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Academic Knowledge API のグラフ検索メソッドを使用して、特定のグラフ パターンに基づいてアカデミック エンティティのセットを返します。
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 83f29106d72f564f894c968102b703ab6bb5d8c2
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 5d47b938560fb1bd15adfe1a1c2d35b7359d47a3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902385"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57977413"
 ---
 # <a name="graph-search-method"></a>グラフ検索メソッド
 
@@ -29,9 +29,10 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?
 <br>
 
 ## <a name="request-parameters"></a>要求パラメーター  
+
 Name     | 値 | 必須  | 説明
 -----------|-----------|---------|--------
-**mode**       | テキスト文字列 | [はい] | 使用するモードの名前。 値は *json* または *lambda* です。
+**mode**       | テキスト文字列 | はい | 使用するモードの名前。 値は *json* または *lambda* です。
 
 グラフ検索メソッドは、HTTP POST 要求を介して呼び出す必要があります。 post 要求には、コンテンツ タイプ ヘッダー **application/json** が含まれている必要があります。
 
@@ -45,7 +46,9 @@ Name     | 値 | 必須  | 説明
 "*ラムダ*" 検索では、POST の本文はプレーン テキスト文字列です。 POST の本文は 1 つの C# ステートメントである LIKQ ラムダ クエリ文字列です ("*ラムダ*" 検索については、[クエリ文字列の仕様](LambdaSearchSyntax.md)に関する記事をご覧ください)。 
 
 <br>
+
 ## <a name="response-json"></a>応答 (JSON)
+
 Name | 説明
 -------|-----   
 **results** | クエリ式に一致する 0 個以上のエンティティの配列。 各エンティティには、要求された属性の値が含まれています。 このフィールドは、要求が正常に処理された場合に存在します。
@@ -55,6 +58,7 @@ Name | 説明
 クエリを "_800 ミリ秒_" 以内に処理できない場合は、"_タイムアウト_" エラーが返されます。 
 
 <br>
+
 #### <a name="example"></a>例:
 
 ##### <a name="json-search"></a>JSON 検索

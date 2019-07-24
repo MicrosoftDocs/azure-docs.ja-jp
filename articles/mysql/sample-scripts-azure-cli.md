@@ -1,22 +1,19 @@
 ---
 title: Azure Database for MySQL 用 Azure CLI サンプル
 description: この記事では、Azure Database for MySQL を操作する Azure CLI サンプル コードを紹介しています。
-services: mysql
-author: jasonwhowell
-ms.author: jasonh
-manager: kfile
-editor: jasonwhowell
+author: ajlam
+ms.author: andrela
 ms.service: mysql
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: f60b622dc2821711f390e882e34f23712109511e
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: c5ecaf5ba893cce38327d38236d593e06b31abb9
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265930"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350940"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mysql"></a>Azure Database for MySQL 用 Azure CLI サンプル 
 次の表には、Azure Database for MySQL の Azure CLI スクリプトのサンプルへのリンクが含まれています。

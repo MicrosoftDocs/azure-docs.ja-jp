@@ -1,149 +1,144 @@
 ---
-title: 'チュートリアル: Azure Active Directory と SAML SSO for Bitbucket by resolution GmbH の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と SAML SSO for Bitbucket by resolution GmbH の統合 | Microsoft Docs
 description: Azure Active Directory と SAML SSO for Bitbucket by resolution GmbH の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: joflore
+manager: daveba
+ms.reviewer: barbkess
 ms.assetid: fc947df1-f24e-43ae-9a34-518293583d69
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/04/2017
+ms.topic: tutorial
+ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: c91f62aa2f47cfab7de22def631a7149ab37ba46
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: eaa00690cab2cf8bc1ef7c1c3ab279a9f59fcabf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434977"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880468"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>チュートリアル: Azure Active Directory と SAML SSO for Bitbucket by resolution GmbH の統合
+# <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>チュートリアル:Azure Active Directory と SAML SSO for Bitbucket by resolution GmbH の統合
 
 このチュートリアルでは、SAML SSO for Bitbucket by resolution GmbH と Azure Active Directory (Azure AD) を統合する方法について説明します。
-
 SAML SSO for Bitbucket by resolution GmbH と Azure AD の統合には、次の利点があります。
 
-- Azure AD で、SAML SSO for Bitbucket by resolution GmbH にアクセスするユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで SAML SSO for Bitbucket by resolution GmbH に自動的にサインオン (シングル サインオン) するように設定できます。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* Azure AD で、SAML SSO for Bitbucket by resolution GmbH にアクセスするユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントで SAML SSO for Bitbucket by resolution GmbH に自動的にサインイン (シングル サインオン) するように設定できます。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure AD と SAML SSO for Bitbucket by resolution GmbH の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション
-- SAML SSO for Bitbucket by resolution GmbH でのシングル サインオンが有効なサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
+* SAML SSO for Bitbucket by resolution GmbH でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの SAML SSO for Bitbucket by resolution GmbH の追加
-1. Azure AD シングル サインオンの構成とテスト
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+
+* SAML SSO for Bitbucket by resolution GmbH では、**SP と IDP** によって開始される SSO がサポートされます
+* SAML SSO for Bitbucket by resolution GmbH では、**Just In Time** ユーザー プロビジョニングがサポートされます
+
 
 ## <a name="adding-saml-sso-for-bitbucket-by-resolution-gmbh-from-the-gallery"></a>ギャラリーからの SAML SSO for Bitbucket by resolution GmbH の追加
+
 Azure AD への SAML SSO for Bitbucket by resolution GmbH の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に SAML SSO for Bitbucket by resolution GmbH を追加する必要があります。
 
 **ギャラリーから SAML SSO for Bitbucket by resolution GmbH を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure Active Directory のボタン][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード][2]
-    
-1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-    ![[新しいアプリケーション] ボタン][3]
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-1. [検索] ボックスに「**SAML SSO for Bitbucket by resolution GmbH**」と入力し、結果パネルで **[SAML SSO for Bitbucket by resolution GmbH]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-    ![結果一覧の SAML SSO for Bitbucket by resolution GmbH](./media/bitbucket-tutorial/tutorial_bitbucket_addfromgallery.png)
+4. [検索] ボックスに「**SAML SSO for Bitbucket by resolution GmbH**」と入力し、結果パネルで **[SAML SSO for Bitbucket by resolution GmbH]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+
+     ![結果一覧の SAML SSO for Bitbucket by resolution GmbH](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、SAML SSO for Bitbucket by resolution GmbH で Azure AD のシングル サインオンを構成し、テストします。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する SAML SSO for Bitbucket by resolution GmbH ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと SAML SSO for Bitbucket by resolution GmbH の関連ユーザーの間で、リンク関係が確立されている必要があります。
-
-SAML SSO for Bitbucket by resolution GmbH で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユーザー名\)** の値として割り当ててリンク関係を確立します。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、SAML SSO for Bitbucket by resolution GmbH で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと SAML SSO for Bitbucket by resolution GmbH 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 SAML SSO for Bitbucket by resolution GmbH で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[SAML SSO for Bitbucket by resolution GmbH テスト ユーザーの作成](#create-a-saml-sso-for-bitbucket-by-resolution-gmbh-test-user)** - SAML SSO for Bitbucket by resolution GmbH で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+2. **[SAML SSO for Bitbucket by resolution GmbH のシングル サインオンの構成](#configure-saml-sso-for-bitbucket-by-resolution-gmbh-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[SAML SSO for Bitbucket by resolution GmbH テスト ユーザーの作成](#create-saml-sso-for-bitbucket-by-resolution-gmbh-test-user)** - SAML SSO for Bitbucket by resolution GmbH で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にし、SAML SSO for Bitbucket by resolution GmbH アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-**SAML SSO for Bitbucket by resolution GmbH で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+SAML SSO for Bitbucket by resolution GmbH で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. Azure Portal の **SAML SSO for Bitbucket by resolution GmbH** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **SAML SSO for Bitbucket by resolution GmbH** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![シングル サインオン構成のリンク][4]
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![[シングル サインオン] ダイアログ ボックス](./media/bitbucket-tutorial/tutorial_bitbucket_samlbase.png)
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-1. **[SAML SSO for Bitbucket by resolution GmbH のドメインと URL]** セクションで、IDP 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-    ![[SAML SSO for Bitbucket by resolution GmbH のドメインと URL] のシングル サインオン情報](./media/bitbucket-tutorial/tutorial_bitbucket_url.png)
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
+
+4. **[基本的な SAML 構成]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+
+    ![[SAML SSO for Bitbucket by resolution GmbH のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` のパターンを使用して URL を入力します。
+    b. **[応答 URL]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` のパターンを使用して URL を入力します
 
-1. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
+    c. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[SAML SSO for Bitbucket by resolution GmbH のドメインと URL] のシングル サインオン情報](./media/bitbucket-tutorial/tutorial_bitbucket_url1.png)
+    ![[SAML SSO for Bitbucket by resolution GmbH のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
-    **[サインオン URL]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` のパターンを使用して URL を入力します。
-     
-    > [!NOTE] 
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[SAML SSO for Bitbucket by resolution GmbH クライアント サポート チーム](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bitbucket/server/support)に問い合わせます。 
+    **[サインオン URL]** ボックスに、`https://<server-base-url>/plugins/servlet/samlsso` という形式で URL を入力します。
 
-1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+    > [!NOTE]
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[SAML SSO for Bitbucket by resolution GmbH クライアント サポート チーム](https://marketplace.atlassian.com/apps/1217045/saml-single-sign-on-sso-bitbucket?hosting=server&tab=support)に問い合わせます。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-    ![証明書のダウンロードのリンク](./media/bitbucket-tutorial/tutorial_bitbucket_certificate.png) 
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
-1. **[保存]** ボタンをクリックします。
+    ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/bitbucket-tutorial/tutorial_general_400.png)
-    
+### <a name="configure-saml-sso-for-bitbucket-by-resolution-gmbh-single-sign-on"></a>SAML SSO for Bitbucket by resolution GmbH のシングル サインオンの構成
+
 1. SAML SSO for Bitbucket by resolution GmbH 企業サイトに管理者としてサインオンします。
 
-1. メイン ツールバーの右側で、**[設定]** をクリックします。
+2. メイン ツールバーの右側で、**[設定]** をクリックします。
 
-1. [ACCOUNTS]\(アカウント\) セクションに移動し、メニュー バーの **[SAML SingleSignOn]** をクリックします。
+3. [ACCOUNTS]\(アカウント\) セクションに移動し、メニュー バーの **[SAML SingleSignOn]** をクリックします。
 
     ![Samlsingle](./media/bitbucket-tutorial/tutorial_bitbucket_samlsingle.png)
 
-1. **[SAML SingleSignOn Plugin Configuration]\(SAML SingleSignOn プラグインの構成\)** ページで、**[Add idp]\(IDP の追加\)** をクリックします。 
+4. **[SAML SingleSignOn Plugin Configuration]\(SAML SingleSignOn プラグインの構成\)** ページで、**[Add idp]\(IDP の追加\)** をクリックします。 
 
     ![IDP の追加](./media/bitbucket-tutorial/tutorial_bitbucket_addidp.png)
 
-1. **[Choose your SAML Identity Provider]\(SAML ID プロバイダーの選択\)** ページで、次の手順を実行します。
+5. **[Choose your SAML Identity Provider]\(SAML ID プロバイダーの選択\)** ページで、次の手順を実行します。
 
     ![ID プロバイダー](./media/bitbucket-tutorial/tutorial_bitbucket_identityprovider.png)
 
@@ -155,114 +150,86 @@ SAML SSO for Bitbucket by resolution GmbH で Azure AD のシングル サイン
 
     d. **[次へ]** をクリックします。
 
-1. **[Identity provider configuration]\(ID プロバイダーの構成\)** ページで、**[次へ]** をクリックします。
+6. **[Identity provider configuration]\(ID プロバイダーの構成\)** ページで、**[次へ]** をクリックします。
 
     ![ID の構成](./media/bitbucket-tutorial/tutorial_bitbucket_identityconfig.png)
 
-1.  **[Import SAML IdP Metadata]\(SAML IDP メタデータのインポート\)** ページで、**[ファイルの読み込み]** をクリックして、Azure Portal からダウンロードした**メタデータ XML** ファイルをアップロードします。
+7.  **[Import SAML IdP Metadata]\(SAML IDP メタデータのインポート\)** ページで、**[ファイルの読み込み]** をクリックして、Azure Portal からダウンロードした**メタデータ XML** ファイルをアップロードします。
 
     ![IDP メタデータ](./media/bitbucket-tutorial/tutorial_bitbucket_idpmetadata.png)
     
-1. **[次へ]** をクリックします。
+8. **[次へ]** をクリックします。
 
-1. **[Save settings]\(設定の保存\)** をクリックします。
+9. **[Save settings]\(設定の保存\)** をクリックします。
 
     ![保存](./media/bitbucket-tutorial/tutorial_bitbucket_save.png)
 
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-   ![Azure AD のテスト ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure Active Directory のボタン](./media/bitbucket-tutorial/create_aaduser_01.png)
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
-1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/bitbucket-tutorial/create_aaduser_02.png)
+    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    たとえば、BrittaSimon@contoso.com のように指定します。
 
-    ![[追加] ボタン](./media/bitbucket-tutorial/create_aaduser_03.png)
-
-1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
-
-    ![[ユーザー] ダイアログ ボックス](./media/bitbucket-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
     d. **Create** をクリックしてください。
- 
-### <a name="create-a-saml-sso-for-bitbucket-by-resolution-gmbh-test-user"></a>SAML SSO for Bitbucket by resolution GmbH のテスト ユーザーの作成
-
-このセクションの目的は、SAML SSO for Bitbucket by resolution GmbH で Britta Simon というユーザーを作成することです。 SAML SSO for Bitbucket by resolution GmbH では、Just-In-Time プロビジョニングがサポートされており、ユーザーを手動で作成することもできます。必要に応じて [SAML SSO for Bitbucket by resolution GmbH クライアント サポート チーム](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bitbucket/server/support)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に SAML SSO for Bitbucket by resolution GmbH へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200] 
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[SAML SSO for Bitbucket by resolution GmbH]** を選択します。
 
-**Britta Simon を SAML SSO for Bitbucket by resolution GmbH に割り当てるには、次の手順に従います。**
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+2. アプリケーションの一覧で、「**SAML SSO for Bitbucket by resolution GmbH**」と入力し、選択します。
 
-    ![ユーザーの割り当て][201] 
+    ![アプリケーションの一覧の SAML SSO for Bitbucket by resolution GmbH のリンク](common/all-applications.png)
 
-1. アプリケーションの一覧で **[SAML SSO for Bitbucket by resolution GmbH]** を選択します。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![アプリケーションの一覧の SAML SSO for Bitbucket by resolution GmbH のリンク](./media/bitbucket-tutorial/tutorial_bitbucket_app.png)  
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[ユーザーとグループ] リンク][202]
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-    ![[割り当ての追加] ウィンドウ][203]
+6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
 
-1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+### <a name="create-saml-sso-for-bitbucket-by-resolution-gmbh-test-user"></a>SAML SSO for Bitbucket by resolution GmbH のテスト ユーザーの作成
 
-1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+このセクションの目的は、SAML SSO for Bitbucket by resolution GmbH で Britta Simon というユーザーを作成することです。 SAML SSO for Bitbucket by resolution GmbH では、Just-In-Time プロビジョニングがサポートされており、ユーザーを手動で作成することもできます。必要に応じて [SAML SSO for Bitbucket by resolution GmbH クライアント サポート チーム](https://marketplace.atlassian.com/plugins/com.resolution.atlasplugins.samlsso-bitbucket/server/support)にお問い合わせください。
+
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [SAML SSO for Bitbucket by resolution GmbH] タイルをクリックすると、SAML SSO for Bitbucket by resolution GmbH アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルで [SAML SSO for Bitbucket by resolution GmbH] タイルをクリックすると、SSO を設定した SAML SSO for Bitbucket by resolution GmbH に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/bitbucket-tutorial/tutorial_general_01.png
-[2]: ./media/bitbucket-tutorial/tutorial_general_02.png
-[3]: ./media/bitbucket-tutorial/tutorial_general_03.png
-[4]: ./media/bitbucket-tutorial/tutorial_general_04.png
-
-[100]: ./media/bitbucket-tutorial/tutorial_general_100.png
-
-[200]: ./media/bitbucket-tutorial/tutorial_general_200.png
-[201]: ./media/bitbucket-tutorial/tutorial_general_201.png
-[202]: ./media/bitbucket-tutorial/tutorial_general_202.png
-[203]: ./media/bitbucket-tutorial/tutorial_general_203.png
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

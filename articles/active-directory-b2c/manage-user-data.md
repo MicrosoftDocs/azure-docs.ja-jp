@@ -3,29 +3,29 @@ title: Azure Active Directory B2C でのユーザー データの管理 | Micros
 description: Azure AD B2C 内のユーザー データを削除またはエクスポートする方法を説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/06/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 49e9efa537ad1f2a1d7f06dd7f8a68a409c7d4e0
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.subservice: B2C
+ms.openlocfilehash: 62846fe744e7295f58902481400ce91770c916da
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42144623"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798109"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー データの管理
 
- この記事では、[Azure Active Directory Graph API](https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog) によって提供される操作を使用して、Azure Active Directory (Azure AD) B2C 内のユーザー データを管理する方法について説明します。 ユーザー データの管理には、監査ログからのデータの削除またはエクスポートがあります。
+ この記事では、[Azure Active Directory Graph API](/previous-versions/azure/ad/graph/api/api-catalog) によって提供される操作を使用して、Azure Active Directory (Azure AD) B2C 内のユーザー データを管理する方法について説明します。 ユーザー データの管理には、監査ログからのデータの削除またはエクスポートがあります。
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="delete-user-data"></a>ユーザー データを削除する
 
-ユーザー データは、Azure AD B2C ディレクトリおよび監査ログに格納されます。 すべてのユーザー監査データは、30 日間、Azure AD B2C に保持されます。 その 30 日の期間内にユーザー データを削除する場合は、[ユーザーの削除](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#DeleteUser)操作を使用できます。 データが存在する Azure AD B2C テナントごとに、DELETE 操作を行う必要があります。 
+ユーザー データは、Azure AD B2C ディレクトリおよび監査ログに格納されます。 すべてのユーザー監査データは、30 日間、Azure AD B2C に保持されます。 その 30 日の期間内にユーザー データを削除する場合は、[ユーザーの削除](/previous-versions/azure/ad/graph/api/users-operations#DeleteUser)操作を使用できます。 データが存在する Azure AD B2C テナントごとに、DELETE 操作を行う必要があります。 
 
 Azure AD B2C 内のすべてのユーザーには、オブジェクト ID が割り当てられています。 オブジェクト ID は、Azure AD B2C 内のユーザー データの削除に使用する明確な識別子を提供します。 アーキテクチャによっては、オブジェクト ID は、他のサービス (財務データベース、マーケティング データベース、顧客関係管理データベースなど) との間の便利な相関関係識別子になる可能性があります。 
 
@@ -46,8 +46,8 @@ Azure AD B2C から顧客データをエクスポートするプロセスは、�
 
 Azure AD B2C のユーザー データは以下に限定されます。
 
-- **Azure Active Directory に格納されたデータ**: オブジェクト ID または任意のサインイン名 (メール アドレスやユーザー名など) を使用して、Azure AD B2C の認証ユーザー体験でデータを取得できます。 
-- **ユーザー固有の監査イベント レポート**: オブジェクト ID を使用して、データにインデックスを付けることができます。
+- **Azure Active Directory に格納されたデータ**:オブジェクト ID または任意のサインイン名 (メール アドレスやユーザー名など) を使用して、Azure AD B2C の認証ユーザー体験でデータを取得できます。 
+- **ユーザー固有の監査イベント レポート**:オブジェクト ID を使用して、データにインデックスを付けることができます。
 
 エクスポート データ フローの次の例において、アプリケーションによって実行されると説明されている手順は、ディレクトリの管理者ロールを持つユーザーまたはバックエンド プロセスが実行することもできます。
 

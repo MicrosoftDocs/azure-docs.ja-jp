@@ -7,13 +7,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/11/2018
-ms.openlocfilehash: 2b2dc3ba78cfa682c4a326754bdddfa9bc81f836
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: b5ed614fdd378b36d8f95fc90ce7ff98d63ef31a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49346406"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526406"
 ---
 # <a name="troubleshoot-input-connections"></a>入力接続のトラブルシューティング
 
@@ -35,10 +36,12 @@ Stream Analytics ジョブの入力ストリームに間違った形式のメッ
  
 Stream Analytics ジョブは、入力から間違った形式のメッセージを受信すると、メッセージを削除し、警告で通知します。 警告記号は、Stream Analytics ジョブの **[入力]** タイルの上に表示されます。 この警告記号は、ジョブが実行状態である限り存在します。
 
-![Azure Stream Analytics の入力タイル](media/stream-analytics-malformed-events/inputs_tile.png)
+![Azure Stream Analytics の入力タイル](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
 診断ログを有効にして、警告の詳細を参照します。 間違った形式の入力イベントの場合、実行ログには次のようなメッセージを持つエントリが含まれます。 
-<code>Could not deserialize the input event(s) from resource <blob URI> as json.</code>
+```
+Could not deserialize the input event(s) from resource <blob URI> as json.
+```
 
 ### <a name="what-caused-the-deserialization-error"></a>逆シリアル化エラーの原因
 次の手順を実行して入力イベントを詳しく分析し、何が逆シリアル化エラーの原因となったのかを明確に理解できます。 その後、イベント ソースを解決して、この問題が二度と発生しないように適切な形式でイベントを生成できます。
@@ -47,8 +50,8 @@ Stream Analytics ジョブは、入力から間違った形式のメッセージ
 
 2. [入力の詳細] タイルに、警告の一覧が各問題に関する詳細と共に表示されます。 次の警告メッセージの例には、間違った形式の JSON データが存在するパーティション、オフセット、シーケンス番号が含まれています。 
 
-   ![オフセットを含む警告メッセージ](media/stream-analytics-malformed-events/warning_message_with_offset.png)
-
+   ![Stream Analytics のオフセットを含む警告メッセージ](media/stream-analytics-malformed-events/warning-message-with-offset.png)
+   
 3. 間違った形式の JSON データを見つけるには、[GitHub サンプル リポジトリ](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH)から入手できる CheckMalformedEvents.cs コードを実行します。 このコードは、パーティション ID とオフセットを読み取り、そのオフセットにあるデータを出力します。 
 
 4. データの読み取り後、シリアル化形式を分析し、修正できます。
@@ -89,9 +92,9 @@ Event Hubs インスタンスに新しいコンシューマー グループを�
 
 パーティションあたりのリーダーの数が Event Hubs の上限である 5 つを上回るシナリオとしては、次のものがあります。
 
-* 複数の SELECT ステートメント: **同じ**イベント ハブ入力を参照する複数の SELECT ステートメントを使用する場合、各 SELECT ステートメントによって新しいレシーバーが作成されます。
-* UNION: UNION を使用する場合、**同じ**イベント ハブとコンシューマー グループを参照する複数の入力を使用できます。
-* SELF JOIN: SELF JOIN 操作を使用する場合、**同じ**イベント ハブを複数回参照できます。
+* 複数の SELECT ステートメント:**同じ**イベント ハブ入力を参照する複数の SELECT ステートメントを使用する場合、各 SELECT ステートメントによって新しいレシーバーが作成されます。
+* UNION:UNION を使用する場合、**同じ**イベント ハブとコンシューマー グループを参照する複数の入力を使用できます。
+* SELF JOIN:SELF JOIN 操作を使用する場合、**同じ**イベント ハブを複数回参照できます。
 
 次のベスト プラクティスは、パーティションあたりのリーダーの数が 5 つという Event Hubs の制限を超えるシナリオに対処するのに役立ちます。
 
@@ -101,7 +104,7 @@ WITH 句を使用すると、クエリ内で FROM によって参照できる一
 
 たとえば、次のクエリの代わりに、
 
-```
+```SQL
 SELECT foo 
 INTO output1
 FROM inputEventHub
@@ -114,7 +117,7 @@ FROM inputEventHub
 
 次のクエリを使用します。
 
-```
+```SQL
 WITH data AS (
    SELECT * FROM inputEventHub
 )

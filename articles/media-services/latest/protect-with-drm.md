@@ -10,15 +10,16 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 10/16/2018
+ms.topic: conceptual
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 2a8a00ab034016e7121e4601b3ff5a16d8c721ac
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.custom: seodec18
+ms.openlocfilehash: f53ae122e9888f3e537a3557b6ac5bd76856c2eb
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395081"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767551"
 ---
 # <a name="use-drm-dynamic-encryption-and-license-delivery-service"></a>DRM 動的暗号化とライセンス配信サービスの使用
 
@@ -40,7 +41,7 @@ Azure Media Services を使用すると、MPEG-DASH、Smooth Streaming、およ�
 
         このアプリにより、ポリシーに JWT トークンの種類の制限を設定します。
 
-* 指定されたストリーミング ポリシー名を使用して、指定されたアセットの StreamingLocator を作成します。 この場合は、定義済みポリシーを使用します。 これは、StreamingLocator に AES-128 (エンベロープ) と CENC (PlayReady と Widevine) の 2 つのコンテンツ キーを設定します。  
+* 指定されたストリーミング ポリシー名を使用して、指定されたアセットの StreamingLocator を作成します。 この場合は、定義済みポリシーを使用します。 これは、StreamingLocator に 2 つのコンテンツ キーを設定します。AES-128 (エンベロープ) と CENC (PlayReady と Widevine) です。  
     
     StreamingLocator が作成されると、出力アセットが発行され、クライアントが再生に利用できるようになります。
 
@@ -51,14 +52,14 @@ Azure Media Services を使用すると、MPEG-DASH、Smooth Streaming、およ�
 
     ブラウザーを開いて結果の URL を貼り付けると、URL とトークンが既に入力されている Azure Media Player のデモ ページが起動します。  
 
-    ![DRM による保護](./media/protect-with-drm/playready_encrypted_url.png)
+    ![DRM での保護](./media/protect-with-drm/playready_encrypted_url.png)
 
 > [!NOTE]
 > 複数の暗号化の種類 (AES-128、PlayReady、Widevine、FairPlay) を使用して各アセットを暗号化することができます。 合理的な組み合わせについては、「[ストリーミング プロトコルと暗号化の種類](content-protection-overview.md#streaming-protocols-and-encryption-types)」を参照してください。
 
 この記事で紹介しているサンプルの結果は次のようになります。
 
-![DRM による保護](./media/protect-with-drm/ams_player.png)
+![DRM で保護されたビデオを再生する AMS](./media/protect-with-drm/ams_player.png)
 
 ## <a name="prerequisites"></a>前提条件
 

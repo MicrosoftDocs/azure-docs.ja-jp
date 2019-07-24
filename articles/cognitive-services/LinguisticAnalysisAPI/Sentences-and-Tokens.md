@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Linguistic Analysis API での文の分割とトークン化について説明します。
 services: cognitive-services
 author: DavidLiCIG
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: davl
 ROBOTS: NOINDEX
-ms.openlocfilehash: 289cab4999276cbfb1fa558f558ebafa8e4e3a30
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 435513023cf74bbc259cb922220d5f9940452d79
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237876"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55879396"
 ---
 # <a name="sentence-separation-and-tokenization"></a>文の分割とトークン化
 
@@ -75,4 +75,4 @@ ms.locfileid: "48237876"
 ## <a name="specification"></a>仕様
 
 文およびトークンを何が構成するかについて、一貫性がある決定を行うことが重要です。
-ここでは [Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42) の仕様に依存しています (詳細については、ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html で入手できます)。
+ここでは [Penn Treebank](https://catalog.ldc.upenn.edu/LDC99T42) の仕様に依存しています (詳細については、 ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html で入手できます)。

@@ -3,7 +3,7 @@ title: Azure Portal での仮想マシン スケール セットの自動スケ�
 description: Azure Portal で仮想マシン スケール セットの自動スケール ルールを作成する方法
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
-ms.author: zarhoads
-ms.openlocfilehash: 6ce737cb221b948a1cc25b8a441d3b623915662b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: 648bc0295cd5435e9c3e44f33b7ae80522fa8e0e
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466521"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888548"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Azure Portal で仮想マシン スケール セットを自動的にスケーリングする
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。
@@ -49,15 +49,15 @@ ms.locfileid: "49466521"
     
     | パラメーター              | 説明                                                                                                         | 値          |
     |------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
-    | *[時間の集計]*     | 分析のために収集したメトリックの集計方法を定義します。                                                | 平均        |
-    | *[メトリック名]*          | スケール セット アクションを監視して適用するパフォーマンス メトリック。                                                   | Percentage CPU |
-    | *[時間グレインの統計]* | 各時間グレインで収集したメトリックを分析のために集計する方法を定義します。                             | 平均        |
+    | *時間の集計*     | 分析のために収集したメトリックの集計方法を定義します。                                                | 平均        |
+    | *メトリック名*          | スケール セット アクションを監視して適用するパフォーマンス メトリック。                                                   | Percentage CPU |
+    | *時間グレインの統計* | 各時間グレインで収集したメトリックを分析のために集計する方法を定義します。                             | 平均        |
     | *演算子*             | しきい値に対してメトリック データを比較するために使用する演算子。                                                     | より大きい   |
     | *しきい値*            | 自動スケール ルールがアクションをトリガーするパーセンテージ。                                                 | 70             |
     | *Duration*             | メトリックとしきい値を比較する前に監視する時間。                                   | 10 分     |
     | *操作*            | ルールが適用されたときにスケール セットをスケールアップするかスケールダウンするかと、その差分を定義します                        | パーセントを増やす量 |
     | *インスタンス数*       | ルールがトリガーされたときに VM インスタンスのパーセンテージを変更する必要があります。                                            | 20             |
-    | *[クール ダウン (分)]*  | 自動スケール アクションを有効にする時間を稼ぐため、ルールを再度適用する前に待機する時間。 | 5 分      |
+    | *クール ダウン (分)*  | 自動スケール アクションを有効にする時間を稼ぐため、ルールを再度適用する前に待機する時間。 | 5 分      |
 
     次の例は、これらの設定に一致する、Azure Portal で作成したルールを示しています。
 
@@ -131,4 +131,4 @@ VM インスタンスの数と状態を確認するには、スケール セッ�
 
 VM インスタンスの管理方法については、[Azure PowerShell を使用した仮想マシン スケール セットの管理](virtual-machine-scale-sets-windows-manage.md)に関するページを参照してください。
 
-自動スケール ルールをトリガーするときにアラートを生成する方法について詳しくは、「[Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)」をご覧ください。 [Azure Monitor で監査ログを使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)こともできます。
+自動スケール ルールをトリガーするときにアラートを生成する方法について詳しくは、「[Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する](../azure-monitor/platform/autoscale-webhook-email.md)」をご覧ください。 [Azure Monitor で監査ログを使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)こともできます。

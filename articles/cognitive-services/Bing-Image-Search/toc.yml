@@ -5,10 +5,13 @@ items:
   items:
   - name: Bing Image Search とは
     href: overview.md
+  - name: Bing Search API を比較する
+    href: ../Bing-Web-Search/bing-api-comparison.md
+    maintainContext: true
   expanded: true
 - name: クイック スタート
   items:
-  - name: REST API を使用した検索クエリの送信
+  - name: REST API
     items:
     - name: C# の使用
       href: quickstarts/csharp.md
@@ -22,7 +25,7 @@ items:
       href: quickstarts/python.md
     - name: Ruby の使用
       href: quickstarts/ruby.md
-  - name: SDK を使用した画像の検索
+  - name: SDK
     items:
     - name: C# の使用
       href: image-search-sdk-quickstart.md
@@ -72,6 +75,21 @@ items:
     href: https://aka.ms/azure-powershell-cognitiveservices
   - name: Azure CLI リファレンス
     href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+  - name: SDK
+    items:
+    - name: .NET
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingimagesearch?view=azure-dotnet
+    - name: Java
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/imagesearch?view=azure-java-stable
+    - name: Python
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/imagesearch?view=azure-python
+    - name: Node.js
+      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/imagesearch?view=azure-node-latest
+    - name: Go
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/imagesearch
+  - name: Bing の使用と表示の要件
+    href: ../Bing-Web-Search/use-display-requirements.md
+    maintainContext: true
 - name: リソース
   items:
   - name: FAQ
@@ -96,13 +114,11 @@ items:
     href: image-search-endpoint.md
   - name: 言語とリージョンのサポート
     href: language-support.md
-  - name: 使用と表示の要件
-    href: UseAndDisplayRequirements.md
   - name: Bing Image Search API 用の分析
     href: bing-image-stats.md
-ms.openlocfilehash: 16d2d81731f23ad1293fe405488dd7f3bbfbc854
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: d75e08e7430b3474fc5e3a354d3c4a559899957a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431500"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237217"

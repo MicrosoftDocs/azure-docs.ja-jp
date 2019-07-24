@@ -1,21 +1,20 @@
 ---
-title: Azure データ エクスプローラーでクラスターを作成できない
+title: Azure Data Explorer クラスター作成失敗のトラブルシューティング
 description: この記事では、Azure データ エクスプローラーでクラスターを作成できない問題を解消する手順について説明します。
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 0edf9ebcde2df7e639666f8fe7472baacdeb8640
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 9e6b3f53f07ac86d6b648a8562be4ef45879c37e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212184"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59791689"
 ---
-# <a name="troubleshoot-failure-to-create-a-cluster-in-azure-data-explorer"></a>問題解決: Azure データ エクスプローラーでクラスターを作成できない
+# <a name="troubleshoot-failed-cluster-creation-of-azure-data-explorer"></a>トラブルシューティング:Azure Data Explorer のクラスターの作成が失敗した
 
 めったにないことですが、もし Azure データ エクスプローラーのクラスターを作成できない場合、次の手順に従ってください。
 
@@ -23,7 +22,7 @@ ms.locfileid: "50212184"
 
 1. Azure portal の **[クラスターの作成]** で入力したクラスター名に関連して確実に検証エラーが出ないようにします。
 
-1. [Azure サービス正常性ダッシュボード](https://azure.microsoft.com/status/>)を確認します。 クラスターを作成しようしているリージョンの Azure データ エクスプローラーの状態を探します。
+1. [Azure サービス正常性ダッシュボード](https://azure.microsoft.com/status/)を確認します。 クラスターを作成しようしているリージョンの Azure データ エクスプローラーの状態を探します。
 
     状態が**良好** (緑色のチェック マーク) でない場合は、状態が改善されてから、クラスターの作成をもう一度お試しください。
 

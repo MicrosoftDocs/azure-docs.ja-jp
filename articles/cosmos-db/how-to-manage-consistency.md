@@ -1,26 +1,27 @@
 ---
 title: Azure Cosmos DB で一貫性を管理する方法について
 description: Azure Cosmos DB で一貫性を管理する方法について
-services: cosmos-db
 author: christopheranderson
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: 68c8c3767ff3a3d2873c1ff50928ab8d2cada4b1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 7dfc299c32b25ddf939aa3efcb927697307887a2
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263753"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904323"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB で一貫性レベルを管理する
 
-この記事では、既定の一貫性の設定、クライアントでの一貫性の上書き、セッション トークンの手動管理、確率論的有界整合性制約 (PBS) メトリックの確認を行う、さまざまな方法について説明します。
+この記事では、Azure Cosmos DB で一貫性レベルを管理する方法について説明します。 読者は、既定の一貫性レベルを構成する方法、既定の一貫性をオーバーライドする方法、セッション トークンを手動を管理する方法、および確率論的有界整合性制約 (PBS) メトリックを確認する方法について学習します。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="configure-the-default-consistency-level"></a>既定の一貫性レベルを構成する
 
-既定の一貫性レベルは、クライアントによって既定で使用される一貫性レベルです。 これは、クライアントによる上書きが可能です。
+既定の一貫性レベルは、クライアントによって既定で使用される一貫性レベルです。 クライアントはこれをオーバーライドできます。
 
 ### <a name="cli"></a>CLI
 
@@ -34,7 +35,7 @@ az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource
 
 ### <a name="powershell"></a>PowerShell
 
-下の例では、米国東部リージョンと米国西部リージョンでマルチマスターが有効な新しい Cosmos DB アカウントを作成します。既定の一貫性ポリシーは、Session に設定されています。
+この例では、米国東部リージョンと米国西部リージョンでマルチマスターを有効にした、新しい Azure Cosmos DB アカウントを作成します。 既定の一貫性ポリシーは Session に設定されます。
 
 ```azurepowershell-interactive
 $locations = @(@{"locationName"="East US"; "failoverPriority"=0},
@@ -50,7 +51,7 @@ $CosmosDBProperties = @{"databaseAccountOfferType"="Standard";
                         "ipRangeFilter"=$iprangefilter;
                         "enableMultipleWriteLocations"="true"}
 
-New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
+New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
   -ApiVersion "2015-04-08" `
   -ResourceGroupName "myResourceGroup" `
   -Location "East US" `
@@ -60,13 +61,13 @@ New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a name="portal"></a>ポータル
 
-既定の一貫性レベルを表示または変更するには、Azure portal にサインインします。 Cosmos DB アカウントを見つけて、**[既定の整合性]** ウィンドウを開きます。 そこで、新しい既定値にする一貫性のレベルを選択して、[保存] をクリックします。
+既定の一貫性レベルを表示または変更するには、Azure portal にサインインします。 Azure Cosmos DB アカウントを見つけて、**[既定の整合性]** ウィンドウを開きます。 目的の一貫性レベルを新しい既定として選択し、**[保存]** を選択します。
 
-![Azure portal の一貫性メニューの画像](./media/how-to-manage-consistency/consistency-settings.png)
+![Azure portal の一貫性メニュー](./media/how-to-manage-consistency/consistency-settings.png)
 
 ## <a name="override-the-default-consistency-level"></a>既定の一貫性レベルを上書きする
 
-クライアントは、サービスによって設定された既定の一貫性レベルを上書きできます。 これはクライアント全体で実行できるほか、要求ごとに実行できます。
+クライアントは、サービスによって設定された既定の一貫性レベルを上書きできます。 このオプションはクライアント全体で設定できるほか、要求ごとに実行できます。
 
 ### <a id="override-default-consistency-dotnet"></a>.NET SDK
 
@@ -131,7 +132,7 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 
 ## <a name="utilize-session-tokens"></a>セッション トークンを利用する
 
-セッション トークンを手動で管理したい場合は、応答からそれらを取得して要求ごとに設定できます。 セッション トークンを手動で管理する必要がない場合、下のサンプルを使用する必要はありません。 SDK によってセッション トークンが自動的に追跡され、お客様が自分でセッション トークンを設定していない場合に最も最近のセッション トークンが使用されます。
+セッション トークンを手動で管理するには、応答からセッション トークンを取得し、それらを要求ごとに設定します。 セッション トークンを手動で管理する必要がない場合は、これらのサンプルを使用する必要はありません。 SDK では、セッション トークンが自動的に追跡されます。 セッション トークンを手動で設定しなかった場合、既定では、SDK によって直近のセッション トークンが使用されます。
 
 ### <a id="utilize-session-tokens-dotnet"></a>.NET SDK
 
@@ -208,15 +209,15 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>確率的有界整合性制約 (PBS) メトリックを監視する
 
-PBS メトリックを表示するには、Azure portal で Cosmos DB アカウントに移動して、**[メトリック]** ウィンドウを開きます。 そこで、**[整合性]** タブをクリックして、"**Probability of strongly consistent reads based on your workload (see PBS) (ワークロードに基づいた、強固な一貫性がある読み取りの確率 (PBS を参照))**" という名前のグラフを確認します。
+PBS メトリックを表示するには、Azure portal で Azure Cosmos DB アカウントに移動します。 **[メトリック]** ウィンドウを開き、**[整合性]** タブを選択します。**Probability of strongly consistent reads based on your workload (see PBS) (ワークロードに基づいた、強固な一貫性がある読み取りの確率 (PBS を参照))** という名前のグラフを確認します。
 
-![Azure portal の PBS グラフの画像](./media/how-to-manage-consistency/pbs-metric.png)
+![Azure portal の PBS グラフ](./media/how-to-manage-consistency/pbs-metric.png)
 
-このメトリックを確認するには、Cosmos DB メトリックのメニューを使用します。 これは Azure 監視メトリック エクスペリエンスに表示されません。
+このメトリックを確認するには、Azure Cosmos DB メトリックのメニューを使用します。 これは Azure 監視メトリック エクスペリエンスに表示されません。
 
 ## <a name="next-steps"></a>次の手順
 
-次のドキュメントを使用して、データ競合の管理について詳しく学習するか、Cosmos DB の次の重要な概念に進むことができます。
+データの競合を管理する方法について学習するか、Azure Cosmos DB に関する次の主要概念に進んでください。 次の記事を参照してください。
 
-* [リージョン間での競合を管理する方法](how-to-manage-conflicts.md)
+* [リージョン間の競合の管理](how-to-manage-conflicts.md)
 * [パーティション分割とデータ分散](partition-data.md)

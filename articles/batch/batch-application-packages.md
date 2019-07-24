@@ -3,7 +3,7 @@ title: コンピューティング ノードへのアプリケーション パ�
 description: Azure Batch のアプリケーション パッケージ機能を使用すると、Batch コンピューティング ノードにインストールされる複数のアプリケーションとバージョンを簡単に管理できます。
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 3b6044b7-5f65-4a27-9d43-71e1863d16cf
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 06/15/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 333161042e968b4baf4b962869d688fd0b696b24
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 6fd3eccf3de5d46520dc5a50cab66667c875799e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094137"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454609"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ
 
@@ -126,7 +126,7 @@ Batch アカウントに含まれているアプリケーションを表示す�
 
 * **[更新を許可する]**: アプリケーション パッケージを更新または削除できるかどうかを指定します。 この記事の後半にある「アプリケーション パッケージの更新または削除」を参照してください。
 * **[既定のバージョン]**: コンピューティング ノードにデプロイする既定のアプリケーション パッケージを指定します。
-* **[表示名]**: Batch を介して顧客に提供するサービスの UI など、アプリケーションの情報を表示するときに Batch ソリューションが使用できるわかりやすい名前を指定します。
+* **表示名**:たとえば、Batch ソリューションがアプリケーションの情報を表示するときに、Batch を介して顧客に提供するサービスの UI に使用できるわかりやすい名前を指定します。
 
 ### <a name="add-a-new-application"></a>新しいアプリケーションの追加
 新しいアプリケーションを作成するには、アプリケーション パッケージを追加し、新しい一意のアプリケーション ID を指定します。 新しいアプリケーション ID を使って最初のアプリケーション パッケージを追加すると、新しいアプリケーションも作成されます。

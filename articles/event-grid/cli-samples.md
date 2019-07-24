@@ -2,20 +2,20 @@
 title: Azure CLI のサンプル - Event Grid | Microsoft Docs
 description: Event Grid 用の Azure CLI サンプル
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.date: 08/06/2018
-ms.author: tomfitz
-ms.openlocfilehash: 059dc81fd5b8ef2573a228dafc0bab30d0e2037b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.author: spelluru
+ms.openlocfilehash: 253086cd655bba87b015fbe41282f6610ace4518
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526040"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470981"
 ---
 # <a name="azure-cli-samples-for-event-grid"></a>Event Grid 用の Azure CLI サンプル
 

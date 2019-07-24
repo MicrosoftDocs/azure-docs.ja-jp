@@ -4,37 +4,43 @@ description: Azure Site Recovery を使用した オンプレミスから Azure 
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
+services: site-recovery
 ms.topic: tutorial
-ms.date: 10/29/2018
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b0344095cd7c9aedd360d44f2649f27dfd78cd30
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: b93fb92c9170f3e0fb7bd6ee754dde5df729e299
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214411"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358175"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Azure へのディザスター リカバリー訓練を実行する
 
-この記事では、テスト フェールオーバーを使用したオンプレミス コンピューターの Azure へのディザスター リカバリー訓練を実行する方法を示します。 訓練では、データ損失のないレプリケーション戦略を検証します。
+この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスを使用したオンプレミス マシンの Azure へのディザスター リカバリー訓練を実行する方法について説明します。 訓練では、データ損失のないレプリケーション戦略を検証します。
 
-これは、オンプレミスの VMware VM または Hyper-V VM のディザスター リカバリーを Azure に設定する方法について説明するシリーズの 4 番目のチュートリアルです。
 
-このチュートリアルでは、最初の 3 つのチュートリアルを完了したことを前提としています。
-    - [1 番目のチュートリアル](tutorial-prepare-azure.md)では、VMware のディザスター リカバリーに必要な Azure コンポーネントを設定しました。
-    - [2 番目のチュートリアル](vmware-azure-tutorial-prepare-on-premises.md)では、ディザスター リカバリー用のオンプレミスのコンポーネントを準備し、前提条件を確認しました。
-    - [3 番目のチュートリアル](vmware-azure-tutorial.md)では、オンプレミスの VMware VM 用にレプリケーションを設定して有効にしました。
-    - これらのチュートリアルは、**シナリオの最も簡単なデプロイ パス**を示すことを目的として作られています。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 さらに詳細なテスト フェールオーバーの手順については、[方法ガイド](site-recovery-test-failover-to-azure.md)をご覧ください。
+これは、オンプレミスのマシンの Azure へのディザスター リカバリーを設定する方法について説明するシリーズの 4 番目のチュートリアルです。
 
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * テスト フェールオーバー用の分離されたネットワークを設定する
 > * フェールオーバー後に Azure VM に接続するための準備をする
-> * 1 台のコンピューターのテスト フェールオーバーを実行する
+> * 1 台のマシンのテスト フェールオーバーを実行する。
 
+> [!NOTE]
+> チュートリアルでは、シナリオの最も簡単なデプロイ パスを示します。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 ディザスター リカバリー訓練手順の詳細については、[この記事を参照](site-recovery-test-failover-to-azure.md)してください。
 
+## <a name="before-you-start"></a>開始する前に
+
+前のチュートリアルを完了します。
+
+1. VMware VM、Hyper-V VM、および物理マシンから Azure へのオンプレミス ディザスター リカバリー用に [Azure を設定](tutorial-prepare-azure.md)したことを確認します。
+2. オンプレミスの [VMware](vmware-azure-tutorial-prepare-on-premises.md) または [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) 環境をディザスター リカバリー用に準備します。 物理サーバーのディザスター リカバリーを設定している場合は、[サポート マトリックス](vmware-physical-secondary-support-matrix.md)を確認してください。
+3. [VMware VM](vmware-azure-tutorial.md)、[Hyper-V VM](hyper-v-azure-tutorial.md)、または[物理マシン](physical-azure-disaster-recovery.md)のディザスター リカバリーを設定します。
+ 
 
 ## <a name="verify-vm-properties"></a>VM のプロパティを確認する
 
@@ -48,11 +54,11 @@ ms.locfileid: "50214411"
 
 ## <a name="create-a-network-for-test-failover"></a>テスト フェールオーバー用のネットワークの作成
 
-テスト フェールオーバー用に、各 VM の **[Compute and Network] (コンピューティングとネットワーク)** 設定で、運用復旧サイト ネットワークから分離されたネットワークを選択することをお勧めします。 既定では、作成した Azure 仮想ネットワークは、他のネットワークから分離されます。 テスト ネットワークは、運用ネットワークを模倣したものにする必要があります。
+テスト フェールオーバー用に、各 VM の **[Compute and Network] \(コンピューティングとネットワーク)** 設定で、運用復旧サイト ネットワークから分離されたネットワークを選択することをお勧めします。 既定では、作成した Azure 仮想ネットワークは、他のネットワークから分離されます。 テスト ネットワークは、運用ネットワークを模倣したものにする必要があります。
 
 - テスト ネットワークでは、運用ネットワークと同じ数のサブネットが必要です。 サブネットは、同じ名前を持つ必要があります。
 - テスト ネットワークでは、同じ IP アドレス範囲を使用する必要があります。
-- テスト ネットワークの DNS を、**[Compute and Network] (コンピューティングとネットワーク)** 設定で DNS VM に指定した IP アドレスで更新します。 詳細については、[Active Directory 用のテスト フェールオーバーの考慮事項](site-recovery-active-directory.md#test-failover-considerations)を参照してください。
+- テスト ネットワークの DNS を、**[Compute and Network] \(コンピューティングとネットワーク)** 設定で DNS VM に指定した IP アドレスで更新します。 詳細については、[Active Directory 用のテスト フェールオーバーの考慮事項](site-recovery-active-directory.md#test-failover-considerations)を参照してください。
 
 ## <a name="run-a-test-failover-for-a-single-vm"></a>1 台の VM のテスト フェールオーバーを実行する
 
@@ -75,14 +81,13 @@ ms.locfileid: "50214411"
 
 一部のシナリオでは、フェールオーバーが完了するまでに、さらに約 8 ～ 10 分の処理が必要です。 VMware Linux マシン、DHCP サービスが有効でない VMware VM、ブート ドライバー storvsc、vmbus、storftt、intelide、atapi を持たない VMware VM については、テスト フェールオーバーの時間が長くなることあります。
 
-## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための準備をする
+## <a name="connect-after-failover"></a>フェールオーバー後に接続する
 
-フェールオーバー後に RDP/SSH を使用して Azure VM に接続する場合は、[こちら](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)の表に示されている要件に従います。
-
-フェールオーバー後の接続の問題をトラブルシューティングするには、[ここ](site-recovery-failover-to-azure-troubleshoot.md)で説明されている手順に従ってください。
+フェールオーバー後に RDP/SSH を使用して Azure VM に接続する場合は、[接続の準備](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)をします。 フェールオーバー後に接続の問題が発生した場合は、この[トラブルシューティング ガイド](site-recovery-failover-to-azure-troubleshoot.md)に従ってください。
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [オンプレミス の VMware VM のフェールオーバーとフェールバックを実行する](vmware-azure-tutorial-failover-failback.md)
-> [オンプレミス の Hyper-V VM のフェールオーバーとフェールバックを実行する](hyper-v-azure-failover-failback-tutorial.md)
+> [VMware VM のフェールオーバーとフェールバックを実行する](vmware-azure-tutorial-failover-failback.md)。
+> [Hyper-V VM のフェールオーバーとフェールバックを実行する](hyper-v-azure-failover-failback-tutorial.md)。
+> [物理マシンのフェールオーバーとフェールバックを実行する](physical-to-azure-failover-failback.md)

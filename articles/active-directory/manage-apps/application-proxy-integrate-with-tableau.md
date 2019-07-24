@@ -2,22 +2,23 @@
 title: Azure Active Directory アプリケーション プロキシと Tableau | Microsoft Docs
 description: Azure Active Directory (Azure AD) のアプリケーション プロキシを使用して、Tableau 配置にリモート アクセスを提供する方法を説明します。
 services: active-directory
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: a68b0465acdb416cd953e22d7f024eb399c94493
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c5d80381815524658d91067ee880eba47c394058
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246609"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59783555"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory アプリケーション プロキシと Tableau 
 
@@ -29,7 +30,7 @@ Azure Active Directory アプリケーション プロキシと Tableau は連�
 
 - [Tableau](https://onlinehelp.tableau.com/current/server/en-us/proxy.htm#azure)が構成されている 
 
-- [アプリケーション プロキシ コネクタ](application-proxy-enable.md)がインストールされている 
+- [アプリケーション プロキシ コネクタ](application-proxy-add-on-premises-application.md)がインストールされている 
 
  
 ## <a name="enabling-application-proxy-for-tableau"></a>アプリケーション プロキシを Tableau に有効化する 
@@ -43,13 +44,13 @@ Tableau を発行するには、Azure Portal でアプリケーションを発�
 
 お困りの場合:
 
-- ステップ 1 から 8 の詳細な手順については、[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-publish-azure-portal.md)を参照してください。 
+- ステップ 1 から 8 の詳細な手順については、[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](application-proxy-add-on-premises-application.md)を参照してください。 
 - アプリケーション プロキシ フィールドの Tableau 値を検索する方法については、Tableau ドキュメントを参照してください。  
 
 **アプリケーションを発行する**: 
 
 
-1. [Azure Portal](https://portal.azure.com) にグローバル管理者としてサインインします。 
+1. アプリケーション管理者として [Azure portal](https://portal.azure.com) にサインインします。 
 
 2. **[Azure Active Directory] > [エンタープライズ アプリケーション]** を選択します。 
 
@@ -59,9 +60,9 @@ Tableau を発行するには、Azure Portal でアプリケーションを発�
 
 5. 新しいアプリに関する情報を必須フィールドに入力します。 次のガイダンスに従って設定してください。 
 
-    - **[内部 URL]**: このアプリケーションは、Tableau URL そのものである内部 URL を持っている必要があります。 たとえば、「 `https://adventure-works.tableau.com` 」のように入力します。 
+    - **内部 URL**:このアプリケーションは、Tableau URL そのものである内部 URL を持っている必要があります。 たとえば、「 `https://adventure-works.tableau.com` 」のように入力します。 
 
-    - **[事前認証方法]**: Azure Active Directory (推奨ですが必須ではありません) 
+    - **事前認証方法**:Azure Active Directory (推奨ですが必須ではありません)。 
 
 6. ブレード上部の **[追加]** を選択します。 アプリケーションが追加されて、クイック スタート メニューが表示されます。 
 

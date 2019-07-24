@@ -1,229 +1,232 @@
-items:
 - name: 認証のドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: 認証とは
-    href: overview-authentication.md
+    - name: 認証とは
+      href: overview-authentication.md
 - name: クイック スタート
   items:
-  - name: パスワード リセットを構成する
-    href: quickstart-sspr.md
+    - name: パスワード リセットを構成する
+      href: quickstart-sspr.md
 - name: チュートリアル
   items:
-  - name: 1. アプリケーションの MFA を有効にする
-    href: tutorial-mfa-applications.md
-  - name: 2. SSPR パイロットを有効にする
-    href: tutorial-sspr-pilot.md
-  - name: SSPR オンプレミス統合を有効にする
-    href: tutorial-enable-writeback.md
-  - name: Windows 10 のパスワード リセットを有効にする
-    href: tutorial-sspr-windows.md
-  - name: Azure Identity Protection を統合する
-    href: tutorial-risk-based-sspr-mfa.md
+    - name: 1. アプリケーションの MFA を有効にする
+      href: tutorial-mfa-applications.md
+    - name: 2. SSPR パイロットを有効にする
+      href: tutorial-sspr-pilot.md
+    - name: SSPR オンプレミス統合を有効にする
+      href: tutorial-enable-writeback.md
+    - name: Windows 10 のパスワード リセットを有効にする
+      href: tutorial-sspr-windows.md
+    - name: Azure Identity Protection を統合する
+      href: tutorial-risk-based-sspr-mfa.md
 - name: 概念
-  items:
-  - name: 認証方法
-    href: concept-authentication-methods.md
-  - name: 集中型登録
-    href: concept-registration-mfa-sspr-converged.md
-  - name: パスワード リセット
-    items:
-    - name: パスワード リセットのしくみ
-      href: concept-sspr-howitworks.md
-    - name: パスワード リセットのオプション
-      href: concept-sspr-customization.md
-    - name: パスワード リセットのポリシー
-      href: concept-sspr-policy.md
-    - name: 必要なライセンス
-      href: concept-sspr-licensing.md
-    - name: オンプレミスの統合
-      href: concept-sspr-writeback.md
-  - name: Multi-Factor Authentication
-    items:
-    - name: MFA のしくみ
-      href: concept-mfa-howitworks.md
-    - name: 適切なバージョン
-      href: concept-mfa-whichversion.md
-    - name: ユーザーのライセンス
-      href: concept-mfa-licensing.md
-    - name: 認証プロバイダーの管理
-      href: concept-mfa-authprovider.md
-    - name: セキュリティ ガイダンス
-      href: multi-factor-authentication-security-best-practices.md
-    - name: Office 365 での MFA
-      href: https://support.office.com/article/Plan-for-multi-factor-authentication-for-Office-365-Deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba
-    - name: MFA に関する FAQ
-      href: multi-factor-authentication-faq.md
-  - name: Azure AD のパスワード保護
-    items:
-    - name: クラウドで脆弱なパスワードを排除する
-      href: concept-password-ban-bad.md
-    - name: オンプレミスで脆弱なパスワードを排除する
-      href: concept-password-ban-bad-on-premises.md
   expanded: true
+  items:
+    - name: 認証方法
+      href: concept-authentication-methods.md
+    - name: 統合された登録
+      href: concept-registration-mfa-sspr-combined.md
+    - name: パスワード リセット
+      items:
+        - name: パスワード リセットのしくみ
+          href: concept-sspr-howitworks.md
+        - name: パスワード リセットのオプション
+          href: concept-sspr-customization.md
+        - name: パスワード リセットのポリシー
+          href: concept-sspr-policy.md
+        - name: 必要なライセンス
+          href: concept-sspr-licensing.md
+        - name: オンプレミスの統合
+          href: concept-sspr-writeback.md
+    - name: Multi-Factor Authentication
+      items:
+        - name: MFA のしくみ
+          href: concept-mfa-howitworks.md
+        - name: 適切なバージョン
+          href: concept-mfa-whichversion.md
+        - name: ユーザーのライセンス
+          href: concept-mfa-licensing.md
+        - name: 認証プロバイダーの管理
+          href: concept-mfa-authprovider.md
+        - name: セキュリティ ガイダンス
+          href: multi-factor-authentication-security-best-practices.md
+        - name: Office 365 での MFA
+          href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
+        - name: MFA に関する FAQ
+          href: multi-factor-authentication-faq.md
+    - name: Azure AD のパスワード保護
+      items:
+        - name: クラウドで脆弱なパスワードを排除する
+          href: concept-password-ban-bad.md
+        - name: オンプレミスで脆弱なパスワードを排除する
+          href: concept-password-ban-bad-on-premises.md
+    - name: 回復性があるアクセス制御
+      href: concept-resilient-controls.md
 - name: ハウツー ガイド
   items:
-  - name: セルフサービスのパスワード リセット
-    items:
-    - name: セルフサービスのパスワード リセットのデプロイ
-      href: howto-sspr-deployment.md
-    - name: 認証データの事前登録
-      href: howto-sspr-authenticationdata.md
-    - name: パスワード ライトバックの有効化
-      href: howto-sspr-writeback.md
-    - name: Windows 7、8、8.1 用の SSPR
-      href: howto-sspr-windows-7-8.md
-  - name: クラウドベースの MFA
-    items:
-    - name: クラウドベースの MFA のデプロイ
-      href: howto-mfa-getstarted.md
-    - name: ユーザーごとの MFA
-      href: howto-mfa-userstates.md
-    - name: ユーザーとデバイスの設定
-      href: howto-mfa-userdevicesettings.md
-    - name: 設定を構成する
-      href: howto-mfa-mfasettings.md
-    - name: ディレクトリ フェデレーション
+    - name: セルフサービスのパスワード リセット
       items:
-      - name: Windows Server 2016 AD FS アダプター
-        href: https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa
-      - name: フェデレーション サービス
-        href: multi-factor-authentication-get-started-adfs.md
-      - name: AD FS を使用する
-        href: howto-mfa-adfs.md
-    - name: RADIUS 統合
+        - name: セルフサービスのパスワード リセットのデプロイ
+          href: howto-sspr-deployment.md
+        - name: 認証データの事前登録
+          href: howto-sspr-authenticationdata.md
+        - name: パスワード ライトバックの有効化
+          href: howto-sspr-writeback.md
+        - name: Windows 7、8、8.1 用の SSPR
+          href: howto-sspr-windows-7-8.md
+    - name: クラウドベースの MFA
       items:
-      - name: 既存のネットワーク ポリシー サーバーを使用する
-        href: howto-mfa-nps-extension.md
-      - name: NPS 拡張機能の詳細な構成
-        href: howto-mfa-nps-extension-advanced.md
-      - name: リモート デスクトップ ゲートウェイ
-        href: howto-mfa-nps-extension-rdg.md
-      - name: VPN
-        href: howto-mfa-nps-extension-vpn.md
-  - name: Azure AD のパスワード保護
-    items:
-    - name: 禁止パスワード リストを構成する
-      href: howto-password-ban-bad-configure.md
-    - name: オンプレミスの統合
+        - name: クラウドベースの MFA のデプロイ
+          href: howto-mfa-getstarted.md
+        - name: ユーザーごとの MFA
+          href: howto-mfa-userstates.md
+        - name: ユーザーとデバイスの設定
+          href: howto-mfa-userdevicesettings.md
+        - name: 設定を構成する
+          href: howto-mfa-mfasettings.md
+        - name: ディレクトリ フェデレーション
+          items:
+            - name: Windows Server 2016 AD FS アダプター
+              href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa'
+            - name: フェデレーション サービス
+              href: multi-factor-authentication-get-started-adfs.md
+            - name: AD FS を使用する
+              href: howto-mfa-adfs.md
+        - name: RADIUS 統合
+          items:
+            - name: 既存のネットワーク ポリシー サーバーを使用する
+              href: howto-mfa-nps-extension.md
+            - name: NPS 拡張機能の詳細な構成
+              href: howto-mfa-nps-extension-advanced.md
+            - name: Azure VPN と Azure MFA
+              href: ../../vpn-gateway/vpn-gateway-radiuis-mfa-nsp.md
+            - name: リモート デスクトップ ゲートウェイ
+              href: howto-mfa-nps-extension-rdg.md
+            - name: VPN
+              href: howto-mfa-nps-extension-vpn.md
+    - name: 統合された登録
       items:
-      - name: Azure AD のパスワード保護をデプロイする
-        href: howto-password-ban-bad-on-premises-deploy.md
-      - name: Azure AD のパスワード保護を構成する
-        href: howto-password-ban-bad-on-premises-operations.md
-      - name: Azure AD のパスワード保護を監視する
-        href: howto-password-ban-bad-on-premises-troubleshoot.md
-      - name: よく寄せられる質問
-        href: howto-password-ban-bad-on-premises-faq.md
-      - name: オンプレミスのエージェントのバージョン履歴
-        href: howto-password-ban-bad-on-premises-agent-versions.md
-  - name: Azure AD スマート ロックアウト
-    href: howto-password-smart-lockout.md
-  - name: Windows Hello for Business
-    href: https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification
-  - name: パスワードなしの電話によるサインイン
-    href: howto-authentication-phone-sign-in.md
-  - name: 証明書ベースの認証
-    items:
-    - name: 証明書認証の概要
-      href: active-directory-certificate-based-authentication-get-started.md
+        - name: 統合された登録の有効化
+          href: howto-registration-mfa-sspr-combined.md
+        - name: 統合された登録のトラブルシューティング
+          href: howto-registration-mfa-sspr-combined-troubleshoot.md
+    - name: Azure AD のパスワード保護
       items:
-      - name: Android デバイスでの CBA
-        href: active-directory-certificate-based-authentication-android.md
-      - name: iOS デバイスでの CBA
-        href: active-directory-certificate-based-authentication-ios.md
-  - name: 開発
-    items:
-    - name: MFA をカスタム アプリに組み込む
-      href: howto-mfa-sdk.md
-  - name: レポート
-    items:
-    - name: SSPR レポート
-      href: howto-sspr-reporting.md
-    - name: MFA レポート
-      href: howto-mfa-reporting.md
-    - name: データ収集
-      href: howto-mfa-reporting-datacollection.md
-  - name: MFA サーバー
-    items:
-    - name: オンプレミスでの MFA のデプロイ
-      href: howto-mfaserver-deploy.md
-    - name: ユーザー ポータルのインストール
-      href: howto-mfaserver-deploy-userportal.md
-    - name: モバイル アプリ Web サービス
-      href: howto-mfaserver-deploy-mobileapp.md
-    - name: 高可用性の構成
-      href: howto-mfaserver-deploy-ha.md
-    - name: MFA サーバーをアップグレードする
-      href: howto-mfaserver-deploy-upgrade.md
-    - name: PhoneFactor からアップグレードする
-      href: howto-mfaserver-deploy-upgrade-pf.md
-    - name: Windows 認証
-      href: howto-mfaserver-windows.md
-    - name: IIS Web アプリ
-      href: howto-mfaserver-iis.md
-    - name: ディレクトリ統合
+        - name: 禁止パスワード リストを構成する
+          href: howto-password-ban-bad-configure.md
+        - name: オンプレミスの統合
+          items:
+            - name: Azure AD のパスワード保護をデプロイする
+              href: howto-password-ban-bad-on-premises-deploy.md
+            - name: Azure AD のパスワード保護を構成する
+              href: howto-password-ban-bad-on-premises-operations.md
+            - name: Azure AD のパスワード保護を監視する
+              href: howto-password-ban-bad-on-premises-monitor.md
+            - name: Azure AD のパスワード保護をトラブルシューティングする
+              href: howto-password-ban-bad-on-premises-troubleshoot.md
+            - name: よく寄せられる質問
+              href: howto-password-ban-bad-on-premises-faq.md
+            - name: オンプレミスのエージェントのバージョン履歴
+              href: howto-password-ban-bad-on-premises-agent-versions.md
+    - name: Azure AD スマート ロックアウト
+      href: howto-password-smart-lockout.md
+    - name: Windows Hello for Business
+      href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
+    - name: パスワードなしの電話によるサインイン
+      href: howto-authentication-phone-sign-in.md
+    - name: 証明書ベースの認証
       items:
-      - name: LDAP 認証
-        href: howto-mfaserver-dir-ldap.md
-      - name: RADIUS 認証
-        href: howto-mfaserver-dir-radius.md
-      - name: Active Directory
-        href: howto-mfaserver-dir-ad.md
-    - name: ディレクトリ フェデレーション
+        - name: 証明書認証の概要
+          href: active-directory-certificate-based-authentication-get-started.md
+          items:
+            - name: Android デバイスでの CBA
+              href: active-directory-certificate-based-authentication-android.md
+            - name: iOS デバイスでの CBA
+              href: active-directory-certificate-based-authentication-ios.md
+    - name: 開発
       items:
-      - name: AD FS 2.0 を使用する
-        href: howto-mfaserver-adfs-2.md
-      - name: Windows Server 2012 R2 AD FS を使用する
-        href: howto-mfaserver-adfs-2012.md
-    - name: RADIUS 統合
+        - name: MFA をカスタム アプリに組み込む
+          href: howto-mfa-sdk.md
+    - name: レポート
       items:
-      - name: リモート デスクトップ ゲートウェイ
-        href: howto-mfaserver-nps-rdg.md
-      - name: 高度な VPN 構成
-        href: howto-mfaserver-nps-vpn.md
-      - name: NPS 拡張機能のエラー
-        href: howto-mfa-nps-extension-errors.md
-  - name: トラブルシューティング
-    items:
-    - name: 集中型登録の無効化
-      href: howto-registration-mfa-sspr-converged-troubleshoot.md
-    - name: SSPR のトラブルシューティング
-      href: active-directory-passwords-troubleshoot.md
-    - name: SSPR に関する FAQ
-      href: active-directory-passwords-faq.md
-    - name: MFA に関する FAQ
-      href: multi-factor-authentication-faq.md
-    - name: NPS 拡張機能
-      href: howto-mfa-nps-extension-errors.md
+        - name: SSPR レポート
+          href: howto-sspr-reporting.md
+        - name: MFA レポート
+          href: howto-mfa-reporting.md
+        - name: データ収集
+          href: howto-mfa-reporting-datacollection.md
+    - name: MFA サーバー
+      items:
+        - name: オンプレミスでの MFA のデプロイ
+          href: howto-mfaserver-deploy.md
+        - name: ユーザー ポータルのインストール
+          href: howto-mfaserver-deploy-userportal.md
+        - name: モバイル アプリ Web サービス
+          href: howto-mfaserver-deploy-mobileapp.md
+        - name: 高可用性の構成
+          href: howto-mfaserver-deploy-ha.md
+        - name: MFA サーバーをアップグレードする
+          href: howto-mfaserver-deploy-upgrade.md
+        - name: PhoneFactor からアップグレードする
+          href: howto-mfaserver-deploy-upgrade-pf.md
+        - name: Windows 認証
+          href: howto-mfaserver-windows.md
+        - name: IIS Web アプリ
+          href: howto-mfaserver-iis.md
+        - name: ディレクトリ統合
+          items:
+            - name: LDAP 認証
+              href: howto-mfaserver-dir-ldap.md
+            - name: RADIUS 認証
+              href: howto-mfaserver-dir-radius.md
+            - name: Active Directory
+              href: howto-mfaserver-dir-ad.md
+        - name: ディレクトリ フェデレーション
+          items:
+            - name: AD FS 2.0 を使用する
+              href: howto-mfaserver-adfs-2.md
+            - name: Windows Server 2012 R2 AD FS を使用する
+              href: howto-mfaserver-adfs-2012.md
+        - name: RADIUS 統合
+          items:
+            - name: リモート デスクトップ ゲートウェイ
+              href: howto-mfaserver-nps-rdg.md
+            - name: 高度な VPN 構成
+              href: howto-mfaserver-nps-vpn.md
+            - name: NPS 拡張機能のエラー
+              href: howto-mfa-nps-extension-errors.md
+    - name: トラブルシューティング
+      items:
+        - name: SSPR のトラブルシューティング
+          href: active-directory-passwords-troubleshoot.md
+        - name: SSPR に関する FAQ
+          href: active-directory-passwords-faq.md
+        - name: MFA に関する FAQ
+          href: multi-factor-authentication-faq.md
+        - name: NPS 拡張機能
+          href: howto-mfa-nps-extension-errors.md
 - name: リファレンス
   items:
-  - name: MFA ユーザー ガイド
-    href: ./end-user/current/multi-factor-authentication-end-user.md
-  - name: コード サンプル
-    href: https://azure.microsoft.com/resources/samples/?service=active-directory
-  - name: Azure PowerShell コマンドレット
-    href: /powershell/azure/overview
-  - name: サービスの制限と制約
-    href: ../users-groups-roles/directory-service-limits-restrictions.md
+    - name: MFA ユーザー ガイド
+      href: ./end-user/current/multi-factor-authentication-end-user.md
+    - name: コード サンプル
+      href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
+    - name: Azure PowerShell コマンドレット
+      href: /powershell/azure/overview
+    - name: サービスの制限と制約
+      href: ../users-groups-roles/directory-service-limits-restrictions.md
 - name: リソース
   items:
-  - name: Azure フィードバック フォーラム
-    href: https://feedback.azure.com/forums/169401-azure-active-directory
-  - name: MSDN フォーラム
-    href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/active-directory/
-  - name: サービスの更新情報
-    href: ../fundamentals/whats-new.md
-  - name: スタック オーバーフロー
-    href: https://stackoverflow.com/questions/tagged/azure-active-directory
-  - name: ビデオ
-    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: abbb727dc5d8f86903412280b05d6b4e11b69209
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424914"
+    - name: Azure フィードバック フォーラム
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+    - name: サービスの更新情報
+      href: ../fundamentals/whats-new.md
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

@@ -1,23 +1,19 @@
 ---
-title: Azure Cosmos DB を使用した Python Flask Web アプリケーションのチュートリアル | Microsoft Docs
+title: Azure Cosmos DB を使用する Python Flask Web アプリケーションのチュートリアル
 description: Azure Cosmos DB を使用してデータを格納し、Azure にホストされた Python Flask Web アプリケーションからそのデータにアクセスする方法をデータベース チュートリアルで確認します。 アプリケーション開発ソリューションを探します。
-keywords: アプリケーション開発, Python Flask, Python Web アプリケーション, Python Web 開発
-services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 02/23/2017
 ms.author: sngun
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9470df09c2724bf89a371ec62e7fb8a7e2132c6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 24426a4249934af1d85f43552617cda7c1d7e172
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953924"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58883889"
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>Azure Cosmos DB を使用した Python Flask Web アプリケーションの作成
 
@@ -40,7 +36,7 @@ ms.locfileid: "46953924"
 
 このチュートリアルの手順を実行すると、アンケートに回答する単純な投票アプリケーションを作成できます。
 
-![このデータベース チュートリアルで作成する投票アプリケーションのスクリーン ショット](./media/sql-api-python-application/cosmos-db-pythonr-run-application.png)
+![このデータベース チュートリアルで作成する投票アプリケーションのスクリーンショット](./media/sql-api-python-application/cosmos-db-pythonr-run-application.png)
 
 ## <a name="database-tutorial-prerequisites"></a>データベース チュートリアルの前提条件
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
@@ -56,21 +52,21 @@ ms.locfileid: "46953924"
 > [!IMPORTANT]
 > 初めて Python 2.7 をインストールする場合は、[Customize Python 2.7.13] 画面で必ず **[Add python.exe to Path]\(python.exe をパスに追加する\)** を選択してください。
 > 
-> ![Screen shot of the Customize Python 2.7.11 screen, where you need to select Add python.exe to Path](./media/sql-api-python-application/cosmos-db-python-install.png)
+> ![[Customize Python 2.7.11] 画面のスクリーンショット。[Add python.exe to Path]\(python.exe をパスに追加する\) の選択が必要](./media/sql-api-python-application/cosmos-db-python-install.png)
 > 
 > 
 
 * [Python 2.7 用の Microsoft Visual C++ コンパイラ](https://www.microsoft.com/en-us/download/details.aspx?id=44266)。
 
 ## <a name="step-1-create-an-azure-cosmos-db-database-account"></a>手順 1: Azure Cosmos DB データベース アカウントを作成する
-まず最初に、Azure Cosmos DB アカウントを作成します。 アカウントが既にある場合や、このチュートリアルに Azure Cosmos DB Emulator を使用する場合は、「[手順 2. 新しい Python Flask Web アプリケーションを作成する](#step-2-create-a-new-python-flask-web-application)」に進むことができます。
+まず最初に、Azure Cosmos DB アカウントを作成します。 アカウントが既にある場合や、このチュートリアルで Azure Cosmos DB Emulator を使用する場合は、「[手順 2: 新しい Python Flask Web アプリケーションを作成する](#step-2-create-a-new-python-flask-web-application)」をスキップできます。
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 <br/>
 次は、新しい Python Flask Web アプリケーションをゼロから作成する方法について確認しましょう。
 
-## <a name="step-2-create-a-new-python-flask-web-application"></a>手順 2. 新しい Python Flask Web アプリケーションを作成する
+## <a name="step-2-create-a-new-python-flask-web-application"></a>手順 2: 新しい Python Flask Web アプリケーションを作成する
 1. Visual Studio で、**[ファイル]** メニューの **[新規作成]** をポイントし、**[プロジェクト]** をクリックします。
    
     **[新しいプロジェクト]** ダイアログ ボックスが表示されます。
@@ -79,13 +75,13 @@ ms.locfileid: "46953924"
    
     Python Flask は、Python で Web アプリケーションを短時間で作成するための Web アプリケーション開発フレームワークです。
    
-    ![Visual Studio の [新しいプロジェクト] ウィンドウのスクリーン ショット。左側で [Python] が強調表示され、中央で [Python Flask Web プロジェクト] が選択され、[名前] ボックスに tutorial という名前が入力されている](./media/sql-api-python-application/image9.png)
+    ![Visual Studio の [新しいプロジェクト] ウィンドウのスクリーンショット。左側で [Python] が強調表示され、中央で [Python Flask Web プロジェクト] が選択され、[名前] ボックスに tutorial という名前が入力されている](./media/sql-api-python-application/image9.png)
 4. **[Python Tools for Visual Studio]** ウィンドウで、**[Install into a virtual environment]** をクリックします。 
    
-    ![[database tutorial - Python Tools for Visual Studio] ウィンドウのスクリーン ショット](./media/sql-api-python-application/python-install-virtual-environment.png)
+    ![[database tutorial - Python Tools for Visual Studio] ウィンドウのスクリーンショット](./media/sql-api-python-application/python-install-virtual-environment.png)
 5. **[仮想環境の追加]** ウィンドウの [Select an interpreter]\(インタープリターの選択\) ボックスで [Python 2.7] または [Python 3.5] を選択し、他の既定値を受け入れて **[作成]** をクリックします。 これで、プロジェクトに必要な Python 仮想環境が設定されます。
    
-    ![[database tutorial - Python Tools for Visual Studio] ウィンドウのスクリーン ショット](./media/sql-api-python-application/image10_A.png)
+    ![[database tutorial - Python Tools for Visual Studio] ウィンドウのスクリーンショット](./media/sql-api-python-application/image10_A.png)
    
     環境が正常にインストールされると、出力ウィンドウに " `Successfully installed Flask-0.10.1 Jinja2-2.8 MarkupSafe-0.23 Werkzeug-0.11.5 itsdangerous-0.24 'requirements.txt' was installed successfully.` " と表示されます。
 
@@ -109,7 +105,7 @@ ms.locfileid: "46953924"
 2. **requirements.txt** ファイルを保存します。 
 3. ソリューション エクスプローラーで、**[env]** を右クリックし、**[Install from requirements.txt]** をクリックします。
    
-    ![[env (Python 2.7)] を示すスクリーン ショット。リストで [requirements.txt からインストール] が選択されている](./media/sql-api-python-application/cosmos-db-python-install-from-requirements.png)
+    ![[env (Python 2.7)] を示すスクリーンショット。リストで [requirements.txt からインストール] が選択されている](./media/sql-api-python-application/cosmos-db-python-install-from-requirements.png)
    
     正常にインストールされると、出力ウィンドウに次のメッセージが表示されます。
    
@@ -350,23 +346,23 @@ def vote():
    
     ![Visual Studio ソリューション エクスプローラーのウィンドウのスクリーンショット](./media/sql-api-python-application/cosmos-db-python-solution-explorer.png)
 
-## <a name="step-4-run-your-web-application-locally"></a>手順 4: ローカルで Web アプリケーションを実行する
+## <a name="step-4-run-your-web-application-locally"></a>手順 4:ローカルで Web アプリケーションを実行する
 1. **Ctrl** + **Shift** + **B** キーを押して、ソリューションをビルドします。
 2. ビルドが成功したら、 **F5**キーを押して、Web サイトを開きます。 次の画面が表示されます。
    
     ![Python と Azure Cosmos DB を使った投票アプリケーションが Web ブラウザーに表示された状態を示すスクリーンショット](./media/sql-api-python-application/cosmos-db-pythonr-run-application.png)
 3. **[投票データベースの作成/クリア]** をクリックして、データベースを生成します。
    
-    ![Web アプリケーションの [Create Page] ページのスクリーン ショット - 開発詳細](./media/sql-api-python-application/cosmos-db-python-run-create-page.png)
+    ![Web アプリケーションの [Create Page] ページのスクリーンショット - 開発詳細](./media/sql-api-python-application/cosmos-db-python-run-create-page.png)
 4. 次に、 **[投票]** をクリックし、回答を選択します。
    
-    ![投稿用の質問を表示する Web アプリケーションのスクリーン ショット](./media/sql-api-python-application/cosmos-db-vote.png)
+    ![投稿用の質問を表示する Web アプリケーションのスクリーンショット](./media/sql-api-python-application/cosmos-db-vote.png)
 5. 回答を投票するごとに、該当するカウンターの値が増加します。
    
-    ![投票結果のページが表示されているスクリーン ショット](./media/sql-api-python-application/cosmos-db-voting-results.png)
+    ![投票結果のページが表示されているスクリーンショット](./media/sql-api-python-application/cosmos-db-voting-results.png)
 6. Shift + F5 キーを押して、プロジェクトのデバッグを停止します。
 
-## <a name="step-5-deploy-the-web-application-to-azure"></a>手順 5: Web アプリケーションを Azure にデプロイする
+## <a name="step-5-deploy-the-web-application-to-azure"></a>ステップ 5: Web アプリケーションを Azure にデプロイする
 Azure Cosmos DB に対してローカルで適切に動作する完全なアプリケーションを入手できたので、web.config ファイルを作成して、ローカル環境と一致するようにサーバーのファイルを更新し、Azure 上に完成したアプリを表示します。 これは、Visual Studio 2017 固有の手順です。 異なるバージョンの Visual Studio を使用している場合は、[Azure App Service への公開](/visualstudio/python/publishing-to-azure)に関する記事をご覧ください。
 
 1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[追加]、[新しい項目]** の順に選択します。表示されたダイアログ ボックスで、**[Azure web.config (Fast CGI)]** テンプレートを選択し、**[OK]** をクリックします。 これにより、お使いのプロジェクトのルートに、`web.config` ファイルが作成されます。 
@@ -395,10 +391,10 @@ Azure Cosmos DB に対してローカルで適切に動作する完全なアプ�
      ![tutorial が選択されたソリューション エクスプローラーのスクリーンショット。[発行] オプションが強調表示されている](./media/sql-api-python-application/image20.png)
 6. **[発行]** ダイアログ ボックスで、**[Microsoft Azure App Service]** を選択します。**[新規作成]** を選択し、**[発行]** をクリックします。
    
-    ![Microsoft Azure App Service が強調表示されている [Web の発行] ウィンドウのスクリーン ショット](./media/sql-api-python-application/cosmos-db-python-publish.png)
+    ![Microsoft Azure App Service が強調表示されている [Web の発行] ウィンドウのスクリーンショット](./media/sql-api-python-application/cosmos-db-python-publish.png)
 7. **[App Service の作成]** ダイアログ ボックスで、Web アプリ名と共に、**サブスクリプション**、**リソース グループ**、および **App Service プラン**を入力し、**[作成]** をクリックします。
    
-    ![[Microsoft Azure Web Apps] ウィンドウのスクリーン ショット](./media/sql-api-python-application/cosmos-db-python-create-app-service.png)
+    ![[Microsoft Azure Web Apps] ウィンドウのスクリーンショット](./media/sql-api-python-application/cosmos-db-python-create-app-service.png)
 8. 数秒後に、Visual Studio によるサーバーへのファイル コピーが完了し、"内部サーバー エラーが発生したため、ページを表示できません。" というメッセージが  `http://<your app service>.azurewebsites.net/` ページに表示されます。
 
 9. Azure Portal で新しい App Service アカウントを開き、ナビゲーション メニューを下にスクロールして、**[開発ツール]** セクションにある **[拡張機能]** を選択して、**[+ Add]\(+ (追加)\)** をクリックします。
@@ -421,7 +417,7 @@ Azure Cosmos DB に対してローカルで適切に動作する完全なアプ�
     ![Bottle、Flask、および Django アプリを App Service に公開した結果](./media/sql-api-python-application/python-published-app-services.png)
 
     > [!Tip] 
-    > Web ページが表示されない場合、または "内部サーバー エラーが発生したため、ページを表示できません。" というメッセージがまだ表示される場合、 Kudo で web.config ファイルを開き、` <httpErrors errorMode="Detailed"></httpErrors>` を system.webServer セクションに追加してから、ページを更新します。 これにより、ブラウザーに詳細なエラー出力が表示されます。 
+    > Web ページが表示されない場合、または "内部サーバー エラーが発生したため、ページを表示できません。" というメッセージがまだ表示される場合、 Kudo で web.config ファイルを開き、`<httpErrors errorMode="Detailed"></httpErrors>` を system.webServer セクションに追加してから、ページを更新します。 これにより、ブラウザーに詳細なエラー出力が表示されます。 
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 これがコンピューターで実行した最初の Python アプリの場合は、PATH 変数に次のフォルダー (または同等のインストールの場所) が含まれていることを確認します。
@@ -437,4 +433,4 @@ Web アプリケーションに機能を追加する場合は、[Azure Cosmos DB
 
 Azure、Visual Studio、Python の詳細については、「 [Python デベロッパー センター](https://azure.microsoft.com/develop/python/)」を参照してください。 
 
-Python Flask の追加のチュートリアルについては、 [Flask メガ チュートリアルのパート 1: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)というブログ記事を参照してください。 
+Python Flask の追加のチュートリアルについては、「[The Flask Mega-Tutorial, Part I: Hello, World!](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)」(Flask メガ チュートリアルのパート 1: Hello, World!) を参照してください。 

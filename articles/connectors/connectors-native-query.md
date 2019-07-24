@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
-ms.openlocfilehash: 05dd4ae3c4ee439d66401a3f5595f9104051f8ee
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 2a82afe396039857e5b9ad6b8a6d0e710573037f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27962647"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59794881"
 ---
 # <a name="get-started-with-the-query-action"></a>クエリ アクションの概要
 クエリ アクションを使用し、バッチと配列を操作して次のワークフローを実現できます。
@@ -31,7 +31,8 @@ ms.locfileid: "27962647"
 ロジック アプリでクエリ アクションの使用を開始するには、 [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事をご覧ください。
 
 ## <a name="use-the-query-action"></a>クエリ アクションの使用
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](connectors-overview.md)を参照してください。  
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 
+アクションの詳細については[こちら](../connectors/apis-list.md)を参照してください。  
 
 現在、クエリ アクションでは、"配列のフィルター処理" という操作だけがデザイナーで公開されています。 このクエリ アクションでは、配列を照会し、フィルター処理された一連の結果を返すことができます。
 
@@ -55,18 +56,18 @@ ms.locfileid: "27962647"
 ## <a name="query-action"></a>クエリ アクション
 ここでは、このコネクタでサポートされているアクションの詳細について説明します。 このコネクタには、使用可能なアクションが 1 つあります。
 
-| アクションを表示します。 | [説明] |
+| Action | 説明 |
 | --- | --- |
-| [配列のフィルター処理] |配列内の各項目について条件を評価し、結果を返します。 |
+| 配列のフィルター処理 |配列内の各項目について条件を評価し、結果を返します。 |
 
 ## <a name="action-details"></a>アクションの詳細
 このクエリ アクションには、使用可能なアクションが 1 つ用意されています。 次の表に、アクションの必須および省略可能な入力フィールドと、各アクションの使用に伴う出力の詳細を示します。
 
-### <a name="filter-array"></a>[配列のフィルター処理]
+### <a name="filter-array"></a>配列のフィルター処理
 HTTP 送信要求を実行するアクションの入力フィールドを次に示します。
 \* は、必須フィールドであることを示しています。
 
-| 表示名 | プロパティ名 | [説明] |
+| Display name | プロパティ名 | 説明 |
 | --- | --- | --- |
 | From* |from |フィルター処理する配列 |
 | Condition* |各値の説明: |各項目について評価する条件 |
@@ -76,7 +77,7 @@ HTTP 送信要求を実行するアクションの入力フィールドを次に
 ### <a name="output-details"></a>出力の詳細
 HTTP 応答の出力の詳細を次に示します。
 
-| プロパティ名 | データ型 | [説明] |
+| プロパティ名 | データ型 | 説明 |
 | --- | --- | --- |
 | Filtered array |array |フィルター処理された各結果を表すオブジェクトを含む配列 |
 

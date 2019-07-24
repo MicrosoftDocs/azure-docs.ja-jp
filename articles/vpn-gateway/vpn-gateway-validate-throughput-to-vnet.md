@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: 7e6b3e7496c4a063156ff3b8feae1f5096efe55f
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 819415712d8e605825957aa602fc99dcf6902d82
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035620"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821663"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>仮想ネットワークへの VPN スループットを検証する方法
 
@@ -49,7 +49,7 @@ VPN ゲートウェイ接続には、次のコンポーネントが含まれま�
 ## <a name="calculate-the-maximum-expected-ingressegress"></a>予想される最大イングレス/エグレスの計算
 
 1.  アプリケーションのベースライン スループット要件を特定します。
-2.  Azure VPN Gateway のスループットの制限を特定します。 ヘルプについては、「[VPN ゲートウェイの計画と設計](vpn-gateway-plan-design.md)」の「SKU と VPN の種類別の集計スループット」を参照してください。
+2.  Azure VPN Gateway のスループットの制限を特定します。 [VPN Gateway](vpn-gateway-about-vpngateways.md#gwsku) に関するページの「ゲートウェイの SKU」を参照してください。
 3.  お使いの VM サイズの [Azure VM スループットのガイダンス](../virtual-machines/virtual-machines-windows-sizes.md)を特定します。
 4.  インターネット サービス プロバイダー (ISP) の帯域幅を特定します。
 5.  (VM、ゲートウェイ、ISP) * 0.8 の最小の帯域幅の予想されるスループットを計算します。

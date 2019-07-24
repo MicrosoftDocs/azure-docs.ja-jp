@@ -3,19 +3,19 @@ title: ClaimsSchema  - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーの ClaimsSchema 要素を指定します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 2d11283ccf58fdc356742d6f4042afd15bf6faab
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.subservice: B2C
+ms.openlocfilehash: 5d7036f2c7301223b27c80402dace8e9ea05b7f1
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568644"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487823"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -44,7 +44,7 @@ ms.locfileid: "51568644"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ID | [はい] | 要求の種類に使用される識別子です。 その他の要素は、ポリシーでこの識別子を使用することができます。 |
+| Id | はい | 要求の種類に使用される識別子です。 その他の要素は、ポリシーでこの識別子を使用することができます。 |
 
 **ClaimType**要素には、次の要素が含まれています。
 
@@ -56,7 +56,7 @@ ms.locfileid: "51568644"
 | Mask | 0:1 | 要求を表示するときに適用できる、文字をマスクするのに使用されるオプショナルな文字列。 たとえば、電話番号 324-232-4343 をXXX-XXX-4343 としてマスクすることができます。 |
 | UserHelpText | 0:1 | 要求の目的を理解するのにユーザーに役立つ種類の説明。 値を[ローカライズ](localization.md)することができます。 |
 | UserInputType | 0:1 | 要求の種類の要求データを手動で入力するときに、ユーザーが利用できるような入力コントロールの種類。 このページの後半で定義されている、ユーザーにより入力された種類を参照してください。 |
-| 制限 | 0:1 | 正規表現 (Regex) または許容される値の一覧など、この要求に対する値の制限。 値を[ローカライズ](localization.md)することができます。 |
+| Restriction | 0:1 | 正規表現 (Regex) または許容される値の一覧など、この要求に対する値の制限。 値を[ローカライズ](localization.md)することができます。 |
 PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参照。 **PredicateValidationReference**要素を使用すると、適切な形式のデータのみが入力されていることを確認する検証プロセスを実できます。 詳細については、[述語](predicates.md)を参照してください。 |
 
 ### <a name="defaultpartnerclaimtypes"></a>DefaultPartnerClaimTypes
@@ -65,14 +65,14 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| プロトコル | 0:n | プロトコルとその既定のパートナー要求種類の名前一覧。 |
+| Protocol | 0:n | プロトコルとその既定のパートナー要求種類の名前一覧。 |
 
 **Protocol** 要素には、次の属性が含まれています。
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Name | [はい] | Azure AD B2C によってサポートされている有効なプロトコルの名前。 指定できる値: OAuth1、OAuth2、SAML2、OpenIdConnect、WsFed、または WsTrust。 |
-| PartnerClaimType | [はい] | 使用する要求種類の名。 |
+| Name | はい | Azure AD B2C によってサポートされている有効なプロトコルの名前。 次のいずれかの値になります。OAuth1、OAuth2、SAML2、OpenIdConnect、WsFed、または WsTrust。 |
+| PartnerClaimType | はい | 使用する要求種類の名。 |
 
 次の例で、Identity Experience Framework は SAML2 id プロバイダーまたは証明書利用者アプリケーションと相互作用するときに、 **surname**要求が`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`にマップされ、OpenIdConnect と OAuth2 とともに、要求は、`family_name`にマップされます。
 
@@ -106,8 +106,8 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| type | [はい] | 要求マスクの種類です。 指定できる値: `Simple`および`Regex`。 `Simple`値では、要求の文字列の先頭部分に単純なテキスト マスクを適用することを示します。 `Regex`値が正規表現が全体として、要求の文字列に適用されることを示します。  `Regex`値が指定されている場合、オプショナルな属性も正規表現で定義することが必要となります。 |
-| 正規表現 | いいえ  | **種類**が`Regex`に設定されている場合、使用される正規表現を指定します。
+| `Type` | はい | 要求マスクの種類です。 指定できる値: `Simple`および`Regex`。 `Simple`値は、単純なテキスト マスクが要求の文字列の先頭部分に適用されることを示します。 `Regex`値は、正規表現が全体として、要求の文字列に適用されることを示します。  `Regex`値が指定されている場合、オプショナルな属性も正規表現で定義することが必要となります。 |
+| `Regex` | いいえ  | **`Type`** が `Regex` に設定されている場合、使用される正規表現を指定します。
 
 次の例では **PhoneNumber** 要求を `Simple` マスクで構成します。
 
@@ -140,7 +140,7 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 ![マスクを使用する要求種類](./media/claimsschema/mask-regex.png)
 
 
-### <a name="restriction"></a>制限
+### <a name="restriction"></a>Restriction
 
 **制限**要素は、次の属性を含めることがあります。
 
@@ -152,18 +152,18 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| 列挙型 | 1:n | ドロップダウン リストの値など、要求に指定するオプションを選択するためにユーザーのユーザー インターフェイスで使用可能なオプションです。 |
-| パターン | 1:1 | 使用できる正規表現。 |
+| Enumeration | 1:n | ドロップダウン リストの値など、要求に指定するオプションを選択するためにユーザーのユーザー インターフェイスで使用可能なオプションです。 |
+| Pattern | 1:1 | 使用できる正規表現。 |
 
-### <a name="enumeration"></a>列挙型
+### <a name="enumeration"></a>Enumeration
 
 **列挙型**要素には、次の属性が含まれています。
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Text | [はい] | このオプションのユーザー インターフェイスでユーザーに表示される表示文字列。 |
-|値 | [はい] | このオプションの選択に関連付けられている要求の値。 |
-| SelectByDefault | いいえ  | このオプションが既定で UI で選択するかどうかを示します。 使用可能な値: True または False。 |
+| Text | はい | このオプションのユーザー インターフェイスでユーザーに表示される表示文字列。 |
+|値 | はい | このオプションの選択に関連付けられている要求の値。 |
+| SelectByDefault | いいえ  | このオプションが既定で UI で選択するかどうかを示します。 指定できる値True または False。 |
 
 次の例では、**市区町村**ドロップダウン リストの要求を設定し、既定値を`New York`に設定します。
 
@@ -184,13 +184,13 @@ Identity Experience Framework では、電子メールアドレスと電子メ�
 ![市区町村ドロップダウン リスト](./media/claimsschema/dropdownsingleselect.png)
 
 
-### <a name="pattern"></a>パターン
+### <a name="pattern"></a>Pattern
 
 **パターン**要素には、次の属性が含まれることがあります。
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| 正規表現 | [はい] | この種類の要求が有効になるのに一致する必要がある正規表現。 |
+| RegularExpression | はい | この種類の要求が有効になるのに一致する必要がある正規表現。 |
 | HelpText | いいえ  | この要求のパターンまたは正規表現。 |
 
 次の例では、**電子メール**要求を正規表現入力検証とヘルプ テキストとともに設定します。

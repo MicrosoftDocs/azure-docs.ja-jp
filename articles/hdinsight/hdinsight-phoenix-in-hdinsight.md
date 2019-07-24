@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: ashishth
-ms.openlocfilehash: d86600dd000d3e9c71a38b632aa75e82239401dd
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 833f240572b10e9d07da0ded27f5848822a70f46
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104581"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744340"
 ---
 # <a name="apache-phoenix-in-hdinsight"></a>HDInsight の Apache Phoenix
 
-[Apache Phoenix](http://phoenix.apache.org/) は、[HBase](hbase/apache-hbase-overview.md) 上に構築されるオープンソースの超並列リレーショナル データベース レイヤーです。 Phoenix では、HBase に対して SQL のようなクエリを使うことができます。 Phoenix は基盤の JDBC ドライバーを使って、ユーザーが SQL テーブル、インデックス、ビュー、およびシーケンスを作成、削除、変更でき、行を個別または一括でアップサートできるようします。 Phoenix は、MapReduce ではなく noSQL ネイティブ コンパイルを使ってクエリをコンパイルして、HBase に基づく待機時間の短いアプリケーションを作成できるようにします。 Phoenix では、コプロセッサを追加して、クライアントが指定したコードの実行をサーバーのアドレス空間でサポートすることにより、データと共存したコードを実行します。 このアプローチにより、クライアント/サーバーのデータ転送が最小限に抑えられます。
+[Apache Phoenix](https://phoenix.apache.org/) は、[Apache HBase](hbase/apache-hbase-overview.md) 上に構築されるオープンソースの超並列リレーショナル データベース レイヤーです。 Phoenix では、HBase に対して SQL のようなクエリを使うことができます。 Phoenix は基盤の JDBC ドライバーを使って、ユーザーが SQL テーブル、インデックス、ビュー、およびシーケンスを作成、削除、変更でき、行を個別または一括でアップサートできるようします。 Phoenix は、MapReduce ではなく noSQL ネイティブ コンパイルを使ってクエリをコンパイルして、HBase に基づく待機時間の短いアプリケーションを作成できるようにします。 Phoenix では、コプロセッサを追加して、クライアントが指定したコードの実行をサーバーのアドレス空間でサポートすることにより、データと共存したコードを実行します。 このアプローチにより、クライアント/サーバーのデータ転送が最小限に抑えられます。
 
-Apache Phoenix を使うと、開発者でなくても、プログラミングではなく SQL に似た構文を使って、ビッグ データのクエリを実行できます。 Phoenix は、[Hive](hadoop/hdinsight-use-hive.md) や Spark SQL などの他のツールとは異なり、HBase 向けに高度に最適化されています。 開発者にとってのメリットは、高いパフォーマンスのクエリを、はるかに少ないコードで作成できることです。
+Apache Phoenix を使うと、開発者でなくても、プログラミングではなく SQL に似た構文を使って、ビッグ データのクエリを実行できます。 Phoenix は、[Apache Hive](hadoop/hdinsight-use-hive.md) や Apache Spark SQL などの他のツールとは異なり、HBase 向けに高度に最適化されています。 開発者にとってのメリットは、高いパフォーマンスのクエリを、はるかに少ないコードで作成できることです。
 <!-- [Spark SQL](spark/apache-spark-sql-with-hdinsight.md)  -->
 
 SQL クエリを送信すると、Phoenix は HBase ネイティブの呼び出しにクエリをコンパイルし、最適化のためにスキャン (またはプラン) を並列で実行します。 この抽象化レイヤーにより、開発者は MapReduce ジョブを作成しなくて済み、Phoenix のビッグ データ ストレージに関するアプリケーションのビジネス ロジックとワークフローに集中できます。
@@ -70,17 +70,17 @@ WHERE metric_type = 'm';
 
 ### <a name="skip-scan"></a>スキップ スキャン
 
-スキップ スキャンは、複合インデックスの 1 つ以上の列を使って、個別の値を検索します。 範囲スキャンとは異なり、スキップ スキャンは行内スキャンを実装して、[パフォーマンスの向上](http://phoenix.apache.org/performance.html#Skip-Scan)を実現します。 スキャンでは、最初に一致した値は、次の値が見つかるまで、インデックスと共にスキップされます。
+スキップ スキャンは、複合インデックスの 1 つ以上の列を使って、個別の値を検索します。 範囲スキャンとは異なり、スキップ スキャンは行内スキャンを実装して、[パフォーマンスの向上](https://phoenix.apache.org/performance.html#Skip-Scan)を実現します。 スキャンでは、最初に一致した値は、次の値が見つかるまで、インデックスと共にスキップされます。
 
 スキップ スキャンでは、HBase フィルターの `SEEK_NEXT_USING_HINT` 列挙型が使われます。 スキップ スキャンは、`SEEK_NEXT_USING_HINT` を使うことで、各列で検索されているキーのセットまたはキーの範囲を追跡します。 その後、スキップ スキャンはフィルター評価の間に渡されたキーを取得して、組み合わせの 1 つかどうかを判定します。 該当しない場合、スキップ スキャンはジャンプする次の最上位キーを評価します。
 
 ### <a name="transactions"></a>トランザクション
 
-HBase では行レベルのトランザクションが提供されますが、Phoenix は [Tephra](http://tephra.io/) と統合して、完全な [ACID](https://en.wikipedia.org/wiki/ACID) セマンティクスを備えたクロス行トランザクションとクロステーブル トランザクションのサポートを追加します。
+HBase では行レベルのトランザクションが提供されますが、Phoenix は [Tephra](https://tephra.io/) と統合して、完全な [ACID](https://en.wikipedia.org/wiki/ACID) セマンティクスを備えたクロス行トランザクションとクロステーブル トランザクションのサポートを追加します。
 
 従来の SQL トランザクションと同様に、Phoenix トランザクション マネージャーによって提供されるトランザクションを使うと、データのアトミック単位が正常にアップサートされて、任意のトランザクション対応テーブルでアップサート操作が失敗した場合はトランザクションがロールバックすることが保証されます。
 
-Phoenix のトランザクションを有効にする方法については、[Apache Phoenix トランザクションのドキュメント](http://phoenix.apache.org/transactions.html)をご覧ください。
+Phoenix のトランザクションを有効にする方法については、[Apache Phoenix トランザクションのドキュメント](https://phoenix.apache.org/transactions.html)をご覧ください。
 
 トランザクションが有効な新しいテーブルを作成するには、`CREATE` ステートメントで `TRANSACTIONAL` プロパティを `true` に設定します。
 
@@ -94,7 +94,7 @@ CREATE TABLE my_table (k BIGINT PRIMARY KEY, v VARCHAR) TRANSACTIONAL=true;
 ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > トランザクション対応のテーブルをトランザクション非対応に切り替えることはできません。
 
 ### <a name="salted-tables"></a>ソルティングされたテーブル
@@ -122,7 +122,7 @@ CREATE TABLE Saltedweblogs (
     shippingamount DOUBLE NULL) SALT_BUCKETS=4;
 ```
 
-## <a name="enable-and-tune-phoenix-with-ambari"></a>Ambari での Phoenix の有効化と調整
+## <a name="enable-and-tune-phoenix-with-apache-ambari"></a>Apache Ambari での Phoenix の有効化と調整
 
 HDInsight HBase クラスターには、構成の変更を行うための [Ambari UI](hdinsight-hadoop-manage-ambari.md) が含まれます。
 

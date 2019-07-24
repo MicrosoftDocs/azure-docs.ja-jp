@@ -1,21 +1,22 @@
 ---
-title: Azure MFA サーバーまたは Azure MFA サービス (オンプレミスまたはクラウド) の選択
+title: Azure MFA サーバーまたは Azure MFA サービス (オンプレミスまたはクラウド) の選択 - Azure Active Directory
 description: Azure AD 管理者は、どちらのバージョンの MFA をデプロイすべきか把握する必要があります。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 696c331111fef9d6fc238b733e15230ab3ee1e56
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a099fa8d223643e5b339d35c0ff5cf7a5589049c
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378018"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372263"
 ---
 # <a name="which-version-of-azure-mfa-is-right-for-my-organization"></a>所属する組織に適しているのはどちらのバージョンの Azure MFA であるかを確認しましょう。
 
@@ -37,7 +38,7 @@ Multi-Factor Authentication (MFA) をデプロイする場所と方法を決定�
 | アプリ ギャラリー内の SaaS アプリ |● |  |
 | Azure AD アプリケーション プロキシ経由で公開される Web アプリケーション |● |  |
 | Azure AD アプリケーション プロキシ経由で公開されない IIS アプリケーション  | |● |
-| VPN、RDG などのリモート アクセス | ● | ● |
+| VPN、NPS 拡張機能を使用した RDG、または既存の NPS サーバーなどのリモート アクセス | ● | ● |
 
 ## <a name="where-are-the-users-located"></a>ユーザーが位置する場所
 
@@ -81,4 +82,4 @@ Multi-Factor Authentication (MFA) をデプロイする場所と方法を決定�
 
 <center>
 
-[![クラウドの MFA](./media/concept-mfa-whichversion/cloud2.png)](howto-mfa-getstarted.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![MFA サーバー](./media/concept-mfa-whichversion/server2.png)](howto-mfaserver-deploy.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </center>
+[![クラウドの Azure MFA の選択肢](./media/concept-mfa-whichversion/cloud2.png)](howto-mfa-getstarted.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![オンプレミスの Azure MFA Server の選択肢](./media/concept-mfa-whichversion/server2.png)](howto-mfaserver-deploy.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </center>

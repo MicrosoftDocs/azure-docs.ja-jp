@@ -1,22 +1,22 @@
 ---
-title: 'エンドユーザー認証: Azure Active Directory を使用した Azure Data Lake Storage Gen1 | Microsoft Docs'
+title: 'エンドユーザー認証: Azure Active Directory での Azure Data Lake Storage Gen1 の認証 | Microsoft Docs'
 description: Data Lake Storage Gen1 による Azure Active Directory を使用したエンドユーザー認証を行う方法について説明します
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 6f7b812f32eda0c671b1ad1101b13a1290df0482
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.author: twooley
+ms.openlocfilehash: c0fe63e395ee08cb65e9bbbadc4ce1f03032ce95
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954784"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58880085"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Data Lake Storage Gen1 による Azure Active Directory を使用したエンドユーザー認証
 > [!div class="op_single_selector"]
@@ -72,7 +72,7 @@ Azure Data Lake Storage Gen1 では、認証するために Azure Active Directo
 * 委任されたアクセス許可を設定する
 
 
-## <a name="step-1-create-an-active-directory-native-application"></a>手順 1: Active Directory ネイティブ アプリケーションを作成する
+## <a name="step-1-create-an-active-directory-native-application"></a>手順 1:Active Directory ネイティブ アプリケーションを作成する
 
 Azure Active Directory を使用して Data Lake Storage Gen1 によるエンドユーザー間認証を行う Azure AD ネイティブ アプリケーションを作成および構成します。 手順については、[Microsoft Azure での Ruby アプリケーションの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関するページを参照してください。
 
@@ -80,7 +80,7 @@ Azure Active Directory を使用して Data Lake Storage Gen1 によるエンド
 
 ![Web アプリの作成](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "ネイティブ アプリの作成")
 
-## <a name="step-2-get-application-id-and-redirect-uri"></a>手順 2: アプリケーション ID とリダイレクト URI を取得する
+## <a name="step-2-get-application-id-and-redirect-uri"></a>手順 2:アプリケーション ID とリダイレクト URI を取得する
 
 アプリケーション ID の取得については、[アプリケーション ID の取得](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)に関するページをご覧ください。
 
@@ -95,7 +95,7 @@ Azure Active Directory を使用して Data Lake Storage Gen1 によるエンド
 3. 表示された値をコピーします。
 
 
-## <a name="step-3-set-permissions"></a>手順 3: アクセス許可を設定する
+## <a name="step-3-set-permissions"></a>手順 3:アクセス許可を設定する
 
 1. Azure Portal で **[Azure Active Directory]** を選択します。**[アプリの登録]** をクリックし、作成した Azure AD ネイティブ アプリケーションを見つけてクリックします。
 

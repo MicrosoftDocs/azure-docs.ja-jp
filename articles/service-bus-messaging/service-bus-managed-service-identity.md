@@ -3,9 +3,9 @@ title: Azure Service Bus での Azure リソースのマネージド ID (プレ�
 description: Azure Service Bus で Azure リソースのマネージド ID を使用する
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/01/2018
-ms.author: spelluru
-ms.openlocfilehash: 5532c86271fa6a5f2b573e005993a68ac0a9e248
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.author: aschhab
+ms.openlocfilehash: 5edeebd9698384785082e5a441c24e136ed22481
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857076"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856887"
 ---
 # <a name="managed-identities-for-azure-resources-with-service-bus"></a>Azure Service Bus での Azure リソースのマネージド ID 
 
@@ -51,12 +51,10 @@ ms.locfileid: "48857076"
 
 ### <a name="create-a-new-service-bus-messaging-namespace"></a>新しい Service Bus メッセージング名前空間を作成する
 
-次に、RBAC のプレビューをサポートする Azure リージョンのいずれか (**米国東部**、**米国東部 2**、または**西ヨーロッパ**) で、[Service Bus メッセージング名前空間を作成](service-bus-create-namespace-portal.md)します。 
+次に、RBAC のプレビューをサポートする次の Azure リージョンのいずれかで、[Service Bus メッセージング名前空間を作成](service-bus-create-namespace-portal.md)します:**米国東部**、**米国東部 2**、または**西ヨーロッパ**。 
 
-ポータルで名前空間の **[アクセス制御 (IAM)]** ページに移動し、**[追加]** をクリックして、マネージド ID を**所有者**ロールに追加します。 そのためには、**[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。
+ポータルで名前空間の **[アクセス制御 (IAM)]** ページに移動し、**[ロールの割り当ての追加]** をクリックして、マネージド ID を**所有者**ロールに追加します。 そのためには、**[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。
 
-![](./media/service-bus-managed-service-identity/msi2.png)
- 
 これで、Web アプリケーションのマネージド ID は、Service Bus 名前空間と以前に作成したキューにアクセスできるようになりました。 
 
 ### <a name="run-the-app"></a>アプリの実行

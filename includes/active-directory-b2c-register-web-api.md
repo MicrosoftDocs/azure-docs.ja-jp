@@ -20,8 +20,8 @@ Web API を登録するには、表に指定された設定を使用してくだ
 | Setting      | 値の例  | 説明                                        |
 | ------------ | ------- | -------------------------------------------------- |
 | **名前** | Contoso B2C API | アプリケーションの **[名前]** には、コンシューマーが API の機能を把握できるような名前を入力します。 | 
-| **Web アプリ/Web API を含める** | [はい] | Web API の場合は **[はい]** を選択します。 |
-| **暗黙的フローを許可する** | [はい] | アプリケーションで [OpenID Connect サインイン](../articles/active-directory-b2c/active-directory-b2c-reference-oidc.md)を使用する場合は、**[はい]** を選択します。 |
+| **Web アプリ/Web API を含める** | はい | Web API の場合は **はい** を選択します。 |
+| **暗黙的フローを許可する** | はい | アプリケーションで [OpenID Connect サインイン](../articles/active-directory-b2c/active-directory-b2c-reference-oidc.md)を使用する場合は、**はい** を選択します。 |
 | **応答 URL** | `https://localhost:44316/` | [応答 URL] は、アプリケーションが要求したトークンを Azure AD B2C が返すエンドポイントです。 この例では、Web API がローカルに存在し、ポート 44316 でリッスンしています。 |
 | **アプリケーション ID/URI** | api | アプリケーション ID/URI は Web API に使用される ID です。 ドメインを含んだ完全な識別子 URI が自動的に生成されます。 |
 

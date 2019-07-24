@@ -2,17 +2,17 @@
 title: Azure Storage を Terraform バックエンドとして使用する
 description: Terraform 状態を Azure Storage に格納する方法の紹介。
 services: terraform
-author: neilpeterson
-ms.service: terraform
+author: tomarchermsft
+ms.service: azure
 ms.topic: article
 ms.date: 09/13/2018
-ms.author: nepeters
-ms.openlocfilehash: 48351dc0351b7a717a610ac9552e11362707e150
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: tarcher
+ms.openlocfilehash: 7145a50bc53fd28afafd3de9c724b5e5f71624fa
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128019"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762308"
 ---
 # <a name="store-terraform-state-in-azure-storage"></a>Terraform 状態を Azure Storage に格納する
 

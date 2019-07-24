@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: f8dac5469e7160fae93e8251ab7f4195a383f8b4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 877d994968dbc575c8baa7ac4c8a40b76f6d617f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30173323"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59283479"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Azure CDN ルール エンジンの一致条件 
 この記事では、Azure Content Delivery Network (CDN) [ルール エンジン](cdn-rules-engine.md)で利用できる一致条件について詳しく説明します。
@@ -101,13 +101,13 @@ Name | 目的
 
 
 ## <a name="reference-for-rules-engine-match-conditions"></a>ルール エンジンの一致条件のリファレンス
-
+<a name="main"></a>
 ---
 ### <a name="always"></a>Always (常に)
 
 「Always (常に)」一致条件では、一連の既定の機能がすべての要求に適用されます。
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
@@ -116,8 +116,8 @@ Name | 目的
 AS Number ネットワークは、自律システム番号 (ASN) で識別されています。 
 
 **[一致する]**/**[一致しない]** オプションによって、「AS Number (AS 番号)」一致条件が満たされる条件が決まります。
-- **[一致する]**: クライアント ネットワークの ASN が、指定した ASN のいずれかと一致する必要があります。 
-- **[一致しない]**: クライアント ネットワークの ASN が、指定したどの ASN とも一致しない必要があります。
+- **一致する**:クライアント ネットワークの ASN が、指定した ASN のいずれかと一致する必要があります。 
+- **一致しない**:クライアント ネットワークの ASN が、指定したどの ASN とも一致しない必要があります。
 
 重要な情報: 
 - 複数の ASN を指定する場合は、ASN ごとに単一の空白で区切ります。 たとえば、"64514 64515" と指定した場合、64514 または 64515 のいずれかから配信された要求と一致します。
@@ -130,7 +130,7 @@ AS Number ネットワークは、自律システム番号 (ASN) で識別され
   - Ignore Origin No-Cache (配信元のキャッシュなしを無視する)
   - Internal Max-Stale (内部 Max-Stale)
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
@@ -139,31 +139,31 @@ AS Number ネットワークは、自律システム番号 (ASN) で識別され
 以下の両方の条件が満たされている場合に、「CDN Origin (CDN 配信元)」一致条件が満たされます。
 - CDN ストレージのコンテンツが要求された。
 - 要求 URI で、この一致条件で定義されているコンテンツ アクセス ポイントの種類 (例: /000001) を使用している。
-  - CDN URL: 要求 URI に、選択したコンテンツ アクセス ポイントが含まれている必要があります。
-  - エッジ CNAME URL: 対応するエッジ CNAME 構成では、選択したコンテンツ アクセス ポイントを参照する必要があります。
+  - CDN URL:要求 URI に、選択したコンテンツ アクセス ポイントが含まれている必要があります。
+  - エッジ CNAME URL:対応するエッジ CNAME 構成では、選択したコンテンツ アクセス ポイントを参照する必要があります。
   
 重要な情報: 
  - コンテンツ アクセス ポイントは、要求されたコンテンツを提供する必要があるサービスを識別します。
  - AND IF ステートメントを使用して、特定の一致条件を結合しないでください。 たとえば、「CDN Origin (CDN 配信元)」一致条件と「Customer Origin (顧客配信元)」一致条件を結合すると、一致不可能な一致パターンが作成されてしまいます。 このため、2 つの「CDN Origin (CDN 配信元)」一致条件を AND IF ステートメントで結合することはできません。
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
 ---
 ### <a name="client-ip-address"></a>Client IP Address (現在の IP アドレス)
 **[一致する]**/**[一致しない]** オプションによって、「Client IP Address (クライアント IP アドレス)」一致条件が満たされる条件が決まります。
-- **[一致する]**: クライアントの IP アドレスが、指定した IP アドレスのいずれかと一致する必要があります。 
-- **[一致しない]**: クライアントの IP アドレスが、指定したどの IP アドレスとも一致しない必要があります。 
+- **一致する**:クライアントの IP アドレスが、指定した IP アドレスのいずれかと一致する必要があります。 
+- **一致しない**:クライアントの IP アドレスが、指定したどの IP アドレスとも一致しない必要があります。 
 
 重要な情報: 
 - CIDR 表記を使用します。
 - 複数の IP アドレスまたは IP アドレス ブロックを指定する場合は、IP アドレスまたは IP ブロックごとに単一の空白で区切ります。 例: 
-  - **IPv4 の例**: "1.2.3.4 10.20.30.40" と指定した場合、アドレス 1.2.3.4 または 10.20.30.40 から配信される要求と一致します。
-  - **IPv6 の例**: "1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80" と指定した場合、アドレス 1:2:3:4:5:6:7:8 または 10:20:30:40:50:60:70:80 から配信される要求と一致します。
+  - **IPv4 の例**:"1.2.3.4 10.20.30.40" と指定した場合、アドレス 1.2.3.4 または 10.20.30.40 から配信される要求と一致します。
+  - **IPv6 の例**:"1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80" と指定した場合、アドレス 1:2:3:4:5:6:7:8 または 10:20:30:40:50:60:70:80 から配信される要求と一致します。
 - IP アドレス ブロックの構文では、ベース IP アドレスの末尾にスラッシュおよびプレフィックス サイズを付与します。 例: 
-  - **IPv4 の例**: "5.5.5.64/26" と指定した場合、アドレス 5.5.5.64 ～ 5.5.5.127 から配信される要求と一致します。
-  - **IPv6 の例**: "1:2:3:/48" と指定した場合、アドレス 1:2:3:0:0:0:0:0 ～ 1:2:3:ffff:ffff:ffff:ffff:ffff から配信される要求と一致します。
+  - **IPv4 の例**:"5.5.5.64/26" と指定した場合、アドレス 5.5.5.64 ～ 5.5.5.127 から配信される要求と一致します。
+  - **IPv6 の例**:"1:2:3:/48" と指定した場合、アドレス 1:2:3:0:0:0:0:0 ～ 1:2:3:ffff:ffff:ffff:ffff:ffff から配信される要求と一致します。
 - キャッシュ設定の追跡方法が原因で、この一致条件は次の機能との互換性がありません。
   - Complete Cache Fill (完全キャッシュ入力)
   - Default Internal Max-Age (既定の内部最長有効期間)
@@ -171,15 +171,15 @@ AS Number ネットワークは、自律システム番号 (ASN) で識別され
   - Ignore Origin No-Cache (配信元のキャッシュなしを無視する)
   - Internal Max-Stale (内部 Max-Stale)
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
 ---
 ### <a name="cookie-parameter"></a>Cookie Parameter (Cookie パラメーター)
 **[一致する]**/**[一致しない]** オプションによって、「Cookie Parameter (Cookie パラメーター)」一致条件が満たされる条件が決まります。
-- **[一致する]**: この一致条件に定義された 1 つ以上の値と一致する値を持つ特定の Cookie が、要求に含まれている必要があります。
-- **[一致しない]**: 要求が次のいずれかの条件を満たす必要があります。
+- **一致する**:この一致条件に定義された 1 つ以上の値と一致する値を持つ特定の Cookie が、要求に含まれている必要があります。
+- **一致しない**:要求が次のいずれかの条件を満たす必要があります。
   - 指定した Cookie を含まない。
   - 指定した Cookie を含むが、値はこの一致条件に定義されたいずれの値とも一致しない。
   
@@ -200,7 +200,7 @@ AS Number ネットワークは、自律システム番号 (ASN) で識別され
   - Ignore Origin No-Cache (配信元のキャッシュなしを無視する)
   - Internal Max-Stale (内部 Max-Stale)
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
@@ -209,8 +209,8 @@ AS Number ネットワークは、自律システム番号 (ASN) で識別され
 「Cookie Parameter Regex (Cookie パラメーターの正規表現)」一致条件では、Cookie の名前と値を定義します。 [正規表現](cdn-rules-engine-reference.md#regular-expressions)を使用して、必要な Cookie 値を定義できます。 
 
 **[一致する]**/**[一致しない]** オプションによって、「Cookie Parameter Regex (Cookie パラメーターの正規表現)」一致条件が満たされる条件が決まります。
-- **[一致する]**: 指定した正規表現と一致する値を持つ特定の Cookie が、要求に含まれている必要があります。
-- **[一致しない]**: 要求が次のいずれかの条件を満たす必要があります。
+- **一致する**:指定した正規表現と一致する値を持つ特定の Cookie が、要求に含まれている必要があります。
+- **一致しない**:要求が次のいずれかの条件を満たす必要があります。
   - 指定した Cookie を含まない。
   - 指定した Cookie を含むが、値は指定した正規表現と一致しない。
   
@@ -229,17 +229,17 @@ AS Number ネットワークは、自律システム番号 (ASN) で識別され
   - Ignore Origin No-Cache (配信元のキャッシュなしを無視する)
   - Internal Max-Stale (内部 Max-Stale)
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
---- 
+---
 ### <a name="country"></a>Country
 国コードを利用して、国を指定できます。 
 
 **[一致する]**/**[一致しない]** オプションによって、「Country (国)」一致条件が満たされる条件が決まります。
-- **[一致する]**: 要求に、指定した国コード値が含まれている必要があります。 
-- **[一致しない]**: 要求に、指定した国コード値が含まれていない必要があります。
+- **一致する**:要求に、指定した国コード値が含まれている必要があります。 
+- **一致しない**:要求に、指定した国コード値が含まれていない必要があります。
 
 重要な情報: 
 - 複数の国コードを指定する場合は、コードごとに単一の空白で区切ります。
@@ -257,16 +257,16 @@ AS Number ネットワークは、自律システム番号 (ASN) で識別され
 #### <a name="implementing-country-filtering-by-using-the-rules-engine"></a>ルール エンジンを使用した国のフィルタリングの実装
 この一致条件を使用すると、要求の送信元の場所に基づいて多数のカスタマイズを行うことができます。 たとえば、次の構成を使用して、国のフィルタリンク機能の動作をレプリケートできます。
 
-- URL パス ワイルドカードの一致: [「URL Path Wildcard (URL パス ワイルドカード)」一致条件](#url-path-wildcard)を、セキュリティで保護するディレクトリに設定します。 
+- URL パス ワイルドカードの一致:[「URL Path Wildcard (URL パス ワイルドカード)」一致条件](#url-path-wildcard)を、セキュリティで保護するディレクトリに設定します。 
     相対パスの末尾にアスタリスクを追加すると、すべての子へのアクセスが、このルールによって制限されるようになります。
 
-- 国の一致: 「Country (国)」一致条件を必要な国のセットに設定します。
-   - 許可: 「URL Path Wildcard (URL パス ワイルドカード)」一致条件で定義されている場所に保存されたコンテンツへのアクセスを、指定した国にのみ許可するには、「Country (国)」一致条件を **[一致しない]** に設定します。
-   - ブロック: 指定した国が、「URL Path Wildcard (URL パス ワイルドカード)」一致条件で定義されている場所に保存されたコンテンツにアクセスできないようにするには、「Country (国)」一致条件を **[一致する]** に設定します。
+- 国の一致:「Country (国)」一致条件を必要な国のセットに設定します。
+   - 許可:「URL Path Wildcard (URL パス ワイルドカード)」一致条件で定義されている場所に保存されたコンテンツへのアクセスを、指定した国にのみ許可するには、「Country (国)」一致条件を **[一致しない]** に設定します。
+   - ブロック:指定した国が、「URL Path Wildcard (URL パス ワイルドカード)」一致条件で定義されている場所に保存されたコンテンツにアクセスできないようにするには、「Country (国)」一致条件を **[一致する]** に設定します。
 
 - Deny Access (403) (アクセス拒否 (403)) 機能: 国のフィルタリング機能の許可またはブロック部分をレプリケートするには、[Deny Access (403) (アクセス拒否 (403)) 機能](cdn-rules-engine-reference-features.md#deny-access-403)を有効にします。
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
@@ -280,18 +280,18 @@ AS Number ネットワークは、自律システム番号 (ASN) で識別され
   - エッジ CNAME 構成
 - AND IF ステートメントを使用して、特定の一致条件を結合しないでください。 たとえば、「Customer Origin (顧客配信元 配信元)」一致条件と「CDN (CDN 配信元)」一致条件を結合すると、一致不可能な一致パターンが作成されてしまいます。 このため、2 つの「Customer Origin (顧客配信元)」一致条件を AND IF ステートメントで結合することはできません。
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
 ---
-### <a name="device"></a>デバイス
+### <a name="device"></a>Device
 
 この「Device (デバイス)」一致条件では、モバイル デバイスからの要求をそのプロパティに基づいて識別します。 モバイル デバイスの検出は [WURFL](http://wurfl.sourceforge.net/) から実現します。 
 
 **[一致する]**/**[一致しない]** オプションによって、「Device (デバイス)」一致条件が満たされる条件が決まります。
-- **[一致する]**: 要求者のデバイスが指定した値と一致する必要があります。 
-- **[一致しない]**: 要求者のデバイスが指定した値と一致しない必要があります。
+- **一致する**:要求者のデバイスが指定した値と一致する必要があります。 
+- **一致しない**:要求者のデバイスが指定した値と一致しない必要があります。
 
 重要な情報: 
 
@@ -306,7 +306,7 @@ AS Number ネットワークは、自律システム番号 (ASN) で識別され
 #### <a name="string-type"></a>文字列の種類
 通常、WURFL 機能では、数字、文字、記号の任意の組み合わせを受け入れます。 この機能は柔軟性があるため、この一致条件に関連する値を解釈する方法を選択する必要があります。 次の表に、使用可能な一連のオプションを示します。
 
-type     | [説明]
+Type     | 説明
 ---------|------------
 リテラル  | [リテラル値](cdn-rules-engine-reference.md#literal-values)を使用して、ほとんどの文字が特別な意味を持たないようにするには、このオプションを選択します。
 ワイルドカード | すべての[ワイルドカード文字] ([ワイルドカード値](cdn-rules-engine-reference.md#wildcard-values)) を利用するには、このオプションを選択します。
@@ -320,7 +320,7 @@ WURFL 機能とは、モバイル デバイスを記述するカテゴリを指�
 > [!NOTE] 
 > 次の変数は、**Modify Client Request Header (クライアント要求ヘッダーの修正)** と **Modify Client Response Header (クライアント応答ヘッダーの修正)** 機能でサポートされています。
 
-機能 | 変数 | [説明] | サンプルの値
+機能 | 変数 | 説明 | サンプルの値
 -----------|----------|-------------|----------------
 Brand Name | % {wurfl_cap_brand_name} | デバイスのブランド名を示す文字列です。 | Samsung
 Device OS | % {wurfl_cap_device_os} | デバイスにインストールされているオペレーティング システムを示す文字列です。 | IOS
@@ -343,7 +343,7 @@ Model Name | % {wurfl_cap_model_name} | デバイスのモデル名を示す文�
 Resolution Height | % {wurfl_cap_resolution_height} | デバイスの高さ (ピクセル単位) を示す整数です。 | 768
 Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピクセル単位) を示す整数です。 | 1024
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
@@ -360,7 +360,7 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
   - Ignore Origin No-Cache (配信元のキャッシュなしを無視する)
   - Internal Max-Stale (内部 Max-Stale)
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
@@ -369,8 +369,8 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 コンテンツが要求されたときの参照元に関連付けられたホスト名によって、「Referring Domain (参照ドメイン) 」条件に一致するかどうかが決まります。 
 
 **[一致する]**/**[一致しない]** オプションによって、「Referring Domain (参照ドメイン)」一致条件が満たされる条件が決まります。
-- **[一致する]**: 参照元ホスト名が指定した値と一致する必要があります。 
-- **[一致しない]**: 参照元ホスト名が指定した値と一致しない必要があります。
+- **一致する**:参照元ホスト名が指定した値と一致する必要があります。 
+- **一致しない**:参照元ホスト名が指定した値と一致しない必要があります。
 
 重要な情報: 
 - 複数のホスト名を指定する場合は、ホスト名ごとに単一の空白で区切ります。
@@ -384,15 +384,15 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
   - Ignore Origin No-Cache (配信元のキャッシュなしを無視する)
   - Internal Max-Stale (内部 Max-Stale)
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
----  
+---
 ### <a name="request-header-literal"></a>Request Header Literal (要求ヘッダーのリテラル)
 **[一致する]**/**[一致しない]** オプションによって、「Request Header Literal (要求ヘッダーのリテラル)」一致条件が満たされる条件が決まります。
-- **[一致する]**: 要求に、指定したヘッダーが含まれている必要があります。 値は、この一致条件に定義された値と一致している必要があります。
-- **[一致しない]**: 要求が次のいずれかの条件を満たす必要があります。
+- **一致する**:要求に、指定したヘッダーが含まれている必要があります。 値は、この一致条件に定義された値と一致している必要があります。
+- **一致しない**:要求が次のいずれかの条件を満たす必要があります。
   - 指定したヘッダーを含まない。
   - 指定したヘッダーを含むが、値はこの一致条件に定義された値とは一致しない。
   
@@ -405,15 +405,15 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
   - Ignore Origin No-Cache (配信元のキャッシュなしを無視する)
   - Internal Max-Stale (内部 Max-Stale)
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
----  
+---
 ### <a name="request-header-regex"></a>Request Header Regex (要求ヘッダーの正規表現)
 **[一致する]**/**[一致しない]** オプションによって、「Request Header Regex (要求ヘッダーの正規表現)」一致条件が満たされる条件が決まります。
-- **[一致する]**: 要求に、指定したヘッダーが含まれている必要があります。 値は、指定した[正規表現](cdn-rules-engine-reference.md#regular-expressions)で定義されたパターンに一致している必要があります。
-- **[一致しない]**: 要求が次のいずれかの条件を満たす必要があります。
+- **一致する**:要求に、指定したヘッダーが含まれている必要があります。 値は、指定した[正規表現](cdn-rules-engine-reference.md#regular-expressions)で定義されたパターンに一致している必要があります。
+- **一致しない**:要求が次のいずれかの条件を満たす必要があります。
   - 指定したヘッダーを含まない。
   - 指定したヘッダーを含むが、値は指定した正規表現と一致しない。
 
@@ -432,15 +432,15 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
   - Ignore Origin No-Cache (配信元のキャッシュなしを無視する)
   - Internal Max-Stale (内部 Max-Stale) 
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
 ---
 ### <a name="request-header-wildcard"></a>Request Header Wildcard (要求ヘッダーのワイルドカード)
 **[一致する]**/**[一致しない]** オプションによって、「Request Header Wildcard (要求ヘッダーのワイルドカード)」一致条件が満たされる条件が決まります。
-- **[一致する]**: 要求に、指定したヘッダーが含まれている必要があります。 値は、この一致条件で定義されている 1 つ以上の値と一致する必要があります。
-- **[一致しない]**: 要求が次のいずれかの条件を満たす必要があります。
+- **一致する**:要求に、指定したヘッダーが含まれている必要があります。 値は、この一致条件で定義されている 1 つ以上の値と一致する必要があります。
+- **一致しない**:要求が次のいずれかの条件を満たす必要があります。
   - 指定したヘッダーを含まない。
   - 指定したヘッダーを含むが、値は指定した値と一致しない。
   
@@ -460,7 +460,7 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
   - Ignore Origin No-Cache (配信元のキャッシュなしを無視する)
   - Internal Max-Stale (内部 Max-Stale)
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
@@ -472,7 +472,7 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 - POST 
 - OPTIONS 
 - PUT 
-- 削除 
+- DELETE 
 - TRACE 
 - CONNECT 
 
@@ -485,7 +485,7 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
   - Ignore Origin No-Cache (配信元のキャッシュなしを無視する)
   - Internal Max-Stale (内部 Max-Stale)
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
@@ -503,7 +503,7 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
   - Ignore Origin No-Cache (配信元のキャッシュなしを無視する)
   - Internal Max-Stale (内部 Max-Stale)
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
@@ -512,18 +512,18 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 要求された資産のファイル名を除いた相対パスで要求を識別します。
 
 **[一致する]**/**[一致しない]** オプションによって、「URL Path Directory (URL パス ディレクトリ)」一致条件が満たされる条件が決まります。
-- **[一致する]**: 要求に、指定した URL パターンに一致する相対 URL パス (ファイル名を除く) が含まれている必要があります。
-- **[一致しない]**: 要求に、指定した URL パターンに一致しない相対 URL パス (ファイル名を除く) が含まれている必要があります。
+- **一致する**:要求に、指定した URL パターンに一致する相対 URL パス (ファイル名を除く) が含まれている必要があります。
+- **一致しない**:要求に、指定した URL パターンに一致しない相対 URL パス (ファイル名を除く) が含まれている必要があります。
 
 重要な情報: 
 - URL の比較を、コンテンツ アクセス ポイントの前と後のどちらから開始するかを指定するには、**[Relative to]\(基準\)** オプションを使用します。 コンテンツ アクセス ポイントは、パスの Verizon CDN ホスト名と要求された資産の相対パスの間の部分です (例: /800001/CustomerOrigin)。 場所は、サーバーの種類 (CDN や顧客配信元など) と顧客アカウント番号で識別されます。
 
    **[Relative to]\(基準\)** オプションで使用できる値は次のとおりです。
-   - **[Root]\(ルート\)**: URL 比較ポイントが、CDN ホスト名の直後から始まることを示します。 
+   - **ルート**:URL 比較ポイントが、CDN ホスト名の直後から始まることを示します。 
 
      例: http:\//wpc.0001.&lt;domain&gt;/**800001/myorigin/myfolder**/index.htm
 
-   - **[Origin]\(配信元\)**: URL 比較ポイントが、コンテンツ アクセス ポイント (例: 000001、/800001/myorigin) の後から始まることを示します。 \*.azureedge.net CNAME は、既定で Verizon CDN ホスト名の配信元ディレクトリを基準として作成されるため、Azure CDN ユーザーは値として **[Origin]\(配信元\)** を使用する必要があります。 
+   - **配信元**:URL 比較ポイントが、コンテンツ アクセス ポイント (例: 000001、/800001/myorigin) の後から始まることを示します。 \*.azureedge.net CNAME は、既定で Verizon CDN ホスト名の配信元ディレクトリを基準として作成されるため、Azure CDN ユーザーは値として **[Origin]\(配信元\)** を使用する必要があります。 
 
      例: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder**/index.htm 
 
@@ -532,16 +532,16 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 - エッジ CNAME URL は、URL の比較の前に CDN URL に書き換えられます。
 
     たとえば、次の URL はどちらも同じ資産を参照するため、同じ URL パスになります。
-    - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
+  - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
     
-    - エッジ CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
+  - エッジ CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
     
     追加情報:
-    - カスタム ドメイン: https:\//my.domain.com/path/asset.htm
+  - カスタム ドメイン: https:\//my.domain.com/path/asset.htm
     
-    - URL パス (ルートを基準): /800001/CustomerOrigin/path/
+  - URL パス (ルートを基準): /800001/CustomerOrigin/path/
     
-    - URL パス (配信元を基準): /path/
+  - URL パス (配信元を基準): /path/
 
 - URL の比較に使用される URL の部分は、要求された資産のファイル名の直前までです。 この種類のパスでは、末尾のスラッシュが最後の文字になります。
     
@@ -557,7 +557,7 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 
 - 大文字と小文字を区別した比較を行うかどうかを制御するには、**[大文字と小文字を区別しない]** オプションを使用します。
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
@@ -566,11 +566,11 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 要求された資産のファイル拡張子で要求を識別します。
 
 **[一致する]**/**[一致しない]** オプションによって、「URL Path Extension (URL パス拡張子)」一致条件が満たされる条件が決まります。
-- **[一致する]**: 要求の URL に、指定したパターンに完全に一致するファイル拡張子が含まれている必要があります。
+- **一致する**:要求の URL に、指定したパターンに完全に一致するファイル拡張子が含まれている必要があります。
 
    たとえば、"htm" を指定した場合、"htm" 資産は一致しますが、"html" 資産は一致しません。  
 
-- **[一致しない]**: URL 要求に、指定したパターンに一致しないファイル拡張子が含まれている必要があります。
+- **一致しない**:URL 要求に、指定したパターンに一致しないファイル拡張子が含まれている必要があります。
 
 重要な情報: 
 - **[値]** ボックスに、照合するファイル拡張子を指定します。 先頭にピリオドを使用しないでください。たとえば、".htm" ではなく "htm" を使用します。
@@ -596,7 +596,7 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 - .php
 - .html
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
@@ -605,8 +605,8 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 要求された資産のファイル名で要求を識別します。 この一致条件では、ファイル名は、要求された資産の名前、ピリオド、ファイル拡張子で構成されます (例: index.html)。
 
 **[一致する]**/**[一致しない]** オプションによって、「URL Path Filename (URL パス ファイル名)」一致条件が満たされる条件が決まります。
-- **[一致する]**: 要求の URL パスに、指定したパターンに一致するファイル名が含まれている必要があります。
-- **[一致しない]**: 要求の URL パスに、指定したパターンに一致しないファイル名が含まれている必要があります。
+- **一致する**:要求の URL パスに、指定したパターンに一致するファイル名が含まれている必要があります。
+- **一致しない**:要求の URL パスに、指定したパターンに一致しないファイル名が含まれている必要があります。
 
 重要な情報: 
 - 大文字と小文字を区別した比較を行うかどうかを制御するには、**[大文字と小文字を区別しない]** オプションを使用します。
@@ -623,7 +623,7 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 
     たとえば、"presentation.ppt" を指定した場合、"presentation.ppt" という名前の資産は一致しますが、"presentation.pptx" という名前の資産は一致しません。
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
@@ -632,34 +632,34 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 要求の URL パス (ファイル名を含む) を指定した値と比較します。
 
 **[一致する]**/**[一致しない]** オプションによって、「URL Path Literal (URL パス リテラル)」一致条件が満たされる条件が決まります。
-- **[一致する]**: 要求に、指定したパターンに一致する URL パスが含まれている必要があります。
-- **[一致しない]**: 要求に、指定したパターンに一致しない URL パスが含まれている必要があります。
+- **一致する**:要求に、指定したパターンに一致する URL パスが含まれている必要があります。
+- **一致しない**:要求に、指定したパターンに一致しない URL パスが含まれている必要があります。
 
 重要な情報: 
 - URL 比較ポイントが、コンテンツ アクセス ポイントの前と後のどちらから始まるかを指定するには、**[Relative to]\(基準\)** オプションを使用します。 
 
     **[Relative to]\(基準\)** オプションで使用できる値は次のとおりです。
-     - **[Root]\(ルート\)**: URL 比較ポイントが、CDN ホスト名の直後から始まることを示します。
+  - **ルート**:URL 比較ポイントが、CDN ホスト名の直後から始まることを示します。
 
-       例: http:\//wpc.0001.&lt;domain&gt;/**800001/myorigin/myfolder**/index.htm
+    例: http:\//wpc.0001.&lt;domain&gt;/**800001/myorigin/myfolder**/index.htm
 
-     - **[Origin]\(配信元\)**: URL 比較ポイントが、コンテンツ アクセス ポイント (例: 000001、/800001/myorigin) の後から始まることを示します。 \*.azureedge.net CNAME は、既定で Verizon CDN ホスト名の配信元ディレクトリを基準として作成されるため、Azure CDN ユーザーは値として **[Origin]\(配信元\)** を使用する必要があります。 
+  - **配信元**:URL 比較ポイントが、コンテンツ アクセス ポイント (例: 000001、/800001/myorigin) の後から始まることを示します。 \*.azureedge.net CNAME は、既定で Verizon CDN ホスト名の配信元ディレクトリを基準として作成されるため、Azure CDN ユーザーは値として **[Origin]\(配信元\)** を使用する必要があります。 
 
-       例: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder/index.htm**
+    例: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder/index.htm**
 
-     この URL は、Verizon CDN ホスト名 http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/**myfolder/index.htm** を参照します。
+    この URL は、Verizon CDN ホスト名 http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/**myfolder/index.htm** を参照します。
 
 - エッジ CNAME URL は、URL の比較の前に CDN URL に書き換えられます。
 
     たとえば、次の URL はどちらも同じ資産を参照するため、同じ URL パスになります。
-    - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
-    - エッジ CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
+  - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
+  - エッジ CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
     
     追加情報:
     
-    - URL パス (ルートを基準): /800001/CustomerOrigin/path/asset.htm
+  - URL パス (ルートを基準): /800001/CustomerOrigin/path/asset.htm
    
-    - URL パス (配信元を基準): /path/asset.htm
+  - URL パス (配信元を基準): /path/asset.htm
 
 - URL のクエリ文字列は無視されます。
 - 大文字と小文字を区別した比較を行うかどうかを制御するには、**[大文字と小文字を区別しない]** オプションを使用します。
@@ -667,7 +667,7 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 
 - 特定のディレクトリに対するすべての要求を照合するには、「[URL Path Directory (URL パス ディレクトリ)](#url-path-directory)」または「[ URL Path Wildcard (URL パス ワイルドカード)](#url-path-wildcard)」一致条件を使用します。
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
@@ -676,21 +676,21 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 要求の URL パスを指定した[正規表現](cdn-rules-engine-reference.md#regular-expressions)と比較します。
 
 **[一致する]**/**[一致しない]** オプションによって、「URL Path Regex (URL パス正規表現)」一致条件が満たされる条件が決まります。
-- **[一致する]**: 要求に、指定した正規表現に一致する URL パスが含まれている必要があります。
-- **[一致しない]**: 要求に、指定した正規表現に一致しない URL パスが含まれている必要があります。
+- **一致する**:要求に、指定した正規表現に一致する URL パスが含まれている必要があります。
+- **一致しない**:要求に、指定した正規表現に一致しない URL パスが含まれている必要があります。
 
 重要な情報: 
 - エッジ CNAME URL は、URL の比較の前に CDN URL に書き換えられます。 
  
     たとえば、次の URL はどちらも同じ資産を参照するため、同じ URL パスになります。
 
-     - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
+  - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
 
-     - エッジ CNAME URL: http:\//my.domain.com/path/asset.htm
+  - エッジ CNAME URL: http:\//my.domain.com/path/asset.htm
     
     追加情報:
     
-     - URL パス: /800001/CustomerOrigin/path/asset.htm
+  - URL パス: /800001/CustomerOrigin/path/asset.htm
 
 - URL のクエリ文字列は無視されます。
     
@@ -698,7 +698,7 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
     
 - URL パスのスペースは、"%20" に置き換える必要があります。
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
@@ -707,34 +707,34 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 要求の相対 URL パスを、指定したワイルドカード パターンと比較します。
 
 **[一致する]**/**[一致しない]** オプションによって、「URL Path Wildcard (URL パス ワイルドカード)」一致条件が満たされる条件が決まります。
-- **[一致する]**: 要求に、指定したワイルドカード パターンに一致する URL パスが含まれている必要があります。
-- **[一致しない]**: 要求に、指定したワイルドカード パターンに一致しない URL パスが含まれている必要があります。
+- **一致する**:要求に、指定したワイルドカード パターンに一致する URL パスが含まれている必要があります。
+- **一致しない**:要求に、指定したワイルドカード パターンに一致しない URL パスが含まれている必要があります。
 
 重要な情報: 
 - **[Relative to]\(基準\)** オプション: URL 比較ポイントが、コンテンツ アクセス ポイントの前と後のどちらから始まるかを指定します。
 
    このオプションには次の値を指定できます。
-     - **[Root]\(ルート\)**: URL 比較ポイントが、CDN ホスト名の直後から始まることを示します。
+  - **ルート**:URL 比較ポイントが、CDN ホスト名の直後から始まることを示します。
 
-       例: http:\//wpc.0001.&lt;domain&gt;/**800001/myorigin/myfolder**/index.htm
+    例: http:\//wpc.0001.&lt;domain&gt;/**800001/myorigin/myfolder**/index.htm
 
-     - **[Origin]\(配信元\)**: URL 比較ポイントが、コンテンツ アクセス ポイント (例: 000001、/800001/myorigin) の後から始まることを示します。 \*.azureedge.net CNAME は、既定で Verizon CDN ホスト名の配信元ディレクトリを基準として作成されるため、Azure CDN ユーザーは値として **[Origin]\(配信元\)** を使用する必要があります。 
+  - **配信元**:URL 比較ポイントが、コンテンツ アクセス ポイント (例: 000001、/800001/myorigin) の後から始まることを示します。 \*.azureedge.net CNAME は、既定で Verizon CDN ホスト名の配信元ディレクトリを基準として作成されるため、Azure CDN ユーザーは値として **[Origin]\(配信元\)** を使用する必要があります。 
 
-       例: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder/index.htm**
+    例: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder/index.htm**
 
-     この URL は、Verizon CDN ホスト名 http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/**myfolder/index.htm** を参照します。
+    この URL は、Verizon CDN ホスト名 http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/**myfolder/index.htm** を参照します。
 
 - エッジ CNAME URL は、URL の比較の前に CDN URL に書き換えられます。
 
     たとえば、次の URL はどちらも同じ資産を参照するため、同じ URL パスになります。
-     - CDN URL: http://wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
-     - エッジ CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
+  - CDN URL: http://wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
+  - エッジ CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
     
     追加情報:
     
-     - URL パス (ルートを基準): /800001/CustomerOrigin/path/asset.htm
+  - URL パス (ルートを基準): /800001/CustomerOrigin/path/asset.htm
     
-     - URL パス (配信元を基準): /path/asset.htm
+  - URL パス (配信元を基準): /path/asset.htm
     
 - 複数の URL パスを指定するには、各パスを単一のスペースで区切ります。
 
@@ -760,7 +760,7 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 *.jpg *.gif *.png       | ルートまたは配信元 | .jpg、.gif、または .png で終わる すべての CDN URL またはエッジ CNAME URL が、このパターンに一致します。 このパターンを指定する別の方法は、「[URL Path Extension (URL パス拡張子)](#url-path-extension)」一致条件を使用することです。
 /images/\* /media/\*      | Origin (配信元)         | 相対パスが "images" または "media" フォルダーで始まる CDN URL またはエッジ CNAME URL が、このパターンに一致します。 <br />- CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/images/sales/event1.png<br />- サンプル エッジ CNAME URL: http:\//cdn.mydomain.com/images/sales/event1.png
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
@@ -769,8 +769,8 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 要求のクエリ文字列を指定値と比較します。
 
 **[一致する]**/**[一致しない]** オプションによって、「URL Query Literal (URL クエリ リテラル)」一致条件が満たされる条件が決まります。
-- **[一致する]**: 要求に、指定したクエリ文字列と一致する URL クエリ文字列が含まれている必要があります。
-- **[一致する]**: 要求に、指定したクエリ文字列と一致しない URL クエリ文字列が含まれている必要があります。
+- **一致する**:要求に、指定したクエリ文字列と一致する URL クエリ文字列が含まれている必要があります。
+- **一致しない**:要求に、指定したクエリ文字列と一致しない URL クエリ文字列が含まれている必要があります。
 
 重要な情報: 
 
@@ -794,7 +794,7 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
    - Ignore Origin No-Cache (配信元のキャッシュなしを無視する)
    - Internal Max-Stale (内部 Max-Stale)
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
@@ -803,8 +803,8 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 指定したクエリ文字列パラメーターが含まれた要求を識別します。 このパラメーターは、指定したパターンに一致する値に設定されます。 要求 URL のクエリ文字列パラメーター (例: parameter=value) によって、この条件が満たされているかどうかが決まります。 この一致条件は、クエリ文字列パラメーターを名前で識別し、パラメーター値として 1 つ以上の値を受け入れます。 
 
 **[一致する]**/**[一致しない]** オプションによって、「URL Query Parameter (URL クエリ パラメーター)」一致条件が満たされる条件が決まります。
-- **[一致する]**: 要求に指定したパラメーターが含まれており、値がこの一致条件で定義された 1 つ以上の値と一致する必要があります。
-- **[一致しない]**: 要求が次のいずれかの条件を満たす必要があります。
+- **一致する**:要求に指定したパラメーターが含まれており、値がこの一致条件で定義された 1 つ以上の値と一致する必要があります。
+- **一致しない**:要求が次のいずれかの条件を満たす必要があります。
   - 指定したパラメーターが含まれていない。
   - 指定したパラメーターが含まれているが、値がこの一致条件で定義されたどの値とも一致しない。
 
@@ -872,9 +872,9 @@ Name  | 値 |  結果
 ------|-------|--------
 User  | Joe   | 要求された URL のクエリ文字列が "?user=joe" の場合、このパターンに一致します。
 User  | *     | 要求された URL のクエリ文字列に User パラメーターが含まれている場合、このパターンに一致します。
-電子メール | Joe\* | 要求された URL のクエリ文字列に、"Joe" で始まる Email パラメーターが含まれている場合、このパターンに一致します。
+Email | Joe\* | 要求された URL のクエリ文字列に、"Joe" で始まる Email パラメーターが含まれている場合、このパターンに一致します。
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
@@ -883,8 +883,8 @@ User  | *     | 要求された URL のクエリ文字列に User パラメー�
 指定したクエリ文字列パラメーターが含まれた要求を識別します。 このパラメーターは、指定した[正規表現](cdn-rules-engine-reference.md#regular-expressions)に一致する値に設定されます。
 
 **[一致する]**/**[一致しない]** オプションによって、「URL Query Regex (URL クエリ正規表現)」一致条件が満たされる条件が決まります。
-- **[一致する]**: 要求に、指定した正規表現に一致する URL クエリ文字列が含まれている必要があります。
-- **[一致しない]**: 要求に、指定した正規表現に一致しない URL クエリ文字列が含まれている必要があります。
+- **一致する**:要求に、指定した正規表現に一致する URL クエリ文字列が含まれている必要があります。
+- **一致しない**:要求に、指定した正規表現に一致しない URL クエリ文字列が含まれている必要があります。
 
 重要な情報: 
 - この一致条件を満たすのは、指定した正規表現との完全一致だけです。
@@ -919,7 +919,7 @@ User  | *     | 要求された URL のクエリ文字列に User パラメー�
    - Internal Max-Stale (内部 Max-Stale)
 
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 
@@ -928,8 +928,8 @@ User  | *     | 要求された URL のクエリ文字列に User パラメー�
 指定値を要求のクエリ文字列と比較します。
 
 **[一致する]**/**[一致しない]** オプションによって、「URL Query Wildcard (URL クエリ ワイルドカード)」一致条件が満たされる条件が決まります。
-- **[一致する]**: 要求に、指定したワイルドカード値と一致する URL クエリ文字列が含まれている必要があります。
-- **[一致しない]**: 要求に、指定したワイルドカード値と一致しない URL クエリ文字列が含まれている必要があります。
+- **一致する**:要求に、指定したワイルドカード値と一致する URL クエリ文字列が含まれている必要があります。
+- **一致しない**:要求に、指定したワイルドカード値と一致しない URL クエリ文字列が含まれている必要があります。
 
 重要な情報: 
 - このオプションでは、クエリ文字列の疑問符 (?) 区切り記号の後の最初の文字からクエリ文字列が始まります。
@@ -960,12 +960,12 @@ User  | *     | 要求された URL のクエリ文字列に User パラメー�
 #### <a name="sample-scenarios"></a>サンプル シナリオ
 次の例は、このオプションが特定の状況でどのように機能するかを示しています。
 
- Name                 | [説明]
+ Name                 | 説明
  ---------------------|------------
 user=joe              | 要求された URL のクエリ文字列が "?user=joe" の場合、このパターンに一致します。
 \*user=\* \*optout=\* | CDN URL クエリに user または optout パラメーターが含まれている場合、このパターンに一致します。
 
-[先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
+[先頭に戻る](#main)
 
 </br>
 

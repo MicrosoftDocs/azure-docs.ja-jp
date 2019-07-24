@@ -1,5 +1,5 @@
 ---
-title: Helm を使用して Azure Kubernetes にコンテナーをデプロイする
+title: (非推奨) Helm を使用して Azure Kubernetes にコンテナーをデプロイする
 description: Helm パッケージ化ツールを使用して、Azure Container Service の Kubernetes クラスターにコンテナーをデプロイする
 services: container-service
 author: sauryadas
@@ -9,16 +9,19 @@ ms.topic: article
 ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 882e785968f94473e80c7a14e5a68498add37735
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 05edbf40e8cd5f8edbdc8b74b540962b1a25c8de
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38634155"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997880"
 ---
-# <a name="use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>Helm を使用して、Kubernetes クラスターにコンテナーをデプロイする
+# <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>(非推奨) Helm を使用して、Kubernetes クラスターにコンテナーをデプロイする
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Azure Kubernetes Service を使用したこの記事の更新版については、「[Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール](../../aks/kubernetes-helm.md)」を参照してください。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 [Helm](https://github.com/kubernetes/helm/) は、Kubernetes アプリケーションのライフサイクルをインストールおよび管理するのに役立つオープン ソースのパッケージ化ツールです。 Apt-get や Yum などの Linux パッケージ マネージャーと同様に、Helm は、構成済みの Kubernetes リソースのパッケージである Kubernetes チャートの管理に使用されます。 この記事では、Azure Container Service にデプロイされる Kubernetes クラスター上の Helm と連携する方法について説明します。
 

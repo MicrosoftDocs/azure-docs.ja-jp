@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: d15a5cbda2f0c2a363b40e94c38fed6631aa81b5
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 80f01a926b94deebab59f8ef91bfc36a4600b5f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27928238"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885052"
 ---
-# <a name="use-the-net-sdk-to-initiate-data-transformation"></a>.Net SDK を使用してデータ変換を開始する
+# <a name="use-the-net-sdk-to-initiate-data-transformation"></a>.NET SDK を使用してデータ変換を開始する
 
 ## <a name="overview"></a>概要
 
@@ -29,10 +29,10 @@ ms.locfileid: "27928238"
 
 次の 2 つの方法で、データ変換ジョブを起動することができます。
 
- - .NET SDK を使用する
- - Azure Automation Runbook を使用する
+- .NET SDK を使用する
+- Azure Automation Runbook を使用する
  
- この記事では、データ変換ジョブを開始し、そのジョブの完了を追跡するサンプル .NET コンソール アプリケーションを作成する方法を詳しく説明します。 Automation 経由でデータ変換を開始する方法の詳細については、[Azure Automation Runbook を使用したデータ変換ジョブのトリガー](storsimple-data-manager-job-using-automation.md)に関する記事をご覧ください。
+  この記事では、データ変換ジョブを開始し、そのジョブの完了を追跡するサンプル .NET コンソール アプリケーションを作成する方法を詳しく説明します。 Automation 経由でデータ変換を開始する方法の詳細については、[Azure Automation Runbook を使用したデータ変換ジョブのトリガー](storsimple-data-manager-job-using-automation.md)に関する記事をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -80,16 +80,16 @@ ms.locfileid: "27928238"
 
         ![プロジェクト 2 の作成](media/storsimple-data-manager-dotnet-jobs/create-new-project-1.png)
 
-4.  ここで、[dlls](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) フォルダーに存在するすべての dll を、作成したプロジェクトに**参照**として追加します。 dll ファイルを追加するには、次の手順を実行します。
+4. ここで、[dlls](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) フォルダーに存在するすべての dll を、作成したプロジェクトに**参照**として追加します。 dll ファイルを追加するには、次の手順を実行します。
 
-    1. Visual Studio で、**[表示] > [ソリューション エクスプ ローラー]** の順に移動します。
-    2. データ変換アプリ プロジェクトの左側にある矢印をクリックします。 **[参照]** をクリックし、**[参照の追加]** を右クリックします。
+   1. Visual Studio で、**[表示] > [ソリューション エクスプ ローラー]** の順に移動します。
+   2. データ変換アプリ プロジェクトの左側にある矢印をクリックします。 **[参照]** をクリックし、**[参照の追加]** を右クリックします。
     
-        ![dlls の追加 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-4.png)
+       ![dlls の追加 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-4.png)
 
-    3. パッケージ フォルダーの場所に移動し、すべての DLL を選択して、**[追加]**、**[OK]** の順にクリックします。
+   3. パッケージ フォルダーの場所に移動し、すべての DLL を選択して、**[追加]**、**[OK]** の順にクリックします。
 
-        ![dlls の追加 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
+       ![dlls の追加 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
 
 5. 次の **using** ステートメントをプロジェクト内のソース ファイル (Program.cs) に追加します。
 
@@ -196,9 +196,9 @@ ms.locfileid: "27928238"
     Console.Read();
 
     ```
- .NET を使用してジョブをトリガーするために使用するコード サンプル全体のスクリーン ショットを次に示します。
+    .NET を使用してジョブをトリガーするために使用するコード サンプル全体のスクリーン ショットを次に示します。
 
- ![.NET ジョブをトリガーするコードのスニペット全体](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet.png)
+    ![.NET ジョブをトリガーするコードのスニペット全体](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet.png)
 
 ## <a name="next-steps"></a>次の手順
 

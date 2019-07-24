@@ -2,20 +2,20 @@
 title: Azure Database Migration Service の概要 | Microsoft Docs
 description: 多数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を提供する、Azure Database Migration Service の概要です。
 services: database-migration
-author: pochiraju
-ms.author: rajpo
-manager: ''
-ms.reviewer: douglasl
-ms.service: database-migration
+author: HJToland3
+ms.author: jtoland
+manager: craigg
+ms.reviewer: craigg
+ms.service: dms
 ms.workload: data-services
 ms.topic: article
-ms.date: 10/19/2018
-ms.openlocfilehash: 053e571b6285cd405ea17f43fec1d3ea99732070
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 03/12/2019
+ms.openlocfilehash: 38bce2316110259298ff478d6019b33c78a53d21
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235583"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182831"
 ---
 # <a name="what-is-the-azure-database-migration-service"></a>Azure Database Migration Service とは
 Azure Database Migration Service は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、フル マネージドのサービスです (オンライン移行)。
@@ -24,17 +24,18 @@ Azure Database Migration Service は、複数のデータベース ソースか�
 Azure Database Migration Service では、Microsoft の既存のツールやサービスの一部の機能が統合されています。 これにより、お客様には包括的な高可用性ソリューションが提供されます。 このサービスでは、[Data Migration Assistant](https://aka.ms/dma) を使用して評価レポートを生成します。評価レポートには、移行を実行する前に必要な変更について推奨される手順が記載されています。 必要な修正を実行するかどうかは、お客様の判断に委ねられます。 移行プロセスを開始する準備ができたら、Azure Database Migration Service によって、必要な手順がすべて実行されます。 プロセスは Microsoft によって決定されたベスト プラクティスを利用して実行されるので、お客様は安心して移行プロジェクトの完了を待つことができます。
 
 > [!NOTE]
-> Azure Database Migration Service を使用してオンライン移行を実行するには、Business Critical (プレビュー) 価格レベルに基づいてインスタンスを作成する必要があります。
+> Azure Database Migration Service を使用してオンライン移行を実行するには、Premium 価格レベルに基づいてインスタンスを作成する必要があります。
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
-現在、Azure Database Migration Service は次のリージョンで使用できます。
+Azure Database Migration Service のリージョン別の提供状況に関する最新情報については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=database-migration)」を参照してください。
 
-![Azure Database Migration Service のリージョン別の提供状況](media\overview\dms-regional-availability1.png)
-
-Azure Database Migration Service のリージョン別の提供状況に関する最新情報については、Azure グローバル インフラストラクチャ サイトの「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」を参照してください。
+## <a name="pricing"></a>価格
+Azure Database Migration Service の料金に関する最新情報については、「[Azure Database Migration Service の価格](https://azure.microsoft.com/pricing/details/database-migration/)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
+- [Azure Database Migration Service によってサポートされる移行シナリオの状態](resource-scenario-status.md)。
 - [Azure Portal を使用して Azure Database Migration Service のインスタンスを作成します](quickstart-create-data-migration-service-portal.md)。
 - [SQL Server を Azure SQL Database に移行する](tutorial-sql-server-to-azure-sql.md)
 - [Azure Database Migration Service を使用するための前提条件の概要](pre-reqs.md)
 - [Azure Database Migration Service の使用に関する FAQ](faq.md)
+- [データ移行のシナリオで利用できるサービスとツール](dms-tools-matrix.md)。

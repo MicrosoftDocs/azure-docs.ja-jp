@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: d47109d541a3df93d9234e27e53d1538f6bc4c6e
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: ff2ea89c257a4941c801f3056450e005a9b37039
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
-ms.locfileid: "24879060"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996052"
 ---
 # <a name="available-regions-for-your-storsimple"></a>StorSimple に使用できるリージョン
 
@@ -47,7 +47,7 @@ StorSimple ソリューションのリージョンの選択は、具体的には
 
 ![storsimple-device-manager-service-regions](./media/storsimple-region/storsimple-device-manager-service-regions.png)
 
-Azure Government クラウドの場合、StorSimple デバイス マネージャー サービスは米国政府アイオワおよび米国政府バージニアのデータセンターで使用できます。
+Azure Government クラウドの場合、StorSimple デバイス マネージャー サービスは US Gov アイオワおよび米国政府バージニアのデータセンターで使用できます。
 
 ## <a name="region-availability-for-data-stored-in-storsimple"></a>StorSimple に格納されているデータに使用できるリージョン
 
@@ -67,9 +67,9 @@ StorSimple デバイスは、モデルによって使用できる地域や国が
 
 StorSimple 8100 または 8600 物理デバイスを使用している場合、デバイスは次の国で使用できます。
 
-| #  | 国        | #  | 国     | #  | 国      | #  | 国              |
+| #  | Country        | #  | Country     | #  | Country      | #  | Country              |
 |----|----------------|----|-------------|----|--------------|----|----------------------|
-| 1  | オーストラリア      | 16 | 香港特別行政区   | 31 | ニュージーランド  | 46 | 南アフリカ         |
+| 1  | オーストラリア      | 16 | 香港特別行政区| 31 | ニュージーランド  | 46 | 南アフリカ         |
 | 2  | オーストリア        | 17 | ハンガリー     | 32 | ナイジェリア      | 47 | 韓国          |
 | 3  | バーレーン        | 18 | アイスランド     | 33 | ノルウェー       | 48 | スペイン                |
 | 4  | ベルギー        | 19 | インド       | 34 | ペルー         | 49 | スリランカ            |
@@ -80,12 +80,12 @@ StorSimple 8100 または 8600 物理デバイスを使用している場合、�
 | 9  | チェコ共和国 | 24 | 日本       | 39 | カタール        | 54 | トルコ               |
 | 10 | デンマーク        | 25 | ケニア       | 40 | ルーマニア      | 55 | ウクライナ              |
 | 11 | エジプト          | 26 | クウェート      | 41 | ロシア       | 56 | アラブ首長国連邦 |
-| 12 | フィンランド        | 27 | マカオ       | 42 | サウジアラビア | 57 | 英国       |
+| 12 | フィンランド        | 27 | 中華人民共和国マカオ特別行政区   | 42 | サウジアラビア | 57 | イギリス       |
 | 13 | フランス         | 28 | マレーシア    | 43 | シンガポール    | 58 | 米国        |
 | 14 | ドイツ        | 29 | メキシコ      | 44 | スロバキア     | 59 | ベトナム              |
 | 15 | ギリシャ         | 30 | オランダ | 45 | スロベニア     | 60 | クロアチア              |
 
-国の追加に応じてこの一覧は変更されます。 地域の最新の一覧については、「[Product terms](https://www.microsoft.com/en-us/Licensing/product-licensing)」(製品条項) のストレージ アレイ条件に関する付録を参照してください。
+国の追加に応じてこの一覧は変更されます。 地域の最新の一覧については、「[Product terms](https://www.microsoft.com/en-us/licensing/product-licensing/products)」(製品条項) のストレージ アレイ条件に関する付録を参照してください。
 
 Microsoft は、前述の一覧に記載されている地域に物理ハードウェアを出荷し、StorSimple 用のハードウェア交換部品を提供することができます。
 
@@ -102,7 +102,7 @@ StorSimple Cloud Appliance 8010 または 8020 を使用している場合、基
 
 1200 シリーズの StorSimple Virtual Array を使用している場合、仮想ディスク イメージはすべての Azure リージョンでサポートされています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [さまざまな StorSimple モデルの価格](https://azure.microsoft.com/pricing/calculator/#storsimple2)について学びます。
 * [StorSimple ストレージ アカウントの管理の詳細](storsimple-8000-manage-storage-accounts.md)

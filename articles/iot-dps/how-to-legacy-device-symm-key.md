@@ -3,17 +3,17 @@ title: Azure IoT Hub Device Provisioning Service で対称キーを使用して�
 description: デバイス プロビジョニング サービス インスタンスで対称キーを使用してレガシ デバイスをプロビジョニングする方法 | Microsoft Docs
 author: wesmc7777
 ms.author: wesmc
-ms.date: 08/31/2018
+ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 9553d1dd5dd8d8ff11ea480618b471b9898985e3
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+manager: philmea
+ms.openlocfilehash: 248c7977752eaec86121a0dd197e5bff2621ead5
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456560"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59500279"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>対称キーを使用してレガシ デバイスをプロビジョニングする方法
 
@@ -35,7 +35,7 @@ ms.locfileid: "49456560"
 
 [対称キーの構成証明](concepts-symmetric-key-attestation.md)を使用する登録グループは、Device Provisioning Service を使用して作成されます。 登録グループには、グループ マスター キーが含まれます。 このマスター キーは、デバイスごとに一意のデバイス キーを生成するために、一意の各登録 ID のハッシュに使用されます。 デバイスは、この派生デバイス キーとその一意の登録 ID を使用して Device Provisioning Service で構成証明され、IoT ハブに割り当てられます。
 
-この記事で示すデバイス コードは、「[クイック スタート: 対称キーを使用してシミュレートされたデバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)」と同じパターンに従います。 このコードでは、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) からのサンプルを使用してデバイスがシミュレートされます。 シミュレートされたデバイスは、クイック スタートで示されている個々の登録ではなく、登録グループで構成証明されます。
+この記事で示すデバイス コードは、「[Quickstart: Provision a simulated device with symmetric keys](quick-create-simulated-device-symm-key.md)」(クイック スタート: 対称キーを使用してシミュレートされたデバイスをプロビジョニングする) と同じパターンに従います。 このコードでは、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) からのサンプルを使用してデバイスがシミュレートされます。 シミュレートされたデバイスは、クイック スタートで示されている個々の登録ではなく、登録グループで構成証明されます。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -53,21 +53,7 @@ ms.locfileid: "49456560"
 
 この SDK には、シミュレートされたデバイスのサンプル コードが含まれています。 このシミュレートされたデバイスでは、デバイスのブート シーケンス中にプロビジョニングを試行します。
 
-1. [CMake ビルド システム](https://cmake.org/download/) バージョン 3.11.4 をダウンロードします。 ダウンロードしたバイナリを、対応する暗号化ハッシュ値を使用して検証します。 次の例では、Windows PowerShell を使用して、x64 MSI 配布のバージョン 3.11.4 の暗号化ハッシュを検証しています。
-
-    ```PowerShell
-    PS C:\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
-    PS C:\Downloads> $hash.Hash -eq "56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869"
-    True
-    ```
-    
-    この記事の執筆時点では、CMake サイトにバージョン 3.11.4 用に次のハッシュ値が一覧表示されていました。
-
-    ```
-    6dab016a6b82082b8bcd0f4d1e53418d6372015dd983d29367b9153f1a376435  cmake-3.11.4-Linux-x86_64.tar.gz
-    72b3b82b6d2c2f3a375c0d2799c01819df8669dc55694c8b8daaf6232e873725  cmake-3.11.4-win32-x86.msi
-    56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869  cmake-3.11.4-win64-x64.msi
-    ```
+1. [CMake ビルド システム](https://cmake.org/download/)をダウンロードします。
 
     `CMake` のインストールを開始する**前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
 
@@ -76,7 +62,7 @@ ms.locfileid: "49456560"
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
     ```
-    このリポジトリのサイズは現在約 220 MB です。 この操作は、完了するまでに数分かかります。
+    この操作は、完了するまでに数分かかります。
 
 
 3. git リポジトリのルート ディレクトリに `cmake` サブディレクトリを作成し、そのフォルダーに移動します。 
@@ -90,7 +76,7 @@ ms.locfileid: "49456560"
 4. 次のコマンドを実行して、開発クライアント プラットフォームに固有の SDK のバージョンをビルドします。 シミュレートされたデバイスの Visual Studio ソリューションが `cmake` ディレクトリに生成されます。 
 
     ```cmd
-    cmake -Dhsm_type_symm_key:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
     
     `cmake` で C++ コンパイラが見つからない場合は、上記のコマンドの実行中にビルド エラーが発生している可能性があります。 これが発生した場合は、[Visual Studio コマンド プロンプト](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)でこのコマンドを実行してください。 
@@ -98,7 +84,7 @@ ms.locfileid: "49456560"
     ビルドが成功すると、最後のいくつかの出力行は次のようになります。
 
     ```cmd/sh
-    $ cmake -Dhsm_type_symm_key:BOOL=ON ..
+    $ cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     -- Building for: Visual Studio 15 2017
     -- Selecting Windows SDK version 10.0.16299.0 to target Windows 10.0.17134.
     -- The C compiler identification is MSVC 19.12.25835.0
@@ -114,23 +100,23 @@ ms.locfileid: "49456560"
 
 ## <a name="create-a-symmetric-key-enrollment-group"></a>対称キーの登録グループを作成する
 
-1. [Azure portal](http://portal.azure.com) にサインインし、Device Provisioning Services のインスタンスを開きます。
+1. [Azure portal](https://portal.azure.com) にサインインし、Device Provisioning Services のインスタンスを開きます。
 
 2. **[登録を管理します]** タブを選択し、ページの上部にある **[登録グループの追加]** ボタンをクリックします。 
 
 3. **[登録グループの追加]** で、次の情報を入力して、**[保存]** ボタンをクリックします。
 
-    - **[グループ名]**: 「**mylegacydevices**」と入力します。
+   - **[グループ名]**: 「**mylegacydevices**」と入力します。
 
-    - **[Attestation Type]\(構成証明の種類\)**: **[対称キー]** を選択します。
+   - **[構成証明の種類]**: **[対称キー]** を選択します。
 
-    - **[キーの自動生成]**: このボックスをオンにします。
+   - **[キーの自動生成]**: このボックスをオンにします。
 
-    - **[デバイスをハブに割り当てる方法を選択してください]**:特定のハブに割り当てるために **[静的構成]** を選択します。
+   - **[デバイスをハブに割り当てる方法を選択してください]**: 特定のハブを割り当てることができるように、**[静的構成]** を選択します。
 
-    - **[Select the IoT hubs this group can be assigned to]/(このグループを割り当てられる IoT ハブを選択してください/)**: いずれかのハブを選択します。
+   - **[このグループを割り当てることができる IoT ハブを選択してください]**: お使いのハブのいずれかを選択します。
 
-    ![対称キー構成証明に登録グループを追加する](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
+     ![対称キー構成証明に登録グループを追加する](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
 4. 登録を保存したら、**主キー**と**セカンダリ キー**が生成され、登録エントリに追加されます。 対称キーの登録グループが、*[登録グループ]* タブの *[グループ名]* 列に **mylegacydevices** として対表示されます。 
 
@@ -186,7 +172,7 @@ Windows ベースのワークステーションを使用している場合は、
 
 **REG_ID** の値を登録 ID に置き換えます。
 
-```PowerShell
+```powershell
 $KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
 $REG_ID='sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6'
 
@@ -197,7 +183,7 @@ $derivedkey = [Convert]::ToBase64String($sig)
 echo "`n$derivedkey`n"
 ```
 
-```PowerShell
+```powershell
 Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
@@ -239,22 +225,25 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. **prov\_dev\_client\_sample** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
-
-7. Visual Studio の *ソリューション エクスプローラー* ウィンドウで、**hsm\_security\_client** プロジェクトに移動し、展開します。 **[ソース ファイル]** を展開し、**hsm\_client\_key.c** を開きます。 
-
-    `REGISTRATION_NAME` および `SYMMETRIC_KEY_VALUE` 定数の宣言を探します。 ファイルに次の変更を加えて保存します。
-
-    `REGISTRATION_NAME` 定数の値を、**デバイスの一意の登録 ID** で更新します。
-    
-    `SYMMETRIC_KEY_VALUE` 定数の値を、**派生されたデバイス キー**で更新します。
+6. **prov\_dev\_client\_sample.c** で、コメントになっている `prov_dev_set_symmetric_key_info()` の呼び出しを探します。
 
     ```c
-    static const char* const REGISTRATION_NAME = "sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6";
-    static const char* const SYMMETRIC_KEY_VALUE = "Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=";
+    // Set the symmetric key if using they auth type
+    //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-7. Visual Studio のメニューで **[デバッグ]** > **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、**[はい]** をクリックして、プロジェクトをリビルドしてから実行します。
+    関数呼び出しのコメントを解除し、プレースホルダーの値 (山かっこを含む) を、お使いのデバイスの一意の登録 ID とご自分で生成したデバイス派生キーに置き換えます。
+
+    ```c
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6", "Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=");
+    ```
+   
+    ファイルを保存します。
+
+7. **prov\_dev\_client\_sample** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
+
+8. Visual Studio のメニューで **[デバッグ]** > **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、**[はい]** をクリックして、プロジェクトをリビルドしてから実行します。
 
     次の出力は、シミュレートされたデバイスが正常に起動し、IoT ハブに割り当てられるプロビジョニング サービス インスタンスに接続する例です。
 
@@ -273,7 +262,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
     Press enter key to exit:
     ```
 
-8. ポータルで、シミュレートされたデバイスが割り当てられた IoT ハブに移動し、**[IoT デバイス]** タブをクリックします。シミュレートされたデバイスがハブに正常にプロビジョニングされると、そのデバイス ID は、**有効**な*状態*で **[IoT デバイス]** ブレードに表示されます。 必要に応じて、一番上の **[更新]** ボタンをクリックします。 
+9. ポータルで、シミュレートされたデバイスが割り当てられた IoT ハブに移動し、**[IoT デバイス]** タブをクリックします。シミュレートされたデバイスがハブに正常にプロビジョニングされると、そのデバイス ID は、**有効**な*状態*で **[IoT デバイス]** ブレードに表示されます。 必要に応じて、一番上の **[更新]** ボタンをクリックします。 
 
     ![IoT ハブに登録されたデバイス](./media/how-to-legacy-device-symm-key/hub-registration.png) 
 
@@ -290,7 +279,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ## <a name="next-steps"></a>次の手順
 
 * 再プロビジョニングの詳細については、「[IoT Hub Device reprovisoning concepts](concepts-device-reprovision.md)」(IoT Hub デバイスの再プロビジョニングの概念) をご覧ください 
-* [クイック スタート: 対称キーを使用してシミュレートされたデバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)
+* [クイック スタート:対称キーを使用してシミュレートされたデバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)
 * プロビジョニング解除の詳細については、「[自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」をご覧ください 
 
 

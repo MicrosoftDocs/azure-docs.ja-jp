@@ -5,15 +5,15 @@ services: storage
 author: yuemlu
 ms.service: storage
 ms.topic: include
-ms.date: 06/05/2018
+ms.date: 01/08/2019
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: e266b239a44907e8e38e60cfc217aa21e46ab17e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ad57d373422e0fc310e51ac31f2a2e76999abf22
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264041"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54193416"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>コスト効率に優れた Standard Storage および Azure VM の非管理対象ディスクと管理ディスク
 
@@ -27,7 +27,7 @@ Azure VM の Standard ディスクは、次の 2 とおりの方法で作成で�
 
 **アンマネージド ディスク**: この種類のディスクは、VM ディスクに対応する VHD ファイルの格納に使用するストレージ アカウントをユーザーが管理する本来の方法です。 VHD ファイルは、ストレージ アカウントにページ BLOB として格納されます。 非管理対象ディスクは、主に Premium Storage を使用する VM (DSv2 シリーズや GS シリーズなど) も含め、すべてのサイズの Azure VM に接続できます。 Azure VM には複数の Standard ディスクをアタッチできるので、VM あたり最大 256 TiB のストレージを使用できます。 プレビュー ディスク サイズを使用する場合、VM あたり最大約 2 PiB のストレージを使用できます。
 
-[**Azure マネージド ディスク**](../articles/virtual-machines/windows/managed-disks-overview.md): この機能は、VM ディスクに使用するストレージ アカウントを管理します。 必要なディスクの種類 (Premium SSD、Standard SSD、または Standard HDD) とサイズを指定すれば、ディスクの作成と管理は Azure によって行われます。 ストレージ アカウントのスケーラビリティの制限を超えないように、複数のストレージ アカウントにディスクを配置することを気に掛ける必要はありません。Azure がこれを管理します。
+[**Azure Managed Disks**](../articles/virtual-machines/windows/managed-disks-overview.md): この機能は、VM ディスクに使用するストレージ アカウントを管理します。 必要なディスクの種類 (Premium SSD、Standard SSD、または Standard HDD) とサイズを指定すれば、ディスクの作成と管理は Azure によって行われます。 ストレージ アカウントのスケーラビリティの制限を超えないように、複数のストレージ アカウントにディスクを配置することを気に掛ける必要はありません。Azure がこれを管理します。
 
 どちらの種類のディスクも利用できる場合でも、Managed Disks を使用してさまざまな機能を活用することをお勧めします。
 
@@ -75,15 +75,7 @@ Managed Disks を使用する VM を作成する方法については、次の�
 
 ### <a name="standard-disks-limits"></a>Standard ディスクの制限
 
-Premium ディスクとは異なり、Standard ディスクの IOPS (1 秒あたりの入出力操作) とスループット (帯域幅) はプロビジョニングされません。 Standard ディスクのパフォーマンスは、ディスクのサイズではなく、ディスクの接続先の VM サイズによって異なります。 次の表に示すパフォーマンスの上限に達する可能性があります。
-
-**Standard ディスクの制限 (管理ディスクと非管理対象ディスク)**
-
-| **VM のレベル**            | **Basic レベルの VM** | **Standard レベルの VM** |
-|------------------------|-------------------|----------------------|
-| 最大ディスク サイズ          | 32,767 GiB           | 32,767 GiB        |
-| ディスクあたり最大 8 KB の IOPS | 最大 2,000         | 最大 2,000        |
-| ディスクあたりの最大帯域幅 | 最大 500 MB/秒     | 最大 500 MB/秒      |
+Premium ディスクとは異なり、Standard ディスクの IOPS (1 秒あたりの入出力操作) とスループット (帯域幅) はプロビジョニングされません。 Standard ディスクのパフォーマンスは、ディスクの接続先の VM サイズとディスクのサイズによって異なります。
 
 ワークロードで高パフォーマンス、低待機時間のディスク サポートが必要な場合は、Premium Storage を使用することを検討してください。 Premium Storage の利点の詳細については、[高パフォーマンスの Premium Storage と Azure VM ディスク](../articles/virtual-machines/windows/premium-storage.md)に関する記事をご覧ください。
 
@@ -117,9 +109,9 @@ Standard Storage を使用するときには、課金に関する次の考慮事
 * 送信データ転送
 * トランザクション
 
-**非管理対象ストレージのデータとディスク サイズ**: 非管理対象ディスクとその他のデータ (BLOB、テーブル、キュー、ファイル) については、使用している領域分に対してのみ課金されます。 たとえば、ページ BLOB が 127 GB としてプロビジョニングされている VM があり、その VM で実際には 10 GB の領域しか使用していない場合、10 GB の領域分に対して課金されます。 最大 8,191 GB の Standard Storage および最大 4,095 GB の Standard 非管理対象ディスクがサポートされます。 
+**アンマネージド ストレージのデータとディスク サイズ**: アンマネージド ディスクとその他のデータ (BLOB、テーブル、キュー、ファイル) については、使用している領域分に対してのみ課金されます。 たとえば、ページ BLOB が 127 GB としてプロビジョニングされている VM があり、その VM で実際には 10 GB の領域しか使用していない場合、10 GB の領域分に対して課金されます。 最大 8,191 GB の Standard Storage および最大 4,095 GB の Standard 非管理対象ディスクがサポートされます。 
 
-**マネージド ディスク**: Standard マネージド ディスクへの課金は、ディスクのプロビジョニング済みサイズによって異なります。 Azure では、プロビジョニング済みサイズ (切り上げたもの) を、次の表に示す Managed Disks オプションの中で最も近いオプションにマップします。 各マネージド ディスクは、サポートされているプロビジョニング済みサイズのいずれかにマップされ、それに応じて課金されます。 たとえば、Standard マネージド ディスクを作成し、200 GiB のプロビジョニング済みサイズを指定した場合、ディスクの種類 S15 の価格に従って課金されます。
+**マネージド ディスク**: Standard マネージド ディスクへの課金は、ディスクのプロビジョニング済みサイズによって異なります。 Azure では、プロビジョニング済みサイズ (切り上げたもの) を、次の表に示す マネージド ディスク オプションの中で最も近いオプションにマップします。 各マネージド ディスクは、サポートされているプロビジョニング済みサイズのいずれかにマップされ、それに応じて課金されます。 たとえば、Standard マネージド ディスクを作成し、200 GiB のプロビジョニング済みサイズを指定した場合、ディスクの種類 S15 の価格に従って課金されます。
 
 アスタリスクで示されるサイズはプレビュー中です。
 

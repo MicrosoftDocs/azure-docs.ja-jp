@@ -1,6 +1,4 @@
 items:
-- name: Azure IoT の基礎
-  href: /azure/iot-fundamentals
 - name: Azure Digital Twins
   href: index.yml
 - name: 概要
@@ -47,22 +45,32 @@ items:
       href: security-authenticating-apis.md
 - name: ハウツー ガイド
   items:
-  - name: マルチテナント アプリケーションを有効にする方法
+  - name: マルチテナント アプリケーションの有効化
     href: how-to-multitenant-applications.md
-  - name: ユーザー定義関数を作成する方法
+  - name: ユーザー定義関数の作成
     href: how-to-user-defined-functions.md
-  - name: エンドポイントを使ってイベントとメッセージをルーティングする方法
+  - name: エンドポイント経由でのイベントとメッセージのルーティング
     href: how-to-egress-endpoints.md
-  - name: Postman を構成する方法
-    href: how-to-configure-postman.md
-  - name: オブジェクトに BLOB を追加する方法
+  - name: オブジェクトへの BLOB の追加
     href: how-to-add-blobs.md
-  - name: Digital Twins Swagger を使用する方法
+  - name: Digital Twins Swagger の使用
     href: how-to-use-swagger.md
-  - name: ユーザー定義関数をデバッグする方法
+  - name: ユーザー定義関数のデバッグ
     href: how-to-diagnose-user-defined-functions.md
-  - name: 監視を構成する方法
+  - name: 監視の構成
     href: how-to-configure-monitoring.md
+  - name: Digital Twins API のクエリ
+    items:
+    - name: Postman の設定
+      href: how-to-configure-postman.md
+    - name: Digital Twins API の使用
+      href: how-to-navigate-apis.md
+    - name: 一般的なクエリのパターン
+      href: how-to-query-common-apis.md
+- name: リファレンス
+  items:
+  - name: ユーザー定義関数クライアント ライブラリ
+    href: reference-user-defined-functions-client-library.md
 - name: 関連項目
   items:
   - name: 解決方法
@@ -99,6 +107,8 @@ items:
     href: https://azure.microsoft.com/pricing/details/digital-twins/
   - name: 料金計算ツール
     href: https://azure.microsoft.com/pricing/calculator/
+  - name: Azure Digital Twins グラフ ビューアー
+    href: https://github.com/Azure/azure-digital-twins-graph-viewer
   - name: スタック オーバーフロー
     href: https://stackoverflow.com/questions/tagged/azure-digital-twins
   - name: 顧客事例
@@ -109,9 +119,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=iot
   - name: ビデオ
     href: https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22&lang-en=true
-ms.openlocfilehash: 06d77fa31fc33bca8d0c078c9d186a67e2a09874
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 0a76dbffc41106af5df540d29c1d7171f1506202
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706672"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664864"

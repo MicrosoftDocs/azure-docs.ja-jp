@@ -1,21 +1,22 @@
 ---
-title: Azure MFA Server のユーザー ポータル | Microsoft Docs
+title: Azure MFA Server のユーザー ポータル - Azure Active Directory
 description: Azure MFA とユーザー ポータルを使い始めます。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 1bd9dd82fb72c3d6b0759139680647be764f273a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 66a75ee7746d0ab04b505544f91f2905fa392902
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161555"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370365"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server のユーザー ポータル
 
@@ -27,7 +28,7 @@ ms.locfileid: "39161555"
 
 ユーザー ポータルは、ご利用の環境に応じて、Azure Multi-Factor Authentication Server と同じサーバーにデプロイするか、またはインターネットに接続された別のサーバーにデプロイしてもかまいません。
 
-![MFA ユーザー ポータル](./media/howto-mfaserver-deploy-userportal/portal.png)
+![MFA Server ユーザー ポータルのログイン ページ](./media/howto-mfaserver-deploy-userportal/portal.png)
 
 > [!NOTE]
 > ユーザー ポータルは Multi-Factor Authentication Server でのみ使用できます。 Multi-Factor Authentication をクラウドで使用する場合、[2 段階認証のためのアカウント設定](../user-help/multi-factor-authentication-end-user-first-time.md)に関するページか「[2 段階認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md)」をユーザーに参照してもらってください。
@@ -117,6 +118,7 @@ IIS サーバーに SSL 証明書を構成する方法についてご不明な�
 3. 管理者となるユーザーを **[管理者]** タブで定義します。追加/編集ボックスのドロップダウンとチェック ボックスを使用して管理アクセス許可を細かく設定できます。
 
 オプションの構成:
+
 - **[セキュリティの質問]** - 対象の環境に関して承認されたセキュリティの質問とその質問を表示する際の言語を定義します。
 - **[渡されたセッション]** - MFA を使用して、ユーザー ポータルとフォームベースの Web サイトの統合を構成します。
 - **[信頼できる IP]** - 信頼できる IP リスト (または範囲) から認証を行った場合に、ユーザーは MFA をスキップすることができます。
@@ -140,9 +142,12 @@ Azure Multi-Factor Authentication Server にはユーザー ポータル用の�
 | 代替認証に OATH トークンを使用する | 2 段階認証が失敗した場合に、OATH トークンを使用できるようにします。 セッションのタイムアウトを分単位で指定することもできます。 |
 | ログの有効化 | ユーザー ポータルでログを有効にします。 ログ ファイルは C:\Program Files\Multi-Factor Authentication Server\Logs に配置されます。 |
 
+> [!IMPORTANT]
+> 2019 年 3 月以降、無料/試用版の Azure AD テナントの MFA Server ユーザーは、音声通話オプションを利用できません。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話を利用できます。 この変更は、無料/試用版の Azure AD テナントにのみ影響します。
+
 これらの設定をポータルのユーザーが確認できるのは、それらが有効になった後、ユーザー ポータルにサインインした後になります。
 
-![ユーザー ポータル設定](./media/howto-mfaserver-deploy-userportal/portalsettings.png)
+![ユーザー ポータルを使用して MFA Server アカウントを管理する](./media/howto-mfaserver-deploy-userportal/portalsettings.png)
 
 ### <a name="self-service-user-enrollment"></a>セルフサービスのユーザー登録
 
@@ -158,7 +163,7 @@ Azure Multi-Factor Authentication Server にはユーザー ポータル用の�
 
 ユーザーが認証方法としてテキスト メッセージを選択した場合、またはそのように事前に構成されている場合は、ページに携帯電話の番号を入力します。 ユーザーの認証時に PIN を使用する必要がある場合は、PIN の入力も求められます。  電話番号と PIN (該当する場合) を入力した後、**[今すぐテキスト メッセージで認証]** ボタンをクリックします。 Azure Multi-Factor Authentication が、ユーザーの携帯電話に対して SMS 認証を実行します。 ユーザーはワンタイム パスコード (OTP) を含むテキスト メッセージを受信し、その OTP と PIN (該当する場合) を使用してそのメッセージに返信します。
 
-![ユーザー ポータルの SMS](./media/howto-mfaserver-deploy-userportal/text.png)
+![SMS を使用したユーザー ポータルの検証](./media/howto-mfaserver-deploy-userportal/text.png)
 
 ユーザーが認証方法としてモバイル アプリを選択した場合、ユーザーのデバイスに Microsoft Authenticator アプリをインストールしてアクティブ化コードを生成するよう求めるメッセージがページに表示されます。 アプリをインストールしたら、[アクティブ化コードの生成] ボタンをクリックします。
 

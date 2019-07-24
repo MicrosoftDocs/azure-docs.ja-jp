@@ -1,27 +1,21 @@
 ---
-title: 'ARP テーブルの取得: クラシック: Azure ExpressRoute のトラブルシューティング | Microsoft Docs'
-description: このページでは、ExpressRoute 回線の ARP テーブルを取得する手順について説明します。
-documentationcenter: na
+title: 'ARP テーブルの取得 - ExpressRoute のトラブルシューティング: クラシック:Azure | Microsoft Docs'
+description: このページでは、ExpressRoute 回線の ARP テーブルを取得する手順について説明します (クラシック デプロイ モデル)。
 services: expressroute
 author: ganesr
-manager: carolz
-editor: tysonn
-ms.assetid: b5856acf-03c2-4933-8111-6ce12998d92a
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 01/30/2017
 ms.author: ganesr
-ms.openlocfilehash: fcc847b7e30fd55ca759830e0254ab7542e7663e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.custom: seodec18
+ms.openlocfilehash: 3e49a1da0e8ea83faf5fc5a10d4c01a41d62fa88
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23013167"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439640"
 ---
-# <a name="getting-arp-tables-in-the-classic-deployment-model"></a>クラシック デプロイメント モデルでの ARP テーブルの取得
+# <a name="getting-arp-tables-in-the-classic-deployment-model"></a>クラシック デプロイ モデルでの ARP テーブルの取得
 > [!div class="op_single_selector"]
 > * [PowerShell - Resource Manager](expressroute-troubleshooting-arp-resource-manager.md)
 > * [PowerShell - クラシック](expressroute-troubleshooting-arp-classic.md)
@@ -60,7 +54,7 @@ ARP テーブルから、特定のピアリングに関する IPv4 アドレス�
 続行する前に、あらかじめ次の要件が満たされている必要があります。
 
 * 少なくとも 1 つのピアリングが構成された有効な ExpressRoute 回線。 この回線は、接続プロバイダーによって確実に構成されている必要があります。 この回線に対し、貴社または貴社の接続プロバイダーが少なくとも 1 つのピアリング (Azure プライベート、Azure パブリック、Microsoft) を構成済みであることが必要となります。
-* ピアリング (Azure プライベート、Azure パブリック、Microsoft) の構成に使用する IP アドレス範囲。 貴社側インターフェイスと ExpressRoute 側インターフェイスに対する IP アドレスのマッピングについては、 [ExpressRoute のルーティングの要件](expressroute-routing.md) に関するページに記載された IP アドレス割り当ての例をご覧ください。 ピアリングの構成については、 [ExpressRoute のピアリングの構成](expressroute-howto-routing-classic.md)に関するページをご覧ください。
+* ピアリング (Azure プライベート、Azure パブリック、Microsoft) の構成に使用する IP アドレス範囲。 貴社側インターフェイスと ExpressRoute 側インターフェイスに対する IP アドレスのマッピングについては、「[ExpressRoute のルーティングの要件](expressroute-routing.md)」に記載された IP アドレス割り当ての例をご覧ください。 ピアリングの構成については、 [ExpressRoute のピアリングの構成](expressroute-howto-routing-classic.md)に関するページをご覧ください。
 * 各 IP アドレスで使用するインターフェイスの MAC アドレスに関する情報 (ネットワーク チーム/接続プロバイダーから支給してもらう)。
 * Azure 用の最新の Windows PowerShell モジュール (バージョン 1.50 以降)。
 
@@ -163,7 +157,7 @@ Microsoft ピアリングの ARP テーブルは、次のコマンドレット�
 * マイクロソフト側に問題がある場合は、ピアリングの ARP テーブルが表示されません。
 * [Microsoft Azure のヘルプとサポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にサポート要求を申請してください。 レイヤー 2 の接続に問題がある旨をはっきりと伝えてください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * ExpressRoute 回線のレイヤー 3 の構成を検証します。
   * ルートのサマリーを取得して BGP セッションの状態を調べます。
   * ExpressRoute でアドバタイズされるプレフィックスをルート テーブルを取得して調べます。

@@ -19,8 +19,18 @@ items:
         href: data-box-deploy-ordered.md
       - name: 2 - 設定
         href: data-box-deploy-set-up.md
-      - name: 3 - データのコピー
-        href: data-box-deploy-copy-data.md
+      - name: 3 - 接続とコピー
+        items:
+        - name: SMB 経由
+          href: data-box-deploy-copy-data.md
+        - name: NFS 経由
+          href: data-box-deploy-copy-data-via-nfs.md
+        - name: REST 経由
+          href: data-box-deploy-copy-data-via-rest.md
+        - name: データ コピー サービス経由
+          href: data-box-deploy-copy-data-via-copy-service.md
+        - name: マネージド ディスクへ
+          href: data-box-deploy-copy-data-from-vhds.md
       - name: 4 - 返却、アップロード、確認
         href: data-box-deploy-picked-up.md
     - name: 概念
@@ -28,7 +38,11 @@ items:
       - name: 安全性のガイドラインを読む
         href: data-box-safety.md
       - name: 要件を確認する
-        href: data-box-system-requirements.md
+        items:
+        - name: Data Box の場合
+          href: data-box-system-requirements.md
+        - name: Data Box Blob ストレージの場合
+          href: data-box-system-requirements-rest.md
       - name: 制限を理解する
         href: data-box-limits.md
       - name: セキュリティを確認する
@@ -41,10 +55,20 @@ items:
         href: data-box-portal-admin.md
       - name: ローカル Web UI で管理する
         href: data-box-local-web-ui-admin.md
+      - name: データを BLOB 層に移動する
+        href: data-box-how-to-set-data-tier.md
       - name: デバイスをケーブル接続する
         href: data-box-cable-options.md
       - name: サポートに問い合わせる
         href: data-box-disk-contact-microsoft-support.md
+      - name: 移行
+        items:
+        - name: SharePoint Online へ
+          href: https://docs.microsoft.com/sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=/azure/databox/context/context
+        - name: Azure File Sync へ
+          href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+        - name: HDFS ストアから
+          href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
   - name: Data Box Disk
     items:
     - name: 概要
@@ -98,9 +122,9 @@ items:
       href: https://azure.microsoft.com/pricing/details/storage/databox/
     - name: Data Box Disk の価格
       href: https://azure.microsoft.com/pricing/details/storage/databox/disk/
-ms.openlocfilehash: bd23df1abd99ba3fd89a4b382c6c5f00c8b80f1f
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 159fbf5782e51cc316e2b7f4474a5ddc94cf8a59
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739194"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59794008"

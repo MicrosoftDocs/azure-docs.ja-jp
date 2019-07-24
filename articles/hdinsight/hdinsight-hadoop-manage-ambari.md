@@ -9,35 +9,35 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1e17412636a904508352370bc7292a7d64bac6bc
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 738ef5df0b2e2a7f31a7316a1d2ef4395168d41e
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280438"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576958"
 ---
-# <a name="manage-hdinsight-clusters-by-using-the-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
+# <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
 
 [!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
 
-Apache Ambari には使いやすい Web UI と REST API が用意されているため、Hadoop クラスターを簡単に管理および監視できます。 Linux ベースの HDInsight クラスターに含まれている Ambari は、クラスターの監視と構成の変更を行うために使用します。
+Apache Ambari には使いやすい Web UI と REST API が用意されているため、Apache Hadoop クラスターを簡単に管理および監視できます。 Linux ベースの HDInsight クラスターに含まれている Ambari は、クラスターの監視と構成の変更を行うために使用します。
 
 このドキュメントでは、HDInsight クラスターに含まれている Ambari Web UI を使用する方法について説明します。
 
-## <a id="whatis"></a>Ambari とは
+## <a id="whatis"></a>Apache Ambari とは
 
-[Apache Ambari](http://ambari.apache.org) は使いやすい Web UI を提供することにより、Hadoop の管理を簡略化します。 Ambari を使って、Hadoop クラスターを管理および監視できます。 開発者は、 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を使用して、これらの機能をアプリケーションに統合することができます。
+[Apache Ambari](https://ambari.apache.org) は使いやすい Web UI を提供することにより、Hadoop の管理を簡略化します。 Ambari を使って、Hadoop クラスターを管理および監視できます。 開発者は、 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を使用して、これらの機能をアプリケーションに統合することができます。
 
 Ambari Web UI は、Linux オペレーティング システムを使用する HDInsight クラスターに既定で付属しています。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 
 
 ## <a name="connectivity"></a>接続
 
 Ambari Web UI はお使いの HDInsight クラスター (HTTPS://CLUSTERNAME.azurehdinsight.net) にあります。**CLUSTERNAME** はお使いのクラスターの名前になります。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > HDInsight の Ambari に接続するには、HTTPS が必要です。 認証情報の入力を求められたら、クラスターの作成時に提供された管理者アカウント名とパスワードを入力します。
 
 ## <a name="ssh-tunnel-proxy"></a>SSH トンネル (プロキシ)
@@ -46,7 +46,7 @@ Ambari Web UI はお使いの HDInsight クラスター (HTTPS://CLUSTERNAME.azu
 
 ## <a name="ambari-web-ui"></a>Ambari Web UI
 
-> [!WARNING]
+> [!WARNING]  
 > HDInsight では、Ambari Web UI の機能の一部がサポートされません。 詳しくは、このドキュメントの「[サポートされていない操作](#unsupported-operations)」セクションをご覧ください。
 
 Ambari Web UI に接続すると、そのページに対する認証が求められます。 クラスターの作成時に利用したクラスター管理者ユーザー (既定では Admin) とパスワードを使用します。
@@ -120,7 +120,7 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 ![サービスのサイド バー](./media/hdinsight-hadoop-manage-ambari/service-bar.png)
 
-> [!NOTE]
+> [!NOTE]  
 > 表示されるサービスは、HDInsight クラスターの種類とバージョンによって異なります。 ここに表示されるサービスは、お使いのクラスターに表示されるサービスとは異なる場合があります。
 
 サービスを選択すると、サービスの詳細が表示されます。
@@ -138,7 +138,7 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 これらのいずれかのリンクを選択すると、ブラウザーに新しいタブが開き、選択したページが表示されます。
 
-> [!NOTE]
+> [!NOTE]  
 > サービスの **[クイック リンク]** エントリを選択すると、「サーバーが見つかりません」というエラーが返される場合があります。 このエラーが発生した場合、このサービスの **[クイック リンク]** エントリを使用するときは SSH トンネルを使用する必要があります、 詳細については、[HDInsight での SSH トンネリングの使用](hdinsight-linux-ambari-ssh-tunnel.md)に関するページを参照してください。
 
 ## <a name="management"></a>管理
@@ -147,7 +147,7 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 [ドメイン参加済み](./domain-joined/apache-domain-joined-introduction.md) HDInsight クラスターを使用する場合は、ユーザー、グループ、アクセス許可の管理がサポートされています。 ドメイン参加済みクラスターでの Ambari 管理 UI の使用の詳細については、[ドメイン参加済み HDInsight クラスターの管理](./domain-joined/apache-domain-joined-introduction.md)に関する記事を参照してください。
 
-> [!WARNING]
+> [!WARNING]  
 > Linux ベースの HDInsight クラスターでは、Ambari ウォッチドッグ (hdinsightwatchdog) のパスワードは変更しないでください。 パスワードを変更すると、スクリプト アクションを使用したり、クラスターでスケール操作を実行する能力が損なわれます。
 
 ### <a name="hosts"></a>ホスト
@@ -156,7 +156,7 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 ![hosts ページ](./media/hdinsight-hadoop-manage-ambari/hosts.png)
 
-> [!NOTE]
+> [!NOTE]  
 > ホストの追加、使用停止、および再任命は HDInsight クラスターでは使用しないことをお勧めします。
 
 1. 管理するホストを選択します。
@@ -181,12 +181,12 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
    * **[Decommission]** - クラスターからホストを削除します。
 
-     > [!NOTE]
+     > [!NOTE]  
      > HDInsight クラスターではこの操作は使用しないでください。
 
    * **[Recommission]** - 使用停止にしたホストをクラスターに追加します。
 
-     > [!NOTE]
+     > [!NOTE]  
      > HDInsight クラスターではこの操作は使用しないでください。
 
 ### <a id="service"></a>サービス
@@ -195,7 +195,7 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 ![[Service Actions]](./media/hdinsight-hadoop-manage-ambari/service-actions.png)
 
-> [!WARNING]
+> [!WARNING]  
 > このメニューには **[サービスの追加]** が表示されますが、これを使用してサービスを HDInsight クラスターに追加しないでください。 新しいサービスは、クラスターのプロビジョニング中にスクリプト アクションを使用して追加する必要があります。 スクリプト アクションの使用の詳細については、「 [Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
 **[Actions]** ボタンではすべてのサービスを再起動できますが、特定のサービスを開始、停止、または再起動する必要がある場合があります。 個々のサービスで操作を実行するには、次の手順に従います。
@@ -206,12 +206,12 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
     ![service action](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > クラスターの実行中にサービスを再起動すると、アラートが生成される場合があります。 アラートを回避するには、**[Service Actions]** ボタンを使用して、再起動を実行する前に、サービスの **[Maintenance mode]** を有効にします。
 
 3. 操作を選択したら、ページ上部の **[# op]** エントリが増分され、バックグラウンド操作が実行されていることが示されます。 バックグラウンド操作を表示するように設定されている場合は、バックグラウンド操作の一覧が表示されます。
 
-   > [!NOTE]
+   > [!NOTE]  
    > サービスの **[Maintenance mode]** を有効にした場合は、操作が完了したら、**[Service Actions]** ボタンを使用してこれを忘れずに無効にしてください。
 
 サービスを構成するには、次の手順を実行します。
@@ -226,12 +226,12 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 ## <a name="ambari-views"></a>Ambari ビュー
 
-Ambari ビューを使うと、開発者は [Ambari ビュー フレームワーク](https://cwiki.apache.org/confluence/display/AMBARI/Views)を使用して Ambari Web UI に UI 要素をプラグインできます。 HDInsight には、Hadoop クラスター タイプの異なる次のビューが用意されています。
+Ambari ビューを使うと、開発者は [Apache Ambari ビュー フレームワーク](https://cwiki.apache.org/confluence/display/AMBARI/Views)を使用して Ambari Web UI に UI 要素をプラグインできます。 HDInsight には、Hadoop クラスター タイプの異なる次のビューが用意されています。
 
 
-* Hive ビュー: Hive ビューを使用すると、Web ブラウザーから直接 Hive クエリを実行できます。 クエリの保存、結果の表示、結果のクラスター ストレージへの保存、または結果のローカル システムへのダウンロードを行えます。 Hive ビューの使用法の詳細については、 [HDInsight での Hive ビューの使用](hadoop/apache-hadoop-use-hive-ambari-view.md)に関するページを参照してください。
+* Hive ビュー:Hive ビューを使用すると、Web ブラウザーから直接 Hive クエリを実行できます。 クエリの保存、結果の表示、結果のクラスター ストレージへの保存、または結果のローカル システムへのダウンロードを行えます。 Hive ビューの使用法の詳細については、[HDInsight での Apache Hive ビューの使用](hadoop/apache-hadoop-use-hive-ambari-view.md)に関するページを参照してください。
 
-* Tez ビュー: Tez ビューによって、ジョブの理解が深まり、最適化を改善できます。 Tez ジョブがどのように実行されて、どのリソースが使用されているかに関する情報を見ることができます。
+* Tez ビュー:Tez ビューによって、ジョブの理解が深まり、最適化を改善できます。 Tez ジョブがどのように実行されて、どのリソースが使用されているかに関する情報を見ることができます。
 
 ## <a name="unsupported-operations"></a>サポートされていない操作
 
@@ -241,4 +241,4 @@ Ambari の次の操作は、HDInsight ではサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 
-HDInsight で [Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) を使う方法を学習します。
+HDInsight で [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) を使う方法を学習します。

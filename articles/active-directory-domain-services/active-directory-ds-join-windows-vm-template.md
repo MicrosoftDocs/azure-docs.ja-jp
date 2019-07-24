@@ -4,23 +4,23 @@ description: Azure Resource Manager テンプレートを使用して Windows Se
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 4eabfd8e-5509-4acd-86b5-1318147fddb5
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: a083bd2fe730f9723330abf9bce03d760b7442d8
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 5b70a16d1da8f939a23bf7a96a03098463cfc529
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157260"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203336"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Windows Server 仮想マシンをマネージド ドメインに参加させます。
 この記事では、Resource Manager テンプレートを使用して Windows Server 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる方法を示します。
@@ -38,12 +38,12 @@ ms.locfileid: "50157260"
 
 ## <a name="install-and-configure-required-tools"></a>必要なツールをインストールして構成する
 このドキュメントで説明している手順を実行するには、次のオプションのいずれかを使用できます。
-* **Azure PowerShell** の[インストールおよび構成](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)
-* **Azure CLI**: [インストールと構成](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
+* **Azure PowerShell**:[インストールと構成](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)
+* **Azure CLI**:[インストールと構成](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
 
 
-## <a name="option-1-provision-a-new-windows-server-vm-and-join-it-to-a-managed-domain"></a>オプション 1: 新しい Windows Server VM をプロビジョニングしてマネージド ドメインに参加させる
-**クイック スタート テンプレート名**: [201-vm-domain-join](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
+## <a name="option-1-provision-a-new-windows-server-vm-and-join-it-to-a-managed-domain"></a>オプション 1:新しい Windows Server VM をプロビジョニングしてマネージド ドメインに参加させる
+**クイック スタート テンプレート名**:[201-vm-domain-join](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
 
 Windows Server 仮想マシンをデプロイしてマネージド ドメインに参加させるには、次の手順を実行します。
 1. [クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)に移動します。
@@ -59,7 +59,7 @@ Windows Server 仮想マシンをデプロイしてマネージド ドメイン�
 11. **[参加するドメイン]** で、マネージド ドメインの DNS ドメイン名を指定します。
 12. **[ドメイン ユーザー名]** で、VM をマネージド ドメインに参加させるために使用する、マネージド ドメイン上のユーザー アカウント名を指定します。
 13. **[ドメイン パスワード]** で、"domainUsername" パラメーターで参照されるドメイン ユーザー アカウントのパスワードを指定します。
-14. 省略可能: 仮想マシンを追加するカスタム OU への **OU パス**を指定できます。 このパラメーターの値を指定しない場合、仮想マシンはマネージド ドメイン上の既定の **[AAD DC Computers]\(AAD DC コンピューター\)** OU に追加されます。
+14. 省略可能:仮想マシンを追加するカスタム OU への **OU パス**を指定できます。 このパラメーターの値を指定しない場合、仮想マシンはマネージド ドメイン上の既定の **[AAD DC Computers]\(AAD DC コンピューター\)** OU に追加されます。
 15. **[VM Admin Username]\(VM 管理ユーザー名\)** フィールドで、仮想マシンのローカル管理者のアカウント名を指定します。
 16. **[VM Admin Password]\(VM 管理パスワード\)** フィールドで、仮想マシンのローカル管理者のパスワードを指定します。 仮想マシンをパスワードのブルート フォース攻撃から保護するために、強力なローカル管理者パスワードを指定してください。
 17. **[上記の使用条件に同意する]** をクリックします。
@@ -73,8 +73,8 @@ Windows Server 仮想マシンをデプロイしてマネージド ドメイン�
 デプロイが正常に完了すると、新しくプロビジョニングした Windows 仮想マシンがマネージド ドメインに参加します。
 
 
-## <a name="option-2-join-an-existing-windows-server-vm-to-a-managed-domain"></a>オプション 2: 既存の Windows Server VM をマネージド ドメインに参加させる
-**クイック スタート テンプレート**: [201-vm-domain-join-existing](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
+## <a name="option-2-join-an-existing-windows-server-vm-to-a-managed-domain"></a>オプション 2:既存の Windows Server VM をマネージド ドメインに参加させる
+**クイック スタート テンプレート**:[201-vm-domain-join-existing](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
 
 既存の Windows Server 仮想マシンをマネージド ドメインに参加させるには、次の手順を実行します。
 1. [クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)に移動します。
@@ -87,7 +87,7 @@ Windows Server 仮想マシンをデプロイしてマネージド ドメイン�
 8. **[Domain Join User Name]\(ドメイン参加ユーザー名\)** で、VM をマネージド ドメインに参加させるために使用する、マネージド ドメイン上のユーザー アカウント名を指定します。
 9. **[Domain Join User Password]\(ドメイン参加ユーザー パスワード\)** で、"domainUsername" パラメーターで参照されるドメイン ユーザー アカウントのパスワードを指定します。
 10. **[ドメイン FQDN]** で、マネージド ドメインの DNS ドメイン名を指定します。
-11. 省略可能: 仮想マシンを追加するカスタム OU への **OU パス**を指定できます。 このパラメーターの値を指定しない場合、仮想マシンはマネージド ドメイン上の既定の **[AAD DC Computers]\(AAD DC コンピューター\)** OU に追加されます。
+11. 省略可能:仮想マシンを追加するカスタム OU への **OU パス**を指定できます。 このパラメーターの値を指定しない場合、仮想マシンはマネージド ドメイン上の既定の **[AAD DC Computers]\(AAD DC コンピューター\)** OU に追加されます。
 12. **[上記の使用条件に同意する]** をクリックします。
 13. **[購入]** をクリックして仮想マシンをプロビジョニングします。
 
@@ -100,7 +100,7 @@ Windows Server 仮想マシンをデプロイしてマネージド ドメイン�
 
 
 ## <a name="related-content"></a>関連コンテンツ
-* [Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.4.0)
+* [Azure PowerShell の概要](/powershell/azure/overview)
 * [Azure クイック スタート テンプレート - 新しい VM をドメインに参加させる](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
 * [Azure クイック スタート テンプレート - 既存の VM をドメインに参加させる](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)
 * [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)

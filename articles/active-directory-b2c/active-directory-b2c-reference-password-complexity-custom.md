@@ -1,102 +1,39 @@
 ---
-title: Azure Active Directory B2C のカスタム ポリシーのパスワードの複雑さ | Microsoft Docs
-description: カスタム ポリシーでパスワードの複雑さの要件を構成する方法。
+title: Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの複雑さを構成する | Microsoft Docs
+description: Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの複雑さの要件を構成する方法。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/16/2017
+ms.date: 12/13/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: ed0001d8d88a2604e3128a4d5f7a365aeb7b00b1
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.subservice: B2C
+ms.openlocfilehash: e8e3157bc9dfc97d364effee2ea90cfad85d18ff
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440793"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167838"
 ---
-# <a name="configure-password-complexity-in-custom-policies"></a>カスタム ポリシーでパスワードの複雑さを構成する
+# <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの複雑さを構成する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-この記事では、パスワードの複雑さのしくみと、Azure AD B2C カスタム ポリシーを使ってそれを有効にする方法についてを詳しく説明します。
-
-## <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C: パスワードの複雑さの要件を構成する
-
-Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時にエンド ユーザーが指定するパスワードの複雑さの要件の変更がサポートされます。  既定では、Azure AD B2C では**強力な**パスワードを使います。  Azure AD B2C では、顧客が使用できるパスワードの複雑さを制御する構成オプションもサポートしています。  この記事では、カスタム ポリシーでパスワードの複雑さを構成する方法について説明します。  [組み込みポリシーでパスワードの複雑さを構成する](active-directory-b2c-reference-password-complexity.md)こともできます。
+Azure Active Directory (Azure AD) B2C では、アカウントの作成時にユーザーが指定するパスワードの複雑さの要件を構成することができます。 既定では、Azure AD B2C では**強力な**パスワードを使います。 この記事では、[カスタム ポリシー](active-directory-b2c-overview-custom.md)にパスワードの複雑さを構成する方法について説明します。 [ユーザー フロー](active-directory-b2c-reference-password-complexity.md)でパスワードの複雑さを構成することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 
-[概要](active-directory-b2c-get-started-custom.md)に関するページに記載されたローカル アカウントのサインアップ/サインインを完了するように構成された Azure AD B2C テナント。
+「[Active Directory B2C でのカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」にある手順を完了する。
 
-## <a name="how-to-configure-password-complexity-in-custom-policy"></a>カスタム ポリシーでパスワードの複雑さを構成する方法
+## <a name="add-the-elements"></a>要素を追加する
 
-カスタム ポリシーでパスワードの複雑さを構成するには、カスタム ポリシーの全体的な構造で `BuildingBlocks` の内部に `ClaimsSchema`、`Predicates`、`InputValidations` 要素を含める必要があります。
+1. スターター パックと一緒にダウンロードした *SignUpOrSignIn.xml* ファイルをコピーして、*SingUpOrSignInPasswordComplexity.xml* という名前を付けます。
+2. *SingUpOrSignInPasswordComplexity.xml* ファイルを開き、**PolicyId** および **PublicPolicyUri** を新しいポリシー名に変更します。 たとえば、*B2C_1A_signup_signin_password_complexity* にします。
+3. 識別子 `newPassword` と `reenterPassword` を含む次の **ClaimType** 要素を追加します。
 
-```XML
-  <BuildingBlocks>
-    <ClaimsSchema>...</ClaimsSchema>
-    <Predicates>...</Predicates>
-    <InputValidations>...</InputValidations>
-  </BuildingBlocks>
-```
-
-これらの要素の目的は次のとおりです。
-
-- 各 `Predicate` 要素は、true または false を返す基本的な文字列検証チェックを定義します。
-- `InputValidations` 要素には、1 つ以上の `InputValidation` 要素が含まれます。  各 `InputValidation` は、一連の `Predicate` 要素を使って構成されます。 この要素では、ブール値の集計を実行できます (`and` や `or` と同様)。
-- `ClaimsSchema` はどの要求が検証対象かを定義します。  その要求の検証に使う `InputValidation` ルールを定義します。
-
-### <a name="defining-a-predicate-element"></a>述語要素を定義する
-
-述語には、IsLengthRange と MatchesRegex の 2 つのメソッドの種類があります。 それぞれの例を見てみましょう。  まず、正規表現の照合に使われる MatchesRegex の例です。  この例では、数値を含む文字列を照合します。
-
-```XML
-      <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be a pin.">
-        <Parameters>
-          <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
-        </Parameters>
-      </Predicate>
-```
-
-次に、IsLengthRange の例を見てみましょう。  このメソッドは、最小と最大の文字列の長さを取得します。
-
-```XML
-      <Predicate Id="Length" Method="IsLengthRange" HelpText="The password must be between 8 and 16 characters.">
-        <Parameters>
-          <Parameter Id="Minimum">8</Parameter>
-          <Parameter Id="Maximum">16</Parameter>
-        </Parameters>
-      </Predicate>
-```
-
-チェックが失敗した場合にエンド ユーザーにエラー メッセージを提供するには `HelpText` 属性を使います。  この文字列は、[言語カスタマイズ機能](active-directory-b2c-reference-language-customization.md)を使ってローカライズすることができます。
-
-### <a name="defining-an-inputvalidation-element"></a>InputValidation 要素を定義する
-
-`InputValidation` は `PredicateReferences` の集計です。 `InputValidation` が成功するためには各 `PredicateReferences` が true である必要があります。  ただし、`PredicateReferences` 要素の内部では、`MatchAtLeast` と呼ばれる属性を使って、true を返す必要のある `PredicateReference` チェックの数を指定します。  必要に応じて、`HelpText` 属性を定義して、参照する `Predicate` 要素で定義されたエラー メッセージをオーバーライドします。
-
-```XML
-      <InputValidation Id="PasswordValidation">
-        <PredicateReferences Id="LengthGroup" MatchAtLeast="1">
-          <PredicateReference Id="Length" />
-        </PredicateReferences>
-        <PredicateReferences Id="3of4" MatchAtLeast="3" HelpText="You must have at least 3 of the following character classes:">
-          <PredicateReference Id="Lowercase" />
-          <PredicateReference Id="Uppercase" />
-          <PredicateReference Id="Number" />
-          <PredicateReference Id="Symbol" />
-        </PredicateReferences>
-      </InputValidation>
-```
-
-### <a name="defining-a-claimsschema-element"></a>ClaimsSchema 要素を定義する
-
-要求の種類 `newPassword` と `reenterPassword` は特別な要求と見なされるため、名前を変更しないでください。  UI は、これらの `ClaimType` 要素に基づいて、アカウントの作成時にユーザーが自分のパスワードを正しく再入力したことを検証します。  同じ `ClaimType` 要素を探すには、スターター パックで TrustFrameworkBase.xml を参照します。  この例の新しい点は、これらの要素をオーバーライドして `InputValidationReference` を定義していることです。 この新しい要素の `ID` 属性は、定義した `InputValidation` 要素をポイントしています。
-
-```XML
+    ```XML
     <ClaimsSchema>
       <ClaimType Id="newPassword">
         <InputValidationReference Id="PasswordValidation" />
@@ -105,78 +42,29 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
         <InputValidationReference Id="PasswordValidation" />
       </ClaimType>
     </ClaimsSchema>
-```
+    ```
 
-### <a name="putting-it-all-together"></a>まとめ
+4. [Predicates](predicates.md) には、`IsLengthRange` または `MatchesRegex` のメソッドの型があります。 `MatchesRegex` 型は、正規表現に一致させるために使用します。 `IsLengthRange` 型は、最小と最大の文字列の長さを受け取ります。 次の **Predicate** 要素が存在しない場合は、**BuildingBlocks** 要素に **Predicates** 要素を追加します。
 
-この例では、すべての要素を組み合わせて、機能するポリシーを作成する方法を示しています。  この例を使うには:
-
-1. 前提条件の[概要](active-directory-b2c-get-started-custom.md)の手順に従って、TrustFrameworkBase.xml と TrustFrameworkExtensions.xml をダウンロード、構成、アップロードします
-1. このセクションのコンテンツの例を使って SignUporSignIn.xml ファイルを作成します。
-1. Azure AD B2C テナント名で `yourtenant` を置き換えて SignUporSignIn.xml を更新します。
-1. 最後に SignUporSignIn.xml ポリシー ファイルをアップロードします。
-
-この例には、PIN パスワードの検証と強力なパスワードの検証が含まれています。
-
-- `PINpassword`を参照してください。 この `InputValidation` 要素は、任意の長さの PIN を検証します。  `ClaimType` の内部の `InputValidationReference` 要素では参照されていないため、現時点では使われません。 
-- `PasswordValidation`を参照してください。 この `InputValidation` 要素は、パスワードが 8 ～ 16 文字で、数字、大文字、小文字、記号の 4 種類のうち 3 種が含まれていることを検証します。  `ClaimType` で参照されています。  そのため、このルールがこのポリシーで適用されています。
-
-```XML
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<TrustFrameworkPolicy
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
-  PolicySchemaVersion="0.3.0.0"
-  TenantId="yourtenant.onmicrosoft.com"
-  PolicyId="B2C_1A_signup_signin"
-  PublicPolicyUri="http://yourtenant.onmicrosoft.com/B2C_1A_signup_signin">
- <BasePolicy>
-    <TenantId>yourtenant.onmicrosoft.com</TenantId>
-    <PolicyId>B2C_1A_TrustFrameworkExtensions</PolicyId>
-  </BasePolicy>
-  <BuildingBlocks>
-    <ClaimsSchema>
-      <ClaimType Id="newPassword">
-        <InputValidationReference Id="PasswordValidation" />
-      </ClaimType>
-      <ClaimType Id="reenterPassword">
-        <InputValidationReference Id="PasswordValidation" />
-      </ClaimType>
-    </ClaimsSchema>
+    ```XML
     <Predicates>
-      <Predicate Id="Lowercase" Method="MatchesRegex" HelpText="a lowercase">
+      <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be a pin.">
         <Parameters>
-          <Parameter Id="RegularExpression">[a-z]+</Parameter>
-        </Parameters>
-      </Predicate>
-      <Predicate Id="Uppercase" Method="MatchesRegex" HelpText="an uppercase">
-        <Parameters>
-          <Parameter Id="RegularExpression">[A-Z]+</Parameter>
-        </Parameters>
-      </Predicate>
-      <Predicate Id="Number" Method="MatchesRegex" HelpText="a number">
-        <Parameters>
-          <Parameter Id="RegularExpression">[0-9]+</Parameter>
-        </Parameters>
-      </Predicate>
-      <Predicate Id="Symbol" Method="MatchesRegex" HelpText="a symbol">
-        <Parameters>
-          <Parameter Id="RegularExpression">[!@#$%^*()]+</Parameter>
+          <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
         </Parameters>
       </Predicate>
       <Predicate Id="Length" Method="IsLengthRange" HelpText="The password must be between 8 and 16 characters.">
         <Parameters>
           <Parameter Id="Minimum">8</Parameter>
           <Parameter Id="Maximum">16</Parameter>
-        </Parameters>
-      </Predicate>
-      <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be a pin.">
-        <Parameters>
-          <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
         </Parameters>
       </Predicate>
     </Predicates>
+    ```
+
+5. 各 **InputValidation** 要素は、定義された **Predicate** 要素を使用して構成されます。 この要素により、`and` や `or` に似たブール値の集計を実行できます。 次の **InputValidation** 要素が存在しない場合は、**BuildingBlocks** 要素に **InputValidations** 要素を追加します。
+
+    ```XML
     <InputValidations>
       <InputValidation Id="PasswordValidation">
         <PredicateReferences Id="LengthGroup" MatchAtLeast="1">
@@ -189,30 +77,57 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
           <PredicateReference Id="Symbol" />
         </PredicateReferences>
       </InputValidation>
-      <InputValidation Id="PINpassword">
-        <PredicateReferences Id="PINGroup">
-          <PredicateReference Id="PIN" />
-        </PredicateReferences>
-      </InputValidation>
     </InputValidations>
-  </BuildingBlocks>
-  <RelyingParty>
-    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
-    <TechnicalProfile Id="PolicyProfile">
-      <DisplayName>PolicyProfile</DisplayName>
-      <Protocol Name="OpenIdConnect" />
-      <InputClaims>
-        <InputClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration, DisableStrongPassword" />
-      </InputClaims>
-      <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="displayName" />
-        <OutputClaim ClaimTypeReferenceId="givenName" />
-        <OutputClaim ClaimTypeReferenceId="surname" />
-        <OutputClaim ClaimTypeReferenceId="email" />
-        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-      </OutputClaims>
-      <SubjectNamingInfo ClaimType="sub" />
-    </TechnicalProfile>
-  </RelyingParty>
-</TrustFrameworkPolicy>
-```
+    ```
+
+6. **PolicyProfile** 技術プロファイルに次の要素が含まれていることを確認します。
+
+    ```XML
+    <RelyingParty>
+      <DefaultUserJourney ReferenceId="SignUpOrSignIn"/>
+      <TechnicalProfile Id="PolicyProfile">
+        <DisplayName>PolicyProfile</DisplayName>
+        <Protocol Name="OpenIdConnect"/>
+        <InputClaims>
+          <InputClaim ClaimTypeReferenceId="passwordPolicies" DefaultValue="DisablePasswordExpiration, DisableStrongPassword"/>
+        </InputClaims>
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="displayName"/>
+          <OutputClaim ClaimTypeReferenceId="givenName"/>
+          <OutputClaim ClaimTypeReferenceId="surname"/>
+          <OutputClaim ClaimTypeReferenceId="email"/>
+          <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+        </OutputClaims>
+        <SubjectNamingInfo ClaimType="sub"/>
+      </TechnicalProfile>
+    </RelyingParty>
+    ```
+
+7. ポリシー ファイルを保存します。
+
+## <a name="test-your-policy"></a>ポリシーのテスト
+
+Azure AD B2C でアプリケーションをテスト中に、Azure AD B2C トークンを `https://jwt.ms` に返して、その中の要求を見直すことができると便利なことがあります。
+
+### <a name="upload-the-files"></a>ファイルのアップロード
+
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
+4. **[Identity Experience Framework]** を選択します。
+5. [カスタム ポリシー] ページで、**[ポリシーのアップロード]** をクリックします。
+6. **[ポリシーが存在する場合は上書きする]** を選択し、*SingUpOrSignInPasswordComplexity.xml* ファイルを検索して選択します。
+7. **[アップロード]** をクリックします。
+
+### <a name="run-the-policy"></a>ポリシーを実行する
+
+1. 変更したポリシーを開きます。 たとえば、*B2C_1A_signup_signin_password_complexity* にします。
+2. **[アプリケーション]** には、前に登録したアプリケーションを選択します。 トークンを表示するには、**[応答 URL]** に `https://jwt.ms` が表示される必要があります。
+3. **[今すぐ実行]** をクリックします。
+4. **[今すぐサインアップ]** を選択し、メール アドレスを入力して、新しいパスワードを入力します。 パスワード制限に関するガイダンスが表示されます。 ユーザー情報の入力を終了して、**[作成]** をクリックします。 返されたトークンの内容が表示されます。
+
+## <a name="next-steps"></a>次の手順
+
+- [Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの変更を構成する](active-directory-b2c-reference-password-change-custom.md)方法について学習します。
+
+

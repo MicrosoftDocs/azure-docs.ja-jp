@@ -17,14 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 2ec2ac6508dfbf0c1a42f72dc393fa8b841ab877
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: bfe4abe4a83a6b22d05942f91f4152d5c0e62be9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822468"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124093"
 ---
-# <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用して仮想マシンへの送受信ネットワーク トラフィックをログに記録する
+# <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して仮想マシンへの送受信ネットワーク トラフィックをログに記録する
 
 ネットワーク セキュリティ グループ (NSG) により、仮想マシン (VM) への着信トラフィックと 送信トラフィックをフィルターできます。 Network Watcher の NSG フロー ログ機能により、NSG を通過するネットワーク トラフィックをログに記録できます。 このチュートリアルでは、以下の内容を学習します。
 
@@ -37,13 +37,10 @@ ms.locfileid: "51822468"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-> [!NOTE] 
-> フロー ログ バージョン 2 は、米国中西部リージョンでのみ利用できます。 構成は Azure portal と REST API を通じて行えます。 サポートされていないリージョンでバージョン 2 のログを有効にすると、バージョン 1 のログがお客様のストレージ アカウントに保存されることになります。
-
 ## <a name="create-a-vm"></a>VM の作成
 
 1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
-2. **[Compute]** を選択し、**[Windows Server 2016 Datacenter]** または **[Ubuntu Server 17.10 VM]** を選択します。
+2. **[Compute]** を選択し、**[Windows Server 2016 Datacenter]** またはいずれかのバージョンの **Ubuntu Server** を選択します。
 3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[OK]** を選択します。
 
     |Setting|値|
@@ -103,7 +100,10 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 
 6. NSG の一覧から **myVm-nsg** という名前の NSG を選択します。
 7. **[フローのログ設定]** の下で **[オン]** を選択します。
-8. フロー ログのバージョンを選択します。 バージョン 2 には、フローセッションの統計 (バイトおよびパケット) が含まれます。 ![フロー ログのバージョンの選択](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+8. フロー ログのバージョンを選択します。 バージョン 2 には、フローセッションの統計 (バイトおよびパケット) が含まれます。
+
+   ![フロー ログのバージョンの選択](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+
 9. 手順 3 で作成したストレージ アカウントを選択します。
 10. **[リテンション期間 (日数)]** を 5 に設定し、**[保存]** を選択します。
 
@@ -112,17 +112,13 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 1. ポータルの Network Watcher から、**[ログ]** の下の **[NSG フロー ログ]** を選択します。
 2. 次の図に示すように、**[構成済みのストレージ アカウントからフローのログをダウンロードできました。]** を選択します。
 
-  ![フロー ログをダウンロードする](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
+   ![フロー ログをダウンロードする](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. 「[NSG フロー ログの有効化](#enable-nsg-flow-log)」の手順 2 で構成したストレージ アカウントを選択します。
-4. 次の図に示すように、**[BLOB サービス]** の **[コンテナー]** を選択して、**[insights-logs-networksecuritygroupflowevent]** コンテナーを選択します。
+4. **[Blob service]** で **[BLOB]** を選択し、**[insights-logs-networksecuritygroupflowevent]** コンテナーを選択します。
+5. 次の図に示すように、コンテナー内のフォルダー階層を PT1H.json ファイルに到達するまで移動します。 ログ ファイルは、次の名前規則に従ってフォルダー階層に書き込まれます。 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 
-    ![コンテナーの選択](./media/network-watcher-nsg-flow-logging-portal/select-container.png)
-5. 次の図に示すように、フォルダー階層を PT1H.json ファイルに到達するまで移動します。
-
-    ![ログ ファイル](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
-
-    ログ ファイルは、次の名前規則に従ってフォルダー階層に書き込まれます。 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
+   ![フローのログ](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
 
 6. PT1H.json ファイルの右側の **[...]** を選択し、**[ダウンロード]** を選択します。
 
@@ -199,7 +195,6 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 }
 ```
 
-
 前の出力の **mac** の値は、VM の作成時に作成されたネットワーク インターフェイスの MAC アドレスです。 **flowTuples** のコンマで区切られた情報を次に示します。
 
 | サンプル データ | データが表す内容   | 説明                                                                              |
@@ -209,14 +204,14 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 | 13.67.143.118     | 宛先 IP アドレス | フローが送信された宛先 IP アドレス。                                                                                  |
 | 44931        | 発信元ポート            | フローが発生したソース ポート。                                           |
 | 443         | 宛先ポート       | フローが送信された宛先ポート。 トラフィックの送信先はポート 443 であったため、ログ ファイルの **UserRule_default-allow-rdp** という規則によって、フローが処理されました。                                                |
-| T            | プロトコル               | フローのプロトコルが TCP (T) かまたは UDP (U) か。                                  |
+| T            | Protocol               | フローのプロトコルが TCP (T) かまたは UDP (U) か。                                  |
 | O            | 方向              | トラフィックが受信 (I) かまたは送信 (O) か。                                     |
 | A            | Action                 | トラフィックが許可された (A) かまたは拒否された (D) か。  
-| C            | フロー状態 (**バージョン 2 のみ**) | フローの状態をキャプチャします。 以下の状態があります。**B**: 開始。フローが作成された時点です。 統計は提供されません。 **C**: 継続中。フローが進行中です。 5 分間隔で統計が提供されます。 **E**: 終了。フローが終了した時点です。 統計が提供されます。 |
+| C            | フロー状態 (**バージョン 2 のみ**) | フローの状態をキャプチャします。 次の状態があります。**B**: 開始。フローが作成された時点です。 統計は提供されません。 **C**: 継続中。フローが進行中です。 5 分間隔で統計が提供されます。 **E**:終了。フローが終了した時点です。 統計が提供されます。 |
 | 30 | 送信済みパケット数 - 送信元から宛先 (**バージョン 2 のみ**) | 最後の更新以降に送信元から宛先に送信された TCP または UDP パケットの総数。 |
 | 16978 | 送信済みバイト数 - 送信元から宛先 (**バージョン 2 のみ**) | 最後の更新以降に送信元から宛先に送信された TCP または UDP パケットのバイト数の合計。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。 | 
 | 24 | 送信済みパケット数 - 宛先から送信元 (**バージョン 2 のみ**) | 最後の更新以降に宛先から送信元に送信された TCP または UDP パケットの総数。 |
-| 14008| 送信済みバイト数 - 宛先から送信元 (**バージョン 2 のみ**) | 最後の更新以降に宛先から送信元に送信された TCP および UDP パケットのバイト数の合計。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。| |
+| 14008| 送信済みバイト数 - 宛先から送信元 (**バージョン 2 のみ**) | 最後の更新以降に宛先から送信元に送信された TCP および UDP パケットのバイト数の合計。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。|
 
 ## <a name="next-steps"></a>次の手順
 

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 00dd74ccd317799ca3afcbe0ed1ca85e19bb3cbe
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f57a83fb83152055692e6f614b7958d099b6c70d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123879"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561231"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Concur からデータをコピーする (プレビュー)
 
@@ -48,10 +47,10 @@ Concur のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **Concur** に設定する必要があります。 | [はい] |
-| clientId | Concur App Management によって提供されるアプリケーションの client_id。  | [はい] |
-| username | Concur サービスへのアクセスに使用するユーザー名。  | [はい] |
-| password | username フィールドに指定したユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**Concur** | はい |
+| clientId | Concur App Management によって提供されるアプリケーションの client_id。  | はい |
+| username | Concur サービスへのアクセスに使用するユーザー名。  | はい |
+| password | username フィールドに指定したユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
 | usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |
@@ -67,8 +66,8 @@ Concur のリンクされたサービスでは、次のプロパティがサポ�
             "clientId" : "<clientId>",
             "username" : "<username>",
             "password": {
-                 "type": "SecureString",
-                 "value": "<password>"
+                "type": "SecureString",
+                "value": "<password>"
             }
         }
     }
@@ -79,7 +78,13 @@ Concur のリンクされたサービスでは、次のプロパティがサポ�
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Concur データセットでサポートされるプロパティの一覧を示します。
 
-Concur からデータをコピーするには、データセットの type プロパティを **ConcurObject** に設定します。 この種類のデータセットに追加の種類固有のプロパティはありません。
+Concur からデータをコピーするには、データセットの type プロパティを **ConcurObject** に設定します。 この種類のデータセットに追加の種類固有のプロパティはありません。 次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | データセットの type プロパティは、次のように設定する必要があります:**ConcurObject** | はい |
+| tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
+
 
 **例**
 
@@ -91,7 +96,8 @@ Concur からデータをコピーするには、データセットの type プ�
         "linkedServiceName": {
             "referenceName": "<Concur linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -106,8 +112,8 @@ Concur からデータをコピーするには、コピー アクティビティ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **ConcurSource** に設定する必要があります。 | [はい] |
-| query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Opportunities where Id = xxx "`」のように入力します。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**ConcurSource** | はい |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Opportunities where Id = xxx "`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 

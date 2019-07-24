@@ -5,20 +5,23 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 4b008cc119951e50567218e332818585fb017e5a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 75a7424f6c3bb6ef13de9e44b46489ab1ef0fbcc
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229409"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59792982"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>PowerShell と Azure Resource Manager を使用して Azure に対する Hyper-V VM のディザスター リカバリーを設定する
 
 [Azure Site Recovery](site-recovery-overview.md) は、Azure 仮想マシン (VM)、オンプレミスの VM、および物理サーバーのレプリケーション、フェールオーバー、復旧を調整して、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。
 
 この記事では、Windows PowerShell と Azure Resource Manager を使って、Hyper-V VM を Azure にレプリケートする方法を説明します。 この記事で使用している例では、Hyper-V ホストで実行されている 1 つの VM を Azure にレプリケートする方法を示します。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -35,56 +38,55 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 次の前提条件を満たしていることを確認してください。
 
 * [Microsoft Azure](https://azure.microsoft.com/) アカウント。 アカウントがなくても、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。 また、「 [Azure Site Recovery Manager の料金](https://azure.microsoft.com/pricing/details/site-recovery/)」も参照してください。
-* Azure PowerShell 1.0 今回のリリースとそのインストール方法については、「[Azure PowerShell 1.0](https://azure.microsoft.com/)」を参照してください。
-* [AzureRM.SiteRecovery](https://www.powershellgallery.com/packages/AzureRM.SiteRecovery/) モジュールと [AzureRM.RecoveryServices](https://www.powershellgallery.com/packages/AzureRM.RecoveryServices/) モジュール。 最新版のモジュールを [PowerShell ギャラリー](https://www.powershellgallery.com/)
+* Azure PowerShell。 今回のリリースとそのインストール方法については、「[Azure PowerShell のインストール](/powershell/azure/install-az-ps)」を参照してください。
 
 また、この記事で説明されている特定の例には、次の前提条件があります。
 
 * 1 つ以上の VM を含む Windows Server 2012 R2 または Microsoft Hyper-V Server 2012 R2 を実行する Hyper-V ホスト。 Hyper-V サーバーは、直接、またはプロキシを経由して、インターネットに接続されている必要があります。
 * レプリケートする VM は、[こちらの前提条件](hyper-v-azure-support-matrix.md#replicated-vms)に従う必要があります。
 
-## <a name="step-1-sign-in-to-your-azure-account"></a>手順 1. Azure アカウントにログインする
+## <a name="step-1-sign-in-to-your-azure-account"></a>ステップ 1:Azure アカウントへのサインイン
 
-1. PowerShell コンソールを開いて次のコマンドを実行し、Azure アカウントにログインします。 コマンドレットを実行すると Web ページが表示され、次のアカウントの資格情報 **Connect-AzureRmAccount** を入力するように求められます。
-    - または、**-Credential** パラメーターを使用して、**Connect-AzureRmAccount** コマンドレットのパラメーターとしてアカウントの資格情報を含められます。
-    - CSP パートナーがテナントの代理としてサインインする場合は、その顧客をテナントとして指定します。該当するテナント ID またはテナントのプライマリ ドメイン名で指定してください。 たとえば、「**Connect-AzureRmAccount -Tenant "fabrikam.com"**」と入力します。
+1. PowerShell コンソールを開いて次のコマンドを実行し、Azure アカウントにログインします。 コマンドレットを実行すると、アカウントの資格情報を入力する Web ページが表示されます:**Connect-AzAccount**。
+    - または、**-Credential** パラメーターを使用して、**Connect-AzAccount** コマンドレットのパラメーターとしてアカウントの資格情報を含められます。
+    - CSP パートナーがテナントの代理としてサインインする場合は、その顧客をテナントとして指定します。該当するテナント ID またはテナントのプライマリ ドメイン名で指定してください。 例: **Connect-AzAccount -Tenant "fabrikam.com"**
 2. 1 つのアカウントが複数のサブスクリプションを持つことができるため、使用するサブスクリプションをアカウントに関連付けます。
 
-    `Select-AzureRmSubscription -SubscriptionName $SubscriptionName`
+    `Select-AzSubscription -SubscriptionName $SubscriptionName`
 
 3. 次のコマンドを使用して、該当するサブスクリプションに対して Recovery Services 用と Site Recovery 用の Azure プロバイダーが登録され、使用できる状態になっていることを確認します。
 
-    `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.RecoveryServices` `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.SiteRecovery`
+    `Get-AzResourceProvider -ProviderNamespace  Microsoft.RecoveryServices`
 
 4. コマンド出力で **RegistrationState** が **Registered** に設定されていることを確認し、手順 2. に進みます。 設定されていない場合は、次のコマンドを実行して、登録されていないプロバイダーを該当するサブスクリプションに登録する必要があります。
 
-    `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.SiteRecovery` `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices`
+    `Register-AzResourceProvider -ProviderNamespace Microsoft.RecoveryServices`
 
 5. 次のコマンドを使用して、プロバイダーが正しく登録されたことを確認します。
 
-    `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.RecoveryServices` `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.SiteRecovery`
+    `Get-AzResourceProvider -ProviderNamespace  Microsoft.RecoveryServices`
 
-## <a name="step-2-set-up-the-vault"></a>手順 2: コンテナーを設定する
+## <a name="step-2-set-up-the-vault"></a>手順 2:コンテナーを設定する
 
 1. 資格情報コンテナーの作成先となる Azure Resource Manager リソース グループを作成するか、既存のリソース グループを使用します。 次のように、新しいリソース グループを作成します。 $ResourceGroupName 変数には、作成するリソース グループの名前が格納され、$Geo 変数には、リソース グループの作成先となる Azure リージョン (例: "ブラジル南部") が格納されます。
 
-    `New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Geo`
+    `New-AzResourceGroup -Name $ResourceGroupName -Location $Geo`
 
-2. サブスクリプションのリソース グループの一覧を取得するには、**Get-AzureRmResourceGroup** コマンドレットを実行します。
+2. サブスクリプションのリソース グループの一覧を取得するには、**Get-AzResourceGroup** コマンドレットを実行します。
 2. 次のコマンドを使用して、Azure Recovery Services の新しい資格情報コンテナーを作成します。
 
-        $vault = New-AzureRmRecoveryServicesVault -Name <string> -ResourceGroupName <string> -Location <string>
+        $vault = New-AzRecoveryServicesVault -Name <string> -ResourceGroupName <string> -Location <string>
 
-    既存のコンテナーの一覧を取得するには、**Get-AzureRmRecoveryServicesVault** コマンドレットを使用します。
+    既存のコンテナーの一覧を取得するには、**Get-AzRecoveryServicesVault** コマンドレットを使用します。
 
 
-## <a name="step-3-set-the-recovery-services-vault-context"></a>手順 3. Recovery Services 資格情報コンテナーのコンテキストを設定する
+## <a name="step-3-set-the-recovery-services-vault-context"></a>手順 3:Recovery Services 資格情報コンテナーのコンテキストを設定する
 
 次のように、コンテナーのコンテキストを設定します。
 
 `Set-AsrVaultSettings -Vault $vault`
 
-## <a name="step-4-create-a-hyper-v-site"></a>手順 4: Hyper-V サイトを作成する
+## <a name="step-4-create-a-hyper-v-site"></a>ステップ 4:Hyper-V サイトを作成する
 
 1. 次のコマンドを使用して、新しい Hyper-V サイトを作成します。
 
@@ -97,12 +99,12 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 
     ```
     $SiteIdentifier = Get-AsrFabric -Name $sitename | Select -ExpandProperty SiteIdentifier
-    $path = Get-AzureRmRecoveryServicesVaultSettingsFile -Vault $vault -SiteIdentifier $SiteIdentifier -SiteFriendlyName $sitename
+    $path = Get-AzRecoveryServicesVaultSettingsFile -Vault $vault -SiteIdentifier $SiteIdentifier -SiteFriendlyName $sitename
     ```
 
 5. ダウンロードしたキーを Hyper-V ホストにコピーします。 このキーは、Hyper-V ホストをサイトに登録するときに必要になります。
 
-## <a name="step-5-install-the-provider-and-agent"></a>手順 5: プロバイダーとエージェントをインストールする
+## <a name="step-5-install-the-provider-and-agent"></a>ステップ 5:プロバイダーとエージェントのインストール
 
 1. 最新版のプロバイダーのインストーラーを[マイクロソフト](https://aka.ms/downloaddra)からダウンロードします。
 2. Hyper-V ホストでインストーラーを実行します。
@@ -112,7 +114,7 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 
         $server =  Get-AsrFabric -Name $siteName | Get-AsrServicesProvider -FriendlyName $server-friendlyname
 
-## <a name="step-6-create-a-replication-policy"></a>手順 6: レプリケーション ポリシーを作成する
+## <a name="step-6-create-a-replication-policy"></a>ステップ 6:レプリケーション ポリシーを作成する
 
 開始する前に、指定されたストレージ アカウントが、コンテナーと同じ Azure リージョンに存在する必要があることに注意してください。また、geo レプリケーションが有効になっている必要もあります。
 
@@ -121,7 +123,7 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
         $ReplicationFrequencyInSeconds = "300";        #options are 30,300,900
         $PolicyName = “replicapolicy”
         $Recoverypoints = 6                    #specify the number of recovery points
-        $storageaccountID = Get-AzureRmStorageAccount -Name "mystorea" -ResourceGroupName "MyRG" | Select -ExpandProperty Id
+        $storageaccountID = Get-AzStorageAccount -Name "mystorea" -ResourceGroupName "MyRG" | Select -ExpandProperty Id
 
         $PolicyResult = New-AsrPolicy -Name $PolicyName -ReplicationProvider “HyperVReplicaAzure” -ReplicationFrequencyInSeconds $ReplicationFrequencyInSeconds  -RecoveryPoints $Recoverypoints -ApplicationConsistentSnapshotFrequencyInHours 1 -RecoveryAzureStorageAccountId $storageaccountID
 
@@ -136,7 +138,7 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 
 4. 関連付けが正常に完了するのを待ちます。
 
-## <a name="step-7-enable-vm-protection"></a>手順 7: VM 保護を有効にする
+## <a name="step-7-enable-vm-protection"></a>ステップ 7:VM 保護を有効にする
 
 1. 次のように、保護する VM に対応する保護可能な項目を取得します。
 
@@ -158,7 +160,7 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
         Completed
 4. 復旧のプロパティ (VM ロール サイズなど)、およびフェールオーバー後に VM NIC を接続する Azure ネットワークを更新します。
 
-        PS C:\> $nw1 = Get-AzureRmVirtualNetwork -Name "FailoverNw" -ResourceGroupName "MyRG"
+        PS C:\> $nw1 = Get-AzVirtualNetwork -Name "FailoverNw" -ResourceGroupName "MyRG"
 
         PS C:\> $VMFriendlyName = "Fabrikam-App"
 
@@ -175,10 +177,10 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 
 
 
-## <a name="step-8-run-a-test-failover"></a>ステップ 8: テスト フェールオーバーを実行する
+## <a name="step-8-run-a-test-failover"></a>ステップ 8:テスト フェールオーバーの実行
 1. 次のように、テスト フェールオーバーを実行します。
 
-        $nw = Get-AzureRmVirtualNetwork -Name "TestFailoverNw" -ResourceGroupName "MyRG" #Specify Azure vnet name and resource group
+        $nw = Get-AzVirtualNetwork -Name "TestFailoverNw" -ResourceGroupName "MyRG" #Specify Azure vnet name and resource group
 
         $rpi = Get-AsrReplicationProtectedItem -ProtectionContainer $protectionContainer -FriendlyName $VMFriendlyName
 
@@ -189,4 +191,4 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
         $TFjob = Start-AsrTestFailoverCleanupJob -ReplicationProtectedItem $rpi -Comment "TFO done"
 
 ## <a name="next-steps"></a>次の手順
-Azure Site Recovery と Azure Resource Manager PowerShell コマンドレットの[詳細を確認](https://docs.microsoft.com/powershell/module/azurerm.siterecovery)します。
+Azure Site Recovery と Azure Resource Manager PowerShell コマンドレットの[詳細を確認](https://docs.microsoft.com/powershell/module/az.recoveryservices)します。

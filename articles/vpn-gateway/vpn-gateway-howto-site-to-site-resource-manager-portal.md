@@ -1,18 +1,18 @@
 ---
-title: 'オンプレミスのネットワークを Azure 仮想ネットワークに接続する: サイト間 VPN: ポータル | Microsoft Docs'
+title: オンプレミス ネットワークから Azure Virtual Network への接続:サイト間 VPN:ポータル | Microsoft Docs
 description: パブリック インターネットを経由したオンプレミスのネットワークから Azure 仮想ネットワークへの IPsec 接続を作成する手順。 これらの手順は、ポータルを使用してクロスプレミスのサイト間 VPN Gateway 接続を作成する際に役立ちます。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 12/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: dd29b4af85826e350e116b31fa53031aacaba067
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 032b6a4f5147d06a4613a827a0372437dca47f47
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457121"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651641"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Azure Portal でサイト間接続を作成する
 
@@ -35,21 +35,21 @@ ms.locfileid: "49457121"
 構成を開始する前に、以下の条件を満たしていることを確認します。
 
 * 互換性のある VPN デバイスがあり、デバイスを構成できる人員がいることを確認します。 互換性のある VPN デバイスとデバイスの構成の詳細については、[VPN デバイスの概要](vpn-gateway-about-vpn-devices.md)に関する記事を参照してください。
-* VPN デバイスの外部接続用パブリック IPv4 アドレスがあることを確認します。 この IP アドレスを NAT の内側に割り当てることはできません。
+* VPN デバイスの外部接続用パブリック IPv4 アドレスがあることを確認します。
 * オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。 この構成を作成する場合は、Azure がオンプレミスの場所にルーティングする IP アドレス範囲のプレフィックスを指定する必要があります。 オンプレミス ネットワークのサブネットと接続先の仮想ネットワーク サブネットが重複しないようにしなければなりません。 
 
 ### <a name="values"></a>値の例
 
 この記事の例では、次の値を使用します。 この値を使用して、テスト環境を作成できます。また、この値を参考にしながら、この記事の例を確認していくこともできます。 VPN ゲートウェイの一般的な設定の詳細については、[VPN Gateway の設定](vpn-gateway-about-vpn-gateway-settings.md)に関するページを参照してください。
 
-* **VNet の名前:** TestVNet1
+* **VNet 名:** TestVNet1
 * **アドレス空間:** 10.1.0.0/16
 * **サブスクリプション:** 使用するサブスクリプション
 * **リソース グループ:** TestRG1
-* **場所:** 米国東部
-* **サブネット:** FrontEnd: 10.1.0.0/24、BackEnd: 10.1.1.0/24 (この演習では省略可能)
+* **[場所]:** 米国東部
+* **サブネット:** FrontEnd:10.1.0.0/24、BackEnd:10.1.1.0/24 (この演習では省略可能)
 * **ゲートウェイ サブネット名:** GatewaySubnet (ポータルではこの名前が自動入力されます)
-* **ゲートウェイ サブネットのアドレス範囲:** 10.1.255.0/27
+* **ゲートウェイ サブネットのアドレス範囲**:10.1.255.0/27
 * **DNS サーバー:** 8.8.8.8 - 省略可能。 DNS サーバーの IP アドレス。
 * **仮想ネットワーク ゲートウェイ名:** VNet1GW
 * **パブリック IP:** VNet1GWIP

@@ -7,14 +7,14 @@ author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 12/03/2018
 ms.author: glenga
-ms.openlocfilehash: a92a4183962f71005577478bf27df9b5fb945acf
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 83e5a15d8a7f9c01f6a180ebceb715600b8a39db
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634364"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849481"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions の IP アドレス
 
@@ -88,13 +88,13 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ## <a name="inbound-ip-address-changes"></a>着信 IP アドレスの変更
 
- 次の操作を行うと、着信 IP アドレスが変更される**ことがあります**。
+次の操作を行うと、着信 IP アドレスが変更される**ことがあります**。
 
 - 関数アプリを削除した後、別のリソース グループ内で再作成する。
 - リソース グループとリージョンの組み合わせに含まれる最後の関数アプリを削除した後、再作成する。
 - [証明書の更新](../app-service/app-service-web-tutorial-custom-ssl.md#renew-certificates)時などに SSL バインドを削除する。
 
-着信 IP アドレスは、上記のようなアクションを実行しなくても、変更される場合があります。
+関数アプリが[従量課金プラン](functions-scale.md#consumption-plan)で実行される場合、着信 IP アドレスは、上記のようなアクションを実行しなくても、変更される場合があります。
 
 ## <a name="outbound-ip-address-changes"></a>送信 IP アドレスの変更
 
@@ -103,7 +103,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 * 着信 IP アドレスが変更される可能性のあるアクションを実行する。
 * App Service プランの価格レベルを変更する。 すべての価格レベルについて、アプリで使用可能なすべての送信 IP アドレスのリストが `possibleOutboundIPAddresses` プロパティに含まれています。 「[IP アドレスを見つける](#find-outbound-ip-addresses)」を参照してください。
 
-着信 IP アドレスは、上記のようなアクションを実行しなくても、変更される場合があります。
+関数アプリが[従量課金プラン](functions-scale.md#consumption-plan)で実行される場合、送信 IP アドレスは、上記のようなアクションを実行しなくても、変更される場合があります。
 
 送信 IP アドレスを意図的に変更するには、次のようにします。
 

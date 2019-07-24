@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Speech SDK for Java を使用してファイルまたはマイクの音声から意図を認識するさまざまな方法を学習します。
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: cb7e7095278eed51c7616dc1c19dcf5c9d84b856
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 616cc634a6429da18616f43894bbfe213264c252
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469896"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884054"
 ---
 # <a name="recognize-intents-from-speech-by-using-the-speech-sdk-for-java"></a>Speech SDK for Java を使用して音声から意図を認識する
 

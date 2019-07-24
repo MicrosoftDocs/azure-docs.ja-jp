@@ -1,30 +1,25 @@
 ---
-title: Azure Machine Learning の ALM | Microsoft Docs
+title: アプリケーション ライフサイクル管理
+titleSuffix: Azure Machine Learning Studio
 description: Azure Machine Learning Studio でのアプリケーション ライフサイクル管理のベスト プラクティスの適用
-keywords: ALM、AML、Azure ML、アプリケーション ライフ サイクル管理、バージョン管理
 services: machine-learning
-documentationcenter: ''
-author: hning86
-ms.author: haining
-manager: mwinkle
-editor: cgronlun
-ms.assetid: 1be6577d-f2c7-425b-b6b9-d5038e52b395
 ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: studio
+ms.topic: conceptual
+author: xiaoharper
+ms.author: amlstudiodocs
 ms.date: 10/27/2016
-ms.openlocfilehash: d201d8848891038355fad01f610070259ad1e42a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 046afaa0e83fa572d6cd43a3717707892b25af69
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259192"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793694"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でのアプリケーション ライフサイクル管理
 Azure Machine Learning Studio は、Azure クラウド プラットフォームで運用できる機械学習の実験を開発するツールです。 Visual Studio IDE に似ており、1 つのプラットフォームにマージされているスケーラブルなクラウド サービスです。 さまざまな資産のバージョン管理から、自動化された実行とデプロイまで、標準的なアプリケーション ライフサイクル管理 (ALM) プラクティスを Azure Machine Learning Studio に組み込むことができます。 この記事では、一部のオプションとアプローチについて説明します。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="versioning-experiment"></a>実験のバージョン管理
 実験のバージョン管理に推奨される方法は 2 つあります。 組み込みの実行履歴に依存することも、外部で管理するために実験を JSON 形式でエクスポートすることもできます。 それぞれのアプローチには長所と短所があります。
@@ -48,7 +43,7 @@ Azure Machine Learning Studio の学習実験の実行モデルでは、実験�
 JSON ファイルは実験グラフのテキスト表現ですが、データセットやトレーニング済みのモデルなど、ワークスペース内の資産への参照を含む場合があります。 その資産のシリアル化されたバージョンは含みません。 このため、JSON ドキュメントをワークスペースにもう一度インポートしようとする場合、これらの参照先資産は実験で参照されているのと同じ資産 ID で既に存在する必要があります。 そうでない場合は、インポートされた実験にアクセスできません。
 
 ## <a name="versioning-trained-model"></a>トレーニング済みのモデルのバージョン管理
-Azure Machine Learning 内のトレーニング済みのモデルは iLearner ファイル (`.iLearner`) と呼ばれる形式にシリアル化され、ワークスペースに関連付けられている Azure Blob Storage アカウント内に格納されます。 iLearner ファイルのコピーを取得する 1 つの方法として、再トレーニング API の使用があります。 この[記事](retrain-models-programmatically.md)では、再トレーニング API の動作について説明します。 手順の概要は次のとおりです。
+Azure Machine Learning Studio 内のトレーニング済みのモデルは iLearner ファイル (`.iLearner`) と呼ばれる形式にシリアル化され、ワークスペースに関連付けられている Azure Blob Storage アカウント内に格納されます。 iLearner ファイルのコピーを取得する 1 つの方法として、再トレーニング API の使用があります。 この[記事](/azure/machine-learning/studio/retrain-machine-learning-model)では、再トレーニング API の動作について説明します。 手順の概要は次のとおりです。
 
 1. トレーニング実験を設定します。
 2. モデルのトレーニング モジュール、またはモデル ハイパーパラメーターの調整や R モデルの作成など、トレーニング済みのモデルを生成するモジュールに、Web サービス出力ポートを追加します。
@@ -63,7 +58,7 @@ iLearner ファイルを取得する別の方法として、PowerShell コマン
 その後、保存されている iLearner ファイルをデプロイされた Web サービスからのスコア付けのために使用できます。
 
 ## <a name="versioning-web-service"></a>バージョン管理 Web サービス
-Azure Machine Learning の実験から、2 種類の Web サービスをデプロイできます。 従来の Web サービスは、実験およびワークスペースと緊密に結合されています。 新しい Web サービスは Azure Resource Manager のフレームワークを活用しており、元の実験とワークスペースのどちらとも結合されなくなりました。
+Azure Machine Learning Studio の実験から、2 種類の Web サービスをデプロイできます。 従来の Web サービスは、実験およびワークスペースと緊密に結合されています。 新しい Web サービスは Azure Resource Manager のフレームワークを活用しており、元の実験とワークスペースのどちらとも結合されなくなりました。
 
 ### <a name="classic-web-service"></a>従来の Web サービス
 従来の Web サービスをバージョン管理するには、Web サービス エンドポイントのコンストラクトを利用できます。 典型的なフローを次に示します。
@@ -80,12 +75,12 @@ Azure Machine Learning の実験から、2 種類の Web サービスをデプ�
 また、多数の同一の Web サービス エンドポイントを作成した後、異なるバージョンの iLearner ファイルのパッチをエンドポイントに適用して同様の効果を得ることもできます。 この[記事](create-models-and-endpoints-with-powershell.md)では、これを実現する方法について詳しく説明します。
 
 ### <a name="new-web-service"></a>新しい Web サービス
-新しい Azure Resource Manager ベースの Web サービスを作成する場合は、エンドポイント コンストラクトを使用できなくなります。 代わりに、[Export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell コマンドレットを使用するか、デプロイされた Resource Manager ベースの Web サービスから [*Export-AzureRmMlWebservice*](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/export-azurermmlwebservice?view=azurermps-6.6.0) PowerShell コマンドレットを使用して、予測実験から Web サービス定義 (WSD) ファイルを JSON 形式で生成できます。
+新しい Azure Resource Manager ベースの Web サービスを作成する場合は、エンドポイント コンストラクトを使用できなくなります。 代わりに、[Export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell コマンドレットを使用するか、デプロイされた Resource Manager ベースの Web サービスから [*Export-AzMlWebservice*](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) PowerShell コマンドレットを使用して、予測実験から Web サービス定義 (WSD) ファイルを JSON 形式で生成できます。
 
 WSD ファイルをエクスポートしてそれをバージョン管理した後で、別の Azure リージョンで別の Web サービス プランの新しい Web サービスとして WSD をデプロイすることもできます。 適切なストレージ アカウント構成だけではなく、新しい Web サービス プラン ID を指定してください。 異なる iLearner ファイルにパッチを適用するには、WSD ファイルを変更し、トレーニング済みのモデルの場所の参照を更新して、それを新しい Web サービスとしてデプロイできます。
 
 ## <a name="automate-experiment-execution-and-deployment"></a>実験の実行とデプロイの自動化
-ALM の重要な側面は、アプリケーションの実行とデプロイのプロセスを自動化できるようにすることです。 Azure Machine Learning では、[PowerShell モジュール](https://aka.ms/amlps)を使用してこれを実現できます。 ここでは、[Azure Machine Learning Studio PowerShell モジュール](https://aka.ms/amlps)を使用することによる、標準的な ALM 自動化実行/デプロイ プロセスに関連するエンド ツー エンドの手順の例を示します。 各手順は、その手順の実行に使用できる 1 つまたは複数の PowerShell コマンドレットにリンクされています。
+ALM の重要な側面は、アプリケーションの実行とデプロイのプロセスを自動化できるようにすることです。 Azure Machine Learning Studio では、[PowerShell モジュール](https://aka.ms/amlps)を使用してこれを実現できます。 ここでは、[Azure Machine Learning Studio PowerShell モジュール](https://aka.ms/amlps)を使用することによる、標準的な ALM 自動化実行/デプロイ プロセスに関連するエンド ツー エンドの手順の例を示します。 各手順は、その手順の実行に使用できる 1 つまたは複数の PowerShell コマンドレットにリンクされています。
 
 1. [データセットをアップロード](https://github.com/hning86/azuremlps#upload-amldataset)します。
 2. [ワークスペース](https://github.com/hning86/azuremlps#copy-amlexperiment)または[ギャラリー](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery)からワークスペースにトレーニング実験をコピーするか、[エクスポート](https://github.com/hning86/azuremlps#export-amlexperimentgraph)された実験をローカル ディスクから[インポート](https://github.com/hning86/azuremlps#import-amlexperimentgraph)します。

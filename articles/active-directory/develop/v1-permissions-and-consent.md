@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 6c0dc122-2cd8-4d70-be5a-3943459d308e
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 93bc3db2b7cf3002efc93f1e8006c5362eddab9f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9ee58c2a3bed7544ff68e7d6ec756c35bee1d05b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959973"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103164"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 エンドポイントでのアクセス許可と同意
 
@@ -36,12 +37,12 @@ Azure Active Directory (Azure AD) では、OAuth フローと OpenID Connect (OI
 
 Azure AD では、次の 2 種類のアクセス許可が定義されています。
 
-* **委任されたアクセス許可** - サインインしているユーザーが存在するアプリで使用されます。 これらのアプリでは、ユーザーまたは管理者がアプリから要求されたアクセス許可に同意すると、API の呼び出し時にサインイン ユーザーとして動作するためのアクセス許可がアプリに委任されます。 API によっては、ユーザーが API に直接同意することができない場合があり、代わりに ["管理者の同意" が必要](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)になります。
+* **委任されたアクセス許可** - サインインしているユーザーが存在するアプリで使用されます。 これらのアプリでは、ユーザーまたは管理者がアプリから要求されたアクセス許可に同意すると、API の呼び出し時にサインイン ユーザーとして動作するためのアクセス許可がアプリに委任されます。 API によっては、ユーザーが API に直接同意することができない場合があり、代わりに ["管理者の同意" が必要](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)になります。
 * **アプリケーションのアクセス許可** - サインインしているユーザーが存在しない状態で実行されるアプリ (バックグラウンド サービスまたはデーモンとして実行されるアプリなど) で使用されます。 通常、アプリケーションのアクセス許可は非常に強力であり、ユーザー境界を越えるデータや管理者に限定されたデータへのアクセスを許可するため、これらのアクセス許可には[管理者だけが同意](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant)できます。
 
 有効なアクセス許可は、アプリが API に要求を行うときに付与されるアクセス許可です。 
 
-* 委任されたアクセス許可の場合、アプリの有効なアクセス許可は、(同意によって) アプリに付与されている委任されたアクセス許可と現在サインインしているユーザーの特権の共通部分の最小特権になります。 サインインしているユーザーよりも多くの特権をアプリに付与することはできません。 組織内では、サインインしているユーザーの特権は、ポリシーによって決定することも、1 つ以上の管理者ロールのメンバーシップによって決定することもできます。 管理者ロールの詳細については、[Azure AD での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)に関する記事をご覧ください。
+* 委任されたアクセス許可の場合、アプリの有効なアクセス許可は、(同意によって) アプリに付与されている委任されたアクセス許可と現在サインインしているユーザーの特権の共通部分の最小特権になります。 サインインしているユーザーよりも多くの特権をアプリに付与することはできません。 組織内では、サインインしているユーザーの特権は、ポリシーによって決定することも、1 つ以上の管理者ロールのメンバーシップによって決定することもできます。 委任されたアクセス許可に同意できる管理者ロールについては、「[Azure AD での管理者ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
     たとえば、Microsoft Graph で委任されたアクセス許可として `User.ReadWrite.All` がアプリに付与されているとします。 通常、このアクセス許可は、組織内のすべてのユーザーのプロファイルを読み取り、更新する権限をアプリに付与します。 サインインしているユーザーが全体管理者の場合、アプリは組織内のすべてのユーザーのプロファイルを更新できます。 ただし、サインインしているユーザーが管理者ロールに属していない場合、アプリが更新できるのは、サインインしているユーザーのプロファイルだけになります。 アプリにはユーザーの代理で動作するためのアクセス許可が付与されていますが、そのユーザーに組織内の他のユーザーのプロファイルを更新する権限がないため、アプリがこれを実行することはできません。
 * アプリケーションのアクセス許可の場合、アプリの有効なアクセス許可は、そのアクセス許可が暗示する完全なレベルの権限になります。 たとえば、アプリケーションのアクセス許可として `User.ReadWrite.All` が付与されているアプリは、組織内のすべてのユーザーのプロファイルを更新できます。
 
@@ -101,11 +102,11 @@ Azure AD のアプリケーションでは、必要なリソースや API への
 - リソースでは、`Read` アクセス許可と `ReadWrite` アクセス許可をそれぞれ明示的に定義します。
 - リソースでは、ユーザー境界を越えるデータへのアクセスを許可するすべてのアクセス許可を `Admin` アクセス許可としてマークします。
 - リソースは `Subject.Permission[.Modifier]` という名前付けパターンに従う必要があります。このパターンで、
-    - `Subject` は、利用可能なデータの種類に対応します
-    - `Permission` は、ユーザーがそのデータに対して行うアクションに対応します
-    - `Modifier` は、別のアクセス許可の特殊化を記述するためにオプションで使用されます
+  - `Subject` は、利用可能なデータの種類に対応します
+  - `Permission` は、ユーザーがそのデータに対して行うアクションに対応します
+  - `Modifier` は、別のアクセス許可の特殊化を記述するためにオプションで使用されます
     
     例: 
-    * Mail.Read - ユーザーにメールの読み取りを許可します。
-    * Mail.ReadWrite - ユーザーにメールの読み取りまたは書き込みを許可します。
-    * Mail.ReadWrite.All - 管理者またはユーザーに、組織内のすべてのメールへのアクセスを許可します。
+  - Mail.Read - ユーザーにメールの読み取りを許可します。
+  - Mail.ReadWrite - ユーザーにメールの読み取りまたは書き込みを許可します。
+  - Mail.ReadWrite.All - 管理者またはユーザーに、組織内のすべてのメールへのアクセスを許可します。

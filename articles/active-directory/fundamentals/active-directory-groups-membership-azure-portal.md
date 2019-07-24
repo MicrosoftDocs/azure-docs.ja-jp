@@ -1,25 +1,26 @@
 ---
-title: Azure Active Directory の別のグループからグループを追加または削除する方法 | Microsoft Docs
+title: Azure Active Directory の別のグループからグループを追加または削除する | Microsoft Docs
 description: Azure Active Directory を使用して別のグループからグループを追加または削除する方法について説明します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: lizross
-ms.custom: it-pro
+ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 09e023d1d562ea53d9927adf609335beac38a2d7
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 68b6c1e037992930a70630b0d218cc98beba931d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468032"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187034"
 ---
-# <a name="how-to-add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>方法: Azure Active Directory を使用して別のグループからグループを追加または削除する
+# <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Azure Active Directory を使用して別のグループからグループを追加または削除する
 この記事は、Azure Active Directory を使用して別のグループからグループを追加および削除するのに役立ちます。
 
 >[!Note]
@@ -29,7 +30,7 @@ ms.locfileid: "49468032"
 既存のセキュリティ グループを別の既存のセキュリティ グループに追加して (入れ子になったグループとも呼ばれます)、メンバー グループ (サブグループ) と親グループを作成します。 メンバー グループには親グループの属性とプロパティが継承され、構成時間を節約できます。
 
 >[!Important]
->以下は現在サポートされていません。<ul><li>Office 365 グループへのセキュリティ グループの追加</li><li>セキュリティ グループまたは他の Office 365 グループへの Office 365 グループの追加</li><li>入れ子になったグループへのアプリの割り当て</li><li>入れ子になったグループへのライセンスの適用</li></ul>
+>以下は現在サポートされていません。<ul><li>オンプレミスの Active Directory と同期されたグループへのグループの追加。</li><li>Office 365 グループへのセキュリティ グループの追加。</li><li>セキュリティ グループまたは他の Office 365 グループへの Office 365 グループの追加。</li><li>入れ子になったグループへのアプリの割り当て。</li><li>入れ子になったグループへのライセンスの適用。</li></ul>
 
 ### <a name="to-add-a-group-as-a-member-of-another-group"></a>別のグループのメンバーとしてグループを追加するには
 

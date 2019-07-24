@@ -3,17 +3,15 @@ title: Azure Database for MariaDB でのバックアップと復元
 description: Azure Database for MariaDB サーバーの自動バックアップと復元について説明します。
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: c8e671071226b891668e0874d56e2d4685e1d64d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d6141c3184c8915c36f22d010db39aef2460dd1c
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958592"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233542"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Azure Database for MariaDB でのバックアップと復元
 
@@ -42,7 +40,7 @@ Azure Database for MariaDB は、プロビジョニングされているサー�
 
 バックアップ ストレージのコストの詳細については、[MariaDB の価格のページ](https://azure.microsoft.com/pricing/details/mariadb/)を参照してください。
 
-## <a name="restore"></a>Restore
+## <a name="restore"></a>復元
 
 Azure Database for MariaDB で復元を実行すると、元のサーバーのバックアップから新しいサーバーが作成されます。
 
@@ -54,7 +52,7 @@ Azure Database for MariaDB で復元を実行すると、元のサーバーの�
 復旧の推定所要時間は、データベースのサイズ、トランザクション ログのサイズ、ネットワーク帯域幅、同じリージョン内で同時に復旧するデータベースの合計数など、複数の要因によって異なります。 通常は 12 時間もかかりません。
 
 > [!IMPORTANT]
-> 削除したサーバーは、復元**できません**。 サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。
+> 削除したサーバーは、復元**できません**。 サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。管理者は、デプロイ後の誤削除や予期せぬ変更からサーバーのリソースを保護するために、[管理ロック](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)を利用できます。
 
 ### <a name="point-in-time-restore"></a>ポイントインタイム リストア
 

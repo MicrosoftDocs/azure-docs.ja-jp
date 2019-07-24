@@ -3,21 +3,22 @@ title: セルフサービスによるパスワードのリセットの登録 - A
 description: Azure AD セルフサービスによるパスワードのリセット用の認証データを登録する
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.assetid: ''
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
-ms.openlocfilehash: f8b4fb8861760d2b5b10f61b3ab6a8c718f849b6
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f113c42ff45811f31eb77a92873fb187dd51ea6b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106718"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184314"
 ---
 # <a name="register-for-self-service-password-reset"></a>セルフサービスによるパスワードのリセットを登録する
 
@@ -47,7 +48,7 @@ ms.locfileid: "47106718"
 
 ## <a name="common-problems-and-their-solutions"></a>一般的な問題とその解決方法
 
- 次に、一般にエラーになる場合とその解決方法を示します。
+ 次に、一般的なエラーになる場合とその解決方法を示します。
 
 | エラー ケース| 表示されるエラー| 解決策 |
 | --- | --- | --- |

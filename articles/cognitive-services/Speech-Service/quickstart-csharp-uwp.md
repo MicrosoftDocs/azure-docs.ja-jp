@@ -1,82 +1,42 @@
 ---
-title: 'クイック スタート: C# から Speech Service SDK を使用して UWP アプリで音声を認識する'
+title: 'クイック スタート: 音声を認識する、C# (UWP) - Speech Services'
 titleSuffix: Azure Cognitive Services
-description: Speech Service SDK を使用して UWP アプリで音声を認識する方法について説明します
+description: この記事では、Cognitive Services Speech SDK を使用して C# のユニバーサル Windows プラットフォーム (UWP) アプリケーションを作成する方法について説明します。 デバイスのマイクからリアルタイムで音声をテキストに変換します。 このアプリケーションの構築には、Speech SDK NuGet パッケージと Microsoft Visual Studio 2017 を使用します。
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 7b132ea9fea7591d32b693ef9c95acf7626c8fff
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.custom: seodec18
+ms.openlocfilehash: 26d6e5e53968a88eaccff863b4affee6057f5952
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218901"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903302"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>クイック スタート: UWP アプリで Speech SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-この記事では、Cognitive Services [Speech SDK](speech-sdk.md) を使用して C# のユニバーサル Windows プラットフォーム (UWP) アプリケーションを作成する方法について説明します。 デバイスのマイクからリアルタイムで音声をテキストに変換します。 このアプリケーションの構築には、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2017 (任意のエディション) を使用します。
+この記事では、Cognitive Services [Speech SDK](speech-sdk.md) を使用して C# のユニバーサル Windows プラットフォーム (UWP、Windows バージョン 1709 以降) アプリケーションを開発する方法について説明します。 このプログラムは、デバイスのマイクからリアルタイムで音声をテキストに変換します。 このアプリケーションの構築には、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2017 (任意のエディション) を使用します。
 
 > [!NOTE]
 > ユニバーサル Windows プラットフォームを使用すると、PC、Xbox、Surface Hub、その他のデバイスなど、Windows 10 をサポートする任意のデバイスで動作するアプリを開発できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、Speech サービス サブスクリプション キーが必要です。 1 つ無料で取得できます。 詳しくは、[Sppech サービスを無料で試す](get-started.md)ための記事を参照してください。
+このクイック スタートでは以下が必要です。
+
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* Speech Service の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
-1. Visual Studio 2017 を起動します。
-
-1. **ユニバーサル Windows プラットフォーム開発**ワークロードが使用できることを確認してください。 Visual Studio のメニュー バーから **[ツール]** > **[Get Tools and Features]\(ツールと機能の入手\)** を選択し、Visual Studio インストーラーを開きます。 このワークロードが既に有効になっている場合は、ダイアログ ボックスを閉じます。 
-
-    ![[ワークロード] タブを強調表示した Visual Studio インストーラーのスクリーンショット](media/sdk/vs-enable-uwp-workload.png)
-
-    それ以外の場合、**[.NET cross-platform development] (.NET クロス プラットフォーム開発)** の横にあるボックスを選択し、ダイアログ ボックスの右下隅にある **[変更]** を選択します。 新しい機能のインストールにはしばらく時間がかかります。
-
-1. 空の Visual C# ユニバーサル Windows アプリを作成します。 最初に、メニューから **[ファイル]** > **[新規]** > **[プロジェクト]** を選択します。 **[新しいプロジェクト]** ダイアログ ボックスで、左側のウィンドウから **[インストール済み]** > **[Visual C#]** > **[Windows ユニバーサル]** を展開します。 次に、**[空白のアプリ (ユニバーサル Windows)]** を選択します。 プロジェクト名として「*helloworld*」と入力します。
-
-    ![[新しいプロジェクト] ダイアログ ボックスのスクリーンショット](media/sdk/qs-csharp-uwp-01-new-blank-app.png)
-
-1. Speech SDK では、Windows 10 Fall Creators Update 以降向けにアプリケーションをビルドすることが必要です。 ポップアップ表示される **[新しいユニバーサル Windows プラットフォーム プロジェクト]** ウィンドウで、**[最小バージョン]** に **[Windows 10 Fall Creators Update (10.0; Build 16299)]** を選択します。 **[ターゲット バージョン]** ボックスで、このバージョンまたはこれ以降のバージョンを選択して、**[OK]** をクリックします。
-
-    ![[新しいユニバーサル Windows プラットフォーム プロジェクト] ウィンドウのスクリーンショット](media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
-
-1. 64 ビットの Windows を実行している場合は、Visual Studio ツールバーのドロップダウン メニューを使用して、ビルド プラットフォームを `x64` に切り替えることができます。 (64 ビットの Windows は 32 ビットのアプリケーションを実行できるため、`x86` に設定しておいてもかまいません。)
-
-   ![x64 が強調表示されている Visual Studio のツールバーのスクリーン ショット](media/sdk/qs-csharp-uwp-03-switch-to-x64.png)
-
-   > [!NOTE]
-   > Speech SDK は Intel 互換プロセッサのみをサポートします。 ARM は現在サポートされていません。
-
-1. [Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)をインストールして参照します。 ソリューション エクスプローラーで、ソリューションを右クリックし、**[ソリューションの NuGet パッケージの管理]** を選択します。
-
-    ![[ソリューションの NuGet パッケージの管理] オプションが強調表示されたソリューション エクスプローラーのスクリーン ショット](media/sdk/qs-csharp-uwp-04-manage-nuget-packages.png)
-
-1. 右上隅の **[パッケージ ソース]** フィールドで、**[nuget.org]** を選択します。`Microsoft.CognitiveServices.Speech` パッケージを検索して、**helloworld** プロジェクトにインストールします。
-
-    ![[ソリューションの NuGet パッケージの管理] ダイアログ ボックスのスクリーンショット](media/sdk/qs-csharp-uwp-05-nuget-install-1.0.0.png "NuGet パッケージのインストール")
-
-1. 表示されるライセンスに同意し、NuGet パッケージのインストールを開始します。
-
-    ![[ライセンスの同意] ダイアログ ボックスのスクリーンショット](media/sdk/qs-csharp-uwp-06-nuget-license.png "ライセンスへの同意")
-
-1. パッケージ マネージャー コンソールに次の出力行が表示されます。
-
-   ```text
-   Successfully installed 'Microsoft.CognitiveServices.Speech 1.1.0' to helloworld
-   ```
-
-1. アプリケーションでは音声入力にマイクを使用するため、**[マイク]** 機能をプロジェクトに追加します。 ソリューション エクスプローラーで **Package.appxmanifest** をダブルクリックして、アプリケーション マニフェストを編集します。 次に、**[機能]** タブに切り替え、**[マイク]** 機能の ボックスをオンにして、変更を保存します。
-
-   ![機能とマイクを強調表示した Visual Studio のアプリケーション マニフェストのスクリーン ショット](media/sdk/qs-csharp-uwp-07-capabilities.png)
-
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
@@ -108,17 +68,14 @@ ms.locfileid: "51218901"
 
     ![アクセス許可要求のスクリーンショット](media/sdk/qs-csharp-uwp-10-access-prompt.png "アプリのデバッグの開始")
 
-1. **[Speech recognition with microphone input]** を選択し、デバイスのマイクに向かって英語のフレーズを話します。 音声が Speech サービスに送信されてテキストに変換され、ウィンドウに表示されます。
+1. **[Speech recognition with microphone input]** を選択し、デバイスのマイクに向かって英語のフレーズを話します。 音声が Speech Services に送信されてテキストに変換され、ウィンドウに表示されます。
 
     ![音声認識ユーザー インターフェイスのスクリーンショット](media/sdk/qs-csharp-uwp-11-ui-result.png)
-
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-このサンプルは、`quickstart/csharp-uwp` フォルダーで探してください。
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Speech SDK for C# を使用して音声から意図を認識する](how-to-recognize-intents-from-speech-csharp.md)
+> [GitHub で C# のサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>関連項目
 

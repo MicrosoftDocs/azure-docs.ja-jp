@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と E Sales Manager Remix の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と E Sales Manager Remix の統合 | Microsoft Docs
 description: Azure Active Directory と E Sales Manager Remix の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,19 +8,20 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 89b5022c-0d5b-4103-9877-ddd32b6e1c02
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: d96fd1eacc98e88dc8578b259781cc661cf85933
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442831"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164151"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory と E Sales Manager Remix の統合
 
@@ -159,7 +160,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
     c. **[Collaboration item]\(コラボレーション項目\)** ボックスに、先ほど Azure Portal からコピーした要求の値 (**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**) を貼り付けます。
 
-    d. **[Issuer (entity ID)]\(発行者 (エンティティ ID)\)** ボックスに、Azure Portal の **[E Sales Manager Remix のドメインと URL]** セクションからコピーしておいた識別子の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Issuer (entity ID)]\(発行者 (エンティティ ID)\)** ボックスに、Azure Portal の **[E Sales Manager Remix のドメインと URL]** セクションからコピーしておいた識別子の値を貼り付けます。
 
     e. Azure Portal からダウンロードした証明書をアップロードするには、**[File selection]\(ファイルの選択\)** を選択します。
 
@@ -203,7 +204,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>E Sales Manager Remix のテスト ユーザーの作成
 
@@ -227,7 +228,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
     
     c. SAML を有効にしている場合、管理者はサインイン ページからサインインできません。 **[Admin Login]\(管理ログイン\)** チェック ボックスを選択して、ユーザーに管理者サインイン特権を付与します。
 
-    d. **[Registration]\(登録\)** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Registration]\(登録\)** を選択します。
 
 1. 今後、管理者としてサインインするには、管理者権限を持っているユーザーとしてサインインします。その後、右上のメニューから **[To Administrator Menu]\(管理者メニューに移動\)** を選択します。
 
@@ -267,7 +268,7 @@ E Sales Manager Remix で Azure AD のシングル サインオンを構成し�
 
 アクセス パネルで [E Sales Manager Remix] タイルを選択すると、自動的に E Sales Manager Remix アプリケーションにサインインします。
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

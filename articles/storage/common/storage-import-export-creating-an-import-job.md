@@ -7,29 +7,29 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: d7a9da4ac3560e67a6f7bc8b79a7c2dd37995d4d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: fa76f4fb5d4da5fd00bb9fa4ed862c6977a47e90
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258012"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102181"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Azure Import/Export サービスのインポート ジョブの作成
 
 REST API を使用して Microsoft Azure Import/Export サービスのインポート ジョブを作成するには、次の手順を実行します。
 
--   Azure Import/Export ツールを使ってドライブを準備する。
+- Azure Import/Export ツールを使ってドライブを準備する。
 
--   ドライブの発送先となる場所を取得する。
+- ドライブの発送先となる場所を取得する。
 
--   インポート ジョブを作成する。
+- インポート ジョブを作成する。
 
--   サポートされている運送サービスを経由して、Microsoft にドライブを送付する。
+- サポートされている運送サービスを経由して、Microsoft にドライブを送付する。
 
--   インポート ジョブの発送詳細を更新する。
+- インポート ジョブの発送詳細を更新する。
 
- Import/Export サービスの概要については、「[Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](storage-import-export-service.md)」を参照してください。[Azure ポータル](https://portal.azure.com/)を使用してインポート ジョブやエクスポート ジョブを作成および管理する方法も説明されています。
+  Import/Export サービスの概要については、「[Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](storage-import-export-service.md)」を参照してください。[Azure ポータル](https://portal.azure.com/)を使用してインポート ジョブやエクスポート ジョブを作成および管理する方法も説明されています。
 
 ## <a name="preparing-drives-with-the-azure-importexport-tool"></a>Azure Import/Export ツールを使用してドライブを準備する
 
@@ -39,21 +39,21 @@ REST API を使用して Microsoft Azure Import/Export サービスのインポ�
 
 ドライブの準備には次の手順が含まれます。
 
--   インポートするデータを特定する。
+- インポートするデータを特定する。
 
--   Windows Azure Storage 内のインポート先 BLOB を特定する。
+- Windows Azure Storage 内のインポート先 BLOB を特定する。
 
--   Azure Import/Export ツールを使用して、1 台または複数のハード ドライブにデータをコピーする。
+- Azure Import/Export ツールを使用して、1 台または複数のハード ドライブにデータをコピーする。
 
- Azure Import/Export ツールでは、ドライブの準備中に各ドライブのマニフェスト ファイルも生成されます。 マニフェスト ファイルには次の情報が含まれています。
+  Azure Import/Export ツールでは、ドライブの準備中に各ドライブのマニフェスト ファイルも生成されます。 マニフェスト ファイルには次の情報が含まれています。
 
--   アップロードするすべてのファイルの列挙体と、それらのファイルから BLOB へのマッピング。
+- アップロードするすべてのファイルの列挙体と、それらのファイルから BLOB へのマッピング。
 
--   各ファイルのセグメントのチェックサム。
+- 各ファイルのセグメントのチェックサム。
 
--   各 BLOB に関連付けるメタデータとプロパティについての情報。
+- 各 BLOB に関連付けるメタデータとプロパティについての情報。
 
--   アップロードされる BLOB の名前がコンテナー内の既存の BLOB と同じであった場合に実行されるアクションの一覧。 可能なオプションは次のとおりです: a) 当該のファイルで BLOB を上書きする、b) 既存の BLOB を維持し、ファイルのアップロードをスキップする、c) 名前にサフィックスを追加して、他のファイルとの競合を回避する。
+- アップロードされる BLOB の名前がコンテナー内の既存の BLOB と同じであった場合に実行されるアクションの一覧。 可能なオプションは次のとおりです: a) 当該のファイルで BLOB を上書きする、b) 既存の BLOB を維持し、ファイルのアップロードをスキップする、c) 名前にサフィックスを追加して、他のファイルとの競合を回避する。
 
 ## <a name="obtaining-your-shipping-location"></a>送付先を取得する
 
@@ -61,14 +61,14 @@ REST API を使用して Microsoft Azure Import/Export サービスのインポ�
 
  次の手順に従って、送付先を取得します。
 
--   ストレージ アカウントの場所名を特定します。 この値は、Azure Portal でストレージ アカウントの**ダッシュボード**の **[場所]** フィールドを見て確認するか、サービス管理 API の [Get Storage Account Properties](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties) 操作を使用して照会することができます。
+-   ストレージ アカウントの場所名を特定します。 この値は、Azure Portal でストレージ アカウントの**ダッシュボード**の **[場所]** フィールドを見て確認するか、サービス管理 API の [Get Storage Account Properties](/rest/api/storagerp/storageaccounts) 操作を使用して照会することができます。
 
 -   `Get Location` 操作を呼び出して、このストレージ アカウントを処理できる場所を取得します。
 
 -   場所の `AlternateLocations` プロパティにその場所自体が含まれていれば、その場所を使用できます。 そうでない場合は、別の場所を使用して `Get Location` 操作をもう一度呼び出します。 保守作業のために、元の場所が一時的に閉鎖されている場合もあります。
 
 ## <a name="creating-the-import-job"></a>インポート ジョブを作成する
-インポート ジョブを作成するには、[Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) 操作を呼び出します。 次の情報を指定する必要があります。
+インポート ジョブを作成するには、[Put Job](/rest/api/storageimportexport/jobs) 操作を呼び出します。 次の情報を指定する必要があります。
 
 -   ジョブの名前。
 

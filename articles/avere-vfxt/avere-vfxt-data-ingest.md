@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: bf16c0fbc7090bf9b548796765502cde1731aef9
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a3d6cb745c782d2a7166208f2a8dd1202a330b15
+ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669709"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54050491"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>vFXT クラスターへのデータの移動 - 並列データ取り込み 
 
@@ -19,7 +19,7 @@ ms.locfileid: "50669709"
 
 Avere vFXT クラスターはスケーラブルなマルチクライアント キャッシュであるため、それにデータをコピーする最速かつ最も効率的な方法は、複数のクライアントを使用することです。 この方法では、ファイルとオブジェクトの取り込みが並列化されます。
 
-![マルチクライアント、マルチスレッドのデータ移動を示す図: 左上に、オンプレミスのハードウェア ストレージを表すアイコンがあり、そこから複数の矢印が出ています。 矢印は、4 つのクライアント マシンを指しています。 各クライアント マシンから Avere vFXT に向かって 3 本の矢印が出ています。 Avere vFXT から、複数の矢印が Blob ストレージを指しています。](media/avere-vfxt-parallel-ingest.png) 
+![マルチクライアントのマルチスレッドのデータ移動を示す図:左上に、オンプレミスのハードウェア ストレージを表すアイコンがあり、そこから複数の矢印が出ています。 矢印は、4 つのクライアント マシンを指しています。 各クライアント マシンから Avere vFXT に向かって 3 本の矢印が出ています。 Avere vFXT から、複数の矢印が Blob ストレージを指しています。](media/avere-vfxt-parallel-ingest.png) 
 
 1 つのストレージ システムから別のストレージ システムにデータを転送するためによく使われる ``cp`` または ``copy`` コマンドは、一度に 1 つのファイルだけをコピーするシングルスレッドのプロセスです。 つまり、一度に 1 つのファイルしかファイル サーバーに取り込まれません。これでは、クラスターのリソースを浪費してしまいます。
 
@@ -167,7 +167,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ### <a name="create-file-manifests"></a>ファイル マニフェストの作成
 
-上記のアプローチ (コピー先あたり複数のコピー スレッド、クライアントあたり複数のコピー先、ネットワーク アクセス可能なソース ファイルシステムあたり複数のクライアント) を理解したら、この推奨事項を検討してください。つまり、ファイル マニフェストを作成し、作成したマニフェストを複数のクライアント全体でコピー コマンドと一緒に使用します。
+上記のアプローチ (コピー先あたり複数のコピー スレッド、クライアントあたり複数のコピー先、ネットワーク アクセス可能なソース ファイルシステムあたり複数のクライアント) を理解したら、この推奨事項を検討してください。ファイル マニフェストを作成し、それらを複数のクライアント全体でコピー コマンドと一緒に使用します。
 
 このシナリオでは UNIX の ``find`` コマンドを使用して、ファイルまたはディレクトリのマニフェストを作成します。
 
@@ -272,7 +272,7 @@ msrsync を使用して Avere クラスターに Azure クラウド ボリュー
 1. msrsync と、前提条件として必要な rsync および Python 2.6 以降をインストールします。
 1. コピーするファイルおよびディレクトリの合計数を確認します。
 
-   たとえば、引数 ```prime.py --directory /path/to/some/directory``` を指定した Avere ユーティリティ ``prime.py`` を使用します (https://raw.githubusercontent.com/Azure/Avere/master/src/dataingestor/prime.py) の URL からのダウンロードによって入手可能)。
+   たとえば、引数 ```prime.py --directory /path/to/some/directory``` を指定した Avere ユーティリティ ``prime.py`` を使用します (https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py) の URL からのダウンロードによって入手可能)。
 
    ``prime.py`` を使用しない場合は、次のように GNU の ``find`` ツールを使用して項目数を計算できます。
 

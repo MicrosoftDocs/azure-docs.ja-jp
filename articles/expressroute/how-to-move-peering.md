@@ -1,33 +1,23 @@
 ---
-title: Azure ExpressRoute 上のパブリック ピアリングの Microsoft ピアリングへの移行 | Microsoft Docs
+title: パブリック ピアリングを Microsoft ピアリングに移行する - Azure ExpressRoute | Microsoft Docs
 description: この記事では、ExpressRoute でパブリック ピアリングを Microsoft ピアリングに移行する手順を示します。
 services: expressroute
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 03/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: f34fabc95d5b56edc6e37c323bebf60bd98c8b90
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.custom: seodec18
+ms.openlocfilehash: 6b2bce6b488698db0a72c9a17f67c2555c6afa5b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30314301"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100023"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>パブリック ピアリングを Microsoft ピアリングに移行する
 
-ExpressRoute は、Azure Storage や Azure SQL Database などの Azure PaaS サービスのために Microsoft ピアリングとルート フィルターの併用をサポートしています。 Microsoft PaaS および SaaS サービスへのアクセスに必要なルーティング ドメインは 1 つだけになりました。 消費する Azure リージョンの PaaS サービス プレフィックスを選択的にアドバタイズするには、ルート フィルターを使用できます。
-
-この記事は、パブリック ピアリング構成をダウンタイムなしで Microsoft ピアリングに移行するために役立ちます。 ルーティング ドメインとピアリングの詳細については、「[ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」を参照してください。
-
+この記事は、パブリック ピアリング構成をダウンタイムなしで Microsoft ピアリングに移行するために役立ちます。 ExpressRoute は、Azure Storage や Azure SQL Database などの Azure PaaS サービスのために Microsoft ピアリングとルート フィルターの併用をサポートしています。 Microsoft PaaS および SaaS サービスへのアクセスに必要なルーティング ドメインは 1 つだけになりました。 消費する Azure リージョンの PaaS サービス プレフィックスを選択的にアドバタイズするには、ルート フィルターを使用できます。 ルーティング ドメインとピアリングの詳細については、「[ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」を参照してください。
 
 ## <a name="before"></a>開始する前に
 
@@ -57,7 +47,7 @@ Microsoft ピアリングが有効になっており、アドバタイズされ�
 
 既定では、ルート フィルターが回線に接続されるまで、新しい Microsoft ピアリングはどのプレフィックスもアドバタイズしません。 ルート フィルターの規則を作成する場合は、次のスクリーンショットに示すように、Azure PaaS サービスのために消費する Azure リージョンのサービス コミュニティの一覧を指定できます。
 
-![パブリック ピアリングをマージする](.\media\how-to-move-peering\public.png)
+![パブリック ピアリングをマージする](./media/how-to-move-peering/public.png)
 
 次のいずれかの記事を使用して、ルート フィルターを構成します。
 

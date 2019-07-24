@@ -1,5 +1,5 @@
 ---
-title: Azure DC/OS クラスターの監視 - Operations Management
+title: (非推奨) Azure DC/OS クラスターの監視 - Operations Management
 description: Log Analytics で Azure Container Service DC/OS クラスターを監視します。
 services: container-service
 author: keikhara
@@ -9,20 +9,22 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: 4576d9decc6ba1e01ef39abdb8a3ef89461196e8
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 290141136672729060f5156d645c47ac303fa0c3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407794"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110972"
 ---
-# <a name="monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>Log Analytics で Azure Container Service DC/OS クラスターを監視する
+# <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>(非推奨) Log Analytics で Azure Container Service DC/OS クラスターを監視する
 
-Log Analytics は、オンプレミスのインフラストラクチャやクラウド インフラストラクチャの管理および保護に役立つ、Microsoft のクラウド ベースの IT 管理ソリューションです。 コンテナー ソリューションは、コンテナー インベントリ、パフォーマンス、およびログを 1 つの場所で表示するのに役立つ、Log Analytics のソリューションです。 一元的な場所でログを表示して監査やコンテナーのトラブルシューティングを行い、ホスト上のノイズと消費の多いコンテナーを検索することができます。
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
+
+Log Analytics は、オンプレミスのインフラストラクチャやクラウド インフラストラクチャの管理および保護に役立つ、Microsoft のクラウド ベースの IT 管理ソリューションです。 コンテナー ソリューションは Log Analytics の 1 つのソリューションであり、コンテナー インベントリ、パフォーマンス、およびログを 1 つの場所で表示するのに役立ちます。 一元的な場所でログを表示して監査やコンテナーのトラブルシューティングを行い、ホスト上のノイズと消費の多いコンテナーを検索することができます。
 
 ![](media/container-service-monitoring-oms/image1.png)
 
-コンテナー ソリューションの詳細については、「[Log Analytics のコンテナー ソリューション](../../log-analytics/log-analytics-containers.md)」を参照してください。
+コンテナー ソリューションの詳細については、「[Log Analytics のコンテナー ソリューション](../../azure-monitor/insights/containers.md)」を参照してください。
 
 ## <a name="setting-up-log-analytics-from-the-dcos-universe"></a>DC/OS Universe からの Log Analytics の設定
 
@@ -32,25 +34,25 @@ Log Analytics は、オンプレミスのインフラストラクチャやクラ
 ### <a name="pre-requisite"></a>前提条件
 - [Microsoft Azure サブスクリプション](https://azure.microsoft.com/free/) - 無料でサブスクリプションを取得できます。  
 - Log Analytics ワークスペースのセットアップ - 下の「手順 3.」を参照
-- [DC/OS CLI](https://dcos.io/docs/1.8/usage/cli/install/) がインストールされていること。
+- [DC/OS CLI](https://docs.mesosphere.com/1.12/cli) がインストールされていること。
 
 1. DC/OS ダッシュボードで、次のように [Universe] をクリックし、"OMS" を検索します。
 
    >[!NOTE]
    >OMS は、Log Analytics と呼ばれるようになりました。
 
- ![](media/container-service-monitoring-oms/image2.png)
+   ![](media/container-service-monitoring-oms/image2.png)
 
 2. **[インストール]** をクリックします。 バージョン情報と **[パッケージのインストール]** または **[Advanced Installation] (高度なインストール)** ボタンを含むポップアップが表示されます。 **[Advanced Installation (高度なインストール)]** をクリックすると、**[OMS specific configuration properties (OMS に固有の構成のプロパティ)]** ページが表示されます。
 
- ![](media/container-service-monitoring-oms/image3.png)
+   ![](media/container-service-monitoring-oms/image3.png)
 
- ![](media/container-service-monitoring-oms/image4.png)
+   ![](media/container-service-monitoring-oms/image4.png)
 
 3. ここでは、`wsid` (Log Analytics ワークスペース ID) と `wskey` (ワークスペース ID の主キー) を入力するよう求められます。 `wsid` と `wskey` の両方を取得するには、<https://mms.microsoft.com> でアカウントを作成する必要があります。
-手順に従ってアカウントを作成してください。 アカウントの作成が完了したら、次のように **[設定]**、**[接続されたソース]**、**[Linux サーバー]** の順にクリックして `wsid` と `wskey` を取得する必要があります。
+   手順に従ってアカウントを作成してください。 アカウントの作成が完了したら、次のように **[設定]**、**[接続されたソース]**、**[Linux サーバー]** の順にクリックして `wsid` と `wskey` を取得する必要があります。
 
- ![](media/container-service-monitoring-oms/image5.png)
+   ![](media/container-service-monitoring-oms/image5.png)
 
 4. 必要なインスタンスの数を選択し、[Review and Install] (確認およびインストール) ボタンをクリックします。 通常、インスタンスの数は、エージェント クラスター内の VM の数と同じにします。 Linux 用 Log Analytics エージェントは、監視のための情報やログ情報を収集する各 VM に個別のコンテナーとしてインストールされます。
 
@@ -74,7 +76,7 @@ Linux 用 Log Analytics エージェントを VM にインストールしたら�
 
 ![](media/container-service-monitoring-oms/image11.png)
 
-Log Analytics コンテナー ソリューションの詳細については、[Log Analytics のコンテナー ソリューション](../../log-analytics/log-analytics-containers.md)に関するページを参照してください。
+Log Analytics コンテナー ソリューションの詳細については、[Log Analytics のコンテナー ソリューション](../../azure-monitor/insights/containers.md)に関するページを参照してください。
 
 ### <a name="how-to-scale-log-analytics-agent-with-acs-dcos"></a>ACS DC/OS を使用して Log Analytics エージェントをスケーリングする方法 
 
@@ -99,4 +101,4 @@ $ dcos package uninstall msoms
 
 ## <a name="next-steps"></a>次の手順
 
- これで、コンテナーを監視するように Log Analytics が設定されたので、[コンテナー ダッシュボードを参照してください](../../log-analytics/log-analytics-containers.md)。
+ これで、コンテナーを監視するように Log Analytics が設定されたので、[コンテナー ダッシュボードを参照してください](../../azure-monitor/insights/containers.md)。

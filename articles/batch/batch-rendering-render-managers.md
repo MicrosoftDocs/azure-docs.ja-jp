@@ -1,17 +1,18 @@
 ---
-title: Azure Batch のレンダー マネージャーのサポート
+title: レンダー マネージャーのサポート - Azure Batch
 description: Azure Batch のレンダー マネージャーの統合を使用してレンダリングに Azure を使用する
 services: batch
+ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 066aab598628701bf7a60b0f4f20d996348fa5ce
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: bcc66a73e3d7986b177b13eb309ad664a006b960
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406723"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790062"
 ---
 # <a name="using-azure-batch-with-render-farm-managers"></a>レンダー ファーム マネージャーで Azure Batch を使用する
 

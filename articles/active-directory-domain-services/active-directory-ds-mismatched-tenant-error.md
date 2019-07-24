@@ -4,28 +4,28 @@ description: 既存の Azure AD Domain Services のマネージド ドメイン�
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 40eb75b7-827e-4d30-af6c-ca3c2af915c7
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: ergreenl
-ms.openlocfilehash: 12611c9a4016b634cb865bbf609b1c7a6961abb7
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: d3586293574cc71011ad96fece5e5a4fdfa0b70f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155067"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191994"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>既存の Azure AD Domain Services のマネージド ドメインでのディレクトリの不一致エラーを解決する
 既存の Azure AD Domain Services のマネージド ドメインがあります。 Azure Portal にアクセスしてこのマネージド ドメインを表示すると、次のエラー メッセージが表示されます。
 
-![ディレクトリの不一致エラー](.\media\getting-started\mismatched-tenant-error.png)
+![ディレクトリの不一致エラー](./media/getting-started/mismatched-tenant-error.png)
 
 エラーが解決されるまで、このマネージド ドメインを管理することはできません。
 
@@ -37,11 +37,11 @@ ms.locfileid: "50155067"
 
 つまり、"contoso.com" という Azure AD テナントのマネージド ドメインを、別のAzure AD テナント "fabrikam.com" が所有する Azure サブスクリプションに属する仮想ネットワークで有効化することはできないということです。 
 
-**有効な構成**: 次のデプロイ シナリオでは、Contoso のマネージド ドメインが Contoso という Azure AD テナントに対して有効化されています。 このマネージド ドメインは、Azure AD テナント Contoso が所有する Azure サブスクリプションに属する仮想ネットワークで公開されています。 このため、マネージド ドメインと仮想ネットワークの両方が同じ Azure AD テナントに属しています。 この構成は有効であり、完全にサポートされます。
+**有効な構成**:次のデプロイ シナリオでは、Contoso のマネージド ドメインが Contoso という Azure AD テナントに対して有効化されています。 このマネージド ドメインは、Azure AD テナント Contoso が所有する Azure サブスクリプションに属する仮想ネットワークで公開されています。 このため、マネージド ドメインと仮想ネットワークの両方が同じ Azure AD テナントに属しています。 この構成は有効であり、完全にサポートされます。
 
 ![有効なテナント構成](./media/getting-started/valid-tenant-config.png)
 
-**テナントが一致しない構成**: 次のデプロイ シナリオでは、Contoso のマネージド ドメインが Contoso という Azure AD テナントに対して有効化されています。 しかし、このマネージド ドメインが公開されている仮想ネットワークは、Fabrikam という Azure AD テナントが所有する Azure サブスクリプションに属しています。 このため、マネージド ドメインと仮想ネットワークは 2 つの異なる Azure AD テナントに属しています。 この構成はテナントが一致しない構成であり、サポートされません。 仮想ネットワークを、マネージド ドメインと同じ Azure AD テナント (つまり、Contoso) に移動する必要があります。 詳細については、「[解決策](#resolution)」セクションを参照してください。
+**テナントが一致しない構成**:次のデプロイ シナリオでは、Contoso のマネージド ドメインが Contoso という Azure AD テナントに対して有効化されています。 しかし、このマネージド ドメインが公開されている仮想ネットワークは、Fabrikam という Azure AD テナントが所有する Azure サブスクリプションに属しています。 このため、マネージド ドメインと仮想ネットワークは 2 つの異なる Azure AD テナントに属しています。 この構成はテナントが一致しない構成であり、サポートされません。 仮想ネットワークを、マネージド ドメインと同じ Azure AD テナント (つまり、Contoso) に移動する必要があります。 詳細については、「[解決策](#resolution)」セクションを参照してください。
 
 ![テナントが一致しない構成](./media/getting-started/mismatched-tenant-config.png)
 

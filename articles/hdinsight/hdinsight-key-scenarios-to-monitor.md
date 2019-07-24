@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: arindamc
-ms.openlocfilehash: 727ecdb06f9a43bf3722f82fa10b7a3304cf4958
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 83cbb2a54ed712f8aa5084408ab852432470b73c
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255304"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742475"
 ---
 # <a name="monitor-cluster-performance"></a>クラスター パフォーマンスの監視
 
 HDInsight クラスターの正常性とパフォーマンスを監視することは、最適なパフォーマンスとリソースの使用率を維持するために重要です。 監視は、クラスター構成エラーとユーザー コードの問題を検出し、対応するために役立つ場合もあります。
 
-以下のセクションでは、クラスター、YARN キューの負荷を監視して、最適化し、ストレージの調整の問題を検出する方法について説明します。
+以下のセクションでは、クラスター、Apache Hadoop YARN キューの負荷を監視して、最適化し、ストレージの調整の問題を検出する方法について説明します。
 
 ## <a name="monitor-cluster-load"></a>クラスター負荷の監視
 
@@ -43,7 +43,7 @@ Hadoop クラスターでは、クラスターの負荷がすべてのノード�
 
 ![ホストの詳細](./media/hdinsight-key-scenarios-to-monitor/host-details.png)
 
-アラートの設定とメトリックの表示の詳細については、「[Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
+アラートの設定とメトリックの表示の詳細については、「[Apache Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
 
 ## <a name="yarn-queue-configuration"></a>YARN キューの構成
 
@@ -77,16 +77,16 @@ ResourceManager UI の左側のメニューから **[Scheduler]** を選択し�
 
 Azure Storage を使用している場合、ストレージに関連する問題の監視の詳細については、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting)」を参照してください。
 
-クラスターのバッキング ストアが Azure Data Lake Store (ADLS) の場合、調整は帯域幅の制限が原因の可能性が高くなります。 このような調整は、タスク ログの調整エラーを監視することで確認できます。 ADLS については、以下の記事の適切なサービスの調整セクションを参照してください。
+クラスターのバッキング ストアが Azure Data Lake Storage (ADLS) の場合、調整は帯域幅の制限が原因の可能性が高くなります。 このような調整は、タスク ログの調整エラーを監視することで確認できます。 ADLS については、以下の記事の適切なサービスの調整セクションを参照してください。
 
-* [HDInsight の Hive と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](../data-lake-store/data-lake-store-performance-tuning-hive.md)
-* [HDInsight の MapReduce と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
-* [HDInsight の Storm と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+* [HDInsight の Apache Hive と Azure Data Lake Storage のパフォーマンス チューニング ガイダンス](../data-lake-store/data-lake-store-performance-tuning-hive.md)
+* [HDInsight の MapReduce と Azure Data Lake Storage のパフォーマンス チューニング ガイダンス](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
+* [HDInsight の Apache Storm と Azure Data Lake Storage のパフォーマンス チューニング ガイダンス](../data-lake-store/data-lake-store-performance-tuning-storm.md)
 
 ## <a name="next-steps"></a>次の手順
 
 クラスターのトラブルシューティングと監視の詳細については、以下のリンクを参照してください。
 
 * [HDInsight ログの分析](hdinsight-debug-jobs.md)
-* [YARN ログでアプリをデバッグする](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [Linux ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Apache Hadoop YARN ログでアプリをデバッグする](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Linux ベースの HDInsight で Apache Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dump-linux.md)

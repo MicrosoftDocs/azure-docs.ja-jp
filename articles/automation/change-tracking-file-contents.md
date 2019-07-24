@@ -3,18 +3,18 @@ title: Azure Automation でファイル コンテンツの変更を表示する
 description: Change Tracking のファイル コンテンツの変更機能を使用して、変更されたファイルのコンテンツを表示できます。
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 07/03/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0582505d66bbef3064359fa4047676c4ba60b4e9
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: dae0ea3e564a3dfafcd7f072f9b0d8854df17ed7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37871128"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074745"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Change Tracking で追跡されているファイルのコンテンツを表示する
 
@@ -62,11 +62,11 @@ ms.locfileid: "37871128"
 
 1. **[変更の詳細]** ページで、ファイル情報の前後の標準を確認し、左上の **[ファイル コンテンツの変更の表示]** をクリックして、ファイルのコンテンツを確認します。
 
-  ![変更の詳細](./media/change-tracking-file-contents/change-details.png)
+   ![変更の詳細](./media/change-tracking-file-contents/change-details.png)
 
 1. 新しいページにファイル コンテンツが左右に並んで表示されます。 **[インライン]** を選択して、変更のインライン ビューを表示することもできます。
 
-  ![ファイルの変更の表示](./media/change-tracking-file-contents/view-file-changes.png)
+   ![ファイルの変更の表示](./media/change-tracking-file-contents/view-file-changes.png)
 
 ## <a name="next-steps"></a>次の手順
 
@@ -75,4 +75,5 @@ ms.locfileid: "37871128"
 > [!div class="nextstepaction"]
 > [環境の変更に関する問題を解決する](automation-tutorial-troubleshoot-changes.md)
 
-* [Log Analytics のログ検索機能](../log-analytics/log-analytics-log-searches.md) を使用して、詳細な変更追跡データを確認してください。
+* [Azure Monitor ログのログ検索](../log-analytics/log-analytics-log-searches.md)を使用して、詳細な変更追跡データを確認します。
+

@@ -5,27 +5,27 @@ items:
   items:
   - name: アプリケーション ゲートウェイについて
     href: overview.md
+  - name: 新機能
+    href: whats-new.md
 - name: クイック スタート
   items:
-  - name: Web トラフィックを管理する - ポータル
+  - name: アプリケーション ゲートウェイの作成 - ポータル
     href: quick-create-portal.md
-  - name: Web トラフィックを管理する - PowerShell
+  - name: アプリケーション ゲートウェイの作成 - PowerShell
     href: quick-create-powershell.md
-  - name: Web トラフィックを管理する - Azure CLI
+  - name: アプリケーション ゲートウェイの作成 - Azure CLI
     href: quick-create-cli.md
   expanded: true
 - name: チュートリアル
   items:
-  - name: Web トラフィックを管理する
-    href: tutorial-manage-web-traffic-cli.md
   - name: Web アプリケーション ファイアウォールを有効にする
-    href: tutorial-restrict-web-traffic-cli.md
+    href: application-gateway-web-application-firewall-portal.md
   - name: SSL でセキュリティ保護する
-    href: tutorial-ssl-cli.md
+    href: create-ssl-portal.md
   - name: 複数のサイトをホストする
-    href: tutorial-multiple-sites-cli.md
+    href: create-multiple-sites-portal.md
   - name: URL に基づいてルーティングする
-    href: tutorial-url-route-cli.md
+    href: create-url-route-portal.md
   - name: Web トラフィックをリダイレクトする
     href: tutorial-url-redirect-cli.md
   - name: 自動スケーリングとゾーン冗長
@@ -38,59 +38,99 @@ items:
     href: cli-samples.md
 - name: 概念
   items:
-  - name: エンド ツー エンド SSL
-    href: ssl-overview.md
-  - name: SSL ポリシーの概要
-    href: application-gateway-ssl-policy-overview.md
-  - name: Web アプリケーション ファイアウォール
-    href: waf-overview.md
-  - name: WAF 構成
-    href: application-gateway-waf-configuration.md
-  - name: URL ルーティング
-    href: url-route-overview.md
-  - name: 複数サイトのホスティング
-    href: multiple-site-overview.md
+  - name: 基本
+    items:
+    - name: Application Gateway のしくみ
+      href: how-application-gateway-works.md
+    - name: Application Gateway のコンポーネント
+      href: application-gateway-components.md
+    - name: 構成の概要
+      href: configuration-overview.md
+  - name: ルーティング
+    items:
+    - name: 複数サイトのホスティング
+      href: multiple-site-overview.md
+    - name: URL ルーティング
+      href: url-route-overview.md
+    - name: リダイレクト
+      href: redirect-overview.md
+    - name: HTTP ヘッダーを書き換える
+      href: rewrite-http-headers.md
+    - name: カスタム エラー ページ
+      href: custom-error.md
+  - name: SSL
+    items:
+    - name: SSL ターミネーションとエンド ツー エンド SSL
+      href: ssl-overview.md
+    - name: SSL ポリシーの概要
+      href: application-gateway-ssl-policy-overview.md
+  - name: WAF
+    items:
+    - name: Web アプリケーション ファイアウォール
+      href: waf-overview.md
+    - name: WAF 構成
+      href: application-gateway-waf-configuration.md
+  - name: 正常性の監視
+    items:
+    - name: 正常性プローブ
+      href: application-gateway-probe-overview.md
+    - name: 診断
+      href: application-gateway-diagnostics.md
   - name: 自動スケールとゾーン冗長性
     href: application-gateway-autoscaling-zone-redundant.md
-  - name: リダイレクトのサポート
-    href: redirect-overview.md
-  - name: マルチテナントのサポート
+  - name: App Service Web アプリとマルチテナントのサポート
     href: application-gateway-web-app-overview.md
-  - name: 正常性の監視
-    href: application-gateway-probe-overview.md
   - name: WebSocket のサポート
     href: application-gateway-websocket.md
+  - name: FAQ
+    href: application-gateway-faq.md
 - name: ハウツー ガイド
   items:
-  - name: Web トラフィックを管理する
+  - name: 単一のサイトをホストする
     items:
     - name: Azure PowerShell
       href: tutorial-manage-web-traffic-powershell.md
-    - name: テンプレート
+    - name: Azure CLI
+      href: tutorial-manage-web-traffic-cli.md
+    - name: Template
       href: create-vmss-template.md
   - name: 内部 Load Balancer を構成する
     items:
+    - name: Azure ポータル
+      href: configure-application-gateway-with-private-frontend-ip.md
     - name: Azure PowerShell
       href: application-gateway-ilb-arm.md
-  - name: SSL 終了を構成する
+  - name: SSL の構成
     items:
-    - name: SSL 終了 - ポータル
-      href: create-ssl-portal.md
-    - name: SSL 終了 - PowerShell
-      href: tutorial-ssl-powershell.md
-    - name: エンド ツー エンド SSL - PowerShell
-      href: application-gateway-end-to-end-ssl-powershell.md
-    - name: 証明書の更新
-      href: renew-certificates.md
-    - name: SSL ポリシーを構成する
-      href: application-gateway-configure-ssl-policy-powershell.md
+    - name: SSL ターミネーション
+      items:
+      - name: SSL ターミネーション - PowerShell
+        href: tutorial-ssl-powershell.md
+      - name: SSL ターミネーション - Azure CLI
+        href: tutorial-ssl-cli.md
+    - name: エンドツーエンド SSL
+      items:
+      - name: エンドツーエンド SSL - ポータル
+        href: end-to-end-ssl-portal.md
+      - name: エンドツーエンド SSL - PowerShell
+        href: application-gateway-end-to-end-ssl-powershell.md
+    - name: 証明書の管理
+      items:
+      - name: バックエンドのホワイトリスト登録のための証明書を作成する
+        href: certificates-for-backend-authentication.md
+      - name: 証明書の更新
+        href: renew-certificates.md
+    - name: SSL ポリシー
+      items:
+      - name: SSL ポリシーを構成する
+        href: application-gateway-configure-ssl-policy-powershell.md
   - name: Web アプリケーション ファイアウォールを構成する
     items:
-    - name: Azure ポータル
-      href: application-gateway-web-application-firewall-portal.md
     - name: Azure PowerShell
       href: tutorial-restrict-web-traffic-powershell.md
-  - name: WAF ルールをカスタマイズする
+    - name: Azure CLI
+      href: tutorial-restrict-web-traffic-cli.md
+  - name: WAF 規則セットを構成する
     items:
     - name: Azure ポータル
       href: application-gateway-customize-waf-rules-portal.md
@@ -100,16 +140,16 @@ items:
       href: application-gateway-customize-waf-rules-cli.md
   - name: URL に基づいてルーティングする
     items:
-    - name: Azure ポータル
-      href: create-url-route-portal.md
     - name: Azure PowerShell
       href: tutorial-url-route-powershell.md
+    - name: Azure CLI
+      href: tutorial-url-route-cli.md
   - name: 複数のサイトをホストする
     items:
-    - name: Azure ポータル
-      href: create-multiple-sites-portal.md
     - name: Azure PowerShell
       href: tutorial-multiple-sites-powershell.md
+    - name: Azure CLI
+      href: tutorial-multiple-sites-cli.md
   - name: トラフィックをリダイレクトする
     items:
     - name: 外部トラフィック
@@ -134,11 +174,19 @@ items:
         href: redirect-internal-site-cli.md
     - name: Azure PowerShell を使用して Web トラフィックをリダイレクトする
       href: tutorial-url-redirect-powershell.md
-  - name: マルチテナントのサポート
+  - name: HTTP ヘッダーを書き換える
     items:
-    - name: マルチテナントのサポートを構成する
+    - name: Azure ポータル
+      href: rewrite-http-headers-portal.md
+    - name: Azure PowerShell
+      href: add-http-header-rewrite-rule-powershell.md
+  - name: App Service Web アプリとマルチテナント サービスを構成する
+    items:
+    - name: ポータル
+      href: configure-web-app-portal.md
+    - name: Azure PowerShell
       href: create-web-app.md
-  - name: カスタム プローブ
+  - name: カスタム プローブの構成
     items:
     - name: ポータル
       href: application-gateway-create-probe-portal.md
@@ -148,14 +196,14 @@ items:
       href: application-gateway-create-probe-ps.md
   - name: トラブルシューティング
     items:
-    - name: アプリケーション ゲートウェイのトラブルシューティング - ILB ASE
+    - name: ILB と App Service Environment
       href: create-gateway-internal-load-balancer-app-service-environment.md
-    - name: Bad Gateway (502) エラーのトラブルシューティング
+    - name: App Service の URL へのリダイレクト
+      href: troubleshoot-app-service-redirection-app-service-url.md
+    - name: セッション アフィニティの問題
+      href: how-to-troubleshoot-application-gateway-session-affinity-issues.md
+    - name: 無効なゲートウェイ (502) エラー
       href: application-gateway-troubleshooting-502.md
-    - name: 診断
-      href: application-gateway-diagnostics.md
-  - name: カスタム エラー ページ
-    href: custom-error.md
 - name: リファレンス
   items:
   - name: CRS ルール
@@ -172,7 +220,7 @@ items:
     href: https://azure.microsoft.com/develop/nodejs/#azure-sdk
   - name: Python
     href: https://azure.microsoft.com/develop/python/
-  - name: REST ()
+  - name: REST
     href: /rest/api/applicationgateway
   - name: Azure Resource Manager
     href: ../azure-resource-manager/resource-group-overview.md
@@ -190,11 +238,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: スタック オーバーフロー
     href: https://stackoverflow.com/questions/tagged/azure-application-gateway
-  - name: FAQ
-    href: application-gateway-faq.md
-ms.openlocfilehash: 528fd5de97151679c179931163f4c67275530a24
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 26ec063b5ad05325eb654a3b112eb5dd6ef23bcc
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103308"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547382"

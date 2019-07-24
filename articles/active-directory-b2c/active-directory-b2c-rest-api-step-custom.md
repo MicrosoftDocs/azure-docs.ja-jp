@@ -3,21 +3,21 @@ title: Azure Active Directory B2C でのオーケストレーション手順と�
 description: API と統合する Azure Active Directory B2C のカスタム ポリシーに関するトピック。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: dddb42f53d4bb59113df937799bd4de10d31491c
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.subservice: B2C
+ms.openlocfilehash: 55740b74aef5ce3d2def5ad22cfe3ededa1204d8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338781"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189699"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>チュートリアル: REST API 要求交換をオーケストレーション手順として Azure AD B2C ユーザー体験に統合する
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>チュートリアル:REST API 要求交換をオーケストレーション手順として Azure AD B2C ユーザー体験に統合する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -33,7 +33,7 @@ IEF では、要求を介してデータが送受信されます。 REST API 要
 
 受信した要求は、後で実行フローを変更するために使用できます。
 
-検証プロファイルとして対話を設計することもできます。 詳細については、「[チュートリアル: REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する](active-directory-b2c-rest-api-validation-custom.md)」を参照してください。
+検証プロファイルとして対話を設計することもできます。 詳細については、「[チュートリアル:REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する](active-directory-b2c-rest-api-validation-custom.md)」をご覧ください。
 
 このシナリオでは、ユーザーがプロファイルの編集を実行するときに、以下の操作を実行できるようにします。
 
@@ -45,9 +45,9 @@ IEF では、要求を介してデータが送受信されます。 REST API 要
 
 - [概要](active-directory-b2c-get-started-custom.md)に関するページに記載されたローカル アカウントのサインアップ/サインインを完了するように構成された Azure AD B2C テナント。
 - 対話する REST API エンドポイント。 このチュートリアルでは、単純な Azure 関数アプリの Webhook を例として使用します。
-- *推奨*: [検証手順としての REST API 要求交換チュートリアル](active-directory-b2c-rest-api-validation-custom.md)を完了します。
+- *推奨*:[検証手順として REST API 要求交換のチュートリアル](active-directory-b2c-rest-api-validation-custom.md)を完了します。
 
-## <a name="step-1-prepare-the-rest-api-function"></a>手順 1: REST API 関数を準備する
+## <a name="step-1-prepare-the-rest-api-function"></a>手順 1:REST API 関数を準備する
 
 > [!NOTE]
 > REST API 関数の設定は、この記事の範囲外です。 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) に、クラウドで RESTful サービスを作成するための優れたツールキットが用意されています。
@@ -79,7 +79,7 @@ return request.CreateResponse<ResponseContent>(
 
 Azure Function App を使用すると、特定の関数の識別子を含む関数の URL を簡単に取得できます。 ここでは、URL は https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw== となります。 それは、テストの目的で使用できます。
 
-## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>手順 2: RESTful API 要求交換を技術プロファイルとして TrustFrameworkExtensions.xml ファイルに構成する
+## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>手順 2:RESTful API 要求交換を技術プロファイルとして TrustFrameworkExtensions.xml ファイルに構成する
 
 技術プロファイルは、RESTful サービスで必要となる交換の完全な構成です。 TrustFrameworkExtensions.xml ファイルを開き、次の XML スニペットを `<ClaimsProvider>` 要素の中に追加します。
 
@@ -97,6 +97,7 @@ Azure Function App を使用すると、特定の関数の識別子を含む関�
                 <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==</Item>
                 <Item Key="AuthenticationType">None</Item>
                 <Item Key="SendClaimsIn">Body</Item>
+                <Item Key="AllowInsecureAuthInProduction">true</Item>
             </Metadata>
             <InputClaims>
                 <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="email" />
@@ -114,7 +115,7 @@ Azure Function App を使用すると、特定の関数の識別子を含む関�
 
 `<OutputClaims>` 要素は、IEF が期待する REST サービスからの要求を定義します。 受信した要求の数に関係なく、IEF はここで識別されている要求のみを使用します。 この例では、`city` として受信された要求は、`city` という名前の IEF 要求にマッピングされます。
 
-## <a name="step-3-add-the-new-claim-city-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>手順 3: 新しい要求 `city` を TrustFrameworkExtensions.xml ファイルのスキーマに追加する
+## <a name="step-3-add-the-new-claim-city-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>手順 3:新しい要求 `city` を TrustFrameworkExtensions.xml ファイルのスキーマに追加する
 
 要求 `city` は、まだスキーマのどこにも定義されていません。 そのため、要素 `<BuildingBlocks>` の中に定義を追加します。 この要素は、TrustFrameworkExtensions.xml ファイルの先頭で見つけることができます。
 
@@ -133,7 +134,7 @@ Azure Function App を使用すると、特定の関数の識別子を含む関�
 </BuildingBlocks>
 ```
 
-## <a name="step-4-include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-trustframeworkextensionsxml"></a>手順 4: TrustFrameworkExtensions.xml のプロファイルの編集ユーザー体験に REST サービス要求交換をオーケストレーション手順として含める
+## <a name="step-4-include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-trustframeworkextensionsxml"></a>手順 4:TrustFrameworkExtensions.xml のプロファイルの編集ユーザー体験に REST サービス要求交換をオーケストレーション手順として含める
 
 プロファイルの編集ユーザー体験に手順を追加します。追加場所は、ユーザーが認証され (次の XML 内のオーケストレーション手順 1 ～ 4)、ユーザーから更新されたプロファイル情報が提供された (手順 5) 後です。
 
@@ -211,7 +212,7 @@ Azure Function App を使用すると、特定の関数の識別子を含む関�
 </UserJourney>
 ```
 
-## <a name="step-5-add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>手順 5: 要求 `city` がアプリケーションに送信されるように証明書利用者ポリシー ファイルに追加する
+## <a name="step-5-add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>手順 5:要求 `city` がアプリケーションに送信されるように、その要求を証明書利用者ポリシー ファイルに追加する
 
 ProfileEdit.xml 証明書利用者 (RP) ファイルを編集し、`<TechnicalProfile Id="PolicyProfile">` 要素を修正して `<OutputClaim ClaimTypeReferenceId="city" />` を追加します。
 
@@ -228,12 +229,12 @@ ProfileEdit.xml 証明書利用者 (RP) ファイルを編集し、`<TechnicalPr
 </TechnicalProfile>
 ```
 
-## <a name="step-6-upload-your-changes-and-test"></a>手順 6: 変更内容をアップロードしてテストする
+## <a name="step-6-upload-your-changes-and-test"></a>手順 6:変更内容をアップロードしてテストする
 
 ポリシーの既存のバージョンを上書きします。
 
-1.  (省略可能) 続行する前に、拡張機能ファイルの既存のバージョンを (ダウンロードして) 保存します。 最初の複雑さを低く抑えるために、拡張機能ファイルの複数のバージョンをアップロードしないことをお勧めします。
-2.  (省略可能) ポリシー編集ファイルに対するポリシー ID の新しいバージョンを、`PolicyId="B2C_1A_TrustFrameworkProfileEdit"` を変更することで、その名前を変更します。
+1.  (省略可能:)続行する前に、拡張機能ファイルの既存のバージョンを (ダウンロードして) 保存します。 最初の複雑さを低く抑えるために、拡張機能ファイルの複数のバージョンをアップロードしないことをお勧めします。
+2.  (省略可能:)ポリシー編集ファイルに対するポリシー ID の新しいバージョンを、`PolicyId="B2C_1A_TrustFrameworkProfileEdit"` を変更することで、その名前を変更します。
 3.  拡張機能ファイルをアップロードします。
 4.  ポリシー編集 RP ファイルをアップロードします。
 5.  **[今すぐ実行]** を使用してポリシーをテストします。 IEF からアプリケーションに返されるトークンを確認します。

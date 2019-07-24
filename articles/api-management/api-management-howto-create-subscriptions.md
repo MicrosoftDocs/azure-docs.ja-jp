@@ -1,5 +1,5 @@
 ---
-title: Azure API Management でサブスクリプションを作成する方法 | Microsoft Docs
+title: Azure API Management でサブスクリプションを作成する | Microsoft Docs
 description: Azure API Management でサブスクリプションを作成する方法について説明します。
 services: api-management
 documentationcenter: ''
@@ -13,40 +13,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 3f4e113125ec9644aac974e47996afe290e57cee
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: bc791fea1dfd184749e84cb7b7a912972c6a9f12
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52621738"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523509"
 ---
-# <a name="how-to-create-subscriptions-in-azure-api-management"></a>Azure API Management でサブスクリプションを作成する方法
+# <a name="create-subscriptions-in-azure-api-management"></a>Azure API Management でサブスクリプションを作成する
 
-Azure API Management (APIM) を介して API を公開する場合、これらの API へのアクセスをセキュリティで保護する最も簡単で最も一般的な方法は、サブスクリプション キーを使用することです。 つまり、公開された API を使用する必要のあるクライアント アプリケーションには、このような API を呼び出すときに有効なサブスクリプション キーを HTTP 要求に含める必要があります。 API にアクセスするためのサブスクリプション キーを取得するには、サブスクリプションが必要です。 サブスクリプションの詳細については、「[Subscriptions in Azure API Management](api-management-subscriptions.md)」(Azure API Management のサブスクリプション) を参照してください。
+Azure API Management を介して API を公開する場合、これらの API へのアクセスをセキュリティで保護する最も簡単で最も一般的な方法は、サブスクリプション キーを使用することです。 公開された API を使用する必要のあるクライアント アプリケーションには、このような API を呼び出すときに有効なサブスクリプション キーを HTTP 要求に含める必要があります。 API にアクセスするためのサブスクリプション キーを取得するには、サブスクリプションが必要です。 サブスクリプションの詳細については、「[Subscriptions in Azure API Management](api-management-subscriptions.md)」(Azure API Management のサブスクリプション) を参照してください。
 
 この記事では、Azure portal でサブスクリプションを作成する手順について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事の手順を完了するには、以下を実行する必要があります。
+この記事の手順を実行するための前提条件は次のとおりです。
 
-+ [APIM インスタンスを作成する](get-started-create-service-instance.md)
-+ [APIM のサブスクリプションを理解する](api-management-subscriptions.md)
++ [API Management インスタンスを作成する](get-started-create-service-instance.md)。
++ [API Management のサブスクリプション](api-management-subscriptions.md)を理解する。
 
 ## <a name="create-a-new-subscription"></a>新しいサブスクリプションを作成する
 
-1. 左側のメニューの **[サブスクリプション]** をクリックします
-2. **[サブスクリプションの追加]** をクリックします
-3. サブスクリプションの名前を指定し、範囲を選択します
-4. **[保存]** をクリックします
+1. 左側のメニューで **[サブスクリプション]** を選択します。
+2. **[サブスクリプションの追加]** を選択します。
+3. サブスクリプションの名前を指定し、範囲を選択します。
+4. 必要に応じて、サブスクリプションをユーザーに関連付けるかどうかを選択します。
+5. **[保存]** を選択します。
 
 ![柔軟なサブスクリプション](./media/api-management-subscriptions/flexible-subscription.png)
 
-サブスクリプションが作成されると、API にアクセスするための 1 組の API キー (プライマリとセカンダリ) がプロビジョニングされます。
+サブスクリプションを作成した後、API にアクセスするために 2 つの API キーが提供されます。 一方のキーはプライマリで、他方のキーはセカンダリです。 
 
 ## <a name="next-steps"></a>次の手順
 API Management の詳細情報:
 
-+ API Management の他の[概念](api-management-terminology.md)について学びます
-+ [チュートリアル](import-and-publish.md)に従って API Management の詳細を学びます
-+ [FAQ ページ](api-management-faq.md)で一般的な質問を確認します
++ API Management の他の[概念](api-management-terminology.md)を確認します。
++ [チュートリアル](import-and-publish.md)に従って API Management の詳細を確認します。
++ [FAQ ページ](api-management-faq.md)で一般的な質問を確認します。

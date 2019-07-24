@@ -2,50 +2,55 @@
 title: Terratest を使用して Azure で Terraform モジュールをテストする
 description: Terratest を使用して Terraform モジュールをテストする方法を学習します。
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: Terraform, DevOps, ストレージ アカウント, Azure, Terratest, 単体テスト, 統合テスト
-author: JunyiYi
+author: tomarchermsft
 manager: jeconnoc
-ms.author: junyi
+ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/19/2018
-ms.openlocfilehash: 7feee063c7b311934f7d157a9dff62d803a041b0
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.date: 03/19/2019
+ms.openlocfilehash: 9d621905122ab7bf64432323d7d11cf8f1b50750
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638713"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224007"
 ---
-# <a name="test-terraform-modules-in-azure-using-terratest"></a>Terratest を使用して Azure で Terraform モジュールをテストする
+# <a name="test-terraform-modules-in-azure-by-using-terratest"></a>Terratest を使用して Azure で Terraform モジュールをテストする
 
-Terraform モジュールは、再利用可能、構成可能、かつテスト可能なコンポーネントを作成するために使用されます。 これらにより、"コードとしてのインフラストラクチャ" の環境にカプセル化が組み込まれます。
+> [!NOTE]
+> この記事のサンプル コードは、バージョン 0.12 (以降) では動作しません。
 
-他のソフトウェア コンポーネントと同様、品質保証は、Terraform モジュールにおいて重要な役割を果たします。 残念ながら、Terraform モジュールで単体テストと統合テストを作成する方法が説明されている利用可能なドキュメントはほとんどありません。 このチュートリアルでは、Microsoft が [Azure Terraform モジュール](https://registry.terraform.io/browse?provider=azurerm)を構築する際に採用したテスト インフラストラクチャとベスト プラクティスを紹介します。
+Azure Terraform モジュールを使用して、再利用可能、構成可能、かつテスト可能なコンポーネントを作成できます。 Terraform モジュールには、コード プロセスとしてインフラストラクチャを実装するのに役立つカプセル化が組み込まれています。
 
-Microsoft は、最も一般的なテスト インフラストラクチャをすべて検討したうえで、[Terratest](https://github.com/gruntwork-io/terratest) を使用することを選択しました。 Terratest は Go ライブラリとして実装されています。 これは、特定の仮想マシンへの HTTP 要求の発行や SSH など、一般的なインフラストラクチャ テスト タスク用のヘルパー関数とパターンのコレクションを提供します。 Terratest の主なメリットをいくつか次に示します。
+Terraform モジュールを作成するときは、品質保証を実装することが重要です。 残念ながら、Terraform モジュールで単体テストと統合テストを作成する方法が説明されているドキュメントは限られています。 このチュートリアルでは、Microsoft が [Azure Terraform モジュール](https://registry.terraform.io/browse?provider=azurerm)を構築するときに採用したテスト インフラストラクチャとベスト プラクティスを紹介します。
 
-- **インフラストラクチャを確認するのに便利なヘルパーを提供します。** この機能は、実際の環境で実際のインフラストラクチャを確認したい場合に便利です。
-- **フォルダー構造が明確に構成されています。** テスト ケースは明確に構成され、[Terraform モジュールの標準のフォルダー構造](https://www.terraform.io/docs/modules/create.html#standard-module-structure)に従います。
-- **すべてのテスト ケースが Go で記述されます。** ほとんどの Terraform 開発者は既に Go 開発者であるため、Terratest を使用すれば、さらに別のプログラミング言語を学習する必要はありません。 また、Terratest でテスト ケースを実行するために必要な依存関係は、Go と Terraform のみです。
-- **このインフラストラクチャは、高い拡張性を備えています。** 追加の機能 (Azure に固有の機能など) を Terratest の上に拡張するのは難しくありません。
+最もよく利用されているすべてのテスト インフラストラクチャを調べて、Terraform モジュールのテストには [Terratest](https://github.com/gruntwork-io/terratest) を使用することにしました。 Terratest は Go ライブラリとして実装されています。 Terratest では、特定の仮想マシンにアクセスするために HTTP 要求を行ったり SSH を使用するなど、一般的なインフラストラクチャ テスト タスク用のヘルパー関数とパターンのコレクションが提供されています。 次の一覧では、Terratest を使用する主な利点の一部について説明します。
+
+- **インフラストラクチャを確認するのに便利なヘルパーが提供されます**。 この機能は、実際の環境で実際のインフラストラクチャを確認したい場合に便利です。
+- **フォルダー構造が明確に構成されています**。 テスト ケースは明確に編成され、[Terraform モジュールの標準のフォルダー構造](https://www.terraform.io/docs/modules/create.html#standard-module-structure)に従います。
+- **すべてのテスト ケースが Go で記述されます**。 Terraform を使用するほとんどの開発者は、Go 開発者です。 Go 開発者の場合、Terratest を使用するために別のプログラミング言語を習得する必要はありません。 また、Terratest でテスト ケースを実行するために必要な依存関係は、Go と Terraform のみです。
+- **インフラストラクチャが高い拡張性を備えています**。 Azure 固有の機能などの追加機能で Terratest を拡張できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-この実践的なガイドは、プラットフォームに依存せず、Windows、Linux、または macOS 上で実行できます。 続行する前に、次のソフトウェアをインストールします。
+この実践的な記事は、プラットフォームに依存しません。 この記事で使用するコード例は、Windows、Linux、または MacOS で実行できます。 
 
-- **Go プログラミング言語**: Terraform テスト ケースは [Go](https://golang.org/dl/) で記述されます。
+始める前に、次のソフトウェアをインストールします。
+
+- **Go プログラミング言語**: Terraform テスト ケースは [Go](https://golang.org/dl/) で記述します。
 - **dep**: [dep](https://github.com/golang/dep#installation) は、Go 向けの依存関係管理ツールです。
-- **Azure CLI**: [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) は、Azure リソースを管理するためのコマンドライン ツールです  (Terraform では、サービス プリンシパル経由または [Azure CLI を介した](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html) Azure への認証がサポートされます)。
-- **mage**: [mage 実行可能ファイル](https://github.com/magefile/mage/releases)を使用して、Terratest ケースの実行を簡略化する方法を学習します。 
+- **Azure CLI**:[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) は、Azure リソースを管理するために使用できるコマンドライン ツールです。 (Terraform では、サービス プリンシパル経由または [Azure CLI を介した](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html) Azure への認証がサポートされます。)
+- **mage**: Terratest ケースの実行を簡単にする方法を示すため、[mage 実行可能ファイル](https://github.com/magefile/mage/releases)を使用します。 
 
 ## <a name="create-a-static-webpage-module"></a>静的 Web ページ モジュールを作成する
 
-このチュートリアルでは、単一の HTML ファイルを Azure Storage Blob にアップロードして、静的 Web ページをプロビジョニングする Terraform モジュールを作成します。 このモジュールにより、世界中のユーザーが、このモジュールから返された URL を通じてこの Web ページにアクセスできるようになります。
+このチュートリアルでは、単一の HTML ファイルを Azure Storage Blob にアップロードすることで静的 Web ページをプロビジョニングする Terraform モジュールを作成します。 このモジュールでは、モジュールが返す URL により世界中のユーザーが Web ページにアクセスできます。
 
 > [!NOTE]
-> このセクションで説明されるすべてのファイルは、[GoPath](https://github.com/golang/go/wiki/SettingGOPATH) の下に作成する必要があります。
+> このセクションで説明されているすべてのファイルを、[GOPATH](https://github.com/golang/go/wiki/SettingGOPATH) の場所の下に作成します。
 
-まず、GoPath の `src` フォルダーの下に `staticwebpage` という名前の新しいフォルダーを作成します。 このチュートリアルの全体的なフォルダー構造を次に示します  (アスタリスク `(*)` が付いたファイルは、このセクションの重要な項目です)。
+まず、GoPath の `src` フォルダーの下に `staticwebpage` という名前の新しいフォルダーを作成します。 このチュートリアルの全体的なフォルダー構造を次の例に示します。 アスタリスク `(*)` が付いたファイルは、このセクションの主要なファイルです。
 
 ```
  📁 GoPath/src/staticwebpage
@@ -65,24 +70,24 @@ Microsoft は、最も一般的なテスト インフラストラクチャをす
    └ 📄 variables.tf (*)
 ```
 
-静的 Web ページ モジュールは `./variables.tf` で宣言されている 3 つの入力を受け取ります。
+静的 Web ページ モジュールは、3 つの入力を受け取ります。 入力は `./variables.tf` で宣言されています。
 
 ```hcl
 variable "location" {
-  description = "The Azure region in which all resources will be created."
+  description = "The Azure region in which to create all resources."
 }
 
 variable "website_name" {
-  description = "The website name which will be used to create a bunch of related resources in Azure."
+  description = "The website name to use to create related resources in Azure."
 }
 
 variable "html_path" {
-  description = "The file path of the static homepage HTML in your local filesystem."
+  description = "The file path of the static home page HTML in your local file system."
   default     = "index.html"
 }
 ```
 
-前述のとおり、`./outputs.tf` で宣言された URL もこのモジュールによって出力されます。
+前に説明したように、このモジュールでは `./outputs.tf` で宣言されている URL も出力されます。
 
 ```hcl
 output "homepage_url" {
@@ -90,11 +95,11 @@ output "homepage_url" {
 }
 ```
 
-これにより、このモジュールのメイン ロジックに移ります。 合計で 4 つのリソースがプロビジョニングされます。
-- `website_name` 入力に `-staging-rg` が追加された名前のリソース グループ。
-- `website_name` 入力に `data001` が追加された名前のストレージ アカウント。 ただし、ストレージ アカウントの名前の制限に従うために、モジュールによってすべての特殊文字が削除され、名前全体が小文字になります。
-- 上記のストレージ アカウントで作成された固定の名前付きコンテナー `wwwroot`。
-- `html_path` 入力から読み込まれ、`wwwroot/index.html` にアップロードされる単一の HTML ファイル。
+モジュールのメイン ロジックでは、4 つのリソースがプロビジョニングされます。
+- **リソース グループ**: リソース グループの名前は、`website_name` の入力に `-staging-rg` が追加されたものです。
+- **ストレージ アカウント**: ストレージ アカウントの名前は、`website_name` の入力に `data001` が追加されたものです。 ストレージ アカウントの名前の制限に従うため、モジュールではすべての特殊文字が削除され、ストレージ アカウント名全体で小文字が使用されます。
+- **固定名コンテナー**: コンテナーは `wwwroot` という名前で、ストレージ アカウントに作成されます。
+- **単一の HTML ファイル**: HTML ファイルは `html_path` 入力から読み取られて、`wwwroot/index.html` にアップロードされます。
 
 静的 Web ページ モジュールのロジックは `./main.tf` で実装されています。
 
@@ -132,11 +137,11 @@ resource "azurerm_storage_blob" "homepage" {
 
 ### <a name="unit-test"></a>単体テスト
 
-Terratest はもともと統合テスト用に設計されたツールです。つまり、Terratest では、実際の環境で実際のリソースがプロビジョニングされます。 特にプロビジョニングするリソースが大量にある場合、このようなジョブは非常に大きくなることがあります。 前のセクションで説明されているストレージ アカウントの命名変換ロジックがその良い例です。ここでは実際にリソースをプロビジョニングする必要があるわけではありません。命名変換ロジックが正しいことを確認したいだけです。
+Terratest は統合テスト用に設計されています。 そのため、Terratest では実際の環境に実際のリソースがプロビジョニングされます。 統合テストのジョブは、非常に大きくなることがあります (特に、プロビジョニングするリソースの量が多い場合)。 前のセクションで参照しているストレージ アカウント名を変換するロジックがよい例です。 
 
-Terratest の柔軟性のおかげで、これは単体テストを使用して簡単に実現できます。 単体テストは、`terraform init` コマンドと `terraform plan` コマンドを実行するだけでローカルで実行されるテスト ケースです (ただしインターネット アクセスは必要です)。単体テスト ケースでは、`terraform plan` の出力が解析され、比較対象となる属性値が検索されます。
+しかし、すべてのリソースを実際にプロビジョニングする必要はありません。 名前付けの変換ロジックが正しいことを確認するだけでいいのです。 Terratest は柔軟なので、単体テストを使用できます。 単体テストはローカルに実行するテスト ケースです (ただし、インターネットへのアクセスが必要です)。 単体テスト ケースでは、`terraform init` コマンドと `terraform plan` コマンドが実行されて `terraform plan` の出力が解析され、比較する属性値が検索されます。
 
-このセクションの残りの部分では、ストレージ アカウントの命名変換ロジックが正しいことを確認するために Terratest を使用して単体テストを実装する方法について説明します。 注目するのは、アスタリスク `(*)` の付いたファイルのみです。
+このセクションの残りの部分では、ストレージ アカウント名の変換に使用されるロジックが正しいことを確認するために、Terratest を使用して単体テストを実装する方法について説明します。 注目するのは、アスタリスク `(*)` の付いたファイルのみです。
 
 ```
  📁 GoPath/src/staticwebpage
@@ -156,9 +161,9 @@ Terratest の柔軟性のおかげで、これは単体テストを使用して�
    └ 📄 variables.tf
 ```
 
-まず、空の HTML ファイル `./test/fixtures/storage-account-name/empty.html` は単なるプレースホルダーです。
+最初に、`./test/fixtures/storage-account-name/empty.html` という名前の空の HTML ファイルをプレースホルダーとして使用します。
 
-ファイル `./test/fixtures/storage-account-name/main.tf` は、テスト ケースのスケルトンです。 ここで 1 つの入力 `website_name` を受け取ります。これは単体テストの入力でもあります。 そのロジックを次に示します。
+ファイル `./test/fixtures/storage-account-name/main.tf` は、テスト ケースのフレームです。 それは 1 つの入力 `website_name` を受け取ります。これは単体テストの入力でもあります。 ロジックは次のとおりです。
 
 ```hcl
 variable "website_name" {
@@ -173,15 +178,15 @@ module "staticwebpage" {
 }
 ```
 
-最後に、主要なコンポーネントは、単体テストの実装です (`./test/storage_account_name_unit_test.go`)。
+主要なコンポーネントは、`./test/storage_account_name_unit_test.go` 内の単体テストの実装です。
 
-Go 開発者の方であれば、型 `*testing.T` の引数を受け取ることでこれが従来の Go テスト関数のシグネチャと一致することがわかります。
+Go 開発者であれば、おそらく、単体テストは `*testing.T` 型の引数を受け取ることで従来の Go テスト関数のシグネチャと一致することに気付くでしょう。
 
-単体テストの本文には、合計で 5 つのケースが変数 `testCases` (キーは入力、値は期待される出力) に定義されています。 それぞれの単体テスト ケースについて、最初にテスト フィクスチャ フォルダー (`./test/fixtures/storage-account-name/`) をターゲットに `terraform init` を実行します。 
+単体テストの本体では、全部で 5 つのケースが変数 `testCases` に定義されています (`key` は入力、`value` は期待される出力)。 それぞれの単体テスト ケースについて、最初に `terraform init` を実行し、テスト フィクスチャ フォルダー (`./test/fixtures/storage-account-name/`) をターゲットにします。 
 
-その後、`terraform plan` コマンドと共に特定のテスト ケース入力 (`tfOptions` の `website_name` 定義に注目してください) を使用して、結果を `./test/fixtures/storage-account-name/terraform.tfplan` に保存します (全体のフォルダー構造にはこれは表示されていません)。
+次に、特定のテスト ケース入力 (`tfOptions` の `website_name` の定義に注目してください) を使用する `terraform plan` コマンドで、結果を `./test/fixtures/storage-account-name/terraform.tfplan` (全体のフォルダー構造には示されていません) に保存します。
 
-次に、この結果ファイルは、公式の Terraform プラン パーサーを使用して、コードが判読できる構造に解析されます。
+この結果ファイルは、公式の Terraform プラン パーサーを使用して、コードが判読できる構造に解析されます。
 
 ここで、対象となる属性 (この場合は `azurerm_storage_account` の `name`) を探し、期待される出力と比較します。
 
@@ -210,7 +215,7 @@ func TestUT_StorageAccountName(t *testing.T) {
     }
 
     for input, expected := range testCases {
-        // Specify test case folder and "-var" options
+        // Specify the test case folder and "-var" options
         tfOptions := &terraform.Options{
             TerraformDir: "./fixtures/storage-account-name",
             Vars: map[string]interface{}{
@@ -247,7 +252,7 @@ func TestUT_StorageAccountName(t *testing.T) {
 }
 ```
 
-単体テストを実行するには、コマンド ラインで次の手順を完了する必要があります。
+単体テストを実行するには、コマンド ラインで次の手順を完了します。
 
 ```shell
 $ cd [Your GoPath]/src/staticwebpage
@@ -255,15 +260,17 @@ GoPath/src/staticwebpage$ dep init    # Run only once for this folder
 GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in test cases
 GoPath/src/staticwebpage$ cd test
 GoPath/src/staticwebpage/test$ go fmt
-GoPath/src/staticwebpage/test$ az login    # Required when no service principal environment variables present
+GoPath/src/staticwebpage/test$ az login    # Required when no service principal environment variables are present
 GoPath/src/staticwebpage/test$ go test -run TestUT_StorageAccountName
 ```
 
-約 1 分後に従来の Go テストの結果が表示されます。
+従来の Go テストの結果は、1 分程度で返ります。
 
 ### <a name="integration-test"></a>統合テスト
 
-単体テストとは対照的に、統合テストは、エンドツーエンドの観点から実際の環境にリソースをプロビジョニングするために必要です。 Terratest は、そのような目的にも適しています。 Terraform モジュールのベスト プラクティスでは、いくつかのエンドツーエンドのサンプルが含まれた `examples` フォルダーも推奨されているので、これらのサンプルを統合テストとしてテストしてみましょう。 このセクションでは、それぞれアスタリスク `(*)` が付いた 3 つのファイルに焦点を当てます。
+単体テストとは対照的に、統合テストでは、エンドツーエンドの観点から実際の環境にリソースをプロビジョニングする必要があります。 Terratest では、この種のタスクが適切に行われます。 
+
+Terraform モジュールのベスト プラクティスには、`examples` フォルダーのインストールが含まれます。 `examples` フォルダーには、いくつかのエンド ツー エンド サンプルが含まれます。 実際のデータの使用を避けるためにそれらのサンプルを統合テストとしてテストしないのはなぜでしょうか。 このセクションでは、次のフォルダー構造でアスタリスク `(*)` のマークが付いている 3 つのファイルに注目します。
 
 ```
  📁 GoPath/src/staticwebpage
@@ -294,12 +301,12 @@ GoPath/src/staticwebpage/test$ go test -run TestUT_StorageAccountName
 </head>
 <body>
     <h1>Hi, Terraform Module</h1>
-    <p>This is a sample web page to demostrate Terratest.</p>
+    <p>This is a sample web page to demonstrate Terratest.</p>
 </body>
 </html>
 ```
 
-Terraform サンプル `./examples/hello-world/main.tf` は単体テストで示されているものと似ていますが、`homepage` という名前のアップロードされた HTML の URL も出力するという 1 つの大きな違いがあります。
+Terraform のサンプル `./examples/hello-world/main.tf` は、単体テストで示したものと似ています。 重要な違いが 1 つあります。サンプルでは、`homepage` という名前の Web ページとしてアップロードされた HTML の URL も出力されます。
 
 ```hcl
 variable "website_name" {
@@ -318,11 +325,11 @@ output "homepage" {
 }
 ```
 
-Terratest と従来の Go テスト関数は、統合テスト ファイル `./test/hello_world_example_test.go` に再度出現します。
+統合テスト ファイル `./test/hello_world_example_test.go` では、Terratest と従来の Go テスト関数を再び使用しています。
 
-単体テストとは異なり、統合テストでは実際のリソースが Azure に作成されます。これが、名前が競合しないように注意する必要がある理由です  (ストレージ アカウント名のようないくつかのグローバルに一意な名前には特に注意してください)。 したがって、テスト ロジックの最初のステップは、TerraTest によって提供される `UniqueId()` 関数を使用してランダムな `websiteName` を生成することです。 この関数により、小文字、大文字、または数字を含むランダムな名前が生成されます。 `tfOptions` により、すべての Terraform コマンドのターゲットが `./examples/hello-world/` フォルダーに設定され、さらに `website_name` がランダム化された `websiteName` に設定されます。
+単体テストとは異なり、統合テストでは Azure に実際のリソースを作成します。 そのため、名前付けが競合しないように注意する必要があります。 (ストレージ アカウント名のようないくつかのグローバルに一意な名前には特に注意してください。)したがって、テスト ロジックの最初のステップは、TerraTest によって提供される `UniqueId()` 関数を使用してランダムな `websiteName` を生成することです。 この関数では、小文字、大文字、数字が含まれるランダムな名前が生成されます。 `tfOptions` では、`./examples/hello-world/` フォルダーを対象とするすべての Terraform コマンドが作成されます。 また、`website_name` がランダム化された `websiteName` に設定されます。
 
-次に、`terraform init`、`terraform apply`、および `terraform output` が 1 つずつ実行されます。 Terratest から提供されるもう 1 つのヘルパー関数 `HttpGetWithCustomValidation()` は、`terraform output` によって返された出力 `homepage` URL に HTML がアップロードされていることを確認するために使用しました。その方法として、HTTP GET 状態コードを `200` と比較し、HTML コンテンツ内のいくつかのキーワードを検索しています。 最後に、Go の `defer` 機能を利用して、`terraform destroy` が実行されることが "約束" されています。
+次に、`terraform init`、`terraform apply`、および `terraform output` が 1 つずつ実行されます。 Terratest によって提供されているもう 1 つのヘルパー関数 `HttpGetWithCustomValidation()` を使用します。 ヘルパー関数を使用して、`terraform output` によって返される出力 `homepage` の URL に HTML がアップロードされることを確認します。 HTTP GET の状態コードを `200` と比較し、HTML コンテンツでいくつかのキーワードを探します。 最後に、Go の `defer` 機能を利用して、`terraform destroy` が実行されることが "約束" されています。
 
 ```go
 package test
@@ -340,11 +347,11 @@ import (
 func TestIT_HelloWorldExample(t *testing.T) {
     t.Parallel()
 
-    // Generate a random website name to prevent naming conflict
+    // Generate a random website name to prevent a naming conflict
     uniqueID := random.UniqueId()
     websiteName := fmt.Sprintf("Hello-World-%s", uniqueID)
 
-    // Specify test case folder and "-var" options
+    // Specify the test case folder and "-var" options
     tfOptions := &terraform.Options{
         TerraformDir: "../examples/hello-world",
         Vars: map[string]interface{}{
@@ -352,7 +359,7 @@ func TestIT_HelloWorldExample(t *testing.T) {
         },
     }
 
-    // Terraform init, apply, output and destroy
+    // Terraform init, apply, output, and destroy
     defer terraform.Destroy(t, tfOptions)
     terraform.InitAndApply(t, tfOptions)
     homepage := terraform.Output(t, tfOptions, "homepage")
@@ -361,12 +368,12 @@ func TestIT_HelloWorldExample(t *testing.T) {
     http_helper.HttpGetWithCustomValidation(t, homepage, func(status int, content string) bool {
         return status == 200 &&
             strings.Contains(content, "Hi, Terraform Module") &&
-            strings.Contains(content, "This is a sample web page to demostrate Terratest.")
+            strings.Contains(content, "This is a sample web page to demonstrate Terratest.")
     })
 }
 ```
 
-統合テストを実行するには、コマンド ラインで次の手順を完了する必要があります。
+統合テストを実行するには、コマンド ラインで次の手順を完了します。
 
 ```shell
 $ cd [Your GoPath]/src/staticwebpage
@@ -374,24 +381,24 @@ GoPath/src/staticwebpage$ dep init    # Run only once for this folder
 GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in test cases
 GoPath/src/staticwebpage$ cd test
 GoPath/src/staticwebpage/test$ go fmt
-GoPath/src/staticwebpage/test$ az login    # Required when no service principal environment variables present
+GoPath/src/staticwebpage/test$ az login    # Required when no service principal environment variables are present
 GoPath/src/staticwebpage/test$ go test -run TestIT_HelloWorldExample
 ```
 
-約 2 分後に従来の Go テストの結果が表示されます。 もちろん、以下を実行して、単体テストと統合テストの両方を実行することもできます。
+従来の Go テストの結果は、2 分程度で返ります。 以下のコマンドを実行して、単体テストと統合テストの両方を実行することもできます。
 
 ```shell
 GoPath/src/staticwebpage/test$ go fmt
 GoPath/src/staticwebpage/test$ go test
 ```
 
-統合テストは単体テストよりもはるかに時間がかかることがわかります (1 つの統合ケースで 2 分、5 つの単体ケースで 1 分)。 しかし、単体テストをいつ使用し、統合テストをいつ利用するかについては、お客様の判断になります。 通常は、Terraform HCL 関数を使用する複雑なロジックに対して単体テストを使用し、統合テストについてはユーザーのエンドツーエンドの観点から使用することをお勧めします。
+統合テストは単体テストよりはるかに時間がかかります (1 つの統合ケースに 2 分に対し、5 つの単体ケースに 1 分)。 ただし、シナリオで単体テストまたは統合テストを使用するかどうかは、開発者が決定します。 Microsoft では通常、複雑なロジックには Terraform HCL 関数を使用する単体テストを使用するのが好まれます。 ユーザーのエンド ツー エンドの観点には、通常、統合テストを使用します。
 
 ## <a name="use-mage-to-simplify-running-terratest-cases"></a>mage を使用して Terratest ケースの実行を簡略化する 
 
-ここまで見てきたとおり、シェル内でテスト ケースを実行するのは、異なるディレクトリに移動して異なるコマンドを実行する必要があるため、簡単な作業ではありません。 これが、プロジェクトにビルド システムを導入する理由です。 このセクションでは、Go ビルド システムの mage を使用してこのジョブを行います。
+Azure Cloud Shell でテスト ケースを実行するのは、簡単な作業はありません。 異なるディレクトリに移動し、異なるコマンドを実行する必要があります。 Cloud Shell を使用しなくて済むように、プロジェクトにビルド システムが導入されています。 このセクションでは、Go のビルド システムである mage をジョブに対して使用します。
 
-mage が必要とするのは、プロジェクトのルート ディレクトリ内の `magefile.go` のみです (下図の中で `(+)` とマークされています)。
+mage で必要になるのは、プロジェクトのルート ディレクトリ内の `magefile.go` のみです (下の例では `(+)` とマークされています)。
 
 ```
  📁 GoPath/src/staticwebpage
@@ -412,17 +419,17 @@ mage が必要とするのは、プロジェクトのルート ディレクト�
    └ 📄 variables.tf
 ```
 
-`./magefile.go` の 1 つの例を次に示します。 Go で記述されたこのビルド スクリプトには、5 つのビルド ステップが実装されています。
-- `Clean`: このステップでは、テストの実行中に生成されたファイルや一時ファイルをすべて削除します。
-- `Format`: このステップでは、`terraform fmt` と `go fmt` を実行してコード ベースを書式設定します。
-- `Unit`: このステップでは、`./test/` フォルダーの下にある (関数名規則 `TestUT_*` が使用される) すべての単体テストを実行します。
-- `Integration`: `Unit` と似ていますが、単体テストではなく統合テスト (`TestIT_*`) を実行します。
-- `Full`: このステップでは、`Clean`、`Format`、`Unit', and `、Integration を順に実行します。
+以下に `./magefile.go` の例を示します。 Go で記述されたこのビルド スクリプトには、5 つのビルド ステップが実装されています。
+- `Clean`:このステップでは、テストの実行中に生成されるすべての一時ファイルを削除します。
+- `Format`:このステップでは、`terraform fmt` と `go fmt` を実行してコード ベースを書式設定します。
+- `Unit`:このステップでは、`./test/` フォルダーにあるすべての単体テストを (関数の名前規則 `TestUT_*` を使用して) 実行します。
+- `Integration`:このステップは `Unit` と似ていますが、単体テストではなく統合テスト (`TestIT_*`) を実行します。
+- `Full`:このステップでは、`Clean`、`Format`、`Unit`、`Integration` を順番に実行します。
 
 ```go
 // +build mage
 
-// Build script to format and run tests of a Terraform module project.
+// Build a script to format and run tests of a Terraform module project
 package main
 
 import (
@@ -434,7 +441,7 @@ import (
     "github.com/magefile/mage/sh"
 )
 
-// Default target when execute `mage` in shell
+// The default target when the command executes `mage` in Cloud Shell
 var Default = Full
 
 // A build step that runs Clean, Format, Unit and Integration in sequence
@@ -468,7 +475,7 @@ func Format() error {
     return sh.RunV("go", "fmt", "./test/")
 }
 
-// A build step that removes temporary build/test files
+// A build step that removes temporary build and test files
 func Clean() error {
     fmt.Println("Cleaning...")
     return filepath.Walk(".", func(path string, info os.FileInfo, err error) error {
@@ -494,24 +501,26 @@ func Clean() error {
 }
 ```
 
-前のステップの実行方法と同様に、次のコマンドを使用して完全なテスト スイートを実行できます。
+次のコマンドを使用して、完全なテスト スイートを実行できます。 そのコードは、前のセクションで使用した実行手順に似ています。 
 
 ```shell
 $ cd [Your GoPath]/src/staticwebpage
 GoPath/src/staticwebpage$ dep init    # Run only once for this folder
 GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in magefile or test cases
-GoPath/src/staticwebpage$ go fmt      # Only requied when you change the magefile
-GoPath/src/staticwebpage$ az login    # Required when no service principal environment variables present
+GoPath/src/staticwebpage$ go fmt      # Only required when you change the magefile
+GoPath/src/staticwebpage$ az login    # Required when no service principal environment variables are present
 GoPath/src/staticwebpage$ mage
 ```
 
-最後のコマンド ラインを `mage unit` や `mage clean` のような任意の mage のステップに自由に置き換えてください。 ここにはまだ多数のコマンド ラインがあると考える方もいることでしょう。`az login` のほかに `dep` コマンドも magefile に埋め込むのは良い考えです。 ただし、そのコードはここでは示しません。 mage を使用するもう 1 つのステップでは、Go パッケージ システムを使用してステップを共有できる可能性があります。 そのため、共通の実装を参照して依存関係 (`mg.Deps()`) を宣言するだけで、すべてのモジュールにわたって magefile を簡略化できる可能性があります。
+最後のコマンド ラインは、追加の mage ステップで置き換えることができます。 たとえば、`mage unit` や `mage clean` を使用できます。 `dep` コマンドと`az login` を magefile に埋め込むのはよい考えです。 ここではコードは示しません。 
 
-> [!NOTE]
-> **オプション: 受け入れテストを実行するようにサービス プリンシパル環境変数を設定する**
-> 
-> テストの前に `az login` を実行する代わりに、サービス プリンシパル環境変数を設定して Azure 認証を行うことができます。 Terraform から、[環境変数名の一覧](https://www.terraform.io/docs/providers/azurerm/index.html#testing)が公開されています  (必要になるのは、これらの環境変数のうち最初の 4 つのみです)。[これらの環境変数の値を取得する](https://www.terraform.io/docs/providers/azurerm/authenticating_via_service_principal.html)方法が説明された詳しい手順も Terraform から公開されています。
+mage では、Go パッケージ システムを使用して、ステップを共有することもできます。 その場合、共通の実装を参照して依存関係 (`mg.Deps()`) を宣言するだけで、すべてのモジュールで magefile を簡略化できます。
+
+**省略可能: 受け入れテストを実行するようにサービス プリンシパル環境変数を設定する**
+ 
+テストの前に `az login` を実行する代わりに、サービス プリンシパル環境変数を設定して Azure 認証を完了できます。 Terraform から、[環境変数名の一覧](https://www.terraform.io/docs/providers/azurerm/index.html#testing)が公開されています。 (必要になるのは、これらの環境変数のうち最初の 4 つのみです)。[これらの環境変数の値を取得する](https://www.terraform.io/docs/providers/azurerm/authenticating_via_service_principal.html)方法が説明された詳しい手順も Terraform から公開されています。
 
 ## <a name="next-steps"></a>次の手順
 
-Terratest の詳細については、[GitHub のページ](https://github.com/gruntwork-io/terratest)を参照してください。 mage については、[GitHub のページ](https://github.com/magefile/mage)と [mage のホーム ページ](https://magefile.org/)に有用な情報があります。
+* Terratest について詳しくは、[Terratest の GitHub ページ](https://github.com/gruntwork-io/terratest)をご覧ください。
+* mage について詳しくは、[mage の GitHub ページ](https://github.com/magefile/mage)と [mage の Web サイト](https://magefile.org/)をご覧ください。

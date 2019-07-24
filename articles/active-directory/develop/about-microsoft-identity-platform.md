@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
@@ -16,12 +16,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 7b96ee362f6169d386a58ee48878e40a42fc9ede
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c7b3eee08c036862e6ce9f0c590a596f7b1d3fb0
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987598"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59258693"
 ---
 # <a name="about-microsoft-identity-platform"></a>Microsoft ID プラットフォームについて
 
@@ -37,7 +38,7 @@ Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の
 
 次の図は、アプリ登録エクスペリエンス、SDK、エンドポイント、サポートされている ID など、高レベルでの Microsoft ID エクスペリエンスを示しています。
 
-![現在の Microsoft ID プラットフォーム](./media/about-microsoft-identity-platform/microsoft-identity-platform-preview.png)
+![現在の Microsoft ID プラットフォーム](./media/about-microsoft-identity-platform/about-microsoft-identity-platform.svg)
 
 Microsoft ID プラットフォームには、2 つのエンドポイント (v1.0 および v2.0) と、これらのエンドポイントを処理する 2 組のクライアント ライブラリがあります。 新しいアプリケーションを開発する際は、これらのエンドポイントと認証ライブラリの利点と現在の状態を考慮してください。 また、以下の点についても考慮してください。
 

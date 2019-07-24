@@ -5,17 +5,17 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/06/2018
+ms.date: 03/20/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9ae3a17c9756a38414ee25fd24f7d12d6179e95f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b1a9d93d9fccf02ba1517e429625150736e539e9
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285782"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305306"
 ---
-仮想ネットワーク ゲートウェイを作成する場合、使用するゲートウェイの SKU を指定する必要があります。 ワークロード、スループット、機能、および SLA の種類に基づいて、要件を満たす SKU を選択します。
+仮想ネットワーク ゲートウェイを作成する場合、使用するゲートウェイの SKU を指定する必要があります。 ワークロード、スループット、機能、および SLA の種類に基づいて、要件を満たす SKU を選択します。 Azure Availability Zones における仮想ネットワーク ゲートウェイの SKU については、[Azure Availability Zones でのゲートウェイの SKU](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md) に関するページを参照してください。
 
 ###  <a name="benchmark"></a>各ゲートウェイ SKU のトンネル数、接続数、およびスループット
 
@@ -29,7 +29,7 @@ ms.locfileid: "51285782"
 
 | **SKU**| **機能**|
 | ---    | ---         |
-|**Basic** (\*\*)   | **ルート ベースの VPN**: S2S/接続用に 10 個のトンネル。RADIUS 認証なし (P2S)、IKEv2 なし (P2S)<br>**ポリシー ベースの VPN**: (IKEv1): 1 S2S/接続トンネル、P2S なし|
+|**Basic** (\*\*)   | **ルートベースの VPN**: S2S/接続用に 10 個のトンネル。RADIUS 認証なし (P2S)、IKEv2 なし (P2S)<br>**ポリシーベースの VPN**: (IKEv1): 1 つの S2S/接続トンネル、P2S なし|
 | **VpnGw1、VpnGw2、および VpnGw3** | **ルートベース VPN**: 最大 30 トンネル ( * )、P2S、BGP、アクティブ/アクティブ、カスタム IPsec/IKE ポリシー、ExpressRoute/VPN 共存 |
 |        |             |
 

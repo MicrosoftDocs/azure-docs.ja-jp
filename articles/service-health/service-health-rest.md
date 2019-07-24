@@ -1,21 +1,18 @@
 ---
 title: REST API を使用して Azure リソースの正常性イベントを取得する |Microsoft Docs
 description: Azure REST API を使用して、Azure リソースの正常性イベントを取得します。
-services: Resource health
-author: rloutlaw
-ms.reviewer: routlaw
-manager: angerobe
+author: stephbaron
+ms.author: stbaron
 ms.service: service-health
 ms.custom: REST
 ms.topic: article
 ms.date: 06/06/2017
-ms.author: routlaw
-ms.openlocfilehash: bbbaa4c44a7c0d6da189f0c49d73adfa6142cdee
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 6d83aed6910127ceb34b9a694f48ca9c19ab6d18
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095793"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878393"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>REST API を使用して Resource Health を取得する 
 
@@ -44,7 +41,7 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/microsoft
 
 | Name | 説明 |
 | :--- | :---------- |
-| subscriptionId | Azure サブスクリプションを識別するサブスクリプション ID。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions)を参照してください｡ |
+| subscriptionId | Azure サブスクリプションを識別するサブスクリプション ID。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)を参照してください｡ |
 | api-version | 要求で使用する API のバージョン。<br /><br /> このドキュメントでは、api-version `2015-04-01` を使用し、上記の URL に含まれています。  |
 | $filter | 返される結果のセットを減らすフィルター処理オプション。 このパラメーターの使用可能なパターンは、[アクティビティ ログ操作の参照で](/rest/api/monitor/activitylogs/list#uri-parameters)使用できます。 この例は 2018-05-16 と 2018-06-20 の間の時間範囲のすべてのイベントをキャプチャします |
 | &nbsp; | &nbsp; |

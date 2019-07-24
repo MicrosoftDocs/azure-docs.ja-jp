@@ -1,5 +1,5 @@
 ---
-title: App Service 環境内でアプリをスケーリングする方法
+title: App Service 環境内でアプリをスケーリングする方法 - Azure
 description: App Service 環境内でのアプリのスケーリング
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
-ms.openlocfilehash: d04a5fce920dae25507cdf2f64832574e24c51dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: 6e683eb07b690d7d5680b7a4d429d1150f22f67e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22986317"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717844"
 ---
 # <a name="scaling-apps-in-an-app-service-environment"></a>App Service 環境内でのアプリのスケーリング
 Azure App Service では、通常、次の 3 つの項目をスケーリングできます。
@@ -39,7 +40,7 @@ ASE では、料金プランを選択または変更する必要はありませ�
 
 ![][1]
 
-ASP が属しているワーカー プールで利用可能なコンピューティング リソースの数を超えて ASP をスケールアップすることはできません。  そのワーカー プールにコンピューティング リソースが必要な場合は、ASE 管理者に依頼してコンピューティング リソースを追加してもらう必要があります。  ASE を再構成する方法については、「[App Service 環境の構成][HowtoConfigureASE]」を参照してください。  また、ASE の自動スケール機能を利用することで、スケジュールまたはメトリックに基づいて容量を追加することができます。  ASE 環境自体に対して自動スケールを構成する方法の詳細については、「[App Service 環境の自動スケールの構成方法][ASEAutoscale]」を参照してください。
+ASP が属しているワーカー プールで利用可能なコンピューティング リソースの数を超えて ASP をスケールアップすることはできません。  そのワーカー プールにコンピューティング リソースが必要な場合は、ASE 管理者に依頼してコンピューティング リソースを追加してもらう必要があります。  ASE を再構成する方法については、[App Service 環境の構成方法][HowtoConfigureASE]に関するページを参照してください。  また、ASE の自動スケール機能を利用することで、スケジュールまたはメトリックに基づいて容量を追加することができます。  ASE 環境自体に対して自動スケールを構成する方法の詳細については、「[App Service 環境の自動スケールの構成方法][ASEAutoscale]」を参照してください。
 
 異なるワーカー プールまたは同じワーカー プールのコンピューティング リソースを使用して、複数の App Service プランを作成できます。  たとえば、ワーカー プール 1 に利用可能なコンピューティング リソースが 10 ある場合、6 つのコンピューティング リソースを使用する App Service プランと 4 つのコンピューティング リソースを使用する App Service プランを作成することを選択できます。
 
@@ -78,8 +79,8 @@ App Service 環境の使用を開始するには、[App Service Environment の�
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
 [CreateWebappinASE]: app-service-web-how-to-create-a-web-app-in-an-ase.md
-[Appserviceplans]: ../azure-web-sites-web-hosting-plans-in-depth-overview.md
-[AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/ 
+[Appserviceplans]: ../overview-hosting-plans.md
+[AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/ 
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [AppScale]: ../web-sites-scale.md
-[AppWarmup]: http://ruslany.net/2015/09/how-to-warm-up-azure-web-app-during-deployment-slots-swap/
+[AppWarmup]: https://ruslany.net/2015/09/how-to-warm-up-azure-web-app-during-deployment-slots-swap/

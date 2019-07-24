@@ -1,5 +1,5 @@
 ---
-title: Azure Search のコグニティブ検索パイプラインの入力と出力で注釈を参照する | Microsoft Docs
+title: コグニティブ検索パイプラインで入出力を参照する - Azure Search
 description: 注釈の構文と、Azure Search でのコグニティブ検索パイプラインのスキルセットの入力と出力で注釈を参照する方法について説明します。
 services: search
 manager: pablocas
@@ -8,14 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 02/22/2019
 ms.author: luisca
-ms.openlocfilehash: 1ccc1fb20cb08cfd97d58984676ef4006e693118
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.custom: seodec2018
+ms.openlocfilehash: bfb8f5ca9b4d204b7a5efdc1b54a0fdd150e5ed6
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801949"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749615"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>コグニティブ検索スキルセットで注釈を参照する方法
 
@@ -33,7 +34,7 @@ ms.locfileid: "48801949"
 | エンリッチメント コンテキスト | どの要素がエンリッチされるかという観点での、エンリッチメントが行われるコンテキストです。 既定では、エンリッチメント コンテキストは `"/document"` レベルであり、個々のドキュメントがスコープになります。 スキルを実行すると、そのスキルの出力は、[定義されたコンテキストのプロパティ](#example-2)になります。|
 
 <a name="example-1"></a>
-## <a name="example-1-simple-annotation-reference"></a>例 1: 単純な注釈参照
+## <a name="example-1-simple-annotation-reference"></a>例 1:単純な注釈参照
 
 Azure Blob ストレージに、名前付きエンティティ認識を使用して抽出する人名への参照を含む、さまざまなファイルがあるとします。 以下のスキル定義では、`"/document/content"` はドキュメント全体のテキスト表現であり、"people" は人物として識別されるエンティティのフル ネームの抽出です。
 
@@ -61,7 +62,7 @@ Azure Blob ストレージに、名前付きエンティティ認識を使用し
 
 <a name="example-2"></a>
 
-## <a name="example-2-reference-an-array-within-a-document"></a>例 2: ドキュメント内の配列の参照
+## <a name="example-2-reference-an-array-within-a-document"></a>例 2:ドキュメント内の配列の参照
 
 この例は、前の例を基に構築されており、同じドキュメントに対して複数回エンリッチメント ステップを呼び出す方法を示しています。 前の例では、1 つのドキュメントから 10 人の名前を持つ文字列の配列が生成されたものとします。 妥当な次のステップは、フル ネームから姓を抽出する 2 回目のエンリッチメントでしょう。 10 個の名前があるため、このステップをこのドキュメントで 10 回、各人に対して 1 回ずつ呼び出します。 
 
@@ -93,7 +94,7 @@ Azure Blob ストレージに、名前付きエンティティ認識を使用し
 
 <a name="example-3"></a>
 
-## <a name="example-3-reference-members-within-an-array"></a>例 3: 配列内のメンバーの参照
+## <a name="example-3-reference-members-within-an-array"></a>例 3:配列内のメンバーの参照
 
 場合によっては、特定の種類のすべての注釈をグループ化して、特定のスキルに渡す必要があります。 例 2 で抽出されたすべての姓の中から最も一般的な姓を特定する、架空のカスタム スキルを考えてみましょう。 カスタム スキルに姓だけを提供するには、コンテキストを `"/document"`、入力を `"/document/people/*/lastname"` と指定します。
 

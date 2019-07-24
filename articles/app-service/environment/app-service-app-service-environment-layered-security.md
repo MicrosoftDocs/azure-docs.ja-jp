@@ -1,5 +1,5 @@
 ---
-title: App Service 環境によるレイヤード セキュリティ アーキテクチャ
+title: App Service 環境によるレイヤード セキュリティ アーキテクチャ - Azure
 description: App Service 環境によるレイヤード セキュリティ アーキテクチャの実装
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
-ms.openlocfilehash: 29c928c7d81eb3a2532f735be9132b49db5da373
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.custom: seodec18
+ms.openlocfilehash: 5e25de1ad2042ac978c3698165b9d9baba20e816
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34356207"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274165"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>App Service 環境によるレイヤード セキュリティ アーキテクチャの実装
 ## <a name="overview"></a>概要
@@ -40,7 +41,7 @@ App Service Environment は、Virtual Network にデプロイされる分離さ�
 
 [ネットワーク セキュリティ グループ (NSG)][NetworkSecurityGroups] はサブネットに適用され、そのサブネットの中に App Service Environment がデプロイされます。そのため NSG 内のルールは、App Service Environment 上で動作する**すべて**のアプリに適用されます。  この記事のサンプル アーキテクチャを使用して、"apiase" を含んだサブネットに対してネットワーク セキュリティ グループを適用すると、"apiase" App Service Environment 上で動作するすべてのアプリが同じセキュリティ ルール一式で保護されます。 
 
-* **アップストリームの呼び出し元が送信に使う IP アドレスを調べる:** アップストリームの呼び出し元の IP アドレスを把握する必要があります。  これらのアドレスは NSG で明示的にアクセスを許可する必要があります。  App Service Environment 間の呼び出しは "インターネット" を介した呼び出しと見なされるので、3 つのアップストリーム App Service Environment にそれぞれ割り当てられた送信 IP アドレスを、"apiase" サブネットの NSG でアクセスを許可する必要があります。   App Service Environment で実行されるアプリが送信に使う IP アドレスを調べる方法については、[ネットワーク アーキテクチャ][NetworkArchitecture]の概要の記事をご覧ください。
+* **アップストリームの呼び出し元の送信 IP アドレスを判断する:** アップストリームの呼び出し元の IP アドレスとは何ですか。  これらのアドレスは NSG で明示的にアクセスを許可する必要があります。  App Service Environment 間の呼び出しは "インターネット" を介した呼び出しと見なされるので、3 つのアップストリーム App Service Environment にそれぞれ割り当てられた送信 IP アドレスを、"apiase" サブネットの NSG でアクセスを許可する必要があります。   App Service Environment で実行されるアプリが送信に使う IP アドレスを調べる方法については、[ネットワーク アーキテクチャ][NetworkArchitecture]の概要の記事をご覧ください。
 * **バックエンド API アプリは自己呼び出しを行うか。**  バックエンド アプリケーションが自己呼び出しを行うかどうかは、見逃しやすいポイントです。  App Service Environment のバックエンド API アプリケーションに自己呼び出しが伴う場合、それも "インターネット" を介した呼び出しと見なされます。  サンプル アーキテクチャのケースでは、"apiase" App Service Environment の送信 IP アドレスについてもアクセスを許可する必要があります。
 
 ## <a name="setting-up-the-network-security-group"></a>ネットワーク セキュリティ グループの設定

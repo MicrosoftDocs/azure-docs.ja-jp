@@ -5,24 +5,22 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/05/2018
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: 48f1afcbef873e1af4346199c00ee2fadb1ad858
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+manager: benshy
+ms.custom: seodec18
+ms.openlocfilehash: 7f63293900e116fd3175b0ea6d704993a2dcf591
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830246"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59051395"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Google Cloud Platform アカウントの接続
 
 Cloudyn には既存の Google Cloud Platform アカウントを接続できます。 お客様のアカウントを Cloudyn に接続すると、Cloudyn レポートにコストや使用状況のデータを表示できるようになります。 この記事は、Google アカウントを構成して Cloudyn に接続する際に役立ちます。
 
-> [!NOTE]
-> Google ではそのアカウントのセキュリティを変更しています。これにより、Cloudyn と Google 間で新しい接続を確立することができなくなっています。 Cloudyn は、既に Cloudyn が Google に接続されているユーザーの Google データを収集し続けます。 ただし、現時点では Cloudyn に新しい Google アカウントを追加することはできません。 Cloudyn チームでは、Cloudyn に新しい Google アカウントを追加するためのサポートが再開される時期を把握していません。 サポートが再開されたら、このメモは削除します。
 
 ## <a name="collect-project-information"></a>プロジェクト情報を収集する
 
@@ -30,8 +28,8 @@ Cloudyn には既存の Google Cloud Platform アカウントを接続できま�
 
 1. [https://console.cloud.google.com](https://console.cloud.google.com) で Google Cloud Platform コンソールにサインインします。
 2. Cloudyn にオンボードするプロジェクト情報を確認し、**[プロジェクト名]** と **[プロジェクト ID]** をメモします。 この情報は、後続の手順のために手元に用意しておいてください。  
-    ![Google Cloud Platform コンソール](./media/connect-google-account/gcp-console01.png)
-3. 請求先が有効でなく、プロジェクトにリンクされていない場合は、請求先アカウントを作成します。 詳細については、「[新しい請求先アカウントの作成](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create\_a\_new\_billing\_account)」を参照してください。
+    ![Google Cloud Platform コンソールに示されたプロジェクト名とプロジェクト ID](./media/connect-google-account/gcp-console01.png)
+3. 請求先が有効でなく、プロジェクトにリンクされていない場合は、請求先アカウントを作成します。 詳細については、「[新しい請求先アカウントの作成](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create/_a/_new/_billing/_account)」を参照してください。
 
 ## <a name="enable-storage-bucket-billing-export"></a>ストレージ バケットの課金データのエクスポートを有効にする
 
@@ -41,7 +39,7 @@ Google Cloud Storage を使用して使用状況レポートを保存した場�
 
 1. ファイルへの課金データのエクスポートを有効にしていない場合は、「[課金データのファイルへのエクスポートを有効にする方法](https://cloud.google.com/billing/docs/how-to/export-data-file#how_to_enable_billing_export_to_a_file)」の手順に従ってください。 課金データのエクスポート形式には JSON または CSV を使用できます。
 2. それ以外の場合、Google Cloud Platform コンソールで、**[お支払い]** > **[課金データのエクスポート]** の順に移動します。 課金データの **[バケット名]** と **[レポート接頭辞]** をメモしておきます。  
-    ![課金データのエクスポート](./media/connect-google-account/billing-export.png)
+    ![[課金データのエクスポート] ページに示された課金データのエクスポート情報](./media/connect-google-account/billing-export.png)
 
 ## <a name="enable-google-cloud-platform-apis"></a>Google Cloud Platform API を有効にする
 
@@ -69,7 +67,7 @@ Google Cloud Storage を使用して使用状況レポートを保存した場�
 4. **[Google Account Name]\(Google アカウント名\)** に請求先アカウントのメール アドレスを入力し、**[Next]\(次へ\)** をクリックします。
 5. Google の認証ダイアログで、Google アカウントを選択または入力し、お使いのアカウントに cloudyn.com へのアクセスを**許可**します。
 6. 前にメモした要求プロジェクト情報を追加します。 これには、**プロジェクト ID**、**プロジェクト**名、**課金データ**のバケット名、**課金データ ファイル**のレポート接頭辞が含まれます。その後、**[Save]\(保存\)** をクリックします。  
-    ![Google プロジェクトの追加](./media/connect-google-account/add-project.png)
+    ![Google プロジェクトを Cloudyn アカウントに追加する](./media/connect-google-account/add-project.png)
 
 Google アカウントはアカウントの一覧に表示され、**[Authenticated]\(認証済み\)** と示されます。 その下に Google プロジェクトの名前と ID が表示され、緑のチェック マーク記号が付いています。 アカウントの状態は **[Completed]\(完了\)** と示されます。
 

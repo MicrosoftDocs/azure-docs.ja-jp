@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Sauce Labs - Mobile and Web Testing の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Sauce Labs - Mobile and Web Testing の統合 | Microsoft Docs
 description: Azure Active Directory と Sauce Labs - Mobile and Web Testing の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 55d84256f408e80600308ede22dbaa903b070d90
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e99f794c4eb9db78f50f63f14ccfad08c65ddb07
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39267243"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442058"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>チュートリアル: Azure Active Directory と Sauce Labs - Mobile and Web Testing の統合
+# <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>チュートリアル:Azure Active Directory と Sauce Labs - Mobile and Web Testing の統合
 
 このチュートリアルでは、Sauce Labs - Mobile and Web Testing と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -137,7 +138,7 @@ Sauce Labs - Mobile and Web Testing で Azure AD のシングル サインオン
 
     b. **[ALLOW JUST-IN-TIME PROVISIONING]\(Just-In-Time プロビジョニングを許可する\)** チェックボックスをオンにします。
 
-    c. **[保存]** をクリックします。
+    c. **[Save]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -175,7 +176,7 @@ Sauce Labs - Mobile and Web Testing で Azure AD のシングル サインオン
 
 このセクションの目的は、Sauce Labs - Mobile and Web Testing で Britta Simon というユーザーを作成することです。 Sauce Labs - Mobile and Web Testing では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Sauce Labs - Mobile and Web Testing ユーザーにアクセスしようとすると、新しいユーザーが作成されます。
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[Sauce Labs - Mobile and Web Testing サポート チーム](mailto:support@saucelabs.com)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [Sauce Labs - Mobile and Web Testing サポート チーム](mailto:support@saucelabs.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -212,7 +213,7 @@ Sauce Labs - Mobile and Web Testing で Azure AD のシングル サインオン
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Sauce Labs - Mobile and Web Testing のタイルをクリックすると、自動的に Sauce Labs - Mobile and Web Testing アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

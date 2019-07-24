@@ -1,23 +1,24 @@
 ---
-title: 'クイック スタート: ドメイン モデルの使用 - REST、PHP - Computer Vision'
+title: クイック スタート:ドメイン固有の画像コンテンツ - REST、PHP
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、ドメイン モデルを利用し、PHP と Computer Vision API を使って画像内のランドマークを識別します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: 176e11615fe2f2c1b58b7608dfd5cbd349f9e547
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 2c1801296247ace081a34a137fe3f3bea7a55974
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340088"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877022"
 ---
-# <a name="quickstart-use-a-domain-model-using-the-rest-api-and-php-in-computer-vision"></a>クイック スタート: Computer Vision で REST API と PHP を使ったドメイン モデルを利用する
+# <a name="quickstart-recognize-domain-specific-content-using-the-rest-api-and-php-with-computer-vision"></a>クイック スタート:Computer Vision で REST API と PHP を使用してドメイン固有のコンテンツを認識する
 
 このクイック スタートでは、ドメイン モデルを利用し、Computer Vision の REST API を使って、リモートで保存された画像内のランドマークや (場合によっては) 著名人を識別します。 [ドメイン固有のコンテンツの認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200)メソッドを使用すると、ドメイン固有のモデルを適用して、画像内のコンテンツを認識できます。
 
@@ -33,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このサンプルを作成して実行するには、次の手順を実行します。
 
-1. PHP5 [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2) パッケージをインストールします。
+1. PHP5 [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2) パッケージをインストールします。
    1. 管理者としてコマンド プロンプト ウィンドウを開きます。
    1. 次のコマンドを実行します。
 

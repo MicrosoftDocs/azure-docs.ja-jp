@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: hkanna
-ms.openlocfilehash: 361ab36d3029dbc00e8d1e53ef9f9af42be3e1eb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 17428405a0be45854a2eaaef831864f529ed145a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255845"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994479"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>NetBackup を使用したバックアップ ターゲットとしての StorSimple
 
@@ -79,7 +79,7 @@ StorSimple には次の利点があります。
 
 StorSimple には 2 つの主要なデプロイメント シナリオ (プライマリ バックアップ ターゲットとセカンダリ バックアップ ターゲット) が用意されていますが、基本的にはシンプルなブロック ストレージ デバイスです。 StorSimple では、すべての圧縮と重複除去が行われます。 クラウドとアプリケーションおよびファイル システムの間で、データはシームレスに送受信されます。
 
-StorSimple の詳細については、「[StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」をご覧ください。 また、[StorSimple 8000 シリーズの技術仕様](storsimple-technical-specifications-and-compliance.md)に関するページも参照してください。
+StorSimple について詳しくは、「[StorSimple 8000 シリーズ:ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」をご覧ください。 また、[StorSimple 8000 シリーズの技術仕様](storsimple-technical-specifications-and-compliance.md)に関するページも参照してください。
 
 > [!IMPORTANT]
 > バックアップ ターゲットとして StorSimple デバイスを使用できるのは、StorSimple 8000 の Update 3 以降のバージョンのみです。
@@ -94,6 +94,7 @@ StorSimple の詳細については、「[StorSimple 8000 シリーズ: ハイ�
 |------------------------|---------------|-----------------|
 | ローカル ストレージの容量 | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
 | クラウド ストレージの容量 | &gt; 200 TiB\* | &gt; 500 TiB\* |
+
 \*ストレージの容量は、重複除去または圧縮がないことを前提としています。
 
 **StorSimple のプライマリ バックアップとセカンダリ バックアップの容量**
@@ -183,7 +184,7 @@ NetBackup 7.7.x のデプロイの詳細なガイダンスについては、[Net
 
 | StorSimple のデプロイメント タスク  | その他のコメント |
 |---|---|
-| オンプレミスの StorSimple デバイスのデプロイ。 | サポートされているバージョンは Update 3 以降です。 |
+| オンプレミスの StorSimple デバイスのデプロイ。 | サポートされているバージョン:Update 3 以降。 |
 | バックアップ ターゲットを有効にする。 | バックアップ ターゲット モードの有効化または無効化、および状態の取得には次のコマンドを使用します。 詳細については、[StorSimple デバイスへのリモート接続](storsimple-remote-connect.md)に関するページをご覧ください。</br> バックアップ モードを有効にする: `Set-HCSBackupApplianceMode -enable` </br> バックアップ モードを無効にする: `Set-HCSBackupApplianceMode -disable` </br> バックアップ モード設定の現在の状態を取得する: `Get-HCSBackupApplianceMode` |
 | バックアップ データを格納するボリュームの共通ボリューム コンテナーを作成する。 ボリューム コンテナー内のすべてのデータが重複除去されます。 | StorSimple のボリューム コンテナーでは、重複除去のドメインを定義します。  |
 | StorSimple ボリュームを作成する。 | ボリューム サイズはクラウド スナップショットの実行時間に影響するため、予想される使用量に可能な限り近いサイズのボリュームを作成します。 ボリューム サイズの決定方法については、「[保持ポリシー](#retention-policies)」を参照してください。</br> </br> StorSimple 階層化ボリュームを使用し、**[アクセス頻度の低いアーカイブ データにこのボリュームを使用します]** チェック ボックスをオンにします。 </br> ローカル固定ボリュームのみの使用はサポートされていません。 |
@@ -207,16 +208,16 @@ NetBackup 7.7.x のデプロイの詳細なガイダンスについては、[Net
 
 ### <a name="operating-system-best-practices"></a>オペレーティング システムのベスト プラクティス
 
--   Windows Server の暗号化と、NTFS ファイル システムの重複除去を無効にします。
--   StorSimple ボリュームでの Windows Server の最適化を無効にします。
--   StorSimple ボリュームでの Windows Server のインデックス作成を無効にします。
--   (StorSimple ボリュームに対してではなく) ソース ホストでウィルス対策スキャンを実行します。
--   タスク マネージャーで、既定の [ Windows Server のメンテナンス](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx)を無効にします。 これは、次の方法のいずれかで実行します。
-    - Windows タスク スケジューラでメンテナンス コンフィギュレータを無効にする。
-    - Windows Sysinternals から [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) をダウンロードする。 PsExec のダウンロード後、Windows PowerShell を管理者として実行し、次のように入力します。
-      ```powershell
-      psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
-      ```
+- Windows Server の暗号化と、NTFS ファイル システムの重複除去を無効にします。
+- StorSimple ボリュームでの Windows Server の最適化を無効にします。
+- StorSimple ボリュームでの Windows Server のインデックス作成を無効にします。
+- (StorSimple ボリュームに対してではなく) ソース ホストでウィルス対策スキャンを実行します。
+- タスク マネージャーで、既定の [ Windows Server のメンテナンス](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx)を無効にします。 これは、次の方法のいずれかで実行します。
+  - Windows タスク スケジューラでメンテナンス コンフィギュレータを無効にする。
+  - Windows Sysinternals から [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) をダウンロードする。 PsExec のダウンロード後、Windows PowerShell を管理者として実行し、次のように入力します。
+    ```powershell
+    psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
+    ```
 
 ### <a name="storsimple-best-practices"></a>StorSimple のベスト プラクティス
 
@@ -257,6 +258,7 @@ NetBackup 7.7.x のデプロイの詳細なガイダンスについては、[Net
 | 年単位 - 完全 | 1  | 10 | 10 |
 | GFS 要件 |   | 38 |   |
 | 追加のクォータ  | 4  |   | GFS 要件合計 42  |
+
 \* GFS 乗数は、バックアップ ポリシー要件を遵守するために保護および保持する必要があるコピー数を指します。
 
 ## <a name="set-up-netbackup-storage"></a>NetBackup ストレージのセットアップ
@@ -292,7 +294,7 @@ NetBackup 7.7.x のデプロイの詳細なガイダンスについては、[Net
 
 次の図は、バックアップ ジョブに対する一般的なボリュームのマッピングを示しています。 この場合、週単位のバックアップはすべて "土曜日 - 完全" ディスクにマッピングし、増分バックアップは月曜日から金曜日の増分ディスクにマッピングしています。 すべてのバックアップと復元は、StorSimple 階層化ボリュームから行われます。
 
-![プライマリ バックアップ ターゲット構成の論理図 ](./media/storsimple-configure-backup-target-using-netbackup/primarybackuptargetdiagram.png)
+![プライマリ バックアップ ターゲット構成の論理図](./media/storsimple-configure-backup-target-using-netbackup/primarybackuptargetdiagram.png)
 
 ### <a name="storsimple-as-a-primary-backup-target-gfs-schedule-example"></a>プライマリ バックアップ ターゲットとしての StorSimple の GFS スケジュールの例
 
@@ -302,7 +304,7 @@ NetBackup 7.7.x のデプロイの詳細なガイダンスについては、[Net
 |---|---|---|
 | 週単位 (第 1 - 4 週) | 土曜日 | 月曜日 - 金曜日 |
 | 月単位  | 土曜日  |   |
-| 年単位 | 土曜日  |   |   |
+| 年単位 | 土曜日  |   |
 
 ## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>StorSimple ボリュームを NetBackup バックアップ ジョブに割り当てる
 
@@ -310,69 +312,69 @@ NetBackup 7.7.x のデプロイの詳細なガイダンスについては、[Net
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-backup-job"></a>StorSimple ボリュームを NetBackup バックアップ ジョブに割り当てるには
 
-1.  NetBackup 管理コンソールで **[NetBackup Management (NetBackup 管理)]** を選択し、**[Policies (ポリシー)]** を右クリックして **[New Policy (新しいポリシー)]** を選択します。
+1. NetBackup 管理コンソールで **[NetBackup Management (NetBackup 管理)]** を選択し、**[Policies (ポリシー)]** を右クリックして **[New Policy (新しいポリシー)]** を選択します。
 
-    ![NetBackup 管理コンソール、新しいポリシーを作成する](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
+   ![NetBackup 管理コンソール、新しいポリシーを作成する](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
 
-2.  **[Add a New Policy (新しいポリシーの追加)]** ダイアログ ボックスでポリシーの名前を入力し、**[Use Policy Configuration Wizard (ポリシー構成ウィザードを使用する)]** チェック ボックスをオンにします。 **[OK]** を選択します。
+2. **[Add a New Policy (新しいポリシーの追加)]** ダイアログ ボックスでポリシーの名前を入力し、**[Use Policy Configuration Wizard (ポリシー構成ウィザードを使用する)]** チェック ボックスをオンにします。 **[OK]** を選択します。
 
-    ![NetBackup 管理コンソール、[Add a New Policy (新しいポリシーの追加)] ダイアログ ボックス](./media/storsimple-configure-backup-target-using-netbackup/nbimage7.png)
+   ![NetBackup 管理コンソール、[Add a New Policy (新しいポリシーの追加)] ダイアログ ボックス](./media/storsimple-configure-backup-target-using-netbackup/nbimage7.png)
 
-3.  Backup Policy Configuration (バックアップ ポリシーの構成) ウィザードでバックアップの種類を選択し、**[Next (次へ)]** を選択します。
+3. Backup Policy Configuration (バックアップ ポリシーの構成) ウィザードでバックアップの種類を選択し、**[Next (次へ)]** を選択します。
 
-    ![NetBackup 管理コンソール、バックアップの種類を選択する](./media/storsimple-configure-backup-target-using-netbackup/nbimage8.png)
+   ![NetBackup 管理コンソール、バックアップの種類を選択する](./media/storsimple-configure-backup-target-using-netbackup/nbimage8.png)
 
-4.  ポリシーの種類を選択するには、**[Standard (標準)]** を選択し、**[Next (次へ)]** を選択します。
+4. ポリシーの種類を選択するには、**[Standard (標準)]** を選択し、**[Next (次へ)]** を選択します。
 
-    ![NetBackup 管理コンソール、ポリシーの種類を選択する](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
+   ![NetBackup 管理コンソール、ポリシーの種類を選択する](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
-5.  ホストを選択し、**[Detect client operating system (クライアント オペレーティング システムを検出する)]** チェック ボックスをオンにして、**[Add (追加)]** を選択します。 **[次へ]** を選択します。
+5. ホストを選択し、**[Detect client operating system (クライアント オペレーティング システムを検出する)]** チェック ボックスをオンにして、**[Add (追加)]** を選択します。 **[次へ]** を選択します。
 
-    ![NetBackup 管理コンソール、新しいポリシーのクライアントを一覧表示する](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
+   ![NetBackup 管理コンソール、新しいポリシーのクライアントを一覧表示する](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
 
-6.  バックアップするドライブを選択します。
+6. バックアップするドライブを選択します。
 
-    ![NetBackup 管理コンソール、新しいポリシーのためのバックアップの選択](./media/storsimple-configure-backup-target-using-netbackup/nbimage11.png)
+   ![NetBackup 管理コンソール、新しいポリシーのためのバックアップの選択](./media/storsimple-configure-backup-target-using-netbackup/nbimage11.png)
 
-7.  バックアップ ローテーション要件を満たす頻度と保有期間の値を選択します。
+7. バックアップ ローテーション要件を満たす頻度と保有期間の値を選択します。
 
-    ![NetBackup 管理コンソール、新しいポリシーのためのバックアップ頻度とローテーション](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
+   ![NetBackup 管理コンソール、新しいポリシーのためのバックアップ頻度とローテーション](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
 
-8.  **[Next (次へ)]** > **[Next (次へ)]** > **[Finish (完了)]** の順に選択します。  ポリシーが作成されたら、スケジュールを変更できます。
+8. **[Next (次へ)]** > **[Next (次へ)]** > **[Finish (完了)]** の順に選択します。  ポリシーが作成されたら、スケジュールを変更できます。
 
-9.  作成したポリシーを選択して展開し、**[Schedules (スケジュール)]** を選択します。
+9. 作成したポリシーを選択して展開し、**[Schedules (スケジュール)]** を選択します。
 
-    ![NetBackup 管理コンソール、新しいポリシーのスケジュール](./media/storsimple-configure-backup-target-using-netbackup/nbimage13.png)
+   ![NetBackup 管理コンソール、新しいポリシーのスケジュール](./media/storsimple-configure-backup-target-using-netbackup/nbimage13.png)
 
-10.  **[Differential-Inc (差分 - 増分)]** を右クリックし、**[Copy to new (新規にコピー)]** を選択して、**[OK]** を選択します。
+10. **[Differential-Inc (差分 - 増分)]** を右クリックし、**[Copy to new (新規にコピー)]** を選択して、**[OK]** を選択します。
 
     ![NetBackup 管理コンソール、新しいポリシーにスケジュールをコピーする](./media/storsimple-configure-backup-target-using-netbackup/nbimage14.png)
 
-11.  新しく作成したスケジュールを右クリックし、**[Change (変更)]** を選択します。
+11. 新しく作成したスケジュールを右クリックし、**[Change (変更)]** を選択します。
 
-12.  **[Attributes (属性)]** タブで **[Override policy storage selection (ポリシー ストレージの選択をオーバーライドする)]** チェック ボックスをオンにし、月曜日の増分バックアップが格納されるボリュームを選択します。
+12. **[Attributes (属性)]** タブで **[Override policy storage selection (ポリシー ストレージの選択をオーバーライドする)]** チェック ボックスをオンにし、月曜日の増分バックアップが格納されるボリュームを選択します。
 
     ![NetBackup 管理コンソール、スケジュールを変更する](./media/storsimple-configure-backup-target-using-netbackup/nbimage15.png)
 
-13.  **[Start Window (開始時間帯)]** タブでバックアップの時間帯を選択します。
+13. **[Start Window (開始時間帯)]** タブでバックアップの時間帯を選択します。
 
     ![NetBackup 管理コンソール、開始時間帯を変更する](./media/storsimple-configure-backup-target-using-netbackup/nbimage16.png)
 
-14.  **[OK]** を選択します。
+14. **[OK]** を選択します。
 
-15.  各増分バックアップに対して、手順 10. ～ 14. を繰り返します。 適切なボリュームを選択し、作成する各バックアップのスケジュールを設定します。
+15. 各増分バックアップに対して、手順 10. ～ 14. を繰り返します。 適切なボリュームを選択し、作成する各バックアップのスケジュールを設定します。
 
-16.  **[Differential-Inc (差分 - 増分)]** スケジュールを右クリックし、削除します。
+16. **[Differential-Inc (差分 - 増分)]** スケジュールを右クリックし、削除します。
 
-17.  バックアップのニーズに合わせて、完全スケジュールを変更します。
+17. バックアップのニーズに合わせて、完全スケジュールを変更します。
 
     ![NetBackup 管理コンソール、完全スケジュールを変更する](./media/storsimple-configure-backup-target-using-netbackup/nbimage17.png)
 
-18.  開始時間帯を変更します。
+18. 開始時間帯を変更します。
 
     ![NetBackup 管理コンソール、開始時間帯を変更する](./media/storsimple-configure-backup-target-using-netbackup/nbimage18.png)
 
-19.  最終的なスケジュールは次のようになります。
+19. 最終的なスケジュールは次のようになります。
 
     ![NetBackup 管理コンソール、最終的なスケジュール](./media/storsimple-configure-backup-target-using-netbackup/nbimage19.png)
 
@@ -400,10 +402,11 @@ NetBackup 7.7.x のデプロイの詳細なガイダンスについては、[Net
 | 月単位 - 完全 |StorSimple ディスク (長期) | 1 | 12 | 12 |
 | 年単位 - 完全 |StorSimple ディスク (長期) | 1 | 1 | 1 |
 |GFS ボリュームのサイズ要件 |  |  |  | 18*|
+
 \* 合計容量は、StorSimple ディスクの 17 TiB とローカル RAID ボリュームの 1 TiB の合計です。
 
 
-### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS スケジュール例: 週、月、年単位の GFS ローテーション スケジュール
+### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS スケジュールの例:週、月、年単位の GFS ローテーション スケジュール
 
 | 週 | 完全 | 増分 (1 日目) | 増分 (2 日目) | 増分 (3 日目) | 増分 (4 日目) | 増分 (5 日目) |
 |---|---|---|---|---|---|---|
@@ -412,7 +415,7 @@ NetBackup 7.7.x のデプロイの詳細なガイダンスについては、[Net
 | 第 3 週 | StorSimple 第 2 - 4 週 |   |   |   |   |   |
 | 第 4 週 | StorSimple 第 2 - 4 週 |   |   |   |   |   |
 | 月単位 | StorSimple 月単位 |   |   |   |   |   |
-| 年単位 | StorSimple 年単位  |   |   |   |   |   |   |
+| 年単位 | StorSimple 年単位  |   |   |   |   |   |
 
 
 ## <a name="assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>StorSimple ボリュームを NetBackup アーカイブおよび複製ジョブに割り当てる
@@ -427,41 +430,41 @@ NetBackup にはストレージおよびメディア管理用のさまざまな�
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>NetBackup アーカイブおよび複製ジョブに StorSimple ボリュームを割り当てるには
 
-1.  NetBackup 管理コンソールで、**[Storage (ストレージ)]** > **[Storage Lifecycle Policies (ストレージ ライフサイクル ポリシー)]** > **[New Storage Lifecycle Policy (新しいストレージ ライフサイクル ポリシー)]** の順に選択します。
+1. NetBackup 管理コンソールで、**[Storage (ストレージ)]** > **[Storage Lifecycle Policies (ストレージ ライフサイクル ポリシー)]** > **[New Storage Lifecycle Policy (新しいストレージ ライフサイクル ポリシー)]** の順に選択します。
 
-    ![NetBackup 管理コンソール、新しいストレージ ライフサイクル ポリシー](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
+   ![NetBackup 管理コンソール、新しいストレージ ライフサイクル ポリシー](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
 
-2.  スナップショットの名前を入力し、**[Add (追加)]** を選択します。
+2. スナップショットの名前を入力し、**[Add (追加)]** を選択します。
 
-3.  **[New Operation (新しい操作)]** ダイアログ ボックスの **[Properties (プロパティ)]** タブで、**[Operation (操作)]** の **[Backup (バックアップ)]** を選択します。 **[Destination storage (対象ストレージ)]**、**[Retention type (保持期間の種類)]**、**[Retention period (保持期間)]** で、目的の値を選択します。 **[OK]** を選択します。
+3. **[New Operation (新しい操作)]** ダイアログ ボックスの **[Properties (プロパティ)]** タブで、**[Operation (操作)]** の **[Backup (バックアップ)]** を選択します。 **[Destination storage (対象ストレージ)]**、**[Retention type (保持期間の種類)]**、**[Retention period (保持期間)]** で、目的の値を選択します。 **[OK]** を選択します。
 
-    ![NetBackup 管理コンソール、[New Operation (新しい操作)] ダイアログ ボックス](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
+   ![NetBackup 管理コンソール、[New Operation (新しい操作)] ダイアログ ボックス](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
 
-    これで、最初のバックアップ操作とリポジトリが定義されます。
+   これで、最初のバックアップ操作とリポジトリが定義されます。
 
-4.  前の操作を選択して強調表示し、**[Add (追加)]** を選択します。 **[Change Storage Operation (ストレージ操作の変更)]** ダイアログ ボックスの **[Destination storage (対象ストレージ)]**、**[Retention type (保持期間の種類)]**、**[Retention period (保持期間)]** で、目的の値を選択します。
+4. 前の操作を選択して強調表示し、**[Add (追加)]** を選択します。 **[Change Storage Operation (ストレージ操作の変更)]** ダイアログ ボックスの **[Destination storage (対象ストレージ)]**、**[Retention type (保持期間の種類)]**、**[Retention period (保持期間)]** で、目的の値を選択します。
 
-    ![NetBackup 管理コンソール、[Change Storage Operation (ストレージ操作の変更)] ダイアログ ボックス](./media/storsimple-configure-backup-target-using-netbackup/nbimage23.png)
+   ![NetBackup 管理コンソール、[Change Storage Operation (ストレージ操作の変更)] ダイアログ ボックス](./media/storsimple-configure-backup-target-using-netbackup/nbimage23.png)
 
-5.  前の操作を選択して強調表示し、**[Add (追加)]** を選択します。 **[New Storage Lifecycle Policy (新しいストレージ ライフサイクル ポリシー)]** ダイアログ ボックスで、1 年間の毎月のバックアップを追加します。
+5. 前の操作を選択して強調表示し、**[Add (追加)]** を選択します。 **[New Storage Lifecycle Policy (新しいストレージ ライフサイクル ポリシー)]** ダイアログ ボックスで、1 年間の毎月のバックアップを追加します。
 
-    ![NetBackup 管理コンソール、[New Storage Lifecycle Policy (新しいストレージ ライフサイクル ポリシー)] ダイアログ ボックス](./media/storsimple-configure-backup-target-using-netbackup/nbimage24.png)
+   ![NetBackup 管理コンソール、[New Storage Lifecycle Policy (新しいストレージ ライフサイクル ポリシー)] ダイアログ ボックス](./media/storsimple-configure-backup-target-using-netbackup/nbimage24.png)
 
-6.  必要な包括的 SLP 保持ポリシーを作成し終わるまで、手順 4. ～ 5. を繰り返します。
+6. 必要な包括的 SLP 保持ポリシーを作成し終わるまで、手順 4. ～ 5. を繰り返します。
 
-    ![NetBackup 管理コンソール、[New Storage Lifecycle Policy (新しいストレージ ライフサイクル ポリシー)] ダイアログ ボックスでポリシーを追加する](./media/storsimple-configure-backup-target-using-netbackup/nbimage25.png)
+   ![NetBackup 管理コンソール、[New Storage Lifecycle Policy (新しいストレージ ライフサイクル ポリシー)] ダイアログ ボックスでポリシーを追加する](./media/storsimple-configure-backup-target-using-netbackup/nbimage25.png)
 
-7.  SLP 保持ポリシーの定義が完了したら、**[Policy (ポリシー)]** でバックアップ ポリシーを定義します。手順については、「[StorSimple ボリュームを NetBackup バックアップ ジョブに割り当てる](#assigning-storsimple-volumes-to-a-netbackup-backup-job)」を参照してください。
+7. SLP 保持ポリシーの定義が完了したら、**[Policy (ポリシー)]** でバックアップ ポリシーを定義します。手順については、「[StorSimple ボリュームを NetBackup バックアップ ジョブに割り当てる](#assigning-storsimple-volumes-to-a-netbackup-backup-job)」を参照してください。
 
-8.  **[Change Schedule (スケジュールの変更)]** ダイアログ ボックスの **[Schedules (スケジュール)]** で、**[Full (完全)]** を右クリックし、**[Change (変更)]** を選択します。
+8. **[Change Schedule (スケジュールの変更)]** ダイアログ ボックスの **[Schedules (スケジュール)]** で、**[Full (完全)]** を右クリックし、**[Change (変更)]** を選択します。
 
-    ![NetBackup 管理コンソール、[Change Schedule (スケジュールの変更)] ダイアログ ボックス](./media/storsimple-configure-backup-target-using-netbackup/nbimage26.png)
+   ![NetBackup 管理コンソール、[Change Schedule (スケジュールの変更)] ダイアログ ボックス](./media/storsimple-configure-backup-target-using-netbackup/nbimage26.png)
 
-9.  **[Override policy storage selection (ポリシー ストレージの選択をオーバーライドする)]** チェック ボックスをオンにし、手順 1. ～ 6. で作成した SLP 保持ポリシーを選択します。
+9. **[Override policy storage selection (ポリシー ストレージの選択をオーバーライドする)]** チェック ボックスをオンにし、手順 1. ～ 6. で作成した SLP 保持ポリシーを選択します。
 
-    ![NetBackup 管理コンソール、ポリシー ストレージの選択をオーバーライドする](./media/storsimple-configure-backup-target-using-netbackup/nbimage27.png)
+   ![NetBackup 管理コンソール、ポリシー ストレージの選択をオーバーライドする](./media/storsimple-configure-backup-target-using-netbackup/nbimage27.png)
 
-10.  **[OK]** を選択し、次に増分バックアップ スケジュールに対し同じ手順を繰り返します。
+10. **[OK]** を選択し、次に増分バックアップ スケジュールに対し同じ手順を繰り返します。
 
     ![NetBackup 管理コンソール、増分バックアップの [Change Schedule (スケジュールの変更)] ダイアログ ボックス](./media/storsimple-configure-backup-target-using-netbackup/nbimage28.png)
 
@@ -474,6 +477,7 @@ NetBackup にはストレージおよびメディア管理用のさまざまな�
 | 年単位 - 完全 | 1  | 10 | 10 |
 | GFS 要件  |     |     | 38 |
 | 追加のクォータ  | 4  |    | GFS 要件合計 42 |
+
 \* GFS 乗数は、バックアップ ポリシー要件を遵守するために保護および保持する必要があるコピー数を指します。
 
 ## <a name="storsimple-cloud-snapshots"></a>StorSimple クラウド スナップショット
@@ -503,13 +507,13 @@ StorSimple クラウド スナップショットは、StorSimple デバイスに
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>クラウド スナップショットを開始または削除する方法
 
-1.  [Azure PowerShell をインストールします](/powershell/azure/overview)。
+1. [Azure PowerShell をインストールします](/powershell/azure/overview)。
 2. [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell スクリプトをダウンロードして設定します。
 3. スクリプトを実行するサーバーで PowerShell を管理者として実行します。 スクリプトによって行われる変更を確認するには、`-WhatIf $true` を指定してスクリプトを実行してください。 検証が完了したら、`-WhatIf $false` を渡します。 次のコマンドを実行します。
-```powershell
-.\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
-```
-4.  スクリプトを NetBackup のバックアップ ジョブに追加します。 そのためには、NetBackup ジョブ オプションの前処理および後処理コマンドを編集します。
+   ```powershell
+   .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
+   ```
+4. スクリプトを NetBackup のバックアップ ジョブに追加します。 そのためには、NetBackup ジョブ オプションの前処理および後処理コマンドを編集します。
 
 > [!NOTE]
 > StorSimple クラウド スナップショット バックアップ ポリシーは、日単位のバックアップ ジョブの最後に後処理スクリプトとして実行することをお勧めします。 RPO および RTO に適合するようバックアップ アプリケーション環境をバックアップ、復元する方法の詳細については、担当バックアップ アーキテクトにご相談ください。
@@ -536,7 +540,7 @@ StorSimple デバイスからの復元は、他のブロック ストレージ �
 この記事では次のドキュメントを参考にしています。
 
 - [StorSimple のマルチパス I/O のセットアップ](storsimple-configure-mpio-windows-server.md)
-- [ストレージ シナリオ: 仮想プロビジョニング (Storage scenarios: Thin provisioning)](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [ストレージ シナリオ:シン プロビジョニング](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [GPT ドライブを使用する (Using GPT drives)](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [共有フォルダーのシャドウ コピーのセットアップ](https://technet.microsoft.com/library/cc771893.aspx)
 

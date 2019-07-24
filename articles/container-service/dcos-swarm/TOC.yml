@@ -1,98 +1,91 @@
-items:
 - name: DC/OS と Swarm を伴う ACS
   href: ./index.yml
 - name: 概要
   items:
-  - name: Container Service について
-    href: container-service-intro.md
+    - name: Container Service について
+      href: container-service-intro.md
 - name: クイック スタート
-  items:
-  - name: Docker Swarm
-    href: container-service-swarm-mode-walkthrough.md
-  - name: DC/OS
-    href: container-service-dcos-quickstart.md
   expanded: true
+  items:
+    - name: Docker Swarm
+      href: container-service-swarm-mode-walkthrough.md
+    - name: DC/OS
+      href: container-service-dcos-quickstart.md
 - name: チュートリアル
   items:
-  - name: 1 - クラスターの作成/管理
-    href: container-service-dcos-manage-tutorial.md
-  - name: 2 - アプリケーションの負荷分散
-    href: container-service-load-balancing.md
-  - name: 3 - データ ボリュームの管理
-    href: container-service-dcos-fileshare.md
-  - name: 4 - ACR との統合
-    href: container-service-dcos-acr.md
+    - name: 1 - クラスターの作成/管理
+      href: container-service-dcos-manage-tutorial.md
+    - name: 2 - アプリケーションの負荷分散
+      href: container-service-load-balancing.md
+    - name: 3 - データ ボリュームの管理
+      href: container-service-dcos-fileshare.md
+    - name: 4 - ACR との統合
+      href: container-service-dcos-acr.md
 - name: 概念
   items:
-  - name: コンテナーをセキュリティ保護する
-    href: container-service-security.md
+    - name: コンテナーをセキュリティ保護する
+      href: container-service-security.md
 - name: ハウツー ガイド
   items:
-  - name: ACS クラスターをスケールする
-    href: container-service-scale.md
-  - name: DC/OS
-    items:
-    - name: コンテナー管理 - DC/OS UI
-      href: container-service-mesos-marathon-ui.md
-    - name: コンテナー管理 - DC/OS REST API
-      href: container-service-mesos-marathon-rest.md
-    - name: DC/OS エージェント プール
-      href: container-service-dcos-agents.md
-    - name: DC/OS パブリック アクセスを有効にする
-      href: container-service-enable-public-access.md
-    - name: DC/OS のアプリ/ユーザー固有のオーケストレーター
-      href: container-service-application-specific-marathon.md
-    - name: Vamp によるカナリア リリース
-      href: container-service-dcos-vamp-canary-release.md
-    - name: DC/OS の監視
+    - name: ACS クラスターをスケールする
+      href: container-service-scale.md
+    - name: DC/OS
       items:
-      - name: ELK で監視する
-        href: container-service-monitoring-elk.md
-      - name: OMS で監視する
-        href: container-service-monitoring-oms.md
-      - name: Datadog で監視する
-        href: container-service-monitoring.md
-      - name: Sysdig で監視する
-        href: container-service-monitoring-sysdig.md
-      - name: Dynatrace で監視する
-        href: container-service-monitoring-dynatrace.md
-  - name: Docker Swarm
-    items:
-    - name: Docker CE クイックスタート
-      href: container-service-swarm-mode-walkthrough.md
-    - name: Docker と Docker Compose
-      href: container-service-docker-swarm.md
-    - name: Docker Swarm と Azure DevOps を使用した CI/CD
-      href: container-service-docker-swarm-setup-ci-cd.md
-    - name: Docker Swarm (ACS Engine) と Azure DevOps を使用した CI/CD
-      href: container-service-docker-swarm-mode-setup-ci-cd-acs-engine.md
+        - name: コンテナー管理 - DC/OS UI
+          href: container-service-mesos-marathon-ui.md
+        - name: コンテナー管理 - DC/OS REST API
+          href: container-service-mesos-marathon-rest.md
+        - name: DC/OS エージェント プール
+          href: container-service-dcos-agents.md
+        - name: DC/OS パブリック アクセスを有効にする
+          href: container-service-enable-public-access.md
+        - name: DC/OS のアプリ/ユーザー固有のオーケストレーター
+          href: container-service-application-specific-marathon.md
+        - name: Vamp によるカナリア リリース
+          href: container-service-dcos-vamp-canary-release.md
+        - name: DC/OS の監視
+          items:
+            - name: ELK で監視する
+              href: container-service-monitoring-elk.md
+            - name: OMS で監視する
+              href: container-service-monitoring-oms.md
+            - name: Datadog で監視する
+              href: container-service-monitoring.md
+            - name: Sysdig で監視する
+              href: container-service-monitoring-sysdig.md
+            - name: Dynatrace で監視する
+              href: container-service-monitoring-dynatrace.md
+    - name: Docker Swarm
+      items:
+        - name: Docker CE クイックスタート
+          href: container-service-swarm-mode-walkthrough.md
+        - name: Docker と Docker Compose
+          href: container-service-docker-swarm.md
+        - name: Docker Swarm と Azure DevOps を使用した CI/CD
+          href: container-service-docker-swarm-setup-ci-cd.md
+        - name: Docker Swarm (ACS Engine) と Azure DevOps を使用した CI/CD
+          href: container-service-docker-swarm-mode-setup-ci-cd-acs-engine.md
 - name: リファレンス
   items:
-  - name: Azure CLI
-    href: /cli/azure/acs
-  - name: PowerShell
-    href: /powershell/module/azurerm.compute
-  - name: REST ()
-    href: /rest/api/container-service
+    - name: Azure CLI
+      href: /cli/azure/acs
+    - name: PowerShell
+      href: /powershell/module/az.compute
+    - name: REST
+      href: /rest/api/container-service
 - name: リソース
   items:
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/
-  - name: FAQ
-    href: container-service-faq.md
-  - name: テンプレート - ACS Engine
-    href: https://github.com/Azure/acs-engine
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/container-service/
-  - name: 利用可能なリージョン
-    href: https://azure.microsoft.com/regions/services/
-  - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-container-service
-  - name: ビデオ
-    href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
-ms.openlocfilehash: fad8742bf5c0dd530665cdadbfdfbd9c246bead8
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300887"
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: FAQ
+      href: container-service-faq.md
+    - name: テンプレート - ACS Engine
+      href: 'https://github.com/Azure/acs-engine'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/container-service/'
+    - name: 利用可能なリージョン
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'

@@ -1,22 +1,22 @@
 ---
-title: Bing Image Search 分析 - Bing Image Search API
+title: Bing Image Search API に分析を追加する
 titleSuffix: Azure Cognitive Services
-description: Bing Images API の分析を取得する方法について説明します。
+description: Bing Statistics は、Bing Image Search API に分析を提供します。 分析には、呼び出しのボリューム、上位のクエリ文字列、地理的な分布などが含まれます。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: article
-ms.date: 04/10/2018
+ms.date: 03/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7940330d1bc32a5d1fef158998a9292c86f21154
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 43a6c221a08c926243d0fd5cb0ce97d5f0955f97
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888170"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342277"
 ---
-# <a name="how-to-get-analytics-for-the-bing-image-search-api"></a>Bing Image Search API の分析を取得する方法
+# <a name="add-analytics-to-the-bing-image-search-api"></a>Bing Image Search API に分析を追加する
 
 [!INCLUDE [cognitive-services-bing-statistics](../../../includes/cognitive-services-bing-statistics.md)]

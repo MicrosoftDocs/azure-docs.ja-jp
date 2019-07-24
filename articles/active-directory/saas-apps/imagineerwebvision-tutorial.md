@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Imagineer WebVision の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Imagineer WebVision の統合 | Microsoft Docs
 description: Azure Active Directory と Imagineer WebVision の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2018
 ms.author: jeedes
-ms.openlocfilehash: d86004680bf13c9716b4ff4e7a41af73ea186f27
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 377da86003543fb53240de4d5fc672f71e1ed5f2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047190"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202402"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-imagineer-webvision"></a>チュートリアル: Azure Active Directory と Imagineer WebVision の統合
+# <a name="tutorial-azure-active-directory-integration-with-imagineer-webvision"></a>チュートリアル:Azure Active Directory と Imagineer WebVision の統合
 
 このチュートリアルでは、Imagineer WebVision と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -154,11 +155,11 @@ Imagineer WebVision で Azure AD シングル サインオンを構成してテ�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-an-imagineer-webvision-test-user"></a>Imagineer WebVision テスト ユーザーを作成する
 
-このセクションでは、Imagineer WebVision で Britta Simon という名前のユーザーを作成します。 [Imagineer WebVision サポート チーム](mailto:support@itgny.com)と協力して、Imagineer WebVision プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
+このセクションでは、Imagineer WebVision で Britta Simon という名前のユーザーを作成します。  [Imagineer WebVision サポート チーム](mailto:support@itgny.com)と協力して、Imagineer WebVision プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -195,7 +196,7 @@ Imagineer WebVision で Azure AD シングル サインオンを構成してテ�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Imagineer WebVision] タイルをクリックすると、自動的に Imagineer WebVision アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

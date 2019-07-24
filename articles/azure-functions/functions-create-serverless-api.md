@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 9a35c1205c0b564c8d0db1fbd0535d41bb9c84a0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f6a678e03818f1e1f2182b3b0dfab221d415dc72
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989908"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698248"
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>Azure Functions を使用したサーバーレス API の作成
 
@@ -46,14 +46,14 @@ Azure Portal を開きます。 これを行うには、Azure アカウントで
     | [許可されている HTTP メソッド] | 選択したメソッド | この関数の呼び出しに使用する HTTP メソッドを決定します |
     | [選択した HTTP メソッド] | GET | この関数の呼び出しには、選択した HTTP メソッドのみが使用できます |
     | [ルート テンプレート] | /hello | この関数の呼び出しに使用するルートを決定します |
-    | 承認レベル | Anonymous | 省略可能: API キーを使用せずに関数にアクセスできるようにします |
+    | 承認レベル | Anonymous | 省略可能:API キーを使用せずに関数にアクセスできるようにします |
 
     > [!NOTE] 
     > ルート テンプレートには `/api` ベース パス プレフィックスを含めないよう注意してください。このパス プレフィックスはグローバル設定で処理します。
 
 1. **[Save]** をクリックします。
 
-HTTP 関数をカスタマイズする方法の詳細については、「[Azure Functions における HTTP と Webhook のバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#customizing-the-http-endpoint)」をご覧ください。
+HTTP 関数をカスタマイズする方法の詳細については、「[Azure Functions における HTTP と Webhook のバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)」をご覧ください。
 
 ### <a name="test-your-api"></a>API のテスト
 
@@ -71,7 +71,7 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
 
 プロキシは、以下のような任意の HTTP リソースを指定できます。
 - Azure Functions 
-- [Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-overview) 内の API アプリ
+- [Azure App Service](https://docs.microsoft.com/azure/app-service/overview) 内の API アプリ
 - [App Service on Linux](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro) 内の Docker コンテナー
 - その他のホストされている API
 
@@ -104,7 +104,7 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
     | フィールド | 値の例 | 説明 |
     |---|---|---|
     | Name | HelloProxy | 管理にのみ使用するフレンドリ名です |
-    | [ルート テンプレート] | /api/hello | このプロキシの呼び出しに使用するルートを決定します |
+    | [ルート テンプレート] | /api/remotehello | このプロキシの呼び出しに使用するルートを決定します |
     | [バックエンド URL] | https://%HELLO_HOST%/api/hello | 要求の送信先となるエンドポイントを指定します |
     
 1. Proxies は `/api` ベース パス プレフィックスを提供しないことに注意してください。パス プレフィックスはルート テンプレートで指定する必要があります。
@@ -112,9 +112,9 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
 1. **Create** をクリックしてください。
 1. プロキシの URL をコピーし、ブラウザー内、または任意の HTTP クライアントでテストすることで、新しいプロキシを試すことができます。
     1. 匿名関数の場合は、以下を使用します。
-        1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?name="Proxies"`
+        1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"`
     1. 承認がある関数の場合は、以下を使用します。
-        1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?code=YOURCODE&name="Proxies"`
+        1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?code=YOURCODE&name="Proxies"`
 
 ## <a name="create-a-mock-api"></a>モック API の作成
 
@@ -132,7 +132,7 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
     "proxies": {
         "HelloProxy": {
             "matchCondition": {
-                "route": "/api/hello"
+                "route": "/api/remotehello"
             },
             "backendUri": "https://%HELLO_HOST%/api/hello"
         }
@@ -148,7 +148,7 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
     "proxies": {
         "HelloProxy": {
             "matchCondition": {
-                "route": "/api/hello"
+                "route": "/api/remotehello"
             },
             "backendUri": "https://%HELLO_HOST%/api/hello"
         },
@@ -176,7 +176,7 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
 }
 ```
 
-backendUri プロパティを変更することなく、"GetUserByName" という新しいプロキシを追加しています。 別のリソースを呼び出す代わりに、応答のオーバーライドによって Proxies からの既定の応答を変更します。 要求と応答のオーバーライドは、バックエンド URL と併用することもできます。 これは、レガシ システムにプロキシする際に特に役立ちます。その際は、ヘッダー、クエリ パラメーターなどを変更する必要がある場合があります。要求と応答のオーバーライドの詳細については、[Proxies での要求と応答の変更](https://docs.microsoft.com/azure/azure-functions/functions-proxies#a-namemodify-requests-responsesamodifying-requests-and-responses)に関する記事をご覧ください。
+backendUri プロパティを変更することなく、"GetUserByName" という新しいプロキシを追加しています。 別のリソースを呼び出す代わりに、応答のオーバーライドによって Proxies からの既定の応答を変更します。 要求と応答のオーバーライドは、バックエンド URL と併用することもできます。 これは、レガシ システムにプロキシする際に特に役立ちます。その際は、ヘッダー、クエリ パラメーターなどを変更する必要がある場合があります。要求と応答のオーバーライドの詳細については、[Proxies での要求と応答の変更](https://docs.microsoft.com/azure/azure-functions/functions-proxies)に関する記事をご覧ください。
 
 ブラウザーまたはお使いの REST クライアントを使用して `<YourProxyApp>.azurewebsites.net/api/users/{username}` エンドポイントを呼び出し、モック API をテストします。 _{username}_ をユーザー名を表す文字列値に必ず置き換えてください。
 

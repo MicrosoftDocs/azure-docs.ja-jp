@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs イベント プロセッサ ホストの説明と使用する理由 | Microsoft Docs
-description: Azure Event Hubs イベント プロセッサ ホストの概要
+title: イベント プロセッサ ホストを使用してイベントを受信する - Azure Event Hubs | Microsoft Docs
+description: この記事では、チェックポイント処理、リース、および並列でのイベントの読み込みの管理を簡素化する、Azure Event Hubs のイベント プロセッサ ホストについて説明します。
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -11,16 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 236103861ce8a296c77f708dbb4a7cc7e03f10f3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 26f0abb48ba268f79167ed5d00e4f96d8b5e5998
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258954"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498173"
 ---
-# <a name="azure-event-hubs-event-processor-host-overview"></a>Azure Event Hubs イベント プロセッサ ホストの概要
+# <a name="receive-events-from-azure-event-hubs-using-event-processor-host"></a>イベント プロセッサ ホストを使用して Azure Event Hubs からイベントを受信する
 
 Azure Event Hubs は、数百万件のイベントを低コストでストリーム配信するために使用できる、強力なテレメトリ インジェスト サービスです。 この記事では、チェックポイント処理、リース処理、および並列イベント リーダーの管理を簡素化するインテリジェントなコンシューマー エージェントである "*イベント プロセッサ ホスト*" (EPH) を使用して、取り込まれたイベントを使用する方法について説明します。  
 
@@ -45,7 +46,7 @@ Event Hubs をスケーリングするための鍵となるのは、パーティ
 
 ## <a name="ieventprocessor-interface"></a>IEventProcessor インターフェイス
 
-最初に、使用側アプリケーションで [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) インターフェイスを実装します。このインターフェイスには、[OpenAsync、CloseAsync、ProcessErrorAsync、および ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods) の 4 つのメソッドがあります。 このインターフェイスには、Event Hubs が送信するイベントを使用する実際のコードが含まれています。 簡単な実装を次のコードに示します。
+最初に、使用するアプリケーションでは、[IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) インターフェイスを実装します。これには、[OpenAsync、CloseAsync、ProcessErrorAsync、および ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods) という 4 つのメソッドが含まれます。 このインターフェイスには、Event Hubs が送信するイベントを使用する実際のコードが含まれています。 簡単な実装を次のコードに示します。
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -82,7 +83,7 @@ public class SimpleEventProcessor : IEventProcessor
 
 次に、[EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) インスタンスをインスタンス化します。 オーバーロードに応じて、コンストラクターで [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) インスタンスを作成するときに次のパラメーターが使用されます。
 
-- **hostName:** 各コンシューマー インスタンスの名前。 **EventProcessorHost** の各インスタンスは、コンシューマー グループ内でこの変数の一意の値を持つ必要があります。したがって、この値をハードコーディングしないことをお勧めします。
+- **hostName:** 各コンシューマー インスタンスの名前。 **EventProcessorHost** の各インスタンスは、コンシューマー グループ内でこの変数の一意の値を持つ必要があります。したがって、この値をハードコーディングしないでください。
 - **eventHubPath:** イベント ハブの名前。
 - **consumerGroupName:** Event Hubs は、既定のコンシューマー グループの名前として "**$既定**" を使用しますが、処理の特定の側面についてコンシューマー グループを作成することをお勧めします。
 - **eventHubConnectionString:** イベント ハブへの接続文字列。この値は、Azure portal から取得できます。 この接続文字列には、イベント ハブに対する**リッスン** アクセス許可が付与されている必要があります。
@@ -122,7 +123,9 @@ EPH インスタンス (またはコンシューマー) のパーティション
 
 ## <a name="receive-messages"></a>メッセージを受信する
 
-[ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) の呼び出しごとに、イベントのコレクションが配信されます。 これらのイベントを処理するのは開発者の責任です。 物事は迅速に済ませることをお勧めします。つまり、できる限り最小限の処理に留めます。 代わりに、コンシューマー グループを使用します。 ストレージへの書き込みとルーティングを行う必要がある場合、一般的には、2 つのコンシューマー グループを使用し、2 つの [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 実装を別個に実行する方が良いやり方です。
+[ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) の呼び出しごとに、イベントのコレクションが配信されます。 これらのイベントを処理するのは開発者の責任です。 プロセッサ ホストによってすべてのメッセージが 1 回以上処理されることを確認する場合は、独自の再試行保持コードを作成する必要があります。 ただし、有害メッセージについて注意してください。
+
+物事は迅速に済ませることをお勧めします。つまり、できる限り最小限の処理に留めます。 代わりに、コンシューマー グループを使用します。 ストレージへの書き込みとルーティングを行う必要がある場合、2 つのコンシューマー グループを使用し、2 つの [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 実装を別個に実行する方が良いやり方です。
 
 処理中のある時点で、読み取ったものと完了したものを追跡することをお勧めします。 読み取りを再開する必要がある場合は、ストリームの先頭に戻らずに済むように追跡することが重要です。 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) は、"*チェックポイント*" を使用してこの追跡を簡素化します。 チェックポイントは、問題なくメッセージが処理されている、特定のコンシューマー グループ内の特定のパーティションの場所またはオフセットです。 **EventProcessorHost** でチェックポイントをマークするには、[PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) オブジェクトの [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) メソッドを呼び出します。 この操作は [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) メソッド内で実行しますが、[CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) 内でも実行できます。
 
@@ -138,7 +141,7 @@ EPH インスタンス (またはコンシューマー) のパーティション
 
 ## <a name="shut-down-gracefully"></a>正常にシャットダウンする
 
-最後に、[EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) を使用して、すべてのパーティション リーダーをクリーンにシャットダウンします。これは、[EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) のインスタンスをシャットダウンするときに必ず呼び出す必要があります。 そうしないと、リースの期限切れとエポックの競合が原因で、**EventProcessorHost** の他のインスタンスを開始するときに遅延が発生する可能性があります。 エポック管理については、この[ブログ記事](https://blogs.msdn.microsoft.com/gyan/2014/09/02/event-hubs-receiver-epoch/)に詳しく説明されています
+最後に、[EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) を使用して、すべてのパーティション リーダーをクリーンにシャットダウンします。これは、[EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) のインスタンスをシャットダウンするときに必ず呼び出す必要があります。 そうしないと、リースの期限切れとエポックの競合が原因で、**EventProcessorHost** の他のインスタンスを開始するときに遅延が発生する可能性があります。 エポック管理の詳細は、この記事の[エポック](#epoch)に関するセクションにあります。 
 
 ## <a name="lease-management"></a>リース管理
 EventProcessorHost のインスタンスでイベント プロセッサ クラスを登録すると、イベント処理が開始されます。 ホスト インスタンスは、可能性があるすべてのホスト インスタンス間で均等に分散パーティションに集約する方法で、他のホスト インスタンスから一部を取得、イベント ハブの一部のパーティションでリースを取得します。 リースされたパーティションごとに、ホスト インスタンスは、指定されたイベント プロセッサ クラスのインスタンスを作成し、そのパーティションからイベントを受信し、イベント プロセッサーのインスタンスに渡します。 多くのインスタンスが追加されより多くのリースが取り込まれると、EventProcessorHost は最終的にすべてのコンシューマー間で負荷を分散します。
@@ -156,6 +159,32 @@ EventProcessorHost のインスタンスでイベント プロセッサ クラ�
 - [InvokeProcessorAfterReceiveTimeout](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.invokeprocessorafterreceivetimeout): このパラメーターが **true** の場合、[ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) は、パーティション上のイベントを受け取るための基になる呼び出しがタイムアウトすると呼び出されます。このメソッドは、パーティションの非アクティブ期間中に時間ベースのアクションを実行する場合に便利です。
 - [InitialOffsetProvider](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessoroptions.initialoffsetprovider): リーダーがパーティションの読み取りを開始したときに初期オフセットを提供するために呼び出される関数ポインターまたはラムダ式を設定できるようにします。 このオフセットを指定しない場合、リーダーは、オフセットを含む JSON ファイルが [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) コンストラクターに提供されたストレージ アカウントに保存されていない限り、最も古いイベントから開始します。 このメソッドは、リーダーの起動時の動作を変更する場合に便利です。 このメソッドが呼び出されたとき、オブジェクト パラメーターには、リーダーが開始されているパーティション ID が含まれます。
 - [ExceptionReceivedEventArgs](/dotnet/api/microsoft.azure.eventhubs.processor.exceptionreceivedeventargs): [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) で発生する基になるすべての例外の通知を受け取ることができます。 期待どおりの動作が得られない場合は、このイベントの確認から始めると良いでしょう。
+
+## <a name="epoch"></a>エポック
+
+受信エポックのしくみは次のようになっています。
+
+### <a name="with-epoch"></a>エポックあり
+エポックはパーティション/リースの所有権を適用する目的でサービスによって使用される一意の識別子 (エポック値) です。 [CreateEpochReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet) メソッドを利用し、エポックベースのレシーバーを作成します。 このメソッドにより、エポックベースのレシーバーが作成されます。 指定のコンシューマー グループからの特定のイベント ハブ パーティションに対してレシーバーが作成されます。
+
+このエポック機能によって、ある時点においてコンシューマー グループにレシーバーが 1 つだけになることが保証されます。この機能では、次のルールが使用されます。
+
+- コンシューマー グループにレシーバーが存在しない場合、ユーザーは任意のエポック値でレシーバーを作成できます。
+- エポック値 e1 のレシーバーが存在し、エポック値 e2 で新しいレシーバーが作成されるとき、e1 <= e2 であれば、e1 のレシーバーは自動的に接続解除され、e2 のレシーバーが正常に作成されます。
+- エポック値 e1 のレシーバーが存在し、エポック値 e2 で新しいレシーバーが作成されるとき、e1 > e2 であれば、e2 のレシーバーは作成できず、エポック e1 のレシーバーが既に存在するという旨のエラーが表示されます。
+
+### <a name="no-epoch"></a>エポックなし
+[CreateReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) メソッドを利用し、エポックベースではないレシーバーを作成します。 
+
+ストリーム処理では、1 つのコンシューマー グループで複数のレシーバーを作成することがあります。 このようなシナリオをサポートする目的で、エポックなしでレシーバーを作成できます。その場合、コンシューマー グループで最大 5 つの同時レシーバーが許可されます。
+
+### <a name="mixed-mode"></a>混在モード
+同じコンシューマー グループでエポックありでレシーバーを作成し、その後エポックなしに切り替える、あるいはその逆を行うことは使用方法として推奨されません。 しかしながら、そのような動作が行われる場合、このサービスでは次のルールで動作が処理されます。
+
+- エポック e1 でレシーバーが既に作成されているとき、イベントをたくさん受信し、新しいレシーバーがエポックなしで作成される場合、新しいレシーバーの作成に失敗します。 エポック レシーバーはシステム内で常に優先されます。
+- エポック e1 でレシーバーが既に作成されていて接続が解除され、新しい MessagingFactory で新しいレシーバーがエポックなしで作成された場合、新しいレシーバーの作成に成功します。 ただし、このシステムでは 10 分後には "レシーバー切断" が検出されます。
+- 1 つまたは複数のレシーバーがエポックなしで作成されているとき、新しいレシーバーがエポック e1 で作成される場合、古いレシーバーの接続が解除されます。
+
 
 ## <a name="next-steps"></a>次の手順
 

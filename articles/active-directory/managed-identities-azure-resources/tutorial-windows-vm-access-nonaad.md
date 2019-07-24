@@ -3,25 +3,26 @@ title: Windows VM のシステム割り当てマネージド ID を使用して 
 description: Windows VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: daveba
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: daveba
-ms.openlocfilehash: 587b693b3b87f04a5504067fc848952557c2b67b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.author: markvi
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 180e5544cfdc8fe7d5c3317347901f70667f1c8d
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625234"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446694"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>チュートリアル: Windows VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスする 
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスする 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -49,7 +50,7 @@ Azure リソースのマネージド ID を使用すると、Azure AD 認証を�
 3. 以前に作成した VM と同じサブスクリプションおよびリソース グループで、Key Vault を見つけます。 
 4. **[アクセス ポリシー]** を選択して **[新規追加]** ボタンをクリックします。 
 5. テンプレートの [構成] で、**[シークレットの管理]** を選択します。 
-6. **[プリンシパルの選択]** を選択し、検索フィールドに以前に作成した VM の名前を入力します。  結果一覧で VM を選択し、**[選択]** をクリックします。 
+6. **[プリンシパルの選択]** を選択し、検索フィールドに以前に作成した VM の名前を入力します。  結果一覧で VM を選択し、 **[選択]** をクリックします。 
 7. **[OK]** をクリックして新しいアクセス ポリシーの追加を終了し、**[OK]** をクリックしてアクセス ポリシーの選択を完了します。 
 8. **[作成]** をクリックして Key Vault の作成を完了します。 
 

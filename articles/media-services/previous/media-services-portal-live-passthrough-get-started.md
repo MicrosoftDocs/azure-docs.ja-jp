@@ -1,33 +1,36 @@
 ---
-title: Azure Portal を使用したオンプレミス エンコーダーでのライブ ストリーミング | Microsoft Docs
+title: Azure portal を使用したオンプレミス エンコーダーでのライブ ストリーミング | Microsoft Docs
 description: このチュートリアルでは、パススルー配信用に構成されたチャネルを作成する手順を紹介します。
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 6f4acd95-cc64-4dd9-9e2d-8734707de326
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 08/09/2017
+ms.topic: conceptual
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 2bb56ff6eaf311bee33b07ecb319127645db9961
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9a8ab024443744f50482dd2ca1cfb33db43359e9
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235107"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58802815"
 ---
-# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-the-azure-portal"></a>Azure Portal を使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
+# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Azure portal を使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-> * [REST ()](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
+
+> [!NOTE]
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 このチュートリアルでは、Azure ポータルを使用して、パススルー配信用に構成された **チャネル** を作成する手順を紹介します。 
 
@@ -36,7 +39,7 @@ ms.locfileid: "51235107"
 
 * Azure アカウント。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
 * Media Services アカウント。 Media Services アカウントを作成するには、「 [Media Services アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。
-* Web カメラ。 たとえば、 [Telestream Wirecast エンコーダー](http://www.telestream.net/wirecast/overview.htm)。
+* Web カメラ。 たとえば、 [Telestream Wirecast エンコーダー](https://www.telestream.net/wirecast/overview.htm)。
 
 次の記事の確認を強くお勧めします。
 
@@ -45,29 +48,31 @@ ms.locfileid: "51235107"
 * [マルチビットレートのストリームを作成するオンプレミス エンコーダーを使用したライブ ストリーミング](media-services-live-streaming-with-onprem-encoders.md)
 
 ## <a id="scenario"></a>一般的なライブ ストリーミング シナリオ
+
 次の手順では、パススルー配信用に構成されたチャネルを使用する、一般的なライブ ストリーミング アプリケーションの作成に関連するタスクについて説明します。 このチュートリアルでは、パススルー チャネルとライブ イベントを作成、管理する方法について説明します。
 
->[!NOTE]
->コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態であることを確認してください。 
+> [!NOTE]
+> コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態であることを確認してください。 
     
-1. ビデオ カメラをコンピューターに接続します。 マルチビットレート RTMP またはフラグメント化 MP4 ストリームを出力するオンプレミスのライブ エンコーダーを起動して構成します。 詳しくは、「 [Azure Media Services RTMP サポートおよびライブ エンコーダー](https://go.microsoft.com/fwlink/?LinkId=532824)」をご覧ください。
+1. ビデオ カメラをコンピューターに接続します。 <br/>設定のアイデアについては、「[Simple and portable event video gear setup (シンプルでポータブルなイベント ビデオ機器の設定)]( https://link.medium.com/KNTtiN6IeT)」を参照してください。
+1. マルチビットレート RTMP またはフラグメント化 MP4 ストリームを出力するオンプレミスのライブ エンコーダーを起動して構成します。 詳しくは、「 [Azure Media Services RTMP サポートおよびライブ エンコーダー](https://go.microsoft.com/fwlink/?LinkId=532824)」をご覧ください。<br/>また、ブログ「[Live streaming production with OBS (OBS を使用したライブ ストリーミングの製作)](https://link.medium.com/ttuwHpaJeT)」も参照してください。
    
     この手順は、チャネルを作成した後でも実行できます。
-2. パススルー チャネルを作成し、開始します。
-3. チャネルの取り込み URL を取得します。 
+1. パススルー チャネルを作成し、開始します。
+1. チャネルの取り込み URL を取得します。 
    
     取り込み URL は、ライブ エンコーダーがチャネルにストリームを送信する際に使用されます。
-4. チャネルのプレビュー URL を取得します。 
+1. チャネルのプレビュー URL を取得します。 
    
     この URL を使用して、チャネルがライブ ストリームを正常に受信できることを確認します。
-5. ライブ イベントまたはライブ プログラムを作成します。 
+1. ライブ イベントまたはライブ プログラムを作成します。 
    
     Azure ポータルを使用する場合、ライブ イベントを作成すると資産も作成されます。 
 
-6. ストリーミングとアーカイブを開始する準備ができたら、イベントまたはプログラムを開始します。
-7. 必要に応じて、ライブ エンコーダーは、広告の開始を信号通知できます。 広告が出力ストリームに挿入されます。
-8. イベントのストリーミングとアーカイブを停止するには、任意のタイミングでイベントまたはプログラムを停止します。
-9. イベントまたはプログラムを削除し、必要に応じてアセットも削除します。     
+1. ストリーミングとアーカイブを開始する準備ができたら、イベントまたはプログラムを開始します。
+1. 必要に応じて、ライブ エンコーダーは、広告の開始を信号通知できます。 広告が出力ストリームに挿入されます。
+1. イベントのストリーミングとアーカイブを停止するには、任意のタイミングでイベントまたはプログラムを停止します。
+1. イベントまたはプログラムを削除し、必要に応じてアセットも削除します。     
 
 > [!IMPORTANT]
 > オンプレミスのエンコーダーとパススルー チャネルを使用したライブ ストリーミングに関する概念と考慮事項については、「[マルチビットレートのストリームを作成するオンプレミス エンコーダーを使用したライブ ストリーミング](media-services-live-streaming-with-onprem-encoders.md)」を参照してください。

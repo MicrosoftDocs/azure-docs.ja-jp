@@ -4,7 +4,7 @@ description: このクイックスタートでは、セキュリティを強化�
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
@@ -13,17 +13,17 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/2/2018
+ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: dc4c07b54085dfea6d97f2ca43a8cdddfcb9e57c
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 37f85afbdd55d3f14638f0833f69bb1992770449
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025466"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086073"
 ---
-# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>クイックスタート: Azure サブスクリプションでの Security Center Standard の利用開始
-Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と脅威保護を実現します。 Free レベルでは Azure リソースのみの制限付きセキュリティが提供されますが、Standard レベルではこれらの機能がオンプレミスと他のクラウドに拡張されます。 Security Center Standard は、セキュリティの脆弱性の検出と修正、悪意のあるアクティビティをブロックするためのアクセス制御とアプリケーション制御の適用、分析とインテリジェンスを使用した脅威の検出、攻撃を受けたときのすばやい対応を支援します。 Security Center Standard は最初の 60 日間、無料でお試しいただけます。
+# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>クイック スタート:Azure サブスクリプションでの Security Center Standard の利用開始
+Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と脅威保護を実現します。 Free レベルでは Azure リソースのみの制限付きセキュリティが提供されますが、Standard レベルではこれらの機能がオンプレミスと他のクラウドに拡張されます。 Security Center Standard は、セキュリティの脆弱性の検出と修正、悪意のあるアクティビティをブロックするためのアクセス制御とアプリケーション制御の適用、分析とインテリジェンスを使用した脅威の検出、攻撃を受けたときのすばやい対応を支援します。 Security Center Standard は無料でお試しいただけます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
 この記事では、セキュリティを強化するために Standard レベルにアップグレードし、仮想マシンに Microsoft Monitoring Agent をインストールしてセキュリティの脆弱性と脅威を監視します。
 
@@ -37,7 +37,7 @@ Azure Security Center は、ハイブリッド クラウド ワークロード�
 1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/) にサインインします。
 2. **[Microsoft Azure]** メニューの **[セキュリティ センター]** を選択します。 **[セキュリティ センター - 概要]** が開きます。
 
- ![Security Center の概要][2]
+   ![Security Center の概要][2]
 
 **[セキュリティ センター - 概要]** では、ハイブリッド クラウド ワークロードのセキュリティ対策の統合ビューが表示されるので、ワークロードのセキュリティを検出して評価したり、リスクを特定して軽減したりできます。 Security Center は、ユーザーまたは別のサブスクリプション ユーザーによって以前に Free レベルにオンボードされていない Azure サブスクリプションを自動的に有効にします。
 
@@ -51,17 +51,17 @@ Security Center を初めて起動してから数分以内に、以下の項目�
 Security Center をフルに活用するには、次の手順に従って Standard レベルにアップグレードし、Microsoft Monitoring Agent をインストールする必要があります。
 
 ## <a name="upgrade-to-the-standard-tier"></a>Standard レベルにアップグレードする
-Security Center のクイックスタートおよびチュートリアルの目的上、Standard レベルにアップグレードする必要があります。 最初の 60 日間は無料で、いつでも Free レベルに戻すことができます。
+Security Center のクイックスタートおよびチュートリアルの目的上、Standard レベルにアップグレードする必要があります。 Security Center Standard には無料試用版があります。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。 
 
-1. Security Center メイン メニューの **[作業の開始]** を選択します。
+1. Security Center メイン メニューの **[使用の開始]** を選択します。
  
-  ![作業開始][4]
+   ![作業開始][4]
 
 2. Security Center の **[アップグレード]** に、オンボードの対象となるサブスクリプションとワークスペースが一覧表示されます。 
-   - 展開可能な **[Apply your trial]\(試用版を適用\)** をクリックすると、すべてのサブスクリプションと、試用版の資格の状態の一覧が表示されます。
+   - 展開可能な **[Apply your trial] \(試用版を適用)** をクリックすると、すべてのサブスクリプションとワークスペースの一覧を各試用版の資格の状態と共に表示できます。
    -    試用版の対象にならないサブスクリプションとワークスペースをアップグレードできます。
    -    対象となるワークスペースとサブスクリプションを選択すると、ご自身の試用版を開始できます。
-3.  **[無料体験する]** をクリックして、選択したサブスクリプションでご自身の試用版を開始します。
+3. **[無料体験する]** をクリックして、選択したサブスクリプションでご自身の試用版を開始します。
 
 
   ![セキュリティのアラート][9]
@@ -107,7 +107,7 @@ Azure VM のこの新たな洞察により、Security Center は、システム�
 このクイック スタートでは、Standard レベルにアップグレードし、ハイブリッド クラウド ワークロード全体での統合セキュリティの管理と脅威保護のために Microsoft Monitoring Agent をプロビジョニングしました。 Security Center の詳しい使用方法を学習するには、オンプレミスおよび他のクラウドの Windows コンピューターのオンボードに関するクイックスタートに進みます。
 
 > [!div class="nextstepaction"]
-> [クイックスタート: Windows コンピューターでの Azure Security Center の利用開始](quick-onboard-windows-computer.md)
+> [クイック スタート:Windows コンピューターでの Azure Security Center の利用開始](quick-onboard-windows-computer.md)
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png

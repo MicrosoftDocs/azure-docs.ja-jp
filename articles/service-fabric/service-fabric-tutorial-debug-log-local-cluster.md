@@ -15,21 +15,16 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c1a8b18062f61be9eb020beefd3ad741c41b55f8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c5ff1a0373fcce339bea2b235d86f20dc861a15c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38652704"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444261"
 ---
-# <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>チュートリアル: ローカルの Service Fabric クラスターでデプロイされた Java アプリケーションをデバッグする
+# <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>チュートリアル:ローカルの Service Fabric クラスター上にデプロイされた Java アプリケーションをデバッグする
 
 このチュートリアルは、シリーズの第 2 部です。 Eclipse を使用して Service Fabric アプリケーション用にリモート デバッガーをアタッチする方法について説明します。 さらに、実行中のアプリケーションから開発者にとって都合のよい場所にログをリダイレクトする方法について説明します。
-
-シリーズの第 2 部で学習する内容は次のとおりです。
-> [!div class="checklist"]
-> * Eclipse を使用して Java アプリケーションをデバッグする
-> * 構成可能な場所にログをリダイレクトする
 
 このチュートリアル シリーズで学習する内容は次のとおりです。
 > [!div class="checklist"]
@@ -38,6 +33,13 @@ ms.locfileid: "38652704"
 > * [アプリケーションを Azure クラスターにデプロイする](service-fabric-tutorial-java-deploy-azure.md)
 > * [アプリケーションの監視と診断を設定する](service-fabric-tutorial-java-elk.md)
 > * [CI/CD を設定します](service-fabric-tutorial-java-jenkins.md)
+
+
+シリーズの第 2 部で学習する内容は次のとおりです。
+> [!div class="checklist"]
+> * Eclipse を使用して Java アプリケーションをデバッグする
+> * 構成可能な場所にログをリダイレクトする
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,7 +55,7 @@ ms.locfileid: "38652704"
 git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 ```
 
-アプリケーションをローカル環境クラスターに[ビルドおよびデプロイ](service-fabric-tutorial-create-java-app.md#deploy-application-to-local-cluster)します。
+ローカル環境クラスターでアプリケーションを[ビルドしてデプロイ](service-fabric-tutorial-create-java-app.md#deploy-application-to-local-cluster)します。
 
 ## <a name="debug-java-application-using-eclipse"></a>Eclipse を使用して Java アプリケーションをデバッグする
 
@@ -63,7 +65,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 3. [Import Projects]\(プロジェクトのインポート\) ウィンドウで、**[Select root directory]\(ルート ディレクトリの選択\)** オプションを選択し、**Voting** ディレクトリを選択します。 チュートリアル シリーズの第 1 部を完了している場合、**Voting** ディレクトリは **Eclipse-workspace** ディレクトリ内にあります。
 
-4. デバッグするサービスの entryPoint.sh を更新して、リモートのデバッグ パラメーターで Java プロセスを開始するようにします。 このチュートリアルでは、ステートレス フロントエンドを使用します (*Voting/VotingApplication/VotingWebPkg/Code/entryPoint.sh*)。この例では、デバッグ用にポート 8001 が設定されています。
+4. デバッグするサービスの entryPoint.sh を更新して、リモートのデバッグ パラメーターで Java プロセスを開始するようにします。 このチュートリアルでは、次のステートレス フロント エンドが使用されます。*Voting/VotingApplication/VotingWebPkg/Code/entryPoint.sh*。この例では、デバッグ用にポート 8001 が設定されています。
 
     ```bash
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar VotingWeb.jar
@@ -89,13 +91,15 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 10. Eclipse IDE で、**[Run]\(実行\)、[Debug Configurations]\(デバッグ構成\)、[Remote Java Application]\(リモート Java アプリケーション\)** の順に選択し、作成した**投票**の構成をクリックしてから、**[Debug]\(デバッグ\)** をクリックします。
 
-11. Web ブラウザーに移動して **localhost:8080** にアクセスし、ブレークポイントに到達します。そして、Eclipse で**デバッグ パースペクティブ**に切り替えます。
+11. Web ブラウザーに移動し、**localhost:8080** にアクセスします。 これにより、ブレークポイントに自動的にヒットし、Eclipse が**デバッグ パースペクティブ**に入ります。
+
+同様の手順を適用して、Eclipse で任意の Service Fabric アプリケーションをデバッグできます。
 
 ## <a name="redirect-application-logs-to-custom-location"></a>アプリケーション ログをカスタムの場所にリダイレクトする
 
 次の手順では、既定の場所 */var/log/syslog* からカスタムの場所にアプリケーション ログをリダイレクトする方法について説明します。
 
-1. 現在、Service Fabric Linux クラスターで実行されているアプリケーションでは、単一のログ ファイルの取得がサポートされています。 そのため、ログは常に */tmp/mysfapp0.0.log* に送られます。 場所 *Voting/VotingApplication/VotingWebPkg/Code/logging.properties* に logging.properties という名前のファイルを作成し、次の内容を追加します。
+1. 現在、Service Fabric Linux クラスターで実行されているアプリケーションでは、単一のログ ファイルの取得のみがサポートされています。 ログが常に */tmp/mysfapp0.0.log* に記録されるようにアプリケーションを設定するには、*Voting/VotingApplication/VotingWebPkg/Code/logging.properties 内に logging.properties* という名前のファイルを作成し、次の内容を追加します。
 
     ```
     handlers = java.util.logging.FileHandler
@@ -103,7 +107,8 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
     java.util.logging.FileHandler.level = ALL
     java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter
 
-    # This value specifies your custom location. You will have to ensure this path has read and write access by the process running the SF Application
+    # This value specifies your custom location.
+    # You will have to ensure this path has read and write access by the process running the SF Application
     java.util.logging.FileHandler.pattern = /tmp/mysfapp0.0.log
     ```
 
@@ -113,7 +118,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
     -Djava.util.logging.config.file=logging.properties
     ```
 
-    実行の例を次に示します。
+    次の例では、デバッガーを接続したサンプル実行を示しています。これは前のセクションの実行に似ています。
 
     ```bash
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=logging.properties -jar VotingWeb.jar

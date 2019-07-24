@@ -1,21 +1,21 @@
 ---
 title: Azure の Cloudyn に関してよく寄せられる質問 | Microsoft Docs
-description: Cloudyn についてよく寄せられる質問にお答えします。
+description: この記事では、Cloudyn についてよく寄せられる質問にお答えします。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/14/2018
+ms.date: 03/14/2019
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: 3b137a170edf2be13fa4999947994ee12a374aa9
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: seodec18
+ms.openlocfilehash: 0516c954bd23d5a2e339c5df447a923528e09d93
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276280"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011798"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Cloudyn に関してよく寄せられる質問
 
@@ -62,7 +62,7 @@ Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前�
 1.  Cloudyn ポータルで、右上にある **[設定]** をクリックして **[クラウド アカウント]** を選択します。
 2.  [Microsoft Azure Accounts] \(Microsoft Azure アカウント) タブで、**アクティブ化されていない**サブスクリプションを持つアカウントを探します。
 3.  アクティブ化されていないアカウントの右にある、鉛筆に似た **[編集]** 記号をクリックします。
-4.  テナント ID とレート ID が自動的に検出されます。  **[次へ]** をクリックします。
+4.  テナント ID とレート ID が自動的に検出されます。 **[次へ]** をクリックします。
 5.  Azure Portal にリダイレクトされます。 ポータルにサインインし、Cloudyn Collector が Azure データにアクセスすることを承認します。
 6.  次に、[Cloudyn Accounts] (Cloudyn アカウント) 管理ページにリダイレクトされ、サブスクリプションが**アクティブな**アカウント状態に更新されます。 そこには緑色のチェックマーク記号が表示されます。
 7.  1 つ以上のサブスクリプションに緑色のチェックマーク記号が表示されていない場合は、そのサブスクリプションのリーダー アプリ (CloudynCollector) を作成するためのアクセス許可がないことを示しています。 そのサブスクリプションのより高いアクセス許可を持つユーザーが手順 3 と 4 を繰り返す必要があります。  
@@ -75,7 +75,7 @@ Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前�
 最初に、ユーザー アカウントが*initiallySuspended*する原因となる最も一般的なシナリオを見てみましょうです。
 
 > Admin1 は、Microsoft Cloud ソリューション プロバイダーまたはエンタープライズ契約ユーザーの可能性があります。 彼の組織では、Cloudyn の使用を開始する準備が整いました。  彼は、Microsoft Azure portal で登録し、Cloudyn ポータルにサインインします。 彼は、Cloudyn サービスを登録し、Cloudyn ポータルにサインインする人として、"*プライマリ管理者*" になります。 Admin1 はユーザーアカウントを作成しません。 ただし、Cloudyn ポータルを使用すると、Azure アカウントを作成およびエンティティ階層を設定できます。 Admin1 は、テナント管理者である Admin2 に Cloudyn で登録し、Cloudyn ポータルにサインインするよう通知します。
-
+> 
 > Admin2 は Azure portal を使用して登録します。 しかし、 Cloudyn ポータルにサインインしようとした時、彼はアカウントの**中断**を示すエラーを受け取ります。 プライマリ管理者の Admin1 に、アカウントの中断が通知されます。 Admin1 は、Admin2 のアカウントをアクティブにし、適したエンティティへの *管理エンティティへのアクセス*を付与して、ユーザーの管理アクセス権とユーザー アカウントをアクティブにするアクセスを許可する必要があります。
 
 
@@ -126,9 +126,9 @@ Cloudyn は Enterprise Agreement サブスクリプションの通貨を自動�
 
 Cloudyn のデータ更新タイムラインは次のとおりです。
 
-- **初期**: Cloudyn でコスト データを表示するまでに最大で 24 時間かかる場合があります。 また、サイズ変更に関する推奨事項を表示するために Cloudyn が十分なデータを収集するのに、最大で 10 日かかります。
-- **日次**: 各月の 10 日から末日まで、Cloudyn では前日からのデータをその次の日の UTC+3 くらいに表示します。
-- **月次**: 各月の 1 日から 10 日まで、Cloudyn は前月の終わりまでのデータのみを表示する場合があります。
+- **初期**:設定後、Cloudyn でコスト データが表示されるまで最大で 24 時間かかる場合があります。 また、サイズ変更に関する推奨事項を表示するために Cloudyn が十分なデータを収集するのに、最大で 10 日かかります。
+- **日次**:Cloudyn では、各月の 10 日から末日まで、ご自分の前日からの最新データがその次の日の UTC + 3 くらいに表示されます。
+- **月次**:Cloudyn では、各月の 1 日から 10 日まで、ご自分の前月の終わりまでのデータのみが表示される場合があります。
 
 Cloudyn は前日の全データが利用可能になったタイミングで、前日のデータを処理します。 通常、前日のデータは各日の UTC+3 くらいに Cloudyn で使用できるようになります。 タグなどの一部のデータの処理には、さらに 24 時間かかる場合があります。
 

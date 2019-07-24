@@ -1,37 +1,34 @@
 ---
-title: 'クイック スタート: イベント ハブから Azure データ エクスプローラーにデータを取り込む'
+title: クイック スタート:イベント ハブから Azure Data Explorer にデータを取り込む
 description: このクイック スタートでは、イベント ハブから Azure データ エクスプローラーにデータを取り込む方法について説明します。
-services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 3350c222cced036af6319cee166c53da0b14f2a9
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 02/02/2018
+ms.openlocfilehash: 52bdbe6d34fb631cd4b2205dfad25399fe0e43fb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210450"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59048389"
 ---
-# <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>クイック スタート: イベント ハブから Azure データ エクスプローラーにデータを取り込む
+# <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>クイック スタート:イベント ハブから Azure Data Explorer にデータを取り込む
 
-Azure データ エクスプローラーは、ログおよびテレメトリ データのためのスケーラビリティに優れた高速データ探索サービスです。 Azure データ エクスプローラーには、Event Hubs からの取り込み (データの読み込み)、ビッグ データのストリーミング プラットフォーム、イベント取り込みサービスの機能があります。 Event Hubs は、1 秒あたり数百万件のイベントをほぼリアルタイムで処理できます。 このクイック スタートでは、イベント ハブを作成し、Azure データ エクスプローラーからイベント ハブに接続し、システムでデータ フローを確認します。
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
+Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure データ エクスプローラーには、Event Hubs からの取り込み (データの読み込み)、ビッグ データのストリーミング プラットフォーム、イベント取り込みサービスの機能があります。 [Event Hubs](/azure/event-hubs/event-hubs-about) は、1 秒あたり数百万件のイベントをほぼリアルタイムで処理できます。 このクイック スタートでは、イベント ハブを作成し、Azure データ エクスプローラーからイベント ハブに接続し、システムでデータ フローを確認します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを実行するには、Azure サブスクリプションに加え、以下が必要です。
+* Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 
 * [テスト用のクラスターとデータベース](create-cluster-database-portal.md)
 
-* データを生成してイベント ハブに送信する[サンプル アプリ](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)
+* データを生成してイベント ハブに送信する[サンプル アプリ](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)。 ご使用のシステムにサンプル アプリをダウンロードしてください。
 
 * サンプル アプリを実行する [Visual studio 2017 Version 15.3.2 以降](https://www.visualstudio.com/vs/)
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -39,13 +36,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイック スタートでは、サンプル データを生成してイベント ハブに送信します。 最初の手順は、イベント ハブの作成です。 Azure portal で Azure Resource Manager テンプレートを使用してこの処理を行います。
 
-1. 次のボタンを使用してデプロイを開始します。 この記事の手順の残り部分を実行できるように、別のタブまたはウィンドウでリンクを開くことをお勧めします。
+1. イベント ハブを作成するには、次のボタンを使用してデプロイを開始します。 この記事の残りの手順を実行できるよう、右クリックして **[新しいウィンドウで開く]** を選択してください。
 
     [![Azure へのデプロイ](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
     **[Deploy to Azure]\(Azure へのデプロイ\)** ボタンをクリックして Azure portal に移動し、デプロイ フォームに入力します。
 
-    ![[Deploy to Azure (Azure へのデプロイ)]](media/ingest-data-event-hub/deploy-to-azure.png)
+    ![Deploy to Azure (Azure へのデプロイ)](media/ingest-data-event-hub/deploy-to-azure.png)
 
 1. イベント ハブを作成するサブスクリプションを選択し、*test-hub-rg* というリソース グループを作成します。
 
@@ -61,7 +58,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |---|---|---|
     | サブスクリプション | 該当するサブスクリプション | イベント ハブに使用する Azure サブスクリプションを選択します。|
     | リソース グループ | *test-hub-rg* | 新しいリソース グループを作成します。 |
-    | Location | *[米国西部]* | このクイック スタートでは *[米国西部]* を選択します。 実稼働環境システムでは、ニーズに最も適したリージョンを選択します。
+    | Location | *[米国西部]* | このクイック スタートでは *[米国西部]* を選択します。 運用システムでは、ニーズに最も適したリージョンを選択します。 最良のパフォーマンスを得るためには、Kusto クラスターと同じ場所にイベント ハブの名前空間を作成します (高スループットのイベント ハブの名前空間に最も重要です)。
     | 名前空間名 | 一意の名前空間名 | 名前空間を識別する一意の名前を選択します。 たとえば、*mytestnamespace* と指定します。 指定した名前にドメイン名 *servicebus.windows.net* が付加されます。 この名前には、文字、数字、ハイフンのみを含めることができます。 名前の先頭は英字、末尾は英字または数字にする必要があります。 値の長さは 6 から 50 文字にする必要があります。
     | イベント ハブ名 | *test-hub* | イベント ハブは、固有のスコープ コンテナーを提供する名前空間以下にあります。 イベント ハブ名は、名前空間内で一意にする必要があります。 |
     | コンシューマー グループ名 | *test-group* | コンシューマー グループを使用すると、複数の使用アプリケーションがそれぞれイベント ストリーム ビューを持つことができるようになります。 |
@@ -81,7 +78,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![アプリケーションの [クエリ] リンク](media/ingest-data-event-hub/query-explorer-link.png)
 
-1. 次のコマンドをウィンドウにコピーし、**[実行]** を選択します。
+1. 次のコマンドをウィンドウにコピーし、**[実行]** を選択して、取り込んだデータを受け取るテーブル (TestTable) を作成します。
 
     ```Kusto
     .create table TestTable (TimeStamp: datetime, Name: string, Metric: int, Source:string)
@@ -89,12 +86,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![クエリの作成の実行](media/ingest-data-event-hub/run-create-query.png)
 
-1. 次のコマンドをウィンドウにコピーし、**[実行]** を選択します。
+1. 次のコマンドをウィンドウにコピーし、**[実行]** を選択して、テーブル (TestTable) の列名とデータ型に受信 JSON データをマップします。
 
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
     ```
-    このコマンドによって、受信 JSON データがテーブル (TestTable) の列名とデータ型にマップされます。
 
 ## <a name="connect-to-the-event-hub"></a>イベント ハブへの接続
 
@@ -106,13 +102,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![テスト データベースの選択](media/ingest-data-event-hub/select-test-database.png)
 
-1. **[データ インジェスト]**、**[データ接続の追加]** の順に選択します。
-
-    ![データの取り込み](media/ingest-data-event-hub/data-ingestion-create.png)
-
-1. フォームに次の情報を入力し、**[作成]** を選択します。
+1. **[データ インジェスト]**、**[データ接続の追加]** の順に選択します。 その後、フォームに次の情報を入力します。 終わったら **[作成]** を選択します。
 
     ![イベント ハブの接続](media/ingest-data-event-hub/event-hub-connection.png)
+
+    データ ソース: 
 
     **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
@@ -120,9 +114,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | イベント ハブの名前空間 | 一意の名前空間名 | 以前に選択した、名前空間を識別する名前。 |
     | イベント ハブ | *test-hub* | 作成したイベント ハブ。 |
     | コンシューマー グループ | *test-group* | 作成したイベント ハブに定義されているコンシューマー グループ。 |
-    | ターゲット テーブル | **[My data includes routing info]\(データにルーティング情報が含まれている\)** をオフのままにしておきます。 | ルーティングには、"*静的*" と "*動的*" という 2 つのオプションがあります。 このクイック スタートでは、静的ルーティングを使用し、テーブル名、ファイル形式、およびマッピングを指定します。 動的ルーティングを使用することもでき、その場合は必要なルーティング情報をデータに含めます。 |
+    | | |
+
+    ターゲット テーブル: 
+
+    ルーティングには、"*静的*" と "*動的*" という 2 つのオプションがあります。 このクイック スタートでは、静的ルーティングを使用し、テーブル名、ファイル形式、およびマッピングを指定します。 そのため、**[My data includes routing info]\(データにルーティング情報が含まれている\)** はオフのままにしておきます。
+    動的ルーティングを使用することもでき、その場合は必要なルーティング情報をデータに含めます。
+
+     **設定** | **推奨値** | **フィールドの説明**
+    |---|---|---|
     | テーブル | *TestTable* | **TestDatabase** に作成したテーブル。 |
-    | データ形式 | *JSON* | JSON 形式と CSV 形式がサポートされています。 |
+    | データ形式 | *JSON* | サポートされている形式は、Avro、CSV、JSON、MULTILINE JSON、PSV、SOH、SCSV、TSV、および TXT です。 |
     | 列マッピング | *TestMapping* | **TestDatabase** に作成したマッピング。受信 JSON データを **TestTable** の列名とデータ型にマッピングします。|
     | | |
 
@@ -140,7 +142,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="generate-sample-data"></a>サンプル データを作成する
 
-Azure Data Explorer とイベント ハブが接続されたので、ダウンロードした[サンプル アプリ](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)を使用してデータを生成します。
+ダウンロードした[サンプル アプリ](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)を使用してデータを生成します。
 
 1. Visual Studio でサンプル アプリ ソリューションを開きます。
 
@@ -164,8 +166,6 @@ Azure Data Explorer とイベント ハブが接続されたので、ダウン�
 
     ![イベント ハブ グラフ](media/ingest-data-event-hub/event-hub-graph.png)
 
-1. メッセージ 99 に達したら、サンプル アプリに戻って停止します。
-
 1. これまでにデータベースに届いたメッセージ数を確認するには、テスト データベースで次のクエリを実行します。
 
     ```Kusto
@@ -179,9 +179,12 @@ Azure Data Explorer とイベント ハブが接続されたので、ダウン�
     TestTable
     ```
 
-    結果は次のようになります。
+    結果セットは次のようになっている必要があります。
 
     ![メッセージの結果セット](media/ingest-data-event-hub/message-result-set.png)
+
+    > [!NOTE]
+    > Azure Data Explorer には、インジェスト プロセスを最適化することを目的とした、データ インジェストの集計 (バッチ処理) ポリシーがあります。 このポリシーは 5 分に構成されているため、待ち時間が生じることがあります。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -200,4 +203,4 @@ Azure Data Explorer とイベント ハブが接続されたので、ダウン�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [クイック スタート: Azure データ エクスプローラーでデータのクエリを実行する](web-query-data.md)
+> [クイック スタート:Azure Data Explorer でデータのクエリを実行する](web-query-data.md)

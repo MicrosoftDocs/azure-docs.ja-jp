@@ -1,24 +1,25 @@
 ---
-title: Azure Media Services のアクセス制御を使用したマルチ DRM コンテンツ保護システムの設計 | Microsoft Docs
-description: Microsoft Smooth Streaming Client Porting Kit のライセンスを取得する方法について説明します。
+title: アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計 - Azure Media Services | Microsoft Docs
+description: Microsoft Smooth Streaming Client Porting Kit のライセンスの取得について説明します。
 services: media-services
 documentationcenter: ''
 author: willzhan
-manager: femila
+manager: steveng
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/21/2018
 ms.author: willzhan
-ms.openlocfilehash: d65007ed2a0ce5a827eadca31dd9df8704e2c905
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.custom: seodec18
+ms.openlocfilehash: ef695d913c73f0a4266b20f21f1008108b85b4d0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958195"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893018"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計 
 
@@ -28,7 +29,7 @@ Over-the-Top (OTT) 用またはオンライン ストリーミング ソリュ�
 
 このドキュメントの対象読者は、OTT またはオンライン ストリーミング/マルチスクリーン ソリューションの DRM サブシステムに関する作業を行っているエンジニア、または DRM サブシステムに興味のあるすべての読者です。 前提として、読者は、PlayReady、Widevine、FairPlay、Adobe Access など、市販されている DRM テクノロジの少なくとも 1 つには精通している必要があります。
 
-ここでは、Azure Media Services でサポートされている 3 つの DRM をマルチ DRM に使用します。PlayReady と Widevine に対応した Common Encryption (CENC)、FairPlay、および AES-128 クリア キー暗号化です。 オンライン ストリーミングと OTT 業界での大きなトレンドは、さまざまなクライアント プラットフォームのネイティブ DRM を使う方法です。 その前は、さまざまなクライアント プラットフォームに 1 つの DRM とそのクライアント SDK を使う方法がトレンドでした。 マルチ ネイティブ DRM で CENC を使うと、PlayReady と Widevine はいずれも [共通暗号化 (ISO/IEC 23001-7 CENC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) 仕様に従って暗号化されます。
+ここでは、Azure Media Services でサポートされている 3 つの DRM をマルチ DRM に使用します。PlayReady と Widevine に対応した Common Encryption (CENC)、FairPlay、および AES-128 クリア キー暗号化です。 オンライン ストリーミングと OTT 業界での大きなトレンドは、さまざまなクライアント プラットフォームのネイティブ DRM を使う方法です。 その前は、さまざまなクライアント プラットフォームに 1 つの DRM とそのクライアント SDK を使う方法がトレンドでした。 マルチ ネイティブ DRM で CENC を使うと、PlayReady と Widevine はいずれも [共通暗号化 (ISO/IEC 23001-7 CENC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) 仕様に従って暗号化されます。
 
 コンテンツ保護にネイティブのマルチ DRM を使用することには、次のような利点があります。
 
@@ -48,9 +49,9 @@ Over-the-Top (OTT) 用またはオンライン ストリーミング ソリュ�
 次の表は、各種プラットフォームでのネイティブ DRM サポートと、各種ブラウザーでの EME サポートをまとめたものです。
 
 | **クライアント プラットフォーム** | **ネイティブ DRM** | **EME** |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | **スマート TV、STB** | PlayReady、Widevine など | PlayReady や Widevine に対応した埋め込みブラウザー/EME|
-| **Windows 10** | PlayReady | PlayReady に対応した MS Edge/IE11|
+| **Windows 10** | PlayReady | PlayReady に対応した Microsoft Edge/IE11|
 | **Android デバイス (電話、タブレット、TV)** |Widevine |Widevine に対応した Chrome |
 | **iOS** | FairPlay | FairPlay に対応した Safari (iOS 11.2 以降) |
 | **macOS** | FairPlay | FairPlay に対応した Safari (Mac OS X 10.11+ El Capitan 上の Safari 9+ 以降)|
@@ -118,11 +119,11 @@ DRM サブシステムに含まれる可能性のあるコンポーネントは�
 
 ライセンス配信にパブリック クラウドを使用する場合のライセンス配信コストに直接影響します。 次の 2 つの異なる設計でそれを示します。
 
-* 月単位のサブスクリプション: 永続的ライセンスを使用し、コンテンツ キーと資産のマッピングは 1 対多です。 たとえば、すべての子供向けムービーの暗号化に 1 つのコンテンツ キーを使用します。 この場合、次のようになります。
+* 月単位のサブスクリプション:永続的ライセンスを使用し、コンテンツ キーと資産のマッピングは 1 対多です。 たとえば、すべての子供向けムービーの暗号化に 1 つのコンテンツ キーを使用します。 この場合、次のようになります。
 
     すべての子供向けムービーに対して要求されるデバイス当たりのライセンス合計数 = 1
 
-* 月単位のサブスクリプション: 非永続的ライセンスを使用し、コンテンツ キーと資産のマッピングは 1 対 1 です。 この場合、次のようになります。
+* 月単位のサブスクリプション:非永続的ライセンスを使用し、コンテンツ キーと資産のマッピングは 1 対 1 です。 この場合、次のようになります。
 
     すべての子供向けムービーに対して要求されるデバイス当たりのライセンス合計数 = (視聴ムービー数) × (セッション数)
 
@@ -144,7 +145,7 @@ DRM サブシステムに含まれる可能性のあるコンポーネントは�
 | **キー管理** |参照実装には必要ありません |
 | **コンテンツ管理** |C# コンソール アプリケーション |
 
-つまり、IDP と STS の両方が Azure AD によって提供されます。 プレーヤーには [Azure Media Player API](http://amp.azure.net/libs/amp/latest/docs/) が使われます。 Azure Media Services と Azure Media Player のいずれにおいても、DASH 対応の CENC、HLS 対応の FairPlay、スムーズ ストリーミング対応の PlayReady、およびDASH、HLS、スムーズ対応の AES-128 暗号化がサポートされます。
+つまり、IDP と STS の両方が Azure AD によって提供されます。 プレーヤーには [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) が使われます。 Azure Media Services と Azure Media Player のいずれにおいても、DASH 対応の CENC、HLS 対応の FairPlay、スムーズ ストリーミング対応の PlayReady、およびDASH、HLS、スムーズ対応の AES-128 暗号化がサポートされます。
 
 次の図では、このテクノロジ マッピングでの全体的な構造とフローを示します。
 
@@ -198,7 +199,7 @@ DRM コンテンツ保護を設定するため、コンテンツ管理ツール�
    * Install-Package Microsoft.Owin.Host.SystemWeb
    * Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
-8. [Azure Media Player API](http://amp.azure.net/libs/amp/latest/docs/) を使ってプレーヤーを作成します。 異なる DRM プラットフォームで使う DRM テクノロジを指定するには、[Azure Media Player の ProtectionInfo API](http://amp.azure.net/libs/amp/latest/docs/) を使います。
+8. [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) を使ってプレーヤーを作成します。 異なる DRM プラットフォームで使う DRM テクノロジを指定するには、[Azure Media Player の ProtectionInfo API](https://amp.azure.net/libs/amp/latest/docs/) を使います。
 
 9. テスト マトリックスを次の表に示します。
 
@@ -246,7 +247,7 @@ Azure AD に関する情報:
 
 * グループ メンバーシップ要求特権を付与します。 Azure AD アプリケーション マニフェスト ファイルに次の指定が含まれることを確認します。 
 
-    "groupMembershipClaims": "All"    (既定値は null)
+    "groupMembershipClaims":"All"    (既定値は null)
 
 * 制限要件を作成するときに、適切な TokenType を設定します。
 
@@ -326,7 +327,7 @@ Azure AD でポインター アプリを登録して構成するには、次の�
 
 2. リソース アプリ用の新しいキーを追加します。
 
-3. アプリ マニフェスト ファイルを更新し、groupMembershipClaims プロパティの値を "groupMembershipClaims": "All" に変更します。
+3. アプリ マニフェスト ファイルを更新し、groupMembershipClaims プロパティの値を "groupMembershipClaims":"All" に変更します。
 
 4. プレーヤー Web アプリを参照する Azure AD アプリの **[他のアプリケーションに対するアクセス許可]** セクションで、手順 1 で追加したリソース アプリを追加します。 **[デリゲートされたアクセス許可]** で **[<リソース名> へのアクセス]** をオンにします。 このオプションは、リソース アプリにアクセスするアクセス トークンを作成するためのアクセス許可を Web アプリに付与します。 Visual Studio と Azure Web アプリで展開している場合は、Web アプリのローカル バージョンと展開バージョンの両方でこれを行います。
 
@@ -359,13 +360,13 @@ Azure AD によって発行された JWT は、ポインター リソースへ�
 
 セキュリティ キーには次の 2 種類があります。
 
-* 対称キー: JWT の生成と検証に同じキーが使われます。
-* 非対称キー: X509 証明書の公開/秘密キー ペアの秘密キーが JWT の暗号化/生成に使われ、公開キーがトークンの検証に使われます。
+* 対称キー:JWT の生成と検証に同じキーが使われます。
+* 非対称キー:X509 証明書の公開/秘密キー ペアの秘密キーが JWT の暗号化/生成に使われ、公開キーがトークンの検証に使われます。
 
 > [!NOTE]
 > 開発プラットフォームとして .NET Framework/C# を使う場合、非対称セキュリティ キーに使われる X509 証明書のキーの長さは 2048 ビット以上でなければなりません。 これは、.NET Framework の System.IdentityModel.Tokens.X509AsymmetricSecurityKey クラスの要件です。 そうでない場合は、次の例外がスローされます。
-
-> IDX10630: 署名の 'System.IdentityModel.Tokens.X509AsymmetricSecurityKey' は '2048' ビット以上でなければなりません。
+> 
+> IDX10630:署名の "System.IdentityModel.Tokens.X509AsymmetricSecurityKey" は "2048" ビット以上でなければなりません。
 
 ## <a name="the-completed-system-and-test"></a>完成したシステムとテスト
 ここでは、読者がサインイン アカウントを取得する前にシステムの基本的な動作を理解できるように、完成したエンド ツー エンド システムについて以下のシナリオを説明します。
@@ -399,17 +400,17 @@ Azure AD は Microsoft アカウント ドメインを信頼するので、次�
 
 異なるドメイン アカウントで使われるサインイン ページのスクリーンショットを以下に示します。
 
-**カスタム Azure AD テナント ドメインのアカウント**: カスタム Azure AD テナント ドメインのカスタマイズされたサインイン ページ。
+**カスタム Azure AD テナント ドメインのアカウント**:カスタム Azure AD テナント ドメインのカスタマイズされたサインイン ページ。
 
-![カスタム Azure AD テナント ドメインのアカウント](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
+![カスタム Azure AD テナント ドメインのアカウント 1](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
 
-**スマート カードを使用する Microsoft ドメインのアカウント**: 2 要素認証を使用する Microsoft 企業 IT によってカスタマイズされたサインイン ページ。
+**スマート カードを使用する Microsoft ドメインのアカウント**:2 要素認証を使用する Microsoft 企業 IT によってカスタマイズされたサインイン ページ。
 
-![カスタム Azure AD テナント ドメインのアカウント](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
+![カスタム Azure AD テナント ドメインのアカウント 2](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
 
-**Microsoft アカウント**: Microsoft アカウントのコンシューマー向けサインイン ページ。
+**Microsoft アカウント**:Microsoft アカウントのコンシューマー向けサインイン ページ。
 
-![カスタム Azure AD テナント ドメインのアカウント](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
+![カスタム Azure AD テナント ドメインのアカウント 3](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
 
 ### <a name="use-encrypted-media-extensions-for-playready"></a>PlayReady に対する Encrypted Media Extensions の使用
 Windows 8.1 での Internet Explorer 11 以降や、Windows 10 での Microsoft Edge ブラウザーなど、Encrypted Media Extensions (EME)/PlayReady をサポートする最新のブラウザーでは、PlayReady が EME の基になる DRM です。

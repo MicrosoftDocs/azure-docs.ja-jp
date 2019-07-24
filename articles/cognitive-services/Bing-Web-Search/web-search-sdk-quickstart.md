@@ -1,29 +1,29 @@
 ---
-title: 'クイック スタート: C# 用の Bing Web Search SDK を使用する'
+title: クイック スタート:C# 用の Bing Web Search SDK を使用する
 titleSuffix: Azure Cognitive Services
 description: Bing Web Search SDK を使用すると、C# アプリケーションに Bing Web Search を簡単に統合することができます。 このクイック スタートでは、クライアントをインスタンス化し、要求を送信して、応答を出力する方法を学習します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 08/16/2018
+ms.date: 04/15/2019
 ms.author: aahi
-ms.openlocfilehash: ae536166d75af48ea653b256924b5432cfd1f5ef
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b1660034f1937d2d8ff9e70139407619626886a8
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309982"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606805"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>クイック スタート: C# 用の Bing Web Search SDK を使用する
+# <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>クイック スタート:C# 用の Bing Web Search SDK を使用する
 
 Bing Web Search SDK を使用すると、C# アプリケーションに Bing Web Search を簡単に統合することができます。 このクイック スタートでは、クライアントをインスタンス化し、要求を送信して、応答を出力する方法を学習します。
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
+「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 このクイック スタートを実行するには、以下のものが必要です。
@@ -32,7 +32,7 @@ Bing Web Search SDK を使用すると、C# アプリケーションに Bing Web
 * [Visual Studio Code 2017](https://code.visualstudio.com/download)
   * [C# for Visual Studio Code](https://visualstudio.microsoft.com/downloads/)
   * [NuGet パッケージ マネージャー](https://github.com/jmrog/vscode-nuget-package-manager)
-* [.Net Core SDK](https://www.microsoft.com/net/download)
+* [.NET コア SDK](https://www.microsoft.com/net/download)
 
 ## <a name="create-a-project-and-install-dependencies"></a>プロジェクトの作成と依存関係のインストール
 
@@ -61,7 +61,7 @@ using System.Linq;
 
 ## <a name="create-project-scaffolding"></a>プロジェクトのスキャフォールディングの作成
 
-新しいコンソール プロジェクトを作成したときに、アプリケーションの名前空間とクラスが作成されたはずです。 プログラムは次のようになっているものと思われます。
+新しいコンソール プロジェクトを作成したときに、アプリケーションの名前空間とクラスが作成されたはずです。 プログラムは次の例のようになっているものと思われます。
 
 ```csharp
 namespace WebSearchSDK
@@ -82,11 +82,11 @@ namespace WebSearchSDK
 このコードは、検索クエリを構築します。
 
 ```csharp
-public static void WebResults(WebSearchAPI client)
+public static async void WebResults(WebSearchClient client)
 {
     try
     {
-        var webData = client.Web.Search(query: "Yosemite National Park");
+        var webData = await client.Web.SearchAsync(query: "Yosemite National Park");
         Console.WriteLine("Searching for \"Yosemite National Park\"");
 
         // Code for handling responses is provided in the next section...
@@ -101,7 +101,7 @@ public static void WebResults(WebSearchAPI client)
 
 ## <a name="handle-the-response"></a>応答の処理
 
-次に、応答を解析し、結果を出力するコードを追加してみましょう。 最初の Web ページ、画像、ニュース記事、およびビデオの `name` と `url` が出力されます (応答オブジェクトに含まれている場合)。
+次に、応答を解析し、結果を出力するコードを追加してみましょう。 最初の Web ページ、画像、ニュース記事、およびビデオの `Name` と `Url` が出力されます (応答オブジェクトに含まれている場合)。
 
 ```csharp
 if (webData?.WebPages?.Value?.Count > 0)
@@ -211,7 +211,7 @@ else
 ```csharp
 static void Main(string[] args)
 {
-    var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
+    var client = new WebSearchClient(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
     WebResults(client);
 
@@ -234,15 +234,16 @@ dotnet run
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>Bing から返される結果の数の制限
 
-このサンプルでは、`count` パラメーターと `offset` パラメーターを使用して、"Best restaurants in Seattle" (シアトルで最高のレストラン) に対して返される結果の数を制限しています。 最初の結果の `name` と `URL` が出力されます。
+このサンプルでは、`count` パラメーターと `offset` パラメーターを使用して、"Best restaurants in Seattle" (シアトルで最高のレストラン) に対して返される結果の数を制限しています。 最初の結果の `Name` と `Url` が出力されます。
 
 1. このコードをコンソール プロジェクトに追加します。
+
     ```csharp
-    public static void WebResultsWithCountAndOffset(WebSearchAPI client)
+    public static async void WebResultsWithCountAndOffset(WebSearchClient client)
     {
         try
         {
-            var webData = client.Web.SearchAsync(query: "Best restaurants in Seattle", offset: 10, count: 20).Result;
+            var webData = await client.Web.SearchAsync(query: "Best restaurants in Seattle", offset: 10, count: 20).Result;
             Console.WriteLine("\r\nSearching for \" Best restaurants in Seattle \"");
 
             if (webData?.WebPages?.Value?.Count > 0)
@@ -271,11 +272,13 @@ dotnet run
         }
     }
     ```
+
 2. `WebResultsWithCountAndOffset` を `main` に追加します。
+
     ```csharp
     static void Main(string[] args)
     {
-        var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
+        var client = new WebSearchClient(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
         WebResults(client);
         // Search with count and offset...
@@ -285,20 +288,22 @@ dotnet run
         Console.ReadKey();
     }
     ```
+
 3. アプリケーションを実行します。
 
 ### <a name="filter-for-news"></a>ニュースのフィルター処理
 
-このサンプルでは、`response_filter` パラメーターを使用して、検索結果をフィルター処理します。 返される検索結果は、"Microsoft" のニュース記事に限定されます。 最初の結果の `name` と `URL` が出力されます。
+このサンプルでは、`response_filter` パラメーターを使用して、検索結果をフィルター処理します。 返される検索結果は、"Microsoft" のニュース記事に限定されます。 最初の結果の `Name` と `Url` が出力されます。
 
 1. このコードをコンソール プロジェクトに追加します。
+
     ```csharp
-    public static void WebSearchWithResponseFilter(WebSearchAPI client)
+    public static async void WebSearchWithResponseFilter(WebSearchClient client)
     {
         try
         {
             IList<string> responseFilterstrings = new List<string>() { "news" };
-            var webData = client.Web.SearchAsync(query: "Microsoft", responseFilter: responseFilterstrings).Result;
+            var webData = await client.Web.SearchAsync(query: "Microsoft", responseFilter: responseFilterstrings).Result;
             Console.WriteLine("\r\nSearching for \" Microsoft \" with response filter \"news\"");
 
             if (webData?.News?.Value?.Count > 0)
@@ -328,11 +333,13 @@ dotnet run
         }
     }
     ```
+
 2. `WebResultsWithCountAndOffset` を `main` に追加します。
+
     ```csharp
     static void Main(string[] args)
     {
-        var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
+        var client = new WebSearchClient(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
         WebResults(client);
         // Search with count and offset...
@@ -344,20 +351,22 @@ dotnet run
         Console.ReadKey();
     }
     ```
+
 3. アプリケーションを実行します。
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>セーフ サーチ、回答数、昇格フィルターの使用
 
-このサンプルでは、`answer_count`、`promote`、および `safe_search` パラメーターを使用して、検索結果を "Music Videos" でフィルター処理します。 最初の結果の `name` と `URL` が表示されます。
+このサンプルでは、`answer_count`、`promote`、および `safe_search` パラメーターを使用して、検索結果を "Music Videos" でフィルター処理します。 最初の結果の `Name` と `ContentUrl` が表示されます。
 
 1. このコードをコンソール プロジェクトに追加します。
+
     ```csharp
-    public static void WebSearchWithAnswerCountPromoteAndSafeSearch(WebSearchAPI client)
+    public static async void WebSearchWithAnswerCountPromoteAndSafeSearch(WebSearchClient client)
     {
         try
         {
             IList<string> promoteAnswertypeStrings = new List<string>() { "videos" };
-            var webData = client.Web.SearchAsync(query: "Music Videos", answerCount: 2, promote: promoteAnswertypeStrings, safeSearch: SafeSearch.Strict).Result;
+            var webData = await client.Web.SearchAsync(query: "Music Videos", answerCount: 2, promote: promoteAnswertypeStrings, safeSearch: SafeSearch.Strict).Result;
             Console.WriteLine("\r\nSearching for \"Music Videos\"");
 
             if (webData?.Videos?.Value?.Count > 0)
@@ -386,11 +395,13 @@ dotnet run
         }
     }
     ```
+
 2. `WebResultsWithCountAndOffset` を `main` に追加します。
+
     ```csharp
     static void Main(string[] args)
     {
-        var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
+        var client = new WebSearchClient(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
         WebResults(client);
         // Search with count and offset...
@@ -404,6 +415,7 @@ dotnet run
         Console.ReadKey();
     }
     ```
+
 3. アプリケーションを実行します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ

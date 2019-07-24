@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 シリーズ デバイスのディスク ドライブを交換する | Microsoft Docs
-description: StorSimple プライマリ エンクロージャまたは EBOD エンクロージャのディスク ドライブを交換する方法について説明します。
+title: Replace a disk drive on a StorSimple 8000 series device | Microsoft Docs
+description: Explains how to replace a disk drive on a StorSimple primary enclosure or an EBOD enclosure.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -12,103 +12,103 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 073/2017
+ms.date: 8/25/2017
 ms.author: alkohli
-ms.openlocfilehash: a8616eb51b177a9447a7c466c9d934b9139afedf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3d6ef22e4df36996d68194589f43ea0f57def22c
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108320"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673925"
 ---
-# <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのディスク ドライブを交換する
+# <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>Replace a disk drive on your StorSimple 8000 series device
 
-## <a name="overview"></a>概要
-このチュートリアルでは、Microsoft Azure StorSimple デバイスの正常に動作していない、または障害が発生しているハード ディスク ドライブを取り外して交換する方法について説明します。 ディスク ドライブを交換するには、次の操作を行う必要があります。
+## <a name="overview"></a>Overview
+This tutorial explains how you can remove and replace a malfunctioning or failed hard disk drive on a Microsoft Azure StorSimple device. To replace a disk drive, you need to:
 
-* 改ざん防止ロックを解除する
-* ディスク ドライブを取り外す
-* 交換用のディスク ドライブを取り付ける
+* Disengage the antitamper lock
+* Remove the disk drive
+* Install the replacement disk drive
 
 > [!IMPORTANT]
-> ディスク ドライブを取り外して交換する前に、「 [StorSimple ハードウェア コンポーネントの交換](storsimple-8000-hardware-component-replacement.md)」の安全に関する情報を再確認してください。
+> Before removing and replacing a disk drive, review the safety information in [StorSimple hardware component replacement](storsimple-8000-hardware-component-replacement.md).
  
 
-## <a name="disengage-the-antitamper-lock"></a>改ざん防止ロックを解除する
-この手順では、ディスク ドライブを交換するときに StorSimple デバイスの改ざん防止ロックをロックまたは解除する方法について説明します。 改ざん防止ロックは、ドライブのキャリア ハンドル内に取り付けられています。このロックには、ハンドルのラッチ部分にある小さな開口部を通してアクセスします。 ドライブは、ロックがロック位置にセットされた状態で提供されます。
+## <a name="disengage-the-antitamper-lock"></a>Disengage the antitamper lock
+This procedure explains how the antitamper locks on your StorSimple device can be engaged or disengaged when you replace the disk drives. The antitamper locks are fitted in the drive carrier handles, and they are accessed through a small aperture in the latch section of the handle. Drives are supplied with the locks set to the locked position.
 
-#### <a name="to-unlock-the-antitamper-lock"></a>改ざん防止ロックを解除するには
-1. ロック キー (Microsoft が提供する "改ざん防止加工された" T10 ドライバー) を、ハンドルの開口部から受け口に慎重に差し込みます。 
+#### <a name="to-unlock-the-antitamper-lock"></a>To unlock the antitamper lock
+1. Carefully insert the lock key (a "tamperproof" T10 screwdriver that Microsoft provided) into the aperture in the handle and into its socket. 
    
-   改ざん防止ロックがアクティブになっている場合は、開口部に赤色のインジケーターが表示されます。
+   If the antitamper lock is activated, the red indicator is visible in the aperture.
   
-    ![ロックされたディスク ドライブ](./media/storsimple-disk-drive-replacement/IC741056.png)
+    ![Locked disk drive](./media/storsimple-disk-drive-replacement/IC741056.png)
    
-    **図 1** 改ざん防止ロックがロックされている
+    **Figure 1** Anti-tamper lock engaged
    
-   | ラベル | 説明 |
+   | Label | Description |
    |:--- |:--- |
-   | 1 |インジケーターの開口部 |
-   | 2 |改ざん防止ロック |
-2. 開口部の赤色のインジケーターが消えるまで、キーを反時計方向に回します。
-3. キーを抜きます。
+   | 1 |Indicator aperture |
+   | 2 |Antitamper lock |
+2. Rotate the key in an anticlockwise direction until the red indicator is not visible in the aperture above the key.
+3. Remove the key.
    
-    ![ロック解除されたディスク ドライブ](./media/storsimple-disk-drive-replacement/IC741057.png)
+    ![Unlocked disk drive](./media/storsimple-disk-drive-replacement/IC741057.png)
    
-    **図 2** ロック解除されたディスク ドライブ
-4. これで、ディスク ドライブを取り外すことができます。
+    **Figure 2** Unlocked disk drive
+4. The disk drive can now be removed.
 
-ロックをロックするには、手順を逆にして実行します。
+Follow the steps in reverse to engage the lock.
 
-## <a name="remove-the-disk-drive"></a>ディスク ドライブを取り外す
-StorSimple デバイスは、RAID 10 に似たストレージ スペース構成をサポートします。 これは、1 台のディスク、ソリッドステート ドライブ (SSD)、またはハード ディスク ドライブ (HDD) で障害が発生した状態で、通常どおりに動作できることを意味します。
+## <a name="remove-the-disk-drive"></a>Remove the disk drive
+Your StorSimple device supports a RAID 10-like storage spaces configuration. This implies that it can operate normally with one failed disk, solid-state drive (SSD), or hard disk drive (HDD).
 
 > [!IMPORTANT]
-> * 複数台のディスクで障害が発生している場合は、どの時点でもシステムから複数の SSD または HDD を取り外さないでください。 これを行うと、データが失われる可能性があります。
-> * 交換用の SSD は、必ず交換前の SSD が格納されていたスロットに配置してください。 同様に、交換用の HDD は、必ず交換前の HDD が格納されていたスロットに配置してください。
-> * Azure Portal では、スロットには 0 ～ 11 の番号が付けられています。 したがって、ポータルで、スロット 2 のディスクで障害が発生していることを示している場合は、上から 3 番目のスロットで障害が発生しているディスクを探します。
+> * If your system has more than one failed disk, do not remove more than one SSD or HDD from the system at any point in time. Doing so could result in loss of data.
+> * Make sure that you place a replacement SSD in a slot that previously contained an SSD. Similarly, place a replacement HDD in a slot that previously contained an HDD.
+> * In the Azure portal, slots are numbered from 0 – 11. Therefore, if the portal shows that a disk in slot 2 has failed, on the device, look for the failed disk in the third slot from the top left.
 > 
 > 
 
-ドライブは、システムの稼働中に取り外して交換できます。
+Drives can be removed and replaced while the system is operating.
 
-#### <a name="to-remove-a-drive"></a>ドライブを取り外すには
-1. 障害が発生したディスクを特定するには、Azure Portal で対象デバイスの **[設定] > [ハードウェアの正常性]** に移動します。 主エンクロージャまたは EBOD エンクロージャ (8600 モデルを使用している場合) 内のディスクに障害が発生する可能性があるため、**[共有コンポーネント]** と **[EBOD 共有コンポーネント]** でディスクの状態を調べます。 どちらのエンクロージャでも、障害が発生しているディスクは、状態が赤色で表示されます。
-2. 主エンクロージャまたは EBOD エンクロージャの前部にあるドライブを調べます。 
-3. ディスクのロックが解除されている場合は、次の手順に進みます。 ディスクがロックされている場合は、「 [改ざん防止ロックを解除する](#disengage-the-antitamper-lock)」の手順に従ってロックを解除します。
-4. ドライブ キャリア モジュールの黒色のラッチを押し、シャーシの前面からドライブ キャリア ハンドルを引き出します。
+#### <a name="to-remove-a-drive"></a>To remove a drive
+1. To identify the failed disk, in the Azure portal, go to your device **Settings > Hardware health**. Because a disk can fail in the primary enclosure and/or in an EBOD enclosure (if you are using a 8600 model), look at the status of the disks under **Shared components** and under **EBOD shared components**. A failed disk in either enclosure will be shown with a red status.
+2. Locate the drives in the front of the primary enclosure or the EBOD enclosure. 
+3. If the disk is unlocked, proceed to the next step. If the disk is locked, unlock it by following the procedure in [Disengage the antitamper lock](#disengage-the-antitamper-lock).
+4. Press the black latch on the drive carrier module and pull the drive carrier handle out and away from the front of the chassis.
    
-    ![ディスク ドライブ ハンドルを解放する](./media/storsimple-disk-drive-replacement/IC741051.png)
+    ![Releasing disk drive handle](./media/storsimple-disk-drive-replacement/IC741051.png)
    
-    **図 3** ドライブ ハンドルを解放する
-5. ドライブ キャリア ハンドルを完全に引き出したら、ドライブ キャリアをシャーシの外にスライドします。 
+    **Figure 3** Releasing the drive handle
+5. When the drive carrier handle is fully extended, slide the drive carrier out of the chassis. 
    
-    ![ディスクをディスク ドライブからスライドさせる](./media/storsimple-disk-drive-replacement/IC741052.png)
+    ![Sliding disk out of disk drive](./media/storsimple-disk-drive-replacement/IC741052.png)
    
-    **図 4** ディスク ドライブをキャリアからスライドさせる
+    **Figure 4** Sliding the disk drive out of the carrier
 
-## <a name="install-the-replacement-disk-drive"></a>交換用のディスク ドライブを取り付ける
-StorSimple デバイスから障害が発生したドライブを取り外した後、次の手順に従って新しいドライブに交換します。
+## <a name="install-the-replacement-disk-drive"></a>Install the replacement disk drive
+After a drive has failed in your StorSimple device and you have removed it, follow this procedure to replace it with a new drive.
 
-#### <a name="to-insert-a-drive"></a>ドライブを挿入するには
-1. 次の図のように、ドライブ キャリア ハンドルが完全に引き出されていることを確認します。
+#### <a name="to-insert-a-drive"></a>To insert a drive
+1. Ensure the drive carrier handle is fully extended, as shown in the following image.
    
-    ![ハンドルが引き出されたディスク ドライブ](./media/storsimple-disk-drive-replacement/IC741044.png)
+    ![Disk drive with handle extended](./media/storsimple-disk-drive-replacement/IC741044.png)
    
-    **図 5** ハンドルが引き出されているドライブ
-2. ドライブ キャリアをシャーシの中にスライドさせます。
+    **Figure 5** Drive with handle extended
+2. Slide the drive carrier all the way into the chassis.
    
-    ![ディスクをディスク ドライブ キャリア内にスライドさせる](./media/storsimple-disk-drive-replacement/IC741045.png)
+    ![Sliding disk into disk drive carrier](./media/storsimple-disk-drive-replacement/IC741045.png)
    
-    **図 6** ドライブ キャリアをシャーシ内にスライドさせる
-3. ドライブ キャリアを挿入した状態で、ドライブ キャリア ハンドルを閉じます。カチッという音がしてロック位置で止まるまで、ドライブ キャリア ハンドルをシャーシ側に押し続けます。
-4. Microsoft によって提供されたロック キー(改ざん防止加工された Torx ドライバー) を使用して、ロック スクリューを時計方向に 45 度回転させてキャリア ハンドルを固定します。
-5. 正しく交換されたこと、またドライブが正常に動作していることを確かめます。 Azure Portal にアクセスし、**[デバイスの設定]** > **[ハードウェアの正常性]** に移動します。 **[共有コンポーネント]** または **[EBOD 共有コンポーネント]** に、ドライブの状態が、正常な状態であることを示す緑色で表示されます。
+    **Figure 6**  Sliding the drive carrier into the chassis
+3. With the drive carrier inserted, close the drive carrier handle while continuing to push the drive carrier into the chassis, until the drive carrier handle snaps into a locked position.
+4. Use the lock key that was provided by Microsoft (tamperproof Torx screwdriver) to secure the carrier handle into place by turning the lock screw a quarter turn clockwise.
+5. Verify that the replacement was successful and the drive is operational. Access the Azure portal and navigate to **Device settings** > **Hardware health**. Under **Shared components** or **EBOD shared components**, the drive status should be green, indicating that it is healthy.
 
    
    > [!NOTE]
-   > 交換後にディスクの状態が緑色に変化するまで、数時間かかる場合があります。
+   > It may take several hours for the disk status to turn green after the replacement.
   
-## <a name="next-steps"></a>次のステップ
-「 [StorSimple ハードウェア コンポーネントの交換](storsimple-8000-hardware-component-replacement.md)」の説明を参照してください。
+## <a name="next-steps"></a>Next steps
+Learn more about [StorSimple hardware component replacement](storsimple-8000-hardware-component-replacement.md).
 

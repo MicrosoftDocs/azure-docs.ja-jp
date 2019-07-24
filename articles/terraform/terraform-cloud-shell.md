@@ -2,19 +2,19 @@
 title: Terraform と Azure Cloud Shell を使用する
 description: Terraform と Azure Cloud Shell を使用すると、認証とテンプレートの構成が簡単になります。
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, 開発, スケール セット, 仮想マシン, ネットワーク, ストレージ, モジュール
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: a5f44edf201ce9a2e2c0da6b5da9031958a11fdc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ab2fd0c7fa546201d6eb19f727053a9ac54fa854
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959310"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773065"
 ---
 # <a name="terraform-cloud-shell-development"></a>Terraform Cloud Shell の開発 
 

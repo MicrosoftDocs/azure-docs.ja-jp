@@ -3,18 +3,18 @@ title: Orchestrator から Azure Automation への移行
 description: System Center Orchestrator の Runbook と統合パックを Azure Automation に移行する方法を説明します。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 83fff9fa322431983c1d385705ae235a8e818570
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ae47cba8f8e9a7cdf914c0b3ea5dfb9fa6c259a9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237266"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432899"
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>Orchestrator から Azure Automation (ベータ版) へ移行する
 [System Center Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) の Runbook は特に Orchestrator 用として作成された統合パックの活動に基づいているのに対し、Azure Automation の Runbook は Windows PowerShell に基づいています。  [グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) の外観は Orchestrator Runbook に似ており、アクティビティは PowerShell コマンドレット、子 Runbook、およびアセットで表されます。
@@ -79,7 +79,9 @@ Orchestrator Runbook を変換して Azure Automation にインポートする�
 ### <a name="using-runbook-converter"></a>Runbook コンバーターの使用
 **ConvertFrom-SCORunbook** の構文は次のとおりです。
 
-    ConvertFrom-SCORunbook -RunbookPath <string> -Module <string[]> -OutputFolder <string>
+```powershell
+ConvertFrom-SCORunbook -RunbookPath <string> -Module <string[]> -OutputFolder <string>
+```
 
 * RunbookPath - 変換する Runbook を含むエクスポート ファイルへのパス。
 * Module - Runbook の活動を含む統合モジュールのコンマ区切りリスト。
@@ -87,8 +89,9 @@ Orchestrator Runbook を変換して Azure Automation にインポートする�
 
 次の例のコマンドは、**MyRunbooks.ois_export** というエクスポート ファイルの Runbook を変換します。  これらの Runbook では、Active Directory と Data Protection Manager の統合パックが使用されています。
 
-    ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module c:\ip\SystemCenter_IntegrationModule_ActiveDirectory.zip,c:\ip\SystemCenter_IntegrationModule_DPM.zip -OutputFolder "c:\runbooks"
-
+```powershell
+ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module c:\ip\SystemCenter_IntegrationModule_ActiveDirectory.zip,c:\ip\SystemCenter_IntegrationModule_DPM.zip -OutputFolder "c:\runbooks"
+```
 
 ### <a name="log-files"></a>ログ ファイル
 Runbook コンバーターでは、変換後の Runbook と同じ場所に次のログ ファイルが作成されます。  ファイルが既に存在する場合は、最後に行われた変換の情報で上書きされます。
@@ -131,3 +134,4 @@ Orchestrator の Runbook は、 **Runbook の呼び出し** 活動を使用し�
 * [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)
 * [Orchestrator 標準活動](https://technet.microsoft.com/library/hh403832.aspx)
 * [System Center Orchestrator Migration Toolkit のダウンロード](https://www.microsoft.com/en-us/download/details.aspx?id=47323)
+

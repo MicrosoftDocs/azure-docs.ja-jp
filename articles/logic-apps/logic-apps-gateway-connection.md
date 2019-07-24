@@ -1,6 +1,6 @@
 ---
-title: Azure Logic Apps 用のオンプレミスのデータ ソースにアクセスする | Microsoft Docs
-description: オンプレミス データ ゲートウェイを作成および設定して、ロジック アプリからオンプレミスのデータ ソースにアクセスできるようにします
+title: Azure Logic Apps からオンプレミスのデータ ソースにアクセスする | Microsoft Docs
+description: オンプレミス データ ゲートウェイを作成することによって、ロジック アプリからオンプレミスのデータ ソースに接続する
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,16 +9,19 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: e8e8d85d2c95c1dda7271de72491594562b7d3c1
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 2b9e1c153c3fa9b17145eb6c3c8f3ed02e3bf40f
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413708"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54064068"
 ---
-# <a name="connect-to-data-sources-on-premises-from-azure-logic-apps-with-on-premises-data-gateway"></a>オンプレミス データ ゲートウェイを使用して Azure Logic Apps からオンプレミスのデータ ソースに接続する
+# <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps からオンプレミスのデータ ソースに接続する
 
-ロジック アプリからオンプレミスのデータ ソースにアクセスするには、Azure でデータ ゲートウェイ リソースを作成して、ロジック アプリが[オンプレミスのコネクタ](../logic-apps/logic-apps-gateway-install.md#supported-connections)を使用できるようにします。 この記事では、[ゲートウェイをダウンロードしてローカル コンピューターにインストール](../logic-apps/logic-apps-gateway-install.md)した "*後で*" Azure ゲートウェイ リソースを作成する方法を示します。 
+ロジック アプリからオンプレミスのデータ ソースにアクセスするには、Azure Portal でオンプレミス データ ゲートウェイ リソースを作成します。 その後、ロジック アプリは[オンプレミス コネクタ](../logic-apps/logic-apps-gateway-install.md#supported-connections)を使用できます。 この記事では、[ゲートウェイをダウンロードしてローカル コンピューターにインストール](../logic-apps/logic-apps-gateway-install.md)した "*後で*" Azure ゲートウェイ リソースを作成する方法を示します。 
+
+> [!TIP]
+> Azure 仮想ネットワークに接続するには、代わりに[*統合サービス環境*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)を作成することことを考慮してください。 
 
 他のサービスでゲートウェイを使用する方法については、次の記事を参照してください。
 
@@ -60,12 +63,12 @@ ms.locfileid: "50413708"
 
 3. **[接続ゲートウェイの作成]** ページで、データ ゲートウェイ リソースに関する次の情報を指定します。
 
-   | プロパティ | [説明] | 
+   | プロパティ | 説明 | 
    |----------|-------------|
    | **名前** | ゲートウェイ リソースの名前 | 
    | **サブスクリプション** | Azure サブスクリプションの名前。このサブスクリプションは、ロジック アプリと同じサブスクリプションである必要があります。 既定のサブスクリプションは、サインインするために使用した Azure アカウントに基づきます。 | 
    | **[リソース グループ]** | 関連するリソースを整理するための [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
-   | **場所** | Azure では、この場所は、[ゲートウェイのインストール](../logic-apps/logic-apps-gateway-install.md)中にゲートウェイ クラウド サービス向けに選択したリージョンと同じリージョンに限定されます。 <p>**注**: ゲートウェイ リソースの場所とゲートウェイ クラウド サービスの場所が一致していることを確認してください。 一致していないと、ゲートウェイのインストールは、次の手順で選択するインストール済みのゲートウェイの一覧に表示されない可能性があります。 ゲートウェイ リソースとロジック アプリでは、異なるリージョンを使用できます。 | 
+   | **場所** | Azure では、この場所は、[ゲートウェイのインストール](../logic-apps/logic-apps-gateway-install.md)中にゲートウェイ クラウド サービス向けに選択したリージョンと同じリージョンに限定されます。 <p>**メモ**:このゲートウェイ リソースの場所がゲートウェイ クラウド サービスの場所に一致していることを確認してください。 一致していないと、ゲートウェイのインストールは、次の手順で選択するインストール済みのゲートウェイの一覧に表示されない可能性があります。 ゲートウェイ リソースとロジック アプリでは、異なるリージョンを使用できます。 | 
    | **インストール名** | ゲートウェイのインストールが既に選択されていない場合は、前にインストールしたゲートウェイを選択します。 | 
    | | | 
 

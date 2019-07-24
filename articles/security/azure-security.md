@@ -4,7 +4,7 @@ description: Azure のセキュリティ、サービス、およびそのしく�
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 2dd6ebb9e2f35eccae3b267402a4ef9b0e1b2dbe
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: ed57d72d32ba82a37036c9af77590bd4e93db8d9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567164"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904254"
 ---
 # <a name="introduction-to-azure-security"></a>Azure セキュリティの概要
 ## <a name="overview"></a>概要
@@ -53,13 +53,13 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 ## <a name="summary-azure-security-capabilities"></a>Azure のセキュリティ機能の概要
 次の表に、Azure インフラストラクチャ、顧客データ、および安全なアプリケーションのセキュリティを確保するために Microsoft で実装されているセキュリティ機能の概要を示します。
 ### <a name="security-features-implemented-to-secure-the-azure-platform"></a>Azure プラットフォームのセキュリティを確保するために実装されるセキュリティ機能
-次に一覧された機能で、Azure プラットフォームが安全な方法で管理されていることを確認できます。 Microsoft が安全なプラットフォーム、プライバシー管理、コンプライアンス、透明性という 4 つの領域においてお客様の信頼に関する質問にどのように対処しているかの詳細については、リンクをクリックすることで確認できます。
+次に一覧された機能で、Azure プラットフォームが安全な方法で管理されていることを確認できます。 Microsoft が次の 4 つの領域においてお客様の信頼に関する質問にどのように対処しているかの詳細については、リンクをクリックすることで確認できます:安全なプラットフォーム、プライバシー管理、コンプライアンス、透明性。
 
 
 | [安全なプラットフォーム](https://www.microsoft.com/en-us/trustcenter/Security/default.aspx)  | [プライバシー管理](https://www.microsoft.com/en-us/trustcenter/Privacy/default.aspx)  |[コンプライアンス](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)   | [透明性](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
 | [セキュリティ開発サイクル](https://www.microsoft.com/en-us/sdl/)、内部監査 | [データの常時管理](https://www.microsoft.com/en-us/trustcenter/Privacy/You-own-your-data) | [トラスト センター](https://www.microsoft.com/en-us/trustcenter/default.aspx) |[Microsoft が Azure サービスで顧客データの安全性を確保する方法](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
-| [必須のセキュリティ トレーニング、バックグラウンド チェック](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [データ保管場所の管理](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [共通管理ハブ](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Microsoft が Azure サービスでデータの保管場所を管理する方法](http://azuredatacentermap.azurewebsites.net/)|
+| [必須のセキュリティ トレーニング、バックグラウンド チェック](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [データ保管場所の管理](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [共通管理ハブ](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Microsoft が Azure サービスでデータの保管場所を管理する方法](https://azuredatacentermap.azurewebsites.net/)|
 | [侵入テスト](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx)、[不正侵入検出、DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement)、[監査、ログ記録](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [条件に応じたアクセス権の付与](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [クラウド サービス向けデリジェンス チェックリスト](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[データにアクセスできるユーザーとその条件](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [最新のデータ センター](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)、物理的なセキュリティ、[セキュリティで保護されたネットワーク](https://docs.microsoft.com/azure/security/security-network-overview) | [法執行機関への対応](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [サービス、場所、および業界ごとのコンプライアンス](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Microsoft が Azure サービスで顧客データの安全性を確保する方法](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
 |  [セキュリティ インシデント対応](https://aka.ms/SecurityResponsepaper)、[責任の分担](https://aka.ms/sharedresponsibility) |[厳格なプライバシー基準](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Azure サービスの証明書確認、Transparency Hub](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
@@ -69,18 +69,18 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 ### <a name="security-features-offered-by-azure-to-secure-data-and-application"></a>データおよびアプリケーションのセキュリティを確保するために Azure で提供されるセキュリティ機能
 アプリケーションやサービスのセキュリティを管理する担当者の責任範囲は、クラウド サービス モデルによって異なります。 ビルトイン機能および Azure サブスクリプションに展開可能なパートナー ソリューションに、これらの責任範囲をカバーする Azure プラットフォームで使用可能な機能があります。
 
-ビルトイン機能は、運用、アプリケーション、ストレージ、ネットワーク、コンピューティング、ID という 6 つの領域で構成されています。 Azure プラットフォームのこれら 6 つの領域で使用できる機能の詳細については、概要情報に記載されています。
+ビルトイン機能は、次の 6 つの機能区分に分類されます:操作、アプリケーション、ストレージ、ネットワーキング、コンピューティング、ID。 Azure プラットフォームのこれら 6 つの領域で使用できる機能の詳細については、概要情報に記載されています。
 
-## <a name="operations"></a>[操作]
+## <a name="operations"></a>操作
 このセクションでは、セキュリティ操作を行う上で重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="security-and-audit-dashboard"></a>[セキュリティおよび監査] ダッシュボード
-[セキュリティおよび監査ソリューション](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)では、注意を必要とする重要な問題向けの[組み込みの検索クエリ](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/)と共に、組織の IT セキュリティ対策への包括的な視点が提供されます。 [[セキュリティおよび監査]](https://technet.microsoft.com/library/mt484091.aspx) ダッシュボードは、Log Analytics におけるすべてのセキュリティ関連機能のホーム画面です。 コンピューターのセキュリティ状態に関する高度な洞察を提供します。 また、過去の 24 時間、7 日間、またはそれ以外のカスタム期間に発生したすべてのイベントを表示する機能も含まれています。
+[セキュリティおよび監査ソリューション](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)では、注意を必要とする重要な問題向けの[組み込みの検索クエリ](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/)と共に、組織の IT セキュリティ対策への包括的な視点が提供されます。 [[セキュリティおよび監査]](https://technet.microsoft.com/library/mt484091.aspx) ダッシュボードは、Azure Monitor ログにおけるすべてのセキュリティ関連機能のホーム画面です。 コンピューターのセキュリティ状態に関する高度な洞察を提供します。 また、過去の 24 時間、7 日間、またはそれ以外のカスタム期間に発生したすべてのイベントを表示する機能も含まれています。
 
 さらに、セキュリティとコンプライアンスを構成して、特定のイベントが検出されたときに[特定のアクションを自動的に実行](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/)します。
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
-[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) を使用すると、ソリューション内の複数のリソースを 1 つのグループにまとめて作業できます。 ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイには [Azure Resource Manager テンプレート](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/)を使用します。このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 Resource Manager には、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。
+[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) を使用すると、ソリューション内の複数のリソースを 1 つのグループとして作業できます。 ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイには [Azure Resource Manager テンプレート](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/)を使用します。このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 Resource Manager には、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。
 
 Azure Resource Manager のテンプレート ベースのデプロイにより、Azure にデプロイされたソリューションのセキュリティが向上します。これは、標準的なセキュリティ制御設定によるもので、標準化されたテンプレート ベースのデプロイに統合できます。 これにより、手動によるデプロイ時に発生する可能性のあるセキュリティ構成エラーのリスクが軽減されます。
 
@@ -94,10 +94,10 @@ Application Insights が作成するグラフや表を見ると、たとえば�
 ### <a name="azure-monitor"></a>Azure Monitor
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) は、Azure インフラストラクチャ ([アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)) と個々の Azure リソース ([診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)) の両方から得られたデータの視覚化、クエリ、ルーティング、アラート、自動スケール、自動化を行います。 Azure Monitor を使用して、Azure ログで生成されたセキュリティ関連のイベントについて通知を作成できます。
 
-### <a name="log-analytics"></a>Log Analytics
-[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) – Azure リソースだけでなく、オンプレミスやサードパーティ製のクラウド インフラストラクチャ (AWS など) にも使える IT 管理ソリューションです。 Log Analytics には Azure Monitor のデータを直接ルーティングできるため、環境全体のメトリックとログを 1 か所で確認できます。
+### <a name="azure-monitor-logs"></a>Azure Monitor ログ
+[Azure Monitor ログ](https://azure.microsoft.com/documentation/services/log-analytics/) – Azure リソースだけでなく、オンプレミスやサードパーティ製のクラウド インフラストラクチャ (AWS など) にも使える IT 管理ソリューションです。 Azure Monitor ログには Azure Monitor のデータを直接ルーティングできるため、環境全体のメトリックとログを 1 か所で確認できます。
 
-Log Analytics は、フォレンジック分析などのセキュリティ分析に便利なツールで、セキュリティ関連の項目が大量にあっても柔軟なクエリ方法により迅速に検索を行うことができます。 さらに、オンプレミスの[ファイアウォールおよびプロキシ ログを Azure にエクスポートして、Log Analytics を使用した分析に使用することができます。](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)
+Azure Monitor ログは、フォレンジック分析などのセキュリティ分析に便利なツールで、セキュリティ関連の項目が大量にあっても柔軟なクエリ方法により迅速に検索を行うことができます。 さらに、オンプレミスの[ファイアウォールおよびプロキシ ログを Azure にエクスポートして、Azure Monitor ログを使用した分析に使用することができます。](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)
 
 ### <a name="azure-advisor"></a>Azure Advisor
 [Azure Advisor](https://docs.microsoft.com/azure/advisor/) は、Azure のデプロイの最適化に役立つ、個人用に設定されたクラウド コンサルタントです。 Azure Advisor では、リソース構成と使用量テレメトリを分析します。 次に、[Azure の全体的な使用量を削減する](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations)機会を探すと同時に、[パフォーマンス](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations)、[セキュリティ](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations)、リソースの[高可用性](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations)の向上に役立つソリューションを提案します。 Azure Advisor では、Azure にデプロイするソリューションの全体的なセキュリティの状況を大幅に改善することができる提案を行います。 これらの提案は [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) で実施されるセキュリティ分析に基づいています。
@@ -106,26 +106,26 @@ Log Analytics は、フォレンジック分析などのセキュリティ分析
 [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応できるようにします。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
 さらに、Azure Security Center は、すぐに対応できるようにアラートや推奨事項が表示された単一のダッシュ ボードを提供することで、セキュリティ操作に役立てることができます。 多くの場合、Azure Security Center コンソール内で 1 回クリックすれば問題を修復することができます。
-## <a name="applications"></a>[アプリケーション]
+## <a name="applications"></a>アプリケーション
 このセクションでは、アプリケーション セキュリティの重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="web-application-vulnerability-scanning"></a>Web アプリケーションの脆弱性のスキャン
-[App Service アプリ](https://docs.microsoft.com/azure/app-service/app-service-web-overview)の脆弱性のテストを開始する最も簡単な方法の 1 つは、[Tinfoil Security との統合](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)を使用して 1 回のクリックでアプリに対する脆弱性のスキャンを実行することです。 テスト結果はわかりやすいレポートで表示され、詳しい手順に従ってそれぞれの脆弱性を修正する方法が説明されます。
+[App Service アプリ](https://docs.microsoft.com/azure/app-service/overview)の脆弱性のテストを開始する最も簡単な方法の 1 つは、[Tinfoil Security との統合](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)を使用して 1 回のクリックでアプリに対する脆弱性のスキャンを実行することです。 テスト結果はわかりやすいレポートで表示され、詳しい手順に従ってそれぞれの脆弱性を修正する方法が説明されます。
 
 ### <a name="penetration-testing"></a>侵入テスト
 独自の侵入テストを実行するか、別のスキャナー スイートまたはプロバイダーを使用する場合は、 [Azure 侵入テストの承認プロセス](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) に従い、事前の承認を得たうえで目的の侵入テストを実行する必要があります。
 
 ### <a name="web-application-firewall"></a>Web アプリケーション ファイアウォール
-[Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) の Web アプリケーション ファイアウォール (WAF) は、SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの一般的な Web ベースの攻撃から Web アプリケーションを保護するのに役立ちます。 このファイアウォールには、[Open Web Application Security Project (OWASP) により一般的な脆弱性の上位 10 種](https://msdn.microsoft.com/library/)と特定された脅威からの保護が事前に構成されています。
+[Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) の Web アプリケーション ファイアウォール (WAF) は、SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの一般的な Web ベースの攻撃から Web アプリケーションを保護するのに役立ちます。 このファイアウォールには、[Open Web Application Security Project (OWASP) により一般的な脆弱性の上位 10 種](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)と特定された脅威からの保護が事前に構成されています。
 
-### <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証および承認
-[App Service の認証と承認](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)は、アプリのバックエンドでコードを変更する必要がないように、アプリケーションでユーザーをサインインさせる方法を提供する機能です。 これにより、アプリケーションの保護が容易になり、またユーザーごとのデータにも対応できるようになります。
+### <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証および認可
+[App Service の認証と承認](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)は、アプリのバックエンドでコードを変更する必要がないように、アプリケーションでユーザーをサインインさせる方法を提供する機能です。 これにより、アプリケーションの保護が容易になり、またユーザーごとのデータにも対応できるようになります。
 
 ### <a name="layered-security-architecture"></a>複数層セキュリティ アーキテクチャ
 [App Service Environments](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-intro) は、[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) にデプロイされる分離されたランタイム環境です。開発者は、セキュリティ アーキテクチャを階層化し、アプリケーションの層ごとにネットワーク アクセスのレベルに違いを設けることができます。 一般に、API バックエンドは通常のインターネット アクセスから隠し、アップストリームの Web アプリにのみ API の呼び出しを許可することが望ましいと考えられています。 App Service Environment を含んだ Azure Virtual Network サブネットに対して[ネットワーク セキュリティ グループ (NSG)](https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/) を使用することで、API アプリケーションへのパブリック アクセスを制限することができます。
 
 ### <a name="web-server-diagnostics-and-application-diagnostics"></a>Web サーバー診断とアプリケーション診断
-App Service Web Apps は、Web サーバーと Web アプリケーションの両方のログ情報を診断する機能を備えています。 これらは論理的に [Web サーバー診断](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log)と[アプリケーション診断](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx)に分けられます。 Web サーバーでは、サイトおよびアプリケーションの診断とトラブルシューティングに 2 つの大きな進展があります。
+App Service Web Apps は、Web サーバーと Web アプリケーションの両方のログ情報を診断する機能を備えています。 これらは論理的に [Web サーバー診断](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs)と[アプリケーション診断](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx)に分けられます。 Web サーバーでは、サイトおよびアプリケーションの診断とトラブルシューティングに 2 つの大きな進展があります。
 
 1 つ目の新機能は、アプリケーション プール、ワーカー プロセス、サイト、アプリケーション ドメイン、および実行中の要求に関するリアルタイムの状態情報です。 新しい 2 つ目の強みは、完全な要求-応答プロセスによって要求を追跡する詳細なトレース イベントです。
 
@@ -141,7 +141,7 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 -   Web サーバーのログ記録 - W3C 拡張ログ ファイル形式を使用した、HTTP トランザクションに関する情報。 このレポートが便利なのは、全体的なサイト メトリック、たとえば、サイトで処理された要求の数や、特定の IP アドレスからの要求の数を特定するときです。
 
 #### <a name="application-diagnostics"></a>アプリケーション診断
-[アプリケーション診断](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log)では、Web アプリケーションによって生成された情報を取り込むことができます。 ASP.NET アプリケーションは、 [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) クラスを使用して、情報をアプリケーション診断ログに記録できます。 アプリケーション診断では、アプリケーションの障害やエラーに関連するイベントとアプリケーションのパフォーマンスに関連するイベントの、主に 2 つのイベント タイプがあります。 障害やエラーは、さらに接続性、セキュリティ、および障害問題に分かれます。 障害問題とは一般的に、アプリケーション コードでの問題に関連します。
+[アプリケーション診断](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs)では、Web アプリケーションによって生成された情報を取り込むことができます。 ASP.NET アプリケーションは、 [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) クラスを使用して、情報をアプリケーション診断ログに記録できます。 アプリケーション診断では、アプリケーションの障害やエラーに関連するイベントとアプリケーションのパフォーマンスに関連するイベントの、主に 2 つのイベント タイプがあります。 障害やエラーは、さらに接続性、セキュリティ、および障害問題に分かれます。 障害問題とは一般的に、アプリケーション コードでの問題に関連します。
 
 アプリケーション診断では、次の方法でグループ化されたイベントを表示できます。
 
@@ -287,11 +287,11 @@ VNet で使用される DNS サーバーの一覧は、管理ポータルまた�
 
 ### <a name="azure-dns"></a>Azure DNS
 [ドメイン ネーム システム (DNS)](https://technet.microsoft.com/library/bb629410.aspx) は、Web サイトまたはサービスの名前をその IP アドレスに変換する (または解決する) 役割を担います。 [Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。 DNS では、セキュリティの 3 つの柱、"CIA" (機密性、整合性、可用性) の中の可用性がサポートされています。
-### <a name="log-analytics-nsgs"></a>Log Analytics NSG
+### <a name="azure-monitor-logs-nsgs"></a>Azure Monitor ログ NSG
 NSG に対して、以下の診断ログ カテゴリを有効にできます。
--   イベント: MAC アドレスに基づいた、VM とインスタンス ロールに適用される NSG ルールに関するエントリが含まれます。 これらのルールの状態は 60 秒ごとに収集されます。
+-   イベント:MAC アドレスに基づいた、VM とインスタンス ロールに適用される NSG ルールに関するエントリが含まれます。 これらのルールの状態は 60 秒ごとに収集されます。
 
--   ルール カウンター: トラフィックを許可または拒否するために各 NSG ルールが適用された回数に関するエントリが含まれます。
+-   ルール カウンター:トラフィックを拒否または許可するために各 NSG ルールが適用された回数に関するエントリが含まれます。
 
 ### <a name="azure-security-center"></a>Azure Security Center
 Security Center は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。 ネットワークに関する推奨事項は、ファイアウォール、ネットワーク セキュリティ グループ、受信トラフィック規則の構成などが中心です。
@@ -307,7 +307,7 @@ Security Center は、脅威の回避、検出、対応に役立つサービス�
 -   [インターネットに接続するエンドポイント経由のアクセスを制限する](https://docs.microsoft.com/azure/security-center/security-center-restrict-access-through-internet-facing-endpoints)。NSG の着信トラフィック規則を構成することをお勧めします。
 
 
-## <a name="compute"></a>コンピューティング
+## <a name="compute"></a>Compute
 
 このセクションでは、この領域の重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
@@ -368,7 +368,7 @@ Microsoft では、複数のセキュリティ上の方法およびテクノロ�
 
 | 無料/共通機能     | Basic の機能    |Premium P1 の機能 |Premium P2 の機能 | Azure Active Directory Join – Windows 10 のみの関連機能|
 | :------------- | :------------- |:------------- |:------------- |:------------- |
-|   [ディレクトリ オブジェクト](https://docs.microsoft.com/azure/active-directory/active-directory-editions#directory-objects)、[ユーザーとグループの管理 (追加/更新/削除)、ユーザーベースのプロビジョニング、デバイスの登録](https://docs.microsoft.com/azure/active-directory/active-directory-editions#usergroup-management-addupdatedelete-user-based-provisioning-device-registration)、[シングル サインオン (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-editions#single-sign-on-sso)、[クラウド ユーザーに対するセルフ サービスのパスワードの変更](https://docs.microsoft.com/azure/active-directory/active-directory-editions#self-service-password-change-for-cloud-users)、[Connect (Azure Active Directory にオンプレミスのディレクトリを拡張する同期エンジン)](https://docs.microsoft.com/azure/active-directory/active-directory-editions#connect-sync-engine-that-extends-on-premises-directories-to-azure-active-directory)、[セキュリティと使用状況に関するレポート](https://docs.microsoft.com/azure/active-directory/active-directory-editions#securityusage-reports)       |   [グループベースのアクセス管理/プロビジョニング](https://docs.microsoft.com/azure/active-directory/active-directory-editions#group-based-access-managementprovisioning)、[クラウド ユーザーに対するセルフ サービスのパスワード リセット](https://docs.microsoft.com/azure/active-directory/active-directory-editions#self-service-password-reset-for-cloud-users)、[会社のブランド設定 (ログオン ページやアクセス パネルのカスタマイズ)](https://docs.microsoft.com/azure/active-directory/active-directory-editions#company-branding-logon-pagesaccess-panel-customization)、[アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/active-directory-editions#application-proxy)、[SLA 99.9%](https://docs.microsoft.com/azure/active-directory/active-directory-editions#sla-999) |  [セルフ サービスのグループおよびアプリケーション管理/セルフ サービスのアプリケーション追加/動的グループ](https://docs.microsoft.com/azure/active-directory/active-directory-editions#self-service-group)、[セルフ サービスのパスワード リセット/変更/ロック解除とオンプレミスの書き戻し](https://docs.microsoft.com/azure/active-directory/active-directory-editions#self-service-password-resetchangeunlock-with-on-premises-write-back)、[Multi-Factor Authentication (クラウドおよびオンプレミス (MFA サーバー))](https://docs.microsoft.com/azure/active-directory/active-directory-editions#multi-factor-authentication-cloud-and-on-premises-mfa-server)、[MIM CAL + MIM サーバー](https://docs.microsoft.com/azure/active-directory/active-directory-editions#mim-cal-mim-server)、[Cloud App Discovery](https://docs.microsoft.com/azure/active-directory/active-directory-editions#cloud-app-discovery)、[Connect Health](https://docs.microsoft.com/azure/active-directory/active-directory-editions#connect-health)、[グループ アカウントのパスワードの自動ロール オーバー](https://docs.microsoft.com/azure/active-directory/active-directory-editions#automatic-password-rollover-for-group-accounts)|   [ID の保護](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)、[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)|  [Azure AD へのデバイスの結合、デスクトップ SSO、 Azure AD 用の Microsoft Passport、管理者による Bitlocker の復旧](https://docs.microsoft.com/azure/active-directory/active-directory-editions#join-a-device-to-azure-ad-desktop-sso-microsoft-passport-for-azure-ad-administrator-bitlocker-recovery)、[MDM 自動登録、セルフサービスの Bitlocker の復旧、Azure AD Join を介した Windows 10 デバイスへのローカル管理者の追加](https://docs.microsoft.com/azure/active-directory/active-directory-editions#mdm-auto-enrollment)|
+|   [ディレクトリ オブジェクト](https://docs.microsoft.com/azure/active-directory/active-directory-editions)、[ユーザーとグループの管理 (追加/更新/削除)、ユーザーベースのプロビジョニング、デバイスの登録](https://docs.microsoft.com/azure/active-directory/active-directory-editions)、[シングル サインオン (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-editions)、[クラウド ユーザーのセルフ サービスによるパスワード変更](https://docs.microsoft.com/azure/active-directory/active-directory-editions)、[Connect (Azure Active Directory にオンプレミスのディレクトリを拡張する同期エンジン)](https://docs.microsoft.com/azure/active-directory/active-directory-editions)、[セキュリティと使用状況に関するレポート](https://docs.microsoft.com/azure/active-directory/active-directory-editions)       |     [グループベースのアクセス管理/プロビジョニング](https://docs.microsoft.com/azure/active-directory/active-directory-editions)、[クラウド ユーザーに対するセルフ サービスのパスワード リセット](https://docs.microsoft.com/azure/active-directory/active-directory-editions)、[会社のブランド設定 (ログオン ページやアクセス パネルのカスタマイズ)](https://docs.microsoft.com/azure/active-directory/active-directory-editions)、[アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/active-directory-editions)、[SLA 99.9%](https://docs.microsoft.com/azure/active-directory/active-directory-editions) |  [セルフ サービスのグループおよびアプリケーション管理/セルフ サービスのアプリケーション追加/動的グループ](https://docs.microsoft.com/azure/active-directory/active-directory-editions)、[セルフ サービスのパスワード リセット/変更/ロック解除とオンプレミスの書き戻し](https://docs.microsoft.com/azure/active-directory/active-directory-editions)、[Multi-Factor Authentication (クラウドおよびオンプレミス (MFA サーバー))](https://docs.microsoft.com/azure/active-directory/active-directory-editions)、[MIM CAL + MIM サーバー](https://docs.microsoft.com/azure/active-directory/active-directory-editions)、[Cloud App Discovery](https://docs.microsoft.com/azure/active-directory/active-directory-editions)、[Connect Health](https://docs.microsoft.com/azure/active-directory/active-directory-editions)、[グループ アカウントのパスワードの自動ロールオーバー](https://docs.microsoft.com/azure/active-directory/active-directory-editions)|  [ID の保護](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)、[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)|  [Azure AD へのデバイスの参加、デスクトップ SSO、Azure AD 用の Microsoft Passport、管理者による BitLocker の復旧](https://docs.microsoft.com/azure/active-directory/active-directory-editions)、[MDM 自動登録、セルフサービスの BitLocker の復旧、Azure AD Join を介した Windows 10 デバイスへのローカル管理者の追加](https://docs.microsoft.com/azure/active-directory/active-directory-editions)|
 
 
 - [Cloud App Discovery](https://docs.microsoft.com/azure/active-directory/active-directory-cloudappdiscovery-whatis) は、Azure Active Directory のプレミアム機能で、組織の従業員が使用しているクラウド アプリケーションを特定することができます。

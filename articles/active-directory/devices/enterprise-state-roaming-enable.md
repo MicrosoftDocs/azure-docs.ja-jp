@@ -5,9 +5,9 @@ services: active-directory
 keywords: Enterprise State Roaming, Windows クラウド, Enterprise State Roaming を有効にする方法
 documentationcenter: ''
 author: tanning
-manager: mtillman
+manager: daveba
 editor: curtand
-ms.component: devices
+ms.subservice: devices
 ms.assetid: f71d66fd-7f9e-45eb-9cfe-5d989870f8a4
 ms.service: active-directory
 ms.workload: identity
@@ -15,13 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
-ms.author: markvi
-ms.openlocfilehash: 9dc223015f85d83278d48494bf05693c7932bdde
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.author: joflore
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 97d0be1dfd77035a3522ef8a6b3f4ac93ae20741
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50128987"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519291"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming を有効にする
 Enterprise State Roaming は、Azure AD Premium または Enterprise Mobility + Security (EMS) ライセンスを所有しているすべての組織が利用できます。 Azure AD サブスクリプションの取得方法の詳細について、[Azure AD の製品ページ](https://azure.microsoft.com/services/active-directory)を参照してください。
@@ -36,7 +37,7 @@ Enterprise State Roaming を有効にすると、組織には、Azure Informatio
 
 1. **[デバイス間での設定とアプリ データの同期が許可されるユーザー]** を選択します。 詳細については、[デバイス設定の構成方法](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal)に関するページをご覧ください。
   
-  ![[デバイス間での設定とアプリ データの同期が許可されるユーザー] のデバイス設定のイメージ](./media/enterprise-state-roaming-enable/device-settings.png)
+   ![[デバイス間での設定とアプリ データの同期が許可されるユーザー] のデバイス設定のイメージ](./media/enterprise-state-roaming-enable/device-settings.png)
   
 Windows 10 デバイスで Enterprise State Roaming サービスを使用するには、そのデバイスを Azure AD の ID で認証する必要があります。 デバイスが Azure AD に参加している場合、そのユーザーの主要なサインイン ID は Azure AD の ID です。追加の構成は必要ありません。 デバイスがオンプレミスの Active Directory を使用している場合、IT 管理者は [ハイブリッド Azure Active Directory 参加済みデバイスを構成する](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual-steps)必要があります。 
 
@@ -63,11 +64,11 @@ APAC。オーストラリア、ニュージーランドなど | アジア内の 
 
 1. **[表示]** で、**[Devices syncing settings and app data]\(設定やアプリ データを同期しているデバイス)** を選択して、同期状態を表示します。
   
-  ![デバイス同期データ設定のイメージ](./media/enterprise-state-roaming-enable/sync-status.png)
+   ![デバイス同期データ設定のイメージ](./media/enterprise-state-roaming-enable/sync-status.png)
   
 1. このユーザーに対して同期しているデバイスがある場合は、そのデバイスは次のように表示されます。
   
-  ![デバイス同期列指向データのイメージ](./media/enterprise-state-roaming-enable/device-status-row.png)
+   ![デバイス同期列指向データのイメージ](./media/enterprise-state-roaming-enable/device-status-row.png)
 
 ## <a name="data-retention"></a>データの保持
 Enterprise State Roaming を使用して Microsoft クラウドと同期されたデータは、手動で削除されるまで、または該当するデータが古いデータとして判断されるまで保持されます。 
@@ -75,9 +76,9 @@ Enterprise State Roaming を使用して Microsoft クラウドと同期され�
 ### <a name="explicit-deletion"></a>明示的な削除
 明示的な削除とは、Azure 管理者がユーザーまたはディレクトリを削除するか、データを削除することを明示的に要求したときの削除です。
 
-* **ユーザーの削除**: Azure AD でユーザーが削除された場合、ユーザー アカウント ローミング データは 90 ～ 180 日後に削除されます。 
-* **ディレクトリの削除**: Azure AD からディレクトリ全体を削除した場合は、その操作が直ちに実行されます。 そのディレクトリに関連付けられた設定データはすべて、90 ～ 180 日後に削除されます。 
-* **要求による削除**: Azure AD 管理者の方は、特定のユーザーのデータまたは設定データを手動で削除する必要がある場合、 [Azure サポート](https://azure.microsoft.com/support/)にチケットを提出してください。 
+* **ユーザーの削除**:Azure AD でユーザーが削除された場合、そのユーザー アカウントのローミング データは 90 - 180 日後に削除されます。 
+* **ディレクトリの削除**:Azure AD からディレクトリ全体を削除した場合は、その操作が直ちに実行されます。 そのディレクトリに関連付けられた設定データはすべて、90 ～ 180 日後に削除されます。 
+* **要求による削除**:Azure AD 管理者の方は、特定のユーザーのデータまたは設定データを手動で削除する必要がある場合、[Azure サポート](https://azure.microsoft.com/support/)にチケットを提出してください。 
 
 ### <a name="stale-data-deletion"></a>古いデータの削除
 1 年間 ("リテンション期間") にわたってアクセスされていないデータは古いデータと見なされ、Microsoft クラウドから削除される場合があります。 リテンション期間は変更されることがありますが、90 日未満になることはありません。 Windows またはアプリケーションの特定の設定のまとまりや、ユーザーの全設定が古いデータと見なされることもあります。 例: 

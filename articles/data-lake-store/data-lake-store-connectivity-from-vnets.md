@@ -4,7 +4,7 @@ description: Azure VNET から Azure Data Lake Storage Gen1 への接続
 services: data-lake-store,data-catalog
 documentationcenter: ''
 author: esung22
-manager: jhubbard
+manager: mtillman
 editor: cgronlun
 ms.assetid: 683fcfdc-cf93-46c3-b2d2-5cb79f5e9ea5
 ms.service: data-lake-store
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 130d0154fc0558ae7284e8407ba88fda3a2a53d5
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: c8d028a981d7811ed2c864db5750afc83ab93b2b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391302"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58878062"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Azure VNET 内の VM から Azure Data Lake Storage Gen1 へのアクセス
 Azure Data Lake Storage Gen1 は、パブリック インターネット IP アドレスで動作する PaaS サービスです。 パブリック インターネットに接続できるサーバーは、通常、Azure Data Lake Storage Gen1 エンドポイントにも接続できます。 既定では、Azure VNET 内のすべての VM はインターネットにアクセスできるため、Azure Data Lake Storage Gen1 にアクセスできます。 ただし、VNET 内の VM をインターネットにアクセスできないように構成することもできます。 そのような VM では、Azure Data Lake Storage Gen1 へのアクセスも制限されます。 Azure VNET 内の VM のパブリック インターネット アクセスをブロックするには、次のいずれかの方法を使用します。
@@ -29,7 +29,7 @@ Azure Data Lake Storage Gen1 は、パブリック インターネット IP ア�
 この記事では、上に示した 3 つの方法のいずれかを使用してリソースへのアクセスが制限されている Azure VM から Azure Data Lake Storage Gen1 へのアクセスを有効にする方法について説明します。
 
 ## <a name="enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity"></a>接続が制限されている VM から Azure Data Lake Storage Gen1 への接続を有効にする
-このような VM から Azure Data Lake Storage Gen1 にアクセスするには、Azure Data Lake Storage Gen1 アカウントが使用可能である IP アドレスにアクセスするように VM を構成する必要があります。 Data Lake Storage Gen1 アカウントの IP アドレスは、アカウントの DNS 名 (`<account>.azuredatalakestore.net`) を解決することによって調べることができます。 アカウントの DNS 名を解決するには、**nslookup** などのツールを使用できます。 コンピューターでコマンド プロンプトを開き、次のコマンドを実行します。
+このような VM から Azure Data Lake Storage Gen1 にアクセスするには、Azure Data Lake Storage Gen1 アカウントが使用可能なリージョンの IP アドレスにアクセスするように、VM を構成する必要があります。 Data Lake Storage Gen1 アカウントのリージョンの IP アドレスは、アカウントの DNS 名 (`<account>.azuredatalakestore.net`) を解決することによって確認できます。 アカウントの DNS 名を解決するには、**nslookup** などのツールを使用できます。 コンピューターでコマンド プロンプトを開き、次のコマンドを実行します。
 
     nslookup mydatastore.azuredatalakestore.net
 

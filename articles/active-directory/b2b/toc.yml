@@ -1,124 +1,119 @@
-items:
 - name: Azure Active Directory B2B のドキュメント
   href: index.yml
   items:
-  - name: 概要
-    items:
-    - name: B2B ゲスト ユーザー アクセスとは
-      href: what-is-b2b.md
-    - name: B2B と B2C の比較
-      href: compare-with-b2c.md
-  - name: クイック スタート
-    items:
-    - name: ポータルでゲスト ユーザーを追加する
-      href: b2b-quickstart-add-guest-users-portal.md
-    - name: PowerShell を使用してゲスト ユーザーを追加する
-      href: b2b-quickstart-invite-powershell.md
-  - name: チュートリアル
-    items:
-    - name: B2B ゲスト ユーザーの一括招待
-      href: b2b-tutorial-bulk-invite.md
-    - name: 多要素認証を適用する
-      href: b2b-tutorial-require-mfa.md
-  - name: サンプル
-    items:
-    - name: セルフサービス サインアップ ポータルのサンプル
-      href: self-service-portal.md
-    - name: コードと Azure PowerShell のサンプル
-      href: code-samples.md
-  - name: 概念
-    items:
-    - name: B2B ライセンス
-      href: licensing-guidance.md
-    - name: B2B と Office 365 の外部共有
-      href: o365-external-user.md
-    - name: 招待の利用
-      href: redemption-experience.md
-    - name: 招待メール
-      href: invitation-email-elements.md
-    - name: B2B ユーザーについて
-      href: user-properties.md
-    - name: B2B ユーザー要求のマッピング
-      href: claims-mapping.md
-    - name: B2B ユーザー トークン
-      href: user-token.md
-    - name: B2B 向けの条件付きアクセス
-      href: conditional-access.md
-    - name: ハイブリッド組織向けの B2B
-      href: hybrid-organizations.md
-    - name: 現時点での制限事項
-      href: current-limitations.md
-    expanded: false
-  - name: ハウツー ガイド
-    items:
-    - name: 招待の管理
+    - name: 概要
       items:
-      - name: 管理者による B2B ユーザーの追加
-        href: add-users-administrator.md
-      - name: インフォメーション ワーカーによる B2B ユーザーの追加
-        href: add-users-information-worker.md
-      - name: Google のフェデレーション
-        href: google-federation.md
-      - name: B2B の共有ポリシー
-        href: delegate-invitations.md
-      - name: 招待を許可またはブロックする
-        href: allow-deny-list.md
-      - name: 招待を使用せずに B2B ユーザーを追加する
-        href: add-user-without-invite.md
-      - name: API とカスタマイズ
-        href: customize-invitation-api.md
-    - name: ゲスト アカウントの管理
+        - name: B2B ゲスト ユーザー アクセスとは
+          href: what-is-b2b.md
+        - name: B2B と B2C の比較
+          href: compare-with-b2c.md
+    - name: クイック スタート
       items:
-      - name: B2B ユーザーをロールに追加する
-        href: add-guest-to-role.md
-      - name: 動的グループと B2B ユーザー
-        href: use-dynamic-groups.md
-      - name: B2B ユーザーについて
-        href: user-properties.md
-      - name: Azure AD 統合アプリ向けの B2B
-        href: configure-saas-apps.md
-    - name: ハイブリッド組織でのアクセスの管理
+        - name: ポータルでゲスト ユーザーを追加する
+          href: b2b-quickstart-add-guest-users-portal.md
+        - name: PowerShell を使用してゲスト ユーザーを追加する
+          href: b2b-quickstart-invite-powershell.md
+    - name: チュートリアル
       items:
-      - name: ローカル ユーザーにクラウド アプリへのアクセスを付与する
-        href: hybrid-on-premises-to-cloud.md
-      - name: B2B ユーザーにローカル アプリへのアクセスを付与する
-        href: hybrid-cloud-to-on-premises.md
-    - name: 組織を脱退する
-      href: leave-the-organization.md
-    - name: 監査とレポート
-      href: auditing-and-reporting.md
-    - name: B2B のトラブルシューティング
-      href: troubleshoot.md
-    expanded: true
-  - name: リファレンス
-    items:
-    - name: 招待マネージャー API
-      href: customize-invitation-api.md
-  - name: リソース
-    items:
-    - name: FAQ
-      href: faq.md
-    - name: B2B のサポートの利用
-      href: get-support.md
-    - name: Azure フィードバック フォーラム
-      href: https://feedback.azure.com/forums/169401-azure-active-directory
-    - name: Azure のロードマップ
-      href: https://azure.microsoft.com/roadmap/?category=security-identity
-    - name: MSDN フォーラム
-      href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD
-    - name: 価格
-      href: https://azure.microsoft.com/pricing/details/active-directory/
-    - name: 料金計算ツール
-      href: https://azure.microsoft.com/pricing/calculator/
-    - name: サービスの更新情報
-      href: https://azure.microsoft.com/updates/?product=active-directory
-    - name: スタック オーバーフロー
-      href: https://stackoverflow.com/questions/tagged/azure-active-directory
-    - name: ビデオ
-      href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 80321f9501d2a4f998a744121d98c08c864465e0
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423485"
+        - name: B2B ゲスト ユーザーの一括招待
+          href: tutorial-bulk-invite.md
+        - name: 多要素認証を適用する
+          href: b2b-tutorial-require-mfa.md
+    - name: サンプル
+      items:
+        - name: セルフサービス サインアップ ポータルのサンプル
+          href: self-service-portal.md
+        - name: コードと Azure PowerShell のサンプル
+          href: code-samples.md
+    - name: 概念
+      expanded: false
+      items:
+        - name: B2B ライセンス
+          href: licensing-guidance.md
+        - name: B2B と Office 365 の外部共有
+          href: o365-external-user.md
+        - name: 招待の利用
+          href: redemption-experience.md
+        - name: 招待メール
+          href: invitation-email-elements.md
+        - name: B2B ユーザーについて
+          href: user-properties.md
+        - name: B2B ユーザー要求のマッピング
+          href: claims-mapping.md
+        - name: B2B ユーザー トークン
+          href: user-token.md
+        - name: B2B 向けの条件付きアクセス
+          href: conditional-access.md
+        - name: ハイブリッド組織向けの B2B
+          href: hybrid-organizations.md
+        - name: 現時点での制限事項
+          href: current-limitations.md
+    - name: ハウツー ガイド
+      expanded: true
+      items:
+        - name: 招待の管理
+          items:
+            - name: 管理者による B2B ユーザーの追加
+              href: add-users-administrator.md
+            - name: インフォメーション ワーカーによる B2B ユーザーの追加
+              href: add-users-information-worker.md
+            - name: Google のフェデレーション
+              href: google-federation.md
+            - name: ワンタイム パスコード認証
+              href: one-time-passcode.md
+            - name: B2B の共有ポリシー
+              href: delegate-invitations.md
+            - name: 招待を許可またはブロックする
+              href: allow-deny-list.md
+            - name: 招待を使用せずに B2B ユーザーを追加する
+              href: add-user-without-invite.md
+            - name: API とカスタマイズ
+              href: customize-invitation-api.md
+        - name: ゲスト アカウントの管理
+          items:
+            - name: B2B ユーザーをロールに追加する
+              href: add-guest-to-role.md
+            - name: 動的グループと B2B ユーザー
+              href: use-dynamic-groups.md
+            - name: B2B ユーザーについて
+              href: user-properties.md
+            - name: Azure AD 統合アプリ向けの B2B
+              href: configure-saas-apps.md
+        - name: ハイブリッド組織でのアクセスの管理
+          items:
+            - name: ローカル ユーザーにクラウド アプリへのアクセスを付与する
+              href: hybrid-on-premises-to-cloud.md
+            - name: B2B ユーザーにローカル アプリへのアクセスを付与する
+              href: hybrid-cloud-to-on-premises.md
+        - name: 組織を脱退する
+          href: leave-the-organization.md
+        - name: 監査とレポート
+          href: auditing-and-reporting.md
+        - name: B2B のトラブルシューティング
+          href: troubleshoot.md
+    - name: リファレンス
+      items:
+        - name: 招待マネージャー API
+          href: customize-invitation-api.md
+    - name: リソース
+      items:
+        - name: FAQ
+          href: faq.md
+        - name: B2B のサポートの利用
+          href: get-support.md
+        - name: Azure フィードバック フォーラム
+          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+        - name: Azure のロードマップ
+          href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+        - name: MSDN フォーラム
+          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+        - name: 価格
+          href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+        - name: 料金計算ツール
+          href: 'https://azure.microsoft.com/pricing/calculator/'
+        - name: サービスの更新情報
+          href: 'https://azure.microsoft.com/updates/?product=active-directory'
+        - name: スタック オーバーフロー
+          href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+        - name: ビデオ
+          href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

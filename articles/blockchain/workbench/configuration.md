@@ -5,21 +5,21 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/4/2018
+ms.date: 04/15/2019
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: caaee4cb155fc05b78bc47f1e53c79ecb0597183
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 4d29d8e86a30f105c4aa50ec9615f8165fa238d3
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341941"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578749"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Azure Blockchain Workbench 構成リファレンス
 
- Azure Blockchain Workbench アプリケーションは、構成メタデータとスマート コントラクト コードで定義されたマルチパーティ ワークフローです。 構成メタデータでは、ブロックチェーン アプリケーションの大まかなワークフローと対話モデルを定義します。 スマート コントラクトを使用して、ブロックチェーン アプリケーションのビジネス ロジックを定義します。 Workbench は、構成とスマート コントラクト コードを使用して、ブロックチェーン アプリケーションのユーザー エクスペリエンスを生成します。
+Azure Blockchain Workbench アプリケーションは、構成メタデータとスマート コントラクト コードで定義されたマルチパーティ ワークフローです。 構成メタデータでは、ブロックチェーン アプリケーションの大まかなワークフローと対話モデルを定義します。 スマート コントラクトを使用して、ブロックチェーン アプリケーションのビジネス ロジックを定義します。 Workbench は、構成とスマート コントラクト コードを使用して、ブロックチェーン アプリケーションのユーザー エクスペリエンスを生成します。
 
 構成のメタデータには、各ブロックチェーン アプリケーションの次の情報が指定されます。
 
@@ -53,17 +53,17 @@ ms.locfileid: "49341941"
 
 アプリケーションのビジネス ロジックは、アクションを実行するとビジネス ロジックのフローが別の状態に移行するという、状態マシンとしてモデル化することができます。 ワークフローは、そのような状態とアクションのコレクションです。 各ワークフローは 1 つ以上のスマート コントラクトで構成されています。スマート コントラクトは、コード ファイル内のビジネス ロジックを表します。 実行可能なコントラクトは、ワークフローのインスタンスです。
 
-| フィールド | Description | 必須 |
-|-------|-------------|:--------:|
-| Name | 一意のワークフロー名。 対応するスマート コントラクトでは、該当するコントラクト クラスに対して同じ **Name** を使用する必要があります。 | はい |
-| DisplayName | ワークフローのわかりやすい表示名。 | はい |
-| Description | ワークフローの説明。 | いいえ  |
-| Initiators | [ApplicationRoles](#application-roles) のコレクション。 ワークフローでコントラクトを作成する権限を持つユーザーに割り当てられるロール。 | はい |
-| StartState | ワークフローの初期状態の名前。 | はい |
-| Properties | [識別子](#identifiers)のコレクション。 ユーザー エクスペリエンス ツールでオフチェーンの読み取りまたは視覚化を実行できるデータを表します。 | はい |
-| Constructor | ワークフローのインスタンスを作成するための入力パラメーターを定義します。 | はい |
-| Functions | ワークフローで実行できる[関数](#functions)のコレクション。 | はい |
-| States | ワークフローの[状態](#states)のコレクション。 | はい |
+| フィールド | Description | 必須 | 最大長 |
+|-------|-------------|:--------:|-----------:|
+| Name | 一意のワークフロー名。 対応するスマート コントラクトでは、該当するコントラクト クラスに対して同じ **Name** を使用する必要があります。 | はい | 50 |
+| DisplayName | ワークフローのわかりやすい表示名。 | はい | 255 |
+| Description | ワークフローの説明。 | いいえ  | 255 |
+| Initiators | [ApplicationRoles](#application-roles) のコレクション。 ワークフローでコントラクトを作成する権限を持つユーザーに割り当てられるロール。 | はい | |
+| StartState | ワークフローの初期状態の名前。 | はい | |
+| Properties | [識別子](#identifiers)のコレクション。 ユーザー エクスペリエンス ツールでオフチェーンの読み取りまたは視覚化を実行できるデータを表します。 | はい | |
+| Constructorー | ワークフローのインスタンスを作成するための入力パラメーターを定義します。 | はい | |
+| Functions | ワークフローで実行できる[関数](#functions)のコレクション。 | はい | |
+| States | ワークフローの[状態](#states)のコレクション。 | はい | |
 
 例については、「[構成ファイルの例](#configuration-file-example)」を参照してください。
 
@@ -207,12 +207,12 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 ワークフローに対して実行できる関数を定義します。
 
-| フィールド | Description | 必須 |
-|-------|-------------|:--------:|
-| Name | 関数の一意の名前。 対応するスマート コントラクトでは、該当する関数に対して同じ **Name** を使用する必要があります。 | はい |
-| DisplayName | 関数のわかりやすい表示名。 | はい |
-| Description | 関数の説明。 | いいえ  |
-| parameters | 関数のパラメーターに対応する[識別子](#identifiers)のコレクション。 | はい |
+| フィールド | Description | 必須 | 最大長 |
+|-------|-------------|:--------:|-----------:|
+| Name | 関数の一意の名前。 対応するスマート コントラクトでは、該当する関数に対して同じ **Name** を使用する必要があります。 | はい | 50 |
+| DisplayName | 関数のわかりやすい表示名。 | はい | 255 |
+| Description | 関数の説明。 | いいえ  | 255 |
+| parameters | 関数のパラメーターに対応する[識別子](#identifiers)のコレクション。 | はい | |
 
 ### <a name="functions-example"></a>関数の例
 
@@ -255,14 +255,14 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 ワークフロー内の一意の状態のコレクション。 各状態で、ビジネス ロジックの制御フローの手順がキャプチャされます。 
 
-| フィールド | Description | 必須 |
-|-------|-------------|:--------:|
-| Name | 状態の一意の名前。 対応するスマート コントラクトでは、該当する状態に対して同じ **Name** を使用する必要があります。 | はい |
-| DisplayName | 状態のわかりやすい表示名。 | はい |
-| Description | 状態の説明。 | いいえ  |
-| PercentComplete | Blockchain Workbench のユーザー インターフェイスに表示される整数値。ビジネス ロジックの制御フロー内の進行状況を示します。 | はい |
-| Style | 状態が成功か失敗かを表すビジュアル ヒント。 有効な値は `Success` または `Failure` です。 | はい |
-| Transitions | 現在の状態から次の一連の状態への使用できる[遷移](#transitions)のコレクション。 | いいえ  |
+| フィールド | Description | 必須 | 最大長 |
+|-------|-------------|:--------:|-----------:|
+| Name | 状態の一意の名前。 対応するスマート コントラクトでは、該当する状態に対して同じ **Name** を使用する必要があります。 | はい | 50 |
+| DisplayName | 状態のわかりやすい表示名。 | はい | 255 |
+| Description | 状態の説明。 | いいえ  | 255 |
+| PercentComplete | Blockchain Workbench のユーザー インターフェイスに表示される整数値。ビジネス ロジックの制御フロー内の進行状況を示します。 | はい | |
+| Style | 状態が成功か失敗かを表すビジュアル ヒント。 有効な値は `Success` または `Failure` です。 | はい | |
+| Transitions | 現在の状態から次の一連の状態への使用できる[遷移](#transitions)のコレクション。 | いいえ  | |
 
 ### <a name="states-example"></a>状態の例
 
@@ -312,7 +312,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
     {
       "Name": "Terminated",
       "DisplayName": "Terminated",
-      "Description": "Asset transfer has been cancelled",
+      "Description": "Asset transfer has been canceled",
       "PercentComplete": 100,
       "Style": "Failure",
       "Transitions": []
@@ -330,7 +330,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 | AllowedInstanceRoles | 遷移の開始が許可されているスマート コントラクトに参加している、または指定されているユーザー ロールのリスト。 インスタンス ロールは、ワークフロー内の **Properties** に定義されています。 AllowedInstanceRoles は、スマート コントラクトのインスタンスに参加しているユーザーを表します。 AllowedInstanceRoles を使用すると、コントラクト インスタンス内のユーザー ロールに対するアクションの実行を制限できます。  たとえば、AllowedRoles でロールを指定した場合、ロールの種類 (所有者) のすべてのユーザーでなく、コントラクトを作成したユーザー (InstanceOwner) のみに終了の実行を許可することができます。 | いいえ  |
 | DisplayName | 遷移のわかりやすい表示名。 | はい |
 | Description | 遷移の説明。 | いいえ  |
-| 関数 | 遷移を開始する関数の名前。 | はい |
+| Function | 遷移を開始する関数の名前。 | はい |
 | NextStates | 遷移が成功した後の次の状態候補のコレクション。 | はい |
 
 ### <a name="transitions-example"></a>遷移の例
@@ -369,10 +369,10 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 アプリケーション ロールには、アプリケーション内で操作または参加するユーザーに割り当てることができる一連のロールを定義します。 アプリケーション ロールを使用して、ブロックチェーン アプリケーションとそれに対応するワークフロー内の操作と参加を制限することができます。 
 
-| フィールド | Description | 必須 |
-|-------|-------------|:--------:|
-| Name | アプリケーション ロールの一意の名前。 対応するスマート コントラクトでは、該当するロールに対して同じ **Name** を使用する必要があります。 基本データ型は予約されています。 アプリケーション ロールに [Type](#type) と同じ名前を付けることはできません| はい |
-| Description | アプリケーション ロールの説明。 | いいえ  |
+| フィールド | Description | 必須 | 最大長 |
+|-------|-------------|:--------:|-----------:|
+| Name | アプリケーション ロールの一意の名前。 対応するスマート コントラクトでは、該当するロールに対して同じ **Name** を使用する必要があります。 基本データ型は予約されています。 アプリケーション ロールに [Type](#type) と同じ名前を付けることはできません| はい | 50 |
+| Description | アプリケーション ロールの説明。 | いいえ  | 255 |
 
 ### <a name="application-roles-example"></a>アプリケーション ロールの例
 
@@ -392,11 +392,11 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 識別子は、ワークフローのプロパティ、コンストラクター、および関数のパラメーターを記述するために使用される情報のコレクションを表しています。 
 
-| フィールド | Description | 必須 |
-|-------|-------------|:--------:|
-| Name | プロパティまたはパラメーターの一意の名前。 対応するスマート コントラクトでは、該当するプロパティまたはパラメーターに対して同じ **Name** を使用する必要があります。 | はい |
-| DisplayName | プロパティまたはパラメーターのわかりやすい表示名。 | はい |
-| Description | プロパティまたはパラメーターの説明。 | いいえ  |
+| フィールド | Description | 必須 | 最大長 |
+|-------|-------------|:--------:|-----------:|
+| Name | プロパティまたはパラメーターの一意の名前。 対応するスマート コントラクトでは、該当するプロパティまたはパラメーターに対して同じ **Name** を使用する必要があります。 | はい | 50 |
+| DisplayName | プロパティまたはパラメーターのわかりやすい表示名。 | はい | 255 |
+| Description | プロパティまたはパラメーターの説明。 | いいえ  | 255 |
 
 ### <a name="identifiers-example"></a>識別子の例
 
@@ -423,7 +423,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 ## <a name="configuration-file-example"></a>構成ファイルの例
 
-資産移転は、高価な資産を売買するためのスマート コントラクトのシナリオであり、検査担当者と評定者が必要です。 売り手は、資産移転スマート コントラクトをインスタンス化することによって、資産を一覧表示することができます。 買い手は、スマート コントラクトに対してアクションを実行してオファーを行うことができます。他の関係者は、資産を検査または評定するアクションを実行できます。 資産の検査と評定の両方が完了とマークされると、コントラクトが完了する前に買い手と売り手が販売内容を再確認します。 プロセスの各時点で、コントラクトが更新されたときにすべての参加者はコントラクトの状態を確認できます。 
+資産移転は、高価な資産を売買するためのスマート コントラクトのシナリオであり、検査担当者と評定者が必要です。 売り手は、資産移転スマート コントラクトをインスタンス化することによって、資産を一覧表示することができます。 買い手は、スマート コントラクトに対してアクションを実行してオファーを行うことができます。他の関係者は、資産を検査または評定するアクションを実行できます。 資産の検査と評定の両方が完了とマークされると、コントラクトが完了する前に買い手と売り手が販売内容を再確認します。 プロセスの各時点で、コントラクトが更新されたときにすべての参加者はコントラクトの状態を確認できます。 
 
 コード ファイルなどの詳細については、[Azure Blockchain Workbench の資産移転サンプル](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer)を参照してください。
 
@@ -988,7 +988,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
         {
           "Name": "Terminated",
           "DisplayName": "Terminated",
-          "Description": "Asset transfer has been cancelled",
+          "Description": "Asset transfer has been canceled",
           "PercentComplete": 100,
           "Style": "Failure",
           "Transitions": []

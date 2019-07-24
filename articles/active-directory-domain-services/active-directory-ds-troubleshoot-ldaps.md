@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory Domain Services: Secure LDAP の構成のトラブルシューティング | Microsoft Docs'
+title: Azure Active Directory Domain Services:Secure LDAP の構成のトラブルシューティング | Microsoft Docs
 description: Azure AD Domain Services の Secure LDAP のトラブルシューティング
 services: active-directory-ds
 documentationcenter: ''
@@ -8,25 +8,25 @@ manager: ''
 editor: ''
 ms.assetid: 81208c0b-8d41-4f65-be15-42119b1b5957
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: e3a31749407f9ec0494e8452b602ed9966c5ab83
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: be07579d8273ab19101aa6c475ae5d23375517ca
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504211"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177187"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD Domain Services - Secure LDAP の構成のトラブルシューティング
 
 この記事では、Azure AD Domain Services に [Secure LDAP を構成する](active-directory-ds-admin-guide-configure-secure-ldap.md)ときの一般的な問題に対する解決策を示します。
 
-## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101: Secure LDAP ネットワーク セキュリティ グループの構成
+## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101:Secure LDAP ネットワーク セキュリティ グループの構成
 
 **アラート メッセージ:**
 
@@ -54,7 +54,7 @@ Secure LDAP を有効にするときは、特定の IP アドレスからの受�
 > Azure AD Domain Services を円滑に動作させるために必要なのはポート 636 だけではありません。 詳細については、[ネットワークに関するガイドライン](active-directory-ds-networking.md)または [NSG 構成のトラブルシューティング](active-directory-ds-troubleshoot-nsg.md)に関する記事を参照してください。
 >
 
-## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502: セキュリティで保護された LDAP 証明書の期限切れ間近
+## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502:Secure LDAP 証明書の期限切れ間近
 
 **アラート メッセージ:**
 

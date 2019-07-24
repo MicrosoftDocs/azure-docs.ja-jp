@@ -2,23 +2,22 @@
 title: Azure DNS とは
 description: Microsoft Azure の DNS ホスティング サービスの概要です。 Microsoft Azure でドメインをホストします。
 author: vhorne
-manager: jeconnoc
 ms.service: dns
 ms.topic: overview
-ms.date: 9/24/2018
+ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: 9535ad73300406408a94a6f38f001e45ba7409a2
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: cea19ad2ba03d3e71df32912a1d7ee9e6171689a
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093097"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339460"
 ---
 # <a name="what-is-azure-dns"></a>Azure DNS とは
 
 Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 
-Azure DNS を使用してドメイン名を購入することはできません。 年会費をお支払いになると、[Azure Web Apps](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app#buy-the-domain) またはサードパーティのドメイン名レジストラーを使用して、ドメイン名を購入できます。 購入したドメインは、Azure DNS でホストし、レコードを管理できます。 詳細については、「[Azure DNS へのドメインの委任](dns-domain-delegation.md)」を参照してください。
+Azure DNS を使用してドメイン名を購入することはできません。 年会費をお支払いになると、[App Service のドメイン](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain#buy-the-domain)またはサードパーティのドメイン名レジストラーを使用して、ドメイン名を購入できます。 購入したドメインは、Azure DNS でホストし、レコードを管理できます。 詳細については、「[Azure DNS へのドメインの委任](dns-domain-delegation.md)」を参照してください。
 
 Azure DNS には、次の機能が含まれています。
 
@@ -30,14 +29,17 @@ Azure DNS 内の DNS ドメインは、DNS ネーム サーバーから成る Az
 
  Azure DNS は、Azure Resource Manager に基づいており、次のような機能が利用できます。
 
-* [ロールベースのアクセス制御](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control): 組織のユーザーがアクセスできるアクションを制御できます。
+* [ロールベースのアクセス制御](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview): 組織のユーザーがアクセスできるアクションを制御できます。
 
-* [アクティビティ ログ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#activity-logs): 組織のユーザーどのようにリソースを変更したかを監視したり、トラブルシューティング時にエラーを見つけたりできます。
+* [アクティビティ ログ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview): 組織のユーザーどのようにリソースを変更したかを監視したり、トラブルシューティング時にエラーを見つけたりできます。
 
 * [リソースのロック](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources): サブスクリプション、リソース グループ、またはリソースをロックできます。 ロックすることによって、組織内の他のユーザーが重要なリソースを誤って削除したり変更したりするのを防ぎます。
 
 詳細については、「[DNS ゾーンとレコードを保護する方法](dns-protect-zones-recordsets.md)」を参照してください。 
 
+## <a name="dnssec"></a>DNSSEC
+
+現在、Azure DNS で DNSSEC はサポートされません。 ほとんどの場合、アプリケーションで常に HTTPS/TLS を使用することで DNSSEC の必要性を減らすことができます。 DNSSEC が DNS ゾーンにとって重要な要件である場合は、サード パーティの DNS ホスティング プロバイダーを使用してこれらのゾーンをホストすることができます。
 
 ## <a name="ease-of-use"></a>使いやすさ
 
@@ -55,12 +57,11 @@ Azure DNS では、プライベート DNS ドメインもサポートされる�
 
 ## <a name="alias-records"></a>エイリアス レコード
 
-Azure DNS では、エイリアス レコード セットをサポートします。 エイリアス レコード セットは、Azure パブリック IP アドレスまたは Azure Traffic Manager プロファイルなどの Azure リソースを参照するために使用できます。 基になるリソースの IP アドレスが変更された場合、エイリアス レコード セットは DNS の解決時にシームレスに自動更新されます。 エイリアス レコード セットはサービス インスタンスをポイントし、サービス インスタンスは IP アドレスに関連付けられます。 
+Azure DNS では、エイリアス レコード セットをサポートします。 エイリアス レコード セットは、Azure パブリック IP アドレス、Azure Traffic Manager プロファイル、または Azure Content Delivery Network (CDN) エンドポイントなどの Azure リソースを参照するために使用できます。 基になるリソースの IP アドレスが変更された場合、エイリアス レコード セットは DNS の解決時にシームレスに自動更新されます。 エイリアス レコード セットはサービス インスタンスをポイントし、サービス インスタンスは IP アドレスに関連付けられます。
 
-さらに、エイリアス レコードを使用することにより、頂点のドメインやネイキッド ドメインで Traffic Manager プロファイルを参照できるようになりました  (例: contoso.com)。
+さらに、エイリアス レコードを使用することにより、頂点のドメインやネイキッド ドメインで Traffic Manager プロファイルまたは CDN エンドポイントを参照できるようになりました。 一例として contoso.com があります。
 
 詳細については、「[Azure DNS エイリアス レコード](dns-alias.md)」をご覧ください。
-
 
 ## <a name="next-steps"></a>次の手順
 

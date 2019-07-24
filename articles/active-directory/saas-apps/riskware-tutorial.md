@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Riskware の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Riskware の統合 | Microsoft Docs
 description: Azure Active Directory と Riskware の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 81866167-b163-4695-8978-fd29a25dac7a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 4c664fac99e93e94b46f5d917a63aa6530b695bd
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3de8422efdbb7802e0532503e2733518e8050f6d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437775"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842534"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-riskware"></a>チュートリアル: Azure Active Directory と Riskware の統合
+# <a name="tutorial-azure-active-directory-integration-with-riskware"></a>チュートリアル:Azure Active Directory と Riskware の統合
 
 このチュートリアルでは、Riskware と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -109,19 +110,21 @@ Riskware で Azure AD のシングル サインオンを構成してテストす
     ![[Riskware ドメインと URL] のシングル サインオン情報](./media/riskware-tutorial/tutorial_riskware_url.png)
 
     a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
+
     | 環境| URL パターン|
     |--|--|
-    | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
-    | PROD| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
-    | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
+    | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
+    | PROD| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
+    | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
     |||
 
     b. **[識別子 (エンティティ ID)]** ボックスに、URL を入力します。
+    
     | 環境| URL パターン|
     |--|--|
-    | UAT| `https://riskcloud.net/uat` |
-    | PROD| `https://riskcloud.net/prod` |
-    | DEMO| `https://riskcloud.net/demo` |
+    | UAT| `https://riskcloud.net/uat` |
+    | PROD| `https://riskcloud.net/prod` |
+    | DEMO| `https://riskcloud.net/demo` |
     |||
 
     > [!NOTE]
@@ -167,7 +170,7 @@ Riskware で Azure AD のシングル サインオンを構成してテストす
 
     g. **[XML Identity Tag Name]\(XML ID タグ名\)** ボックスに、SAML 応答内の一意の識別子を含む属性を入力します (例: NameID)。
 
-    h. Azure Portal からダウンロードした**メタデータ Xml** をメモ帳で開き、メタデータ ファイルから証明書をコピーして **[証明書]\(Certificate\)** ボックスに貼り付けます
+    h. Azure portal からダウンロードした **メタデータ Xml**  をメモ帳で開き、メタデータ ファイルから証明書をコピーして **[Certificate]\(証明書\)** ボックスに貼り付けます
 
     i. **[Consumer URL]\(コンシューマー URL\)** ボックスに、サポート チームから入手した**応答 URL** の値を貼り付けます。
 
@@ -246,7 +249,7 @@ Azure AD ユーザーが Riskware にサインインできるようにするに�
 
     a. **[Authentication]\(認証\)** セクションで、既に設定済みの**認証**モードを選択します (例:SSO 用 AZURE 構成)。
 
-    b. **[Logon Details]\(ログオンの詳細\)** セクションの **[User ID]\(ユーザー ID\)** ボックスに、ユーザーのメール アドレスを入力します (例: **brittasimon@contoso.com**)。
+    b. **[Logon Details]\(ログオンの詳細\)** セクションの **[User ID]\(ユーザー ID\)** ボックスに、ユーザーのメール アドレス (例: **brittasimon\@contoso.com**) を入力します。
 
     c. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
 
@@ -297,7 +300,7 @@ Azure AD ユーザーが Riskware にサインインできるようにするに�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Riskware のタイルをクリックすると、自動的に Riskware アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

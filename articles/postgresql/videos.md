@@ -1,40 +1,37 @@
 ---
 title: Azure Database for PostgreSQL のビデオ
 description: このページでは、Azure Database for PostgreSQL の学習に関連したビデオ コンテンツを掲載しています。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: ddc5249bb5b001a93f2695f9df2fb8e870988095
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: de4194671f09bde65bee0a1d0d86ffacdcedfbf3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29687902"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543239"
 ---
 # <a name="azure-database-for-postgresql-videos"></a>Azure Database for PostgreSQL のビデオ
 
-[概要: Azure Database for PostgreSQL および Azure Database for MySQL](https://channel9.msdn.com/Events/Connect/2017/T147)
+[概要:Azure Database for PostgreSQL と Azure Database for MySQL](https://channel9.msdn.com/Events/Connect/2017/T147)
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T147/player]
 
-Azure Database for PostgreSQL および Azure Database for MySQL は、お客様が、データベースの管理ではなく、アプリケーションに集中できるよう、完全に管理されたサービスを実現するコミュニティ エディション データベース エンジンです。 サービスを使用する利点の概要や、機能の実行例をご覧ください。
+Azure Database for PostgreSQL および Azure Database for MySQL は、お客様が、データベースの管理ではなく、アプリケーションに集中できるよう、フル マネージドのサービスを実現するコミュニティ エディション データベース エンジンです。 サービスを使用する利点の概要や、機能の実行例をご覧ください。
 
 [MySQL および PostgreSQL のための管理サービス機能の詳細](https://channel9.msdn.com/Events/Connect/2017/T148)
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T148/player]
 
-Azure Database for PostgreSQL および Azure Database for MySQL は、完全に管理されたサービスを実現するコミュニティ エディション データベース エンジンです。 これらのサービスの機能の詳細や、高可用性を確保する方法、顧客ニーズを満たすために高速でスケーリング (数秒内) する方法についてご説明します。 また、セキュリティや世界レベルの可用性の基盤となる投資についてもご説明します。
+Azure Database for PostgreSQL および Azure Database for MySQL は、フル マネージドのサービスを実現するコミュニティ エディション データベース エンジンです。 これらのサービスの機能の詳細や、高可用性を確保する方法、顧客ニーズを満たすために高速でスケーリング (数秒内) する方法についてご説明します。 また、セキュリティや世界レベルの可用性の基盤となる投資についてもご説明します。
 
 [PostgreSQL を使用したインテリジェントな分析アプリの開発](https://channel9.msdn.com/Events/Connect/2017/T149)
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T149/player]
 
-Azure Database for PostgreSQL は、お客様が、データベースの管理ではなく、アプリケーションに集中できるよう、完全に管理されたサービスを実現するコミュニティ エディション データベース エンジンです。 Azure を使用することで、お客様のアプリに Cognitive Services を追加するなど、新しい体験をいかに簡単に実現できるかを実証します。
+Azure Database for PostgreSQL は、お客様が、データベースの管理ではなく、アプリケーションに集中できるよう、フル マネージドのサービスを実現するコミュニティ エディション データベース エンジンです。 Azure を使用することで、お客様のアプリに Cognitive Services を追加するなど、新しい体験をいかに簡単に実現できるかを実証します。
 
 [新しい Azure Database for PostgreSQL サービスの紹介](https://channel9.msdn.com/events/Build/2017/B8046)
 

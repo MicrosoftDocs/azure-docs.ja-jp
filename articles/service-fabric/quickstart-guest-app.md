@@ -3,8 +3,8 @@ title: 既存のアプリを Azure Service Fabric クラスターに迅速にデ
 description: Visual Studio を使用して、Azure Service Fabric クラスターで既存の Node.js アプリケーションをホストします。
 services: service-fabric
 documentationcenter: nodejs
-author: rwike77
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
-ms.author: ryanwi
-ms.openlocfilehash: 2e7511f0efa36243a9e7e8e25f1697bdd3e60b63
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.author: aljo
+ms.openlocfilehash: 63630f5c4799e9272601f431671abc78ec86a238
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005296"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669012"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Azure Service Fabric での Node.js アプリケーションのホスト
 
@@ -96,7 +96,7 @@ Visual Studio によって、アプリケーション プロジェクトとア�
   </Resources>
 ```
 
-## <a name="deploy-to-azure"></a>[Deploy to Azure (Azure へのデプロイ)]
+## <a name="deploy-to-azure"></a>Deploy to Azure (Azure へのデプロイ)
 
 **F5** キーを押してプロジェクトを実行すると、プロジェクトはローカル クラスターにデプロイされます。 ただし、ここでは代わりに Azure にデプロイします。
 
@@ -126,7 +126,7 @@ Service Fabric クラスターを作成する際に、必ず **[カスタム エ
 
 最初に、Azure Portal を開き、目的の Service Fabric サービスを探します。
 
-サービス アドレスの概要ブレードを確認します。 _[Client connection endpoint]\(クライアントの接続エンドポイント\)_ プロパティのドメイン名を使用します。 たとえば、「`http://mysvcfab1.westus2.cloudapp.azure.com`」のように入力します。
+サービス アドレスの概要ブレードを確認します。 _[Client connection endpoint]\(クライアントの接続エンドポイント\)_ プロパティのドメイン名を使用します。 たとえば、「 `http://mysvcfab1.westus2.cloudapp.azure.com` 」のように入力します。
 
 ![Azure Portal の Service Fabric 概要ブレード][overview]
 

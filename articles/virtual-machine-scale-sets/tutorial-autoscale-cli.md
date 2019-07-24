@@ -3,7 +3,7 @@ title: 'チュートリアル: Azure CLI を使用したスケール セット�
 description: Azure CLI を使用して CPU 需要の増減に合わせて仮想マシンのスケール セットを自動的にスケーリングする方法について説明します
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/18/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b30c3a2e9f06cf02f27636592634884a7c3fdfc8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 4064816ae932a0f26fd3478420c69f3e8fba8732
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471307"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751278"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル: Azure CLI を使用して仮想マシン スケール セットを自動的にスケーリングする
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して仮想マシン スケール セットを自動的にスケールする
 
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -41,13 +41,13 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-a-scale-set"></a>スケール セットを作成する
 
-次のように [az group create](/cli/azure/group#create) を使用して、リソース グループを作成します。
+次のように [az group create](/cli/azure/group) を使用して、リソース グループを作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-ここでは、[az vmss create](/cli/azure/vmss#create) を使って仮想マシン スケール セットを作成します。 次の例では、インスタンス数が *2* のスケール セットを作成し、SSH キーが存在しない場合は SSH キーを生成します。
+ここでは、[az vmss create](/cli/azure/vmss) を使って仮想マシン スケール セットを作成します。 次の例では、インスタンス数が *2* のスケール セットを作成し、SSH キーが存在しない場合は SSH キーを生成します。
 
 ```azurecli-interactive
 az vmss create \
@@ -107,7 +107,7 @@ az monitor autoscale rule create \
 
 自動スケール ルールをテストするには、スケール セットの VM インスタンスに対する CPU 負荷を生成します。 このシミュレートされた CPU 負荷を適用すると、自動スケールによってスケールアウトされ、VM インスタンスの数が増えます。 次に、シミュレートされた CPU 負荷を小さくすると、自動スケール ルールによってスケールインされ、VM インスタンスの数が減ります。
 
-最初に、[az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) を使用して、スケール セット内の VM インスタンスに接続するためのアドレスとポートを一覧表示します。
+最初に、[az vmss list-instance-connection-info](/cli/azure/vmss) を使用して、スケール セット内の VM インスタンスに接続するためのアドレスとポートを一覧表示します。
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -141,7 +141,7 @@ sudo stress --cpu 10 --timeout 420 &
 
 **stress** によって CPU 負荷が生成されていることを確認するために、**top** ユーティリティを使用してアクティブなシステム負荷を調べます。
 
-```azuecli-interactive
+```azurecli-interactive
 top
 ```
 
@@ -152,7 +152,7 @@ Ctrl-c
 exit
 ```
 
-前の [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) によって一覧表示されたポート番号を使用して、2 番目の VM インスタンスに接続します。
+前の [az vmss list-instance-connection-info](/cli/azure/vmss) によって一覧表示されたポート番号を使用して、2 番目の VM インスタンスに接続します。
 
 ```azurecli-interactive
 ssh azureuser@13.92.224.66 -p 50003
@@ -208,7 +208,7 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-スケール セットと追加のリソースを削除するには、[az group delete](/cli/azure/group#az_group_delete) を使用して、リソース グループとそのすべてのリソースを削除します。 `--no-wait` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。 `--yes` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。
+スケール セットと追加のリソースを削除するには、[az group delete](/cli/azure/group) を使用して、リソース グループとそのすべてのリソースを削除します。 `--no-wait` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。 `--yes` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

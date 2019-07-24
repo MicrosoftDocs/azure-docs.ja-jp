@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9eaed5c8d30d902700af25319d91b77aab645dbc
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 6acffc5056f916f2e05c7a0fd3eb325fd89a9e4b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52318012"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117053"
 documentType: LandingData
 title: Azure の専用 HSM のドキュメント
 metadata:
@@ -12,7 +12,7 @@ metadata:
   meta.description: Learn how to use Azure Dedicated HSM to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.
   services: dedicated-hsm
   author: barclayn
-  manager: mbaldwin
+  manager: barbkess
   layout: LandingPage
   ms.assetid: 
   ms.service: dedicated-hsm
@@ -33,13 +33,13 @@ sections:
     - href: /azure/dedicated-hsm/overview
       html: <p>Azure の専用 HSM の全容を学習します。</p>
       image:
-        src: media/index/i_article.svg
-      title: 専用 HSM の概要
+        src: media/index/hsm.svg
+      title: Azure の専用 HSM の概要
     - href: /azure/dedicated-hsm/faq
-      html: <p>よく寄せられる質問。</p>
+      html: <p>専用 HSM を使用する場合の設計に関する考慮事項</p>
       image:
         src: media/index/guide.svg
-      title: FAQ
+      title: デプロイ アーキテクチャの決定
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
@@ -62,4 +62,4 @@ sections:
     className: cardsD
     items:
     - title: FAQ
-      html: <p><a href="/dedicated-hsm/faq/">よく寄せられる質問</a></p>
+      html: <p><a href="/azure/dedicated-hsm/faq/">よく寄せられる質問</a></p>

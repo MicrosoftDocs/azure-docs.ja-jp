@@ -1,31 +1,28 @@
 ---
-title: 'Azure Cosmos DB: MongoDB API を使用してクエリを実行する方法 | Microsoft Docs'
-description: Azure Cosmos DB の MongoDB API を使用してクエリを実行する方法を学習します
-services: cosmos-db
-author: SnehaGunda
-manager: kfile
+title: Azure Cosmos DB の MongoDB 用 API でデータのクエリを実行する
+description: Azure Cosmos DB の MongoDB 用 API を使用してデータのクエリを実行する方法を説明します。
+author: rimman
+ms.author: rimman
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
-ms.devlang: na
+ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
-ms.date: 03/29/2018
-ms.author: sngun
-ms.custom: mvc
-ms.openlocfilehash: efb59a73b3c9b0ab06fae2e7b4fe5b97d85249eb
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.date: 12/26/2018
+ms.reviewer: sngun
+ms.openlocfilehash: 8bdd88652019ceb48cfd9f05d1009271f5b7a8c7
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052811"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042990"
 ---
-# <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>チュートリアル: MongoDB API を使用して Azure Cosmos DB に対してクエリを実行する
+# <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用してデータのクエリを実行する
 
-Azure Cosmos DB の [MongoDB API](mongodb-introduction.md) では、[MongoDB シェル クエリ](https://docs.mongodb.com/manual/tutorial/query-documents/)がサポートされます。 
+[Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md) では、[MongoDB のクエリ](https://docs.mongodb.com/manual/tutorial/query-documents/)がサポートされています。 
 
 この記事に含まれるタスクは次のとおりです。 
 
 > [!div class="checklist"]
-> * MongoDB を使用してデータのクエリを実行する
+> * MongoDB シェルを使用して Cosmos データベースに格納されているデータのクエリを実行する
 
 まずは、このドキュメントの例を使用したり、[MongoDB シェルでの Azure Cosmos DB に対するクエリの実行](https://azure.microsoft.com/resources/videos/query-azure-cosmos-db-data-by-using-the-mongodb-shell/)に関するビデオを見ることから始めます。
 
@@ -305,7 +302,7 @@ Azure Cosmos DB の [MongoDB API](mongodb-introduction.md) では、[MongoDB シ
 このチュートリアルでは、次の手順を行いました。
 
 > [!div class="checklist"]
-> * MongoDB を使用してクエリを実行する方法を学習しました。 
+> * Azure Cosmos DB の MongoDB 用 API を使用してクエリを実行する方法を理解しました。
 
 次のチュートリアルに進んで、データをグローバルに分散する方法について学習できます。
 

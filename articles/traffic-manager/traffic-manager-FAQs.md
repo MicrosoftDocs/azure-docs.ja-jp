@@ -1,5 +1,5 @@
 ---
-title: Azure Traffic Manager - FAQ | Microsoft Docs
+title: Azure Traffic Manager - よくあるご質問
 description: この記事では、Traffic Manager に関してよく寄せられる質問に対する回答を示します。
 services: traffic-manager
 documentationcenter: ''
@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 02/26/2019
 ms.author: kumud
-ms.openlocfilehash: d784bf3637c83c724c3616a1a42b66c4914b4ff7
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 6086c182763885b62f28ab093be2a7f3f8282b8a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987241"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59788429"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -59,14 +59,7 @@ Traffic Manager は DNS レベルでアプリケーションと統合される�
 「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-how-it-works.md)」の説明にあるとおり、Traffic Manager は DNS レベルで動作します。 DNS 参照が完了すると、クライアントはアプリケーション エンドポイントに Traffic Manager 経由ではなく直接接続します。 そのため、この接続では、任意のアプリケーション プロトコルを使用できます。 監視プロトコルとして TCP を選択すると、アプリケーション プロトコルを使用せずに、Traffic Manager のエンドポイント正常性監視を実行できます。 アプリケーション プロトコルを使用して正常性を検証する場合、エンドポイントは HTTP または HTTPS の GET 要求に応答できる必要があります。
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>"ネイキッド" ドメイン名で Traffic Manager を使用することはできますか。
-
-いいえ。 DNS 標準では、同じ名前を持つ他の DNS レコードと CNAME が共存することは許可されていません。 DNS ゾーンの頂点 (またはルート) には、SOA と権限のある NS レコードという、既存の 2 つの DNS レコードが常に含まれます。 これは、ゾーンの頂点で CNAME レコードを作成すると DNS 標準に違反してしまうことを意味します。
-
-Traffic Manager では、バニティ DNS 名をマッピングするために DNS CNAME レコードが必要です。 たとえば、`www.contoso.com` を Traffic Manager プロファイルの DNS 名 `contoso.trafficmanager.net` にマップします。 また、Traffic Manager プロファイルも、クライアントが接続するエンドポイントを示すために、別の DNS CNAME を返します。
-
-この問題を回避するために、HTTP リダイレクトを使用してトラフィックをネイキッド ドメイン名から別の URL に転送することをお勧めします。これにより、Traffic Manager を使用できるようになります。 たとえば、ネイキッド ドメイン "contoso.com" を使用すると、Traffic Manager の DNS 名を指す CNAME "www.contoso.com" にユーザーをリダイレクトできます。
-
-Traffic Manager におけるネイキッド ドメインの完全サポートは、開発待ちの機能として登録されています。 この機能を要求するためにサポートを登録するには、[コミュニティ フィードバック サイトの投票](https://feedback.azure.com/forums/217313-networking/suggestions/5485350-support-apex-naked-domains-more-seamlessly)で、ぜひ支持を表明してください。
+はい。 Azure Traffic Manager プロファイルを参照するためのドメイン名の頂点に対するエイリアス レコードを作成する方法を確認するには、「[Traffic Manager で頂点のドメイン名をサポートするエイリアス レコードを構成する](../dns/tutorial-alias-tm.md)」を参照してください。
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Traffic Manager では、DNS クエリを処理するときにクライアントのサブネット アドレスは考慮されますか。 
 はい。Traffic Manager は、受信する DNS クエリの送信元 IP アドレス (通常は DNS リゾルバーの IP アドレス) を考慮するだけでなく、地理的なルーティング方法、パフォーマンスによるルーティング方法、およびサブネット ルーティング方法で検索を実行するときに、エンド ユーザーの代わりに要求を行うリゾルバーによるクエリにクライアントのサブネット アドレスが含まれる場合は、そのアドレスも考慮します。  
@@ -134,8 +127,8 @@ Traffic Manager は、クエリの送信元 IP (ほとんどの場合、ユー�
 ## <a name="traffic-manager-subnet-traffic-routing-method"></a>Traffic Manager のサブネット トラフィック ルーティング方法
 
 ### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>サブネット ルーティングが役立つユース ケースを教えてください。
-サブネット ルーティングを使用すると、DNS 要求 IP アドレスの送信元 IP によって識別される特定のユーザーのセットに対して提供するエクスペリエンスを区別することができます。 たとえば、ユーザーが企業の本社から Web サイトに接続している場合に別のコンテンツを表示することができます。 また、特定の ISP のパフォーマンスが IPv6 の使用時に平均を下回る場合は、その ISP のユーザーによるアクセスを、IPv4 接続だけがサポートされているエンドポイントだけに制限することもできます。
-サブネット ルーティング方法を使用すべき理由はもう 1 つありますが、それは、入れ子になったプロファイル セット内の他のプロファイルと関連したものです。 たとえば、ユーザーのジオフェンスのために地理的なルーティング方法を使用する一方で、特定の ISP には別のルーティング方法を使用する場合は、プロファイルでサブネット ルーティング方法を親プロファイルにし、その ISP には特定の子プロファイルが使用されるようにオーバーライドします。そうすることで、その ISP 以外では、標準の地理的プロファイルが使用されます。
+サブネット ルーティングを使用すると、DNS 要求 IP アドレスの送信元 IP によって識別される特定のユーザーのセットに対して提供するエクスペリエンスを区別することができます。 たとえば、ユーザーが企業の本社から Web サイトに接続している場合に別のコンテンツを表示することができます。 また、IPv6 の使用時に特定の ISP のパフォーマンスが平均を下回る場合は、その ISP のユーザーによるアクセスを、IPv4 接続だけがサポートされているエンドポイントのみに制限することもできます。
+サブネット ルーティング方法を使用すべきもう 1 つの理由は、入れ子になったプロファイル セット内にある、他のプロファイルに関連しています。 たとえば、ユーザーのジオフェンスのために地理的なルーティング方法を使用する一方で、特定の ISP には別のルーティング方法を使用したい場合は、サブネット ルーティング方法を使用するプロファイルを親プロファイルにし、その ISP をオーバーライドして特定の子プロファイルが使用されるようにします。そうすることで、これ以外ではすべて標準の地理的プロファイルとなります。
 
 ### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>Traffic Manager はどのような方法でエンド ユーザーの IP アドレスを把握するのですか。
 エンド ユーザーのデバイスでは、通常、DNS 参照が DNS リゾルバーによって代行されます。 このようなリゾルバーの発信 IP が、Traffic Manager によって送信元 IP と見なされます。 また、サブネット ルーティング方法でも、要求と共に渡された EDNS0 Extended Client Subnet (ECS) 情報があるかどうかが検索されます。 ECS 情報が存在する場合は、それがルーティングの決定に使用されるアドレスになります。 ECS 情報がない場合は、クエリの送信元 IP がルーティングの目的で使用されます。
@@ -149,7 +142,7 @@ Traffic Manager は、クエリの送信元 IP (ほとんどの場合、ユー�
 ### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>サブネット ルーティングを使用する場合にフォールバック エンドポイントを指定するにはどうすればよいですか。
 サブネット ルーティングのプロファイルで、サブネットがマップされていないエンドポイントがある場合、他のエンドポイントと一致しないすべての要求は、このエンドポイントに送られます。 プロファイルにそのようなフォールバック エンドポイントを指定することを強くお勧めします。要求が到着し、どのエンドポイントにもマップされない場合、またはエンドポイントにマップされてもそのエンドポイントに異常がある場合、Traffic Manager からは NXDOMAIN 応答が返されるためです。
 
-### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>サブネット ルーティングの種類のプロファイルでエンドポイントが無効になっている場合はどうなりますか。
+### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>サブネット ルーティング型のプロファイルでエンドポイントが無効になっている場合はどうなりますか。
 サブネット ルーティングを使用するプロファイルで、そのエンドポイントが無効になっている場合、Traffic Manager はそのエンドポイントとそれのサブネット マッピングが存在しないかのように動作します。 IP アドレス マッピングと一致するクエリが受信され、エンドポイントが無効になっている場合、Traffic Manager はフォールバック エンドポイント (マッピングを持たないエンドポイント) を返します。そのようなエンドポイントがない場合は、NXDOMAIN 応答を返します
 
 ## <a name="traffic-manager-multivalue-traffic-routing-method"></a>Traffic Manager の複数値トラフィック ルーティング方法
@@ -316,7 +309,7 @@ Azure Resource Manager では、すべてのリソース グループに対し�
 
 ### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>各エンドポイントの現在の正常性を確認するには、どうすればよいですか。
 
-各エンドポイントとプロファイル全体の現在の監視状態は、Azure ポータルに表示されます。 この情報は、Traffic Manager の [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx)、[PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager)、および [クロスプラットフォームの Azure CLI](../cli-install-nodejs.md) を使用して取得することもできます。
+各エンドポイントとプロファイル全体の現在の監視状態は、Azure ポータルに表示されます。 この情報は、Traffic Manager の [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx)、[PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.trafficmanager)、および [クロスプラットフォームの Azure CLI](../cli-install-nodejs.md) を使用して取得することもできます。
 
 Azure Monitor を使用すると、エンドポイントの正常性を追跡して、視覚的に表現することもできます。 Azure Monitor の使用方法について詳しくは、[Azure Monitoring のドキュメント](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)をご覧ください。
 
@@ -347,6 +340,7 @@ Traffic Manager では、エンドポイントの指定に IPv4 アドレスま�
 Traffic Manager は、プロファイルに対するクエリを受信すると、まず、指定されたルーティング方法およびエンドポイントの正常性状態に基づいて返される必要があるエンドポイントを特定します。 次に、受信クエリで要求されたレコード タイプと、エンドポイントに関連付けられているレコード タイプを調べたうえで、以下の表に基づいて応答を返します。
 
 複数値以外のルーティング方法のプロファイルの場合:
+
 |受信クエリ要求|    エンドポイントの種類|  提供される応答|
 |--|--|--|
 |ANY |  A/AAAA/CNAME |  ターゲット エンドポイント| 
@@ -357,6 +351,7 @@ Traffic Manager は、プロファイルに対するクエリを受信すると�
 |CNAME |    CNAME | ターゲット エンドポイント|
 |CNAME  |A/AAAA | NODATA |
 |
+
 ルーティング方法が複数値に設定されているプロファイルの場合:
 
 |受信クエリ要求|    エンドポイントの種類 | 提供される応答|

@@ -1,33 +1,36 @@
 ---
-title: Azure Portal での Azure Search のサービス管理
-description: Azure Portal を使用して、Microsoft Azure のホスト型クラウド検索サービスである Azure Search を管理します。
+title: ポータルでの Azure Search のサービス管理 - Azure Search
+description: Azure portal を使用して、Microsoft Azure のホスト型クラウド検索サービスである Azure Search を管理します。
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 03/08/2019
 ms.author: heidist
-ms.openlocfilehash: fb09e12a5122f6e6671e55c5b5623afdd6b35c29
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.custom: seodec2018
+ms.openlocfilehash: d5820c927b88eba37eaf092dfd4b209180bfc8eb
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842291"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775596"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure Portal での Azure Search のサービス管理
 > [!div class="op_single_selector"]
-> * [ポータル](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
+> * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [ポータル](search-manage.md)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
 Azure Search は、高度な検索エクスペリエンスをカスタムアプリに組み込むために使用される、フル マネージドのクラウドベースの検索サービスです。 この記事では、既にプロビジョニング済みの検索サービスに対して [Azure portal](https://portal.azure.com) で実行できるサービス管理タスクについて説明します。 サービス管理は軽量設計で、次のタスクに限定されています。
 
-* サービスへの読み取りまたは書き込みアクセスに使用される "*API キー*" へのアクセスを管理する。
-* パーティションとレプリカの割り当てを変更することにより、サービスの容量を調整する。
-* リソース使用量をサービス レベルの上限と比較して監視する。
+> [!div class="checklist"]
+> * サービスへの読み取りまたは書き込みアクセスに使用される "*API キー*" へのアクセスを管理する。
+> * パーティションとレプリカの割り当てを変更することにより、サービスの容量を調整する。
+> * リソース使用量をサービス レベルの上限と比較して監視する。
 
 管理タスクに*アップグレード*は表示されません。 リソースはサービスがプロビジョニングされたときに割り当てられるため、別のレベルに移動するには新しいサービスが必要です。 詳細については、[Azure Search サービスの作成](search-create-service-portal.md)に関するページを参照してください。
 
@@ -57,7 +60,7 @@ Azure Search は、ポータルまたはプログラム インターフェイス
 <a id="sub-5"></a>
 
 ## <a name="monitor-resource-usage"></a>リソース使用量を監視する
-ダッシュボードでは、リソース監視が、サービス ダッシュボードに表示される情報と、サービスのクエリで取得できるいくつかのメトリックに限定されます。 サービス ダッシュボードの [使用] セクションで、パーティション リソース レベルが自分のアプリケーションに適しているかどうかをすばやく決定できます。
+ダッシュボードでは、リソース監視が、サービス ダッシュボードに表示される情報と、サービスのクエリで取得できるいくつかのメトリックに限定されます。 サービス ダッシュボードの [使用] セクションで、パーティション リソース レベルが自分のアプリケーションに適しているかどうかをすばやく決定できます。 ログに記録されたイベントをキャプチャして保持する必要がある場合は、Azure 監視などの外部のリソースをプロビジョニングできます。 詳細については、[Azure Search の監視](search-monitor-usage.md)に関するページをご覧ください。
 
 Search Service REST API を使用して、プログラムでドキュメントとインデックスの数を取得できます。 
 

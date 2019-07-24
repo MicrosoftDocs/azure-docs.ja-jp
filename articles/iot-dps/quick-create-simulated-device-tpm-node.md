@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 8b2d49d9df2cc8db98004ad9c186511d8d5e2b87
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: ef0a3d251679d7dd6760f1f928cbf0f0daf3db01
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156648"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099139"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>IoT Hub Device Provisioning Service 対応の Node.js デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングする
 
@@ -25,8 +25,8 @@ ms.locfileid: "50156648"
 自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](concepts-auto-provisioning.md)」も確認してください。 また、先に進む前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順も済ませておいてください。 
 
 Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポートされています。
-- [登録グループ](concepts-service.md#enrollment-group): 複数の関連するデバイスを登録するために使用します。
-- [個別登録](concepts-service.md#individual-enrollment): 1 台のデバイスを登録するために使用します。
+- [登録グループ](concepts-service.md#enrollment-group)：複数の関連するデバイスを登録するために使用します。
+- [個々の登録](concepts-service.md#individual-enrollment):単一デバイスを登録するために使用します。
 
 この記事では、個別登録の使用方法を示します。
 
@@ -44,7 +44,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 1. コマンド プロンプトまたは Git Bash を開きます。 `azure-utpm-c` GitHub レポジトリを複製します。
     
     ```cmd/sh
-    git clone https://github.com/Azure/azure-utpm-c.git
+    git clone https://github.com/Azure/azure-utpm-c.git --recursive
     ```
 
 1. GitHub のルート フォルダーに移動し、[TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) シミュレーターを実行します。 これは、ソケットでポート 2321 とポート 2322 をリッスンします。 このコマンド ウィンドウを閉じないでください。このクイック スタート ガイドの終了まで、このシミュレーターを実行状態にしておく必要があります。 
@@ -72,25 +72,25 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 1. 登録時に使用されるコンポーネントが含まれている以下のパッケージをインストールします。
 
-    - TPM と連係するセキュリティ クライアント: `azure-iot-security-tpm`
-    - デバイスが Device Provisioning Service に接続するためのトランスポート: `azure-iot-provisioning-device-http` または `azure-iot-provisioning-device-amqp`
-    - トランスポートおよびセキュリティ クライアントを使用するクライアント: `azure-iot-provisioning-device`
+   - TPM と連係するセキュリティ クライアント: `azure-iot-security-tpm`
+   - デバイスが Device Provisioning Service に接続するためのトランスポート: `azure-iot-provisioning-device-http` または `azure-iot-provisioning-device-amqp`
+   - トランスポートおよびセキュリティ クライアントを使用するクライアント: `azure-iot-provisioning-device`
 
-    デバイスが登録されると、通常の IoT Hub Device Client パッケージを使用して、登録時に指定した資格情報でデバイスを接続できます。 以下のものが必要になります。
+     デバイスが登録されると、通常の IoT Hub Device Client パッケージを使用して、登録時に指定した資格情報でデバイスを接続できます。 以下のものが必要になります。
 
-    - デバイス クライアント: `azure-iot-device`
-    - トランスポート: `azure-iot-device-amqp`、`azure-iot-device-mqtt`、`azure-iot-device-http` のいずれか
-    - 既にインストール済みのセキュリティ クライアント: `azure-iot-security-tpm`
+   - デバイス クライアント: `azure-iot-device`
+   - トランスポート: `azure-iot-device-amqp`、`azure-iot-device-mqtt`、`azure-iot-device-http` のいずれか
+   - 既にインストール済みのセキュリティ クライアント: `azure-iot-security-tpm`
 
-    > [!NOTE]
-    > 以下のサンプルでは、`azure-iot-provisioning-device-http` および `azure-iot-device-mqtt` トランスポートを使用します。
-    > 
+     > [!NOTE]
+     > 以下のサンプルでは、`azure-iot-provisioning-device-http` および `azure-iot-device-mqtt` トランスポートを使用します。
+     > 
 
-    コマンド プロンプトで、**registerdevice** フォルダーから次のコマンドを実行することで、これらすべてのパッケージを一度にインストールできます。
+     コマンド プロンプトで、**registerdevice** フォルダーから次のコマンドを実行することで、これらすべてのパッケージを一度にインストールできます。
 
-        ```cmd/sh
-        npm install --save azure-iot-device azure-iot-device-mqtt azure-iot-security-tpm azure-iot-provisioning-device-http azure-iot-provisioning-device
-        ```
+       ```cmd/sh
+       npm install --save azure-iot-device azure-iot-device-mqtt azure-iot-security-tpm azure-iot-provisioning-device-http azure-iot-provisioning-device
+       ```
 
 1. テキスト エディターを使用して、**registerdevice** フォルダーに新しい **ExtractDevice.js** ファイルを作成します。
 
@@ -141,15 +141,15 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 1. Device Provisioning Service の概要ブレードで、**[Manage enrollments]\(登録の管理\)** を選択します。 **[個別登録]** タブを選択し、上部にある **[個別登録の追加]** ボタンをクリックします。 
 
 1. **[Add Enrollment] (登録の追加)** で、次の情報を入力します。
-    - ID 構成証明の "*メカニズム*" として **[TPM]** を選択します。
-    - TPM デバイスの "*登録 ID*" と "*保証キー*" を入力します。
-    - 必要に応じて、次の情報を入力することができます。
-        - プロビジョニング サービスにリンクされた IoT ハブを選択します。
-        - 一意のデバイス ID を入力します。 デバイスに名前を付ける際に機密データを含めないようにしてください。
-        - **[Initial device twin state]\(初期のデバイス ツインの状態\)** をデバイスの目的の初期構成で更新します。
-    - 作業が完了したら、**[保存]** をクリックします。 
+   - ID 構成証明の "*メカニズム*" として **[TPM]** を選択します。
+   - TPM デバイスの "*登録 ID*" と "*保証キー*" を入力します。
+   - 必要に応じて、次の情報を入力することができます。
+       - プロビジョニング サービスにリンクされた IoT ハブを選択します。
+       - 一意のデバイス ID を入力します。 デバイスに名前を付ける際に機密データを含めないようにしてください。
+       - **[Initial device twin state]\(初期のデバイス ツインの状態\)** をデバイスの目的の初期構成で更新します。
+   - 作業が完了したら、**[保存]** をクリックします。 
 
-    ![ポータルのブレードにデバイス登録情報を入力します。](./media/quick-create-simulated-device/enter-device-enrollment.png)  
+     ![ポータルのブレードにデバイス登録情報を入力します。](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
    登録に成功すると、*[個々の登録]* タブの一覧に、対象デバイスの "*登録 ID*" が表示されます。 
 

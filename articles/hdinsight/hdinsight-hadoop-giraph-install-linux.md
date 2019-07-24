@@ -9,23 +9,23 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 202a68d219bec3a70e50afa68228cbc6bf453518
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a2f964915efda6ce83439c3c1970de58b0467456
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011665"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201723"
 ---
-# <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>HDInsight Hadoop クラスターに Giraph をインストールし、Giraph を使用して大規模なグラフを処理する
+# <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>HDInsight Hadoop クラスターに Apache Giraph をインストールし、Giraph を使用して大規模なグラフを処理する
 
 HDInsight クラスターで Apache Giraph をインストールする方法について説明します。 HDInsight のスクリプト アクション機能では、bash スクリプトを実行してクラスターをカスタマイズできます。 スクリプトを使用して、クラスターの作成時および作成後にクラスターをカスタマイズできます。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="whatis"></a>Giraph とは
 
-[Apache Giraph](http://giraph.apache.org/) は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。 グラフは、オブジェクト間のリレーションシップをモデル化します。 たとえば、インターネット、またはソーシャル ネットワーク上の人物間の関係など、大規模なネットワーク上のルーター間の接続をモデル化します。 グラフの処理により、次のようなグラフ内のオブジェクト間の関係について推論できます。
+[Apache Giraph](https://giraph.apache.org/) は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。 グラフは、オブジェクト間のリレーションシップをモデル化します。 たとえば、インターネット、またはソーシャル ネットワーク上の人物間の関係など、大規模なネットワーク上のルーター間の接続をモデル化します。 グラフの処理により、次のようなグラフ内のオブジェクト間の関係について推論できます。
 
 * 現在の関係に基づいて潜在的な友人を識別する
 
@@ -33,10 +33,10 @@ HDInsight クラスターで Apache Giraph をインストールする方法に�
 
 * Web ページのページ順位を計算する
 
-> [!WARNING]
+> [!WARNING]  
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> Giraph といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートで問題を解決できる場合があります。 解決できない場合は、その技術に関して豊富な専門知識のあるオープン ソース コミュニティを参照する必要があります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
+> Giraph といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートで問題を解決できる場合があります。 解決できない場合は、その技術に関して豊富な専門知識のあるオープン ソース コミュニティを参照する必要があります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [https://stackoverflow.com](https://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[https://apache.org](https://apache.org) に[Hadoop](https://hadoop.apache.org/) などのプロジェクト サイトもあります。
 
 
 ## <a name="what-the-script-does"></a>スクリプトの機能
@@ -55,7 +55,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 このセクションでは、Azure ポータルを使用してクラスターを作成する際に、サンプル スクリプトを使用する方法について説明します。
 
-> [!NOTE]
+> [!NOTE]  
 > スクリプト アクションは、次の方法を使用して適用できます。
 > * Azure PowerShell
 > * Azure クラシック CLI
@@ -68,7 +68,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 2. **[オプションの構成]** セクションで **[スクリプト アクション]** を選択し、以下の情報を指定します。
 
-   * **[名前]**: スクリプト アクションの表示名を入力します。
+   * **[名前]**: スクリプト アクションのフレンドリ名を入力します。
 
    * **[スクリプト URI]**: https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
 
@@ -76,7 +76,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
    * **[ワーカー]**: このエントリはオフのままにします。
 
-   * **[ZOOKEEPER]**: このエントリはオフのままにします。
+   * **[ZooKeeper]**: このエントリはオフのままにします。
 
    * **[パラメーター]**: このフィールドは空のままにします。
 
@@ -86,7 +86,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 ## <a name="usegiraph"></a>HDInsight で Giraph を使用する方法
 
-クラスターが作成されたら、次の手順を使用して、Giraph に含まれているサンプル SimpleShortestPathsComputation を実行します。 この例では、グラフのオブジェクト間の最短パスを見つけるための基本的な [Pregel](http://people.apache.org/~edwardyoon/documents/pregel.pdf) 実装を使用します。
+クラスターが作成されたら、次の手順を使用して、Giraph に含まれているサンプル SimpleShortestPathsComputation を実行します。 この例では、グラフのオブジェクト間の最短パスを見つけるための基本的な [Pregel](https://people.apache.org/~edwardyoon/documents/pregel.pdf) 実装を使用します。
 
 1. SSH を使用して HDInsight クラスターに接続します。
 
@@ -146,7 +146,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
    | `-op` |出力場所。 |
    | `-w 2` |使用する worker の数。 この例では 2 です。 |
 
-    これらのパラメーターと Giraph サンプルで使用されるその他のパラメーターの詳細については、 [Giraph のクイックスタート](http://giraph.apache.org/quick_start.html)のページを参照してください。
+    これらのパラメーターと Giraph サンプルで使用されるその他のパラメーターの詳細については、 [Giraph のクイックスタート](https://giraph.apache.org/quick_start.html)のページを参照してください。
 
 6. ジョブが完了すると、結果が **/example/out/shotestpaths** ディレクトリに格納されます。 出力ファイルの名前の先頭は **part-m-**、末尾はファイルの順番を示す数字です。 次のコマンドを使用して、出力を表示します。
 
@@ -171,5 +171,3 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 ## <a name="next-steps"></a>次の手順
 
 * [HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)。
-
-* [HDInsight クラスターに Solr をインストールする](hdinsight-hadoop-solr-install-linux.md)。

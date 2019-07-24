@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 52e034f9a0c11c2b27888d181304bc16c3369e4a
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 69f36773b702d9f0059e0cd27dbb864ccd7f7b2b
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390025"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262763"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Azure API Management と Azure Application Insights を統合する方法
 
@@ -64,8 +64,10 @@ Azure Application Insights を使用する前に、このサービスのイン�
 6. **[有効化]** ボックスをオンにします。
 7. **[Destination]\(出力先\)** ドロップダウンで、接続済みのロガーを選択します。
 8. **[Sampling (%)]\(サンプリング (%)\)** に **100** と入力し、**[Always log errors]\(エラーは常に記録する\)** チェックボックスをオンにします。
-9. **[First bytes of body]\(本文の最初のバイト\)** フィールドに **1024** と入力します。
-10. **[Save]** をクリックします。
+9. **[Save]** をクリックします。
+
+> [!WARNING]
+> **[First bytes of body]\(本文の最初のバイト\)** フィールドの既定値 **0** を上書きすると、API のパフォーマンスが大幅に低下する可能性があります。
 
 > [!NOTE]
 > バックグラウンドで、'applicationinsights' という名前の[診断](https://docs.microsoft.com/rest/api/apimanagement/diagnostic/createorupdate)エンティティが API レベルで作成されます。
@@ -73,10 +75,10 @@ Azure Application Insights を使用する前に、このサービスのイン�
 | 設定名                        | 値の型                        | 説明                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 有効化                              | ブール値                           | この API のログ記録が有効になっているかどうかを指定します。                                                                                                                                                                                                                                                                                                |
-| 変換先                         | Azure Application Insights ロガー | 使用する Azure Application Insights ロガーを指定します。                                                                                                                                                                                                                                                                                           |
+| 宛先                         | Azure Application Insights ロガー | 使用する Azure Application Insights ロガーを指定します。                                                                                                                                                                                                                                                                                           |
 | [Sampling (%)]\(サンプリング (%)\)                        | 小数点                           | 0 から 100 までの値 (パーセント)。 <br/> Azure Application Insights に記録する要求のパーセンテージを指定します。 0% サンプリングの場合、要求はまったく記録されません。100% サンプリングの場合、すべての要求が記録されます。 <br/> この設定は、Azure Application Insights に要求記録が与えるパフォーマンス上の影響を抑える目的で使用されます (下のセクションをご覧ください)。 |
 | [Always log errors]\(エラーは常に記録する\)                   | ブール値                           | この設定が選択されている場合、**[サンプリング]** 設定に関係なく、すべてのエラーが Azure Application Insights に記録されます。                                                                                                                                                                                                                  |
-| 基本オプション: [ヘッダー]              | list                              | Azure Application Insights に記録する、要求と応答のヘッダーを指定します。  既定値: ヘッダーはログに記録されません。                                                                                                                                                                                                             |
+| 基本オプション: headers              | list                              | Azure Application Insights に記録する、要求と応答のヘッダーを指定します。  既定値: ヘッダーはログに記録されません。                                                                                                                                                                                                             |
 | 基本オプション: [First bytes of body]\(本文の最初のバイト\)  | integer                           | Azure Application Insights に記録する、要求本文と応答本文の最初のバイト数を指定します。  既定値: 本文は記録されません。                                                                                                                                                                                              |
 | 詳細オプション: [Frontend Request]\(フロントエンド要求\)  |                                   | *フロントエンド要求*を Azure Application Insights に記録するかどうか、また、その方法を指定します。 *フロントエンド要求*は、Azure API Management サービスで受信する要求です。                                                                                                                                                                        |
 | 詳細オプション: [Frontend Response]\(フロントエンド応答\) |                                   | *フロントエンド応答*を Azure Application Insights に記録するかどうか、また、その方法を指定します。 *フロントエンド応答*は、Azure API Management サービスから発信される応答です。                                                                                                                                                                   |

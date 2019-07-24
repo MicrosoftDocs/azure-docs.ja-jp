@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
-ms.openlocfilehash: ea46039583681bd89e254d153997e3a300041d4e
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 40ba5814bce08037b9e4d0787defbab4d02e58df
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341356"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546258"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Visual Studio プロファイラーを使用した、Azure コンピューティング エミュレーターでのクラウド サービスのパフォーマンスのローカルなテスト
 クラウド サービスのパフォーマンスのテストには、さまざまなツールや手法を使用できます。
@@ -30,8 +30,8 @@ Azure にクラウド サービスを発行するときは、[Azure アプリケ
 
 この記事では、エミュレーターでローカルに実行できるプロファイル手法である CPU サンプリングについて説明します。 CPU サンプリングは、あまり侵入的でないプロファイル手法です。 プロファイラーは、指定されたサンプリング間隔でコール スタックのスナップショットを取得します。 データはある期間にわたって収集され、レポートに示されます。 このプロファイル手法では、コンピューティング処理が集中するアプリケーションで大部分の CPU 処理が行われる箇所が示されます。  これによって、アプリケーションが多くの時間を費やしている "ホット パス" に焦点を合わせる機会が与えられます。
 
-## <a name="1-configure-visual-studio-for-profiling"></a>1: Visual Studio をプロファイル向けに構成する
-まず、プロファイル時に有用な Visual Studio の構成オプションがいくつかあります。 プロファイル レポートを理解しやすくするために、アプリケーションのシンボル (.pdb ファイル) およびシステム ライブラリのシンボルが必要です。 使用可能なシンボル サーバーを参照していることを確認してください。 確認するには、Visual Studio の **[ツール]** メニューで、**[オプション]**、**[デバッグ]**、**[シンボル]** の順に選択します。 Microsoft シンボル サーバーが **[シンボル ファイル (.pdb) の場所]** の下に表示されていることを確認します。  http://referencesource.microsoft.com/symbols を参照することもできます。追加のシンボル ファイルが含まれる可能性があります。
+## <a name="1-configure-visual-studio-for-profiling"></a>1:Visual Studio をプロファイル向けに構成する
+まず、プロファイル時に有用な Visual Studio の構成オプションがいくつかあります。 プロファイル レポートを理解しやすくするために、アプリケーションのシンボル (.pdb ファイル) およびシステム ライブラリのシンボルが必要です。 使用可能なシンボル サーバーを参照していることを確認してください。 確認するには、Visual Studio の **[ツール]** メニューで、**[オプション]**、**[デバッグ]**、**[シンボル]** の順に選択します。 Microsoft シンボル サーバーが **[シンボル ファイル (.pdb) の場所]** の下に表示されていることを確認します。  https://referencesource.microsoft.com/symbols を参照することもできます。追加のシンボル ファイルが含まれる可能性があります。
 
 ![Symbol options][4]
 
@@ -77,7 +77,7 @@ private async Task RunAsync(CancellationToken cancellationToken)
 
 ソリューション構成を **[リリース]** に設定して、デバッグ (Ctrl + F5 キー) を行わずに、クラウド サービスをローカルでビルドして実行します。 これによって、アプリケーションをローカルに実行するためにすべてのファイルとフォルダーが作成され、すべてのエミュレーターが起動されます。 コンピューティング エミュレーター UI をタスク バーから起動して、worker ロールが実行していることを確認します。
 
-## <a name="2-attach-to-a-process"></a>2: プロセスにアタッチする
+## <a name="2-attach-to-a-process"></a>2.プロセスにアタッチする
 アプリケーションを Visual Studio 2010 IDE から起動してプロファイルするのではなく、実行中のプロセスにプロファイラーをアタッチする必要があります。 
 
 プロファイラーをプロセスにアタッチするには、**[分析]** メニューで **[プロファイラー]**、**[アタッチ/デタッチ]** の順に選択します。
@@ -113,7 +113,7 @@ Trace.WriteLine(message, "Information");
 
 ![Stop Profiling option][10]
 
-## <a name="3-view-performance-reports"></a>3: パフォーマンス レポートを表示する
+## <a name="3-view-performance-reports"></a>3:パフォーマンス レポートを表示する
 アプリケーションのパフォーマンス レポートが表示されます。
 
 この時点で、プロファイラーは実行を停止し、.vsp ファイルにデータを保存し、そのデータの分析を示すレポートを表示します。
@@ -130,7 +130,7 @@ Concatenate メソッドと String.Concat が実行時間の大部分を占め�
 
 ![Performance warnings][14]
 
-## <a name="4-make-changes-and-compare-performance"></a>4: 変更を加えてパフォーマンスを比較する
+## <a name="4-make-changes-and-compare-performance"></a>4:変更を加えてパフォーマンスを比較する
 コードを変更する前後でパフォーマンスを比較することもできます。  実行中のプロセスを停止します。コードを編集して、文字列連結操作を StringBuilder の使用に置き換えます。
 
 ```csharp
@@ -162,14 +162,14 @@ public static string Concatenate(int number)
 * コンピューティング エミュレーター UI を使用して、アプリケーションの状態を表示します。 
 * エミュレーターでのアプリケーションの起動や、プロファイラーのアタッチに問題がある場合は、コンピューティング エミュレーターをシャットダウンし、再起動します。 これで問題が解決しない場合は、コンピューターを再起動してみてください。 コンピューティング エミュレーターを使用して、実行中のデプロイメントを中断および削除すると、この問題が発生することがあります。
 * コマンド ラインからいずれかのプロファイル コマンドを使用した場合は (特にグローバル設定)、VSPerfClrEnv /globaloff が呼び出され、VsPerfMon.exe がシャットダウンされたことを確認します。
-* サンプリング時にメッセージ "PRF0025: データは収集されませんでした" が表示された場合は、アタッチ先のプロセスに CPU 活動があることをチェックします。 コンピューティング作業を行っていないアプリケーションは、サンプリング データを生成しないことがあります。  また、サンプリングが行われる前にプロセスが終了した可能性もあります。 プロファイル中のロールの Run メソッドが終了していないことをチェックします。
+* サンプリング時にメッセージ "PRF0025:データは収集されませんでした" が表示された場合は、アタッチ先のプロセスに CPU アクティビティがあることをチェックします。 コンピューティング作業を行っていないアプリケーションは、サンプリング データを生成しないことがあります。  また、サンプリングが行われる前にプロセスが終了した可能性もあります。 プロファイル中のロールの Run メソッドが終了していないことをチェックします。
 
 ## <a name="next-steps"></a>次の手順
-Visual Studio プロファイラーでは、エミュレーター内の Azure バイナリのインストルメント化はサポートされていませんが、メモリの割り当てをテストする場合は、プロファイル時にこのオプションを選択できます。 また、スレッドがロックの競合のために時間を浪費しているかどうかの判断に役立つ同時実行プロファイルを選択することも、アプリケーションの層間 (最も多いのはデータ層と worker ロールの間) で相互作用するときのパフォーマンス問題の追跡に役立つ階層の相互作用のプロファイルを選択することもできます。  アプリケーションが生成するデータベース クエリを表示し、プロファイル データを使用してデータベースの使用を強化することができます。 階層の相互作用プロファイルの詳細については、ブログ記事「[Walkthrough: Using the Tier Interaction Profiler in Visual Studio Team System 2010 (チュートリアル: Visual Studio Team System 2010 での階層の相互作用プロファイラーの使用)][3]」を参照してください。
+Visual Studio プロファイラーでは、エミュレーター内の Azure バイナリのインストルメント化はサポートされていませんが、メモリの割り当てをテストする場合は、プロファイル時にこのオプションを選択できます。 また、スレッドがロックの競合のために時間を浪費しているかどうかの判断に役立つコンカレンシー プロファイルを選択することも、アプリケーションの層間 (最も多いのはデータ層と worker ロールの間) で相互作用するときのパフォーマンス問題の追跡に役立つ階層の相互作用のプロファイルを選択することもできます。  アプリケーションが生成するデータベース クエリを表示し、プロファイル データを使用してデータベースの使用を強化することができます。 階層の相互作用プロファイルの詳細については、ブログ記事「[Walkthrough:Using the Tier Interaction Profiler in Visual Studio Team System 2010 (チュートリアル: Visual Studio Team System 2010 での階層の相互作用のプロファイラーの使用)][3]」を参照してください。
 
 [1]: https://docs.microsoft.com/azure/application-insights/app-insights-profiler
-[2]: http://msdn.microsoft.com/library/azure/hh411542.aspx
-[3]: http://blogs.msdn.com/b/habibh/archive/2009/06/30/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010.aspx
+[2]: https://msdn.microsoft.com/library/azure/hh411542.aspx
+[3]: https://blogs.msdn.com/b/habibh/archive/2009/06/30/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010.aspx
 [4]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png
 [5]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally10.png
 [6]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally02.png

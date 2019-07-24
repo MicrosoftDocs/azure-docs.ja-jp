@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: fdcc230171006c6388e75b947e10a73fb953001a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2c4e5d0117f046343b140ef2b2c46c074c835075
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294681"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59796530"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Azure API Management サービスからの外部サービスの使用
 Azure API Management サービスに含まれるポリシーでは、着信要求、送信応答、および基本的な構成情報のみを使用した有用なさまざまな処理を実行できます。 一方、API Management ポリシーでは外部サービスと通信することもできるため、さらに可能性が広がります。
@@ -27,7 +27,7 @@ Azure API Management サービスに含まれるポリシーでは、着信要�
 [Azure Event Hub サービスでログ記録、監視、および分析](api-management-log-to-eventhub-sample.md)を行う際の通信の方法については、既に学習しています。 この記事では、外部の任意の HTTP ベースのサービスと通信するポリシーのデモを行います。 こうしたポリシーは、リモート イベントをトリガーしたり、元の要求と応答を何らかの方法で操作する情報を取得したりする場合に使用できます。
 
 ## <a name="send-one-way-request"></a>Send-One-Way-Request
-外部サービスに何らかの種類の重要なイベントを通知する、外部通信の最も単純な要求スタイルは、おそらくファイア アンド フォーゲットでしょう。 制御フロー ポリシー `choose` は、関心のある任意の種類の状態検出に使用できます。  条件が満たされると、[send-one-way-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendOneWayRequest) ポリシーを使用して外部 HTTP 要求を行うことができます。 これは、Hipchat、Slack などのメッセージング システム、SendGrid または MailChimp のようなメール API、または PagerDuty などの重要なサポート インシデントへの要求である場合があります。 こうしたメッセージング システムすべてにシンプルな HTTP API があり、呼び出すことができます。
+外部サービスに何らかの種類の重要なイベントを通知する、外部通信の最も単純な要求スタイルは、おそらくファイア アンド フォーゲットでしょう。 制御フロー ポリシー `choose` は、関心のある任意の種類の状態検出に使用できます。  条件が満たされると、[send-one-way-request](/azure/api-management/api-management-advanced-policies#SendOneWayRequest) ポリシーを使用して外部 HTTP 要求を行うことができます。 これは、Hipchat、Slack などのメッセージング システム、SendGrid または MailChimp のようなメール API、または PagerDuty などの重要なサポート インシデントへの要求である場合があります。 こうしたメッセージング システムすべてにシンプルな HTTP API があり、呼び出すことができます。
 
 ### <a name="alerting-with-slack"></a>Slack を使用した警告
 以下の例では、HTTP 応答のステータス コードが 500 以上の場合に、Slack チャット ルームにメッセージを送信する方法を示します。 500 の範囲エラーは、API のクライアントが自動的に解決できない、バックエンド API に問題があることを示します。 通常、これは API Management 側で何らかの介入が必要です。  
@@ -62,19 +62,19 @@ Slack には、着信 Web フックの概念があります。 着信 Web フッ
 ![Slack Web フック](./media/api-management-sample-send-request/api-management-slack-webhook.png)
 
 ### <a name="is-fire-and-forget-good-enough"></a>ファイア アンド フォーゲットは十分か
-ファイア アンド フォーゲット スタイルの要求には、あるトレードオフがあります。 何らかの理由で要求が失敗しても、エラーは報告されません。 この特定の状況に対し、複雑な 2 次的なエラー レポート システムや、応答の待機に関わる追加のパフォーマンス コストに対する保証はありません。 応答の確認が重要なシナリオの場合、より適切なオプションは [send-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) ポリシーです。
+ファイア アンド フォーゲット スタイルの要求には、あるトレードオフがあります。 何らかの理由で要求が失敗しても、エラーは報告されません。 この特定の状況に対し、複雑な 2 次的なエラー レポート システムや、応答の待機に関わる追加のパフォーマンス コストに対する保証はありません。 応答の確認が重要なシナリオの場合、より適切なオプションは [send-request](/azure/api-management/api-management-advanced-policies#SendRequest) ポリシーです。
 
 ## <a name="send-request"></a>send-request
 `send-request` ポリシーは、外部サービスを使用し複雑な処理機能を実行したり、さらにポリシーを処理したりするために API Management サービスにデータを返すことに使用できます。
 
 ### <a name="authorizing-reference-tokens"></a>参照トークンの承認
-API Management の主な機能には、バックエンド リソースの保護があります。 API によって使用される承認サーバーで、[Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) のように、その OAuth2 フローの一部として [JWT トークン](http://jwt.io/)が作成される場合、`validate-jwt` ポリシーを使用すると、そのトークンの有効性を検証できます。 一部の承認サーバーでは、承認サーバーへのコールバックを行わなければ検証できない[参照トークン](http://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/)と呼ばれるものが作成されます。
+API Management の主な機能には、バックエンド リソースの保護があります。 API によって使用される承認サーバーで、[Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) のように、その OAuth2 フローの一部として [JWT トークン](https://jwt.io/)が作成される場合、`validate-jwt` ポリシーを使用すると、そのトークンの有効性を検証できます。 一部の承認サーバーでは、承認サーバーへのコールバックを行わなければ検証できない[参照トークン](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/)と呼ばれるものが作成されます。
 
 ### <a name="standardized-introspection"></a>標準化されたイントロスペクション
 これまで、承認サーバーで参照トークンを検証するための標準的な方法はありませんでした。 ただし、最近 IETF から、トークンの有効性をリソース サーバーが検証する方法を定義した標準 [RFC 7662](https://tools.ietf.org/html/rfc7662) の提案が公開されました。
 
 ### <a name="extracting-the-token"></a>トークンの抽出
-まず、トークンを Authorization ヘッダーから抽出します。 ヘッダー値は、[RFC 6750](http://tools.ietf.org/html/rfc6750#section-2.1) に従って、`Bearer` 承認スキーム、単一スペース、および承認トークンを使用して形式を指定する必要があります。 残念ながら、認証スキームが省略されている場合もあります。 これに解析時に対応するため、API Management は、スペースでヘッダー値を分割し、返された文字列の配列から最後の文字を選択します。 これにより、不適切な形式の承認ヘッダーに対応できます。
+まず、トークンを Authorization ヘッダーから抽出します。 ヘッダー値は、[RFC 6750](https://tools.ietf.org/html/rfc6750#section-2.1) に従って、`Bearer` 承認スキーム、単一スペース、および承認トークンを使用して形式を指定する必要があります。 残念ながら、認証スキームが省略されている場合もあります。 これに解析時に対応するため、API Management は、スペースでヘッダー値を分割し、返された文字列の配列から最後の文字を選択します。 これにより、不適切な形式の承認ヘッダーに対応できます。
 
 ```xml
 <set-variable name="token" value="@(context.Request.Headers.GetValueOrDefault("Authorization","scheme param").Split(' ').Last())" />
@@ -118,7 +118,7 @@ API Management の主な機能には、バックエンド リソースの保護�
 </choose>
 ```
 
-`bearer` トークンの使用方法が記載されている [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) に従い、API Management は、401 応答と共に `WWW-Authenticate` ヘッダーも返します。 WWW-Authenticate は、正しく認証される要求を構築する方法をクライアントに指示することを目的としています。 OAuth2 フレームワークで実行可能なアプローチは多岐にわたるため、必要なすべての情報を通信することは困難です。 さいわいにも、 [クライアントが正しくリソース サーバーに要求を承認させる方法](http://tools.ietf.org/html/draft-jones-oauth-discovery-00)を支援する取り組みが進行中です。
+`bearer` トークンの使用方法が記載されている [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) に従い、API Management は、401 応答と共に `WWW-Authenticate` ヘッダーも返します。 WWW-Authenticate は、正しく認証される要求を構築する方法をクライアントに指示することを目的としています。 OAuth2 フレームワークで実行可能なアプローチは多岐にわたるため、必要なすべての情報を通信することは困難です。 さいわいにも、 [クライアントが正しくリソース サーバーに要求を承認させる方法](https://tools.ietf.org/html/draft-jones-oauth-discovery-00)を支援する取り組みが進行中です。
 
 ### <a name="final-solution"></a>最終的なソリューション
 これらをすべてまとめると、次のポリシーがあることになります。
@@ -201,7 +201,7 @@ API Management の主な機能には、バックエンド リソースの保護�
 </send-request>
 
 <send-request mode="new" response-variable-name="accidentdata" timeout="20" ignore-error="true">
-<set-url>@($"https://production.acme.com/throughput?from={(string)context.Variables["fromDate"]}&to={(string)context.Variables["fromDate"]}")"</set-url>
+<set-url>@($"https://production.acme.com/accidentdata?from={(string)context.Variables["fromDate"]}&to={(string)context.Variables["fromDate"]}")"</set-url>
   <set-method>GET</set-method>
 </send-request>
 ```
@@ -209,7 +209,7 @@ API Management の主な機能には、バックエンド リソースの保護�
 これらの要求は、不適切にも連続して実行されます。 
 
 ### <a name="responding"></a>応答
-複合応答を構築するには、[return-response](https://msdn.microsoft.com/library/azure/dn894085.aspx#ReturnResponse) ポリシーを使用します。 `set-body` 要素では式を使用して、すべてのコンポーネント表現がプロパティとして埋め込まれた、新しい `JObject` を構築できます。
+複合応答を構築するには、[return-response](/azure/api-management/api-management-advanced-policies#ReturnResponse) ポリシーを使用します。 `set-body` 要素では式を使用して、すべてのコンポーネント表現がプロパティとして埋め込まれた、新しい `JObject` を構築できます。
 
 ```xml
 <return-response response-variable-name="existing response variable">
@@ -252,7 +252,7 @@ API Management の主な機能には、バックエンド リソースの保護�
     </send-request>
 
     <send-request mode="new" response-variable-name="accidentdata" timeout="20" ignore-error="true">
-    <set-url>@($"https://production.acme.com/throughput?from={(string)context.Variables["fromDate"]}&to={(string)context.Variables["fromDate"]}")"</set-url>
+    <set-url>@($"https://production.acme.com/accidentdata?from={(string)context.Variables["fromDate"]}&to={(string)context.Variables["fromDate"]}")"</set-url>
       <set-method>GET</set-method>
     </send-request>
 

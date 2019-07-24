@@ -1,5 +1,5 @@
 ---
-title: Azure の予約を表示する | Microsoft Docs
+title: Azure リソースの予約を表示する | Microsoft Docs
 description: Azure portal で Azure の予約を表示する方法について説明します。
 services: billing
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2018
-ms.author: cwatson
-ms.openlocfilehash: 2ae30ca55f3ca03a64438025960ddd807e288216
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.author: banders
+ms.openlocfilehash: bf18d845b7128c8d6f740555f1a0f791767240ae
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48272618"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650225"
 ---
-# <a name="view-azure-reservations-in-the-azure-portal"></a>Azure portal で Azure の予約を表示する
+# <a name="view-azure-reservations-in-the-azure-portal"></a>Azure portal に Azure の予約を表示する
 
-ご利用のサブスクリプションの種類とアクセス許可に応じて、Azure の予約を表示する方法がいくつかあります。
+Azure に対する予約を表示する方法は、ご利用のサブスクリプションの種類とアクセス許可に応じて 2 つあります。
 
 ## <a name="view-reservations-as-owner-or-reader"></a>所有者または閲覧者として予約を表示する
 
@@ -30,7 +30,7 @@ ms.locfileid: "48272618"
  
 所有者または閲覧者として予約を表示するには
 
-1. [Azure Portal]( http://portal.azure.com) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. **[予約]** で検索します。
 
     ![Azure portal の検索を表示するスクリーンショット](./media/billing-view-reservation/portal-reservation-search.png)
@@ -45,7 +45,7 @@ ms.locfileid: "48272618"
 
 Azure portal で予約トランザクションを表示するには
 
-1. [Azure Portal]( http://portal.azure.com) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. **[コストの管理と請求]** で検索します。
 
     ![Azure portal の検索を表示するスクリーンショット](./media/billing-view-reservation/portal-cm-billing-search.png)
@@ -63,14 +63,25 @@ API を使用してデータを取得するには、「[Get Reserved Instance tr
 Azure の予約の詳細については、次の記事を参照してください。
 
 - [Azure の予約とは](billing-save-compute-costs-reservations.md)
+- [Azure の予約の管理](billing-manage-reserved-vm-instance.md)
+
+サービス プランの購入:
+
 - [Cosmos DB 予約容量の前払い](../cosmos-db/cosmos-db-reserved-capacity.md)
 - [Azure SQL Database の容量が予約された SQL Database 計算リソースの前払い](../sql-database/sql-database-reserved-capacity.md)
 - [Azure Reserved VM Instances による仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Azure の予約の管理](billing-manage-reserved-vm-instance.md)
+
+ソフトウェア プランの購入:
+
+- [Azure の予約からの Red Hat ソフトウェア プランの前払い](../virtual-machines/linux/prepay-rhel-software-charges.md)
+- [Azure の予約からの SUSE ソフトウェア プランの前払い](../virtual-machines/linux/prepay-suse-software-charges.md)
+
+使用状況の把握:
+
 - [従量課金制サブスクリプションの予約使用量について](billing-understand-reserved-instance-usage.md)
 - [エンタープライズ加入契約の予約使用量について](billing-understand-reserved-instance-usage-ea.md)
 - [CSP サブスクリプションの予約の使用状況について](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
 
-まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

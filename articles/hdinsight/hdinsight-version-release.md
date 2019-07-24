@@ -1,28 +1,28 @@
 ---
-title: HDInsight 4.0 の概要 (プレビュー) - Azure
+title: Azure HDInsight 4.0 の概要
 description: HDInsight 3.6 と HDInsight 4.0 の機能、制限事項、アップグレードの推奨事項を比較します。
 ms.service: hdinsight
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: hrasheed
 ms.topic: overview
-ms.date: 10/04/2018
-ms.openlocfilehash: ade162d0261b765336cbff9ea8a6429f9bd2d871
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 04/15/2019
+ms.openlocfilehash: af9f8a9e4d67c74910f60c70a0aee5c2439d6209
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801831"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609202"
 ---
-# <a name="hdinsight-40-overview-preview"></a>HDInsight 4.0 の概要 (プレビュー)
+# <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 の概要
 
-Azure HDInsight は、Azure 上でオープン ソースの Hadoop および Spark の分析を行う、エンタープライズのお客様の間で最も人気のあるサービスの 1 つです。 HDInsight (HDI) 4.0 は、[Hortonworks Data Platform (HDP) 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html) の Hadoop コンポーネントのクラウド ディストリビューションです。 この記事では、Azure HDInsight の最新のリリースとアップグレード方法に関する情報を提供します。
+Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop および Apache Spark の分析を行う、エンタープライズのお客様の間で最も人気のあるサービスの 1 つです。 HDInsight (HDI) 4.0 は、[Hortonworks Data Platform (HDP) 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html) の Apache Hadoop コンポーネントのクラウド ディストリビューションです。 この記事では、Azure HDInsight の最新のリリースとアップグレード方法に関する情報を提供します。
 
 ## <a name="whats-new-in-hdi-40"></a>HDI 4.0 の新機能
 
-### <a name="hive-30-and-llap"></a>Hive 3.0 と LLAP
+### <a name="apache-hive-30-and-llap"></a>Apache Hive 3.0 と LLAP
 
-Hive LLAP (低遅延分析処理) では、永続的クエリ サーバーとメモリ内キャッシュを使用して、リモート クラウド ストレージ内のデータの SQL クエリ結果がすばやく提供されます。 Hive LLAP では、Hive クエリのフラグメントを実行する永続的なデーモンのセットが利用されます。 LLAP でのクエリの実行は、コンテナーではなく LLAP デーモン内でワーカー タスクが実行している、LLAP を使用しない Hive と似ています。
+Apache Hive LLAP (低遅延分析処理) では、永続的クエリ サーバーとメモリ内キャッシュを使用して、リモート クラウド ストレージ内のデータの SQL クエリ結果がすばやく提供されます。 Hive LLAP では、Hive クエリのフラグメントを実行する永続的なデーモンのセットが利用されます。 LLAP でのクエリの実行は、コンテナーではなく LLAP デーモン内でワーカー タスクが実行している、LLAP を使用しない Hive と似ています。
 
 Hive LLAP の利点は次のとおりです。
 
@@ -72,7 +72,7 @@ HDInsight 4.0 上の Apache Spark では、次のシナリオがサポートさ�
 詳しくは、[Apache Spark](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html) に関するページをご覧ください。
 
 
-### <a name="oozie"></a>Oozie
+### <a name="apache-oozie"></a>Apache Oozie
 
 HDI 4.0 に含まれる Apache Oozie 4.3.1 では以下の点が変更されています。
 
@@ -90,7 +90,7 @@ HDI 4.0 に含まれる Apache Oozie 4.3.1 では以下の点が変更されて�
 
 ## <a name="limitations"></a>制限事項
 
-* HDI 4.0 では、MapReduce はサポートされていません。 Tez を使用してください。 詳しくは、[Apache Tez](https://tez.apache.org/) に関するページをご覧ください。
+* HDI 4.0 では、MapReduce はサポートされていません。 代わりに Apache Tez を使用してください。 詳しくは、[Apache Tez](https://tez.apache.org/) に関するページをご覧ください。
 
 * HDI 4.0 では、Hive ビューは使用できなくなります。 
 

@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: eec628a5084dc663978e16e617192802d3ecfcfa
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 3c078f7246140ee966f1d202d2248758dde49059
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307658"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888470"
 ---
-# <a name="security-frame-authorization--mitigations"></a>セキュリティ フレーム: 承認 | 対応策 
+# <a name="security-frame-authorization--mitigations"></a>セキュリティ フレーム:承認 | 対応策 
 | 製品/サービス | 記事 |
 | --------------- | ------- |
 | **コンピューターの信頼の境界** | <ul><li>[デバイス上のデータへの未承認アクセスを制限する適切な ACL が構成されていることを確認する](#acl-restricted-access)</li><li>[ユーザー固有の機密アプリケーション コンテンツがユーザー プロファイル ディレクトリに保存されていることを確認する](#sensitive-directory)</li><li>[デプロイされたアプリケーションが最小権限で実行されていることを確認する](#deployed-privileges)</li></ul> |
@@ -349,7 +349,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_unauthorized_access) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **手順** | <p>このサービスでは、承認コントロールが使用されません。 クライアントが特定の WCF サービスを呼び出すと、WCF は、呼び出し元に、サーバーでサービス メソッドを実行する権限が付与されていることを確認するさまざまな承認スキームを提供します。 承認コントロールが WCF サービスに対して有効でない場合は、認証されたユーザーが、権限の昇格を実行できます。</p>|
 
 ### <a name="example"></a>例
@@ -397,7 +397,7 @@ return result;
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、MVC5 |
 | **属性**              | 該当なし、ID プロバイダー - ADFS、ID プロバイダー - Azure AD |
-| **参照**              | [ASP.NET Web API の認証と承認](http://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api) |
+| **参照**              | [ASP.NET Web API の認証と承認](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api) |
 | **手順** | <p>アプリケーションが Azure AD または ADFS 要求を ID プロバイダーとして使用している場合、アプリケーション ユーザーのロール情報は、その Azure AD または ADFS 要求から派生していることがあります。また、アプリケーション自体がその情報を提供している場合もあります。 いずれの場合も、カスタム承認の実装によって、ユーザー ロール情報を検証する必要があります。</p><p>アプリケーションが Azure AD または ADFS 要求を ID プロバイダーとして使用している場合、アプリケーション ユーザーのロール情報は、その Azure AD または ADFS 要求から派生していることがあります。また、アプリケーション自体がその情報を提供している場合もあります。 いずれの場合も、カスタム承認の実装によって、ユーザー ロール情報を検証する必要があります。</p>
 
 ### <a name="example"></a>例

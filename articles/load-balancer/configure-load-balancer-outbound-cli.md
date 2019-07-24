@@ -1,5 +1,6 @@
 ---
-title: Azure CLI を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する | Microsoft Docs
+title: Azure CLI を使用して負荷分散規則とアウトバウンド規則を構成する
+titlesuffix: Azure Load Balancer
 description: この記事では、Azure CLI を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する方法について説明します。
 services: load-balancer
 documentationcenter: na
@@ -7,22 +8,23 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 04/01/2019
 ms.author: kumud
-ms.openlocfilehash: 0759b6a8e3deb9bc1d04e41598e4eef9304ecd83
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f28088a1a0586964092a0b5f86ce8bf0f95402cd
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416411"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281949"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>Azure CLI を使用して Standard Load Balancer の負荷分散規則とアウトバウンド規則を構成する
 
 このクイック スタートでは、Azure CLI を使用して Standard Load Balancer のアウトバウンド規則を構成する方法について説明します。  
 
-作業が完了すると、Load Balancer リソースに 2 つのフロントエンドとそれらに関連付けられた規則 (1 つは受信用、もう 1 つは送信用) が含まれます。  各フロントエンドはパブリック IP アドレスへの参照を持ちます。このシナリオでは、受信と送信に異なるパブリック IP アドレスを使用します。   負荷分散規則では受信負荷分散のみを提供し、アウトバウンド規則では VM に提供される送信 NAT を制御します。
+作業が完了すると、Load Balancer リソースに 2 つのフロントエンドとそれらに関連付けられた規則 (1 つは受信用、もう 1 つは送信用) が含まれます。  各フロントエンドはパブリック IP アドレスへの参照を持ちます。このシナリオでは、受信と送信に異なるパブリック IP アドレスを使用します。   負荷分散規則では受信負荷分散のみを提供し、アウトバウンド規則では VM に提供される送信 NAT を制御します。  このクイック スタートでは、受信用と送信用の 2 つの異なるバックエンド プールを使用して、機能を示し、このシナリオに柔軟性を持たせます。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
@@ -30,7 +32,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-resource-group"></a>リソース グループの作成
 
-[az group create](https://docs.microsoft.com/cli/azure/group#create) を使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+[az group create](https://docs.microsoft.com/cli/azure/group) を使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 次の例では、*myresourcegroupoutbound* という名前のリソース グループを *eastus2* に作成します。
 
@@ -40,7 +42,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
     --location eastus2
 ```
 ## <a name="create-virtual-network"></a>Create virtual network
-[az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) を使用して、*myresourcegroupoutbound* に *mysubnetoutbound* という名前のサブネットがある *myvnetoutbound* という名前の仮想ネットワークを作成します。
+[az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) を使用して、*myresourcegroupoutbound* に *mysubnetoutbound* という名前のサブネットがある *myvnetoutbound* という名前の仮想ネットワークを作成します。
 
 ```azurecli-interactive
   az network vnet create \
@@ -53,7 +55,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-inbound-public-ip-address"></a>受信パブリック IP アドレスの作成 
 
-インターネット上の Web アプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 Standard Load Balancer では、Standard パブリック IP アドレスだけがサポートされています。 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) を使用して、*myresourcegroupoutbound* に *mypublicipinbound* という名前の Standard パブリック IP アドレスを作成します。
+インターネット上の Web アプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 Standard Load Balancer では、Standard パブリック IP アドレスだけがサポートされています。 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) を使用して、*myresourcegroupoutbound* に *mypublicipinbound* という名前の Standard パブリック IP アドレスを作成します。
 
 ```azurecli-interactive
   az network public-ip create --resource-group myresourcegroupoutbound --name mypublicipinbound --sku standard
@@ -61,39 +63,50 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-outbound-public-ip-address"></a>送信パブリック IP アドレスの作成 
 
-[az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) を使用して、Load Balancer のフロントエンド送信構成の Standard IP アドレスを作成します。
+[az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) を使用して、Load Balancer のフロントエンド送信構成の Standard IP アドレスを作成します。
 
 ```azurecli-interactive
   az network public-ip create --resource-group myresourcegroupoutbound --name mypublicipoutbound --sku standard
 ```
-
 
 ## <a name="create-azure-load-balancer"></a>Azure Load Balancer の作成
 
 このセクションでは、ロード バランサーの以下のコンポーネントを作成および構成する方法について説明します。
   - ロード バランサーの受信ネットワーク トラフィックを受け取るフロントエンド IP。
   - フロントエンド IP から負荷分散されたネットワーク トラフィックが送信されるバックエンド プール。
+  - 送信接続用のバックエンド プール。 
   - バックエンド VM インスタンスの正常性を判断する正常性プローブ。
   - VM へのトラフィックの分散方法を定義する、ロード バランサーの受信規則。
   - VM からのトラフィックの分散方法を定義する、ロード バランサーのアウトバウンド規則。
 
 ### <a name="create-load-balancer"></a>Load Balancer の作成
 
-[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) を使用して、受信 IP アドレスを持つ *lb* という名前の Load Balancer を作成します。これには、受信フロントエンド IP 構成と、前の手順で作成したパブリック IP アドレス *mypublicipinbound* に関連付けられているバックエンド プールを含めます。
+[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) を使用して、受信 IP アドレスを持つ *lb* という名前の Load Balancer を作成します。これには、受信フロントエンド IP 構成と、前の手順で作成したパブリック IP アドレス *mypublicipinbound* に関連付けられているバックエンド プール *bepoolinbound* を含めます。
 
 ```azurecli-interactive
   az network lb create \
     --resource-group myresourcegroupoutbound \
     --name lb \
     --sku standard \
-    --backend-pool-name bepool \
+    --backend-pool-name bepoolinbound \
     --frontend-ip-name myfrontendinbound \
     --location eastus2 \
     --public-ip-address mypublicipinbound   
   ```
 
+### <a name="create-outbound-pool"></a>送信プールを作成する
+
+*bepooloutbound* という名前で、[az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) を使用して、VM のプール用の送信接続を定義するために、追加のバックエンド アドレス プールを作成します。  送信プールを別に作成すると最大限の柔軟性が提供されますが、このステップを省略し、受信用の *bepoolinbound* だけを使用してもかまいません。
+
+```azurecli-interactive
+  az network lb address-pool create \
+    --resource-group myresourcegroupoutbound \
+    --lb-name lb \
+    --name bepooloutbound
+```
+
 ### <a name="create-outbound-frontend-ip"></a>送信フロントエンド IP の作成
-[az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) を使用して、Load Balancer の送信フロントエンド IP 構成を作成します。これには、パブリック IP アドレス *mypublicipoutbound* に関連付けられている *myfrontendoutbound* という名前の送信フロントエンド IP 構成を含めます。
+[az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) を使用して、Load Balancer の送信フロントエンド IP 構成を作成します。これには、パブリック IP アドレス *mypublicipoutbound* に関連付けられている *myfrontendoutbound* という名前の送信フロントエンド IP 構成を含めます。
 
 ```azurecli-interactive
   az network lb frontend-ip create \
@@ -105,7 +118,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ### <a name="create-health-probe"></a>正常性プローブの作成
 
-正常性プローブは、すべての仮想マシン インスタンスを確認し、ネットワーク トラフィックを送信できるかどうかを確認します。 プローブのチェックで失敗した仮想マシン インスタンスは、オンラインに戻り、プローブ チェックにより正常と判定されるまで、ロード バランサーから削除されます。 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#create) を使用して正常性プローブを作成し、仮想マシンの正常性を監視します。 
+正常性プローブは、すべての仮想マシン インスタンスを確認し、ネットワーク トラフィックを送信できるかどうかを確認します。 プローブのチェックで失敗した仮想マシン インスタンスは、オンラインに戻り、プローブ チェックにより正常と判定されるまで、ロード バランサーから削除されます。 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) を使用して正常性プローブを作成し、仮想マシンの正常性を監視します。 
 
 ```azurecli-interactive
   az network lb probe create \
@@ -119,7 +132,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ### <a name="create-load-balancing-rule"></a>負荷分散規則の作成
 
-ロード バランサー規則では、必要な発信元ポートおよび宛先ポートと共に、受信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド プールを定義します。 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#create) を使用してロード バランサー規則 *myinboundlbrule* を作成します。この規則では、フロントエンド プール *myfrontendinbound* のポート 80 をリッスンし、同じポート 80 を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール *bepool* に送信します。 
+ロード バランサー規則では、必要な発信元ポートおよび宛先ポートと共に、受信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド プールを定義します。 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) を使用してロード バランサー規則 *myinboundlbrule* を作成します。この規則では、フロントエンド プール *myfrontendinbound* のポート 80 をリッスンし、同じポート 80 を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール *bepool* に送信します。 
 
 >[!NOTE]
 >この負荷分散規則では、--disable-outbound-snat パラメーターを指定するため、自動送信 (S)NAT が無効になります。 送信 NAT はアウトバウンド規則によってのみ提供されます。
@@ -134,7 +147,7 @@ az network lb rule create \
 --backend-port 80 \
 --probe http \
 --frontend-ip-name myfrontendinbound \
---backend-pool-name bepool \
+--backend-pool-name bepoolinbound \
 --disable-outbound-snat
 ```
 
@@ -151,10 +164,12 @@ az network lb outbound-rule create \
  --protocol All \
  --idle-timeout 15 \
  --outbound-ports 10000 \
- --address-pool bepool
+ --address-pool bepooloutbound
 ```
 
-この時点で、各 NIC リソースの IP 構成を更新して、バックエンド プール *bepool* に VM を追加できるようになります。
+送信用に別のプールを使用したくない場合は、前のコマンドのアドレス プール引数を変更して、代わりに *bepoolinbound* を指定してもかまいません。  結果の構成の柔軟性と読みやすさのために別のプールを使うことをお勧めします。
+
+この時点で、[az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) を使用して、各 NIC リソースの IP 構成を更新することで、バックエンド プール *bepoolinbound* __および__ *bepooloutbound* に VM を追加できるようになります。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -169,4 +184,3 @@ az network lb outbound-rule create \
 
 > [!div class="nextstepaction"]
 > [Azure Load Balancer のチュートリアル](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
-

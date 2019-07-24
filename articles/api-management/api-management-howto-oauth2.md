@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: cd022677da59588eca910a508b2596aa513eff4b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: b195271edeea6cd5ea527454ad1615ac85a32138
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302811"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746729"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法
 
-多くの API では、[OAuth 2.0](http://oauth.net/2/) がサポートされています。OAuth 2.0 を使用すると、API をセキュリティで保護して、有効なユーザーのみにアクセスが許可されること、および有効なユーザーが許可されたリソースのみにアクセスできることを保証できます。 Azure API Management では、対話型の開発者コンソールでそのような API を使用できるようにするために、OAuth 2.0 に対応する API を使用するサービス インスタンスを構成できます。
+多くの API では、[OAuth 2.0](https://oauth.net/2/) がサポートされています。OAuth 2.0 を使用すると、API をセキュリティで保護して、有効なユーザーのみにアクセスが許可されること、および有効なユーザーが許可されたリソースのみにアクセスできることを保証できます。 Azure API Management では、対話型の開発者コンソールでそのような API を使用できるようにするために、OAuth 2.0 に対応する API を使用するサービス インスタンスを構成できます。
 
 ## <a name="prerequisites"> </a>前提条件
 
@@ -30,6 +30,8 @@ ms.locfileid: "44302811"
 
 > [!NOTE]
 > Azure Active Directory を使用して OAuth 2.0 を構成する方法について詳しくは、[WebApp-GraphAPI-DotNet][WebApp-GraphAPI-DotNet] のサンプルを参照してください。
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="step1"> </a>API Management で OAuth 2.0 認証サーバーを構成する
 
@@ -49,9 +51,9 @@ ms.locfileid: "44302811"
 
     ![OAuth 2.0 の新しいサーバー](./media/api-management-howto-oauth2/oauth-02.png)
 
-4. フォームの次のセクションには、**[Authorization code grant types (認証コード付与タイプ)]**、**[Authorization endpoint URL (認証エンドポイント URL)]**、および **[Authorization request method (認証要求方式)]** 設定が含まれます。
+4. フォームの次のセクションには、**[承認許可の種類]**、**[承認エンドポイントの URL]**、および **[承認要求方法]** の設定が含まれます。
 
-    必要なタイプにチェックマークを入れて、 **[認証コード付与タイプ (Authorization code grant types)]** を指定します。 **[認証コード]** が既定で指定されています。
+    必要な種類をオンにして、**[承認許可の種類]** を指定します。 **[認証コード]** が既定で指定されています。
 
     **[Authorization endpoint URL (認証エンドポイント URL)]** を入力します。 Azure Active Directory では、この URL は以下の URL のようになります。ここで、`<client_id>` は、使用するアプリケーションを OAuth 2.0 サーバーが識別するためのクライアント ID に置き換えてください。
 
@@ -73,7 +75,7 @@ ms.locfileid: "44302811"
 
     ![OAuth 2.0 の新しいサーバー](./media/api-management-howto-oauth2/oauth-04.png)
 
-    **[Authorization code grant types (認証コード付与タイプ)]** が **[Resource owner password (リソース所有者パスワード)]** に設定された場合、**[Resource owner password credentials (リソース所有者パスワードの資格情報)]** セクションがそれらの資格情報の指定に使用されます。そうでない場合は、そのセクションを空白のままにすることができます。
+    **[承認許可の種類]** を **[リソース所有者のパスワード]** に設定した場合は、**[リソース所有者のパスワード資格情報]** セクションを使用してそれらの資格情報を指定します。それ以外の場合は、空白のままにすることができます。
 
     フォームを完了したら、**[作成]** をクリックして API Management OAuth 2.0 認証サーバーの構成を保存します。 サーバーの構成が保存された後、次のセクションで説明されているように、この構成を使用するように API を構成できます。
 
@@ -113,7 +115,7 @@ OAuth 2.0 認証サーバーを構成して、そのサーバーを使用する�
 > [!NOTE]
 > ポップアップが無効になっている場合は、それを有効にするように伝えるプロンプトがブラウザーによって出されます。 ポップアップを有効にした後に、再び **[認証コード]** を選択すると、サインイン フォームが表示されます。
 
-![[サインイン]][api-management-oauth2-signin]
+![サインイン][api-management-oauth2-signin]
 
 サインインした後、**[要求ヘッダー]** には、要求を認証するための `Authorization : Bearer` ヘッダーが取り込まれます。
 
@@ -141,7 +143,7 @@ OAuth 2.0 と API Management の詳細については、次のビデオとこの
 [Caching policies]: api-management-policy-reference.md#caching-policies
 [Create an API Management service instance]: get-started-create-service-instance.md
 
-[http://oauth.net/2/]: http://oauth.net/2/
+[https://oauth.net/2/]: https://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
 
 [Prerequisites]: #prerequisites

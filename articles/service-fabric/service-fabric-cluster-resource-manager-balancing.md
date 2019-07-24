@@ -4,22 +4,22 @@ description: Service Fabric クラスター リソース マネージャーを�
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 030b1465-6616-4c0b-8bc7-24ed47d054c0
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 5d2f195c50750a5c7685f62c909f77b2960613e6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 74fe4f7c4c231f80c7555f39f840a85baae310e9
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213148"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662025"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Service Fabric クラスターの均衡をとる
 Service Fabric クラスター リソース マネージャーは、動的な負荷の変更、ノードやサービスの追加や削除への応答をサポートしています。 また、制約違反を自動的に修正し、必要に応じてクラスターを再調整することもできます。 このような操作はどのくらいの頻度で実行されるでしょうか。また、何によってトリガーされるでしょうか。
@@ -85,10 +85,10 @@ ClusterManifest.xml:
 
 たとえば、ノードで障害が発生した場合、フォールト ドメイン全体を一度で処理することができます。 これらすべての障害は、*PLBRefreshGap* の次の状態更新時にキャプチャされます。 以降の配置、制約チェック、分散の実行中に、修正が決定されます。 既定では Cluster Resource Manager はクラスター内の数時間にわたり変更に目を通さず、すべての変更を一度で対応しようとします。 これにより、チャーンが突発的に発生することがあります。
 
-また、クラスターが不均衡であるかどうかを Cluster Resource Manager が判定するには、追加の情報が必要です。 そのために、他に、"*分散しきい値*" と "*アクティビティしきい値*" という 2 つの構成要素があります。
+また、クラスターが不均衡であるかどうかを Cluster Resource Manager が判定するには、追加の情報が必要です。 そのために、他に 2 つの構成があります (*BalancingThresholds* と *ActivityThresholds*)。
 
 ## <a name="balancing-thresholds"></a>分散しきい値
-分散しきい値は、再調整をトリガーする主要コントロールです。 メトリックの分散しきい値は _割合_ で規定されます。 最も負荷がかかっているノードのメトリックの負荷を、最も負荷がかかっていないノードの負荷量で割ったものが、そのメトリックの*分散しきい値*を超える場合、クラスターは不均衡であると見なされます。 結果として、次回 Cluster Resource Manager のチェックが行われるときに分散処理がトリガーされます。 *MinLoadBalancingInterval* タイマーは、再調整が必要かどうかをクラスター リソース マネージャーでチェックする頻度を定義します。 チェックは、何かがおこる処理ではありません。 
+分散しきい値は、再調整をトリガーする主要コントロールです。 メトリックの分散しきい値は_割合_で規定されます。 最も負荷がかかっているノードのメトリックの負荷を、最も負荷がかかっていないノードの負荷量で割ったものが、そのメトリックの*分散しきい値*を超える場合、クラスターは不均衡であると見なされます。 結果として、次回 Cluster Resource Manager のチェックが行われるときに分散処理がトリガーされます。 *MinLoadBalancingInterval* タイマーは、再調整が必要かどうかをクラスター リソース マネージャーでチェックする頻度を定義します。 チェックは、何かがおこる処理ではありません。 
 
 分散しきい値は、クラスター定義の一部としてメトリックごとに定義されます。 メトリックについて詳しくは、[この記事](service-fabric-cluster-resource-manager-metrics.md)をご覧ください。
 
@@ -122,6 +122,7 @@ ClusterManifest.xml
 ```
 
 <center>
+
 ![分散しきい値の例][Image1]
 </center>
 
@@ -130,6 +131,7 @@ ClusterManifest.xml
 下の例では、ノードに対する最大の負荷は 10 で最小は 2 であり、割合は 5 になります。 5 はそのメトリックの指定の分散しきい値 3 を上回ります。 その結果、再分散の実行が、次回の分散タイマーの作動時にスケジュールされます。 このような状況では、通常、一部の負荷が Node3 に分散されます。 Service Fabric のクラスター リソース マネージャーは最長一致のアプローチを使用しないため、一部の負荷は Node2 にも分散される可能性があります。 
 
 <center>
+
 ![分散しきい値のアクション例][Image2]
 </center>
 
@@ -145,6 +147,7 @@ ClusterManifest.xml
 このメトリックに 3 の分散しきい値を保持しているとします。 また、1536 のアクティビティしきい値があるとします。 最初の例では、クラスターは分散しきい値に対しては不均衡ですが、アクティビティしきい値を満たすノードはないため、分散処理は発生しません。 下の例では、Node1 がアクティビティしきい値を超えています。 メトリックが分散しきい値とアクティビティしきい値の両方を超過しているため、分散処理がスケジュールされます。 例として、次の図を見てみましょう。 
 
 <center>
+
 ![アクティビティしきい値の例][Image3]
 </center>
 
@@ -191,10 +194,11 @@ ClusterManifest.xml
 - Service3 は、メトリック Metric3 と Metric4 を報告します。
 - Service4 は、メトリック Metric99 を報告します。 
 
-これで、お分かりいただけたでしょうか。チェーンがあります。 実際には 4 つの独立したサービスがあるのではなく、関連している 3 つのサービスと、独立したサービスが 1 つあります。
+これで、おわかりいただけたでしょうか。チェーンがあります。 実際には 4 つの独立したサービスがあるのではなく、関連している 3 つのサービスと、独立したサービスが 1 つあります。
 
 <center>
-![サービスの分散処理を同時に行う][Image4]
+
+![同時にサービスの均衡を取る][Image4]
 </center>
 
 このチェーンがあるため、Metric1-4 が不均衡な場合、Service1-3 に属するレプリカやインスタンスが移動する可能性があります。 また、Metric1、2、または 3 の不均衡によって Service4 で移動が発生しないこともわかります。 Service4 に属するレプリカやインスタンスを移動しても、Metric1-3 の均衡にはまったく影響しないため、移動しても意味がありません。
@@ -202,7 +206,8 @@ ClusterManifest.xml
 クラスター リソース マネージャーは、関連するサービスを自動的に判別します。 サービスのメトリックを追加、削除、または変更すると、それらの関係に影響する可能性があります。 たとえば、分散処理を 2 回実行する間に Service2 が更新されて Metric2 が削除される可能性があります。 これによって、Service1 と Service2 間のチェーンが崩れます。 2 グループの関連するサービスでなく、3 グループになります。
 
 <center>
-![サービスの分散処理を同時に行う][Image5]
+
+![同時にサービスの均衡を取る][Image5]
 </center>
 
 ## <a name="next-steps"></a>次の手順

@@ -3,40 +3,40 @@ title: PowerShell を使用したエラスティック ジョブの作成と管�
 description: Azure SQL Database プールを管理するために使用するPowerShell
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
-ms.devlang: pwershell
+ms.devlang: powershell
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: 9ed5026211bec11b510d095decac25f8d4b8a52a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.date: 03/12/2019
+ms.openlocfilehash: 52a12486add25cd32400af755aa6cd8cac07c6f4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243199"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57905064"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>PowerShell を使用した SQL Database のエラスティック ジョブの作成と管理 (プレビュー)
 
-
-[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
-
-
 **エラスティック データベース ジョブ** 用 PowerShell API (プレビュー) を使うと、スクリプトの実行対象となるデータベースのグループを定義できます。 この記事では、PowerShell のコマンドレットを使用して **エラスティック データベース ジョブ** を作成して管理する方法について説明します。 [エラスティック ジョブの概要](sql-database-elastic-jobs-overview.md)に関するページを参照してください。 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 無料評価版については、「 [1 か月間の無料評価版](https://azure.microsoft.com/pricing/free-trial/)」をご覧ください。
 * エラスティック データベース ツールで作成された一連のデータベース。 「 [エラスティック データベース ツールの概要](sql-database-elastic-scale-get-started.md)」を参照してください。
 * Azure PowerShell。 詳細については、「 [Azure PowerShell のインストールと構成の方法](https://docs.microsoft.com/powershell/azure/overview)」をご覧ください。
-* **Elastic Database ジョブ**の PowerShell パッケージ。「[Elastic Database ジョブのインストール](sql-database-elastic-jobs-service-installation.md)」をご覧ください。
+* **Elastic Database ジョブ** PowerShell パッケージ:「[Elastic Database ジョブのインストールの概要](sql-database-elastic-jobs-service-installation.md)」を参照してください。
 
 ### <a name="select-your-azure-subscription"></a>Azure サブスクリプションを選択します。
-サブスクリプションを選択するには、サブスクリプション ID (**-SubscriptionId**) とサブスクリプション名 (**-SubscriptionName**) が必要です。 複数のサブスクリプションがある場合は、 **Get-AzureRmSubscription** コマンドレットを実行して、結果セットから目的のサブスクリプション情報をコピーできます。 サブスクリプション情報を取得したら、次のコマンドレットを実行して、そのサブスクリプションを既定 (つまりジョブの作成および管理のターゲット) として設定します。
+サブスクリプションを選択するには、サブスクリプション ID (**-SubscriptionId**) とサブスクリプション名 (**-SubscriptionName**) が必要です。 複数のサブスクリプションがある場合は、**Get-AzSubscription** コマンドレットを実行して、結果セットから目的のサブスクリプション情報をコピーできます。 サブスクリプション情報を取得したら、次のコマンドレットを実行して、そのサブスクリプションを既定 (つまりジョブの作成および管理のターゲット) として設定します。
 
-    Select-AzureRmSubscription -SubscriptionId {SubscriptionID}
+    Select-AzSubscription -SubscriptionId {SubscriptionID}
 
 エラスティック データベース ジョブに対して PowerShell スクリプトを開発して実行する場合には、 [PowerShell ISE](https://technet.microsoft.com/library/dd315244.aspx) をお勧めします。
 
@@ -189,12 +189,12 @@ ms.locfileid: "50243199"
 </table>
 
 ## <a name="supported-elastic-database-jobs-group-types"></a>サポートされているエラスティック データベース ジョブ グループの種類
-このジョブは、Transact-SQL (T-SQL) スクリプトまたは DACPAC のアプリケーションをデータベースのグループに対して実行します。 データベース グループ全体に対して実行するジョブを送信すると、対象のジョブが子ジョブにまで "拡張" されます。各子ジョブでは、グループ内の Single Database に対して要求されたジョブ実行が実行されます。 
+このジョブは、Transact-SQL (T-SQL) スクリプトまたは DACPAC のアプリケーションをデータベースのグループに対して実行します。 データベース グループ全体に対して実行するジョブを送信すると、対象のジョブが子ジョブにまで "拡張" されます。各子ジョブでは、グループ内の個々のデータベースに対して要求されたジョブ実行が実行されます。 
 
 次の 2 種類のグループを作成できます。 
 
-* [シャード マップ](sql-database-elastic-scale-shard-map-management.md) グループ: シャード マップを対象に送信されたジョブは、まずシャード マップを照会して現在のシャード セットを特定し、その後、シャード マップ内の各シャードに対応する子ジョブを作成します。
-* カスタム コレクション グループ: カスタムの定義済みデータベース セット。 カスタム コレクションを対象とするジョブは、現在カスタム コレクション内に存在する各データベースについて子ジョブを作成します。
+* [シャード マップ](sql-database-elastic-scale-shard-map-management.md) グループ:シャード マップを対象に送信されたジョブは、まずシャード マップを照会して現在のシャード セットを特定し、その後、シャード マップ内の各シャードに対応する子ジョブを作成します。
+* カスタム コレクション グループ:カスタムの定義済みデータベース セット。 カスタム コレクションを対象とするジョブは、現在カスタム コレクション内に存在する各データベースについて子ジョブを作成します。
 
 ## <a name="to-set-the-elastic-database-jobs-connection"></a>エラスティック データベース ジョブの接続を設定するには
 ジョブの API を使うには、ジョブの *管理データベース* に対する接続を先に設定しておく必要があります。 このコマンドレットを実行すると、資格情報ウィンドウがトリガーされ、エラスティック データベース ジョブをインストールするときに作成したユーザー名とパスワードの入力を求めるポップアップが表示されます。 このトピックで挙げるすべての例は、この最初の手順が実行済みであると想定しています。
@@ -414,21 +414,21 @@ Elastic Database ジョブは、ジョブの開始時に適用できるカスタ
 
 現在、実行ポリシーでは以下を定義できます。
 
-* 名前: 実行ポリシーの識別子。
-* ジョブのタイムアウト: Elastic Database ジョブによってジョブが取り消されるまでの合計時間。
-* 初期再試行間隔: 最初の再試行前に待機する間隔。
-* 最大再試行間隔: 使用する再試行間隔の上限。
-* 再試行間隔のバックオフ係数: 次回の再試行間隔の計算に使用される係数。  (初期再試行間隔) * Math.pow((間隔のバックオフ係数), (再試行回数) - 2) という式が使用されます。 
-* 最大試行回数: 1 つのジョブ内で実行する最大再試行回数。
+* 名前:実行ポリシーの識別子。
+* ジョブのタイムアウト:Elastic Database ジョブによってジョブが取り消されるまでの合計時間。
+* 初期再試行間隔:最初の再試行する前に待機する間隔。
+* 最大再試行間隔:使用する再試行間隔の上限。
+* 再試行間隔のバックオフ係数:次回の再試行間隔の計算に使用される係数。  (初期再試行間隔) * Math.pow((間隔のバックオフ係数), (再試行回数) - 2) という式が使用されます。 
+* 最大試行回数:1 つのジョブ内で実行する最大再試行回数。
 
 既定の実行ポリシーでは、次の値を使用します。
 
-* 名前: 既定の実行ポリシー
-* ジョブのタイムアウト: 1 週間
-* 初期再試行間隔: 100 ミリ秒
-* 最大再試行間隔: 30 分
-* 再試行間隔係数: 2
-* 最大試行回数: 2,147, 483,647
+* 名前:既定の実行ポリシー
+* ジョブのタイムアウト:1 週間
+* 初期再試行間隔:100 ミリ秒
+* 最大再試行間隔:30 分
+* 再試行間隔係数:2
+* 最大試行回数:2,147,483,647
 
 必要な実行ポリシーを作成します。
 
@@ -459,8 +459,8 @@ Elastic Database ジョブは、ジョブの開始時に適用できるカスタ
 
 エラスティック データベース ジョブには、2 種類の取り消し方法があります。
 
-1. 現在実行中のタスクを取り消す: タスクの実行中に取り消しが検出されると、現在実行中のタスクの範囲内で取り消しが試行されます。  たとえば、取り消しを試行したときに、実行時間が長いクエリが実行中の場合、クエリの取り消しが試行されます。
-2. タスクの再試行を取り消す: タスクの実行が開始される前に、コントロール スレッドによって取り消しが検出されると、タスクの開始が回避され、要求は取り消し済みと宣言されます。
+1. 現在実行中のタスクを取り消す:タスクの実行中に取り消しが検出されると、現在実行中のタスクの範囲内で取り消しが試行されます。  例: 取り消しを試行したときに、実行時間が長いクエリが実行中の場合、クエリの取り消しが試行されます。
+2. タスクの再試行を取り消す:タスクの実行が開始される前に、コントロール スレッドによって取り消しが検出されると、タスクの開始が回避され、要求は取り消し済みと宣言されます。
 
 親ジョブについてジョブの取り消しが要求されると、親ジョブとそのすべての子ジョブについて、取り消し要求が受け入れられます。
 

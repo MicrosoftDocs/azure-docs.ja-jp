@@ -6,21 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 02/22/2019
 ms.author: alkohli
-ms.openlocfilehash: d10ca5d704892ae0a1494d729b46abf0fc06aa64
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 067bb6b806ddd9b83d4ea755876a980ca45d76e9
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092254"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407631"
 ---
-# <a name="azure-data-box-disk-system-requirements-preview"></a>Azure Data Box Disk のシステム要件 (プレビュー)
+# <a name="azure-data-box-disk-system-requirements"></a>Azure Data Box Disk のシステム要件
 
 この記事では、Microsoft Azure Data Box Disk ソリューション、および Data Box Disk に接続するクライアントのシステム要件のうち、重要なものについて説明します。 この情報は、Data Box Disk をデプロイする前によく確認し、デプロイ時やそれ以降の操作時にも、必要に応じて繰り返し参照することをお勧めします。
-
-> [!IMPORTANT]
-> Data Box Disk は、プレビュー段階です。 このソリューションをデプロイする前に、「[プレビューの使用条件に関するページ](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を確認してください。 
 
 システム要件には、ディスクに接続するクライアントでサポートされるプラットフォーム、サポートされるストレージ アカウント、およびストレージの種類が含まれます。
 
@@ -53,24 +50,34 @@ Linux クライアントでは、Data Box Disk のツールセットが次の必
 - dislocker
 - OpenSSL
 
+## <a name="supported-connection"></a>サポートされる接続
+
+データを格納するクライアント コンピューターには、USB 3.0 またはそれ以降のポートが必要です。 提供されているケーブルを使用して、ディスクをこのクライアントに接続します。
+
 ## <a name="supported-storage-accounts"></a>サポートされるストレージ アカウント
 
 Data Box Disk でサポートされるストレージの種類の一覧を次に示します。
 
 | **ストレージ アカウント** | **メモ** |
 | --- | --- |
-| クラシック | 標準 |
+| クラシック | Standard |
 | 汎用  |標準。V1 と V2 の両方がサポートされます。 また、ホット層とクール層の両方がサポートされます。 |
+| BLOB ストレージ アカウント | |
+
+>[!NOTE]
+> Azure Data Lake Storage Gen 2 アカウントはサポートされていません。
 
 
-## <a name="supported-storage-types"></a>サポートされるストレージの種類
+## <a name="supported-storage-types-for-upload"></a>アップロード用にサポートされているストレージの種類
 
-Data Box Disk でサポートされるストレージの種類の一覧を次に示します。
+以下は、Data Box Disk を使用した Azure へのアップロードのためにサポートされているストレージの種類の一覧です。
 
 | **ファイル形式** | **メモ** |
 | --- | --- |
 | Azure ブロック BLOB | |
 | Azure ページ BLOB  | |
+| Azure Files  | |
+| Managed Disks | |
 
 
 ## <a name="next-step"></a>次のステップ

@@ -1,5 +1,5 @@
 ---
-title: App Service Environment v1 を構成する方法
+title: App Service Environment v1 を構成する方法 - Azure
 description: App Service Environment v1 の構成、管理、および監視
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 34fb3f15c03a3d3ef5f0a27081539bf0a6d19c5f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: 5c0b4117f6e7b48dce1746ad6eb3dbe29c0d16af
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22987867"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723214"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>App Service Environment v1 の構成
 
@@ -44,14 +45,14 @@ ms.locfileid: "22987867"
 リソース プールの数とサイズは、自分で設定することができます。 ASE には、P1 ～ P4 の 4 つのサイズ オプションがあります。 これらのサイズとその価格設定の詳細については、「 [App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)」を参照してください。
 この数やサイズを変更することを "スケール操作" といいます。  一度に実行できるスケール操作は 1 つだけです。
 
-**フロント エンド**: フロント エンドは、ASE に保持されているアプリの HTTP/HTTPS エンドポイントです。 皆さんがフロント エンドでワークロードを実行することはありません。
+**フロントエンド:** フロント エンドは、ASE に保持されているアプリの HTTP/HTTPS エンドポイントです。 皆さんがフロント エンドでワークロードを実行することはありません。
 
 * ASE の初期構成は 2 つの P2 です。これは、開発/テストのワークロードや負荷の水準が低い運用ワークロードを想定したものです。 負荷の水準が中から高となる運用ワークロードでは、P3 の採用を強くお勧めします。
 * 負荷の水準が中から高となる運用ワークロードでは、P3 を少なくとも 4 つにして、スケジュールされたメンテナンスの時間帯に実行されるフロント エンドを十分に確保することをお勧めします。 スケジュールされたメンテナンス作業によってフロント エンドが一度に 1 つ停止されます。 そのためメンテナンス作業中は、全体として使用できるフロントエンドの処理能力が低下します。
 * フロントエンドのプロビジョニングには最大 1 時間かかる可能性があります。 
 * スケールの微調整の際には、各種メトリック (フロント エンド プールの CPU 使用率、メモリ使用率、アクティブな要求数) を監視する必要があります。 P3 での運用時に CPU 使用率またはメモリ使用率が 70% を超えている場合は、フロント エンドを追加してください。 アクティブな要求数が平均で 15,000 ～ 20,000 に達している場合も、フロント エンドを追加する必要があります。 全体的な目標は、P3 で運用中のフロント エンドごとに、CPU とメモリの使用率を 70% 未満に抑え、アクティブな要求数が平均で 15,000 未満になるようにすることです。  
 
-**ワーカー**: 皆さんのアプリが実質的に実行される場所です。 App Service プランをスケールアップすると、関連付けられているワーカー プール内からワーカーが消費されます。
+**ワーカー**:皆さんのアプリが実質的に実行される場所です。 App Service プランをスケールアップすると、関連付けられているワーカー プール内からワーカーが消費されます。
 
 * ワーカーを瞬時に追加することはできません。 プロビジョニングには最大 1 時間かかる可能性があります。
 * プールのコンピューティング リソースのサイズをスケールする場合、更新ドメインにかかる時間は 1 時間未満です。 ASE には 20 の更新ドメインがあります。 10 インスタンスの worker プールのコンピューティング サイズをスケールした場合、完了するまでに最大 10 時間かかる可能性があります。
@@ -68,7 +69,7 @@ ms.locfileid: "22987867"
 * より大きなサイズを必要とするアプリをホストする App Service プランを、新たに構成したワーカー プールに割り当て直します。 これは 1 分未満で完了する高速の処理です。  
 * 最初のワーカー プールをスケールダウンします (使用されないこれらのインスタンスが必要なくなった場合)。 この操作は、完了するまでに数分かかります。
 
-**自動スケール**コンピューティング リソースの使用を管理するのに役立つ手段の 1 つが自動スケールです。 自動スケールは、フロント エンド プールに対して実行することも、ワーカー プールに対して実行することもできます。 いずれかのプール タイプのインスタンス数を午前中は増やし、夜間は減らすといったことが可能です。 また、ワーカー プールから利用できるワーカー数が特定のしきい値を下回ったときにインスタンスを追加することもできます。
+**自動スケール**:コンピューティング リソースの使用を管理するのに役立つ手段の 1 つが自動スケールです。 自動スケールは、フロント エンド プールに対して実行することも、ワーカー プールに対して実行することもできます。 いずれかのプール タイプのインスタンス数を午前中は増やし、夜間は減らすといったことが可能です。 また、ワーカー プールから利用できるワーカー数が特定のしきい値を下回ったときにインスタンスを追加することもできます。
 
 コンピューティング リソース プールのメトリックに基づいて自動スケール規則を設定する場合は、プロビジョニングの所要時間に注意してください。 App Service 環境の自動スケールの詳細については、[App Service 環境で自動スケールを構成する方法][ASEAutoscale]に関するページを参照してください。
 
@@ -132,13 +133,13 @@ ASE では、App Service プランはすべて、App Service 専用のプラン�
 ### <a name="settings"></a>設定
 ASE ブレードには **[設定]** セクションがあり、そこにいくつかの重要な機能が用意されています。
 
-**[設定]** > **[プロパティ]**: ASE ブレードを選択すると、**[設定]** ブレードが自動的に開きます。 その一番上に **[プロパティ]** が表示されます。 プロパティには多数の項目があり、**[要点]** に表示される項目と重複していますが、非常に役に立つのは **[仮想 IP アドレス]** と **[送信 IP アドレス]** です。
+**[設定]** > **[プロパティ]**:ASE ブレードを選択すると、**[設定]** ブレードが自動的に開きます。 その一番上に **[プロパティ]** が表示されます。 プロパティには多数の項目があり、**[要点]** に表示される項目と重複していますが、非常に役に立つのは **[仮想 IP アドレス]** と **[送信 IP アドレス]** です。
 
 ![Settings blade and Properties][4]
 
-**設定** > **[IP アドレス]**: ASE に IP SSL (Secure Sockets Layer) アプリを作成する場合は、IP SSL アドレスが必要です。 このアドレスを取得するためには、割り当てが可能な独自の IP SSL アドレスが ASE に必要となります。 ASE の作成時に、この目的で使用できる IP SSL アドレスが 1 つ用意されますが、追加することもできます。 「[App Service の価格][AppServicePricing]」の「SSL 接続」セクションに記載されているとおり、追加の IP SSL アドレスは課金対象です。 追加の価格は、IP SSL の価格です。
+**[設定]** > **[IP アドレス]**:ASE に IP SSL (Secure Sockets Layer) アプリを作成する場合は、IP SSL アドレスが必要です。 このアドレスを取得するためには、割り当てが可能な独自の IP SSL アドレスが ASE に必要となります。 ASE の作成時に、この目的で使用できる IP SSL アドレスが 1 つ用意されますが、追加することもできます。 「[App Service の価格][AppServicePricing]」の「SSL 接続」セクションに記載されているとおり、追加の IP SSL アドレスは課金対象です。 追加の価格は、IP SSL の価格です。
 
-**[設定]** > **[フロントエンド プール]** / **[ワーカー プール]**: 各リソース プール ブレードでは、そのリソース プールに関する情報のみを確認できます。また、そのリソース プールのスケールを完全に制御できます。  
+**[設定]** > **[フロントエンド プール]** / **[ワーカー プール]**:各リソース プール ブレードでは、そのリソース プールに関する情報のみを確認できます。また、そのリソース プールのスケールを完全に制御できます。  
 
 各リソース プールの基本ブレードには、そのリソース プールのメトリックを使用したグラフが表示されます。 ASE ブレードのグラフと同様に、グラフにアクセスし、必要に応じてアラートを設定することができます。 特定のリソース プールに関する ASE ブレードからアラートを設定する操作は、リソース プールからアラートを設定する操作と同じです。 ワーカー プールの **[設定]** ブレードから、そのワーカー プールで実行されているアプリまたは App Service プランすべての一覧にアクセスできます。
 
@@ -209,12 +210,12 @@ App Service 環境の使用を開始するには、 [App Service 環境の作成
 
 <!--Links-->
 [WhatisASE]: app-service-app-service-environment-intro.md
-[Appserviceplans]: ../azure-web-sites-web-hosting-plans-in-depth-overview.md
+[Appserviceplans]: ../overview-hosting-plans.md
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [ControlInbound]: app-service-app-service-environment-control-inbound-traffic.md
 [virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
-[AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/
+[AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [ExpressRoute]: app-service-app-service-environment-network-configuration-expressroute.md
 [ILBASE]: app-service-environment-with-internal-load-balancer.md

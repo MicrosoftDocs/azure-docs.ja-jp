@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: a4e29ce7ebb20753c3313e1148e1c91e853f49f5
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: cfd46d5e9750a81d89ed6d3a79bcc9bffdc3d0dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
-ms.locfileid: "27577447"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007291"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Windows VM のデータ ドライブとしての D: ドライブの使用
 D ドライブを使用してデータを格納する必要があるアプリケーションの場合、次の手順に従って一時ディスク用の別のドライブ文字を使用します。 維持する必要があるデータは、一時ディスクに格納しないでください。
@@ -30,7 +30,7 @@ D ドライブを使用してデータを格納する必要があるアプリケ
 Azure が一時ディスクを使用する方法については、 [Microsoft Azure Virtual Machines の一時ドライブの概要](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
 ## <a name="attach-the-data-disk"></a>データ ディスクのアタッチ
-最初に、仮想マシンにデータ ディスクをアタッチする必要があります。 ポータルでこれを行う方法については、[Azure Portal で管理対象のデータ ディスクを接続する方法](attach-managed-disk-portal.md)に関する記事をご覧ください。
+最初に、仮想マシンにデータ ディスクをアタッチする必要があります。 ポータルでこれを行う方法については、[Azure Portal でマネージド データ ディスクを接続する方法](attach-managed-disk-portal.md)に関する記事をご覧ください。
 
 ## <a name="temporarily-move-pagefilesys-to-c-drive"></a>一時的に pagefile.sys を C ドライブに移動します。
 1. 仮想マシンへの接続 
@@ -64,5 +64,5 @@ Azure が一時ディスクを使用する方法については、 [Microsoft Az
 9. 仮想マシンを再起動します。
 
 ## <a name="next-steps"></a>次の手順
-* [追加のデータ ディスクをアタッチする](attach-managed-disk-portal.md)ことで、仮想マシンに使用できる記憶域を増やすことができます。
+* [追加のデータ ディスクをアタッチする](attach-managed-disk-portal.md)ことで、仮想マシンに使用できるストレージを増やすことができます。
 

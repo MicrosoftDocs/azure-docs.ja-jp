@@ -12,19 +12,40 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: b5ad6321a41c84928cbc6f8c51c4f5fe3567410f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d8fc929b21bedcb3e7e2bd3f5ed1d6c867bca3c8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262031"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803376"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 **全般**
+
+## <a name="blog-post"></a>ブログ記事
+DevTest Labs チームのブログは 2019 年 3 月 20 日時点で廃止されました。 
+
+### <a name="where-can-i-track-feature-updates-going-forward"></a>今後の機能更新はどこで追跡できるのでしょうか。
+今後、Azure ブログと Azure の更新情報で、機能更新や情報ブログ記事を投稿していきます。 これらのブログ記事は、必要に応じて、Microsoft のドキュメントにもリンクされます。
+
+[DevTest Labs Azure ブログ](https://azure.microsoft.com/blog/tag/azure-devtest-labs/)と [DevTest Labs Azure の更新情報](https://azure.microsoft.com/updates/?product=devtest-lab)をご覧になり、DevTest Labs の新機能に関する情報を入手するようにしてください。
+
+### <a name="what-happens-to-the-existing-blog-posts"></a>既存のブログ記事はどうなりますか。
+現在、既存のブログ記事 (障害更新情報を除く) の [DevTest Labs ドキュメント](devtest-lab-overview.md)への移行を進めています。 MSDN ブログが非推奨になると、DevTest Labs のドキュメントの概要にリダイレクトされます。 リダイレクトされたら、タイトルの 'フィルター条件' で探している記事を検索できます。 まだすべての記事を移行していませんが、今月末までに完了するはずです。 
+
+
+### <a name="where-do-i-see-outage-updates"></a>障害更新情報はどこで確認できますか。
+今後、Twitter ハンドルを使用して、障害更新情報を投稿する予定です。 Twitter でフォローして、障害と既知のバグに関する最新の更新情報を取得してください。
+
+### <a name="twitter"></a>Twitter 
+Twitter ハンドル: [@azlabservices](https://twitter.com/azlabservices)
+
 ## <a name="what-if-my-question-isnt-answered-here"></a>ここに質問の答えがない場合はどうすればいいですか。
 質問がここに記載されていない場合はご連絡ください。答えを見つけるお手伝いをいたします。
 
@@ -60,12 +81,12 @@ DevTest Labs は無料サービスです。 DevTest Labs でのラボの作成�
 
 * **アクセス許可**: アクセス許可とは、特定のアクションへのアクセスを定義したものです。 たとえば、すべての VM への読み取りアクセス許可などがあります。
 * **ロール**: ロールとは、グループ化してユーザーに割り当てることができる一連のアクセス許可です。 たとえば、サブスクリプション所有者ロールが割り当てられたユーザーは、サブスクリプション内のすべてのリソースにアクセスできます。
-* **スコープ**: スコープとは、Azure リソースの階層内のレベルです。 たとえば、リソース グループ、単一のラボ、またはサブスクリプション全体をスコープとして指定できます。
+* **[スコープ]**: スコープとは、Azure リソースの階層内のレベルです。 たとえば、リソース グループ、単一のラボ、またはサブスクリプション全体をスコープとして指定できます。
 
 DevTest Labs のスコープ内には、ユーザーのアクセス許可を定義する次の 2 種類のロールがあります。
 
-* **ラボ所有者**: ラボ所有者は、ラボ内のすべてのリソースにアクセスできます。 ポリシーの変更、任意の VM に対する読み取りと書き込み、仮想ネットワークの変更などを行うことができます。
-* **ラボ ユーザー**: ラボ ユーザーは、VM、ポリシー、仮想ネットワークなど、すべてのラボ リソースを表示できます。 ただし、他のユーザーが作成したポリシーや VM を変更することはできません。 
+* **ラボ所有者**:ラボ所有者は、ラボ内のすべてのリソースにアクセスできます。 ポリシーの変更、任意の VM に対する読み取りと書き込み、仮想ネットワークの変更などを行うことができます。
+* **ラボ ユーザー**:ラボ ユーザーは、VM、ポリシー、仮想ネットワークなど、すべてのラボ リソースを表示できます。 ただし、他のユーザーが作成したポリシーや VM を変更することはできません。 
 
 DevTest Labs にカスタム ロールを作成することもできます。 DevTest Labs にカスタム ロールを作成する方法については、「[特定のラボ ポリシーに対するアクセス許可をユーザーに付与する](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)」をご覧ください。
 
@@ -74,7 +95,7 @@ DevTest Labs にカスタム ロールを作成することもできます。 De
 ## <a name="how-do-i-create-a-role-to-allow-users-to-perform-a-specific-task"></a>特定の 1 つのタスクの実行をユーザーに許可するようにロールを作成するにはどうすればよいですか。
 カスタム ロールを作成し、ロールにアクセス許可を割り当てる方法の詳細については、「[特定のラボ ポリシーに対するアクセス許可をユーザーに付与する](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)」をご覧ください。 ラボ内のすべての VM を起動および停止するアクセス許可を持つ *DevTest Labs Advanced User* ロールを作成するスクリプトの例を次に示します。
 
-    $policyRoleDef = Get-AzureRmRoleDefinition "DevTest Labs User"
+    $policyRoleDef = Get-AzRoleDefinition "DevTest Labs User"
     $policyRoleDef.Actions.Remove('Microsoft.DevTestLab/Environments/*')
     $policyRoleDef.Id = $null
     $policyRoleDef.Name = "DevTest Labs Advanced User"
@@ -83,7 +104,7 @@ DevTest Labs にカスタム ロールを作成することもできます。 De
     $policyRoleDef.AssignableScopes.Add("subscriptions/<subscription Id>")
     $policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/virtualMachines/Start/action")
     $policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/virtualMachines/Stop/action")
-    $policyRoleDef = New-AzureRmRoleDefinition -Role $policyRoleDef  
+    $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef  
 
 
 **CI/CD 統合と自動化**
@@ -97,15 +118,15 @@ Azure DevOps を使用している場合は、[DevTest Labs Tasks の拡張機�
 次のブログ記事では、Azure DevOps Services 拡張機能の使用方法に関するガイダンスと情報を提供しています。
 
 * [DevTest Labs と Azure DevOps の拡張機能](https://blogs.msdn.microsoft.com/devtestlab/2016/06/15/azure-devtest-labs-vsts-extension/)
-* [Azure DevOps Services から既存の DevTest Labs ラボに新しい VM をデプロイする](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
-* [Azure DevOps Services のリリース管理を使用した DevTest Labs への継続的なデプロイ](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
+* [Azure DevOps Services から既存の DevTest Labs ラボに新しい VM をデプロイする](https://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
+* [Azure DevOps Services のリリース管理を使用した DevTest Labs への継続的なデプロイ](https://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
 他の継続的インテグレーション (CI)/継続的デリバリー (CD) ツールチェーンの場合、[Azure PowerShell コマンドレット](../azure-resource-manager/resource-group-template-deploy.md)と [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) を使用して [Azure Resource Manager テンプレート](https://aka.ms/dtlquickstarttemplate)をデプロイすることによって、同じシナリオを実現できます。 [DevTest Labs 用 REST API](https://aka.ms/dtlrestapis) を使用して、お使いのツールチェーンと統合することもできます。  
 
 
 **仮想マシン**
-## <a name="why-cant-i-see-vms-on-the-virtual-machines-blade-that-i-see-in-devtest-labs"></a>DevTest Labs で表示されている VM が [仮想マシン] ブレードに表示されないのはなぜですか。
-DevTest Labs で VM を作成すると、その VM にアクセスするためのアクセス許可が付与されます。 この VM は、Labs のブレードと **[仮想マシン]** ブレードの両方に表示されます。 DevTest Labs のラボ ユーザー ロールが割り当てられているユーザーは、ラボの **[All Virtual Machines]\(すべての仮想マシン\)** ブレードで、ラボで作成されたすべての VM を確認できます。 ただし、DevTest Labs のラボ ユーザー ロールが割り当てられているユーザーには、他のユーザーが作成した VM リソースへの読み取りアクセス権が自動的に付与されるわけではありません。 そのため、これらの VM は **[仮想マシン]** ブレードには表示されません。
+## <a name="why-cant-i-see-vms-on-the-virtual-machines-page-that-i-see-in-devtest-labs"></a>DevTest Labs で表示されている VM が [仮想マシン] ページに表示されないのはなぜですか。
+DevTest Labs で VM を作成すると、その VM にアクセスするためのアクセス許可が付与されます。 この VM は、Labs ページと **[仮想マシン]** ページの両方に表示されます。 DevTest Labs のラボ ユーザー ロールが割り当てられているユーザーは、ラボの **[すべての仮想マシン]** ページで、ラボで作成されたすべての VM を確認できます。 ただし、DevTest Labs のラボ ユーザー ロールが割り当てられているユーザーには、他のユーザーが作成した VM リソースへの読み取りアクセス権が自動的に付与されるわけではありません。 そのため、これらの VM は **[仮想マシン]** ページには表示されません。
 
 ## <a name="what-is-the-difference-between-a-custom-image-and-a-formula"></a>カスタム イメージと数式の違いは何ですか。
 カスタム イメージは仮想ハード ディスク (VHD) です。 数式は、追加設定で構成し、保存して再現できるイメージです。 同じ基本的な不変イメージを使用して複数の環境をすばやく作成する場合は、カスタム イメージをお勧めします。 数式は、最新のビットで、仮想ネットワークまたはサブネットの一部として、または特定のサイズの VM として、VM の構成を再現する場合に適しています。 詳細については、「[DevTest ラボのカスタム イメージと数式の比較](devtest-lab-comparing-vm-base-image-types.md)」をご覧ください。
@@ -118,7 +139,9 @@ DevTest Labs で VM を作成すると、その VM にアクセスするため�
 ## <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>既存の Azure VM を DevTest Labs ラボに移動するにはどうすればよいですか。
 既存の VM を DevTest Labs にコピーするには、次の手順に従います。
 
-1. [Windows PowerShell スクリプト](https://github.com/Azure/azure-devtestlab/blob/master/Scripts/CopyVHDFromVMToLab.ps1)を使用して、既存の VM の VHD ファイルをコピーします。
+1. PowerShell スクリプトを使用して、既存の VM の VHD ファイルをコピーします。
+   * Resource Manager:[CopyRmVHDFromVMToLab.ps1](https://github.com/Azure/azure-devtestlab/blob/master/Scripts/CopyRmVHDFromVMToLab.ps1)
+   * クラシック:[CopyClassicVHDFromVMToLab.ps1](https://github.com/Azure/azure-devtestlab/blob/master/Scripts/CopyClassicVHDFromVMToLab.ps1)
 2. DevTest Labs ラボ内に[カスタム イメージを作成](devtest-lab-create-template.md)します。
 3. カスタム イメージからラボ内に VM を作成します。
 
@@ -160,24 +183,24 @@ Azure Portal でラボから VM を削除できます。 また、PowerShell ス
     $labName = "<Enter lab name here>"
 
     # Sign in to your Azure account.
-    Connect-AzureRmAccount
+    Connect-AzAccount
 
     # Select the Azure subscription that has the lab. This step is optional
     # if you have only one subscription.
-    Select-AzureRmSubscription -SubscriptionId $subscriptionId
+    Select-AzSubscription -SubscriptionId $subscriptionId
 
     # Get the lab that has the VMs that you want to delete.
-    $lab = Get-AzureRmResource -ResourceId ('subscriptions/' + $subscriptionId + '/resourceGroups/' + $labResourceGroup + '/providers/Microsoft.DevTestLab/labs/' + $labName)
+    $lab = Get-AzResource -ResourceId ('subscriptions/' + $subscriptionId + '/resourceGroups/' + $labResourceGroup + '/providers/Microsoft.DevTestLab/labs/' + $labName)
 
     # Get the VMs from that lab.
-    $labVMs = Get-AzureRmResource | Where-Object {
+    $labVMs = Get-AzResource | Where-Object {
               $_.ResourceType -eq 'microsoft.devtestlab/labs/virtualmachines' -and
               $_.Name -like "$($lab.Name)/*"}
 
     # Delete the VMs.
     foreach($labVM in $labVMs)
     {
-        Remove-AzureRmResource -ResourceId $labVM.ResourceId -Force
+        Remove-AzResource -ResourceId $labVM.ResourceId -Force
     }
 
 **アーティファクト**
@@ -227,10 +250,10 @@ Microsoft アカウントは、Microsoft のデバイスとサービスで実行
 ## <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>PowerShell から VM をプロビジョニングしたときに、"親リソースが見つからない" ことを示すエラーが発生するのはなぜですか。
 リソースが別のリソースの親である場合、子リソースを作成するには、親リソースが存在している必要があります。 親リソースが存在しない場合、**ParentResourceNotFound** メッセージが表示されます。 親リソースに依存関係を指定していない場合、子リソースは親の前にデプロイされる可能性があります。
 
-VM は、リソース グループ内のラボの下の子リソースです。 PowerShell で Resource Manager テンプレートを使用して VM をデプロイした場合、PowerShell スクリプトで指定されたリソース グループ名がラボのリソース グループ名になります。 詳細については、[Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound)に関する記事をご覧ください。
+VM は、リソース グループ内のラボの下の子リソースです。 PowerShell で Resource Manager テンプレートを使用して VM をデプロイした場合、PowerShell スクリプトで指定されたリソース グループ名がラボのリソース グループ名になります。 詳細については、[Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors)に関する記事をご覧ください。
 
 ## <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>VM のデプロイが失敗した場合、さらに詳しいエラー情報はどこで確認できますか。
-VM のデプロイ エラーは、アクティビティ ログに記録されます。 ラボの VM のアクティビティ ログは、ラボの VM ブレードにあるリソース メニューの **[監査ログ]** または **[Virtual machine diagnostics]\(仮想マシン診断\)** で確認できます (VM ブレードは、**[My virtual machines]\(マイ仮想マシン\)** の一覧から VM を選択すると表示されます)。
+VM のデプロイ エラーは、アクティビティ ログに記録されます。 ラボの VM のアクティビティ ログは、ラボの VM ページにあるリソース メニューの **[監査ログ]** または **[仮想マシンの診断]** で確認できます (VM ページは、**[自分の仮想マシン]** の一覧から VM を選択すると表示されます)。
 
 VM のデプロイが開始される前に、デプロイ エラーが発生する場合もあります。 たとえば、VM で作成されたリソースのサブスクリプションの制限を超えた場合です。 この場合、ラボ レベルのアクティビティ ログにエラーの詳細が記録されます。 アクティビティ ログは、**[Configuration and policies]\(構成とポリシー\)** 設定の下部にあります。 Azure でのアクティビティ ログ使用の詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)」を参照してください。
 

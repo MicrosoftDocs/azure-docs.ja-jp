@@ -1,29 +1,33 @@
 ---
-title: 'Azure AD Connect: 旧バージョンからアップグレードする | Microsoft Docs'
+title: Azure AD Connect:旧バージョンからアップグレードする | Microsoft Docs
 description: インプレース アップグレードとスウィング移行移行など、Azure Active Directory Connect の最新リリースにアップグレードするさまざまな方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 31f084d8-2b89-478c-9079-76cf92e6618f
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 07/18/2018
-ms.component: hybrid
+ms.date: 04/08/2019
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 17333f6a5e78fb6da607e93cf696bfc766daf3ae
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2a3e7373a8b0354a3d08debf944f2f77f1609382
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309941"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267040"
 ---
-# <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする
+# <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect:旧バージョンから最新バージョンにアップグレードする
 このトピックでは、Azure Active Directory (Azure AD) Connect のインストールを最新リリースにアップグレードするさまざまな方法について説明します。 Azure AD Connect を常に最新リリースにしておくことをお勧めします。 構成を大幅に変更する際は、「[スウィング移行](#swing-migration)」で説明されている手順を使用することもできます。
+
+>[!NOTE]
+> 現在、Azure AD Connect は、任意のバージョンから最新バージョンへのアップグレードがサポートされています。 DirSync または ADSync のインプレース アップグレードはサポートされておらず、スウィング移行が必要となります。  DirSync からアップグレードする場合は、[Azure AD 同期ツール (DirSync) からのアップグレード](how-to-dirsync-upgrade-get-started.md)に関するページまたは「[Swing migration (スウィング移行)](#swing-migration)」セクションを参照してください。  </br>実際には、極端に古いバージョンをご使用の場合、Azure AD Connect には直接関係のない問題が発生する可能性はあります。 何年にもわたって運用されてきたサーバーは通常、さまざまなパッチが適用されており、その一部が考慮されていないことも考えられます。  一般に、12 か月から 18 か月間アップグレードを行っていないお客様は、スウィング アップグレードを検討してください。スウィング アップグレードが最も慎重でリスクの少ない選択肢です。
 
 DirSync からアップグレードする場合は、代わりに [Azure AD 同期ツール (DirSync) からのアップグレード](how-to-dirsync-upgrade-get-started.md)を参照してください。
 
@@ -61,7 +65,7 @@ Azure AD Connect のアップグレードで使用できる方法は複数あり
 ![ステージング サーバー](./media/how-to-upgrade-previous-version/stagingserver1.png)
 
 > [!NOTE]
-> このシナリオでは、3 台または 4 台のサーバーを使用することが好まれる場合があります。 ステージング サーバーがアップグレードされているときに、[障害復旧](how-to-connect-sync-operations.md#disaster-recovery)用のバックアップ サーバーがないためです。 3 台か 4 台のサーバーを使用すると、新しいバージョンのプライマリ/スタンバイ サーバーのセットを用意でき、引き継ぎ用のステージング サーバーが常に確保できます。
+> このシナリオでは、3 台または 4 台のサーバーを使用することが好まれる場合があります。 ステージング サーバーがアップグレードされているときに、[障害復旧](how-to-connect-sync-staging-server.md#disaster-recovery)用のバックアップ サーバーがないためです。 3 台か 4 台のサーバーを使用すると、新しいバージョンのプライマリ/スタンバイ サーバーのセットを用意でき、引き継ぎ用のステージング サーバーが常に確保できます。
 
 以下の手順は、Azure AD Sync または FIM + Azure AD Connector のソリューションからの移行にも使用できます。 この手順は DirSync には使用できませんが、DirSync 用の手順が組み込まれた同じスウィング移行方法 (並列デプロイとも呼ばれます) が、[Azure Active Directory 同期 (DirSync) のアップグレード](how-to-dirsync-upgrade-get-started.md)に関するページで説明されています。
 
@@ -70,8 +74,8 @@ Azure AD Connect のアップグレードで使用できる方法は複数あり
 2. カスタム構成を行っていて、ステージング サーバーにそれが含まれていない場合は、「[カスタム構成のアクティブ サーバーからステージング サーバーへの移動](#move-a-custom-configuration-from-the-active-server-to-the-staging-server)」の手順に従ってください。
 3. Azure AD Connect の以前のリリースからアップグレードする場合は、ステージング サーバーを最新のバージョンにアップグレードします。 Azure AD Sync から移行する場合は、ステージング サーバーに Azure AD Connect をインストールします。
 4. 同期エンジンがステージング サーバーで完全なインポートと完全な同期を実行するまで待ちます。
-5. 「[サーバーの構成の確認](how-to-connect-sync-operations.md#verify-the-configuration-of-a-server)」の「確認」の手順を使用して、新しい構成で予期しない変更が発生していないことを確認します。 予期しないことがあった場合は、次の手順で問題がなくなるまで、修正、インポートと同期の実行、データの確認を繰り返します。
-6. ステージング サーバーをアクティブ サーバーに切り替えます。 これは、「[サーバーの構成の確認](how-to-connect-sync-operations.md#verify-the-configuration-of-a-server)」の最後の手順である「アクティブなサーバーの切り替え」にあたります。
+5. 「[サーバーの構成の確認](how-to-connect-sync-staging-server.md#verify-the-configuration-of-a-server)」の「確認」の手順を使用して、新しい構成で予期しない変更が発生していないことを確認します。 予期しないことがあった場合は、次の手順で問題がなくなるまで、修正、インポートと同期の実行、データの確認を繰り返します。
+6. ステージング サーバーをアクティブ サーバーに切り替えます。 これは、「[サーバーの構成の確認](how-to-connect-sync-staging-server.md#verify-the-configuration-of-a-server)」の最後の手順である「アクティブなサーバーの切り替え」にあたります。
 7. Azure AD Connect をアップグレードする場合は、ステージング モードになっているサーバーを最新リリースにアップグレードします。 前と同じ手順に従って、データと構成をアップグレードします。 Azure AD Sync からアップグレードしている場合は、ここで、以前のサーバーの電源を切って、使用を停止できます。
 
 ### <a name="move-a-custom-configuration-from-the-active-server-to-the-staging-server"></a>カスタム構成のアクティブ サーバーからステージング サーバーへの移動
@@ -104,7 +108,7 @@ Azure AD Connect のアップグレードで使用できる方法は複数あり
 
    ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 
-2. アップグレードの完了後、次のコマンドレットを実行して、追加されたオーバーライドを確認します: `Get-ADSyncSchedulerConnectorOverride | fl`
+2. アップグレードの完了後、次のコマンドレットを実行して、追加されたオーバーライドを確認します:  `Get-ADSyncSchedulerConnectorOverride | fl`
 
    >[!NOTE]
    > オーバーライドはコネクタ固有です。 次の例では、フル インポート手順と完全同期手順が、オンプレミスの AD コネクタと Azure AD コネクタの両方に追加されます。
@@ -113,7 +117,7 @@ Azure AD Connect のアップグレードで使用できる方法は複数あり
 
 3. 追加された既存のオーバーライドを書き留めてください。
    
-4. 任意のコネクタでフル インポートと完全同期の両方に対するオーバーライドを削除するには、次のコマンドレットを実行します: `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
+4. 任意のコネクタでフル インポートと完全同期の両方に対するオーバーライドを削除するには、次のコマンドレットを実行します:  `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
 
    すべてのコネクタでオーバーライドを削除するには、次の PowerShell スクリプトを実行します。
 
@@ -124,12 +128,12 @@ Azure AD Connect のアップグレードで使用できる方法は複数あり
    }
    ```
 
-5. スケジューラを再開するには、次のコマンドレットを実行します: `Set-ADSyncScheduler -SyncCycleEnabled $true`
+5. スケジューラを再開するには、次のコマンドレットを実行します:  `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
    >[!IMPORTANT]
    > 必要な同期手順は、できるだけ早く実行してください。 Synchronization Service Manager を使用してこの手順を手動で実行するか、Set-ADSyncSchedulerConnectorOverride コマンドレットを使用して、オーバーライドを戻すことができます。
 
-任意のコネクタでフル インポートと完全同期の両方に対するオーバーライドを追加するには、次のコマンドレットを実行します: `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
+任意のコネクタでフル インポートと完全同期の両方に対するオーバーライドを追加するには、次のコマンドレットを実行します:   `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 次のセクションには、Azure AD Connect のアップグレード時に問題が発生した場合に使用できるトラブルシューティングと情報が含まれています。
@@ -140,7 +144,7 @@ Azure AD Connect を以前のバージョンからアップグレードすると
 
 ![Error](./media/how-to-upgrade-previous-version/error1.png)
 
-このエラーは、Azure Active Directory コネクタ (ID b891884f-051e-4a83-95af-2544101c9083) が現在の Azure AD Connect の構成に存在しないことが原因で発生します。 それが事実であるかどうかを確認するには、PowerShell ウィンドウを開いて `Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083` コマンドレットを実行します。
+このエラーは、Azure Active Directory コネクタ (ID b891884f-051e-4a83-95af-2544101c9083) が現在の Azure AD Connect の構成に存在しないことが原因で発生します。 それが事実であるかどうかを確認するには、PowerShell ウィンドウを開いて次のコマンドレットを実行します:  `Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083`
 
 ```
 PS C:\> Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083

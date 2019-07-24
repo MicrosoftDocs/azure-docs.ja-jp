@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: 65dd4b172c0913e11bb7f25909eb062e93a4a03a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b9f17ad0ccfd5e58d5b93bde91e6f9c537a15fa6
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015232"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606896"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>トピックを自動的に作成するように HDInsight 上の Apache Kafka を構成する方法
 
-既定では、HDInsight 上の Kafka は自動的にトピックを作成しません。 Ambari を使って、既存のクラスターでの自動トピック作成を有効にすることができます。 Azure Resource Manager テンプレートを使って新しい Kafka クラスターを作成するときに、自動トピック作成を有効にすることもできます。
+既定では、HDInsight 上の [Apache Kafka](https://kafka.apache.org/) は自動的にトピックを作成しません。 [Apache Ambari](https://ambari.apache.org/) を使って、既存のクラスターでの自動トピック作成を有効にすることができます。 Azure Resource Manager テンプレートを使って新しい Kafka クラスターを作成するときに、自動トピック作成を有効にすることもできます。
 
-## <a name="ambari-web-ui"></a>Ambari Web UI
+## <a name="apache-ambari-web-ui"></a>Apache Ambari Web UI
 
 Ambari Web UI を使って既存のクラスターでトピックの自動作成を有効にするには、次の手順のようにします。
 
@@ -55,8 +55,8 @@ Ambari Web UI を使って既存のクラスターでトピックの自動作成
 
     ![再起動の選択の画像](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
-> [!NOTE]
-> Ambari REST API を使って Ambari の値を設定することもできます。 現在の構成の取得やその変更のために複数の REST 呼び出しを行う必要があるため、通常はこの方法の方が困難です。詳しくは、「[Ambari REST API を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari-rest-api.md)」をご覧ください。
+> [!NOTE]  
+> Ambari REST API を使って Ambari の値を設定することもできます。 現在の構成の取得やその変更のために複数の REST 呼び出しを行う必要があるため、通常はこの方法の方が困難です。詳細については、[Apache Ambari REST API を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari-rest-api.md)に関するページを参照してください。
 
 ## <a name="resource-manager-templates"></a>Resource Manager テンプレート
 
@@ -79,7 +79,7 @@ Azure Resource Manager テンプレートを使って Kafka クラスターを�
 
 ## <a name="next-steps"></a>次の手順
 
-このドキュメントでは、HDInsight 上の Kafka でトピックの自動作成を有効にする方法を説明しました。 Kafka の使用について詳しくは、次のリンクをご覧ください。
+このドキュメントでは、HDInsight 上の Apache Kafka でトピックの自動作成を有効にする方法を説明しました。 Kafka の使用について詳しくは、次のリンクをご覧ください。
 
-* [Kafka ログの分析](apache-kafka-log-analytics-operations-management.md)
-* [Kafka クラスター間でデータをレプリケートする](apache-kafka-mirroring.md)
+* [Apache Kafka ログを分析する](apache-kafka-log-analytics-operations-management.md)
+* [Apache Kafka クラスター間でデータをレプリケートする](apache-kafka-mirroring.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: terrylan
-ms.openlocfilehash: 7dfc4329b338a65169c81521360264753bafa9d6
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: f79f94c277b02a9f377b90bf74763ac617f65c16
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239918"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892899"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure セキュリティの管理と監視の概要
 
@@ -50,7 +50,7 @@ Azure では、Microsoft、Symantec、Trend Micro、McAfee、Kaspersky などの
 
 Azure Cloud Services および Virtual Machines の Microsoft マルウェア対策は、PaaS ロールと仮想マシンの両方のためのマルウェア対策エージェントをインストールする機能を提供します。 この機能は、System Center Endpoint Protection に基づいており、実績のあるオンプレミス セキュリティ テクノロジをクラウドに持ち込みます。
 
-また、Trend の [Deep Security](http://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) と [SecureCloud](http://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) 製品も Azure プラットフォームに緊密に統合されます。 DeepSecurity はウイルス対策ソリューションであり、SecureCloud は暗号化ソリューションです。 DeepSecurity は、拡張機能モデルを使って、VM の内部に展開されます。 Azure portal UI と PowerShell を使うと、スピンアップされている新しい VM 内で DeepSecurity を使うか、既にデプロイされている既存の VM 内で使うかを選択することができます。
+また、Trend の [Deep Security](https://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) と [SecureCloud](https://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) 製品も Azure プラットフォームに緊密に統合されます。 DeepSecurity はウイルス対策ソリューションであり、SecureCloud は暗号化ソリューションです。 DeepSecurity は、拡張機能モデルを使って、VM の内部に展開されます。 Azure portal UI と PowerShell を使うと、スピンアップされている新しい VM 内で DeepSecurity を使うか、既にデプロイされている既存の VM 内で使うかを選択することができます。
 
 Symantec Endpoint Protection (SEP) も、Azure でサポートされています。 ポータルの統合により、お客様は SEP を VM 上で使うように指定できます。 SEP は、Azure Portal を通じて新しい VM にインストールすることができます。また、PowerShell を使って既存の VM にインストールすることもできます。
 
@@ -123,7 +123,7 @@ Identity Protection は、通知と推奨される修復を提供することで
 詳細情報:
 
 * [Azure Active Directory Identity Protection](../active-directory/active-directory-identityprotection.md)
-* [Channel 9: Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [Channel 9:Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Security Center
 

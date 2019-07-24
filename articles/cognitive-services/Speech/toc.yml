@@ -4,7 +4,7 @@
   expanded: true
   href: GetStarted/GetStarted.md
   items:
-    - name: REST ()
+    - name: REST
       href: GetStarted/GetStartedREST.md
     - name: クライアント ライブラリ
       href: GetStarted/GetStartedClientLibraries.md

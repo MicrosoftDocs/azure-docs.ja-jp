@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c6c67f6f1500ee90a1e0e4a04309f3f7aa2f6d05
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: 192a6f4841e9dc3a478da5e4b53594362955ca71
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "36338324"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56246976"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP はすべての Azure VPN Gateway SKU でサポートされていますか。
 いいえ、BGP は Azure **VpnGw1**、**VpnGw2**、**VpnGw3**、**Standard**、**HighPerformance** の各 VPN ゲートウェイでサポートされています。 **Basic** SKU はサポートされていません。
@@ -50,6 +50,9 @@ Azure VPN ゲートウェイでは、オンプレミスの BGP デバイスに�
 * Azure VPN ゲートウェイに接続されている各ローカル ネットワーク ゲートウェイのアドレス プレフィックス
 * Azure VPN Gateway に接続されている他の BGP ピアリング セッションから学習したルート。ただし、**VNet プレフィックスと重複している既定のルートは除外**されます。
 
+### <a name="how-many-prefixes-can-i-advertise-to-azure-vpn-gateway"></a>何個のプレフィックスを Azure VPN ゲートウェイにアドバタイズできますか。
+最大 4,000 プレフィックスがサポートされています。 プレフィックスの数がこの制限を超えると、BGP セッションは切断されます。
+
 ### <a name="can-i-advertise-default-route-00000-to-azure-vpn-gateways"></a>Azure VPN ゲートウェイへの既定のルート (0.0.0.0/0) をアドバタイズすることはできますか。
 はい。
 
@@ -68,7 +71,7 @@ Azure VPN ゲートウェイでは、オンプレミスの BGP デバイスに�
 はい、同じ Azure VPN ゲートウェイに対して BGP 接続と非 BGP 接続の両方を混在させることができます。
 
 ### <a name="does-azure-vpn-gateway-support-bgp-transit-routing"></a>Azure VPN ゲートウェイでは、BGP トランジット ルーティングをサポートしていますか。
-はい。BGP トランジット ルーティングはサポートされています。ただし、Azure VPN Gateway は既定のルートを他の BGP ピアにアドバタイズ**しません**。 複数の Azure VPN ゲートウェイでトランジット ルーティングを有効にするには、中間にあるすべての VNet 接続で BGP を有効にする必要があります。
+はい。BGP トランジット ルーティングはサポートされています。ただし、Azure VPN Gateway は既定のルートを他の BGP ピアにアドバタイズ**しません**。 複数の Azure VPN ゲートウェイでトランジット ルーティングを有効にするには、中間にあるすべての VNet 接続で BGP を有効にする必要があります。 詳細については、[BGP](../articles/vpn-gateway/vpn-gateway-bgp-overview.md) に関する記事を参照してください。
 
 ### <a name="can-i-have-more-than-one-tunnel-between-azure-vpn-gateway-and-my-on-premises-network"></a>Azure VPN ゲートウェイとオンプレミス ネットワークの間で複数のトンネルを確立することはできますか。
 はい、Azure VPN ゲートウェイとオンプレミス ネットワークの間に複数の S2S VPN トンネルを確立することができます。 これらのトンネルはすべて Azure VPN ゲートウェイのトンネルの合計数にカウントされる点に注意してください。さらに、両方のトンネルの BGP を有効にする必要があります。

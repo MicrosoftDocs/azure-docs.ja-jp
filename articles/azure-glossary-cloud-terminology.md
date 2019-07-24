@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: e62910cc760a200abba6d56e4fa1eb87973285ec
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9a93786759941def4cf8677509b1b2565cac5090
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963596"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823860"
 ---
-# <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 用語集: Azure プラットフォームにおけるクラウド用語の辞書
+# <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 用語集:Azure プラットフォームにおけるクラウド用語の辞書
 
 Microsoft Azure 用語集は、Azure プラットフォーム向けのクラウド用語をまとめた簡単な辞書です。 関連項目:
 
@@ -37,7 +37,7 @@ Azure サブスクリプションへのアクセスおよび管理に使用す�
 [App Service アプリ](#app-service-app)の別名。
 
 ## <a name="app-service-app"></a>App Service アプリ
-Web サイトまたは Web アプリケーション、Web API、または[モバイル アプリのバックエンド](app-service/app-service-web-overview.md)をホストするために [Azure App Service](app-service-mobile/app-service-mobile-value-prop.md) が提供するコンピューティング リソースです。 App Service アプリは、*App Services*、*Web アプリ*、*API アプリ*、*モバイル アプリ*とも呼ばれます。
+Web サイトまたは Web アプリケーション、Web API、または[モバイル アプリのバックエンド](app-service/overview.md)をホストするために [Azure App Service](app-service-mobile/app-service-mobile-value-prop.md) が提供するコンピューティング リソースです。 App Service アプリは、*App Services*、*Web アプリ*、*API アプリ*、*モバイル アプリ*とも呼ばれます。
 
 ## <a name="availability-set"></a>可用性セット
 アプリケーションの冗長性と信頼性を提供するために、ひとまとまりで管理される仮想マシンのコレクション。 可用性セットを利用していれば、計画済みまたは計画外メンテナンスの間にも、少なくとも 1 つの仮想マシンを使用できます。  
@@ -70,7 +70,7 @@ Microsoft Azure でリソースをデプロイするために使用される 2 �
 <!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->に関するページを参照してください。
 
 ## <a name="image"></a>image
-任意の数の仮想マシンを作成するために使用できるアプリケーション構成とオペレーティング システムが含まれるファイル。 Azure では、VM イメージと OS イメージの 2 種類があります。 VM イメージには、オペレーティング システムと、イメージの作成時に、仮想マシンにアタッチされているすべてのディスクが含まれています。 OS イメージには汎用オペレーティング システムのみが含まれ、データ ディスク構成はありません。  
+任意の数の仮想マシンを作成するために使用できるアプリケーション構成とオペレーティング システムが含まれるファイル。 Azure には 2 種類のイメージがあります。VM イメージと OS イメージです。 VM イメージには、オペレーティング システムと、イメージの作成時に、仮想マシンにアタッチされているすべてのディスクが含まれています。 OS イメージには汎用オペレーティング システムのみが含まれ、データ ディスク構成はありません。  
 「[Powershell または CLI を使用した Azure での Windows 仮想マシン イメージへの移動と選択](virtual-machines/windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 
 ## <a name="limits"></a>制限
@@ -112,7 +112,7 @@ Resource Manager でデプロイおよび管理できるリソースを提供す
 
 ## <a name="role"></a>role
 ユーザー、グループ、サービスに割り当てることのできるアクセスを制御する手段。 ロールは、Azure リソースの作成、管理、読み取りなどのアクションを実行できます。  
-「[RBAC: 組み込みのロール](role-based-access-control/built-in-roles.md)」をご覧ください。
+[RBAC の組み込みのロール](role-based-access-control/built-in-roles.md)に関するページを参照してください。
 
 ## <a name="sla"></a>サービス レベル アグリーメント (SLA)
 稼働時間と接続に関する Microsoft の確約内容を示す契約です。 Azure サービスごとに固有の SLA があります。  
@@ -147,7 +147,7 @@ Azure サービスを入手する権利を与える、お客様と Microsoft の
 「[仮想マシンの拡張機能とその機能について](virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」(Windows) と「[仮想マシンの拡張機能とその機能について](virtual-machines/linux/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」(Linux) をご覧ください。
 
 ## <a name="vnet"></a>Virtual network
-他のどの Azure テナントとも切り離された Azure リソース間の接続を提供するネットワーク。 [Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) を使用して、仮想ネットワーク間の接続や[仮想ネットワークとオンプレミス ネットワーク間](vpn-gateway/vpn-gateway-plan-design.md)の接続を確立できます。 仮想ネットワーク内では、IP アドレス ブロック、DNS 設定、セキュリティ ポリシー、およびルート テーブルを完全に制御できます。  
+他のどの Azure テナントとも切り離された Azure リソース間の接続を提供するネットワーク。 [Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) を使用して、仮想ネットワーク間の接続や仮想ネットワークとオンプレミス ネットワーク間の接続を確立できます。 仮想ネットワーク内では、IP アドレス ブロック、DNS 設定、セキュリティ ポリシー、およびルート テーブルを完全に制御できます。  
 「[Virtual Network の概要](virtual-network/virtual-networks-overview.md)」をご覧ください。  
 
 ## <a name="web-app"></a>Web アプリ

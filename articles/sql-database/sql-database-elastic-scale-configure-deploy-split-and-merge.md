@@ -3,7 +3,7 @@ title: Split-Merge サービスのデプロイ | Microsoft Docs
 description: split-merge ツールを使用して、シャード化されたデータベース間でデータを移動します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,20 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 253a50f50e94888a5d764e51a4ff49cc0c1424c6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/04/2018
+ms.openlocfilehash: 5aff7e93dcfaa5320be0d6f7d427abcdc88c69e4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253535"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995829"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>split-merge サービスをデプロイして、シャード化されたデータベース間でデータを移動する
 
 split-merge ツールを使用すると、シャード化されたデータベース間でデータを移動できます。 「 [スケールアウトされたクラウド データベース間のデータ移動](sql-database-elastic-scale-overview-split-and-merge.md)
 
 ## <a name="download-the-split-merge-packages"></a>分割-結合パッケージのダウンロード
-1. [NuGet](http://docs.nuget.org/docs/start-here/installing-nuget)から最新の NuGet バージョンをダウンロードします。
+1. [NuGet](https://docs.nuget.org/docs/start-here/installing-nuget)から最新の NuGet バージョンをダウンロードします。
 2. コマンド プロンプトを開き、nuget.exe をダウンロードしたディレクトリに移動します。 ダウンロードには、PowerShell コマンドが含まれています。
 3. 次のコマンドで最新の Split-Merge パッケージを現在のディレクトリにダウンロードします。
    ```
@@ -69,7 +69,7 @@ split-merge ツールを使用すると、シャード化されたデータベ�
     makecert ^
     -n "CN=*.cloudapp.net" ^
     -r -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.1,1.3.6.1.5.5.7.3.2" ^
-    -a sha1 -len 2048 ^
+    -a sha256 -len 2048 ^
     -sr currentuser -ss root ^
     -sv MyCert.pvk MyCert.cer
    ```
@@ -204,7 +204,7 @@ Split-Merge サービスの Web エンドポイントを決定します。 こ�
    
 ## <a name="use-powershell-to-verify-your-deployment"></a>PowerShell でのデプロイの確認
 1. 新しい PowerShell ウィンドウを開き、分割-結合パッケージをダウンロードしたディレクトリに移動し、"powershell" ディレクトリに移動します。
-2. Azure SQL データベース サーバーを作成 (または既存のサーバーを選択) します。ここでシャード マップ マネージャーとシャードが作成されます。
+2. Azure SQL Database サーバーを作成 (または既存のサーバーを選択) します。ここでシャード マップ マネージャーとシャードが作成されます。
    
    > [!NOTE]
    > SetupSampleSplitMergeEnvironment.ps1 スクリプトは、これらのデータベースをすべて同じサーバー上に既定で作成します。これはスクリプトの簡潔さを維持するためです。 Split-Merge サービス自体の制約ではありません。

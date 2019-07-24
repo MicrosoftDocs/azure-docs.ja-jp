@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: roiyz
-ms.openlocfilehash: ddb999c252f0802ef57942de694340ae29f2d8ba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0bb49d3d75b88f197a42e02f03f89480563537ef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240360"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005483"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
@@ -34,7 +34,7 @@ Trend Micro のオンプレミスのソリューション用サブスクリプ�
 
 ## <a name="install-the-deep-security-agent-on-a-new-vm"></a>新しい VM に Deep Security Agent をインストールする
 
-[Azure ポータル](http://portal.azure.com) を使用すると、**Marketplace** のイメージを使用して仮想マシンを作成するときに、Trend Micro のセキュリティ拡張機能をインストールできます。 仮想マシンを 1 つだけ作成する場合には、この方法が Trend Micro の保護機能を追加する最も簡単な方法です。
+[Azure ポータル](https://portal.azure.com) を使用すると、**Marketplace** のイメージを使用して仮想マシンを作成するときに、Trend Micro のセキュリティ拡張機能をインストールできます。 仮想マシンを 1 つだけ作成する場合には、この方法が Trend Micro の保護機能を追加する最も簡単な方法です。
 
 この **Marketplace** のエントリを使用すると、仮想マシンの設定を支援するウィザードが起動します。 ウィザードの 3 番目のパネルの **[設定]** ブレードを使用して、Trend Micro のセキュリティ拡張機能をインストールします。  一般的な手順については、「[Windows を実行する仮想マシンを Azure ポータルで作成する](../windows/classic/tutorial.md)」をご覧ください。
 
@@ -80,7 +80,7 @@ VM エージェントがインストールされている場合は、次のコ�
 
 * このソリューションに関する Trend の記事「 [Instant-On Cloud Security for Microsoft Azure (Microsoft Azure 用の Instant-On クラウド セキュリティ)](https://go.microsoft.com/fwlink/?LinkId=404101)
 * 仮想マシンを構成するための [Windows PowerShell サンプル スクリプト](https://go.microsoft.com/fwlink/?LinkId=404100)
-* [説明](https://go.microsoft.com/fwlink/?LinkId=404099) 
+* サンプルの[説明書](https://go.microsoft.com/fwlink/?LinkId=404099)
 
 ## <a name="additional-resources"></a>その他のリソース
 [Windows Server が実行されている仮想マシンにログオンする方法]
@@ -94,4 +94,4 @@ VM エージェントがインストールされている場合は、次のコ�
 
 <!-- Link references -->
 [Windows Server が実行されている仮想マシンにログオンする方法]:../windows/classic/connect-logon.md
-[Azure VM 拡張機能とその機能]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
+[Azure VM 拡張機能とその機能]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409

@@ -4,7 +4,7 @@ description: このトピックでは、Azure Media Analytics で顔と感情を
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 5ca4692c-23f1-451d-9d82-cbc8bf0fd707
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 03/18/2019
 ms.author: milanga;juliako;
-ms.openlocfilehash: 859e75819f96edd527fceb143faf8357738ce80e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 46e60583da79006c133c8d9fac63e27f28bd699f
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33784461"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188188"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Azure Media Analytics での顔と感情の検出
 ## <a name="overview"></a>概要
@@ -60,7 +60,7 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 
 ## <a name="face-detection-input-and-output-example"></a>顔検出の入力と出力の例
 ### <a name="input-video"></a>入力ビデオ
-[入力ビデオ](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
+[入力ビデオ](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>タスクの構成 (プリセット)
 **Azure Media Face Detector**でタスクを作成するときは、構成プリセットを指定する必要があります。 次の構成プリセットは、顔検出用だけです。
@@ -75,7 +75,7 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 ```
 
 #### <a name="attribute-descriptions"></a>属性の説明
-| 属性名 | [説明] |
+| 属性名 | 説明 |
 | --- | --- |
 | Mode |Fast: 処理速度は速くなりますが、精度が低下します (既定値)。|
 
@@ -132,7 +132,7 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 
 ## <a name="emotion-detection-input-and-output-example"></a>感情検出の入力と出力の例
 ### <a name="input-video"></a>入力ビデオ
-[入力ビデオ](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
+[入力ビデオ](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>タスクの構成 (プリセット)
 **Azure Media Face Detector**でタスクを作成するときは、構成プリセットを指定する必要があります。 次の構成プリセットでは、感情検出に基づく JSON の作成を指定しています。
@@ -150,9 +150,9 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 
 
 #### <a name="attribute-descriptions"></a>属性の説明
-| 属性名 | [説明] |
+| 属性名 | 説明 |
 | --- | --- |
-| Mode |Faces: 顔検出のみ。<br/>PerFaceEmotion: 検出された顔ごとに、感情を個別に返します。<br/>AggregateEmotion: フレーム内のすべての顔の平均的感情値を返します。 |
+| Mode |Faces:顔検出のみ。<br/>PerFaceEmotion:検出された顔ごとに、感情を個別に返します。<br/>AggregateEmotion:フレーム内のすべての顔の平均的感情値を返します。 |
 | AggregateEmotionWindowMs |AggregateEmotion モードが選択されている場合に使用します。 各集計結果を生成するために使用するビデオの長さを指定します (ミリ秒単位)。 |
 | AggregateEmotionIntervalMs |AggregateEmotion モードが選択されている場合に使用します。 集計結果を生成する頻度を指定します。 |
 
@@ -418,7 +418,7 @@ namespace FaceDetection
             task.InputAssets.Add(asset);
 
             // Add an output asset to contain the results of the job.
-            task.OutputAssets.AddNew("My Face Detectoion Output Asset", AssetCreationOptions.None);
+            task.OutputAssets.AddNew("My Face Detection Output Asset", AssetCreationOptions.None);
 
             // Use the following event handler to check job progress.  
             job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
@@ -522,5 +522,5 @@ namespace FaceDetection
 ## <a name="related-links"></a>関連リンク
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
-[Azure Media Analytics デモ](http://amslabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics デモ](https://amslabs.azurewebsites.net/demos/Analytics.html)
 

@@ -3,17 +3,17 @@ title: Azure IoT Central アプリケーションを CSP として作成して�
 description: CSP として、顧客に代わって Azure IoT Central アプリケーションを作成する方法を説明します。
 services: iot-central
 ms.service: iot-central
-author: tbhagwat3
-ms.author: tanmayb
-ms.date: 10/29/2018
+author: dominicbetts
+ms.author: dobett
+ms.date: 04/03/2019
 ms.topic: conceptual
-manager: peterpr
-ms.openlocfilehash: dbc72e040f3d68ca77c036c41612f57616d1e74e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+manager: philmea
+ms.openlocfilehash: 8c73c55b059b4d3ca7136889122c11ab332b3f76
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016830"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59270508"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>CSP として、顧客に代わって Azure IoT Central アプリケーションを作成して管理する 
 
@@ -23,21 +23,21 @@ CSP として、[Microsoft パートナー センター](https://partnercenter.m
 
 最初に、Microsoft パートナー ポータルのアカウントにサインインし、Azure IoT Central アプリケーションを作成する顧客を選択します。 左側のナビゲーションから顧客のサービス管理に移動します。
 
-![Microsoft パートナー センターのお客様が見る画面](media\howto-create-application-asCSP\image1.png)
+![Microsoft パートナー センターのお客様が見る画面](media/howto-create-application-asCSP/image1.png)
 
-Azure IoT Central は、管理に使用できるサービスとして表示されます。 ページの Azure IoT Central リンクをクリックして新しいアプリケーションを作成するか、この顧客の既存のアプリケーションを管理します。
+Azure IoT Central は、管理に使用できるサービスとして表示されます。 ページの Azure IoT Central リンクを選択して新しいアプリケーションを作成するか、この顧客の既存のアプリケーションを管理します。
 
-![管理できる Azure IoT Central](media\howto-create-application-asCSP\image2.png)
+![管理できる Azure IoT Central](media/howto-create-application-asCSP/image2.png)
 
 Azure IoT Central の [Application Manager]\(アプリケーション マネージャー\) ページに移動します。 Azure IoT Central では、ユーザーが Microsoft パートナー センターから来て、その特定の顧客を管理することになったというコンテキストが維持されます。 これは、[Application Manager]\(アプリケーション マネージャー\) ページのヘッダーで確認できます。 ここから、この顧客が管理するために前に作成した既存のアプリケーションに移動することも、この顧客のために新しいアプリケーションを作成することもできます。
 
-![CSP のマネージャーの作成](media\howto-create-application-asCSP\image3.png)
+![CSP のマネージャーの作成](media/howto-create-application-asCSP/image3.png)
 
-Azure IoT Central アプリケーションを作成するには、**[新しいアプリケーション]** タイルをクリックします。 これによって、[Application Creation]\(アプリケーションの作成\) ページが読み込まれます。 このページのすべてのフィールドに入力してから、**[作成]** を選択する必要があります。 詳しくは、以下の各フィールドを参照してください。
+Azure IoT Central アプリケーションを作成するには、**[新しいアプリケーション]** タイルを選択します。 これによって、[Application Creation]\(アプリケーションの作成\) ページが読み込まれます。 このページのすべてのフィールドに入力してから、**[作成]** を選択する必要があります。 詳しくは、以下の各フィールドを参照してください。
 
-![CSP 用のアプリケーションの作成ページ](media\howto-create-application-asCSP\image4.png)
+![CSP 用のアプリケーションの作成ページ](media/howto-create-application-asCSP/image4.png)
 
-![CSP 用のアプリケーションの作成ページ](media\howto-create-application-asCSP\image4-1.png)
+![CSP 用のアプリケーションの作成ページ](media/howto-create-application-asCSP/image4-1.png)
 
 ## <a name="payment-plan"></a>支払プラン
 

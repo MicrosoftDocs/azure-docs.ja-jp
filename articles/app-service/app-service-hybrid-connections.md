@@ -1,5 +1,5 @@
 ---
-title: Azure App Service のハイブリッド接続 | Microsoft Docs
+title: ハイブリッド接続 - Azure App Service | Microsoft Docs
 description: ハイブリッド接続を作成し、それを使用して分散ネットワーク内のリソースにアクセスする方法
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: ccompy
-ms.openlocfilehash: 69897e288a90a731d95db82d0ff978d776c12580
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.custom: seodec18
+ms.openlocfilehash: 40ff05e9fbc00747145c653878010ad9da0c37ec
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42141340"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653392"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Services からのハイブリッド接続 #
 
@@ -136,7 +137,7 @@ HCM UI を起動すると、HCM のこのインスタンスに構成されてい
 1 つまたは複数のハイブリッド接続を HCM に追加するには:
 
 1. HCM UI を起動します。
-1. **[Configure another hybrid connection] \(別のハイブリッド接続の構成\)** を選択します。
+2. **[Configure another hybrid connection] \(別のハイブリッド接続の構成\)** を選択します。
 ![[Configure New Hybrid Connection] \(新しいハイブリッド接続の構成\) のスクリーン ショット][8]
 
 1. Azure のアカウントを使用してサインインします。
@@ -176,7 +177,7 @@ HCM はそれぞれ、複数のハイブリッド接続をサポートできま�
 
 ## <a name="adding-a-hybrid-connection-to-your-app-programmatically"></a>ハイブリッド接続をプログラミングによってアプリに追加する ##
 
-次に示す API を直接使用して、Web アプリに接続するハイブリッド接続を管理できます。 
+次に示す API を直接使用して、アプリに接続するハイブリッド接続を管理できます。 
 
     /subscriptions/[subscription name]/resourceGroups/[resource group name]/providers/Microsoft.Web/sites/[app name]/hybridConnectionNamespaces/[relay namespace name]/relays/[hybrid connection name]?api-version=2016-08-01
 
@@ -197,7 +198,7 @@ HCM はそれぞれ、複数のハイブリッド接続をサポートできま�
       }
     }
 
-この情報を使用する方法の 1 つとして、[ARMClient][armclient] github プロジェクトから取得できる armclient があります。 既存のハイブリッド接続を Web アプリに接続する例を次に示します。 上記のスキーマに対して次の JSON ファイルを作成します。
+この情報を使用する方法の 1 つとして、[ARMClient][armclient] GitHub プロジェクトから取得できる armclient があります。 既存のハイブリッド接続をアプリに接続する例を次に示します。 上記のスキーマに対して次の JSON ファイルを作成します。
 
     {
       "name": "relay-demo-hc",
@@ -229,7 +230,7 @@ App Service では、Advanced Tools (Kudu) コンソールから tcpping ツー�
 
 ## <a name="biztalk-hybrid-connections"></a>BizTalk ハイブリッド接続 ##
 
-以前、この機能は BizTalk ハイブリッド接続と呼ばれていました。 これは 2018 年 5 月 31 日で終了となり、運用が停止されました。 BizTalk ハイブリッド接続は、すべての Web アプリから削除され、ポータルや API からアクセスできなくなっています。 このような古い接続がまだハイブリッド接続マネージャーに構成されている場合、[中止] というステータスが表示され、一番下には有効期間が終了したという説明が表示されます。
+以前、この機能は BizTalk ハイブリッド接続と呼ばれていました。 これは 2018 年 5 月 31 日で終了となり、運用が停止されました。 BizTalk ハイブリッド接続は、すべてのアプリから削除され、ポータルや API からアクセスできなくなっています。 このような古い接続がまだハイブリッド接続マネージャーに構成されている場合、[中止] というステータスが表示され、一番下には有効期間が終了したという説明が表示されます。
 
 ![HCM での BizTalk ハイブリッド接続][12]
 
@@ -249,8 +250,8 @@ App Service では、Advanced Tools (Kudu) コンソールから tcpping ツー�
 [12]: ./media/app-service-hybrid-connections/hybridconn-bt.png
 
 <!--Links-->
-[HCService]: http://docs.microsoft.com/azure/service-bus-relay/relay-hybrid-connections-protocol/
-[portal]: http://portal.azure.com/
-[oldhc]: http://docs.microsoft.com/azure/biztalk-services/integration-hybrid-connection-overview/
-[sbpricing]: http://azure.microsoft.com/pricing/details/service-bus/
+[HCService]: https://docs.microsoft.com/azure/service-bus-relay/relay-hybrid-connections-protocol/
+[portal]: https://portal.azure.com/
+[oldhc]: https://docs.microsoft.com/azure/biztalk-services/integration-hybrid-connection-overview/
+[sbpricing]: https://azure.microsoft.com/pricing/details/service-bus/
 [armclient]: https://github.com/projectkudu/ARMClient/

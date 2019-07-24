@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f9de4377857188a8cf483321654fb857e428c7f5
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 83c7e808e48733487e84d668236cdb327c21c44c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171641"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249080"
 ---
 # <a name="managing-user-data"></a>ユーザー データの管理
 
@@ -48,8 +48,8 @@ cl.EntityDetectionCallback(async (text: string, memoryManager: ClientMemoryManag
     var sessionData = memoryManager.SessionInfo();
 
     // sessionData.sessionId is the ID of this logged dialog.
-    // In your bot-specific datastore, store an association
-    // bewteen your user identifier and this session ID.
+    // In your bot-specific data store, store an association
+    // between your user identifier and this session ID.
     console.log(sessionData.logDialogId)
 
     // sessionData.userId and sessionData.userName are the 

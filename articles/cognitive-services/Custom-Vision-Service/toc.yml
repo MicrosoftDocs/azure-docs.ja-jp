@@ -1,84 +1,102 @@
-items:
 - name: Custom Vision Service のドキュメント
+  href: index.yml
 - name: 概要
   items:
-  - name: Custom Vision とは
-    href: home.md
+    - name: Custom Vision とは
+      href: home.md
 - name: クイック スタート
   items:
-  - name: .NET SDK の使用
-    items:
-    - name: 画像の分類
-      href: csharp-tutorial.md
-    - name: オブジェクトの検出
-      href: csharp-tutorial-od.md
-  - name: Python SDK の使用
-    items:
-    - name: 画像の分類
-      href: python-tutorial.md
-    - name: オブジェクトの検出
-      href: python-tutorial-od.md
-  - name: Java SDK の使用
-    items:
-    - name: 画像の分類
-      href: java-tutorial.md
-    - name: オブジェクトの検出
-      href: java-tutorial-od.md
+    - name: .NET SDK の使用
+      items:
+        - name: 画像の分類
+          href: csharp-tutorial.md
+        - name: オブジェクトの検出
+          href: csharp-tutorial-od.md
+    - name: Python SDK の使用
+      items:
+        - name: 画像の分類
+          href: python-tutorial.md
+        - name: オブジェクトの検出
+          href: python-tutorial-od.md
+    - name: Java SDK の使用
+      items:
+        - name: 画像の分類
+          href: java-tutorial.md
+        - name: オブジェクトの検出
+          href: java-tutorial-od.md
+    - name: Node.js SDK の使用
+      items:
+        - name: 画像の分類
+          href: node-tutorial.md
+        - name: オブジェクトの検出
+          href: node-tutorial-object-detection.md
+    - name: Go SDK の使用
+      items:
+        - name: 画像の分類
+          href: go-tutorial.md
+        - name: オブジェクトの検出
+          href: go-tutorial-object-detection.md
+- name: チュートリアル
+  items:
+    - name: モバイル向けのロゴ検出機能
+      href: logo-detector-mobile.md
 - name: ハウツー ガイド
   items:
-  - name: 分類子の構築
-    href: getting-started-build-a-classifier.md
-  - name: モデルのテスト
-    href: test-your-model.md
-  - name: 分類子の改善
-    href: getting-started-improving-your-classifier.md
-  - name: 予測 API の使用
-    href: use-prediction-api.md
-  - name: モバイルへのモデルのエクスポート
-    href: export-your-model.md
-  - name: Windows ML での ONNX モデルの使用
-    href: custom-vision-onnx-windows-ml.md
-  - name: Python での TensorFlow モデルの実行
-    href: export-model-python.md
-  - name: REST API を使用したモデルの構築
-    href: rest-api-tutorial.md
-  - name: アカウント データのエクスポートまたは削除
-    href: ./export-delete-data.md
+    - name: 分類子の構築
+      href: getting-started-build-a-classifier.md
+    - name: モデルのテスト
+      href: test-your-model.md
+    - name: 分類子の改善
+      href: getting-started-improving-your-classifier.md
+    - name: 予測 API の使用
+      href: use-prediction-api.md
+    - name: モデルをエクスポートする
+      items:
+        - name: モバイルへのモデルのエクスポート
+          href: export-your-model.md
+        - name: Windows ML での ONNX モデルの使用
+          href: custom-vision-onnx-windows-ml.md
+        - name: Python での TensorFlow モデルの実行
+          href: export-model-python.md
+    - name: アカウント データのエクスポートまたは削除
+      href: ./export-delete-data.md
+    - name: 期間限定試用版のプロジェクトの Azure への移行
+      href: ./move-your-project-to-azure.md
+    - name: アプリを 3.0 API に更新する
+      href: ./update-application-to-3.0-sdk.md
 - name: リファレンス
   items:
-  - name: Custom Vision Training API
-    href: https://go.microsoft.com/fwlink/?linkid=865446
-  - name: Custom Vision Prediction API
-    href: https://go.microsoft.com/fwlink/?linkid=865445
-  - name: 用語集
-    href: glossary-of-terms.md
-  - name: SDK
-    items:
-    - name: " Windows"
-      href: http://github.com/Microsoft/Cognitive-CustomVision-Windows
-    - name: Python
-      href: https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules
-    - name: Go
-      href: https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices
+    - name: Custom Vision Training API
+      href: 'https://go.microsoft.com/fwlink/?linkid=865446'
+    - name: Custom Vision Prediction API
+      href: 'https://go.microsoft.com/fwlink/?linkid=865445'
+    - name: 用語集
+      href: glossary-of-terms.md
+    - name: SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python'
+        - name: Go - トレーニング
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training'
+        - name: Go - 予測
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction'
 - name: リソース
   items:
-  - name: サンプル
-    href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
-  - name: 料金と制限
-    href: limits-and-quotas.md
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/598141-custom-vision-service
-  - name: スタック オーバーフロー
-    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/updates/?product=cognitive-services
-  - name: リージョン別の提供状況
-    href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-  - name: リリース ノート
-    href: release-notes.md
-ms.openlocfilehash: 9a084dbfbbc6d90a56e5986d967375da8a8fbb03
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276076"
+    - name: サンプル
+      href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
+    - name: 制限とクォータ
+      href: limits-and-quotas.md
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598141-custom-vision-service'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: リリース ノート
+      href: release-notes.md

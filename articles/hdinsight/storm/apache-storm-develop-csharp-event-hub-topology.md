@@ -9,34 +9,34 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0eb283eda04d4123e0c05d2c48663a5aca88ebc4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 85d95354d24a3f107fc518b367ab1187da43269d
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249559"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633778"
 ---
-# <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-c"></a>HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (＃C)
+# <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>HDInsight 上の Apache Storm で Azure Event Hubs からのイベントを処理する (C#)
 
-HDInsight の Apache Storm から Azure Event Hubs を使用する方法について説明します。 このドキュメントでは、C# Storm トポロジを使用して Event Hubs からデータの読み取りや書き込みを行います。
+HDInsight 上の [Apache Storm](https://storm.apache.org/) から Azure Event Hubs を使用する方法について説明します。 このドキュメントでは、C# Storm トポロジを使用して Event Hubs からデータの読み取りや書き込みを行います。
 
-> [!NOTE]
-> このプロジェクトの Java バージョンについては、「[HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)」を参照してください。
+> [!NOTE]  
+> このプロジェクトの Java バージョンについては、「[HDInsight で Apache Storm を使用して Azure Event Hubs のイベントを処理する (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)」を参照してください。
 
 ## <a name="scpnet"></a>SCP.NET
 
 このドキュメントの手順では SCP.NET を使用します。SCP.NET は、HDInsight の Storm で使用する C# トポロジとコンポーネントを作成しやすくする NuGet パッケージです。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの手順は Visual Studio を使う Windows 開発環境でのものですが、コンパイル済みのプロジェクトは、Linux を使用する HDInsight クラスターの Storm に送信できます。 SCP.NET トポロジをサポートする Linux ベースのクラスターは、2016 年 10 月 28 日より後に作成されたものだけです。
 
-HDInsight 3.4 以降では、Mono を使用して C# トポロジを実行します。 このドキュメントで使用される例は、HDInsight 3.6 で動作します。 HDInsight の独自の .NET ソリューションを作成する場合は、[Mono の互換性](http://www.mono-project.com/docs/about-mono/compatibility/)に関するドキュメントで、非互換性がないか確認してください。
+HDInsight 3.4 以降では、Mono を使用して C# トポロジを実行します。 このドキュメントで使用される例は、HDInsight 3.6 で動作します。 HDInsight の独自の .NET ソリューションを作成する場合は、[Mono の互換性](https://www.mono-project.com/docs/about-mono/compatibility/)に関するドキュメントで、非互換性がないか確認してください。
 
 ### <a name="cluster-versioning"></a>クラスターのバージョン管理
 
 プロジェクトで使用する Microsoft.SCP.Net.SDK NuGet パッケージは、HDInsight にインストールされた Storm のメジャー バージョンと一致する必要があります。 HDInsight バージョン 3.5 および 3.6 は Storm 1.x を使用するため、これらのクラスターでは SCP.NET バージョン 1.0.x.x を使用する必要があります。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの例では、HDInsight 3.5 クラスターまたは HDInsight 3.6 クラスターが想定されています。
 >
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
@@ -47,15 +47,15 @@ C# トポロジは .NET 4.5 も対象にする必要があります。
 
 Microsoft では、Storm トポロジからの Event Hubs との通信に使用できる Java コンポーネントのセットを提供します。 これらのコンポーネントの中で HDInsight 3.6 に適合するバージョンを含んだ Java アーカイブ (JAR) ファイルは [https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar](https://github.com/hdinsight/mvn-repo/raw/master/org/apache/storm/storm-eventhubs/1.1.0.1/storm-eventhubs-1.1.0.1.jar) に置かれています。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > コンポーネントは Java で記述されていますが、C# トポロジから簡単に使用することができます。
 
 この例では、次のコンポーネントを使用します。
 
-* __EventHubSpout__: イベント ハブからデータを読み取ります。
-* __EventHubBolt__: イベント ハブにデータを書き込みます。
-* __EventHubSpoutConfig__: EventHubSpout の構成に使用します。
-* __EventHubBoltConfig__: EventHubBolt の構成に使用します。
+* __EventHubSpout__:イベント ハブからデータを読み取ります。
+* __EventHubBolt__:イベント ハブにデータを書き込みます。
+* __EventHubSpoutConfig__:EventHubSpout の構成に使用します。
+* __EventHubBoltConfig__:EventHubBolt の構成に使用します。
 
 ### <a name="example-spout-usage"></a>スパウトの使用例
 
@@ -99,7 +99,7 @@ topologyBuilder.SetJavaBolt(
         .shuffleGrouping("Spout");
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > この例では、スパウトの例で行ったように、**EventHubBoltConfig** を作成する **JavaComponentConstructor** を使用する代わりに、文字列として渡される Clojure 式を使用します。 どちらの方法でも動作します。 最適と思われる方法をお使いください。
 
 ## <a name="download-the-completed-project"></a>完成したプロジェクトをダウンロードする
@@ -110,7 +110,7 @@ topologyBuilder.SetJavaBolt(
 
 * [HDInsight クラスター バージョン 3.5 または 3.6 での Apache Storm](apache-storm-tutorial-get-started-linux.md)。
 
-    > [!WARNING]
+    > [!WARNING]  
     > このドキュメントで使用している例では、HDInsight バージョン 3.5 または 3.6 での Storm が必要です。 クラス名の変更があるため、これは旧バージョンの HDInsight では動作しません。 以前のクラスターで動作するこの例のバージョンについては、[GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases) を参照してください。
 
 * [Azure イベント ハブ](../../event-hubs/event-hubs-create.md)。
@@ -225,4 +225,4 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 * [Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](apache-storm-develop-csharp-visual-studio-topology.md)
 * [SCP プログラミング ガイド](apache-storm-scp-programming-guide.md)
-* [HDInsight 上の Storm に関するトポロジ例](apache-storm-example-topology.md)
+* [HDInsight での Apache Storm のトポロジ例](apache-storm-example-topology.md)

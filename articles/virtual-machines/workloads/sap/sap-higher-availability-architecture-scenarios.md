@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 82396d3a2eadd0257bbe65f36a78cf4e7731ec16
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cda0b1c0774ed33bf550e0edf329cc22a2807be3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657555"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009369"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Azure インフラストラクチャの VM 再起動を利用して SAP システムの "高可用性" を実現する
 
@@ -42,7 +42,7 @@ ms.locfileid: "34657555"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -211,7 +211,7 @@ ms.locfileid: "34657555"
 
 > このセクションは次に適用されます。
 >
-> ![Windows][Logo_Windows] Windows および ![Linux][Logo_Linux] Linux
+> ![ Windows][Logo_Windows] Windows および ![Linux][Logo_Linux] Linux
 >
 
 Windows Server フェールオーバー クラスタリング (WSFC) や Linux の Pacemaker などの機能 (現在 SUSE Linux Enterprise Server [SLES] 12 以降でのみサポート) を使用しない場合は、Azure の VM 再起動を利用します。 これにより、Azure 物理サーバー インフラストラクチャと基になる Azure プラットフォーム全体の計画済みおよび計画外のダウンタイムに対して SAP システムを保護します。
@@ -225,13 +225,13 @@ Windows Server フェールオーバー クラスタリング (WSFC) や Linux �
 
 すべての VM を単一の Azure Storage アカウントに配置する代わりに、各 VM に専用の Storage アカウントを使用できます。 複数の独立した Azure Storage アカウントを使用することで、VM と SAP アプリケーションの全体的な可用性を向上させることができます。
 
-Azure 管理ディスクは、それらが接続されている仮想マシンの障害ドメインに自動的に配置されます。 2 つの仮想マシンを可用性セットに配置し、管理ディスクを使用した場合、プラットフォームが異なる障害ドメインへの管理ディスクの分散も処理します。 Premium Storage アカウントを使用する場合は、管理ディスクを使用することを強くお勧めします。
+Azure マネージド ディスクは、それらが接続されている仮想マシンの障害ドメインに自動的に配置されます。 2 つの仮想マシンを可用性セットに配置し、マネージド ディスクを使用した場合、プラットフォームが異なる障害ドメインへのマネージド ディスクの分散も処理します。 Premium Storage アカウントを使用する場合は、マネージド ディスクを使用することを強くお勧めします。
 
 Azure インフラストラクチャの高可用性とストレージ アカウントを使用する SAP NetWeaver システムのアーキテクチャの例を次に示します。
 
 ![Azure インフラストラクチャ高可用性を利用して SAP アプリケーションの高可用性を実現する][planning-guide-figure-2900]
 
-Azure インフラストラクチャの高可用性と管理ディスクを使用する SAP NetWeaver システムのアーキテクチャの例を次に示します。
+Azure インフラストラクチャの高可用性とマネージド ディスクを使用する SAP NetWeaver システムのアーキテクチャの例を次に示します。
 
 ![Azure インフラストラクチャの高可用性を利用して SAP アプリケーションの "高可用性" を実現する][planning-guide-figure-2901]
 
@@ -249,7 +249,7 @@ Azure インフラストラクチャの高可用性と管理ディスクを使�
   
     詳細については、「[SAP アプリケーション サーバーの高可用性][planning-guide-11.4.1]」を参照してください。
 
-    管理ディスクを使用している場合でも、ディスクは Azure Storage アカウントに格納されるため、Storage の停止が発生した場合は使用不可になる可能性があります。
+    マネージド ディスクを使用している場合でも、ディスクは Azure Storage アカウントに格納されるため、Storage の停止が発生した場合は使用不可になる可能性があります。
 
 * SAP ASCS/SCS インスタンスの*可用性の向上*
 
@@ -278,7 +278,7 @@ VM 内に 1 つの SAP アプリケーション サーバー インスタンス�
 
   SAP インスタンスの Autostart の詳細については、次の記事を参照してください。
 
-  * [Start or stop SAP along with your Unix Server Start/Stop](http://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop) (Unix サーバーの開始/停止に伴う SAP の開始/停止)
+  * [Start or stop SAP along with your Unix Server Start/Stop](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop) (Unix サーバーの開始/停止に伴う SAP の開始/停止)
   * [Starting and stopping SAP NetWeaver management agents](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm) (SAP NetWeaver 管理エージェントの開始と停止)
   * [How to enable autostart of the HANA database](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html) (HANA データベースの自動開始を有効にする方法)
 

@@ -8,37 +8,36 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 02/28/2018
+ms.date: 12/11/2018
 ms.author: kadimitr
-ms.openlocfilehash: 159abb533bcc6211b4eca8b2c60f96bf9800db1a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 69cf91f1448e36353f83de7a271abb3b53858bb0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637497"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094077"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions の単体テスト
 
-単体テストは、最新ソフトウェアの開発プラクティスの重要な部分です。 単体テストでは、ビジネス ロジックの動作を確認して、今後、認識していない破壊的変更を組み入れることがないように保護します。 Durable Functions は容易に複雑になってしまうので、単体テストを導入することで、破壊的変更を回避できます。 以降のセクションでは、オーケストレーション クライアント、オーケストレーター、およびアクティビティ関数という 3 つの関数タイプを単体テストする方法について説明します。 
+単体テストは、最新ソフトウェアの開発プラクティスの重要な部分です。 単体テストでは、ビジネス ロジックの動作を確認して、今後、認識していない破壊的変更を組み入れることがないように保護します。 Durable Functions は容易に複雑になってしまうので、単体テストを導入することで、破壊的変更を回避できます。 以降のセクションでは、オーケストレーション クライアント、オーケストレーター、およびアクティビティ関数という 3 つの関数タイプを単体テストする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事の例では、次の概念とフレームワークに関する知識が必要です。 
+この記事の例では、次の概念とフレームワークに関する知識が必要です。
 
 * 単体テスト
 
-* Durable Functions 
+* Durable Functions
 
 * [xUnit](https://xunit.github.io/) - テスト フレームワーク
 
 * [moq](https://github.com/moq/moq4) - モックの作成のフレームワーク
 
-
-## <a name="base-classes-for-mocking"></a>モックの作成の基底クラス 
+## <a name="base-classes-for-mocking"></a>モックの作成の基底クラス
 
 モックの作成は、Durable Functions の以下の 3 つの抽象クラスを介してサポートされます。
 
-* [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html) 
+* [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html)
 
 * [DurableOrchestrationContextBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContextBase.html)
 
@@ -47,7 +46,7 @@ ms.locfileid: "52637497"
 これらのクラスは、オーケストレーション クライアント、オーケストレーター、アクティビティのメソッドを定義する [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html)、[DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html)、[DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) の基底クラスです。 単体テストでビジネス ロジックを検証できるように、モックは、基底クラスのメソッドの予期される動作を設定します。 オーケストレーション クライアントとオーケストレーターにおけるビジネス ロジックの単体テストには、以下の 2 段階のワークフローがあります。
 
 1. オーケストレーション クライアントとオーケストレーターの署名を定義するときに、具体的な実装ではなく、基底クラスを使用します。
-2. 単体テストでは、基底クラスの動作をモックして、ビジネス ロジックを検証します。 
+2. 単体テストでは、基底クラスの動作をモックして、ビジネス ロジックを検証します。
 
 オーケストレーション クライアントのバインディングとオーケストレーター トリガーのバインディングを使用する関数のテストについては、以降の説明で詳細を確認できます。
 
@@ -57,9 +56,9 @@ ms.locfileid: "52637497"
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-単体テスト タスクでは、応答のペイロードで指定された `Retry-After` の値を検証します。 そのため、単体テストでは、予測可能な動作を確認するために、一部の [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html) メソッドをモックします。 
+単体テスト タスクでは、応答のペイロードで指定された `Retry-After` の値を検証します。 そのため、単体テストでは、予測可能な動作を確認するために、一部の [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html) メソッドをモックします。
 
-最初に、基底クラスのモックが必要になります ([DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html))。 モックは、[DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html)を実装する新しいクラスすることが可能です。 ただし、[moq](https://github.com/moq/moq4) などのモック作成のフレームワークを使用すると、プロセスが簡単になります。    
+最初に、基底クラスのモックが必要になります ([DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html))。 モックは、[DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html)を実装する新しいクラスすることが可能です。 ただし、[moq](https://github.com/moq/moq4) などのモック作成のフレームワークを使用すると、プロセスが簡単になります。
 
 ```csharp
     // Mock DurableOrchestrationClientBase
@@ -85,10 +84,10 @@ ms.locfileid: "52637497"
         {
             StatusCode = HttpStatusCode.OK,
             Content = new StringContent(string.Empty),
-            Headers = 
-            { 
+            Headers =
+            {
                 RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromSeconds(10))
-            } 
+            }
         });
 ```
 
@@ -110,10 +109,10 @@ ms.locfileid: "52637497"
             Content = new StringContent("{}", Encoding.UTF8, "application/json"),
             RequestUri = new Uri("http://localhost:7071/orchestrators/E1_HelloSequence"),
         },
-        durableOrchestrationClientBaseMock.Object, 
+        durableOrchestrationClientBaseMock.Object,
         functionName,
         traceWriterMock.Object);
- ``` 
+ ```
 
  最後のステップでは、予期される値と出力を比較します。
 
@@ -125,7 +124,7 @@ ms.locfileid: "52637497"
     Assert.Equal(TimeSpan.FromSeconds(10), result.Headers.RetryAfter.Delta);
 ```
 
-すべてのステップを組み合わせると、単体テストは次のようなコードになります。 
+すべてのステップを組み合わせると、単体テストは次のようなコードになります。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HttpStartTests.cs)]
 
@@ -172,7 +171,7 @@ ms.locfileid: "52637497"
 
 ## <a name="unit-testing-activity-functions"></a>アクティビティ関数の単体テスト
 
-アクティビティ関数は、持続性のない関数と同様に単体テストを行うことができます。 
+アクティビティ関数は、持続性のない関数と同様に単体テストを行うことができます。
 
 このセクションでは、単体テストで次のように `E1_SayHello` アクティビティ関数の動作を検証します。
 
@@ -185,6 +184,6 @@ ms.locfileid: "52637497"
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [xUnit の詳細を確認する](http://xunit.github.io/docs/getting-started-dotnet-core)
-
+> [xUnit の詳細を確認する](https://xunit.github.io/docs/getting-started-dotnet-core)
+> 
 > [moq の詳細を確認する](https://github.com/Moq/moq4/wiki/Quickstart)

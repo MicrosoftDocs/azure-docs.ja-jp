@@ -1,26 +1,26 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 6297e92b9e20d42a914795e8ebcb77bb19d1eb4b
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 8385fe5ecb9a6e17d872795ba4eff5c038e4df47
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829887"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199871"
 documentType: LandingData
 title: Azure Search のドキュメント
 metadata:
   document_id: 
   title: Azure Search のドキュメント - チュートリアル、クイックスタート、API リファレンス
-  meta.description: Learn how to create an enterprise search solution over private, heterogenous content using Azure Search. Tutorials, API references, and other docs show you how to consolidate searchable content into a single fast index, queryable using simple-to-advanced syntax for a broad range of scenarios.
+  description: Azure Search を使用してプライベートの異種コンテンツに対するエンタープライズ検索ソリューションを作成する方法を説明します。 チュートリアル、API リファレンスなどのドキュメントでは、検索可能なコンテンツを単一の高速インデックスに統合する方法を紹介します。インデックスは簡単な構文から高度な構文まで使用してクエリすることができ、幅広いシナリオに対応します。
   services: search
   author: HeidiSteen
   manager: cgronlun
   ms.service: search
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/01/2018
+  ms.date: 01/18/2019
   ms.author: heidist
 abstract:
-  description: Azure Search を使用してプライベートの異種コンテンツに対するエンタープライズ検索ソリューションを作成する方法を説明します。 チュートリアル、API リファレンスなどのドキュメントでは、検索可能なコンテンツを単一の高速インデックスに統合する方法を紹介します。インデックスは簡単な構文から高度な構文まで使用してクエリすることができ、幅広いシナリオに対応します。 <p/><b>新しいコグニティブ検索のプレビュー。</b> プレリリース版の REST API を使用して、AI を使用したアルゴリズムをインデックス パイプラインにバインドします。 データを抽出し、自然言語と画像処理を呼び出して、生の非構造化コンテンツを Azure Search インデックスで検索可能なコンテンツに変換します。 <p/><a href="/azure/search/cognitive-search-quickstart-blob">リソースやサンプル データ</a>を使ってコグニティブ検索を調べるか、<a href="/azure/search/cognitive-search-concept-intro">概念</a>をさらに詳しくご確認ください。
+  description: Azure Search を使用してプライベートの異種コンテンツに対するエンタープライズ検索ソリューションを作成する方法を説明します。 チュートリアル、API リファレンスなどのドキュメントでは、検索可能なコンテンツを単一の高速インデックスに統合する方法を紹介します。インデックスは簡単な構文から高度な構文まで使用してクエリすることができ、幅広いシナリオに対応します。 <p/><a href="/azure/search/cognitive-search-concept-intro"><b>新しいコグニティブ検索のプレビュー。</b></a> プレリリース版の REST API を使用して、AI を使用したアルゴリズムをインデックス パイプラインにバインドします。 データを抽出し、自然言語と画像処理を呼び出して、生の非構造化コンテンツを Azure Search インデックスで検索可能なコンテンツに変換します。 <p/><a href="/azure/search/cognitive-search-quickstart-blob">リソースやサンプル データ</a>を使ってコグニティブ検索を調べるか、<a href="/azure/search/cognitive-search-concept-intro">概念</a>をさらに詳しくご確認ください。
   aside:
     image:
       alt: 
@@ -48,7 +48,7 @@ sections:
       href: https://docs.microsoft.com/azure/search/search-create-index-dotnet
     - image:
         src: /azure/search/media/index/rest.svg
-      text: REST ()
+      text: REST
       href: https://docs.microsoft.com/azure/search/search-fiddler
 - title: ステップバイステップのチュートリアル
   items:
@@ -57,12 +57,10 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/search/cognitive-search-tutorial-blob">認知技術 REST API を学習する</a>
+    - html: <a href="/azure/search/cognitive-search-tutorial-blob">AI を使ったインデックス作成 (Cognitive Services)</a>
     - html: <a href="/azure/search/search-howto-dotnet-sdk">.NET で Azure Search を使用する方法</a>
     - html: <a href="/azure/search/search-indexer-tutorial">.NET を使用して Azure SQL Database のコンテンツにインデックスを作成する</a>
     - html: <a href="/azure/search/search-semi-structured-data">REST を使用して Azure Blob Storage の半構造化データにインデックスを作成する</a>
-    - html: <a href="/azure/search/search-synonyms-tutorial-sdk">シノニムを追加して同等の語句に関する結果を返す</a>
-    - html: <a href="/azure/search/search-autocomplete-tutorial">.NET で検索ボックスにオートコンプリートを追加する</a>
     - html: <a href="/azure/search/search-get-started-portal">インデックスの作成とクエリのテストにポータルを使用する</a>
 - title: リファレンス
   items:
@@ -72,5 +70,5 @@ sections:
     items:
     - title: 言語
       html: <p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET (管理)</a></p><p><a href="https://docs.microsoft.com/python/api/?view=azure-python&term=search">Python (管理)</a></p>
-    - title: REST ()
+    - title: REST
       html: <p><a href="/rest/api/searchservice">Service API リファレンス</a></p><p><a href="/rest/api/searchmanagement">Management API リファレンス</a></p>

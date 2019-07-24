@@ -15,23 +15,23 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: 584fca3df4fee24a4f1c7b93d5371c48be059f7b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a6d8326afa3bcf13234ab072a2cd2909a864738b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257937"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002854"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>PowerShell を使用した Azure VM での AlwaysOn 可用性グループの構成
 > [!div class="op_single_selector"]
-> * [クラシック: UI](../classic/portal-sql-alwayson-availability-groups.md)
-> * [クラシック: PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
+> * [クラシック:UI](../classic/portal-sql-alwayson-availability-groups.md)
+> * [クラシック:PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
 開始する前に、Azure Resource Manager モデルでこのタスクを完了できるかを検討してください。 新たにデプロイする場合、Azure Resource Manager モデルを使用することをお勧めします。 [Azure Virtual Machines での SQL Server AlwaysOn 可用性グループ](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md)に関するページをご覧ください。
 
 > [!IMPORTANT]
-> ほとんどの新しいデプロイでは、Resource Manager モデルを使用することをお勧めします。 Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。
+> ほとんどの新しいデプロイでは、Resource Manager モデルを使用することをお勧めします。 Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。
 
 Azure 仮想マシン (VM) を使用すると、データベース管理者は高可用性の SQL Server システムに要するコストを下げることができます。 このチュートリアルでは、Azure 環境内で SQL Server AlwaysOn をエンド ツー エンドで使用して、可用性グループを実装する方法について説明します。 チュートリアルの最後には、次の要素で構成された SQL Server AlwaysOn ソリューションが Azure で完成します。
 
@@ -103,7 +103,7 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
 
     この構成ファイルの内容は、以下の XML ドキュメントになっています。 簡単に説明すると、**ContosoAG** と呼ばれるアフィニティ グループ内の **ContosoNET** と呼ばれる仮想ネットワークを指定します。 これにはアドレス空間 **10.10.0.0/16** と、**10.10.1.0/24** および **10.10.2.0/24** という 2 つのサブネットが含まれています。これらは、それぞれフロント サブネットとバック サブネットです。 フロント サブネットには、Microsoft SharePoint などのクライアント アプリケーションを配置できます。 バック サブネットには、SQL Server VM を配置します。 **$affinityGroupName** 変数と **$virtualNetworkName** 変数を前の手順で変更した場合は、以下でも対応する名前を変更する必要があります。
 
-        <NetworkConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+        <NetworkConfiguration xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
           <VirtualNetworkConfiguration>
             <Dns />
             <VirtualNetworkSites>
@@ -380,15 +380,15 @@ Azure 仮想マシン (VM) を使用すると、データベース管理者は�
 ## <a name="initialize-the-failover-cluster-vms"></a>フェールオーバー クラスター VM の初期化
 このセクションでは、フェールオーバー クラスターと SQL Server のインストールで使用する 3 台のサーバーを変更する必要があります。 具体的には次の処理が行われます。
 
-* すべてのサーバー: **フェールオーバー クラスタリング**機能をインストールする必要があります。
-* すべてのサーバー: コンピューターの**管理者**として **CORP\Install** を追加する必要があります。
-* ContosoSQL1 と ContosoSQL2 のみ: 既定のデータベースの **sysadmin** ロールとして **CORP\Install** を追加する必要があります。
-* ContosoSQL1 と ContosoSQL2 のみ: 次の権限を持つサインインとして **NT AUTHORITY\System** を追加する必要があります。
+* すべてのサーバー:**フェールオーバー クラスタリング** 機能をインストールする必要があります。
+* すべてのサーバー:コンピューターの **管理者** として **CORP\Install** を追加する必要があります。
+* ContosoSQL1 と ContosoSQL2 のみ:既定のデータベースの **sysadmin** ロールとして **CORP\Install** を追加する必要があります。
+* ContosoSQL1 と ContosoSQL2 のみ:次の権限を持つサインインとして **NT AUTHORITY\System** を追加する必要があります。
 
   * 可用性グループの変更
   * SQL の接続
   * サーバー状態の表示
-* ContosoSQL1 と ContosoSQL2 のみ: SQL Server VM では、 **TCP** プロトコルが既に有効になっています。 ただし、SQL Server にリモート アクセスするためには、ファイアウォールを解放する必要があります。
+* ContosoSQL1 と ContosoSQL2 のみ:SQL Server VM では、 **TCP** プロトコルが既に有効になっています。 ただし、SQL Server にリモート アクセスするためには、ファイアウォールを解放する必要があります。
 
 これで開始する準備ができました。 まず **ContosoQuorum**で、次の手順に従ってください。
 

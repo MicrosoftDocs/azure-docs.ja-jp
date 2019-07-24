@@ -1,30 +1,30 @@
 ---
-title: Azure Active Directory でグループを管理するための PowerShell の例 | Microsoft Docs
+title: グループを管理するための PowerShell の例 - Azure Active Directory | Microsoft Docs
 description: このページでは、Azure Active Directory でグループを管理するための PowerShell の例を示します。
 keywords: Azure AD、Azure Active Directory、PowerShell、グループ、グループ管理
 services: active-directory
-documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: d6fb5a97ef573a35f335875beddc7752f580bec1
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7287616dbad1aa77a6e4aaa110ade39dcea4f195
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296644"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082621"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>グループ管理用の Azure Active Directory バージョン 2 のコマンドレット
+
 > [!div class="op_single_selector"]
-> * [Azure Portal](../fundamentals/active-directory-groups-create-azure-portal.md)
+> * [Azure Portal](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 > * [PowerShell](groups-settings-v2-cmdlets.md)
 >
 >
@@ -218,15 +218,15 @@ Azure AD PowerShell コマンドレットを使用してグループの管理を
 
 1. 管理者以外のユーザーにグループの作成が許可されていることを確認します。
    
-  ````
-  PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
-  ````
+   ```
+   PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
+   ```
   
 2. `UsersPermissionToCreateGroupsEnabled : True` が返された場合は、管理者以外のユーザーはグループを作成できます。 この機能を無効にするには、次のコマンドを実行します。
   
-  ```` 
-  Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
-  ````
+   ``` 
+   Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
+   ```
   
 ## <a name="manage-owners-of-groups"></a>グループの所有者を管理する
 グループに所有者を追加するには、Add-AzureADGroupOwner コマンドレットを使用します。
@@ -250,7 +250,7 @@ Azure AD PowerShell コマンドレットを使用してグループの管理を
     PS C:\Windows\system32> remove-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -OwnerId e831b3fd-77c9-49c7-9fca-de43e109ef67
 
 ## <a name="reserved-aliases"></a>予約済みのエイリアス 
-グループを作成すると、特定のエンドポイントで、グループの電子メール アドレスの一部として使用する mailNickname またはエイリアスをエンド ユーザーが指定できるようになります。 次のような高い権限を持つ電子メール エイリアスを使用するグループを作成できるのは、Azure AD グローバル管理者だけです。 
+グループを作成すると、特定のエンドポイントで、グループの電子メール アドレスの一部として使用する mailNickname またはエイリアスをエンド ユーザーが指定できるようになります。 次のような高い権限を持つ電子メール エイリアスを使用するグループを作成できるのは、Azure AD グローバル管理者だけです。 
   
 * abuse 
 * admin 
@@ -267,5 +267,5 @@ Azure AD PowerShell コマンドレットを使用してグループの管理を
 ## <a name="next-steps"></a>次の手順
 Azure Active Directory PowerShell のその他のドキュメントについては、 [Azure Active Directory コマンドレット](/powershell/azure/install-adv2?view=azureadps-2.0)を参照してください。
 
-* [Azure Active Directory グループによるリソースへのアクセス管理](../fundamentals/active-directory-manage-groups.md)
-* [オンプレミス ID と Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md)
+* [Azure Active Directory グループによるリソースへのアクセス管理](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+* [オンプレミス ID と Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

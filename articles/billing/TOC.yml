@@ -5,31 +5,47 @@ items:
   items:
   - name: 課金内容を確認する
     href: billing-understand-your-bill.md
-  - name: 課金内容を確認する - EA のみ
+  - name: EA 課金内容を確認する
     href: billing-understand-your-bill-ea.md
-  - name: 請求書および使用状況データを取得する
-    href: billing-download-azure-invoice-daily-usage-date.md
+  - name: 課金内容を確認する - Microsoft 顧客契約のみ
+    href: billing-mca-understand-your-bill.md
+  - name: Microsoft Azure の請求書の表示とダウンロード
+    href: billing-download-azure-invoice.md
+  - name: Microsoft Azure の使用量と料金の表示とダウンロード
+    href: billing-download-azure-daily-usage.md
+  - name: Microsoft 顧客契約に関する税務書類の表示とダウンロード
+    href: billing-mca-download-tax-document.md
   - name: サードパーティのサービス料金
     href: billing-understand-your-azure-marketplace-charges.md
   - name: 使用条件の説明
     href: billing-understand-your-usage.md
+  - name: 使用条件の説明 - Microsoft 顧客契約のみ
+    href: billing-mca-understand-your-usage.md
   - name: 請求条件の説明
     href: billing-understand-your-invoice.md
+  - name: 請求条件の説明 - Microsoft 顧客契約のみ
+    href: billing-mca-understand-your-invoice.md
+  - name: Microsoft 顧客契約の請求先アカウント
+    href: billing-mca-overview.md
   expanded: true
 - name: コストを管理する
   items:
   - name: 予想外のコストを防ぐ
     href: billing-getting-started.md
-  - name: EA の価格の表示
+  - name: 組織の価格の表示とダウンロード
     href: billing-ea-pricing.md
+  - name: 価格表の条件の説明 - Microsoft 顧客契約のみ
+    href: billing-mca-understand-pricesheet.md
   - name: リソース タグの利用
     href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
-  - name: コストの分析を開始する - EA のみ
+  - name: コストの分析を開始する
     href: ../cost-management/quick-acm-cost-analysis.md?toc=/azure/billing/TOC.json
-  - name: 予算を作成して管理する - EA のみ
+  - name: 予算を作成して管理する
     href: ../cost-management/tutorial-acm-create-budgets.md?toc=/azure/billing/TOC.json
-  - name: 推奨事項を最適化する - EA のみ
+  - name: 推奨事項を最適化する
     href: ../cost-management/tutorial-acm-opt-recommendations.md?toc=/azure/billing/TOC.json
+  - name: Microsoft 顧客契約のクレジットの追跡
+    href: billing-mca-check-azure-credits-balance.md
   - name: 料金の計算
     href: https://azure.microsoft.com/pricing/calculator/
   - name: 使用制限を理解する
@@ -40,22 +56,24 @@ items:
       href: billing-save-compute-costs-reservations.md
     - name: 予約の購入
       items:
+      - name: 仮想マシン
+        href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
       - name: Cosmos DB
         href: ../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json
+      - name: RedHat Linux ソフトウェア
+        href: ../virtual-machines/linux/prepay-rhel-software-charges.md?toc=/azure/billing/TOC.json
       - name: SQL Database
         href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
       - name: SUSE Linux ソフトウェア
         href: ../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
-      - name: 仮想マシン
-        href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
     - name: 割り引きの適用方法
       items:
       - name: 予約 VM インスタンス
         href: billing-understand-vm-reservation-charges.md
-      - name: SQL Database の予約容量
-        href: billing-understand-reservation-charges.md
       - name: Cosmos DB の予約容量
         href: billing-understand-cosmosdb-reservation-charges.md
+      - name: SQL Database の予約容量
+        href: billing-understand-reservation-charges.md
       - name: SUSE Linux ソフトウェア プラン
         href: billing-understand-suse-reservation-charges.md
     - name: 含まれないソフトウェアのコスト
@@ -64,10 +82,14 @@ items:
       href: billing-understand-reserved-instance-usage.md
     - name: エンタープライズの場合の使用量
       href: billing-understand-reserved-instance-usage-ea.md
+    - name: 予約の交換と返金
+      href: billing-azure-reservations-self-service-exchange-and-refund.md
     - name: 予約の管理
       href: billing-manage-reserved-vm-instance.md
     - name: 予約の表示
       href: billing-view-reservations.md
+    - name: 予約 API
+      href: billing-reservation-apis.md
 - name: アカウントを管理する
   items:
   - name: 無料アカウント
@@ -88,12 +110,20 @@ items:
     href: billing-manage-access.md
   - name: Azure における EA のロール
     href: billing-understand-ea-roles.md
+  - name: Azure における Microsoft 顧客契約の役割
+    href: billing-understand-mca-roles.md
   - name: パートナー ID をリンクする
     href: billing-partner-admin-link-started.md
   - name: 請求先アカウントを表示する
     href: billing-view-all-accounts.md
+  - name: 請求書セクションによるコストの整理
+    href: billing-mca-section-invoice.md
+  - name: Microsoft 顧客契約における EA タスク
+    href: billing-mca-enterprise-operations.md
   - name: 過去の延滞残高を決済する
     href: billing-azure-subscription-past-due-balance.md
+  - name: Microsoft 顧客契約の請求先アカウントの設定
+    href: billing-mca-setup-account.md
   - name: Office 365 アカウントでサインアップする
     href: billing-use-existing-office-365-account-azure-subscription.md
   - name: Azure アカウントで Office 365 にサインアップする
@@ -104,6 +134,8 @@ items:
     href: billing-subscription-become-disable.md
   - name: 所有権の移転
     href: billing-subscription-transfer.md
+  - name: 所有権の要求 - Microsoft 顧客契約
+    href: billing-mca-request-billing-ownership.md
   - name: サブスクリプションを取り消す
     href: billing-how-to-cancel-azure-subscription.md
   - name: クレジット カードの変更
@@ -120,6 +152,8 @@ items:
     href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
   - name: 追加のサブスクリプションの作成
     href: billing-create-subscription.md
+  - name: 追加のサブスクリプションの作成 - Microsoft 顧客契約
+    href: billing-mca-create-subscription.md
   - name: プログラムによる Enterprise サブスクリプションの作成
     href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
   - name: サブスクリプション情報のエクスポート
@@ -172,8 +206,6 @@ items:
     items:
     - name: Azure Billing REST API
       href: https://docs.microsoft.com/rest/api/billing
-    - name: パートナー ソリューション – Cloud Cruiser
-      href: billing-usage-rate-card-partner-solution-cloudcruiser.md
   - name: Azure Consumption API の概要
     href: billing-consumption-api-overview.md
     items:
@@ -188,9 +220,9 @@ items:
     items:
     - name: Enterprise Reporting REST API
       href: https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary
-ms.openlocfilehash: 5de05f7b1426a959c046b1e651f09c2f8e584b8a
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: aa60036ccc8f24bc8a847db8873102c348b1fba9
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497830"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652367"

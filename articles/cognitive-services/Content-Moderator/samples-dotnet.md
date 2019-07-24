@@ -1,22 +1,22 @@
 ---
 title: コード サンプル - Content Moderator (.NET)
-description: アプリケーションで Content Moderator を使用する
+description: .NET アプリケーションから SDK を通じて Content Moderator を使用します。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: sample
-ms.date: 01/10/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: c5465a2de0924037eb93b9de652e93e85f166737
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f2b5fb5c44cbb2e0d766c49ed6b715484c22f62e
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223153"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756737"
 ---
-# <a name="net-sdk-samples"></a>.NET SDK のサンプル
+# <a name="content-moderator-net-sdk-samples"></a>Content Moderator .NET SDK サンプル
 
 次のリストは、Azure Content Moderator for .NET を使用してビルドされたコード サンプルへのリンクです。
 
@@ -31,11 +31,11 @@ ms.locfileid: "47223153"
 > **画像リスト数は 5 個**、各リストの**画像数は 10,000 個**という上限があります。
 >
 
-- **テキストのモデレート**: [不適切な表現と個人を特定できる情報 (PII) のテキストを検査します](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/TextModeration/Program.cs)。 [クイック スタート](text-moderation-quickstart-dotnet.md)のページを参照してください。
+- **テキストのモデレート**: [不適切な表現と個人データを検査します](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/TextModeration/Program.cs)。 [クイック スタート](text-moderation-quickstart-dotnet.md)のページを参照してください。
 - **カスタム用語**: [カスタム用語のリストを使用してモデレートします](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/TermListManagement/Program.cs)。 [クイック スタート](term-lists-quickstart-dotnet.md)のページを参照してください。
 
 > [!NOTE]
-> 上限は**用語のリストが 5 つ**で、各リストでは**用語が 10,000 個を超えてはいけません**。
+> 上限は**用語の一覧が 5 つ**で、各一覧では**用語が 10,000 個を超えてはいけません**。
 >
 
 - **ビデオのモデレート**: [成人向けのきわどいコンテンツのビデオをスキャンし、結果を取得します](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/VideoModeration/Program.cs)。 [クイック スタート](video-moderation-api.md)のページを参照してください。

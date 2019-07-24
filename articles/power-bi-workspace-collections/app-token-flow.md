@@ -1,21 +1,19 @@
 ---
 title: Power BI ワークスペース コレクションでの認証と承認 | Microsoft Docs
 description: Power BI ワークスペース コレクションでの認証と承認について説明します。
-services: power-bi-embedded
+services: power-bi-workspace-collections
 author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: 1c1369ea-7dfd-4b6e-978b-8f78908fd6f6
-ms.service: power-bi-embedded
+ms.author: maghan
+ms.service: power-bi-workspace-collections
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: maghan
-ms.openlocfilehash: a51664144d0dba8eeb82999b212beaf79b4503b2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5d7b5f2655fc94b9a060c30e11be66bd2eacdee8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236932"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520617"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでの認証と承認
 
@@ -84,7 +82,7 @@ Body
 
 ```
 
-SDK には、アプリケーション トークンの作成を容易にするメソッドが用意されています。 たとえば、.NET では、[Microsoft.PowerBI.Security.PowerBIToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken) クラスと [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) メソッドを使用できます。
+SDK には、アプリケーション トークンの作成を容易にするメソッドが用意されています。 たとえば、.NET では、[Microsoft.PowerBI.Security.PowerBIToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken) クラスと [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) メソッドを使用できます。
 
 .NET SDK については、[Scopes](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.scopes) に関するページを参照してください。
 
@@ -106,7 +104,7 @@ Power BI ワークスペース コレクションで使用可能なスコープ�
 
 次のようにスコープ間をスペースで区切ると、複数のスコープを指定できます。
 
-```
+```csharp
 string scopes = "Dataset.Read Workspace.Report.Create";
 ```
 
@@ -176,10 +174,10 @@ Body
 
 ## <a name="see-also"></a>関連項目
 
-[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_)  
+[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)  
 [Microsoft Power BI ワークスペース コレクションのサンプルの使用](get-started-sample.md)  
 [Microsoft Power BI ワークスペース コレクションの一般的なシナリオ](scenarios.md)  
 [Microsoft Power BI ワークスペース コレクションの概要](get-started.md)  
 [PowerBI-CSharp Git リポジトリ](https://github.com/Microsoft/PowerBI-CSharp)
 
-ご質問は、 [Power BI コミュニティ](http://community.powerbi.com/)で尋ねてみてください。
+ご質問は、 [Power BI コミュニティ](https://community.powerbi.com/)で尋ねてみてください。

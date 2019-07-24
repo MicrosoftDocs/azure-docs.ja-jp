@@ -1,6 +1,6 @@
 ---
-title: Azure Deployment Manager の概要 | Microsoft Docs
-description: Azure Deployment Manager で多くのリージョンにわたってサービスをデプロイする方法について説明します
+title: リージョン全体で安全なデプロイを実施する - Azure Deployment Manager
+description: Azure Deployment Manager で多くのリージョンにわたってサービスをデプロイする方法について説明します すべてのリージョンにロール アウトする前に、デプロイの安定性を確認する安全なデプロイの実施方法について説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -9,14 +9,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2018
+ms.date: 12/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: eea981800147f24025e01826f7550a95041c107f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.custom: seodec18
+ms.openlocfilehash: a615ab26e4ea046ced70ce2c154a0c304b741986
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427303"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138349"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-private-preview"></a>Azure Deployment Manager で安全なデプロイを実施できるようにする (プライベート プレビュー)
 
@@ -339,4 +340,4 @@ ID オブジェクトは、デプロイ アクションを実行する[ユーザ
 この記事では、Deployment Manager について学習しました。 Deployment Manager でデプロイする方法については、次の記事に進んでください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: Resource Manager テンプレートで Azure Deployment Manager を使用する](./deployment-manager-tutorial.md)
+> [チュートリアル:Resource Manager テンプレートで Azure Deployment Manager を使用する](./deployment-manager-tutorial.md)

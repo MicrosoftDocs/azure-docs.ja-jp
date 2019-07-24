@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と IriusRisk の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と IriusRisk の統合 | Microsoft Docs
 description: Azure Active Directory と IriusRisk の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d2c854d5-101d-4d67-80e0-87749e1a0352
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: jeedes
-ms.openlocfilehash: b7e026d9a27edeec3c48bbc9360992f80099230d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2c862628fb05e7518166d8e782c2e64538de785e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437425"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652401"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-iriusrisk"></a>チュートリアル: Azure Active Directory と IriusRisk の統合
+# <a name="tutorial-azure-active-directory-integration-with-iriusrisk"></a>チュートリアル:Azure Active Directory と IriusRisk の統合
 
 このチュートリアルでは、IriusRisk と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +89,7 @@ IriusRisk で Azure AD のシングル サインオンを構成してテスト�
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[IriusRisk のテスト ユーザーの作成](#create-a-iriusrisk-test-user)** - IriusRisk で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[IriusRisk のテスト ユーザーの作成](#create-an-iriusrisk-test-user)** - IriusRisk で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
@@ -128,7 +129,7 @@ IriusRisk で Azure AD のシングル サインオンを構成してテスト�
 1. **IriusRisk** 側のシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [IriusRisk サポート チーム](mailto:info@continuumsecurity.net)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -163,12 +164,12 @@ IriusRisk で Azure AD のシングル サインオンを構成してテスト�
 
     d. **Create** をクリックしてください。
  
-### <a name="create-a-iriusrisk-test-user"></a>IriusRisk のテスト ユーザーの作成
+### <a name="create-an-iriusrisk-test-user"></a>IriusRisk のテスト ユーザーの作成
 
 このセクションの目的は、IriusRisk で Britta Simon というユーザーを作成することです。 IriusRisk では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない IriusRisk ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
 
 > [!Note]
-> ユーザーを手動で作成する必要がある場合は、[IriusRisk サポート チーム](mailto:info@continuumsecurity.net)にお問い合わせください。
+> ユーザーを手動で作成する必要がある場合は、 [IriusRisk のサポート チーム](mailto:info@continuumsecurity.net)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -205,7 +206,7 @@ IriusRisk で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [IriusRisk] タイルをクリックすると、自動的に IriusRisk アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

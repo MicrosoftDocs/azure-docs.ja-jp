@@ -1,227 +1,196 @@
-items:
 - name: Security Center のドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: Security Center について
-    href: security-center-intro.md
-  - name: Security Center でサポートされているプラットフォームと機能
-    href: security-center-os-coverage.md
+    - name: Security Center について
+      href: security-center-intro.md
+    - name: Security Center でサポートされているプラットフォームと機能
+      href: security-center-os-coverage.md
 - name: クイック スタート
-  items:
-  - name: Azure サブスクリプション
-    href: security-center-get-started.md
-  - name: Windows コンピューター
-    href: quick-onboard-windows-computer.md
-  - name: Linux コンピューター
-    href: quick-onboard-linux-computer.md
-  - name: セキュリティ ソリューション
-    href: quick-security-solutions.md
   expanded: true
+  items:
+    - name: Azure サブスクリプション
+      href: security-center-get-started.md
+    - name: Windows コンピューター
+      href: quick-onboard-windows-computer.md
+    - name: Linux コンピューター
+      href: quick-onboard-linux-computer.md
+    - name: Azure Stack の仮想マシン
+      href: quick-onboard-azure-stack.md
 - name: チュートリアル
   items:
-  - name: リソースの保護
-    href: tutorial-protect-resources.md
-  - name: インシデントへの対応
-    href: tutorial-security-incident.md
+    - name: リソースの保護
+      href: tutorial-protect-resources.md
+    - name: インシデントへの対応
+      href: tutorial-security-incident.md
+    - name: 規制に対するコンプライアンスの向上
+      href: security-center-compliance-dashboard.md
 - name: 概念
   items:
-  - name: アクセス許可
-    href: security-center-permissions.md
-  - name: データのセキュリティ
-    href: security-center-data-security.md
-- name: ハウツー ガイド
-  items:
-  - name: セキュリティ スコアを向上させる
-    href: security-center-secure-score.md
-  - name: 高度なセキュリティへのアップグレード
-    href: security-center-onboarding.md
-  - name: Windows Defender ATP でのサーバーの保護
-    href: security-center-wdatp.md
-  - name: App Service の保護
-    href: security-center-app-services.md
-  - name: セキュリティ ポリシーの表示
-    href: security-center-azure-policy.md
-  - name: セキュリティ ポリシーの編集
-    href: tutorial-security-policy.md
-  - name: 情報の保護ポリシーをカスタマイズする
-    href: security-center-info-protection-policy.md
-  - name: Security Center の設定
-    href: security-center-policies-overview.md
-    items:
-    - name: データ収集
-      href: security-center-enable-data-collection.md
-    - name: 組み込みのセキュリティ ポリシー
-      href: security-center-policy-definitions.md
-    - name: 電子メール通知
-      href: security-center-provide-security-contact-details.md
-    - name: '[価格レベル] '
-      href: security-center-pricing.md
-    - name: セキュリティ構成
-      href: security-center-customize-os-security-config.md
-    - name: テナント全体の可視性
-      href: security-center-management-groups.md
-  - name: セキュリティの推奨事項を実装する
-    href: security-center-recommendations.md
-    items:
-    - name: セキュリティ体制の強化
-      href: security-center-monitoring.md
-    - name: マシンとアプリの保護
-      href: security-center-virtual-machine-protection.md
-      items:
-      - name: ディスク暗号化の適用
-        href: security-center-apply-disk-encryption.md
-      - name: システムの更新の適用
-        href: security-center-apply-system-updates.md
-      - name: ストレージ アカウントの暗号化の有効化
-        href: security-center-enable-encryption-for-storage-account.md
-      - name: VM エージェントの有効化
-        href: security-center-enable-vm-agent.md
-      - name: Endpoint Protection をインストールします
-        href: security-center-install-endpoint-protection.md
-      - name: システムの更新後に再起動する
-        href: security-center-apply-system-updates.md#reboot-after-system-updates
-      - name: セキュリティ構成の修復
-        href: security-center-remediate-os-vulnerabilities.md
-      - name: OS バージョンの更新
-        href: security-center-update-os-version.md
-      - name: 脆弱性評価がインストールされていない
-        href: security-center-vulnerability-assessment-recommendations.md
-      - name: Web アプリケーション ファイアウォールの追加
-        href: security-center-add-web-application-firewall.md
-      - name: アプリケーション保護を完了する
-        href: security-center-add-web-application-firewall.md#finalize-application-protection
-    - name: ネットワーク リソースの保護
-      href: security-center-network-recommendations.md
-      items:
-      - name: 次世代ファイアウォールを追加する
-        href: security-center-add-next-generation-firewall.md
-      - name: Enable Network Security Groups
-        href: security-center-enable-network-security-groups.md
-      - name: インターネット接続エンドポイント経由のアクセスを制限する
-        href: security-center-restrict-access-through-internet-facing-endpoints.md
-      - name: NGFW 経由に限定したトラフィックのルーティング
-        href: security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only
-    - name: SQL サービスとデータの保護
-      href: security-center-sql-service-recommendations.md
-      items:
-      - name: SQL データベースの監査と脅威検出を有効にする
-        href: security-center-enable-auditing-on-sql-databases.md
-      - name: SQL サーバーの監査と脅威検出を有効にする
-        href: security-center-enable-auditing-on-sql-servers.md
-      - name: Transparent Data Encryption の有効化
-        href: security-center-enable-transparent-data-encryption.md
-    - name: ID とアクセスを監視する
-      href: security-center-identity-access.md
-  - name: クラウドの防御の適用
-    items:
-    - name: ジャスト イン タイム アクセスの管理
-      href: security-center-just-in-time.md
-    - name: アダプティブ アプリケーション制御
-      href: security-center-adaptive-application.md
-    - name: ファイルの整合性の監視
-      href: security-center-file-integrity-monitoring.md
-  - name: セキュリティ ソリューションの管理
-    href: security-center-partner-integration.md
-    items:
-    - name: 接続済みソリューション
-      href: security-center-partner-solutions.md
-    - name: 検出されたソリューション
-      href: security-center-partner-integration.md#discovered-solutions
-    - name: 外部ソリューションの接続
-      href: quick-security-solutions.md
-    - name: Application Gateway の接続
-      href: security-center-connect-application-gateway.md
-    - name: Microsoft ATA の接続
-      href: security-center-ata-integration.md
-    - name: Azure AD Identity Protection の接続
-      href: security-center-aadip-integration.md
-    - name: SIEM へのデータ エクスポート
-      href: security-center-export-data-to-siem.md
-  - name: 脅威の調査
-    href: security-center-detection-capabilities.md
-    items:
-    - name: セキュリティのアラート
-      href: security-center-managing-and-responding-alerts.md
-    - name: セキュリティ インシデント
-      href: security-center-incident.md
-    - name: 脅威レポート
-      href: security-center-threat-report.md
-    - name: アラートの種類
-      href: security-center-alerts-type.md
-    - name: カスタム アラート
-      href: security-center-custom-alert.md
-    - name: アラートの検証
-      href: security-center-alert-validation.md
-    - name: アラート信頼度スコア
-      href: security-center-confidence-score.md
-    - name: セキュリティ アラート マップと脅威インテリジェンス
-      href: security-center-threat-intel.md
-    - name: 調査
-      href: security-center-investigation.md
-    - name: 調査で得られたユーザー データの管理
-      href: security-center-investigation-user-data.md
-    - name: Azure リソースおよびユーザーに対する UEBA
-      href: security-center-ueba-mcas.md
-  - name: セキュリティ ワークフローの自動化
-    items:
-    - name: Logic Apps のプレイブック
-      href: security-center-playbooks.md
-    - name: イベントの表示
-      href: security-center-events-dashboard.md
-    - name: Search
-      href: security-center-search.md
-    - name: コンプライアンスのレビュー (REST)
-      href: security-center-review-policy-compliance.md
-    - name: サブスクリプションの評価 (REST)
-      href: security-center-compliance-rest-api.md
-    - name: PowerShell を使用したオンボードの自動化
-      href: security-center-powershell-onboarding.md
-  - name: シナリオ
-    items:
-    - name: インシデント対応
-      href: security-center-incident-response.md
+    - name: アクセス許可
+      href: security-center-permissions.md
+    - name: データのセキュリティ
+      href: security-center-data-security.md
     - name: 推奨事項を使用してセキュリティを強化する
       href: security-center-using-recommendations.md
-  - name: トラブルシューティング
-    href: security-center-troubleshooting-guide.md
+    - name: インシデント対応
+      href: security-center-incident-response.md
+- name: ハウツー ガイド
+  items:
+    - name: セキュリティ スコアを向上させる
+      href: security-center-secure-score.md
+    - name: 高度なセキュリティへのアップグレード
+      href: security-center-onboarding.md
+    - name: Windows Defender ATP でのサーバーの保護
+      href: security-center-wdatp.md
+    - name: App Service の保護
+      href: security-center-app-services.md
+    - name: セキュリティ ポリシーの操作
+      href: tutorial-security-policy.md
+    - name: 情報の保護ポリシーをカスタマイズする
+      href: security-center-info-protection-policy.md
+    - name: セキュリティ ソリューションの管理
+      href: security-center-partner-integration.md
+    - name: PowerShell を使用したオンボードの自動化
+      href: security-center-powershell-onboarding.md
+    - name: Security Center の設定
+      href: security-center-policies-overview.md
+      items:
+        - name: データ収集
+          href: security-center-enable-data-collection.md
+        - name: 組み込みのセキュリティ ポリシー
+          href: security-center-policy-definitions.md
+        - name: 電子メール通知
+          href: security-center-provide-security-contact-details.md
+        - name: '価格レベル '
+          href: security-center-pricing.md
+        - name: セキュリティ構成
+          href: security-center-customize-os-security-config.md
+        - name: テナント全体の可視性
+          href: security-center-management-groups.md
+    - name: セキュリティの推奨事項を実装する
+      href: security-center-recommendations.md
+      items:
+        - name: セキュリティ体制の強化
+          href: security-center-monitoring.md
+        - name: マシンとアプリの保護
+          href: security-center-virtual-machine-protection.md
+        - name: ネットワーク リソースの保護
+          href: security-center-network-recommendations.md
+        - name: SQL サービスとデータの保護
+          href: security-center-sql-service-recommendations.md
+        - name: ID とアクセス権限の保護
+          href: security-center-identity-access.md
+    - name: クラウドの防御の適用
+      items:
+        - name: ジャスト イン タイム アクセスの管理
+          href: security-center-just-in-time.md
+        - name: アダプティブ アプリケーション制御
+          href: security-center-adaptive-application.md
+        - name: ファイルの整合性の監視
+          href: security-center-file-integrity-monitoring.md
+        - name: アダプティブ ネットワークのセキュリティ強化機能
+          href: security-center-adaptive-network-hardening.md
+    - name: 脅威を検出する
+      href: security-center-detection-capabilities.md
+      items:
+        - name: セキュリティのアラート
+          href: security-center-managing-and-responding-alerts.md
+        - name: セキュリティ インシデント
+          href: security-center-incident.md
+        - name: セキュリティ アラートについて
+          href: security-center-alerts-type.md
+        - name: アラートの検証
+          href: security-center-alert-validation.md
+        - name: Azure リソースおよびユーザーに対する UEBA
+          href: security-center-ueba-mcas.md
+    - name: アーカイブ
+      items:
+        - name: ディスク暗号化の適用
+          href: security-center-apply-disk-encryption.md
+        - name: システムの更新の適用
+          href: security-center-apply-system-updates.md
+        - name: ストレージ アカウントの暗号化の有効化
+          href: security-center-enable-encryption-for-storage-account.md
+        - name: VM エージェントの有効化
+          href: security-center-enable-vm-agent.md
+        - name: Endpoint Protection をインストールします
+          href: security-center-install-endpoint-protection.md
+        - name: システムの更新後に再起動する
+          href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
+        - name: セキュリティ構成の修復
+          href: security-center-remediate-os-vulnerabilities.md
+        - name: OS バージョンの更新
+          href: security-center-update-os-version.md
+        - name: 脆弱性評価がインストールされていない
+          href: security-center-vulnerability-assessment-recommendations.md
+        - name: Web アプリケーション ファイアウォールの追加
+          href: security-center-add-web-application-firewall.md
+        - name: アプリケーション保護を完了する
+          href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
+        - name: 次世代ファイアウォールを追加する
+          href: security-center-add-next-generation-firewall.md
+        - name: Enable Network Security Groups
+          href: security-center-enable-network-security-groups.md
+        - name: インターネット接続エンドポイント経由のアクセスを制限する
+          href: security-center-restrict-access-through-internet-facing-endpoints.md
+        - name: NGFW 経由に限定したトラフィックのルーティング
+          href: 'security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only'
+        - name: SQL データベースの監査と脅威検出を有効にする
+          href: security-center-enable-auditing-on-sql-databases.md
+        - name: SQL サーバーの監査と脅威検出を有効にする
+          href: security-center-enable-auditing-on-sql-servers.md
+        - name: Transparent Data Encryption の有効化
+          href: security-center-enable-transparent-data-encryption.md
+        - name: 脅威レポート
+          href: security-center-threat-report.md
+        - name: カスタム アラート
+          href: security-center-custom-alert.md
+        - name: アラート信頼度スコア
+          href: security-center-confidence-score.md
+        - name: セキュリティ アラート マップと脅威インテリジェンス
+          href: security-center-threat-intel.md
+        - name: 調査
+          href: security-center-investigation.md
+        - name: 調査で得られたユーザー データの管理
+          href: security-center-investigation-user-data.md
+        - name: Logic Apps のプレイブック
+          href: security-center-playbooks.md
+        - name: イベントの表示
+          href: security-center-events-dashboard.md
+        - name: Search
+          href: security-center-search.md
+        - name: 計画と運用
+          href: security-center-planning-and-operations-guide.md
 - name: リファレンス
   items:
-  - name: REST API
-    href: https://docs.microsoft.com/rest/api/securitycenter/
-  - name: サービスの更新情報
-    href: https://azure.microsoft.com/updates/?product=security-center
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=security-center'
 - name: リソース
   items:
-  - name: Microsoft Learn でスキルを身に付ける
-    href: /learn/browse/?term=securityS
-  - name: ユーザー データを管理する
-    href: security-center-privacy.md
-  - name: FAQ
-    href: security-center-faq.md
-  - name: 計画と運用
-    href: security-center-planning-and-operations-guide.md
-  - name: Azure Security
-    href: /azure/security/
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/?category=security-identity
-  - name: 準備のロードマップ
-    href: security-center-readiness-roadmap.md
-  - name: Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ
-    href: http://blogs.msdn.com/b/azuresecurity/
-  - name: スタック オーバーフロー
-    href: https://stackoverflow.com/search?q=security-center
-  - name: ビデオ
-    href: https://azure.microsoft.com/documentation/videos/index/?services=security-center
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/security-center/
-  - name: サービスの更新情報
-    href: https://azure.microsoft.com/updates/?product=security-center
-  - name: リージョン別の提供状況
-    href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: dfcf985e2f7dec286f6b64d508e8525986315a6c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843361"
+    - name: Microsoft Learn でスキルを身に付ける
+      href: /learn/browse/?term=securityS
+    - name: ユーザー データを管理する
+      href: security-center-privacy.md
+    - name: FAQ
+      href: security-center-faq.md
+    - name: Azure Security
+      href: /azure/security/
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: 準備のロードマップ
+      href: security-center-readiness-roadmap.md
+    - name: Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ
+      href: 'https://blogs.msdn.com/b/azuresecurity/'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/search?q=security-center'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=security-center'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/security-center/'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: トラブルシューティング
+      href: security-center-troubleshooting-guide.md

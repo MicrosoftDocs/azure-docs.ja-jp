@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: shlo
-ms.openlocfilehash: b3b26869a84b8519ced19a4c93a6d39d6ed20f9b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 787c9393e2700bd7ed349b501e70abc4a0687b9c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050354"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021834"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure Data Factory のフィルター アクティビティ
 パイプラインでフィルター アクティビティを使用して、入力配列にフィルター式を適用することができます。 
@@ -40,14 +39,14 @@ ms.locfileid: "37050354"
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-name | `Filter` アクティビティの名前。 | String | [はい]
-type | **filter** に設定する必要があります。 | String | [はい]
-condition | 入力のフィルター処理に使用する条件。 | 式 | [はい]
-items | フィルターを適用する必要がある入力配列。 | 式 | [はい]
+name | `Filter` アクティビティの名前。 | String | はい
+type | **filter** に設定する必要があります。 | String | はい
+condition | 入力のフィルター処理に使用する条件。 | 式 | はい
+items | フィルターを適用する必要がある入力配列。 | 式 | はい
 
 ## <a name="example"></a>例
 
-この例では、パイプラインに **Filter** および **ForEach** という 2 つのアクティビティが含まれています。 フィルター アクティビティは、3 より大きい値を持つ項目の入力配列をフィルター処理するように構成されています。 ForEach アクティビティは、フィルター処理された値を反復処理し、現在の値によって指定された秒数だけ待機します。
+この例では、パイプラインに 2 つのアクティビティ **Filter** および **ForEach** が含まれています。 フィルター アクティビティは、3 より大きい値を持つ項目の入力配列をフィルター処理するように構成されています。 ForEach アクティビティは、フィルター処理された値を反復処理し、現在の値によって指定された秒数だけ待機します。
 
 ```json
 {

@@ -12,13 +12,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 13e87ef0150924380c18c66c0362974ef599d4bf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 03/08/2019
+ms.openlocfilehash: 5226ec05af95cf305008968cf945070532274ee5
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231721"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726942"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: 機密データを保護し、Windows 証明書ストアに暗号化キーを格納する
 
@@ -37,6 +37,7 @@ Always Encrypted を使用するようデータベースを構成したら、Vis
 * 暗号化された列のデータを挿入、選択、表示するアプリケーションを作成する。
 
 ## <a name="prerequisites"></a>前提条件
+
 このチュートリアルには次のものが必要です。
 
 * Azure アカウントとサブスクリプション。 お持ちでない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
@@ -45,30 +46,33 @@ Always Encrypted を使用するようデータベースを構成したら、Vis
 * [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)。
 
 ## <a name="create-a-blank-sql-database"></a>空の SQL データベースを作成する
+
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. **[リソースの作成]** > **[データ + ストレージ]** > **[SQL データベース]** をクリックします。
-3. 新規または既存のサーバーに **Clinic** という名前の**空の**データベースを作成します。 Azure Portal でデータベースを作成する詳しい手順については、「[初めての Azure SQL Database](sql-database-get-started-portal.md)」を参照してください。
-   
+3. 新規または既存のサーバーに **Clinic** という名前の**空の**データベースを作成します。 Azure Portal でデータベースを作成する詳しい手順については、「[初めての Azure SQL Database](sql-database-single-database-get-started.md)」を参照してください。
+
     ![空のデータベースの作成](./media/sql-database-always-encrypted/create-database.png)
 
 このチュートリアルでは、後で接続文字列が必要になります。 データベースの作成後、新しい Clinic データベースに移動し、接続文字列をコピーします。 いつでも接続文字列を取得できますが、Azure ポータルで、簡単にそれをコピーできます。
 
 1. **[SQL Database]** > **[Clinic]** > **[データベース接続文字列の表示]** の順にクリックします。
 2. **ADO.NET**の接続文字列をコピーします。
-   
+
     ![接続文字列のコピー](./media/sql-database-always-encrypted/connection-strings.png)
 
 ## <a name="connect-to-the-database-with-ssms"></a>SSMS を使用してデータベースに接続する
+
 SSMS を開き、Clinic データベースを作成したサーバーに接続します。
 
 1. SSMS を開きます。 (**[サーバーへの接続]** ウィンドウを開いていない場合は、**[接続]** > **[データベース エンジン]** の順にクリックして開きます)。
 2. サーバー名と資格情報を入力します。 サーバー名がわからない場合は、[SQL Database] ブレードか、先ほどコピーした接続文字列で確認できます。 *database.windows.net*を含む完全なサーバー名を入力してください。
-   
+
     ![接続文字列のコピー](./media/sql-database-always-encrypted/ssms-connect.png)
 
 **[新しいファイアウォール規則]** ウィンドウが表示された場合は、Azure にサインインして、SSMS で自動的に新しいファイアウォール規則を作成します。
 
 ## <a name="create-a-table"></a>テーブルを作成する
+
 このセクションでは、患者データを保持するテーブルを作成します。 これは最初は通常のテーブルで、次のセクションで暗号化を構成します。
 
 1. **[データベース]** を展開します。
@@ -89,18 +93,19 @@ SSMS を開き、Clinic データベースを作成したサーバーに接続�
          PRIMARY KEY CLUSTERED ([PatientId] ASC) ON [PRIMARY] );
          GO
 
-
 ## <a name="encrypt-columns-configure-always-encrypted"></a>列を暗号化する (Always Encrypted を構成する)
+
 SSMS に用意されているウィザードを使用すると、CMK、CEK、および暗号化する列を設定するだけで簡単に Always Encrypted を構成できます。
 
 1. **[データベース]** > **空の** > **[テーブル]** を使用して、SQL データベース内の機密データを保護する方法について説明します。
 2. **Patients** テーブルを右クリックして **[列の暗号化]** を選択すると、Always Encrypted ウィザードが起動します。
-   
+
     ![[列の暗号化]](./media/sql-database-always-encrypted/encrypt-columns.png)
 
-Always Encrypted ウィザードには、**[列の選択]**、**[マスター キーの構成]** (CMK)、**[検証]**、および **[概要]** セクションがあります。
+Always Encrypted ウィザードには、**[列の選択]**、**[マスター キー構成]** (CMK)、**[検証]**、および **[まとめ]** のセクションがあります。
 
 ### <a name="column-selection"></a>列の選択
+
 **[説明]** ページの **[次へ]** をクリックして、**[列の選択]** ページを開きます。 このページで、暗号化する列、 [暗号化の種類、使用する列暗号化キー (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) を選択します。
 
 各患者の **SSN** と **BirthDate** 情報を暗号化します。 **SSN** 列では決定論的な暗号化を使用します。この場合、等値のルックアップ、結合、グループ化を実行できます。 **BirthDate** 列ではランダム化された暗号化を使用します。この場合、操作は実行できません。
@@ -110,6 +115,7 @@ Always Encrypted ウィザードには、**[列の選択]**、**[マスター �
 ![[列の暗号化]](./media/sql-database-always-encrypted/column-selection.png)
 
 ### <a name="master-key-configuration"></a>マスター キー構成
+
 **[マスター キーの構成]** ページでは、CMK を設定し、その CMK を格納するキー ストア プロバイダーを選択します。 現時点では、Windows 証明書ストア、Azure Key Vault、またはハードウェア セキュリティ モジュール (HSM) に格納できます。 このチュートリアルでは、Windows 証明書ストアにキーを格納する方法を説明します。
 
 **[Windows 証明書ストア]** が選択されていることを確認し、**[次へ]** をクリックします。
@@ -117,14 +123,17 @@ Always Encrypted ウィザードには、**[列の選択]**、**[マスター �
 ![マスター キー構成](./media/sql-database-always-encrypted/master-key-configuration.png)
 
 ### <a name="validation"></a>検証
+
 列の暗号化はすぐに実行することも、PowerShell スクリプトを保存して後から実行することもできます。 このチュートリアルでは、**[今すぐ続行して完了]** を選択して **[次へ]** をクリックします。
 
 ### <a name="summary"></a>まとめ
+
 設定がすべて正しいことを確認し、 **[完了]** をクリックすれば、Always Encrypted の設定は完了です。
 
 ![まとめ](./media/sql-database-always-encrypted/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>ウィザードのアクションの確認
+
 ウィザードが完了すると、データベースに Always Encrypted が設定されています。 ウィザードでは、次の操作が実行されました。
 
 * CMK が作成されました。
@@ -134,12 +143,11 @@ Always Encrypted ウィザードには、**[列の選択]**、**[マスター �
 SSMS でキーが生成されていることを確認するには、**[Clinic]** > **[セキュリティ]** > **[Always Encrypted キー]** の順に進みます。 ウィザードで生成された新しいキーを確認できます。
 
 ## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>暗号化されたデータを扱うクライアント アプリケーションを作成する
+
 Always Encrypted を設定したので、暗号化された列に対して、*inserts* や *selects* を実行するアプリケーションを構築できます。 サンプル アプリケーションを正常に実行するには、Always Encrypted ウィザードを実行したコンピューター上でアプリケーションを実行する必要があります。 別のコンピューター上でアプリケーションを実行する場合は、クライアント アプリケーションを実行するコンピューターに Always Encrypted 証明書をデプロイする必要があります。  
 
 > [!IMPORTANT]
 > Always Encrypted 列を構成したサーバーにプレーンテキスト データを渡す場合は、 [SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx) オブジェクトを使用する必要があります。 SqlParameter オブジェクトを使用せずにリテラル値を渡すと、例外が発生します。
-> 
-> 
 
 1. Visual Studio を開き、新しい C# コンソール アプリケーションを作成します。 プロジェクトは必ず **.NET Framework 4.6** 以降に設定してください。
 2. プロジェクトに **AlwaysEncryptedConsoleApp** という名前を付けて、**[OK]** をクリックします。
@@ -147,6 +155,7 @@ Always Encrypted を設定したので、暗号化された列に対して、*in
 ![新しいコンソール アプリケーション](./media/sql-database-always-encrypted/console-app.png)
 
 ## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>接続文字列を変更して Always Encrypted を有効にする
+
 このセクションでは、データベース接続文字列で Always Encrypted を有効にする方法を説明します。 次のセクション「Always Encrypted サンプル コンソール アプリケーション」で、作成したコンソール アプリケーションを変更します。
 
 Always Encrypted を有効にするには、接続文字列に **Column Encryption Setting** キーワードを追加し、**Enabled** に設定します。
@@ -155,16 +164,15 @@ Always Encrypted を有効にするには、接続文字列に **Column Encrypti
 
 > [!NOTE]
 > Always Encrypted を有効にするためにクライアント アプリケーションで必要な変更はこれだけです。 既存のアプリケーションで接続文字列を外部の構成ファイルなどに格納している場合は、コードを変更しなくても Always Encrypted を有効にできる場合があります。
-> 
-> 
 
 ### <a name="enable-always-encrypted-in-the-connection-string"></a>接続文字列で Always Encrypted を有効にする
+
 接続文字列に次のキーワードを追加します。
 
     Column Encryption Setting=Enabled
 
-
 ### <a name="enable-always-encrypted-with-a-sqlconnectionstringbuilder"></a>SqlConnectionStringBuilder を使って Always Encrypted を有効にする
+
 次のコードは、[SqlConnectionStringBuilder.ColumnEncryptionSetting](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) を [Enabled](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx) に設定して Always Encrypted を有効にする方法を示しています。
 
     // Instantiate a SqlConnectionStringBuilder.
@@ -175,9 +183,8 @@ Always Encrypted を有効にするには、接続文字列に **Column Encrypti
     connStringBuilder.ColumnEncryptionSetting =
        SqlConnectionColumnEncryptionSetting.Enabled;
 
-
-
 ## <a name="always-encrypted-sample-console-application"></a>Always Encrypted サンプル コンソール アプリケーション
+
 このサンプルでは次の操作を行います。
 
 * 接続文字列を変更して Always Encrypted を有効にする。
@@ -188,20 +195,19 @@ Always Encrypted を有効にするには、接続文字列に **Column Encrypti
 
 アプリケーションを実行して、Always Encrypted の動作を見てみましょう。
 
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Data;
-    using System.Data.SqlClient;
+```cs
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Globalization;
 
-    namespace AlwaysEncryptedConsoleApp
-    {
+namespace AlwaysEncryptedConsoleApp
+{
     class Program
     {
         // Update this line with your Clinic database connection string from the Azure portal.
-        static string connectionString = @"Replace with your connection string";
+        static string connectionString = @"Data Source = SPE-T640-01.sys-sqlsvr.local; Initial Catalog = Clinic; Integrated Security = true";
 
         static void Main(string[] args)
         {
@@ -224,7 +230,6 @@ Always Encrypted を有効にするには、接続文字列に **Column Encrypti
             Console.WriteLine(Environment.NewLine + "Enter server password:");
             connStringBuilder.Password = Console.ReadLine();
 
-
             // Assign the updated connection string to our global variable.
             connectionString = connStringBuilder.ConnectionString;
 
@@ -235,16 +240,42 @@ Always Encrypted を有効にするには、接続文字列に **Column Encrypti
             // Add sample data to the Patients table.
             Console.Write(Environment.NewLine + "Adding sample patient data to the database...");
 
-            InsertPatient(new Patient() {
-                SSN = "999-99-0001", FirstName = "Orlando", LastName = "Gee", BirthDate = DateTime.Parse("01/04/1964") });
-            InsertPatient(new Patient() {
-                SSN = "999-99-0002", FirstName = "Keith", LastName = "Harris", BirthDate = DateTime.Parse("06/20/1977") });
-            InsertPatient(new Patient() {
-                SSN = "999-99-0003", FirstName = "Donna", LastName = "Carreras", BirthDate = DateTime.Parse("02/09/1973") });
-            InsertPatient(new Patient() {
-                SSN = "999-99-0004", FirstName = "Janet", LastName = "Gates", BirthDate = DateTime.Parse("08/31/1985") });
-            InsertPatient(new Patient() {
-                SSN = "999-99-0005", FirstName = "Lucy", LastName = "Harrington", BirthDate = DateTime.Parse("05/06/1993") });
+            CultureInfo culture = CultureInfo.CreateSpecificCulture("en-US");
+            InsertPatient(new Patient()
+            {
+                SSN = "999-99-0001",
+                FirstName = "Orlando",
+                LastName = "Gee",
+                BirthDate = DateTime.Parse("01/04/1964", culture)
+            });
+            InsertPatient(new Patient()
+            {
+                SSN = "999-99-0002",
+                FirstName = "Keith",
+                LastName = "Harris",
+                BirthDate = DateTime.Parse("06/20/1977", culture)
+            });
+            InsertPatient(new Patient()
+            {
+                SSN = "999-99-0003",
+                FirstName = "Donna",
+                LastName = "Carreras",
+                BirthDate = DateTime.Parse("02/09/1973", culture)
+            });
+            InsertPatient(new Patient()
+            {
+                SSN = "999-99-0004",
+                FirstName = "Janet",
+                LastName = "Gates",
+                BirthDate = DateTime.Parse("08/31/1985", culture)
+            });
+            InsertPatient(new Patient()
+            {
+                SSN = "999-99-0005",
+                FirstName = "Lucy",
+                LastName = "Harrington",
+                BirthDate = DateTime.Parse("05/06/1993", culture)
+            });
 
 
             // Fetch and display all patients.
@@ -294,7 +325,7 @@ Always Encrypted を有効にするには、接続文字列に **Column Encrypti
             int returnValue = 0;
 
             string sqlCmdText = @"INSERT INTO [dbo].[Patients] ([SSN], [FirstName], [LastName], [BirthDate])
-         VALUES (@SSN, @FirstName, @LastName, @BirthDate);";
+     VALUES (@SSN, @FirstName, @LastName, @BirthDate);";
 
             SqlCommand sqlCmd = new SqlCommand(sqlCmdText);
 
@@ -465,10 +496,11 @@ Always Encrypted を有効にするには、接続文字列に **Column Encrypti
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
     }
-    }
-
+}
+```
 
 ## <a name="verify-that-the-data-is-encrypted"></a>データが暗号化されていることを確認する
+
 サーバー上の実際のデータが暗号化されていることをすばやく確認するには、SSMS で **Patients** データをクエリします (Column Encryption Setting がまだ有効にされていない現在の接続を使用します)。
 
 Clinic データベースで次のクエリを実行します。
@@ -484,24 +516,21 @@ SSMS を使用してプレーンテキスト データにアクセスするに�
 1. SSMS の**オブジェクト エクスプローラー**でサーバーを右クリックし、**[切断]** をクリックします。
 2. **[接続]** > **[データベース エンジン]** の順にクリックして **[サーバーへの接続]** ウィンドウを開き、**[オプション]** をクリックします。
 3. **[追加の接続パラメーター]** をクリックし、「**Column Encryption Setting=enabled**」と入力します。
-   
+
     ![新しいコンソール アプリケーション](./media/sql-database-always-encrypted/ssms-connection-parameter.png)
 4. **Clinic** データベースで次のクエリを実行します。
-   
+
         SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
-   
+
      暗号化された列のプレーンテキスト データを確認できます。
 
     ![新しいコンソール アプリケーション](./media/sql-database-always-encrypted/ssms-plaintext.png)
 
-
-
 > [!NOTE]
 > 別のコンピューターの SSMS (または任意のクライアント) から接続した場合は暗号化キーにアクセスできず、データの暗号化を解除することはできません。
-> 
-> 
 
 ## <a name="next-steps"></a>次の手順
+
 Always Encrypted を使用するデータベースを作成したら、次の操作を試してみてください。
 
 * 別のコンピューターからこのサンプルを実行する。 別のコンピューターからは暗号化キーにアクセスできず、プレーンテキスト データにもアクセスできないので、サンプルは正常に実行されません。
@@ -510,9 +539,9 @@ Always Encrypted を使用するデータベースを作成したら、次の操
 * [他のクライアント コンピューターにAlways Encrypted 証明書をデプロイする](https://msdn.microsoft.com/library/mt723359.aspx#Anchor_1) (「証明書をアプリケーションとユーザーが使用できるようにする」セクションを参照してください)。
 
 ## <a name="related-information"></a>関連情報
+
 * [Always Encrypted (クライアント開発)](https://msdn.microsoft.com/library/mt147923.aspx)
 * [透過的なデータ暗号化](https://msdn.microsoft.com/library/bb934049.aspx)
 * [SQL Server の暗号化](https://msdn.microsoft.com/library/bb510663.aspx)
 * [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)
 * [Always Encrypted に関するブログ](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
-

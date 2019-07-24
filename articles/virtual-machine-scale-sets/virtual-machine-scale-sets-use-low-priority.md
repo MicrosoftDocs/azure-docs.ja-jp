@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: memccror
-ms.openlocfilehash: c0b4e3e0a924c1353f7732737670dee7ed45a62a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 861c68ae8163e0ba8c2af2a3d96153ac3e84855f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953874"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978138"
 ---
 # <a name="low-priority-vms-on-scale-sets-preview"></a>スケール セットでの低優先度の VM (プレビュー)
 
@@ -43,7 +43,7 @@ ms.locfileid: "46953874"
 
 スケール セットに低優先度の VM を展開するには、新しい *Priority* フラグを *Low* に設定します。 スケール セット内のすべての VM が、低優先度に設定されます。 低優先度の VM でスケール セットを作成するには、次のいずれかの方法を使います。
 - [Azure Portal](#use-the-azure-portal)
-- [Azure CLI](#use-the-azure-cli-20)
+- Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure リソース マネージャーのテンプレート](#use-azure-resource-manager-templates)
 
@@ -69,10 +69,10 @@ az vmss create \
 ## <a name="use-azure-powershell"></a>Azure PowerShell の使用
 
 低優先度の VM でスケール セットを作成するプロセスは、[使用の開始に関する記事](quick-create-powershell.md)で詳しく説明されているものと同じです。
-次の例に示すように、"-Priority" パラメーターを [New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig) に追加し、値を *Low* に設定します。
+次の例に示すように、[New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) に '-Priority' パラメーターを追加し、それを *Low* に設定するだけです。
 
 ```powershell
-$vmssConfig = New-AzureRmVmssConfig `
+$vmssConfig = New-AzVmssConfig `
     -Location "East US 2" `
     -SkuCapacity 2 `
     -SkuName "Standard_DS2" `

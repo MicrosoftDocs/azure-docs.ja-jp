@@ -8,16 +8,18 @@ ms.topic: include file for PowerShell for Azure DNS
 ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for PowerShell for Azure DNS
-ms.openlocfilehash: 388bea528b138d78b9ec23ceea295108306c61e9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 6f042b9bc971498310ec51d07a1eba7193b21b00
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31613604"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57554737"
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>Azure DNS 用に Azure PowerShell をセットアップする
 
 ### <a name="before-you-begin"></a>開始する前に
+
+[!INCLUDE [requires-azurerm](requires-azurerm.md)]
 
 構成を開始する前に、以下がそろっていることを確認します。
 
@@ -50,7 +52,7 @@ Install-Module -Name AzureRM.Network -Force
 
 ### <a name="sign-in-to-your-azure-account"></a>Azure アカウントへのサインイン
 
-PowerShell コンソールを開き、アカウントに接続します。 詳細については、[Resource Manager での PowerShell の使用](../articles/azure-resource-manager/powershell-azure-resource-manager.md)に関するページを参照してください。
+PowerShell コンソールを開き、アカウントに接続します。 詳細については、「[Sign in (サインイン)](/powershell/azure/install-az-ps?view=azps-1.4.0#sign-in)」を参照してください。
 
 ```powershell
 Connect-AzureRmAccount

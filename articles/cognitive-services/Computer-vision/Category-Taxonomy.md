@@ -1,23 +1,24 @@
 ---
-title: Computer Vision API の 86 カテゴリの分類
+title: 画像のカテゴリの分類 - Computer Vision
 titlesuffix: Azure Cognitive Services
 description: Azure Cognitive Services で Computer Vision API の 86 カテゴリの分類を取得します。
 services: cognitive-services
 author: KellyDF
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: reference
-ms.date: 12/19/2016
+ms.date: 03/21/2019
 ms.author: kefre
-ms.openlocfilehash: b5da9a19d51bef6ae31b89c5b8fc8ae4b7c5177e
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.custom: seodec18
+ms.openlocfilehash: bb8c6814a959cb9e96a3c4565603d634c250b02a
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984909"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350982"
 ---
-# <a name="86-categories-taxonomy"></a>86 カテゴリの分類
+# <a name="86-category-taxonomy"></a>86 カテゴリの分類
 
 abstract_
 
@@ -190,5 +191,3 @@ trans_bus
 trans_car
 
 trans_trainstation
-
-

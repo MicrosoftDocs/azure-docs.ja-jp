@@ -8,16 +8,15 @@ layout: LandingPage
 ms.assetid: ''
 ms.service: sql-server-stretch-database
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: a8aa45765a784e4f843517e9dcc0a03e54bfb401
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: de0bd85f4d91db494eefee1adf8cbf71243777bc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144103"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60330639"
 ---
 # <a name="sql-server-stretch-database-documentation"></a>SQL Server Stretch Database のドキュメント
 

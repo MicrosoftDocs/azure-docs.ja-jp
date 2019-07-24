@@ -2,22 +2,22 @@
 title: Azure クイック スタート - Batch ジョブの実行 - ポータル
 description: Azure Portal で Batch ジョブを実行する方法を簡単に説明します。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 7daaf042d22ba4ac0369b732b586a3760d8cd51c
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: d478307ff4393d84a854fcd3b2ea0efd77de7135
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859576"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087841"
 ---
-# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>クイック スタート: Azure Portal で最初の Batch ジョブを実行する
+# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>クイック スタート:Azure portal で最初の Batch ジョブを実行する
 
 このクイック スタートでは、Azure Portal を使用して Batch アカウント、コンピューティング ノード (仮想マシン) の "*プール*"、そのプールで基本的な "*タスク*" を実行する "*ジョブ*" を作成する方法を示します。 このクイック スタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
 
@@ -25,7 +25,7 @@ ms.locfileid: "37859576"
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン 
 
-Azure Portal (https://portal.azure.com) にサインインします。
+Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-batch-account"></a>Batch アカウントを作成する
 
@@ -34,7 +34,7 @@ Azure Portal (https://portal.azure.com) にサインインします。
 
 1. **[リソースの作成]** > **[Compute]** > **[Batch サービス]** の順に選択します。 
 
-  ![Marketplace での Batch][marketplace_portal]
+   ![Marketplace での Batch][marketplace_portal]
 
 2. **[アカウント名]** と **[リソース グループ]** に値を入力します。 アカウント名は、Azure の選択された**場所**内で一意である必要があります。また、アカウント名に使用できるのは、3 文字から 24 文字までの小文字と数字のみです。 
 
@@ -42,7 +42,7 @@ Azure Portal (https://portal.azure.com) にサインインします。
 
 4. 残りの設定は既定値のままにし、**[作成]** を選択して、アカウントを作成します。
 
-  ![Batch アカウントを作成する][account_portal]  
+   ![Batch アカウントを作成する][account_portal]  
 
 "**デプロイメントに成功しました**" メッセージが表示されたら、ポータルで Batch アカウントに移動します。
 
@@ -57,23 +57,23 @@ Batch アカウントが用意できたら、テスト目的で Windows コン�
 
 3. **[オペレーティング システム]** で、次の設定を選択します (他のオプションを見つけることができます)。
   
-  |Setting  |値  |
-  |---------|---------|
-  |**イメージの種類**|Marketplace (Linux/Windows)|
-  |**発行元**     |MicrosoftWindowsServer|
-  |**プラン**     |WindowsServer|
-  |**SKU**     |2012-R2-Datacenter-smalldisk|
+   |Setting  |値  |
+   |---------|---------|
+   |**イメージの種類**|Marketplace (Linux/Windows)|
+   |**発行元**     |MicrosoftWindowsServer|
+   |**プラン**     |WindowsServer|
+   |**SKU**     |2012-R2-Datacenter-smalldisk|
 
-  ![プールのオペレーティング システムの選択][pool_os] 
+   ![プールのオペレーティング システムの選択][pool_os] 
 
 4. 下にスクロールして、**[ノード サイズ]** と **[スケール]** の設定を入力します。 推奨されるノード サイズは、この簡単な例についてパフォーマンスとコストのバランスが取れています。
   
-  |Setting  |値  |
-  |---------|---------|
-  |**ノード価格レベル**     |Standard_A1|
-  |**ターゲットの専用ノード数**     |2|
+   |Setting  |値  |
+   |---------|---------|
+   |**ノード価格レベル**     |Standard_A1|
+   |**ターゲットの専用ノード数**     |2|
 
-  ![プール サイズの選択][pool_size] 
+   ![プール サイズの選択][pool_size] 
 
 5. 残りの設定は既定値のままにし、**[OK]** を選択して、プールを作成します。
 
@@ -91,7 +91,7 @@ Batch によってすぐにプールが作成されますが、コンピュー�
 
 2. *myjob* という**ジョブ ID** を入力します。 **[プール]** で *mypool* を選択します。 残りの設定は既定値のままにして、**[OK]** を選択します。
 
-  ![ジョブを作成する][job_create]
+   ![ジョブを作成する][job_create]
 
 ジョブが作成されると、**[タスク]** ページが開きます。
 
@@ -109,7 +109,7 @@ Batch を使用する場合、コマンド ラインは、アプリまたはス�
 
 3. **[コマンド ライン]** に、「`cmd /c "set AZ_BATCH & timeout /t 90 > NUL"`」と入力します。 残りの設定は既定値のままにして、**[OK]** を選択します。
 
-  ![タスクを作成します。][task_create]
+   ![タスクを作成します。][task_create]
 
 作成したタスクは、プールで実行するために Batch によってキューに登録されます。 ノードが実行できるようになると、タスクが実行されます。
 

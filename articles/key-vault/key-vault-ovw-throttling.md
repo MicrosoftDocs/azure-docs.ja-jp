@@ -3,21 +3,21 @@ title: Azure Key Vault のスロットル ガイダンス
 description: Key Vault の調整では同時呼び出しの数を制限して、リソースの乱用を防ぎます。
 services: key-vault
 documentationcenter: ''
-author: bryanla
-manager: mbaldwin
+author: msmbaldwin
+manager: barbkess
 tags: ''
 ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/10/2018
-ms.author: bryanla
-ms.openlocfilehash: 4906be4dc6315d8b4dd3c1e640b40caec28b7743
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: mbaldwin
+ms.openlocfilehash: 0f8aafce4c4feeed742504db84664e4dfd472ca6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302002"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59787551"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault のスロットル ガイダンス
 
@@ -34,13 +34,107 @@ ms.locfileid: "44302002"
 
 ## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>サービス制限に対応してアプリをスロットルする方法
 
-アプリのスロットルに関する**ベスト プラクティス**を次に示します。
+サービスがスロットルされているときに実践すべき**ベスト プラクティス**を次に示します。
 - 要求あたりの操作の数を減らす。
 - 要求の頻度を減らす。
 - すぐに再試行しない。 
     - すべての要求が使用制限のカウント対象になります。
 
 アプリのエラー処理を実装するときに、HTTP エラー コード 429 を使って、クライアント側でのスロットルの必要性を検出してください。 HTTP 429 エラー コードで再び要求が失敗すれば、Azure のサービス制限が引き続き適用されます。 それ以降は、推奨されているクライアント側のスロットル手法を使用して、成功するまで要求を再試行してください。
+
+エクスポネンシャル バックオフを実装するコードを次に示します。 
+```
+    public sealed class RetryWithExponentialBackoff
+    {
+        private readonly int maxRetries, delayMilliseconds, maxDelayMilliseconds;
+
+        public RetryWithExponentialBackoff(int maxRetries = 50,
+            int delayMilliseconds = 200,
+            int maxDelayMilliseconds = 2000)
+        {
+            this.maxRetries = maxRetries;
+            this.delayMilliseconds = delayMilliseconds;
+            this.maxDelayMilliseconds = maxDelayMilliseconds;
+        }
+
+        public async Task RunAsync(Func<Task> func)
+        {
+            ExponentialBackoff backoff = new ExponentialBackoff(this.maxRetries,
+                this.delayMilliseconds,
+                this.maxDelayMilliseconds);
+            retry:
+            try
+            {
+                await func();
+            }
+            catch (Exception ex) when (ex is TimeoutException ||
+                ex is System.Net.Http.HttpRequestException)
+            {
+                Debug.WriteLine("Exception raised is: " +
+                    ex.GetType().ToString() +
+                    " –Message: " + ex.Message +
+                    " -- Inner Message: " +
+                    ex.InnerException.Message);
+                await backoff.Delay();
+                goto retry;
+            }
+        }
+    }
+
+    public struct ExponentialBackoff
+    {
+        private readonly int m_maxRetries, m_delayMilliseconds, m_maxDelayMilliseconds;
+        private int m_retries, m_pow;
+
+        public ExponentialBackoff(int maxRetries, int delayMilliseconds,
+            int maxDelayMilliseconds)
+        {
+            m_maxRetries = maxRetries;
+            m_delayMilliseconds = delayMilliseconds;
+            m_maxDelayMilliseconds = maxDelayMilliseconds;
+            m_retries = 0;
+            m_pow = 1;
+        }
+
+        public Task Delay()
+        {
+            if (m_retries == m_maxRetries)
+            {
+                throw new TimeoutException("Max retry attempts exceeded.");
+            }
+            ++m_retries;
+            if (m_retries < 31)
+            {
+                m_pow = m_pow << 1; // m_pow = Pow(2, m_retries - 1)
+            }
+            int delay = Math.Min(m_delayMilliseconds * (m_pow - 1) / 2,
+                m_maxDelayMilliseconds);
+            return Task.Delay(delay);
+        }
+    }
+```
+
+
+このコードは、クライアントの C\# アプリケーションで使用するのが簡単です。 次の例では HttpClient クラスを使用して方法を示します。
+
+```csharp
+public async Task<Cart> GetCartItems(int page)
+{
+    _apiClient = new HttpClient();
+    //
+    // Using HttpClient with Retry and Exponential Backoff
+    //
+    var retry = new RetryWithExponentialBackoff();
+    await retry.RunAsync(async () =>
+    {
+        // work with HttpClient call
+        dataString = await _apiClient.GetStringAsync(catalogUrl);
+    });
+    return JsonConvert.DeserializeObject<Cart>(dataString);
+}
+```
+
+このコードは概念実証にしか適していないことに注意してください。 
 
 ### <a name="recommended-client-side-throttling-method"></a>推奨されるクライアント側のスロットル手法
 

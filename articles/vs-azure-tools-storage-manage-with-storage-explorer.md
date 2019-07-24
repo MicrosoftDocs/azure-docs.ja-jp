@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 20aa1824656ee6eb861f3848d969d678b07e9378
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 38a857b1d309b92c48137a46655155e0e131908c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038435"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002682"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer の概要
 
@@ -41,7 +41,7 @@ Azure Storage Explorer は次のバージョンの Windows でサポートされ
 
 すべてのバージョンの Windows で、.NET Framework 4.6.2 以降が必要です。
 
-[Storage Explorer をダウンロードしてインストールする](http://www.storageexplorer.com)
+[Storage Explorer をダウンロードしてインストールする](https://www.storageexplorer.com)
 
 # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
@@ -49,28 +49,23 @@ Azure Storage Explorer は次のバージョンの macOS でサポートされ�
 
 * macOS 10.12 "Sierra" 以降のバージョン
 
-[Storage Explorer をダウンロードしてインストールする](http://www.storageexplorer.com)
+[Storage Explorer をダウンロードしてインストールする](https://www.storageexplorer.com)
 
 # <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
 Azure Storage Explorer は次のディストリビューションの Linux でサポートされています。
 
-* Ubuntu 16.04 x64 (推奨)
-* Ubuntu 17.10 x64
+* Ubuntu 18.04 x64
+* Ubuntu 16.04 x64
 * Ubuntu 14.04 x64
 
 Azure Storage Explorer は他のディストリビューションでも動作する可能性がありますが、正式にサポートされているのは上記のディストリビューションのみです。
 
-Azure Storage Exploer を Linux 上で実行するには、以下の依存関係/ライブラリもインストールする必要があります。
-
-* [.NET Core 2.x](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
-* libsecret (注: コンピューター上で libsecret-1.so.0 を使用できる必要があります。 異なるバージョンの libsecret がインストールされている場合、.so ファイルを libsecret-1.so.0 にソフト リンクすることができます)
-* libgconf-2-4
-* 最新の GCC
+Linux への Storage Explorer のインストールの詳細については、[トラブルシューティング ガイド](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting#linux-dependencies)を参照してください。
 
 Azure Storage Explorer の[リリース ノート](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409)には、一部のディストリビューションでの具体的な手順が掲載されています。
 
-[Storage Explorer をダウンロードしてインストールする](http://www.storageexplorer.com)
+[Storage Explorer をダウンロードしてインストールする](https://www.storageexplorer.com)
 
 ---
 
@@ -84,12 +79,12 @@ Storage Explorer には、ストレージ アカウントに対する接続方�
 
 さらに、国内外の Azure のストレージ アカウントを使用できます。
 
-* [Azure サブスクリプションに接続する](#connect-to-an-azure-subscription): 自分の Azure サブスクリプションに属するストレージ リソースを管理します。
-* [ローカル開発ストレージを操作する](#work-with-local-development-storage): Azure ストレージ エミュレーターを使ってローカル ストレージを管理します。
-* [外部ストレージにアタッチする](#attach-or-detach-an-external-storage-account): ストレージ アカウントの名前、キー、およびエンドポイントを使って、別の Azure サブスクリプションに属するストレージ リソースや国内の Azure クラウドにあるストレージ リソースを管理します。
-* [SAS を使ってストレージ アカウントをアタッチする](#attach-storage-account-using-sas): Shared Access Signature (SAS) を使って、別の Azure サブスクリプションに属するストレージ リソースを管理します。
-* [SAS を使ってサービスをアタッチする](#attach-service-using-sas): SAS を使って、別の Azure サブスクリプションに属する特定のストレージ サービス (BLOB コンテナー、キュー、またはテーブル) を管理します。
-* [接続文字列を使って Azure Cosmos DB アカウントに接続する](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string): 接続文字列を使って Cosmos DB アカウントを管理します。
+* [Azure サブスクリプションに接続する](#connect-to-an-azure-subscription):自分の Azure サブスクリプションに属するストレージ リソースを管理します。
+* [ローカル開発ストレージを操作する](#work-with-local-development-storage):Azure ストレージ エミュレーターを使ってローカル ストレージを管理する。
+* [外部ストレージにアタッチする](#attach-or-detach-an-external-storage-account):ストレージ アカウントの名前、キー、およびエンドポイントを使って、別の Azure サブスクリプションに属するストレージ リソースや国内の Azure クラウドにあるストレージ リソースを管理します。
+* [SAS を使ってストレージ アカウントをアタッチする](#attach-a-storage-account-by-using-a-shared-access-signature-sas):Shared Access Signature (SAS) を使って、別の Azure サブスクリプションに属するストレージ リソースを管理します。
+* [SAS を使ってサービスをアタッチする](#attach-a-service-by-using-a-shared-access-signature-sas):SAS を使って、別の Azure サブスクリプションに属する特定のストレージ サービス (BLOB コンテナー、キュー、またはテーブル) を管理します。
+* [接続文字列を使って Azure Cosmos DB アカウントに接続する](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string):接続文字列を使って Cosmos DB アカウントを管理します。
 
 ## <a name="connect-to-an-azure-subscription"></a>Azure サブスクリプションに接続する
 
@@ -104,7 +99,7 @@ Storage Explorer には、ストレージ アカウントに対する接続方�
 
 2. 左側のウィンドウに、サインインしている Azure アカウントがすべて表示されます。 別のアカウントに接続するには、**[アカウントの追加]** を選択します。
 
-3. 国内クラウドまたは Azure Stack にサインインする場合は、**[Azure 環境]** ドロップダウンをクリックして、使用する Azure クラウドを選択します。 環境を選択したら、**[サインイン]** ボタンをクリックします。 Azure Stack にサインインする場合は、「[Azure Stack サブスクリプションに Microsoft Azure Storage Explorer を接続する](azure-stack/user/azure-stack-storage-connect-se.md)」を参照してください。
+3. 国内クラウドまたは Azure Stack にサインインする場合は、**[Azure 環境]** ドロップダウンをクリックして、使用する Azure クラウドを選択します。 環境を選択したら、**[サインイン]** ボタンをクリックします。 Azure Stack にサインインする場合は、「[Azure Stack サブスクリプションに Microsoft Azure Storage Explorer を接続する](/azure-stack/user/azure-stack-storage-connect-se)」を参照してください。
 
     ![サインイン オプション][2]
 
@@ -221,7 +216,7 @@ Shared Access Signature ([SAS](storage/common/storage-dotnet-shared-access-signa
 
 3. UserB は Storage Explorer からその SAS を使用し、UserA に属するアカウントにアタッチします。
 
-### <a name="generate-a-sas-connection-string-for-the-account-you-want-to-share"></a>共有するアカウントの SAS 接続文字列を生成する
+### <a name="generate-a-sas-query-string-for-the-account-you-want-to-share"></a>共有するアカウントの SAS クエリ文字列を生成する
 
 1. Storage Explorer で、共有するストレージ アカウントを右クリックし、**[Get Shared Access Signature]\(Shared Access Signature の取得\)** を選択します。
 
@@ -231,7 +226,7 @@ Shared Access Signature ([SAS](storage/common/storage-dotnet-shared-access-signa
 
     ![SAS の取得ダイアログ ボックス][15]
 
-3. **[接続文字列]** ボックスの横にある **[コピー]** を選択してクリップボードにコピーし、**[閉じる]** をクリックします。
+3. **[クエリ文字列]** ボックスの横にある **[コピー]** を選択してクリップボードにコピーし、**[閉じる]** をクリックします。
 
 ### <a name="attach-to-a-storage-account-by-using-a-sas-connection-string"></a>SAS 接続文字列を使用してストレージ アカウントにアタッチする
 
@@ -295,7 +290,7 @@ Azure サブスクリプションを使って Azure Cosmos DB アカウントを
 
     ![接続文字列によって Azure Cosmos DB に接続する][21]
 
-2. Azure Cosmos DB API を選び、**接続文字列**を貼り付けた後、**[OK]** をクリックして Azure Cosmos DB アカウントに接続します。 接続文字列の取得については、「[接続文字列を取得する](https://docs.microsoft.com/azure/cosmos-db/manage-account#get-the--connection-string)」を参照してください。
+2. Azure Cosmos DB API を選び、**接続文字列**を貼り付けた後、**[OK]** をクリックして Azure Cosmos DB アカウントに接続します。 接続文字列の取得については、「[接続文字列を取得する](https://docs.microsoft.com/azure/cosmos-db/manage-account)」を参照してください。
 
     ![connection-string][22]
 

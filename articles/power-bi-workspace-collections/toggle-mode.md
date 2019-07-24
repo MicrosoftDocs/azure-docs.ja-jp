@@ -1,20 +1,19 @@
 ---
 title: Power BI ワークスペース コレクションでレポートの表示モードと編集モードを切り替える | Microsoft Docs
 description: Power BI ワークスペース コレクションでレポートの表示モードと編集モードを切り替える方法について説明します。
-services: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
 author: markingmyname
-ROBOTS: NOINDEX
-ms.service: power-bi-embedded
+ms.author: maghan
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: maghan
-ms.openlocfilehash: 19a576440742684849ffc74092162be7008621ba
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 38824c40db1f4fb3de9a0a124f74b71eb1ee2f17
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045020"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517132"
 ---
 # <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでレポートの表示モードと編集モードを切り替える
 
@@ -30,7 +29,7 @@ Power BI ワークスペース コレクションでレポートの表示モー�
 > [!NOTE]
 > これにより、既存のレポートを編集して変更を保存できます。 さらに、"**名前を付けて保存**" 操作をサポートする場合は、追加のアクセス許可を指定する必要があります。 詳細については、[Scopes](app-token-flow.md#scopes) に関するページを参照してください。
 
-```
+```csharp
 using Microsoft.PowerBI.Security;
 
 // rlsUsername and roles are optional
@@ -46,9 +45,10 @@ var token = embedToken.Generate("{access key}");
 
 JavaScript の例:
 
-```
+```html
    <div id="reportContainer"></div>
 
+    <script>
     // Get models. Models, it contains enums that can be used.
     var models = window['powerbi-client'].models;
 
@@ -74,6 +74,7 @@ JavaScript の例:
 
     // Embed the report and display it within the div container.
     var report = powerbi.embed(reportContainer, config);
+    </script>
 ```
 
 これは、**models.ViewMode.View** に設定されている **viewMode** に基づいて表示モードでレポートを埋め込むことを示します。
@@ -82,7 +83,7 @@ JavaScript の例:
 
 次の JavaScript を使用すると、モードが編集モードのときに表示モードに切り替えることができます。
 
-```
+```javascript
 // Get a reference to the embedded report HTML element
 var reportContainer = $('#reportContainer')[0];
 
@@ -98,7 +99,7 @@ report.switchMode("view");
 
 次の JavaScript を使用すると、モードが表示モードのときに編集モードに切り替えることができます。
 
-```
+```javascript
 // Get a reference to the embedded report HTML element
 var reportContainer = $('#reportContainer')[0];
 
@@ -115,9 +116,9 @@ report.switchMode("edit");
 [Get started with Microsoft Power BI Embedded sample (Microsoft Power BI Embedded のサンプルの使用)](get-started-sample.md)  
 [レポートの埋め込み](embed-report.md)  
 [Power BI ワークスペース コレクションでの認証と承認](app-token-flow.md)  
-[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_)  
+[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)  
 [JavaScript による埋め込みのサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 [PowerBI-CSharp Git リポジトリ](https://github.com/Microsoft/PowerBI-CSharp)  
 [PowerBI-Node Git リポジトリ](https://github.com/Microsoft/PowerBI-Node)  
 
-ご質問は、 [Power BI コミュニティ](http://community.powerbi.com/)で尋ねてみてください。
+ご質問は、 [Power BI コミュニティ](https://community.powerbi.com/)で尋ねてみてください。

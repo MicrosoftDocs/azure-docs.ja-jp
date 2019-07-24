@@ -7,53 +7,65 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 562320b49f92d9ebb0c74c06e27fab63681955be
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: b8417fe4c15259a7fd485254cf9edd2c8c082e92
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634075"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629692"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>HDInsight 上の Apache Hive で Java UDF を使用する
 
 Apache Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成する方法について説明します。 この例の Java UDF では、テキスト文字列のテーブルをすべて小文字の文字に変換します。
 
-## <a name="requirements"></a>必要条件
+## <a name="prerequisites"></a>前提条件
 
-* HDInsight クラスター 
-
-    > [!IMPORTANT]
-    > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
-
-    このドキュメントのほとんどの手順は、Windows ベースと Linux ベースの両方のクラスターで実行できます。 ただし、コンパイル済みの UDF をクラスターにアップロードして実行するための手順は、Linux ベースのクラスター固有の内容です。 Windows ベースのクラスターで使用できる情報へのリンクが提供されます。
-
-* [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 以降 (または同等の OpenJDK など)
-
-* [Apache Maven](http://maven.apache.org/)
+* HDInsight 上の Hadoop クラスター。 [Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
+* [Java Developer Kit (JDK) バージョン 8](https://aka.ms/azure-jdks)
+* Apache に従って適切に[インストール](https://maven.apache.org/install.html)された [Apache Maven](https://maven.apache.org/download.cgi)。  Maven は Java プロジェクトのプロジェクト ビルド システムです。
+* クラスターのプライマリ ストレージの [URI スキーム](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Storage では wasb://、Azure Data Lake Storage Gen2 では abfs://、Azure Data Lake Storage Gen1 では adl:// です。 Azure Storage または Data Lake Storage Gen2 で安全な転送が有効になっている場合、URI はそれぞれ wasbs:// または abfss:// になります。「[安全な転送](../../storage/common/storage-require-secure-transfer.md)」も参照してください。
 
 * テキスト エディターまたは Java IDE
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Windows クライアントで Python ファイルを作成する場合は、行末に LF が用いられているエディターを使用する必要があります。 エディターで LF と CRLF のどちらが使用されているかが不明な場合は、「[トラブルシューティング](#troubleshooting)」セクションで、CR 文字を削除する手順をご覧ください。
 
-## <a name="create-an-example-java-udf"></a>Java UDF のサンプルを作成する 
+## <a name="test-environment"></a>テスト環境
+この記事で使用された環境は、Windows 10 を実行しているコンピューターです。  コマンドはコマンド プロンプトで実行され、さまざまなファイルがメモ帳で編集されています。 ご使用の環境に応じて変更します。
 
-1. コマンド ラインで、次の手順を使用して新しい Maven プロジェクトを作成します。
+コマンド プロンプトで以下のコマンドを入力して、作業環境を作成を作成します。
 
-    ```bash
+```cmd
+IF NOT EXIST C:\HDI MKDIR C:\HDI
+cd C:\HDI
+```
+
+## <a name="create-an-example-java-udf"></a>Java UDF のサンプルを作成する
+
+1. 次のコマンドを入力して、新しい Maven プロジェクトを作成します。
+
+    ```cmd
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-   > [!NOTE]
-   > PowerShell を使用している場合は、パラメーターを引用符で囲む必要があります。 たとえば、「 `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"` 」のように入力します。
+    このコマンドにより、Maven プロジェクトを含む `exampleudf` という名前のディレクトリが作成されます。
 
-    このコマンドにより、Maven プロジェクトを含む **exampleudf** という名前のディレクトリが作成されます。
+2. プロジェクトが作成されたら、次のコマンドを入力し、プロジェクトの一部として作成された `exampleudf/src/test` ディレクトリを削除します。
 
-2. プロジェクトが作成されたら、プロジェクトの一部として作成された **exampleudf/src/test** ディレクトリを削除します。
+    ```cmd
+    cd ExampleUDF
+    rmdir /S /Q "src/test"
+    ```
 
-3. **exampleudf/pom.xml** を開き、既存の `<dependencies>` エントリを次の XML と置き換えます。
+3. 以下のコマンドを入力して `pom.xml` を開きます。
+
+    ```cmd
+    notepad pom.xml
+    ```
+
+    次に、既存の `<dependencies>` エントリを次の XML で置き換えます。
 
     ```xml
     <dependencies>
@@ -93,7 +105,7 @@ Apache Hive と連携する Java ベースのユーザー定義関数 (UDF) を�
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>2.3</version>
+                <version>3.2.1</version>
                 <configuration>
                     <!-- Keep us from getting a can't overwrite file error -->
                     <transformers>
@@ -132,9 +144,13 @@ Apache Hive と連携する Java ベースのユーザー定義関数 (UDF) を�
 
     変更を加えたら、ファイルを保存します。
 
-4. **exampleudf/src/main/java/com/microsoft/examples/App.java** の名前を **ExampleUDF.java** に変更して、このファイルをエディターで開きます。
+4. 以下のコマンドを入力して、新しいファイル `ExampleUDF.java` を作成して開きます。
 
-5. **ExampleUDF.java** ファイルの内容を次のコードに置き換えて、ファイルを保存します。
+    ```cmd
+    notepad src/main/java/com/microsoft/examples/ExampleUDF.java
+    ```
+
+    次に、以下の Java コードをコピーして新しいファイルに貼り付けます。 その後、ファイルを閉じます。
 
     ```java
     package com.microsoft.examples;
@@ -165,31 +181,29 @@ Apache Hive と連携する Java ベースのユーザー定義関数 (UDF) を�
 
 ## <a name="build-and-install-the-udf"></a>UDF をビルドしてインストールする
 
-1. 次のコマンドを使用して、UDF をコンパイルしパッケージ化します。
+以下のコマンドでは、`sshuser` を実際のユーザー名と置き換えます (異なる場合)。 `mycluster` を実際のクラスター名に置き換えます。
 
-    ```bash
+1. 次のコマンドを入力して、UDF をコンパイルしパッケージ化します。
+
+    ```cmd
     mvn compile package
     ```
 
     このコマンドで、UDF をビルドして `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` ファイルにパッケージ化します。
 
-2. `scp` コマンドを使用して、ファイルを HDInsight クラスターにコピーします。
+2. `scp`コマンドを使用して、HDInsight クラスターにファイルをコピーします。次のコマンドを入力します。
 
-    ```bash
-    scp ./target/ExampleUDF-1.0-SNAPSHOT.jar myuser@mycluster-ssh.azurehdinsight
+    ```cmd
+    scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net:
     ```
 
-    `myuser` をクラスターの SSH ユーザー アカウントに置き換えます。 `mycluster` をクラスター名に置き換えます。 SSH アカウントをセキュリティ保護するためにパスワードを使用している場合は、そのパスワードの入力を求められます。 証明書を使用している場合は、 `-i` パラメーターを使用して、秘密キー ファイルを指定することが必要な場合があります。
+3. 次のコマンドを入力して、SSH を使用してクラスターに接続します。
 
-3. SSH を使用してクラスターに接続します。
-
-    ```bash
-    ssh myuser@mycluster-ssh.azurehdinsight.net
+    ```cmd
+    ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-    詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
-
-4. SSH セッションで jar ファイルを HDInsight ストレージにコピーします。
+4. オープン SSH セッションで jar ファイルを HDInsight ストレージにコピーします。
 
     ```bash
     hdfs dfs -put ExampleUDF-1.0-SNAPSHOT.jar /example/jars
@@ -197,7 +211,7 @@ Apache Hive と連携する Java ベースのユーザー定義関数 (UDF) を�
 
 ## <a name="use-the-udf-from-hive"></a>Hive から UDF を使用する
 
-1. SSH セッションから、次のコマンドを使用して BeeLineクライアントを開始します。
+1. 次のコマンドを入力して、SSH セッションから BeeLine クライアントを開始します。
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
@@ -208,38 +222,51 @@ Apache Hive と連携する Java ベースのユーザー定義関数 (UDF) を�
 2. `jdbc:hive2://localhost:10001/>` プロンプトが表示されたら、次のように入力して、UDF を Hive に追加し、関数として公開します。
 
     ```hiveql
-    ADD JAR wasb:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;
+    ADD JAR wasbs:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;
     CREATE TEMPORARY FUNCTION tolower as 'com.microsoft.examples.ExampleUDF';
     ```
-
-    > [!NOTE]
-    > この例では、Azure ストレージが、クラスターの既定のストレージであることを前提としています。 クラスターが代わりに Data Lake Store を使用する場合は、`wasb:///` の値を `adl:///` に変更します。
 
 3. UDF を使用して、テーブルから取得した値を小文字の文字列に変換します。
 
     ```hiveql
-    SELECT tolower(deviceplatform) FROM hivesampletable LIMIT 10;
+    SELECT tolower(state) AS ExampleUDF, state FROM hivesampletable LIMIT 10;
     ```
 
-    このクエリは、テーブルからデバイスのプラットフォーム (Android、Windows、iOS など) を選択して、その文字列を小文字に変換して表示します。 次のテキストのような出力が表示されます。
+    このクエリは、テーブルから状態を選択し、その文字列と小文字に変換したものを一緒に表示します。 次のテキストのような出力が表示されます。
 
-        +----------+--+
-        |   _c0    |
-        +----------+--+
-        | android  |
-        | android  |
-        | android  |
-        | android  |
-        | android  |
-        | android  |
-        | android  |
-        | android  |
-        | android  |
-        | android  |
-        +----------+--+
+        +---------------+---------------+--+
+        |  exampleudf   |     state     |
+        +---------------+---------------+--+
+        | california    | California    |
+        | pennsylvania  | Pennsylvania  |
+        | pennsylvania  | Pennsylvania  |
+        | pennsylvania  | Pennsylvania  |
+        | colorado      | Colorado      |
+        | colorado      | Colorado      |
+        | colorado      | Colorado      |
+        | utah          | Utah          |
+        | utah          | Utah          |
+        | colorado      | Colorado      |
+        +---------------+---------------+--+
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+Hive ジョブを実行しているときに、次のテキストようなエラーが発生する場合があります。
+
+    Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
+
+この問題は、Python ファイルの行末が原因で発生する場合があります。 多くの Windows 版エディターでは行末に既定でCRLF が使用されていますが、Linux アプリケーションでは通常、行末は LF であることを前提としています。
+
+ファイルを HDInsight にアップロードする前に、次の PowerShell ステートメントを使用して CR 文字を削除できます。
+
+```PowerShell
+# Set $original_file to the python file path
+$text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
+[IO.File]::WriteAllText($original_file, $text)
+```
 
 ## <a name="next-steps"></a>次の手順
 
-Hive の他の使用方法について [HDInsight での Hive の使用](hdinsight-use-hive.md)を参照します。
+Hive の他の使用方法については、[HDInsight での Apache Hive の使用](hdinsight-use-hive.md)に関するページを参照してください。
 
-Hive のユーザー定義関数の詳細について、apache.org で Hive wiki の [Hive 演算子とユーザー定義関数](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) のセクションを参照します。
+Hive のユーザー定義関数の詳細については、apache.org の Hive wiki で、[Apache Hive の演算子とユーザー定義関数](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF)に関するセクションを参照してください。

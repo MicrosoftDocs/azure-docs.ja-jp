@@ -9,39 +9,39 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: cff24991263ece54c143e5da8a3eb2a9e5b4af18
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 3e7ee293c2c33f169b3a5e4a7bded3190a9dc209
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634500"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443226"
 ---
-# <a name="run-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>HDInsight 上の Apache Hadoop で REST を使用して Hive クエリを実行する
+# <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>HDInsight 上の Apache Hadoop で REST を使用して Apache Hive クエリを実行する
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-WebHCat REST API を使用して Azure HDInsight クラスター上の Apache Hadoop で Hive クエリを実行する方法について説明します。
+WebHCat REST API を使用して Azure HDInsight クラスター上の Apache Hadoop で Apache Hive クエリを実行する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * バージョン 3.4 以上の HDInsight クラスターでの Linux ベースの Hadoop。
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
-* REST クライアント。 このドキュメントでは、Windows PowerShell と [Curl](http://curl.haxx.se/) の例を使用します。
+* REST クライアント。 このドキュメントでは、Windows PowerShell と [Curl](https://curl.haxx.se/) の例を使用します。
 
-    > [!NOTE]
-    > Azure PowerShell は、HDInsight 上の Hive を操作するための専用のコマンドレットを提供します。 詳細については、[Azure PowerShell を使用した Hive の実行](apache-hadoop-use-hive-powershell.md)に関するドキュメントをご覧ください。
+    > [!NOTE]  
+    > Azure PowerShell は、HDInsight 上の Hive を操作するための専用のコマンドレットを提供します。 詳細については、[Azure PowerShell を使用した Apache Hive の実行](apache-hadoop-use-hive-powershell.md)に関するドキュメントをご覧ください。
 
-また、このドキュメントでは、Windows PowerShell と [Jq](http://stedolan.github.io/jq/) を使用して、REST 要求から返された JSON データを処理します。
+また、このドキュメントでは、Windows PowerShell と [Jq](https://stedolan.github.io/jq/) を使用して、REST 要求から返された JSON データを処理します。
 
 ## <a id="curl"></a>Hive クエリを実行する
 
-> [!NOTE]
+> [!NOTE]  
 > cURL、または WebHCat を用いたその他 REST 通信を使用する場合は、HDInsight クラスター管理者のユーザー名とパスワードを指定して要求を認証する必要があります。
 >
-> REST API のセキュリティは、 [基本認証](http://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。 資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
+> REST API のセキュリティは、 [基本認証](https://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。 資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
 
 1. このドキュメントのスクリプトで使用されるクラスター ログインを設定するには、次のいずれかのコマンドを使用します。
 
@@ -66,7 +66,7 @@ WebHCat REST API を使用して Azure HDInsight クラスター上の Apache Ha
 3. HDInsight クラスターに接続できることを確認するには、次のいずれかのコマンドを使用します。
 
     ```bash
-    curl -u $LOGIN -G https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/status)
+    curl -u $LOGIN -G https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/status
     ```
     
     ```powershell
@@ -135,7 +135,7 @@ WebHCat REST API を使用して Azure HDInsight クラスター上の Apache Ha
    * `DROP TABLE` - テーブルが既に存在する場合は削除されます。
    * `CREATE EXTERNAL TABLE` - 新しい "外部" テーブルを Hive に作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。
 
-     > [!NOTE]
+     > [!NOTE]  
      > 基になるデータが外部ソースによって更新されると考えられる場合は、外部テーブルを使用する必要があります。 たとえば、データの自動アップロード処理や別の MapReduce 操作の場合です。
      >
      > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
@@ -144,7 +144,7 @@ WebHCat REST API を使用して Azure HDInsight クラスター上の Apache Ha
    * `STORED AS TEXTFILE LOCATION` - データの格納先 (example/data ディレクトリ) と、データがテキストとして格納されていることを Hive に伝えます。
    * `SELECT` - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 この値を含む行が 3 行あるため、このステートメントでは値 **3** が返されます。
 
-     > [!NOTE]
+     > [!NOTE]  
      > Curl を使用したとき、HiveQL ステートメントのスペースが `+` に置き換わることに注意してください。 スペースを含む引用符で囲まれた値 (区切り記号など) は `+`に置き換わりません。
 
       このコマンドは、ジョブのステータスの確認に使用できるジョブ ID を返します。
@@ -177,32 +177,27 @@ WebHCat REST API を使用して Azure HDInsight クラスター上の Apache Ha
 
 HDInsight での Hive に関する全般的な情報
 
-* [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
+* [HDInsight 上の Apache Hadoop で Apache Hive を使用する](hdinsight-use-hive.md)
 
 HDInsight での Hadoop のその他の使用方法に関する情報
 
-* [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
-* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
-
-Hive で Tez を使用する場合、デバッグ情報については、次のドキュメントを参照してください。
-
-* [HDInsight で Ambari ビューを使用して Tez ジョブをデバッグする](../hdinsight-debug-ambari-tez-view.md)
+* [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
+* [HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)
 
 このドキュメントで使用されている REST API の詳細については、「[WebHCat リファレンス](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference)」に関するドキュメントをご覧ください。
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
-[apache-tez]: http://tez.apache.org
-[apache-hive]: http://hive.apache.org/
-[apache-log4j]: http://en.wikipedia.org/wiki/Log4j
+[apache-tez]: https://tez.apache.org
+[apache-hive]: https://hive.apache.org/
+[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
 [hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: http://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
+[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
 
 
-[hdinsight-use-oozie]: hdinsight-use-oozie.md
-[hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data.md
+[hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
 
 
 
@@ -211,6 +206,6 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
 
-[powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
+[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx
 
 

@@ -2,14 +2,14 @@
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 28c943b2588270af823c0712d4e510a4f018da3e
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 81bde837cd78646f1fc59d921246c72978ecb840
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50981568"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551545"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Azure の仮想マシンでインフラストラクチャ自動化ツールを使用する
 Azure の仮想マシン (VM) を一貫した方法で大規模に作成および管理するには、一般的に、何らかの形で自動化することが必要です。 Azure インフラストラクチャのデプロイと管理のライフサイクル全体を自動化できるツールやソリューションはたくさんあります。 この記事では、Azure で使用できるインフラストラクチャ自動化ツールの一部を紹介します。 これらのツールは、一般的に、次のいずれかのアプローチに適しています。
@@ -23,7 +23,7 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
     - [Azure Automation](#azure-automation) は、Azure とオンプレミス インフラストラクチャでアクションを実行できます。
 
 - アプリケーションのデプロイと配信を自動化する
-    - サンプルには、[Azure DevOps Services](#visual-studio-team-services) や [Jenkins](#jenkins) が含まれます。
+    - サンプルには、[Azure DevOps Services](#azure-devops-services) や [Jenkins](#jenkins) が含まれます。
 
 ## <a name="ansible"></a>Ansible
 [Ansible](https://www.ansible.com/) は、構成の管理、VM の作成、またはアプリケーションのデプロイ用の自動化エンジンです。 Ansible では、ターゲット マシンを認証および管理するために、通常は SSH キーによる、エージェントレス モデルを使用します。 構成タスクはプレイブックで定義し、特定のタスクを実行するために利用できるさまざまな Ansible モジュールが用意されています。 詳細については、「[How Ansible works (Ansible のしくみ)](https://www.ansible.com/how-ansible-works)」を参照してください。
@@ -57,17 +57,7 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
 
 cloud-init はディストリビューション全体でも有効です。 たとえば、パッケージをインストールするときに **apt-get install** や **yum install** は使用しません。 代わりに、cloud-init ではインストールするパッケージの一覧をユーザーが定義できます。 cloud-init によって、選択したディストリビューションに対してネイティブのパッケージ管理ツールが自動的に使用されます。
 
- Microsoft は、動作保証済み Linux ディストリビューションのパートナーと協力して、cloud-init 対応のイメージを Azure Marketplace で利用できるようにする作業を行っています。 これらのイメージでは、cloud-init のデプロイと構成が、VM および仮想マシン スケール セット とシームレスに動作するようになります。 次の表は、現時点において Azure プラットフォームで利用できる cloud-init 対応イメージの概要を示したものです。
-
-| 発行元 | プラン | SKU | Version | cloud-init 対応
-|:--- |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |16.04 LTS |latest |はい | 
-|Canonical |UbuntuServer |14.04.5-LTS |latest |はい |
-|CoreOS |CoreOS |安定版 |latest |はい |
-|OpenLogic |CentOS |7-CI |latest |preview |
-|RedHat |RHEL |7-RAW-CI |latest |preview |
-
-Azure の cloud-init について詳しくは、次のページをご覧ください。
+Microsoft は、動作保証済み Linux ディストリビューションのパートナーと協力して、cloud-init 対応のイメージを Azure Marketplace で利用できるようにする作業を行っています。 これらのイメージでは、cloud-init のデプロイと構成が、VM および仮想マシン スケール セット とシームレスに動作するようになります。 Azure の cloud-init について詳しくは、次のページをご覧ください。
 
 - [Azure での Linux 仮想マシンに対する cloud-init のサポート](../articles/virtual-machines/linux/using-cloud-init.md)
 - [cloud-init を使用した VM 構成の自動化に関するチュートリアル](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md)
@@ -80,7 +70,7 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 
 以下の項目について説明します。
 
-- [基本的な DSC 構成を作成する](https://msdn.microsoft.com/powershell/dsc/quickstart)。
+- [基本的な DSC 構成を作成する](https://msdn.microsoft.com/powershell/dsc/quickstarts/website-quickstart)。
 - [DSC プル サーバーを構成する](https://msdn.microsoft.com/powershell/dsc/pullserver)。
 - [Linux 用の DSC を使用する](https://msdn.microsoft.com/powershell/dsc/lnxgettingstarted)。
 

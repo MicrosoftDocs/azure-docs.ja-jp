@@ -25,7 +25,7 @@ ms.locfileid: "50229965"
 
 <a name="compose-action-example"></a>
 
-## <a name="compose"></a>Compose
+## <a name="compose"></a>作成
 
 [**作成**アクションの例](../logic-apps/logic-apps-perform-data-operations.md#compose-action)を試すには、次のアクション定義を使用できます。
 
@@ -185,7 +185,7 @@ ms.locfileid: "50229965"
 
 <a name="filter-array-action-example"></a>
 
-## <a name="filter-array"></a>[配列のフィルター処理]
+## <a name="filter-array"></a>配列のフィルター処理
 
 [**配列のフィルター処理**アクションの例](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action)を試すには、次のアクション定義を使用できます。
 
@@ -226,7 +226,7 @@ ms.locfileid: "50229965"
 
 <a name="join-action-example"></a>
 
-## <a name="join"></a>Join
+## <a name="join"></a>結合
 
 [**結合**アクションの例](../logic-apps/logic-apps-perform-data-operations.md#join-action)を試すには、次のアクション定義を使用できます。
 
@@ -267,9 +267,9 @@ ms.locfileid: "50229965"
 
 <a name="parse-json-action-example"></a>
 
-## <a name="parse-json"></a>Parse JSON
+## <a name="parse-json"></a>JSON の解析
 
-[**JSON 解析**アクションの例](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action)を試すには、次のアクション定義を使用できます。
+[**JSON の解析**アクションの例](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action)を試すには、次のアクション定義を使用できます。
 
 ```json
 "actions": {
@@ -326,7 +326,7 @@ ms.locfileid: "50229965"
 
 <a name="select-action-example"></a>
 
-## <a name="select"></a>Select
+## <a name="select"></a>選択
 
 [**選択**アクションの例](../logic-apps/logic-apps-perform-data-operations.md#select-action)を試すには、次のアクション定義を使用できます。
 

@@ -4,7 +4,7 @@ description: Visual Studio を利用し、Azure Service Fabric のアプリケ�
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: c317cb7e-7eae-466e-ba41-6aa2518be5cf
 ms.service: service-fabric
@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
-ms.openlocfilehash: 2e7b7d9b0a194b13de9bdf759f4f3be645ed7c2e
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 4744858869e10094389be58ddd3960cb8cc2773a
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442171"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664847"
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Visual Studio を利用すれば、Service Fabric アプリケーションの記述と管理が簡単になりまする
 Azure Service Fabric アプリケーションとサービスを Visual Studio で管理できます。 [開発環境のセットアップ](service-fabric-get-started.md)が済んだら、Visual Studio を使用して、Service Fabric アプリケーションの作成、サービスの追加、ローカル開発クラスターでのアプリケーションのパッケージ化、登録、およびデプロイができます。
@@ -40,14 +40,14 @@ Visual Studio で、**[F5]** キーを押すと、アプリケーションがデ
 Visual Studio には、**アプリケーション デバッグ モード**というプロパティが用意されており、Visual Studio でデバッグ時にアプリケーションのデプロイを処理する方法を制御できます。
 
 #### <a name="to-set-the-application-debug-mode-property"></a>Application Debug Mode (アプリケーション デバッグ モード) プロパティを設定するには
-1. Service Fabric アプリケーション プロジェクトの (*.sfproj) ショートカット メニューで、**[プロパティ]** を選択します (または **[F4]** キーを押します)。
+1. Service Fabric アプリケーション プロジェクトの (*.sfproj) ショートカット メニューで、 **[プロパティ]** を選択します (または **[F4]** キーを押します)。
 2. **[プロパティ]** ウィンドウで **[アプリケーション デバッグ モード]** プロパティを設定します。
 
 ![Set Application Debug Mode Property][debugmodeproperty]
 
 #### <a name="application-debug-modes"></a>アプリケーション デバッグ モード
 
-1. **アプリケーションの更新**: このモードでは、コードをすばやく変更およびデバッグでき、デバッグ中の静的な Web ファイルの編集がサポートされます。 このモードが機能するのは、ローカル開発クラスターが [1 ノード モード] の場合のみです。 これは既定のアプリケーション デバッグ モード (/service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode) です。
+1. **アプリケーションの更新**: このモードでは、コードをすばやく変更およびデバッグでき、デバッグ中の静的な Web ファイルの編集がサポートされます。 このモードが機能するのは、ローカル開発クラスターが 1 ノード モードの場合のみです。 これが既定のアプリケーション デバッグ モードです。
 2. **アプリケーションの削除** : アプリケーションは、デバッグ セッションが終了したときに削除されます。
 3. **自動アップグレード**: デバッグ セッションが終了しても、アプリケーションは実行されたままになります。 次回のデバッグ セッションでは、デプロイはアップグレードとして扱われます。 アップグレード プロセスでは、前のデバッグ セッションで入力したすべてのデータが保持されます。
 4. **アプリケーションの保持**: デバッグ セッションが終了しても、アプリケーションはクラスターで実行されたままになります。 次回のデバッグ セッションの開始時に、アプリケーションは削除されます。

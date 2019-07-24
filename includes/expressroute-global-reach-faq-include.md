@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 10/23/2018
+ms.date: 03/19/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4a3581b3d61c5ad17352c2865fc059704c1eece1
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 551b1d4924c354eb6fd501c1b82ed306a7ea4822
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50035329"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305125"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>ExpressRoute Global Reach とは何ですか。
 
@@ -33,16 +33,7 @@ ExpressRoute は、オンプレミスのネットワークから Microsoft ク�
 
 ### <a name="where-is-expressroute-global-reach-supported"></a>ExpressRoute Global Reach はどこでサポートされていますか。
 
-ExpressRoute Global Reach は以下の国でサポートされています。 ExpressRoute 回線は、これらの国のピアリング拠点に作成する必要があります。
-
-* オーストラリア
-* フランス
-* 香港特別行政区
-* アイルランド
-* 日本
-* オランダ
-* イギリス
-* 米国
+ExpressRoute Global Reach は[選ばれた国や場所](../articles/expressroute/expressroute-global-reach.md)でサポートされています。 ExpressRoute 回線は、これらの国や場所のピアリング拠点に作成する必要があります。
 
 ### <a name="i-have-more-than-two-on-premises-networks-each-connected-to-an-expressroute-circuit-can-i-enable-expressroute-global-reach-to-connect-all-of-my-on-premises-networks-together"></a>3 つ以上のオンプレミスのネットワークがあり、それぞれが ExpressRoute 回線に接続されています。 ExpressRoute Global Reach を使用して、オンプレミスのすべてのネットワークを互いに接続することはできますか。
 
@@ -58,7 +49,7 @@ ExpressRoute Global Reach は以下の国でサポートされています。 Ex
 
 ### <a name="what-is-the-network-throughput-i-can-expect-between-my-on-premises-networks-after-i-enable-expressroute-global-reach"></a>ExpressRoute Global Reach を有効にした後でオンプレミスのネットワーク間では、どのようなネットワーク スループットを期待できますか。
 
-ExpressRoute Global Reach によって有効にしたオンプレミスのネットワーク間のネットワーク スループットは、2 つの ExpressRoute 回線のうち、小さい方によって制限されます。
+ExpressRoute Global Reach によって有効にしたオンプレミスのネットワーク間のネットワーク スループットは、2 つの ExpressRoute 回線のうち、小さい方によって制限されます。 オンプレミスから Azure へのトラフィックとオンプレミス間のトラフィックでは同じ回線を共有しているため、同じ帯域幅の上限が適用されます。 
 
 ### <a name="with-expressroute-global-reach-what-are-the-limits-on-the-number-of-routes-i-can-advertise-and-the-number-of-routes-i-will-receive"></a>ExpressRoute Global Reach では、アドバタイズできるルートの数と受信できるルートの数はいくつに制限されていますか。
 

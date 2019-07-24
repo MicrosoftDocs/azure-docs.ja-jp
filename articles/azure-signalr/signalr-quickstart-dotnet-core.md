@@ -1,27 +1,20 @@
 ---
-title: Azure SignalR Service の使用方法に関するクイック スタート | Microsoft Docs
+title: Azure SignalR Service の使用方法に関するクイック スタート
 description: Azure SignalR Service を使って ASP.NET Core MVC アプリによるチャット ルームを作成する方法について説明します。
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
-ms.assetid: ''
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.tgt_pltfrm: ASP.NET
-ms.workload: tbd
-ms.date: 06/13/2018
+ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: b667f38c4e3d2a3fad323171a3b3b49ed3619fd9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 248861848aa905f9cbff01ab60affd7cf21aae78
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959480"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004806"
 ---
-# <a name="quickstart-create-a-chat-room-with-signalr-service"></a>クイック スタート: SignalR Service を使ってチャット ルームを作成する
+# <a name="quickstart-create-a-chat-room-with-signalr-service"></a>クイック スタート:SignalR Service を使ってチャット ルームを作成する
 
 
 Azure SignalR Service は、開発者がリアルタイムの機能を使って Web アプリケーションを簡単に作成できるようにするための Azure サービスです。 このサービスは、[SignalR for ASP.NET Core 2.0](https://docs.microsoft.com/aspnet/core/signalr/introduction) に基づいています。
@@ -41,7 +34,7 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
 ## <a name="prerequisites"></a>前提条件
 
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows) をインストールする
-* github リポジトリの [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) をダウンロードまたは複製する。 
+* GitHub リポジトリの [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) をダウンロードまたは複製する。 
 
 ## <a name="create-an-azure-signalr-resource"></a>Azure SignalR リソースの作成
 
@@ -86,7 +79,7 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
 
 1. 次のコマンドを実行して、`Microsoft.Azure.SignalR` NuGet パッケージへの参照を追加します。
 
-        dotnet add package Microsoft.Azure.SignalR -v 1.0.0-*
+        dotnet add package Microsoft.Azure.SignalR
 
 2. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
 
@@ -99,12 +92,12 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
     このコマンドは、*.csproj* ファイルと同じディレクトリで実行する必要があります。
 
     ```
-    dotnet user-secrets set Azure:SignalR:ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
+    dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"    
     ```
 
     シークレット マネージャーは、ローカルでホストされているときの、Web アプリのテスト用にのみ使用されます。 この後のチュートリアルでは、Azure にチャット Web アプリをデプロイします。 この Web アプリが Azure にデプロイされた後は、シークレット マネージャーで接続文字列を保存するのではなく、アプリケーション設定を使用します。
 
-    このシークレットには構成 API でアクセスします。 サポートされているすべてのプラットフォームで構成 API を使用する構成名にコロン (:) を使用できます。[環境別の構成](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0#configuration-by-environment)に関するページを参照してください。 
+    このシークレットには構成 API でアクセスします。 サポートされているすべてのプラットフォームで構成 API を使用する構成名にコロン (:) を使用できます。[環境別の構成](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0)に関するページを参照してください。 
 
 
 4. *Startup.cs* を開き、`services.AddSignalR().AddAzureSignalR()` メソッドを呼び出して Azure SignalR Service を使うように、`ConfigureServices` メソッドを更新します。
@@ -133,8 +126,8 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
 
 SignalR では、ハブはクライアントから呼び出せる一連のメソッドを公開する、コア コンポーネントです。 このセクションでは、次の 2 つのメソッドでハブ クラスを定義します。 
 
-* `Broadcast`: このメソッドは、すべてのクライアントにメッセージをブロードキャストします。
-* `Echo`: このメソッドは、メッセージを呼び出し元に返送します。
+* `Broadcast`:このメソッドは、すべてのクライアントにメッセージをブロードキャストします。
+* `Echo`:このメソッドは、メッセージを呼び出し元に返送します。
 
 いずれのメソッドでも、ASP.NET Core SignalR SDK によって提供されている、`Clients` インターフェイスが使用されます。 このインターフェイスを使用すると、接続されているすべてのクライアントにアクセスし、それらのクライアントにコンテンツをプッシュできます。
 
@@ -274,6 +267,6 @@ connection.start()
 このクイック スタートでは、新しい Azure SignalR Service リソースを作成し、そのリソースとASP.NET Core Web アプリを使用して、接続されている複数のクライアントにコンテンツの更新をリアルタイムにプッシュしました。 Azure SignalR Server の使用についてさらに学習するには、認証を実演する次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Azure SignalR Service の認証](./signalr-authenticate-oauth.md)
+> [Azure SignalR Service の認証](./signalr-concept-authenticate-oauth.md)
 
 

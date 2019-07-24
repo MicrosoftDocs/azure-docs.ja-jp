@@ -1,18 +1,19 @@
 ---
 title: サービス プリンシパルを使用して Azure Analysis Services タスクを自動化する | Microsoft Docs
+description: Azure Analysis Services タスクを自動化するためのサービス プリンシパルを作成する方法について説明します。
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b9a91b478ea9012a1d041fc102765890954c2fbb
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: b10be061e015686c68684723fd2d73c1431c7266
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956189"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699408"
 ---
 # <a name="automation-with-service-principals"></a>サービス プリンシパルによる自動化
 
@@ -44,11 +45,13 @@ Analysis Services サーバー管理操作のためにサービス プリンシ�
 
 ### <a name="powershell"></a>PowerShell
 
-[AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices) モジュールによるリソース管理操作でサービス プリンシパルを使用するとき、`Login-AzureRmAccount` コマンドレットを使用します。 [SQLServer](https://www.powershellgallery.com/packages/SqlServer) モジュールによるサーバー操作のためにサービス プリンシパルを使用するとき、`Add-AzureAnalysisServicesAccount` コマンドレットを使用します。 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+[Az.AnalysisServices](/powershell/module/az.analysisservices) モジュールによるリソース管理操作でサービス プリンシパルを使用するときは、`Connect-AzAccount` コマンドレットを使用します。 [SQLServer](https://www.powershellgallery.com/packages/SqlServer) モジュールによるサーバー操作のためにサービス プリンシパルを使用するとき、`Add-AzAnalysisServicesAccount` コマンドレットを使用します。 
 
 次の例では、appID とパスワードを使用し、モデル データベース更新操作を実行します。
 
-```PowerShell
+```powershell
 Param (
 
         [Parameter(Mandatory=$true)] [String] $AppId,
@@ -59,9 +62,7 @@ $PWord = ConvertTo-SecureString -String $PlainPWord -AsPlainText -Force
 
 $Credential = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $AppId, $PWord
 
-Add-AzureAnalysisServicesAccount -Credential $Credential -ServicePrincipal -TenantId $TenantId -RolloutEnvironment "westcentralus.asazure.windows.net"
-
-Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserver" -TableName "MyTable" -Database "MyDb" -RefreshType "Full"
+Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserver" -TableName "MyTable" -Database "MyDb" -RefreshType "Full" -ServicePrincipal -ApplicationId $AppId -TenantId $TenantId -Credential $Credential
 ```
 
 ### <a name="amo-and-adomd"></a>AMO と ADOMD 
@@ -83,5 +84,5 @@ db.Model.SaveChanges();
 ```
 
 ## <a name="next-steps"></a>次の手順
-[Azure PowerShell でのログイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
+[Azure PowerShell を使用してサインインする](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
 [サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)   

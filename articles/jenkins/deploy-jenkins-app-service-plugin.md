@@ -3,17 +3,17 @@ title: Jenkins プラグインを使用した Azure App Service へのデプロ�
 description: Azure App Service Jenkins プラグインを使用して、Jenkins で Java Web アプリを Azure にデプロイする方法について説明します。
 ms.service: jenkins
 keywords: Jenkins, Azure, 開発, App Service
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 5f76d18662105df6d278e09e047baa13773ab4ac
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 58835b66824d55b64b77e34df64d34c8da1c269a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319355"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864815"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Jenkins プラグインを使用した Azure App Service へのデプロイ 
 
@@ -55,7 +55,7 @@ Web App for Containers にデプロイする場合は、ビルドに使用する
 Azure にデプロイするには、Azure サービス プリンシパルが必要です。 
 
 
-1. Azure サービス プリンシパルを作成するには、[Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) または [Azure Portal](/azure/azure-resource-manager/resource-group-create-service-principal-portal) を使用します。
+1. Azure サービス プリンシパルを作成するには、[Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)  または [Azure portal](/azure/azure-resource-manager/resource-group-create-service-principal-portal) を使用します。
 2. Jenkins ダッシュボードで、**[Credentials]\(資格情報\)** > **[System]\(システム\)** を選択します。 次に、**[Global credentials(unrestricted)]\(グローバル資格情報 (制限なし)\)** を選択します。
 3. Microsoft Azure サービス プリンシパルを追加するには、**[Add Credentials]\(資格情報の追加\)** を選択します。 **[Subscription ID]\(サブスクリプション ID\)**、**[Client ID]\(クライアント ID\)**、**[Client Secret]\(クライアント シークレット\)**、**[OAuth 2.0 Token Endpoint]\(OAuth 2.0 トークン エンドポイント\)** の各フィールドに値を入力します。 **[ID]** フィールドを **[mySp]** に設定します。 この ID は、この記事の以降の手順で使用します。
 
@@ -64,9 +64,9 @@ Azure にデプロイするには、Azure サービス プリンシパルが必�
 
 ご自身のプロジェクトを Web Apps にデプロイする場合、ファイルのアップロードによってご自身のビルド成果物をアップロードできます。 Azure App Service では、複数のデプロイ オプションがサポートされます。 Azure App Service Jenkins プラグインにより、この処理がシンプルになり、デプロイ オプションは、ファイルの種類に基づいて取得されます。 
 
-* Java EE アプリケーションの場合は、[WAR デプロイ](/azure/app-service/app-service-deploy-zip#deploy-war-file)が使用されます。
-* Java SE アプリケーションの場合は、[ZIP デプロイ](/azure/app-service/app-service-deploy-zip#deploy-zip-file)が使用されます。
-* その他の言語については、[Git デプロイ](/azure/app-service/app-service-deploy-local-git)が使用されます。
+* Java EE アプリケーションの場合は、[WAR デプロイ](/azure/app-service/deploy-zip#deploy-war-file)が使用されます。
+* Java SE アプリケーションの場合は、[ZIP デプロイ](/azure/app-service/deploy-zip#deploy-zip-file)が使用されます。
+* その他の言語については、[Git デプロイ](/azure/app-service/deploy-local-git)が使用されます。
 
 Jenkins でジョブを設定する前に、Java アプリを実行するための Azure App Service プランと Web アプリが必要です。
 
@@ -77,7 +77,7 @@ Jenkins でジョブを設定する前に、Java アプリを実行するため�
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
     ```
     
-3. アプリで必要な Java ランタイム構成を設定します。 次の Azure CLI コマンドは、最新の JDK 8 および [Apache Tomcat](http://tomcat.apache.org/) バージョン 8.0 で動作するように Web アプリを構成します。
+3. アプリで必要な Java ランタイム構成を設定します。 次の Azure CLI コマンドは、最新の JDK 8 および [Apache Tomcat](https://tomcat.apache.org/) バージョン 8.0 で動作するように Web アプリを構成します。
     ```azurecli-interactive
     az webapp config set \
     --name <myAppName> \
@@ -90,7 +90,7 @@ Jenkins でジョブを設定する前に、Java アプリを実行するため�
 ### <a name="set-up-the-jenkins-job"></a>Jenkins ジョブを設定する
 
 1. Jenkins ダッシュボードで新しい**フリースタイル** プロジェクトを作成します。
-2. [Azure 用の単純な Java Web アプリ](https://github.com/azure-devops/javawebappsample)のローカル フォークを使用するように **[Source Code Management]\(ソース コード管理\)** フィールドを構成します。 **リポジトリの URL** 値を指定します  例: http://github.com/&lt;your_ID>/javawebappsample。
+2. [Azure 用の単純な Java Web アプリ](https://github.com/azure-devops/javawebappsample)のローカル フォークを使用するように **[Source Code Management]\(ソース コード管理\)** フィールドを構成します。 **リポジトリの URL** 値を指定します  (例: http:\//github.com/&lt;your_ID>/javawebappsample)。
 3. **[Execute shell]\(シェルの実行\)** コマンドを追加することで、Maven を使用してプロジェクトをビルドするステップを追加します。 この例では、ターゲット フォルダー内の \*.war ファイルの名前を **ROOT.war** に変更する追加のコマンドが必要です。   
     ```bash
     mvn clean package
@@ -143,7 +143,7 @@ Jenkins でジョブを設定するには、Linux 上の Web アプリが必要�
 ### <a name="set-up-the-jenkins-job-for-docker"></a>Docker の Jenkins ジョブを設定する
 
 1. Jenkins ダッシュボードで新しい**フリースタイル** プロジェクトを作成します。
-2. [Azure 用の単純な Java Web アプリ](https://github.com/azure-devops/javawebappsample)のローカル フォークを使用するように **[Source Code Management]\(ソース コード管理\)** フィールドを構成します。 **リポジトリの URL** 値を指定します  例: http://github.com/&lt;your_ID>/javawebappsample。
+2. [Azure 用の単純な Java Web アプリ](https://github.com/azure-devops/javawebappsample)のローカル フォークを使用するように **[Source Code Management]\(ソース コード管理\)** フィールドを構成します。 **リポジトリの URL** 値を指定します  (例: http:\//github.com/&lt;your_ID>/javawebappsample)。
 3. **[Execute shell]\(シェルの実行\)** コマンドを追加することで、Maven を使用してプロジェクトをビルドするステップを追加します。 コマンドに次の行を含めます。
     ```bash
     mvn clean package

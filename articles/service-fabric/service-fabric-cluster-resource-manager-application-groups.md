@@ -4,22 +4,22 @@ description: Service Fabric クラスター リソース マネージャーの�
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 4cae2370-77b3-49ce-bf40-030400c4260d
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: c8bab609212c837802be6f70e7fc74df6b5eaf2e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 7e90dc00a8e042e48d8016e25dda04c15ce9f619
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346255"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670636"
 ---
 # <a name="introduction-to-application-groups"></a>アプリケーション グループの概要
 通常、Service Fabric のクラスター リソース マネージャーは、クラスター全体で ([メトリック](service-fabric-cluster-resource-manager-metrics.md)で表される) 負荷を均等に分散することによって、クラスター リソースを管理します。 Service Fabric では、クラスター内のノードの容量が管理され、[容量](service-fabric-cluster-resource-manager-cluster-description.md)によってクラスター全体が管理されます。 メトリックと容量は、非常に多くの種類のワークロードに適していますが、複数の Service Fabric アプリケーションのインスタンスを頻繁に使用するパターンの場合、追加の要件が生じることがあります。 たとえば、次のような場合があります。
@@ -36,6 +36,7 @@ ms.locfileid: "44346255"
 次の図に、ノードの最大数が定義されているアプリケーション インスタンスと定義されていないアプリケーション インスタンスを示します。
 
 <center>
+
 ![最大ノード数を定義したアプリケーション インスタンス][Image1]
 </center>
 
@@ -107,7 +108,7 @@ await fc.ApplicationManager.CreateApplicationAsync(ad);
 - アプリケーション インスタンス内のサービス数が常に変動する 
 - サービスは存在するが、リソースを消費していない 
 
-アプリケーションのインスタンス用にリソースを予約するには、2 つの追加パラメーター *MinimumNodes* と *NodeReservationCapacity* を指定する必要があります。
+アプリケーションのインスタンス用にリソースを予約するには、2 つの追加パラメーターを指定する必要があります (*MinimumNodes* と *NodeReservationCapacity*)。
 
 - **MinimumNodes** - アプリケーション インスタンスを実行する最小ノード数を定義します。  
 - **NodeReservationCapacity** - この設定は、アプリケーションのメトリックに従います。 この値は、そのアプリケーションのサービスが実行されている任意のノードで、アプリケーション用に予約されているメトリックの合計です。
@@ -117,6 +118,7 @@ await fc.ApplicationManager.CreateApplicationAsync(ad);
 容量の予約の例を以下に示します。
 
 <center>
+
 ![予約容量を定義したアプリケーション インスタンス][Image2]
 </center>
 
@@ -205,7 +207,7 @@ Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicat
 この制限は、アプリケーションの作成中と更新中の両方に適用されます。
 
 ## <a name="how-not-to-use-application-capacity"></a>アプリケーション容量を使用すべきでない場合
-- アプリケーションを _特定_ のノードのサブセットに制限するためにアプリケーション グループの機能を使用しないでください。 言い換えれば、アプリケーションを最大で 5 つのノードで実行するように指定できますが、クラスター内の 5 つの特定のノードを指定することはできません。 サービスの配置の制約を使用すれば、特定のノードにアプリケーションを制限できます。
+- アプリケーションを_特定_のノードのサブセットに制限するためにアプリケーション グループの機能を使用しないでください。 言い換えれば、アプリケーションを最大で 5 つのノードで実行するように指定できますが、クラスター内の 5 つの特定のノードを指定することはできません。 サービスの配置の制約を使用すれば、特定のノードにアプリケーションを制限できます。
 - 同じアプリケーションの 2 つのサービスを同じノードに配置する目的では、アプリケーション容量を使用しないでください。 この場合は、[アフィニティ](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)または[配置](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)の制約を使用してください。
 
 ## <a name="next-steps"></a>次の手順

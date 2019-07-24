@@ -2,18 +2,18 @@
 title: Azure Batch プールでノード エンドポイントを構成する | Microsoft Docs
 description: Azure Batch プールの計算ノードで SSH ポートまたは RDP ポートへのアクセスを構成する方法と無効にする方法。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
-ms.author: danlep
-ms.openlocfilehash: 5898206761e5029f94b6d1f1b48223481ae2ca13
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.author: lahugh
+ms.openlocfilehash: a6c2c343b13b77048c772cb1e5c2ba06cf8add50
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358729"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457617"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールの計算ノードへのリモート アクセスを構成する/無効にする
 
@@ -31,7 +31,7 @@ Batch の既定では、ネットワークに接続している[ノード ユー
 * NAT プールを構成するとき、複数の NSG ルールを構成できます。 ルールは優先順位に従ってチェックされます。 いずれかのルールが適用されると、それ以上はルールの一致テストが行われなくなります。
 
 
-## <a name="example-deny-all-rdp-traffic"></a>例: すべての RDP トラフィックを拒否する
+## <a name="example-deny-all-rdp-traffic"></a>例:すべての RDP トラフィックを拒否する
 
 次の C# コードの抜粋からは、Windows プールの計算ノードに RDP エンドポイントを構成し、すべてのネットワーク トラフィックを拒否する方法を確認できます。 このエンドポイントでは、範囲 *60000 - 60099* のポートのフロントエンド プールが使用されます。 
 
@@ -48,7 +48,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 };
 ```
 
-## <a name="example-deny-all-ssh-traffic-from-the-internet"></a>例: インターネットからのすべての SSH トラフィックを拒否する
+## <a name="example-deny-all-ssh-traffic-from-the-internet"></a>例:インターネットからのすべての SSH トラフィックを拒否する
 
 次の Python コードの抜粋からは、Linux プールの計算ノードに SSH エンドポイントを構成し、すべてのインターネット トラフィックを拒否する方法を確認できます。 このエンドポイントでは、範囲 *4000 - 4100* のポートのフロントエンド プールが使用されます。 
 
@@ -74,7 +74,7 @@ pool.network_configuration=batchmodels.NetworkConfiguration(
 )
 ```
 
-## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>例: 特定の IP アドレスからの RDP トラフィックを許可する
+## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>例:特定の IP アドレスからの RDP トラフィックを許可する
 
 次の C# コードの抜粋からは、Windows プールの計算ノードに RDP エンドポイントを構成し、IP アドレス *198.51.100.7* からのみ RDP アクセスを許可する方法を確認できます。 2 つ目の NSG ルールによって、この IP アドレスに一致しないトラフィックが拒否されます。
 
@@ -92,7 +92,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 };
 ```
 
-## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>例: 特定のサブネットからの SSH トラフィックを許可する
+## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>例:特定のサブネットからの SSH トラフィックを許可する
 
 次の Python コードの抜粋からは、Linux プールの計算ノードに SSH エンドポイントを構成し、サブネット *192.168.1.0/24* からのみアクセスを許可する方法を確認できます。 2 つ目の NSG ルールによって、このサブネットに一致しないトラフィックが拒否されます。
 

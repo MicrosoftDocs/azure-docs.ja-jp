@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d485195b868b6cbca587c736ac02663491742cdb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f3c362730e7908e88b363659b7fa580b6f2cddf1
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236876"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189463"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure Media Services エラー コード
 Microsoft Azure Media Services を使用する場合は、Media Services でサポートされていないアクションに対する認証トークンの有効期限切れなどの問題によって、サービスから HTTP エラー コードを受け取ることがあります。 Media Services やそれらが原因となって返されることがある **HTTP エラー コード** の一覧を次に示します。  
@@ -56,7 +56,7 @@ Microsoft Azure Media Services を使用する場合は、Media Services でサ�
 
 * Media Services アカウントが見つからないか、削除されています。
 * Media Services アカウントが無効になり、要求のタイプが HTTP GET ではありません。 サービス操作でも、403 応答が返されます。
-* 認証トークンにユーザーの資格情報が含まれていません: AccountName/SubscriptionId。 この情報は、Azure 管理ポータルの Media Services アカウント向け Media Services UI 拡張機能で見つけることができます。
+* 認証トークンにユーザーの資格情報 AccountName または SubscriptionId、あるいはその両方が含まれていません。 この情報は、Azure 管理ポータルの Media Services アカウント向け Media Services UI 拡張機能で見つけることができます。
 * リソースにアクセスすることはできません。
   
   * Media Services アカウントでは利用できない MediaProcessor の使用が試行されました。

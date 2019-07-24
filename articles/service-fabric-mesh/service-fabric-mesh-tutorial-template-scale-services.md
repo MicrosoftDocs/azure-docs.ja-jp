@@ -3,7 +3,7 @@ title: チュートリアル - Azure Service Fabric Mesh で実行されてい�
 description: このチュートリアルでは、Service Fabric Mesh で実行されているアプリケーション内でサービスをスケーリングする方法について説明します。
 services: service-fabric-mesh
 documentationcenter: .net
-author: rwike77
+author: dkkapur
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -12,17 +12,17 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/18/2018
-ms.author: ryanwi
+ms.date: 01/11/2019
+ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 4d6839fea3ce0eb74cdf87396716cdc69c0cd1a0
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 31b1e7a777c65a270b7b08673fcd73a5ab63f11f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165983"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337767"
 ---
-# <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>チュートリアル: Service Fabric Mesh で実行されているアプリケーションをスケーリングする
+# <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>チュートリアル:Service Fabric Mesh で実行しているアプリケーションをスケーリングする
 
 このチュートリアルは、シリーズの第 2 部です。 [前に Service Fabric Mesh にデプロイ](service-fabric-mesh-tutorial-template-deploy-app.md)されていたアプリケーションのサービス インスタンスの数を手動でスケーリングする方法について説明します。 最終的には、フロントエンド サービスで 3 つのインスタンスが、またデータ サービスで 2 つのインスタンスが実行されている状態になります。
 
@@ -47,7 +47,7 @@ ms.locfileid: "49165983"
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)できます。
 
-* [Azure CLI と Service Fabric Mesh CLI をローカルにインストールします](service-fabric-mesh-howto-setup-cli.md#install-the-service-fabric-mesh-cli-locally)。
+* [Azure CLI と Service Fabric Mesh CLI をローカルにインストールします](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli)。
 
 ## <a name="manually-scale-your-services-in-or-out"></a>サービスを手動でスケールイン/スケールアウトする
 

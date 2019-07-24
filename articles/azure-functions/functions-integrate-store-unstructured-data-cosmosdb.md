@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: bad732132a92c82787309e43b8e56c4a2d2c41e8
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: cdae0a04d09b7985935bee0ae636d7f88fbff541
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282840"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903657"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Azure Functions と Azure Cosmos DB を使用して非構造化データを格納する
 
@@ -74,7 +74,7 @@ Azure Functions では、入力および出力バインディングによって�
 
 既存の関数コードを、次の選択した言語のコードに置き換えます。
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 既存の C# 関数を次のコードに置き換えます。
 
@@ -111,7 +111,7 @@ public static IActionResult Run(HttpRequest req, out object taskDocument, ILogge
 }
 ```
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 既存の JavaScript 関数を次のコードに置き換えます。
 
@@ -169,6 +169,6 @@ Azure Cosmos DB に非構造化データを格納するバインディングを 
 
 ## <a name="next-steps"></a>次の手順
 
-[!INCLUDE [functions-quickstart-next-steps](../../includes/functions-quickstart-next-steps.md)]
-
 Cosmos DB データベースへのバインドの詳細については、「[Azure Functions における Cosmos DB のバインド](functions-bindings-cosmosdb.md)」を参照してください。
+
+[!INCLUDE [functions-quickstart-next-steps](../../includes/functions-quickstart-next-steps-2.md)]

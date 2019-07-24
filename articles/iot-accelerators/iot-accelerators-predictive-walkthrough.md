@@ -6,18 +6,20 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: 61a4e3700e88efba1ea9cea876b19e2f7ed4168b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 3387996dc0e1953eaafee9c4c61eb8faa865b654
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50137072"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58172837"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>予測メンテナンスのソリューション アクセラレータの概要
 
 予測メンテナンスのソリューション アクセラレータは、障害が発生する可能性があるポイントを予測するビジネス シナリオに対応したエンド ツー エンド ソリューションです。 このソリューション アクセラレータを使用すると、メンテナンスの最適化などのアクティビティを先手を打って実行できます。 このソリューションは、IoT Hub や [Azure Machine Learning][lnk-machine-learning] ワークスペースなど、主要な Azure IoT ソリューション アクセラレータ サービスを組み合わせたものです。 このワークスペースには、公開されているサンプル データ セットに基づいて航空機エンジンの残存耐用年数 (RUL) を予測するモデルが含まれています。 このソリューションでは、固有のビジネス要件を満たすソリューションを計画および実装するための開始地点として使用できる、IoT ビジネス シナリオが完全に実装されています。
+
+予測メンテナンスのソリューション アクセラレータの[コードは GitHub で入手できます](https://github.com/Azure/azure-iot-predictive-maintenance)。
 
 ## <a name="logical-architecture"></a>論理アーキテクチャ
 
@@ -25,7 +27,7 @@ ms.locfileid: "50137072"
 
 ![論理アーキテクチャ][img-architecture]
 
-青色の項目は、ソリューション アクセラレータをデプロイしたリージョンにプロビジョニングされた Azure サービスです。 ソリューション アクセラレータをデプロイできるリージョンの一覧は、[プロビジョニング ページ][lnk-azureiotsuite]に表示されます。
+青色の項目は、ソリューション アクセラレータをデプロイしたリージョンにプロビジョニングされた Azure サービスです。 ソリューション アクセラレータをデプロイできるリージョンの一覧は、[プロビジョニング ページ][lnk-azureiotsolutions]に表示されます。
 
 緑色の項目は、シミュレートされた航空機エンジンです。 これらのシミュレートされているデバイスの詳細については、「[シミュレートされたデバイス](#simulated-devices)」のセクションを参照してください。
 
@@ -37,7 +39,7 @@ Azure Portal で、指定したソリューション名の付いたリソース 
 
 ![アクセラレータ リソース][img-resource-group]
 
-ソリューション アクセラレータをプロビジョニングすると、Machine Learning ワークスペースへのリンクを含む電子メールが届きます。 この Machine Learning ワークスペースには、[Microsoft Azure IoT Solution Accelerators][lnk-azureiotsuite] ページから移動することも可能です。 タイルは、ソリューションが**準備完了**の状態の場合にこのページで使用できます。
+ソリューション アクセラレータをプロビジョニングすると、Machine Learning ワークスペースへのリンクを含む電子メールが届きます。 この Machine Learning ワークスペースには、[Microsoft Azure IoT Solution Accelerators][lnk-azureiotsolutions] ページから移動することも可能です。 タイルは、ソリューションが**準備完了**の状態の場合にこのページで使用できます。
 
 ![Machine Learning モデル][img-machine-learning]
 
@@ -51,7 +53,7 @@ Azure Portal で、指定したソリューション名の付いたリソース 
 
 シミュレーション デバイスは、ソリューションの IoT Hub から送信された次のコマンドを処理することができます。
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 | StartTelemetry |シミュレーションの状態を制御します。<br/>デバイスのテレメトリ送信を開始します。 |
 | StopTelemetry |シミュレーションの状態を制御します。<br/>デバイスのテレメトリ送信を停止します。 |
@@ -60,7 +62,7 @@ IoT Hub は、デバイスのコマンドの受信確認を渡します。
 
 ## <a name="azure-stream-analytics-job"></a>Azure Stream Analytics ジョブ
 
-**ジョブ: テレメトリ**は、次の 2 つのステートメントを使用して、デバイスのテレメトリの受信ストリームに対して動作します。
+**ジョブ:テレメトリ**は、次の 2 つのステートメントを使用して、デバイスのテレメトリの受信ストリームに対して動作します。
 
 * 1 つ目では、デバイスからのすべてのテレメトリを選択し、このデータを Blob Storage に送信します。 ここから、Web アプリで視覚化されます。
 * 2 つ目では、2 分間のスライディング ウィンドウに渡る平均センサー値を計算し、このデータを Event Hub を介して**イベント プロセッサ**に送信します。
@@ -69,7 +71,7 @@ IoT Hub は、デバイスのコマンドの受信確認を渡します。
 **イベント プロセッサ ホスト**は、Azure Web Job で実行されます。 **イベント プロセッサ** は、完了したサイクルの平均センサー値を受け取ります。 それらの値は、エンジンの RUL を計算するトレーニングされたモデルに渡されます。 API により、ソリューションの一部である Machine Learning ワークスペース内のモデルにアクセスできます。
 
 ## <a name="machine-learning"></a>Machine Learning
-Machine Learning コンポーネントは、実際の航空機エンジンから収集されたデータから派生したモデルを使用します。 この Machine Learning ワークスペースには、[azureiotsuite.com][lnk-azureiotsuite] ページのソリューションのタイルから移動することも可能です。 このタイルは、ソリューションが**準備完了**の状態の場合に使用できます。
+Machine Learning コンポーネントは、実際の航空機エンジンから収集されたデータから派生したモデルを使用します。 この Machine Learning ワークスペースには、[azureiotsolutions.com][lnk-azureiotsolutions] ページのソリューションのタイルから移動することも可能です。 このタイルは、ソリューションが**準備完了**の状態の場合に使用できます。
 
 Machine Learning モデルは、IoT ソリューション アクセラレータ サービスを通じて収集されたテレメトリの使用方法を示すテンプレートとして利用できます。 Microsoft は、公開されているデータ<sup>\[1\]</sup> を基にして航空機エンジンの[回帰モデル][lnk_regression_model]と、モデルの使用方法に関するステップ バイ ステップ ガイダンスを作成しました。
 
@@ -90,9 +92,9 @@ IoT ソリューション アクセラレータの他の機能についても学
 [img-machine-learning]: media/iot-accelerators-predictive-walkthrough/machine-learning.png
 
 [lnk-remote-monitoring]: quickstart-predictive-maintenance-deploy.md
-[lnk-cortana-analytics]: http://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3
-[lnk-azureiotsuite]: https://www.azureiotsolutions.com/
+[lnk-cortana-analytics]: https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3
+[lnk-azureiotsolutions]: https://www.azureiotsolutions.com/
 [lnk-faq]: iot-accelerators-faq.md
 [lnk-security-groundup]:/azure/iot-fundamentals/iot-security-ground-up
 [lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/
-[lnk_regression_model]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3
+[lnk_regression_model]: https://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3

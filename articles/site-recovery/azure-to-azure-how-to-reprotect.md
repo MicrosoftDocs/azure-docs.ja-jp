@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: caef9a93e7d388ab55939876b7cc8344ce6370d0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: bd65b1479ace1a51087836eb8032f16fd10dc119
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012515"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648904"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>プライマリ リージョンに対してフェールオーバーされた Azure VM を再保護する
 
@@ -23,10 +23,6 @@ ms.locfileid: "51012515"
 - プライマリ リージョンへのレプリケートを開始できるように、セカンダリ リージョンの VM を再保護します。
 - 再保護が完了して、VM がレプリケートされると、セカンダリからプライマリ リージョンにフェールオーバーすることができます。
 
-> [!WARNING]
-> プライマリからセカンダリ リージョンにマシンを[移行](migrate-overview.md#what-do-we-mean-by-migration)すると、VM を別のリソース グループに移動した場合、または Azure VM を削除した場合は、VM を再保護したり、フェールバックしたりすることはできません。
-
-
 ## <a name="prerequisites"></a>前提条件
 1. VM のプライマリからセカンダリ リージョンへのフェールオーバーは、コミットされている必要があります。
 2. プライマリ ターゲット サイトが使用可能で、そのリージョンでリソースにアクセスしたり、リソースを作成したりできる必要があります。
@@ -35,18 +31,18 @@ ms.locfileid: "51012515"
 
 1. **[コンテナー]**  >  **[レプリケートされたアイテム]** で、フェールオーバーされた VM を右クリックし、**[再保護]** を選択します。 再保護の方向には、セカンダリからプライマリへの方向が示されています。
 
-  ![再保護](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
+   ![再保護](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
 2. リソース グループ、ネットワーク、ストレージ、および可用性セットを確認します。 次に、 **[OK]** をクリックします 新規としてマークされているリソースがある場合は、再保護プロセスの一環として作成されます。
 3. 再保護のジョブにより、最新のデータでターゲット サイトがシード処理されます。 処理が完了したら、差分レプリケーションが行われます。 その後、プライマリ サイトへのフェールバックを行うことができます。 カスタマイズ オプションを使用して、再保護中に使用するストレージ アカウントまたはネットワークを選択できます。
 
-  ![カスタマイズ オプション](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
+   ![カスタマイズ オプション](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
 
 ### <a name="customize-reprotect-settings"></a>再保護設定のカスタマイズ
 
 再保護中にカスタマイズできるのは、ターゲット VM の次のプロパティです。
 
-![[カスタマイズ]](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
+![カスタマイズ](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
 
 |プロパティ |メモ  |
 |---------|---------|
@@ -83,4 +79,4 @@ ms.locfileid: "51012515"
 
 ## <a name="next-steps"></a>次の手順
 
-VM が保護されたら、フェールオーバーを開始できます。 フェールオーバーでは、セカンダリ リージョンの VM をシャットダウンし、少しのダウンタイムと共に、プライマリ リージョンに VM を作成して起動します。 プライマリ サイトへの完全なフェールオーバーを開始するのではなく、適宜、時間を選択し、テスト フェールオーバーを実行することをお勧めします。 フェールオーバーの詳細については、[こちら](site-recovery-failover.md)を参照してください。
+VM が保護されたら、フェールオーバーを開始できます。 フェールオーバーでは、セカンダリ リージョンの VM をシャットダウンし、少しのダウンタイムと共に、プライマリ リージョンに VM を作成して起動します。 プライマリ サイトへの完全なフェールオーバーを開始する前に、適宜、時間を選択し、テスト フェールオーバーを実行することをお勧めします。 フェールオーバーの詳細については、[こちら](site-recovery-failover.md)を参照してください。

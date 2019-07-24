@@ -4,7 +4,7 @@ description: ランタイム、SDK、およびツールをインストールし�
 services: service-fabric
 documentationcenter: linux
 author: suhuruli
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 8473b2e202dd408cce6658f3ca349d884a28dc3a
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 84d1f52b5fb8f18d3578bad28930f74534b1409f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160475"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662243"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X で開発環境をセットアップする
 > [!div class="op_single_selector"]
@@ -53,19 +53,19 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    これらの設定は、Docker インストール パスの daemon.json ファイルで直接更新できます。
+    これらの設定は、Docker インストール パスの daemon.json ファイルで直接更新できます。 Docker でデーモン構成設定を直接変更できます。 **Docker アイコン**を選択し、**[Preferences]\(環境設定\)** > **[Daemon]\(デーモン\)** > **[Advanced]\(詳細設定\)** の順に選択します。
     
     >[!NOTE]
     >
-    >daemon.json ファイルの場所は、マシンによって異なる場合があります。 例: ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json
+    >daemon.json ファイルの場所はマシンによって異なるので、Docker でデーモンを直接変更することをお勧めします。 例: ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json
     >
-    >Docker でデーモン構成設定を直接変更することをお勧めします。 **Docker アイコン**を選択し、**[Preferences]\(環境設定\)** > **[Daemon]\(デーモン\)** > **[Advanced]\(詳細設定\)** の順に選択します。
-    >
+
+    >[!TIP]
     >大規模なアプリケーションをテストする際は、Docker に割り当てられたリソースを増やすことをお勧めします。 **Docker アイコン**を選択し、**[詳細]** を選択して、コア数やメモリを調整してください。
 
 2. 新しいディレクトリに、Service Fabric イメージを構築する `Dockerfile` というファイルを作成します。
 
-    ```dockerfile
+    ```Dockerfile
     FROM microsoft/service-fabric-onebox
     WORKDIR /home/ClusterDeployer
     RUN ./setup.sh
@@ -110,7 +110,7 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
     >
 
-5. 少しするとクラスターが起動され、次のコマンドを使ってログを確認したり、ダッシュボードに切り替えてクラスターの正常性を確認したりすることができます ([http://localhost:19080](http://localhost:19080))。
+5. クラスターが起動するには少し時間がかかります。 実行状態になると、次のコマンドを使用してログを表示したり、ダッシュボードに移動してクラスターの正常性を確認したりすることができます ([http://localhost:19080](http://localhost:19080))。
 
     ```bash 
     docker logs sftestcluster
@@ -118,7 +118,7 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
 
 
 
-6. 完了したら、コンテナーを停止し、次のコマンドを使用してコンテナーをクリーンアップします。
+6. コンテナーを停止してクリーンアップするには、次のコマンドを使用します。 ただし、次のステップでこのコンテナーを使用します。
 
     ```bash 
     docker rm -f sftestcluster
@@ -152,7 +152,7 @@ Service Fabric には、ターミナルから Yeoman テンプレート ジェ�
     node -v
     npm -v
     ```
-2. NPM からマシンに [Yeoman](http://yeoman.io/) テンプレート ジェネレーターをインストールします。
+2. NPM からマシンに [Yeoman](https://yeoman.io/) テンプレート ジェネレーターをインストールします。
 
     ```bash
     npm install -g yo
@@ -173,6 +173,9 @@ Service Fabric には、ターミナルから Yeoman テンプレート ジェ�
     brew cask install java
     brew install gradle
     ```
+
+    >[!TIP]
+    > 正しいバージョンの JDK がインストールされていることを確認してください。 
 
 ## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>ターミナルから Mac にアプリケーションをデプロイする
 

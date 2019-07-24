@@ -9,19 +9,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 790cc11e3d4cf1d0260b1099efd82bdddec85785
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 31e759baa4f5e7b220eabf2bb9ffcc5cc011a354
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634568"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200465"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用して Apache Hive クエリを実行する
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
 HDInsight .NET SDK を使用して Apache Hive クエリを送信する方法について説明します。 Hive テーブルを表示するための Hive クエリを送信し、結果を表示する C# プログラムを作成します。
 
-> [!NOTE]
+> [!NOTE]  
 > この記事の手順は、Windows クライアントから実行する必要があります。 Linux、OS X、または Unix クライアントで Hive を使用する方法については、この記事の上部に表示されているタブ セレクターをクリックしてください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -29,8 +29,8 @@ HDInsight .NET SDK を使用して Apache Hive クエリを送信する方法に
 
 * **HDInsight 上の Apache Spark クラスター**。 詳細については、[HDInsight での Linux ベース Hadoop の使用](apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
-    > [!WARNING]
-    > 2017 年 9 月 15 日の時点で、HDInsight .NET SDK でサポートされているのは、Azure ストレージ アカウントから Hive クエリの結果を返すことのみです。 プライマリ ストレージとして Azure Data Lake Store を使用している HDInsight クラスターでこの例を使用する場合、.NET SDK を使用して検索結果を取得することはできません。
+    > [!WARNING]  
+    > 2017 年 9 月 15 日の時点で、HDInsight .NET SDK でサポートされているのは、Azure ストレージ アカウントから Hive クエリの結果を返すことのみです。 プライマリ ストレージとして Azure Data Lake Storage を使用している HDInsight クラスターでこの例を使用する場合、.NET SDK を使用して検索結果を取得することはできません。
 
 * **Visual Studio 2013/2015/2017**。
 
@@ -138,11 +138,10 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 この記事では、HDInsight クラスターを作成する方法をいくつか説明しました。 詳細については、次の記事を参照してください。
 
 * [Azure HDInsight の概要](apache-hadoop-linux-tutorial-get-started.md)
-* [HDInsight で Hadoop クラスターを作成する](../hdinsight-hadoop-provision-linux-clusters.md)
-* [Azure Portal を使用した HDInsight での Hadoop クラスターの管理](../hdinsight-administer-use-management-portal.md)
+* [HDInsight で Apache Hadoop クラスターを作成する](../hdinsight-hadoop-provision-linux-clusters.md)
 * [HDInsight .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
-* [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
-* [HDInsight での Sqoop の使用](apache-hadoop-use-sqoop-mac-linux.md)
+* [HDInsight での Apache Pig の使用](hdinsight-use-pig.md)
+* [HDInsight での Apache Sqoop の使用](apache-hadoop-use-sqoop-mac-linux.md)
 * [非対話型認証 .NET HDInsight アプリケーションを作成する](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)
  
 

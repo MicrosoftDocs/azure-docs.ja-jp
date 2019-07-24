@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 69ebe7fde454d2f0e98371406de56f48c9ea97ae
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 24430b1b785a24da06a8ea51594147040e6d5bd6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639122"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190392"
 ---
 # <a name="certify-your-vm-image"></a>VM イメージを認定する
 
@@ -82,4 +82,4 @@ Azure 認定用の認定テスト ツールはローカルの Windows マシン�
 
 ## <a name="next-steps"></a>次の手順
 
-次に、マーケットプレースに提出する [各 VHD の URI (Uniform Resource Identifier) を生成](./cpp-get-sas-uri.md)する必要があります。 
+次に、マーケットプレースに提出する [各 VHD の URI (Uniform Resource Identifier) を作成](./cpp-get-sas-uri.md)します。 

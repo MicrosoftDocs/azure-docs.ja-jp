@@ -1,26 +1,22 @@
 ---
-title: Team Data Science Process のプロジェクト計画 - Azure | Microsoft Docs
+title: Team Data Science Process のプロジェクト計画
 description: データ サイエンス プロジェクトを計画し、管理するのに役立つ Microsoft Project と Excel のテンプレート。
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
 services: machine-learning
-ms.assetid: ''
 ms.service: machine-learning
-ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/27/2017
-ms.author: deguhath
-ms.openlocfilehash: 1ebd640191ffbb1b3ea70ca07081522b370e4e2d
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: bbedaa554e9c97a24e26c7927c1bf9c94d5cd507
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308189"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474464"
 ---
 # <a name="team-data-science-process-project-planning"></a>Team Data Science Process のプロジェクト計画
 
@@ -31,7 +27,7 @@ Team Data Science Process (TDSP) には、データ サイエンス プロジェ
 - ビジネスの把握
 - データの取得と理解
 - モデリング
-- デプロイ
+- Deployment
 - 顧客による受け入れ
 
 このような各ステージの説明については、「[Team Data Science Process ライフサイクル](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle)」を参照してください。
@@ -39,7 +35,7 @@ Team Data Science Process (TDSP) には、データ サイエンス プロジェ
  
 ## <a name="microsoft-project-template"></a>Microsoft Project テンプレート
 
-Team Data Science Process 用の Microsoft Project テンプレートは、ここから入手できます: [Microsoft Project テンプレート](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
+Team Data Science Process 用の Microsoft Project テンプレートは、ここから入手できます:[Microsoft Project テンプレート](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
 
 計画を開く際は、TDSP の左端にあるリンクをクリックします。 名前と説明を変更し、その他の必要なチーム リソースを追加します。 経験から必要な日付を見積もります。
 
@@ -52,7 +48,7 @@ Team Data Science Process 用の Microsoft Project テンプレートは、こ�
 
 ## <a name="excel-template"></a>Excel テンプレート
 
-Microsoft Project へのアクセス権がない場合は、同じデータすべてを含む Excel ワークシートもこちらからダウンロードできます: [Excel テンプレート](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx)。これは、どのツールを使用しても取り込むことができます。
+Microsoft Project へのアクセス権がない場合は、同じデータすべてを含む Excel ワークシートもこちらからダウンロードできます:[Excel テンプレート](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx)。これは、どのツールを使用しても取り込むことができます。
 
 これらのテンプレートは、ご自身の責任でご利用ください。 [通常の免責事項](https://www.gnu.org/licenses/gpl-3.0.en.html)が適用されます。
 

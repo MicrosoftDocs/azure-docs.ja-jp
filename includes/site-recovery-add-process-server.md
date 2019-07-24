@@ -4,24 +4,24 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: b6e3abb56ebd02131fac78c2a8f03ddcbf50958a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: c9a0d4387511bbfa033bcb90d9f83e1a7bb39719
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166218"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124676"
 ---
 1. Azure Site Recovery UnifiedSetup.exe の起動
 2. **[開始する前に]** で **[Add additional process servers to scale out deployment] \(デプロイをスケールアウトするためにプロセス サーバーを追加する)** を選択します。
 
-  ![プロセス サーバーの追加](./media/site-recovery-add-process-server/ps-page-1.png)
+   ![プロセス サーバーの追加](./media/site-recovery-add-process-server/ps-page-1.png)
 
 3. **[Configuration Server Details (構成サーバーの詳細)]** で、構成サーバーの IP アドレスとパスフレーズを指定します。
 
-  ![プロセス サーバーの追加 2](./media/site-recovery-add-process-server/ps-page-2.png)
+   ![プロセス サーバーの追加 2](./media/site-recovery-add-process-server/ps-page-2.png)
 4. **[インターネット設定]** で、構成サーバーで実行されているプロバイダーがインターネット経由で Azure Site Recovery に接続する方法を指定します。
 
-  ![プロセス サーバーの追加 3](./media/site-recovery-add-process-server/ps-page-3.png)
+   ![プロセス サーバーの追加 3](./media/site-recovery-add-process-server/ps-page-3.png)
 
    * マシンで現在セットアップされているプロキシを使用して接続する場合は、**[Connect with existing proxy settings] \(既存のプロキシ設定を使用して接続する)** を選択します。
    * プロバイダーから直接接続するには、**[Connect directly without a proxy] \(プロキシなしで直接接続する)** を選択します。

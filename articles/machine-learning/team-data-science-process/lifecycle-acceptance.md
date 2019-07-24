@@ -1,28 +1,24 @@
 ---
-title: Team Data Science Process ライフサイクルの顧客による受け入れステージ - Azure | Microsoft Docs
+title: Team Data Science Process ライフサイクルの顧客による受け入れステージ
 description: データ サイエンス プロジェクトの顧客による受け入れステージの目標、タスク、成果物
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
-ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: deguhath
-ms.openlocfilehash: 9dd3ab8c9451ecfe6b095b52f5af083a7c7e9550
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 91d645e6120040870c7c1696c7bfd8f68509cb35
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232761"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451905"
 ---
-# <a name="customer-acceptance"></a>顧客による受け入れ
+# <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクルの顧客による受け入れステージ
 
 この記事では、Team Data Science Process (TDSP) の顧客による受け入れステージに関連付けられている目標、タスク、成果物のアウトラインを示します。 このプロセスには、データ サイエンス プロジェクトを体系化するために使用できる推奨ライフサイクルが用意されています。 ライフサイクルは、プロジェクトで通常 (多くの場合に繰り返し) 実行される主要なステージのアウトラインを示します。
 
@@ -38,13 +34,13 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
 
 
 ## <a name="goal"></a>目標
-**プロジェクトの成果物を完成させる**: パイプライン、モデル、およびそれらの運用環境でのデプロイが顧客の目標を満たしていることを確認します。
+**プロジェクトの成果物を完成させる**:パイプライン、モデル、およびそれらの運用環境でのデプロイが顧客の目標を満たしていることを確認します。
 
 ## <a name="how-to-do-it"></a>方法
 このステージでは、以下に示す 2 つの主な課題に取り組みます。
 
-   * **システムの検証**: デプロイ済みのモデルとパイプラインが顧客のニーズを満たしていることを確認します。
-   * **プロジェクトのハンドオフ**: 運用環境でシステムを運用することになっている組織にプロジェクトをハンドオフします。
+   * **システムの検証**:デプロイ済みのモデルとパイプラインが顧客のニーズを満たしていることを確認します。
+   * **プロジェクトのハンドオフ**:運用環境でシステムを運用することになっている組織にプロジェクトをハンドオフします。
 
 顧客は、システムを運用環境にデプロイして独自のクライアント アプリケーションで利用できるようにするため、そのシステムがビジネス ニーズを満たし、許容可能な精度で質問に回答できるかどうかを検証します。 すべてのドキュメントに対して最終処理とレビューが行われます。 運用を担う組織にプロジェクトがハンドオフされます。 この場合の組織とは、たとえば運用環境でのシステム運用を担当する IT 部門、顧客のデータ サイエンス チーム、顧客の代理業者などです。 
 
@@ -64,4 +60,4 @@ TDSP のライフサイクルの各ステップへのリンクを次に示しま
 
 特定のシナリオ のプロセスに伴うすべての手順を初めから終わりまで完全に説明するチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 
 
-Azure Machine Learning Studio を使用して TDSP の手順を実行する方法の例については、「[Azure Machine Learning での Team Data Science Process の使用](https://aka.ms/datascienceprocess)」を参照してください。
+Azure Machine Learning Studio を使用して TDSP の手順を実行する方法の例については、「[Azure Machine Learning での Team Data Science Process の使用](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)」を参照してください。

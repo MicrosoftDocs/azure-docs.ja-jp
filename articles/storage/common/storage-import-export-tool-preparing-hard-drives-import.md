@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: b16a476f1960c79c378cd3aa18eae789c289eb54
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 777e0aac46dbffb1e491874b5889667a888aadf5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244034"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898688"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備する
 
@@ -25,7 +25,7 @@ WAImportExport ツールは、ドライブの準備および修復用のツー�
 
 - **コンピューターの構成**
   - Windows 7、Windows Server 2008 R2、またはそれ以降の新しい Windows オペレーティング システム
-  - .NET Framework 4 をインストールする必要があります。 .Net Framework がコンピューターにインストールされているかどうかを確認する方法については、「[FAQ](#faq)」を参照してください。
+  - .NET Framework 4 をインストールする必要があります。 .NET Framework がマシンにインストールされているかどうかを確認する方法については、「[FAQ](#faq)」を参照してください。
 - **ストレージ アカウント キー** - ストレージ アカウントのアカウント キーが少なくとも 1 つ必要です。
 
 ### <a name="preparing-disk-for-import-job"></a>インポート ジョブ用のディスクの準備
@@ -78,10 +78,10 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 
 | フィールド | 説明 |
 | --- | --- |
-| BasePath | **[必須]**<br/>このパラメーターの値は、インポートするデータが配置されるソースを表します。 ツールでは、このパスに配置されたすべてのデータを再帰的にコピーします。<br><br/>**使用可能な値**: ローカル コンピューター上の有効なパスまたは有効な共有パスを指定する必要があります。ユーザーがアクセスできるパスを指定してください。 ディレクトリ パスは絶対パス (相対パスではなく) にする必要があります。 パスが "\\" で終わる場合は、ディレクトリを表し、それ以外の "\\" なしで終わるパスは、ファイルを表します。<br/>このフィールドでは正規表現を使用できません。 パスにスペースが含まれる場合は、"" で囲んでください。<br><br/>**例**: "c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
+| BasePath | **[必須]**<br/>このパラメーターの値は、インポートするデータが配置されるソースを表します。 ツールでは、このパスに配置されたすべてのデータを再帰的にコピーします。<br><br/>**使用可能な値**:ローカル コンピューター上の有効なパスまたは有効な共有パスを指定する必要があります。ユーザーがアクセスできるパスを指定してください。 ディレクトリ パスは絶対パス (相対パスではなく) にする必要があります。 パスが "\\" で終わる場合は、ディレクトリを表し、それ以外の "\\" なしで終わるパスは、ファイルを表します。<br/>このフィールドでは正規表現を使用できません。 パスにスペースが含まれる場合は、"" で囲んでください。<br><br/>**例**: "c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
 | DstBlobPathOrPrefix | **[必須]**<br/> Microsoft Azure ストレージ アカウントのインポート先の仮想ディレクトリへのパス。 仮想ディレクトリが既に存在しているかどうかは、場合によって異なります。 仮想ディレクトリがない場合は、インポート/エクスポート サービスによって作成されます。<br/><br/>コピー先の仮想ディレクトリや BLOB を指定する場合は、有効なコンテナー名を使用してください。 コンテナー名は小文字にする必要があります。 コンテナーの名前付け規則については、「[コンテナー、BLOB、およびメタデータの名前付けおよび参照](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」をご覧ください。 ルートのみが指定されている場合、ソースのディレクトリ構造は、インポート先の BLOB コンテナーにレプリケートされます。 ソースのディレクトリ構造ではなく、別のディレクトリ構造が必要な場合は、CSV のマッピングを複数行にします。<br/><br/>コンテナーまたは BLOB プレフィックス (例: music/70s/) を指定できます。 インポート先のディレクトリの先頭はコンテナー名にして、その後にスラッシュ (/) を続けます。末尾が "/" の仮想 BLOB ディレクトリ (省略可能) を追加することもできます。<br/><br/>インポート先のコンテナーがルート コンテナーの場合は、スラッシュを含むルート コンテナーを明示的に指定する必要があります (例: $root/)。 ルート コンテナーにある BLOB の名前に "/" を含めることはできないため、インポート先のディレクトリがルート コンテナーの場合、ソース ディレクトリのサブディレクトリはコピーされません。<br/><br/>**例**<br/>コピー先 BLOB パスが https://mystorageaccount.blob.core.windows.net/video の場合、このフィールドの値は video/ となります。  |
 | BlobType | **[省略可能]** block &#124; page<br/>現在、インポート/エクスポート サービスは 2 種類の BLOB をサポートしています  (ページ BLOB とブロック BLOB)。既定では、すべてのファイルがブロック BLOB としてインポートされます。 また、\*.vhd と \*.vhdx はページ BLOB としてインポートされます。ブロック BLOB と ページ BLOB に使用できるサイズには制限があります。 詳細については、[Azure Storage のスケーラビリティ ターゲット](storage-scalability-targets.md)に関するページを参照してください。  |
-| Disposition | **[省略可能]** rename &#124; no-overwrite &#124; overwrite <br/> このフィールドは、インポート中 ( 例: データのディスクからストレージ アカウントへのアップロード中) のコピー動作を指定します。 利用可能なオプション: rename&#124;overwite&#124;no-overwrite。何も指定しない場合は、既定値の "rename" になります。 <br/><br/>**rename**: 同名のオブジェクトが存在する場合に、インポート先にコピーを作成します。<br/>overwrite: ファイルを新しいファイルで上書きします。 更新日の最も新しいファイルで上書きされます。<br/>**no-overwrite**: 既存のファイルがある場合は、ファイルの書き込みをスキップします。|
+| Disposition | **[省略可能]** rename &#124; no-overwrite &#124; overwrite <br/> このフィールドは、インポート中 ( 例: データのディスクからストレージ アカウントへのアップロード中) のコピー動作を指定します。 利用可能なオプションは rename&#124;overwite&#124;no-overwrite です。何も指定しない場合は、既定値の "rename" になります。 <br/><br/>**rename**: 同名のオブジェクトが存在する場合に、インポート先にコピーを作成します。<br/>overwrite: ファイルを新しいファイルで上書きします。 更新日の最も新しいファイルで上書きされます。<br/>**no-overwrite**: 既存のファイルがある場合は、ファイルの書き込みをスキップします。|
 | MetadataFile | **[省略可能]** <br/>このフィールドの値は、オブジェクトのメタデータを保持するか、またはカスタム メタデータを指定する必要がある場合に指定可能なメタデータ ファイルです。 インポート先の BLOB のメタデータ ファイルへのパスです。 詳細については、「[Import/Export サービスのメタデータとプロパティ ファイルの形式](../storage-import-export-file-format-metadata-and-properties.md)」を参照してください。 |
 | PropertiesFile | **[省略可能]** <br/>インポート先の BLOB のプロパティ ファイルへのパスです。 詳細については、「[Import/Export サービスのメタデータとプロパティ ファイルの形式](../storage-import-export-file-format-metadata-and-properties.md)」を参照してください。 |
 
@@ -109,11 +109,11 @@ H,Format,SilentMode,Encrypt,
 
 | フィールド | 値 |
 | --- | --- |
-| DriveLetter | **[必須]**<br/> インポート先としてツールに指定する各ドライブには、シンプルな NTFS ボリュームとそのボリュームに割り当てるドライブ文字が必要です。<br/> <br/>**例**: R または r |
+| DriveLetter | **[必須]**<br/> インポート先としてツールに指定する各ドライブには、シンプルな NTFS ボリュームとそのボリュームに割り当てるドライブ文字が必要です。<br/> <br/>**例**:R または r |
 | FormatOption | **[必須]** Format &#124; AlreadyFormatted<br/><br/> **Format**: この値を指定すると、ディスク上のすべてのデータがフォーマットされます。 <br/>**AlreadyFormatted**: この値を指定すると、ツールはフォーマットをスキップします。 |
-| SilentOrPromptOnFormat | **[必須]** SilentMode &#124; PromptOnFormat<br/><br/>**SilentMode**: この値を指定すると、ユーザーがサイレント モードでツールを実行できます。 <br/>**PromptOnFormat**: 各フォーマットについて、それが本当に意図したアクションかどうかの確認を求められます。<br/><br/>値を設定しない場合は、コマンドが中止され、"Incorrect value for SilentOrPromptOnFormat: none" (SilentOrPromptOnFormat の値が正しくありません: 指定なし) というエラー メッセージが表示されます。 |
-| 暗号化 | **[必須]** Encrypt &#124; AlreadyEncrypted<br/> このフィールドの値によって、暗号化するディスクとしないディスクが決定されます。 <br/><br/>**Encrypt**: ツールがドライブをフォーマットします。 "FormatOption" フィールドの値が "Format" の場合は、この値を "Encrypt" にする必要があります。 この場合に "AlreadyEncrypted" を指定すると、"When Format is specified, Encrypt must also be specified (Format を指定する場合は、Encrypt を指定する必要があります)" というエラーが表示されます。<br/>**AlreadyEncrypted**: "ExistingBitLockerKey" フィールドに指定された BitLockerKey を使用して、ツールがドライブの暗号化を解除します。 "FormatOption" フィールドの値が "AlreadyFormatted" の場合は、この値を "Encrypt" または "AlreadyEncrypted" にすることができます。 |
-| ExistingBitLockerKey | **[必須]** "Encryption" フィールドの値が "AlreadyEncrypted" の場合。<br/> このフィールドの値は、特定のディスクに関連付けられている BitLocker キーです。 <br/><br/>"Encryption" フィールドの値が "Encrypt" の場合は、このフィールドを空白のままにする必要があります。  この場合に BitLocker キーを指定すると、"Bitlocker Key should not be specified (BitLocker キーを指定しないでください)" というエラーが表示されます。<br/>  **例**: 060456-014509-132033-080300-252615-584177-672089-411631|
+| SilentOrPromptOnFormat | **[必須]** SilentMode &#124; PromptOnFormat<br/><br/>**SilentMode**: この値を指定すると、ユーザーがサイレント モードでツールを実行できます。 <br/>**PromptOnFormat**:各フォーマットについて、それが本当に意図したアクションかどうかの確認を求められます。<br/><br/>値を設定しない場合は、コマンドが中止され、"Incorrect value for SilentOrPromptOnFormat: none" (SilentOrPromptOnFormat の値が正しくありません: 指定なし) というエラー メッセージが表示されます。 |
+| 暗号化 | **[必須]** Encrypt &#124; AlreadyEncrypted<br/> このフィールドの値によって、暗号化するディスクとしないディスクが決定されます。 <br/><br/>**Encrypt**:ツールがドライブをフォーマットします。 "FormatOption" フィールドの値が "Format" の場合は、この値を "Encrypt" にする必要があります。 この場合に "AlreadyEncrypted" を指定すると、"When Format is specified, Encrypt must also be specified (Format を指定する場合は、Encrypt を指定する必要があります)" というエラーが表示されます。<br/>**AlreadyEncrypted**:"ExistingBitLockerKey" フィールドに指定された BitLockerKey を使用して、ツールがドライブの暗号化を解除します。 "FormatOption" フィールドの値が "AlreadyFormatted" の場合は、この値を "Encrypt" または "AlreadyEncrypted" にすることができます。 |
+| ExistingBitLockerKey | **[必須]** "Encryption" フィールドの値が "AlreadyEncrypted" の場合。<br/> このフィールドの値は、特定のディスクに関連付けられている BitLocker キーです。 <br/><br/>"Encryption" フィールドの値が "Encrypt" の場合は、このフィールドを空白のままにする必要があります。  この場合に BitLocker キーを指定すると、"BitLocker Key should not be specified (BitLocker キーを指定しないでください)" というエラーが表示されます。<br/>  **例**:060456-014509-132033-080300-252615-584177-672089-411631|
 
 ##  <a name="preparing-disk-for-import-job"></a>インポート ジョブ用のディスクの準備
 
@@ -151,12 +151,12 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset
 
 InitialDriveset に指定したドライブにデータが収まらなかった場合は、ツールを使用して同じコピー セッションにドライブを追加できます。 
 
->[!NOTE] 
->セッション ID は前回のセッション ID と一致する必要があります。ジャーナル ファイルは前回のセッションで指定したファイルと一致する必要があります。
->
-```
-WAImportExport.exe PrepImport /j:<SameJournalFile> /id:<SameSessionId> /AdditionalDriveSet:<newdriveset.csv>
-```
+> [!NOTE]
+> セッション ID は前回のセッション ID と一致する必要があります。ジャーナル ファイルは前回のセッションで指定したファイルと一致する必要があります。
+> 
+> ```
+> WAImportExport.exe PrepImport /j:<SameJournalFile> /id:<SameSessionId> /AdditionalDriveSet:<newdriveset.csv>
+> ```
 
 **例:**
 
@@ -216,7 +216,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /ResumeSession
 |     /ManifestFile:&lt;DriveManifestFile&gt; | **必須**。RepairExport にのみ適用できます。<br/> ドライブ マニフェスト ファイルへのパス。  |
 |     /PathMapFile:&lt;DrivePathMapFile&gt; | **省略可能**。 RepairImport にのみ適用できます。<br/> ドライブのルートを基準としたファイルの相対パスの実際のファイルの場所へのマッピング (タブ区切り) を含むファイルへのパス。 最初に指定する場合は、空のターゲットを含むファイル パスが設定されます。つまり、TargetDirectories に見つからない、アクセスが拒否される、無効な名前を持つパスか、または複数のディレクトリに存在するパスです。 パス マップ ファイルは、正しいターゲット パスを含めるように手動で編集し、ツールでファイル パスを正しく解決するために再度指定できます。  |
 |     /ExportBlobListFile:&lt;ExportBlobListFile&gt; | **必須**。 PreviewExport にのみ適用できます。<br/> エクスポートする BLOB の BLOB パスや BLOB パスのプレフィックスの一覧を含む XML ファイルへのパス。 ファイル形式は、インポート/エクスポート サービス REST API の Put Job 操作の BLOB 一覧の BLOB 形式と同じです。  |
-|     /DriveSize:&lt;DriveSize&gt; | **必須**。 PreviewExport にのみ適用できます。<br/>  エクスポートに使用するドライブのサイズ。 例: 500 GB、1.5 TB。 注: 1 GB = 1,000,000,000 バイト、1 TB = 1,000,000,000,000 バイト  |
+|     /DriveSize:&lt;DriveSize&gt; | **必須**。 PreviewExport にのみ適用できます。<br/>  エクスポートに使用するドライブのサイズ。 例: 500 GB、1.5 TB。 注:1 GB = 1,000,000,000 バイト、1 TB = 1,000,000,000,000 バイト  |
 |     /DataSet:&lt;dataset.csv&gt; | **必須**<br/> ターゲット ドライブにコピーするディレクトリの一覧またはファイルの一覧を含む CSV ファイル。  |
 |     /silentmode  | **省略可能**。<br/> 指定されていない場合、ドライブの要件が通知され、操作を続行するための確認が必要になります。  |
 
@@ -319,7 +319,7 @@ WAImportExport ツールには、WAImportExport V1 ツールのすべての機�
 
 ツールの複数の実行にわたってコピー セッション名が同じ場合は、ログ ファイル (/logdir) とストレージ アカウント キー (/sk) も同じであると想定されます。
 
-セッション ID には文字、数字 (0 ～ 9)、アンダースコア (\_)、ダッシュ (-)、またはハッシュ (#) を使用できます。ID の長さは 3 ～ 30 文字にする必要があります。
+セッション ID には文字、数字 (0 - 9)、アンダースコア (\_)、ダッシュ (-)、またはハッシュ (#) を使用できます。ID の長さは 3 - 30 文字にする必要があります。
 
 例: session-1、session#1、session\_1
 
@@ -364,7 +364,7 @@ BitLocker で TPM を無効にするには、次の手順に従ってくださ�
 
 Microsoft .NET Framework のすべてのバージョンは %windir%\Microsoft.NET\Framework\ ディレクトリにインストールされています。
 
-ツールを実行する必要のあるコンピューターで上記の場所に移動します。 "v4" で始まるフォルダー名を探します。 このディレクトリがない場合は、.NET v4 がコンピューターにインストールされていません。 .Net 4 をコンピューターにダウンロードするには、[Microsoft .NET Framework 4 (Web インストーラー)](https://www.microsoft.com/download/details.aspx?id=17851) を使用します。
+ツールを実行する必要のあるコンピューターで上記の場所に移動します。 "v4" で始まるフォルダー名を探します。 このディレクトリがない場合は、.NET v4 がコンピューターにインストールされていません。 .NET 4 をご自分のマシンにダウンロードするには、[Microsoft .NET Framework 4 (Web インストーラー)](https://www.microsoft.com/download/details.aspx?id=17851) を使用します。
 
 ### <a name="limits"></a>制限
 

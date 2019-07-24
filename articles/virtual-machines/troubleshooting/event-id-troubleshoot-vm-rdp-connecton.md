@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: b84992f5deea1135692c368900f63773b51453bb
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4c783c70217a84bbe5ccf15accc4a2bec0b7cca8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669369"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959684"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>イベント ID を使用した、Azure VM の RDP 接続に関する問題のトラブルシューティング 
 
@@ -35,9 +35,9 @@ ms.locfileid: "50669369"
 
 ## <a name="before-you-troubleshoot"></a>トラブルシューティングを行う前に
 
-### <a name="create-a-backup-snapshot"></a>バックアップ スナップショットを作成する
+### <a name="create-a-backup-snapshot"></a>バックアップ スナップショットの作成
 
-バックアップ スナップショットを作成するには、「[スナップショットの作成](..\windows\snapshot-copy-managed-disk.md)」の手順に従います。
+バックアップ スナップショットを作成するには、「[ディスクのスナップショットの作成](../windows/snapshot-copy-managed-disk.md)」の手順に従います。
 
 ### <a name="connect-to-the-vm-remotely"></a>VM にリモート接続する
 
@@ -54,36 +54,36 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windows-TerminalServices-RemoteConnectionManager'] and EventID=1057 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**ログの名前:**      System <br />
-**ソース:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
+**ログ名:**    システム <br />
+**ソース:**      Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **日付:**          *時刻* <br />
-**イベント ID:**      1058 <br />
-**タスクのカテゴリ:** None <br />
-**レベル:**         Error <br />
-**キーワード:**      Classic <br />
-**ユーザー:**          N/A <br />
+**イベント ID:**    1058 <br />
+**タスク カテゴリ:** なし <br />
+**レベル:**       Error <br />
+**キーワード:**    クラシック <br />
+**ユーザー:**        該当なし <br />
 **コンピューター:**      *コンピューター* <br />
 **説明:** RD セッション ホスト サーバーで、SSL 接続時に RD セッション ホスト サーバー認証に使用する、期限切れの自己署名証明書を置き換えられませんでした。 関連する状態コードは "アクセスが拒否されました" でした。
 
-**ログの名前:**      System <br />
-**ソース:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
+**ログ名:**    システム <br />
+**ソース:**      Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **日付:**          *時刻* <br />
-**イベント ID:**      1058 <br />
-**タスクのカテゴリ:** None <br />
-**レベル:**         Error <br />
-**キーワード:**      Classic <br />
-**ユーザー:**          N/A <br />
+**イベント ID:**    1058 <br />
+**タスク カテゴリ:** なし <br />
+**レベル:**       Error <br />
+**キーワード:**    クラシック <br />
+**ユーザー:**        該当なし <br />
 **コンピューター:**      *コンピューター* <br />
 **説明:** RD セッション ホスト サーバーで、SSL 接続時に RD セッション ホスト サーバー認証に使用する、新規の自己署名証明書を生成できませんでした。関連する状態コードは "オブジェクトは既に存在します" でした。
 
-**ログの名前:**      System <br />
-**ソース:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
+**ログ名:**    システム <br />
+**ソース:**      Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **日付:**          *時刻* <br />
-**イベント ID:**      1057 <br />
-**タスクのカテゴリ:** None <br />
-**レベル:**         Error <br />
-**キーワード:**      Classic <br />
-**ユーザー:**          N/A <br />
+**イベント ID:**    1057 <br />
+**タスク カテゴリ:** なし <br />
+**レベル:**       Error <br />
+**キーワード:**    クラシック <br />
+**ユーザー:**        該当なし <br />
 **コンピューター:**      *コンピューター* <br />
 **説明:** RD セッション ホスト サーバーで、SSL 接続時に RD セッション ホスト サーバー認証に使用する、新規の自己署名証明書を生成できませんでした。 関連する状態コードは "キー セットがありません" でした。
 
@@ -94,16 +94,16 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and EventID=36872 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**ログの名前:**      System <br />
-**ソース:**        Schannel <br />
+**ログ名:**    システム <br />
+**ソース:**      Schannel <br />
 **日付:**          — <br />
-**イベント ID:**      36870 <br />
-**タスクのカテゴリ:** None <br />
-**レベル:**         Error <br />
+**イベント ID:**    36870 <br />
+**タスク カテゴリ:** なし <br />
+**レベル:**       Error <br />
 **キーワード:**       <br />
-**ユーザー:**          SYSTEM <br />
+**ユーザー:**        SYSTEM <br />
 **コンピューター:**      *コンピューター* <br />
-**説明:** SSL サーバー資格情報の秘密キーにアクセスしようとしているときに致命的なエラーが発生しました。 暗号化モジュールから返されたエラー コードは 0x8009030D です。  <br />
+**説明:** SSL サーバー資格証明の秘密キーにアクセスしようとしているときに致命的なエラーが発生しました。 暗号化モジュールから返されたエラー コードは 0x8009030D です。  <br />
 内部エラーの状態は 10001 です。
 
 ### <a name="cause"></a>原因
@@ -216,16 +216,16 @@ CMD インスタンスで次のコマンドを実行して、過去 24 時間以
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and EventID=36871 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**ログの名前:**      System <br />
-**ソース:**        Schannel <br />
+**ログ名:**    システム <br />
+**ソース:**      Schannel <br />
 **日付:**          — <br />
-**イベント ID:**      36871 <br />
-**タスクのカテゴリ:** None <br />
-**レベル:**         Error <br />
+**イベント ID:**    36871 <br />
+**タスク カテゴリ:** なし <br />
+**レベル:**       Error <br />
 **キーワード:**       <br />
-**ユーザー:**          SYSTEM <br />
+**ユーザー:**        SYSTEM <br />
 **コンピューター:**      *コンピューター* <br />
-**説明:** TLS サーバー資格情報を作成しているときに致命的なエラーが発生しました。 内部エラーの状態は 10013 です。
+**説明:** TLS サーバー資格証明を作成しているときに致命的なエラーが発生しました。 内部エラーの状態は 10013 です。
  
 ### <a name="cause"></a>原因
 
@@ -246,14 +246,14 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Windows-TerminalServices-SessionBroker-Client '] and EventID=1296 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 ```
 
-**ログ名:**      Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
-**ソース:**        Microsoft-Windows-TerminalServices-SessionBroker <br />
+**ログ名:**    Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
+**ソース:**      Microsoft-Windows-TerminalServices-SessionBroker <br />
 **日付:**          *時刻* <br />
-**イベント ID:**      2056 <br />
-**タスク カテゴリ:** (109) <br />
-**レベル:**         Error <br />
+**イベント ID:**    2056 <br />
+**タスク カテゴリ:**(109) <br />
+**レベル:**       Error <br />
 **キーワード:**       <br />
-**ユーザー:**          NETWORK SERVICE <br />
+**ユーザー:**        NETWORK SERVICE <br />
 **コンピューター:**      *コンピューターの FQDN* <br />
 **説明:** ソース "Microsoft-Windows-TerminalServices-SessionBroker" からのイベント ID 2056 の説明が見つかりません。 このイベントを発生させるコンポーネントがローカル コンピューターにインストールされていないか、インストールが壊れています。 ローカル コンピューターにコンポーネントをインストールするか、コンポーネントを修復してください。 <br />
 イベントが別のコンピューターから発生している場合、イベントと共に表示情報を保存する必要があります。 <br />
@@ -262,14 +262,14 @@ NULL <br />
 NULL <br />
 データベースにログオンできませんでした。
 
-**ログ名:**      Microsoft-Windows-TerminalServices-SessionBroker-Client/Operational <br />
-**ソース:**        Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
+**ログ名:**    Microsoft-Windows-TerminalServices-SessionBroker-Client/Operational <br />
+**ソース:**      Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
 **日付:**          *時刻* <br />
-**イベント ID:**      1296 <br />
-**タスク カテゴリ:** (104) <br />
-**レベル:**         Error <br />
+**イベント ID:**    1,296 <br />
+**タスク カテゴリ:**(104) <br />
+**レベル:**       Error <br />
 **キーワード:**       <br />
-**ユーザー:**          NETWORK SERVICE <br />
+**ユーザー:**        NETWORK SERVICE <br />
 **コンピューター:**      *コンピューターの FQDN* <br />
 **説明:** ソース "Microsoft-Windows-TerminalServices-SessionBroker-Client" からのイベント ID 1296 の説明が見つかりません。 このイベントを発生させるコンポーネントがローカル コンピューターにインストールされていないか、インストールが壊れています。 ローカル コンピューターにコンポーネントをインストールするか、コンポーネントを修復してください。
 イベントが別のコンピューターから発生している場合、イベントと共に表示情報を保存する必要があります。

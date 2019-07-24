@@ -3,24 +3,25 @@ title: Application Proxy | Microsoft Docsのための、制限付き委任構成
 description: Application Proxy のための、制限付き委任構成のトラブルシューティング Kerberos
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/24/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 52157797bb01fc73c551ca9654b2360d161b653d
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b83b08c442a7f10d6b29122fe7959bedf8f3cff0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355788"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177531"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Application Proxy のための、制限付き委任構成のトラブルシューティング Kerberos
 
@@ -32,7 +33,7 @@ KCD を有効にするための手順は簡単です。 SSO をサポートす�
 
 この記事は以下を前提としています。
 
--   Azure アプリケーション プロキシのデプロイが[アプリケーション プロキシの開始](application-proxy-enable.md)および、非 KCD アプリケーション作業への一般的アクセスのそれぞれにおいて、正常に動作している。
+-   Azure アプリケーション プロキシのデプロイが[アプリケーション プロキシの開始](application-proxy-add-on-premises-application.md)および、非 KCD アプリケーション作業への一般的アクセスのそれぞれにおいて、正常に動作している。
 
 -   公開されているターゲット アプリケーションが IIS と Microsoft による Kerberos の実装に基づいている。
 
@@ -64,7 +65,7 @@ Azure AD アプリケーション プロキシは、各種のインフラスト�
 
    ![権限がないために承認に失敗](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
 
-これらのイメージの両方が同じ現象を提示します。 アプリケーションへのユーザー アクセスが拒否されました。
+これらのイメージの両方が同じ現象であるSSO 失敗を示します。 アプリケーションへのユーザー アクセスが拒否されました。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

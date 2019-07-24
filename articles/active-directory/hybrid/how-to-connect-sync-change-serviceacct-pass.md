@@ -1,27 +1,28 @@
 ---
-title: 'Azure AD Connect 同期: Azure AD Connect 同期サービス アカウントの変更 | Microsoft Docs'
+title: Azure AD Connect 同期:Azure AD Connect 同期サービス アカウントの変更 | Microsoft Docs
 description: このトピックでは、暗号化キーの詳細と、パスワードの変更後にこのキーを破棄する方法について説明します。
 services: active-directory
 keywords: Azure AD 同期サービス アカウント, パスワード
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 76b19162-8b16-4960-9e22-bd64e6675ecc
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/31/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 331c536970445dacdb9afc9d3cfa5711b82bfbf0
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 15d0d537a23e21eeda3b284e7ec706cde2b443e7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747254"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014085"
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Azure AD Connect 同期サービス アカウントのパスワードの変更
 Azure AD Connect 同期サービス アカウントのパスワードを変更すると、暗号化キーを破棄し、Azure AD Connect 同期サービス アカウントのパスワードを再初期化するまで、同期サービスを正常に開始できなくなります。 
@@ -38,14 +39,14 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
 最初に、Windows サービス コントロール マネージャーでパスワードを変更する必要があります。  この問題を解決するまで、次のエラーが表示されます。
 
 
-- Windows サービス コントロール マネージャーで同期サービスを開始しようとすると、"**ローカル コンピューターの Microsoft Azure AD Sync サービスを開始できませんでした。** **エラー 1069: ログオンに失敗したため、サービスを開始できませんでした。** " というエラーが表示されます。
-- Windows イベント ビューアーでは、システム イベント ログに**イベント ID 7038** のエラーと、“**The ADSync service was unable to log on as with the currently configured password due to the following error: The user name or password is incorrect**" (現在構成されているパスワードでは、次のエラーにより ADSync サービスにログオンできませんでした: ユーザー名またはパスワードが間違っています。) というメッセージが記録されます。
+- Windows サービス コントロール マネージャーで同期サービスを開始しようとすると、"**ローカル コンピューターの Microsoft Azure AD Sync サービスを開始できませんでした。** **エラー 1069:ログオンに失敗したため、サービスを開始できませんでした**" というエラーが表示されます。
+- Windows イベント ビューアーでは、システム イベント ログに**イベント ID 7038** のエラーと、"**現在構成されているパスワードでは、次のエラーにより ADSync サービスにログオンできませんでした:ユーザー名またはパスワードが正しくありません**" というメッセージが記録されます。
 
 次に、特定の条件下では、パスワードを更新すると同期サービスで DPAPI を使用して暗号化キーを取得できなくなります。 暗号化キーがないと、同期サービスはオンプレミスの AD および Azure AD と同期するために必要なパスワードの暗号化を解除できません。
 次のようなエラーが表示されます。
 
-- Windows サービス コントロール マネージャーで同期サービスを開始しようとすると、暗号化キーを取得できないため、"ローカル コンピューターで Microsoft Azure AD Sync サービスを開始できませんでした。 詳細情報はシステム イベント ログを参照してください。 **これが Microsoft 以外のサービスである場合は、サービスの製造元に問い合わせてください。その際、サービス固有のエラー コードが \*\*-21451857952**\*\* であることを伝えてください。” というエラーが表示され失敗します。
-- Windows イベント ビューアーでは、アプリケーション イベント ログに**イベント ID 6028** のエラーと、*"**The server encryption key cannot be accessed.**"* (サーバー暗号化キーにアクセスできませんでした) というエラー メッセージが記録されます。
+- Windows サービス コントロール マネージャーで同期サービスを開始しようとすると、暗号化キーを取得できないため、"<strong>ローカル コンピューターで Microsoft Azure AD Sync サービスを開始できませんでした。詳細情報はシステム イベント ログを参照してください。これが Microsoft 以外のサービスである場合は、サービス ベンダーに問い合わせてください。その際、サービス固有のエラー コードが -21451857952 であることを伝えてください</strong>" というエラーが表示され失敗します。
+- Windows イベント ビューアーでは、アプリケーション イベント ログに**イベント ID 6028** のエラーと、*"The server encryption key cannot be accessed."* (サーバー暗号化キーにアクセスできませんでした) というエラー メッセージが記録されます。
 
 これらのエラーが表示されないようにするために、パスワードの変更時には「[Azure AD Connect 同期の暗号化キーの破棄](#abandoning-the-azure-ad-connect-sync-encryption-key)」の手順に従ってください。
  
@@ -121,6 +122,6 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
 ## <a name="next-steps"></a>次の手順
 **概要トピック**
 
-* [Azure AD Connect sync: 同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
 
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)

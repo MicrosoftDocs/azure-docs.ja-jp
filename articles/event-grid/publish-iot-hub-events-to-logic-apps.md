@@ -4,22 +4,22 @@ description: Azure Event Grid のイベント ルーティング サービスを
 services: iot-hub
 documentationcenter: ''
 author: kgremban
-manager: timlt
+manager: philmea
 editor: ''
 ms.service: iot-hub
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2018
+ms.date: 12/07/2018
 ms.author: kgremban
-ms.openlocfilehash: c91dad17016cd9619d2d42a3fcee04a7d14b5eab
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9c84e1a62ad8b67e398c62074c390711f4b0be28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242521"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079999"
 ---
-# <a name="send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する
+# <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>チュートリアル:Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する
 
 Azure Event Grid を使うと、ダウンストリームのビジネス アプリケーションのアクションをトリガーすることによって、IoT Hub のイベントに対応することができます。
 
@@ -37,19 +37,16 @@ Azure Event Grid を使うと、ダウンストリームのビジネス アプ�
 
 ### <a name="create-a-logic-app-resource"></a>ロジック アプリ リソースを作成する
 
-1. [Azure portal](https://portal.azure.com) で、**[新規]** > **[統合]** > **[Logic App]** の順に選びます。
+1. [Azure portal](https://portal.azure.com) で、**[リソースの作成]** > **[統合]** > **[Logic App]** を選択します。
 
    ![ロジック アプリを作成する](./media/publish-iot-hub-events-to-logic-apps/select-logic-app.png)
 
 2. ロジック アプリにサブスクリプション内で一意の名前を指定し、IoT Hub と同じサブスクリプション、リソース グループ、場所を選びます。 
-3. 準備ができたら、**[ダッシュボードにピン留めする]**、**[作成]** の順に選択します。
+3. **作成**を選択します。
 
-   これで、ロジック アプリの Azure リソースが作成されました。 Azure によってロジック アプリがデプロイされたら、すばやく開始できるように Logic Apps デザイナーによって一般的なパターンのテンプレートが表示されます。
+4. リソースが作成されたら、ロジック アプリに移動します。 
 
-   > [!NOTE] 
-   > **[ダッシュボードにピン留めする]** を選択すると、ロジック アプリが Logic Apps デザイナーで自動的に開きます。 開かない場合は、手動でロジック アプリを見つけて開くことができます。
-
-4. ロジック アプリ デザイナーで、**[テンプレート]** の **[空のロジック アプリ]** を選ぶと、ロジック アプリを最初から作成できます。
+5. すばやく開始できるように、ロジック アプリ デザイナーで一般的なパターンのテンプレートが表示されます。 ロジック アプリ デザイナーで、**[テンプレート]** の **[空のロジック アプリ]** を選ぶと、ロジック アプリを最初から作成できます。
 
 ### <a name="select-a-trigger"></a>トリガーを選択する
 
@@ -66,51 +63,51 @@ Azure Event Grid を使うと、ダウンストリームのビジネス アプ�
 
 4. 次のサンプル JSON コードをテキスト ボックスに貼り付けて、**[完了]** を選びます。
 
-```json
-[{
-  "id": "56afc886-767b-d359-d59e-0da7877166b2",
-  "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>",
-  "subject": "devices/LogicAppTestDevice",
-  "eventType": "Microsoft.Devices.DeviceCreated",
-  "eventTime": "2018-01-02T19:17:44.4383997Z",
-  "data": {
-    "twin": {
-      "deviceId": "LogicAppTestDevice",
-      "etag": "AAAAAAAAAAE=",
-      "deviceEtag": "null",
-      "status": "enabled",
-      "statusUpdateTime": "0001-01-01T00:00:00",
-      "connectionState": "Disconnected",
-      "lastActivityTime": "0001-01-01T00:00:00",
-      "cloudToDeviceMessageCount": 0,
-      "authenticationType": "sas",
-      "x509Thumbprint": {
-        "primaryThumbprint": null,
-        "secondaryThumbprint": null
-      },
-      "version": 2,
-      "properties": {
-        "desired": {
-          "$metadata": {
-            "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
-          },
-          "$version": 1
-        },
-        "reported": {
-          "$metadata": {
-            "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
-          },
-          "$version": 1
-        }
-      }
-    },
-    "hubName": "egtesthub1",
-    "deviceId": "LogicAppTestDevice"
-  },
-  "dataVersion": "1",
-  "metadataVersion": "1"
-}]
-```
+   ```json
+   [{
+     "id": "56afc886-767b-d359-d59e-0da7877166b2",
+     "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>",
+     "subject": "devices/LogicAppTestDevice",
+     "eventType": "Microsoft.Devices.DeviceCreated",
+     "eventTime": "2018-01-02T19:17:44.4383997Z",
+     "data": {
+       "twin": {
+         "deviceId": "LogicAppTestDevice",
+         "etag": "AAAAAAAAAAE=",
+         "deviceEtag": "null",
+         "status": "enabled",
+         "statusUpdateTime": "0001-01-01T00:00:00",
+         "connectionState": "Disconnected",
+         "lastActivityTime": "0001-01-01T00:00:00",
+         "cloudToDeviceMessageCount": 0,
+         "authenticationType": "sas",
+         "x509Thumbprint": {
+           "primaryThumbprint": null,
+           "secondaryThumbprint": null
+         },
+         "version": 2,
+         "properties": {
+           "desired": {
+             "$metadata": {
+               "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
+             },
+             "$version": 1
+           },
+           "reported": {
+             "$metadata": {
+               "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
+             },
+             "$version": 1
+           }
+         }
+       },
+       "hubName": "egtesthub1",
+       "deviceId": "LogicAppTestDevice"
+     },
+     "dataVersion": "1",
+     "metadataVersion": "1"
+   }]
+   ```
 
 5. "**application/json に設定されている Content-Type ヘッダーを要求に忘れずに含めてください**" というポップアップ通知を受け取る場合があります。 この指摘は無視しても安全なので、次のセクションに進みます。 
 
@@ -119,16 +116,20 @@ Azure Event Grid を使うと、ダウンストリームのビジネス アプ�
 アクションは、トリガーがロジック アプリのワークフローを開始した後に発生する手順です。 このチュートリアルのアクションは、メール プロバイダーからのメール通知の送信です。 
 
 1. **[新しいステップ]** を選択します。 **[アクションの選択]** ウィンドウが開きます。
+
 2. **[電子メール]** を検索します。
+
 3. 電子メール プロバイダーに基づいて、一致するコネクタを検索して選択します。 このチュートリアルでは、**Office 365 Outlook** を使います。 他のメール プロバイダーの手順も同様です。 
 
    ![メール プロバイダーのコネクタを選ぶ](./media/publish-iot-hub-events-to-logic-apps/o365-outlook.png)
 
 4. **[電子メールの送信]** アクションを選びます。 
+
 5. メッセージに従ってメール アカウントにサインインします。 
+
 6. メール テンプレートを作成します。 
-   * **[宛先]**: 通知メールを受信するメール アドレスを入力します。 このチュートリアルでは、テスト用にアクセスできるメール アカウントを使います。 
-   * **[件名]** と **[本文]**: メールのテキストを記述します。 イベント データに基づく動的なコンテンツを含めるには、選択ツールから JSON プロパティを選びます。  
+   * **[宛先]**:通知メールを受信するメール アドレスを入力します。 このチュートリアルでは、テスト用にアクセスできるメール アカウントを使います。 
+   * **[件名]** と **[本文]**:メールのテキストを記述します。 イベント データに基づく動的なコンテンツを含めるには、選択ツールから JSON プロパティを選びます。  
 
    メール テンプレートは次の例のようになります。
 
@@ -161,22 +162,24 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
    ![新しいイベント サブスクリプションを作成する](./media/publish-iot-hub-events-to-logic-apps/event-subscription.png)
 
 4. 次の値でイベント サブスクリプションを作成します。 
-    * **[イベントの種類]**: [すべてのイベントの種類を購読します] をオフにして、メニューから **[デバイスの作成完了]** を選択します。
-    * **エンドポイントの詳細**: エンドポイントのタイプ として **webhook** を選択し、エンドポイントの選択 をクリックして、ロジック アプリからコピーした URL を貼り付けて選択を確認します。
+   * **[イベントの種類]**:[すべてのイベントの種類を購読します] をオフにして、メニューから **[デバイスの作成完了]** を選択します。
+   * **[エンドポイントの詳細]**:[エンドポイントのタイプ] として **[Web Hook]** を選択し、[エンドポイントの選択] をクリックして、ロジック アプリからコピーした URL を貼り付けて選択を確認します。
 
-    ![エンドポイントの URL を選択する](./media/publish-iot-hub-events-to-logic-apps/endpoint-url.png)
+     ![エンドポイントの URL を選択する](./media/publish-iot-hub-events-to-logic-apps/endpoint-url.png)
 
-    * **[イベント サブスクリプションの詳細]**: わかりやすい名前を指定し、**[イベント グリッド スキーマ]** を選択します。
+   * **[イベント サブスクリプションの詳細]**:わかりやすい名前を指定し、**[イベント グリッド スキーマ]** を選択します
 
-  以上でイベント サブスクリプションを保存すると、IoT hub でデバイスが作成されるたびに通知を受け取るようになります。 しかし、このチュートリアルでは、特定のデバイスでフィルター処理をするためにオプションのフィールドを追加します。 
-
-  * **[次で始まるサブジェクト]**: ビル 1 でのデバイス イベントでフィルター処理するため、「`devices/Building1_`」と入力します。
-  * **[次で終わるサブジェクト]**: 温度に関するデバイス イベントでフィルター処理するため、「`_Temperature`」と入力します。
-
-  終了すると、フォームは次の例のようになります。 
+   終了すると、フォームは次の例のようになります。 
 
     ![サンプルのイベント サブスクリプション フォーム](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
-    
+
+5. 以上でイベント サブスクリプションを保存すると、IoT hub でデバイスが作成されるたびに通知を受け取るようになります。 しかし、このチュートリアルでは、特定のデバイスでフィルター処理をするためにオプションのフィールドを追加します。 フォームの上部にある **[追加機能]** を選択します。 
+
+6. 次のフィルターを作成します。
+
+   * **次で始まるサブジェクト**:ビル 1 でのデバイス イベントでフィルター処理するため、「`devices/Building1_`」と入力します。
+   * **次で終わるサブジェクト**:温度に関するデバイス イベントでフィルター処理するため、「`_Temperature`」と入力します。
+
 5. **[作成]** を選び、イベント サブスクリプションを保存します。
 
 ## <a name="create-a-new-device"></a>新しいデバイスを作成する

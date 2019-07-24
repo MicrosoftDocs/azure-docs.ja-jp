@@ -1,75 +1,102 @@
+items:
 - name: Bing Entity Search のドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Bing Entity Search とは
-      href: search-the-web.md
+  - name: Bing Entity Search とは
+    href: overview.md
+  - name: Bing Search API を比較する
+    href: ../Bing-Web-Search/bing-api-comparison.md
+    maintainContext: true
 - name: REST API のクイック スタート
-  expanded: true
   items:
-    - name: 'C#'
+  - name: REST API
+    items:
+    - name: C# の使用
       href: quickstarts/csharp.md
-    - name: Java
+    - name: Java の使用
       href: quickstarts/java.md
-    - name: Node.js
+    - name: Node.js の使用
       href: quickstarts/nodejs.md
-    - name: PHP
+    - name: PHP の使用
       href: quickstarts/php.md
-    - name: Python
+    - name: Python の使用
       href: quickstarts/python.md
-    - name: Ruby
+    - name: Ruby の使用
       href: quickstarts/ruby.md
-- name: SDK のクイック スタート
-  items:
-    - name: SDK のサンプルの概要
-      href: sdk.md
-    - name: 'Entity Search C# のクイック スタート'
-      href: entity-search-sdk-quickstart.md
-    - name: Entity Search Node.js のクイック スタート
-      href: entity-search-sdk-node-quickstart.md
-    - name: Entity Search Python のクイック スタート
-      href: entity-sdk-python-quickstart.md
-    - name: Entity Search Java のクイック スタート
-      href: entity-sdk-java-quickstart.md
+  - name: SDK
+    items:
+    - name: C# の使用
+      href: quickstarts/entity-sdk-csharp-quickstart.md
+    - name: Node.js の使用
+      href: quickstarts/entity-sdk-node-quickstart.md
+    - name: Python の使用
+      href: quickstarts/entity-sdk-python-quickstart.md
+    - name: Java の使用
+      href: quickstarts/entity-sdk-java-quickstart.md
+  expanded: true
 - name: チュートリアル
   items:
-    - name: 単一ページの Web アプリ
-      href: tutorial-bing-entities-search-single-page-app.md
-    - name: 単一ページの Web アプリ (ソース コード)
-      href: tutorial-bing-entities-search-single-page-app-source.md
+  - name: シングルページ Web アプリの作成
+    href: tutorial-bing-entities-search-single-page-app.md
 - name: サンプル
   items:
-    - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Entity+Search'
+  - name: コード サンプル
+    href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Entity+Search
 - name: ハウツー ガイド
   items:
-    - name: 使用と表示の要件
-      href: use-display-requirements.md
-    - name: サムネイルのサイズ変更とトリミング
-      href: resize-and-crop-thumbnails.md
+  - name: サムネイルのサイズ変更とトリミング
+    href: resize-and-crop-thumbnails.md
+- name: 概念
+  items:
+  - name: エンティティの検索
+    href: concepts/search-for-entities.md
+  - name: 検索要求の送信
+    href: concepts/sending-requests.md
 - name: リファレンス
   items:
-    - name: Bing Entity Search API v7
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference'
+  - name: Bing Search API の利用と表示の要件
+    href: ../Bing-Web-Search/use-display-requirements.md
+    maintainContext: true
+  - name: Bing Entity Search API v7
+    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference
+  - name: SDK
+    items:
+    - name: .NET
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingentitysearchapi?view=azure-dotnet
+    - name: Java
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/entitysearch?view=azure-java-stable
+    - name: Python
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/entitysearch?view=azure-python
+    - name: Node.js
+      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/entitysearch?view=azure-node-latest
+    - name: Go
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/entitysearch
 - name: リソース
   items:
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/bing-entity-search-api/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/601036-bing-entity-search-api'
-    - name: スタック オーバーフロー
-      href: 'https://stackoverflow.com/search?q=bing+entity+search'
-    - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: サポート技術情報
-      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
-    - name: API キーを取得する
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-entities-search-api'
-    - name: 試してみる
-      href: 'https://dev.cognitive.microsoft.com/docs/services/7a3fb374be374859a823b79fd938cc65/'
-    - name: Bing Entity Search エンドポイント
-      href: entity-search-endpoint.md
-    - name: Bing Entity Search API 用の分析
-      href: bing-entity-stats.md
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/bing-entity-search-api/
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/601036-bing-entity-search-api
+  - name: スタック オーバーフロー
+    href: https://stackoverflow.com/search?q=bing+entity+search
+  - name: リージョン別の提供状況
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+  - name: ナレッジ ベース
+    href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
+  - name: API キーを取得する
+    href: https://azure.microsoft.com/try/cognitive-services/?api=bing-entities-search-api
+  - name: 試してみる
+    href: https://dev.cognitive.microsoft.com/docs/services/7a3fb374be374859a823b79fd938cc65/
+  - name: Bing Entity Search エンドポイント
+    href: entity-search-endpoint.md
+  - name: Bing Entity Search API 用の分析
+    href: bing-entity-stats.md
+ms.openlocfilehash: 6574b06a9aced43f381bcb106e0b6426bd6f4fd7
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755797"

@@ -1,23 +1,24 @@
 ---
-title: 'クイック スタート: リモート画像の分析 - REST、Node.js - Computer Vision'
+title: クイック スタート:リモート画像の分析 - REST、Node.js
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Node.js で Computer Vision API を使用して画像を分析します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 22497d07133a9ab717d319524c3e2825c832ddaa
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 96a2e9f2f6e114c9a4b74111cd6a6d085022a4c8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342588"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57872672"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-with-nodejs-in-computer-vision"></a>クイック スタート: Computer Vision で REST API と Node.js を使用してリモート画像を分析する
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-with-nodejs-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と Node.js を使用してリモート画像を分析する
 
 このクイック スタートでは、Computer Vision の REST API を使用して、リモートに格納されている画像を分析し、視覚的特徴を抽出します。 [画像分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)メソッドを使うと、画像の内容に基づいて視覚的特徴を抽出できます。
 
@@ -53,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. コマンド プロンプト ウィンドウを開きます。
 1. プロンプトで、`node` コマンドを使用してファイルを実行します。 たとえば、「 `node analyze-image.js` 」のように入力します。
 
-```nodejs
+```javascript
 'use strict';
 
 const request = require('request');
@@ -68,7 +69,7 @@ const uriBase =
     'https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze';
 
 const imageUrl =
-    'http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg';
+    'https://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg';
 
 // Request parameters.
 const params = {

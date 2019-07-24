@@ -1,33 +1,33 @@
 ---
-title: 'Azure AD Domain Services: ネットワーク ガイドライン | Microsoft Docs'
+title: Azure AD Domain Services:ネットワークのガイドライン | Microsoft Docs
 description: Azure Active Directory Domain Services のネットワークに関する考慮事項
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 23a857a5-2720-400a-ab9b-1ba61e7b145a
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/01/2017
 ms.author: ergreenl
-ms.openlocfilehash: eb97e709e18daba3722dc43a869ef034dbe573cf
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 3eba9f504f98d250ad60de3b4dd775effaad2040
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157430"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55185552"
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD Domain Services のネットワークに関する考慮事項
 ## <a name="how-to-select-an-azure-virtual-network"></a>Azure 仮想ネットワークを選択する方法
 次のガイドラインは、Azure AD Domain Services で使用する仮想ネットワークを選択する際に役立ちます。
 
 ### <a name="type-of-azure-virtual-network"></a>Azure 仮想ネットワークの種類
-* **Resource Manager の仮想ネットワーク**: Azure AD Domain Services は、Azure Resource Manager を使って作成された仮想ネットワーク上で有効にできます。
+* **Resource Manager の仮想ネットワーク**:Azure AD Domain Services は、Azure Resource Manager を使って作成された仮想ネットワークでは有効にできます。
 * 従来の Azure 仮想ネットワークで Azure AD Domain Services を有効にすることはできません。
 * Azure AD Domain Services が有効になっている仮想ネットワークに他の仮想ネットワークを接続することができます。 詳細については、「[ネットワーク接続](active-directory-ds-networking.md#network-connectivity)」を参照してください。
 
@@ -37,9 +37,9 @@ ms.locfileid: "50157430"
 * Azure AD Domain Services を使用できる Azure リージョンを確認するには、 [リージョン別の Azure サービス](https://azure.microsoft.com/regions/#services/) に関するページを参照してください。
 
 ### <a name="requirements-for-the-virtual-network"></a>仮想ネットワークの要件
-* **Azure ワークロードへの近さ**: Azure AD Domain Services にアクセスする必要のある仮想マシンを現在ホストしている (または今後ホストする予定の) 仮想ネットワークを選択します。 マネージド ドメインとは異なる仮想ネットワークにワークロードがデプロイされている場合は、仮想ネットワークを接続することも選択できます。
-* **カスタムまたは持ち込みの DNS サーバー**: 仮想ネットワーク用にカスタムの DNS サーバーが構成されていないことを確認します。 カスタム DNS サーバーの例は、仮想ネットワークにデプロイした Windows Server VM で実行されている Windows Server DNS のインスタンスです。 Azure AD Domain Services は、仮想ネットワーク内にデプロイされているカスタム DNS サーバーと統合されません。
-* **同じドメイン名を持つ既存のドメイン**: 仮想ネットワークで使用できるドメインと同じ名前の既存のドメインがないことを確認します。 たとえば、選択した仮想ネットワークで既に利用可能な "contoso.com" という名前のドメインがあると仮定します。 その後、その仮想ネットワークでこれと同じドメイン名 (つまり "contoso.com") で、Azure AD Domain Services のマネージド ドメインを有効にしようとします。 Azure AD Domain Services を有効にしようとすると、エラーが発生します。 このエラーの原因は、仮想ネットワークのドメイン名で名前が競合していることにあります。 この場合、Azure AD Domain Services のマネージド ドメインを設定するには、別の名前を使用する必要があります。 または、既存のドメインのプロビジョニングを解除してから、Azure AD ドメイン サービスの有効化に進みます。
+* **Azure ワークロードへの近さ**:Azure AD Domain Services にアクセスする必要のある仮想マシンを現在ホストしている (または今後ホストする予定の) 仮想ネットワークを選択します。 マネージド ドメインとは異なる仮想ネットワークにワークロードがデプロイされている場合は、仮想ネットワークを接続することも選択できます。
+* **カスタムまたは持ち込みの DNS サーバー**:仮想ネットワーク用にカスタムの DNS サーバーが構成されていないことを確認します。 カスタム DNS サーバーの例は、仮想ネットワークにデプロイした Windows Server VM で実行されている Windows Server DNS のインスタンスです。 Azure AD Domain Services は、仮想ネットワーク内にデプロイされているカスタム DNS サーバーと統合されません。
+* **同じドメイン名を持つ既存のドメイン**:その仮想ネットワークで使用できるドメインと同じ名前のドメインがないことを確認します。 たとえば、選択した仮想ネットワークで既に利用可能な "contoso.com" という名前のドメインがあると仮定します。 その後、その仮想ネットワークでこれと同じドメイン名 (つまり "contoso.com") で、Azure AD Domain Services のマネージド ドメインを有効にしようとします。 Azure AD Domain Services を有効にしようとすると、エラーが発生します。 このエラーの原因は、仮想ネットワークのドメイン名で名前が競合していることにあります。 この場合、Azure AD Domain Services のマネージド ドメインを設定するには、別の名前を使用する必要があります。 または、既存のドメインのプロビジョニングを解除してから、Azure AD ドメイン サービスの有効化に進みます。
 
 > [!WARNING]
 > Domain Services は、有効にした後、別の仮想ネットワークに移動できません。
@@ -102,7 +102,7 @@ Azure AD Domain Services によるマネージド ドメインのサービス提
 
 また、この NSG では、インターネット経由での、セキュリティで保護された LDAP アクセスをロック ダウンする方法も示しています。 インターネット経由でのマネージド ドメインへのセキュリティで保護された LDAP アクセスを行えないようにしている場合は、この規則についてはスキップしてください。 この NSG には、指定した IP アドレスから TCP ポート 636 経由で入ってくる LDAPS アクセスのみを許可するルール セットが含まれています。 指定した IP アドレスからインターネット経由で入ってくる LDAPS アクセスを許可する NSG ルールには、DenyAll NSG ルールより高い優先度が設定されています。
 
-![サンプル NSG。セキュリティで保護された LDAPS を利用し、インターネット経由でアクセスします。](.\media\active-directory-domain-services-alerts\default-nsg.png)
+![サンプル NSG。セキュリティで保護された LDAPS を利用し、インターネット経由でアクセスします。](./media/active-directory-domain-services-alerts/default-nsg.png)
 
 **詳細** - [ネットワーク セキュリティ グループの作成](../virtual-network/manage-network-security-group.md)
 
@@ -124,13 +124,13 @@ Resource Manager ベースの仮想ネットワークを、Azure AD Domain Servi
 ![Resource Manager to classic virtual network connectivity](./media/active-directory-domain-services-design-guide/classic-arm-vnet-connectivity.png)
 
 ### <a name="network-connection-options"></a>ネットワーク接続オプション
-* **仮想ネットワーク ピアリングを使用した VNet 間接続**: 仮想ネットワーク ピアリングとは、同じリージョンに存在する 2 つの仮想ネットワークを Azure のバックボーン ネットワークを介して接続する機構です。 ピアリングされた 2 つの仮想ネットワークは、あらゆる接続において、見かけ上 1 つのネットワークとして機能します。 これらの仮想ネットワークはあくまで個別のリソースとして管理されますが、そこに存在する仮想マシンは互いに、プライベート IP アドレスを使用して直接通信を行うことができます。
+* **仮想ネットワーク ピアリングを使用した VNet 間接続**:仮想ネットワーク ピアリングとは、同じリージョンに存在する 2 つの仮想ネットワークを Azure のバックボーン ネットワークを介して接続する機構です。 ピアリングされた 2 つの仮想ネットワークは、あらゆる接続において、見かけ上 1 つのネットワークとして機能します。 これらの仮想ネットワークはあくまで個別のリソースとして管理されますが、そこに存在する仮想マシンは互いに、プライベート IP アドレスを使用して直接通信を行うことができます。
 
     ![Virtual network connectivity using peering](./media/active-directory-domain-services-design-guide/vnet-peering.png)
 
     [関連情報 - 仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)
 
-* **サイト間 VPN 接続を使用した VNet 間接続**: 仮想ネットワーク間 (VNet 間) の接続は、仮想ネットワークをオンプレミスのサイトの場所に接続することと似ています。 どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。
+* **サイト間 VPN 接続を使用した VNet 間接続**:仮想ネットワーク間 (VNet 間) の接続は、仮想ネットワークをオンプレミスのサイトの場所に接続することと似ています。 どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。
 
     ![Virtual network connectivity using VPN Gateway](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
 

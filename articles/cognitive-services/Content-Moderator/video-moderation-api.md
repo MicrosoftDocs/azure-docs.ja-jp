@@ -1,21 +1,21 @@
 ---
-title: C# で好ましくない要素を検出するためにビデオ コンテンツを分析する
+title: C# で好ましくない要素を検出するためにビデオ コンテンツを分析する - Content Moderator
 titlesuffix: Azure Cognitive Services
 description: Content Moderator SDK for .NET を使用してさまざまな好ましくない要素を検出するためにビデオ コンテンツを分析する方法
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 80635354b228edc1a8c1334e5d59cf530a10083e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 7e987c1249360b14fddf8af57c61fdd1a46ee6c5
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008285"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864794"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>C# で好ましくない要素を検出するためにビデオ コンテンツを分析する
 
@@ -56,13 +56,13 @@ Azure Media Services エクスプローラーは、AMS のユーザー フレン
 
 1. Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プロジェクトを作成し、**VideoModeration** という名前を付けます。 
 1. ソリューションに他のプロジェクトがある場合は、このプロジェクトを単一のスタートアップ プロジェクトとして選択します。
-1. 必要な NuGet パッケージを入手します。 ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。次のパッケージを見つけてインストールします。
+1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。次のパッケージを見つけてインストールします。
     - windowsazure.mediaservices
     - windowsazure.mediaservices.extensions
 
 ## <a name="add-video-moderation-code"></a>ビデオ モデレーション コードを追加する
 
-次に、基本的なコンテンツ モデレーション シナリオを実装するために、このガイドのコードをコピーしてプロジェクトに貼り付けます。
+次に、基本的なコンテンツ モデレーション シナリオを実装するために、このガイドからコードをコピーしてプロジェクトに貼り付けます。
 
 ### <a name="update-the-programs-using-statements"></a>プログラムの using ステートメントを更新する
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 41f3fd55be02364b4028642db9db1d3f47043afa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 93c70e038589667ae97acb86663a6179dcc81637
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245088"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877328"
 ---
 # <a name="how-to-create-dynamics-365-for-operations-offer-via-cloud-partner-portal"></a>Cloud パートナー ポータルから Dynamics 365 for Operations オファーを作成する方法
 
@@ -31,7 +31,7 @@ ms.locfileid: "51245088"
 
 すべての前提条件が満たされると、Dynamics 365 for Operations オファーの作成を開始できるようになります。
 
-1. [クラウド パートナー ポータル](http://cloudpartner.azure.com/)にサインインします。
+1. [クラウド パートナー ポータル](https://cloudpartner.azure.com/)にサインインします。
 2. 左側のナビゲーション バーから \"[+新しいオファー]\" をクリックして、\"[Dynamics 365 for Operations]\" を選択します。
 3. これで新しいオファーの \"[エディター]\" ビューが開き、作成を開始する準備ができました。
 4. 入力が必要な\"フォーム\"は、\"[エディター]\" ビューの左側に表示されます。 各\"フォーム\"は、入力する一連のフィールドで構成されています。必須フィールドには赤いアスタリスク (\*) が付いています。
@@ -51,7 +51,7 @@ Dynamics 365 for Operations オファーを作成するための主なフォー�
 
 これは、パブリッシャー プロファイル内で一意のプラン識別子です。 この ID は製品 URL に含まれます。 小文字の英数字またはハイフン (-) のみで構成できます。 この ID はダッシュで終えることはできず、最大で 50 文字の長さにできます。 このフィールドは、プランの運用が開始されるとロックされます。
 
-たとえば、contoso というパブリッシャーが *sample-dynamics365 for operations* というオファー ID でオファーを作成した場合、AppSource では \"https://appsource.microsoft.com/marketplace/apps/**contoso**.*sample-dynamics 365 for operations*?tab=Overview\" と表示されます。
+たとえば、contoso という発行元が "*sample-dynamics365 for operations*" というプラン ID を使用してプランを作成した場合、AppSource に `https://appsource.microsoft.com/marketplace/apps/**contoso**.*sample-dynamics365 for operations*?tab=Overview\` として表示されます。
 
 ### <a name="publisher-id"></a>パブリッシャー ID
 
@@ -138,7 +138,7 @@ CAR (カスタマイズ分析レポート) をここにアップロードしま�
 
 ### <a name="leads-management"></a>リードの管理
 
-リードを保存する CRM システムを選択します。 次のうちいずれかの CRM システムをお持ちの場合、\"[Azure テーブル]\" を選択してください。Salesforce、Marketo、Microsoft Dynamics CRM。 ここで選択する CRM システムに、AppSource でアプリを試すエンド ユーザー (リード) の詳細が記述されます。 選択する CRM システムに応じて下記の該当する URL をクリックして、続く一連のフィールドに入力するための情報を参照してください。
+リードを保存する CRM システムを選択します。 次のいずれかの CRM システムをお持ちの場合、ここで \"[Azure テーブル]\" を選択してください(Salesforce、Marketo、Microsoft Dynamics CRM)。 ここで選択する CRM システムに、AppSource でアプリを試すエンド ユーザー (リード) の詳細が記述されます。 選択する CRM システムに応じて下記の該当する URL をクリックして、続く一連のフィールドに入力するための情報を参照してください。
 
 ![リードの管理の詳細](./media/publish_d365_new_offer/leads.png)
 

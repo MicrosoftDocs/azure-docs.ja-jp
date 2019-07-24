@@ -3,8 +3,8 @@ title: Azure CLI (az) と Azure Service Fabric CLI (sfctl) のサンプル
 description: Azure CLI (az) と Azure Service Fabric CLI (sfctl) のサンプル
 services: service-fabric
 documentationcenter: service-fabric
-author: rwike77
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 tags: ''
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: service-fabric
 ms.date: 04/09/2018
-ms.author: ryanwi
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 308bc71a336b6849a79237d1137779aadf0f2b30
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ef24e6313682aaf6bc88a63e404690168435f926
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003002"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664898"
 ---
 # <a name="azure-cli-az-and-azure-service-fabric-cli-sfctl-samples"></a>Azure CLI (az) と Azure Service Fabric CLI (sfctl) のサンプル
 

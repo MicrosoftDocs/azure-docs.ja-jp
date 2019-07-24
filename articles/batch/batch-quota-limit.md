@@ -1,9 +1,9 @@
 ---
-title: Azure Batch 用のサービスのクォータと制限 | Microsoft Docs
+title: サービスのクォータと制限 - Azure Batch | Microsoft Docs
 description: 既定の Azure Batch のクォータ、制限、および制約と、クォータの引き上げを要求する方法について説明します
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2018
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a7d77c0a2ce334c9909a621c55866a67e036f9cb
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.date: 03/27/2019
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: e33d014bd2dddf0c7310727229f8137c9f181325
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282783"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540977"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -65,9 +65,10 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 | [同時実行タスク数](batch-parallel-node-tasks.md)  | ノードのコア数 x 4 |
 | [アプリケーション](batch-application-packages.md) 数 | 20 |
 | アプリケーションあたりのアプリケーション パッケージ数 | 40 |
-| タスクの最長有効期間 | 7 日間<sup>1</sup> |
+| プールあたりのアプリケーション パッケージ数 | 10 |
+| タスクの最長有効期間 | 180 日<sup>1</sup> |
 
-<sup>1</sup> タスクの最長有効期間 (ジョブに追加されてから完了するまで) は、7 日間です。 完了したタスクは、無期限に保持されます。最長有効期間内に完了しなかったタスクのデータにはアクセスできません。
+<sup>1</sup> タスクの最長有効期間 (ジョブに追加されてから完了するまで) は、180 日間です。 完了したタスクは 7 日間保持されます。最長有効期間内に完了しなかったタスクのデータにはアクセスできません。
 
 ## <a name="view-batch-quotas"></a>Batch クォータの確認
 
@@ -76,14 +77,12 @@ Batch アカウントのクォータは、[Azure Portal][portal] で確認しま
 1. ポータルで **[Batch アカウント]** を選択し、目的の Batch アカウントを選択します。
 1. Batch アカウントのメニューで **[クォータ]** を選びます。
 1. Batch アカウントに現在適用されているクォータを確認します。
-   
+
     ![Batch アカウントのクォータ][account_quotas]
-
-
 
 ## <a name="increase-a-quota"></a>クォータを増やす
 
-次の手順を実行し、[Azure Portal][portal] を使用して、Batch アカウントまたはサブスクリプションに対するクォータの引き上げを要求します。 クォータの引き上げの種類は、Batch アカウントのプール割り当てモードによって異なります。
+次の手順を実行し、[Azure Portal][portal] を使用して、Batch アカウントまたはサブスクリプションに対するクォータの引き上げを要求します。 クォータの引き上げの種類は、Batch アカウントのプール割り当てモードによって異なります。 クォータの増加を要求するには、クォータを増やしたい VM シリーズを含める必要があります。 クォータの増加が適用されると、すべてのシリーズの VM に適用されます。
 
 ### <a name="increase-a-batch-cores-quota"></a>Batch のコア クォータを増やす 
 
@@ -135,6 +134,6 @@ Azure 仮想ネットワークにデプロイされている仮想マシンの�
 
 [portal]: https://portal.azure.com
 [portal_classic_increase]: https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/
-[support_sev]: http://aka.ms/supportseverity
+[support_sev]: https://aka.ms/supportseverity
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.png

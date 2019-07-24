@@ -1,22 +1,22 @@
 ---
-title: データ サイエンスにおける特徴エンジニアリング | Microsoft Docs
+title: データ サイエンスにおける特徴エンジニアリング - Team Data Science Process
 description: 特徴エンジニアリングの目的について説明し、機械学習のデータ強化プロセスにおけるその役割の例を示します。
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 80e925fddf1aebd9f699ee8e22b96cc496faeba6
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 8b0973007a78b492cff1c5ffc2ce1e43116a0847
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446677"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835086"
 ---
 # <a name="feature-engineering-in-data-science"></a>データ サイエンスにおける特徴エンジニアリング
 この記事では、特徴エンジニアリングの目的について説明し、機械学習のデータ強化プロセスにおけるその役割の例を示します。 このプロセスの説明に使用されている例は、Azure Machine Learning Studio から引用しています。 
@@ -25,8 +25,8 @@ ms.locfileid: "52446677"
 
 特徴エンジニアリングでは、学習プロセスの促進に役立つ生データから特徴を作成して、学習アルゴリズムの予測力を高めることを試みます。 特徴のエンジニアリングと選択は TDSP の一部です。TDSP の概要については、「[Team Data Science Process ライフサイクルとは?](overview.md)」をご覧ください。 特徴エンジニアリングと特徴選択は、TDSP の**特徴の開発**ステップの一部です。 
 
-* **特徴エンジニアリング**: このプロセスは、データ内の既存の生の特徴から、関連する特徴を作成し、学習アルゴリズムの予測力を高めようとします。
-* **特徴選択**: このプロセスは、トレーニング問題の次元を削減するために、元のデータの特徴のキーのサブセットを選択します。
+* **特徴エンジニアリング**:このプロセスは、データに内在している既存の生の特徴から、関連する特徴を作成し、学習アルゴリズムの予測力を高めようとします。
+* **特徴選択**:このプロセスは、トレーニング問題の次元を削減しようとして、元のデータが持つ特徴のキーのサブセットを選択します。
 
 通常、**特徴エンジニアリング**は追加の特徴を生成するために最初に適用され、その後、無関係な特徴、重複した特徴、関連性の高い特徴を排除するために**特徴選択**の手順が実行されます。
 
@@ -46,10 +46,10 @@ ms.locfileid: "52446677"
 
 まず Azure Machine Learning から始めると、Studio で提供されているサンプルを使用して最も簡単にこのプロセスを具体的に把握できます。 次に、2 つの例を示します。
 
-* ターゲット値が既知の場合の教師あり実験における、 [レンタル自転車の数の予測](http://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) の回帰の例
+* ターゲット値が既知の場合の教師あり実験における、 [レンタル自転車の数の予測](https://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) の回帰の例
 *  [特徴ハッシュ](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
 
-## <a name="example-1-add-temporal-features-for-a-regression-model"></a>例 1: 回帰モデルに時間的な特徴を追加する
+## <a name="example-1-add-temporal-features-for-a-regression-model"></a>例 1:回帰モデルに時間的な特徴を追加する
 Azure Machine Learning Studio で ”自転車の需要予測” の実験を使用して、回帰タスクの特徴をエンジニアリングする方法を見てみましょう。 この実験の目的は、自転車の需要、つまり特定の月 / 日 / 時間内でのレンタル自転車の数を予測することです。 データセットの "Bike Rental UCI データセット" は、生の入力データとして使用します。 このデータセットは、米国のワシントン D.C. で自転車のレンタル ネットワークを管理している Capital Bikeshare 社の実際のデータに基づいています。 データセットは、2011 年と 2012 年の 1 日の特定の時間帯のレンタル自転車の数を表し、17379 行と 17 列が含まれています。 生の特徴セットには、気象条件 (温度 / 湿度 / 風速) やその日の種類 (休日 / 平日) が含まれます。 予測するフィールドは "cnt" カウントです。これは、特定の時間帯のレンタル自転車数を 1 ～ 977 の範囲内で表しています。
 
 トレーニング データに効果的な特徴を構築することを目標として、4 つの回帰モデルは同じアルゴリズムを使用して構築されましたが、トレーニング データセットはそれぞれ異なります。 次の 4 つのデータセットは同じ生の入力データを表しますが、特徴セットの数は増加しています。 これらの特徴は、次の 4 つのカテゴリに分類されます。
@@ -71,7 +71,7 @@ Azure Machine Learning の実験では、これら 4 つのトレーニング �
 
 特徴 A+B+C よって最適な結果が表示されます。 トレーニング データに特徴セットを追加すると、エラー率が低下する点に注意してください。 これにより、特徴セット B、C は、関連する追加情報を回帰タスクに提供するという推測が検証されます。 ただし、D の特徴を追加しても、エラー率はそれ以上は低下しないようです。
 
-## <a name="example2"></a> 例 2: テキスト マイニングで特徴を作成する
+## <a name="example2"></a> 例 2:テキスト マイニングで特徴を作成する
 特徴エンジニアリングは、ドキュメントの分類やセンチメント分析などのテキスト マイニングに関連するタスクに広く適用されています。 たとえば、ドキュメントをいくつかのカテゴリに分類する場合は、通常、1 つのドキュメントのカテゴリに含まれる単語や語句が別のドキュメントのカテゴリに存在する可能性が低いことを前提とします。 つまり、単語や語句の分布の頻度から、さまざまなドキュメント カテゴリを特徴付けることができます。 テキスト マイニング アプリケーションでは、通常、テキスト コンテンツの各部分が入力データとして機能するため、出現する単語や語句の頻度を含む特徴を作成するために特徴エンジニアリング プロセスが必要になります。
 
 このタスクを実現するには、 **特徴ハッシュ** と呼ばれる手法を適用して、任意のテキストの特徴を効率的にインデックスに変えます。 各テキストの特徴 (単語や語句) を特定のインデックスに関連付ける代わりに、ハッシュ関数を特徴に適用し、そのハッシュ値を直接インデックスとして使用することでこのメソッドが機能します。

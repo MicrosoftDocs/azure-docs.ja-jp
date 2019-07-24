@@ -4,7 +4,7 @@ description: このトピックでは、Azure Media Services を使用したラ�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: fb63502e-914d-4c1f-853c-4a7831bb08e8
 ms.service: media-services
@@ -12,21 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 9e8dc926fd796e82ea531aba6cb3a682649dff41
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: a9d0daaacb046df7943202775adc77bc912cce11
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246599"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189514"
 ---
-# <a name="overview-of-live-streaming-using-azure-media-services"></a>Azure Media Services を使用したライブ ストリーミングの概要
+# <a name="overview-of-live-streaming-using-media-services"></a>Media Services を使用したライブ ストリーミングの概要
 
 > [!NOTE]
 > 2018 年 5 月 12日以降は、ライブ チャネルで RTP/MPEG-2 トランスポート ストリーム取り込みプロトコルがサポートされなくなります。 RTP/MPEG-2 から RTMP またはフラグメント化 MP4 (Smooth Streaming) 取り込みプロトコルに移行してください。
 
 ## <a name="overview"></a>概要
+
 Azure Media Services を使用してライブ ストリーミング イベントを配信する場合、通常、次のコンポーネントが必要になります。
 
 * イベントのブロードキャストに使用されるカメラ。
@@ -43,19 +44,19 @@ Azure Media Services を使用してライブ ストリーミング イベント
 
 **Microsoft Azure Media Services** (AMS) は、ライブ ストリーミング コンテンツの取り込み、エンコード、プレビュー、保存、配信を行う機能を提供します。
 
-コンテンツを顧客に配信する場合、その目標は、異なるネットワーク条件におけるさまざまなデバイスに高品質のビデオを配信することにあります。 これを実現するには、ライブ エンコーダーを使用して、ストリームをマルチビットレート (アダプティブ ビットレート) ビデオ ストリームにエンコードします。  異なるデバイスでのストリーミングに対応するには、Media Services の [動的パッケージ](media-services-dynamic-packaging-overview.md) を使用して、ストリームをさまざまなプロトコルに動的に再パッケージ化します。 Media Services でサポートされるアダプティブ ビットレート ストリーミング配信テクノロジは、HTTP ライブ ストリーミング (HLS)、Smooth Streaming、および MPEG DASH です。
+コンテンツを顧客に配信する場合、その目標は、異なるネットワーク条件におけるさまざまなデバイスに高品質のビデオを配信することにあります。 これを実現するには、ライブ エンコーダーを使用して、ストリームをマルチビットレート (アダプティブ ビットレート) ビデオ ストリームにエンコードします。  異なるデバイスでのストリーミングに対応するには、Media Services の [動的パッケージ](media-services-dynamic-packaging-overview.md) を使用して、ストリームをさまざまなプロトコルに動的に再パッケージ化します。 Media Services は、次のアダプティブ ビットレート ストリーミング配信テクノロジをサポートしています。HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH。
 
 Azure Media Services では、**チャネル**、**プログラム**、**ストリーミング エンドポイント**で、取り込み、書式設定、DVR、セキュリティ、スケーラビリティ、冗長性などのすべてのライブ ストリーミングの機能を処理します。
 
 **チャネル** は、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。 チャネルは次の方法でライブ入力ストリームを受信できます。
 
-* オンプレミスのライブ エンコーダーは、マルチビットレート **RTMP** または**スムーズ ストリーミング** (Fragmented MP4) を、**パススルー**配信用に設定されたチャネルに送信します。 **パススルー**配信とは、取り込んだストリームが、追加の処理なしで**チャネル**を通過することをいいます。 マルチビットレートの Smooth Streaming を出力するライブ エンコーダーとして、MediaExcel、Ateme、Imagine Communications、Envivio、Cisco、Elemental を使用できます。 Adobe Flash Media Live Encoder (FMLE)、Telestream Wirecast、Haivision、Teradek、Tricaster トランスコーダーは、RTMP を出力するライブ エンコーダーです。  ライブ エンコーダーは、ライブ エンコードが有効になっていないチャネルにシングル ビットレート ストリームも送信できますが、これはお勧めしません。 Media Services は、要求に応じて、ストリームを顧客に配信します。
+* オンプレミスのライブ エンコーダーは、マルチビットレート **RTMP** または**スムーズ ストリーミング** (Fragmented MP4) を、**パススルー**配信用に設定されたチャネルに送信します。 **パススルー**配信とは、取り込んだストリームが、追加の処理なしで**チャネル**を通過することをいいます。 マルチビットレートのスムーズ ストリーミングが出力される次のライブ エンコーダーを使用できます:MediaExcel、Ateme、Imagine Communications、Envivio、Cisco、Elemental。 次のライブ エンコーダーでは RTMP が出力されます:Adobe Flash Media Live Encoder (FMLE)、Telestream Wirecast、Haivision、Teradek、Tricaster の各トランスコーダー。  ライブ エンコーダーは、ライブ エンコードが有効になっていないチャネルにシングル ビットレート ストリームも送信できますが、これはお勧めしません。 Media Services は、要求に応じて、ストリームを顧客に配信します。
 
   > [!NOTE]
   > 長期にわたって複数のイベントを配信する場合で、かつオンプレミスのエンコーダーを既に導入済みである場合、ライブ ストリーミングの手段としてはパススルー方式が最も低コストです。 詳しくは、 [価格情報](https://azure.microsoft.com/pricing/details/media-services/) ページを参照してください。
   > 
   > 
-* オンプレミスのライブ エンコーダーは、RTMP またはスムーズ ストリーミング (Fragmented MP4) のいずれかの形式で、シングル ビットレート ストリームを Media Services によるライブ エンコードが有効なチャネルに送信します。 RTMP を出力するライブ エンコーダーである Telestream Wirecast と FMLE が、この種類のチャネルで機能することがわかっています。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。 Media Services は、要求に応じて、ストリームを顧客に配信します。
+* オンプレミスのライブ エンコーダーでは、次のいずれかの形式で、Media Services によるライブ エンコードが有効なチャネルに、シングル ビットレート ストリームが送信されます:RTMP またはスムーズ ストリーミング (フラグメント化 MP4)。 RTMP 出力を伴う次のライブ エンコーダーは、この種類のチャンネルで機能することがわかっています。Telestream Wirecast、FMLE。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。 Media Services は、要求に応じて、ストリームを顧客に配信します。
 
 Media Services 2.10 リリース以降、チャネルを作成するときに、チャネルで入力ストリームを受信する方法、およびチャネルでストリームのライブ エンコードを実行するかどうかを指定できます。 2 つのオプションがあります。
 
@@ -63,23 +64,25 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 * **Standard** – Media Services を使用して、シングル ビットレートのライブ ストリームをマルチ ビットレート ストリームにエンコードする場合に、この値を選択します。 この方式は、頻度の低いイベントですばやくスケールアップする場合に、より経済的です。 ライブ エンコードは課金に影響することと、ライブ エンコード チャネルを "実行中" 状態のままにしておくと請求料金が課されることに注意してください。  余分な時間料金を課されないようにするために、ライブ ストリーミング イベントが完了したら、チャネルの実行をすぐに停止することをお勧めします。
 
 ## <a name="comparison-of-channel-types"></a>チャネルの種類の比較
+
 次の表では、Media Services でサポートされている 2 種類のチャネルを比較し、説明しています。
 
-| Feature | パススルー チャネル | 標準チャネル |
+| 機能 | パススルー チャネル | 標準チャネル |
 | --- | --- | --- |
-| シングル ビットレートの入力がクラウド内でマルチビットレートにエンコードされる |いいえ  |[はい] |
+| シングル ビットレートの入力がクラウド内でマルチビットレートにエンコードされる |いいえ  |はい |
 | 最大解像度、層の数 |1080p、8 層、60 fps 以上 |720p、6 層、30 fps |
 | 入力プロトコル |RTMP、スムーズ ストリーミング |RTMP、スムーズ ストリーミング |
 | 料金 |[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) を参照し、[ライブ ビデオ] タブをクリックしてください。 |[価格に関するページ](https://azure.microsoft.com/pricing/details/media-services/) |
 | 最長実行時間 |24 時間 365 日 |8 時間 |
-| スレートの挿入のサポート |いいえ  |[はい] |
-| 広告信号のサポート |いいえ  |[はい] |
-| パススルー CEA 608/708 キャプション |[はい] |[はい] |
-| 均一でない入力 GOP のサポート |[はい] |いいえ – 入力は固定の 2 秒の GOP である必要があります |
-| 可変フレーム レートの入力のサポート |[はい] |なし。入力は固定フレーム レートにする必要があります。<br/>たとえば、動きの大きなシーンでは、多少の変化は許容されます。 しかし、エンコーダーは 10 フレーム/秒に下げることはできません。 |
+| スレートの挿入のサポート |いいえ  |はい |
+| 広告信号のサポート |いいえ  |はい |
+| パススルー CEA 608/708 キャプション |はい |はい |
+| 均一でない入力 GOP のサポート |はい |いいえ – 入力は固定の 2 秒の GOP である必要があります |
+| 可変フレーム レートの入力のサポート |はい |なし。入力は固定フレーム レートにする必要があります。<br/>たとえば、動きの大きなシーンでは、多少の変化は許容されます。 しかし、エンコーダーは 10 フレーム/秒に下げることはできません。 |
 | 入力フィードがなくなった場合のチャネルの自動停止 |いいえ  |12 時間後 (実行中のプログラムがない場合) |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルを操作する (パススルー)
+
 次の図は、 **パススルー** ワークフローに関連する AMS プラットフォームの主要な部分を示しています。
 
 ![ライブ ワークフロー](./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png)
@@ -87,6 +90,7 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 詳細については、 [オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルの操作](media-services-live-streaming-with-onprem-encoders.md)に関するページを参照してください。
 
 ## <a name="working-with-channels-that-are-enabled-to-perform-live-encoding-with-azure-media-services"></a>Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する
+
 次の図は、Media Services による Live Encoding の実行が有効なチャネルのライブ ストリーミング ワークフローに関連する AMS プラットフォームの主要な部分を示しています。
 
 ![ライブ ワークフロー](./media/media-services-live-streaming-workflow/media-services-live-streaming-new.png)
@@ -94,12 +98,16 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 詳細については、「 [Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
 
 ## <a name="description-of-a-channel-and-its-related-components"></a>チャネルとその関連コンポーネントの説明
+
 ### <a name="channel"></a>チャネル
+
 Media Services においてライブ ストリーミング コンテンツの処理を担うのが [チャネル](https://docs.microsoft.com/rest/api/media/operations/channel)です。 チャネルは入力エンドポイントであり、その取り込み URL をライブ トランスコーダーに対して指定します。 チャネルは、ライブ トランスコーダーからライブ入力ストリームを受け取り、1 つまたは複数の StreamingEndpoint を介してストリーミングできる状態にします。 また、ストリームはあらかじめプレビューし、確認したうえで処理、配信しますが、チャネルはその際に使用するプレビュー エンドポイント (プレビュー URL) も提供します
 
 チャネル作成時に取り込み URL とプレビュー URL を取得できます。 これらの URL を取得するには、チャネルが開始済み状態である必要はありません。 ライブ トランスコーダーからチャネルへのデータのプッシュを開始する準備ができたら、チャネルを開始する必要があります。 ライブ トランスコーダーがデータの取り込みを開始した後、ストリームをプレビューできます。
 
 各 Media Services アカウントには、複数のチャネル、複数のプログラム、複数 StreamingEndpoints を含めることができます。 帯域幅とセキュリティのニーズに応じて、StreamingEndpoint サービスを 1 つまたは複数のチャネル専用にすることができます。 StreamingEndpoint は、どのチャネルからでもプルできます。
+
+チャンネルを作成する際は、許可された IP アドレスを次の形式のいずれかで指定できます: 4 つの数字を含む IpV4 アドレス、CIDR アドレス範囲。
 
 ### <a name="program"></a>プログラム
 ライブ ストリームでのセグメントの公開と保存は、[プログラム](https://docs.microsoft.com/rest/api/media/operations/program)を使用して制御します。 プログラムはチャネルによって管理されます。 チャネルとプログラムの関係は、従来のメディアとよく似ています。チャネルが絶えずコンテンツのストリームを配信するのに対し、プログラムは、そのチャネル上で決まった時間に生じるイベントです。

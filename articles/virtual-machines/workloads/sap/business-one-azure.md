@@ -3,7 +3,7 @@ title: Azure Virtual Machines 上の SAP Business One | Microsoft Docs
 description: Azure 上の SAP Business One。
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
-author: juergent
+author: msjuergent
 manager: patfilot
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2018
-ms.author: msjuergent
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e8bd5ddab4553807f59b7afdf32fbfc1703e3d75
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 101710b5a57faa37be77ff4b059fa0d494f4e617
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949535"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878066"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP Business One
 このドキュメントでは、Azure Virtual Machines に SAP Business One をデプロイするためのガイダンスを提供します。 このドキュメントは、SAP の Business One のインストール ドキュメントに代わるものではありません。 このドキュメントでは、Business One アプリケーションを実行する Azure インフラストラクチャの計画とデプロイに関する基本的なガイドラインについて説明します。
@@ -119,7 +119,7 @@ Azure にデプロイする必要があるネットワーク インフラスト�
 
 原則として、次を行う必要があります。
 
-- [Azure Standard Storage](https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage) よりも [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) を使用する
+- Standard HDD よりも Premium SSD を使用する。 使用できるディスクの種類の詳細については、[ディスクの種類の選択](../../windows/disks-types.md)に関する記事を参照してください。
 - アンマネージド ディスクよりも Azure Managed Disks を使用する
 - ディスク構成に十分な IOPS と I/O スループットが構成されていることを確認する
 - コスト効率に優れたストレージ構成を確保するため /hana/data と /hana/log volume を組み合わせる
@@ -138,7 +138,6 @@ SQL Server の DBMS 側の大まかなサイズ見積もりは次のとおりで
 | 最大 150 | 32 | 128 GB | D32s_v3、E32s_v3 |
 
 上記のサイズは、手始めとして使えるアイデアを提供するためのものです。 リソースを増減する必要がある場合に、Azure での適応が容易になります。 VM の種類の変更は、その VM を再起動するだけで行えます。
-
 
 #### <a name="sap-hana-as-dbms"></a>DBMS としての SAP HANA
 DBMS として SAP HANA を使用する場合は、「[SAP HANA on Azure 運用ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)」ドキュメントの次のセクションの考慮事項に従う必要があります。

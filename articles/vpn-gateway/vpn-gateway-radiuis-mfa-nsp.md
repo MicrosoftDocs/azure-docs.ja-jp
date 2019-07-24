@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 12e2f96e66305370499fbacf9ae6a834a22eb504
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4e11b1bc16f874f892288f9677a71023f483de7c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412501"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769976"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Azure VPN ゲートウェイ RADIUS 認証と Multi-Factor Authentication 用の NPS サーバーを統合する 
 
@@ -32,7 +32,7 @@ MFA を有効にするには、ユーザーが Azure Active Directory (Azure AD)
 
 ## <a name="detailed-steps"></a>詳細な手順
 
-### <a name="step-1-create-a-virtual-network-gateway"></a>手順 1. 仮想ネットワーク ゲートウェイを作成する
+### <a name="step-1-create-a-virtual-network-gateway"></a>手順 1:仮想ネットワーク ゲートウェイの作成
 
 1. [Azure Portal](https://portal.azure.com) にログオンします。
 2. 仮想ネットワーク ゲートウェイをホストする仮想ネットワークで、**[サブネット]**、**[ゲートウェイ サブネット]** の順に選択して、サブネットを作成します。 
@@ -41,8 +41,8 @@ MFA を有効にするには、ユーザーが Azure Active Directory (Azure AD)
 3. 次の設定を指定して、仮想ネットワーク ゲートウェイを作成します。
 
     - **[ゲートウェイの種類]**: **[VPN]** を選択します。
-    - **[VPN の種類]**: **[ルート ベース]** を選択します。
-    - **[SKU]**: 要件に基づいて、SKU の種類を選択します。
+    - **VPN の種類**:**[ルート ベース]** を選択します。
+    - **[SKU]**: 要件に基づいて SKU の種類を選択します。
     - **[仮想ネットワーク]**: ゲートウェイ サブネットを作成した仮想ネットワークを選択します。
 
         ![仮想ネットワーク ゲートウェイの設定に関する画像](./media/vpn-gateway-radiuis-mfa-nsp/create-vpn-gateway.png)
@@ -55,10 +55,10 @@ MFA を有効にするには、ユーザーが Azure Active Directory (Azure AD)
 2. NPS コンソールを開き、**[RADIUS Clients]\(RADIUS クライアント\)** を右クリックして、**[新規]** を選択します。 次の設定を指定して、RADIUS クライアントを作成します。
 
     - **[フレンドリ名]**: 任意の名前を入力します。
-    - **[アドレス (IP または DNS)]**: 手順 1. で作成したゲートウェイ サブネットを入力します。
+    - **[アドレス (IP または DNS)]**: 手順 1 で作成したゲートウェイ サブネットを入力します。
     - **[共有シークレット]**: 任意のシークレット キーを入力します。後で使用するので覚えておいてください。
 
-    ![RADIUS クライアントの設定に関する画像](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
+      ![RADIUS クライアントの設定に関する画像](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
 
  
 3.  **[詳細設定]** タブで、**[RADIUS Standard]\(RADIUS 標準\)** にベンダー名を設定し、**[追加オプション]** チェック ボックスがオフになっていることを確認します。
@@ -73,11 +73,11 @@ MFA を有効にするには、ユーザーが Azure Active Directory (Azure AD)
 2. 作成した仮想ネットワーク ゲートウェイを開きます。 [ゲートウェイの種類] が **[VPN]**、[VPN の種類] が **[ルート ベース]** に設定されていることを確認します。
 3. **[ポイント対サイトの構成]** > **[今すぐ構成]** の順にクリックし、次の設定を指定します。
 
-    - **[アドレス プール]**: 手順 1. で作成したゲートウェイ サブネットを入力します。
+    - **[アドレス プール]**: 手順 1 で作成したゲートウェイ サブネットを入力します。
     - **[認証の種類]**: **[RADIUS 認証]** を選択します。
     - **[サーバーの IP アドレス]**: NPS サーバーの IP アドレスを入力します。
 
-    ![ポイント対サイトの設定に関する画像](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)
+      ![ポイント対サイトの設定に関する画像](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)
 
 ## <a name="next-steps"></a>次の手順
 

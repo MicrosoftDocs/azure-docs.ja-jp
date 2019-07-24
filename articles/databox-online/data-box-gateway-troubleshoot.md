@@ -5,24 +5,19 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: overview
-ms.date: 10/09/2018
+ms.topic: article
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: b542ca2876149b9a60e5c5b9e3fa17284477864f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 54f6473954c73de6ec29602c3d1563579b3e8cc6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241602"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007019"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Azure Data Box Gateway に関する問題のトラブルシューティング 
 
-この記事では、Azure Data Box Gateway に関する問題のトラブルシューティングを行う方法について説明します。 
-
-> [!IMPORTANT]
-> - Data Box Gateway はプレビュー段階にあります。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。
-
-この記事では、次のことについて説明します:
+この記事では、Azure Data Box Gateway に関する問題のトラブルシューティングを行う方法について説明します。 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * 診断の実行
@@ -53,7 +48,7 @@ ms.locfileid: "50241602"
 
     ![[ユーザーの追加] をクリックする](media/data-box-gateway-troubleshoot/collect-logs-1.png)
  
-2. サポート パッケージが作成されたら、**[サポート パッケージのダウンロード]** をクリックします。 圧縮されたパッケージが、お客様が選択したパスにダウンロードされます。 パッケージを解凍して、システム ログ ファイルを表示できます。
+2. サポート パッケージが作成されたら、**[サポート パッケージのダウンロード]** をクリックします。 圧縮されたパッケージが、お客様が選択したパスにダウンロードされます。 そのパッケージを解凍してください。
 
     ![[ユーザーの追加] をクリックする](media/data-box-gateway-troubleshoot/collect-logs-2.png)
 
@@ -67,16 +62,16 @@ ms.locfileid: "50241602"
 
 2. "_Microsoft Data Box Gateway フォルダー_" をクリックします。 このフォルダーには、次の 2 つのサブフォルダーがあります。
 
-    - アップロードのエラー用のログ ファイルがある Upload フォルダー。
-    - 更新中のエラー用の Refresh フォルダー。
+   - アップロードのエラー用のログ ファイルがある Upload フォルダー。
+   - 更新中のエラー用の Refresh フォルダー。
 
-    以下に更新用のログ ファイルのサンプルを示します。
+     以下に更新用のログ ファイルのサンプルを示します。
 
-    ```
-    <root container="brownbag1" machine="VM15BS020663" timestamp="07/18/2018 00:11:10" />
-    <file item="test.txt" local="False" remote="True" error="16001" />
-    <summary runtime="00:00:00.0945320" errors="1" creates="2" deletes="0" insync="3" replaces="0" pending="9" />
-    ``` 
+     ```
+     <root container="brownbag1" machine="VM15BS020663" timestamp="07/18/2018 00:11:10" />
+     <file item="test.txt" local="False" remote="True" error="16001" />
+     <summary runtime="00:00:00.0945320" errors="1" creates="2" deletes="0" insync="3" replaces="0" pending="9" />
+     ``` 
 
 3. このファイル内にエラー (サンプルの強調表示されている部分) がある場合は、エラー コードを書き留めておきます。この例では 16001 です。 以下のエラー リファレンスで、このエラー コードの説明を参照します。
 
@@ -103,6 +98,8 @@ ms.locfileid: "50241602"
     |    2006            |    ERROR_CLOUD_ACCOUNT_DISABLED                            |    アカウントまたは共有が無効になっているため、アカウントにデータをアップロードできませんでした。                                                                                                                                                            |
     |    2007            |    ERROR_CLOUD_ACCOUNT_PERMISSIONS                         |    アカウントのアクセス許可が正しくないか期限切れであるために、コンテナーに接続できませんでした。 アクセスを確認してください。                                                                                                               |
     |    2008            |    ERROR_CLOUD_CONTAINER_SIZE_LIMIT_REACHED                |    コンテナーがいっぱいであるため、新しいデータを追加できませんでした。 コンテナーの種類ごとのサポートされているサイズについては、Azure の仕様を確認してください。 たとえば、Azure Files では、5 TB の最大ファイル サイズのみがサポートされています。                                     |
+    |    2009            |    ERROR_CLOUD_CONTAINER_MISSING                |     共有に関連付けられているコンテナーが存在しないため、データをアップロードできませんでした。                                     |    
+    |    2997            |    ERROR_ITEM_CANCELED                                     |    予期しないエラーが発生しました。 これは、自然に解決する一時的なエラーです。                                                                           |
     |    2998            |    ERROR_UNMAPPED_FAILURE                                  |    予期しないエラーが発生しました。 エラーは自動的に解決される可能性がありますが、24 時間たっても解決しない場合は、Microsoft サポートにお問い合わせください。                                                                                                     |
     |    16000           |    RefreshException                                        |    このファイルを停止できませんでした。                                                                                                                                                                                                        |
     |    16001           |    RefreshAlreadyExistsException                           |    このファイルは既にローカル システムに存在するため、停止できませんでした。                                                                                                                                                         |

@@ -1,20 +1,22 @@
 ---
-title: 実稼働環境でモデルのデータ収集を有効にする - Azure Machine Learning
+title: 実稼働環境のモデルでデータを収集する
+titleSuffix: Azure Machine Learning service
 description: Azure Blob ストレージで Azure Machine Learning の入力モデル データを収集する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 11/08/2018
-ms.openlocfilehash: bb3dca56583296bab42fe9804a32e0690ace5897
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.date: 12/3/2018
+ms.custom: seodec18
+ms.openlocfilehash: a127a211157edb0b26d0495bc2ed05dd79323111
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578231"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842636"
 ---
 # <a name="collect-data-for-models-in-production"></a>実稼働環境でモデルのデータを収集する
 
@@ -45,18 +47,16 @@ ms.locfileid: "51578231"
 /modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
->[!NOTE]
-> この記事のコードは、Azure Machine Learning SDK バージョン 0.1.74 を使用してテストされました
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
 
 - Azure Machine Learning service ワークスペース、スクリプトを保存するローカル ディレクトリ、Azure Machine Learning SDK for Python のインストール。 これらの前提条件を満たす方法については、[開発環境を構成する方法](how-to-configure-environment.md)に関するドキュメントを参照してください。
 
-- Azure Kubernetes Service (AKS) にデプロイするトレーニング済みの機械学習モデル。 ない場合は、[画像分類モデルのトレーニング](tutorial-train-models-with-aml.md)に関するチュートリアルを参照してください。
+- Azure Kubernetes Service (AKS) にデプロイするトレーニング済みの機械学習モデル。 ない場合は、[イメージ分類モデルのトレーニング](tutorial-train-models-with-aml.md)に関するチュートリアルを参照してください。
 
-- [AKS クラスター](how-to-deploy-to-aks.md)。
+- Azure Kubernetes Service クラスター。 作成してデプロイする方法については、[デプロイする方法とその場所](how-to-deploy-and-where.md)に関するドキュメントを参照してください。
 
 - [環境を設定](how-to-configure-environment.md)し、[Monitoring SDK](https://aka.ms/aml-monitoring-sdk) をインストールします。
 
@@ -81,7 +81,7 @@ ms.locfileid: "51578231"
     prediction_dc = ModelDataCollector("best_model", identifier="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
-    *CorrelationId* は省略可能なパラメーターです。モデルに不要な場合、設定する必要はありません。 correlationId を指定すると、他のデータとのマッピングが簡単になります (例: LoanNumber、CustomerId など)。
+    *CorrelationId* は省略可能なパラメーターです。モデルに不要な場合、設定する必要はありません。 correlationId を指定すると、他のデータとのマッピングが簡単になります (例:LoanNumber、CustomerId など)
     
     *Identifier* は BLOB のフォルダー構造を構築するために後で使用します。"生" データと "処理済み" データの区別に使用できます。
 
@@ -104,7 +104,7 @@ ms.locfileid: "51578231"
     aks_config = AksWebservice.deploy_configuration(collect_model_data=True, enable_app_insights=True)
     ``` 
 
-5. [新しいイメージを作成してサービスをデプロイします。](how-to-deploy-to-aks.md) 
+5. 新しいイメージを作成してサービスをデプロイするには、[デプロイする方法とその場所](how-to-deploy-and-where.md)に関するドキュメントを参照してください。
 
 
 依存関係がインストールされたサービスが**環境ファイル**と**スコア付けファイル**に既に存在する場合は、次の手順でデータ収集を有効にします。
@@ -136,15 +136,15 @@ ms.locfileid: "51578231"
 
   1. **[デプロイ]** -> **[サービスの選択]** -> **[編集]** の順に選択します。
 
-    [![サービスの編集](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
+     [![編集オプション](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
   1. **[詳細設定]** で、**[モデルのデータ コレクションを有効にする]** をオフにします。 
 
-    [![データ コレクションをオフにする](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
+     [![データ コレクションをオフにする](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
 
   1. **[更新]** をクリックして変更を適用します。
 
-* オプション 2 - Python を使用してデータ収集を無効にする:
++ オプション 2 - Python を使用してデータ収集を無効にする:
 
   ```python 
   ## replace <service_name> with the name of the web service
@@ -172,7 +172,7 @@ BLOB のデータにすばやくアクセスするには:
 
 ### <a name="analyzing-model-data-through-power-bi"></a>Power BI でのモデル データの分析
 
-1. [Power BI Desktop](http://www.powerbi.com) をダウンロードして開きます
+1. [Power BI Desktop](https://www.powerbi.com) をダウンロードして開きます
 
 1. **[データを取得]** を選択し、[**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources) をクリックします。
 
@@ -231,8 +231,6 @@ BLOB のデータにすばやくアクセスするには:
 
 ## <a name="example-notebook"></a>ノートブックの例
 
-[00.Getting Started/12.enable-data-collection-for-models-in-aks.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/12.enable-data-collection-for-models-in-aks) ノートブックは、この記事の概念を示しています。  
+[how-to-use-azureml/deployment/enable-data-collection-for-models-in-aks/enable-data-collection-for-models-in-aks.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-data-collection-for-models-in-aks/enable-data-collection-for-models-in-aks.ipynb) ノートブックでは、この記事の概念を示しています。  
 
-このノートブックの入手:
- 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

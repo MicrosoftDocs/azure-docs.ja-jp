@@ -4,7 +4,7 @@ description: Azure Security Center 上で情報保護ポリシーをカスタマ
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 2ebf2bc7-232a-45c4-a06a-b3d32aaf2500
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: ac4aa3c8aafae24736cc7b48a9ca4e8ba9fd0742
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 9b63fb963408b8f22453c7ea78e36a49402273a7
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125189"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105724"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Azure Security Center 上で SQL 情報保護ポリシーをカスタマイズする (プレビュー)
  
@@ -85,8 +85,8 @@ Azure テナントの情報保護ポリシーをカスタマイズするには�
 
 Azure Security Center 上のセキュリティ ポリシーとデータ セキュリティについて詳しくは、次の記事をご覧ください。
  
-- [セキュリティ ポリシーの概要](security-center-policies-overview.md): Security Center 上のセキュリティ ポリシーの概要を示します
-- [Azure Security Center 上でのセキュリティ ポリシーの設定](security-center-policies.md): Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています
-- [Azure Security Center のデータ セキュリティ](security-center-data-security.md): Security Center でデータがどのように管理および保護されているかを説明しています
+- [セキュリティ ポリシーの概要](security-center-policies-overview.md):Security Center 上のセキュリティ ポリシーの概要を示します
+- [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md):Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明します
+- [Azure Security Center のデータ セキュリティ](security-center-data-security.md):Security Center でデータがどのように管理および保護されているかを説明しています
 
 

@@ -1,57 +1,50 @@
-items:
 - name: Avere vFXT のドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: Avere vFXT for Azure とは
-    href: avere-vfxt-overview.md
+    - name: Avere vFXT for Azure とは
+      href: avere-vfxt-overview.md
 - name: 概念
   items:
-  - name: Avere vFXT システムの計画
-    href: avere-vfxt-deploy-plan.md
-  - name: Avere vFXT デプロイの概要
-    href: avere-vfxt-deploy-overview.md
+    - name: Avere vFXT システムの計画
+      href: avere-vfxt-deploy-plan.md
+    - name: Avere vFXT デプロイの概要
+      href: avere-vfxt-deploy-overview.md
 - name: ハウツー ガイド
   items:
-  - name: Avere vFXT の作成を準備する
-    href: avere-vfxt-prereqs.md
-  - name: vFXT クラスターのデプロイ
-    href: avere-vfxt-deploy.md
-  - name: クラスター構成ツールへのアクセス
-    href: avere-vfxt-cluster-gui.md
-  - name: サポートのアップロードを有効にする
-    href: avere-vfxt-enable-support.md
-  - name: ストレージの構成
-    href: avere-vfxt-add-storage.md
-  - name: Avere vFXT クラスターをマウントする
-    href: avere-vfxt-mount-clients.md
-  - name: Avere vFXT クラスターへのデータの移動
-    href: avere-vfxt-data-ingest.md
-  - name: Avere vFXT クラスターの管理
-    href: avere-vfxt-manage-cluster.md
-  - name: クラスター チューニングのカスタマイズ
-    href: avere-vfxt-tuning.md
+    - name: Avere vFXT の作成を準備する
+      href: avere-vfxt-prereqs.md
+    - name: vFXT クラスターのデプロイ
+      href: avere-vfxt-deploy.md
+    - name: クラスター構成ツールへのアクセス
+      href: avere-vfxt-cluster-gui.md
+    - name: サポートのアップロードを有効にする
+      href: avere-vfxt-enable-support.md
+    - name: ストレージの構成
+      href: avere-vfxt-add-storage.md
+    - name: Avere vFXT クラスターをマウントする
+      href: avere-vfxt-mount-clients.md
+    - name: Avere vFXT クラスターへのデータの移動
+      href: avere-vfxt-data-ingest.md
+    - name: Avere vFXT クラスターの管理
+      href: avere-vfxt-manage-cluster.md
+    - name: クラスター チューニングのカスタマイズ
+      href: avere-vfxt-tuning.md
 - name: リソース
   items:
-  - name: システムによるヘルプ
-    href: avere-vfxt-open-ticket.md
-  - name: デモ プロジェクト
-    href: avere-vfxt-demo-links.md
-  - name: Avere vFXT for Azure の FAQ
-    href: avere-vfxt-faq.md
-  - name: その他のドキュメント
-    items:
-    - name: 補足ドキュメント
-      href: avere-vfxt-additional-resources.md
-    - name: コントローラーを使用せずにクラスター ロールを作成する
-      href: avere-vfxt-pre-role.md
-    - name: Avere クラスターの DNS 構成
-      href: avere-vfxt-configure-dns.md
-    - name: Avere vFXT のデプロイを所有者以外に承認する
-      href: avere-vfxt-non-owner.md
-ms.openlocfilehash: 319745fad14ca3cce97e8735def901f380132eff
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52273713"
+    - name: システムによるヘルプ
+      href: avere-vfxt-open-ticket.md
+    - name: デモ プロジェクト
+      href: avere-vfxt-demo-links.md
+    - name: Avere vFXT for Azure の FAQ
+      href: avere-vfxt-faq.md
+    - name: その他のドキュメント
+      items:
+        - name: 補足ドキュメント
+          href: avere-vfxt-additional-resources.md
+        - name: Avere クラスターの DNS 構成
+          href: avere-vfxt-configure-dns.md
+        - name: Avere vFXT のデプロイを所有者以外に承認する
+          href: avere-vfxt-non-owner.md
+    - name: ホワイトペーパー
+      href: avere-vfxt-whitepapers.md

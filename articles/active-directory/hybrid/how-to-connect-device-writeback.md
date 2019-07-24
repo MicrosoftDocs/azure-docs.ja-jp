@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: デバイスの書き戻しの有効化 | Microsoft Docs'
+title: Azure AD Connect:デバイス ライトバックの有効化 | Microsoft Docs
 description: Azure AD Connect を使用するデバイスの書き戻しを有効にする方法について詳しく説明します
 services: active-directory
 documentationcenter: ''
@@ -11,18 +11,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/08/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 389c519d5f63b311b2e9c2b1d48d6e09e02c7d81
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b7ed6fd0a4a1de3fb02b3d8583c0e5c0cecac211
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361071"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205513"
 ---
-# <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: デバイスの書き戻しの有効化
+# <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect:デバイス ライトバックの有効化
 > [!NOTE]
 > デバイスの書き戻しには、Azure AD Premium に対するサブスクリプションが必要です。
 > 
@@ -38,10 +39,10 @@ ms.locfileid: "49361071"
 > <li>デバイスは、ユーザーと同じフォレスト内にある必要があります。 デバイスは単一のフォレストに書き戻される必要があるため、この機能では現在、複数のユーザー フォレストでのデプロイはサポートされていません。</li>
 > <li>オンプレミスの Active Directory フォレストに追加できるのは、1 つのデバイス登録構成オブジェクトのみです。 この機能は、オンプレミスの Active Directory が複数の Azure AD ディレクトリに同期されるトポロジと互換性がありません。</li>
 
-## <a name="part-1-install-azure-ad-connect"></a>パート 1: Azure AD Connect のインストール
+## <a name="part-1-install-azure-ad-connect"></a>パート 1:Azure AD Connect のインストール
 カスタム設定または簡単設定を使用して Azure AD Connect をインストールします。 すべてのユーザーとグループの同期に成功してから、デバイスの書き戻しを有効にすることをお勧めします。
 
-## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>パート 2: Azure AD Connect でのデバイス ライトバックを有効にする
+## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>パート 2:Azure AD Connect でのデバイス ライトバックの有効化
 1. インストール ウィザードをもう一度実行します。 [追加のタスク] ページで **[デバイス オプションの構成]** を選び、**[次へ]** をクリックします。 
 
     ![デバイス オプションの構成](./media/how-to-connect-device-writeback/deviceoptions.png)
@@ -60,7 +61,7 @@ ms.locfileid: "49361071"
     a. **エンタープライズ管理者の資格情報を提供する**: デバイスをライトバックする必要があるフォレストのエンタープライズ管理者の資格情報を提供すると、Azure AD Connect はデバイス ライトバックの構成の間にフォレストを自動的に準備します。
 
     b. **PowerShell スクリプトをダウンロードする**: Azure AD Connect は、デバイス ライトバック用に Active Directory を準備できる PowerShell スクリプトを自動生成します。 Azure AD Connect にエンタープライズ管理者の資格情報を提供できない場合、PowerShell スクリプトをダウンロードすることをお勧めします。 ダウンロードした PowerShell スクリプト **CreateDeviceContainer.psq** を、デバイスがライトバックされるフォレストのエンタープライズ管理者に提供します。
-    ![Active Directory フォレストの準備](./media/how-to-connect-device-writeback/devicecontainercreds.png)
+    ![Active Directory フォレストを準備する](./media/how-to-connect-device-writeback/devicecontainercreds.png)
     
     Active Directory フォレストを準備するため、次の操作が実行されます。
     * CN=Device Registration Configuration,CN=Services,CN=Configuration,[forest-dn] の下にコンテナーとオブジェクトが存在しない場合は、新しく作成されて構成されます。
@@ -89,7 +90,7 @@ ms.locfileid: "49361071"
 
 まず次の手順を実行します。
 
-* 少なくとも 1 つのフォレストに Windows Server 2012R2 があることを確認します。 このデバイス オブジェクトの種類が必要です。
+* デバイスが存在するフォレストには、デバイス オブジェクトと関連属性が存在するように、Windows 2012 R2 レベルにアップグレードされたフォレスト スキーマが必要です。
 * インストール ウィザードが既に実行中の場合、変更があっても検出されません。 この場合は、インストール ウィザードを完了してから、再実行してください。
 * 初期化スクリプトで指定したアカウントが、Active Directory Connector に使用されている正しいユーザーであることを確認します。 確認する手順は次のとおりです。
   * [スタート] メニューから **[同期サービス]** を開きます。

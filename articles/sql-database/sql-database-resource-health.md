@@ -3,21 +3,21 @@ title: Azure Resource Health を使用して SQL Database の正常性を監視�
 description: Azure Resource Health を使用して SQL Database の正常性を監視すると、Azure の問題がお客様のリソースに影響を及ぼしている場合に、診断するためとサポートを受けるために役立ちます。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 11/14/2018
-ms.openlocfilehash: 9cbe88a44ba598a22fab628ae01605ac9d63bece
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.date: 02/26/2019
+ms.openlocfilehash: c3b9fecd3ad404385732e55a9cf3aa65a6e388b8
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632630"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889377"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Resource Health を使用して、Azure SQL Database の接続をトラブルシューティングする
 
@@ -41,7 +41,7 @@ Resource Health では、リソースへのログインの成功と失敗を調�
 
 ### <a name="degraded"></a>低下しています
 
-**[低下しています]** という状態は、Resource Health によって、お使いの SQL リソースでログインの大部分は成功しているが、失敗も検出されていることを意味します。 それらは、多くの場合、一時的なログイン エラーです。 一時的なログイン エラーによって発生する接続の問題の影響を減らすために、コード内に[再試行ロジック](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)を実装してください。
+**低下**という状態は、ログインの大部分が成功していること、ただし失敗もいくつか見つかっていることが、Resource Health によって検出されたことを意味します。 それらは、多くの場合、一時的なログイン エラーです。 一時的なログイン エラーによって発生する接続の問題の影響を減らすために、コード内に[再試行ロジック](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)を実装してください。
 
 ![低下しています](./media/sql-database-resource-health/sql-resource-health-degraded.jpg)
 
@@ -51,11 +51,11 @@ Resource Health では、リソースへのログインの成功と失敗を調�
 
 ![使用不可](./media/sql-database-resource-health/sql-resource-health-unavailable.jpg)
 
-### <a name="unknown"></a>不明
+### <a name="unknown"></a>Unknown
 
-**不明**状態は、Resource Health がこのリソースに関する情報を 10 分以上受け取っていないことを示します。 この状態はリソースの状態を明確に示すものではありませんが、トラブルシューティング プロセスにおいて重要なデータ ポイントです。
-リソースが想定したとおりに実行されている場合、リソースの状態は数分後に [使用可能] に変わります。
-リソースで問題が発生している場合、[不明] 状態は、プラットフォーム内のイベントによってリソースが影響を受けていることを示唆している可能性があります。
+**不明**状態は、Resource Health がこのリソースに関する情報を 10 分以上受け取っていないことを示します。 この状態はリソースの状態を明確に示すものではありませんが、トラブルシューティング プロセスにおいて重要なデータ ポイントです。 リソースが想定したとおりに実行されている場合、リソースの状態は数分後に [使用可能] に変わります。 リソースで問題が発生している場合、[不明] 状態は、プラットフォーム内のイベントによってリソースが影響を受けていることを示唆している可能性があります。
+
+![Unknown](./media/sql-database-resource-health/sql-resource-health-unknown.jpg)
 
 ## <a name="historical-information"></a>履歴情報
 
@@ -63,20 +63,20 @@ Resource Health の [正常性の履歴] セクションで、最大 14 日間�
 
 ### <a name="downtime-reasons"></a>ダウンタイムの理由
 
-お使いの SQL Database でダウンタイムが発生すると、理由を判断するための分析が実行されます。 入手可能な場合、Resource Health の [正常性の履歴] セクションにダウンタイムの理由が報告されます。 通常、ダウンタイムの理由は、イベントの 30 分後に公開されます。
+お使いの SQL Database でダウンタイムが発生すると、理由を判断するための分析が実行されます。 入手可能な場合、Resource Health の [正常性の履歴] セクションにダウンタイムの理由が報告されます。 ダウンタイムの理由は、通常、イベントの 30 分後に公開されます。
 
-#### <a name="planned-maintenance"></a>計画メンテナンス
+#### <a name="planned-maintenance"></a>Azure の計画メンテナンス
 
-Azure インフラストラクチャでは、計画メンテナンス (データセンター内のハードウェアまたはソフトウェア コンポーネントのアップグレード) が定期的に実行されます。 データベースのメンテナンスが実行されている間、SQL によっていくつかの既存の接続が終了され、新しい接続が拒否される可能性があります。 計画メンテナンス中に発生するログイン エラーは、通常は一時的なものであり、再試行ロジックによってその影響を軽減することができます。 ログイン エラーの発生が続く場合は、サポートに問い合わせてください。
+Azure インフラストラクチャでは、計画メンテナンス (データセンター内のハードウェアまたはソフトウェア コンポーネントのアップグレード) が定期的に実行されます。 データベースのメンテナンスが実行されている間、SQL によっていくつかの既存の接続が終了され、新しい接続が拒否される可能性があります。 計画メンテナンス中に発生するログイン エラーは、通常は一時的なものであり、[再試行ロジック](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)によってその影響を軽減することができます。 ログイン エラーの発生が続く場合は、サポートに問い合わせてください。
 
-#### <a name="reconfiguration"></a>再構成
+#### <a name="reconfiguration"></a>Reconfiguration
 
-再構成は一時的な状態であると考えられ、ときどき発生することが想定されます。 これらのイベントは、負荷分散やソフトウェア/ハードウェア障害によってトリガーされる可能性があります。 クラウド データベース サービスに接続するクライアントの運用アプリケーションでは、バックオフ ロジックがある堅牢な接続再試行ロジックを実装する必要があります。それによって状況が緩和され、通常はエンド ユーザーにとってエラーが透過的になります。
+再構成は一時的な状態であると考えられ、ときどき発生することが想定されます。 これらのイベントは、負荷分散やソフトウェア/ハードウェア障害によってトリガーされる可能性があります。 クラウド データベースに接続するクライアントの運用アプリケーションでは、堅牢な接続[再試行ロジック](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)を実装する必要があります。それによって状況が緩和され、通常はエンド ユーザーにとってエラーが透過的になります。
 
 ## <a name="next-steps"></a>次の手順
 
 - [一時的なエラーに対する再試行ロジック](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)の詳細を確認します。
 - [SQL 接続エラーをトラブルシューティング、診断、および回避します。](./sql-database-connectivity-issues.md)
-- [Resource Health のアラートの構成](/articles/service-health/resource-health-alert-arm-template-guide.md)の詳細を確認します。
-- [Resource Health](/articles/service-health/resource-health-overview.md) の概要を確認します。
-- [Resource Health の FAQ](/articles/service-health/resource-health-faq.md)
+- [Resource Health のアラートの構成](../service-health/resource-health-alert-arm-template-guide.md)の詳細を確認します。
+- [Resource Health](../service-health/resource-health-overview.md) の概要を確認します。
+- [Resource Health の FAQ](../service-health/resource-health-faq.md)

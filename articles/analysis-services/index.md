@@ -1,23 +1,19 @@
 ---
-title: Azure Analysis Services のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+title: Azure Analysis Services のドキュメント - チュートリアル、API リファレンス
 description: クラウド内で Analysis Services を使用してデータ モデリングを設定する方法について説明します。 ドキュメントでは、表形式データを使用してエンタープライズ BI ソリューションを作成する方法を紹介します。
 services: analysis-services
-author: czeumault
-manager: carolz
+author: minewiskan
+ms.author: owend
 layout: LandingPage
-ms.assetid: ''
 ms.service: azure-analysis-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: landing-page
 ms.date: 02/14/2018
-ms.author: carolz
-ms.openlocfilehash: 39b1870eebbaa1322e956576947bddb6b848c994
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ec3c45961ac92a505ee565373474ce3dc2fbabcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595694"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60497578"
 ---
 # <a name="analysis-services-documentation"></a>Analysis Services のドキュメント
 
@@ -101,8 +97,8 @@ Analysis Services を使用してデータ モデリングを設定および管�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>REST ()</h3>
-                        <p><a href="/rest/api/analysisservices/">REST API リファレンスに関するページ</a></p>
+                        <h3>REST</h3>
+                        <p><a href="/rest/api/analysisservices/">REST API リファレンス</a></p>
                     </div>
                 </div>
             </div>

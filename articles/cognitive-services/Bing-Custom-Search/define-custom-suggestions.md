@@ -3,19 +3,19 @@ title: Custom Autosuggest の検索候補を定義する - Bing Custom Search
 titlesuffix: Azure Cognitive Services
 description: カスタム検索候補を使用して Custom Autosuggest を構成する方法について説明します
 services: cognitive-services
-author: brapel
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: conceptual
-ms.date: 09/28/2017
+ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: 6d7ee4ef1a84b644a7075e24c0760ea46b407754
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: bbad72b41a177bdbafd6cf98bfd2025190d98b16
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465544"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237639"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>カスタム自動提案エクスペリエンスを構成する
 
@@ -52,7 +52,7 @@ Bing の検索候補を含める場合、Bing から返されたくない検索�
 
 
 
-[!INCLUDE[publish or revert](./includes/publish-revert.md)]
+[!INCLUDE [publish or revert](./includes/publish-revert.md)]
 
 >[!NOTE]  
 >Custom Autosuggest の構成変更が有効になるまで、最大で 24 時間かかる場合があります。

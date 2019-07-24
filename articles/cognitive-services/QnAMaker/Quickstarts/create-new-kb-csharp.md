@@ -1,23 +1,24 @@
 ---
-title: 'クイック スタート: ナレッジ ベースを作成する - REST、C# - QnA Maker'
-titlesuffix: Azure Cognitive Services
+title: ナレッジ ベースを作成する - REST、C#
+titlesuffix: QnA Maker- Azure Cognitive Services
 description: この C# REST ベースのクイック スタートでは、Cognitive Services API アカウントの Azure ダッシュボードに表示される QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 11/6/2018
+ms.date: 02/04/2019
 ms.author: diberry
-ms.openlocfilehash: 190a937a4239c08d844d271d2e1d8e858215a5c2
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 86acf4586fc7d6ae630a5a84a8c9d0e8e00c7e99
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334961"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861824"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>クイック スタート: C# を使用して QnA Maker でナレッジ ベースを作成する
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>クイック スタート:C# を使用して QnA Maker のナレッジ ベースを作成する
 
 このクイック スタートでは、QnA Maker ナレッジ ベースのサンプルをプログラムから作成して発行する手順を紹介しています。 QnA Maker は、[データ ソース](../Concepts/data-sources-supported.md)の FAQ などの半構造化コンテンツから質問とその回答を自動的に抽出します。 ナレッジ ベースのモデルは、API 要求の本文で送信される JSON で定義されます。 
 
@@ -32,7 +33,7 @@ ms.locfileid: "52334961"
 * [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、ダッシュボードで **[リソース管理]** の **[キー]** を選択します。 
 
 > [!NOTE] 
-> 完全なソリューション ファイルは、[**Azure-Samples/cognitive-services-qnamaker-csharp** Github リポジトリ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp)から入手できます。
+> 完全なソリューション ファイルは、[**Azure-Samples/cognitive-services-qnamaker-csharp** GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp)から入手できます。
 
 ## <a name="create-a-knowledge-base-project"></a>ナレッジ ベース プロジェクトを作成する
 

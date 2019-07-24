@@ -2,21 +2,22 @@
 title: アプリケーションのエンド ユーザー エクスペリエンス - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory (Azure AD) には、組織内のエンド ユーザーにアプリケーションをデプロイするためのカスタマイズ可能な方法が複数用意されています。
 services: active-directory
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/09/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: arvindh
-ms.openlocfilehash: b1a4ec4b3a75d1337c011275591af11da8c45a6a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4e00ecde5550b5ef4f1698fa879a039dee8aad12
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628618"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181726"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションのエンド ユーザー エクスペリエンス
 Azure Active Directory (Azure AD) には、組織内のエンド ユーザーにアプリケーションをデプロイするためのカスタマイズ可能な方法が複数用意されています。
@@ -38,23 +39,21 @@ Azure Active Directory (Azure AD) には、組織内のエンド ユーザーに
 Azure AD アクセス パネルの詳細については、「 [アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)」を参照してください。
 
 ## <a name="office-365-application-launcher"></a>Office 365 アプリケーション起動プログラム
-Office 365 をデプロイしている組織では、Azure AD を介してユーザーに割り当てられているアプリケーションは Office 365 ポータル (https://portal.office.com/myapps) にも表示されます。 これにより、組織のユーザーは、2 つ目のポータルを使用することなく簡単かつ手軽にアプリを起動できます。これは、Office 365 を使用する組織に対して推奨されるアプリ起動ソリューションです。
+Office 365 をデプロイしている組織では、Azure AD を介してユーザーに割り当てられているアプリケーションは Office 365 ポータル ([https://portal.office.com/myapps](https://portal.office.com/myapps)) にも表示されます。 これにより、組織のユーザーは、2 つ目のポータルを使用することなく簡単かつ手軽にアプリを起動できます。これは、Office 365 を使用する組織に対して推奨されるアプリ起動ソリューションです。
 
-![](./media/what-is-single-sign-on/officeapphub.png)
+![Office 365 ポータル](./media/end-user-experiences/microsoft-365-portal-office-com.png)
 
 Office 365 アプリケーション起動プログラムの詳細については、 [Office 365 アプリ起動プログラムにアプリを表示する方法](https://msdn.microsoft.com/office/office365/howto/connect-your-app-to-o365-app-launcher)に関するページを参照してください。
 
 ## <a name="direct-sign-on-to-federated-apps"></a>フェデレーション アプリへの直接サインオン
 SAML 2.0、WS-Federation、または OpenID Connect をサポートするほとんどのフェデレーション アプリでは、ユーザーがアプリケーションから開始し、自動リダイレクトかサインイン用リンクのクリックによって Azure AD 経由でサインインする機能もサポートしています。 これはサービス プロバイダーによって開始されるサインオンと呼ばれ、Azure AD アプリケーション ギャラリーのほとんどのフェデレーション アプリケーションでこの機能がサポートされています (詳細については、Azure portal のアプリのシングル サインオンの構成ウィザードからリンクされているドキュメントを参照してください)。
 
-![](./media/what-is-single-sign-on/workdaymobile.png)
+![](./media/end-user-experiences/workdaymobile.png)
 
 ## <a name="direct-sign-on-links"></a>直接サインオンのリンク
 Azure AD では、パスワードベースのシングル サインオン、リンクされたシングル サインオン、任意の形式のフェデレーション シングル サインオンをサポートする個々のアプリケーションへの直接シングル サインオン リンクもサポートされます。
 
-これらのリンクは、特定のアプリケーションについてユーザーを Azure AD サインイン プロセスに送るための特別に生成された URL です。ユーザーは、Office 365 または Azure AD アクセス パネルからアプリケーションを起動する必要はありません。 これらのシングル サインオン URL は、次のスクリーン ショットに示すように、Azure portal の [Active Directory] セクションの事前に統合されたアプリケーションの [ダッシュボード] タブに表示されます。
-
-![](./media/what-is-single-sign-on/deeplink.png)
+これらのリンクは、特定のアプリケーションについてユーザーを Azure AD サインイン プロセスに送るための特別に生成された URL です。ユーザーは、Office 365 または Azure AD アクセス パネルからアプリケーションを起動する必要はありません。 これらの**ユーザー アクセス URL** は、Azure portal の Azure Active Directory の下にある使用可能なエンタープライズ アプリケーションのプロパティの下にあります。
 
 これらのリンクをコピーして任意の場所に貼り付けることにより、選択したアプリケーションへのサインイン リンクを提供できます。 これらのリンクは、電子メールや、ユーザー アプリケーション アクセス用に設定した任意のカスタムの Web ベースのポータルに貼り付けることができます。 Twitter 用の Azure AD 直接シングル サインオン URL の例を次に示します。
 

@@ -3,8 +3,8 @@ title: Azure Security Center でのユーザー データの管理 | Microsoft D
 description: " Azure Security Center でユーザー データを管理する方法について説明します。 "
 services: security-center
 documentationcenter: na
-author: TerryLanfear
-manager: MBaldwin
+author: rkarlin
+manager: barbkess
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
-ms.author: terrylan
-ms.openlocfilehash: fcaac3d248b676e4b7b1fe0344b54e52ce1fb558
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: rkarlin
+ms.openlocfilehash: fcec410df631a58b76878a4cb327ca2fb04a2105
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302675"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117857"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Azure Security Center でのユーザー データの管理
 この記事では、Azure Security Center でユーザー データを管理する方法について説明します。 ユーザー データの管理には、データへのアクセス、削除、またはエクスポート機能が含まれます。
@@ -68,25 +68,25 @@ Security Center のユーザーは、アラート インシデントを削除で
 
 - Azure portal からコピーを実行する
 - Azure REST API 呼び出しの GET HTTP: を実行する
-```HTTP
-GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
-```
+  ```HTTP
+  GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
+  ```
 
 アカウント管理者のロールが割り当てられている Security Center のユーザーは、IP アドレスを含む [Just In Time ポリシー](security-center-just-in-time.md)をエクスポートできます。
 
 - Azure portal からコピーを実行する
 - Azure REST API 呼び出しの GET HTTP: を実行する
-```HTTP
-GET https://<endpoint>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Security/locations/{location}/jitNetworkAccessPolicies/default?api-version={api-version}
-```
+  ```HTTP
+  GET https://<endpoint>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Security/locations/{location}/jitNetworkAccessPolicies/default?api-version={api-version}
+  ```
 
 アカウント管理者は、次の方法でアラートの詳細をエクスポートできます。
 
 - Azure portal からコピーを実行する
 - Azure REST API 呼び出しの GET HTTP: を実行する
-```HTTP
-GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
-```
+  ```HTTP
+  GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
+  ```
 
 詳細については、[セキュリティ アラートの取得 (GET コレクション)](https://msdn.microsoft.com/library/mt704050.aspx) に関するページを参照してください。
 
@@ -98,7 +98,7 @@ Security Center のユーザーは、自分の[セキュリティ連絡先デー
 [アラート データ](security-center-managing-and-responding-alerts.md)は、セキュリティ データと見なされ、2 年間保持されます。
 
 ## <a name="auditing-and-reporting"></a>監査とレポート
-セキュリティ連絡先、Just In Time、およびアラートの更新の監査ログは、[Azure の活動ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)で管理されます。
+セキュリティ連絡先、Just In Time、およびアラートの更新の監査ログは、[Azure の活動ログ](../azure-monitor/platform/activity-logs-overview.md)で管理されます。
 
 ## <a name="next-steps"></a>次の手順
 ユーザー データの管理の詳細については、「[Manage user data found in an Azure Security Center investigation (Azure Security Center 調査で検出されたユーザー データの管理)](security-center-investigation-user-data.md)」を参照してください。

@@ -1,28 +1,29 @@
 ---
-title: Azure Search のインデクサーの一般的な問題のトラブルシューティング | Microsoft Docs
-description: Azure Search のインデクサーの一般的な問題を修正します。
+title: インデクサーの一般的な問題のトラブルシューティング - Azure Search
+description: データ ソース接続、ファイアウォール、および不足しているドキュメントなど、Azure Search でのインデクサーのエラーと一般的な問題を修正。
 author: mgottein
 manager: cgronlun
 services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2018
+ms.date: 03/01/2019
 ms.author: magottei
-ms.openlocfilehash: 6c64cf066651c403136bba97c8d1e1230162dbb4
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.custom: seodec2018
+ms.openlocfilehash: b527b759eb9c76ab6289e909001c5f7820f34ef4
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619526"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652418"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Azure Search のインデクサーの一般的な問題のトラブルシューティング
 
 Azure Search においてデータにインデックスを付けるとき、インデクサーでいくつかの問題が発生することがあります。 エラーは次のように分類されます。
 
-* [データ ソースへの接続](#Data-Source-Connection-Errors)
-* [ドキュメントの処理](#Document-Processing-Errors)
-* [インデックスへのドキュメントの取り込み](#Index-Errors)
+* [データ ソースへの接続](#data-source-connection-errors)
+* [ドキュメントの処理](#document-processing-errors)
+* [インデックスへのドキュメントの取り込み](#index-errors)
 
 ## <a name="data-source-connection-errors"></a>データ ソースの接続エラー
 

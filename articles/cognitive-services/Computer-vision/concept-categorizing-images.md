@@ -1,37 +1,38 @@
 ---
 title: イメージへの分類 - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Computer Vision API を使用したイメージへの分類に関連する概念。
+description: Computer Vision API の画像分類機能に関連する概念について説明します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/11/2019
 ms.author: pafarley
-ms.openlocfilehash: 602ea8028cf89b23df692d5c2fb9b781f64bcad4
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 07fdaa22532f48cc39b6c524d85fdfe625f8b80c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341686"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337141"
 ---
-# <a name="categorizing-images"></a>イメージの分類
+# <a name="categorize-images"></a>イメージの分類
 
-タグ付けや説明に加え、Computer Vision では、前のバージョンで定義した分類ベースのカテゴリが返されます。 これらのカテゴリは親/子の遺伝階層を持つ分類として整理されます。 すべてのカテゴリは英語です。 単独で、または新しいタグ付けモデルと共に使用できます。
+タグや説明に加え、Computer Vision では、画像で検出された分類ベースのカテゴリが返されます。 タグとは異なり、カテゴリは親/子の遺伝階層で整理され、その数も少なくなります (数千ものタグと違って 86)。 すべてのカテゴリ名は英語です。 分類は単独で実行されるか、より新しいタグ モデルと共に実行できます。
 
 ## <a name="the-86-category-concept"></a>86 のカテゴリ概念
 
-以下の図に示されている 86 の概念のリストに基づき、イメージを細かく分けることができます。 テキスト形式の完全な分類については、[カテゴリの分類](category-taxonomy.md)に関するページを参照してください。
+Computer Vision では次の図の 86 カテゴリの一覧を使用して、大まかに、または具体的に画像を分類できます。 テキスト形式の完全な分類については、[カテゴリの分類](category-taxonomy.md)に関するページを参照してください。
 
-![カテゴリの分析](./Images/analyze_categories.png)
+![カテゴリの分類に含まれるすべてのカテゴリのグループ化されたリスト](./Images/analyze_categories-v2.png)
 
 ## <a name="image-categorization-examples"></a>イメージの分類の例
 
 次の JSON 応答は、視覚的特徴に基づいてサンプル イメージを分類する際に、Computer Vision から返される内容を示します。
 
-![屋上にいる女性](./Images/woman_roof.png)
+![共同住宅の屋上にいる女性](./Images/woman_roof.png)
 
 ```json
 {
@@ -52,12 +53,12 @@ ms.locfileid: "49341686"
 
 次の表は、各イメージについて Computer Vision から返される一般的なイメージ セットとカテゴリを示しています。
 
-| イメージ | Category |
+| Image | Category |
 |-------|----------|
-| ![家族写真](./Images/family_photo.png) | people_group |
-| ![かわいい犬](./Images/cute_dog.png) | animal_dog |
-| ![屋外の山](./Images/mountain_vista.png) | outdoor_mountain |
-| ![Vision Analyze パン](./Images/bread.png) | food_bread |
+| ![家族としてポーズをとっている 4 人の人物](./Images/family_photo.png) | people_group |
+| ![草原の座っている子犬](./Images/cute_dog.png) | animal_dog |
+| ![日没時に山頂の岩の上に立っている人物](./Images/mountain_vista.png) | outdoor_mountain |
+| ![テーブル上の丸パンの山](./Images/bread.png) | food_bread |
 
 ## <a name="next-steps"></a>次の手順
 

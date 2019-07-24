@@ -3,18 +3,18 @@ title: Azure Automation State Configuration の使用開始
 description: Azure Automation State Configuration (DSC) の最も一般的なタスクの説明と例
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
-ms.date: 08/08/2018
+ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fc1c870d06d6bf4a0db941b261e9aebd317fdcb1
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 60cd2d21167739e824489e30ebd187a5fc0cc12d
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634361"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579276"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Azure Automation State Configuration の使用開始
 
@@ -27,7 +27,7 @@ ms.locfileid: "45634361"
 この記事の例を完了するには、次のものが必要です。
 
 - Azure Automation アカウント。 Azure Automation 実行アカウントの作成手順については、 [Azure 実行アカウント](automation-sec-configure-azure-runas-account.md)に関するページをご覧ください。
-- Windows Server 2008 R2 以降を実行している Azure Resource Manager VM (クラシックではない)。 VM の作成手順については、「 [Azure ポータルで初めての Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+- [サポートされているオペレーティング システム](automation-dsc-overview.md#operating-system-requirements)を実行している Azure Resource Manager VM (クラシックではない)。 VM の作成手順については、「 [Azure ポータルで初めての Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 
 ## <a name="creating-a-dsc-configuration"></a>DSC 構成を作成する
 
@@ -149,15 +149,14 @@ Azure Automation State Configuration を使用すると、Azure VM (クラシッ
 1. **[仮想マシン]** 詳細ページで、**[+ 接続]** をクリックします。
 
    > [!IMPORTANT]
-   > これは、Windows Server 2008 R2 以降を実行している Azure Resource Manager VM である必要があります。
+   > [サポートされているオペレーティング システム](automation-dsc-overview.md#operating-system-requirements)を実行している Azure Resource Manager VM である必要があります。
 
-1. **[登録]** ページの **[ノード構成名]** ボックスで、VM に適用するノード構成の名前を選択します。 この時点では、名前の入力は省略可能です。 ノードのオンボード後に、割り当てられたノード構成を変更できます。
+2. **[登録]** ページの **[ノード構成名]** ボックスで、VM に適用するノード構成の名前を選択します。 この時点では、名前の入力は省略可能です。 ノードのオンボード後に、割り当てられたノード構成を変更できます。
    **[必要に応じてノードを再起動する]** チェック ボックスをオンにし、**[OK]** をクリックします。
 
    ![Screenshot of the Registration blade](./media/automation-dsc-getting-started/RegisterVM.png)
 
    指定したノード構成は、**[構成モードの頻度]** に指定された間隔で VM に適用されます。また、VM は、**[更新頻度]** に指定された間隔でノード構成に対する更新をチェックします。 これらの値の使用方法の詳細については、「[ローカル構成マネージャーの構成](https://msdn.microsoft.com/PowerShell/DSC/metaConfig)」を参照してください。
-1. **[Azure VM の追加]** ブレードで、**[作成]** をクリックします。
 
 Azure によって VM のオンボード処理が開始されます。 処理が完了すると、Automation アカウントの **[状態の構成 (DSC)]** ページの **[ノード]** タブに VM が表示されます。
 

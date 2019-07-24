@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: victorh
-ms.openlocfilehash: a814c543b9f4bfe6717e639342d82ed13dac35b0
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: a06d629087e853c2578e6d35a2ea90c5a8eff840
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954608"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860603"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>.NET SDK を使用した DNS ゾーンとレコード セットの作成
 
@@ -45,7 +45,7 @@ Azure DNS .NET SDK を使用するには、 **Azure DNS 管理ライブラリ** 
 2. **[ツール]** **>** **[NuGet パッケージ マネージャー]** **>** **[ソリューションの NuGet パッケージの管理]** の順に移動します。
 3. **[参照]** をクリックし、**[プレリリースを含める]** チェック ボックスをオンにして、検索ボックスに「**Microsoft.Azure.Management.Dns**」と入力します。
 4. パッケージを選択し、 **[インストール]** をクリックして Visual Studio プロジェクトに追加します。
-5. 上記の手順を繰り返して、**Microsoft.Rest.ClientRuntime.Azure.Authentication** パッケージと **Microsoft.Azure.Management.ResourceManager** パッケージもインストールします。
+5. 上記のプロセスを繰り返して、次のパッケージもインストールします。**Microsoft.Rest.ClientRuntime.Azure.Authentication** と **Microsoft.Azure.Management.ResourceManager**。
 
 ## <a name="add-namespace-declarations"></a>名前空間宣言の追加
 
@@ -83,7 +83,7 @@ Azure DNS では、 [Etag](dns-getstarted-create-dnszone.md)と呼ばれるオ�
 // Create zone parameters
 var dnsZoneParams = new Zone("global"); // All DNS zones must have location = "global"
 
-// Create a Azure Resource Manager 'tag'.  This is optional.  You can add multiple tags
+// Create an Azure Resource Manager 'tag'.  This is optional.  You can add multiple tags
 dnsZoneParams.Tags = new Dictionary<string, string>();
 dnsZoneParams.Tags.Add("dept", "finance");
 

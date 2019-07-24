@@ -4,7 +4,7 @@ description: この記事では、Azure の組み込み機能を利用した ID 
 services: security
 documentationcenter: na
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 07d8e8a8-47e8-447c-9c06-3a88d2713bc1
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: barclayn
-ms.openlocfilehash: 64d940552f2790c08e8087f279990d0a6c595bac
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f872c61ad0597d2307cd244668fdfc258f7a45cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245731"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58895688"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
@@ -65,7 +65,7 @@ ID はセキュリティの新しい境界レイヤーであり、従来のネ�
 **詳細**: [Azure AD Connect](../active-directory/connect/active-directory-aadconnect.md) を使用して、オンプレミスのディレクトリとクラウドのディレクトリを同期します。
 
 **ベスト プラクティス**: パスワード ハッシュ同期をオンにします。  
-**詳細**: パスワード ハッシュ同期は、オンプレミスの Active Directory インスタンスからクラウドベースの Azure AD インスタンスにユーザー パスワード ハッシュのハッシュを同期するときに使用する機能です。
+**詳細**: パスワード ハッシュ同期は、オンプレミスの Active Directory インスタンスからクラウドベースの Azure Active Directory インスタンスにユーザー パスワード ハッシュのハッシュを同期するときに使用する機能です。
 
 Active Directory フェデレーション サービス (AD FS) または他の ID プロバイダーでフェデレーションを使用する場合でも、オンプレミスのサーバーがエラーになるか一時的に利用不可になった場合のバックアップとしてパスワード ハッシュ同期を設定することもできます。 これにより、ユーザーは、オンプレミスの Active Directory インスタンスにサインインするときに使うものと同じパスワードを使用してサービスにサインインできます。 また、ユーザーが Azure AD に接続されていない他のサービスと同じ電子メール アドレスおよびパスワードを使用している場合に、Identity Protection では、これらのパスワード ハッシュを侵害が検知されたパスワードと比較して、侵害された資格情報を検出できます。
 
@@ -99,8 +99,8 @@ SSO を確立するためにユーザーやアプリケーションに共通の 
 
 複数のテナントがある場合、またはユーザーが[自分のパスワードをリセット](../active-directory/active-directory-passwords-update-your-own-password.md)できるようにする場合は、適切なセキュリティ ポリシーを使用して不適切な使用を防止することが重要です。
 
-**ベスト プラクティス**: ユーザーに対してセルフサービスによるパスワードのリセット (SSPR) を設定します。  
-**詳細**: Azure AD の[セルフ サービスによるパスワードのリセット](../active-directory-b2c/active-directory-b2c-reference-sspr.md)機能を使用します。
+**ベスト プラクティス**: ユーザーに対してパスワード リセットのセルフサービス (SSPR) を設定します。  
+**詳細**: Azure AD の[パスワード リセットのセルフサービス](../active-directory-b2c/active-directory-b2c-reference-sspr.md)機能を使用します。
 
 **ベスト プラクティス**: SSPR が実際に使用されているかどうか、またはその使用方法を監視します。  
 **詳細**: Azure AD の[パスワード リセット登録アクティビティ レポート](../active-directory/active-directory-passwords-get-insights.md)を使用して、登録しているユーザーを監視します。 Azure AD で提供されるレポート機能によって、質問に対する答えをあらかじめ用意されたレポートから得ることができます。 適切にライセンスを付与されている場合は、カスタム クエリを作成することもできます。
@@ -113,16 +113,16 @@ SSO を確立するためにユーザーやアプリケーションに共通の 
 
 2 段階認証を有効にするオプションと利点を次に示します。
 
-**オプション 1**: [ユーザーの状態を変更することで Multi-Factor Authentication を有効にします](../active-directory/authentication/howto-mfa-userstates.md)。   
-**利点**: 2 段階認証を要求するための従来の方法です。 これは、[クラウド内の Azure Multi-Factor Authentication と Azure Multi-Factor Authentication Server](../active-directory/authentication/concept-mfa-whichversion.md) の両方に対応します。 この方法を使用すると、ユーザーはサインインする際に毎回 2 段階認証が求められるようになります。また、この方法は条件付きアクセス ポリシーをオーバーライドします。
+**オプション 1**:[ユーザーの状態を変更することで Multi-Factor Authentication を有効にします](../active-directory/authentication/howto-mfa-userstates.md)。   
+**利点**:2 段階認証を要求するための従来の方法です。 これは、[クラウド内の Azure Multi-Factor Authentication と Azure Multi-Factor Authentication Server](../active-directory/authentication/concept-mfa-whichversion.md) の両方に対応します。 この方法を使用すると、ユーザーはサインインする際に毎回 2 段階認証が求められるようになります。また、この方法は条件付きアクセス ポリシーをオーバーライドします。
 
-**オプション 2**: [条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします](../active-directory/authentication/howto-mfa-getstarted.md#enable-multi-factor-authentication-with-conditional-access)。   
-**利点**: このオプションでは、[条件付きアクセス](../active-directory/active-directory-conditional-access-azure-portal.md)を使用して特定の条件下で 2 段階認証を要求できます。 特定の条件としては、異なる場所、信頼されていないデバイス、または危険と見なされるアプリケーションからのユーザーのサインインを指定できます。 2 段階認証を要求する特定の条件を定義すると、要求のメッセージがユーザーに繰り返し表示されないようにすることができます。このようなメッセージは、不快なユーザー エクスペリエンスとなり得ます。
+**オプション 2**:[条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします](../active-directory/authentication/howto-mfa-getstarted.md)。
+**利点**:このオプションでは、[条件付きアクセス](../active-directory/active-directory-conditional-access-azure-portal.md)を使用して特定の条件下で 2 段階認証を要求できます。 特定の条件としては、異なる場所、信頼されていないデバイス、または危険と見なされるアプリケーションからのユーザーのサインインを指定できます。 2 段階認証を要求する特定の条件を定義すると、要求のメッセージがユーザーに繰り返し表示されないようにすることができます。このようなメッセージは、不快なユーザー エクスペリエンスとなり得ます。
 
 これは、ユーザーの 2 段階認証を有効にするうえで最も柔軟性の高い手段です。 条件付きアクセス ポリシーを有効にする方法は、クラウド内の Azure Multi-Factor Authentication に対してのみ機能します。これは Azure AD の Premium 機能です。 この方法の詳細については、「[クラウドベースの Azure Multi-Factor Authentication をデプロイする](../active-directory/authentication/howto-mfa-getstarted.md)」を参照してください。
 
-**オプション 3**: [Azure AD Identity Protection](../active-directory/authentication/tutorial-risk-based-sspr-mfa.md) のユーザーおよびサインインのリスクを評価し、条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします。   
-**利点**: このオプションの利点は次のとおりです。
+**オプション 3**:[Azure AD Identity Protection](../active-directory/authentication/tutorial-risk-based-sspr-mfa.md) のユーザーおよびサインインのリスクを評価し、条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします。   
+**利点**:このオプションの利点は次のとおりです。
 
 - 組織の ID に影響する潜在的な脆弱性を検出します。
 - 組織の ID に関連する検出された疑わしいアクションに対する自動応答を構成します。

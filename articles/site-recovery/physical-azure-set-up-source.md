@@ -2,17 +2,18 @@
 title: Azure Site Recovery を使用した物理サーバーの Azure へのディザスター リカバリーのために構成サーバーを設定する | Microsoft Docs
 description: この記事では、オンプレミスの物理サーバーを Azure にディザスター リカバリーするために、オンプレミスの構成サーバーを設定する方法について説明します。
 services: site-recovery
-author: rayne-wiselman
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
-ms.author: raynew
-ms.openlocfilehash: 739129045fab72a9b535be25b853c902c7dbd251
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 04/14/2019
+ms.author: ramamill
+ms.openlocfilehash: 5f0578026e95378065fc68198434e347a87eb1fe
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209549"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149021"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>物理サーバーの Azure へのディザスター リカバリーのために構成サーバーを設定する
 
@@ -21,7 +22,7 @@ ms.locfileid: "50209549"
 ## <a name="prerequisites"></a>前提条件
 
 この記事では、次のものが既にあることを前提としています。
-- Recovery Services コンテナー ([Azure Portal](http://portal.azure.com "Azure Portal") 内)。
+- Recovery Services コンテナー ([Azure Portal](https://portal.azure.com "Azure Portal") 内)。
 - 構成サーバーをインストールするための物理コンピューター。
 - 構成サーバーをインストールしているコンピューターで TLS 1.0 を無効にした場合は、TLS 1.2 が有効になっていることを確認し、(強力な暗号化を無効にした) コンピューターに .NET Framework バージョン 4.6 以降がインストールされていることを確認します。 [詳細情報](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1)。
 
@@ -35,7 +36,7 @@ ms.locfileid: "50209549"
 ## <a name="choose-your-protection-goals"></a>保護の目標を選択する
 
 1. Azure Portal で、**Recovery Services** コンテナー ブレードに移動し、コンテナーを選択します。
-2. コンテナーの**リソース** メニューで、**[作業の開始]** > **[Site Recovery]** > **[手順 1: インフラストラクチャを準備する]** > **[保護の目標]** の順にクリックします。
+2. コンテナーの**リソース** メニューで、**[作業の開始]** > **[Site Recovery]** > **[手順 1:インフラストラクチャを準備する]** > **[保護の目標]** の順にクリックします。
 
     ![Choose goals](./media/physical-azure-set-up-source/choose-goals.png)
 3. **[保護の目標]** で、**[To Azure (Azure へ)]** を選択し、**[非仮想化/その他]** を選択し、**[OK]** をクリックします。
@@ -46,7 +47,7 @@ ms.locfileid: "50209549"
 
 1. **[ソースの準備]** で、構成サーバーがない場合は **[+ 構成サーバー]** をクリックして追加します。
 
-  ![Set up source](./media/physical-azure-set-up-source/plus-config-srv.png)
+   ![Set up source](./media/physical-azure-set-up-source/plus-config-srv.png)
 2. **[サーバーの追加]** ブレードで、**[サーバーの種類]** に **[構成サーバー]** が表示されていることを確認します。
 4. Site Recovery 統合セットアップ インストール ファイルをダウンロードします。
 5. コンテナー登録キーをダウンロードします。 統合セットアップを実行する際には、登録キーが必要です。 キーは生成後 5 日間有効です。

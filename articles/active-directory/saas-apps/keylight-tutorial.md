@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と LockPath Keylight の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と LockPath Keylight の統合 | Microsoft Docs
 description: Azure Active Directory と LockPath Keylight の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 234a32f1-9f56-4650-9e31-7b38ad734b1a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 18fbcc785491ca8a0631f54750412bc0f12254c1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4bc5121f6604fae9a28b52db1bfb308d7cdb968d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421449"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205088"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>チュートリアル: Azure Active Directory と LockPath Keylight の統合
+# <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>チュートリアル:Azure Active Directory と LockPath Keylight の統合
 
 このチュートリアルでは、LockPath Keylight と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +89,7 @@ LockPath Keylight で、Azure AD の **[ユーザー名]** の値を **[Username
 
 LockPath Keylight で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[LockPath Keylight テスト ユーザーの作成](#creating-a-lockpath-keylight-test-user)** - LockPath Keylight で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -145,7 +146,7 @@ LockPath Keylight で Azure AD のシングル サインオンを構成してテ
    
     ![Configure single sign-on](./media/keylight-tutorial/402.png) 
 
-    d. **[SAML 設定]** ダイアログで **[編集]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SAML 設定]** ダイアログで **[編集]** をクリックします。
    
     ![Configure single sign-on](./media/keylight-tutorial/404.png) 
 
@@ -159,7 +160,7 @@ LockPath Keylight で Azure AD のシングル サインオンを構成してテ
 
     c. Azure Portal からコピーした **シングル サインアウト サービスの URL** を **[Identity Provider Logout URL]\(ID プロバイダーのログアウト URL\)** ボックスに貼り付けます。
 
-    d. **[Choose File]\(ファイルの選択\)** をクリックし、ダウンロードした LockPath Keylight 証明書を選択して、**[Open]\(開く\)** をクリックして証明書をアップロードします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Choose File]\(ファイルの選択\)** をクリックし、ダウンロードした LockPath Keylight 証明書を選択して、**[Open]\(開く\)** をクリックして証明書をアップロードします。
 
     e. **[SAML ユーザー ID の場所]** を **[Subject ステートメントの NameIdentifier 要素]** に設定します。
     
@@ -182,7 +183,7 @@ LockPath Keylight で Azure AD のシングル サインオンを構成してテ
     n. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -213,7 +214,7 @@ LockPath Keylight で Azure AD のシングル サインオンを構成してテ
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-lockpath-keylight-test-user"></a>LockPath Keylight テスト ユーザーの作成
 

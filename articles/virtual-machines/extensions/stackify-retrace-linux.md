@@ -14,16 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: roiyz
-ms.openlocfilehash: b286ebc2e50166e8491b45346a81b161227f8d21
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: b9c035c1c9088957f59550bf6564cc02bc7972f4
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39415965"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58792422"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify Retrace Linux Agent 拡張機能
 
 ## <a name="overview"></a>概要
+
 Stackify は､問題を素早く発見､解決するのに役立つ､アプリケーションに関する詳細を記録する製品を提供します｡ 開発者のチームにとって､Retrace は複数環境をサポートする完全統合型のアプリ パフォーマンスのスーパー パワーです｡ Retrace には､あらゆる開発チームが必要とするいくつかのツールが統合されています｡
 
 Retrace は 1 つのプラットフォーム上のすべての環境にまたがって次の機能のすべてを提供する唯一のツールです｡
@@ -40,9 +41,10 @@ Retrace は 1 つのプラットフォーム上のすべての環境にまたが
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="operating-system"></a>オペレーティング システム 
+
 Retrace エージェントは､次の Linux ディストリビューションに対して実行できます｡
 
-| ディストリビューション | Version |
+| ディストリビューション | バージョン |
 |---|---|
 | Ubuntu | 16.04 LTS､14.04 LTS､16.10､17.04 |
 | Debian | 7.9+ および 8.2+､9 |
@@ -50,12 +52,14 @@ Retrace エージェントは､次の Linux ディストリビューション�
 | CentOS | 6.3+､7.0+ |
 
 ### <a name="internet-connectivity"></a>インターネット接続
+
 Linux 用の Stackify Agent 拡張機能では、ターゲットの仮想マシンがインターネットに接続されている必要があります。 
 
 Stackify への接続を許可するために､ネットワーク構成の調整が必要になることがあります｡ https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall を参照してください｡ 
 
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
+
 ---
 
 次の JSON は、Stackify Retrace Agent 拡張機能のスキーマを示しています。 この拡張機能には `environment` および `activationKey` が必要です｡
@@ -147,15 +151,15 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 
 ## <a name="powershell-deployment"></a>PowerShell でのデプロイ
 
-`Set-AzureRmVMExtension` コマンドを使用して、Stackify Retrace Linux Agent 仮想マシン拡張機能を既存の仮想マシンにデプロイすることができます。 このコマンドを実行する前に、パブリック構成とプライベート構成を PowerShell ハッシュ テーブルに格納しておく必要があります。
+`Set-AzVMExtension` コマンドを使用して、Stackify Retrace Linux Agent 仮想マシン拡張機能を既存の仮想マシンにデプロイすることができます。 このコマンドを実行する前に、パブリック構成とプライベート構成を PowerShell ハッシュ テーブルに格納しておく必要があります。
 
 この拡張機能には `environment` および `activationKey` が必要です｡
 
-```
+```powershell
 $PublicSettings = @{"environment" = "myEnvironment"}
 $ProtectedSettings = @{"activationKey" = "myActivationKey"}
 
-Set-AzureRmVMExtension -ExtensionName "Stackify.LinuxAgent.Extension" `
+Set-AzVMExtension -ExtensionName "Stackify.LinuxAgent.Extension" `
     -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" `
     -Publisher "Stackify.LinuxAgent.Extension" `

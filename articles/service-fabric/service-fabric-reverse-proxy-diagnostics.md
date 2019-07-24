@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
-ms.openlocfilehash: 662fc124af71c1ce976037a3544f59e3cea54ef0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c9c8c649208cff95f4ee515d39cc8cca3e2c64bf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207633"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121487"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>リバース プロキシの要求処理の監視と診断
 
@@ -32,83 +32,84 @@ Service Fabric リリース 5.7 以降、リバース プロキシ イベント�
 1. リバース プロキシから応答の状態コード 504 (タイムアウト) が返される場合。
 
     理由の 1 つとして、要求のタイムアウト期間内にサービスが応答できなかったことが考えられます。
-以下の最初のイベントでは、リバース プロキシで受信された要求の詳細がログに記録されています。 2 つ目のイベントは、サービスへの転送中に、"internal error = ERROR_WINHTTP_TIMEOUT" により要求が失敗したことを示しています。 
+   以下の最初のイベントでは、リバース プロキシで受信された要求の詳細がログに記録されています。 
+   2 つ目のイベントは、サービスへの転送中に、"internal error = ERROR_WINHTTP_TIMEOUT" により要求が失敗したことを示しています。 
 
     次のようなペイロードがあります。
 
-    *  **traceId**: この GUID は、単一の要求に関連するすべてのイベントを関連付けるために使用できます。 以下の 2 つのイベントにある traceId = **2f87b722-e254-4ac2-a802-fd315c1a0271** は、同じ要求に属することを示しています。
-    *  **requestUrl**: 要求の送信先 URL (リバース プロキシの URL)。
-    *  **verb**: HTTP 動詞。
-    *  **remoteAddress**: 要求を送信するクライアントのアドレス。
-    *  **resolvedServiceUrl**: 受信要求が解決されたサービス エンドポイントの URL。 
-    *  **errorDetails**: エラーに関する詳細情報。
+   * **traceId**:この GUID は、単一の要求に関連するすべてのイベントを関連付けるために使用できます。 以下の 2 つのイベントにある traceId = **2f87b722-e254-4ac2-a802-fd315c1a0271** は、同じ要求に属することを示しています。
+   * **requestUrl**:要求の送信先 URL (リバース プロキシの URL)。
+   * **verb**:HTTP 動詞。
+   * **remoteAddress**:要求を送信するクライアントのアドレス。
+   * **resolvedServiceUrl**:受信要求が解決されたサービス エンドポイントの URL。 
+   * **errorDetails**:このエラーに関する追加情報。
 
-    ```
-    {
-      "Timestamp": "2017-07-20T15:57:59.9871163-07:00",
-      "ProviderName": "Microsoft-ServiceFabric",
-      "Id": 51477,
-      "Message": "2f87b722-e254-4ac2-a802-fd315c1a0271 Request url = https://localhost:19081/LocationApp/LocationFEService?zipcode=98052, verb = GET, remote (client) address = ::1, resolved service url = Https://localhost:8491/LocationApp/?zipcode=98052, request processing start time =     15:58:00.074114 (745,608.196 MSec) ",
-      "ProcessId": 57696,
-      "Level": "Informational",
-      "Keywords": "0x1000000000000021",
-      "EventName": "ReverseProxy",
-      "ActivityID": null,
-      "RelatedActivityID": null,
-      "Payload": {
-        "traceId": "2f87b722-e254-4ac2-a802-fd315c1a0271",
-        "requestUrl": "https://localhost:19081/LocationApp/LocationFEService?zipcode=98052",
-        "verb": "GET",
-        "remoteAddress": "::1",
-        "resolvedServiceUrl": "Https://localhost:8491/LocationApp/?zipcode=98052",
-        "requestStartTime": "2017-07-20T15:58:00.0741142-07:00"
-      }
-    }
+     ```
+     {
+     "Timestamp": "2017-07-20T15:57:59.9871163-07:00",
+     "ProviderName": "Microsoft-ServiceFabric",
+     "Id": 51477,
+     "Message": "2f87b722-e254-4ac2-a802-fd315c1a0271 Request url = https://localhost:19081/LocationApp/LocationFEService?zipcode=98052, verb = GET, remote (client) address = ::1, resolved service url = Https://localhost:8491/LocationApp/?zipcode=98052, request processing start time =     15:58:00.074114 (745,608.196 MSec) ",
+     "ProcessId": 57696,
+     "Level": "Informational",
+     "Keywords": "0x1000000000000021",
+     "EventName": "ReverseProxy",
+     "ActivityID": null,
+     "RelatedActivityID": null,
+     "Payload": {
+      "traceId": "2f87b722-e254-4ac2-a802-fd315c1a0271",
+      "requestUrl": "https://localhost:19081/LocationApp/LocationFEService?zipcode=98052",
+      "verb": "GET",
+      "remoteAddress": "::1",
+      "resolvedServiceUrl": "Https://localhost:8491/LocationApp/?zipcode=98052",
+      "requestStartTime": "2017-07-20T15:58:00.0741142-07:00"
+     }
+     }
 
-    {
-      "Timestamp": "2017-07-20T16:00:01.3173605-07:00",
-      ...
-      "Message": "2f87b722-e254-4ac2-a802-fd315c1a0271 Error while forwarding request to service: response status code = 504, description = Reverse proxy Timeout, phase = FinishSendRequest, internal error = ERROR_WINHTTP_TIMEOUT ",
-      ...
-      "Payload": {
-        "traceId": "2f87b722-e254-4ac2-a802-fd315c1a0271",
-        "statusCode": 504,
-        "description": "Reverse Proxy Timeout",
-        "sendRequestPhase": "FinishSendRequest",
-        "errorDetails": "internal error = ERROR_WINHTTP_TIMEOUT"
-      }
-    }
-    ```
+     {
+     "Timestamp": "2017-07-20T16:00:01.3173605-07:00",
+     ...
+     "Message": "2f87b722-e254-4ac2-a802-fd315c1a0271 Error while forwarding request to service: response status code = 504, description = Reverse proxy Timeout, phase = FinishSendRequest, internal error = ERROR_WINHTTP_TIMEOUT ",
+     ...
+     "Payload": {
+      "traceId": "2f87b722-e254-4ac2-a802-fd315c1a0271",
+      "statusCode": 504,
+      "description": "Reverse Proxy Timeout",
+      "sendRequestPhase": "FinishSendRequest",
+      "errorDetails": "internal error = ERROR_WINHTTP_TIMEOUT"
+     }
+     }
+     ```
 
 2. リバース プロキシから応答の状態コード 404 (見つかりません) が返される場合。 
     
     一致するサービス エンドポイントが見つからなかったため、リバース プロキシから 404 が返される例を次に示します。
     主なペイロード エントリは次のとおりです。
-    *  **processRequestPhase**: エラーが発生したときに要求が処理中のフェーズを示します。たとえば、***TryGetEndpoint*** は 転送先のサービス エンドポイントを取得中であることを示します。 
-    *  **errorDetails**: エンドポイント検索条件を列挙します。 この例では、listenerName に = **FrontEndListener** が指定されていますが、レプリカ エンドポイント リストには、**OldListener** というリスナーしか含まれていないことがわかります。
+   * **processRequestPhase**:エラーが発生したときに要求が処理中のフェーズを示します。たとえば、***TryGetEndpoint*** は 転送先のサービス エンドポイントを取得中であることを示します。 
+   * **errorDetails**:エンドポイント検索条件を列挙します。 この例では、listenerName に = **FrontEndListener** が指定されていますが、レプリカ エンドポイント リストには、**OldListener** というリスナーしか含まれていないことがわかります。
     
-    ```
-    {
+     ```
+     {
+     ...
+     "Message": "c1cca3b7-f85d-4fef-a162-88af23604343 Error while processing request, cannot forward to service: request url = https://localhost:19081/LocationApp/LocationFEService?ListenerName=FrontEndListener&zipcode=98052, verb = GET, remote (client) address = ::1, request processing start time = 16:43:02.686271 (3,448,220.353 MSec), error = FABRIC_E_ENDPOINT_NOT_FOUND, message = , phase = TryGetEndoint, SecureOnlyMode = false, gateway protocol = https, listenerName = FrontEndListener, replica endpoint = {\"Endpoints\":{\"\":\"Https:\/\/localhost:8491\/LocationApp\/\"}} ",
+     "ProcessId": 57696,
+     "Level": "Warning",
+     "EventName": "ReverseProxy",
+     "Payload": {
+      "traceId": "c1cca3b7-f85d-4fef-a162-88af23604343",
+      "requestUrl": "https://localhost:19081/LocationApp/LocationFEService?ListenerName=NewListener&zipcode=98052",
       ...
-      "Message": "c1cca3b7-f85d-4fef-a162-88af23604343 Error while processing request, cannot forward to service: request url = https://localhost:19081/LocationApp/LocationFEService?ListenerName=FrontEndListener&zipcode=98052, verb = GET, remote (client) address = ::1, request processing start time = 16:43:02.686271 (3,448,220.353 MSec), error = FABRIC_E_ENDPOINT_NOT_FOUND, message = , phase = TryGetEndoint, SecureOnlyMode = false, gateway protocol = https, listenerName = FrontEndListener, replica endpoint = {\"Endpoints\":{\"\":\"Https:\/\/localhost:8491\/LocationApp\/\"}} ",
-      "ProcessId": 57696,
-      "Level": "Warning",
-      "EventName": "ReverseProxy",
-      "Payload": {
-        "traceId": "c1cca3b7-f85d-4fef-a162-88af23604343",
-        "requestUrl": "https://localhost:19081/LocationApp/LocationFEService?ListenerName=NewListener&zipcode=98052",
-        ...
-        "processRequestPhase": "TryGetEndoint",
-        "errorDetails": "SecureOnlyMode = false, gateway protocol = https, listenerName = FrontEndListener, replica endpoint = {\"Endpoints\":{\"OldListener\":\"Https:\/\/localhost:8491\/LocationApp\/\"}}"
-      }
-    }
-    ```
-    リバース プロキシから 404 (見つかりません) が返されるもう 1 つの例として、**HTTPS** をリッスンしているリバース プロキシで、ApplicationGateway\Http 構成パラメーター **SecureOnlyMode** が true に設定されているのに、すべてのレプリカ エンドポイントがセキュリティで保護されていない (HTTP をリッスンしている) 場合があります。
-    要求の転送先として HTTPS をリッスンしているエンドポイントが見つからないため、リバース プロキシからは 404 が返されます。 イベント ペイロードのパラメーターを分析すると、問題を絞り込むことができます。
+      "processRequestPhase": "TryGetEndoint",
+      "errorDetails": "SecureOnlyMode = false, gateway protocol = https, listenerName = FrontEndListener, replica endpoint = {\"Endpoints\":{\"OldListener\":\"Https:\/\/localhost:8491\/LocationApp\/\"}}"
+     }
+     }
+     ```
+     リバース プロキシから 404 (見つかりません) が返されるもう 1 つの例として、**HTTPS** をリッスンしているリバース プロキシで、ApplicationGateway\Http 構成パラメーター **SecureOnlyMode** が true に設定されているのに、すべてのレプリカ エンドポイントがセキュリティで保護されていない (HTTP をリッスンしている) 場合があります。
+     要求の転送先として HTTPS をリッスンしているエンドポイントが見つからないため、リバース プロキシからは 404 が返されます。 イベント ペイロードのパラメーターを分析すると、問題を絞り込むことができます。
     
-    ```
-        "errorDetails": "SecureOnlyMode = true, gateway protocol = https, listenerName = NewListener, replica endpoint = {\"Endpoints\":{\"OldListener\":\"Http:\/\/localhost:8491\/LocationApp\/\", \"NewListener\":\"Http:\/\/localhost:8492\/LocationApp\/\"}}"
-    ```
+     ```
+      "errorDetails": "SecureOnlyMode = true, gateway protocol = https, listenerName = NewListener, replica endpoint = {\"Endpoints\":{\"OldListener\":\"Http:\/\/localhost:8491\/LocationApp\/\", \"NewListener\":\"Http:\/\/localhost:8492\/LocationApp\/\"}}"
+     ```
 
 3. リバース プロキシに対する要求がタイムアウト エラーで失敗した場合。 
     イベント ログには、イベントと、受信した要求の詳細情報 (ここには記載しません) が含まれています。

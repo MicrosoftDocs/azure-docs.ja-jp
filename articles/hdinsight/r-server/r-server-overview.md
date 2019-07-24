@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 74d8629eb8fc29f3cb572be0b1ccb8b6149ab971
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a07f052cf89da039bb9fe091f1cd997c19d2fcc7
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016286"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584532"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>HDInsight での ML Services とオープン ソース R の機能の概要
 
-> [!NOTE]
+> [!NOTE]  
 > 2017 年 9 月、Microsoft R Server は **Microsoft Machine Learning Server** または ML Server という新しい名前でリリースされました。 そのため、HDInsight 上の Microsoft R Server クラスターは、HDInsight 上の **Machine Learning Services** または **ML Services** クラスターと呼ばれるようになっています。 R Server の名前の変更について詳しくは、「[Microsoft R Server is now Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server#get-support-for-r-server)」(Microsoft R Server は Microsoft Machine Learning Server になった) をご覧ください。
 
 Azure で HDInsight クラスターを作成するときのデプロイ オプションとして Microsoft Machine Learning Server を選択できるようになりました。 このオプションを提供するクラスターの種類は、**ML Services** と呼ばれます。 この機能により、データ サイエンティスト、統計学者、R プログラマは、HDInsight でのスケーラブルで分散型の分析手法にオンデマンドでアクセスできるようになります。
@@ -27,9 +27,9 @@ Azure で HDInsight クラスターを作成するときのデプロイ オプ�
 
 HDInsight の ML Services は、Azure Blob Storage または Data Lake Storage に読み込まれた事実上すべてのサイズのデータセットで R ベースの分析を行うための最新の機能を備えています。 ML Services クラスターはオープン ソース R を基盤としているため、自ら構築する R ベースのアプリケーションで 8,000 を超えるオープン ソース R パッケージを活用できます。 また、ScaleR (Microsoft のビッグ データ分析パッケージ) のルーチンも使用できます。
 
-クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利な場所です。 エッジ ノードでは、エッジ ノード サーバーのコア間で、ScaleR の並列化された分散関数を実行できます。 また、ScaleR の Hadoop Map Reduce または Spark コンピューティング コンテキストを使用して、クラスターのノード間でこれらの関数を実行することもできます。
+クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利な場所です。 エッジ ノードでは、エッジ ノード サーバーのコア間で、ScaleR の並列化された分散関数を実行できます。 また、ScaleR の Hadoop Map Reduce または Apache Spark コンピューティング コンテキストを使用して、クラスターのノード間でこれらの関数を実行することもできます。
 
-分析によって得られたモデルや予測は、ダウンロードしてオンプレミスで使用できます。 また、[Azure Machine Learning Studio](http://studio.azureml.net) などの [Web サービス](../../machine-learning/studio/publish-a-machine-learning-web-service.md)を使用して、Azure の別の場所で運用化することもできます。
+分析によって得られたモデルや予測は、ダウンロードしてオンプレミスで使用できます。 また、[Azure Machine Learning Studio](https://studio.azureml.net) などの [Web サービス](../../machine-learning/studio/publish-a-machine-learning-web-service.md)を使用して、Azure の別の場所で運用化することもできます。
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>HDInsight での ML Services の概要
 
@@ -72,7 +72,7 @@ HDInsight の ML Services には次の機能が含まれます。
 
 ## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>HDInsight 上の ML Services 向けのデータ ストレージ オプション
 
-HDInsight クラスターの HDFS ファイル システムの既定のストレージを、Azure ストレージ アカウントまたは Azure Data Lake Store と関連付けることができます。 この関連付けにより、分析中にクラスター ストレージにアップロードされるデータがどのようなものであっても確実に永続化され、クラスターが削除された後であってもデータを利用できます。 選択したストレージ オプションへのデータ転送を担うさまざまなツールが用意されています。これには、ストレージ アカウントのポータル ベースのアップロード機能や [AzCopy](../../storage/common/storage-use-azcopy.md) ユーティリティなどがあります。
+HDInsight クラスターの HDFS ファイル システムの既定のストレージを、Azure ストレージ アカウントまたは Azure Data Lake Storage と関連付けることができます。 この関連付けにより、分析中にクラスター ストレージにアップロードされるデータがどのようなものであっても確実に永続化され、クラスターが削除された後であってもデータを利用できます。 選択したストレージ オプションへのデータ転送を担うさまざまなツールが用意されています。これには、ストレージ アカウントのポータル ベースのアップロード機能や [AzCopy](../../storage/common/storage-use-azcopy.md) ユーティリティなどがあります。
 
 選択したプライマリ ストレージにかかわらず、クラスター プロビジョニング プロセス中に追加の BLOB および Data Lake Store へのアクセスを有効にすることができます。 アカウント アクセスの追加については、[HDInsight での ML Services の使用](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-get-started)に関する記事をご覧ください。 複数のストレージ アカウントの使用について詳しくは、[HDInsight の ML Services 向けの Azure Storage オプション](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage)に関する記事をご覧ください。
 
@@ -114,7 +114,7 @@ Azure Machine Learning を使ってスコア付けを行うには、[AzureML](ht
 
 このような場合、クラスターの作成後にスクリプト アクションを使って追加のパッケージをインストールできます。 詳しくは、[HDInsight クラスターでの ML Services の管理](r-server-hdinsight-manage.md)に関する記事をご覧ください。
 
-### <a name="change-hadoop-mapreduce-memory-settings"></a>Hadoop MapReduce のメモリ設定の変更
+### <a name="change-apache-hadoop-mapreduce-memory-settings"></a>Apache Hadoop MapReduce のメモリ設定の変更
 
 クラスターに変更を加えることで、MapReduce ジョブの実行時に ML Services で使用可能なメモリ容量を変更できます。 クラスターを変更するには、クラスターの Azure ポータル ブレードで使用できる Apache Ambari UI を使用します。 クラスターの Ambari UI にアクセスする手順については、「 [Ambari Web UI を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari.md)」をご覧ください。
 

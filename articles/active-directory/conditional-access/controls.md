@@ -4,47 +4,46 @@ description: Azure Active Directory の条件付きアクセスのアクセス�
 services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
-author: MarkusVi
-manager: mtillman
+author: MicrosoftGuyJFlo
+manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/25/2018
-ms.author: markvi
+ms.date: 03/23/2019
+ms.author: joflore
 ms.reviewer: calebb
-ms.openlocfilehash: a40774faadc4393a1ebbb6e26673ba7dff22560c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a92d10f67533efc2f5893b012aefbcb92efee59a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092306"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59258744"
 ---
-# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスによるアクセス制御の概要 
+# <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスによるアクセス制御の概要
 
-[Azure Active Directory (Azure AD) の条件付きアクセス](../active-directory-conditional-access-azure-portal.md)を使うと、承認されたユーザーがどのようにクラウド アプリにアクセスするかを制御できます。 条件付きアクセス ポリシーでは、ポリシーをトリガーする理由 ("～が発生した場合") に対する応答 ("～を実行する") を定義します。 
+[Azure Active Directory (Azure AD) の条件付きアクセス](../active-directory-conditional-access-azure-portal.md)を使うと、承認されたユーザーがどのようにクラウド アプリにアクセスするかを制御できます。 条件付きアクセス ポリシーでは、ポリシーをトリガーする理由 ("～が発生した場合") に対する応答 ("～を実行する") を定義します。
 
 ![コントロール](./media/controls/10.png)
 
-
-条件付きアクセスの文脈では、 
+条件付きアクセスの文脈では、
 
 - "**When this happens**" (これが発生した場合は) を**条件**と呼びます。
 
 - "**Then do this**" (これを実行する) を**アクセス制御**と呼びます。
 
-
 条件文とコントロールの組み合わせによって、条件付きアクセス ポリシーを表現します。
 
 ![コントロール](./media/controls/61.png)
 
-各コントロールはいずれも、サインインしようとしているユーザーまたはシステムが満たすべき要件と、サインインした後にユーザーができることに対する制約のいずれかになります。 
+各コントロールはいずれも、サインインしようとしているユーザーまたはシステムが満たすべき要件と、サインインした後にユーザーができることに対する制約のいずれかになります。
 
-コントロールには、次の 2 つの種類があります: 
+コントロールには、次の 2 つの種類があります:
 
 - **許可コントロール**: アクセスに制約を設けるコントロール
 
@@ -56,30 +55,32 @@ ms.locfileid: "50092306"
 
 許可コントロールでは、アクセスをすべてブロックするか、必要なコントロールを選んで追加の要件を設定し、それを満たした場合にアクセスを許可するかのどちらかが可能です。 コントロールを複数使用する場合には、次の条件も利用できます:
 
-- 選択したコントロールすべてを満たす (*AND*) 
+- 選択したコントロールすべてを満たす (*AND*)
 - 選択したコントロールのいずれか 1 つを満たす (*OR*)
 
-![コントロール](./media/controls/17.png)
-
-
+![コントロール](./media/controls/18.png)
 
 ### <a name="multi-factor-authentication"></a>多要素認証
 
-このコントロールを使用すると、指定されたクラウド アプリに対するアクセスに際して多要素認証を要求できます。 このコントロールでは、次の多要素認証プロバイダーをサポートしています: 
+このコントロールを使用すると、指定されたクラウド アプリに対するアクセスに際して多要素認証を要求できます。 このコントロールでは、次の多要素認証プロバイダーをサポートしています:
 
-- Azure Multi-Factor Authentication 
+- Azure Multi-Factor Authentication
 
 - オンプレミスの多要素認証プロバイダー (ただし、Active Directory フェデレーション サービス (AD FS) を併用する必要があります)
- 
+
 多要素認証を使用すると、承認されていないユーザーが有効なユーザーのプライマリ資格情報を入手した場合でも、リソースにアクセスされる事態を防ぐことができます。
-
-
 
 ### <a name="compliant-device"></a>準拠デバイス
 
-デバイスベースの条件付きアクセス ポリシーを構成できます。 デバイス ベースの条件付きアクセス ポリシーの目的は、構成されたリソースへのアクセスを、[マネージド デバイス](require-managed-devices.md)のみに許可することです。 準拠しているデバイスの要求は、マネージド デバイスを定義する必要のある 1 つのオプションです。 このオプションを選ぶと、Azure Active Directory に[登録](../devices/overview.md)されていうデバイスのうち、(デバイス OS の) Intune または Windows 10 デバイスのサードパーティ MDMシステムによって準拠としてマークされているデバイスで実行されたアクセス試行へのアクセスが、条件付きアクセス ポリシーによって許可されます。 Windows 10 以外のデバイスの OS の種類のサードパーティ製 MDM システムはサポートされていません。
+デバイスベースの条件付きアクセス ポリシーを構成できます。 デバイス ベースの条件付きアクセス ポリシーの目的は、選択したクラウド アプリへのアクセスを、[マネージド デバイス](require-managed-devices.md)のみに許可することです。 デバイスが準拠としてマークされていることを要求するのは、マネージド デバイスへのアクセスを制限するための 1 つのオプションです。 デバイスを準拠としてマークするには、Intune (任意のデバイス OS の場合) または Windows 10 デバイス用のサード パーティ製 MDM システムを使用できます。 Windows 10 以外のデバイスの OS の種類のサードパーティ製 MDM システムはサポートされていません。 
 
-詳細については、[Azure Active Directory のデバイス ベースの条件付きアクセス ポリシーの設定](require-managed-devices.md)を参照してください。
+デバイスは準拠としてマークするには、その前にデバイスを Azure AD に登録する必要があります。 デバイスを登録するには、次の 3 つのオプションがあります。 
+
+- [Azure AD 登録済みデバイス](../devices/overview.md#azure-ad-registered-devices)
+- [Azure AD 参加済みデバイス](../devices/overview.md#azure-ad-joined-devices)  
+- [Hybrid Azure AD 参加済みデバイス](../devices/overview.md#hybrid-azure-ad-joined-devices)
+
+詳細については、[条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する方法](require-managed-devices.md)に関するページを参照してください。
 
 ### <a name="hybrid-azure-ad-joined-device"></a>ハイブリッド Azure AD 参加済みデバイス
 
@@ -87,25 +88,30 @@ ms.locfileid: "50092306"
 
 詳細については、[Azure Active Directory のデバイス ベースの条件付きアクセス ポリシーの設定](require-managed-devices.md)を参照してください。
 
-
-
-
-
 ### <a name="approved-client-app"></a>承認されたクライアント アプリ
 
 従業員は個人的な作業と業務上の作業のどちらにもモバイル デバイスを使用します。このため、会社のデータにアクセスするデバイスが自社で管理しているかどうかにかかわらず、会社のデータを保護できる必要があります。
 [Intune のアプリ保護ポリシー](https://docs.microsoft.com/intune/app-protection-policy)を使うと、使用しているモバイル デバイス管理 (MDM) ソリューションを問わず、会社のデータを守ることができます。
 
-
 承認されたクライアント アプリを使用する方法では、クラウド アプリにアクセスしようとするクライアント アプリに対して [Intune のアプリ保護ポリシー](https://docs.microsoft.com/intune/app-protection-policy) のサポートを要求できます。 たとえば、Exchange Online に対するアクセスを Outlook アプリのみに制限することができます。 承認されたクライアント アプリを要求する条件付きアクセス ポリシーは、[アプリベースの条件付きアクセス ポリシー](app-based-conditional-access.md)とも呼ばれます。 サポートされている承認されたクライアント アプリの一覧は、[承認されたクライアント アプリの要件](technical-reference.md#approved-client-app-requirement)に関するセクションを参照してください。
+
+### <a name="app-protection-policy-preview"></a>アプリ保護ポリシー (プレビュー)
+
+従業員は個人的な作業と業務上の作業のどちらにもモバイル デバイスを使用します。このため、会社のデータにアクセスするデバイスが自社で管理しているかどうかにかかわらず、会社のデータを保護できる必要があります。
+[Intune のアプリ保護ポリシー](https://docs.microsoft.com/intune/app-protection-policy)を使うと、使用しているモバイル デバイス管理 (MDM) ソリューションを問わず、会社のデータを守ることができます。
+
+アプリ保護ポリシーによって、[Intune アプリ保護ポリシー](https://docs.microsoft.com/intune/app-protection-policy)を受け取ったことを Azure AD に報告したクライアント アプリケーションにアクセスを制限できます。 たとえば、Exchange Online に対するアクセスを、Intune のアプリ保護ポリシーがある Outlook アプリのみに制限することができます。 アプリ保護ポリシーを必要とする条件付きアクセス ポリシーは、[アプリ保護ベースの条件付きアクセス ポリシー](app-protection-based-conditional-access.md)とも呼ばれます。 
+
+アプリケーションをポリシー保護とマークするには、その前にデバイスを Azure AD に登録する必要があります。
+
+サポートされているポリシー保護されたクライアント アプリの一覧については、[アプリの保護ポリシーの要件](technical-reference.md#app-protection-policy-requirement)に関するセクションを参照してください。
 
 
 ### <a name="terms-of-use"></a>使用条件
 
-テナント内のユーザーが、リソースへのアクセスを許可される前に使用条件に同意することを要求できます。 管理者として、PDF ドキュメントをアップロードすることによって使用条件を構成およびカスタマイズできます。 ユーザーがこのコントロールのスコープに入った場合、アプリケーションへのアクセスは使用条件が同意された場合にのみ許可されます。 
+テナント内のユーザーが、リソースへのアクセスを許可される前に使用条件に同意することを要求できます。 管理者として、PDF ドキュメントをアップロードすることによって使用条件を構成およびカスタマイズできます。 ユーザーがこのコントロールのスコープに入った場合、アプリケーションへのアクセスは使用条件が同意された場合にのみ許可されます。
 
-
-### <a name="custom-controls-preview"></a>カスタム コントロール (プレビュー) 
+### <a name="custom-controls-preview"></a>カスタム コントロール (プレビュー)
 
 Azure Active Directory の外部にあるさらなる要件を満たすためにユーザーを互換性のあるサービスにリダイレクトする条件付きアクセスのカスタム コントロールを作成できます。 これにより、特定の外部の多要素認証および検証プロバイダーを使用して、条件付きアクセスの規則を適用したり、独自のカスタム サービスを構築したりできます。 このコントロールを満たすために、ユーザーのブラウザーは外部サービスにリダイレクトされ、すべての必要な認証または検証アクティビティを実行してから、元の Azure Active Directory にリダイレクトされます。 ユーザーが正常に認証または検証された場合、そのユーザーは条件付きアクセス フロー内にとどまります。 
 
@@ -121,6 +127,9 @@ Azure Active Directory の外部にあるさらなる要件を満たすために
 - [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
 - [Ping Identity](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
 - RSA
+- [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
+- [Silverfort](https://www.silverfort.io/company/using-silverfort-mfa-with-azure-active-directory/)
+- [Symantec VIP](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
 - [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
 
 これらのサービスの詳細については、プロバイダーに直接問い合せてください。
@@ -137,9 +146,7 @@ Azure Active Directory の外部にあるさらなる要件を満たすために
 
 **[New custom control] \(新しいカスタム コントロール)** をクリックし、コントロールの JSON データ用のテキスト ボックスを含むブレードを開きます。  
 
-
 ![コントロール](./media/controls/81.png)
-
 
 ### <a name="deleting-custom-controls"></a>カスタム コントロールの削除
 
@@ -155,9 +162,6 @@ Azure Active Directory の外部にあるさらなる要件を満たすために
 
 カスタム コントロールを編集するには、現在のコントロールを削除し、更新された情報で新しいコントロールを作成する必要があります。
 
-
-
-
 ## <a name="session-controls"></a>セッション コントロール
 
 セッション コントロールでは、クラウド アプリ内のエクスペリエンスを制限できます。 セッション コントロールは、クラウド アプリによって適用され、Azure AD がアプリに提供するセッションに関する追加情報に依存します。
@@ -170,15 +174,12 @@ Azure Active Directory の外部にあるさらなる要件を満たすために
 
 詳細については、次を参照してください。
 
-- [SharePoint Online での制限付きアクセスの有効化](https://aka.ms/spolimitedaccessdocs) 
+- [SharePoint Online での制限付きアクセスの有効化](https://aka.ms/spolimitedaccessdocs)
 
 - [Exchange Online での制限付きアクセスの有効化](https://aka.ms/owalimitedaccess)
-
-
-
 
 ## <a name="next-steps"></a>次の手順
 
 - 条件付きアクセス ポリシーの構成方法を把握するには、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」を参照してください。
 
-- 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」を参照してください。 
+- 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」を参照してください。

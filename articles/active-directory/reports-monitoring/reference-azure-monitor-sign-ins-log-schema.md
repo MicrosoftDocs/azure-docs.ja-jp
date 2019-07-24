@@ -1,10 +1,10 @@
 ---
-title: Azure Monitor の Azure Active Directory サインイン ログ スキーマを解釈する (プレビュー) | Microsoft Docs
+title: Azure Monitor (プレビュー) の Azure Active Directory サインイン ログ スキーマ | Microsoft Docs
 description: Azure Monitor (プレビュー) で使用する Azure AD サインイン ログ スキーマについて説明します
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4a610780d11452a8207a1108e4469bc9de62ecb8
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 78ce1de5b5b9ff46efcc9e7faed9aa147b53211a
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51620920"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439058"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor-preview"></a>Azure Monitor (プレビュー) での Azure AD サインイン ログ スキーマを解釈する
 
@@ -153,7 +154,7 @@ ms.locfileid: "51620920"
 | フィールド名 | 説明 |
 |------------|-------------|
 | Time | 日付と時刻 (UTC)。 |
-| resourceId | この値はマップされていないため、このフィールドを無視しても問題ありません。  |
+| ResourceId | この値はマップされていないため、このフィールドを無視しても問題ありません。  |
 | OperationName | サインインの場合、この値は常に *Sign-in activity* です。 |
 | OperationVersion | クライアントによって要求された REST API のバージョン。 |
 | Category | サインインの場合、この値は常に *SignIn* です。 | 
@@ -172,4 +173,4 @@ ms.locfileid: "51620920"
 ## <a name="next-steps"></a>次の手順
 
 * [Azure Monitor で監査ログのスキーマを解釈する](reference-azure-monitor-audit-log-schema.md)
-* [Azure 診断ログの詳細を確認する](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+* [Azure 診断ログの詳細を確認する](../../azure-monitor/platform/diagnostic-logs-overview.md)

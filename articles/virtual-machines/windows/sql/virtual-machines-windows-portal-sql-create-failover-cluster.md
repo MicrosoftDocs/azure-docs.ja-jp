@@ -3,7 +3,7 @@ title: SQL Server FCI - Azure Virtual Machines | Microsoft Docs
 description: この記事では、Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを作成する方法について説明します。
 services: virtual-machines
 documentationCenter: na
-authors: MikeRayMSFT
+author: MikeRayMSFT
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 382027782044a5a1011976560b7460047544f521
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3bb829e7cc99ee0d6e2d02f7ed3880d6c0226123
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237966"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486320"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを構成します。
 
@@ -71,13 +71,15 @@ SQL Server のライセンスに関する完全な情報については、[価�
 ### <a name="what-to-know"></a>必要な知識
 次のテクノロジについて、運用上の理解が必要です。
 
-- [Windows クラスター テクノロジ](https://technet.microsoft.com/library/hh831579.aspx)
-- [SQL Server フェールオーバー クラスター インスタンス](https://msdn.microsoft.com/library/ms189134.aspx)
+- [Windows クラスター テクノロジ](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
+- [SQL Server フェールオーバー クラスター インスタンス](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+
+1 つの重要な相違点として、Azure IaaS VM ゲスト フェールオーバー クラスターでは、サーバー (クラスター ノード) ごとに 1 つの NIC、および 1 つのサブネットを使用することをお勧めします。 Azure ネットワークは物理的な冗長性を備えているので、Azure IaaS VM ゲスト クラスターで NIC とサブネットを追加する必要はありません。 クラスター検証レポートでは、1 つのネットワークでしかノードに到達できないという警告が出ますが、Azure IaaS VM ゲスト フェールオーバー クラスターではこの警告を無視しても安全です。 
 
 さらに、次のテクノロジの概要について理解しておくことが必要です。
 
 - [Windows Server 2016 の記憶域スペース ダイレクトを使用したハイパー コンバージド ソリューション](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
-- [Azure リソース グループ](../../../azure-resource-manager/resource-group-portal.md)
+- [Azure リソース グループ](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
 > 現時点で、Azure 上の SQL Server FCI では [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)がサポートされていません。 FCI に参加している VM からこの拡張機能をアンインストールすることをお勧めします。 この拡張機能では、自動バックアップや自動修正などの機能のほか、ポータルの SQL 用の機能の一部がサポートされます。 エージェントをアンインストールすると、これらの機能が SQL VM で動作しなくなります。
@@ -97,9 +99,9 @@ SQL Server のライセンスに関する完全な情報については、[価�
 
 これらの前提条件が整ったら、フェールオーバー クラスターの構築を開始できます。 最初の手順で、仮想マシンを作成します。
 
-## <a name="step-1-create-virtual-machines"></a>手順 1. 仮想マシンを作成する
+## <a name="step-1-create-virtual-machines"></a>手順 1:仮想マシンを作成する
 
-1. お使いのサブスクリプションで、[Azure Portal](http://portal.azure.com) にログインします。
+1. お使いのサブスクリプションで、[Azure Portal](https://portal.azure.com) にログインします。
 
 1. [Azure 可用性セットを作成します](../tutorial-availability-sets.md)。
 
@@ -111,10 +113,10 @@ SQL Server のライセンスに関する完全な情報については、[価�
    - **[可用性セット]** をクリックします。
    - **Create** をクリックしてください。
    - **[可用性セットの作成]** ブレードで、次の値を設定します。
-      - **[名前]**: 可用性セットの名前。
-      - **[サブスクリプション]**: Azure のサブスクリプション。
-      - **[リソース グループ]**: 既存のグループを使用する場合は、**[既存のものを使用]** をクリックし、ドロップダウン リストからグループを選択します。 または、**[新規作成]** を選択し、グループの名前を入力します。
-      - **[場所]**: 仮想マシンを作成する予定の場所を設定します。
+      - **[名前]**:可用性セットの名前。
+      - **サブスクリプション**:Azure サブスクリプション。
+      - **[リソース グループ]**:既存のグループを使用する場合は、**[既存のものを使用]** をクリックし、ドロップダウン リストからグループを選択します。 または、**[新規作成]** を選択し、グループの名前を入力します。
+      - **[場所]**:仮想マシンを作成する予定の場所を設定します。
       - **[障害ドメイン]**: 既定値 (3) を使用します。
       - **[更新ドメイン]**: 既定値 (5) を使用します。
    - **[作成]** をクリックして可用性セットを作成します。
@@ -178,7 +180,7 @@ SQL Server のライセンスに関する完全な情報については、[価�
    | SQL Server | 1433 | SQL Server の既定のインスタンスの通常のポートです。 ギャラリーからイメージを使用した場合、このポートが自動的に開きます。
    | 正常性プローブ | 59999 | 開いている任意の TCP ポートです。 後の手順で、このポートを使用するようにロード バランサーの[正常性プローブ](#probe)とクラスターを構成します。  
 
-1. 仮想マシンにストレージを追加します。 詳細については、[ストレージの追加](../premium-storage.md)に関するページを参照してください。
+1. 仮想マシンにストレージを追加します。 詳細については、[ストレージの追加](../disks-types.md)に関するページを参照してください。
 
    両方の仮想マシンに、少なくとも 2 つのデータ ディスクが必要です。
 
@@ -186,7 +188,7 @@ SQL Server のライセンスに関する完全な情報については、[価�
       >[!NOTE]
       >NTFS でフォーマットされたディスクを接続する場合、ディスクの適格性チェックをしない S2D しか有効にできません。  
 
-   最小で 2 つの Premium Storage (SSD ディスク) を各 VM に接続します。 少なくとも P30 (1 TB) のディスクをお勧めします。
+   最小で 2 つの Premium SSD を各 VM に接続します。 少なくとも P30 (1 TB) のディスクをお勧めします。
 
    [ホスト キャッシュ] を **[読み取り専用]** に設定します。
 
@@ -196,7 +198,7 @@ SQL Server のライセンスに関する完全な情報については、[価�
 
 仮想マシンを作成して構成したら、フェールオーバー クラスターを構成できます。
 
-## <a name="step-2-configure-the-windows-failover-cluster-with-s2d"></a>手順 2. S2D が有効な Windows フェールオーバー クラスターを構成する
+## <a name="step-2-configure-the-windows-failover-cluster-with-s2d"></a>手順 2:S2D が有効な Windows フェールオーバー クラスターを構成する
 
 次に、S2D が有効なフェールオーバー クラスターを構成します。 この手順では、次のサブ手順を実行します。
 
@@ -220,7 +222,7 @@ SQL Server のライセンスに関する完全な情報については、[価�
 
    PowerShell を使用したフェールオーバー クラスタリング機能をインストールするには、いずれかの仮想マシン上の管理者 PowerShell セッションから次のスクリプトを実行します。
 
-   ```PowerShell
+   ```powershell
    $nodes = ("<node1>","<node2>")
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
@@ -251,7 +253,7 @@ UI を使用してクラスターを検証するには、いずれかの仮想�
 
 PowerShell を使用してクラスターを検証するには、いずれかの仮想マシンの管理者 PowerShell セッションから次のスクリプトを実行します。
 
-   ```PowerShell
+   ```powershell
    Test-Cluster –Node ("<node1>","<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
    ```
 
@@ -268,7 +270,7 @@ PowerShell を使用してクラスターを検証するには、いずれかの
 
 次の PowerShell を実行すると、フェールオーバー クラスターが作成されます。 ノード名 (仮想マシン名) と、Azure VNET の使用可能な IP アドレスでスクリプトを更新してください。
 
-```PowerShell
+```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
 ```   
 
@@ -292,7 +294,7 @@ S2D 用のディスクは、空で、パーティションやその他のデー�
 
    次の PowerShell を実行すると、記憶域スペース ダイレクトが有効化されます。  
 
-   ```PowerShell
+   ```powershell
    Enable-ClusterS2D
    ```
 
@@ -302,7 +304,7 @@ S2D 用のディスクは、空で、パーティションやその他のデー�
 
    S2D の機能の 1 つに、ユーザーが有効化した場合に、記憶域プールを自動的に作成するというものがあります。 これでボリュームを作成する準備が整いました。 PowerShell コマンドレット `New-Volume` は、書式設定、クラスターへの追加、クラスターの共有ボリューム (CSV) 作成などのボリューム作成プロセスを自動化するものです。 次の例では、800 ギガバイト (GB) の CSV を作成します。
 
-   ```PowerShell
+   ```powershell
    New-Volume -StoragePoolFriendlyName S2D* -FriendlyName VDisk01 -FileSystem CSVFS_REFS -Size 800GB
    ```   
 
@@ -312,11 +314,11 @@ S2D 用のディスクは、空で、パーティションやその他のデー�
 
    ![ClusterSharedVolume](./media/virtual-machines-windows-portal-sql-create-failover-cluster/15-cluster-shared-volume.png)
 
-## <a name="step-3-test-failover-cluster-failover"></a>手順 3. クラスター フェールオーバーのテスト フェールオーバーを実行する
+## <a name="step-3-test-failover-cluster-failover"></a>手順 3:クラスター フェールオーバーのテスト フェールオーバーを実行する
 
 フェールオーバー クラスター マネージャーで、ストレージ リソースを他のクラスター ノードに移動できることを確認します。 **フェールオーバー クラスター マネージャー**を使用してフェールオーバー クラスターに接続し、ノード間でストレージを移動できれば、FCI を構成することができます。
 
-## <a name="step-4-create-sql-server-fci"></a>手順 4. SQL Server FCI を作成する
+## <a name="step-4-create-sql-server-fci"></a>手順 4:SQL Server FCI を作成する
 
 フェールオーバー クラスターと、ストレージを含むすべてのクラスター コンポーネントを構成したら、SQL Server FCI を作成できます。
 
@@ -345,7 +347,7 @@ S2D 用のディスクは、空で、パーティションやその他のデー�
    >[!NOTE]
    >SQL Server で Azure Marketplace ギャラリー イメージを使用した場合、SQL Server のツールはイメージに含まれています。 このイメージを使用しなかった場合、SQL Server のツールは別途インストールしてください。 「[SQL Server Management Studio (SSMS) のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」を参照してください。
 
-## <a name="step-5-create-azure-load-balancer"></a>手順 5. Azure ロード バランサーを作成する
+## <a name="step-5-create-azure-load-balancer"></a>手順 5:Azure Load Balancer を作成する
 
 Azure 仮想マシンでは、クラスターは、一度に 1 つのクラスター ノードに存在する必要がある IP アドレスを保持するためにロード バランサーを使用します。 このソリューションでは、ロード バランサーは SQL Server FCI の IP アドレスを保持します。
 
@@ -363,14 +365,14 @@ Azure 仮想マシンでは、クラスターは、一度に 1 つのクラス�
 
 1. 次の項目を入力して、ロード バランサーを構成します。
 
-   - **[名前]**: ロード バランサーを識別する名前。
-   - **[Type (タイプ)]**: ロード バランサーのタイプとして、パブリックまたはプライベートのどちらかを選ぶことができます。 プライベート ロード バランサーには、同じ VNET 内からアクセスできます。 プライベート ロード バランサーは、ほとんどの Azure アプリケーションで使用できます。 アプリケーションがインターネット経由で直接 SQL Server にアクセスする必要がある場合は、パブリック ロード バランサーを使用します。
+   - **[名前]**:ロード バランサーを識別する名前。
+   - **[タイプ]**:ロード バランサーのタイプとして、パブリックまたはプライベートのどちらかを選ぶことができます。 プライベート ロード バランサーには、同じ VNET 内からアクセスできます。 プライベート ロード バランサーは、ほとんどの Azure アプリケーションで使用できます。 アプリケーションがインターネット経由で直接 SQL Server にアクセスする必要がある場合は、パブリック ロード バランサーを使用します。
    - **[仮想ネットワーク]**: 仮想マシンと同じネットワーク。
-   - **[サブネット]**: 仮想マシンと同じサブネット。
-   - **[プライベート IP アドレス]**: SQL Server FCI クラスターのネットワーク リソースに割り当てたものと同じ IP アドレス。
-   - **[サブスクリプション]**: Azure のサブスクリプション。
-   - **[リソース グループ]**: 仮想マシンと同じリソース グループを使用します。
-   - **[場所]**: 仮想マシンと同じ Azure の場所を使用します。
+   - **サブネット**:仮想マシンと同じサブネット。
+   - **[プライベート IP アドレス]**:SQL Server FCI クラスターのネットワーク リソースに割り当てたものと同じ IP アドレス。
+   - **[サブスクリプション]**: Azure サブスクリプション。
+   - **リソース グループ**:仮想マシンと同じリソース グループを使用します。
+   - **[場所]**:仮想マシンと同じ Azure の場所を使用します。
    次の図を参照してください。
 
    ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)
@@ -395,11 +397,11 @@ Azure 仮想マシンでは、クラスターは、一度に 1 つのクラス�
 
 1. **[Add health probe (正常性プローブの追加)]** ブレードで、<a name="probe"></a>正常性プローブのパラメーターを設定します。
 
-   - **[名前]**: 正常性プローブの名前。
-   - **[プロトコル]**: TCP。
-   - **[ポート]**: 使用可能な TCP ポートに設定します。 このポートには、開かれたファイアウォール ポートが必要です。 ファイアウォールで正常性プローブに設定したのと[同じポート](#ports)を使用します。
-   - **[間隔]**: 5 秒。
-   - **[異常しきい値]**: 連続エラー数 2。
+   - **[名前]**:正常性プローブの名前。
+   - **プロトコル**:TCP
+   - **ポート**:使用可能な TCP ポートに設定します。 このポートには、開かれたファイアウォール ポートが必要です。 ファイアウォールで正常性プローブに設定したのと[同じポート](#ports)を使用します。
+   - **間隔**: 5 秒
+   - **[異常のしきい値]**: 連続エラー数 2。
 
 1. [OK] をクリックします。
 
@@ -411,25 +413,25 @@ Azure 仮想マシンでは、クラスターは、一度に 1 つのクラス�
 
 1. 次のように負荷分散規則のパラメーターを設定します。
 
-   - **[名前]**: 負荷分散規則の名前。
-   - **[Frontend IP address (フロントエンド IP アドレス)]**: SQL Server FCI クラスターのネットワーク リソースの IP アドレスを使用します。
-   - **[ポート]**: SQL Server FCI の TCP ポートに設定します。 既定のインスタンス ポートは 1433 です。
-   - **[バックエンド ポート]**: この値には、**[フローティング IP (ダイレクト サーバー リターン)]** を有効にしたときの **[ポート]** の値と同じポートを使用します。
+   - **[名前]**:負荷分散規則の名前。
+   - **[フロントエンド IP アドレス]**: SQL Server FCI クラスターのネットワーク リソースの IP アドレスを使用します。
+   - **ポート**:SQL Server FCI の TCP ポートに設定します。 既定のインスタンス ポートは 1433 です。
+   - **[バックエンド ポート]**:この値には、**[フローティング IP (ダイレクト サーバー リターン)]** を有効にしたときの **[ポート]** の値と同じポートを使用します。
    - **[バックエンド プール]**: 先ほど構成したバックエンド プール名を使用します。
-   - **[Health probe (正常性のプローブ)]**: 先ほど構成した正常性プローブを使用します。
+   - **[正常性プローブ]**: 先ほど構成した正常性プローブを使用します。
    - **[セッション永続化]**: なし。
-   - **[アイドル タイムアウト (分)]**: 4。
-   - **[フローティング IP (ダイレクト サーバー リターン)]**: 有効にします。
+   - **[アイドル タイムアウト (分)]**: 4.
+   - **[フローティング IP]\(ダイレクト サーバー リターン\)**: Enabled
 
 1. Click **OK**.
 
-## <a name="step-6-configure-cluster-for-probe"></a>手順 6. プローブのクラスターを構成する
+## <a name="step-6-configure-cluster-for-probe"></a>手順 6:プローブのクラスターを構成する
 
 PowerShell でクラスターのプローブ ポート パラメーターを設定します。
 
 クラスターのプローブ ポート パラメーターを設定するには、使用環境の値を使用して、次のスクリプトで変数を更新します。 スクリプトから山かっこの `<>` を削除します。 
 
-   ```PowerShell
+   ```powershell
    $ClusterNetworkName = "<Cluster Network Name>"
    $IPResourceName = "<SQL Server FCI IP Address Resource Name>" 
    $ILBIP = "<n.n.n.n>" 
@@ -442,24 +444,24 @@ PowerShell でクラスターのプローブ ポート パラメーターを設�
 
 前のスクリプトで、環境の値を設定します。 次の一覧では、値について説明します。
 
-   - `<Cluster Network Name>`: ネットワークの Windows Server フェールオーバー クラスターの名前。 **[フェールオーバー クラスター マネージャー]** > **[ネットワーク]** で、ネットワークを右クリックして **[プロパティ]** をクリックします。 正しい値は **[全般]** タブの **[名前]** にあります。 
+   - `<Cluster Network Name>`:ネットワークの Windows Server フェールオーバー クラスターの名前。 **[フェールオーバー クラスター マネージャー]** > **[ネットワーク]** で、ネットワークを右クリックして **[プロパティ]** をクリックします。 正しい値は **[全般]** タブの **[名前]** にあります。 
 
-   - `<SQL Server FCI IP Address Resource Name>`: SQL Server FCI IP アドレス リソースの名前。 **[フェールオーバー クラスター マネージャー]** > **[役割]** で、SQL Server FCI ロールの **[サーバー名]** の下にある IP アドレス リソースを右クリックして **[プロパティ]** をクリックします。 正しい値は **[全般]** タブの **[名前]** にあります。 
+   - `<SQL Server FCI IP Address Resource Name>`:SQL Server FCI IP アドレス リソースの名前。 **[フェールオーバー クラスター マネージャー]** > **[役割]** で、SQL Server FCI ロールの **[サーバー名]** の下にある IP アドレス リソースを右クリックして **[プロパティ]** をクリックします。 正しい値は **[全般]** タブの **[名前]** にあります。 
 
-   - `<ILBIP>`: ILB の IP アドレス。 このアドレスは、ILB のフロント エンド アドレスとして Azure Portal で構成されます。 これは、SQL Server FCI の IP アドレスでもあります。 **[フェールオーバー クラスター マネージャー]** の `<SQL Server FCI IP Address Resource Name>` がある同じプロパティ ページで見つけることができます。  
+   - `<ILBIP>`:ILB の IP アドレス。 このアドレスは、ILB のフロント エンド アドレスとして Azure Portal で構成されます。 これは、SQL Server FCI の IP アドレスでもあります。 **[フェールオーバー クラスター マネージャー]** の `<SQL Server FCI IP Address Resource Name>` がある同じプロパティ ページで見つけることができます。  
 
-   - `<nnnnn>`: ロード バランサーの正常性プローブで構成したプローブ ポートです。 未使用の TCP ポートが有効です。 
+   - `<nnnnn>`:ロード バランサーの正常性プローブで構成したプローブ ポートです。 未使用の TCP ポートが有効です。 
 
 >[!IMPORTANT]
 >クラスター パラメーターのサブネット マスクは、TCP IP ブロードキャスト アドレス (`255.255.255.255`) である必要があります。
 
 クラスターのプローブを設定すると、PowerShell にすべてのクラスター パラメーターが表示されます。 次のスクリプトを実行します。
 
-   ```PowerShell
+   ```powershell
    Get-ClusterResource $IPResourceName | Get-ClusterParameter 
   ```
 
-## <a name="step-7-test-fci-failover"></a>手順 7. FCI フェールオーバーをテストする
+## <a name="step-7-test-fci-failover"></a>手順 7:FCI フェールオーバーをテストする
 
 FCI のフェールオーバーをテストして、クラスターの機能を検証します。 次の手順を実行します。
 

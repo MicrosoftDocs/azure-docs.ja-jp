@@ -1,0 +1,65 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 7b7305a84ac8600629ce27551c0243c427082e5e
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58473386"
+documentType: LandingData
+title: Anomaly Detector API のドキュメント
+metadata:
+  title: Anomaly Detector API - チュートリアル、クイック スタート、API リファレンス - Azure Cognitive Services | Microsoft Docs
+  description: Anomaly Detector API を使用すると、データを経時的に監視し、機械学習により異常を検出できます。 分量、業種、シナリオを問わず、データに関する分析情報が得られます。
+  services: cognitive-services
+  author: aahill
+  manager: cgronlun
+  layout: LandingPage
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03/26/2019
+  ms.author: aahi
+abstract:
+  description: Anomaly Detector API を使用すると、お客様のアプリに簡単に異常検出機能を組み込むことができるので、ユーザーが問題を迅速に特定し、損害と影響を最小限に抑えるのに役立ちます。 機械学習に関する経験は不要です。 1 回の API 呼び出しで、事前にトレーニング済みの AI モデルをアクティブにすることができます。このモデルは、種類や量を問わずあらゆる時系列データを取り込めるほか、データに合わせて最適な異常検出モデルを選択して高い精度を実現したり、インシデントの発生後すぐに自動で通知したりすることもできます。 サービスは、あらゆる規模の異常を検出できるようにカスタマイズできます。  ビジネス インシデントの特定、IoT デバイスのトラフィック監視、不正や市場の変化への対応などには、Anomaly Detector をぜひご利用ください。
+sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/anomaly-detector/overview
+      html: <p>Anomaly Detector API について学びましょう</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Anomaly Detector API とは
+    - href: /azure/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices
+      html: <p>この API に関するベスト プラクティスを活用し、異常検出の結果を最適化しましょう</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Anomaly Detector API の利用に関するベスト プラクティス
+    - href: /azure/cognitive-services/anomaly-detector/how-to/identify-anomalies
+      html: <p>異常検出の感度の調整方法や、さまざまな検出モードの利用などについて説明します。</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Anomaly Detection API の利用
+- title: 5 分間のクイック スタート
+  items:
+  - type: paragraph
+    text: 時系列データの異常検出に利用できる言語は次のとおりです。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/logo_Csharp.svg
+      href: quickstarts/detect-data-anomalies-csharp
+      text: C#
+    - image:
+        src: media/logo_Java.svg
+      href: quickstarts/detect-data-anomalies-java
+      text: Java
+    - image:
+        src: media/logo_python.svg
+      href: quickstarts/detect-data-anomalies-python
+      text: Python

@@ -1,6 +1,6 @@
 ---
-title: 暗号化されたストレージ アカウントをデプロイするための Azure Resource Manager テンプレートの作成 | Microsoft Docs
-description: Visual Studio Code を使用して、暗号化されたストレージ アカウントをデプロイするためのテンプレートを作成します。
+title: Azure Resource Manager テンプレートのリファレンスを活用する | Microsoft Docs
+description: Azure Resource Manager テンプレートのリファレンスを活用して、暗号化されたストレージ アカウントをデプロイするためのテンプレートを作成します。
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -10,21 +10,24 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6c75c0ce7d12f65878ec8cde0f265022c7beeb29
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.custom: seodec18
+ms.openlocfilehash: 68199083369018cab1c9f83dd6781653a8cae37c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613513"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57849297"
 ---
-# <a name="tutorial-deploy-an-encrypted-azure-storage-account-with-resource-manager-template"></a>チュートリアル: Resource Manager テンプレートを使用して、暗号化された Azure ストレージ アカウントをデプロイする
+# <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>チュートリアル: Azure Resource Manager テンプレートのリファレンスを活用する
 
 テンプレート スキーマ情報を見つける方法のほか、その情報を使用して Azure Resource Manager テンプレートを作成する方法について説明します。
 
 このチュートリアルでは、Azure クイック スタート テンプレートから入手したベース テンプレートを使用します。 テンプレート リファレンス ドキュメントを使用し、テンプレートをカスタマイズして、暗号化されたストレージ アカウントを作成します。
+
+![Resource Manager テンプレートのリファレンスによる暗号化されたストレージ アカウントのデプロイ](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -75,11 +78,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="find-the-template-reference"></a>テンプレート リファレンスの検索
 
-1. [Azure テンプレート](https://docs.microsoft.com/azure/templates/)を参照します。
-2. **[タイトルでフィルター処理します]** で、**ストレージ アカウント**を入力します。
-3. 次のスクリーンショットに示すように、**Reference/Template reference/Storage/Storage Accounts** を選択します。
+1. [Azure テンプレート リファレンス](https://docs.microsoft.com/azure/templates/)を参照します。
+2. **[タイトルでフィルター処理します]** ボックスで、**ストレージ アカウント**を入力します。
+3. 次のスクリーンショットに示すように、**Reference/Template reference/Storage/&lt;Version>/Storage Accounts** を選択します。
 
     ![Resource Manager テンプレート参照ストレージ アカウント](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
+
+    選択するべきバージョンがわからない場合は、最新バージョンを使用します。
 
 4. 暗号化関連の定義情報を見つけます。  
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 8/22/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: 9bf4c25b416edf86d29c27bcb19901bf43073bb4
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: f5cfa3de962c51ac7ff43d9b83bdea9f408f5bcf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616191"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097425"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server を Azure にバックアップする
 
@@ -31,7 +31,7 @@ Azure Backup を利用し、破損、攻撃、災害から Windows Server を守
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ( http://portal.azure.com ) にサインインします。
+Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
@@ -88,11 +88,11 @@ Microsoft Azure Recovery Services (MARS) エージェントは、Windows Server 
 
 1. ダウンロードした **MARSagentinstaller.exe** を見つけ、ダブルクリックします。
 2. **[Microsoft Azure Recovery Services エージェント セットアップ ウィザード]** が表示されます。 ウィザードを進めながら次の情報を入力し、**[登録]** をクリックします。
-    - インストールとキャッシュ フォルダーの場所。
-    - プロキシ サーバーを使用してインターネットに接続する場合、プロキシ サーバーの情報。
-    - 認証済みのプロキシを使用する場合、ユーザー名とパスワードの詳細。
+   - インストールとキャッシュ フォルダーの場所。
+   - プロキシ サーバーを使用してインターネットに接続する場合、プロキシ サーバーの情報。
+   - 認証済みのプロキシを使用する場合、ユーザー名とパスワードの詳細。
 
-    ![[Download Agent for Windows Server or Windows Client]](./media/tutorial-backup-windows-server-to-azure/mars-installer.png) 
+     ![[Download Agent for Windows Server or Windows Client]](./media/tutorial-backup-windows-server-to-azure/mars-installer.png) 
 
 3. ウィザードの終わりで、**[登録処理を続行]** をクリックし、前の手順でダウンロードした**コンテナー資格情報**を入力します。
  

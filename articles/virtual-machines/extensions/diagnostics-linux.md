@@ -7,14 +7,14 @@ manager: sankalpsoni
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 05/09/2017
+ms.date: 12/13/2018
 ms.author: agaiha
-ms.openlocfilehash: ac09754876d52798add58d9e0752d776ca29f247
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: af5d4e21bb5b41df4bcb88dc2f9eb7901fcaa597
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994804"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997969"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -38,9 +38,7 @@ Linux Diagnostic Extension は、Microsoft Azure で実行中の Linux VM の正
 
 ## <a name="installing-the-extension-in-your-vm"></a>VM への拡張機能のインストール
 
-この拡張機能を有効にするには、Azure PowerShell コマンドレット、Azure CLI スクリプト、または Azure 展開テンプレートを使用します。 詳細については、[拡張機能](features-linux.md)に関するページをご覧ください。
-
-Azure ポータルを使用して、LAD 3.0 を有効化し、構成することはできません。 代わりに、Azure ポータルはバージョン 2.3 をインストールし、構成します。 Azure ポータルのグラフとアラートは、両方のバージョンの拡張機能のデータを処理します。
+この拡張機能は、Azure PowerShell コマンドレット、Azure CLI スクリプト、ARM テンプレート、Azure portal のいずれかを使用して有効にできます。 詳細については、[拡張機能](features-linux.md)に関するページをご覧ください。
 
 このインストール手順と[ダウンロード可能なサンプル構成](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json)により、LAD 3.0 は次のように構成されます。
 
@@ -318,9 +316,9 @@ type | メトリックの実際のプロバイダーを識別します。
 class | "counter" とともに、プロバイダーの名前空間内の特定のメトリックを識別します。
 counter | "class" とともに、プロバイダーの名前空間内の特定のメトリックを識別します。
 counterSpecifier | Azure Metrics 名前空間内で特定のメトリックを識別します。
-condition | (省略可能) メトリックを適用するオブジェクトの特定のインスタンスを選択するか、そのオブジェクトのすべてのインスタンスの集計を選択します。 詳細については、[`builtin` メトリックの定義](#metrics-supported-by-builtin)を参照してください。
+condition | (省略可能) メトリックを適用するオブジェクトの特定のインスタンスを選択するか、そのオブジェクトのすべてのインスタンスの集計を選択します。 詳細については、`builtin` メトリックの定義を参照してください。
 sampleRate | このメトリックの生のサンプルが収集されるレートを設定する IS 8601 間隔。 設定されていない場合、収集間隔は [sampleRateInSeconds](#ladcfg) 値によって設定されます。 サポートされている最小サンプル レートは 15 秒 (PT15S) です。
-unit | "Count"、"Bytes"、"Seconds"、"Percent"、"CountPerSecond"、"BytesPerSecond"、"Millisecond" のいずれかの文字列である必要があります。 メトリックの単位を定義します。 収集されたデータのコンシューマーは、収集されたデータ値がこの単位に一致することを期待しています。 LAD はこのフィールドを無視します。
+unit | 値は、"Count"、"Bytes"、"Seconds"、"Percent"、"CountPerSecond"、"BytesPerSecond"、"Millisecond" のいずれかの文字列である必要があります。 メトリックの単位を定義します。 収集されたデータのコンシューマーは、収集されたデータ値がこの単位に一致することを期待しています。 LAD はこのフィールドを無視します。
 displayName | Azure メトリックスのこのデータに添付されるラベル (関連付けられているロケール設定で指定された言語で記述) です。 LAD はこのフィールドを無視します。
 
 counterSpecifier は任意の識別子です。 Azure ポータルのチャート作成およびアラート通知機能のようなメトリックのコンシューマーは、メトリックまたはメトリックのインスタンスを識別する "キー" として counterSpecifier を使用します。 `builtin` メトリックについては、`/builtin/` で始まる counterSpecifier 値を使用することをお勧めします。 メトリックの特定のインスタンスを収集する場合は、counterSpecifier 値にインスタンスの識別子を添付することをお勧めします。 次に例をいくつか示します。
@@ -359,7 +357,7 @@ syslogEventConfiguration コレクションには、対象の syslog ファシ�
 
 要素 | 値
 ------- | -----
-sinks | 個々のログ イベントの発行先となるシンクの名前をコンマで区切ったリスト。 syslogEventConfiguration の制限に一致するすべてのログ イベントが一覧表示されている各シンクに発行されます。 例: "EHforsyslog"
+sinks | 個々のログ イベントの発行先となるシンクの名前をコンマで区切ったリスト。 syslogEventConfiguration の制限に一致するすべてのログ イベントが一覧表示されている各シンクに発行されます。 例:"EHforsyslog"
 facilityName | syslog ファシリティ名 ("LOG\_USER" や "LOG\_LOCAL0" など)。 完全なリストについては、[syslog man ページ](http://man7.org/linux/man-pages/man3/syslog.3.html)の「facility」セクションを参照してください。
 minSeverity | Syslog の重大度レベル ("LOG\_ERR" や "LOG\_INFO" など)。 完全なリストについては、[syslog man ページ](http://man7.org/linux/man-pages/man3/syslog.3.html)の「level」セクションを参照してください。 拡張機能は、指定されたレベル以上のファシリティに送信されるイベントをキャプチャします。
 
@@ -388,7 +386,7 @@ minSeverity | Syslog の重大度レベル ("LOG\_ERR" や "LOG\_INFO" など)�
 
 要素 | 値
 ------- | -----
-namespace | (省略可能) クエリが実行される OMI 名前空間。 指定されていない場合、既定値は "root/scx" で、[System Center クロスプラットフォーム プロバイダー](http://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation)によって実装されます。
+namespace | (省略可能) クエリが実行される OMI 名前空間。 指定されていない場合、既定値は "root/scx" で、[System Center クロスプラットフォーム プロバイダー](https://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation)によって実装されます。
 query | 実行される OMI クエリ。
 table | (省略可能) 指定されたストレージ アカウントの Azure ストレージ テーブル ([保護された設定](#protected-settings)を参照してください)。
 frequency | (省略可能) クエリの実行間隔 (秒) 。 既定値は 300 (5 分) です。最小値は 15 秒です。

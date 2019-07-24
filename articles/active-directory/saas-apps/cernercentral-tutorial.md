@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Cerner Central の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Cerner Central の統合 | Microsoft Docs
 description: Azure Active Directory と Cerner Central の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: d2bc549d-d286-4679-854e-bb67c62b0475
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 400aa0a50c0f05937011adf62f76d1d96fde3fc2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c097fb045db1afe65a84a2a96dc202c57e8a449e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447542"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57975544"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>チュートリアル: Azure Active Directory と Cerner Central の統合
+# <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>チュートリアル:Azure Active Directory と Cerner Central の統合
 
 このチュートリアルでは、Cerner Central と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -86,7 +87,7 @@ Azure AD への Cerner Central の統合を構成するには、ギャラリー�
 
 Cerner Central で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Cerner Central テスト ユーザーの作成](#creating-a-cerner-central-test-user)** - Cerner Central で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -118,6 +119,7 @@ Cerner Central で Azure AD のシングル サインオンを構成してテス
     | `https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/metadata` |
     
     b. **[応答 URL]** ボックスに、次の形式で URL を入力します。
+    
     | |
     |--|
     | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso` |

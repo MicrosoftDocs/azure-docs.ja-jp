@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/21/2018
+ms.date: 03/05/2019
 ms.author: iainfou
-ms.openlocfilehash: f0097c2ba42378c66bedd614032b63c23a2483dd
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 680e087e80d3e9891e201e7cb474ccfcf7fcc70b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42447292"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538801"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために SSH を使用して Azure Kubernetes Service (AKS) クラスター ノードに接続する
 
@@ -20,21 +20,27 @@ Azure Kubernetes Service (AKS) クラスターのライフサイクル全体を�
 
 この記事では、プライベート IP アドレスを使用して、AKS ノードとの SSH 接続を作成する方法を示します。
 
+## <a name="before-you-begin"></a>開始する前に
+
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
+
+また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+
 ## <a name="add-your-public-ssh-key"></a>SSH 公開キーを追加する
 
-既定では、AKS クラスターを作成するときに SSH キーが生成されます。 AKS クラスターを作成するときに独自の SSH キーを指定しなかった場合は、AKS ノードに SSH の公開キーを追加します。 
+既定では、AKS クラスターを作成するときに SSH キーが生成されます。 AKS クラスターを作成するときに独自の SSH キーを指定しなかった場合は、AKS ノードに SSH の公開キーを追加します。
 
 AKS ノードに SSH キーを追加するには、次の手順のようにします。
 
 1. [az aks show][az-aks-show] を使用して、AKS クラスター リソースに対するリソース グループ名を取得します。 独自のコア リソース グループと AKS クラスター名を指定します。
 
-    ```azurecli
+    ```azurecli-interactive
     az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
     ```
 
 1. [az vm list][az-vm-list] コマンドを使用して、AKS クラスター リソース グループ内の VM を一覧表示します。 これらの VM はお使いの AKS ノードです。
 
-    ```azurecli
+    ```azurecli-interactive
     az vm list --resource-group MC_myResourceGroup_myAKSCluster_eastus -o table
     ```
 
@@ -48,7 +54,7 @@ AKS ノードに SSH キーを追加するには、次の手順のようにし�
 
 1. ノードに SSH キーを追加するには、[az vm user update][az-vm-user-update] コマンドを使用します。 リソース グループ名と、前の手順で取得した AKS ノードのいずれかを指定します。 AKS ノードの既定のユーザー名は *azureuser* です。 独自の SSH 公開キーの場所を入力するか (例: *~/.ssh/id_rsa.pub*)、または SSH 公開キーの内容を貼り付けます。
 
-    ```azurecli
+    ```azurecli-interactive
     az vm user update \
       --resource-group MC_myResourceGroup_myAKSCluster_eastus \
       --name aks-nodepool1-79590246-0 \
@@ -58,11 +64,11 @@ AKS ノードに SSH キーを追加するには、次の手順のようにし�
 
 ## <a name="get-the-aks-node-address"></a>AKS ノード アドレスを取得する
 
-AKS ノードは、インターネットにパブリックに公開されていません。 AKS ノードに SSH 接続するには、プライベート IP アドレスを使用します。
+AKS ノードは、インターネットにパブリックに公開されていません。 AKS ノードに SSH 接続するには、プライベート IP アドレスを使用します。 次の手順では、AKS クラスターでヘルパー ポッドを作成して、ノードのこのプライベート IP アドレスに SSH 接続できるようにします。
 
 [az vm list-ip-addresses][az-vm-list-ip-addresses] コマンドを使用して、AKS クラスター ノードのプライベート IP アドレスを表示します。 前の [az aks show][az-aks-show] のステップで取得した独自の AKS クラスター リソース グループ名を指定します。
 
-```azurecli
+```azurecli-interactive
 az vm list-ip-addresses --resource-group MC_myAKSCluster_myAKSCluster_eastus -o table
 ```
 
@@ -129,7 +135,7 @@ AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘ�
      * Support:        https://ubuntu.com/advantage
     
       Get cloud support with Ubuntu Advantage Cloud Guest:
-        http://www.ubuntu.com/business/services/cloud
+        https://www.ubuntu.com/business/services/cloud
     
     [...]
     
@@ -154,3 +160,6 @@ AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘ�
 [az-vm-list-ip-addresses]: /cli/azure/vm#az-vm-list-ip-addresses
 [view-kubelet-logs]: kubelet-logs.md
 [view-master-logs]: view-master-logs.md
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[install-azure-cli]: /cli/azure/install-azure-cli

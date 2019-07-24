@@ -2,19 +2,19 @@
 title: Azure Stream Analytics を使って IoT ソリューションをビルドする
 description: 料金所ブースを例に Stream Analytics を使った基本的な IoT ソリューションを紹介します。
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
-ms.reviewer: jasonh, sngun
+ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/21/2018
-ms.openlocfilehash: e70a1210d44e5bfec914006afaf18eff772cac47
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: f372c2a85a9a03c7ead779bd4db64722891c9a4c
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978793"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321570"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics を使って IoT ソリューションを構築する
 
@@ -33,10 +33,10 @@ ms.locfileid: "50978793"
 このソリューションを完了するには、次の前提条件を満たしておく必要があります。
 * [Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)
 
-## <a name="scenario-introduction-hello-toll"></a>シナリオの説明 - "料金所"
+## <a name="scenario-introduction-hello-toll"></a>シナリオの概要:"Hello, Toll!"
 有料道路の料金所は一般的な事象です。 世界中の多くの高速道路、橋、トンネルでそれらを目にします。 各料金所には複数の料金所ブースがあります。 手動式の料金所ブースでは、車を停めて通行料金を支払います。 自動式の料金所ブースでは、通過する車両のフロントガラスに貼り付けられた RFID カードを、各ブースの上方に設置されているセンサーがスキャンします。 車両が料金所を通過した事実は、イベント ストリームとして簡単に可視化でき、そのストリームを介して必要な処理を実行することができます。
 
-![Picture of cars at toll booths](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image1.jpg)
+![Picture of cars at toll booths](media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth.jpg)
 
 ## <a name="incoming-data"></a>受信データ
 このソリューションでは、2 つのデータ ストリームを扱います。 1 つ目のストリームは、料金所の入口と出口に設置されたセンサーによって生成されます。 2 つ目のストリームは、車両登録データを格納した静的なルックアップ データセットです。
@@ -44,7 +44,7 @@ ms.locfileid: "50978793"
 ### <a name="entry-data-stream"></a>入口データ ストリーム
 入口データ ストリームは、料金所に入る車両の情報を含んでいます。 出口データ イベントは、サンプル アプリに含まれる Web アプリから Event Hub キューにライブでストリーミングされます。
 
-| TollID | EntryTime | LicensePlate | 州 | Make | モデル | VehicleType | VehicleWeight | Toll | タグ |
+| TollID | EntryTime | LicensePlate | 状態 | Make | モデル | VehicleType | VehicleWeight | Toll | タグ |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -60,7 +60,7 @@ ms.locfileid: "50978793"
 | TollID |料金所を一意に識別する料金所 ID |
 | EntryTime |車両が料金所ブースに入った日時 (UTC) |
 | LicensePlate |車両のナンバー プレートの番号 |
-| 州 |米国の州 |
+| 状態 |米国の州 |
 | Make |自動車の製造元 |
 | モデル |自動車の型式 |
 | VehicleType |1 (乗用車) または 2 (商用車) |
@@ -113,8 +113,8 @@ ms.locfileid: "50978793"
 
 Azure クレジットを最適に利用できるよう、この記事の最後にある Azure アカウントのクリーンアップに関するセクションの手順を忘れずに実行してください。
 
-## <a name="deploy-the-sample"></a>サンプルのデプロイ 
-数回のクリックでリソース グループにまとめてデプロイできるさまざまなリソースがあります。 このソリューションの定義は、github リポジトリ ([https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp)) でホストされています。
+## <a name="deploy-the-sample"></a>サンプルのデプロイ
+数回のクリックでリソース グループにまとめてデプロイできるさまざまなリソースがあります。 このソリューションの定義は、GitHub リポジトリ ([https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp)) でホストされています。
 
 ### <a name="deploy-the-tollapp-template-in-the-azure-portal"></a>Azure Portal で TollApp テンプレートをデプロイする
 1. TollApp 環境を Azure にデプロイするには、この [TollApp Azure テンプレートの展開](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-stream-analytics%2Fmaster%2FSamples%2FTollApp%2FVSProjects%2FTollAppDeployment%2Fazuredeploy.json)に関するリンクを使用します。
@@ -123,11 +123,11 @@ Azure クレジットを最適に利用できるよう、この記事の最後�
 
 3. さまざまなリソースの課金が行われるサブスクリプションを選択します。
 
-4. 新しいリソース グループに一意の名前を指定します (例: `MyTollBooth`)。 
+4. 新しいリソース グループに一意の名前を指定します (例: `MyTollBooth`)。
 
 5. Azure の場所を選択します。
 
-6. **[間隔]** を秒数で指定します。 この値は、サンプル Web アプリで使用され、Event Hub にデータを送信する頻度を決定します。 
+6. **[間隔]** を秒数で指定します。 この値は、サンプル Web アプリで使用され、Event Hub にデータを送信する頻度を決定します。
 
 7. 使用条件に同意して、**チェック ボックスをオン**にします。
 
@@ -149,7 +149,7 @@ Azure クレジットを最適に利用できるよう、この記事の最後�
    - 1 つの Azure Event Hub
    - 2 つの Web アプリ
 
-## <a name="examine-the-sample-tollapp-job"></a>サンプル TollApp ジョブを調べる 
+## <a name="examine-the-sample-tollapp-job"></a>サンプル TollApp ジョブを調べる
 1. 前のセクションのリソース グループから始めます。名前が **tollapp** で始まる Stream Analytics ストリーミング ジョブを選択します (名前には一意にするためのランダムな文字が含まれています)。
 
 2. ジョブの **[概要]** ページで、**[クエリ]** ボックスにクエリの構文が表示されていることに注目します。
@@ -185,7 +185,7 @@ Azure クレジットを最適に利用できるよう、この記事の最後�
 ## <a name="review-the-cosmosdb-output-data"></a>CosmosDB 出力データを確認する
 1. TollApp リソースが含まれるリソース グループを見つけます。
 
-2. 名前のパターンが **tollapp<random>-cosmos** である Azure Cosmos DB アカウントを選択します。
+2. 名前のパターンが **tollapp\<random\>-cosmos** である Azure Cosmos DB アカウントを選択します。
 
 3. **[データ エクスプローラー]** 見出しを選択して、[データ エクスプローラー] ページを開きます。
 
@@ -195,7 +195,7 @@ Azure クレジットを最適に利用できるよう、この記事の最後�
 
 6. 各 ID を選択して JSON ドキュメントを確認します。 それぞれの TollID、WindowEnd の時刻、およびその時間帯の車両数に注目します。
 
-7. 3 分経過すると、別の 4 つのドキュメント (TollID ごとに 1 つのドキュメント) が利用可能になります。 
+7. 3 分経過すると、別の 4 つのドキュメント (TollID ごとに 1 つのドキュメント) が利用可能になります。
 
 
 ## <a name="report-total-time-for-each-car"></a>各車両の合計時間を報告する
@@ -229,9 +229,9 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 7. **[ジョブの開始]** ウィンドウで、**[Now]\(今すぐ\)** を選択します。
 
 ### <a name="review-the-total-time-in-the-output"></a>出力内の合計時間を確認する
-前のセクションの手順を繰り返して、ストリーミング ジョブからの CosmosDB 出力データを確認します。 最新の JSON ドキュメントを確認します。 
+前のセクションの手順を繰り返して、ストリーミング ジョブからの CosmosDB 出力データを確認します。 最新の JSON ドキュメントを確認します。
 
-たとえば、次のドキュメントは、特定のナンバー プレートを持つ 1 台の車両の料金所ブースに入った日時 (entrytime)、ブースから出た日時 (exit time) と、DATEDIFF によって計算された 料金所ブースの滞在時間 (durationinminutes) が 2 分間であることを示しています。 
+たとえば、次のドキュメントは、特定のナンバー プレートを持つ 1 台の車両の料金所ブースに入った日時 (entrytime)、ブースから出た日時 (exit time) と、DATEDIFF によって計算された 料金所ブースの滞在時間 (durationinminutes) が 2 分間であることを示しています。
 ```JSON
 {
     "tollid": 4,
@@ -249,7 +249,7 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 ```
 
 ## <a name="report-vehicles-with-expired-registration"></a>登録が期限切れになっている車両を報告する
-Azure Stream Analytics では、参照データの静的なスナップショットを使用して、テンポラル データ ストリームと結合できます。 この機能のデモとして、次のテストを行います。 Registration 入力は、ライセンス タグの有効期限を示す静的な BLOB json ファイルです。 ナンバー プレートと結合することで、参照データが料金所ブースを通過する各車両と比較されます。 
+Azure Stream Analytics では、参照データの静的なスナップショットを使用して、テンポラル データ ストリームと結合できます。 この機能のデモとして、次のテストを行います。 Registration 入力は、ライセンス タグの有効期限を示す静的な BLOB json ファイルです。 ナンバー プレートと結合することで、参照データが料金所ブースを通過する各車両と比較されます。
 
 料金徴収会社に登録されている商用車は、検査のために停車しなくても料金所ブースを通過することができます。 登録検索テーブルを使用して、登録の有効期限が切れているすべての商用車を識別します。
 
@@ -264,7 +264,7 @@ WHERE Registration.Expired = '1'
 
 1. 前のセクションの手順を繰り返して、TollApp ストリーミング ジョブ クエリの構文を更新します。
 
-2. 前のセクションの手順を繰り返して、ストリーミング ジョブからの CosmosDB 出力データを確認します。 
+2. 前のセクションの手順を繰り返して、ストリーミング ジョブからの CosmosDB 出力データを確認します。
 
 出力例:
 ```json
@@ -289,28 +289,28 @@ Azure Stream Analytics は、大量のデータ処理に対応するために、
 ```sql
 SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*)AS Count
 INTO CosmosDB
-FROM EntryStream 
-TIMESTAMP BY EntryTime 
+FROM EntryStream
+TIMESTAMP BY EntryTime
 PARTITION BY PartitionId
 GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 ```
 
 ストリーミング ジョブのストリーミング ユニットをスケールアップするには:
 
-1. 現在のジョブを**停止**します。 
+1. 現在のジョブを**停止**します。
 
 2. **[< > クエリ]** ページでクエリの構文を更新し、変更を保存します。
 
 3. ストリーミング ジョブの [構成] 見出しで、**[スケーリング]** を選択します。
-   
+
 4. **[ストリーミング ユニット]** スライダーを 1 から 6 にスライドします。 ストリーミング ユニットは、ジョブが使用できる計算能力の量を定義します。 **[保存]** を選択します。
 
-5. ストリーミング ジョブを**開始**して、スケールが追加されたことを確認します。 Azure Stream Analytics は、より多くのコンピューティング リソースに作業を分散させてスループットの向上を実現し、PARTITION BY 句に指定された列を使用してリソース間で作業をパーティション分割します。 
+5. ストリーミング ジョブを**開始**して、スケールが追加されたことを確認します。 Azure Stream Analytics は、より多くのコンピューティング リソースに作業を分散させてスループットの向上を実現し、PARTITION BY 句に指定された列を使用してリソース間で作業をパーティション分割します。
 
 ## <a name="monitor-the-job"></a>ジョブの監視
-**[監視]** 領域には、実行中のジョブに関する統計情報が表示されます。 ストレージ アカウントを同じリージョン内で使用する場合は、初回の構成が必要です (料金所ブースにこのドキュメントの他の箇所と同じ名前を付けます)。   
+**[監視]** 領域には、実行中のジョブに関する統計情報が表示されます。 ストレージ アカウントを同じリージョン内で使用する場合は、初回の構成が必要です (料金所ブースにこのドキュメントの他の箇所と同じ名前を付けます)。
 
-![監視のスクリーンショット](media/stream-analytics-build-an-iot-solution-using-stream-analytics/monitoring.png)
+![Azure Stream Analytics ジョブ監視](media/stream-analytics-build-an-iot-solution-using-stream-analytics/stream-analytics-job-monitoring.png)
 
 **アクティビティ ログ**には、ジョブのダッシュボードの **[設定]** 領域からもアクセスできます。
 

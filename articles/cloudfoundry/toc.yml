@@ -1,38 +1,33 @@
-items:
 - name: Cloud Foundry のドキュメント
   href: index.md
 - name: クイック スタート
-  items:
-  - name: Marketplace テンプレート
-    href: https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry
   expanded: true
+  items:
+    - name: Marketplace テンプレート
+      href: 'https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry'
 - name: チュートリアル
   items:
-  - name: Azure での CF の作成
-    href: /azure/cloudfoundry/create-cloud-foundry-on-azure
-  - name: CF アプリを Azure にデプロイする
-    href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
-  - name: Azure での Cloud Foundry
-    href: /azure/virtual-machines/linux/cloudfoundry-get-started
-  - name: CF OMS Nozzle のデプロイ
-    href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
-  - name: Cloud Foundry と Azure を統合する
-    href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
+    - name: Azure での CF の作成
+      href: /azure/cloudfoundry/create-cloud-foundry-on-azure
+    - name: CF アプリを Azure にデプロイする
+      href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
+    - name: PCF 上でアプリを実行して OSBA を使用する
+      href: /azure/cloudfoundry/use-osba-pcf-app
+    - name: Azure での Cloud Foundry
+      href: /azure/virtual-machines/linux/cloudfoundry-get-started
+    - name: CF OMS Nozzle のデプロイ
+      href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
+    - name: Cloud Foundry と Azure を統合する
+      href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
 - name: リソース
   items:
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/
-  - name: Cloud Foundry サイト
-    href: https://docs.cloudfoundry.org/
-  - name: Azure への CF のインストール
-    href: https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html
-  - name: Pivotal と Azure
-    href: https://pivotal.io/partners/microsoft
-  - name: CF 用の Azure DevOps プラグイン
-    href: https://github.com/Microsoft/vsts-cloudfoundry
-ms.openlocfilehash: fbee87e506752878aaeb95d9286499881ae1c40a
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268244"
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Cloud Foundry サイト
+      href: 'https://docs.cloudfoundry.org/'
+    - name: Azure への CF のインストール
+      href: 'https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html'
+    - name: Pivotal と Azure
+      href: 'https://pivotal.io/partners/microsoft'
+    - name: CF 用の Azure DevOps プラグイン
+      href: 'https://github.com/Microsoft/vsts-cloudfoundry'

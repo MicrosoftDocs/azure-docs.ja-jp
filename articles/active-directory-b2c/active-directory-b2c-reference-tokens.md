@@ -3,21 +3,21 @@ title: Azure Active Directory B2C のトークン リファレンス | Microsoft
 description: Azure Active Directory B2C で発行されるトークンの種類
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/16/2017
+ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 5ff4ddee3d8af15caf082be56a51b1aa0d36f02a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.subservice: B2C
+ms.openlocfilehash: 6a588764908f72607bbb99e9b1ea031182c95e64
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339979"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166919"
 ---
-# <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: トークン リファレンス
+# <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: トークンのリファレンス
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -30,9 +30,9 @@ Azure AD B2C は [OAuth 2.0 承認プロトコル](active-directory-b2c-referenc
 
 ベアラー トークンがセキュリティ保護されたチャネル以外で転送された場合、悪意のある利用者が中間者攻撃によってトークンを取得し、保護されたリソースへの未承認のアクセスに使用する可能性があります。 後で使用するためにベアラー トークンを保存またはキャッシュするときにも、同じセキュリティ原則が適用されます。 アプリケーションでは、常に安全な方法でベアラー トークンを転送および保存してください。
 
-ベアラー トークンのセキュリティに関する追加の考慮事項については、 [RFC 6750 セクション 5](http://tools.ietf.org/html/rfc6750)を参照してください。
+ベアラー トークンのセキュリティに関する追加の考慮事項については、 [RFC 6750 セクション 5](https://tools.ietf.org/html/rfc6750)を参照してください。
 
-Azure AD B2C によって発行されるトークンの多くは、JSON Web トークン (JWT) として実装されます。 JWT は、2 つのパーティ間で情報を転送する、コンパクトで URL の安全な手段です。 JWT には、"要求" と呼ばれる情報が含まれています。 それらは、ベアラーに関する情報のアサーションと、トークンのサブジェクトです。 JWT の要求は、伝送用にエンコードおよびシリアル化された JSON オブジェクトです。 Azure AD B2C によって発行される JWT は署名されますが、暗号化されないため、JWT の内容を簡単に検査してデバッグできます。 [jwt.ms](https://jwt.ms) など、この作業に使用できるツールがいくつかあります。 JWT の詳細については、 [JWT の仕様](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)を参照してください。
+Azure AD B2C によって発行されるトークンの多くは、JSON Web トークン (JWT) として実装されます。 JWT は、2 つのパーティ間で情報を転送する、コンパクトで URL の安全な手段です。 JWT には、"要求" と呼ばれる情報が含まれています。 それらは、ベアラーに関する情報のアサーションと、トークンのサブジェクトです。 JWT の要求は、伝送用にエンコードおよびシリアル化された JSON オブジェクトです。 Azure AD B2C によって発行される JWT は署名されますが、暗号化されないため、JWT の内容を簡単に検査してデバッグできます。 [jwt.ms](https://jwt.ms) など、この作業に使用できるツールがいくつかあります。 JWT の詳細については、 [JWT の仕様](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)を参照してください。
 
 ### <a name="id-tokens"></a>ID トークン
 
@@ -66,9 +66,9 @@ API がアクセス トークンを受け取ったら、トークンが認証済
 
 ### <a name="claims-in-id-and-access-tokens"></a>ID およびアクセス トークン内の要求
 
-Azure AD B2C では、トークンの内容を細かく制御できます。 アプリの操作に必要な特定のユーザー データのセットを要求に入れて送信するように、 [ポリシー](active-directory-b2c-reference-policies.md) を構成できます。 これらの要求には、ユーザーの `displayName` や `emailAddress` などの標準的なプロパティを含めることができます。 また、B2C ディレクトリで定義できる [カスタム ユーザー属性](active-directory-b2c-reference-custom-attr.md) を含めることもできます。 受信するすべての ID およびアクセス トークンには、セキュリティ関連の要求の特定のセットが含まれています。 アプリケーションはこれらの要求を使用して、ユーザーと要求を安全に認証できます。
+Azure AD B2C では、トークンの内容を細かく制御できます。 アプリの操作に必要なユーザー データの特定のセットをクレームに含めて送信するように、[ユーザー フロー](active-directory-b2c-reference-policies.md)とカスタム ポリシーを構成できます。 これらの要求には、ユーザーの `displayName` や `emailAddress` などの標準的なプロパティを含めることができます。 また、B2C ディレクトリで定義できる [カスタム ユーザー属性](active-directory-b2c-reference-custom-attr.md) を含めることもできます。 受信するすべての ID およびアクセス トークンには、セキュリティ関連の要求の特定のセットが含まれています。 アプリケーションはこれらの要求を使用して、ユーザーと要求を安全に認証できます。
 
-ID トークン内の要求は特定の順序では返されないことに注意してください。 また、新しい要求が ID トークンに導入される可能性が常にあります。 新しい要求が導入されたときに、アプリで問題が起きないようにする必要があります。 Azure AD B2C によって発行された ID およびアクセス トークン内に存在することが予測される要求を次に示します。 追加の要求はすべて、ポリシーによって決定されます。 試しに、サンプルの ID トークンを [jwt.ms](https://jwt.ms) に貼り付けて、その中の要求を調べてみてください。 さらに詳細な情報は、 [OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html)で参照できます。
+ID トークン内の要求は特定の順序では返されないことに注意してください。 また、新しい要求が ID トークンに導入される可能性が常にあります。 新しい要求が導入されたときに、アプリで問題が起きないようにする必要があります。 Azure AD B2C によって発行された ID およびアクセス トークン内に存在することが予測される要求を次に示します。 追加の要求はすべて、ポリシーによって決定されます。 試しに、サンプルの ID トークンを [jwt.ms](https://jwt.ms) に貼り付けて、その中の要求を調べてみてください。 さらに詳細な情報は、 [OpenID Connect の仕様](https://openid.net/specs/openid-connect-core-1_0.html)で参照できます。
 
 | Name | 要求 | 値の例 | 説明 |
 | --- | --- | --- | --- |
@@ -78,18 +78,18 @@ ID トークン内の要求は特定の順序では返されないことに注�
 | 期限切れ日時 |`exp` |`1438539443` |期限切れ日時要求は、トークンが無効になる日時です。エポック時間で表されます。 アプリでは、このクレームを使用してトークンの有効期間の有効性を確認する必要があります。 |
 | 期間の開始時刻 |`nbf` |`1438535543` |この要求は、トークンが有効になる日時です。エポック時間で表されます。 これは通常、トークンが発行されたときと同じ日時です。 アプリでは、このクレームを使用してトークンの有効期間の有効性を確認する必要があります。 |
 | Version |`ver` |`1.0` |これは ID トークンのバージョンです。Azure AD で定義されています。 |
-| コード ハッシュ |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |コード ハッシュは、トークンが OAuth 2.0 認証コードと共に発行される場合にのみ、ID トークンに含まれます。 これを使用して、認証コードの信頼性を検証できます。 この検証を実行する方法の詳細については、[OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html)を参照してください。  |
-| アクセス トークン ハッシュ |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |アクセス トークン ハッシュは、トークンが OAuth 2.0 アクセス トークンと共に発行される場合にのみ、ID トークンに含まれます。 これを使用して、アクセス トークンの信頼性を検証できます。 この検証を実行する方法の詳細については、[OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html)を参照してください  |
+| コード ハッシュ |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |コード ハッシュは、トークンが OAuth 2.0 認証コードと共に発行される場合にのみ、ID トークンに含まれます。 これを使用して、認証コードの信頼性を検証できます。 この検証を実行する方法の詳細については、[OpenID Connect の仕様](https://openid.net/specs/openid-connect-core-1_0.html)を参照してください。  |
+| アクセス トークン ハッシュ |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |アクセス トークン ハッシュは、トークンが OAuth 2.0 アクセス トークンと共に発行される場合にのみ、ID トークンに含まれます。 これを使用して、アクセス トークンの信頼性を検証できます。 この検証を実行する方法の詳細については、[OpenID Connect の仕様](https://openid.net/specs/openid-connect-core-1_0.html)を参照してください  |
 | nonce |`nonce` |`12345` |nonce は、トークンのリプレイ攻撃を緩和するために使用される戦略です。 アプリでは、`nonce` クエリ パラメーターを使用して、承認要求で nonce を指定できます。 要求で指定した値は、ID トークンの `nonce` 要求のみに、変更されずに出力されます。 これにより、アプリではこの値を要求で指定した値と比較して検証できます。この値は、アプリのセッションと特定の ID トークンを関連付けます。 アプリでは、ID トークンの検証プロセス中に、この検証を実行する必要があります。 |
-| Subject |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |これは、トークンが情報 (アプリのユーザーなど) をアサートするプリンシパルです。 この値は変更不可で、再割り当ても再利用もできません。 そのため、この値を使用すると、トークンを使用してリソースにアクセスする場合などに安全に承認チェックができます。 既定では、サブジェクト要求には、ディレクトリ内のユーザーのオブジェクト ID が設定されます。 詳細については、「[Azure Active Directory B2C: トークン、セッション、およびシングル サインオンの構成](active-directory-b2c-token-session-sso.md)」を参照してください。 |
-| 認証コンテキスト クラスの参照 |`acr` |適用不可 |現在使用されていません (古いポリシーの場合を除く)。 詳細については、「[Azure Active Directory B2C: トークン、セッション、およびシングル サインオンの構成](active-directory-b2c-token-session-sso.md)」を参照してください。 |
+| Subject |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |これは、トークンが情報 (アプリのユーザーなど) をアサートするプリンシパルです。 この値は変更不可で、再割り当ても再利用もできません。 そのため、この値を使用すると、トークンを使用してリソースにアクセスする場合などに安全に承認チェックができます。 既定では、サブジェクト要求には、ディレクトリ内のユーザーのオブジェクト ID が設定されます。 詳細については、[Azure Active Directory B2C でのトークン、セッション、シングル サインオンの構成](active-directory-b2c-token-session-sso.md)に関する記事をご覧ください。 |
+| 認証コンテキスト クラスの参照 |`acr` |適用不可 |現在使用されていません (古いポリシーの場合を除く)。 詳細については、[Azure Active Directory B2C でのトークン、セッション、シングル サインオンの構成](active-directory-b2c-token-session-sso.md)に関する記事をご覧ください。 |
 | 信頼フレームワーク ポリシー |`tfp` |`b2c_1_sign_in` |これは、ID トークンの取得に使用されたポリシーの名前です。 |
 | 認証時刻 |`auth_time` |`1438535543` |この要求は、ユーザーが資格情報を最後に入力した時刻です。エポック時間で表されます。 |
 
 ### <a name="refresh-tokens"></a>更新トークン
 更新トークンは、OAuth 2.0 のフローで新しい ID トークンとアクセス トークンを取得するためにアプリで使用できるセキュリティ トークンです。 更新トークンを使用すると、ユーザーが操作しなくても、ユーザーに代わってアプリがリソースへの長期的なアクセスを実現できます。
 
-トークン応答で更新トークンを受け取るには、アプリは `offline_acesss` スコープを要求する必要があります。 `offline_access` スコープの詳細については、 [Azure AD B2C のプロトコル リファレンス](active-directory-b2c-reference-protocols.md)をご覧ください。
+トークン応答で更新トークンを受け取るには、アプリは `offline_access` スコープを要求する必要があります。 `offline_access` スコープの詳細については、 [Azure AD B2C のプロトコル リファレンス](active-directory-b2c-reference-protocols.md)をご覧ください。
 
 更新トークンは、現在も将来的にも常に、アプリに対して完全に非透過的です。 Azure AD によって発行され、Azure AD によってのみ検査および解釈できます。 有効期間は長いですが、更新トークンが一定期間残っているという想定でアプリを記述しないでください。 更新トークンは、いつでもさまざまな理由で無効になる可能性があります。 アプリで更新トークンが有効かどうかを知る唯一の方法は、Azure AD に対してトークン要求を行って更新トークンを利用することです。
 
@@ -138,10 +138,10 @@ https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys
 ### <a name="validate-the-claims"></a>要求の検証
 アプリまたは API は、ID トークンを受け取ったら、ID トークン内の要求に対していくつかのチェックを実行する必要があります。 要求には以下のものがありますが、これらに限定されるものではありません。
 
-* **受信者** 要求: これは、ID トークンが特定のアプリに渡されるように意図されていることを検証します。
-* **期間の開始時刻**および**期限切れ日時**要求: これらは、ID トークンが期限切れでないことを検証します。
-* **発行者** 要求: これは、トークンが Azure AD によって特定のアプリに対して発行されたことを検証します。
-* **nonce**: これは、トークンのリプレイ攻撃を緩和するための戦略です。
+* **audience** クレーム: これは、ID トークンがその特定のアプリを対象に発行されたものであることを検証します。
+* **not before** クレームおよび **expiration time** クレーム: これらは、ID トークンが期限切れでないことを検証します。
+* **issuer** クレーム: これは、トークンが Azure AD によって対象のアプリに発行されていることを検証します。
+* **nonce**: これは、トークン リプレイ攻撃を軽減するための戦略です。
 
 アプリが実行する必要のある検証の完全な一覧については、[OpenID Connect の仕様](https://openid.net)を参照してください。 これらの要求に対して予期される値の詳細については、前の [トークンのセクション](#types-of-tokens)を参照してください。  
 

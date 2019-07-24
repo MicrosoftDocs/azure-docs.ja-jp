@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 9/25/2018
+ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: 52b42e964e7abe207064aff49f7f8f27f8476ef4
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 87ca7cae8e9170c8c437d0961cb1acb2e0dd0eb1
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092844"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337648"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS エイリアス レコードの概要
 
@@ -20,50 +20,58 @@ Azure DNS エイリアス レコードは、DNS レコード セットを修飾�
 
 Azure DNS ゾーンでは、エイリアス レコード セットとして、次の種類のレコードがサポートされます。 
 
-- A 
-- AAAA 
-- CNAME 
+- A
+- AAAA
+- CNAME
 
 > [!NOTE]
-> Azure Traffic Manager での A または AAAA のレコードの種類に対するエイリアス レコードは、外部エンドポイントの種類でのみサポートされます。 Traffic Manager の外部エンドポイントには、必要に応じて IPv4 または IPv6 アドレスを指定する必要があります。 理想的なのは、アドレスの静的 IP アドレスを使用することです。
+> A または AAAA レコードの種類に対してエイリアス レコードを使用して [Azure Traffic Manager プロファイル](../traffic-manager/quickstart-create-traffic-manager-profile.md)をポイントする場合は、Traffic Manager プロファイルにあるのが[外部エンドポイント](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)だけであることを確認する必要があります。 Traffic Manager の外部エンドポイントには、IPv4 または IPv6 アドレスを指定する必要があります。 できる限り、静的 IP アドレスを使用します。
 
 ## <a name="capabilities"></a>機能
 
-- **DNS の A または AAAA レコード セットからパブリック IP リソースにポイントする**。 A または AAAA レコード セットを作成し、パブリック IP リソースをポイントするエイリアス レコード セットにすることができます。
+- **DNS の A または AAAA レコード セットからパブリック IP リソースにポイントする**。 A または AAAA レコード セットを作成し、パブリック IP リソースをポイントするエイリアス レコード セットにすることができます。 パブリック IP アドレスが変化するか削除される場合は、DNS レコード セットが自動的です。 正しくない IP アドレスをポイントする未解決の DNS レコードは回避されます。
 
-- **DNS の A、AAAA または CNAME レコード セットから Traffic Manager プロファイルをポイントする**。 DNS の CNAME レコード セットから Traffic Manager プロファイルの CNAME をポイントできます。 一例は contoso.trafficmanager.net です。 DNS ゾーン内の A または AAAA レコード セットから、外部エンドポイントがある Traffic Manager プロファイルをポイントすることもできます。
-
-   > [!NOTE]
-   > Traffic Manager での A または AAAA のレコードの種類に対するエイリアス レコードは、外部エンドポイントの種類でのみサポートされます。 Traffic Manager の外部エンドポイントには、必要に応じて IPv4 または IPv6 アドレスを指定する必要があります。 理想的なのは、アドレスの静的 IP アドレスを使用することです。
-   
-- **同じゾーン内の別の DNS レコード セットをポイントする**。 エイリアス レコードでは、同じ種類の別のレコード セットを参照できます。 たとえば、DNS の CNAME レコード セットは、同じ種類の別の CNAME レコード セットのエイリアスになることができます。 この配置は、一部のレコード セットをエイリアスにしたり、一部をエイリアスにしたくない場合に便利です。
+- **DNS の A、AAAA または CNAME レコード セットから Traffic Manager プロファイルをポイントする**。 A/AAAA または CNAME レコード セットを作成し、エイリアス レコードを使用して Traffic Manager プロファイルをポイントすることができます。 従来の CNAME レコードはゾーンの頂点に対してサポートされていないため、ゾーンの頂点でトラフィックをルーティングする必要がある場合に特に便利です。 たとえば、Traffic Manager プロファイルが myprofile.trafficmanager.net で、ビジネスの DNS ゾーンが contoso.com であるものとします。 contoso.com (ゾーンの頂点) に対して A/AAAA の種類のエイリアス レコード セットを作成し、それで myprofile.trafficmanager.net をポイントすることができます。
+- **Azure Content Delivery Network (CDN) エンドポイントをポイントする**。 これは、Azure Storage と Azure CDN を使って静的な Web サイトを作成する場合に便利です。
+- **同じゾーン内の別の DNS レコード セットをポイントする**。 エイリアス レコードでは、同じ種類の別のレコード セットを参照できます。 たとえば、DNS の CNAME レコード セットは、別の CNAME レコード セットのエイリアスになることができます。 この配置は、一部のレコード セットをエイリアスにしたり、一部をエイリアスにしたくない場合に便利です。
 
 ## <a name="scenarios"></a>シナリオ
+
 エイリアス レコードが一般的に使用されるいくつかのシナリオを次に示します。
 
 ### <a name="prevent-dangling-dns-records"></a>未解決の DNS レコードを防ぐ
- エイリアス レコードを使用すると、Azure リソースのライフサイクルを Azure DNS ゾーン内で詳細に追跡できます。 リソースには、パブリック IP や Traffic Manager プロファイルが含まれます。 従来の DNS レコードでよくある問題は、未解決のレコードです。 この問題は、A、AAAA、または CNAME のレコードの種類で特に発生します。 
 
-従来の DNS ゾーン レコードでは、ターゲットの IP または CNAME が存在しなくなっても、DNS ゾーン レコードはそのことを認識できません。 その結果、レコードを手動で更新する必要があります。 組織によっては、この手動の更新が適切なタイミングで実行されないことがあります。 ロールとそれに関連付けられるアクセス許可レベルが分離していることも、問題になる可能性があります。
+従来の DNS レコードでよくある問題は、未解決のレコードです。 たとえば、IP アドレスの変更を反映するように更新されていない DNS レコードなどです。 その問題は、A、AAAA、または CNAME のレコードの種類で特に発生します。
 
-たとえば、ロールには、アプリケーションに属する CNAME または IP アドレスを削除する権限があるとします。 ただし、それらのターゲットをポイントする DNS レコードを更新するための十分な権限はありません。 IP または CNAME の削除と、それをポイントしている DNS レコードの削除の間に時間遅延が発生します。 この時間遅延によって、ユーザーに対して障害が発生する可能性があります。
+従来の DNS ゾーン レコードでは、ターゲットの IP または CNAME が存在しなくなった場合、それに関連付けられている DNS レコードを手動で更新する必要があります。 一部の組織では、手動での更新が、プロセスの問題のため、またはロールと関連付けられているアクセス許可レベルの分離のため、間に合わないことがありました。 たとえば、ロールには、アプリケーションに属する CNAME または IP アドレスを削除する権限があるとします。 ただし、それらのターゲットをポイントする DNS レコードを更新するための十分な権限はありません。 DNS レコードの更新の遅延は、ユーザーにとっては停止になる可能性があります。
 
-エイリアス レコードは、このシナリオに関連する複雑さを排除します。 それらは、未解決の参照を防ぐのに役立ちます。 たとえば、パブリック IP または Traffic Manager プロファイルをポイントするエイリアス レコードとして修飾されている DNS レコードを考えてみましょう。 これらの基になるリソースが削除されると、DNS のエイリアス レコードも同時に削除されます。 このプロセスにより、ユーザーが障害を経験することがなくなります。
+エイリアス レコードでは、DNS レコードと Azure リソースのライフサイクルを緊密に結合することで、未解決の参照が防止されます。 たとえば、パブリック IP アドレスまたは Traffic Manager プロファイルをポイントするエイリアス レコードとして修飾されている DNS レコードについて考えます。 これらの基になるリソースが削除されると、DNS のエイリアス レコードも同時に削除されます。
 
-### <a name="update-dns-zones-automatically-when-application-ips-change"></a>アプリケーションの IP の変更時に自動的に DNS ゾーンを更新する
+### <a name="update-dns-record-set-automatically-when-application-ip-addresses-change"></a>アプリケーションの IP アドレスが変化したら、DNS レコード セットを自動的に更新する
 
-このシナリオは、前のシナリオに似ています。 アプリケーションが移動されたか、基になる仮想マシンが再起動されたとします。 基になるパブリック IP リソースの IP アドレスが変更されると、エイリアス レコードは自動的に更新されます。 潜在的なセキュリティ リスクを回避するために、古い IP アドレスを持つ別のアプリケーションにユーザーを誘導します。
+このシナリオは、前のシナリオに似ています。 アプリケーションが移動されたか、基になる仮想マシンが再起動されたとします。 基になるパブリック IP リソースの IP アドレスが変更されると、エイリアス レコードは自動的に更新されます。 これにより、古いパブリック IP アドレスが割り当てられている別のアプリケーションにユーザーが転送される潜在的なセキュリティ リスクが回避されます。
 
 ### <a name="host-load-balanced-applications-at-the-zone-apex"></a>Zone Apex で負荷分散されたアプリケーションをホストする
 
-DNS プロトコルでは、Zone Apex に A または AAAA レコード以外を割り当てることはできません。 一例として contoso.com があります。 Traffic Manager の背後でアプリケーションの負荷分散を行っているアプリケーションの所有者にとっては、この制限によって問題が生じます。 Zone Apex レコードから Traffic Manager プロファイルをポイントすることができません。 そのため、アプリケーションの所有者は回避策を使用する必要があります。 アプリケーション層でのリダイレクトで、Zone Apex から別のドメインにリダイレクトする必要があります。 一例が、contoso.com から www.contoso.com へのリダイレクトです。 この配置は、リダイレクト機能の単一障害点を示します。
+DNS プロトコルでは、ゾーンの頂点での CNAME レコードの割り当てができません。 たとえば、ドメインが contoso.com の場合、somelable.contoso.com に対する CNAME レコードは作成できますが、contoso.com 自体に対する CNAME を作成することはできません。
+[Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) の背後でアプリケーションの負荷分散を行っているアプリケーションの所有者にとっては、この制限によって問題が生じます。 Traffic Manager プロファイルを使用するには CNAME レコードを作成する必要があるため、ゾーンの頂点から Traffic Manager プロファイルをポイントすることはできません。
 
-エイリアス レコードを使用すると、この問題がなくなります。 アプリケーションの所有者は、Zone Apex のレコードで、外部エンドポイントを持つ Traffic Manager プロファイルをポイントできます。 アプリケーションの所有者は、DNS ゾーン内の他のドメインで使用されているのと同じ Traffic Manager プロファイルをポイントできます。 たとえば、contoso.com と www.contoso.com で、同じ Traffic Manager プロファイルをポイントできます。 これは、Traffic Manager に外部エンドポイントのみが構成されている場合に限ります。
+この問題は、エイリアス レコードを使用して解決できます。 CNAME レコードとは異なり、エイリアス レコードはゾーンの頂点で作成することができ、アプリケーションの所有者はそれを使用して、外部エンドポイントを含む Traffic Manager プロファイルを、ゾーンの頂点のレコードでポイントできます。 アプリケーションの所有者は、DNS ゾーン内の他のドメインで使用されているのと同じ Traffic Manager プロファイルをポイントできます。
+
+たとえば、contoso.com と www\.contoso.com で、同じ Traffic Manager プロファイルをポイントできます。 Azure Traffic Manager プロファイルでのエイリアス レコードの使用に関する詳細については、次の手順のセクションを参照してください。
+
+### <a name="point-zone-apex-to-azure-cdn-endpoints"></a>ゾーンの頂点から Azure CDN エンドポイントをポイントする
+
+Traffic Manager プロファイルの場合と同様に、エイリアス レコードを使用して DNS ゾーンの頂点から Azure CDN エンドポイントをポイントすることもできます。 これは、Azure Storage と Azure CDN を使って静的な Web サイトを作成する場合に便利です。 DNS 名の前に "www" を付けなくても、Web サイトにアクセスできるようになります。
+
+たとえば、静的な Web サイトの名前が www.contoso.com の場合、DNS 名の前に www を付ける必要はなく、ユーザーは contoso.com を使ってサイトにアクセスできます。
+
+前述のように、CNAME レコードはゾーンの頂点ではサポートされていません。 そのため、CNAME レコードを使用して contoso.com から CDN エンドポイントをポイントすることはできません。 代わりに、エイリアス レコードを使用して、ゾーンの頂点から直接 CDN エンドポイントをポイントすることができます。
 
 ## <a name="next-steps"></a>次の手順
 
 エイリアス レコードの詳細については、次の記事を参照してください。
 
-- [チュートリアル: Azure パブリック IP アドレスを参照するエイリアス レコードを構成する](tutorial-alias-pip.md)
-- [チュートリアル: Traffic Manager で頂点のドメイン名をサポートするエイリアス レコードを構成する](tutorial-alias-tm.md)
+- [チュートリアル:Azure パブリック IP アドレスを参照するエイリアス レコードを構成する](tutorial-alias-pip.md)
+- [チュートリアル:Traffic Manager で頂点のドメイン名をサポートするエイリアス レコードを構成する](tutorial-alias-tm.md)
 - [DNS に関する FAQ](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)

@@ -1,27 +1,27 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b6765fea8087a21d92a349244f883dbaeb1e730f
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 8eb7d6e920f09d6ad230813503a7cf942427ea80
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52273549"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227856"
 documentType: LandingData
 title: QnA Maker のドキュメント
 metadata:
   title: QnA Maker のドキュメント - Microsoft Cognitive Services | Microsoft Docs
-  description: QnA Maker とそのしくみについて説明します。
+  description: QnA Maker サービスと、このサービスのナレッジ ベースでの質問と回答の確認方法について説明します。
   services: cognitive-services
   author: tulasim88
   manager: cgronlun
   ms.service: cognitive-services
-  ms.component: qna-maker
+  ms.subservice: qna-maker
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/10/2018
+  ms.date: 12/18/2018
   ms.author: tulasim
 abstract:
-  description: QnA Maker を使用すると、FAQ ドキュメント、URL、製品マニュアルなどの半構造化コンテンツからの質問と回答サービスをいっそう強力にできます。
+  description: QnA Maker は、データに基づく対話型の Q&A レイヤーを作成できるクラウドベースの API サービスです。 QnA Maker を使用すると、FAQ ドキュメント、URL、製品マニュアルなどの半構造化コンテンツからの質問と回答サービスをいっそう強力にできます。 QnA Maker サービスでは、ユーザーが自然言語を使って行った質問に対し、ナレッジ ベースにある Q&A から回答となる可能性が最も高いものが提示されます。
   aside:
     image:
       alt: 
@@ -32,6 +32,27 @@ abstract:
     href: https://channel9.msdn.com/Shows/AI-Show/Build-a-Bot-in-Minutes-with-QnA-Maker
     width: 250
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/qnamaker/overview/overview
+      html: <p>QnA Maker について説明します。</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: QnA Maker とは
+    - href: /azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base
+      html: <p>ナレッジ ベースを作成、トレーニング、および公開する方法を説明します。</p>
+      image:
+        src: ../media/index/i_tasks.svg
+      title: ナレッジ ベースの作成、トレーニングおよび公開
+    - href: /azure/cognitive-services/qnamaker/concepts/data-sources-supported
+      html: <p>ナレッジ ベースを公開する方法を説明します。</p>
+      image:
+        src: ../media/index/i_tasks.svg
+      title: データ ソースについて
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
@@ -59,6 +80,15 @@ sections:
         src: media/index/logo_python.svg
       text: Python
       href: Quickstarts/create-new-kb-python
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: QnA Maker を使用してアプリケーションを開発する方法について説明します。
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-publish-query-in-portal">ナレッジ ベースを作成して質問に回答する</a></li>
+    - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-qna-bot">QnA Maker ボットを作成する</a></li>
 - title: リファレンス
   items:
   - type: list

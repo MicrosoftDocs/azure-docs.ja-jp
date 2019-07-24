@@ -1,24 +1,21 @@
 ---
 title: C# を使用して Azure Database for PostgreSQL に接続する
 description: このクイックスタートでは、Azure Database for PostgreSQL に接続してデータを照会するために使用できる、C# (.NET) コード サンプルを紹介します。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc, devcenter
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: 34c9825347ffe9246f6d5d0b500e8b592b8421ee
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 03/12/2019
+ms.openlocfilehash: 79f2749c9a1f5a6a34628087dc2fd22f6eab6d17
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987700"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881352"
 ---
-# <a name="azure-database-for-postgresql-use-net-c-to-connect-and-query-data"></a>Azure Database for PostgreSQL: .NET (C#) を使用した接続とデータの照会
+# <a name="azure-database-for-postgresql-use-net-c-to-connect-and-query-data"></a>Azure Database for PostgreSQL: .NET (C#) を使った接続とデータの照会
 このクイックスタートでは、C# アプリケーションを使用して Azure Database for PostgreSQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事の手順では、C# を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
@@ -47,10 +44,6 @@ Host、DBName、User、Password の各パラメーターは、サーバーとデ
 
 ```csharp
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Npgsql;
 
 namespace Driver
@@ -71,44 +64,46 @@ namespace Driver
             //
             string connString =
                 String.Format(
-                    "Server={0}; User Id={1}; Database={2}; Port={3}; Password={4}; SSL Mode=Prefer; Trust Server Certificate=true",
+                    "Server={0};Username={1};Database={2};Port={3};Password={4};SSLMode=Prefer",
                     Host,
                     User,
                     DBname,
                     Port,
                     Password);
 
-            var conn = new NpgsqlConnection(connString);
 
-            Console.Out.WriteLine("Opening connection");
-            conn.Open();
+            using (var conn = new NpgsqlConnection(connString))
 
-            var command = conn.CreateCommand();
-            command.CommandText = "DROP TABLE IF EXISTS inventory;";
-            command.ExecuteNonQuery();
-            Console.Out.WriteLine("Finished dropping table (if existed)");
+            {
+                Console.Out.WriteLine("Opening connection");
+                conn.Open();
 
-            command.CommandText = "CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);";
-            command.ExecuteNonQuery();
-            Console.Out.WriteLine("Finished creating table");
+                using (var command = new NpgsqlCommand("DROP TABLE IF EXISTS inventory", conn))
+                { 
+                    command.ExecuteNonQuery();
+                    Console.Out.WriteLine("Finished dropping table (if existed)");
 
-            command.CommandText =
-                String.Format(
-                    @"
-                                INSERT INTO inventory (name, quantity) VALUES ({0}, {1});
-                                INSERT INTO inventory (name, quantity) VALUES ({2}, {3});
-                                INSERT INTO inventory (name, quantity) VALUES ({4}, {5});
-                            ",
-                    "\'banana\'", 150,
-                    "\'orange\'", 154,
-                    "\'apple\'", 100
-                    );
+                }
 
-            int nRows = command.ExecuteNonQuery();
-            Console.Out.WriteLine(String.Format("Number of rows inserted={0}", nRows));
+                using (var command = new NpgsqlCommand("CREATE TABLE inventory(id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER)", conn))
+                {
+                    command.ExecuteNonQuery();
+                    Console.Out.WriteLine("Finished creating table");
+                }
 
-            Console.Out.WriteLine("Closing connection");
-            conn.Close();
+                using (var command = new NpgsqlCommand("INSERT INTO inventory (name, quantity) VALUES (@n1, @q1), (@n2, @q2), (@n3, @q3)", conn))
+                {
+                    command.Parameters.AddWithValue("n1", "banana");
+                    command.Parameters.AddWithValue("q1", 150);
+                    command.Parameters.AddWithValue("n2", "orange");
+                    command.Parameters.AddWithValue("q2", 154);
+                    command.Parameters.AddWithValue("n3", "apple");
+                    command.Parameters.AddWithValue("q3", 100);
+                    
+                    int nRows = command.ExecuteNonQuery();
+                    Console.Out.WriteLine(String.Format("Number of rows inserted={0}", nRows));
+                }
+            }
 
             Console.WriteLine("Press RETURN to exit");
             Console.ReadLine();
@@ -124,10 +119,6 @@ Host、DBName、User、Password の各パラメーターは、サーバーとデ
 
 ```csharp
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Npgsql;
 
 namespace Driver
@@ -148,36 +139,37 @@ namespace Driver
             //
             string connString =
                 String.Format(
-                    "Server={0}; User Id={1}; Database={2}; Port={3}; Password={4};",
+                    "Server={0}; User Id={1}; Database={2}; Port={3}; Password={4};SSLMode=Prefer",
                     Host,
                     User,
                     DBname,
                     Port,
                     Password);
 
-            var conn = new NpgsqlConnection(connString);
-
-            Console.Out.WriteLine("Opening connection");
-            conn.Open();
-
-            var command = conn.CreateCommand();
-            command.CommandText = "SELECT * FROM inventory;";
-
-            var reader = command.ExecuteReader();
-            while (reader.Read())
+            using (var conn = new NpgsqlConnection(connString))
             {
-                Console.WriteLine(
-                    string.Format(
-                        "Reading from table=({0}, {1}, {2})",
-                        reader.GetInt32(0).ToString(),
-                        reader.GetString(1),
-                        reader.GetInt32(2).ToString()
-                        )
-                    );
-            }
 
-            Console.Out.WriteLine("Closing connection");
-            conn.Close();
+                Console.Out.WriteLine("Opening connection");
+                conn.Open();
+
+
+                using (var command = new NpgsqlCommand("SELECT * FROM inventory", conn))
+                {
+
+                    var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Console.WriteLine(
+                            string.Format(
+                                "Reading from table=({0}, {1}, {2})",
+                                reader.GetInt32(0).ToString(),
+                                reader.GetString(1),
+                                reader.GetInt32(2).ToString()
+                                )
+                            );
+                    }
+                }
+            }
 
             Console.WriteLine("Press RETURN to exit");
             Console.ReadLine();
@@ -194,10 +186,6 @@ Host、DBName、User、Password の各パラメーターは、サーバーとデ
 
 ```csharp
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Npgsql;
 
 namespace Driver
@@ -218,36 +206,36 @@ namespace Driver
             //
             string connString =
                 String.Format(
-                    "Server={0}; User Id={1}; Database={2}; Port={3}; Password={4};",
+                    "Server={0}; User Id={1}; Database={2}; Port={3}; Password={4};SSLMode=Prefer",
                     Host,
                     User,
                     DBname,
                     Port,
                     Password);
 
-            var conn = new NpgsqlConnection(connString);
+            using (var conn = new NpgsqlConnection(connString))
+            {
 
-            Console.Out.WriteLine("Opening connection");
-            conn.Open();
+                Console.Out.WriteLine("Opening connection");
+                conn.Open();
 
-            var command = conn.CreateCommand();
-            command.CommandText =
-            String.Format("UPDATE inventory SET quantity = {0} WHERE name = {1};",
-                200,
-                "\'banana\'"
-                );
-
-            int nRows = command.ExecuteNonQuery();
-            Console.Out.WriteLine(String.Format("Number of rows updated={0}", nRows));
-
-            Console.Out.WriteLine("Closing connection");
-            conn.Close();
+                using (var command = new NpgsqlCommand("UPDATE inventory SET quantity = @q WHERE name = @n", conn))
+                {
+                    command.Parameters.AddWithValue("n", "banana");
+                    command.Parameters.AddWithValue("q", 200);
+                    
+                    int nRows = command.ExecuteNonQuery();
+                    Console.Out.WriteLine(String.Format("Number of rows updated={0}", nRows));
+                }
+            }
 
             Console.WriteLine("Press RETURN to exit");
             Console.ReadLine();
         }
     }
 }
+
+
 ```
 
 
@@ -260,10 +248,6 @@ Host、DBName、User、Password の各パラメーターは、サーバーとデ
 
 ```csharp
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Npgsql;
 
 namespace Driver
@@ -284,33 +268,33 @@ namespace Driver
             //
             string connString =
                 String.Format(
-                    "Server={0}; User Id={1}; Database={2}; Port={3}; Password={4};",
+                    "Server={0}; User Id={1}; Database={2}; Port={3}; Password={4};SSLMode=Prefer",
                     Host,
                     User,
                     DBname,
                     Port,
                     Password);
 
-            var conn = new NpgsqlConnection(connString);
+            using (var conn = new NpgsqlConnection(connString))
+            {
+                Console.Out.WriteLine("Opening connection");
+                conn.Open();
 
-            Console.Out.WriteLine("Opening connection");
-            conn.Open();
+                using (var command = new NpgsqlCommand("DELETE FROM inventory WHERE name = @n", conn))
+                {
+                    command.Parameters.AddWithValue("n", "orange");
 
-            var command = conn.CreateCommand();
-            command.CommandText =
-            String.Format("DELETE FROM inventory WHERE name = {0};",
-                "\'orange\'");
-            int nRows = command.ExecuteNonQuery();
-            Console.Out.WriteLine(String.Format("Number of rows deleted={0}", nRows));
-
-            Console.Out.WriteLine("Closing connection");
-            conn.Close();
+                    int nRows = command.ExecuteNonQuery();
+                    Console.Out.WriteLine(String.Format("Number of rows deleted={0}", nRows));
+                }
+            }
 
             Console.WriteLine("Press RETURN to exit");
             Console.ReadLine();
         }
     }
 }
+
 ```
 
 ## <a name="next-steps"></a>次の手順

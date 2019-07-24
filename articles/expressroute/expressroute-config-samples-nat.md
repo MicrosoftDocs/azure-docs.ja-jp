@@ -1,28 +1,23 @@
 ---
-title: ExpressRoute の顧客のルーター構成サンプル | Microsoft Docs
+title: ルーター構成サンプル - NAT - Azure ExpressRoute | Microsoft Docs
 description: このページでは、Cisco と Juniper のルーターのルーター構成のサンプルを示します。
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: carmonm
-editor: ''
-ms.assetid: d6ea716f-d5ee-4a61-92b0-640d6e7d6974
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 12/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: 83a7da2db537a3c900e90432455d59e8ac56d917
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: ccee0f0c01119ebbfb5ba9c5980ee006a555a399
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23012977"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872082"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>NAT をセットアップして管理するためのルーター構成のサンプル
-このページでは、Cisco ASA と Juniper SRX シリーズ ルーターの NAT 構成のサンプルを示します。 これらはガイダンスとしてのみ使用することを目的としたサンプルであり、現状のまま使用することはできません。 ベンダーと協力して、ネットワークに適した構成を考えてください。 
+
+このページでは、ExpressRoute を使用する場合の Cisco ASA と Juniper SRX シリーズ ルーターの NAT 構成のサンプルを示します。 これらはガイダンスとしてのみ使用することを目的としたサンプルであり、現状のまま使用することはできません。 ベンダーと協力して、ネットワークに適した構成を考えてください。
 
 > [!IMPORTANT]
 > このページのサンプルは、ガイダンスとしてのみ使用することを目的としています。 ベンダーの販売/技術チームおよび自社のネットワーク チームと協力して、ニーズに対応する適切な構成を考える必要があります。 Microsoft では、このページに示す構成に関連する問題には対応できません。 サポートの問題については、デバイス ベンダーに問い合わせる必要があります。
@@ -219,7 +214,7 @@ NAT コマンド:
        }
 
 ### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a>5.各方向でプレフィックスを選択してアドバタイズする BGP の構成
-[ルーティング構成のサンプル ](expressroute-config-samples-routing.md) に関するページのサンプルを参照してください。
+[ルーティング構成のサンプル](expressroute-config-samples-routing.md)に関するページのサンプルを参照してください。
 
 ### <a name="6-create-policies"></a>6.ポリシーの作成
     routing-options {
@@ -316,6 +311,6 @@ NAT コマンド:
         }
     }
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 詳細については、 [ExpressRoute の FAQ](expressroute-faqs.md) を参照してください。
 

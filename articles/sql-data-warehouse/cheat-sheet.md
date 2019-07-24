@@ -6,19 +6,19 @@ author: acomet
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
-ms.component: design
+ms.subservice: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: 4ef64b9d4e4e5c7f5a628359a8512dcb61b9c941
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 795facc6148d33592ff8eac5083a273dc3d5cb26
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43245895"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314910"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のチート シート
-このチート シートは、Azure SQL Data Warehouse ソリューションを構築する場合に役立つヒントとベスト プラクティスを提供します。 開始する前に、SQL Data Warehouse とは何か、および SQL Data Warehouse でないものは何かを説明する「[Azure SQL Data Warehouse Workload Patterns and Anti-Patterns](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns)」(Azure SQL Data Warehouse ワークロード パターンとアンチ パターン) を読んで、各手順の詳細を参照してください。
+このチート シートは、Azure SQL Data Warehouse ソリューションを構築する場合に役立つヒントとベスト プラクティスを提供します。 開始する前に、SQL Data Warehouse とは何か、および SQL Data Warehouse でないものは何かを説明する「[Azure SQL Data Warehouse Workload Patterns and Anti-Patterns](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns)」(Azure SQL Data Warehouse ワークロード パターンとアンチ パターン) を読んで、各手順の詳細を参照してください。
 
 次の図は、データ ウェアハウスを設計するプロセスを示しています。
 
@@ -108,13 +108,13 @@ ELT を必要とするステージング テーブルでは、パーティショ
 詳しくは、[統計]に関するページをご覧ください。
 
 ## <a name="resource-class"></a>リソース クラス
-SQL Data Warehouse では、クエリにメモリを割り当てる方法としてリソース グループを使用します。 クエリまたは読み込みの速度を向上させるために、より多くのメモリが必要な場合は、さらに高いリソース クラスを割り当てる必要があります。 その一方で、使うリソース クラスを大きくすると同時実行に影響があります。 すべてのユーザーを大きいリソース クラスに移行する前に、そのことを考慮する必要があります。
+SQL Data Warehouse では、クエリにメモリを割り当てる方法としてリソース グループを使用します。 クエリまたは読み込みの速度を向上させるために、より多くのメモリが必要な場合は、さらに高いリソース クラスを割り当てる必要があります。 その一方で、使うリソース クラスを大きくするとコンカレンシーに影響があります。 すべてのユーザーを大きいリソース クラスに移行する前に、そのことを考慮する必要があります。
 
-クエリに時間がかかりすぎる場合は、ユーザーが大きいリソース クラスで実行していないことを確認します。 大きいリソース クラスは、多くの同時実行スロットを消費します。 それにより、他のクエリが待機する可能性があります。
+クエリに時間がかかりすぎる場合は、ユーザーが大きいリソース クラスで実行していないことを確認します。 大きいリソース クラスは、多くのコンカレンシー スロットを消費します。 それにより、他のクエリが待機する可能性があります。
 
 最後に、SQL Data Warehouse の Gen2 を使うことにより、各リソース クラスは Gen1 より 2.5 倍多いメモリを取得します。
 
-詳しくは、[リソース クラスと同時実行]の操作方法に関するページをご覧ください。
+詳しくは、[リソース クラスとコンカレンシー]の操作方法に関するページをご覧ください。
 
 ## <a name="lower-your-cost"></a>コストの削減
 SQL Data Warehouse の重要な機能は、[コンピューティング リソースを管理](sql-data-warehouse-manage-compute-overview.md)する機能です。 データ ウェアハウスを使用していないときは一時停止できます。そうすると、コンピューティング リソースの課金が停止されます。 パフォーマンスのニーズに合わせてリソースを拡大縮小することができます。 一時停止するには、[Azure Portal](pause-and-resume-compute-portal.md) または [PowerShell](pause-and-resume-compute-powershell.md) を使用します。 拡大縮小するには、[Azure Portal](quickstart-scale-compute-portal.md)、[Powershell](quickstart-scale-compute-powershell.md)、[T-SQL](quickstart-scale-compute-tsql.md)、または [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute) を使用します。
@@ -127,9 +127,9 @@ Azure Functions では自動スケールを利用できます。
 
 ## <a name="optimize-your-architecture-for-performance"></a>パフォーマンスのためのアーキテクチャの最適化
 
-SQL Database と Azure Analysis Services はハブとスポークのアーキテクチャにすることを検討するようお勧めします。 このソリューションは、異なるユーザー グループ間のワークロードを分離しながら、SQL Database と Azure Analysis Services の高度なセキュリティ機能も使用できます。 また、無制限の同時実行をユーザーに提供することもできます。
+SQL Database と Azure Analysis Services はハブとスポークのアーキテクチャにすることを検討するようお勧めします。 このソリューションは、異なるユーザー グループ間のワークロードを分離しながら、SQL Database と Azure Analysis Services の高度なセキュリティ機能も使用できます。 また、無制限のコンカレンシーをユーザーに提供することもできます。
 
-詳しくは、[SQL Data Warehouse を利用する一般的なアーキテクチャ](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/common-isv-application-patterns-using-azure-sql-data-warehouse/)に関するページをご覧ください。
+詳しくは、[SQL Data Warehouse を利用する一般的なアーキテクチャ](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/)に関するページをご覧ください。
 
 1 クリックで、SQL Data Warehouse から SQL Database にスポークをデプロイします。
 
@@ -147,7 +147,7 @@ SQL Database と Azure Analysis Services はハブとスポークのアーキテ
 [インデックス]:sql-data-warehouse-tables-index.md
 [パーティション]:sql-data-warehouse-tables-partition.md
 [統計]:sql-data-warehouse-tables-statistics.md
-[リソース クラスと同時実行]:resource-classes-for-workload-management.md
+[リソース クラスとコンカレンシー]:resource-classes-for-workload-management.md
 [レプリケート テーブル]:design-guidance-for-replicated-tables.md
 [分散テーブル]:sql-data-warehouse-tables-distribute.md
 
@@ -155,9 +155,9 @@ SQL Database と Azure Analysis Services はハブとスポークのアーキテ
 
 
 <!--Other Web references-->
-[typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/common-isv-application-patterns-using-azure-sql-data-warehouse/
-[is and is not]:https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
-[データ移行]:https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
+[typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/
+[is and is not]:https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
+[データ移行]:https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
 
 [Azure Data Lake Store]: ../data-factory/connector-azure-data-lake-store.md
 [sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql

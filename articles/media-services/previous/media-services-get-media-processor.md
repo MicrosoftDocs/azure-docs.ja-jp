@@ -12,19 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 64e353bbb83c7696960fc1d2e478478afbc94241
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: af6badda426f1bb81d8528cfda9b8c02d55712b3
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249239"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189040"
 ---
-# <a name="how-to-get-a-media-processor-instance"></a>方法: メディア プロセッサ インスタンスを取得する
+# <a name="how-to-get-a-media-processor-instance"></a>方法:メディア プロセッサ インスタンスを取得する
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
-> * [REST ()](media-services-rest-get-media-processor.md)
+> * [REST](media-services-rest-get-media-processor.md)
 > 
 > 
 
@@ -40,7 +40,7 @@ ms.locfileid: "50249239"
 
 ## <a name="get-media-processor"></a>メディア プロセッサの取得
 
-次のメソッドは、メディア プロセッサ インスタンスを取得する方法を示しています。 このコード例では、[Media Services にプログラムから接続する方法](media-services-use-aad-auth-to-access-ams-api.md)に関するページで説明しているように、モジュール レベルの変数 **_context** を使用してサーバー コンテキストを参照しています。
+次のメソッドは、メディア プロセッサ インスタンスを取得する方法を示しています。 このコード例では、**_context** という名前のモジュール レベルの変数の使用を前提にしてサーバー コンテキストを参照しています。これは、[Media Services にプログラムから接続する方法](media-services-use-aad-auth-to-access-ams-api.md)に関するセクションで説明されています。
 
     private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
     {

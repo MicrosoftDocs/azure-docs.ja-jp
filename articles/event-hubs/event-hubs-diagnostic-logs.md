@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs 診断ログ | Microsoft Docs
-description: Azure Event Hubs の診断ログを設定する方法について説明します。
+title: 診断ログの設定 - Azure Event Hub | Microsoft Docs
+description: Azure のイベント ハブのアクティビティ ログおよび診断ログを設定する方法について説明します。
 keywords: ''
 documentationcenter: ''
 services: event-hubs
@@ -13,21 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 07/02/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: bee6219bca21c3bc2bf4f97aa061fce0b30d55ff
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: c8f2dba8ff30ceae4085d96640623a01b6784b1e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985168"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957523"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure イベント ハブの診断ログを設定する
 
 Azure Event Hubs の 2 種類のログを表示できます。
 
-* **[アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**: これらのログには、ジョブで実行される操作に関する情報が含まれます。 このログは常に有効になっています。
-* **[診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**: 診断ログを構成することで、ジョブで発生するすべてのイベントについて、より深く考察できます。 診断ログは、ジョブが作成されたときからジョブが削除されるまでのアクティビティを記録します。ジョブの実行中に発生した更新やアクティビティも含まれます。
+* **[アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)**: これらのログには、ジョブで実行された操作に関する情報が含まれます。 このログは常に有効になっています。
+* **[診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)**: 診断ログを構成することで、ジョブで発生するすべてのイベントについて、より深く考察できます。 診断ログは、ジョブが作成されたときからジョブが削除されるまでのアクティビティを記録します。ジョブの実行中に発生した更新やアクティビティも含まれます。
 
 ## <a name="enable-diagnostic-logs"></a>Azure App Service の Web アプリの診断ログの有効化
 
@@ -47,13 +48,13 @@ Azure Event Hubs の 2 種類のログを表示できます。
 
     ![診断ログの状態を変更する](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.  アーカイブ ターゲットを設定します (ストレージ アカウント、イベント ハブ、Azure Log Analytics など)。
+5.  アーカイブ ターゲットを設定します (ストレージ アカウント、イベント ハブ、Azure Monitor ログなど)。
 
 6.  新しい診断設定を保存します。
 
 新しい設定は、10 分ほどで有効になります。 その後、構成されたアーカイブ ターゲットのログが **[診断ログ]** ウィンドウに表示されます。
 
-診断の構成の詳細については、[Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)に関するページを参照してください。
+診断の構成の詳細については、[Azure 診断ログの概要](../azure-monitor/platform/diagnostic-logs-overview.md)に関するページを参照してください。
 
 ## <a name="diagnostic-logs-categories"></a>診断ログのカテゴリ
 

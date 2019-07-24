@@ -1,19 +1,20 @@
 ---
-title: Azure IoT Edge ランタイムについて | Microsoft Docs
-description: Azure IoT Edge ランタイムの概要、およびそのエッジ デバイスの使用方法について説明します。
+title: ランタイムでデバイスを管理する方法について - Azure IoT Edge | Microsoft Docs
+description: デバイス上のモジュール、セキュリティ、通信、およびレポートを Azure IoT Edge ランタイムで管理する方法について説明します
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/13/2018
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 05c97d21e9acf1bb49418e3a7d0ccf1657f84435
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: bb2df9c32d5adc8160da82148e4a66a4ab68d182
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685193"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311601"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Azure IoT Edge ランタイムとそのアーキテクチャの概要
 
@@ -24,42 +25,42 @@ IoT Edge ランタイムは、IoT Edge デバイスで次の機能を実行し�
 * デバイスにワークロードをインストールし、更新する。
 * デバイス上の Azure IoT Edge のセキュリティ標準を維持する。
 * [IoT Edge モジュール](iot-edge-modules.md)の実行状態を絶えず確保する。
-* モジュールの正常性をクラウドに報告してリモート監視を可能にする。
+* モジュールの正常性をクラウドにレポートしてリモート監視を可能にする。
 * ダウンストリームのリーフ デバイスと IoT Edge デバイス間の通信を円滑化する。
 * IoT Edge デバイス上のモジュール間の通信を円滑化する。
-* IoT Edge デバイスとクラウドとの間の通信を円滑化する。
+* IoT Edge デバイスとクラウド間の通信を円滑化する。
 
-![IoT Edge ランタイムによる洞察とモジュールの正常性の IoT Hub への通信](./media/iot-edge-runtime/Pipeline.png)
+![ランタイムによる分析情報とモジュールの正常性の IoT Hub への通信](./media/iot-edge-runtime/Pipeline.png)
 
-IoT Edge ランタイムには、通信とモジュール管理の 2 つのカテゴリの役割があります。 これら 2 つの役割は、IoT Edge ランタイムを構成する 2 つのコンポーネントによって実行されます。 IoT Edge ハブは通信を実行し、IoT Edge エージェントは、モジュールの展開と監視を実行します。 
+IoT Edge ランタイムには、通信とモジュール管理の 2 つのカテゴリの役割があります。 これら 2 つの役割は、IoT Edge ランタイムを構成する 2 つのコンポーネントによって実行されます。 *IoT Edge ハブ*は通信を担当し、*IoT Edge エージェント*は、モジュールを展開し、監視します。 
 
-Edge ハブと Edge エージェントは、いずれも、IoT Edge デバイス上で実行される他のモジュールと同様のモジュールです。 
+IoT Edge ハブと IoT Edge エージェントはどちらも、IoT Edge デバイスで実行される他のモジュールと同様のモジュールです。 
 
 ## <a name="iot-edge-hub"></a>IoT Edge ハブ
 
-Edge ハブでは、Azure IoT Edge ランタイムを構成する 2 つのモジュールの 1 つです。 Edge ハブは、IoT Hub と同じプロトコル エンドポイントを公開することで IoT Hub のためのローカル プロキシとして動作します。 この整合性により、クライアント (デバイスまたはモジュール) は、IoT Hub と同じように IoT Edge ランタイムに接続できます。 
+IoT Edge ハブは、Azure IoT Edge ランタイムを構成する 2 つのモジュールの 1 つです。 Edge ハブは、IoT Hub と同じプロトコル エンドポイントを公開することで IoT Hub のためのローカル プロキシとして動作します。 この整合性により、クライアント (デバイスまたはモジュール) は、IoT Hub と同じように IoT Edge ランタイムに接続できます。 
 
 >[!NOTE]
->Edge ハブでは、MQTT または AMQP を使用して接続するクライアントがサポートされます。 HTTP を使用するクライアントはサポートされません。 
+> IoT Edge ハブでは、MQTT または AMQP を使用して接続するクライアントがサポートされます。 HTTP を使用するクライアントはサポートされません。 
 
-Edge ハブは、ローカルで実行される完全バージョンの IoT Hub ではありません。 Edge ハブは、いくつかの機能を IoT Hub をサイレントにデリゲートします。 たとえば、Edge ハブは、デバイスがはじめて接続を試みたとき、IoT Hub に認証要求を送信します。 初めて接続を確立した後は、セキュリティ情報は Edge ハブによってローカルでキャッシュされます。 そのデバイスからのその後の接続は、クラウドへの認証なしに許可されます。 
+IoT Edge ハブは、ローカルで実行される完全バージョンの IoT Hub ではありません。 IoT Edge ハブは、いくつかの機能を IoT Hub を自動的に委任します。 たとえば、IoT Edge ハブは、デバイスが初めて接続を試みたときに認証要求を IoT Hub に送信します。 初回の接続確立後、セキュリティ情報は IoT Edge ハブによってローカルにキャッシュされます。 そのデバイスからのその後の接続は、クラウドへの認証なしに許可されます。 
 
 >[!NOTE]
 >デバイスの認証を試みるたびに、ランタイムの接続が必要です。
 
-IoT Edge ソリューションが使用する帯域幅を減らすために、Edge ハブは、クラウドへの実際の接続数を最適化します。 Edge ハブは、モジュールまたはリーフ デバイスなどのクライアントからの論理接続を取得し、クラウドへの 1 つの物理接続に統合します。 ソリューションの他の部分は、このプロセスの詳細を認識する必要がありません。 クライアントは、すべて、共通の接続を使って接続しているにもかかわらず、クラウドにそれぞれ独自に接続していると認識します。 
+IoT Edge ソリューションが使用する帯域幅を減らすために、IoT Edge ハブは、クラウドに対して作成される実際の接続数を最適化します。 IoT Edge ハブは、モジュールやリーフ デバイスなどのクライアントからの論理接続を取得し、それらをクラウドへの 1 つの物理接続に統合します。 ソリューションの他の部分は、このプロセスの詳細を認識する必要がありません。 クライアントは、すべて、共通の接続を使って接続しているにもかかわらず、クラウドにそれぞれ独自に接続していると認識します。 
 
-![Edge ハブは複数の物理デバイスとクラウド間のゲートウェイとして機能します。](./media/iot-edge-runtime/Gateway.png)
+![IoT Edge ハブは物理デバイスと IoT Hub との間のゲートウェイです](./media/iot-edge-runtime/Gateway.png)
 
-Edge ハブでは、IoT Hub に接続されているかどうかを判断できます。 接続が切断された場合は、Edge ハブがメッセージを保存するか、ツインがローカルで更新します。 接続が再確立されると、すべてのデータが同期されます。 この一時キャッシュに使用される場所は、Edge ハブのモジュール ツインのプロパティによって規定されます。 キャッシュのサイズには上限がなく、デバイスにストレージ容量がある限り拡張されます。 
+IoT Edge ハブでは、IoT Hub に接続されているかどうかを判断できます。 接続が切断された場合は、IoT Edge ハブがメッセージを保存するか、ツインがローカルで更新します。 接続が再確立されると、すべてのデータが同期されます。 この一時キャッシュに使用される場所は、IoT Edge ハブのモジュール ツインのプロパティによって規定されます。 キャッシュのサイズには上限がなく、デバイスにストレージ容量がある限り拡張されます。 
 
 ### <a name="module-communication"></a>モジュール通信
 
-Edge Hub を使用することで、モジュール間の通信が容易になります。 メッセージ ブローカーとして Edge Hub を使用することで、モジュールの相互独立性を維持できます。 モジュールは、メッセージを受信する入力と、メッセージを書き出す出力を指定するだけです。 ソリューション開発者は、そのソリューションに固有の順序でデータを処理できるよう、これらの入力と出力を統合します。 
+IoT Edge ハブを使用することで、モジュール間の通信が容易になっています。 メッセージ ブローカーとして IoT Edge ハブを使用することで、モジュールの相互独立性を維持できます。 モジュールは、メッセージを受信する入力と、メッセージを書き出す出力を指定するだけです。 ソリューション開発者は、そのソリューションに固有の順序でデータを処理できるよう、これらの入力と出力を統合します。 
 
-![Edge Hub を使用することで、モジュール間の通信が容易になります。](./media/iot-edge-runtime/ModuleEndpoints.png)
+![IoT Edge ハブを使用することで、モジュール間の通信が容易になっています](./media/iot-edge-runtime/module-endpoints.png)
 
-データを Edge ハブに送信するために、モジュールは、SendEventAsync メソッドを呼び出します。 最初の引数は、どの出力にメッセージを送信するかを指定します。 次の疑似コードは、output1 にメッセージを送信します。
+データを IoT Edge ハブに送信するために、モジュールは、SendEventAsync メソッドを呼び出します。 最初の引数は、どの出力にメッセージを送信するかを指定します。 次の疑似コードは、output1 にメッセージを送信します。
 
    ```csharp
    ModuleClient client = new ModuleClient.CreateFromEnvironmentAsync(transportSettings); 
@@ -73,43 +74,43 @@ Edge Hub を使用することで、モジュール間の通信が容易にな�
    await client.SetInputMessageHandlerAsync(“input1”, messageProcessor, userContext);
    ```
 
-ModuleClient クラスとその通信方法について詳しくは、使用する SDK 言語 ([C# ](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)、[C および Python](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)、[Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device._module_client?view=azure-java-stable)、[Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)) の API リファレンスをご覧ください。
+ModuleClient クラスとその通信方法に関する詳細については、優先する SDK 言語 ([C# ](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)、[C および Python](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)、[Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)、[Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)) の API リファレンスを参照してください。
 
-ソリューション開発者は、Edge ハブがモジュール間でメッセージを渡す方法を決定するルールを指定します。 ルーティング ルールはクラウドで定義され、そのデバイス ツインで Edge ハブにプッシュ ダウンされます。 IoT Hub ルートと同じ構文を使用して、Azure IoT Edge のモジュール間のルートが定義されます。 
+IoT Edge ハブがモジュール間でメッセージを渡す方法を決定するルールを指定するのはソリューション開発者です。 ルーティング規則はクラウドで定義され、そのデバイス ツインの中で IoT Edge ハブにプッシュ ダウンされます。 IoT Hub ルートと同じ構文を使用して、Azure IoT Edge のモジュール間のルートが定義されます。 
 
 <!--- For more info on how to declare routes between modules, see []. --->   
 
-![モジュール間のルート](./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png)
+![モジュール間のルートは IoT Edge ハブを経由します](./media/iot-edge-runtime/module-endpoints-with-routes.png)
 
 ## <a name="iot-edge-agent"></a>IoT Edge エージェント
 
-IoT Edge エージェントは、Azure IoT Edge ランタイムを構成するもう 1 つのモジュールです。 このモジュールは、モジュールをインスタンス化し、モジュールの実行を継続し、IoT Hub にモジュールのステータスを報告します。 Edge エージェントは、他のモジュールと同じように、そのモジュール ツインを使用して、この構成データを格納します。 
+IoT Edge エージェントは、Azure IoT Edge ランタイムを構成するもう 1 つのモジュールです。 このモジュールは、モジュールをインスタンス化し、モジュールの実行を継続し、IoT Hub にモジュールのステータスを報告します。 IoT Edge エージェントは、他のモジュールと同様に、そのモジュール ツインを使用してこの構成データを格納します。 
 
-[IoT Edge セキュリティ デーモン](iot-edge-security-manager.md)がデバイスの起動時に Edge エージェントを開始します。 エージェントは IoT Hub からそのモジュール ツインを取得し、配置マニフェストを検査します。 配置マニフェストとは、開始する必要があるモジュールを宣言する JSON ファイルです。 
+デバイスの起動時に、[IoT Edge セキュリティ デーモン](iot-edge-security-manager.md)が IoT Edge エージェントを開始します。 エージェントは IoT Hub からそのモジュール ツインを取得し、配置マニフェストを検査します。 配置マニフェストとは、開始する必要があるモジュールを宣言する JSON ファイルです。 
 
-配置マニフェスト内の各項目にはモジュールに関する特定の情報が含まれており、モジュールのライフ サイクルを制御するために Edge エージェントによって使用されます。 重要なプロパティを次に示します。 
+配置マニフェスト内の各項目にはモジュールに関する特定の情報が含まれており、モジュールのライフ サイクルを制御するために IoT Edge エージェントによって使用されます。 重要なプロパティを次に示します。 
 
-* **settings.image** – Edge エージェントがモジュールを起動するために使用するコンテナー イメージ。 イメージがパスワードで保護されている場合は、コンテナー レジストリの資格情報を Edge エージェントに設定する必要があります。 コンテナー レジストリの資格情報は、配置マニフェストを使用してリモートで構成するか、IoT Edge のプログラム フォルダー内の `config.yaml` ファイルを更新することで、Edge デバイス自体で構成できます。
+* **settings.image** – IoT Edge エージェントがモジュールを起動するために使用するコンテナー イメージ。 イメージがパスワードで保護されている場合、IoT Edge エージェントは、コンテナー レジストリの資格情報を使用して構成されている必要があります。 コンテナー レジストリの資格情報は、配置マニフェストを使用してリモートで構成するか、IoT Edge のプログラム フォルダー内の `config.yaml` ファイルを更新することで、IoT Edge デバイス自体で構成できます。
 * **settings.createOptions** – モジュールのコンテナーを起動したときに、Docker デーモンに直接渡される文字列。 このプロパティで Docker オプションを追加することにより、ポート転送またはモジュール コンテナーへのボリュームのマウントなどの詳細オプションを設定できます。  
-* **status** – Edge エージェントがモジュールに設定する状態。 大部分のユーザーが Edge を使ってデバイス上のすべてのモジュールをただちに起動する必要があるため、この値は、通常、*実行中*に設定されます。 また、モジュールの初期状態を停止中に指定し、後で Edge エージェントを起動するよう指定することができます。 Edge エージェントは、報告されたプロパティで、クラウドに各モジュールの状態を報告します。 期待されるプロパティと報告されたプロパティの間に差がある場合は、デバイスの動作が不適切であることを示しています。 次の状態がサポートされています。
+* **status** – IoT Edge エージェントがモジュールを設定する状態。 IoT Edge によってデバイス上のすべてのモジュールを直ちに起動する必要があるユーザーが大半のため、この値は通常、*実行中*に設定されます。 ただし、モジュールの初期状態を "停止済み" に指定しておき、IoT Edge エージェントにモジュールを起動するよう指示するタイミングまで待機することもできます。 IoT Edge エージェントは、各モジュールの状態を、報告されるプロパティに格納してクラウドに報告します。 期待されるプロパティと報告されたプロパティの間に差がある場合は、デバイスの動作が不適切であることを示しています。 次の状態がサポートされています。
    * ダウンロード中
    * 実行中
    * 異常
    * 失敗
    * 停止済み
-* **restartPolicy** – Edge エージェントが、モジュールを再起動する方法です。 指定できる値は、次のとおりです。
-   * Never – Edge エージェントが、モジュールを再起動することはありません。
-   * onFailure - モジュールがクラッシュした場合、Edge エージェントがモジュールを再起動します。 モジュールがクリーンにシャット ダウンした場合、Edge エージェントはモジュールを再起動しません。
-   * Unhealthy - モジュールがクラッシュしたか、異常と判断された場合は、Edge エージェントによって再起動されます。
-   * Always - モジュールがクラッシュしたか、異常と判断された場合、あるいは方法に関係なくシャットダウンされた場合は、Edge エージェントによって再起動されます。 
+* **restartPolicy** – IoT Edge エージェントがモジュールを再起動する方法。 指定できる値は、次のとおりです。
+   * Never – IoT Edge エージェントがモジュールを再起動することはありません。
+   * onFailure - モジュールがクラッシュした場合に IoT Edge エージェントがモジュールを再起動します。 モジュールがクリーンにシャット ダウンした場合、IoT Edge エージェントはモジュールを再起動しません。
+   * Unhealthy - モジュールがクラッシュしたか、異常と判断された場合は、IoT Edge エージェントがモジュールを再起動します。
+   * Always - モジュールがクラッシュした場合、異常と判断された場合、または方法を問わずシャットダウンされた場合、IoT Edge エージェントがモジュールを再起動します。 
 
 IoT Edge エージェントは、ランタイム応答を IoT ハブに送信します。 考えられる応答の一覧を以下に示します。
   * 200 - OK
   * 400 - デプロイ構成が正しくない形式であるか、無効です。
   * 417 - デバイスにデプロイ構成セットがありません。
   * 412 - デプロイ構成にあるスキーマ バージョンが無効です。
-  * 406 - エッジ デバイスがオフラインであるか、状態レポートを送信していません。
-  * 500 - エッジ ランタイムでエラーが発生しました。
+  * 406 - IoT Edge デバイスがオフラインであるか、状態レポートを送信していません。
+  * 500 - IoT Edge ランタイムでエラーが発生しました。
 
 ### <a name="security"></a>セキュリティ
 

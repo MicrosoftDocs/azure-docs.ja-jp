@@ -1,26 +1,23 @@
 ---
-title: Azure Cosmos DB MongoDB API でのインデックス作成 | Microsoft Docs
-description: Azure Cosmos DB MongoDB API のインデックス作成機能についての概要を紹介します。
-services: cosmos-db
-author: orestis-ms
-manager: kfile
-editor: ''
+title: Azure Cosmos DB の MongoDB 用 API でのインデックス作成
+description: Azure Cosmos DB の MongoDB 用 API のインデックス作成機能の概要を示します。
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 03/01/2018
-ms.author: orkostak
-ms.openlocfilehash: a3dadfc4257d43f9df1b93f5d486e5577b7889d6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.date: 12/26/2018
+author: sivethe
+ms.author: sivethe
+ms.openlocfilehash: de037316efa50dd25ea04c370fa0e5878fb52ba1
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055313"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040406"
 ---
-# <a name="indexing-in-the-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB MongoDB API でのインデックス作成
+# <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用するインデックス作成
 
-Azure Cosmos DB MongoDB API には、Azure Cosmos DB の自動インデックス管理機能が利用されています。 したがってユーザーは、Azure Cosmos DB の既定のインデックス作成ポリシーを利用することができます。 つまりユーザーによってインデックスが定義されなかった場合や、いずれのインデックスも削除されなかった場合、特に何もしなくても、すべてのフィールドは、コレクションに挿入された時点で、インデックスが自動的に作成されます。 ほとんどのシナリオでは、アカウントに設定されている既定のインデックス作成ポリシーの使用をお勧めします。
+Azure Cosmos DB の MongoDB 用 API では、Cosmos DB の自動インデックス管理機能を利用します。 したがって、ユーザーは Cosmos DB の既定のインデックス作成ポリシーにアクセスすることができます。 そのため、ユーザーによってインデックスが定義されなかった場合や、いずれのインデックスも削除されなかった場合、すべてのフィールドは、コレクションに挿入された時点で、インデックスが自動的に作成されます。 ほとんどのシナリオでは、アカウントに設定されている既定のインデックス作成ポリシーの使用をお勧めします。
 
 ## <a name="dropping-the-default-indexes"></a>既定のインデックスの削除
 
@@ -99,5 +96,5 @@ globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 現在、一意なインデックスを作成できるのは、コレクションにドキュメントが含まれていないときに限られます。 広く使われている MongoDB 移行ツールはいずれも、データのインポート後に一意なインデックスを作成しようと試みます。 この問題を回避するためには、移行ツールに委ねることはせずに、対応するコレクションと一意なインデックスをユーザーが手動で作成することをお勧めします (```mongorestore``` の場合、この動作を実現するには、コマンド ラインで --noIndexRestore フラグを使用します)。
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Cosmos DB のデータ インデックス作成のしくみ](../cosmos-db/indexing-policies.md)
-* [TTL (Time to Live) を使って Azure Cosmos DB コレクションのデータの有効期限が自動的に切れるようにする](../cosmos-db/time-to-live.md)
+* [Azure Cosmos DB のインデックス作成](../cosmos-db/index-policy.md)
+* [Time to Live を使用して Azure Cosmos DB のデータの有効期限が自動的に切れるようにする](../cosmos-db/time-to-live.md)

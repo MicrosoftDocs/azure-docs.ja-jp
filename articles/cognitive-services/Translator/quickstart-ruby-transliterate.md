@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: テキスト スクリプトを変換する、Ruby - Translator Text API'
+title: クイック スタート:テキスト スクリプトを変換する (Ruby) - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Ruby で Translator Text API を使って 1 つの言語の中でテキストの表記を変換します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/22/2018
+ms.date: 02/08/2019
 ms.author: erhopf
-ms.openlocfilehash: d78586243b47563440f629689800ad618cb411d8
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 37ea719811d9b47dbe809278a0ad8f0bd9d25081
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647087"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982932"
 ---
-# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-ruby"></a>クイック スタート: Translator Text REST API を使用してテキストを表記変換する (Ruby)
+# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-ruby"></a>クイック スタート:Translator Text REST API を使用してテキストを表記変換する (Ruby)
 
 このクイック スタートでは、Translator Text API を使って、1 つの言語の中でテキストの表記を変換します。
 

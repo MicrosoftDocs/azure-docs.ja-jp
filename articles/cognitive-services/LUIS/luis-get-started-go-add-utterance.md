@@ -1,22 +1,26 @@
 ---
-title: Go 言語クイック スタート - モデルの変更と LUIS アプリのトレーニング
-description: この Go 言語クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。 発話の例は、意図にマッピングされる会話形式のユーザー テキストです。 意図に対する発話の例を与えるには、ユーザーによって入力されるどのようなテキストが、どの意図に属しているかを LUIS に学習させます。
-titleSuffix: Microsoft Cognitive Services
+title: 変更、アプリのトレーニング、Go
+description: この Go 言語クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。
+titleSuffix: Language Understanding - Microsoft Cognitive Services
 author: diberry
-manager: cgronlun
+manager: nitinme
+services: cognitive-services
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 2cd8c1aa2deb2af97d4f720efa0e40146b15b888
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 60594137306bfe58024877947959f2865fffe019
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031868"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961807"
 ---
 # <a name="quickstart-change-model-using-go"></a>クイック スタート: Go を使ってモデルを変更する
+
+このクイック スタートでは、LUIS エンドポイントに発話を渡して、意図とエンティティを取得します。
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -42,7 +46,7 @@ ms.locfileid: "47031868"
 
 3. 一般的な HTTP 要求の関数を追加します。この関数には、オーサリング キーをヘッダーで渡す処理が含まれています。 
 
-   [!code-go[Add HTTP request function which includes passing authoring key in header. ](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=12-36 "Add HTTP request function, which includes passing authoring key in header. ")]
+   [!code-go[Add HTTP request function which includes passing authoring key in header.](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=12-36 "Add HTTP request function, which includes passing authoring key in header. ")]
 
 4. JSON ファイルから発話の例を追加します。
 
@@ -50,15 +54,15 @@ ms.locfileid: "47031868"
 
 5. トレーニングを要求します。 トレーニングの状態と同じルートの動詞をヘルパー関数を使用して設定します。 
 
-   [!code-go[Request training. ](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=77-86 "Request training. ")]
+   [!code-go[Request training.](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=77-86 "Request training. ")]
 
 6. トレーニングの状態を要求します。 トレーニングの要求と同じルートの動詞をヘルパー関数を使用して設定します。 
 
-   [!code-go[Request training status. ](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=87-90 "Request training status. ")]
+   [!code-go[Request training status.](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=87-90 "Request training status. ")]
 
 7. コマンド ラインの解析を処理するメイン関数を追加します。
 
-   [!code-go[Add main function to handle command line parsing. ](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=38-60 "Add main function to handle command-line parsing.")]
+   [!code-go[Add main function to handle command line parsing.](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=38-60 "Add main function to handle command-line parsing.")]
 
 ## <a name="add-an-utterance-from-the-command-line-train-and-get-status"></a>コマンド ラインから発話を追加し、トレーニングして、状態を取得する
 
@@ -66,7 +70,7 @@ ms.locfileid: "47031868"
 
 2. コマンド プロンプトに次のテキストを入力して、コマンド ラインから Go アプリケーションを実行します。 
 
-    ```CMD
+    ```console
     add-utterances -appID <your-app-id> -authoringKey <add-your-authoring-key> -version <your-version-id> -region westus -utteranceFile utterances.json
 
     ```
@@ -75,7 +79,7 @@ ms.locfileid: "47031868"
 
     このコマンド プロンプトを実行すると、次の結果が表示されます。
 
-    ```CMD
+    ```console
     add example utterances requested
     [
         {

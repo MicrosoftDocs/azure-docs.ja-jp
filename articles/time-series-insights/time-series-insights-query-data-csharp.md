@@ -11,12 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: 6c4a99096efc95f439d6c9479cb9014957207ea6
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: 72059862b3faf155bf08c5e2ca643fc32582c6a1
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630859"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696143"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>C# を使用して Azure Time Series Insights 環境からデータを照会する
 
@@ -111,7 +112,7 @@ namespace TimeSeriesInsightsQuerySample
                 toAvailabilityTimestamp);
             Console.WriteLine();
 
-            // Assume data for the whole availablility range is requested.
+            // Assume data for the whole availability range is requested.
             DateTime from = fromAvailabilityTimestamp;
             DateTime to = toAvailabilityTimestamp;
 
@@ -456,4 +457,4 @@ namespace TimeSeriesInsightsQuerySample
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
-> [クエリ API リファレンス](/rest/api/time-series-insights/time-series-insights-reference-queryapi)。
+> [クエリ API リファレンス](/rest/api/time-series-insights/ga-query-api)。

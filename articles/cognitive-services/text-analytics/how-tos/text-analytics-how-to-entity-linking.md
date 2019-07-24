@@ -3,19 +3,19 @@ title: Text Analytics API でエンティティ認識を利用する
 titleSuffix: Azure Cognitive Services
 description: Text Analytics REST API を使用してエンティティを認識する方法について説明します。
 services: cognitive-services
-author: ashmaka
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: article
-ms.date: 10/01/2018
-ms.author: ashmaka
-ms.openlocfilehash: e81428d5bdffb65b5e61a7aba7496da275f249a5
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: dfbb31ce9f61ee28fef046120474a6a170906512
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230558"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505577"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Text Analytics (プレビュー段階) で名前付きエンティティの認識を使用する方法
 
@@ -23,7 +23,7 @@ ms.locfileid: "50230558"
 
 ## <a name="entity-linking-and-named-entity-recognition"></a>Entity Linking と名前付きエンティティ認識
 
-Text Analytics の`entities`エンドポイントは､名前付きエンティティの認識 (NER) とエンティティ リンクの両方をサポートしています｡
+Text Analytics の `entities` エンドポイントは、名前付きエンティティの認識 (NER) とエンティティ リンクの両方をサポートしています。
 
 ### <a name="entity-linking"></a>Entity Linking
 エンティティ リンク設定は、テキスト内で見つかったエンティティの個性を識別してあいまいさを解消する機能です (例: "Mars" が惑星として使用されているか、古代ローマの戦争の神様として使用されているかを判定する)。 このプロセスのためには、認識されたエンティティがリンクされているナレッジ ベースが存在している必要があります。`entities` エンドポイントの Text Analytics には、Wikipedia がナレッジ ベースとして使用されます。
@@ -41,29 +41,30 @@ Text Analytics [バージョン 2.1 プレビュー](https://westus.dev.cognitiv
 
 ## <a name="supported-types-for-named-entity-recognition"></a>名前付きエンティティ認識でサポートされている型
 
-| type  | SubType | 例 |
+| Type  | SubType | 例 |
 |:-----------   |:------------- |:---------|
-| Person        | 該当なし\*         | "Jeff"、"Bill Gates"     |
-| Location      | 該当なし\*         | "Redmond, Washington"､"Paris"  |
+| Person        | 該当なし\*         | "Jeff", "Bill Gates"     |
+| Location      | 該当なし\*         | "Redmond, Washington", "Paris"  |
 | Organization  | 該当なし\*         | "Microsoft"   |
-| 数量      | Number        | "6"､"six"     | 
-| 数量      | 割合    | "50%"､"fifty percent"| 
-| 数量      | Ordinal       | "2nd"､"second"     | 
-| 数量      | NumberRange   | "4 to 8"     | 
-| 数量      | Age           | "90 day old"､"30 years old"    | 
-| 数量      | 通貨      | "$10.99"     | 
-| 数量      | Dimension     | "10 miles"､"40 cm"     | 
-| 数量      | 気温   | "32 degrees"    |
-| Datetime      | 該当なし\*         | "6:30PM February 4, 2012"      | 
-| Datetime      | 日付          | "May 2nd, 2017", "05/02/2017"   | 
-| 日時     | Time          | "8am"､"8:00"  | 
-| Datetime      | Daterange     | "May 2nd to May 5th"    | 
-| Datetime      | TimeRange     | "6pm to 7pm"     | 
-| Datetime      | duration      | "1 minute and 45 seconds"   | 
-| Datetime      | Set           | "every Tuesday"     | 
-| Datetime      | TimeZone      |    | 
-| URL           | 該当なし\*         | "http://www.bing.com"    |
-| 電子メール         | 該当なし\*         | "support@contoso.com" |
+| Quantity      | Number        | "6", "six"     | 
+| Quantity      | 割合    | "50%"､"fifty percent"| 
+| Quantity      | Ordinal       | "2nd"､"second"     | 
+| Quantity      | NumberRange   | "4 to 8"     | 
+| Quantity      | Age           | "90 day old"､"30 years old"    | 
+| Quantity      | 通貨      | "$10.99"     | 
+| Quantity      | Dimension     | "10 miles"､"40 cm"     | 
+| Quantity      | 気温   | "32 degrees"    |
+| DateTime      | 該当なし\*         | "6:30PM February 4, 2012"      | 
+| DateTime      | Date          | "May 2nd, 2017", "05/02/2017"   | 
+| DateTime      | Time          | "8am", "8:00"  | 
+| DateTime      | DateRange     | "May 2nd to May 5th"    | 
+| DateTime      | TimeRange     | "6pm to 7pm"     | 
+| DateTime      | Duration      | "1 minute and 45 seconds"   | 
+| DateTime      | Set           | "every Tuesday"     | 
+| DateTime      | TimeZone      |    | 
+| URL           | 該当なし\*         | "https:\//www.bing.com"    |
+| Email         | 該当なし\*         | "support@contoso.com" |
+
 \* 入力および抽出されたエンティティによっては、一部エンティティで `SubType` が省略されることがあります。
 
 
@@ -74,7 +75,7 @@ JSON ドキュメントは、id、text、language の形式である必要があ
 
 現在サポートされている言語については、[この一覧](../text-analytics-supported-languages.md)を参照してください。
 
-ドキュメントのサイズは、ドキュメントあたり 5,000 文字未満である必要があり、コレクションあたり最大 1,000 の項目 (ID) を含めることができます。 コレクションは、要求の本文で送信されます。 次の例では、エンティティ リンク設定の末尾に付け加えるコンテンツを示しています。
+ドキュメントのサイズは、ドキュメントあたり 5,120 文字未満である必要があり、コレクションあたり最大 1,000 の項目 (ID) を含めることができます。 コレクションは、要求の本文で送信されます。 次の例では、エンティティ リンク設定の末尾に付け加えるコンテンツを示しています。
 
 ```
 {"documents": [{"id": "1",
@@ -89,11 +90,11 @@ JSON ドキュメントは、id、text、language の形式である必要があ
 }
 ```    
     
-## <a name="step-1-structure-the-request"></a>手順 1: 要求を構造化する
+## <a name="step-1-structure-the-request"></a>手順 1:要求を構造化する
 
 要求定義の詳細については、[Text Analytics API を呼び出す方法](text-analytics-how-to-call-api.md)に関するページを参照してください。 確認に便利なように、以下に再度、要点を示します。
 
-+ **POST** 要求を作成します。 この要求については次の API ドキュメントを確認してください: [Entity Linking API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
++ **POST** 要求を作成します。 この要求については次の API ドキュメントを確認してください。[Entity Linking API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
 + エンティティ抽出用の HTTP エンドポイントを設定します。 そこには、`/entities` リソースが含まれている必要があります: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
 
@@ -104,13 +105,13 @@ JSON ドキュメントは、id、text、language の形式である必要があ
 > [!Tip]
 > [Postman](text-analytics-how-to-call-api.md) を使用するか、[ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)に記載されている **API テスト コンソール**を開き、要求を構造化して POST でサービスに投稿します。
 
-## <a name="step-2-post-the-request"></a>手順 2: 要求を投稿する
+## <a name="step-2-post-the-request"></a>手順 2:要求を投稿する
 
-要求が受信されると分析が実行されます。 サービスは、1 分あたり最大 100 個の要求を受け付けます。 各要求の最大サイズは 1 MB です。
+要求が受信されると分析が実行されます。 このサービスは、毎秒 100 件/毎分 1000 件の要求を受け取ります。 各要求の最大サイズは 1 MB です。
 
 サービスはステートレスであることを思い出してください。 ユーザーのアカウントに保存されるデータはありません。 結果はすぐに、応答で返されます。
 
-## <a name="step-3-view-results"></a>手順 3: 結果を表示する
+## <a name="step-3-view-results"></a>手順 3:結果の表示
 
 すべての POST 要求で、ID と検出されたプロパティを含む JSON 形式の応答が返されます。
 

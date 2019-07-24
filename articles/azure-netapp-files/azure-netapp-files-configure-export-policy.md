@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp Files ボリュームのエクスポート ポリシーを構成する | Microsoft Docs
-description: Azure NetApp Files ボリュームへのアクセスを制御するエクスポート ポリシーの構成方法について説明します。
+title: Azure NetApp Files を使用して NFS ボリュームのエクスポート ポリシーを構成する | Microsoft Docs
+description: Azure NetApp Files を使用して NFS ボリュームへのアクセスを制御するエクスポート ポリシーの構成方法について説明します
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -11,19 +11,19 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 03/28/2018
+ms.topic: conceptual
+ms.date: 03/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 08de7e2ca8cd993a0931f5b16cb9d6c9a04e53dc
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 8cda5921a1aec86d28beabbd9cea5b07a203a0e8
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010958"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401481"
 ---
-# <a name="configure-export-policy-for-a-volume-optional"></a>ボリュームのエクスポート ポリシーを構成する (省略可能)
+# <a name="configure-export-policy-for-an-nfs-volume"></a>NFS ボリュームのエクスポート ポリシーを構成する
 
-Azure NetApp Files ボリュームへのアクセスを制御するエクスポート ポリシーは、必要に応じて構成することができます。 
+Azure NetApp Files ボリュームへのアクセスを制御するエクスポート ポリシーは、必要に応じて構成することができます。 エクスポート ポリシーは NFS ボリュームについてのみサポートされています。 
 
 ## <a name="steps"></a>手順 
 
@@ -47,7 +47,7 @@ Azure NetApp Files ボリュームへのアクセスを制御するエクスポ�
 
     * **[プロトコル]**   
         エクスポート ポリシーに使用するプロトコルを指定します。   
-        現在、Azure NetApp Files でサポートされるのは NFSv3 のみです。
+        現在、Azure NetApp Files エクスポート ポリシーでサポートされるのは NFSv3 のみです。
 
     ![エクスポート ポリシー](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 

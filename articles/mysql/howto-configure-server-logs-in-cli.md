@@ -1,21 +1,18 @@
 ---
 title: Azure CLI を使用して Azure Database for MySQL のサーバー ログにアクセスする
 description: この記事では、Azure CLI コマンド ライン ユーティリティを使用して Azure Database for MySQL のサーバー ログにアクセスする方法について説明します。
-services: mysql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: e3940f07ab97eb2ad03c347c39bf2412a8497f5e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 207e9965f6600477e1df93845bc41bd33b5c028c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978456"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547033"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Azure CLI を使用してサーバー ログを構成してアクセスする
 Azure CLI (Azure のコマンドライン ユーティリティ) を使用して Azure Database for MySQL のサーバー ログをダウンロードできます。
@@ -28,7 +25,7 @@ Azure CLI (Azure のコマンドライン ユーティリティ) を使用して
 ## <a name="configure-logging-for-azure-database-for-mysql"></a>Azure Database for MySQL のログ記録の構成
 以下の手順に従って、MySQL 低速クエリ ログにアクセスするサーバーを構成できます。
 1. **slow\_query\_log** パラメーターをオンに設定してログ記録を有効にします。
-2. **long\_query\_time** や **log\_slow\_admin\_statements** などのパラメーターを調整します。
+2. **long\_query\_time** や **log\_slow\_admin\_statements** などのパラメーターを調整します。
 
 これらのパラメーターの値を Azure CLI で設定する方法については、[サーバーのパラメーターを構成する方法](howto-configure-server-parameters-using-cli.md)に関する記事をご覧ください。 
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5d52653d68c6ebfca7e35a134da263eee99fd3e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1229b7f9e2a430a663a3e78bb457c03cf4a4a590
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657079"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480585"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>Azure で SAP ASCS/SCS インスタンス用の Windows フェールオーバー クラスターと共有ディスクに SAP NetWeaver HA をインストールする
 
@@ -41,7 +41,7 @@ ms.locfileid: "34657079"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -183,35 +183,35 @@ DBMS のセットアップは使用する DBMS システムによって異なる
 
 ### <a name="a97ad604-9094-44fe-a364-f89cb39bf097"></a>クラスター化された SAP ASCS/SCS インスタンスの仮想ホスト名の作成
 
-1.  Windows DNS マネージャーで、ASCS/SCS インスタンスの仮想ホスト名の DNS エントリを作成します。
+1. Windows DNS マネージャーで、ASCS/SCS インスタンスの仮想ホスト名の DNS エントリを作成します。
 
-  > [!IMPORTANT]
-  > ASCS/SCS インスタンスの仮想ホスト名に割り当てる IP アドレスは Azure Load Balancer (\<SID\>-lb-ascs) に割り当てた IP アドレスと同じでなければなりません。  
-  >
-  >
+   > [!IMPORTANT]
+   > ASCS/SCS インスタンスの仮想ホスト名に割り当てる IP アドレスは Azure Load Balancer (\<SID\>-lb-ascs) に割り当てた IP アドレスと同じでなければなりません。  
+   >
+   >
 
-  SAP ASCS/SCS の仮想ホスト名 (pr1-ascs-sap) の IP アドレスは、Azure Load Balancer (pr1-lb-ascs) の IP アドレスと同じです。
+   SAP ASCS/SCS の仮想ホスト名 (pr1-ascs-sap) の IP アドレスは、Azure Load Balancer (pr1-lb-ascs) の IP アドレスと同じです。
 
-  ![図 1: SAP ASCS/SCS クラスターの仮想名と TCP/IP アドレスの DNS エントリを定義する][sap-ha-guide-figure-3046]
+   ![図 1:SAP ASCS/SCS クラスターの仮想名と TCP/IP アドレスの DNS エントリを定義する][sap-ha-guide-figure-3046]
 
-  _**図 1:** SAP ASCS/SCS クラスターの仮想名と TCP/IP アドレスの DNS エントリを定義する_
+   _**図 1:** SAP ASCS/SCS クラスターの仮想名と TCP/IP アドレスの DNS エントリを定義する_
 
-2.  仮想ホスト名に割り当てる IP アドレスを定義するには、**[DNS マネージャー]** > **[ドメイン]** の順に選びます。
+2. 仮想ホスト名に割り当てる IP アドレスを定義するには、**[DNS マネージャー]** > **[ドメイン]** の順に選びます。
 
-  ![図 2: SAP ASCS/SCS クラスター構成の新しい仮想名と TCP/IP アドレス][sap-ha-guide-figure-3047]
+   ![図 2:SAP ASCS/SCS クラスター構成の新しい仮想名と TCP/IP アドレス][sap-ha-guide-figure-3047]
 
-  _**図 2:** SAP ASCS/SCS クラスター構成の新しい仮想名と TCP/IP アドレス_
+   _**図 2:** SAP ASCS/SCS クラスター構成の新しい仮想名と TCP/IP アドレス_
 
 ### <a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a> 最初の SAP クラスター ノードのインストール
 
-1.  クラスター ノード A で、最初のクラスター ノード オプションを実行します。たとえば、pr1-ascs-0* ホストで実行します。
-2.  Azure 内部ロード バランサーの既定のポートを維持するには、以下を選択します。
+1. クラスター ノード A で、最初のクラスター ノード オプションを実行します。たとえば、pr1-ascs-0* ホストで実行します。
+2. Azure 内部ロード バランサーの既定のポートを維持するには、以下を選択します。
 
-  * **ABAP システム**: **ASCS** インスタンス番号 **00**
-  * **Java システム**: **SCS** インスタンス番号 **01**
-  * **ABAP + Java システム**: **ASCS** インスタンス番号 **00** と **SCS** インスタンス番号 **01**
+   * **ABAP システム**:**ASCS** インスタンス番号 **00**
+   * **Java システム**:**SCS** インスタンス番号 **01**
+   * **ABAP+Java システム**:**ASCS** インスタンス番号 **00** と **SCS** インスタンス番号 **01**
 
-  ABAP ASCS インスタンスに対して 00 以外、Java SCS インスタンスに対して 01 以外のインスタンス番号を使うには、最初に、Azure 内部ロード バランサーの既定の負荷分散規則を変更します。 詳しくは、「[Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分散規則の変更][sap-ha-guide-8.9]」をご覧ください。
+   ABAP ASCS インスタンスに対して 00 以外、Java SCS インスタンスに対して 01 以外のインスタンス番号を使うには、最初に、Azure 内部ロード バランサーの既定の負荷分散規則を変更します。 詳しくは、「[Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分散規則の変更][sap-ha-guide-8.9]」をご覧ください。
 
 次のいくつかのタスクは、通常の SAP インストール ドキュメントには記載されていません。
 
@@ -226,20 +226,20 @@ DBMS のセットアップは使用する DBMS システムによって異なる
 
 ASCS/SCS インスタンスの SAP プロファイルを変更するには
 
-1.  SAP ASCS/SCS インスタンス プロファイルに次のプロファイル パラメーターを追加します。
+1. SAP ASCS/SCS インスタンス プロファイルに次のプロファイル パラメーターを追加します。
 
-  ```
-  enque/encni/set_so_keepalive = true
-  ```
-  このガイドの例では、パスは次のようになります。
+   ```
+   enque/encni/set_so_keepalive = true
+   ```
+   このガイドの例では、パスは次のようになります。
 
-  `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_ASCS00_pr1-ascs-sap`
+   `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_ASCS00_pr1-ascs-sap`
 
-  たとえば、SAP SCS インスタンス プロファイルの対応するパスは次のようになります。
+   たとえば、SAP SCS インスタンス プロファイルの対応するパスは次のようになります。
 
-  `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
+   `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
 
-2.  変更を適用するには、SAP ASCS/SCS インスタンスを再起動します。
+2. 変更を適用するには、SAP ASCS/SCS インスタンスを再起動します。
 
 ### <a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a> プローブ ポートの追加
 
@@ -249,103 +249,103 @@ ASCS/SCS インスタンスの SAP プロファイルを変更するには
 
 プローブ ポートを追加するには
 
-1.  次の PowerShell コマンドを実行して、現在の **ProbePort** の値を確認します。
+1. 次の PowerShell コマンドを実行して、現在の **ProbePort** の値を確認します。
 
-  ```PowerShell
-  $SAPSID = "PR1"     # SAP <SID>
+   ```powershell
+   $SAPSID = "PR1"     # SAP <SID>
 
-  $SAPNetworkIPClusterName = "SAP $SAPSID IP"
-  Get-ClusterResource $SAPNetworkIPClusterName | Get-ClusterParameter
-  ```
+   $SAPNetworkIPClusterName = "SAP $SAPSID IP"
+   Get-ClusterResource $SAPNetworkIPClusterName | Get-ClusterParameter
+   ```
 
    クラスター構成内のいずれかの仮想マシンからコマンドを実行します。
 
-2.  プローブ ポートを定義します。 既定のプローブ ポート番号は 0 です。 この例では、プローブ ポート 62000 を使います。
+2. プローブ ポートを定義します。 既定のプローブ ポート番号は 0 です。 この例では、プローブ ポート 62000 を使います。
 
-  ![図 3: クラスター構成のプローブ ポートは既定で 0 に設定されている][sap-ha-guide-figure-3048]
+   ![図 3:クラスター構成のプローブ ポートは既定で 0 に設定されている][sap-ha-guide-figure-3048]
 
-  _**図 3:** 既定のクラスター構成のプローブ ポートは 0 に設定されている_
+   _**図 3:** 既定のクラスター構成のプローブ ポートは 0 に設定されている_
 
-  ポート番号は、SAP Azure Resource Manager テンプレートで定義されています。 PowerShell でポート番号を割り当てることができます。
+   ポート番号は、SAP Azure Resource Manager テンプレートで定義されています。 PowerShell でポート番号を割り当てることができます。
 
-  SAP \<SID\> IP クラスター リソースの新しい ProbePort 値を設定するには、次の PowerShell スクリプトを実行し、環境の PowerShell 変数を更新します。
+   SAP \<SID\> IP クラスター リソースの新しい ProbePort 値を設定するには、次の PowerShell スクリプトを実行し、環境の PowerShell 変数を更新します。
 
-  ```PowerShell
-  $SAPSID = "PR1"      # SAP <SID>
-  $ProbePort = 62000   # ProbePort of the Azure internal load balancer
+   ```powershell
+   $SAPSID = "PR1"      # SAP <SID>
+   $ProbePort = 62000   # ProbePort of the Azure internal load balancer
 
-  Clear-Host
-  $SAPClusterRoleName = "SAP $SAPSID"
-  $SAPIPresourceName = "SAP $SAPSID IP"
-  $SAPIPResourceClusterParameters =  Get-ClusterResource $SAPIPresourceName | Get-ClusterParameter
-  $IPAddress = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "Address" }).Value
-  $NetworkName = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "Network" }).Value
-  $SubnetMask = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "SubnetMask" }).Value
-  $OverrideAddressMatch = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "OverrideAddressMatch" }).Value
-  $EnableDhcp = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "EnableDhcp" }).Value
-  $OldProbePort = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "ProbePort" }).Value
+   Clear-Host
+   $SAPClusterRoleName = "SAP $SAPSID"
+   $SAPIPresourceName = "SAP $SAPSID IP"
+   $SAPIPResourceClusterParameters =  Get-ClusterResource $SAPIPresourceName | Get-ClusterParameter
+   $IPAddress = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "Address" }).Value
+   $NetworkName = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "Network" }).Value
+   $SubnetMask = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "SubnetMask" }).Value
+   $OverrideAddressMatch = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "OverrideAddressMatch" }).Value
+   $EnableDhcp = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "EnableDhcp" }).Value
+   $OldProbePort = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "ProbePort" }).Value
 
-  $var = Get-ClusterResource | Where-Object {  $_.name -eq $SAPIPresourceName  }
+   $var = Get-ClusterResource | Where-Object {  $_.name -eq $SAPIPresourceName  }
 
-  Write-Host "Current configuration parameters for SAP IP cluster resource '$SAPIPresourceName' are:" -ForegroundColor Cyan
-  Get-ClusterResource -Name $SAPIPresourceName | Get-ClusterParameter
+   Write-Host "Current configuration parameters for SAP IP cluster resource '$SAPIPresourceName' are:" -ForegroundColor Cyan
+   Get-ClusterResource -Name $SAPIPresourceName | Get-ClusterParameter
 
-  Write-Host
-  Write-Host "Current probe port property of the SAP cluster resource '$SAPIPresourceName' is '$OldProbePort'." -ForegroundColor Cyan
-  Write-Host
-  Write-Host "Setting the new probe port property of the SAP cluster resource '$SAPIPresourceName' to '$ProbePort' ..." -ForegroundColor Cyan
-  Write-Host
+   Write-Host
+   Write-Host "Current probe port property of the SAP cluster resource '$SAPIPresourceName' is '$OldProbePort'." -ForegroundColor Cyan
+   Write-Host
+   Write-Host "Setting the new probe port property of the SAP cluster resource '$SAPIPresourceName' to '$ProbePort' ..." -ForegroundColor Cyan
+   Write-Host
 
-  $var | Set-ClusterParameter -Multiple @{"Address"=$IPAddress;"ProbePort"=$ProbePort;"Subnetmask"=$SubnetMask;"Network"=$NetworkName;"OverrideAddressMatch"=$OverrideAddressMatch;"EnableDhcp"=$EnableDhcp}
+   $var | Set-ClusterParameter -Multiple @{"Address"=$IPAddress;"ProbePort"=$ProbePort;"Subnetmask"=$SubnetMask;"Network"=$NetworkName;"OverrideAddressMatch"=$OverrideAddressMatch;"EnableDhcp"=$EnableDhcp}
 
-  Write-Host
+   Write-Host
 
-  $ActivateChanges = Read-Host "Do you want to take restart SAP cluster role '$SAPClusterRoleName', to activate the changes (yes/no)?"
+   $ActivateChanges = Read-Host "Do you want to take restart SAP cluster role '$SAPClusterRoleName', to activate the changes (yes/no)?"
 
-  if($ActivateChanges -eq "yes"){
-  Write-Host
-  Write-Host "Activating changes..." -ForegroundColor Cyan
+   if($ActivateChanges -eq "yes"){
+   Write-Host
+   Write-Host "Activating changes..." -ForegroundColor Cyan
 
-  Write-Host
-  write-host "Taking SAP cluster IP resource '$SAPIPresourceName' offline ..." -ForegroundColor Cyan
-  Stop-ClusterResource -Name $SAPIPresourceName
-  sleep 5
+   Write-Host
+   write-host "Taking SAP cluster IP resource '$SAPIPresourceName' offline ..." -ForegroundColor Cyan
+   Stop-ClusterResource -Name $SAPIPresourceName
+   sleep 5
 
-  Write-Host "Starting SAP cluster role '$SAPClusterRoleName' ..." -ForegroundColor Cyan
-  Start-ClusterGroup -Name $SAPClusterRoleName
+   Write-Host "Starting SAP cluster role '$SAPClusterRoleName' ..." -ForegroundColor Cyan
+   Start-ClusterGroup -Name $SAPClusterRoleName
 
-  Write-Host "New ProbePort parameter is active." -ForegroundColor Green
-  Write-Host
+   Write-Host "New ProbePort parameter is active." -ForegroundColor Green
+   Write-Host
 
-  Write-Host "New configuration parameters for SAP IP cluster resource '$SAPIPresourceName':" -ForegroundColor Cyan
-  Write-Host
-  Get-ClusterResource -Name $SAPIPresourceName | Get-ClusterParameter
-  }else
-  {
-  Write-Host "Changes are not activated."
-  }
-  ```
+   Write-Host "New configuration parameters for SAP IP cluster resource '$SAPIPresourceName':" -ForegroundColor Cyan
+   Write-Host
+   Get-ClusterResource -Name $SAPIPresourceName | Get-ClusterParameter
+   }else
+   {
+   Write-Host "Changes are not activated."
+   }
+   ```
 
-  SAP \<SID\> クラスター ロールをオンラインにした後、**ProbePort** が新しい値に設定されていることを確認します。
+   SAP \<SID\> クラスター ロールをオンラインにした後、**ProbePort** が新しい値に設定されていることを確認します。
 
-  ```PowerShell
-  $SAPSID = "PR1"     # SAP <SID>
+   ```powershell
+   $SAPSID = "PR1"     # SAP <SID>
 
-  $SAPNetworkIPClusterName = "SAP $SAPSID IP"
-  Get-ClusterResource $SAPNetworkIPClusterName | Get-ClusterParameter
+   $SAPNetworkIPClusterName = "SAP $SAPSID IP"
+   Get-ClusterResource $SAPNetworkIPClusterName | Get-ClusterParameter
 
-  ```
-  スクリプトを実行した後、変更を有効にするために SAP クラスター グループを再起動するよう求められます。
+   ```
+   スクリプトを実行した後、変更を有効にするために SAP クラスター グループを再起動するよう求められます。
 
-  ![図 4: 新しい値を設定した後でクラスター ポートをプローブする][sap-ha-guide-figure-3049]
+   ![図 4:新しい値を設定した後でクラスター ポートをプローブする][sap-ha-guide-figure-3049]
 
-  _**図 4:** 新しい値を設定した後でクラスター ポートをプローブする_
+   _**図 4:** 新しい値を設定した後でクラスター ポートをプローブする_
 
 ### <a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a> Windows ファイアウォール プローブ ポートを開く
 
 両方のクラスター ノードで Windows ファイアウォール プローブ ポートを開きます。 Windows ファイアウォール プローブ ポートを開くには、次のスクリプトを使用します。 環境に合わせて PowerShell 変数を更新してください。
 
-  ```PowerShell
+  ```powershell
   $ProbePort = 62000   # ProbePort of the Azure internal load balancer
 
   New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
@@ -365,7 +365,7 @@ ASCS/SCS インスタンスの SAP プロファイルを変更するには
 
 両方のクラスター ノードで、SAP ERS Windows サービスの開始の種類を **[自動 (遅延開始)]** に変更します。
 
-![図 5: SAP ERS インスタンスのサービスの種類を遅延自動に変更する][sap-ha-guide-figure-3050]
+![図 5:SAP ERS インスタンスのサービスの種類を遅延自動に変更する][sap-ha-guide-figure-3050]
 
 _**図 5:** SAP ERS インスタンスのサービスの種類を遅延自動に変更する_
 
@@ -389,41 +389,41 @@ SAP アプリケーション サーバー インスタンスのホストとし�
 
 SAP PR1 クラスター グループが、クラスター ノード A (たとえば pr1-ascs-0) で動作しています。 SAP PR1 クラスター グループに含まれる共有ディスク ドライブ S を、クラスター ノード A に割り当てます。ASCS/SCS インスタンスもディスク ドライブ S を使います。 
 
-![図 6: フェールオーバー クラスター マネージャー: SAP \<SID\> クラスター グループがクラスター ノード A で動作している][sap-ha-guide-figure-5000]
+![図 6:フェールオーバー クラスター マネージャー:SAP \<SID\> クラスター グループがクラスター ノード A で動作している][sap-ha-guide-figure-5000]
 
-_**図 6:** フェールオーバー クラスター マネージャー: \<SAP\> SID クラスター グループがクラスター ノード A で動作している_
+_**図 6:** フェールオーバー クラスター マネージャー:SAP \<SID\> クラスター グループがクラスター ノード A で動作している_
 
 SIOS DataKeeper の管理および構成ツールで、共有ディスクのデータがクラスター ノード A (例: pr1-ascs-0 [10.0.0.40]) のソース ボリューム ドライブ S から、クラスター ノード B (例: pr1-ascs-1 [10.0.0.41]) のターゲット ボリューム ドライブ S に同期的にレプリケートされることを確認できます。
 
-![図 7: SIOS DataKeeper で、クラスター ノード A からクラスター ノード B にローカル ボリュームをレプリケートする][sap-ha-guide-figure-5001]
+![図 7:SIOS DataKeeper で、クラスター ノード A からクラスター ノード B にローカル ボリュームをレプリケートする][sap-ha-guide-figure-5001]
 
 _**図 7:** SIOS DataKeeper で、クラスター ノード A からクラスター ノード B にローカル ボリュームをレプリケートする_
 
 ### <a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a> ノード A からノード B へのフェールオーバー
 
-1.  次のいずれかの方法を選んで、クラスター ノード A からクラスター ノード B への SAP \<SID\> クラスター グループのフェールオーバーを開始します。
-  - フェールオーバー クラスター マネージャー  
-  - フェールオーバー クラスター PowerShell
+1. 次のいずれかの方法を選んで、クラスター ノード A からクラスター ノード B への SAP \<SID\> クラスター グループのフェールオーバーを開始します。
+   - フェールオーバー クラスター マネージャー  
+   - フェールオーバー クラスター PowerShell
 
-  ```PowerShell
-  $SAPSID = "PR1"     # SAP <SID>
+   ```powershell
+   $SAPSID = "PR1"     # SAP <SID>
 
-  $SAPClusterGroup = "SAP $SAPSID"
-  Move-ClusterGroup -Name $SAPClusterGroup
+   $SAPClusterGroup = "SAP $SAPSID"
+   Move-ClusterGroup -Name $SAPClusterGroup
 
-  ```
-2.  Windows ゲスト オペレーティング システムでクラスター ノード A を再起動します。 これにより、ノード A からノード B への SAP \<SID\> クラスター グループの自動フェールオーバーが開始されます。  
-3.  Azure Portal からクラスター ノード A を再起動します。 これにより、ノード A からノード B への SAP \<SID\> クラスター グループの自動フェールオーバーが開始されます。  
-4.  Azure PowerShell を使ってクラスター ノード A を再起動します。 これにより、ノード A からノード B への SAP \<SID\> クラスター グループの自動フェールオーバーが開始されます。
+   ```
+2. Windows ゲスト オペレーティング システムでクラスター ノード A を再起動します。 これにより、ノード A からノード B への SAP \<SID\> クラスター グループの自動フェールオーバーが開始されます。  
+3. Azure Portal からクラスター ノード A を再起動します。 これにより、ノード A からノード B への SAP \<SID\> クラスター グループの自動フェールオーバーが開始されます。  
+4. Azure PowerShell を使ってクラスター ノード A を再起動します。 これにより、ノード A からノード B への SAP \<SID\> クラスター グループの自動フェールオーバーが開始されます。
 
-  フェールオーバーの後、SAP \<SID\> クラスター グループは、クラスター ノード B (たとえば pr1-ascs-1) で動作しています。
+   フェールオーバーの後、SAP \<SID\> クラスター グループは、クラスター ノード B (たとえば pr1-ascs-1) で動作しています。
 
-  ![図 8: フェールオーバー クラスター マネージャー: SAP \<SID\> クラスター グループがクラスター ノード B で動作している][sap-ha-guide-figure-5002]
+   ![図 8:フェールオーバー クラスター マネージャーで SAP \<SID\> クラスター グループがクラスター ノード B で動作している][sap-ha-guide-figure-5002]
 
-  _**図 8**: フェールオーバー クラスター マネージャー: SAP \<SID\> クラスター グループがクラスター ノード B で動作している_
+   _**図 8**: フェールオーバー クラスター マネージャーで SAP \<SID\> クラスター グループがクラスター ノード B で動作している_
 
-  現在、共有ディスクはクラスター ノード B にマウントされています。SIOS DataKeeper は、クラスター ノード B (例: pr1-ascs-1 [10.0.0.41]) のソース ボリューム ドライブ S から、クラスター ノード A (例: pr1-ascs-0 [10.0.0.40]) のターゲット ボリューム ドライブ S に、データをレプリケートします。
+   現在、共有ディスクはクラスター ノード B にマウントされています。SIOS DataKeeper は、クラスター ノード B (例: pr1-ascs-1 [10.0.0.41]) のソース ボリューム ドライブ S から、クラスター ノード A (例: pr1-ascs-0 [10.0.0.40]) のターゲット ボリューム ドライブ S に、データをレプリケートします。
 
-  ![図 9: SIOS DataKeeper: クラスター ノード B からクラスター ノード A にローカル ボリュームをレプリケートする][sap-ha-guide-figure-5003]
+   ![図 9:SIOS DataKeeper で、クラスター ノード B からクラスター ノード A にローカル ボリュームをレプリケートする][sap-ha-guide-figure-5003]
 
-  _**図 9:** SIOS DataKeeper: クラスター ノード B からクラスター ノード A にローカル ボリュームをレプリケートする_
+   _**図 9:** SIOS DataKeeper で、クラスター ノード B からクラスター ノード A にローカル ボリュームをレプリケートする_

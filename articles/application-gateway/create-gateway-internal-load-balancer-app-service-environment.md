@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2018
 ms.author: genli
-ms.openlocfilehash: 16cfe4c1db8fe9ba4c80f6451611237e3ee12c55
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: ad52d2b1df458d04a1ca9bd52a99bab38ddabef1
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51617820"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308583"
 ---
 # <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Environment で内部ロード バランサーを使用するアプリケーション ゲートウェイのホワイトリストにバックエンド サーバー証明書が登録されない
 
@@ -32,23 +32,23 @@ ms.locfileid: "51617820"
 **アプリケーション ゲートウェイ構成:**
 
 - **リスナー:** マルチサイト
-- **ポート:** 443
+- **Port:** 443
 - **ホスト名:** test.appgwtestase.com
 - **SSL 証明書:** CN=test.appgwtestase.com
 - **バックエンド プール:** IP アドレスまたは FQDN
-- **IP アドレス:**: 10.1.5.11
+- **IP アドレス:** 10.1.5.11
 - **HTTP 設定:** HTTPS
-- **ポート:**: 443
+- **ポート:** 443
 - **カスタム プローブ:** ホスト名 – test.appgwtestase.com
 - **認証証明書:** test.appgwtestase.com の .cer
-- **バックエンド正常性:** 異常 – バックエンド サーバーの証明書がアプリケーション ゲートウェイに対してホワイトリストに登録されていません。
+- **バックエンドの正常性:** 異常 – バックエンド サーバーの証明書が Application Gateway に対してホワイトリストに登録されていません。
 
 **ASE 構成:**
 
 - **ILB IP:** 10.1.5.11
 - **ドメイン名:** appgwtestase.com
 - **App Service:** test.appgwtestase.com
-- **SSL バインディング:** SNI SSL – CN=test.appgwtestase.com
+- **SSL バインド:** SNI SSL – CN=test.appgwtestase.com
 
 アプリケーション ゲートウェイにアクセスすると、バックエンド サーバーが異常であるため次のエラー メッセージを受け取ります。
 
@@ -56,19 +56,19 @@ ms.locfileid: "51617820"
 
 ## <a name="solution"></a>解決策
 
-HTTPS Web サイトにアクセスするときにホスト名を使用しないと、バックエンド サーバーは既定 Web サイトに対する構成済みの証明書を返します。 ILB ASE の場合、既定の証明書は ILB 証明書に基づきます。 ILB の構成済み証明書がない場合、証明書は ASE App 証明書に基づきます。
+HTTPS Web サイトにアクセスするときにホスト名を使用しないと、SNI が無効になっている場合、バックエンド サーバーによって既定 Web サイトに対する構成済みの証明書が返されます。 ILB ASE の場合、既定の証明書は ILB 証明書に基づきます。 ILB の構成済み証明書がない場合、証明書は ASE App 証明書に基づきます。
 
-完全修飾ドメイン名 (FQDN) を使用して ILB にアクセスすると、バックエンド サーバーは HTTP 設定にアップロードされた正しい証明書を返します。 このケースでは、次のオプションを検討してください。
+完全修飾ドメイン名 (FQDN) を使用して ILB にアクセスすると、バックエンド サーバーは HTTP 設定にアップロードされた正しい証明書を返します。 これに該当しない場合は、次のオプションを検討してください。
 
 - アプリケーション ゲートウェイのバックエンド プール内で、ILB の IP アドレスを指す FQDN を使用します。 このオプションが機能するのは、プライベート DNS ゾーンまたはカスタム DNS を構成している場合のみです。 それ以外の場合は、パブリック DNS の "A"レコードを作成する必要があります。
 
-- ILB 上のアップロードされた証明書、または HTTP 設定内の既定証明書を使用します。 アプリケーション ゲートウェイは、プローブのために ILB の IP にアクセスするときに証明書を取得します。
+- ILB 上のアップロードされた証明書、または HTTP 設定内の既定証明書 (ILB 証明書) を使用します。 アプリケーション ゲートウェイは、プローブのために ILB の IP にアクセスするときに証明書を取得します。
 
-- ILB およびバックエンド サーバー上のワイルドカード証明書を使用します。
+- すべての Web サイトで証明書が共通になるように、ILB とバックエンド サーバーでワイルドカード証明書を使用します。 ただし、このソリューションはサブドメインの場合のみ可能で、各 Web サイトに必要なホスト名が異なる場合は可能ではありません。
 
-- アプリケーション ゲートウェイに対する **[App Service 用に使用します]** オプションをクリアします。
+- ILB の IP アドレスを使用する場合は、アプリケーション ゲートウェイの **[App Service 用に使用します]** オプションをクリアします。
 
-オーバーヘッドを減らすため、HTTP 設定に ILB 証明書をアップロードしてプローブ パスが機能するようにします。 (この手順はホワイトリスト登録のためだけです。 SSL 通信では使用されません。)HTTPS の IP アドレスを使用して ILB にアクセスし、SSL 証明書を Base-64 エンコーディングされた CER 形式でエクスポートし、それぞれの HTTP 設定に証明書をアップロードすることで、ILB 証明書を取得できます。
+オーバーヘッドを減らすため、HTTP 設定に ILB 証明書をアップロードしてプローブ パスが機能するようにします。 (この手順はホワイトリスト登録のためだけです。 SSL 通信では使用されません。)お使いのブラウザーから HTTPS の IP アドレスを使用して ILB にアクセスし、SSL 証明書を Base-64 エンコーディングされた CER 形式でエクスポートし、それぞれの HTTP 設定に証明書をアップロードすることで、ILB 証明書を取得できます。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 

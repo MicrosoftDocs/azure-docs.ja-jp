@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 3caa4f2dbe36f86c9b15a83303e90b16d06c56fd
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e9fc8351b5e9a4f2274f0906d4071f86dcbcff26
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419403"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54259684"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>オフライン モードでの Azure 仮想マシン エージェントのインストール 
 
@@ -36,7 +36,15 @@ Azure 仮想マシン エージェント (VM エージェント) は、ローカ
 
 オフライン モードで VM エージェントをインストールするには、次の手順に従います。
 
-### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>手順 1: VM の OS ディスクをデータ ディスクとして別の VM に接続する
+> [!NOTE]
+> オフライン モードで VM エージェントをインストールするプロセスを自動化できます。
+> これを行うには、[Azure VM の復旧スクリプト](https://github.com/Azure/azure-support-scripts/blob/master/VMRecovery/ResourceManager/README.md)を使用します。 Azure VM 復旧スクリプトを使用することを選択した場合は、次のプロセスを使用できます。
+> 1. スクリプトを使用して影響を受ける VM の OS ディスクを復旧 VM にアタッチすることで、手順 1 をスキップします。
+> 2. 手順 2 ～ 10 に従って軽減策を適用します。
+> 3. スクリプトを使用して VM を再構築することで、手順 11 をスキップします。
+> 4. 手順 12 に従います。
+
+### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>手順 1:VM の OS ディスクをデータ ディスクとして別の VM に接続する
 
 1.  VM を削除します。 VM を削除するときは、必ず**ディスクを保持する**オプションを選択します。
 
@@ -44,7 +52,7 @@ Azure 仮想マシン エージェント (VM エージェント) は、ローカ
 
 3.  トラブルシューティング ツール VM に接続します。 **[コンピューターの管理]** > **[ディスクの管理]** の順に開きます。 OS ディスクがオンラインであることと、ドライブ文字がディスク パーティションに割り当てられていることを確認します。
 
-### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>手順 2: OS ディスクを変更して Azure VM エージェントをインストールする
+### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>手順 2: Azure VM エージェントをインストールするように OS ディスクを変更する
 
 1.  トラブルシューティング ツール VM へのリモート デスクトップ接続を作成します。
 
@@ -76,7 +84,7 @@ Azure 仮想マシン エージェント (VM エージェント) は、ローカ
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\RdAgent
 
-        ![レジストリ サブキーをエクスポートする](./media/install-vm-agent-offline/backup-reg.png)
+          ![レジストリ サブキーをエクスポートする](./media/install-vm-agent-offline/backup-reg.png)
 
     2. レジストリ ファイルを編集します。 各ファイルで、(次の図に示すように) エントリ値 **SYSTEM** を **BROKENSYSTEM** に変更し、ファイルを保存します。 現在の VM エージェントの **ImagePath** を思い出してください。 該当するフォルダーを、接続された OS ディスクにコピーする必要があります。 
 

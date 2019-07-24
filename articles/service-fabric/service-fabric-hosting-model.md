@@ -4,7 +4,7 @@ description: デプロイされた Service Fabric サービスのレプリカ (�
 services: service-fabric
 documentationcenter: .net
 author: harahma
-manager: timlt
+manager: chackdan
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: 367f21c63eac3969fb19eada91eae9a8577921de
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d2d958a89bff40483e1cd473538f7d1a6971d266
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348482"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663283"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric ホスティング モデル
 この記事では、Azure Service Fabric によって提供されるアプリケーション ホスティング モデルの概要、および**共有プロセス** モデルと**排他的プロセス** モデルとの相違点について説明します。 デプロイされたアプリケーションが Service Fabric ノード上でどのように表示されるかについて、またこのサービスのレプリカ (またはインスタンス) とサービス ホスト プロセスとの間の関係について説明します。
@@ -150,7 +150,7 @@ Service Fabric は、[ゲスト実行可能ファイル][a2]と[コンテナー]
 
 専有プロセス ホスティング モデルは、*ServicePackage* ごとに複数の *ServiceTypes* を持つアプリケーション モデルには適していません。 これは、*ServicePackage* ごとに複数の *ServiceTypes* を設定できる機能が、レプリカ間で共有するリソースの使用率を高めたり、プロセスごとのレプリカの密度を高めたりするために設計されているからです。 専有プロセス モデルは、異なる結果を実現することを目的として設計されています。
 
-*ServicePackage* ごとに複数の *ServiceTypes* があり、異なる *CodePackage* が各 *ServiceType* を登録している場合について考えます。 たとえば、次のような 2 つの *CodePackage* を持つ 'MultiTypeServicePackge' という *ServicePackage* があるとします。
+*ServicePackage* ごとに複数の *ServiceTypes* があり、異なる *CodePackage* が各 *ServiceType* を登録している場合について考えます。 たとえば、次のような 2 つの *CodePackage* を持つ 'MultiTypeServicePackage' という *ServicePackage* があるとします。
 
 - 'MyServiceTypeA' という *ServiceType* を登録している 'MyCodePackageA'。
 - 'MyServiceTypeB' という *ServiceType* を登録している 'MyCodePackageB'。
@@ -160,15 +160,15 @@ Service Fabric は、[ゲスト実行可能ファイル][a2]と[コンテナー]
 - "MyServiceTypeA" タイプのサービス **fabric:/SpecialApp/ServiceA** と、2 つのパーティション (たとえば、**P1** と**P2**) およびパーティションごとに 3 つのレプリカ。
 - "MyServiceTypeB" タイプのサービス **fabric:/SpecialApp/ServiceB** と、2 つのパーティション (**P3** と **P4**) およびパーティションごとに 3 つのレプリカ。
 
-特定のノード上で、両方のサービスはそれぞれ 2 つのレプリカを持ちます。 サービスを専有プロセス モデルで作成したため、Service Fabric は各レプリカについて "MyServicePackge" の新しいコピーをアクティブ化します。 "MultiTypeServicePackge" の各アクティブ化によって、"MyCodePackageA" と "MyCodePackageB" のコピーが開始します。 ただし、"MultiTypeServicePackge" がアクティブ化されたレプリカをホストするのは、"MyCodePackageA" または "MyCodePackageB" のどちらか 1 つだけです。 次の図で、このノードのビューを示します。
+特定のノード上で、両方のサービスはそれぞれ 2 つのレプリカを持ちます。 サービスを専有プロセス モデルで作成したため、Service Fabric は各レプリカについて "MyServicePackge" の新しいコピーをアクティブ化します。 "MultiTypeServicePackage" の各アクティブ化によって、"MyCodePackageA" と "MyCodePackageB" のコピーが開始します。 ただし、"MultiTypeServicePackage" がアクティブ化されたレプリカをホストするのは、"MyCodePackageA" または "MyCodePackageB" のどちらか 1 つだけです。 次の図で、このノードのビューを示します。
 
 
 ![デプロイされたアプリケーションのノード ビューの図][node-view-five]
 
 
-サービス **fabric:/SpecialApp/ServiceA** のパーティション **P1** のレプリカに対する "MultiTypeServicePackge" のアクティブ化では、"MyCodePackageA" がレプリカをホストします。 "MyCodePackageB" は実行しています。 同様に、サービス **fabric:/SpecialApp/ServiceB** のパーティション **P3** のレプリカに対する "MultiTypeServicePackge" のアクティブ化では、"MyCodePackageB" がレプリカをホストします。 "MyCodePackageA" は実行しています。 そのため、*ServicePackage* ごとの (異なる *ServiceTypes* を登録している) *CodePackage* の数が多くなれば、それだけリソース使用の冗長性が高くなることになります。 
+サービス **fabric:/SpecialApp/ServiceA** のパーティション **P1** のレプリカに対する "MultiTypeServicePackage" のアクティブ化では、"MyCodePackageA" がレプリカをホストします。 "MyCodePackageB" は実行しています。 同様に、サービス **fabric:/SpecialApp/ServiceB** のパーティション **P3** のレプリカに対する "MultiTypeServicePackage" のアクティブ化では、"MyCodePackageB" がレプリカをホストします。 "MyCodePackageA" は実行しています。 そのため、*ServicePackage* ごとの (異なる *ServiceTypes* を登録している) *CodePackage* の数が多くなれば、それだけリソース使用の冗長性が高くなることになります。 
  
- 一方、サービス **fabric:/SpecialApp/ServiceA** と **fabric:/SpecialApp/ServiceB** を共有プロセス モデルで作成した場合は、Service Fabric はアプリケーション **fabric:/SpecialApp** に対して "MultiTypeServicePackge" のコピーを 1 つだけアクティブ化します。 "MyCodePackageA" がサービス **fabric:/SpecialApp/ServiceA** のすべてのレプリカをホストします。 "MyCodePackageB" がサービス **fabric:/SpecialApp/ServiceB** のすべてのレプリカをホストします。 次の図は、この設定のノードのビューを示しています。 
+ 一方、サービス **fabric:/SpecialApp/ServiceA** と **fabric:/SpecialApp/ServiceB** を共有プロセス モデルで作成した場合は、Service Fabric はアプリケーション **fabric:/SpecialApp** に対して "MultiTypeServicePackage" のコピーを 1 つだけアクティブ化します。 "MyCodePackageA" がサービス **fabric:/SpecialApp/ServiceA** のすべてのレプリカをホストします。 "MyCodePackageB" がサービス **fabric:/SpecialApp/ServiceB** のすべてのレプリカをホストします。 次の図は、この設定のノードのビューを示しています。 
 
 
 ![デプロイされたアプリケーションのノード ビューの図][node-view-six]

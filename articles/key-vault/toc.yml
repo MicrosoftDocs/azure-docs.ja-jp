@@ -1,166 +1,184 @@
-items:
 - name: Key Vault のドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: Key Vault について
-    href: key-vault-overview.md
+    - name: Key Vault について
+      href: key-vault-overview.md
 - name: クイック スタート
+  expanded: true
   items:
-  - name: シークレットの設定と取得 - CLI
-    href: quick-create-cli.md
-  - name: シークレットの設定と取得 - PowerShell
-    href: quick-create-powershell.md
-  - name: シークレットの設定と取得 - ポータル
-    href: quick-create-portal.md
-  - name: シークレットの設定と取得 - .NET
-    href: quick-create-net.md
-  - name: シークレットの設定と取得 - Node.js
-    href: quick-create-node.md
+    - name: シークレットの設定と取得 - CLI
+      href: quick-create-cli.md
+    - name: シークレットの設定と取得 - PowerShell
+      href: quick-create-powershell.md
+    - name: シークレットの設定と取得 - ポータル
+      href: quick-create-portal.md
+    - name: シークレットの設定と取得 - .NET
+      href: quick-create-net.md
+    - name: シークレットの設定と取得 - Node.js
+      href: quick-create-node.md
+    - name: シークレットの設定と取得 - Resource Manager テンプレート
+      displayName: 'resource manager, resource manager template, arm'
+      href: quick-create-template.md
 - name: チュートリアル
   items:
-  - name: 'Azure Web Apps '
-    items:
-    - name: .NET での Azure Web アプリ と Azure Key Vault
-      href: tutorial-net-create-vault-azure-web-app.md
-  - name: Azure Virtual Machine
-    items:
-    - name: Linux 仮想マシン
+    - name: 'Azure Web Apps '
       items:
-      - name: .NET
-        href: tutorial-net-linux-virtual-machine.md
-      - name: Python
-        href: tutorial-python-linux-virtual-machine.md
-    - name: Windows 仮想マシン
+        - name: .NET での Azure Web アプリ と Azure Key Vault
+          href: tutorial-net-create-vault-azure-web-app.md
+    - name: Azure Virtual Machine
       items:
-      - name: .NET
-        href: tutorial-net-windows-virtual-machine.md
-      - name: Python
-        href: tutorial-python-windows-virtual-machine.md
-  - name: Key Vault からシークレットを読み取る
-    href: tutorial-web-application-keyvault.md
-  - name: キー ローテーションと監査を設定する
-    href: key-vault-key-rotation-log-monitoring.md
+        - name: Linux 仮想マシン
+          items:
+            - name: .NET
+              href: tutorial-net-linux-virtual-machine.md
+            - name: Python
+              href: tutorial-python-linux-virtual-machine.md
+        - name: Windows 仮想マシン
+          items:
+            - name: .NET
+              href: tutorial-net-windows-virtual-machine.md
+            - name: Python
+              href: tutorial-python-windows-virtual-machine.md
+    - name: ストレージ アカウント キー
+      items:
+        - name: Azure CLI を使用したマネージド ストレージ アカウント キー
+          href: key-vault-ovw-storage-keys.md
+        - name: PowerShell を使用したマネージド ストレージ アカウント キー
+          href: key-vault-overview-storage-keys-powershell.md
+    - name: Azure コンテナー
+      href: ../container-instances/container-instances-managed-identity.md
+    - name: Azure Resource Manager テンプレート
+      href: ../azure-resource-manager/resource-manager-keyvault-parameter.md
+    - name: キー ローテーションと監査を設定する
+      href: key-vault-key-rotation-log-monitoring.md
 - name: サンプル
   items:
-  - name: コード サンプル
-    href: https://azure.microsoft.com/resources/samples/?service=key-vault
+    - name: コード サンプル
+      href: 'https://azure.microsoft.com/resources/samples/?service=key-vault'
 - name: 概念
   items:
-  - name: Key Vault とは
-    href: key-vault-whatis.md
-  - name: キー コンテナーのセキュリティ保護
-    href: key-vault-secure-your-key-vault.md
-  - name: セキュリティ ワールド
-    href: key-vault-ovw-security-worlds.md
-  - name: 論理的な削除
-    href: key-vault-ovw-soft-delete.md
-  - name: マネージド ストレージ アカウント キー - Azure CLI
-    href: key-vault-ovw-storage-keys.md
-  - name: マネージド ストレージ アカウント キー - PowerShell
-    href: key-vault-overview-storage-keys-powershell.md
-  - name: 調整
-    href: key-vault-ovw-throttling.md
-  - name: 仮想ネットワーク サービス エンドポイント
-    href: key-vault-overview-vnet-service-endpoints.md
-  - name: 認証、要求、応答
-    href: authentication-requests-and-responses.md
-  - name: 一般的なパラメーターとヘッダー
-    href: common-parameters-and-headers.md
-  - name: キー、シークレット、証明書について
-    href: about-keys-secrets-and-certificates.md
-    items:
-    - name: 証明書の概要
-      href: certificate-scenarios.md
-    - name: 証明書の作成方法
-      href: create-certificate.md
-    - name: 証明書作成の監視と管理
-      href: create-certificate-scenarios.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティの概要
+          href: overview-security.md
+        - name: 一般的なセキュリティ属性
+          href: key-vault-security-attributes.md
+        - name: セキュリティ ワールド
+          href: key-vault-ovw-security-worlds.md
+        - name: キー コンテナーのセキュリティ保護
+          href: key-vault-secure-your-key-vault.md
+    - name: Key Vault とは
+      href: key-vault-whatis.md
+    - name: 論理的な削除
+      href: key-vault-ovw-soft-delete.md
+    - name: Throttling
+      href: key-vault-ovw-throttling.md
+    - name: 仮想ネットワーク サービス エンドポイント
+      href: key-vault-overview-vnet-service-endpoints.md
+    - name: 認証、要求、応答
+      href: authentication-requests-and-responses.md
+    - name: 一般的なパラメーターとヘッダー
+      href: common-parameters-and-headers.md
+    - name: 証明書
+      items:
+        - name: キー、シークレット、証明書について
+          href: about-keys-secrets-and-certificates.md
+        - name: 証明書の概要
+          href: certificate-scenarios.md
+        - name: 証明書の作成方法
+          href: create-certificate.md
+        - name: 証明書作成の監視と管理
+          href: create-certificate-scenarios.md
+    - name: Azure の一般的なセキュリティ属性
+      href: key-vault-security-attributes.md
 - name: ハウツー ガイド
   items:
-  - name: Azure Key Vault のログ記録
-    href: key-vault-logging.md
-  - name: ファイアウォールの内側にアクセスする
-    href: key-vault-access-behind-firewall.md
-  - name: 可用性と冗長性
-    href: key-vault-disaster-recovery-guidance.md
-  - name: テナント ID を変更する
-    href: key-vault-subscription-move-fix.md
-  - name: Azure CLI で作成して管理する
-    href: key-vault-manage-with-cli2.md
-  - name: CLI で Key Vault の論理的な削除を使用する
-    href: key-vault-soft-delete-cli.md
-  - name: Azure PowerShell で Key Vault の論理的な削除を使用する
-    href: key-vault-soft-delete-powershell.md
-  - name: グループを使用してアクセスを許可する
-    href: key-vault-group-permissions-for-apps.md
-  - name: ファイアウォールと仮想ネットワークの構成
-    href: key-vault-network-security.md
+    - name: Azure Key Vault のログ記録
+      href: key-vault-logging.md
+    - name: ファイアウォールの内側にアクセスする
+      href: key-vault-access-behind-firewall.md
+    - name: 可用性と冗長性
+      href: key-vault-disaster-recovery-guidance.md
+    - name: テナント ID を変更する
+      href: key-vault-subscription-move-fix.md
+    - name: Azure CLI で作成して管理する
+      href: key-vault-manage-with-cli2.md
+    - name: CLI で Key Vault の論理的な削除を使用する
+      href: key-vault-soft-delete-cli.md
+    - name: Azure PowerShell で Key Vault の論理的な削除を使用する
+      href: key-vault-soft-delete-powershell.md
+    - name: グループを使用してアクセスを許可する
+      href: key-vault-group-permissions-for-apps.md
+    - name: ファイアウォールと仮想ネットワークの構成
+      href: key-vault-network-security.md
+    - name: Java 開発
+      items:
+        - name: Spring Boot Starter を使用する
+          href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-key-vault
 - name: リファレンス
   items:
-  - name: Azure PowerShell
-    href: /powershell/module/azurerm.keyvault
-  - name: Azure CLI
-    href: /cli/azure/keyvault
-  - name: .NET
-    href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
-  - name: Java
-    href: /java/api/overview/azure/keyvault?view=azure-java-stable
-  - name: Node.js
-    href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
-  - name: Python
-    href: /python/api/overview/azure/key-vault?view=azure-python
-  - name: REST ()
-    href: /rest/api/keyvault
-  - name: 認証、要求、応答
-    href: authentication-requests-and-responses.md
-  - name: 一般的なパラメーターとヘッダー
-    href: common-parameters-and-headers.md
-  - name: 開発
-    items:
-    - name: 開発者ガイド
-      href: key-vault-developers-guide.md
-    - name: HSM で保護されたキー
-      href: key-vault-hsm-protected-keys.md
-    - name: .NET 2.0 への移行
-      href: key-vault-dotnet2api-release-notes.md
-    - name: Web アプリのシークレットの保存
-      href: vs-secure-secret-appsettings.md
-    - name: .NET を使用したサービス認証
-      href: service-to-service-authentication.md
-    - name: Key Vault に接続したサービスを使用する
-      href: vs-key-vault-add-connected-service.md
+    - name: Azure PowerShell
+      href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
+    - name: Azure CLI
+      href: /cli/azure/keyvault
+    - name: .NET
+      href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+    - name: Java
+      href: /java/api/overview/azure/keyvault?view=azure-java-stable
+    - name: Node.js
+      href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
+    - name: Python
+      href: /python/api/overview/azure/key-vault?view=azure-python
+    - name: REST
+      href: /rest/api/keyvault
+    - name: ベスト プラクティス
+      href: key-vault-best-practices.md
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.keyvault/allversions
+    - name: 認証、要求、応答
+      href: authentication-requests-and-responses.md
+    - name: 一般的なパラメーターとヘッダー
+      href: common-parameters-and-headers.md
+    - name: 開発
+      items:
+        - name: 開発者ガイド
+          href: key-vault-developers-guide.md
+        - name: HSM で保護されたキー
+          href: key-vault-hsm-protected-keys.md
+        - name: .NET 2.0 への移行
+          href: key-vault-dotnet2api-release-notes.md
+        - name: Web アプリのシークレットの保存
+          href: vs-secure-secret-appsettings.md
+        - name: .NET を使用したサービス認証
+          href: service-to-service-authentication.md
+        - name: Key Vault に接続したサービスを使用する
+          href: vs-key-vault-add-connected-service.md
 - name: リソース
   items:
-  - name: Microsoft Learn でスキルを身に付ける
-    href: /learn/browse/?products=azure-key-vault
-  - name: 認証、要求、応答
-    href: authentication-requests-and-responses.md
-  - name: 一般的なパラメーターとヘッダー
-    href: common-parameters-and-headers.md
-  - name: 顧客データ
-    href: key-vault-customer-data.md
-  - name: リリース ノート
-    href: key-vault-versions.md
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/key-vault/
-  - name: 利用可能なリージョン
-    href: https://azure.microsoft.com/global-infrastructure/services/?products=key-vault
-  - name: サービス レベル アグリーメント (SLA)
-    href: https://azure.microsoft.com/support/legal/sla/key-vault/
-  - name: サービスの制限
-    href: key-vault-service-limits.md
-  - name: サービスの状態
-    href: https://azure.microsoft.com/status/
-  - name: サービスの更新情報
-    href: https://azure.microsoft.com/updates/?product=key-vault
-  - name: ブログ
-    href: http://blogs.technet.com/b/kv/
-- name: 製品フィードバック
-  href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 31f4ed86656bbf95527e18603c5b951d31b6e0ec
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620032"
+    - name: Microsoft Learn でスキルを身に付ける
+      href: /learn/browse/?products=azure-key-vault
+    - name: 認証、要求、応答
+      href: authentication-requests-and-responses.md
+    - name: 一般的なパラメーターとヘッダー
+      href: common-parameters-and-headers.md
+    - name: 顧客データ
+      href: key-vault-customer-data.md
+    - name: リリース ノート
+      href: key-vault-versions.md
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/key-vault/'
+    - name: 利用可能なリージョン
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
+    - name: サービス レベル アグリーメント (SLA)
+      href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
+    - name: サービスの制限
+      href: key-vault-service-limits.md
+    - name: サービスの状態
+      href: 'https://azure.microsoft.com/status/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=key-vault'
+    - name: ブログ
+      href: 'https://blogs.technet.com/b/kv/'
+    - name: 製品フィードバック
+      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'

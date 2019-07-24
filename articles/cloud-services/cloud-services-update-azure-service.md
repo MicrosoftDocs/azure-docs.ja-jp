@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 2f5a82fac18ab34bfa9d6b46f553227ed44a994a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ff4dd571911719e4f2ec27952785432960a56d42
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008095"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58917228"
 ---
 # <a name="how-to-update-a-cloud-service"></a>クラウド サービスの更新方法
 
@@ -28,7 +28,7 @@ ms.locfileid: "39008095"
 ## <a name="update-an-azure-service"></a>Azure サービスを更新する
 Azure では、ロール インスタンスが、アップグレード ドメイン (UD) と呼ばれる論理的なグループに編成されます。 アップグレード ドメイン (UD) は、1 つのグループとして更新されるロール インスタンスの論理セットです。  Azure ではクラウド サービスの更新を一度に 1 つの UD に対して行います。そのため、他の UD 内のインスタンスは引き続きトラフィックを処理できます。
 
-アップグレード ドメインの既定の数は 5 です。 アップグレード ドメインの数を変更するには、サービスの定義ファイル (.csdef) に upgradeDomainCount 属性を追加します。 upgradeDomainCount 属性の詳細については、「[WebRole Schema (WebRole スキーマ)](https://msdn.microsoft.com/library/azure/gg557553.aspx)」または「[WorkerRole Schema (WorkerRole スキーマ)](https://msdn.microsoft.com/library/azure/gg557552.aspx)」を参照してください。
+アップグレード ドメインの既定の数は 5 です。 アップグレード ドメインの数を変更するには、サービスの定義ファイル (.csdef) に upgradeDomainCount 属性を追加します。 upgradeDomainCount 属性の詳細については、「[WebRole Schema (WebRole スキーマ)](/previous-versions/azure/reference/gg557553(v=azure.100))」または「[WorkerRole Schema (WorkerRole スキーマ)](/previous-versions/azure/reference/gg557552(v=azure.100))」を参照してください。
 
 サービス内の 1 つ以上のロールをインプレースで更新すると、Azure では、そのロールが属するアップグレード ドメインに相当するロール インスタンスのセットが更新されます。 Azure は、1 つのアップグレード ドメイン内のすべてのインスタンスを更新してから (つまり、インスタンスを停止し、更新して、オンラインに復帰させてから)、次のドメインの処理に移ります。 現在のアップグレード ドメインで実行されているインスタンスのみを停止することで、更新が実行中のサービスに与える影響を最小限に抑えています。 詳細については、この記事で後ほど説明する「 [アップグレードの処理のしくみ](#howanupgradeproceeds) 」を参照してください。
 
@@ -54,18 +54,18 @@ Azure では、ロール インスタンスが、アップグレード ドメイ
 
 | ホスティング、サービス、ロールに対して許可される変更 | インプレース更新 | ステージング (VIP スワップ) | 削除と再デプロイ |
 | --- | --- | --- | --- |
-| オペレーティング システムのバージョン |[はい] |はい |[はい] |
-| .NET 信頼レベル |[はい] |はい |[はい] |
-| 仮想マシンのサイズ<sup>1</sup> |はい<sup>2</sup> |[はい] |[はい] |
-| ローカル ストレージの設定 |増加のみ<sup>2</sup> |[はい] |[はい] |
-| サービス内のロールの追加または削除 |[はい] |はい |[はい] |
-| 特定のロールのインスタンスの数 |[はい] |はい |[はい] |
-| サービスのエンドポイントの数または種類 |はい<sup>2</sup> |いいえ  |[はい] |
-| 構成設定の名前と値 |[はい] |はい |[はい] |
-| 構成設定の値 (名前は不可) |[はい] |はい |[はい] |
-| 新しい証明書の追加 |[はい] |はい |[はい] |
-| 既存の証明書の変更 |[はい] |はい |[はい] |
-| 新しいコードのデプロイ |[はい] |はい |[はい] |
+| オペレーティング システムのバージョン |はい |はい |はい |
+| .NET 信頼レベル |はい |はい |はい |
+| 仮想マシンのサイズ<sup>1</sup> |はい<sup>2</sup> |はい |はい |
+| ローカル ストレージの設定 |増加のみ<sup>2</sup> |はい |はい |
+| サービス内のロールの追加または削除 |はい |はい |はい |
+| 特定のロールのインスタンスの数 |はい |はい |はい |
+| サービスのエンドポイントの数または種類 |はい<sup>2</sup> |いいえ  |はい |
+| 構成設定の名前と値 |はい |はい |はい |
+| 構成設定の値 (名前は不可) |はい |はい |はい |
+| 新しい証明書の追加 |はい |はい |はい |
+| 既存の証明書の変更 |はい |はい |はい |
+| 新しいコードのデプロイ |はい |はい |はい |
 
 <sup>1</sup> サイズ変更は、クラウド サービスで使用できるサイズのサブセットに制限されます。
 
@@ -82,7 +82,7 @@ Azure では、ロール インスタンスが、アップグレード ドメイ
 * アップグレード ドメインの数の変更。
 * ローカル リソースのサイズの縮小。
 
-ローカル リソースのサイズの縮小など、サービスの定義に他の更新を加える場合は、代わりに VIP スワップ更新を実行する必要があります。 詳細については、「 [Swap Deployment](https://msdn.microsoft.com/library/azure/ee460814.aspx)」を参照してください。
+ローカル リソースのサイズの縮小など、サービスの定義に他の更新を加える場合は、代わりに VIP スワップ更新を実行する必要があります。 詳細については、「 [Swap Deployment](/previous-versions/azure/reference/ee460814(v=azure.100))」を参照してください。
 
 <a name="howanupgradeproceeds"></a>
 
@@ -121,7 +121,7 @@ Azure では、ロール インスタンスが、アップグレード ドメイ
 <a name="RollbackofanUpdate"></a>
 
 ## <a name="rollback-of-an-update"></a>更新のロールバック
-Azure では、更新中のサービス管理の柔軟性を高めるために、最初の更新要求が Azure ファブリック コントローラーで受信された後もサービスに対する追加の操作を実行することができます。 ロールバックは、デプロイに対する更新 (構成の変更) またはアップグレードが **進行中** 状態の場合にのみ実行できます。 更新またはアップグレードが進行中であると見なされるのは、新しいバージョンに更新されていないサービスのインスタンスが少なくとも 1 つある場合です。 ロールバックが許可されるかどうかをテストするには、[Get Deployment](https://msdn.microsoft.com/library/azure/ee460804.aspx) と [Get Cloud Service Properties](https://msdn.microsoft.com/library/azure/ee460806.aspx) の操作で返される RollbackAllowed フラグの値が true に設定されているかどうかを確認します。
+Azure では、更新中のサービス管理の柔軟性を高めるために、最初の更新要求が Azure ファブリック コントローラーで受信された後もサービスに対する追加の操作を実行することができます。 ロールバックは、デプロイに対する更新 (構成の変更) またはアップグレードが **進行中** 状態の場合にのみ実行できます。 更新またはアップグレードが進行中であると見なされるのは、新しいバージョンに更新されていないサービスのインスタンスが少なくとも 1 つある場合です。 ロールバックが許可されるかどうかをテストするには、[Get Deployment](/previous-versions/azure/reference/ee460804(v=azure.100)) と [Get Cloud Service Properties](/previous-versions/azure/reference/ee460806(v=azure.100)) の操作で返される RollbackAllowed フラグの値が true に設定されているかどうかを確認します。
 
 > [!NOTE]
 > VIP スワップ アップグレードでは、サービスの実行中のインスタンス全体が別のインスタンスに置き換えられるため、ロールバックの呼び出しは、 **インプレース** の更新またはアップグレードに対して行われた場合のみ有効です。
@@ -135,13 +135,13 @@ Azure では、更新中のサービス管理の柔軟性を高めるために�
 
 ロールバックは、次の機能によって実現されています。
 
-* [Rollback Update Or Upgrade](https://msdn.microsoft.com/library/azure/hh403977.aspx) 操作。新しいバージョンへの更新が完了していないインスタンスがサービスに少なくとも 1 つある場合に、構成の更新 ([Change Deployment Configuration](https://msdn.microsoft.com/library/azure/ee460809.aspx) 呼び出しによってトリガーされた操作) またはアップグレード ([Upgrade Deployment](https://msdn.microsoft.com/library/azure/ee460793.aspx) の呼び出しによってトリガーされた操作) に対して呼び出すことができます。
-* Locked 要素と RollbackAllowed 要素。[Get Deployment](https://msdn.microsoft.com/library/azure/ee460804.aspx) 操作と [Get Cloud Service Properties](https://msdn.microsoft.com/library/azure/ee460806.aspx) 操作の応答本文の一部として返されます。
+* [Rollback Update Or Upgrade](/previous-versions/azure/reference/hh403977(v=azure.100)) 操作。新しいバージョンへの更新が完了していないインスタンスがサービスに少なくとも 1 つある場合に、構成の更新 ([Change Deployment Configuration](/previous-versions/azure/reference/ee460809(v=azure.100)) 呼び出しによってトリガーされた操作) またはアップグレード ([Upgrade Deployment](/previous-versions/azure/reference/ee460793(v=azure.100)) の呼び出しによってトリガーされた操作) に対して呼び出すことができます。
+* Locked 要素と RollbackAllowed 要素。[Get Deployment](/previous-versions/azure/reference/ee460804(v=azure.100)) 操作と [Get Cloud Service Properties](/previous-versions/azure/reference/ee460806(v=azure.100)) 操作の応答本文の一部として返されます。
 
   1. Locked 要素を使用すると、特定のデプロイで変更操作を呼び出すことができるタイミングを検出できます。
-  2. RollbackAllowed 要素を使用すると、特定のデプロイで [Rollback Update Or Upgrade](https://msdn.microsoft.com/library/azure/hh403977.aspx) 操作を呼び出すことができるタイミングを検出できます。
+  2. RollbackAllowed 要素を使用すると、特定のデプロイで [Rollback Update Or Upgrade](/previous-versions/azure/reference/hh403977(v=azure.100)) 操作を呼び出すことができるタイミングを検出できます。
 
-  ロールバックを実行するために、Locked 要素と RollbackAllowed 要素の両方を確認する必要はありません。 RollbackAllowed が true に設定されていることを確認するだけで十分です。 "x-ms-version: 2011-10-01" またはそれ以降のバージョンに設定されている要求ヘッダーを使用してこれらのメソッドが呼び出された場合のみ、この 2 つの要素が返されます。 バージョン管理ヘッダーの詳細については、「 [サービス管理のバージョン管理](https://msdn.microsoft.com/library/azure/gg592580.aspx)」を参照してください。
+  ロールバックを実行するために、Locked 要素と RollbackAllowed 要素の両方を確認する必要はありません。 RollbackAllowed が true に設定されていることを確認するだけで十分です。 次のように設定されている要求ヘッダーを使用してこれらのメソッドが呼び出された場合のみ、これらの要素が返されます: "x-ms-version: 2011-10-01" 以降のバージョン。 バージョン管理ヘッダーの詳細については、「 [サービス管理のバージョン管理](/previous-versions/azure/gg592580(v=azure.100))」を参照してください。
 
 更新やアップグレードのロールバックがサポートされないのは、次のような場合です。
 
@@ -149,9 +149,9 @@ Azure では、更新中のサービス管理の柔軟性を高めるために�
 * クォータの制限: 更新することでスケールダウンする場合、ロールバック操作を完了できるだけのコンピューティング クォータがなくなる可能性があります。 Azure の各サブスクリプションには、そのサブスクリプションに関連付けられているクォータがあります。このクォータは、そのサブスクリプションに属するすべてのホストされるサービスで使用できるコアの最大数を指定しています。 特定の更新のロールバックを実行することでサブスクリプションがクォータを越える場合、ロールバックは有効になりません。
 * 競合状態: 最初の更新が完了している場合、ロールバックできません。
 
-更新のロールバックが役立つ例の 1 つが、 [Upgrade Deployment](https://msdn.microsoft.com/library/azure/ee460793.aspx) 操作を手動モードで使用して、Azure のホストされるサービスに対する大規模なインプレース アップグレードがロール アウトされるペースを制御する場合です。
+更新のロールバックが役立つ例の 1 つが、 [Upgrade Deployment](/previous-versions/azure/reference/ee460793(v=azure.100)) 操作を手動モードで使用して、Azure のホストされるサービスに対する大規模なインプレース アップグレードがロール アウトされるペースを制御する場合です。
 
-このようなアップグレードのロールアウトでは、[Upgrade Deployment](https://msdn.microsoft.com/library/azure/ee460793.aspx) を手動モードで呼び出して、アップグレード ドメインの逐次処理を開始します。 アップグレードの監視中に、ある時点で、最初のアップグレード ドメインの一部のロール インスタンスが応答しなくなっていることに気付いた場合、そのデプロイに対して [Rollback Update Or Upgrade](https://msdn.microsoft.com/library/azure/hh403977.aspx) 操作を呼び出すことができます。これによって、まだアップグレードされていないインスタンスはそのまま、アップグレード済みのインスタンスは以前のサービス パッケージと構成にロールバックできます。
+このようなアップグレードのロールアウトでは、[Upgrade Deployment](/previous-versions/azure/reference/ee460793(v=azure.100)) を手動モードで呼び出して、アップグレード ドメインの逐次処理を開始します。 アップグレードの監視中に、ある時点で、最初のアップグレード ドメインの一部のロール インスタンスが応答しなくなっていることに気付いた場合、そのデプロイに対して [Rollback Update Or Upgrade](/previous-versions/azure/reference/hh403977(v=azure.100)) 操作を呼び出すことができます。これによって、まだアップグレードされていないインスタンスはそのまま、アップグレード済みのインスタンスは以前のサービス パッケージと構成にロールバックできます。
 
 <a name="multiplemutatingoperations"></a>
 
@@ -162,11 +162,11 @@ Azure では、更新中のサービス管理の柔軟性を高めるために�
 
 最初の更新の進行中に 2 つ目の更新操作を開始すると、ロールバック操作と似た方法で処理が実行されます。 2 番目の更新が自動モードである場合、最初のアップグレード ドメインが直ちにアップグレードされ、複数のアップグレード ドメインのインスタンスが同時にオフラインになる可能性があります。
 
-変更操作には、[Change Deployment Configuration](https://msdn.microsoft.com/library/azure/ee460809.aspx)、[Upgrade Deployment](https://msdn.microsoft.com/library/azure/ee460793.aspx)、[Update Deployment Status](https://msdn.microsoft.com/library/azure/ee460808.aspx)、[Delete Deployment](https://msdn.microsoft.com/library/azure/ee460815.aspx)、および [Rollback Update Or Upgrade](https://msdn.microsoft.com/library/azure/hh403977.aspx) があります。
+次のような変更操作があります: [Change Deployment Configuration](/previous-versions/azure/reference/ee460809(v=azure.100))、[Upgrade Deployment](/previous-versions/azure/reference/ee460793(v=azure.100))、[Update Deployment Status](/previous-versions/azure/reference/ee460808(v=azure.100))、[Delete Deployment](/previous-versions/azure/reference/ee460815(v=azure.100))、および [Rollback Update Or Upgrade](/previous-versions/azure/reference/hh403977(v=azure.100))。
 
-[Get Deployment](https://msdn.microsoft.com/library/azure/ee460804.aspx) と [Get Cloud Service Properties](https://msdn.microsoft.com/library/azure/ee460806.aspx) の 2 つの操作は Locked フラグを返します。このフラグを調べることで、特定のデプロイに対して変更操作を呼び出すことができるかどうかを判断できます。
+[Get Deployment](/previous-versions/azure/reference/ee460804(v=azure.100)) と [Get Cloud Service Properties](/previous-versions/azure/reference/ee460806(v=azure.100)) の 2 つの操作は Locked フラグを返します。このフラグを調べることで、特定のデプロイに対して変更操作を呼び出すことができるかどうかを判断できます。
 
-これらの操作のうち、Locked フラグを返すバージョンを呼び出すには、要求ヘッダーに "x-ms-version: 2011-10-01" 以降を設定する必要があります。 バージョン管理ヘッダーの詳細については、「 [サービス管理のバージョン管理](https://msdn.microsoft.com/library/azure/gg592580.aspx)」を参照してください。
+これらの操作のうち、Locked フラグを返すバージョンを呼び出すには、要求ヘッダーを次のように設定する必要があります: "x-ms-version: 2011-10-01" 以降。 バージョン管理ヘッダーの詳細については、「 [サービス管理のバージョン管理](/previous-versions/azure/gg592580(v=azure.100))」を参照してください。
 
 <a name="distributiondfroles"></a>
 

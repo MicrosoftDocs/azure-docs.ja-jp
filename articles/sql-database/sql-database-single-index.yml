@@ -1,0 +1,149 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 6dfa2cf9d5d7a4fb10c04207341915aebbf1808e
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235463"
+documentType: LandingData
+title: Azure SQL Database:単一データベース
+metadata:
+  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
+  title: Azure SQL Database のドキュメント - チュートリアル、API リファレンス
+  meta.description: Learn how to use Azure SQL databases.
+  services: sql-database
+  author: jovanpop-msft
+  manager: craigg
+  requires-business-manager-approval: false
+  ms.service: sql-database
+  ms.subservice: single-database
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: overview
+  ms.date: 01/25/2019
+  ms.author: jovanpop-msft
+abstract:
+  description: Azure SQL Database は、Microsoft SQL Server データベース エンジンの安定した最新バージョンに基づく、サービスとしてのリレーショナル データベース (DBaaS) です。 SQL Database はパフォーマンス、使いやすさ、信頼性、セキュリティの面で優れたデータベースであり、好きなプログラミング言語で新しいアプリケーションや Web サイト、マイクロサービスを構築することができます。その際、インフラストラクチャの管理は不要です。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、SQL Database の使用方法を確認してください。
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: https://docs.microsoft.com/azure/sql-database/media/index/create-sql-database-on-azure.png
+      width: 250
+    title: Azure に単一 SQL データベースを作成する (3:12)
+    href: https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/
+    width: 250
+sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - title: エラスティック プール
+      href: /azure/sql-database/sql-database-elastic-pool
+      html: <p>SQL Database のエラスティック プールは、予期できない多様な使用ニーズを持つ複数のデータベースを管理しスケーリングするための、シンプルでコスト効率の高いソリューションです。</p>
+      image:
+        src: media/index/i_elasticpool.svg
+    - title: SQL Database サーバー
+      href: /azure/sql-database/sql-database-servers
+      html: <p>SQL Database サーバーは、セキュリティ、チューニング、バックアップ ポリシーなど、サーバー内の単一データベースまたはプールされたデータベースのセットに対する他の構成プロパティを設定するためのサーバーの全体管理ポイントです。</p>
+      image:
+        src: media/index/i_mi.svg
+    - title: 価格およびサービス レベル
+      href: /azure/sql-database/sql-database-service-tiers
+      html: <p>月額 5 米国ドルの手頃なデータベースから強力な 80 コア データベースまでの柔軟なサービス レベルによって、価格/パフォーマンスの比率をニーズに合わせて調整することができます。</p>
+      image:
+        src: media/index/i_perftier.svg
+    - title: スケーラビリティ
+      href: /azure/sql-database/sql-database-scale-resources
+      html: <p>データベースを簡単にスケールアップして、アプリケーションのパフォーマンスを向上させます。</p>
+      image:
+        src: media/index/i_scale.svg
+    - title: サービスとしてのプラットフォーム
+      href: /azure/sql-database/sql-database-paas
+      html: <p>組み込みの高可用性、自動バックアップ、geo レプリケーションは、メンテナンス操作やインフラストラクチャ障害、ハードウェア障害によるビジネスの中断を防ぐのに役立ちます。</p>
+      image:
+        src: media/index/gear.svg
+    - title: 高度なセキュリティ
+      href: /azure/sql-database/sql-database-security-index
+      html: <p>Azure AD 認証、仮想ネットワーク、ファイアウォール、Always Encrypted 接続でデータベースのセキュリティ保護に役立ちます。 組み込みのセキュリティで脅威と脆弱性を特定します。</p>
+      image:
+        src: media/index/i_security.svg
+- title: 新機能とプレビュー機能
+  items:
+  - type: paragraph
+    text: Microsoft は SQL Database を新機能によって絶えず改良しています。次の新機能について、お客様のフィードバックをぜひお聞かせください。
+  - type: list
+    style: unordered
+    items:
+    - html: (プレビュー) 最大 100 TB のデータベースと複数の読み取り可能レプリカをサポートする<a href="sql-database-service-tier-hyperscale">ハイパースケール</a> レベル。
+    - html: (プレビュー) 新しい SQL Server 2019 <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">インテリジェント クエリ処理</a>機能 (<a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#table-variable-deferred-compilation">テーブル変数の遅延コンパイル</a>、<a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#batch-mode-on-rowstore">行ストア テーブルのバッチ モード</a>、<a href="https://docs.microsoft.com/sql/relational-databases/user-defined-functions/scalar-udf-inlining?view=azuresqldb-current&toc=%2Fazure%2Fsql-database%2Ftoc.json">スカラー UDF のインライン化</a>など)。
+    - html: (プレビュー) 新しい Transact-SQL 言語機能 (<a href="https://docs.microsoft.com/sql/t-sql/functions/approx-count-distinct-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">APPROX_COUNT_DISTINCT 集計</a>、<a href="https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">Azure Blob Storage からの一括インポート</a>など)。
+    - html: (プレビュー) 新しい SQL Server 2019 クラスター化列ストア インデックスのオンラインでの<a href="https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#online--on--off">構築</a>操作と再構築操作。
+    - html: (プレビュー) 新しい <a href="https://docs.microsoft.com/azure/sql-database/sql-database-machine-learning-services-overview">Azure SQL Database の Machine Learning Services (と R)</a>。
+- title: 5 分間のクイック スタート
+  items:
+  - type: paragraph
+    text: Azure SQL Database により、Azure portal、Azure CLI、Azure PowerShell を使用して基本的な管理タスクを実行することができます。 次のクイック スタート サンプルを使用して基本的な管理タスクを実行する方法を学習します。
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/portal.svg
+      title: Azure ポータル
+    - image:
+        src: media/index/cli.svg
+      title: Azure CLI
+    - image:
+        src: media/index/logo_powershell.svg
+      title: PowerShell
+    - image:
+        src: media/index/logo_arm.svg
+      title: Azure Resource Manager テンプレート
+    rows:
+    - title: データベースを作成する
+      values:
+      - href: /azure/sql-database/sql-database-single-database-get-started
+      - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
+      - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
+      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create
+    - title: エラスティック プールの作成
+      values:
+      - href: /azure/sql-database/sql-database-elastic-pool-manage
+      - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
+      - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
+      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create
+    - title: データベースの拡大縮小
+      values:
+      - href: 
+      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-cli
+      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-powershell
+      - href: 
+    - title: エラスティック プールのスケール設定
+      values:
+      - href: 
+      - href: /azure/sql-database/scripts/sql-database-scale-pool-cli
+      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-pool-powershell
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: Azure SQL Database を使用してデータベースを作成、管理、移行する方法について説明します。
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> または <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> を使用して新しい SQL データベースのスキーマを作成および設計します。
+    - html: <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a> または <a href="/azure/sql-database/sql-database-import">BACPAC インポート</a>を使用して既存のデータベースを Azure に移行します。
+    - html: <a href="/azure/sql-database/sql-database-security-tutorial">SQL Database をセキュリティ保護します</a>。
+    - html: <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">地理的に分散したデータベース</a>を使用してデータをグローバルに分散します。
+    - html: データベースの構成に役立つその他の<a href="sql-database-howto-single-database.md">ハウツー ガイド</a>を見つけます。
+- title: サンプル
+  items:
+  - type: paragraph
+    text: 一般的なタスクを管理するためのスクリプトを探します。
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a>
+    - html: <a href="/azure/sql-database/sql-database-cli-samples">Azure CLI</a>

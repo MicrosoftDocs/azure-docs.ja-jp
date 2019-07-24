@@ -1,25 +1,25 @@
 ---
-title: Service Fabric クラスター リソース マネージャー：移動コスト | Microsoft Docs
+title: 'Service Fabric クラスター Resource Manager: 移動コスト | Microsoft Docs'
 description: Service Fabric サービスの移動コストの概要
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: f022f258-7bc0-4db4-aa85-8c6c8344da32
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 74b61967a796fca22ab86918235f1def27a22f91
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1bd049e6f929b6c3247ca1842412d5527605e643
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204925"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669981"
 ---
 # <a name="service-movement-cost"></a>サービスの移動コスト
 クラスターに対してどのような変更を行うかを決定するときに Service Fabric Cluster Resource Manager が考慮する要因は、それらの変更のコストです。 "コスト" の概念は、クラスターをどの程度向上させることができるかとのトレードオフです。 コストは、均衡化、デフラグ、およびその他の要件に対応するためにサービスを移動するときに考慮されます。 その目標は、中断が最も少ない方法またはコストがかからない方法で要件を満たすことです。 
@@ -76,9 +76,10 @@ this.Partition.ReportMoveCost(MoveCost.Medium);
 ```
 
 ## <a name="impact-of-move-cost"></a>移動コストの影響
-MoveCost には、Zero、Low、Medium、High の 4 つのレベルがあります。 Zero を除き、MoveCost のレベルは相対的なものです。 移動コストが Zero の場合、移動にコストはかからず、ソリューションのスコアに対してカウントされません。 移動コストを High に設定しても、レプリカが 1 つの場所に維持されると保証されるわけでは*ありません*。
+MoveCost には 4 つのレベルがあります: Zero、Low、Medium、High。 Zero を除き、MoveCost のレベルは相対的なものです。 移動コストが Zero の場合、移動にコストはかからず、ソリューションのスコアに対してカウントされません。 移動コストを High に設定しても、レプリカが 1 つの場所に維持されると保証されるわけでは*ありません*。
 
 <center>
+
 ![移動するレプリカを選択する際の要因としての移動コスト][Image1]
 </center>
 

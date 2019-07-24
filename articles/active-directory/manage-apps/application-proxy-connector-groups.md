@@ -2,23 +2,24 @@
 title: Azure AD アプリ プロキシのコネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する | Microsoft Docs
 description: Azure AD アプリケーション プロキシにおけるコネクタのグループの作成と管理の方法について説明します。
 services: active-directory
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: aebb042c065652bef568f6bc1be2ee8bfde43988
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e57a953f99a5e0259c346836c156a0e4fe3e4c03
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622635"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170892"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する
 
@@ -32,7 +33,7 @@ Azure AD のアプリケーション プロキシは、ますます多くのシ�
 >大規模なアプリケーション プロキシをデプロイしている場合は、アプリケーションを既定のコネクタ グループに割り当てないでください。 そうすると、新しいコネクタは、アクティブなコネクタ グループに割り当てられるまではライブ トラフィックを受信しません。 この構成では、コネクタを既定のグループに戻すことでアイドル状態にすることもできるので、ユーザーに影響を与えずにメンテナンスを実行できます。
 
 ## <a name="prerequisites"></a>前提条件
-コネクタをグループ化するには、 [複数のコネクタがインストールされている](application-proxy-enable.md)ことを確認する必要があります。 新しいコネクタをインストールすると、そのコネクタは自動的に **Default** コネクタ グループに追加されます。
+コネクタをグループ化するには、 [複数のコネクタがインストールされている](application-proxy-add-on-premises-application.md)ことを確認する必要があります。 新しいコネクタをインストールすると、そのコネクタは自動的に **Default** コネクタ グループに追加されます。
 
 ## <a name="create-connector-groups"></a>コネクタ グループを作成する
 次の手順を使用して、コネクタ グループを必要な数だけ作成します。 

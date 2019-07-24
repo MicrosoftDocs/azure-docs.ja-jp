@@ -6,7 +6,7 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: d042d6da-7503-4e20-bb55-06917de01fcd
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
@@ -15,18 +15,19 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 0a2a9845f82f1a81f3e187edbbb2deaa2300b3be
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e79b73123b33a012c062a89fb9748fa101fabcea
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585919"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448681"
 ---
-# <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>方法: iOS で ADAL を使用してクロスアプリ SSO を有効にする
+# <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>方法:iOS で ADAL を使用してクロスアプリ SSO を有効にする
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
-シングルサインオン (SSO) を使用すると、ユーザーは、資格情報を 1 回入力するだけで、それらの資格情報を自動的に、、パブリッシャーに関係なく、アプリケーション間や他のアプリケーションが使用する可能性のあるプラットフォーム (Microsoft アカウントや Microsoft 365 の職場アカウントなど) 間で使用させることができます。
+シングルサインオン (SSO) を使用すると、ユーザーは、資格情報を 1 回入力するだけで、それらの資格情報を自動的に、パブリッシャーに関係なく、アプリケーション間や他のアプリケーションが使用する可能性のあるプラットフォーム (Microsoft アカウントや Microsoft 365 の職場アカウントなど) 間で使用させることができます。
 
 Microsoft の ID プラットフォームと SDK により、独自のアプリのスイート内や、ブローカー機能と Authenticator アプリケーションを使用してデバイス全体で、SSO を簡単に有効にすることができます。
 
@@ -218,7 +219,7 @@ App3 のリダイレクト URI: `x-msauth-mytestiosapp://com.myapp.mytestapp3`
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
     <key>keychain-access-groups</key>
@@ -252,7 +253,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 3. URL スキームを登録します。
 4. ご利用の info.plist ファイルにアクセス許可を追加します。
 
-#### <a name="step-1-enable-broker-mode-in-your-application"></a>手順 1: アプリケーションでブローカー モードを有効にする
+#### <a name="step-1-enable-broker-mode-in-your-application"></a>手順 1:アプリケーションでブローカー モードを有効にする
 
 ブローカーを使用するアプリケーションの機能は、認証オブジェクトの "コンテキスト" または初期セットアップを作成すると有効になります。 これを実行するには、コードで次のように資格情報型を設定します。
 
@@ -262,7 +263,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 ```
 `AD_CREDENTIALS_AUTO` 設定は、SDK がブローカーへの呼び出しを試行できるようにします。`AD_CREDENTIALS_EMBEDDED` は、SDK がブローカーを呼び出せないようにします。
 
-#### <a name="step-2-registering-a-url-scheme"></a>Step 2: URL スキームを登録する
+#### <a name="step-2-registering-a-url-scheme"></a>手順 2:URL スキームを登録する
 
 ID プラットフォームは、URL を使用してブローカーを起動してから、制御をアプリケーションに返します。 このラウンド トリップを完了するには、アプリケーションに登録した URL スキームが必要であり、それを ID プラットフォームが知っている必要があります。 このスキームは、以前にアプリケーションに登録した他のアプリ スキームに加えて登録できます。
 
@@ -287,7 +288,7 @@ ID プラットフォームは、URL を使用してブローカーを起動し�
 </array>
 ```
 
-#### <a name="step-3-establish-a-new-redirect-uri-with-your-url-scheme"></a>手順 3: URI スキームで新しいリダイレクト URL を確立する
+#### <a name="step-3-establish-a-new-redirect-uri-with-your-url-scheme"></a>手順 3:URL スキームで新しいリダイレクト URI を確立する
 
 常に資格情報トークンを正しいアプリケーションに返せるようにするために、iOS オペレーティング システムが検証できるような方法で確実にアプリケーションにコールバックする必要があります。 iOS オペレーティング システムは、Microsoft ブローカー アプリケーションに、呼び出し元アプリケーションのバンドル ID を報告します。 これは、悪意のあるアプリケーションによってなりすまされることがありません。 そのため、これとブローカー アプリケーションの URI を利用して、トークンが正しいアプリケーションに確実に返されるようにしています。 この一意のリダイレクト URI をアプリケーションで確立し、開発者ポータルでリダイレクト URI として設定する必要があります。
 
@@ -299,7 +300,7 @@ ID プラットフォームは、URL を使用してブローカーを起動し�
 
 このリダイレクト URI は、[Azure portal](https://portal.azure.com/) を使って、アプリの登録で指定する必要があります。 Azure AD のアプリ登録の詳細については、「[Integrating with Azure Active Directory (Azure Active Directory との統合)](active-directory-how-to-integrate.md)」を参照してください。
 
-##### <a name="step-3a-add-a-redirect-uri-in-your-app-and-dev-portal-to-support-certificate-based-authentication"></a>手順 3a: 証明書ベースの認証をサポートするために、アプリと開発者ポータルでリダイレクト URI を追加する
+##### <a name="step-3a-add-a-redirect-uri-in-your-app-and-dev-portal-to-support-certificate-based-authentication"></a>手順 3a:証明書ベースの認証をサポートするために、アプリと開発者ポータルでリダイレクト URI を追加する
 
 証明書ベースの認証をサポートするには、このサポートをご利用のアプリケーションに追加する場合、証明書認証を処理するために、アプリケーションと [Azure portal](https://portal.azure.com/) で 2 番目の "msauth" を登録する必要があります。
 
@@ -307,7 +308,7 @@ ID プラットフォームは、URL を使用してブローカーを起動し�
 
 例: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
 
-#### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>手順 4: ご利用のアプリに構成パラメーターを追加する
+#### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>手順 4:ご利用のアプリに構成パラメーターを追加する
 
 ADAL は、ブローカーがデバイスにインストールされているかどうかを確認するために、–canOpenURL: を使用します。 iOS 9 では、アプリケーションがクエリを行うことができるスキーマが Apple によってロックダウンされました。 "msauth" を `info.plist file`の LSApplicationQueriesSchemes セクションに追加する必要があります。
 

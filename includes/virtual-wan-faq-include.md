@@ -5,21 +5,21 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 10/05/2018
+ms.date: 03/18/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 761b68ca99df8ae5b4d379b95e7d2a300f7e6238
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 3fa261c6cb76cb95cffc602e5018e480afbb5dae
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48874039"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891005"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Azure 仮想ネットワーク ゲートウェイ (VPN Gateway) と Azure Virtual WAN vpngateway の違いは何ですか。
 
-Virtual WAN は、大規模なサイト間接続を提供し、スループット、スケーラビリティ、使いやすさを考慮して構築されています。 ExpressRoute とポイント対サイト接続の機能は、現在プレビュー中です。 CPE ブランチ デバイスは、自動的にプロビジョニングされ、Azure Virtual WAN に接続されます。 これらのデバイスは、拡大を続ける SD-WAN および VPN パートナーのエコシステムから利用できます。 [推奨されるパートナーの一覧](https://go.microsoft.com/fwlink/p/?linkid=2019615)を参照してください。
+Virtual WAN は、大規模なサイト間接続を提供し、スループット、スケーラビリティ、使いやすさを考慮して構築されています。 ExpressRoute とポイント対サイト接続の機能は、現在プレビュー中です。 CPE 支店のデバイスは自動的にプロビジョニングされ、Azure Virtual WAN に接続されます。 これらのデバイスは、拡大を続ける SD-WAN および VPN パートナーのエコシステムから利用できます。 [推奨されるパートナーの一覧](https://go.microsoft.com/fwlink/p/?linkid=2019615)を参照してください。
 
-### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>ローンチ段階でどのデバイス プロバイダー (Virtual WAN パートナー) がサポートされていますか。 
+### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>ローンチ段階でどのデバイス プロバイダー (Virtual WAN パートナー) がサポートされていますか。
 
 現時点で、多くのパートナーが、完全に自動化された Virtual WAN エクスペリエンスをサポートしています。 詳細については、[Virtual WAN パートナー](https://go.microsoft.com/fwlink/p/?linkid=2019615)に関するページを参照してください。 
 
@@ -57,7 +57,7 @@ Virtual WAN は、大規模なサイト間接続を提供し、スループッ�
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other"></a>仮想ハブに接続されているスポーク VNet は相互に通信できますか。
 
-はい。 仮想ハブに接続されているスポーク間で VNet ピアリングを直接行うことができます。 詳細については、「[仮想ネットワーク ピアリング](../articles/virtual-network/virtual-network-peering-overview.md)」を参照してください。
+はい。 スポーク VNet は、仮想ネットワーク ピアリングを介して直接通信できます。 ただし、ハブを通じて推移的に通信する VNet はサポートされていません。 詳細については、「[仮想ネットワーク ピアリング](../articles/virtual-network/virtual-network-peering-overview.md)」を参照してください。
 
 ### <a name="can-i-deploy-and-use-my-favorite-network-virtual-appliance-in-an-nva-vnet-with-azure-virtual-wan"></a>Azure Virtual WAN で (NVA VNet 内に) 好みのネットワーク仮想アプライアンスをデプロイして使用できますか。
 
@@ -69,7 +69,7 @@ Virtual WAN は、大規模なサイト間接続を提供し、スループッ�
 
 ### <a name="is-there-support-for-bgp"></a>BGP のサポートはありますか。
 
-はい。BGP はサポートされています。 NVA VNet からのルートが適切にアドバタイズされるようにするために、仮想ハブに接続されている NVA VNet にスポークが接続されている場合は BGP を無効にする必要があります。 さらに、スポーク VNet を仮想ハブに接続し、スポーク Vnet ルートがオンプレミス システムに確実に伝達されるようにします。
+はい。BGP はサポートされています。 VPN サイトを作成するときに、BGP パラメーターをそこに指定することができます。 これは、そのサイトの Azure で作成されたすべての接続が BGP に対して有効になることを意味します。 さらに、NVA を含む VNet がある場合と、この NVA VNet が仮想 WAN ハブにアタッチされている場合、確実に NVA VNet からのルートが適切にアドバタイズされるように、NVA VNet にアタッチされているスポークで BGP を無効にする必要があります。 また、これらのスポーク VNet を仮想ハブ VNet に接続し、スポーク Vnet ルートがオンプレミス システムに確実に伝達されるようにします。
 
 ### <a name="can-i-direct-traffic-using-udr-in-the-virtual-hub"></a>仮想ハブで UDR を使用してトラフィックを転送できますか。
 
@@ -79,13 +79,21 @@ Virtual WAN は、大規模なサイト間接続を提供し、スループッ�
  
 はい。 [価格](https://azure.microsoft.com/pricing/details/virtual-wan/)に関するページを参照してください。
 
+### <a name="how-do-i-calculate-price-of-a-hub"></a>ハブの価格はどのように計算しますか。
+ 
+ハブのサービスは課金対象となります。 たとえば、Azure Virtual WAN に接続するために必要な 10 個の支店またはオンプレミス デバイスは、ハブの VPN エンドポイントへの接続を意味します。 たとえば、1 スケール ユニットが 500 Mbps の VPN である場合、これは $0.361/時で課金されます。 各接続は $0.08/時で課金されます。 10 接続の場合、サービス/時の課金の合計は $0.361 + $.8/時となります。 Azure を離れるトラフィックに対するデータの料金が適用されます。 
+
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>ローンチ パートナーの一覧に記載されていない新しいパートナーが一覧に記載されるには、どうすればよいですか。
 
 azurevirtualwan@microsoft.com に電子メールを送信する。 理想的なパートナーは、IKEv1 または IKEv2 IPsec 接続用にプロビジョニングできるデバイスを持つパートナーです。
 
+### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>使用しているデバイスが Virtual WAN パートナー リストにない場合はどうなりますか。 Azure Virtual WAN VPN に引き続き接続することはできますか。
+
+はい。デバイスで IPsec IKEv1 または IKEv2 がサポートされている限り接続できます。 Virtual WAN パートナーによって、デバイスから Azure VPN エンドポイントへの接続が自動化されます。 これは '支店情報のアップロード'、'IPsec と構成'、'接続' などの手順が自動化されることを意味します。ご利用のデバイスが Virtual WAN パートナーのエコシステムからのものでない場合、手動で Azure の構成を取得し、デバイスを更新して IPsec 接続を設定するといった面倒な作業が必要になります。 
+
 ### <a name="is-it-possible-to-construct-azure-virtual-wan-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure Virtual WAN を構築することはできますか。
 
-1 つのハブを持つ 1 つの仮想 WAN と、1 つの vpnsite から成る単純な構成は、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network)を使用して作成できます。 仮想 WAN は、主として REST またはポータルによって駆動されるサービスです。
+1 つのハブを持つ 1 つの Virtual WAN と、1 つの vpnsite から成るシンプルな構成は、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network)を使用して作成できます。 仮想 WAN は、主として REST またはポータルによって駆動されるサービスです。
 
 ### <a name="is-branch-to-branch-connectivity-allowed-in-virtual-wan"></a>Virtual WAN では、支店間接続を行うことができますか?
 
@@ -99,6 +107,10 @@ azurevirtualwan@microsoft.com に電子メールを送信する。 理想的な�
 
 Virtual Network Gateway VPN は、トンネル数が 30 に制限されています。 大規模な VPN の場合、接続するには、Virtual WAN を使用する必要があります。 中西部リージョンを除くすべてのリージョンで、ハブ内で最大 1,000 個の支店接続を 2 Gbps で接続できます。 中西部リージョンでは、20 Gbps が利用可能です。 将来的には、他のリージョンにも 20 Gbps がロールアウトされる予定です。 接続は、オンプレミス VPN デバイスから仮想ハブへのアクティブ/アクティブ型トンネルです。 リージョンごとに 1 つのハブを持つことができます。これは、ハブ間で 1,000 を超える支店を接続できることを意味します。
 
+### <a name="how-is-virtual-wan-supporting-sd-wan-devices"></a>Virtual WAN では SD-WAN デバイスがどのようにサポートされますか。
+
+Virtual WAN パートナーによって、Azure VPN エンドポイントへの IPsec 接続が自動化されます。 Virtual WAN パートナーが SD-WAN プロバイダーである場合、SD-WAN コントローラーで Azure VPN エンドポイントに対する自動化および IPsec 接続が管理されることを意味します。 SD-WAN デバイスに、専用の SD-WAN 機能の Azure VPN ではなく、独自のエンドポイントが必要である場合、SD-WAN エンドポイントを Azure VNet にデプロイし、Azure Virtual WAN と共存させることができます。
+
 ### <a name="does-this-virtual-wan-require-expressroute-from-each-site"></a>この Virtual WAN では、各サイトからの ExpressRoute が必要ですか。
 
 いいえ。この Virtual WAN では、各サイトからの ExpressRoute は不要です。 デバイスから Azure Virtual WAN ハブへのインターネット リンク経由で標準 IPsec サイト間接続が使用されます。 サイトは、ExpressRoute 回線を使用してプロバイダーのネットワークに接続される場合があります。 仮想ハブ (プレビュー中) 内で ExpressRoute を使用して接続されているサイトの場合、サイトでは VPN と ExpressRoute の間に、支店間のトラフィック フローを持つことができます。 
@@ -109,12 +121,12 @@ Virtual Network Gateway VPN は、トンネル数が 30 に制限されていま
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>Virtual WAN では、オンプレミス デバイスで複数の ISP を並行して利用できますか、それとも常に単一の VPN トンネルですか。
 
-はい。支店のデバイスにもよりますが、単一の支店からアクティブ/アクティブ トンネル (2 トンネル = 1 Azure Virtual WAN 接続) を利用できます。
+Virtual WAN VPN への接続は常に、支店で利用可能なリンクを使用する、アクティブ/アクティブ トンネルとなります (同じハブ/リージョン内の回復性の場合)。 このリンクは、オンプレミス支店の ISP リンクである可能性があります。 Virtual WAN では、並列で複数の ISP を設定するための特別なロジックは提供されません。支店で ISP 全体のフェールオーバーを管理するのは、完全に支店を中心としたネットワーク操作となります。 好きな SD-WAN ソリューションを使用して、支店でパスを選択することができます。
 
 ### <a name="how-is-traffic-routed-on-the-azure-backbone"></a>Azure バックボーン上では、トラフィックはどのようにルーティングされますか。
 
-トラフィックは、支店のデバイス -> ISP -> Microsoft Edge -> Microsoft DC -> Microsoft Edge -> ISP -> 支店のデバイスというパターンに従います
+トラフィックは、支店のデバイス -> ISP -> Microsoft Edge -> Microsoft DC (ハブ VNet) -> Microsoft Edge -> ISP -> 支店のデバイスというパターンに従います
 
 ### <a name="in-this-model-what-do-you-need-at-each-site-just-an-internet-connection"></a>このモデルでは、各サイトでどのようなものが必要ですか。 インターネット接続は必要ですか。
 
-はい。 インターネット接続と物理デバイスが必要です。統合[パートナー](https://go.microsoft.com/fwlink/p/?linkid=2019615)が提供するものをお勧めします。 オプションで、好みのデバイスから、構成と Azure への接続を手動で管理できます。
+はい。 IPsec をサポートするインターネット接続および物理デバイスが必要です。統合[パートナー](https://go.microsoft.com/fwlink/p/?linkid=2019615)が提供するものをお勧めします。 オプションで、好みのデバイスから、構成と Azure への接続を手動で管理できます。

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 9cf37e611dce5705a4c866f25afa59e5c1602ec4
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 4ca26c7b8fbfebbce8cfcb9915a7db12e5ad2352
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282205"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793850"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services の証明書の概要
-証明書は、Azure でクラウド サービス ([サービス証明書](#what-are-service-certificates))、および管理 API の認証に使われます ([管理証明書](#what-are-management-certificates))。 このトピックでは、両方の種類の証明書の一般的な概要、これらを[作成](#create)する方法、および Azure に[デプロイ](#deploy)する方法について説明します。
+証明書は、Azure でクラウド サービス ([サービス証明書](#what-are-service-certificates))、および管理 API の認証に使われます ([管理証明書](#what-are-management-certificates))。 このトピックでは、両方の種類の証明書の一般的な概要、これらを[作成](#create)する方法、および Azure にデプロイする方法について説明します。
 
 Azure で使用される証明書は x.509 v3 証明書であり、別の信頼された証明書によって署名することも、自己署名することもできます。 自己署名証明書は、作成者自身が署名するため、既定では信頼されません。 ほとんどのブラウザーではこの問題を無視できます。 自己署名証明書は、クラウド サービスを開発し、テストする際にのみ使用することをお勧めします。 
 
@@ -64,12 +64,12 @@ Azure Portal または Azure クラシック デプロイ モデルを使って�
     > cloudapp.net ドメイン (または Azure に関連するドメイン) の SSL 証明書を取得することはできません。証明書の件名は、アプリケーションへの接続に使用されるカスタム ドメイン名と一致している必要があります。 たとえば、**contoso.cloudapp.net** ではなく、**contoso.net** を使います。
 
 * 最大で 2048 ビットの暗号化。
-* **サービス証明書のみ**: クライアント側の証明書は *個人* 証明書ストアに格納されている必要があります。
+* **サービス証明書のみ**:クライアント側の証明書は "*個人*" 証明書ストアに格納されている必要があります。
 
 Windows で証明書を作成する簡単な方法として、 `makecert.exe` ユーティリティを使用する方法と IIS を使用する方法の 2 つがあります。
 
 ### <a name="makecertexe"></a>Makecert.exe
-このユーティリティは非推奨になったため、ここに記載されなくなりました。 詳細については、 [こちらの MSDN 記事](https://msdn.microsoft.com/library/windows/desktop/aa386968)を参照してください。
+このユーティリティは非推奨になったため、ここに記載されなくなりました。 詳細については、 [こちらの MSDN 記事](/windows/desktop/SecCrypto/makecert)を参照してください。
 
 ### <a name="powershell"></a>PowerShell
 ```powershell

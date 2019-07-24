@@ -25,8 +25,8 @@
       topicHref: /azure/key-vault/
       items:
         - name: Key Vault の PowerShell コマンドレット
-          tocHref: /powershell/module/azurerm.keyvault/
-          topicHref: /powershell/module/azurerm.keyvault/
+          tocHref: /powershell/module/az.keyvault/
+          topicHref: /powershell/module/az.keyvault/
 - name: Azure
   tocHref: /cli/
   topicHref: /azure/index

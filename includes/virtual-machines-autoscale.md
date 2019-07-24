@@ -4,14 +4,14 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 0e46caf855bca184ff8a714d2c93d573b910fea8
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 3c008e77116a9b42a2ea137069529c5e241adddd
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227078"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56213099"
 ---
-[仮想マシン スケール セット](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)と [Azure Monitor の自動スケール機能](../articles/monitoring-and-diagnostics/monitoring-overview-autoscale.md)を使うと、[仮想マシン (VM)](../articles/virtual-machines/windows/overview.md) を簡単に[自動スケール](../articles/monitoring-and-diagnostics/insights-autoscale-best-practices.md)できます。 自動スケールを適用するには、VM がスケール セットのメンバーになっている必要があります。 この記事では、垂直方向、水平方向を問わず自動または手動で VM をスケールする方法について理解を深めることができるよう、各種の情報を紹介します。
+[仮想マシン スケール セット](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)と [Azure Monitor の自動スケール機能](../articles/azure-monitor/platform/autoscale-overview.md)を使うと、[仮想マシン (VM)](../articles/virtual-machines/windows/overview.md) を簡単に[自動スケール](../articles/azure-monitor/platform/autoscale-best-practices.md)できます。 自動スケールを適用するには、VM がスケール セットのメンバーになっている必要があります。 この記事では、垂直方向、水平方向を問わず自動または手動で VM をスケールする方法について理解を深めることができるよう、各種の情報を紹介します。
 
 ## <a name="horizontal-or-vertical-scaling"></a>水平スケーリングと垂直スケーリング
 
@@ -29,13 +29,13 @@ Azure Monitor の自動スケール機能は、水平スケーリングにのみ
 
 自動スケールは、アプリケーションに対する負荷の処理に必要な数だけ VM を利用できる機能です。 VM を追加して負荷の増大に対処したり、アイドル状態の VM があれば削除してコストを節約したりできます。 実行する VM の数は、ルールで最小値と最大値を指定します。 最小値を指定すると、負荷のない状況でも、アプリケーションが常に実行されます。 最大値を指定すると、時間単位の合計コストが制限されます。
 
-[Azure PowerShell](../articles/monitoring-and-diagnostics/insights-powershell-samples.md#create-and-manage-autoscale-settings) または [Azure CLI](https://docs.microsoft.com/cli/azure/monitor/autoscale-settings) を使ってスケール セットを作成する場合には、スケール セットの作成時に自動スケールを有効にできます。 このほか、スケール セットを作成した後に自動スケールを有効にすることもできます。 [Azure Resource Manager テンプレート](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md)では、スケール セットの作成から拡張機能のインストール、自動スケールの構成までが可能です。 Azure Portal の場合には、Azure Monitor かスケール セットの設定から自動スケールを有効にできます。
+[Azure PowerShell](../articles/azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings) または [Azure CLI](https://docs.microsoft.com/cli/azure/monitor/autoscale-settings) を使ってスケール セットを作成する場合には、スケール セットの作成時に自動スケールを有効にできます。 このほか、スケール セットを作成した後に自動スケールを有効にすることもできます。 [Azure Resource Manager テンプレート](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md)では、スケール セットの作成から拡張機能のインストール、自動スケールの構成までが可能です。 Azure Portal の場合には、Azure Monitor かスケール セットの設定から自動スケールを有効にできます。
 
 ![自動スケールの有効化](./media/virtual-machines-autoscale/virtual-machines-autoscale-enable.png)
  
 ### <a name="metrics"></a>メトリック
 
-Azure Monitor の自動スケール機能では、実行する VM の数を[メトリック](../articles/monitoring-and-diagnostics/insights-autoscale-common-metrics.md)に基づいて調節することができます。 既定ではディスク、ネットワーク、CPU 使用率について、VM からホストレベルの基本的なメトリックが提供されます。 診断拡張機能を使って収集対象となる診断データを構成した場合には、ディスク、CPU、メモリに関して追加のゲスト OS パフォーマンス カウンターが利用できるようになります。
+Azure Monitor の自動スケール機能では、実行する VM の数を[メトリック](../articles/azure-monitor/platform/autoscale-common-metrics.md)に基づいて調節することができます。 既定ではディスク、ネットワーク、CPU 使用率について、VM からホストレベルの基本的なメトリックが提供されます。 診断拡張機能を使って収集対象となる診断データを構成した場合には、ディスク、CPU、メモリに関して追加のゲスト OS パフォーマンス カウンターが利用できるようになります。
 
 ![メトリックの条件](./media/virtual-machines-autoscale/virtual-machines-autoscale-criteria.png)
 
@@ -49,7 +49,7 @@ Azure Monitor の自動スケール機能では、実行する VM の数を[メ�
  
 ### <a name="notifications"></a>通知
 
-[トリガーを設定](../articles/monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)し、作成した自動スケール ルールに基づいて特定の Web URL を呼び出したり、メールを送信したりすることができます。 Webhook を使用すると、後処理やカスタム通知のために、Azure アラート通知を他のシステムにルーティングすることができます。
+[トリガーを設定](../articles/azure-monitor/platform/autoscale-webhook-email.md)し、作成した自動スケール ルールに基づいて特定の Web URL を呼び出したり、メールを送信したりすることができます。 Webhook を使用すると、後処理やカスタム通知のために、Azure アラート通知を他のシステムにルーティングすることができます。
 
 ## <a name="manually-scale-vms-in-a-scale-set"></a>スケール セット内の VM を手動でスケールする
 
@@ -57,11 +57,11 @@ Azure Monitor の自動スケール機能では、実行する VM の数を[メ�
 
 スケール セットの容量を変更すると、VM を追加または削除できます。 Azure Portal では [スケーリング] 画面の [Override condition]\(オーバーライド条件\) バーを左右に動かすことによって、スケール セットの VM の数 (表示は **[インスタンス数]**) を調節できます。
 
-Azure PowerShell を使用する場合には、[Get-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) を使ってスケール セット オブジェクトを取得する必要があります。 オブジェクトを取得したら **sku.capacity** プロパティに必要な VM の数を設定し、[Update-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) を使ってスケール セットを更新します。 Azure CLI を使用する場合には、**--new-capacity** パラメーターを使用して [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#az_vmss_scale) コマンドを実行すると、容量を変更できます。
+Azure PowerShell を使用する場合には、[Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) を使ってスケール セット オブジェクトを取得する必要があります。 オブジェクトを取得したら **sku.capacity** プロパティに必要な VM の数を設定し、[Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) を使ってスケール セットを更新します。 Azure CLI を使用する場合には、**--new-capacity** パラメーターを使用して [az vmss scale](/cli/azure/vmss?view=azure-cli-latest#az-vmss-scale) コマンドを実行すると、容量を変更できます。
 
 ### <a name="vertical"></a>Vertical
 
-Azure Portal では、スケール セットの [サイズ] 画面で VM のサイズを手動で変更できます。 Azure PowerShell の場合には、Get-AzureRmVmss を使用し、イメージ参照 SKU のプロパティを設定したうえで、[Update-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) と [Update-AzureRmVmssInstance](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmssinstance) を使用します。
+Azure Portal では、スケール セットの [サイズ] 画面で VM のサイズを手動で変更できます。 Azure PowerShell の場合には、Get-AzVmss を使用し、イメージ参照 SKU のプロパティを設定したうえで、[Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) と [Update-AzVmssInstance](https://docs.microsoft.com/powershell/module/az.compute/update-azvmssinstance) を使用します。
 
 ## <a name="next-steps"></a>次の手順
 

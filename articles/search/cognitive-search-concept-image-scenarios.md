@@ -1,5 +1,5 @@
 ---
-title: Azure Search 内の画像からテキストを処理して抽出する | Microsoft Docs
+title: コグニティブ検索内の画像からテキストを処理して抽出する - Azure Search
 description: Azure Search のコグニティブ検索パイプラインで、画像内のテキストやその他の情報を処理し、抽出する方法について説明します。
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 88e3658216f3eec545d4388ddf2d90cea60995c3
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: seodec2018
+ms.openlocfilehash: f1491d6b87816dfc70e94e01653567bda101d045
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166952"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58916973"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>コグニティブ検索のシナリオで画像からの情報を処理し、抽出する方法
 
@@ -33,7 +34,7 @@ ms.locfileid: "49166952"
 
 | 構成パラメーター | 説明 |
 |--------------------|-------------|
-| imageAction   | 見つかった埋め込み画像や画像ファイルに対してアクションを実行しない場合は、"none" に設定します。 <br/>"GenerateNormalizedImages" に設定すると、ドキュメント クラッキングの際、正規化された画像の配列が生成されます。 これらの画像は、*normalized_images* フィールドで公開されます。 <br/>既定値は "none" です。 この構成は、BLOB データ ソースにのみ関連します ("dataToExtract" が "contentAndMetadata" に設定されている場合)。 |
+| imageAction   | 見つかった埋め込み画像や画像ファイルに対してアクションを実行しない場合は、"none" に設定します。 <br/>"GenerateNormalizedImages" に設定すると、ドキュメント クラッキングの際、正規化された画像の配列が生成されます。<br/>"generateNormalizedImagePerPage" に設定すると、正規化された画像の配列が生成され、データ ソース内の PDF は、各ページが 1 つの出力画像にレンダリングされます。  PDF 以外のファイルの種類については、機能は "generateNormalizedImages" の場合と同じです。<br/>"none" ではないすべてのオプションについては、画像が *normalized_images* フィールドで公開されます。 <br/>既定値は "none" です。 この構成は、BLOB データ ソースにのみ関連します ("dataToExtract" が "contentAndMetadata" に設定されている場合)。 <br/>特定のドキュメントから最大 1,000 個の画像が抽出されます。 ドキュメントに 1,000 を超える画像がある場合は、最初の 1,000 が抽出され、警告が生成されます。 |
 |  normalizedImageMaxWidth | 生成された正規化画像の最大幅 (ピクセル単位)。 既定値は 2000 です。|
 |  normalizedImageMaxHeight | 生成された正規化画像の最大の高さ (ピクセル単位)。 既定値は 2000 です。|
 
@@ -61,7 +62,7 @@ ImageAction は、[インデクサー定義](https://docs.microsoft.com/rest/api
 }
 ```
 
-*imageAction* が "generateNormalizedImages" に設定されている場合は、新しい *normalized_images* フィールドに画像の配列が含められます。 各画像は、次のメンバーを含んだ複合型になります。
+*imageAction* を "none" 以外の値に設定すると、新しい *normalized_images* フィールドに画像の配列が格納されます。 各画像は、次のメンバーを含んだ複合型になります。
 
 | 画像のメンバー       | 説明                             |
 |--------------------|-----------------------------------------|
@@ -90,7 +91,7 @@ ImageAction は、[インデクサー定義](https://docs.microsoft.com/rest/api
 
 ## <a name="image-related-skills"></a>画像関連のスキル
 
-画像を入力として取得するコグニティブ スキルは、組み込みで 2 つ用意されています。[OCR](cognitive-search-skill-ocr.md) と[画像分析](cognitive-search-skill-image-analysis.md)です。 
+画像を入力として取得するコグニティブ スキルは、組み込みで 2 つ用意されています:[OCR](cognitive-search-skill-ocr.md) と[画像分析](cognitive-search-skill-image-analysis.md)です。 
 
 現在のところ、これらのスキルは、ドキュメント クラッキング ステップから生成された画像に対してのみ機能します。 そのため、サポートされている入力は `"/document/normalized_images"` のみです。
 
@@ -121,7 +122,6 @@ OCR スキルでは、画像内のテキストの検出に使用するアルゴ�
   "skills":
   [
     {
-        "name": "OCR skill",
         "description": "Extract text (plain and structured) from image.",
         "@odata.type": "#Microsoft.Skills.Vision.OcrSkill",
         "context": "/document/normalized_images/*",

@@ -2,18 +2,19 @@
 title: タスクとノードの状態をカウントする - Azure Batch | Microsoft Docs
 description: Azure Batch タスクと計算ノードの状態をカウントし、Batch ソリューションを容易に管理および監視できるようにします。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 09/07/2018
-ms.author: danlep
-ms.openlocfilehash: 5c65ee3ecc851b289c32a480ecad8f2df3aaad95
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 574cdea61a474dda5d20254bfae9ff2f06044cca
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913888"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733116"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>タスクとノードを状態別にカウントして、Batch ソリューションを監視する
 
@@ -128,6 +129,6 @@ REST やその他のサポートされている言語で同様のパターンを
 [rest_get_node_counts]: /rest/api/batchservice/account/listpoolnodecounts
 [rest_get_task]: /rest/api/batchservice/task/get
 [rest_list_tasks]: /rest/api/batchservice/task/list
-[rest_get_exec_info]: /rest/api/batchservice/task/get#executionInfo
+[rest_get_exec_info]: /rest/api/batchservice/task/get
 [rest_start_task]: /rest/api/batchservice/pool/add#starttask
 

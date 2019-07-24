@@ -1,26 +1,22 @@
 ---
-title: U-SQL を使用した Azure Data Lake データ サイエンスのチュートリアル | Microsoft Docs
+title: Azure Data Lake での U-SQL を使用した分析 - Team Data Science Process
 description: Azure Data Lake で U-SQL を使用して予測分析を行う例を紹介します。
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
-ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: deguhath
-ms.openlocfilehash: 6625a2b1e02801a3adea08fc0e301c56d8db3f1b
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: b0599317d09a1757b3c86372cb7ed8ea78d4cdd7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49392429"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464485"
 ---
 # <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>U-SQL を使用した Azure Data Lake データ サイエンスのチュートリアル
 

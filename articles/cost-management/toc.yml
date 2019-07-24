@@ -1,5 +1,5 @@
 items:
-- name: Azure Cost Management のドキュメント
+- name: Azure コスト管理のドキュメント
   href: index.yml
   items:
   - name: 概要
@@ -23,16 +23,26 @@ items:
     items:
     - name: Azure Cost Management のベスト プラクティス
       href: cost-mgt-best-practices.md
+    - name: Cost Management のデータを理解する
+      href: understand-cost-mgt-data.md
+    - name: スコープを理解して使用する
+      href: understand-work-scopes.md
+    - name: EA から MCA API に移行する
+      href: migrate-cost-management-api.md
   - name: ハウツー ガイド
     items:
     - name: データへのアクセスの割り当て
       href: assign-access-acm-data.md
+    - name: コストのアラートの使用
+      href: cost-mgt-alerts-monitor-usage-spending.md
   - name: リファレンス
     items:
     - name: Azure Cost Management REST API
       href: https://docs.microsoft.com/rest/api/cost-management
     - name: Azure Consumption REST API
       href: https://docs.microsoft.com/rest/api/consumption
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.consumption/budgets
   - name: リソース
     items:
     - name: Microsoft Learn でスキルを身に付ける
@@ -107,9 +117,9 @@ items:
         href: cost-mgt-faq.md
       - name: Cloudyn のサポートに問い合わせる
         href: support-request-cost-management.md
-ms.openlocfilehash: 1aecf5906350e1e69f3e8c028e6c82d5e2bc3988
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: b9e987d0f839b3ea0c13b15cdb27e8cb9de5b5dc
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623267"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312514"

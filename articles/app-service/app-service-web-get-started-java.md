@@ -1,10 +1,10 @@
 ---
-title: Azure で初めての Java Web アプリを作成する
+title: Java Web アプリの作成 - Azure App Service
 description: 基本の Java アプリをデプロイして、App Service で Web アプリを実行する方法を確認します。
 services: app-service\web
 documentationcenter: ''
 author: rmcmurray
-manager: mbaldwin
+manager: routlaw
 editor: ''
 ms.assetid: 8bacfe3e-7f0b-4394-959a-a88618cb31e1
 ms.service: app-service-web
@@ -14,17 +14,17 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: cephalin;robmcm
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 854ae54992a1389ec7c7f7892c738d070421264d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.custom: seodec18
+ms.openlocfilehash: 6bf0562d222bce07f74ef5355ad0e3d6b8844c33
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30283930"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096624"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Azure で初めての Java Web アプリを作成する
 
-[Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このクイックスタートでは、[Eclipse IDE for Java EE Developers](http://www.eclipse.org/) を使って、Java Web アプリを App Service にデプロイする方法を示します。
+[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このクイックスタートでは、[Eclipse IDE for Java EE Developers](https://www.eclipse.org/) を使って、Java Web アプリを App Service にデプロイする方法を示します。
 
 > [!NOTE]
 >
@@ -41,7 +41,7 @@ ms.locfileid: "30283930"
 
 このクイック スタートを完了するには、以下をインストールします。
 
-* 無料の <a href="http://www.eclipse.org/downloads/" target="_blank">Eclipse IDE for Java EE Developers</a>。 このクイック スタートでは Eclipse Neon を使用します。
+* 無料の <a href="https://www.eclipse.org/downloads/" target="_blank">Eclipse IDE for Java EE Developers</a>。 このクイック スタートでは Eclipse Neon を使用します。
 * <a href="/java/azure/eclipse/azure-toolkit-for-eclipse-installation" target="_blank">Azure Toolkit for Eclipse</a>。
 
 > [!NOTE]
@@ -104,7 +104,7 @@ Index.jsp ファイルで、`<body></body>` を次のマークアップに置き
 
 Azure アカウントにサインインしたら、**[Deploy Web App\(Web アプリのデプロイ\)]** ダイアログ ボックスが表示されます。
 
-**[作成]** を選択します。
+**作成**を選択します。
 
 ![[Deploy Web App\(Web アプリのデプロイ\)] ダイアログ ボックス](./media/app-service-web-get-started-java/deploy-web-app-dialog-box.png)
 
@@ -121,11 +121,11 @@ Azure アカウントにサインインしたら、**[Deploy Web App\(Web アプ
 * Azure サブスクリプションを選択します。
 * **[App Service プラン]** タブで、次の操作を行います。
 
-  * **[新規作成]**。既定値の App Service プラン名をそのまま使用します。
-  * **[場所]**。**[西ヨーロッパ]** または現在地付近を選択します。
-  * **[価格レベル]**。無料オプションを選択します。 機能については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)」をご覧ください。
+  * **新規作成**: 既定値の App Service プラン名をそのまま使用します。
+  * **[場所]**: **[西ヨーロッパ]** または現在地付近を選択します。
+  * **価格レベル**: 無料オプションを選択します。 機能については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)」をご覧ください。
 
-   ![[App Service の作成] ダイアログ ボックス](./media/app-service-web-get-started-java/create-app-service-dialog-box.png)
+    ![[App Service の作成] ダイアログ ボックス](./media/app-service-web-get-started-java/create-app-service-dialog-box.png)
 
 [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
@@ -137,7 +137,7 @@ Azure アカウントにサインインしたら、**[Deploy Web App\(Web アプ
 
 [!INCLUDE [resource-group](../../includes/resource-group.md)]
 
-**[作成]** を選択します。
+**作成**を選択します。
 
 <!--
 ### The JDK tab

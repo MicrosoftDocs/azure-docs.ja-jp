@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 4ae4c3100ae13fdb05e17974b433b247128c1a50
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: bda289e73b9a782cd56c0c94b8f53e8002b1ccf4
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31805058"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59532781"
 ---
 ## <a name="how-to-create-a-virtual-network-using-a-network-config-file-from-powershell"></a>PowerShell のネットワーク構成ファイルを使用して仮想ネットワークを作成する方法
 Azure では、xml ファイルを使用して、サブスクリプションで使用可能なすべての仮想ネットワークを定義します。 このファイルをダウンロードし、既存の仮想ネットワークが変更または削除されるようにファイルを編集することで、新しい仮想ネットワークを作成します。 このチュートリアルでは、ネットワーク構成 (または netcgf) ファイルをダウンロードする方法と、そのファイルを編集して新しい仮想ネットワークを作成する方法を説明します。 ネットワーク構成ファイルの詳細については、「[Azure Virtual Network Configuration Schema](https://msdn.microsoft.com/library/azure/jj157100.aspx)」(Azure 仮想ネットワークの構成スキーマ) を参照してください。
@@ -35,8 +35,8 @@ PowerShell で netcfg ファイルを使用する仮想ネットワークを作�
       <?xml version="1.0" encoding="utf-8"?>...
       ```
 
-3. 任意の XML またはテキスト エディター アプリケーションを使用して、手順 2 で保存したファイルを開き、**<VirtualNetworkSites>** 要素を探します。 既に作成したネットワークがある場合、各ネットワークは **<VirtualNetworkSite>** 要素として表示されます。
-4. このシナリオで説明した仮想ネットワークを作成するには、次の XML を **<VirtualNetworkSites>** 要素のすぐ下に追加します。
+3. 任意の XML またはテキスト エディター アプリケーションを使用して、手順 2 で保存したファイルを開き、**\<VirtualNetworkSites>** 要素を探します。 既に作成したネットワークがある場合、各ネットワークは **\<VirtualNetworkSite>** 要素として表示されます。
+4. このシナリオで説明した仮想ネットワークを作成するには、次の XML を **\<VirtualNetworkSites>** 要素のすぐ下に追加します。
 
    ```xml
          <?xml version="1.0" encoding="utf-8"?>

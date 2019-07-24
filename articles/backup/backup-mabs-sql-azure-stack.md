@@ -2,18 +2,18 @@
 title: Azure Stack での SQL Server ワークロードのバックアップ
 description: Azure Stack 上の SQL Server ワークロードの保護には Azure Backup Server を使用します。
 services: backup
-author: pvrk
-manager: Shivamg
+author: adigan
+manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
-ms.author: pullabhk
-ms.openlocfilehash: ca7da7ab048b6f7bfdba81aac9bc7702b20ff967
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.author: adigan
+ms.openlocfilehash: fb064c39fa014515fb2a3f4ccc96ce216f2f7b2e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751799"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493509"
 ---
 # <a name="back-up-sql-server-on-stack"></a>Stack 上の SQL Server のバックアップ
 この記事では、Azure Stack 上の SQL Server データベースを保護するための Microsoft Azure Backup Server (MABS) の構成について説明します。
@@ -68,7 +68,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 
     ![Initial replication method](./media/backup-azure-backup-sql/pg-manual.png)
 
-    初回バックアップでは、データ ソース (SQL Server データベース) 全体を運用サーバー (SQL Server コンピューター) から Azure Backup Server に転送する必要があります。 このデータは場合によっては大きくなり、ネットワーク経由で転送すると帯域幅を超える可能性があります。 そのために、初回バックアップの転送では、帯域幅の輻輳を避けるために**手動**で転送するか (リムーバブル メディアを使用)、指定した時刻に**自動 (ネットワーク経由)** で転送するかを選択できます。
+    初回バックアップでは、データ ソース (SQL Server データベース) 全体を運用サーバー (SQL Server コンピューター) から Azure Backup Server に転送する必要があります。 このデータは場合によっては大きくなり、ネットワーク経由で転送すると帯域幅を超える可能性があります。 この理由から、初回バックアップの転送では、帯域幅の輻輳を避けるために**手動**で転送するか (リムーバブル メディアを使用)、指定した時刻に**自動 (ネットワーク経由)** で転送するかを選択できます。
 
     初期バックアップが完了した後は、残りのバックアップは初期バックアップのコピーに対する増分バックアップになります。 増分バックアップは一般に非常に小さく、ネットワーク経由で容易に転送できます。
 

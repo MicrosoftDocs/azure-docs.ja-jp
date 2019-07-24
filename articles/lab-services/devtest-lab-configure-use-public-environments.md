@@ -47,4 +47,4 @@ Azure DevTest Labs には、[Azure Resource Manager テンプレートのパブ�
 ![パブリックな環境のテンプレート](media/devtest-lab-configure-use-public-environments/public-environment-templates.png)
 
 ## <a name="next-steps"></a>次の手順
-このリポジトリは、投稿して、頻繁に使用される便利な Resource Manager テンプレートを自分で追加できるオープン ソースのリポジトリです。 リポジトリに対してプル要求を送信するだけで、投稿できます。  
+このリポジトリは、投稿して、頻繁に使用される便利な Resource Manager テンプレートを自分で追加できるオープン ソースのリポジトリです。 リポジトリに対して pull request を送信するだけで、投稿できます。  

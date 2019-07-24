@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 0b4e7165f30364ba61b583cf5d2f55e8826b9cf3
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 90004c27463a61de1b36eaea6754215f911f7483
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092127"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095859"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box のセキュリティとデータ保護
 
@@ -75,16 +75,16 @@ Azure Data Box は、同サービスにおける次の主要なインスタン�
 
 - **注文の詳細** - 発注後、ユーザーの配送先住所、メール、連絡先情報が Azure portal に格納されます。 たとえば、次の情報が保存の対象となります。
 
-    - 連絡先の名前
-    - 電話番号
-    - 電子メール
-    - 番地
-    - City
-    - 郵便番号
-    - 州
-    - 国/地方/地域
-    - 運送業者のアカウント番号
-    - 配送追跡番号
+  - 連絡先の名前
+  - 電話番号
+  - 電子メール
+  - 番地
+  - City
+  - 郵便番号
+  - 状態
+  - 国/地方/地域
+  - 運送業者のアカウント番号
+  - 配送追跡番号
 
     注文の詳細は、ジョブが完了するか、お客様が注文を削除すると、Data Box サービスによって削除されます。
 
@@ -99,11 +99,11 @@ Data Box では、次のセキュリティ ガイドラインが実装されて�
 
 |ガイドライン   |説明   |
 |---------|---------|
-|[IEC 60529 IP52](http://www.iec.ch/)    | 水やほこりからの保護のため         |
+|[IEC 60529 IP52](https://www.iec.ch/)    | 水やほこりからの保護のため         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | 劣悪な輸送条件に対する耐久性のため          |
-|[NIST SP 800-147](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-147.pdf)      | 安全なファームウェア更新のため         |
+|[NIST SP 800-147](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-147.pdf)      | 安全なファームウェア更新のため         |
 |[FIPS 140-2 Level 2](https://csrc.nist.gov/csrc/media/publications/fips/140/2/final/documents/fips1402.pdf)      | データ保護のため         |
-|[NIST SP 800-88r1](http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | データのサニタイズのため         |
+|[NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | データのサニタイズのため         |
 
 ## <a name="next-steps"></a>次の手順
 

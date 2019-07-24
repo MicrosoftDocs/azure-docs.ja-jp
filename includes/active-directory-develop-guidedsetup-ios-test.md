@@ -3,8 +3,8 @@ title: インクルード ファイル
 description: インクルード ファイル
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: danieldobalian
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,14 +12,14 @@ ms.topic: include
 ms.tgt_pltfrm: ios
 ms.workload: identity
 ms.date: 09/19/2018
-ms.author: andret
+ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: d8d7d5649ca1dc215f85f928d111ff1367c60bb5
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: e48aaa03463bb968ec366b27308ca908aab30d99
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988270"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59804485"
 ---
 ## <a name="test-querying-the-microsoft-graph-api-from-your-ios-application"></a>iOS アプリケーションから Microsoft Graph API にクエリ実行をテストする
 
@@ -36,7 +36,8 @@ ms.locfileid: "49988270"
 ![アプリケーションによるアクセスに同意する](media/active-directory-develop-guidedsetup-ios-test/iosconsentscreen.png)
 
 ### <a name="view-application-results"></a>アプリケーションの結果を表示する
-サインインした後、**[ログ]** セクションに、Microsoft Graph API の呼び出しによって返されたユーザー プロファイル情報が表示されます。 
+
+サインインした後、**[ログ]** セクションに、Microsoft Graph API の呼び出しによって返されたユーザー プロファイル情報が表示されます。
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>スコープと委任されたアクセス許可の詳細

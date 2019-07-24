@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: raynew
-ms.openlocfilehash: 0b02ae4b75426b379ad7c124f5ddeb053c142ce6
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 068b55e40afc96dbcfae26c8bf7da8a1b9ea349a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730296"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249779"
 ---
 # <a name="migrate-machines-after-assessment"></a>評価後のマシンの移行
 
@@ -19,6 +19,9 @@ ms.locfileid: "45730296"
 [Azure Migrate](migrate-overview.md) は、オンプレミスのマシンを評価して Azure への移行に適しているかどうかを確認し、Azure でマシンを実行する際のサイズとコストの見積りを示します。 現時点では、Azure Migrate では、マシンの移行目的でのみ評価します。 移行自体は、現在、他の Azure サービスを使用して実行されています。
 
 この記事では、移行の評価を実行した後、移行ツールに関する推奨事項を取得する方法について説明します。
+
+> [!NOTE]
+> Azure Government の場合、移行ツールに関する推奨事項がありません。
 
 ## <a name="migration-tool-suggestion"></a>移行ツールに関する推奨事項
 

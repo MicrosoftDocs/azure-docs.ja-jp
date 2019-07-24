@@ -10,22 +10,22 @@ ms.reviewer: klam, stepsic, LADocs
 ms.topic: article
 ms.assetid: f113005d-0ba6-496b-8230-c1eadbd6dbb9
 ms.date: 05/26/2017
-ms.openlocfilehash: 0d53c8355fadf53c81676a1fe3c71f8e0b046630
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a9049ba1fbd7d3bdce061d277f6a7a02d9b1e4b7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126570"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880066"
 ---
 # <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>カスタム API をデプロイして Azure Logic Apps のワークフローから呼び出す
 
-ロジック アプリ ワークフローで使用するために[カスタム API を作成](./logic-apps-create-api-app.md)したら、API をデプロイする必要があります。デプロイ後に呼び出しが可能になります。 API は [Web アプリ](../app-service/app-service-web-overview.md)としてデプロイできますが、[API アプリ](../app-service/app-service-web-tutorial-rest-api.md)としてデプロイすることを検討してください。クラウドやオンプレミスで API を構築、ホスト、利用するとき、作業が簡単になります。 API のコードを変更する必要はありません。コードを API アプリにデプロイするだけです。 API は [Azure App Service](../app-service/app-service-web-overview.md) でホストできます。Azure App Service は、高い拡張性と容易な API ホスティングを提供するサービスとしてのプラットフォーム (PaaS) です。
+ロジック アプリ ワークフローで使用するために[カスタム API を作成](./logic-apps-create-api-app.md)したら、API をデプロイする必要があります。デプロイ後に呼び出しが可能になります。 API は [Web アプリ](../app-service/overview.md)としてデプロイできますが、[API アプリ](../app-service/app-service-web-tutorial-rest-api.md)としてデプロイすることを検討してください。クラウドやオンプレミスで API を構築、ホスト、利用するとき、作業が簡単になります。 API のコードを変更する必要はありません。コードを API アプリにデプロイするだけです。 API は [Azure App Service](../app-service/overview.md) でホストできます。Azure App Service は、高い拡張性と容易な API ホスティングを提供するサービスとしてのプラットフォーム (PaaS) です。
 
-ロジック アプリからあらゆる API を呼び出せますが、[OpenAPI (旧称 Swagger) メタデータ](http://swagger.io/specification/)を追加すると最も効率的になります。このメタデータは API の操作とパラメーターを説明するものです。 この OpenAPI ファイルを利用することで、API とロジック アプリとより簡単に統合され、効率的に連動します。
+ロジック アプリからあらゆる API を呼び出せますが、[OpenAPI (旧称 Swagger) メタデータ](https://swagger.io/specification/)を追加すると最も効率的になります。このメタデータは API の操作とパラメーターを説明するものです。 この OpenAPI ファイルを利用することで、API とロジック アプリとより簡単に統合され、効率的に連動します。
 
 ## <a name="deploy-your-api-as-a-web-app-or-api-app"></a>Web アプリまたは API アプリとして API をデプロイする
 
-ロジック アプリからカスタム API を呼び出すには、先に、Web アプリまたは API アプリとして Azure App Service に API をデプロイします。 また、Logic Apps Designer で OpenAPI ファイルを読めるように、API 定義プロパティを設定し、Web アプリまたは API アプリの [[クロスオリジン リソース共有 (CORS) を使用する]](../app-service/app-service-web-overview.md) をオンにします。
+ロジック アプリからカスタム API を呼び出すには、先に、Web アプリまたは API アプリとして Azure App Service に API をデプロイします。 また、Logic Apps Designer で OpenAPI ファイルを読めるように、API 定義プロパティを設定し、Web アプリまたは API アプリの [[クロスオリジン リソース共有 (CORS) を使用する]](../app-service/overview.md) をオンにします。
 
 1. [Azure Portal](https://portal.azure.com) で、Web アプリまたは API アプリを選択します。
 

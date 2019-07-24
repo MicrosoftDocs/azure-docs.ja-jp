@@ -1,22 +1,20 @@
 ---
-title: Azure Dev Space を操作する場合のシークレットを管理する方法 | Microsoft Docs
+title: Azure Dev Space を操作する場合のシークレットを管理する方法
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
-author: iainfoulds
-ms.author: iainfou
+author: zr-msft
+ms.author: zarhoads
 ms.date: 05/11/2018
-ms.topic: article
-ms.technology: azds-kubernetes
+ms.topic: conceptual
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
-ms.openlocfilehash: d7c8d0e1aca03a47e55605889c9f3fa73837d85a
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 9fe29e8717c76c353f3e95d4693011f3925c4e1b
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50977160"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790709"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Azure Dev Space を操作する場合のシークレットを管理する方法
 
@@ -67,7 +65,7 @@ Azure Dev Spaces では、シークレットを格納するための 2 つの推
 7. _values.dev.yaml_ を _.gitignore_ ファイルに追加して、ソース管理でシークレットがコミットされないようにします。
  
  
-## <a name="method-2-inline-directly-in-azdsyaml"></a>方法 2: azds.yaml にインラインで直接
+## <a name="method-2-inline-directly-in-azdsyaml"></a>方法 2:azds.yaml にインラインで直接
 1.  _Azds.yaml_ で、yaml セクションの configurations/develop/install の下にシークレットを設定します。 ここにシークレット値を直接入力できますが、_azds.yaml_ はソース管理にチェックインされるため、お勧めしません。 代わりに、"$PLACEHOLDER" 構文を使用してプレース ホルダーを追加します。
 
     ```yaml
@@ -112,5 +110,5 @@ Azure Dev Spaces では、シークレットを格納するための 2 つの推
 
 ## <a name="next-steps"></a>次の手順
 
-これらの方法によって、データベース、Redis キャッシュに安全に接続したり、またはセキュリティ保護された Azure サービスにアクセスしたりできます。
+これらの方法によって、データベース、Azure Cache for Redis に安全に接続したり、セキュリティ保護された Azure サービスにアクセスしたりできます。
  

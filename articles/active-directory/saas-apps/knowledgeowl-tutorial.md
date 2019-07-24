@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と KnowledgeOwl の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と KnowledgeOwl の統合 | Microsoft Docs
 description: Azure Active Directory と KnowledgeOwl の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 2ae30996-864d-4872-90bc-f770e1ea159a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: e902f5969611dd3b1074e899003abe5067857c04
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c8c86ad6e4b11f21c648083fac35e15eec7658c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446143"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995507"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>チュートリアル: Azure Active Directory と KnowledgeOwl の統合
+# <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>チュートリアル:Azure Active Directory と KnowledgeOwl の統合
 
 このチュートリアルでは、KnowledgeOwl を Azure Active Directory (Azure AD) と統合する方法について説明します。
 
@@ -109,6 +110,7 @@ KnowledgeOwl で Azure AD のシングル サインオンを構成してテス�
     ![[KnowledgeOwl のドメインと URL] のシングル サインオン情報](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_url.png)
 
     a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。
+
     |||
     |-|-|
     | `https://app.knowledgeowl.com/sp`|
@@ -116,6 +118,7 @@ KnowledgeOwl で Azure AD のシングル サインオンを構成してテス�
     |||
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+
     |||
     |-|-|
     | `https://subdomain.knowledgeowl.com/help/saml-login`|
@@ -131,6 +134,7 @@ KnowledgeOwl で Azure AD のシングル サインオンを構成してテス�
     ![[KnowledgeOwl のドメインと URL] のシングル サインオン情報](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_url1.png)
 
     **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    
     |||
     |-|-|
     | `https://subdomain.knowledgeowl.com/help/saml-login`|
@@ -184,29 +188,29 @@ KnowledgeOwl で Azure AD のシングル サインオンを構成してテス�
 
 1. **[Settings]\(設定\)** をクリックし、**[Security]\(セキュリティ\)** を選択します。
 
-    ![KnowledgeOwl の構成](./media/knowledgeowl-tutorial/configure1.png)
+     ![KnowledgeOwl の構成](./media/knowledgeowl-tutorial/configure1.png)
 
-1. 下へスクロールして **[SAML SSO Integration]\(SAML SSO 統合\)** に移動し、次の手順に従います。
+1. **[SAML SSO Integration]\(SAML SSO 統合\)** までスクロールして、次の手順に従います。
     
-    ![KnowledgeOwl の構成](./media/knowledgeowl-tutorial/configure2.png)
+     ![KnowledgeOwl の構成](./media/knowledgeowl-tutorial/configure2.png)
 
-    a. **[Enable SAML SSO]\(SAML SSO を有効にする\)** をオンにします。
+     a. **[Enable SAML SSO]\(SAML SSO を有効にする\)** をオンにします。
 
-    b. **[SP Entity ID]\(SP エンティティ ID\)** の値をコピーし、Azure portal の **[KnowledgeOwl のドメインと URL]** セクションの **[識別子 (エンティティ ID)]** に貼り付けます。
+     b. **[SP Entity ID]\(SP エンティティ ID\)** の値をコピーし、Azure portal の **[KnowledgeOwl のドメインと URL]** セクションの **[識別子 (エンティティ ID)]** に貼り付けます。
 
-    c. **[SP Login URL]\(SP ログイン URL\)** の値をコピーし、Azure portal の **[KnowledgeOwl のドメインと URL]** セクションの **[サインオン URL] および [応答 URL]** ボックスに貼り付けます。
+     c. **[SP Login URL]\(SP ログイン URL\)** の値をコピーし、Azure portal の **[KnowledgeOwl のドメインと URL]** セクションの **[サインオン URL] および [応答 URL]** ボックスに貼り付けます。
 
-    d. **[IdP entityID]** ボックスに、Azure portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
+     d. **[IdP entityID]** ボックスに、Azure portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
-    e. **[IdP Login URL]\(IdP ログイン URL\)** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+     e. **[IdP Login URL]\(IdP ログイン URL\)** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
-    f. **[IdP Logout URL]\(IdP ログアウト URL\)** ボックスに、Azure portal からコピーした **サインアウト URL** の値を貼り付けます。
+     f. **[IdP Logout URL]\(IdP ログアウト URL\)** ボックスに、Azure portal からコピーした **サインアウト URL** の値を貼り付けます。
 
-    g. **[Upload IdP Certificate]\(IdP 証明書のアップロード\)** をクリックして、Azure portal からダウンロードした証明書をアップロードします。
+     g. **[Upload IdP Certificate]\(IdP 証明書のアップロード\)** をクリックして、Azure portal からダウンロードした証明書をアップロードします。
 
-    h. **[Map SAML Attributes]\(SAML 属性のマッピング\)** をクリックして属性をマップし、次の手順に従います。
+     h. **[Map SAML Attributes]\(SAML 属性のマッピング\)** をクリックして属性をマップし、次の手順に従います。
     
-    ![KnowledgeOwl の構成](./media/knowledgeowl-tutorial/configure3.png)
+     ![KnowledgeOwl の構成](./media/knowledgeowl-tutorial/configure3.png)
 
     * **[SSO ID]** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid`」と入力します。
     * **[Username/Email]\(ユーザー名/電子メール\)** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
@@ -214,9 +218,9 @@ KnowledgeOwl で Azure AD のシングル サインオンを構成してテス�
     * **[Last Name]\(姓\)** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`」と入力します。
     * **[保存]**
 
-    i. ページの下部にある **[保存]** をクリックします。
+      i. ページの下部にある **[保存]** をクリックします。
 
-    ![KnowledgeOwl の構成](./media/knowledgeowl-tutorial/configure4.png)
+      ![KnowledgeOwl の構成](./media/knowledgeowl-tutorial/configure4.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -254,7 +258,7 @@ KnowledgeOwl で Azure AD のシングル サインオンを構成してテス�
 
 このセクションの目的は、KnowledgeOwl で Britta Simon というユーザーを作成することです。 KnowledgeOwl では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ存在しない場合、KnowledgeOwl にアクセスしようとすると、新しいユーザーが作成されます。
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[KnowledgeOwl サポート チーム](mailto:support@knowledgeowl.com)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [KnowledgeOwl のサポート チーム](mailto:support@knowledgeowl.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -291,7 +295,7 @@ KnowledgeOwl で Azure AD のシングル サインオンを構成してテス�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [KnowledgeOwl] タイルをクリックすると、自動的に KnowledgeOwl アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

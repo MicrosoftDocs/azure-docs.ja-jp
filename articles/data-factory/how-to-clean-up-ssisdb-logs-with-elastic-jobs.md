@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/13/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 5bd300a318008b34415f8bc9625cad3c38dec873
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 1afc40bd601c06def57ae59797d31a5edf4095bd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40107105"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57430919"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Azure エラスティック データベース ジョブで SSISDB のログをクリーンアップする
 
@@ -31,6 +30,8 @@ ms.locfileid: "40107105"
 以降の各セクションでは、管理者によって設定された保持期間が経過した SSISDB のログを削除するストアド プロシージャ `[internal].[cleanup_server_retention_window_exclusive]` をトリガーする方法について説明しています。
 
 ## <a name="clean-up-logs-with-power-shell"></a>PowerShell を使ってログをクリーンアップする
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 以下のサンプル PowerShell スクリプトでは、SSISDB のログをクリーンアップするためのストアド プロシージャをトリガーする新しいエラスティック ジョブを作成しています。 詳細については、「[PowerShell を使用したエラスティック ジョブ エージェントの作成](../sql-database/elastic-jobs-powershell.md)」を参照してください。
 
@@ -48,7 +49,7 @@ $PricingTier = "S0",
 # Parameters needed to create the Elastic Job agent
 $SSISDBLogCleanupAgentName = $(Read-Host "Please enter a name for your new Elastic Job agent"),
 
-# Parameters needed to create the job credential in the Job Databse to connect to SSISDB
+# Parameters needed to create the job credential in the Job Database to connect to SSISDB
 $PasswordForSSISDBCleanupUser = $(Read-Host "Please provide a new password for SSISDBLogCleanup job user to connect to SSISDB database for log cleanup"),
 # Parameters needed to create a login and a user in the SSISDB of the target server
 $SSISDBServerEndpoint = $(Read-Host "Please enter the name of the target Azure SQL server which contains SSISDB you need to cleanup, for example, myserver") + '.database.windows.net',
@@ -128,7 +129,7 @@ $TargetDatabase | % {
 }
 
 # Create a target group which includes SSISDB database needed to cleanup
-Write-Output "Creating the target group including only SSISDB databse needed to cleanup ..."
+Write-Output "Creating the target group including only SSISDB database needed to cleanup ..."
 $SSISDBTargetGroup = $JobAgent | New-AzureRmSqlElasticJobTargetGroup -Name "SSISDBTargetGroup"
 $SSISDBTargetGroup | Add-AzureRmSqlElasticJobTarget -ServerName $SSISDBServerEndpoint -Database $SSISDBName 
 

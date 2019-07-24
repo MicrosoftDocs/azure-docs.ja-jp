@@ -1,5 +1,5 @@
 ---
-title: App Service Environment での内部ロード バランサーの作成と使用 | Microsoft Docs
+title: App Service 環境で内部ロード バランサーを作成して使用する - Azure | Microsoft Docs
 description: ILB を含む ASE の作成と使用
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: f7c94b790c6aa7c75c62fd05671f016b7185b2a2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.custom: seodec18
+ms.openlocfilehash: 88f100bc780d8df0202cfcce9b390085a71fc905
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29388817"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310472"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service 環境での内部ロード バランサーの使用
 
@@ -75,7 +76,7 @@ ILB ASE でのアプリの作成は、通常の ASE でのアプリの作成と�
 3. サブスクリプションを選択します。
 4. リソース グループを選択または作成します。
 5. App Service プラン (ASP) を選択または作成します。 新しい ASP を作成している場合は、ASE を場所として選択し、ASP を作成するワーカー プールを選択します。 ASP を作成するときに、場所として ASE を選択し、ワーカー プールを選択します。 アプリの名前を指定すると、アプリ名の下のサブドメインが、ASE のサブドメインによって置き換えられます。 
-6. **[作成]** を選択します。 アプリをダッシュボードに表示する場合は、必ず **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。 
+6. **作成**を選択します。 アプリをダッシュボードに表示する場合は、必ず **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。 
 
 ![][2]
 
@@ -100,8 +101,8 @@ ASE を作成すると、指定したサブドメインがサブドメインと�
 4. 作成後に、ASE にWeb アプリを作成します。 
 5. VNET に VM がない場合は作成します (ASE と同じサブネットには作成しないでください。作成すると問題が発生します)。
 6. サブドメインの DNS を設定します。 DNS のサブドメインでワイルドカードを使用できます。または、単純なテストを行いたい場合は、VM 上のホスト ファイルを編集して、Web アプリ名を VIP IP アドレスに設定します。 ASE のサブドメイン名が .ilbase.com の場合、Web アプリを mytestapp にすると、アドレスは mytestapp.ilbase.com になります。ホスト ファイルでそのように設定します  (Windows でのホスト ファイルの場所は C:\Windows\System32\drivers\etc\)。
-7. この VM 上でブラウザーを使用し、http://mytestapp.ilbase.com (または、Web アプリ名とサブドメインの組み合わせ) に移動します。
-8. その VM でブラウザーを使用して、https://mytestapp.ilbase.com に移動します。自己署名証明書を使用する場合は、セキュリティが確保されないことを受け入れる必要があります。 
+7. この VM 上でブラウザーを使用し、 https://mytestapp.ilbase.com (または、Web アプリ名とサブドメインの組み合わせ) に移動します。
+8. その VM でブラウザーを使用して、 https://mytestapp.ilbase.com に移動します。 自己署名証明書を使用する場合は、セキュリティが確保されないことを受け入れる必要があります。 
 
 ILB の IP アドレスは、仮想 IP アドレスとして [プロパティ] にリスト表示されます。
 
@@ -147,8 +148,8 @@ App Service 環境の使用を開始するには、「[App Service 環境の概�
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [ControlInbound]: app-service-app-service-environment-control-inbound-traffic.md
 [virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
-[AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/
+[AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [ExpressRoute]: app-service-app-service-environment-network-configuration-expressroute.md
-[vnetnsgs]: http://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[vnetnsgs]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [ASEConfig]: app-service-web-configure-an-app-service-environment.md

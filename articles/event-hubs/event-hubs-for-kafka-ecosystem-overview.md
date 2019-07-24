@@ -1,24 +1,24 @@
 ---
-title: Apache Kafka 用の Azure Event Hubs | Microsoft Docs
-description: Kafka 対応 Azure Event Hubs の概要
+title: Apache Kafka アプリからイベント ハブを使用する - Azure Event Hubs | Microsoft Docs
+description: この記事では、Azure Event Hubs での Apache Kafka のサポートに関する情報を提供します。
 services: event-hubs
 documentationcenter: .net
-author: basilhariri
+author: shvija
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
-ms.date: 11/07/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 7f452fe9797e688dc05b644c003117461b4f8bb9
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 8bf381e7c66e06bbaa140ed865f0f7c9b4f001af
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277496"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452345"
 ---
-# <a name="azure-event-hubs-for-apache-kafka"></a>Apache Kafka 用の Azure Event Hubs 
-
-Event Hubs は、独自の Kafka クラスターを実行する代わりに、既存の Kafka ベースのアプリケーションが使用できる Kafka エンドポイントを提供します。 Event Hubs は、[Apache Kafka 1.0 以降](https://kafka.apache.org/documentation/)をサポートしており、MirrorMaker を含む既存の Kafka アプリケーションに対応します。 
+# <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Apache Kafka アプリケーションから Azure Event Hubs を使用する
+Event Hubs は、独自の Kafka クラスターを実行する代わりに、既存の Kafka ベースのアプリケーションが使用できる Kafka エンドポイントを提供します。 Event Hubs は、[Apache Kafka 1.0 以降](https://kafka.apache.org/documentation/)をサポートしており、MirrorMaker を含む既存の Kafka アプリケーションに対応します。  
 
 ## <a name="what-does-event-hubs-for-kafka-provide"></a>Kafka 用 Event Hubs で提供されるもの
 
@@ -31,7 +31,7 @@ Kafka と Event Hubs は、概念的にはほぼ同じものです。これら�
 | Kafka での概念 | Event Hubs での概念|
 | --- | --- |
 | クラスター | 名前空間 |
-| トピック | Event Hubs |
+| トピック | イベント ハブ |
 | Partition | Partition|
 | コンシューマー グループ | コンシューマー グループ |
 | offset | offset|
@@ -72,10 +72,8 @@ Kafka 機能用 Event Hubs では、あるプロトコルで書き込みを、�
 - [Kafka 対応イベント ハブでの Kafka ブローカーのミラーリング](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Kafka 対応イベント ハブへの Apache Spark の接続](event-hubs-kafka-spark-tutorial.md)
 - [Kafka 対応イベント ハブへの Apache Flink の接続](event-hubs-kafka-flink-tutorial.md)
-- [Kafka Connect を Kafka 対応イベント ハブに統合する](event-hubs-kafka-connect-tutorial.md)
+- [Kafka 対応イベント ハブとの Kafka Connect の統合](event-hubs-kafka-connect-tutorial.md)
 - [Kafka 対応イベント ハブへの Akka Streams の接続](event-hubs-kafka-akka-streams-tutorial.md)
 - [GitHub 上でサンプルを調べる](https://github.com/Azure/azure-event-hubs-for-kafka)
 
- 
- 
 

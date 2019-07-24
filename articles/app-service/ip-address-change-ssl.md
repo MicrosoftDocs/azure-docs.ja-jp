@@ -1,5 +1,5 @@
 ---
-title: SSL IP アドレスの変更に備える方法 - Azure
+title: SSL IP アドレスの変更に備える - Azure App Service
 description: SSL IP アドレスの変更が予定されている場合に、変更後もアプリが動作し続けるようにする方法を説明します。
 services: app-service\web
 author: cephalin
@@ -10,12 +10,13 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
-ms.openlocfilehash: e8558b4c3c7dafca8d4fff7e2aae0597a66c031d
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.custom: seodec18
+ms.openlocfilehash: 6c8c86ff6212acc31e961d6ae62836ca2b7b7380
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576544"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714221"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>SSL IP アドレスの変更に備える方法
 
@@ -31,7 +32,7 @@ ms.locfileid: "39576544"
 
 4.  **[設定]** ヘッダーの下で、左側のナビゲーションにある **[SSL 設定]** をクリックします。
 
-5. [SSL バインド] セクションで、ホスト名レコードを選択します。 表示されたエディターで、**[SSL の種類]** ドロップダウン メニューから **[SNI SSL]** を選択し、**[バインドの追加]** をクリックします。 操作成功のメッセージが表示されたら、既存の IP アドレスは解放されています。
+1. [SSL バインド] セクションで、ホスト名レコードを選択します。 表示されたエディターで、**[SSL の種類]** ドロップダウン メニューから **[SNI SSL]** を選択し、**[バインドの追加]** をクリックします。 操作成功のメッセージが表示されたら、既存の IP アドレスは解放されています。
 
 6.  **[SSL バインド]** セクションで、再度、同じホスト名レコードと証明書を選択します。 表示されたエディターで、今度は **[SSL の種類]** ドロップダウン メニューから **[IP ベースの SSL]** を選択し、**[バインドの追加]** をクリックします。 操作成功のメッセージが表示されたら、新しい IP アドレスは取得されています。
 
@@ -51,4 +52,4 @@ ms.locfileid: "39576544"
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Azure によって開始された IP アドレスの変更に備える方法について説明しました。 Azure App Service での IP アドレスの詳細については、[Azure App Service における SSL と SSL IP アドレス](app-service-ip-addresses.md)に関する記事を参照してください。
+この記事では、Azure によって開始された IP アドレスの変更に備える方法について説明しました。 Azure App Service での IP アドレスの詳細については、[Azure App Service における SSL と SSL IP アドレス](overview-inbound-outbound-ips.md)に関する記事を参照してください。

@@ -4,7 +4,7 @@ description: " この記事は、ID 管理に役立つ Azure のコア セキュ
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 5aa0a7ac-8f18-4ede-92a1-ae0dfe585e28
 ms.service: security
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
-Customer intent: As a IT Pro or decision maker I am trying to learn about identity mangement capabilities in Azure
-ms.openlocfilehash: 84ab35c269af66f58f3886a5dd0606ce69a11be9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
+ms.openlocfilehash: 29c04fc04b5d277e982a37402a128b2dbe787e2c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255883"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898501"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure ID 管理のセキュリティの概要
 
@@ -67,7 +67,7 @@ Azure AD はオンプレミスの Active Directory 環境をクラウドに拡�
 
 ## <a name="reverse-proxy"></a>リバース プロキシ
 
-Azure AD アプリケーション プロキシを使用すると、[SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) サイト、[Outlook Web アプリ](https://technet.microsoft.com/library/jj657718.aspx)、[IIS](http://www.iis.net/) ベースのアプリなどのオンプレミス アプリケーションをプライベート ネットワーク内で発行し、ネットワーク外部のユーザーにセキュリティで保護されたアクセスを提供できます。 アプリケーション プロキシでは、多くの種類のオンプレミス Web アプリケーションに対応するリモート アクセスと SSO を、Azure AD がサポートする数千もの SaaS アプリケーションとともに利用できます。 従業員は、自宅から自分のデバイスでアプリケーションにサインインし、このクラウド ベースのプロキシを使用して認証を行うことができます。
+Azure AD アプリケーション プロキシを使用すると、[SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) サイト、[Outlook Web アプリ](https://technet.microsoft.com/library/jj657718.aspx)、[IIS](https://www.iis.net/) ベースのアプリなどのオンプレミス アプリケーションをプライベート ネットワーク内で発行し、ネットワーク外部のユーザーにセキュリティで保護されたアクセスを提供できます。 アプリケーション プロキシでは、多くの種類のオンプレミス Web アプリケーションに対応するリモート アクセスと SSO を、Azure AD がサポートする数千もの SaaS アプリケーションとともに利用できます。 従業員は、自宅から自分のデバイスでアプリケーションにサインインし、このクラウド ベースのプロキシを使用して認証を行うことができます。
 
 詳細情報:
 
@@ -102,10 +102,10 @@ Azure RBAC は Azure Resource Manager 上に構築された承認システムで
 Azure portal では、レポートは次のカテゴリに分類されます。
 
 * **異常レポート**: 異常と考えられるサインイン イベントが含まれます。 この目的は、このようなアクティビティを認識し、イベントが不審であるかどうかを判断できるようにすることです。
-* **統合アプリケーション レポート**: 組織内のクラウド アプリケーションの使用状況を明らかにします。 Azure AD は、何千ものクラウド アプリケーションとの統合を提供します。
+* **統合アプリケーション レポート**: 組織内のクラウド アプリケーションの使用状況に関する分析情報を提供します。 Azure AD は、何千ものクラウド アプリケーションとの統合を提供します。
 * **エラー レポート**: 外部アプリケーションにアカウントをプロビジョニングするときに発生することがあるエラーを示します。
-* **ユーザー固有レポート**: 特定のユーザーのデバイス サインイン アクティビティ データを示します。
-* **アクティビティ ログ**: 過去 24 時間、過去 7 日間、または過去 30 日間のすべての監査イベントの記録、グループのアクティビティの変更、およびパスワードのリセットと登録のアクティビティが含まれます。
+* **ユーザー固有レポート**: 特定のユーザーのデバイス サインイン アクティビティ データを表示します。
+* **[アクティビティ ログ]**:過去 24 時間、過去 7 日間、または過去 30 日間のすべての監査イベントの記録、グループのアクティビティの変更、およびパスワードのリセットと登録のアクティビティが含まれます。
 
 詳細情報:
 
@@ -154,9 +154,8 @@ Azure AD Privileged Identity Management を使用することで、次のこと�
 
 詳細情報:
 
-* [Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md)
-* [Azure AD Privileged Identity Management におけるロール](../active-directory/privileged-identity-management/pim-roles.md)
-* [Azure AD Privileged Identity Management: ユーザー ロールを追加または削除する方法](../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
+* [Azure AD Privileged Identity Management とは](../active-directory/privileged-identity-management/pim-configure.md)
+* [PIM で Azure AD ディレクトリ ロールを割り当てる](../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
 
 ## <a name="identity-protection"></a>Identity Protection
 
@@ -165,7 +164,7 @@ Azure AD Identity Protection は、リスク イベントや組織の ID に影�
 詳細情報:
 
 * [Azure AD Identity Protection](../active-directory/active-directory-identityprotection.md)
-* [Channel 9: Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [Channel 9:Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>ハイブリッド ID 管理/Azure AD Connect
 

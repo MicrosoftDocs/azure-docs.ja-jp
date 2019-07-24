@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Land Gorilla Client の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Land Gorilla Client の統合 | Microsoft Docs
 description: Azure Active Directory と Land Gorilla の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
 ms.author: jeedes
-ms.openlocfilehash: e93c4721f34b06fec853d876543e9939220efd9f
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b2e1288885476aeeba01f966b615c23c5fe51081
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116438"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199512"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-land-gorilla-client"></a>チュートリアル: Azure Active Directory と Land Gorilla Client の統合
+# <a name="tutorial-azure-active-directory-integration-with-land-gorilla-client"></a>チュートリアル:Azure Active Directory と Land Gorilla Client の統合
 
 このチュートリアルでは、Land Gorilla Client と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -177,7 +178,7 @@ Land Gorilla Client で Azure AD のシングル サインオンを構成して�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。 
 
 ### <a name="creating-a-land-gorilla-test-user"></a>Land Gorilla テスト ユーザーの作成
 

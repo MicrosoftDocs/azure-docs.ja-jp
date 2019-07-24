@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: eedab085098c34cdac3c49a3892f7cb0d5824f1b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2fe31271fa84bc4170bd431a4aadbcafc0df9086
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259923"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148970"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs のラボへお知らせを投稿する
 
@@ -37,8 +37,8 @@ ms.locfileid: "51259923"
 
 1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 1. 必要に応じて、**[All Services]\(その他のサービス\)** を選択し、一覧から **[DevTest Labs]** を選択します。 (お使いのラボは、**[すべてのリソース]** の [ダッシュボード] に既に表示されている場合があります)。
-1. ラボの一覧から、お知らせを投稿するラボを選択します。  
-1. ラボの **[概要]** で、**[Configuration and policies]\(構成とポリシー\)** を選択します。  
+1. ラボの一覧から、お知らせを投稿するラボを選択します。
+1. ラボの **[概要]** で、**[Configuration and policies]\(構成とポリシー\)** を選択します。
 
     ![[Configuration and policies]\(構成とポリシー\) ボタン](./media/devtest-lab-announcements/devtestlab-config-and-policies.png)
 
@@ -83,11 +83,11 @@ ms.locfileid: "51259923"
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
-次の例に示すように、Azure Resource Manager テンプレートの一部としてお知らせを指定できます。 
+次の例に示すように、Azure Resource Manager テンプレートの一部としてお知らせを指定できます。
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "name": {
@@ -119,7 +119,7 @@ ms.locfileid: "51259923"
                 "support": {
                     "markdown": "",
                     "enabled": "Enabled"
-                }                
+                }
             },
             "resources": [
                 {
@@ -167,4 +167,4 @@ ms.locfileid: "51259923"
 
 ## <a name="next-steps"></a>次の手順
 * ラボのポリシーを設定または変更した場合は、ユーザーに通知するお知らせを投稿することをお勧めします。 カスタマイズしたポリシーを使用して、サブスクリプションに制限と規則を適用する方法については[ポリシーとスケジュールの設定](devtest-lab-set-lab-policy.md)に関するページを参照してください。
-* [DevTest Labs Azure Resource Manager のクイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-devtestlab/tree/master/Samples)を検索します。
+* [DevTest Labs Azure Resource Manager のクイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)を検索します。

@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/22/2018
+ms.date: 12/13/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: b53f679f6f93dd5d4889fbe51f8b5caf62fc1a36
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: ee2917c64843c8ab137e0122d63a328d6c19fedb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236723"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867577"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Import/Export サービス: よく寄せられる質問 
 以下では、Azure Import/Export サービスを使用してデータを Azure Storage に転送するときによくある質問と、それに対する回答を示します。 質問と回答は次の各カテゴリに分類されます。
@@ -66,7 +66,10 @@ ms.locfileid: "51236723"
 完了したジョブの状態は、最大 90 日間、表示されます。 90 日が経過すると、完了したジョブは削除されます。
 
 ### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>10 台を超えるドライブでインポートまたはエクスポートするには、どうすればよいでしょうか?
-1 つのインポート ジョブまたはエクスポート ジョブが参照できるのは、10 台のドライブまでです。 10 台を超えるドライブを発送するには、複数のジョブを作成する必要があります。 同じジョブに関連付けられているドライブは、同じパッケージにまとめて発送する必要があります。 データ容量が複数ディスクのインポート ジョブにわたるときの詳細とガイダンスについては、Microsoft (bulkimport@microsoft.com) に問い合わせてください。                                                              
+1 つのインポート ジョブまたはエクスポート ジョブが参照できるのは、10 台のドライブまでです。 10 台を超えるドライブを発送するには、複数のジョブを作成する必要があります。 同じジョブに関連付けられているドライブは、同じパッケージにまとめて発送する必要があります。 データ容量が複数ディスクのインポート ジョブにわたるときの詳細とガイダンスについては、Microsoft (bulkimport@microsoft.com) に問い合わせてください。 
+
+### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>アップロードした BLOB の状態が "Lease expired (リースの有効期限切れ)" として表示されます。 どうすればよいですか。
+"Lease Expired (リースの有効期限切れ)" フィールドは無視してかまいません。 Import/Export は、アップロード中、他のプロセスが BLOB を並列に更新できないよう BLOB をリースする必要があります。 "Lease Expired (リースの有効期限切れ)" は、Import/Export によるアップロードが今は行われておらず、BLOB が利用可能な状態にあることを暗に意味しています。 
 
 ## <a name="shipping-disks"></a>ディスクの発送
 
@@ -84,8 +87,18 @@ FedEx、DHL、UPS などの既知の運送業者や、米国郵政公社を利�
 - 米国およびヨーロッパにおける FedEx アカウント番号
 - または、アジアおよびオーストラリア地域での DHL アカウント番号
 
+> [!NOTE]
+> インドのデータセンターでは、ドライブを返却する際にレターヘッドに申告書 (納品書) が必要になります。 また、必要な入館証を手配するために、選択した運送業者に集荷の予約を入れ、詳細をデータセンターに伝える必要があります。
+
 ### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>ドライブを海外発送する場合、何か制限はありますか?
 発送する物理メディアが国境を越える場合があることに注意してください。 お客様は、物理メディアおよびデータが輸入および輸出に関して該当する法律に準拠していることを確認する必要があります。 物理メディアを発送する前に、アドバイザーに依頼して、メディアおよびデータが指定のデータ センターに合法的に発送できることを確認してもらってください。 それにより、マイクロソフトへのメディアの到着が遅れるのを防ぐことができます。
+
+### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>ディスクをデータセンターに送付するための特別な要件はありますか?
+
+要件は、特定の Azure データセンターの制限事項によって異なります。
+- セキュリティ上の理由から、小包に Microsoft データセンターの入荷 ID 番号を記載することを求めるサイトがいくつかあります。 ドライブまたはディスクをデータセンターに発送する前に、Azure DataBox Operations (adbops@microsoft.com) に連絡してこの番号を入手してください。 この番号がない場合、パッケージは受け取り拒否されます。
+- インドのデータセンターでは、入門許可証を入手するために、ドライバーの個人情報 (政府 ID カード番号または証明番号  (PAN、AADHAR、DL など)、名前、連絡先、車のナンバーなど) が必要になります。 配送遅延が発生しないように、これらの要件について運送業者に知らせてください。
+
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>ジョブの作成時に、ストレージ アカウントの場所とは異なる場所が送付先住所として提供されました。 どうすればよいですか。
 
@@ -125,7 +138,7 @@ Azure ストレージ アカウントのデータにアクセスするには、A
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Azure Import/Export でサポートされるブロック BLOB とページ BLOB の最大サイズはいくつですか?
 
 ブロック BLOB の最大サイズは、約 4.768 TB または 5,000,000 MB です。
-ページ BLOB の最大サイズは 1 TB です。
+ページ BLOB の最大サイズは 8 TB です。
 
 
 ### <a name="does-azure-importexport-support-aes-256-encryption"></a>Azure Import/Export は AES-256 暗号化をサポートしていますか?
@@ -135,7 +148,7 @@ Azure Import/Export サービスは、AES-128 BitLocker 暗号化を既定で使
     ```
     WAImportExport PrepImport /sk:<StorageAccountKey> /csas:<ContainerSas> /t: <TargetDriveLetter> [/format] [/silentmode] [/encrypt] [/bk:<BitLockerKey>] [/logdir:<LogDirectory>] /j:<JournalFile> /id:<SessionId> /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory> [/Disposition:<Disposition>] [/BlobType:<BlockBlob|PageBlob>] [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>] 
     ```
-- [WAImportExport V2](https://www.microsoft.com/en-us/download/details.aspx?id=55280) を使用している場合は、"AlreadyEncrypted" を指定し、driveset CSV 内にキーを指定します。
+- [WAImportExport V2](https://www.microsoft.com/download/details.aspx?id=55280) を使用している場合は、"AlreadyEncrypted" を指定し、driveset CSV 内にキーを指定します。
     ```
     DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
     G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631 |

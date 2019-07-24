@@ -8,14 +8,14 @@ author: dharmeshkakadia
 ms.author: dharmeshkakadia
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 832fab6c4f183ddad512c5e6e4309d70938a316b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 6d75bf86dab8775e77efb21ecc3b0d60063a9823
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600025"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088963"
 ---
-# <a name="troubleshoot-hive-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Hive のトラブルシューティング
+# <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Hive のトラブルシューティング
 
 Apache Ambari で Apache Hive ペイロードを操作するときに発生する主な質問とその解決策について説明します。
 
@@ -33,13 +33,13 @@ Apache Ambari で Apache Hive ペイロードを操作するときに発生す�
     for d in `hive -e "show databases"`; do echo "create database $d; use $d;" >> alltables.sql ; for t in `hive --database $d -e "show tables"` ; do ddl=`hive --database $d -e "show create table $t"`; echo "$ddl ;" >> alltables.sql ; echo "$ddl" | grep -q "PARTITIONED\s*BY" && echo "MSCK REPAIR TABLE $t ;" >> alltables.sql ; done; done
     ```
 
-  このコマンドによって、allatables.sql という名前のファイルが生成されます。
+   このコマンドによって、allatables.sql という名前のファイルが生成されます。
 
 3. 新しい HDInsight クラスターに alltables.sql ファイルをコピーし、次のコマンドを実行します。
 
-  ```apache
-  hive -f alltables.sql
-  ```
+   ```apache
+   hive -f alltables.sql
+   ```
 
 この解決手順のコードでは、新しいクラスターのデータ パスが元のクラスターのデータ パスと同じであると想定しています。 データ パスが異なる場合は、生成された alltables.sql ファイルを手動で編集して、変更を反映できます。
 
@@ -56,21 +56,21 @@ Apache Ambari で Apache Hive ペイロードを操作するときに発生す�
 
 2. Hive クライアント ログを表示するには、次のコマンドを使用します。
 
-  ```apache
-  /tmp/<username>/hive.log 
-  ```
+   ```apache
+   /tmp/<username>/hive.log 
+   ```
 
 3. Hive metastore ログを表示するには、次のコマンドを使用します。
 
-  ```apache
-  /var/log/hive/hivemetastore.log 
-  ```
+   ```apache
+   /var/log/hive/hivemetastore.log 
+   ```
 
 4. Hiveserver ログを表示するには、次のコマンドを使用します。
 
-  ```apache
-  /var/log/hive/hiveserver2.log 
-  ```
+   ```apache
+   /var/log/hive/hiveserver2.log 
+   ```
 
 ### <a name="additional-reading"></a>その他の情報
 
@@ -83,28 +83,28 @@ Apache Ambari で Apache Hive ペイロードを操作するときに発生す�
 
 1. Hive シェルの開始時に構成のキーと値のペアを指定します。 詳細については、「[その他の情報](#additional-reading-end)」をご覧ください。
 
-  ```apache
-  hive -hiveconf a=b 
-  ```
+   ```apache
+   hive -hiveconf a=b 
+   ```
 
 2. 次のコマンドを使用して、Hive シェルの効果的な構成をすべて一覧表示します。
 
-  ```apache
-  hive> set;
-  ```
+   ```apache
+   hive> set;
+   ```
 
-  たとえば、デバッグ ログの記録が有効になっている Hive シェルを開始するには、コンソールで次のコマンドを使用します。
+   たとえば、デバッグ ログの記録が有効になっている Hive シェルを開始するには、コンソールで次のコマンドを使用します。
 
-  ```apache
-  hive -hiveconf hive.root.logger=ALL,console 
-  ```
+   ```apache
+   hive -hiveconf hive.root.logger=ALL,console 
+   ```
 
 ### <a name="additional-reading"></a>その他の情報
 
 - [Hive 構成のプロパティ](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
 
-## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>クラスターのクリティカル パスで Tez DAG データを分析する方法
+## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>クラスターのクリティカル パスで Apache Tez DAG データを分析する方法
 
 
 ### <a name="resolution-steps"></a>解決手順
@@ -113,21 +113,21 @@ Apache Ambari で Apache Hive ペイロードを操作するときに発生す�
 
 2. コマンド プロンプトで、次のコマンドを実行します。
    
-  ```apache
-  hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar CriticalPath --saveResults --dagId <DagId> --eventFileName <DagData.zip> 
-  ```
+   ```apache
+   hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar CriticalPath --saveResults --dagId <DagId> --eventFileName <DagData.zip> 
+   ```
 
 3. 次のコマンドを使用して、Tez DAG の分析に使用できる他のアナライザーの一覧を表示します。
 
-  ```apache
-  hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar
-  ```
+   ```apache
+   hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar
+   ```
 
-  サンプル プログラムを最初の引数として指定する必要があります。
+   サンプル プログラムを最初の引数として指定する必要があります。
 
-  有効なプログラム名は次のとおりです。
+   有効なプログラム名は次のとおりです。
     - **ContainerReuseAnalyzer**: DAG のコンテナーの再利用の詳細を出力します。
-    - **CriticalPath**: DAG のクリティカル パスを特定します。
+    - **CriticalPath**: DAG のクリティカル パスを検出します。
     - **LocalityAnalyzer**: DAG の局所性の詳細を出力します。
     - **ShuffleTimeAnalyzer**: DAG のシャッフル時間の詳細を分析します。
     - **SkewAnalyzer**: DAG の傾きの詳細を分析します。
@@ -135,8 +135,8 @@ Apache Ambari で Apache Hive ペイロードを操作するときに発生す�
     - **SlowTaskIdentifier**: DAG の遅いタスクの詳細を出力します。
     - **SlowestVertexAnalyzer**: DAG の最も遅い頂点の詳細を出力します。
     - **SpillAnalyzer**: DAG の書き込みの詳細を出力します。
-    - **TaskConcurrencyAnalyzer**: DAG のタスク同時実行の詳細を出力します。
-    - **VertexLevelCriticalPathAnalyzer**: DAG のクリティカル パスを頂点レベルで特定します。
+    - **TaskConcurrencyAnalyzer**: DAG のタスク コンカレンシーの詳細を出力します。
+    - **VertexLevelCriticalPathAnalyzer**: Dag の頂点レベルのクリティカル パスを検出します。
 
 
 ### <a name="additional-reading"></a>その他の情報

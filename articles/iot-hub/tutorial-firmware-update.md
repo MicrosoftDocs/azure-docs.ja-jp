@@ -2,28 +2,28 @@
 title: Azure IoT Hub を使用したデバイス ファームウェアの更新 | Microsoft Docs
 description: ジョブとデバイス ツインを使用してデバイス ファームウェアの更新プロセスを実装します。
 services: iot-hub
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/21/2018
-ms.author: dobett
+ms.date: 02/22/2019
 ms.custom: mvc
-ms.openlocfilehash: bc1887ef3cdbc56732317aea15be7a618c35847e
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 1418a9815e155a0c491fc65b16307fa2755bd964
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003578"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59008904"
 ---
-# <a name="tutorial-implement-a-device-firmware-update-process"></a>チュートリアル: デバイス ファームウェアの更新プロセスを実装する
+# <a name="tutorial-implement-a-device-firmware-update-process"></a>チュートリアル:デバイス ファームウェアの更新プロセスを実装する
 
 場合によっては、IoT ハブに接続されているデバイスのファームウェアを更新する必要があります。 たとえば、ファームウェアに新しい機能を追加したり、セキュリティ パッチを適用したりできます。 多くの IoT シナリオでは、対象のデバイスに物理的にアクセスして、手動でファームウェア更新を適用することは現実的ではありません。 このチュートリアルでは、ハブに接続されたバックエンド アプリケーションを介してファームウェアの更新プロセスをリモートで開始および監視する方法を示します。
 
-このチュートリアルのバックエンド アプリケーションでは、ファームウェアの更新プロセスを作成および監視するために、IoT ハブに "_構成_" を作成します。 IoT Hub の[自動デバイス管理](iot-hub-auto-device-config.md)では、この構成を使用して、すべての冷却装置上の_デバイス ツインの必要なプロパティ_のセットを更新します。 必要なプロパティは、必要なファームウェアの更新の詳細を指定します。 冷却装置でファームウェアの更新プロセスが実行されている間、"_デバイス ツインの報告されたプロパティ_" を使用して、バックエンド アプリケーションに状態が報告されます。 バックエンド アプリケーションは、この構成を使用して、デバイスから送信された報告されたプロパティを監視し、ファームウェアの更新プロセスを完了まで追跡できます。
+このチュートリアルのバックエンド アプリケーションでは、ファームウェアの更新プロセスを作成および監視するために、IoT ハブに "_構成_" を作成します。 IoT Hub の[自動デバイス管理](iot-hub-auto-device-config.md)では、この構成を使用して、すべての冷却装置上の "_デバイス ツインの必要なプロパティ_" のセットを更新します。 必要なプロパティは、必要なファームウェアの更新の詳細を指定します。 冷却装置でファームウェアの更新プロセスが実行されている間、"_デバイス ツインの報告されたプロパティ_" を使用して、バックエンド アプリケーションに状態が報告されます。 バックエンド アプリケーションは、この構成を使用して、デバイスから送信された報告されたプロパティを監視し、ファームウェアの更新プロセスを完了まで追跡できます。
 
 ![ファームウェアの更新プロセス](media/tutorial-firmware-update/Process.png)
 
@@ -73,7 +73,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later
-az iot hub show-connection-string --hub-name $hub-name -o table
+az iot hub show-connection-string --name $hubname -o table
 
 ```
 
@@ -94,12 +94,13 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 
 ```
 
-これらのコマンドを Windows コマンド プロンプトまたは PowerShell プロンプトで実行する場合は、JSON 文字列を引用符で囲む方法について、[azure-iot-cli-extension のヒント](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips
+> [!TIP]
+> これらのコマンドを Windows コマンド プロンプトまたは PowerShell プロンプトで実行する場合は、JSON 文字列を引用符で囲む方法について、[azure-iot-cli-extension のヒント](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips
 )に関するページを参照してください。
 
 ## <a name="start-the-firmware-update"></a>ファームウェアの更新を開始する
 
-**devicetype** として "chiller" のタグが付けられたすべてのデバイスでファームウェア更新プロセスを開始するには、バックエンド アプリケーションで[自動デバイス管理構成](iot-hub-auto-device-config.md#create-a-configuration)を作成します。 このセクションでは、次の方法について説明します。
+**devicetype** として "chiller" のタグが付けられたすべてのデバイスでファームウェア更新プロセスを開始するには、バックエンド アプリケーションで[自動デバイス管理構成](iot-hub-automatic-device-management.md#create-a-configuration)を作成します。 このセクションでは、次の方法について説明します。
 
 * バックエンド アプリケーションから構成を作成する。
 * 完了するまでジョブを監視する。
@@ -208,4 +209,4 @@ az group delete --name tutorial-iot-hub-rg
 このチュートリアルでは、接続されたデバイスのファームウェア更新プロセスを実装する方法を学習しました。 Azure IoT Hub ポータル ツールと Azure CLI コマンドを使用してデバイス接続をテストする方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-[シミュレートされたデバイスを使用して IoT ハブとの接続をテストする](tutorial-connectivity.md)
+> [シミュレートされたデバイスを使用して IoT ハブとの接続をテストする](tutorial-connectivity.md)

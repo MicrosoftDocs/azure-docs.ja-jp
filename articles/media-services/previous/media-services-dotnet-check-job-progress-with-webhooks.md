@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b3ce3731f19565bfe950d03a2bbc980dda55a7f4
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 36ef27dfb4a5d77ec2e595013a82f55cdf240c0b
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238660"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312463"
 ---
-# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Azure webhook を使用して .NET で Media Services ジョブ通知を監視する
+# <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Azure webhook を使用して .NET で Media Services ジョブ通知を監視する 
+
 ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 Azure Webhook または [Azure Queue Storage](media-services-dotnet-check-job-progress-with-queues.md) を使用することで、Media Services ジョブ通知を監視することができます。 この記事では、Webhook を使用する方法を説明します。
 
 この記事では、次の方法について説明します。
@@ -48,7 +49,7 @@ ms.locfileid: "50238660"
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
-1. [Azure Portal](http://portal.azure.com) に移動し、Azure アカウントでサインインします。
+1. [Azure Portal](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
 2. [こちら](../../azure-functions/functions-create-function-app-portal.md)の説明に従って関数アプリを作成します。
 
 ## <a name="configure-function-app-settings"></a>関数アプリの設定の構成
@@ -60,7 +61,7 @@ Media Services の関数を開発するときは、自分が開発するさま�
 |Name|定義|例| 
 |---|---|---|
 |SigningKey |署名キー。| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
-|WebHookEndpoint | webhook エンドポイント アドレス。 webhook 関数が作成されたら、**[関数の URL の取得]** リンクから URL をコピーできます。 | https://juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==|
+|WebHookEndpoint | webhook エンドポイント アドレス。 webhook 関数が作成されたら、**[関数の URL の取得]** リンクから URL をコピーできます。 | https:\//juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g==|
 
 ## <a name="create-a-function"></a>関数を作成する
 
@@ -378,22 +379,22 @@ webhook がトリガーされると、上記の例により次の出力が生成
 2. [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) を使用して、Azure Media Services をインストールします。
 3. 適切な値で App.config ファイルを更新します。 
     
-    * Azure Media Services の接続情報 
-    * 通知の取得を想定する Webhook URL 
-    * Webhook が予期するキーと一致する署名キー 署名キーは、Azure Media Services からの webhook コールバックをセキュリティで保護するために使用される、64 バイトの Base64 でエンコードされた値です。 
+   * Azure Media Services の接続情報 
+   * 通知の取得を想定する Webhook URL 
+   * Webhook が予期するキーと一致する署名キー 署名キーは、Azure Media Services からの webhook コールバックをセキュリティで保護するために使用される、64 バイトの Base64 でエンコードされた値です。 
 
-    ```xml
-            <appSettings>
-                <add key="AMSAADTenantDomain" value="domain" />
-                <add key="AMSRESTAPIEndpoint" value="endpoint" />
+     ```xml
+           <appSettings>
+               <add key="AMSAADTenantDomain" value="domain" />
+               <add key="AMSRESTAPIEndpoint" value="endpoint" />
 
-                <add key="AMSClientId" value="clinet id" />
-                <add key="AMSClientSecret" value="client secret" />
+               <add key="AMSClientId" value="clinet id" />
+               <add key="AMSClientSecret" value="client secret" />
 
-                <add key="WebhookURL" value="https://yourapp.azurewebsites.net/api/functionname?code=ApiKey" />
-                <add key="WebhookSigningKey" value="j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt" />
-            </appSettings>
-    ```
+               <add key="WebhookURL" value="https://yourapp.azurewebsites.net/api/functionname?code=ApiKey" />
+               <add key="WebhookSigningKey" value="j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt" />
+           </appSettings>
+     ```
 
 4. 次のコードで Program.cs ファイルを更新します。
 

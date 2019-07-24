@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: bfb53ddf666426253cce08e6f09a5297f5d2f4d3
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 1412e644a0c824be3612e14a1059661092805682
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634109"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447423"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用して Apache Hive クエリを実行する
 
@@ -24,7 +24,7 @@ Data Lake Tools for Visual Studio を使って Apache Hive のクエリを実行
 
 * Azure HDInsight (HDInsight 上の Apache Hadoop) クラスター
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * 下記のいずれかのバージョンの Visual Studio
@@ -37,7 +37,7 @@ Data Lake Tools for Visual Studio を使って Apache Hive のクエリを実行
 
 * HDInsight Tools for Visual Studio または Azure Data Lake Tools for Visual Studio ツールのインストールおよび構成については、 [HDInsight Hadoop Tools for Visual Studio の使用開始](apache-hadoop-visual-studio-tools-get-started.md) に関するページをご覧ください。
 
-## <a id="run"></a>Visual Studio を使用して Hive クエリを実行
+## <a id="run"></a>Visual Studio を使用して Apache Hive クエリを実行する
 
 1. **Visual Studio** を開き、**[新規]** > 、**[プロジェクト]** > 、**[Azure Data Lake]** > 、**[Hive]** > 、**[Hive アプリケーション]** の順に選択します。 プロジェクトの名前を指定します。
 
@@ -54,20 +54,20 @@ Data Lake Tools for Visual Studio を使って Apache Hive のクエリを実行
 
     これらのステートメントは次のアクションを実行します。
 
-   * `DROP TABLE`: テーブルが存在する場合、そのテーブルを削除します。
+   * `DROP TABLE`:テーブルが存在する場合、そのテーブルを削除します。
 
-   * `CREATE EXTERNAL TABLE`: Hive に新しい "外部" テーブルを作成します。 外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
+   * `CREATE EXTERNAL TABLE`:新しい "外部" テーブルを Hive に作成します。 外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
 
-     > [!NOTE]
+     > [!NOTE]  
      > 基になるデータが外部ソースによって更新されると考えられる場合は、外部テーブルを使用する必要があります。 たとえば、MapReduce ジョブや Azure サービスなどです。
      >
      > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
 
-   * `ROW FORMAT`: データの形式を Hive に伝えます。 ここでは、各ログのフィールドは、スペースで区切られています。
+   * `ROW FORMAT`:データの形式を Hive に伝えます。 ここでは、各ログのフィールドは、スペースで区切られています。
 
-   * `STORED AS TEXTFILE LOCATION`: データの格納先 (example/data ディレクトリ) と、データがテキストとして格納されていることを Hive に伝えます。
+   * `STORED AS TEXTFILE LOCATION`:データの格納先 (example/data ディレクトリ) と、データがテキストとして格納されていることを Hive に伝えます。
 
-   * `SELECT`: `t4` 列の値が `[ERROR]` であるすべての行の数を選択します。 この値を含む行が 3 行あるため、このステートメントでは値 `3` が返されます。
+   * `SELECT`:`t4` 列の値が `[ERROR]` であるすべての行の数を選択します。 この値を含む行が 3 行あるため、このステートメントでは値 `3` が返されます。
 
    * `INPUT__FILE__NAME LIKE '%.log'`: .log で終わるファイルのデータだけを返す必要があることを Hive に伝えます。 この句により、データを含む sample.log ファイルに検索が制限されます。
 
@@ -93,14 +93,14 @@ Data Lake Tools for Visual Studio を使って Apache Hive のクエリを実行
 
     これらのステートメントは次のアクションを実行します。
 
-   * `CREATE TABLE IF NOT EXISTS`: テーブルがまだ存在しない場合に、テーブルを作成します。 `EXTERNAL` キーワードが使用されていないため、このステートメントでは内部テーブルが作成されます。 内部テーブルは Hive データ ウェアハウスに格納され、Hive によって管理されます。
+   * `CREATE TABLE IF NOT EXISTS`:テーブルがまだ存在しない場合に、テーブルを作成します。 `EXTERNAL` キーワードが使用されていないため、このステートメントでは内部テーブルが作成されます。 内部テーブルは Hive データ ウェアハウスに格納され、Hive によって管理されます。
 
-     > [!NOTE]
+     > [!NOTE]  
      > `EXTERNAL` テーブルとは異なり、内部テーブルを削除すると、基になるデータも削除されます。
 
-   * `STORED AS ORC`: Optimized Row Columnar (ORC) 形式でデータを格納します。 ORC は、Hive データを格納するための高度に最適化された効率的な形式です。
+   * `STORED AS ORC`:Optimized Row Columnar (ORC) 形式でデータを格納します。 ORC は、Hive データを格納するための高度に最適化された効率的な形式です。
 
-   * `INSERT OVERWRITE ... SELECT`: `[ERROR]` を含む `log4jLogs` テーブルの列を選択し、データを `errorLogs` テーブルに挿入します。
+   * `INSERT OVERWRITE ... SELECT`:`[ERROR]` を含む `log4jLogs` テーブルの列を選択し、データを `errorLogs` テーブルに挿入します。
 
 8. ツール バーで **[送信]** を選択し、ジョブを実行します。 **[ジョブ ステータス]** で、ジョブが正常に完了したことを確認します。
 
@@ -112,31 +112,30 @@ Data Lake Tools for Visual Studio を使って Apache Hive のクエリを実行
 
 HDInsight での Hive に関する全般的な情報
 
-* [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
+* [HDInsight 上の Apache Hadoop で Apache Hive を使用する](hdinsight-use-hive.md)
 
 HDInsight での Hadoop のその他の使用方法に関する情報
 
-* [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
+* [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
 
-* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
+* [HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)
 
 Visual Studio の HDInsight ツールに関する詳細情報:
 
 * [Visual Studio の HDInsight ツールの概要](apache-hadoop-visual-studio-tools-get-started.md)
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
-[apache-tez]: http://tez.apache.org
-[apache-hive]: http://hive.apache.org/
-[apache-log4j]: http://en.wikipedia.org/wiki/Log4j
+[apache-tez]: https://tez.apache.org
+[apache-hive]: https://hive.apache.org/
+[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
 [hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: http://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
+[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
 
 
-[hdinsight-use-oozie]: hdinsight-use-oozie.md
-[hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data.md
+[hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
 
 
 
@@ -147,7 +146,7 @@ Visual Studio の HDInsight ツールに関する詳細情報:
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-get-started]:apache-hadoop-linux-tutorial-get-started.md
 
-[powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
+[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx
 
 [image-hdi-hive-powershell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png

@@ -3,24 +3,25 @@ title: Azure Active Directory の条件付きアクセスに関する FAQ | Micr
 description: Azure Active Directory の条件付きアクセスに関してよく寄せられる質問への回答を示します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
-manager: mtillman
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: calebb
-ms.openlocfilehash: e9ce5e1d86f6c1756f8871dc45d60d36cea74515
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 21c89d9d686c4af594aa7a0fd921471105669e02
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629295"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518152"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory の条件付きアクセスに関する FAQ
 

@@ -1,5 +1,5 @@
 ---
-title: クイックスタート - Linux 用 Azure Docker CE クラスター
+title: (非推奨) クイック スタート - Linux 用 Azure Docker CE クラスター
 description: Azure CLI を使用して Azure Container Service で Linux コンテナー用 Docker CE クラスターを作成する方法を簡単に説明します。
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: c8f9db2674976d2c1efa7686b8b224b48a19a534
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a7a7455ce9167a9c480d317d50fdce49e2ef06a9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964447"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994293"
 ---
-# <a name="deploy-docker-ce-cluster"></a>Docker CE クラスターのデプロイ
+# <a name="deprecated-deploy-docker-ce-cluster"></a>(非推奨) Docker CE クラスターのデプロイ
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 このクイック スタートでは、Azure CLI を使用して Docker CE クラスターをデプロイします。 次に、Web フロントエンドと Redis インスタンスで構成される複数コンテナー アプリケーションをデプロイして、このクラスターで実行します。 完了すると、このアプリケーションはインターネット経由でアクセス可能になります。
 

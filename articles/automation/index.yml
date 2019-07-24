@@ -63,5 +63,5 @@ sections:
       html: <p><a href="/powershell/module/azurerm.automation">PowerShell</a></p>
     - title: Languages
       html: <p><a href="/dotnet/api/microsoft.azure.management.automation">.NET</a></p>
-    - title: REST ()
+    - title: REST
       html: <p><a href="/rest/api/automation">Automation REST API</a></p>

@@ -3,26 +3,35 @@ items:
   href: index.yml
 - name: 概要
   items:
-  - name: Bing Custom Search とは
+  - name: Bing Custom Search API とは
     href: overview.md
+  - name: Bing Search API を比較する
+    href: ../Bing-Web-Search/bing-api-comparison.md
+    maintainContext: true
   expanded: true
-- name: REST API のクイック スタート
+- name: クイック スタート
   items:
-  - name: 最初のインスタンスの作成
+  - name: カスタム検索インスタンスの作成
     href: quick-start.md
-  - name: C#
-    href: call-endpoint-csharp.md
-  - name: Java
-    href: call-endpoint-java.md
-  - name: Node.js
-    href: call-endpoint-nodejs.md
-  - name: Python
-    href: call-endpoint-python.md
+  - name: インスタンスからの検索結果の取得
+    items:
+    - name: REST API
+      items:
+      - name: C# の使用
+        href: call-endpoint-csharp.md
+      - name: Java の使用
+        href: call-endpoint-java.md
+      - name: Node.js の使用
+        href: call-endpoint-nodejs.md
+      - name: Python の使用
+        href: call-endpoint-python.md
+    - name: SDK
+      items:
+      - name: C# の使用
+        href: sdk-csharp-quick-start.md
+      - name: Python の使用
+        href: sdk-python-quickstart.md
   expanded: true
-- name: SDK のクイック スタート
-  items:
-  - name: C# SDK のクイック スタート
-    href: sdk-csharp-quick-start.md
 - name: チュートリアル
   items:
   - name: Custom Search Web ページの作成
@@ -35,15 +44,15 @@ items:
   items:
   - name: カスタム検索エクスペリエンスの構成
     href: define-your-custom-view.md
-  - name: カスタム検索の呼び出し
+  - name: カスタム検索インスタンスの呼び出し
     href: search-your-custom-view.md
-  - name: ホストされている UI エクスペリエンスの構成
+  - name: ホストテッド UI の構成と統合
     href: hosted-ui.md
-  - name: カスタム検索の共有
+  - name: カスタム検索インスタンスの共有
     href: share-your-custom-search.md
-  - name: インスタンスから画像を取得する
+  - name: 検索インスタンスからの画像の取得
     href: get-images-from-instance.md
-  - name: インスタンスから動画を取得する
+  - name: 検索インスタンスからの動画の取得
     href: get-videos-from-instance.md
   - name: カスタム自動提案エクスペリエンスの構成
     href: define-custom-suggestions.md
@@ -62,7 +71,24 @@ items:
   - name: Bing Custom Video Search API リファレンス
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference
   - name: Bing Search API の利用と表示の要件
-    href: use-and-display-requirements.md
+    href: ../Bing-Web-Search/use-display-requirements.md
+    maintainContext: true
+  - name: SDK
+    items:
+    - name: .NET
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet
+    - name: Java - Custom Search
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customsearch?view=azure-java-stable
+    - name: Java - Custom Image Search
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customimagesearch?view=azure-java-stable
+    - name: Python
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python
+    - name: Node.js
+      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/customsearch?view=azure-node-latest
+    - name: Go - Custom Search
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customsearch
+    - name: Go - Custom Image Search
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customimagesearch
 - name: リソース
   items:
   - name: 価格
@@ -85,9 +111,9 @@ items:
     href: endpoint-custom.md
   - name: 言語とリージョンのサポート
     href: language-support.md
-ms.openlocfilehash: 62392b7ff226072108c61f10b3f0519677aaba6b
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: eee327b77fa3c0d46d47bb3ac6644fb175249618
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431996"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568892"

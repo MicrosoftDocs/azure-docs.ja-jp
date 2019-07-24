@@ -6,18 +6,18 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 10/30/2018
+ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5704cc21b14d83ebc30cd29f52102c751cfb11f2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ea96b2b996ea79efacdcda50c6370f25e26e0aa2
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248012"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58793775"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>CLI を使用してリモート監視ソリューション アクセラレータをデプロイする
 
-この攻略ガイドでは、リモート監視ソリューション アクセラレータをデプロイする方法について説明します。 CLI を使用してソリューションをデプロイします。 azureiotsuite.com で Web ベースの UI を使用してソリューションをデプロイすることもできます。このオプションの詳細については、クイックスタートの[リモート監視ソリューション アクセラレータをデプロイする](quickstart-remote-monitoring-deploy.md)のページを参照してください。
+この攻略ガイドでは、リモート監視ソリューション アクセラレータをデプロイする方法について説明します。 CLI を使用してソリューションをデプロイします。 azureiotsuite.com で Web ベースの UI を使用してソリューションをデプロイすることもできます。このオプションの詳細については、[リモート監視ソリューション アクセラレータのデプロイ](quickstart-remote-monitoring-deploy.md)に関するクイック スタートのページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -62,38 +62,42 @@ pcs login
 
 ### <a name="basic"></a>Basic
 
+基本デプロイは、[azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) または CLI を使用して実行できます。
+
 Basic デプロイは、ソリューションを紹介することを目的としています。 コストを削減するために、すべてのマイクロ サービスは単一の仮想マシンにデプロイされます。 このデプロイは、実稼働可能なアーキテクチャを使用しません。
 
 Basic デプロイによって Azure サブスクリプション内に作成されるサービスは次のとおりです。
 
-| Count | リソース                       | type         | 用途 |
+| Count | Resource                       | Type         | 用途 |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Linux Virtual Machine](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 V2  | マイクロサービスのホスト |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – Standard レベル | デバイス管理との通信 |
-| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | 標準        | 構成データ、ルール、アラーム、その他のコールド ストレージを格納する |  
-| 1     | [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | 標準        | VM およびストリーミング チェックポイントのストレージ |
+| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | 構成データ、ルール、アラート、その他のコールド ストレージを格納する |  
+| 1     | [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | VM およびストリーミング チェックポイントのストレージ |
 | 1     | [Web アプリケーション](https://azure.microsoft.com/services/app-service/web/)        |                 | フロント エンド Web アプリケーションのホスト |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | ユーザー ID とセキュリティを管理する |
-| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | 標準                | アセットの場所を表示する |
+| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | アセットの場所を表示する |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 ユニット              | リアルタイム分析を有効にする |
 | 1     | [Azure デバイス プロビジョニング サービス](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | デバイスの大規模プロビジョニング |
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 ユニット              | メッセージ データの格納とテレメトリの詳細分析の有効化 |
 
-### <a name="standard"></a>標準
+### <a name="standard"></a>Standard
+
+標準デプロイは、CLI のみを使用して実行できます。
 
 Standard デプロイは、開発者がカスタマイズして拡張できる運用対応デプロイです。 Standard デプロイ オプションは、スケーリングと拡張性のために構築された運用対応アーキテクチャをカスタマイズする準備ができたときに使用します。 アプリケーションのマイクロサービスは Docker コンテナーとして構築されており、Azure Kubernetes Service を使用してデプロイされています。 Kubernetes オーケストレーターはマイクロ サービスをデプロイ、スケーリング、および管理します。
 
 Standard デプロイによって Azure サブスクリプション内に作成されるサービスは次のとおりです。
 
-| Count | リソース                                     | SKU/サイズ      | 用途 |
+| Count | Resource                                     | SKU/サイズ      | 用途 |
 |-------|----------------------------------------------|-----------------|----------|
 | 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| フル マネージドの Kubernetes コンテナー オーケストレーション サービスをぜひご利用ください。既定のエージェントは 3 つです。|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – Standard レベル | デバイス管理、コマンドとコントロール |
-| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | 標準        | 構成データ、およびルール、アラーム、メッセージなどのデバイス テレメトリの格納 |
-| 5     | [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | 標準        | VM ストレージ用に 4 つ、およびストリーミング チェックポイント用に 1 つ |
+| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | 構成データ、およびルール、アラート、メッセージなどのデバイス テレメトリの格納 |
+| 5     | [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | VM ストレージ用に 4 つ、およびストリーミング チェックポイント用に 1 つ |
 | 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 Standard     | SSL 経由のアプリケーション ゲートウェイ |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | ユーザー ID とセキュリティを管理する |
-| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | 標準                | アセットの場所を表示する |
+| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | アセットの場所を表示する |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 ユニット              | リアルタイム分析を有効にする |
 | 1     | [Azure デバイス プロビジョニング サービス](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | デバイスの大規模プロビジョニング |
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 ユニット              | メッセージ データの格納とテレメトリの詳細分析の有効化 |

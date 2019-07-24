@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: 6bc1255c5bbb9cf74c97b88600f34e7fcd90ae4f
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: e955d21132dda6caa137ad3b5de9d00ccf7ed1b4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343153"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811054"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -83,7 +83,7 @@ MXChip IoT DevKit がコンピューターに接続されている状態で、�
 
 ## <a name="monitor-devkit-state-in-browser"></a>ブラウザーで DevKit の状態を監視する
 
-1. Web ブラウザーで、「[必要なもの](#whatyouneed)」の手順で作成した `DevKitState\web\index.html` ファイルを開きます。
+1. Web ブラウザーで、「必要なもの」の手順で作成した `DevKitState\web\index.html` ファイルを開きます。
 
 2. 次の Web ページが表示されます。![関数アプリ名を指定します。](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state-function-app-name.png)
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 68f42124369194124ae1f8ebb93834a5be4e0128
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 126701674b6dc529404f5a7854cda9b31c336170
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287375"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868431"
 ---
 # <a name="add-a-header-containing-a-correlation-id"></a>関連付け ID を含むヘッダーの追加
 

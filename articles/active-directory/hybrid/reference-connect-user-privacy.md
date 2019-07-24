@@ -4,22 +4,23 @@ description: このドキュメントでは、Azure AD Connect で GDPR コン�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 05/21/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 337268db7365e417153ca3df3d545c135c5f2924
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6f5d3125b7b77e8ce7a943f640c44615049ab160
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309411"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096352"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>ユーザー プライバシーと Azure AD Connect 
 
@@ -83,4 +84,4 @@ If ($File.ToUpper() -ne "$env:programdata\aadconnect\PERSISTEDSTATE.XML".toupper
 
 ## <a name="next-steps"></a>次の手順
 * [セキュリティ センターで Microsoft のプライバシー ポリシーを確認する](https://www.microsoft.com/trustcenter)
-- [Azure AD Connect Health とユーザー プライバシー](reference-connect-health-user-privacy.md)
+* [Azure AD Connect Health とユーザー プライバシー](reference-connect-health-user-privacy.md)

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Bing Custom Search API エンドポイントの概要。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: conceptual
-ms.date: 12/05/2017
+ms.date: 03/04/2019
 ms.author: v-gedod
-ms.openlocfilehash: da448cdeaf6fcbe10cba8e5e2613214f8e0cee18
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d01f863f0c42754e2dcc36f6cab1bed1f3dc3b6c
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815190"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337806"
 ---
 # <a name="custom-search"></a>カスタム検索
 Bing Custom Search を使用すると、関心のあるトピックに合わせてカスタマイズした検索エクスペリエンスを作成できます。 ユーザーは、関係のないコンテンツが含まれる検索結果のページを移動し続けるのではなく、関心のあるコンテンツに合わせてカスタマイズされた検索結果を参照できます。
@@ -23,7 +23,7 @@ Bing Custom Search を使用すると、関心のあるトピックに合わせ�
 ## <a name="custom-search-endpoint"></a>Custom Search エンドポイント
 Bing Custom Search API を使用して結果を取得するには、次のエンドポイントに `GET` 要求を送信します。 ヘッダーと URL パラメーターを使用して、さらに詳細を定義します。
 
-エンドポイント: 検索候補を、`?q=""` によって定義されたユーザーの入力に関連する JSON 結果として返します。
+エンドポイント:検索候補を、`?q=""` によって定義されたユーザーの入力に関連する JSON 結果として返します。
 ```  
  GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search  
 ```
@@ -58,7 +58,7 @@ https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/images/search
 Custom Search インスタンスの構成については、「[Configure your custom search experience](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/define-your-custom-view)」(カスタム検索エクスペリエンスの構成) をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-**Bing** API では、種類に応じた結果を返す検索アクションがサポートされます。 すべての検索エンドポイントは、結果を JSON 応答オブジェクトとして返します。  すべてのエンドポイントは、特定の言語や場所を経度、緯度、検索半径によって返すクエリをサポートします。
+**Bing** API では、種類に応じた結果を返す検索アクションがサポートされます。 すべての検索エンドポイントは、結果を JSON 応答オブジェクトとして返します。  すべてのエンドポイントは、特定の言語や場所を経度、緯度、検索半径によって返すクエリをサポートします。
 
 各エンドポイントでサポートされるパラメーターについて詳しくは、各種類のリファレンス ページをご覧ください。
 Custom Search API を使用した基本的な要求の例については、[Custom Search クイック スタート](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/)のページをご覧ください。

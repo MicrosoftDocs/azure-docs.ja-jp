@@ -4,7 +4,7 @@ description: このトピックでは、Azure Media Services Explorer (AMSE) と
 services: media-services
 documentationcenter: ''
 author: Lichard
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: d6fa21b8-d80a-41b7-80c1-ff1761bc68f2
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/03/2017
+ms.date: 03/20/2019
 ms.author: rli; juliako;
-ms.openlocfilehash: d7a6abaeff0e939ed9e299e16e2fe59b65127aba
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3e4844c3174e41ca7f6f5667a2777aba11f70f11
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785961"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58292990"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Azure Media Analytics での顔編集チュートリアル
 
@@ -35,7 +35,7 @@ ms.locfileid: "33785961"
 
 ## <a name="azure-media-services-explorer-workflow"></a>Azure Media Services Explorer のワークフロー
 
-Redactor の使用を開始する最も簡単な方法は、github のオープン ソース AMSE ツールを使用することです。 注釈 json または顔の jpg イメージにアクセスする必要がない場合は、**結合**モードによる簡略化されたワークフローを実行できます。
+Redactor の使用を開始する最も簡単な方法は、GitHub のオープン ソース AMSE ツールを使用することです。 注釈 json または顔の jpg イメージにアクセスする必要がない場合は、**結合**モードによる簡略化されたワークフローを実行できます。
 
 ### <a name="download-and-setup"></a>ダウンロードとセットアップ
 
@@ -130,6 +130,6 @@ JSON 注釈データを解析しようとしている開発者は、Models.MetaD
 ## <a name="related-links"></a>関連リンク
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
-[Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics デモ](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
 [Azure Media Analytics の顔編集の発表](https://azure.microsoft.com/blog/azure-media-redactor/)

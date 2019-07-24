@@ -1,48 +1,59 @@
 ---
 title: Azure portal の設定のエクスポートまたは削除 | Microsoft Docs
-description: ユーザー設定、プライベート ダッシュ ボード、Azure portal のカスタマイズをエクスポートまたは削除する方法について説明します。
+description: Azure portal のユーザー設定、プライベート ダッシュボード、カスタム設定を、エクスポートまたは削除する方法について説明します。
 services: azure-portal
 keywords: ''
 author: santhoshsomayajula
-ms.date: 05/18/2018
+ms.date: 04/08/2019
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
-manager: dougeby
-ms.author: cwatson
-ms.openlocfilehash: b2bf674dbb253c7ec698b18776d8752ed6a4c1c8
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+manager: mtillman
+ms.author: kfollis
+ms.openlocfilehash: fde7ffbaa3ef4d47eea48302a99948932aeb4f00
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394082"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361957"
 ---
-# <a name="export-or-delete-settings-in-the-azure-portal"></a>Azure portal で設定をエクスポートまたは削除します
-Azure portal の設定メニューから、次の設定をエクスポートおよび削除できます。
-* Azure portal のプライベート ダッシュ ボード
-* お気に入りのサブスクリプションまたはディレクトリなどのユーザーの設定、およびディレクトリの前回のログイン
-* テーマとカスタマイズ
+# <a name="export-or-delete-user-settings"></a>ユーザー設定のエクスポートまたは削除
 
-設定を削除する前に、エクスポートして確認することを強くお勧めします。 ダッシュ ボードを再構築し、カスタマイズを再度追加するには時間がかかる可能性があります。
+Azure portal の設定と機能を使って、カスタム エクスペリエンスを作成できます。 カスタム設定に関する情報は、Azure に格納されます。 次のユーザー データを削除またはエクスポートできます。
+
+* Azure portal のプライベート ダッシュボード
+* お気に入りのサブスクリプションまたはディレクトリなどのユーザーの設定、およびディレクトリの前回のログイン
+* テーマとその他のカスタム ポータル設定
+
+設定を削除する前に、エクスポートして確認するのはよいことです。 ダッシュボードの再構築やカスタム設定のやり直しには、時間がかかる場合があります。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-**ポータル設定をエクスポートまたは削除します。**
+## <a name="export-or-delete-your-portal-settings"></a>ポータル設定をエクスポートまたは削除する
 
-1. [Azure ポータル](http://portal.azure.com)にサインインします。
-2. ポータルの右上の **[設定]** を選択します。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. ポータルのヘッダーで、**[設定]** を選択します。
 
     ![ポータル設定 (歯車) を示しているスクリーンショット](media/azure-portal-export-delete-settings/azure-portal-settings-icon.png)
+
 3. **すべての設定をエクスポート** または **すべての設定とプライベート ダッシュ ボードを削除** を選択します。
 
-    ![ポータル設定のエクスポートおよび削除を示しているスクリーンショット](media/azure-portal-export-delete-settings/azure-portal-export-delete-settings.png)
+    ![ポータルのエクスポートおよび削除の設定が示されているスクリーンショット](media/azure-portal-export-delete-settings/azure-portal-export-delete-settings.png)
 
-      次の表にこれらの設定を示します。 
+      次の表ではこれらのアクションについて説明します。
 
-      | Setting | 説明 |
+      | Action | 説明 |
       | --- | --- |
-      | **すべての設定をエクスポート** | ダッシュ ボードのテーマと同様に、ユーザー設定を含む .json ファイルを作成します。|
-      | **すべての設定とプライベート ダッシュボードを削除** | プライベート ダッシュ ボードおよびポータル ダッシュ ボードに加えたその他のユーザーのカスタマイズへのすべてのリンクを削除します。 |
+      | **すべての設定をエクスポートする** | 配色テーマ、お気に入り、プライベート ダッシュボードなどのユーザー設定が含まれる .json ファイルを作成します。|
+      | **すべての設定とプライベート ダッシュボードを削除** | プライベート ダッシュボードと、ポータルに対して行った他のカスタム設定へのすべてのリンクを削除します。 |
+
+> [!NOTE]
+> ユーザー設定の動的な性質とデータが破損するリスクのため、.json ファイルから設定をインポートすることはできません。
+>
+>
 
 
+## <a name="next-steps"></a>次の手順
 
+* [Azure ダッシュボードの作成と共有](azure-portal-dashboard-share-access.md)
+* [お気に入りの追加、削除、並べ替え](azure-portal-add-remove-sort-favorites.md)

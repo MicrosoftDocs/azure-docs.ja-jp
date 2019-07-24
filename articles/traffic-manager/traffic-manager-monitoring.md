@@ -2,21 +2,20 @@
 title: Azure Traffic Manager エンドポイントの監視 | Microsoft Docs
 description: この記事では、Azure ユーザーが高可用性アプリケーションをデプロイできるように、Traffic Manager でエンドポイントの監視と自動フェールオーバーの機能がどのように使用されているかを説明します。
 services: traffic-manager
-documentationcenter: ''
 author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/22/2017
+ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: 15b609bbf4ab048722f2512371eeffece92b3245
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 083bdf9c5aec640fbbd7757b307ac47178e0b14b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138142"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076141"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager エンドポイントの監視
 
@@ -29,15 +28,15 @@ Azure Traffic Manager には、エンドポイントの監視と自動フェー�
 * **プロトコル**。 Traffic Manager がエンドポイントをプローブして正常性をチェックするときに使用するプロトコルとして、HTTP、HTTPS、または TCP を選択します。 HTTPS 監視では、SSL 証明書の存在だけがチェックされ、その証明書が有効かどうかは検証されません。
 * **Port**。 要求に使用するポートを選択します。
 * **パス**。 この構成設定は、パス設定を指定する必要がある HTTP プロトコルと HTTPS プロコルでのみ有効です。 TCP 監視プロトコルにこの設定を指定するとエラーになります。 HTTP および HTTPS プロトコルの場合は、監視でアクセスされる Web ページまたはファイルの相対パスと名前を指定します。 スラッシュ (/) は、相対パスの有効なエントリであり、 ファイルがルート ディレクトリ (既定値) にあることを示します。
-* **カスタム ヘッダーの設定** この構成設定は、Traffic Manager がプロファイルのエンドポイントに送信する正常性チェックに特定の HTTP ヘッダーを追加するうえで役に立ちます。 カスタム ヘッダーは、プロファイル レベルおよびエンドポイント レベルで指定できます。プロファイル レベルで指定すると、そのプロファイルのすべてのエンドポイントに適用され、エンドポイント レベルで指定すると、エンドポイントにのみ適用されます。 カスタム ヘッダーを使用すると、ホスト ヘッダーを指定することで、マルチテナント環境のエンドポイントに対する正常性チェックを目的の場所に正しくルーティングできます。 Traffic Manager からの HTTP (S) 要求を特定し、それを別の方法で処理するために使用できる一意のヘッダーを追加することで、この設定を使用することもできます。
+* **カスタム ヘッダーの設定** この構成設定は、Traffic Manager がプロファイルのエンドポイントに送信する正常性チェックに特定の HTTP ヘッダーを追加するうえで役に立ちます。 カスタム ヘッダーは、プロファイル レベルおよびエンドポイント レベルで指定できます。プロファイル レベルで指定すると、そのプロファイルのすべてのエンドポイントに適用され、エンドポイント レベルで指定すると、エンドポイントにのみ適用されます。 カスタム ヘッダーを使用すると、ホスト ヘッダーを指定することで、マルチテナント環境のエンドポイントに対する正常性チェックを目的の場所に正しくルーティングできます。 Traffic Manager からの HTTP (S) 要求を特定し、それを別の方法で処理するために使用できる一意のヘッダーを追加することで、この設定を使用することもできます。 コンマで区切られたヘッダーと値のペアを最大 8 つ指定できます。 たとえば、"header1:value1、header2:value2" です。 
 * **予測される状態コード範囲** この設定を使用すると、200-299、301-301 という形式で複数の成功コードの範囲を指定できます。 正常性チェックが開始されたとき、これらの状態コードをエンドポイントから応答として受け取ると、そのエンドポイントは、Traffic Manager によって正常としてマークされます。 指定できる状態コードの範囲は 8 個までです。 この設定は、HTTP と HTTPS プロトコルのみ、およびすべてのエンドポイントに適用できます。 この設定は Traffic Manager プロファイル レベルであり、既定では成功の状態コードとして 200 という値が定義されています。
-* **プローブ間隔**。 この値により、Traffic Manager プローブ エージェントによってエンドポイントの正常性がチェックされる頻度を指定します。 指定できる値は、30 秒 (通常のプローブ) と 10 秒 (高速プローブ) の 2 つです。 値が指定されていない場合、プロファイルによって既定値の 30 秒に設定されます。 高速プローブの料金の詳細については、「[Traffic Manager の価格](https://azure.microsoft.com/pricing/details/traffic-manager)」をご覧ください。
+* **プローブ間隔**。 この値により、Traffic Manager プローブ エージェントによってエンドポイントの正常性がチェックされる頻度を指定します。 ここで、30 秒 (普通のプローブ) と 10 秒 (速いプローブ) という 2 つの値を指定できます。 値が指定されていない場合、プロファイルによって既定値の 30 秒に設定されます。 高速プローブの料金の詳細については、「[Traffic Manager の価格](https://azure.microsoft.com/pricing/details/traffic-manager)」をご覧ください。
 * **障害の許容数**。 この値により、Traffic Manager プローブ エージェントがそのエンドポイントを異常としてマークするまでに許容されるエラーの数を指定します。 0 ～ 9 の値を指定できます。 値が 0 の場合、監視エラーが 1 つ発生すると、そのエンドポイントが異常とマークされます。 値が指定されていない場合は、既定値の 3 が使用されます。
 * **プローブのタイムアウト**。 このプロパティでは、正常性チェックのプローブがエンドポイントに送信されたときに、そのチェックが失敗と見なされるまでの Traffic Manager プローブ エージェントの待機時間を指定します。 プローブ間隔が 30 秒に設定されている場合は、5 ～ 10 秒のタイムアウト値を設定できます。 値が指定されていない場合は、既定値の 10 秒が使用されます。 プローブ間隔が 10 秒に設定されている場合は、5 ～ 9 秒のタイムアウト値を設定できます。 タイムアウト値が指定されていない場合は、既定値の 9 秒が使用されます。
 
     ![Traffic Manager エンドポイントの監視](./media/traffic-manager-monitoring/endpoint-monitoring-settings.png)
 
-    **図: Traffic Manager エンドポイントの監視**
+    **図:Traffic Manager エンドポイントの監視**
 
 ## <a name="how-endpoint-monitoring-works"></a>エンドポイント監視のしくみ
 
@@ -112,7 +111,7 @@ Traffic Manager は、問題のあるエンドポイントを含むすべての�
 
 ![Traffic Manager endpoint failover and failback sequence](./media/traffic-manager-monitoring/timeline.png)
 
-**図: Traffic Manager エンドポイントのフェールオーバーと回復のシーケンス**
+**図:Traffic Manager エンドポイントのフェールオーバーと回復のシーケンス**
 
 1. **GET**。 エンドポイントごとに、Traffic Manager の監視システムは、監視設定で指定されたパスで GET 要求を実行します。
 2. **200 OK または Traffic Manager プロファイル監視設定で指定されたカスタム コード範囲**。 監視システムでは、HTTP 200 OK または Traffic Manager プロファイル監視設定で指定されたカスタム コード範囲のメッセージが 10 秒以内に返されると想定しています。 この応答を受信すると、サービスが使用可能であると認識されます。

@@ -1,19 +1,20 @@
 ---
-title: Azure Search でファセット ナビゲーションを実装する方法 | Microsoft Docs
+title: Category 階層でファセット ナビゲーションを実装する方法 - Azure Search
 description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search と統合するアプリケーションにファセット ナビゲーションを追加します。
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 3/10/2017
+ms.date: 03/27/2019
 ms.author: heidist
-ms.openlocfilehash: e00e875619e4ed6800f5739362ff0c52971f6f16
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.custom: seodec2018
+ms.openlocfilehash: 3b31e796b07bea8c11bccb3f2bb306a4279f2ca3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195296"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523717"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Azure Search でファセット ナビゲーションを実装する方法
 ファセット ナビゲーションは、検索アプリケーションで自律型のドリルダウン ナビゲーションを提供するフィルター処理メカニズムです。 「ファセット ナビゲーション」という用語は聞き慣れないかもしれませんが、気づかずに使っていることもあります。 次の例に示すように、ファセット ナビゲーションは結果のフィルター処理に使用されるカテゴリです。
@@ -67,10 +68,10 @@ Azure Search では、要求は 1 つまたは複数のクエリ パラメータ
 関係のないヒットを除外する能力として理解される正確さは、以下の式の一方または両方によって実現されます。
 
 -   **search=**  
-    このパラメーターの値は、検索式を構成します。 単一のテキスト、または複数の語句と演算子を含む複雑な検索式を指定できます。 サーバーでは、検索式を使用してフルテキスト検索が実行され、インデックスの検索可能なフィールドで一致する語句がクエリされて、ランクの順序で結果が返されます。 `search` を null に設定した場合は、インデックス全体に対してクエリが実行されます (つまり `search=*`)。 この場合、`$filter` やスコアリング プロファイルなどのクエリの他の要素は、返されるドキュメント `($filter`) およびその順序 (`scoringProfile` または `$orderby`) に影響を与える基本要素になります。
+     このパラメーターの値は、検索式を構成します。 単一のテキスト、または複数の語句と演算子を含む複雑な検索式を指定できます。 サーバーでは、検索式を使用してフルテキスト検索が実行され、インデックスの検索可能なフィールドで一致する語句がクエリされて、ランクの順序で結果が返されます。 `search` を null に設定した場合は、インデックス全体に対してクエリが実行されます (つまり `search=*`)。 この場合、`$filter` やスコアリング プロファイルなどのクエリの他の要素は、返されるドキュメント `($filter`) およびその順序 (`scoringProfile` または `$orderby`) に影響を与える基本要素になります。
 
 -   **$filter=**  
-    フィルターは、特定のドキュメント属性の値に基づいて検索結果のサイズを制限するための強力なメカニズムです。 `$filter` が最初に評価され、その後で使用可能な値および各値に対応する数を生成するファセット ロジックが評価されます。
+     フィルターは、特定のドキュメント属性の値に基づいて検索結果のサイズを制限するための強力なメカニズムです。 `$filter` が最初に評価され、その後で使用可能な値および各値に対応する数を生成するファセット ロジックが評価されます。
 
 複雑な検索式は、クエリのパフォーマンスを低下させます。 可能な限り、正確さとクエリのパフォーマンスが向上するように、適切に構成されたフィルター式を使用してください。
 
@@ -269,11 +270,11 @@ if (businessTitleFacet != "")
 ### <a name="filtering-tips"></a>フィルター処理のヒント
 **フィルターを使用した検索精度の向上**
 
-フィルターを使用します。 検索式にのみ依存すると、どのフィールドにも正確なファセット値が含まれないドキュメントが語幹検索で返される可能性があります。
+ フィルターを使用します。 検索式にのみ依存すると、どのフィールドにも正確なファセット値が含まれないドキュメントが語幹検索で返される可能性があります。
 
 **フィルターを使用した検索パフォーマンスの向上**
 
-フィルターは検索の候補ドキュメントのセットを絞り込み、それらをランキングから除外します。 ドキュメント セットが大きい場合、限定的なファセット ドリルダウンを使用すると、パフォーマンスが向上することがよくあります。
+ フィルターは検索の候補ドキュメントのセットを絞り込み、それらをランキングから除外します。 ドキュメント セットが大きい場合、限定的なファセット ドリルダウンを使用すると、パフォーマンスが向上することがよくあります。
   
 **ファセット フィールドのみのフィルター処理**
 
@@ -304,11 +305,11 @@ if (businessTitleFacet != "")
 > 複数の種類があるときの `count` の説明は混乱する可能性があります。 Azure Search API、サンプル コード、ドキュメントで count が使用される方法についてのまとめを以下に示します。 
 
 * `@colorFacet.count`<br/>
-  プレゼンテーション コードでは、ファセットの count パラメーターはファセット結果の数を表示するために使用されます。 ファセットの結果では、count はファセットの語句または範囲に一致するドキュメントの数を示します。
+   プレゼンテーション コードでは、ファセットの count パラメーターはファセット結果の数を表示するために使用されます。 ファセットの結果では、count はファセットの語句または範囲に一致するドキュメントの数を示します。
 * `&facet=City,count:12`<br/>
-  ファセット クエリでは、count に値を設定できます。  既定値は 10 ですが、これより大きい値または小さい値を設定できます。 `count:12` と設定すると、ドキュメント数によるファセットの結果から上位 12 個の一致が取得されます。
+   ファセット クエリでは、count に値を設定できます。  既定値は 10 ですが、これより大きい値または小さい値を設定できます。 `count:12` と設定すると、ドキュメント数によるファセットの結果から上位 12 個の一致が取得されます。
 * "`@odata.count`"<br/>
-  クエリの応答では、この値は検索結果において一致する項目の数を示します。 検索語句とは一致しても、ファセット値とは一致しない項目が存在するため、平均すると、この値はすべてのファセット結果を組み合わせた合計より大きくなります。
+   クエリの応答では、この値は検索結果において一致する項目の数を示します。 検索語句とは一致しても、ファセット値とは一致しない項目が存在するため、平均すると、この値はすべてのファセット結果を組み合わせた合計より大きくなります。
 
 **ファセット結果での数の取得**
 
@@ -320,7 +321,7 @@ if (businessTitleFacet != "")
 
 シャーディング アーキテクチャのために、ファセットの数が正しくなくなる可能性があります。 すべての検索インデックスに複数のシャードがあり、それぞれのシャードがドキュメント数によって上位 N ファセットを報告すると、単一の結果に結合されます。 一部のシャードの一致値が多く、他のシャードは少ない場合、一部のファセットの値が結果に含まれないか、または数が少なくなる可能性があります。
 
-この動作はいつでも変わる可能性がありますが、現在発生している場合は、count:<number> を意図的に大きい値に増やして各シャードから強制的に完全にレポートすることによって回避できます。 count: の値がフィールドの固有の値の数と等しいかそれより大きい場合、正確な結果が保証されます。 ただし、ドキュメントの数が大きい場合はパフォーマンスが低下するので、このオプションは注意して使用する必要があります。
+この動作はいつでも変わる可能性がありますが、現在発生している場合は、カウント:\<数> の値を意図的に増やして各シャードから強制的に完全レポートすることによって回避できます。 count: の値がフィールドの固有の値の数と等しいかそれより大きい場合、正確な結果が保証されます。 ただし、ドキュメントの数が大きい場合はパフォーマンスが低下するので、このオプションは注意して使用する必要があります。
 
 ### <a name="user-interface-tips"></a>ユーザー インターフェイスのヒント
 **ファセット ナビゲーションの各フィールドのラベルを追加する**
@@ -334,11 +335,11 @@ if (businessTitleFacet != "")
 
 Azure Search では、範囲を計算する 2 つの方法が提供されており、簡単に範囲を作成できます。 どちらの方法でも、ユーザーが提供する入力に基づいて Azure Search が適切な範囲を作成します。 たとえば、範囲の値として 10|20|30 を指定すると、自動的に 0-10、10-20、20-30 という範囲が作成されます。 アプリケーションでは、空の間隔が必要に応じて削除されます。 
 
-**方法 1: 間隔パラメーターを使用する**  
+**方法 1:間隔パラメーターを使用する**  
 $10 刻みの価格ファセットを設定するには、`&facet=price,interval:10` と指定します
 
-**方法 2: 値のリストを使用する**  
-数値データの場合、値のリストを使用できます。  次のように表示される `listPrice` フィールドのファセット範囲について考えます。
+**方法 2:値のリストを使用する**  
+ 数値データの場合、値のリストを使用できます。  次のように表示される `listPrice` フィールドのファセット範囲について考えます。
 
   ![サンプルの値のリスト][5]
 
@@ -363,14 +364,14 @@ Azure Search には、**geo.distance** および **geo.intersects** という 2 
 * **geo.distance** 関数は、2 つの点の間の距離を、キロメートル単位で返します。 1 つはフィールドで、もう 1 つはフィルターの一部として定数で渡されます。 
 * **geo.intersects** 関数は、指定された点が指定された多角形の内部にある場合は true を返します。 点はフィールドとして、多角形は座標の定数リストとして指定されて、フィルターの一部として渡されます。
 
-フィルターの例については、「 [Azure Search の OData 式の構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)」を参照してください。
+フィルターの例については、「 [Azure Search の OData 式の構文](query-odata-filter-orderby-syntax.md)」を参照してください。
 
 <a name="tryitout"></a>
 
 ## <a name="try-the-demo"></a>デモの試用
 この記事で参照されている例は、Azure Search Job Portal Demo に含まれています。
 
--   「[Azure Search Job Portal Demo](http://azjobsdemo.azurewebsites.net/)」にある作業用デモをオンラインで参照し、テストしてください。
+-   「[Azure Search Job Portal Demo](https://azjobsdemo.azurewebsites.net/)」にある作業用デモをオンラインで参照し、テストしてください。
 
 -   [GitHub の Azure 用サンプル リポジトリ](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)からコードをダウンロードします。
 
@@ -395,12 +396,12 @@ Azure Search には、**geo.distance** および **geo.intersects** という 2 
 <a name="nextstep"></a>
 
 ## <a name="learn-more"></a>詳細情報
-「[Azure Search Deep Dive (Azure Search の詳細)](http://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)」を参照してください。 45:25 の部分に、ファセットの実装方法のデモがあります。
+「[Azure Search Deep Dive (Azure Search の詳細)](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)」を参照してください。 45:25 の部分に、ファセットの実装方法のデモがあります。
 
 ファセット ナビゲーションの設計の原則の詳細については、次のリンクをお勧めします。
 
 * [ファセット検索のための設計に関する記事](http://www.uie.com/articles/faceted_search/)
-* [ファセット ナビゲーションの設計パターンに関する記事](http://alistapart.com/article/design-patterns-faceted-navigation)
+* [設計パターン:ファセット ナビゲーション](https://alistapart.com/article/design-patterns-faceted-navigation)
 
 
 <!--Anchors-->
@@ -430,11 +431,11 @@ Azure Search には、**geo.distance** および **geo.intersects** という 2 
 
 <!--Link references-->
 [Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
-[Design Patterns: Faceted Navigation]: http://alistapart.com/article/design-patterns-faceted-navigation
+[Design Patterns: Faceted Navigation]: https://alistapart.com/article/design-patterns-faceted-navigation
 [Create your first application]: search-create-first-solution.md
 [OData expression syntax (Azure Search)]: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
 [Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/
-[http://www.odata.org/documentation/odata-version-2-0/overview/]: http://www.odata.org/documentation/odata-version-2-0/overview/ 
+[https://www.odata.org/documentation/odata-version-2-0/overview/]: https://www.odata.org/documentation/odata-version-2-0/overview/ 
 [Faceting on Azure Search forum post]: ../faceting-on-azure-search.md?forum=azuresearch
 [Search Documents (Azure Search API)]: https://docs.microsoft.com/rest/api/searchservice/Search-Documents
 

@@ -4,7 +4,7 @@ description: 運用ワークロードを処理するためのクラスターの�
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: timlt
+manager: chackdan
 editor: ''
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -13,17 +13,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: c505feb20321d785a86cad0422470aa5c9a4311b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e5fa46930a3be3c85cd76e655fac3164cc45d957
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259090"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664822"
 ---
-<a id="preparemachines"></a>
-
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Service Fabric スタンドアロン クラスターのデプロイの計画と準備
-クラスターを作成する前に、次の手順を実行します。
+
+<a id="preparemachines"></a>クラスターを作成する前に、次の手順を実行します。
 
 ## <a name="plan-your-cluster-infrastructure"></a>クラスターのインフラストラクチャを計画する
 ここでの Service Fabric クラスターの作成先は自分が所有するマシンです。そこで、クラスターがどのような障害に対応するかを決定できます。 たとえば電気系統やインターネット接続を、それらのマシン専用に確保する必要はあるでしょうか。 また、マシンの物理的なセキュリティも考慮してください。 マシンの配置場所とマシンへのアクセスが必要なユーザー これらの点を判断したら、各種の障害ドメイン (次の手順を参照) にマシンを論理的に対応付けることができます。 運用環境クラスターのインフラストラクチャ計画は、テスト環境のクラスターの場合よりも複雑です。
@@ -43,10 +42,10 @@ ms.locfileid: "51259090"
 
 アップグレード ドメインの名前は、ClusterConfig.jsonにアップグレード ドメインを指定するときに選ぶことができます。 有効な名前の例を次に示します。
 
-* "upgradeDomain": "UD0"
-* "upgradeDomain": "UD1A"
-* "upgradeDomain": "DomainRed"
-* "upgradeDomain": "Blue"
+* "upgradeDomain":"UD0"
+* "upgradeDomain":"UD1A"
+* "upgradeDomain":"DomainRed"
+* "upgradeDomain":"Blue"
 
 FD と UD の詳細については、「[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)」を参照してください。
 
@@ -83,6 +82,7 @@ FD と UD の詳細については、「[Service Fabric クラスターの記述
 このファイルのセクションの詳細については、[「スタンドアロン Windows クラスターの構成設定」](service-fabric-cluster-manifest.md) を参照してください。
 
 ダウンロードしたパッケージの ClusterConfig.json ファイルのいずれかを開き、次の設定を変更します。
+
 | **構成設定** | **説明** |
 | --- | --- |
 | **NodeTypes** |クラスター ノードは、ノードのタイプでグループ分けすることができます。 クラスターには少なくとも 1 つの NodeType が必要です。 グループ内のすべてのノードは、次の特性を共有します。 <br> **Name** - ノード タイプの名前です。 <br>**Endpoint Ports** - このノード タイプに関連付けられている、さまざまな名前付きエンドポイント (ポート) です。 このマニフェスト内の他のポート番号と競合せず、かつ同じマシン/VM 上で実行している他のアプリケーションでまだ使われていなければ、どのポート番号でも使用できます。 <br> **Placement Properties** - このノード タイプの特性を表します。この特性は、システム サービスや独自のサービスを配置するうえでの制約として使用します。 これらの特性は、特定のノードを補足するメタデータとして、ユーザー定義のキー/値のペアで記述されます。 ノードのプロパティの例としては、ハード ドライブやグラフィック カードの有無、ハード ドライブ内のスピンドル数、コア数などの物理的な特性があります。 <br> **Capacities** - ノード容量は、特定のノードで使用できるように確保されている特定のリソースの名前と量を定義します。 たとえば、"MemoryInMb" と呼ばれるメトリックに対して既定で 2,048 MB のメモリを使用できるようにノードの容量を定義できます。 実行時にはこの容量に基づき、特定のリソース量を必要とするサービスが確実に、そのリソースが確保されているノードに配置されます。<br>**IsPrimary**: 複数の NodeType が定義されている場合は、必ず 1 つのみをプライマリに設定してください (値を *true* にする)。プライマリでシステム サービスが実行されます。 その他のすべてのノード タイプは値 *false* に設定する必要があります。 |
@@ -97,20 +97,20 @@ FD と UD の詳細については、「[Service Fabric クラスターの記述
 クラスター管理者が Service Fabric スタンドアロン クラスターを構成する場合、環境は次の条件に合わせて設定する必要があります。 <br>
 1. クラスターを作成するユーザーには、クラスター構成ファイルにノードとして記載されているすべてのマシンに対する管理者レベルのセキュリティ特権が必要です。
 2. クラスターの作成元になるマシン、および各クラスター ノード マシンでは次の操作を行う必要があります。
-* Service Fabric SDK をアンインストールします。
-* Service Fabric ランタイムをアンインストールにします。 
-* Windows Firewall サービス (mpssvc) を有効にします。
-* リモート レジストリ サービス (リモート レジストリ) を有効にします。
-* ファイル共有 (SMB) を有効化にします。
-* クラスター構成のポートに基づいて必要なポートを開放します。
-* Windows SMB とリモート レジストリ サービスに必要なポート 135、137、138、139、445 を開放します。
-* 各マシンがネットワークで接続できるようにします。
+   * Service Fabric SDK をアンインストールします。
+   * Service Fabric ランタイムをアンインストールにします。 
+   * Windows Firewall サービス (mpssvc) を有効にします。
+   * リモート レジストリ サービス (リモート レジストリ) を有効にします。
+   * ファイル共有 (SMB) を有効化にします。
+   * クラスター構成のポートに基づいて必要なポートを開放します。
+   * Windows SMB とリモート レジストリ サービスに必要なポート 135、137、138、139、445 を開放します
+   * 各マシンがネットワークで接続できるようにします。
 3. クラスター ノード マシンはドメイン コントローラーにしないでください。
 4. デプロイ予定のクラスターがセキュリティで保護されたクラスターである場合は、まず必要なセキュリティの前提条件を検証してから、目的の構成に合わせて適切に構成します。
 5. クラスター マシンにインターネットでアクセスできない場合は、クラスター構成で次を設定します。
-* テレメトリを無効にする: *properties* で *"enableTelemetry": false* と設定します。
-* Fabric バージョンの自動ダウンロードおよび現在のクラスター バージョンのサポート終了が近づいていることの通知を無効にする: *properties* で *"fabricClusterAutoupgradeEnabled": false* と設定します。
-* また、ネットワーク インターネット アクセスがホワイト リスト ドメインに制限されている場合、自動アップグレードには go.microsoft.com   download.microsoft.com というドメインが必要になります。
+   * テレメトリを無効にする: *properties* で *"enableTelemetry": false* と設定します
+   * Fabric バージョンの自動ダウンロードおよび現在のクラスター バージョンのサポート終了が近づいていることの通知を無効にする: *properties* で *"fabricClusterAutoupgradeEnabled": true* と設定します
+   * また、ネットワークのインターネット アクセスがホワイト リスト ドメインに制限されている場合、自動アップグレードには go.microsoft.com download.microsoft.com というドメインが必要になります
 
 6. Service Fabric のウイルス対策の対象外項目を適切に設定します。
 

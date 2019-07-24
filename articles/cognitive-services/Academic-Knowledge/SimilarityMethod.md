@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Similarity メソッドを使用すると、2 つの文字列の学術的な類似度を計算できます。
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 01/18/2017
 ms.author: alch
-ms.openlocfilehash: 76e86eb78a06d98e3d5c6c54b244add3c0c245d2
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 44930ad0f941ea174d95658f220db7aa95012133
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900463"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868686"
 ---
 # <a name="similarity-method"></a>Similarity メソッド
 
@@ -30,8 +30,8 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?
 ## <a name="request-parameters"></a>要求パラメーター
 パラメーター        |データ型      |必須 | 説明
 ----------|----------|----------|------------
-**s1**        |String   |[はい]  |比較する文字列*
-**s2**        |String   |[はい]  |比較する文字列*
+**s1**        |String   |はい  |比較する文字列*
+**s2**        |String   |はい  |比較する文字列*
 <sub> *比較する文字列の長さは最大 1 MB です。</sub>
 <br>
 ## <a name="response"></a>Response
@@ -48,7 +48,7 @@ HTTP の状態 | 理由 | Response
 **500**         |内部サーバー エラー | エラー メッセージ
 **Timed out**     | 要求がタイムアウトしました。  | エラー メッセージ
 <br>
-## <a name="example-calculate-similarity-of-two-partial-abstracts"></a>例: 2 つの部分的な要約の類似度を計算します
+## <a name="example-calculate-similarity-of-two-partial-abstracts"></a>例:2 つの部分的な要約の類似度を計算します
 #### <a name="request"></a>要求:
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?s1=Using complementary priors, we derive a fast greedy algorithm that can learn deep directed belief networks one layer at a time, provided the top two layers form an undirected associative memory

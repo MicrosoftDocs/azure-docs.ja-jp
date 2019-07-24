@@ -9,21 +9,24 @@ ms.devlang: ''
 ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
-ms.reviewer: ''
+ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: fa5ce7264fd003e0a49d6408acae070577879cdd
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/20/2018
+ms.openlocfilehash: 0b1e3b98fe5b934b712db2a5549ebdc865523bfb
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686621"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487721"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL データ同期のベスト プラクティス 
 
 この記事では、Azure SQL データ同期のベスト プラクティスについて説明します。
 
 SQL データ同期の概要については、[Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベース間でのデータの同期](sql-database-sync-data.md)に関する記事を参照してください。
+
+> [!IMPORTANT]
+> 現時点では、Azure SQL データ同期で Azure SQL Database Managed Instance はサポート**されていません**。
 
 ## <a name="security-and-reliability"></a>セキュリティと信頼性
 
@@ -52,9 +55,9 @@ Azure SQL Database では、単一の資格情報セットのみをサポート�
 
 ### <a name="database-considerations-and-constraints"></a>データベースの考慮事項と制約
 
-#### <a name="sql-database-instance-size"></a>SQL Database インスタンスのサイズ
+#### <a name="sql-database-instance-size"></a>SQL データベース インスタンスのサイズ
 
-新しい SQL Database インスタンスを作成するときは、デプロイするデータベースよりも常に大きいサイズになるように最大サイズを設定します。 デプロイするデータベースより大きい最大サイズを設定していない場合、同期は失敗します。 SQL データ同期では自動拡張が行われませんが、`ALTER DATABASE` コマンドを実行して、作成後にデータベースのサイズを増やすことができます。 SQL Database インスタンスのサイズの制限を超えないようにしてください。
+新しい SQL データベース インスタンスを作成するときは、デプロイするデータベースよりも常に大きいサイズになるように最大サイズを設定します。 デプロイするデータベースより大きい最大サイズを設定していない場合、同期は失敗します。 SQL データ同期では自動拡張が行われませんが、`ALTER DATABASE` コマンドを実行して、作成後にデータベースのサイズを増やすことができます。 SQL データベース インスタンスのサイズの制限を超えないようにしてください。
 
 > [!IMPORTANT]
 > SQL データ同期では、各データベースで追加のメタデータを格納します。 必要な領域を計算するときに、このメタデータを必ず考慮してください。 追加されるオーバーヘッドの量は、テーブルの幅 (たとえば、幅が狭いテーブルでは必要なオーバーヘッドが増えます) とトラフィックの量に関係しています。
@@ -193,7 +196,7 @@ SQL データ同期には、自動プロビジョニングについて次のよ�
 
 #### <a name="scenario"></a>シナリオ
 
-1. SQL Database インスタンスと、ローカル エージェント 1 に関連付けられているオンプレミスの SQL Server データベースを使用して、同期グループ A が作成されました。
+1. SQL データベース インスタンスと、ローカル エージェント 1 に関連付けられているオンプレミスの SQL Server データベースを使用して、同期グループ A が作成されました。
 2. 同じオンプレミス データベースがローカル エージェント 2 に登録されています (このエージェントは、どの同期グループにも関連付けられていません)。
 3. ローカル エージェント 2 からオンプレミス データベースの登録を解除すると、オンプレミス データベースの同期グループ A の追跡およびメタ テーブルが削除されます。
 4. 同期グループ A の操作は、"The current operation could not be completed because the database is not provisioned for sync or you do not have permissions to the sync configuration tables" (データベースが同期用にプロビジョニングされていないか、同期構成テーブルへのアクセス許可がないため、現在の操作を完了できませんでした) というエラーが表示されて失敗します。
@@ -221,12 +224,12 @@ SQL データ同期の詳細については、以下を参照してください�
 
 -   概要 - [Azure SQL データ同期を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](sql-database-sync-data.md)
 -   データ同期の設定
-    - ポータル内 - [チュートリアル: Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](sql-database-get-started-sql-data-sync.md)
+    - ポータル - [チュートリアル:Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](sql-database-get-started-sql-data-sync.md)
     - PowerShell の場合
         -  [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   データ同期エージェント - [Azure SQL データ同期のデータ同期エージェント](sql-database-data-sync-agent.md)
--   監視 - [Log Analytics による SQL データ同期の監視](sql-database-sync-monitor-oms.md)
+-   監視 - [Azure Monitor ログによる SQL データ同期の監視](sql-database-sync-monitor-oms.md)
 -   トラブルシューティング - [Azure SQL データ同期に関する問題のトラブルシューティング](sql-database-troubleshoot-data-sync.md)
 -   同期スキーマの更新
     -   Transact-SQL の場合 - [Azure SQL データ同期内でスキーマ変更のレプリケートを自動化する](sql-database-update-sync-schema.md)

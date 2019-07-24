@@ -1,93 +1,86 @@
-items:
 - name: 基礎のドキュメント
   href: index.yml
 - name: 概要
-  items:
-  - name: Azure Active Directory とは
-    href: active-directory-whatis.md
-  - name: Azure Active Directory の新着情報
-    href: whats-new.md
   expanded: true
+  items:
+    - name: Azure Active Directory とは
+      href: active-directory-whatis.md
+    - name: Azure Active Directory の新着情報
+      href: whats-new.md
 - name: クイック スタート
   items:
-  - name: ポータルにアクセスしてテナントを作成する
-    href: active-directory-access-create-new-tenant.md
-  - name: グループと割り当てられたメンバーを表示する
-    href: active-directory-groups-view-azure-portal.md
+    - name: ポータルにアクセスしてテナントを作成する
+      href: active-directory-access-create-new-tenant.md
+    - name: グループと割り当てられたメンバーを表示する
+      href: active-directory-groups-view-azure-portal.md
 - name: 概念
   items:
-  - name: ID セキュリティ スコア
-    href: identity-secure-score.md
-  - name: グループとアクセス管理
-    href: active-directory-manage-groups.md
-  - name: グループベースのライセンス
-    href: active-directory-licensing-whatis-azure-portal.md
-  - name: Azure AD のアーキテクチャ
-    href: active-directory-architecture.md
-  - name: 既定のユーザー アクセス許可
-    href: users-default-permissions.md
-  - name: デプロイ 30、90、およびそれ以降
-    href: active-directory-deployment-checklist-p2.md
-  - name: EU の ID データ ストレージ
-    href: active-directory-data-storage-eu.md
+    - name: ID セキュリティ スコア
+      href: identity-secure-score.md
+    - name: グループとアクセス管理
+      href: active-directory-manage-groups.md
+    - name: グループベースのライセンス
+      href: active-directory-licensing-whatis-azure-portal.md
+    - name: Azure AD のアーキテクチャ
+      href: active-directory-architecture.md
+    - name: 既定のユーザー アクセス許可
+      href: users-default-permissions.md
+    - name: デプロイ 30、90、およびそれ以降
+      href: active-directory-deployment-checklist-p2.md
+    - name: EU の ID データ ストレージ
+      href: active-directory-data-storage-eu.md
 - name: ハウツー ガイド
-  items:
-  - name: Organization
-    items:
-    - name: Azure AD への組織としてのサインアップ
-      href: sign-up-organization.md
-    - name: Azure AD Premium へのサインアップ
-      href: active-directory-get-started-premium.md
-    - name: カスタム ドメイン名を追加する
-      href: add-custom-domain.md
-    - name: 会社のブランドを追加する
-      href: customize-branding.md
-    - name: Azure サブスクリプションを関連付ける
-      href: active-directory-how-subscriptions-associated-directory.md
-    - name: プライバシー情報を追加する
-      href: active-directory-properties-area.md
-  - name: グループ
-    items:
-    - name: グループを作成してメンバーを追加する
-      href: active-directory-groups-create-azure-portal.md
-    - name: グループ メンバーの追加または削除
-      href: active-directory-groups-members-azure-portal.md
-    - name: グループとそのメンバーの削除
-      href: active-directory-groups-delete-group.md
-    - name: 他のグループに対するメンバーの追加または削除
-      href: active-directory-groups-membership-azure-portal.md
-    - name: グループ情報の編修
-      href: active-directory-groups-settings-azure-portal.md
-    - name: グループ所有者の追加または削除
-      href: active-directory-accessmanagement-managing-group-owners.md
-  - name: ユーザー
-    items:
-    - name: 新しいユーザーの追加または削除
-      href: add-users-azure-active-directory.md
-    - name: ユーザー プロファイル情報の追加または変更
-      href: active-directory-users-profile-azure-portal.md
-    - name: ユーザーのパスワードのリセット
-      href: active-directory-users-reset-password-azure-portal.md
-    - name: ユーザーにロールを割り当てる
-      href: active-directory-users-assign-role-azure-portal.md
-    - name: ユーザーからのライセンスの削除または割り当て
-      href: license-users-groups.md
-    - name: 削除済みユーザーの復元
-      href: active-directory-users-restore.md
   expanded: true
+  items:
+    - name: Organization
+      items:
+        - name: Azure AD への組織としてのサインアップ
+          href: sign-up-organization.md
+        - name: Azure AD Premium へのサインアップ
+          href: active-directory-get-started-premium.md
+        - name: カスタム ドメイン名を追加する
+          href: add-custom-domain.md
+        - name: 会社のブランドを追加する
+          href: customize-branding.md
+        - name: Azure サブスクリプションを関連付ける
+          href: active-directory-how-subscriptions-associated-directory.md
+        - name: プライバシー情報を追加する
+          href: active-directory-properties-area.md
+    - name: グループ
+      items:
+        - name: グループを作成してメンバーを追加する
+          href: active-directory-groups-create-azure-portal.md
+        - name: グループ メンバーの追加または削除
+          href: active-directory-groups-members-azure-portal.md
+        - name: グループとそのメンバーの削除
+          href: active-directory-groups-delete-group.md
+        - name: 他のグループに対するメンバーの追加または削除
+          href: active-directory-groups-membership-azure-portal.md
+        - name: グループ情報の編集
+          href: active-directory-groups-settings-azure-portal.md
+        - name: グループ所有者の追加または削除
+          href: active-directory-accessmanagement-managing-group-owners.md
+    - name: ユーザー
+      items:
+        - name: 新しいユーザーの追加または削除
+          href: add-users-azure-active-directory.md
+        - name: ユーザー プロファイル情報の追加または変更
+          href: active-directory-users-profile-azure-portal.md
+        - name: ユーザーのパスワードのリセット
+          href: active-directory-users-reset-password-azure-portal.md
+        - name: ユーザーにロールを割り当てる
+          href: active-directory-users-assign-role-azure-portal.md
+        - name: ユーザーからのライセンスの削除または割り当て
+          href: license-users-groups.md
+        - name: 削除済みユーザーの復元
+          href: active-directory-users-restore.md
 - name: リソース
   items:
-  - name: Azure Active Directory のサポートを利用する
-    href: active-directory-troubleshooting-support-howto.md
-  - name: Azure Active Directory に関する FAQ
-    href: active-directory-faq.md
-  - name: Azure Active Directory のデプロイ計画
-    href: active-directory-deployment-plans.md
-  - name: Azure AD の新着情報のアーカイブ
-    href: whats-new-archive.md
-ms.openlocfilehash: ac750e329a530978979d3ca580ae1f1407d2fa78
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51704411"
+    - name: Azure Active Directory のサポートを利用する
+      href: active-directory-troubleshooting-support-howto.md
+    - name: Azure Active Directory に関する FAQ
+      href: active-directory-faq.md
+    - name: Azure Active Directory のデプロイ計画
+      href: active-directory-deployment-plans.md
+    - name: Azure AD の新着情報のアーカイブ
+      href: whats-new-archive.md

@@ -3,23 +3,24 @@ title: Azure Key Vault を Managed Applications で使用する | Microsoft Docs
 description: Managed Applications のデプロイ時に Azure Key Vault でアクセス シークレットを使用する方法を示します。
 services: managed-applications
 author: tfitzmac
-manager: timlt
 ms.service: managed-applications
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
-ms.date: 07/11/2018
+ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: f091ba44a3170dcc4141829f2f4105d6e7993cdf
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 55410250ccd4dfceac8ac9ae5b81d4736de0d91a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035291"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492676"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Azure Managed Applications のデプロイ時に Key Vault シークレットにアクセスする
 
-デプロイ時に、セキュリティで保護された値 (パスワードなど) をパラメーターとして渡す必要がある場合は、[Azure Key Vault](../key-vault/key-vault-whatis.md) からその値を取得できます。 Managed Applications のデプロイ時に Key Vault にアクセスするには、**アプライアンス リソース プロバイダー** サービス プリンシパルにアクセス許可を付与する必要があります。 この記事では、Managed Applications を使用するように Key Vault を構成する方法について説明します。
+デプロイ時に、セキュリティで保護された値 (パスワードなど) をパラメーターとして渡す必要がある場合は、[Azure Key Vault](../key-vault/key-vault-whatis.md) からその値を取得できます。 Managed Applications のデプロイ時に Key Vault にアクセスするには、**アプライアンス リソース プロバイダー** サービス プリンシパルにアクセス許可を付与する必要があります。 マネージド アプリケーション サービスでは、この ID を使用して操作が実行されます。 デプロイ時にキー コンテナーから正常に値を取得するには、サービス プリンシパルでキー コンテナーにアクセスできる必要があります。
+
+この記事では、Managed Applications を使用するように Key Vault を構成する方法について説明します。
 
 ## <a name="enable-template-deployment"></a>テンプレートのデプロイを有効にする
 
@@ -43,7 +44,7 @@ ms.locfileid: "39035291"
 
    ![[アクセス制御] の選択](./media/key-vault-access/access-control.png)
 
-1. **[追加]** を選択します。
+1. **[ロールの割り当ての追加]** を選択します。
 
    ![[追加] の選択](./media/key-vault-access/add-access-control.png)
 

@@ -5,24 +5,29 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
-ms.openlocfilehash: fb20661ddf8a92ac0f5ba4141c28111b117c85a6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: benshy
+ms.custom: seodec18
+ms.openlocfilehash: f531bdb80be34cb3228042588ecd4c338b003ed0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972217"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58173959"
 ---
-# <a name="cloudyn-training-videos"></a>Cloudyn のトレーニング ビデオ
+# <a name="cloudyn-walk-through-training-videos"></a>Cloudyn のチュートリアル トレーニング ビデオ
 
 以下のビデオでは、Cloudyn の概要とその機能の使用方法について説明されています。 Cloudyn では、Microsoft Azure、アマゾン ウェブ サービス、Google Cloud Platform など、マルチクラウドのコストの追跡と最適化がサポートされています。
+
+## <a name="overview-video"></a>概要ビデオ
 
 [Cloudyn の概要](https://youtu.be/NWIRny6Wpsk)
 
 >[!VIDEO https://www.youtube.com/embed/NWIRny6Wpsk]
+
+## <a name="walk-through-videos"></a>チュートリアル ビデオ
 
 [Cloudyn を使用したクラウドの課金データと時間の分析](https://youtu.be/7LsVPHglM0g)
 

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: e44e4867-3cf3-46be-8f8a-7671e2013bc4
 ms.service: service-bus-relay
 ms.devlang: tbd
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: node
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: clemensv
-ms.openlocfilehash: a25ca0c10b66f6881f2423306564d7d37124c33a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: e54a096bd27efddaa9eafb8619e787178550a6e0
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616182"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759257"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-node"></a>Node での Relay ハイブリッド接続 HTTP 要求の概要
 

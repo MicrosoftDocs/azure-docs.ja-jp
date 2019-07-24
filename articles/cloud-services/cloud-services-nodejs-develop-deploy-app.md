@@ -11,15 +11,15 @@ ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 7af18272c335c835a2aa406fc635f3e7afda2a3a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 270f400f78b971e022a59e5e9a04a76dfa929941
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003454"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761163"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ
 
@@ -60,8 +60,8 @@ Cloud Services の詳細と Azure の Web サイトおよび仮想マシンと�
 
     このコマンドレットによって作成されるファイルは、次のとおりです。
 
-   * **ServiceConfiguration.Cloud.cscfg**、**ServiceConfiguration.Local.cscfg**、および **ServiceDefinition.csdef**: アプリケーションの発行に必要な Azure 固有のファイルです。 詳細については、「 [Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]」を参照してください。
-   * **deploymentSettings.json**: Azure PowerShell デプロイ コマンドレットによって使用されるローカル設定が格納されます。
+   * **ServiceConfiguration.Cloud.cscfg**、**ServiceConfiguration.Local.cscfg**、および **ServiceDefinition.csdef**:アプリケーションの発行に必要な、Azure 固有のファイルです。 詳細については、「 [Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]」を参照してください。
+   * **deploymentSettings.json**:Azure PowerShell デプロイ コマンドレットによって使用されるローカル設定が格納されます。
 4. 次のコマンドを入力して、新しい Web ロールを追加します。
 
        Add-AzureNodeWebRole
@@ -164,12 +164,12 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 
 <!-- URL List -->
 
-[Azure Websites、Cloud Services、および Virtual Machines の比較]: ../app-service/choose-web-site-cloud-service-vm.md
+[Azure Websites、Cloud Services、および Virtual Machines の比較]: ../app-service/overview-compare.md
 [軽量の Web アプリを使用]: ../app-service/app-service-web-get-started-nodejs.md
 [Azure Powershell]: /powershell/azureps-cmdlets-docs
-[Azure SDK for .NET 2.7]: http://www.microsoft.com/en-us/download/details.aspx?id=48178
-[PowerShell を接続します]: /powershell/azureps-cmdlets-docs#step-3-connect
-[nodejs.org]: http://nodejs.org/
+[Azure SDK for .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
+[PowerShell を接続します]: /powershell/azureps-cmdlets-docs
+[nodejs.org]: https://nodejs.org/
 [Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]: https://azure.microsoft.com/documentation/services/cloud-services/
 [Node.js デベロッパー センター]: https://azure.microsoft.com/develop/nodejs/
 

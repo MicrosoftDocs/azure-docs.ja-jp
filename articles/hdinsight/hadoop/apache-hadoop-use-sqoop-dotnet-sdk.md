@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0b8d408482f1f6e2bcd25182208a46d28f7b4f7a
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: bca61c652953cd7fb9745c49773d22dc372b0f35
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633040"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448823"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>HDInsight で .NET SDK for Apache Hadoop を使用して Apache Sqoop ジョブを実行する
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -24,12 +24,11 @@ Azure HDInsight .NET SDK を使用して、HDInsight クラスターと Azure SQ
 
 > [!NOTE]
 > この記事の手順は、Windows ベースまたは Linux ベースの HDInsight クラスターで使用できます。ただし、これらの手順は Windows クライアントでのみ機能します。 他の方法を選択するには、この記事の上部にあるタブ セレクターを使用してください。
-> 
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを開始する前に、次の項目を用意する必要があります。
 
-* HDInsight の Hadoop クラスター。 詳細については、[クラスターと SQL データベースの作成](hdinsight-use-sqoop.md#create-cluster-and-sql-database)に関するページを参照してください。
+* HDInsight 上の Apache Spark クラスター。 詳細については、[クラスターと SQL データベースの作成](hdinsight-use-sqoop.md#create-cluster-and-sql-database)に関するページを参照してください。
 
 ## <a name="use-sqoop-on-hdinsight-clusters-with-the-net-sdk"></a>.NET SDK を使って HDInsight クラスターで Sqoop を使用する
 HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。 このセクションでは、C# コンソール アプリケーションを作成し、このチュートリアルで作成した Azure SQL Database テーブルに hivesampletable をエクスポートします。
@@ -111,14 +110,13 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 ## <a name="limitations"></a>制限事項
 Linux ベースの HDInsight には次の制限事項があります。
 
-* 一括エクスポート: Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタは、一括挿入を現在サポートしていません。
+* 一括エクスポート:Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタは、一括挿入を現在サポートしていません。
 
-* バッチ処理: 挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入を実行します。
+* バッチ処理:`-batch` スイッチを使用すると、Sqoop では挿入操作がバッチ処理されず、複数の挿入が実行されます。
 
 ## <a name="next-steps"></a>次の手順
 ここでは Sqoop の使用方法を説明しました。 詳細については、次を参照してください。
 
-* [HDInsight での Oozie の使用](../hdinsight-use-oozie.md): Oozie ワークフローで Sqoop アクションを使用します。
-* [HDInsight を使用したフライト遅延データの分析](../hdinsight-analyze-flight-delay-data.md): Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL データベースにデータをエクスポートします。
-* [HDInsight へのデータのアップロード](../hdinsight-upload-data.md): HDInsight または Azure Blob Storage にデータをアップロードするその他の方法を説明します。
+* [HDInsight での Apache Oozie の使用](../hdinsight-use-oozie-linux-mac.md):Oozie ワークフローで Sqoop アクションを使用します。
+* [HDInsight へのデータのアップロード](../hdinsight-upload-data.md):HDInsight または Azure Blob Storage にデータをアップロードするその他の方法を説明します。
 

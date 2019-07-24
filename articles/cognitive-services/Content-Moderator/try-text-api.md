@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: オンライン コンソールでテキスト モデレート API を使用して、テキストのモデレートを試します。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 08/05/2017
 ms.author: sajagtap
-ms.openlocfilehash: 95fd5507287a9294f4fca6af9cc5f01f0ea9fe1c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 794638496931f72a12fcb3bd8819b04c7e2e7c97
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219789"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877050"
 ---
 # <a name="moderate-text-from-the-api-console"></a>API コンソールからテキストをモデレートする
 
@@ -33,9 +33,9 @@ Azure Content Moderator で[テキスト モデレート API](https://westus.dev
 ## <a name="open-the-api-console"></a>API コンソールを開く
 **API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。 
 
-  ![[Text - Screen] \(テキスト - 選別) ページでのリージョンの選択](images/test-drive-region.png)
+  ![(テキスト - 選別) ページでのリージョンの選択](images/test-drive-region.png)
 
-  **[Text - Screen]** \(テキスト - 選別) API コンソールが開きます。
+  **[Text - Screen]**(テキスト - 選別) API コンソールが開きます。
 
 ## <a name="select-the-inputs"></a>入力を選択する
 

@@ -1,21 +1,22 @@
 ---
-title: 'チュートリアル: Computer Vision C#'
+title: Visual Studio 接続済みサービス - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: ASP.NET Core Web アプリケーションから Computer Vision API に接続します。
+description: Visual Studio 接続済みサービス機能を使用して、ASP.NET Core Web アプリケーションから Computer Vision API に接続します。
 services: cognitive-services
 author: ghogen
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
-ms.topic: Tutorial
+ms.subservice: computer-vision
+ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: ebfcabdea1e83a83af5eea8025ba5a411c3f9880
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.custom: seodec18
+ms.openlocfilehash: 6a576f2817069d7095ea863198168be083d0c6b5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077952"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450948"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Visual Studio で接続済みサービスを使用して Computer Vision API に接続する
 
@@ -37,15 +38,15 @@ Cognitive Services Computer Vision API を使用することで、豊富な情�
 1. **ソリューション エクスプローラー**で、**[追加]** > **[接続済みサービス]** を選択します。
    [接続済みサービス] ページが開いて、プロジェクトに追加できるサービスが表示されます。
 
-   ![接続済みサービスのメニュー項目を追加する](../media/vs-common/Connected-Service-Menu.PNG)
+   ![Visual Studio プロジェクトの右クリック メニューのスクリーンショット: [追加] > [接続済みサービス]](../media/vs-common/Connected-Service-Menu.PNG)
 
 1. 利用可能なサービスのメニューで、**[Cognitive Services Computer Vision API]** を選択します。
 
-   ![接続するサービスを選択する](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
+   ![[接続済みサービス] メニューの [Analyze Images with Computer Vision]\(Computer Vision で画像を分析\) を強調表示したところ](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
 
    Visual Studio にサインインしたときに、アカウントに関連付けられている Azure サブスクリプションがある場合は、サブスクリプションのドロップダウン リストがページに表示されます。
 
-   ![サブスクリプションを選択します。](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
+   ![Visual Studio の [Computer Vision API] ウィンドウの [サブスクリプション] ドロップダウンを強調表示したところ](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
 
 1. 使用するサブスクリプションを選択し、Computer Vision API の名前を選択するか、または [編集] リンクを選択して自動生成の名前を修正し、リソース グループ、および価格レベルを選択します。
 
@@ -93,11 +94,11 @@ Cognitive Services Computer Vision API を使用することで、豊富な情�
 
 1. プロジェクトの wwwroot フォルダー内に images フォルダーを追加して、画像ファイルを wwwroot フォルダーに追加します。 たとえば、この [Computer Vision API ページ](https://azure.microsoft.com/services/cognitive-services/computer-vision/)にある画像の 1 つを使用できます。 画像の 1 つを右クリックしてローカルのハード ドライブに保存し、ソリューション エクスプローラーで images フォルダーを右クリックし、**[追加]** > **[既存の項目]** を選択してその画像をプロジェクトに追加します。 ソリューション エクスプローラーで、プロジェクトは次のようになります。 
   
-   ![images フォルダーと画像ファイル](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
+   ![画像ファイルが選択された状態のソリューション エクスプローラー ビューのスクリーンショット](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
 
 1. 画像ファイルを右クリックして [プロパティ] を選択し、**[新しい場合はコピーする]** を選択します。 
 
-   ![新しい場合はコピーする](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
+   ![画像の [プロパティ] ウィンドウ ([出力ディレクトリにコピー] が [新しい場合はコピーする] に設定されている)](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
  
 1. Computer Vision API にアクセスして画像をテストするには、Configure メソッドを次のコードに置き換えます。
 

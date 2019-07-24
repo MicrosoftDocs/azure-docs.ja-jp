@@ -9,21 +9,24 @@ ms.devlang: ''
 ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
-ms.reviewer: douglasl
+ms.reviewer: carlrab
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: c08a76711a74f5b0fd119e579c6db54fc13ecfbb
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/20/2018
+ms.openlocfilehash: 4e2808378834a0270586ce674e1043ca443320c5
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685822"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539634"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>SQL データ同期に関する問題のトラブルシューティング
 
 この記事では、Azure SQL データ同期 (プレビュー) に関する既知の問題のトラブルシューティングを行う方法について説明します。問題の解決方法がある場合は、ここにその方法を示します。
 
 SQL データ同期の概要については、[Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベース間でのデータの同期](sql-database-sync-data.md)に関する記事を参照してください。
+
+> [!IMPORTANT]
+> 現在のところ、Azure SQL データ同期では、Azure SQL Database Managed Instance はサポート**されていません**。
 
 ## <a name="sync-issues"></a>同期に関する問題
 
@@ -37,7 +40,7 @@ SQL データ同期の概要については、[Azure SQL データ同期を使�
 
 - [パフォーマンスが大幅に低下する](#sync-perf)
 
-- ["列 <column> に値 NULL を挿入できません。この列では NULL 値が許可されていません" というエラー メッセージが表示されました。このメッセージの意味と修正方法を教えてください。](#sync-nulls)
+- ["列 \<列> に値 NULL を挿入できません。この列では NULL 値が許可されていません" というエラー メッセージが表示されました。このメッセージの意味と修正方法を教えてください。](#sync-nulls)
 
 - [データ同期では循環参照はどのように処理されますか?つまり、同じデータが複数の同期グループで同期されるとき、その変更を結果として保持しますか?](#sync-circ)
 
@@ -102,7 +105,7 @@ SQL データ同期の同期グループが、長時間にわたり処理状態�
 
 - **解決策**。 最善の解決策は予防です。 同期グループに循環参照がないことを確認します。 1 つの同期グループによって同期される行を、別の同期グループによって同期することはできません。
 
-### <a name="sync-nulls"></a> "列 <column> に値 NULL を挿入できません。 この列では NULL 値が許可されていません" というエラー メッセージが表示されました。 このメッセージの意味と修正方法を教えてください。 
+### <a name="sync-nulls"></a>"列 \<列> に値 NULL を挿入できません。 この列では NULL 値が許可されていません" というエラー メッセージが表示されました。 このメッセージの意味と修正方法を教えてください。 
 このエラー メッセージは、次の 2 つの問題のいずれかを示しています。
 -  テーブルに主キーが設定されていません。 この問題を解決するには、同期しているすべてのテーブルに主キーを追加します。
 -  CREATE INDEX ステートメントに WHERE 句があります。 データ同期では、この状態は処理されません。 この問題を解決するには、WHERE 句を削除するか、手動ですべてのデータベースに変更を加えます。 
@@ -241,13 +244,13 @@ SQL データ同期の詳細については、以下を参照してください�
 
 -   概要 - [Azure SQL データ同期を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](sql-database-sync-data.md)
 -   データ同期の設定
-    - ポータル内 - [チュートリアル: Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](sql-database-get-started-sql-data-sync.md)
+    - ポータル - [チュートリアル:Azure SQL Database とオンプレミスの SQL Server の間でデータを同期するように SQL データ同期を設定する](sql-database-get-started-sql-data-sync.md)
     - PowerShell の場合
         -  [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   データ同期エージェント - [Azure SQL データ同期のデータ同期エージェント](sql-database-data-sync-agent.md)
 -   ベスト プラクティス - [Azure SQL データ同期のベスト プラクティス](sql-database-best-practices-data-sync.md)
--   監視 - [Log Analytics による SQL データ同期の監視](sql-database-sync-monitor-oms.md)
+-   監視 - [Azure Monitor ログによる SQL データ同期の監視](sql-database-sync-monitor-oms.md)
 -   同期スキーマの更新
     -   Transact-SQL の場合 - [Azure SQL データ同期内でスキーマ変更のレプリケートを自動化する](sql-database-update-sync-schema.md)
     -   PowerShell の場合 - [PowerShell を使用して、既存の同期グループの同期スキーマを更新する](scripts/sql-database-sync-update-schema.md)

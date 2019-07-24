@@ -3,8 +3,8 @@ title: Azure Security Center のデータ セキュリティ | Microsoft Docs
 description: このドキュメントでは、Azure Security Center でデータがどのように管理および保護されているかについて説明します。
 services: security-center
 documentationcenter: na
-author: terrylan
-manager: mbaldwin
+author: rkarlin
+manager: barbkess
 editor: ''
 ms.assetid: 33f2c9f4-21aa-4f0c-9e5e-4cd1223e39d7
 ms.service: security-center
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2017
-ms.author: yurid
-ms.openlocfilehash: 587dd2af0e04b8557182ab041a817878592923d4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 7a327c963f32d6bf5b0cf7751557c61327fd26e9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230446"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902792"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Security Center のデータ セキュリティ
 Azure Security Center では、脅威に対する防御と検出、対応を支援するために、構成情報、メタデータ、イベント ログ、クラッシュ ダンプ ファイルなど、セキュリティに関連するさまざまなデータを収集、処理しています。 Microsoft ではコーディングからサービスの運用まで、厳密なコンプライアンスとセキュリティのガイドラインに準拠しています。
@@ -29,22 +29,22 @@ Azure Security Center では、脅威に対する防御と検出、対応を支�
 ## <a name="data-sources"></a>データ ソース
 Azure Security Center は、セキュリティ状態の可視化、脆弱性の識別、軽減策の提案、アクティブな脅威の検出のために、次のソースからのデータを分析します。
 
-- Azure サービス: デプロイされた Azure サービスの構成についての情報を、サービスのリソース プロバイダーと通信して使用します。
-- ネットワーク トラフィック: 送信元/送信先 IP/ポート、パケット サイズ、ネットワーク プロトコルなど、Microsoft のインフラストラクチャからサンプリングされたネットワーク トラフィック メタデータを使用します。
-- パートナー ソリューション: ファイアウォールやマルウェア対策ソリューションなど、統合されたパートナー ソリューションからのセキュリティの警告を使用します。 
-- 仮想マシンとサーバー: 仮想マシンからの構成情報とセキュリティ イベントについての情報 (Windows のイベントおよび監査ログ、IIS ログ、syslog メッセージ、クラッシュ ダンプ ファイルなど) を使用します。 さらに、警告が作成されると、Azure Security Center は、科学捜査の目的で、影響を受けた VM ディスクのスナップショットを生成し、VM ディスクからの警告に関連するマシン アーティファクト (レジストリ ファイルなど) を抽出する場合があります。
+- Azure サービス:デプロイされた Azure サービスの構成についての情報を、サービスのリソース プロバイダーと通信して使用します。
+- ネットワーク トラフィック:送信元/送信先 IP/ポート、パケット サイズ、ネットワーク プロトコルなど、Microsoft のインフラストラクチャからサンプリングされたネットワーク トラフィック メタデータを使用します。
+- パートナー ソリューション:ファイアウォールやマルウェア対策ソリューションなど、統合されたパートナー ソリューションからのセキュリティの警告を使用します。
+- 仮想マシンとサーバー:仮想マシンからの構成情報とセキュリティ イベントについての情報 (Windows のイベントおよび監査ログ、IIS ログ、syslog メッセージ、クラッシュ ダンプ ファイルなど) を使用します。 さらに、警告が作成されると、Azure Security Center は、科学捜査の目的で、影響を受けた VM ディスクのスナップショットを生成し、VM ディスクからの警告に関連するマシン アーティファクト (レジストリ ファイルなど) を抽出する場合があります。
 
 
 ## <a name="data-protection"></a>データ保護
-**データの分離**: データはサービス全体を通じて、各コンポーネントに論理的に分割されて保存されます。 すべてのデータは組織ごとにタグ付けされます。 このタグ付けはデータのライフ サイクルにおいて継続され、サービスの各層で強制されます。
+**データの分離**:データはサービス全体を通じて、各コンポーネントに論理的に分割されて保存されます。 すべてのデータは組織ごとにタグ付けされます。 このタグ付けはデータのライフ サイクルにおいて継続され、サービスの各層で強制されます。
 
-**データ アクセス**: セキュリティに関する推奨事項を提供したり、潜在的なセキュリティの脅威を調査したりするために、Azure サービスによって収集または分析された情報 (クラッシュ ダンプ ファイル、プロセス作成イベント、VM ディスク スナップショット、アーティファクトなど) に Microsoft の担当者がアクセスする場合があります。これらの情報には、仮想マシンにある顧客データまたは個人データが意図せずに含まれる場合があります。 Microsoft は、[Microsoft オンライン サービスの使用条件とプライバシーに関する声明](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)を遵守しています。これらの文書には、Microsoft が宣伝や他の商業上の目的のために顧客データを使用したり、そのデータから情報を取り出したりすることはないと記載されています。 ユーザーに Azure サービスを提供するため、およびそれに準じた目的のためにだけ、顧客データを使用します。 顧客データに対するすべての権限は、お客様が保持します。
+**データ アクセス**:セキュリティに関する推奨事項を提供したり、潜在的なセキュリティの脅威を調査したりするために、Azure サービスによって収集または分析された情報 (クラッシュ ダンプ ファイル、プロセス作成イベント、VM ディスク スナップショット、アーティファクトなど) に Microsoft の担当者がアクセスする場合があります。これらの情報には、仮想マシンにある顧客データまたは個人データが意図せずに含まれる場合があります。 Microsoft は、[Microsoft オンライン サービスの使用条件とプライバシーに関する声明](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)を遵守しています。これらの文書には、Microsoft が宣伝や他の商業上の目的のために顧客データを使用したり、そのデータから情報を取り出したりすることはないと記載されています。 ユーザーに Azure サービスを提供するため、およびそれに準じた目的のためにだけ、顧客データを使用します。 顧客データに対するすべての権限は、お客様が保持します。
 
-**データの使用**: Microsoft は、防止と検出の機能を強化するために、複数のテナントにわたって見られるパターンおよび脅威インテリジェンスを使用します。その際に、[プライバシーに関する声明](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx)で説明されている誓約に従います。
+**データの使用**:Microsoft は、防止と検出の機能を強化するために、複数のテナントにわたって見られるパターンおよび脅威インテリジェンスを使用します。その際に、[プライバシーに関する声明](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx)で説明されている誓約に従います。
 
 ## <a name="data-location"></a>データの場所
 
-**ワークスペース**: ワークスペースは次の geo に指定され、Azure 仮想マシンから収集されたデータ (クラッシュ ダンプや一部の種類のアラートのデータを含む) は最も近いワークスペースに格納されます。 
+**ワークスペース**:ワークスペースは次の geo に指定され、Azure 仮想マシンから収集されたデータ (クラッシュ ダンプや一部の種類のアラートのデータを含む) は最も近いワークスペースに格納されます。
 
 | VM Geo                        | ワークスペース Geo |
 |-------------------------------|---------------|
@@ -53,20 +53,21 @@ Azure Security Center は、セキュリティ状態の可視化、脆弱性の�
 | アジア太平洋、日本、インド    | アジア太平洋  |
 | オーストラリア                     | オーストラリア     |
 
- 
-VM ディスクのスナップショットは、VM ディスクと同じストレージ アカウントに格納されます。
- 
-オンプレミスなど他の環境で実行している仮想マシンとサーバーの場合は、収集したデータを格納するワークスペースとリージョンを指定できます。 
 
-**Azure Security Center Storage**: パートナーの警告を含めたセキュリティの警告に関する情報は、関連する Azure リソースの場所に応じたリージョンに格納されます。一方、セキュリティの正常性状態と推奨事項に関する情報については、お客様の場所に応じて米国またはヨーロッパのいずれかに一元的に格納されます。
+VM ディスクのスナップショットは、VM ディスクと同じストレージ アカウントに格納されます。
+
+オンプレミスなど他の環境で実行している仮想マシンとサーバーの場合は、収集したデータを格納するワークスペースとリージョンを指定できます。
+
+**Azure Security Center ストレージ**:パートナーの警告を含めたセキュリティの警告に関する情報は、関連する Azure リソースの場所に応じたリージョンに格納されます。一方、セキュリティの正常性状態と推奨事項に関する情報については、お客様の場所に応じて米国またはヨーロッパのいずれかに一元的に格納されます。
 Azure Security Center は、クラッシュ ダンプ ファイルの一時的なコピーを収集し、悪用の試行と成功した侵害の証拠がないか分析します。 Azure Security Center は、この分析をワークスペースと同じ geo 内で行い、分析が完了すると、一時的なコピーを削除します。
 
-マシン アーティファクトは、VM と同じリージョンに一元的に格納されます。 
+マシン アーティファクトは、VM と同じリージョンに一元的に格納されます。
 
 
 ## <a name="managing-data-collection-from-virtual-machines"></a>仮想マシンからのデータ収集の管理
 
-Azure で Security Center を有効にすると、各 Azure サブスクリプションのデータ収集が有効になります。 Azure Security Center の [セキュリティ ポリシー] セクションで、サブスクリプションのデータ収集を有効にすることもできます。 データ収集が有効になっている場合、Azure Security Center は、サポートされている既存の全 Azure 仮想マシンと新規に作成される仮想マシンに、Microsoft Monitoring Agent をプロビジョニングします。 Microsoft Monitoring Agent は、さまざまなセキュリティ関連の構成をスキャンして、[Windows イベント トレーシング](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) トレースにイベント化します。 さらに、オペレーティング システムは、マシンの実行中にイベント ログ イベントを発生させます。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システムのログ (Windows イベント ログ)、実行中のプロセス、コンピューター名、IP アドレス、ログイン ユーザー、テナント ID などがあります。 Microsoft Monitoring Agent は、イベント ログ エントリと ETW トレースを読み取り、分析のためにそれらをワークスペースにコピーします。 また Microsoft Monitoring Agent によって、ワークスペースにクラッシュ ダンプ ファイルがコピーされるほか、プロセス作成イベントとコマンド ラインの監査が有効となります。
+Azure で Security Center を有効にすると、各 Azure サブスクリプションのデータ収集が有効になります。 Azure Security Center の [セキュリティ ポリシー] セクションで、サブスクリプションのデータ収集を有効にすることもできます。 データ収集が有効になっている場合、Azure Security Center は、サポートされている既存の全 Azure 仮想マシンと新規に作成される仮想マシンに、Microsoft Monitoring Agent をプロビジョニングします。
+Microsoft Monitoring Agent は、さまざまなセキュリティ関連の構成をスキャンして、[Windows イベント トレーシング](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) トレースにイベント化します。 さらに、オペレーティング システムは、マシンの実行中にイベント ログ イベントを発生させます。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システムのログ (Windows イベント ログ)、実行中のプロセス、コンピューター名、IP アドレス、ログイン ユーザー、テナント ID などがあります。 Microsoft Monitoring Agent は、イベント ログ エントリと ETW トレースを読み取り、分析のためにそれらをワークスペースにコピーします。 また Microsoft Monitoring Agent によって、ワークスペースにクラッシュ ダンプ ファイルがコピーされるほか、プロセス作成イベントとコマンド ラインの監査が有効となります。
 
 Azure Security Center Free を使用している場合は、セキュリティ ポリシーで仮想マシンからのデータ収集を無効にすることができます。 データ収集は、Standard レベルのサブスクリプションでは必須の機能です。 データ収集が無効になっていても、VM ディスクのスナップショットとアーティファクトの収集は引き続き有効になります。
 
@@ -75,11 +76,11 @@ Azure Security Center Free を使用している場合は、セキュリティ �
 Security Center に関連したデータは、以下に示した各種のデータ ストリームから使用できます。
 
 * **Azure アクティビティ**: セキュリティに関するあらゆる警告、承認された Security Center の[ジャスト イン タイム](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)要求、[アダプティブ アプリケーション制御](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)によって生成されたあらゆる警告が対象となります。
-* **Log Analytics**: セキュリティに関するあらゆる警告が対象となります。
+* **Azure Monitor ログ**: セキュリティに関するあらゆるアラート。
 
 
 > [!NOTE]
-> セキュリティの推奨事項は、REST API 経由で使用することもできます。 詳細については、「[Security Resource Provider REST API Reference (セキュリティ リソース プロバイダーの REST API リファレンス)](https://msdn.microsoft.com/library/mt704034(Azure.100).aspx)」を参照してください。 
+> セキュリティの推奨事項は、REST API 経由で使用することもできます。 詳細については、「[Security Resource Provider REST API Reference (セキュリティ リソース プロバイダーの REST API リファレンス)](https://msdn.microsoft.com/library/mt704034(Azure.100).aspx)」を参照してください。
 
 ## <a name="see-also"></a>関連項目
 この記事では、Azure Security Center でデータがどのように管理および保護されているかについて説明しました。 Azure Security Center の詳細については、以下の記事を参照してください。

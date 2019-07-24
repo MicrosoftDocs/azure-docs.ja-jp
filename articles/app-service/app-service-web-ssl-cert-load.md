@@ -1,6 +1,6 @@
 ---
-title: Azure App Service のアプリケーション コードにアップロードされた SSL 証明書を使用する | Microsoft Docs
-description: ''
+title: アプリケーション コードでクライアント SSL 証明書を使用する - Azure App Service | Microsoft Docs
+description: クライアント証明書を使用して、そのクライアント証明書を必要とするリモート リソースに接続する方法について説明します。
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -13,18 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: cephalin
-ms.openlocfilehash: 87c9cd5955dda1a379733e5ad48d58f8361f0e6b
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.custom: seodec18
+ms.openlocfilehash: 763aadc50a8760b4265dbfc21e9278f909b68433
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051478"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342019"
 ---
 # <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Azure App Service のアプリケーション コードに SSL 証明書を使用する
 
 このガイドでは、Azure App Service のアプリケーション コードにアップロード、またはインポートされた SSL 証明書を使用する方法について説明します。 ユース ケースの例では、証明書の認証を必要とするアプリが外部サービスにアクセスします。 
 
-コードで SSL 証明書を使用するこの方法では App Service の SSL 機能を使用するため、アプリは **Basic** レベル以上にある必要があります。 もう 1 つの方法は、アプリケーション ディレクトリに証明書ファイルを含め、直接読み込むことです (「[代替方法: ファイルとして証明書を読み込む](#file)」を参照してください)。 ただし、この代替方法では、アプリケーション コードや開発者から、証明書の秘密キーを隠すことはできません。 さらに、アプリケーション コードがオープン ソース リポジトリ内にある場合は、リポジトリ内に秘密キーで証明書を保管することはできません。
+コードで SSL 証明書を使用するこの方法では App Service の SSL 機能を使用するため、アプリは **Basic** 層以上にある必要があります。 もう 1 つの方法は、アプリケーション ディレクトリに証明書ファイルを含め、直接読み込むことです (「[代替方法: ファイルとして証明書を読み込む](#file)」を参照してください)。 ただし、この代替方法では、アプリケーション コードや開発者から、証明書の秘密キーを隠すことはできません。 さらに、アプリケーション コードがオープン ソース リポジトリ内にある場合は、リポジトリ内に秘密キーで証明書を保管することはできません。
 
 App Service の SSL 証明書の管理機能を使用すれば、証明書とアプリケーション コードを分離して管理し、機密データを保護できます。
 

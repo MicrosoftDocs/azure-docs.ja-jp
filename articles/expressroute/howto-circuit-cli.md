@@ -1,26 +1,18 @@
 ---
-title: 'Azure ExpressRoute 回線の作成と変更: CLI | Microsoft Docs'
-description: この記事では、CLI を使った ExpressRoute 回線の作成、プロビジョニング、確認、更新、削除、プロビジョニング解除の方法について説明します。
-documentationcenter: na
+title: ExpressRoute 回線の作成と変更:Azure CLI | Microsoft Docs
+description: この記事では、CLI を使った ExpressRoute 回線の作成、プロビジョニング、確認、更新、削除、プロビジョニング解除の方法を示します。
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/19/2017
+ms.topic: conceptual
+ms.date: 12/07/2018
 ms.author: anzaman;cherylmc
-ms.openlocfilehash: a53fe43365100c6d71fcc2b9e0944a221adf188d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 556589aa7a0a577b9b1a010cf4811922ebc6de52
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249236"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524890"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>CLI を使用した ExpressRoute 回線の作成と変更
 
@@ -44,7 +36,7 @@ ms.locfileid: "51249236"
 
 ### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1.Azure アカウントにサインインしてサブスクリプションを選択する
 
-構成を始めるには、Azure アカウントにサインインします。 接続については、次の例を参照してください。
+構成を始めるには、Azure アカウントにサインインします。 CloudShell の "試用版" を使用している場合は、自動的にサインインします。 接続については、次の例を参照してください。
 
 ```azurecli
 az login
@@ -52,21 +44,21 @@ az login
 
 アカウントのサブスクリプションを確認します。
 
-```azurecli
+```azurecli-interactive
 az account list
 ```
 
 ExpressRoute 回線を作成するサブスクリプションを選択します。
 
-```azurecli
+```azurecli-interactive
 az account set --subscription "<subscription ID>"
 ```
 
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2.サポートされるプロバイダー、場所、帯域幅のリストを取得する
 
-ExpressRoute 回線を作成する前に、サポートされている接続プロバイダー、場所、帯域幅オプションのリストが必要になります。 この情報は、CLI コマンド "az network express-route list-service-providers" で取得できます。取得した情報は、後の手順で使用します。
+ExpressRoute 回線を作成する前に、サポートされている接続プロバイダー、場所、帯域幅オプションのリストが必要になります。 CLI コマンド `az network express-route list-service-providers` によってこの情報が返されます。この情報は、後のステップで使用します。
 
-```azurecli
+```azurecli-interactive
 az network express-route list-service-providers
 ```
 
@@ -140,7 +132,7 @@ az network express-route list-service-providers
 
 リソース グループがまだない場合は、ExpressRoute 回線を作成する前に、作成しておく必要があります。 リソース グループを作成するには、次のコマンドを実行します。
 
-```azurecli
+```azurecli-interactive
 az group create -n ExpressRouteResourceGroup -l "West US"
 ```
 
@@ -154,7 +146,7 @@ az group create -n ExpressRouteResourceGroup -l "West US"
 
 ExpressRoute 回線の課金は、サービス キーが発行されたときから始まります。 以下に、新しいサービス キーの要求の例を示します。
 
-```azurecli
+```azurecli-interactive
 az network express-route create --bandwidth 200 -n MyCircuit --peering-location "Silicon Valley" -g ExpressRouteResourceGroup --provider "Equinix" -l "West US" --sku-family MeteredData --sku-tier Standard
 ```
 
@@ -162,9 +154,9 @@ az network express-route create --bandwidth 200 -n MyCircuit --peering-location 
 
 ### <a name="4-list-all-expressroute-circuits"></a>4.すべての ExpressRoute 回線を一覧表示する
 
-作成したすべての ExpressRoute 回線の一覧を取得するには、"az network express-route list" コマンドを実行します。 この情報は、このコマンドを使用していつでも取得できます。 すべての回線を一覧表示するには、パラメーターを付けずに呼び出します。
+作成したすべての ExpressRoute 回路の一覧を取得するには、`az network express-route list` コマンドを実行します。 この情報は、このコマンドを使用していつでも取得できます。 すべての回線を一覧表示するには、パラメーターを付けずに呼び出します。
 
-```azurecli
+```azurecli-interactive
 az network express-route list
 ```
 
@@ -201,7 +193,7 @@ az network express-route list
 
 "-h" パラメーターを使ってコマンドを実行することで、すべてのパラメーターの詳細な説明を取得できます。
 
-```azurecli
+```azurecli-interactive
 az network express-route list -h
 ```
 
@@ -211,21 +203,21 @@ az network express-route list -h
 
 新しい ExpressRoute 回線を作成する場合、この回線は次の状態になります。
 
-```azurecli
+```azurecli-interactive
 "serviceProviderProvisioningState": "NotProvisioned"
 "circuitProvisioningState": "Enabled"
 ```
 
 回線は、接続プロバイダーが有効にしている間、次の状態に変化します。
 
-```azurecli
+```azurecli-interactive
 "serviceProviderProvisioningState": "Provisioning"
 "circuitProvisioningState": "Enabled"
 ```
 
 ExpressRoute 回線をユーザーが使用できるように、次の状態にする必要があります。
 
-```azurecli
+```azurecli-interactive
 "serviceProviderProvisioningState": "Provisioned"
 "circuitProvisioningState": "Enabled
 ```
@@ -234,7 +226,7 @@ ExpressRoute 回線をユーザーが使用できるように、次の状態に�
 
 回線キーのステータスと状態をチェックすると、いつプロバイダーによって回線が有効にされたかがわかります。 回線が構成されると、以下の例に示すように、"ServiceProviderProvisioningState" が "Provisioned" と表示されます。
 
-```azurecli
+```azurecli-interactive
 az network express-route show --resource-group ExpressRouteResourceGroup --name MyCircuit
 ```
 
@@ -297,7 +289,7 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 
 次のコマンドを使用して、既存の回線の ExpressRoute Premium アドオンを有効にできます。
 
-```azurecli
+```azurecli-interactive
 az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-tier Premium
 ```
 
@@ -318,7 +310,7 @@ ExpressRoute Premium アドオンを無効にする前に、次の条件を把�
 
 次の例を使用し、既存の回線の ExpressRoute Premium アドオンを無効にできます。
 
-```azurecli
+```azurecli-interactive
 az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-tier Standard
 ```
 
@@ -334,7 +326,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 
 必要なサイズを決定した後、次のコマンドを使用して、回線のサイズを変更できます。
 
-```azurecli
+```azurecli-interactive
 az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --bandwidth 1000
 ```
 
@@ -344,7 +336,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --band
 
 ExpressRoute 回線の SKU を変更するには、次の例を使用します。
 
-```azurecli
+```azurecli-interactive
 az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-family UnlimitedData
 ```
 
@@ -362,7 +354,7 @@ ExpressRoute 回線のプロビジョニングを解除して削除する場合�
 
 ExpressRoute 回線は、次のコマンドを実行して削除できます。
 
-```azurecli
+```azurecli-interactive
 az network express-route delete  -n MyCircuit -g ExpressRouteResourceGroup
 ```
 

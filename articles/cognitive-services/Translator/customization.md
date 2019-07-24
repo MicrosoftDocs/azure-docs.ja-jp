@@ -3,25 +3,25 @@ title: 翻訳のカスタマイズ - Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Microsoft Translator Hub を利用し、適切な用語とスタイルを使用して、独自の機械翻訳システムを構築します。
 services: cognitive-services
-author: Jann-Skotdal
-manager: cgronlun
+author: v-pawal
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
-ms.topic: article
-ms.date: 05/10/2018
+ms.subservice: translator-text
+ms.topic: conceptual
+ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: bbfffe948080c87feaa8c9f0a46ef9afd90eae96
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b9a182da0ce03bf3964b6da30f1ed68de38c8141
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229681"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58918231"
 ---
 # <a name="customize-your-text-translations"></a>テキスト変換をカスタマイズする
 
-Microsoft Translator サービスの機能である Microsoft Custom Translator (プレビュー) を使用すると、ユーザーは Translator Text API (バージョン 3 のみ) を使用してテキストを翻訳するときに、Microsoft Translator の高度なニューラル機械翻訳をカスタマイズすることができます。
+Microsoft Translator サービスの機能である Microsoft カスタム トランスレーターを使用すると、ユーザーは Translator Text API (バージョン 3 のみ) を使用してテキストを翻訳するときに、Microsoft Translator の高度なニューラル機械翻訳をカスタマイズすることができます。
 
-この機能を [Cognitive Services Speech (プレビュー)](https://docs.microsoft.com/azure/cognitive-services/speech-service/) と使用すると、音声の翻訳をカスタマイズすることもできます。
+この機能を [Cognitive Services Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/) と組み合わせて使用し、音声の翻訳をカスタマイズすることもできます。
 
 ## <a name="custom-translator"></a>Custom Translator
 
@@ -42,25 +42,26 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
 
-従来の Microsoft Translator Hub を使用して、統計的な機械翻訳を翻訳できます。 [詳細情報](https://www.microsoft.com/en-us/translator/hub.aspx)
+> [!NOTE]
+> 従来の Microsoft Translator Hub は、2019 年 4 月 30 日をもって廃止されます。 [重要な移行情報と日付を確認してください](https://www.microsoft.com/translator/business/hub/)。  
 
 ## <a name="custom-translator-versus-hub"></a>Custom Translator と Hub
 
 |   | **ハブ** | **Custom Translator**|
 |:-----|:----:|:----:|
-|カスタマイズ機能の状態   | 一般公開  | プレビュー |
+|カスタマイズ機能の状態   | 一般公開  | 一般公開 |
 | Text API バージョン  | V2 のみ   | V3 のみ |
-| SMT のカスタマイズ | [はい]   | いいえ  |
-| NMT のカスタマイズ | いいえ     | [はい] |
-| 新しい統合 Speech Services のカスタマイズ | いいえ     | [はい] |
-| [トレースなし](https://www.aka.ms/notrace) | [はい]  | [はい] |
+| SMT のカスタマイズ | はい   | いいえ  |
+| NMT のカスタマイズ | いいえ     | はい |
+| 新しい統合 Speech Services のカスタマイズ | いいえ     | はい |
+| [トレースなし](https://www.aka.ms/notrace) | はい  | はい |
 
 ## <a name="collaborative-translations-framework"></a>コラボレーション翻訳フレームワーク
 
 > [!NOTE]
 > 2018 年 2 月 1 日の時点で、AddTranslation() と AddTranslationArray() は Translator Text API V2.0 では使用できなくなっています。 これらのメソッドは失敗し、何も書き込まれません。 Translator Text API V3.0 はこれらのメソッドをサポートしません。
-
->Translator Hub API では類似機能を使用できます。 [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger) をご覧ください。
+> 
+> Translator Hub API では類似機能を使用できます。 [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger) をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

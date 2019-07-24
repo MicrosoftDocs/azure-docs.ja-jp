@@ -1,34 +1,35 @@
 ---
-title: 'クイック スタート: 手書きテキストの抽出 - REST、 C# - Computer Vision'
+title: クイック スタート:手書きのテキストを抽出する - REST、C#
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、C# を利用した Computer Vision API を使って、画像から手書きテキストを抽出します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 03/04/2019
 ms.author: pafarley
-ms.openlocfilehash: c0b24414450e29d9f33e6f4e378819842c80d480
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: 2769384957b6cf6484163c4d9e54d042877794ec
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853508"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451656"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-c35-in-computer-vision"></a>クイック スタート: Computer Vision の REST API および C&#35; を使用して手書きテキストを抽出する
+# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-c-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と C# を使用して手書きテキストを抽出する
 
-このクイック スタートでは、Computer Vision の REST API を使って、画像から手書きテキストを抽出します。 [テキスト認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)メソッドと[テキスト認識操作結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)メソッドを使うと、画像内の手書きテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出することができます。
+このクイック スタートでは、Computer Vision の REST API を使って、画像から手書きテキストを抽出します。 [バッチ読み取り](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) API と[読み取り操作結果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API を使うと、画像内の手書きテキストを検出し、認識した文字をコンピューターで読み取り可能な文字ストリームに抽出することができます。
 
 > [!IMPORTANT]
-> [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドとは異なり、[テキスト認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)メソッドは非同期で実行されます。 このメソッドは、正常な応答の本文では任意の情報を返しません。 代わりに、テキスト認識メソッドは、`Operation-Content` 応答ヘッダー フィールドの値に URI を返します。 その後、[テキスト認識操作結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)メソッドを表したこの URI を呼び出して、ステータスをチェックすると共に、テキスト認識メソッドの呼び出しの結果を返します。
+> [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドとは異なり、[バッチ読み取り](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)メソッドは非同期で実行されます。 このメソッドは、正常な応答の本文では任意の情報を返しません。 代わりに、読み取りメソッドは、`Operation-Location` 応答ヘッダー フィールドに URI を返します。 その後、[読み取り操作結果](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d)メソッドを表したこの URI を呼び出して、状態をチェックし、バッチ読み取りメソッドの呼び出しの結果を返します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Visual Studio 2015 ](https://visualstudio.microsoft.com/downloads/)以降が必要です。
+- [Visual Studio 2015 以降](https://visualstudio.microsoft.com/downloads/)が必要です。
 - Computer Vision のサブスクリプション キーが必要です。 「[サブスクリプション キーを取得する](../Vision-API-How-to-Topics/HowToSubscribe.md)」をご覧ください。
 
 ## <a name="create-and-run-the-sample-application"></a>サンプル アプリケーションを作成して実行する
@@ -42,7 +43,7 @@ Visual Studio でサンプルを作成するには、次の手順を実行しま
     1. **[Newtonsoft.Json]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、**[インストール]** をクリックします。
 1. `Program.cs` のコードを次のコードに置き換えて、必要に応じてコードに次の変更を加えます。
     1. `subscriptionKey` 値を、サブスクリプション キーに置き換えます。
-    1. 必要に応じて、サブスクリプション キーを取得した Azure リージョンの[テキスト認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)メソッドのエンドポイント URL で `uriBase` 値を置き換えます。
+    1. 必要に応じて、サブスクリプション キーを取得した Azure リージョンの[バッチ読み取り](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)メソッドのエンドポイント URL で `uriBase` 値を置き換えます。
 1. プログラムを実行します。
 1. プロンプトで、ローカル画像のパスを入力します。
 
@@ -71,7 +72,7 @@ namespace CSHttpClientSample
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         const string uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/recognizeText";
+            "https://westus.api.cognitive.microsoft.com/vision/v2.0/read/core/asyncBatchAnalyze";
 
         static void Main()
         {
@@ -139,15 +140,15 @@ namespace CSHttpClientSample
                     content.Headers.ContentType =
                         new MediaTypeHeaderValue("application/octet-stream");
 
-                    // The first REST API method, Recognize Text, starts
+                    // The first REST API method, Batch Read, starts
                     // the async process to analyze the written text in the image.
                     response = await client.PostAsync(uri, content);
                 }
 
-                // The response header for the Recognize Text method contains the URI
-                // of the second method, Get Recognize Text Operation Result, which
+                // The response header for the Batch Read method contains the URI
+                // of the second method, Read Operation Result, which
                 // returns the results of the process in the response body.
-                // The Recognize Text operation does not return anything in the response body.
+                // The Batch Read operation does not return anything in the response body.
                 if (response.IsSuccessStatusCode)
                     operationLocation =
                         response.Headers.GetValues("Operation-Location").FirstOrDefault();
@@ -222,199 +223,101 @@ namespace CSHttpClientSample
 
 ```json
 {
-    "status": "Succeeded",
-    "recognitionResult": {
-        "lines": [
+  "status": "Succeeded",
+  "recognitionResults": [
+    {
+      "page": 1,
+      "clockwiseOrientation": 349.59,
+      "width": 3200,
+      "height": 3200,
+      "unit": "pixel",
+      "lines": [
+        {
+          "boundingBox": [202,618,2047,643,2046,840,200,813],
+          "text": "Our greatest glory is not",
+          "words": [
             {
-                "boundingBox": [
-                    99,
-                    195,
-                    1309,
-                    45,
-                    1340,
-                    292,
-                    130,
-                    442
-                ],
-                "text": "when you write them down",
-                "words": [
-                    {
-                        "boundingBox": [
-                            152,
-                            191,
-                            383,
-                            154,
-                            341,
-                            421,
-                            110,
-                            458
-                        ],
-                        "text": "when"
-                    },
-                    {
-                        "boundingBox": [
-                            436,
-                            145,
-                            607,
-                            118,
-                            565,
-                            385,
-                            394,
-                            412
-                        ],
-                        "text": "you"
-                    },
-                    {
-                       "boundingBox": [
-                            644,
-                            112,
-                            873,
-                            76,
-                            831,
-                            343,
-                            602,
-                            379
-                        ],
-                        "text": "write"
-                    },
-                    {
-                        "boundingBox": [
-                            895,
-                            72,
-                            1092,
-                            41,
-                            1050,
-                            308,
-                            853,
-                            339
-                        ],
-                        "text": "them"
-                    },
-                    {
-                        "boundingBox": [
-                            1140,
-                            33,
-                            1400,
-                            0,
-                            1359,
-                            258,
-                            1098,
-                            300
-                        ],
-                        "text": "down"
-                    }
-                ]
+              "boundingBox": [204,627,481,628,481,830,204,829],
+              "text": "Our"
             },
             {
-                "boundingBox": [
-                    142,
-                    222,
-                    1252,
-                    62,
-                    1269,
-                    180,
-                    159,
-                    340
-                ],
-                "text": "You remember things better",
-                "words": [
-                    {
-                        "boundingBox": [
-                            140,
-                            223,
-                            267,
-                            205,
-                            288,
-                            324,
-                            162,
-                            342
-                        ],
-                        "text": "You"
-                    },
-                    {
-                        "boundingBox": [
-                            314,
-                            198,
-                            740,
-                            137,
-                            761,
-                            256,
-                            335,
-                            317
-                        ],
-                        "text": "remember"
-                    },
-                    {
-                        "boundingBox": [
-                            761,
-                            134,
-                            1026,
-                            95,
-                            1047,
-                            215,
-                            782,
-                            253
-                        ],
-                        "text": "things"
-                    },
-                    {
-                        "boundingBox": [
-                            1046,
-                            92,
-                            1285,
-                            58,
-                            1307,
-                            177,
-                            1068,
-                            212
-                        ],
-                        "text": "better"
-                    }
-                ]
+              "boundingBox": [519,628,1057,630,1057,832,518,830],
+              "text": "greatest"
             },
             {
-                "boundingBox": [
-                    155,
-                    405,
-                    537,
-                    338,
-                    557,
-                    449,
-                    175,
-                    516
-                ],
-                "text": "by hand",
-                "words": [
-                    {
-                        "boundingBox": [
-                            146,
-                            408,
-                            266,
-                            387,
-                            301,
-                            495,
-                            181,
-                            516
-                        ],
-                        "text": "by"
-                    },
-                    {
-                        "boundingBox": [
-                            290,
-                            383,
-                            569,
-                            334,
-                            604,
-                            443,
-                            325,
-                            491
-                        ],
-                        "text": "hand"
-                    }
-                ]
+              "boundingBox": [1114,630,1549,631,1548,833,1114,832],
+              "text": "glory"
+            },
+            {
+              "boundingBox": [1586,631,1785,632,1784,834,1586,833],
+              "text": "is"
+            },
+            {
+              "boundingBox": [1822,632,2115,633,2115,835,1822,834],
+              "text": "not"
             }
-        ]
+          ]
+        },
+        {
+          "boundingBox": [420,1273,2954,1250,2958,1488,422,1511],
+          "text": "but in rising every time we fall",
+          "words": [
+            {
+              "boundingBox": [423,1269,634,1268,635,1507,424,1508],
+              "text": "but"
+            },
+            {
+              "boundingBox": [667,1268,808,1268,809,1506,668,1507],
+              "text": "in"
+            },
+            {
+              "boundingBox": [874,1267,1289,1265,1290,1504,875,1506],
+              "text": "rising"
+            },
+            {
+              "boundingBox": [1331,1265,1771,1263,1772,1502,1332,1504],
+              "text": "every"
+            },
+            {
+              "boundingBox": [1812, 1263, 2178, 1261, 2179, 1500, 1813, 1502],
+              "text": "time"
+            },
+            {
+              "boundingBox": [2219, 1261, 2510, 1260, 2511, 1498, 2220, 1500],
+              "text": "we"
+            },
+            {
+              "boundingBox": [2551, 1260, 3016, 1258, 3017, 1496, 2552, 1498],
+              "text": "fall"
+            }
+          ]
+        },
+        {
+          "boundingBox": [1612, 903, 2744, 935, 2738, 1139, 1607, 1107],
+          "text": "in never failing ,",
+          "words": [
+            {
+              "boundingBox": [1611, 934, 1707, 933, 1708, 1147, 1613, 1147],
+              "text": "in"
+            },
+            {
+              "boundingBox": [1753, 933, 2132, 930, 2133, 1144, 1754, 1146],
+              "text": "never"
+            },
+            {
+              "boundingBox": [2162, 930, 2673, 927, 2674, 1140, 2164, 1144],
+              "text": "failing"
+            },
+            {
+              "boundingBox": [2703, 926, 2788, 926, 2790, 1139, 2705, 1140],
+              "text": ",",
+              "confidence": "Low"
+            }
+          ]
+        }
+      ]
     }
+  ]
 }
 ```
 
@@ -424,7 +327,7 @@ namespace CSHttpClientSample
 
 ## <a name="next-steps"></a>次の手順
 
-Computer Vision を使用して、光学文字認識 (OCR) を実行し、スマートにクロップされたサムネイルを作成するほか、イメージ内の視覚的な特徴 (顔など) を検出、カテゴライズ、タグ付け、および記述する、基本的な Windows アプリケーションについて詳細を確認します。 Computer Vision API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)をお試しください。
+Computer Vision を使用して、光学文字認識 (OCR) を実行する基本的な Windows アプリケーションについて学びましょう。 スマートにトリミングされたサムネイルを作成するほか、画像内の視覚的な特徴 (顔など) の検出、分類、タグ付け、記述を行います。
 
 > [!div class="nextstepaction"]
-> [Computer Vision API C&#35; チュートリアル](../Tutorials/CSharpTutorial.md)
+> [Computer Vision API の C# のチュートリアル](../Tutorials/CSharpTutorial.md)

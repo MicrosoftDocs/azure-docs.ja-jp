@@ -2,33 +2,32 @@
 title: Cloud Foundry 監視向けの Azure Log Analytics Nozzle のデプロイ | Microsoft Docs
 description: Cloud Foundry loggregator Nozzle for Azure Log Analytics をデプロイする手順について説明します。 Nozzle を使用して、Cloud Foundry システムの正常性とパフォーマンス メトリックを監視します。
 services: virtual-machines-linux
-documentationcenter: ''
 author: ningk
 manager: jeconnoc
-editor: ''
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
-ms.service: virtual-machines-linux
-ms.devlang: NA
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 0039536caf917a051f0ddabd6be7cf2b1be90ba2
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6220aebdef6970f3d5f7017e4ae48f6f409ae0ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404904"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111465"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Cloud Foundry システム監視向けの Azure Log Analytics Nozzle のデプロイ
 
-[Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/) は Azure のサービスです。 このサービスは、クラウドおよびオンプレミス環境から生成されたデータを収集して分析するときに役立ちます。
+[Azure Monitor](https://azure.microsoft.com/services/log-analytics/) は Azure のサービスです。 このサービスは、クラウドおよびオンプレミス環境から生成されたデータを収集して分析するときに役立ちます。
 
-Log Analytics Nozzle (Nozzle) は Cloud Foundry (CF) コンポーネントであり、[Cloud Foundry loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) firehose から Log Analytics にメトリックを転送します。 Nozzle を使用すると、CF のシステム正常性とパフォーマンスのメトリックを複数のデプロイで収集、表示、分析できます。
+Log Analytics Nozzle (Nozzle) は Cloud Foundry (CF) コンポーネントであり、[Cloud Foundry loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) firehose から Azure Monitor ログにメトリックを転送します。 Nozzle を使用すると、CF のシステム正常性とパフォーマンスのメトリックを複数のデプロイで収集、表示、分析できます。
 
-このドキュメントでは、Nozzle を CF 環境内にデプロイし、Log Analytics コンソールからデータにアクセスする方法を学習します。
+このドキュメントでは、Nozzle を CF 環境内にデプロイし、Azure Monitor ログ コンソールからデータにアクセスする方法を学習します。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -52,40 +51,40 @@ Nozzle は、CF 環境でアプリケーションとして実行されます。 
 
 * [Cloud Foundry UAA コマンドライン クライアントのインストール](https://github.com/cloudfoundry/cf-uaac/blob/master/README.md)
 
-UAA コマンドライン クライアントをセットアップする前に、Rubygems がインストールされていることを確認します。
+UAA コマンドライン クライアントをセットアップする前に、RubyGems がインストールされていることを確認します。
 
 ### <a name="3-create-a-log-analytics-workspace-in-azure"></a>手順 3.Azure で Log Analytics ワークスペースを作成する
 
-Log Analytics ワークスペースは、手動で、またはテンプレートを使用して作成できます。 テンプレートにより、Log Analytics コンソール用に事前構成された KPI ビューとアラートのセットアップがデプロイされます。 
+Log Analytics ワークスペースは、手動で、またはテンプレートを使用して作成できます。 テンプレートにより、Azure Monitor ログ コンソール用に事前構成された KPI ビューとアラートのセットアップがデプロイされます。 
 
 #### <a name="to-create-the-workspace-manually"></a>ワークスペースを手動で作成するには:
 
-1. Azure Portal で Azure Marketplace でサービスの一覧を検索し、[Log Analytics] を選択します。
+1. Azure portal で Azure Marketplace でサービスの一覧を検索し、[Log Analytics] ワークスペースを選択します。
 2. **[作成]** を選択し、次の項目について選択します。
 
-   * **Log Analytics ワークスペース**: ワークスペースの名前を入力します。
-   * **サブスクリプション**: 複数のサブスクリプションがある場合、CF デプロイと同じものを選択します。
-   * **リソース グループ**: 新しいリソース グループを作成するか、CF デプロイと同じリソース グループを使用します。
-   * **場所**: 場所を入力します。
-   * **価格レベル**: 完了するには **[OK]** を選択します。
+   * **Log Analytics ワークスペース**:ワークスペースの名前を入力します。
+   * **サブスクリプション**:複数のサブスクリプションがある場合、CF デプロイと同じものを選択します。
+   * **[リソース グループ]**:新しいリソース グループを作成するか、CF デプロイと同じリソース グループを使用します。
+   * **[場所]**:場所を入力します。
+   * **価格レベル**:完了するには **[OK]** を選択します。
 
-詳細については、「[Log Analytics の起動と開始](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)」を参照してください。
+詳細については、[Azure Monitor ログの使用](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)に関するページを参照してください
 
 #### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>Azure Marketplace の監視テンプレートを使用して Log Analytics ワークスペースを作成するには:
 
 1. Azure portal を開きます。
-2. [+] 記号をクリックするか、左上隅の [リソースの作成] をクリックします。
-3. 検索ウィンドウに「Cloud Foundry」と入力し、[Cloud Foundry 監視ソリューション] を選択します。
-4. Cloud Foundry 監視ソリューション テンプレートのフロントページが読み込まれたら、[作成] をクリックしてテンプレート ブレードを起動します。
-5. 必要なパラメーターを入力します。
-    * **サブスクリプション**: Log Analytics ワークスペースの Azure サブスクリプションを選択します。通常は Cloud Foundry デプロイと同じです。
-    * **リソース グループ**: 既存のリソース グループを選択するか、Log Analytics ワークスペース用の新しいグループを作成します。
-    * **リソース グループの場所**: リソース グループの場所を選択します。
-    * **OMS_Workspace_Name**: ワークスペース名を入力します。ワークスペースが存在しない場合は、テンプレートによって新しいワークスペースが作成されます。
-    * **OMS_Workspace_Region**: ワークスペースの場所を選択します。
-    * **OMS_Workspace_Pricing_Tier**: Log Analytics ワークスペース SKU を選択します。 [料金ガイダンス](https://azure.microsoft.com/pricing/details/log-analytics/)を参考にしてください。
-    * **法律条項**: [法律条項] をクリックし、[作成] をクリックして法律条項に同意します。
-- すべてのパラメーターを指定したら、[作成] をクリックしてテンプレートをデプロイします。 デプロイが完了すると、通知タブに状態が表示されます。
+1. [+] 記号をクリックするか、左上隅の [リソースの作成] をクリックします。
+1. 検索ウィンドウに「Cloud Foundry」と入力し、[Cloud Foundry 監視ソリューション] を選択します。
+1. Cloud Foundry 監視ソリューション テンプレートのフロントページが読み込まれたら、[作成] をクリックしてテンプレート ブレードを起動します。
+1. 必要なパラメーターを入力します。
+    * **サブスクリプション**:Log Analytics ワークスペースの Azure サブスクリプションを選択します。通常は Cloud Foundry デプロイと同じです。
+    * **[リソース グループ]**:既存のリソース グループを選択するか、Log Analytics ワークスペース用の新しいグループを作成します。
+    * **リソース グループの場所**:リソース グループの場所を選択します。
+    * **OMS_Workspace_Name**:ワークスペース名を入力します。ワークスペースが存在しない場合は、テンプレートによって新しいワークスペースが作成されます。
+    * **OMS_Workspace_Region**:ワークスペースの場所を選択します。
+    * **OMS_Workspace_Pricing_Tier**:Log Analytics ワークスペース SKU を選択します。 [料金ガイダンス](https://azure.microsoft.com/pricing/details/log-analytics/)を参考にしてください。
+    * **法律条項**:[法律条項] をクリックし、[作成] をクリックして法律条項に同意します。
+1. すべてのパラメーターを指定したら、[作成] をクリックしてテンプレートをデプロイします。 デプロイが完了すると、通知タブに状態が表示されます。
 
 
 ## <a name="deploy-the-nozzle"></a>Nozzle のデプロイ
@@ -94,7 +93,7 @@ Nozzle は、PCF タイルとして、または CF アプリケーションと�
 
 ### <a name="deploy-the-nozzle-as-a-pcf-ops-manager-tile"></a>PCF Operations Manager タイルとして Nozzle をデプロイする
 
-[PCF 用 Azure Log Analytics Nozzle のインストールと構成](http://docs.pivotal.io/partners/azure-log-analytics-nozzle/installing.html)の手順に従います。これは簡素化された方法であり、PCF Operations Manager タイルによって Nozzle が自動的に構成され、プッシュされます。 
+[PCF 用 Azure Log Analytics Nozzle のインストールと構成](https://docs.pivotal.io/partners/azure-log-analytics-nozzle/installing.html)の手順に従います。これは簡素化された方法であり、PCF Operations Manager タイルによって Nozzle が自動的に構成され、プッシュされます。 
 
 ### <a name="deploy-the-nozzle-manually-as-a-cf-application"></a>CF アプリケーションとして Nozzle を手動でデプロイする
 
@@ -139,9 +138,9 @@ cd oms-log-analytics-firehose-nozzle
 ```
 OMS_WORKSPACE             : Log Analytics workspace ID: Open your Log Analytics workspace in the Azure portal, select **Advanced settings**, select **Connected Sources**, and select **Windows Servers**.
 OMS_KEY                   : OMS key: Open your Log Analytics workspace in the Azure portal, select **Advanced settings**, select **Connected Sources**, and select **Windows Servers**.
-OMS_POST_TIMEOUT          : HTTP post timeout for sending events to Log Analytics. The default is 10 seconds.
-OMS_BATCH_TIME            : Interval for posting a batch to Log Analytics. The default is 10 seconds.
-OMS_MAX_MSG_NUM_PER_BATCH : The maximum number of messages in a batch to Log Analytics. The default is 1000.
+OMS_POST_TIMEOUT          : HTTP post timeout for sending events to Azure Monitor logs. The default is 10 seconds.
+OMS_BATCH_TIME            : Interval for posting a batch to Azure Monitor logs. The default is 10 seconds.
+OMS_MAX_MSG_NUM_PER_BATCH : The maximum number of messages in a batch to Azure Monitor logs. The default is 1000.
 API_ADDR                  : The API URL of the CF environment. For more information, see the preceding section, "Sign in to your CF deployment as an admin through CF CLI."
 DOPPLER_ADDR              : Loggregator's traffic controller URL. For more information, see the preceding section, "Sign in to your CF deployment as an admin through CF CLI."
 FIREHOSE_USER             : CF user you created in the preceding section, "Create a CF user and grant required privileges." This user has firehose and Cloud Controller admin access.
@@ -151,8 +150,8 @@ SKIP_SSL_VALIDATION       : If true, allows insecure connections to the UAA and 
 CF_ENVIRONMENT            : Enter any string value for identifying logs and metrics from different CF environments.
 IDLE_TIMEOUT              : The Keep Alive duration for the firehose consumer. The default is 60 seconds.
 LOG_LEVEL                 : The logging level of the Nozzle. Valid levels are DEBUG, INFO, and ERROR.
-LOG_EVENT_COUNT           : If true, the total count of events that the Nozzle has received and sent are logged to Log Analytics as CounterEvents.
-LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to Log Analytics. The default is 60 seconds.
+LOG_EVENT_COUNT           : If true, the total count of events that the Nozzle has received and sent are logged to Azure Monitor logs as CounterEvents.
+LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to Azure Monitor logs. The default is 60 seconds.
 ```
 
 ### <a name="push-the-application-from-your-development-computer"></a>開発コンピューターからアプリケーションをプッシュする
@@ -179,7 +178,7 @@ OMS Nozzle アプリケーションが実行中であることを確認します
 
 ## <a name="view-the-data-in-the-azure-portal"></a>Azure portal でデータを表示する
 
-Marketplace テンプレートを使用して監視ソリューションをデプロイした場合は、Azure portal に移動して、そのソリューションを見つけます。 ソリューションは、テンプレートで指定したリソース グループにあります。 ソリューションをクリックし、Log Analytics コンソールを参照すると、事前に構成されたビューが一覧表示され、Cloud Foundry システムの上位 KPI、アプリケーション データ、アラート、VM の正常性メトリックが表示されます。 
+Marketplace テンプレートを使用して監視ソリューションをデプロイした場合は、Azure portal に移動して、そのソリューションを見つけます。 ソリューションは、テンプレートで指定したリソース グループにあります。 ソリューションをクリックし、"ログ分析コンソール" を参照すると、事前に構成されたビューが一覧表示され、Cloud Foundry システムの上位 KPI、アプリケーション データ、アラート、VM の正常性メトリックが表示されます。 
 
 Log Analytics ワークスペースを手動で作成した場合は、次の手順に従ってビューとアラートを作成します。
 
@@ -203,7 +202,7 @@ OMS ポータルから **[ビュー デザイナー]** > **[インポート]** >
 | Type=CF_ValueMetric_CL Origin_s=route_emitter Name_s=ConsulDownMode Value_d>0 | 結果の数: 0 より大きい   | Consul により、正常性の状態が定期的に出力されます。 0 はシステムが正常な状態を意味し、1 は Consul がダウンしていることをルート エミッターが検出したことを意味します。 |
 | Type=CF_CounterEvent_CL Origin_s=DopplerServer (Name_s="TruncatingBuffer.DroppedMessages" or Name_s="doppler.shedEnvelopes") Delta_d>0 | 結果の数: 0 より大きい | バック プレッシャーが原因で、メッセージの差分番号が Doppler により意図的に削除されました。 |
 | Type=CF_LogMessage_CL SourceType_s=LGR MessageType_s=ERR                      | 結果の数: 0 より大きい   | Loggregator は、ログのプロセスに関する問題を示す **LGR** を出力します。 このような問題の例として、ログ メッセージの出力が多すぎる場合などがあります。 |
-| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | 結果の数: 0 より大きい   | Nozzle は、Loggregator から低速のコンシューマー アラートを受け取ると、**slowConsumerAlert** ValueMetric を Log Analytics に送信します。 |
+| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | 結果の数: 0 より大きい   | Nozzle は、Loggregator から低速のコンシューマー アラートを受け取ると、**slowConsumerAlert** ValueMetric を Azure Monitor ログに送信します。 |
 | Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | 結果の数: 0 より大きい   | 失われたイベントの差分番号がしきい値に達した場合、Nozzle に問題が生じている可能性があることを意味します。 |
 
 ## <a name="scale"></a>スケール
@@ -238,7 +237,7 @@ CF CLI ウィンドウで、次のように入力します。
 cf delete <App Name> -r
 ```
 
-Nozzle を削除しても、OMS ポータルのデータは自動的に削除されません。 データは、Log Analytics のリテンション設定に基づいて有効期限が切れます。
+Nozzle を削除しても、OMS ポータルのデータは自動的に削除されません。 データは、Azure Monitor ログのリテンション設定に基づいて有効期限が切れます。
 
 ## <a name="support-and-feedback"></a>サポートとフィードバック
 

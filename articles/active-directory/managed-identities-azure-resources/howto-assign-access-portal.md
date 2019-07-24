@@ -1,74 +1,54 @@
 ---
-title: Azure ポータルを使用して、Azure リソースに MSI アクセスを割り当てる方法
-description: Azure Portal を使用して、1 つのリソースに MSI を割り当て、別のリソースにアクセスを割り当てる方法について、ステップ バイ ステップで説明します。
+title: Azure portal を使用して Azure リソースにマネージド ID アクセスを割り当てる方法
+description: Azure portal を使用して、1 つのリソースにマネージド ID を割り当て、別のリソースにアクセスを割り当てる方法について、ステップ バイ ステップで説明します。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
-ms.author: daveba
-ms.openlocfilehash: c2048583cde397ac3325fd149982b3a3db475566
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.author: markvi
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 958b3d72a3a8df4a3b67f62e7db788d7142ca667
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157281"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445467"
 ---
-# <a name="assign-a-managed-service-identity-access-to-a-resource-by-using-the-azure-portal"></a>Azure Portal を使用してリソースに管理対象サービス ID アクセスを割り当てる
+# <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Azure portal を使用してリソースにマネージド ID アクセスを割り当てる
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-管理対象サービス ID (MSI) で Azure リソースを構成した後、他のセキュリティ プリンシパルと同じように、別のリソースに MSI アクセスを付与できます。 この記事では、Azure Portal を使用して、Azure 仮想マシンまたは仮想マシン スケール セットの MSI アクセスを Azure ストレージ アカウントに付与する方法について説明します。
+マネージド ID で Azure リソースを構成した後、他のセキュリティ プリンシパルと同じように、別のリソースにマネージド ID アクセスを付与できます。 この記事では、Azure portal を使用して、Azure 仮想マシンまたは仮想マシン スケール セットのマネージド ID アクセスを Azure ストレージ アカウントに付与する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
+- Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#how-does-it-work)を必ず確認してください**。
+- まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
 
-## <a name="use-rbac-to-assign-the-msi-access-to-another-resource"></a>RBAC を使用して、別のリソースに MSI アクセスを割り当てる
+## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>RBAC を使用して他のリソースにマネージド ID アクセスを割り当てる
 
-[Azure VM](qs-configure-portal-windows-vm.md)、[Azure VMSS](qs-configure-portal-windows-vmss.md) などの Azure リソースで MSI を有効にした後、次のようにします。
+[Azure VM](qs-configure-portal-windows-vm.md) または [Azure VMSS](qs-configure-portal-windows-vmss.md) などの Azure リソース上でマネージド ID を有効にした後、次の手順を実行します。
 
-1. MSI ファイルを構成した Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure ポータル](https://portal.azure.com)にサインインします。
+1. マネージド ID を構成した Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 
-2. アクセス制御を変更する目的のリソースに移動します。 この例では、ストレージ アカウントに Azure 仮想マシンおよび Azure 仮想マシン スケール セット アクセスを許可するため、ストレージ アカウントに移動します。
+2. アクセス制御を変更する目的のリソースに移動します。 この例では、ストレージ アカウントに Azure 仮想マシンへのアクセスを許可するため、ストレージ アカウントに移動します。
 
-3. Azure 仮想マシンについては、リソースの **[アクセス制御 (IAM)]** ページを選択し、**[+ 追加]** を選択します。 **[ロール]** を指定し、**[アクセスの割り当て先] を [仮想マシン]** にして、対応する **[サブスクリプション]** とリソースが存在する **[リソース グループ]** を指定します。 検索条件領域に、リソースが表示されるはずです。 リソースを選択し、**[保存]** を選択します。 
+3. リソースの **[アクセス制御 (IAM)]** ページを選択し、**[+ ロール割り当ての追加]** を選択します。 その後、**[ロール]**、**[Assign access to]\(アクセスの割り当て先\)** の順に指定して、該当の **[サブスクリプション]** を指定します。 検索条件領域に、リソースが表示されるはずです。 リソースを選択し、**[保存]** を選択します。 
 
    ![アクセス制御 (IAM) のスクリーンショット](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
-   Azure 仮想マシン スケール セットについては、リソースの **[アクセス制御 (IAM)]** ページを選択し、**[+ 追加]** を選択します。 次に、**ロール**、**アクセスの割り当て先**を指定します。 検索条件領域で、仮想マシン スケール セットを検索します。 リソースを選択し、**[保存]** を選択します。
-   
-   ![アクセス制御 (IAM) のスクリーンショット](./media/msi-howto-assign-access-vmss-portal/assign-access-control-vmss-iam-blade-before.png)  
+     
+## <a name="next-steps"></a>次の手順
 
-4. **[アクセス制御 (IAM)]** のメイン ページに戻ると、リソースの MSI の新しいエントリが表示されます。
-
-    Azure 仮想マシン:
-
-   ![アクセス制御 (IAM) のスクリーンショット](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-after.png)
-
-    Azure 仮想マシン スケール セット:
-
-    ![アクセス制御 (IAM) のスクリーンショット](./media/msi-howto-assign-access-vmss-portal/assign-access-control-vmss-iam-blade-after.png)
-
-## <a name="troubleshooting"></a>トラブルシューティング
-
-リソースの MSI が使用可能な ID の一覧に表示されない場合は、MSI が正しく有効になっていることを確認します。 この場合は、Azure 仮想マシンに戻り、次のことを確認します。
-
-- **[構成]** ページを参照し、**MSI の有効**の値が **[はい]** になっていることを確認します。
-- **[拡張]** ページを参照して、MSI 拡張機能が正常に展開されていることを確認します (**[拡張]** ページは、Azure 仮想マシン スケール セットでは使用できません)。
-
-いずれかが正しくない場合は、リソース上で MSI を再デプロイするか、デプロイ エラーのトラブルシューティングを行う必要があります。
-
-## <a name="related-content"></a>関連コンテンツ
-
-- MSI の概要については、[管理対象サービス ID の概要](overview.md)に関する記事をご覧ください。
-- Azure 仮想マシンで MSI を有効にするには、「[Configure a VM Managed Service Identity (MSI) using the Azure portal (Azure Portal を使用して Azure VM 管理対象サービス ID (MSI) を構成する)](qs-configure-portal-windows-vm.md)」を参照してください。
-- Azure 仮想マシン スケール セットで MSI を有効にするには、「[Configure an Azure Virtual Machine Scale Set Managed Service Identity (MSI) using the Azure portal (Azure Portal を使用して Azure 仮想マシン スケール セット管理対象サービス ID (MSI) を構成する)](qs-configure-portal-windows-vmss.md)」を参照してください
+- [Azure リソースのマネージド ID の概要](overview.md)
+- Azure 仮想マシン上でマネージド ID を有効にするには、「[Azure portal を使用して Azure VM で Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」を参照してください。
+- Azure 仮想マシン スケール セット上でマネージド ID を有効にするには、「[Azure portal を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vmss.md)」を参照してください。
 
 

@@ -1,22 +1,22 @@
 ---
-title: Text Analytics REST API で言語を検出する方法 (Azure 上の Microsoft Cognitive Services) | Microsoft Docs
-description: このチュートリアルでは、Azure 上の Microsoft Cognitive Services の Text Analytics REST API を使用して、言語を検出する方法を説明します。
+title: Text Analytics REST API を使用した言語の検出 | Microsoft Docs
+description: Azure Cognitive Services の Text Analytics REST API を使用して言語を検出する方法。
 services: cognitive-services
-author: HeidiSteen
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 09/12/2018
-ms.author: heidist
-ms.openlocfilehash: 460dfb168894d28d5fbc5e5585a6054917127931
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: 8197d091763709282c42379a7ca0ea802e5c6fdf
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633566"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886790"
 ---
-# <a name="example-how-to-detect-language-in-text-analytics"></a>例: Text Analytics で言語を検出する方法
+# <a name="example-how-to-detect-language-with-text-analytics"></a>例:Text Analytics で言語を検出する方法
 
 [言語検出 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) では、テキスト入力が評価され、各ドキュメントについて言語識別子と、分析の強度を示すスコアが返されます。 Text Analytics では、最大 120 の言語が認識されます。
 
@@ -29,7 +29,7 @@ ms.locfileid: "51633566"
 
 JSON ドキュメントは、id、text の形式である必要があります。
 
-ドキュメントのサイズは、ドキュメントあたり 5,000 文字未満である必要があり、コレクションあたり最大 1,000 の項目 (ID) を含めることができます。 コレクションは、要求の本文で送信されます。 言語検出のために送信するコンテンツの例を次に示します。
+ドキュメントのサイズは、ドキュメントあたり 5,120 文字未満である必要があり、コレクションあたり最大 1,000 の項目 (ID) を含めることができます。 コレクションは、要求の本文で送信されます。 言語検出のために送信するコンテンツの例を次に示します。
 
    ```
     {
@@ -52,17 +52,17 @@ JSON ドキュメントは、id、text の形式である必要があります�
             },                
             {
                 "id": "5",
-                "text": "Этот документ находится на английском языке."
+                "text": "Этот документ на английском языке."
             }
         ]
     }
 ```
 
-## <a name="step-1-structure-the-request"></a>手順 1: 要求を構造化する
+## <a name="step-1-structure-the-request"></a>手順 1:要求を構造化する
 
 要求定義の詳細については、[Text Analytics API を呼び出す方法](text-analytics-how-to-call-api.md)に関するページを参照してください。 確認に便利なように、以下に再度、要点を示します。
 
-+ **POST** 要求を作成します。 この要求については [Language Detection API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) の API ドキュメントを確認してください。
++ **POST** 要求を作成します。 この要求については次の API ドキュメントを確認してください。[Language Detection API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
 
 + Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)を使用して、言語検出用の HTTP エンドポイントを設定します。 そこには、`/languages` リソースが含まれている必要があります: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
 
@@ -73,14 +73,14 @@ JSON ドキュメントは、id、text の形式である必要があります�
 > [!Tip]
 > [Postman](text-analytics-how-to-call-api.md) を使用するか、[ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)に記載されている **API テスト コンソール**を開き、要求を構造化して POST でサービスに投稿します。
 
-## <a name="step-2-post-the-request"></a>手順 2: 要求を投稿する
+## <a name="step-2-post-the-request"></a>手順 2:要求を投稿する
 
 要求が受信されると分析が実行されます。 サービスは、1 分あたり最大 100 個の要求を受け付けます。 各要求の最大サイズは 1 MB です。
 
 サービスはステートレスであることを思い出してください。 ユーザーのアカウントに保存されるデータはありません。 結果はすぐに、応答で返されます。
 
 
-## <a name="step-3-view-results"></a>手順 3: 結果を表示する
+## <a name="step-3-view-results"></a>手順 3:結果の表示
 
 すべての POST 要求で、ID と検出されたプロパティを含む JSON 形式の応答が返されます。
 

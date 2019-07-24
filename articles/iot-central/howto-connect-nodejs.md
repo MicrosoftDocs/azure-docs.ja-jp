@@ -1,38 +1,38 @@
 ---
 title: 汎用の Node.js クライアント アプリケーションを Azure IoT Central に接続する | Microsoft Docs
 description: デバイス開発者として、汎用の Node.js デバイスを Azure IoT Central アプリケーションに接続する方法。
-author: tbhagwat3
-ms.author: tanmayb
-ms.date: 10/26/2018
+author: dominicbetts
+ms.author: dobett
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: peterpr
-ms.openlocfilehash: 9d97b14d52a33d6879ee92b38993f4526823c4a0
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+manager: philmea
+ms.openlocfilehash: 5497e4956fbdc74eced302867c33a66d07d6a184
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963993"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617939"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>汎用のクライアント アプリケーションを Azure IoT Central アプリケーションに接続する (Node.js)
 
-この記事では、デバイス開発者として、物理デバイスを表す汎用の Node.js アプリケーションを Microsoft Azure IoT Central アプリケーションに接続する方法について説明します。
+この記事では、デバイス開発者として、実際のデバイスを表す汎用の Node.js アプリケーションを Microsoft Azure IoT Central アプリケーションに接続する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 この記事の手順を完了するには、次のものが必要です。
 
-1. Azure IoT Central アプリケーション。 詳しくは、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
+1. Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
 1. [Node.js](https://nodejs.org/) バージョン 4.0.0 以降がインストールされた開発用コンピューター。 バージョンを確認するには、コマンド ラインで `node --version` を実行できます。 Node.js は、さまざまなオペレーティング システムで使用できます。
 
 ## <a name="create-a-device-template"></a>デバイス テンプレートを作成する
 
-Azure IoT Central アプリケーションでは、次の測定およびデバイスのプロパティが定義されたデバイス テンプレートが必要です。
+Azure IoT Central アプリケーションでは、次の測定値、デバイスのプロパティ、設定、およびコマンドが定義されたデバイス テンプレートが必要です。
 
 ### <a name="telemetry-measurements"></a>テレメトリ測定
 
-**[Measurements] (測定)** ページで、次のテレメトリを追加します。
+**[Measurements]\(測定)** ページで、次のテレメトリを追加します。
 
 | 表示名 | フィールド名  | Units | Min | max | 小数点以下の桁数 |
 | ------------ | ----------- | ----- | --- | --- | -------------- |
@@ -41,48 +41,48 @@ Azure IoT Central アプリケーションでは、次の測定およびデバ�
 | 圧力     | pressure    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
-  テレメトリ測定のデータ型は浮動小数点数です。
+> テレメトリ測定のデータ型は浮動小数点数です。
 
 デバイス テンプレートに、表に示すように正確にフィールド名を入力します。 フィールド名が対応するデバイス コード内のプロパティ名と一致しない場合は、テレメトリをアプリケーションに表示できません。
 
 ### <a name="state-measurements"></a>状態測定
 
-**[Measurements] (測定)** ページで、次の状態を追加します。
+**[Measurements]\(測定)** ページで、次の状態を追加します。
 
 | 表示名 | フィールド名  | 値 1 | 表示名 | 値 2 | 表示名 |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
 | Fan Mode     | fanmode     | 1       | 実行中      | 0       | 停止済み      |
 
 > [!NOTE]
-  状態測定のデータ型は文字列です。
+> 状態測定のデータ型は文字列です。
 
 デバイス テンプレートに、表に示すように正確にフィールド名を入力します。 フィールド名が対応するデバイス コード内のプロパティ名と一致しない場合は、状態をアプリケーションに表示できません。
 
 ### <a name="event-measurements"></a>イベント測定
 
-**[Measurements] (測定)** ページで、次のイベントを追加します。
+**[Measurements]\(測定)** ページで、次のイベントを追加します。
 
-| 表示名 | フィールド名  | severity |
+| 表示名 | フィールド名  | Severity |
 | ------------ | ----------- | -------- |
 | 過熱  | overheat    | Error    |
 
 > [!NOTE]
-  イベント測定のデータ型は文字列です。
+> イベント測定のデータ型は文字列です。
 
 ### <a name="device-properties"></a>デバイスのプロパティ
 
-**プロパティ ページ** で、次のデバイスのプロパティを追加します。
+**[プロパティ]** ページで、次のデバイスのプロパティを追加します。
 
 | 表示名        | フィールド名        | データ型 |
 | ------------------- | ----------------- | --------- |
 | Serial Number       | serialNumber      | text      |
 | デバイスの製造元 | manufacturer      | text      |
 
-デバイス テンプレートに、表に示すように正確にフィールド名を入力します。 フィールド名が対応するデバイス コード内のプロパティ名と一致しない場合は、デバイス プロパティ値をアプリケーションに表示できません。
+デバイス テンプレートに、表に示すように正確にフィールド名を入力します。 フィールド名が対応するデバイス コード内のプロパティ名と一致しない場合は、プロパティをアプリケーションに表示できません。
 
 ### <a name="settings"></a>設定
 
-**設定ページ**で、次の**数値**の設定を追加します。
+**[設定]** ページで、次の**数値**の設定を追加します。
 
 | 表示名    | フィールド名     | Units | 10 進数 | Min | max  | Initial |
 | --------------- | -------------- | ----- | -------- | --- | ---- | ------- |
@@ -91,13 +91,31 @@ Azure IoT Central アプリケーションでは、次の測定およびデバ�
 
 デバイス テンプレートに、表に示すように正確にフィールド名を入力します。 フィールド名が対応するデバイス コード内のプロパティ名と一致しない場合は、デバイスが設定値を取得できません。
 
+### <a name="commands"></a>command
+
+**[コマンド]** ページで次のコマンドを追加します。
+
+| 表示名    | フィールド名     | [Default Timeout]\(既定のタイムアウト\) | データ型 |
+| --------------- | -------------- | --------------- | --------- |
+| Countdown       | countdown      | 30              | number    |
+
+Countdown コマンドに次の入力フィールドを追加します。
+
+| 表示名    | フィールド名     | データ型 | 値 |
+| --------------- | -------------- | --------- | ----- |
+| Count from      | countFrom      | number    | 10    |
+
+フィールド名を、表に示されているとおりに正確にデバイス テンプレートに入力します。 フィールド名が対応するデバイス コード内のプロパティ名と一致しない場合は、デバイスはコマンドを処理できません。
+
 ## <a name="add-a-real-device"></a>実デバイスの追加
 
-Azure IoT Central アプリケーションでは、作成したデバイス テンプレートから実デバイスを追加し、デバイスの接続文字列を書きとめます。 Node.js アプリケーションを IoT Central に接続するための詳しい手順については、「チュートリアル」 >「デバイスを追加する」の「[アプリケーションからの実デバイスの接続文字列の生成](tutorial-add-device.md#generate-connection-string-for-real-device-from-application)」と「[クライアント コードの準備](tutorial-add-device.md#prepare-the-client-code)」をご覧ください。
+Azure IoT Central アプリケーションで、前のセクションで作成したデバイス テンプレートに実デバイスを追加します。
+
+次に、"デバイスの追加" チュートリアルの手順に従って、[実デバイスの接続文字列を生成](tutorial-add-device.md#generate-connection-string)します。 この接続文字列を次のセクションで使用します。
 
 ### <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
 
-次の手順は、アプリケーションに追加した実デバイスを実装するクライアント アプリケーションを作成する方法を示しています。 ここで、Node.js アプリケーションは実際の物理デバイスを表しています。 
+次の手順は、アプリケーションに追加した実デバイスを実装するクライアント アプリケーションを作成する方法を示しています。 ここで、Node.js アプリケーションは実際のデバイスを表しています。 
 
 1. マシンに `connected-air-conditioner-adv` という名前のフォルダーを作成します。 コマンドライン環境でそのフォルダーに移動します。
 
@@ -129,11 +147,7 @@ Azure IoT Central アプリケーションでは、作成したデバイス テ�
     var client = clientFromConnectionString(connectionString);
     ```
 
-  > [!NOTE]
-  > Azure IoT Central は、すべてのデバイス接続に対して Azure IoT Hub Device Provisioning Service (DPS) を使用するようになりました。手順に従って[デバイスの接続文字列を取得](concepts-connectivity.md#getting-device-connection-string)し、チュートリアルの残りを続けてください。 詳しい手順については、「チュートリアル」 >「デバイスを追加する」の「[クライアント コードの準備](tutorial-add-device.md#prepare-the-client-code)」でも説明されています。
-
-
-  プレースホルダー `{your device connection string}` をデバイスの接続文字列に更新します。 このサンプルでは、`targetTemperature` を 0 に初期化します。必要に応じて、デバイスから現在の読み取りを取得したり、デバイス ツインから値を取得したりできます。 
+    プレースホルダー `{your device connection string}` を[デバイスの接続文字列](tutorial-add-device.md#generate-connection-string)に更新します。 このサンプルでは、`targetTemperature` を 0 に初期化します。デバイスから現在の読み取りを取得したり、デバイス ツインから値を取得したりできます。
 
 1. テレメトリ、状態、およびイベント測定を Azure IoT Central アプリケーションに送信するには、ファイルに次の関数を追加します。
 
@@ -144,9 +158,9 @@ Azure IoT Central アプリケーションでは、作成したデバイス テ�
       var humidity = 70 + (Math.random() * 10);
       var pressure = 90 + (Math.random() * 5);
       var fanmode = 0;
-      var data = JSON.stringify({ 
-        temperature: temperature, 
-        humidity: humidity, 
+      var data = JSON.stringify({
+        temperature: temperature,
+        humidity: humidity,
         pressure: pressure,
         fanmode: (temperature > 25) ? "1" : "0",
         overheat: (temperature > 35) ? "ER123" : undefined });
@@ -160,13 +174,9 @@ Azure IoT Central アプリケーションでは、作成したデバイス テ�
 1. デバイスのプロパティを Azure IoT Central アプリケーションに送信するには、ファイルに次の関数を追加します。
 
     ```javascript
-    // Send device properties.
-    function sendDeviceProperties(twin) {
-      var properties = {
-        serialNumber: '123-ABC',
-        manufacturer: 'Contoso'
-      };
-      twin.properties.reported.update(properties, (err) => console.log(`Sent device properties; ` +
+    // Send device reported properties.
+    function sendDeviceProperties(twin, properties) {
+      twin.properties.reported.update(properties, (err) => console.log(`Sent device properties: ${JSON.stringify(properties)}; ` +
         (err ? `error: ${err.toString()}` : `status: success`)));
     }
     ```
@@ -224,7 +234,41 @@ Azure IoT Central アプリケーションでは、作成したデバイス テ�
     }
     ```
 
-1. 次を追加して Azure IoT Central への接続を完了し、クライアント コード内の関数を起動します。
+1. IoT Central アプリケーションから送信された countdown コマンドを処理するために次のコードを追加します。
+
+    ```javascript
+    // Handle countdown command
+    function onCountdown(request, response) {
+      console.log('Received call to countdown');
+
+      var countFrom = (typeof(request.payload.countFrom) === 'number' && request.payload.countFrom < 100) ? request.payload.countFrom : 10;
+
+      response.send(200, (err) => {
+        if (err) {
+          console.error('Unable to send method response: ' + err.toString());
+        } else {
+          client.getTwin((err, twin) => {
+            function doCountdown(){
+              if ( countFrom >= 0 ) {
+                var patch = {
+                  countdown:{
+                    value: countFrom
+                  }
+                };
+                sendDeviceProperties(twin, patch);
+                countFrom--;
+                setTimeout(doCountdown, 2000 );
+              }
+            }
+
+            doCountdown();
+          });
+        }
+      });
+    }
+    ```
+
+1. Azure IoT Central への接続を完了し、クライアント コードの関数をフックする次のコードを追加します。
 
     ```javascript
     // Handle device connection to Azure IoT Central.
@@ -233,6 +277,9 @@ Azure IoT Central アプリケーションでは、作成したデバイス テ�
         console.log(`Device could not connect to Azure IoT Central: ${err.toString()}`);
       } else {
         console.log('Device successfully connected to Azure IoT Central');
+
+        // Create handler for countdown command
+        client.onDeviceMethod('countdown', onCountdown);
 
         // Send telemetry measurements to Azure IoT Central every 1 second.
         setInterval(sendTelemetry, 1000);
@@ -243,7 +290,12 @@ Azure IoT Central アプリケーションでは、作成したデバイス テ�
             console.log(`Error getting device twin: ${err.toString()}`);
           } else {
             // Send device properties once on device start up.
-            sendDeviceProperties(twin);
+            var properties = {
+              serialNumber: '123-ABC',
+              manufacturer: 'Contoso'
+            };
+            sendDeviceProperties(twin, properties);
+
             // Apply device settings and handle changes to device settings.
             handleSettings(twin);
           }
@@ -269,16 +321,18 @@ Azure IoT Central アプリケーションのオペレーターとして、実�
 
     ![利用統計情報データを表示する](media/howto-connect-nodejs/viewtelemetry.png)
 
-* **[プロパティ]** ページで、デバイスから送信されたデバイス プロパティ値を表示します。 接続が成功した場合は、デバイス プロパティのタイルが更新されます。 
+* **[プロパティ]** ページで、デバイスから送信されたデバイス プロパティ値を表示します。 デバイスを接続すると、デバイスのプロパティ タイルが更新されます。
 
     ![デバイスのプロパティを表示する](media/howto-connect-nodejs/viewproperties.png)
 
-* **[設定]** ページから、ファン速度とターゲット温度を設定します。 接続が成功した場合は、設定値が同期されます。 
+* **[設定]** ページから、ファン速度とターゲット温度を設定します。
 
     ![ファン速度を設定する](media/howto-connect-nodejs/setfanspeed.png)
 
+* **[コマンド]** ページから、countdown コマンドを呼び出します。
+
+    ![countdown コマンドを呼び出す](media/howto-connect-nodejs/callcountdown.png)
+
 ## <a name="next-steps"></a>次の手順
 
-ここでは、汎用の Node.js クライアントを Azure IoT Central アプリケーションに接続する方法について説明しました。推奨される次の手順は以下のとおりです。
-* [Raspberry Pi を準備して接続する](howto-connect-raspberry-pi-python.md)
-<!-- Next how-tos in the sequence -->
+ここでは、汎用の Node.js クライアントを Azure IoT Central アプリケーションに接続する方法について説明しました。推奨される次の手順は、お使いの IoT デバイス用に[カスタム デバイス テンプレートをセットアップする](howto-set-up-template.md)方法を確認することです。

@@ -16,12 +16,12 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
 ms.author: klam; LADocs
-ms.openlocfilehash: 7920fee1bacf569ac41c36142fc68080b4de5780
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: c58b39f8e2d49eeb3e64c7ffce1d34d7a7b7b780
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230490"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904373"
 ---
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>ロジック アプリで HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする
 
@@ -71,7 +71,7 @@ HTTP エンドポイントを作成するには、受信要求を受信できる
 
     > [!TIP]
     > 
-    > **[サンプルのペイロードを使用してスキーマを生成する]** を選択することで、[jsonschema.net](http://jsonschema.net/) や**要求**トリガーなどのツールから JSON のサンプル ペイロードのスキーマを生成することができます。 
+    > **[サンプルのペイロードを使用してスキーマを生成する]** を選択することで、[jsonschema.net](https://jsonschema.net/) や**要求**トリガーなどのツールから JSON のサンプル ペイロードのスキーマを生成することができます。 
     > サンプル ペイロードを入力し、**[完了]** を選択します。
 
     たとえば、次のサンプル ペイロードを使用するとします。
@@ -275,9 +275,9 @@ HTTP エンドポイントを作成したら、完全な URL への `POST` メ�
 
 ## <a name="q--a"></a>Q & A
 
-#### <a name="q-what-about-url-security"></a>Q: URL のセキュリティはどうなっていますか。
+#### <a name="q-what-about-url-security"></a>Q:URL のセキュリティはどうなっていますか。
 
-A: Azure では、ロジック アプリのコールバック URL が、Shared Access Signature (SAS) を使用して安全に生成されます。 この署名はクエリ パラメーターとして渡され、ロジック アプリが起動する前に検証される必要があります。 Azure では、ロジック アプリごとの秘密キー、トリガー名、および実行される操作の一意の組み合わせを使用して署名が生成されます。 そのため、ロジック アプリの秘密キーにアクセスできなければ、有効な署名を生成することはできません。
+A:Azure では、ロジック アプリのコールバック URL が、Shared Access Signature (SAS) を使用して安全に生成されます。 この署名はクエリ パラメーターとして渡され、ロジック アプリが起動する前に検証される必要があります。 Azure では、ロジック アプリごとの秘密キー、トリガー名、および実行される操作の一意の組み合わせを使用して署名が生成されます。 そのため、ロジック アプリの秘密キーにアクセスできなければ、有効な署名を生成することはできません。
 
    > [!IMPORTANT]
    > 運用環境のセキュリティで保護されたシステムでは、次の理由により、ブラウザーから直接ロジック アプリを呼び出さないことを強くお勧めします。
@@ -285,18 +285,18 @@ A: Azure では、ロジック アプリのコールバック URL が、Shared A
    > * 共有アクセス キーが URL に表示されます。
    > * ロジック アプリのユーザー間でドメインが共有されるため、セキュリティで保護されたコンテンツ ポリシーを管理できません。
 
-#### <a name="q-can-i-configure-http-endpoints-further"></a>Q: HTTP エンドポイントをさらに構成することは可能でしょうか。
+#### <a name="q-can-i-configure-http-endpoints-further"></a>Q:HTTP エンドポイントをさらに構成することは可能でしょうか。
 
-A: はい、HTTP エンドポイントでは、[**API Management**](../api-management/api-management-key-concepts.md) を通じてより高度な構成をサポートしています。 このサービスでは、次のような、ロジック アプリを含むすべての API の一貫した管理、カスタム ドメイン名の設定、他の認証方法の使用などの機能も提供します。
+A:はい、HTTP エンドポイントでは、[**API Management**](../api-management/api-management-key-concepts.md) を通じてより高度な構成をサポートしています。 このサービスでは、次のような、ロジック アプリを含むすべての API の一貫した管理、カスタム ドメイン名の設定、他の認証方法の使用などの機能も提供します。
 
 * [要求メソッドを変更する](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#SetRequestMethod)
 * [要求の URL セグメントを変更する](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#RewriteURL)
 * [Azure Portal](https://portal.azure.com/ "Azure Portal") で API Management ドメインをセットアップする
 * 基本認証を確認するためのポリシーをセットアップする
 
-#### <a name="q-what-changed-when-the-schema-migrated-from-the-december-1-2014-preview"></a>Q: 2014 年 12 月 1 日のプレビューからスキーマが移行されたとき、どのように変更されましたか。
+#### <a name="q-what-changed-when-the-schema-migrated-from-the-december-1-2014-preview"></a>Q:2014 年 12 月 1 日のプレビューからスキーマが移行されたとき、どのように変更されましたか。
 
-A: 変更内容を以下にまとめました。
+A:変更内容を以下にまとめました。
 
 | 2014 年 12 月 1 日のプレビュー | 2016 年 6 月 1 日 |
 | --- | --- |

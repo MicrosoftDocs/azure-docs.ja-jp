@@ -1,23 +1,23 @@
 ---
 title: Azure Blockchain Workbench でブロックチェーン アプリケーションを作成する
-description: Azure Blockchain Workbench でブロックチェーン アプリケーションを作成する方法。
+description: Azure Blockchain Workbench でブロックチェーン アプリケーションを作成する方法についてのチュートリアル。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
-ms.topic: article
+ms.date: 04/15/2019
+ms.topic: tutorial
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: a7ca3f42874bc844bc0036e37a790ffebdc5f8d8
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: d9f736b0b976ac6ec0da45a672d2e992405625cd
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242078"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578800"
 ---
-# <a name="create-a-blockchain-application-in-azure-blockchain-workbench"></a>Azure Blockchain Workbench でブロックチェーン アプリケーションを作成する
+# <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>チュートリアル:Azure Blockchain Workbench でブロックチェーン アプリケーションを作成する
 
 Azure Blockchain Workbench を使用すると、構成とスマート コントラクト コードで定義されたマルチパーティ ワークフローを表すブロックチェーン アプリケーションを作成できます。
 
@@ -28,6 +28,8 @@ Azure Blockchain Workbench を使用すると、構成とスマート コント�
 > * スマート コントラクト コード ファイルの作成
 > * Blockchain Workbench へのブロックチェーン アプリケーションの追加
 > * ブロックチェーン アプリケーションへのメンバーの追加
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -236,56 +238,17 @@ Solidity のスマート コントラクトは、オブジェクト指向言語�
   pragma solidity ^0.4.20;
   ```
 
-### <a name="base-class"></a>基底クラス
-
-**WorkbenchBase** 基底クラスを使用すれば、Blockchain Workbench でコントラクトを作成および更新できます。 Blockchain Workbench 固有のスマート コントラクト コードには、この基底クラスが必要です。 コントラクトは **WorkbenchBase** 基底クラスから継承する必要があります。
-
-`HelloBlockchain.sol` スマート コントラクト コード ファイルの先頭に **WorkbenchBase** クラスを追加します。 
-
-```
-contract WorkbenchBase {
-    event WorkbenchContractCreated(string applicationName, string workflowName, address originatingAddress);
-    event WorkbenchContractUpdated(string applicationName, string workflowName, string action, address originatingAddress);
-
-    string internal ApplicationName;
-    string internal WorkflowName;
-
-    function WorkbenchBase(string applicationName, string workflowName) internal {
-        ApplicationName = applicationName;
-        WorkflowName = workflowName;
-    }
-
-    function ContractCreated() internal {
-        WorkbenchContractCreated(ApplicationName, WorkflowName, msg.sender);
-    }
-
-    function ContractUpdated(string action) internal {
-        WorkbenchContractUpdated(ApplicationName, WorkflowName, action, msg.sender);
-    }
-}
-```
-この基底クラスには、次の 2 つの重要な関数が含まれています。
-
-|基底クラスの関数  | 目的  | 呼び出すタイミング  |
-|---------|---------|---------|
-| ContractCreated() | コントラクトが作成されたことを Blockchain Workbench に通知します | コントラクト コンストラクターを終了する前 |
-| ContractUpdated() | コントラクトの状態が更新されたことを Blockchain Workbench に通知します | コントラクト関数を終了する前 |
-
 ### <a name="configuration-and-smart-contract-code-relationship"></a>構成とスマート コントラクト コードの関係
 
 Blockchain Workbench では、構成ファイルとスマート コントラクト コード ファイルを使用してブロックチェーン アプリケーションを作成します。 構成の定義内容とスマート コントラクトのコードとの間には関係があります。 アプリケーションを作成するには、コントラクトの詳細、関数、パラメーター、および型が一致する必要があります。 Blockchain Workbench では、アプリケーションを作成する前にファイルを検証します。 
 
 ### <a name="contract"></a>コントラクト
 
-Blockchain Workbench の場合、コントラクトは **WorkbenchBase** 基底クラスから継承する必要があります。 コントラクトを宣言する際に、アプリケーション名とワークフロー名を引数として渡す必要があります。
-
-`HelloBlockchain.sol` スマート コントラクト コード ファイルに **contract** ヘッダーを追加します。 
+`HelloBlockchain.sol` スマート コントラクト コード ファイルに **contract** ヘッダーを追加します。
 
 ```
-contract HelloBlockchain is WorkbenchBase('HelloBlockchain', 'HelloBlockchain') {
+contract HelloBlockchain {
 ```
-
-コントラクトは、**WorkbenchBase** 基底クラスから継承し、構成ファイルで定義されているとおりにパラメーター **ApplicationName** と **WorkflowName** を渡す必要があります。 この例では、アプリケーション名とワークフロー名は同じです。
 
 ### <a name="state-variables"></a>状態変数
 
@@ -312,20 +275,15 @@ contract HelloBlockchain is WorkbenchBase('HelloBlockchain', 'HelloBlockchain') 
 
 コンストラクター関数では、コントラクトを作成する前に実行するビジネス ロジックを記述します。 たとえば、状態変数を開始値で初期化します。
 
-コンストラクター関数を終了する前に、`ContractCreated()` 関数を呼び出します。 この関数は、コントラクトが作成されたことを Blockchain Workbench に通知します。
-
 `HelloBlockchain.sol` スマート コントラクト コード ファイルでコントラクトにコンストラクター関数を追加します。 
 
 ```
     // constructor function
-    function HelloBlockchain(string message) public
+    constructor(string message) public
     {
         Requestor = msg.sender;
         RequestMessage = message;
         State = StateType.Request;
-    
-        // call ContractCreated() to create an instance of this workflow
-        ContractCreated();
     }
 ```
 
@@ -334,8 +292,6 @@ contract HelloBlockchain is WorkbenchBase('HelloBlockchain', 'HelloBlockchain') 
 関数とは、コントラクト内のビジネス ロジックの実行可能ユニットです。 関数の必要なパラメーターは、構成ファイルで関数パラメーターとして定義します。 パラメーターの数、順序、型は両方のファイルで一致する必要があります。 関数は、構成ファイルで Blockchain Workbench ワークフローの遷移に関連付けます。 遷移とは、コントラクトで定められるとおりアプリケーションのワークフローの次のステージに進むために実行されるアクションです。
 
 関数で実行するビジネス ロジックを記述します。 たとえば、状態変数の値を変更します。
-
-関数を終了する前に、`ContractUpdated()` 関数を呼び出します。 この関数は、コントラクトの状態が更新されたことを Blockchain Workbench に通知します。 関数で行われた状態の変更を元に戻す場合は、revert() を呼び出します。 revert() は、最後の ContractUpdated() の呼び出し以降に行われた状態の変更を破棄します。
 
 1. `HelloBlockchain.sol` スマート コントラクト コード ファイルでコントラクトに次の関数を追加します。 
 
@@ -347,12 +303,8 @@ contract HelloBlockchain is WorkbenchBase('HelloBlockchain', 'HelloBlockchain') 
             {
                 revert();
             }
-    
             RequestMessage = requestMessage;
             State = StateType.Request;
-    
-            // call ContractUpdated() to record this action
-            ContractUpdated('SendRequest');
         }
     
         // call this function to send a response
@@ -360,10 +312,8 @@ contract HelloBlockchain is WorkbenchBase('HelloBlockchain', 'HelloBlockchain') 
         {
             Responder = msg.sender;
     
-            // call ContractUpdated() to record this action
             ResponseMessage = responseMessage;
             State = StateType.Respond;
-            ContractUpdated('SendResponse');
         }
     }
     ```

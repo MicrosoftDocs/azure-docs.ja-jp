@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 065845bb2abd02f02fe2050780bc0613cbd2f12c
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: d0bb72361e1bff3615f6785ac4c91a10ea773498
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036004"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312973"
 ---
-# <a name="widevine-license-template-overview"></a>Widevine ライセンス テンプレートの概要
+# <a name="widevine-license-template-overview"></a>Widevine ライセンス テンプレートの概要 
 Azure Media Services を使用すると、Google Widevine ライセンスを構成および要求できます。 プレーヤーが Widevine の保護されたコンテンツを再生しようとすると、ライセンスを取得する要求がライセンス配信サービスに送信されます。 ライセンス サービスが要求を承認すると、サービスがライセンスを発行します。 これはクライアントに送信され、指定されたコンテンツの復号化と再生に使用されます。
 
 Widevine ライセンス要求の形式は、JSON メッセージです。  
@@ -63,8 +63,8 @@ Widevine ライセンス要求の形式は、JSON メッセージです。
 | --- | --- | --- |
 | payload |Base64 でエンコードされた文字列 |クライアントから送信されたライセンス要求です。 |
 | content_id |Base64 でエンコードされた文字列 |各 content_key_specs.track_type のキー ID およびコンテンツ キーを取得するために使用される識別子です。 |
-| provider |string |コンテンツ キーおよびポリシーを検索するために使用されます。 Microsoft キー配信が Widevine ライセンス配信に使用される場合、このパラメーターは無視されます。 |
-| policy_name |string |以前に登録されたポリシーの名前です。 省略可能。 |
+| provider |文字列 |コンテンツ キーおよびポリシーを検索するために使用されます。 Microsoft キー配信が Widevine ライセンス配信に使用される場合、このパラメーターは無視されます。 |
+| policy_name |文字列 |以前に登録されたポリシーの名前です。 省略可能。 |
 | allowed_track_types |enum |SD_ONLY または SD_HD。 どのコンテンツ キーをライセンスに含めるかを制御します。 |
 | content_key_specs |JSON 構造体の配列。「コンテンツ キーの仕様」セクションをご覧ください。  |どのコンテンツ キーを返すかについて、より細かく制御します。 詳しくは、「コンテンツ キーの仕様」セクションをご覧ください。 allowed_track_types 値と content_key_specs 値のいずれかのみを指定できます。 |
 | use_policy_overrides_exclusively |ブール値、true または false |policy_overrides に指定されたポリシー属性を使用し、前に格納したポリシーをすべて除外します。 |
@@ -79,7 +79,7 @@ use_policy_overrides_exclusively オプションに関係なく、各 content_ke
 
 | Name | 値 | 説明 |
 | --- | --- | --- |
-| content_key_specs track_type |string |トラックの種類の名前です。 ライセンス要求で content_key_specs が指定されている場合は、すべてのトラックの種類を明示的に指定します。 指定しないと、直前の 10 秒間を再生できません。 |
+| content_key_specs track_type |文字列 |トラックの種類の名前です。 ライセンス要求で content_key_specs が指定されている場合は、すべてのトラックの種類を明示的に指定します。 指定しないと、直前の 10 秒間を再生できません。 |
 | content_key_specs  <br/> security_level |uint32 |再生に関するクライアントの堅牢性の要件を定義します。 <br/> - ソフトウェアベースのホワイトボックス暗号化が必須です。 <br/> - ソフトウェア暗号化と難読化デコーダーが必須です。 <br/> - キー マテリアルと暗号化の操作を、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。 <br/> - コンテンツの暗号化とデコードを、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。  <br/> - 暗号化、デコード、およびメディア (圧縮済みおよび圧縮解除済み) のすべての処理を、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。 |
 | content_key_specs <br/> required_output_protection.hdc |文字列、HDCP_NONE、HDCP_V1、HDCP_V2 のいずれか |HDCP が必須かどうかを示します。 |
 | content_key_specs <br/>key |Base64<br/>でエンコードされた文字列 |このトラックで使用するコンテンツ キーです。指定した場合、track_type または key_id が必要です。 コンテンツ プロバイダーはこのオプションを使用して、Widevine ライセンス サーバーでキーを生成または検索する代わりに、このトラックのコンテンツ キーを挿入できます。 |
@@ -94,7 +94,7 @@ use_policy_overrides_exclusively オプションに関係なく、各 content_ke
 | policy_overrides license_duration_seconds |int64 |この特定のライセンスの期間を示します。 値 0 は、期間に制限がないことを示します。 既定値は 0 です。 |
 | policy_overrides rental_duration_seconds |int64 |再生が許可されている期間を示します。 値 0 は、期間に制限がないことを示します。 既定値は 0 です。 |
 | policy_overrides playback_duration_seconds |int64 |ライセンス期間内の再生開始後の視聴期間です。 値 0 は、期間に制限がないことを示します。 既定値は 0 です。 |
-| policy_overrides renewal_server_url |string |このライセンスのすべてのハートビート (更新) 要求を、指定した URL に転送します。 このフィールドは、can_renew が true の場合にのみ使用されます。 |
+| policy_overrides renewal_server_url |文字列 |このライセンスのすべてのハートビート (更新) 要求を、指定した URL に転送します。 このフィールドは、can_renew が true の場合にのみ使用されます。 |
 | policy_overrides renewal_delay_seconds |int64 |license_start_time から、最初に更新が試行されるまでの秒数です。 このフィールドは、can_renew が true の場合にのみ使用されます。 既定値は 0 です。 |
 | policy_overrides renewal_retry_interval_seconds |int64 |ライセンスの更新要求が失敗した場合の後続の要求までの遅延 (秒) を指定します。 このフィールドは、can_renew が true の場合にのみ使用されます。 |
 | policy_overrides renewal_recovery_duration_seconds |int64 |ライセンス サーバーのバックエンドの問題が原因で、更新が試行されているがまだ成功していないときに、再生の継続が許可される期間です。 値 0 は、期間に制限がないことを示します。 このフィールドは、can_renew が true の場合にのみ使用されます。 |

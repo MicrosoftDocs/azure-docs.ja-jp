@@ -1,117 +1,98 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 6dc003473ed228fa8e10bd6a10d5b4b9a3d0ac49
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621362"
-documentType: LandingData
-title: Azure Machine Learning のドキュメント
-metadata:
-  title: Azure Machine Learning のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  description: 自然なコミュニケーション手段を通してユーザーのニーズを見たり、聞いたり、話したり、理解したりするようにインテリジェントなアルゴリズムをアプリ、Web サイト、ボットに組み込む方法を学習します。 チュートリアル、クイック スタート、API リファレンス、例では、その方法を紹介しています。
-  services: machine-learning
-  author: j-martens
-  ms.service: machine-learning
-  ms.component: core
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 10/31/2018
-  ms.author: jmartens
 abstract:
   description: 次の Azure Machine Learning 製品を使用して、インテリジェントなアルゴリズムをアプリや Web サイトに組み込む方法を学習します。  チュートリアル、クイック スタート、API リファレンス、例では、その方法を紹介しています。
+documentType: LandingData
+metadata:
+  author: j-martens
+  description: 自然なコミュニケーション手段を通してユーザーのニーズを見たり、聞いたり、話したり、理解したりするようにインテリジェントなアルゴリズムをアプリ、Web サイト、ボットに組み込む方法を学習します。 チュートリアル、クイック スタート、API リファレンス、例では、その方法を紹介しています。
+  ms.author: jmartens
+  ms.subservice: core
+  ms.date: 12/04/2018
+  ms.devlang: na
+  ms.service: machine-learning
+  ms.tgt_pltfrm: na
+  ms.topic: landing-page
+  services: machine-learning
+  title: Azure Machine Learning のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 2
-    items:
-    - href: /azure/machine-learning/service/overview-what-is-azure-ml
-      html: <p>このサービスでは、データ サイエンティストが、Azure のさまざまなデータ サービスやコンピューティング サービスで CLI および Python ツールとライブラリを使用して、<br/> AI ソリューションを開発し、管理できます。 詳細をご覧ください。</p>
-      image:
-        src: /azure/machine-learning/media/index/i_machine-learning.svg
-      title: Azure Machine Learning サービス (プレビュー)
-    - href: /azure/machine-learning/studio/
-      html: <p>このコラボレーションに対応したドラッグ アンド ドロップ ツールを使用して、データを活用した予測分析ソリューションを構築、テスト、デプロイする方法を学習します。 詳細をご覧ください。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-      image:
-        src: /azure/machine-learning/media/index/machine-learning-studio.svg
-      title: Azure Machine Learning Studio
-- title: クイック スタートとチュートリアル
-  items:
-  - type: paragraph
-    text: Azure Machine Learning サービス (プレビュー) と Azure Machine Learning Studio を迅速にセットアップして使用する方法を学習します。
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/i_machine-learning.svg
-    - image:
-        src: media/index/machine-learning-studio.svg
-    rows:
-    - title: サービスを使い始める
-      values:
-      - href: /azure/machine-learning/service/quickstart-get-started
-      - href: /azure/machine-learning/studio/create-workspace
-    - title: モデリング用にデータを準備する
-      values:
-      - href: /azure/machine-learning/service/how-to-data-prep
-      - href: /azure/machine-learning/studio/walkthrough-2-upload-data
-    - title: 独自の機械学習モデルを構築する
-      values:
-      - href: /azure/machine-learning/service/tutorial-train-models-with-aml
-      - href: /azure/machine-learning/studio/walkthrough-3-create-new-experiment
-    - title: アルゴリズムを自動的に生成して調整する
-      values:
-      - href: /azure/machine-learning/service/tutorial-auto-train-models
-      - href: 
-    - title: モデルを Web サービスとしてデプロイする
-      values:
-      - href: /azure/machine-learning/service/tutorial-deploy-models-with-aml
-      - href: /azure/machine-learning/studio/walkthrough-5-publish-web-service
-    - title: 機械学習モデルを使用する
-      values:
-      - href: /azure/machine-learning/service/how-to-consume-web-service
-      - href: /azure/machine-learning/studio/walkthrough-6-access-web-service
-    - title: ML パイプラインを作成、最適化、管理する
-      values:
-      - href: /azure/machine-learning/service/concept-ml-pipelines
-      - href: 
-- title: その他の Microsoft Machine Learning テクノロジ
-  items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 2
-    items:
-    - href: /azure/cognitive-services/
-      html: <p>アプリ、Web サイト、ボットにインテリジェントなアルゴリズムを提供する API。</p>
-      image:
-        src: /azure/machine-learning/media/index/cognitive-services.png
-      title: Cognitive Services
-    - href: /azure/batch-ai/
-      html: <p>任意のフレームワークを使用して AI モデルと並行して実験を行い、クラスター化された GPU でそれらを大規模にトレーニングする際に役立つマネージド サービス。</p>
-      image:
-        src: /azure/machine-learning/media/index/batch.png
-      title: Batch AI トレーニング
-    - href: /sql/advanced-analytics/r/r-services
-      html: <p>R と Python の両方をサポートするデータベース内分析。</p>
-      image:
-        src: /azure/machine-learning/media/index/logo_sql.png
-      title: SQL Server Machine Learning サービス
-    - href: /machine-learning-server/
-      html: <p>Windows、Linux、HDInsight Spark、Hadoop クラスターで R および Python のデプロイをサポートする、柔軟性のあるエンタープライズ向け機械学習プラットフォーム。</p>
-      image:
-        src: /azure/machine-learning/media/index/ml-server.png
-      title: Microsoft Machine Learning Server
-    - href: /azure/machine-learning/team-data-science-process
-      html: <p>チームが予測分析ソリューションやインテリジェント アプリケーションを効率的に実現するのに役立つ、コラボレーションに対応したデータ サイエンス手法。</p>
-      image:
-        src: /azure/machine-learning/media/index/tdsp.png
-      title: Team Data Science Process
-    - href: /azure/machine-learning/data-science-virtual-machine/
-      html: <p>データ サイエンス (DSVM) 仮想マシンとディープ ラーニング (DLVM) 仮想マシンを使用して、ソフトウェアをインストールまたは構成せずに実験を行います。 一般的なデータ分析ツール、機械学習ツール、AI ツールがプレインストールされています。</p>
-      image:
-        src: /azure/machine-learning/media/index/virtualmachine.svg
-      title: データ サイエンス仮想マシン
+  - items:
+      - className: cardsM
+        columns: 2
+        items:
+          - href: /azure/machine-learning/service/overview-what-is-azure-ml
+            html: <p>このサービスでは、データ サイエンティストが、Azure のさまざまなデータ サービスやコンピューティング サービスで CLI および Python ツールとライブラリを使用して、<br/> AI ソリューションを開発し、管理できます。 詳細をご覧ください。</p>
+            image:
+              src: /azure/machine-learning/media/index/i_machine-learning.svg
+            title: Azure Machine Learning サービス
+        style: cards
+        type: list
+  - items:
+      - text: 'Azure Machine Learning サービスを設定して使用を開始する:'
+        type: paragraph
+      - text: '<b>クイック スタート:</b>'
+        type: paragraph
+      - items:
+          - html: <a href="service/quickstart-run-cloud-notebook">クラウドで実験を実行する</a> (インストール不要)
+          - html: <a href="service/quickstart-run-local-notebook">ローカルのノートブック サーバーを使用して実験を実行する</a> (SDK のローカル インストール)
+        style: unordered
+        type: list
+      - text: '<b>画像分類のチュートリアルと MNIST データ:</b>'
+        type: paragraph
+      - items:
+          - html: 'パート 1:<a href="service/tutorial-train-models-with-aml">自分で用意したモデルを使用する</a>'
+          - html: 'パート 2:<a href="service/tutorial-deploy-models-with-aml">そのモデルをデプロイする</a>'
+        style: unordered
+        type: list
+      - text: '<b>回帰モデリング チュートリアルとニューヨーク市のタクシー データ:</b>'
+        type: paragraph
+      - items:
+          - html: 'パート 1:<a href="service/tutorial-data-prep">モデリング用にデータを準備する</a>'
+          - html: 'パート 2:<a href="service/tutorial-auto-train-models">ML によりモデルを自動的にトレーニングさせる</a>'
+        style: unordered
+        type: list
+      - text: '<b>モデルを使用する:</b>'
+        type: paragraph
+      - items:
+          - html: <a href="service/how-to-consume-web-service">要求 - 応答モデルの使用</a>
+          - html: <a href="service/how-to-run-batch-predictions">ML パイプラインを使用したバッチ予測</a>
+        style: unordered
+        type: list
+    title: クイック スタートとチュートリアル
+  - items:
+      - className: cardsM
+        columns: 2
+        items:
+          - href: /azure/cognitive-services/
+            html: <p>アプリ、Web サイト、ボットにインテリジェントなアルゴリズムを提供する API。</p>
+            image:
+              src: /azure/machine-learning/media/index/cognitive-services.png
+            title: Cognitive Services
+          - href: /azure/machine-learning/studio/
+            html: "<p>R または Python を使用してデータについて予測分析ソリューションを構築、テスト、デプロイするするためのドラッグ アンド ドロップ コラボレーション ツール。\_</p>"
+            image:
+              src: /azure/machine-learning/media/index/machine-learning-studio.svg
+            title: Azure Machine Learning Studio
+          - href: /sql/advanced-analytics/r/r-services
+            html: <p>R と Python の両方をサポートするデータベース内分析。</p>
+            image:
+              src: /azure/machine-learning/media/index/logo_sql.png
+            title: SQL Server Machine Learning サービス
+          - href: /machine-learning-server/
+            html: <p>Windows、Linux、HDInsight Spark、Hadoop クラスターで R および Python のデプロイをサポートする、柔軟性のあるエンタープライズ向け機械学習プラットフォーム。</p>
+            image:
+              src: /azure/machine-learning/media/index/ml-server.png
+            title: Microsoft Machine Learning Server
+          - href: /azure/machine-learning/team-data-science-process
+            html: <p>チームが予測分析ソリューションやインテリジェント アプリケーションを効率的に実現するのに役立つ、コラボレーションに対応したデータ サイエンス手法。</p>
+            image:
+              src: /azure/machine-learning/media/index/tdsp.png
+            title: Team Data Science Process
+          - href: /azure/machine-learning/data-science-virtual-machine/
+            html: <p>データ サイエンス (DSVM) 仮想マシンとディープ ラーニング (DLVM) 仮想マシンを使用して、ソフトウェアをインストールまたは構成せずに実験を行います。 一般的なデータ分析ツール、機械学習ツール、AI ツールがプレインストールされています。</p>
+            image:
+              src: /azure/machine-learning/media/index/virtualmachine.svg
+            title: データ サイエンス仮想マシン
+        style: cards
+        type: list
+    title: その他の Microsoft 機械学習テクノロジ
+title: Azure Machine Learning のドキュメント

@@ -7,15 +7,15 @@ manager: carmonm
 tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.topic: tutorial
-ms.date: 4/17/2018
+ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 76b5a5743fd6ac715eca45e49cc08d5006522ad0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c3fcf6430f04a3fc10abbd9129e4857e35db84eb
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871543"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55485723"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Azure でディスクを復元し、回復した VM を作成する
 Azure Backup では、geo 冗長 Recovery コンテナーに保存される復旧ポイントが作成されます。 復旧ポイントから復元するときは、VM 全体または個々のファイルを復元することができます。 この記事では、CLI を使用して完全な VM を復元する方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
@@ -109,7 +109,7 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
 
 
 ## <a name="convert-the-restored-disk-to-a-managed-disk"></a>復元されたディスクを管理ディスクに変換する
-復元ジョブではアンマネージド ディスクが作成されます。 ディスクから VM を作成するには、まず、マネージド ディスクに変換する必要があります。
+復元ジョブでは管理されていないディスクが作成されます。 ディスクから VM を作成するには、まず、マネージド ディスクに変換する必要があります。
 
 1. [az storage account show-connection-string](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string) を使用して、ストレージ アカウントの接続情報を取得します。 *mystorageaccount* は、次のように、使用しているストレージ アカウントの名前に置き換えます。
     
@@ -120,7 +120,7 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
         --name mystorageaccount )
     ```
 
-2. アンマネージド ディスクはストレージ アカウントで保護されます。 次のコマンドはアンマネージド ディスクに関する情報を取得し、*uri* という名前の変数を作成します。この変数は、管理ディスクを作成する際に次の手順で使用されます。
+2. 管理されていないディスクはストレージ アカウントで保護されます。 次のコマンドは管理されていないディスクに関する情報を取得し、*uri* という名前の変数を作成します。この変数は、管理ディスクを作成する際に次の手順で使用されます。
 
     ```azurecli-interactive
     container=$(az storage container list --query [0].name -o tsv)
@@ -137,7 +137,7 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
         --source $uri
     ```
 
-4. 回復したディスクから管理ディスクを作成したら、[az storage account delete](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-delete) を使用して、アンマネージド ディスクとストレージ アカウントをクリーンアップします。 *mystorageaccount* は、次のように、使用しているストレージ アカウントの名前に置き換えます。
+4. 回復したディスクから管理ディスクを作成したら、[az storage account delete](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-delete) を使用して、管理されていないディスクとストレージ アカウントをクリーンアップします。 *mystorageaccount* は、次のように、使用しているストレージ アカウントの名前に置き換えます。
 
     ```azurecli-interactive
     az storage account delete \

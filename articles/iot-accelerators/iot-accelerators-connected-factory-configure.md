@@ -1,5 +1,5 @@
 ---
-title: コネクテッド ファクトリ トポロジの構成 | Microsoft Docs
+title: コネクテッド ファクトリ トポロジを構成する - Azure | Microsoft Docs
 description: コネクテッド ファクトリ ソリューション アクセラレータのトポロジの構成方法。
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 8cb3cae396016545c5d78a2ff7ccde4a053c4cf1
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 3fd160fbccfb5298cefed6a731797ca6962b997c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746981"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602275"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>コネクテッド ファクトリ ソリューション アクセラレータの構成
 
@@ -85,7 +85,7 @@ Contoso の各工場には、それぞれ 3 つのステーションで構成さ
 }
 ```
 
-`<global_configuration>`、`<factory_configuration>`、`<production_line_configuration>`、`<station_configuration>` の共通プロパティは次のとおりです。
+ `<global_configuration>`、`<factory_configuration>`、`<production_line_configuration>`、および `<station_configuration>` の共通プロパティは次のとおりです。
 
 * **Name** (string 型)
 
@@ -267,7 +267,7 @@ Contoso の各工場には、それぞれ 3 つのステーションで構成さ
 * Name
 * 説明
 * イメージ
-* Location
+* 場所
 * Units
 * Visible
 
@@ -282,7 +282,7 @@ WebApp は、すべてのトポロジ ノードの情報を含む内部データ
 * 計算に含まれる OPC UA ノードの値。
 * テレメトリの値からの数値の計算方法。
 
-コネクテッド ファクトリは、 http://www.oeefoundation.org が発行した OEE 数式を使用します。
+コネクテッド ファクトリは、 https://www.oeefoundation.org が発行した OEE 数式を使用します。
 
 ステーションの OPC UA ノード オブジェクトは、OEE/KPI 計算で使用するためのタグ付けを有効にします。 **Relevance** プロパティは、OPC UA ノードの値を使用する必要がある OEE/KPI の数値を示します。 **OpCode** プロパティは、値を計算に含める方法を定義します。
 
@@ -309,7 +309,7 @@ WebApp は、すべてのトポロジ ノードの情報を含む内部データ
 
 OPC Publisher を使用してテレメトリ データをコネクテッド ファクトリに取り込む方法の詳細については、[こちら](https://github.com/Azure/iot-edge-opc-publisher)の GitHub ページをご覧ください。
 
-## <a name="example-how-kpi1-is-calculated"></a>例: KPI1 の計算方法
+## <a name="example-how-kpi1-is-calculated"></a>例:KPI1 の計算方法
 
 `ContosoTopologyDescription.json` ファイル内の構成により、OEE/KPI の数値の計算方法を制御します。 次の例では、このファイル内のプロパティが KPI1 の計算を制御する方法を示します。
 

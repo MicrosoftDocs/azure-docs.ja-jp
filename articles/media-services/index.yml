@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0f249cfc604a31a29f6b2e3c0380e6591ec8b4e6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378833"
 documentType: LandingData
 title: Azure Media Services のドキュメント
 metadata:
-  document_id: 
+  document_id: null
   title: Azure Media Services のドキュメント | Microsoft Docs
-  meta.description: Azure Media Services is a cloud-based platform that enables you to build solutions that achieve broadcast-quality video streaming, enhance accessibility and distribution, analyze content, and much more.
+  meta.description: 'Azure Media Services is a cloud-based platform that enables you to build solutions that achieve broadcast-quality video streaming, enhance accessibility and distribution, analyze content, and much more.'
   services: media-services
   author: juliako
   manager: femila
@@ -18,77 +12,39 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09-24-2018
+  ms.date: 03/11/2019
   ms.author: juliako
 abstract:
-  description: クラウドベースのプラットフォームである Azure Media Services (AMS) では、高解像度のビデオ エンコーディングとブロードキャスト品質のビデオ ストリーミングを実現し、最も人気のあるデバイスを使っているユーザーにリーチするソリューションを構築できます。 AMS v3 では、Video Indexer と AMS v3 アナライザー プリセットを使用して、オーディオおよびビデオ ファイルから分析情報を抽出することもできます。 より詳細な分析情報が必要な場合は、Video Indexer を直接使用します。<br/> どのような場合に Video Indexer やMedia Services アナライザー プリセットを使用するかについて詳しくは、<a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">比較のドキュメント</a>をご覧ください。
+  description: Azure Media Services は、エンコード、パッケージ化、コンテンツ保護、ライブ イベント ブロードキャストが必要なソリューションを構築できる、クラウドベースのメディア ワークフロー プラットフォームです。 Azure Media Services では、Azure CDN とシームレスに統合して、Akamai および Verizon の CDN サービスによってデリバリーをスケーリングできます。そのため、お客様はコンテンツ配信ネットワークをまたぐ負荷分散など、ニーズに合ったソリューションを選ぶことができます。 Azure Media Services Video Indexer では、AI と組み込みのビデオおよびオーディオ アナライザー プリセットを使用して、メタデータと分析情報を抽出できます。 Video Indexer API を使用して所与の AI モデルを独自のコンテンツでトレーニングして、精度を簡単に向上させることができます。
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
-    items:
-    - href: /azure/media-services/latest/
-      html: <p>ビデオのエンコード、オンデマンドでのストリーミング、ライブ ブロードキャスト、分析を Media Services v3 を使用して実行する方法を説明します。</p>
-      image:
-        src: media/index/AMSIcons-media_servicesV3.svg
-      title: Azure Media Services v3
-    - href: /azure/media-services/previous/
-      html: <p>ビデオのエンコード、オンデマンドでのストリーミング、ライブ ブロードキャストを Media Services v2 を使用して実行する方法を説明します。</p>
-      image:
-        src: media/index/AMSIcons-media_servicesV2.svg
-      title: Azure Media Services v2 (legacy)
-    - href: /azure/media-services/video-indexer/
-      html: <p>Video Indexer を使用して、ビデオおよびオーディオ ファイルから分析情報を抽出する方法について説明します。</p>
-      image:
-        src: media/index/AMSIcons-media_analytics.svg
-      title: Video Indexer
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: Media Services v3 を使用したエンコーディングとストリーミングについて説明します。
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/AMSIcons-encoding.svg
-      text: ファイルのストリーム配信
-      href: /azure/media-services/latest/stream-files-dotnet-quickstart
-  - type: paragraph
-    text: Video Indexer を使用してビデオから分析情報を抽出する方法について説明します。
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/AMSIcons-media_analytics.svg
-      text: 分析情報の抽出
-      href: ../cognitive-services/video-indexer/video-indexer-get-started.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Media Services v3 を使用して、オンデマンドでのファイルのストリーミング、ライブ ブロードキャスト、ビデオの分析を行う方法を説明します。
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/AMSIcons-encoding.svg
-      text: ビデオのアップロード、エンコード、ストリーミング
-      href: /azure/media-services/latest/stream-files-tutorial-with-api
-    - image:
-        src: media/index/AMSIcons-live.svg
-      text: ライブ ブロードキャスト
-      href: /azure/media-services/latest/stream-live-tutorial-with-api
-    - image:
-        src: media/index/AMSIcons-media_analytics.svg
-      text: ビデオの分析
-      href: /azure/media-services/latest/analyze-videos-tutorial-with-api
-  - type: paragraph
-    text: Video Indexer API を使用してビデオから分析情報を抽出する方法について説明します。
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/index/AMSIcons-media_analytics.svg
-      text: 分析情報の抽出
-      href: ../cognitive-services/video-indexer/video-indexer-use-apis.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 2
+        items:
+          - href: /azure/media-services/latest/
+            html: <p>Media Services v3 を使用して、コンテンツのエンコード、パッケージ化、保護に加えてオンデマンドでのビデオのストリーム配信、ライブ ブロードキャスト、分析を行います。</p>
+            image:
+              src: /azure/media-services/latest/media/index/AMSIcons-encoding.svg
+            title: Azure Media Services v3
+          - href: /azure/media-services/previous/
+            html: <p>エンコード、パッケージ化、保護など。 これはメンテナンス中のレガシ サービスです。 お客様は、新しい機能の作成と機能強化の実施が行われている Media Services v3 への移行を推奨されます。</p>
+            image:
+              src: null
+            title: Azure Media Services v2 (legacy)
+          - href: /azure/cdn/
+            html: <p>Azure CDN の機能を使って、Akamai および Verizon のサービスを利用してコンテンツを大規模にストリーム配信したり、複数のコンテンツ配信ネットワーク全体に負荷分散したりします。</p>
+            image:
+              src: /azure/cdn/media/index/cdn.svg
+            title: CDN
+          - href: 'http://amp.azure.net/libs/amp/latest/docs/index.html'
+            html: <p>さまざまなブラウザーやデバイス上で Microsoft Azure Media Services からメディア コンテンツを再生します。</p>
+            image:
+              src: /azure/media-services/latest/media/index/AMSIcons-Player.svg
+            title: Azure Media Player
+          - href: /azure/media-services/video-indexer/
+            html: <p>Video Indexer を使用してビデオ ファイルやオーディオ ファイルから分析情報を抽出します。</p>
+            image:
+              src: media/index/AMSIcons-media_analytics.svg
+            title: Azure Media Services Video Indexer

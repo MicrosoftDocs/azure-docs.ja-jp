@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 78ea1b51dea0a65aede0e75e3a8c1d424689854e
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: d656cf7c7bed1d40bbde654f9c2484efcc5df25d
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285374"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157923"
 ---
 # <a name="authorize-access-based-on-jwt-claims"></a>JWT クレームに基づいてアクセスを承認する
 

@@ -1,17 +1,19 @@
 ---
 title: Azure Site Recovery を使用してディザスター リカバリーのための復旧計画を作成してカスタマイズする | Microsoft Docs
 description: Azure Site Recovery サービスを使用してディザスター リカバリーのための復旧計画を作成してカスタマイズする方法について説明します。
+author: rayne-wiselman
 manager: carmonm
+services: site-recovery
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 5253b5743216fdb7cea9e3d387f64fdba8f56d8a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: d52aa3b39a17c42c0f0e0cb669c69d336b41ba48
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212337"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973212"
 ---
 # <a name="create-and-customize-recovery-plans"></a>復旧計画を作成してカスタマイズする
 
@@ -63,9 +65,9 @@ ms.locfileid: "50212337"
     **シナリオ** | **フェールオーバー** | **フェールバック**
     --- | --- | --- 
     Azure から Azure  | Runbook | Runbook
-    VMware から Azure | Runbook | 該当なし 
+    VMware から Azure | Runbook | NA 
     Hyper-V (VMM を使用) から Azure | Runbook | スクリプト
-    Hyper-V サイトから Azure | Runbook | 該当なし
+    Hyper-V サイトから Azure | Runbook | NA
     VMM からセカンダリ VMM | スクリプト | スクリプト
 
 1. 復旧計画で、アクションを追加する必要があるステップをクリックし、アクションが発生する必要があるタイミングを指定します。a. フェールオーバー後、グループ内のマシンが開始される前にアクションを発生させる場合は、**[事前アクションの追加]** を選択します。

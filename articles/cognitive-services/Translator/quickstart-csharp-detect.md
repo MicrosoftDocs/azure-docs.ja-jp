@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: テキストの言語を認識する、C# - Translator Text API'
+title: クイック スタート:テキストの言語を検出する (C#) - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、.NET Core と Translator Text REST API を使用して、指定されたテキストの言語を検出する方法について説明します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 11/26/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 8f98c4cbca87fd77e3c09c1028bfcb3181907412
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 6f89e1e89736929b7d50444800550708a55e45db
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335698"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103419"
 ---
-# <a name="quickstart-detect-text-language-with-the-translator-text-rest-api-c"></a>クイック スタート: Translator Text REST API を使用してテキストの言語を検出する (C#)
+# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-c"></a>クイック スタート:Translator Text API と C# を使用してテキストの言語を検出する
 
 このクイック スタートでは、.NET Core と Translator Text REST API を使用して、指定されたテキストの言語を検出する方法について説明します。
 
@@ -28,7 +28,7 @@ ms.locfileid: "52335698"
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Json.NET NuGet パッケージ](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)、または任意のテキスト エディター
-* Speech Service の Azure サブスクリプション キー
+* Translator Text の Azure サブスクリプション キー
 
 ## <a name="create-a-net-core-project"></a>.NET Core プロジェクトを作成する
 
@@ -131,9 +131,17 @@ request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
 var response = client.SendAsync(request).Result;
 var jsonResponse = response.Content.ReadAsStringAsync().Result;
 
-// Print the response
-Console.WriteLine(jsonResponse);
+// Pretty print the response
+Console.WriteLine(PrettyPrint(jsonResponse));
 Console.WriteLine("Press any key to continue.");
+```
+
+"Pretty Print" で応答を書式設定して出力するには、次の関数を Program クラスに追加します。
+```
+static string PrettyPrint(string s)
+{
+    return JsonConvert.SerializeObject(JsonConvert.DeserializeObject(s), Formatting.Indented);
+}
 ```
 
 ## <a name="put-it-all-together"></a>すべてをまとめた配置
@@ -154,6 +162,8 @@ dotnet run
 ```
 
 ## <a name="sample-response"></a>応答のサンプル
+
+国の省略形は、こちらの[言語一覧](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support)で確認してください。
 
 ```json
 [

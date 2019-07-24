@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Knowledge Exploration Service (KES) API でセマンティック解釈を使用する方法について説明します。
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 5fcc7b760b5445e57b41787d8818ef11ed926e6c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 26f8d885f8cf85ab849ba221392df206e492aac4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129354"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860815"
 ---
 # <a name="semantic-interpretation"></a>セマンティック解釈
 
@@ -36,12 +36,12 @@ ms.locfileid: "46129354"
 |type|説明|例|
 |----|----|----|
 |String|0 文字以上のシーケンス|"Hello World!"<br/>""|
-|ブール値|ブール値|true<br/>false|
+|Bool|ブール値|true<br/>false|
 |Int32|32 ビット符号付き整数  -2.1e9 から 2.1e9|123<br/>-321|
 |Int64|64 ビット符号付き整数 -9.2e18 と 9.2e18|9876543210|
 |Double|倍精度浮動小数点数。 1.7e+/-308 (15 桁)|123.456789<br/>1.23456789e2|
 |Guid|グローバル一意識別子|"602DD052-CC47-4B23-A16A-26B52D30C05B"|
-|クエリ|インデックス内のデータ オブジェクトのサブセットを指定するクエリ式|All()<br/>And(*q1*, *q2*)|
+|Query|インデックス内のデータ オブジェクトのサブセットを指定するクエリ式|All()<br/>And(*q1*, *q2*)|
 
 ## <a name="semantic-functions"></a>セマンティック関数
 
@@ -141,8 +141,8 @@ And(Composite(Query("academic#Author.Name", "harry shum"),
 
 |Name|type|説明|
 |----|----|----|
-|IsAtEndOfQuery|ブール値|現在の解釈がすべての入力クエリ テキストと一致した場合は true|
-|IsBeyondEndOfQuery|ブール値|現在の解釈に、入力クエリ テキスト以外の提案された入力候補がある場合は true|
+|IsAtEndOfQuery|Bool|現在の解釈がすべての入力クエリ テキストと一致した場合は true|
+|IsBeyondEndOfQuery|Bool|現在の解釈に、入力クエリ テキスト以外の提案された入力候補がある場合は true|
 
 ### <a name="setvariable-function"></a>SetVariable 関数
 

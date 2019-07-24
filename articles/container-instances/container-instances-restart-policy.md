@@ -1,18 +1,18 @@
 ---
-title: Azure Container Instances で再起動ポリシーを使ってコンテナー化タスクを実行する
+title: Azure Container Instances でコンテナー化タスクに再起動ポリシーを使用する
 description: Azure Container Instances を使用して、ビルド、テスト、イメージ レンダリングのジョブなど、完了まで実行するタスクを実行する方法を説明します。
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: c9e3fadd5164ca0d770f36ba95c30db933efcd39
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 06872eefd0d500a22214109ad5055dd236b5a6ac
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853894"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606839"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>再起動ポリシーによるコンテナー化タスクの実行
 
@@ -24,7 +24,7 @@ Azure Container Instances ではコンテナー デプロイを簡単にすば�
 
 ## <a name="container-restart-policy"></a>コンテナー再起動ポリシー
 
-Azure Container Instances でコンテナーを作成する場合、3 つの再起動ポリシー設定のいずれかを指定できます。
+Azure Container Instances で[コンテナー グループ](container-instances-container-groups.md)を作成する場合、3 つの再起動ポリシー設定のいずれかを指定できます。
 
 | 再起動ポリシー   | 説明 |
 | ---------------- | :---------- |
@@ -46,7 +46,7 @@ az container create \
 
 ## <a name="run-to-completion-example"></a>完了まで実行の例
 
-再起動ポリシーが動作しているのを確認するには、[microsoft/aci-wordcount][aci-wordcount-image] イメージからコンテナー インスタンスを作成し、`OnFailure` 再起動ポリシーを指定します。 このコンテナー例では、既定でシェイクスピアの[ハムレット](http://shakespeare.mit.edu/hamlet/full.html)のテキストを解析し、最もよく使われる単語 10 個を STDOUT に書き込んで終了する Python スクリプトを実行します。
+再起動ポリシーが動作しているのを確認するには、Microsoft [aci-wordcount][aci-wordcount-image] イメージからコンテナー インスタンスを作成し、`OnFailure` 再起動ポリシーを指定します。 このコンテナー例では、既定でシェイクスピアの[ハムレット](http://shakespeare.mit.edu/hamlet/full.html)のテキストを解析し、最もよく使われる単語 10 個を STDOUT に書き込んで終了する Python スクリプトを実行します。
 
 このコンテナー例を次の [az container create][az-container-create] コマンドで実行します。
 
@@ -54,7 +54,7 @@ az container create \
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure
 ```
 
@@ -93,83 +93,14 @@ az container logs --resource-group myResourceGroup --name mycontainer
 
 この例は、スクリプトが STDOUT に送信した出力を示しています。 ただし、コンテナー化されたタスクでは、後で取得できるように、その出力を永続的ストレージに書き込む場合があります。 たとえば、[Azure ファイル共有](container-instances-mounting-azure-files-volume.md)に書き込むなどです。
 
-## <a name="configure-containers-at-runtime"></a>実行時にコンテナーを構成する
-
-コンテナー インスタンスを作成すると、その**環境変数**を設定できるだけでなく、コンテナーが開始されたときに実行するカスタム **コマンド ライン**を指定することもできます。 これらの設定をバッチ ジョブで使用して、タスク固有の構成で各コンテナーを準備できます。
-
-## <a name="environment-variables"></a>環境変数
-
-コンテナー内で環境変数を設定して、コンテナーが実行するアプリケーションまたはスクリプトの動的な構成を設定します。 これは、`docker run` に対する `--env` コマンドライン引数に似ています。
-
-たとえば、コンテナー インスタンスを作成するときに次の環境変数を指定することで、コンテナー例のスクリプトの動作を変更できます。
-
-*NumWords*: STDOUT に送信された単語の数。
-
-*MinLength*: 単語内のカウントする文字の最小数。 数値を大きくすると、"of" や "the" のようなよく使用される単語は無視されます。
-
-```azurecli-interactive
-az container create \
-    --resource-group myResourceGroup \
-    --name mycontainer2 \
-    --image microsoft/aci-wordcount:latest \
-    --restart-policy OnFailure \
-    --environment-variables NumWords=5 MinLength=8
-```
-
-コンテナーの環境変数に `NumWords=5` および `MinLength=8` を指定することで、コンテナー ログに別の出力が表示されます。 コンテナーの状態が*終了*と表示されたら (状態を確認するには `az container show` を使用)、コンテナーのログを表示して新しい出力を確認します。
-
-```azurecli-interactive
-az container logs --resource-group myResourceGroup --name mycontainer2
-```
-
-出力:
-
-```bash
-[('CLAUDIUS', 120),
- ('POLONIUS', 113),
- ('GERTRUDE', 82),
- ('ROSENCRANTZ', 69),
- ('GUILDENSTERN', 54)]
-```
-
-## <a name="command-line-override"></a>コマンド ラインのオーバーライド
-
-コンテナー イメージに組み込まれたコマンド ラインをオーバーライドするコンテナー インスタンスを作成する場合は、コマンドラインを指定します。 これは、`docker run` に対する `--entrypoint` コマンドライン引数に似ています。
-
-たとえば、別のコマンドラインを指定することで、このコンテナー例で*ハムレット*以外のテキストを解析できます。 コンテナーで実行される Python スクリプト *wordcount.py* は、引数として URL を受け取り、既定のページではなくそのページのコンテンツを処理します。
-
-たとえば、"*ロミオとジュリエット*" に含まれる 5 文字の単語の上位 3 つを決定するには、以下のようにします。
-
-```azurecli-interactive
-az container create \
-    --resource-group myResourceGroup \
-    --name mycontainer3 \
-    --image microsoft/aci-wordcount:latest \
-    --restart-policy OnFailure \
-    --environment-variables NumWords=3 MinLength=5 \
-    --command-line "python wordcount.py http://shakespeare.mit.edu/romeo_juliet/full.html"
-```
-
-再び、コンテナーが*終了*になったら、コンテナー ログを表示することにより出力を表示します。
-
-```azurecli-interactive
-az container logs --resource-group myResourceGroup --name mycontainer3
-```
-
-出力:
-
-```bash
-[('ROMEO', 177), ('JULIET', 134), ('CAPULET', 119)]
-```
-
 ## <a name="next-steps"></a>次の手順
 
-### <a name="persist-task-output"></a>タスク出力を保持する
+いくつかのコンテナーがある大きなデータセットのバッチ処理など、タスク ベースのシナリオでは、ランタイムではカスタムの[環境変数](container-instances-environment-variables.md)または[コマンド ライン](container-instances-start-command.md)のメリットが得られます。
 
 完了まで実行するコンテナーの出力を保存する方法の詳細については、「[Azure Container Instances での Azure ファイル共有のマウント](container-instances-mounting-azure-files-volume.md)」をご覧ください。
 
 <!-- LINKS - External -->
-[aci-wordcount-image]: https://hub.docker.com/r/microsoft/aci-wordcount/
+[aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create

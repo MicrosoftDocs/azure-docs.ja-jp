@@ -3,7 +3,7 @@ title: Azure SQL Database ハイパースケールに関する FAQ | Microsoft D
 description: ハイパースケール サービス レベルの Azure SQL Database (通常はハイパースケール データベースと呼ばれる) に関する顧客からの一般的な質問への回答。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 661fd36b4451238f488bff1db60a901a8dabd5aa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 03/26/2019
+ms.openlocfilehash: 5247183f50301554a986fde474b27a9bfc67d91d
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242162"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540671"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Azure SQL ハイパースケール データベースに関する FAQ
 
@@ -45,7 +45,7 @@ ms.locfileid: "51242162"
 - Business Critical サービス レベルは、IO 待ち時間が最優先されるビジネス ワークロードに適しています。
 
 | | リソースの種類 | 汎用 |  ハイパースケール | Business Critical |
-|:---|:---:|:---:|:---:|:---:|:---:|
+|:---|:---:|:---:|:---:|:---:|
 | **最適な用途** |All|  ほとんどのビジネス ワークロード。 予算重視のバランスの取れたコンピューティングおよびストレージ オプションを提供します。 | 大きなデータ容量要件のデータ アプリケーション、および柔軟性の高いストレージの自動スケーリングとコンピューティングのスケーリングの機能。 | トランザクション レートが高く、待ち時間 IO が最低のOLTP アプリケーション。 分離された複数のレプリカを使用して、最高の耐障害性が提供されます。|
 |  **リソースの種類** ||単一データベース/エラスティック プール/マネージド インスタンス | 単一データベース | 単一データベース/エラスティック プール/マネージド インスタンス |
 | **コンピューティング サイズ**|単一データベース/エラスティック プール * | 1 - 80 の仮想コア | 1 - 80 の仮想コア * | 1 - 80 の仮想コア |
@@ -54,7 +54,7 @@ ms.locfileid: "51242162"
 | **ストレージ サイズ** | 単一データベース/エラスティック プール | 5 GB – 4 TB | 最大 100 TB | 5 GB – 4 TB |
 | | マネージド インスタンス  | 32 GB – 8 TB | 該当なし | 32 GB – 4 TB |
 | **IO スループット** | 単一データベース ** | 仮想コアあたり 500 IOPS (最大 7000 IOPS) | 現在不明 | 5000 IOPS (最大 200,000 IOPS)|
-| | マネージド インスタンス | ファイル サイズに依存 | 該当なし | マネージド インスタンス: ファイル サイズに依存|
+| | マネージド インスタンス | ファイル サイズに依存 | 該当なし | Managed Instance:ファイル サイズに依存|
 |**可用性**|All|1 レプリカ、読み取りスケールなし、ローカル キャッシュなし | 複数のレプリカ、最大 15 の読み取りスケール、部分的ローカル キャッシュ | 3 レプリカ、1 読み取りスケール、ゾーン冗長 HA、完全ローカル キャッシュ |
 |**バックアップ**|All|RA-GRS、7 ～ 35 日 (既定では 7 日)| RA-GRS、7 - 35 日 (既定では 7 日)、一定時間で特定の時点に復旧 (PITR) | RA-GRS、7 ～ 35 日 (既定では 7 日) |
 
@@ -73,11 +73,11 @@ ms.locfileid: "51242162"
 
 ### <a name="what-regions-currently-support-hyperscale"></a>現在ハイパースケールをサポートしているリージョン
 
-現在、単一データベースでハイパースケールを利用できるリージョンは、米国西部1、米国西部2、米国東部1、米国中部、西ヨーロッパ、北ヨーロッパ、英国西部、東南アジア、東日本、韓国中部、オーストラリア南東部、オーストラリア東部です。
+現在、ハイパースケールは次のリージョンの単一データベースで使用できます。米国西部 1、米国西部 2、米国東部 1、米国中部、西ヨーロッパ、北ヨーロッパ、東南アジア、東日本、韓国中部、オーストラリア南東部、オーストラリア東部。
 
-### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>論理サーバーごとに複数のハイパースケール データベースを作成できるか
+### <a name="can-i-create-multiple-hyperscale-databases-per-sql-database-server"></a>SQL Database サーバーごとに複数のハイパースケール データベースを作成できるか
 
-はい。 論理サーバーあたりのハイパースケール データベース数の詳細や制約について詳しくは、「[SQL Database resource limits for single and pooled databases on a logical server](sql-database-resource-limits-logical-server.md)」(論理サーバー上の単一データベースおよびプール データベースの SQL Database のリソース制限) をご覧ください。
+はい。 SQL Database サーバーあたりのハイパースケール データベース数の詳細や制約について詳しくは、[SQL Database サーバー上の単一データベースおよびプールされたデータベースの SQL Database のリソース制限](sql-database-resource-limits-database-server.md)に関するページご覧ください。
 
 ### <a name="what-are-the-performance-characteristic-of-a-hyperscale-database"></a>ハイパースケール データベースのパフォーマンス特性とは
 
@@ -98,7 +98,7 @@ SQL Database ハイパースケールでは、ワークロードの需要に基�
 
 ## <a name="deep-dive-questions"></a>具体的な質問
 
-### <a name="can-i-mix-hyperscale-and-single-databases-a-my-logical-server"></a>論理サーバー上でハイパースケールと単一データベースを混在できるか
+### <a name="can-i-mix-hyperscale-and-single-databases-a-my-sql-database-server"></a>SQL Database サーバー上でハイパースケールと単一データベースを混在できるか
 
 はい、できます。
 
@@ -198,7 +198,7 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列プロ�
 
 ### <a name="is-database-compression-supported"></a>データベースの圧縮はサポートされるか
 
-[はい]
+はい
 
 ### <a name="if-i-have-a-huge-table-does-my-table-data-get-spread-out-across-multiple-data-files"></a>大きなテーブルのデータを複数のデータ ファイルに分散できるか
 
@@ -216,13 +216,13 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列プロ�
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>ハイパースケール サービス レベルに移行した後で使えなくなる機能があるか
 
-はい。 TDE や長期保存バックアップを始めとする Azure SQL Database の一部の機能は、パブリック プレビュー段階のハイパースケールではサポートされていません。 ハイパースケールにデータベースを移行した後、これらの機能は動作を停止します。
+はい。 長期保存バックアップを始めとする Azure SQL Database の一部の機能は、パブリック プレビュー段階のハイパースケールではサポートされていません。 ハイパースケールにデータベースを移行した後、これらの機能は動作を停止します。
 
 ### <a name="can-i-move-my--on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>オンプレミスの SQL Server データベースまたは my SQL Server 仮想マシン データベースをハイパースケールに移行できるか
 
 はい。 BACPAC、トランザクション レプリケーション、論理データ読み込みなど、既存のすべての移行方法を使用して、ハイパースケールに移行できます。 「[Azure Database Migration Service とは](../dms/dms-overview.md)」もご覧ください。
 
-### <a name="what-is-my-downtown-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>オンプレミスまたは仮想マシン環境からハイパースケールへの移行時のダウンタウン、および最小限にするための方法
+### <a name="what-is-my-downtime-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>オンプレミスまたは仮想マシン環境からハイパースケールへの移行時のダウンタイム、および最小限にするための方法
 
 ダウンタイムは、データベースを Azure SQL Database 内の単一データベースに移行する際のダウンタイムと同じです。 [トランザクション レプリケーション](replication-to-sql-database.md#data-migration-scenario
 )を使用すると、サイズが数 TB までのデータベースについて移行時のダウンタイムを最小限に抑えることができます。 特に大規模なデータベース (10 TB 超) の場合は、ADF、Spark、またはその他のデータ移動方法を使用してデータを移行することを検討してください。
@@ -235,7 +235,7 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列プロ�
 
 Azure Storage からデータを読み取り、ハイパースケール データベースに読み込むことができます (通常の単一データベースの場合と同様です)。 Polybase は現在 Azure SQL Database でサポートされていません。 Polybase を実行するには、[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) を使用するか、[SQL 用 Spark コネクタ](sql-database-spark-connector.md)を使用して Spark ジョブを [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) で実行します。 SQL 用の Spark コネクタでは一括挿入がサポートされます。
 
-単純復旧モデルまたは一括ログ記録モデルはハイパースケールではサポートされていません。 高可用性を実現するには完全復旧モデルが必要です。 ただし、ハイパースケールでは、単一の Azure SQL Database と比較して、新しいログ アーキテクチャのためにデータ取り込み率が向上しています。
+単純復旧モデルまたは一括ログ記録モデルはハイパースケールではサポートされていません。 高可用性を実現するには完全復旧モデルが必要です。 ただし、ハイパースケールでは、単一データベースと比較して、ログ アーキテクチャが新しくなっているため、データ取り込み率が向上しています。
 
 ### <a name="does-sql-database-hyperscale-allow-provisioning-multiple-nodes-for-ingesting-large-amounts-of-data"></a>SQL Database ハイパースケールは取り込むデータ容量を増やすために複数のノードをプロビジョニングできるか
 
@@ -243,7 +243,7 @@ Azure Storage からデータを読み取り、ハイパースケール デー�
 
 ### <a name="what-is-the-oldest-sql-server-version-will-sql-database-hyperscale-support-migration-from"></a>SQL Database ハイパースケールへの移行がサポートされる最も古い SQL Server バージョンとは
 
-SQL Server 2005。 詳しくは、「[単一データベースまたはプール データベースに移行する](sql-database-cloud-migrate.md#migrate-to-a-single-database-or-a-pooled-database)」をご覧ください。 互換性の問題について詳しくは、「[データベース移行に関する互換性の問題の解決](sql-database-cloud-migrate.md#resolving-database-migration-compatibility-issues)」をご覧ください。
+SQL Server 2005。 詳しくは、「[単一データベースまたはプール データベースに移行する](sql-database-single-database-migrate.md#migrate-to-a-single-database-or-a-pooled-database)」をご覧ください。 互換性の問題について詳しくは、「[データベース移行に関する互換性の問題の解決](sql-database-single-database-migrate.md#resolving-database-migration-compatibility-issues)」をご覧ください。
 
 ### <a name="does-sql-database-hyperscale-support-migration-from-other-data-sources-such-as-aurora-mysql-oracle-db2-and-other-database-platforms"></a>SQL Database ハイパースケールで他のデータ ソース (Aurora、MySQL、Oracle、DB2、その他のデータベース プラットフォーム) からの移行がサポートされるか
 
@@ -257,7 +257,7 @@ SQL Server 2005。 詳しくは、「[単一データベースまたはプール
 
 ### <a name="are-the-database-backups-managed-for-me-by-the-azure-sql-database-service"></a>Azure SQL Database サービスによってデータベース バックアップが管理されるか
 
-[はい]
+はい
 
 ### <a name="how-often-are-the-database-backups-taken"></a>データベース バックアップの実行頻度
 
@@ -265,7 +265,7 @@ SQL Database ハイパースケール データベースでは、従来の完全
 
 ### <a name="does-sql-database-hyperscale-support-point-in-time-restore"></a>SQL Database ハイパースケールで特定の時点への復元はサポートされるか
 
-[はい]
+はい
 
 ### <a name="what-is-the-recovery-point-objective-rporecovery-time-objective-rto-with-backuprestore-in-sql-database-hyperscale"></a>SQL Database ハイパースケールにおいてバックアップ/復元の回復ポイントの目標 (RPO)/回復時刻の目標 (RTO) とは
 

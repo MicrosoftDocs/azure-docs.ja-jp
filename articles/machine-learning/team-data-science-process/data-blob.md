@@ -1,26 +1,22 @@
 ---
-title: Azure BLOB データを高度な分析を使用して処理する | Microsoft Docs
-description: Azure BLOB ストレージのデータを処理します。
-services: machine-learning,storage
-documentationcenter: ''
-author: deguhath
+title: Azure BLOB データを高度な分析を使用して処理する - Team Data Science Process
+description: 高度な分析を使用してデータを探索し、Azure BLOB ストレージに保存されているデータから特徴を生成します。
+services: machine-learning
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: d8a59078-91d3-4440-b85c-430363c3f4d1
 ms.service: machine-learning
-ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: deguhath
-ms.openlocfilehash: 3daf86f59a84f8c442581160142dcf806173b626
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a91c4d9f5dcdcee436f2dbf012eb5485b7a92192
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836604"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59790775"
 ---
 # <a name="heading"></a>Azure  BLOB データを高度な分析を使用して処理する
 このドキュメントでは、データの探索および Azure BLOB ストレージに保存されたデータからの特徴の生成について説明します。 
@@ -79,11 +75,12 @@ ms.locfileid: "34836604"
         print miss_num
 7. データ内の特定の列に不足値がある場合は、次のように削除できます。
    
-     dataframe_blobdata_noNA = dataframe_blobdata.dropna()   dataframe_blobdata_noNA.shape
+        dataframe_blobdata_noNA = dataframe_blobdata.dropna()
+        dataframe_blobdata_noNA.shape
    
    不足値を置き換えるを別の方法として、モード関数を使用した以下のものを実行します。
    
-     dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})        
+        dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})        
 8. 変数の分布をプロットする可変個の箱を使用して、ヒストグラム図を作成します。    
    
         dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')

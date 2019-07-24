@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 17/07/2018
+ms.date: 11/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 2f3b8371357403071e70dd2e351cd75dbd34f746
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: f09f66e81ec4878aedebfee9be4c0c67b75c8ad6
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40007587"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313602"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Azure 用の SAP LaMa コネクタ
 
@@ -38,7 +38,7 @@ ms.locfileid: "40007587"
 [hana-ops-guide]:hana-vm-operations.md
 
 > [!NOTE]
-> 一般的なサポートに関する声明: SAP LaMa または Azure コネクタに関するサポートが必要な場合は、必ずコンポーネント BC-VCM-LVM-HYPERV で SAP に関するインシデントを開始してください。
+> 一般的なサポートに関する声明:SAP LaMa または Azure コネクタに関するサポートが必要な場合は、必ずコンポーネント BC-VCM-LVM-HYPERV で SAP に関するインシデントを開始してください。
 
 SAP LaMa は、SAP ランドスケープの操作と監視のために多くのお客様が使用します。 SAP LaMa 3.0 SP05 以降には、Azure へのコネクタが既定で付属しています。 このコネクタを使用すると、仮想マシンの割り当ての解除と起動、マネージド ディスクのコピーと再配置、およびマネージド ディスクの削除を行うことができます。 このような基本操作では、SAP LaMa を使用して SAP システムの再配置、コピー、複製、および更新を行うことができます。
 
@@ -77,7 +77,7 @@ Azure コネクタは SAP LaMa 3.0 SP05 以降に付属しています。 SAP La
 1. [Azure Active Directory] ブレードを開きます
 1. [アプリの登録] をクリックします
 1. [追加] をクリックします
-1. 名前を入力して、アプリケーションの種類に [Web アプリ/API] を選択し、サインオン URL (例: http://localhost)) を入力します。その後、[作成] をクリックします
+1. [名前] を入力し、[アプリケーションの種類] に [Web アプリ/API] を選択し、サインオン URL (たとえば http:\//localhost) を入力して、[作成] をクリックします
 1. サインオン URL は使用されず、任意の有効な URL を指定することができます
 1. 新しいアプリを選択し、[設定] タブで [キー] をクリックします
 1. 新しいキーの説明を入力し、[期限なし] を選択して [保存] をクリックします
@@ -89,34 +89,34 @@ Azure コネクタは SAP LaMa 3.0 SP05 以降に付属しています。 SAP La
 1. https://portal.azure.com に移動します
 1. [リソース グループ] ブレードを開きます
 1. 使用するリソース グループを選択します
-1. [アクセス制御 (IAM)] をクリックします
-1. [追加] をクリックします
+1. [アクセス制御 (IAM)] を選択します
+1. [ロールの割り当ての追加] をクリックします
 1. 共同作成者ロールを選択します
 1. 上記で作成したアプリケーションの名前を入力します
-1. [OK] をクリックします
+1. [保存] をクリックします。
 1. SAP LaMa で使用するすべてのリソース グループについて、手順 3 ～ 8 を繰り返します
 
 SAP LaMa の Web サイトを開き、[Infrastructure]\(インフラストラクチャ\) に移動します。 [Cloud Managers]\(クラウド マネージャー\) タブに移動して [Add]\(追加\) をクリックします。 [Microsoft Azure Cloud Adapter]\(Microsoft Azure クラウド アダプター\) を選択し、[Next]\(次へ\) をクリックします。 次の情報を入力します。
 
-* Label (ラベル): コネクタ インスタンスの名前を選択します
-* User Name (ユーザー名): サービス プリンシパルのアプリケーション ID
-* Password (パスワード): サービス プリンシパルのキー/パスワード
-* URL: 既定の https://management.azure.com/ を使用します
-* Monitoring Interval (Seconds) (監視間隔 (秒)): 300 以上にしてください
-* Subscription ID (サブスクリプション ID): Azure サブスクリプション ID
-* Azure Active Directory Tenant ID (Azure Active Directory テナント ID): Active Directory テナントの ID
-* Proxy host (プロキシ ホスト): プロキシのホスト名 (SAP LaMa でプロキシを使用してインターネットに接続する必要がある場合)
-* Proxy port (プロキシ ポート): プロキシの TCP ポート
+* Label (ラベル):コネクタ インスタンスの名前を選択します
+* User Name (ユーザー名):サービス プリンシパルのアプリケーション ID
+* Password (パスワード):サービス プリンシパルのキー/パスワード
+* URL:既定の https://management.azure.com/ を使用します
+* Monitoring Interval (Seconds) (監視間隔 (秒)):300 以上にする必要があります
+* Subscription ID (サブスクリプション ID):Azure サブスクリプション ID
+* Azure Active Directory Tenant ID (Azure Active Directory テナント ID):Active Directory テナントの ID
+* Proxy host (プロキシ ホスト):プロキシのホスト名 (SAP LaMa でプロキシを使用してインターネットに接続する必要がある場合)
+* Proxy port (プロキシ ポート):プロキシの TCP ポート
 
 [Test Configuration]\(構成のテスト\) をクリックして入力を検証します。 Web サイトの下部に
 
-Connection successful: Connection to Microsoft cloud was successful. (接続成功: Microsoft クラウドへの接続に成功しました。) 7 resource groups found (only 10 groups requested) (7 個のリソース グループが見つかりました (10 個のグループのみが要求されました))
+Connection successful: (接続成功:)Connection to Microsoft cloud was successful. (Microsoft クラウドへの接続に成功しました。) 7 resource groups found (only 10 groups requested) (7 個のリソース グループが見つかりました (10 個のグループのみが要求されました))
 
 と表示されます。
 
 ## <a name="provision-a-new-adaptive-sap-system"></a>新しい適応型 SAP システムのプロビジョニング
 
-新しい仮想マシンを手動でデプロイするか、または[クイック スタート リポジトリ](https://github.com/Azure/azure-quickstart-templates)内にあるいずれかの Azure テンプレートを使用できます。 このリポジトリには、[SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-ascs)、[SAP NetWeaver アプリケーション サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-apps)、および[データベース](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-db)用のテンプレートが含まれています。 これらのテンプレートを使用すると、システム コピー/複製などの一部として新しいホストをプロビジョニングすることもできます。
+新しい仮想マシンを手動でデプロイするか、または[クイック スタート リポジトリ](https://github.com/Azure/azure-quickstart-templates)内にあるいずれかの Azure テンプレートを使用できます。 このリポジトリには、[SAP NetWeaver ASCS](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-ascs)、[SAP NetWeaver アプリケーション サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-apps)、および[データベース](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-lama-database)用のテンプレートが含まれています。 これらのテンプレートを使用すると、システム コピー/複製などの一部として新しいホストをプロビジョニングすることもできます。
 
 新しい仮想マシンおよび SAP インスタンスのデプロイが準備解除された場合に IP アドレスが "盗まれる" のを防ぐために、SAP LaMa で管理するすべての仮想マシンについて個別のサブネットを使用し、動的 IP アドレスは使用しないことをお勧めします。
 
@@ -182,45 +182,45 @@ SAP LaMa は SQL Server 自体を再配置できないため、データベー�
 
 テンプレートには以下のパラメーターがあります。
 
-* sapSystemId: SAP システム ID。 ディスク レイアウトの作成に使用します (例: /usr/sap/\<sapsid>)。
+* sapSystemId:SAP システム ID。 ディスク レイアウトの作成に使用します (例: /usr/sap/\<sapsid>)。
 
-* computerName: 新しい仮想マシンのコンピューター名。 このパラメーターは SAP LaMa でも使用されます。 このテンプレートを使用して、新しい仮想マシンをシステム コピーの一部としてプロビジョニングすると、SAP LaMa はこのコンピューター名を持つホストに到達するまで待機します。
+* computerName:新しい仮想マシンのコンピューター名。 このパラメーターは SAP LaMa でも使用されます。 このテンプレートを使用して、新しい仮想マシンをシステム コピーの一部としてプロビジョニングすると、SAP LaMa はこのコンピューター名を持つホストに到達するまで待機します。
 
-* osType: デプロイするオペレーティング システムの種類。
+* osType:デプロイするオペレーティング システムの種類。
 
-* dbtype: データベースの種類。 このパラメーターは、追加する必要のある IP 構成の数とディスク レイアウトの内容を決定するために使用します。
+* dbtype:データベースの種類。 このパラメーターは、追加する必要のある IP 構成の数とディスク レイアウトの内容を決定するために使用します。
 
-* sapSystemSize: デプロイする SAP システムのサイズ。 仮想マシン インスタンスの種類とサイズを決定するために使用します。
+* sapSystemSize:デプロイする SAP システムのサイズ。 仮想マシン インスタンスの種類とサイズを決定するために使用します。
 
-* adminUsername: 仮想マシンのユーザー名。
+* adminUsername:仮想マシンのユーザー名。
 
-* adminPassword: 仮想マシンのパスワード。 SSH の公開キーを指定することもできます。
+* adminPassword:仮想マシンのパスワード。 SSH の公開キーを指定することもできます。
 
-* sshKeyData: 仮想マシンの公開 SSH キー。 Linux オペレーティング システムでのみサポートされています。
+* sshKeyData:仮想マシンの公開 SSH キー。 Linux オペレーティング システムでのみサポートされています。
 
-* subnetId: 使用するサブネットの ID。
+* subnetId:使用するサブネットの ID。
 
-* deployEmptyTarget: 仮想マシンをインスタンスの再配置または同様の操作のターゲットとして使用する場合は、空のターゲットをデプロイできます。 この場合、追加のディスクや IP 構成はアタッチされません。
+* deployEmptyTarget:仮想マシンをインスタンスの再配置または同様の操作のターゲットとして使用する場合は、空のターゲットをデプロイできます。 この場合、追加のディスクや IP 構成はアタッチされません。
 
-* sapcarLocation: デプロイするオペレーティング システムに一致する sapcar アプリケーションの場所。 sapcar は、他のパラメーターで指定するアーカイブの抽出に使用します。
+* sapcarLocation:デプロイするオペレーティング システムに一致する sapcar アプリケーションの場所。 sapcar は、他のパラメーターで指定するアーカイブの抽出に使用します。
 
-* sapHostAgentArchiveLocation: SAP Host Agent アーカイブの場所。 SAP Host Agent は、このテンプレートのデプロイの一部としてデプロイされます。
+* sapHostAgentArchiveLocation:SAP Host Agent アーカイブの場所。 SAP Host Agent は、このテンプレートのデプロイの一部としてデプロイされます。
 
-* sapacExtLocation: SAP Adaptive Extensions の場所。 Azure に必要な最小のパッチ レベルは SAP Note [2343511] に記載されています。
+* sapacExtLocation:SAP Adaptive Extensions の場所。 Azure に必要な最小のパッチ レベルは SAP Note [2343511] に記載されています。
 
-* vcRedistLocation: SAP Adaptive Extensions のインストールに必要な VC ランタイムの場所。 このパラメーターは Windows でのみ必須です。
+* vcRedistLocation:SAP Adaptive Extensions のインストールに必要な VC ランタイムの場所。 このパラメーターは Windows でのみ必須です。
 
-* odbcDriverLocation: インストールする ODBC ドライバーの場所。 Microsoft ODBC Driver for SQL Server のみサポートされています。
+* odbcDriverLocation:インストールする ODBC ドライバーの場所。 Microsoft ODBC Driver for SQL Server のみサポートされています。
 
-* sapadmPassword: sapadm ユーザーのパスワード。
+* sapadmPassword:sapadm ユーザーのパスワード。
 
-* sapadmId: sapadm ユーザーの Linux ユーザー ID。 Windows の場合は必要ありません。
+* sapadmId:sapadm ユーザーの Linux ユーザー ID。 Windows の場合は必要ありません。
 
-* sapsysGid: sapsys グループの Linux グループ ID。 Windows の場合は必要ありません。
+* sapsysGid:sapsys グループの Linux グループ ID。 Windows の場合は必要ありません。
 
-* _artifactsLocation: このテンプレートで必要とされる成果物が配置されるベース URI。 付属のスクリプトを使用してテンプレートをデプロイする場合は、サブスクリプション内のプライベートな場所が使用され、この値が自動的に生成されます。 GitHub からテンプレートを展開しない場合にのみ必要です。
+* _artifactsLocation:このテンプレートで必要とされる成果物が配置されるベース URI。 付属のスクリプトを使用してテンプレートをデプロイする場合は、サブスクリプション内のプライベートな場所が使用され、この値が自動的に生成されます。 GitHub からテンプレートを展開しない場合にのみ必要です。
 
-* _artifactsLocationSasToken: _artifactsLocation にアクセスするために必要な sasToken。 付属のスクリプトを使用してテンプレートをデプロイする場合は、sasToken が自動的に生成されます。 GitHub からテンプレートを展開しない場合にのみ必要です。
+* _artifactsLocationSasToken:_artifactsLocation にアクセスするために必要な sasToken。 付属のスクリプトを使用してテンプレートをデプロイする場合は、sasToken が自動的に生成されます。 GitHub からテンプレートを展開しない場合にのみ必要です。
 
 ### <a name="sap-hana"></a>SAP HANA
 
@@ -360,7 +360,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
 
 * HDB ユーザーストアの検証で例外が発生しました  
   * ログ ビューアーを参照  
-    com.sap.nw.lm.aci.monitor.api.validation.RuntimeValidationException: Exception in validator with ID 'RuntimeHDBConnectionValidator' (Validation: 'VALIDATION_HDB_USERSTORE'): Could not retrieve the hdbuserstore (com.sap.nw.lm.aci.monitor.api.validation.RuntimeValidationException: ID 'RuntimeHDBConnectionValidator' でのバリデータの例外 (検証: 'VALIDATION_HDB_USERSTORE'): hdbuserstore を取得できませんでした)  
+    com.sap.nw.lm.aci.monitor.api.validation.RuntimeValidationException:Exception in validator with ID 'RuntimeHDBConnectionValidator' (Validation:'VALIDATION_HDB_USERSTORE'):Could not retrieve the hdbuserstore (com.sap.nw.lm.aci.monitor.api.validation.RuntimeValidationException: ID 'RuntimeHDBConnectionValidator' でのバリデータの例外 (検証: 'VALIDATION_HDB_USERSTORE'): hdbuserstore を取得できませんでした)  
     HANA userstore is not in the correct location (HANA userstore が正しい場所にありません)
   * 解決策  
     /usr/sap/AH1/hdbclient/install/installation.ini が正しいことを確認してください。
@@ -373,19 +373,19 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
     ソースの HANA システムですべてのデータベースのバックアップを作成してください。
 
 * データベース インスタンスのシステム コピー手順の*開始*
-  * Host Agent Operation '000D3A282BC91EE8A1D76CF1F92E2944' failed (OperationException. FaultCode: '127', Message: 'Command execution failed. : [Microsoft][ODBC SQL Server Driver][SQL Server]User does not have permission to alter database 'AS2', the database does not exist, or the database is not in a state that allows access checks.') (ホスト エージェント操作 '000D3A282BC91EE8A1D76CF1F92E2944' に失敗しました (OperationException. FaultCode: '127', Message: 'コマンドの実行に失敗しました。: [Microsoft][ODBC SQL Server Driver][SQL Server]ユーザーにデータベース 'AS2' を変更するアクセス許可がないか、データベースが存在しないか、データベースがアクセス チェックできない状態です。'))
+  * Host Agent Operation '000D3A282BC91EE8A1D76CF1F92E2944' failed (OperationException. FaultCode:'127', Message:'Command execution failed. : [Microsoft][ODBC SQL Server Driver][SQL Server]User does not have permission to alter database 'AS2', the database does not exist, or the database is not in a state that allows access checks.') (ホスト エージェント操作 '000D3A282BC91EE8A1D76CF1F92E2944' に失敗しました (OperationException. FaultCode: '127', Message: 'コマンドの実行に失敗しました。: [Microsoft][ODBC SQL Server Driver][SQL Server]ユーザーにデータベース 'AS2' を変更するアクセス許可がないか、データベースが存在しないか、データベースがアクセス チェックできない状態です。'))
   * 解決策  
     *NT AUTHORITY\SYSTEM* が SQL Server にアクセスできることを確認してください。 SAP Note [2562184] をご覧ください。
 
 ### <a name="errors-and-warnings-during-a-system-clone"></a>システム複製時のエラーと警告
 
 * アプリケーション サーバーまたは ASCS の *[Forced Register and Start Instance Agent]\(インスタンス エージェントの強制登録および起動\)* の手順でインスタンス エージェントを登録するときにエラーが発生しました
-  * Error occurred when trying to register instance agent. (インスタンス エージェントの登録中にエラーが発生しました。) (RemoteException: 'Failed to load instance data from profile '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0':  Cannot access profile '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0': No such file or directory.') (RemoteException: 'プロファイル 'as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' からインスタンス データを読み込めませんでした: プロファイル 'as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' にアクセスできません: ファイルまたはディレクトリが存在しません。')
+  * Error occurred when trying to register instance agent. (インスタンス エージェントの登録中にエラーが発生しました。) (RemoteException:'Failed to load instance data from profile '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0':Cannot access profile '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0':No such file or directory.') (RemoteException: 'プロファイル 'as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' からインスタンス データを読み込めませんでした: プロファイル 'as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' にアクセスできません: ファイルまたはディレクトリが存在しません。')
   * 解決策  
    ASCS/SCS 上の sapmnt 共有に SAP_AS1_GlobalAdmin のフル アクセスがあることを確認してください。
 
 * *[Enable Startup Protection for Clone]\(複製に対するスタートアップ保護の有効化\)* の手順におけるエラー
-  * Failed to open file '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' Cause: No such file or directory (ファイル 'as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' を開けませんでした 原因: ファイルまたはディレクトリが存在しません)
+  * Failed to open file '\\as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' Cause:No such file or directory (ファイル 'as1-ascs\sapmnt\AS1\SYS\profile\AS1_D00_as1-di-0' を開けませんでした 原因: ファイルまたはディレクトリが存在しません)
   * 解決策  
     アプリケーション サーバーのコンピューター アカウントにはプロファイルへの書き込みアクセスが必要です。
 
@@ -409,68 +409,68 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
     ASCS HostAgent プロファイルに ASCS エクスポートを追加します。 SAP Note [2628497] をご覧ください。
 
 * ASCS の再配置時に関数が実装されていません
-  * コマンド出力: exportfs: host:/usr/sap/AX1: Function not implemented (関数が実装されていません)
+  * コマンド出力: exportfs: host:/usr/sap/AX1:Function not implemented (関数が実装されていません)
   * 解決策  
     再配置先の仮想マシンで NFS サーバー サービスが有効になっていることを確認してください。
 
 ### <a name="errors-and-warnings-during-application-server-installation"></a>アプリケーション サーバーのインストール時のエラーと警告
 
 * SAPinst 手順の実行中のエラー: getProfileDir
-  * ERROR: (この手順から報告される最後のエラー: Caught ESAPinstException in module call: Validator of step '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' reported an error: Node \\\as1-ascs\sapmnt\AS1\SYS\profile does not exist. Start SAPinst in interactive mode to solve this problem (モジュール呼び出しで ESAPinstException がキャッチされました: 手順のバリデータ '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' からエラーが報告されました: ノード \as1-ascs\sapmnt\AS1\SYS\profile は存在しません。対話モードで SAPinst を開始してこの問題を解決してください))
+  * ERROR:(この手順から報告される最後のエラー:Caught ESAPinstException in module call:Validator of step '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' reported an error:Node \\\as1-ascs\sapmnt\AS1\SYS\profile does not exist. (モジュール呼び出しで ESAPinstException がキャッチされました: 手順のバリデータ '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' からエラーが報告されました: ノード\\as1-ascs\sapmnt\AS1\SYS\profile が存在しません。) Start SAPinst in interactive mode to solve this problem (モジュール呼び出しで ESAPinstException がキャッチされました: 手順のバリデータ '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' からエラーが報告されました: ノード \as1-ascs\sapmnt\AS1\SYS\profile は存在しません。対話モードで SAPinst を開始してこの問題を解決してください))
   * 解決策  
     プロファイルへのアクセス権を持つユーザーによって SWPM が実行されていることを確認してください。 このユーザーはアプリケーション サーバーのインストール ウィザードで構成できます。
 
 * SAPinst 手順の実行中のエラー: askUnicode
-  * エラー: (この手順から報告される最後のエラー: Caught ESAPinstException in module call: Validator of step '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_getUnicode|ind|ind|ind|ind|unicode|0|askUnicode' reported an error: Start SAPinst in interactive mode to solve this problem (モジュール呼び出しで ESAPinstException がキャッチされました: 手順のバリデータ '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_getUnicode|ind|ind|ind|ind|unicode|0|askUnicode' からエラーが報告されました: 対話モードで SAPinst を開始してこの問題を解決してください))
+  * ERROR:(この手順から報告される最後のエラー:Caught ESAPinstException in module call:Validator of step '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_getUnicode|ind|ind|ind|ind|unicode|0|askUnicode' reported an error:Start SAPinst in interactive mode to solve this problem (モジュール呼び出しで ESAPinstException がキャッチされました: 手順のバリデータ '|NW_DI|ind|ind|ind|ind|0|0|NW_GetSidFromProfiles|ind|ind|ind|ind|getSid|0|NW_readProfileDir|ind|ind|ind|ind|readProfile|0|getProfileDir' からエラーが報告されました: ノード \as1-ascs\sapmnt\AS1\SYS\profile は存在しません。対話モードで SAPinst を開始してこの問題を解決してください))
   * 解決策  
     最新の SAP カーネルを使用すると、SWPM では、システムが Unicode システムであるかどうかを ASCS のメッセージ サーバーを使用して判断できなくなります。 詳しくは、SAP Note [2445033] をご覧ください。  
     この問題は、SAP LaMa の新しいサポート パッケージ/パッチで修正される予定です。  
     この問題を回避するには、SAP システムの既定のプロファイルでプロファイル パラメーター OS_UNICODE=uc を設定します。
 
 * SAPinst 手順の実行中のエラー: dCheckGivenServer
-  * SAPinst 手順の実行中のエラー: dCheckGivenServer" version="1.0" ERROR: (この手順から報告される最後のエラー: \<p> Installation was canceled by user. (インストールはユーザーによって取り消されました。) \</p>
+  * SAPinst 手順の実行中のエラー: dCheckGivenServer" version="1.0" ERROR:(この手順から報告される最後のエラー: \<p> Installation was canceled by user. (インストールはユーザーによって取り消されました。 \</p>
   * 解決策  
     プロファイルへのアクセス権を持つユーザーによって SWPM が実行されていることを確認してください。 このユーザーはアプリケーション サーバーのインストール ウィザードで構成できます。
 
 * SAPinst 手順の実行中のエラー: checkClient
-  * SAPinst 手順の実行中のエラー: checkClient" version="1.0" ERROR: (この手順から報告される最後のエラー: \<p> Installation was canceled by user. (インストールはユーザーによって取り消されました。) \</p>)
+  * SAPinst 手順の実行中のエラー: checkClient" version="1.0" ERROR:(この手順から報告される最後のエラー: \<p> Installation was canceled by user. (インストールはユーザーによって取り消されました。 \</p>)
   * 解決策  
     アプリケーション サーバーをインストールする仮想マシンに Microsoft ODBC Driver for SQL Server がインストールされていることを確認してください。
 
 * SAPinst 手順の実行中のエラー: copyScripts
-  * この手順から報告される最後のエラー: System call failed. (システムの呼び出しに失敗しました。) DETAILS: Error 13 (0x0000000d) (Permission denied) in execution of system call 'fopenU' with parameter (\\\as1-ascs/sapmnt/AS1/SYS/exe/uc/NTAMD64/strdbs.cmd, w), line (494) in file (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/filesystem/syxxcfstrm2.cpp), stack trace: (詳細: エラー 13 (0x0000000d) (アクセス許可が拒否されました) パラメーター (\as1-ascs/sapmnt/AS1/SYS/exe/uc/NTAMD64/strdbs.cmd, w) を指定してシステム呼び出し 'fopenU' の実行中、行 (494)、ファイル (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/filesystem/syxxcfstrm2.cpp)、スタック トレース:)  
-  CThrThread.cpp: 85: CThrThread::threadFunction()  
-  CSiServiceSet.cpp: 63: CSiServiceSet::executeService()  
-  CSiStepExecute.cpp: 913: CSiStepExecute::execute()  
-  EJSController.cpp: 179: EJSControllerImpl::executeScript()  
-  JSExtension.hpp: 1136: CallFunctionBase::call()  
-  iaxxcfile.cpp: 183: iastring CIaOsFileConnect::callMemberFunction(iastring const& name, args_t const& args)  
-  iaxxcfile.cpp: 1849: iastring CIaOsFileConnect::newFileStream(args_t const& _args)  
-  iaxxbfile.cpp: 773: CIaOsFile::newFileStream_impl(4)  
-  syxxcfile.cpp: 233: CSyFileImpl::openStream(ISyFile::eFileOpenMode)  
-  syxxcfstrm.cpp: 29: CSyFileStreamImpl::CSyFileStreamImpl(CSyFileStream*,iastring,ISyFile::eFileOpenMode)  
-  syxxcfstrm.cpp: 265: CSyFileStreamImpl::open()  
-  syxxcfstrm2.cpp: 58: CSyFileStream2Impl::CSyFileStream2Impl(const CSyPath & \\\aw1-ascs/sapmnt/AW1/SYS/exe/uc/NTAMD64/strdbs.cmd, 0x4)  
-  syxxcfstrm2.cpp: 456: CSyFileStream2Impl::open()
+  * この手順から報告される最後のエラー:System call failed. (システムの呼び出しに失敗しました。) DETAILS:Error 13 (0x0000000d) (Permission denied) in execution of system call 'fopenU' with parameter (\\\as1-ascs/sapmnt/AS1/SYS/exe/uc/NTAMD64/strdbs.cmd, w), line (494) in file (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/filesystem/syxxcfstrm2.cpp), stack trace: (詳細: エラー 13 (0x0000000d) (アクセス許可が拒否されました) パラメーター (\as1-ascs/sapmnt/AS1/SYS/exe/uc/NTAMD64/strdbs.cmd, w) を指定してシステム呼び出し 'fopenU' の実行中、行 (494)、ファイル (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/filesystem/syxxcfstrm2.cpp)、スタック トレース:)  
+  CThrThread.cpp:85:CThrThread::threadFunction()  
+  CSiServiceSet.cpp:63:CSiServiceSet::executeService()  
+  CSiStepExecute.cpp:913:CSiStepExecute::execute()  
+  EJSController.cpp:179:EJSControllerImpl::executeScript()  
+  JSExtension.hpp:1136:CallFunctionBase::call()  
+  iaxxcfile.cpp:183: iastring CIaOsFileConnect::callMemberFunction(iastring const& name, args_t const& args)  
+  iaxxcfile.cpp:1849: iastring CIaOsFileConnect::newFileStream(args_t const& _args)  
+  iaxxbfile.cpp:773:CIaOsFile::newFileStream_impl(4)  
+  syxxcfile.cpp:233:CSyFileImpl::openStream(ISyFile::eFileOpenMode)  
+  syxxcfstrm.cpp:29:CSyFileStreamImpl::CSyFileStreamImpl(CSyFileStream*,iastring,ISyFile::eFileOpenMode)  
+  syxxcfstrm.cpp:265:CSyFileStreamImpl::open()  
+  syxxcfstrm2.cpp:58:CSyFileStream2Impl::CSyFileStream2Impl(const CSyPath & \\\aw1-ascs/sapmnt/AW1/SYS/exe/uc/NTAMD64/strdbs.cmd, 0x4)  
+  syxxcfstrm2.cpp:456:CSyFileStream2Impl::open()
   * 解決策  
     プロファイルへのアクセス権を持つユーザーによって SWPM が実行されていることを確認してください。 このユーザーはアプリケーション サーバーのインストール ウィザードで構成できます。
 
 * SAPinst 手順の実行中のエラー: askPasswords
-  * この手順から報告される最後のエラー: System call failed. (システムの呼び出しに失敗しました。) DETAILS: Error 5 (0x00000005) (Access is denied.) in execution of system call 'NetValidatePasswordPolicy' with parameter (...), line (359) in file (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/account/synxcaccmg.cpp), stack trace: (詳細: エラー (0x00000005) (アクセス許可が拒否されました) パラメーター (...) を指定してシステム呼び出し 'NetValidatePasswordPolicy' の実行中、行 (359)、ファイル (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/account/synxcaccmg.cpp)、スタック トレース:)  
-  CThrThread.cpp: 85: CThrThread::threadFunction()  
-  CSiServiceSet.cpp: 63: CSiServiceSet::executeService()  
-  CSiStepExecute.cpp: 913: CSiStepExecute::execute()  
-  EJSController.cpp: 179: EJSControllerImpl::executeScript()  
-  JSExtension.hpp: 1136: CallFunctionBase::call()  
-  CSiStepExecute.cpp: 764: CSiStepExecute::invokeDialog()  
-  DarkModeGuiEngine.cpp: 56: DarkModeGuiEngine::showDialogCalledByJs()  
-  DarkModeDialog.cpp: 85: DarkModeDialog::submit()  
-  EJSController.cpp: 179: EJSControllerImpl::executeScript()  
-  JSExtension.hpp: 1136: CallFunctionBase::call()  
-  iaxxcaccount.cpp: 107: iastring CIaOsAccountConnect::callMemberFunction(iastring const& name, args_t const& args)  
-  iaxxcaccount.cpp: 1186: iastring CIaOsAccountConnect::validatePasswordPolicy(args_t const& _args)  
-  iaxxbaccount.cpp: 430: CIaOsAccount::validatePasswordPolicy_impl()  
-  synxcaccmg.cpp: 297: ISyAccountMgt::PasswordValidationMessage CSyAccountMgtImpl::validatePasswordPolicy(saponazure,*****) const )
+  * この手順から報告される最後のエラー:System call failed. (システムの呼び出しに失敗しました。) DETAILS:Error 5 (0x00000005) (Access is denied.) in execution of system call 'NetValidatePasswordPolicy' with parameter (...), line (359) in file (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/account/synxcaccmg.cpp), stack trace: (詳細: エラー (0x00000005) (アクセス許可が拒否されました) パラメーター (...) を指定してシステム呼び出し 'NetValidatePasswordPolicy' の実行中、行 (359)、ファイル (\bas/bas/749_REL/bc_749_REL/src/ins/SAPINST/impl/src/syslib/account/synxcaccmg.cpp)、スタック トレース:)  
+  CThrThread.cpp:85:CThrThread::threadFunction()  
+  CSiServiceSet.cpp:63:CSiServiceSet::executeService()  
+  CSiStepExecute.cpp:913:CSiStepExecute::execute()  
+  EJSController.cpp:179:EJSControllerImpl::executeScript()  
+  JSExtension.hpp:1136:CallFunctionBase::call()  
+  CSiStepExecute.cpp:764:CSiStepExecute::invokeDialog()  
+  DarkModeGuiEngine.cpp:56:DarkModeGuiEngine::showDialogCalledByJs()  
+  DarkModeDialog.cpp:85:DarkModeDialog::submit()  
+  EJSController.cpp:179:EJSControllerImpl::executeScript()  
+  JSExtension.hpp:1136:CallFunctionBase::call()  
+  iaxxcaccount.cpp:107: iastring CIaOsAccountConnect::callMemberFunction(iastring const& name, args_t const& args)  
+  iaxxcaccount.cpp:1186: iastring CIaOsAccountConnect::validatePasswordPolicy(args_t const& _args)  
+  iaxxbaccount.cpp:430:CIaOsAccount::validatePasswordPolicy_impl()  
+  synxcaccmg.cpp:297:ISyAccountMgt::PasswordValidationMessage CSyAccountMgtImpl::validatePasswordPolicy(saponazure,*****) const )
   * 解決策  
     *[Isolation]\(分離\)* の手順でホスト ルールを追加して、VM からドメイン コントローラーへの通信を許可してください。
 

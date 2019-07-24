@@ -1,23 +1,24 @@
 ---
 title: 制限と境界 - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker における制限の包括的な一覧です。
+description: QnA Maker には、ナレッジ ベースとサービスの一部について、メタデータの制限があります。 テストして発行するためには、これらの制限内にナレッジ ベースを維持することが重要です。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 02/26/2019
 ms.author: tulasim
-ms.openlocfilehash: 53fadc0e3ea21b94ca656774baf077192c0394b4
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.custom: seodec18
+ms.openlocfilehash: fe15cafceea8128735f7241fa5e4187d4d9c47a9
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50137295"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960056"
 ---
-# <a name="qna-maker-limits"></a>QnA Maker の制限
+# <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 QnA Maker における制限の包括的な一覧です。
 
 ## <a name="knowledge-bases"></a>ナレッジ ベース
@@ -26,7 +27,9 @@ QnA Maker における制限の包括的な一覧です。
 
 |**Azure Search 層** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
-|許可される発行済みナレッジ ベースの最大数 (最大インデックス数 - 1 (テスト用に予約済み))|2|14|49|199|199|2,999|
+|許可される発行済みナレッジ ベースの最大数|2|14|49|199|199|2,999|
+
+ たとえば、レベルに 15 個の許可されたインデックスがある場合、14 個のナレッジ ベースを発行できます (発行されたナレッジ ベースあたり 1 インデックス)。 15 番目のインデックス `testkb` は、作成およびテスト用にすべてのナレッジ ベースで使用されます。 
 
 ## <a name="extraction-limits"></a>抽出の制限
 * 抽出できるファイルの最大数と最大のファイル サイズ: [QnA Maker の価格](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)に関するページを参照してください。
@@ -49,7 +52,7 @@ QnA Maker における制限の包括的な一覧です。
 * ファイル名の長さ: 200
 * サポートされるファイル形式: ".tsv"、".pdf"、".txt"、".docx"、".xlsx"
 * 代替の質問の最大数: 100
-* 質問と回答のペアの最大数: 選択した [Azure Search 層](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)によって異なります。 
+* 質問と回答のペアの最大数: 選択した [Azure Search レベル](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)によって異なります。 質問と回答のペアは、Azure Search インデックスのドキュメントにマップされます。 
 
 ## <a name="create-knowledge-base-call-limits"></a>ナレッジ ベースの作成の呼び出しの制限
 これらは、ナレッジ ベース作成操作 (つまり、*[KB を作成する]* のクリック、または CreateKnowledgeBase API の呼び出し) ごとの制限を表します。
@@ -63,3 +66,11 @@ QnA Maker における制限の包括的な一覧です。
 * 追加または削除される代替の質問の最大数: 100
 * 追加または削除されるメタデータ フィールドの最大数: 10
 * 更新可能な URL の最大数: 5
+
+## <a name="next-steps"></a>次の手順
+
+サービス レベルを変更するタイミングと方法について学びます。
+
+* [QnA Maker](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku): 現在のレベルよりも多くのソース ファイルまたはより大きなドキュメントをナレッジ ベースに含める必要がある場合は、QnA Maker サービスの価格レベルをアップグレードします。
+* [App Service](how-to/upgrade-qnamaker-service.md#upgrade-app-service): ナレッジ ベースでクライアント アプリの要求をより多く提供する必要がある場合は、アプリ サービスの価格レベルをアップグレードします。
+* [Azure Search](how-to/upgrade-qnamaker-service.md#upgrade-azure-search-service): 多数のナレッジ ベースを使用する予定の場合は、Azure Search サービスの価格レベルをアップグレードします。

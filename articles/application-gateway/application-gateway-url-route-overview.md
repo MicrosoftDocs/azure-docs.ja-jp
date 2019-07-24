@@ -1,18 +1,18 @@
 ---
-title: URL ベースのコンテンツ ルーティングの概要 | Microsoft Docs
-description: このページでは、Application Gateway URL ベースのコンテンツ ルーティング、UrlPathMap 構成、および PathBasedRouting ルールの概要を説明します。
+title: Azure Application Gateway URL ベースのコンテンツ ルーティングの概要
+description: このページでは、Azure Application Gateway URL ベースのコンテンツ ルーティング、UrlPathMap 構成、および PathBasedRouting ルールの概要を説明します。
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
-ms.date: 11/7/2018
+ms.date: 1/8/2019
 ms.author: victorh
-ms.openlocfilehash: bc123307a3cc3a5040e93e517c60604dc75fc7e7
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.topic: conceptual
+ms.openlocfilehash: 2f0bd0a20b866d342802014f1034a7ed9d939d53
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218425"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792244"
 ---
 # <a name="url-path-based-routing-overview"></a>URL パス ベースのルーティングの概要
 
@@ -20,11 +20,11 @@ URL パス ベースのルーティングを使用すると、要求の URL パ�
 
 1 つのシナリオとして、異なる種類のコンテンツの要求を、異なるバックエンド サーバー プールにルーティングします。
 
-次の例では、Application Gateway は 3 つのバックエンド サーバー プール (VideoServerPool、ImageServerPool、DefaultServerPool など) からの contoso.com のトラフィックを処理します。
+次の例では、Application Gateway は 3 つのバックエンド サーバー プールからの contoso.com のトラフィックを処理します (例: VideoServerPool、ImageServerPool、DefaultServerPool)。
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-http://contoso.com/video/* の要求は、VideoServerPool にルーティングされ、 http://contoso.com/images/* は ImageServerPool にルーティングされます。 一致するパス パターンがない場合は、DefaultServerPool が選択されます。
+http\://contoso.com/video/* に対する要求は VideoServerPool に、http\://contoso.com/images/* に対する要求は ImageServerPool に、それぞれルーティングされます。 一致するパス パターンがない場合は、DefaultServerPool が選択されます。
 
 > [!IMPORTANT]
 > 規則は、ポータルにおける表示順に処理されます。 基本リスナーを構成する前に、まずマルチサイト リスナーを構成することを強くお勧めします。  そうすることで、トラフィックが確実に適切なバックエンドにルーティングされます。 基本リスナーが先に表示されていて、なおかつ受信要求と一致した場合、そのリスナーによって要求が処理されます。
@@ -62,8 +62,37 @@ urlPathMap 要素は、パス パターンのバックエンド サーバー プ
 }]
 ```
 
-> [!NOTE]
-> PathPattern: この設定は、照合するパス パターンの一覧です。 それぞれ / で始まる必要があり、"*" が許可されるのは末尾の "/" の後だけです。 パス照合に渡される文字列の最初の ?  または # の後にテキストは含まれず、これらの文字はここでは許可されません。 それ以外の場合、URL で許可される文字はすべて PathPattern で許可されます。
+### <a name="pathpattern"></a>PathPattern
+
+PathPattern は照合するパス パターンの一覧です。 それぞれ / で始まる必要があり、"*" が許可されるのは末尾の "/" の後だけです。 パス照合に渡される文字列の最初の ?  または # の後にテキストは含まれず、これらの文字はここでは許可されません。 それ以外の場合、URL で許可される文字はすべて PathPattern で許可されます。
+
+Application Gateway v1 と v2 のいずれをデプロイしているかによって、サポートされるパターンは異なります。
+
+#### <a name="v1"></a>v1
+
+パス ルールでは大文字と小文字が区別されません。
+
+|v1 のパス パターン  |サポートされているか  |
+|---------|---------|
+|`/images/*`     |はい|
+|`/images*`     |×|
+|`/images/*.jpg`     |×|
+|`/*.jpg`     |×|
+|`/Repos/*/Comments/*`     |×|
+|`/CurrentUser/Comments/*`     |はい|
+
+#### <a name="v2"></a>v2
+
+パス ルールでは大文字と小文字が区別されます。
+
+|v2 のパス パターン  |サポートされているか  |
+|---------|---------|
+|`/images/*`     |はい|
+|`/images*`     |はい|
+|`/images/*.jpg`     |×|
+|`/*.jpg`     |×|
+|`/Repos/*/Comments/*`     |×|
+|`/CurrentUser/Comments/*`     |はい|
 
 詳しくは、「 [Resource Manager template using URL-based routing (URL ベースのルーティングを使用した Resource Manager テンプレート)](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing) 」をご覧ください。
 

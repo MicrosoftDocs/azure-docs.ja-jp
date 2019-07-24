@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: tamram
-ms.component: blobs
-ms.openlocfilehash: 6fa223ffcbc70b2f17649645df3daed22746edd0
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.subservice: blobs
+ms.openlocfilehash: ac13b40ae58054b091963de198213c1a68fcdc05
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264033"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244846"
 ---
 # <a name="create-a-blob-snapshot"></a>BLOB のスナップショットの作成
 

@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 42303177-9566-48ed-8abb-279fcf1e6ddb
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
@@ -17,14 +17,15 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: brandwe
-ms.openlocfilehash: 89f2a4058006687fbe64ec64d98659e38f93f618
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9d986ccbf92192c1fb7375e9db1fb398ed86a829
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980578"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58879966"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>クイック スタート: iOS アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>クイック スタート:iOS アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -51,7 +52,7 @@ Azure Active Directory (Azure AD) には、保護されたリソースにアク�
 > [!TIP]
 > Azure AD をほんの数分で稼働するには、[開発者ポータル](https://identity.microsoft.com/Docs/iOS)を試してください。 開発者ポータルでは、アプリを登録して、コードに Azure AD を統合するプロセスが説明されています。 完了すると、テナント内のユーザーを認証できる簡単なアプリケーションと、トークンを受け取って検証を実行できるバックエンドを手に入れることになります。
 
-## <a name="step-1-determine-what-your-redirect-uri-is-for-ios"></a>手順 1: iOS 用のリダイレクト URI を決定する
+## <a name="step-1-determine-what-your-redirect-uri-is-for-ios"></a>手順 1:iOS 用のリダイレクト URI を決定する
 
 特定の SSO シナリオでアプリケーションを安全に起動するには、*リダイレクト URI* を特定の形式で作成する必要があります。 リダイレクト URI は、トークンが要求された適切なアプリケーションに返されるようにするために使用します。
 
@@ -68,7 +69,7 @@ iOS のリダイレクト URI の形式は次のとおりです。
 
 ***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
 
-## <a name="step-2-register-the-directorysearcher-application"></a>手順 2: DirectorySearcher アプリケーションを登録する
+## <a name="step-2-register-the-directorysearcher-application"></a>手順 2:DirectorySearcher アプリケーションを登録する
 
 アプリでトークンを取得するようにするには、アプリを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。
 
@@ -82,7 +83,7 @@ iOS のリダイレクト URI の形式は次のとおりです。
 6. 登録が完了すると、Azure AD によって、一意のアプリケーション ID がアプリに割り当てられます。 この値は次のセクションで必要になるので、[アプリケーション] タブからコピーします。
 7. **[設定]** ページで、**[必要なアクセス許可] > [追加] > [Microsoft Graph]** の順に選択してから、**[委任されたアクセス許可]** の下の **[ディレクトリ データの読み取り]** アクセス許可を追加します。 このアクセス許可により、アプリケーションが Azure AD Graph API を使用してユーザーをクエリするように設定されます。
 
-## <a name="step-3-install-and-configure-adal"></a>手順 3: ADAL をインストールして構成する
+## <a name="step-3-install-and-configure-adal"></a>手順 3:ADAL をインストールして構成する
 
 アプリケーションを Azure AD に登録したので、ADAL をインストールし、ID 関連のコードを記述できます。 ADAL が Azure AD と通信するには、アプリの登録に関するいくつかの情報を ADAL に提供する必要があります。
 
@@ -115,9 +116,9 @@ iOS のリダイレクト URI の形式は次のとおりです。
     * `clientId` は、ポータルからコピーしたアプリケーションのクライアント ID です。
     * `redirectUri` は、ポータルに登録したリダイレクト URL です。
 
-## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>手順 4: ADAL を使用して Azure AD からトークンを取得する
+## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>手順 4:ADAL を使用して、Azure AD からトークンを取得する
 
-ADAL の背後にある基本的な原理として、アプリはアクセス トークンが必要になるたびに、completionBlock `+(void) getToken : ` を呼び出すだけで、残りの処理は ADAL で実行されます。
+ADAL の背後にある基本的な原理として、アプリはアクセス トークンが必要になるたびに、completionBlock `+(void) getToken :` を呼び出すだけで、残りの処理は ADAL で実行されます。
 
 1. `QuickStart` プロジェクトで、`GraphAPICaller.m` を開き、上部の近くにある `// TODO: getToken for generic Web API flows. Returns a token with no additional parameters provided.` コメントを探します。
 
@@ -240,7 +241,7 @@ ADAL の背後にある基本的な原理として、アプリはアクセス �
 > [!NOTE]
 > `AuthenticationResult` オブジェクトには、アプリが必要とする可能性のある情報の収集に使用できる `tokenCacheStoreItem` オブジェクトが含まれています。 QuickStart では、認証が既に行われたかどうかを確認するために `tokenCacheStoreItem` が使用されます。
 
-## <a name="step-5-build-and-run-the-application"></a>手順 5: アプリケーションをビルドして実行する
+## <a name="step-5-build-and-run-the-application"></a>手順 5:アプリケーションの構築と実行
 
 お疲れさまでした。 これで、作業中の iOS アプリケーションでは、ユーザーの認証、OAuth 2.0 を使用した Web API の安全な呼び出し、ユーザーに関する基本情報の取得が可能になりました。
 

@@ -1,24 +1,27 @@
 ---
-title: Azure Container Service チュートリアル - アプリケーションのデプロイ
+title: (非推奨) Azure Container Service チュートリアル - アプリケーションのデプロイ
 description: Azure Container Service チュートリアル - アプリケーションのデプロイ
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e7f9c0c3ad11cb6988f528503d614ab26dcc0968
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: dafbb8d1221d5e9c6194611ad338b3714a089cea
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41919813"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998767"
 ---
-# <a name="run-applications-in-kubernetes"></a>Kubernetes でアプリケーションを実行する
+# <a name="deprecated-run-applications-in-kubernetes"></a>(非推奨) Kubernetes でアプリケーションを実行する
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Azure Kubernetes Service を使用したこのチュートリアルの更新版については、「[チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションの実行](../../aks/tutorial-kubernetes-deploy-application.md)」を参照してください。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 このチュートリアル (4/7) では、サンプル アプリケーションを Kubernetes クラスターにデプロイします。 手順は次のとおりです。
 

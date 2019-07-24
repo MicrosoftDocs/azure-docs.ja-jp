@@ -3,24 +3,24 @@ title: Azure Service Bus メッセージングの概要 | Microsoft Docs
 description: Service Bus のメッセージングに関する説明
 services: service-bus-messaging
 documentationcenter: ''
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
-ms.author: spelluru
-ms.openlocfilehash: 7b4045737ea2be466a436e6abb0de6a1a61e6a5b
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.author: aschhab
+ms.openlocfilehash: dd73fd8105de2a5fd24ffa8ad5db85da5e52228c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636596"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58918843"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus とは
 
-Microsoft Azure Service Bus は、完全なマネージド エンタープライズ統合メッセージ ブローカーです。 Service Bus の最も一般的な用途は、アプリとサービスを相互に分離する場合です。Service Bus は非同期データと状態転送に適した信頼性の高い安全なプラットフォームです。 データは、*メッセージ*を使用してさまざまなアプリとサービス間で転送されます。 メッセージはバイナリ形式であり、JSON、XML、または単なるテキストを含むことができます。 
+Microsoft Azure Service Bus は、フル マネージド エンタープライズ[統合](https://azure.com/integration)メッセージ ブローカーです。 Service Bus の最も一般的な用途は、アプリとサービスを相互に分離する場合です。Service Bus は非同期データと状態転送に適した信頼性の高い安全なプラットフォームです。 データは、*メッセージ*を使用してさまざまなアプリとサービス間で転送されます。 メッセージはバイナリ形式であり、JSON、XML、または単なるテキストを含むことができます。 
 
 一般的なメッセージング シナリオの例を次にいくつか示します。
 
@@ -39,7 +39,7 @@ Microsoft Azure Service Bus は、完全なマネージド エンタープライ
 
 ![キュー](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-キュー内のメッセージは到着順に並べ替えられ、タイムスタンプが付けられます。 メッセージは、受理されると、冗長ストレージに安全に保管されます。 メッセージは " *プル*" モードで配信されます。このモードでは、要求に応じてメッセージが配信されます。
+キュー内のメッセージは到着順に並べ替えられ、タイムスタンプが付けられます。 メッセージは、受理されると、冗長ストレージに安全に保管されます。 メッセージは*プル* モードで配信され、要求に応じてメッセージが配信されます。
 
 ## <a name="topics"></a>トピック
 
@@ -127,5 +127,5 @@ Service Bus メッセージングの基本的な使い方については、以�
 
 * [Azure メッセージング サービスの比較](../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json&bc=%2fazure%2fservice-bus-messaging%2fbreadcrumb%2ftoc.json)
 * Azure Service Bus の [Standard レベルと Premium レベル](https://azure.microsoft.com/pricing/details/service-bus/)とその価格の詳細
-* [Azure Service Bus Premium レベルのパフォーマンスと待機時間](https://blogs.msdn.microsoft.com/servicebus/2016/07/18/premium-messaging-how-fast-is-it/)
-* [.NET](service-bus-quickstart-powershell.md)、[Java](service-bus-quickstart-powershell.md)、または[JMS](service-bus-quickstart-powershell.md) のクイック スタートを試す
+* [Azure Service Bus Premium レベルのパフォーマンスと待機時間](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722)
+* [.NET](service-bus-dotnet-get-started-with-queues.md)、[Java](service-bus-java-how-to-use-queues.md)、または[JMS](service-bus-java-how-to-use-jms-api-amqp.md) のクイック スタートを試す

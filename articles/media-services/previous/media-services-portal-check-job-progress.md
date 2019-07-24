@@ -12,20 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: e15113e1af92dd6f8c5962a7223fa4f928e3b5a2
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a4578703ebe224747c10956736b3be9c33a954dd
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037712"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260191"
 ---
 # <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Azure ポータルを使用したエンコード ジョブの進行状況の監視
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-check-job-progress.md)
 > * [.NET](media-services-check-job-progress.md)
-> * [REST ()](media-services-rest-check-job-progress.md)
+> * [REST](media-services-rest-check-job-progress.md)
 > 
 > 
 

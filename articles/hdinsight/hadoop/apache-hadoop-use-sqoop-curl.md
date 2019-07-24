@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4b565252c78bfe2194530d840651a57df2686728
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: ad716e2ef5e597424c860378e7a63d5c2de53f54
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633175"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834559"
 ---
 # <a name="run-apache-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>HDInsight 上の Hadoop で Curl を使用して Apache Sqoop ジョブを実行する
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -26,17 +26,19 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
 ## <a name="prerequisites"></a>前提条件
 この記事の手順を完了するには、次のものが必要です。
 
-* 「[HDInsight の Hadoop での Sqoop の使用](hdinsight-use-sqoop.md#create-cluster-and-sql-database)」を完了し、HDInsight クラスターと Azure SQL データベースを含む環境を構成します。
-* [Curl](http://curl.haxx.se/)。 Curl は、HDInsight クラスターとの間でデータを転送するツールです。
-* [jq](http://stedolan.github.io/jq/)。 jq ユーティリティを使用して REST 要求から返された JSON データを処理します。
 
-## <a name="submit-sqoop-jobs-by-using-curl"></a>Curl を使用して Sqoop ジョブを送信する
-> [!NOTE]
+* [HDInsight の Hadoop での Apache Sqoop の使用](hdinsight-use-sqoop.md#create-cluster-and-sql-database)に関するページの手順を実行し、HDInsight クラスターと Azure SQL データベースを含む環境を構成します。
+* [Curl](https://curl.haxx.se/)。 Curl は、HDInsight クラスターとの間でデータを転送するツールです。
+* [jq](https://stedolan.github.io/jq/)。 jq ユーティリティを使用して REST 要求から返された JSON データを処理します。
+
+
+## <a name="submit-apache-sqoop-jobs-by-using-curl"></a>Curl を使用して Apache Sqoop ジョブを送信する
+> [!NOTE]  
 > Curl、または WebHCat を使用したその他の REST 通信を使用する場合は、HDInsight クラスター管理者のユーザー名とパスワードを指定して要求を認証する必要があります。 また、サーバーへの要求の送信に使用する Uniform Resource Identifier (URI) にクラスター名を含める必要があります。
 > 
 > このセクションのコマンドでは、 **USERNAME** をクラスターに対して認証するユーザーの名前に置き換え、 **PASSWORD** をユーザー アカウントのパスワードに置き換えます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
 > 
-> REST API のセキュリティは、 [基本認証](http://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。 資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
+> REST API のセキュリティは、 [基本認証](https://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。 資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
 > 
 > 
 
@@ -66,19 +68,19 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
 
     このコマンドで使用されるパラメーターの意味は次のとおりです。
 
-    * **-d** - `-G` が使用されていないため、要求は既定で POST メソッドになります。 `-d` は要求で送信されるデータ値を指定します。
+   * **-d** - `-G` が使用されていないため、要求は既定で POST メソッドになります。 `-d` は要求で送信されるデータ値を指定します。
 
-        * **user.name** : コマンドを実行するユーザー
+       * **user.name** : コマンドを実行するユーザー
 
-        * **command** : 実行する Sqoop コマンド。
+       * **command** : 実行する Sqoop コマンド。
 
-        * **statusdir** : ジョブのステータスが書き込まれるディレクトリ
+       * **statusdir** : ジョブのステータスが書き込まれるディレクトリ
 
-    このコマンドは、ジョブのステータスの確認に使用できるジョブ ID を返します。
+     このコマンドは、ジョブのステータスの確認に使用できるジョブ ID を返します。
 
-        ```json
-        {"id":"job_1415651640909_0026"}
-        ```
+       ```json
+       {"id":"job_1415651640909_0026"}
+       ```
 
 3. ジョブのステータスを確認するには、次のコマンドを使用します。 **JOBID** を前の手順で返された値に置き換えます。 たとえば、戻り値が `{"id":"job_1415651640909_0026"}` の場合、**JOBID** は `job_1415651640909_0026` になります。
 
@@ -88,10 +90,9 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
 
     ジョブが完了している場合、ステータスは **SUCCEEDED**になります。
    
-   > [!NOTE]
+   > [!NOTE]  
    > この Curl 要求では、ジョブに関する情報が記載された JavaScript Object Notation (JSON) ドキュメントが返されます。状態値のみを取得するには jq を使用します。
-   > 
-   > 
+
 4. ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。 クエリで渡される `statusdir` パラメーターには出力ファイルの場所を含めます。この場合は、**wasb:///example/data/sqoop/curl** になります。 このアドレスではジョブの出力は、HDInsight クラスターが使用する既定のストレージ コンテナーの **example/data/sqoop/curl** ディレクトリに保存されます。
    
     Azure Portal を使用して、stderr および stdout BLOB にアクセスできます。  また、Microsoft SQL Server Management Studio を使用して、log4jlogs テーブルにアップロードされているデータを確認することもできます。
@@ -103,25 +104,25 @@ Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし�
 ## <a name="summary"></a>まとめ
 このドキュメントで示したように、未加工の HTTP 要求を使用して、HDInsight クラスターで Sqoop ジョブを実行、監視し、その結果を表示できます。
 
-この記事で使用されている REST インターフェイスの詳細については、「<a href="https://sqoop.apache.org/docs/1.99.3/RESTAPI.html" target="_blank">Sqoop REST API guide (Sqoop REST API ガイド)</a>」をご覧ください。
+この記事で使用されている REST インターフェイスの詳細については、<a href="https://sqoop.apache.org/docs/1.99.3/RESTAPI.html" target="_blank">Apache Sqoop REST API ガイド</a>に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 HDInsight での Hive に関する全般的な情報
 
-* [HDInsight の Hadoop での Sqoop の使用](hdinsight-use-sqoop.md)
+* [HDInsight 上の Apache Hadoop で Apache Sqoop を使用する](hdinsight-use-sqoop.md)
 
 HDInsight での Hadoop のその他の使用方法に関する情報
 
-* [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
-* [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
-* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
+* [HDInsight 上の Apache Hadoop で Apache Hive を使用する](hdinsight-use-hive.md)
+* [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
+* [HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)
 
 curl に関するその他の HDInsight の記事:
  
-* [Azure REST API を使用して Hadoop クラスターを作成する](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)
-* [REST を使用した HDInsight における Hadoop での Hive クエリの実行](apache-hadoop-use-hive-curl.md)
-* [REST を使用して HDInsight の Hadoop で MapReduce ジョブを実行](apache-hadoop-use-mapreduce-curl.md)
-* [Curl を使用して HDInsight の Hadoop で Pig ジョブを実行](apache-hadoop-use-pig-curl.md)
+* [Azure REST API を使用して Apache Hadoop クラスターを作成する](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)
+* [HDInsight 上の Apache Hadoop で REST を使用して Apache Hive クエリを実行する](apache-hadoop-use-hive-curl.md)
+* [HDInsight 上の Apache Hadoop で REST を使用して MapReduce ジョブを実行する](apache-hadoop-use-mapreduce-curl.md)
+* [HDInsight 上の Apache Hadoop で cURL を使用して Apache Pig ジョブを実行する](apache-hadoop-use-pig-curl.md)
 
 
 

@@ -5,22 +5,23 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 02/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a8d6080b573cbad1004166f28a3e6596560241be
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 2303d385d3d688050a8d82c07e78a68588f41e88
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426517"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010924"
 ---
 # <a name="setup-diagnostic-logging"></a>診断ログのセットアップ
 
-Analysis Services ソリューションの重要な部分は、サーバーのパフォーマンスを監視することです。 [Azure リソースの診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)を使用すると、監視および [Azure Storage](https://azure.microsoft.com/services/storage/) にログを送信したり、それらを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信したり、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) ([Azure](https://www.microsoft.com/cloud-platform/operations-management-suite) のサービス) にエクスポートしたりすることができます。 
+Analysis Services ソリューションの重要な部分は、サーバーのパフォーマンスを監視することです。 [Azure リソースの診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)を使用すると、ログを監視して [Azure Storage](https://azure.microsoft.com/services/storage/) に送信したり、ログを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信したり、[Azure Monitor ログ](../azure-monitor/azure-monitor-log-hub.md)にエクスポートしたりすることができます。
 
-![Storage、Event Hubs、または Log Analytics への診断ログ](./media/analysis-services-logging/aas-logging-overview.png)
+![Storage、Event Hubs、または Azure Monitor ログに対する診断ログ記録](./media/analysis-services-logging/aas-logging-overview.png)
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="whats-logged"></a>ログに記録されるもの
 
@@ -40,8 +41,8 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 |進行状況レポート     |   Progress Report Current      |
 |クエリ     |  Query Begin       |
 |クエリ     |   Query End      |
-|コマンド     |  Command Begin       |
-|コマンド     |  Command End       |
+|command     |  Command Begin       |
+|command     |  Command End       |
 |エラーと警告     |   Error      |
 |発見     |   Discover End      |
 |通知     |    通知     |
@@ -82,7 +83,7 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 
     * **[ストレージ アカウントへのアーカイブ]**。 このオプションを使用するには、接続先として既存のストレージ アカウントが必要です。 「[ストレージ アカウントを作成する](../storage/common/storage-create-storage-account.md)」を参照してください。 指示に従って、Resource Manager の汎用アカウントを作成し、ポータルのこのページに戻ってストレージ アカウントを選択します。 新しく作成されたストレージ アカウントがドロップダウン メニューに表示されるまでには、数分かかる場合があります。
     * **イベント ハブにストリーミングします**。 このオプションを使用するには、既存の Event Hubs 名前空間と接続先のイベント ハブが必要です。 詳細については、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」をご覧ください。 Portal でこのページに戻り、Event Hubs 名前空間とポリシー名を選択します。
-    * **[Log Analytics への送信]**。 このオプションを使用するには、既存のワークスペースを使用するか、ポータルで[新しいワークスペースを作成する](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace)手順に従って新しい Log Analytics ワークスペースを作成します。 Log Analytics でログを表示する方法については、「[Azure Cosmos DB 診断ログ](#view-in-loganalytics)」を参照してください。
+    * **Azure Monitor (Log Analytics ワークスペース) に送信します**。 このオプションを使用するには、既存のワークスペースを使用するか、またはポータルで[新しいワークスペース リソースを作成](../azure-monitor/learn/quick-create-workspace.md)します。 ログを表示する方法について詳しくは、この記事の「[Log Analytics ワークスペースでログを表示する](#view-logs-in-log-analytics-workspace)」をご覧ください。
 
     * **エンジン**。 xEvents をログ記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
     * **サービス**。 サービス レベル イベントをログ記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
@@ -90,7 +91,7 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 
 3. **[Save]** をクリックします。
 
-    "\<ワークスペース名> の診断を更新できませんでした。 サブスクリプション \<サブスクリプション ID> は microsoft.insights を使用するために登録されていません。" というエラーが表示される場合は、[Azure 診断のトラブルシューティング](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)に関する指示に従ってアカウントを登録してから、この手順を再試行してください。
+    "\<ワークスペース名> の診断を更新できませんでした。 サブスクリプション \<サブスクリプション ID> は microsoft.insights を使用するために登録されていません。" というエラーが表示される場合は、[Azure Diagnostics のトラブルシューティング](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)に関する指示に従ってアカウントを登録してから、この手順を再試行してください。
 
     今後、診断ログを保存する方法を変更する場合は、このページに戻って設定を変更できます。
 
@@ -103,7 +104,7 @@ PowerShell を使用してメトリックと診断のロギングを有効にす
 - ストレージ アカウントへの診断ログの保存を有効にするには、次のコマンドを使用します。
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
+   Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
    ```
 
    ストレージ アカウント ID は、ログの送信先となるストレージ アカウントのリソース ID です。
@@ -111,7 +112,7 @@ PowerShell を使用してメトリックと診断のロギングを有効にす
 - Event Hubs への診断ログのストリーミングを有効にするには、次のコマンドを使用します。
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
+   Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
    ```
 
    Azure Service Bus ルール ID は、次の形式の文字列です。
@@ -123,24 +124,24 @@ PowerShell を使用してメトリックと診断のロギングを有効にす
 - Log Analytics ワークスペースへの診断ログの送信を有効にするには、次のコマンドを使用します。
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
+   Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
    ```
 
 - 次のコマンドを使用して、Log Analytics ワークスペースのリソース ID を取得できます。
 
    ```powershell
-   (Get-AzureRmOperationalInsightsWorkspace).ResourceId
+   (Get-AzOperationalInsightsWorkspace).ResourceId
    ```
 
 このパラメーターを組み合わせて、複数の出力オプションを有効にできます。
 
 ### <a name="rest-api"></a>REST API
 
-[Azure Monitor REST API を使用して診断設定を変更する](https://msdn.microsoft.com/library/azure/dn931931.aspx)方法を学習します。 
+[Azure Monitor REST API を使用して診断設定を変更する](https://docs.microsoft.com/rest/api/monitor/)方法を学習します。 
 
 ### <a name="resource-manager-template"></a>Resource Manager テンプレート
 
-[Resource Manager テンプレートを使用してリソースの作成時に診断設定を有効にする](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md)方法を学習します。 
+[Resource Manager テンプレートを使用してリソースの作成時に診断設定を有効にする](../azure-monitor/platform/diagnostic-logs-stream-template.md)方法を学習します。 
 
 ## <a name="manage-your-logs"></a>ログを管理する
 
@@ -150,48 +151,44 @@ PowerShell を使用してメトリックと診断のロギングを有効にす
 * ストレージ アカウントに保持する必要がなくなったログは削除します。
 * 古いログをストレージ アカウントから削除するためのリテンション期間を必ず設定してください。
 
-## <a name="view-logs-in-log-analytics"></a>Log Analytics ログを表示する
+## <a name="view-logs-in-log-analytics-workspace"></a>Log Analytics ワークスペースでログを表示する
 
-メトリックとサーバー イベントは、side-by-side 分析のため、Log Analytics で xEvents と統合されます。 他の Azure サービスからイベントを受信するように Log Analytics を構成して、アーキテクチャ全体の診断ログ データの全体像を提供することもできます。
+メトリックとサーバー イベントは、side-by-side 分析のため、Log Analytics ワークスペース リソースで xEvents と統合されます。 他の Azure サービスからイベントを受信するように Log Analytics ワークスペースを構成して、アーキテクチャ全体の診断ログ データの全体像を提供することもできます。
 
-Log Analytics で診断データを表示するには、次の図のように左側のメニューまたは [管理] 領域から [ログ検索] ページを開きます。
+診断データを表示するには、Log Analytics ワークスペースの左側のメニューで **[ログ]** を開きます。
 
 ![Azure Portal の [ログ検索] オプション](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-これでデータ収集が有効になったので、**[ログ検索]** で **[収集されたすべてのデータ]** をクリックします。
+クエリ ビルダーで、**LogManagement** > **AzureDiagnostics** を展開します。 AzureDiagnostics には、エンジンとサービスのイベントが含まれています。 クエリが即座に作成されることに注目してください。 EventClass\_s フィールドには、オンプレミスのログ記録の xEvents を使用している場合にはなじみのある、xEvent 名が含まれています。 **[EventClass\_s]** またはイベント名のいずれかをクリックすると、Log Analytics ワークスペースでクエリの作成が続行されます。 後で再利用するため、クエリは必ず保存しておいてください。
 
-**[型]** で、**[AzureDiagnostics]**、**[適用]** の順にクリックします。 AzureDiagnostics には、エンジンとサービスのイベントが含まれています。 Log Analytics クエリが即座に作成されることに注目してください。 EventClass\_s フィールドには、オンプレミスのログ記録の xEvents を使用している場合にはなじみのある、xEvent 名が含まれています。
+### <a name="example-query"></a>クエリの例
+このクエリでは、モデル データベースとサーバーに対する各クエリ終了/更新終了イベントの CPU が計算されて返されます。
 
-[**EventClass\_s**] またはいずれかのイベント名をクリックすると、Log Analytics がクエリの作成を続行します。 後で再利用するため、クエリは必ず保存しておいてください。
+```Kusto
+let window =  AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and ServerName_s =~"MyServerName" and DatabaseName_s == "Adventure Works Localhost" ;
+window
+| where OperationName has "QueryEnd" or (OperationName has "CommandEnd" and EventSubclass_s == 38)
+| where extract(@"([^,]*)", 1,Duration_s, typeof(long)) > 0
+| extend DurationMs=extract(@"([^,]*)", 1,Duration_s, typeof(long))
+| extend Engine_CPUTime=extract(@"([^,]*)", 1,CPUTime_s, typeof(long))
+| project  StartTime_t,EndTime_t,ServerName_s,OperationName,RootActivityId_g ,TextData_s,DatabaseName_s,ApplicationName_s,Duration_s,EffectiveUsername_s,User_s,EventSubclass_s,DurationMs,Engine_CPUTime
+| join kind=leftouter (
+window
+    | where OperationName == "ProgressReportEnd" or (OperationName == "VertiPaqSEQueryEnd" and EventSubclass_s  != 10) or OperationName == "DiscoverEnd" or (OperationName has "CommandEnd" and EventSubclass_s != 38)
+    | summarize sum_Engine_CPUTime = sum(extract(@"([^,]*)", 1,CPUTime_s, typeof(long))) by RootActivityId_g
+    ) on RootActivityId_g
+| extend totalCPU = sum_Engine_CPUTime + Engine_CPUTime
 
-Log Analytics を必ず表示してください。これは、収集されたデータに対するクエリ、ダッシュボード、アラートの強化された機能を Web サイトに提供します。
-
-### <a name="queries"></a>クエリ
-
-使用できるクエリは数百あります。 手始めとして、いくつかのクエリを次に示します。
-新しい Log Analytics のクエリ言語の使用の詳細については、「[Log Analytics でのログ検索について](../log-analytics/log-analytics-log-search-new.md)」を参照してください。 
-
-* Azure Analysis Services に送信されるクエリで、完了までに 5 分 (300,000 ミリ秒) 以上かかったクエリを返します。
-
-    ```
-    search * | where ( Type == "AzureDiagnostics" ) | where ( EventClass_s == "QUERY_END" ) | where toint(Duration_s) > 300000
-    ```
-
-* スケール アウト レプリカを識別します。
-
-    ```
-    search * | summarize count() by ServerName_s
-    ```
-    ServerName\_s フィールド値にはその名前に付加されるレプリカ インスタンス番号があるため、スケールアウトを使用する際に、読み取り専用レプリカを特定できます。 リソース フィールドには、ユーザーに表示されるサーバー名に一致する Azure のリソース名が含まれています。 IsQueryScaleoutReadonlyInstance_s フィールドはレプリカの true と同じです。
+```
 
 
-
-> [!TIP]
-> 共有したい優れた Log Analytics クエリはありますか? GitHub アカウントをお持ちであれば、この記事に追加できます。 このページの右上にある **[編集]** をクリックするだけです。
+使用できるクエリは数百あります。 クエリについて詳しくは、「[Azure Monitor ログ クエリの使用を開始する](../azure-monitor/log-query/get-started-queries.md)」をご覧ください。
 
 
-## <a name="tutorial---turn-on-logging-by-using-powershell"></a>チュートリアル - PowerShell を使用してログ記録を有効にする
-このクイック チュートリアルでは、Analysis Service サーバーと同じサブスクリプションとリソース グループでストレージ アカウントを作成します。 次に、Set-AzureRmDiagnosticSetting を使用して、診断ログを有効にし、出力を新しいストレージ アカウントに送信します。
+## <a name="turn-on-logging-by-using-powershell"></a>PowerShell を使用してログ記録を有効にする
+
+このクイック チュートリアルでは、Analysis Service サーバーと同じサブスクリプションとリソース グループでストレージ アカウントを作成します。 次に、Set-AzDiagnosticSetting を使用して、診断ログを有効にし、出力を新しいストレージ アカウントに送信します。
 
 ### <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するには、以下のリソースが必要です。
@@ -203,7 +200,7 @@ Log Analytics を必ず表示してください。これは、収集されたデ
 Azure PowerShell セッションを開始し、次のコマンドで Azure アカウントにサインインします。  
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 ポップアップ ブラウザー ウィンドウで、Azure アカウントのユーザー名とパスワードを入力します。 Azure PowerShell は、このアカウントに関連付けられているすべてのサブスクリプションを取得し、既定で最初のサブスクリプションを使用します。
@@ -211,13 +208,13 @@ Connect-AzureRmAccount
 複数のサブスクリプションをお持ちの場合は、Azure Key Vault を作成するときに使用した特定の 1 つを指定することが必要なことがあります。 アカウントのサブスクリプションを確認するには、次を入力します。
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 ログを記録する Azure Analysis Services アカウントに関連付けられているサブスクリプションを指定するには、次を入力します。
 
 ```powershell
-Set-AzureRmContext -SubscriptionId <subscription ID>
+Set-AzContext -SubscriptionId <subscription ID>
 ```
 
 > [!NOTE]
@@ -232,7 +229,7 @@ Set-AzureRmContext -SubscriptionId <subscription ID>
 また、お使いの Analysis Services サーバーを含むリソース グループと同じリソース グループを使用します。 `awsales_resgroup`、`awsaleslogs`、`West Central US` の値を独自の値に置き換えます。
 
 ```powershell
-$sa = New-AzureRmStorageAccount -ResourceGroupName awsales_resgroup `
+$sa = New-AzStorageAccount -ResourceGroupName awsales_resgroup `
 -Name awsaleslogs -Type Standard_LRS -Location 'West Central US'
 ```
 
@@ -241,19 +238,19 @@ $sa = New-AzureRmStorageAccount -ResourceGroupName awsales_resgroup `
 アカウント名を **account** という変数に設定します。この ResourceName は、アカウントの名前です。
 
 ```powershell
-$account = Get-AzureRmResource -ResourceGroupName awsales_resgroup `
+$account = Get-AzResource -ResourceGroupName awsales_resgroup `
 -ResourceName awsales -ResourceType "Microsoft.AnalysisServices/servers"
 ```
 
 ### <a name="enable-logging"></a>ログの有効化
 
-ログ記録を有効にするために、AzureRmDiagnosticSetting コマンドレットを、新しいストレージ アカウントの変数、サーバー アカウント、およびカテゴリと組み合わせて使用します。 次のコマンドを実行し、**-Enabled** フラグを **$true** に設定します。
+ログ記録を有効にするために、Set-AzDiagnosticSetting コマンドレットを、新しいストレージ アカウント、サーバー アカウント、およびカテゴリの変数と組み合わせて使用します。 次のコマンドを実行し、**-Enabled** フラグを **$true** に設定します。
 
 ```powershell
-Set-AzureRmDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine
+Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine
 ```
 
-出力は次のようになります。
+出力は次の例のようになります。
 
 ```powershell
 StorageAccountId            : 
@@ -292,18 +289,18 @@ Location                    :
 Tags                        :
 ```
 
-これを見れば、ログ記録がサーバーに対して有効になっていること、ストレージ アカウントに情報が保存されることを確認できます。
+この出力を見れば、ログ記録がサーバーに対して有効になっていること、ストレージ アカウントに情報が保存されることを確認できます。
 
 古いログが自動的に削除されるように、ログのアイテム保持ポリシーを設定することもできます。 たとえば、**-RetentionEnabled** フラグを **$true** に設定し、**-RetentionInDays** パラメーターを **90** に設定したアイテム保持ポリシーを設定します。 90 日を経過したログは自動的に削除されます。
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`
+Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
  -StorageAccountId $sa.Id -Enabled $true -Categories Engine`
   -RetentionEnabled $true -RetentionInDays 90
 ```
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure リソースの診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)についてさらに詳しく学習します。
+[Azure リソースの診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)についてさらに詳しく学習します。
 
-PowerShell ヘルプの「[Set-AzureRmDiagnosticSetting](https://docs.microsoft.com/powershell/module/azurerm.insights/Set-AzureRmDiagnosticSetting)」を参照してください。
+PowerShell ヘルプの「[Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting)」を参照してください。

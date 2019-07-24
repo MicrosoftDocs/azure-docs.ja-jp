@@ -7,20 +7,20 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: 3616183b5ea34b8a14712d2c449de87950443111
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 5422f4796d2451b652222332799d8ad1a9fc4803
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954507"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525597"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>Azure HDInsight IO キャッシュ (プレビュー) を使用して Apache Spark のワークロードのパフォーマンスを改善する
 
-IO キャッシュは、Apache Spark のジョブのパフォーマンスを改善する、Azure HDInsight 用のデータ キャッシュ サービスです。 IO キャッシュは Tez や Hive のワークロードでも機能し、Spark のクラスター上で実行できます。 IO キャッシュは RubiX と呼ばれるオープン ソースのキャッシュ コンポーネントを使用します。 RubiX はビッグ データ分析エンジンで使用されるローカル ディスク キャッシュで、クラウド ストレージ システムからデータにアクセスします。 RubiX は、キャッシュ目的でオペレーティング メモリを予約するのではなくソリッド ステート ドライブ (SSD) を使用するため、キャッシュ システム間で一意です。 IO キャッシュ サービスはクラスターの各ワーカー ノード上に RubiX メタデータ サーバーを起動して管理します。 また、RubiX キャッシュの透過的な使用のためにクラスターのすべてのサービスを構成します。
+IO キャッシュは、Apache Spark のジョブのパフォーマンスを改善する、Azure HDInsight 用のデータ キャッシュ サービスです。 IO キャッシュは [Apache TEZ](https://tez.apache.org/) や [Apache Hive](https://hive.apache.org/) のワークロードでも機能し、[Apache Spark](https://spark.apache.org/) のクラスター上で実行できます。 IO キャッシュは RubiX と呼ばれるオープン ソースのキャッシュ コンポーネントを使用します。 RubiX はビッグ データ分析エンジンで使用されるローカル ディスク キャッシュで、クラウド ストレージ システムからデータにアクセスします。 RubiX は、キャッシュ目的でオペレーティング メモリを予約するのではなくソリッド ステート ドライブ (SSD) を使用するため、キャッシュ システム間で一意です。 IO キャッシュ サービスはクラスターの各ワーカー ノード上に RubiX メタデータ サーバーを起動して管理します。 また、RubiX キャッシュの透過的な使用のためにクラスターのすべてのサービスを構成します。
 
 ほとんどの SSD の帯域幅は 1 秒につき 1 GB 以上です。 この帯域幅はオペレーティング システムのインメモリ ファイル キャッシュによって補完され、Apache Spark などのビッグ データ演算処理エンジンを読み込むのに十分な帯域幅を提供します。 オペレーティング メモリは、シャッフルなどのメモリに大きく依存するタスクを処理するために Apache Spark が利用できるように残されています。 オペレーティング メモリを排他的に使用できることにより、Apache Spark が最適なリソース使用量を達成できます。  
 
->[!Note]
+>[!Note]  
 >現在、IO キャッシュは RubiX をキャッシュ コンポーネントとして使用しますが、将来のバージョンのサービスでは変わる可能性があります。 IO キャッシュのインターフェイスを使用し、RubiX の実装に直接依存することはしないでください。
 
 ## <a name="benefits-of-azure-hdinsight-io-cache"></a>Azure HDInsight IO キャッシュの利点
@@ -45,14 +45,14 @@ Azure HDInsight IO キャッシュはプレビューでは既定で非アクテ�
 
 1. 影響を受けるクラスター上のすべてのサービスの再起動を確認します。
 
->[!NOTE] 
+>[!NOTE]  
 > 進行状況バーにアクティブ化と表示されていても、IO キャッシュは実際には 影響を受ける他のサービスを再起動するまで有効になりません。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
   
 IO キャッシュを有効にした後に Spark のジョブを実行するとディスク領域エラーが発生することがあります。 これらのエラーは、Spark がシャッフル操作中にデータの格納にもローカル ディスク ストレージを使用することが原因で発生します。 IO キャッシュが有効になり、Spark のストレージ領域が減ると、Spark で SSD 領域が不足する場合があります。 IO キャッシュで使用されるディスク領域は既定で SSD の合計領域の半分になります。 IO キャッシュのディスク領域使用量は Ambari で構成できます。 ディスク領域のエラーが発生した場合は、IO キャッシュで使用されるSSD 領域を減らし、サービスを再起動してください。 IO キャッシュに設定されている領域を変更するには、次の手順を実行します。
 
-1. Ambari で、左側にある **[HDFS]** サービスを選択します。
+1. Apache Ambari で、左側にある **[HDFS]** サービスを選択します。
 
 1. **[Configs]\(構成\)** タブを選択し、**[Advanced]\(詳細\)** タブを選択します。
 
@@ -78,4 +78,4 @@ IO キャッシュを有効にした後に Spark のジョブを実行すると�
 
 ## <a name="next-steps"></a>次の手順
 
-- IO キャッシュとパフォーマンスのベンチマークについて詳しくは、ブログ投稿「[Apache Spark jobs gain up to 9x speed up with HDInsight IO キャッシュ](https://azure.microsoft.com/en-us/blog/apache-spark-speedup-with-hdinsight-io-cache/)」(HDInsight IO キャッシュにより Apache Spark のジョブの速度が最大で 9 倍に) をご覧ください。
+- このブログ投稿のパフォーマンス ベンチマークなど、IO キャッシュに関する詳細をお読みください。[Apache Spark ジョブが HDInsight IO キャッシュで最大 9 倍のスピードアップ](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)

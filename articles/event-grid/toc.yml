@@ -3,7 +3,7 @@ items:
   href: index.yml
 - name: 概要
   items:
-  - name: Event Grid について
+  - name: Event Grid とは
     href: overview.md
   - name: メッセージング サービスの比較
     href: compare-messaging-services.md
@@ -124,14 +124,24 @@ items:
     href: cloudevents-schema.md
   - name: イベント ドメインを使用したトピックの管理
     href: how-to-event-domains.md
+  - name: クライアント側のフェールオーバーの実装
+    href: custom-disaster-recovery.md
 - name: リファレンス
   items:
   - name: Azure CLI
     href: /cli/azure/eventgrid
   - name: PowerShell
-    href: /powershell/module/azurerm.eventgrid
-  - name: REST ()
+    href: /powershell/module/az.eventgrid
+  - name: REST
     href: /rest/api/eventgrid
+  - name: .NET
+    href: /dotnet/api/overview/azure/eventgrid
+  - name: Java
+    href: /java/api/overview/azure/eventgrid
+  - name: Python
+    href: /python/api/overview/azure/event-grid
+  - name: Node.js
+    href: /javascript/api/overview/azure/eventgrid
   - name: サブスクリプション スキーマ
     href: subscription-creation-schema.md
   - name: イベント スキーマ
@@ -153,6 +163,8 @@ items:
       href: event-schema-resource-groups.md
     - name: Service Bus
       href: event-schema-service-bus.md
+    - name: Azure Maps
+      href: event-schema-azure-maps.md
   - name: Template resources
     items:
     - name: イベントのサブスクリプション
@@ -172,10 +184,10 @@ items:
   - name: 料金計算ツール
     href: https://azure.microsoft.com/pricing/calculator/
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-eventgrid
-ms.openlocfilehash: 7d478caf70b799828af5de5afc6f9b491819da8f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+    href: https://stackoverflow.com/questions/tagged/azure-eventgrid
+ms.openlocfilehash: 5bbf0a559ead7823c4224ce0c610054d23bcf458
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415799"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528018"

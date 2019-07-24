@@ -1,20 +1,20 @@
 ---
-title: Bulk Executor .NET ライブラリを使用して Azure Cosmos DB での一括インポートおよび更新操作を実行する | Microsoft Docs
+title: Bulk Executor .NET ライブラリを使用して Azure Cosmos DB での一括インポートおよび更新操作を実行する
 description: Bulk Executor .NET ライブラリを使用して Azure Cosmos DB ドキュメントを一括インポートおよび更新します。
-services: cosmos-db
 author: tknandu
-manager: kfile
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: 04894fdd0ffff38ad129097ce839259f2993332c
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.reviewer: sngun
+ms.openlocfilehash: cfb90dc31635001291b1661f31ec2ee1fc378404
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363400"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523343"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Bulk Executor .NET ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
@@ -28,9 +28,9 @@ ms.locfileid: "49363400"
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。 
 
-* Azure サブスクリプションを必要とせず、課金や契約もなしに [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。 または、`https://localhost:8081` URI で [Azure Cosmos DB Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) を使用することもできます。 主キーは、[要求の認証](local-emulator.md#authenticating-requests)で与えられます。
+* Azure サブスクリプションを必要とせず、課金や契約もなしに [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。 または、`https://localhost:8081` エンドポイントで [Azure Cosmos DB Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) を使用できます。 主キーは、[要求の認証](local-emulator.md#authenticating-requests)で与えられます。
 
-* .NET クイック スタート記事の「[データベース アカウントの作成](create-sql-api-dotnet.md#create-a-database-account)」セクションで説明されている手順に従って、Azure Cosmos DB SQL API アカウントを作成します。 
+* .NET クイック スタート記事の「[データベース アカウントの作成](create-sql-api-dotnet.md#create-account)」セクションで説明されている手順に従って、Azure Cosmos DB SQL API アカウントを作成します。 
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
@@ -115,7 +115,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
    |NumberOfDocumentsImported (long)   |  一括インポート API 呼び出しに渡されたドキュメントのうち正常にインポートされたドキュメントの総数。       |
    |TotalRequestUnitsConsumed (double)   |   一括インポート API 呼び出しによって使用された要求ユニット (RU) の合計数。      |
    |TotalTimeTaken (TimeSpan)    |   一括インポート API 呼び出しが実行を完了するまでに要した合計時間。      |
-   |BadInputDocuments (List<object>)   |     一括インポート API 呼び出しで正常にインポートされなかった、形式が正しくないドキュメントの一覧。 ユーザーは返されたドキュメントを修正し、インポートを再試行する必要があります。 形式が正しくないドキュメントには、ID 値が文字列ではないドキュメントがあります (null やその他のデータ型は無効と見なされます)。    |
+   |BadInputDocuments (List\<object>)   |     一括インポート API 呼び出しで正常にインポートされなかった、形式が正しくないドキュメントの一覧。 ユーザーは返されたドキュメントを修正し、インポートを再試行する必要があります。 形式が正しくないドキュメントには、ID 値が文字列ではないドキュメントがあります (null やその他のデータ型は無効と見なされます)。    |
 
 ## <a name="bulk-update-data-in-azure-cosmos-db"></a>Azure Cosmos DB でのデータの一括更新
 
@@ -194,7 +194,7 @@ Bulk Executor ライブラリを使用する場合は、パフォーマンスを
       </listeners>
     </trace>
   </system.diagnostics>
-```
+  ```
 
 ## <a name="next-steps"></a>次の手順
-* Nuget パッケージの詳細と Bulk Executor .Net ライブラリのリリース ノートについては、[Bulk Executor SDK の詳細](sql-api-sdk-bulk-executor-dot-net.md)に関するページを参照してください。 
+* Nuget パッケージの詳細と Bulk Executor .NET ライブラリのリリース ノートについては、[Bulk Executor SDK の詳細](sql-api-sdk-bulk-executor-dot-net.md)に関するページを参照してください。 

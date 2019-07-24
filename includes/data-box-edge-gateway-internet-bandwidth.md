@@ -2,16 +2,17 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 11/08/2018
+ms.date: 02/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 4ab9da996226b3f26fd30db1cd012c80253a85a5
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 69f77bf969c5d9adfb084682fbbc9eb9e762c8b4
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51333770"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56306869"
 ---
-次の要件は、デバイスで必要となるインターネットの最小帯域幅に適用されます。
+デバイスは、インターネット接続が遅かったり、中断されたときにも引き続き動作するように設計されています。 通常の動作条件では、以下のように使用することお勧めします。 
 
-- デバイスで 20 Mbps 以上の専用インターネット帯域幅を常時利用できること。 この帯域幅はその他のアプリケーションと共有できません。
-- ネットワーク調整を使用した場合、デバイスで専用の 64 Mbps インターネット帯域幅 (またはそれ以上) が利用できること。
+- デバイスが常に最新の状態に保たれるように最低 10 Mbps のダウンロード帯域幅。
+- ファイル転送用に最低 20 Mbps の専用のアップロード/ダウンロード帯域幅。
+

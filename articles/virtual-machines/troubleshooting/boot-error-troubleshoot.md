@@ -3,7 +3,7 @@ title: Azure 仮想マシンのブート エラーのトラブルシューティ
 description: この記事では、Azure 仮想マシンのブート エラーのトラブルシューティングに関する記事へのリンクを示しています。
 services: virtual-machines-windows
 documentationCenter: ''
-authors: genlin
+author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 09/21/2018
+ms.date: 12/12/2018
 ms.author: genli
-ms.openlocfilehash: 8253c4c84e38fc3b8279aa311c1627a540502a6c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: c12f753225f8c6fc4fdb3fdcbaf0e915cb85fdbf
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351488"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779447"
 ---
 # <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Azure 仮想マシンのブート エラーのトラブルシューティング
 
@@ -29,6 +29,10 @@ ms.locfileid: "49351488"
 * [BitLocker ブート エラー](troubleshoot-bitlocker-boot-error.md) 
 * [起動時に "ファイル システムをチェックしています" と表示される](troubleshoot-check-disk-boot-error.md)
 * [ブルー スクリーン エラー](troubleshoot-common-blue-screen-error.md)
+* [VM の起動が停止し、"Windows の準備をしています](troubleshoot-vm-boot-configure-update.md)
+* [ブルー スクリーンに "CRITICAL SERVICE FAILED" エラー](troubleshoot-critical-service-failed-boot-error.md)
+* [再起動ループの問題](troubleshoot-reboot-loop.md)
+* [VM の起動が Windows Update の段階で停止する](troubleshoot-stuck-updating-boot-error.md)
 
 ## <a name="next-steps"></a>次の手順
 

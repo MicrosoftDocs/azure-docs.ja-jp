@@ -1,45 +1,50 @@
 ---
-title: Azure IoT Central アプリケーションのホーム ページを構成する | Microsoft Docs
-description: 開発者として、Azure IoT Central アプリケーションのホーム ページを構成する方法を学習します。
-author: tbhagwat3
-ms.author: tanmayb
-ms.date: 07/10/2018
+title: Azure IoT Central アプリケーション ダッシュボードを構成する | Microsoft Docs
+description: 開発者として、既定の Azure IoT Central アプリケーション ダッシュボードを構成する方法を学習します。
+author: dominicbetts
+ms.author: dobett
+ms.date: 02/13/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: peterpr
-ms.openlocfilehash: 8e79d05147cae5bf9c46fc1f7c0e7e98574383d5
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+manager: philmea
+ms.openlocfilehash: 3168bbbf70c1ffeb3827482459febbcea256eda6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007622"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773148"
 ---
-## <a name="configuring-homepage"></a>ホーム ページの構成
+# <a name="configure-the-application-dashboard"></a>アプリケーション ダッシュボードの構成
 
-ホーム ページは、アプリケーションにアクセスできるユーザーがアプリケーションの URL に移動したときに読み込まれるページです。 アプリケーションの作成時に、[Sample Contoso]\(サンプル Contoso\) または [Sample Devkits]\(サンプル Devkits\) アプリケーション テンプレートのいずれかを選択した場合、アプリケーションには定義済みのホーム ページが含まれます。 一方、[カスタム アプリケーション] アプリケーション テンプレートを選択した場合、ホーム ページは空白になります。
+**ダッシュボード**は、アプリケーションにアクセスできるユーザーがアプリケーションの URL に移動したときに読み込まれるページです。 **Sample Contoso** または **Sample Devkits** アプリケーション テンプレートを選択してアプリケーションを作成した場合、アプリケーションには定義済みのダッシュボードが含まれます。 **Custom Application** アプリケーション テンプレートを選択した場合、ダッシュボードは空になります。
 
-たとえば、次に示すのは、[Sample Contoso]\(サンプル Contoso\) テンプレートに基づくアプリケーションのホーム ページです。 ご利用のアプリケーションのホーム ページをカスタマイズするには、まず右上にある **[編集]** を選択します。 
+> [!NOTE]
+> 既定のアプリケーション ダッシュボードの代わりに、ユーザーが[独自の個人用ダッシュボードを作成](howto-personalize-dashboard.md)し、それを使用することもできます。
 
-![[Sample Contoso]\(サンプル Contoso\) テンプレートに基づくアプリケーションのホーム ページ](media\howto-configure-homepage\image1.png)
+## <a name="add-tiles"></a>タイルを追加する
 
-**[編集]** を選択すると、左側のパネルにダッシュボード ライブラリが開きます。 ホーム ページをカスタマイズするために追加できるタイルとダッシュボード プリミティブにはさまざまな種類があります。
+次のスクリーンショットで、**Sample Contoso** テンプレートから作成されたアプリケーションのダッシュボードを示しています。 アプリケーションの既定のダッシュボードをカスタマイズするには、ページの右上にある **[編集]** を選択します。
 
-![ダッシュボード ライブラリ](media\howto-configure-homepage\image2.png)
+!["Sample Contoso" テンプレートに基づくアプリケーションのダッシュボード](media/howto-configure-homepage/image1.png)
 
-たとえば、**[設定とプロパティ]** タイルを追加して、設定とプロパティの現在の値の選択を表示できます。 これを行うには、まず **[デバイス テンプレート]** を選択し、次に **[デバイス インスタンス]** を選択します。 その後、タイルのタイトルを指定し、表示する**設定**または**プロパティ**を選択します。 ここでは、**[Set Temperature]\(温度の設定\)** が選択されています。 **[完了]** をクリックすると、このタイルがホーム ページに表示されます。
+**[編集]** を選択すると、ダッシュボード ライブラリ パネルが開きます。 ライブラリには、ダッシュボードのカスタマイズに使用できるタイルとダッシュボードのプリミティブが含まれています。
 
-![設定とプロパティの詳細が表示された [Configure Device Details]\(デバイスの詳細の構成\) フォーム](media\howto-configure-homepage\image3.png)
+![ダッシュボード ライブラリ](media/howto-configure-homepage/image2.png)
 
-これで、オペレーターがこのホーム ページを表示したときに、デバイスの設定とプロパティを表示するこのタイルを確認できます。
+たとえば、**[デバイス設定とプロパティ]** タイルを追加して、デバイスの一連の設定とプロパティ値を表示することもできます。 これを行うには、まず **[デバイス テンプレート]** を選択し、次に **[デバイス インスタンス]** を選択します。 その後、タイルのタイトルを指定し、表示する**設定**または**プロパティ**を選択します。 次のスクリーンショットでは、タイルに追加するために選択された設定とプロパティを示しています。 **[完了]** を選択して、ダッシュボードへの変更を保存します。
 
-![タイルの設定とプロパティが表示された [Dashboard]\(ダッシュボード\) タブ](media\howto-configure-homepage\image4.png)
+![設定とプロパティの詳細が表示された [Configure Device Details]\(デバイスの詳細の構成\) フォーム](media/howto-configure-homepage/image3.png)
 
-ライブラリ内の他のさまざまなタイルの種類を使用して、アプリケーションのホーム ページをどのようにカスタマイズできるかを試してみてください。
+オペレーターが既定のアプリケーション ダッシュボードを表示すると、デバイスの**温度設定**を含んだ新しいタイルが表示されます。
+
+![タイルの設定とプロパティが表示された [Dashboard]\(ダッシュボード\) タブ](media/howto-configure-homepage/image4.png)
+
+ライブラリ内の他のタイルの種類を調べて、既定のアプリケーション ダッシュボードをカスタマイズする方法を確認することができます。
 
 ## <a name="next-steps"></a>次の手順
 
-これで、Azure IoT Central のホーム ページの構成方法を習得したので、次を実行できます。
+これで、Azure IoT Central の既定のアプリケーション ダッシュボードを構成する方法を習得したので、次を実行できます。
 
 > [!div class="nextstepaction"]
 > [イメージを準備してアップロードする](howto-prepare-images.md)

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と RingCentral の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と RingCentral の統合 | Microsoft Docs
 description: Azure Active Directory と RingCentral の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 35033e52fb54177428f8869ebcc462bd9465ad4c
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e9cd97bc226ec69441b933a9f7bf3caec17f1478
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48872321"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877124"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ringcentral"></a>チュートリアル: Azure Active Directory と RingCentral の統合
+# <a name="tutorial-azure-active-directory-integration-with-ringcentral"></a>チュートリアル:Azure Active Directory と RingCentral の統合
 
 このチュートリアルでは、RingCentral と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -126,6 +127,7 @@ RingCentral で Azure AD のシングル サインオンを構成してテスト
     ![image](./media/ringcentral-tutorial/b21-domains_and_urls.png)
 
     d. **[サインオン URL]** テキスト ボックスに、URL を入力します。
+
     | |
     |--|
     | `https://service.ringcentral.com` |
@@ -139,6 +141,7 @@ RingCentral で Azure AD のシングル サインオンを構成してテスト
 6. **サービス プロバイダー メタデータ ファイル**がない場合は、次の手順に従います。
 
     a. **[サインオン URL]** テキスト ボックスに、URL を入力します。
+
     | |
     |--|
     | `https://service.ringcentral.com` |
@@ -147,12 +150,14 @@ RingCentral で Azure AD のシングル サインオンを構成してテスト
     | `https://service.ringcentral.eu` |
 
     b. **[識別子]** ボックスに次の URL を入力します。
+
     | |
     |--|
     |  `https://sso.ringcentral.com` |
     | `https://ssoeuro.ringcentral.com` |
 
     c. **[応答 URL]** ボックスに、URL を入力します。
+    
     | |
     |--|
     | `https://sso.ringcentral.com/sp/ACS.saml2` |
@@ -190,7 +195,7 @@ RingCentral で Azure AD のシングル サインオンを構成してテスト
 
     d. **[Save]** をクリックします。
 
-    e. **[Step 2]\(ステップ 2\)** の **[Download]\(ダウンロード\)** をクリックして**サービス プロバイダー メタデータ ファイル**をダウンロードし、Azure portal でそれを **[基本的な SAML 構成]** セクションにアップロードして、**[識別子]** と **[応答 URL]** を自動的に設定します。
+    e. **[Step 2]\(ステップ 2\)** の **[Download]\(ダウンロード\)** をクリックして**サービス プロバイダー メタデータ ファイル**をダウンロードし、Azure portal 内でそれを **[基本的な SAML 構成]** セクションにアップロードして、**[識別子]** と **[応答 URL]** を自動的に設定します。
 
     ![image](./media/ringcentral-tutorial/ringcentral6.png) 
 
@@ -216,13 +221,13 @@ RingCentral で Azure AD のシングル サインオンを構成してテスト
 
     ![image](./media/ringcentral-tutorial/d_adduser.png)
 
-3. [ユーザーのプロパティ] で、次の手順を実行します。
+3. [ユーザーのプロパティ] で、次の手順のようにします。
 
     ![image](./media/ringcentral-tutorial/d_userproperties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
@@ -231,7 +236,7 @@ RingCentral で Azure AD のシングル サインオンを構成してテスト
  
 ### <a name="create-a-ringcentral-test-user"></a>RingCentral テスト ユーザーを作成する
 
-このセクションでは、RingCentral で Britta Simon というユーザーを作成します。 [RingCentral クライアント サポート チーム](https://success.ringcentral.com/RCContactSupp)と連携し、RingCentral プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、RingCentral で Britta Simon というユーザーを作成します。  [RingCentral クライアント サポート チーム](https://success.ringcentral.com/RCContactSupp)と連携し、RingCentral プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -262,7 +267,7 @@ RingCentral で Azure AD のシングル サインオンを構成してテスト
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [RingCentral] タイルをクリックすると、自動的に RingCentral アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

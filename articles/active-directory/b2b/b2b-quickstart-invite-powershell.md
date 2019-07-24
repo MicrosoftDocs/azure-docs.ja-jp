@@ -1,22 +1,24 @@
 ---
-title: PowerShell を使用して Azure Active Directory B2B コラボレーション用のゲスト ユーザーを追加するためのクイック スタート | Microsoft Docs
-description: このクイック スタートでは、PowerShell を使用して、外部の Azure AD B2B コラボレーション ユーザーに招待メールを送信する方法について説明します。
+title: クイック スタート - PowerShell を使用してゲスト ユーザーを追加する - Azure Active Directory | Microsoft Docs
+description: このクイック スタートでは、PowerShell を使用して、外部の Azure AD B2B コラボレーション ユーザーに招待状を送信する方法について説明します。
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: mimart
 author: msmimart
 ms.reviewer: mal
-ms.openlocfilehash: f0dc63d84ec7583e721b116b450c890d46524622
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.custom: it-pro, seo-update-azuread-jan
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7b9274652b7164a4aef71499912cb8b38ace29ff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986564"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57854451"
 ---
-# <a name="quickstart-add-a-guest-user-with-powershell"></a>クイック スタート: PowerShell を使用してゲスト ユーザーを追加する
+# <a name="quickstart-add-a-guest-user-with-powershell"></a>クイック スタート:PowerShell を使用してゲスト ユーザーを追加する
 
 Azure Active Directory B2B コラボレーションで外部パートナーを自社のアプリとサービスに招待できる方法は多数あります。 前のクイック スタートでは、Azure Active Directory 管理ポータルでゲスト ユーザーを直接追加する方法を説明しました。 ゲスト ユーザーは、PowerShell を使用して、一度に 1 人づつ、または一括で追加することもできます。 このクイック スタートでは、New-AzureADMSInvitation コマンドを使用して、1 人のゲスト ユーザーを Azure テナントに追加します。
 
@@ -29,35 +31,35 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 最初に、どのモジュールをインストールしているかをチェックします。 管理者特権で Windows PowerShell を開き (管理者として実行)、次のコマンドを実行します。
  
-````powershell  
+```powershell  
 Get-Module -ListAvailable AzureAD*
-````
+```
 
 最新のバージョンがあることを示すメッセージなしで AzureADPreview モジュールが表示されれば、問題ありません。 それ以外の場合は、出力に基づいて次のいずれかを行います。
 
 - 結果が返らない場合は、次のコマンドを実行して AzureADPreview モジュールをインストールします。
   
-   ````powershell  
+   ```powershell  
    Install-Module AzureADPreview
-   ````
+   ```
 - 結果に AzureAD モジュールだけが表示される場合は、次のコマンドを実行して AzureADPreview モジュールをインストールします。 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureAD 
    Install-Module AzureADPreview 
-   ````
+   ```
 - 結果に AzureADPreview モジュールだけが表示されるが、最新のバージョンがあることを示すメッセージが表示される場合は、次のコマンドを実行してそのモジュールをインストールします。 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureADPreview 
    Install-Module AzureADPreview 
-  ````
+  ```
 
 信頼されていないリポジトリからモジュールをインストールしていることを示すメッセージが表示される場合があります。 これは、PSGallery リポジトリを信頼されたリポジトリとして事前に設定していない場合に発生します。 **Y** キーを押してモジュールをインストールします。
 
 ### <a name="get-a-test-email-account"></a>テスト用の電子メール アカウントを取得する
 
-招待メールの送信先となるテスト用の電子メール アカウントが必要です。 このアカウントは、組織外にある必要があります。 gmail.com や outlook.com のアドレスなどのソーシャル アカウントを含む任意の種類のアカウントを使用できます。
+招待状の送信先となるテスト用の電子メール アカウントが必要です。 このアカウントは、組織外にある必要があります。 gmail.com や outlook.com のアドレスなどのソーシャル アカウントを含む任意の種類のアカウントを使用できます。
 
 ## <a name="sign-in-to-your-tenant"></a>テナントにサインインする
 
@@ -70,14 +72,14 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 
 メッセージが表示されたら、資格情報を入力します。
 
-## <a name="send-an-invitation"></a>招待メールを送信する
+## <a name="send-an-invitation"></a>招待状を送信する
 
-1. テスト用の電子メール アカウントに招待メールを送信するには、次の PowerShell コマンドを実行します (**"Sanda"** と **sanda@fabrikam.com** をテスト用の電子メール アカウント名と電子メール アドレスに置き換えます)。 
+1. テスト用の電子メール アカウントに招待状を送信するには、次の PowerShell コマンドを実行します (**"Sanda"** と **sanda\@fabrikam.com** をテスト用の電子メール アカウント名と電子メール アドレスに置き換えます)。 
 
    ```powershell
    New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.azure.com -SendInvitationMessage $true
    ```
-2. このコマンドは、指定した電子メール アドレスに招待メールを送信します。 出力をチェックします。出力は次のようになります。
+2. このコマンドは、指定した電子メール アドレスに招待状を送信します。 出力をチェックします。出力は次のようになります。
 
    ![保留中のユーザーの同意を示す PowerShell の出力](media/quickstart-invite-powershell/powershell-azureadmsinvitation-result.png)
 
@@ -88,7 +90,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
    ```powershell
    Get-AzureADUser -Filter "UserType eq 'Guest'"
    ```
-3. 出力をチェックして、招待したユーザーが表示されていることを確認します。*emailaddress*#EXT#@*domain* 形式のユーザー プリンシパル名 (UPN) になっています。 たとえば、*sanda_fabrikam.com#EXT#@contoso.onmicrosoft.com* では、contoso.onmicrosoft.com が招待メールを送信した組織になります。
+3. 出力をチェックして、招待したユーザーが表示されていることを確認します。*emailaddress*#EXT#\@*domain* 形式のユーザー プリンシパル名 (UPN) になっています。 たとえば、*sanda_fabrikam.com#EXT#\@contoso.onmicrosoft.com* では、contoso.onmicrosoft.com が招待状を送信した組織になります。
 
    ![ゲスト ユーザーが追加されたことを示す PowerShell の出力](media/quickstart-invite-powershell/powershell-guest-user-added.png)
 
@@ -106,4 +108,4 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 このクイック スタートでは、PowerShell を使用して、1 人のゲスト ユーザーを招待してディレクトリに追加しました。 次に、PowerShell を使用して、一括でゲスト ユーザーを招待する方法について説明します。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: Azure AD B2B コラボレーション ユーザーを一括で招待する](tutorial-bulk-invite.md)
+> [チュートリアル:Azure AD B2B コラボレーション ユーザーを一括で招待する](tutorial-bulk-invite.md)

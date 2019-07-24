@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a4117b41700446770e10ef799967ae4a43db342d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2ed4826eb47ab2fb13d312860475f9ec9b323bf7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227758"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884156"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>IoT Edge モジュールの技術アセットの準備
 
@@ -45,7 +45,7 @@ IoT Edge モジュールは、次のプラットフォーム オプションの�
 IoT Edge でサポートされているすべてのレベル 1 プラットフォーム ([Azure IoT Edge サポート](https://docs.microsoft.com/azure/iot-edge/support)に記録されているもの) をサポートします。 より良いカスタマー エクスペリエンスを提供するため、このオプションをお勧めします。 この条件を満たすモジュールが紹介されます。 このプラットフォーム オプションを使用するモジュールは、以下のことが必要です。
 
 - GitHub の [manifest-tool](https://github.com/estesp/manifest-tool) でビルドされたマニフェスト タグである `latest` タグとバージョン タグ (`1.0.1` など) を指定する。
-- [[Marketplace] タブ](./cpp-marketplace-tab.md)を使用して[互換性のある IoT Edge 認定デバイス](https://aka.ms/iot-edge-certified)へのリンクを追加する。 このリンクは、顧客が認定デバイスを参照または検索できる Web サイトである `http://aka.ms/iot-edge-certified` に解決されます。 この Web サイトは、 [Azure IoT Edge 認定](https://catalog.azureiotsolutions.com/)デバイス カタログとも呼ばれます。
+- [[Marketplace] タブ](./cpp-marketplace-tab.md)を使用して[互換性のある IoT Edge 認定デバイス](https://aka.ms/iot-edge-certified)へのリンクを追加する。 このリンクは、顧客が認定デバイスを参照または検索できる Web サイトである `https://aka.ms/iot-edge-certified` に解決されます。 この Web サイトは、 [Azure IoT Edge 認定](https://catalog.azureiotsolutions.com/)デバイス カタログとも呼ばれます。
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>IoT Edge によってサポートされるレベル 1 プラットフォームのサブセット
   
@@ -61,9 +61,9 @@ IoT Edge でサポートされているレベル 1 プラットフォーム ([Az
 - モジュールは、[Azure IoT Edge Certified](https://catalog.azureiotsolutions.com/) デバイス カタログにある**少なくとも 1 つの IoT Edge の認定デバイスで動作する**必要があります。
 - **ハードウェアの最小要件**を、プランの説明の最後の段落 ([Marketplace タブ](./cpp-marketplace-tab.md)の下) に記載する必要があります。 必要に応じて、推奨されるハードウェア要件が大幅に異なる場合は、要件を一覧にすることもできます。 たとえば、プランの説明の最後に次のセクションを追加します。
 
- ```html
+  ```html
     <p><u>Minimum hardware requirements:</u> Linux x64 and arm32  OS, 1GB of RAM, 500 Mb of storage</p>
- ```
+  ```
 
 ### <a name="configuration"></a>構成
 
@@ -111,7 +111,7 @@ IoT Module SDK を使用するモジュールは、テレメトリ目的で一�
 - [C\#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo) 
 - [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
-- [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device._product_info?view=azure-java-stable)
+- [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
 
 IoT Module SDK を使用していないモジュールでは、ダウンロード数など Cloud パートナー ポータルを通して入手できる分析情報の精度が低くなります。
 
@@ -128,7 +128,8 @@ Module IoT SDK の同梱は、認定の前提条件ではありません。 た�
 
 ## <a name="recertification-process"></a>再認定プロセス
 
-<!-- Add legal time windows-->パートナーは、以下に示すようなモジュールに影響する重大な変更があったときは通知されます。
+<!-- Add legal time windows-->
+パートナーは、以下に示すようなモジュールに影響する破壊的変更があったときは通知されます。
 
 - IoT Edge でサポートされるレベル 1 の os/arch サポート マトリックス
 - IoT Module SDK

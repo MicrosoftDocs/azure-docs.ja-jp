@@ -1,5 +1,5 @@
 ---
-title: Azure AD を使用したアカウントの共有 | Microsoft Docs
+title: アカウントと資格情報の共有 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory を使用してオンプレミスのアプリケーションおよびコンシューマー クラウド サービス用のアカウントを組織で安全に共有できるようにする方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -8,18 +8,19 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: ddc14c371f2aa56b056dd7f9f1802de081f4ccd9
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ba9deb00b885dad1d69eb38d4977aafd3d80ab91
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51620699"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201433"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Azure AD とのアカウントの共有
 ## <a name="overview"></a>概要

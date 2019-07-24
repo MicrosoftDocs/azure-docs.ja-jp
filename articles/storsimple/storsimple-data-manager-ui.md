@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: d704cf8e6840c6a7b0a637c404d421f9f1497c46
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: fa897b4b77f7f5869eab2ba2e7db9afbd84febfa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
-ms.locfileid: "27862259"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121504"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Azure Portal で StorSimple Data Manager サービスを管理する
 
@@ -46,19 +46,19 @@ StorSimple データ マネージャー サービスを作成するには、次�
 
 3. 新しいサービスの場合、以下の情報を指定します。
 
-    1. StorSimple Data Manager の一意の **[サービス名]** を指定します。 これは、サービスの識別に使用できるフレンドリ名です。 名前の長さは 3 ～ 24 文字で、文字、数字、ハイフンを使うことができます。 名前の最初と最後は、文字か数字とする必要があります。
+   1. StorSimple Data Manager の一意の **[サービス名]** を指定します。 これは、サービスの識別に使用できるフレンドリ名です。 名前の長さは 3 ～ 24 文字で、文字、数字、ハイフンを使うことができます。 名前の最初と最後は、文字か数字とする必要があります。
 
-    2. ドロップダウン リストから **[サブスクリプション]** を選びます。 サブスクリプションは、課金アカウントにリンクされます。 持っているサブスクリプションが 1 つだけの場合、このフィールドは自動的に設定されます (選択不可)。
+   2. ドロップダウン リストから **[サブスクリプション]** を選びます。 サブスクリプションは、課金アカウントにリンクされます。 持っているサブスクリプションが 1 つだけの場合、このフィールドは自動的に設定されます (選択不可)。
 
-    3. 既存のリソース グループを選ぶか、新しいリソース グループを作成します。 詳細については、[Azure のリソース グループ](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/)に関する記事をご覧ください。
+   3. 既存のリソース グループを選ぶか、新しいリソース グループを作成します。 詳細については、[Azure のリソース グループ](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/)に関する記事をご覧ください。
 
-    4. ストレージ アカウントを含むサービスと StorSimple Data Manager サービスの **[場所]** を指定します。 StorSimple Device Manager サービス、Data Manager サービス、および関連するストレージ アカウントはすべて、サポートされているリージョンに存在する必要があります。
+   4. ストレージ アカウントを含むサービスと StorSimple Data Manager サービスの **[場所]** を指定します。 StorSimple Device Manager サービス、Data Manager サービス、および関連するストレージ アカウントはすべて、サポートされているリージョンに存在する必要があります。
     
-    5. ダッシュボードにこのサービスへのリンクを作成するには、**[ダッシュボードにピン留めする]** をオンにします。
+   5. ダッシュボードにこのサービスへのリンクを作成するには、**[ダッシュボードにピン留めする]** をオンにします。
     
-    6. **Create** をクリックしてください。
+   6. **Create** をクリックしてください。
 
-    ![StorSimple Data Manager サービスを作成する 3](./media/storsimple-data-manager-ui/create-service-4.png)
+      ![StorSimple Data Manager サービスを作成する 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
 サービスの作成には数分かかります。 サービスが正常に作成されると通知が示され、新しいサービスが表示されます。
 
@@ -88,33 +88,33 @@ StorSimple データ マネージャー サービス内に、データ変換ジ�
 
     ![新しいデータ リポジトリを追加する](./media/storsimple-data-manager-ui/create-job-definition-3.png)
   
-    1. データ リポジトリの種類としては、**[StorSimple 8000 series Manager]\(StorSimple 8000 シリーズ マネージャー\)** を選びます。
+   1. データ リポジトリの種類としては、**[StorSimple 8000 series Manager]\(StorSimple 8000 シリーズ マネージャー\)** を選びます。
     
-    2. ソース データ リポジトリのフレンドリ名を入力します。
+   2. ソース データ リポジトリのフレンドリ名を入力します。
     
-    3. ドロップダウン リストから、StorSimple Device Manager サービスに関連付けられているサブスクリプションを選びます。
+   3. ドロップダウン リストから、StorSimple Device Manager サービスに関連付けられているサブスクリプションを選びます。
     
-    4. **[リソース]** で StorSimple Device Manager の名前を指定します。
+   4. **[リソース]** で StorSimple Device Manager の名前を指定します。
 
-    5. StorSimple Device Manager サービスの **[サービス データ暗号化キー]** を入力します。 
+   5. StorSimple Device Manager サービスの **[サービス データ暗号化キー]** を入力します。 
 
-    ![ソース データ リポジトリを構成する 1](./media/storsimple-data-manager-ui/create-job-definition-4.png)
+      ![ソース データ リポジトリを構成する 1](./media/storsimple-data-manager-ui/create-job-definition-4.png)
 
-    完了したら、**[OK]** をクリックします。 データ リポジトリが保存されます。 これらのパラメーターをもう一度入力することなく、他のジョブ定義でこの StorSimple Device Manager を再利用できます。 **[OK]** をクリックしてから数秒後に、新しく作成したソース データ リポジトリがドロップダウンに表示されます。
+      完了したら、**[OK]** をクリックします。 データ リポジトリが保存されます。 これらのパラメーターをもう一度入力することなく、他のジョブ定義でこの StorSimple Device Manager を再利用できます。 **[OK]** をクリックしてから数秒後に、新しく作成したソース データ リポジトリがドロップダウンに表示されます。
 
 7. **[データ リポジトリ]** ドロップダウン リストから、作成したデータ リポジトリを選びます。 
 
-    1. 対象データが格納されている StorSimple 8000 シリーズ デバイスの名前を入力します。
+   1. 対象データが格納されている StorSimple 8000 シリーズ デバイスの名前を入力します。
 
-    2. 対象データが存在する、StorSimple デバイス上のボリュームの名前を指定します。
+   2. 対象データが存在する、StorSimple デバイス上のボリュームの名前を指定します。
 
-    3. **[フィルター]** サブセクションで、対象データを含むルート ディレクトリを、_\MyRootDirectory\Data_ の形式で入力します。 _\C:\Data_ などのドライブ文字はサポートされていません。 任意のファイル フィルターをここで追加することもできます。
+   3. **[フィルター]** サブセクションで、対象データを含むルート ディレクトリを、_\MyRootDirectory\Data_ の形式で入力します。 _\C:\Data_ などのドライブ文字はサポートされていません。 任意のファイル フィルターをここで追加することもできます。
 
-    4. データ変換サービスは、スナップショットを使用して Azure にプッシュされたデータで機能します。 このジョブを実行するとき、ジョブを実行するたびに (最新のデータで機能する) バックアップを作成するように選択できます。また、クラウド内の既存のバックアップを使うこともできます (アーカイブされたデータで作業している場合)。
+   4. データ変換サービスは、スナップショットを使用して Azure にプッシュされたデータで機能します。 このジョブを実行するとき、ジョブを実行するたびに (最新のデータで機能する) バックアップを作成するように選択できます。また、クラウド内の既存のバックアップを使うこともできます (アーカイブされたデータで作業している場合)。
 
-    5. Click **OK**.
+   5. Click **OK**.
 
-    ![ソース データ リポジトリを構成する 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
+      ![ソース データ リポジトリを構成する 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
 8. 次に、ターゲット データ リポジトリを構成する必要があります。 ストレージ アカウントを選択すると、そのアカウントの BLOB にファイルが配置されます。 ドロップダウンで **[新規追加]** を選択し、**[設定の構成]** を選択します。
 

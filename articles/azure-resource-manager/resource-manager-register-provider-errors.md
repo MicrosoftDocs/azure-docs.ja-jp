@@ -11,18 +11,20 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 03/09/2018
+ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: b90009c1cd08a1004e58c4b9f25cd6350712fbcd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2f3db5e6260b065c83f0e337306d38dca6e5ff51
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358610"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341404"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>リソース プロバイダーの登録エラーの解決
 
 この記事では、これまでサブスクリプションで使用したことがないリソース プロバイダーを使用する際に発生する可能性のあるエラーについて説明します。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>症状
 
@@ -41,40 +43,48 @@ Code: MissingSubscriptionRegistration
 Message: The subscription is not registered to use namespace {resource-provider-namespace}
 ```
 
-サポートされる場所や API バージョンがエラー メッセージに提示されます。 提示されたいずれかの値を使用するようにテンプレートを変更してください。 ほとんどのプロバイダーは、Azure ポータルまたはご使用のコマンド ライン インターフェイスによって自動的に登録されますが、登録されない場合もあります。 まだ使ったことがないリソース プロバイダーについては、手動で登録しなければならない場合があります。
+サポートされる場所や API バージョンがエラー メッセージに提示されます。 提示されたいずれかの値を使用するようにテンプレートを変更してください。 ほとんどのプロバイダーは、Azure portal またはご使用のコマンド ライン インターフェイスによって自動的に登録されますが、登録されない場合もあります。 まだ使ったことがないリソース プロバイダーについては、手動で登録しなければならない場合があります。
+
+または、仮想マシンの自動シャットダウンを無効にすると、次のようなエラー メッセージを受け取ることがあります。
+
+```
+Code: AuthorizationFailed
+Message: The client '<identifier>' with object id '<identifier>' does not have authorization to perform action 'Microsoft.Compute/virtualMachines/read' over scope ...
+```
 
 ## <a name="cause"></a>原因
 
-これらのエラーの原因として、次の 3 つの理由のいずれかが考えられます。
+これらのエラーの原因として、次のいずれかの理由が考えられます。
 
-1. サブスクリプションに対してリソース プロバイダーが登録されていない
-1. リソース タイプでサポートされた API バージョンに該当しない
-1. リソース タイプでサポートされた場所に該当しない
+* サブスクリプションに対して必要なリソース プロバイダーが登録されていない
+* リソース タイプでサポートされた API バージョンに該当しない
+* リソース タイプでサポートされた場所に該当しない
+* VM を自動シャットダウンするには、Microsoft.DevTestLab リソース プロバイダーを登録する必要があります。
 
 ## <a name="solution-1---powershell"></a>解決策 1 - PowerShell
 
-PowerShell では、**Get-AzureRmResourceProvider** を使用して登録の状態を確認します。
+PowerShell では、**Get-AzResourceProvider** を使用して登録の状態を確認します。
 
 ```powershell
-Get-AzureRmResourceProvider -ListAvailable
+Get-AzResourceProvider -ListAvailable
 ```
 
-プロバイダーを登録するには、 **Register-AzureRmResourceProvider** を使用し、登録するリソース プロバイダーの名前を指定します。
+プロバイダーを登録するには、**Register-AzResourceProvider** を使用し、登録するリソース プロバイダーの名前を指定します。
 
 ```powershell
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
+Register-AzResourceProvider -ProviderNamespace Microsoft.Cdn
 ```
 
 特定のタイプのリソースでサポートされている場所を取得するには、次のコマンドを使用します。
 
 ```powershell
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
+((Get-AzResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 ```
 
 特定のタイプのリソースでサポートされている API バージョンを取得するには、次のコマンドを使用します。
 
 ```powershell
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
+((Get-AzResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
 ```
 
 ## <a name="solution-2---azure-cli"></a>解決策 2 - Azure CLI
@@ -101,10 +111,22 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
 ポータルを利用すると、登録の状態を確認したり、リソース プロバイダー名前空間を登録したりできます。
 
+1. Portal で **[すべてのサービス]** を選択します。
+
+   ![[すべてのサービス] を選択する](./media/resource-manager-register-provider-errors/select-all-services.png)
+
+1. **[サブスクリプション]** を選択します。
+
+   ![[サブスクリプション] を選択する](./media/resource-manager-register-provider-errors/select-subscriptions.png)
+
+1. サブスクリプションの一覧から、リソース プロバイダーの登録に使用するサブスクリプションを選択します。
+
+   ![リソース プロバイダーを登録するサブスクリプションを選択する](./media/resource-manager-register-provider-errors/select-subscription-to-register.png)
+
 1. サブスクリプションについては、**[リソース プロバイダー]** を選択します。
 
-   ![リソース プロバイダーの選択](./media/resource-manager-register-provider-errors/select-resource-provider.png)
+   ![[リソース プロバイダー] を選択する](./media/resource-manager-register-provider-errors/select-resource-provider.png)
 
 1. リソース プロバイダーの一覧を確認し、必要に応じて **[登録]** リンクを選択して、デプロイするタイプのリソース プロバイダーを登録します。
 
-   ![リソース プロバイダーの一覧](./media/resource-manager-register-provider-errors/list-resource-providers.png)
+   ![List resource providers](./media/resource-manager-register-provider-errors/list-resource-providers.png)

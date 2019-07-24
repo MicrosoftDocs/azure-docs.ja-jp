@@ -1,21 +1,19 @@
 ---
 title: Power BI ワークスペース コレクション内のデータ ソースへの接続 | Microsoft Docs
 description: Power BI ワークスペース コレクション内のデータ ソースに接続する方法を説明します。
-services: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
 author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: 2a4caeb3-255d-4215-9554-0ca8e3568c13
-ms.service: power-bi-embedded
+ms.author: maghan
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: maghan
-ms.openlocfilehash: c626601d9eae7732779020b153c624f80605b56a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 143213b148518fdf936974152d5d9196c42febd8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051877"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521501"
 ---
 # <a name="connect-to-a-data-source"></a>データ ソースへの接続
 
@@ -43,7 +41,7 @@ Power BI ワークスペース コレクションを使用して、クラウド�
 
 **インポート**
 
-Power BI Desktop 内で、使用可能なすべてのデータソースをインポートできます。 Power BI ワークスペース コレクション内のデータを最新の情報に更新することは**できなくなります**。 Power BI ワークスペース コレクションに PBIX ファイルへの変更をアップロードする必要があります。 これは、使用可能なゲートウェイがないためです。 
+Power BI Desktop 内で、使用可能なすべてのデータソースをインポートできます。 Power BI ワークスペース コレクション内のデータを最新の情報に更新することは**できなくなります**。 Power BI ワークスペース コレクションに PBIX ファイルへの変更をアップロードする必要があります。 これは、使用可能なゲートウェイがないためです。
 
 ## <a name="benefits-of-using-directquery"></a>DirectQuery を使用する利点
 
@@ -72,5 +70,4 @@ Power BI Desktop 内で、使用可能なすべてのデータソースをイン
 * [Microsoft Power BI ワークスペース コレクションの概要](get-started.md)
 * [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
-ご質問は、 [Power BI コミュニティ](http://community.powerbi.com/)で尋ねてみてください。
-
+ご質問は、 [Power BI コミュニティ](https://community.powerbi.com/)で尋ねてみてください。

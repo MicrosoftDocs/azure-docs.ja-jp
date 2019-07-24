@@ -1,0 +1,156 @@
+- name: Data Lake Analytics のドキュメント
+  href: index.md
+- name: 概要
+  items:
+    - name: Data Lake Analytics とは
+      href: data-lake-analytics-overview.md
+- name: 作業開始
+  items:
+    - name: Azure ポータル
+      href: data-lake-analytics-get-started-portal.md
+    - name: Visual Studio
+      href: data-lake-analytics-data-lake-tools-get-started.md
+    - name: Visual Studio Code
+      href: data-lake-analytics-data-lake-tools-for-vscode.md
+    - name: Azure PowerShell
+      href: data-lake-analytics-get-started-powershell.md
+    - name: Azure CLI
+      href: data-lake-analytics-get-started-cli.md
+- name: 方法
+  items:
+    - name: Data Lake Analytics の管理
+      items:
+        - name: Azure ポータル
+          href: data-lake-analytics-manage-use-portal.md
+        - name: コマンド ライン
+          items:
+            - name: Azure CLI
+              href: data-lake-analytics-manage-use-cli.md
+            - name: Azure PowerShell
+              href: data-lake-analytics-manage-use-powershell.md
+        - name: SDK
+          items:
+            - name: .NET
+              href: data-lake-analytics-manage-use-dotnet-sdk.md
+            - name: Python
+              href: data-lake-analytics-manage-use-python-sdk.md
+            - name: Java
+              href: data-lake-analytics-manage-use-java-sdk.md
+            - name: Node.js
+              href: data-lake-analytics-manage-use-nodejs.md
+        - name: Add users
+          href: data-lake-analytics-add-users.md
+        - name: ポリシー
+          href: data-lake-analytics-policies.md
+        - name: ジョブ フォルダーをセキュリティ保護する
+          href: data-lake-analytics-secure.md
+        - name: 診断ログにアクセスする
+          href: data-lake-analytics-diagnostic-logs.md
+        - name: クォータ制限を調整する
+          href: data-lake-analytics-quota-limits.md
+    - name: U-SQL プログラムの開発
+      items:
+        - name: U-SQL 言語
+          items:
+            - name: 基本
+              href: data-lake-analytics-u-sql-get-started.md
+            - name: 言語のリファレンス
+              href: 'https://msdn.microsoft.com/library/azure/mt591959'
+            - name: カタログ
+              href: data-lake-analytics-u-sql-catalog.md
+            - name: ユーザー定義演算子
+              href: data-lake-analytics-u-sql-develop-user-defined-operators.md
+            - name: Python 拡張機能
+              href: data-lake-analytics-u-sql-python-extensions.md
+            - name: R 拡張機能
+              href: data-lake-analytics-u-sql-r-extensions.md
+            - name: Cognitive 拡張機能
+              href: data-lake-analytics-u-sql-cognitive.md
+            - name: プログラミング ガイド
+              href: data-lake-analytics-u-sql-programmability-guide.md
+        - name: Visual Studio
+          items:
+            - name: Install
+              href: data-lake-analytics-data-lake-tools-install.md
+            - name: ローカルの実行
+              href: data-lake-analytics-data-lake-tools-local-run.md
+            - name: ローカルのデバッグ
+              href: data-lake-analytics-data-lake-tools-local-debug.md
+            - name: U-SQL データベースの開発
+              href: data-lake-analytics-data-lake-tools-develop-usql-database.md
+            - name: ジョブの参照と表示
+              href: data-lake-analytics-data-lake-tools-view-jobs.md
+            - name: 'カスタム C# コードのデバッグ'
+              href: data-lake-analytics-debug-u-sql-jobs.md
+            - name: 定期的なジョブのトラブルシューティング
+              href: data-lake-analytics-data-lake-tools-debug-recurring-job.md
+            - name: 頂点実行の詳細
+              href: data-lake-analytics-data-lake-tools-use-vertex-execution-view.md
+            - name: U-SQL データベースのエクスポート
+              href: data-lake-analytics-data-lake-tools-export-database.md
+            - name: Web サイトのログを分析する
+              href: data-lake-analytics-analyze-weblogs.md
+            - name: データスキューを解決する
+              href: data-lake-analytics-data-lake-tools-data-skew-solutions.md
+            - name: ジョブの監視およびトラブルシューティング
+              href: data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md
+        - name: Visual Studio Code
+          items:
+            - name: Authoring
+              href: data-lake-analytics-data-lake-tools-for-vscode.md
+            - name: カスタム コード
+              href: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
+            - name: ローカルの実行とデバッグ
+              href: data-lake-tools-for-vscode-local-run-and-debug.md
+    - name: U-SQL ジョブのスケジュール設定
+      items:
+        - name: SSIS を使用したジョブのスケジュール設定
+          href: data-lake-analytics-schedule-jobs-ssis.md
+    - name: 継続的インテグレーションと継続的配置
+      items:
+        - name: 概要
+          href: data-lake-analytics-cicd-overview.md
+        - name: アセンブリの登録
+          href: data-lake-analytics-cicd-manage-assemblies.md
+        - name: テストの設定
+          href: data-lake-analytics-cicd-test.md
+        - name: U-SQL SDK
+          href: data-lake-analytics-u-sql-sdk.md
+- name: リファレンス
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.datalakeanalytics
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.datalake.analytics
+    - name: Node.js
+      href: 'https://www.npmjs.com/package/azure-arm-datalake-analytics'
+    - name: Python
+      href: 'https://docs.microsoft.com/python/api/overview/azure/data-lake-analytics?view=azure-python'
+    - name: REST
+      href: /rest/api/datalakeanalytics/
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.datalakeanalytics/allversions
+    - name: CLI
+      href: 'https://docs.microsoft.com/cli/azure/dla'
+- name: リソース
+  items:
+    - name: Azure Data Lake のブログ
+      href: 'https://blogs.msdn.microsoft.com/azuredatalake/'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+    - name: 変更の要求
+      href: 'https://feedback.azure.com/forums/327234-data-lake'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/data-lake-analytics/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=data-lake-analytics'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-data-lake'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=data-lake-analytics'
+    - name: コード サンプル
+      href: 'https://azure.microsoft.com/resources/samples/?service=data-lake-analytics'

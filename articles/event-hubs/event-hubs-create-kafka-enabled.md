@@ -1,6 +1,6 @@
 ---
-title: Kafka 対応 Azure Event Hubs の作成 | Microsoft Docs
-description: Azure portal を使用して Kafka 対応 Azure Event Hubs の名前空間を作成します
+title: Apache Kafka 対応のイベント ハブを作成する - Azure Event Hubs | Microsoft Docs
+description: この記事では、Azure portal を使用して Apache Kafka 対応の Azure Event Hubs 名前空間を作成する手順について説明します。
 services: event-hubs
 documentationcenter: .net
 author: basilhariri
@@ -8,14 +8,15 @@ manager: timlt
 ms.service: event-hubs
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 7ce12f9dcaa15ade95274419f99c13d5915dbaaa
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 125da95349fce0e75b44b5619baba28d34a74be1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143011"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000492"
 ---
 # <a name="create-apache-kafka-enabled-event-hubs"></a>Apache Kafka 対応イベント ハブの作成
 
@@ -39,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
  
 3. 一意の名前を指定し、名前空間で Kafka を有効にします。 **Create** をクリックしてください。
     
-    ![名前空間の作成](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.png)
+    ![名前空間の作成](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.jpg)
  
 4. 名前空間が作成されたら、**[設定]** タブで **[共有アクセス ポリシー]** をクリックして接続文字列を取得します。
 

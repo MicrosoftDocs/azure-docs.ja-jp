@@ -1,98 +1,111 @@
-items:
 - name: Bing News Search のドキュメント
   href: index.yml
 - name: 概要
-  items:
-  - name: Bing News Search とは
-    href: search-the-web.md
-- name: REST API のクイック スタート
-  items:
-  - name: 作業開始
-    href: quickstart.md
-  - name: C#
-    href: csharp.md
-  - name: Java
-    href: java.md
-  - name: Node.js
-    href: nodejs.md
-  - name: PHP
-    href: php.md
-  - name: Python
-    href: python.md
-  - name: Ruby
-    href: ruby.md
   expanded: true
-- name: SDK のクイック スタート
   items:
-  - name: SDK のサンプルの概要
-    href: sdk.md
-  - name: News Search SDK C# のクイック スタート
-    href: news-search-sdk-quickstart.md
-  - name: News Search SDK Node.js のクイック スタート
-    href: news-search-sdk-node-quickstart.md
-  - name: News Search SDK Python のクイック スタート
-    href: news-sdk-python-quickstart.md
-  - name: News Search SDK Java のクイック スタート
-    href: news-sdk-java-quickstart.md
+    - name: Bing News Search API とは
+      href: search-the-web.md
+    - name: Bing Search API を比較する
+      href: ../Bing-Web-Search/bing-api-comparison.md
+      maintainContext: true
+- name: クイック スタート
+  items:
+    - name: REST API
+      items:
+        - name: 'C# の使用'
+          href: csharp.md
+        - name: Java の使用
+          href: java.md
+        - name: Node.js の使用
+          href: nodejs.md
+        - name: PHP の使用
+          href: php.md
+        - name: Python の使用
+          href: python.md
+        - name: Ruby の使用
+          href: ruby.md
+        - name: Go の使用
+          href: go.md
+    - name: SDK
+      items:
+        - name: 'C# の使用'
+          href: news-search-sdk-quickstart.md
+        - name: Node.js の使用
+          href: news-search-sdk-node-quickstart.md
+        - name: Python の使用
+          href: news-sdk-python-quickstart.md
+        - name: Java の使用
+          href: news-sdk-java-quickstart.md
 - name: チュートリアル
   items:
-  - name: 単一ページの Web アプリ
-    href: tutorial-bing-news-search-single-page-app.md
-  - name: 単一ページの Web アプリ (ソース コード)
-    href: tutorial-bing-news-search-single-page-app-source.md
+    - name: 単一ページの Web アプリの作成
+      href: tutorial-bing-news-search-single-page-app.md
 - name: サンプル
   items:
-  - name: コード サンプル
-    href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+News+Search
+    - name: コード サンプル
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+News+Search'
 - name: ハウツー ガイド
   items:
-  - name: 使用と表示の要件
-    href: UseAndDisplayRequirements.md
-  - name: 検索結果の強調表示の処理
-    href: hit-highlighting.md
-  - name: ニュースのページング
-    href: paging-news.md
-  - name: サムネイルのサイズ変更とトリミング
-    href: resize-and-crop-thumbnails.md
-  - name: v5 から v7 へのアップグレード
-    href: bing-news-upgrade-guide-v5-to-v7.md
-  - name: Visual Studio を使用する
-    items:
-    - name: Bing News Search Connected Service の使用
-      href: vs-bing-news-search-connected-service.md
+    - name: 検索結果の強調表示の処理
+      href: hit-highlighting.md
+    - name: ニュースのページング
+      href: paging-news.md
+    - name: サムネイルのサイズ変更とトリミング
+      href: resize-and-crop-thumbnails.md
+    - name: v5 から v7 への API のアップグレード
+      href: bing-news-upgrade-guide-v5-to-v7.md
+    - name: Visual Studio を使用する
+      items:
+        - name: Bing News Search Connected Service の使用
+          href: vs-bing-news-search-connected-service.md
+- name: 概念
+  items:
+    - name: 検索クエリの送信
+      href: concepts/send-search-queries.md
+    - name: ニュースの検索
+      href: concepts/search-for-news.md
 - name: リファレンス
   items:
-  - name: Bing News Search API v7
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference
-  - name: Bing News Search API v5
-    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference
+    - name: Bing News Search API v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference'
+    - name: Bing News Search API v5
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference'
+    - name: SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingnews?view=azure-dotnet'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/newssearch?view=azure-java-stable'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/newssearch?view=azure-python'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/newssearch?view=azure-node-latest'
+        - name: Go
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/newssearch'
+    - name: 使用と表示の要件
+      href: ../Bing-Web-Search/use-display-requirements.md
+      maintainContext: true
 - name: リソース
   items:
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/search-api/news/
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/911449-bing-news-search-api
-  - name: スタック オーバーフロー
-    href: https://stackoverflow.com/search?q=bing+news+search
-  - name: リージョン別の提供状況
-    href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/
-  - name: ナレッジ ベース
-    href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
-  - name: API キーを取得する
-    href: https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api
-  - name: 試してみる
-    href: https://dev.cognitive.microsoft.com/docs/services/56b43f72cf5ff8098cef380a/operations/56f02400dbe2d91900c68553
-  - name: Bing News Search エンドポイント
-    href: endpoint-news.md
-  - name: 言語とリージョンのサポート
-    href: language-support.md
-  - name: Bing News Search API 用の分析
-    href: bing-news-stats.md
-ms.openlocfilehash: 18f4cb1a123c4dd535df9c82821271c6e3372796
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434655"
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/news/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/911449-bing-news-search-api'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/search?q=bing+news+search'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: ナレッジ ベース
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: API キーを取得する
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api'
+    - name: 試してみる
+      href: 'https://dev.cognitive.microsoft.com/docs/services/56b43f72cf5ff8098cef380a/operations/56f02400dbe2d91900c68553'
+    - name: Bing News Search エンドポイント
+      href: endpoint-news.md
+    - name: 言語とリージョンのサポート
+      href: language-support.md
+    - name: Bing News Search API 用の分析
+      href: bing-news-stats.md

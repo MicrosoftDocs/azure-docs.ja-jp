@@ -1,30 +1,32 @@
 ---
-title: Azure Cosmos DB Cassandra API アカウントのデータのクエリを実行する
-description: この記事では、Java アプリケーションを使用して、Azure Cosmos DB Cassandra API アカウントのユーザー データにのクエリを実行する方法について説明します。
-services: cosmos-db
+title: チュートリアル:Azure Cosmos DB の Cassandra API アカウントに対するデータのクエリを実行する
+description: このチュートリアルでは、Java アプリケーションを使用して、Azure Cosmos DB の Cassandra API アカウントに対するユーザー データのクエリを実行する方法について説明します。
 ms.service: cosmos-db
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
-ms.component: cosmosdb-cassandra
+ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: a06e7e6159953bfeffa966759d29b91bbcbafd37
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+Customer intent: As a developer, I want to build a Java application to query data stored in a Cassandra API account of Azure Cosmos DB so that customers can manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
+ms.openlocfilehash: 69a9bc912f2cd52e52ca6403187f993413539ecd
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739211"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54038179"
 ---
-# <a name="tutorial-query-data-from-an-azure-cosmos-db-cassandra-api-account"></a>チュートリアル: Azure Cosmos DB Cassandra API アカウントのデータのクエリを実行する
+# <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>チュートリアル:Azure Cosmos DB の Cassandra API アカウントに対するデータのクエリを実行する
 
-このチュートリアルでは、Java アプリケーションを使用して、Azure Cosmos DB Cassandra API アカウントのユーザー データのクエリを実行する方法について説明します。 この Java アプリケーションでは、[Java ドライバー](https://github.com/datastax/java-driver)を使用して、ユーザー ID、ユーザー名、ユーザー所在地などのユーザー データのクエリを実行します。 
+開発者は、キー/値ペアを使用するアプリケーションを持っていることがあります。 Azure Cosmos DB の Cassandra API アカウントを使用して、キー/値データを格納してクエリを実行できます。 このチュートリアルでは、Java アプリケーションを使用して、Azure Cosmos DB の Cassandra API アカウントに対するユーザー データのクエリを実行する方法について説明します。 この Java アプリケーションでは、[Java ドライバー](https://github.com/datastax/java-driver)を使用して、ユーザー ID、ユーザー名、ユーザー所在地などのユーザー データのクエリを実行します。 
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
 > [!div class="checklist"]
 > * Cassandra テーブルのデータのクエリを実行する
 > * アプリの実行
+
+Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +40,7 @@ ms.locfileid: "50739211"
 
    * データベース内のすべてのユーザーを照会する
    * ユーザー ID でフィルター処理された特定のユーザーを照会する
-   * テーブルを削除する。
+   * テーブルを削除する
 
    ```java
    /**
@@ -103,9 +105,13 @@ ms.locfileid: "50739211"
 
 2. 次に Azure portal で**データ エクスプローラー**を開き、ユーザー テーブルが削除されていることを確認します。
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+必要がなくなったら、リソース グループ、Azure Cosmos アカウント、およびすべての関連リソースを削除できます。 これを行うには、仮想マシン用のリソース グループを選択し、**[削除]** を選択した後、削除するリソース グループの名前を確認します。
+
 ## <a name="next-steps"></a>次の手順
 
-* このチュートリアルでは、Azure Cosmos DB Cassandra API アカウントのデータのクエリを実行する方法を学びました。 次の記事に進むことができます。
+このチュートリアルでは、Azure Cosmos DB の Cassandra API アカウントからデータのクエリを実行する方法を学びました。 次の記事に進むことができます。
 
 > [!div class="nextstepaction"]
 > [データを Cassandra API アカウントに移行する](cassandra-import-data.md)

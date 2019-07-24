@@ -1,70 +1,58 @@
 ---
-title: データのアップロード (.NET - Azure Search) | Microsoft Docs
-description: .NET SDK を使用して Azure Search のインデックスにデータをアップロードする方法について説明します。
-author: brjohnstmsft
-manager: jlembicz
-ms.author: brjohnst
+title: C# (.NET SDK) で Azure Search インデックスにデータを読み込む - Azure Search
+description: C# のサンプル コードと .NET SDK を使用して、Azure Search の全文検索可能なインデックスにデータをアップロードする方法について説明します。
+author: heidisteen
+manager: cgronlun
+ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 01/13/2017
-ms.openlocfilehash: dc59531b282f6c99dd399ac384a8c6264ee260ea
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 03/20/2019
+ms.openlocfilehash: d2d54d1425bbb67a3f5ba1b6081a9f74ff87f4d6
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258767"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286909"
 ---
-# <a name="upload-data-to-azure-search-using-the-net-sdk"></a>.NET SDK を使用した Azure Search へのデータのアップロード
-> [!div class="op_single_selector"]
-> * [概要](search-what-is-data-import.md)
-> * [.NET](search-import-data-dotnet.md)
-> * [REST ()](search-import-data-rest-api.md)
-> 
-> 
+# <a name="quickstart-2---load-data-to-an-azure-search-index-using-c"></a>クイック スタート:2 - C# を使用して Azure Search インデックスにデータを読み込む
 
-この記事では、 [Azure Search .NET SDK](https://aka.ms/search-sdk) を使用して Azure Search インデックスにデータをインポートする方法について説明します。
+この記事では、C# と [.NET SDK](https://aka.ms/search-sdk) を使用して [Azure Search インデックス](search-what-is-an-index.md)にデータをインポートする方法について説明します。 ドキュメントのインデックスへのプッシュ操作は、次のタスクを実行することによって実現されます。
 
-このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-what-is-an-index.md)してあります。 また、この記事では、「[.NET SDK を使用した Azure Search インデックスの作成](search-create-index-dotnet.md#CreateSearchServiceClient)」で説明されているとおりに、`SearchServiceClient` オブジェクトを作成済みであることを前提としています。
+> [!div class="checklist"]
+> * 検索インデックスに接続するための [`SearchIndexClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) オブジェクトを作成します。
+> * 追加、変更、または削除するドキュメントを含む [`IndexBatch`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) オブジェクトを作成します。
+> * `SearchIndexClient` で `Documents.Index` メソッドを呼び出してドキュメントをインデックスにアップロードします。
 
-> [!NOTE]
-> この記事のサンプル コードはすべて C# で記述されています。 [GitHub](https://aka.ms/search-dotnet-howto)に完全なソース コードがあります。 サンプル コードの詳細なチュートリアルについては、[Azure Search .NET SDK](search-howto-dotnet-sdk.md) に関する記事も参照してください。
+## <a name="prerequisites"></a>前提条件
 
-.NET SDK を使用してインデックスにドキュメントをプッシュするには、次の手順を実行する必要があります。
+[Azure Search インデックスの作成](search-create-index-dotnet.md)と、「[クライアントを作成する](search-create-index-dotnet.md#CreateSearchServiceClient)」に説明されている `SearchServiceClient` オブジェクトの作成が完了していること。
 
-1. 検索インデックスに接続するための `SearchIndexClient` オブジェクトを作成します。
-2. 追加、変更、または削除するドキュメントを含む `IndexBatch` オブジェクトを作成します。
-3. `SearchIndexClient` の `Documents.Index` メソッドを呼び出して、`IndexBatch` を検索インデックスに送信します。
 
-## <a name="create-an-instance-of-the-searchindexclient-class"></a>SearchIndexClient クラスのインスタンスの作成
-Azure Search .NET SDK を使用してインデックスにデータをインポートするには、 `SearchIndexClient` クラスのインスタンスを作成する必要があります。 このインスタンスは自分で作成することもできますが、既に `SearchServiceClient` インスタンスがある場合は、`Indexes.GetClient` メソッドを呼び出すほうが簡単に済みます。 たとえば、`serviceClient` という名前の `SearchServiceClient` から "hotels" という名前のインデックスの `SearchIndexClient` を取得する方法は次のようになります。
+## <a name="create-a-client"></a>クライアントの作成
+データをインポートするには、`SearchIndexClient` クラスのインスタンスが必要です。 このクラスを作成するには、既に作成されている `SearchServiceClient` インスタンスを使用するなど、いくつかの方法があります。 
+
+次の例に示すように、`SearchServiceClient` インスタンスを使用してその `Indexes.GetClient` メソッドを呼び出すことができます。 このスニペットでは、`serviceClient` という名前の `SearchServiceClient` から "hotels" という名前のインデックスの `SearchIndexClient` を取得します。
 
 ```csharp
 ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
-> [!NOTE]
-> 一般的な検索アプリケーションでは、インデックスの管理とインデックスの設定は、検索クエリとは別のコンポーネントによって処理されます。 `Indexes.GetClient` は、別の `SearchCredentials` を指定する手間を省くため、インデックスを作成するのに便利です。 そのためには、`SearchServiceClient` を作成するときに使用した管理者キーを新しい `SearchIndexClient` に渡します。 ただし、アプリケーションのクエリを実行する部分では、管理者キーの代わりにクエリ キーを渡すことができるように、 `SearchIndexClient` を直接作成する方が適しています。 これは、 [最小権限の原則](https://en.wikipedia.org/wiki/Principle_of_least_privilege) にも適合しており、アプリケーションのセキュリティ強化に役立ちます。 管理者キーとクエリ キーの詳細については、[Azure Search REST API のリファレンス](https://docs.microsoft.com/rest/api/searchservice/)を参照してください。
-> 
-> 
-
 `SearchIndexClient` には `Documents` プロパティがあります。 このプロパティは、インデックスの追加、変更、削除、クエリに必要なすべてのメソッドを提供します。
 
-## <a name="decide-which-indexing-action-to-use"></a>利用するインデックス作成アクションの決定
-.NET SDK を使用してデータをインポートするには、データを `IndexBatch` オブジェクトにパッケージ化する必要があります。 `IndexBatch` は複数の `IndexAction` オブジェクトをカプセル化したものです。このオブジェクトにはそれぞれ、ドキュメント 1 つと、Azure Search にそのドキュメントへのアクション (アップロード、マージ、削除など) を指示するプロパティが 1 つ含まれています。 以下のアクションのうちどれを選ぶかに応じて、各ドキュメントに含める必要のあるフィールドは異なります。
+> [!NOTE]
+> 一般的な検索アプリケーションでは、クエリの実行とインデックス付けは別個に処理されます。 `Indexes.GetClient` では `SearchCredentials` のようなオブジェクトを再利用できるので便利ですが、管理者キーの代わりにクエリ キーを渡すことができるように `SearchIndexClient` を直接作成すると、より堅牢になります。 この方法は、[最小限の特権の原則](https://en.wikipedia.org/wiki/Principle_of_least_privilege)にも適合しており、アプリケーションのセキュリティ強化に役立ちます。 `SearchIndexClient` は次の演習で作成します。 キーの詳細については、「[Create and manage api-keys for an Azure Search service (Azure Search サービスの API キーの作成と管理)](search-security-api-keys.md)」を参照してください。
+> 
+> 
 
-| Action | 説明 | 各ドキュメントに必要なフィールド | メモ |
-| --- | --- | --- | --- |
-| `Upload` |`Upload` アクションは、ドキュメントが新しい場合は挿入され、存在する場合は更新/置換される "upsert" に似ています。 |キーのほか、定義するその他すべてのフィールド |既存のドキュメントを更新または置換する際に、要求で指定されていないフィールドは `null`に設定されます。 この処理は、フィールドが null 以外の値に設定されていた場合にも行われます。 |
-| `Merge` |指定されたフィールドで既存のドキュメントを更新します。 ドキュメントがインデックスに存在しない場合、マージは失敗します。 |キーのほか、定義するその他すべてのフィールド |マージで指定したすべてのフィールドは、ドキュメント内の既存のフィールドを置き換えます。 これには、 `DataType.Collection(DataType.String)`型のフィールドも含まれます。 たとえば、ドキュメントにフィールド `tags` があり、その値が `["budget"]` である場合、`tags` に値 `["economy", "pool"]` を指定してマージを実行すると、`tags` フィールドの最終的な値は `["economy", "pool"]` になります。 `["budget", "economy", "pool"]`にはなりません。 |
-| `MergeOrUpload` |このアクションは、指定したキーを持つドキュメントがインデックスに既に存在する場合は、`Merge` と同様の処理になります。 ドキュメントが存在しない場合は、 `Upload` と同様の処理になり、新しいドキュメントが挿入されます。 |キーのほか、定義するその他すべてのフィールド |- |
-| `Delete` |インデックスから指定したドキュメントを削除します。 |キーのみ |指定したフィールドは、キー フィールド以外すべて無視されます。 ドキュメントから個々のフィールドを削除する場合は、代わりに `Merge` を使用して、フィールドを明示的に null に設定します。 |
+<a name="construct-indexbatch"></a>
 
-`IndexBatch` クラスと `IndexAction` クラスの各種静的メソッドで使用するアクションを指定できます。詳しくは、次のセクションで説明します。
+## <a name="construct-indexbatch"></a>IndexBatch の作成
 
-## <a name="construct-your-indexbatch"></a>IndexBatch の作成
-ドキュメントに対して実行するアクションを特定したら、`IndexBatch` を作成できます。 次の例は、いくつかのアクションでバッチを作成する方法を示しています。 この例では、"hotels" インデックス内でドキュメントにマップされている `Hotel` という名前のカスタム クラスを使用している点に注目してください。
+.NET SDK を使用してデータをインポートするには、データを `IndexBatch` オブジェクトにパッケージ化します。 `IndexBatch` は `IndexAction` オブジェクトのコレクションをカプセル化したものです。各オブジェクトには、ドキュメント 1 つと、そのドキュメントに対して実行するアクション (upload、merge、delete、mergeOrUpload など) を Azure Search に指示するプロパティが 1 つ含まれています。 インデックス付けアクションの詳細については、「[Indexing actions: upload, merge, mergeOrUpload, delete (インデックス付けアクション: upload、merge、mergeOrUpload、delete)](search-what-is-data-import.md#indexing-actions)」を参照してください。
+
+ドキュメントに対して実行するアクションがわかっていれば、`IndexBatch` を作成する準備が整っていることになります。 次の例は、いくつかのアクションでバッチを作成する方法を示しています。 この例では、"hotels" インデックス内でドキュメントにマップされている `Hotel` という名前のカスタム クラスを使用しています。
 
 ```csharp
 var actions =
@@ -126,7 +114,7 @@ var batch = IndexBatch.New(actions);
 > 
 > 
 
-## <a name="import-data-to-the-index"></a>インデックスへのデータのインポート
+## <a name="call-documentsindex"></a>Documents.Index の呼び出し
 `IndexBatch` オブジェクトが初期化されたので、`SearchIndexClient` オブジェクトで `Documents.Index` を呼び出してインデックスに送信できます。 次の例は、 `Index`を呼び出す方法と、実行が必要な追加手順を示しています。
 
 ```csharp
@@ -152,84 +140,11 @@ Thread.Sleep(2000);
 
 上記の例のコードは、最後に 2 秒間遅延します。 インデックスの作成は Azure Search サービスで非同期的に行われるので、サンプル アプリケーションは短い時間待機して、確実にドキュメントを検索に使用できるようにする必要があります。 通常、このような遅延は、デモ、テスト、およびサンプル アプリケーションでのみ必要です。
 
-<a name="HotelClass"></a>
+ドキュメント処理の詳細については、「[How the .NET SDK handles documents (.NET SDK がドキュメントを処理する方法)](search-howto-dotnet-sdk.md#how-dotnet-handles-documents)」を参照してください。
 
-### <a name="how-the-net-sdk-handles-documents"></a>.NET SDK がドキュメントを処理する方法
-Azure Search .NET SDK が `Hotel` のようなユーザー定義クラスのインスタンスをどのようにしてインデックスにアップロードできるのか不思議に思われるかもしれません。 この疑問に答えるために、`Hotel` クラスを見てみましょう。このクラスは、「[.NET SDK を使用した Azure Search インデックスの作成](search-create-index-dotnet.md#DefineIndex)」で定義したインデックス スキーマにマップされています。
-
-```csharp
-[SerializePropertyNamesAsCamelCase]
-public partial class Hotel
-{
-    [Key]
-    [IsFilterable]
-    public string HotelId { get; set; }
-
-    [IsFilterable, IsSortable, IsFacetable]
-    public double? BaseRate { get; set; }
-
-    [IsSearchable]
-    public string Description { get; set; }
-
-    [IsSearchable]
-    [Analyzer(AnalyzerName.AsString.FrLucene)]
-    [JsonProperty("description_fr")]
-    public string DescriptionFr { get; set; }
-
-    [IsSearchable, IsFilterable, IsSortable]
-    public string HotelName { get; set; }
-
-    [IsSearchable, IsFilterable, IsSortable, IsFacetable]
-    public string Category { get; set; }
-
-    [IsSearchable, IsFilterable, IsFacetable]
-    public string[] Tags { get; set; }
-
-    [IsFilterable, IsFacetable]
-    public bool? ParkingIncluded { get; set; }
-
-    [IsFilterable, IsFacetable]
-    public bool? SmokingAllowed { get; set; }
-
-    [IsFilterable, IsSortable, IsFacetable]
-    public DateTimeOffset? LastRenovationDate { get; set; }
-
-    [IsFilterable, IsSortable, IsFacetable]
-    public int? Rating { get; set; }
-
-    [IsFilterable, IsSortable]
-    public GeographyPoint Location { get; set; }
-
-    // ToString() method omitted for brevity...
-}
-```
-
-最初に気付くのは、`Hotel` の各パブリック プロパティがインデックス定義のフィールドに対応していることですが、1 つ重要な違いがあります。各フィールドの名前が小文字で始まっているのに対し ("camel case")、`Hotel` の各パブリック プロパティの名前は大文字で始まっています ("Pascal case")。 これは、ターゲット スキーマをアプリケーション開発者が制御できない場合にデータ バインドを実行する .NET アプリケーションでの一般的なシナリオです。 プロパティ名を camel-case にして .NET の命名ガイドラインに違反するのではなく、プロパティ名を自動的に camel-case にマップするように `[SerializePropertyNamesAsCamelCase]` 属性で SDK に指示できます。
-
-> [!NOTE]
-> Azure Search .NET SDK は、 [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm) ライブラリを使用して、カスタムのモデル オブジェクトから JSON 形式へのシリアル化や JSON 形式からの逆シリアル化を行います。 必要に応じてこのシリアル化をカスタマイズできます。 詳細については、「[JSON.NET を使用したシリアル化のカスタマイズ](search-howto-dotnet-sdk.md#JsonDotNet)」を参照してください。 一例として、上記のサンプル コードで `DescriptionFr` プロパティに `[JsonProperty]` 属性を使用できます。
-> 
-> 
-
-`Hotel` クラスに関する 2 番目の重要な点は、パブリック プロパティのデータ型です。 これらのプロパティの .NET 型は、インデックス定義でそれらと同等のフィールド型にマップします。 たとえば、`Category` 文字列プロパティは、`DataType.String` 型の `category` フィールドにマップします。 `bool?` と `DataType.Boolean`、`DateTimeOffset?` と `DataType.DateTimeOffset` などの間にも、同じような型のマッピングがあります。 型のマッピングの具体的なルールについては、[Azure Search .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_)で `Documents.Get` メソッドを参照してください。
-
-独自のクラスをドキュメントとして使用するこの方法は、どちらの方向でも機能します。また、[次の記事](search-query-dotnet.md)で示すように、検索結果を取得し、SDK で自動的に任意の型に逆シリアル化することもできます。
-
-> [!NOTE]
-> Azure Search .NET SDK は、`Document` クラスを使用して動的に型指定されたドキュメントもサポートします。これは、フィールドの値に対するフィールド名のキー/値マッピングです。 この機能は、設計時にインデックス スキーマがわからない場合、または特定のモデル クラスにバインドすると不都合な場合に便利です。 ドキュメントを処理する SDK のすべてのメソッドには、`Document` クラスを使用するオーバーロード、およびジェネリック型パラメーターを使用する厳密な型指定のオーバーロードがあります。 この記事のサンプル コードでは、後者のみを使用しています。
-> 
-> 
-
-**null 許容のデータ型を使用する理由**
-
-Azure Search インデックスにマップする独自のモデル クラスを設計するときは、`bool` や `int` などの値型のプロパティを null 許容型として宣言することをお勧めします (たとえば、`bool` ではなく `bool?` を使用する)。 null 非許容プロパティを使用する場合、対応するフィールドに null 値が含まれるドキュメントがインデックス内に存在しないことを、開発者が **保証する** 必要があります。 SDK または Azure Search サービスで、これを強制することはできません。
-
-これは単なる仮定上の問題ではありません。`DataType.Int32` 型の既存のインデックスに新しいフィールドを追加する場合を考えてみてください。 インデックスの定義を更新した後、(Azure Search ではすべての型が null を許容するので) すべてのドキュメントでその新しいフィールドの値が null になります。 その後、そのフィールドが null 非許容型の `int` プロパティであるモデル クラスを使用した場合、ドキュメントを取得しようとすると、次のような `JsonSerializationException` が発生します。
-
-    Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
-
-このため、ベスト プラクティスとして、モデル クラスでは null 許容型を使用することをお勧めします。
 
 ## <a name="next-steps"></a>次の手順
-Azure Search インデックスにデータを読み込んだら、ドキュメントを検索するクエリを発行できるようになります。 詳細については、「 [Azure Search インデックスの照会](search-query-overview.md) 」を参照してください。
+Azure Search インデックスにデータを読み込んだ後の次の手順では、ドキュメントを検索するクエリを発行します。 
 
+> [!div class="nextstepaction"]
+> [C# で Azure Search インデックスに対するクエリを実行する](search-query-dotnet.md)

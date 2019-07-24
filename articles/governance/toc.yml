@@ -1,59 +1,55 @@
-items:
 - name: Azure ガバナンスのドキュメント
   href: index.yml
 - name: 概要
-  items:
-  - name: Azure の管理
-    href: azure-management.md
   expanded: true
+  items:
+    - name: Azure の管理
+      href: azure-management.md
 - name: コンポーネントとサービス
-  items:
-  - name: 管理グループ
-    href: management-groups/overview.md
-    items:
-    - name: Create
-      href: management-groups/create.md
-    - name: '[管理]'
-      href: management-groups/manage.md
-  - name: リソース グラフ
-    href: resource-graph/overview.md
-  - name: ポリシー
-    href: policy/overview.md
-  - name: ブループリント
-    href: blueprints/overview.md
   expanded: true
+  items:
+    - name: 管理グループ
+      items:
+        - name: 概要
+          href: management-groups/index.md
+        - name: Create
+          href: management-groups/create.md
+        - name: 管理
+          href: management-groups/manage.md
+    - name: リソース グラフ
+      href: resource-graph/overview.md
+    - name: ポリシー
+      href: policy/overview.md
+    - name: ブループリント
+      href: blueprints/overview.md
 - name: 実装
-  items:
-  - name: エンタープライズ クラウドの導入
-    items:
-    - name: クラウド リソース ガバナンスとは
-      href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
-    - name: Azure でのリソース アクセス ガバナンス
-      href: /azure/architecture/cloud-adoption/getting-started/azure-resource-access?toc=/azure/governance/toc.json
-    - name: 単一チーム向けのガバナンス設計
-      href: /azure/architecture/cloud-adoption/governance/governance-single-team?toc=/azure/governance/toc.json
-    - name: 複数チーム向けのガバナンス設計
-      href: /azure/architecture/cloud-adoption/governance/governance-multiple-teams?toc=/azure/governance/toc.json
-  - name: Azure エンタープライズ スキャフォールディング
-    items:
-    - name: サブスクリプションの規範的なガバナンス
-      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
-    - name: Azure エンタープライズ スキャフォールディングの実装
-      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold-examples?toc=/azure/governance/toc.json
   expanded: true
+  items:
+    - name: エンタープライズ クラウドの導入
+      items:
+        - name: クラウド リソース ガバナンスとは
+          href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
+        - name: Azure でのリソース アクセス ガバナンス
+          href: /azure/architecture/cloud-adoption/getting-started/azure-resource-access?toc=/azure/governance/toc.json
+        - name: 単一チーム向けのガバナンス設計
+          href: /azure/architecture/cloud-adoption/governance/governance-single-team?toc=/azure/governance/toc.json
+        - name: 複数チーム向けのガバナンス設計
+          href: /azure/architecture/cloud-adoption/governance/governance-multiple-teams?toc=/azure/governance/toc.json
+    - name: Azure エンタープライズ スキャフォールディング
+      items:
+        - name: サブスクリプションの規範的なガバナンス
+          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
+        - name: Azure エンタープライズ スキャフォールディングの実装
+          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold-examples?toc=/azure/governance/toc.json
 - name: リソース
   items:
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/
-  - name: 料金計算ツール
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: ユーザーの声
-    href: https://feedback.azure.com/forums/915958-azure-governance
-  - name: ガバナンスの動画
-    href: https://www.youtube.com/watch?v=MhGbKjlmuRs
-ms.openlocfilehash: dcf421089adeb43cb11760a248f212fdafd5eeca
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031716"
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: ユーザーの声
+      href: 'https://feedback.azure.com/forums/915958-azure-governance'
+    - name: ガバナンスの動画
+      href: 'https://www.youtube.com/watch?v=MhGbKjlmuRs'
+    - name: ガバナンスに関する YouTube チャンネル
+      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'

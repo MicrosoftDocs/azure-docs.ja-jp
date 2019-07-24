@@ -10,14 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 02/11/2019
 ms.author: spelluru
-ms.openlocfilehash: 623e4392ff8ff75d09da92c54b9e4dc620146432
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.reviewer: christianreddington,anthdela,juselph
+ms.openlocfilehash: 7832691812d8f10342dc7df20a7cfab7265f2d9d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250854"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243520"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Azure DevTest Labs インフラストラクチャのガバナンス - コストと所有権の管理
 コストと所有権は、開発およびテスト用の環境の構築を検討するときの主な懸案事項です。 このセクションでは、コストを最適化し、環境全体で所有権を整合させるのに役立つ情報を提供します。
@@ -40,7 +41,7 @@ DevTest Labs にはコストの最適化に役立つ機能がいくつか組み�
  
 Enterprise Dev/Test サブスクリプション内で実行されている Azure リソースを利用できるのは、アクティブな Visual Studio サブスクライバーのみ (標準サブスクリプション、年次クラウド サブスクリプション、月次クラウド サブスクリプション) です。 ただし、エンド ユーザーはアプリケーションにアクセスして、フィードバックを提供したり、受け入れテストを実行したりできます。 このサブスクリプション内でのリソースの使用はアプリケーションの開発およびテストに限定され、アップタイムの保証はありません。
 
-DevTest のオファーを使用する場合、このベネフィットはアプリケーションの開発とテストだけが対象であることに注意してください。 Visual Studio Team Services および HockeyApp の使用を除いて、このサブスクリプションでの使用には、金銭的な補償を伴う SLA は付随しません。
+DevTest のオファーを使用する場合、このベネフィットはアプリケーションの開発とテストだけが対象であることに注意してください。 Azure DevOps および HockeyApp の使用を除いて、このサブスクリプションでの使用には、金銭的な補償を伴う SLA は付随しません。
 
 ## <a name="define-a-role-based-access-across-your-organization"></a>組織全体でロールベースのアクセスを定義する
 ### <a name="question"></a>質問
@@ -57,7 +58,7 @@ DevTest Labs のリソースは、プロジェクト/アプリケーション �
 
 プロジェクト/アプリケーション チームのメンバーは、DevTest Labs ユーザー ロールに追加する必要があります。 これらのユーザーは、仮想マシンを (ラボおよびサブスクリプション レベルのポリシーに従って) 作成できます。 また、自分が所有する仮想マシンを管理することもできます。 他のユーザーに属している仮想マシンを管理することはできません。
 
-詳細については、「[Azure enterprise scaffold – prescriptive subscription governance](/architecture/cloud-adoption/appendix/azure-scaffold)」(Azure エンタープライズ スキャフォールディング - 規範的なサブスクリプション ガバナンス) ドキュメントをご覧ください。
+詳細については、「[Azure enterprise scaffold – prescriptive subscription governance](/azure/architecture/cloud-adoption/appendix/azure-scaffold)」(Azure エンタープライズ スキャフォールディング - 規範的なサブスクリプション ガバナンス) ドキュメントをご覧ください。
 
 
 ## <a name="next-steps"></a>次の手順

@@ -4,22 +4,22 @@ description: Service Fabric Reliable Services のさまざまなライフサイ�
 services: Service-Fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: vturecek;
 ms.assetid: ''
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f301c0156265f055f0ebf7cdad8dba7f39f5ba2b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ebc7aec63b34630b606178aa17e2ae7fdd0fc87f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044579"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669609"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Reliable Services のライフサイクルの概要
 > [!div class="op_single_selector"]
@@ -99,7 +99,7 @@ Azure Service Fabric Reliable Services のライフサイクルについて考�
 3. `StatefulServiceBase.OnCloseAsync()` が完了すると、サービス オブジェクトは破棄されます。
 
 ## <a name="stateful-service-primary-swaps"></a>ステートフル サービスのプライマリ スワップ
-ステートフル サービスの実行中、通信リスナーを開き、**RunAsync** メソッドを呼び出すのはそのステートフル サービスのプライマリ レプリカだけです。 セカンダリ レプリカは構築されますが、それ以上の呼び出しは行われません。 ステートフル サービスの実行中に、現在プライマリであるレプリカが変更される場合があります。 レプリカに生じるライフサイクル イベントの観点から見ると、これはどういうことでしょうか。 ステートフルなレプリカに起こる動作は、それがスワップ中に降格されているレプリカであるか、昇格されているものかによって変わります。
+ステートフル サービスの実行中、通信リスナーを開き、**RunAsync** メソッドを呼び出すのはそのステートフル サービスのプライマリ レプリカだけです。 セカンダリ レプリカは構築されますが、それ以上の呼び出しは行われません。 ステートフル サービスの実行中に、障害やクラスターの負荷分散の最適化の結果として、現在プライマリであるレプリカが変更される場合があります。 レプリカに生じるライフサイクル イベントの観点から見ると、これはどういうことでしょうか。 ステートフルなレプリカに起こる動作は、それがスワップ中に降格されているレプリカであるか、昇格されているものかによって変わります。
 
 ### <a name="for-the-primary-thats-demoted"></a>降格されているプライマリの場合
 降格されているプライマリ レプリカの場合、Service Fabric では、このレプリカでメッセージの処理を終了して、途中のバックグラウンド作業をすべて終了する必要があります。 その結果、この手順はサービスのシャットダウン時と似たものになります。 1 つ違う点は、サービスがセカンダリのままであるために、サービスが破棄されたり閉じられたりしないということです。 次の API が呼び出されます。

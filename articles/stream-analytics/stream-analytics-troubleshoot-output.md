@@ -7,13 +7,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/11/2018
-ms.openlocfilehash: 4209ce8d15bf53381825e8bb3e47f0a16366a436
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 92cb427149e6e6cbddfb96c6e4488017641e6482
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49346605"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164910"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics の出力のトラブルシューティング
 
@@ -29,7 +30,7 @@ ms.locfileid: "49346605"
       - ジョブがイベント ハブを使用している場合は、メッセージ本文が *Null* であるかどうかを確認する。
       
     - データ変換エラーが 0 より大きく、上昇している場合は、次の内容を意味する場合があります。
-      - ジョブで、イベントを逆シリアル化できていない可能性がある。
+      - 出力イベントは、ターゲット シンクのスキーマに準拠しません。 
       - イベント スキーマが、クエリ内のイベントの定義済みのスキーマまたは想定しているスキーマと一致していない可能性がある。
       - イベントの一部のフィールドのデータ型が、想定どおりでない可能性がある。
       

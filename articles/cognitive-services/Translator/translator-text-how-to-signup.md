@@ -1,21 +1,22 @@
 ---
-title: Translator Text にサインアップする方法 - Translator Text API
+title: はじめに - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: Translator Text API にサインアップしてサブスクリプション キーを取得する方法について説明します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: e7ba72c95959a0c31ca724f91f519ac705d669fb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 6bd7a014e765d32349951d99d3027c90f61f7eb7
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245785"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56726144"
 ---
 # <a name="how-to-sign-up-for-the-translator-text-api"></a>Translator Text API にサインアップする方法
 
@@ -48,6 +49,8 @@ Translator Text にサインアップするとき、ご自身のサブスクリ�
 
 - [GitHub のコード例](https://github.com/MicrosoftTranslator)
 - [Microsoft Translator サポート フォーラム](https://www.aka.ms/TranslatorForum)
+
+Microsoft Translator は通常、最初のいくつかの要求を通過させたうえで、サブスクリプション アカウントの状態を検証します。 最初のいくつかの Microsoft Translator API 要求が成功した後、その呼び出しが失敗した場合、エラー応答によって問題が示されます。 理由が確認できるよう API 応答をログしてください。
 
 ## <a name="pricing-options"></a>価格オプション
 

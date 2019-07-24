@@ -1,69 +1,75 @@
 ---
-title: Azure Cosmos DB Java Async SDK の診断およびトラブルシューティング| Microsoft Docs
+title: Azure Cosmos DB Java Async SDK の診断およびトラブルシューティング
 description: クライアント側ログ、他のサード パーティのツールなどの機能を使って、Azure Cosmos DB の問題を特定、診断、およびトラブルシューティングします。
-services: cosmos-db
 author: moderakh
 ms.service: cosmos-db
 ms.topic: troubleshooting
 ms.date: 10/28/2018
 ms.author: moderakh
 ms.devlang: java
-ms.component: cosmosdb-sql
-ms.openlocfilehash: ee92a5dd474cdf4f32ed2c7327d732a2cfbbbf79
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.subservice: cosmosdb-sql
+ms.reviewer: sngun
+ms.openlocfilehash: 0a2bbb33182fcdef3cc6ed7ff213557f90be4544
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632936"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880077"
 ---
-# <a name="troubleshooting-issues-when-using-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Azure Cosmos DB SQL API アカウントで Java Async SDK を使用する場合の問題のトラブルシューティング
-この記事では、Azure Cosmos DB SQL API アカウントで [Java Async ADK](sql-api-sdk-async-java.md) を使用するときの共通の問題、回避策、診断手順、およびツールについて説明します。
-Java Async SDK では、Azure Cosmos DB SQL API にアクセスするクライアント側の論理表現を提供します。 この記事では、問題が発生した場合に役立つツールとアプローチについて説明します。
+# <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Azure Cosmos DB SQL API アカウントで Java Async SDK を使用する場合の問題のトラブルシューティング
+この記事では、Azure Cosmos DB SQL API アカウントで [Java Async SDK](sql-api-sdk-async-java.md) を使用するときの一般的な問題、回避策、診断手順、およびツールについて説明します。
+Java Async SDK には、Azure Cosmos DB SQL API にアクセスするためのクライアント側の論理表現が用意されています。 この記事では、問題が発生した場合に役立つツールとアプローチについて説明します。
 
 次の一覧から開始します。
-    * この記事の[一般的な問題と対処法]のセクションを確認します。
-    * SDK は [github のオープン ソース](https://github.com/Azure/azure-cosmosdb-java)であり、積極的に監視する[問題のセクション](https://github.com/Azure/azure-cosmosdb-java/issues)があります。 回避策が既に提出済みの同様の問題がないか確認してください。
-    * [パフォーマンスに関するヒント](performance-tips-async-java.md)をレビューし、推奨されるやり方に従います。
-    * この記事の残りの部分に従い、解決策が見つからない場合は、 [GitHub の問題](https://github.com/Azure/azure-cosmosdb-java/issues)を提出します。
+
+* この記事の[一般的な問題と対処法]のセクションを確認します。
+* SDK を確認します。これは [GitHub 上でオープン ソース](https://github.com/Azure/azure-cosmosdb-java)として入手できます。 アクティブに監視されている[問題セクション](https://github.com/Azure/azure-cosmosdb-java/issues)があります。 回避策が既に提出済みの同様の問題がないか確認します。
+* [パフォーマンスに関するヒント](performance-tips-async-java.md)を確認し、推奨される方法に従います。
+* この記事の残りの部分を読みます。解決策が見つからない場合は、 [GitHub の問題](https://github.com/Azure/azure-cosmosdb-java/issues)を提出します。
 
 ## <a name="common-issues-workarounds"></a>一般的な問題と対処法
 
 ### <a name="network-issues-netty-read-timeout-failure-low-throughput-high-latency"></a>ネットワークの問題、Netty の読み取りタイムアウト エラーの発生、低いスループット、長い待機時間
 
 #### <a name="general-suggestions"></a>一般的な推奨事項
-* アプリが Cosmos DB アカウントと同じリージョンで実行されていることを確認します。 
-* アプリが実行されているホストの CPU 使用率を確認します。 CPU 使用率が 90% 以上の場合は、高度な構成を持つホストでアプリの実行を検討するか、別のマシンに負荷を分散させます。
+* アプリが Azure Cosmos DB アカウントと同じリージョンで実行されていることを確認します。 
+* アプリが実行されているホストの CPU 使用率を確認します。 CPU 使用率が 90% 以上の場合は、より高度な構成のホスト上でアプリを実行します。 また、より多数のマシンに負荷を分散することもできます。
 
 #### <a name="connection-throttling"></a>接続の帯域幅調整
-接続の帯域幅調整は、[ホスト コンピューターの接続制限]、または [Azure SNAT (PAT) ポート不足]のいずれかが原因で発生します。
+接続の帯域幅調整は、[ホスト マシンの接続制限]、または [Azure SNAT (PAT) ポート不足]のいずれかが原因で発生します。
 
-##### <a name="connection-limit-on-host"></a>ホスト コンピューターの接続制限
+##### <a name="connection-limit-on-host"></a>ホスト マシンの接続制限
 一部の Linux システム (Red Hat など) では、開くファイルの最大数に上限があります。 Linux のソケットはファイルとして実装されるため、この数は接続の合計数も制限します。
 次のコマンドを実行します。
 
 ```bash
 ulimit -a
 ```
-開いているファイルの数 ("nofile") を十分な大きさとする必要があります (少なくとも接続プール サイズの倍)。 詳細は、[パフォーマンスに関するヒント](performance-tips-async-java.md)を参照してください。
+開くことができる最大ファイル数 ("nofile" で指定) は、接続プール サイズの 2 倍以上にする必要があります。 詳細については、[パフォーマンスのヒント](performance-tips-async-java.md)に関するページを参照してください。
 
 ##### <a name="snat"></a>Azure SNAT (PAT) ポート不足
 
-パブリック IP アドレスを使わずにアプリを Azure VM にデプロイした場合、既定では VM 外の任意のエンドポイントへの接続を確立するために [Azure SNAT ポート](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)が使用されます。 VM から Cosmos DB エンドポイントへの許可される接続の数は、[Azure SNAT 構成](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)によって制限されます。
+パブリック IP アドレスを使わずにアプリを Azure Virtual Machines にデプロイした場合、既定では [Azure SNAT ポート](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)によって VM 外の任意のエンドポイントへの接続が確立されます。 VM から Azure Cosmos DB エンドポイントへの許可される接続の数は、[Azure SNAT 構成](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)によって制限されます。
 
-Azure SNAT ポートが使用されるのは、Azure VM がプライベート IP アドレスを持ち、VM からのプロセスが、パブリック IP アドレスへの接続を確立しようとしている場合に限られます。 そのため、Azure SNAT の制限を回避するには次の 2 つの回避策があります。
-    * [VNET サービス エンドポイントを有効にする](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)に関するページで説明したように、Azure VM VNET のサブネットに Azure Cosmos DB サービス エンドポイントを追加します。 サービス エンドポイントが有効なとき、要求はパブリック IP から cosmos DB に送信されなくなり、代わりに VNET およびサブネット ID が送信されます。 この変更により、パブリック IP のみが許可された場合はファイアウォール ドロップが発生することがあります。 ファイアウォールを使用している場合は、サービス エンドポイントを有効にするとき、[VNET ACLs](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) を使用してサブネットをファイアウォールに追加します。
-    * Azure VM にパブリック IP を割り当てます。
+ Azure SNAT ポートが使用されるのは、VM がプライベート IP アドレスを持ち、VM からのプロセスが、パブリック IP アドレスに接続しようとしている場合に限られます。 Azure SNAT の制限を回避するには次の 2 つの回避策があります。
+
+* Azure Virtual Machines 仮想ネットワークのサブネットに Azure Cosmos DB サービス エンドポイントを追加します。 詳細については、[Azure Virtual Network サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)に関するページを参照してください。 
+
+    サービス エンドポイントが有効になると、要求はパブリック IP から Azure Cosmos DB に送信されなくなります。 代わりに、仮想ネットワークとサブネット ID が送信されます。 この変更により、パブリック IP のみが許可された場合はファイアウォール ドロップが発生することがあります。 ファイアウォールを使用している場合、サービス エンドポイントを有効にするときに、[Virtual Network ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) を使用してファイアウォールにサブネットを追加します。
+* Azure VM にパブリック IP を割り当てます。
 
 #### <a name="http-proxy"></a>HTTP プロキシ
 
-HttpProxy を使用する場合、HttpProxy が SDK `ConnectionPolicy` で構成されている接続の数をサポートできるか確認します。
+HTTP プロキシを使用する場合は、SDK `ConnectionPolicy` で構成されている接続の数をサポートできることを確認します。
 できない場合、接続の問題が発生します。
 
 #### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>コーディング パターンが無効です: Netty IO スレッドのブロック
 
-SDK は [Netty](https://netty.io/) IO ライブラリを使用して、Azure Cosmos DB サービスと通信します。 Async API が存在し、非ブロッキング IO API である netty を使用します。 SDK の IO 操作は IO netty スレッドで実行されます。 IO netty スレッドの数は、アプリマシンの CPU コアの数と同じに構成されます。 netty IO スレッドは、非ブロッキング netty IO 処理のためだけに使用されます。 SDK は、netty IO スレッドの 1 つの API 呼び出しの結果をアプリのコードに返します。 アプリが netty スレッドで結果を受信した後、netty スレッドで時間のかかる動作を実行した場合、SDK が内部の IO 処理を実行するための十分な数の IO スレッドを持たなくなることがあります。 このようなアプリのコーディングでは、スループットが低く、待ち時間が長く、 `io.netty.handler.timeout.ReadTimeoutException` 障害が発生することがあります。 回避策は、操作に時間がかかることがわかっている場合にスレッドを切り替えることです。
+SDK では、Azure Cosmos DB との通信に [Netty](https://netty.io/) IO ライブラリを使用します。 SDK には Async API があり、Netty の非ブロッキング IO API を使用します。 SDK の IO 作業は IO Netty スレッドで実行されます。 IO Netty スレッドの数は、アプリマシンの CPU コアの数と同じなるように構成されます。 
 
-   たとえば、次のコード スニペットでは、数ミリ秒以上の時間のかかる処理を netty スレッドで実行する場合、最終的には IO 処理を行う netty IO スレッドが存在しない状態になることがあり、結果として ReadTimeoutException を受け取ります。
+Netty IO スレッドは、非ブロッキング Netty IO 作業のためだけに使用されます。 SDK は、Netty IO スレッドの 1 つの API 呼び出しの結果をアプリのコードに返します。 アプリが Netty スレッドで結果を受け取ってから長時間の処理を実行すると、内部 IO 作業を実行できる十分な IO スレッドが SDK にない可能性があります。 このようなアプリのコーディングでは、スループットが低く、待ち時間が長く、`io.netty.handler.timeout.ReadTimeoutException` エラーが発生することがあります。 回避策は、操作に時間がかかることがわかっている場合にスレッドを切り替えることです。
+
+たとえば、次のコード スニペットを見てみましょう。 Netty スレッドで数ミリ秒以上かかる長時間の作業を実行することがあります。 このような場合、最終的に IO 作業を処理する Netty IO スレッドが存在しない状態になる可能性があります。 その結果、ReadTimeoutException エラーが発生します。
 ```java
 @Test
 public void badCodeWithReadTimeoutException() throws Exception {
@@ -89,19 +95,19 @@ public void badCodeWithReadTimeoutException() throws Exception {
                 .createDocument(getCollectionLink(), docDefinition, null, false);
         createObservable.subscribe(r -> {
                     try {
-                        // time consuming work. For example:
-                        // writing to a file, computationally heavy work, or just sleep
-                        // basically anything which takes more than a few milliseconds
-                        // doing such operation on the IO netty thread
-                        // without a proper scheduler, will cause problems.
-                        // The subscriber will get ReadTimeoutException failure.
+                        // Time-consuming work is, for example,
+                        // writing to a file, computationally heavy work, or just sleep.
+                        // Basically, it's anything that takes more than a few milliseconds.
+                        // Doing such operations on the IO Netty thread
+                        // without a proper scheduler will cause problems.
+                        // The subscriber will get a ReadTimeoutException failure.
                         TimeUnit.SECONDS.sleep(2 * requestTimeoutInSeconds);
                     } catch (Exception e) {
                     }
                 },
 
                 exception -> {
-                    //will be io.netty.handler.timeout.ReadTimeoutException
+                    //It will be io.netty.handler.timeout.ReadTimeoutException.
                     exception.printStackTrace();
                     failureCount.incrementAndGet();
                     latch.countDown();
@@ -117,33 +123,67 @@ public void badCodeWithReadTimeoutException() throws Exception {
 ```
    回避策は、時間のかかる作業を実行するスレッドを変更することです。 アプリのスケジューラのシングルトン インスタンスを定義します。
    ```java
-// have a singleton instance of executor and scheduler
+// Have a singleton instance of an executor and a scheduler.
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
    ```
-   時間のかかる処理を行う必要がある場合 (たとえば、IO をブロックする計算負荷の高い処理)、`.observeOn(customScheduler)` API を使用して、`customScheduler` によって提供される worker にスレッドを切り替えます。
+   たとえば、時間のかかる作業 (たとえば、IO をブロックする計算負荷の高い作業) を行う必要がある場合があります。 このような場合は、`.observeOn(customScheduler)` API を使用して、`customScheduler` によって提供される worker にスレッドを切り替えます。
 ```java
 Observable<ResourceResponse<Document>> createObservable = client
         .createDocument(getCollectionLink(), docDefinition, null, false);
 
 createObservable
-        .observeOn(customScheduler) // switches the thread.
+        .observeOn(customScheduler) // Switches the thread.
         .subscribe(
             // ...
         );
 ```
-`observeOn(customScheduler)` を使用することによって、netty IO スレッドを解放し、customScheduler によって提供される独自のカスタム スレッドに切り替えます。 この変更によって問題が解決され、`io.netty.handler.timeout.ReadTimeoutException` エラーが取得されなくなります。
+`observeOn(customScheduler)` を使用することによって、Netty IO スレッドを解放し、カスタム スケジューラによって提供される独自のカスタム スレッドに切り替えます。 この変更によって問題が解決します。 `io.netty.handler.timeout.ReadTimeoutException` エラーは発生しなくなります。
 
 ### <a name="connection-pool-exhausted-issue"></a>接続プール不足の問題
 
-`PoolExhaustedException` はクライアント側のエラーです。 このエラーが頻繁に発生する場合、SDK 接続プールが対応できるよりもアプリのワークロードが高いことを示しています。 接続プールのサイズを増やすか、複数のアプリに負荷を分散すると解決する場合があります。
+`PoolExhaustedException` はクライアント側のエラーです。 このエラーは、SDK 接続プールが対応できるよりもアプリのワークロードが高いことを示します。 接続プールのサイズを増やすか、複数のアプリに負荷を分散します。
 
 ### <a name="request-rate-too-large"></a>要求率が大きすぎる
-このエラーはサーバー側のエラーで、プロビジョニングされたスループットが消費されたため後で再試行する必要があることを示しています。 このエラーが頻繁に発生する場合、コレクション スループットを増やすことを検討してください。
+このエラーはサーバー側のエラーです。 これは、プロビジョニングされたスループットを消費したことを示します。 後で再試行してください。 このエラーが頻繁に発生する場合、コレクション スループットを増やすことを検討してください。
 
 ### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>Azure Cosmos DB エミュレーターへの接続の失敗
 
-Cosmos DB エミュレーターの HTTPS 証明書が自己署名されています。 SDK でエミュレーターを動作させるには、エミュレーター証明書を Java トラスト ストアにインポートする必要があります。 説明は[こちら](local-emulator-export-ssl-certificates.md)にあります。
+Azure Cosmos DB エミュレーターの HTTPS 証明書が自己署名されています。 SDK でエミュレーターを動作させるには、エミュレーター証明書を Java トラスト ストアにインポートします。 詳細については、[Azure Cosmos DB エミュレーター証明書のエクスポート](local-emulator-export-ssl-certificates.md)に関するページを参照してください。
+
+### <a name="dependency-conflict-issues"></a>依存関係の競合の問題
+
+```console
+Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()Lrx/Single;
+```
+
+上記の例外は、RxJava lib (1.2.2 など) の古いバージョンに依存関係があることを示しています。 弊社の SDK は、以前のバージョンの RxJava では使用できない API がある、RxJava 1.3.8 に依存しています。 
+
+このような問題の回避策は、他のどの依存関係が RxJava-1.2.2 に取り込まれ、RxJava-1.2.2 への過渡的な依存関係が除外されるかを識別し、CosmosDB SDK が新しいバージョンを取り込むのを許可することです。
+
+どのライブラリが RxJava 1.2.2 に取り込まれるかを識別するには、プロジェクト pom.xml ファイルの次のコマンドを実行します。
+```bash
+mvn dependency:tree
+```
+詳細については、[maven の依存関係ツリー ガイド](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)を参照してください。
+
+RxJava 1.2.2 のプロジェクトの他の依存関係の過渡的依存関係を識別したら、pom ファイルでその lib に対する依存関係を変更して、それへの RxJava の過渡的依存関係を除外できます。
+
+```xml
+<dependency>
+  <groupId>${groupid-of-lib-which-brings-in-rxjava1.2.2}</groupId>
+  <artifactId>${artifactId-of-lib-which-brings-in-rxjava1.2.2}</artifactId>
+  <version>${version-of-lib-which-brings-in-rxjava1.2.2}</version>
+  <exclusions>
+    <exclusion>
+      <groupId>io.reactivex</groupId>
+      <artifactId>rxjava</artifactId>
+    </exclusion>
+  </exclusions>
+</dependency>
+```
+
+詳細については、[推移的な依存関係の除外ガイド](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)を参照してください。
 
 
 ## <a name="enable-client-sice-logging"></a>クライアント SDK のログ記録を有効にする
@@ -183,25 +223,25 @@ log4j.appender.A1.layout=org.apache.log4j.PatternLayout
 log4j.appender.A1.layout.ConversionPattern=%d %5X{pid} [%t] %-5p %c - %m%n
 ```
 
-詳細については、[sfl4j ロギング マニュアル](https://www.slf4j.org/manual.html)をレビューしてください。
+詳細については、[sfl4j ロギング マニュアル](https://www.slf4j.org/manual.html)を参照してください。
 
 ## <a name="netstats"></a>OS ネットワーク統計
-netstat コマンドを実行して、`Established` 状態や `CLOSE_WAIT` 状態などの接続がいくつあるか把握します。
+netstat コマンドを実行して、`ESTABLISHED` や `CLOSE_WAIT` などの状態の接続がいくつあるか把握します。
 
 Linux では、次のコマンドを実行できます。
 ```bash
 netstat -nap
 ```
-Cosmos DB エンドポイントへの接続だけを示すように結果をフィルター処理します。
+Azure Cosmos DB エンドポイントへの接続だけを示すように結果をフィルター処理します。
 
-一見したところ、`Established` 状態の Cosmos DB エンドポイントへの接続の数は、構成済みの接続プール サイズより大きくありません。
+`ESTABLISHED` 状態の Azure Cosmos DB エンドポイントへの接続の数が、構成済みの接続プール サイズより大きくなることはありません。
 
-`CLOSE_WAIT` 状態の Cosmos DB エンドポイントへの接続数が多い場合 (例えば 1000 件を超える)、接続が確立されてすぐに破棄されることを示しており、問題が発生する可能性があります。 詳細については、[一般的な問題と対処法]のセクションをレビューしてください。
+Azure Cosmos DB エンドポイントへの接続の多くが `CLOSE_WAIT` 状態である可能性があります。 1,000 を超える可能性があります。 これほど多い数は、接続が確立され、すぐに切断されていることを示します。 このような状況が原因で問題が起こる可能性があります。 詳細については、「[一般的な問題と対処法]」セクションを参照してください。
 
  <!--Anchors-->
 [一般的な問題と対処法]: #common-issues-workarounds
 [Enable client SDK logging]: #enable-client-sice-logging
-[ホスト コンピューターの接続制限]: #connection-limit-on-host
+[ホスト マシンの接続制限]: #connection-limit-on-host
 [Azure SNAT (PAT) ポート不足]: #snat
 
 

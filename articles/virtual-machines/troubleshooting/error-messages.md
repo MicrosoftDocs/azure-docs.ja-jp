@@ -12,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: b996d42e5c543235d09b46d29889bc5eaeafd52a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 5945be210812a6cbc24c9a3bb12414be5212be17
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412134"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437600"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Azure で仮想マシンを管理するときに発生する一般的なエラー メッセージについて説明します
 
@@ -99,8 +99,8 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  InvalidParameter  |  指定したパスワードは、長さが {0} から {1} 文字であり、次のパスワードの複雑さの要件のうちの少なくとも {2} 個を満たしている必要があります: <ol><li> 大文字が含まれている</li><li>小文字が含まれている</li><li>数字が含まれている</li><li>特殊文字が含まれている</li></ol>  |
 |  InvalidParameter  |  指定した管理者のユーザー名は許可されません。  |
 |  InvalidParameter  |  VM がプラットフォーム イメージまたはユーザー イメージから作成されている場合は、既存の OS ディスクを接続することはできません。  |
-|  InvalidParameter  |  コンテナー名 {0} は無効です。 コンテナー名は 3 から 63 文字の長さでなければならず、使用できるのは小文字の英数字とハイフンのみです。 ハイフンの後に英数字を続ける必要があります。  |
-|  InvalidParameter  |  URL {1} のコンテナー名 {0} は無効です。 コンテナー名は 3 から 63 文字の長さでなければならず、使用できるのは小文字の英数字とハイフンのみです。 ハイフンの後に英数字を続ける必要があります。  |
+|  InvalidParameter  |  コンテナー名 {0} は無効です。 コンテナー名は 3 から 63 文字の長さでなければならず、使用できるのは小文字の英数字とハイフンのみです。 ハイフンの前後には英数字を指定する必要があります。  |
+|  InvalidParameter  |  URL {1} のコンテナー名 {0} は無効です。 コンテナー名は 3 から 63 文字の長さでなければならず、使用できるのは小文字の英数字とハイフンのみです。 ハイフンの前後には英数字を指定する必要があります。  |
 |  InvalidParameter  |  URL {0} の BLOB 名にスラッシュが含まれています。 現時点では、ディスクに含めることはできません。  |
 |  InvalidParameter  |  URI {0} は正しい BLOB URI ではないようです。  |
 |  InvalidParameter  |  '{0}' という名前のディスクで既に同じ LUN: {1} を使用しています。  |
@@ -171,7 +171,7 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  OperationNotAllowed  |  要求されたサイズ {0} は、可用性セットが現在割り当てられているクラスターで利用できないため、VM のサイズ変更ができません。 利用可能なサイズは、{1} です。 VM のサイズ変更の方針について詳しくは、 https://aka.ms/azure-resizevm をご覧ください。  |
 |  OperationNotAllowed  |  要求されたサイズ {0} は、VM が現在割り当てられているクラスターで利用できないため、VM のサイズ変更ができません。 VM を {1} へサイズ変更するには、割り当ての解除 (Azure Portal での停止操作) を実行し、もう一度サイズ変更の操作をしてみてください。 VM のサイズ変更の方針について詳しくは、 https://aka.ms/azure-resizevm をご覧ください。  |
 |  OSProvisioningClientError  |  VM '{0}' に OS をプロビジョニングできませんでした。現在、ゲスト OS をプロビジョニングしています。  |
-|  OSProvisioningClientError  |  VM '{0}' の OS をプロビジョニングできませんでした。 エラーの詳細: {1} イメージが適切に準備 (一般化) されているかをご確認ください。 <ul><li>Windows 向けの手順: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
+|  OSProvisioningClientError  |  VM '{0}' の OS をプロビジョニングできませんでした。 エラーの詳細:{1}。イメージが適切に準備 (一般化) されていることも確認してください。 <ul><li>Windows 向けの手順: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
 |  OSProvisioningClientError  |  SSH ホスト キーの生成に失敗しました。 エラーの詳細: {0}。 この問題を解決するには、Linux エージェントが適切にセットアップされていることを確かめてください。 <ul><li>https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ で手順を確認することができます </li></ul> |
 |  OSProvisioningClientError  |  VM に指定されたユーザー名は、この Linux ディストリビューションに関しては無効です。 エラーの詳細: {0}。  |
 |  OSProvisioningInternalError  |  内部エラーが発生したため、VM '{0}' の OS をプロビジョニングできませんでした。  |

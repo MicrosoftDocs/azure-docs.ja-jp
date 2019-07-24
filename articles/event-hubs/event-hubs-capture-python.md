@@ -1,5 +1,5 @@
 ---
-title: Azure Event Hubs Capture チュートリアル | Microsoft Docs
+title: Python アプリからキャプチャしたデータを読み取る - Azure Event Hubs |Microsoft Docs
 description: Azure Python SDK を用いて、Event Hubs Capture 機能の使用方法を示すサンプル。
 services: event-hubs
 documentationcenter: ''
@@ -12,16 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 76102e1238346cbbb8f5159d2ffcd94c788c16d6
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 639bc4ff9c69bca3d5f8bca6967bfc3e8e6a13d4
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42145220"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100552"
 ---
-# <a name="event-hubs-capture-walkthrough-python"></a>Event Hubs Capture チュートリアル: Python
+# <a name="event-hubs-capture-walkthrough-python"></a>Event Hubs Capture チュートリアル:Python
 
 Capture は Azure Event Hubs の機能です。 これを使用すると、任意の Azure BLOB ストレージ アカウントに、イベント ハブ内のストリーミング データを自動的に配布できます。 この機能により、リアルタイムのストリーミング データを容易にバッチ処理することができます。 この記事では、Event Hubs Capture を Python で使用する方法について説明します。 Event Hubs Capture の詳細については、[概要の記事](event-hubs-capture-overview.md)をご覧ください。
 
@@ -38,10 +39,9 @@ Capture は Azure Event Hubs の機能です。 これを使用すると、任�
 ## <a name="prerequisites"></a>前提条件
 
 - Python 2.7.x
-- Azure サブスクリプション
-- アクティブな [Event Hubs 名前空間とイベント ハブ](event-hubs-create.md)
-
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
+- Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+- アクティブな [Event Hubs 名前空間とイベント ハブ](event-hubs-create.md)。 
+- 次の手順に従って、イベント ハブの**キャプチャ**機能を有効にする:[Azure Portal を使用して Event Hubs Capture を有効にする](event-hubs-capture-enable-through-portal.md)
 
 ## <a name="create-an-azure-blob-storage-account"></a>Azure BLOB ストレージ アカウントを作成する
 1. [Azure Portal][Azure portal] にサインインします。
@@ -62,7 +62,7 @@ Capture は Azure Event Hubs の機能です。 これを使用すると、任�
    import datetime
    import random
    import json
-   from azure.servicebus import ServiceBusService
+   from azure.servicebus.control_client import ServiceBusService
    
    sbs = ServiceBusService(service_namespace='INSERT YOUR NAMESPACE NAME', shared_access_key_name='RootManageSharedAccessKey', shared_access_key_value='INSERT YOUR KEY')
    devices = []

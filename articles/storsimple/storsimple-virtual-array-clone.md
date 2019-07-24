@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: 768c9a1c906999f4690c9c8f7d075743ab1678ff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: feffbb634af62d70a840febcf2a04afb7bdeeddd
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23110110"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496794"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>StorSimple Virtual Array のバックアップから複製する
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 
 この記事では、Microsoft Azure StorSimple Virtual Array の共有またはボリュームのバックアップ セットから複製する方法について手順を追って説明します。 複製されたバックアップを使用して、削除されたファイルや消失したファイルを回復します。 また、ファイル サーバーとして構成された StorSimple Virtual Array で、項目レベルの回復を実行する手順についても詳しく説明します。
 
@@ -42,7 +42,7 @@ ms.locfileid: "23110110"
    
    b.    フィルター処理されたバックアップの一覧から、複製元のバックアップを選択します。
    
-   c.    **[OK]** をクリックします。
+   c.    Click **OK**.
    
    ![バックアップの複製](./media/storsimple-virtual-array-clone/cloneshare3.png)
 3. **[複製]** ブレードで **[ターゲット設定]** をクリックし、次の操作を行います。
@@ -53,11 +53,11 @@ ms.locfileid: "23110110"
    
    c.    復元先の共有の種類は変更できません。 階層化共有は階層化共有として、ローカル固定共有はローカル固定共有として複製されます。
    
-   d.    容量のサイズは、複製元の共有と同じに設定されます。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。    容量のサイズは、複製元の共有と同じに設定されます。
    
    e.    この共有の管理者を割り当てます。 複製が完了したら、ファイル エクスプローラーを使用して共有のプロパティを変更できます。
    
-   f.    **[OK]** をクリックします。
+   f.    Click **OK**.
    
    ![バックアップの複製](./media/storsimple-virtual-array-clone/cloneshare6.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "23110110"
 
 #### <a name="to-clone-a-volume"></a>ボリュームを複製するには
 
-1. **[デバイス]** ブレードに移動します。 デバイスを選択してクリックし、**[ボリューム]** をクリックします。 複製するボリュームを選択し、ボリュームを右クリックして、コンテキスト メニューを呼び出します。 **[複製]** を選択します。
+1. **[デバイス]** ブレードに移動します。 デバイスを選択してクリックし、**[ボリューム]** をクリックします。 複製するボリュームを選択し、ボリュームを右クリックしてコンテキスト メニューを呼び出します。 **[複製]** を選択します。
    
    ![ボリュームを複製する](./media/storsimple-virtual-array-clone/clonevolume1.png)
 2. **[複製]** ブレードで **[バックアップ]** をクリックし、次の操作を行います。 
@@ -82,7 +82,7 @@ ms.locfileid: "23110110"
    
    b.    フィルター処理されたバックアップの一覧から、複製元のバックアップを選択します。
    
-   c.    **[OK]** をクリックします。
+   c.    Click **OK**.
    
    ![バックアップの複製](./media/storsimple-virtual-array-clone/clonevolume3.png)
 3. **[複製]** ブレードで **[ターゲット ボリューム設定]** をクリックし、次の操作を行います。
@@ -93,7 +93,7 @@ ms.locfileid: "23110110"
    
    c. ボリュームの種類は、元のボリュームに自動的に設定されます。 階層化ボリュームは階層化ボリュームとして、ローカル固定ボリュームはローカル固定ボリュームとして複製されます。
    
-   d. **[接続済みのホスト]** で **[選択]** をクリックします。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[接続済みのホスト]** で **[選択]** をクリックします。
    
    ![バックアップの複製](./media/storsimple-virtual-array-clone/clonevolume4.png)
 4. **[接続済みホスト]** ブレードで、既存の ACR から選択するか、新しい ACR を追加します。 新しい ACR を追加するには、ACR 名とホスト IQN を指定する必要があります。 **[選択]** をクリックします。
@@ -135,7 +135,7 @@ ms.locfileid: "23110110"
 
 4. ファイルまたはフォルダーを、StorSimple ファイル サーバー上の適切な共有にコピーします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [ローカル Web UI を使用して StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法の詳細を確認します。
 

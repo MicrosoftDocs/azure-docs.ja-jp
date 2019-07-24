@@ -1,26 +1,21 @@
 ---
-title: Azure Cosmos DB でグラフ データのクエリを実行する方法 | Microsoft Docs
+title: Azure Cosmos DB でグラフ データのクエリを実行する方法
 description: Azure Cosmos DB でグラフ データのクエリを実行する方法を学習する
-services: cosmos-db
 author: luisbosquez
-manager: kfile
-editor: ''
-tags: ''
+ms.author: lbosq
 ms.service: cosmos-db
-ms.component: cosmosdb-graph
-ms.devlang: na
+ms.subservice: cosmosdb-graph
 ms.topic: tutorial
 ms.date: 01/02/2018
-ms.author: lbosq
-ms.custom: mvc
-ms.openlocfilehash: e3ed90d0b706e742588a5a0966d9ac3bda44ecbd
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.reviewer: sngun
+ms.openlocfilehash: 2bc79801864481562967702a7c52a7670950199b
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697444"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043976"
 ---
-# <a name="tutorial-query-azure-cosmos-db-gremlin-api-by-using-gremlin"></a>チュートリアル: Gremlin を使って Azure Cosmos DB Gremlin API を照会する
+# <a name="tutorial-query-azure-cosmos-db-gremlin-api-by-using-gremlin"></a>チュートリアル:Gremlin を使って Azure Cosmos DB Gremlin API に対するクエリを実行する
 
 Azure Cosmos DB [Gremlin API](graph-introduction.md) は [Gremlin](https://github.com/tinkerpop/gremlin/wiki) クエリをサポートしています。 この記事では、使用を開始できるようにサンプル ドキュメントとクエリを提供します。 詳しい Gremlin のリファレンスについては、[Gremlin のサポート](gremlin-support.md)に関する記事を参照してください。
 

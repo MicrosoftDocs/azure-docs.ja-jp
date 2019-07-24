@@ -1,28 +1,29 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Infor Retail - Information Management の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Infor Retail - Information Management の統合 | Microsoft Docs
 description: Azure Active Directory と Infor Retail - Information Management の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 5ff49168-ef81-4169-8e5e-dc86e24dd5e5
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 8676ae32de72a52f88d212d225610053b7ee5c4c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b7c4ac61caae371ebce7c273a4b48244a45c3519
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441478"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837674"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-infor-retail--information-management"></a>チュートリアル: Azure Active Directory と Infor Retail - Information Management の統合
+# <a name="tutorial-azure-active-directory-integration-with-infor-retail--information-management"></a>チュートリアル:Azure Active Directory と Infor Retail - Information Management の統合
 
 このチュートリアルでは、Infor Retail - Information Management と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -111,6 +112,7 @@ Infor Retail – Information Management で Azure AD のシングル サイン�
     ![[Infor Retail – Information Management のドメインと URL] のシングル サインオン情報 IDP](./media/inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_url.png)
 
     a. **[識別子]** ボックスに、次のパターンで URL を入力します。 
+    
     |   |
     | -- |
     | `https://<company name>.mingle.infor.com` |
@@ -138,7 +140,7 @@ Infor Retail – Information Management で Azure AD のシングル サイン�
 1. **Infor Retail – Information Management** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Infor Retail – Information Management サポート チーム](mailto:innovate@infor.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -211,7 +213,7 @@ Infor Retail – Information Management で Azure AD のシングル サイン�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Infor Retail - Information Management] タイルをクリックすると、自動的に Infor Retail - Information Management アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

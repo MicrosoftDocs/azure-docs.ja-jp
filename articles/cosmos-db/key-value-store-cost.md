@@ -1,26 +1,22 @@
 ---
-title: キー値ストアとしての Azure Cosmos DB - コストの概要 | Microsoft Docs
-description: Azure Cosmos DB をキー値ストアとして使用する場合のコストの低さについて説明します。
-keywords: キー値ストア
-services: cosmos-db
+title: キー値ストアとしての Azure Cosmos DB に対する要求ユニット料金
+description: Azure Cosmos DB がキー/値ストアとして使用されているとき、シンプルな書き込みと読み取り操作を行う際に発生する要求ユニット料金について説明しています。
 author: SnehaGunda
-manager: kfile
-tags: ''
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/15/2017
+ms.date: 12/06/2018
 ms.author: sngun
-ms.openlocfilehash: bcbe4afe5ca5abf9a709f5abbcdffa474c44702c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.custom: seodec18
+ms.openlocfilehash: e81dec7d7556819e60a65a44106426c226c6223d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34612124"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035731"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>キー値ストアとしての Azure Cosmos DB - コストの概要
 
-Azure Cosmos DB は、高可用性で大規模なアプリケーションを簡単に構築するための、マルチモデルなグローバル分散データベース サービスです。 既定では、Azure Cosmos DB が取り込むすべてのデータのインデックスが効率よく自動作成されます。 そのため、どのようの種類のデータであっても、高速かつ一貫性のある[SQL](sql-api-sql-query.md) (および [JavaScript](programming.md)) クエリが実行されます。 
+Azure Cosmos DB は、高可用性で大規模なアプリケーションを簡単に構築するための、マルチモデルなグローバル分散データベース サービスです。 既定では、Azure Cosmos DB が取り込むすべてのデータのインデックスが効率よく自動作成されます。 そのため、どのようの種類のデータであっても、高速かつ一貫性のある[SQL](how-to-sql-query.md) (および [JavaScript](stored-procedures-triggers-udfs.md)) クエリが実行されます。 
 
 この記事では、キー/値ストアとして Azure Cosmos DB を使用し、シンプルな書き込みと読み取り操作を行う際のコストについて説明しています。 書き込み操作には、ドキュメントの挿入、置換、削除、および upsert などがあります。 Azure Cosmos DB では、すべての単一リージョンのアカウントとすべてのマルチリージョンのアカウントに対して緩やかな整合性で 99.99% の SLA 可用性と、すべてのマルチリージョンのデータベース アカウントに 99.999% の読み取り可用性を保持した上で、読み取りに 10 ミリ秒未満の待機時間と (インデックス付けされた) 書き込みに 15 ミリ未満の待機時間の保証をそれぞれ、99 パーセンタイルで提供しています。 
 
@@ -39,7 +35,7 @@ Azure Cosmos DB のパフォーマンスは、パーティションにプロビ�
 
 ## <a name="cost-of-reads-and-writes"></a>読み取りと書き込みのコスト
 
-1,000 RU/秒をプロビジョニングする場合は、360 万 RU/時間となり、その 1 時間のコストは 0.08 ドルになります (米国とヨーロッパの場合)。 サイズが 1 KB のドキュメントでは、プロビジョニングしたスループットを使用して、360 万回の読み取りまたは 72 万回の書き込み (360 万 RU / 5) が可能です。 100 万回の読み取りおよび書き込みに当てはめると、コストは 0.022 ドル/読み取り 100 万回 (0.08 ドル/ 3.6)、0.111 ドル/書き込み 100 万回 (0.08 ドル/ 0.72) となります。 下記の表にあるように、100 万回あたりのコストが最低となります。
+1,000 RU/秒をプロビジョニングする場合は、360 万 RU/時間となり、その 1 時間のコストは 0.08 ドルになります (米国とヨーロッパの場合)。 サイズが 1 KB のドキュメントでは、プロビジョニングしたスループットを使用して、360 万回の読み取りまたは 72 万回の書き込み (360 万 RU/5) が可能です。 100 万回の読み取りおよび書き込みに当てはめると、コストは 0.022 ドル/読み取り 100 万回 (0.08 ドル/ 3.6)、0.111 ドル/書き込み 100 万回 (0.08 ドル/ 0.72) となります。 下記の表にあるように、100 万回あたりのコストが最低となります。
 
 |アイテムのサイズ|100 万回の読み取り|100 万回の書き込み|
 |-------------|-------|--------|

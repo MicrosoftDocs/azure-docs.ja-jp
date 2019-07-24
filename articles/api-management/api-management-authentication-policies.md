@@ -49,14 +49,14 @@ ms.locfileid: "51250953"
   
 |Name|説明|必須|  
 |----------|-----------------|--------------|  
-|authentication-basic|ルート要素。|[はい]|  
+|authentication-basic|ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
 |Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
-|username|基本認証の資格情報のユーザー名を指定します。|[はい]|該当なし|  
-|password|基本認証の資格情報のパスワードを指定します。|[はい]|該当なし|  
+|username|基本認証の資格情報のユーザー名を指定します。|はい|該当なし|  
+|password|基本認証の資格情報のパスワードを指定します。|はい|該当なし|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -84,13 +84,13 @@ ms.locfileid: "51250953"
   
 |Name|説明|必須|  
 |----------|-----------------|--------------|  
-|authentication-certificate|ルート要素。|[はい]|  
+|authentication-certificate|ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
 |Name|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|クライアント証明書のサムプリント。|[はい]|該当なし|  
+|thumbprint|クライアント証明書のサムプリント。|はい|該当なし|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  

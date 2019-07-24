@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: manayar
-ms.openlocfilehash: e4b1153e46625f88c717fd9b7a5336ffe4ca7f6a
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 3308b22606e87853aad7e3d3a3995aab8d1b5401
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739551"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005302"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットの自動スケールに関するトラブルシューティング
 **問題** – Azure Resource Manager で仮想マシン スケール セットを使って自動スケール インフラストラクチャを作成しました。このとき、 https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale のようなテンプレートをデプロイしました。定義したスケール規則は正常に機能しましたが、仮想マシンの負荷をいくら増やしても、自動スケールが実行されません。
@@ -37,7 +37,7 @@ ms.locfileid: "50739551"
   
     Azure ポータルで監査ログを確認し、スケール イベントを探してください。 スケールアップやスケールダウンを見逃している可能性があります。 "Scale" でフィルター処理できます。
   
-    ![Audit Logs][audit]
+    ![[監査ログ]][audit]
 * スケールインとスケールアウトのしきい値の間に十分な差を確保していますか。
   
     たとえば、平均 CPU 使用率が 5 分間にわたって 50% を超えた場合にスケールアウトし、平均 CPU 使用率が 50% を割り込んだときにスケールインする規則を設定したとします。 この設定は、CPU 使用率がこのしきい値に近付くと、スケール アクションによってセットのサイズが絶え間なく増減される "フラッピング" 問題をよく引き起こします。 この設定が原因で、自動スケール サービスはこの "フラッピング" を防止しようとするため、自動スケールが実行されなくなる場合があります。 そのため、スケールアウトとスケールインのしきい値の間に十分な差を付けて、自動スケーリングが実行される余裕を確保する必要があります。
@@ -52,7 +52,7 @@ ms.locfileid: "50739551"
     Azure Resource Explorer は Azure Resource Manager リソースの状態を表示できるため、トラブルシューティングには欠かせません。 サブスクリプションをクリックし、トラブルシューティングを行うリソース グループを表示します。 Compute リソース プロバイダーの下で、作成した仮想マシン スケール セットを探し、インスタンス ビューでデプロイの状態を確認します。 また、仮想マシン スケール セット内の VM のインスタンス ビューも確認します。 次に Microsoft.Insights リソース プロバイダーに移動し、自動スケール規則が適切かどうかを確認します。
 * 診断拡張機能が動作し、パフォーマンス データを出力していますか。
   
-    **更新:** Azure 自動スケールはベースのメトリックのパイプラインを使用するように強化されており、診断拡張機能のインストールは必須ではなくなりました。 つまり、新しいパイプラインを使用する自動スケール アプリケーションを作成する場合、この後のいくつかの段落の説明はもう適用されません。 ホスト パイプラインを使用するように変換された Azure テンプレートの例は、 https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale にあります。 
+    **更新:** Azure の自動スケーリングはホストベースのメトリック パイプラインを使用するように強化されており、診断拡張機能のインストールは必須ではなくなりました。 つまり、新しいパイプラインを使用する自動スケール アプリケーションを作成する場合、この後のいくつかの段落の説明はもう適用されません。 ホスト パイプラインを使用するように変換された Azure テンプレートの例は、 https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale にあります。 
   
     次の理由により、自動スケールにはホストベースのメトリックを使用することをお勧めします。
   
@@ -72,14 +72,14 @@ ms.locfileid: "50739551"
     
     ![Cloud Explorer][explorer]
     
-   各 VM のデータが格納される一連のテーブルが表示されています。 例として、Linux と CPU のメトリックで最新の行を見てみましょう。 Visual Studio Cloud Explorer はクエリ言語をサポートしているので、自分でクエリを実行することができます。 たとえば、「Timestamp gt datetime’2016-02-02T21:20:00Z’」のようなクエリを実行することで最新のイベントを確実に取得できます。 タイムゾーンは UTC に対応します。 ここに表示されるデータは、設定したスケール規則に対応しているでしょうか。 次の例では、仮想マシン 20 の CPU 使用率がこの 5 分間で 100% に上昇しています。
+    各 VM のデータが格納される一連のテーブルが表示されています。 例として、Linux と CPU のメトリックで最新の行を見てみましょう。 Visual Studio Cloud Explorer はクエリ言語をサポートしているので、自分でクエリを実行することができます。 たとえば、「Timestamp gt datetime’2016-02-02T21:20:00Z’」のようなクエリを実行することで最新のイベントを確実に取得できます。 タイムゾーンは UTC に対応します。 ここに表示されるデータは、設定したスケール規則に対応しているでしょうか。 次の例では、仮想マシン 20 の CPU 使用率がこの 5 分間で 100% に上昇しています。
     
     ![Storage Tables][tables]
     
     データがない場合、VM で実行されている診断拡張機能に問題があることがわかります。 データが存在する場合は、スケール規則と Insights サービスのどちらかに問題があることがわかります。 [Azure の状態](https://azure.microsoft.com/status/)を確認してください。
     
     これまでの手順を終えても、自動スケールに関する問題が解決しない場合は、次のリソースをご利用ください。 
-    * [MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows) または [Stack Overflow](http://stackoverflow.com/questions/tagged/azure) のフォーラムを閲覧する。 
+    * [MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows) または [Stack Overflow](https://stackoverflow.com/questions/tagged/azure) のフォーラムを閲覧する。 
     * サポートに問い合わせる。 テンプレートと、パフォーマンス データのビューを共有できるように準備しておいてください。
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png

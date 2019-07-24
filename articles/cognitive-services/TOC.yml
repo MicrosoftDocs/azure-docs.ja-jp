@@ -1,52 +1,33 @@
-items:
 - name: Azure Cognitive Services のドキュメント
   href: index.md
 - name: 概要
-  items:
-  - name: Cognitive Services とは
-    href: Welcome.md
-  - name: 言語のサポート
-    href: language-support.md
-  - name: コンテナー サポート
-    href: cognitive-services-container-support.md
   expanded: true
+  items:
+    - name: Cognitive Services とは
+      href: Welcome.md
+    - name: 言語のサポート
+      href: language-support.md
+    - name: コンテナー サポート
+      href: cognitive-services-container-support.md
 - name: クイック スタート
   items:
-  - name: アカウントの作成
-    href: cognitive-services-apis-create-account.md
-- name: チュートリアル
-  items:
-  - name: Computer Vision を使用したアプリの開発
-    href: ./Computer-vision/tutorials/csharptutorial.md
-  - name: Speech SDK と LUIS を使用した意図の認識
-    href: ./speech-service/how-to-recognize-intents-from-speech-csharp.md
-  - name: LUIS アプリの作成
-    href: ./luis/luis-quickstart-intents-only.md
-  - name: Power BI での Text Analytics の使用
-    href: ./Text-Analytics/tutorials/tutorial-power-bi-key-phrases.md
-  - name: Bing Web Search アプリの作成
-    href: ./bing-web-search/tutorial-bing-web-search-single-page-app.md
-  - name: Bing Image Search アプリの作成
-    href: ./bing-image-search/tutorial-bing-image-search-single-page-app.md
+    - name: アカウントの作成
+      href: cognitive-services-apis-create-account.md
+    - name: Authentication
+      href: authentication.md
 - name: リソース
   items:
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/?category=cognitive-services
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/
-  - name: 料金計算ツール
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: ビデオ
-    href: https://azure.microsoft.com/resources/videos/index/?services=cognitive-services
-  - name: サービスの更新情報
-    href: https://azure.microsoft.com/updates/?product=cognitive-services
-  - name: 倫理規定
-    href: http://go.microsoft.com/fwlink/?LinkId=698895
-  - name: ナレッジ ベース
-    href: https://cognitive.uservoice.com/knowledgebase
-ms.openlocfilehash: 43358d176db8642862a49d755a766cc22dbd57b9
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51630981"
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: 倫理規定
+      href: 'https://go.microsoft.com/fwlink/?LinkId=698895'
+    - name: ナレッジ ベース
+      href: 'https://cognitive.uservoice.com/knowledgebase'

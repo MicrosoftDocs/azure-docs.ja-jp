@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: fc4b1dce1b01d9294cf422c910f39d68cbd49c87
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 6f5a4e04c0d135e85624b04dbcdcda6b7d15a427
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018249"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989391"
 ---
-# <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Azure Data Factory UI を使用してデータ ファクトリを作成する
+# <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>クイック スタート:Azure Data Factory UI を使用してデータ ファクトリを作成する
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
 > * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [現在のバージョン](quickstart-create-data-factory-portal.md)
@@ -86,7 +87,7 @@ ms.locfileid: "48018249"
 
    c. **[テスト接続]** を選択して、Data Factory サービスがストレージ アカウントに接続できることを確認します。 
 
-   d. **[完了]** を選択して、リンクされたサービスを保存します。 
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[完了]** を選択して、リンクされたサービスを保存します。 
 
    ![Azure Storage のリンクされたサービスの設定](./media/quickstart-create-data-factory-portal/azure-storage-linked-service.png) 
 
@@ -117,7 +118,8 @@ ms.locfileid: "48018249"
 
     ![入力ファイルを参照する](./media/quickstart-create-data-factory-portal/choose-file-folder.png)
     
-   d. (省略可能) **[データのプレビュー]** を選択して、emp.txt ファイル内のデータをプレビューします。     
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 (省略可能) **[データのプレビュー]** を選択して、emp.txt ファイル内のデータをプレビューします。     
+
 1. この手順を繰り返して、出力データセットを作成します。  
 
    a. **+** (正符号) ボタンを選択し、**[データセット]** を選択します。
@@ -126,7 +128,7 @@ ms.locfileid: "48018249"
 
    c. **[全般]** テーブルで、名前として「**OutputDataset**」と指定します。
 
-   d. **[接続]** タブで、リンクされたサービスとして **[AzureStorageLinkedService]** を選択し、ディレクトリ フィールドに、フォルダーとして「**adftutorial/output**」と入力します。 **output** フォルダーが存在しない場合、コピー アクティビティにより実行時に作成されます。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[接続]** タブで、リンクされたサービスとして **[AzureStorageLinkedService]** を選択し、ディレクトリ フィールドに、フォルダーとして「**adftutorial/output**」と入力します。 **output** フォルダーが存在しない場合、コピー アクティビティにより実行時に作成されます。
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する。 
 この手順では、入力データセットと出力データセットを使用するコピー アクティビティを持つパイプラインを作成および検証します。 コピー アクティビティにより、入力データセットの設定で指定されたファイルから、出力データセットの設定で指定されたファイルにデータがコピーされます。 入力データセットで、ファイル名を指定せず、フォルダーのみを指定すると、コピー アクティビティはソース フォルダーのすべてのファイルをターゲットにコピーします。 

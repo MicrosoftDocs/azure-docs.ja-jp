@@ -1,29 +1,30 @@
 ---
-title: ハイブリッド Azure Active Directory 参加済みデバイスの構成方法 | Microsoft Docs
-description: ハイブリッド Azure Active Directory 参加済みデバイスの構成方法について説明します。
+title: フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成 | Microsoft Docs
+description: フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加を構成する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
-manager: mtillman
+author: MicrosoftGuyJFlo
+manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: devices
+ms.subservice: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/07/2018
-ms.author: markvi
+ms.date: 03/20/2019
+ms.author: joflore
 ms.reviewer: sandeo
-ms.openlocfilehash: e40c18edadebae1f92cf811ea054503b9cd6b1ae
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d737be389666590d32e9f1b887db57dacce543e2
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277972"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517185"
 ---
-# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>チュートリアル: フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成
+# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>チュートリアル:フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
 ユーザーと同じく、デバイスは、保護の対象であると同時に、時と場所を選ばずにリソースを保護するために使用したいもう 1 つの ID になりつつあります。 この目標は、次のいずれかの方法を使用してデバイスの ID を Azure AD に設定することで達成できます。
 
@@ -53,6 +54,7 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 -  [デバイスのハイブリッド Azure AD Join を制御する方法](hybrid-azuread-join-control.md)
 
 
+
 このチュートリアルのシナリオを構成するための要件を次に示します。
 
 - Windows Server 2012 R2 と AD FS
@@ -72,11 +74,11 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 
 ハイブリッド Azure AD 参加を使用するには、デバイスが組織のネットワーク内から次の Microsoft リソースにアクセスできる必要があります。  
 
-- https://enterpriseregistration.windows.net
-- https://login.microsoftonline.com
-- https://device.login.microsoftonline.com
+- https\://enterpriseregistration.windows.net
+- https\://login.microsoftonline.com
+- https\://device.login.microsoftonline.com
 - 組織の STS (フェデレーション ドメイン)
-- https://autologon.microsoftazuread-sso.com (シームレス SSO を使用している場合、または使用する予定の場合)
+- https\://autologon.microsoftazuread-sso.com (シームレス SSO を使用している場合、または使用する予定の場合)
 
 Windows 10 1803 以降、AD FS のようなフェデレーション ドメインの即時的なハイブリッド Azure AD 参加が失敗した場合は、Azure AD Connect を利用して Azure AD のコンピューター オブジェクトを同期させます。これは後で、ハイブリッド Azure AD 参加のデバイス登録を完了するために使用されます。
 
@@ -167,7 +169,7 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
 
 
     
-**[ユーザーはデバイスを Azure AD に登録できます]** というポリシーは、**[すべて]** に設定する必要があります。
+次のポリシーを **[すべて]** に設定する必要があります。**[ユーザーはデバイスを Azure AD に登録できます]**
 
 ![デバイスを登録する](./media/hybrid-azuread-join-federated-domains/23.png)
 
@@ -228,7 +230,7 @@ Azure テナントのデバイス登録状態を確認するには、**[Azure Ac
 
 > [!div class="nextstepaction"]
 > [マネージド ドメインのハイブリッド Azure Active Directory 参加を構成する](hybrid-azuread-join-managed-domains.md)
-> [ハイブリッド Azure Active Directory 参加を手動で構成する](hybrid-azuread-join-manual-steps.md)
+> [ハイブリッド Azure Active Directory 参加を手動で構成する](hybrid-azuread-join-manual.md)
 
 
 

@@ -1,25 +1,21 @@
 ---
-title: Azure Cosmos DB で SQL を使用してクエリを実行する方法  | Microsoft Docs
+title: Azure Cosmos DB で SQL を使用してクエリを実行する方法
 description: Azure Cosmos DB で SQL を使用してクエリを実行する方法について説明します
-services: cosmos-db
-author: rafats
-manager: kfile
-editor: ''
-tags: ''
+author: rimman
+ms.author: rimman
 ms.service: cosmos-db
 ms.custom: tutorial-develop, mvc
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
-ms.author: rafats
-ms.openlocfilehash: a56147432d4ef1cc9ac2568259cc2bbf2c7da7ab
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.reviewer: sngun
+ms.openlocfilehash: bc9835876e8b87213ddbae65e43222467e751ea3
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162672"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56241634"
 ---
-# <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>チュートリアル: SQL API を使って Azure Cosmos DB を照会する
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>チュートリアル:SQL API を使って Azure Cosmos DB に対するクエリを実行する
 
 Azure Cosmos DB [SQL API](documentdb-introduction.md) では SQL を使用したドキュメントのクエリがサポートされます。 この記事には、1 つのサンプル ドキュメントと 2 つのサンプル SQL クエリおよび結果が含まれます。
 
@@ -125,7 +121,7 @@ SQL クエリについて詳しくは、次を参照してください。
 
 **結果**
 
-[ { "givenName": "Jesse" }, { "givenName": "Lisa" } ]
+[ { "givenName":"Jesse" }, { "givenName":"Lisa" } ]
 
 
 ## <a name="next-steps"></a>次の手順

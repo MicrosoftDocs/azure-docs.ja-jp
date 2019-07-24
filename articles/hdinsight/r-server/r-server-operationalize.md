@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ce701c029c63256714452aa13f646af77991cb67
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: d0cae4210fa313c5d6e1f33987422e7b0d53e76a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496919"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579959"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の ML サービス クラスターの運用化
 
@@ -22,13 +22,13 @@ HDInsight で ML サービス クラスターを使用して、ご自身のデ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **HDInsight 上の ML Services クラスター**: 方法については、「[HDInsight の ML サービスの概要](r-server-get-started.md)」をご覧ください。
+* **HDInsight 上の ML サービス クラスター**: 手順については、「[HDInsight の ML サービスの概要](r-server-get-started.md)」を参照してください。
 
-* **Secure Shell (SSH) クライアント**: SSH クライアントを使用して、HDInsight クラスターにリモート接続し、クラスター上でコマンドを直接実行します。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+* **Secure Shell (SSH) クライアント**: SSH クライアントは、HDInsight クラスターにリモート接続し、そのクラスター上でコマンドを直接実行するために使用されます。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 ## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>ML サービス クラスターをワンボックス構成で運用化する
 
-> [!NOTE]
+> [!NOTE]  
 > 以下の手順は、R Server 9.0 と ML Server 9.1 に適用されます。 ML Server 9.3 については、[運用化構成を管理するための管理ツールの使用](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch)に関するページをご覧ください。
 
 1. エッジ ノードに SSH 接続します。
@@ -137,7 +137,7 @@ SSH セッションがアクティブになると、ローカル コンピュー
 
 コンピューティング ノードスケーリングするには、最初に worker ノードの使用を停止し、その worker ノードでコンピューティング ノードを構成します。
 
-### <a name="step-1-decommission-the-worker-nodes"></a>手順 1: worker ノードの使用を停止する
+### <a name="step-1-decommission-the-worker-nodes"></a>ステップ 1:ワーカー ノードを使用停止する
 
 ML サービス クラスターは [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) では管理されていません。 worker ノードの使用が停止されていないと、YARN リソース マネージャーは、サーバーによってリソースが使用されていることを認識しないため、想定どおりに機能しません。 この状況を防ぐため、コンピューティング ノードをスケールアウトする前に、ワーカー ノードの使用を停止することをお勧めします。
 
@@ -159,7 +159,7 @@ ML サービス クラスターは [Apache Hadoop YARN](https://hadoop.apache.or
 * ワーカー ノードの選択を解除し、ヘッド ノードを選択します。
 * **[アクション]** > **[選択したホスト]** > **[ホスト]** の順に選択し、**[Restart All Components]\(すべてのコンポーネントを再起動\)** をクリックします。
 
-### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>手順 2: 使用停止状態の各 worker ノードでコンピューティング ノードを構成する
+### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>手順 2:使用停止された各ワーカー ノード上でコンピューティング ノードを構成する
 
 1. 使用停止されたワーカー ノードに SSH 接続します。
 
@@ -173,7 +173,7 @@ ML サービス クラスターは [Apache Hadoop YARN](https://hadoop.apache.or
 
 1. 管理ユーティリティを終了します。
 
-### <a name="step-3-add-compute-nodes-details-on-web-node"></a>手順 3: Web ノードにコンピューティング ノードの詳細を追加する
+### <a name="step-3-add-compute-nodes-details-on-web-node"></a>手順 3:Web ノード上でコンピューティング ノードの詳細を追加する
 
 使用停止状態の worker ノードすべてがコンピューティング ノードを実行するように構成されたら、エッジ ノードに戻って、使用が停止された worker ノードの IP アドレスを ML Server Web ノードの構成に追加します。
 

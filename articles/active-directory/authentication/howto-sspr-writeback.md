@@ -1,25 +1,24 @@
 ---
-title: Azure AD SSPR のパスワード ライトバックを構成する方法
+title: Azure AD SSPR のパスワード ライトバックを構成する方法 - Azure Active Directory
 description: Azure AD と Azure AD Connect を使って、オンプレミスのディレクトリにパスワードを書き戻します
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 01/11/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: e8a09a9fc87bff692b5d5b4c54f87839f2591b63
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 17a2661883dd069e8cb719672f6b92442f1a8a0a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086949"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312293"
 ---
 # <a name="how-to-configure-password-writeback"></a>方法: パスワード ライトバックを構成する
-
-Microsoft では、パスワード ライトバックの使用時に [Azure AD Connect](../hybrid/how-to-connect-install-express.md) の自動更新機能を使用することをお勧めしています。
 
 以下の手順は、環境で[簡単](../hybrid/how-to-connect-install-express.md)設定または[カスタム](../hybrid/how-to-connect-install-custom.md)設定を使って、Azure AD Connect を既に構成してあることが前提になっています。
 
@@ -38,7 +37,26 @@ Microsoft では、パスワード ライトバックの使用時に [Azure AD C
 > [!WARNING]
 > [Azure Access Control Service (ACS) が 2018 年 11 月 7 日に廃止される](../develop/active-directory-acs-migration.md)と、パスワード ライトバックは Azure AD Connect バージョン 1.0.8641.0 以前を使用している顧客には機能しなくなります。 Azure AD Connect バージョン 1.0.8641.0 以前では、パスワード ライトバックは ACS に依存しているため、この時点でこの機能を許可することはなくなります。
 >
-> 稼働中に中断しないように、Azure AD Connect の前のバージョンからより新しいバージョンにアップグレードします。「[Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする](../hybrid/how-to-upgrade-previous-version.md)」を参照してください。
+> 稼働中に中断しないように、Azure AD Connect の前のバージョンからより新しいバージョンにアップグレードします。「[Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする](../hybrid/how-to-upgrade-previous-version.md)」の記事を参照してください。
+>
+
+## <a name="licensing-requirements-for-password-writeback"></a>パスワード ライトバックに必要なライセンス
+
+**オンプレミスの書き戻しによるセルフサービスのパスワードのリセット/変更/ロック解除は、Azure AD の Premium 機能です**。 ライセンスの詳細については、[Azure Active Directory の価格サイト](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
+
+パスワード ライトバックを使用するには、次のいずれかのライセンスがご自分のテナントに割り当てられている必要があります。
+
+* Azure AD Premium P1
+* Azure AD Premium P2
+* Enterprise Mobility + Security E3 または A3
+* Enterprise Mobility + Security E5 または A5
+* Microsoft 365 E3 または A3
+* Microsoft 365 E5 または A5
+* Microsoft 365 F1
+* Microsoft 365 Business
+
+> [!WARNING]
+> スタンドアロンの Office 365 ライセンス プランでは、"*セルフサービスによるパスワードのリセット/変更/ロック解除 (オンプレミスの書き戻しが可能) をサポートしていません*"。この機能を動作させるには、上記プランのいずれかが必要になります。
 >
 
 ## <a name="active-directory-permissions"></a>Active Directory のアクセス許可

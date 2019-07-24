@@ -2,21 +2,21 @@
 title: Azure Database Migration Service を使用して移行アクティビティを監視する | Microsoft Docs
 description: Azure Database Migration Service を使用して移行アクティビティを監視する方法について説明します。
 services: database-migration
-author: pochiraju
-ms.author: rajpo
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+author: HJToland3
+ms.author: jtoland
+manager: craigg
+ms.reviewer: craigg
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: 8c30af5023cb83ee1f9ca0f41db5b7f977cc4bc7
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.date: 03/12/2019
+ms.openlocfilehash: 325bbee3f3d5ad5097f710cb56fe03baff97388a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883909"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58173857"
 ---
 # <a name="monitor-migration-activity"></a>移行アクティビティの監視
 この記事では、データベース レベルとテーブル レベルの両方で移行の進行状況を監視する方法について説明します。
@@ -24,7 +24,7 @@ ms.locfileid: "48883909"
 ## <a name="monitor-at-the-database-level"></a>データベース レベルの監視
 データベース レベルでアクティビティを監視するには、データベースレベルのブレードを表示します。
 
-![データベースレベルのブレード](media\how-to-monitor-migration-activity\dms-database-level-blade.png)
+![データベースレベルのブレード](media/how-to-monitor-migration-activity/dms-database-level-blade.png)
 
 > [!NOTE]
 > データベースのハイパーリンクを選択すると、テーブルの一覧と移行の進行状況が表示されます。
@@ -104,7 +104,7 @@ ms.locfileid: "48883909"
 
 ブレードの下部には、テーブルが一覧表示されるほか、移行の進行状況の簡単な概要が表示されます。
 
-![テーブルレベルのブレード - 簡単な概要](media\how-to-monitor-migration-activity\dms-table-level-blade-summary.png)
+![テーブルレベルのブレード - 簡単な概要](media/how-to-monitor-migration-activity/dms-table-level-blade-summary.png)
 
 次の表では、テーブルレベルの詳細で表示されるフィールドについて説明します。
 
@@ -123,9 +123,9 @@ ms.locfileid: "48883909"
 ## <a name="monitor-at-table-level--detailed-summary"></a>テーブル レベルの監視 - 詳細な概要
 全体の読み込みと増分データ同期での移行の進行状況を示す 2 つのタブがあります。
     
-![[全体の読み込み] タブ](media\how-to-monitor-migration-activity\dms-full-load-tab.png)
+![[全体の読み込み] タブ](media/how-to-monitor-migration-activity/dms-full-load-tab.png)
 
-![[増分データ同期] タブ](media\how-to-monitor-migration-activity\dms-incremental-data-sync-tab.png)
+![[増分データ同期] タブ](media/how-to-monitor-migration-activity/dms-incremental-data-sync-tab.png)
 
 次の表では、テーブル レベルの移行の進行状況で表示されるフィールドについて説明します。
 
@@ -136,7 +136,7 @@ ms.locfileid: "48883909"
 | **Update** | ターゲットに適用された行に含まれている CDC 更新の数。      |
 | **削除**      | ターゲットに適用された行に含まれている CDC 削除の数。 |
 | **適用の合計**      | ターゲットに適用された行に含まれている CDC の更新、挿入、削除の総数。 |
-| **データ エラー** | このテーブルで発生したデータ エラーの数。 エラーの例には、"*511: 1 行のサイズ %d が許容最大行サイズ %d を超えているので行を作成できません" や "8114: データ型 %ls を %ls に変換中にエラーが発生しました*" などがあります。  Azure ターゲットの attms_apply_exceptions テーブルでクエリを実行して、エラーの詳細を確認する必要があります。    |
+| **データ エラー** | このテーブルで発生したデータ エラーの数。 エラーの例には、*"511: 1 行のサイズ %d が許容最大行サイズ %d を超えているので行を作成できません" や "8114: データ型 %ls を %ls に変換中にエラーが発生しました"* があります。  Azure ターゲットの dms_apply_exceptions テーブルでクエリを実行して、エラーの詳細を確認する必要があります。    |
 
 > [!NOTE]
 > [挿入]、[更新]、[削除]、[適用の合計] の CDC 値は、データベースが一括移行されたとき、または移行が再起動されたときに減少することがあります。

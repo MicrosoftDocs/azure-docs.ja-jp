@@ -3,8 +3,8 @@ title: Azure Service Fabric の ReliableConcurrentQueue
 description: ReliableConcurrentQueue は、並列エンキューと並列デキューが利用できる高スループットのキューです。
 services: service-fabric
 documentationcenter: .net
-author: sangarg
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: raja,tyadam,masnider,vturecek
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
 ms.service: service-fabric
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
-ms.author: sangarg
-ms.openlocfilehash: e04123f7870921a2979564d0f6c68424d4d7711c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: aljo
+ms.openlocfilehash: dbdfa4686c047fa7cf5d74cd9aca768447f9db93
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206579"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663649"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric の ReliableConcurrentQueue の概要
-Reliable Concurrent Queue は、エンキュー操作とデキュー操作に関して高い同時実行性を備えた、非同期、トランザクショナル、レプリケートを特徴とするキューです。 [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) の特徴である厳密な FIFO の順序付けを緩和し、ベストエフォートの順序付けを利用できるようにすることで、高いスループットと短い待ち時間が得られるように設計されています。
+Reliable Concurrent Queue は、エンキュー操作とデキュー操作に関して高いコンカレンシーを備えた、非同期、トランザクショナル、レプリケートを特徴とするキューです。 [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) の特徴である厳密な FIFO の順序付けを緩和し、ベストエフォートの順序付けを利用できるようにすることで、高いスループットと短い待ち時間が得られるように設計されています。
 
 ## <a name="apis"></a>API
 
@@ -34,7 +34,7 @@ Reliable Concurrent Queue は、エンキュー操作とデキュー操作に関
 
 ## <a name="comparison-with-reliable-queuehttpsmsdnmicrosoftcomlibraryazuredn971527aspx"></a>[Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) との比較
 
-Reliable Concurrent Queue は、[Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) の代替手段として提供されています。 このキューは FIFO の厳密な順序付けが必要ないケースで使用してください。FIFO の順序を確実に守るためには、そのトレードオフとして、同時実行性は放棄しなければなりません。  [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) では、エンキューとデキューを許可するトランザクションを一度に 1 つまでとし、FIFO の順序付けを強制的に適用するためにロックが使用されます。 これに対し、Reliable Concurrent Queue では、順序付けの制約が緩和され、任意の数の同時トランザクションが交互に、そのエンキュー操作とデキュー操作を実行できます。 Reliable Concurrent Queue では、ベストエフォートでの順序付けは備わっていますが、2 つの値の相対的順序は保証されません。
+Reliable Concurrent Queue は、[Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) の代替手段として提供されています。 このキューは FIFO の厳密な順序付けが必要ないケースで使用してください。FIFO の順序を確実に守るためには、そのトレードオフとして、コンカレンシーは放棄しなければなりません。  [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) では、エンキューとデキューを許可するトランザクションを一度に 1 つまでとし、FIFO の順序付けを強制的に適用するためにロックが使用されます。 これに対し、Reliable Concurrent Queue では、順序付けの制約が緩和され、任意の数の同時トランザクションが交互に、そのエンキュー操作とデキュー操作を実行できます。 Reliable Concurrent Queue では、ベストエフォートでの順序付けは備わっていますが、2 つの値の相対的順序は保証されません。
 
 エンキュー/デキューを実行する同時トランザクションが複数存在するときは必ず、[Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) よりも Reliable Concurrent Queue の方がスループットは高く、待ち時間は短くなります。
 
@@ -55,7 +55,7 @@ ReliableConcurrentQueue の使用例として、[メッセージ キュー](http
 ### <a name="enqueueasync"></a>EnqueueAsync
 以下に示したのは、EnqueueAsync を使ったいくつかのコード スニペットと予想される出力結果です。
 
-- "*ケース 1: 単一のエンキュー タスク*"
+- *ケース 1:単一のエンキュー タスク*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -70,11 +70,11 @@ using (var txn = this.StateManager.CreateTransaction())
 このタスクが正常に完了し、このキューに変更を加える同時トランザクションが存在しなかったと仮定しましょう。 この場合キューには、次のいずれかの順序で要素が格納されていると考えられます。
 
 > 10、20
-
+> 
 > 20、10
 
 
-- "*ケース 2: 並列エンキュー タスク*"
+- *ケース 2:並列エンキュー タスク*
 
 ```
 // Parallel Task 1
@@ -103,7 +103,7 @@ using (var txn = this.StateManager.CreateTransaction())
 以下に示したのは、TryDequeueAsync を使ったいくつかのコード スニペットと予想される出力結果です。 キューには既に、次の要素が格納されているとします。
 > 10、20、30、40、50、60
 
-- "*ケース 1: 単一のデキュー タスク*"
+- *ケース 1:単一のデキュー タスク*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -118,7 +118,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 このタスクが正常に完了し、このキューに変更を加える同時トランザクションが存在しなかったと仮定しましょう。 キュー内の要素の順序を推測することはできません。任意の 3 つの要素が任意の順序でデキューされる可能性があります。 キューは、元の (エンキュー時の) 順序で要素を保とうとしますが、同時に実行される操作やエラーが原因でやむをえず順序を変更する可能性があります。  
 
-- "*ケース 2: 並列デキュー タスク*"
+- *ケース 2:並列デキュー タスク*
 
 ```
 // Parallel Task 1
@@ -146,7 +146,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 同じ要素が両方のリストに出現することは "*ありません*"。 したがって dequeue1 に *10*、*30* が格納されている場合、dequeue2 には *20*、*40* が格納されます。
 
-- "*ケース 3: トランザクションの中止を伴うデキューの順序*"
+- *ケース 3:トランザクションの中止を伴うデキューの順序*
 
 デキューの途中でトランザクションを中止すると、取り出された要素がキューの先頭に戻されます。 キューの先頭に要素が戻される順序は保証されません。 以下のコードを見てください。
 
@@ -165,7 +165,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 トランザクションを中止すると、次のいずれかの順序で要素がキューの先頭に戻されます。
 > 10、20
-
+> 
 > 20、10
 
 同じことは、トランザクションが正常に "*コミット*" されないすべてのケースに当てはまります。

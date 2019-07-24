@@ -14,22 +14,20 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7e7aa2e14d86a0295a9921766f7fef547d42a05d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: df323d121b42ab1200844f3fefb713122ba43106
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807296"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316082"
 ---
-<a name="business-process-libraries"></a>業務プロセス ライブラリ
-==========================
+# <a name="business-process-libraries"></a>業務プロセス ライブラリ
 
 業務プロセス ライブラリは、エンド ツー エンドのシナリオのタスク ガイドに過ぎません。 業務プロセス ライブラリはマーケティング コンテンツと完全に合致している必要があります。 業務プロセス ライブラリ内の各業務プロセスには、それに関連付けられた[タスク レコード](https://docs.microsoft.com/dynamics365/operations/dev-itpro/user-interface/task-recorder)が必要です。 Dynamics 365 for Operations の外部にプロセスがある場合は、BPM ライブラリに Visio をアタッチしてください。
 
 さらに詳細な情報については、「[ビジネス プロセス モデラー](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lcs-solutions/business-process-modeler-libraries-lcs-solutions)」を参照してください。
 
-<a name="methodologies"></a>方法
-=============
+## <a name="methodologies"></a>方法
 
 Microsoft Dynamics の Lifecycle Services (LCS) は、反復可能性や予測可能性がより高い実装プロジェクト体験を保証するために使用できる方法を提供します。 提供された方法のいずれかを使用するか、自分の方法を作成することができます。 方法を使うことで、進捗状況の追跡と報告を簡単に行うことができます。
 

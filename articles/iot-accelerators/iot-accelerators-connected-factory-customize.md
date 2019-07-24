@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: e91f36c9d6f0cb3195e6903d55cd676f1e9ccf5a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7d4e95d066e191e1d5b6d083ede65843dbe73f31
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626552"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010074"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>接続済みファクトリ ソリューションによる OPC UA サーバー データの表示方法をカスタマイズする
 
@@ -81,7 +81,7 @@ ms.locfileid: "34626552"
 
 * [接続済みファクトリ ソリューション アクセラレータのチュートリアル][lnk-rm-walkthrough]
 * [接続済みファクトリ用のゲートウェイをデプロイする][lnk-connect-cf]
-* [azureiotsuite.com サイトでのアクセス許可][lnk-permissions]
+* [azureiotsolutions.com サイトでのアクセス許可][lnk-permissions]
 * [接続済みファクトリに関する FAQ](iot-accelerators-faq-cf.md)
 * [FAQ][lnk-faq]
 

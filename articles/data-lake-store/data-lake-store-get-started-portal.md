@@ -3,19 +3,19 @@ title: Azure portal で Azure Data Lake Storage Gen1 の使用を開始する | 
 description: Azure portal を使用して、Azure Data Lake Storage Gen1 アカウントを作成し、Data Lake Storage Gen1 アカウントで基本的な操作を実行します。
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: fba62a7838ad4b8f349e233eef5e8d82450f1453
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: twooley
+ms.openlocfilehash: e021d8c056028c03ac71d2a27c9128272f374da6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949021"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58883583"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Azure Portal で Azure Data Lake Storage Gen1 の使用を開始する
 
@@ -35,7 +35,7 @@ Azure portal を使用して、Azure Data Lake Storage Gen1 アカウントを�
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントの作成
+## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントを作成する
 
 1. 新しい [Azure Portal](https://portal.azure.com) にサインオンします。
 2. **[リソースの作成]、[ストレージ]、[Data Lake Storage Gen1]** の順にクリックします。
@@ -46,7 +46,7 @@ Azure portal を使用して、Azure Data Lake Storage Gen1 アカウントを�
    * **名前**。 Data Lake Storage Gen1 アカウント用に一意の名前を入力します。
    * **サブスクリプション**。 新しい Data Lake Storage Gen1 アカウントを作成するサブスクリプションを選択します。
    * **リソース グループ**。 既存のリソース グループを選択するか、**[新規作成]** をクリックしてリソース グループを作成します。 リソース グループは、1 つのアプリケーションの関連リソースを保持するコンテナーです。 詳細については、[Azure のリソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)に関する記事をご覧ください。
-   * **場所**。Data Lake Storage Gen1 アカウントを作成する場所を選択します。
+   * **[場所]**:Data Lake Storage Gen1 アカウントを作成する場所を選択します。
    * **暗号化設定**。 次の 3 つのオプションがあります。
      
      * **暗号化を有効にしない**。
@@ -76,9 +76,9 @@ Azure Key Vault のキーを使用して Data Lake Storage Gen1 アカウント�
 
 > [!NOTE]
 > Azure Resource Manager テンプレートを使用して、Data Lake Storage Gen1 アカウントを作成することもできます。 以下のテンプレートは、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?term=data+lake+store)からアクセスすることができます。
-    - データ暗号化なし: [Deploy Azure Data Lake Storage Gen1 account with no data encryption](https://azure.microsoft.com/resources/templates/101-data-lake-store-no-encryption/) (Azure Data Lake Storage Gen1 アカウントをデータ暗号化なしでデプロイする)。
-    - Data Lake Storage Gen1 を使用したデータ暗号化付き: [Deploy Data Lake Storage Gen1 account with encryption(Data Lake)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-adls/) (暗号化 (Data Lake) 付きで Data Lake Storage Gen1 アカウントをデプロイする)。
-    - Azure Key Vault を使用したデータ暗号化付き: [Deploy Data Lake Storage Gen1 account with encryption(Key Vault)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-key-vault/) (暗号化 (Key Vault) 付きで Data Lake Storage Gen1 アカウントをデプロイする)。
+> - データ暗号化なし: [Deploy Azure Data Lake Storage Gen1 account with no data encryption](https://azure.microsoft.com/resources/templates/101-data-lake-store-no-encryption/) (Azure Data Lake Storage Gen1 アカウントをデータ暗号化なしでデプロイする)。
+> - Data Lake Storage Gen1 によるデータ暗号化あり: [Deploy Data Lake Storage Gen1 account with encryption(Data Lake)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-adls/) (Data Lake Storage Gen1 アカウントを暗号化 (Data Lake) ありでデプロイする)。
+> - Azure Key Vault によるデータ暗号化あり:[Deploy Data Lake Storage Gen1 account with encryption(Key Vault)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-key-vault/) (Data Lake Storage Gen1 アカウントを暗号化 (Key Vault) ありでデプロイする)。
 > 
 > 
 

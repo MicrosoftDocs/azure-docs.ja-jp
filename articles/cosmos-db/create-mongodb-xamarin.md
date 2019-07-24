@@ -1,24 +1,21 @@
 ---
-title: 'Azure Cosmos DB: .NET と MongoDB API を使用して Xamarin.Forms アプリを構築する | Microsoft Docs'
-description: Azure Cosmos DB MongoDB API への接続とクエリに使用できる Xamarin コード サンプルについて説明します。
-services: cosmos-db
+title: .NET と Azure Cosmos DB の MongoDB 用 API を使用して Xamarin.Forms アプリを構築する
+description: Azure Cosmos DB の MongoDB 用 API に接続してクエリを実行するために使用できる Xamarin コード サンプルについて説明します
 author: codemillmatt
-manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
-ms.custom: quickstart, xamarin
+ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: 45d299e2d5e1f9c9c454e6b2f77df7cdf8295e5f
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: c7a80ae704d13934a5d51bc5538bc28693b49e5b
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568711"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588094"
 ---
-# <a name="quickstart-build-a-mongodb-api-xamarinforms-app-with-net-and-the-azure-portal"></a>クイック スタート: .NET と Azure portal を使用して MongoDB API Xamarin.Forms アプリを構築する
+# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート: .NET SDK と Azure Cosmos DB の MongoDB 用 API を使用して Xamarin.Forms アプリを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -31,7 +28,7 @@ ms.locfileid: "51568711"
 
 Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。
 
-このクイックスタートでは、Azure Portal を使用して、Azure Cosmos DB [MongoDB API](mongodb-introduction.md) アカウント、ドキュメント データベース、コレクションを作成する方法を説明します。 その後、[MongoDB .NET ドライバー](https://docs.mongodb.com/ecosystem/drivers/csharp/)を使用して、TODO Xamarin.Forms アプリを構築します。
+このクイック スタートでは、Azure portal を使用して、[Azure Cosmos DB の MongoDB 用 API で構成された Cosmos アカウント](mongodb-introduction.md)、ドキュメント データベース、コレクションを作成する方法を説明します。 その後、[MongoDB .NET ドライバー](https://docs.mongodb.com/ecosystem/drivers/csharp/)を使用して、TODO Xamarin.Forms アプリを構築します。
 
 ## <a name="prerequisites-to-run-the-sample-app"></a>サンプル アプリを実行するための前提条件
 
@@ -53,7 +50,7 @@ Mac で作業したい場合は、[Visual Studio for Mac](https://visualstudio.m
 
 ## <a name="clone-the-sample-app"></a>サンプル アプリの複製
 
-まず、サンプル MongoDB API アプリを GitHub からダウンロードします。 このアプリには、MongoDB のドキュメント ストレージ モデルを使った TODO アプリが実装されています。
+最初に、GitHub からサンプル アプリをダウンロードします。 このアプリには、MongoDB のドキュメント ストレージ モデルを使った TODO アプリが実装されています。
 
 1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
@@ -127,7 +124,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
     }
     ```
 
-* タスクを作成して、MongoDB コレクションに挿入します。
+* タスクを作成して、コレクションに挿入します。
     ```cs
     public async Task CreateTask(MyTask task)
     {
@@ -135,7 +132,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
     }
     ```
 
-* MongoDB コレクション内のタスクを更新します。
+* コレクション内のタスクを更新します。
     ```cs
     public async Task UpdateTask(MyTask task)
     {
@@ -143,7 +140,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
     }
     ```
 
-* MongoDB コレクションからタスクを削除します。
+* コレクションからタスクを削除します。
     ```cs
     public async Task DeleteTask(MyTask task)
     {
@@ -157,7 +154,7 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
-1. [Azure Portal](http://portal.azure.com/) で、Azure Cosmos DB アカウントの左のナビゲーションから、**[接続文字列]** をクリックし、**[読み取り/書き込みキー]** をクリックします。 次の手順では、画面の右側にあるコピー ボタンを使って、プライマリ接続文字列をコピーします。
+1. [Azure Portal](https://portal.azure.com/) で、Azure Cosmos DB アカウントの左のナビゲーションから、**[接続文字列]** をクリックし、**[読み取り/書き込みキー]** をクリックします。 次の手順では、画面の右側にあるコピー ボタンを使って、プライマリ接続文字列をコピーします。
 
 2. **TaskList.Core** プロジェクトの **Helpers** ディレクトリにある **APIKeys.cs** ファイルを開きます。
 
@@ -195,4 +192,4 @@ git を使いたくない場合は、[プロジェクトを ZIP ファイルと�
 このクイック スタートでは、Azure Cosmos DB アカウントを作成し、MongoDB 用 API を使用して Xamarin.Forms アプリを実行する方法を学習しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。
 
 > [!div class="nextstepaction"]
-> [MongoDB API 用に Azure Cosmos DB にデータをインポートする](mongodb-migrate.md)
+> [Azure Cosmos DB の MongoDB 用 API で構成された Azure Cosmos DB にデータをインポートする](mongodb-migrate.md)

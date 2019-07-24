@@ -30,4 +30,4 @@ ms.locfileid: "46369985"
 リモート監視ソリューション アクセラレータの概念に関する詳細については、[リモート監視のアーキテクチャ](iot-accelerators-remote-monitoring-sample-walkthrough.md)に関するページをご覧ください
 
 リモート監視ソリューションのカスタマイズの詳細については、「[マイクロサービスをカスタマイズして再展開する](iot-accelerators-microservices-example.md)
-<!-- Next tutorials in the sequence -->」をご覧ください。
+<!-- Next tutorials in the sequence -->」をご覧ください

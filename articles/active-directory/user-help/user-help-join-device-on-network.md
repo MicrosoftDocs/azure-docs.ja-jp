@@ -3,21 +3,22 @@ title: 職場のデバイスを組織のネットワークに参加させる - A
 description: 職場のデバイスを組織のネットワークに参加させる方法について説明します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: 34d3c12c83aeac7e92aa019abc38d9c4109883bd
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dfd38e775ba418fbe31cafa8df5f37b45c3b0643
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40180590"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524372"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>職場のデバイスを組織のネットワークに参加させる
 制限されている可能性があるリソースにアクセスできるように、職場所有の Windows 10 デバイスを組織のネットワークに参加させます。
@@ -61,7 +62,7 @@ Windows 10 デバイスを組織のネットワークに参加させている間
 
     ![[設定] 画面上の [アカウント]](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. **[職場または学校にアクセスする]** を選択し、**[*<組織名>* Azure AD に接続しました]** のようなテキストが表示されることを確認します。
+2. **[職場または学校にアクセスする]** を選択し、**[*\<your_organization>* Azure AD に接続しました]** のようなテキストが表示されることを確認します。
 
     ![接続されている contoso アカウントが表示された [職場または学校にアクセスする] 画面](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -106,7 +107,7 @@ Windows 10 デバイスを組織のネットワークに参加させている間
 
     ![[設定] 画面上の [アカウント]](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. **[職場または学校にアクセスする]** を選択し、**[*<組織名>* Azure AD に接続しました]** のようなテキストが表示されることを確認します。
+2. **[職場または学校にアクセスする]** を選択し、**[*\<your_organization>* Azure AD に接続しました]** のようなテキストが表示されることを確認します。
 
     ![接続されている contoso アカウントが表示された [職場または学校にアクセスする] 画面](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 

@@ -1,22 +1,22 @@
 ---
-title: Azure Data Catalog で管理タグ付け用のビジネス用語集を設定する
+title: Azure Data Catalog でビジネス用語集を設定する
 description: Azure Data Catalog のビジネス用語集で、一般的なビジネス語彙を定義および使用して、登録したデータ資産にタグを付ける方法について取り上げた記事です。
-services: data-catalog
-author: markingmyname
-ms.author: maghan
-ms.assetid: b3d63dbe-1ae7-499f-bc46-42124e950cd6
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 9c5d7ac792f2a68d6187c7c2831b1e7404f41f30
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 04/05/2019
+ms.openlocfilehash: 649a842c8c8890713bda938c8e11740c5c8be7aa
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409424"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009713"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>管理タグ付け用のビジネス用語集を設定する
+
 ## <a name="introduction"></a>はじめに
+
 Azure Data Catalog では、データ ソースの検出が可能なため、分析や意思決定を行うために必要なデータ ソースを容易に検出し、把握することができます。 この機能が最も高い利便性を発揮するのは、利用できる最大範囲のデータ ソースを探し出し、把握できたときです。
 
 資産データの理解を深めることができる Data Catalog 機能の 1 つは、タグ付けです。 タグ付けを使用すると、キーワードを資産や列と関連付けることができます。その結果、検索や閲覧で資産を簡単に見つけられるようになります。 また、資産のコンテキストや意図を理解しやすくなります。
@@ -31,6 +31,7 @@ Azure Data Catalog では、データ ソースの検出が可能なため、分
 組織は Data Catalog のビジネス用語集を使用して主なビジネス用語と定義を文書化し、一般的なビジネス語彙を作成できます。 用語集を管理することで、組織全体のデータ使用で一貫性を保つことができます。 用語をビジネス用語集で定義すると、それをカタログのデータ資産に割り当てることができます。 この*管理タグ付け*の方法は、タグ付けと同じ方法です。
 
 ## <a name="glossary-availability-and-privileges"></a>用語集の可用性と特権
+
 ビジネス用語集は、Azure Data Catalog の Standard Edition でのみ使用できます。 Data Catalog の Free Edition には、用語集は含まれていません。また、管理タグ付け機能も提供していません。
 
 ビジネス用語集には、Data Catalog ポータルのナビゲーション メニューにある **[用語集]** オプションでアクセスできます。  
@@ -42,6 +43,7 @@ Data Catalog 管理者と用語集管理者ロールのメンバーは、ビジ�
 ![新しい用語を追加する](./media/data-catalog-how-to-business-glossary/02-new-term.png)
 
 ## <a name="creating-glossary-terms"></a>用語集の用語を作成する
+
 Data Catalog 管理者や用語集管理者は、**[新しい用語]** ボタンをクリックして、用語集の用語を作成できます。 用語集の各用語には、次のフィールドが含まれます。
 
 * 用語のビジネスの定義
@@ -50,6 +52,7 @@ Data Catalog 管理者や用語集管理者は、**[新しい用語]** ボタン
 * 用語が構成される階層が定義された親用語
 
 ## <a name="glossary-term-hierarchies"></a>用語集の用語の階層
+
 組織は、Data Catalog のビジネス用語集を使用して、用語の階層としてビジネス語彙を説明したり、業務分類をより適切に表す用語の分類を作成したりすることができます。
 
 用語は、特定のレベルの階層で一意である必要があります。 重複する名前は使用できません。 階層のレベル数に制限はありませんが、3 レベル以下にすると、階層がわかりやすくなります。
@@ -57,23 +60,26 @@ Data Catalog 管理者や用語集管理者は、**[新しい用語]** ボタン
 ビジネス用語集の階層の使用はオプションです。 用語集の用語の親用語フィールドを空にすると、用語集にフラットな (階層がない) 用語一覧が作成されます。  
 
 ## <a name="tagging-assets-with-glossary-terms"></a>用語集の用語で資産にタグを付ける
+
 カタログ内の用語集の用語を定義すると、資産にタグを付ける操作が最適化され、ユーザーがタグを入力するときに用語集を検索できるようになります。 Data Catalog ポータルには一致する用語集の用語一覧が表示され、そこから選択できます。 ユーザーが一覧から用語集の用語を選択すると、タグ (用語集タグ) として資産に追加されます。 ユーザーは、用語集にない用語を入力して新しいタグ (ユーザー タグ) を作成することもできます。
 
 ![1 つのユーザー タグと 2 つの用語集タグが付けられたデータ資産](./media/data-catalog-how-to-business-glossary/03-tagged-asset.png)
 
 > [!NOTE]
 > ユーザー タグは、Free Edition の Data Catalog でサポートされる唯一のタグの種類です。
->
->
 
 ### <a name="hover-behavior-on-tags"></a>タグのホバー動作
+
 Data Catalog ポータルでは、2 種類のタグは区別して表示され、ホバー動作も異なります。 ユーザー タグにマウスを移動すると、タグ テキストと、タグを追加した 1 人以上のユーザーが表示されます。 用語集タグにマウスを移動すると、用語集の用語の定義と、ビジネス用語集を開いて用語の詳細な定義を表示するためのリンクが表示されます。
 
 ### <a name="search-filters-for-tags"></a>タグの検索フィルター
+
 用語集タグとユーザータグはどちらも検索可能です。また、検索でフィルターとして適用できます。
 
 ## <a name="summary"></a>まとめ
+
 Azure Data Catalog のビジネス用語集と、それで有効になる管理タグ付けを使用すると、データ資産の識別、管理、検出を一貫した方法で行うことができます。 ビジネス用語集は、組織のメンバーによるビジネス語彙の学習を推進できます。 用語集は、資産の検出と把握を容易にする、意味のあるメタデータのキャプチャもサポートしています。
 
 ## <a name="next-steps"></a>次の手順
-* [ビジネス用語集操作の REST API ドキュメント](https://msdn.microsoft.com/library/mt708855.aspx)
+
+* [ビジネス用語集操作の REST API ドキュメント](/rest/api/datacatalog/data-catalog-glossary)

@@ -2,19 +2,19 @@
 title: Azure Stream Analytics での一般的な問題のトラブルシューティング
 description: この記事では、Azure Stream Analytics におけるいくつかの一般的な問題と、問題をトラブルシューティングするための手順について説明します。
 services: stream-analytics
-author: jasonwhowell
-manager: kfile
+author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/12/2018
-ms.openlocfilehash: 2fe180873f8f410d80b06d29d16881eb49f7fc2a
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 0191c56e1140870b1710b48c4fa1189fd92a337b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978445"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521477"
 ---
 # <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>Stream Analytics での一般的な問題とトラブルシューティングの手順
 
@@ -24,9 +24,9 @@ ms.locfileid: "50978445"
  
  Stream Analytics ジョブは、入力から間違った形式のメッセージを受信すると、メッセージを削除し、ユーザーに警告で通知します。 警告の記号は、Stream Analytics ジョブの **[入力]** タイルに表示されます (この警告記号は、ジョブが実行中の状態である間、表示され続けます)。
 
-![[入力] タイル](media/stream-analytics-malformed-events/inputs_tile.png)
+![Azure Stream Analytics ダッシュボードの [入力] タイル](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
-詳細な情報を確認するには、診断ログを有効にして警告の詳細を表示します。 間違った形式の入力イベントがある場合は、実行ログに "メッセージ: リソース <blob URI> からの入力イベントを json として逆シリアル化できませんでした" というメッセージのエントリが記録されます。 
+詳細な情報を確認するには、診断ログを有効にして警告の詳細を表示します。 間違った形式の入力イベントの場合、実行ログには次のようなメッセージを持つエントリが含まれます。"メッセージ:リソース \<blob URI> からの入力イベントを json として逆シリアル化できませんでした。" 
 
 ### <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 
@@ -34,7 +34,7 @@ ms.locfileid: "50978445"
 
 2. [入力の詳細] タイルに、一連の警告が問題に関する詳細と共に表示されます。 警告メッセージの例を次に示します、警告メッセージは、間違った形式の JSON データが存在するパーティション、オフセット、シーケンス番号を示します。 
 
-   ![オフセットを含む警告メッセージ](media/stream-analytics-malformed-events/warning_message_with_offset.png)
+   ![オフセットを含む入力警告メッセージ](media/stream-analytics-malformed-events/warning-message-with-offset.png)
 
 3. 不適切な形式の JSON データを取得するには、CheckMalformedEvents.cs コードを実行します。 この例は、[GitHub サンプル リポジトリ](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH)で使用可能です。 このコードは、パーティション ID とオフセットを読み取り、そのオフセットにあるデータを出力します。 
 

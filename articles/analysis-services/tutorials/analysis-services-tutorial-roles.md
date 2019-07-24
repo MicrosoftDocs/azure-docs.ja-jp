@@ -1,20 +1,21 @@
 ---
-title: チュートリアル - Azure Analysis Services のサーバー管理者とユーザーのロールを構成するチュートリアル レッスン | Microsoft Docs
+title: チュートリアル - Azure Analysis Services の管理者とユーザーのロールを構成する | Microsoft Docs
+description: Azure Analysis Services ロールを構成する方法について説明します。
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 07/09/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 1c1dd5316eead5e91dd77d3e6b21a7a14d39afeb
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 4c1a3f52c37dcaad4bc2f84d6d2fa04b61376cf1
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929231"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188778"
 ---
-# <a name="tutorial-configure-server-administrator-and-user-roles"></a>チュートリアル: サーバー管理者とユーザーのロールを構成する
+# <a name="tutorial-configure-server-administrator-and-user-roles"></a>チュートリアル:サーバー管理者とユーザー ロールを構成する
 
  このチュートリアルでは、SQL Server Management Studio (SSMS) を使用して Azure 内のサーバーに接続し、サーバー管理者とモデル データベースのロールを構成します。 また、[Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200) についても紹介します。 TMSL は、1200 以上の互換性レベルの表形式モデル用 JSON ベース スクリプト言語です。 多くの表形式モデリング タスクの自動化に使用できます。 TMSL は PowerShell でよく使用されますが、このチュートリアルでは SSMS で XMLA クエリ エディターを使用します。 このチュートリアルでは、以下のタスクを実行します。 
   
@@ -35,9 +36,9 @@ Azure Analysis Services のユーザー セキュリティの詳細について�
 - [adventureworks サンプル モデル](../analysis-services-create-sample-model.md)をサーバーに追加する。
 - [最新バージョンの SQL Server Management Studio (SSMS) をインストールする](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 
-## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
+## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 
-[ポータル](https://portal.azure.com/)にログインします。
+[ポータル](https://portal.azure.com/)にサインインします。
 
 ## <a name="get-server-name"></a>サーバー名を取得する
 SSMS からサーバーに接続するには、まずサーバー名が必要です。 ポータルからサーバー名を取得できます。
@@ -143,5 +144,5 @@ SSMS からサーバーに接続するには、まずサーバー名が必要で
 このチュートリアルでは、Azure AS サーバーに接続し、SSMS の adventureworks サンプル モデル データベースとプロパティを調べる方法について説明しました。 また、SSMS および TMSL スクリプトを使用して既存のロールと新しいロールにユーザーまたはグループを追加する方法について説明しました。 サーバーとサンプル モデル データベース用にユーザー アクセス許可を構成したので、PowerBI などのクライアント アプリを使用して自分と他のユーザーが接続できます。 さらに学習するには、次のチュートリアルに進んでください。 
 
 > [!div class="nextstepaction"]
-> [チュートリアル: Power BI Desktop を使用して接続する](analysis-services-tutorial-pbid.md)
+> [チュートリアル:Power BI Desktop を使用して接続する](analysis-services-tutorial-pbid.md)
 

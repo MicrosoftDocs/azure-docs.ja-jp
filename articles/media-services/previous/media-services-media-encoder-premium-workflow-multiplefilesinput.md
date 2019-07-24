@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 03/18/2019
 ms.author: xpouyat;anilmur;juliako
-ms.openlocfilehash: 31bd3d54b085922de0ec822731eae79fe9a9943b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 608ca4bc3b58dd3c718d6239f90260154d2f6c3a
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262099"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189480"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Premium Encoder での複数の入力ファイルとコンポーネント プロパティの使用
 ## <a name="overview"></a>概要
@@ -268,7 +268,7 @@ XML 値が想定されるプロパティを設定するには、 `<![CDATA[ and 
   </transcodeRequest>
 ```
 
-## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>例 1: ビデオにイメージを重ね合わせる
+## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>例 1:ビデオにイメージを重ね合わせる
 
 ### <a name="presentation"></a>プレゼンテーション
 ビデオのエンコード中、入力ビデオにロゴ イメージを重ね合わせる例を見てみましょう。 この例では、入力ビデオの名前は "Microsoft_HoloLens_Possibilities_816p24.mp4"、ロゴの名前は "logo.png" です。 以下の手順を実行する必要があります。
@@ -428,7 +428,7 @@ public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string conf
 
 サンプル ワークフローは [GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/)からダウンロードできします。
 
-## <a name="example-2--multiple-audio-language-encoding"></a>例 2: 複数のオーディオ言語のエンコード
+## <a name="example-2--multiple-audio-language-encoding"></a>例 2:複数のオーディオ言語のエンコード
 
 複数のオーディオ言語をエンコードするワークフローの例は、[GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding) で入手できます。
 

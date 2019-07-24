@@ -1,31 +1,33 @@
 ---
-title: Azure での Linux CentOS データ サイエンス仮想マシンのプロビジョニング | Microsoft Docs
+title: CentOS Linux Data Science Virtual Machine の作成
+titleSuffix: Azure
 description: 分析と機械学習を行うために、Azure で Linux データ サイエンス仮想マシンを構成および作成します。
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 3883fc71c099718face38c16897040788fe0c6ab
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: e7b67905c96495382536555b87772e4eefada250
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246786"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835749"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Azure での Linux CentOS データ サイエンス仮想マシンのプロビジョニング
 
 Linux データ サイエンス仮想マシンは、一連のツールがプレインストールされた CentOS ベースの Azure 仮想マシンです。 これらのツールは、データ分析と機械学習に一般的に使用されます。 含まれている主なソフトウェア コンポーネントは次のとおりです。
 
-* オペレーティング システム: Linux CentOS ディストリビューション。
+* オペレーティング システム:Linux CentOS ディストリビューション。
 * Microsoft R Server Developer エディション
 * 一般的なデータ分析ライブラリを含む Anaconda Python ディストリビューション (バージョン 2.7 および 3.5)
 * JuliaPro - 一般的な科学的およびデータ分析ライブラリを含む Julia 言語の管理されたディストリビューション
@@ -38,7 +40,7 @@ Linux データ サイエンス仮想マシンは、一連のツールがプレ�
   * [Cognitive Toolkit](https://github.com/Microsoft/CNTK): Microsoft Research のディープ ラーニング ソフトウェア ツールキット。
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): オンライン、ハッシュ、allreduce、リダクション、learning2search、アクティブ、対話型学習などの手法をサポートする高速機械学習システム。
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/): 迅速かつ正確なブースト ツリー実装を提供するツール。
-  * [Rattle](https://togaware.com/rattle/) (R Analytical Tool To Learn Easily): GUI ベースのデータ探索と R コードの自動生成によるモデリングにより、R でデータ分析と機械学習を簡単に開始できるツール。
+  * [Rattle](https://togaware.com/rattle/) (the R Analytical Tool To Learn Easily): R で Data Analytics と機械学習を簡単に開始できるツール。GUI ベースのデータ探索と R コードの自動生成によるモデリングを含みます。
 * Java、Python、node.js、Ruby、PHP の Azure SDK
 * Azure Machine Learning などの Azure サービスで使用する R と Python のライブラリ
 * 開発ツールとエディター (RStudio、PyCharm、IntelliJ、Emacs、gedit、vi)
@@ -62,8 +64,8 @@ Linux データ サイエンス仮想マシンはそうした問題の大部分�
 ## <a name="prerequisites"></a>前提条件
 Linux データ サイエンス仮想マシンを作成する前に、次を用意する必要があります。
 
-* **Azure サブスクリプション**: これを取得する場合は、 [Azure 無試用版の取得](https://azure.microsoft.com/free/)に関するページを参照してください。
-* **Azure ストレージ アカウント**: Azure ストレージ アカウントを作成するには、 [Azure ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)に関するセクションをご覧ください。 既存のアカウントを使用しない場合は、VM の作成プロセスの一環としてストレージ アカウントを作成することもできます。
+* **Azure サブスクリプション**: これを取得するには、[Azure 無料試用版の取得](https://azure.microsoft.com/free/)に関するページをご覧ください。
+* **Azure ストレージ アカウント**: Azure ストレージ アカウントを作成するには、[Azure ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)に関するページを参照してください。 既存のアカウントを使用しない場合は、VM の作成プロセスの一環としてストレージ アカウントを作成することもできます。
 
 ## <a name="create-your-linux-data-science-virtual-machine"></a>Linux データ サイエンス仮想マシンの作成
 Linux データ サイエンス仮想マシンのインスタンスを作成する手順を以下に示します。
@@ -77,8 +79,8 @@ Linux データ サイエンス仮想マシンのインスタンスを作成す�
    * **名前**: 作成するデータ サイエンス サーバーの名前です。
    * **ユーザー名**: 最初のアカウントのサインイン ID。
    * **パスワード**: 最初のアカウントのパスワード (パスワードの代わりに SSH 公開キーを使用できます)。
-   * **サブスクリプション**: 複数のサブスクリプションがある場合は、マシンが作成されて課金されるサブスクリプションを選択します。 そのサブスクリプションに対するリソース作成権限が必要です。
-   * **リソース グループ**: 新しいリソース グループを作成するか、既存のグループを使用します。
+   * **サブスクリプション**:複数のサブスクリプションがある場合は、マシンが作成されて課金されるサブスクリプションを選択します。 そのサブスクリプションに対するリソース作成権限が必要です。
+   * **リソース グループ**: 新しいリソース グループを作成するか、既存のグループを使用できます。
    * **場所**: 最適なデータ センターを選択します。 通常は、データの大半が存在するデータ センターか、ネットワーク アクセスを最速にするために物理的に最も近いデータ センターを選びます。
    
    b. **[サイズ]**:
@@ -88,8 +90,8 @@ Linux データ サイエンス仮想マシンのインスタンスを作成す�
    c. **設定**:
    
    * **ディスクの種類**: ソリッドステート ドライブ (SSD) を使用する場合は、**[Premium]** を選択します。 それ以外の場合は、 **[Standard]** を選択します。
-   * **ストレージ アカウント**: サブスクリプションに新しい Azure ストレージ アカウントを作成することも、ウィザードの **[基本]** ステップで選択した場所にある既存のストレージ アカウントを使用することもできます。
-   * **他のパラメーター**: 通常は既定値を使用します。 既定値以外の値を検討する場合は、情報リンクにポインターを合わせて、該当するフィールドのヘルプを表示します。
+   * **ストレージ アカウント**: サブスクリプションに新しい Azure ストレージ アカウントを作成することも、ウィザードの **[基本]** ステップで選択したのと同じ場所にある既存のストレージ アカウントを使用することもできます。
+   * **その他のパラメーター**: ほとんどの場合は、既定値を使用するだけです。 既定値以外の値を検討する場合は、情報リンクにポインターを合わせて、該当するフィールドのヘルプを表示します。
    
    d. **概要**:
    
@@ -102,7 +104,7 @@ Linux データ サイエンス仮想マシンのインスタンスを作成す�
 プロビジョニングには、10 ～ 20 分くらいかかります。 プロビジョニングの状態は、Azure ポータルに表示されます。
 
 ## <a name="how-to-access-the-linux-data-science-virtual-machine"></a>Linux データ サイエンス仮想マシンにアクセスする方法
-VM を作成したら、SSH を使用してサインインできます。 テキスト シェル インターフェイスで、手順 3. の **[基本]** セクションで作成したアカウントの資格情報を使用します。 Windows では、[Putty](http://www.putty.org) などの SSH クライアント ツールをダウンロードできます。 グラフィカル デスクトップ (X Windows System) を使用する場合は、Putty で X11 転送を使用するか、X2Go クライアントをインストールすることができます。
+VM を作成したら、SSH を使用してサインインできます。 テキスト シェル インターフェイスで、手順 3. の **[基本]** セクションで作成したアカウントの資格情報を使用します。 Windows では、[Putty](https://www.putty.org) などの SSH クライアント ツールをダウンロードできます。 グラフィカル デスクトップ (X Windows System) を使用する場合は、Putty で X11 転送を使用するか、X2Go クライアントをインストールすることができます。
 
 > [!NOTE]
 > テストでは、パフォーマンスは、X11 転送よりも、X2Go クライアントの方がはるかに優れていました。 グラフィカル デスクトップ インターフェイスでは、X2Go クライアントを使用することをお勧めします。
@@ -112,15 +114,15 @@ VM を作成したら、SSH を使用してサインインできます。 テキ
 ## <a name="installing-and-configuring-x2go-client"></a>X2Go クライアントのインストールと構成
 Linux VM は、既に X2Go サーバーでプロビジョニングされており、クライアント接続を受け入れる準備ができています。 Linux VM のグラフィカル デスクトップに接続するには、クライアントで次の手順を実行します。
 
-1. [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。    
+1. [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient)のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。    
 1. X2Go クライアントを実行し、 **[New Session (新しいセッション)]** を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
    * **[Session] \(セッション) タブ**:
-     * **[Host (ホスト)]**: Linux データ サイエンス VM のホスト名または IP アドレス。
-     * **[Login (ログイン)]**: Linux VM のユーザー名。
-     * **[SSH Port] \(SSH ポート)**: 既定値の 22 のままにします。
-     * **[Session Type] \(セッションの種類)**: 値を XFCE に変更します。 現在、Linux VM では XFCE デスクトップのみをサポートしています。
+     * **[Host]\(ホスト\)**: Linux Data Science VM のホスト名または IP アドレス。
+     * **[Login]\(ログイン\)**: Linux VM のユーザー名。
+     * **[SSH Port]\(SSH ポート\)**: 既定値の 22 のままにします。
+     * **[Session Type]\(セッションの種類\)**: 値を XFCE に変更します。 現在、Linux VM では XFCE デスクトップのみをサポートしています。
    * **[Media]\(メディア\) タブ**: 音声のサポートとクライアントの印刷を使用しない場合は、それらをオフにできます。
-   * **[Shared folders] \(共有フォルダー)**: クライアント コンピューターのディレクトリを Linux VM にマウントする場合は、このタブで VM と共有するクライアント コンピューターのディレクトリを追加します。
+   * **[Shared folders]\(共有フォルダー\)**: クライアント コンピューターのディレクトリを Linux VM にマウントする場合は、このタブで VM と共有するクライアント コンピューターのディレクトリを追加します。
 
 SSH クライアントを使用するか、X2Go クライアントから XFCE グラフィカル デスクトップを使用して VM にサインインしたら、VM にインストールされ、構成されているツールをすぐに使い始めることができます。 XFCE では、アプリケーション メニューのショートカットとさまざまなツールのデスクトップ アイコンが表示されます。
 
@@ -130,7 +132,7 @@ R は、データ分析と機械学習に最もよく使われる言語の 1 つ
 
 R コンソールを起動するには、シェルで「**R**」と入力します。 入力すると、対話型環境に移動します。 R プログラムを開発するには、通常、Emacs、vi、gedit などのエディターを使用し、R 内でスクリプトを実行します。RStudio をインストールすると、完全なグラフィカル IDE 環境で R プログラムを開発できます。
 
-必要な場合に備えて、 [上位 20 の R パッケージ](http://www.kdnuggets.com/2015/06/top-20-r-packages.html) をインストールするための R スクリプトも用意されています。 このスクリプトを実行するには、前述のとおり、シェルで「 **R** 」と入力して R の対話型インターフェイスに入る必要があります。  
+必要な場合に備えて、 [上位 20 の R パッケージ](https://www.kdnuggets.com/2015/06/top-20-r-packages.html) をインストールするための R スクリプトも用意されています。 このスクリプトを実行するには、前述のとおり、シェルで「 **R** 」と入力して R の対話型インターフェイスに入る必要があります。  
 
 ### <a name="python"></a>Python
 Python を使用して開発するために、Anaconda Python ディストリビューション 2.7 および 3.5 がインストールされています。 このディストリビューションには、基本 Python と、約 300 の最も一般的な数学、エンジニアリング、およびデータ分析パッケージが含まれています。 既定のテキスト エディターを使用できます。 また、Anaconda Python ディストリビューションにバンドルされている Spyder (Python IDE) を使用することもできます。 Spyder を使用するには、グラフィカル デスクトップまたは X11 転送が必要です。 Spyder へのショートカットは、グラフィカル デスクトップに用意されています。
@@ -152,7 +154,7 @@ Python 3.5 は、 */anaconda/envs/py35/bin*にインストールされていま�
 
 シェルで「 **python** 」と入力するだけで、Python の対話型セッションを呼び出すことができます。 グラフィカル インターフェイスを使用している場合や X11 転送を設定している場合は、「**pycharm**」と入力して PyCharm Python IDE を起動します。
 
-追加の Python ライブラリをインストールするには、sudo 権限で ```conda``` または ````pip```` コマンドを実行し、Python パッケージ マネージャー (conda または pip) の完全パスを指定して適切な Python 環境にインストールする必要があります。 例: 
+追加の Python ライブラリをインストールするには、sudo 権限で ```conda``` または ```pip``` コマンドを実行し、Python パッケージ マネージャー (conda または pip) の完全パスを指定して適切な Python 環境にインストールする必要があります。 例: 
 
     sudo /anaconda/bin/pip install <package> #pip for Python 2.7
     sudo /anaconda/envs/py35/bin/pip install <package> #pip for Python 3.5
@@ -196,12 +198,12 @@ Microsoft R Server で Spark コンテキストで実行する前に、1 回限�
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-Hadoop 関連サービスが不要な場合は、````systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```` を実行してサービスを停止することができます。MRS をリモート Spark コンテキスト (つまり DSVM 上のスタンドアロン Spark インスタンス) で開発およびテストする方法を示したサンプルは、`/dsvm/samples/MRS` ディレクトリで入手して使用することができます。 
+Hadoop 関連サービスが不要な場合は、```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` を実行してサービスを停止することができます。MRS をリモート Spark コンテキスト (つまり DSVM 上のスタンドアロンの Spark インスタンス) 内で開発およびテストする方法を示したサンプルは、`/dsvm/samples/MRS` ディレクトリから入手して使用することができます。 
 
 ### <a name="ides-and-editors"></a>IDE とエディター
 コード エディターには、いくつかの選択肢があります。 これには vi/VIM、Emacs、gEdit、PyCharm、RStudio、Eclipse、IntelliJ が含まれます。 gEdit、Eclipse、IntelliJ、RStudio、および PyCharm はグラフィカル エディターであり、使用するにはグラフィカル デスクトップにサインインする必要があります。 これらのエディターには、起動するためのデスクトップとアプリケーションのメニューのショートカットが用意されています。
 
-**VIM** と **Emacs** はテキスト ベースのエディターです。 Emacs に関しては、Emacs エディター内で R を簡単に利用できるようにする Emacs Speaks Statistics (ESS) というアドオン パッケージがインストールされています。 詳細については、 [ESS](http://ess.r-project.org/)に関するページをご覧ください。
+**VIM** と **Emacs** はテキスト ベースのエディターです。 Emacs に関しては、Emacs エディター内で R を簡単に利用できるようにする Emacs Speaks Statistics (ESS) というアドオン パッケージがインストールされています。 詳細については、 [ESS](https://ess.r-project.org/)に関するページをご覧ください。
 
 **Eclipse** は、複数の言語をサポートする拡張可能なオープン ソースの IDE です。 VM にインストールされているインスタンスは、Java 開発者用のエディションです。 一般的な言語向けのプラグインがいくつか用意されています。それらのプラグインをインストールすると環境を拡張できます。 **Azure Toolkit for Eclipse** と呼ばれる Eclipse にインストールされたプラグインもあります。 このプラグインを使用すると、Java などの言語がサポートされる Eclipse 開発環境で Azure アプリケーションの作成、開発、テスト、デプロイを行うことができます。 また、**Azure SDK for Java** を使用すると、Java 環境内からさまざまな Azure サービスにアクセスすることができます。 Azure Toolkit for Eclipse の詳細については、「[Azure Toolkit for Eclipse](../../azure-toolkit-for-eclipse.md)」をご覧ください。
 
@@ -225,11 +227,11 @@ Hadoop 関連サービスが不要な場合は、````systemctl stop hadoop-namen
 #### <a name="command-line-tools-for-accessing-microsoft-sql-server"></a>Microsoft SQL Server にアクセスするためのコマンド ライン ツール
 SQL Server の ODBC ドライバー パッケージには、次の 2 つのコマンド ライン ツールも付属しています。
 
-**bcp**- bcp ユーティリティでは、Microsoft SQL Server のインスタンスと、ユーザーが指定した形式のデータ ファイルとの間でデータを一括コピーします。 bcp ユーティリティを使用して、SQL Server テーブルに多数の新しい行をインポートしたり、テーブルからデータ ファイルにデータをエクスポートしたりできます。 テーブルにデータをインポートするには、そのテーブル用に作成されたフォーマット ファイルを使用するか、テーブルの構造と列の有効なデータの種類を把握する必要があります。
+**bcp**: bcp ユーティリティでは、Microsoft SQL Server のインスタンスと、ユーザーが指定した形式のデータ ファイルとの間でデータを一括コピーします。 bcp ユーティリティを使用して、SQL Server テーブルに多数の新しい行をインポートしたり、テーブルからデータ ファイルにデータをエクスポートしたりできます。 テーブルにデータをインポートするには、そのテーブル用に作成されたフォーマット ファイルを使用するか、テーブルの構造と列の有効なデータの種類を把握する必要があります。
 
 詳細については、「 [bcp による接続](https://msdn.microsoft.com/library/hh568446.aspx)」をご覧ください。
 
-**sqlcmd**: sqlcmd ユーティリティを使用して、Transact-SQL ステートメントを入力したり、コマンド プロンプトでシステム プロシージャやスクリプト ファイルを入力したりできます。 このユーティリティでは、ODBC を使用して、Transact-SQL バッチを実行します。
+**sqlcmd**: sqlcmd ユーティリティを使用して Transact-SQL ステートメントを入力したり、コマンド プロンプトでシステム プロシージャやスクリプト ファイルを入力したりすることができます。 このユーティリティでは、ODBC を使用して、Transact-SQL バッチを実行します。
 
 詳細については、「 [sqlcmd による接続](https://msdn.microsoft.com/library/hh568447.aspx)」をご覧ください。
 
@@ -246,15 +248,15 @@ R と Python には、データベースにアクセスするためのライブ�
 
 **Postgres**にアクセスする方法は次のとおりです。
 
-* R の場合: **RPostgreSQL**パッケージを使用します。
+* R の場合: **RPostgreSQL** パッケージを使用します。
 * Python の場合: **psycopg2** ライブラリを使用します。
 
 ### <a name="azure-tools"></a>Azure ツール
 VM には、次の Azure ツールがインストールされています。
 
 * **Azure コマンド ライン インターフェイス**: Azure CLI では、シェル コマンドを使用して Azure リソースを作成および管理できます。 Azure ツールを起動するには、「 **azure help**」と入力します。 詳細については、 [Azure CLI ドキュメント ページ](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)をご覧ください。
-* **Microsoft Azure ストレージ エクスプローラー**: Microsoft Azure ストレージ エクスプローラーは、Azure ストレージ アカウントに保存されているオブジェクトを参照したり、Azure BLOB との間でデータをアップロード/ダウンロードしたりする際に使用するグラフィカル ツールです。 ストレージ エクスプローラーには、デスクトップのショートカット アイコンからアクセスできます。 シェル プロンプトから「 **StorageExplorer**」と入力して起動することもできます。 X2Go クライアントからサインインしているか、X11 転送を設定済みである必要があります。
-* **Azure Libraries**: 次のライブラリがプレインストールされています。
+* **Microsoft Azure Storage Explorer**: Microsoft Azure Storage Explorer は、Azure ストレージ アカウントに保存されているオブジェクトを参照したり、Azure BLOB との間でデータをアップロード/ダウンロードしたりするために使用するグラフィカル ツールです。 ストレージ エクスプローラーには、デスクトップのショートカット アイコンからアクセスできます。 シェル プロンプトから「 **StorageExplorer**」と入力して起動することもできます。 X2Go クライアントからサインインしているか、X11 転送を設定済みである必要があります。
+* **Azure Libraries**: プレインストールされているライブラリの一部を次に示します。
   
   * **Python**: Python のインストール済みの Azure 関連ライブラリには、**azure**、**azureml**、**pydocumentdb**、**pyodbc** があります。 最初の 3 つのライブラリを使用すると、Azure Storage サービス、Azure Machine Learning、Azure Cosmos DB (Azure の NoSQL データベース) にアクセスできます。 4 番目のライブラリの pyodbc を (Microsoft ODBC Driver for SQL Server と共に) 使用すると、Python から ODBC インターフェイスを使用して SQL Server、Azure SQL Database、Azure SQL Data Warehouse にアクセスできます。 すべてのライブラリを一覧表示するには、「 **pip list** 」と入力します。 このコマンドは、必ず Python 2.7 と 3.5 の両方の環境で実行してください。
   * **R**: R のインストール済みの Azure 関連ライブラリは、**AzureML** と **RODBC** です。
@@ -279,7 +281,7 @@ R と Python のモデルを Azure Machine Learning にデプロイする方法�
 ### <a name="machine-learning-tools"></a>機械学習ツール
 VM には、いくつかの機械学習ツールとアルゴリズムがプリコンパイルされ、ローカルにプレインストールされています。 チェックの内容は次のとおりです
 
-* **Microsoft Cognitive Toolkit**: ディープ ラーニング ツールキット。
+* **Microsoft Cognitive Toolkit**: ディープ ラーニングのツールキット。
 * **Vowpal Wabbit**: 高速オンライン学習アルゴリズム。
 * **xgboost**: 最適化されたブースト ツリー アルゴリズムを提供するツール。
 * **Python**: Anaconda Python には、Scikit-learn などのライブラリと機械学習アルゴリズムがバンドルされています。 その他のライブラリは、 `pip install` を使用してインストールできます。
@@ -374,6 +376,6 @@ Rattle と R を終了できます。これで、生成された R スクリプ�
 
 * チュートリアル「 [Data science on the Linux Data Science Virtual Machine](linux-dsvm-walkthrough.md) 」(Linux データ サイエンス仮想マシンでのデータ サイエンス) では、ここでプロビジョニングされた Linux データ サイエンス VM を使用して、一般的なデータ サイエンス タスクをいくつか実行する方法を示します。 
 * この記事で説明しているツールを試して、データ サイエンス VM 上のさまざまなデータ サイエンス ツールを確認します。 VM にインストールされているツールの基本的な概要と詳細情報を入手できる場所は、仮想マシン内のシェルで *dsvm-more-info* を実行して確認することもできます。  
-* [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
-* [Cortana Analytics Gallery](http://gallery.cortanaanalytics.com) では、Cortana Analytics Suite を使用して機械学習やデータ分析のサンプルを入手できます。
+* [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
+* [Cortana Analytics Gallery](https://gallery.cortanaanalytics.com) では、Cortana Analytics Suite を使用して機械学習やデータ分析のサンプルを入手できます。
 

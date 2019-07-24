@@ -1,21 +1,21 @@
 ---
-title: Ansible (プレビュー) を使用して Azure Application Gateway で Web トラフィックを管理する
+title: Ansible を使用して Azure Application Gateway で Web トラフィックを管理する
 description: Ansible を使用して Azure Application Gateway を作成および構成し、Web トラフィックを管理する方法について説明する
-ms.service: ansible
-keywords: Ansible、Azure、DevOps、Bash、プレイブック、Azure アプリケーションゲートウェイ、ロード バランサー、Web トラフィック
-author: tomarcher
+ms.service: azure
+keywords: Ansible、Azure、DevOps、Bash、プレイブック、アプリケーションゲートウェイ、ロード バランサー、Web トラフィック
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/20/2018
-ms.openlocfilehash: e3c165c87d6c179141f2ddd44f00f0f62a84b285
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 83f21573af7ec523acc376c4b3364cdcfb47f96f
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912868"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792142"
 ---
-# <a name="manage-web-traffic-with-azure-application-gateway-by-using-ansible-preview"></a>Ansible (プレビュー) を使用して Azure Application Gateway で Web トラフィックを管理する
+# <a name="manage-web-traffic-with-azure-application-gateway-by-using-ansible"></a>Ansible を使用して Azure Application Gateway で Web トラフィックを管理する
 
 [Azure アプリケーション ゲートウェイ](https://docs.microsoft.com/azure/application-gateway/)は、アプリケーションに対するトラフィックを管理できる Web トラフィック ロードバランサーです。
 
@@ -34,7 +34,7 @@ Ansible は、環境内のリソースのデプロイと構成を自動化する
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> このチュートリアルでは、次のサンプルのプレイブックを実行するのに Ansible 2.7 が必要です。 `sudo pip install ansible[azure]==2.7.0rc2` を実行すると、Ansible 2.7 RC をインストールすることができます。 Ansible 2.7 のリリース後は、バージョンを指定する必要はありません。
+> このチュートリアルでは、次のサンプルのプレイブックを実行するのに Ansible 2.7 が必要です。 
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 

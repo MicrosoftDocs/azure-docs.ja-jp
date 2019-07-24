@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: 95f01c9338afbf2ab5381001e4ab480185cedaeb
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: e7efe1a8632643e2a299b6c9a1b1407414deee4b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636885"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542949"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Digital Twins のオブジェクト モデルと空間インテリジェンス グラフを理解する
 
@@ -48,11 +48,11 @@ Digital Twins オブジェクト モデルでは、オブジェクトの以下�
 - **ロール**は、空間グラフ内のユーザーやデバイスに割り当てられたアクセス許可のセットです (例: `Space Administrator`、`User Administrator`、`Device Administrator`)。
 - **ロールの割り当て**は、空間グラフ内のロールとオブジェクトの間の関連付けです。 たとえば、空間グラフ内のスペースを管理するアクセス許可をユーザーまたはサービス プリンシパルに付与することができます。
 - **セキュリティ キー ストア**は、特定のスペース オブジェクトの下にある階層内のすべてのデバイスにセキュリティ キーを提供し、デバイスが Digital Twins と安全に通信できるようにします。
-- **ユーザー定義関数** (UDF) は、空間グラフ内でセンサーのテレメトリ処理をカスタマイズできるようにします。 たとえば、UDF を使って次のことを行えます。 
-    - センサーの値を設定する。 
-    - センサーの読み取り値に基づいてカスタム ロジックを実行し、スペースへの出力を設定する。 
-    - スペースにメタデータを関連付ける。 
-    - 予め定義されている条件が満たされたときに通知を送る。 現在は、JavaScript で UDF を記述できます。
+- **ユーザー定義関数** (UDF) は、空間グラフ内でセンサーのテレメトリ処理をカスタマイズできるようにします。 たとえば、UDF を使って次のことを行えます。
+  - センサーの値を設定する。
+  - センサーの読み取り値に基づいてカスタム ロジックを実行し、スペースへの出力を設定する。
+  - スペースにメタデータを関連付ける。
+  - 予め定義されている条件が満たされたときに通知を送る。 現在は、JavaScript で UDF を記述できます。
 - **マッチャー**は、特定のテレメトリ メッセージに対して実行される UDF を決定するオブジェクトです。
 - **エンドポイント**は、テレメトリ メッセージと Digital Twins のイベントをルーティングできる場所です (例: `Event Hub`、`Service Bus`、`Event Grid`)。
 
@@ -99,13 +99,13 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 
 [Swagger の使用方法](how-to-use-swagger.md)の詳細を学習してください。
 
-すべての API 呼び出しでは、[OAuth](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code) を使用して認証を行う必要があります。 API は、[Microsoft REST API ガイドライン規則](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md)に従います。 コレクションを返すほとんどの API は、[OData](http://www.odata.org/getting-started/basic-tutorial/#queryData) のシステム クエリ オプションをサポートしています。
+すべての API 呼び出しでは、[OAuth](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code) を使用して認証を行う必要があります。 API は、[Microsoft REST API ガイドライン規則](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md)に従います。 コレクションを返すほとんどの API は、[OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) のシステム クエリ オプションをサポートしています。
 
 ## <a name="next-steps"></a>次の手順
 
-* デバイスの接続と、Digital Twins にテレメトリ メッセージを送信する方法については、[Azure Digital Twins のデバイスの接続性とテレメトリの受信](concepts-device-ingress.md)に関するページを参照してください。
+- デバイスの接続と、Digital Twins にテレメトリ メッセージを送信する方法については、[Azure Digital Twins のデバイスの接続性とテレメトリの受信](concepts-device-ingress.md)に関するページを参照してください。
 
-* Management API の制限と調整については、[Azure Digital Twins API の管理と制限](concepts-service-limits.md)に関するページをご覧ください。
+- Management API の制限と調整については、[Azure Digital Twins API の管理と制限](concepts-service-limits.md)に関するページをご覧ください。
 
 <!-- Images -->
 [1]: media/concepts/digital-twins-spatial-graph-building.png

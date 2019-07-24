@@ -1,36 +1,32 @@
 ---
-title: Azure Machine Learning でカスタム R モジュールを作成する | Microsoft Docs
-description: Azure Machine Learning における作成者カスタム R モジュールのクイック スタート。
+title: カスタム R モジュールを定義する
+titleSuffix: Azure Machine Learning Studio
+description: このトピックでは、Azure Machine Learning Studio でカスタム R モジュールを作成し、デプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。
 services: machine-learning
-documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
-editor: cgronlun
-ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
 ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
+ms.subservice: studio
+ms.topic: conceptual
+author: xiaoharper
+ms.author: amlstudiodocs
+ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 1a578e8cc05b42d05a8dfb31c0baeefb4822e3e5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0dec86eff9b9df70514be6f32f3aad60bfb311ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261112"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120382"
 ---
-# <a name="author-custom-r-modules-in-azure-machine-learning"></a>Azure Machine Learning でカスタム R モジュールを作成する
-このトピックでは、Azure Machine Learning でカスタム R モジュールを作成し、デプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。 また、モジュールを定義するファイルを作成する方法と、Machine Learning ワークスペースにデプロイするためにモジュールを登録する方法も示します。 カスタム モジュールの定義で使用する要素および属性についてさらに詳しく説明します。 補助機能と補助ファイルおよび複数の出力を使用する方法についても説明します。 
+# <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio 用にカスタム R モジュールを定義する
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+このトピックでは、Azure Machine Learning Studio でカスタム R モジュールを作成し、デプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。 また、モジュールを定義するファイルを作成する方法と、Machine Learning ワークスペースにデプロイするためにモジュールを登録する方法も示します。 カスタム モジュールの定義で使用する要素および属性についてさらに詳しく説明します。 補助機能と補助ファイルおよび複数の出力を使用する方法についても説明します。 
+
+
 
 ## <a name="what-is-a-custom-r-module"></a>カスタム R モジュールとは
-**カスタム モジュール** とは、ユーザーのワークスペースにアップロードし、Azure Machine Learning の実験の一部として実行できるユーザー定義モジュールです。 **カスタム R モジュール** とは、ユーザー定義の R 関数を実行するカスタム モジュールです。 **R** とは、アルゴリズムを実装するために統計学者やデータ科学者によって広く使用されている統計コンピューティングおよびグラフィックス用のプログラミング言語です。 現在、カスタム モジュールでサポートされている言語は R だけですが、今後のリリースで他の言語のサポートが追加される予定です。
+**カスタム モジュール**とは、ユーザーのワークスペースにアップロードして Azure Machine Learning Studio の実験の一部として実行できるユーザー定義モジュールです。 **カスタム R モジュール** とは、ユーザー定義の R 関数を実行するカスタム モジュールです。 **R** とは、アルゴリズムを実装するために統計学者やデータ科学者によって広く使用されている統計コンピューティングおよびグラフィックス用のプログラミング言語です。 現在、カスタム モジュールでサポートされている言語は R だけですが、今後のリリースで他の言語のサポートが追加される予定です。
 
-カスタム モジュールには、他のモジュールと同様に使用できるという意味で、Azure Machine Learning の **ファースト クラス ステータス** があります。 これは、公開された実験や視覚化に含まれる他のモジュールとともに実行できます。 制御できるのは、モジュールによって実装されたアルゴリズム、使用される入出力ポート、モデリング パラメーターなど、さまざまな実行時の動作です。 また、カスタム モジュールが含まれる実験を Azure AI Gallery に公開して簡単に共有することもできます。
+カスタム モジュールには、他のモジュールと同様に使用できるという意味で、Azure Machine Learning Studio では**ファースト クラスのステータス**になります。 これは、公開された実験や視覚化に含まれる他のモジュールとともに実行できます。 制御できるのは、モジュールによって実装されたアルゴリズム、使用される入出力ポート、モデリング パラメーターなど、さまざまな実行時の動作です。 また、カスタム モジュールが含まれる実験を Azure AI Gallery に公開して簡単に共有することもできます。
 
 ## <a name="files-in-a-custom-r-module"></a>カスタム R モジュールのファイル
 カスタム R モジュールは、少なくとも以下の 2 つのファイルが含まれる .zip ファイルによって定義されます。
@@ -59,7 +55,7 @@ ms.locfileid: "51261112"
     } 
 
 ### <a name="the-xml-definition-file"></a>XML 定義ファイル
-この `CustomAddRows` 関数を Azure Machine Learning モジュールとして公開するには、XML 定義ファイルを作成して **Custom Add Rows** モジュールの表示と動作を指定する必要があります。 
+この `CustomAddRows` 関数を Azure Machine Learning Studio モジュールとして公開するには、XML 定義ファイルを作成して **Custom Add Rows** モジュールの表示と動作を指定する必要があります。 
 
     <!-- Defined a module using an R Script -->
     <Module name="Custom Add Rows">
@@ -94,7 +90,7 @@ ms.locfileid: "51261112"
     </Module>
 
 
-XML ファイル内の **Input** 要素と **Arg** 要素の **id** 属性の値が、CustomAddRows.R ファイルの R コードの関数パラメーター名 (この例では、*dataset1*、*dataset2*、および *swap*) と正確に一致する必要があることに注意します。 同様に、**Language** 要素の **entryPoint** 属性の値が、R スクリプトの関数名 (この例では *CustomAddRows*) と正確に一致する必要があります。 
+XML ファイル内の **Input** 要素と **Arg** 要素の **id** 属性の値が、CustomAddRows.R ファイルの R コードの関数パラメーター名 (この例では、*dataset1*、*dataset2*、および *swap*) と正確に一致する必要があることに注意します。 同様に、**Language** 要素の **entryPoint** 属性の値が、R スクリプトの関数名と "完全に" 一致する必要があります (この例では *CustomAddRows*)。 
 
 これに対して、**Output** 要素の **id** 属性は、R スクリプトのどの変数にも対応していません。 複数の出力が必要な場合は、XML ファイルで *Outputs* 要素が宣言されている順序と " **同じ順序** " で結果が配置されたリストを R 関数から返します。
 
@@ -109,7 +105,7 @@ XML ファイル内の **Input** 要素と **Arg** 要素の **id** 属性の値
 
 ## <a name="elements-in-the-xml-definition-file"></a>引数
 ### <a name="module-elements"></a>Module 要素
-**Module** 要素は、XML ファイルでカスタム モジュールを定義する際に使用します。 1 つの XML ファイルで複数の **Module** 要素を使用することで、複数のモジュールを定義できます。 ワークスペース内の各モジュールには、一意の名前が必要です。 既存のカスタム モジュールと同じ名前でカスタム モジュールを登録すると、既存のモジュールが新しいモジュールに置き換えられます。 ただし、既存の Azure Machine Learning モジュールと同じ名前でカスタム モジュールを登録できます。 この場合、カスタム モジュールはモジュール パレットの **[カスタム]** カテゴリに表示されます。
+**Module** 要素は、XML ファイルでカスタム モジュールを定義する際に使用します。 1 つの XML ファイルで複数の **Module** 要素を使用することで、複数のモジュールを定義できます。 ワークスペース内の各モジュールには、一意の名前が必要です。 既存のカスタム モジュールと同じ名前でカスタム モジュールを登録すると、既存のモジュールが新しいモジュールに置き換えられます。 ただし、既存の Azure Machine Learning Studio モジュールと同じ名前でカスタム モジュールを登録できます。 この場合、カスタム モジュールはモジュール パレットの **[カスタム]** カテゴリに表示されます。
 
     <Module name="Custom Add Rows" isDeterministic="false"> 
         <Owner>Microsoft Corporation</Owner>
@@ -148,7 +144,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 ### <a name="input-elements"></a>Input 要素
 入力ポートを使用すると、R 関数とワークスペースにデータを渡すことができます。 入力ポートでサポートされている **データ型** は次のとおりです。 
 
-**DataTable** : この型は、data.frame として R 関数に渡されます。 実際には、Machine Learning でサポートされている型および **DataTable** と互換性のある型 (CSV ファイルや ARFF ファイルなど) が data.frame に自動的に変換されます。 
+**DataTable:** この型は、data.frame として R 関数に渡されます。 実際には、Machine Learning でサポートされている型および **DataTable** と互換性のある型 (CSV ファイルや ARFF ファイルなど) が data.frame に自動的に変換されます。 
 
         <Input id="dataset1" name="Input 1" type="DataTable" isOptional="false">
             <Description>Input Dataset 1</Description>
@@ -157,7 +153,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 各 **DataTable** 入力ポートに関連付けられた **id** 属性には一意の値が必要です。この値は、R 関数の対応する名前付きパラメーターと一致する必要があります。
 実験で入力として渡されないオプションの **DataTable** ポートは、R 関数に渡される値として **NULL** を使用します。入力が接続されていない場合、オプションの Zip ポートは無視されます。 **DataTable** 型と **Zip** 型 のどちらについても、**IsOptional** 属性は省略可能です。この属性は、既定で *false* に設定されます。
 
-**Zip** : カスタム モジュールは、zip ファイルを入力として受け取ることができます。 この入力は、関数の R 作業ディレクトリにアンパックされます。
+**Zip:** カスタム モジュールでは、zip ファイルを入力として受け取ることができます。 この入力は、関数の R 作業ディレクトリにアンパックされます。
 
         <Input id="zippedData" name="Zip Input" type="Zip" IsOptional="false">
             <Description>Zip files to be extracted to the R working directory.</Description>
@@ -175,7 +171,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 * **Input** 要素の **IsOptional** 属性の値は省略可能です (指定されていない場合、既定で *false* に設定されます)。ただし、この値を指定する場合は、*true* または *false* を指定する必要があります。
 
 ### <a name="output-elements"></a>Output 要素
-**標準出力ポート**: 出力ポートはR 関数の戻り値にマップされ、後続のモジュールで使用できます。 現在サポートされている標準出力ポートの型は *DataTable* だけです  (*Learners* と *Transforms* がサポートされる予定です)。*DataTable* 出力は、次のように定義します。
+**標準出力ポート:** 出力ポートは R 関数の戻り値にマップされ、後続のモジュールで使用できます。 現在サポートされている標準出力ポートの型は *DataTable* だけです  (*Learners* と *Transforms* がサポートされる予定です)。*DataTable* 出力は、次のように定義します。
 
     <Output id="dataset" name="Dataset" type="DataTable">
         <Description>Combined dataset</Description>
@@ -213,7 +209,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
     return (list(dataset, dataset1, dataset2)) 
     } 
 
-**視覚化出力** : R グラフィックス デバイスからの出力とコンソール出力を表示する *Visualization*型の出力ポートを指定することもできます。 このポートは R 関数の出力には含まれず、他の出力ポートの型の順序に干渉しません。 カスタム モジュールに視覚化ポートを追加するには、**type** 属性の値として *Visualization* を指定した **Output** 要素を追加します。
+**視覚化出力:** R グラフィックス デバイスからの出力とコンソール出力を表示する *Visualization* 型の出力ポートを指定することもできます。 このポートは R 関数の出力には含まれず、他の出力ポートの型の順序に干渉しません。 カスタム モジュールに視覚化ポートを追加するには、**type** 属性の値として *Visualization* を指定した **Output** 要素を追加します。
 
     <Output id="deviceOutput" name="View Port" type="Visualization">
       <Description>View the R console graphics device output.</Description>
@@ -334,7 +330,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
   * **default** - 既定のプロパティの値は、**Item** 要素のいずれかの id 値と一致する必要があります。
 
 ### <a name="auxiliary-files"></a>補助ファイル
-カスタム モジュールの ZIP ファイル内に配置されたファイルはすべて、実行時に使用できるようなります。 ディレクトリ構造がある場合は保持されます。 つまり、ファイル ソーシングはローカルでの実行と Azure Machine Learning での実行で同じように機能します。 
+カスタム モジュールの ZIP ファイル内に配置されたファイルはすべて、実行時に使用できるようなります。 ディレクトリ構造がある場合は保持されます。 つまり、ファイル ソーシングはローカルでの実行と Azure Machine Learning Studio での実行で同じように機能します。 
 
 > [!NOTE]
 > すべてのファイルが "src" ディレクトリに展開されることに注意してください。これにより、すべてのパスに "src/" プレフィックスが含まれます。
@@ -370,6 +366,6 @@ R スクリプトの実行環境では、 **Execute R Script** モジュール�
 
 **実行環境の制限事項** は次のとおりです。
 
-* 非永続的なファイル システム: カスタム モジュールの実行時に書き込まれるファイルは、同じモジュールの複数の実行間で保持されません。
+* 非永続的なファイル システム:カスタム モジュールの実行時に書き込まれるファイルは、同じモジュールの複数の実行間で保持されません。
 * ネットワーク アクセスはありません。
 

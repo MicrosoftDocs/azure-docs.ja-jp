@@ -1,35 +1,37 @@
 ---
-title: 'チュートリアル: QnA Maker ポータルでナレッジ ベースを作成、発行し、ナレッジ ベースから回答する'
+title: QnA Maker での作成、発行、回答
 titleSuffix: Azure Cognitive Services
-description: このポータルベースのチュートリアルでは、プログラムでナレッジ ベースを作成して発行した後、そのナレッジ ベースから質問に回答する手順について説明します。
+description: 公開されている Web ベースの FAQ の質問と回答を使用して、新しいナレッジ ベースを作成します。 ナレッジ ベースを保存、トレーニング、および発行します。 ナレッジ ベースの発行後、質問を送信し、CURL コマンドを使用して回答を受信します。 次に、ボットを作成し、同じ質問でボットをテストします。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 10/29/2018
+ms.date: 04/08/2019
 ms.author: diberry
-ms.openlocfilehash: 08f708f740b90f27af5443b46c5d03bef688bd45
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 299dd61055503f0b5a11cbe97e137e4760edadda
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221605"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266955"
 ---
-# <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>チュートリアル: QnA Maker ポータルでナレッジ ベースを作成して質問に回答する
+# <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>チュートリアル:QnA Maker ポータルでナレッジ ベースを作成する
 
-このチュートリアルでは、ナレッジ ベースを作成して発行した後、そのナレッジ ベースから質問に回答する手順について説明します。
+公開されている Web ベースの FAQ の質問と回答を使用して、新しいナレッジ ベースを作成します。 ナレッジ ベースを保存、トレーニング、および発行します。 ナレッジ ベースの発行後、質問を送信し、Curl コマンドを使用して回答を受信します。 次に、ボットを作成し、同じ質問でボットをテストします。 
 
 このチュートリアルでは、以下の内容を学習します。 
 
 > [!div class="checklist"]
-* QnA Maker ポータルでナレッジ ベースを作成する
-* ナレッジ ベースを確認、保存、トレーニングする
-* ナレッジ ベースの公開
-* Curl を使用してナレッジ ベースを照会する
-
-> [!NOTE] 
+> * QnA Maker ポータルでナレッジ ベースを作成する
+> * ナレッジ ベースを確認、保存、トレーニングする
+> * ナレッジ ベースの公開
+> * Curl を使用してナレッジ ベースを照会する
+> * ボットの作成
+> 
+> [!NOTE]
 > このチュートリアルのプログラムによるバージョンは、[**Azure-Samples/cognitive-services-qnamaker-csharp** GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base)にある完全なソリューションで提供されています。
 
 ## <a name="prerequisites"></a>前提条件
@@ -65,7 +67,7 @@ ms.locfileid: "50221605"
     |設定名|設定値|目的|
     |--|--|--|
     |URL|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |その URL にある FAQ のコンテンツは、質問の後に回答が続く形式になっています。 QnA Maker は、この形式を解釈して、質問とそれに関連付けられた回答を抽出することができます。|
-    |ファイル |"_このチュートリアルでは使用しません_"|これにより、質問と回答に関するファイルがアップロードされます。 |
+    |ファイル |_このチュートリアルでは使用しません_|これにより、質問と回答に関するファイルがアップロードされます。 |
     |[Chit-chat]\(おしゃべり\) の性格|The friend (フレンド)|これにより、一般的な質問と回答には親しみやすくカジュアルな性格が指定されます。 これらの質問と回答は後で編集することができます。 |
 
     ![ナレッジ ベースの作成プロセスの手順 4](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
@@ -82,9 +84,9 @@ ms.locfileid: "50221605"
 
 1. 表の下部で、質問と回答の最後のページを選択します。 このページには、おしゃべりの性格からの質問と回答が表示されます。 
 
-1. 質問と回答の一覧の上にあるツール バーで、歯車を選択します。 これにより、質問と回答ごとにフィルターが表示されます。 おしゃべりの質問には、**editorial: chit-chat** フィルターが既に設定されています。 このフィルターは、選択した回答と共にクライアント アプリケーションに返されます。 チャット ボットなどのクライアント アプリケーションでは、このフィルターを使用して、追加の処理やユーザーとの対話を判断することができます。
+1. 質問と回答の一覧の上にあるツール バーで、メタデータ アイコンを選択します。 これにより、各質問と回答のメタデータ タグが表示されます。 おしゃべりの質問には、**editorial: chit-chat** メタデータが既に設定されています。 このメタデータは、選択した回答と共にクライアント アプリケーションに返されます。 チャット ボットなどのクライアント アプリケーションでは、このフィルターされたメタデータを使用して、追加の処理やユーザーとの対話を判断することができます。
 
-    ![フィルターの表示](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
+    ![メタデータ タグの表示](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
 
 1. 上部のメニュー バーにある **[Save and train]\(保存してトレーニング\)** を選択します。
 
@@ -92,23 +94,25 @@ ms.locfileid: "50221605"
 
 上部のメニューで **[Publish]\(発行\)** ボタンを選択します。 発行ページが表示されたら、**[キャンセル]** ボタンの横にある **[Publish]\(発行\)** を選択します。
 
-![[発行]](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-1.png)
+![発行](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-1.png)
 
 KB が発行されると、エンドポイントが表示されます。
 
-![[発行]](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-2.png)
+![[発行] ページのエンドポイントの設定](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-2.png)
 
-## <a name="use-curl-to-query-for-an-faq-answer"></a>curl を使用して FAQ の回答を照会する
+この **[発行]** ページを閉じないでください。このチュートリアルの後の方でボットを作成するために使用します。 
+
+## <a name="use-curl-to-query-for-an-faq-answer"></a>Curl を使用して FAQ の回答を照会する
 
 1. **[Curl]** タブを選択します。 
 
     ![Curl コマンド](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-3-curl.png)
 
-1. **[Curl]** タブのテキストをコピーし、Curl 対応のターミナルまたはコマンド ラインで実行します。 Authorization ヘッダーの値には、末尾にスペースが追加されたテキスト「`Endpoint `」の後にキーが含まれています。
+1. **[Curl]** タブのテキストをコピーし、Curl 対応のターミナルまたはコマンド ラインで実行します。 Authorization ヘッダーの値には、末尾にスペースが追加されたテキスト「`Endpoint`」の後にキーが含まれています。
 
 1. `<Your question>` を `How large can my KB be?` で置き換え これは、`How large a knowledge base can I create?` という質問に近いですが、まったく同じではありません。 QnA Maker によって自然言語処理が適用され、2 つの質問は同じであると判断されます。     
 
-1. CURL コマンドを実行し、スコアと回答を含む JSON 応答を受け取ります。 
+1. Curl コマンドを実行し、スコアと回答を含む JSON 応答を受け取ります。 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -132,11 +136,11 @@ KB が発行されると、エンドポイントが表示されます。
 
     QnA Maker は、42.81% というスコアによりある程度信頼できます。  
 
-## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>curl を使用しておしゃべりの回答を照会する
+## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Curl を使用しておしゃべりの回答を照会する
 
 1. Curl 対応のターミナルで、`How large can my KB be?` を、ユーザーからのボットの会話を終了する文言 (`Thank you` など) に置き換えます。   
 
-1. CURL コマンドを実行し、スコアと回答を含む JSON 応答を受け取ります。 
+1. Curl コマンドを実行し、スコアと回答を含む JSON 応答を受け取ります。 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -170,15 +174,15 @@ KB が発行されると、エンドポイントが表示されます。
    
     ```
 
-    `Thank you` という質問はおしゃべりの質問に完全に一致したため、QnA Maker は 100 というスコアにより完全に信頼できます。 また、QnA Maker からは、関連するすべての質問のほか、おしゃべりのフィルター情報を含むメタデータも返されました。  
+    `Thank you` という質問はおしゃべりの質問に完全に一致したため、QnA Maker は 100 というスコアにより完全に信頼できます。 また、QnA Maker からは、関連するすべての質問のほか、おしゃべりのメタデータ タグ情報を含むメタデータも返されました。  
 
-## <a name="use-curl-to-query-for-the-default-answer"></a>curl を使用して既定の回答を照会する
+## <a name="use-curl-to-query-for-the-default-answer"></a>Curl を使用して既定の回答を照会する
 
 QnA Maker が回答に確証がない質問では、既定の回答を受け取ります。 この回答は、Azure portal で構成されています。 
 
 1. Curl 対応のターミナルで、`Thank you` を `x` に置き換えます。 
 
-1. CURL コマンドを実行し、スコアと回答を含む JSON 応答を受け取ります。 
+1. Curl コマンドを実行し、スコアと回答を含む JSON 応答を受け取ります。 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -196,15 +200,25 @@ QnA Maker が回答に確証がない質問では、既定の回答を受け取�
     }
     ```
     
-    QnA Maker からは、信頼できないことを意味するスコア 0 が返されましたが、既定の回答も返されました。 
+    QnA Maker からは、信頼できないことを意味するスコア `0` が返されましたが、既定の回答も返されました。 
+
+## <a name="create-a-knowledge-base-bot"></a>ナレッジ ベース ボットを作成する
+
+詳細については、[このナレッジ ベースを使用したチャット ボットの作成](create-qna-bot.md)に関するページを参照してください。
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+ナレッジ ベース ボットの使用を終了したら、リソース グループ `my-tutorial-rg` を削除して、ボット プロセスで作成されたすべての Azure リソースを削除します。
+
+ナレッジ ベースの使用を終了したら、QnA Maker ポータルで **[My knowledge bases]\(マイ ナレッジ ベース\)** を選択し、ナレッジ ベース **My Tutorial kb** を選択してから、その行の右端にある削除アイコンを選択します。  
 
 ## <a name="next-steps"></a>次の手順
 
-サポート ファイルの形式の詳細については、[サポートされるデータ ソース](../Concepts/data-sources-supported.md)に関するページを参照してください。 
+サポート ファイルの形式の詳細については、[サポートされているデータ ソース](../Concepts/data-sources-supported.md)に関するページを参照してください。 
 
 おしゃべりの[性格](../Concepts/best-practices.md#chit-chat)の詳細を確認してください。
 
 既定の回答の詳細については、「[一致が見つからない](../Concepts/confidence-score.md#no-match-found)」を参照してください。 
 
 > [!div class="nextstepaction"]
-> [ナレッジ ベースの概念](../Concepts/knowledge-base.md)
+> [このナレッジ ベースを使用してチャット ボットを作成する](create-qna-bot.md)

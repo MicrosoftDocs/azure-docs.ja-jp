@@ -5,7 +5,7 @@ items:
   items:
   - name: 概要
     href: apache-storm-overview.md
-  - name: コンポーネントのバージョン管理
+  - name: HDInsight の Apache Hadoop コンポーネント
     href: ../hdinsight-component-versioning.md
     maintainContext: true
   - name: HDInsight 4.0
@@ -42,11 +42,11 @@ items:
     - name: Apache Kafka と Apache Storm (Java)
       href: ../hdinsight-apache-storm-with-kafka.md
       maintainContext: true
-    - name: イベント ハブ、Storage、Data Lake Store (Java)
+    - name: イベント ハブ、Storage、Data Lake Storage (Java)
       href: https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/
     - name: Event Hubs と Apache Storm (C# および Java)
       href: apache-storm-develop-csharp-event-hub-topology.md
-    - name: Azure Storage/Data Lake Store (Java)
+    - name: Azure Storage/Data Lake Storage (Java)
       href: apache-storm-write-data-lake-store.md
     - name: Event Hubs、Apache HBase (Java)
       href: apache-storm-sensor-data-analysis.md
@@ -61,9 +61,6 @@ items:
     - name: スクリプト アクションを開発する
       href: ../hdinsight-hadoop-script-actions-linux.md
       maintainContext: true
-    - name: Mono のインストールまたは更新
-      href: ../hdinsight-hadoop-install-mono.md
-      maintainContext: true
     - name: HDInsight アプリケーションの構築
       items:
       - name: カスタム アプリをインストールする
@@ -73,21 +70,6 @@ items:
         href: https://msdn.microsoft.com/library/mt706515.aspx
       - name: HDInsight アプリを Azure Marketplace に発行する
         href: ../hdinsight-apps-publish-applications.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - Cask Data Application Platform (CDAP)
-        href: ../hdinsight-apps-install-cask.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - Dataiku
-        href: ../hdinsight-apps-install-dataiku.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - Datameer
-        href: ../hdinsight-apps-install-datameer.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - H2O
-        href: ../hdinsight-apps-install-h2o.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - Streamsets
-        href: ../hdinsight-apps-install-streamsets.md
         maintainContext: true
   - name: セキュリティ保護
     items:
@@ -102,34 +84,46 @@ items:
       maintainContext: true
   - name: 管理
     items:
-    - name: Linux クラスターを作成する
+    - name: HDInsight クラスターの作成
       href: ../hdinsight-hadoop-provision-linux-clusters.md
       items:
+      - name: Azure ポータルの使用
+        href: ../hdinsight-hadoop-create-linux-clusters-portal.md
+        maintainContext: true
+      - name: Azure リソース マネージャー テンプレートの使用
+        displayName: resource manager template, arm template, resource manager group
+        href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
+        maintainContext: true
+      - name: .NET 用 SDK の使用
+        href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#create-a-cluster
+      - name: Python 用 SDK の使用
+        href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python#create-a-cluster
+      - name: Java 用 SDK の使用
+        href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable#create-a-cluster
       - name: Azure PowerShell の使用
         href: ../hdinsight-hadoop-create-linux-clusters-azure-powershell.md
         maintainContext: true
       - name: cURL とAzure REST API を使用する
         href: ../hdinsight-hadoop-create-linux-clusters-curl-rest.md
         maintainContext: true
-      - name: .NET SDK を使用する
-        href: ../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
-        maintainContext: true
       - name: Azure クラシック CLI を使用する
         href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
         maintainContext: true
-      - name: Azure ポータルの使用
-        href: ../hdinsight-hadoop-create-linux-clusters-portal.md
-        maintainContext: true
-      - name: Azure リソース マネージャー テンプレートの使用
-        href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
+      - name: オンデマンド クラスターの作成
+        href: ../hdinsight-hadoop-create-linux-clusters-adf.md
         maintainContext: true
       maintainContext: true
-    - name: Apache Hadoop クラスターの管理
+    - name: HDInsight クラスターの管理
       href: ../hdinsight-administer-use-portal-linux.md
       items:
-      - name: .NET SDK の使用
-        href: ../hdinsight-administer-use-dotnet-sdk.md
-        maintainContext: true
+      - name: .NET 用 SDK の使用
+        href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#management
+      - name: Python 用 SDK の使用
+        href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python
+      - name: Java 用 SDK の使用
+        href: https://docs.microsoft.com/java/api/overview/azure/hdinsight
+      - name: Go 用 SDK の使用 (プレビュー)
+        href: https://docs.microsoft.com/azure/hdinsight/hdinsight-go-sdk-overview
       - name: Azure PowerShell の使用
         href: ../hdinsight-administer-use-powershell.md
         maintainContext: true
@@ -156,7 +150,7 @@ items:
     - name: Apache Hadoop ジョブのデータのアップロード
       href: ../hdinsight-upload-data.md
       maintainContext: true
-    - name: 複数の HDInsight クラスターと Data Lake Store
+    - name: 複数の HDInsight クラスターと Data Lake Storage
       href: ../hdinsight-multiple-clusters-data-lake-store.md
       maintainContext: true
     - name: Apache Sqoop を使用したデータのインポートとエクスポート
@@ -168,7 +162,7 @@ items:
       - name: cURL を使用して実行する
         href: ../hdinsight-hadoop-use-sqoop-curl.md
         maintainContext: true
-      - name: .NET SDK を使用して実行する
+      - name: .NET 用 SDK を使用して実行する
         href: ../hdinsight-hadoop-use-sqoop-dotnet-sdk.md
         maintainContext: true
       - name: Azure PowerShell を使用して実行する
@@ -178,16 +172,13 @@ items:
     - name: ワークフローに Apache Oozie を使用する
       href: ../hdinsight-use-oozie-linux-mac.md
       maintainContext: true
-    - name: 時間ベースの Apache Oozie コーディネーターを使用する
-      href: ../hdinsight-use-oozie-coordinator-time.md
-      maintainContext: true
     - name: クラスターとサービスのポートと URI
       href: ../hdinsight-hadoop-port-settings-for-services.md
       maintainContext: true
     - name: Resource Manager 開発ツールに移行する
       href: ../hdinsight-hadoop-development-using-azure-resource-manager.md
       maintainContext: true
-    - name: '高可用性と信頼性 '
+    - name: 高可用性と信頼性
       href: ../hdinsight-high-availability-linux.md
       maintainContext: true
     - name: HDInsight クラスターを新しいバージョンにアップグレードする
@@ -238,12 +229,12 @@ items:
     - name: HDInsight とオンプレミス ネットワークの接続
       href: ../connect-on-premises-network.md
       maintainContext: true
-  - name: Log Analytics を使用した監視
+  - name: Azure Monitor ログを使用した監視
     items:
-    - name: Azure Log Analytics の使用
+    - name: Azure Monitor ログの使用
       href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
       maintainContext: true
-    - name: Log Analytics でのクエリの使用
+    - name: Azure Monitor ログでのクエリの使用
       href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
       maintainContext: true
     - name: クラスター パフォーマンスの監視
@@ -254,23 +245,24 @@ items:
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=hdinsight
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.hdinsight
-  - name: .NET SDK
+    href: /powershell/module/az.hdinsight
+  - name: .NET 用 SDK
     href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet
-  - name: Python SDK
+  - name: Python 用 SDK
     href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python
-  - name: Java SDK
-    href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
-  - name: Go SDK
+  - name: Java 用 SDK
+    href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable
+  - name: Go 用 SDK
     href: ../hdinsight-go-sdk-overview.md
   - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
-  - name: .NET (Avro)
-    href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
-  - name: REST ()
+  - name: REST
     href: /rest/api/hdinsight/
   - name: REST (Apache Spark)
     href: /rest/api/hdinsightspark/
+  - name: Resource Manager テンプレート
+    displayName: resource manager template, arm template, resource manager group
+    href: /azure/templates/microsoft.hdinsight/allversions
 - name: 関連項目
   items:
   - name: Windows クラスター
@@ -281,44 +273,26 @@ items:
     - name: .NET ソリューションを Linux クラスターに移行する
       href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
       maintainContext: true
-    - name: Apache Storm トポロジをデプロイおよび管理する
-      href: apache-storm-deploy-monitor-topology.md
-    - name: Apache Maven を使用して Java アプリケーションを構築する
-      href: ../hdinsight-hbase-build-java-maven.md
-      maintainContext: true
-    - name: スクリプト アクションを使用してカスタマイズする
-      href: ../hdinsight-hadoop-customize-cluster.md
-      maintainContext: true
-    - name: Apache Hadoop YARN アプリケーション ログにアクセスする
-      href: ../hdinsight-hadoop-access-yarn-app-logs.md
-      maintainContext: true
-    - name: スクリプト アクションを開発する
-      href: ../hdinsight-hadoop-script-actions.md
-      maintainContext: true
-    - name: Azure Portal でクラスターを管理する
-      href: ../hdinsight-administer-use-management-portal.md
-      maintainContext: true
-    - name: Apache Ambari API を使用してクラスターを監視する
-      href: ../hdinsight-monitor-use-ambari-api.md
-      maintainContext: true
 - name: リソース
   items:
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
   - name: フォーラムで質問する
-    href: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight
+    href: https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight
   - name: ラーニング パス
     href: https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/
   - name: ビッグ データに関する Microsoft プロフェッショナル プログラム
-    href: https://academy.microsoft.com/en-us/professional-program/big-data/
+    href: https://academy.microsoft.com/en-us/professional-program/tracks/big-data/
   - name: 料金計算ツール
     href: https://azure.microsoft.com/pricing/calculator/
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 2d3a2999c69833f759cbaab0241136609e068bf2
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+  - name: クラスター構成へのアクセスの変更
+    href: ../hdinsight-migrate-granular-access-cluster-configurations.md
+ms.openlocfilehash: 760f7c94a101d7c4a8374d3a0b256da3af35bd8b
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496241"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607513"

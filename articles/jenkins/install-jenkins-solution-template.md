@@ -3,17 +3,17 @@ title: Azure に Jenkins サーバーを作成する
 description: Jenkins ソリューション テンプレートから Azure Linux 仮想マシンに Jenkins をインストールし、サンプル Java アプリケーションをビルドする方法について説明します。
 ms.service: jenkins
 keywords: Jenkins, Azure, 開発, ポータル, 仮想マシン, ソリューション テンプレート
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 6/7/2017
-ms.openlocfilehash: 92a0583ad01c4dc9263988f6ef48c95c380c9289
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 6bc0d8a1e938f2b8a97cab486d4679bfc445f6fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43086576"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004083"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Azure Portal から Azure Linux VM に Jenkins サーバーを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "43086576"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション
-* コンピューターのコマンド ラインでの SSH アクセス (Bash シェル、[PuTTY](http://www.putty.org/) など)
+* コンピューターのコマンド ラインでの SSH アクセス (Bash シェル、[PuTTY](https://www.putty.org/) など)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,7 +43,7 @@ Web ブラウザーで仮想マシンに移動します (例: http://jenkins2517
 ssh -L 127.0.0.1:8080:localhost:8080 jenkinsadmin@jenkins2517454.eastus.cloudapp.azure.com
 ```
 
-トンネルを開始した後、ローカル コンピューターで http://localhost:8080/ に移動します。 
+トンネルを開始した後、ローカル コンピューターで `http://localhost:8080/` に移動します。 
 
 Jenkins VM に SSH 接続している状態で、コマンド ラインから次のコマンドを実行して初期パスワードを取得します。
 

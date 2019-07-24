@@ -1,31 +1,33 @@
 ---
-title: Azure ExpressRoute の Microsoft ピアリング経由のサイト間 VPN を構成する | Microsoft Docs
+title: Microsoft ピアリング経由のサイト間 VPN を構成する - ExpressRoute - Azure | Microsoft Docs
 description: サイト間 VPN ゲートウェイを使用した ExpressRoute Microsoft ピアリング回線経由の Azure への IPsec/IKE 接続を構成します。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 02/25/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5fb4a4034a744b8b2b769a1cfd2d9df12ea90dde
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.custom: seodec18
+ms.openlocfilehash: f35ed65b25d469b524e7174affecb45ad7c4735c
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240913"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405872"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>ExpressRoute Microsoft ピアリング経由のサイト間 VPN を構成する
 
-この記事は、ExpressRoute プライベート接続経由の、オンプレミス ネットワークと Azure 仮想ネットワーク (VNet) の間のセキュリティで保護された暗号化接続を構成するときに役立ちます。 ExpressRoute 経由の安全なトンネルを構成することで、機密性、アンチリプレイ、信頼性、および整合性が確保されたデータ交換が可能です。
+この記事は、ExpressRoute プライベート接続経由の、オンプレミス ネットワークと Azure 仮想ネットワーク (VNet) の間のセキュリティで保護された暗号化接続を構成するときに役立ちます。 Microsoft ピアリングを使って、選択したオンプレミス ネットワークと Azure VNet の間に、サイト間 IPsec/IKE VPN トンネルを確立できます。 ExpressRoute 経由の安全なトンネルを構成することで、機密性、アンチリプレイ、信頼性、および整合性が確保されたデータ交換が可能です。
 
-## <a name="architecture"></a>アーキテクチャ
-
-Microsoft ピアリングを活用すると、選択したオンプレミス ネットワークと Azure VNet の間に、サイト間 IPsec/IKE VPN トンネルを確立できます。
-
-  >[!NOTE]
+>[!NOTE]
 >Microsoft ピアリング経由のサイト間 VPN を設定すると、VPN ゲートウェイおよび VPN エグレスに対して料金が発生します。 詳細については、「[VPN Gateway の価格](https://azure.microsoft.com/pricing/details/vpn-gateway)」を参照してください。
 >
 >
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+## <a name="architecture"></a>アーキテクチャ
+
 
   ![接続の概要](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
 
@@ -89,7 +91,7 @@ ExpressRoute 回線経由の Microsoft ピアリングを適切に作成し、�
 show ip bgp vpnv4 vrf 10 summary
 ```
 
-次の部分的な出力は、ASN 12076 (MSEE) でネイバー *.243.229.34 から 68 プレフィックスを受信したことを示しています。
+次の部分的な出力は、ASN 12076 (MSEE) でネイバー \*.243.229.34 から 68 プレフィックスを受信したことを示しています。
 
 ```
 ...
@@ -107,7 +109,7 @@ sh ip bgp vpnv4 vrf 10 neighbors X.243.229.34 received-routes
 正しいプレフィックス セットを受信していることを確認するために、クロス検証を実行できます。 次の Azure PowerShell コマンドは、サービスおよび Azure リージョンごとに Microsoft ピアリング経由で公開されたプレフィックスの一覧を出力します。
 
 ```azurepowershell-interactive
-Get-AzureRmBgpServiceCommunity
+Get-AzBgpServiceCommunity
 ```
 
 ## <a name="vpngateway"></a>3.VPN ゲートウェイと IPsec トンネルを構成する
@@ -482,7 +484,7 @@ ip route 10.2.0.229 255.255.255.255 Tunnel1
 IPsec トンネルの状態を Azure VPN ゲートウェイで確認するには、次の Powershell コマンドを使用します。
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object  ConnectionStatus,EgressBytesTransferred,IngressBytesTransferred | fl
+Get-AzVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object  ConnectionStatus,EgressBytesTransferred,IngressBytesTransferred | fl
 ```
 
 出力例:
@@ -496,7 +498,7 @@ IngressBytesTransferred : 10538211
 Azure VPN ゲートウェイ インスタンスのトンネルの状態を個別に確認するには、次の例を使用します。
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object -ExpandProperty TunnelConnectionStatus
+Get-AzVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object -ExpandProperty TunnelConnectionStatus
 ```
 
 出力例:
@@ -618,7 +620,7 @@ Success rate is 100 percent (5/5), round-trip min/avg/max = 4/5/6 ms
 Azure VPN ゲートウェイで、BGP ピアの状態を確認します。
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkGatewayBGPPeerStatus -VirtualNetworkGatewayName vpnGtw -ResourceGroupName SEA-C1-VPN-ER | ft
+Get-AzVirtualNetworkGatewayBGPPeerStatus -VirtualNetworkGatewayName vpnGtw -ResourceGroupName SEA-C1-VPN-ER | ft
 ```
 
 出力例:
@@ -634,7 +636,7 @@ Get-AzureRmVirtualNetworkGatewayBGPPeerStatus -VirtualNetworkGatewayName vpnGtw 
 オンプレミスの VPN コンセントレーターから eBGP 経由で受信したネットワーク プレフィックスの一覧を確認するには、"Origin" 属性によってフィルター処理できます。
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkGatewayLearnedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG  | Where-Object Origin -eq "EBgp" |ft
+Get-AzVirtualNetworkGatewayLearnedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG  | Where-Object Origin -eq "EBgp" |ft
 ```
 
 出力例では、ASN 65010 は、オンプレミス VPN の BGP 自律システム番号です。
@@ -649,7 +651,7 @@ AsPath LocalAddress Network      NextHop     Origin SourcePeer  Weight
 公開されたルートの一覧を表示するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkGatewayAdvertisedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG -Peer 10.2.0.228 | ft
+Get-AzVirtualNetworkGatewayAdvertisedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG -Peer 10.2.0.228 | ft
 ```
 
 出力例:

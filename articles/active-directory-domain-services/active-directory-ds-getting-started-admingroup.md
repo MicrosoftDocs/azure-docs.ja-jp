@@ -1,31 +1,31 @@
 ---
-title: 'Azure Active Directory Domain Services: 概要 | Microsoft Docs'
+title: Azure Active Directory Domain Services:はじめに | Microsoft Docs
 description: Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/23/2018
+ms.date: 11/27/2018
 ms.author: ergreenl
-ms.openlocfilehash: 0dc4019d2b3f33bfc92d73aeadadc0c64ecaab3b
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 734fb5ce641d48800cef68ea79cdb258e44ac267
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158518"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867101"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 
-
 ## <a name="task-3-configure-administrative-group"></a>タスク 3: 管理グループを構成する
+
 この構成タスクでは、Azure AD ディレクトリの管理グループを作成します。 この特別な管理グループは、 *AAD DC 管理者*と呼ばれます。 このグループのメンバーには、マネージド ドメインにドメイン参加するコンピューターへの管理権限が付与されます。 ドメインに参加しているコンピューターでは、このグループは管理者グループに追加されます。 さらに、このグループのメンバーは、リモート デスクトップを使用して、ドメインに参加しているコンピューターにリモート接続できます。
 
 > [!NOTE]
@@ -42,6 +42,22 @@ ms.locfileid: "50158518"
 
 3. 完了したら、**[OK]** をクリックしてウィザードの **[概要]** ページに移動します。
 
+## <a name="configure-synchronization"></a>同期の構成
+
+Azure AD Domain Services では、Azure AD で使用できるすべてのユーザーとグループの完全同期を実行でき、範囲指定された同期を選択して特定のグループのみを同期することもできます。 完全同期を選択すると、範囲指定された同期を後で選択することは**できなくなります**。 範囲指定された同期の詳細については、[Azure AD Domain Services の範囲指定された同期に関する記事](active-directory-ds-scoped-synchronization.md)を参照してください。
+
+### <a name="full-synchronization"></a>完全同期
+
+1. 完全同期の場合は、完全があらかじめ選択されているため、画面の下部にある [OK] をクリックするだけです。
+    ![完全同期](./media/active-directory-domain-services-admin-guide/create-sync-all.PNG)
+
+### <a name="scoped-synchronization"></a>範囲指定された同期
+
+1. 同期ボタンを "Scoped (範囲指定)" に切り替えると、グループの選択ページが表示されます。 これにより、マネージド ドメインに同期されるように既に選択されているグループがわかります。
+    ![範囲指定された同期](media/active-directory-domain-services-admin-guide/create-sync-scoped.PNG)
+2. 上部のナビゲーション バーの **[グループの選択]** をクリックします。 これにより、横にグループ ピッカーが表示されます。 これを使用して、Azure AD Domain Services と同期する追加のグループを選択します。 完了したら、**[選択]** をクリックしてグループ ピッカーを閉じて、選択した一覧にそれらのグループを追加します。
+    ![範囲指定された同期のグループの選択](media/active-directory-domain-services-admin-guide/create-sync-scoped-groupselect.PNG)
+3. **[OK]** をクリックして概要ページに移動します。
 
 ## <a name="deploy-your-managed-domain"></a>マネージド ドメインのデプロイ
 
@@ -53,8 +69,8 @@ ms.locfileid: "50158518"
 
     ![通知 - 進行中のデプロイ](./media/getting-started/domain-services-blade-deployment-in-progress.png)
 
-
 ## <a name="check-the-deployment-status-of-your-managed-domain"></a>マネージド ドメインのデプロイ ステータスの確認
+
 マネージド ドメインのプロビジョニングのプロセスは、最大で 1 時間かかることがあります。
 
 1. デプロイが進行中は、**[リソースの検索]** 検索ボックスで "Domain Services" を検索できます。 検索結果から **[Azure AD Domain Services]** を選択します。 **[Azure AD Domain Services]** ブレードには、プロビジョニング中のマネージド ドメインが一覧表示されます。
@@ -67,7 +83,7 @@ ms.locfileid: "50158518"
 
 3. **[概要]** タブは、マネージド ドメインが現在プロビジョニング中であることを示しています。 完全にプロビジョニングされるまで、マネージド ドメインを構成することはできません。 マネージド ドメインが完全にプロビジョニングされるまでに最大で 1 時間かかる場合があります。
 
-    ![Domain Services - プロビジョニング状態のときの [概要] タブ ](./media/getting-started/domain-services-provisioning-state-details.png)
+    ![Domain Services - プロビジョニング状態のときの [概要] タブ](./media/getting-started/domain-services-provisioning-state-details.png)
 
 4. マネージド ドメインが完全にプロビジョニングされると、**[概要]** タブには、ドメインの状態が **[実行中]** であることが示されます。
 
@@ -80,10 +96,10 @@ ms.locfileid: "50158518"
 
     ![Domain Services - 完全にプロビジョニングされた後の [プロパティ] タブ](./media/getting-started/domain-services-provisioned-properties.png)
 
-
 ## <a name="need-help"></a>お困りの際は、
+
 マネージド ドメインの両方のドメイン コントローラーがプロビジョニングされるまでに 1、2 時間かかる場合があります。 デプロイが失敗した場合、または 2 時間以上 "保留中" のままである場合は、[製品チームにお問い合わせください](active-directory-ds-contact-us.md)。
 
-
 ## <a name="next-step"></a>次のステップ
+
 [タスク 4: Azure 仮想ネットワークの DNS 設定を更新する](active-directory-ds-getting-started-dns.md)

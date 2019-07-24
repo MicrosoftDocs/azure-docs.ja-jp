@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: yizhon
-ms.openlocfilehash: 078f6bcd7aa48f2a63118e6dfb625d9b2c69fbb3
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 7bcc1bf6b734abe202c5fec5d515604f4bf8e4a7
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248025"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669365"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Azure IoT SDK プラットフォームのサポート
 
@@ -20,9 +20,9 @@ ms.locfileid: "48248025"
 
 Microsoft はさまざまなオペレーティング システム/プラットフォーム/フレームワークをサポートしており、Azure IoT C SDK を使用して拡張できます。 その一部はチームによって正式にサポートされており、ユーザーが受けられるサポートのレベルを表す階層別にグループ化されています。 *完全にサポートされているプラットフォーム*で Microsoft が提供するサービス:
 
-    * 継続的なビルドと、マスターおよび LTS サポートされているバージョンに対するエンド ツー エンド テストの実行。
-    * インストールのガイダンスまたはパッケージの提供 (該当する場合)。
-    * GitHub のプラットフォームの完全なサポート。
+- 継続的なビルドと、マスターおよび LTS サポートされているバージョンに対するエンド ツー エンド テストの実行。  異なるバージョン間でのテスト カバレッジを提供するために、最新の LTS バージョンと、最も一般的なバージョンに対してテストを行います。  同じプラットフォームの他のバージョンは、プラットフォームのバージョン互換性によってサポートされる場合があります。
+- インストールのガイダンスまたはパッケージの提供 (該当する場合)。
+- GitHub のプラットフォームの完全なサポート。
 
 さらに、複数のパートナーが Microsoft の C SDK をその他のプラットフォームに移植して、プラットフォーム抽象化レイヤー (PAL) を保持しています。 [Azure Certified for IoT デバイス カタログ](https://catalog.azureiotsolutions.com/)にも、さまざまな SDK がテストされた OS プラットフォームの一覧が示されています。 SDK も限定的なテストとサポートで定期的にこれらのプラットフォームでビルドします。
 
@@ -31,7 +31,6 @@ Microsoft はさまざまなオペレーティング システム/プラット�
 * Windows CE 2013 (2018 年 10 月に非推奨になります)
 * .NET Standard 1.3 と .NET Core 2.1 および .NET Framework 4.7
 * Xamarin iOS、Android、UWP
-* Java を使用した Android
 
 ## <a name="supported-platforms"></a>サポートされるプラットフォーム
 
@@ -63,7 +62,7 @@ Microsoft はさまざまなオペレーティング システム/プラット�
 
 ### <a name="net-sdk"></a>.NET SDK
 
-| OS                  | Arch | フレームワーク            | 標準          |
+| OS                  | Arch | フレームワーク            | Standard          |
 |---------------------|------|----------------------|-------------------|
 | Ubuntu 16.04 LTS    | X64  | .NET Core 2.1        | .NET Standard 2.0 |
 | Windows Server 2016 | X64  | .NET Core 2.1        | .NET Standard 2.0 |
@@ -83,6 +82,8 @@ Microsoft はさまざまなオペレーティング システム/プラット�
 |---------------------|------|--------------|
 | Ubuntu 16.04 LTS    | X64  | Java 8       |
 | Windows Server 2016 | X64  | Java 8       |
+| Android API 28 | X64  | Java 8       |
+| Android Things | X64  | Java 8      |
 
 ## <a name="partner-supported-platforms"></a>パートナーによってサポートされているプラットフォーム
 

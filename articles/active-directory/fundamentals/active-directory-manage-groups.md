@@ -1,24 +1,26 @@
 ---
-title: Azure Active Directory グループを使用したアプリとリソースのアクセス管理について | Microsoft Docs
-description: Azure Active Directory グループを使用した、組織のクラウド ベースのアプリ、オンプレミスのアプリ、およびリソースに対するアクセスの管理について説明します。
+title: グループを使用したアプリとリソース アクセスの管理 - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory グループを使用して、組織のクラウドベースのアプリ、オンプレミスのアプリ、およびリソースに対するアクセスを管理する方法について説明します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: piotrci
-ms.openlocfilehash: 69be2cb8b57b34502d5a5688ac163d7451abe48e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.custom: it-pro, seodec18
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5c2bffad4254815d2ed51d9bbc14b32a521b5537
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223974"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193868"
 ---
-# <a name="learn-about-access-management-using-azure-active-directory-groups"></a>Azure Active Directory グループを使用したアクセス管理について説明します
+# <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Azure Active Directory グループを使用したアプリとリソース アクセスの管理
 Azure Active Directory (Azure AD) は、組織のグループを使用した、クラウド ベースのアプリ、オンプレミスのアプリ、およびリソースの管理に役立ちます。 リソースは、ディレクトリ内のロールによってオブジェクトを管理するアクセス許可のように、ディレクトリの一部となっている場合と、サービスとしてのソフトウェア (SaaS) アプリ、Azure サービス、SharePoint サイト、オンプレミスのリソースのように、ディレクトリの外部リソースである場合があります。
 
 >[!NOTE]
@@ -34,7 +36,7 @@ Azure AD では、1 人のユーザーまたは Azure AD のグループ全体�
 
 - **直接割り当て。** リソース所有者は、ユーザーをリソースに直接割り当てます。
 
-- **グループの割り当て。** リソース所有者は、Azure AD グループをリソースに割り当てます。これにより、グループ メンバー全員に、リソースへのアクセスが自動的に与えられます。 グループのメンバーシップは、グループ所有者とリソース所有者の両方によって管理され、どちらの所有者も、グループに対するメンバーの追加または削除を行えるようになります。 グループ メンバーシップの追加または削除の詳細については、[Azure Active Directory ポータルを使用して別のグループからグループを追加または削除する方法](active-directory-groups-membership-azure-portal.md)に関するページを参照してください。 
+- **グループの割り当て。** リソース所有者は、Azure AD グループをリソースに割り当てます。これにより、グループ メンバー全員に、リソースへのアクセスが自動的に与えられます。 グループのメンバーシップは、グループ所有者とリソース所有者の両方によって管理され、どちらの所有者も、グループに対するメンバーの追加または削除を行えるようになります。 グループ メンバーの追加または削除に関する詳細については、[Azure Active Directory ポータルを使用して別のグループからグループを追加または削除する方法](active-directory-groups-membership-azure-portal.md)に関するページを参照してください。 
 
 - **ルール ベースの割り当て。** リソース所有者は、グループを作成し、ルールを使用して、特定のリソースにどのユーザーが割り当てられるかを定義します。 ルールは、個々のユーザーに割り当てられている属性に基づきます。 リソース所有者は、リソースへのアクセスを許可するためにはどの属性と値が必要であるかを判断し、ルールを管理します。 詳細については、「[動的グループの作成と状態チェックを行う](../users-groups-roles/groups-create-rule.md)」を参照してください。
 

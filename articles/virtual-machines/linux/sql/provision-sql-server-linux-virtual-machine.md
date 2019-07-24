@@ -2,22 +2,22 @@
 title: Azure で Linux SQL Server 2017 VM を作成する | Microsoft Docs
 description: このチュートリアルでは、Azure Portal で Linux SQL Server 2017 仮想マシンを作成する方法について説明します。
 services: virtual-machines-linux
-author: rothja
-ms.author: jroth
-manager: jhubbard
-ms.date: 05/11/2018
-ms.topic: hero-article
+author: MashaMSFT
+manager: craigg
+ms.date: 12/5/2018
+ms.topic: conceptual
 tags: azure-service-management
 ms.devlang: na
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
-ms.technology: database-engine
-ms.openlocfilehash: b86dd47c112c38bc65c045158787d19b470899a0
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 468db9d62a98e079fbe6954843e23a518eaabd0a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34071721"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011722"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal での Linux SQL Server 仮想マシンのプロビジョニング
 
@@ -25,9 +25,9 @@ ms.locfileid: "34071721"
 > * [Linux](provision-sql-server-linux-virtual-machine.md)
 > * [Windows](../../windows/sql/virtual-machines-windows-portal-sql-server-provision.md)
 
-このクイック スタート チュートリアルでは、Azure Portal を使用して、SQL Server 2017 がインストールされている Linux 仮想マシンを作成します。
+このクイック スタート チュートリアルでは、Azure portal を使用して、SQL Server 2017 がインストールされている Linux 仮想マシンを作成します。
 
-このチュートリアルでは、次のことについて説明します。
+このチュートリアルでは、以下の内容を学習します。
 
 * [ギャラリーからの Linux SQL VM の作成](#create)
 * [SSH による新しい VM への接続](#connect)
@@ -42,52 +42,69 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-1. 左側のウィンドウで、**[リソースの作成]** をクリックします。
+1. 左側のウィンドウで、**[リソースの作成]** を選びます。
 
-1. **[リソースの作成]** ウィンドウで、**[コンピューティング]** をクリックします。
+1. **[リソースの作成]** ウィンドウで、**[Compute]** を選択します。
 
-1. **[おすすめ]** 見出しの横にある **[すべて表示]** をクリックします。
+1. **[おすすめ]** 見出しの横にある **[すべて表示]** を選択します。
 
    ![VM イメージをすべて表示する](./media/provision-sql-server-linux-virtual-machine/azure-compute-blade.png)
 
 1. 検索ボックスに「**SQL Server 2017**」と入力し、**Enter** キーを押して検索を開始します。
 
-1. **[フィルター]** アイコンをクリックし、検索を **Linux ベース**の **Microsoft** のイメージに制限してから、**[完了]** をクリックします。
+1. **[オペレーティング システム]** > **[Redhat]** の順に選択して検索結果を限定します。 次に、**[公開元]** で **[Microsoft]** を選択します。
 
     ![SQL Server 2017 VM イメージの検索フィルター](./media/provision-sql-server-linux-virtual-machine/searchfilter.png)
 
-1. 検索結果から SQL Server 2017 Linux イメージを選択します。 このチュートリアルでは、**Free SQL Server License: SQL Server 2017 Developer on Red Hat Enterprise Linux 7.4** を使用します。
+1. 検索結果から SQL Server 2017 Linux イメージを選択します。 このチュートリアルでは、**Free SQL Server License:SQL Server 2017 Developer on Red Hat Enterprise Linux 7.4** を使用します。
 
    > [!TIP]
    > Developer エディションでは、Enterprise エディションの機能を使用してテストまたは開発を行うことができますが、SQL Server のライセンス コストはかかりません。 料金は、Linux VM の実行コストに対してのみ支払います。
 
-1. **Create** をクリックしてください。
+1. **[デプロイ モデルの選択]** で、ワークロードのニーズに合ったデプロイ モデルを選択します。
 
-1. **[基本]** ウィンドウで、Linux VM の詳細を入力します。 
+    > [!Note]
+    > 新しいワークロードには **Resource Manager** を使用してください。 既存の仮想ネットワークに接続するには、その仮想ネットワークにおけるワークロードのデプロイ方法を選択してください。 デプロイ モデルの詳細については、[Azure Resource Manager とクラシック デプロイ モデル](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)に関するページを参照してください。
+
+1. **作成**を選択します。
+
+### <a name="set-up-your-linux-vm"></a>Linux VM の設定
+
+1. **[基本]** タブで、**サブスクリプション**と**リソース グループ**を選択します。 
 
     ![[基本] ウィンドウ](./media/provision-sql-server-linux-virtual-machine/basics.png)
 
-    > [!Note]
-    > 認証には、SSH 公開キーまたはパスワードを使用する選択肢があります。 安全性が高いのは SSH です。 SSH キーを生成する方法の手順については、[Azure の Linux VM と Mac for Linux VM に SSH キーを作成する方法](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys)に関するページを参照してください。
+1. **[仮想マシン名]** に、新しい Linux VM の名前を入力します。
+1. 次に、以下の値を入力または選択します。
+   * **[リージョン]**:適切な Azure リージョンを選択します。
+   * **[可用性オプション]**:アプリとデータに最適な可用性と冗長性のオプションを選択します。
+   * **[サイズの変更]**:このオプションを選択してマシン サイズを選択し、完了したら **[選択]** を選択します。 VM マシン サイズの詳細については、[Linux VM のサイズ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes)に関するページを参照してください。
 
-1. Click **OK**.
-
-1. **[サイズ]** ウィンドウで、マシンのサイズを選択します。 VM マシン サイズの詳細については、[Linux VM のサイズ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes)に関するページを参照してください。
-
-    ![VM サイズを選択する](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
+     ![VM サイズを選択する](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
 
    > [!TIP]
-   > 開発と機能テストには、**DS2** 以上の VM サイズをお勧めします。 パフォーマンス テストには、**DS13** 以上を使用してください。
+   > 開発と機能テストには、**DS2** 以上の VM サイズを使用してください。 パフォーマンス テストには、**DS13** 以上を使用してください。
 
-1. **[選択]** をクリックします。
+   * **[認証の種類]**: **[SSH 公開キー]** を選択します。
 
-1. **[設定]** ウィンドウの **[Select public inbound ports]\(パブリック受信ポートの選択\)** の一覧で、**[SSH (22)]** ポートを選択します。 このクイック スタートでは、SQL Server に接続し、構成を完了するために、この操作が必要です。 リモートで SQL Server に接続する場合は、**[MS SQL (1433)]** も選択して、インターネット経由での接続用にポート 1433 を開きます。
+     > [!Note]
+     > 認証には、SSH 公開キーまたはパスワードを使用する選択肢があります。 安全性が高いのは SSH です。 SSH キーを生成する方法の手順については、[Azure の Linux VM と Mac for Linux VM に SSH キーを作成する方法](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys)に関するページを参照してください。
+
+   * **[ユーザー名]**: VM の管理者名を入力します。
+   * **[SSH 公開キー]**: RSA 公開キーを入力します。
+   * **[パブリック受信ポート]**:**[選択したポートを許可する]** を選択し、**[パブリック受信ポートを選択]** ボックスの一覧で **[SSH (22)]** ポートを選択します。 このクイック スタートでは、SQL Server に接続し、構成を完了するために、この手順が必要です。 リモートで SQL Server に接続する場合は、**[MS SQL (1433)]** も選択して、インターネット経由での接続用にポート 1433 を開きます。
 
    ![受信ポート](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
 
-1. 他の設定を変更したり、既定の設定のままにしたりすることができます。 次に、 **[OK]** をクリックします
+1. 次の追加のタブで、設定を変更するか、既定の設定をそのまま使用します。
+    * **ディスク**
+    * **ネットワーク**
+    * **管理**
+    * **ゲストの構成**
+    * **タグ**
 
-1. **[概要]** ページで **[購入]** をクリックし、VM を作成します。
+1. **[Review + create]\(レビュー + 作成\)** を選択します。
+1. **[確認および作成]** ウィンドウで、**[作成]** を選択します。
 
 ## <a id="connect"></a>Linux VM への接続
 
@@ -101,21 +118,24 @@ VM の IP アドレスは、Azure Portal で確認できます。
 
 ![Azure Portal の IP アドレス](./media/provision-sql-server-linux-virtual-machine/vmproperties.png)
 
-Windows を使用していて BASH シェルがない場合、PuTTY などの SSH クライアントをインストールできます。
+Windows を使用していて BASH シェルがない場合は PuTTY などの SSH クライアントをインストールします。
 
-1. [PuTTY をダウンロードしてインストールします](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)。
+1. [PuTTY をダウンロードしてインストールします](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)。
 
 1. PuTTY を実行します。
 
 1. PuTTY の構成画面で、VM のパブリック IP アドレスを入力します。
 
-1. [開く] をクリックし、プロンプトでユーザー名とパスワードを入力します。
+1. **[Open]\(開く\)** を選択し、プロンプトでユーザー名とパスワードを入力します。
 
-Linux VM への接続の詳細については、[ポータルを使用して Azure に Linux VM を作成する方法](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal#ssh-to-the-vm)に関するページを参照してください。
+Linux VM への接続の詳細については、[ポータルを使用して Azure に Linux VM を作成する方法](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal)に関するページを参照してください。
+
+> [!Note]
+> サーバーのホストキーがレジストリにキャッシュされていないことを示す PuTTY のセキュリティ アラートが表示された場合は、次のオプションから選択します。 このホストを信頼する場合は、**[Yes]\(はい\)** を選択して PuTTy のキャッシュにキーを追加し、接続を続行します。 キーをキャッシュに追加せずに接続を 1 回だけ実行する場合は、**[No]\(いいえ\)** を選択します。 このホストを信頼しない場合は、**[Cancel]\(キャンセル\)** を選択して接続を破棄します。
 
 ## <a id="password"></a>SA パスワードの変更
 
-新しい仮想マシンには、ランダム SA パスワードで SQL Server がインストールされます。 このパスワードは、SA ログインで SQL Server に接続する前にリセットする必要があります。
+新しい仮想マシンには、ランダム SA パスワードで SQL Server がインストールされます。 このパスワードは、SA ログインで SQL Server に接続する前にリセットしてください。
 
 1. Linux VM に接続した後、新しいコマンド ターミナルを開きます。
 
@@ -154,10 +174,8 @@ Azure VM 上の SQL Server にリモートで接続する必要がある場合�
 > プロビジョニング時に設定で受信ポート **[MS SQL (1433)]** を選択した場合、これらの変更が自動的に行われています。 ファイアウォールの構成方法に関する次のセクションに進むことができます。
 
 1. ポータルで、 **[仮想マシン]** を選び、SQL Server VM を選びます。
-
-1. プロパティの一覧で、**[ネットワーク]** を選択します。
-
-1. **[ネットワーク]** ウィンドウで、**[受信ポートの規則]** の下にある **[追加]** ボタンをクリックします。
+1. 左側のナビゲーション ウィンドウで、**[設定]** の **[ネットワーク]** を選択します。
+1. [ネットワーク] ウィンドウで、**[受信ポートの規則]** の下にある **[受信ポートを追加する]** を選択します。
 
    ![受信ポートの規則](./media/provision-sql-server-linux-virtual-machine/networking.png)
 
@@ -184,6 +202,6 @@ Azure VM 上の SQL Server にリモートで接続する必要がある場合�
 
 Azure に SQL Server 2017 仮想マシンを作成できたので、**sqlcmd** を使用してローカルで接続し、Transact-SQL クエリを実行できます。
 
-SQL Server のリモート接続用に Azure VM を構成した場合は、リモート接続も可能になります。 Windows から SQL Server on Linux にリモートで接続する方法の例については、[Windows 上の SSMS を使用した SQL Server on Linux への接続](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-ssms)に関するページを参照してください。 Visual Studio Code を使用して接続するには、「[Use Visual Studio Code to create and run Transact-SQL scripts for SQL Server (Visual Studio Code を使用して SQL Server の Transact-SQL スクリプトを作成して実行する)](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode)」を参照してください。
+SQL Server のリモート接続用に Azure VM を構成した場合は、リモート接続が可能になります。 Windows から SQL Server on Linux にリモートで接続する方法の例については、[Windows 上の SSMS を使用した SQL Server on Linux への接続](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-ssms)に関するページを参照してください。 Visual Studio Code を使用して接続するには、「[Use Visual Studio Code to create and run Transact-SQL scripts for SQL Server (Visual Studio Code を使用して SQL Server の Transact-SQL スクリプトを作成して実行する)](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode)」を参照してください。
 
 SQL Server on Linux の全般的な情報については、[SQL Server 2017 on Linux の概要](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)に関するページを参照してください。 SQL Server 2017 Linux 仮想マシンの使用の詳細については、[Azure の SQL Server 2017 仮想マシンの概要](sql-server-linux-virtual-machines-overview.md)に関するページを参照してください。

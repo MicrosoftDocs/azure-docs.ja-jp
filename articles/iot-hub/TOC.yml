@@ -1,6 +1,4 @@
 items:
-- name: Azure IoT の基礎
-  href: /azure/iot-fundamentals
 - name: IoT Hub のドキュメント
   href: index.yml
 - name: 概要
@@ -9,34 +7,68 @@ items:
     href: about-iot-hub.md
 - name: クイック スタート
   items:
-  - name: 利用統計情報の送信 (C)
-    href: quickstart-send-telemetry-c.md
-  - name: 利用統計情報の送信 (Node.js)
-    href: quickstart-send-telemetry-node.md
-  - name: 利用統計情報の送信 (.NET)
-    href: quickstart-send-telemetry-dotnet.md
-  - name: 利用統計情報の送信 (Java)
-    href: quickstart-send-telemetry-java.md
-  - name: 利用統計情報の送信 (Python)
-    href: quickstart-send-telemetry-python.md
-  - name: 利用統計情報の送信 (Android)
-    href: quickstart-send-telemetry-android.md
-  - name: 利用統計情報の送信 (iOS)
-    href: quickstart-send-telemetry-ios.md
-  - name: デバイスの制御 (Node.js)
-    href: quickstart-control-device-node.md
-  - name: デバイスの制御 (.NET)
-    href: quickstart-control-device-dotnet.md
-  - name: デバイスの制御 (Java)
-    href: quickstart-control-device-java.md
-  - name: デバイスの制御 (Python)
-    href: quickstart-control-device-python.md
-  - name: デバイスの制御 (Android)
-    href: quickstart-control-device-android.md
+  - name: テレメトリを送信する
+    items:
+    - name: C
+      href: quickstart-send-telemetry-c.md
+    - name: Node.js
+      href: quickstart-send-telemetry-node.md
+    - name: .NET
+      href: quickstart-send-telemetry-dotnet.md
+    - name: Java
+      href: quickstart-send-telemetry-java.md
+    - name: Python
+      href: quickstart-send-telemetry-python.md
+    - name: Android
+      href: quickstart-send-telemetry-android.md
+    - name: iOS
+      href: quickstart-send-telemetry-ios.md
+  - name: デバイスの制御
+    items:
+    - name: Node.js
+      href: quickstart-control-device-node.md
+    - name: .NET
+      href: quickstart-control-device-dotnet.md
+    - name: Java
+      href: quickstart-control-device-java.md
+    - name: Python
+      href: quickstart-control-device-python.md
+    - name: Android
+      href: quickstart-control-device-android.md
+  - name: デバイス ストリームを使用した通信 (プレビュー)
+    items:
+    - name: C#
+      href: quickstart-device-streams-echo-csharp.md
+    - name: Node.js
+      href: quickstart-device-streams-echo-nodejs.md
+    - name: C
+      href: quickstart-device-streams-echo-c.md
+  - name: デバイス ストリームを使用した SSH/RDP (プレビュー)
+    items:
+    - name: C#
+      href: quickstart-device-streams-proxy-csharp.md
+    - name: Node.js
+      href: quickstart-device-streams-proxy-nodejs.md
+    - name: C
+      href: quickstart-device-streams-proxy-c.md
 - name: チュートリアル
   items:
   - name: メッセージのルーティング
-    href: tutorial-routing.md
+    items:
+    - name: パート 1 - メッセージ ルーティングの構成
+      items:
+      - name: ポータル
+        href: tutorial-routing.md
+      - name: Azure RM テンプレート
+        href: tutorial-routing-config-message-routing-RM-template.md
+      - name: Azure CLI
+        href: tutorial-routing-config-message-routing-CLI.md
+      - name: PowerShell
+        href: tutorial-routing-config-message-routing-PowerShell.md
+    - name: パート 2 - メッセージのルーティング結果の表示
+      href: tutorial-routing-view-message-routing-results.md
+  - name: メトリックと診断ログの使用
+    href: tutorial-use-metrics-and-diags.md
   - name: 手動フェールオーバーの実行
     href: tutorial-manual-failover.md
   - name: デバイスの構成
@@ -63,6 +95,8 @@ items:
     href: iot-hub-configuration-best-practices.md
   - name: Azure IoT SDK プラットフォームのサポート
     href: iot-hub-device-sdk-platform-support.md
+  - name: IoT Hub デバイス ストリームの概要 (プレビュー)
+    href: iot-hub-device-streams-overview.md
   - name: 開発者ガイド
     href: iot-hub-devguide.md
     items:
@@ -150,12 +184,16 @@ items:
           href: iot-hub-device-sdk-c-iothubclient.md
         - name: シリアライザーの使用
           href: iot-hub-device-sdk-c-serializer.md
+      - name: Azure IoT C SDK のリソース情報
+        href: https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md
       - name: 制約のあるデバイス向けの開発
         href: iot-hub-devguide-develop-for-constrained-devices.md
       - name: モバイル デバイス向けの開発
         href: iot-hub-how-to-develop-for-mobile-devices.md
       - name: 接続と信頼できるメッセージングの管理
         href: iot-hub-reliability-features-in-sdks.md
+      - name: Android Things プラットフォーム向けの開発
+        href: iot-hub-how-to-android-things.md
     - name: ハブ ルートからの Avro データのクエリ
       href: iot-hub-query-avro-data.md
     - name: Event Grid からのデバイス接続状態イベントの順序付け
@@ -230,7 +268,7 @@ items:
       items:
       - name: Azure Portal の使用
         href: iot-hub-create-through-portal.md
-      - name: Azure IoT Toolkit for VS Code の使用
+      - name: VS Code 用の Azure IoT Tools の使用
         href: iot-hub-create-use-iot-toolkit.md
       - name: Azure PowerShell の使用
         href: iot-hub-create-using-powershell.md
@@ -239,6 +277,7 @@ items:
       - name: REST API の使用
         href: iot-hub-rm-rest.md
       - name: Azure PowerShell からテンプレートを使用する
+        displayName: Azure Resource Manager, ARM
         href: iot-hub-rm-template-powershell.md
       - name: .NET からテンプレートを使用する
         href: iot-hub-rm-template.md
@@ -250,28 +289,25 @@ items:
         href: iot-hub-configure-file-upload-powershell.md
       - name: Azure CLI の使用
         href: iot-hub-configure-file-upload-cli.md
-    - name: 診断を使用した監視
+    - name: Azure Monitor のメトリック
+      href: iot-hub-metrics.md
+    - name: 診断ログの設定
       href: iot-hub-monitor-resource-health.md
-      items:
-      - name: 診断設定への移行
-        href: iot-hub-migrate-to-diagnostics-settings.md
-      - name: 操作の監視
-        href: iot-hub-operations-monitoring.md
     - name: X.509 証明書によるハブのセキュリティ保護
       href: iot-hub-security-x509-get-started.md
     - name: IoT ハブのアップグレード
       href: iot-hub-upgrade.md
-    - name: 使用状況のメトリック
-      href: iot-hub-metrics.md
+    - name: メッセージのトレースを有効にする
+      href: iot-hub-distributed-tracing.md
     - name: IP フィルター処理を構成する
       href: iot-hub-ip-filtering.md
-    - name: 大規模なデバイス構成
+    - name: 大規模な自動デバイス管理
       items:
       - name: Azure Portal の使用
-        href: iot-hub-auto-device-config.md
+        href: iot-hub-automatic-device-management.md
       - name: Azure CLI の使用
-        href: iot-hub-auto-device-config-cli.md
-    - name: IoT デバイスの一括管理
+        href: iot-hub-automatic-device-management-cli.md
+    - name: IoT デバイスの一括インポートとエクスポート
       href: iot-hub-bulk-identity-mgmt.md
   - name: 実在のデバイスの使用
     items:
@@ -300,16 +336,20 @@ items:
         href: iot-hub-arduino-iot-devkit-az3166-door-monitor.md
     - name: IoT の拡張シナリオ
       items:
-      - name: Azure IoT Toolkit for VS Code を使用したクラウド デバイス メッセージングの管理
+      - name: VS Code 用の Azure IoT Tools を使用したクラウド デバイス メッセージングの管理
         href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
+      - name: Cloud Explorer for Visual Studio を使用したクラウド デバイス メッセージングの管理
+        href: iot-hub-visual-studio-cloud-device-messaging.md
       - name: Power BI でのデータ視覚化
         href: iot-hub-live-data-visualization-in-power-bi.md
       - name: Web Apps でのデータ視覚化
         href: iot-hub-live-data-visualization-in-web-apps.md
       - name: Azure Machine Learning を使用した天気予報
         href: iot-hub-weather-forecast-machine-learning.md
-      - name: Azure IoT Toolkit for VS Code を使用したデバイス管理
+      - name: VS Code 用の Azure IoT Tools を使用したデバイス管理
         href: iot-hub-device-management-iot-toolkit.md
+      - name: Cloud Explorer for Visual Studio を使用したデバイス管理
+        href: iot-hub-device-management-visual-studio.md
       - name: Azure CLI の IoT 拡張機能を使用したデバイス管理
         href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
       - name: Logic Apps を使用したリモートの監視と通知
@@ -346,6 +386,14 @@ items:
     href: https://docs.microsoft.com/rest/api/iothub/iothubresource
   - name: REST (証明書)
     href: https://docs.microsoft.com/rest/api/iothub/certificates
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.devices/iothub-allversions
+  - name: 機能と API の廃止
+    items:
+    - name: 操作の監視
+      href: iot-hub-operations-monitoring.md
+    - name: 診断設定への移行
+      href: iot-hub-migrate-to-diagnostics-settings.md
 - name: 関連項目
   items:
   - name: 解決方法
@@ -385,15 +433,15 @@ items:
   - name: iOS プラットフォーム用 Azure IoT サンプル
     href: https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/
   - name: IoT デバイス カタログ向けの Azure 認定
-    href: https://catalog.azureiotsuite.com/
+    href: https://catalog.azurazureiotsolutionseiotsuite.com/
   - name: Azure IoT デベロッパー センター
     href: https://azure.microsoft.com/develop/iot/
   - name: 顧客データ要求
     href: iot-hub-customer-data-requests.md
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/?category=iot
-  - name: Azure IoT ツールキット
-    href: https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit
+  - name: Azure IoT Tools
+    href: https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools
   - name: DeviceExplorer ツール
     href: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer
   - name: iothub-diagnostics ツール
@@ -407,14 +455,14 @@ items:
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=iot-hub
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-iot-hub
+    href: https://stackoverflow.com/questions/tagged/azure-iot-hub
   - name: 技術的なケース スタディ
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 5022e1e8f4e8b8c0464be9391ccf2189079e2819
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: a649c65286557c58d02aa5ba3425f3e49e79392a
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422815"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606958"

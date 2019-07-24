@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: hub-page
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: fcda4fba376fbe1f527d60aa5a27f7e7f0713e3e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c0c5ea8dc069d24d01313bb68c0afb7c7aac1a33
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977708"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417702"
 ---
+<div id="main" class="v2">
 <h1>Azure Data Box</h1>
 <p>Azure Data Box ファミリには、信頼性が高く、迅速かつ安価な方法で数テラバイト (TB) のデータを Azure に送信できる、ストレージ容量が異なる製品が用意されています。 Microsoft は、オフラインまたはネットワーク経由のデータ転送を可能にする独自のストレージ デバイスをお客様に届けることで、安全なデータ転送を促進しています。</p>
-
 <h2>オフライン データ転送</h2>
 <p>ネットワーク帯域幅が制限されている場合</p>
-<ul class="cardsA panelContent singlePanelContent cols cols3" style="display:flex!important;">
+<ul class="cardsA panelContent singlePanelContent cols cols3">
     <li>
         <a href="/azure/databox/data-box-disk-overview">
             <div class="cardSize">
@@ -35,7 +35,7 @@ ms.locfileid: "46977708"
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Disk <SUP>プレビュー</SUP></b>: 40 TB 未満のデータ サイズに対応します。 データをコピーして返送するための、1 から 5 台の暗号化されたソリッドステート ドライブ (SSD) が Microsoft から発送されます。</p>
+                            <p><b>Data Box Disk</b>: 40 TB 未満のデータ サイズに対応します。 データをコピーして返送するための、1 から 5 台の暗号化されたソリッドステート ドライブ (SSD) が Microsoft から発送されます。</p>
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@ ms.locfileid: "46977708"
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Heavy <SUP>プレビュー</SUP></b>: 500 TB を超えるデータ サイズに対応します。 データをコピーして返送するための、1 ペタバイト (PB) のデバイスが配送業者を介して発送されます。</p>
+                            <p><b>Data Box Heavy</b>: 500 TB を上回るデータ サイズに対応します。 データをコピーして返送するための、1 ペタバイト (PB) のデバイスが配送業者を介して発送されます。</p>
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,6 @@ ms.locfileid: "46977708"
         </a>
     </li>
 </ul>
-
 <h2>オンライン データ転送</h2>
 <p>ネットワーク経由の転送</p>
 <ul class="cardsA panelContent singlePanelContent cols cols3" style="display:flex!important;">
@@ -94,7 +93,7 @@ ms.locfileid: "46977708"
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Gateway <SUP>プレビュー</SUP></b>: ストレージ機能を備えた仮想デバイス。 データをネットワーク経由で Azure に送信する場合は、このデバイスを使用します。</p>
+                            <p><b>Data Box Gateway</b>: ストレージを備えた仮想デバイスです。 データをネットワーク経由で Azure に送信する場合は、このデバイスを使用します。</p>
                         </div>
                     </div>
                 </div>
@@ -112,7 +111,7 @@ ms.locfileid: "46977708"
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Edge <SUP>プレビュー</SUP></b> ストレージ機能とコンピューティング機能を備えた物理デバイス。 データを Azure に移動するときに、データの分析、変換、またはフィルター処理を行う場合は、このデバイスを使用します。</p>
+                            <p><b>Data Box Edge</b>: ストレージとコンピューティングを備えた物理デバイスです。 データを Azure に移動するときに、データの分析、変換、またはフィルター処理を行う場合は、このデバイスを使用します。</p>
                         </div>
                     </div>
                 </div>
@@ -120,3 +119,4 @@ ms.locfileid: "46977708"
         </a>
     </li>
 </ul>
+</div>

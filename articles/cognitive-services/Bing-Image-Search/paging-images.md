@@ -1,24 +1,25 @@
 ---
-title: 利用可能な画像をページングする方法 - Bing Image Search API
+title: Bing Image Search API によって返された画像をページングする
 titleSuffix: Azure Cognitive Services
-description: Bing が返すことのできるすべての画像をページングする方法について説明します。
+description: Bing Image Search API によって返された画像の異なるページ間を移動します。
 services: cognitive-services
 author: swhite-msft
 manager: cgonlun
 ms.assetid: 3C8423F8-41E0-4F89-86B6-697E840610A7
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: conceptual
-ms.date: 04/15/2017
+ms.date: 03/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: 0db8c62bbb4da1a6fa1230b439c5074325bbe9c3
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.custom: seodec2018
+ms.openlocfilehash: 38b2244d68de25f53d59dd4eb0a6beba03f0e51d
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739368"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339540"
 ---
-# <a name="paging-results"></a>ページングの結果
+# <a name="page-through-the-images-results"></a>画像の結果のページング
 
 Image Search API を呼び出すと、結果のリストが Bing から返されます。 このリストは、クエリとの関連性が高い結果の総数のサブセットです。 利用可能な結果の推定総数を取得するには、回答オブジェクトの [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#totalestimatedmatches) フィールドにアクセスします。  
 

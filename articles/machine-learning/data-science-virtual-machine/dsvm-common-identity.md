@@ -1,26 +1,27 @@
 ---
 title: Data Science Virtual Machine の共通 ID を設定する - Azure | Microsoft Docs
-description: エンタープライズ チームの DSVM 環境で共通 ID を設定します。
+description: 複数の Data Science Virtual Machine 間で使用できる共通のユーザー アカウントを作成する方法について説明します。 Azure Active Directory またはオンプレミスの Active Directory を使用して、データ サイエンス仮想マシンに対してユーザーを認証できます。
 keywords: ディープ ラーニング, AI, データ サイエンス ツール, データ サイエンス仮想マシン, 地理空間分析, チーム データ サイエンス プロセス
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 25d40b6a72ab6da61feb1458f5930eb48ef1d900
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0146ee6ee37c2eb9e98d831b54df2218d7de5b62
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436303"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754602"
 ---
 # <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine で共通 ID を設定する
 
@@ -30,7 +31,7 @@ Active Directory は一般的な ID プロバイダーであり、サービス�
 
 ID を管理する Active Directory が既にある場合は、それを共通の ID プロバイダーとして使用できます。 Active Directory がない場合は、[Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/) (Azure AD DS) というサービスを使って、Azure 上で管理された Active Directory インスタンスを実行できます。 
 
-[Azure AD](https://docs.microsoft.com/azure/active-directory/) のドキュメントでは、オンプレミスのディレクトリ (ある場合) への Azure AD の接続など、詳細な[管理手順](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution#synchronized-identity)が説明されています。 
+[Azure AD](https://docs.microsoft.com/azure/active-directory/) のドキュメントでは、オンプレミスのディレクトリ (ある場合) への Azure AD の接続など、詳細な[管理手順](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution)が説明されています。 
 
 この記事では、Azure AD DS を使って Azure 上に完全に管理された Active Directory ドメイン サービスを設定する手順について説明します。 その後、管理された Active Directory ドメインに DSVM を参加させて、ユーザーが共通のユーザー アカウントと資格情報を使って DSVM (および他の Azure リソース) のプールにアクセスできるようにすることができます。 
 
@@ -50,7 +51,7 @@ Azure AD DS により、Azure 上でフル マネージドのサービスを提�
       
       ![[ユーザー] ウィンドウ](./media/add-user.png)
     
-   d. **名前**や**ユーザー名**など、ユーザーの詳細を入力します。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名 "<ドメイン名>.onmicrosoft.com"、または検証済みの非フェデレーション [カスタム ドメイン名](../../active-directory/add-custom-domain.md) ("contoso.com" など) のいずれかである必要があります。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **名前**や**ユーザー名**など、ユーザーの詳細を入力します。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名 "<ドメイン名>.onmicrosoft.com"、または検証済みの非フェデレーション [カスタム ドメイン名](../../active-directory/add-custom-domain.md) ("contoso.com" など) のいずれかである必要があります。
     
    e. このプロセスの完了後、ユーザーに提供できるように、生成されたユーザー パスワードをコピーするか、メモしておきます。
     

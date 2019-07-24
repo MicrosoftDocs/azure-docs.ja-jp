@@ -1,138 +1,163 @@
 ---
-title: 暗号化された VM を Azure Backup でバックアップおよび復元する
-description: この記事では、Azure Disk Encryption を使用して暗号化した VM のバックアップと復元について説明します。
+title: 暗号化された Azure VM を Azure Backup でバックアップおよび復元する
+description: Azure Backup サービスを使用して、暗号化された Azure VM をどのようにバックアップおよび復元するかについて説明します。
 services: backup
-author: sogup
+author: geetha
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/10/2018
-ms.author: sogup
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b269b8db59c4aeecf182b6ea11b92a3980a2cd6d
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.date: 4/3/2019
+ms.author: geetha
+ms.openlocfilehash: 893a22fb9f325625707869c8f6571d572b8f6b33
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567419"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358235"
 ---
-# <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>暗号化された仮想マシンを Azure Backup でバックアップおよび復元する
-この記事では、Azure Backup を使用して仮想マシン (VM) をバックアップおよび復元する手順を紹介します。 また、サポートされるシナリオ、前提条件のほか、エラーが発生した場合のトラブルシューティングの手順についても、詳しく説明します。
+# <a name="back-up-and-restore-encrypted-azure-vm"></a>暗号化された Azure VM をバックアップおよび復元する
 
-## <a name="supported-scenarios"></a>サポートされるシナリオ
+この記事では、[Azure Backup](backup-overview.md) サービスを使用して、暗号化されたディスクを含む Windows または Linux の Azure 仮想マシン (VM) をバックアップおよび復元する方法について説明します。
 
- 暗号化された VM のバックアップと復元は、Azure Resource Manager デプロイ モデルを使用する VM でのみサポートされます。 クラシック デプロイ モデルを使用する VM ではサポートされません。 暗号化された VM のバックアップと復元は、Azure Disk Encryption を使用する Windows VM と Linux VM でサポートされています。 Disk Encryption では、Windows の業界標準の BitLocker 機能と、Linux の dm-crypt 機能を使用して、ディスクの暗号化を提供します。 次の表に、暗号化の種類と VM のサポートを示します。
+開始する前に Azure Backup が Azure VM とやりとりするしくみの詳細について確認する場合は、次のリソースを参照してください。
 
-   |  | BEK + KEK VM | BEK のみの VM |
-   | --- | --- | --- |
-   | **管理対象外 VM**  | [はい] | [はい]  |
-   | **管理対象の VM**  | [はい] | [はい]  |
+- Azure VM のバックアップ アーキテクチャを[確認する](backup-architecture.md#architecture-direct-backup-of-azure-vms)。
+- Azure VM のバックアップと Azure Backup の拡張機能の[詳細を確認](backup-azure-vms-introduction.md)する
 
-## <a name="prerequisites"></a>前提条件
-* VM が [Azure Disk Encryption](../security/azure-security-disk-encryption.md) を使用して暗号化されている。
+## <a name="encryption-support"></a>暗号化のサポート
 
-* [バックアップのための環境の準備](backup-azure-arm-vms-prepare.md)に関する記事の手順に従って Recovery Services コンテナーが作成され、ストレージ レプリケーションが設定されている。
+Azure Backup では、その OS またはデータ ディスクを Azure Disk Encryption (ADE) で暗号化している Azure VM のバックアップをサポートしています。 ADE では、Windows VM の暗号化に BitLocker を使用し、Linux VM には dm-crypt 機能を使用します。 ADE は、ディスク暗号化キーとシークレットを管理できるように、Azure Key Vault と統合されています。 Key Vault のキーの暗号化キー (KEK) は、さらにセキュリティ層を追加するために使用できます。これにより、Key Vault に記述する前に暗号化のシークレットが暗号化されます。
 
-* 暗号化された VM のキーとシークレットを含む[キー コンテナーにアクセスするためのアクセス許可](#provide-permissions-to-backup)が Backup に付与されている。
+Azure Backup では、次の表にまとめたように、Azure AD アプリの有無に関係なく、ADE を使用して Azure VM をバックアップして復元することができます。
 
-## <a name="backup-encrypted-vm"></a>Backup によって暗号化された VM
-次の手順を使用して、バックアップ目標の設定、ポリシーの定義、項目の構成、バックアップのトリガーを行います。
+**VM ディスクの種類** | **ADE (BEK/dm-crypt)** | **ADE と KEK**
+--- | --- | ---
+**アンマネージド** | はい | はい
+**管理者常駐型**  | はい | はい
 
-### <a name="configure-backup"></a>バックアップの構成
-1. Recovery Services コンテナーが既に開かれている場合は、次の手順に進みます。 Recovery Services コンテナーを開いていなくても、Azure Portal にログイン済みの場合は、**[すべてのサービス]** を選択します。
+- [ADE](../security/azure-security-disk-encryption-overview.md)、[Key Vault](../key-vault/key-vault-overview.md)、[KEK](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/) に関する詳細を参照してください。
+- Azure VM ディスクの暗号化については、[よくあるご質問](../security/azure-security-disk-encryption-faq.md)に関するページを参照してください。
 
-   a. リソース ボックスに「 **Recovery Services**」と入力します。
 
-   b. 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]** が表示されたら、それを選択します。
 
-      ![Recovery Services コンテナー](./media/backup-azure-vms-encryption/browse-to-rs-vaults.png) <br/>
+### <a name="limitations"></a>制限事項
 
-    c. Recovery Services コンテナーの一覧が表示されます。 一覧からコンテナーを選択します。
+- 同じサブスクリプションとリージョン内で暗号化された VM をバックアップして復元することができます。
+- Azure Backup では、スタンドアロン キーを使用して暗号化された VM がサポートされます。 VM を暗号化するために使用された証明書の一部であるキーは、現在サポートされていません。
+- Recovery Services のバックアップ コンテナーとして、同じサブスクリプションとリージョン内で暗号化された VM をバックアップして復元することができます。
+- 暗号化された VM は、ファイル/フォルダー レベルでは復旧できません。 ファイルとフォルダーを復元するには、VM 全体を復旧する必要があります。
+- VM を復元する場合、暗号化された VM に[既存の VM を置き換える](backup-azure-arm-restore-vms.md#restore-options)オプションを使用することはできません。 このオプションは、暗号化されていないマネージド ディスクに対してのみサポートされています。
 
-     選択したコンテナーのダッシュボードが開きます。
-1. コンテナーの下に表示された項目の一覧から **[バックアップ]** を選択し、暗号化された VM のバックアップを開始します。
 
-      ![バックアップ ブレード](./media/backup-azure-vms-encryption/select-backup.png)
-1. **[バックアップ]** タイルで、**[バックアップの目標]** を選択します。
+
+
+## <a name="before-you-start"></a>開始する前に
+
+開始する前に、以下を行います。
+
+1. ADE が有効にされた 1 つまたは複数の [Windows](../security/azure-security-disk-encryption-windows.md) または [Linux](../security/azure-security-disk-encryption-linux.md) の VM があることを確認します。
+2. Azure VM バックアップの[サポート マトリックスを確認](backup-support-matrix-iaas.md)します。
+3. Recovery Services のバックアップ コンテナーをまだお持ちでない場合は、[作成](backup-azure-arm-vms-prepare.md#create-a-vault)します。
+4. 既にバックアップが有効になっている VM に対して暗号化を有効にしている場合、中断せずにバックアップを継続できるように、Key Vault へのアクセス許可を Backup に提供する必要があるだけです。 これらのアクセス許可に関する[詳細](#provide-permissions)を参照してください。
+
+さらに、状況によっては、いくつか行う必要があることがあります。
+
+- **VM に VM エージェントをインストールする**: Azure Backup では、マシンで実行されている Azure VM エージェントに拡張機能をインストールすることで、Azure VM がバックアップされます。 VM が Azure Marketplace のイメージから作成されている場合は、エージェントがインストールされ、実行されます。 カスタム VM を作成する場合、またはオンプレミスのマシンを移行する場合は、[手動でのエージェントのインストール](backup-azure-arm-vms-prepare.md#install-the-vm-agent)が必要な場合があります。
+- **発信アクセスを明示的に許可する**: 一般に、Azure VM が Azure Backup と通信するために、発信ネットワーク アクセスを明示的に許可する必要はありません。 ただし、一部の VM では、接続しようとすると、接続に関する問題が発生する場合があり、**ExtensionSnapshotFailedNoNetwork** エラーが表示されます。 これが発生した場合、Azure Backup の拡張機能でバックアップ トラフィックのために Azure パブリック IP アドレスと通信できるように、[明示的に発信アクセスを許可](backup-azure-arm-vms-prepare.md#explicitly-allow-outbound-access)する必要があります。
+
+
+
+## <a name="configure-a-backup-policy"></a>バックアップ ポリシーを構成する
+
+1. Recovery Services のバックアップ コンテナーをまだ作成していない場合は、[こちらの手順](backup-azure-arm-vms-prepare.md#create-a-vault)に従ってください。
+2. ポータルでコンテナーを開いて、**[作業の開始]** セクションの **[バックアップ]** を選択します。
+
+    ![バックアップ ブレード](./media/backup-azure-vms-encryption/select-backup.png)
+
+3. **[バックアップの目標]** > **[ワークロードはどこで実行されていますか?]** で **[Azure]** を選択します。
+4. **[バックアップの対象]** で、**[仮想マシン]** > **[OK]** を選択します。
 
       ![シナリオ ブレード](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
-1. **[ワークロードはどこで実行されていますか?]** で **[Azure]** を選択します。 **[What do you want to backup?]\(何をバックアップしますか?\)** で、**[仮想マシン]** を選択します。 **[OK]** をクリックします。
 
-   ![Open Scenario blade](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
-1. **[バックアップ ポリシーの選択]** で、コンテナーに適用するバックアップ ポリシーを選択します。 **[OK]** をクリックします。
+5. **[バックアップ ポリシー]** > **[バックアップ ポリシーの選択]** で、コンテナーに関連付けるポリシーを選択します。 次に、 **[OK]** をクリックします
+    - バックアップ ポリシーでは、バックアップが取得されるタイミングと、それらが保存される期間を指定します。
+    - 既定のポリシーの詳細がドロップダウン メニューの下に一覧表示されます。
 
-      ![Select backup policy](./media/backup-azure-vms-encryption/setting-rs-backup-policy-new.png)
+    ![Open Scenario blade](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
 
-    既定のポリシーの詳細が一覧表示されます。 ポリシーを作成する場合は、ドロップダウン リストから **[新規作成]** を選択します。 **[OK]** を選ぶと、バックアップ ポリシーがコンテナーに関連付けられます。
+6. 既定のポリシーを使用する必要がない場合は、**[新規作成]** を選択して、[カスタム ポリシーを作成します](backup-azure-arm-vms-prepare.md#create-a-custom-policy)。
 
-1. 指定したポリシーに関連付ける暗号化済みの VM を選択し、**[OK]** を選択します。
+
+7. 選択したポリシーを使用してバックアップする暗号化された VM を選び、**[OK]** を選択します。
 
       ![暗号化された VM の選択](./media/backup-azure-vms-encryption/selected-encrypted-vms.png)
-1. このページには、選択した暗号化済み VM に関連付けられたキー コンテナーに関するメッセージが表示されます。 Backup には、キー コンテナーにあるキーとシークレットに対する読み取り専用アクセス許可が必要になります。 このアクセス許可を使用して、キーとシークレット、および関連付けられた VM がバックアップされます。<br>
-**メンバー ユーザー**である場合、バックアップの有効化のプロセスにより、ユーザーの介入を必要とすることなく、シームレスにキー コンテナーへのアクセス許可を取得して、暗号化された VM をバックアップできます。
 
-   ![暗号化された VM のメッセージ](./media/backup-azure-vms-encryption/member-user-encrypted-vm-warning-message.png)
+8. Azure Key Vault を使用する場合は、コンテナー ページ上で、Azure Backup に Key Vault 内のキーとシークレットへの読み取り専用のアクセス権が必要なことを示すメッセージが表示されます。
 
-   **ゲスト ユーザー**である場合、バックアップを機能させるには、キー コンテナーにアクセスするためのアクセス許可をバックアップ サービスに付与する必要があります。 これらのアクセス許可を付与するには、[次のセクションに記載されている手順](#provide-permissions-to-backup)に従います。
+    - このメッセージを受け取った場合は、操作は必要ありません。
 
-   ![暗号化された VM のメッセージ](./media/backup-azure-vms-encryption/guest-user-encrypted-vm-warning-message.png)
+        ![アクセス OK](./media/backup-azure-vms-encryption/access-ok.png)
 
-    コンテナーの設定をすべて定義したところで、ページの下部にある **[バックアップの有効化]** を選択します。 **[バックアップの有効化]** により、ポリシーがコンテナーと VM にデプロイされます。
+    - このメッセージを受け取った場合は、[以下の手順](#provide-permissions)に示されたように、アクセス許可を設定する必要があります。
 
-1. 準備作業の次の段階は、VM エージェントのインストール、または VM エージェントがインストールされていることの確認です。 同様の処理を行うには、[バックアップ用の環境の準備](backup-azure-arm-vms-prepare.md)に関する記事で示されている手順に従います。
+        ![アクセスの警告](./media/backup-azure-vms-encryption/access-warning.png)
 
-### <a name="trigger-a-backup-job"></a>バックアップ ジョブをトリガーする
-バックアップ ジョブをトリガーする手順については、「[Recovery Services コンテナーへの Azure VM のバックアップ](backup-azure-arm-vms.md)」をご覧ください。
+9. **[バックアップの有効化]** をクリックして、コンテナーにバックアップ ポリシーをデプロイし、選択した VM に対してバックアップを有効にします。
 
-### <a name="continue-backups-of-already-backed-up-vms-with-encryption-enabled"></a>暗号化を有効にして、既にバックアップされた VM のバックアップを続行する  
-VM の暗号化を後で有効にする VM が Recovery Services コンテナーに既にバックアップされている場合、バックアップを続行するには、キー コンテナーにアクセスするためのアクセス許可を Backup に付与する必要があります。 これらのアクセス許可を付与するには、[次のセクションに記載されている手順](#provide-permissions-to-azure-backup)に従います。 または、[PowerShell ドキュメント](backup-azure-vms-automation.md)の、バックアップの有効化に関するセクションで示されている手順に従います。
 
-## <a name="provide-permissions-to-azure-backup"></a>Backup にアクセス許可を付与する
-キー コンテナーへのアクセス、および暗号化された VM のバックアップ実行のための適切なアクセス許可を Backup に付与するには、次の手順に従います。
-1. **[すべてのサービス]** を選択して、「**キー コンテナー**」を検索します。
+## <a name="trigger-a-backup-job"></a>バックアップ ジョブをトリガーする
 
-    ![キー コンテナー](./media/backup-azure-vms-encryption/search-key-vault.png)
+初回バックアップはスケジュールに従って実行されますが、次のようにすぐに実行することもできます。
 
-1. キー コンテナーの一覧から、暗号化された VM に関連付けられた、バックアップが必要なキー コンテナーを選択します。
+1. コンテナー メニューで **[バックアップ アイテム]** をクリックします。
+2. **[バックアップ アイテム]** で、**[Azure Virtual Machines]** をクリックします。
+3. **[バックアップ アイテム]** の一覧で、省略記号 [...] をクリックします。
+4. **[今すぐバックアップ]** をクリックします。
+5. **[今すぐバックアップ]** で、カレンダー コントロールを使用して復旧ポイントを保持する最終日を選択します。 次に、 **[OK]** をクリックします
+6. ポータルの通知を監視します。 コンテナー ダッシュボードの **[バックアップ ジョブ]** > **[進行中]** でジョブの進行状況を監視できます。 VM のサイズによっては、最初のバックアップの作成に時間がかかる場合があります。
 
-     ![キー コンテナーの選択](./media/backup-azure-vms-encryption/select-key-vault.png)
 
-1. **[アクセス ポリシー]** を選択してから、**[新規追加]** を選択します。
+## <a name="provide-permissions"></a>アクセス許可を付与する
 
-    ![新規追加](./media/backup-azure-vms-encryption/select-key-vault-access-policy.png)
+Azure VM では、キーとシークレット、および関連付けられた VM がバックアップするために、読み取り専用のアクセス権が必要です。
 
-1. **[プリンシパルの選択]** を選択して、検索ボックスに「**バックアップ管理サービス**」と入力します。
+- ご利用の Key Vault は、Azure サブスクリプションの Azure AD テナントに関連付けられます。 **メンバー ユーザー**の場合は、さらに操作しなくても、Azure Backup によって Key Vault へのアクセス権が取得されます。
+- **ゲスト ユーザー**の場合は、キー コンテナーにアクセスするために、Azure Backup にアクセス許可を提供する必要があります。
 
-    ![バックアップ サービスの検索](./media/backup-azure-vms-encryption/search-backup-service.png)
+アクセス許可を設定するには
 
-1. **[Backup Management Service]\(バックアップ管理サービス\)** を選択してから、**[選択]** を選択します。
+1. Azure portal で **[すべてのサービス]** を選択して、**キー コンテナー**を検索します。
+2. バックアップをしている暗号化された VM と関連付けられたキー コンテナーを選択します。
+3. **[アクセス ポリシー]**、**[新規追加]** の順に選択します。
+4. **[プリンシパルの選択]** を選択して、「**バックアップ管理**」と入力します。
+5. **[Backup Management Service]\(バックアップ管理サービス\)**、**[選択]** の順に選択します。
 
     ![Backup サービスの選択](./media/backup-azure-vms-encryption/select-backup-service.png)
 
-1. **[テンプレートからの構成 (省略可能)]** で、**[Azure Backup]** を選択します。 **[キーのアクセス許可]** と **[シークレットのアクセス許可]** に、必要なアクセス許可が事前入力されます。 **BEK のみ**を使用して VM を 暗号化する場合は、シークレットのみを対象としたアクセス許可が必要なため、**[キーのアクセス許可]** の選択を解除する必要があります。
+6. **[アクセス ポリシーの追加]**、**[テンプレートからの構成 (省略可能)]** で、**[Azure Backup]** を選択します。
+    - **[キーのアクセス許可]** と **[シークレットのアクセス許可]** に、必要なアクセス許可が事前入力されます。
+    - VM が **BEK のみ**を使用して暗号化される場合、シークレットのみを対象としたアクセス許可が必要なため、**[キーのアクセス許可]** の選択を解除する必要があります。
 
     ![Azure Backup の選択](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-1. **[OK]** を選択します。 **[アクセス ポリシー]** に**バックアップ管理サービス**が追加されていることがわかります。
+6. Click **OK**. **[Backup Management Service]\(バックアップ管理サービス\)** が、**[アクセス ポリシー]** に追加されます。
 
     ![アクセス ポリシー](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 
-1. **[保存]** を選択して、必要なアクセス許可を Backup に付与します。
-
-    ![バックアップ アクセス ポリシー](./media/backup-azure-vms-encryption/save-access-policy.png)
-
-アクセス許可が正常に付与されたら、暗号化された VM のバックアップの有効化を続行できます。
+7. **[保存]** をクリックして、Azure Backup にアクセス許可を提供します。
 
 ## <a name="restore-an-encrypted-vm"></a>暗号化された VM を復元する
-暗号化された VM を復元するには、まず、「[Choose a VM restore configuration (VM 復元構成の選択)](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration)」のバックアップしたディスクの復元に関するセクションで示されている手順に従って、ディスクを復元します。 その後、次のいずれかのオプションを使用できます。
 
-* 「[復元されたディスクからの VM の作成](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)」で説明されている PowerShell の手順に従って、復元されたディスクから VM 全体を作成する。
-* または、[テンプレートを使用して復元された VM をカスタマイズし](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)、復元されたディスクから VM を作成する。 テンプレートは、2017年 4 月 26 日より後に作成された復旧ポイントに対してのみ使うことができます。
+次のように暗号化された VM を復元します。
 
-## <a name="troubleshooting-errors"></a>エラーのトラブルシューティング
-| Operation | エラーの詳細 | 解決策 |
-| --- | --- | --- |
-|バックアップ | Backup のキー コンテナーに対するアクセス許可は、暗号化された VM をバックアップするのに十分ではありません。 | [前のセクションで示した手順](#provide-permissions-to-azure-backup)に従って、Backup にこれらのアクセス許可を付与する必要があります。 または、「[AzureRM.RecoveryServices.Backup コマンドレットを使って仮想マシンをバックアップする](backup-azure-vms-automation.md#enable-protection)」記事の「保護を有効にする」セクションにある PowerShell の手順に従うことができます。 |  
-| 復元 |この暗号化済み VM は、関連付けられているキー コンテナーが存在しないため復元できません。 |「[Azure Key Vault の概要](../key-vault/key-vault-get-started.md)」に記載の手順に従って、キー コンテナーを作成してください。 キーとシークレットがない場合にそれらを復元する方法については、[Azure Backup を使用したキー コンテナーのキーとシークレットの復元](backup-azure-restore-key-secret.md)に関する記事をご覧ください。 |
-| 復元 |この暗号化済み VM は、関連付けられているキーとシークレットが存在しないため復元できません。 |キーとシークレットがない場合にそれらを復元する方法については、[Azure Backup を使用したキー コンテナーのキーとシークレットの復元](backup-azure-restore-key-secret.md)に関する記事をご覧ください。 |
-| 復元 |Backup はサブスクリプション内のリソースへのアクセスが承認されていません。 |前述のとおり、まず、「[Choose a VM restore configuration (VM 復元構成の選択)](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration)」のバックアップしたディスクの復元に関するセクションで示されている手順に従って、ディスクを復元してください。 その後、PowerShell を使用して[復元されたディスクから VM を作成します](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。 |
+1. [VM ディスクを復元します](backup-azure-arm-restore-vms.md#restore-disks)。
+2. 次のいずれかの手順を行います。
+    - 復元操作の間に生成されるテンプレートを使用して VM の設定をカスタマイズし、VM のデプロイをトリガーします。 [詳細情報](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)。
+    - PowerShell を使用して、復元されたディスクから新しい VM を作成します。 [詳細情報](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。
+
+## <a name="next-steps"></a>次の手順
+
+問題が発生した場合は、以下を確認します。
+
+- 暗号化された Azure VM をバックアップして復元するときの[一般的なエラー](backup-azure-vms-troubleshoot.md)
+- [Azure VM エージェント/バックアップの拡張機能](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)に関する問題

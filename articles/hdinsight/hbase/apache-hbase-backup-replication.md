@@ -1,5 +1,5 @@
 ---
-title: HBase と Phoenix のバックアップとレプリケーションの設定 - Azure HDInsight
+title: Apache HBase と Apache Phoenix のバックアップとレプリケーションの設定 - Azure HDInsight
 description: HBase と Phoenix のバックアップとレプリケーションを設定します。
 services: hdinsight
 author: ashishthaps
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 0dfb1cf5ce16e9aa30bb7f9fcc43bd24ccb90d76
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: d182d23bf4b3f4dc1ed42a737e8fe8b753c035ae
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042221"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340740"
 ---
-# <a name="set-up-backup-and-replication-for-hbase-and-phoenix-on-hdinsight"></a>HDInsight で HBase と Phoenix のバックアップとレプリケーションを設定する
+# <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>HDInsight で Apache HBase と Apache Phoenix に対するバックアップとレプリケーションを設定する
 
-HBase は、データ損失を防ぐための複数の方法をサポートしています。
+Apache HBase は、データ損失を防ぐための複数の方法をサポートしています。
 
 * `hbase` フォルダーをコピーする
 * エクスポート後にインポートする
@@ -26,7 +26,7 @@ HBase は、データ損失を防ぐための複数の方法をサポートし�
 * スナップショット
 * レプリケーション
 
-> [!NOTE]
+> [!NOTE]  
 > Apache Phoenix はそのメタデータを HBase テーブルに保存するため、HBase システム カタログ テーブルのバックアップ時にメタデータがバックアップされます。
 
 以下のセクションでは、これらの各方法の使用シナリオについて説明します。
@@ -35,7 +35,7 @@ HBase は、データ損失を防ぐための複数の方法をサポートし�
 
 この方法を使用すると、テーブルまたは列ファミリのサブセットを選択できなくても、すべての HBase データをコピーします。 後述の方法では、さらに制御しやすくなります。
 
-HDInsight の HBase では、クラスターの作成時に選択された既定のストレージとして Azure Storage Blob または Azure Data Lake Store を使用します。 どちらの場合も、HBase はそのデータ ファイルとメタデータ ファイルを次のパスに保存します。
+HDInsight の HBase では、クラスターの作成時に選択された既定のストレージ (Azure Storage BLOB または Azure Data Lake Storage のどちらか) を使用します。 どちらの場合も、HBase はそのデータ ファイルとメタデータ ファイルを次のパスに保存します。
 
     /hbase
 
@@ -45,7 +45,7 @@ HDInsight の HBase では、クラスターの作成時に選択された既定
     wasbs://<containername>@<accountname>.blob.core.windows.net/hbase
     ```
 
-* Azure Data Lake Store では、クラスターのプロビジョニング時に指定したルート パスに `hbase` フォルダーがあります。 通常、このルート パスには `clusters` フォルダーがあり、HDInsight クラスターにちなんだ名前のサブフォルダーが含まれています。
+* Azure Data Lake Storage では、クラスターのプロビジョニング時に指定したルート パスの下に `hbase` フォルダーが存在します。 通常、このルート パスには `clusters` フォルダーがあり、HDInsight クラスターにちなんだ名前のサブフォルダーが含まれています。
 
     ```
     /clusters/<clusterName>/hbase
@@ -57,7 +57,7 @@ HDInsight の HBase では、クラスターの作成時に選択された既定
 
 * 現在のストレージの場所を指す新しい HDInsight インスタンスを作成します。 新しいインスタンスは、既存のすべてのデータを使用して作成されます。
 
-* `hbase` フォルダーを別の Azure Storage Blob コンテナーまたは Data Lake Store の場所にコピーしてから、そのデータを含む新しいクラスターを開始します。 Azure Storage の場合は [AzCopy](../../storage/common/storage-use-azcopy.md) を使用し、Data Lake Store の場合は [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) を使用します。
+* `hbase` フォルダーを別の Azure Storage BLOB コンテナーまたは Data Lake Storage の場所にコピーしてから、そのデータで新しいクラスターを起動します。 Azure Storage の場合は [AzCopy](../../storage/common/storage-use-azcopy.md) を使用し、Data Lake Storage の場合は [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) を使用します。
 
 ## <a name="export-then-import"></a>エクスポート後にインポートする
 
@@ -75,7 +75,11 @@ HDInsight の HBase では、クラスターの作成時に選択された既定
 
     wasbs://<containername>@<accountname>.blob.core.windows.net/<path>
 
-Azure Data Lake Store の構文は次のとおりです。
+Azure Data Lake Storage Gen2 では、構文は次のとおりです。
+
+    abfs://<containername>@<accountname>.dfs.core.windows.net/<path>
+
+Azure Data Lake Storage Gen1 では、構文は次のとおりです。
 
     adl://<accountName>.azuredatalakestore.net:443/<path>
 
@@ -101,7 +105,7 @@ CopyTable を使用して別のクラスターのテーブルにコピーする�
 
     <destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>
 
-* `<ZooKeeperQuorum>` は ZooKeeper ノードのコンマ区切りリストです。次に例を示します。
+* `<ZooKeeperQuorum>` は Apache ZooKeeper ノードのコンマ区切りリストです。次に例を示します。
 
     zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
 
@@ -109,7 +113,7 @@ CopyTable を使用して別のクラスターのテーブルにコピーする�
 
     zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net:2181:/hbase-unsecure
 
-使用している HDInsight クラスターについてこれらの値を取得する方法の詳細については、この記事の「[ZooKeeper クォーラム リストを手動で収集する](#manually-collect-the-zookeeper-quorum-list)」を参照してください。
+使用している HDInsight クラスターについてこれらの値を取得する方法の詳細については、この記事の「[Apache ZooKeeper クォーラム リストを手動で収集する](#manually-collect-the-apache-zookeeper-quorum-list)」を参照してください。
 
 CopyTable ユーティリティでは、コピーする行の時間範囲を指定するパラメーターと、コピーするテーブル内の列ファミリのサブセットを指定するパラメーターもサポートしています。 CopyTable でサポートされているパラメーターの完全な一覧を表示するには、パラメーターを指定せずに CopyTable を実行してください。
 
@@ -117,10 +121,10 @@ CopyTable ユーティリティでは、コピーする行の時間範囲を指�
 
 CopyTable は、コピー先テーブルにコピーされる、コピー元テーブルの内容全体をスキャンします。 これにより、CopyTable の実行中は HBase クラスターのパフォーマンスが低下する可能性があります。
 
-> [!NOTE]
+> [!NOTE]  
 > テーブル間でのデータのコピーを自動化するには、GitHub の [Azure HBase Utils](https://github.com/Azure/hbase-utils/tree/master/replication) リポジトリにある `hdi_copy_table.sh` スクリプトを参照してください。
 
-### <a name="manually-collect-the-zookeeper-quorum-list"></a>ZooKeeper クォーラム リストを手動で収集する
+### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>Apache ZooKeeper クォーラム リストを手動で収集する
 
 両方の HDInsight クラスターが同じ仮想ネットワーク内に存在する場合は、前述のとおり、内部ホスト名解決が自動的に行われます。 VPN ゲートウェイによって接続された 2 つの異なる仮想ネットワーク内の HDInsight クラスターに対して CopyTable を使用するには、クォーラム内の Zookeeper ノードのホスト IP アドレスを指定する必要があります。
 
@@ -201,8 +205,8 @@ HBase レプリケーションでは、レプリケーション元クラスタ�
 5. 既存のデータをレプリケーション元テーブルからレプリケーション先テーブルにコピーします。
 6. レプリケーションによって自動的に、レプリケーション元テーブルに対する新しいデータ変更がレプリケーション先テーブルにコピーされます。
 
-HDInsight でレプリケーションを有効にするには、実行中のレプリケーション元 HDInsight クラスターにスクリプト アクションを適用します。 クラスターでレプリケーションを有効にするチュートリアル、または Azure Resource Management テンプレートを使用して仮想ネットワークに作成されたサンプル クラスターでのレプリケーションの実験については、[HBase レプリケーションの構成](apache-hbase-replication.md)に関する記事を参照してください。 その記事では、Phoenix メタデータのレプリケーションを有効にするための手順も説明しています。
+HDInsight でレプリケーションを有効にするには、実行中のレプリケーション元 HDInsight クラスターにスクリプト アクションを適用します。 クラスターでレプリケーションを有効にするチュートリアル、または Azure Resource Management テンプレートを使用して仮想ネットワークに作成されたサンプル クラスターでのレプリケーションの実験については、[Apache HBase レプリケーションの構成](apache-hbase-replication.md)に関する記事を参照してください。 その記事では、Phoenix メタデータのレプリケーションを有効にするための手順も説明しています。
 
 ## <a name="next-steps"></a>次の手順
 
-* [HBase レプリケーションの構成](apache-hbase-replication.md)
+* [Apache HBase のレプリケーションを構成する](apache-hbase-replication.md)

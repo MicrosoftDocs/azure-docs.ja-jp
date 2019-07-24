@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 2aabdc503a694de46796b7c3afeedfcdb2f39ca9
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: c840764dc978a8dacb3450c0aca5e5d93284b8a6
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037869"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260113"
 ---
 # <a name="change-the-reserved-unit-type"></a>予約ユニットの種類の変更
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "51037869"
 
 ## <a name="overview"></a>概要
 
-Media Services アカウントは、メディア処理タスクを処理する速度を決定する予約ユニットの種類に関連付けられます。 予約ユニットの種類は、**S1**、**S2**、**S3** から選択できます。 たとえば、同じエンコード ジョブの場合に、予約ユニットの種類として **S1** よりも **S2** を使用する方が、ジョブの実行が高速になります。
+Media Services アカウントは、メディア処理タスクを処理する速度を決定する予約ユニットの種類に関連付けられます。 予約ユニットの種類は、以下から選択できます:**S1**、**S2**、**S3**。 たとえば、同じエンコード ジョブの場合に、予約ユニットの種類として **S1** よりも **S2** を使用する方が、ジョブの実行が高速になります。
 
 予約ユニットの種類を指定するだけでなく、**予約ユニット** (RU) を使用したアカウントのプロビジョニングを指定することもできます。 プロビジョニングされた RU の数によって、所定のアカウントで並列処理できるメディア タスクの数が決まります。
 
@@ -53,7 +53,7 @@ Media Services アカウントは、メディア処理タスクを処理する�
    
     選択した予約ユニットの種類の予約ユニット数を変更するには、画面上部にある **[Media Served Units]\(メディア予約ユニット\)** スライダーを使用します。
    
-    **[占有ユニットの種類]** を変更するには、**[Speed of reserved processing units]\(占有処理ユニットの速度\)** バーをクリックします。 次に、必要な価格レベルとして、S1、S2、または S3 を選択します。
+    **[占有ユニットの種類]** を変更するには、**[Speed of reserved processing units]\(占有処理ユニットの速度\)** バーをクリックします。 その後、次の必要な価格レベルを選択します。S1、S2、S3。
    
 3. [保存] ボタンを押して、変更を保存します。
    

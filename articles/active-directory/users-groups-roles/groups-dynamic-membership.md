@@ -1,25 +1,25 @@
 ---
-title: Azure Active Directory の動的グループ メンバーシップ ルール参照 | Microsoft Docs
-description: グループとルール参照に自動的にデータを入力するメンバーシップ ルールを作成する方法。
+title: 動的で自動的なグループ メンバーシップ ルール - Azure Active Directory | Microsoft Docs
+description: グループを自動的に設定するメンバーシップ ルールと、ルール参照を作成する方法。
 services: active-directory
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/07/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: adb53bb5722bff2374097626e8a3f1679ca00788
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 10a78df5169741371c122971afa47cb53ecc5a64
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633531"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450670"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) では、複雑な属性ベースのルール�
 グループにユーザーまたはデバイスを自動的に入力するメンバーシップ ルールは、true または false に帰結するバイナリ式です。 シンプルなルールの要素は次の 3 つです。
 
 * プロパティ
-* 演算子
+* operator
 * 値
 
 式の中の要素の順序は、構文エラーを回避するために重要です。
@@ -68,14 +68,14 @@ user.department -eq "Sales"
 
 ### <a name="properties-of-type-boolean"></a>ブール型のプロパティ
 
-| プロパティ | 使用できる値 | 使用法 |
+| Properties | 使用できる値 | 使用法 |
 | --- | --- | --- |
 | accountEnabled |true false |user.accountEnabled -eq true |
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
 ### <a name="properties-of-type-string"></a>文字列型のプロパティ
 
-| プロパティ | 使用できる値 | 使用法 |
+| Properties | 使用できる値 | 使用法 |
 | --- | --- | --- |
 | city |任意の文字列値または *null* |(user.city -eq "value") |
 | country |任意の文字列値または *null* |(user.country -eq "value") |
@@ -106,7 +106,7 @@ user.department -eq "Sales"
 
 ### <a name="properties-of-type-string-collection"></a>文字列コレクション型のプロパティ
 
-| プロパティ | 使用できる値 | 使用法 |
+| Properties | 使用できる値 | 使用法 |
 | --- | --- | --- |
 | otherMails |任意の文字列値 |(user.otherMails -contains "alias@domain") |
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
@@ -117,17 +117,17 @@ user.department -eq "Sales"
 
 次の表は、サポートされているすべての演算子とその単一式用の構文をまとめたものです。 演算子は、ハイフン (-) のプレフィックスがあってもなくても使用できます。
 
-| 演算子 | 構文 |
+| operator | 構文 |
 | --- | --- |
 | 等しくない |-ne |
 | 等しい |-eq |
 | 指定値で始まらない |-notStartsWith |
 | 指定値で始まる |-startsWith |
 | 指定値を含まない |-notContains |
-| 指定値を含む |-contains |
+| Contains |-contains |
 | 一致しない |-notMatch |
 | 一致する |-match |
-| 含まれる | -in |
+| イン | -in |
 | 含まれない | -notIn |
 
 ### <a name="using-the--in-and--notin-operators"></a>-in および -notIn 演算子の使用
@@ -137,7 +137,7 @@ user.department -eq "Sales"
  次の例の式は、user.department の値が一覧内のいずれかの値に等しい場合に true に評価されます。
 
 ```
-   user.department -in ["50001","50002","50003",“50005”,“50006”,“50007”,“50008”,“50016”,“50020”,“50024”,“50038”,“50039”,“51100”]
+   user.department -in ["50001","50002","50003","50005","50006","50007","50008","50016","50020","50024","50038","50039","51100"]
 ```
 
 
@@ -231,7 +231,7 @@ null 値を参照する正しい方法は次のとおりです。
 
 複数値プロパティは、同じ型のオブジェクトのコレクションです。 論理演算子の -any と -all でメンバーシップ ルールを作成するときに使用できます。
 
-| プロパティ | 値 | 使用法 |
+| Properties | 値 | 使用法 |
 | --- | --- | --- |
 | assignedPlans | コレクション内の各オブジェクトは、capabilityStatus、service、servicePlanId の文字列プロパティを公開します。 |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
 | proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses -any (\_ -contains "contoso")) |
@@ -348,11 +348,11 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
  accountEnabled | true false | (device.accountEnabled -eq true)
  displayName | 任意の文字列値 |(device.displayName -eq "Rob Iphone”)
  deviceOSType | 任意の文字列値 | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")
- deviceOSVersion | 任意の文字列値 | (device.OSVersion -eq "9.1")
+ deviceOSVersion | 任意の文字列値 | (device.deviceOSVersion -eq "9.1")
  deviceCategory | 有効なデバイス カテゴリ名 | (device.deviceCategory -eq "BYOD")
  deviceManufacturer | 任意の文字列値 | (device.deviceManufacturer -eq "Samsung")
  deviceModel | 任意の文字列値 | (device.deviceModel -eq "iPad Air")
- deviceOwnership | Personal、Corporate、Unknown | (device.deviceOwnership -eq "Corporate")
+ deviceOwnership | 個人、会社、不明 | (device.deviceOwnership -eq "Company")
  domainName | 任意の文字列値 | (device.domainName -eq "contoso.com")
  enrollmentProfileName | Apple デバイス登録プロファイルまたは Windows Autopilot プロファイルの名前 | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
@@ -360,6 +360,9 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
  deviceId | 有効な Azure AD デバイス ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | 有効な Azure AD オブジェクト ID |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
  systemLabels | Modern Workplace デバイスをタグ付けするための Intune デバイス プロパティに一致する任意の文字列 | (device.systemLabels - "M365Managed" を含む)
+
+> [!Note]  
+> デバイスに動的グループを作成する場合、deviceOwnership には、"Company" と等しい値を設定する必要があります。 Intune 上のデバイスの所有権には、代わりに Corporate として表されます。 詳細については、「[OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes)」を参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,23 +1,24 @@
 ---
-title: 'チュートリアル: Computer Vision API JavaScript'
+title: チュートリアル:イメージの操作を実行する - JavaScript
 titlesuffix: Azure Cognitive Services
 description: Microsoft Cognitive Services の Computer Vision API を使用する基本的な JavaScript アプリを探索します。 OCR を実行し、サムネイルを作成して、イメージ内の視覚的な特徴を操作します。
 services: cognitive-services
 author: KellyDF
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: kefre
-ms.openlocfilehash: c024e517eb59c7d3b61408e477c94004ccb01a54
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 7ac8b9e28996c14e702730b72265fd6165798227
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341312"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55865075"
 ---
-# <a name="tutorial-computer-vision-api-javascript"></a>チュートリアル: Computer Vision API JavaScript
+# <a name="tutorial-computer-vision-api-javascript"></a>チュートリアル:Computer Vision API JavaScript
 
 このチュートリアルでは、Azure Cognitive Services の Computer Vision REST API の機能について説明します。
 
@@ -418,7 +419,7 @@ function thumbnailButtonClick() {
  * @param {boolean} smartCropping Set to true to use the smart cropping feature which crops to the
  *                                more interesting area of an image; false to crop for the center
  *                                of the image.
- * @param {<img> element} imageElement The img element in the DOM which will display the thumnail image.
+ * @param {<img> element} imageElement The img element in the DOM which will display the thumbnail image.
  * @param {<textarea> element} responseTextArea - The text area to display the Response Headers returned
  *                             from the REST API call, or to display the error message if there was 
  *                             an error.
@@ -634,7 +635,7 @@ function ReadHandwrittenImage(sourceImageUrl, responseTextArea) {
         "handwriting": "true",
     };
 
-    // This operation requrires two REST API calls. One to submit the image for processing,
+    // This operation requires two REST API calls. One to submit the image for processing,
     // the other to retrieve the text found in the image. 
     //
     // Perform the first REST API call to submit the image for processing.

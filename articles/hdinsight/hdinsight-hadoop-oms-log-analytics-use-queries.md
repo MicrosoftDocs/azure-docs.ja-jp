@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics でクエリを実行して Azure HDInsight クラスターを監視する
-description: Azure Log Analytics でクエリを実行し、HDInsight クラスターで実行されているジョブを監視する方法を説明します。
+title: Azure Monitor ログのクエリを実行して Azure HDInsight クラスターを監視する
+description: Azure Monitor ログでクエリを実行し、HDInsight クラスターで実行されているジョブを監視する方法を説明します。
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,24 +9,26 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: a4c4017d7fa798559817c281d159148ec675d158
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 2ca2fdc2627245a8b7676ed0d6d5877788eb7930
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281355"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336798"
 ---
-# <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Azure Log Analytics でクエリを実行して HDInsight クラスターを監視する
+# <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor ログでクエリを実行して HDInsight クラスターを監視する
 
-Azure Log Analytics を使用して Azure HDInsight クラスターを監視する基本的なシナリオを説明します。
+Azure Monitor ログを使用して Azure HDInsight クラスターを監視する基本的なシナリオを説明します。
 
 * [HDInsight クラスターのメトリックを分析する](#analyze-hdinsight-cluster-metrics)
 * [特定のログ メッセージの検索する](#search-for-specific-log-messages)
 * [イベント アラートを作成する](#create-alerts-for-tracking-events)
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Log Analytics を使用するように HDInsight クラスターを構成し、HDInsight クラスター固有の Log Analytics 管理ソリューションをワークスペースに追加しておく必要があります。 手順については、「[Log Analytics を使用して Azure HDInsight クラスターを監視する](hdinsight-hadoop-oms-log-analytics-tutorial.md)」をご覧ください。
+* Azure Monitor ログを使用するように HDInsight クラスターを構成し、HDInsight クラスター固有の Azure Monitor ログ監視ソリューションをワークスペースに追加しておく必要があります。 手順については、「[Use Azure Monitor logs with HDInsight clusters](hdinsight-hadoop-oms-log-analytics-tutorial.md)」(HDInsight クラスターでの Azure Monitor ログの使用) を参照してください。
 
 ## <a name="analyze-hdinsight-cluster-metrics"></a>HDInsight クラスターのメトリックを分析する
 
@@ -34,7 +36,7 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 
 1. Azure Portal から HDInsight クラスターに関連付けられた Log Analytics ワークスペースを開きます。
 2. **[ログ検索]** タイルを選択します。
-3. 検索ボックスに、Azure Log Analytics を使用するように構成したすべての HDInsight クラスターで使用できるすべてのメトリックを検索する次のクエリを入力して、**[実行]** を選択します。
+3. 検索ボックスに、Azure Monitor ログを使用するように構成したすべての HDInsight クラスターで使用できるすべてのメトリックを検索する次のクエリを入力して、**[実行]** を選択します。
 
         search *
 
@@ -46,7 +48,7 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 
 5. 左側のウィンドウの **[種類]** の下で、詳しく調べたいメトリックを選択して **[適用]** を選択します。 次のスクリーンショットは `metrics_resourcemanager_queue_root_default_CL` 種類を選択した場合を示しています。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 目的のメトリックが表示されていない場合は、**[[+] 増やす]** ボタンを選択します。 また、**[適用]** ボタンはリストの一番下にあるので、このボタンを表示するには下までスクロールする必要があります。
 
     テキスト ボックスのクエリが、下記のスクリーンショットの赤枠で示された内容に変わっていることを確認してください。
@@ -67,7 +69,7 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 
 1. Azure Portal から HDInsight クラスターに関連付けられた Log Analytics ワークスペースを開きます。
 2. **[ログ検索]** タイルを選択します。
-3. Azure Log Analytics を使用するように構成したすべての HDInsight クラスターのすべてのエラー メッセージを検索する次のクエリを入力して、**[実行]** を選択します。 
+3. Azure Monitor ログを使用するように構成したすべての HDInsight クラスターのすべてのエラー メッセージを検索する次のクエリを入力して、**[実行]** を選択します。 
 
          search "Error"
 
@@ -115,13 +117,13 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 1. Azure Portal から Log Analytics ワークスペースを開きます。
 2. 左側のメニューで、**[アラート]** を選択します。
 3. 編集または削除するアラートを選択します。
-4. **[保存]**、**[破棄]**、**[無効化]**、および **[削除]** の各オプションがあります。
+4. 次のオプションがあります。**[保存]**、**[破棄]**、**[無効化]**、**[削除]** です。
 
-    ![HDInsight の Log Analytics のアラートの削除/編集](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
+    ![HDInsight Azure Monitor ログ アラートの削除または編集](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 
-詳細については、「[Log Analytics のアラート ルールの操作](../log-analytics/log-analytics-alerts-creating.md)」を参照してください。
+詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../azure-monitor/platform/alerts-metric.md)」を参照してください。
 
 ## <a name="see-also"></a>関連項目
 
-* [Log Analytics の使用](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
-* [Log Analytics でのアラート ルールの作成](../log-analytics/log-analytics-alerts-creating.md)
+* [Azure Monitor のビュー デザイナーを使用してカスタム ビューを作成する](../azure-monitor/platform/view-designer.md)
+* [Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../azure-monitor/platform/alerts-metric.md)

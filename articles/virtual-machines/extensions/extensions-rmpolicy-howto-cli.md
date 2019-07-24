@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 529758a7b9fe4c8b669ade72273335389020fb65
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 1f71276c25e3ec1e5791d9b35f89aa95190c6afd
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451205"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341964"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Azure Policy を使用して Linux VM への拡張機能のインストールを制限する
 
@@ -28,7 +28,7 @@ ms.locfileid: "47451205"
 
 ## <a name="create-a-rules-file"></a>規則ファイルを作成する
 
-どの拡張機能をインストールできるようにするかを制限するには、拡張機能を特定するロジックを提供する[規則](/azure/azure-policy/policy-definition#policy-rule)が必要です。
+どの拡張機能をインストールできるようにするかを制限するには、拡張機能を特定するロジックを提供する[規則](../../governance/policy/concepts/definition-structure.md#policy-rule)が必要です。
 
 この例では、Azure Cloud Shell で規則ファイルを作成することで、"Microsoft.OSTCExtensions" によって発行された拡張機能のインストールを拒否する方法を示していますが、ローカルの CLI で作業している場合は、ローカル ファイルを作成して、パス (~/clouddrive) を、ご利用のマシンのそのローカル ファイルへのパスに置き換えることもできます。
 
@@ -69,7 +69,7 @@ vim ~/clouddrive/azurepolicy.rules.json
 
 ## <a name="create-a-parameters-file"></a>パラメーター ファイルを作成する
 
-また、ブロックする拡張機能の一覧を渡すための構造体が自動的に作成されるように、[パラメーター](/azure/azure-policy/policy-definition#parameters) ファイルを作成する必要もあります。 
+また、ブロックする拡張機能の一覧を渡すための構造体が自動的に作成されるように、[パラメーター](../../governance/policy/concepts/definition-structure.md#parameters) ファイルを作成する必要もあります。 
 
 この例では、Cloud Shell で Linux VM 用のパラメーター ファイルを作成する方法を示していますが、ローカルの CLI で作業している場合は、ローカル ファイルを作成して、パス (~/clouddrive) を、ご利用のマシンのそのローカル ファイルへのパスに置き換えることもできます。
 
@@ -98,7 +98,7 @@ vim ~/clouddrive/azurepolicy.parameters.json
 
 ## <a name="create-the-policy"></a>ポリシーの作成
 
-ポリシー定義は、使用したい構成を格納するためのオブジェクトです。 ポリシー定義では、規則とパラメーター ファイルを使用してポリシーを定義します。 ポリシー定義は、[az policy definition create](/cli/azure/role/assignment?view=azure-cli-latest#az_role_assignment_create) を使用して作成します。
+ポリシー定義は、使用したい構成を格納するためのオブジェクトです。 ポリシー定義では、規則とパラメーター ファイルを使用してポリシーを定義します。 ポリシー定義は、[az policy definition create](/cli/azure/role/assignment?view=azure-cli-latest) を使用して作成します。
 
 この例において、規則とパラメーターは、使用しているクラウド シェル内で、.json ファイルとして作成、格納したファイルです。
 
@@ -115,9 +115,9 @@ az policy definition create \
 
 ## <a name="assign-the-policy"></a>ポリシーを割り当てる
 
-この例では、[az policy assignment create](/cli/azure/policy/assignment#az_policy_assignment_create) を使用して、ポリシーをリソース グループに割り当てます。 **myResourceGroup** リソース グループに作成された VM はどれも、Linux VM Access や Linux 用のカスタム スクリプト拡張機能をインストールできません。 ポリシーを割り当てるには、必ずリソース グループが存在している必要があります。
+この例では、[az policy assignment create](/cli/azure/policy/assignment) を使用して、ポリシーをリソース グループに割り当てます。 **myResourceGroup** リソース グループに作成された VM はどれも、Linux VM Access や Linux 用のカスタム スクリプト拡張機能をインストールできません。 ポリシーを割り当てるには、必ずリソース グループが存在している必要があります。
 
-[az account list](/cli/azure/account?view=azure-cli-latest#az_account_list) を使用して、この例の ID の代わりに使用するご自身のサブスクリプション ID を取得します。
+[az account list](/cli/azure/account?view=azure-cli-latest) を使用して、この例の ID の代わりに使用するご自身のサブスクリプション ID を取得します。
 
 
 ```azurecli-interactive
@@ -171,6 +171,6 @@ az policy assignment delete --name 'not-allowed-vmextension-linux' --resource-gr
 az policy definition delete --name 'not-allowed-vmextension-linux'
 ```
 
-
 ## <a name="next-steps"></a>次の手順
-詳細については、[Azure Policy](../../azure-policy/azure-policy-introduction.md) に関するページをご覧ください。
+
+詳細については、[Azure Policy](../../governance/policy/overview.md) に関するページをご覧ください。

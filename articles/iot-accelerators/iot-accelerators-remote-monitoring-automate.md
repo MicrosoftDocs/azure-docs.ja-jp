@@ -1,5 +1,5 @@
 ---
-title: Azure ベースのリモート監視ソリューションでデバイスの問題を検出するチュートリアル | Microsoft Docs
+title: リモート監視ソリューションでデバイスの問題を検出するチュートリアル - Azure | Microsoft Docs
 description: このチュートリアルでは、ルールとアクションを使用して、リモート監視ソリューションでしきい値に基づくデバイスの問題を自動的に検出する方法を示します。
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 7ebe81565bc6bd28747f3a251b39a3c010493307
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 91ee5087e5f41cda3648c2ecadcfcf16fd32a249
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819102"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598683"
 ---
-# <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>チュートリアル: 監視ソリューションに接続されているデバイスの問題の検出
+# <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>チュートリアル:監視ソリューションに接続されているデバイスの問題の検出する
 
 このチュートリアルでは、リモート監視ソリューション アクセラレータを構成して、接続されている IoT デバイスの問題を検出します。 デバイスの問題を検出するには、ソリューションのダッシュボードでアラートを生成するルールを追加します。
 

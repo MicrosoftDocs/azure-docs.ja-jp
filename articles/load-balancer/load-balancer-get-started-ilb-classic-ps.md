@@ -1,5 +1,6 @@
 ---
-title: Azure の内部ロード バランサーの作成 - PowerShell クラシック | Microsoft Docs
+title: 内部ロード バランサーを作成する - PowerShell クラシック
+titlesuffix: Azure Load Balancer
 description: クラシック デプロイ モデルで PowerShell を使用して、内部ロード バランサーを作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: genlin
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms:custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: genli
-ms.openlocfilehash: f8a24a12521d678cee0e255677881760828d1e1f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ef6aac0d97c38798f826304475779ea8059875c7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414711"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097983"
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-using-powershell"></a>PowerShell を使用した内部ロード バランサー (クラシック) の作成の開始
 
@@ -28,7 +30,7 @@ ms.locfileid: "50414711"
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-ps.md)方法について説明します。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)です。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-ps.md)方法について説明します。
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -42,7 +44,7 @@ ms.locfileid: "50414711"
 2. 着信トラフィックを受信する仮想マシンに対応するエンドポイントを追加します。
 3. 内部負荷分散インスタンスの仮想 IP (VIP) アドレスにトラフィックを送信するように負荷分散されたトラフィックを送信するサーバーを構成します。
 
-### <a name="step-1-create-an-internal-load-balancing-instance"></a>手順 1. 内部負荷分散インスタンスを作成する
+### <a name="step-1-create-an-internal-load-balancing-instance"></a>手順 1: 内部負荷分散インスタンスを作成する
 
 既存のクラウド サービス、またはリージョンの仮想ネットワークでデプロイされたクラウド サービスでは、次の Windows PowerShell コマンドを使用して内部負荷分散インスタンスを作成できます。
 
@@ -57,7 +59,7 @@ Add-AzureInternalLoadBalancer -ServiceName $svc -InternalLoadBalancerName $ilb �
 
 この [Add-azureendpoint](https://msdn.microsoft.com/library/dn495300.aspx) Windows PowerShell コマンドレットでは、DefaultProbe パラメーター セットを使用します。 追加のパラメーター セットの詳細については、「 [Add-azureendpoint](https://msdn.microsoft.com/library/dn495300.aspx)」をご覧ください。
 
-### <a name="step-2-add-endpoints-to-the-internal-load-balancing-instance"></a>手順 2. 内部負荷分散インスタンスにエンドポイントを追加する
+### <a name="step-2-add-endpoints-to-the-internal-load-balancing-instance"></a>手順 2: 内部負荷分散インスタンスにエンドポイントを追加する
 
 たとえば次のようになります。
 
@@ -73,7 +75,7 @@ $ilb="ilbset"
 Get-AzureVM –ServiceName $svc –Name $vmname | Add-AzureEndpoint -Name $epname -Lbset $lbsetname -Protocol $prot -LocalPort $locport -PublicPort $pubport –DefaultProbe -InternalLoadBalancerName $ilb | Update-AzureVM
 ```
 
-### <a name="step-3-configure-your-servers-to-send-their-traffic-to-the-new-internal-load-balancing-endpoint"></a>手順 3. 新しい内部負荷分散エンドポイントにトラフィックを送信するようにサーバーを構成する
+### <a name="step-3-configure-your-servers-to-send-their-traffic-to-the-new-internal-load-balancing-endpoint"></a>手順 3:新しい内部負荷分散エンドポイントにトラフィックを送信するようにサーバーを構成する
 
 トラフィックを負荷分散するサーバーを、内部負荷分散インスタンスの新しい IP アドレス (VIP) を使用するように構成する必要があります。 このアドレスは、内部負荷分散インスタンスがリッスンしているアドレスです。 多くの場合、必要な操作は、内部負荷分散インスタンスの VIP の DNS レコードの追加または変更のみです。
 

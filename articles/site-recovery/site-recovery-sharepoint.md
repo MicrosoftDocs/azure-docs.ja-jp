@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 5e3ebd7d3aa5555fbe5ea77dece6eb3177809de7
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 5f477cf20b817d7a6c8be856636bf1e3755b5424
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215076"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443489"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 SharePoint アプリケーションのディザスター リカバリーを設定する
 
@@ -29,7 +29,7 @@ Microsoft SharePoint は、グループあるいは部署が情報を整理、�
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して SharePoint アプリケーションを保護する方法の詳細を説明します。 また、3 層の SharePoint アプリケーションを Azure にレプリケートするさいのベスト プラクティスや、ディザスター リカバリー訓練の実施方法、アプリケーションを Azure にフェールオーバーする方法についても説明します。
 
-下記は、Azure への複数層アプリケーションの回復を扱ったビデオです。
+下記は、Azure への多層アプリケーションの回復を扱ったビデオです。
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/Disaster-Recovery-of-load-balanced-multi-tier-applications-using-Azure-Site-Recovery/player]
 
@@ -62,10 +62,10 @@ SharePoint は階層型トポロジーとサーバー ロールを使用して 1
 
 **シナリオ** | **セカンダリ サイトへ** | **Azure へ**
 --- | --- | ---
-**Hyper-V** | [はい] | [はい]
-**VMware** | [はい] | [はい]
-**物理サーバー** | [はい] | [はい]
-**Azure** | 該当なし | [はい]
+**Hyper-V** | はい | はい
+**VMware** | はい | はい
+**物理サーバー** | はい | はい
+**Azure** | NA | はい
 
 ### <a name="sharepoint-versions"></a>SharePoint のバージョン
 次の SharePoint Server のバージョンがサポートされています。

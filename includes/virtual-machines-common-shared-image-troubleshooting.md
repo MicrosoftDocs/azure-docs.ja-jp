@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/20/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 2902fe53e7f3ffb86dc727ebcdc2200ba02ac203
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0eb47c8ec470ef05f3c6ae37bdc75e5bb1043eb0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047220"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55736207"
 ---
 共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンで任意の操作を実行しているときに問題が発生した場合は、デバッグ モードでエラー コマンドを再実行します。 CLI では **-debug** スイッチ、PowerShell では **-Debug** スイッチを渡すことで、デバッグ モードがアクティブ化されます。 エラーの場所を特定したら、このドキュメントに従ってエラーをトラブルシューティングします。
 
@@ -52,7 +52,7 @@ ms.locfileid: "47047220"
 
 "*イメージ バージョン名が無効である。*"
 
-イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式は *MajorVersion.MinorVersion.Patch* です。 イメージ バージョン名を変更して、再試行してください。
+イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式:*MajorVersion.MinorVersion.Patch*。 イメージ バージョン名を変更して、再試行してください。
 
 "*イメージ バージョンの作成元であるソース マネージド イメージが見つからない。*" 
 
@@ -67,7 +67,7 @@ ms.locfileid: "47047220"
 以下の表を使用して、対象のソース リージョンがサポートされているかを確認してください。
 <br>
 
-| ギャラリーの作成場所 ("ソース リージョン")   | リージョンのレプリケート先 ("ターゲット リージョン") |
+| ギャラリーの作成場所 ("ソース リージョン")   | バージョンのレプリケート先 ("ターゲット リージョン") |
 |----------------------------------------|-------------------------------------------|
 | 米国中西部                        | すべての Azure Public Cloud リージョン            |
 | 米国中南部                       |                                           |

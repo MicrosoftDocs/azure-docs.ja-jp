@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 35cd773c2a30549dde10a73b2fbe6db1a0c8b34a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5ed5e791cd6e611218769650115c78afd1869f67
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989381"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798778"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Linux 用 Network Watcher Agent 仮想マシン拡張機能
 
@@ -36,7 +36,7 @@ ms.locfileid: "46989381"
 
 Network Watcher Agent 拡張機能は、次の Linux ディストリビューションで構成できます。
 
-| ディストリビューション | Version |
+| ディストリビューション | バージョン |
 |---|---|
 | Ubuntu | 12 以降 |
 | Debian | 7、8 |
@@ -118,9 +118,9 @@ azure vm extension get myVM1
 ```
 拡張機能の実行の出力は、次のディレクトリ内のファイルにログ記録されます。
 
-`
+```
 /var/log/azure/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentLinux/
-`
+```
 
 次の例は、Azure CLI で Resource Manager を使用してデプロイされた VM の NetworkWatcherAgentLinux に対する拡張機能のデプロイ状態を示しています。
 

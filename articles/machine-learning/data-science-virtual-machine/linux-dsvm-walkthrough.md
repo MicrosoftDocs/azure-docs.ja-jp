@@ -1,26 +1,28 @@
 ---
-title: Azure での Linux データ サイエンス仮想マシンを使用したデータ サイエンス | Microsoft Docs
+title: Linux Data Science Virtual Machine の使用方法について説明します。
+titleSuffix: Azure
 description: Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法。
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
 editor: cgronlun
+ms.custom: seodec18
 ms.assetid: 34ef0b10-9270-474f-8800-eecb183bbce4
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 49956234c00129508254b96d7d63a4b30af3ad55
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 6e8883870cc0f035df5122e91449f04203836218
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037585"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319467"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure での Linux データ サイエンス仮想マシンを使用したデータ サイエンス
 このチュートリアルでは、Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法を示します。 Linux データ サイエンス仮想マシン (DSVM) は Azure で使用できる仮想マシン イメージであり、データ分析と機械学習で一般的に使用されているいくつかのツールがプレインストールされています。 主なソフトウェア コンポーネントは、トピック「 [Linux データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md) 」にまとめられています。 この VM イメージを使うと、各ツールを個別にインストールして構成する必要がないため、データ サイエンスを数分で簡単に開始できます。 VM は、必要に応じて簡単にスケールアップし、使用しないときには停止できます。 したがって、このリソースは弾力性があるうえに、コスト効率が優れています。
@@ -34,7 +36,7 @@ Linux データ サイエンス仮想マシンを使用する前に、次を用�
 
 * **Azure サブスクリプション**。 Azure サブスクリプションがない場合は、「 [無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free/)」をご覧ください。
 * [**Linux データ サイエンス VM**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm)。 この VM のプロビジョニング方法については、「 [Linux データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md)」をご覧ください。
-* [X2Go](http://wiki.x2go.org/doku.php) がコンピューターにインストールされており、XFCE セッションが開かれている。 **X2Go クライアント**のインストールと構成については、「[X2Go クライアントのインストールと構成](linux-dsvm-intro.md#installing-and-configuring-x2go-client)」をご覧ください。
+* [X2Go](https://wiki.x2go.org/doku.php) がコンピューターにインストールされており、XFCE セッションが開かれている。 **X2Go クライアント**のインストールと構成については、「[X2Go クライアントのインストールと構成](linux-dsvm-intro.md#installing-and-configuring-x2go-client)」をご覧ください。
 * スクロールをスムーズにするために、VM の FireFox ブラウザーで about:config の gfx.xrender.enabled フラグを切り替えます。 詳細については、[こちら](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)を参照してください。 *mousewheel.enable_pixel_scrolling* を False に切り替えることも検討してください。 手順については、[こちら](https://support.mozilla.org/en-US/questions/981140)を参照してください。
 * **AzureML アカウント**。 AzureML アカウントがない場合は、 [AzureML ホームページ](https://studio.azureml.net/)で新しいアカウントにサインアップしてください。 開始する際に役立つ Free レベルがあります。
 
@@ -50,7 +52,7 @@ Linux データ サイエンス仮想マシンを使用する前に、次を用�
 
 データをダウンロードするには、ターミナル ウィンドウを開き、次のコマンドを実行します。
 
-    wget http://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
+    wget https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
 
 ダウンロードされたファイルにはヘッダー行がありません。そのため、ヘッダーのある別のファイルを作成します。 次のコマンドを実行して、適切なヘッダーを含むファイルを作成します。
 
@@ -99,7 +101,7 @@ R を使って、データを確認し、基本的な機械学習を実行して
 
     data$spam <- as.factor(data$spam)
 
-探索式の分析を行うには、 [ggplot2](http://ggplot2.org/) パッケージ (VM に既にインストールされている R の一般的なグラフ作成ライブラリ) を使用します。 先ほど表示した概要データには、感嘆符文字の出現頻度に関する概要統計情報があります。 次のコマンドを使って、それらの頻度をプロットしてみましょう。
+探索式の分析を行うには、 [ggplot2](https://ggplot2.tidyverse.org/) パッケージ (VM に既にインストールされている R の一般的なグラフ作成ライブラリ) を使用します。 先ほど表示した概要データには、感嘆符文字の出現頻度に関する概要統計情報があります。 次のコマンドを使って、それらの頻度をプロットしてみましょう。
 
     library(ggplot2)
     ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
@@ -178,10 +180,10 @@ R を使って、データを確認し、基本的な機械学習を実行して
     accuracy
 
 
-## <a name="deploy-a-model-to-azure-ml"></a>Azure ML にモデルをデプロイする
-[Azure Machine Learning Studio](https://studio.azureml.net/) (AzureML) は、予測分析モデルを簡単に構築してデプロイできるクラウド サービスです。 AzureML の便利な機能の 1 つに、任意の R 関数を Web サービスとして発行する機能があります。 AzureML R パッケージを使うと、DSVM 上の R セッションから直接簡単にデプロイできます。
+## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Azure Machine Learning Studio にモデルをデプロイする
+[Azure Machine Learning Studio](https://studio.azureml.net/) は、予測分析モデルを簡単に構築してデプロイできるクラウド サービスです。 Azure Machine Learning Studio の便利な機能の 1 つに、任意の R 関数を Web サービスとして発行する機能があります。 Azure Machine Learning Studio R パッケージを使うと、DSVM 上の R セッションから直接簡単にデプロイできます。
 
-前のセクションのデシジョン ツリー コードをデプロイするには、Azure Machine Learning Studio にサインインする必要があります。 サインインするには、ワークスペース ID と認証トークンが必要です。 これらの値を見つけ、これらの値で AzureML の変数を初期化するには、次を実行します。
+前のセクションのデシジョン ツリー コードをデプロイするには、Azure Machine Learning Studio にサインインする必要があります。 サインインするには、ワークスペース ID と認証トークンが必要です。 これらの値を見つけ、これらの値で Azure Machine Learning の変数を初期化するには、次を実行します。
 
 左側のメニューにある **[設定]** を選択します。 **[ワークスペース ID]** の値をメモします。 ![2](./media/linux-dsvm-walkthrough/workspace-id.png)
 
@@ -261,14 +263,14 @@ python またはコマンド ラインから呼び出すこともできます。
 Python を使用して開発するために、DSVM には Anaconda Python ディストリビューション 2.7 および 3.5 がインストールされています。
 
 > [!NOTE]
-> Anaconda ディストリビューションには、[Conda](http://conda.pydata.org/docs/index.html) が含まれています。これを使用して、さまざまなバージョンやパッケージがインストールされている、Python 用のカスタム環境を作成できます。
+> Anaconda ディストリビューションには、[Conda](https://conda.pydata.org/docs/index.html) が含まれています。これを使用して、さまざまなバージョンやパッケージがインストールされている、Python 用のカスタム環境を作成できます。
 >
 >
 
 scikit-learn のサポート ベクター マシンを使用して、spambase データセットの一部を読み取り、メールを分類してみましょう。
 
     import pandas
-    from sklearn import svm    
+    from sklearn import svm
     data = pandas.read_csv("spambaseHeaders.data", sep = ',\s*')
     X = data.ix[:, 0:57]
     y = data.ix[:, 57]
@@ -316,21 +318,19 @@ DSVM の Anaconda ディストリビューションには、Jupyter Notebook (Py
 
 > [!NOTE]
 > 現在のカーネルの Jupyter Notebook から (`pip` コマンドを通して) Python Package Manager を使用するには、コード セルで、次のコマンドを次の例のように使用できます。
-```python
-   import sys
-   ! {sys.executable} -m pip install numpy -y
-```
->
->
-
+>   ```python
+>    import sys
+>    ! {sys.executable} -m pip install numpy -y
+>   ```
+> 
+> 
+> 
 > [!NOTE]
 > 現在のカーネルの Jupyter Notebook から (`conda` コマンドを通して) Conda インストーラーを使用するには、コード セルで、次のコマンドを次の例のように使用できます。
-```python
-   import sys
-   ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
-```
->
->
+>   ```python
+>    import sys
+>    ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
+>   ```
 
 いくつかのサンプル Notebook は、VM に既にインストールされています。
 
@@ -344,7 +344,7 @@ DSVM の Anaconda ディストリビューションには、Jupyter Notebook (Py
 >
 
 ## <a name="rattle"></a>Rattle
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (R Analytical Tool To Learn Easily) は、データ マイニング用のグラフィカル R ツールです。 直感的なインターフェイスにより、データの読み込み、探索、変換のほか、モデルの構築と評価を簡単に行うことができます。  「 [Rattle: A Data Mining GUI for R (Rattle: R 向けのデータ マイニング GUI)](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) 」では、その機能を示すチュートリアルを提供しています。
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (R Analytical Tool To Learn Easily) は、データ マイニング用のグラフィカル R ツールです。 直感的なインターフェイスにより、データの読み込み、探索、変換のほか、モデルの構築と評価を簡単に行うことができます。  記事「[Rattle: A Data Mining GUI for R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf)」 (Rattle: R 向けのデータ マイニング GUI) で、その機能を示すチュートリアルが提供されています。
 
 次のコマンドで Rattle をインストールして起動します。
 
@@ -357,7 +357,7 @@ DSVM の Anaconda ディストリビューションには、Jupyter Notebook (Py
 >
 >
 
-Rattle では、タブベースのインターフェイスを使用します。 タブのほとんどは、「 [データ サイエンス プロセス](https://azure.microsoft.com/documentation/learning-paths/data-science-process/)」の手順に対応しています (データの読み込みや探索など)。 データ サイエンス プロセスは、タブの左から右へと進んで行きます。 ただし、最後のタブには、Rattle で実行された R コマンドのログが含まれます。
+Rattle では、タブベースのインターフェイスを使用します。 タブのほとんどは、「 [データ サイエンス プロセス](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)」の手順に対応しています (データの読み込みや探索など)。 データ サイエンス プロセスは、タブの左から右へと進んで行きます。 ただし、最後のタブには、Rattle で実行された R コマンドのログが含まれます。
 
 データセットを読み込んで構成するには:
 
@@ -423,7 +423,7 @@ Rattle の便利な機能の 1 つに、複数の機械学習メソッドを実�
 モデルの構築が完了したら、 **[Log (ログ)]** タブをクリックして、セッション中に Rattle によって実行された R コードを表示します。 **[Export (エクスポート)]** をクリックすると、保存することができます。
 
 > [!NOTE]
-> 現在のリリースの Rattle にはバグがあります。 スクリプトを変更したり、スクリプトを使って後で手順を繰り返したりするには、ログのテキストの *Export this log ... * の前に # 文字を挿入する必要があります。
+> 現在のリリースの Rattle にはバグがあります。 スクリプトを変更したり、スクリプトを使って後で手順を繰り返したりするには、ログのテキストの「*Export this log ...*」の前に # 文字を挿入する必要があります。
 >
 >
 
@@ -513,7 +513,7 @@ psql (PostgreSQL の対話型ターミナル) を組み込みの postgres ユー
 
 *3d* が高い頻度で含まれているメールのほとんどは実際にはスパムです。そのため、これは、メールを分類する予測モデルを構築する際に便利な特徴となります。
 
-PostgreSQL データベースに格納されたデータを使用して機械学習を実行する場合は、 [MADlib](http://madlib.incubator.apache.org/)の使用を検討してください。
+PostgreSQL データベースに格納されたデータを使用して機械学習を実行する場合は、 [MADlib](https://madlib.incubator.apache.org/)の使用を検討してください。
 
 ## <a name="sql-server-data-warehouse"></a>SQL Server Data Warehouse
 Azure SQL Data Warehouse は、クラウドベースのスケールアウト データベースであり、リレーショナルか非リレーショナルかを問わず、大規模なデータを処理できます。 詳しくは、「 [Azure SQL Data Warehouse の概要](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)

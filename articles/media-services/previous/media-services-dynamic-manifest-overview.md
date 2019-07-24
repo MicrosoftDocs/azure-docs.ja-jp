@@ -12,25 +12,30 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/06/2018
+ms.date: 03/18/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: 6060f294820281df3124fb2fc702ece59a006af1
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 229f89a8803f089c24981f56e00e36efe96de3aa
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282409"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316595"
 ---
 # <a name="filters-and-dynamic-manifests"></a>フィルターと動的マニフェスト
+
+> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> * [Version 2](media-services-dynamic-manifest-overview.md)
+> * [Version 3](../latest/filters-dynamic-manifest-overview.md)
+
 Media Services のリリース 2.17 以降では、資産にフィルターを定義できます。 これらのフィルターは、ビデオの 1 つのセクションのみの再生や (ビデオ全体を再生するのではなく)、顧客のデバイスが処理できるオーディオ サブセットとビデオ演奏のみの再生 (資産に関連付けられているすべての演奏ではなく) などを顧客が選択できるようにする、サーバー側のルールです。 この資産のフィルター処理は**動的マニフェスト**によって実行されます。これは、指定したフィルターに基づいてビデオをストリームする必要がある顧客のリクエストに応じて作成されます。
 
-このトピックでは、顧客にとってフィルターを使用することが非常に効果的である一般的なシナリオを示し、プログラムによるフィルターの作成方法を説明するトピックへのリンクを示します。
+このトピックでは、顧客にとってどのフィルターを使用することが効果的であるか一般的なシナリオを示し、プログラムによるフィルターの作成方法を説明するトピックへのリンクを示します。
 
 ## <a name="overview"></a>概要
 コンテンツ (ストリーミング ライブ イベントまたはビデオ オン デマンド) を顧客に配信する場合、その目標は、異なるネットワーク条件におけるさまざまなデバイスに高品質のビデオを配信することにあります。 この目標を達成するために、次の操作を行います。
 
-* ストリームをマルチビットレート ([アダプティブ ビットレート](http://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) ビデオ ストリームにエンコードします (これにより品質とネットワーク条件に対応)。 
-* Media Services の [動的パッケージ](media-services-dynamic-packaging-overview.md) を使用して、ストリームをさまざまなプロトコルに動的に再パッケージ化します (これにより異なるデバイスでのストリーミングに対応)。 Media Services でサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH です。 
+* ストリームをマルチビットレート ([アダプティブ ビットレート](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) ビデオ ストリームにエンコードします (これにより品質とネットワーク条件に対応)。 
+* Media Services の [動的パッケージ](media-services-dynamic-packaging-overview.md) を使用して、ストリームをさまざまなプロトコルに動的に再パッケージ化します (これにより異なるデバイスでのストリーミングに対応)。 Media Services は、次のアダプティブ ビットレート ストリーミング配信テクノロジをサポートしています。HTTP ライブ ストリーミング (HLS)、Smooth Streaming、および MPEG DASH 
 
 ### <a name="manifest-files"></a>マニフェスト ファイル
 アダプティブ ビットレート ストリーミングのアセットをエンコードすると、 **マニフェスト** (再生リスト) ファイルが作成されます (ファイルはテキスト ベースか XML ベース)。 **マニフェスト** ファイルには、トラックの種類 (オーディオ、ビデオ、テキスト)、トラック名、開始時刻と終了時刻、ビットレート (品質)、トラック言語、プレゼンテーション ウィンドウ (固定時間のスライディング ウィンドウ)、ビデオ コーデック (FourCC) などの、ストリーミング メタデータが含まれます。 また、次に再生可能なビデオ フラグメントとその場所の情報を通知して、次のフラグメントを取得するようにプレイヤーに指示します。 フラグメント (またはセグメント) とは、ビデオ コンテンツの実際の「チャンク」です。
@@ -73,17 +78,17 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
 * デバイスに固有: コンテンツの再生に使用するデバイスでサポートしている演奏や言語のトラックのみを指定して配信する場合 (「演奏フィルタ―処理」)。 
 * マニフェストを減らして、ライブ イベントのサブクリップのみを表示する場合 (「サブクリップ フィルター処理」)
 * ビデオの開始をトリミングする場合 (「ビデオのトリミング」)
-* プレゼンテーション ウィンドウ (DVR) を調整し、プレーヤーの DVR ウィンドウの長さを限定する場合 (「プレゼンテーション ウィンドウの調整」)
+* プレゼンテーション ウィンドウ (DVR) を調整し、プレーヤーの DVR ウィンドウの長さを限定する ("プレゼンテーション ウィンドウの調整")。
 
-このような柔軟性を実現するために、Media Services では定義済みの **フィルター** に基づいた [動的マニフェスト](media-services-dynamic-manifest-overview.md#filters)を用意しています。  フィルターを定義しておくと、クライアントはそのフィルターを使用して、ビデオの特定の演奏やサブクリップをストリーミングできるようになります。 ストリーミング URL にフィルターを指定することもできます。 フィルターは、[ダイナミック パッケージ](media-services-dynamic-packaging-overview.md) (HLS、MPEG DASH、スムーズ ストリーミング) でサポートされるアダプティブ ビットレート ストリーミング プロトコルに適用できます。 例: 
+このような柔軟性を実現するために、Media Services では定義済みの **フィルター** に基づいた [動的マニフェスト](media-services-dynamic-manifest-overview.md#filters)を用意しています。  フィルターを定義しておくと、クライアントはそのフィルターを使用して、ビデオの特定の演奏やサブクリップをストリーミングできるようになります。 ストリーミング URL にフィルターを指定することもできます。 フィルターは、[ダイナミック パッケージ](media-services-dynamic-packaging-overview.md) によってサポートされるアダプティブ ビットレート ストリーミング プロトコル (HLS、MPEG-DASH、および Smooth Streaming) に適用できます。 例: 
 
 フィルターを使用した MPEG DASH URL
 
-    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=MyLocalFilter)
+    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=MyLocalFilter)
 
 フィルターを使用した Smooth Streaming URL
 
-    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyLocalFilter)
+    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyLocalFilter)
 
 
 コンテンツを配信してストリーミング URL をビルドする方法の詳細については、「 [コンテンツの配信の概要](media-services-deliver-content-overview.md)」をご覧ください。
@@ -115,7 +120,7 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
 
 ![演奏フィルター処理例][renditions2]
 
-次の例では、エンコーダーを使用して中間ファイル アセットを 7 つの ISO MP4 ビデオ演奏にエンコードしました (180p ～ 1080p)。 エンコード済みのアセットは、いずれかのストリーミング プロトコル (HLS、スムーズ、MPEG DASH) に動的にパッケージ化できます。  図の上部には、フィルターを使用しないアセット用の HLS マニフェストが表示されています (これには全 7 演奏が含まれています)。  左下には、"ott" という名前のフィルターが適用された HLS マニフェストが表示されています。 "ott" フィルターでは、下の 2 つの品質レベルが応答で除去されてしまうため、1 Mbps より低いビットレートをすべて削除するように指定します。 右下には、"mobile" という名前のフィルターが適用された HLS マニフェストが表示されています。 "mobile" フィルターでは、2 つの 1080 p の演奏が除去されてしまうため、解像度が 720 p を超える演奏を削除するように指定します。
+次の例では、エンコーダーを使用して中間ファイル アセットを 7 つの ISO MP4 ビデオ演奏にエンコードしました (180p ～ 1080p)。 エンコード済みのアセットは、HLS、Smooth、MPEG DASH のいずれかのストリーミング プロトコルに動的にパッケージ化できます。  図の上部には、フィルターを使用しないアセット用の HLS マニフェストが表示されています (これには全 7 演奏が含まれています)。  左下には、"ott" という名前のフィルターが適用された HLS マニフェストが表示されています。 "ott" フィルターでは、下の 2 つの品質レベルが応答で除去されてしまうため、1 Mbps より低いビットレートをすべて削除するように指定します。 右下には、"mobile" という名前のフィルターが適用された HLS マニフェストが表示されています。 "mobile" フィルターでは、2 つの 1080 p の演奏が除去されてしまうため、解像度が 720 p を超える演奏を削除するように指定します。
 
 ![演奏フィルター処理][renditions1]
 

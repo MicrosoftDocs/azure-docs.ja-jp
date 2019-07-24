@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: 80d96bcb6b6073987f07ed6954f25023ab1133a4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2642d956d94a0a685d6586be1a7b0446e94f1042
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247519"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59264439"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-c-backend-and-c-device"></a>C バックエンドおよび C デバイスを使用した Azure IoT Hub モジュール ID とモジュール ツインの概要
 
@@ -176,9 +176,9 @@ int main(void)
 
 このセクションでは、モジュール ツインによって報告されるプロパティを更新する C アプリをシミュレートされたデバイス上に作成します。
 
-1. **モジュールの接続文字列を取得する** -- [Azure Portal](https://portal.azure.com) にログインします。 IoT Hub に移動し、[IoT デバイス] をクリックします。 myFirstDevice を検索して開くと、myFirstModule が作成されていることを確認できます。 モジュールの接続文字列をコピーします。 これは、次の手順で必要になります。
+1. **モジュールの接続文字列を取得する** -- [Azure Portal](https://portal.azure.com) にログインします。 IoT Hub に移動し、[IoT デバイス] をクリックします。 myFirstDevice を検索して開くと、myFirstModule が正常に作成されていることを確認できます。 モジュールの接続文字列をコピーします。 これは、次の手順で必要になります。
 
-    ![Azure Portal モジュールの詳細](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG)
+    ![Azure Portal モジュールの詳細](./media/iot-hub-c-c-module-twin-getstarted/module-detail.png)
 
 2. **UpdateModuleTwinReportedProperties アプリを作成する** - **Program.cs** ファイルの最上部に、次の `using` ステートメントを追加します。
 

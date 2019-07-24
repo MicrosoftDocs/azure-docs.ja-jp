@@ -5,16 +5,16 @@ description: これは Custom Translator でのドキュメントの形式と名
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: fef4ecd207fd32b5a92a4c072832f3ab45b58300
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: dec5ce37aa3b4e9d4d6fcab964c1e48b606a4cd0
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626981"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338056"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>ドキュメントの形式と名前付け規則のガイダンス
 
@@ -22,7 +22,7 @@ ms.locfileid: "51626981"
 
 この表には、翻訳システムの構築に使用できる、サポートされているすべてのファイル形式がまとめられています。
 
-| 形式            | 拡張機能   | 説明                                                                                                                                                                                                                                                                    |
+| 形式            | Extensions   | 説明                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | XLIFF             | .XLF、.XLIFF | 並列ドキュメント形式、翻訳メモリ システムのエクスポート。 使用される言語はファイル内で定義されています。                                                                                                                                                              |
 | TMX               | .TMX         | 並列ドキュメント形式、翻訳メモリ システムのエクスポート。 使用される言語はファイル内で定義されています。                                                                                                                                                              |
@@ -31,7 +31,7 @@ ms.locfileid: "51626981"
 | Microsoft Word    | .DOCX        | Microsoft Word 文書                                                                                                                                                                                                                                                        |
 | Adobe Acrobat     | .PDF         | Adobe Acrobat ポータブル ドキュメント                                                                                                                                                                                                                                                |
 | HTML              | .HTML、.HTM  | HTML ドキュメント                                                                                                                                                                                                                                                                  |
-| テキスト ファイル         | .TXT         | UTF-16 または UTF-8 エンコード形式のテキスト ファイル                                                                                                                                                                                                                                             |
+| テキスト ファイル         | .TXT         | UTF-16 または UTF-8 でエンコードされたテキスト ファイル。 このファイル名に日本語文字を含めることはできません。                                                                                                                                                                                        |
 | アライン済みテキスト ファイル | .ALIGN       | 拡張子 `.ALIGN` は、ドキュメント ペア内の文が完全にアラインされていることがわかっている場合に使用できる特別な拡張子です。 `.ALIGN` ファイルを指定すると、Custom Translator では文が自動的にアラインされません。 |
 | Excel ファイル        | .XLSX        | Excel ファイル (2013 以降)。 スプレッドシートの最初の行には言語コードを指定する必要があります。                                                                                                                                                                                                                                                      |
 
@@ -43,11 +43,13 @@ ms.locfileid: "51626981"
 
 複数のドキュメントを 1 つの zip ファイルにまとめてアップロードすることができます。 Custom Translator は、zip ファイル形式 (ZIP、GZ、TGZ) をサポートしています。
 
-zip ファイル内の各ドキュメントは、名前付け規則に従う必要があります。
+TXT、HTML、HTM、PDF、DOCX、ALIGN の拡張子を持つ、ZIP ファイル内の各ドキュメントは、次の名前付け規則に従う必要があります。
 
 {ドキュメント名}\_{言語コード}。この {ドキュメント名} はドキュメントの名前、{言語コード} は ISO LanguageID (2 文字) であり、ドキュメントにその言語の文が含まれていることを示します。 言語コードの前にアンダースコア (_) を指定する必要があります。
 
 たとえば、英語からスペイン語へのシステム用の zip 内に 2 つの並列ドキュメントを含めてアップロードするには、ファイル名を "data_en" と "data_es" にする必要があります。
+
+翻訳メモリ ファイル (TMX、XLF、XLIFF、LCL、XLSX) は、必ずしも特定の言語の名前付け規則に準拠している必要はありません。  
 
 ## <a name="next-steps"></a>次の手順
 

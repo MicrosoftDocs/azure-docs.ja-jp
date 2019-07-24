@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: db4a9a43a971f66870c2079762b9c62802122baa
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 33b47d33262a4968a0eafb9ec70ef73e50975735
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093325"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602819"
 ---
-# <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>チュートリアル: Azure App Service Web アプリへの Azure CDN の追加
+# <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>チュートリアル:Azure App Service Web アプリへの Azure CDN の追加
 
-このチュートリアルでは、[Azure App Service 内の Web アプリ](../app-service/app-service-web-overview.md)に [Azure Content Delivery Network (CDN)](cdn-overview.md) を追加する方法について説明します。 Web Apps は、Web アプリケーション、REST API、およびモバイル バックエンドをホストするためのサービスです。 
+このチュートリアルでは、[Azure App Service 内の Web アプリ](../app-service/overview.md)に [Azure Content Delivery Network (CDN)](cdn-overview.md) を追加する方法について説明します。 Web Apps は、Web アプリケーション、REST API、およびモバイル バックエンドをホストするためのサービスです。 
 
 以下に示したのは、これから扱うサンプルの静的 HTML サイトのホーム ページです。
 

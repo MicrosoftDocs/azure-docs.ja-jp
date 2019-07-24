@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,16 +16,17 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 8879cc331c5d0e8c6aab24e8c6178d96ab23bf9d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4c15890a5693235e8f2554ba8d0fdefc161770f3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955403"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165010"
 ---
 # <a name="native-apps"></a>ネイティブ アプリ
 
-ネイティブ アプリとは、ユーザーのために Web API を呼び出すアプリケーションです。 このシナリオは、[OAuth 2.0 仕様](http://tools.ietf.org/html/rfc6749)のセクション 4.1 に記載されている、パブリック クライアントを使用した OAuth 2.0 認証コード付与に基づいています。 ネイティブ アプリケーションが、OAuth 2.0 プロトコルを使用してユーザーのアクセス トークンを取得します。 このアクセス トークンが要求で Web API に送信されます。Web API がユーザーを認証し、目的のリソースを返します。
+ネイティブ アプリとは、ユーザーのために Web API を呼び出すアプリケーションです。 このシナリオは、[OAuth 2.0 仕様](https://tools.ietf.org/html/rfc6749)のセクション 4.1 に記載されている、パブリック クライアントを使用した OAuth 2.0 認証コード付与に基づいています。 ネイティブ アプリケーションが、OAuth 2.0 プロトコルを使用してユーザーのアクセス トークンを取得します。 このアクセス トークンが要求で Web API に送信されます。Web API がユーザーを認証し、目的のリソースを返します。
 
 ## <a name="diagram"></a>ダイアグラム
 
@@ -51,7 +52,7 @@ AD 認証ライブラリを使用している場合は、ブラウザー ポッ�
 
 ## <a name="app-registration"></a>アプリの登録
 
-Azure AD v1.0 エンドポイントを使用してアプリケーションを登録するには、「[Azure AD v1.0 エンドポイントを使用したアプリの登録](quickstart-v1-add-azure-ad-app.md)」を参照してください。
+Azure AD v1.0 エンドポイントにアプリケーションを登録するには、「[Register an app with the Azure AD v1.0 endpoint](quickstart-v1-add-azure-ad-app.md)」(アプリを Azure AD v1.0 エンドポイントに登録する) を参照してください。
 
 * シングル テナント - ネイティブ アプリケーションと Web API の両方を、Azure AD の同じディレクトリに登録する必要があります。 ネイティブ アプリケーションによるリソースへのアクセスを制限するために使用する一連のアクセス許可を公開するように Web API を構成できます。 その後、クライアント アプリケーションで、Azure Portal の [他のアプリケーションに対するアクセス許可] ドロップダウン メニューから目的のアクセス許可を選択します。
 * マルチテナント - ネイティブ アプリケーションは、これまで開発者または発行者のディレクトリにのみ登録されていました。 アプリケーションが機能するために必要なアクセス許可を示すようにネイティブ アプリケーションを構成します。 必要なアクセス許可のこのリストは、アプリケーションを組織で使用できるように、発行先ディレクトリ内のユーザーまたは管理者がアプリケーションに同意するときにダイアログに表示されます。 組織内の任意のユーザーが同意できる、ユーザーレベルのアクセス許可だけを必要とするアプリケーションもあれば、 組織内のユーザーは同意できない、管理者レベルのアクセス許可を必要とするアプリケーションもあります。 このレベルのアクセスを必要とするアプリケーションに同意できるのはディレクトリ管理者だけです。 ユーザーまたは管理者が同意すると、Web API だけがディレクトリに登録されます。 
@@ -62,5 +63,5 @@ Azure AD v1.0 エンドポイントを使用してアプリケーションを登
 
 ## <a name="next-steps"></a>次の手順
 
-- その他の[アプリケーションの種類とシナリオ](app-types.md)の説明
-- Azure AD [認証の基本](authentication-scenarios.md)についての説明
+- その他の[アプリケーションの種類とシナリオ](app-types.md)について学習する
+- Azure AD [認証の基本](authentication-scenarios.md)について学習する

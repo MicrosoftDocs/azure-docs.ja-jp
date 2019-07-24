@@ -1,21 +1,20 @@
 ---
 title: インクルード ファイル
 description: インクルード ファイル
-services: signalr
 author: anthonychu
 ms.service: signalr
 ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: 97b8ef5e260a853ecdffb3c502f8a5051dd0e143
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 15eded28e38279ea01bf019566d4fda5e7ac6c3e
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47006260"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57588143"
 ---
-## <a name="create-an-azure-signalr-service-instance"></a>Azure SignalR Service インスタンスの作成
+## <a name="create-an-azure-signalr-service-instance"></a>Azure SignalR Service のインスタンスを作成する
 
 アプリケーションは Azure 内の SignalR Service インスタンスに接続します。
 
@@ -39,3 +38,7 @@ ms.locfileid: "47006260"
     ![SignalR Service の作成](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)
 
 1. **[作成]** を選択して SignalR Service インスタンスのデプロイを開始します。
+
+1. インスタンスがデプロイされたら、ポータルで開き、[設定] ページに移動します。 [サービス モード] 設定を *[サーバーレス]* に変更します。
+
+    ![SignalR Service モード](../media/signalr-concept-azure-functions/signalr-service-mode.png)

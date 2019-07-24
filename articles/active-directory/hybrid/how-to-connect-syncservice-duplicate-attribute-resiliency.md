@@ -4,23 +4,24 @@ description: Azure AD Connect によるディレクトリ同期中に UPN また
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 537a92b7-7a84-4c89-88b0-9bce0eacd931
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: e20ae31ae64483d4d11b793f1c8656107413c05d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a65af5a5ea0629b617c4e736d8c110cbb9aa540c
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406196"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438303"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>ID 同期と重複属性の回復性
 重複属性の回復性は、Microsoft のいずれかの同期ツールを実行しているときに **UserPrincipalName** や **ProxyAddress** の競合によって引き起こされる不整合を避けるために Azure Active Directory に備えられている機能です。
@@ -39,7 +40,7 @@ ms.locfileid: "49406196"
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>重複属性の回復性による動作
 属性が重複するオブジェクトのプロビジョニングまたは更新を完全に失敗させる代わりに、Azure Active Directory は一意性の制約に違反する重複属性を "検疫" します。 この属性が、UserPrincipalName のように、プロビジョニングに必要な場合、サービスはプレースホルダー値を割り当てます。 これらの一時的な値の形式は、  
-“***<OriginalPrefix>+<4DigitNumber>@<InitialTenantDomain>.onmicrosoft.com***” です。  
+“***\<OriginalPrefix>+\<4DigitNumber>\@\<InitialTenantDomain>.onmicrosoft.com***” です。  
 **ProxyAddress** のように、この属性が必須でない場合、Azure Active Directory は競合属性を検疫し、オブジェクトの作成または更新を続行します。
 
 属性の検疫時に、競合に関する情報は、従来の動作で使用されるのと同じエラー レポート電子メールで送信されます。 ただし、この情報は、検疫が発生した際にエラー レポートに 1 回表示されるだけで、その後の電子メールではログに記録されません。 また、このオブジェクトのエクスポートは成功しているため、同期クライアントはエラーをログに記録せず、後続の同期サイクルで作成/更新操作を再試行しません。
@@ -65,7 +66,7 @@ ms.locfileid: "49406196"
 > テナントで重複属性の回復機能が有効になる前に、Set-MsolDirSyncFeature コマンドレットを使用してその機能を事前に有効にしておくことはできなくなりました。 この機能をテストするには、新しい Azure Active Directory テナントを作成する必要があります。
 
 ## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>DirSyncProvisioningErrors を持つオブジェクトの特定
-重複するプロパティの競合によってこれらのエラーが発生したオブジェクトを特定するための方法は、現在、2 つあります。それは、Azure Active Directory PowerShell と Office 365 管理ポータルです。 今後のレポートに基づいてポータルを追加する拡張が予定されています。
+重複するプロパティの競合によってこれらのエラーが発生したオブジェクトを特定するための方法は、現在、2 つあります。それは、Azure Active Directory PowerShell と [Microsoft 365 管理センター](https://admin.microsoft.com) です。 今後のレポートに基づいてポータルを追加する拡張が予定されています。
 
 ### <a name="azure-active-directory-powershell"></a>Azure Active Directory PowerShell
 このトピックの PowerShell コマンドレットには、以下のような特徴があります。
@@ -81,7 +82,7 @@ ms.locfileid: "49406196"
 2. [プロパティの型ごと](#by-property-type)
 3. [競合する値ごと](#by-conflicting-value)
 4. [文字列検索を使用](#using-a-string-search)
-5. [並べ替え](#sorted)
+5. 並べ替え
 6. [制限した数、またはすべて](#in-a-limited-quantity-or-all)
 
 #### <a name="see-all"></a>すべて表示
@@ -112,17 +113,17 @@ ms.locfileid: "49406196"
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -SearchString User`
 
 #### <a name="in-a-limited-quantity-or-all"></a>制限した数、またはすべて
-1. **MaxResults <Int>** を使用して、クエリの値を特定の数までに制限できます。
+1. **MaxResults \<Int>** を使用して、クエリの値を特定の数までに制限できます。
 2. **All** は、多数のエラーが存在する場合に使用すると、すべての結果を確実に取得できます。
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -MaxResults 5`
 
-## <a name="office-365-admin-portal"></a>Office 365 管理ポータル
-Office 365 管理センターでは、ディレクトリ同期エラーを表示できます。 Office 365 ポータルのレポートには、これらのエラーを持つ **User** オブジェクトだけが表示されます。 **Group** と **Contact** の間の競合に関する情報は表示されません。
+## <a name="microsoft-365-admin-center"></a>Microsoft 365 管理センター
+Microsoft 365 管理センターでは、ディレクトリ同期エラーを表示できます。 Microsoft 365 管理センターのレポートには、これらのエラーを持つ **User** オブジェクトだけが表示されます。 **Group** と **Contact** の間の競合に関する情報は表示されません。
 
 ![アクティブ ユーザー](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "アクティブ ユーザー")
 
-Office 365 管理センターでディレクトリ同期エラーを表示する方法については、「 [Office 365 でディレクトリ同期エラーを確認する](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)」を参照してください。
+Microsoft 365 管理センターでディレクトリ同期エラーを表示する方法については、「 [Office 365 でディレクトリ同期エラーを確認する](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)」を参照してください。
 
 ### <a name="identity-synchronization-error-report"></a>ID 同期のエラー レポート
 重複属性の競合があるオブジェクトがこの新しい動作で処理されると、テナントの技術的通知の連絡先に送信される標準の ID 同期のエラー レポート メールに、通知が含められます。 ただし、この動作には重要な変更があります。 以前は、重複属性の競合に関する情報が、競合が解決されるまで、後続のすべてのエラー レポートに含められました。 この新しい動作では、特定の競合のエラー通知は、競合する属性が検疫されたときに 1 回だけ表示されます。
@@ -133,7 +134,7 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 ## <a name="resolving-conflicts"></a>競合の解決
 これらのエラーのトラブルシューティングの方針と解決の方法は、以前の重複属性エラーの処理方法と変わりはありません。 唯一の違いは、タイマー タスクがサービス側のテナント全体をスイープして、競合が解決したら問題の属性を適切なオブジェクトに自動的に追加することです。
 
-記事「 [Office 365 ディレクトリ同期を妨げる重複または無効な属性を検出する方法](https://support.microsoft.com/kb/2647098)」では、さまざまなトラブルシューティングと解決方法の概要を説明しています。
+次の記事では、さまざまなトラブルシューティングと解決戦略の概要を示しています。[Office 365 でのディレクトリ同期を妨げる重複または無効な属性に関する記事](https://support.microsoft.com/kb/2647098)
 
 ## <a name="known-issues"></a>既知の問題
 これらの既知の問題が、データの損失やサービスの低下を引き起こすことはありません。 いくつかは見た目の問題で、その他には、競合属性が検疫されずに、一般的な "*回復前*" 重複属性エラーがスローされる原因となる問題や、手動での修正を必要とするエラーを引き起こす問題があります。
@@ -143,9 +144,9 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 1. 特定の属性構成を持つオブジェクトは、検疫されている重複属性ではなく、エクスポート エラーを受信し続けます。  
    例: 
    
-    a. AD で、UPN を **Joe@contoso.com**、ProxyAddress を **smtp:Joe@contoso.com** として新しいユーザーが作成されました。
+    a. AD で、UPN を **Joe\@contoso.com** および ProxyAddress **smtp:Joe\@contoso.com** として新しいユーザーが作成されました。
    
-    b. このオブジェクトのプロパティが、ProxyAddress が **SMTP:Joe@contoso.com** である既存の Group と競合します。
+    b. このオブジェクトのプロパティが、ProxyAddress が **SMTP:Joe\@contoso.com** である既存の Group と競合します。
    
     c. エクスポート時に、競合属性を検疫するのではなく、**ProxyAddress 競合**エラーがスローされます。 回復性機能が有効になる前と同様に、後続の同期サイクルごとに操作が再試行されます。
 2. オンプレミスで 2 つの Group が同じ SMTP アドレスで作成された場合、一方は標準の重複 **ProxyAddress** エラーのために、最初の試行でプロビジョニングに失敗します。 ただし、重複している値は、次の同期サイクル時に適切に検疫されます。
@@ -155,13 +156,13 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 1. UPN 競合セットの 2 つのオブジェクトの詳細なエラー メッセージは、同一です。 つまり、両方で UPN が変更/検疫されたと示されますが、実際には一方だけでデータが変更されています。
 2. UPN 競合の詳細なエラー メッセージは、UPN を変更/検疫したユーザーの正しくない displayName を表示します。 例: 
    
-    a. **ユーザー A** が最初に **UPN = User@contoso.com** で同期を実行します。
+    a. **ユーザー A** が最初に **UPN = User\@contoso.com** で同期を実行します。
    
-    b. **ユーザー B** が次に **UPN = User@contoso.com** で同期を試行します。
+    b. **ユーザー B** が次に **UPN = User\@contoso.com** で同期を試行します。
    
-    c. **ユーザー B** の UPN が **User1234@contoso.onmicrosoft.com** に変更され、**User@contoso.com** が **DirSyncProvisioningErrors** に追加されます。
+    c. **ユーザー B の** UPN が **User1234\@contoso.onmicrosoft.com** に変更され、**User\@contoso.com** が **DirSyncProvisioningErrors** に追加されます。
    
-    d. **ユーザー B** のエラー メッセージには、**ユーザー A** が既に **User@contoso.com** を UPN として持っていることを示す必要がありますが、実際には**ユーザー B** 自身の displayName が表示されます。
+    d. **ユーザー B** のエラー メッセージには、**ユーザー A** が既に **User\@contoso.com** を UPN として持っていることを示す必要がありますが、実際には**ユーザー B** 自身の displayName が表示されます。
 
 **ID 同期のエラー レポート**:
 

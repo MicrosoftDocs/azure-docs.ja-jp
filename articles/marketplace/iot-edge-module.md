@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: qianw211
-ms.openlocfilehash: 0468c41f0813277b6ba6d3be8ad89c3178dd1420
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: f13d3f780e24d71babb1bda48a9b85d1208e3c4c
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094678"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074599"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge のモジュール
 
@@ -95,3 +95,4 @@ Azure Marketplace で認定および発行されるためには、IoT Edge モ�
 登録済みかつ新しいオファーを作成しているまたは既存のオファーを操作している場合は、
 
 - [Cloud パートナー ポータルにサインイン](https://cloudpartner.azure.com/)して、オファーを作成または完成する。
+- IoT Edge オファーを発行する方法の詳細については、「[IoT Edge モジュール オファー発行の概要](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-offer-process-parts)」を参照してください。

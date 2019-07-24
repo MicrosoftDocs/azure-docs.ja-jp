@@ -1,3 +1,16 @@
+---
+author: spelluru
+ms.service: service-bus-messaging
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: spelluru
+ms.openlocfilehash: 7b05f3d8bcca5f26161f4c362078fa134518cafd
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588655"
+---
 ## <a name="what-are-service-bus-topics-and-subscriptions"></a>Service Bus トピックとサブスクリプションとは
 Service Bus のトピックとサブスクリプションは、メッセージ通信の *発行/サブスクライブ* モデルをサポートします。 トピックとサブスクリプションを使用すると、分散アプリケーションのコンポーネントが互いに直接通信することがなくなり、仲介者の役割を果たすトピックを介してメッセージをやり取りすることになります。
 
@@ -8,32 +21,6 @@ Service Bus のトピックとサブスクリプションは、メッセージ�
 トピックにとってのサブスクリプションは、トピックに送信されたメッセージのコピーを受け取る仮想キューのようなものです。 必要に応じて、サブスクリプションごとにトピックのフィルター規則を登録できます。 フィルター規則を使用すると、トピックへのどのメッセージをどのトピック サブスクリプションで受信するかを、フィルター処理したり制限したりできます。
 
 Service Bus のトピックとサブスクリプションを使用することで、多くのユーザーやアプリケーションの間でやり取りされる大量のメッセージを処理することもできます。
-
-## <a name="create-a-namespace"></a>名前空間の作成
-Azure で Service Bus のトピックとサブスクリプションの使用を開始するには、最初に *サービス名前空間*を作成する必要があります。 名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
-
-名前空間を作成するには:
-
-1. [Azure Portal][Azure portal] にサインインします。
-2. ポータルの左側のナビゲーション ウィンドウで、**[リソースの作成]** をクリックし、**[エンタープライズ統合]**、**[Service Bus]** の順にクリックします。
-3. **[名前空間の作成]** ダイアログで、名前空間の名前を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。
-4. 入力した名前空間の名前が使用できることを確認したら、価格レベル (Basic、Standard、Premium) を選択します。
-5. **[サブスクリプション]** フィールドで、名前空間を作成する Azure サブスクリプションを選択します。
-6. **[リソース グループ]** フィールドで、名前空間を追加する既存のリソース グループを選択するか、新しいリソース グループを作成します。      
-7. **[場所]** で、名前空間をホストする国またはリージョンを選択します。
-   
-    ![[名前空間の作成]][create-namespace]
-8. **[作成]** ボタンをクリックします。 これで、システムによってサービス名前空間が作成され、有効になります。 システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
-
-### <a name="obtain-the-credentials"></a>資格情報を取得する
-1. 名前空間の一覧で、新しく作成した名前空間の名前をクリックします。
-2. **[Service Bus 名前空間]** ウィンドウで、**[共有アクセス ポリシー]** をクリックします。
-3. **[共有アクセス ポリシー]** ウィンドウで、**[RootManageSharedAccessKey]** をクリックします。
-   
-    ![connection-info][connection-info]
-4. **[ポリシー: RootManageSharedAccessKey]** ウィンドウで、**[接続文字列 - プライマリ キー]** の横にあるコピー ボタンをクリックし、後で使用するために接続文字列をクリップボードにコピーします。
-   
-    ![connection-string][connection-string]
 
 [Azure portal]: https://portal.azure.com
 [create-namespace]: ./media/howto-service-bus-topics/create-namespace.png

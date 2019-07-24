@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-ms.openlocfilehash: 237310c607eb8488e53631b6e69d01703d1ebf99
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 87bdfcc827155e5dd0a02ffb1640bf7e9cd4e479
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30839730"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715787"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>モバイル アプリを対象とした Azure App Service での認証および承認
 
@@ -26,7 +26,7 @@ ms.locfileid: "30839730"
 
 この記事では、モバイル アプリの開発に重点を置いて説明します。 モバイル アプリを対象とした App Service の認証と承認をすぐに開始する場合は、「[iOS アプリに認証を追加する][iOS]」(または [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms]、[Cordova]) のチュートリアルのいずれかを参照してください。 
 
-App Service での認証と承認のしくみについては、「[Azure App Service での認証および承認](../app-service/app-service-authentication-overview.md)」を参照してください。
+App Service での認証と承認のしくみについては、「[Azure App Service での認証および承認](../app-service/overview-authentication-authorization.md)」を参照してください。
 
 ## <a name="authentication-with-provider-sdk"></a>プロバイダー SDK を使用した認証
 
@@ -44,7 +44,7 @@ App Service ですべてを構成したら、App Service にサインインで�
 
 プロバイダーのトークンが取得されたら、App Service に送信して検証する必要があります。 App Service では、トークンの検証後、クライアントに返される新しい App Service トークンが作成されます。 Mobile Apps クライアント SDK には、この交換を管理してアプリケーション バックエンドへのすべての要求にトークンを自動的に添付するヘルパー メソッドがあります。 開発者はプロバイダー トークンへの参照を保持できます。
 
-認証フローの詳細については、[App Service の認証フロー](../app-service/app-service-authentication-overview.md#authentication-flow)に関する記事をご覧ください。 
+認証フローの詳細については、[App Service の認証フロー](../app-service/overview-authentication-authorization.md#authentication-flow)に関する記事をご覧ください。 
 
 ## <a name="authentication-without-provider-sdk"></a>プロバイダー SDK を使用しない認証
 
@@ -52,10 +52,10 @@ SDK プロバイダーを設定しない場合は、Azure App Service の Mobile
 
 このフローを開始するコードは、各プラットフォームの認証のチュートリアルに含まれています。 フローの最後では、クライアント SDK が App Service トークンを取得し、そのトークンがアプリケーション バックエンドへのすべての要求に自動的に添付されます。
 
-認証フローの詳細については、[App Service の認証フロー](../app-service/app-service-authentication-overview.md#authentication-flow)に関する記事をご覧ください。 
+認証フローの詳細については、[App Service の認証フロー](../app-service/overview-authentication-authorization.md#authentication-flow)に関する記事をご覧ください。 
 ## <a name="more-resources"></a>その他のリソース
 
-以下のチュートリアルで、[サーバー主導のフロー](../app-service/app-service-authentication-overview.md#authentication-flow)を使用し、モバイル クライアントに認証を追加する方法について説明しています。
+以下のチュートリアルで、[サーバー主導のフロー](../app-service/overview-authentication-authorization.md#authentication-flow)を使用し、モバイル クライアントに認証を追加する方法について説明しています。
 
 * [iOS アプリに認証を追加する][iOS]
 * [Android アプリに認証を追加する][Android]
@@ -65,21 +65,21 @@ SDK プロバイダーを設定しない場合は、Azure App Service の Mobile
 * [Xamarin.Forms アプリに認証を追加する][Xamarin.Forms]
 * [Cordova アプリに認証を追加する][Cordova]
 
-Azure Active Directory の[クライアント主導のフロー](../app-service/app-service-authentication-overview.md#authentication-flow)を使用する場合は、次のリソースを使用します。
+Azure Active Directory の[クライアント主導のフロー](../app-service/overview-authentication-authorization.md#authentication-flow)を使用する場合は、次のリソースを使用します。
 
 * [iOS 向け Active Directory 認証ライブラリを使用する][ADAL-iOS]
 * [Android 向け Active Directory 認証ライブラリを使用する][ADAL-Android]
 * [Windows および Xamarin 向け Active Directory 認証ライブラリを使用する][ADAL-dotnet]
 
-Facebook の[クライアント主導のフロー](../app-service/app-service-authentication-overview.md#authentication-flow)を使用する場合は、次のリソースを使用します。
+Facebook の[クライアント主導のフロー](../app-service/overview-authentication-authorization.md#authentication-flow)を使用する場合は、次のリソースを使用します。
 
 * [Facebook SDK for iOS を使用する](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
 
-Twitter の[クライアント主導のフロー](../app-service/app-service-authentication-overview.md#authentication-flow)を使用する場合は、次のリソースを使用します。
+Twitter の[クライアント主導のフロー](../app-service/overview-authentication-authorization.md#authentication-flow)を使用する場合は、次のリソースを使用します。
 
 * [Twitter Fabric for iOS を使用する](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#twitter-fabric)
 
-Google の[クライアント主導のフロー](../app-service/app-service-authentication-overview.md#authentication-flow)を使用する場合は、次のリソースを使用します。
+Google の[クライアント主導のフロー](../app-service/overview-authentication-authorization.md#authentication-flow)を使用する場合は、次のリソースを使用します。
 
 * [Google Sign-In SDK for iOS を使用する](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
 
@@ -91,11 +91,11 @@ Google の[クライアント主導のフロー](../app-service/app-service-auth
 [Windows]: ../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-users.md
 [Cordova]: ../app-service-mobile/app-service-mobile-cordova-get-started-users.md
 
-[AAD]: app-service-mobile-how-to-configure-active-directory-authentication.md
-[Facebook]: app-service-mobile-how-to-configure-facebook-authentication.md
-[Google]: app-service-mobile-how-to-configure-google-authentication.md
-[MSA]: app-service-mobile-how-to-configure-microsoft-authentication.md
-[Twitter]: app-service-mobile-how-to-configure-twitter-authentication.md
+[AAD]: ../app-service/configure-authentication-provider-aad.md
+[Facebook]: ../app-service/configure-authentication-provider-facebook.md
+[Google]: configure-authentication-provider-google.md
+[MSA]: ../app-service/configure-authentication-provider-microsoft.md
+[Twitter]: ../app-service/configure-authentication-provider-twitter.md
 
 [custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
 

@@ -1,29 +1,23 @@
 ---
-title: ExpressRoute 経由の BFD の構成 | Microsoft Docs
-description: このドキュメントでは、ExpressRoute 回線のプライベート ピアリング経由で BFD を構成する方法について説明します。
-documentationcenter: na
+title: ExpressRoute 経由の BFD の構成 - Azure | Microsoft Docs
+description: この記事では、ExpressRoute 回線のプライベート ピアリング経由で BFD (Bidirectional Forwarding Detection) を構成する方法について説明します。
 services: expressroute
 author: rambk
-manager: tracsman
-editor: ''
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 8/17/2018
 ms.author: rambala
-ms.openlocfilehash: 6d941bf810a45e8808f83c4df701a856f664c7ef
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.custom: seodec18
+ms.openlocfilehash: 14f65851e50ed25024524f6d988ba2b2f2b3aeba
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51631661"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083786"
 ---
 # <a name="configure-bfd-over-expressroute"></a>ExpressRoute 経由の BFD の構成
 
-ExpressRoute では、プライベート ピアリング経由の Bidirectional Forwarding Detection (BFD) をサポートしています。 ExpressRoute 経由の BFD を有効にすると、Microsoft Enterprise Edge (MSEE) デバイスと ExpressRoute 回線が終了するルーター (PE) の間のリンク障害の検出を迅速化できます。 顧客のエッジ ルーティング デバイスまたはパートナーのエッジ ルーティング デバイス経由の ExpressRoute を終了できます (マネージド レイヤー 3 接続サービスを選択した場合)。 このドキュメントでは、BFD の必要性と、ExpressRoute 経由の BFD を有効にする方法について説明します。
+ExpressRoute では、プライベート ピアリング経由の Bidirectional Forwarding Detection (BFD) をサポートしています。 ExpressRoute 経由の BFD を有効にすると、Microsoft Enterprise Edge (MSEE) デバイスと ExpressRoute 回線が終端するルーター (PE) の間のリンク障害の検出を迅速化できます。 顧客のエッジ ルーティング デバイスまたはパートナーのエッジ ルーティング デバイス経由の ExpressRoute を終端できます (マネージド レイヤー 3 接続サービスを選択した場合)。 このドキュメントでは、BFD の必要性と、ExpressRoute 経由の BFD を有効にする方法について説明します。
 
 ## <a name="need-for-bfd"></a>BFD の必要性
 

@@ -1,20 +1,19 @@
 ---
 title: Power BI ワークスペース コレクションでの行レベルのセキュリティ
 description: Power BI ワークスペース コレクションでの行レベルのセキュリティの詳細
-services: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
 author: markingmyname
-ROBOTS: NOINDEX
-ms.service: power-bi-embedded
+ms.author: maghan
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: maghan
-ms.openlocfilehash: 80208c83c96ba78db052017c2baa3bc0db63953f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ae9819cd5b27d794f26227f342cb0fdf1b0ab644
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258852"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518390"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでの行レベルのセキュリティ
 
@@ -94,7 +93,7 @@ RLS は Power BI Desktop で作成されます。 データセットとレポー
 * **username** (省略可能) – RLS で使用されます。この文字列を使用して、RLS のルールを適用するときにユーザーを特定できます。 「Using Row Level Security with Power BI Embedded (Power BI Embedded での行レベルのセキュリティの使用)」をご覧ください。
 * **roles** – 行レベルのセキュリティのルールを適用するときに選択したロールを含む文字列。 複数のロールを渡す場合は、文字列配列として渡す必要があります。
 
-トークンは [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#Microsoft_PowerBI_Security_PowerBIToken_CreateReportEmbedToken_System_String_System_String_System_String_System_DateTime_System_String_System_Collections_Generic_IEnumerable_System_String__) メソッドを使用して作成します。 username プロパティが存在する場合は、roles にも 1 つ以上の値を渡す必要があります。
+トークンは [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) メソッドを使用して作成します。 username プロパティが存在する場合は、roles にも 1 つ以上の値を渡す必要があります。
 
 たとえば、EmbedSample を変更して、 DashboardController の 55 行目を次のように更新することもできます。
 
@@ -119,4 +118,4 @@ to
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript による埋め込みのサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-ご質問は、 [Power BI コミュニティ](http://community.powerbi.com/)で尋ねてみてください。
+ご質問は、 [Power BI コミュニティ](https://community.powerbi.com/)で尋ねてみてください。

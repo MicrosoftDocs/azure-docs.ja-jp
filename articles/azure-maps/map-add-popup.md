@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0be10c155398133887fadb1fe9954068f3afb9d9
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: a6c8a8aa954379036ce566a205b8cb4e97952727
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568116"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887845"
 ---
 # <a name="add-a-popup-to-the-map"></a>マップにポップアップを追加する
 
@@ -33,24 +33,36 @@ ms.locfileid: "51568116"
 
 [シンボル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)は、テキストまたはアイコンを使用して、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされたポイントベースのデータをシンボルとしてマップにレンダリングします。  シンボル レイヤーは、3 番目のコード ブロックで作成されます。 データ ソースがシンボル レイヤーに追加され、それがマップに追加されます。
 
-コードの 4 つ目のブロックでは、`new atlas.Popup()` 経由で[ポップアップ オブジェクト](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)が作成されます。 position や pixelOffset などのポップアップのプロパティは、[PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.popupoptions?view=azure-iot-typescript-latest) の一部です。 PopupOptions は、ポップアップ コンストラクターで、またはポップアップ クラスの [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) 関数を介して定義できます。 その後、シンボル レイヤーの `mouseover` イベント リスナーが作成されます。
+コードの 4 つ目のブロックでは、`new atlas.Popup()` 経由で[ポップアップ オブジェクト](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)が作成されます。 position や pixelOffset などのポップアップのプロパティは、[PopupOptions](/javascript/api/azure-maps-control/atlas.popupoptions) の一部です。 PopupOptions は、ポップアップ コンストラクターで、またはポップアップ クラスの [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) 関数を介して定義できます。 その後、シンボル レイヤーの `mouseover` イベント リスナーが作成されます。
 
 最後のコード ブロックでは、`mouseover` イベント リスナーによってトリガーされる関数が作成されます。 ポップアップの内容とプロパティを設定して、ポップアップ オブジェクトをマップに追加します。
+
+## <a name="reusing-a-popup-with-multiple-points"></a>複数のポイントでポップアップを再利用する
+
+多数のポイントがあり、一度に 1 つのポップアップのみを表示する場合は、ポイント フィーチャーごとにポップアップを作成するのではなく、ポップアップを 1 つ作成して再利用することをお勧めします。 こうすることで、アプリケーションによって作成される DOM 要素数が大幅に削減され、パフォーマンスが向上します。 このサンプルでは 3 つのポイント フィーチャーを作成します。 そのいずれかをクリックすると、そのポイント フィーチャーのコンテンツを含むポップアップが表示されます。
+
+<br/>
+
+<iframe height='500' scrolling='no' title='複数のピンでポップアップを再利用する' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/rQbjvK/'>Reusing Popup with Multiple Pins</a>」Pen を表示します。
+</iframe>
 
 ## <a name="next-steps"></a>次の手順
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions?view=azure-iot-typescript-latest)
 
 完全なコードのサンプルについては、次の優れた記事をご覧ください。
 
 > [!div class="nextstepaction"]
-> [シェイプを追加する](./map-add-shape.md)
+> [シンボル レイヤーを追加する](./map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [カスタム HTML を追加する](./map-add-custom-html.md)
+> [HTML マーカーを追加する](./map-add-custom-html.md)
+
+> [!div class="nextstepaction"]
+> [シェイプを追加する](./map-add-shape.md)

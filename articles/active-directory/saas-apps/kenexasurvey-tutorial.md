@@ -1,232 +1,209 @@
 ---
-title: 'チュートリアル: Azure Active Directory と IBM Kenexa Survey Enterprise の統合| Microsoft Docs'
+title: チュートリアル:Azure Active Directory と IBM Kenexa Survey Enterprise の統合 | Microsoft Docs
 description: Azure Active Directory と IBM Kenexa Survey Enterprise の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: c7aac6da-f4bf-419e-9e1a-16b460641a52
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/30/2017
+ms.topic: tutorial
+ms.date: 03/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 6828617e0ae61a3784e4db3d1c2ecf4ce9862ce2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 385092cb9c760e6f9fa848449bd61663541573b9
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449497"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59256756"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>チュートリアル: Azure Active Directory と IBM Kenexa Survey Enterprise の統合
+# <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>チュートリアル:Azure Active Directory と IBM Kenexa Survey Enterprise の統合
 
 このチュートリアルでは、IBM Kenexa Survey Enterprise と Azure Active Directory (Azure AD) を統合する方法について説明します。
-
 IBM Kenexa Survey Enterprise と Azure AD の統合には、次の利点があります。
 
-- IBM Kenexa Survey Enterprise にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで、シングル サインオン (SSO) を使用して自動的に IBM Kenexa Survey Enterprise にサインインできるようにできます。
-- 1 つの中央サイト (Azure ポータル) でアカウントを管理できます。
+* IBM Kenexa Survey Enterprise にアクセスする Azure AD ユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントで IBM Kenexa Survey Enterprise に自動的にサインイン (シングル サインオン) するように設定できます。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 IBM Kenexa Survey Enterprise と Azure AD の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション
-- IBM Kenexa Survey Enterprise での SSO が有効なサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従います。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
+* IBM Kenexa Survey Enterprise のシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD SSO をテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-* ギャラリーからの IBM Kenexa Survey Enterprise の追加
-* Azure AD SSO の構成とテスト
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-## <a name="add-ibm-kenexa-survey-enterprise-from-the-gallery"></a>ギャラリーからの IBM Kenexa Survey Enterprise の追加
-Azure AD への IBM Kenexa Survey Enterprise の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に IBM Kenexa Survey Enterprise を追加します。
+* IBM Kenexa Survey Enterprise では、**IDP** Initiated SSO がサポートされます
 
-ギャラリーから IBM Kenexa Survey Enterprise を追加するには、次の手順に従います。
+## <a name="adding-ibm-kenexa-survey-enterprise-from-the-gallery"></a>ギャラリーからの IBM Kenexa Survey Enterprise の追加
 
-1. [Azure Portal](https://portal.azure.com) の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。 
+Azure AD への IBM Kenexa Survey Enterprise の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に IBM Kenexa Survey Enterprise を追加する必要があります。
 
-    ![Azure Active Directory のボタン][1]
+**ギャラリーから IBM Kenexa Survey Enterprise を追加するには、次の手順に従います。**
 
-1. **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![[エンタープライズ アプリケーション] ブレード][2]
-    
-1. アプリケーションを追加するには、**[新しいアプリケーション]** ボタンをクリックします。
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-    ![[新しいアプリケーション] ボタン][3]
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-1. 検索ボックスに、「 **IBM Kenexa Survey Enterprise**」と入力します。
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-    ![Azure AD のテスト ユーザーの作成](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_search.png)
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-1. 結果の一覧で、**[IBM Kenexa Survey Enterprise]** を選択し、**[追加]** ボタンをクリックしてアプリケーションを追加します。
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-    ![結果一覧の IBM Kenexa Survey Enterprise](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_addfromgallery.png)
+4. 検索ボックスに「**IBM Kenexa Survey Enterprise**」と入力し、結果パネルで **[IBM Kenexa Survey Enterprise]** を選び、**[追加]** をクリックしてアプリケーションを追加します。
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、IBM Kenexa Survey Enterprise で Azure AD の SSO を構成し、テストします。
+     ![結果一覧の IBM Kenexa Survey Enterprise](common/search-new-app.png)
 
-SSO を機能させるには、IBM Kenexa Survey Enterprise ユーザーに対応する Azure ユーザーを Azure AD が特定する必要があります。 言い換えると、Azure AD は、Azure AD ユーザーと IBM Kenexa Survey Enterprise の関連ユーザーの間のリンク関係を確立する必要があります。
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-リンク関係を確立するには、IBM Kenexa Survey Enterprise の **[ユーザー名]** の値を Azure AD の **[Username]** の値として割り当てます。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、IBM Kenexa Survey Enterprise で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと IBM Kenexa Survey Enterprise 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
-IBM Kenexa Survey Enterprise で Azure AD の SSO を構成してテストするには、次の 2 つのセクションの構成要素を完了します。
+IBM Kenexa Survey Enterprise で Azure AD のシングル サインオンを構成し、テストするには、次の要素を完了する必要があります。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[IBM Kenexa Survey Enterprise のシングル サインオンの構成](#configure-ibm-kenexa-survey-enterprise-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[IBM Kenexa Survey Enterprise のテスト ユーザーの作成](#create-ibm-kenexa-survey-enterprise-test-user)** - IBM Kenexa Survey Enterprise で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-このセクションでは、次の手順で Azure Portal で Azure AD SSO を有効にし、IBM Kenexa Survey Enterprise application アプリケーションに SSO を構成します。
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-1. Azure Portal の **IBM Kenexa Survey Enterprise** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-    ![IBM Kenexa Survey Enterprise のシングル サインオンの構成リンク][4]
+IBM Kenexa Survey Enterprise で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. **[シングル サインオン]** ダイアログ ボックスの **[モード]** ボックスで **[SAML ベースのサインオン]** を選択し、SSO を有効にします。
- 
-    ![[シングル サインオン] ダイアログ ボックス](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_samlbase.png)
+1. [Azure portal](https://portal.azure.com/) の **IBM Kenexa Survey Enterprise** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-1. **[IBM Kenexa Survey Enterprise Domain and URLs] \(IBM Kenexa Survey Enterprise のドメインと URL)** セクションで、次の手順を実行します。
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-    ![[IBM Kenexa Survey Enterprise のドメインと URL] のシングル サインオン情報](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_url.png)
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-    a. **[識別子]** ボックスに、URL を次のパターンで入力します。`https://surveys.kenexa.com/<companycode>`
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-    b. **[応答 URL]** ボックスに、`https://surveys.kenexa.com/<companycode>/tools/sso.asp` の形式で URL を入力します。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    > [!NOTE] 
-    > 上記の値は、実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 実際の値を取得するには、 [IBM Kenexa Survey Enterprise サポート チーム](https://www.ibm.com/support/home/?lnk=fcw)に問い合わせてください。
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[SAML 署名証明書]** で、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページで、次の手順を実行します。
 
-    ![証明書 (Base64) ダウンロード リンク](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_certificate.png) 
+    ![[IBM Kenexa Survey Enterprise のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    IBM Kenexa Survey Enterprise アプリケーションでは、特定の形式の Security Assertions Markup Language (SAML) アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 応答内のユーザー識別子要求の値は、Kenexa システムで構成された SSO ID に一致する必要があります。 組織内の適切なユーザー ID を SSO Internet Datagram Protocol (IDP) としてマッピングするには、[IBM Kenexa Survey Enterprise サポート チーム](https://www.ibm.com/support/home/?lnk=fcw)と連携してください。 
+    a. **[識別子]** ボックスに、`https://surveys.kenexa.com/<companycode>` の形式で URL を入力します。
 
-    既定では、Azure AD はユーザーの識別子を、ユーザー プリンシパル名 (UPN) の値として設定します。 この値は、以下のスクリーン ショットに示すように **[属性]** タブから変更できます。 マッピングを正しく完了した後にのみ統合は機能します。
-    
-    ![[ユーザー属性] ダイアログ ボックス](./media/kenexasurvey-tutorial/tutorial_attribute.png) 
+    b. **[応答 URL]** ボックスに、`https://surveys.kenexa.com/<companycode>/tools/sso.asp` のパターンを使用して URL を入力します
 
-1. **[Save]** をクリックします。
+    > [!NOTE]
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を入手するには、[IBM Kenexa Survey Enterprise クライアント サポート チーム](https://www.ibm.com/support/home/?lnk=fcw)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/kenexasurvey-tutorial/tutorial_general_400.png)
+5. IBM Kenexa Survey Enterprise アプリケーションでは、特定の形式の Security Assertions Markup Language (SAML) アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 応答内のユーザー識別子要求の値は、Kenexa システムで構成された SSO ID に一致する必要があります。 組織内の適切なユーザー ID を SSO Internet Datagram Protocol (IDP) としてマッピングするには、[IBM Kenexa Survey Enterprise サポート チーム](https://www.ibm.com/support/home/?lnk=fcw)と連携してください。
 
-1. **[サインオンの構成]** ウィンドウを開くには、**[IBM Kenexa Survey Enterprise Configuration] \(IBM Kenexa Survey Enterprise の構成)** で **[Configure IBM Kenexa Survey Enterprise] \(IBM Kenexa Survey Enterprise を構成する)** をクリックします。 
- 
-    ![IBM Kenexa Survey Enterprise の構成リンク](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_configure.png)
+    既定では、Azure AD はユーザーの識別子を、ユーザー プリンシパル名 (UPN) の値として設定します。 この値は、以下のスクリーン ショットに示すように **[ユーザー属性]** タブから変更できます。 マッピングを正しく完了した後にのみ統合は機能します。
 
-1. **サインアウト URL**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL** の値を **[クイック リファレンス]** セクションからコピーします。
+    ![image](common/edit-attribute.png)
 
-1. **[サインオンの構成]** ウィンドウの **[クイック リファレンス]** で、 **サインアウト URL**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL** の値をコピーします。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
-1. **IBM Kenexa Survey Enterprise** 側に SSO を構成するには、ダウンロードした**証明書 (Base64)**、**サインアウト URL**、**SAML エンティティ ID**、**SAML シングル サインオン サービス URL** の値を [IBM Kenexa Survey Enterprise サポート チーム](https://www.ibm.com/support/home/?lnk=fcw)に送信します。
+    ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認することができます。 **[Active Directory]** > **[エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント](https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
-> 
+7. **[IBM Kenexa Survey Enterprise のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
+
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
+
+    a. ログイン URL
+
+    b. Azure AD 識別子
+
+    c. ログアウト URL
+
+### <a name="configure-ibm-kenexa-survey-enterprise-single-sign-on"></a>IBM Kenexa Survey Enterprise のシングル サインオンの構成
+
+**IBM Kenexa Survey Enterprise** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [IBM Kenexa Survey Enterprise サポート チーム](https://www.ibm.com/support/home/?lnk=fcw)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-このセクションでは、Azure Portal で次の手順に従って Britta Simon というテスト ユーザーを作成します。
 
-![Azure AD のテスト ユーザーの作成][100]
+このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-    ![Azure Active Directory のボタン](./media/kenexasurvey-tutorial/create_aaduser_01.png) 
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
-1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
-    
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/kenexasurvey-tutorial/create_aaduser_02.png) 
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
- 
-    ![[追加] ボタン](./media/kenexasurvey-tutorial/create_aaduser_03.png) 
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
-1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
- 
-    ![[ユーザー] ダイアログ ボックス](./media/kenexasurvey-tutorial/create_aaduser_04.png) 
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    たとえば、BrittaSimon@contoso.com のように指定します。
 
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
     d. **Create** をクリックしてください。
- 
-### <a name="create-an-ibm-kenexa-survey-enterprise-test-user"></a>IBM Kenexa Survey Enterprise テスト ユーザーの作成
-
-このセクションでは、IBM Kenexa Survey Enterprise で Britta Simon というユーザーを作成します。 
-
-IBM Kenexa Survey Enterprise システムでユーザーを作成し、それに SSO ID をマッピングするには、[IBM Kenexa Survey Enterprise サポート チーム](https://www.ibm.com/support/home/?lnk=fcw)と連携してください。 また、この SSO ID 値を Azure AD のユーザー ID の値にマップする必要があります。 **[属性]** タブでこの既定の設定を変更できます。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、ユーザーの Britta Simon に IBM Kenexa Survey Enterprise へのアクセスを許可することで、このユーザーが Azure SSO を使用できるようします。
+このセクションでは、Britta Simon に IBM Kenexa Survey Enterprise へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようします。
 
-![ユーザー ロールを割り当てる][200] 
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[IBM Kenexa Survey Enterprise]** の順に選択します。
 
-ユーザーの Britta Simon を IBM Kenexa Survey Enterprise に割り当てるには、次の手順に従います。
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-1. Azure Portal で**アプリケーション** ビューを開き、**ディレクトリ** ビューに移動します。次に、**[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** をクリックします。
+2. アプリケーションの一覧で、 **[IBM Kenexa Survey Enterprise]** を選択します。
 
-    ![[エンタープライズ アプリケーション] と [すべてのアプリケーション] のリンク][201] 
+    ![アプリケーションの一覧の IBM Kenexa Survey Enterprise リンク](common/all-applications.png)
 
-1. **アプリケーション**の一覧で、**[IBM Kenexa Survey Enterprise]** を選択します。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![アプリケーションの一覧の IBM Kenexa Survey Enterprise リンク](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_app.png) 
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-1. 左側のウィンドウで **[ユーザーとグループ]** をクリックします。
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[ユーザーとグループ] リンク][202] 
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-1. **[追加]** ボタンをクリックし、**[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-    ![[割り当ての追加] ウィンドウ][203]
+6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-1. **[ユーザーとグループ]** ダイアログ ボックスの **[ユーザー]** 一覧から、**[Britta Simon]** を選択します。
+7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
 
-1. **[ユーザーとグループ]** ダイアログ ボックスで、**[選択]** ボタンをクリックします。
+### <a name="create-ibm-kenexa-survey-enterprise-test-user"></a>IBM Kenexa Survey Enterprise のテスト ユーザーの作成
 
-1. **[割り当ての追加]** ダイアログ ボックスで、**[割り当て]** ボタンをクリックします。
-    
+このセクションでは、IBM Kenexa Survey Enterprise で Britta Simon というユーザーを作成します。
+
+IBM Kenexa Survey Enterprise システムでユーザーを作成し、それに SSO ID をマッピングするには、[IBM Kenexa Survey Enterprise サポート チーム](https://www.ibm.com/support/home/?lnk=fcw)と連携してください。 また、この SSO ID 値を Azure AD のユーザー ID の値にマップする必要があります。 **[属性]** タブでこの既定の設定を変更できます。
+
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD SSO の構成をテストします。
+このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで **[IBM Kenexa Survey Enterprise]** タイルをクリックすると、IBM Kenexa Survey Enterprise アプリケーションに自動的にサインインします。
+アクセス パネル上で [IBM Kenexa Survey Enterprise] タイルをクリックすると、SSO を設定した IBM Kenexa Survey Enterprise に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/kenexasurvey-tutorial/tutorial_general_01.png
-[2]: ./media/kenexasurvey-tutorial/tutorial_general_02.png
-[3]: ./media/kenexasurvey-tutorial/tutorial_general_03.png
-[4]: ./media/kenexasurvey-tutorial/tutorial_general_04.png
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-[100]: ./media/kenexasurvey-tutorial/tutorial_general_100.png
-
-[200]: ./media/kenexasurvey-tutorial/tutorial_general_200.png
-[201]: ./media/kenexasurvey-tutorial/tutorial_general_201.png
-[202]: ./media/kenexasurvey-tutorial/tutorial_general_202.png
-[203]: ./media/kenexasurvey-tutorial/tutorial_general_203.png
-
- 

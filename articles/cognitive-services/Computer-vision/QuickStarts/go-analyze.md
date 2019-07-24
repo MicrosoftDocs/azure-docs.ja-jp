@@ -1,23 +1,24 @@
 ---
-title: 'クイック スタート: リモート画像の分析 - REST、Go - Computer Vision'
+title: クイック スタート:リモート画像の分析 - REST、Go
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Go で Computer Vision API を使用して画像を分析します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: c50f65abd6a0bb446444d889de88348ed4fea84a
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: e783181e737a235a83149b1f22d699fe0aef0bfb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852607"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848662"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-go-in-computer-vision"></a>クイック スタート: Computer Vision で REST API と Go を使用してリモート画像を分析する
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-go-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と Go を使用してリモート画像を分析する
 
 このクイック スタートでは、Computer Vision の REST API を使用して、リモートに格納されている画像を分析し、視覚的特徴を抽出します。 [画像分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)メソッドを使うと、画像の内容に基づいて視覚的特徴を抽出できます。
 
@@ -69,7 +70,7 @@ func main() {
     const uriBase =
         "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze"
     const imageUrl =
-        "http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg"
+        "https://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg"
 
     const params = "?visualFeatures=Description&details=Landmarks&language=en"
     const uri = uriBase + params
@@ -176,10 +177,6 @@ func main() {
   "requestId": "a92f89ab-51f8-4735-a58d-507da2213fc2"
 }
 ```
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-不要になった場合は、コンパイル済みのパッケージと、そのパッケージのコンパイル元のファイルを削除して、コマンド プロンプト ウィンドウとテキスト エディターを閉じます。
 
 ## <a name="next-steps"></a>次の手順
 

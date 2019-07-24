@@ -1,0 +1,45 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Advisor のドキュメント
+metadata:
+  title: Azure Advisor のドキュメント | Microsoft Docs
+  description: null
+  services: advisor
+  author: rboucher
+  layout: LandingPage
+  ms.service: advisor
+  ms.tgt_pltfrm: na
+  ms.topic: landing-page
+  ms.date: 02/01/2019
+  ms.author: robb
+abstract:
+  description: Azure Advisor は、ベスト プラクティスに従って Azure デプロイメントを最適化できるようにする、個人用に設定されたクラウド コンサルタントです。 Azure Advisor では、リソース構成と使用量テレメトリを分析します。 その後、Azure の全体的な使用量を削減する機会を探すと同時に、リソースのパフォーマンス、セキュリティ、高可用性を向上させることができるソリューションを提案します。
+sections:
+  - title: null
+    items:
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure Advisor の詳細
+            href: /azure/advisor/advisor-overview
+            image:
+              src: media/index/advisor.svg
+              href: /azure/advisor/advisor-overview
+          - title: Azure Advisor の使用を開始する
+            href: /azure/advisor/advisor-get-started
+            image:
+              src: media/index/get-started.svg
+              href: /azure/advisor/advisor-get-started
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/rest/api/advisor/">REST API リファレンス</a></p>'
+          - title: コマンド ライン
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/advisor?view=azure-cli-latest">共通言語基盤 (CLI)</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.advisor/?view=azps-1.2.0">Azure PowerShell</a></p>'

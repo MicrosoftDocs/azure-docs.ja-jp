@@ -1,21 +1,21 @@
 ---
 title: Azure Blockchain Workbench のトラブルシューティング
-description: Azure Blockchain Workbench アプリケーションのトラブルシューティング方法
+description: Azure Blockchain Workbench アプリケーションのトラブルシューティング方法。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: e205fce8b718e68200face33447e37cd3317298f
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b55c84773d99c325689fbc5182e75c7cb108d00a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405486"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890017"
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Azure Blockchain Workbench のトラブルシューティング
 
@@ -24,9 +24,9 @@ PowerShell スクリプトを利用すると、開発時のデバッグやサポ
 * Ethereum などのブロックチェーン ネットワーク
 * Blockchain Workbench マイクロサービス
 * Application Insights
-* Azure Monitoring (Log Analytics)
+* Azure 監視 (Azure Monitor ログ)
 
-この情報を利用して、次の手順を決定し、問題の根本原因を特定することができます。 
+この情報を利用して、次の手順を決定し、問題の根本原因を特定することができます。
 
 ## <a name="troubleshooting-script"></a>トラブルシューティング スクリプト
 
@@ -48,13 +48,13 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 
 | パラメーター  | 説明 | 必須 |
 |---------|---------|----|
-| SubscriptionID | すべてのリソースを作成または特定する サブスクリプション ID。 | [はい] |
-| ResourceGroupName | Blockchain Workbench がデプロイされている Azure リソース グループの名前。 | [はい] |
+| SubscriptionID | すべてのリソースを作成または特定する サブスクリプション ID。 | はい |
+| ResourceGroupName | Blockchain Workbench がデプロイされている Azure リソース グループの名前。 | はい |
 | OutputDirectory | 出力 .ZIP ファイルを作成するパス。 指定しない場合、既定は現在のディレクトリになります。 | いいえ  |
 | LookbackHours | 利用統計情報を取得する際に使用する時間数。 既定値は 24 時間です。 最大値は 90 時間です | いいえ  |
-| OmsSubscriptionId | Log Analytics がデプロイされているサブスクリプション ID。 ブロックチェーン ネットワークの Log Analytics が Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します。| いいえ  |
-| OmsResourceGroup |Log Analytics がデプロイされているリソース グループ。 ブロックチェーン ネットワークの Log Analytics が Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します。| いいえ  |
-| OmsWorkspaceName | Log Analytics ワークスペース名。 ブロックチェーン ネットワークの Log Analytics が Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します | いいえ  |
+| OmsSubscriptionId | Azure Monitor ログのデプロイ先のサブスクリプション ID。 ブロックチェーン ネットワークの Azure Monitor ログが Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します。| いいえ  |
+| OmsResourceGroup |Azure Monitor ログのデプロイ先のリソース グループ。 ブロックチェーン ネットワークの Azure Monitor ログが Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します。| いいえ  |
+| OmsWorkspaceName | Log Analytics ワークスペース名。 ブロックチェーン ネットワークの Azure Monitor ログが Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します | いいえ  |
 
 ## <a name="what-is-collected"></a>収集される内容
 
@@ -75,4 +75,4 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure Blockchain Workbench アーキテクチャ](architecture.md)
+> [Azure Blockchain Workbench Application Insights トラブルシューティング ガイド](https://aka.ms/workbenchtroubleshooting)

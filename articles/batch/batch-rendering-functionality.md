@@ -1,97 +1,98 @@
 ---
-title: Batch レンダリングの機能
-description: Azure Batch 固有のレンダリング機能
+title: Rendering capabilities - Azure Batch
+description: Specific rendering capabilities in Azure Batch
 services: batch
+ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6d79cdf279022320f654fbbeadb870f82db88cab
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: be6c0f9a8874507433606903bcbd58c7723d6a8a
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392787"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791802"
 ---
-# <a name="azure-batch-rendering-capabilities"></a>Azure Batch Rendering の機能
+# <a name="azure-batch-rendering-capabilities"></a>Azure Batch rendering capabilities
 
-Azure Batch の標準の機能は、レンダリングのワークロードとアプリケーションの実行に使用されます。 また、Batch にはレンダリングのワークロードをサポートする特定の機能が含まれています。
+Standard Azure Batch capabilities are used to run rendering workloads and applications. Batch also includes specific features to support rendering workloads.
 
-プール、ジョブ、タスクなどの Batch の概念の概要については、[こちらの記事](https://docs.microsoft.com/azure/batch/batch-api-basics)をご覧ください。
+For an overview of Batch concepts, including pools, jobs, and tasks, see [this article](https://docs.microsoft.com/azure/batch/batch-api-basics).
 
-## <a name="batch-pools"></a>Batch プール
+## <a name="batch-pools"></a>Batch Pools
 
-### <a name="rendering-application-installation"></a>レンダリング アプリケーションのインストール
+### <a name="rendering-application-installation"></a>Rendering application installation
 
-VM イメージをレンダリングする Azure Marketplace は、事前インストールされたアプリケーションを使用する必要がある場合にのみ、プール構成で指定できます。
+An Azure Marketplace rendering VM image can be specified in the pool configuration if only the pre-installed applications need to be used.
 
-Windows 2016 のイメージと CentOS のイメージがあります。  [Azure Marketplace](https://azuremarketplace.microsoft.com) で、VM イメージは「batch rendering」と検索することで見つかります。
+There is a Windows 2016 image and a CentOS image.  In the [Azure Marketplace](https://azuremarketplace.microsoft.com), the VM images can be found by searching for 'batch rendering'.
 
-プール構成の例については、[Azure CLI でのレンダリングのチュートリアル](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)をご覧ください。  Azure portal と Batch Explorer には、プールを作成するときにレンダリングする VM イメージを選択する、GUI ツールが用意されています。  Batch API を使用している場合は、プールの作成時に [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) に次のプロパティ値を指定します。
+For an example pool configuration, see the [Azure CLI rendering tutorial](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli).  The Azure portal and Batch Explorer provide GUI tools to select a rendering VM image when you create a pool.  If using a Batch API, then specify the following property values for [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) when creating a pool:
 
-| 発行元 | プラン | SKU | Version |
+| Publisher | Offer | Sku | Version |
 |---------|---------|---------|--------|
-| batch (バッチ) | rendering-centos73 | rendering | latest |
-| batch (バッチ) | rendering-windows2016 | rendering | latest |
+| batch | rendering-centos73 | rendering | latest |
+| batch | rendering-windows2016 | rendering | latest |
 
-プールの VM で追加のアプリケーションが要求されている場合は、その他のオプションを使用できます。
+Other options are available if additional applications are required on the pool VMs:
 
-* Marketplace の標準のイメージに基づくカスタム イメージ:
-  * このオプションを使用すると、必要な目的のアプリケーションと特定のバージョンで VM を構成できます。 詳しくは、[カスタム イメージを使用して仮想マシンのプールを作成する](https://docs.microsoft.com/azure/batch/batch-custom-images)方法に関するページをご覧ください。 Autodesk と Chaos Group では Azure Batch のライセンス サービスに対する検証を行うために Arnold と V-Ray をそれぞれ修正していることに注意してください。 所有しているアプリケーションがこのサポートに対応するバージョンであることを確認してください。対応していない場合、従量課金ライセンスが動作しません。 現在のバージョンの Maya と 3ds Max は、ヘッドレス (バッチ/コマンドライン モード) で実行されている場合、ライセンス サーバーを必要としません。 このオプションの使用方法について不明な点がある場合は、Azure サポートにお問い合わせください。
-* [アプリケーション パッケージ](https://docs.microsoft.com/azure/batch/batch-application-packages):
-  * 1 つまたは複数の ZIP ファイルを使用してアプリケーション ファイルをパッケージ化し、Azure portal でアップロードして、プール構成でそのパッケージを指定します。 プール のVM が作成されると、ZIP ファイルがダウンロードされ、ファイルが抽出されます。
-* リソース ファイル:
-  * アプリケーション ファイルが Azure BLOB ストレージにアップロードされ、[プールの開始タスク](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask)でファイルの参照を指定します。 プールの VM が作成されると、リソース ファイルが各 VM にダウンロードされます。
+* A custom image based on a standard Marketplace image:
+  * Using this option, you can configure your VM with the exact applications and specific versions that you require. For more information, see [Use a custom image to create a pool of virtual machines](https://docs.microsoft.com/azure/batch/batch-custom-images). Autodesk and Chaos Group have modified Arnold and V-Ray, respectively, to validate against an Azure Batch licensing service. Make sure you have the versions of these applications with this support, otherwise the pay-per-use licensing won't work. Current versions of Maya or 3ds Max don't require a license server when running headless (in batch/command-line mode). Contact Azure support if you're not sure how to proceed with this option.
+* [Application packages](https://docs.microsoft.com/azure/batch/batch-application-packages):
+  * Package the application files using one or more ZIP files, upload via the Azure portal, and specify the package in pool configuration. When pool VMs are created, the ZIP files are downloaded and the files extracted.
+* Resource files:
+  * Application files are uploaded to Azure blob storage, and you specify file references in the [pool start task](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask). When pool VMs are created, the resource files are downloaded onto each VM.
 
-### <a name="pay-for-use-licensing-for-pre-installed-applications"></a>事前インストールされているアプリケーションの従量課金ライセンス
+### <a name="pay-for-use-licensing-for-pre-installed-applications"></a>Pay-for-use licensing for pre-installed applications
 
-使用されライセンス料金が発生するアプリケーションは、プール構成で指定する必要があります。
+The applications that will be used and have a licensing fee need to be specified in the pool configuration.
 
-* [プールの作成](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body)時に `applicationLicenses` プロパティを指定します。  文字列の配列 "vray"、"arnold"、"3dsmax"、"maya" で、次の値を指定できます。
-* 1 つまたは複数のアプリケーションを指定すると、それらのアプリケーションのコストが VM のコストに追加されます。  アプリケーションの料金は、[Azure Batch の料金ページ](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering)で確認できます。
+* Specify the `applicationLicenses` property when [creating a pool](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body).  The following values can be specified in the array of strings - "vray", "arnold", "3dsmax", "maya".
+* When you specify one or more applications, then the cost of those applications is added to the cost of the VMs.  Application prices are listed on the [Azure Batch pricing page](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering).
 
 > [!NOTE]
-> レンダリング アプリケーションを使用するためにライセンス サーバーに接続しない場合は、`applicationLicenses`プロパティを指定しないでください｡
+> If instead you connect to a license server to use the rendering applications, do not specify the `applicationLicenses` property.
 
-Azure portal または Batch Explorer を使用してアプリケーションを選択し、そのアプリケーションの料金を表示できます。
+You can use the Azure portal or Batch Explorer to select applications and show the application prices.
 
-プールの構成設定の `applicationLicenses` プロパティでアプリケーションを指定しないで､アプリケーションを使用しようとした場合、あるいはライセンス サーバーにアクセスできなかった場合､アプリケーションの実行はライセンス エラーとゼロ以外の終了コードで失敗します。
+If an attempt is made to use an application, but the application hasn’t been specified in the `applicationLicenses` property of the pool configuration or does not reach a license server, then the application execution fails with a licensing error and non-zero exit code.
 
-### <a name="environment-variables-for-pre-installed-applications"></a>事前インストールされているアプリケーションの環境変数
+### <a name="environment-variables-for-pre-installed-applications"></a>Environment variables for pre-installed applications
 
-レンダリング タスクのコマンドラインを作成できるようにするには、レンダリング アプリケーションの実行可能ファイルのインストール場所を指定する必要があります。  Azure Marketplace の VM イメージにシステム環境変数が作成されており、これを実際のパスを指定する代わりに使用できます。  これらの環境変数は、[Batch の標準の環境変数](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables)に加えてタスクごとに作成されます。
+To be able to create the command line for rendering tasks, the installation location of the rendering application executables must be specified.  System environment variables have been created on the Azure Marketplace VM images, which can be used instead of having to specify actual paths.  These environment variables are in addition to the [standard Batch environment variables](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables) created for each task.
 
-|アプリケーション|アプリケーション実行可能ファイル|環境変数|
+|Application|Application Executable|Environment Variable|
 |---------|---------|---------|
 |Autodesk 3ds Max 2018|3dsmaxcmdio.exe|3DSMAX_2018_EXEC|
 |Autodesk 3ds Max 2019|3dsmaxcmdio.exe|3DSMAX_2019_EXEC|
 |Autodesk Maya 2017|render.exe|MAYA_2017_EXEC|
 |Autodesk Maya 2018|render.exe|MAYA_2018_EXEC|
 |Chaos Group V-Ray Standalone|vray.exe|VRAY_3.60.4_EXEC|
-Arnold 2017 コマンド ライン|kick.exe|ARNOLD_2017_EXEC|
-|Arnold 2018 コマンド ライン|kick.exe|ARNOLD_2018_EXEC|
+Arnold 2017 command line|kick.exe|ARNOLD_2017_EXEC|
+|Arnold 2018 command line|kick.exe|ARNOLD_2018_EXEC|
 |Blender|blender.exe|BLENDER_2018_EXEC|
 
-### <a name="azure-vm-families"></a>Azure VM のファミリ
+### <a name="azure-vm-families"></a>Azure VM families
 
-他のワークロードと同様に、レンダリング アプリケーションのシステム要件はさまざまで、ジョブとプロジェクトによってパフォーマンス要件は異なります。  Azure では、最小のコスト、価格とパフォーマンスの最適なバランス、最高のパフォーマンスなど、ユーザーの要件に応じて各種 VM ファミリを利用できます。
-Arnold などの一部のレンダリング アプリケーションは CPU ベースです。V-Ray や Blender Cycles は CPU か GPU、またはその両方を使用する場合があります。
-利用可能な VM ファミリと VM のサイズについて詳しくは、「[VM の種類とサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)」をご覧ください。
+As with other workloads, rendering application system requirements vary, and performance requirements vary for jobs and projects.  A large variety of VM families are available in Azure depending on your requirements – lowest cost, best price/performance, best performance, and so on.
+Some rendering applications, such as Arnold, are CPU-based; others such as V-Ray and Blender Cycles can use CPUs and/or GPUs.
+For a description of available VM families and VM sizes, [see VM types and sizes](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
 
-### <a name="low-priority-vms"></a>優先順位の低い VM
+### <a name="low-priority-vms"></a>Low-priority VMs
 
-他のワークロードと同様に、Batch のプールでレンダリング用に優先順位の低い VM を利用できます。  優先順位の低い VM は通常の専用の VM と同じパフォーマンスを発揮しますが、Azure の余剰キャパシティを使用し、大幅な割引が適用されます。  優先順位の低い VM を使用するデメリットは、利用可能な容量によっては、これらの VM が割り当てられなかったりいつでも割り込まれたりする可能性がある点です。 この理由から、優先順位の低い VM はすべてのレンダリング ジョブには適しません。 たとえば、イメージのレンダリングに数時間かかる場合、VM が先取りされること が原因でそれらのイメージのレンダリングに中断や再起動が発生することは受け入れられない可能性があります。
+As with other workloads, low-priority VMs can be utilized in Batch pools for rendering.  Low-priority VMs perform the same as regular dedicated VMs but utilize surplus Azure capacity and are available for a large discount.  The tradeoff for using low-priority VMs is that those VMs may not be available to be allocated or may be preempted at any time, depending on available capacity. For this reason, low-priority VMs aren't going to be suitable for all rendering jobs. For example, if images take many hours to render then it's likely that having the rendering of those images interrupted and restarted due to VMs being preempted wouldn't be acceptable.
 
-優先順位の低い VM の特性と Batch を使用してそれらを構成するさまざまな方法について詳しくは、「[Batch で優先順位の低い VM を使用する](https://docs.microsoft.com/azure/batch/batch-low-pri-vms)」をご覧ください。
+For more information about the characteristics of low-priority VMs and the various ways to configure them using Batch, see [Use low-priority VMs with Batch](https://docs.microsoft.com/azure/batch/batch-low-pri-vms).
 
-## <a name="jobs-and-tasks"></a>ジョブとタスク
+## <a name="jobs-and-tasks"></a>Jobs and tasks
 
-ジョブやタスクでレンダリング固有のサポートは不要です。  主な構成項目はタスク コマンドラインであり、必要なアプリケーションを参照する必要があります。
-Azure Marketplace の VM イメージが使用されている場合は、ベスト プラクティスとして、環境変数を使用してパスとアプリケーション実行可能ファイルを指定します。
+No rendering-specific support is required for jobs and tasks.  The main configuration item is the task command line, which needs to reference the required application.
+When the Azure Marketplace VM images are used, then the best practice is to use the environment variables to specify the path and application executable.
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>Next steps
 
-Batch レンダリングの例については、次の 2 つのチュートリアルをお試しください。
+For examples of Batch rendering try out the two tutorials:
 
-* [Azure CLI を使用したレンダリング](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
-* [Batch Explorer を使用したレンダリング](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
+* [Rendering using the Azure CLI](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
+* [Rendering using Batch Explorer](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)

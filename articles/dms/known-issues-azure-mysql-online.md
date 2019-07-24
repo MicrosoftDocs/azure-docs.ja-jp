@@ -3,20 +3,20 @@ title: Azure Database for MySQL へのオンライン移行に関する既知の
 description: Azure Database for MySQL へのオンライン移行に関する既知の問題と移行の制限事項について学習します。
 services: database-migration
 author: HJToland3
-ms.author: scphang
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+ms.author: jtoland
+manager: craigg
+ms.reviewer: craigg
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: 6e82c10d8e9109279045095c1b856520245a5a6f
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.date: 03/12/2019
+ms.openlocfilehash: cf5215ff5acaf08125cf280103ba8ff0123dc116
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884512"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523819"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Azure DB for MySQL へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -30,7 +30,7 @@ MySQL から Azure Database for MySQL へのオンライン移行に関する既
 - 同じバージョン間の移行。 MySQL 5.6 から Azure Database for MySQL 5.7 への移行はサポートされません。
 - my.ini (Windows) または my.cnf (Unix) のバイナリ ログを有効にします
     - Server_id=1 のように、Server_id を 1 以上に設定します (MySQL 5.6 の場合のみ)
-    - log-bin = <path> を設定します (MySQL 5.6 の場合のみ)
+    - log-bin = \<パス> を設定します (MySQL 5.6 の場合のみ)
     - binlog_format = row を設定します
     - Expire_logs_days = 5 (推奨 - MySQL 5.6 の場合のみ)
 - ユーザーが ReplicationAdmin ロールを持つ必要があります。
@@ -60,27 +60,27 @@ MySQL から Azure Database for MySQL へのオンライン移行に関する既
     ```
 
 ## <a name="datatype-limitations"></a>データ型に関する制限事項
-- **制限事項**: ソースの MySQL データベースに JSON データ型がある場合、移行は、継続的同期中に失敗します。
+- **制限事項**:ソースの MySQL データベースに JSON データ型がある場合、移行は、継続的同期中に失敗します。
 
     **対処法**: ソース MySQL データベース内の JSON データ型を medium text または longtext に変更します。
 
-- **制限**: テーブルに主キーがない場合、継続的同期は失敗します。
+- **制限事項**:テーブルに主キーがない場合、継続的同期は失敗します。
  
     **対処法**: 移行を続行するには、テーブルの主キーを一時的に設定します。 データの移行が完了した後は、主キーを削除できます。
 
 ## <a name="lob-limitations"></a>LOB に関する制限事項
 ラージ オブジェクト (LOB) 列は、サイズが大きくなる可能性のある列です。 MySQL の場合、LOB のデータ型には、Medium text、Longtext、BLOB、Mediumblob、Longblob などがあります。
 
-- **制限事項**: LOB のデータ型を主キーとして使用すると、移行は失敗します。
+- **制限事項**:LOB のデータ型を主キーとして使用すると、移行は失敗します。
 
     **対処法**: 主キーを、LOB ではない他のデータ型または列に置き換えます。
 
-- **制限事項**: ラージ オブジェクト (LOB) 列の長さが 32 KB を超える場合、ターゲットにおいてデータが切り捨てられることがあります。 次のクエリを使用して、LOB 列の長さを確認できます。
+- **制限事項**:ラージ オブジェクト (LOB) 列の長さが 32 KB を超える場合、ターゲットにおいてデータが切り捨てられることがあります。 次のクエリを使用して、LOB 列の長さを確認できます。
     ```
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **対処法**: 32 KB を超える LOB オブジェクトがある場合は、エンジニアリング チーム ([dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)) に相談してください。 
+    **対処法**: 32 KB を超える LOB 列がある場合は、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) でエンジニアリング チームに相談してください。 
 
 ## <a name="other-limitations"></a>その他の制限事項
 - 先頭と末尾に中かっこ {} を含むパスワード文字列はサポートされていません。 この制限は、ソース MySQL とターゲット Azure Database for MySQL の両方への接続に適用されます。

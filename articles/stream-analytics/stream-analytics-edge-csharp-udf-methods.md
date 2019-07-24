@@ -1,5 +1,5 @@
 ---
-title: Azure Stream Analytics Edge ジョブの .NET Standard ユーザー定義関数の開発 (プレビュー)
+title: Azure Stream Analytics Edge ジョブの .NET Standard 関数の開発 (プレビュー)
 description: Stream Analytics Edge ジョブの C# ユーザー定義関数を記述する方法について説明します。
 services: stream-analytics
 author: mamccrea
@@ -8,13 +8,14 @@ manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: f0da25410fe81a93501df940ffbb0e115456a9e8
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 5df4c9dfe18b02ade3a37717da9c68acbfcf1853
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247809"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106602"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-edge-jobs-preview"></a>Azure Stream Analytics Edge ジョブの .NET Standard ユーザー定義関数の開発 (プレビュー)
 
@@ -82,15 +83,15 @@ UDF パッケージの形式では、パス `/UserCustomCode/CLR/*` を使用し
 
 4. **ソリューション エクスプローラー**の **[参照]** の下に **[UDFTest]** が表示されます。
 
-   ![Azure Stream Analytics Edge ソリューション エクスプローラーにユーザー定義関数参照が表示される](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png)
+   ![ソリューション エクスプローラーにユーザー定義関数参照が表示される](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png)
 
 5. **[関数]** フォルダーを右クリックし、**[新しいアイテム]** を選択します。
 
-   ![Visual Studio で Azure Stream Analytics Edge ソリューションの [関数] に新しいアイテムを追加する](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png)
+   ![Azure Stream Analytics Edge ソリューションの [関数] に新しいアイテムを追加する](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png)
 
 6. Azure Stream Analytics プロジェクトに、C# 関数 **SquareFunction.json** を追加します。
 
-   ![Visual Studio で Stream Analytics Edge のアイテムの一覧から C# 関数を選択する](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png)
+   ![Visual Studio で Stream Analytics Edge のアイテムから C# 関数を選択する](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png)
 
 7. **ソリューション エクスプローラー**で関数をダブルクリックして、構成ダイアログを開きます。
 
@@ -133,6 +134,6 @@ UDF パッケージの形式では、パス `/UserCustomCode/CLR/*` を使用し
 
 ## <a name="next-steps"></a>次の手順
 
-* [チュートリアル: Azure Stream Analytics Edge ジョブの C# ユーザー定義関数を記述する (プレビュー)](stream-analytics-edge-csharp-udf.md)
-* [チュートリアル: Azure Stream Analytics の JavaScript ユーザー定義関数](stream-analytics-javascript-user-defined-functions.md)
+* [チュートリアル:Azure Stream Analytics Edge ジョブの C# ユーザー定義関数を記述する (プレビュー)](stream-analytics-edge-csharp-udf.md)
+* [チュートリアル:Azure Stream Analytics の JavaScript ユーザー定義関数](stream-analytics-javascript-user-defined-functions.md)
 * [Visual Studio を使用して Azure Stream Analytics ジョブを表示する](stream-analytics-vs-tools.md)

@@ -2,18 +2,19 @@
 title: Azure Batch と Batch Explorer を使って Blender のシーンをレンダリングする
 description: チュートリアル - Azure Batch と Batch Explorer のクライアント アプリケーションを使って Blender のシーンから複数のフレームをレンダリングする方法
 services: batch
+ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 46c65cd7ac5734134fa7c4ad6fd85f39d1188e28
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 8a512676ab0e56f51c0fb9c59f2e530cfcf73333
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392555"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791428"
 ---
-# <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>チュートリアル: Batch Explorer を使って Blender のシーンをレンダリングする
+# <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>チュートリアル:Batch Explorer を使って Blender のシーンをレンダリングする
 
 このチュートリアルでは、Blender のデモ シーンから複数のフレームをレンダリングする方法について説明します。 このチュートリアルでは、クライアント VM とレンダリング VM のどちらにも無料で利用できる Blender を使っていますが、仮に他のアプリケーション (Maya、3ds Max など) を使った場合でも手順はほぼ同じです。
 
@@ -108,7 +109,7 @@ Blender アプリケーションを含んだレンダリング用 Azure Marketpl
 
 ![Blender のジョブ テンプレート](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_template.png)
 
-ジョブとすべてのタスクが作成されると、ジョブがそのタスクと共に表示されます。![ジョブ タスク一覧](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_task_list.png)
+ジョブとすべてのタスクが作成されると、ジョブがそのタスクと共に表示されます。![ジョブ タスクの一覧](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_task_list.png)
 
 プールの VM 上でタスクの初回実行が開始されるとき、バッチ ジョブの準備タスクが実行されます。この準備タスクは、Blender でシーン ファイルにアクセスできるようストレージ ファイル グループから VM にシーン ファイルをコピーするものです。
 レンダーの状態は、Blender によって生成される stdout.txt ログ ファイルを見て確認できます。  いずれかのタスクを選択すると、"Task Outputs (タスクの出力)" が既定で表示され、"stdout.txt" ファイルを選択して表示することができます。
@@ -122,7 +123,7 @@ Blender アプリケーションを含んだレンダリング用 Azure Marketpl
 
 フレームのレンダリングが完了すると、そのタスクが完了済みとして表示されます。![タスクの完了](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_tasks_complete.png)
 
-レンダリングされた画像はまず VM に書き込まれ、"wd" フォルダーを選択することによって表示できます。![プールのノードでレンダリングされた画像](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image.png)
+レンダリングされた画像はまず VM に書き込まれ、"wd" フォルダーを選択することによって表示できます。![プールのノード上でレンダリングされた画像](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image.png)
 
 出力フレームとログ ファイルについても、ジョブの作成時に指定した Azure Storage アカウントのファイル グループに書き戻すように、ジョブ テンプレートで指定されています。  出力ファイルとログは "データ" という UI を使用して表示できます。また、それらのファイルをダウンロードすることもできます。![ストレージ ファイル グループ内のレンダリング済み画像](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image_storage.png)
 

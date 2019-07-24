@@ -9,17 +9,16 @@ ms.assetid: 9b0fdc59-5bbe-44d1-9ebc-8be14d44def9
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 843b92c20b2ec930ce67659802a4287328a08650
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 64fae56bfc95b62bd60444d49100689845f64278
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618871"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445145"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Portal および PowerShell を使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
@@ -36,6 +35,8 @@ ms.locfileid: "39618871"
 
 > [!IMPORTANT]
 > Azure Data Factory バージョン 1 は、新しい [Azure Monitor アラート インフラストラクチャ](../../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) を使用するようになりました。 以前のアラート インフラストラクチャは非推奨です。 その結果、バージョン 1 データ ファクトリ用に構成された既存のアラートは機能しなくなります。 v1 データ ファクトリの既存のアラートは自動的に移行されません。 これらのアラートは、新しいアラート インフラストラクチャ上に再作成する必要があります。 Azure Portal にログインして **[モニター]** を選択し、バージョン 1 のデータ ファクトリ用にメトリックに対する新しいアラートを作成します (失敗した実行、成功した実行など)。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="understand-pipelines-and-activity-states"></a>パイプラインとアクティビティの状態の理解
 Azure Portal を使用すると、次の操作を行うことができます。
@@ -88,7 +89,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 
 <table>
 <tr>
-    <th align="left">State</th><th align="left">下位状態</th><th align="left">説明</th>
+    <th align="left">状態</th><th align="left">下位状態</th><th align="left">説明</th>
 </tr>
 <tr>
     <td rowspan="8">待機中</td><td>ScheduleTime</td><td>スライスを実行する時刻になっていません。</td>
@@ -162,7 +163,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 
 ![状態ダイアグラム](./media/data-factory-monitor-manage-pipelines/state-diagram.png)
 
-データ ファクトリのデータセット状態遷移フローは、Waiting -> In-Progress/In-Progress (Validating) -> Ready/Failed となります。
+データ ファクトリでのデータセット状態遷移フローは次のとおりです。Waiting -> In-Progress/In-Progress (Validating) -> Ready/Failed。
 
 スライスは **Waiting** 状態で始まり、前提条件が満たされるまで待機してから実行されます。 アクティビティの実行が始まると、スライスは **In-Progress** 状態になります。 アクティビティの実行結果は成功か失敗のどちらかになります。 実行結果に応じて、スライスは **Ready** または **Failed** とマークされます。
 
@@ -174,26 +175,26 @@ Azure PowerShell を使用してパイプラインを管理できます。 た�
 > [!NOTE] 
 > ダイアグラム ビューは、パイプラインの一時停止と再開をサポートしていません。 ユーザー インターフェイスを使用する場合は、監視と管理アプリケーションを使用してください。 このアプリケーションの使用法の詳細については、[新しい監視と管理アプリを使用した Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。 
 
-**Suspend-AzureRmDataFactoryPipeline** PowerShell コマンドレットを使用して、パイプラインを一時停止/中断できます。 このコマンドレットは、問題が修正されるまでパイプラインを実行しない場合に便利です。 
+**Suspend-AzDataFactoryPipeline** PowerShell コマンドレットを使用して、パイプラインを一時停止/中断できます。 このコマンドレットは、問題が修正されるまでパイプラインを実行しない場合に便利です。 
 
 ```powershell
-Suspend-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
+Suspend-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
 例: 
 
 ```powershell
-Suspend-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
+Suspend-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
 ```
 
 パイプラインの問題が解決されたら、次の PowerShell コマンドを実行して、一時停止されているパイプラインを再開できます。
 
 ```powershell
-Resume-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
+Resume-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
 例: 
 
 ```powershell
-Resume-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
+Resume-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
 ```
 
 ## <a name="debug-pipelines"></a>パイプラインをデバッグする
@@ -218,29 +219,29 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 
 #### <a name="use-powershell-to-debug-an-error"></a>PowerShell を使用してエラーをデバッグする
 1. **PowerShell**を起動します。
-2. **Get-AzureRmDataFactorySlice** コマンドを実行してスライスとその状態を確認します。 [状態] が **[Failed]** になっているスライスが表示されます。        
+2. **Get-AzDataFactorySlice** コマンドを実行してスライスとその状態を確認します。 [状態] が **[Failed]** になっているスライスが表示されます。        
 
     ```powershell   
-    Get-AzureRmDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
+    Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```   
    例: 
 
     ```powershell   
-    Get-AzureRmDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
+    Get-AzDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
     ```
 
    **StartDateTime** を、ご使用のパイプラインの開始時刻で置き換えます。 
-3. **Get-AzureRmDataFactoryRun** コマンドレットを実行して、スライスのアクティビティの実行について詳細を取得します。
+3. **Get-AzDataFactoryRun** コマンドレットを実行して、スライスのアクティビティの実行について詳細を取得します。
 
     ```powershell   
-    Get-AzureRmDataFactoryRun [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime]
+    Get-AzDataFactoryRun [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime]
     <DateTime> [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```
 
     例: 
 
     ```powershell   
-    Get-AzureRmDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
+    Get-AzDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
     ```
 
     StartDateTime の値は、前の手順でメモしたエラーまたは問題のあるスライスの開始日時です。 日時は二重引用符で囲む必要があります。
@@ -268,10 +269,10 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
     PipelineName            : EnrichGameLogsPipeline
     Type                    :
     ```
-5. 出力結果の ID 値を使用して **Save-AzureRmDataFactoryLog** コマンドレットを実行し、このコマンドレットの **-DownloadLogs** オプションを使用してログ ファイルをダウンロードできます。
+5. 出力結果の ID 値を使用して **Save-AzDataFactoryLog** コマンドレットを実行し、このコマンドレットの **-DownloadLogs** オプションを使用してログ ファイルをダウンロードできます。
 
     ```powershell
-    Save-AzureRmDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\Test"
+    Save-AzDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\Test"
     ```
 
 ## <a name="rerun-failures-in-a-pipeline"></a>パイプラインのエラーを再実行する
@@ -289,7 +290,7 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 ![エラーの修正と検証](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
 ### <a name="use-azure-powershell"></a>Azure PowerShell の使用
-**Set-AzureRmDataFactorySliceStatus** コマンドレットを使用してエラーを再実行できます。 このコマンドレットの構文やその他の詳細については、「[Set-AzureRmDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/azurerm.datafactories/set-azurermdatafactoryslicestatus)」のトピックを参照してください。
+**Set-AzDataFactorySliceStatus** コマンドレットを使用してエラーを再実行できます。 このコマンドレットの構文やその他の詳細については、「[Set-AzDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus)」のトピックをご覧ください。
 
 **例:**
 
@@ -298,7 +299,7 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
 "UpdateType" は "UpstreamInPipeline" に設定されています。これにより、テーブルとすべての依存 (アップストリーム) テーブルの各スライスの状態が "Waiting" に設定されます。 このパラメーターに指定できる他の値は、"Individual" です。
 
 ```powershell
-Set-AzureRmDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -DatasetName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
+Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -DatasetName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
 ```
 ## <a name="create-alerts-in-the-azure-portal"></a>Azure Portal でアラートを作成する
 
@@ -310,7 +311,7 @@ Set-AzureRmDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiAD
 
     ![新しいアラートを作成する](media/data-factory-monitor-manage-pipelines/v1alerts-image2.png)
 
-3.  **[Alert condition] (アラートの条件)** を定義します。 (**[リソースの種類でフィルター]** では **[データ ファクトリ]** を選択するようにしてください)。**[ディメンション]** の値を指定することもできます。
+3.  **[Alert condition]\(アラートの条件)** を定義します。 (**[リソースの種類でフィルター]** では **[データ ファクトリ]** を選択するようにしてください)。**[ディメンション]** の値を指定することもできます。
 
     ![アラートの条件を定義する - ターゲットを選択する](media/data-factory-monitor-manage-pipelines/v1alerts-image3.png)
 

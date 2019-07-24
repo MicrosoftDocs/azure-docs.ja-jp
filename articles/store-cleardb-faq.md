@@ -1,5 +1,5 @@
 ---
-title: Azure App Service での ClearDB MySql データベースの使用に関してよく寄せられる質問 (FAQ) | Microsoft Docs
+title: Azure App Service での ClearDB MySql データベースの使用に関してよく寄せられる質問 (FAQ)
 description: Azure App Service での ClearDB MySql データベースの使用に関してよく寄せられる質問に答えます。
 documentationcenter: php
 services: mysql
@@ -7,17 +7,16 @@ author: sunbuild
 manager: yochayk
 tags: mysql
 ms.service: multiple
-ms.workload: data-management
 ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: cce6555c71829110781a6dd13757078b105dbb41
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0887f58ca455dfec0474c8d6a1acba584224f0d7
+ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230633"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54074412"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Azure App Service での ClearDB MySql データベースの使用に関してよく寄せられる質問 (FAQ)
 この FAQ では、Azure Web Apps での ClearDB MySQL データベースの使用と購入に関してよく寄せられる質問に答えます。
@@ -25,26 +24,24 @@ ms.locfileid: "51230633"
 > [!IMPORTANT]
 > 2018 年 6 月 13 日より、ClearDB は、現在 Microsoft から請求を受けている Azure ベースの顧客を ClearDB による直接請求モデルに移行しました。 この記事内の情報は古くなっています。 ClearDB データベースの作成、または Azure で作成された ClearDB データベースのアップグレードはできなくなります。
 >
-> 詳細および次のステップについては、「[Changes to ClearDB service plans](http://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/)」を参照してください。
-
+> 詳細および次のステップについては、「[Changes to ClearDB service plans](https://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/)」を参照してください。
 
 ## <a name="what-options-do-i-have-for-mysql-on-azure"></a>Azure で使用できる MySQL にはどのようなオプションがありますか。
-いくつかのオプションがあります。
+そのサービスの最新情報については、[ClearDB](https://w2.cleardb.net/) のページを参照してください。 ClearDB は、ユーザーに代わって MySQL インフラストラクチャを管理する、MySQL のホスティング サービスです。 
 
-* [ClearDB Shared MySQL データベース](/marketplace/partners/cleardb/databases/)
-* [ClearDB MySQL Premium クラスター](/marketplace/partners/cleardb-clusters/cluster/)
+Azure で MySQL をホストするには、他にもいくつかの選択肢があります。
+* [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/)
 * [Azure VM で実行する MySQL クラスター](https://github.com/azure/azure-quickstart-templates/tree/master/mysql-replication)
 * [Azure VM で実行する MySQL の 1 つのインスタンス](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
-ClearDB は、ユーザーに代わって MySQL インフラストラクチャを管理する、MySQL のホスティング サービスです。 独自の MySQL クラスターやデータベースを Azure 仮想マシン上で実行する場合は、MySQL サーバーを設定し、修正プログラムを適用して常に最新の状態に保つ必要があります。
 
 ## <a name="do-i-need-a-credit-card-for-the-web-app--mysql-template-in-the-azure-marketplace"></a>Azure Marketplace で Web アプリケーションと MySQL テンプレートを入手するには、クレジット カードが必要ですか。
 ご利用のサブスクリプションの種類によります。 一般的なサブスクリプションの種類をいくつか示します。
 
-* [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/): クレジット カードが必要です。有料の MySQL データベースの購入時にクレジット カードに課金されます。
-* [無料評価版](https://azure.microsoft.com/pricing/free-trial/): Microsoft Azure サービスに使用できるクレジットが含まれていますが、サードパーティのリソースは購入できません。 サード パーティのサービスや有料の MySQL データベースを購入するには、クレジット カードを有効にしたサブスクリプションを使う必要があります。 Web Apps では無料の ClearDB MySQL データベースを作成できます。
-* [MSDN サブスクリプション](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) と **MSDN 向け開発テスト用の従量課金制プラン**: 無料評価版と同様に、MSDN サブスクリプションで ClearDB から有料の MySQL ソリューションを購入するには、クレジット カードが必要です。
-* [エンタープライズ契約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): EA のお客様の場合、Azure Marketplace (サード パーティ) での購入はすべて EA に対して課金されます (四半期ごとに個別の請求書が発行されます)。 Marketplace での購入はすべて、年額コミットメントとは別に課金されます。 現時点では、アゼルバイジャン、クロアチア、ノルウェー、プエルトリコで登録されたお客様は Azure ストアをご利用いただけませんのでご注意ください。 
+* [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/):クレジット カードが必要です。有料の MySQL データベースの購入時にクレジット カードに課金されます。
+* [無料試用版](https://azure.microsoft.com/pricing/free-trial/):Microsoft Azure サービスに使用できるクレジットが含まれていますが、サードパーティのリソースは購入できません。 サード パーティのサービスや有料の MySQL データベースを購入するには、クレジット カードを有効にしたサブスクリプションを使う必要があります。 Web Apps では無料の ClearDB MySQL データベースを作成できます。
+* [MSDN サブスクリプション](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) と **MSDN 向け開発テスト用の従量課金制プラン**:無料試用版と同様に、MSDN サブスクリプションで ClearDB から有料の MySQL ソリューションを購入するには、クレジット カードが必要です。
+* [マイクロソフト エンタープライズ契約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/):EA のお客様の場合、Azure Marketplace (サード パーティ) での購入はすべて EA に対して課金されます (四半期ごとに個別の請求書が発行されます)。 Marketplace での購入はすべて、年額コミットメントとは別に課金されます。 現時点では、アゼルバイジャン、クロアチア、ノルウェー、プエルトリコで登録されたお客様は Azure ストアをご利用いただけませんのでご注意ください。 
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>Azure Marketplace から Web アプリケーションと MySQL に 3.50 ドルを課金されているのはなぜですか。
 既定のデータベース オプションは Titan で、価格は 3.50 ドルです。 データベースの作成時には価格が表示されないため、このデータベースを誤って購入してしまった可能性があります。 今後プロセスの改善に努めてまいりますが、それまでは、Web アプリケーションとデータベースについて選択した価格レベルをすべて確認してから、 **[作成]** をクリックしてリソースのデプロイを開始してください。
@@ -53,7 +50,7 @@ ClearDB は、ユーザーに代わって MySQL インフラストラクチャ�
 はい。 Azure VM にご自身の Web アプリケーションへのリモート アクセス権が付与されていれば、そのアプリケーションをご自身のデータベースに接続していただけます。 詳細については、「 [Windows Server 2012 R2 を実行するクラシック デプロイ モデルで作成された仮想マシンに MySQL をインストールする](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 
 ## <a name="in-which-countries-are-cleardb-premium-mysql-clusters-supported"></a>ClearDB Premium MySQL クラスターがサポートされている国を教えてください。
-[ClearDB Premium MySQL クラスター](/marketplace/partners/cleardb-clusters/cluster/) は、インド、オーストラリア、ブラジル南部、中国を除く、全世界のすべての Azure リージョンでご利用いただけます。
+ClearDB Premium MySQL クラスターは、インド、オーストラリア、ブラジル南部、中国を除く、全世界のすべての Azure リージョンでご利用いただけます。
 
 ## <a name="can-i-create-a-new-cluster-prior-to-creating-a-database-with-cleardb-premium-cluster-solution"></a>ClearDB Premium クラスター ソリューションでデータベースを作成する前に新しいクラスターを作成できますか。
 いいえ。空の ClearDB クラスターの作成はサポートされていません。 Azure Portal ではクラスター内にデータベースを作成できるので、データベースの作成と同時に新しいクラスターが作成されることはあります。
@@ -65,7 +62,7 @@ ClearDB は、ユーザーに代わって MySQL インフラストラクチャ�
 Azure Marketplace は、アゼルバイジャン、クロアチア、ノルウェー、プエルトリコで登録されたお客様にはご利用いただけません。 これらのリージョンでは、ClearDB を使用できません。
 
 ## <a name="what-pricing-tier-should-i-choose-for-a-production-web-app-and-database"></a>運用中の Web アプリケーションとデータベースにはどの価格レベルを選択すればよいですか。
-Web Apps には Basic 以上の価格レベルを使用してください。 ClearDB には Saturn か Jupiter をお勧めします。 [Web Apps](https://azure.microsoft.com/pricing/details/app-service/) と [ClearDB MySQL データベース](/marketplace/partners/cleardb/databases/)の両方について、各価格レベルの機能と制限事項を確認し、ニーズに合ったレベルを選んでください。
+Web Apps には Basic 以上の価格レベルを使用してください。 ClearDB には Saturn か Jupiter をお勧めします。 [Web Apps](https://azure.microsoft.com/pricing/details/app-service/) と [ClearDB MySQL データベース](https://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/)の両方について、各価格レベルの機能と制限事項を確認し、ニーズに合ったレベルを選んでください。
 
 ## <a name="how-do-i-upgrade-my-cleardb-database-from-one-plan-to-another"></a>ClearDB データベースのプランをアップグレードする方法を教えてください。
 [Azure Portal](https://portal.azure.com) では、ClearDB の共有ホスティング データベースをスケールアップできます。 詳しくは、[こちらの記事](https://blogs.msdn.microsoft.com/appserviceteam/2016/10/06/upgrade-your-cleardb-mysql-database-in-azure-portal/)をご覧ください。 現在、Azure Portal での ClearDB Premium クラスターへのアップグレードはサポートされていません。

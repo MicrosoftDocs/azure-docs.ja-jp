@@ -1,17 +1,19 @@
 ---
-title: Azure CLI スクリプト - Azure Cosmos DB アカウント キーを再生成する | Microsoft Docs
+title: Azure CLI スクリプト - Azure Cosmos DB アカウント キーを再生成する
 description: Azure CLI のサンプル スクリプト - Azure Cosmos DB アカウント キーを再生成する
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: 06a71ce759a72483d9ac3993e82d14af21e7d9d7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.reviewer: sngun
+ms.openlocfilehash: a8af5b7b035b67b5f09b1f16f26394f28941ec8d
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007809"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54040933"
 ---
 # <a name="regenerate-an-azure-cosmos-db-account-key-using-the-azure-cli"></a>Azure CLI を使用して Azure Cosmos DB アカウント キーを再生成する
 

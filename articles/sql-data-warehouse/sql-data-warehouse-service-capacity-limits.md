@@ -6,16 +6,16 @@ author: sachinpMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: aa1d98f5ea2db0cc549b60e33769c8628181721b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 131a2102ec3ede930de3cad7516e486d793fec3d
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686604"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250566"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>SQL Data Warehouse の容量制限
 Azure SQL Data Warehouse のさまざまなコンポーネントで使用できる最大値を示します。
@@ -23,7 +23,7 @@ Azure SQL Data Warehouse のさまざまなコンポーネントで使用でき�
 ## <a name="workload-management"></a>ワークロード管理
 | Category | 説明 | 最大値 |
 |:--- |:--- |:--- |
-| [Data Warehouse ユニット (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |1 つの SQL Data Warehouse に対する 最大 DWU | Gen1: DW6000<br></br>Gen2: DW30000c |
+| [Data Warehouse ユニット (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |1 つの SQL Data Warehouse に対する 最大 DWU | Gen1:DW6000<br></br>Gen2:DW30000c |
 | [Data Warehouse ユニット (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |サーバーあたりの既定の DTU |54,000<br></br>既定では、各 SQL Server (myserver.database.windows.net など) の DTU クォータは 54,000 に設定されており、最大 DW6000c が許可されます。 このクォータは単に安全上の制限です。 クォータを引き上げるには、[サポート チケットを作成](sql-data-warehouse-get-started-create-support-ticket.md)し、要求の種類として *[クォータ]* を選択します。  実際に必要な DTU を計算するには、必要とされる DWU の合計に 7.5 を掛けるか、必要とされる cDWU の合計に 9.0 を掛けます。 例: <br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW6000c x 9.0 = 54,000 DTU<br></br>現在の DTU 消費量は、ポータルで SQL Server オプションから確認できます。 DTU クォータには、一時停止しているデータベースと一時停止していないデータベースの両方が考慮されます。 |
 | データベース接続 |同時に開かれるセッション数 |1024<br/><br/>1024 個のアクティブな各セッションが同時に、SQL Data Warehouse データベースに要求を送信できます。 同時に実行できるクエリ数については、制限があるので注意してください。 コンカレンシーの制限を超えると、要求は内部キューに送られ、処理の順番が来るまで待機します。 |
 | データベース接続 |準備されたステートメントに対する最大メモリ容量 |20 MB |
@@ -33,7 +33,7 @@ Azure SQL Data Warehouse のさまざまなコンポーネントで使用でき�
 ## <a name="database-objects"></a>データベース オブジェクト
 | Category | 説明 | 最大値 |
 |:--- |:--- |:--- |
-| Database |最大サイズ | Gen1: 240 TB (ディスク上の圧縮)。 この領域は tempdb またはログ領域から独立しています。そのため、この領域はパーマネント テーブル専用です。  クラスター化列ストアの圧縮率は約 5 倍になります。  このため、すべてのテーブルをクラスター化列ストア (既定のテーブルの種類) にした場合、データベースを約 1 PB まで拡大できるようになります。 <br/><br/> Gen2: 240 TB (行ストア) および無制限のストレージ (列ストア テーブル) |
+| Database |最大サイズ | Gen1:240 TB (ディスク上の圧縮)。 この領域は tempdb またはログ領域から独立しています。そのため、この領域はパーマネント テーブル専用です。  クラスター化列ストアの圧縮率は約 5 倍になります。  このため、すべてのテーブルをクラスター化列ストア (既定のテーブルの種類) にした場合、データベースを約 1 PB まで拡大できるようになります。 <br/><br/> Gen2:240 TB (行ストア) および無制限のストレージ (列ストア テーブル) |
 | テーブル |最大サイズ |60 TB (ディスク上の圧縮) |
 | テーブル |データベースあたりのテーブル数 | 100,000 |
 | テーブル |テーブルあたりの列数 |1,024 列 |
@@ -59,17 +59,17 @@ Azure SQL Data Warehouse のさまざまなコンポーネントで使用でき�
 ## <a name="queries"></a>クエリ
 | Category | 説明 | 最大値 |
 |:--- |:--- |:--- |
-| クエリ |ユーザー テーブルに対する、キューに置かれるクエリ数 |1,000 |
-| クエリ |システム ビューに対する同時クエリ数 |100 |
-| クエリ |システム ビューに対する、キューに置かれるクエリ数 |1,000 |
-| クエリ |パラメーターの最大個数 |2098 |
+| Query |ユーザー テーブルに対する、キューに置かれるクエリ数 |1,000 |
+| Query |システム ビューに対する同時クエリ数 |100 |
+| Query |システム ビューに対する、キューに置かれるクエリ数 |1,000 |
+| Query |パラメーターの最大個数 |2098 |
 | Batch |最大サイズ |65,536*4096 |
 | SELECT の結果セット |行あたりの列数 |4096<br/><br/>SELECT の結果セットで、許容される行あたりの列数の上限は 4096 個です。 常に 4096 個が保証されるわけではありません。 クエリ プランで一時テーブルが必要な場合、テーブルあたりの列数の最大値として 1024 が適用される可能性があります。 |
 | SELECT |入れ子になったサブクエリの数 |32<br/><br/>SELECT ステートメントで許容される入れ子になったサブクエリの数は 32 個までです。 常に 32 個が保証されるわけではありません。 たとえば、JOIN によって、クエリ プランにサブクエリが導入されることがあります。 サブクエリの数はまた、使用できるメモリによって制限される場合があります。 |
 | SELECT |JOIN あたりの列数 |1,024 列<br/><br/>JOIN で許容される列数は 1,024 個までです。 常に 1024 列が保証されるわけではありません。 JOIN プランで、列数が JOIN の結果を上回る一時テーブルが必要な場合、一時テーブルには 1024 の制限が適用されます。 |
 | SELECT |GROUP BY の列あたりのバイト数 |8060バイト<br/><br/>GROUP BY 句内の列に許容されるバイト数は、最大で 8,060 バイトです。 |
 | SELECT |ORDER BY 列あたりのバイト数 |8060 バイト<br/><br/>ORDER BY 句内の列に許容されるバイト数は、最大で 8,060 バイトです。 |
-| ステートメントあたりの識別子 |参照される識別子の数 |65,535<br/><br/>SQL Data Warehouse では、1 つのクエリ式に含めることができる識別子の数を制限しています。 この数を超えると、SQL Server エラー 8632 が発生します。 詳細については、「 [内部エラー: Expression Service の制限に達しました](https://support.microsoft.com/en-us/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a)」を参照してください。 |
+| ステートメントあたりの識別子 |参照される識別子の数 |65,535<br/><br/>SQL Data Warehouse では、1 つのクエリ式に含めることができる識別子の数を制限しています。 この数を超えると、SQL Server エラー 8632 が発生します。 詳細については、[内部エラー: 式サービスの制限値に達しています](https://support.microsoft.com/en-us/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a)に関するページをご覧ください。 |
 | 文字列リテラル | ステートメントの文字列リテラルの数 | 20,000 <br/><br/>SQL Data Warehouse では、1 つのクエリ式に含めることができる文字列定数の数を制限しています。 この数を超えると、SQL Server エラー 8632 が発生します。|
 
 ## <a name="metadata"></a>Metadata

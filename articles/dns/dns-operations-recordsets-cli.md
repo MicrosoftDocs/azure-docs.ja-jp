@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: victorh
-ms.openlocfilehash: 1f1ee4f69cc1ab656df04ed30cae6f4c3e55bfa7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4864a46b91b4e243ce6a2ae3d9d36df28fe74d8d
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963817"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650975"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Azure CLI を使用して Azure DNS の DNS レコードおよびレコードセットを管理する
 
@@ -92,7 +92,7 @@ az network dns record-set a create --resource-group myresourcegroup --zone-name 
 
 各ケースで、1 つのレコードの作成方法を説明します。 レコードは、既存のレコード セットまたは暗黙的に作成されたレコード セットに追加されます。 レコード セットを作成してレコード セット パラメーターを明示的に定義する方法の詳細については、「[DNS レコード セットを作成する](#create-a-dns-record-set)」を参照してください。
 
-SOA レコード セットを作成する例は示しません。SOA は各 DNS ゾーンと共に作成および削除されるため、単独で作成または削除することはできません。 ただし、[後の例に示すとおり、SOA を変更することはできます](#to-modify-an-SOA-record)。
+SOA レコード セットを作成する例は示しません。SOA は各 DNS ゾーンと共に作成および削除されるため、単独で作成または削除することはできません。 ただし、[後の例に示すとおり、SOA を変更することはできます](#to-modify-an-soa-record)。
 
 ### <a name="create-an-aaaa-record"></a>AAAA レコードの作成
 

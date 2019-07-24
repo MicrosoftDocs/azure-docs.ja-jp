@@ -1,24 +1,24 @@
 ---
-title: Bing Image Search API を v5 から v7 にアップグレードする - Bing Image Search API
+title: Bing Image Search API v5 から v7 へのアップグレード
 titleSuffix: Azure Cognitive Services
-description: このアップグレード ガイドでは、Bing Image Search API のバージョン 5 とバージョン 7 の間の変更点を示します。 このガイドは、バージョン 7 を使用するために更新する必要のあるアプリケーションの部分を識別するのに役立ちます。
+description: このアップグレード ガイドでは、Bing Image Search API のバージョン 5 とバージョン 7 の間の変更点について説明します。 このガイドは、バージョン 7 を使用するために更新する必要のあるアプリケーションの部分を識別するのに役立ちます。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.assetid: 7F78B91F-F13B-40A4-B8A7-770FDB793F0F
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: article
-ms.date: 04/15/2017
+ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 53713a629dbe2682ef393a3a5dbf7845b5075591
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 123c5556dc76b35cf4a6b4b34e0c3e2fe437cebe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296364"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996463"
 ---
-# <a name="image-search-api-upgrade-guide"></a>Image Search API のアップグレード ガイド
+# <a name="bing-image-search-api-v7-upgrade-guide"></a>Bing Image Search API v7 のアップグレード ガイド
 
 このアップグレード ガイドでは、Bing Image Search API のバージョン 5 とバージョン 7 の間の変更点を示します。 このガイドは、バージョン 7 を使用するために更新する必要のあるアプリケーションの部分を識別するのに役立ちます。
 
@@ -26,7 +26,7 @@ ms.locfileid: "46296364"
 
 ### <a name="endpoints"></a>エンドポイント
 
-- エンドポイントのバージョン番号は、v5 から v7 に変更されました。 たとえば、 https://api.cognitive.microsoft.com/bing/\*\*v7.0**/images/search となります。
+- エンドポイントのバージョン番号は、v5 から v7 に変更されました。 たとえば、https:\//api.cognitive.microsoft.com/bing/\*\*v7.0**/images/search のようになっています。
 
 ### <a name="error-response-objects-and-error-codes"></a>エラー応答オブジェクトとエラー コード
 
@@ -74,9 +74,9 @@ Blocked|InvalidRequest.Blocked
 
 ### <a name="query-parameters"></a>クエリ パラメーター
 
-- `modulesRequested` クエリ パラメーターの名前が [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules) に変更されました。  
+- `modulesRequested` クエリ パラメーターの名前が [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) に変更されました。  
 
-- Annotations の名前が Tags に変更されました。 Tags に対する [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules) クエリ パラメーターについての説明を参照してください。  
+- Annotations の名前が Tags に変更されました。 Tags に対する [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) クエリ パラメーターについての説明を参照してください。  
 
 - ShoppingSources フィルター値をサポートしている市場の一覧が、en-US のみに変更されました。 [imageType](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagetype) に関する説明を参照してください。  
 
@@ -98,7 +98,7 @@ Blocked|InvalidRequest.Blocked
 - 次のクエリ文字列パラメーターは、`/images/details` エンドポイントでのみ有効となりました。  
 
     -   [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken)  
-    -   [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules)  
+    -   [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)  
     -   [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imgurl)  
     -   [cab](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cab)  
     -   [cal](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cal)  

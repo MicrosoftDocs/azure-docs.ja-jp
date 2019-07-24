@@ -3,7 +3,7 @@ title: タスクの依存関係を使って、他のタスクの完了に基づ�
 description: MapReduce に見られるようなビッグ データのワークロードを Azure Batch で処理することを目的として、他のタスクの完了に依存するタスクを作成します。
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: b8d12db5-ca30-4c7d-993a-a05af9257210
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a9b44ed56774466bae2f0f5d48b5e012382721b
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: ca6918b809a9b4ede3fffb151c7fa5183ae03b47
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865235"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730801"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>タスクの依存関係を作成して、他のタスクに依存するタスクを実行する
 
@@ -79,7 +79,7 @@ Azure Batch で利用できる基本的なタスクの依存関係には、一�
 |:---:| --- | --- |
 |  [一対一](#one-to-one) |*taskB* は *taskA* に依存 <p/> *taskB* は、*taskA* が正常に完了するまで実行されないようにスケジューリングされる |![Diagram: one-to-one task dependency][1] |
 |  [一対多](#one-to-many) |*taskC* は *taskA* と *taskB* の両方に依存 <p/> *taskC* は、*taskA* と *taskB* の両方が正常に完了するまで実行されないようにスケジューリングされる |![Diagram: one-to-many task dependency][2] |
-|  [タスク ID の範囲](#task-id-range) |*taskD* は、一連のタスク範囲に依存 <p/> *taskD* は、ID *1* ～ *10* のタスクが正常に完了するまで実行されないようにスケジューリングされる |![Diagram: Task id range dependency][3] |
+|  [タスク ID の範囲](#task-id-range) |*taskD* は、一連のタスク範囲に依存 <p/> *taskD* は、ID *1* ～ *10* のタスクが正常に完了するまで実行されないようにスケジューリングされる |![図:タスク ID 範囲の依存関係][3] |
 
 > [!TIP]
 > タスク C、D、E、F がそれぞれタスク A と B に依存するような**多対多**の関係を作成できます。たとえば下流の複数のタスクが上流にある複数のタスクの出力に依存するような、前処理を並列実行する状況で有効活用できます。
@@ -123,7 +123,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 > [!IMPORTANT]
 > 依存関係にタスク ID の範囲を使用した場合、その範囲によって選択されるのは、整数値を表す ID を持つタスクだけです。 そのため、範囲 `1..10` ではタスク `3` と `7` が選択されますが、`5flamingoes` は選択されません。 
 > 
-> 範囲の依存関係を評価するときに先行ゼロは重要ではないため、`4`、`04`、および `004` の文字列識別子を持つタスクはすべて範囲*内*になり、それらはすべてタスク `4` として扱われます。そのため、最初に完了したものが依存関係を満たします。
+> 範囲の依存関係を評価するときに先頭のゼロは重要ではないため、`4`、`04`、`004` の文字列識別子を持つタスクはすべて範囲*内*になり、それらはすべてタスク `4` として扱われます。そのため、最初に完了したものが依存関係を満たします。
 > 
 > 範囲内のすべてのタスクが、正常に完了するか、または **Satisfy** に設定された依存関係アクションに指定されているエラーで終了することによって、依存関係を満たしている必要があります。 詳細については、「[依存関係アクション](#dependency-actions)」セクションをご覧ください。
 >
@@ -227,7 +227,7 @@ new CloudTask("B", "cmd.exe /c echo B")
 [net_exitcode]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskexecutioninformation.exitcode.aspx
 [net_exitconditions]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.exitconditions
 [net_exitoptions]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.exitoptions
-[net_dependencyaction]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.exitoptions#Microsoft_Azure_Batch_ExitOptions_DependencyAction
+[net_dependencyaction]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.exitoptions
 [net_msdn]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [net_onid]: https://msdn.microsoft.com/library/microsoft.azure.batch.taskdependencies.onid.aspx
 [net_onids]: https://msdn.microsoft.com/library/microsoft.azure.batch.taskdependencies.onids.aspx

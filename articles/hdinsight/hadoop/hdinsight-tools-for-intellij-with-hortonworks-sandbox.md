@@ -10,16 +10,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2f09bd7055b987a8647a24d4ebb6ea5a27888a53
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 98f22f531ca15bf88cd7d0a9add2851651e2eec7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015589"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118325"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する
 
-IntelliJ 用 HDInsight ツールを使用して、コンピューターで実行されている [Hortonworks Sandbox](http://hortonworks.com/products/sandbox/) で Apache Scala アプリケーションを開発し、そのアプリケーションをテストする方法について説明します。 
+IntelliJ 用 HDInsight ツールを使用して、コンピューターで実行されている [Hortonworks Sandbox](https://hortonworks.com/products/sandbox/) で Apache Scala アプリケーションを開発し、そのアプリケーションをテストする方法について説明します。 
 
 [IntelliJ IDEA](https://www.jetbrains.com/idea/) は、コンピューター ソフトウェアを開発するための Java 統合開発環境 (IDE) です。 Hortonworks Sandbox でアプリケーションを開発し、テストした後で、そのアプリケーションを [Azure HDInsight](apache-hadoop-introduction.md) に移動できます。
 
@@ -27,9 +27,9 @@ IntelliJ 用 HDInsight ツールを使用して、コンピューターで実行
 
 このチュートリアルを開始する前に、次の項目を用意する必要があります。
 
-- ローカル コンピューターで実行されている Hortonworks Data Platform (HDP) 2.4 on Hortonworks Sandbox。 HDP をセットアップするには、[仮想マシンの Hadoop サンドボックスを使用した Hadoop エコシステムの概要](apache-hadoop-emulator-get-started.md)に関する記事をご覧ください。 
+- ローカル コンピューターで実行されている Hortonworks Data Platform (HDP) 2.4 on Hortonworks Sandbox。 HDP をセットアップするには、[仮想マシンの Hadoop サンドボックスを使用した Apache Hadoop エコシステムの概要](apache-hadoop-emulator-get-started.md)に関する記事を参照してください。 
     > [!NOTE]
-    > IntelliJ 用 HDInsight ツールがテストされているのは HDP 2.4 のみです。 HDP 2.4 を入手するには、[Hortonworks Sandbox ダウンロード サイト](http://hortonworks.com/downloads/#sandbox)で、**[Hortonworks Sandbox アーカイブ]** を展開します。
+    > IntelliJ 用 HDInsight ツールがテストされているのは HDP 2.4 のみです。 HDP 2.4 を入手するには、[Hortonworks Sandbox ダウンロード サイト](https://hortonworks.com/downloads/#sandbox)で、**[Hortonworks Sandbox アーカイブ]** を展開します。
 
 - [Java Developer Kit (JDK) バージョン 1.8 以降](https://aka.ms/azure-jdks)。 Azure Toolkit for IntelliJ には JDK が必要です。
 
@@ -44,7 +44,7 @@ IntelliJ 用 HDInsight ツールを使用して、コンピューターで実行
   5. インストールを完了するには、**[Restart IntelliJ IDEA]\(IntelliJ IDEA の再起動\)** を選択します。
   6. 手順 4 と 5 を繰り返して、**Azure Toolkit for IntelliJ** をインストールします。 詳細については、「[Azure Toolkit for IntelliJ のインストール](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation)」を参照してください。
 
-## <a name="create-a-spark-scala-application"></a>Spark Scala アプリケーションを作成する
+## <a name="create-an-apache-spark-scala-application"></a>Apache Spark Scala アプリケーションを作成する
 
 このセクションでは、IntelliJ IDEA を使用してサンプルの Scala プロジェクトを作成します。 次のセクションで、プロジェクトを送信する前に IntelliJ IDEA を Hortonworks Sandbox (エミュレーター) にリンクします。
 
@@ -53,20 +53,20 @@ IntelliJ 用 HDInsight ツールを使用して、コンピューターで実行
    1. **[HDInsight]** > **[Spark on HDInsight (Scala)]\(HDInsight の Spark (Scala)\)** を選択します。
    2. **[Build tool]\(ビルド ツール\)** ボックスの一覧で、実際のシナリオに基づいて次のいずれかを選択します。
 
-    * **Maven**: Scala プロジェクト作成ウィザードをサポートする場合
-    * **SBT**: 依存関係を管理し、Scala プロジェクトをビルドする場合
+      * **Maven**: Scala プロジェクト作成ウィザードをサポートする場合。
+      * **SBT**: 依存関係を管理し、Scala プロジェクトをビルドする場合。
 
    ![[New Project]\(新しいプロジェクト\) ダイアログ ボックス](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
 2. **[次へ]** を選択します。
 3. 次の **[New Project]\(新しいプロジェクト\)** ダイアログ ボックスで、以下の手順を実行します。
 
-    1. **[Project name]\(プロジェクト名\)** ボックスにプロジェクト名を入力します。
-    2. **[Project location]\(プロジェクトの場所\)** ボックスにプロジェクトの場所を入力します。
-    3. **[Project SDK]\(プロジェクト SDK\)** ドロップダウン リストの横の **[New]\(新規\)** をクリックし、**[JDK]** を選択して、Java JDK バージョン 1.7 以降のフォルダーを指定します。 Spark 2.x クラスターに **[Java 1.8]** を選択します。 Spark 1.x クラスターに **[Java 1.7]** を選択します。 既定の場所は、C:\Program Files\Java\jdk1.8.x_xxx です。
-    4. **[Spark version]\(Spark のバージョン\)** ボックスの一覧には、Scala プロジェクト作成ウィザードによって Spark SDK と Scala SDK の適切なバージョンが統合されています。 Spark クラスターのバージョンが 2.0 より前の場合は、**Spark 1.x** を選択します。 それ以外の場合は、**Spark 2.x** を選択します。 この例では、Spark 1.6.2 (Scala 2.10.5) を使用します。 **Scala 2.10.x** と示されているリポジトリを使用してください。 Scala 2.11.x と示されているレポジトリは使用しないでください。
+   1. **[Project name]\(プロジェクト名\)** ボックスにプロジェクト名を入力します。
+   2. **[Project location]\(プロジェクトの場所\)** ボックスにプロジェクトの場所を入力します。
+   3. **[Project SDK]\(プロジェクト SDK\)** ドロップダウン リストの横の **[New]\(新規\)** をクリックし、**[JDK]** を選択して、Java JDK バージョン 1.7 以降のフォルダーを指定します。 Spark 2.x クラスターに **[Java 1.8]** を選択します。 Spark 1.x クラスターに **[Java 1.7]** を選択します。 既定の場所は、C:\Program Files\Java\jdk1.8.x_xxx です。
+   4. **[Spark version]\(Spark のバージョン\)** ボックスの一覧には、Scala プロジェクト作成ウィザードによって Spark SDK と Scala SDK の適切なバージョンが統合されています。 Spark クラスターのバージョンが 2.0 より前の場合は、**Spark 1.x** を選択します。 それ以外の場合は、**Spark 2.x** を選択します。 この例では、Spark 1.6.2 (Scala 2.10.5) を使用します。 **Scala 2.10.x** と示されているリポジトリを使用してください。 Scala 2.11.x と示されているレポジトリは使用しないでください。
     
-    ![IntelliJ Scala プロジェクトのプロパティを作成する](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
+      ![IntelliJ Scala プロジェクトのプロパティを作成する](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
 
 
 4. **[完了]** を選択します。
@@ -149,14 +149,14 @@ IntelliJ IDEA をエミュレーターにリンクしたら、プロジェクト
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark Linux クラスター向けの Spark アプリケーションを作成する](../spark/apache-spark-intellij-tool-plugin.md)方法を確認します。
+- [Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark Linux クラスター向けの Apache Spark アプリケーションを作成する](../spark/apache-spark-intellij-tool-plugin.md)方法を確認します。
 
-- IntelliJ 用 HDInsight ツールのビデオについては、「[Introduce HDInsight Tools for IntelliJ for Spark development (Spark 開発向け IntelliJ 用 HDInsight ツールの紹介)](https://www.youtube.com/watch?v=YTZzYVgut6c)」を参照してください。
+- IntelliJ 用 HDInsight ツールについては、[Apache Spark 開発向け IntelliJ 用 HDInsight ツールの紹介](https://www.youtube.com/watch?v=YTZzYVgut6c)に関する動画をご覧ください。
 
-- [Azure Toolkit for IntelliJ を使用して HDInsight クラスター上で SSH により Spark アプリケーションをリモートでデバッグする](../spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)方法を確認します。
+- [Azure Toolkit for IntelliJ を使用して HDInsight クラスター上で SSH により Apache Spark アプリケーションをリモートでデバッグする](../spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)方法を確認します。
 
-- [Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark Linux クラスター上で Spark アプリケーションをリモートでデバッグする](../spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)方法を確認します。
+- [Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark Linux クラスター上で Apache Spark アプリケーションをリモートでデバッグする](../spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)方法を確認します。
 
-- [Azure Toolkit for Eclipse の HDInsight ツールを使用して Spark アプリケーションを作成する](../spark/apache-spark-eclipse-tool-plugin.md)方法を確認します。
+- [Azure Toolkit for Eclipse の HDInsight ツールを使用して Apache Spark アプリケーションを作成する](../spark/apache-spark-eclipse-tool-plugin.md)方法を確認します。
 
 - Eclipse 用 HDInsight ツールのビデオについては、「[Use HDInsight Tools for Eclipse to create Spark applications (Eclipse 用 HDInsight ツールを使用した Spark アプリケーションの作成)](https://mix.office.com/watch/1rau2mopb6fha)」をご覧ください。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: v-sharos
-ms.openlocfilehash: 2e1b231a5cf13d2655ff66c7e48752729c580f48
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a2f8e75578e396085e7d80f43c1180e158967061
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232869"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58885589"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>SharePoint 用 StorSimple アダプターをインストールして構成する
 ## <a name="overview"></a>概要
@@ -226,9 +226,9 @@ SharePoint 用 StorSimple アダプター ソフトウェアをアンインス�
 4. **[StorSimple アダプターの構成]** ページで、外部 Blob Storage から削除する各コンテンツ データベースの下にある **[無効化]** をクリックします。 
 5. SharePoint からオブジェクトを削除し、再度アップロードします。
 
-または、SharePoint に用意されている Microsoft` RBS Migrate()` PowerShell コマンドレットを使用することもできます。 詳細については、「 [コンテンツをリモート BLOB ストレージ (RBS) 内または RBS 外に移行する (SharePoint Foundation 2010)](https://technet.microsoft.com/library/ff628255.aspx)」を参照してください。
+または、SharePoint に用意されている Microsoft `RBS Migrate()` PowerShell コマンドレットを使用することもできます。 詳細については、「 [コンテンツをリモート BLOB ストレージ (RBS) 内または RBS 外に移行する (SharePoint Foundation 2010)](https://technet.microsoft.com/library/ff628255.aspx)」を参照してください。
 
-BLOB をコンテンツ データベースに戻したら、次の手順の「 [アダプターのアンインストール](#uninstall-the-adapter)」に進みます。
+BLOB をコンテンツ データベースに戻したら、次の手順に進みます: 「[アダプターのアンインストール](#uninstall-the-adapter)」
 
 ### <a name="uninstall-the-adapter"></a>アダプターのアンインストール
 BLOB を SQL Server コンテンツ データベースに戻したら、次のいずれかのオプションを使用して、SharePoint 用 StorSimple アダプターをアンインストールします。

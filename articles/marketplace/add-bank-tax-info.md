@@ -6,6 +6,7 @@ documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
 editor: ''
+ms.service: marketplace
 ms.assetid: ''
 ms.workload: ''
 ms.tgt_pltfrm: ''
@@ -13,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 2ff5b9e5bbae15b37726ea066474120d9417feba
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: f194b02e5b92ca2de5b58a033c38d4f2e35f93f6
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826026"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790918"
 ---
 # <a name="add-bank-and-tax-information"></a>銀行口座および税の情報を追加する  
 登録リストの種類の "トランザクション" を使用するすべての商用オファーで、銀行口座および税の情報が必要になります。  
@@ -42,7 +43,7 @@ ms.locfileid: "34826026"
 
 4.  [次へ] ボタンをクリックします。 
 
----   
+---
 
 ## <a name="add-tax-information"></a>税の情報を追加する  
 1.  Microsoft ID を使用してデベロッパー センターにサインインします。  
@@ -54,9 +55,9 @@ ms.locfileid: "34826026"
     
     [次へ] ボタンをクリックします。 
 4.  税の詳細情報を入力します。  
-5.  [次へ] ボタンをクリックします。  
+5.  [次へ] をクリックします。  
 
 ## <a name="next-steps"></a>次の手順
 *   「[Azure Marketplace と AppSource のパブリッシャー ガイド](./marketplace-publishers-guide.md)」ページを参照してください。  
  
----  
+---

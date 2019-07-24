@@ -3,8 +3,8 @@ title: Azure Service Fabric への既存の実行可能ファイルのデプロ�
 description: 既存のアプリケーションを Service Fabric クラスターにデプロイできるようにゲスト実行可能ファイルとしてパッケージ化する方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
-ms.author: mfussell
-ms.openlocfilehash: 0f4bb3f32b264bd894341a8776d48eb9f8b061a2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: aljo
+ms.openlocfilehash: bfac14c598b405a398cad916787aa3312589bfd1
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258733"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669947"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>既存の実行可能ファイルのパッケージ化と Service Fabric へのデプロイ
 [ゲスト実行可能](service-fabric-guest-executables-introduction.md)ファイルを既存の実行可能ファイルとしてパッケージ化する際、Visual Studio プロジェクト テンプレートを使用するか、[アプリケーション パッケージを手動で作成する](#manually)かを選択できます。 Visual Studio を使用する場合、アプリケーション パッケージの構造とマニフェスト ファイルは新しいプロジェクト テンプレートによって作成されます。
@@ -34,7 +34,7 @@ Visual Studio には、ゲスト実行可能ファイルを Service Fabric ク�
 1. **[ファイル]**、 > **[新しいプロジェクト]** の順に選択し、Service Fabric アプリケーションを作成します。
 2. サービス テンプレートとして**ゲスト実行可能ファイル**を選択します。
 3. **[参照]** をクリックし、実行可能ファイルが含まれたフォルダーを選択します。残りのパラメーターを入力し、サービスを作成します。
-   * *Code Package Behavior* - フォルダー内の内容をすべて Visual Studio プロジェクトにコピーするように設定できます。これは、実行可能ファイルが変更されない場合に便利です。 実行可能ファイルが変更されることが予想され、新しいビルドを動的に取得する機能が必要な場合は、フォルダーにリンクすることもできます。 Visual Studio でアプリケーション プロジェクトを作成するときは、リンクされたフォルダーを使用できます。 このフォルダーを使用すると、プロジェクト内からソースの場所にリンクされるため、ソースのリンク先でゲスト実行可能ファイルを更新できるようになります。 これらの更新はビルド時にアプリケーション パッケージの一部になります。
+   * *Code Package Behavior*  - フォルダー内の内容をすべて Visual Studio プロジェクトにコピーするように設定できます。これは、実行可能ファイルが変更されない場合に便利です。 実行可能ファイルが変更されることが予想され、新しいビルドを動的に取得する機能が必要な場合は、フォルダーにリンクすることもできます。 Visual Studio でアプリケーション プロジェクトを作成するときは、リンクされたフォルダーを使用できます。 このフォルダーを使用すると、プロジェクト内からソースの場所にリンクされるため、ソースのリンク先でゲスト実行可能ファイルを更新できるようになります。 これらの更新はビルド時にアプリケーション パッケージの一部になります。
    * *Program* - サービスを開始するために実行する必要がある実行可能ファイルを指定します。
    * *Arguments* - 実行可能ファイルに渡す引数を指定します。 引数を含むパラメーターの一覧を指定することもできます。
    * *WorkingFolder* - 開始するプロセスの作業ディレクトリを指定します。 次の 3 つの値のいずれかを指定できます。
@@ -73,7 +73,7 @@ Yeoman により、インストールおよびアンインストール スクリ
 -->
 
 ### <a name="create-the-package-directory-structure"></a>パッケージ ディレクトリ構造を作成する
-最初に前のセクション「アプリケーション パッケージ ファイルの構造」の説明に従ってディレクトリ構造を作成することができます。
+まず、「[Azure Service Fabric アプリのパッケージ化](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps)」の説明に従ってディレクトリ構造を作成します。
 
 ### <a name="add-the-applications-code-and-configuration-files"></a>アプリケーションのコードと構成ファイルを追加する
 ディレクトリ構造を作成したら、アプリケーションのコード ファイルと構成ファイルを、code ディレクトリおよび config ディレクトリに追加できます。 code ディレクトリまたは config ディレクトリに、追加のディレクトリまたはサブディレクトリを作成することもできます。
@@ -96,7 +96,7 @@ Service Fabric では、アプリケーション ルート ディレクトリの
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ServiceManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="NodeApp" Version="1.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ServiceManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Name="NodeApp" Version="1.0.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <ServiceTypes>
       <StatelessServiceType ServiceTypeName="NodeApp" UseImplicitHost="true"/>
    </ServiceTypes>
@@ -143,7 +143,7 @@ CodePackage 要素には、サービスのコードの場所 (およびバージ
 
 `Name` 要素は、サービスのコードが含まれるアプリケーション パッケージ内のディレクトリ名を指定するために使用されます。 `CodePackage` にも `version` 属性があります。 この属性を使用すると、コードのバージョンを指定できます。また、Service Fabric のアプリケーション ライフサイクル管理インフラストラクチャを使用してサービスのコードをアップグレードするためにも使用できます。
 
-#### <a name="optional-update-setupentrypoint"></a>省略可能: SetupEntrypoint の更新
+#### <a name="optional-update-setupentrypoint"></a>省略可能:SetupEntrypoint の更新
 ```xml
 <SetupEntryPoint>
    <ExeHost>
@@ -207,7 +207,7 @@ WorkingFolder は、アプリケーション スクリプトと初期化スク�
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="NodeAppType" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="NodeAppType" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <ServiceManifestImport>
       <ServiceManifestRef ServiceManifestName="NodeApp" ServiceManifestVersion="1.0.0.0" />
    </ServiceManifestImport>
@@ -254,7 +254,7 @@ WorkingFolder は、アプリケーション スクリプトと初期化スク�
 ## <a name="deployment"></a>Deployment
 最後のステップは、[アプリケーションのデプロイ](service-fabric-deploy-remove-applications.md)です。 次の PowerShell スクリプトは、ローカル デプロイ用クラスターにアプリケーションをデプロイし、新しい Service Fabric サービスを開始する方法を示しています。
 
-```PowerShell
+```powershell
 
 Connect-ServiceFabricCluster localhost:19000
 
@@ -302,4 +302,4 @@ Service Fabric エクスプローラーで、サービスが実行されてい�
 * [ゲスト実行可能ファイルをパッケージ化してデプロイするためのサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)。これには、パッケージ化ツールのプレリリース版のリンクが含まれています。
 * [REST を使用してネーム サービス経由で通信する 2 つのゲスト実行可能ファイル (C# と nodejs) のサンプル](https://github.com/Azure-Samples/service-fabric-containers)
 * [複数のゲスト実行可能ファイルのデプロイ](service-fabric-deploy-multiple-apps.md)
-* [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)
+* [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-tutorial-create-dotnet-app.md)

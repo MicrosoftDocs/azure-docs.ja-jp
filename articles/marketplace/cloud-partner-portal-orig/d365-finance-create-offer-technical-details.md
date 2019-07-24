@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: cb8e5074d0cd99f5c7cb2130e6f9181eb5382015
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 5aa118815146287d00a3bb8ee7d5fce57a6ad9ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807569"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120297"
 ---
 <a name="how-to-fill-out-the-technical-info-form"></a>技術情報フォームの入力方法
 ===========================================
@@ -36,9 +36,9 @@ ms.locfileid: "48807569"
 
 -   **App Test Automation (アプリ テストの自動化)**: 必須。拡張機能のテストを自動化するために作成する必要のある、VS でコード化されたテスト パッケージ。
 
-2.  **[Additional Information for the extension (拡張機能の追加情報)]** セクションで、拡張機能の追加情報をアップロードします。 この情報は、検証中に使用されます。
+1. **[Additional Information for the extension (拡張機能の追加情報)]** セクションで、拡張機能の追加情報をアップロードします。 この情報は、検証中に使用されます。
 
-    ![アプリの拡張機能フォームの追加情報](./media/d365-financials/image016.png)
+   ![アプリの拡張機能フォームの追加情報](./media/d365-financials/image016.png)
 
 
 -   **URL to Product Documentation (製品ドキュメントの URL)**: 必須。拡張機能のドキュメントの URL。

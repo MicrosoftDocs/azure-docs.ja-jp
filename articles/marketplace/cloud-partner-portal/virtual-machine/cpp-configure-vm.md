@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c1db8c99b1bd3f9bbb768572ca1f5f7a4e1e0de4
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 9cf363bc5f4230306c2fec99eb6287b23e598a4c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639146"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833503"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Azure でホストされる VM を構成する
 
@@ -28,14 +28,15 @@ ms.locfileid: "49639146"
 
 ## <a name="sizing-the-vhds"></a>VHD のサイズ変更
 
-<!--TD: Check if the following assertion is true. I didn't understand the original content. --> オペレーティング システム (および必要に応じてその他のサービス) で事前構成されたいずれかの VM を選択した場合、[仮想マシン SKU タブ](./cpp-skus-tab.md)に記載されている標準の Azure VM サイズが既に選択されています。これが推奨される方法です。  ただし、OS を手動でインストールする場合は、VM イメージ内のプライマリ VHD を次のようにサイズ変更する必要があります。
+<!--TD: Check if the following assertion is true. I didn't understand the original content. -->
+オペレーティング システム (および必要に応じてその他のサービス) が事前に構成されているいずれかの VM を選択した場合、[仮想マシン SKU タブ](./cpp-skus-tab.md)に記載されている標準の Azure VM サイズが既に選択されています。事前構成された OS でソリューションを始めるのが、推奨されるアプローチです。  ただし、OS を手動でインストールする場合は、VM イメージ内のプライマリ VHD を次のようにサイズ変更する必要があります。
 
 - Windows の場合、オペレーティング システム VHD は 127 ～ 128 GB の固定形式の VHD として作成する必要があります。 
 - Linux の場合、この VHD は 30 ～ 50 GB の固定形式の VHD として作成する必要があります。
 
 物理サイズが 127 ～ 128 GB 未満の場合、VHD が疎になります。 Windows と SQL Server の基本イメージがこれらの要件を既に満たしている場合は、取得された VHD の形式またはサイズを変更しないでください。 
 
-データ ディスクは 1 TB にすることができます。 ディスク サイズを決めるときに、顧客はデプロイメント時にイメージ内の VHD をサイズ変更できないことに注意してください。 データ ディスク VHD は固定形式の VHD として作成する必要があります。 また、疎にする必要もあります。 データ ディスクは最初に空にすることも、データを含むこともできます。
+データ ディスクは 1 TB にすることができます。 それらのサイズを決めるときに、お客様はデプロイメント時にイメージ内の VHD のサイズを変更できないことに注意してください。 データ ディスク VHD は固定形式の VHD として作成する必要があります。 また、疎にする必要もあります。 データ ディスクは最初に空にすることも、データを含むこともできます。
 
 
 ## <a name="install-the-most-current-updates"></a>最新の更新プログラムをインストールする
@@ -44,12 +45,12 @@ ms.locfileid: "49639146"
 
 Windows Server 2016 では、**更新プログラムの確認**コマンドを実行します。  それ以外の場合、以前のバージョンの Windows については、[Windows Update から更新プログラムを入手する方法](https://support.microsoft.com/help/3067639/how-to-get-an-update-through-windows-update)を参照してください。  Windows Update では、最新の重大かつ重要なセキュリティ更新プログラムが自動的にインストールされます。
 
-Linux ディストリビューションの場合、更新プログラムは通常、コマンド ライン ツールまたはグラフィカル ユーティリティによってダウンロードおよびインストールされます。  たとえば Ubuntu Linux では、OS を更新するための [apt-get](http://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) コマンドおよび [Update Manager](http://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) ツールが提供されています。
+Linux ディストリビューションの場合、更新プログラムは通常、コマンド ライン ツールまたはグラフィカル ユーティリティによってダウンロードおよびインストールされます。  たとえば Ubuntu Linux では、OS を更新するための [apt-get](https://manpages.ubuntu.com/manpages/cosmic/man8/apt-get.8.html) コマンドおよび [Update Manager](https://manpages.ubuntu.com/manpages/cosmic/man8/update-manager.8.html) ツールが提供されています。
 
 
 ## <a name="perform-additional-security-checks"></a>追加のセキュリティ チェックを実行する
 
-Azure Marketplace のソリューション イメージのセキュリティを高いレベルに維持する必要があります。  次の記事 ([Azure Marketplace イメージのセキュリティに関する推奨事項](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images)) では、この目的に役立つセキュリティ構成と手順のチェックリストを示します。  これらの推奨事項の一部は Linux ベースのイメージに固有ですが、ほとんどの事項はすべての VM イメージに当てはまります。 
+Azure Marketplace のソリューション イメージのセキュリティを高いレベルに維持する必要があります。  次の記事では、この目的に役立つセキュリティ構成と手順のチェックリストを示します(「[Azure Marketplace イメージのセキュリティに関する推奨事項](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images)」)。  これらの推奨事項の一部は Linux ベースのイメージに固有ですが、ほとんどの事項はすべての VM イメージに当てはまります。 
 
 
 ## <a name="perform-custom-configuration-and-scheduled-tasks"></a>カスタム構成とスケジュールされたタスクを実行する
@@ -72,7 +73,7 @@ Windows OS ディスクは [sysprep ツール](https://docs.microsoft.com/window
 > [!WARNING]
 >  更新プログラムは自動的に実行されることがあるため、sysprep を一度実行したら、デプロイされるまで VM をオフにする必要があります。  このシャットダウンにより、VHD の OS またはインストール済みサービスに、インスタンス固有の変更を加える操作を回避できます。
 
-sysprep の実行に関する詳細については、「VHD を一般化する手順」(https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#steps-to-generalize-a-vhd)) を参照してください。
+sysprep の実行に関する詳細については、「[VHD を一般化する手順](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#steps-to-generalize-a-vhd)」を参照してください。
 
 ### <a name="linux"></a>Linux
 
@@ -95,8 +96,8 @@ sysprep の実行に関する詳細については、「VHD を一般化する�
 
 VM のコピーを作成すると、ソリューションのさまざまな構成を提供して、バックアップ、テスト、カスタマイズされたフェールオーバー、負荷分散などを行うことができるため便利です。 非管理クローンを行うために、プライマリ VHD を複製してダウンロードする方法については、次を参照してください。
 
-- Linux VM: [Azure から Linux VHD をダウンロードする](../../../virtual-machines/linux/download-vhd.md)
-- Windows VM: [Azure から Windows VHD をダウンロードする](../../../virtual-machines/windows/download-vhd.md)
+- Linux VM:[Azure から Linux VHD をダウンロードする](../../../virtual-machines/linux/download-vhd.md)
+- Windows VM:[Azure から Windows VHD をダウンロードする](../../../virtual-machines/windows/download-vhd.md)
 
 
 ## <a name="next-steps"></a>次の手順

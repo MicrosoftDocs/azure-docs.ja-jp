@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: fd2d19119c5be91942d9587a073be30d59c8fd6c
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 44d6311246ab303966b7cfd8bee854b1c017f85d
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113769"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902689"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Azure Queue Storage によってトリガーされる関数の作成
 
@@ -27,7 +27,7 @@ Azure Storage キューにメッセージが送信されたときにトリガー
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Microsoft Azure ストレージ エクスプローラーをダウンロードしてインストールする](http://storageexplorer.com/)。
+- [Microsoft Azure ストレージ エクスプローラーをダウンロードしてインストールする](https://storageexplorer.com/)。
 
 - Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -63,7 +63,7 @@ Azure Storage キューにメッセージが送信されたときにトリガー
 
     | Setting | 推奨値 | Description |
     |---|---|---|
-    | **名前** | Function App 内で一意 | このキューによってトリガーされる関数の名前。 |
+    | **Name** | Function App 内で一意 | このキューによってトリガーされる関数の名前。 |
     | **キュー名**   | myqueue-items    | ストレージ アカウント内の接続先のキューの名前。 |
     | **ストレージ アカウント接続** | AzureWebJobStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |    
 
@@ -77,7 +77,7 @@ Azure Storage キューにメッセージが送信されたときにトリガー
 
     ![ストレージ アカウント接続の資格情報を取得します。](./media/functions-create-storage-queue-triggered-function/functions-storage-account-connection.png)
 
-1. [Microsoft Azure Storage Explorer](http://storageexplorer.com/) ツールを実行し、左側の接続アイコンをクリックして、**[Use a storage account name and key] \(ストレージ アカウント名とキーを使用)** を選択し、**[次へ]** をクリックします。
+1. [Microsoft Azure Storage Explorer](https://storageexplorer.com/) ツールを実行し、左側の接続アイコンをクリックして、**[Use a storage account name and key] \(ストレージ アカウント名とキーを使用)** を選択し、**[次へ]** をクリックします。
 
     ![ストレージ アカウント エクスプローラー ツールを実行します。](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-1.png)
 
@@ -113,8 +113,9 @@ Azure Storage キューにメッセージが送信されたときにトリガー
 
 ## <a name="next-steps"></a>次の手順
 
-メッセージがストレージ キューに追加されたときに実行される関数を作成しました。
+メッセージがストレージ キューに追加されたときに実行される関数を作成しました。 Queue Storage トリガーの詳細については、「[Azure Functions における Storage キュー バインド](functions-bindings-storage-queue.md)」を参照してください。
 
-[!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
+最初の関数を作成した後は、メッセージを別のキューに書き戻す出力バインディングをこの関数に追加しましょう。
 
-Queue Storage トリガーの詳細については、「[Azure Functions における Storage キュー バインド](functions-bindings-storage-queue.md)」を参照してください。
+> [!div class="nextstepaction"]
+> [Functions を使用して Azure Storage キューにメッセージを追加する](functions-integrate-storage-queue-output-binding.md)

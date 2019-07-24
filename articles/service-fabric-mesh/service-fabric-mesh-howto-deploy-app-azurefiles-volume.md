@@ -1,10 +1,10 @@
 ---
-title: Azure Files ベースのボリュームをコンテナー内にマウントして Azure Service Fabric Mesh アプリケーションに状態を保存する | Microsoft Docs
-description: Azure CLI を使用して、Azure Files ベースのボリュームをコンテナー内にマウントして Azure Service Fabric Mesh アプリケーションに状態を保存する方法について説明します。
+title: Service Fabric Mesh アプリケーションで Azure Files ベースのボリュームを使用する | Microsoft Docs
+description: Azure CLI を使用して、Azure Files ベースのボリュームをサービス内にマウントして Azure Service Fabric Mesh アプリケーションに状態を保存する方法について説明します。
 services: service-fabric-mesh
 documentationcenter: .net
-author: rwike77
-manager: jeconnoc
+author: dkkapur
+manager: chakdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
@@ -12,86 +12,236 @@ ms.devlang: azure-cli
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/09/2018
-ms.author: ryanwi
+ms.date: 11/21/2018
+ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cb5b421c1bcfe888d65335f3ab7f67bed80eec34
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: fa078f17768d4885403f2f3e3d6b91251f0aaced
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614261"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335965"
 ---
-# <a name="store-state-in-an-azure-service-fabric-mesh-application-by-mounting-an-azure-files-based-volume-inside-the-container"></a>Azure Files ベースのボリュームをコンテナー内にマウントして Azure Service Fabric Mesh アプリケーションに状態を保存する
+# <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Service Fabric Mesh アプリケーションで Azure Files ベースのボリュームをマウントする 
 
-この記事では、Service Fabric Mesh アプリケーションのコンテナー内にボリュームをマウントして Azure Files に状態を保存する方法について説明します。 この例のカウンター アプリケーションには、ブラウザーの Web ページにカウンター値を表示する ASP.NET Core サービスがあります。 
+この記事では、Service Fabric Mesh アプリケーションのサービスで Azure Files ベースのボリュームをマウントする方法について説明します。  Azure Files ボリューム ドライバーは、サービスの状態を保持するためのコンテナーに Azure Files 共有をマウントするために使用される Docker ボリューム ドライバーです。 ボリュームを利用することで、汎用目的のファイル ストレージが提供され、通常のディスク I/O ファイル API を利用してファイルを読み書きすることができます。  アプリケーション データを保存するためのボリュームとオプションの詳細については、[状態の保存](service-fabric-mesh-storing-state.md)に関するページを参照してください。
 
-`counterService` は、ファイルからカウンター値を繰り返し読み取り、増分してファイルに書き戻します。 このファイルは、Azure Files 共有がサポートするボリュームにマウントされたフォルダーに格納されます。
+サービスにボリュームをマウントするには、Service Fabric Mesh アプリケーションでボリューム リソースを作成し、サービスでそのボリュームを参照します。  ボリューム リソースを宣言し、それをサービス リソースで参照する作業は、[YAML ベースのリソース ファイル](#declare-a-volume-resource-and-update-the-service-resource-yaml)か [JSON ベースのデプロイ テンプレート](#declare-a-volume-resource-and-update-the-service-resource-json)で行うことができます。 ボリュームをマウントする前に、最初に Azure ストレージ アカウントと[ファイル共有を Azure Files](/azure/storage/files/storage-how-to-create-file-share) で作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Cloud Shell または Azure CLI のローカル インストールを使用して、このタスクを実行できます。 この記事で Azure CLI を使用するには、`az --version` が少なくとも `azure-cli (2.0.43)` を返すことを確認します。  こちらの[手順](service-fabric-mesh-howto-setup-cli.md)に従って、Azure Service Fabric Mesh CLI 拡張モジュールをインストール (または更新) してください。
+Azure Cloud Shell または Azure CLI のローカル インストールを使用し、この記事の作業を完了できます。 
 
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
+この記事で Azure CLI をローカルで使用するには、`az --version` が少なくとも `azure-cli (2.0.43)` を確実に返すようにします。  こちらの[手順](service-fabric-mesh-howto-setup-cli.md)に従って、Azure Service Fabric Mesh CLI 拡張モジュールをインストール (または更新) してください。
 
-Azure にサインインしてサブスクリプションを設定します。
+Azure にサインインしてサブスクリプションを設定するには:
 
-```azurecli-interactive
+```azurecli
 az login
 az account set --subscription "<subscriptionID>"
 ```
 
-## <a name="create-a-file-share"></a>ファイル共有を作成する
-
-こちらの[手順](/azure/storage/files/storage-how-to-create-file-share)に従って、Azure Files 共有を作成します。 ストレージ アカウント名、ストレージ アカウント キー、およびファイル共有名は、次の手順では `<storageAccountName>`、`<storageAccountKey>`、および `<fileShareName>` と呼ばれます。 これらの値は、Azure portal で利用できます。
-* <storageAccountName> - **[ストレージ アカウント]** では、これはファイル共有を作成するときに使用したストレージ アカウントの名前です。
-* <storageAccountKey> - **[ストレージ アカウント]** でストレージ アカウントを選択し、**[アクセス キー]** を選択して **key1** の下の値を使用します。
-* <fileShareName> - **[ストレージ アカウント名]** でストレージ アカウントを選択し、**[ファイル]** を選択します。 使用する名前は、先ほど作成したファイル共有の名前です。
-
-## <a name="create-a-resource-group"></a>リソース グループの作成
-
-アプリケーションのデプロイ先となるリソース グループを作成します。 次のコマンドは、米国東部の場所に `myResourceGroup` という名前のリソース グループを作成します。
+## <a name="create-a-storage-account-and-file-share-optional"></a>ストレージ アカウントとファイル共有を作成する (任意)
+Azure Files ボリュームをマウントするには、ストレージ アカウントとファイル共有が必要です。  既存の Azure ストレージ アカウントとファイル共有を使用するか、リソースを作成できます。
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus 
+az group create --name myResourceGroup --location eastus
+
+az storage account create --name myStorageAccount --resource-group myResourceGroup --location eastus --sku Standard_LRS --kind StorageV2
+
+$current_env_conn_string=$(az storage account show-connection-string -n myStorageAccount -g myResourceGroup --query 'connectionString' -o tsv)
+
+az storage share create --name myshare --quota 2048 --connection-string $current_env_conn_string
 ```
 
-## <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="get-the-storage-account-name-and-key-and-the-file-share-name"></a>ストレージ アカウントの名前とキー、ファイル共有の名前を取得する
+ストレージ アカウント名、ストレージ アカウント キー、ファイル共有名は、後続のセクションで `<storageAccountName>`、`<storageAccountKey>`、`<fileShareName>` と呼ばれます。 
 
-次のコマンドを使用して、アプリケーションおよび関連リソースを作成し、前の「[ファイル共有を作成する](#create-a-file-share)」の手順の `storageAccountName`、`storageAccountKey`、および `fileShareName` の値を指定します。
-
-テンプレートの `storageAccountKey` パラメーターはセキュリティで保護された文字列です。 デプロイの状態および `az mesh service show` コマンドには表示されません。 次のコマンドで正しく指定されていることを確認してください。
-
-次のコマンドでは、[counter.azurefilesvolume.linux.json テンプレート](https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.linux.json)を使用して Linux アプリケーションがデプロイされます。 Windows アプリケーションをデプロイするには、[counter.azurefilesvolume.windows.json テンプレート](https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.windows.json)を使用します。 大規模なコンテナー イメージはデプロイに時間がかかる場合があります。
-
+ストレージ アカウントを一覧表示し、ストレージ アカウントの名前と使用するファイル共有を取得します。
 ```azurecli-interactive
-az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.linux.json  --parameters "{\"location\": {\"value\": \"eastus\"}, \"fileShareName\": {\"value\": \"<fileShareName>\"}, \"storageAccountName\": {\"value\": \"<storageAccountName>\"}, \"storageAccountKey\": {\"value\": \"<storageAccountKey>\"}}"
+az storage account list
 ```
 
-数分後に、`counterApp has been deployed successfully on counterAppNetwork with public ip address <IP Address>` のようなコマンドの結果が返されます。
-
-## <a name="open-the-application"></a>アプリケーションを開く
-
-deployment コマンドは、サービス エンドポイントのパブリック IP アドレスを返します。 アプリケーションが正常にデプロイされたら、サービス エンドポイントのパブリック IP アドレスを取得し、ブラウザーで開きます。 Web ページには、毎秒更新されるカウンター値が表示されます。
-
-このアプリケーションのネットワーク リソース名は `counterAppNetwork` です。 説明、場所、リソース グループなどのアプリに関する情報は、次のコマンドを使用して確認できます。
-
+ファイル共有の名前を取得します。
 ```azurecli-interactive
-az mesh network show --resource-group myResourceGroup --name counterAppNetwork
+az storage share list --account-name <storageAccountName>
 ```
 
-## <a name="verify-that-the-application-is-able-to-use-the-volume"></a>アプリケーションがボリュームを使用できることを確認する
-
-アプリケーションは、`counter/counterService` フォルダー内のファイル共有に `counter.txt`という名前のファイルを作成します。 このファイルの内容は、Web ページに表示されるカウンター値です。
-
-このファイルは、[Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) など、Azure Files のファイル共有を参照できる任意のツールを使用してダウンロードできます。
-
-## <a name="delete-the-resources"></a>リソースの削除
-
-Azure で使用しなくなったリソースは頻繁に削除してください。 この例に関連するリソースを削除するには、次のコマンドを使用して、それらがデプロイされたリソース グループを削除します (これにより、リソース グループに関連付けられたすべてが削除されます)。
-
+ストレージ アカウント キー ("key1") を取得します。
 ```azurecli-interactive
-az group delete --resource-group myResourceGroup
+az storage account keys list --account-name <storageAccountName> --query "[?keyName=='key1'].value"
+```
+
+これらの値は [Azure portal](https://portal.azure.com) でも見つけることができます。
+* `<storageAccountName>` - **[ストレージ アカウント]** に、ファイル共有を作成するときに使用したストレージ アカウントの名前があります。
+* `<storageAccountKey>` - **[ストレージ アカウント]** でストレージ アカウントを選択し、**[アクセス キー]** を選択して **key1** の下の値を使用します。
+* `<fileShareName>` - **[ストレージ アカウント名]** でストレージ アカウントを選択し、**[ファイル]** を選択します。 使用する名前は、作成したファイル共有の名前です。
+
+## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>ボリューム リソースを宣言し、サービス リソース (JSON) を更新する
+
+前の手順で見つけた `<fileShareName>`、`<storageAccountName>`、`<storageAccountKey>` 値のパラメーターを追加します。 
+
+アプリケーション リソースのピアとしてボリューム リソースを作成します。 名前とプロバイダーを指定します (Azure Files ベースのボリュームを使用するには "SFAzureFile")。 `azureFileParameters` で、前の手順で見つけた `<fileShareName>`、`<storageAccountName>`、`<storageAccountKey>` 値のパラメーターを指定します。
+
+サービスにボリュームをマウントするには、サービスの `codePackages` 要素に `volumeRefs` を追加します。  `name` はボリュームのリソース ID (あるいは、ボリューム リソースのデプロイ テンプレート パラメーター) であり、volume.yaml リソース ファイルで宣言されているボリュームの名前です。  `destinationPath` は、ボリュームのマウント先となるローカル ディレクトリです。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "defaultValue": "EastUS",
+      "type": "String",
+      "metadata": {
+        "description": "Location of the resources."
+      }
+    },
+    "fileShareName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Azure Files file share that provides the volume for the container."
+      }
+    },
+    "storageAccountName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Azure storage account that contains the file share."
+      }
+    },
+    "storageAccountKey": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Access key for the Azure storage account that contains the file share."
+      }
+    },
+    "stateFolderName": {
+      "type": "string",
+      "defaultValue": "TestVolumeData",
+      "metadata": {
+        "description": "Folder in which to store the state. Provide an empty value to create a unique folder for each container to store the state. A non-empty value will retain the state across deployments, however if more than one applications are using the same folder, the counter may update more frequently."
+      }
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2018-09-01-preview",
+      "name": "VolumeTest",
+      "type": "Microsoft.ServiceFabricMesh/applications",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "Microsoft.ServiceFabricMesh/networks/VolumeTestNetwork",
+        "Microsoft.ServiceFabricMesh/volumes/testVolume"
+      ],
+      "properties": {
+        "services": [
+          {
+            "name": "VolumeTestService",
+            "properties": {
+              "description": "VolumeTestService description.",
+              "osType": "Windows",
+              "codePackages": [
+                {
+                  "name": "VolumeTestService",
+                  "image": "volumetestservice:dev",
+                  "volumeRefs": [
+                    {
+                      "name": "[resourceId('Microsoft.ServiceFabricMesh/volumes', 'testVolume')]",
+                      "destinationPath": "C:\\app\\data"
+                    }
+                  ],
+                  "environmentVariables": [
+                    {
+                      "name": "ASPNETCORE_URLS",
+                      "value": "http://+:20003"
+                    },
+                    {
+                      "name": "STATE_FOLDER_NAME",
+                      "value": "[parameters('stateFolderName')]"
+                    }
+                  ],
+                  ...
+                }
+              ],
+              ...
+            }
+          }
+        ],
+        "description": "VolumeTest description."
+      }
+    },
+    {
+      "apiVersion": "2018-09-01-preview",
+      "name": "testVolume",
+      "type": "Microsoft.ServiceFabricMesh/volumes",
+      "location": "[parameters('location')]",
+      "dependsOn": [],
+      "properties": {
+        "description": "Azure Files storage volume for the test application.",
+        "provider": "SFAzureFile",
+        "azureFileParameters": {
+          "shareName": "[parameters('fileShareName')]",
+          "accountName": "[parameters('storageAccountName')]",
+          "accountKey": "[parameters('storageAccountKey')]"
+        }
+      }
+    }
+    ...
+  ]
+}
+```
+
+## <a name="declare-a-volume-resource-and-update-the-service-resource-yaml"></a>ボリューム リソースを宣言し、サービス リソース (YAML) を更新する
+
+アプリケーションの*アプリ リソース* ディレクトリに新しい *volume.yaml* ファイルを追加します。  名前とプロバイダーを指定します (Azure Files ベースのボリュームを使用するには "SFAzureFile")。 `<fileShareName>`、`<storageAccountName>`、`<storageAccountKey>` は、前の手順で見つけた値です。
+
+```yaml
+volume:
+  schemaVersion: 1.0.0-preview2
+  name: testVolume
+  properties:
+    description: Azure Files storage volume for counter App.
+    provider: SFAzureFile
+    azureFileParameters: 
+        shareName: <fileShareName>
+        accountName: <storageAccountName>
+        accountKey: <storageAccountKey>
+```
+
+*サービス リソース* ディレクトリの *service.yaml* ファイルを更新し、サービスでボリュームをマウントします。  `volumeRefs` 要素を `codePackages` 要素に追加します。  `name` はボリュームのリソース ID (あるいは、ボリューム リソースのデプロイ テンプレート パラメーター) であり、volume.yaml リソース ファイルで宣言されているボリュームの名前です。  `destinationPath` は、ボリュームのマウント先となるローカル ディレクトリです。
+
+```yaml
+## Service definition ##
+application:
+  schemaVersion: 1.0.0-preview2
+  name: VolumeTest
+  properties:
+    services:
+      - name: VolumeTestService
+        properties:
+          description: VolumeTestService description.
+          osType: Windows
+          codePackages:
+            - name: VolumeTestService
+              image: volumetestservice:dev
+              volumeRefs:
+                - name: "[resourceId('Microsoft.ServiceFabricMesh/volumes', 'testVolume')]"
+                  destinationPath: C:\app\data
+              endpoints:
+                - name: VolumeTestServiceListener
+                  port: 20003
+              environmentVariables:
+                - name: ASPNETCORE_URLS
+                  value: http://+:20003
+                - name: STATE_FOLDER_NAME
+                  value: TestVolumeData
+              resources:
+                requests:
+                  cpu: 0.5
+                  memoryInGB: 1
+          replicaCount: 1
+          networkRefs:
+            - name: VolumeTestNetwork
 ```
 
 ## <a name="next-steps"></a>次の手順

@@ -3,17 +3,17 @@ title: Raspberry Pi を Azure IoT Central アプリケーションに接続す�
 description: デバイス開発者として、Python を使用して Raspberry Pi を Azure IoT Central アプリケーションに接続する方法。
 author: dominicbetts
 ms.author: dobett
-ms.date: 01/23/2018
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 90837092390cd2550805658471ff7aa884773371
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: eccc4100c89c971e264b9b915cd17b9f5ce4477b
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239595"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617447"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Raspberry Pi を Azure IoT Central アプリケーションに接続する (Python)
 
@@ -25,37 +25,34 @@ ms.locfileid: "51239595"
 
 この記事の手順を完了するには、次のコンポーネントが必要です。
 
-* **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページを参照してください。
-* Raspbian オペレーティング システムを実行している Raspberry Pi デバイス。 GUI 環境にアクセスするには、Raspberry Pi に接続されているモニター、キーボード、およびマウスが必要です。 Raspberry Pi から[インターネットに接続](https://www.raspberrypi.org/learning/software-guide/wifi/)できる必要があります。
-* 必要に応じて、Raspberry Pi 用の [Sense Hat](https://www.raspberrypi.org/products/sense-hat/) アドオン ボード。 このボードは、Azure IoT Central アプリケーションに送信するテレメトリ データをさまざまなセンサーから収集します。 **Sense Hat** ボードがない場合は、代わりにエミュレーターを使用できます (Raspberry PI のイメージの一部として入手可能)。
+* **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
+* Raspbian オペレーティング システムを実行している Raspberry Pi デバイス。 Raspberry Pi からインターネットに接続できる必要があります。 詳細については、[Raspberry Pi の設定](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3)に関するページを参照してください。
 
 ## <a name="sample-devkits-application"></a>**サンプル Devkit** アプリケーション
 
-**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **Raspberry Pi** デバイス テンプレートが含まれています。 
+**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **Raspberry Pi** デバイス テンプレートが含まれています。
 
 - デバイスが収集する次の測定値を含むテレメトリ:
-    - 湿度
-    - 気温
-    - 圧力
-    - 磁力計 (X、Y、Z)
-    - 加速度計 (X、Y、Z)
-    - ジャイロスコープ (X、Y、Z)
+  - 湿度
+  - 気温
+  - 圧力
+  - 磁力計 (X、Y、Z)
+  - 加速度計 (X、Y、Z)
+  - ジャイロスコープ (X、Y、Z)
 - 設定
-    - 電圧
-    - Current
-    - ファン速度
-    - IR 切り替え。
+  - 電圧
+  - Current
+  - ファン速度
+  - IR 切り替え。
 - Properties
-    - Die number デバイス プロパティ
-    - Location クラウド プロパティ
+  - Die number デバイス プロパティ
+  - Location クラウド プロパティ
 
-デバイス テンプレートの構成について詳しくは、[Raspberry PI デバイス テンプレートの詳細](howto-connect-raspberry-pi-python.md#raspberry-pi-device-template-details)を参照してください
-    
+デバイス テンプレートの構成の詳細については、「[Raspberry PI デバイス テンプレートの詳細](howto-connect-raspberry-pi-python.md#raspberry-pi-device-template-details)」を参照してください。
 
 ## <a name="add-a-real-device"></a>実デバイスの追加
 
-Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス テンプレートから実デバイスを追加し、デバイスの接続の詳細 (**スコープ ID、デバイス ID、主キー**) を追跡します。 詳細については、「[Azure IoT Central アプリケーションに実デバイスを追加する](tutorial-add-device.md)」を参照してください。
-
+Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス テンプレートから実際のデバイスを追加します。 デバイス接続の詳細 (**スコープ ID**、**デバイス ID**、および**主キー**) をメモします。 詳細については、「[Azure IoT Central アプリケーションに実デバイスを追加する](tutorial-add-device.md)」を参照してください。
 
 ### <a name="configure-the-raspberry-pi"></a>Raspberry Pi を構成する
 
@@ -64,20 +61,13 @@ Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス �
 * テレメトリおよびプロパティの値を Azure IoT Central に送信する。
 * Azure IoT Central で行われた設定変更に応答する。
 
-デバイスを構成するには、[GitHub の詳しい手順に従ってください。](https://aka.ms/iotcentral-docs-Raspi-releases)
+デバイスを構成するには、[GitHub の詳しい手順に従ってください](https://github.com/Azure/iot-central-firmware/blob/master/RaspberryPi/README.md)。
 
-
-> [!NOTE]
-> Raspberry Pi Python のサンプルに関する詳細については、GitHub の [README](https://aka.ms/iotcentral-docs-Raspi-releases) ファイルを参照してください。
-
-
-1. デバイスが構成されたら、デバイスはすぐに Azure IoT Central へのデータ送信を開始します。
+1. デバイスが構成されたら、デバイスはすぐに Azure IoT Central へのテレメトリ測定の送信を開始します。
 1. Azure IoT Central アプリケーションでは、Raspberry Pi 上で実行されているコードがアプリケーションとどのように対話するかを確認できます。
 
-    * 実デバイスの **[Measurements] (測定)** ページで、Raspberry Pi から送信されたテレメトリを表示できます。 **Sense HAT エミュレーター**を使用している場合は、Raspberry Pi の GUI でテレメトリの値を変更することができます。
-    * **[プロパティ]** ページで、報告された **[Die Number] (サイコロの数字)** プロパティの値を表示できます。
-    * **[設定]** ページで、電圧やファン速度などの Raspberry Pi 上のさまざまな設定を変更できます。 Raspberry Pi で変更が承認されると、設定が**同期**されたことが Azure IoT Central に表示されます。
-
+    * 実デバイスの **[Measurements] (測定)** ページで、Raspberry Pi から送信されたテレメトリを表示できます。
+    * **[設定]** ページで、電圧やファン速度などの Raspberry Pi 上の設定を変更できます。 Raspberry Pi で変更が承認されると、設定には**同期済み**と表示されます。
 
 ## <a name="raspberry-pi-device-template-details"></a>Raspberry PI デバイス テンプレートの詳細
 
@@ -104,7 +94,7 @@ Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス �
 
 数値設定
 
-| 表示名 | フィールド名 | Units | 小数点以下の桁数 | 最小値 | 最大値 | Initial |
+| Display name | フィールド名 | Units | 小数点以下の桁数 | 最小値 | 最大値 | Initial |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | 電圧      | setVoltage | ボルト | 0              | 0       | 240     | 0       |
 | Current      | setCurrent | アンペア  | 0              | 0       | 100     | 0       |
@@ -112,19 +102,17 @@ Azure IoT Central アプリケーションで、**Raspberry Pi** デバイス �
 
 トグル設定
 
-| 表示名 | フィールド名 | オンテキスト | オフテキスト | Initial |
+| Display name | フィールド名 | オンテキスト | オフテキスト | Initial |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | ON      | OFF      | オフ     |
 
 ### <a name="properties"></a>Properties
 
-| type            | 表示名 | フィールド名 | データ型 |
+| Type            | Display name | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
 | Text            | Location     | location   | 該当なし       |
 
 ## <a name="next-steps"></a>次の手順
 
-ここでは、Raspberry Pi を Azure IoT Central アプリケーションに接続する方法について説明しました。推奨される次の手順は以下のとおりです。
-
-* [汎用の Node.js クライアント アプリケーションを Azure IoT Central に接続する](howto-connect-nodejs.md)
+ここでは、Raspberry Pi をご利用の Azure IoT Central アプリケーションに接続する方法について説明しました。推奨される次の手順は、独自の IoT デバイス用に[カスタム デバイス テンプレートを設定する](howto-set-up-template.md)方法を学習することです。

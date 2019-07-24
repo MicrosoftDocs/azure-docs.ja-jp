@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: a93e1d9fecea59ebb68c512b96c8381b5b1a9346
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 7656401115cc370d6eee60fb9bddb9bcd92e4201
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284762"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872214"
 ---
 # <a name="route-the-request-based-on-the-size-of-its-body"></a>要求を本文のサイズに基づいてルーティングする
 

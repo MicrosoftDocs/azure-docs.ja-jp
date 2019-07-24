@@ -10,27 +10,73 @@ tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
-ms.date: 10/31/2018
+ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: 23cf02e8cc33b3a66a04ae0472b1e5a6baa59cc2
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 3a8e005f8678deef9fc4aebd2d620619fe6074bc
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418995"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982881"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Azure Windows VM のネットワーク インターフェイスをリセットする方法 
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-既定のネットワーク インターフェイス (NIC) を無効にするか、NIC の静的 IP を手動で設定すると、Microsoft Azure Windows 仮想マシン (VM) に接続できなくなります。 この記事では、Azure Windows VM のネットワーク インターフェイスをリセットする方法を示します。リセットすることで、リモート接続の問題が解決します。
+この記事では、Microsoft Azure Windows Virtual Machine (VM) に接続できなくなったときに、次の操作を行ってから、Azure Windows VM のネットワーク インターフェイスをリセットして問題を解決する方法について説明します。
+
+* 既定のネットワーク インターフェイス (NIC) を無効にする。 
+* NIC の静的 IP を手動で設定する。 
 
 [!INCLUDE [support-disclaimer](../../../includes/support-disclaimer.md)]
+
 ## <a name="reset-network-interface"></a>ネットワーク インターフェイスをリセットする
+
+### <a name="for-vms-deployed-in-resource-group-model"></a>リソース グループ モデルでデプロイされた VM の場合
+
+1.  [Azure ポータル](https://ms.portal.azure.com)にアクセスします。
+2.  影響を受ける仮想マシンを選択します。
+3.  **[ネットワーク]** を選択してから、VM のネットワーク インターフェイスを選択します。
+
+    ![ネットワーク インターフェイスの場所](./media/reset-network-interface/select-network-interface-vm.png)
+    
+4.  **[IP 構成]** を選択します。
+5.  IP を選択します。 
+6.  **[プライベート IP の割り当て]** が **[静的]** になっていない場合は、**[静的]** に変更します。
+7.  **[IP アドレス]** を、サブネットで使用できる別の IP アドレスに変更します。
+8. 仮想マシンが再起動して、新しい NIC をシステムに初期化します。
+9.  マシンへの RDP を試します。 成功したら、必要に応じて元のプライベート IP アドレスに戻すことができます。 あるいは、そのまま保持することもできます。 
+
+#### <a name="use-azure-powershell"></a>Azure PowerShell の使用
+
+1. [最新の Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) がインストールされていることを確認します。
+2. 管理者特権の Azure PowerShell セッション (管理者として実行) を開きます。 次のコマンドを実行します。
+
+    ```powershell
+    #Set the variables 
+    $SubscriptionID = "<Subscription ID>"
+    $VM = "<VM Name>"
+    $ResourceGroup = "<Resource Group>"
+    $VNET = "<Virtual Network>"
+    $IP = "NEWIP"
+
+    #Log in to the subscription 
+    Add-AzAccount
+    Select-AzSubscription -SubscriptionId $SubscriptionId 
+    
+    #Check whether the new IP address is available in the virtual network.
+    Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
+
+    #Add/Change static IP. This process will not change MAC address
+    Get-AzVM -ServiceName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
+    ```
+3. マシンへの RDP を試します。  成功したら、必要に応じて元のプライベート IP アドレスに戻すことができます。 あるいは、そのまま保持することもできます。
 
 ### <a name="for-classic-vms"></a>クラシック VM の場合
 
 ネットワーク インターフェイスをリセットするには、次の手順に従います。
+
+#### <a name="use-azure-portal"></a>Azure Portal の使用
 
 1.  [Azure ポータル]( https://ms.portal.azure.com)にアクセスします。
 2.  **[仮想マシン (クラシック)]** を選択します。
@@ -38,22 +84,34 @@ ms.locfileid: "50418995"
 4.  **[IP アドレス]** を選択します。
 5.  **[プライベート IP の割り当て]** が **[静的]** になっていない場合は、**[静的]** に変更します。
 6.  **[IP アドレス]** を、サブネットで使用できる別の IP アドレスに変更します。
-7.  [保存] を選択します。
+7.  **[保存]** を選択します。
 8.  仮想マシンが再起動して、新しい NIC をシステムに初期化します。
-9.  マシンへの RDP を試します。 成功した場合は、いつでも元のプライベート IP アドレスに戻すことができます。 それ以外の場合は、そのまま保持できます。 
+9.  マシンへの RDP を試します。 成功した場合は、元のプライベート IP アドレスに戻すことができます。  
 
-### <a name="for-vms-deployed-in-resource-group-model"></a>リソース グループ モデルでデプロイされた VM の場合
+#### <a name="use-azure-powershell"></a>Azure PowerShell の使用
 
-1.  [Azure ポータル]( https://ms.portal.azure.com)にアクセスします。
-2.  影響を受ける仮想マシンを選択します。
-3.  **[ネットワーク インターフェイス]** を選択します。
-4.  コンピューターに関連付けられているネットワーク インターフェイスを選択します。
-5.  **[IP 構成]** を選択します。
-6.  IP を選択します。 
-7.  **[プライベート IP の割り当て]** が **[静的]** になっていない場合は、**[静的]** に変更します。
-8.  **[IP アドレス]** を、サブネットで使用できる別の IP アドレスに変更します。
-9. 仮想マシンが再起動して、新しい NIC をシステムに初期化します。
-10. マシンへの RDP を試します。 成功した場合は、いつでも元のプライベート IP アドレスに戻すことができます。 それ以外の場合は、そのまま保持できます。 
+1. [最新の Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) がインストールされていることを確認します。
+2. 管理者特権の Azure PowerShell セッション (管理者として実行) を開きます。 次のコマンドを実行します。
+
+    ```powershell
+    #Set the variables 
+    $SubscriptionID = "<Subscription ID>"
+    $VM = "<VM Name>"
+    $CloudService = "<Cloud Service>"
+    $VNET = "<Virtual Network>"
+    $IP = "NEWIP"
+
+    #Log in to the subscription 
+    Add-AzureAccount
+    Select-AzureSubscription -SubscriptionId $SubscriptionId 
+
+    #Check whether the new IP address is available in the virtual network.
+    Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
+    
+    #Add/Change static IP. This process will not change MAC address
+    Get-AzureVM -ServiceName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
+    ```
+3. マシンへの RDP を試します。 成功したら、必要に応じて元のプライベート IP アドレスに戻すことができます。 あるいは、そのまま保持することもできます。 
 
 ## <a name="delete-the-unavailable-nics"></a>使用できない NIC を削除する
 コンピューターにリモート デスクトップ接続できたら、潜在的な問題を回避するために古い NIC を削除する必要があります。
@@ -71,4 +129,4 @@ ms.locfileid: "50418995"
     >
     >
 
-6.  これで、すべての使用できないアダプターがシステムから取り除かれます。
+6.  これで、使用できないすべてのアダプターがシステムから取り除かれます

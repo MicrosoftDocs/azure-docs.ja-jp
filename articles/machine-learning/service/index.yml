@@ -1,66 +1,68 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 96efb64ce7d77da567d587857e4a25ae334a3ffc
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: a97c11b49574d0014ea7fa97f42420b22f9568d7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51707114"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371158"
 documentType: LandingData
-title: Azure Machine Learning サービス (プレビュー) のドキュメント
+title: Azure Machine Learning サービスのドキュメント
 metadata:
-  title: Azure Machine Learning のドキュメント (プレビュー) - チュートリアル、API リファレンス | Microsoft Docs
-  meta.description: Learn how to build intelligent algorithms into apps and websites. Use Scikit-learn, Tensorflow, Pytorch or any other Python-based framework to build your machine learning model and train it locally or in the cloud. Tutorials, quickstarts, API references, and examples show you how.
+  title: Azure Machine Learning Service のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  description: Azure Machine Learning service には、機械学習モデルのデータ準備、トレーニング、デプロイを迅速に行うための SDK とサービスが用意されています。 自動スケーリング コンピューティングとパイプラインを使用して、生産性の向上とコストの削減を実現します。 PyTorch、TensorFlow、scikit-learn など、オープンソースの Python フレームワークと共にこれらの機能を使用します。 Microsoft が提供するクイック スタートやチュートリアルを使ってみてください。
   services: machine-learning
-  author: j-martens
-  manager: jhubbard
   ms.service: machine-learning
-  ms.component: core
+  ms.subservice: core
+  ms.topic: landing-page
+  manager: jhubbard
+  author: j-martens
+  ms.author: jmartens
+  ms.date: 2/19/2019
+  ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 09/24/2018
-  ms.author: jmartens
 abstract:
-  description: インテリジェントなアルゴリズムをアプリおよび Web サイトに組み込む方法について説明します。 Scikit-learn、Tensorflow、Pytorch、またはその他の任意の Python ベースのフレームワークを使用して、機械学習モデルを構築し、それをローカルまたはクラウドでトレーニングします。 チュートリアル、クイック スタート、API リファレンス、例では、その方法を紹介しています。
+  description: Azure Machine Learning service には、機械学習モデルのデータ準備、トレーニング、デプロイを迅速に行うための SDK とサービスが用意されています。 自動スケーリング コンピューティングとパイプラインを使用して、生産性とコストを改善します。 PyTorch、TensorFlow、scikit-learn など、オープンソースの Python フレームワークと共にこれらの機能を使用します。 Microsoft が提供するクイック スタートやチュートリアルを使ってみてください。
+  aside:
+    image:
+      alt: 
+      height: 130
+      src: media/index/video.png
+      width: 250
+    title: ビデオを見る (9:58)
+    href: https://www.youtube.com/watch?v=GBDSBInvz08
+    width: 250
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsB
-    columns: 1
-    items:
-    - html: <p>Azure クラウド サービス内で ML モデルをトレーニングし、デプロイします。 <a href="overview-what-is-azure-ml.md">サービスの詳細を表示...</a></p>
-      image:
-        src: /azure/machine-learning/media/index/i_machine-learning.svg
-      title: Azure Machine Learning サービス
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
-    text: Azure Machine Learning サービスで使用するリソースを設定します。
+    text: Azure Machine Learning service 用に  <a href="setup-create-workspace">ワークスペースを作成</a>すると、以下のクイック スタートを使用できるようになります。
   - type: list
     style: unordered
     items:
-    - html: <a href="quickstart-get-started.md">Azure portal での作業開始</a>
+    - html: <a href="quickstart-run-cloud-notebook">クラウドで実験を実行する</a> (インストール不要)。
+    - html: <a href="quickstart-run-local-notebook">ローカルの Notebook サーバーを使用して実験を実行する</a> (SDK のローカル インストール)。
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
-    text: '<b>チュートリアル</b>: 実験を設定してモデルを運用化する方法を学習してください。'
+    text: データの準備、実験の設定、機械学習モデルのトレーニングと運用化を行う方法を説明します。
   - type: list
     style: unordered
     items:
-    - html: <a href="tutorial-train-models-with-aml">独自の機械学習モデルをトレーニングする</a>
-    - html: <a href="tutorial-auto-train-models">モデルの自動生成および自動調整を行ってみましょう</a>
-    - html: <a href="tutorial-deploy-models-with-aml">モデルを Web サービスとしてデプロイする</a>
+    - html: 画像分類モデルの<a href="tutorial-train-models-with-aml">トレーニング</a>と<a href="tutorial-deploy-models-with-aml">デプロイ</a> (<b>2 部構成</b>)。
+    - html: 回帰モデルのトレーニングとチューニングのための<a href="tutorial-data-prep">データの準備</a>と<a href="tutorial-auto-train-models">自動化された機械学習の活用</a> (<b>2 部構成</b>)。
+- title: サンプル
+  items:
   - type: paragraph
-    text: '<b>Notebook のサンプル</b>: GitHub で入手可能な <a href="https://aka.ms/aml-notebooks">Jupyter Notebook</a> を使って Azure Machine Learning を詳しく掘り下げてみてください。'
+    text: GitHub に <a href="samples-notebooks">Jupyter ノートブック</a>をご用意しています。サービスに対する理解を深めるためにぜひご利用ください。
 - title: リファレンス
   items:
   - type: list
     style: unordered
     items:
-    - html: <a href="https://aka.ms/data-prep-sdk">Azure Machine Learning Data Prep SDK</a>
-    - html: <a href="https://aka.ms/aml-sdk">Azure Machine Learning SDK for Python (メインの SDK)</a>
-    - html: <a href="https://aka.ms/aml-monitoring-sdk">Azure Machine Learning Monitoring SDK</a>
+    - html: '<a href="https://aka.ms/aml-sdk">メインの Python SDK</a>: コア機能や自動化された機械学習、パイプラインなど'
+    - html: '<a href="https://aka.ms/data-prep-sdk">Data Prep</a> Python SDK: データの準備および変換'
+    - html: '<a href="https://aka.ms/aml-monitoring-sdk">Monitoring</a> Python SDK: デプロイされた Web サービスでのデータ収集'
 - title: その他の Azure Machine Learning テクノロジ
   items:
   - type: list

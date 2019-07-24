@@ -1,19 +1,19 @@
 ---
-title: 'Azure Analysis Services チュートリアルのレッスン 12: Excel で分析する |Microsoft Docs'
+title: 'Azure Analysis Services チュートリアルのレッスン 12: Excel で分析 | Microsoft Docs'
 description: Azure Analysis Services チュートリアル プロジェクトで Excel の Analyze を使用する方法を説明します｡
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 425c3a351c75c63cb07df66d6122f4d900b4932e
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: e5ac04c7bd8174f823cacc67401af8a98b3d8170
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429764"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54186483"
 ---
 # <a name="analyze-in-excel"></a>Excel で分析
 
@@ -24,7 +24,7 @@ ms.locfileid: "49429764"
 このレッスンの推定所要時間: **5 分**  
   
 ## <a name="prerequisites"></a>前提条件  
-このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンの作業を実行する前に、前のレッスン「[レッスン 11: ロールを作成する](../tutorials/aas-lesson-11-create-roles.md)」を終えている必要があります。  
+このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンのタスクを実行する前に、前のレッスン「[レッスン 11: ロールを作成する](../tutorials/aas-lesson-11-create-roles.md)」を終えている必要があります。  
   
 ## <a name="browse-using-the-default-and-internet-sales-perspectives"></a>Default および Internet Sales パースペクティブを使用して参照します｡  
 これらのタスクを初めて行う場合は､Default パースペクティブ(すべてのモデル オブジェクトが含まれる) と Internet Sales パースペクティブの両方を使ってモデルを参照します｡ Internet Sales パースペクティブでは､Customer テーブル オブジェクトが除外されています｡  
@@ -69,7 +69,7 @@ ms.locfileid: "49429764"
 3.  ワークブックを保存しないで Excel を終了します｡  
   
 ## <a name="whats-next"></a>次の手順
-次の｢[レッスン 13: デプロイする](../tutorials/aas-lesson-13-deploy.md)｣に進みます｡
+次のレッスン｢[レッスン 13: デプロイ](../tutorials/aas-lesson-13-deploy.md)」に進みます。
 
   
   

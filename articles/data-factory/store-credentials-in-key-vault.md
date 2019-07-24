@@ -8,16 +8,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/22/2017
+ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 3428fb5034435d9f3444347329171d803136177c
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: a7d440509e2b823400cde83c1ac2ec054c37eb74
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944670"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896213"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Azure Key Vault への資格情報の格納
 
@@ -27,17 +26,14 @@ ms.locfileid: "49944670"
 
 ## <a name="prerequisites"></a>前提条件
 
-この機能は、データ ファクトリのサービス ID に依存しています。 [データ ファクトリのサービス ID](data-factory-service-identity.md) からの使用方法と、データ ファクトリに関連付けられていることを確認する方法について説明します。
-
->[!TIP]
->Azure Key Vault でシークレットを作成するときには、**ADF のリンクされたサービスで要求されるシークレット プロパティの値全体 (例: 接続文字列/パスワード/サービス プリンシパル キー/その他)** を指定します。 たとえば、Azure Storage のリンクされたサービスの場合、`DefaultEndpointsProtocol=http;AccountName=myAccount;AccountKey=myKey;` を AKV シークレットとして指定し、次に ADF からの "connectionString" フィールドで参照します。Dynamics のリンクされたサービスの場合は、AKV シークレットとして `myPassword` を指定し、次に ADF からの "password" フィールドで参照します。 サポートされているプロパティの詳細については、各コネクタとコンピューティングの記事を参照してください。
+この機能は、データ ファクトリのマネージド ID に依存しています。 [データ ファクトリのマネージド ID](data-factory-service-identity.md) からの使用方法と、データ ファクトリに関連付けられていることを確認する方法について説明します。
 
 ## <a name="steps"></a>手順
 
 Azure Key Vault に格納されている資格情報を参照するには、次の手順に従う必要があります。
 
-1. ファクトリと共に生成された "サービス ID アプリケーション ID" の値をコピーして、**データ ファクトリのサービス ID を取得**します。 ADF オーサリング UI を使用する場合、サービス ID が Azure Key Vault のリンクされたサービスの作成ウィンドウに表示されます。Azure portal から取得することもできます。「[Retrieve data factory service identity](data-factory-service-identity.md#retrieve-service-identity)」(データ ファクトリのサービス ID の取得) を参照してください。
-2. **サービス ID に、Azure Key Vault へのアクセス権を付与します。** キー コンテナーで、[アクセス ポリシー] -> [新規追加] を選択し、このサービス ID アプリケーション ID を検索して、[シークレットのアクセス許可] ドロップダウンで **Get** アクセス許可を付与します。 この指定されたファクトリで、キー コンテナー内のシークレットにアクセスできます。
+1. ファクトリと共に生成された "サービス ID アプリケーション ID" の値をコピーして、**データ ファクトリのマネージド ID を取得**します。 ADF オーサリング UI を使用する場合、マネージド ID アプリケーション ID が Azure Key Vault のリンクされたサービスの作成ウィンドウに表示されます。Azure portal から取得することもできます。「[Retrieve data factory service identity](data-factory-service-identity.md#retrieve-managed-identity)」(データ ファクトリのマネージド ID の取得) を参照してください。
+2. **マネージド ID に、Azure Key Vault へのアクセス権を付与します。** キー コンテナーで、[アクセス ポリシー] -> [新規追加] を選択し、このマネージド ID アプリケーション ID を検索して、[シークレットのアクセス許可] ドロップダウンで **Get** アクセス許可を付与します。 この指定されたファクトリで、キー コンテナー内のシークレットにアクセスできます。
 3. **Azure Key Vault をポイントするリンクされたサービスを作成します。** 「[Azure Key Vault のリンクされたサービス](#azure-key-vault-linked-service)」をご覧ください。
 4. **データ ストアのリンクされたサービスを作成します。その内部で、キー コンテナーに格納されている対応するシークレットを参照します。** 「[キー コンテナーに格納されたシークレットの参照](#reference-secret-stored-in-key-vault)」をご覧ください。
 
@@ -47,8 +43,8 @@ Azure Key Vault のリンクされたサービスでは、次のプロパティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **AzureKeyVault** に設定する必要があります。 | [はい] |
-| baseUrl | Azure Key Vault の URL を指定します。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**AzureKeyVault**。 | はい |
+| baseUrl | Azure Key Vault の URL を指定します。 | はい |
 
 **オーサリング UI の使用:**
 
@@ -80,14 +76,17 @@ Azure Key Vault のリンクされたサービスでは、次のプロパティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | フィールドの type プロパティは **AzureKeyVaultSecret** に設定する必要があります。 | [はい] |
-| secretName | Azure Key Vault のシークレットの名前。 | [はい] |
+| type | フィールドの type プロパティは、**AzureKeyVaultSecret** に設定する必要があります。 | はい |
+| secretName | Azure Key Vault のシークレットの名前。 | はい |
 | secretVersion | Azure Key Vault のシークレットのバージョン。<br/>指定しない場合は、常に最新バージョンのシークレットが使用されます。<br/>指定した場合は、その特定のバージョンに固定されます。| いいえ  |
-| store | 資格情報の格納に使用する Azure Key Vault のリンクされたサービスを表します。 | [はい] |
+| store | 資格情報の格納に使用する Azure Key Vault のリンクされたサービスを表します。 | はい |
 
 **オーサリング UI の使用:**
 
 データストア/コンピューティングへの接続を作成するときに、シークレット フィールドに対して **Azure Key Vault** を選択します。 プロビジョニングされた Azure Key Vault のリンクされたサービスを選択し、**シークレット名**を指定します。 シークレット バージョンも必要に応じて指定できます。 
+
+>[!TIP]
+>SQL Server や Blob ストレージなどのリンクされたサービスにおける接続文字列を使用した接続については、AKV でのパスワードなどの secret フィールドのみを格納するか、AKV の接続文字列全体を確認するかを選択できます。 どちらのオプションも UI で入手できます。
 
 ![AKV シークレットの構成](media/store-credentials-in-key-vault/configure-akv-secret.png)
 

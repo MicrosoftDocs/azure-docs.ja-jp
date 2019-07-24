@@ -1,21 +1,22 @@
 ---
-title: 高可用性のための Azure MFA サーバーの構成 | Microsoft Docs
+title: 高可用性のための Azure MFA Server の構成 - Azure Active Directory
 description: 高可用性を提供する構成で Azure Multi-Factor Authentication Server の複数のインスタンスをデプロイします。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 5d3833d3218a4b6252c9591bb67686ddc1c3cdf9
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2ddf0885ce7615e06b78eccbd6424e63cc6103c2
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298577"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547007"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>高可用性のための Azure Multi-Factor Authentication Server の構成
 
@@ -25,7 +26,7 @@ Azure サーバーの MFA のデプロイで高可用性を実現するには、
 
 Azure MFA サーバーのサービス アーキテクチャには、次の図に示すようにいくつかのコンポーネントが含まれています。
 
- ![MFA サーバーのアーキテクチャ](./media/howto-mfaserver-deploy-ha/mfa-ha-architecture.png)
+ ![MFA Server アーキテクチャ コンポーネント](./media/howto-mfaserver-deploy-ha/mfa-ha-architecture.png)
 
 MFA サーバーは、Azure Multi-Factor Authentication ソフトウェアがインストールされている Windows サーバーです。 MFA サーバーのインスタンスが機能するためには、Azure 上で MFA サービスによってアクティブ化される必要があります。 複数の MFA サーバーをオンプレミスでインストールできます。
 
@@ -35,7 +36,7 @@ MFA サーバーは、Azure Multi-Factor Authentication ソフトウェアがイ
 
 AD による認証が成功した後、MFA サーバーは MFA サービスと通信します。 MFA サーバーは、MFA サービスからの通知を待って、アプリケーションへのユーザー アクセスを許可または拒否します。
 
-MFA マスター サーバーがオフラインになった場合、認証はまだ処理できますが、MFA データベースへの変更を必要とする操作は処理できません。 (例: ユーザーの追加、セルフ サービス PIN の変更、ユーザー情報の変更)
+MFA マスター サーバーがオフラインになった場合、認証はまだ処理できますが、MFA データベースへの変更を必要とする操作は処理できません。 (例: ユーザーの追加、セルフサービス PIN の変更、ユーザー情報の変更、ユーザー ポータルへのアクセスなど)
 
 ## <a name="deployment"></a>Deployment
 

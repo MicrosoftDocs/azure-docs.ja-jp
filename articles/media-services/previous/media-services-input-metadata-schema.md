@@ -6,37 +6,37 @@ manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
-ms.assetid: d72848e2-4b65-4c84-94bc-e2a90a6e7f47
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 1f37dcd14c1b3e85c3fae3bbf7aa67c16b8a898d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: cdca2823962c442c9142fa439795269f419aa489
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249018"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189684"
 ---
-# <a name="input-metadata"></a>入力メタデータ
+# <a name="input-metadata"></a>入力メタデータ 
+
 エンコード ジョブは、エンコーディング タスクを実行する入力資産に関連付けられています。  タスクが完了すると、出力資産が生成されます。  出力資産には、ビデオ、オーディオ、サムネイル、マニフェストなどが含まれます。この出力資産には、入力資産に関するメタデータが格納されたファイルも含まれます。 メタデータ XML ファイルの名前は、&lt;asset_id&gt;_metadata.xml という形式になっています (たとえば、41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml)。ここで、&lt;asset_id&gt; は入力資産の AssetId の値です。  
+
+Media Services は、メタデータを生成するために入力資産を事前にスキャンできません。 入力メタデータは、入力資産がジョブで処理されるときに、成果物としてのみ生成されます。 そのため、この成果物は、出力資産に書き込まれます。 入力資産と出力資産のメタデータの生成には、異なるツールが使用されます。 したがって、入力メタデータには、出力メタデータとは若干異なるスキーマがあります。
 
 メタデータ ファイルを確認したい場合は、**SAS** ロケータ―を作成してファイルをローカル コンピューターにダウンロードできます。 SAS ロケータ―を作成してファイルをダウンロードする方法の例については、[Media Services .NET SDK Extensions の使用](media-services-dotnet-get-started.md)に関するページをご覧ください。  
 
 この記事では、入力メタデータ (&lt;asset_id&gt;_metadata.xml) が基づく XML スキーマの要素と種類について説明します。  出力資産に関するメタデータを含むファイルについては、「[Output Metadata (出力メタデータ)](media-services-output-metadata-schema.md)」を参照してください。  
 
-> [!NOTE]
-> [スキーマ コード](media-services-input-metadata-schema.md#code)と [XML の例](media-services-input-metadata-schema.md#xml)は、この記事の最後で紹介します。  
-> 
-> 
+[スキーマ コード](media-services-input-metadata-schema.md#code)と [XML の例](media-services-input-metadata-schema.md#xml)は、この記事の最後で紹介します。  
+ 
 
 ## <a name="AssetFiles"></a> AssetFiles 要素 (ルート要素)
 エンコード ジョブの [AssetFile 要素](media-services-input-metadata-schema.md#AssetFile)のコレクションが含まれます。  
 
-XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」をご覧ください。  
+XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 | Name | 説明 |
 | --- | --- |
@@ -45,18 +45,18 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 ## <a name="AssetFile"></a> AssetFile 要素
  資産ファイルについて記述する属性と要素が含まれます。  
 
- XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」をご覧ください。  
+ XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
-| **名前**<br /><br /> 必須 |**xs:string** |資産ファイルの名前。 |
+| **Name**<br /><br /> 必須 |**xs:string** |資産ファイルの名前。 |
 | **サイズ**<br /><br /> 必須 |**xs:long** |資産ファイルのサイズ (バイト単位)。 |
-| **Duration**<br /><br /> 必須 |**xs:duration** |コンテンツの再生時間。 例: Duration="PT25M37.757S"。 |
+| **Duration**<br /><br /> 必須 |**xs:duration** |コンテンツの再生時間。 例:Duration="PT25M37.757S"。 |
 | **NumberOfStreams**<br /><br /> 必須 |**xs:int** |資産ファイル内のストリーム数。 |
 | **FormatNames**<br /><br /> 必須 |**xs: string** |形式の名前。 |
 | **FormatVerboseNames**<br /><br /> 必須 |**xs: string** |形式の詳細な名前。 |
-| **StartTime** |**xs:duration** |コンテンツの開始時刻。 例: StartTime="PT2.669S"。 |
+| **StartTime** |**xs:duration** |コンテンツの開始時刻。 例:StartTime="PT2.669S"。 |
 | **OverallBitRate** |**xs: int** |資産ファイルの平均ビットレート (kbps 単位)。 |
 
 > [!NOTE]
@@ -65,7 +65,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 > 
 
 ### <a name="child-elements"></a>子要素
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
 | **Programs**<br /><br /> minOccurs="0" | |資産ファイルが MPEG-TS 形式の場合のすべての [Programs 要素](media-services-input-metadata-schema.md#Programs)のコレクション。 |
 | **VideoTracks**<br /><br /> minOccurs="0" | |各物理資産ファイルには、適切なコンテナー形式にインターリーブされる 0 個以上のビデオ トラックを含めることができます。 この要素には、資産ファイルの一部であるすべての [VideoTracks](media-services-input-metadata-schema.md#VideoTracks) のコレクションが含まれます。 |
@@ -73,18 +73,18 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 | **Metadata**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |キー\値文字列として表される資産ファイルのメタデータ。 例: <br /><br /> **&lt;Metadata key="language" value="eng" /&gt;** |
 
 ## <a name="TrackType"></a> TrackType
-XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」をご覧ください。  
+XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
 | **Id**<br /><br /> 必須 |**xs:int** |このオーディオまたはビデオ トラックの 0 から始まるインデックス。<br /><br /> 必ずしも MP4 ファイルで使用されている TrackID であるとは限りません。 |
 | **Codec** |**xs:string** |ビデオ トラック コーデック文字列。 |
 | **CodecLongName** |**xs: string** |オーディオまたはビデオ トラック コーデックの長い名前。 |
-| **TimeBase**<br /><br /> 必須 |**xs:string** |時間ベース。 例: TimeBase="1/48000" |
+| **TimeBase**<br /><br /> 必須 |**xs:string** |時間ベース。 例:TimeBase="1/48000" |
 | **NumberOfFrames** |**xs:int** |フレームの数。 |
-| **StartTime** |**xs: duration** |トラックの開始時刻。 例: StartTime="PT2.669S" |
-| **Duration** |**xs:duration** |トラックの時間。 例: Duration="PTSampleFormat M37.757S"。 |
+| **StartTime** |**xs: duration** |トラックの開始時刻。 例:StartTime="PT2.669S" |
+| **Duration** |**xs:duration** |トラックの時間。 例:Duration="PTSampleFormat M37.757S"。 |
 
 > [!NOTE]
 > 次の 2 つの子要素は順番に表示されます。  
@@ -92,7 +92,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 > 
 
 ### <a name="child-elements"></a>子要素
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
 | **Disposition**<br /><br /> minOccurs="0" maxOccurs="1" |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |プレゼンテーション情報が含まれます (特定のオーディオ トラックが視覚障碍者向けかどうか、など)。 |
 | **Metadata**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |さまざまな情報を保持する際に使用できる汎用的なキー/値文字列。 例: key=”language”、value=”eng”。 |
@@ -102,10 +102,10 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 
  型は、資産ファイル内の特定のオーディオ トラックを表します。  
 
- XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」をご覧ください。  
+ XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
 | **SampleFormat** |**xs:string** |サンプル形式。 |
 | **ChannelLayout** |**xs: string** |チャネル レイアウト。 |
@@ -119,10 +119,10 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 
 型は、資産ファイル内の特定のビデオ トラックを表します。  
 
-XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」をご覧ください。  
+XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
 | **FourCC**<br /><br /> 必須 |**xs:string** |ビデオ コーデックの FourCC コード。 |
 | **プロファイル** |**xs: string** |ビデオ トラックのプロファイル。 |
@@ -143,10 +143,10 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 ## <a name="MetadataType"></a> MetadataType
 **MetadataType** は、資産ファイルのメタデータをキー/値文字列として記述する、グローバルな複合型です。 例: key=”language”、value=”eng”。  
 
-XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」をご覧ください。  
+XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
 | **key**<br /><br /> 必須 |**xs:string** |キー/値ペアのキー。 |
 | **value**<br /><br /> 必須 |**xs:string** |キー/値ペアの値。 |
@@ -155,22 +155,22 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 **ProgramType** は、プログラムを記述するグローバルな複合型です。  
 
 ### <a name="attributes"></a>属性
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
 | **ProgramId**<br /><br /> 必須 |**xs:int** |プログラム ID |
 | **NumberOfPrograms**<br /><br /> 必須 |**xs:int** |プログラム数。 |
-| **PmtPid**<br /><br /> 必須 |**xs:int** |プログラム マップ テーブル (PMT) には、プログラム情報が含まれています。  詳細については、「[PMT](http://en.wikipedia.org/wiki/MPEG_transport_stream#PMT)」を参照してください。 |
-| **PcrPid**<br /><br /> 必須 |**xs: int** |デコーダーが使用。 詳細については、「[PCR](http://en.wikipedia.org/wiki/MPEG_transport_stream#PCR)」を参照してください |
+| **PmtPid**<br /><br /> 必須 |**xs:int** |プログラム マップ テーブル (PMT) には、プログラム情報が含まれています。  詳細については、「[PMT](https://en.wikipedia.org/wiki/MPEG_transport_stream#PMT)」を参照してください。 |
+| **PcrPid**<br /><br /> 必須 |**xs: int** |デコーダーが使用。 詳細については、「[PCR](https://en.wikipedia.org/wiki/MPEG_transport_stream#PCR)」を参照してください |
 | **StartPTS** |**xs: long** |プレゼンテーション開始のタイム スタンプ。 |
 | **EndPTS** |**xs: long** |プレゼンテーション終了のタイム スタンプ。 |
 
 ## <a name="StreamDispositionType"></a> StreamDispositionType
 **StreamDispositionType** は、ストリームを記述するグローバルな複合型です。  
 
-XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」をご覧ください。  
+XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
 | **既定値**<br /><br /> 必須 |**xs: int** |この属性を 1 に設定して、これが既定のプレゼンテーションであることを示します。 |
 | **Dub**<br /><br /> 必須 |**xs:int** |この属性を 1 に設定して、これが吹き替えのプレゼンテーションであることを示します。 |
@@ -188,33 +188,33 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 複数の **Program** 要素が保持されているラッパー要素。  
 
 ### <a name="child-elements"></a>子要素
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
 | **Program**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[ProgramType](media-services-input-metadata-schema.md#ProgramType) |MPEG-TS 形式の資産ファイルについては、資産ファイルのプログラムに関する情報が含まれます。 |
 
 ## <a name="VideoTracks"></a> VideoTracks 要素
  複数の **VideoTrack** 要素が保持されているラッパー要素。  
 
- XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」をご覧ください。  
+ XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="child-elements"></a>子要素
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
 | **VideoTrack**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[VideoTrackType (TrackType から継承)](media-services-input-metadata-schema.md#VideoTrackType) |資産ファイルのビデオ トラックに関する情報が含まれます。 |
 
 ## <a name="AudioTracks"></a> AudioTracks 要素
  複数の **AudioTrack** 要素が保持されているラッパー要素。  
 
- XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」をご覧ください。  
+ XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="elements"></a>要素
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
 | **AudioTrack**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[AudioTrackType (TrackType から継承)](media-services-input-metadata-schema.md#AudioTrackType) |資産ファイルのオーディオ トラックに関する情報が含まれます。 |
 
 ## <a name="code"></a> スキーマ コード
     <?xml version="1.0" encoding="utf-8"?>  
-    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" version="1.0"  
+    <xs:schema xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" version="1.0"  
                xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2014/07/mediaencoder/inputmetadata"  
                targetNamespace="http://schemas.microsoft.com/windowsazure/mediaservices/2014/07/mediaencoder/inputmetadata"  
                elementFormDefault="qualified">  
@@ -615,7 +615,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 入力メタデータ ファイルの例を次に示します。  
 
     <?xml version="1.0" encoding="utf-8"?>  
-    <AssetFiles xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2014/07/mediaencoder/inputmetadata">  
+    <AssetFiles xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2014/07/mediaencoder/inputmetadata">  
       <AssetFile Name="bear.mp4" Size="1973733" Duration="PT12.678S" NumberOfStreams="2" FormatNames="mov,mp4,m4a,3gp,3g2,mj2" FormatVerboseName="QuickTime / MOV" StartTime="PT0S" OverallBitRate="1245">  
         <VideoTracks>  
           <VideoTrack Id="1" Codec="h264" CodecLongName="H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10" TimeBase="1/29970" NumberOfFrames="375" StartTime="PT0.034S" Duration="PT12.645S" FourCC="avc1" Profile="High" Level="4.1" PixelFormat="yuv420p" Width="512" Height="384" DisplayAspectRatioNumerator="4" DisplayAspectRatioDenominator="3" SampleAspectRatioNumerator="1" SampleAspectRatioDenominator="1" FrameRate="29.656" Bitrate="1043" HasBFrames="1">  

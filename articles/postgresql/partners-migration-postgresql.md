@@ -1,19 +1,18 @@
 ---
-title: Azure Database for PostgreSQL の移行パートナー | Microsoft Docs
+title: Azure Database for PostgreSQL の移行パートナー
 description: Azure Database for PostgreSQL をサポートするソリューションを提供するサードパーティの移行パートナーの一覧。
-services: mysql
 author: HJToland3
 ms.author: jtoland
 manager: craigg
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2018
-ms.openlocfilehash: 11069e4e5ff9a6ad6b91fc554036955afa805443
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 63facf52531d1f58e4022085503da96a797f60df
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626456"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536238"
 ---
 # <a name="azure-database-for-postgresql-migration-partners"></a>Azure Database for PostgreSQL の移行パートナー
 Azure Database for PostgreSQL ソリューションを広くサポートするために、業界をリードするパートナーとツールを広範な選択肢の中から選択できます。 この記事は、Azure Database for PostgreSQL をサポートする移行ソリューションを提供している Microsoft パートナーについて説明しています。

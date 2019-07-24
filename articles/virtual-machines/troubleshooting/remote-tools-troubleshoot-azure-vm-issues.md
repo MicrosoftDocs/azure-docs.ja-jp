@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: d9bb13b24a16cc38f738d9a654789d4410225c09
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: dc27ea0552c6135d01256586b1746219caac17f1
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669309"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539872"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>リモート ツールを使用して Azure VM の問題をトラブルシューティングする
 
@@ -39,7 +39,7 @@ psexec \\<computer>-u user -s cmd
 
 >[!Note]
 >* コマンドは、同じ VNET にあるコンピューターで実行する必要があります。
->* DIP または HostName を使用して、<computer> を置き換えることができます。
+>* DIP または HostName を使用して、\<computer> を置き換えることができます。
 >* -s パラメーターを指定すると、システム アカウント (管理者権限) を使用してコマンドが確実に呼び出されるようになります。
 >* PsExec では TCP ポートの 135 と 445 を使用します。 そのため、2 つのポートをファイアウォールで開く必要があります。
 
@@ -91,6 +91,8 @@ Set-AzureVMCustomScriptExtension "CustomScriptExtension" -VM $vm -StorageAccount
 
 ### <a name="for-v2-vms"></a>V2 VM の場合
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
 ```powershell
 #Setup the basic variables
 $subscriptionID = "<<SUBSCRIPTION ID>>"
@@ -103,19 +105,18 @@ $vmResourceGroup = "<<RESOURCE GROUP>>"
 $vmLocation = "<<DATACENTER>>" 
  
 #Setup the Azure Powershell module and ensure the access to the subscription
-Import-Module AzureRM
-Login-AzureRmAccount #Ensure Login with account associated with subscription ID
-Get-AzureRmSubscription -SubscriptionId $subscriptionID | Select-AzureRmSubscription
+Login-AzAccount #Ensure Login with account associated with subscription ID
+Get-AzSubscription -SubscriptionId $subscriptionID | Select-AzSubscription
 
 #Setup the access to the storage account and upload the script 
-$storageKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $storageRG -Name $storageAccount).Value[0]
+$storageKey = (Get-AzStorageAccountKey -ResourceGroupName $storageRG -Name $storageAccount).Value[0]
 $context = New-AzureStorageContext -StorageAccountName $storageAccount -StorageAccountKey $storageKey
 $container = "cse" + (Get-Date -Format yyyyMMddhhmmss)
 New-AzureStorageContainer -Name $container -Permission Off -Context $context
 Set-AzureStorageBlobContent -File $localScript -Container $container -Blob $blobName  -Context $context
 
 #Push the script into the VM
-Set-AzureRmVMCustomScriptExtension -Name "CustomScriptExtension" -ResourceGroupName $vmResourceGroup -VMName $vmName -Location $vmLocation -StorageAccountName $storageAccount -StorageAccountKey $storagekey -ContainerName $container -FileName $blobName -Run $blobName
+Set-AzVMCustomScriptExtension -Name "CustomScriptExtension" -ResourceGroupName $vmResourceGroup -VMName $vmName -Location $vmLocation -StorageAccountName $storageAccount -StorageAccountKey $storagekey -ContainerName $container -FileName $blobName -Run $blobName
 ```
 
 ## <a name="remote-powershell"></a>リモート PowerShell
@@ -171,14 +172,14 @@ ARM VM の場合は、ポータルから実行コマンドを使用して、Enab
 
 * VNET またはデプロイ外
 
-    * クラシック VM の場合は、次のコマンドを実行します。
+  * クラシック VM の場合は、次のコマンドを実行します。
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
     Enter-PSSession -ComputerName  "<<CLOUDSERVICENAME.cloudapp.net>>" -port "<<PUBLIC PORT NUMBER>>" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-    * ARM VM の場合は、最初にパブリック IP アドレスに DNS 名を追加します。 詳しい手順については、「[Windows VM 用の Azure Portal での完全修飾ドメイン名の作成](../windows/portal-create-fqdn.md)」を参照してください。 次に、次のコマンドを実行します。
+  * ARM VM の場合は、最初にパブリック IP アドレスに DNS 名を追加します。 詳しい手順については、「[Windows VM 用の Azure Portal での完全修飾ドメイン名の作成](../windows/portal-create-fqdn.md)」を参照してください。 次に、次のコマンドを実行します。
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck

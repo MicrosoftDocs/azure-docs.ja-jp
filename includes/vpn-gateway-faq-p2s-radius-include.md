@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8be1144bd01634dce0db7f3129406c57e1f7bdac
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: 857d29f407c9939143fbb8263be40dadb040efdc
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "39359393"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53439238"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
 ### <a name="is-radius-authentication-supported-on-all-azure-vpn-gateway-skus"></a>RADIUS 認証はすべての Azure VPN Gateway SKU でサポートされていますか。
 
-RADIUS 認証は VpnGw1、VpnGw2、VpnGw3 の 3 つの SKU でサポートされています。 従来の SKU を使用している場合は、Standard と High Performance の SKU に限り RADIUS 認証をサポートしています。 Basic Gateway SKU ではサポートされていません。 
+RADIUS 認証は VpnGw1、VpnGw2、VpnGw3 の 3 つの SKU でサポートされています。 従来の SKU を使用している場合は、Standard と High Performance の SKU に限り RADIUS 認証をサポートしています。 Basic Gateway SKU ではサポートされていません。 
  
 ### <a name="is-radius-authentication-supported-for-the-classic-deployment-model"></a>クラシック デプロイ モデルでは RADIUS 認証がサポートされていますか。
  
@@ -31,7 +31,7 @@ RADIUS 認証は VpnGw1、VpnGw2、VpnGw3 の 3 つの SKU でサポートされ
  
 ### <a name="what-are-the-connectivity-requirements-to-ensure-that-the-azure-gateway-is-able-to-reach-an-on-premises-radius-server"></a>Azure ゲートウェイがオンプレミスの RADIUS サーバーに到達するための接続の要件は何ですか。
 
-オンプレミスのサイトに対する VPN サイト対サイト接続が必要です (適切なルートが構成されている必要があります)。  
+オンプレミスのサイトに対する VPN サイト対サイト接続が必要です (適切なルートが構成されている必要があります)。  
  
 ### <a name="can-traffic-to-an-on-premises-radius-server-from-the-azure-vpn-gateway-be-routed-over-an-expressroute-connection"></a>ExpressRoute 接続を使って (Azure VPN ゲートウェイから) オンプレミスの RADIUS サーバーに対するトラフィックをルーティングすることはできますか。
 
@@ -39,9 +39,9 @@ RADIUS 認証は VpnGw1、VpnGw2、VpnGw3 の 3 つの SKU でサポートされ
  
 ### <a name="is-there-a-change-in-the-number-of-sstp-connections-supported-with-radius-authentication-what-is-the-maximum-number-of-sstp-and-ikev2-connections-supported"></a>RADIUS 認証でサポートされる SSTP 接続の数に変更はありますか。 サポートされる SSTP 接続と IKEv2 接続の最大数はそれぞれどのくらいですか。
 
-RADIUS 認証を使用するゲートウェイでサポートされる SSTP 接続の最大数には変更ありません。 以前と変わらず 128 です。 ゲートウェイに構成されているのが SSTP、IKEv2、その両方のいずれであっても、サポートされる接続の最大数は 128 です。
+RADIUS 認証を使用するゲートウェイでサポートされる SSTP 接続の最大数には変更ありません。 SSTP に対しては 128 のままですが、IKEv2 のゲートウェイ SKU によって異なります。 サポートされる接続の数の詳細については、「[ゲートウェイの SKU](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)」を参照してください。
  
-### <a name="what-is-the-difference-between-doing-certificate-authentication-using-a-radius-server-vs-using-azure-native-certificate-authentication-by-uploading-a-trusted-certificate-to-azure"></a>RADIUS サーバーを使った証明書認証と Azure ネイティブ証明書認証を使った証明書認証 (信頼された証明書を Azure にアップロードする) の違いは何ですか。
+### <a name="what-is-the-difference-between-doing-certificate-authentication-using-a-radius-server-vs-using-azure-native-certificate-authentication-by-uploading-a-trustedcertificate-to-azure"></a>RADIUS サーバーを使った証明書認証と Azure ネイティブ証明書認証を使った証明書認証 (信頼された証明書を Azure にアップロードする) の違いは何ですか。
 
 RADIUS による証明書認証では、認証要求が実際に証明書の検証処理を担当する RADIUS サーバーに転送されます。 このオプションは、RADIUS を使用する証明書認証インフラストラクチャが既にあり、それを統合したい場合に有用です。
   
@@ -49,4 +49,4 @@ RADIUS による証明書認証では、認証要求が実際に証明書の検�
 
 ### <a name="does-radius-authentication-work-with-both-ikev2-and-sstp-vpn"></a>RADIUS 認証は、IKEv2 と SSTP VPN の両方で機能しますか。
 
-はい、RADIUS 認証は、IKEv2 と SSTP VPN の両方でサポートされています。 
+はい、RADIUS 認証は、IKEv2 と SSTP VPN の両方でサポートされています。 

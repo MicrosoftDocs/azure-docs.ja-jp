@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: 00ce83a7ec52e24ce858c720e834b8396c2f808c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: files
+ms.openlocfilehash: aa5f8aaef21967a23505c785eb8ef811cf5767cc
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523967"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486447"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Azure File Sync サーバー エンドポイントの追加/削除
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
@@ -37,7 +37,7 @@ Azure File Sync をエンドツーエンドでデプロイする方法の詳細�
 **[サーバー エンドポイントの追加]** では、次の情報を指定する必要があります。
 
 - **登録済みサーバー**: サーバー エンドポイントを作成するサーバーまたはクラスターの名前。
-- **パス**: 同期グループの一部として同期する Windows Server 上のパス。
+- **パス**:同期グループの一部として同期する Windows Server 上のパス。
 - **クラウドの階層化**: クラウドの階層化を有効または無効にするスイッチ。 クラウドの階層化を有効にすると、ファイルが Azure ファイル共有に "*階層化*" されます。 これにより、オンプレミスのファイル共有は、データセットの完全なコピーではなく、キャッシュに変換されるので、サーバーでの容量効率の管理に役立ちます。
 - **ボリュームの空き領域**: サーバー エンドポイントが配置されているボリュームに確保する空き領域のサイズ。 たとえば、単一のサーバー エンドポイントで [ボリュームの空き領域] をボリュームの 50% に設定すると、データの約半量が Azure Files に階層化されます。 クラウドの階層化が有効かどうかにかかわらず、Azure ファイル共有は、データの完全なコピーを常に同期グループ内に保持します。
 
@@ -51,7 +51,7 @@ Azure File Sync をエンドツーエンドでデプロイする方法の詳細�
 
 サーバー エンドポイントを削除する前に、すべての階層化されたファイルを確実に呼び戻すには、サーバー エンドポイントでクラウドの階層化を無効にした後、次の PowerShell コマンドレットを実行して、サーバー エンドポイントの名前空間内にあるすべての階層化されたファイルを呼び戻します。
 
-```PowerShell
+```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
@@ -70,3 +70,4 @@ Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ## <a name="next-steps"></a>次の手順
 - [Azure File Sync でのサーバーの登録/登録解除](storage-sync-files-server-registration.md)
 - [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
+- [Azure File Sync の監視](storage-sync-files-monitoring.md)

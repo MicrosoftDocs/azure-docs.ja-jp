@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Amazon Web Services (AWS) を統合して複数のアカウントを接続する | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Amazon Web Services (AWS) を統合して複数のアカウントを接続する | Microsoft Docs
 description: Azure AD と Amazon Web Services (AWS) の複数のアカウントの間でシングルサインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 7561c20b-2325-4d97-887f-693aa383c7be
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 01/07/2019
 ms.author: jeedes
-ms.openlocfilehash: a9acb9539497c85f408ce7417fa5983072ea80b9
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 322615203d188581dd04aadeff2a08307b733d06
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365664"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450568"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>チュートリアル: Azure Active Directory と複数の Amazon Web Services (AWS) アカウントの統合
+# <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>チュートリアル:Azure Active Directory と複数の Amazon Web Services (AWS) アカウントの統合
 
 このチュートリアルでは、Azure Active Directory (Azure AD) と Amazon Web Services (AWS) の複数のアカウントを統合する方法を説明します。
 
@@ -53,8 +54,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 Amazon Web Services (AWS) と Azure AD の統合を構成するには、次のものが必要です。
 
-- Azure AD の Basic または Premium サブスクリプションを取得する
-- Amazon Web Services (AWS) での複数のシングル サインオンが有効なアカウント
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
+* アマゾン ウェブ サービス (AWS) でのシングル サインオンが有効なサブスクリプション
 
 > [!NOTE]
 > このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
@@ -65,31 +66,32 @@ Amazon Web Services (AWS) と Azure AD の統合を構成するには、次の�
 - Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの Amazon Web Services (AWS) の追加
-2. Azure AD シングル サインオンの構成とテスト
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+
+* アマゾン ウェブ サービス (AWS) では、**SP と IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>ギャラリーからの Amazon Web Services (AWS) の追加
+
 Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Amazon Web Services (AWS) を追加する必要があります。
 
 **ギャラリーから Amazon Web Services (AWS) を追加するには、次の手順を実行します:** 
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![image](./media/aws-multi-accounts-tutorial/selectazuread.png)
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-    ![image](./media/aws-multi-accounts-tutorial/a_select_app.png)
-    
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![image](./media/aws-multi-accounts-tutorial/a_new_app.png)
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
 4. 検索ボックスに「**Amazon Web Services (AWS)**」と入力して結果パネルから **[Amazon Web Services (AWS)]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
 
-     ![image](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_addfromgallery.png)
+     ![結果の一覧の Amazon Web Services (AWS)](common/search-new-app.png)
 
 5. アプリケーションが追加されたら、**[プロパティ]** ページに移動して、**オブジェクト ID** をコピーします
 
@@ -106,7 +108,8 @@ Amazon Web Services (AWS) で、Azure AD の **[ユーザー名]** の値を **[
 Amazon Web Services (AWS) との Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+2. **[アマゾン ウェブ サービス (AWS) シングル サインオンの構成](#configure-amazon-web-services-aws-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -116,26 +119,26 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
 1. [Microsoft Azure portal](https://portal.azure.com/) の**アマゾン ウェブ サービス (AWS)** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![image](./media/aws-multi-accounts-tutorial/B1_B2_Select_SSO.png)
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML]** モードを選択して、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-    ![image](./media/aws-multi-accounts-tutorial/b1_b2_saml_sso.png)
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    ![image](./media/aws-multi-accounts-tutorial/b1-domains_and_urlsedit.png)
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 4. アプリは Azure と事前に統合済みであるため、**[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
 
-    ![image](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_url.png)
+    ![image](common/preintegrated.png)
 
 5. アマゾン ウェブ サービス (AWS) アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性と要求]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性と要求]** ダイアログを開きます。
 
-    ![image](./media/aws-multi-accounts-tutorial/i4-attribute.png)
+    ![image](common/edit-attribute.png)
 
-6. **[ユーザー属性と要求]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
-    
+6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+
     | Name  | ソース属性  | 名前空間 |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
@@ -144,75 +147,79 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
-    ![image](./media/aws-multi-accounts-tutorial/i2-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![image](./media/aws-multi-accounts-tutorial/i3-attribute.png)
+    ![image](common/new-attribute-details.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
-    c. **[名前空間]** 値を入力します。
+    c. **[名前空間]** ボックスに、その行に表示される名前空間の値を入力します。
 
     d. [ソース] として **[属性]** を選択します。
 
-    e. **[ソース属性]** の一覧から、当該行に対して示されている属性値を入力します。
+    e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
 
-    f. **[Save]** をクリックします。
+    f. **[OK]** をクリックします。
 
-7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして**フェデレーション メタデータ XML** をダウンロードして、コンピューターに保存します。
+    g. **[Save]** をクリックします。
 
-    ![image](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_certificate.png) 
+7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして**フェデレーション メタデータ XML** をダウンロードし、コンピューターに保存します。
 
-8. 別の Web ブラウザーのウィンドウで、管理者として Amazon Web Services (AWS) 企業サイトにサインオンします。
+    ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-9. **[AWS Home]** をクリックします。
+### <a name="configure-amazon-web-services-aws-single-sign-on"></a>アマゾン ウェブ サービス (AWS) のシングル サインオンの構成
+
+1. 別の Web ブラウザーのウィンドウで、管理者として Amazon Web Services (AWS) 企業サイトにサインオンします。
+
+2. **[AWS Home]** をクリックします。
 
     ![シングル サインオン ホームの構成][11]
 
-10. **[Identity and Access Management]** をクリックします。
+3. **[Identity and Access Management]** をクリックします。
 
     ![シングル サインオン ID の構成][12]
 
-11. **[Identity Providers]**、**[Create Provider]** の順にクリックします。
+4. **[Identity Providers]**、**[Create Provider]** の順にクリックします。
 
     ![シングル サインオン プロバイダーの構成][13]
 
-12. **[Configure Provider]** ダイアログ ページで、次の手順を実行します。
+5. **[Configure Provider]** ダイアログ ページで、次の手順を実行します。
 
     ![シングル サインオンの構成ダイアログ][14]
 
     a. **[Provider Type]** として **[SAML]** を選択します。
 
-    b. **[Provider Name]** ボックスにプロバイダー名を入力します (例: *WAAD*)。
+    b. **[Provider Name]\(プロバイダー名\)** ボックスにプロバイダー名を入力します (例: *WAAD*)。
 
     c. Azure Portal からダウンロードした**メタデータ ファイル**をアップロードするには、**[ファイルの選択]** をクリックします。
 
     d. ページの下部にある **[Next Step]**」を参照してください。
 
-13. **[Verify Provider Information]** ダイアログ ボックスで、**[Create]** をクリックします。
+6. **[Verify Provider Information]** ダイアログ ボックスで、**[Create]** をクリックします。
 
     ![シングル サインオンの検証の構成][15]
 
-14. **[Roles]** をクリックしてから **[Create role]** をクリックします。
+7. **[Roles]** をクリックしてから **[Create role]** をクリックします。
 
     ![シングル サインオン ロールの構成][16]
 
-15. **[Create role]** ページで、以下の手順を実行します。  
+8. **[Create role]** ページで、以下の手順を実行します。  
 
     ![シングル サインオンの信頼の構成][19]
 
     a. **[Select type of trusted entity]** の **[SAML 2.0 federation]** を選択します。
 
-    b. **[Choose a SAML 2.0 Provider section]** で、先ほど作成した **SAML プロバイダー**を選択します (例: *WAAD*)
+    b. **[Choose a SAML 2.0 Provider]\(SAML 2.0 プロバイダーの選択\)** セクションで、先ほど作成した **SAML プロバイダー**を選択します (例: *WAAD*)
 
     c. **[Allow programmatic and AWS Management Console access]** を選択します。
   
-    d. **[Next: Permissions]** をクリックします。
+    d. **[次へ: Permissions]\(次へ: アクセス許可\)** をクリックします。
 
-16. **[Attach Permissions Policies]\(アクセス許可ポリシーのアタッチ\)** ダイアログ ボックスで、任意のポリシーをアタッチする必要はありません。 **[次へ: レビュー]** をクリックします。  
+9. **[Attach Permissions Policies]\(アクセス許可ポリシーのアタッチ\)** ダイアログで、組織の規定に準拠した適切なポリシーを添付します。 **次へ: 確認\)** をクリックします。  
 
     ![シングル サインオン ポリシーの構成][33]
 
-17. **[Review]** ダイアログで、次の手順を実行します。
+10. **[Review]** ダイアログで、次の手順を実行します。
 
     ![シングル サインオンの構成の確認][34]
 
@@ -224,23 +231,23 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     d. 必要な数の役割ロールを作成し、それらを ID プロバイダーにマップします。
 
-18. 現在の AWS アカウントからサインアウトし、Azure AD によるシングル サインオンを構成する他のアカウントでログインします。
+11. 現在の AWS アカウントからサインアウトし、Azure AD によるシングル サインオンを構成する他のアカウントでログインします。
 
-19. 手順 9 から 17 を実行して、このアカウントにセットアップする複数のロールを作成します。 3 つ以上のアカウントがある場合は、それらのロールを作成するすべてのアカウントについて同じ手順を実行してください。
+12. 手順 2 から 10 を実行して、このアカウントにセットアップする複数のロールを作成します。 3 つ以上のアカウントがある場合は、それらのロールを作成するすべてのアカウントについて同じ手順を実行してください。
 
-20. アカウントですべてのロールが作成されると、それらのアカウントの **[Roles]** 一覧にそれらが表示されます。
+13. アカウントですべてのロールが作成されると、それらのアカウントの **[Roles]** 一覧にそれらが表示されます。
 
     ![ロールのセットアップ](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_listofroles.png)
 
-21. すべてのアカウントのすべてのロールのロール ARN と信頼済みエンティティを取得する必要があります。それらは、Azure AD アプリケーションと手動でマッピングするために必要です。 
+14. すべてのアカウントのすべてのロールのロール ARN と信頼済みエンティティを取得する必要があります。それらは、Azure AD アプリケーションと手動でマッピングするために必要です。
 
-22. ロールをクリックして、**[Role ARN]** と **[Trusted Entities]** の値をコピーします。 Azure AD で作成する必要があるすべてのロールにこれらの値が必要です。
+15. ロールをクリックして、**[Role ARN]** と **[Trusted Entities]** の値をコピーします。 Azure AD で作成する必要があるすべてのロールにこれらの値が必要です。
 
     ![ロールのセットアップ](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_role_summary.png)
 
-23. すべてのアカウントのすべてのロールに対して上記の手順を実行し、**ロール ARN,信頼済みエンティティ**の形式でメモ帳に記録します。
+16. すべてのアカウントのすべてのロールに対して上記の手順を実行し、**ロール ARN,信頼済みエンティティ**の形式でメモ帳に記録します。
 
-24. 別のウィンドウで [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を開きます。
+17. 別のウィンドウで [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を開きます。
 
     a. テナントのグローバル管理者/共同管理者の資格情報を使用して、Graph Explorer サイトにサインインします。
 
@@ -256,7 +263,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     e. バージョン ドロップダウンを**ベータ**に変更します。 テナントからすべてのサービス プリンシパルを取得するには、次のクエリを使用します。
 
-     `https://graph.microsoft.com/beta/servicePrincipals`
+    `https://graph.microsoft.com/beta/servicePrincipals`
 
     複数のディレクトリを使用している場合、次のパターンを使用できます。プライマリ ドメインは `https://graph.microsoft.com/beta/contoso.com/servicePrincipals` にあります。
 
@@ -322,23 +329,23 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     ![Graph Explorer のダイアログ ボックス](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
-25. より多くのロールでサービス プリンシパルを修正したら、対応するロールにユーザー/グループを割り当てることができます。 これは、ポータルに移動し、Amazon Web Services アプリケーションに移動することで実行できます。 上部の **[ユーザーとグループ]** タブをクリックします。 
+18. より多くのロールでサービス プリンシパルを修正したら、対応するロールにユーザー/グループを割り当てることができます。 これは、ポータルに移動し、Amazon Web Services アプリケーションに移動することで実行できます。 上部の **[ユーザーとグループ]** タブをクリックします。
 
-26. グループで特定のロールを割り当てることができるように、すべての AWS ロール用に新しいグループを作成することをお勧めします。 これは 1 つのグループが 1 つのロールに対応する 1 対 1 のマッピングであることに注意してください。 そのグループに属するメンバーを追加できます。
+19. グループで特定のロールを割り当てることができるように、すべての AWS ロール用に新しいグループを作成することをお勧めします。 これは 1 つのグループが 1 つのロールに対応する 1 対 1 のマッピングであることに注意してください。 そのグループに属するメンバーを追加できます。
 
-27. グループが作成されたら、グループを選択し、アプリケーションに割り当てます。
+20. グループが作成されたら、グループを選択し、アプリケーションに割り当てます。
 
     ![シングル サインオンの構成の追加](./media/aws-multi-accounts-tutorial/graph-explorer-new5.png)
 
-> [!Note]
-> グループを割り当てるときに、入れ子になったグループはサポートされていません。
+    > [!Note]
+    > グループを割り当てるときに、入れ子になったグループはサポートされていません。
 
-28. グループにロールを割り当てるには、ロールを選択し、ページの下部にある **[割り当て]** ボタンをクリックします。
+21. グループにロールを割り当てるには、ロールを選択し、ページの下部にある **[割り当て]** ボタンをクリックします。
 
     ![シングル サインオンの構成の追加](./media/aws-multi-accounts-tutorial/graph-explorer-new6.png)
 
-> [!Note]
-> 新しいロールを表示するには、Azure Portal でセッションを更新する必要があることに注意してください。
+    > [!Note]
+    > 新しいロールを表示するには、Azure Portal でセッションを更新する必要があることに注意してください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
@@ -352,7 +359,7 @@ SAML 応答を確認し、クレームとして渡されるロールを参照す
 
 ![シングル サインオンの構成の追加](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_test_saml.png)
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

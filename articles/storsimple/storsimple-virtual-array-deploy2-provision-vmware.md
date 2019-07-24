@@ -12,32 +12,32 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/14/2017
+ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: be737550aa1cff22bc413ee8ce243f8d8588f6a5
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 3c9fe597957057dc61da5c2b1cf6f9216711764a
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29972342"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247845"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple Virtual Array をデプロイする - VMware でプロビジョニングする
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
 
 ## <a name="overview"></a>概要
-このチュートリアルでは、VMware ESXi 5.0、5.5、または 6.0 を実行するホスト システム上に StorSimple Virtual Array をプロビジョニングして接続する方法について説明します。 この記事は、Azure Portal および Microsoft Azure Government Cloud での StorSimple Virtual Array のデプロイに適用されます。
+このチュートリアルでは、VMware ESXi 5.0、5.5、6.0、または 6.5 を実行するホスト システム上に StorSimple Virtual Array をプロビジョニングして接続する方法について説明します。 この記事は、Azure Portal および Microsoft Azure Government Cloud での StorSimple Virtual Array のデプロイに適用されます。
 
 仮想デバイスをプロビジョニングして、そのデバイスに接続するには、管理者特権が必要です。 プロビジョニングと初期セットアップは、完了するまでに約 10 分かかることがあります。
 
 ## <a name="provisioning-prerequisites"></a>プロビジョニングの前提条件
-VMware ESXi 5.0、5.5、または 6.0 を実行しているホスト システムで仮想デバイスをプロビジョニングするための前提条件は次のとおりです。
+VMware ESXi 5.0、5.5、6.0、または 6.5 を実行しているホスト システムで仮想デバイスをプロビジョニングするための前提条件は次のとおりです。
 
 ### <a name="for-the-storsimple-device-manager-service"></a>StorSimple デバイス マネージャー サービスの場合
 開始する前に次の点を確認します。
 
 * [StorSimple Virtual Array のポータルの準備](storsimple-virtual-array-deploy1-portal-prep.md)に関するページの手順がすべて完了していること。
-* Azure ポータルから VMware の仮想デバイスのイメージをダウンロードしていること。 詳細については、[StorSimple Virtual Array 用ポータルの準備ガイド](storsimple-virtual-array-deploy1-portal-prep.md)の「**手順 3: 仮想デバイスのイメージをダウンロードする**」を参照してください。
+* Azure ポータルから VMware の仮想デバイスのイメージをダウンロードしていること。 詳細については、「**手順 3: 仮想デバイスのイメージをダウンロードする**」 ([StorSimple Virtual Array 用ポータルの準備ガイド](storsimple-virtual-array-deploy1-portal-prep.md)) を参照してください。
 
 ### <a name="for-the-storsimple-virtual-device"></a>StorSimple 仮想デバイスの場合
 仮想デバイスをデプロイする前に次の点を確認します。
@@ -62,10 +62,10 @@ VMware ESXi 5.0、5.5、または 6.0 を実行しているホスト システ�
 2. ハイパーバイザーで仮想デバイスをプロビジョニングします。
 3. 仮想デバイスを起動し、IP アドレスを取得します。
 
-## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>手順 1: ホスト システムが仮想デバイスの最小要件を満たしていることを確認する
+## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>手順 1:ホスト システムが仮想デバイスの最小要件を満たしていることを確認する
 仮想デバイスを作成するには、次の要件が必要です。
 
-* VMware ESXi サーバー 5.0、5.5、または 6.0 を実行しているホスト システムへのアクセス権があること。
+* VMware ESXi Server 5.0、5.5、6.0、または 6.5 を実行しているホスト システムにアクセスできること。
 * システムに、ESXi ホストを管理するための VMware vSphere client があること。
 
   * 最小で 4 コア。
@@ -73,7 +73,7 @@ VMware ESXi 5.0、5.5、または 6.0 を実行しているホスト システ�
   * トラフィックをインターネットにルーティングできるネットワークに接続している 1 つのネットワーク インターフェイス。 インターネットの最小帯域幅は、デバイスが最適に動作するように 5 Mbps にする必要があります。
   * データ用の 500 GB の仮想ディスク。
 
-## <a name="step-2-provision-a-virtual-device-in-hypervisor"></a>手順 2: ハイパーバイザーで仮想デバイスをプロビジョニングする
+## <a name="step-2-provision-a-virtual-device-in-hypervisor"></a>手順 2:ハイパーバイザーで仮想デバイスをプロビジョニングする
 ハイパーバイザーで仮想デバイスをプロビジョニングするには、次の手順を実行します。
 
 1. システム上にある仮想デバイスのイメージをコピーします。 この仮想イメージは、Azure Portal からダウンロードしました。
@@ -188,7 +188,7 @@ VMware ESXi 5.0、5.5、または 6.0 を実行しているホスト システ�
 > [!NOTE]
 > (上でプロビジョニングしたように) 仮想アレイには VMware ツールをインストールしないことをお勧めします。 VMware ツールをインストールすると、サポートされていない構成になります。
 
-## <a name="step-3-start-the-virtual-device-and-get-the-ip"></a>手順 3: 仮想デバイスを起動し、IP アドレスを取得する
+## <a name="step-3-start-the-virtual-device-and-get-the-ip"></a>手順 3:仮想デバイスを起動して IP アドレスを取得する
 仮想デバイスを起動して接続するには、次の手順を実行します。
 
 #### <a name="to-start-the-virtual-device"></a>仮想デバイスを起動するには
@@ -235,7 +235,7 @@ VMware ESXi 5.0、5.5、または 6.0 を実行しているホスト システ�
        >
        >
 
-デバイスが最小構成要件を満たしていない場合は、バナー テキストにエラーが表示されます (下記参照)。 最小要件を満たすための十分なリソースを確保するようにデバイスの構成を変更する必要があります。 その後、再起動し、デバイスに接続します。 「 [手順 1: ホスト システムが仮想デバイスの最小要件を満たしていることを確認する](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements)」にある最小構成要件を参照してください。
+デバイスが最小構成要件を満たしていない場合は、バナー テキストにエラーが表示されます (下記参照)。 最小要件を満たすための十分なリソースを確保するようにデバイスの構成を変更する必要があります。 その後、再起動し、デバイスに接続します。 「[手順 1: ホスト システムが仮想デバイスの最小要件を満たしていることを確認する](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements)」の最小構成要件を参照してください。
 
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image46.png)
 

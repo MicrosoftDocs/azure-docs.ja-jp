@@ -1,24 +1,20 @@
 ---
-title: 'Azure Cosmos DB: Golang と Azure Portal による MongoDB API コンソール アプリの構築 | Microsoft Docs'
-description: Azure Cosmos DB への接続とデータの照会に使用できる Golang コード サンプルについて説明します
-services: cosmos-db
-author: slyons
-manager: kfile
+title: Azure Cosmos DB の MongoDB 用 API と Golang SDK を使用してコンソール アプリを構築する
+description: 記載されている Golang のコード サンプルを使用すると、Azure Cosmos DB の MongoDB 用 API を使用して接続とクエリを行うことができます。
+author: rimman
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
-ms.devlang: na
+ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
-ms.date: 07/21/2017
-ms.author: sclyon
-ms.custom: mvc
-ms.openlocfilehash: 7c5f718836fbad2fb0df6ae00bcb1535e6ae9c5f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.date: 12/26/2018
+ms.author: rimman
+ms.openlocfilehash: 5b60ac28cd8f65d464e659f328872524be59b3ed
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423781"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586876"
 ---
-# <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Golang と Azure Portal による MongoDB API コンソール アプリの構築
+# <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API と Golang SDK を使用してコンソール アプリを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -29,11 +25,11 @@ ms.locfileid: "52423781"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。
+Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 ドキュメント、キー/値、およびグラフ データベースをすばやく作成したり、クエリを実行したりでき、そのすべてで、Cosmos DB の中核にあるグローバル配信および水平スケール機能が活用されます。
 
-このクイックスタートでは、[Golang](https://golang.org/) で記述された既存の MongoDB アプリを使用する方法と、そのアプリを Azure Cosmos DB データベースに接続する方法を示します。このデータベースは、[MongoDB API](mongodb-introduction.md) を使用して MongoDB のクライアント接続をサポートします。
+このクイック スタートでは、[Golang](https://golang.org/) で記述された既存の MongoDB アプリを使用する方法と、そのアプリを Azure Cosmos DB の MongoDB 用 API を使用して Cosmos データベースに接続する方法を示します。
 
-言い換えると、Golang アプリケーションは、MongoDB API を使用してデータベースに接続していることだけを認識します。 データが Azure Cosmos DB に格納されることは、アプリケーションにとっては透過です。
+言い換えると、Golang アプリケーションは、MongoDB クライアントを使用して接続していることだけを認識します。 Cosmos データベースへのデータの格納は、アプリケーションでは意識されません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -65,7 +61,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
     go get gopkg.in/mgo.v2
     ```
 
-[mgo](http://labix.org/mgo) ドライバーは、[Go 言語](http://golang.org/)用の [MongoDB](http://www.mongodb.org/) ドライバーです。標準的な Go 記法に準拠したごく単純な API の下で、十分にテストされた豊富な一連の機能が実装されています。
+[mgo](https://labix.org/mgo) ドライバーは、[Go 言語](https://golang.org/)用の [MongoDB](https://www.mongodb.com/) ドライバーです。標準的な Go 記法に準拠したごく単純な API の下で、十分にテストされた豊富な一連の機能が実装されています。
 
 <a id="connection-string"></a>
 
@@ -95,14 +91,14 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 次のスニペットはすべて main.go ファイルからのものです。
 
-### <a name="connecting-the-go-app-to-azure-cosmos-db"></a>Azure Cosmos DB への Go アプリの接続
+### <a name="connecting-the-go-app-to-cosmos-db"></a>Cosmos DB への Go アプリの接続
 
-Azure Cosmos DB では、SSL 対応の MongoDB がサポートされています。 SSL 対応の MongoDB に接続するには、[mgo.DialInfo](http://gopkg.in/mgo.v2#DialInfo) で **DialServer** 関数を定義し、接続の際に [tls.*Dial*](http://golang.org/pkg/crypto/tls#Dial) 関数を使用する必要があります。
+Azure Cosmos DB の MongoDB 用 API では、SSL 対応の接続がサポートされています。 接続を行うには、[mgo.DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo) で **DialServer** 関数を定義し、接続の際に [tls.*Dial*](https://golang.org/pkg/crypto/tls#Dial) 関数を使用する必要があります。
 
-次の Golang コード スニペットは、Go アプリを Azure Cosmos DB MongoDB API と接続します。 *DialInfo* クラスには、MongoDB クラスターとのセッションを確立するためのオプションがあります。
+次の Golang コード スニペットでは、Go アプリが Azure Cosmos DB の MongoDB 用 API に接続されます。 *DialInfo* クラスには、セッションを確立するためのオプションがあります。
 
 ```go
-// DialInfo holds options for establishing a session with a MongoDB cluster.
+// DialInfo holds options for establishing a session.
 dialInfo := &mgo.DialInfo{
     Addrs:    []string{"golang-couch.documents.azure.com:10255"}, // Get HOST + PORT
     Timeout:  60 * time.Second,
@@ -115,11 +111,11 @@ dialInfo := &mgo.DialInfo{
 }
 
 // Create a session which maintains a pool of socket connections
-// to our Azure Cosmos DB MongoDB database.
+// to Cosmos database (using Azure Cosmos DB's API for MongoDB).
 session, err := mgo.DialWithInfo(dialInfo)
 
 if err != nil {
-    fmt.Printf("Can't connect to mongo, go error %v\n", err)
+    fmt.Printf("Can't connect, go error %v\n", err)
     os.Exit(1)
 }
 
@@ -174,7 +170,7 @@ if err != nil {
 
 ### <a name="query-or-read-a-document"></a>ドキュメントの照会または読み取り
 
-Azure Cosmos DB では、各コレクションに格納された JSON ドキュメントに対する豊富なクエリがサポートされています。 次のサンプル コードは、コレクションでドキュメントに対して実行できるクエリを示しています。
+Cosmos DB では、各コレクションに格納されたデータに対する豊富なクエリがサポートされています。 次のサンプル コードは、コレクションでドキュメントに対して実行できるクエリを示しています。
 
 ```go
 // Get a Document from the collection
@@ -204,7 +200,7 @@ if err != nil {
 
 ### <a name="delete-a-document"></a>ドキュメントの削除
 
-Azure Cosmos DB は、JSON ドキュメントの削除をサポートします。
+Cosmos DB では、ドキュメントの削除がサポートされています。
 
 ```go
 // Delete a document
@@ -218,9 +214,9 @@ if err != nil {
     
 ## <a name="run-the-app"></a>アプリの実行
 
-1. Goglang で、gopkg がインストールされた場所 (既定では USERPROFILE\go) が GOPATH (**[File]\(ファイル\)**、**[Settings]\(設定\)**、**[Go]**、**[GOPATH]** にあります) に含まれていることを確認します。 
+1. Golang で、gopkg がインストールされた場所 (既定では USERPROFILE\go) が、GOPATH (**[ファイル]**、**[設定]**、**[Go]**、**[GOPATH]** にあります) に含まれていることを確認します。 
 2. ドキュメントを削除する行 (103 から 107 行目) をコメントアウトし、アプリの実行後にドキュメントを参照できるようにします。
-3. Goglang で **[Run]\(実行\)** をクリックし、**[Run 'Build main.go and run']\('main.go をビルドして実行' を実行\)** をクリックします。
+3. Golang で **[実行]** をクリックし、**[Run 'Build main.go and run']\('main.go をビルドして実行' を実行\)** をクリックします。
 
     アプリが終了し、「[ドキュメントの作成](#create-document)」で作成したドキュメントの説明が表示されます。
     
@@ -230,7 +226,7 @@ if err != nil {
     Process finished with exit code 0
     ```
 
-    ![アプリの出力が表示されている Goglang](./media/create-mongodb-golang/goglang-cosmos-db.png)
+    ![アプリの出力が表示されている Golang](./media/create-mongodb-golang/goglang-cosmos-db.png)
     
 ## <a name="review-your-document-in-data-explorer"></a>データ エクスプローラーでのドキュメントの確認
 
@@ -252,7 +248,7 @@ Azure Portal に戻り、データ エクスプローラーでドキュメント
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Azure Cosmos DB アカウントを作成し、MongoDB 用 API を使用して Golang アプリを実行する方法を学習しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。 
+このクイック スタートでは、Cosmos アカウントを作成して、Golang アプリを実行する方法を学習しました。 これで、Cosmos データベースに追加のデータをインポートできます。 
 
 > [!div class="nextstepaction"]
-> [MongoDB API 用に Azure Cosmos DB にデータをインポートする](mongodb-migrate.md)
+> [MongoDB データを Azure Cosmos DB にインポートする](mongodb-migrate.md)

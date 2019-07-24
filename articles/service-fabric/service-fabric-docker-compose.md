@@ -3,8 +3,8 @@ title: Azure Service Fabric Docker Compose デプロイメント プレビュー
 description: Azure Service Fabric では、Service Fabric を使用して既存のコンテナーの調整を容易にするため、Docker Compose 形式を受け入れます。 このサポートは現在プレビューの段階です。
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: twhitney, subramar
-ms.openlocfilehash: 743fedd35bc45618f728ba71056f5dabc2fc1ed9
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.author: aljo, subramar
+ms.openlocfilehash: da86ed9a3e6979bd1dc05aef6ef70c7b8533a8c1
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300644"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661396"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric での Docker Compose のデプロイメントのサポート (プレビュー)
 
@@ -64,6 +64,12 @@ PowerShell を使用して Compose デプロイメントをアップグレード
 Start-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp -Compose docker-compose-v2.yml -Monitored -FailureAction Rollback
 ```
 
+PowerShell を使用して Compose デプロイのアップグレードをロールバックするには、次のコマンドを使用します。
+
+```powershell
+Start-ServiceFabricComposeDeploymentRollback -DeploymentName TestContainerApp
+```
+
 アップグレードを承諾すると、次のコマンドを使用して、アップグレードの進行状況を追跡できます。
 
 ```powershell
@@ -84,7 +90,7 @@ sfctl compose create --deployment-name TestContainerApp --file-path docker-compo
 sfctl compose status --deployment-name TestContainerApp [ --timeout ]
 ```
 
-Compose デプロイメントを削除するには、次のコマンドを使用します。
+Compose デプロイを削除するには、次のコマンドを使用します。
 
 ```azurecli
 sfctl compose remove  --deployment-name TestContainerApp [ --timeout ]
@@ -94,6 +100,12 @@ Compose デプロイメントをアップグレードするには、次のコマ
 
 ```azurecli
 sfctl compose upgrade --deployment-name TestContainerApp --file-path docker-compose-v2.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [--upgrade-mode Monitored] [--failure-action Rollback] [ --timeout ]
+```
+
+Compose デプロイのアップグレードをロールバックするには、次のコマンドを使用します。
+
+```azurecli
+sfctl compose upgrade-rollback --deployment-name TestContainerApp [ --timeout ]
 ```
 
 アップグレードを承諾すると、次のコマンドを使用して、アップグレードの進行状況を追跡できます。

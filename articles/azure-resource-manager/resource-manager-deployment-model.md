@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 704bbe5cc566833ef1279e84f0fab9f363dfaa11
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: c8aafa2dc2798aee5576dab4781b42d4aa67ddd9
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841630"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269265"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について
 
@@ -30,6 +30,8 @@ ms.locfileid: "43841630"
 リソースのデプロイと管理を簡単にするために、すべての新しいリソースに Resource Manager を利用することが推奨されています。 可能であれば、Resource Manager を使用して既存のリソースを再度デプロイすることをお勧めします。
 
 これまでに Resource Manager を使用したことがない場合は、まず「[Azure Resource Manager の概要](resource-group-overview.md)」で定義されている用語をご確認ください。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="history-of-the-deployment-models"></a>デプロイメント モデルの歴史
 Azure では当初、クラシック デプロイ モデルのみ用意されていました。 このモデルでは、各リソースが独立して存在していたため、関連リソースをまとめてグループ化する方法がありませんでした。 それどころか、ソリューションまたはアプリケーションを構成するリソースを手動で追跡し、うまくバランスを取りながら管理する必要がありました。 ソリューションをデプロイするには、ポータル経由で各リソースを個別に作成するか、すべてのリソースを正しい順序でデプロイするスクリプトを作成する必要がありました。 ソリューションを削除するには、各リソースを個別に削除するほかありませんでした。 関連リソースのアクセス制御ポリシーの適用と更新は、簡単ではありませんでした。 そのうえ、タグをリソースに適用し、リソースの監視と請求の管理に役立つ単語を使ってこれらのリソースにラベル付けすることもできませんでした。
@@ -46,6 +48,7 @@ Azure では当初、クラシック デプロイ モデルのみ用意されて
 Resource Manager が追加されたとき、すべてのリソースが遡及的に既定のリソース グループに追加されました。 今、従来のデプロイでリソースを作成すると、デプロイ時にリソース グループを指定していなくても、リソースはそのサービスの既定のリソース グループ内に自動的に作成されます。 ただし、リソース グループ内に存在するだけでは、リソースが Resource Manager モデルに変換されたことになりません。
 
 ## <a name="understand-support-for-the-models"></a>モデルのサポートについて
+
 次の 3 種類のシナリオに注意してください。
 
 1. Cloud Services では、Resource Manager デプロイ モデルはサポートされていません。
@@ -57,7 +60,7 @@ Resource Manager が追加されたとき、すべてのリソースが遡及的
 場合によっては、Resource Manager コマンドを使用することで、クラシック デプロイメントで作成したリソースに関する情報を取得したり、クラシック リソースを別のリソース グループに移動するなどの管理タスクを実行したりできます。 しかしこれらのケースから、その種類が Resource Manager の操作に対応しているという印象を持たないようにしてください。 たとえば、クラシック デプロイメントで作成された仮想マシンを含むリソース グループがあるとします。 例として、次の Resource Manager PowerShell コマンドを実行したとします。
 
 ```powershell
-Get-AzureRmResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
+Get-AzResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
 ```
 
 仮想マシンが返されます。
@@ -72,10 +75,10 @@ Location          : westus
 SubscriptionId    : {guid}
 ```
 
-ただし、Resource Manager コマンドレット **Get-AzureRmVM** を実行した場合は、Resource Manager でデプロイされた仮想マシンのみが返されます。 次のコマンドでは、クラシック デプロイメントで作成された仮想マシンは返されません。
+ただし、Resource Manager コマンドレット **Get-AzVM** を実行した場合は、Resource Manager でデプロイされた仮想マシンのみが返されます。 次のコマンドでは、クラシック デプロイメントで作成された仮想マシンは返されません。
 
 ```powershell
-Get-AzureRmVM -ResourceGroupName ExampleGroup
+Get-AzVM -ResourceGroupName ExampleGroup
 ```
 
 Resource Manager で作成したリソースだけがタグに対応しています。 従来のリソースにタグを適用することはできません。
@@ -106,7 +109,7 @@ Resource Manager で作成したリソースだけがタグに対応していま
 
 次の表では、Compute、Network、Storage のリソース プロバイダーの相互作用の変化について説明します。
 
-| 項目 | クラシック | リソース マネージャー |
+| Item | クラシック | リソース マネージャー |
 | --- | --- | --- |
 | 仮想マシン用クラウド サービス |クラウド サービスは、プラットフォームに基づく可用性と負荷分散を必要とする仮想マシンを保持するためのコンテナーです。 |新しいモデルを使用して仮想マシンを作成するためのオブジェクトとしてのクラウド サービスは不要となりました。 |
 | 仮想ネットワーク |仮想ネットワークは仮想マシンでは省略可能です。 使用すると、仮想ネットワークは Resource Manager でデプロイできなくなります。 |仮想マシンには、Resource Manager でデプロイされた仮想ネットワークが必要です。 |
@@ -153,6 +156,7 @@ Azure Resource Manager を使用して作成された仮想マシン、仮想ネ
 [Azure Resource Manager のクイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)に関するページで、広範囲にわたるスターター テンプレートが提供されています。
 
 ## <a name="next-steps"></a>次の手順
+
 * 仮想マシン、ストレージ アカウント、仮想ネットワークを定義するテンプレートの作成に関するチュートリアルについては、「[Resource Manager テンプレートのチュートリアル](resource-manager-template-walkthrough.md)」を参照してください。
-* テンプレートをデプロイするためのコマンドについては、「 [AAzure Resource Manager テンプレートを使用したアプリケーションのデプロイに関するページ](resource-group-template-deploy.md)」を参照してください。
+* テンプレートをデプロイするためのコマンドについては、「 [Azure Resource Manager テンプレートを使用したアプリケーションのデプロイに関するページ](resource-group-template-deploy.md)」を参照してください。
 

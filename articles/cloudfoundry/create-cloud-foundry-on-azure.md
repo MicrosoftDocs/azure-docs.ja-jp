@@ -1,6 +1,6 @@
 ---
-title: Azure で Cloud Foundry を作成する
-description: Azure で Cloud Foundry PCF クラスターをプロビジョニングするために必要なパラメーターの設定方法について説明します
+title: Azure で Pivotal Cloud Foundry クラスターを作成する
+description: Azure で Pivotal Cloud Foundry (PCF) クラスターをプロビジョニングするために必要なパラメーターの設定方法について説明します
 services: Cloud Foundry
 documentationcenter: CloudFoundry
 author: ruyakubu
@@ -10,80 +10,81 @@ ms.assetid: ''
 ms.author: ruyakubu
 ms.date: 09/13/2018
 ms.devlang: ''
-ms.service: Cloud Foundry
+ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: a0a3379a8a2579080d9b686917395feec9cf8f3d
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 382e342f2144bcc6eeedafd74790bb442b8f9308
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250625"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59784860"
 ---
-# <a name="create-cloud-foundry-on-azure"></a>Azure で Cloud Foundry を作成する
+# <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Azure で Pivotal Cloud Foundry クラスターを作成する
 
-このチュートリアルでは、Azure で Pivotal Cloud Foundry PCF クラスターをプロビジョニングするために必要なパラメーターを作成および生成する際の簡単な手順を示します。  Pivotal Cloud Foundry ソリューションは、Azure [MarketPlace](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry) で検索を実行すると見つかります。
+このチュートリアルでは、Azure で Pivotal Cloud Foundry (PCF) クラスターをプロビジョニングするために必要なパラメーターを作成および生成する際の簡単な手順を示します。 Pivotal Cloud Foundry ソリューションを見つけるには、Azure [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry) で検索します。
 
-![イメージ テキスト](media/deploy/pcf-marketplace.png "Azure で Pivotal Cloud Foundry を検索する")
+![Azure で Pivotal Cloud Foundry を検索する](media/deploy/pcf-marketplace.png)
 
 
 ## <a name="generate-an-ssh-public-key"></a>SSH 公開キーを生成する
 
-Windows、Mac、または Linux を使用して SSH 公開キーを生成する方法はいくつかあります。
+Windows、Mac、または Linux を使用して公開セキュア シェル (SSH) キーを生成する方法はいくつかあります。
 
 ```Bash
 ssh-keygen -t rsa -b 2048
 ```
-- ここをクリックして、お使いの環境での[手順]( https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)を参照してください。
 
-## <a name="create-a-service-principal"></a>サービス プリンシパルを作成する
+詳細については、[Azure 上の Windows での SSH キーの使用](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)に関するページを参照してください。
+
+## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
 > [!NOTE]
 >
-> サービス プリンシパルを作成するには、所有者アカウントのアクセス許可が必要です。  さらに、サービス プリンシパルの作成を自動化するスクリプトを記述することができます。 たとえば、Azure CLI で [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest) を使用します。
+> サービス プリンシパルを作成するには、所有者アカウントのアクセス許可が必要です。 サービス プリンシパルの作成を自動化するスクリプトを記述することもできます。 たとえば、Azure CLI で [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest) を使用できます。
 
-1. Azure アカウントにログインします。
+1. Azure アカウントにサインインします。
 
     `az login`
 
-    ![イメージ テキスト](media/deploy/az-login-output.png "Azure CLI のログイン")
+    ![Azure CLI のログイン](media/deploy/az-login-output.png )
  
-    後で使用するため、**サブスクリプション ID** としての "id" 値と、**tenantId** 値をコピーします。
+    後で使用するために、**サブスクリプション ID** としての "id" 値と、"tenantId" 値をコピーします。
 
 2. この構成の既定のサブスクリプションを設定します。
 
     `az account set -s {id}`
 
-3. PCF 用の AAD アプリケーションを作成し、一意の英数字のパスワードを指定します。  後で使用するため、パスワードを **clientSecret** として保存します。
+3. PCF 用の Azure Active Directory アプリケーションを作成します。 一意の英数字のパスワードを指定します。 後で使用するために、パスワードを **clientSecret** として格納します。
 
-    `az ad app create --display-name "Svc Prinicipal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}`
+    `az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}`
 
-    後で使用するため、出力内の "appId" 値を **ClientID** としてコピーします。
+    後で使用するために、出力内の "appId" 値を **clientID** としてコピーします。
 
     > [!NOTE]
     >
-    > 独自のアプリケーションのホーム ページと識別子 URI を選択します。  例を示します: http://www.contoso.com。
+    > 独自のアプリケーションのホーム ページと識別子 URI (http://www.contoso.com など) を選択します。
 
-4. 新しい "appId" でサービス プリンシパルを作成します。
+4. 新しいアプリ ID でサービス プリンシパルを作成します。
 
     `az ad sp create --id {appId}`
 
-5. サービス プリンシパルのアクセス許可のロールは、**共同作成者**として設定します。
+5. サービス プリンシパルのアクセス許可のロールは、共同作成者として設定します。
 
-    `az role assignment create --assignee “{enter-your-homepage}” --role “Contributor” `
+    `az role assignment create --assignee “{enter-your-homepage}” --role “Contributor”`
 
-    または、次を使用することもできます。
+    以下を使用することもできます
 
-    `az role assignment create --assignee {service-princ-name} --role “Contributor” `
+    `az role assignment create --assignee {service-principal-name} --role “Contributor”`
 
-    ![イメージ テキスト](media/deploy/svc-princ.png "サービス プリンシパルのロールの割り当て")
+    ![サービス プリンシパルのロールの割り当て](media/deploy/svc-princ.png )
 
-6. 前述の appId、パスワード、および tenantId を使用してサービス プリンシパルに正しくログインできることを確認します。
+6. アプリ ID、パスワード、およびテナント ID を使用して、サービス プリンシパルに正しくサインインできることを確認します。
 
-    `az login --service-principal -u {appId} -p {your-passward}  --tenant {tenantId}`
+    `az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}`
 
-7. 上でコピーした**サブスクリプション ID**、**tenantId**、**clientID**、および **clientSecret** の値をすべて使用して、次の形式で .json ファイルを作成します。  ファイルを保存します。
+7. 次の形式の .json ファイルを作成します。 先ほどコピーした**サブスクリプション ID**、**tenantID**、**clientID**、**clientSecret** の各値を使用します。 ファイルを保存します。
 
     ```json
     {
@@ -96,35 +97,35 @@ ssh-keygen -t rsa -b 2048
 
 ## <a name="get-the-pivotal-network-token"></a>Pivotal Network トークンを取得する
 
-1. [Pivotal Network](https://network.pivotal.io) アカウントに登録またはログインします。
-2. ページの右上にある自分のプロファイル名をクリックし、[**Edit Profile”] を選択します。
-3. ページの一番下までスクロールして、**[LEGACY API TOKEN]** 値をコピーします。  これが後で使用される **Pivotal Network トークン**の値です。
+1. [Pivotal Network](https://network.pivotal.io) アカウントに登録またはサインインします。
+2. ページの右上隅にある自分のプロファイル名を選択します。 **[プロファイルの編集]** を選択します。
+3. ページの一番下までスクロールして、**LEGACY API TOKEN** の値をコピーします。 この値は、後で使用する **Pivotal Network トークン**の値です。
 
-## <a name="provision-your-cloud-foundry-on-azure"></a>Azure に Cloud Foundry をプロビジョニングする
+## <a name="provision-your-cloud-foundry-cluster-on-azure"></a>Azure で Cloud Foundry クラスターをプロビジョニングする
 
-1. これで、[Pivotal Cloud Foundry を Azure ](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry)クラスターにプロビジョニングするために必要なパラメーターがすべて揃いました。
-2. パラメーターを入力し、PCF クラスターを作成します。
+これで、[Pivotal Cloud Foundry クラスターを Azure](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry) でプロビジョニングするために必要なパラメーターがすべて揃いました。
+パラメーターを入力し、PCF クラスターを作成します。
 
-## <a name="verify-the-deployment-and-log-into-the-pivotal-ops-manager"></a>デプロイを確認して Pivotal Ops Manager にログインする
+## <a name="verify-the-deployment-and-sign-in-to-the-pivotal-ops-manager"></a>デプロイを確認して Pivotal Ops Manager にサインインする
 
-1. PCF クラスターに、デプロイの状態が表示されるはずです。
+1. PCF クラスターに、デプロイの状態が表示されます。
 
-    ![イメージ テキスト](media/deploy/deployment.png "Azure デプロイの状態")
+    ![Azure のデプロイ状態](media/deploy/deployment.png )
 
-2. 左側のナビゲーションの **[Deployments]** リンクをクリックし、PCF Ops Manager に対する資格情報を取得してから、次のページの **[Deployment Name]** リンクをクリックします。
-3. 左側のナビゲーションで **[Outputs]** リンクをクリックして、PCF Ops Manager に対する、URL、ユーザー名、およびパスワードを表示します。  "OPSMAN-FQDN" 値が URL です。
+2. 左側のナビゲーションの **[デプロイ]** リンクを選択して、PCF Ops Manager の資格情報を取得します。 次のページで **[デプロイ名]** を選択します。
+3. 左側のナビゲーションで **[出力]** リンクを選択して、PCF Ops Manager の URL、ユーザー名、およびパスワードを表示します。 "OPSMAN-FQDN" 値が URL です。
  
-    ![イメージ テキスト](media/deploy/deploy-outputs.png "Cloud Foundry のデプロイの出力")
+    ![Cloud Foundry のデプロイの出力](media/deploy/deploy-outputs.png )
  
-4. Web ブラウザーで URL を開き、前の手順の資格情報を入力してログインします。
+4. Web ブラウザーで URL を開始します。 前の手順の資格情報を入力してサインインします。
 
-    ![イメージ テキスト](media/deploy/pivotal-login.png "Pivotal のログイン ページ")
+    ![Pivotal のサインイン ページ](media/deploy/pivotal-login.png )
          
     > [!NOTE]
     >
-    > サイトが安全でないという警告メッセージのために Internet Explorer ブラウザーが失敗する場合は、[More information]\(情報) と [Go on to the webpage]\(Web ページに進む) をクリックします。  Firefox の場合は、[Advance] をクリックし、証明書を追加して続行します。
+    > "サイトが安全でない" という警告メッセージのために Internet Explorer ブラウザーが失敗する場合は、**[詳細]** を選択して Web ページに移動します。 Firefox の場合は、**[Advance]** を選択し、証明書を追加して続行します。
 
-5. PCF Ops Manager には、デプロイされた Azure インスタンスが表示されるはずです。 これで、ここからアプリケーションの展開と管理を開始できます。
+5. PCF Ops Manager には、デプロイされた Azure インスタンスが表示されます。 これで、アプリケーションをここでデプロイして管理できます。
                
-    ![イメージ テキスト](media/deploy/ops-mgr.png "Pivotal でのデプロイされた Azure インスタンス")
+    ![Pivotal でデプロイされた Azure インスタンス](media/deploy/ops-mgr.png )
  

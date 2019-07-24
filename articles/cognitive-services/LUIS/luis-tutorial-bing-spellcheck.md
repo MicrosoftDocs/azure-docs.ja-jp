@@ -1,21 +1,22 @@
 ---
-title: LUIS クエリへの Bing Spell Check API v7 の追加 | Microsoft Docs
+title: スペル ミスの語句を修正する
 titleSuffix: Azure
 description: Bing Spell Check API V7 を LUIS エンドポイント クエリに追加して、発話の単語のスペルミスを修正します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 1f698a17ee6f4f654ba9d1e3741b190baf318e00
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1e5536b08b3b78f35426207369f444e6eb21c87d
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031069"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341804"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Bing Spell Check を使用した単語のスペルミスの修正
 
@@ -75,7 +76,7 @@ LUIS では 2 つの場所でキーを使用します。 1 つ目は[テスト �
 
 4. LUIS が、JSON の結果 `How far is the mountain?` で応答します。 Bing Spell Check API v7 によってスペル ミスが検出された場合、LUIS アプリの JSON 応答の `query` フィールドには元のクエリが、`alteredQuery` フィールドには、LUIS に送信された修正済みクエリが含まれています。
 
-```
+```json
 {
   "query": "How far is the mountainn?",
   "alteredQuery": "How far is the mountain?",

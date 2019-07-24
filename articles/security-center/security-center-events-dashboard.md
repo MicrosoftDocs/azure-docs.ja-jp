@@ -3,8 +3,8 @@ title: Azure Security Center でのセキュリティ イベントの監視と�
 description: Security Center のイベント ダッシュ ボードを使用して、Azure VM と Azure 以外のコンピューターからのセキュリティ イベントを表示する方法について説明します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
-manager: MBaldwin
+author: rkarlin
+manager: barbkess
 editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
-ms.author: terrylan
-ms.openlocfilehash: 32273647d0f773c3f47653ac6fc87fef48630c0a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: rkarlin
+ms.openlocfilehash: 01f6da4f5ad6b618c444949fce8d2b7aa3367e17
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299289"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075767"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Azure Security Center でのセキュリティ イベントの監視と処理
 イベント ダッシュ ボードは、時間の経過とともに収集されたセキュリティ イベントの数と、注意を払う必要がある重要なイベントの一覧の概要を示します。  
@@ -28,6 +28,8 @@ ms.locfileid: "44299289"
 > この機能を使用するには、ワークスペースが Log Analytics バージョン 2 を実行していて、Security Center の Standard レベルに存在する必要があります。 Standard レベルの詳細については、Security Center の[価格ページ](security-center-pricing.md)をご覧ください。
 >
 >
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="what-is-a-security-event"></a>セキュリティ イベントとは何ですか。
 Security Center は、Microsoft Monitoring Agent を使用して、さまざまなセキュリティ関連の構成とイベントをマシンから収集し、ワークスペースにこれらのイベントを格納します。 このようなデータの例には、オペレーティング システムのログ (Windows イベント ログ)、実行中のプロセス、および Security Center と統合されたセキュリティ ソリューションからのイベントなどがあります。 またワークスペースには、Microsoft Monitoring Agent によってクラッシュ ダンプ ファイルがコピーされます。
@@ -55,30 +57,30 @@ Security Center は、Microsoft Monitoring Agent を使用して、さまざま�
 1. **[Security Center]** メイン メニューの **[イベント]** を選択します。
 2. **[イベント ダッシュボード]** ワークスペース セレクターが開きます。 ワークスペースが 1 つしかない場合、このワークスペース セレクターは表示されません。 複数のワークスペースが存在する場合は、処理されたイベントの詳細を表示するワークスペースを 1 つ選択する必要があります。 複数のワークスペースが存在する場合は、一覧から 1 つのワークスペースを選択してください。
 
-  ![ワークスペースの一覧][3]
+   ![ワークスペースの一覧][3]
 
 3. **[イベント ダッシュボード]** が開き、選択したワークスペースのイベントの詳細が表示されます。 注目すべきイベントおよびすべてのイベントを種類ごとに表示できます。  この例では、**注目すべきイベント**が選択されています。
 
-  ![注目すべきイベント][4]
+   ![注目すべきイベント][4]
 
 4. イベントの種類を選択して、ワークスペースのデータをさらに照会できます。 この例では、**SecurityEvent** が選択されています。
 
-  ![イベントの種類の選択][5]
+   ![イベントの種類の選択][5]
 
 5. **[ログ検索]** が開き、イベントの種類に関する追加の詳細が表示されます。
 
-  ![ログ検索][6]
+   ![ログ検索][6]
 
 ## <a name="add-a-notable-event"></a>注目すべきイベントの追加
-Security Center は、すぐに使用できる注目すべきイベントを提供します。 [Log Analytics クエリ言語](../log-analytics/log-analytics-search-reference.md)を使用して、独自のクエリに基づいて注目すべきイベントを追加することができます。 **[イベント ダッシュボード]** は、注目すべきイベントを追加するために後でまた使用します。
+Security Center は、すぐに使用できる注目すべきイベントを提供します。 [Kusto クエリ言語](../log-analytics/log-analytics-search-reference.md)を使用して、独自のクエリに基づいて注目すべきイベントを追加することができます。 **[イベント ダッシュボード]** は、注目すべきイベントを追加するために後でまた使用します。
 
 1. **[注目すべきイベントの追加]** を選択します。
 
-  ![注目すべきイベントの追加][7]
+   ![注目すべきイベントの追加][7]
 
 2. **[注目すべきカスタム イベントの追加]** が開きます。  **[表示名]** で、注目すべきイベントの名前を入力します。 **[検索クエリ]** で、イベントのクエリを入力します。
 
-  ![クエリの入力][8]
+   ![クエリの入力][8]
 
 4. **[OK]** を選択します。
 
@@ -94,7 +96,7 @@ Security Center でイベント処理を使用するには、ワークスペー�
 - 空白になっている - ワークスペースは要件を満たしており、ワークスペースを選択すると、ダッシュボードに移動します
 
 > [!NOTE]
-> **[イベント ダッシュボード]** の **[EVENTS]** 列は、各ワークスペース内のイベントの量を示します。  一部のワークスペースでは、Security Center の Free レベルがそのワークスペースに適用されるため、この列は空白になります。 Free レベルでは、Security Center はイベントを収集しますが、イベントは Log Analytics には保存されず、ダッシュボードでは使用できません。
+> **[イベント ダッシュボード]** の **[EVENTS]** 列は、各ワークスペース内のイベントの量を示します。  一部のワークスペースでは、Security Center の Free レベルがそのワークスペースに適用されるため、この列は空白になります。 Free レベルでは、Security Center はイベントを収集しますが、イベントは Azure Monitor ログには保存されず、ダッシュボードでは使用できません。
 >
 >
 
@@ -102,26 +104,26 @@ Security Center でイベント処理を使用するには、ワークスペー�
 1. **[REQUIRES UPDATE (更新が必要)]** となっているワークスペースを選択します。
 2. **[アップグレードの検索]** が開きます。 **[今すぐアップグレード]** を選択します。
 
-  ![今すぐアップグレード][10]
+   ![今すぐアップグレード][10]
 
 ## <a name="upgrade-to-security-centers-standard-tier"></a>Security Center の Standard レベルへのアップグレード
 1. **[UPGRADE PLAN (プランのアップグレード)]** が含まれているワークスペースを選びます。
 2. **イベント ダッシュボード**が開きます。 **[イベント ダッシュボードの試行]** を選択します。
 
-  ![ダッシュボードの試行][11]
+   ![ダッシュボードの試行][11]
 
 3. **[高度なセキュリティへのオンボード]** で、アップグレードするワークスペースを選択します。
 4. **[価格]** で、**[Standard]** を選択します。
 5. **[保存]** を選択します。
 
-  ![Standard レベルにアップグレードする][12]
+   ![Standard レベルにアップグレードする][12]
 
 ## <a name="next-steps"></a>次の手順
 この記事では、Security Center のイベント ダッシュボードの使用方法について説明しました。 ダッシュボードのしくみと、イベント クエリを作成する方法についての詳細は、以下を参照してください。
 
-- [Log Analytics とは](../log-analytics/log-analytics-overview.md) - Log Analytics の概要
-- [Log Analytics でのログ検索について](../log-analytics/log-analytics-log-search-new.md) - Log Analytics でログ検索を使用する方法と、ログ検索を作成する前に理解しておく必要がある概念について説明します
-- [Log Analytics 検索リファレンス](../log-analytics/log-analytics-search-reference.md) - クエリ言語を使用して独自のイベントクエリを Log に書き込み方法について説明します
+- [Azure Monitor ログとは](../log-analytics/log-analytics-overview.md) – Azure Monitor ログの概要
+- [Kusto でのログ検索について](../log-analytics/log-analytics-log-search-new.md) - Azure Monitor ログでログ検索を使用する方法と、ログ検索を作成する前に理解しておく必要がある概念について説明します
+- [Kusto 検索リファレンス](../log-analytics/log-analytics-search-reference.md) - クエリ言語を使用して独自のイベントクエリを Log に書き込み方法について説明します
 
 Security Center の詳細については、次の記事をご覧ください。
 

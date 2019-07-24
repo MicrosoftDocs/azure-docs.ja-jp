@@ -4,21 +4,21 @@ description: この記事では、Azure Site Recovery による Azure への VMw
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
+services: site-recovery
 ms.topic: article
-ms.date: 11/11/2018
+ms.date: 03/18/2019
 ms.author: raynew
-ms.openlocfilehash: 85484c0d4c1838e158fe388afdfcbebc6de2f289
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 399dcd744819cf4cb5d9f5f9636967c34e186a0e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569753"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004603"
 ---
 # <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>Azure に VMware をディザスター リカバリーするための構成サーバーの要件
 
 Azure への VMware 仮想マシンと物理サーバーのディザスター リカバリーに [Azure Site Recovery](site-recovery-overview.md) を使うときは、オンプレミスの構成サーバーを展開します。
 
-- 構成サーバーは、オンプレミスの VMware と Azure の間の通信を調整します。 データのレプリケーションも管理します。
 - 構成サーバーは、オンプレミスの VMware と Azure の間の通信を調整します。 データのレプリケーションも管理します。
 - 構成サーバーのコンポーネントとプロセスの[詳細をご確認ください](vmware-azure-architecture.md)。
 
@@ -58,7 +58,7 @@ IIS | - 既存の Web サイトが存在しない <br> - ポート 443 でリッ
 --- | --- 
 IP アドレスの種類 | 静的 
 インターネットへのアクセス | サーバーは、次の URL にアクセスする必要があります (直接またはプロキシ経由)。 <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com  <br> - https:\//management.azure.com <br> - *.services.visualstudio.com <br> - time.nist.gov <br> - time.windows.com <br> OVF には次の URL へのアクセスも必要です。 <br> - https:\//login.microsoftonline.com <br> - https:\//secure.aadcdn.microsoftonline-p.com <br> - https:\//login.live.com  <br> - https:\//auth.gfx.ms <br> - https:\//graph.windows.net <br> - https:\//login.windows.net <br> - https:\//www.live.com <br> - https:\//www.microsoft.com <br> - https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi 
-ポート | 443 (コントロール チャネルのオーケストレーション)<br>9443 (データ転送) 
+Port | 443 (コントロール チャネルのオーケストレーション)<br>9443 (データ転送) 
 NIC の種類 | VMXNET3 (構成サーバーが VMware VM である場合)
 
 ## <a name="required-software"></a>必要なソフトウェア
@@ -74,11 +74,12 @@ MYSQL | MySQL をインストールする必要があります。 手動でイ�
 
 **コンポーネント** | **要件** 
 --- | ---
-**CPU** | **メモリ** | **キャッシュ ディスク** | **データの変更率** | **レプリケートされたマシン**
---- | --- | --- | --- | ---
-8 vCPU<br/><br/> 2 ソケット * 4 コア \@ 2.5 GHz | 16 GB | 300 GB | 500 GB 以下 | 100 台未満のマシン
-12 vCPU<br/><br/> 2 ソケット * 6 コア \@ 2.5 GHz | 18 GB | 600 GB | 500 GB ～ 1 TB | 100 ～ 150 台のマシン
-16 vCPU<br/><br/> 2 ソケット * 8 コア \@ 2.5 GHz | 32 GB | 1 TB (テラバイト) | 1 ～ 2 TB | 150 ～ 200 台のマシン
+
+| **CPU** | **メモリ** | **キャッシュ ディスク** | **データの変更率** | **レプリケートされたマシン** |
+| --- | --- | --- | --- | --- |
+| 8 vCPU<br/><br/> 2 ソケット * 4 コア \@ 2.5 GHz | 16 GB | 300 GB | 500 GB 以下 | 100 台未満のマシン |
+| 12 vCPU<br/><br/> 2 ソケット * 6 コア \@ 2.5 GHz | 18 GB | 600 GB | 500 GB ～ 1 TB | 100 ～ 150 台のマシン |
+| 16 vCPU<br/><br/> 2 ソケット * 8 コア \@ 2.5 GHz | 32 GB | 1 TB (テラバイト) | 1 ～ 2 TB | 150 ～ 200 台のマシン | 
 
 
 

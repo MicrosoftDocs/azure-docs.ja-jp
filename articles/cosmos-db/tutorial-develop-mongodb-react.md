@@ -1,29 +1,26 @@
 ---
-title: Azure を対象とした MongoDB、React、Node.js のチュートリアル | Microsoft Docs
+title: Azure を対象とした MongoDB、React、Node.js のチュートリアル
 description: このチュートリアル シリーズでは、React と Node.js で MongoDB に使われる API をそのまま使用して、Azure Cosmos DB を対象とした MongoDB アプリを作成する方法について、動画を交えながら説明しています。
-services: cosmos-db
 author: johnpapa
-manager: kfile
-editor: ''
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
-ms.custom: mvc
-ms.openlocfilehash: 28651f0b9a2c775292b5c9406f676b45fc4e5d14
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.reviewer: sngun
+ms.openlocfilehash: ef245c2ef5da2b3dc9780e772a71e8ef896e1aff
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701784"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959801"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>React と Azure Cosmos DB を使って MongoDB アプリを作成する  
 
-このビデオ チュートリアルでは、React フロントエンドでヒーローの追跡アプリを作成する方法を複数のパートにわたって紹介しています。 このアプリは、サーバーに Node と Express を使用し、[MongoDB API](mongodb-introduction.md) で Azure Cosmos DB に接続した後、アプリのサーバー部分に React フロントエンドを接続するものです。 また、Azure Portal からポイントアンドクリック方式で Azure Cosmos DB をスケーリングする方法や、アプリをインターネットにデプロイしてだれでもお気に入りのヒーローを追跡できるようにする方法も紹介しています。 
+このビデオ チュートリアルでは、React フロントエンドでヒーローの追跡アプリを作成する方法を複数のパートにわたって紹介しています。 このアプリは、サーバーに Node と Express を使用し、[Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md) で構成された Cosmos データベースに接続した後、アプリのサーバー部分に React フロントエンドを接続するものです。 このチュートリアルでは、Azure portal からポイントアンドクリック方式で Cosmos DB をスケーリングする方法や、アプリをインターネットにデプロイしてだれでもお気に入りのヒーローを追跡できるようにする方法も紹介しています。 
 
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は、MongoDB クライアント接続をサポートしています。そのため MongoDB を Azure Cosmos DB に置き換えても、MongoDB アプリに使われるコードはそのまま利用できるうえ、クラウドへの簡単なデプロイ、スケーリング、超高速の読み取りと書き込みなど、さまざまな利点がもたらされます。  
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は MongoDB とのワイヤ プロトコル互換性をサポートしているので、クライアントは MongoDB の代わりに Azure Cosmos DB を使用できます。  
 
 このマルチパート チュートリアルに含まれるタスクは次のとおりです。
 
@@ -105,8 +102,6 @@ ms.locfileid: "43701784"
 > * Azure Cosmos DB アカウントにアプリを接続する
 > * Postman を使ってアプリをテストする
 > * アプリケーションを実行してヒーローをデータベースに追加する
-
-このチュートリアル シリーズには今後も、アプリケーションをデプロイしたりデータをグローバルにレプリケートしたりする方法についての動画が追加される予定ですので、定期的にチェックしてください。
 
 次のチュートリアルに進み、MongoDB のデータを Azure Cosmos DB にインポートする方法を学習しましょう。  
 

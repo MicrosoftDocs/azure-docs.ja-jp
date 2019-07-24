@@ -2,19 +2,19 @@
 title: Terraform モジュールを使用した Azure での VM クラスターの作成
 description: Terraform モジュールを使用して Azure で Windows 仮想マシン クラスターを作成する方法について説明します。
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: Terraform、DevOps、仮想マシン、ネットワーク、モジュール
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: 03c09e190fce9cbbd98cea3565dd2437f79dadf1
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: c6aa780b04c85b8156463011c2b90da2da4541f6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666635"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776276"
 ---
 # <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>モジュール レジストリを使用した Terraform での VM クラスターの作成
 
@@ -31,7 +31,7 @@ Terraform の詳細については、[Terraform のドキュメント](https://w
 ## <a name="set-up-authentication-with-azure"></a>Azure で認証を設定する
 
 > [!TIP]
-> [Terraform 環境変数を使用する](/azure/virtual-machines/linux/terraform-install-configure#set-environment-variables)か、または [Azure Cloud Shell](/azure/cloud-shell/overview) でこのチュートリアルを実行する場合は、この手順を省略します。
+> [Terraform 環境変数を使用する](/azure/virtual-machines/linux/terraform-install-configure)か、または [Azure Cloud Shell](/azure/cloud-shell/overview) でこのチュートリアルを実行する場合は、この手順を省略します。
 
  Azure サービス プリンシパルを作成するには、「[Install Terraform and configure access to Azure (Terraform のインストールおよび Azure へのアクセスの構成)](/azure/virtual-machines/linux/terraform-install-configure)」を確認してください。 このサービス プリンシパルを使用して、空のディレクトリ内の新しいファイル `azureProviderAndCreds.tf` に次のコードを入力します。
 

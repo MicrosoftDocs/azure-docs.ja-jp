@@ -1,27 +1,45 @@
 ---
 title: QnA Maker サービスのアップグレード - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker スタックは、その初回作成後に、個々のコンポーネントを必要に応じてアップグレードすることができます。
+description: リソースの管理を強化するために、QnA Maker サービスを共有するかアップグレードします。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 03/25/2019
 ms.author: tulasim
-ms.openlocfilehash: 8542b1f6dfe031de58ea6eeb931027ee03bd81f2
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: cb38fdcfa8cbbfa0b90141c2de2280ff1ef08c3b
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030967"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437989"
 ---
-# <a name="upgrade-your-qna-maker-service"></a>QnA Maker サービスのアップグレード
+# <a name="share-or-upgrade-your-qna-maker-service"></a>QnA Maker サービスの共有またはアップグレード
+リソースの管理を強化するために、QnA Maker サービスを共有するかアップグレードします。 
+
 QnA Maker スタックは、その初回作成後に、個々のコンポーネントを必要に応じてアップグレードすることができます。 依存コンポーネントと SKU 選択の詳細については、[こちら](https://aka.ms/qnamaker-docs-capacity)を参照してください。
 
+## <a name="share-existing-services-with-qna-maker"></a>既存のサービスと QnA Maker の共有
+
+QnA Maker はいくつかの Azure リソースを作成します。 管理を軽減し、コスト共有のメリットを得るため、次の表を使用して、共有できるものとできないものを理解します。
+
+|Service|共有|
+|--|--|
+|Cognitive Services|X|
+|App Service プラン|✔|
+|App Service|X|
+|Application Insights|✔|
+|検索サービス|✔|
+
 ## <a name="upgrade-qna-maker-management-sku"></a>QnA Maker 管理 SKU のアップグレード
+
+現在のレベルよりも多くの質問と回答をナレッジ ベースに含める必要がある場合は、QnA Maker サービスの価格レベルをアップグレードします。 
+
 QnA Maker 管理 SKU をアップグレードするには、次の手順に従います。
+
 1. Azure portal の QnA Maker リソースに移動し、**[価格レベル]** を選択します。
 
     ![QnA Maker リソース](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource.png)
@@ -31,6 +49,9 @@ QnA Maker 管理 SKU をアップグレードするには、次の手順に従�
     ![QnA Maker の価格](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
 ## <a name="upgrade-app-service"></a>App Service のアップグレード
+
+ ナレッジ ベースでクライアント アプリの要求をより多く提供する必要がある場合は、アプリ サービスの価格レベルをアップグレードします。
+
 App Service は、[スケールアップ](https://docs.microsoft.com/azure/app-service/web-sites-scale)またはスケールダウンすることができます。
 
 1. Azure portal で App Service リソースに移動し、必要に応じて **[スケールアップ]** と **[スケールダウン]** のどちらかのオプションを選択します。
@@ -38,6 +59,9 @@ App Service は、[スケールアップ](https://docs.microsoft.com/azure/app-s
     ![QnA Maker App Service のスケーリング](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
 ## <a name="upgrade-azure-search-service"></a>Azure Search サービスのアップグレード
+
+多数のナレッジ ベースを使用する予定の場合は、Azure Search サービスの価格レベルをアップグレードします。 
+
 現在、Azure Search SKU のインプレース アップグレードを実行することはできません。 ただし、必要な SKU で新しい Azure Search リソースを作成し、その新しいリソースにデータを復元して、QnA Maker スタックにリンクすることはできます。
 
 1. Azure portal で新しい Azure Search リソースを作成し、必要な SKU を選択します。

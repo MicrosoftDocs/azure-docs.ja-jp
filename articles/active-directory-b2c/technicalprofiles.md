@@ -3,19 +3,19 @@ title: TechnicalProfiles | Microsoft Docs
 description: Azure Active Directory B2C でカスタム ポリシーの TechnicalProfiles 要素を指定します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 45ea2a28b4b2fb3d55d7ae949152e6f51b5d3162
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.subservice: B2C
+ms.openlocfilehash: 86f2a8fa11becdf24c0a10c0325893946a033c3d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566535"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568177"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -76,16 +76,16 @@ ms.locfileid: "51566535"
 
 | Attribute | 必須 | 説明 |
 |---------|---------|---------|
-| ID | [はい] | 技術プロファイルの一意の識別子。 ポリシー ファイル内の他の要素からこの識別子を使用して、技術プロファイルを参照することができます。 例として、**OrchestrationSteps** や **ValidationTechnicalProfile** が挙げられます。 |
+| Id | はい | 技術プロファイルの一意の識別子。 ポリシー ファイル内の他の要素からこの識別子を使用して、技術プロファイルを参照することができます。 例として、**OrchestrationSteps** や **ValidationTechnicalProfile** が挙げられます。 |
 
 **TechnicalProfile** には、次の属性が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| ドメイン | 0:1 | 技術プロファイルのドメイン名。 たとえば、技術プロファイルで Facebook ID プロバイダーが指定されている場合、ドメイン名は Facebook.com です。 |
+| Domain | 0:1 | 技術プロファイルのドメイン名。 たとえば、技術プロファイルで Facebook ID プロバイダーが指定されている場合、ドメイン名は Facebook.com です。 |
 | DisplayName | 0:1 | ユーザーに表示できる技術プロファイルの名前。 |
 | 説明 | 0:1 | ユーザーに表示できる技術プロファイルの説明。 |
-| プロトコル | 0:1 | 他の利用者との通信に使用されるプロトコル。 |
+| Protocol | 0:1 | 他の利用者との通信に使用されるプロトコル。 |
 | Metadata | 0:1 | トランザクション中にエンドポイントと通信するためにプロトコルによって利用されるキー/値ペアのコレクション。 |
 | InputTokenFormat | 0:1 | 入力トークンの形式。 指定できる値: `JSON`、`JWT`、`SAML11`、または `SAML2`。 `JWT` 値は、IETF 仕様に従って JSON Web トークンを表します。 `SAML11` 値は、OASIS 仕様に従って SAML 1.1 セキュリティ トークンを表します。  `SAML2` 値は、OASIS 仕様に従って SAML 2.0 セキュリティ トークンを表します。 |
 | OutputTokenFormat | 0:1 | 出力トークンの形式。 指定できる値: `JSON`、`JWT`、`SAML11`、または `SAML2`。 |
@@ -97,18 +97,18 @@ ms.locfileid: "51566535"
 | OutputClaimsTransformations | 0:1 | クレーム プロバイダーから要求を受け取った後に実行する必要がある、要求変換に対する定義済みの参照の一覧。 |
 | ValidationTechnicalProfiles | 0:n | 技術プロファイルが検証目的で使用する、他の技術プロファイルへの参照の一覧。 詳細については、「[検証技術プロファイル](validation-technical-profile.md)」を参照してください。|
 | SubjectNamingInfo | 0:1 | サブジェクト名が要求とは別に指定されているトークンのサブジェクト名の生成を制御します。 たとえば、OAuth または SAML です。  |
-| IncludeClaimsFromTechnicalProfile | 0:1 | この技術プロファイルに対するすべての入力要求と出力要求の追加元となる、技術プロファイルの識別子。 参照先の技術プロファイルは、同じポリシー ファイルで定義する必要があります。 | 
+| IncludeClaimsFromTechnicalProfile | 0:1 | この技術プロファイルに対するすべての入力要求と出力要求の追加元となる、技術プロファイルの識別子。 参照先の技術プロファイルは、同じポリシー ファイルで定義する必要があります。 |
 | IncludeTechnicalProfile |0:1 | この技術プロファイルに対するすべてのデータの追加元となる、技術プロファイルの識別子。 参照先の技術プロファイルは、同じポリシー ファイル内に存在する必要があります。 |
 | UseTechnicalProfileForSessionManagement | 0:1 | セッション管理に使用される別の技術プロファイル。 |
 |EnabledForUserJourneys| 0:1 |ユーザー体験で技術プロファイルを実行するかどうかを制御します。  |
 
-### <a name="protocol"></a>プロトコル
+### <a name="protocol"></a>Protocol
 
 **Protocol** 要素には、次の属性が含まれています。
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Name | [はい] | 技術プロファイルの一部として使用される Azure AD B2C によってサポートされている有効なプロトコルの名前。 指定できる値: `OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`WsFed`、`WsTrust`、`Proprietary`、`session management`、`self-asserted`、または `None`。 |
+| Name | はい | 技術プロファイルの一部として使用される Azure AD B2C によってサポートされている有効なプロトコルの名前。 指定できる値: `OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`WsFed`、`WsTrust`、`Proprietary`、`session management`、`self-asserted`、または `None`。 |
 | Handler | いいえ  | プロトコル名が `Proprietary` に設定されている場合は、Azure AD B2C がプロトコル ハンドラーを決定するために使用するアセンブリの完全修飾名を指定します。 |
 
 ### <a name="metadata"></a>Metadata
@@ -125,7 +125,7 @@ ms.locfileid: "51566535"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| キー | [はい] | メタデータ キー。 メタデータ項目の一覧については、各技術プロファイルの種類を参照してください。 |
+| Key | はい | メタデータ キー。 メタデータ項目の一覧については、各技術プロファイルの種類を参照してください。 |
 
 ### <a name="cryptographickeys"></a>CryptographicKeys
 
@@ -133,16 +133,16 @@ ms.locfileid: "51566535"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| キー | 1:n | この技術プロファイルで使用される暗号化キー。 |
+| Key | 1:n | この技術プロファイルで使用される暗号化キー。 |
 
-#### <a name="key"></a>キー
+#### <a name="key"></a>Key
 
 **Key** 要素には、次の属性が含まれています。
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ID | いいえ  | ポリシー ファイル内の他の要素から参照される特定のキー ペアの一意の識別子。 |
-| StorageReferenceId | [はい] | ポリシー ファイル内の他の要素から参照されるストレージ キー コンテナーの識別子。 |
+| Id | いいえ  | ポリシー ファイル内の他の要素から参照される特定のキー ペアの一意の識別子。 |
+| StorageReferenceId | はい | ポリシー ファイル内の他の要素から参照されるストレージ キー コンテナーの識別子。 |
 
 ### <a name="inputclaimstransformations"></a>InputClaimsTransformations
 
@@ -158,7 +158,7 @@ ms.locfileid: "51566535"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ReferenceId | [はい] | ポリシー ファイルまたは親ポリシー ファイルで定義済みの要求変換の識別子。 |
+| ReferenceId | はい | ポリシー ファイルまたは親ポリシー ファイルで定義済みの要求変換の識別子。 |
 
 ### <a name="inputclaims"></a>InputClaims
 
@@ -168,15 +168,15 @@ ms.locfileid: "51566535"
 | ------- | ----------- | ----------- |
 | InputClaim | 1:n | 予想される入力要求の種類。 |
 
-#### <a name="inputclaim"></a>InputClaim 
+#### <a name="inputclaim"></a>InputClaim
 
 **InputClaim** 要素には、次の属性が含まれています。
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | [はい] | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
+| ClaimTypeReferenceId | はい | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
 | DefaultValue | いいえ  | ClaimTypeReferenceId で示された要求が存在しない場合に、要求を作成するために使用する既定値。これにより、作成された要求を技術プロファイルで InputClaim として使用できます。 |
-| PartnerClaimType | いいえ  | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name'  という要求を使用する場合です。 |
+| PartnerClaimType | いいえ  | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name' という要求を使用する場合です。 |
 
 ### <a name="persistedclaims"></a>PersistedClaims
 
@@ -186,15 +186,15 @@ ms.locfileid: "51566535"
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1:n | 保持する要求の種類。 |
 
-#### <a name="persistedclaim"></a>PersistedClaim 
+#### <a name="persistedclaim"></a>PersistedClaim
 
 **PersistedClaim** 要素には、次の属性が含まれています。
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | [はい] | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
+| ClaimTypeReferenceId | はい | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
 | DefaultValue | いいえ  | ClaimTypeReferenceId で示された要求が存在しない場合に、要求を作成するために使用する既定値。これにより、作成された要求を技術プロファイルで InputClaim として使用できます。 |
-| PartnerClaimType | いいえ  | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name'  という要求を使用する場合です。 |
+| PartnerClaimType | いいえ  | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name' という要求を使用する場合です。 |
 
 ### <a name="outputclaims"></a>OutputClaims
 
@@ -204,16 +204,16 @@ ms.locfileid: "51566535"
 | ------- | ----------- | ----------- |
 | OutputClaim | 1:n | 予想される出力要求の種類。 |
 
-#### <a name="outputclaim"></a>OutputClaim 
+#### <a name="outputclaim"></a>OutputClaim
 
 **OutputClaim** 要素には、次の属性が含まれています。
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | [はい] | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
+| ClaimTypeReferenceId | はい | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
 | DefaultValue | いいえ  | ClaimTypeReferenceId で示された要求が存在しない場合に、要求を作成するために使用する既定値。これにより、作成された要求を技術プロファイルで InputClaim として使用できます。 |
 |AlwaysUseDefaultValue |いいえ  |既定値の使用を強制します。  |
-| PartnerClaimType | いいえ  | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name'  という要求を使用する場合です。 |
+| PartnerClaimType | いいえ  | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name' という要求を使用する場合です。 |
 
 ### <a name="outputclaimstransformations"></a>OutputClaimsTransformations
 
@@ -229,7 +229,7 @@ ms.locfileid: "51566535"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ReferenceId | [はい] | ポリシー ファイルまたは親ポリシー ファイルで定義済みの要求変換の識別子。 |
+| ReferenceId | はい | ポリシー ファイルまたは親ポリシー ファイルで定義済みの要求変換の識別子。 |
 
 ### <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 
@@ -245,7 +245,7 @@ ms.locfileid: "51566535"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ReferenceId | [はい] | ポリシー ファイルまたは親ポリシー ファイルで定義済みの技術プロファイルの識別子。 |
+| ReferenceId | はい | ポリシー ファイルまたは親ポリシー ファイルで定義済みの技術プロファイルの識別子。 |
 
 ###  <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
@@ -253,7 +253,7 @@ ms.locfileid: "51566535"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ClaimType | [はい] | ポリシー ファイルの ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
+| ClaimType | はい | ポリシー ファイルの ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
 
 ### <a name="includetechnicalprofile"></a>IncludeTechnicalProfile
 
@@ -261,7 +261,7 @@ ms.locfileid: "51566535"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ReferenceId | [はい] | ポリシー ファイルまたは親ポリシー ファイルで定義済みの技術プロファイルの識別子。 |
+| ReferenceId | はい | ポリシー ファイルまたは親ポリシー ファイルで定義済みの技術プロファイルの識別子。 |
 
 ### <a name="usetechnicalprofileforsessionmanagement"></a>UseTechnicalProfileForSessionManagement
 
@@ -269,18 +269,18 @@ ms.locfileid: "51566535"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ReferenceId | [はい] | ポリシー ファイルまたは親ポリシー ファイルで定義済みの技術プロファイルの識別子。 |
+| ReferenceId | はい | ポリシー ファイルまたは親ポリシー ファイルで定義済みの技術プロファイルの識別子。 |
 
 ### <a name="enabledforuserjourneys"></a>EnabledForUserJourneys
 ユーザー体験の **ClaimsProviderSelections** は、クレーム プロバイダー選択オプションの一覧とその順序を定義します。 **EnabledForUserJourneys** 要素を使用して、ユーザーが利用できるクレーム プロバイダーをフィルタリングします。 **EnabledForUserJourneys** 要素には、次の値のいずれかが含まれています。
 
 - **Always**、技術プロファイルを実行します。
-- **Never**、技術プロファイルをスキップします。 
-- **OnClaimsExistence**、技術プロファイルで指定された特定の要求が存在する場合にのみ実行します。 
-- **OnItemExistenceInStringCollectionClaim**、 文字列コレクション要求に項目が存在する場合にのみ実行します。 
+- **Never**、技術プロファイルをスキップします。
+- **OnClaimsExistence**、技術プロファイルで指定された特定の要求が存在する場合にのみ実行します。
+- **OnItemExistenceInStringCollectionClaim**、 文字列コレクション要求に項目が存在する場合にのみ実行します。
 - **OnItemAbsenceInStringCollectionClaim**、文字列コレクション要求に項目が存在しない場合にのみ実行します。
 
-**OnClaimsExistence**、**OnItemExistenceInStringCollectionClaim** または **OnItemAbsenceInStringCollectionClaim** を使用して、以下のメタデータを指定する必要があります: **ClaimTypeOnWhichToEnable** は評価される要求の種類を指定します、**ClaimValueOnWhichToEnable** は比較される値を指定します。
+**OnClaimsExistence**、**OnItemExistenceInStringCollectionClaim** または **OnItemAbsenceInStringCollectionClaim** を使用して、以下のメタデータを指定する必要があります。**ClaimTypeOnWhichToEnable** は評価される要求の種類を指定します、**ClaimValueOnWhichToEnable** は比較される値を指定します。
 
 次の技術プロファイルは、**identityProviders** 文字列コレクションに `facebook.com` という値が含まれている場合にのみ実行されます。
 
@@ -289,22 +289,10 @@ ms.locfileid: "51566535"
   <DisplayName>Unlink Facebook</DisplayName>
 ...
     <Metadata>
-        <Item Key="ClaimTypeOnWhichToEnable">identityProviders</Item>
-        <Item Key="ClaimValueOnWhichToEnable">facebook.com</Item>
-    </Metadata>        
+      <Item Key="ClaimTypeOnWhichToEnable">identityProviders</Item>
+      <Item Key="ClaimValueOnWhichToEnable">facebook.com</Item>
+    </Metadata>
 ...
   <EnabledForUserJourneys>OnItemExistenceInStringCollectionClaim</EnabledForUserJourneys>
-</TechnicalProfile>  
+</TechnicalProfile>
 ```
-
-
-
-
-
-
-
-
-
-
-
-

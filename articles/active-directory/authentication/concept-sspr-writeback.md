@@ -1,21 +1,22 @@
 ---
-title: オンプレミスでのパスワード ライトバックと Azure AD SSPR の統合
+title: オンプレミスでのパスワード ライトバックと Azure AD SSPR の統合 - Azure Active Directory
 description: クラウドのパスワードがオンプレミスの AD インフラストラクチャに書き戻されるようにする
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 01/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 3d9d6aef4fafd6013c86fd5d5883222c0f32b34d
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2fcf2ef10cbc8f6f54a65e596ea003a98f410a7b
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319373"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313296"
 ---
 # <a name="what-is-password-writeback"></a>パスワード ライトバックとは
 
@@ -28,21 +29,21 @@ ms.locfileid: "49319373"
 * [パススルー認証](../hybrid/how-to-connect-pta.md)
 
 > [!WARNING]
-> [Azure Access Control Service (ACS) が 2018 年 11 月 7 日に廃止される](../develop/active-directory-acs-migration.md)と、パスワード ライトバックは Azure AD Connect バージョン 1.0.8641.0 以前を使用している顧客には機能しなくなります。 Azure AD Connect バージョン 1.0.8641.0 以前では、その機能に対する ACS に依存しているため、この時点でパスワード ライトバックを許可することはなくなります。
+> [Azure Access Control Service (ACS) が 2018 年 11 月 7 日に廃止される](../develop/active-directory-acs-migration.md)と、パスワード ライトバックは Azure AD Connect バージョン 1.0.8641.0 以前を使用している顧客には機能しなくなります。 Azure AD Connect バージョン 1.0.8641.0 以前では、パスワード ライトバックは ACS に依存しているため、この時点でこの機能を許可することはなくなります。
 >
-> 稼働中に中断しないように、Azure AD Connect の前のバージョンからより新しいバージョンにアップグレードします。「[Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする](../hybrid/how-to-upgrade-previous-version.md)」を参照してください。
+> 稼働中に中断しないように、Azure AD Connect の前のバージョンからより新しいバージョンにアップグレードします。「[Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする](../hybrid/how-to-upgrade-previous-version.md)」の記事を参照してください。
 >
 
 パスワード ライトバックは以下の機能を提供します。
 
 * **オンプレミスの Active Directory パスワード ポリシーの強制**: ユーザーが自分のパスワードをリセットするとき、パスワードがオンプレミスの Active Directory ポリシーに準拠していることを確認してから、そのディレクトリにコミットします。 この確認には、履歴、複雑さ、年齢、パスワード フィルター、ローカル Active Directory で定義された他のパスワード制限のチェックが含まれます。
-* **ゼロ遅延フィードバック**: パスワード ライトバックは同期操作です。 ユーザーのパスワードがポリシーに合わなかった場合や、何らかの理由でリセットまたは変更できなかった場合は、すぐにユーザーに通知します。
+* **ゼロ遅延フィードバック**:  パスワード ライトバックは同期操作です。 ユーザーのパスワードがポリシーに合わなかった場合や、何らかの理由でリセットまたは変更できなかった場合は、すぐにユーザーに通知します。
 * **アクセス パネルと Office 365 からのパスワード変更のサポート**: フェデレーション ユーザーかパスワード ハッシュ同期されたユーザーが有効期限切れ、または有効期限切れでないパスワードを変更すると、これらのパスワードはローカル Active Directory 環境に書き戻されます。
-* **管理者が Azure portal でパスワードをリセットするときのパスワード ライトバックのサポート**: 管理者が [Azure portal](https://portal.azure.com) でユーザーのパスワードをリセットするときに、そのユーザーがフェデレーションまたはパスワード ハッシュ同期されている場合は、パスワードがオンプレミスで書き戻されます。 現在、この機能は Office 管理ポータルではサポートされていません。
+* **管理者が Azure portal でパスワードをリセットするときのパスワード ライトバックのサポート**: 管理者が [Azure portal](https://portal.azure.com) でユーザーのパスワードをリセットするときに、そのユーザーがフェデレーションまたはパスワード ハッシュ同期されている場合は、パスワードがオンプレミスに書き戻されます。 現在、この機能は Office 管理ポータルではサポートされていません。
 * **受信ファイアウォール規則は不要**: パスワード ライトバックは、基盤の通信チャネルとして Azure Service Bus リレーを使います。 すべての通信はポート 443 経由で送信されます。
 
 > [!Note]
-> オンプレミスの Active Directory の保護グループ内に存在するユーザー アカウントをパスワード ライトバックに使用することはできません。 保護グループについて詳しくは、「[Protected Accounts and Groups in Active Directory (Active Directory の保護アカウントとグループ)](https://technet.microsoft.com/library/dn535499.aspx)」をご覧ください。
+> オンプレミスの Active Directory の保護グループ内に存在するユーザー アカウントをパスワード ライトバックに使用することはできません。 オンプレミスの AD の保護グループ内に存在する管理者アカウントは、パスワード ライトバックに使用できます。 保護グループについて詳しくは、「[Protected Accounts and Groups in Active Directory (Active Directory の保護アカウントとグループ)](https://technet.microsoft.com/library/dn535499.aspx)」をご覧ください。
 >
 
 ## <a name="licensing-requirements-for-password-writeback"></a>パスワード ライトバックに必要なライセンス
@@ -58,9 +59,10 @@ ms.locfileid: "49319373"
 * Microsoft 365 E3 または A3
 * Microsoft 365 E5 または A5
 * Microsoft 365 F1
+* Microsoft 365 Business
 
 > [!WARNING]
-> スタンドアロンの Office 365 ライセンス プランは、*パスワード ライトバックをサポートしていません*。この機能を動作させるには、上記プランのいずれかが必要になります。
+> スタンドアロンの Office 365 ライセンス プランでは、"*セルフサービスによるパスワードのリセット/変更/ロック解除 (オンプレミスの書き戻しが可能) をサポートしていません*"。この機能を動作させるには、上記プランのいずれかが必要になります。
 >
 
 ## <a name="how-password-writeback-works"></a>パスワード ライトバックのしくみ
@@ -94,11 +96,11 @@ ms.locfileid: "49319373"
    >
 
 1. パスワード設定操作が失敗した場合、ユーザーにもう一度試すように求めるエラーが表示されます。 次の理由により、操作が失敗することがあります。
-   * サービスがダウンしていた。
-   * 選択したパスワードが組織のポリシーを満たしていなかった。
-   * ローカル Active Directory でユーザーが見つからない。
+    * サービスがダウンしていた。
+    * 選択したパスワードが組織のポリシーを満たしていなかった。
+    * ローカル Active Directory でユーザーが見つからない。
 
-    エラー メッセージはユーザーにガイダンスを提供するので、ユーザーは管理者の介入なしに解決を試みることができます。
+      エラー メッセージはユーザーにガイダンスを提供するので、ユーザーは管理者の介入なしに解決を試みることができます。
 
 ## <a name="password-writeback-security"></a>パスワード ライトバックのセキュリティ
 
@@ -121,9 +123,9 @@ ms.locfileid: "49319373"
 
 ユーザーがパスワードのリセットを送信した後、リセット要求はオンプレミスの環境に届く前に、いくつかの暗号化ステップを通過します。 これらの暗号化ステップにより、サービスの最大限の信頼性とセキュリティが保証されます。 暗号化ステップの説明を次に示します。
 
-* **ステップ 1: 2048 ビット RSA キーによるパスワードの暗号化**: ユーザーが、オンプレミスに書き戻すパスワードを送信すると、送信されたパスワードそのものが 2048 ビット RSA キーを使って暗号化されます。
-* **ステップ 2: AES-GCM によるパッケージ レベルの暗号化**: AES-GCM を使って、パッケージ全体 (パスワードと必要なメタデータ) が暗号化されます。 この暗号化により、ServiceBus チャネルに直接アクセスできる人物による内容の表示または改ざんを防止します。
-* **ステップ 3: すべての通信が TLS/SSL 経由で行われる**: ServiceBus でのすべての通信は、SSL/TLS チャネルで実行されます。 この暗号化により、権限がないサード パーティに対してコンテンツが保護されます。
+* **手順 1:2048 ビット RSA キーによるパスワードの暗号化**: ユーザーが、オンプレミスに書き戻すパスワードを送信すると、送信されたパスワードそのものが 2048 ビット RSA キーを使って暗号化されます。
+* **手順 2:AES-GCM によるパッケージ レベルの暗号化**: AES-GCM を使って、パッケージ全体 (パスワードと必要なメタデータ) が暗号化されます。 この暗号化により、ServiceBus チャネルに直接アクセスできる人物による内容の表示または改ざんを防止します。
+* **手順 3:すべての通信が TLS/SSL 経由で行われる**: ServiceBus でのすべての通信は、SSL/TLS チャネルで実行されます。 この暗号化により、権限がないサード パーティに対してコンテンツが保護されます。
 * **半年ごとの自動キー ロールオーバー**: 半年ごとに、または Azure AD Connect でパスワード ライトバックが無効化されて再び有効化されるたびに、すべてのキーがロールオーバーされ、最大限のサービスのセキュリティと安全性が確保されます。
 
 ### <a name="password-writeback-bandwidth-usage"></a>パスワード ライトバックの帯域幅の使用
@@ -169,4 +171,4 @@ ms.locfileid: "49319373"
 
 ## <a name="next-steps"></a>次の手順
 
-チュートリアル: 「[Enabling password writeback (パスワード ライトバックの有効化)](tutorial-enable-writeback.md)」を使用してパスワード ライトバックを有効にする
+チュートリアルの「[パスワード ライトバックを有効にする](tutorial-enable-writeback.md)」を使用して、パスワード ライトバックを有効にする

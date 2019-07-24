@@ -1,11 +1,11 @@
 ---
-title: ロード バランサーの TCP アイドル タイムアウトの構成 | Microsoft Docs
+title: Azure でロード バランサーの TCP アイドル タイムアウトを構成する
+titlesuffix: Azure Load Balancer
 description: ロード バランサーの TCP アイドル タイムアウトの構成
 services: load-balancer
 documentationcenter: na
 author: kumudd
-manager: timlt
-ms.assetid: 4625c6a8-5725-47ce-81db-4fa3bd055891
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: f19ac77f7c7f7d4ab8909d628f9dcce08c07c928
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c57eec4d739da13d98099a6b2f01fbf0ad0051c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23020907"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857540"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Azure Load Balancer の TCP アイドル タイムアウト設定を構成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "23020907"
 
 既定の構成では、Azure Load Balancer はアイドル タイムアウトが 4 分に設定されています。 アイドル時間がタイムアウト値よりも長い場合、クライアントとクラウド サービス間の TCP または HTTP セッションが維持されるという保証はありません。
 
-接続が解除されると、"基になる接続が閉じられました: 維持される必要があった接続が、サーバーによって切断されました" というエラー メッセージがクライアント アプリケーションに表示されます。
+接続が閉じられると、クライアント アプリケーションは、次のエラー メッセージを受信する場合があります。"基になる接続が閉じられました: 維持される必要があった接続が、サーバーによって切断されました。"
 
 一般的な方法として、TCP keep-alive を使用します。 この方法を使用すると、接続が長時間アクティブ状態に維持されます。 詳細については、こちらの [.NET の例](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx)をご覧ください。 keep-alive を有効にすると、接続のアイドル時間にパケットが送信されます。 これらの keep-alive パケットにより、アイドル タイムアウト値に達することがなくなり、接続を長時間維持できるようになります。
 
@@ -76,7 +76,7 @@ Get-AzureVM -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn
 
 ## <a name="set-the-tcp-timeout-on-a-load-balanced-endpoint-set"></a>負荷分散エンドポイント セットでの TCP タイムアウトを設定する
 
-エンドポイントが負荷分散エンドポイント セットの一部である場合、その負荷分散エンドポイント セットで TCP タイムアウトを設定する必要があります。 For example:
+エンドポイントが負荷分散エンドポイント セットの一部である場合、その負荷分散エンドポイント セットで TCP タイムアウトを設定する必要があります。 例: 
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Protocol tcp -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 -IdleTimeoutInMinutes 15
@@ -115,14 +115,14 @@ Azure SDK を使用してクラウド サービスを更新できます。 ク�
 
 TCP アイドルのタイムアウトは、サービス管理 API を使って構成できます。 `x-ms-version` ヘッダーが、`2014-06-01` 以降のバージョンに設定されていることを確認します。 デプロイされているすべての仮想マシンで、指定した負荷分散入力エンドポイントの構成をアップデートします。
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 
     POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 
 ```xml
-<LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+<LoadBalancedEndpointList xmlns="http://schemas.microsoft.com/windowsazure" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
     <InputEndpoint>
     <LoadBalancedEndpointSetName>endpoint-set-name</LoadBalancedEndpointSetName>
     <LocalPort>local-port-number</LocalPort>
@@ -152,7 +152,7 @@ TCP アイドルのタイムアウトは、サービス管理 API を使って�
 </LoadBalancedEndpointList>
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [内部ロード バランサーの概要](load-balancer-internal-overview.md)
 

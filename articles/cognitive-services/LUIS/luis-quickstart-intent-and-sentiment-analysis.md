@@ -1,66 +1,75 @@
 ---
-title: 'チュートリアル 9: LUIS でのポジティブ、ネガティブ、およびニュートラルを含む感情分析'
+title: センチメント分析
 titleSuffix: Azure Cognitive Services
-description: このチュートリアルでは、ポジティブ、ネガティブ、およびニュートラルな感情を発話から抽出する方法を示すアプリを作成します。 感情は発話全体から決定されます。
+description: このチュートリアルでは、ポジティブ、ネガティブ、およびニュートラルな感情を発話から取得する方法を示すアプリを作成します。 感情は発話全体から決定されます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 95d1c4ffe76cf4c652f347014a838f1250c0ca15
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 0e61f6a914c33842f4f42b2e1e4206b370a11dd4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277479"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099037"
 ---
-# <a name="tutorial-9--extract-sentiment-of-overall-utterance"></a>チュートリアル 9: 発話全体から感情を抽出する
-このチュートリアルでは、ポジティブ、ネガティブ、およびニュートラルな感情を発話から抽出する方法を示すアプリを作成します。 感情は発話全体から決定されます。
+# <a name="tutorial--get-sentiment-of-utterance"></a>チュートリアル:発話の感情を取得する
 
-感情分析は、ユーザーの発話がポジティブ、ネガティブ、またはニュートラルかを判断する機能です。 
+このチュートリアルでは、ポジティブ、ネガティブ、およびニュートラルな感情を発話から判定する方法を示すアプリを作成します。 感情は発話全体から決定されます。
+
+**このチュートリアルで学習する内容は次のとおりです。**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * 新しいアプリの作成
+> * 感情分析を発行設定として追加する
+> * アプリのトレーニング
+> * アプリの発行
+> * 発話の感情をエンドポイントから取得する
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="sentiment-analysis-is-a-publish-setting"></a>感情分析は発行設定
 
 以下の発話は、感情の例を示しています。
 
 |センチメント|Score|発話|
 |:--|:--|:--|
 |ポジティブ|0.91 |John W. Smith はパリのプレゼンテーションで大活躍だった。|
-|ポジティブ|0.84 |jill-jones@mycompany.com は Parker への売り込みですばらしい働きをした。|
+|ポジティブ|0.84 |シアトルのエンジニアは Parker への売り込みですばらしい働きをした。|
 
-感情分析は、どの発話にも適用される発行設定です。 発話の中にセンチメントを表す単語を見つけて、ラベル付けする必要はありません。発話全体にセンチメント分析が適用されるためです。 
+感情分析は、どの発話にも適用される発行設定です。 発話の中に感情を示す単語を見つけてマークする必要はありません。 
 
 それは発行設定であるため、意図またはエンティティのページでは確認できません。 [対話型テスト](luis-interactive-test.md#view-sentiment-results)のウィンドウで、またはエンドポイント URL のテスト時に確認できます。 
 
-**このチュートリアルで学習する内容は次のとおりです。**
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * 既存のチュートリアル アプリを使用する 
-> * 感情分析を発行設定として追加する
-> * トレーニング
-> * [発行]
-> * 発話の感情をエンドポイントから取得する
+## <a name="create-a-new-app"></a>新しいアプリの作成
 
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
 
-## <a name="use-existing-app"></a>既存のアプリを使用する
+## <a name="add-personname-prebuilt-entity"></a>事前構築済みエンティティ PersonName を追加する 
 
-最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
 
-以前のチュートリアルの HumanResources アプリがない場合は、次の手順を使用します。
+1. 左側のナビゲーション メニューの **[Entities]\(エンティティ\)** を選択します。
 
-1.  [アプリの JSON ファイル](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-keyphrase-HumanResources.json)をダウンロードして保存します。
+1. **[Add prebuilt entity]\(作成済みエンティティの追加\)** ボタンを選択します。
 
-2. JSON を新しいアプリにインポートします。
+1. 事前構築済みエンティティの一覧から 次のエンティティを選択し、**[完了]** を選択します。
 
-3. **[管理]** セクションの **[バージョン]** タブで、バージョンを複製し、それに `sentiment` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 バージョン名は URL ルートの一部として使用されるため、URL 内で有効ではない文字を名前に含めることはできません。
+   * **[PersonName](luis-reference-prebuilt-person.md)** 
 
-## <a name="employeefeedback-intent"></a>EmployeeFeedback 意図 
+     ![[number] が選択されている事前構築済みエンティティ ダイアログのスクリーンショット](./media/luis-quickstart-intent-and-sentiment-analysis/add-personname-prebuilt-entity.png)
+
+## <a name="create-an-intent-to-determine-employee-feedback"></a>意図を作成して従業員のフィードバックを判定する
+
 新しい意図を追加して、会社のメンバーから従業員のフィードバックをキャプチャします。 
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. **[Create new intent]\(意図の新規作成\)** を選択します。
 
@@ -70,122 +79,66 @@ ms.locfileid: "51277479"
 
 4. 良い仕事をした従業員や改善が必要な領域を示す発話をいくつか追加します。
 
-    この人事アプリでは、従業員がリスト エンティティ `Employee` で、名前、メール、電話の内線番号、携帯電話番号、および米国連邦政府の社会保障番号によって定義されていることに注意してください。 
-
     |発話|
     |--|
-    |425-555-1212 は産休から復帰した同僚を迎えるときに良い仕事をした|
-    |234-56-7891 は、悲しみにくれている同僚を上手く慰めた。|
-    |jill-jones@mycompany.com は、事務処理に必要な請求書の一部を用意できていなかった。|
-    |john.w.smith@mycompany.com は、必要なフォームの提出が 1 か月遅れたうえ、そのフォームには署名がなかった|
-    |x23456 は、重要なマーケティング オフサイト ミーティングに参加しなかった。|
-    |x12345 は、6 月レビュー会議に出席しなかった。|
-    |Jill Jones はハーバードでの売り込みを上手くこなした|
-    |John W. Smith はスタンフォードのプレゼンテーションで大活躍だった|
+    |John Smith は産休から復帰した同僚がスムーズに仕事に復帰できるよう協力しました。|
+    |Jill Jones は、悲しみにくれている同僚を上手く慰めました。|
+    |Bob Barnes は、事務処理に必要な請求書の一部を用意できていませんでした。|
+    |Todd Thomas は、必要なフォームの提出が 1 か月遅れたうえ、そのフォームには署名がありませんでした。|
+    |Katherine Kelly は、重要なマーケティング オフサイト ミーティングに参加しませんでした。|
+    |Denise Dillard は、6 月レビュー会議に出席しませんでした。|
+    |Mark Mathews はハーバードでの売り込みを上手くこなしました。|
+    |Walter Williams はスタンフォードのプレゼンテーションで大活躍でした。|
 
-    [ ![EmployeeFeedback 意図の発話の例が示された LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
+    [![EmployeeFeedback 意図の発話の例が示された LUIS アプリのスクリーンショット](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
-## <a name="train"></a>トレーニング
+## <a name="add-example-utterances-to-the-none-intent"></a>発話の例を None 意図に追加する 
+
+[!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
+
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>意図への変更をテストできるようにアプリをトレーニングする 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="configure-app-to-include-sentiment-analysis"></a>感情分析を含むアプリを構成する
+
 1. 右上のナビゲーションで **[管理]** を選択し、左側のメニューから **[Publish settings]\(発行設定\)** を選択します。
 
-2. **[Sentiment Analysis]\(感情分析\)** を切り替えてこの設定を有効にします。 
+1. **[感情分析]** を選択して、この設定を有効にします。 
 
-    ![](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
+    ![感情分析を発行設定として有効にする](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
-## <a name="publish"></a>[発行]
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>トレーニング済みのモデルがエンドポイントからクエリ可能になるようにアプリを発行する
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-sentiment-of-utterance-from-endpoint"></a>発話の感情をエンドポイントから取得する
+## <a name="get-the-sentiment-of-an-utterance-from-the-endpoint"></a>エンドポイントから発話の感情を取得する
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. アドレスの URL の末尾に移動し、「`Jill Jones work with the media team on the public portal was amazing`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、感情分析が抽出された `EmployeeFeedback` 意図を返す必要があります。
+1. アドレスの URL の末尾に移動し、「`Jill Jones work with the media team on the public portal was amazing`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、感情分析が抽出された `EmployeeFeedback` 意図を返す必要があります。
     
-    ```JSON
+    ```json
     {
       "query": "Jill Jones work with the media team on the public portal was amazing",
       "topScoringIntent": {
         "intent": "EmployeeFeedback",
-        "score": 0.4983256
+        "score": 0.9616192
       },
       "intents": [
         {
           "intent": "EmployeeFeedback",
-          "score": 0.4983256
-        },
-        {
-          "intent": "MoveEmployee",
-          "score": 0.06617523
-        },
-        {
-          "intent": "GetJobInformation",
-          "score": 0.04631853
-        },
-        {
-          "intent": "ApplyForJob",
-          "score": 0.0103248553
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.007531875
-        },
-        {
-          "intent": "FindForm",
-          "score": 0.00344597152
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.00337914471
-        },
-        {
-          "intent": "Utilities.Cancel",
-          "score": 0.0026357458
+          "score": 0.9616192
         },
         {
           "intent": "None",
-          "score": 0.00214573368
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.00157622492
-        },
-        {
-          "intent": "Utilities.Confirm",
-          "score": 7.379545E-05
+          "score": 0.09347677
         }
       ],
       "entities": [
         {
           "entity": "jill jones",
-          "type": "Employee",
-          "startIndex": 0,
-          "endIndex": 9,
-          "resolution": {
-            "values": [
-              "Employee-45612"
-            ]
-          }
-        },
-        {
-          "entity": "media team",
-          "type": "builtin.keyPhrase",
-          "startIndex": 25,
-          "endIndex": 34
-        },
-        {
-          "entity": "public portal",
-          "type": "builtin.keyPhrase",
-          "startIndex": 43,
-          "endIndex": 55
-        },
-        {
-          "entity": "jill jones",
-          "type": "builtin.keyPhrase",
+          "type": "builtin.personName",
           "startIndex": 0,
           "endIndex": 9
         }
@@ -197,11 +150,19 @@ ms.locfileid: "51277479"
     }
     ```
 
-    sentimentAnalysis はポジティブで、スコアは 0.86 です。 
+    sentimentAnalysis はポジティブで、スコアは 86% です。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+
+## <a name="related-information"></a>関連情報
+
+* 感情分析は、Cognitive Service の [Text Analytics](../Text-Analytics/index.yml) によって提供されます。 この機能は、Text Analytics の[サポートされる言語](luis-language-support.md##languages-supported)に制限されています。
+* 「[How to train (トレーニング方法)](luis-how-to-train.md)」
+* [発行方法](luis-how-to-publish-app.md)
+* [LUIS ポータルでのテスト方法](luis-interactive-test.md)
+
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、感情分析を発行設定として追加し、発話全体から感情値を抽出します。

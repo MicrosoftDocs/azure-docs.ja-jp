@@ -4,25 +4,26 @@ description: 条件付きアクセス ポリシーを構成するときに知っ
 services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
-author: MarkusVi
-manager: mtillman
+author: MicrosoftGuyJFlo
+manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/23/2018
-ms.author: markvi
+ms.date: 01/25/2019
+ms.author: joflore
 ms.reviewer: calebb
-ms.openlocfilehash: 4e9f5a9318db813b1a0f16d3599f74fd98e53ffc
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 11d4d319fa31dd2493810dc7293d415554f79d94
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818059"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571122"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスのベスト プラクティス
 
@@ -45,16 +46,34 @@ ms.locfileid: "42818059"
 ポリシーを機能させるには、以下を構成する必要があります。
 
 
-|対象           | 方法                                  | 理由|
-|:--            | :--                                  | :-- |
-|**クラウド アプリ** |1 つまたは複数のアプリを選択する必要があります。  | 条件付きアクセス ポリシーの目的は、許可されたユーザーによるクラウド アプリへのアクセス方法を、ご自身で制御できるようにすることです。|
-| **ユーザーとグループ** | 選択したクラウド アプリにアクセスする権限が付与されたユーザーまたはグループを、少なくとも 1 つ選択する必要があります。 | ユーザーとグループが割り当てられていない条件付きアクセス ポリシーは、トリガーされることはありません。 |
-| **アクセスの制御** | アクセスの制御を少なくとも 1 つ選択する必要があります。 | 条件が満たされた場合のポリシー プロセッサの対応を決める必要があります。|
+| 対象           | 方法                                  | 理由 |
+| :--            | :--                                  | :-- |
+| **クラウド アプリ** |1 つまたは複数のアプリを選択します。  | 条件付きアクセス ポリシーの目的は、許可されたユーザーによるクラウド アプリへのアクセス方法を、ご自身で制御できるようにすることです。|
+| **ユーザーとグループ** | 選択したクラウド アプリにアクセスする権限が付与されたユーザーまたはグループを、少なくとも 1 つ選択します。 | ユーザーとグループが割り当てられていない条件付きアクセス ポリシーは、トリガーされることはありません。 |
+| **アクセス制御** | アクセスの制御を少なくとも 1 つ選択します。 | 条件が満たされた場合のポリシー プロセッサの対応を決める必要があります。 |
 
 
 
 
 ## <a name="what-you-should-know"></a>知っておくべきこと
+
+
+
+### <a name="how-are-conditional-access-policies-applied"></a>条件付きアクセス ポリシーはどのように適用されますか
+
+クラウド アプリにアクセスするときに、1 つ以上の条件付きアクセス ポリシーが適用される場合があります。 この場合、適用されるすべてのポリシーを満たす必要があります。 たとえば、あるポリシーで MFA が要求されていて、別のポリシーで準拠するデバイスが要求されている場合は、MFA を経由し、準拠しているデバイスを使用する必要があります。 
+
+すべてのポリシーは 2 つのフェーズで適用されます。
+
+- **第 1** のフェーズでは、すべてのポリシーが評価され、満たされていないすべてのアクセス制御が収集されます。 
+
+- **第 2** のフェーズでは、満たしていない要件を満たすように求められます。 いずれかのポリシーでアクセスがブロックされる場合、ユーザーはブロックされて、他のポリシー制御を満たすよう求めるメッセージは表示されません。 いずれのポリシーによってもブロックされない場合は、次の順序で他のポリシー制御を満たすように求められます。
+
+    ![順序](./media/best-practices/06.png)
+    
+    外部の MFA プロバイダーが最初で、次が使用条件です。
+
+
 
 ### <a name="how-are-assignments-evaluated"></a>割り当てはどのように評価されますか。
 
@@ -70,7 +89,7 @@ ms.locfileid: "42818059"
 
 条件付きアクセス ポリシーの設定が正しくないため Azure AD ポータルからロックアウトされた場合は、次の操作を行います。
 
-- まだブロックされていない管理者が組織にいないかどうかを確認します。 Azure Portal へのアクセス権を持つ管理者であれば、ご自身のサインインに影響するポリシーを無効にできます。 
+- まだブロックされていない管理者が組織にいるかどうかが確認されます。 Azure Portal へのアクセス権を持つ管理者であれば、ご自身のサインインに影響するポリシーを無効にできます。 
 
 - ポリシーを更新できる管理者が組織にいない場合は、サポート要求を送信する必要があります。 Microsoft サポートが、アクセスを妨げている条件付きアクセス ポリシーを確認して、更新できます。
 
@@ -90,8 +109,15 @@ Azure Active Directory によって両方のポリシーが適用されます。
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>条件付きアクセスは、Exchange ActiveSync と連携しますか。
 
-はい。条件付きアクセス ポリシーで Exchange ActiveSync を使用できます。
+はい。いくつかの[制限](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/conditional-access-for-exo-and-spo#exchange-activesync)が付いている条件付きアクセス ポリシーで Exchange ActiveSync を使用できます。 
 
+### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Office 365 アプリでは条件付きアクセスをどのように構成すればよいですか。
+
+Office 365 のアプリは相互接続されているため、ポリシーを作成する際は、よく使うアプリを一緒に割り当てることをお勧めします。
+
+相互接続される一般的なアプリケーションとしては、Microsoft Flow、Microsoft Planner、Microsoft Teams、Office 365 Exchange Online、Office 365 SharePoint Online、Office 365 Yammer などがあります。
+
+このことは、多要素認証など、ユーザーとのやり取りを必要とするポリシーで、セッションまたはタスクの開始時にアクセスを制御する際に重要となります。 そのようにしなかった場合、ユーザーがアプリ内で一部のタスクを実行できなくなります。 たとえば、アンマネージド デバイスで SharePoint にアクセスする際にのみ多要素認証を要求し、メールにアクセスする際には要求しなかった場合、メールで作業しているユーザーが、SharePoint ファイルをメッセージに添付できなくなります。 詳細については、「[Azure Active Directory 条件付きアクセスのサービス依存関係の概要](service-dependencies.md)」の記事を参照してください。
 
 
 
@@ -112,6 +138,7 @@ Azure Active Directory によって両方のポリシーが適用されます。
 
 - **ドメインへの参加が必要** - このポリシーでは、ドメイン参加済みデバイスをまだ持っていない場合に、組織内のすべてのユーザーのアクセスがブロックされる可能性もあります。
 
+- **アプリの保護ポリシーが必要** - このポリシーでは、Intune ポリシーがない場合に、組織内のすべてのユーザーのアクセスがブロックされる可能性もあります。 Intune のアプリの保護ポリシーがあるクライアント アプリケーションを使用していない管理者は、Intune や Azure などのポータルに戻ることが、このポリシーによってブロックされます。
 
 **すべてのユーザー、すべてのクラウド アプリ、すべてのデバイス プラットフォームに対して:**
 
@@ -122,13 +149,13 @@ Azure Active Directory によって両方のポリシーが適用されます。
 
 最初に、[what if ツール](what-if-tool.md)を使用してポリシーを評価します。
 
-新しいポリシーをご利用環境に展開する準備ができたら、段階的に展開します。
+新しいポリシーを環境で使用する準備が整ったら、段階的に展開します。
 
 1. 少数のユーザーにポリシーを適用し、想定どおりに動作することを確認します。 
 
-2.  より多くのユーザーが含まれるようにポリシーを拡げます。このとき、管理者は引き続きそのポリシーから除外します。 これにより、変更が必要になった場合に、管理者がポリシーにアクセスして更新することができます。
+2.  ポリシーを拡張して、含めるユーザーを増やすとき。 続けてすべての管理者をポリシーから除外し、管理者がまだアクセスできて、変更が必要な場合にポリシーを更新できることを確認します。
 
-3. 本当に必要な場合にのみ、すべてのユーザーにポリシーを適用します。 
+3. 必要な場合にのみ、すべてのユーザーにポリシーを適用します。 
 
 ベスト プラクティスとして、次のようなユーザー アカウントを作成します。
 
@@ -154,4 +181,7 @@ Azure Active Directory によって両方のポリシーが適用されます。
 
 ## <a name="next-steps"></a>次の手順
 
-条件付きアクセス ポリシーの構成方法を把握するには、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」を参照してください。
+次のことが知りたい場合:
+
+- 条件付きアクセス ポリシーの構成方法については、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」をご覧ください。
+- 条件付きアクセス ポリシーの計画方法については、「[方法:Azure Active Directory の条件付きアクセスの展開を計画する](plan-conditional-access.md)」をご覧ください。

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 3df96451838fe90b7d45d1aedd272fc10d798e57
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: b99132cceb8981a93a8f1c10ccc488d5806f7254
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883977"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59050979"
 ---
-# <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>チュートリアル: Front Door カスタム ドメインで HTTPS を構成する
+# <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>チュートリアル:Front Door カスタム ドメインで HTTPS を構成する
 
 このチュートリアルでは、フロントエンド ホスト セクションで Front Door に関連付けられたカスタム ドメインの HTTPS プロトコルを有効にする方法について説明します。 カスタム ドメイン (例: https:\//www.contoso.com) で HTTPS プロトコルを使用すると、インターネット経由での送信時、機微なデータが TLS/SSL 暗号化でセキュリティ保護されて配信されます。 Web ブラウザーが HTTPS 経由で Web サイトに接続しているときに、Web サイトのセキュリティ証明書を検証し、正当な証明機関によって発行されていることを確認します。 このプロセスによりセキュリティを確保し、Web アプリケーションを攻撃から保護します。
 
@@ -29,9 +29,9 @@ Azure Front Door Service では、既定で、Front Door の既定のホスト�
 
 - 追加コストなし: 証明書の取得または更新のコストや、HTTPS トラフィックの追加コストは発生しません。 
 
-- シンプルな有効化: [Azure Portal](https://portal.azure.com) からワン クリックのプロビジョニングを利用できます。 REST API やその他の開発者ツールを使用して機能を有効にすることもできます。
+- シンプルな有効化: [Azure portal](https://portal.azure.com) からワン クリックのプロビジョニングを利用できます。 REST API やその他の開発者ツールを使用して機能を有効にすることもできます。
 
-- 証明書の完全な管理が使用可能です。すべての証明書の調達と管理がユーザーに代わって実施されます。 証明書は自動的にプロビジョニングされ、有効期限になる前に更新されます。これにより、証明書の期限切れによりサービスが中断されるリスクがなくなります。
+- 証明書の完全な管理: すべての証明書の調達と管理がユーザーに代わって実施されます。 証明書は自動的にプロビジョニングされ、有効期限になる前に更新されます。これにより、証明書の期限切れによりサービスが中断されるリスクがなくなります。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -41,9 +41,12 @@ Azure Front Door Service では、既定で、Front Door の既定のホスト�
 > - ドメインを検証する
 > - カスタム ドメインで HTTPS プロトコルを無効にする
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルの手順を完了するには、最初に Front Door と、オンボードされる 1 つ以上のカスタム ドメインを作成する必要があります。 詳細については、「[Tutorial: Add a custom domain to your Front Door](front-door-custom-domain.md)」 (チュートリアル: カスタム ドメインを Front Door に追加する) を参照してください。
+このチュートリアルの手順を完了するには、最初に Front Door と、オンボードされる 1 つ以上のカスタム ドメインを作成する必要があります。 詳細については、[チュートリアル: Front Door にカスタム ドメインを追加する](front-door-custom-domain.md)」を参照してください。
 
 ## <a name="ssl-certificates"></a>SSL 証明書の数
 
@@ -67,7 +70,7 @@ Azure Front Door Service で管理された証明書を使用する場合、HTTP
 5. [ドメインの検証](#validate-the-domain)に進みます。
 
 
-### <a name="option-2-use-your-own-certificate"></a>オプション 2: 独自の証明書を使用する
+### <a name="option-2-use-your-own-certificate"></a>オプション 2:独自の証明書を使用する
 
 独自の証明書を使用して、HTTPS 機能を有効にできます。 このプロセスは、Azure Key Vault との統合を通じて行われます。これにより、お使いの証明書を安全に格納できます。 Azure Front Door Service では、お使いの証明書の取得に、セキュリティで保護されたこのメカニズムが使用されます。それには、追加の手順がいくつか必要です。 SSL 証明書を作成するときには、許可された証明書機関 (CA) を使用して作成する必要があります。 許可されていない CA を使用すると、要求が拒否されます。 許可された CA のリストについては、「[Azure Front Door Service でカスタム HTTPS を有効にするために許可された認証機関](front-door-troubleshoot-allowed-ca.md)」を参照してください。
 
@@ -86,11 +89,11 @@ Azure Front Door Service で管理された証明書を使用する場合、HTTP
 
 PowerShell を使用して、Azure Active Directory にアプリとして Azure Front Door Service 用のサービス プリンシパルを登録します。
 
-1. 必要があれば、PowerShell でローカル マシンに [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM/6.0.0) をインストールします。
+1. 必要があれば、PowerShell でローカル マシンに [Azure PowerShell](/powershell/azure/install-az-ps) をインストールします。
 
 2. PowerShell で次のコマンドを実行します。
 
-     `New-AzureRmADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
+     `New-AzADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
 
 #### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>キー コンテナーへの Azure Front Door Service のアクセス権を付与する
  
@@ -139,11 +142,11 @@ CNAME レコードでカスタム エンドポイントにマップされた使�
 
 CNAME レコードは、次の形式にする必要があります。ここで *Name* はカスタム ドメイン名で、*Value* は Front Door の既定の .azurefd.net ホスト名です。
 
-| Name            | type  | 値                 |
+| Name            | Type  | 値                 |
 |-----------------|-------|-----------------------|
-| www.contoso.com | CNAME | contoso.azurefd.net |
+| <www.contoso.com> | CNAME | contoso.azurefd.net |
 
-CNAME レコードの詳細については、[CNAME DNS レコードの作成](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain#create-the-cname-dns-records)に関するセクションを参照してください。
+CNAME レコードの詳細については、[CNAME DNS レコードの作成](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain)に関するセクションを参照してください。
 
 CNAME レコードが正しい形式である場合、DigiCert は自動的にそのカスタム ドメイン名を検証し、ご利用のドメイン名に使用する専用の証明書を作成します。 DigiCert から検証電子メールが送信されないため、要求を承認する必要はありません。 この証明書は 1 年間有効で、有効期限が切れる前に自動更新されます。 「[伝達を待機する](#wait-for-propagation)」に進んでください。 
 

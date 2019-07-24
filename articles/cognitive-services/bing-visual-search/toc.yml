@@ -5,46 +5,49 @@ items:
   items:
   - name: Bing Visual Search API とは
     href: overview.md
-- name: REST API のクイック スタート
+  - name: Bing Search API を比較する
+    href: ../Bing-Web-Search/bing-api-comparison.md
+    maintainContext: true
+- name: クイック スタート
   items:
-  - name: C# での最初のクエリ
-    href: quickstarts/csharp.md
-  - name: Java での最初のクエリ
-    href: quickstarts/java.md
-  - name: Node.js での最初のクエリ
-    href: quickstarts/nodejs.md
-  - name: Python での最初のクエリ
-    href: quickstarts/python.md
-  expanded: true
-- name: SDK
-  items:
-  - name: SDK のサンプルの概要
-    href: sdk.md
-  - name: C# での SDK
-    href: visual-search-sdk-c-sharp.md
-  - name: Node での SDK
-    href: visual-search-sdk-node.md
-  - name: Python での SDK
-    href: visual-search-sdk-python.md
-  expanded: true
+  - name: REST API
+    items:
+    - name: C# の使用
+      href: quickstarts/csharp.md
+    - name: Java の使用
+      href: quickstarts/java.md
+    - name: Node.js の使用
+      href: quickstarts/nodejs.md
+    - name: Python の使用
+      href: quickstarts/python.md
+    - name: Ruby の使用
+      href: quickstarts/ruby.md
+    - name: Go の使用
+      href: quickstarts/go.md
+    expanded: true
+  - name: SDK
+    items:
+    - name: C# の使用
+      href: visual-search-sdk-c-sharp.md
+    - name: Node.js の使用
+      href: visual-search-sdk-node.md
+    - name: Python の使用
+      href: visual-search-sdk-python.md
+    expanded: true
 - name: チュートリアル
   items:
-  - name: 画像アップロード Web アプリ
+  - name: 画像のアップロード
     href: tutorial-visual-search-image-upload.md
-  - name: 単一ページの Web アプリ
-    href: tutorial-bing-visual-search-single-page-app.md
-  - name: 単一ページの Web アプリ (ソース コード)
-    href: tutorial-bing-visual-search-single-page-app-source.md
-  - name: Bing Visual Search SDK の画像トリミング範囲と結果
+  - name: 画像の領域のトリミングと検索
     href: tutorial-visual-search-crop-area-results.md
-  - name: Bing Visual Search SDK の ImageInsightsToken と結果
-    href: tutorial-visual-search-insights-token.md
 - name: サンプル
   items:
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Visual+Search
 - name: 概念
   items:
+  - name: クエリの送信
+    href: concepts/sending-queries.md
   - name: 画像の既定の分析情報
     href: default-insights-tag.md
   - name: Bing の分析情報の使用
@@ -55,15 +58,27 @@ items:
   items:
   - name: トークンを使用した分析情報の取得
     href: use-insights-token.md
-  - name: 使用と表示結果
-    href: use-and-display-requirements.md
   - name: サムネイルのサイズ変更とトリミング
     href: resize-and-crop-thumbnails.md
+  - name: 画像の分析情報トークンを使用して画像を検索する
+    href: tutorial-visual-search-insights-token.md
+  - name: 単一ページの Web アプリを作成する
+    href: tutorial-bing-visual-search-single-page-app.md
 - name: リファレンス
   items:
   - name: REST v7 API
     href: https://aka.ms/bingvisualsearchreferencedoc
-  expanded: true
+  - name: SDK
+    items:
+    - name: .NET
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-dotnet
+    - name: Java
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/visualsearch?view=azure-java-stable
+    - name: Python
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python
+  - name: 使用と表示の要件
+    href: ../Bing-Web-Search/use-display-requirements.md
+    maintainContext: true
 - name: リソース
   items:
   - name: 言語とリージョンのサポート
@@ -76,9 +91,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/bing-search
   - name: ユーザーの声
     href: https://cognitive.uservoice.com/forums/555907-bing-search
-ms.openlocfilehash: f33e0fe7c13a7686c244d10297fd23e7ca59d452
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 13e61130d7cd1225b00251991540a963c61b0b83
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432428"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314893"

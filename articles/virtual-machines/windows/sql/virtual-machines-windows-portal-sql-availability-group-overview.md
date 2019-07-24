@@ -3,7 +3,7 @@ title: SQL Server 可用性グループ - Azure Virtual Machines - 概要 | Micr
 description: この記事では、Azure Virtual Machines での SQL Server 可用性グループについて説明します。
 services: virtual-machines
 documentationCenter: na
-authors: MikeRayMSFT
+author: MikeRayMSFT
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
-ms.openlocfilehash: 2c0c8b49d3f7122b71a08bc57ac615ba9e0c0108
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b9977965dc076ec36aa90680a1732b6640b1e41a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239442"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861844"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Azure Virtual Machines での SQL Server Always On 可用性グループの概要 #
 
@@ -34,13 +34,35 @@ Azure Virtual Machines での Always On 可用性グループは、オンプレ�
 
 Azure Virtual Machines での可用性グループの重要な違いは、Azure Virtual Machines には[ロード バランサー](../../../load-balancer/load-balancer-overview.md)が必要なことです。 ロード バランサーは、可用性グループ リスナーの IP アドレスを保持しています。 複数の可用性グループがある場合は、グループごとにリスナーが必要です。 1 つのロード バランサーで複数のリスナーをサポートできます。
 
+さらに、Azure IaaS VM ゲスト フェールオーバー クラスターでは、サーバー (クラスター ノード) ごとに 1 つの NIC、および 1 つのサブネットを使用することをお勧めします。 Azure ネットワークは物理的な冗長性を備えているので、Azure IaaS VM ゲスト クラスターで NIC とサブネットを追加する必要はありません。 クラスター検証レポートでは、1 つのネットワークでしかノードに到達できないという警告が出ますが、Azure IaaS VM ゲスト フェールオーバー クラスターではこの警告を無視しても安全です。 
+
+|  | Windows Server のバージョン | SQL Server のバージョン | SQL Server のエディション | WSFC クォーラムの構成 | マルチリージョンの DR | マルチサブネットのサポート | 既存の AD のサポート | マルチゾーン同一リージョンの DR | Dist-AG サポート (AD ドメインなし) | Dist-AG サポート (クラスターなし) |  
+| :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
+| [SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md) | 2016 | 2017 </br>2016   | Ent | クラウド監視 | いいえ  | 可能  | はい | はい | いいえ  | いいえ  |
+| [クイック スタート テンプレート](virtual-machines-windows-sql-availability-group-quickstart-template.md) | 2016 | 2017</br>2016  | Ent | クラウド監視 | いいえ  | 可能  | はい | はい | いいえ  | いいえ  |
+| [Portal テンプレート](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) | 2016 </br>2012 R2 | 2016</br>2014 | Ent | ファイル共有 | いいえ  | いいえ  | いいえ  | いいえ  | いいえ  | いいえ  |
+| [手動](virtual-machines-windows-portal-sql-availability-group-prereq.md) | All | All | All | All | はい | はい | はい | はい | はい | はい |
+| &nbsp; | &nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |
+
 Azure Virtual Machines に SQL Server 可用性グループを作成する準備ができたら、次のチュートリアルをご覧ください。
 
-## <a name="automatically-create-an-availability-group-from-a-template"></a>テンプレートから可用性グループを自動的に作成する
+## <a name="manually-with-azure-cli"></a>Azure CLI を使用して手動で行う
+Azure CLI を使用した可用性グループの構成とデプロイは、単純さとデプロイ速度の観点から最良の方法のため、推奨オプションです。 Azure CLI を使用すると、Windows フェールオーバー クラスターの作成、クラスターへの SQL Server VM の結合、およびリスナーと内部ロード バランサーの作成のすべてを 30 分以内に達成することができます。 このオプションでは、可用性グループの手動作成がまだ必要ですが、その他の必要な構成手順はすべて自動化されています。 
+
+詳細については、「[Use Azure SQL VM CLI to configure Always On availability group for SQL Server on an Azure VM (Azure SQL VM CLI を使用して Azure VM 上で SQL Server のための Always On 可用性グループを構成する)](virtual-machines-windows-sql-availability-group-cli.md)」を参照してください。 
+
+## <a name="automatically-with-azure-quickstart-templates"></a>Azure クイック スタート テンプレートを使用して自動的に行う
+Azure クイック スタート テンプレートは、SQL VM リソース プロバイダーを使用して Windows フェールオーバー クラスターをデプロイし、SQL Server VM をそれに結合し、リスナーを作成し、内部ロード バランサーを構成します。 このオプションでは、可用性グループおよび内部ロード バランサー (ILB) の手動作成がまだ必要ですが、(ILB の構成を含め) 他の必要な構成手順はすべて自動化および簡素化されています。 
+
+詳細については、「[Use Azure Quickstart Template to configure Always On availability group for SQL Server on an Azure VM (Azure クイック スタート テンプレートを使用して Azure VM 上で SQL Server のための Always On 可用性グループを構成する)](virtual-machines-windows-sql-availability-group-quickstart-template.md)」を参照してください。
+
+
+## <a name="automatically-with-an-azure-portal-template"></a>Azure portal テンプレートを使用して自動的に行う
 
 [Azure VM での AlwaysOn 可用性グループの自動構成 - Resource Manager](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 
-## <a name="manually-create-an-availability-group-in-azure-portal"></a>Azure Portal を使って手動で可用性グループを作成する
+
+## <a name="manually-in-azure-portal"></a>Azure portal で自動的に行う
 
 テンプレートを使わずに、自分で仮想マシンを作成することもできます。 最初に、前提条件を満たした後、可用性グループを作成します。 以下のトピックをご覧ください。 
 
@@ -50,4 +72,4 @@ Azure Virtual Machines に SQL Server 可用性グループを作成する準備
 
 ## <a name="next-steps"></a>次の手順
 
-[異なるリージョンの Azure Virtual Machines に SQL Server Always On 可用性グループを構成します](virtual-machines-windows-portal-sql-availability-group-dr.md)。
+[異なるリージョンの Azure Virtual Machines に SQL Server AlwaysOn 可用性グループを構成する](virtual-machines-windows-portal-sql-availability-group-dr.md)

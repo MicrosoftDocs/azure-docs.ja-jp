@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery Deployment Planner による Hyper-V VM から Azure へのディザスター リカバリーについて | Microsoft Docs
 description: Azure Site Recovery Deployment Planner による Hyper-V から Azure へのディザスター リカバリーについて説明します。
-author: nsoneji
+author: mayurigupta13
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/11/2018
-ms.author: nisoneji
-ms.openlocfilehash: ae93611bfe5dd11bea8bc0327868c2865b36b713
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 4/9/2019
+ms.author: mayg
+ms.openlocfilehash: 43431c401f13117af1f60d3affd284fc125be7eb
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210671"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360277"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Azure Site Recovery Deployment Planner による Hyper-V から Azure へのディザスター リカバリー
 
@@ -30,7 +30,7 @@ Azure Site Recovery Deployment Planner は、Hyper-V から Azure へのディ�
 
 * ディスク数、ディスク サイズ、IOPS、変更頻度、いくつかの VM 特性に基づく VM の適格性評価。
 
-**ネットワーク帯域幅ニーズと RPO の評価**
+**ネットワーク帯域幅ニーズ対 RPO の評価**
 
 * 差分レプリケーションに必要な推定ネットワーク帯域幅
 * オンプレミスから Azure への間で Azure Site Recovery が得られるスループット
@@ -51,7 +51,7 @@ Azure Site Recovery Deployment Planner は、Hyper-V から Azure へのディ�
 * VM レプリケーションによって望ましくないダウンタイムが運用アプリケーションに発生することがないよう、初期レプリケーションと差分レプリケーションを成功させるために必要な、Hyper-V ストレージの各ボリューム上の空き記憶域
 * Hyper-V レプリケーションに関して設定される最大コピー頻度
 
-**初期レプリケーションのバッチに関するガイダンス** 
+**初期レプリケーションのバッチ処理に関するガイダンス** 
 * 保護に使用する VM バッチの数
 * 各バッチの VM の一覧
 * 各バッチが保護される順序
@@ -72,10 +72,10 @@ Azure Site Recovery Deployment Planner は、Hyper-V から Azure へのディ�
 
 | | **VMware から Azure** |**Hyper-V から Azure**|**Azure から Azure**|**Hyper-V からセカンダリ サイト**|**VMware からセカンダリ サイト**
 --|--|--|--|--|--
-サポートされるシナリオ |[はい]|[はい]|いいえ |はい*|いいえ 
-サポートされているバージョン | vCenter 6.5、6.0、5.5| Windows Server 2016、Windows Server 2012 R2 | 該当なし |Windows Server 2016、Windows Server 2012 R2|該当なし
-サポートされている構成|vCenter、ESXi| Hyper-V クラスター、Hyper-V ホスト|該当なし|Hyper-V クラスター、Hyper-V ホスト|該当なし|
-Azure Site Recovery Deployment Planner の実行中のインスタンスごとにプロファイルできるサーバーの数 |単一 (単一の vCenter Server または ESXi サーバーに含まれている VM を同時にプロファイル可能)|複数 (複数のホストまたはホスト クラスターにまたがった VM を同時にプロファイル可能)| 該当なし |複数 (複数のホストまたはホスト クラスターにまたがった VM を同時にプロファイル可能)| 該当なし
+サポートされるシナリオ |はい|はい|いいえ |はい*|いいえ 
+サポートされているバージョン | vCenter 6.5、6.0、5.5| Windows Server 2016、Windows Server 2012 R2 | NA |Windows Server 2016、Windows Server 2012 R2|NA
+サポートされている構成|vCenter、ESXi| Hyper-V クラスター、Hyper-V ホスト|NA|Hyper-V クラスター、Hyper-V ホスト|NA|
+Azure Site Recovery Deployment Planner の実行中のインスタンスごとにプロファイルできるサーバーの数 |単一 (単一の vCenter Server または ESXi サーバーに含まれている VM を同時にプロファイル可能)|複数 (複数のホストまたはホスト クラスターにまたがった VM を同時にプロファイル可能)| NA |複数 (複数のホストまたはホスト クラスターにまたがった VM を同時にプロファイル可能)| NA
 
 *このツールは本来、Hyper-V から Azure へのディザスター リカバリー シナリオ用です。 Hyper-V からセカンダリ サイトへのディザスター リカバリーについては、必要なネットワーク帯域幅、各ソース Hyper-V サーバーの必要な空き記憶域、初期レプリケーションのバッチ数とバッチ定義など、ソース側の推奨事項の確認にのみ使用できます。  レポートの Azure の推奨事項とコストは無視してください。 さらに、スループットの取得操作は、Hyper-V からセカンダリ サイトへのディザスター リカバリー シナリオには適用できません。
 
@@ -84,7 +84,7 @@ Azure Site Recovery Deployment Planner の実行中のインスタンスごと�
 
 | サーバーの要件 | 説明 |
 |---|---|
-|VM リストの取得、プロファイル、スループット測定 |<ul><li>オペレーティング システム: Microsoft Windows Server 2016 または Microsoft Windows Server 2012 R2 </li><li>マシン構成: 8 vCPU、16 GB RAM、300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Visual Studio 2012 の Microsoft Visual C++ 再頒布可能パッケージ](https://aka.ms/vcplusplus-redistributable)</li><li>このサーバーから Azure へのインターネット アクセス</li><li>Azure ストレージ アカウント</li><li>サーバー上の管理者アクセス権</li><li>100 GB 以上の空きディスク領域 (平均 3 台のディスクがある仮想マシン 1,000 台をそれぞれ 30 日間プロファイリングすることを想定)</li><li>Azure Site Recovery Deployment Planner ツールが実行される VM は、すべての Hyper-V サーバーの TrustedHosts リストに追加する必要があります。</li><li>プロファイル対象の Hyper-V サーバーの VM はすべて、ツールが実行されるクライアント VM の TrustedHosts リストに追加する必要があります。 [TrustedHosts リストへのサーバーの追加について詳細を確認してください](#steps-to-add-servers-into-trustedhosts-list)。 </li><li> このツールは、クライアントで PowerShell またはコマンドライン コンソールを使用して、管理特権で実行する必要があります</ul></ul>|
+|VM リストの取得、プロファイル、スループット測定 |<ul><li>オペレーティング システム:Microsoft Windows Server 2016 または Microsoft Windows Server 2012 R2 </li><li>コンピューターの構成:8 vCPU、16 GB RAM、300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Visual Studio 2012 の Microsoft Visual C++ 再頒布可能パッケージ](https://aka.ms/vcplusplus-redistributable)</li><li>このサーバーから Azure へのインターネット アクセス</li><li>Azure ストレージ アカウント</li><li>サーバー上の管理者アクセス権</li><li>100 GB 以上の空きディスク領域 (平均 3 台のディスクがある仮想マシン 1,000 台をそれぞれ 30 日間プロファイリングすることを想定)</li><li>Azure Site Recovery Deployment Planner ツールが実行される VM は、すべての Hyper-V サーバーの TrustedHosts リストに追加する必要があります。</li><li>プロファイル対象のすべての Hyper-V サーバーは、ツールが実行されるクライアント VM の TrustedHosts リストに追加する必要があります。 [TrustedHosts リストへのサーバーの追加について詳細を確認してください](#steps-to-add-servers-into-trustedhosts-list)。 </li><li> このツールは、クライアントで PowerShell またはコマンドライン コンソールを使用して、管理特権で実行する必要があります</ul></ul>|
 | レポートの生成 | Microsoft Excel 2013 以降がインストールされた Windows PC または Windows Server |
 | ユーザーのアクセス許可 | VM リストの取得操作とプロファイル操作の際に Hyper-V クラスター/Hyper-V ホストにアクセスするための管理者アカウント。<br>プロファイルが必要なすべてのホストには、同じ資格情報 (ユーザー名とパスワード) を備えたドメイン管理者アカウントが必要です
  |
@@ -110,14 +110,14 @@ Azure Site Recovery Deployment Planner の実行中のインスタンスごと�
 ツールは .zip フォルダーにパッケージされています。 同じツールで、VMware から Azure へのディザスター リカバリー シナリオと Hyper-V から Azure へのディザスター リカバリー シナリオの両方に対応できます。 このツールは、Hyper-V からセカンダリ サイトへのディザスター リカバリー シナリオにも使用できます。ただし、レポートの Azure インフラストラクチャ推奨事項は無視してください。
 
 1.  ツールの実行場所となる Windows Server に .zip フォルダーをコピーします。 ツールは、Windows Server 2012 R2 または Windows Server 2016 で実行できます。 プロファイル対象の VM が保持された Hyper-V クラスターまたは Hyper-V ホストに接続するために、サーバーにはネットワーク アクセスが必要です。 ツールの実行場所となる VM のハードウェア構成は、保護したい Hyper-V サーバーと同じにすることをお勧めします。 そのような構成によって、Azure Site Recovery がレプリケーションを実行している間の実際のスループットを正確に反映したレポートを得ることができます。 スループットの計算は、サーバーで利用できるネットワーク帯域幅とそのサーバーのハードウェア構成 (CPU、記憶域など) に左右されます。 このスループットは、ツールが実行されているサーバーから Azure の間で計算されます。 サーバーのハードウェア構成が Hyper-V サーバーと異なる場合、ツールによって報告される達成スループットは不正確になります。
-推奨される VM 構成は、8 vCPU、16 GB RAM、300 GB HDD です。
+推奨される VM の構成:8 vCPU、16 GB RAM、300 GB HDD。
 
 1.  zip フォルダーを展開します。
 このフォルダーには、複数のファイルとサブフォルダーが格納されています。 実行可能ファイルは、親フォルダーにある ASRDeploymentPlanner.exe です。
 
-例: .zip ファイルを E:\ ドライブにコピーして展開します。 E:\ASR Deployment Planner_v2.2.zip
+例:.zip ファイルを E:\ ドライブにコピーして展開します。 E:\ASR Deployment Planner_v2.3.zip
 
-E:\ASR Deployment Planner_v2.2\ASRDeploymentPlanner.exe
+E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>最新バージョンの Deployment Planner への更新
 以前のバージョンの Deployment Planner をお持ちの場合、次のいずれかを行ってください。
@@ -132,8 +132,8 @@ E:\ASR Deployment Planner_v2.2\ASRDeploymentPlanner.exe
   >Deployment Planner の更新に使われる .zip ファイルには、その都度、累積的な更新が格納されています。 以前のフォルダーに最新のファイルをコピーする必要はありません。 新しいフォルダーを作成して使用できます。
 
 ## <a name="version-history"></a>バージョン履歴
-ASR Deployment Planner ツールの最新バージョンは 2.2 です。
-各更新で追加された修正については、「[ASR Deployment Planner Version History (ASR Deployment Planner のバージョン履歴)](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx)」を参照してください。
+Azure Site Recovery Deployment Planner ツールの最新バージョンは 2.3 です。
+各更新で追加された修正については、「[Azure Site Recovery Deployment Planner Version History (Azure Site Recovery Deployment Planner のバージョン履歴)](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx)」を参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

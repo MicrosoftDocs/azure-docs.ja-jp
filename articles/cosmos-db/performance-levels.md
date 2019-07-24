@@ -1,21 +1,17 @@
 ---
-title: 提供が中止された Azure Cosmos DB のパフォーマンス レベル | Microsoft Docs
+title: 提供が中止された Azure Cosmos DB のパフォーマンス レベル
 description: Azure Cosmos DB で以前に提供されていた、S1、S2、S3 パフォーマンス レベルについて説明します。
-services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d1bb7551e6dfb6c42853ab95096f17f5285c69c1
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 06fa98ae4acc2252d8866858ed0e2194ed84ff79
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796650"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54034388"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>S1、S2、および S3 パフォーマンス レベルの提供の中止
 

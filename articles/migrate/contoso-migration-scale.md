@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: raynew
-ms.openlocfilehash: 5c1858fca1ca5f6bc48f5225ecf2d52dee055c91
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: bd1761ecf16bbfb0d3fdc354ab1b9fa1f42f9c17
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092749"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328580"
 ---
 # <a name="contoso---scale-a-migration-to-azure"></a>Contoso - Azure への移行のスケーリング
 
@@ -24,31 +24,31 @@ ms.locfileid: "49092749"
 
 **記事** | **詳細** | **状態**
 --- | --- | ---
-[記事 1: 概要](contoso-migration-overview.md) | 記事シリーズ、Contoso の移行戦略およびシリーズで使用されているサンプル アプリの概要です。 | 使用可能
-[記事 2: Azure インフラストラクチャのデプロイ](contoso-migration-infrastructure.md) | Contoso がオンプレミス インフラストラクチャと Azure インフラストラクチャを移行に向けて準備します。 このシリーズの移行に関するすべての記事で同じインフラストラクチャを使用します。 | 使用可能。
-[記事 3: Azure への移行の対象となるオンプレミスのリソースの評価](contoso-migration-assessment.md)  | Contoso が、VMware で実行されているオンプレミスの SmartHotel360 アプリを評価します。 Contoso では、アプリの VM は Azure Migrate サービスを使用して評価し、アプリの SQL Server データベースは Data Migration Assistant を使用して評価します。 | 使用可能
+[記事 1:概要](contoso-migration-overview.md) | 記事シリーズ、Contoso の移行戦略およびシリーズで使用されているサンプル アプリの概要です。 | 使用可能
+[記事 2: Azure インフラストラクチャをデプロイする](contoso-migration-infrastructure.md) | Contoso がオンプレミス インフラストラクチャと Azure インフラストラクチャを移行に向けて準備します。 このシリーズの移行に関するすべての記事で同じインフラストラクチャを使用します。 | 使用可能。
+[記事 3:Azure への移行についてオンプレミスのリソースを評価する](contoso-migration-assessment.md)  | Contoso が、VMware で実行されているオンプレミスの SmartHotel360 アプリを評価します。 Contoso では、アプリの VM は Azure Migrate サービスを使用して評価し、アプリの SQL Server データベースは Data Migration Assistant を使用して評価します。 | 使用可能
 [記事 4: Azure VM および SQL Database Managed Instance でのアプリのリホスト](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso が、オンプレミスの SmartHotel360 アプリの Azure へのリフトアンドシフト移行を実行します。 Contoso は、[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) を使用してアプリのフロントエンド VM を移行します。 アプリ データベースの Azure SQL Database Managed Instance への移行には、[Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) を使用します。 | 使用可能   
-[記事 5: Azure VM でのアプリのリホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery サービスを使用して SmartHotel360 アプリの VM を Azure VM に移行します。 | 使用可能
-[記事 6: Azure VM および SQL Server AlwaysOn 可用性グループでのアプリのリホスト](contoso-migration-rehost-vm-sql-ag.md) | Contoso がアプリを移行します。Site Recovery を使用してアプリの VM を移行し、Database Migration Service を使用してアプリのデータベースを AlwaysOn 可用性グループで保護されている SQL Server クラスターに移行します。 | 使用可能
-[記事 7: Linux アプリの Azure VM への再ホスト](contoso-migration-rehost-linux-vm.md) | Contoso が Site Recovery サービスを使用して、Azure VM への Linux osTicket アプリのリフトアンドシフト移行を完了します。 | 使用可能
-[記事 8: Azure VM および Azure Database for MySQL での Linux アプリのリホスト](contoso-migration-rehost-linux-vm-mysql.md) | Contoso が Site Recovery を使用して Linux osTicket アプリを Azure VM に移行します。 アプリ データベースを Azure Database for MySQL に移行するために MySQL Workbench を使用します。 | 使用可能
-[記事 9: Azure Web App と Azure SQL Database でのアプリのリファクター](contoso-migration-refactor-web-app-sql.md) | Contoso が SmartHotel360 アプリを Azure Web アプリに移行します。また、Database Migration Assistant を使用して、アプリ データベースを Azure SQL Server インスタンスに移行します。 | 使用可能    
-[記事 10: Azure Web アプリと Azure Database for MySQL での Linux アプリのリファクター](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso が Linux osTicket アプリを複数サイト上の Azure Web アプリに移行します。 Web アプリは継続的デリバリー用に GitHub と統合されます。 アプリ データベースを Azure Database for MySQL インスタンスに移行します。 | 使用可能
-[記事 11: Azure DevOps サービスでの Team Foundation Server をリファクタリングします](contoso-migration-tfs-vsts.md) | Contoso がそのオンプレミスの Team Foundation Server の展開を Azure の Azure DevOps Services に移行します。 | 使用可能
-[記事 12: Azure コンテナーと Azure SQL Database でのアプリの再構築](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行します。 その後、アプリの Web 階層を Azure Service Fabric 内で動作する Windows コンテナーとして再構築し、さらに、Azure SQL Database を使用してアプリ データベースを再構築します。 | 使用可能    
-[記事 13: Azure でのアプリのリビルド](contoso-migration-rebuild.md) | Contoso が Azure のさまざまな機能とサービス (Azure App Service、Azure Kubernetes Service (AKS)、Azure Functions、Azure Cognitive Services、Azure Cosmos DB など) を使用して SmartHotel アプリをリビルドします。 | 使用可能 
-記事 14: Azure への移行のスケーリング | 移行の組み合わせを試した後、Contoso は Azure への完全移行に向けてスケーリングを準備します。 | この記事の内容は次のとおりです。
+[記事 5:Azure VM でのアプリのリホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery サービスを使用して SmartHotel360 アプリの VM を Azure VM に移行します。 | 使用可能
+[記事 6:Azure VM および SQL Server AlwaysOn 可用性グループでのアプリのリホスト](contoso-migration-rehost-vm-sql-ag.md) | Contoso がアプリを移行します。Site Recovery を使用してアプリの VM を移行し、Database Migration Service を使用してアプリのデータベースを AlwaysOn 可用性グループで保護されている SQL Server クラスターに移行します。 | 使用可能
+[記事 7:Linux アプリの Azure VM への再ホスト](contoso-migration-rehost-linux-vm.md) | Contoso が Site Recovery サービスを使用して、Azure VM への Linux osTicket アプリのリフトアンドシフト移行を完了します。 | 使用可能
+[記事 8:Azure VM および Azure Database for MySQL での Linux アプリのリホスト](contoso-migration-rehost-linux-vm-mysql.md) | Contoso が Site Recovery を使用して Linux osTicket アプリを Azure VM に移行します。 アプリ データベースを Azure Database for MySQL に移行するために MySQL Workbench を使用します。 | 使用可能
+[記事 9:Azure Web App と Azure SQL Database でのアプリのリファクター](contoso-migration-refactor-web-app-sql.md) | Contoso が SmartHotel360 アプリを Azure Web アプリに移行します。また、Database Migration Assistant を使用して、アプリ データベースを Azure SQL Server インスタンスに移行します。 | 使用可能    
+[記事 10:Azure Web アプリと Azure Database for MySQL での Linux アプリのリファクター](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso が Linux osTicket アプリを複数サイト上の Azure Web アプリに移行します。 Web アプリは継続的デリバリー用に GitHub と統合されます。 アプリ データベースを Azure Database for MySQL インスタンスに移行します。 | 使用可能
+[記事 11:Azure DevOps サービスでの Team Foundation Server をリファクタリングします](contoso-migration-tfs-vsts.md) | Contoso がそのオンプレミスの Team Foundation Server の展開を Azure の Azure DevOps Services に移行します。 | 使用可能
+[記事 12:Azure コンテナーと Azure SQL Database でのアプリの再構築](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行します。 その後、アプリの Web 階層を Azure Service Fabric 内で動作する Windows コンテナーとして再構築し、さらに、Azure SQL Database を使用してアプリ データベースを再構築します。 | 使用可能    
+[記事 13:Azure でのアプリのリビルド](contoso-migration-rebuild.md) | Contoso が Azure のさまざまな機能とサービス (Azure App Service、Azure Kubernetes Service (AKS)、Azure Functions、Azure Cognitive Services、Azure Cosmos DB など) を使用して SmartHotel アプリをリビルドします。 | 使用可能 
+記事 14:Azure への移行のスケーリング | 移行の組み合わせを試した後、Contoso は Azure への完全移行に向けてスケーリングを準備します。 | この記事の内容は次のとおりです。
 
 ## <a name="business-drivers"></a>ビジネス ドライバー
 
 IT リーダーシップ チームは、ビジネス パートナーと密接に連絡を取り合い、彼らがこの移行で何を達成しようとしているのかを理解しました。
 
-- **ビジネスの成長への対応**: Contoso は成長を続けており、オンプレミス システムとインフラストラクチャに対する負荷が高まっています。
-- **効率化**: Contoso は不要な手順を取り除き、開発者とユーザーのプロセスを効率化する必要があります。 ビジネス部門は IT に対して、時間やコストを無駄にせず、迅速に作業を行ってもらう必要があります。これは、例えば、顧客の要求に素早く対応するためです。
-- **機敏性の強化**: Contoso IT は、ビジネス部門の要求に対して、対応力を向上させる必要があります。 また、グローバル経済で成功を収めるために、市場の変化に対して、より迅速な対応ができる必要があります。 ビジネスの妨げになったり、ビジネスの機会を壊すようなことがあってはなりません。
-- **拡張性**: ビジネスが順調に成長していく中で、Contoso IT チームは、同じペースで拡張可能なシステムを提供する必要があります。
-- **コスト モデルの改善**: Contoso は、IT 予算における資金要件を削減したいと考えています。  Contoso の希望は、クラウドの機能を使用してスケーリングし、高価なハードウェアの必要性を削減することです。
-- **ライセンス コストの削減**: Contoso はクラウドのコストを最小限に抑えたいと考えています。
+- **ビジネスの成長への対応**: Contoso は成長を続けており、このためオンプレミスのシステムとインフラストラクチャに負荷がかかっています。
+- **効率化**: Contoso では、不要な手順を取り除き、開発者とユーザーのプロセスを効率化する必要があります。 ビジネス部門は IT に対して、時間やコストを無駄にせず、迅速に作業を行ってもらう必要があります。これは、例えば、顧客の要求に素早く対応するためです。
+- **俊敏性の向上**: Contoso IT は、ビジネス部門のニーズに対する対応力を高める必要があります。 また、グローバル経済で成功を収めるために、市場の変化に対して、より迅速な対応ができる必要があります。 ビジネスの妨げになったり、ビジネスの機会を壊すようなことがあってはなりません。
+- **スケール**:ビジネスが順調に成長していく中で、Contoso IT チームは、同じペースで拡張可能なシステムを提供する必要があります。
+- **コスト モデルの改善**:Contoso は、IT 予算における資金要件を削減したいと考えています。  Contoso の希望は、クラウドの機能を使用してスケーリングし、高価なハードウェアの必要性を削減することです。
+- **ライセンス コストの削減**:Contoso はクラウドのコストを最小限に抑えたいと考えています。
 
 
 ## <a name="migration-goals"></a>移行の目標
@@ -80,16 +80,16 @@ Contoso クラウド チームは、この移行の目標を設定しました�
 
 ビジネス ドライバーと移行の目標が明確になったところで、Contoso は移行プロセスとして 4 段階のアプローチを決定しました。
 
-- **フェーズ 1 - 評価**: 現在の資産を検出し、現在の資産が Azure への移行に適しているかどうかを確認します。
-- **フェーズ 2 - 移行**: 資産を Azure に移行します。 アプリとオブジェクトを Azure に移行する方法は、アプリによって、また何を実現したいかによって異なります。
-- **フェーズ 3 - 最適化**: Contoso は、リソースを Azure に移行した後、パフォーマンスと効率を最大化するために、移行したリソースを改善し、合理化する必要があります。
-- **フェーズ 4 - セキュリティ確保と管理**: すべてが準備できたら、Azure で運用するクラウド アプリの管理、セキュリティ確保、監視のため、Contoso は Azure に用意されているセキュリティと管理のためのリソースを活用します。
+- **フェーズ 1 - 評価**:現在の資産を検出し、現在の資産が Azure への移行に適しているかどうかを確認します。
+- **フェーズ 2 - 移行**:資産を Azure に移行します。 アプリとオブジェクトを Azure に移行する方法は、アプリによって、また何を実現したいかによって異なります。
+- **フェーズ 3 - 最適化**:Contoso は、リソースを Azure に移行した後、パフォーマンスと効率を最大化するために、移行したリソースを改善し、合理化する必要があります。
+- **フェーズ 4 - セキュリティ確保と管理**:すべてが準備できたら、Azure で運用するクラウド アプリの管理、セキュリティ確保、監視のため、Contoso は Azure に用意されているセキュリティと管理のためのリソースを活用します。
 
 
 これらのフェーズは、組織全体でのシリアルなフェーズではありません。 Contoso の移行プロジェクトの各部分は、評価と移行のプロセスのさまざまな段階にあります。 最適化、セキュリティ、管理は今後も継続的に行われます。
 
 
-## <a name="phase-1-assess"></a>フェーズ 1: 評価
+## <a name="phase-1-assess"></a>フェーズ 1:評価
 
 Contoso は、オンプレミスのアプリ、データ、インフラストラクチャを検出、評価して、Azure への移行を開始します。 Contoso が行うことは次のとおりです。
 
@@ -115,8 +115,8 @@ Contoso は、インベントリに含まれる資産を分類するために、
 業務グループ | 業務グループ名の一覧 | インベントリ項目の担当はどのグループか?
 POC 候補 | Y/N | アプリをクラウド移行に向けての POC または Early Adopter として使用できるか?
 技術的負債 | なし/多少/重大 | インベントリ項目はサポート対象外の製品、プラットフォーム、オペレーティング システムを実行または使用しているか?
-ファイアウォールの影響 | Y/N | アプリはインターネット/外部トラフィックと通信するか?   ファイアウォールに統合されているか?
-セキュリティの問題 | Y/N | アプリに関する既知のセキュリティの問題はあるか?   アプリは暗号化されていないデータまたは最新でないプラットフォームを使用しているか?
+ファイアウォールの影響 | Y/N | アプリはインターネット/外部トラフィックと通信するか?  ファイアウォールに統合されているか?
+セキュリティの問題 | Y/N | アプリに関する既知のセキュリティの問題はあるか?  アプリは暗号化されていないデータまたは最新でないプラットフォームを使用しているか?
 
 
 ### <a name="discover-app-dependencies"></a>アプリの以前関係の検出
@@ -169,13 +169,13 @@ Contoso は、検出、評価、インベントリ作成に使用するツール
 
 Azure Migrate サービスは、Azure への移行準備としてオンプレミスの VMware VM を検出して評価するのに役立ちます。 Azure Migrate の機能は次のとおりです。
 
-1. 検出する: オンプレミスの VMware VM を検出します。
+1. 検出:オンプレミスの VMware VM を検出します。
     - Azure Migrate は、複数の vCenter サーバーからの検出 (シリアルに) をサポートし、別々の Azure Migrate プロジェクトで検出を実行できます。
     - Azure Migrate は、Migrate Collector を実行している VMware VM を手段として、検出を実行します。 同一の Collector によって異なる複数の vCenter サーバー上の VM を検出し、さまざまなプロジェクトにデータを送信できます。
-1. Azure 対応性を評価する: オンプレミスのマシンが Azure での実行に適しているかどうかを評価します。 評価の内容は次のとおりです。
-    - 推奨サイズ: オンプレミス VM のパフォーマンス履歴から、Azure VM の推奨サイズが得られます。
-    - 毎月のコストを見積もる: オンプレミスのマシンを Azure で実行するためのコストを見積もります。
-2. 依存関係を識別する: 評価と移行の対象としての最適なマシン グループを作成できるように、オンプレミスのマシンの依存関係を視覚化します。
+1. Azure 対応性を評価する:オンプレミスのマシンが Azure での実行に適しているかどうかを評価します。 評価の内容は次のとおりです。
+    - 推奨サイズ:オンプレミス VM のパフォーマンス履歴から、Azure VM の推奨サイズが得られます。
+    - 月額料金の見積もり:オンプレミスのマシンを Azure で実行するためのコストを見積もります。
+2. 依存関係を識別する:評価と移行の対象としての最適なマシン グループを作成できるように、オンプレミスのマシンの依存関係を視覚化します。
 
 
 ![Azure Migrate](./media/contoso-migration-scale/azure-migrate.png)
@@ -216,7 +216,7 @@ Contoso は DMS に加えて、SQL Server データベースの検出とドキ�
 
 Contoso が Azure への移行対象のオンプレミス環境を評価する際に役立つ、その他のパートナー ツールがいくつかあります。 Azure 移行パートナーの詳細については、[こちらを参照してください](https://azure.microsoft.com/migration/partners/)。  
 
-## <a name="phase-2-migrate"></a>フェーズ 2: 移行
+## <a name="phase-2-migrate"></a>フェーズ 2:移行
 
 評価が完了すると、Contoso はアプリ、データ、インフラストラクチャを Azure に移行するためのツールを識別する必要があります。 
 
@@ -241,8 +241,8 @@ Contoso はおおまかに次の 4 つの移行方法を戦略として検討で
 
 移行を行うために Contoso が主に使用する Azure のサービスとツールは次のとおりです。
 
-- [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview): ディザスター リカバリーを調整し、オンプレミスの VM を Azure に移行します。
-- [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview): SQL Server、MySQL、Oracle などのオンプレミス データベースを Azure に移行します。
+- [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview):ディザスター リカバリーを調整し、オンプレミスの VM を Azure に移行します。
+- [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview):SQL Server、MySQL、Oracle などのオンプレミス データベースを Azure に移行します。
 
 
 #### <a name="azure-site-recovery"></a>Azure Site Recovery
@@ -289,14 +289,13 @@ Contoso は、キャパシティに関する考慮事項に基づいて、これ
 --- | ---
 **日次変化率の最大値** | 1 台のプロセス サーバーでは、1 日あたり最大 2 TB の変化率を処理できます。 1 つの VM で使用できるプロセス サーバーは 1 台だけであるため、レプリケートされた VM ごとにサポートされる日次データ変化率の最大値は 2 TB です。
 **最大スループット** | Standard の Azure ストレージ アカウントでは、1 秒間に最大 20,000 要求を処理できます。レプリケート元の VM 全体の 1 秒あたりの入出力操作 (IOPS) 数をこの制限内に抑えることをお勧めします。 たとえば、VM に 5 個のディスクが搭載されていて、その VM 上で 120 IOPS (8 K サイズ) が生成される場合、Azure のディスクごとの IOPS 制限である 500 以内に収まります。<br/><br/> 必要なストレージ アカウントの数は、ソース マシンの IOPS 合計を 20,000 で割ったものに等しいことに注意してください。 レプリケートされたマシンは、Azure の 1 つのストレージ アカウントにのみ属することができます。
-**構成サーバー** | 100 から 200 の VM をまとめてレプリケートする場合の Contoso の見積もりと、[構成サーバーのサイズ要件](https://docs.microsoft.com/azure/site-recovery/site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server)に基づいて、Contoso の見積もりには次のように構成サーバー マシンが必要です。<br/><br/> CPU: 16 vCPU (2 ソケット * 8 コア @ 2.5 GHz)<br/><br/> メモリ: 32 GB<br/><br/> キャッシュ ディスク: 1 TB<br/><br/> データ変化率: 1 TB から 2 TB まで。<br/><br/> Contoso は、サイズ要件に加えて、構成サーバーが最適に配置されていること、すなわち移行される VM と同じネットワークの同じ LAN セグメントに配置されていることを確認する必要があります。
-**プロセス サーバー** | Contoso は、100 から 200 の VM をレプリケートできるスタンドアロンの専用プロセス サーバーをデプロイします。<br/><br/> CPU: 16 vCPU (2 ソケット * 8 コア @ 2.5 GHz)<br/><br/> メモリ: 32 GB<br/><br/> キャッシュ ディスク: 1 TB<br/><br/> データ変化率: 1 TB から 2 TB まで。<br/><br/> プロセス サーバーは負荷が高くなるため、レプリケーションに必要なディスク I/O、ネットワーク トラフィック、CPU 使用率を処理できる ESXi ホストに配置する必要があります。 Contoso は、この目的のために専用ホストを検討します。 
-**ネットワーク** | Contoso は現在のサイト間 VPN インフラストラクチャを見直し、Azure ExpressRoute を実装することにしました。 その実装は、待機時間を削減し、Contoso の米国東部 2 プライマリ Azure リージョンの帯域幅を改善するために不可欠です。<br/><br/> **監視**: Contoso はプロセス サーバーからのデータの流れを注意深く監視する必要があります。 データによってネットワーク帯域幅が過負荷になる場合、Contoso は[プロセス サーバーの帯域幅を調整する](https://docs.microsoft.com/azure/site-recovery/site-recovery-plan-capacity-vmware.md#control-network-bandwidth)ことを検討します。
-**Azure Storage** | 移行に際して、Contoso は適切な Azure ストレージ アカウントの種類と数を見極める必要があります。  Site Recovery は、VM のデータを Azure Storage にレプリケートします。<br/><br/> Site Recovery により、Standard または Premium (SSD) ストレージ アカウントにレプリケートできます。<br/><br/> ストレージについて決定するために、Contoso は[容量の上限](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)を見直し、時間の経過に伴い予想される増加率および使用量の増加を考慮に入れる必要があります。 移行の速度と優先度に従って、Contoso は Premium ストレージ アカウントを使用することを決定しました。<br/><br/> 複数のストレージ アカウントを作成し、移行プロセス中に再利用します。
-Contoso は、Azure にデプロイされるすべての VM にマネージド ディスクを使用することに決定しました。  必要な IOPS は、ディスクが Standard (HDD) か Premium (SSD) かによって決まります。<br/>。<br/>
+**構成サーバー** | 100 から 200 の VM をまとめてレプリケートする場合の Contoso の見積もりと、[構成サーバーのサイズ要件](../site-recovery/site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server)に基づいて、Contoso の見積もりには次のように構成サーバー マシンが必要です。<br/><br/> CPU:16 vCPU (2 ソケット * 8 コア @ 2.5 GHz)<br/><br/> メモリ:32 GB<br/><br/> キャッシュ ディスク:1 TB (テラバイト)<br/><br/> データ変化率:1 TB から 2 TB まで。<br/><br/> Contoso は、サイズ要件に加えて、構成サーバーが最適に配置されていること、すなわち移行される VM と同じネットワークの同じ LAN セグメントに配置されていることを確認する必要があります。
+**プロセス サーバー** | Contoso は、100 から 200 の VM をレプリケートできるスタンドアロンの専用プロセス サーバーをデプロイします。<br/><br/> CPU:16 vCPU (2 ソケット * 8 コア @ 2.5 GHz)<br/><br/> メモリ:32 GB<br/><br/> キャッシュ ディスク:1 TB (テラバイト)<br/><br/> データ変化率:1 TB から 2 TB まで。<br/><br/> プロセス サーバーは負荷が高くなるため、レプリケーションに必要なディスク I/O、ネットワーク トラフィック、CPU 使用率を処理できる ESXi ホストに配置する必要があります。 Contoso は、この目的のために専用ホストを検討します。 
+**ネットワーク** | Contoso は現在のサイト間 VPN インフラストラクチャを見直し、Azure ExpressRoute を実装することにしました。 その実装は、待機時間を削減し、Contoso の米国東部 2 プライマリ Azure リージョンの帯域幅を改善するために不可欠です。<br/><br/> **監視**:Contoso はプロセス サーバーからのデータの流れを注意深く監視する必要があります。 データによってネットワーク帯域幅が過負荷になる場合、Contoso は[プロセス サーバーの帯域幅を調整する](../site-recovery/site-recovery-plan-capacity-vmware.md#control-network-bandwidth)ことを検討します。
+**Azure Storage** | 移行に際して、Contoso は適切な Azure ストレージ アカウントの種類と数を見極める必要があります。  Site Recovery は、VM のデータを Azure Storage にレプリケートします。<br/><br/> Site Recovery により、Standard または Premium (SSD) ストレージ アカウントにレプリケートできます。<br/><br/> ストレージについて決定するために、Contoso は[容量の上限](../virtual-machines/windows/disks-types.md)を見直し、時間の経過に伴い予想される増加率および使用量の増加を考慮に入れる必要があります。 移行の速度と優先度に従って、Contoso は Premium SSD を使用することを決定しました。<br/><br/>
+Contoso は、Azure にデプロイされるすべての VM にマネージド ディスクを使用することに決定しました。  必要な IOPS は、ディスクが Standard HDD、Standard SSD、Premium (SSD) のいずれかによって決まります。<br/><br/>
 
-
-#### <a name="data-migration-service"></a>データ移行サービス 
+#### <a name="data-migration-service"></a>データ移行サービス
 
 Azure Database Migration Service (DMS) は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できる、フル マネージドのサービスです。
 
@@ -327,7 +326,7 @@ DMS に加えて、Contoso は VM 情報を識別するために他のツール�
 - さまざまな[パートナーのツール](https://azure.microsoft.com/migration/partners/)も移行に使用できます。
 
 
-## <a name="phase-3-optimize"></a>フェーズ 3: 最適化
+## <a name="phase-3-optimize"></a>フェーズ 3:最適化
 
 Azure にリソースを移行した後、Contoso はパフォーマンス向上のためにリソースを合理化し、コスト管理ツールを使用して ROI を最大化する必要があります。 Azure は従量課金制のサービスであるため、Contoso にとって、システムのパフォーマンスを把握し、システムが確実に適切なサイズに設定されているようにすることが重要です。
 
@@ -364,7 +363,7 @@ Contoso は、スクリプトを使った未使用のリソースの検出も行
 [Hanu](https://hanu.com/insight/) や [Scalr]( https://www.scalr.com/cost-optimization/) などのパートナーのツールを活用することができます。
 
 
-## <a name="phase-4-secure--manage"></a>フェーズ 4: セキュリティ確保と管理
+## <a name="phase-4-secure--manage"></a>フェーズ 4:セキュリティ確保と管理
 
 このフェーズでは、Azure で運用するクラウド アプリの管理、セキュリティ確保、監視のため、Contoso は Azure に用意されているセキュリティと管理のためのリソースを活用します。 ここに挙げたリソースは、Azure portal で利用できる製品を使用して、適切に管理された安全な環境を運用するのに役立ちます。 Contoso は、ここで紹介したサービスを移行の時点から利用できます。また、Azure がハイブリッド環境に対応していることから、それらのサービスの多くはハイブリッド クラウドでも引き続き利用でき、変わらないエクスペリエンスが得られます。
 

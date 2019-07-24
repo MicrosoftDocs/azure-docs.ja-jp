@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
-ms.reviewer: carlrab
+ms.author: danil
+ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 738e78e608dbd819f24125799a1e8d48859f1aa0
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.date: 12/19/2018
+ms.openlocfilehash: d80581aae56fc9d65d6f24d21f2c582cb74b3f2d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043672"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58863204"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>パフォーマンスに関する推奨事項の検索と適用
 
@@ -78,6 +78,7 @@ Azure SQL Database では、次の 3 つのオプションのいずれかを使�
 選んだ推奨事項がデータベースに適用されます。
 
 ### <a name="removing-recommendations-from-the-list"></a>一覧からの推奨事項の削除
+
 推奨事項の一覧に削除したい項目が含まれている場合は、その項目を破棄することができます。
 
 1. **[推奨事項]** の一覧で推奨事項を選び、詳細を開きます。
@@ -110,23 +111,26 @@ Azure SQL Database では、次の 3 つのオプションのいずれかを使�
 
 目的の構成を選択したら、[適用] をクリックします。
 
-### <a name="manually-run-the-recommended-t-sql-script"></a>推奨される T-SQL スクリプトを手動で実行する
-任意の推奨インデックスを選択し、 **[スクリプトの表示]** をクリックします。 データベースに対してこのスクリプトを実行し、推奨インデックスを手動で適用します。
+### <a name="manually-apply-recommendations-through-t-sql"></a>T-SQL を使い手動で推奨事項を適用する
 
-*手動で実行されたインデックスは、パフォーマンスへの影響についてサービスによる監視や検証が行われません。* そのため、作成後にこれらのインデックスを監視して、パフォーマンスが向上するかどうかを検証し、必要に応じて調整または削除することをお勧めします。 インデックスの作成方法の詳細については、「 [CREATE INDEX (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms188783.aspx)」を参照してください。
+任意の推奨事項を選択し、 **[スクリプトの表示]** をクリックします。 データベースに対してこのスクリプトを実行し、推奨インデックスを手動で適用します。
+
+*手動で実行されたインデックスは、パフォーマンスへの影響についてサービスによる監視や検証が行われません。* そのため、作成後にこれらのインデックスを監視して、パフォーマンスが向上するかどうかを検証し、必要に応じて調整または削除することをお勧めします。 インデックスの作成方法の詳細については、「 [CREATE INDEX (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms188783.aspx)」を参照してください。 また、手動で適用した推奨事項は、24 から48 時間、アクティブな状態のまま推奨事項の一覧に表示された後、 自動的に取り消されます。 それよりも前に推奨事項を削除したい場合は、手動で破棄してください。
 
 ### <a name="canceling-recommendations"></a>推奨事項のキャンセル
+
 状態が**保留中**、**検証中**、または**成功**の推奨事項はキャンセルすることができます。 ただし、 **実行中** の状態の推奨事項はキャンセルできないのでご注意ください。
 
 1. **[チューニングの履歴]** 領域の推奨事項を選択して、**[推奨事項の詳細]** ページを開きます。
 2. **[キャンセル]** をクリックして推奨事項の適用プロセスを中止します。
 
 ## <a name="monitoring-operations"></a>操作の監視
+
 推奨事項の適用は、瞬時に行われない場合があります。 ポータルには、推奨事項の状態に関する詳細情報が表示されます。 インデックスは次のいずれかの状態になります。
 
 | Status | 説明 |
 |:--- |:--- |
-| Pending |推奨インデックスの適用コマンドは受信済みで、実行が予定されています。 |
+| 保留中 |推奨インデックスの適用コマンドは受信済みで、実行が予定されています。 |
 | 実行中 |推奨事項は適用中です。 |
 | Validating |推奨事項が正常に適用され、サービスは効果を測定しています。 |
 | Success |推奨事項が正常に適用され、効果が測定されました。 |

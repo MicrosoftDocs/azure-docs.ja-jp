@@ -6,41 +6,46 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 11/05/2018
+ms.date: 02/27/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 961352dc99a164b8537fb588e038ad1b385941cc
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 67f4eb5383452a81ba288f5fe611242259217951
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567453"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404897"
 ---
-# <a name="tutorial-order-an-azure-data-box-disk-preview"></a>チュートリアル: Azure Data Box Disk (プレビュー) を注文する
+# <a name="tutorial-order-an-azure-data-box-disk"></a>チュートリアル:Azure Data Box Disk を注文する
 
 Azure Data Box Disk は、迅速かつ簡単な信頼性の高い方法でオンプレミス データを Azure にインポートできるハイブリッド クラウド ソリューションです。 Microsoft が提供するソリッドステート ディスク (SSD) にデータを転送し、ディスクを返送します。 その後、このデータは Azure にアップロードされます。
 
 このチュートリアルでは、Azure Data Box Disk を注文する方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Data Box Disk にサインアップする
 > * Data Box Disk を注文する
 > * 注文を追跡する
 > * 注文をキャンセルする
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+## <a name="prerequisites"></a>前提条件
 
-> [!IMPORTANT]
-> - Data Box Disk はプレビュー段階にあります。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。 
-> - プレビュー期間中、Data Box Disk は、米国、西ヨーロッパ、北ヨーロッパ、カナダ、およびオーストラリアのお客様に出荷できます。 詳細については、「[Region availability (利用可能なリージョン)](data-box-disk-overview.md#region-availability)」をご覧ください。
+デプロイする前に、Data Box サービスと Data Box Disk に関する次の構成の前提条件を完了してください。
 
-## <a name="sign-up"></a>サインアップ
+### <a name="for-service"></a>サービスでは
 
-Data Box Disk はプレビュー段階にあり、サービスにサインアップする必要があります。 Data Box サービスにサインアップするには、次の手順を実行します。
+開始する前に次の点を確認します。
+- アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
+- Data Box サービスで使用するサブスクリプションが、次のいずれかの種類であることを確認します。
+    - Microsoft Enterprise Agreement (EA)。 [EA サブスクリプション](https://azure.microsoft.com/pricing/enterprise-agreement/)に関する詳細をご覧ください。
+    - Cloud Solution Provider (CSP)。 Azure CSP プログラムの詳細は[こちら](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)です。
+- Data Box の注文を作成するサブスクリプションに対して、所有者または共同作成者アクセス権があることを確認します。
 
-1. Azure portal ([https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs)) にサインインします。
-2. プレビューを有効にするサブスクリプションを選択します。 データ サイズ、データ所在国、時間枠、データ転送頻度に関する質問に答えます。 **[サインアップ]** をクリックします。
-3. サインアップしてプレビューが有効になったら、Data Box Disk を注文できます。
+### <a name="for-device"></a>デバイスでは
+
+開始する前に次の点を確認します。
+- データのコピー元として使用できるクライアント コンピューターがあること。 クライアント コンピューターの要件は以下のとおりです。
+    - [サポート対象のオペレーティング システム](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)が実行されていること。
+    - Windows クライアントである場合は、その他の[必須ソフトウェア](data-box-disk-system-requirements.md#other-required-software-for-windows-clients)がインストールされていること。  
 
 ## <a name="order-data-box-disk"></a>Data Box Disk を注文する
 
@@ -75,11 +80,25 @@ Data Box Disk を注文するには、[Azure portal](https://aka.ms/azuredatabox
     |Name|注文を追跡するためのフレンドリ名を指定します。<br> 名前の長さは 3 ～ 24 文字で、文字、数字、ハイフンを使うことができます。 <br> 名前の最初と最後は、文字か数字とする必要があります。 |
     |リソース グループ| 既存のグループを使用するか、新しいグループを作成します。 <br> リソース グループとは、まとめて管理したり、デプロイしたりできるリソースの論理コンテナーです。 |
     |宛先 Azure リージョン| ストレージ アカウントのリージョンを選択します。<br> 現時点では、米国、西ヨーロッパ、北ヨーロッパ、カナダ、およびオーストラリアにおけるすべてのリージョンのストレージ アカウントがサポートされています。 |
-    |ストレージ アカウント|指定した Azure リージョンに基づいて、既存のストレージ アカウントのフィルター処理された一覧から選択します。 <br>新しい汎用 v1 アカウントまたは汎用 v2 アカウントを作成することもできます。 |
     |推定データ サイズ (TB 単位)| 推定サイズを TB 単位で入力します。 <br>データ サイズに基づいて、Microsoft は適切な数の 8 TB SSD (使用可能な容量は 7 TB) を発送します。 <br>5 台のディスクの最大使用可能容量は最大 35 TB です。 |
     |ディスク パスキー| **[Azure 生成のパスキーではなくカスタム キーを使用]** をオンにした場合は、ディスク パスキーを指定します。 <br> 少なくとも 1 つの数字と 1 つの特殊文字を含む 12 から 32 文字の英数字で構成されたキーを入力します。 使用できる特殊文字は `@?_+` です。 <br> このオプションをスキップし、Azure によって生成されたパスキーを使用してディスクをロック解除することができます。|
+    |保存先     | ストレージ アカウント、マネージド ディスク、またはその両方から選択します。 <br> 指定した Azure リージョンに基づいて、既存のストレージ アカウントのフィルター処理された一覧からストレージ アカウントを選択します。 Data Box は、最大 10 個のストレージ アカウントにリンクできます。 <br> 新しい**汎用 v1 アカウント**、**汎用 v2 アカウント**、または **Blob Storage アカウント**を作成することもできます。 <br>規則が構成されているストレージ アカウントは使用できません。 ストレージ アカウントは、ファイアウォールと仮想ネットワークのセクションにある**すべてのネットワークからのアクセスを許可する**必要があります。|
 
-13.  **[次へ]** をクリックします。 
+    保存先としてストレージ アカウントを使用すると、次のスクリーンショットのように表示されます。
+
+    ![ストレージ アカウントの Data Box Disk 注文](media/data-box-disk-deploy-ordered/order-storage-account.png)
+
+    Data Box Disk を使用してオンプレミスの VHD からマネージド ディスクを作成する場合は、次の情報も指定する必要があります。
+
+    |Setting  |値  |
+    |---------|---------|
+    |リソース グループ     | オンプレミスの VHD からマネージド ディスクを作成する場合は、新しいリソース グループを作成します。 既存のリソース グループを使用するのは、Data Box サービスによってマネージド ディスク用にそのグループが Data Box Disk 注文に対して作成された場合だけにしてください。 <br> サポートされているリソース グループは 1 つのみです。|
+
+    ![マネージド ディスクの Data Box Disk 注文](media/data-box-disk-deploy-ordered/order-managed-disks.png)
+
+    マネージド ディスクに指定されたストレージ アカウントは、ステージング ストレージ アカウントとして使用されます。 Data Box サービスで、VHD がステージング ストレージ アカウントにアップロードされ、マネージド ディスクに変換され、リソース グループに移動されます。 詳細については、「[Azure へのデータのアップロードを確認する](data-box-disk-deploy-picked-up.md#verify-data-upload-to-azure)」を参照してください。
+
+13. **[次へ]** をクリックします。
 
     ![注文の詳細を指定する](media/data-box-disk-deploy-ordered/data-box-order-details.png)
 
@@ -97,7 +116,7 @@ Data Box Disk を注文するには、[Azure portal](https://aka.ms/azuredatabox
  
 ## <a name="track-the-order"></a>注文を追跡する
 
-注文後、Azure プレビュー ポータルから注文の状態を追跡できます。 目的の注文に移動し、**[概要]** に移動して状態を表示します。 ポータルに、**注文済み**状態のジョブが表示されます。 
+注文後、Azure portal から注文の状態を追跡できます。 目的の注文に移動し、**[概要]** に移動して状態を表示します。 ポータルに、**注文済み**状態のジョブが表示されます。
 
 ![注文済み状態の Data Box Disk](media/data-box-disk-deploy-ordered/data-box-portal-ordered.png) 
 
@@ -111,17 +130,15 @@ Data Box Disk を注文するには、[Azure portal](https://aka.ms/azuredatabox
 
 その後、Microsoft がディスクを準備し、地域の運送業者を通じて発送します。 ディスクが出荷されたら、追跡番号が送信されます。 ポータルには、**出荷済み**状態の注文が表示されます。
 
-
-
 ## <a name="cancel-the-order"></a>注文をキャンセルする
 
-この注文をキャンセルするには、Azure プレビュー ポータルで **[概要]** に移動し、コマンド バーの **[キャンセル]** をクリックします。 
+この注文をキャンセルするには、Azure portal で **[概要]** に移動し、コマンド バーの **[キャンセル]** をクリックします。
 
-ディスクが注文され、出荷に向けて注文が処理されている途中にのみキャンセルできます。 注文が処理された後は、注文をキャンセルすることはできなくなります。 
+ディスクが注文され、出荷に向けて注文が処理されている途中にのみキャンセルできます。 注文が処理された後は、注文をキャンセルすることはできなくなります。
 
 ![注文をキャンセルする](media/data-box-disk-deploy-ordered/cancel-order1.png)
 
-キャンセルされた注文を削除するには、**[概要]** に移動し、コマンド バーの **[削除]** をクリックします。 
+キャンセルされた注文を削除するには、**[概要]** に移動し、コマンド バーの **[削除]** をクリックします。
 
 
 ## <a name="next-steps"></a>次の手順
@@ -129,7 +146,6 @@ Data Box Disk を注文するには、[Azure portal](https://aka.ms/azuredatabox
 このチュートリアルでは、Azure Data Box に関する次のようなトピックについて説明しました。
 
 > [!div class="checklist"]
-> * Data Box Disk にサインアップする
 > * Data Box Disk を注文する
 > * 注文を追跡する
 > * 注文をキャンセルする
@@ -138,5 +154,3 @@ Data Box Disk を注文するには、[Azure portal](https://aka.ms/azuredatabox
 
 > [!div class="nextstepaction"]
 > [Azure Data Box Disk を設定する](./data-box-disk-deploy-set-up.md)
-
-

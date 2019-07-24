@@ -4,22 +4,42 @@ titleSuffix: Azure Cognitive Services
 description: リリース ノート - 最新リリースの変更点
 services: cognitive-services
 author: wsturman
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: gracez
-ms.openlocfilehash: 2040c80687b8961c2db6b1b954a317807ebbbb13
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 4d802b9f71edee1eec4b2c92881e2a8796db2865
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946030"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005511"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>Cognitive Services Speech Devices SDK のリリース ノート
 
 以下のセクションでは、最新リリースでの変更点の一覧を示します。
+
+## <a name="cognitive-services-speech-devices-sdk-131-2019-mar-release"></a>Cognitive Services Speech Devices SDK 1.3.1:2019 年 3 月リリース 
+
+* [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) コンポーネントがバージョン 1.3.1 に更新されました。 詳しくは、[リリース ノート](https://aka.ms/csspeech/whatsnew)をご覧ください。 
+*   ウェイク ワードの処理が更新されました (「重大な変更」を参照してください)。
+*   サンプル アプリケーションでは、音声認識と翻訳の両方について、言語の選択肢が追加されました。
+
+**重大な変更** 
+
+*   [ウェイク ワードのインストール](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg#run-a-sample-application)が簡素化されました。アプリの一部になったので、デバイスに個別にインストールする必要がなくなりました。
+*   ウェイク ワードの認識が変更され、2 つのイベントがサポートされました。
+    - RecognizingKeyword は、音声認識の結果に (未確認の) キーワード テキストが含まれていることを示します。
+    - RecognizedKeyword は、キーワード認識が完了し、特定のキーワードが認識されたことを示します。
+
+
+## <a name="cognitive-services-speech-devices-sdk-110-2018-nov-release"></a>Cognitive Services Speech Devices SDK 1.1.0: 2018-Nov リリース 
+
+* [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) コンポーネントがバージョン 1.1.0 に更新されました。 詳しくは、[リリース ノート](https://aka.ms/csspeech/whatsnew)をご覧ください。 
+* 強化されたオーディオ処理アルゴリズムにより、遠方界の音声認識の精度が向上しました。
+* サンプル アプリケーションが新たに中国語の音声認識に対応しました。
 
 ## <a name="cognitive-services-speech-devices-sdk-101-2018-oct-release"></a>Cognitive Services Speech Devices SDK 1.0.1: 2018-Oct リリース 
 

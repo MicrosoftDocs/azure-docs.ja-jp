@@ -3,27 +3,27 @@ title: Transact-SQL (T-SQL) を使用して Azure SQL Elastic Database ジョブ
 description: Transact-SQL (T-SQL) を使用する Elastic Database ジョブ エージェントでは多くのデータベース間でスクリプトを実行します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 ms.author: jaredmoo
 author: jaredmoo
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: 49fe1fc79ac94b798cb257b961c36a6258fb00d9
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 01/25/2019
+ms.openlocfilehash: 59e0e4cf82af9851dacf3ec030575ed392571331
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056789"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523768"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) を使用して Elastic Database ジョブを作成および管理する
 
 この記事では、T-SQL を使用してエラスティック ジョブを使い始めるためのシナリオの例を多数提供します。
 
-これらの例では、"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" で利用できる[ストアド プロシージャ](#job-stored-procedures)と[ビュー](#job-views)を使います。
+これらの例では、"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" で利用できる[ストアド プロシージャ](#job-stored-procedures)と[ビュー](#job-views)を使います。
 
 ジョブの作成、構成、実行、管理には、Transact-SQL (T-SQL) を使います。 エラスティック ジョブ エージェントの作成は T-SQL ではサポートされていないので、最初に、ポータルまたは [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent) を使って "*エラスティック ジョブ エージェント*" を作成する必要があります。
 
@@ -53,7 +53,7 @@ GO
 ## <a name="create-a-target-group-servers"></a>ターゲット グループ (サーバー) を作成する
 
 次の例では、サーバーのすべてのデータベースに対してジョブを実行する方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 
 ```sql
@@ -75,10 +75,10 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 ```
 
 
-## <a name="exclude-a-single-database"></a>1 つのデータベースを除外する
+## <a name="exclude-an-individual-database"></a>データベースを個別に除外する
 
-次の例では、*MappingDB* という名前のデータベースを除く、サーバーのすべてのデータベースに対してジョブを実行する方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+次の例では、*MappingDB* という名前のデータベースを除く、SQL Database サーバーのすべてのデータベースに対してジョブを実行する方法を示します。  
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -103,7 +103,7 @@ EXEC [jobs].sp_add_target_group_member
 @server_name='server2.database.windows.net'
 GO
 
---Excude a database target member from the server target group
+--Exclude a database target member from the server target group
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @membership_type = N'Exclude',
@@ -121,7 +121,7 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name = N'ServerGrou
 ## <a name="create-a-target-group-pools"></a>ターゲット グループ (プール) を作成する
 
 次の例では、1 つまたは複数のエラスティック プール内のすべてのデータベースをターゲットにする方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -146,7 +146,7 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name = N'PoolGroup';
 ## <a name="deploy-new-schema-to-many-databases"></a>多数のデータベースに新しいスキーマをデプロイする
 
 次の例では、すべてのデータベースに新しいスキーマをデプロイする方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 
 ```sql
@@ -193,9 +193,9 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 既定では、ジョブ エージェントは返された結果を格納するテーブルを作成しようとします。 そのため、出力資格情報に使用される資格情報に関連付けられたログインには、これを実行できる十分なアクセス許可が必要です。 事前にテーブルを手動で作成する場合は、次のプロパティが必要です。
 1. 結果セットの正しい名前とデータ型を含む列。
 2. データ型が uniqueidentifier である internal_execution_id 用の追加の列。
-3. internal_execution_id 列の、"IX_<TableName>_Internal_Execution_ID" という名前の非クラスター化インデックス。
+3. internal_execution_id 列上の `IX_<TableName>_Internal_Execution_ID` という名前の非クラスター化インデックス。
 
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -210,9 +210,9 @@ EXEC jobs.sp_add_jobstep
 @credential_name='myjobcred',
 @target_group_name='PoolGroup',
 @output_type='SqlDatabase',
-@output_credential_name=’myjobcred’,
-@output_server_name=’server1.database.windows.net',
-@output_database_name=’<resultsdb>',
+@output_credential_name='myjobcred',
+@output_server_name='server1.database.windows.net',
+@output_database_name='<resultsdb>',
 @output_table_name='<resutlstable>'
 Create a job to monitor pool performance
 --Connect to the job database specified when creating the job agent
@@ -257,8 +257,8 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
 @target_group_name='MasterGroup',
 @output_type='SqlDatabase',
 @output_credential_name='myjobcred',
-@output_server_name=’server1.database.windows.net',
-@output_database_name=’resultsdb',
+@output_server_name='server1.database.windows.net',
+@output_database_name='resultsdb',
 @output_table_name='resutlstable'
 ```
 
@@ -266,7 +266,7 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
 ## <a name="view-job-definitions"></a>ジョブの定義を表示する
 
 次の例では、現在のジョブの定義を表示する方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -287,7 +287,7 @@ select * from jobs.jobsteps
 ## <a name="begin-ad-hoc-execution-of-a-job"></a>ジョブのアドホックな実行を開始する
 
 次の例では、ジョブをすぐに開始する方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -310,7 +310,7 @@ exec jobs.sp_start_job 'CreateTableTest', 1
 ## <a name="schedule-execution-of-a-job"></a>ジョブの実行をスケジュールする
 
 次の例では、後で実行するようにジョブのスケジュールを設定する方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -325,12 +325,12 @@ EXEC jobs.sp_update_job
 ## <a name="monitor-job-execution-status"></a>ジョブの実行状態を監視する
 
 次の例では、すべてのジョブの実行状態の詳細を表示する方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
 
---View top-level execution status for the job named ‘ResultsPoolJob’
+--View top-level execution status for the job named 'ResultsPoolJob'
 SELECT * FROM jobs.job_executions 
 WHERE job_name = 'ResultsPoolsJob' and step_id IS NULL
 ORDER BY start_time DESC
@@ -339,7 +339,7 @@ ORDER BY start_time DESC
 SELECT * FROM jobs.job_executions WHERE step_id IS NULL
 ORDER BY start_time DESC
 
---View all execution statuses for job named ‘ResultsPoolsJob’
+--View all execution statuses for job named 'ResultsPoolsJob'
 SELECT * FROM jobs.job_executions 
 WHERE job_name = 'ResultsPoolsJob' 
 ORDER BY start_time DESC
@@ -354,7 +354,7 @@ ORDER BY start_time DESC
 ## <a name="cancel-a-job"></a>ジョブを取り消す
 
 次の例では、ジョブを取り消す方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -373,7 +373,7 @@ EXEC jobs.sp_stop_job '01234567-89ab-cdef-0123-456789abcdef'
 ## <a name="delete-old-job-history"></a>古いジョブの履歴を削除する
 
 次の例では、特定の日付より前のジョブ履歴を削除する方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -387,7 +387,7 @@ EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-
 ## <a name="delete-a-job-and-all-its-job-history"></a>ジョブとそのすべてのジョブ履歴を削除する
 
 次の例では、特定のジョブとそれに関連するすべてのジョブ履歴を削除する方法を示します。  
-"[*ジョブ データベース*](elastic-jobs-overview.md#job-database)" に接続して、次のコマンドを実行します。
+"[*ジョブ データベース*](sql-database-job-automation-overview.md#job-database)" に接続して、次のコマンドを実行します。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -402,25 +402,25 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 ## <a name="job-stored-procedures"></a>ジョブのストアド プロシージャ
 
-次のストアド プロシージャは、[ジョブ データベース](elastic-jobs-overview.md#job-database)内にあります。
+次のストアド プロシージャは、[ジョブ データベース](sql-database-job-automation-overview.md#job-database)内にあります。
 
 
 
 |ストアド プロシージャ  |説明  |
 |---------|---------|
-|[sp_add_job](#spaddjob)     |     新しいジョブを追加します。    |
-|[sp_update_job ](#spupdatejob)    |      既存のジョブを更新します。   |
-|[sp_delete_job](#spdeletejob)     |      既存のジョブを削除します。   |
-|[sp_add_jobstep](#spaddjobstep)    |    ジョブにステップを追加します。     |
-|[sp_update_jobstep](#spupdatejobstep)     |     ジョブのステップを更新します。    |
-|[sp_delete_jobstep](#spdeletejobstep)     |     ジョブのステップを削除します。    |
-|[sp_start_job](#spstartjob)    |  ジョブの実行を開始します。       |
-|[sp_stop_job](#spstopjob)     |     ジョブの実行を停止します。   |
-|[sp_add_target_group](#spaddtargetgroup)    |     ターゲット グループを追加します。    |
-|[sp_delete_target_group](#spdeletetargetgroup)     |    ターゲット グループを削除します。     |
-|[sp_add_target_group_member](#spaddtargetgroupmember)     |    データベースまたはデータベースのグループをターゲット グループに追加します。     |
-|[sp_delete_target_group_member](#spdeletetargetgroupmember)     |     ターゲット グループかターゲット グループのメンバーを削除します。    |
-|[sp_purge_jobhistory ](#sppurgejobhistory)    |    ジョブの履歴レコードを削除します。     |
+|[sp_add_job](#sp_add_job)     |     新しいジョブを追加します。    |
+|[sp_update_job](#sp_update_job)    |      既存のジョブを更新します。   |
+|[sp_delete_job](#sp_delete_job)     |      既存のジョブを削除します。   |
+|[sp_add_jobstep](#sp_add_jobstep)    |    ジョブにステップを追加します。     |
+|[sp_update_jobstep](#sp_update_jobstep)     |     ジョブのステップを更新します。    |
+|[sp_delete_jobstep](#sp_delete_jobstep)     |     ジョブのステップを削除します。    |
+|[sp_start_job](#sp_start_job)    |  ジョブの実行を開始します。       |
+|[sp_stop_job](#sp_stop_job)     |     ジョブの実行を停止します。   |
+|[sp_add_target_group](#sp_add_target_group)    |     ターゲット グループを追加します。    |
+|[sp_delete_target_group](#sp_delete_target_group)     |    ターゲット グループを削除します。     |
+|[sp_add_target_group_member](#sp_add_target_group_member)     |    データベースまたはデータベースのグループをターゲット グループに追加します。     |
+|[sp_delete_target_group_member](#sp_delete_target_group_member)     |     ターゲット グループかターゲット グループのメンバーを削除します。    |
+|[sp_purge_jobhistory](#sp_purge_jobhistory)    |    ジョブの履歴レコードを削除します。     |
 
 
 
@@ -447,16 +447,16 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
   
 #### <a name="arguments"></a>引数  
 
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'job_name'  
 ジョブの名前。 名前は一意である必要があり、パーセント (%) 文字を含めることはできません。 job_name は nvarchar(128) であり、既定値はありません。
 
-[ **@description =** ] 'description'  
+[ **\@description =** ] 'description'  
 ジョブの説明。 description は nvarchar(512) であり、既定値は NULL です。 省略すると、空の文字列が使われます。
 
-[ **@enabled =** ] enabled  
+[ **\@enabled =** ] enabled  
 ジョブのスケジュールを有効にするかどうか。 Enabled は bit であり、既定値は 0 (無効) です。 0 の場合、ジョブは有効ではなく、そのスケジュールどおりには実行されません。ただし、手動で実行することはできます。 1 の場合、ジョブはそのスケジュールに従って実行され、手動で実行することもできます。
 
-[ **@schedule_interval_type =**] schedule_interval_type  
+[ **\@schedule_interval_type =**] schedule_interval_type  
 値はジョブが実行されるときを示します。 schedule_interval_type は nvarchar(50)、既定値は Once であり、次のいずれかの値を指定できます。
 - 'Once'
 - 'Minutes'
@@ -465,16 +465,16 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 - 'Weeks'
 - 'Months'
 
-[ **@schedule_interval_count =** ] schedule_interval_count  
+[ **\@schedule_interval_count =** ] schedule_interval_count  
 ジョブの各実行の間に発生する schedule_interval_count 期間の数。 schedule_interval_count は int であり、既定値は 1 です。 1 以上の値を指定する必要があります。
 
-[ **@schedule_start_time =** ] schedule_start_time  
+[ **\@schedule_start_time =** ] schedule_start_time  
 ジョブの実行を開始できる日付。 schedule_start_time は DATETIME2 であり、既定値は 0001-01-01 00:00:00.0000000 です。
 
-[ **@schedule_end_time =** ] schedule_end_time  
+[ **\@schedule_end_time =** ] schedule_end_time  
 ジョブの実行を停止できる日付。 schedule_end_time は DATETIME2 であり、既定値は 9999-12-31 11:59:59.0000000 です。 
 
-[ **@job_id =** ] job_id OUTPUT  
+[ **\@job_id =** ] job_id OUTPUT  
 正常に作成された場合にジョブに割り当てられるジョブ識別番号。 job_id は、uniqueidentifier 型の出力変数です。
 
 #### <a name="return-code-values"></a>リターン コードの値
@@ -510,19 +510,19 @@ sp_add_job を実行してジョブを追加した後、sp_add_jobstep を使っ
 ```
 
 #### <a name="arguments"></a>引数
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'job_name'  
 更新するジョブの名前。 job_name は nvarchar(128) です。
 
-[ **@new_name =** ] 'new_name'  
+[ **\@new_name =** ] 'new_name'  
 ジョブの新しい名前。 new_name は nvarchar(128) です。
 
-[ **@description =** ] 'description'  
+[ **\@description =** ] 'description'  
 ジョブの説明。 description は nvarchar(512) です。
 
-[ **@enabled =** ] enabled  
+[ **\@enabled =** ] enabled  
 ジョブのスケジュールが有効か (1) 無効か (0) を指定します。 enabled は bit です。
 
-[ **@schedule_interval_type=** ] schedule_interval_type  
+[ **\@schedule_interval_type=** ] schedule_interval_type  
 値はジョブが実行されるときを示します。 schedule_interval_type は nvarchar(50) であり、次のいずれかの値を指定できます。
 
 - 'Once'
@@ -532,13 +532,13 @@ sp_add_job を実行してジョブを追加した後、sp_add_jobstep を使っ
 - 'Weeks'
 - 'Months'
 
-[ **@schedule_interval_count=** ] schedule_interval_count  
+[ **\@schedule_interval_count=** ] schedule_interval_count  
 ジョブの各実行の間に発生する schedule_interval_count 期間の数。 schedule_interval_count は int であり、既定値は 1 です。 1 以上の値を指定する必要があります。
 
-[ **@schedule_start_time=** ] schedule_start_time  
+[ **\@schedule_start_time=** ] schedule_start_time  
 ジョブの実行を開始できる日付。 schedule_start_time は DATETIME2 であり、既定値は 0001-01-01 00:00:00.0000000 です。
 
-[ **@schedule_end_time=** ] schedule_end_time  
+[ **\@schedule_end_time=** ] schedule_end_time  
 ジョブの実行を停止できる日付。 schedule_end_time は DATETIME2 であり、既定値は 9999-12-31 11:59:59.0000000 です。 
 
 #### <a name="return-code-values"></a>リターン コードの値
@@ -567,10 +567,10 @@ sp_add_job を実行してジョブを追加した後、sp_add_jobstep を使っ
 ```
 
 #### <a name="arguments"></a>引数
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'job_name'  
 削除するジョブの名前。 job_name は nvarchar(128) です。
 
-[ **@force =** ] force  
+[ **\@force =** ] force  
 ジョブに進行中の実行がある場合に削除するかどうかを指定します。進行中のすべての実行を取り消すか (1)、または進行中のジョブ実行がある場合は削除しません (0)。 force は bit です。
 
 #### <a name="return-code-values"></a>リターン コードの値
@@ -622,79 +622,79 @@ sp_add_job を実行してジョブを追加した後、sp_add_jobstep を使っ
 
 #### <a name="arguments"></a>引数
 
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'job_name'  
 ステップを追加するジョブの名前。 job_name は nvarchar(128) です。
 
-[ **@step_id =** ] step_id  
+[ **\@step_id =** ] step_id  
 ジョブ ステップのシーケンス ID 番号。 ステップ ID 番号は 1 から始まり、隙間なく増加します。 指定した ID を持つステップが既に存在する場合は、既存のステップとそれ以降のすべてのステップの ID が増分されて、新しいステップをシーケンスに挿入できるようになります。 step_id を指定しないと、ステップのシーケンスの最後に自動的に割り当てられます。 step_id は int です。
 
-[ **@step_name =** ] step_name  
+[ **\@step_name =** ] step_name  
 ステップの名前。 最初のステップを除き、必ず指定する必要があります。最初のステップは (利便性のため)、既定の名前 "JobStep" になります。 step_name は nvarchar(128) です。
 
-[ **@command_type =** ] 'command_type'  
+[ **\@command_type =** ] 'command_type'  
 このジョブ ステップで実行されるコマンドの種類。 command_type は nvarchar(50) です。既定値は TSql であり、@command_type パラメーターの値が T-SQL スクリプトであることを意味します。
 
 指定する場合、値は TSql である必要があります。
 
-[ **@command_source =** ] 'command_source'  
+[ **\@command_source =** ] 'command_source'  
 コマンドが格納される場所の種類。 command_source は nvarchar(50) です。既定値は Inline であり、@command_source パラメーターの値がコマンドのリテラル テキストであることを意味します。
 
 指定する場合、値は Inline である必要があります。
 
-[ **@command =** ] 'command'  
+[ **\@command =** ] 'command'  
 コマンドは、有効な T-SQL スクリプトでなければならず、このジョブ ステップによって実行されます。 command は nvarchar(max) であり、既定値は NULL です。
 
-[ **@credential_name =** ] ‘credential_name’  
+[ **\@credential_name =** ] 'credential_name'  
 このジョブ管理データベースに格納される、データベース スコープの資格情報の名前。このステップの実行時に、ターゲット グループ内の各ターゲット データベースに接続するために使われます。 credential_name は nvarchar(128) です。
 
-[ **@target_group_name =** ] ‘target-group_name'  
+[ **\@target_group_name =** ] 'target-group_name'  
 ジョブ ステップが実行されるターゲット データベースを含むターゲット グループの名前。 target_group_name は nvarchar(128) です。
 
-[ **@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
+[ **\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
 ジョブ ステップの最初の実行の試行が失敗した場合に、最初の再試行を試みるまでの遅延。 initial_retry_interval_seconds は int であり、既定値は 1 です。
 
-[ **@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
+[ **\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
 再試行の間の最大遅延。 再試行の間の遅延がこの値より大きくなった場合は、この値に制限されます。 maximum_retry_interval_seconds は int であり、既定値は 120 です。
 
-[ **@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
+[ **\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
 ジョブ ステップの実行が複数回にわたり失敗した場合に、再試行の遅延に適用する乗数。 たとえば、最初の再試行の遅延が 5 秒で、バックオフ乗数が 2.0 の場合、2 回目の再試行の遅延は 10 秒、3 回目の再試行の遅延は 20 秒になります。 retry_interval_backoff_multiplier は real では、既定値は 2.0 です。
 
-[ **@retry_attempts =** ] retry_attempts  
+[ **\@retry_attempts =** ] retry_attempts  
 最初の試行が失敗した場合に、実行を再試行する回数。 たとえば、retry_attempts の値が 10 の場合、最初の試行 1 回と再試行 10 回で、実行は合計 11 回試行されます。 最後の再試行が失敗した場合、ジョブの実行は Failed のライフサイクルで終了します。 retry_attempts は int であり、既定値は 10 です。
 
-[ **@step_timeout_seconds =** ] step_timeout_seconds  
+[ **\@step_timeout_seconds =** ] step_timeout_seconds  
 ステップの実行に許可されている最大時間。 この時間を超えた場合、ジョブの実行は TimedOut のライフサイクルで終了します。 step_timeout_seconds は int であり、既定値は 43,200 秒 (12 時間) です。
 
-[ **@output_type =** ] 'output_type'  
+[ **\@output_type =** ] 'output_type'  
 null ではない場合は、コマンドの最初の結果セットの書き込み先の種類。 output_type は nvarchar(50) であり、既定値は NULL です。
 
 指定する場合、値は SqlDatabase である必要があります。
 
-[ **@output_credential_name =** ] 'output_credential_name'  
+[ **\@output_credential_name =** ] 'output_credential_name'  
 null ではない場合は、出力先データベースへの接続に使用するデータベース スコープの資格情報の名前。 output_type が SqlDatabase の場合は、指定する必要があります。 output_credential_name は nvarchar(128) であり、既定値は NULL です。
 
-[ **@output_subscription_id =** ] 'output_subscription_id'  
+[ **\@output_subscription_id =** ] 'output_subscription_id'  
 説明が必要です。
 
-[ **@output_resource_group_name =** ] 'output_resource_group_name'  
+[ **\@output_resource_group_name =** ] 'output_resource_group_name'  
 説明が必要です。
 
-[ **@output_server_name =** ] 'output_server_name'  
+[ **\@output_server_name =** ] 'output_server_name'  
 null ではない場合は、出力先データベースを含むサーバーの完全修飾 DNS 名。 output_type が SqlDatabase の場合は、指定する必要があります。 output_server_name は nvarchar(256) であり、既定値は NULL です。
 
-[ **@output_database_name =** ] 'output_database_name'  
+[ **\@output_database_name =** ] 'output_database_name'  
 null ではない場合は、出力先テーブルを含むデータベースの名前。 output_type が SqlDatabase の場合は、指定する必要があります。 output_database_name は nvarchar(128) であり、既定値は NULL です。
 
-[ **@output_schema_name =** ] 'output_schema_name'  
+[ **\@output_schema_name =** ] 'output_schema_name'  
 null ではない場合は、出力先テーブルを含む SQL スキーマの名前。 output_type が SqlDatabase の場合、既定値は dbo です。 output_schema_name は nvarchar (128) です。
 
-[ **@output_table_name =** ] 'output_table_name'  
+[ **\@output_table_name =** ] 'output_table_name'  
 null ではない場合は、コマンドの最初の結果セットの書き込み先のテーブルの名前。 テーブルがまだ存在しない場合は、返される結果セットのスキーマに基づいて作成されます。 output_type が SqlDatabase の場合は、指定する必要があります。 output_table_name は nvarchar(128) であり、既定値は NULL です。
 
-[ **@job_version =** ] job_version OUTPUT  
+[ **\@job_version =** ] job_version OUTPUT  
 新しいジョブのバージョン番号が割り当てられる出力パラメーター。 job_version は int です。
 
-[ **@max_parallelism =** ] max_parallelism OUTPUT  
+[ **\@max_parallelism =** ] max_parallelism OUTPUT  
 エラスティック プールあたりの並列処理の最大レベル。 設定した場合、ジョブ ステップはエラスティック プールあたり最大でもその指定数のデータベースでのみ実行するように制限されます。 この設定は、ターゲット グループに直接含まれる、またはターゲット グループに含まれるサーバー内に存在する、各エラスティック プールに適用されます。 max_parallelism は int です。
 
 
@@ -746,79 +746,79 @@ sp_add_jobstep が成功した場合、ジョブの現在のバージョン番�
 ```
 
 #### <a name="arguments"></a>引数
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'job_name'  
 ステップが属するジョブの名前。 job_name は nvarchar(128) です。
 
-[ **@step_id =** ] step_id  
+[ **\@step_id =** ] step_id  
 変更するジョブ ステップの ID 番号。 step_id または step_name のいずれかを指定する必要があります。 step_id は int です。
 
-[ **@step_name =** ] 'step_name'  
+[ **\@step_name =** ] 'step_name'  
 変更するステップの名前。 step_id または step_name のいずれかを指定する必要があります。 step_name は nvarchar(128) です。
 
-[ **@new_id =** ] new_id  
+[ **\@new_id =** ] new_id  
 ジョブ ステップの新しいシーケンス ID 番号。 ステップ ID 番号は 1 から始まり、隙間なく増加します。 ステップの順序を変更する場合、他のステップの番号は自動的に変更されます。
 
-[ **@new_name =** ] 'new_name'  
+[ **\@new_name =** ] 'new_name'  
 ステップの新しい名前。 new_name は nvarchar(128) です。
 
-[ **@command_type =** ] 'command_type'  
+[ **\@command_type =** ] 'command_type'  
 このジョブ ステップで実行されるコマンドの種類。 command_type は nvarchar(50) です。既定値は TSql であり、@command_type パラメーターの値が T-SQL スクリプトであることを意味します。
 
 指定する場合、値は TSql である必要があります。
 
-[ **@command_source =** ] 'command_source'  
+[ **\@command_source =** ] 'command_source'  
 コマンドが格納される場所の種類。 command_source は nvarchar(50) です。既定値は Inline であり、@command_source パラメーターの値がコマンドのリテラル テキストであることを意味します。
 
 指定する場合、値は Inline である必要があります。
 
-[ **@command =** ] 'command'  
+[ **\@command =** ] 'command'  
 コマンドは、有効な T-SQL スクリプトでなければならず、このジョブ ステップによって実行されます。 command は nvarchar(max) であり、既定値は NULL です。
 
-[ **@credential_name =** ] ‘credential_name’  
+[ **\@credential_name =** ] 'credential_name'  
 このジョブ管理データベースに格納される、データベース スコープの資格情報の名前。このステップの実行時に、ターゲット グループ内の各ターゲット データベースに接続するために使われます。 credential_name は nvarchar(128) です。
 
-[ **@target_group_name =** ] ‘target-group_name'  
+[ **\@target_group_name =** ] 'target-group_name'  
 ジョブ ステップが実行されるターゲット データベースを含むターゲット グループの名前。 target_group_name は nvarchar(128) です。
 
-[ **@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
+[ **\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
 ジョブ ステップの最初の実行の試行が失敗した場合に、最初の再試行を試みるまでの遅延。 initial_retry_interval_seconds は int であり、既定値は 1 です。
 
-[ **@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
+[ **\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
 再試行の間の最大遅延。 再試行の間の遅延がこの値より大きくなった場合は、この値に制限されます。 maximum_retry_interval_seconds は int であり、既定値は 120 です。
 
-[ **@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
+[ **\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
 ジョブ ステップの実行が複数回にわたり失敗した場合に、再試行の遅延に適用する乗数。 たとえば、最初の再試行の遅延が 5 秒で、バックオフ乗数が 2.0 の場合、2 回目の再試行の遅延は 10 秒、3 回目の再試行の遅延は 20 秒になります。 retry_interval_backoff_multiplier は real では、既定値は 2.0 です。
 
-[ **@retry_attempts =** ] retry_attempts  
+[ **\@retry_attempts =** ] retry_attempts  
 最初の試行が失敗した場合に、実行を再試行する回数。 たとえば、retry_attempts の値が 10 の場合、最初の試行 1 回と再試行 10 回で、実行は合計 11 回試行されます。 最後の再試行が失敗した場合、ジョブの実行は Failed のライフサイクルで終了します。 retry_attempts は int であり、既定値は 10 です。
 
-[ **@step_timeout_seconds =** ] step_timeout_seconds  
+[ **\@step_timeout_seconds =** ] step_timeout_seconds  
 ステップの実行に許可されている最大時間。 この時間を超えた場合、ジョブの実行は TimedOut のライフサイクルで終了します。 step_timeout_seconds は int であり、既定値は 43,200 秒 (12 時間) です。
 
-[ **@output_type =** ] 'output_type'  
+[ **\@output_type =** ] 'output_type'  
 null ではない場合は、コマンドの最初の結果セットの書き込み先の種類。 output_type の値を NULL にリセットするには、このパラメーターの値を '' (空の文字列) に設定します。 output_type は nvarchar(50) であり、既定値は NULL です。
 
 指定する場合、値は SqlDatabase である必要があります。
 
-[ **@output_credential_name =** ] 'output_credential_name'  
+[ **\@output_credential_name =** ] 'output_credential_name'  
 null ではない場合は、出力先データベースへの接続に使用するデータベース スコープの資格情報の名前。 output_type が SqlDatabase の場合は、指定する必要があります。 output_credential_name の値を NULL にリセットするには、このパラメーターの値を '' (空の文字列) に設定します。 output_credential_name は nvarchar(128) であり、既定値は NULL です。
 
-[ **@output_server_name =** ] 'output_server_name'  
+[ **\@output_server_name =** ] 'output_server_name'  
 null ではない場合は、出力先データベースを含むサーバーの完全修飾 DNS 名。 output_type が SqlDatabase の場合は、指定する必要があります。 output_server_name の値を NULL にリセットするには、このパラメーターの値を '' (空の文字列) に設定します。 output_server_name は nvarchar(256) であり、既定値は NULL です。
 
-[ **@output_database_name =** ] 'output_database_name'  
+[ **\@output_database_name =** ] 'output_database_name'  
 null ではない場合は、出力先テーブルを含むデータベースの名前。 output_type が SqlDatabase の場合は、指定する必要があります。 output_database_name の値を NULL にリセットするには、このパラメーターの値を '' (空の文字列) に設定します。 output_database_name は nvarchar(128) であり、既定値は NULL です。
 
-[ **@output_schema_name =** ] 'output_schema_name'  
+[ **\@output_schema_name =** ] 'output_schema_name'  
 null ではない場合は、出力先テーブルを含む SQL スキーマの名前。 output_type が SqlDatabase の場合、既定値は dbo です。 output_schema_name の値を NULL にリセットするには、このパラメーターの値を '' (空の文字列) に設定します。 output_schema_name は nvarchar (128) です。
 
-[ **@output_table_name =** ] 'output_table_name'  
+[ **\@output_table_name =** ] 'output_table_name'  
 null ではない場合は、コマンドの最初の結果セットの書き込み先のテーブルの名前。 テーブルがまだ存在しない場合は、返される結果セットのスキーマに基づいて作成されます。 output_type が SqlDatabase の場合は、指定する必要があります。 output_server_name の値を NULL にリセットするには、このパラメーターの値を '' (空の文字列) に設定します。 output_table_name は nvarchar(128) であり、既定値は NULL です。
 
-[ **@job_version =** ] job_version OUTPUT  
+[ **\@job_version =** ] job_version OUTPUT  
 新しいジョブのバージョン番号が割り当てられる出力パラメーター。 job_version は int です。
 
-[ **@max_parallelism =** ] max_parallelism OUTPUT  
+[ **\@max_parallelism =** ] max_parallelism OUTPUT  
 エラスティック プールあたりの並列処理の最大レベル。 設定した場合、ジョブ ステップはエラスティック プールあたり最大でもその指定数のデータベースでのみ実行するように制限されます。 この設定は、ターゲット グループに直接含まれる、またはターゲット グループに含まれるサーバー内に存在する、各エラスティック プールに適用されます。 max_parallelism の値を null にリセットするには、このパラメーターの値を -1 に設定します。 max_parallelism は int です。
 
 
@@ -853,16 +853,16 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 ```
 
 #### <a name="arguments"></a>引数
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'job_name'  
 ステップを削除するジョブの名前。 job_name は nvarchar(128) であり、既定値はありません。
 
-[ **@step_id =** ] step_id  
+[ **\@step_id =** ] step_id  
 削除するジョブ ステップの ID 番号。 step_id または step_name のいずれかを指定する必要があります。 step_id は int です。
 
-[ **@step_name =** ] 'step_name'  
+[ **\@step_name =** ] 'step_name'  
 削除するステップの名前。 step_id または step_name のいずれかを指定する必要があります。 step_name は nvarchar(128) です。
 
-[ **@job_version =** ] job_version OUTPUT  
+[ **\@job_version =** ] job_version OUTPUT  
 新しいジョブのバージョン番号が割り当てられる出力パラメーター。 job_version は int です。
 
 #### <a name="return-code-values"></a>リターン コードの値
@@ -897,10 +897,10 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 ```
 
 #### <a name="arguments"></a>引数
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'job_name'  
 ステップを削除するジョブの名前。 job_name は nvarchar(128) であり、既定値はありません。
 
-[ **@job_execution_id =** ] job_execution_id OUTPUT  
+[ **\@job_execution_id =** ] job_execution_id OUTPUT  
 ジョブ実行の ID が割り当てられる出力パラメーター。job_version は uniqueidentifier です。
 
 #### <a name="return-code-values"></a>リターン コードの値
@@ -928,7 +928,7 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 
 
 #### <a name="arguments"></a>引数
-[ **@job_execution_id =** ] job_execution_id  
+[ **\@job_execution_id =** ] job_execution_id  
 停止するジョブ実行の ID 番号。 job_execution_id は uniqueidentifier であり、既定値は NULL です。
 
 #### <a name="return-code-values"></a>リターン コードの値
@@ -958,10 +958,10 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 
 
 #### <a name="arguments"></a>引数
-[ **@target_group_name =** ] 'target_group_name'  
+[ **\@target_group_name =** ] 'target_group_name'  
 作成するターゲット グループの名前。 target_group_name は nvarchar(128) であり、既定値はありません。
 
-[ **@target_group_id =** ] target_group_id OUTPUT 正常に作成された場合にジョブに割り当てられるターゲット グループの ID 番号。 target_group_id は uniqueidentifier 型の出力変数であり、既定値は NULL です。
+[ **\@target_group_id =** ] target_group_id OUTPUT 正常に作成された場合にジョブに割り当てられるターゲット グループの ID 番号。 target_group_id は uniqueidentifier 型の出力変数であり、既定値は NULL です。
 
 #### <a name="return-code-values"></a>リターン コードの値
 0 (成功) または 1 (失敗)
@@ -988,7 +988,7 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 
 
 #### <a name="arguments"></a>引数
-[ **@target_group_name =** ] 'target_group_name'  
+[ **\@target_group_name =** ] 'target_group_name'  
 削除するターゲット グループの名前。 target_group_name は nvarchar(128) であり、既定値はありません。
 
 #### <a name="return-code-values"></a>リターン コードの値
@@ -1011,47 +1011,47 @@ null ではない場合は、コマンドの最初の結果セットの書き込
 
 ```sql
 [jobs].sp_add_target_group_member [ @target_group_name = ] 'target_group_name'
-         [ @membership_type = ] ‘membership_type’ ]   
-        [ , [ @target_type = ] ‘target_type’ ]   
-        [ , [ @refresh_credential_name = ] ‘refresh_credential_name’ ]   
-        [ , [ @server_name = ] ‘server_name’ ]   
-        [ , [ @database_name = ] ‘database_name’ ]   
-        [ , [ @elastic_pool_name = ] ‘elastic_pool_name’ ]   
-        [ , [ @shard_map_name = ] ‘shard_map_name’ ]   
-        [ , [ @target_id = ] ‘target_id’ OUTPUT ]
+         [ @membership_type = ] 'membership_type' ]   
+        [ , [ @target_type = ] 'target_type' ]   
+        [ , [ @refresh_credential_name = ] 'refresh_credential_name' ]   
+        [ , [ @server_name = ] 'server_name' ]   
+        [ , [ @database_name = ] 'database_name' ]   
+        [ , [ @elastic_pool_name = ] 'elastic_pool_name' ]   
+        [ , [ @shard_map_name = ] 'shard_map_name' ]   
+        [ , [ @target_id = ] 'target_id' OUTPUT ]
 ```
 
 #### <a name="arguments"></a>引数
-[ **@target_group_name =** ] 'target_group_name'  
+[ **\@target_group_name =** ] 'target_group_name'  
 メンバーを追加するターゲット グループの名前。 target_group_name は nvarchar(128) であり、既定値はありません。
 
-[ **@membership_type =** ] 'membership_type'  
+[ **\@membership_type =** ] 'membership_type'  
 ターゲット グループのメンバーが含まれるか除外されるかを指定します。 target_group_name は nvarchar(128) であり、既定値は 'Include' です。 target_group_name の有効な値は、'Include' または 'Exclude' です。
 
-[ **@target_type =** ] 'target_type'  
+[ **\@target_type =** ] 'target_type'  
 ターゲット データベースまたはデータベースのコレクションの種類。サーバー内のすべてのデータベース、エラスティック プール内のすべてのデータベース、シャード マップ内のすべてのデータベース、または個々のデータベースです。 target_type は nvarchar(128) であり、既定値はありません。 target_type の有効な値は、'SqlServer'、'SqlElasticPool'、'SqlDatabase'、または 'SqlShardMap' です。 
 
-[ **@refresh_credential_name =** ] 'refresh_credential_name'  
-論理サーバーの名前。 refresh_credential_name は nvarchar(128) であり、既定値はありません。
+[ **\@refresh_credential_name =** ] 'refresh_credential_name'  
+SQL Database サーバーの名前。 refresh_credential_name は nvarchar(128) であり、既定値はありません。
 
-[ **@server_name =** ] 'server_name'  
-指定したターゲット グループに追加する必要のある論理サーバーの名前。 target_type が 'SqlServer' の場合は、server_name を指定する必要があります。 server_name は nvarchar(128) であり、既定値はありません。
+[ **\@server_name =** ] 'server_name'  
+指定したターゲット グループに追加する必要のある SQL Database サーバーの名前。 target_type が 'SqlServer' の場合は、server_name を指定する必要があります。 server_name は nvarchar(128) であり、既定値はありません。
 
-[ **@database_name =** ] 'database_name'  
+[ **\@database_name =** ] 'database_name'  
 指定したターゲット グループに追加する必要があるデータベースの名前。 target_type が 'SqlDatabase' の場合は、database_name を指定する必要があります。 database_name は nvarchar(128) であり、既定値はありません。
 
-[ **@elastic_pool_name =** ] ‘elastic_pool_name'  
+[ **\@elastic_pool_name =** ] 'elastic_pool_name'  
 指定したターゲット グループに追加する必要のあるエラスティック プールの名前。 target_type が 'SqlElasticPool' の場合は、elastic_pool_name を指定する必要があります。 elastic_pool_name は nvarchar(128) であり、既定値はありません。
 
-[ **@shard_map_name =** ] ‘shard_map_name'  
+[ **\@shard_map_name =** ] 'shard_map_name'  
 指定したターゲット グループに追加する必要があるシャード マップ プールの名前。 target_type が 'SqlSqlShardMap' の場合は、shard_map_name を指定する必要があります。 shard_map_name は nvarchar(128) であり、既定値はありません。
 
-[ **@target_id =** ] target_group_id OUTPUT  
+[ **\@target_id =** ] target_group_id OUTPUT  
 ターゲット グループに追加された場合にターゲット グループ メンバーに割り当てられるターゲット ID 番号。 target_id は uniqueidentifier 型の出力変数であり、既定値は NULL です。
 リターン コードの値 0 (成功) または 1 (失敗)
 
 #### <a name="remarks"></a>解説
-論理サーバーまたはエラスティック プールがターゲット グループに含まれている場合、実行時にはサーバーまたはエラスティック プール内のすべてのデータベースでジョブが実行されます。
+SQL Database サーバーまたはエラスティック プールがターゲット グループに含まれている場合、実行時には SQL Database サーバーまたはエラスティック プール内のすべての単一データベースでジョブが実行されます。
 
 #### <a name="permissions"></a>アクセス許可
 既定では、sysadmin 固定サーバー ロールのメンバーは、このストアド プロシージャを実行できます。 これにより、ジョブの監視しか行えないようにユーザーが制限されます。そのユーザーには、ジョブ エージェントを作成するときに、指定されたジョブ エージェント データベースの次のデータベース ロールのいずれかを許可できます。
@@ -1101,7 +1101,7 @@ GO
 
 ```sql
 [jobs].sp_delete_target_group_member [ @target_group_name = ] 'target_group_name'
-        [ , [ @target_id = ] ‘target_id’]
+        [ , [ @target_id = ] 'target_id']
 ```
 
 
@@ -1157,13 +1157,13 @@ GO
 ```
 
 #### <a name="arguments"></a>引数
-[ **@job_name =** ] 'job_name'  
+[ **\@job_name =** ] 'job_name'  
 履歴レコードを削除するジョブの名前。 job_name は nvarchar(128) であり、既定値は NULL です。 job_id または job_name のいずれかを指定する必要がありますが、両方を指定することはできません。
 
-[ **@job_id =** ] job_id  
+[ **\@job_id =** ] job_id  
  レコードを削除するジョブのジョブ ID 番号。 job_id は uniqueidentifier であり、既定値は NULL です。 job_id または job_name のいずれかを指定する必要がありますが、両方を指定することはできません。
 
-[ **@oldest_date =** ] oldest_date  
+[ **\@oldest_date =** ] oldest_date  
  履歴に保持する最も古いレコード。 oldest_date は DATETIME2 であり、既定値は NULL です。 oldest_date を指定すると、sp_purge_jobhistory は指定した値より古いレコードのみを削除します。
 
 #### <a name="return-code-values"></a>リターン コードの値
@@ -1190,18 +1190,18 @@ GO
 
 ## <a name="job-views"></a>ジョブ ビュー
 
-[ジョブ データベース](elastic-jobs-overview.md#job-database)では次のビューを使用できます。
+[ジョブ データベース](sql-database-job-automation-overview.md#job-database)では次のビューを使用できます。
 
 
 |表示  |説明  |
 |---------|---------|
-|[jobs_executions](#jobsexecutions-view)     |  ジョブの実行履歴を表示します。      |
+|[jobs_executions](#jobs_executions-view)     |  ジョブの実行履歴を表示します。      |
 |[jobs](#jobs-view)     |   すべてのジョブを表示します。      |
-|[job_versions](#jobversions-view)     |   すべてのジョブのバージョンを表示します。      |
+|[job_versions](#job_versions-view)     |   すべてのジョブのバージョンを表示します。      |
 |[jobsteps](#jobsteps-view)     |     各ジョブの現在のバージョンのすべてのステップを表示します。    |
-|[jobstep_versions](#jobstepversions-view)     |     各ジョブのすべてのバージョンのすべてのステップを表示します。    |
-|[target_groups](#targetgroups-view)     |      すべてのターゲット グループを表示します。   |
-|[target_group_members](#targetgroups-view)     |   すべてのターゲット グループのすべてのメンバーを表示します。      |
+|[jobstep_versions](#jobstep_versions-view)     |     各ジョブのすべてのバージョンのすべてのステップを表示します。    |
+|[target_groups](#target_groups-view)     |      すべてのターゲット グループを表示します。   |
+|[target_group_members](#target_groups_members-view)     |   すべてのターゲット グループのすべてのメンバーを表示します。      |
 
 
 ### <a name="jobsexecutions-view"></a>jobs_executions ビュー
@@ -1218,7 +1218,7 @@ GO
 |**job_id** |uniqueidentifier|  ジョブの一意の ID。
 |**job_version**    |int    |ジョブのバージョン (ジョブを変更するたびに自動的に更新されます)。
 |**step_id**    |int|   ステップの (このジョブで) 一意の ID。 NULL は、これが親ジョブの実行であることを示します。
-|**is_active**| ビット |情報がアクティブか非アクティブかを示します。 1 はアクティブなジョブを示し、0 は非アクティブなジョブを示します。
+|**is_active**| bit |情報がアクティブか非アクティブかを示します。 1 はアクティブなジョブを示し、0 は非アクティブなジョブを示します。
 |**lifecycle**| nvarchar(50)|ジョブの状態を示す値: 'Created'、'In Progress'、'Failed'、'Succeeded'、'Skipped'、'SucceededWithSkipped'|
 |**create_time**|   datetime2(7)|   ジョブが作成された日付と時刻。
 |**start_time** |datetime2(7)|  ジョブが実行を開始した日付と時刻。 ジョブがまだ実行されていない場合は NULL です。
@@ -1229,7 +1229,7 @@ GO
 |**target_type**|   nvarchar(128)   |ターゲット データベースまたはデータベースのコレクションの種類。サーバー内のすべてのデータベース、エラスティック プール内のすべてのデータベース、またはデータベースです。 target_type の有効な値は、'SqlServer'、'SqlElasticPool'、または 'SqlDatabase' です。 NULL は、これが親ジョブの実行であることを示します。
 |**target_id**  |uniqueidentifier|  ターゲット グループ メンバーの一意の ID。  NULL は、これが親ジョブの実行であることを示します。
 |**target_group_name**  |nvarchar(128)  |ターゲット グループの名前。 NULL は、これが親ジョブの実行であることを示します。
-|**target_server_name**|    nvarchar(256)|  ターゲット グループに含まれる論理サーバーの名前。 target_type が 'SqlServer' の場合にのみ指定されます。 NULL は、これが親ジョブの実行であることを示します。
+|**target_server_name**|    nvarchar(256)|  ターゲット グループに含まれる SQL Database サーバーの名前。 target_type が 'SqlServer' の場合にのみ指定されます。 NULL は、これが親ジョブの実行であることを示します。
 |**target_database_name**   |nvarchar(128)| ターゲット グループに含まれるデータベースの名前。 target_type が 'SqlDatabase' の場合にのみ指定されます。 NULL は、これが親ジョブの実行であることを示します。
 
 
@@ -1253,7 +1253,7 @@ GO
 
 ### <a name="jobversions-view"></a>job_versions ビュー
 
-[jobs].[job_verions]
+[jobs].[job_versions]
 
 すべてのジョブのバージョンを表示します。
 
@@ -1332,7 +1332,7 @@ GO
 |**refresh_credential_name**    |nvarchar(128)  |ターゲット グループ メンバーへの接続に使われるデータベース スコープの資格情報の名前。|
 |**subscription_id**    |uniqueidentifier|  サブスクリプションの一意の ID。|
 |**resource_group_name**    |nvarchar(128)| ターゲット グループ メンバーが存在するリソース グループの名前。|
-|**server_name**    |nvarchar(128)  |ターゲット グループに含まれる論理サーバーの名前。 target_type が 'SqlServer' の場合にのみ指定されます。 |
+|**server_name**    |nvarchar(128)  |ターゲット グループに含まれる SQL Database サーバーの名前。 target_type が 'SqlServer' の場合にのみ指定されます。 |
 |**database_name**  |nvarchar(128)  |ターゲット グループに含まれるデータベースの名前。 target_type が 'SqlDatabase' の場合にのみ指定されます。|
 |**elastic_pool_name**  |nvarchar(128)| ターゲット グループに含まれるエラスティック プールの名前。 target_type が 'SqlElasticPool' の場合にのみ指定されます。|
 |**shard_map_name** |nvarchar(128)| ターゲット グループに含まれるシャード マップの名前。 target_type が 'SqlShardMap' の場合にのみ指定されます。|
@@ -1347,4 +1347,3 @@ GO
 
 - [PowerShell を使用したエラスティック ジョブの作成と管理](elastic-jobs-powershell.md)
 - [SQL Server の承認と権限](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)
-  

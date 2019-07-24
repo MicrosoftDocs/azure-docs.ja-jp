@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 3eeaee9bc6320231f10aa85227e2f43756181806
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 2b078cd769a9b4e5e66fe132fd4ef73ec4621efc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433482"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447848"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>SSH 認証を使用する Linux 仮想マシンを REST API で作成する
 
@@ -35,7 +35,7 @@ Azure portal、Azure CLI 2.0、多くの Azure SDK、Azure Resource Manager テ�
 要求を作成して送信する前に、次のものが必要になります。
 
 * ご自分のサブスクリプションの `{subscription-id}`
-  * 複数のサブスクリプションをお持ちの場合は、[複数のサブスクリプションの操作](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions)に関するページを参照してください。
+  * 複数のサブスクリプションをお持ちの場合は、[複数のサブスクリプションの操作](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 * 事前に作成した `{resourceGroupName}`
 * 同じリソース グループ内の[仮想ネットワーク インターフェイス](../../virtual-network/virtual-network-network-interface.md)
 * SSH キー ペア (お持ちでない場合は、[新しいものを作成](mac-create-ssh-keys.md)できます)
@@ -65,8 +65,8 @@ REST API 要求の操作の概要については、「[Components of a REST API 
 
 | Name                       | 必須 | type                                                                                | 説明  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
-| location                   | True     | string                                                                              | リソースの場所。 |
-| name                       |          | string                                                                              | 仮想マシンの名前。 |
+| location                   | True     | 文字列                                                                              | リソースの場所。 |
+| name                       |          | 文字列                                                                              | 仮想マシンの名前。 |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | 仮想マシンのハードウェア設定を指定します。 |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | 仮想マシンのストレージ設定を指定します。 |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | 仮想マシンのオペレーティング システム設定を指定します。 |
@@ -137,7 +137,7 @@ REST API 要求の操作の概要については、「[Components of a REST API 
 
 バーチャル マシンの作成または更新操作には、2 種類の成功応答があります。
 
-| Name        | type                                                                              | 説明 |
+| Name        | Type                                                                              | 説明 |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 Created | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 作成日時     |

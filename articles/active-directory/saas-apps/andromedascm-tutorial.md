@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Andromeda の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Andromeda の統合 | Microsoft Docs
 description: Azure Active Directory と Andromeda の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 7a142c86-ca0c-4915-b1d8-124c08c3e3d8
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 047e1ea6a474d95c57ffc2bdff5ad8a5c45e0d36
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1fd26129a6ab8fb6082f9465be71eadcafa292db
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39048567"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165198"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>チュートリアル: Azure Active Directory と Andromeda の統合
+# <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>チュートリアル:Azure Active Directory と Andromeda の統合
 
 このチュートリアルでは、Andromeda と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -149,7 +150,7 @@ Andromeda で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[名前空間]** は空白のままにします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[名前空間]** は空白のままにします。
     
     e. **[OK]** をクリックします。
 
@@ -185,7 +186,7 @@ Andromeda で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[Consumer URL]\(コンシューマー URL\)** の値をコピーし、**[Andromeda のドメインと URL]** セクションの **[応答 URL]** ボックスに貼り付けます。
 
-    d. **[Logon URL]\(ログオン URL\)** の値をコピーし、**[Andromeda のドメインと URL]** セクションの **[サインオン URL]** ボックスに貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Logon URL]\(ログオン URL\)** の値をコピーし、**[Andromeda のドメインと URL]** セクションの **[サインオン URL]** ボックスに貼り付けます。
 
     e. **[SAML Identity Provider]\(SAML ID プロバイダー\)** セクションで、IDP 名を入力します。
 
@@ -200,7 +201,7 @@ Andromeda で Azure AD のシングル サインオンを構成してテスト�
     i. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -232,7 +233,7 @@ Andromeda で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-an-andromeda-test-user"></a>Andromeda テスト ユーザーの作成
 

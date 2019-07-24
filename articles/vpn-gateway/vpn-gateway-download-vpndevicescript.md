@@ -2,25 +2,18 @@
 title: 'S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする: Azure Resource Manager | Microsoft Docs'
 description: この記事では、Azure Resource Manager を使って Azure VPN ゲートウェイで S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする手順を説明します。
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
 manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/29/2018
+ms.date: 01/09/2019
 ms.author: yushwang
-ms.openlocfilehash: 254f5012bfbf827aebc20d90405636dcb204193c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f7ee53c10c6597dbf98f8f85fc31fe789137471e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30317774"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996322"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする
 
@@ -60,7 +53,7 @@ Azure VPN ゲートウェイ、ローカル ネットワーク ゲートウェ�
 
 接続リソースを作成した後、以下の手順に従って VPN デバイス構成スクリプトをダウンロードします。
 
-1. ブラウザーから [Azure Portal](http://portal.azure.com) に移動し、必要な場合は Azure アカウントでサインインします。
+1. ブラウザーから [Azure Portal](https://portal.azure.com) に移動し、必要な場合は Azure アカウントでサインインします。
 2. 作成した接続リソースに移動します。 [すべてのサービス]、[ネットワーク]、[接続] の順にクリックすると、すべての接続リソースの一覧が表示されます。
 
     ![connection-list](./media/vpn-gateway-download-vpndevicescript/connectionlist.png)
@@ -84,6 +77,8 @@ Azure VPN ゲートウェイ、ローカル ネットワーク ゲートウェ�
 
 ## <a name="download-the-configuration-script-using-azure-powershell"></a>Azure PowerShell を使用して構成スクリプトをダウンロードする
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 次の例で示すように、Azure PowerShell を使って構成スクリプトをダウンロードすることもできます。
 
 ```azurepowershell-interactive
@@ -92,10 +87,10 @@ $GWName      = "VNet1GW"
 $Connection  = "VNet1toSite1"
 
 # List the available VPN device models and versions
-Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice -Name $GWName -ResourceGroupName $RG
+Get-AzVirtualNetworkGatewaySupportedVpnDevice -Name $GWName -ResourceGroupName $RG
 
 # Download the configuration script for the connection
-Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript -Name $Connection -ResourceGroupName $RG -DeviceVendor Juniper -DeviceFamily Juniper_SRX_GA -FirmwareVersion Juniper_SRX_12.x_GA
+Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript -Name $Connection -ResourceGroupName $RG -DeviceVendor Juniper -DeviceFamily Juniper_SRX_GA -FirmwareVersion Juniper_SRX_12.x_GA
 ```
 
 ## <a name="apply-the-configuration-script-to-your-vpn-device"></a>VPN デバイスに構成スクリプトを適用する

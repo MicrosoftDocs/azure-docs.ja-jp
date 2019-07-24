@@ -1,28 +1,29 @@
 ---
-title: 'Azure AD Connect Sync: フィルター処理の構成 | Microsoft Docs'
+title: 'Azure AD Connect 同期: フィルター処理の構成 | Microsoft Docs'
 description: Azure AD Connect Sync でフィルター処理を構成する方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 880facf6-1192-40e9-8181-544c0759d506
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/12/2017
-ms.component: hybrid
+ms.topic: conceptual
+ms.date: 03/26/2019
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9ec136b418e78f82486d9d38f361e411c3d00c31
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: eeb2af6283e5c9d8a41e74152a94b85efdae1866
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306361"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487319"
 ---
-# <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect Sync: フィルター処理の構成
+# <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同期: フィルター処理の構成
 フィルター処理を使用することによって、オンプレミスのディレクトリからどのオブジェクトを Azure Active Directory (Azure AD) に反映するかを制御できます。 既定の構成では、構成されているフォレスト内の全ドメインの全オブジェクトが対象となります。 通常は、この構成を推奨します。 Office 365 のワークロード (Exchange Online、Skype for Business など) を使っているユーザーには、完全なグローバル アドレス一覧を表示した方が、電子メールの送信先や電話の相手を探すうえで便利です。 既定では、オンプレミス環境の Exchange または Lync と同じ利便性が得られるように構成されています。
 
 ただし、場合によっては、既定の構成に変更を加えなければならないこともあります。 次に例をいくつか示します。
@@ -93,11 +94,17 @@ November 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) より�
 
 ドメイン ベースのフィルター処理構成は、次の手順から成ります。
 
-1. 同期の対象とする[ドメインを選択](#select-domains-to-be-synchronized)します。
-2. 追加または削除された各ドメインについて、 [実行プロファイル](#update-run-profiles)を調整します。
+1. 同期の対象とするドメインを選択します。
+2. 追加または削除された各ドメインについて、実行プロファイルを調整します。
 3. [変更の適用と検証](#apply-and-verify-changes)を行います。
 
 ### <a name="select-the-domains-to-be-synchronized"></a>同期するドメインを選択する
+同期するドメインを選択する方法は 2 つあります。
+    - 同期サービスを使用する
+    - Azure AD Connect ウィザードを使用する。
+
+
+#### <a name="select-the-domains-to-be-synchronized-using-the-synchronization-service"></a>同期サービスを使用して同期するドメインを選択する
 ドメイン フィルターを設定するには、次の手順を実行します。
 
 1. **ADSyncAdmins** セキュリティ グループに属するアカウントを使用して、Azure AD Connect Sync を実行しているサーバーにサインインします。
@@ -110,7 +117,18 @@ November 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) より�
    オンプレミスの Active Directory インフラストラクチャに変更を加え、フォレストのドメインを追加または削除した場合は、**[更新]** ボタンをクリックして一覧を最新の情報に更新します。 最新の情報に更新しようとすると資格情報を求められます。 Windows Server Active Directory に対する読み取りアクセス権を持った資格情報を指定します。 ダイアログ ボックスにあらかじめ設定されているユーザーでなくてもかまいません。  
    ![更新が必要](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. 完了したら、**[OK]** をクリックして **[プロパティ]** ダイアログを閉じます。 フォレストからドメインを削除した場合、ドメインが削除されたことを示すメッセージが表示され、その構成がクリーンアップされます。
-7. 続けて [実行プロファイル](#update-run-profiles)を調整します。
+7. 続けて実行プロファイルを調整します。
+
+#### <a name="select-the-domains-to-be-synchronized-using-the-azure-ad-connect-wizard"></a>Azure AD Connect ウィザードを使用して同期するドメインを選択する
+ドメイン フィルターを設定するには、次の手順を実行します。
+
+1.  Azure AD Connect ウィザードを開始します
+2.  **[構成]** をクリックします。
+3.  **[同期オプションのカスタマイズ]** を選択し、**[次へ]** をクリックします。
+4.  Azure ADの資格情報を入力します。
+5.  **[Connected Directories]\(接続されたディレクトリ\)** 画面で、**[次へ]** をクリックします。
+6.  **[ドメインと OU のフィルタリング] ページ**で、**[最新の情報に更新]** をクリックします。  新しいドメインが表示され、削除されたドメインは表示されなくなります。
+   ![パーティション](./media/how-to-connect-sync-configure-filtering/update2.png)  
 
 ### <a name="update-the-run-profiles"></a>実行プロファイルを更新する
 ドメイン フィルターを更新した場合、実行プロファイルも更新する必要があります。
@@ -186,6 +204,9 @@ Azure AD Connect インストール ウィザードでは、常にこの構成�
 ## <a name="attribute-based-filtering"></a>属性ベースのフィルター処理
 以下の手順は、November 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) 以降のビルドを想定しています。
 
+> [!IMPORTANT]
+>**Azure AD Connect** によって作成された既定の規則は、変更しないことをお勧めします。 規則を変更する場合は、複製してから、元の規則を無効にします。 複製した規則を変更してください。 これによって (元の規則を無効にすることによって)、その規則によって有効にしたバグ修正や機能は見つからなくなります。
+
 属性ベースのフィルター処理は、オブジェクトをフィルター処理する手段として最も柔軟性の高い方法となります。 [宣言型のプロビジョニング](concept-azure-ad-connect-sync-declarative-provisioning.md)の強みを活かして、Azure AD に対してオブジェクトを同期させるタイミングをあらゆる角度から制御することができます。
 
 Active Directory からメタバースへの[受信](#inbound-filtering)フィルター処理と、メタバースから Azure AD への[送信](#outbound-filtering)フィルター処理を適用できます。 維持が最も簡単な受信フィルター処理を適用することをお勧めします。 送信側のフィルター処理は、複数のフォレストからのオブジェクトを合わせたうえで評価する必要がある場合にのみ使用してください。
@@ -257,7 +278,7 @@ Active Directory からメタバースへの[受信](#inbound-filtering)フィ�
 4. 使用する Connect のバージョンに応じて、**Out to AAD – User Join** と **Out to AAD - User Join SOAInAD** のいずれかの規則を選択し、**[編集]** をクリックします。
 5. ポップアップで **[はい]** を選択して規則のコピーを作成します。
 6. **[説明]** ページの **[優先順位]** の値を、まだ使用していない値 (50 など) に設定します。
-7. 左側のナビゲーションにある **[スコープ フィルター]** をクリックし、**[句の追加]** をクリックします。 **[属性]** で **[mail]** を選択します。 **[演算子]** で **[ENDSWITH]** を選択します。 **[値]** で「**@contoso.com**」を入力し、**[句の追加]** をクリックします。 **[属性]** で **[userPrincipalName]** を選択します。 **[演算子]** で **[ENDSWITH]** を選択します。 **[値]** に「**@contoso.com**」を入力します。
+7. 左側のナビゲーションにある **[スコープ フィルター]** をクリックし、**[句の追加]** をクリックします。 **[属性]** で **[mail]** を選択します。 **[演算子]** で **[ENDSWITH]** を選択します。 **[値]** に「**\@contoso.com**」と入力し、**[句の追加]** をクリックします。 **[属性]** で **[userPrincipalName]** を選択します。 **[演算子]** で **[ENDSWITH]** を選択します。 **[値]** に「**\@contoso.com**」と入力します。
 8. **[Save]** をクリックします。
 9. 構成を完了するには、**完全同期**を実行する必要があります。続きは「[変更の適用と検証](#apply-and-verify-changes)」セクションを参照してください。
 

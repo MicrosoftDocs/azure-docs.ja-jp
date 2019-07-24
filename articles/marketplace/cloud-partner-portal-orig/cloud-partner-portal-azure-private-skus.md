@@ -1,5 +1,5 @@
 ---
-title: プライベート SKU | Microsoft Docs
+title: プライベート SKU とプラン | Microsoft Docs
 description: プライベート SKU を使用してプランの利用を管理する方法。
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 28fe85c6443701d5fb40d4f90dbec9ba445a234d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dcc8b9fef75ba13b607d7fdda5bd55cc710165b9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230242"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837016"
 ---
-<a name="private-skus"></a>プライベート SKU
+<a name="private-skus-and-plans"></a>プライベート SKU とプラン
 ============
 
-プライベート SKU を使用することで、SKU の利用を特定の顧客だけに制限することができます。 SKU がプライベートとしてマークされている場合、[Azure Marketplace](https://azuremarketplace.microsoft.com) や [Azure portal](http://portal.azure.com) などのパブリック カタログでは利用できません。 Azure portal では、SKU へのアクセス権を持つ顧客のみが閲覧できます。 また、プライベート プランへのアクセス権があることを示すメッセージが示される場合があります。
+プライベート SKU を使用することで、SKU の利用を特定の顧客だけに制限することができます。 SKU がプライベートとしてマークされている場合、[Azure Marketplace](https://azuremarketplace.microsoft.com) や [Azure portal](https://portal.azure.com) などのパブリック カタログでは利用できません。 Azure portal では、SKU へのアクセス権を持つ顧客のみが閲覧できます。 また、プライベート プランへのアクセス権があることを示すメッセージが示される場合があります。
 
 >[!NOTE]
 >パブリック SKU との競合を避けるために、プライベート SKU には新しい一意の SKU/プラン ID が必要です。
@@ -91,7 +91,12 @@ CSV ファイルの内容のサンプル:
 
 手動入力から CSV のアップロード ビューに切り替えるか、CSV から手動入力に切り替えるとき、SKU へのアクセス権があるサブスクリプション ID の以前のリストは保持されません。 プランの保存時に、警告が表示されてリストが上書きされます。
 
-<a name="previewing-private-offers"></a>プライベート プランをプレビュー
+<a name="sync-private-subscriptions"></a>プライベート サブスクリプションの同期
+-------------------------
+
+プライベート SKU またはプランを使用した発行済みオファーにサブスクリプションを追加する場合は、対象ユーザーの情報を追加するためにオファーを再発行する必要はありません。 Azure サブスクリプション ID (プランと SKU) またはテナント ID (プランのみ) を使用するだけで、対象ユーザーを追加できます。
+
+<a name="previewing-private-offers"></a>プライベート オファーをプレビュー
 -------------------------
 
 プレビュー/ステージングの段階では、プラン レベルのプレビュー サブスクリプションのみが SKU にアクセスできます。 これは対象ユーザーにプランがどのように表示されるかを確認するためのテストの段階であり、あらゆる種類の公開の標準になります。

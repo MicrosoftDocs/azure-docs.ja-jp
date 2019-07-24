@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub のカスタム エンドポイントについて | Microsoft Docs
 description: 開発者ガイド - ルーティング クエリを使用して、カスタム エンドポイントに device-to-cloud メッセージのルーティングします。
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.author: dobett
-ms.openlocfilehash: bbd5058be502839f83db484136d1c97bac4a3d79
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: e5e92c40cef15e99431dc9652820c71e87935f67
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585953"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008714"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>device-to-cloud メッセージにメッセージ ルートとカスタム エンドポイントを使用する
 
@@ -21,9 +21,9 @@ ms.locfileid: "47585953"
 
 IoT Hub の[メッセージ ルーティング](iot-hub-devguide-routing-query-syntax.md)を使用すると、サービスに接続するエンドポイントに device-to-cloud メッセージをルーティングすることができます。 また、ルーティングでは、エンドポイントにルーティングする前にデータをフィルター処理するクエリ機能も提供されています。 各ルーティング クエリには、次のプロパティがあります。
 
-| プロパティ      | [説明] |
+| プロパティ      | 説明 |
 | ------------- | ----------- |
-| **名前**      | クエリを識別する一意の名前。 |
+| **Name**      | クエリを識別する一意の名前。 |
 | **ソース**    | 処理するデータ ストリームの元データ。 たとえば、デバイス テレメトリです。 |
 | **Condition** | エンドポイントと一致するかどうかを確認するために、メッセージ アプリケーションのプロパティ、システムのプロパティ、メッセージ本文、デバイス ツインのタグ、デバイス ツインのプロパティに対して実行されるルーティング クエリのクエリ式。 クエリの作成方法について詳しくは、[メッセージ ルーティング クエリの構文](iot-hub-devguide-routing-query-syntax.md)に関するページをご覧ください。 |
 | **エンドポイント**  | クエリに一致するメッセージを IoT Hub が送信するエンドポイントの名前。 お使いの IoT ハブと同じリージョンのエンドポイントを選択することをお勧めします。 |
@@ -34,7 +34,7 @@ IoT Hub の[メッセージ ルーティング](iot-hub-devguide-routing-query-s
 
 IoT ハブは、既定の[組み込みのエンドポイント](iot-hub-devguide-messages-read-builtin.md)を持ちます。 サブスクリプション内の他のサービスをハブにリンクして、メッセージをルーティングするカスタム エンドポイントを作成できます。 IoT Hub は現在、カスタム エンドポイントとして、Azure Storage コンテナー、Event Hubs、Service Bus キュー、Service Bus トピックをサポートします。
 
-ルーティングとカスタム エンドポイントを使用すると、メッセージは、クエリに一致しない場合、組み込みのエンドポイントにのみ配信されます。 メッセージを組み込みのエンドポイントとカスタム エンドポイントに配信するには、**イベント** エンドポイントにメッセージを送信するルートを追加します。
+ルーティングとカスタム エンドポイントを使用すると、メッセージは、クエリに一致しない場合、組み込みのエンドポイントにのみ配信されます。 メッセージを組み込みのエンドポイントとカスタム エンドポイントに配信するには、組み込み**イベント** エンドポイントにメッセージを送信するルートを追加します。
 
 > [!NOTE]
 > * IoT Hub は、Azure Storage コンテナーに BLOB としてデータを書き込む処理のみをサポートしています。

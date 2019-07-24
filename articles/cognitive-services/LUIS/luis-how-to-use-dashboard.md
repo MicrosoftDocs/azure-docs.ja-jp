@@ -1,23 +1,24 @@
 ---
-title: Language Understanding アプリのアプリケーション ダッシュボード
-titleSuffix: Azure Cognitive Services
+title: アプリ ダッシュボード
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: ご自身のアプリをひと目で監視できる視覚的なレポート作成ツール、アプリケーション ダッシュボードについて説明します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/01/2018
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 6a4e8dbee34402f57d3e697e93d10573aaf10998
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c173152d0a59e391fe77ee855311a867a1b2b6c0
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212814"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338435"
 ---
-# <a name="application-dashboard"></a>アプリケーション ダッシュボード
+# <a name="model-and-usage-statistics-in-the-dashboard"></a>ダッシュボードにおけるモデルと使用状況の統計
 アプリ ダッシュボードを使用すると、ご自身のアプリをひと目で監視することができます。 **ダッシュボード**は、**[マイ アプリ]** でアプリケーション名をクリックし、上部パネルから **[ダッシュボード]** を選択してアプリを開いたときに表示されます。 
 
 > [!CAUTION]
@@ -26,15 +27,7 @@ ms.locfileid: "50212814"
 > * LUIS [API](https://aka.ms/luis-endpoint-apis)、ボットなど、すべてのエンドポイント要求に対して LUIS エンドポイント キーを使用する
 > * LUIS アプリごとに異なるエンドポイント キーを使用する。 すべてのアプリに単一のエンドポイント キーを使用しないでください。 エンドポイント キーは、アプリ レベルではなくキー レベルで追跡されます。  
 
-**[ダッシュボード]** ページでは、現在のモデルの状態などの LUIS アプリの概要と、時系列の[エンドポイント](luis-glossary.md#endpoint)使用量を確認できます。 <!--The following image shows the **Dashboard** page.-->
-
-<!-- TBD: Get a working screen shot
-![The Dashboard](./media/luis-how-to-use-dashboard/dashboard.png)
--->
-
-<!-- TBD: IS THIS STILL TRUE?
-At the top of the **Dashboard** page, a contextual notification bar constantly displays notifications to update you on the required or recommended actions appropriate for the current state of your app. It also provides useful tips and alerts as needed. A detailed description of the data reported on the **Dashboard** page follows.
--->
+**[ダッシュボード]** ページでは、現在のモデルの状態などの LUIS アプリの概要と、時系列の[エンドポイント](luis-glossary.md#endpoint)使用量を確認できます。 
   
 ## <a name="app-status"></a>アプリの状態
 ダッシュボードには、アプリの最終トレーニング日時、最終発行日時など、アプリケーションのトレーニングおよび発行状態が表示されます。  
@@ -49,7 +42,6 @@ At the top of the **Dashboard** page, a contextual notification bar constantly d
 ## <a name="endpoint-hits"></a>エンドポイント ヒット
 ダッシュボードには、LUIS アプリが受信したエンドポイント ヒットの合計数が表示されます。また、指定期間内のヒット数を表示することもできます。 表示されたヒットの合計数は、[エンドポイント キー](./luis-concept-keys.md#endpoint-key)を使用するエンドポイント ヒット数と、[作成](./luis-concept-keys.md#authoring-key)キーを使用するエンドポイント ヒット数の合計です。
 
-<!-- TBD: this image is old but I don't have a new one based on usage -->
 ![エンドポイント ヒット](./media/luis-how-to-use-dashboard/dashboard-endpointhits.png)
 
 > [!NOTE] 
@@ -77,21 +69,8 @@ At the top of the **Dashboard** page, a contextual notification bar constantly d
 
 ![意図の内訳](./media/luis-how-to-use-dashboard/intent-breakdown.png)
 
-内訳の基準をラベル付き発話にするかエンドポイント ヒットにするかを制御するには:
-
-1. **[追加設定]** ![[設定追加] ボタン](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) をクリックして、次の図のような一覧にアクセスします。
-
-    ![意図の内訳の一覧](./media/luis-how-to-use-dashboard/intent-breakdown-based-on.png)
-2. 一覧から値を選択し、戻る矢印  ![戻る矢印 ](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) をクリックして、グラフを表示します。
-
 ## <a name="entity-breakdown"></a>エンティティの内訳
 ダッシュボードには、ラベル付き発話またはエンドポイント ヒットに基づいてエンティティの内訳が表示されます。 この概要グラフは、アプリ内の各エンティティの重要度を相対的に示しています。 スライスにマウス ポインターを置くと、エンティティの名前と、ラベル付き発話/エンドポイント ヒットのエンティティの内訳がパーセンテージで表示されます。 
 
 ![エンティティの内訳](./media/luis-how-to-use-dashboard/entity-breakdown.png)
 
-内訳の基準をラベル付き発話にするかエンドポイント ヒットにするかを制御するには:
-
-1. **[追加設定]** ![[設定追加] ボタン](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) をクリックして、次の図のような一覧にアクセスします。
-
-    ![エンティティの内訳の一覧](./media/luis-how-to-use-dashboard/entity-breakdown-based-on.png)
-2. 一覧から値を選択し、戻る矢印  ![戻る矢印 ](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) をクリックすると、適宜グラフが表示されます。

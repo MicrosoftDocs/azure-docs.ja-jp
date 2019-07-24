@@ -8,17 +8,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/01/2018
-ms.openlocfilehash: b8494150a060e02145eab3674bdd2dd62cdda225
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.date: 12/15/2018
+ms.openlocfilehash: 2b818350c19d1d9ff34bcdac0e438def0f859e40
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277292"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381897"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>HDInsight Spark クラスターを使用して Azure SQL Database のデータを読み書きする
 
-Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続してから、SQL Database からのデータの読み取り、および SQL Database へのデータの書き込みやストリーミングを行う方法を説明します。 この記事の説明では、Jupyter Notebook を使って Scala コード スニペットを実行します。 ただし、Scala または Python でスタンドアロン アプリケーションを作成して、同じタスクを実行することもできます。 
+Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続してから、SQL Database からのデータの読み取り、および SQL Database へのデータの書き込みやストリーミングを行う方法を説明します。 この記事の説明では、[Jupyter Notebook](https://jupyter.org/) を使って Scala コード スニペットを実行します。 ただし、Scala または Python でスタンドアロン アプリケーションを作成して、同じタスクを実行することもできます。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -26,32 +26,25 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
 
 * **Azure SQL Database**。 手順については、「[Azure SQL データベースの作成](../../sql-database/sql-database-get-started-portal.md)」をご覧ください。 **AdventureWorksLT** サンプルのスキーマとデータを使って、データベースを作成します。 また、サーバー レベルのファイアウォール規則を作成し、サーバー上の SQL Database にクライアントの IP アドレスでアクセスすることを許可します。 ファイアウォール規則を追加する方法についても、同じ記事をご覧ください。 Azure SQL Database を作成した後は、次の値がすぐにわかることを確認します。 Spark クラスターからデータベースに接続するときに必要です。
 
-    * Azure SQL Database をホストしているサーバー名
-    * Azure SQL データベース名
-    * Azure SQL Database の管理者のユーザー名/パスワード
+    * Azure SQL Database をホストしているサーバー名。
+    * Azure SQL Database の名前。
+    * Azure SQL Database の管理者のユーザー名/パスワード。
 
 * **SQL Server Management Studio**。 「[SQL Server Management Studio を使って接続とデータの照会を行う](../../sql-database/sql-database-connect-query-ssms.md)」の手順に従います。
 
-## <a name="create-a-jupyter-notebook"></a>Jupyter Notebook の作成
+## <a name="create-a-jupyter-notebook"></a>Jupyter Notebook の作成 
 
-最初に、Spark クラスターに関連付けられた Jupyter Notebook を作成します。 この Notebook を使って、この記事で使われているコード スニペットを実行します。 
+最初に、Spark クラスターに関連付けられた [Jupyter Notebook](https://jupyter.org/) を作成します。 この Notebook を使って、この記事で使われているコード スニペットを実行します。 
 
-1. [Azure Portal](https://portal.azure.com/) でクラスターを開きます。 
+1. [Azure Portal](https://portal.azure.com/) でクラスターを開きます。
+1. 右側の**クラスター ダッシュボード**の下で、**[Jupyter Notebook]** を選択します。  **クラスター ダッシュボード** が表示されない場合は、ブレードの左側のメニューで **[概要]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
-1. **[クイック リンク]** セクションで **[クラスター ダッシュボード]** をクリックして、**[クラスター ダッシュボード]** ビューを開きます。  **[クイック リンク]** が表示されない場合は、ブレードの左側のメニューで **[概要]** をクリックします。
-
-    ![Spark のクラスター ダッシュボード](./media/apache-spark-connect-to-sql-database/hdinsight-cluster-dashboard-on-spark.png "Spark のクラスター ダッシュボード") 
-
-1. **[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
-
-    ![Spark 上の Jupyter Notebook](./media/apache-spark-connect-to-sql-database/hdinsight-jupyter-notebook-on-spark.png "Spark 上の Jupyter Notebook")
+    ![Spark 上の Jupyter Notebook](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark 上の Jupyter Notebook")
    
-   > [!NOTE]
+   > [!NOTE]  
    > ブラウザーで次の URL を開き、Spark クラスターの Jupyter Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-   > 
-   > 
 
 1. Jupyter Notebook で、右上隅の **[New]\(新規\)** をクリックし、**[Spark]** をクリックして Scala Notebook を作成します。 HDInsight Spark クラスター上の Jupyter Notebook では、Python2 アプリケーション用の **PySpark** カーネル、Python3 アプリケーション用の **PySpark3** カーネルも提供されます。 この記事では、Scala Notebook を作成します。
    
@@ -59,9 +52,8 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
 
     これらのカーネルの詳細については、[HDInsight での Apache Spark クラスターと Jupyter Notebook カーネルの使用](apache-spark-jupyter-notebook-kernels.md)に関する記事を参照してください。
 
-   > [!NOTE]
+   > [!NOTE]  
    > 現在、Spark から SQL Database へのデータのストリーミングは Scala と Java においてのみサポートされているので、この記事では、Spark (Scala) カーネルを使います。 SQL からの読み取りや SQL への書き込みは Python を使って行うこともできますが、この記事での一貫性を保つため、3 つの操作すべてに Scala を使います。
-   >
 
 1. これにより、既定の名前 **[Untitled]\(無題\)** で新しい Notebook が開きます。 Notebook の名前をクリックし、任意の名前を入力します。
 
@@ -240,6 +232,6 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL Database と接続
 
 ## <a name="next-steps"></a>次の手順
 
-* [HDInsight Spark クラスターを使用して Data Lake Store のデータを分析する](apache-spark-use-with-data-lake-store.md)
+* [HDInsight Spark クラスターを使用して Data Lake Storage 内のデータを分析する](apache-spark-use-with-data-lake-store.md)
 * [EventHub を使用して構造化ストリーム イベントを処理する](apache-spark-eventhub-structured-streaming.md)
-* [HDInsight 上で Kafka を用いて Spark 構造化ストリーミングを使用する](../hdinsight-apache-kafka-spark-structured-streaming.md)
+* [HDInsight で Apache Kafka による Apache Spark 構造化ストリーミングを使用する](../hdinsight-apache-kafka-spark-structured-streaming.md)

@@ -1,38 +1,34 @@
 ---
-title: MongoDB API の Azure Cosmos DB グローバル分散チュートリアル | Microsoft Docs
-description: MongoDB API を使用して Azure Cosmos DB グローバル分散を設定する方法について説明します。
-services: cosmos-db
-keywords: グローバル分散, MongoDB
-author: SnehaGunda
-manager: kfile
+title: Azure Cosmos DB の MongoDB 用 API を使用したグローバル分散のチュートリアル
+description: Azure Cosmos DB の MongoDB 用 API を使用してグローバル分散を設定する方法について説明します。
+author: rimman
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
-ms.devlang: na
+ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
-ms.date: 05/10/2017
-ms.author: sngun
-ms.custom: mvc
-ms.openlocfilehash: 1885c979fe2532d26b2e7b59111675bebee8ec05
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 12/26/2018
+ms.author: rimman
+ms.reviewer: sngun
+ms.openlocfilehash: 5ae5923253575fc3dea6b90b599b9fa3d79a85b8
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38668090"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041375"
 ---
-# <a name="set-up-azure-cosmos-db-global-distribution-using-the-mongodb-api"></a>MongoDB API を使用して Azure Cosmos DB グローバル分散を設定する
+# <a name="set-up-global-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用してグローバル分散型データベースを設定する
 
-この記事では、Azure Portal を使用して Azure Cosmos DB グローバル分散をセットアップし、MongoDB API を使用して接続する方法を説明します。
+この記事では、Azure portal を使用してグローバル分散型データベースを設定し、Azure Cosmos DB の MongoDB 用 API を使用してそれに接続する方法を説明します。
 
 この記事に含まれるタスクは次のとおりです。 
 
 > [!div class="checklist"]
 > * Azure Portal を使用してグローバル分散を構成する
-> * [MongoDB API](mongodb-introduction.md) を使用してグローバル分散を構成する
+> * [Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md) を使用してグローバル分散を構成する
 
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
-## <a name="verifying-your-regional-setup-using-the-mongodb-api"></a>MongoDB API を使用してリージョン設定を検証する
-MongoDB 用 API 内のグローバル構成を再確認する最も簡単な方法は、Mongo シェルから *isMaster()* コマンドを実行することです。
+## <a name="verifying-your-regional-setup"></a>リージョン設定を確認する 
+Cosmos DB の MongoDB 用 API を使用してグローバル構成を確認する簡単な方法として、Mongo シェルから *isMaster()* コマンドを実行する方法があります。
 
 Mongo シェルから次のコマンドを実行します。
 
@@ -66,9 +62,9 @@ Mongo シェルから次のコマンドを実行します。
       }
    ```
 
-## <a name="connecting-to-a-preferred-region-using-the-mongodb-api"></a>MongoDB API を使用して優先リージョンに接続する
+## <a name="connecting-to-a-preferred-region"></a>優先リージョンに接続する 
 
-MongoDB API では、グローバル分散データベースのコレクションの読み取り設定を指定することができます。 待機時間の短い読み取りとグローバルな高可用性の両方を得るために、コレクションの読み取り設定には *Nearest* を設定することをお勧めします。 *Nearest* 読み取り設定は、最寄りのリージョンから読み取るように構成します。
+Azure Cosmos DB の MongoDB 用 API を使用すると、グローバル分散型データベースのコレクションの読み取り設定を指定することができます。 待機時間の短い読み取りとグローバルな高可用性の両方を得るために、コレクションの読み取り設定には *Nearest* を設定することをお勧めします。 *Nearest* 読み取り設定は、最寄りのリージョンから読み取るように構成します。
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);
@@ -98,9 +94,9 @@ collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode
 
 > [!div class="checklist"]
 > * Azure Portal を使用してグローバル分散を構成する
-> * SQL API を使用してグローバル分散を構成する
+> * Cosmos DB の MongoDB 用 API を使用してグローバル分散を構成する
 
 これで次のチュートリアルに進むことができます。Azure Cosmos DB ローカル エミュレーターを使用してローカルで開発する方法について学びます。
 
 > [!div class="nextstepaction"]
-> [エミュレーターを使用したローカル開発](local-emulator.md)
+> [Azure Cosmos DB Emulator を使用したローカルでの開発](local-emulator.md)

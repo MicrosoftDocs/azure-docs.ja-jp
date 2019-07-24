@@ -5,14 +5,14 @@ author: ganganarayanan
 ms.author: gangan
 ms.date: 1/31/2017
 ms.topic: article
-ms.service: microsoft-docs
+ms.service: azure
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: c3557d54b9fb3fd0173eec1e327050ac7cc80fc2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d98d0637c6d520193b11f4267c59016772ef063a
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31392903"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792482"
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure のロールベースのアクセス制御 (RBAC) を使用してサポート要求を作成および管理するアクセス権を制御する
 
@@ -20,7 +20,7 @@ ms.locfileid: "31392903"
 Azure Portal ([portal.azure.com](https://portal.azure.com)) でサポート要求を作成するときは、Azure の RBAC モデルを使用して、サポート要求を作成および管理できるユーザーを定義します。
 アクセス権を付与するには、特定のスコープでユーザー、グループ、アプリケーションに適切な RBAC ロールを割り当てます。スコープには、サブスクリプション、リソース グループ、またはリソースを指定できます。
 
-たとえば、サブスクリプション スコープで読み取りアクセス許可を持つリソース グループ所有者は、リソース グループに属するすべてのリソース (Web サイト、仮想マシン、サブネットなど) を管理できます。
+例を見てみましょう。サブスクリプション スコープで読み取りアクセス許可を持つリソース グループ所有者は、リソース グループに属するすべてのリソース (Web サイト、仮想マシン、サブネットなど) を管理できます。
 ただし、仮想マシン リソースに対するサポート要求を作成しようとすると、次のエラーが発生します。
 
 ![サブスクリプション エラー](./media/create-manage-support-requests-using-access-control/subscription-error.png)

@@ -4,22 +4,20 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: e743128932f6a136820819c21e0386eb678c4203
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 4e262c9e5bb88e77bc9c09853c06f4cdb41eedaa
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165778"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58891009"
 ---
-<!--author=jgerend last changed: 03/16/16-->
-
 ## <a name="preparing-for-updates"></a>更新プログラムの準備
 更新プログラムをスキャンして適用する前に、次の手順を実行する必要があります。
 
 1. デバイス データのクラウド スナップショットを取得します。
 2. コントローラーの固定 IP アドレスがルーティング可能でインターネットに接続できることを確認します。 これらの固定 IP は、デバイスに更新プログラムを提供するために使用されます。 デバイスの Windows PowerShell インターフェイスから、各コントローラーで次のコマンドレットを実行してこれをテストできます。
    
-     `Test-Connection -Source <Fixed IP of your device controller> -Destination <Any IP or computer name outside of datacenter network> `
+     `Test-Connection -Source <Fixed IP of your device controller> -Destination <Any IP or computer name outside of datacenter network>`
    
     **固定 IP でインターネットに接続できるときの Test-Connection のサンプル出力**
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 6601eba90f3c3644d418ddd0a74746e1a12bcbd3
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 59bfa83ab3432adb7a4df5112367f87014a0b292
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007781"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58917619"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>クラウド サービスのスタートアップ タスクを構成して実行する方法
 ロールが開始する前に、スタートアップ タスクを使用して操作を実行できます。 対象となる操作としては、コンポーネントのインストール、COM コンポーネントの登録、レジストリ キーの設定、実行時間の長いプロセスの開始などがあります。
@@ -50,13 +50,13 @@ Azure でのロールのスタートアップ手順を次に示します。
    * **background** タスクと **foreground** タスクは、スタートアップ タスクと並列に非同期的に開始されます。  
      
      > [!WARNING]
-     > IIS はスタートアップ プロセスのスタートアップ タスク ステージの間に完全に構成されない場合があるので、ロール固有のデータを使用できないことがあります。 ロール固有のデータが必要なスタートアップ タスクは、 [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx)を使用する必要があります。
+     > IIS はスタートアップ プロセスのスタートアップ タスク ステージの間に完全に構成されない場合があるので、ロール固有のデータを使用できないことがあります。 ロール固有のデータが必要なスタートアップ タスクは、 [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](/previous-versions/azure/reference/ee772851(v=azure.100))を使用する必要があります。
      > 
      > 
 3. ロール ホスト プロセスが開始され、サイトが IIS に作成されます。
-4. [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) メソッドが呼び出されます。
+4. [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) メソッドが呼び出されます。
 5. インスタンスは **準備完了** とマークされ、トラフィックがインスタンスにルーティングされるようになります。
-6. [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.Run](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) メソッドが呼び出されます。
+6. [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.Run](/previous-versions/azure/reference/ee772746(v=azure.100)) メソッドが呼び出されます。
 
 ## <a name="example-of-a-startup-task"></a>スタートアップ タスクの例
 スタートアップ タスクは、[ServiceDefinition.csdef] ファイルの **Task** 要素で定義されています。 **commandLine** 属性では、スタートアップ バッチ ファイルまたはコンソール コマンドの名前とパラメーターを指定します。**executionContext** 属性では、スタートアップ タスクの特権レベルを指定します。**taskType** 属性では、タスクの実行方法を指定します。
@@ -100,9 +100,9 @@ EXIT /B 0
 **executionContext** -スタートアップ タスクの特権レベルを指定します。 指定できる特権レベルは limited または elevated です。
 
 * **limited**  
-  スタートアップ タスクは、ロールと同じ特権で実行します。 [Runtime] 要素の **executionContext** 属性も **limited** である場合は、ユーザー特権が使用されます。
+   スタートアップ タスクは、ロールと同じ特権で実行します。 [Runtime] 要素の **executionContext** 属性も **limited** である場合は、ユーザー特権が使用されます。
 * **elevated**  
-  スタートアップ タスクは、管理者特権で実行します。 これにより、ロール自体の特権レベルを上げることなく、プログラムのインストール、IIS の構成の変更、レジストリの変更、その他の管理者レベル タスクを実行できます。  
+   スタートアップ タスクは、管理者特権で実行します。 これにより、ロール自体の特権レベルを上げることなく、プログラムのインストール、IIS の構成の変更、レジストリの変更、その他の管理者レベル タスクを実行できます。  
 
 > [!NOTE]
 > スタートアップ タスクの特権レベルは、ロール自体と同じでなくてもかまいません。
@@ -121,9 +121,9 @@ EXIT /B 0
   
     バッチ ファイルを 0 の **errorlevel** で確実に終了させるには、バッチ ファイル プロセスの最後で `EXIT /B 0` コマンドを実行します。
 * **background**  
-  タスクは、ロールのスタートアップと並行して、非同期的に実行されます。
+   タスクは、ロールのスタートアップと並行して、非同期的に実行されます。
 * **フォアグラウンド**  
-  タスクは、ロールのスタートアップと並行して、非同期的に実行されます。 **foreground** タスクと **background** タスクの重要な違いは、**foreground** タスクではタスクが終了するまでロールがリサイクルまたはシャットダウンされなくなることです。 **background** タスクにはこのような制限はありません。
+   タスクは、ロールのスタートアップと並行して、非同期的に実行されます。 **foreground** タスクと **background** タスクの重要な違いは、**foreground** タスクではタスクが終了するまでロールがリサイクルまたはシャットダウンされなくなることです。 **background** タスクにはこのような制限はありません。
 
 ## <a name="environment-variables"></a>環境変数
 環境変数は、スタートアップ タスクに情報を渡すための手段です。 たとえば、インストールするプログラムを含む BLOB へのパス、ロールで使用するポート番号、スタートアップ タスクの機能を制御する設定などを設定できます。

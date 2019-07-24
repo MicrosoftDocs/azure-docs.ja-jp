@@ -1,26 +1,27 @@
 ---
-title: Azure Active Directory ライセンスを割り当てる方法、または削除する方法 | Microsoft Docs
-description: Azure Active Directory を使用して、ユーザーまたはグループからの Azure Active Directory ライセンスの割り当てまたは削除を行います。
+title: ライセンスの割り当てと削除 - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory ライセンスをユーザーまたはグループに割り当てたり、それらのライセンスを削除したりする手順を紹介します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
 ms.service: active-directory
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-custom: it-pro
-ms.openlocfilehash: e1b0b2f84c67e30c3bb998554dc662b002744003
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.custom: it-pro, seodec18
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1e7a3f80067adb3093bd27e34a45b3afd72b4993
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603890"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286858"
 ---
-# <a name="how-to-assign-or-remove-azure-active-directory-licenses"></a>方法: Azure Active Directory ライセンスを割り当てる、または削除する
+# <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Azure Active Directory ポータルを使用したライセンスの割り当てと削除
 多くの Azure Active Directory (Azure AD) サービスでは、Azure AD 製品をアクティブ化し、ユーザーまたはグループ (および関連するメンバー) ごとにその製品のライセンスを付与する必要があります。 アクティブなライセンスを持つユーザーのみが、ライセンスされている Azure AD サービスにアクセスおよび使用できるようになります。
 
 ## <a name="available-product-editions"></a>使用可能な製品エディション
@@ -57,7 +58,8 @@ Azure AD 製品に利用できるいくつかのエディションがありま�
 ## <a name="assign-licenses-to-users-or-groups"></a>ユーザーまたはグループにライセンスを割り当てる
 ライセンスされている Azure AD サービスを使用する必要がある任意のユーザーに適切なライセンスがあることを確認します。 個別のユーザーまたはグループ全体にライセンスの権限を追加するかどうかの判断はお客様にお任せします。
 
->![注] グループベースのライセンスは Azure AD のパブリック プレビュー機能であり、すべての有料 Azure AD ライセンス プランに付属します。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。<br><br>ユーザーを追加する方法に関する詳細については、「[クイック スタート: Azure Active Directory に新しいユーザーを追加する](add-users-azure-active-directory.md)」をご覧ください。 グループを作成してメンバーを追加する方法に関する詳細については、「[基本グループを作成してメンバーを追加する](active-directory-groups-create-azure-portal.md)」を参照してください。
+>[!Note]
+>グループベースのライセンスは Azure AD のパブリック プレビュー機能であり、すべての有料 Azure AD ライセンス プランに付属します。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。<br><br>ユーザーを追加する方法に関する詳細については、「[クイック スタート: Azure Active Directory に新しいユーザーを追加する](add-users-azure-active-directory.md)」をご覧ください。 グループを作成してメンバーを追加する方法に関する詳細については、「[基本グループを作成してメンバーを追加する](active-directory-groups-create-azure-portal.md)」を参照してください。
 
 ### <a name="to-assign-a-license-to-a-specific-user"></a>ライセンスを特定のユーザーに割り当てるには
 1. **[製品]** ページで、ユーザーに割り当てる必要があるエディション名を選択します。 たとえば、_Azure Active Directory Premium プラン 2_ です。
@@ -110,7 +112,6 @@ Azure AD 製品に利用できるいくつかのエディションがありま�
 5. **[割り当て]** を選択します。
 
     グループはライセンスされているグループのリストに追加され、そのすべてのメンバーが含まれる Azure AD サービスにアクセスできます。
-
 
 ## <a name="remove-a-license"></a>ライセンスを削除する
 **[ライセンス]** ページからユーザーまたはグループのいずれかからライセンスを削除できます。

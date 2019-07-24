@@ -3,17 +3,15 @@ title: Azure Database for MariaDB にアプリケーションを接続する
 description: このドキュメントでは、Azure Database for MariaDB に接続するアプリケーションについて、現在サポートされている接続文字列を示します。ADO.NET (C#)、JDBC、Node.js、ODBC、PHP、Python、および Ruby の接続文字列が含まれます。
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 706bf395df98bd78fa36273a4948a11d4b59067d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 70cd25ff63101fa2a477cde2502d5d286b289366
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967933"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536576"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>Azure Database for MariaDB にアプリケーションを接続する方法
 このトピックでは、Azure Database for MariaDB でサポートされているすべての接続文字列の種類と共に、テンプレートと例を紹介します。 実際に使用する接続文字列のパラメーターと設定は異なる可能性があります。
@@ -64,7 +62,7 @@ client = Mysql2::Client.new(username: "{username@servername}", password: {your_p
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Azure ポータルから接続文字列の詳細を取得する
-[Azure portal](https://portal.azure.com) で、Azure Database for MariaDB サーバーに移動し、**[接続文字列]** をクリックして、インスタンスの文字列リストを取得します。![Azure portal の [接続文字列] ウィンドウ](./media/howto-connection-strings/connection-strings-on-portal.png)
+[Azure portal](https://portal.azure.com) 上で、Azure Database for MariaDB サーバーに移動し、**[接続文字列]** をクリックして、インスタンスの文字列リストを取得します。![Azure portal 上の [接続文字列] ウィンドウ](./media/howto-connection-strings/connection-strings-on-portal.png)
 
 この文字列は、ドライバー、サーバー、その他のデータベース接続パラメーターといった詳細情報を提供します。 独自のパラメーター (データベース名やパスワードなど) を使用してこれらの例を変更します。 その文字列を使用して、コードやアプリケーションからサーバーに接続できます。
 

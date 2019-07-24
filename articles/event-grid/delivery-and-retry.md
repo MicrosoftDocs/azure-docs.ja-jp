@@ -2,17 +2,17 @@
 title: Azure Event Grid による配信と再試行
 description: Azure Event Grid がイベントをどのように配信し、未配信メッセージをどのように処理するかについて説明します。
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/10/2018
-ms.author: tomfitz
-ms.openlocfilehash: 4d53c33daefaadb4c58ce500a5d564af7988b606
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.date: 01/01/2019
+ms.author: spelluru
+ms.openlocfilehash: 6dfa84eff8dcc104ae6f9c16262f3b1c697df6c1
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077090"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991208"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid によるメッセージの配信と再試行
 
@@ -24,17 +24,20 @@ Event Grid は、持続性のある配信を提供します。 各サブスク�
 
 ## <a name="retry-schedule-and-duration"></a>再試行のスケジュールと期間
 
-Event Grid は、イベント配信に対して指数バックオフ再試行ポリシーを使用します。 エンドポイントが応答しないか、またはエラー コードを返す場合、Event Grid は次のスケジュールで配信を再試行します。
+Event Grid は、イベント配信に対して指数バックオフ再試行ポリシーを使用します。 エンドポイントが応答しないか、またはエラー コードを返す場合、Event Grid では次善策として、次のスケジュールで配信を再試行します。
 
 1. 10 秒
-2. 30 秒
-3. 1 分
-4. 5 分
-5. 10 分
-6. 30 分
-7. 1 時間
+1. 30 秒
+1. 1 分
+1. 5 分
+1. 10 分
+1. 30 分
+1. 1 時間
+1. 最大24 時間で、1時間ごと
 
-Event Grid は、すべての再試行手順に小さなランダム化を追加します。 1 時間より後は、イベント配信が 1 時間に 1 回再試行されます。
+Event Grid では、すべての再試行の手順に小規模なランダム化を追加します。また、エンドポイントが一貫して正常ではない、長期間ダウンしている、または圧迫されていることがわかっている場合は、状況に応じて、特定の再試行をスキップできます。
+
+決定論的な動作の場合は、[サブスクリプション再試行ポリシー](manage-event-delivery.md)の中で有効なイベント タイムと最大配信試行回数を設定します。
 
 Event Grid では、既定で 24 時間内に配信されないすべてのイベントが有効期限切れになります。 イベント サブスクリプションの作成時には、[再試行ポリシーをカスタマイズする](manage-event-delivery.md)ことができます。 配信の最大試行回数 (既定値は 30) と、イベントの有効期限 (既定値は 1,440 分) を指定します。
 

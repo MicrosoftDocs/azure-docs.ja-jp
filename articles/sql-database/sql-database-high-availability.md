@@ -3,7 +3,7 @@ title: 高可用性 - Azure SQL Database サービス | Microsoft Docs
 description: Microsoft Azure SQL Database サービスの高可用性機能および特色について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 0b2fa1541eafa3acf28690005a6d40fac76deba6
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 01/25/2019
+ms.openlocfilehash: fd6e383c2631a47daa7bf469c5bec59959453252
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353477"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616851"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性と Microsoft Azure SQL Database
 
@@ -43,9 +43,9 @@ Standard 可用性は、Basic、Standard、および General Purpose サービ�
 Standard 可用性モデルには、次の 2 つのレイヤーがあります。
 
 - ステートレス計算レイヤー。`sqlserver.exe` プロセスを実行しており、一時的なデータとキャッシュ データのみが含まれています (プラン キャッシュ、バッファー プール、列のストア プールなど)。 このステートレス SQL Server ノードは、プロセスの初期化、ノードの正常性の制御、および他の場所へのフェールオーバーを必要に応じて実行する Azure Service Fabric によって操作されます。
-- ステートフル データ レイヤー。データベース ファイル (.mdf/.ldf) が Azure Premium Storage に保存されています。 Azure Storage では、データベース ファイル内にあるレコードのデータが消失しないことが保証されています。 Azure Storage には、データの可用性と冗長性が組み込まれています。そのため、たとえ SQL Server プロセスがクラッシュしても、ログ ファイルのレコードやデータ ファイルのページはすべて維持されます。
+- ステートフル データ レイヤー。データベース ファイル (.mdf/.ldf) は Azure Blob Storage に保存されています。 Azure Blob Storage では、データベース ファイル内にあるレコードのデータが消失しないことが保証されています。 Azure Blob ストレージには、データの可用性と冗長性が組み込まれています。そのため、たとえ SQL Server プロセスがクラッシュしても、ログ ファイルのレコードやデータ ファイルのページはすべて維持されます。
 
-データベース エンジンまたはオペレーティング システムがアップグレードされた場合、基となるインフラストラクチャの一部で障害が発生した場合、または Sql Server プロセスで重大な問題が検出された場合、Azure Service Fabric は、ステートレス SQL Server プロセスを別のステートレス計算ノードに移行します。 フェールオーバー時間を最小限に抑えるために、フェールオーバーが発生した場合に新しい計算サービスの実行を待機している一連のスペア ノードがあります。 Azure Storage レイヤーのデータは影響を受けず、データ/ログ ファイルは、新しく初期化された SQL Server プロセスにアタッチされます。 このプロセスは、99.99% の可用性を保証していますが、移行時間や、新しい SQL Server ノードの起動にコールド キャッシュを使用することが原因で、実行中の大きなワークロードに対しては、パフォーマンス上の影響が若干生じる場合があります。
+データベース エンジンまたはオペレーティング システムがアップグレードされた場合、基となるインフラストラクチャの一部で障害が発生した場合、または Sql Server プロセスで重大な問題が検出された場合、Azure Service Fabric は、ステートレス SQL Server プロセスを別のステートレス計算ノードに移行します。 フェールオーバー時間を最小限に抑えるために、フェールオーバーが発生した場合に新しい計算サービスの実行を待機している一連のスペア ノードがあります。 Azure BLOB ストレージのデータは影響を受けず、データ/ログ ファイルは、新しく初期化された SQL Server プロセスにアタッチされます。 このプロセスは、99.99% の可用性を保証していますが、移行時間や、新しい SQL Server ノードの起動にコールド キャッシュを使用することが原因で、実行中の大きなワークロードに対しては、パフォーマンス上の影響が若干生じる場合があります。
 
 ## <a name="premium-and-business-critical-service-tier-availability"></a>Premium および Business Critical サービス レベルの可用性
 
@@ -55,7 +55,7 @@ Premium モデルでは、Azure SQL Database が計算およびストレージ�
 
 ![データベース エンジン ノードのクラスター](media/sql-database-managed-instance/business-critical-service-tier.png)
 
-SQL データベース エンジン プロセスと基礎となる mdf/ldf ファイルはどちらも、ワークロードの待ち時間を短縮するローカルに接続された SSD ストレージを備えた同じノード上に配置されます。 高可用性は、SQL Server [Always On 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)と同様のテクノロジを使用して実装されます。 すべてのデータベースは、データベース ノードのクラスターになっています。このクラスターの中で、1 つのプライマリ データベースは、顧客のワークロード用にアクセスすることができ、3 つのセカンダリ プロセスは、データのコピーが格納されています。 プライマリ ノードは、変更内容を絶えずセカンダリ ノードにプッシュしています。これは、何らかの原因でプライマリ ノードがクラッシュした場合でも、セカンダリ レプリカでデータを確実に使用できるようにするためです。 フェールオーバーは、SQL Server データベース エンジンで処理されます。つまり、あるセカンダリ レプリカがプライマリ ノードになると、クラスター内のノード数を十分に確保するために、新しいセカンダリ レプリカが作成されます。 ワークロードは、新しいプライマリ ノードに自動的にリダイレクトされます。
+SQL データベース エンジン プロセスと基礎となる mdf/ldf ファイルはどちらも、ワークロードの待ち時間を短縮するローカルに接続された SSD ストレージを備えた同じノード上に配置されます。 高可用性は、SQL Server [Always On 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)と同様のテクノロジを使用して実装されます。 すべてのデータベースは、データベース ノードのクラスターになっています。このクラスターの中で、1 つのプライマリ データベースは、顧客のワークロード用にアクセスすることができ、3 つのセカンダリ プロセスは、データのコピーが格納されています。 プライマリ ノードは、変更内容を絶えずセカンダリ ノードにプッシュしています。これは、何らかの原因でプライマリ ノードがクラッシュした場合でも、セカンダリ レプリカでデータを確実に使用できるようにするためです。 フェールオーバーは、Azure Service Fabric で処理されます。つまり、あるセカンダリ レプリカがプライマリ ノードになると、クラスター内のノード数を十分に確保するために、新しいセカンダリ レプリカが作成されます。 ワークロードは、新しいプライマリ ノードに自動的にリダイレクトされます。
 
 さらに、Business Critical クラスターには、プライマリ ワークロードのパフォーマンスに影響を与えない読み取り専用クエリ (レポートなど) を実行するために使用できる無料の組み込みの読み取り専用ノードを提供する、組み込みの[読み取りスケールアウト](sql-database-read-scale-out.md)機能があります。
 
@@ -78,7 +78,7 @@ SQL データベース エンジン プロセスと基礎となる mdf/ldf フ�
 
 ## <a name="conclusion"></a>まとめ
 
-Azure SQL Database は、Azure プラットフォームと緊密に統合されており、障害の検出と復旧に Service Fabric を、データ保護に Azure Storage Blob を、フォールト トレランスを高めるために可用性ゾーンを活用します。 同時に、Azure SQL データベースは、レプリケーションとフェールオーバーのために、SQL Server 既成製品からの AlwaysOn 可用性グループ テクノロジをフル活用します。 これらのテクノロジを組み合わせることにより、アプリケーションは混合ストレージ モデルを最大限に活用して、高要件の SLA にも対応できます。
+Azure SQL Database は、Azure プラットフォームと緊密に統合されており、障害の検出と復旧に Service Fabric を、データ保護に Azure BLOB ストレージを、フォールト トレランスを高めるために可用性ゾーンを活用します。 同時に、Azure SQL データベースは、レプリケーションとフェールオーバーのために、SQL Server 既成製品からの AlwaysOn 可用性グループ テクノロジをフル活用します。 これらのテクノロジを組み合わせることにより、アプリケーションは混合ストレージ モデルを最大限に活用して、高要件の SLA にも対応できます。
 
 ## <a name="next-steps"></a>次の手順
 

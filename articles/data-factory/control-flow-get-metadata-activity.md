@@ -1,27 +1,27 @@
 ---
 title: Azure Data Factory の GetMetadata アクティビティ | Microsoft Docs
-description: SQL Server ストアド プロシージャ アクティビティを使用して、Data Factory パイプラインから Azure SQL Database または Azure SQL Data Warehouse でストアド プロシージャを呼び出す方法について説明します。
+description: Data Factory パイプライン内で GetMetadata アクティビティを使用する方法を説明します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
+author: linda33wj
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: ''
 ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/19/2018
-ms.author: shlo
-ms.openlocfilehash: f61399a3a6cb5c67343e28e4364d8d796ffbc066
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.date: 03/11/2019
+ms.author: jingwang
+ms.openlocfilehash: 78f63b4f46fe5479d4d0fd5849ad80536d8a137c
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457072"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730693"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory の GetMetadata アクティビティ
+
 GetMetadata アクティビティを使用すると、Azure Data Factory で任意のデータの**メタデータ**を取得できます。 このアクティビティは、次のシナリオで使用できます。
 
 - 任意のデータのメタデータ情報を検証する
@@ -34,7 +34,7 @@ GetMetadata アクティビティを使用すると、Azure Data Factory で任�
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-GetMetadata アクティビティは必須の入力としてデータセットを受け取り、使用可能なメタデータ情報をアクティビティ出力として出力します。 現時点では、対応する取得可能なメタデータを持つ次のコネクターがサポートされ、サポートされるメタデータの最大サイズは **1 MB** です。
+GetMetadata アクティビティは必須の入力としてデータセットを受け取り、使用可能なメタデータ情報をアクティビティ出力として出力します。 現時点では、対応する取得可能なメタデータを持つ次のコネクタがサポートされ、サポートされるメタデータの最大サイズは **1 MB** です。
 
 >[!NOTE]
 >セルフホステッドの Integration Runtime で GetMetadata アクティビティを実行する場合、最新の機能はバージョン 3.6 以降でサポートされます。 
@@ -45,15 +45,17 @@ GetMetadata アクティビティは必須の入力としてデータセット�
 
 | コネクタ/メタデータ | itemName<br>(ファイル/フォルダー) | itemType<br>(ファイル/フォルダー) | size<br>(ファイル) | created<br>(ファイル/フォルダー) | lastModified<br>(ファイル/フォルダー) |childItems<br>(フォルダー) |contentMD5<br>(ファイル) | structure<br/>(ファイル) | columnCount<br>(ファイル) | exists<br>(ファイル/フォルダー) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| Amazon S3 | √/√ | √/√ | √ | x/x | √/√* | √ | ○ | √ | √ | √/√* |
+| Amazon S3 | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
+| Google Cloud Storage | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | Azure BLOB | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
-| Azure Data Lake Store | √/√ | √/√ | √ | x/x | √/√ | √ | ○ | √ | √ | √/√ |
-| Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | ○ | √ | √ | √/√ |
-| ファイル システム | √/√ | √/√ | √ | √/√ | √/√ | √ | ○ | √ | √ | √/√ |
-| SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | ○ | √ | √ | √/√ |
-| FTP | √/√ | √/√ | √ | x/x | √/√ | √ | ○ | √ | √ | √/√ |
+| Azure Data Lake Storage Gen1 | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| Azure Data Lake Storage Gen2 | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
+| ファイル システム | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
+| SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| FTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 
-- Amazon S3 の場合、`lastModified` はバケットとキーには適用されますが、仮想フォルダーには適用されません。`exists` はバケットとキーには適用されますが、プレフィックスまたは仮想フォルダーには適用されません。
+- Amazon S3 および Google Cloud Storage の場合、`lastModified` はバケットとキーには適用されますが、仮想フォルダーには適用されません。`exists` はバケットとキーには適用されますが、プレフィックスおよび仮想フォルダーには適用されません。
 - Azure Blob の場合、`lastModified` はコンテナーと BLOB には適用されますが、仮想フォルダーには適用されません。
 
 **リレーショナル データベース**
@@ -131,8 +133,8 @@ GetMetadata アクティビティのフィールド リストで、次のメタ�
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-fieldList | 必要なメタデータ情報のタイプを一覧表示します。 サポートされているメタデータに関する詳細は、[メタデータ オプション](#metadata-options) セクションをご覧ください。 | [はい] 
-dataset | GetMetadata アクティビティによってメタデータ アクティビティが取得される参照データセット。 サポートされているコネクタに関する詳細は、[サポートされる機能](#supported-capabilities)セクションをご覧になり、データセット構文の詳細に関するコネクタ トピックを参照してください。 | [はい]
+fieldList | 必要なメタデータ情報のタイプを一覧表示します。 サポートされているメタデータに関する詳細は、[メタデータ オプション](#metadata-options) セクションをご覧ください。 | はい 
+dataset | GetMetadata アクティビティによってメタデータ アクティビティが取得される参照データセット。 サポートされているコネクタに関する詳細は、[サポートされる機能](#supported-capabilities)セクションをご覧になり、データセット構文の詳細に関するコネクタ トピックを参照してください。 | はい
 
 ## <a name="sample-output"></a>サンプル出力
 

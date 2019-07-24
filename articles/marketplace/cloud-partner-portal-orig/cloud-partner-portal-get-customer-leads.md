@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 997727acd1bbaf17577160bb996aad7e21d49c86
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 2a425e607ea7dac394ab90a3fed4d4026056bbc1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807539"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118580"
 ---
 <a name="get-customer-leads"></a>潜在顧客の獲得
 ==================
@@ -39,13 +39,13 @@ ms.locfileid: "48807539"
 
 <!-- -->
 
-2.  顧客は、[今すぐ入手する] を選択した後、情報を共有することに同意します。 このリードは**初めて関心を示した**リードであり、この場合は製品を入手することに関心を示した顧客に関する情報を共有します。 リードは、取得ファンネルの最上位になります。
+1. 顧客は、[今すぐ入手する] を選択した後、情報を共有することに同意します。 このリードは**初めて関心を示した**リードであり、この場合は製品を入手することに関心を示した顧客に関する情報を共有します。 リードは、取得ファンネルの最上位になります。
 
-    ![[今すぐ入手する] オプション](./media/cloud-partner-portal-get-customer-leads/get-it-now-button.png)
+   ![[今すぐ入手する] オプション](./media/cloud-partner-portal-get-customer-leads/get-it-now-button.png)
 
-3.  顧客は [Azure Portal](https://portal.azure.com/) で [購入] を選択して、製品を入手します。 このリードは**アクティブな**リードであり、この場合は製品のデプロイを始めた顧客に関する情報を共有します。
+1. 顧客は [Azure Portal](https://portal.azure.com/) で [購入] を選択して、製品を入手します。 このリードは**アクティブな**リードであり、この場合は製品のデプロイを始めた顧客に関する情報を共有します。
 
-    ![[購入] オプション](./media/cloud-partner-portal-get-customer-leads/purchase-button.png)
+   ![[購入] オプション](./media/cloud-partner-portal-get-customer-leads/purchase-button.png)
 
 
 ### <a name="appsource"></a>AppSource
@@ -72,7 +72,7 @@ ms.locfileid: "48807539"
 
 リードのソースの形式は、"**ソース**-**アクション** |  **オファー**" です
 
-**ソース**: "AzureMarketplace"、"AzurePortal"、"TestDrive"、"AppSource (SPZA)"
+**Sources**:"AzureMarketplace"、"AzurePortal"、"TestDrive"、"AppSource (SPZA)"
 
 **Actions**:
 - "INS" -- インストール。 このアクションは、Azure Marketplace または AppSource で顧客が製品を購入したことを示します。
@@ -95,7 +95,7 @@ checkpoint.check-point-r77-10sg-byol、bitnami.openedxcypress、docusign.3701c77
 - Phone: 1234567890
 - Country: US
 - Company: Microsoft
-- Title: CTO
+- タイトル:CTO
 
 >[!Note]
 >個々のリードについて、上記の例のすべてのデータが常に得られるわけではありません。

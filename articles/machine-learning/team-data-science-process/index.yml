@@ -1,45 +1,39 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 608ba8a5bb6fe4376a569eb3ee5d630b1517061a
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391940"
 documentType: LandingData
+title: Team Data Science Process のドキュメント
 metadata:
-  author: cjgronlund
-  description: 予測分析ソリューションとインテリジェント アプリケーションを効率的に実現できるアジャイルで反復的なデータ サイエンス手法、Team Data Science Process を使用する方法について説明します。 TDSP を通じて、チームのコラボレーションと学習の効果を高めることができます。 これには、データ サイエンスへの取り組みを円滑に導入できるよう支援する Microsoft をはじめとする業界の各企業から、ベスト プラクティスと構造を抽出することが含まれます。 分析プログラムの利点を完全に実現できるよう企業を支援するのがその目標です。
-  ms.author: cgronlun
-  ms.component: team-data-science-process
-  ms.date: 01/18/2018
-  ms.devlang: na
-  ms.service: machine-learning
-  ms.tgt_pltfrm: na
-  ms.topic: landing-page
-  services: machine-learning
   title: Team Data Science Process のドキュメント
+  description: 予測分析ソリューションとインテリジェント アプリケーションを効率的に実現できるアジャイルで反復的なデータ サイエンス手法、Team Data Science Process を使用する方法について説明します。 TDSP を通じて、チームのコラボレーションと学習の効果を高めることができます。 これには、データ サイエンスへの取り組みを円滑に導入できるよう支援する Microsoft をはじめとする業界の各企業から、ベスト プラクティスと構造を抽出することが含まれます。 分析プログラムの利点を完全に実現できるよう企業を支援するのがその目標です。
+  services: machine-learning
+  author: cjgronlund
+  ms.service: machine-learning
+  ms.subservice: team-data-science-process
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 01/18/2018
+  ms.author: cgronlun
 abstract:
   description: Team Data Science Process は、予測分析ソリューションとインテリジェント アプリケーションを効率的に実現するアジャイルで反復的なデータ サイエンス手法です。 TDSP を通じて、チームのコラボレーションと学習の効果を高めることができます。 これには、データ サイエンスへの取り組みを円滑に導入できるよう支援する Microsoft をはじめとする業界の各企業から、ベスト プラクティスと構造を抽出することが含まれます。 分析プログラムの利点を完全に実現できるよう企業を支援するのがその目標です。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: Team Data Science Process について学習します。
-  - type: list
-    style: unordered
+  - title: 5 分間のクイック スタート
     items:
-    - html: <a href="overview">概要</a>
-    - html: <a href="lifecycle">ライフサイクル</a>
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Team Data Science Process をさまざまなシナリオで使用する方法を学習します。
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: Team Data Science Process について学習します。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="overview">概要</a>
+          - html: <a href="lifecycle">ライフサイクル</a>
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="walkthroughs-aml-with-tdsp">Azure Machine Learning Workbench</a>
-    - html: <a href="walkthroughs-spark">PySpark と Scala を使用した Spark</a>
-    - html: <a href="walkthroughs-hdinsight-hadoop">HDInsight Hadoop での Hive の使用</a>
-    - html: <a href="walkthroughs-azure-data-lake">Azure Data Lake での U-SQL の使用</a>
-    - html: <a href="walkthroughs-sql-server">SQL Server での R、Python、T-SQL の使用</a>
-    - html: <a href="walkthroughs-sql-data-warehouse">SQL DW での T-SQL と Python の使用</a>
+      - type: paragraph
+        text: Team Data Science Process をさまざまなシナリオで使用する方法を学習します。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="walkthroughs-spark">PySpark と Scala を使用した Spark</a>
+          - html: <a href="walkthroughs-hdinsight-hadoop">HDInsight Hadoop での Hive の使用</a>
+          - html: <a href="walkthroughs-azure-data-lake">Azure Data Lake での U-SQL の使用</a>
+          - html: <a href="walkthroughs-sql-server">SQL Server での R、Python、T-SQL の使用</a>
+          - html: <a href="walkthroughs-sql-data-warehouse">SQL DW での T-SQL と Python の使用</a>

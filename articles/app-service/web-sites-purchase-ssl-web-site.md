@@ -1,10 +1,10 @@
 ---
-title: Azure App Service の SSL 証明書を購入して構成する | Microsoft Docs
+title: Azure から SSL 証明書を購入して構成する - App Service | Microsoft Docs
 description: App Service 証明書を購入して App Service アプリにバインドする方法を説明します。
 services: app-service
 documentationcenter: .net
 author: cephalin
-manager: cfowler
+manager: jpconnoc
 tags: buy-ssl-certificates
 ms.assetid: cdb9719a-c8eb-47e5-817f-e15eaea1f5f8
 ms.service: app-service
@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: c775798591a3063fdfe6d399c8337aac2e2f207e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.custom: seodec18
+ms.openlocfilehash: 3e113639dbe4220b943d49dc610ee22b6416e12a
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351356"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216579"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 
-このチュートリアルでは、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) に App Service 証明書を作成 (購入) することによって Web アプリをセキュリティで保護し、それを App Service アプリにバインドする方法を示します。
+このチュートリアルでは、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) に App Service 証明書を作成 (購入) し、それを App Service アプリにバインドすることによって、[App Service アプリ](https://docs.microsoft.com/azure/app-service/)または[関数アプリ](https://docs.microsoft.com/azure/azure-functions/)をセキュリティで保護する方法を示します。
 
 > [!TIP]
 > App Service 証明書はあらゆる Azure Service と Azure ではないサービスで利用できます。App Service に限定されません。 そのためには、任意の場所で利用できるように、App Service 証明書のローカル PFX コピーを作成する必要があります。 詳しくは、[App Service 証明書のローカル PFX コピーの作成](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/)に関する記事をご覧ください。
@@ -34,7 +35,7 @@ ms.locfileid: "49351356"
 この攻略ガイドに従うには:
 
 - [App Service アプリを作成する](/azure/app-service/)
-- [ドメイン名を Web アプリにマップ](app-service-web-tutorial-custom-domain.md)するか、[購入し、Azure で構成する](custom-dns-web-site-buydomains-web-app.md)
+- [ドメイン名をアプリにマップする](app-service-web-tutorial-custom-domain.md)か、[Azure で購入して構成する](manage-custom-dns-buy-domain.md)
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -46,20 +47,20 @@ ms.locfileid: "49351356"
 
 次の表を使用して、証明書を構成できます。 完了したら、**[作成]** をクリックします。
 
-| Setting | 説明 |
+| 設定 | 説明 |
 |-|-|
-| Name | App Service 証明書のフレンドリ名。 |
-| ネイキッド ドメインのホスト名 | この手順は、購入プロセスの最も重要な部分の 1 つです。 アプリにマップしたルート ドメイン名を使用します。 ドメイン名の先頭に `www` を "_付けない_" でください。 |
+| 名前 | App Service 証明書のフレンドリ名。 |
+| ネイキッド ドメインのホスト名 | ここでルート ドメインを指定する場合は、ルート ドメインと `www` サブドメインの*両方*をセキュリティで保護する証明書を取得します。 任意のサブドメインのみをセキュリティで保護するには、ここでサブドメインの完全修飾ドメイン名 を指定します (例: `mysubdomain.contoso.com`)。 |
 | サブスクリプション | Web アプリがホストされているデータ センターです。 |
 | リソース グループ | 証明書が含まれるリソース グループ。 新しいリソース グループを使用するか、App Service アプリと同じリソース グループなどを選択できます。 |
 | 証明書 SKU | 作成する証明書の種類 (標準の証明書または[ワイルドカード証明書](https://wikipedia.org/wiki/Wildcard_certificate)) を決定します。 |
-| 法律条項 | クリックして法律条項に同意したことを確認します。 |
+| 法律条項 | クリックして法律条項に同意したことを確認します。 証明書は GoDaddy から取得されます。 |
 
 ## <a name="store-in-azure-key-vault"></a>Azure Key Vault に格納する
 
 証明書の購入プロセスの完了後、この証明書の使用を開始する前に完了する必要のある手順がまだいくつかあります。 
 
-[[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) ページで証明書を選択し、**[証明書の構成]** > **[手順 1: 格納]** をクリックします。
+[[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) ページで証明書を選択し、**[証明書の構成]** > **[手順 1:格納]** をクリックします。
 
 ![KV に格納する準備完了のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
@@ -67,12 +68,12 @@ ms.locfileid: "49351356"
 
 **[Key Vault の状態]** ページで **[Key Vault リポジトリ]** をクリックして、新しいコンテナーを作成するか、既存のコンテナーを選択します。 新しいコンテナーの作成を選択する場合は、次の表を使用してコンテナーを構成し、[作成] をクリックします。 同じサブスクリプションおよびリソース グループ内に新しい Key Vault を作成します。
 
-| Setting | 説明 |
+| 設定 | 説明 |
 |-|-|
-| Name | 英数字とダッシュで構成される一意の名前。 |
+| 名前 | 英数字とダッシュで構成される一意の名前。 |
 | リソース グループ | 推奨事項として、App Service 証明書と同じリソース グループを選択します。 |
-| Location | App Service アプリと同じ場所を選択します。 |
-| [価格レベル]  | 詳しくは、[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)に関するページをご覧ください。 |
+| 場所 | App Service アプリと同じ場所を選択します。 |
+| 価格レベル  | 詳しくは、[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)に関するページをご覧ください。 |
 | アクセス ポリシー| コンテナー リソースに対するアプリケーションと許可されるアクセス権を定義します。 後で「[さまざまなアプリケーションにキー コンテナーへのアクセス許可を付与する](../key-vault/key-vault-group-permissions-for-apps.md)」の手順に従って構成できます。 |
 | 仮想ネットワーク アクセス | 特定の Azure 仮想ネットワークへのコンテナー アクセスを制限します。 後で「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](../key-vault/key-vault-network-security.md)」の手順に従って構成できます |
 
@@ -80,7 +81,7 @@ ms.locfileid: "49351356"
 
 ## <a name="verify-domain-ownership"></a>ドメインの所有権を検証する
 
-最後の手順で使用した **[証明書の構成]** ページで、**[手順 2: 確認]** をクリックします。
+最後の手順で使用した **[証明書の構成]** ページで、**[手順 2:確認]** をクリックします。
 
 ![](./media/app-service-web-purchase-ssl-web-site/verify-domain.png)
 
@@ -90,7 +91,7 @@ ms.locfileid: "49351356"
 > 4 種類のドメイン検証方法がサポートされています。 
 > 
 > - **App Service** - ドメインが同一のサブスクリプション内で既に App Service アプリにマップされている場合に最も便利なオプションです。 この方法は、App Service アプリがドメインの所有権を既に確認済みである事実を利用しています。
-> - **ドメイン** - [Azure から購入した App Service ドメイン](custom-dns-web-site-buydomains-web-app.md)を確認します。 Azure は確認 TXT レコードを自動的に追加し、プロセスを完了します。
+> - **ドメイン** - [Azure から購入した App Service ドメイン](manage-custom-dns-buy-domain.md)を確認します。 Azure は確認 TXT レコードを自動的に追加し、プロセスを完了します。
 > - **メール** - ドメイン管理者に電子メールを送信することによってドメインを確認します。 手順は、オプションを選択したときに提供されます。
 > - **手動** - HTML ページ (**標準**証明書のみ) または DNS TXT レコードを使用してドメインを確認します。 手順は、オプションを選択したときに提供されます。
 
@@ -110,52 +111,59 @@ ms.locfileid: "49351356"
 
 次の表を使用して、**[SSL バインディング]** ダイアログでバインディングを構成してから、**[バインディングの追加]** をクリックします。
 
-| Setting | 説明 |
+| 設定 | 説明 |
 |-|-|
 | ホスト名 | SSL バインディングを追加するドメイン名。 |
 | プライベート証明書のサムプリント | バインドする証明書。 |
-| SSL の種類 | <ul><li>**SNI SSL** - 複数の SNI ベースの SSL バインディングを追加できます。 このオプションでは、複数の SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (ブラウザーのサポートに関するより包括的な情報については、「[Server Name Indication](http://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。</li><li>**IP ベースの SSL** - IP ベースの SSL バインドを 1 つだけ追加することができます。 このオプションでは、SSL 証明書を 1 つだけ使用して、専用のパブリック IP アドレスを保護します。 バインディングを構成した後、「[IP SSL の A レコードの再マップ](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl)」の手順に従います。 </li></ul> |
+| SSL の種類 | <ul><li>**SNI SSL** - 複数の SNI ベースの SSL バインディングを追加できます。 このオプションでは、複数の SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (ブラウザーのサポートに関するより包括的な情報については、「[Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。</li><li>**IP ベースの SSL** - IP ベースの SSL バインドを 1 つだけ追加することができます。 このオプションでは、SSL 証明書を 1 つだけ使用して、専用のパブリック IP アドレスを保護します。 バインディングを構成した後は、「[IP SSL の A レコードの再マップ](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl)」の手順に従います。 </li></ul> |
 
 ## <a name="verify-https-access"></a>HTTPS アクセスを確認する
 
 `HTTP://<domain_name>` ではなく `HTTPS://<domain_name>` を使用してアプリにアクセスし、証明書が正しく構成されていることを確認します。
 
-## <a name="rekey-and-sync-certificate"></a>キーを更新して証明書を同期する
+## <a name="rekey-certificate"></a>証明書のキー更新
 
-証明書のキーを更新する必要が生じた場合は、[[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) ページで証明書を選択し、左側のナビゲーションから **[キー更新と同期]** を選択します。
+証明書の秘密キーが侵害されたと思われる場合は、証明書のキー更新を実行できます。 [[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) ページで証明書を選択し、左側のナビゲーションから **[キー更新と同期]** を選択します。
 
-**[キー更新]** ボタンをクリックして処理を開始します。 処理が完了するまでに 1 ～ 10 分かかることがあります。
+**[キー更新]** をクリックして処理を開始します。 処理が完了するまでに 1 ～ 10 分かかることがあります。
 
 ![SSL キー更新のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
 
 証明書のキーを更新すると、証明機関から発行された新しい証明書が展開されます。
 
+キー更新操作が完了したら、**[同期]** をクリックします。同期操作によって、アプリにダウンタイムを発生させることなく、App Service 内の証明書に対するホスト名のバインドが自動的に更新されます。
+
+> [!NOTE]
+> **[同期]** をクリックしなくても、証明書は 48 時間以内に App Service によって自動的に同期されます。
+
 ## <a name="renew-certificate"></a>証明書の更新
 
-任意の時点で証明書の自動更新をオンにするには、[[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) ページで証明書を選択し、左側のナビゲーションで **[自動更新の設定]** をクリックします。 
+任意の時点で証明書の自動更新をオンにするには、[[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) ページで証明書を選択し、左側のナビゲーションで **[自動更新の設定]** をクリックします。
 
 **[オン]** を選択して、**[保存]** をクリックします。 自動更新をオンにすると、証明書は有効期限の 60 日前に自動更新を開始できます。
 
-![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
+![証明書を自動的に更新する](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
 
 証明書を手動で更新するには、**[手動更新]** をクリックします。 有効期限の 60 日前に、証明書の手動更新を要求できます。
 
+更新操作が完了したら、**[同期]** をクリックします。同期操作によって、アプリにダウンタイムを発生させることなく、App Service 内の証明書に対するホスト名のバインドが自動的に更新されます。
+
 > [!NOTE]
-> 手動更新か自動更新かに関係なく、更新された証明書は自動的にはアプリにバインドされません。 アプリにバインドする方法については、「[証明書の更新](./app-service-web-tutorial-custom-ssl.md#renew-certificates)」をご覧ください。 
+> **[同期]** をクリックしなくても、証明書は 48 時間以内に App Service によって自動的に同期されます。
 
 ## <a name="automate-with-scripts"></a>スクリプトで自動化する
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>その他のリソース
 
 * [HTTPS の適用](app-service-web-tutorial-custom-ssl.md#enforce-https)
 * [TLS 1.1/1.2 の適用](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
 * [Azure App Service のアプリケーション コードに SSL 証明書を使用する](app-service-web-ssl-cert-load.md)
-* [FAQ: App Service 証明書](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)
+* [FAQ:App Service 証明書](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

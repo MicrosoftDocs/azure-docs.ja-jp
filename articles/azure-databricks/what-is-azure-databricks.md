@@ -10,18 +10,22 @@ ms.topic: overview
 ms.date: 05/29/2018
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: f6a2f89828dbc13ca716ccb40bb05234b7e31464
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 01e35ed32be8b28f291cc2be69a8b2d71c3acab2
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418808"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806653"
 ---
 # <a name="what-is-azure-databricks"></a>Azure Databricks とは
 
 Azure Databricks は、Microsoft Azure クラウド サービス プラットフォームに最適化された Apache Spark ベースの分析プラットフォームです。 Apache Spark の創始者たちと共に設計され、Azure に統合された Databricks では、ワンクリックでのセットアップと効率的なワークフローのほか、データ サイエンティスト、データ エンジニア、ビジネス アナリストが共同作業できるインタラクティブなワークスペースが実現されています。
 
 ![Azure Databricks とは](./media/what-is-azure-databricks/azure-databricks-overview.png "Azure Databricks とは")
+
+Azure Databricks は、高速で使いやすい、コラボレーション対応の Apache Spark ベースの分析サービスです。 ビッグ データ パイプラインに使用されるデータ (生データまたは構造化データ) は、Azure Data Factory を介して一連のバッチに分けて Azure に取り込まれるか、Kafka、Event Hubs、IoT Hub を使ってほぼリアルタイムでストリーム配信されます。 このデータは、長期永続保管を目的としたデータ レイク (Azure Blob Storage または Azure Data Lake Storage) に到達します。 Azure Databricks は、分析ワークフローの過程で使います。[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)、[Azure Data Lake Storage](../data-lake-store/index.md)、[Azure Cosmos DB](../cosmos-db/index.yml)、[Azure SQL Data Warehouse](../sql-data-warehouse/index.md) などさまざまなデータ ソースから、Azure Databricks を使ってデータを読み取り、そのデータを Spark で変換することによって重要な分析情報が得られます。
+
+![Databricks のパイプライン](./media/what-is-azure-databricks/databricks-pipeline.png)
 
 ## <a name="apache-spark-based-analytics-platform"></a>Apache Spark ベースの分析プラットフォーム
 
@@ -37,7 +41,7 @@ Azure Databricks は、完全なオープン ソースの Apache Spark クラス
 
 * **GraphX**: 認知分析からデータ探索まで、さまざまなユース ケースを対象とするグラフおよびグラフ計算です。
 
-* **Spark Core API**: R、SQL、Python、Scala、Java のサポートを含みます。
+* **Spark Core API**: R、SQL、Python、Scala、Java のサポートが含まれます。
 
 ## <a name="apache-spark-in-azure-databricks"></a>Azure Databricks における Apache Spark
 
@@ -91,7 +95,7 @@ Power BI とのリッチな統合により、Azure Databricks は大きな影響
 
 ## <a name="next-steps"></a>次の手順
 
-* [クイックスタート: Azure Databricks で Spark ジョブを実行する](quickstart-create-databricks-workspace-portal.md)
+* [クイック スタート:Azure Databricks で Spark ジョブを実行する](quickstart-create-databricks-workspace-portal.md)
 * [Spark クラスターを使用する](https://docs.azuredatabricks.net/user-guide/clusters/index.html)
 * [Notebook を使用する](https://docs.azuredatabricks.net/user-guide/notebooks/index.html)
 * [Spark ジョブを作成する](https://docs.azuredatabricks.net/user-guide/jobs.html)

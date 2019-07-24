@@ -4,7 +4,7 @@ description: Reliable Actors の状態が、高可用性のためにどのよう
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 37cf466a-5293-44c0-a4e0-037e5d292214
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: aae0ec93f3de708096ff9546a3a4f4e090095a89
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 65dd47ab21ca4b1c50e0f17b73e7bc4eae8a96e8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041161"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665782"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors の状態管理
 Reliable Actors は、ロジックと状態の両方をカプセル化できるシングル スレッド オブジェクトです。 アクターは Reliable Services 上で実行されるため、同じ永続化およびレプリケーション メカニズムを使用して、状態を確実に保持することができます。 このため、エラー後やガベージ コレクションに続く再アクティベーション時、リソース分散またはアップグレードのためにクラスター内のノード間を移動されたときでも、アクターは状態を失いません。
@@ -29,9 +29,9 @@ Reliable Actors は、ロジックと状態の両方をカプセル化できる�
 
 アクターをステートフルと見なすことができても、状態を確実に格納しているとは限りません。 アクターは、データ ストレージの要件に基づいて、次のような状態の永続性とレプリケーションのレベルを選択できます。
 
-* **永続化状態:** 状態はディスクに永続化され、3 つ以上のレプリカにレプリケートされます。 永続化状態は、完全なクラスター停止があっても状態を永続化できる、最も持続性のある状態ストレージ オプションです。
-* **揮発状態:** 状態は 3 つ以上のレプリカにレプリケートされ、メモリだけに保持されます。 揮発状態により、ノード障害時、アクター障害時、およびアップグレードとリソース分散中の回復力が得られます。 ただし、状態はディスクに保持されません。 従って、すべてのレプリカが同時に失われると状態も失われます。
-* **非永続化状態**: 状態はレプリケートされず、ディスクにも書き込まれません。状態を確実に維持する必要がないアクターにのみ使用します。
+* **永続化状態**:状態はディスクに永続化され、3 つ以上のレプリカにレプリケートされます。 永続化状態は、完全なクラスター停止があっても状態を永続化できる、最も持続性のある状態ストレージ オプションです。
+* **揮発状態**:状態は 3 つ以上のレプリカにレプリケートされ、メモリだけに保持されます。 揮発状態により、ノード障害時、アクター障害時、およびアップグレードとリソース分散中の回復力が得られます。 ただし、状態はディスクに保持されません。 従って、すべてのレプリカが同時に失われると状態も失われます。
+* **非永続化状態**:状態はレプリケートされず、ディスクにも書き込まれません。状態を確実に維持する必要がないアクターにのみ使用します。
 
 永続性の各レベルは、単にサービスの*状態プロバイダー*と*レプリケーション*構成が異なるだけです。 状態がディスクに書き込まれるかどうかは、状態プロバイダーによって決まります。これは、状態を格納する Reliable Service のコンポーネントです。 またレプリケーションは、サービスがデプロイされるレプリカ数によって決まります。 Reliable Services と同様に、状態プロバイダーもレプリカ数も手動で簡単に設定できます。 アクター フレームワークは、属性を提供します。これはアクターに使用された場合、既定の状態プロバイダーとレプリカ数の自動生成設定を自動的に選択して、上記の 3 つの永続性設定のいずれかを実現します。 StatePersistence 属性は、派生クラスによって継承されません。各 Actor 型は、独自の StatePersistence レベルを提供する必要があります。
 
@@ -86,7 +86,7 @@ class MyActorImpl extends FabricActor implements MyActor
 これらのパラメーターは手動で変更できます。 ただし`StatePersistence`属性が変更されるたびに、選択された`StatePersistence`属性の既定のレプリカ セット サイズ値にパラメーターは設定され、前の値はオーバーライドされます。 つまり、`StatePersistence`属性の値を変更すると、ServiceManifest.xml に設定した値がビルド時*のみ*にオーバーライドされます。
 
 ```xml
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <Parameters>
       <Parameter Name="MyActorService_PartitionCount" DefaultValue="10" />
       <Parameter Name="MyActorService_MinReplicaSetSize" DefaultValue="3" />

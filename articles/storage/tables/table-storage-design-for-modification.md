@@ -7,21 +7,21 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: 5f67a8ffde24d3c3e39065806b07bdd5cba2857a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: tables
+ms.openlocfilehash: e993d169025f9b76c5e813bae31ca6cb2a39ba71
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522045"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809520"
 ---
 # <a name="design-for-data-modification"></a>データの変更に対応した設計
-この記事では、挿入、更新、削除の操作を最適化するための設計上の考慮事項を示します。 場合によっては、リレーショナル データベースの設計と同様に、クエリ向けの最適化とデータ変更向けの最適化のトレードオフを評価する必要があります (設計のトレードオフを管理する手法はリレーショナル データベースでは異なります)。 [テーブルの設計パターン](#table-design-patterns) のセクションでは、Table service の詳細な設計パターンをいくつか説明し、これらのトレードオフに注目します。 実際のところ、クエリ向けに最適化された設計の多くは、エントリの変更にも適していることがおわかりになると思います。  
+この記事では、挿入、更新、削除の操作を最適化するための設計上の考慮事項を示します。 場合によっては、リレーショナル データベースの設計と同様に、クエリ向けの最適化とデータ変更向けの最適化のトレードオフを評価する必要があります (設計のトレードオフを管理する手法はリレーショナル データベースでは異なります)。 「テーブルの設計パターン」セクションでは、Table service の詳細な設計パターンをいくつか説明し、これらのトレードオフに注目します。 実際のところ、クエリ向けに最適化された設計の多くは、エントリの変更にも適していることがおわかりになると思います。  
 
 ## <a name="optimize-the-performance-of-insert-update-and-delete-operations"></a>挿入、更新、削除の操作のパフォーマンスを最適化する
 エンティティを更新または削除するには、**PartitionKey** と **RowKey** 値を使用してエンティティを識別する必要があります。 この点で、エンティティの変更のために選択した **PartitionKey** と **RowKey** は、できるだけ効率的にエンティティを識別するため、ポイント クエリをサポートするために選択したものと同様の条件に従う必要があります。 **PartitionKey** と **RowKey** 値の検出のためにエンティティを特定する非効率的なパーティションまたはテーブル スキャンを使用したくない場合は、更新または削除する必要があります。  
 
-「[Table design patterns](#table-design-patterns)」(テーブル設計パターン) セクションの以下のパターンは、パフォーマンスの最適化または挿入、更新、削除操作に対応しています。  
+「テーブルの設計パターン」セクションの以下のパターンは、パフォーマンスの最適化または挿入、更新、削除操作に対応しています。  
 
 * [頻度の高いパターンを削除する](table-storage-design-patterns.md#high-volume-delete-pattern) -独自の個別のテーブルで同時に削除のすべてのエンティティを格納することにより、大量のエンティティの削除を有効にするには、テーブルを削除して、エンティティを削除します。  
 * [データ系列のパターン](table-storage-design-patterns.md#data-series-pattern) -単一のエンティティで完全なデータ系列を格納し、リクエストの作成を最小限に抑えます。  

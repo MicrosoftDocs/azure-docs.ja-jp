@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6bcd2d299d3816c17265eef658ff1f01409828a1
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: a674ee52ae5e8f8f800d4584a53c808ceae70156
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632224"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435057"
 ---
 # <a name="run-apache-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>Pig コマンド (SSH) を使用して Linux ベースのクラスターで Apache Pig ジョブを実行する
 
@@ -22,7 +22,7 @@ ms.locfileid: "51632224"
 
 HDInsight クラスターへの SSH 接続から、Apache Pig ジョブを対話的に実行する方法について説明します。 Pig Latin プログラミング言語では、入力データに適用される変換を記述し、目的の出力を生成することができます。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの手順では、Linux ベースの HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a id="ssh"></a>SSH を使用した接続
@@ -35,7 +35,7 @@ ssh sshuser@myhdinsight-ssh.azurehdinsight.net
 
 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-## <a id="pig"></a>Pig コマンドの使用
+## <a id="pig"></a>Apache Pig コマンドの使用
 
 1. 接続したら、次のコマンドを使用して Pig コマンド ライン インターフェイス (CLI) を起動します。
 
@@ -74,7 +74,7 @@ ssh sshuser@myhdinsight-ssh.azurehdinsight.net
     | `FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;` | 一意のログ レベル値とそれが出現した回数を含む データ セットを作成します。 データ セットは `FREQUENCIES` に格納されます。 |
     | `RESULT = order FREQUENCIES by COUNT desc;` | 数が多い順にログ レベルを並べ替えて、`RESULT` に格納します。 |
 
-    > [!TIP]
+    > [!TIP]  
     > 各手順の後に `DUMP` を使用して、変換の結果を表示します。
 
 5. 変換の結果は `STORE` ステートメントで保存することもできます。 たとえば、以下のステートメントでは `RESULT` がクラスターの既定のストレージの `/example/data/pigout` ディレクトリに保存されます。
@@ -83,7 +83,7 @@ ssh sshuser@myhdinsight-ssh.azurehdinsight.net
     STORE RESULT into '/example/data/pigout';
     ```
 
-   > [!NOTE]
+   > [!NOTE]  
    > データは、`part-nnnnn` という名前のファイルの指定したディレクトリに保存されます。 ディレクトリが既に存在する場合は、エラーが発生します。
 
 6. エラーを解決するには、次のステートメントを入力します。
@@ -136,9 +136,9 @@ Pig コマンドを使用して、ファイルに含まれた Pig Latin を実�
 
 HDInsight での Pig に関する全般的な情報について詳しくは、次のドキュメントを参照してください。
 
-* [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
+* [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
 
 HDInsight での Hadoop の操作について詳しくは、次のドキュメントを参照してください。
 
-* [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
-* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
+* [HDInsight 上の Apache Hadoop で Apache Hive を使用する](hdinsight-use-hive.md)
+* [HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)

@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
-ms.openlocfilehash: f5be273401fa9fdfdc2c97296f5f2265dbb3c447
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: b7c94fd2372f1d995c50439b2bd5eaefb237e175
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042379"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651403"
 ---
-# <a name="phoenix-query-server-rest-sdk"></a>Phoenix Query Server REST SDK
+# <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix Query Server REST SDK
 
-[Apache Phoenix](http://phoenix.apache.org/) は、[HBase](apache-hbase-overview.md) 上に構築されたオープン ソースの超並列リレーショナル データベース レイヤーです。 Phoenix では、[SQLLine](apache-hbase-phoenix-squirrel-linux.md) などの SSH ツールを利用して HBase で SQL に似たクエリを使うことができます。 また、Phoenix では、Phoenix Query Server (PQS) という名前の HTTP サーバーも提供されています。これは、クライアント通信用に JSON と Protocol Buffers の 2 種類のトランスポート メカニズムをサポートするシン クライアントです。 Protocol Buffers が既定のメカニズムであり、JSON より効率的な通信を提供します。
+[Apache Phoenix](https://phoenix.apache.org/) は、[Apache HBase](apache-hbase-overview.md) の上に構築されたオープンソースの超並列リレーショナル データベース レイヤーです。 Phoenix では、[SQLLine](apache-hbase-phoenix-squirrel-linux.md) などの SSH ツールを利用して HBase で SQL に似たクエリを使うことができます。 Phoenix にはまた、Phoenix Query Server (PQS) と呼ばれる HTTP サーバーも用意されています。これは、クライアント通信のために JSON と Protocol Buffers の 2 つのトランスポート メカニズムをサポートするシン クライアントです。 Protocol Buffers が既定のメカニズムであり、JSON より効率的な通信を提供します。
 
 この記事では、PQS REST SDK を使って、テーブルを作成する方法、行を個別にまたは一括でアップサートする方法、および SQL ステートメントでデータを選ぶ方法について説明します。 例では、[Apache Phoenix Query Server 用の Microsoft .NET ドライバー](https://www.nuget.org/packages/Microsoft.Phoenix.Client)を使います。 この SDK は [Apache Calcite の Avatica](https://calcite.apache.org/avatica/) API を基に構築されており、シリアル化形式に Protocol Buffers のみを使います。
 
@@ -32,7 +32,7 @@ Apache Phoenix Query Server 用の Microsoft .NET ドライバーは NuGet パ�
 
 ## <a name="instantiate-new-phoenixclient-object"></a>新しい PhoenixClient オブジェクトのインスタンス化
 
-ライブラリを使い始めるには、クラスターへの `Uri` およびクラスターの Hadoop ユーザー名とパスワードを含む `ClusterCredentials` を渡して、新しい `PhoenixClient` オブジェクトをインスタンス化します。
+ライブラリの使用を開始するには、クラスターへの `Uri` およびクラスターの Apache Hadoop ユーザー名とパスワードを含む `ClusterCredentials` を渡して、新しい `PhoenixClient` オブジェクトをインスタンス化します。
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net/"), "USERNAME", "PASSWORD");
@@ -540,5 +540,5 @@ FM: 5
 
 ## <a name="next-steps"></a>次の手順 
 
-* [HDInsight の Phoenix](../hdinsight-phoenix-in-hdinsight.md)
-* [HBase REST SDK の使用](apache-hbase-rest-sdk.md)
+* [HDInsight の Apache Phoenix](../hdinsight-phoenix-in-hdinsight.md)
+* [Apache HBase REST SDK の使用](apache-hbase-rest-sdk.md)

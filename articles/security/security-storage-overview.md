@@ -4,7 +4,7 @@ description: この記事では、Azure Storage で使用できる Azure のコ�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.service: security
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/29/2018
+ms.date: 02/01/2019
 ms.author: terrylan
-ms.openlocfilehash: 63967face89c12f6769d397bd5be78c23bc9f851
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ec0e8ae1bf657cda59f3d133db23106436e184e3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259141"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326758"
 ---
 # <a name="azure-storage-security-overview"></a>Azure Storage のセキュリティの概要
 
@@ -47,7 +47,7 @@ Azure Storage でのセキュリティの詳細については、「 [Azure Stor
 
 ## <a name="delegated-access-to-storage-objects"></a>ストレージ オブジェクトへの委任されたアクセス
 
-Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 SAS により、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。 この制限付きアクセス許可を付与するとき、アカウント アクセス キーを共有する必要はありません。 
+Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 SAS により、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。 この制限付きアクセス許可を付与するとき、アカウント アクセス キーを共有する必要はありません。
 
 SAS とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。 クライアントは、SAS 内で適切なコンストラクターまたはメソッドに渡すだけで、SAS でストレージ リソースにアクセスできます。
 
@@ -67,19 +67,19 @@ SAS とは、ストレージ リソースへの認証アクセスに必要なす
 クライアント側の暗号化の詳細:
 
 * [Client-Side Encryption for Microsoft Azure Storage (Microsoft Azure Storage のクライアント側の暗号化)](https://blogs.msdn.microsoft.com/windowsazurestorage/2015/04/28/client-side-encryption-for-microsoft-azure-storage-preview/)
-* [Cloud security controls series: Encrypting Data in Transit (クラウドのセキュリティ管理シリーズ: 転送中のデータの暗号化)](https://blogs.microsoft.com/cybertrust/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
+* [Cloud security controls series: Encrypting Data in Transit (クラウドのセキュリティ管理シリーズ: 転送中のデータの暗号化)](https://cloudblogs.microsoft.com/microsoftsecure/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
 
 ## <a name="encryption-at-rest"></a>保存時の暗号化
 
-多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保するうえで[保存データの暗号化](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)は欠かせません。 Azure には、保存時のデータの暗号化を提供する機能が 3 つあります。
+多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保するうえで[保存データの暗号化](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)は欠かせません。 Azure には、保存時のデータの暗号化を提供する機能が 3 つあります。
 
-* [Storage Service Encryption](../storage/common/storage-security-guide.md#encryption-at-rest) を使用すると、ストレージ サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。
+* [Storage Service Encryption](../storage/common/storage-security-guide.md#encryption-at-rest) は常に有効化され、ストレージ サービス データが Azure Storage に書き込まれる際には、それらのデータが自動的に暗号化されます。
 * [クライアント側の暗号化](../storage/common/storage-security-guide.md#client-side-encryption)には、保存時の暗号化機能もあります。
 * [Azure Disk Encryption](../storage/common/storage-security-guide.md#using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) を使用すると、IaaS 仮想マシンに使用される OS ディスクとデータ ディスクを暗号化できます。
 
 Storage Service Encryption の詳細:
 
-* [Azure Storage Service Encryption](https://azure.microsoft.com/services/storage/) は、[Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) で使用できます。 他の Azure Storage の種類の詳細については、[Azure Files](https://azure.microsoft.com/services/storage/files/)、[Disk Storage (Premium Storage)](https://azure.microsoft.com/services/storage/premium-storage/)、[Table Storage](https://azure.microsoft.com/services/storage/tables/)、および [Queue Storage](https://azure.microsoft.com/services/storage/queues/) に関するページをそれぞれ参照してください。
+* [Azure Storage Service Encryption](https://azure.microsoft.com/services/storage/) は、[Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) で使用できます。 他の Azure Storage の種類の詳細については、[Azure Files](https://azure.microsoft.com/services/storage/files/)、[Table Storage](https://azure.microsoft.com/services/storage/tables/)、および [Queue Storage](https://azure.microsoft.com/services/storage/queues/) に関するページをそれぞれ参照してください。
 * [Azure Storage Service Encryption for Data at Rest](../storage/common/storage-service-encryption.md)
 
 ## <a name="azure-disk-encryption"></a>Azure Disk Encryption
@@ -114,9 +114,9 @@ Data Box Edge と Data Box Gateway は、ネットワーク ストレージの�
 
 ## <a name="advanced-threat-protection"></a>高度な脅威保護
 
-Azure Storage では Advanced Threat Protection が提供され、ストレージ アカウントに対する通常と異なる潜在的に有害なアクセスの試行すなわちストレージ アカウントの悪用を検出するセキュリティ インテリジェンスが強化されます。 Advanced Threat Protection は、BLOB ストレージに対する不審な読み取り、書込み、または削除要求がないか Azure Storage 診断ログを監視します。 
+Azure Storage では Advanced Threat Protection が提供され、ストレージ アカウントに対する通常と異なる潜在的に有害なアクセスの試行すなわちストレージ アカウントの悪用を検出するセキュリティ インテリジェンスが強化されます。 Advanced Threat Protection は、BLOB ストレージに対する不審な読み取り、書込み、または削除要求がないか Azure Storage 診断ログを監視します。
 
-Advanced Threat Protection のアラートは [Azure Security Center](https://azure.microsoft.com/services/security-center/) でご確認いただけます。 Azure Security Center では、検出されたすべての疑わしいアクティビティについての詳細が提供され、潜在的な脅威を調査して修復する方法が推奨されます。 
+Advanced Threat Protection のアラートは [Azure Security Center](https://azure.microsoft.com/services/security-center/) でご確認いただけます。 Azure Security Center では、検出されたすべての疑わしいアクティビティについての詳細が提供され、潜在的な脅威を調査して修復する方法が推奨されます。
 
 詳細情報:
 
@@ -128,5 +128,4 @@ Azure Disk Encryption は [Azure Key Vault](https://azure.microsoft.com/services
 
 詳細情報
 
-* [Azure Key Vault とは](../key-vault/key-vault-whatis.md)
-* [Azure Key Vault の概要](../key-vault/key-vault-get-started.md)
+* [Azure Key Vault とは](../key-vault/key-vault-overview.md)

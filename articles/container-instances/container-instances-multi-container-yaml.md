@@ -1,50 +1,63 @@
 ---
-title: Azure CLI および YAML を使用して Azure Container Instances に複数コンテナー グループをデプロイする
-description: Azure CLI および YAML ファイルを使用して複数のコンテナーを含むコンテナー グループを Azure Container Instances にデプロイする方法を説明します。
+title: チュートリアル - Azure Container Instances に複数コンテナー グループをデプロイする - YAML
+description: このチュートリアルでは、複数のコンテナーを含むコンテナー グループを YAML ファイルと Azure CLI を使用して Azure Container Instances にデプロイする方法を説明します。
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 04/03/2019
 ms.author: danlep
-ms.openlocfilehash: ffc9cf24e686924878a752b5d9df31160328ef0a
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: a0a91ece4f219cf822673cd457c064c326b89478
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854713"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006190"
 ---
-# <a name="deploy-a-multi-container-container-group-with-yaml"></a>YAML を使用して複数のコンテナーを含むコンテナー グループをデプロイする
+# <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>チュートリアル:YAML ファイルを使用して複数コンテナー グループをデプロイする
 
-Azure Container Instances では、[コンテナー グループ](container-instances-container-groups.md)を使用して、複数のコンテナーを 1 つのホストにデプロイできます。 複数のコンテナーを含むコンテナー グループは、サービスが 2 番目の接続プロセスを必要とする場合に、ログ記録、監視などの構成用にアプリケーション サイドカーをビルドするときに便利です。
+> [!div class="op_single_selector"]
+> * [YAML](container-instances-multi-container-yaml.md)
+> * [リソース マネージャー](container-instances-multi-container-group.md)
+>
 
-Azure CLI を使用して複数コンテナー グループをデプロイする方法は 2 つあります。
+Azure Container Instances では、[コンテナー グループ](container-instances-container-groups.md)を使用して、複数のコンテナーを 1 つのホストにデプロイできます。 コンテナー グループは、サービスが 2 つ目のアタッチされたプロセスを必要とする場合に、ログ記録、監視などの構成用にアプリケーション サイドカーを作成するときに便利です。
 
-* YAML ファイルのデプロイ (この記事)
-* [Resource Manager テンプレートのデプロイ](container-instances-multi-container-group.md)
+このチュートリアルでは、Azure CLI を使用して YAML ファイルをデプロイすることで、単純な 2 コンテナー サイドカー構成を実行する手順を実行します。 YAML ファイルは、インスタンスの設定を指定するための簡潔な形式を提供します。 学習内容は次のとおりです。
 
-YAML フォーマットは簡潔であるため、コンテナー インスタンス*のみ*を含むデプロイには YAML ファイルを使用するデプロイをお勧めします。 コンテナー インスタンスのデプロイ時にその他の Azure サービス リソース (Azure Files 共有など) をデプロイする必要がある場合、Resource Manager テンプレートのデプロイをお勧めします。
+> [!div class="checklist"]
+> * YAML ファイルを構成する
+> * コンテナー グループをデプロイする
+> * コンテナーのログを表示する
 
 > [!NOTE]
-> 複数コンテナー グループは、現在、Linux コンテナーに限定されています。 すべての機能を Windows コンテナーにも採り入れることに取り組んでいますが、現在のプラットフォームの違いは、「[Quotas and region availability for Azure Container Instances](container-instances-quotas.md)」(Azure Container Instances のクォータとリージョンの可用性) で確認できます。
+> 複数コンテナー グループは、現在、Linux コンテナーに限定されています。
 
-## <a name="configure-the-yaml-file"></a>YAML ファイルを構成する
+Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-Azure CLI の [az container create][az-container-create] コマンドを使用して複数のコンテナーを含むコンテナー グループをデプロイするには、YAML ファイルでコンテナー グループ構成を指定してから YAML ファイルをパラメーターとしてコマンドに渡す必要があります。
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-まず、次の YAML を **deploy-aci.yaml** という名前の新しいファイルにコピーします。
+## <a name="configure-a-yaml-file"></a>YAML ファイルを構成する
 
-この YAML ファイルでは、2 つのコンテナー、パブリック IP アドレス、および公開された 2 つのポートを備える "myContainerGroup" というコンテナー グループが定義されます。 グループの最初のコンテナーでは、インターネットに接続する Web アプリケーションが実行されます。 2 番目のコンテナーであるサイドカーは、コンテナー グループのローカル ネットワークを介して最初のコンテナーで実行されている Web アプリケーションに定期的に HTTP 要求を行います。
+Azure CLI の [az container create][az-container-create] コマンドを使用して複数コンテナー グループをデプロイするには、YAML ファイル内にコンテナー グループ構成を指定する必要があります。 その後、YAML ファイルをパラメーターとしてコマンドに渡します。
+
+まず、次の YAML を **deploy-aci.yaml** という名前の新しいファイルにコピーします。 Azure Cloud Shell では、Visual Studio Code を使用して作業ディレクトリにファイルを作成できます。
+
+```
+code deploy-aci.yaml
+```
+
+この YAML ファイルでは、2 つのコンテナー、パブリック IP アドレス、および公開された 2 つのポートを備える "myContainerGroup" というコンテナー グループが定義されます。 コンテナーは、パブリック Microsoft イメージからデプロイされます。 グループの最初のコンテナーでは、インターネットに接続する Web アプリケーションが実行されます。 2 番目のコンテナーであるサイドカーは、コンテナー グループのローカル ネットワークを介して最初のコンテナーで実行されている Web アプリケーションに定期的に HTTP 要求を行います。
 
 ```YAML
-apiVersion: 2018-06-01
+apiVersion: 2018-10-01
 location: eastus
 name: myContainerGroup
 properties:
   containers:
   - name: aci-tutorial-app
     properties:
-      image: microsoft/aci-helloworld:latest
+      image: mcr.microsoft.com/azuredocs/aci-helloworld:latest
       resources:
         requests:
           cpu: 1
@@ -54,7 +67,7 @@ properties:
       - port: 8080
   - name: aci-tutorial-sidecar
     properties:
-      image: microsoft/aci-tutorial-sidecar
+      image: mcr.microsoft.com/azuredocs/aci-tutorial-sidecar
       resources:
         requests:
           cpu: 1
@@ -69,6 +82,15 @@ properties:
       port: '8080'
 tags: null
 type: Microsoft.ContainerInstance/containerGroups
+```
+
+プライベート コンテナー イメージ レジストリを使用するには、お使いの環境に合わせて変更された値を含む `imageRegistryCredentials` プロパティをコンテナー グループに追加します。
+
+```YAML
+  imageRegistryCredentials:
+  - server: imageRegistryLoginServer
+    username: imageRegistryUsername
+    password: imageRegistryPassword
 ```
 
 ## <a name="deploy-the-container-group"></a>コンテナー グループをデプロイする
@@ -98,14 +120,14 @@ az container show --resource-group myResourceGroup --name myContainerGroup --out
 実行中のアプリケーションを表示するには、ご利用のブラウザーでその IP アドレスにアクセスします。 たとえば、次の出力例では IP は `52.168.26.124` です。
 
 ```bash
-Name              ResourceGroup    ProvisioningState    Image                                                           IP:ports               CPU/Memory       OsType    Location
-----------------  ---------------  -------------------  --------------------------------------------------------------  ---------------------  ---------------  --------  ----------
-myContainerGroup  myResourceGroup  Succeeded            microsoft/aci-helloworld:latest,microsoft/aci-tutorial-sidecar  52.168.26.124:80,8080  1.0 core/1.5 gb  Linux     eastus
+Name              ResourceGroup    Status    Image                                                                                               IP:ports              Network    CPU/Memory       OsType    Location
+----------------  ---------------  --------  --------------------------------------------------------------------------------------------------  --------------------  ---------  ---------------  --------  ----------
+myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
 ```
 
-## <a name="view-logs"></a>ログを表示する。
+## <a name="view-container-logs"></a>コンテナー ログの表示
 
-コンテナーのログ出力を表示するには、[az container logs][az-container-logs] コマンドを使用します。 `--container-name` 引数は、プルするログが含まれるコンテナーを指定します。 この例では、最初のコンテナーが指定されています。
+コンテナーのログ出力を表示するには、[az container logs][az-container-logs] コマンドを使用します。 `--container-name` 引数は、プルするログが含まれるコンテナーを指定します。 この例では、`aci-tutorial-app` コンテナーが指定されています。
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app
@@ -115,12 +137,12 @@ az container logs --resource-group myResourceGroup --name myContainerGroup --con
 
 ```console
 listening on port 80
-::1 - - [09/Jan/2018:23:17:48 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
-::1 - - [09/Jan/2018:23:17:51 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
-::1 - - [09/Jan/2018:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [21/Mar/2019:23:17:48 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [21/Mar/2019:23:17:51 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-サイドカー コンテナーのログを表示するには、2 番目のコンテナー名を指定して、同じコマンドを実行します。
+サイドカー コンテナーのログを表示するには、`aci-tutorial-sidecar` コンテナーを指定して、同様のコマンドを実行します。
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-sidecar
@@ -129,7 +151,7 @@ az container logs --resource-group myResourceGroup --name myContainerGroup --con
 出力:
 
 ```console
-Every 3s: curl -I http://localhost                          2018-01-09 23:25:11
+Every 3s: curl -I http://localhost                          2019-03-21 20:36:41
 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
@@ -142,96 +164,29 @@ Last-Modified: Wed, 29 Nov 2017 06:40:40 GMT
 ETag: W/"67f-16006818640"
 Content-Type: text/html; charset=UTF-8
 Content-Length: 1663
-Date: Tue, 09 Jan 2018 23:25:11 GMT
+Date: Thu, 21 Mar 2019 20:36:41 GMT
 Connection: keep-alive
 ```
 
-このように、サイドカーは、グループのローカル ネットワーク経由で、メインの Web アプリケーションに定期的に HTTP 要求を実行して、アプリケーションが実行中であることを確認します。 このサイドカーの例は、200 OK 以外の HTTP 応答コードを受け取ったときに、アラートをトリガーするように拡張できます。
-
-## <a name="deploy-from-private-registry"></a>プライベート レジストリからデプロイする
-
-プライベート コンテナー イメージ レジストリを使用するには、お使いの環境に合わせて変更された値を含む次の YAML を含めます。
-
-```YAML
-  imageRegistryCredentials:
-  - server: imageRegistryLoginServer
-    username: imageRegistryUsername
-    password: imageRegistryPassword
-```
-
-たとえば次の YAML は、"myregistry" という名前のプライベート Azure Container Registry からイメージが抽出された 1 つのコンテナーを含むコンテナー グループをデプロイします。
-
-```YAML
-apiVersion: 2018-06-01
-location: eastus
-name: myContainerGroup2
-properties:
-  containers:
-  - name: aci-tutorial-app
-    properties:
-      image: myregistry.azurecr.io/aci-helloworld:latest
-      resources:
-        requests:
-          cpu: 1
-          memoryInGb: 1.5
-      ports:
-      - port: 80
-  osType: Linux
-  ipAddress:
-    type: Public
-    ports:
-    - protocol: tcp
-      port: '80'
-  imageRegistryCredentials:
-  - server: myregistry.azurecr.io
-    username: myregistry
-    password: REGISTRY_PASSWORD
-tags: null
-type: Microsoft.ContainerInstance/containerGroups
-```
-
-## <a name="export-container-group-to-yaml"></a>コンテナー グループを YAML にエクスポートする
-
-既存のコンテナー グループの構成を YAML ファイルにエクスポートできます。そのためには、Azure CLI の [az container export][az-container-export] コマンドを使用します。
-
-エクスポートはコンテナー グループの構成を保存する際に便利です。バージョン コントロールでコンテナー グループの構成を「コードとしての構成」として格納できます。 または、エクスポートしたファイルを YAML で新しい構成を作成する際の出発点として使用します。
-
-次の [az container export][az-container-export] コマンドを発行して、作成済みのコンテナー グループの構成をエクスポートします。
-
-```azurecli-interactive
-az container export --resource-group myResourceGroup --name myContainerGroup --file deployed-aci.yaml
-```
-
-コマンドが成功した場合出力は表示されませんが、ファイルの内容を表示して結果を確認できます。 たとえば、`head` を含む最初の数行です。
-
-```console
-$ head deployed-aci.yaml
-additional_properties: {}
-apiVersion: '2018-06-01'
-location: eastus
-name: myContainerGroup
-properties:
-  containers:
-  - name: aci-tutorial-app
-    properties:
-      environmentVariables: []
-      image: microsoft/aci-helloworld:latest
-```
+このように、サイドカーは、グループのローカル ネットワーク経由で、メインの Web アプリケーションに定期的に HTTP 要求を実行して、アプリケーションが実行中であることを確認します。 このサイドカーの例は、`200 OK` 以外の HTTP 応答コードを受け取ったときに、アラートをトリガーするように拡張できます。
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、複数コンテナーの Azure コンテナー インスタンスのデプロイに必要な手順について説明しました。 プライベート Azure コンテナー レジストリの使用を含むエンド ツー エンドの Azure Container Instances の操作については、Azure Container Instances チュートリアルを参照してください。
+このチュートリアルでは、YAML ファイルを使用して、Azure Container Instances に複数コンテナー グループをデプロイしました。 以下の方法について学習しました。
 
-> [!div class="nextstepaction"]
-> [Azure Container Instances のチュートリアル][aci-tutorial]
+> [!div class="checklist"]
+> * マルチコンテナー グループ用の YAML ファイルを構成する
+> * コンテナー グループをデプロイする
+> * コンテナーのログを表示する
+
+[Resource Manager テンプレート](container-instances-multi-container-group.md)を使用して、マルチコンテナー グループを指定することもできます。 Resource Manager テンプレートは、追加の Azure サービス リソースをコンテナー グループを使用してデプロイする必要があるシナリオに簡単に適応できます。
 
 <!-- LINKS - External -->
-[cli-issue-6525]: https://github.com/Azure/azure-cli/issues/6525
+
 
 <!-- LINKS - Internal -->
 [aci-tutorial]: ./container-instances-tutorial-prepare-app.md
 [az-container-create]: /cli/azure/container#az-container-create
-[az-container-export]: /cli/azure/container#az-container-export
 [az-container-logs]: /cli/azure/container#az-container-logs
 [az-container-show]: /cli/azure/container#az-container-show
 [az-group-create]: /cli/azure/group#az-group-create

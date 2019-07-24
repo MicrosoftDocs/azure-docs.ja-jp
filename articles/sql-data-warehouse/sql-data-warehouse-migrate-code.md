@@ -6,21 +6,23 @@ author: jrowlandjones
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 2f16f9448da2dab9670908f74935bb5fb31a0547
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: fae3ae16ee0100ad446c0b6c7851553a3376bb4f
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301373"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400975"
 ---
 # <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>SQL Data Warehouse への SQL コードの移行
+
 この記事では、他のデータベースから SQL Data Warehouse にコードを移行するときに一般に行う必要があるコードの変更について説明します。 一部の SQL Data Warehouse 機能は分散環境で機能するように設計されているため、大幅にパフォーマンスを向上できます。 ただし、パフォーマンスと拡張性を維持するには、一部の機能が使用できなくなる場合もあります。
 
 ## <a name="common-t-sql-limitations"></a>一般的な T-SQL の制限事項
+
 SQL Data Warehouse でサポートされていない最も一般的な機能を次に示します。 リンクをクリックすると、サポートされていない機能に対する解決策が表示されます。
 
 * [ANSI JOIN を使用した更新][ANSI joins on updates]
@@ -32,7 +34,7 @@ SQL Data Warehouse でサポートされていない最も一般的な機能を�
 * OUTPUT 句
 * インライン ユーザー定義関数
 * 複数ステートメント関数
-* [共通テーブル式](#Common-table-expressions)
+* 共通テーブル式
 * [再帰共通テーブル式 (CTE)](#Recursive-common-table-expressions-(CTE)
 * CLR 関数およびプロシージャ
 * $partition 関数
@@ -45,12 +47,12 @@ SQL Data Warehouse でサポートされていない最も一般的な機能を�
 * [rollup/cube/grouping セット オプションによる句ごとのグループ化][group by clause with rollup / cube / grouping sets options]
 * [8 を超える入れ子のレベル][nesting levels beyond 8]
 * [ビューを使用した更新][updating through views]
-* [変数代入のための SELECT の使用][use of select for variable assignment]
 * [動的 SQL 文字列の MAX 以外のデータ型][no MAX data type for dynamic SQL strings]
 
 こうした制限の大部分は回避できます。 上記の関連する開発記事に説明が記載されています。
 
 ## <a name="supported-cte-features"></a>サポートされる CTE 機能
+
 SQL Data Warehouse では、共通テーブル式 (CTE) が部分的にサポートされています。  現時点でサポートされている CTE 機能を次に示します。
 
 * CTE は、SELECT ステートメントで指定できます。
@@ -63,6 +65,7 @@ SQL Data Warehouse では、共通テーブル式 (CTE) が部分的にサポー
 * 複数の CTE クエリ定義は、CTE で定義できます。
 
 ## <a name="cte-limitations"></a>CTE の制限事項
+
 SQL Data Warehouse での共通テーブル式の制限事項を次に示します。
 
 * CTE の後ろには単一の SELECT ステートメントを続ける必要があります。 INSERT、UPDATE、DELETE、MERGE ステートメントはサポートされていません。
@@ -73,9 +76,11 @@ SQL Data Warehouse での共通テーブル式の制限事項を次に示しま�
 * Sp_prepare によって作成されるステートメントで使用される場合、CTE は PDW の他の SELECT ステートメントと同様に動作します。 ただし、CTE が sp_prepare で準備される CETAS の一部として使用される場合、バインドを sp_prepare に対して実装する方法によって、動作が SQL Server および他の PDW ステートメントとは異なる場合があります。 CTE を参照する SELECT が CTE に存在しない間違った列を使用している場合、sp_prepare はエラーを検出せずに渡されますが、代わりに sp_execute でエラーがスローされます。
 
 ## <a name="recursive-ctes"></a>再帰 CTE
+
 再帰 CTE は、SQL Data Warehouse ではサポートされていません。  再帰 CTE の移行は複雑であるため、複数の手順に分けて実行することをお勧めします。 通常、再帰的な中間クエリの反復処理時に、ループを使用したり、一時テーブルに値を取り込んだりできます。 一時テーブルに値が取り込まれたら、単一の結果セットとしてデータを戻すことができます。 [rollup/cube/grouping セット オプションによる句ごとのグループ化][group by clause with rollup / cube / grouping sets options]に関する記事でも、`GROUP BY WITH CUBE` の解決に同様のアプローチを採用しています。
 
 ## <a name="unsupported-system-functions"></a>サポートされていないシステム関数
+
 また、サポートされていないシステム関数もいくつかあります。 データ ウェアハウジングで一般的に使用されている主なものを次に示します。
 
 * NEWSEQUENTIALID()
@@ -88,11 +93,12 @@ SQL Data Warehouse での共通テーブル式の制限事項を次に示しま�
 これらの問題の一部は回避できます。
 
 ## <a name="rowcount-workaround"></a>@@ROWCOUNT 対処法
+
 @@ROWCOUNT がサポートされていない問題を回避するには、sys.dm_pdw_request_steps から最後の行数を取得するストアド プロシージャを作成して、DML ステートメントの後で `EXEC LastRowCount` を実行することです。
 
 ```sql
 CREATE PROCEDURE LastRowCount AS
-WITH LastRequest as 
+WITH LastRequest as
 (   SELECT TOP 1    request_id
     FROM            sys.dm_pdw_exec_requests
     WHERE           session_id = SESSION_ID()
@@ -111,6 +117,7 @@ SELECT TOP 1 row_count FROM LastRequestRowCounts ORDER BY step_index DESC
 ```
 
 ## <a name="next-steps"></a>次の手順
+
 サポートされているすべての T-SQL ステートメントの一覧については、「[Transact-SQL トピック][Transact-SQL topics]」をご覧ください。
 
 <!--Image references-->

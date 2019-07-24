@@ -1,26 +1,26 @@
 ---
-title: Azure IoT Hub 操作の監視 | Microsoft Docs
+title: Azure IoT Hub 操作の監視 (非推奨) | Microsoft Docs
 description: Azure IoT Hub 操作の監視を使用して、IoT Hub に対する操作の状態をリアルタイムで監視する方法。
 author: nberdy
 manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/10/2017
+ms.date: 03/11/2019
 ms.author: nberdy
-ms.openlocfilehash: 3aa452cd178bd0d064726c5be7dbdf65c6ef8d92
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 84f28a1cb411e7df156fc08fa683efe7f83eda64
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160050"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59258115"
 ---
-# <a name="iot-hub-operations-monitoring"></a>IoT Hub 操作の監視
+# <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub 操作の監視 (非推奨)
 
 IoT Hub の操作の監視では、IoT Hub に対する操作の状態をリアルタイムで監視することができます。 IoT Hub は、複数のカテゴリにまたがる操作のイベントを追跡します。 1 つ以上のカテゴリから IoT ハブのエンドポイントにイベントを送信して処理するように選択することができます。 データを監視してエラーがないか確認したり、データ パターンに基づいてより複雑な処理をセットアップしたりできます。
 
 >[!NOTE]
->IoT Hub の操作の監視は非推奨になっており、2019 年 3 月 10 日をもって IoT Hub から削除される予定です。 IoT Hub の操作と正常性を監視する方法については、「[Azure IoT Hub の正常性を監視し、問題をすばやく診断する][lnk-monitor]」をご覧ください。 廃止のスケジュールについて詳しくは、「[Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health][lnk-blog-announcement]」(Azure Monitor および Azure Resource Health による Azure IoT ソリューションの監視) をご覧ください。
+>IoT Hub の**操作の監視は非推奨になっており、2019 年 3 月 10 日をもって IoT Hub から削除される予定です**。 IoT Hub の操作と正常性を監視する方法については、「[Azure IoT Hub の正常性を監視し、問題をすばやく診断する](iot-hub-monitor-resource-health.md)」をご覧ください。 廃止のスケジュールについて詳しくは、「[Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)」(Azure Monitor および Azure Resource Health による Azure IoT ソリューションの監視) をご覧ください。
 
 IoT Hub では、次の 6 つのカテゴリのイベントを監視します。
 
@@ -36,15 +36,15 @@ IoT Hub では、次の 6 つのカテゴリのイベントを監視します。
 
 ## <a name="how-to-enable-operations-monitoring"></a>操作の監視を有効にする方法
 
-1. IoT Hub を作成します。 IoT ハブの作成方法の手順については、[使用開始][lnk-get-started]に関するガイドを参照してください。
+1. IoT Hub を作成します。 IoT ハブの作成方法の手順については、[使用開始](quickstart-send-telemetry-dotnet.md)に関するガイドを参照してください。
 
-1. IoT Hub のブレードを開きます。 このブレードで、 **[操作の監視]** をクリックします。
+2. IoT Hub のブレードを開きます。 このブレードで、 **[操作の監視]** をクリックします。
 
-    ![ポータルでのアクセス操作監視の設定][1]
+    ![ポータルでのアクセス操作監視の設定](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-1. 監視する監視カテゴリを選択し、**[保存]** をクリックします。 イベントは、 **[監視の設定]** に一覧表示された Event Hub 対応のエンドポイントから読み取ることができます。 IoT Hub エンドポイントの名前は `messages/operationsmonitoringevents`です。
+3. 監視する監視カテゴリを選択し、**[保存]** をクリックします。 イベントは、 **[監視の設定]** に一覧表示された Event Hub 対応のエンドポイントから読み取ることができます。 IoT Hub エンドポイントの名前は `messages/operationsmonitoringevents`です。
 
-    ![IoT Hub での操作監視の設定][2]
+    ![IoT Hub での操作監視の設定](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
 > [!NOTE]
 > **[接続]** カテゴリに対して **[詳細]** 監視を選ぶと、IoT Hub は追加の診断メッセージを生成します。 他のすべてのカテゴリでは、**[詳細]** 設定を選ぶと、IoT Hub が個々のエラー メッセージに含める情報の量が変わります。
@@ -145,7 +145,9 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつクラウド�
 ファイルのアップロード カテゴリでは、IoT Hub で発生し、かつファイルのアップロード機能に関連しているエラーを追跡します。 このカテゴリには、次のエラーが含まれます。
 
 * SAS URI で発生したエラー (デバイスがアップロード完了をハブに通知する前に期限切れになった、など)。
+
 * デバイスによって報告されたアップロード エラー。
+
 * IoT Hub 通知メッセージの作成中にストレージでファイルが見つからないときに発生するエラー。
 
 このカテゴリでは、デバイスがファイルをストレージにアップロードしているときに直接発生したエラーをキャッチできません。
@@ -188,31 +190,31 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつクラウド�
 
 ## <a name="connect-to-the-monitoring-endpoint"></a>監視エンドポイントへの接続
 
-IoT Hub での監視エンドポイントは、Event Hub と互換性のあるエンドポイントです。 Event Hub で動作する任意のメカニズムを使用して、このエンドポイントから監視メッセージを読み取ることができます。 次のサンプルで作成される基本的なリーダーは、高スループットのデプロイには適していません。 Event Hubs からのメッセージを処理する方法の詳細については、「[Event Hubs の使用][lnk-eventhubs-tutorial]」のチュートリアルを参照してください。
+IoT Hub での監視エンドポイントは、Event Hub と互換性のあるエンドポイントです。 Event Hub で動作する任意のメカニズムを使用して、このエンドポイントから監視メッセージを読み取ることができます。 次のサンプルで作成される基本的なリーダーは、高スループットのデプロイには適していません。 Event Hubs からのメッセージを処理する方法の詳細については、「 [Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md) 」のチュートリアルを参照してください。
 
 監視エンドポイントに接続するには、接続文字列とエンドポイント名が必要です。 次の手順は、ポータルで必要な値を検索する方法を示しています。
 
 1. ポータルで、IoT Hub リソース ブレードに移動します。
 
-1. **[操作の監視]** を選択して、**[Event Hub 互換名]** と **[Event Hub 互換エンドポイント]** の値をメモします。
+2. **[操作の監視]** を選択して、**[Event Hub 互換名]** と **[Event Hub 互換エンドポイント]** の値をメモします。
 
-    ![Event Hub 互換エンドポイントの値][img-endpoints]
+    ![Event Hub 互換エンドポイントの値](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-1. **[共有アクセス ポリシー]** を選択し、**[サービス]** を選択します。 **[主キー]** の値をメモします。
+3. **[共有アクセス ポリシー]** を選択し、**[サービス]** を選択します。 **[主キー]** の値をメモします。
 
-    ![サービスの共有アクセス ポリシーの主キー][img-service-key]
+    ![サービスの共有アクセス ポリシーの主キー](./media/iot-hub-operations-monitoring/service-key.png)
 
 次の C# コード サンプルは、Visual Studio の **Windows クラシック デスクトップ** C# コンソール アプリからの抜粋です。 このプロジェクトでは、**WindowsAzure.ServiceBus** NuGet パッケージがインストールされています。
 
 * 次の例に示されているように、接続文字列プレースホルダーを、以前にメモした **Event Hub 互換エンドポイント** とサービスの**主キー** の値に置き換えます。
 
-    ```cs
+    ```csharp
     "Endpoint={your Event Hub-compatible endpoint};SharedAccessKeyName=service;SharedAccessKey={your service primary key value}"
     ```
 
 * 監視エンドポイント名プレース ホルダーを、以前にメモした **Event Hub 互換名**に置き換えます。
 
-```cs
+```csharp
 class Program
 {
     static string connectionString = "{your monitoring endpoint connection string}";
@@ -263,24 +265,9 @@ class Program
 ```
 
 ## <a name="next-steps"></a>次の手順
+
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [IoT Hub 開発者ガイド][lnk-devguide]
-* [Azure IoT Edge でエッジ デバイスに AI をデプロイする][lnk-iotedge]
+* [IoT Hub 開発者ガイド](iot-hub-devguide.md)
 
-<!-- Links and images -->
-[1]: media/iot-hub-operations-monitoring/enable-OM-1.png
-[2]: media/iot-hub-operations-monitoring/enable-OM-2.png
-[img-endpoints]: media/iot-hub-operations-monitoring/monitoring-endpoint.png
-[img-service-key]: media/iot-hub-operations-monitoring/service-key.png
-
-[lnk-blog-announcement]: https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health
-[lnk-monitor]: iot-hub-monitor-resource-health.md
-[lnk-get-started]: quickstart-send-telemetry-dotnet.md
-[lnk-diagnostic-metrics]: iot-hub-metrics.md
-[lnk-scaling]: iot-hub-scaling.md
-[lnk-dr]: iot-hub-ha-dr.md
-
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
+* [Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/tutorial-simulate-device-linux.md)

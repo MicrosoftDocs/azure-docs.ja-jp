@@ -1,5 +1,5 @@
 ---
-title: Azure App Service Environment の使用
+title: Azure App Service Environment の使用 - Azure
 description: Azure App Service Environment でアプリを作成、発行、スケールする方法
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 80abe29c80898b691aa6e5e47bf068a9e69e50e4
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.custom: seodec18
+ms.openlocfilehash: c332b20650bef2e341a935dacae835403dc56c9b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303372"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630667"
 ---
 # <a name="use-an-app-service-environment"></a>App Service Environment の使用 #
 
@@ -26,10 +27,10 @@ ms.locfileid: "44303372"
 
 Azure App Service Environment は、ユーザーの Azure 仮想ネットワーク内のサブネットに Azure App Service をデプロイしたものです。 構成は次のとおりです。
 
-- **フロント エンド**: App Service Environment (ASE) で HTTP または HTTPS が終了する場所です。
-- **ワーカー**: アプリのホストとなるリソースです。
-- **データベース**: 環境を定義する情報が格納されます。
-- **ストレージ**: ユーザーによって発行されたアプリのホストとして使用されます。
+- **フロントエンド:** App Service Environment (ASE) で HTTP または HTTPS が終了する場所です。
+- **ワーカー**:アプリのホストとなるリソースです。
+- **データベース**:環境を定義する情報が格納されます。
+- **ストレージ**:ユーザーによって発行されたアプリのホストとして使用されます。
 
 > [!NOTE]
 > App Service Environment には、ASEv1 と ASEv2 の 2 つのバージョンがあります。 ASEv1 では、使用するリソースを事前に管理する必要があります。 ASEv1 の構成と管理の方法については、[App Service Environment v1 の構成][ConfigureASEv1]に関するページを参照してください。 この記事の残りの部分では、ASEv2 について説明します。
@@ -38,22 +39,22 @@ Azure App Service Environment は、ユーザーの Azure 仮想ネットワー�
 
 ASE は (ASEv1 と ASEv2 のどちらも)、アプリ アクセスに外部 VIP を使用したデプロイと内部 VIP を使用したデプロイが可能です。 外部 VIP を使用したデプロイは、外部 ASE と呼ばれます。 内部 VIP を使用したデプロイは、内部ロード バランサー (ILB) を使用するので、ILB ASE と呼ばれます。 ILB ASE の詳細については、[ILB ASE の作成と使用][MakeILBASE]に関するページを参照してください。
 
-## <a name="create-a-web-app-in-an-ase"></a>ASE での Web アプリの作成 ##
+## <a name="create-an-app-in-an-ase"></a>ASE 内にアプリを作成する ##
 
-ASE で Web アプリを作成する方法は通常の作成方法とほとんど同じですが、いくつか違いがあります。 新しい App Service プランを作成する場合は、次の点が異なります。
+ASE でアプリを作成する方法は通常の作成方法とほとんど同じですが、いくつか違いがあります。 新しい App Service プランを作成する場合は、次の点が異なります。
 
 - アプリのデプロイ先の場所として地理的な場所ではなく ASE を選択します。
 - ASE で作成する App Service プランはすべて、"分離" 価格レベルに属している必要があります。
 
 ASE をご利用でない場合は、[App Service Environment の作成][MakeExternalASE]に関するページの手順に従って作成できます。
 
-ASE で Web アプリを作成するには、次の手順に従います。
+ASE 内にアプリを作成するには:
 
 1. **[リソースの作成]** > **[Web + モバイル]** > **[Web アプリ]** を選択します。
 
-1. Web アプリの名前を入力します。 ASE 内で既に App Service プランが選択されている場合、アプリのドメイン名に、ASE のドメイン名が反映されます。
+2. アプリの名前を入力します。 ASE 内で既に App Service プランが選択されている場合、アプリのドメイン名に、ASE のドメイン名が反映されます。
 
-    ![Web アプリ名の選択][1]
+    ![アプリ名の選択][1]
 
 1. サブスクリプションを選択します。
 
@@ -79,10 +80,10 @@ ASE で Web アプリを作成するには、次の手順に従います。
     ![[分離] 価格レベル][2]
 
     > [!NOTE]
-    > Linux Web アプリと Windows Web アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
+    > Linux アプリと Windows アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。 
     >
 
-1. **作成**を選択します。
+2. **作成**を選択します。
 
 ## <a name="how-scale-works"></a>スケールのしくみ ##
 
@@ -96,7 +97,7 @@ ASE では、最大 100 インスタンスまでスケールアップするこ�
 
 ## <a name="ip-addresses"></a>IP アドレス ##
 
-App Service には、アプリに専用の IP アドレスを割り当てる機能があります。 [既存のカスタム SSL 証明書の Azure Web Apps へのバインド][ConfigureSSL]に関する記事で説明されているように、この機能は IP ベースの SSL を構成した後に利用できます。 ただし、ASE の場合は重要な例外があります。 ILB ASE では IP ベースの SSL に使用する追加の IP アドレスを追加することはできません。
+App Service には、アプリに専用の IP アドレスを割り当てる機能があります。 [既存のカスタム SSL 証明書の Azure App Service へのバインド][ConfigureSSL]に関する記事で説明されているように、この機能は IP ベースの SSL を構成した後に利用できます。 ただし、ASE の場合は重要な例外があります。 ILB ASE では IP ベースの SSL に使用する追加の IP アドレスを追加することはできません。
 
 ASEv1 では、使用する IP アドレスを事前にリソースとして割り当てておく必要があります。 ASEv2 では、マルチテナントの App Service の場合と同様、アプリの IP アドレスを使用します。 ASEv2 には、IP アドレスが 30 個を上限として、常に予備のアドレスが 1 つ存在します。 すぐに利用できる IP アドレスを常時確保するために、アドレスを 1 つ使用すると、そのたびに、別のアドレスが追加されます。 別の IP アドレスを割り当てるまでに、どうしても時間差が発生するので、IP アドレスを立て続けに追加することはできません。
 
@@ -182,10 +183,10 @@ ASE を削除するには、次の手順に従います。
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: http://azure.microsoft.com/pricing/details/app-service/
+[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
 [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
-[Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
-[AppDeploy]: ../app-service-deploy-local-git.md
+[Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
+[AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

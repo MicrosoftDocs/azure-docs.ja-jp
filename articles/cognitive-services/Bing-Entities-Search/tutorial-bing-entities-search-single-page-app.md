@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: Bing Entity Search 単一ページ Web アプリ'
+title: チュートリアル:Bing Entity Search シングルページ Web アプリ
 titlesuffix: Azure Cognitive Services
 description: 単一ページの Web アプリで Bing Entity Search API を使用する方法を説明します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: tutorial
-ms.date: 12/08/2017
+ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 6bf3944017075ee04fe6ed3472a0cbe12d7f8ba0
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: fe1e56d2975c219a56d41102c728b7873f9f4f62
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162009"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538172"
 ---
-# <a name="tutorial-single-page-web-app"></a>チュートリアル: 単一ページの Web アプリ
+# <a name="tutorial-single-page-web-app"></a>チュートリアル:単一ページの Web アプリ
 
 Bing Entity Search API を使用すると、Web で*エンティティ*と*場所*に関する情報を検索できます。 特定のクエリで、いずれかの結果または両方の結果を要求することができます。 場所とエンティティの定義を以下に示します。
 
@@ -96,7 +96,7 @@ CLIENT_ID_COOKIE      = "bing-search-client-id";
 
 // API endpoints
 SEARCH_ENDPOINT = "https://api.cognitive.microsoft.com/bing/v7.0/entities";
-MAPS_ENDPOINT   = "http://dev.virtualearth.net/REST/v1/Locations";
+MAPS_ENDPOINT   = "https://dev.virtualearth.net/REST/v1/Locations";
 
 // ... omitted definitions of storeValue() and retrieveValue()
 
@@ -422,7 +422,7 @@ function renderSearchResults(results) {
     if (results.queryContext.alteredQuery) 
         document.forms.bing.query.value = results.queryContext.alteredQuery;
 
-    // for each possible section, render the resuts from that section
+    // for each possible section, render the results from that section
     for (section in {pole: 0, mainline: 0, sidebar: 0}) {
         if (results.rankingResponse[section])
             showDiv(section, renderResultsItems(section, results));

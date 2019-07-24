@@ -1,37 +1,33 @@
 ---
-title: 単一の実験から複数のモデルを作成する | Microsoft Docs
+title: モデルに対して複数のエンドポイントを作成する
+titleSuffix: Azure Machine Learning Studio
 description: アルゴリズムは同じでトレーニング データセットだけが異なる複数の Machine Learning モデルと複数の Web サービス エンドポイントを PowerShell を使用して作成します。
 services: machine-learning
-documentationcenter: ''
-author: hning86
-ms.author: haining
-manager: mwinkle
-editor: cgronlun
-ms.assetid: 1076b8eb-5a0d-4ac5-8601-8654d9be229f
 ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: studio
+ms.topic: conceptual
+author: xiaoharper
+ms.author: amlstudiodocs
+ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: dcf4e9fa9435d8f20784b20f3873d408adb78c20
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: a191a7adc2c43337b663fc44a8ef40df9d8ffef4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469828"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848921"
 ---
-# <a name="create-many-machine-learning-models-and-web-service-endpoints-from-one-experiment-using-powershell"></a>PowerShell を使用して 1 つの実験から複数の Machine Learning モデルと Web サービス エンドポイントを作成する
+# <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>PowerShell を使用して 1 つの実験から Studio モデルと Web サービス エンドポイントを作成する
+
 機械学習について多くの人が考えることは、トレーニング ワークフローと使用アルゴリズムが同じ複数のモデルを作成できないものだろうか、ということです。 ただし、入力としては異なるトレーニング データセットを使用します。 この記事では、Azure Machine Learning Studio で 1 つの実験だけを使い、規模の制約なくこの課題に対応する方法を紹介しています。
 
 たとえば皆さんが、自転車レンタルのフランチャイズ事業を世界規模で展開しているとしましょう。 過去のデータに基づいてレンタルの需要を予測するために、回帰モデルを構築する必要があります。 レンタルの拠点は全世界で 1,000 店舗存在し、拠点ごとにデータセットを収集済です。 データセットには、日付、時刻、天気、交通状況などの重要な要素が含まれます。
 
 全拠点のすべてのデータセットをマージして 1 回だけモデルをトレーニングすることは可能です。 しかし、環境は拠点ごとに異なります。 このため、手法としては、拠点ごとのデータセットを使用して回帰モデルを個別にトレーニングした方が適切と考えられます。 そうすれば、トレーニング済みのモデルごとに異なる店舗サイズ、ボリューム、地勢、人口、自転車に配慮した交通環境などを反映することができます。
 
-ただ最良の手法であったとしても、それぞれ固有の拠点を表す 1,000 件ものトレーニング実験を Azure Machine Learning で作成するのは非現実的です。 個々の実験の構成要素が、トレーニング データセットを除いてすべて同じであることを考えると、膨大な手間のかかる作業であるだけでなく非効率な方法でもあります。
+ただ最良の手法であったとしても、それぞれ固有の拠点を表す 1,000 件ものトレーニング実験を Azure Machine Learning Studio で作成するのは非現実的です。 個々の実験の構成要素が、トレーニング データセットを除いてすべて同じであることを考えると、膨大な手間のかかる作業であるだけでなく非効率な方法でもあります。
 
-さいわい、この処理には [Azure Machine Learning の再トレーニング API](retrain-models-programmatically.md) を使用でき、[Azure Machine Learning PowerShell](powershell-module.md) でタスクを自動化することができます。
+さいわい、この処理には [Azure Machine Learning Studio の再トレーニング API](/azure/machine-learning/studio/retrain-machine-learning-model) を使用でき、[Azure Machine Learning Studio PowerShell](powershell-module.md) でタスクを自動化することができます。
 
 > [!NOTE]
 > ここではサンプルの実行時間を短くするために、拠点数を 1,000 から 10 に減らすことにします。 しかし拠点が 1,000 か所あっても原理と手順は同じです。 ただし、1,000 データセットからトレーニングする場合は、次の PowerShell スクリプトを並列に実行できます。 その方法はこの記事で取り上げる範囲を超えていますが、PowerShell のマルチスレッド化の例は、インターネットを検索すれば見つかります。  
@@ -39,7 +35,7 @@ ms.locfileid: "49469828"
 > 
 
 ## <a name="set-up-the-training-experiment"></a>トレーニング実験のセットアップ
-[Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com)にある[トレーニング実験](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Training-Experiment-1)の例を使用します。 この実験を [Azure Machine Learning Studio](https://studio.azureml.net) ワークスペースで開いてください。
+[Cortana Intelligence ギャラリー](https://gallery.azure.ai)にある[トレーニング実験](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1)の例を使用します。 この実験を [Azure Machine Learning Studio](https://studio.azureml.net) ワークスペースで開いてください。
 
 > [!NOTE]
 > この例に沿って理解するためには、無料ワークスペースではなく標準のワークスペースを使用する必要があります。 エンドポイントは顧客ごとに 1 つ作成します (合計 10 エンドポイント)。無料のワークスペースはエンドポイント数が 3 個に限定されているため、標準のワークスペースが必要となります。 無料のワークスペースしかない場合は、拠点数が 3 つのみとなるように以下のスクリプトを変更してください。
@@ -48,7 +44,7 @@ ms.locfileid: "49469828"
 
 この実験では **データのインポート** モジュールを使用して、Azure ストレージ アカウントからトレーニング データセット *customer001.csv* をインポートします。 トレーニング データセットを自転車レンタルの全拠点から収集し、*rentalloc001.csv* から *rentalloc10.csv* のファイル名で同じ Blob Storage の場所に保存したとします。
 
-![image](./media/create-models-and-endpoints-with-powershell/reader-module.png)
+![リーダー モジュールが Azure BLOB からデータをインポートする](./media/create-models-and-endpoints-with-powershell/reader-module.png)
 
 **Train Model** モジュールに **Web Service Output** モジュールが追加されていることに注目してください。
 この実験を Web サービスとしてデプロイすると、その出力に関連付けられているエンドポイントから、トレーニング済みのモデルが .ilearner ファイル形式で返されます。
@@ -56,7 +52,7 @@ ms.locfileid: "49469828"
 また、**データのインポート** モジュールで使用する URL を定義する Web サービス パラメーターを設定しています。 このパラメーターを使用して、拠点ごとのモデルをトレーニングするためのトレーニング データセットを個別に指定することができます。
 これを行う方法は他にもあります。 Web サービス パラメーターで SQL クエリを使用して、SQL Azure データベースからデータを取得します。 または、**Web サービスの入力**モジュールを使用してデータセットを Web サービスに渡すことができます。
 
-![image](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
+![トレーニング済みのモデル モジュールが Web サービス出力モジュールに出力する](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 
 それではトレーニング データセットとして既定値の *rental001.csv* を使用し、このトレーニング実験を実行してみましょう。 **Evaluate** モジュールの出力を表示 (出力をクリックして **[視覚化]** を選択) すると、*AUC* = 0.91 という良好なパフォーマンスが得られていることを確認できます。 これで、このトレーニング実験から Web サービスをデプロイする準備ができました。
 
@@ -67,7 +63,7 @@ ms.locfileid: "49469828"
 そのためには、キャンバスの下にある **[Web サービスの設定]** をクリックし、**[予測 Web サービス]** を選びます。 これでスコア付け実験が作成されます。
 これを Web サービスとして利用するためには、若干の調整を加える必要があります。 入力データからラベル列 "cnt" を削除すると共に、出力内容はインスタンス ID および対応する予測値に限定します。
 
-この作業を省略する場合は、既に作成済みの[予測実験](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Predicative-Experiment-1)をギャラリーで開いてもかまいません。
+この作業を省略する場合は、既に作成済みの[予測実験](https://gallery.azure.ai/Experiment/Bike-Rental-Predicative-Experiment-1)をギャラリーで開いてもかまいません。
 
 Web サービスをデプロイするには、予測実験を実行し、キャンバスの下にある **[Deploy Web Service]** (Web サービスのデプロイ) ボタンをクリックします。 スコア付け Web サービスには "Bike Rental Scoring" という名前を付けます。
 
@@ -93,7 +89,7 @@ Web サービスをデプロイするには、予測実験を実行し、キャ�
 
 これで 10 個のエンドポイントが作成されました。いずれのエンドポイントにも、*customer001.csv* でトレーニングされた同じトレーニング済みモデルが含まれています。 それを Azure Portal で確認することができます。
 
-![image](./media/create-models-and-endpoints-with-powershell/created-endpoints.png)
+![ポータル内でトレーニング済みモデルの一覧を確認する](./media/create-models-and-endpoints-with-powershell/created-endpoints.png)
 
 ## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>個別のトレーニング データセットを使用するように PowerShell を使ってエンドポイントを更新する
 次に、各顧客の個別のデータで独自にトレーニングされたモデルでエンドポイントを更新します。 ただし最初に、これらのモデルを **Bike Rental Training** Web サービスから生成する必要があります。 **Bike Rental Training** Web サービスに戻りましょう。 10 個の異なるモデルを作成するためには、対応する BES エンドポイントを 10 回、10 個の異なるトレーニング データセットで呼び出す必要があります。 ここでは、PowerShell コマンドレット **InovkeAmlWebServiceBESEndpoint** を使用してこの処理を実行します。

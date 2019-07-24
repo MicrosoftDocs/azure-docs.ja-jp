@@ -4,7 +4,7 @@ description: 無料試用版サブスクリプションなど、Azure サブス�
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jlian
+manager: adpick
 editor: ''
 tags: billing
 ms.assetid: 3051d6b0-179f-4e3a-bda4-3fee7135eac5
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/18/2018
-ms.author: cwatson
-ms.openlocfilehash: c39dcdc0c4a89aa01c31dde1c5354ef1d4afe91d
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 1/23/2019
+ms.author: banders
+ms.openlocfilehash: 374224663323e75a1d1413c47490bd3aacd00267
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395568"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57876818"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Azure のサブスクリプションの取り消し
 
@@ -37,10 +37,11 @@ ms.locfileid: "47395568"
 ## <a name="cancel-subscription-using-the-azure-portal"></a>Azure Portal を使用したサブスクリプションの取り消し
 
 1. Azure ポータルの [[サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)で、自分のサブスクリプションを選択します。
-1. 取り消すサブスクリプションを選択し、**[サブスクリプションの取り消し]** をクリックします。
+2. 取り消すサブスクリプションを選択します。
+3. **[概要]** を選択し、**[サブスクリプションの取り消し]** を選択します。
 
     ![[キャンセル] ボタンを示すスクリーン ショット](./media/billing-how-to-cancel-azure-subscription/cancel_ibiza.png)
-1. 画面の指示に従って、取り消しを完了します。
+3. 画面の指示に従って、取り消しを完了します。
 
 ## <a name="what-happens-after-i-cancel-my-subscription"></a>サブスクリプションの取り消し後の流れ
 
@@ -58,6 +59,6 @@ Microsoft では、お客様がデータにアクセスする必要がある場�
 
 サブスクリプションが従量課金制でない場合は、取り消しから 90 日以内にサポートに問い合わせて、サブスクリプションの再アクティブ化を依頼してください。
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-まだ他に質問がある場合は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

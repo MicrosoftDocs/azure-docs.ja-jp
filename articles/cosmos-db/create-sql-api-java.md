@@ -1,27 +1,26 @@
 ---
-title: Azure Cosmos DB ドキュメント データベースを Java で作成する | Microsoft Docs | Microsoft Docs'
+title: Azure Cosmos DB ドキュメント データベースを Java で作成する
 description: Azure Cosmos DB SQL API への接続とクエリに使用できる Java コード サンプルについて説明します
-services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
-ms.custom: quick start connect, mvc, devcenter
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 10/24/2018
-ms.author: moderakh
-ms.openlocfilehash: 399db2d7ed5d1c94fe359cb55e9b90df3d99e003
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.author: sngun
+ms.openlocfilehash: 0e80fbc96bf1241308c80d108e9f9580122b801b
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421290"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587720"
 ---
-# <a name="create-and-manage-resources-of-an-azure-cosmos-db-sql-api-account-using-a-java-application"></a>Java アプリケーションを使用して Azure Cosmos DB SQL API アカウントのリソースを作成および管理する
+# <a name="quickstart-build-a-java-application-using-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Java アプリケーションを構築する
+
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
+> * [.NET (プレビュー)](create-sql-api-dotnet-preview.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
@@ -39,7 +38,7 @@ ms.locfileid: "50421290"
 * [Java Development Kit (JDK) 1.8 以降](https://aka.ms/azure-jdks)
     * Ubuntu で `apt-get install default-jdk` を実行して JDK をインストールします。
     * 必ず、JDK のインストール先フォルダーを指すように JAVA_HOME 環境変数を設定してください。
-* [Maven](http://maven.apache.org/) バイナリ アーカイブの[ダウンロード](http://maven.apache.org/download.cgi)と[インストール](http://maven.apache.org/install.html)
+* [Maven](https://maven.apache.org/) バイナリ アーカイブの[ダウンロード](https://maven.apache.org/download.cgi)と[インストール](https://maven.apache.org/install.html)
     * Ubuntu で `apt-get install maven` を実行して Maven をインストールします。
 * [Git](https://www.git-scm.com/)
     * Ubuntu で `sudo apt-get install git` を実行して Git をインストールします。
@@ -77,7 +76,7 @@ ms.locfileid: "50421290"
 
 この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 それ以外の場合は、「[アプリの実行](#run-the-app)」に進んでください。 
 
-* `AsyncDocumentClient` の初期化。 [AsyncDocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client) は、Azure Cosmos DB データベース サービスのクライアント側の論理表現を提供します。 このクライアントは、サービスに対する要求の構成と実行に使用されます。
+* `AsyncDocumentClient` の初期化。 [AsyncDocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient) は、Azure Cosmos DB データベース サービスのクライアント側の論理表現を提供します。 このクライアントは、サービスに対する要求の構成と実行に使用されます。
 
     ```java
     client = new AsyncDocumentClient.Builder()
@@ -88,7 +87,7 @@ ms.locfileid: "50421290"
              .build();
     ```
 
-* [Database](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._database) の作成。
+* [Database](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.database) の作成。
 
     ```java
     Database databaseDefinition = new Database();
@@ -99,7 +98,7 @@ ms.locfileid: "50421290"
             .await();
     ```
 
-* [DocumentCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._document_collection) の作成。
+* [DocumentCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.documentcollection) の作成。
 
     ```java
     DocumentCollection collectionDefinition = new DocumentCollection();
@@ -112,7 +111,7 @@ ms.locfileid: "50421290"
             .await();
     ```
 
-* [createDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._document) メソッドを使用したドキュメントの作成。
+* [createDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.document) メソッドを使用したドキュメントの作成。
 
     ```java
     // Any Java object within your code
@@ -129,7 +128,7 @@ ms.locfileid: "50421290"
 
     ```
 
-* [queryDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client.querydocuments?view=azure-java-stable) メソッドを使用して JSON に対する SQL クエリを実行します。
+* [queryDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.querydocuments?view=azure-java-stable) メソッドを使用して JSON に対する SQL クエリを実行します。
 
     ```java
     FeedOptions queryOptions = new FeedOptions();

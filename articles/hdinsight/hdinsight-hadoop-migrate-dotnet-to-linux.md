@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: dc7cfb4df768fb7554bc7b5c772a6a778a8a793a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: adab50b7325be96830ee937153d110754cc0b552
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008115"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549799"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Windows ベースの HDInsight から Linux ベースの HDInsight への .NET ソリューションの移行
 
@@ -22,11 +22,11 @@ Linux ベースの HDInsight クラスターでは、[Mono (https://mono-project
 
 ## <a name="mono-compatibility-with-net"></a>Mono と .NET の互換性
 
-Mono バージョン 4.2.1 は HDInsight バージョン 3.6 に付属しています。 HDInsight に付属する Mono のバージョンの詳細については、「[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md)」を参照してください。 特定のバージョンの Mono をインストールするには、[Mono のインストールと更新](hdinsight-hadoop-install-mono.md)に関するドキュメントを参照してください。
+Mono バージョン 4.2.1 は HDInsight バージョン 3.6 に付属しています。 HDInsight に付属する Mono のバージョンの詳細については、「[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md)」を参照してください。
 
-Mono と .NET 間の互換性の詳細については、[Mono の互換性に関するドキュメント (http://www.mono-project.com/docs/about-mono/compatibility/)](http://www.mono-project.com/docs/about-mono/compatibility/) をご覧ください。
+Mono と .NET 間の互換性の詳細については、[Mono の互換性に関するドキュメント (https://www.mono-project.com/docs/about-mono/compatibility/)](https://www.mono-project.com/docs/about-mono/compatibility/) をご覧ください。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > SCP.NET フレームワークは Mono と互換性があります。 詳細については、「[Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](storm/apache-storm-develop-csharp-visual-studio-topology.md)」をご覧ください。
 
 ## <a name="automated-portability-analysis"></a>自動の移植性分析
@@ -47,12 +47,12 @@ Mono と .NET 間の互換性の詳細については、[Mono の互換性に関
 
     ![移植性アナライザーの結果ダイアログ](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > アナライザーはソリューションのすべての問題に対応できません。 たとえば、Mono が Windows 上で実行されている場合、`c:\temp\file.txt` というファイル パスは有効と見なされます。 このパスは Linux プラットフォームでは無効です。
 
 ## <a name="manual-portability-analysis"></a>手動の移植性分析
 
-[アプリケーションの移植性に関するドキュメント (http://www.mono-project.com/docs/getting-started/application-portability/)](http://www.mono-project.com/docs/getting-started/application-portability/) の情報を使用して、コードの手動監査を実行します。
+[アプリケーションの移植性に関するドキュメント (https://www.mono-project.com/docs/getting-started/application-portability/)](https://www.mono-project.com/docs/getting-started/application-portability/) の情報を使用して、コードの手動監査を実行します。
 
 ## <a name="modify-and-build"></a>変更およびビルド
 
@@ -64,12 +64,12 @@ Visual Studio を引き続き使用して、HDInsight 用の .NET ソリュー�
 
 ログへのアクセスの詳細については、次のドキュメントを参照してください。
 
-* [Linux ベースの HDInsight での YARN アプリケーション ログへのアクセス](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Linux ベースの HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 
 ## <a name="next-steps"></a>次の手順
 
 * [HDInsight の MapReduce での C# の使用](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
-* [Hive と Pig での C# ユーザー定義関数の使用](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Apache Hive と Apache Pig での C# ユーザー定義関数の使用](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [HDInsight での Storm の C# トポロジの開発](storm/apache-storm-develop-csharp-visual-studio-topology.md)
+* [HDInsight での Apache Storm の C# トポロジの開発](storm/apache-storm-develop-csharp-visual-studio-topology.md)

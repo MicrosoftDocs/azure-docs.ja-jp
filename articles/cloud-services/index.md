@@ -126,7 +126,7 @@ Cloud Services を使用して、可用性と拡張性に優れたクラウド �
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>REST ()</h3>
+                        <h3>REST</h3>
                         <p><a href="/rest/api/compute/cloudservices">REST API</a></p>
                     </div>
                 </div>

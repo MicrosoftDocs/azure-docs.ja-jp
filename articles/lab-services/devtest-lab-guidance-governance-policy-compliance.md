@@ -10,14 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 02/11/2019
 ms.author: spelluru
-ms.openlocfilehash: 016daa7ed57650a42b224df4e4173c7593893eb7
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.reviewer: christianreddington,anthdela,juselph
+ms.openlocfilehash: e02400ef940efdf42370fbdc1da75bdc7062a8ef
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250927"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243707"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Azure DevTest Labs インフラストラクチャのガバナンス - 会社のポリシーとコンプライアンス
 この記事では、Azure DevTest Labs インフラストラクチャに対する会社のポリシーとコンプライアンスの管理に関するガイダンスを提供します。 
@@ -42,10 +43,10 @@ DevTest Labs でのパブリック成果物リポジトリとプライベート�
 ### <a name="answer"></a>Answer
 組織の全体的なガバナンスと構成管理戦略の一環として、集中管理されたリポジトリを使用することをお勧めします。 複数のリポジトリを使用すると、時間の経過と共に管理されていないソフトウェアのサイロになる可能性があります。 中央リポジトリでは、複数のチームがプロジェクト用にこのリポジトリから成果物を使用できます。 それにより、標準化とセキュリティが強制され、管理しやすく、作業の重複がなくなります。 一元化の一環として、長期的な管理と持続性のために以下の操作が推奨されます。
 
-- Visual Studio Team Services と、Azure サブスクリプションで認証と承認に使用されているものと同じ Azure Active Directory テナントを関連付けます。
+- Azure Repos と、Azure サブスクリプションで認証と承認に使用されているものと同じ Azure Active Directory テナントを関連付けます。
 - 一元管理する **All DevTest Labs Developers** という名前のグループを Azure Active Directory に作成します。 成果物の開発に関与するすべての開発者を、このグループに入れる必要があります。
-- 同じ Azure Active Directory グループを使用して、Visual Studio Team Services リポジトリおよびラボへのアクセスを提供できます。
-- Visual Studio Team Services でブランチまたはフォークを使用して、開発中のリポジトリとプライマリ運用リポジトリを分離する必要があります。 コンテンツは、適切なコード レビュー後にプル要求でマスター ブランチのみに追加されます。 コード レビューで変更が承認されたら、マスター ブランチのメンテナンスを担当する開発リーダーが、更新されたコードをマージします。 
+- 同じ Azure Active Directory グループを使用して、Azure Repos リポジトリおよびラボへのアクセスを提供できます。
+- Azure Repos でブランチまたはフォークを使用して、開発中のリポジトリとプライマリ運用リポジトリを分離する必要があります。 コンテンツは、適切なコード レビュー後に pull request でマスター ブランチのみに追加されます。 コード レビューで変更が承認されたら、マスター ブランチのメンテナンスを担当する開発リーダーが、更新されたコードをマージします。 
 
 ## <a name="corporate-security-policies"></a>企業のセキュリティ ポリシー
 

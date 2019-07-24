@@ -11,16 +11,18 @@ items:
     href: functions-compare-logic-apps-ms-flow-webjobs.md
 - name: クイック スタート
   items:
-  - name: 関数の作成 - ポータル
-    href: functions-create-first-azure-function.md
   - name: 関数の作成 - Visual Studio
     href: functions-create-your-first-function-visual-studio.md
   - name: 関数の作成 - Visual Studio Code
     href: functions-create-first-function-vs-code.md
   - name: 関数の作成 - Java/Maven
     href: functions-create-first-java-maven.md
+  - name: 関数の作成 - Python
+    href: functions-create-first-function-python.md
   - name: 関数の作成 - Azure CLI
     href: functions-create-first-azure-function-azure-cli.md
+  - name: 関数の作成 - ポータル
+    href: functions-create-first-azure-function.md
   - name: 関数の作成 - Linux
     href: functions-create-first-azure-function-azure-cli-linux.md
   - name: トリガー
@@ -52,12 +54,10 @@ items:
     href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
   - name: サーバーレス Web アプリの作成
     href: https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database
-  - name: Linux 上の関数
-    items:
-    - name: Custom image
-      href: functions-create-function-linux-custom-image.md
-    - name: IoT Edge デバイス
-      href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
+  - name: カスタム Linux イメージの作成
+    href: functions-create-function-linux-custom-image.md
+  - name: IoT Edge デバイス上の Functions
+    href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
 - name: サンプル
   items:
   - name: コード サンプル
@@ -67,11 +67,26 @@ items:
 - name: 概念
   items:
   - name: バージョン 1.x と 2.x の比較
+    displayName: migrate, migration
     href: functions-versions.md
+  - name: Premium プラン
+    href: functions-premium-plan.md
   - name: スケールとホスティング
     href: functions-scale.md
   - name: トリガーとバインド
-    href: functions-triggers-bindings.md
+    items:
+    - name: トリガーとバインディングについて
+      href: functions-triggers-bindings.md
+    - name: バインディングの例
+      href: functions-bindings-example.md
+    - name: バインディング拡張機能を登録する
+      href: functions-bindings-register.md
+    - name: バインディングの式のパターン
+      href: functions-bindings-expressions-patterns.md
+    - name: バインディングの戻り値の利用
+      href: functions-bindings-return-value.md
+    - name: バインディング エラーの処理
+      href: functions-bindings-errors.md
   - name: Languages
     items:
     - name: サポートされている言語
@@ -86,12 +101,16 @@ items:
       href: functions-reference-node.md
     - name: Java
       href: functions-reference-java.md
+    - name: Python
+      href: functions-reference-python.md
   - name: 診断
-    href: ../app-service/app-service-diagnostics.md
+    href: ../app-service/overview-diagnostics.md
   - name: パフォーマンスに関する考慮事項
     href: functions-best-practices.md
   - name: 関数プロキシ
     href: functions-proxies.md
+  - name: ネットワーク オプション
+    href: functions-networking-options.md
   - name: IP アドレス
     href: ip-addresses.md
   - name: オンプレミスの関数
@@ -114,12 +133,18 @@ items:
       href: functions-create-maven-intellij.md
     - name: Eclipse 開発
       href: functions-create-maven-eclipse.md
+    - name: Linux の関数アプリを作成する
+      href: create-function-app-linux-app-service-plan.md
     - name: 接続の管理
       href: manage-connections.md
     - name: エラー処理
       href: functions-bindings-error-pages.md
+    - name: HTTP によってトリガーされない関数を手動で実行する
+      href: functions-manually-run-non-http.md
     - name: イベント グリッド トリガーをローカルにデバッグ
       href: functions-debug-event-grid-trigger-local.md
+    - name: Microsoft Azure for Students Starter
+      href: functions-create-student-starter.md
   - name: デプロイ
     items:
     - name: 継続的なデプロイ
@@ -132,6 +157,9 @@ items:
       href: functions-infrastructure-as-code.md
     - name: オンプレミスの関数
       href: functions-runtime-install.md
+    - name: Jenkins プラグインを使用したデプロイ
+      href: /azure/jenkins/jenkins-azure-functions-deploy
+      maintainContext: true
   - name: 構成
     items:
     - name: 関数アプリの管理
@@ -151,27 +179,29 @@ items:
     - name: ユーザーを認証する
       items:
       - name: Azure AD による認証
-        href: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        href: ../app-service/configure-authentication-provider-aad.md?toc=%2fazure%2fazure-functions%2ftoc.json
       - name: Facebook による認証
-        href: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        href: ../app-service/configure-authentication-provider-facebook.md?toc=%2fazure%2fazure-functions%2ftoc.json
       - name: Google による認証
-        href: ../app-service/app-service-mobile-how-to-configure-google-authentication.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        href: ../app-service/configure-authentication-provider-google.md?toc=%2fazure%2fazure-functions%2ftoc.json
       - name: Microsoft アカウントによる認証
-        href: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        href: ../app-service/configure-authentication-provider-microsoft.md?toc=%2fazure%2fazure-functions%2ftoc.json
       - name: Twitter による認証
-        href: ../app-service/app-service-mobile-how-to-configure-twitter-authentication.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: 高度な認証
       href: ../app-service/app-service-authentication-how-to.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: IP の制限
       href: ../app-service/app-service-ip-restrictions.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: マネージド ID の使用
-      href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
+      href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: キー コンテナーからのシークレットの参照
       href: ../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json
   - name: 統合
     items:
     - name: SQL Database への接続
       href: functions-scenario-database-table-cleanup.md
+    - name: 仮想ネットワークへの接続
+      href: functions-create-vnet.md
     - name: Open API 2.0 定義の作成
       href: functions-api-definition-getting-started.md
     - name: PowerApps および Microsoft Flow にエクスポートする
@@ -181,13 +211,21 @@ items:
     - name: Microsoft Flow から関数を呼び出す
       href: functions-flow-scenario.md
     - name: マネージド ID の使用
-      href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
+      href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
   - name: トラブルシューティング
     items:
     - name: ストレージのトラブルシューティング
       href: functions-recover-storage-account.md
 - name: リファレンス
   items:
+  - name: API リファレンス
+    items:
+    - name: Java
+      href: https://docs.microsoft.com/java/api/overview/azure/functions/runtime?view=azure-java-stable
+    - name: Python
+      href: https://docs.microsoft.com/python/api/azure-functions/azure.functions?view=azure-python
+  - name: アプリ設定のリファレンス
+    href: functions-app-settings.md
   - name: バインド
     items:
     - name: BLOB ストレージ
@@ -202,10 +240,8 @@ items:
       href: functions-bindings-event-grid.md
     - name: Event Hubs
       href: functions-bindings-event-hubs.md
-    - name: 外部ファイル
-      href: functions-bindings-external-file.md
-    - name: 外部テーブル
-      href: functions-bindings-external-table.md
+    - name: IoT Hub
+      href: functions-bindings-event-iot.md
     - name: HTTP と webhook
       href: functions-bindings-http-webhook.md
     - name: Microsoft Graph
@@ -229,13 +265,14 @@ items:
     - name: Twilio
       href: functions-bindings-twilio.md
   - name: host.json のリファレンス
+    href: functions-host-json.md
     items:
     - name: Functions 2.x
       href: functions-host-json.md
     - name: Functions 1.x
       href: functions-host-json-v1.md
-  - name: アプリ設定のリファレンス
-    href: functions-app-settings.md
+  - name: ネットワークに関する FAQ
+    href: functions-networking-faq.md
   - name: OpenAPI リファレンス
     href: functions-api-definition.md
 - name: リソース
@@ -255,7 +292,7 @@ items:
   - name: MSDN フォーラム
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-functions
+    href: https://stackoverflow.com/questions/tagged/azure-functions
   - name: Twitter
     href: https://twitter.com/azurefunctions
   - name: 製品フィードバックの提供
@@ -264,9 +301,9 @@ items:
     href: https://github.com/Azure/Azure-Functions/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=functions&updatetype=&platform=
-ms.openlocfilehash: facc469c576bf1de905441bb5b56a00bd745e924
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b8f86a7da1e083e222c20c49af4f66add8790cda
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632298"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59564943"

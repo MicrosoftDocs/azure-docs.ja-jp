@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 5f9d933f0f294855719c8d187e759708ef8c9931
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 47d3b827099d3a4a7520ac66765d2928795b6e49
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669609"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967982"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>RDP を使用して Azure VM に接続するときの認証エラーのトラブルシューティングについて説明します。
 
@@ -75,7 +75,7 @@ VM は Federal Information Processing Standards (FIPS) 準拠アルゴリズム�
 
 ### <a name="create-a-backup-snapshot"></a>バックアップ スナップショットの作成
 
-バックアップ スナップショットを作成するには、「[ディスクのスナップショットの作成](..\windows\snapshot-copy-managed-disk.md)」の手順に従います。
+バックアップ スナップショットを作成するには、「[ディスクのスナップショットの作成](../windows/snapshot-copy-managed-disk.md)」の手順に従います。
 
 ### <a name="connect-to-the-vm-remotely"></a>VM へのリモート接続
 
@@ -202,15 +202,15 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP
 
 レジストリ値に基づいて、以下の手順に従います。
 
-* 4 (FIPS): 「[FIPS 準拠アルゴリズムによる接続の確認](#fips-compliant)」に進みます。
+* 4 (FIPS):「[FIPS 準拠アルゴリズムによる接続の確認](#fips-compliant)」に進みます。
 
-* 3 (128 ビット暗号化): 次のコマンドを実行して重大度を **2** に設定します。
+* 3 (128 ビット暗号化):次のコマンドを実行して重大度を **2** に設定します。
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 2 /f
     ```
 
-* 2 (クライアントによって指示された可能な最大の暗号化): 次のコマンドを実行して暗号化を最小値の **1** に設定します。
+* 2 (クライアントによって指示された可能な最大の暗号化):次のコマンドを実行して暗号化を最小値の **1** に設定します。
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 1 /f

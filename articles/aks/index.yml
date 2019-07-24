@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a22269560d485dcd98aaaabb88dbbba545d26a2d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467908"
 documentType: LandingData
 title: Azure Kubernetes Service (AKS)
 metadata:
-  document_id: 
+  document_id: null
   title: Azure Kubernetes Service (AKS) のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  meta.description: AKS allows you to quickly deploy a production ready Kubernetes cluster in Azure. Learn how to use AKS with these quickstarts, tutorials, and samples.
+  meta.description: 'AKS allows you to quickly deploy a production ready Kubernetes cluster in Azure. Learn how to use AKS with these quickstarts, tutorials, and samples.'
   services: container-service
   author: carolz
   manager: carolz
@@ -23,88 +17,88 @@ metadata:
 abstract:
   description: Azure Kubernetes Service (AKS) を使用すると、ホストされている Kubernetes 環境を管理できます。これによって、コンテナー オーケストレーションの知識がなくてもコンテナー化されたアプリケーションを迅速かつ簡単にデプロイおよび管理できるようになります。 また、アプリケーションをオフラインにすることなく、要求に応じてリソースをプロビジョニング、アップグレード、スケーリングすることにより、実行中の操作およびメンテナンスの負担もなくなります。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: AKS クラスターのデプロイ方法を確認してください。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_cligeneric.svg
-      text: Azure CLI
-      href: /azure/aks/kubernetes-walkthrough
-    - image:
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Azure Portal
-      href: /azure/aks/kubernetes-walkthrough-portal
-  - type: paragraph
-    text: AKS を使用してアプリケーションの開発とデバッグを行う方法について説明します。
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: AKS クラスターのデプロイ方法を確認してください。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
+            text: Azure CLI
+            href: /azure/aks/kubernetes-walkthrough
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Azure Portal
+            href: /azure/aks/kubernetes-walkthrough-portal
+      - type: paragraph
+        text: AKS を使用してアプリケーションの開発とデバッグを行う方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_java.svg'
+            text: Java
+            href: ../dev-spaces/quickstart-java.md
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_NETcore.svg'
+            text: .NET と VS Code
+            href: ../dev-spaces/quickstart-netcore.md
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
+            text: .NET と Visual Studio
+            href: ../dev-spaces/quickstart-netcore-visualstudio.md
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_nodejs.svg'
+            text: Node.js
+            href: ../dev-spaces/quickstart-nodejs.md
+  - title: ステップバイステップのチュートリアル
     items:
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_java.svg
-      text: Java
-      href: ../dev-spaces/quickstart-java.md
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_NETcore.svg
-      text: .NET と VS Code
-      href: ../dev-spaces/quickstart-netcore.md
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
-      text: .NET と Visual Studio
-      href: ../dev-spaces/quickstart-netcore-visualstudio.md
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_nodejs.svg
-      text: Node.js
-      href: ../dev-spaces/quickstart-nodejs.md
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: AKS クラスターでアプリケーションをデプロイ、管理、更新する方法を確認してください。
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: AKS クラスターでアプリケーションをデプロイ、管理、更新する方法を確認してください。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">アプリケーションからコンテナー イメージを作成する</a>
+          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-acr">Azure Container Registry にコンテナー イメージをアップロードする</a>
+          - html: <a href="/azure/aks/tutorial-kubernetes-deploy-cluster">AKS クラスターをデプロイする</a>
+          - html: <a href="/azure/aks/tutorial-kubernetes-deploy-application">Kubernetes でコンテナー イメージを実行する</a>
+          - html: <a href="/azure/aks/tutorial-kubernetes-scale">アプリケーションと Kubernetes インフラストラクチャのスケールを変更する</a>
+          - html: <a href="/azure/aks/tutorial-kubernetes-app-update">Kubernetes で実行されているアプリケーションを更新する</a>
+          - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">AKS クラスターをアップグレードする</a>
+  - title: Microsoft Learn でスキルを身に付ける
     items:
-    - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">アプリケーションからコンテナー イメージを作成する</a>
-    - html: <a href="/azure/aks/tutorial-kubernetes-prepare-acr">Azure Container Registry にコンテナー イメージをアップロードする</a>
-    - html: <a href="/azure/aks/tutorial-kubernetes-deploy-cluster">AKS クラスターをデプロイする</a>
-    - html: <a href="/azure/aks/tutorial-kubernetes-deploy-application">Kubernetes でコンテナー イメージを実行する</a>
-    - html: <a href="/azure/aks/tutorial-kubernetes-scale">アプリケーションと Kubernetes インフラストラクチャのスケールを変更する</a>
-    - html: <a href="/azure/aks/tutorial-kubernetes-app-update">Kubernetes で実行されているアプリケーションを更新する</a>
-    - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">AKS クラスターをアップグレードする</a>
-- title: Microsoft Learn でスキルを身に付ける
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure 上のコンテナーの概要
+            href: /learn/modules/intro-to-containers/
+            image:
+              src: /learn/achievements/intro-to-containers.svg
+              href: /learn/modules/intro-to-containers/
+          - title: Azure Container Instances での Docker コンテナーの実行
+            href: /learn/modules/run-docker-with-azure-container-instances/
+            image:
+              src: /learn/achievements/run-docker-with-azure-container-instances.svg
+              href: /learn/modules/run-docker-with-azure-container-instances/
+          - title: Azure Container Registry を使用してコンテナー イメージをビルドして格納する
+            href: /learn/modules/build-and-store-container-images/
+            image:
+              src: /learn/achievements/build-and-store-container-images.svg
+              href: /learn/modules/build-and-store-container-images/
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure-container-registry%2Cazure-container-instances">対話型学習の詳細...</a>
+  - title: リファレンス
     items:
-    - title: Azure 上のコンテナーの概要
-      href: /learn/modules/intro-to-containers/
-      image:
-        src: /learn/achievements/intro-to-containers.svg
-        href: /learn/modules/intro-to-containers/
-    - title: Azure Container Instances での Docker コンテナーの実行
-      href: /learn/modules/run-docker-with-azure-container-instances/
-      image:
-        src: /learn/achievements/run-docker-with-azure-container-instances.svg
-        href: /learn/modules/run-docker-with-azure-container-instances/
-    - title: Azure Container Registry を使用してコンテナー イメージをビルドして格納する
-      href: /learn/modules/build-and-store-container-images/
-      image:
-        src: /learn/achievements/build-and-store-container-images.svg
-        href: /learn/modules/build-and-store-container-images/
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure-container-registry%2Cazure-container-instances">対話型学習の詳細...</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: コマンド ライン
-      html: <p><a href="/cli/azure/aks">Azure CLI</a></p>
-    - title: Languages
-      html: <p><a href="/dotnet/api/overview/azure/containerservice">.NET</a></p><p><a href="/python/api/overview/azure/containerservice">Python</a></p><p><a href="/java/api/overview/azure/containerservice">Java</a></p><p><a href="/javascript/api/overview/azure/container-service">Node.js</a></p>
-    - title: REST ()
-      html: <p><a href="/rest/api/aks">REST API</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="/cli/azure/aks">Azure CLI</a></p>
+          - title: Languages
+            html: <p><a href="/dotnet/api/overview/azure/containerservice">.NET</a></p><p><a href="/python/api/overview/azure/containerservice">Python</a></p><p><a href="/java/api/overview/azure/containerservice">Java</a></p><p><a href="/javascript/api/overview/azure/container-service">Node.js</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/aks">REST API</a></p>

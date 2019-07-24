@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/12/2018
+ms.date: 04/15/2019
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 33fce88e7108ee45236e20b1f20dde56bb7446b5
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 5f488811e57ee20cb25db56b2d9e04202b17ffb2
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616386"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579531"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Azure Blockchain Workbench を展開する
 
@@ -36,13 +36,16 @@ Blockchain Workbench を使用すると、ブロックチェーン台帳を、�
 * 2 Azure Storage アカウント (Standard LRS)
 * 2 仮想マシン スケール セット (検証コントロールおよび worker ノードの場合)
 * 2 Virtual Network (各仮想ネットワークにロード バランサー、ネットワーク セキュリティ グループ、パブリック IP アドレスが含まれます)
-* 省略可能: Azure Monitor
+* 省略可能:Azure Monitor
 
 次に **myblockchain** リソース グループ内に作成されるデプロイの例を次に示します。
 
 ![デプロイ例](media/deploy/example-deployment.png)
 
 Blockchain Workbench のコストは、基礎となる Azure サービスのコストの総計です。 Azure サービスの料金情報は、[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用して計算できます。
+
+> [!IMPORTANT]
+> Azure Free レベル サブスクリプションなど、サービス制限のあるサブスクリプションをご利用の場合、VM コアのクォータ不足が原因でデプロイに失敗することがあります。 デプロイの前に、「[仮想マシンの vCPU クォータ](../../virtual-machines/windows/quotas.md)」の記事のガイダンスに従ってクォータをチェックしてください。 既定の VM を選択した場合は、6 つの VM コアが必要です。 それより小さいサイズの VM (*Standard DS1 v2* など) に変更した場合、必要なコア数は 4 つに減ります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -67,7 +70,7 @@ Azure Blockchain Workbench では、Azure AD 構成とアプリケーション�
 
     ![Marketplace の検索結果](media/deploy/marketplace-search-results.png)
 
-5. **作成**を選択します。
+5. **作成** を選択します。
 6. 基本的な設定を行います。
 
     ![Azure Blockchain Workbench を作成する](media/deploy/blockchain-workbench-settings-basic.png)
@@ -98,27 +101,27 @@ Azure Blockchain Workbench では、Azure AD 構成とアプリケーション�
     | Setting | 説明  |
     |---------|--------------|
     | 監視 | Blockchain ネットワークを監視するために Azure Monitor を有効にするかどうかを選択します。 |
-    | Azure Active Directory の設定 | **[後で追加]** を選択します。</br>注意: [Azure AD の事前構成](#azure-ad-configuration)を選択した場合、または再デプロイしている場合は、*[今すぐ追加]* を選択します。 |
-    | VM の選択 | Blockchain ネットワークの望ましい VM サイズを選びます。 |
+    | Azure Active Directory の設定 | **[後で追加]** を選択します。</br>注:[Azure AD の事前構成](#azure-ad-configuration)を選択した場合、または再デプロイしている場合は、*[今すぐ追加]* を選択します。 |
+    | VM の選択 | Blockchain ネットワークの望ましい VM サイズを選びます。 Azure Free レベルなどサービス制限のあるサブスクリプションを使用している場合は、より小さい VM サイズ (*Standard DS1 v2* など) を選択してください。 |
 
     **[既存のものを使用]** の場合:
 
     *[既存のものを使用]* を選択した場合、Ethereum Proof-of-Authority (PoA) ブロックチェーン ネットワークを指定できます。 エンドポイントの要件は次のとおりです。
 
-    * エンドポイントは、Ethereum Proof-of-Authority (PoA) ブロックチェーン ネットワークであることが必要です。
-    * このネットワーク上で、エンドポイントにパブリックにアクセスできることが必要です。
-    * PoA ブロックチェーン ネットワークは、Gas (手数料) の設定額がゼロとなるように構成されている必要があります。
+   * エンドポイントは、Ethereum Proof-of-Authority (PoA) ブロックチェーン ネットワークであることが必要です。
+   * このネットワーク上で、エンドポイントにパブリックにアクセスできることが必要です。
+   * PoA ブロックチェーン ネットワークは、Gas (手数料) の設定額がゼロとなるように構成されている必要があります。
 
-    > [!NOTE]
-    > Blockchain Workbench の口座に資金が追加されることはありません。 資金が要求された場合、取引は失敗します。
+     > [!NOTE]
+     > Blockchain Workbench の口座に資金が追加されることはありません。 資金が要求された場合、取引は失敗します。
 
-    ![既存のブロック チェーン ネットワークの詳細設定](media/deploy/advanced-blockchain-settings-existing.png)
+     ![既存のブロック チェーン ネットワークの詳細設定](media/deploy/advanced-blockchain-settings-existing.png)
 
-    | Setting | 説明  |
-    |---------|--------------|
-    | Ethereum RPC エンドポイント | 既存の PoA ブロックチェーン ネットワークの RPC エンドポイントを提供します。 エンドポイントは https:// または http:// で始まり、ポート番号で終わります。 たとえば、`https://network.westus.cloudapp.com:8540` のように指定します。 |
-    | Azure Active Directory の設定 | **[後で追加]** を選択します。</br>注意: [Azure AD の事前構成](#azure-ad-configuration)を選択した場合、または再デプロイしている場合は、*[今すぐ追加]* を選択します。 |
-    | VM の選択 | Blockchain ネットワークの望ましい VM サイズを選びます。 |
+     | Setting | 説明  |
+     |---------|--------------|
+     | Ethereum RPC エンドポイント | 既存の PoA ブロックチェーン ネットワークの RPC エンドポイントを提供します。 エンドポイントは https:// または http:// で始まり、ポート番号で終わります。 たとえば、`http<s>://<network-url>:<port>` のように指定します。 |
+     | Azure Active Directory の設定 | **[後で追加]** を選択します。</br>注:[Azure AD の事前構成](#azure-ad-configuration)を選択した場合、または再デプロイしている場合は、*[今すぐ追加]* を選択します。 |
+     | VM の選択 | Blockchain ネットワークの望ましい VM サイズを選びます。 |
 
 9. **[OK]** をクリックして [詳細設定] を完了します。
 
@@ -220,24 +223,24 @@ Blockchain Workbench の展開には、Azure AD アプリケーションの登�
 
     ``` json
     "appRoles": [
-         {
-           "allowedMemberTypes": [
-             "User",
-             "Application"
-           ],
-           "displayName": "Administrator",
-           "id": "<A unique GUID>",
-           "isEnabled": true,
-           "description": "Blockchain Workbench administrator role allows creation of applications, user to role assignments, etc.",
-           "value": "Administrator"
-         }
-       ],
+         {
+           "allowedMemberTypes": [
+             "User",
+             "Application"
+           ],
+           "displayName": "Administrator",
+           "id": "<A unique GUID>",
+           "isEnabled": true,
+           "description": "Blockchain Workbench administrator role allows creation of applications, user to role assignments, etc.",
+           "value": "Administrator"
+         }
+       ],
     ```
 
     > [!IMPORTANT]
     > 値 **Administrator** は、Blockchain Workbench の管理者を識別するために必要です。
 
-4. マニフェスト内でも **Oauth2AllowImplictFlow** 値を **true** に変更します。
+4. マニフェスト内でも **Oauth2AllowImplicitFlow** 値を **true** に変更します。
 
     ``` json
     "oauth2AllowImplicitFlow": true,

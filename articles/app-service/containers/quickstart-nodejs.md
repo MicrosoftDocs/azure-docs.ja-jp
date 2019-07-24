@@ -1,10 +1,10 @@
 ---
-title: Azure App Service on Linux での Node.js の作成 | Microsoft Docs
+title: Linux での Node.js アプリの作成 - Azure App Service | Microsoft Docs
 description: Azure App Service on Linux で、初めての Node.js の Hello World を数分でデプロイします。
 services: app-service\web
 documentationcenter: ''
 author: msangapu
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.service: app-service-web
@@ -12,20 +12,20 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/07/2017
+ms.date: 03/27/2019
 ms.author: msangapu
-ms.custom: mvc
-ms.openlocfilehash: 44c3f8ce05854e993ad551a025eec447d882c326
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.custom: seodec18
+ms.openlocfilehash: 54602425ae6e1ff65a8445355af2eca09d495b05
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969546"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548680"
 ---
-# <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux での Node.js Web アプリの作成
+# <a name="create-a-nodejs-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux での Node.js アプリの作成
 
 > [!NOTE]
-> この記事では、Linux 上の App Service にアプリをデプロイします。 _Windows_ 上の App Service にデプロイするには、「[Azure で Node.js Web アプリを作成する](../app-service-web-get-started-nodejs.md)」を参照してください。
+> この記事では、Linux 上の App Service にアプリをデプロイします。 _Windows_ で App Service にデプロイするには、[Azure での Node.js アプリの作成](../app-service-web-get-started-nodejs.md)に関するページを参照してください。
 >
 
 [App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタートでは、[Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用して App Service on Linux に Node.js アプリをデプロイする方法を示します。
@@ -38,22 +38,6 @@ ms.locfileid: "38969546"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="install-web-app-extension-for-cloud-shell"></a>Cloud Shell の Web アプリ拡張機能をインストールする
-
-このクイックスタートを完了するには、[az Web アプリ拡張機能](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-add)を追加する必要があります。 この拡張機能が既にインストールされている場合は、最新バージョンに更新してください。 Web アプリ拡張機能を更新するには、「`az extension update -n webapp`」と入力します。
-
-Web アプリ拡張機能をインストールするには、次のコマンドを実行します。
-
-```bash
-az extension add -n webapp
-```
-
-拡張機能がインストールされると、Cloud Shell に次の例の情報が表示されます。
-
-```bash
-The installed extension 'webapp' is in preview.
-```
-
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
 Cloud Shell で、クイックスタートのディレクトリを作成し、それに変更します。
@@ -64,7 +48,7 @@ mkdir quickstart
 cd quickstart
 ```
 
-次に、次のコマンドを実行して、サンプル アプリのリポジトリをクイックスタートのディレクトリに複製します。
+次に、以下のコマンドを実行して、サンプル アプリのリポジトリをクイックスタートのディレクトリに複製します。
 
 ```bash
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
@@ -78,7 +62,11 @@ remote: Counting objects: 40, done.
 remote: Total 40 (delta 0), reused 0 (delta 0), pack-reused 40
 Unpacking objects: 100% (40/40), done.
 Checking connectivity... done.
-````
+```
+
+> [!NOTE]
+> サンプル index.js では、リッスン ポートが process.env.PORT に設定されます。 この環境変数は、App Service によって割り当てられます。
+>
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
@@ -136,17 +124,17 @@ All done.
 
 - 指定された名前でアプリを作成する。
 
-- 現在の作業ディレクトリから Web アプリにファイルを [zip してデプロイ](https://docs.microsoft.com/azure/app-service/app-service-deploy-zip)する。
+- 現在の作業ディレクトリからアプリにファイルを [zip してデプロイ](https://docs.microsoft.com/azure/app-service/deploy-zip)する。
 
 ## <a name="browse-to-the-app"></a>アプリの参照
 
-Web ブラウザーを使用して、デプロイされたアプリケーションを参照します。 <app_name> は、Web アプリの名前に置き換えます。
+Web ブラウザーを使用して、デプロイされたアプリケーションを参照します。 <app_name> は、お客様のアプリの名前に置き換えます。
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-Node.js のサンプル コードが、組み込みイメージを使用する Web アプリで実行されています。
+App Service on Linux で組み込みのイメージを使用して Node.js サンプル コードが実行されています。
 
 ![Azure で実行されるサンプル アプリ](media/quickstart-nodejs/hello-world-in-browser.png)
 
@@ -166,7 +154,7 @@ response.end("Hello Azure!");
 
 変更内容を保存し、nano を終了します。 コマンド `^O` を使用して保存し、`^X` を使用して終了します。
 
-これでアプリを再デプロイします。 Web アプリの代わりに `<app_name>` を使用します。
+これでアプリを再デプロイします。 `<app_name>` をお客様のアプリに置き換えます。
 
 ```bash
 az webapp up -n <app_name>
@@ -176,15 +164,15 @@ az webapp up -n <app_name>
 
 ![Azure で実行される更新済みのサンプル アプリ](media/quickstart-nodejs/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>新しい Azure Web アプリを管理する
+## <a name="manage-your-new-azure-app"></a>新しい Azure アプリの管理
 
-<a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動し、作成した Web アプリを管理します。
+<a href="https://portal.azure.com" target="_blank">Azure portal</a> に移動し、お客様が作成したアプリを管理します。
 
-左側のメニューで **[App Services]** をクリックした後、Azure Web アプリの名前をクリックします。
+左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
 
-![Azure Web アプリへのポータル ナビゲーション](./media/quickstart-nodejs/nodejs-docs-hello-world-app-service-list.png)
+![Azure アプリへのポータル ナビゲーション](./media/quickstart-nodejs/nodejs-docs-hello-world-app-service-list.png)
 
-Web アプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを完了できます。
+お客様のアプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを完了できます。
 
 ![Azure Portal の [App Service] ページ](media/quickstart-nodejs/nodejs-docs-hello-world-app-service-detail.png)
 
@@ -203,4 +191,7 @@ az group delete --name appsvc_rg_Linux_CentralUS
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Node.js と MongoDB](tutorial-nodejs-mongodb-app.md)
+> [チュートリアル:Node.js app と MongoDB](tutorial-nodejs-mongodb-app.md)
+
+> [!div class="nextstepaction"]
+> [Node.js アプリの構成](configure-language-nodejs.md)

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 02d21db5c5fadb65ec63e41cbd9e2db8869ed2e7
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d6d6517a85997265021573b2f9d481c81283c216
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415833"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148834"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Marketo からデータをコピーする (プレビュー)
 
@@ -34,7 +33,7 @@ Marketo から、サポートされている任意のシンク データ スト�
 Azure Data Factory では接続を有効にする組み込みのドライバーが提供されるので、このコネクタを使用してドライバーを手動でインストールする必要はありません。
 
 >[!NOTE]
->この Marketo コネクタは、Marketo REST API の上に構築されています。 Marketo では、サービス側に[同時要求の制限](http://developers.marketo.com/rest-api/)があることに注意してください。 "Error while attempting to use REST API: Max rate limit '100' exceeded with in '20' secs (606)" (REST API の使用を試みたときにエラーが発生しました: '20' 秒以内の最大レート制限 '100' を超えました (606)) または "Error while attempting to use REST API: Concurrent access limit '10' reached (615)" (REST API の使用を試みたときにエラーが発生しました: 同時アクセス制限 '10' に達しました (615)) というエラーが発生する場合は、サービスに対する要求の数を減らすため、同時コピー アクティビティの実行数を減らすことを検討してください。
+>この Marketo コネクタは、Marketo REST API の上に構築されています。 Marketo では、サービス側に[同時要求の制限](https://developers.marketo.com/rest-api/)があることに注意してください。 次のようなエラーが発生することがあります。"Error while attempting to use REST API: (REST API を使用しようとしてエラーが発生しました:)Max rate limit '100' exceeded with in '20' secs (606) ('20' 秒以内の最大レート制限 '100' を超過した時間がありました (606))"、または "Error while attempting to use REST API: (REST API を使用しようとしてエラーが発生しました:)Concurrent access limit '10' reached (615) (同時アクセス制限 '10' に達しました (615))"。この場合には、サービスへの要求の数を減らすために、同時コピー アクティビティ実行を削減することを検討してください。
 
 ## <a name="getting-started"></a>使用の開始
 
@@ -48,10 +47,10 @@ Marketo のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **Marketo** に設定する必要があります | [はい] |
-| endpoint | Marketo サーバーのエンドポイント。 (つまり、123-ABC-321.mktorest.com)  | [はい] |
-| clientId | Marketo サービスのクライアント ID。  | [はい] |
-| clientSecret | Marketo サービスのクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります。**Marketo** | はい |
+| endpoint | Marketo サーバーのエンドポイント。 (つまり、123-ABC-321.mktorest.com)  | はい |
+| clientId | Marketo サービスのクライアント ID。  | はい |
+| clientSecret | Marketo サービスのクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
 | usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |
@@ -67,8 +66,8 @@ Marketo のリンクされたサービスでは、次のプロパティがサポ
             "endpoint" : "123-ABC-321.mktorest.com",
             "clientId" : "<clientId>",
             "clientSecret": {
-                 "type": "SecureString",
-                 "value": "<clientSecret>"
+                "type": "SecureString",
+                "value": "<clientSecret>"
             }
         }
     }
@@ -79,7 +78,12 @@ Marketo のリンクされたサービスでは、次のプロパティがサポ
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Marketo データセットでサポートされるプロパティの一覧を示します。
 
-Marketo からデータをコピーするには、データセットの type プロパティを **MarketoObject** に設定します。 この種類のデータセットに追加の種類固有のプロパティはありません。
+Marketo からデータをコピーするには、データセットの type プロパティを **MarketoObject** に設定します。 次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | データセットの type プロパティは、次のように設定する必要があります。**MarketoObject** | はい |
+| tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
 
@@ -91,7 +95,8 @@ Marketo からデータをコピーするには、データセットの type プ
         "linkedServiceName": {
             "referenceName": "<Marketo linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -100,14 +105,14 @@ Marketo からデータをコピーするには、データセットの type プ
 
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、Marketo ソースでサポートされるプロパティの一覧を示します。
 
-### <a name="marketosource-as-source"></a>ソースとしての MarketoSource
+### <a name="marketo-as-source"></a>ソースとしての Marketo
 
 Marketo からデータをコピーするには、コピー アクティビティのソースの種類を **MarketoSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **MarketoSource** に設定する必要があります | [はい] |
-| query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Activitiy_Types"`)。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**MarketoSource** | はい |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Activitiy_Types"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 

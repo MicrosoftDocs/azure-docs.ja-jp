@@ -1,10 +1,10 @@
 ---
-title: Azure で継続的インテグレーション (Azure DevOps Services) を使用して Service Fabric アプリをデプロイする | Microsoft Docs
-description: このチュートリアルでは、Azure DevOps Services を使用して、Service Fabric アプリケーションの継続的インテグレーションと継続的配置をセットアップする方法について説明します。
+title: Azure で継続的インテグレーションと Azure Pipelines を使用して Service Fabric アプリをデプロイする | Microsoft Docs
+description: このチュートリアルでは、Azure Pipelines を使用して、Service Fabric アプリケーションの継続的インテグレーションと継続的デプロイを設定する方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: rwike77
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -12,26 +12,26 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/15/2018
-ms.author: ryanwi
+ms.date: 12/02/2018
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 5d53250ebdc14b7b6631e2f419b5b24ac98f3038
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: c805d2bc03ad07635b01a5e978822ecab2425457
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853742"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668842"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル: CI/CD を使用して Service Fabric クラスターへアプリケーションをデプロイする
 
-このチュートリアルはシリーズの第 4 部です。Azure DevOps を使用して、Azure Service Fabric アプリケーションの継続的インテグレーションと継続的配置を設定する方法について説明します。  既存の Service Fabric アプリケーションが必要で、[.NET アプリケーション ビルド](service-fabric-tutorial-create-dotnet-app.md)で作成されたアプリケーションを例として使用します。
+このチュートリアルはシリーズの第 4 部です。Azure Pipelines を使用して、Azure Service Fabric アプリケーションの継続的インテグレーションと継続的デプロイを設定する方法について説明します。  既存の Service Fabric アプリケーションが必要で、[.NET アプリケーション ビルド](service-fabric-tutorial-create-dotnet-app.md)で作成されたアプリケーションを例として使用します。
 
 シリーズの第 3 部で学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * プロジェクトにソース管理を追加する
-> * Azure DevOps にビルド パイプラインを作成する
-> * Azure DevOps にリリース パイプラインを作成する
+> * Azure Pipelines にビルド パイプラインを作成する
+> * Azure Pipelines にリリース パイプラインを作成する
 > * アプリケーションを自動的にデプロイおよびアップグレードする
 
 このチュートリアル シリーズで学習する内容は次のとおりです。
@@ -50,7 +50,7 @@ ms.locfileid: "51853742"
 * [Visual Studio 2017 をインストール](https://www.visualstudio.com/)し、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
 * [Service Fabric SDK をインストール](service-fabric-get-started.md)します。
 * [このチュートリアルに従って](service-fabric-tutorial-create-vnet-and-windows-cluster.md)、たとえば、Azure 上に Windows Service Fabric クラスターを作成します。
-* [Azure DevOps 組織](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)を作成します。
+* [Azure DevOps 組織](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)を作成します。 これにより、Azure DevOps でプロジェクトを作成し、Azure Pipelines を使用することができます。
 
 ## <a name="download-the-voting-sample-application"></a>投票サンプル アプリケーションをダウンロードする
 
@@ -62,7 +62,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="prepare-a-publish-profile"></a>発行プロファイルの準備
 
-ここまでで、[アプリケーションを作成し](service-fabric-tutorial-create-dotnet-app.md)、[アプリケーションを Azure にデプロイ](service-fabric-tutorial-deploy-app-to-party-cluster.md)しました。これで、継続的インテグレーションをセットアップする準備ができました。  まず、Azure DevOps 内で実行されるデプロイ プロセスで使用する発行プロファイルを、アプリケーション内に準備します。  発行プロファイルは、あらかじめ作成したクラスターを対象とするように構成する必要があります。  Visual Studio を起動し、既存の Service Fabric アプリケーション プロジェクトを開きます。  **ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[発行]** を選択します。
+ここまでで、[アプリケーションを作成し](service-fabric-tutorial-create-dotnet-app.md)、[アプリケーションを Azure にデプロイ](service-fabric-tutorial-deploy-app-to-party-cluster.md)しました。これで、継続的インテグレーションをセットアップする準備ができました。  まず、Azure Pipelines 内で実行されるデプロイ プロセスで使用する発行プロファイルを、アプリケーション内に準備します。  発行プロファイルは、あらかじめ作成したクラスターを対象とするように構成する必要があります。  Visual Studio を起動し、既存の Service Fabric アプリケーション プロジェクトを開きます。  **ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[発行]** を選択します。
 
 継続的インテグレーション ワークフローに使用するアプリケーション プロジェクト内で目標一覧表 (たとえば Cloud) を選択します。  クラスター接続エンドポイントを指定します。  Azure DevOps 内の各デプロイ用にアプリケーションがアップグレードされるよう、**[アプリケーションのアップグレード]** チェックボックスをオンにします。  **[保存]** ハイパーリンクをクリックして設定を発行プロファイルに保存し、**[キャンセル]** をクリックしてダイアログ ボックスを閉じます。
 
@@ -84,11 +84,11 @@ Visual Studio の右下隅のステータス バーにある **[ソース管理*
 
 リポジトリを公開すると、ローカル リポジトリと同じ名前の新しいプロジェクトがご自身のアカウントに作成されます。 既存のプロジェクトでリポジトリを作成するには、**[リポジトリ名]** の横にある **[詳細]** をクリックして、プロジェクトを選択します。 **[See it on the web]\(Web を参照\)** を選択すると、Web でコードを表示できます。
 
-## <a name="configure-continuous-delivery-with-azure-devops"></a>Azure DevOps で継続的デリバリーを構成する
+## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Azure Pipelines を使用して継続的デリバリーを構成する
 
-Azure DevOps のビルド パイプラインでは、順次実行される一連のビルド ステップで構成されたワークフローを記述します。 Service Fabric クラスターをデプロイするため、Service Fabric アプリケーション パッケージおよび他のアーティファクトを生成するビルド パイプラインを作成します。 Azure DevOps のビルド パイプラインの詳細については、[こちら](https://www.visualstudio.com/docs/build/define/create)をご覧ください。 
+Azure Pipelines のビルド パイプラインでは、順次実行される一連のビルド ステップで構成されたワークフローを記述します。 Service Fabric クラスターをデプロイするため、Service Fabric アプリケーション パッケージおよび他のアーティファクトを生成するビルド パイプラインを作成します。 Azure Pipelines のビルド パイプラインの詳細については、[こちら](https://www.visualstudio.com/docs/build/define/create)をご覧ください。 
 
-Azure DevOps のリリース パイプラインでは、クラスターにアプリケーション パッケージをデプロイするワークフローを記述します。 ビルド パイプラインとリリース パイプラインを併用すると、ソース ファイルから始まり、クラスターでのアプリケーションの実行で終わるワークフロー全体を実行できます。 Azure DevOps のリリース パイプラインの詳細については、[こちら](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)をご覧ください。
+Azure Pipelines のリリース パイプラインでは、クラスターにアプリケーション パッケージをデプロイするワークフローを記述します。 ビルド パイプラインとリリース パイプラインを併用すると、ソース ファイルから始まり、クラスターでのアプリケーションの実行で終わるワークフロー全体を実行できます。 Azure Pipelines のリリース パイプラインの詳細については、[こちら](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)をご覧ください。
 
 ### <a name="create-a-build-pipeline"></a>ビルド パイプラインを作成する
 
@@ -156,11 +156,11 @@ Azure DevOps へのコード変更をチェックインして、継続的イン�
 
 ![すべてコミットする][changes]
 
-発行されていない変更のステータス バー アイコンを選択 (![発行されていない変更][unpublished-changes]) するか、またはチーム エクスプローラーで [同期] ビューを選択します。 **[プッシュ]** を選択して、Azure DevOps Services と TFS のコードを更新します。
+発行されていない変更のステータス バー アイコンを選択 (![発行されていない変更][unpublished-changes]) するか、またはチーム エクスプローラーで [同期] ビューを選択します。 **[プッシュ]** を選択して、Azure Pipelines のコードを更新します。
 
 ![変更をプッシュする][push]
 
-Azure DevOps へ変更をプッシュすると、ビルドが自動的にトリガーされます。  ビルド パイプラインが正常に完了すると、リリースは自動的に作成され、クラスター上のアプリケーションのアップグレードが開始されます。
+Azure Pipelines へ変更をプッシュすると、ビルドが自動的にトリガーされます。  ビルド パイプラインが正常に完了すると、リリースは自動的に作成され、クラスター上のアプリケーションのアップグレードが開始されます。
 
 ビルドの進行状況を確認するには、Visual Studio の**チーム エクスプローラー**で **[ビルド]** タブに切り替えます。  ビルドが正常に実行されることを確認したら、クラスターにアプリケーションをデプロイするリリース パイプラインを定義します。
 

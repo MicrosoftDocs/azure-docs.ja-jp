@@ -9,17 +9,16 @@ ms.assetid: f3f07bc4-6dc3-4d4d-ac22-0be62189d578
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3f234e49f1a28fd0881e47ede13ae72483ed31f3
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 5b70edd4f65538b52c70881258bc500a34b04d80
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053118"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025421"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
@@ -60,7 +59,7 @@ ms.locfileid: "37053118"
 これらの手順を試す Data Factory アプリケーションがない場合は、[Data Factory を使用した Blob Storage から SQL Database へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関するチュートリアルを実行してください。
 
 ## <a name="understand-the-monitoring-and-management-app"></a>監視と管理アプリについて
-左側に、**[リソース エクスプローラー]**、**[監視ビュー]**、**[アラート]** の 3 つのタブがあります。 最初のタブ (**[リソース エクスプローラー]**) が既定で選択されています。
+左側には、**[Resource Explorer]**、**[監視ビュー]**、および **[アラート]** の 3 つのタブがあります。 最初のタブ (**[リソース エクスプローラー]**) が既定で選択されています。
 
 ### <a name="resource-explorer"></a>Resource Explorer
 次のように表示されます。
@@ -110,7 +109,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 
 ![パイプラインを開くメニュー](./media/data-factory-monitor-manage-app/OpenPipelineMenu.png)
 
-開かれたパイプラインのビューには、パイプラインのすべてのアクティビティが表示されます。 この例では、コピー アクティビティというアクティビティが 1 つだけあります。 
+開かれたパイプラインのビューには、パイプラインのすべてのアクティビティが表示されます。 この例では、コピー アクティビティという 1 つのアクティビティしかありません。 
 
 ![開いているパイプライン](./media/data-factory-monitor-manage-app/OpenedPipeline.png)
 
@@ -161,7 +160,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 
 <table>
 <tr>
-    <th align="left">状態</th><th align="left">副状態</th><th align="left">説明</th>
+    <th align="left">Status</th><th align="left">副状態</th><th align="left">説明</th>
 </tr>
 <tr>
     <td rowspan="8">待機中</td><td>ScheduleTime</td><td>アクティビティ ウィンドウが実行される時刻になっていません。</td>
@@ -268,7 +267,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 >
 >
 
-**[アクティビティ ウィンドウ]** の一覧で、列の名前 (例: 状態) をクリックします。
+**[アクティビティ ウィンドウ] の一覧**で、列の名前 ([状態] など) をクリックします。
 
 ![[アクティビティ ウィンドウ] 一覧の列メニュー](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
@@ -291,7 +290,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 アクティビティ ウィンドウを選択し、1 つ目のコマンド バー ボタンの下向き矢印をクリックして、**[再実行]** / **[パイプラインのアップストリームによる再実行]** を選択します。 **[パイプラインのアップストリームによる再実行]** を選択すると、アップストリーム アクティビティ ウィンドウもすべて再実行されます。
     ![Rerun a activity window](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
-また、一覧で複数のアクティビティ ウィンドウを選択して、それらを同時に再実行することもできます。 状態 (例: **失敗**) でアクティビティ ウィンドウをフィルター処理し、アクティビティ ウィンドウが失敗した原因となる問題を解決した後に、失敗したアクティビティ ウィンドウを再実行できます。 一覧にあるアクティビティ ウィンドウのフィルター処理の詳細については、次のセクションを参照してください。  
+また、一覧で複数のアクティビティ ウィンドウを選択して、それらを同時に再実行することもできます。 状態 (**[失敗]** など) に基づいてアクティビティ ウィンドウをフィルター処理してから、アクティビティ ウィンドウが失敗した原因となる問題を修正した後に、失敗したアクティビティ ウィンドウを再実行することもできます。 一覧にあるアクティビティ ウィンドウのフィルター処理の詳細については、次のセクションを参照してください。  
 
 ### <a name="pauseresume-multiple-pipelines"></a>複数のパイプラインを一時停止/再開する
 Ctrl キーを使用して、複数のパイプラインを複数選択できます。 (次の図の赤い四角形で強調表示されている) コマンド バー ボタンを使用して、これらのパイプラインを一時停止/再開できます。

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 03/18/2019
 ms.author: raynew
-ms.openlocfilehash: e389f37448211afc35fb98572161be4fcaea7556
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: ea9f6a65ae804d4d2e5004ff4e2c61a2a85b976d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210722"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317223"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -33,8 +33,8 @@ Hyper-V (Virtual Machine Manager なし) | Virtual Machine Manager によって�
 
 **サーバー** | **要件** | **詳細**
 --- | --- | ---
-Hyper-V (Virtual Machine Manager なしで実行) | Windows Server 2016 (サーバー コアのインストールを含む)、Windows Server 2012 R2 と最新の更新プログラム | Site Recovery で Hyper-V サイトを構成する場合、Windows Server 2016 と 2012 R2 を実行するホストの混在はサポートされません。<br/><br/> Windows Server 2016 を実行しているホスト上にある VM の場合、別の場所への回復はサポートされていません。
-Hyper-V (Virtual Machine Manager ありで実行) | Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | Virtual Machine Manager を使用する場合は、Windows Server 2016 ホストは、Virtual Machine Manager 2016 で管理する必要があります。<br/><br/> Windows Server 2016 上および 2012 R2 上で実行されている Hyper-V ホストが混在する Virtual Machine Manager クラウドは、現在サポートされていません。<br/><br/> 既存の Virtual Machine Manager 2012 R2 サーバーから 2016 へのアップグレードを含む環境はサポートされていません。
+Hyper-V (Virtual Machine Manager なしで実行) | Windows Server 2016 (サーバー コアのインストールを含む)、Windows Server 2012 R2 と最新の更新プログラム | 既に Windows Server 2012 R2 と Azure Site Recovery または SCVMM 2012 R2 と Azure Site Recovery を構成済みで、OS のアップグレードを予定している場合は、ガイダンス [ドキュメント](upgrade-2012R2-to-2016.md)に従ってください。 
+Hyper-V (Virtual Machine Manager ありで実行) | Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 | Virtual Machine Manager を使用する場合は、Windows Server 2016 ホストは、Virtual Machine Manager 2016 で管理する必要があります。<br/><br/>
 
 
 ## <a name="replicated-vms"></a>レプリケートされた VM
@@ -59,16 +59,16 @@ VM 構成 | Azure にレプリケートする VM は、[Azure の要件](#azure-
 
 **コンポーネント** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
-ホスト ネットワーク: NIC チーミング | [はい] | [はい]
-ホスト ネットワーク: VLAN | [はい] | [はい]
-ホスト ネットワーク: IPv4 | [はい] | [はい]
+ホスト ネットワーク: NIC チーミング | はい | はい
+ホスト ネットワーク: VLAN | はい | はい
+ホスト ネットワーク: IPv4 | はい | はい
 ホスト ネットワーク: IPv6 | いいえ  | いいえ 
 ゲスト VM ネットワーク: NIC チーミング | いいえ  | いいえ 
-ゲスト VM ネットワーク: IPv4 | [はい] | [はい]
-ゲスト VM ネットワーク: IPv6 | いいえ  | [はい]
-ゲスト VM ネットワーク: 静的 IP (Windows) | [はい] | [はい]
+ゲスト VM ネットワーク: IPv4 | はい | はい
+ゲスト VM ネットワーク: IPv6 | いいえ  | はい
+ゲスト VM ネットワーク: 静的 IP (Windows) | はい | はい
 ゲスト VM ネットワーク: 静的 IP (Linux) | いいえ  | いいえ 
-ゲスト VM ネットワーク: マルチ NIC | [はい] | [はい]
+ゲスト VM ネットワーク: マルチ NIC | はい | はい
 
 
 
@@ -76,62 +76,62 @@ VM 構成 | Azure にレプリケートする VM は、[Azure の要件](#azure-
 
 **コンポーネント** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
-Azure ExpressRoute | [はい] | [はい]
-ILB | [はい] | [はい]
-ELB | [はい] | [はい]
-Azure の Traffic Manager | [はい] | [はい]
-マルチ NIC | [はい] | [はい]
-予約済み IP | [はい] | [はい]
-IPv4 | [はい] | [はい]
-送信元 IP アドレスを保持する | [はい] | [はい]
-Azure Virtual Network サービス エンドポイント<br/> (Azure Storage ファイアウォールなし) | [はい] | [はい]
+Azure ExpressRoute | はい | はい
+ILB | はい | はい
+ELB | はい | はい
+Azure の Traffic Manager | はい | はい
+マルチ NIC | はい | はい
+予約済み IP | はい | はい
+IPv4 | はい | はい
+送信元 IP アドレスを保持する | はい | はい
+Azure Virtual Network サービス エンドポイント<br/> (Azure Storage ファイアウォールなし) | はい | はい
 高速ネットワーク | いいえ  | いいえ 
 
 
 ## <a name="hyper-v-host-storage"></a>Hyper-V ホスト ストレージ
 
 **Storage** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
---- | --- | --- | ---
-NFS | 該当なし | 該当なし
-SMB 3.0 | [はい] | [はい]
-SAN (ISCSI) | [はい] | [はい]
-マルチパス (MPIO) 以下でテスト済み:<br></br> Microsoft DSM、EMC PowerPath 5.7 SP4<br/><br/> EMC PowerPath DSM for CLARiiON | [はい] | [はい]
+--- | --- | --- 
+NFS | NA | NA
+SMB 3.0 | はい | はい
+SAN (ISCSI) | はい | はい
+マルチパス (MPIO) 以下でテスト済み:<br></br> Microsoft DSM、EMC PowerPath 5.7 SP4<br/><br/> EMC PowerPath DSM for CLARiiON | はい | はい
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V VM ゲスト ストレージ
 
 **Storage** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
-VMDK | 該当なし | 該当なし
-VHD/VHDX | [はい] | [はい]
-Generation 2 VM | [はい] | [はい]
-EFI/UEFI| [はい] | [はい]
+VMDK | NA | NA
+VHD/VHDX | はい | はい
+Generation 2 VM | はい | はい
+EFI/UEFI| はい | はい
 共有クラスター ディスク | いいえ  | いいえ 
 暗号化されたディスク | いいえ  | いいえ 
-NFS | 該当なし | 該当なし
+NFS | NA | NA
 SMB 3.0 | いいえ  | いいえ 
-RDM | 該当なし | 該当なし
+RDM | NA | NA
 1 TB より大きいディスク | はい、最大 4,095 GB | はい、最大 4,095 GB
 ディスク: 4K 論理および物理セクター | サポートされない: Gen 1/Gen 2 | サポートされない: Gen 1/Gen 2
-ディスク: 4K 論理および 512 バイトの物理セクター | [はい] |  [はい]
-論理ボリューム管理 (LVM)。 LVM は、データ ディスクでのみサポートされています。 Azure からは OS ディスクが 1 つだけ提供されます。 | [はい] | [はい]
-ストライピングされたディスクのボリューム > 1 TB | [はい] | [はい]
-記憶域 | [はい] | [はい]
+ディスク: 4K 論理および 512 バイトの物理セクター | はい |  はい
+論理ボリューム管理 (LVM)。 LVM は、データ ディスクでのみサポートされています。 Azure からは OS ディスクが 1 つだけ提供されます。 | はい | はい
+ストライピングされたディスクのボリューム > 1 TB | はい | はい
+記憶域 | はい | はい
 ディスクのホット アド/削除 | いいえ  | いいえ 
-ディスクの除外 | [はい] | [はい]
-マルチパス (MPIO) | [はい] | [はい]
+ディスクの除外 | はい | はい
+マルチパス (MPIO) | はい | はい
 
 ## <a name="azure-storage"></a>Azure Storage
 
 **コンポーネント** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
-ローカル冗長ストレージ | [はい] | [はい]
-geo 冗長ストレージ | [はい] | [はい]
-読み取りアクセス geo 冗長ストレージ | [はい] | [はい]
+ローカル冗長ストレージ | はい | はい
+geo 冗長ストレージ | はい | はい
+読み取りアクセス geo 冗長ストレージ | はい | はい
 クール ストレージ | いいえ  | いいえ 
 ホット ストレージ| いいえ  | いいえ 
 ブロック blob | いいえ  | いいえ 
-保存時の暗号化 (SSE)| [はい] | [はい]
-Premium Storage | [はい] | [はい]
+保存時の暗号化 (SSE)| はい | はい
+Premium Storage | はい | はい
 インポート/エクスポート サービス | いいえ  | いいえ 
 ターゲット ストレージ/キャッシュ ストレージ アカウント (レプリケーション データの保存に使用) で構成された仮想ネットワークの Azure Storage ファイアウォール | いいえ  | いいえ 
 
@@ -140,8 +140,8 @@ Premium Storage | [はい] | [はい]
 
 **機能** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
-可用性セット | [はい] | [はい]
-ハブ | [はい] | [はい]  
+可用性セット | はい | はい
+ハブ | はい | はい  
 マネージド ディスク | はい、フェールオーバー用です。<br/><br/> マネージド ディスクのフェールバックはサポートされません。 | はい、フェールオーバー用です。<br/><br/> マネージド ディスクのフェールバックはサポートされません。
 
 ## <a name="azure-vm-requirements"></a>Azure VM の要件
@@ -159,7 +159,7 @@ Azure にレプリケートするオンプレミス VM は、この表にまと�
 ネットワーク アダプター | 複数のアダプターがサポートされます。 |
 共有 VHD | サポートされていません | サポートされていない場合、前提条件の確認は失敗します。
 FC ディスク | サポートされていません | サポートされていない場合、前提条件の確認は失敗します。
-ハード ディスク フォーマット | VHD  <br/><br/> VHDX | Azure にフェールオーバーすると、Site Recovery によって自動的に VHDX が VHD に変換されます。 オンプレミスにフェールバックした場合、仮想マシンは引き続き VHDX 形式を使用します。
+ハード ディスク フォーマット | VHD  <br/><br/>  VHDX | Azure にフェールオーバーすると、Site Recovery によって自動的に VHDX が VHD に変換されます。 オンプレミスにフェールバックした場合、仮想マシンは引き続き VHDX 形式を使用します。
 BitLocker | サポートされていません | VM のレプリケーションを有効にする前に、BitLocker を無効にする必要があります。
 VM 名 | 1 ～ 63 文字で指定します。 名前に使用できるのは、英文字、数字、およびハイフンのみです。 VM 名の最初と最後は、文字か数字とする必要があります。 | Site Recovery の VM プロパティ値を更新します。
 VM の種類 | 第 1 世代<br/><br/> 第 2 世代 -- Windows | OS ディスクの種類が基本 (VHDX としてフォーマットされている 1 つまたは 2 つのデータ ボリュームが含まれる) でディスク容量が 300 GB 未満の第 2 世代の VM はサポートされています。<br></br>第 2 世代の Linux VM はサポートされていません。 [詳細情報](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)。|
@@ -171,14 +171,17 @@ VM の種類 | 第 1 世代<br/><br/> 第 2 世代 -- Windows | OS ディスク�
 リソース グループ間の資格情報コンテナーの移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ  | いいえ 
 リソース グループ間でストレージ、ネットワーク、Azure VM を移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ  | いいえ 
 
+> [!NOTE]
+> SCVMM で管理された Hyper-VM または SCVMM で管理されていない Hyper-VM をオンプレミスから Azure にレプリケートする際、ある特定の環境 (Hyper-V サイトまたは SCVMM のいずれか該当する方) からレプリケート先として使用できる AD テナントは 1 つだけです。
+
 
 ## <a name="provider-and-agent"></a>プロバイダーとエージェント
 
 デプロイがこの記事の設定と互換性を持たせるには、最新のプロバイダーとエージェントのバージョンを実行してください。
 
-**名前** | **説明** | **詳細**
---- | --- | --- | --- | ---
-Azure Site Recovery プロバイダー | オンプレミスのサーバーと Azure の間の通信を調整します <br/><br/> Hyper-V (Virtual Machine Manager あり): Virtual Machine Manager サーバーにインストールします<br/><br/> Hyper-V (Virtual Machine Manager なし): Hyper-V ホストにインストールします| 最新バージョン: 5.1.2700.1 (Azure Portal から入手可能)<br/><br/> [最新の機能と修正](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
+**Name** | **説明** | **詳細**
+--- | --- | --- 
+Azure Site Recovery プロバイダー | オンプレミスのサーバーと Azure の間の通信を調整します <br/><br/> Hyper-V (Virtual Machine Manager あり): Virtual Machine Manager サーバーにインストールします<br/><br/> Hyper-V (Virtual Machine Manager なし): Hyper-V ホストにインストールします| 最新バージョン: 5.1.2700.1 (Azure portal から入手可能)<br/><br/> [最新の機能と修正](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 Microsoft Azure Recovery Services エージェント | Hyper-V VM と Azure の間のレプリケーションを調整します<br/><br/> オンプレミスの Hyper-V サーバーにインストールされます (Virtual Machine Manager の有無にかかわらず) | ポータルから入手可能な最新のエージェント
 
 

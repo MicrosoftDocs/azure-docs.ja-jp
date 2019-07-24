@@ -1,32 +1,33 @@
 ---
-title: LUIS 作成済みエンティティ phonenumber リファレンス - Azure | Microsoft Docs
+title: 電話番号の作成済みエンティティ
 titleSuffix: Azure
 description: この記事には、Language Understanding (LUIS) での phonenumber 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: bacb09b50c4b1d82daa6be1ef4fc79c88269cf7a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 2a3e84de6d956e4b45945c77c11f789d4455bfe2
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035455"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338792"
 ---
-# <a name="phonenumber-entity"></a>phonenumber エンティティ
+# <a name="phonenumber-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの phonenumber 作成済みエンティティ
 `phonenumber` エンティティは、国番号を含むさまざまな電話番号を抽出します。 このエンティティは既にトレーニングされているので、発話の例をアプリケーションに追加する必要はありません。 `phonenumber` エンティティは、`en-us` カルチャでのみサポートされます。 
 
 ## <a name="types-of-phonenumber"></a>phonenumber のタイプ
-phonenumber は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) Github リポジトリから管理されます。
+phonenumber は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) GitHub リポジトリから管理されます。
 
 ## <a name="resolution-for-prebuilt-phonenumber-entity"></a>作成済み phonenumber エンティティの解決
 次の例では、**builtin.phonenumber** エンティティの解決を示します。
 
-```JSON
+```json
 {
   "query": "my mobile is 00 44 161 1234567",
   "topScoringIntent": {

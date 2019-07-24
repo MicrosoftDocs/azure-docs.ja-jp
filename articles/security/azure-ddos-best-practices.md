@@ -3,7 +3,7 @@ title: Azure DDoS Protection のベスト プラクティスと参照アーキ�
 description: ログ データを使用して、アプリケーションに関する深い洞察を得る方法について説明します。
 services: security
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 37748aaa7f34a51d24091ee04608496ebd45fa90
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 11f3dcefd283ada00e915c2d6cb8abf654590ec1
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231636"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247343"
 ---
-# <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection: ベスト プラクティスと参照アーキテクチャ
+# <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection:ベスト プラクティスと参照アーキテクチャ
 
 この記事は、IT の意思決定者およびセキュリティ担当者を対象に書かれています。 Azure、ネットワーク、およびセキュリティに関する知識があることを前提としています。
 
@@ -81,7 +81,7 @@ Microsoft Azure で実行されるサービスを保護するには、お客様�
 
 スケーラビリティとは、負荷の増大に対するシステムの対応能力のことです。 お客様は、[水平方向にスケーリングする](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out)ようにアプリケーションを設計し、増加した負荷の需要を満たす必要があります (特に、DDoS 攻撃の場合)。 アプリケーションがサービスの 1 つのインスタンスに依存する場合は、単一障害点が発生します。 複数のインスタンスをプロビジョニングすると、システムの回復力と拡張性が高まります。
 
-[Azure App Service](../app-service/app-service-value-prop-what-is.md) の場合は、複数のインスタンスを提供する [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)を選択してください。 Azure Cloud Services の場合は、[複数インスタンス](../cloud-services/cloud-services-choose-me.md)を使用するように各ロールを構成してください。 [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) の場合は、仮想マシン (VM) アーキテクチャに 1 つ以上の VM が含まれていることと、[可用性セット](../virtual-machines/virtual-machines-windows-manage-availability.md)に各 VM が含まれていることを確認してください。 自動スケーリング機能には[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使うことをお勧めします。
+[Azure App Service](../app-service/app-service-value-prop-what-is.md) の場合は、複数のインスタンスを提供する [App Service プラン](../app-service/overview-hosting-plans.md)を選択してください。 Azure Cloud Services の場合は、[複数インスタンス](../cloud-services/cloud-services-choose-me.md)を使用するように各ロールを構成してください。 [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) の場合は、仮想マシン (VM) アーキテクチャに 1 つ以上の VM が含まれていることと、[可用性セット](../virtual-machines/virtual-machines-windows-manage-availability.md)に各 VM が含まれていることを確認してください。 自動スケーリング機能には[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使うことをお勧めします。
 
 ### <a name="defense-in-depth"></a>多層防御
 
@@ -96,7 +96,7 @@ Azure 内のリソースと供に、お客様のオンプレミスのリソー�
 
 ## <a name="azure-offerings-for-ddos-protection"></a>DDoS 保護用の Azure プラン
 
-Azure には、ネットワーク攻撃 (レイヤー 3 および 4) からの保護を提供する 2 つの DDoS サービス プランがあります。DDoS Protection Basic と DDoS Protection Standard です。 
+Azure には、ネットワーク攻撃からの保護を提供する 2 つの DDoS サービス オファリング - DDoS Protection Basic と DDoS Protection Standard - があります (レイヤー 3 および 4)。 
 
 ### <a name="ddos-protection-basic"></a>DDoS Protection Basic
 
@@ -126,7 +126,7 @@ Azure DDoS Protection Basic サービスは、お客様のシステムの保護�
 
 #### <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS 保護のテレメトリ、監視、アラート
 
-DDoS Protection Standard では、DDoS 攻撃の発生時に、[Azure Monitor](../azure-monitor/overview.md) によって豊富なテレメトリが公開されます。 お客様は、DDoS Protection で使用される任意の Azure Monitor メトリックについて、アラートを構成することができます。 また、ログを Splunk (Azure Event Hubs)、Azure Log Analytics、Azure Storage と統合し、Azure Monitor 診断インターフェースを介して高度な分析を行うこともできます。
+DDoS Protection Standard では、DDoS 攻撃の発生時に、[Azure Monitor](../azure-monitor/overview.md) によって豊富なテレメトリが公開されます。 お客様は、DDoS Protection で使用される任意の Azure Monitor メトリックについて、アラートを構成することができます。 また、ログを Splunk (Azure Event Hubs)、Azure Monitor ログ、Azure Storage と統合し、Azure Monitor 診断インターフェースを介して高度な分析を行うこともできます。
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS 軽減ポリシー
 

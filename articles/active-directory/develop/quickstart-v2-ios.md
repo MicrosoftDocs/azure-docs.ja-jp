@@ -1,40 +1,41 @@
 ---
-title: Azure AD v2 iOS クイック スタート | Microsoft Docs
+title: Microsoft ID プラットフォーム iOS のクイック スタート | Azure
 description: iOS ネイティブ アプリケーションでユーザーにサインインし、Microsoft Graph に対してクエリを実行する方法を説明します。
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: danieldobalian
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/23/2018
-ms.author: andret
+ms.date: 03/20/2019
+ms.author: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 49ced3277a659ddacef239c7a1394cbe5ce06ac9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e6340e0f349d66ecf6baaca481722396a6d786c5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973611"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496131"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>クイック スタート: iOS ネイティブ アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>クイック スタート:iOS ネイティブ アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 このクイック スタートには、ネイティブ iOS アプリケーションから個人や仕事、学校のアカウントへのサインイン、アクセス トークンの取得、Microsoft Graph API の呼び出しを行う方法を示すコード サンプルが含まれています。
 
-![このクイック スタートで生成されたサンプル アプリの動作](media/quickstart-v2-ios/ios-intro.png)
+![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-ios/ios-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download"></a>登録とダウンロード
-> ### <a name="register-and-configure-your-application-and-code-sample"></a>アプリケーションとコード サンプルの登録と構成
-> #### <a name="step-1-register-your-application"></a>手順 1: アプリケーションの登録
+> ### <a name="register-and-configure-your-application-and-code-sample"></a>アプリケーションとサンプル コードの登録と構成
+> #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 > アプリケーションを登録し、ソリューションにアプリケーション登録情報を追加するには、次の手順を実行します。
 > 1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app)に移動して、アプリケーションを登録します。
 > 1. **[アプリケーション名]** ボックスに、アプリケーションの名前を入力します。
@@ -42,19 +43,19 @@ ms.locfileid: "46973611"
 > 1. **[プラットフォームの追加]**、**[ネイティブ アプリケーション]**、**[保存]** の順に選択します。
 
 > [!div renderon="portal" class="sxs-lookup"]
-> #### <a name="step-1-configure-your-application"></a>手順 1: アプリケーションの構成
-> このクイック スタートのコード サンプルを動作させるには、応答 URL として `msal<AppId>://auth` (msal<AppId> はこのアプリケーション ID) を追加する必要があります。
+> #### <a name="step-1-configure-your-application"></a>手順 1:アプリケーションの作成
+> このクイック スタートのコード サンプルを動作させるには、応答 URL として `msal<AppId>://auth` (msal\<AppId> はこのアプリケーション ID) を追加する必要があります。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [この変更を行う]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![構成済み](media/quickstart-v2-ios/green-check.png) アプリケーションはこの属性で構成されています
+> > ![構成済み](media/quickstart-v2-ios/green-check.png) ご自分のアプリケーションはこの属性で構成されています
 
-#### <a name="step-2-download-your-web-server-or-project"></a>手順 2: Web サーバーまたはプロジェクトのダウンロード
+#### <a name="step-2-download-your-web-server-or-project"></a>手順 2:Web サーバーまたはプロジェクトのダウンロード
 
 - [XCode プロジェクトのダウンロード](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 
-#### <a name="step-3-configure-your-project"></a>手順 3: プロジェクトの構成
+#### <a name="step-3-configure-your-project"></a>手順 3:プロジェクトを構成する
 
 1. zip ファイルを解凍し、XCode でプロジェクトを開きます。
 1. **ViewController.swift** を編集し、'let kClientID' で始まる行を次のコード スニペットで置換します。
@@ -146,7 +147,7 @@ self.applicationContext = try MSALPublicClientApplication(clientId: kClientID, a
 > |各値の説明: ||
 > |---------|---------|
 > | `clientId` | *portal.azure.com* に登録されているアプリケーションの Application ID |
-> | `authority` | Azure AD v2.0 エンドポイント。 ほとんどの場合は *https<span/>://login.microsoftonline.com/common* |
+> | `authority` | Microsoft ID プラットフォーム エンドポイント。 ほとんどの場合は *https<span/>://login.microsoftonline.com/common* |
 
 ### <a name="requesting-tokens"></a>トークンの要求
 
@@ -154,7 +155,7 @@ MSAL には、トークンの取得に使用する 2 つのメソッド `acquire
 
 #### <a name="getting-an-access-token-interactively"></a>アクセス トークンを対話形式で取得する
 
-Azure Active Directory (Azure AD) v2.0 エンドポイントの操作が強制される場合があります。その場合、コンテキストがシステム ブラウザーに切り替わり、ユーザーの資格情報の検証または同意が求められます。 次に例をいくつか示します。
+ユーザーは Microsoft ID プラットフォーム エンドポイントの操作を強制される場合があります。その場合、コンテキストがシステム ブラウザーに切り替わり、ユーザーの資格情報の検証または同意が求められます。 次に例をいくつか示します。
 
 * ユーザーが初めてアプリケーションにサインインした場合
 * パスワードの有効期限が切れているため、ユーザーが資格情報を再入力する必要がある場合
@@ -167,7 +168,7 @@ applicationContext.acquireToken(forScopes: self.kScopes) { (result, error) in /*
 
 > |各値の説明:||
 > |---------|---------|
-> | `forScopes` | 要求するスコープを含む (つまり、 [ "user.read" ]` for Microsoft Graph or `[ "<Application ID URL>/scope" ]` for custom Web APIs (i.e. `api://<Application ID>/access_as_user`)) |
+> | `forScopes` | 要求するスコープを含む (つまり、Microsoft Graph 用の `[ "user.read" ]` またはカスタム Web API 用の `[ "<Application ID URL>/scope" ]` (つまり、`api://<Application ID>/access_as_user`)) |
 
 #### <a name="getting-an-access-token-silently"></a>アクセス トークンを自動的に取得する
 

@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: GoToMeeting を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+title: チュートリアル:GoToMeeting を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory と GoToMeeting の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 0f59fedb-2cf8-48d2-a5fb-222ed943ff78
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 3d2dafd409c6c7b2be06a6f18c3d392aff681efe
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6e3145d0faaa3aecb90b582b3b6ef0063572ff43
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345779"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175967"
 ---
-# <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>チュートリアル: GoToMeeting を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>チュートリアル:GoToMeeting を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure AD から GoToMeeting にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで GoToMeeting と Azure AD で実行する必要がある手順について説明します。
 

@@ -1,0 +1,89 @@
+- name: Azure Sentinel プレビューのドキュメント
+  href: index.yml
+- name: 概要
+  href: overview.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: Azure Sentinel のオンボード
+      href: quickstart-onboard.md
+    - name: アラートの視覚化
+      href: quickstart-get-visibility.md
+- name: チュートリアル
+  items:
+    - name: 不審な脅威を検出する
+      href: tutorial-detect-threats.md
+    - name: 問題を調査する
+      href: tutorial-investigate-cases.md
+    - name: 脅威に対応する
+      href: tutorial-respond-threats-playbook.md
+- name: ハウツー ガイド
+  items:
+    - name: データ ソースの接続
+      href: connect-data-sources.md
+      items:
+        - name: Microsoft サービスの接続
+          items:
+            - name: Azure AD の接続
+              href: connect-azure-active-directory.md
+            - name: Office 365 の接続
+              href: connect-office-365.md
+            - name: Cloud App Security の接続
+              href: connect-cloud-app-security.md
+            - name: Azure アクティビティ ログの接続
+              href: connect-azure-activity.md
+            - name: Azure AD Identity Protection の接続
+              href: connect-azure-ad-identity-protection.md
+            - name: Azure Information Protection の接続
+              href: connect-azure-information-protection.md
+            - name: Azure ATP の接続
+              href: connect-azure-atp.md
+            - name: Azure Security Center の接続
+              href: connect-azure-security-center.md
+            - name: Microsoft Web アプリケーション ファイアウォールの接続
+              href: connect-microsoft-waf.md
+            - name: Windows ファイアウォールの接続
+              href: connect-windows-firewall.md
+            - name: Windows セキュリティ イベントの接続
+              href: connect-windows-security-events.md
+        - name: 外部ソリューションの接続
+          items:
+            - name: 汎用 CEF の接続
+              href: connect-common-event-format.md
+            - name: Barracuda の接続
+              href: connect-barracuda.md
+            - name: Check Point の接続
+              href: connect-checkpoint.md
+            - name: Palo Alto Networks の接続
+              href: connect-paloalto.md
+            - name: Fortinet の接続
+              href: connect-fortinet.md
+            - name: F5 の接続
+              href: connect-f5.md
+            - name: Syslog の接続
+              href: connect-syslog.md
+            - name: Symantec ICDX の接続
+              href: connect-symantec.md
+            - name: Cisco の接続
+              href: connect-cisco.md
+        - name: 脅威インテリジェンスの接続
+          href: connect-threat-intelligence.md
+    - name: 検出
+      href: hunting.md
+      items:
+        - name: ノートブックを使用した検出
+          href: notebooks.md
+        - name: ブックマークを使用した検出
+          href: bookmarks.md
+    - name: Fusion の有効化
+      href: connect-fusion.md
+- name: リソース
+  items:
+    - name: 有用なリソース
+      href: resources.md
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ
+      href: 'https://blogs.msdn.com/b/azuresecurity/'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'

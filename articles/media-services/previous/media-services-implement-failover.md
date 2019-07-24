@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 618316b6b5979c65bc8906ea7d07c4f4fdf0930d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f09391bf18910bf9151c99b8df91f92b2582e823
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124612"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189837"
 ---
-# <a name="implement-failover-streaming-with-azure-media-services"></a>Azure Media Services でのフェールオーバー ストリーミングの実装
+# <a name="implement-failover-streaming-with-media-services"></a>Media Services でフェールオーバー ストリーミングを実装する 
 
 このチュートリアルでは、1 つの資産から別の資産にコンテンツ (BLOB) をコピーする、オンデマンド ストリーミングの冗長性対応の方法を示します。 このシナリオは、2 つのデータセンターのどちらか一方で障害が発生した場合に両者間でフェールオーバーを行うように Azure Content Delivery Network を設定する場合に利用できます。 このチュートリアルでは、Azure Media Services SDK、Azure Media Services REST API、Azure Storage SDK を使用して以下のタスクのデモンストレーションを行います。
 
@@ -52,7 +52,7 @@ ms.locfileid: "46124612"
 
 ## <a name="prerequisites"></a>前提条件
 * 新規または既存の Azure サブスクリプションで作成した 2 つの Media Services アカウント。 「[Media Services アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。
-* オペレーティング システム: Windows 7、Windows Server 2008 R2、Windows 8。
+* オペレーティング システム:Windows 7、Windows 2008 R2、または Windows 8。
 * .NET Framework 4.5 または .NET Framework 4。
 * Visual Studio 2010 SP1 以降のバージョン (Professional、Premium、Ultimate、または Express)。
 
@@ -178,7 +178,7 @@ ms.locfileid: "46124612"
                 CreateFileInfosForAssetWithRest(_contextTarget, targetAsset, MediaServicesAccountNameTarget, MediaServicesAccountKeyTarget);
         
                 // Check if the AssetFiles are now  associated with the asset.
-                Console.WriteLine("Asset files assocated with the {0} asset:", targetAsset.Name);
+                Console.WriteLine("Asset files associated with the {0} asset:", targetAsset.Name);
                 foreach (var af in targetAsset.AssetFiles)
                 {
                     Console.WriteLine(af.Name);

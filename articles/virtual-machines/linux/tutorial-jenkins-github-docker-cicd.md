@@ -3,7 +3,7 @@ title: チュートリアル - Jenkins を使用して Azure に開発パイプ�
 description: チュートリアル - このチュートリアルでは、毎回のコードのコミット時に GitHub からプルを実行し、アプリを実行する新しい Docker コンテナーをビルドする Jenkins 仮想マシンを Azure 内に作成する方法を説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/27/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1a29d58ca96793c44878a6755cc74edeab6a7c4b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 6c6510113710ea19128fcd27adbf8671a8f083bc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470848"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996505"
 ---
-# <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>チュートリアル: Jenkins、GitHub、および Docker を使用して Azure 内の Linux VM 上に開発インフラストラクチャを作成する
+# <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>チュートリアル:Jenkins、GitHub、および Docker を使用して、Azure 内の Linux VM に開発インフラストラクチャを作成する
 
 アプリケーション開発のビルドおよびテスト フェーズを自動化する場合は、継続的インテグレーション/デプロイ (CI/CD) パイプラインを使用できます。 このチュートリアルでは、Azure VM で CI/CD パイプラインを作成します｡この作成は､以下のような手順で構成されます｡
 
@@ -59,9 +59,9 @@ write_files:
         "hosts": ["fd://","tcp://127.0.0.1:2375"]
       }
 runcmd:
-  - apt install default-jre -y
+  - apt install openjdk-8-jre-headless -y
   - wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
-  - sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+  - sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
   - apt-get update && apt-get install jenkins -y
   - curl -sSL https://get.docker.com/ | sh
   - usermod -aG docker azureuser
@@ -69,13 +69,13 @@ runcmd:
   - service jenkins restart
 ```
 
-VM を作成する前に、[az group create](/cli/azure/group#az_group_create) を使用してリソース グループを作成します。 次の例では、*myResourceGroupJenkins* という名前のリソース グループを場所 *eastus* に作成します。
+VM を作成する前に、[az group create](/cli/azure/group) を使用してリソース グループを作成します。 次の例では、*myResourceGroupJenkins* という名前のリソース グループを場所 *eastus* に作成します。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupJenkins --location eastus
 ```
 
-ここで [az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に *cloud-init.txt* ファイルを保存した場合は、ファイルの完全パスを指定します。
+ここで [az vm create](/cli/azure/vm) を使用して VM を作成します。 `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に *cloud-init.txt* ファイルを保存した場合は、ファイルの完全パスを指定します。
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupJenkins \
@@ -88,7 +88,7 @@ az vm create --resource-group myResourceGroupJenkins \
 
 VM が作成されて構成されるには､数分､時間がかかります｡
 
-VM に対して Web 通信が行えるようにするには､[az vm open-port](/cli/azure/vm#az_vm_open_port) を使用して､Jenkins 通信用にポート *8080*､サンプル アプリの実行に使用する Node.js アプリ用にポート *1337* を開きます｡
+VM に対して Web 通信が行えるようにするには､[az vm open-port](/cli/azure/vm) を使用して､Jenkins 通信用にポート *8080*､サンプル アプリの実行に使用する Node.js アプリ用にポート *1337* を開きます｡
 
 ```azurecli-interactive 
 az vm open-port --resource-group myResourceGroupJenkins --name myVM --port 8080 --priority 1001
@@ -109,6 +109,21 @@ az vm show --resource-group myResourceGroupJenkins --name myVM -d --query [publi
 ssh azureuser@<publicIps>
 ```
 
+`service` コマンドを使用して、Jenkins が実行されていることを確認します。
+
+```bash
+$ service jenkins status
+● jenkins.service - LSB: Start Jenkins at boot time
+   Loaded: loaded (/etc/init.d/jenkins; generated)
+   Active: active (exited) since Tue 2019-02-12 16:16:11 UTC; 55s ago
+     Docs: man:systemd-sysv-generator(8)
+    Tasks: 0 (limit: 4103)
+   CGroup: /system.slice/jenkins.service
+
+Feb 12 16:16:10 myVM systemd[1]: Starting LSB: Start Jenkins at boot time...
+...
+```
+
 Jenkins インストール用の `initialAdminPassword` を表示し､コピーします｡
 
 ```bash
@@ -125,7 +140,7 @@ Web ブラウザーを開いて､`http://<publicIps>:8080` に移動します�
 - **[Save and Finish]\(保存して終了する\)** を選択します
 - Jenkins が準備ができたら、**[Start using Jenkins]\(Jenkins の使用を開始する\)** を選択します
   - Jenkins の使用を開始したときに Web ブラウザーに空白のページが表示された場合は、Jenkins サービスを再起動します。 SSH セッションから「`sudo service jenkins restart`」と入力し、Web ブラウザーを最新の情報に更新します。
-- 作成したユーザー名とパスワードを使用して Jenkins にログインします。
+- 必要な場合は、作成したユーザー名とパスワードを使用して Jenkins にログインします。
 
 
 ## <a name="create-github-webhook"></a>GitHub webhook を作成する
@@ -133,11 +148,13 @@ GitHub との統合を構成するには､Azures サンプル リポジトリ�
 
 作成したフォーク内に webhook を作成します｡
 
-- **[Settings]** を選択して、左側の **[Integrations & services]** を選択します。
-- **[Add service]** を選択し、フィルター ボックスに「*Jenkins*」と入力します。
-- *Jenkins (GitHub plugin)* を選択します｡
-- **Jenkins フック用 URL** として `http://<publicIps>:8080/github-webhook/` を入力します｡ 末尾のスラッシュ (/) を含めていることを確認します。
-- **[Add service]** を選択します。
+- **[Settings]\(設定\)** を選択して、左側の **[Integrations & services]\(統合とサービス\)** を選択します。
+- **[Webhook の追加]** を選択し、フィルター ボックスに「*Jenkins*」と入力します。
+- **[Payload URL]\(ペイロード URL\)** に、「`http://<publicIps>:8080/github-webhook/`」と入力します。 末尾のスラッシュ (/) を含めていることを確認します。
+- **[コンテンツの種類]** で、*[application/x-www-form-urlencoded]* を選択します。
+- **[Which events would you like to trigger this webhook?]\(この Webhook でトリガーするイベント\)** で、*[Just the push event]\(プッシュ イベントのみ\)* を選択します。
+- **[アクティブ]** をオンにします。
+- **[Webhook の追加]** を選択します。
 
 ![フォークしたレポジトリに GitHub webhook を追加します｡](media/tutorial-jenkins-github-docker-cicd/github_webhook.png)
 
@@ -160,13 +177,13 @@ Jenkins との GitHub の統合をテストするには､フォークの変更�
 
 GitHub の Web UI に戻り、フォークしたレポジトリを選択して、**index.js** ファイルを選択します。 鉛筆アイコンを選択して、このファイルを編集し、6 行目を次のように変更します。
 
-```nodejs
+```javascript
 response.end("Hello World!");
 ```
 
 変更をコミットするには、下部にある **[変更をコミット]** ボタンを選択します。
 
-Jenkins ジョブ ページ左下隅の **[Build history]** セクションで新しいビルドが開始されます｡ ビルド番号のリンクを選択し、左側の **[Console output]** を選択します。 GitHub からコードが取り込まれ､ビルド アクションによってコンソールにメッセージ `Testing` が出力されるなどの Jenkins が行った処理を確認できます｡ このように GitHub でコミットが行われるたびに、webhook は Jenkins にアクセスし、新しいビルドをトリガーします。
+Jenkins ジョブ ページ左下隅の **[Build history]** セクションで新しいビルドが開始されます｡ ビルド番号のリンクを選択し、左側の **[Console output]** を選択します。 GitHub からコードが取り込まれ､ビルド アクションによってコンソールにメッセージ `Test` が出力されるなどの Jenkins が行った処理を確認できます｡ このように GitHub でコミットが行われるたびに、webhook は Jenkins にアクセスし、新しいビルドをトリガーします。
 
 
 ## <a name="define-docker-build-image"></a>Docker ビルド イメージを定義する

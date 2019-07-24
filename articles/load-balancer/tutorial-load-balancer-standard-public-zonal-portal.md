@@ -1,30 +1,28 @@
 ---
-title: 'チュートリアル: ゾーン内の Load Balancer VM -- Azure portal | Microsoft Docs'
+title: チュートリアル:ゾーン内のロード バランサー VM - Azure portal
+titlesuffix: Azure Load Balancer
 description: このチュートリアルでは、Azure portal を使用して、ゾーン フロントエンドを使った Standard Load Balancer を作成し、可用性ゾーン内の VM の負荷を分散する方法について説明します
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
+manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/17/2018
+ms.date: 02/27/2019
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 580015b7f8b1f894c69ddec0f26daeb524932e4b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.custom: seodec18
+ms.openlocfilehash: 563b54fe9b4ab65cd8d3008e9d3955618194031f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637295"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899548"
 ---
-# <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>チュートリアル: Azure portal を使用した Standard Load Balancer による可用性ゾーン内での VM の負荷分散
+# <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>チュートリアル:Azure portal を使用した Standard Load Balancer による可用性ゾーン内での VM の負荷分散
 
 このチュートリアルでは、Azure portal を使用して、パブリック IP 標準アドレスを使ったゾーン フロントエンドでパブリック [Azure Standard Load Balancer インスタンス](https://aka.ms/azureloadbalancerstandard)を作成します。 このシナリオでは、フロントエンド インスタンスとバックエンド インスタンスに特定のゾーンを指定して、特定のゾーンに合わせてデータ パスとリソースを調整することができます。 次の機能を実行する方法を説明します。
 
@@ -43,25 +41,29 @@ ms.locfileid: "34637295"
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサインインします。
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
 ## <a name="create-a-public-standard-load-balancer-instance"></a>パブリック Standard Load Balancer インスタンスを作成する
 
 Standard Load Balancer では、標準パブリック IP アドレスだけがサポートされています。 ロード バランサーの作成時に新しいパブリック IP を作成すると、自動的に Standard SKU バージョンとして構成されます。 自動的にゾーン冗長にもなります。
 
 1. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[Load Balancer]** の順に選択します。
-2. **[Create a load balancer]\(ロード バランサーの作成\)** ページで、ロード バランサーの以下の値を入力します。
-    - **myLoadBalancer** - ロード バランサーの名前。
-    - **パブリック** - ロード バランサーの種類。
-     - **myPublicIPZonal** - 作成する新しいパブリック IP アドレス。 **[パブリック IP アドレスの選択]** を選択します。 次に **[新規作成]** を選択します。 名前として「**myPublicIP**」を入力します。 SKU は、既定では Standard です。 **[可用性ゾーン]** で、**[ゾーン 1]** を選択します。
-    - **myResourceGroupZLB** - 作成する新しいリソース グループの名前。
-    - **westeurope** - 場所。
-3. **[作成]** を選択して、ロード バランサーを作成します。
-   
-    ![Azure portal を使用してゾーン Standard Load Balancer インスタンスを作成する](./media/tutorial-load-balancer-standard-zonal-portal/create-load-balancer-zonal-frontend.png)
+2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[確認と作成]** を選択します。
 
+    | Setting                 | 値                                              |
+    | ---                     | ---                                                |
+    | サブスクリプション               | サブスクリプションを選択します。    |    
+    | リソース グループ         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupZLB*」と入力します。|
+    | Name                   | *myLoadBalancer*                                   |
+    | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
+    | type          | **[パブリック]** を選択します。                                        |
+    | SKU           | **[Standard]** を選択します。                          |
+    | パブリック IP アドレス | **[新規作成]** を選択します。 |
+    | パブリック IP アドレス名              | テキスト ボックスに「*myPublicIP*」と入力します。   |
+    |可用性ゾーン| **[1]** を選択します。    |
+3. **[確認と作成]** タブで、**[作成]** をクリックします。   
 
-## <a name="create-backend-servers"></a>バックエンド サーバーの作成
+   ## <a name="create-backend-servers"></a>バックエンド サーバーの作成
 
 このセクションでは、仮想ネットワークを作成します。 また、リージョンの同じゾーン (つまり、ゾーン 1) に 2 つの仮想マシンを作成して、ロード バランサーのバックエンド プールに追加します。 次に、ゾーン冗長ロード バランサーをテストするために仮想マシンに IIS をインストールします。 1 つの VM が失敗した場合、同じゾーンの VM の正常性プローブが失敗します。 同じゾーン内の他の VM によって処理されるトラフィックは続行されます。
 
@@ -78,10 +80,10 @@ Standard Load Balancer では、標準パブリック IP アドレスだけが�
 
 1. 画面の左上で、**[リソースの作成]** を選択します。 [検索] ボックスに「**ネットワーク セキュリティ グループ**」と入力します。 ネットワーク セキュリティ グループ ページで、**[作成]** を選択します。
 2. **[ネットワーク セキュリティ グループの作成]** ページで次の値を入力します。
-    - **myNetworkSecurityGroup** - ネットワーク セキュリティ グループの名前。
-    - **myResourceGroupLBAZ** - 既存のリソース グループの名前。
+   - **myNetworkSecurityGroup** - ネットワーク セキュリティ グループの名前。
+   - **myResourceGroupLBAZ** - 既存のリソース グループの名前。
    
-    ![ネットワーク セキュリティ グループの作成](./media/tutorial-load-balancer-standard-zonal-portal/create-network-security-group.png)
+     ![ネットワーク セキュリティ グループの作成](./media/tutorial-load-balancer-standard-zonal-portal/create-network-security-group.png)
 
 ### <a name="create-nsg-rules"></a>NSG ルールを作成する
 
@@ -100,7 +102,7 @@ Standard Load Balancer では、標準パブリック IP アドレスだけが�
     - **HTTP を許可する** - **説明**。
 4. **[OK]** を選択します。
  
- ![NSG ルールを作成する](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![NSG ルールを作成する](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 
 5. 手順 2. から 4. を繰り返して、**myRDPRule** という別の規則を作成します。 この規則はポート 3389 を使用する受信 RDP 接続に対応し、値は次のとおりです。
     - **サービス タグ** - **ソース**。
@@ -112,7 +114,7 @@ Standard Load Balancer では、標準パブリック IP アドレスだけが�
     - **myRDPRule** - **名前**。
     - **RDP を許可する** - **説明**。
 
-    ![RDP 規則を作成する](./media/tutorial-load-balancer-standard-zonal-portal/create-rdp-rule.png)
+      ![RDP 規則を作成する](./media/tutorial-load-balancer-standard-zonal-portal/create-rdp-rule.png)
 
 ### <a name="create-virtual-machines"></a>仮想マシンを作成する
 

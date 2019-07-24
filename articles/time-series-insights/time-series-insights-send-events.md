@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights 環境にイベントを送信する方法 | Microsoft Docs
-description: このチュートリアルでは、イベント ハブを作成および構成し、サンプル アプリケーションを実行して Azure Time Series Insights に表示されるイベントをプッシュする方法について説明します。
+title: Azure Time Series Insights 環境へのイベントの送信 | Microsoft Docs
+description: イベント ハブを構成し、サンプル アプリケーションを実行して、Azure Time Series Insights で表示できるイベントをプッシュする方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -10,144 +10,90 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/09/2018
-ms.openlocfilehash: 30b83c54d314934f1de170955eec22e7b2a264b8
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.date: 12/03/2018
+ms.custom: seodec18
+ms.openlocfilehash: 424476b91537c60a6d7f0f9a854453353bf98633
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629754"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557021"
 ---
-# <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>イベント ハブを使用して Time Series Insights 環境にイベントを送信する
-この記事では、イベント ハブを作成および構成し、サンプル アプリケーションを実行してイベントをプッシュする方法について説明します。 JSON 形式のイベントを含む既存のイベント ハブがある場合は、このチュートリアルをスキップし、[Time Series Insights](https://insights.timeseries.azure.com) で環境を表示してください。
+# <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>イベント ハブを使用して Time Series Insights 環境にイベントを送信する
+
+この記事では、Azure Event Hubs でイベント ハブを作成および構成し、サンプル アプリケーションを実行してイベントをプッシュする方法について説明します。 JSON 形式のイベントを含む既存のイベント ハブがある場合は、このチュートリアルをスキップし、[Azure Time Series Insights](./time-series-insights-update-create-environment.md) で環境を表示してください。
 
 ## <a name="configure-an-event-hub"></a>イベント ハブを構成する
-1. イベント ハブを作成するには、イベント ハブに関する[ドキュメント](../event-hubs/event-hubs-create.md)の手順に従います。
 
-2. 検索バーで「**イベント ハブ**」を検索します。 返された一覧の **[イベント ハブ]** をクリックします。
+1. イベント ハブを作成する方法については、[Event Hubs のドキュメント](https://docs.microsoft.com/azure/event-hubs/)をご覧ください。
+1. 検索ボックスで、**Event Hubs** を検索します。 返された一覧で、**[Event Hubs]** を選択します。
+1. 自分のイベント ハブを選択します。
+1. イベント ハブを作成すると、実際にはイベント ハブの名前空間が作成されます。 名前空間内にまだイベント ハブを作成していない場合は、メニューの **[エンティティ]** でイベント ハブを作成します。  
 
-3. イベント ハブを選択するには、その名前をクリックします。
+    ![イベント ハブの一覧][1]
 
-4. 構成ウィンドウ中央の **[エンティティ]** で、再び **[イベント ハブ]** をクリックします。
+1. イベント ハブを作成した後、イベント ハブの一覧でそれを選択します。
+1. メニューで、**[エンティティ]** の **[Event Hubs]** を選択します。
+1. イベント ハブの名前を選択して構成します。
+1. **[エンティティ]** で **[コンシューマー グループ]** を選択し、**[コンシューマー グループ]** を選択します。
 
-5. イベント ハブの名前を選択して構成します。
+    ![コンシューマー グループの作成][2]
 
-  ![イベント ハブ コンシューマー グループの選択](media/send-events/consumer-group.png)
+1. Time Series Insights のイベント ソースで排他的に使用されるコンシューマー グループを作成していることを確認します。
 
-6. **[エンティティ]** で **[コンシューマー グループ]** を選択します。
- 
-7. Time Series Insights のイベント ソースで排他的に使用されるコンシューマー グループを作成していることを確認します。
+    > [!IMPORTANT]
+    > このコンシューマー グループがその他のサービス (Azure Stream Analytics ジョブや別の Time Series Insights 環境など) で使用されていないことを確認してください。 コンシューマー グループが他のサービスで使用されている場合、この環境と他のサービスの両方で読み取り操作が悪影響を受けます。 コンシューマー グループとして **$Default** を使用した場合、他の閲覧者がそのコンシューマー グループを再利用する可能性があります。
 
-   > [!IMPORTANT]
-   > このコンシューマー グループがその他のサービス (Stream Analytics ジョブや別の Time Series Insights 環境など) で使用されていないことを確認してください。 コンシューマー グループが他のサービスで使用されている場合、この環境および他のサービスの読み取り操作は悪影響を受けます。 "$Default" をコンシューマー グループとして使用している場合、他の閲覧者によって再利用される可能性があります。
+1. メニューの **[設定]** で **[共有アクセス ポリシー]** を選択してから、**[追加]** を選択します。
 
-8. **[設定]** の見出しにある **[共有アクセス ポリシー]** を選択します。
+    ![[共有アクセス ポリシー] を選択してから、[追加] ボタンを選択する][3]
 
-9. イベント ハブに、CSharp サンプルでイベントの送信に使用される **MySendPolicy** を作成します。
+1. **[新しい共有アクセス ポリシーの追加]** ウィンドウで、**MySendPolicy** という名前の共有アクセス ポリシーを作成します。 後で示す C# の例では、この共有アクセス ポリシーを使用してイベントを送信します。
 
-  ![[共有アクセス ポリシー] を選択して [追加] ボタンをクリックする](media/send-events/shared-access-policy.png)  
+    ![[ポリシー名] ボックスに「MySendPolicy」と入力する][4]
 
-  ![[新しい共有アクセス ポリシーの追加]](media/send-events/shared-access-policy-2.png)  
+1. **[要求]** で、**[送信]** チェック ボックスをオンにします。
 
-## <a name="add-time-series-insights-reference-data-set"></a>Time Series Insights の参照データ セットの追加 
-TSI で参照データを使用すると、利用統計情報データにコンテキストが与えられます。  そのコンテキストによってデータに意味が加わり、フィルターや集計が容易になります。  TSI は参照データをイングレス時に結合し、このデータをさかのぼって結合することはできません。  したがって、データを持つイベント ソースを追加する前に参照データを追加することが重要です。  場所またはセンサーのタイプなどのデータは、スライスやフィルターを容易にするためにデバイス/タグ/センサー ID に結合する場合がある有用なディメンションです。  
+## <a name="add-a-time-series-insights-instance"></a>Time Series Insights のインスタンスを追加する
 
-> [!IMPORTANT]
-> 履歴データをアップロードする場合は、参照データ セットを構成しておくことが重要です。
+Time Series Insights の更新では、インスタンスを使用して、受信したテレメトリ データにコンテキスト データが追加されます。 データはクエリ時に**タイム シリーズ ID** を使用して結合されます。 記事の後半で使用するサンプルの風力発電プロジェクトの**タイム シリーズ ID** は、**Id** です。Time Series Insight のインスタンスと**タイム シリーズ ID** について詳しくは、「[タイム シリーズ モデル](./time-series-insights-update-tsm.md)」をご覧ください。
 
-履歴データを TSI に一括アップロードするとき、参照データがあることを確認します。  TSI は、結合されたイベント ソースにデータがある場合は、そのイベント ソースからすぐに読み取りを開始することに注意してください。  特にイベント ソース内にデータが存在する場合は、参照データが準備できるまで、イベント ソースを TSI に結合するのを待った方が有益です。 あるいは、参照データ セットが準備できるまで待ってから、データをそのイベント ソースにプッシュすることもできます。
+### <a name="create-a-time-series-insights-event-source"></a>Time Series Insights のイベント ソースを作成する
 
-参照データを管理するために、TSI エクスプローラーには Web ベースのユーザー インターフェイスが存在し、プログラムによる C# API が存在します。 TSI エクスプローラーには、ファイルをアップロードしたり既存の参照データ セットを JSON または CSV 形式で貼り付けるためのビジュアル ユーザー エクスペリエンスが備わっています。 API を使用して、必要なときにカスタム アプリを構築できます。
+1. イベント ソースを作成していない場合は、[イベント ソースを作成する](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)手順を実行します。
 
-Time Series Insights での参照データの管理の詳細については、[参照データの関連記事](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set)に関するセクションを参照してください。
+1. `timeSeriesId` の値を設定します。 **タイム シリーズ ID** について詳しくは、「[タイム シリーズ モデル](./time-series-insights-update-tsm.md)」をご覧ください。
 
-## <a name="create-time-series-insights-event-source"></a>Time Series Insights のイベント ソースを作成する
-1. イベント ソースを作成していない場合は、[こちらの手順](time-series-insights-how-to-add-an-event-source-eventhub.md)に従って、イベント ソースを作成します。
+### <a name="push-events"></a>イベントをプッシュする (風力発電サンプル)
 
-2. タイムスタンプ プロパティ名として **deviceTimestamp** を指定します。このプロパティは、C# のサンプルで実際のタイムスタンプとして使用されます。 タイムスタンプ プロパティ名は大文字と小文字が区別されます。また、JSON としてイベント ハブに送信される際、値は __yyyy-MM-ddTHH:mm:ss.FFFFFFFK__ 形式にする必要があります。 このプロパティがイベントに存在しない場合は、イベント ハブにエンキューされた時刻が使用されます。
+1. 検索バーで「**Event Hubs**」を検索します。 返された一覧で、**[Event Hubs]** を選択します。
 
-  ![イベント ソースの作成](media/send-events/event-source-1.png)
+1. 自分のイベント ハブを選択します。
 
-## <a name="sample-code-to-push-events"></a>イベントをプッシュするサンプル コード
-1. **MySendPolicy** という名前のイベント ハブ ポリシーに移動します。 ポリシー キーを含む**接続文字列**をコピーします。
+1. **[共有アクセス ポリシー]** > **RootManageSharedAccessKey** に移動します。 **[接続文字列 - 主キー]** の値をコピーします。
 
-  ![MySendPolicy の接続文字列のコピー](media/send-events/sample-code-connection-string.png)
+    ![主キーの接続文字列の値をコピーする][5]
 
-2. 3 つの各デバイスにつき 600 件のイベントを送信する次のコードを実行します。 `eventHubConnectionString` は、実際の接続文字列で更新してください。
+1. https://tsiclientsample.azurewebsites.net/windFarmGen.html にアクセスします。 その URL では、シミュレートされた風力発電デバイスが実行されます。
+1. Web ページの **[Event Hub Connection String]\(イベント ハブ接続文字列\)** ボックスに、「[イベントをプッシュする](#push-events)」でコピーした接続文字列を貼り付けます。
+  
+    ![[Event Hub Connection String]\(イベント ハブ接続文字列\) ボックスに主キーの接続文字列を貼り付ける][6]
 
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using Microsoft.ServiceBus.Messaging;
+1. **[Click to start]\(クリックして開始\)** を選択します。 シミュレーターで、直接使用できるインスタンスの JSON が生成されます。
 
-namespace Microsoft.Rdx.DataGenerator
-{
-    internal class Program
-    {
-        private static void Main(string[] args)
-        {
-            var from = new DateTime(2017, 4, 20, 15, 0, 0, DateTimeKind.Utc);
-            Random r = new Random();
-            const int numberOfEvents = 600;
+1. Azure portal でイベント ハブに戻ります。 **[概要]** ページに、イベント ハブによって受信された新しいイベントが表示されます。
 
-            var deviceIds = new[] { "device1", "device2", "device3" };
+    ![イベント ハブのメトリックが表示されているイベント ハブの [概要] ページ][7]
 
-            var events = new List<string>();
-            for (int i = 0; i < numberOfEvents; ++i)
-            {
-                for (int device = 0; device < deviceIds.Length; ++device)
-                {
-                    // Generate event and serialize as JSON object:
-                    // { "deviceTimestamp": "utc timestamp", "deviceId": "guid", "value": 123.456 }
-                    events.Add(
-                        String.Format(
-                            CultureInfo.InvariantCulture,
-                            @"{{ ""deviceTimestamp"": ""{0}"", ""deviceId"": ""{1}"", ""value"": {2} }}",
-                            (from + TimeSpan.FromSeconds(i * 30)).ToString("o"),
-                            deviceIds[device],
-                            r.NextDouble()));
-                }
-            }
+<a id="json"></a>
 
-            // Create event hub connection.
-            var eventHubConnectionString = @"Endpoint=sb://...";
-            var eventHubClient = EventHubClient.CreateFromConnectionString(eventHubConnectionString);
-
-            using (var ms = new MemoryStream())
-            using (var sw = new StreamWriter(ms))
-            {
-                // Wrap events into JSON array:
-                sw.Write("[");
-                for (int i = 0; i < events.Count; ++i)
-                {
-                    if (i > 0)
-                    {
-                        sw.Write(',');
-                    }
-                    sw.Write(events[i]);
-                }
-                sw.Write("]");
-
-                sw.Flush();
-                ms.Position = 0;
-
-                // Send JSON to event hub.
-                EventData eventData = new EventData(ms);
-                eventHubClient.Send(eventData);
-            }
-        }
-    }
-}
-
-```
 ## <a name="supported-json-shapes"></a>サポートされている JSON 構造
+
 ### <a name="sample-1"></a>サンプル 1
 
 #### <a name="input"></a>入力
 
-単純な JSON オブジェクト。
+簡単な JSON オブジェクト:
 
 ```json
 {
@@ -155,7 +101,8 @@ namespace Microsoft.Rdx.DataGenerator
     "timestamp":"2016-01-08T01:08:00Z"
 }
 ```
-#### <a name="output---one-event"></a>出力 - 1 つのイベント
+
+#### <a name="output-one-event"></a>出力:1 つのイベント
 
 |id|timestamp|
 |--------|---------------|
@@ -164,7 +111,9 @@ namespace Microsoft.Rdx.DataGenerator
 ### <a name="sample-2"></a>サンプル 2
 
 #### <a name="input"></a>入力
-2 つの JSON オブジェクトを含む JSON 配列。 各 JSON オブジェクトはイベントに変換されます。
+
+2 つの JSON オブジェクトを含む JSON 配列。 各 JSON オブジェクトがイベントに変換されます。
+
 ```json
 [
     {
@@ -177,7 +126,8 @@ namespace Microsoft.Rdx.DataGenerator
     }
 ]
 ```
-#### <a name="output---two-events"></a>出力 - 2 つのイベント
+
+#### <a name="output-two-events"></a>出力:2 つのイベント
 
 |id|timestamp|
 |--------|---------------|
@@ -189,6 +139,7 @@ namespace Microsoft.Rdx.DataGenerator
 #### <a name="input"></a>入力
 
 2 つの JSON オブジェクトを含む入れ子になった JSON 配列を含む JSON オブジェクト。
+
 ```json
 {
     "location":"WestUs",
@@ -203,10 +154,11 @@ namespace Microsoft.Rdx.DataGenerator
         }
     ]
 }
-
 ```
-#### <a name="output---two-events"></a>出力 - 2 つのイベント
-"location" プロパティは各イベントにコピーされます。
+
+#### <a name="output-two-events"></a>出力:2 つのイベント
+
+**location** プロパティが各イベントにコピーされます。
 
 |location|events.id|events.timestamp|
 |--------|---------------|----------------------|
@@ -248,15 +200,24 @@ namespace Microsoft.Rdx.DataGenerator
     ]
 }
 ```
-#### <a name="output---two-events"></a>出力 - 2 つのイベント
+
+#### <a name="output-two-events"></a>出力:2 つのイベント
 
 |location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
 |---|---|---|---|---|---|---|---|
 |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
 |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
-
-
 ## <a name="next-steps"></a>次の手順
+
 > [!div class="nextstepaction"]
-> [Time Series Insights エクスプローラー](https://insights.timeseries.azure.com)で環境を表示します。
+> [Time Series Insights エクスプローラーで自分の環境を表示する](https://insights.timeseries.azure.com)
+
+<!-- Images -->
+[1]: media/send-events/updated.png
+[2]: media/send-events/consumer-group.png
+[3]: media/send-events/shared-access-policy.png
+[4]: media/send-events/shared-access-policy-2.png
+[5]: media/send-events/sample-code-connection-string.png
+[6]: media/send-events/updated_two.png
+[7]: media/send-events/telemetry.png

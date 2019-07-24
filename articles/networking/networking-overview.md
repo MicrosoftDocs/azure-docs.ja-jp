@@ -15,26 +15,26 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: 2e5862e99b3e883554b42341d2c1dbe9d8b8ec72
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 02db9f2b8cb2ec71d23ad077b90eeacb905d2a16
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366982"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445635"
 ---
 # <a name="azure-networking"></a>Azure のネットワーク
 
 Azure には、単独でまたは組み合わせて使用できるさまざまなネットワーク機能が用意されています。 主な機能については、次のリンクをクリックしてください。
-- [Azure リソース間の接続](#connectivity): クラウド内の安全なプライベート仮想ネットワークで Azure のリソースを接続します。
-- [インターネット接続](#internet-connectivity): インターネットを介して双方向で Azure リソースと通信します。
-- [オンプレミス接続](#on-premises-connectivity): インターネット上の仮想プライベート ネットワーク (VPN) を介して、または Azure への専用接続を介して、オンプレミスのネットワークを Azure リソースに接続します。
-- [負荷分散とトラフィック誘導](#load-balancing): 同じ場所のサーバー間でトラフィックを負荷分散したり、異なる場所のサーバーにトラフィックを誘導したりします。
+- [Azure リソースの間の接続](#connectivity):クラウド内の安全なプライベート仮想ネットワークで Azure のリソースを接続します。
+- [インターネット接続](#internet-connectivity):インターネットを介して双方向で Azure リソースと通信します。
+- [オンプレミスの接続](#on-premises-connectivity):インターネット上の仮想プライベート ネットワーク (VPN) を介して、または Azure への専用接続を介して、オンプレミスのネットワークを Azure リソースに接続します。
+- [負荷分散とトラフィックの方向](#load-balancing):同じ場所のサーバー間でトラフィックを負荷分散したり、異なる場所のサーバーにトラフィックを誘導したりします。
 - [セキュリティ](#security): ネットワーク サブネット間や個々の仮想マシン (VM) 間のネットワーク トラフィックをフィルタリングします。
-- [ルーティング](#routing): Azure リソースとオンプレミス リソースとの間で既定のルーティングまたは完全制御のルーティングを使用します。
-- [管理の容易性](#manageability): Azure のネットワーク リソースを監視したり管理したりします。
-- [デプロイ ツールと構成ツール](#tools): Web ベースのポータルまたはクロスプラットフォームのコマンド ライン ツールを使って、ネットワーク リソースのデプロイと構成を行います。
+- [ルーティング](#routing):Azure リソースとオンプレミス リソースとの間で既定のルーティングまたは完全制御のルーティングを使用します。
+- [管理性](#manageability):Azure のネットワーク リソースを監視したり管理したりします。
+- [デプロイ ツールと構成ツール](#tools):Web ベースのポータルまたはクロスプラットフォームのコマンド ライン ツールを使って、ネットワーク リソースのデプロイと構成を行います。
 
-## <a name="Connectivity"></a>Azure リソースの間の接続
+## <a name="connectivity"></a>Azure リソースの間の接続
 
 Azure リソース (Virtual Machines、Cloud Services、Virtual Machines スケール セット、Azure App Service Environment など) は、Azure Virtual Network (VNet) を介してプライベートに相互通信を行うことができます。 特定の[サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fnetworking%2ftoc.json)専用に論理上、Azure クラウドを分離したものが VNet です。 各 Azure サブスクリプションと Azure [リージョン](https://azure.microsoft.com/regions)内に複数の VNet を実装できます。 VNet 同士は分離されています。 各 VNet では、次のことを実行できます。
 
@@ -44,8 +44,8 @@ Azure リソース (Virtual Machines、Cloud Services、Virtual Machines スケ�
 
 Azure Virtual Network サービスの詳細については、[仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。 VNet を相互に接続できるため、一方の VNet に接続されているリソースは、VNet をまたいで相互に通信できます。 次のオプションのいずれかまたは両方を使用して、複数の VNet を相互に接続できます。
 
-- **ピアリング:** 同じ Azure リージョン内の別の Azure VNet に接続されているリソースの相互接続を可能にします。 複数の VNet の間での帯域幅と待ち時間は、リソースが同じ VNet に接続されている場合と同じです。 ピアリングの詳細については、[仮想ネットワーク ピアリングの概要](../virtual-network/virtual-network-peering-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関するページを参照してください。
-- **VPN Gateway:** 異なる Azure リージョンの Azure VNet に接続されているリソースの相互接続を可能にします。 VNet 間のトラフィックは、Azure VPN ゲートウェイを経由します。 VNet 間の帯域幅は、ゲートウェイの帯域幅に制限されます。 VNet と VPN ゲートウェイの接続について詳しくは、[リージョンの境界を越えた VNet 間接続の構成](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
+- **ピアリング:** 同じ Azure リージョン内の別の Azure VNet に接続されているリソースの相互通信を可能にします。 複数の VNet の間での帯域幅と待ち時間は、リソースが同じ VNet に接続されている場合と同じです。 ピアリングの詳細については、[仮想ネットワーク ピアリングの概要](../virtual-network/virtual-network-peering-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関するページを参照してください。
+- **VPN Gateway**:異なる Azure リージョン内の異なる Azure VNet に接続されているリソースの相互通信を可能にします。 VNet 間のトラフィックは、Azure VPN ゲートウェイを経由します。 VNet 間の帯域幅は、ゲートウェイの帯域幅に制限されます。 VNet と VPN ゲートウェイの接続について詳しくは、[リージョンの境界を越えた VNet 間接続の構成](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 
 ## <a name="internet-connectivity"></a>インターネット接続
 
@@ -128,17 +128,17 @@ Azure に備わっていないネットワーク機能が必要になった場�
 
 ## <a name="routing"></a>ルーティング
 
-Azure では、VNet 内の任意のサブネットに接続されている複数のリソースが相互通信できるようにする既定のルート テーブルが作成されます。 次のタイプのいずれかまたは両方のルートを実装して、Azure によって作成される既定のルートを上書きできます。
-- **ユーザー定義:** サブネットごとにトラフィックのルーティング先を制御するルートを含むカスタム ルート テーブルを作成できます。 ユーザー定義ルートについて詳しくは、[ユーザー定義のルート](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事をご覧ください。
+Azure では、VNet 内の任意のサブネットに接続されている複数のリソースが相互通信できるようにする既定のルート テーブルが作成されます。 次のタイプのいずれかまたは両方のルートを実装して、Azure によって作成される既定のルートをオーバーライドできます。
+- **ユーザー定義:** サブネットごとにトラフィックのルーティング先を制御するルートを含む、カスタム ルート テーブルを作成できます。 ユーザー定義ルートについて詳しくは、[ユーザー定義のルート](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事をご覧ください。
 - **ボーダー ゲートウェイ プロトコル (BGP):** Azure VPN ゲートウェイまたは ExpressRoute 接続を使用して VNet をオンプレミス ネットワークに接続する場合、BGP ルートを VNet に伝達できます。 BGP は、2 つ以上のネットワーク間でルーティングと到達可能性の情報を交換するためにインターネット上で広く使用されている標準のルーティング プロトコルです。 Azure Virtual Network のコンテキストでは、Azure VPN ゲートウェイとオンプレミスの VPN デバイス (BGP ピアまたは BGP 近隣ノードと呼ばれる) が BGP を使用して "ルート" を交換します。これによって、関連するゲートウェイまたはルーターの可用性と、BGP のプレフィックスが到達できる可能性に関する情報が両方のゲートウェイに伝達されます。 また、BGP では、BGP ゲートウェイが特定の BGP ピアから学習したルートを他のすべての BGP ピアに伝達することで、複数のネットワークでトランジット ルーティングを行うこともできます。 BGP の詳細については、[Azure VPN Gateway を使用した BGP の概要](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 
 ## <a name="manageability"></a>管理の容易性
 
 Azure には、ネットワークを監視したり管理したりするための手段として以下のツールが用意されています。
-- **アクティビティ ログ:** すべての Azure リソースには、実行された操作とその状態、操作の実行者を記録したアクティビティ ログがあります。 アクティビティ ログの詳細については、[アクティビティ ログの概要](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
-- **診断ログ:** 定期イベントと自然発生イベントがネットワーク リソースにより作成され、Azure Storage アカウント内に記録されるか、Azure イベント ハブまたは Azure Log Analytics に送信されます。 診断ログを通じて、リソースの正常性についての洞察を得ることができます。 診断ログは、ロード バランサー (インターネット接続)、ネットワーク セキュリティ グループ、ルーティング、Application Gateway で利用できます。 診断ログの詳細については、[診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
+- **アクティビティ ログ:** すべての Azure リソースには、実行された操作とその状態、操作の実行者を記録したアクティビティ ログがあります。 アクティビティ ログの詳細については、[アクティビティ ログの概要](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
+- **診断ログ:** 定期イベントと自然発生イベントがネットワーク リソースにより作成され、Azure Storage アカウント内に記録されるか、Azure イベント ハブまたは Azure Monitor ログに送信されます。 診断ログを通じて、リソースの正常性についての洞察を得ることができます。 診断ログは、ロード バランサー (インターネット接続)、ネットワーク セキュリティ グループ、ルーティング、Application Gateway で利用できます。 診断ログの詳細については、[診断ログの概要](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 - **メトリック:** メトリックとは、リソースに関して一定期間にわたり収集されたパフォーマンスの測定値とカウンターのことです。 メトリックを使用すると、しきい値に基づいてアラートをトリガーすることができます。 現在、Application Gateway に関するメトリックが利用できます。 メトリックの詳細については、[メトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
-- **トラブルシューティング:** トラブルシューティング情報には、Azure Portal から直接アクセスすることができます。 この情報を基に、ExpressRoute 、VPN Gateway、Application Gateway、ネットワーク セキュリティ ログ、ルーティング、DNS、ロード バランサー、Traffic Manager に関する一般的な問題を診断することができます。
+- **トラブルシューティング:** トラブルシューティング情報には、Azure portal から直接アクセスすることができます。 この情報を基に、ExpressRoute 、VPN Gateway、Application Gateway、ネットワーク セキュリティ ログ、ルーティング、DNS、ロード バランサー、Traffic Manager に関する一般的な問題を診断することができます。
 - **ロールベースのアクセス制御 (RBAC):** ネットワーク リソースをだれが作成し、だれが管理できるかは、ロールベースのアクセス制御 (RBAC) を使って制御します。 RBAC の詳細については、[RBAC の基礎](../role-based-access-control/overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。 
 - **パケット キャプチャ:** Azure Network Watcher サービスでは、VM 内の拡張機能を通じて VM のパケット キャプチャを実行することができます。 この機能は、Linux VM と Windows VM で利用できます。 パケット キャプチャの詳細については、[パケット キャプチャの概要](../network-watcher/network-watcher-packet-capture-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 - **IP フロー検証:** Azure VM とリモート リソースとの間の IP フローを Network Watcher で検証することにより、パケットが許可 (または拒否) されているかどうかを調べることができます。 管理者は、この機能を利用して、接続の問題をすばやく診断することができます。 IP フローを確認する方法については、[IP フロー検証の概要](../network-watcher/network-watcher-ip-flow-verify-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
@@ -149,9 +149,9 @@ Azure には、ネットワークを監視したり管理したりするため�
 
 Azure のネットワーク リソースのデプロイと構成は、以下のツールを使って実行できます。
 
-- **Azure Portal:** ブラウザーで動作するグラフィカル ユーザー インターフェイスです。 [Azure Portal](http://portal.azure.com)を開きます。
-- **Azure PowerShell:** Windows コンピューターから Azure を管理するためのコマンド ライン ツールです。 Azure PowerShell の詳細については、[Azure PowerShell の概要](/powershell/azure/overview?view=azurermps-3.8.0?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
-- **Azure コマンド ライン インターフェイス (CLI):** Linux、macOS、Windows のいずれかのコンピューターから Azure を管理するためのコマンド ライン ツールです。 Azure CLI の詳細については、[Azure CLI の概要](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
+- **Azure portal:** ブラウザーで動作するグラフィカル ユーザー インターフェイスです。 [Azure Portal](https://portal.azure.com)を開きます。
+- **Azure PowerShell:** Windows コンピューターから Azure を管理するためのコマンド ライン ツールです。 Azure PowerShell の詳細については、[Azure PowerShell の概要](/powershell/azure/overview?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
+- **Azure コマンド ライン インターフェイス (CLI):** Linux、macOS、または Windows コンピューターから Azure を管理するためのコマンド ライン ツールです。 Azure CLI の詳細については、[Azure CLI の概要](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 - **Azure Resource Manager テンプレート:** Azure ソリューションのインフラストラクチャと構成を定義するファイル (JSON 形式) です。 テンプレートを使えば、ソリューションをそのライフサイクル全体で繰り返しデプロイできます。また、常にリソースが一貫した状態でデプロイされます。 テンプレート作成の詳細については、[テンプレート作成のベスト プラクティス](../azure-resource-manager/resource-manager-template-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。 テンプレートのデプロイには、Azure Portal、CLI、PowerShell のいずれかを使用できます。 今すぐテンプレートを使用するには、あらかじめ構成されているいずれかのテンプレートを「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?term=network)」ライブラリから入手してデプロイしてください。 
 
 ## <a name="pricing"></a>価格

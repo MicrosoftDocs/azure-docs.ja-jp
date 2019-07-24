@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 67778a269aa962b3184bf55c692154570e8357ba
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: c2089f9f6267f318dafe641a6a5b22e7e87427ca
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387392"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441068"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure 仮想マシンのパフォーマンス診断
 
@@ -143,10 +143,10 @@ VM からパフォーマンス診断をアンインストールすることが�
 ### <a name="how-do-i-share-this-data-with-microsoft-customer-support"></a>このデータを Microsoft カスタマー サポートと共有するにはどうすればよいですか。 
 診断レポートを Microsoft と共有するには、複数の方法があります。
 
-**方法 1:** 最新のレポートを自動的に共有する  
+**オプション 1:** 最新のレポートを自動的に共有する  
 Microsoft とのサポート チケットを開くときに、パフォーマンス診断レポートを共有することが重要です。 診断の実行時に (**[診断情報を Microsoft と共有することに同意します]** チェック ボックスをオンにして) この情報を Microsoft と共有することを選択した場合、Microsoft は、実行日から最大 30 日間、出力 zip ファイルへの SAS リンクを使用して、お客様のストレージ アカウントのレポートにアクセスできます。 サポート エンジニアが使用できるのは、最新のレポートのみです。 
 
-**方法 2:** 診断レポートの圧縮ファイルのために Shared Access Signature を生成する  
+**オプション 2:** 診断レポートの圧縮ファイルのために Shared Access Signature を生成する  
 Shared Access Signature を使用して、レポートの圧縮ファイルへのリンクを共有することができます。 そのためには、次の手順に従います。 
 1.  Azure portal で、診断データが保存されているストレージ アカウントを参照します。
 1.  **[Blob service]** セクションにある **[BLOB]** を選択します。 
@@ -156,7 +156,7 @@ Shared Access Signature を使用して、レポートの圧縮ファイルへ�
 1.  **[BLOB SAS トークンおよび URL を生成]** をクリックします。
 1.  **[BLOB SAS URL]** をコピーし、サポート エンジニアに伝えます。 
 
-**方法 3:** ストレージ アカウントからレポートをダウンロードする
+**オプション 3:** ストレージ アカウントからレポートをダウンロードする
 
 方法 2 の手順 1 から 4 を使用して、パフォーマンス診断レポートの圧縮ファイルを見つけることもできます。 ファイルのダウンロードを選択し、電子メールで共有するか、サポート エンジニアにファイルのアップロード手順を尋ねます。  
 

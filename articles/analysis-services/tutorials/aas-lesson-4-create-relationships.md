@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7e791514cc25c645775de260e7f190ee20812d4b
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 4a595e4c955b08bda6fcf49b9ca6a050e8440621
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428493"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54187503"
 ---
 # <a name="create-relationships"></a>リレーションシップを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "49428493"
 このレッスンの推定所要時間: **10 分**  
   
 ## <a name="prerequisites"></a>前提条件  
-このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンのタスクを実行する前に、前のレッスン「[レッスン 3: 日付テーブルとしてマークする](../tutorials/aas-lesson-3-mark-as-date-table.md)」を完了する必要があります。 
+このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンのタスクを実行する前に、前のレッスン「[レッスン 3: 日付テーブルとしてマークする](../tutorials/aas-lesson-3-mark-as-date-table.md)」を終えている必要があります。 
   
 ## <a name="review-existing-relationships-and-add-new-relationships"></a>既存のリレーションシップの確認と新しいリレーションシップの追加  
 Get Data を使用してデータをインポートすると、AdventureWorksDW2014 データベースから 7 つのテーブルが取得されました。 通常、リレーショナル ソースからデータをインポートする際には、既存のリレーションシップがデータと共に自動的にインポートされます。 データ モデル内のリレーションシップを Get Data で自動的に作成するためには、データ ソースにテーブル間のリレーションシップが存在していることが必要です。
@@ -54,11 +54,11 @@ Get Data を使用してデータをインポートすると、AdventureWorksDW2
   
     |アクティブ|テーブル|関連するルックアップ テーブル|  
     |----------|---------|------------------------|  
-    |[はい]|**DimCustomer [GeographyKey]**|**DimGeography [GeographyKey]**|  
-    |[はい]|**DimProduct [ProductSubcategoryKey]**|**DimProductSubcategory [ProductSubcategoryKey]**|  
-    |[はい]|**DimProductSubcategory [ProductCategoryKey]**|**DimProductCategory [ProductCategoryKey]**|  
-    |[はい]|**FactInternetSales [CustomerKey]**|**DimCustomer [CustomerKey]**|  
-    |[はい]|**FactInternetSales [ProductKey]**|**DimProduct [ProductKey]**|  
+    |はい|**DimCustomer [GeographyKey]**|**DimGeography [GeographyKey]**|  
+    |はい|**DimProduct [ProductSubcategoryKey]**|**DimProductSubcategory [ProductSubcategoryKey]**|  
+    |はい|**DimProductSubcategory [ProductCategoryKey]**|**DimProductCategory [ProductCategoryKey]**|  
+    |はい|**FactInternetSales [CustomerKey]**|**DimCustomer [CustomerKey]**|  
+    |はい|**FactInternetSales [ProductKey]**|**DimProduct [ProductKey]**|  
   
     リレーションシップのいずれかが存在しない場合は、モデルに DimCustomer、DimDate、DimGeography、DimProduct、DimProductCategory、DimProductSubcategory、FactInternetSales の各表が含まれていることを確認します。 同じデータソース接続のテーブルが別々の時期にインポートされた場合、これらのテーブル間のリレーションシップは作成されないので手動で作成する必要があります。 リレーションシップがまったく表示されない場合、そのデータソースにはリレーションシップが存在しません。 それらをデータ モデルに手動で作成することができます。
 

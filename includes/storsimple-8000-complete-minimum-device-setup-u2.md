@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 879241b56ddb3be76b1b54d7a3bb5429facf148a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: c44effe0bde3c7e880e53706fcb59d91a8605e7b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165784"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889616"
 ---
-<!--author=alkohli last changed: 09/28/17-->
-
 #### <a name="to-complete-the-minimum-storsimple-device-setup"></a>StorSimple の最小デバイス セットアップを完了するには
 
    > [!NOTE]
@@ -30,7 +28,7 @@ ms.locfileid: "50165784"
 
        1. セットアップ ウィザードで構成したネットワーク設定 (IP、サブネット、ゲートウェイ) で有効化された DATA 0 ネットワーク インターフェイスが表示されます。 DATA 0 は自動的に iSCSI とクラウドにも有効化されています。
 
-       2. コントローラー 0 とコントローラー 1 の固定 IP アドレスを指定します。 **コントローラーの固定 IP アドレスは、デバイス の IP アドレスによってアクセス可能なサブネット内で空き IP となっている必要があります。** DATA 0 インターフェイスが IPv4 に対して構成されている場合、固定 IP アドレスは IPv4 形式で指定する必要があります。 IPv6 構成でプレフィックスを指定した場合、これらのフィールドには固定 IP アドレスが自動的に入力されます。
+       2. コントローラー 0 とコントローラー 1 の固定 IP アドレスを指定します。 **コントローラーの固定 IP アドレスは、デバイス の IP アドレスによってアクセス可能なサブネット内で空き IP となっている必要があります。**  DATA 0 インターフェイスが IPv4 に対して構成されている場合、固定 IP アドレスは IPv4 形式で指定する必要があります。 IPv6 構成でプレフィックスを指定した場合、これらのフィールドには固定 IP アドレスが自動的に入力されます。
 
             ![StorSimple の最小限のデバイス セットアップのネットワーク インターフェイス](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig2.png)
 

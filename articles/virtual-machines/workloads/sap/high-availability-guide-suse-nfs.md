@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/16/2018
+ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 99b7b83ca2d7f6f19df137e6ecf5deaf411e9a5e
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: a91bc1cbb72427205cc558a4b5e655f4aa8083b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634746"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992065"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性
 
@@ -43,6 +43,7 @@ ms.locfileid: "45634746"
 
 [sles-hae-guides]:https://www.suse.com/documentation/sle-ha-12/
 [sles-for-sap-bp]:https://www.suse.com/documentation/sles-for-sap-12/
+[suse-ha-12sp3-relnotes]:https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP3/
 
 [template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
 [template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
@@ -76,6 +77,7 @@ ms.locfileid: "45634746"
 * [SUSE Linux Enterprise High Availability Extension 12 SP3 のベスト プラクティス ガイド][sles-hae-guides]
   * Highly Available NFS Storage with DRBD and Pacemaker (DRBD と Pacemaker を使用した高可用性 NFS ストレージ)
 * [SUSE Linux Enterprise Server for SAP Applications 12 SP3 のベスト プラクティス ガイド][sles-for-sap-bp]
+* [SUSE High Availability Extension 12 SP3 リリース ノート][suse-ha-12sp3-relnotes]
 
 ## <a name="overview"></a>概要
 
@@ -177,6 +179,9 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
          * 上記の手順を繰り返して、NW2 に対してポート 2049 と TCP を設定します
       1. 2049 UDP (NW2)
          * 上記の手順を繰り返して、NW2 に対してポート 2049 と UDP を設定します
+
+> [!IMPORTANT]
+> Azure Load Balancer の背後に配置された Azure VM では TCP タイムスタンプを有効にしないでください。 TCP タイムスタンプを有効にすると正常性プローブが失敗することになります。 パラメーター **net.ipv4.tcp_timestamps** は **0** に設定します。 詳しくは、「[Load Balancer の正常性プローブ](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview)」を参照してください。
 
 ### <a name="create-pacemaker-cluster"></a>Pacemaker クラスターの作成
 
@@ -424,9 +429,9 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 
    drbd を使用してあるホストから別のホストにデータを同期するときに、スプリット ブレインと呼ばれる状況が発生することがあります。 スプリット ブレインは、両方のクラスター ノードの drbd デバイスがプライマリに昇格され、非同期になるシナリオです。これはまれな状況かもしれませんが、スプリット ブレインをできるだけ早く処理して解決する必要があります。 したがって、スプリット ブレインが発生したときに通知を受け取ることが重要です。
 
-   スプリット ブレインの通知を設定する方法については、[drbd の公式ドキュメント](http://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification)を参照してください。
+   スプリット ブレインの通知を設定する方法については、[drbd の公式ドキュメント](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification)を参照してください。
 
-   さらに、スプリット ブレイン シナリオから自動的に復旧することも可能です。 詳細については、「[Automatic split brain recovery policies (自動スプリット ブレイン復旧ポリシー)](http://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration)」を参照してください
+   さらに、スプリット ブレイン シナリオから自動的に復旧することも可能です。 詳細については、「[Automatic split brain recovery policies (自動スプリット ブレイン復旧ポリシー)](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration)」を参照してください
    
 ### <a name="configure-cluster-framework"></a>クラスター フレームワークの構成
 

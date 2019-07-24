@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
-ms.openlocfilehash: 2a59d5788898fae23345d179fb037f11599f912e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c57550a8b683ad8f184884374c4f09216417fc40
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230395"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995633"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Excel、Python、R から Azure Databricks に接続する
 
@@ -102,7 +102,7 @@ Excel のブックにデータを取得したら、分析操作を実行でき�
 このセクションでは、R 言語 IDE を使用して Azure Databricks にあるデータを参照します。 開始する前に、ご使用のコンピューターに以下がインストールされている必要があります。
 
 * R 言語の IDE。 この記事では、RStudio for Desktop を使用します。 これは [R Studio ダウンロード](https://www.rstudio.com/products/rstudio/download/)からインストールできます。
-* IDE として RStudio for Desktop を使用する場合は、[http://aka.ms/rclient/](https://aka.ms/rclient/) から Microsoft R Client もインストールしてください。 
+* IDE として RStudio for Desktop を使用する場合は、[https://aka.ms/rclient/](https://aka.ms/rclient/) から Microsoft R Client もインストールしてください。 
 
 RStudio を開き、次の手順を実行します。
 

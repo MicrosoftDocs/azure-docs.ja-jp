@@ -1,37 +1,33 @@
 ---
-title: 'Team Data Science Process の活用: SQL Data Warehouse の使用 | Microsoft Docs'
-description: Advanced Analytics Process and Technology の活用
+title: SQL Data Warehouse を使用してモデルを構築してデプロイする - Team Data Science Process
+description: SQL Data Warehouse と公開されているデータセットを使用して、機械学習モデルを構築してデプロイします。
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 88ba8e28-0bd7-49fe-8320-5dfa83b65724
 ms.service: machine-learning
-ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/24/2017
-ms.author: deguhath
-ms.openlocfilehash: 192af40df3a8bc0545c9c3a86792e7eb8cb31de9
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: e27c4462e7137145917d1284bfb6f8838e8a090b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586106"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523598"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Team Data Science Process の活用: SQL Data Warehouse の使用
-このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) データセット) で SQL Data Warehouse (SQL DW) を使用して、Machine Learning モデルのビルドとデプロイを行う方法を説明します。 構築された二項分類モデルでは、乗車でチップが支払われたかどうかを予測します。また、支払われるチップ金額の分布を予測する多クラス分類と回帰のモデルについても説明します。
+このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) データセット) で SQL Data Warehouse (SQL DW) を使用して、Machine Learning モデルのビルドとデプロイを行う方法を説明します。 構築された二項分類モデルでは、乗車でチップが支払われたかどうかを予測します。また、支払われるチップ金額の分布を予測する多クラス分類と回帰のモデルについても説明します。
 
-この手順は、 [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) ワークフローに従っています。 データ サイエンス環境のセットアップ方法、SQL DW にデータを読み込む方法、SQL DW または IPython Notebook を使用してデータを探索し、特徴をエンジニアリングする方法について説明します。 次に、Azure Machine Learning でのモデルのビルドとデプロイ方法について説明します。
+この手順は、 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) ワークフローに従っています。 データ サイエンス環境のセットアップ方法、SQL DW にデータを読み込む方法、SQL DW または IPython Notebook を使用してデータを探索し、特徴をエンジニアリングする方法について説明します。 次に、Azure Machine Learning でのモデルのビルドとデプロイ方法について説明します。
 
 ## <a name="dataset"></a>NYC タクシー乗車データセット
 NYC タクシー乗車データは、約 20 GB の圧縮された CSV ファイル (非圧縮では最大 48 GB) で構成されており、ファイルには 1 億 7300 万以上の個々の乗車と、各乗車に対して支払われた料金が記録されています。 各乗車レコードには、乗車と降車の場所と時間、匿名化されたタクシー運転手の (運転) 免許番号、メダリオン (タクシーの一意の ID) 番号が含まれています。 データには 2013 年のすべての乗車が含まれ、データは月ごとに次の 2 つのデータセットに用意されています。
 
 1. **trip_data.csv** ファイルには、乗車の詳細 (乗客数、乗車地点、降車地点、乗車時間、乗車距離など) が含まれています。 いくつかのサンプル レコードを次に示します。
-   
+
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
@@ -39,7 +35,7 @@ NYC タクシー乗車データは、約 20 GB の圧縮された CSV ファイ�
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
 2. **trip_fare.csv** ファイルには、各乗車に対して支払われた料金の詳細 (支払いの種類、料金、追加料金と税、チップ、道路などの通行料、および合計支払金額など) が含まれます。 いくつかのサンプル レコードを次に示します。
-   
+
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7
@@ -56,15 +52,15 @@ trip\_data と trip\_fare の結合に使用される**一意のキー**は、
 ## <a name="mltasks"></a>3 種類の予測タスクに対応する
 3 種類のモデリング タスクを説明するために、*tip\_amount* に基づく 3 つの予測の問題を編成しました。
 
-1. **二項分類**: 乗車においてチップが支払われたかどうかを予測します。つまり、*tip\_amount* が $0 より大きい場合は肯定的な例で、*tip\_amount* が $0 の場合は否定的な例です。
-2. **多クラス分類**: 乗車で支払われたチップの範囲を予測します。 *tip\_amount* を次の 5 つの箱つまりクラスに分割します。
-   
+1. **二項分類**:乗車においてチップが支払われたかどうかを予測します。つまり、*tip\_amount* が $0 より大きい場合は肯定的な例で、*tip\_amount* が $0 の場合は否定的な例です。
+2. **多クラス分類**:乗車で支払われたチップの範囲を予測します。 *tip\_amount* を次の 5 つの箱つまりクラスに分割します。
+
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
         Class 2 : tip_amount > $5 and tip_amount <= $10
         Class 3 : tip_amount > $10 and tip_amount <= $20
         Class 4 : tip_amount > $20
-3. **回帰タスク**: 乗車で支払われたチップの金額を予測します。  
+3. **回帰タスク**:乗車で支払われたチップの金額を予測します。
 
 ## <a name="setup"></a>Azure データ サイエンス環境の高度な分析のためのセット アップ
 Azure データ サイエンス環境をセット アップするには、以下の手順に従います。
@@ -73,7 +69,7 @@ Azure データ サイエンス環境をセット アップするには、以下
 
 * 独自の Azure BLOB ストレージをプロビジョニングするときに、**米国中南部**内またはその場所にできるだけ近い Azure BLOB ストレージのジオロケーションを選択します。このストレージに NYC タクシー データが格納されています。 データは、AzCopy を使用してパブリック BLOB ストレージ コンテナーから独自のストレージ アカウント内のコンテナーにコピーされます。 Azure BLOB ストレージが米国中南部に近いほど、このタスク (ステップ 4) の完了が早くなります。
 * 独自の Azure ストレージ アカウントを作成するには、「[Azure ストレージ アカウントについて](../../storage/common/storage-create-storage-account.md)」に示されている手順に従います。 以下のストレージ アカウントの資格情報の値は必ずメモしておいてください。これらはチュートリアルの後半で必要になります。
-  
+
   * **ストレージ アカウント名**
   * **ストレージ アカウント キー**
   * **コンテナー名** (Azure BLOB ストレージ内のデータの格納先)
@@ -81,7 +77,7 @@ Azure データ サイエンス環境をセット アップするには、以下
 **Azure SQL DW インスタンスをプロビジョニングします。**
 「 [SQL Data Warehouse の作成](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) 」の説明に従って、SQL Data Warehouse インスタンスをプロビジョニングします。 後の手順で使用される次の SQL Data Warehouse の資格情報は必ずメモしておいてください。
 
-* **サーバー名**: <server Name>.database.windows.net
+* **サーバー名**: \<サーバー名>.database.windows.net
 * **SQLDW (データベース) 名**
 * **ユーザー名**
 * **パスワード**
@@ -92,8 +88,8 @@ Azure データ サイエンス環境をセット アップするには、以下
 
 > [!NOTE]
 > SQL Data Warehouse で作成したデータベースに対して (接続に関するトピックの手順 3 で示されているクエリではなく) 次の SQL クエリを実行して、 **マスター キーを作成します**。
-> 
-> 
+>
+>
 
     BEGIN TRY
            --Try to create the master key
@@ -110,8 +106,8 @@ Windows PowerShell コマンド コンソールを開きます。 以下の Powe
 
 > [!NOTE]
 > **DestDir** ディレクトリに対する作成または書き込みに管理者特権が必要な場合は、以下の PowerShell スクリプトを実行するときに *管理者として実行* しなければならない場合があります。
-> 
-> 
+>
+>
 
     $source = "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/Download_Scripts_SQLDW_Walkthrough.ps1"
     $ps1_dest = "$pwd\Download_Scripts_SQLDW_Walkthrough.ps1"
@@ -121,7 +117,7 @@ Windows PowerShell コマンド コンソールを開きます。 以下の Powe
 
 正しく実行されると、現在の作業ディレクトリが *- DestDir*に変わります。 画面は次のようになります。
 
-![][19]
+![現在の作業ディレクトリの変化][19]
 
 *-DestDir*で、以下の PowerShell スクリプトを管理者モードで実行します。
 
@@ -131,13 +127,13 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 
 > [!NOTE]
 > スキーマ名が Azure SQL DW に既に存在するものと競合しないように、SQLDW.conf ファイルから直接パラメーターを読み取るときに、実行ごとに既定のスキーマ名として 3 桁の乱数が SQLDW.conf ファイルのスキーマ名に追加されます。 PowerShell スクリプトから、スキーマ名の入力を求められることがあります。任意の名前を指定できます。
-> 
-> 
+>
+>
 
 この **PowerShell スクリプト** ファイルで、次のタスクが完了します。
 
 * AzCopy がまだインストールされていない場合は、**AzCopy をダウンロードしてインストールします**
-  
+
         $AzCopy_path = SearchAzCopy
         if ($AzCopy_path -eq $null){
                Write-Host "AzCopy.exe is not found in C:\Program Files*. Now, start installing AzCopy..." -ForegroundColor "Yellow"
@@ -158,7 +154,7 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
                     $env_path = $env:Path
                 }
 * **プライベート BLOB ストレージ アカウントにデータをコピーします** 
-  
+
         Write-Host "AzCopy is copying data from public blob to yo storage account. It may take a while..." -ForegroundColor "Yellow"
         $start_time = Get-Date
         AzCopy.exe /Source:$Source /Dest:$DestURL /DestKey:$StorageAccountKey /S
@@ -168,17 +164,17 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
         Write-Host "AzCopy finished copying data. Please check your storage account to verify." -ForegroundColor "Yellow"
         Write-Host "This step (copying data from public blob to your storage account) takes $total_seconds seconds." -ForegroundColor "Green"
 * **(LoadDataToSQLDW.sql を実行して) Polybase を使用して Azure SQL DW にデータを読み込みます** 。
-  
+
   * スキーマの作成
-    
+
           EXEC (''CREATE SCHEMA {schemaname};'');
   * データベース スコープの資格情報の作成
-    
+
           CREATE DATABASE SCOPED CREDENTIAL {KeyAlias}
           WITH IDENTITY = ''asbkey'' ,
           Secret = ''{StorageAccountKey}''
   * Azure Storage BLOB の外部データ ソースの作成
-    
+
           CREATE EXTERNAL DATA SOURCE {nyctaxi_trip_storage}
           WITH
           (
@@ -187,7 +183,7 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
               CREDENTIAL = {KeyAlias}
           )
           ;
-    
+
           CREATE EXTERNAL DATA SOURCE {nyctaxi_fare_storage}
           WITH
           (
@@ -197,12 +193,12 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
           )
           ;
   * csv ファイルの外部ファイル形式を作成します。 データは圧縮されず、フィールドはパイプ文字で区切られます。
-    
+
           CREATE EXTERNAL FILE FORMAT {csv_file_format}
           WITH
-          (   
+          (
               FORMAT_TYPE = DELIMITEDTEXT,
-              FORMAT_OPTIONS  
+              FORMAT_OPTIONS
               (
                   FIELD_TERMINATOR ='','',
                   USE_TYPE_DEFAULT = TRUE
@@ -210,7 +206,7 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
           )
           ;
   * Azure Blob ストレージに NYC タクシー データセットの外部料金および乗車のテーブルを作成します。
-    
+
           CREATE EXTERNAL TABLE {external_nyctaxi_fare}
           (
               medallion varchar(50) not null,
@@ -230,8 +226,8 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
               DATA_SOURCE = {nyctaxi_fare_storage},
               FILE_FORMAT = {csv_file_format},
               REJECT_TYPE = VALUE,
-              REJECT_VALUE = 12     
-          )  
+              REJECT_VALUE = 12
+          )
 
             CREATE EXTERNAL TABLE {external_nyctaxi_trip}
             (
@@ -255,14 +251,14 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
                 DATA_SOURCE = {nyctaxi_trip_storage},
                 FILE_FORMAT = {csv_file_format},
                 REJECT_TYPE = VALUE,
-                REJECT_VALUE = 12         
+                REJECT_VALUE = 12
             )
 
     - Azure Blob ストレージの外部テーブルのデータを SQL Data Warehouse に読み込む
 
             CREATE TABLE {schemaname}.{nyctaxi_fare}
             WITH
-            (   
+            (
                 CLUSTERED COLUMNSTORE INDEX,
                 DISTRIBUTION = HASH(medallion)
             )
@@ -273,7 +269,7 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 
             CREATE TABLE {schemaname}.{nyctaxi_trip}
             WITH
-            (   
+            (
                 CLUSTERED COLUMNSTORE INDEX,
                 DISTRIBUTION = HASH(medallion)
             )
@@ -286,7 +282,7 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 
             CREATE TABLE {schemaname}.{nyctaxi_sample}
             WITH
-            (   
+            (
                 CLUSTERED COLUMNSTORE INDEX,
                 DISTRIBUTION = HASH(medallion)
             )
@@ -314,31 +310,31 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 ストレージ アカウントの地理的な場所によって、読み込み時間は異なります。
 
 > [!NOTE]
-> プライベート BLOB ストレージ アカウントの地理的位置に応じて、パブリック BLOB からプライベート ストレージ アカウントへのデータのコピー プロセスには約 15 分 (またはそれ以上) かかる場合があります。また、ストレージ アカウントから Azure SQL DW へのデータの読み込みプロセスには 20 分以上かかる場合があります。  
-> 
-> 
+> プライベート BLOB ストレージ アカウントの地理的位置に応じて、パブリック BLOB からプライベート ストレージ アカウントへのデータのコピー プロセスには約 15 分 (またはそれ以上) かかる場合があります。また、ストレージ アカウントから Azure SQL DW へのデータの読み込みプロセスには 20 分以上かかる場合があります。
+>
+>
 
 コピー元のファイルとコピー先のファイルが重複する場合は、どのように対処するかを決定する必要があります。
 
 > [!NOTE]
 > パブリック BLOB ストレージからプライベート BLOB ストレージ アカウントにコピーする .csv ファイルが既にプライベート BLOB ストレージ アカウントに存在する場合、AzCopy によってファイルを上書きするかどうかが尋ねられます。 上書きしない場合は、確認を求めるメッセージが表示されたときに「 **n** 」と入力します。 **すべて**上書きする場合は、確認を求めるメッセージが表示されたときに「**a**」と入力します。 「 **y** 」と入力して、.csv ファイルを個別に上書きすることもできます。
-> 
-> 
+>
+>
 
-![プロット #21][21]
+![AzCopy からの出力][21]
 
 独自のデータを使用することができます。 実際のアプリケーションのオンプレミス マシンにデータがある場合でも、AzCopy を使用してオンプレミス データをプライベート Azure Blob Storage にアップロードできます。 アップロードするには、PowerShell スクリプト ファイルの AzCopy コマンドで、**Source** の場所 (`$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`) を、データが格納されているローカル ディレクトリに変更します。
 
 > [!TIP]
 > 実際のアプリケーションのプライベート Azure BLOB ストレージ内にデータが既にある場合は、PowerShell スクリプトでの AzCopy ステップをスキップして、直接データを Azure SQL DW にアップロードできます。 この場合、データの形式に合わせてスクリプトをさらに編集する必要があります。
-> 
-> 
+>
+>
 
 また、この Powershell スクリプトは、データ探索のサンプル ファイルである SQLDW_Explorations.sql、SQLDW_Explorations.ipynb、および SQLDW_Explorations_Scripts.py に Azure SQL DW の情報を取り込み、PowerShell スクリプトが完了したらすぐにこれら 3 つのファイルを試せるようにします。
 
 正しく実行されると、画面は次のようになります。
 
-![][20]
+![成功したスクリプト実行の出力][20]
 
 ## <a name="dbexplore"></a>Azure SQL Data Warehouse でのデータの探索と特徴エンジニアリング
 このセクションでは、 **Visual Studio Data Tools**を使用して直接 Azure SQL DW に対して SQL クエリを実行し、データの探索と特徴の生成を行います。 このセクションで使用されるすべての SQL クエリは、*SQLDW_Explorations.sql* という名前のサンプル スクリプトにあります。 このファイルは、PowerShell スクリプトによってローカル ディレクトリに既にダウンロードされています。 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql)から取得することもできます。 ただし、GitHub のファイルには Azure SQL DW の情報は含まれていません。
@@ -347,8 +343,8 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 
 > [!NOTE]
 > Parallel Data Warehouse (PDW) クエリ エディターを開くには、**SQL オブジェクト エクスプローラー**で PDW を選択して **[新しいクエリ]** コマンドを使用します。 標準の SQL クエリ エディターは PDW でサポートされていません。
-> 
-> 
+>
+>
 
 このセクションで実行されるデータの探索と特徴の生成タスクの種類を以下に示します。
 
@@ -369,7 +365,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 
 **出力:** 173、179、759 の行と 14 の列が取得されます。
 
-### <a name="exploration-trip-distribution-by-medallion"></a>探索: medallion (タクシー番号) ごとの乗車回数の分布
+### <a name="exploration-trip-distribution-by-medallion"></a>探索:medallion (タクシー番号) ごとの乗車回数の分布
 このクエリ例では、指定した期間内で乗車回数が 100 を超えた medallion (タクシー番号) を識別します。 **pickup\_datetime** のパーティション スキームによって条件が設定されるため、クエリはパーティション分割されたテーブルへのアクセスからメリットを得られます。 データセット全体に対するクエリの実行でも、パーティション テーブルまたはインデックス スキャンを活用できます。
 
     SELECT medallion, COUNT(*)
@@ -380,7 +376,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 
 **出力:** クエリによって、13,369 のメダリオン (タクシー) と 2013 年に完了した乗車回数を示す行で構成されるテーブルが返されます。 最後の列には、完了した乗車回数が含まれます。
 
-### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>探索: medallion および hack_license ごとの乗車回数の分布
+### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>探索:medallion および hack_license ごとの乗車回数の分布
 この例では、指定した期間内で乗車回数が 100 を超えた medallion (タクシー番号) と hack_license 番号 (運転) を識別します。
 
     SELECT medallion, hack_license, COUNT(*)
@@ -391,7 +387,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 
 **出力:** クエリによって、2013 年に 100 回を超える乗車を完了した 13,369 の車両/運転手 ID を示す 13,369 の行で構成されるテーブルが返されます。 最後の列には、完了した乗車回数が含まれます。
 
-### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>データ品質の評価: 経度と緯度が正しくないレコードを確認する
+### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>データ品質の評価:経度と緯度が正しくないレコードを確認する
 この例では、いずれかの経度または緯度のフィールドに無効な値 (ラジアン角は -90 ～ 90 の間である必要があります)、または座標 (0, 0) のいずれかが含まれているかどうかを調査します。
 
     SELECT COUNT(*) FROM <schemaname>.<nyctaxi_trip>
@@ -405,7 +401,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 
 **出力:** クエリによって、経度フィールドまたは緯度フィールドが無効である 837,467 件の乗車が返されます。
 
-### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>探索: チップが支払われた乗車と支払われなかった乗車の分布
+### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>探索:チップが支払われた乗車と支払われなかった乗車の分布
 この例では、特定の期間中 (または、1 年を対象とする場合は全データセットで) チップが支払われた乗車と支払われなかった乗車の数を確認します。 この分布は、後で二項分類のモデリングで使用する二項ラベルの分布を反映しています。
 
     SELECT tipped, COUNT(*) AS tip_freq FROM (
@@ -414,9 +410,9 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
       WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
     GROUP BY tipped
 
-**出力:** クエリによって、チップが支払われた 90,447,622 件と支払われなかった 82,264,709 件という 2013 年のチップの頻度が返されます。
+**出力:** クエリによって、次のような 2013 年のチップの頻度が返されます。チップが支払われたのが 90,447,622 件、支払われなかったのが 82,264,709 件。
 
-### <a name="exploration-tip-classrange-distribution"></a>探索: チップのクラス/範囲の分布
+### <a name="exploration-tip-classrange-distribution"></a>探索:チップのクラス/範囲の分布
 この例では、特定の期間中に (または、1 年間をカバーする場合はデータセット全体で) チップの範囲の分布を計算します。 これは、後で多クラス分類のモデリングに使用されるラベル クラスの分布です。
 
     SELECT tip_class, COUNT(*) AS tip_freq FROM (
@@ -441,7 +437,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 | 0 |82264625 |
 | 4 |85765 |
 
-### <a name="exploration-compute-and-compare-trip-distance"></a>探索: 乗車距離の計算と比較
+### <a name="exploration-compute-and-compare-trip-distance"></a>探索:乗車距離の計算と比較
 この例では、pickup (乗車) と drop-off (降車) の経度と緯度を、SQL geography ポイントに変換し、SQL geography ポイントの差を使用して乗車距離を計算し、比較するためにランダムな結果のサンプルを返します。 この例では、前述したデータ品質評価のクエリを使用して、結果を有効な座標のみに限定します。
 
     /****** Object:  UserDefinedFunction [dbo].[fnCalculateDistance] ******/
@@ -544,7 +540,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 | 3 |40.761456 |-73.999886 |40.766544 |-73.988228 |0.7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>モデルのビルド用にデータを準備する
-次のクエリはテーブル **nyctaxi\_trip** と **nyctaxi\_fare** を結合して、二項分類ラベル **[tipped]**、多クラス分類ラベル **[tip\_class]** を生成し、結合データセット全体からサンプルを抽出します。 サンプリングは、降車時間に基づいて乗車のサブセットを取得することで行われます。  その後、このクエリをコピーして [Azure Machine Learning Studio](https://studio.azureml.net) の[データのインポート][import-data] モジュールに直接貼り付け、Azure の SQL Database インスタンスから直接データを取り込めます。 このクエリは、座標が正しくないレコード (0, 0) を除外します。
+次のクエリはテーブル **nyctaxi\_trip** と **nyctaxi\_fare** を結合して、二項分類ラベル **[tipped]**、多クラス分類ラベル **[tip\_class]** を生成し、結合データセット全体からサンプルを抽出します。 サンプリングは、降車時間に基づいて乗車のサブセットを取得することで行われます。  その後、このクエリをコピーして [Azure Machine Learning Studio](https://studio.azureml.net) の[データのインポート][import-data] モジュールに直接貼り付け、Azure の SQL データベース インスタンスから直接データを取り込めます。 このクエリは、座標が正しくないレコード (0, 0) を除外します。
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -561,7 +557,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
     AND   t.pickup_datetime = f.pickup_datetime
     AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 
-Azure Machine Learning に進む準備ができれば、次のいずれかを実行できます。  
+Azure Machine Learning に進む準備ができれば、次のいずれかを実行できます。
 
 1. データを抽出してサンプリングする最終的な SQL クエリを保存し、このクエリをコピーして直接 Azure Machine Learning の[データのインポート][import-data] モジュールに貼り付けます。または、
 2. 構築するモデルに使用する予定のサンプリングおよびエンジニアリング済みのデータを新しい SQL DW テーブルに保持し、Azure Machine Learning の[データのインポート][import-data] モジュールでその新しいテーブルを使用します。 これは、前の手順の PowerShell スクリプトで既に行われています。 データのインポート モジュールでは、このテーブルから直接読み取ることできます。
@@ -574,17 +570,17 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
 AzureML ワークスペースを既にセットアップしている場合は、サンプルの IPython Notebook を AzureML IPython Notebook サービスに直接アップロードして、実行を開始できます。 AzureML IPython Notebook サービスにアップロードする手順を次に示します。
 
 1. AzureML ワークスペースにログインし、Web ページの上部にある [Studio] をクリックしてから、左側にある [NOTEBOOKS] をクリックします。
-   
-    ![プロット #22][22]
+
+    ![[Studio]、[NOTEBOOKS] の順にクリックする][22]
 2. Web ページの左下隅にある [新規] をクリックし、[Python 2] を選択します。 次に、Notebook に名前を指定し、チェック マークをクリックして新しい空白の IPython Notebook を作成します。
-   
-    ![プロット #23][23]
+
+    ![[新規] をクリックして [Python 2] を選択する][23]
 3. 新しい IPython Notebook の左上隅にある "Jupyter" のシンボルをクリックします。
-   
-    ![プロット #24][24]
+
+    ![Jupyter Notebook のシンボルをクリックする][24]
 4. サンプルの IPython Notebook をドラッグして AzureML IPython Notebook サービスの**ツリー** ページにドロップしてから、**[アップロード]** をクリックします。 これで、サンプルの IPython Notebook が AzureML IPython Notebook サービスにアップロードされます。
-   
-    ![プロット #25][25]
+
+    ![[アップロード] をクリックします][25]
 
 サンプルの IPython Notebook または Python スクリプト ファイルを実行するには、以下の Python パッケージが必要です。 AzureML IPython Notebook サービスを使用している場合、これらのパッケージはプレインストールされています。
 
@@ -634,7 +630,7 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
     print 'Total number of columns = %d' % ncols.iloc[0,0]
 
-* 行数の合計 = 173179759  
+* 行数の合計 = 173179759
 * 列数の合計 = 14
 
 ### <a name="report-number-of-rows-and-columns-in-table-nyctaxifare"></a>テーブル <nyctaxi_fare> の行数と列数を報告する
@@ -652,7 +648,7 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
     print 'Total number of columns = %d' % ncols.iloc[0,0]
 
-* 行数の合計 = 173179759  
+* 行数の合計 = 173179759
 * 列数の合計 = 11
 
 ### <a name="read-in-a-small-data-sample-from-the-sql-data-warehouse-database"></a>SQL Data Warehouse データベースから小規模なデータ サンプルを読み込む
@@ -675,7 +671,7 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
     print 'Number of rows and columns retrieved = (%d, %d)' % (df1.shape[0], df1.shape[1])
 
-サンプル テーブルの読み取り時間は 14.096495 秒です。  
+サンプル テーブルの読み取り時間は 14.096495 秒です。
 取得した行数と列数 = (1000, 21)。
 
 ### <a name="descriptive-statistics"></a>説明的な統計情報
@@ -683,14 +679,14 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
     df1['trip_distance'].describe()
 
-### <a name="visualization-box-plot-example"></a>視覚化: ボックス プロットの例
+### <a name="visualization-box-plot-example"></a>視覚化:ボックス プロットの例
 次に、変位置を視覚化するために、乗車距離のボックス プロットを確認します。
 
     df1.boxplot(column='trip_distance',return_type='dict')
 
-![プロット #1][1]
+![ボックス プロットの出力][1]
 
-### <a name="visualization-distribution-plot-example"></a>視覚化: 配布プロットの例
+### <a name="visualization-distribution-plot-example"></a>視覚化:配布プロットの例
 サンプリングされた乗車距離に関する配布を可視化するプロットとヒストグラム。
 
     fig = plt.figure()
@@ -699,9 +695,9 @@ AzureML ワークスペースを既にセットアップしている場合は、
     df1['trip_distance'].plot(ax=ax1,kind='kde', style='b-')
     df1['trip_distance'].hist(ax=ax2, bins=100, color='k')
 
-![プロット #2][2]
+![配布プロットの出力][2]
 
-### <a name="visualization-bar-and-line-plots"></a>視覚化: 棒と線のプロット
+### <a name="visualization-bar-and-line-plots"></a>視覚化:棒と線のプロット
 この例では、乗車距離を 5 つの箱にビン分割し、ビン分割の結果を視覚化します。
 
     trip_dist_bins = [0, 1, 2, 4, 10, 1000]
@@ -713,38 +709,38 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='bar')
 
-![プロット #3][3]
+![棒のプロットの出力][3]
 
 and
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
 
-![プロット #4][4]
+![線のプロットの出力][4]
 
-### <a name="visualization-scatterplot-examples"></a>視覚化: 散布図の例
+### <a name="visualization-scatterplot-examples"></a>視覚化:散布図の例
 **trip\_time\_in\_secs** と **trip\_distance** 間の散布図を表示し、相関関係があるか判断できます。
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
-![プロット #6][6]
+![時間と距離の間の関係の散布図の出力][6]
 
 同様に、**rate\_code** と **trip\_distance** のリレーションシップを確認できます。
 
     plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
-![プロット #8][8]
+![コードと距離の間の関係の散布図の出力][8]
 
 ### <a name="data-exploration-on-sampled-data-using-sql-queries-in-ipython-notebook"></a>IPython Notebook での SQL クエリを使用したサンプリングされたデータのデータ探索
 このセクションでは、上記で作成した新しいテーブルに保持されているサンプリングされたデータを使用して、データの分布を探索します。 元のテーブルを使用して同様の探索を実行できることに注意してください。
 
-#### <a name="exploration-report-number-of-rows-and-columns-in-the-sampled-table"></a>探索: サンプリングされたテーブルの行数と列数を報告する
+#### <a name="exploration-report-number-of-rows-and-columns-in-the-sampled-table"></a>探索:サンプリングされたテーブルの行数と列数を報告する
     nrows = pd.read_sql('''SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_sample>')''', conn)
     print 'Number of rows in sample = %d' % nrows.iloc[0,0]
 
     ncols = pd.read_sql('''SELECT count(*) FROM information_schema.columns WHERE table_name = ('<nyctaxi_sample>') AND table_schema = '<schemaname>'''', conn)
     print 'Number of columns in sample = %d' % ncols.iloc[0,0]
 
-#### <a name="exploration-tippednot-tripped-distribution"></a>探索: チップが支払われた乗車と支払われなかった乗車の分布
+#### <a name="exploration-tippednot-tripped-distribution"></a>探索:チップが支払われた乗車と支払われなかった乗車の分布
     query = '''
         SELECT tipped, count(*) AS tip_freq
         FROM <schemaname>.<nyctaxi_sample>
@@ -753,7 +749,7 @@ and
 
     pd.read_sql(query, conn)
 
-#### <a name="exploration-tip-class-distribution"></a>探索: チップのクラスの分布
+#### <a name="exploration-tip-class-distribution"></a>探索:チップのクラスの分布
     query = '''
         SELECT tip_class, count(*) AS tip_freq
         FROM <schemaname>.<nyctaxi_sample>
@@ -762,12 +758,12 @@ and
 
     tip_class_dist = pd.read_sql(query, conn)
 
-#### <a name="exploration-plot-the-tip-distribution-by-class"></a>探索: クラスごとのチップの分布をプロットする
+#### <a name="exploration-plot-the-tip-distribution-by-class"></a>探索:クラスごとのチップの分布をプロットする
     tip_class_dist['tip_freq'].plot(kind='bar')
 
 ![プロット #26][26]
 
-#### <a name="exploration-daily-distribution-of-trips"></a>探索: 1 日ごとの乗車の分布
+#### <a name="exploration-daily-distribution-of-trips"></a>探索:1 日ごとの乗車の分布
     query = '''
         SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c
         FROM <schemaname>.<nyctaxi_sample>
@@ -776,7 +772,7 @@ and
 
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distribution-per-medallion"></a>探索: medallion (タクシー番号) ごとの乗車回数の分布
+#### <a name="exploration-trip-distribution-per-medallion"></a>探索:medallion (タクシー番号) ごとの乗車回数の分布
     query = '''
         SELECT medallion,count(*) AS c
         FROM <schemaname>.<nyctaxi_sample>
@@ -785,20 +781,20 @@ and
 
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>探索: medallion および hack_license ごとの乗車回数の分布
+#### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>探索:medallion および hack_license ごとの乗車回数の分布
     query = '''select medallion, hack_license,count(*) from <schemaname>.<nyctaxi_sample> group by medallion, hack_license'''
     pd.read_sql(query,conn)
 
 
-#### <a name="exploration-trip-time-distribution"></a>探索: 乗車時間の分布
+#### <a name="exploration-trip-time-distribution"></a>探索:乗車時間の分布
     query = '''select trip_time_in_secs, count(*) from <schemaname>.<nyctaxi_sample> group by trip_time_in_secs order by count(*) desc'''
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distance-distribution"></a>探索: 乗車距離の分布
+#### <a name="exploration-trip-distance-distribution"></a>探索:乗車距離の分布
     query = '''select floor(trip_distance/5)*5 as tripbin, count(*) from <schemaname>.<nyctaxi_sample> group by floor(trip_distance/5)*5 order by count(*) desc'''
     pd.read_sql(query,conn)
 
-#### <a name="exploration-payment-type-distribution"></a>探索: 支払いの種類の分布
+#### <a name="exploration-payment-type-distribution"></a>探索:支払いの種類の分布
     query = '''select payment_type,count(*) from <schemaname>.<nyctaxi_sample> group by payment_type'''
     pd.read_sql(query,conn)
 
@@ -809,11 +805,11 @@ and
 ## <a name="mlmodel"></a>Azure Machine Learning でモデルを作成する
 これで、[Azure Machine Learning](https://studio.azureml.net) でのモデルの作成とモデルのデプロイに進む準備が整いました。 データは、以前特定したどの予測の問題でも使用できる状態になりました。予測の問題とは、
 
-1. **二項分類**: 乗車に対してチップが支払われたかどうかを予測します。
-2. **多クラス分類**: あらかじめ定義したクラスに従って、支払われたチップの範囲を予測します。
-3. **回帰タスク**: 乗車で支払われたチップの金額を予測します。  
+1. **二項分類**:乗車に対してチップが支払われたかどうかを予測します。
+2. **多クラス分類**:あらかじめ定義したクラスに従って、支払われたチップの範囲を予測します。
+3. **回帰タスク**:乗車で支払われたチップの金額を予測します。
 
-モデリングの演習を開始するには、 **Azure Machine Learning ワークスペース** にログインします。 Machine Learning ワークスペースをまだ作成していない場合は、「 [Azure ML ワークスペースを作成する](../studio/create-workspace.md)」を参照してください。
+モデリングの演習を開始するには、 **Azure Machine Learning ワークスペース** にログインします。 Machine Learning ワークスペースをまだ作成していない場合は、[Azure Machine Learning Studio ワークスペースの作成](../studio/create-workspace.md)に関する記事をご覧ください。
 
 1. Azure Machine Learning の使用を開始するには、「 [Azure Machine Learning Studio とは](../studio/what-is-ml-studio.md)
 2. [Azure Machine Learning Studio](https://studio.azureml.net)にログインします。
@@ -822,7 +818,7 @@ and
 一般的なトレーニング実験は以下のステップで構成されています。
 
 1. **+NEW** 実験を作成する
-2. Azure ML へのデータの取得。
+2. Azure Machine Learning Studio へのデータの取り込み。
 3. 必要に応じたデータの事前処理、変換、および操作。
 4. 必要に応じた特徴の生成。
 5. トレーニング/検証/テスト データ セットへのデータの分割 (またはそれぞれに個別のデータセットを用意する)。
@@ -832,10 +828,10 @@ and
 9. 学習問題の関連メトリックを計算するためのモデルの評価。
 10. モデルの微調整およびデプロイに最適なモデルの選択。
 
-この演習では、既に SQL Data Warehouse でデータの探索とエンジニアリングを実行し、Azure ML に取り込むサンプルのサイズを決定しました。 1 つ以上の予測モデルを作成する手順を以下に示します。
+この演習では、既に SQL Data Warehouse でデータの探索とエンジニアリングを実行し、Azure Machine Learning Studio に取り込むサンプルのサイズを決定しました。 1 つ以上の予測モデルを作成する手順を以下に示します。
 
-1. [データのインポート][import-data] モジュール (「**データの入力と出力**」セクションで使用可能) を使用して、Azure ML にデータを取得します。 詳細については、 [データのインポート][import-data] モジュールのリファレンスのページをご覧ください。
-   
+1. **[データの入力と出力]** セクションにある [[データのインポート]][import-data] モジュール を使用して、Azure Machine Learning Studio にデータを取り込みます。 詳細については、 [データのインポート][import-data] モジュールのリファレンスのページをご覧ください。
+
     ![Azure ML データのインポート][17]
 2. **[プロパティ]** パネルで、**Azure SQL Database** を**データ ソース**として選択します。
 3. データベースの DNS 名を **[データベース サーバー名]** フィールドに入力します。 形式: `tcp:<your_virtual_machine_DNS_name>,1433`
@@ -849,10 +845,10 @@ SQL Data Warehouse データベースから直接データを読み取る、二�
 
 > [!IMPORTANT]
 > 前のセクションに記載されたモデリング データの抽出とサンプリングのクエリの例では、 **3 つのモデリングの演習用のラベルはすべてクエリに含まれています**。 各モデリングの演習における重要な (必須の) 手順は、他の 2 つの問題用の不要なラベルと、その他のすべての**ターゲット リーク**を**除外する**ことです。 たとえば、二項分類を使用する場合は、ラベル **tipped** を使用し、フィールド **[tip\_class]**、**[tip\_amount]**、**[total\_amount]** は除外します。 使用しないものは支払われたチップを意味しているため、ターゲットのリークになります。
-> 
+>
 > 不要な列またはターゲット リークを除外するために、[データセット内の列の選択][select-columns]モジュールまたは[メタデータの編集][edit-metadata]を使用できます。 詳細については、[データセット内の列の選択][select-columns]と[メタデータの編集][edit-metadata]のリファレンス ページをご覧ください。
-> 
-> 
+>
+>
 
 ## <a name="mldeploy"></a>Azure Machine Learning にモデルをデプロイする
 モデルの準備ができたら、実験から直接 Web サービスとして簡単にデプロイできます。 Azure ML Web サービスのデプロイの詳細については、「 [Azure Machine Learning Web サービスをデプロイする](../studio/publish-a-machine-learning-web-service.md)」を参照してください。
@@ -885,9 +881,7 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 このサンプルのチュートリアルとそれに付随するスクリプトおよび IPython notebooks は、MIT ライセンスの下で Microsoft と共有されています。 詳細については、GitHub のサンプル コードのディレクトリにある LICENSE.txt ファイルを確認してください。
 
 ## <a name="references"></a>参照
-•    [Andrés Monroy NYC タクシー乗車データ ダウンロード ページ](http://www.andresmh.com/nyctaxitrips/)  
-•    [NYC のタクシー乗車データを FOIL する (Chris Whong)](http://chriswhong.com/open-data/foil_nyc_taxi/)   
-•    [ニューヨーク市タクシー&リムジン委員会調査および統計](http://www.nyc.gov/html/tlc/html/technology/aggregated_data.shtml)
+•    [Andrés Monroy NYC タクシー乗車データ ダウンロード ページ](https://www.andresmh.com/nyctaxitrips/) •    [NYC のタクシー乗車データを FOIL する (Chris Whong)](https://chriswhong.com/open-data/foil_nyc_taxi/) •    [ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sqldw-walkthrough/sql-walkthrough_26_1.png
 [2]: ./media/sqldw-walkthrough/sql-walkthrough_28_1.png

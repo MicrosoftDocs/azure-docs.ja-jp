@@ -4,14 +4,14 @@ description: この記事は、Site Recovery を使用した VMware VM と物理
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: 8cf657b17b7607a8b56869edeabe37e1c5caf219
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 35c317c4b73e9a22e3b0d6192abcfc2a596066b8
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012277"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149998"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>System Center Configuration Manager を使用して Mobility Service のインストールを自動化する
 
@@ -24,7 +24,7 @@ Mobility Service は、[Azure Site Recovery](site-recovery-overview.md) を使�
 
 この記事では、System Center Configuration Manager 2012 R2 を使用して、展開アクティビティを示します。 **9.9.4510.1** 以降のバージョンの Mobility Service を使用することを前提とします。
 
-代わりに、[Azure Automation DSC ](vmware-azure-mobility-deploy-automation-dsc.md) を使用して、Mobility Service のインストールを自動化することもできます。
+代わりに、[Azure Automation DSC](vmware-azure-mobility-deploy-automation-dsc.md) を使用して、モビリティ サービスのインストールを自動化することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -162,25 +162,25 @@ IF NOT %ERRORLEVEL% EQU 0 (
 5. **[このパッケージにソース ファイルを含める]** チェック ボックスをオンします。
 6. **[参照]** ボタンをクリックして、インストーラーが格納されているネットワーク共有 (\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcWindows) を選択します。
 
-  ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
+   ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 
 7. **[作成するプログラムの種類の選択]** ページで、**[標準プログラム]** を選択して **[次へ]** をクリックします。
 
-  ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
+   ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
 8. **[この標準プログラムに関する情報の指定]** ページで、次の入力を指定して **[次へ]** をクリックします  (その他の入力は既定値を使用できます)。
 
-  | **パラメーター名** | **値** |
-  |--|--|
-  | Name | Microsoft Azure Mobility Service のインストール (Windows) |
-  | コマンド ライン | install.bat |
-  | プログラムの実行条件 | ユーザーがログオンしているかどうか |
+   | **パラメーター名** | **値** |
+   |--|--|
+   | Name | Microsoft Azure Mobility Service のインストール (Windows) |
+   | コマンド ライン | install.bat |
+   | プログラムの実行条件 | ユーザーがログオンしているかどうか |
 
-  ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
+   ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
 
 9. 次のページで、ターゲットのオペレーティング システムを選択します。 Mobility Service は、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 にのみインストールできます。
 
-  ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-page2.png)
+   ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-page2.png)
 
 10. **[次へ]** を 2 回クリックしてウィザードを終了します。
 
@@ -190,19 +190,19 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
 ### <a name="deploy-the-package"></a>パッケージをデプロイする
 1. Configuration Manager コンソールで、パッケージを右クリックして **[コンテンツの配布]** を選択します。
-  ![Configuration Manager コンソールのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
+   ![Configuration Manager コンソールのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 2. パッケージのコピー先とする**[配布ポイント](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)** を選択します。
 3. ウィザードを終了します。 指定した配布ポイントへのパッケージのレプリケートが開始されます。
 4. パッケージの配布が完了したら、パッケージを右クリックして **[展開]** を選択します。
-  ![Configuration Manager コンソールのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
+   ![Configuration Manager コンソールのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
 5. 展開のターゲット コレクションとして前提条件のセクションで作成した Windows Server デバイスのコレクションを選択します。
 
-  ![ソフトウェアの展開ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-select-target-collection.png)
+   ![ソフトウェアの展開ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-select-target-collection.png)
 
 6. **[コンテンツの配布先の指定]** ページで**配布ポイント**を選択します。
 7. **[このソフトウェアの展開を制御する設定の指定]** ページで、目的が **[必須]** になっていることを確認します。
 
-  ![ソフトウェアの展開ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
+   ![ソフトウェアの展開ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
 
 8. **[この展開のスケジュールを指定します]** でスケジュールを指定します。 詳しくは、[パッケージのスケジュール設定](https://technet.microsoft.com/library/gg682178.aspx)に関する記事をご覧ください。
 9. **[配布ポイント]** ページで、データ センターのニーズに応じてプロパティを構成します。 その後ウィザードを終了します。
@@ -387,24 +387,24 @@ cd /tmp
 5. **[このパッケージにソース ファイルを含める]** チェック ボックスをオンします。
 6. **[参照]** ボタンをクリックして、インストーラーが格納されているネットワーク共有 (\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcLinux) を選択します。
 
-  ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package-linux.png)
+   ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package-linux.png)
 
 7. **[作成するプログラムの種類の選択]** ページで、**[標準プログラム]** を選択して **[次へ]** をクリックします。
 
-  ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
+   ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
 8. **[この標準プログラムに関する情報の指定]** ページで、次の入力を指定して **[次へ]** をクリックします  (その他の入力は既定値を使用できます)。
 
     | **パラメーター名** | **値** |
-  |--|--|
-  | Name | Microsoft Azure Mobility Service のインストール (Linux) |
-  | コマンド ライン | ./install_linux.sh |
-  | プログラムの実行条件 | ユーザーがログオンしているかどうか |
+   |--|--|
+   | Name | Microsoft Azure Mobility Service のインストール (Linux) |
+   | コマンド ライン | ./install_linux.sh |
+   | プログラムの実行条件 | ユーザーがログオンしているかどうか |
 
-  ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-linux.png)
+   ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-linux.png)
 
 9. 次のページで、**[任意のプラットフォームで実行可能]** を選択します。
-  ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-page2-linux.png)
+   ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-page2-linux.png)
 
 10. **[次へ]** を 2 回クリックしてウィザードを終了します。
 
@@ -413,19 +413,19 @@ cd /tmp
 
 ### <a name="deploy-the-package"></a>パッケージをデプロイする
 1. Configuration Manager コンソールで、パッケージを右クリックして **[コンテンツの配布]** を選択します。
-  ![Configuration Manager コンソールのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
+   ![Configuration Manager コンソールのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 2. パッケージのコピー先とする**[配布ポイント](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)** を選択します。
 3. ウィザードを終了します。 指定した配布ポイントへのパッケージのレプリケートが開始されます。
 4. パッケージの配布が完了したら、パッケージを右クリックして **[展開]** を選択します。
-  ![Configuration Manager コンソールのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
+   ![Configuration Manager コンソールのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
 5. 展開のターゲット コレクションとして前提条件のセクションで作成した Linux サーバー デバイスのコレクションを選択します。
 
-  ![ソフトウェアの展開ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-select-target-collection-linux.png)
+   ![ソフトウェアの展開ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-select-target-collection-linux.png)
 
 6. **[コンテンツの配布先の指定]** ページで**配布ポイント**を選択します。
 7. **[このソフトウェアの展開を制御する設定の指定]** ページで、目的が **[必須]** になっていることを確認します。
 
-  ![ソフトウェアの展開ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
+   ![ソフトウェアの展開ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
 
 8. **[この展開のスケジュールを指定します]** でスケジュールを指定します。 詳しくは、[パッケージのスケジュール設定](https://technet.microsoft.com/library/gg682178.aspx)に関する記事をご覧ください。
 9. **[配布ポイント]** ページで、データ センターのニーズに応じてプロパティを構成します。 その後ウィザードを終了します。

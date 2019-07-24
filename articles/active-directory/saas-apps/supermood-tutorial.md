@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Supermood の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Supermood の統合 | Microsoft Docs
 description: Azure Active Directory と Supermood の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: afc04efa-2eba-4e47-8ce4-b71eb293cd09
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 98a39c52f206f19d3330695fd05f9a96c0bf4d36
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 60efdd5b509045ce2398720d650894983c2cfc23
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443352"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198526"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-supermood"></a>チュートリアル: Azure Active Directory と Supermood の統合
+# <a name="tutorial-azure-active-directory-integration-with-supermood"></a>チュートリアル:Azure Active Directory と Supermood の統合
 
 このチュートリアルでは、Supermood と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -135,9 +136,9 @@ Supermood で Azure AD のシングル サインオンを構成してテスト�
     
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[名前空間]** は空白のままにします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[名前空間]** は空白のままにします。
     
-    d. **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。
 
 1. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
 
@@ -152,7 +153,7 @@ Supermood で Azure AD のシングル サインオンを構成してテスト�
 1. **[My account]\(マイ アカウント\)** (左下) と **[Single Sign On (SSO)]\(シングル サインオン (SSO)\)** をクリックします。
 
     ![証明書シングル](./media/supermood-tutorial/tutorial_supermood_single.png)
-1. **[Your SAML 2.0 configurations]\(SAML 2.0 構成)\** で、**[Add an SAML 2.0 configuration for an email domain]\(電子メール ドメインの SAML 2.0 構成の追加\)** をクリックします。
+1. **[Your SAML 2.0 configurations]\(SAML 2.0 構成)\\** で **[Add an SAML 2.0 configuration for an email domain]\(電子メール ドメインの SAML 2.0 構成の追加\)** をクリックします。
 
     ![証明書の追加](./media/supermood-tutorial/tutorial_supermood_add.png)
 
@@ -196,14 +197,14 @@ Supermood で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-supermood-test-user"></a>Supermood テスト ユーザーの作成
 
 このセクションでは、Supermood で Britta Simon というユーザーを作成します。 Supermood では、Just-In-Time プロビジョニングがサポートされます。Just-In-Time プロビジョニングは、Supermood 側の構成中に追加されるドメインに属する電子メールを持つユーザーに対して既定で有効になります。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ存在しない場合、Supermood にアクセスしようとすると、新しいユーザーが作成されます。
 
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[Supermood サポート チーム](mailto:hello@supermood.fr)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [Supermood サポート チーム](mailto:hello@supermood.fr)にお問い合わせください。
 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
@@ -241,7 +242,7 @@ Supermood で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Supermood] タイルをクリックすると、自動的に Supermood アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

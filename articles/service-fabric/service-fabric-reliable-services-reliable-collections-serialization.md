@@ -3,8 +3,8 @@ title: Azure Service Fabric での Reliable Collection オブジェクトのシ�
 description: Azure Service Fabric での Reliable Collection オブジェクトのシリアル化
 services: service-fabric
 documentationcenter: .net
-author: mcoskun
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: masnider,rajak
 ms.assetid: 9d35374c-2d75-4856-b776-e59284641956
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/8/2017
-ms.author: mcoskun
-ms.openlocfilehash: 8fb6f1767741e950b300fd297250a6b64656191c
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.author: aljo
+ms.openlocfilehash: ee19be45915b3ff1253ec721f4334fead19647b8
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952428"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522388"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric での Reliable Collection オブジェクトのシリアル化
 Reliable Collection では項目がレプリケートおよび永続化されるため、コンピューターの不具合や電源障害が発生しても、これらの項目が影響を受けることはありません。
@@ -40,8 +40,8 @@ Reliable State Manager には、次の型用の組み込みのシリアライザ
 - sbyte
 - byte[]
 - char
-- 文字列
-- 小数点
+- string
+- decimal
 - double
 - float
 - int
@@ -96,7 +96,7 @@ public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
 }
 ```
 
-IStateSerializer<OrderKey> の実装例を次に示します。
+IStateSerializer\<OrderKey> の実装例を次に示します。
 baseValue を受け取る読み取りと書き込みのオーバーロードが、上位互換性のためにそれぞれのオーバーロードを呼び出していることに注意してください。
 
 ```csharp

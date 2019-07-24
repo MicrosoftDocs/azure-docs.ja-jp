@@ -1,26 +1,22 @@
 ---
-title: SSIS コネクタを使用して Azure Blob Storage との間でデータを移動する | Microsoft Docs
+title: SSIS コネクタを使用して BLOB ストレージのデータを移動する - Team Data Science Process
 description: SSIS コネクタを使用して Azure BLOB ストレージとの間でデータを移動します。
-services: machine-learning,storage
-documentationcenter: ''
-author: deguhath
+services: machine-learning
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 96a1b5fb-34d1-4b9b-8d99-2bb8289e0398
 ms.service: machine-learning
-ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: deguhath
-ms.openlocfilehash: 2fe57480f7d8e22cfffafec6845372718587958e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 688ef059387dc4c312873051c7c9d1eae259b1ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258427"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57844785"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>SSIS コネクタを使用して Azure Blob Storage 間でデータを移動する
 [SQL Server Integration Services Feature Pack for Azure](https://msdn.microsoft.com/library/mt146770.aspx) には、Azure への接続、Azure とオンプレミスのデータ ソースとの間でのデータ転送、Azure に格納したデータの処理に必要なコンポーネントが用意されています。
@@ -46,8 +42,8 @@ ms.locfileid: "51258427"
 
 **SSIS コネクタ**を使用するには、次のものをダウンロードする必要があります。
 
-* **SQL Server 2014 または 2016 Standard 以降**: インストールには SQL Server Integration Services が含まれます。
-* **Microsoft SQL Server 2014 または 2016 Integration Services Feature Pack for Azure**: これらは、[SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) および [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) のページからそれぞれダウンロードできます。
+* **SQL Server 2014 または 2016 Standard (またはそれ以降)**:インストールには SQL Server Integration Services が含まれます。
+* **Microsoft SQL Server 2014 または 2016 Integration Services Feature Pack for Azure**:これらは、[SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) および [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) のページからそれぞれダウンロードできます。
 
 > [!NOTE]
 > SSIS は SQL Server と共にインストールされますが、Express バージョンには含まれていません。 SQL Server の各種エディションに含まれるアプリケーションについては、「[SQL Server のエディション](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)」をご覧ください
@@ -56,10 +52,10 @@ ms.locfileid: "51258427"
 
 SSIS のトレーニング資料については、 [SSIS の実践的トレーニング](https://www.microsoft.com/sql-server/training-certification)
 
-SISS を使用して稼働状態にし、簡単な ETL (抽出、変換、読み込み) パッケージを作成する方法については、「 [SSIS チュートリアル: 簡単な ETL パッケージの作成](https://msdn.microsoft.com/library/ms169917.aspx)」を参照してください。
+SISS を使用して稼働状態にし、簡単な ETL (抽出、変換、読み込み) パッケージを作成する方法については、[SSIS チュートリアル:簡単な ETL パッケージの作成](https://msdn.microsoft.com/library/ms169917.aspx)に関する記事をご覧ください。
 
 ## <a name="download-nyc-taxi-dataset"></a>NYC タクシー データセットをダウンロードする
-ここで説明する例では、一般公開されているデータセットである、 [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) データセットを使用します。 このデータセットは、2013 年のニューヨーク市における約 1 億 7300 万件のタクシー乗車情報で構成されています。 データには、乗車の詳細データと料金データの 2 種類があります。 月ごとにファイルが用意されているため、全部で 24 ファイルになり、各ファイルは圧縮されていない状態で約 2 GB になります。
+ここで説明する例では、一般公開されているデータセットである、 [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) データセットを使用します。 このデータセットは、2013 年のニューヨーク市における約 1 億 7300 万件のタクシー乗車情報で構成されています。 データには、乗車の詳細データと料金データの 2 種類があります。 月ごとにファイルが用意されているため、全部で 24 ファイルになり、各ファイルは圧縮されていない状態で約 2 GB になります。
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Azure BLOB ストレージにデータをアップロードする
 SSIS 機能パックを使用して、データをオンプレミスから Azure BLOB ストレージに移動するには、次に示す [**Azure BLOB アップロード タスク**](https://msdn.microsoft.com/library/mt146776.aspx)のインスタンスを使用します。

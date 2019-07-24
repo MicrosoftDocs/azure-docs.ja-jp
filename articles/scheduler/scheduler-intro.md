@@ -8,14 +8,14 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: klam
 ms.assetid: 52aa6ae1-4c3d-43fb-81b0-6792c84bcfae
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 4d4f7bf9c77dad21f9e66ab0fa023a4898163f1f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 21204e85adf1c68264ea448360c9e1120567ef3f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989183"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764576"
 ---
 # <a name="what-is-azure-scheduler"></a>Azure Scheduler とは
 
@@ -26,13 +26,13 @@ ms.locfileid: "46989183"
 
 Scheduler を使用してスケジュールされたワークロードを作成、管理、および実行できますが、Scheduler がワークロードをホストしたりコードを実行したりすることはありません。 このサービスは、他の場所 (Azure、オンプレミス、別のプロバイダーなど) でホストされているサービスまたはコードを "*呼び出す*" だけです。 Scheduler は、HTTP、HTTPS、Storage キュー、Service Bus キュー、Service Bus トピックを介して呼び出すことができます。 ジョブを作成、管理、およびスケジュールするには、[Azure portal](../scheduler/scheduler-get-started-portal.md)、コード、[Scheduler REST API](https://docs.microsoft.com/rest/api/scheduler/)、または [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)を使用できます。 たとえば、スクリプトを使用したり Azure portal 内で、ジョブおよび[ジョブ コレクション](../scheduler/scheduler-concepts-terms.md)をプログラムにより作成、表示、更新、管理、削除できます。
 
-Azure App Service の [Web Apps](https://azure.microsoft.com/services/app-service/web/) 機能である [Azure WebJobs](../app-service/web-sites-create-web-jobs.md) など、他の Azure スケジュール機能も Scheduler をバックグラウンドで使用します。 [Scheduler REST API](https://docs.microsoft.com/rest/api/scheduler/) を使用することで、これらのアクションに対する通信を管理できます。 これらのアクションにおける通信を管理します。
+Azure App Service の [Web Apps](https://azure.microsoft.com/services/app-service/web/) 機能である [Azure WebJobs](../app-service/webjobs-create.md) など、他の Azure スケジュール機能も Scheduler をバックグラウンドで使用します。 [Scheduler REST API](https://docs.microsoft.com/rest/api/scheduler/) を使用することで、これらのアクションに対する通信を管理できます。 これらのアクションにおける通信を管理します。
 
 Scheduler が役に立ついくつかのシナリオを次に示します。
 
-* **アプリの定期的なアクションを実行する**: たとえば、Twitter からフィードに定期的にデータを収集します。
+* **アプリの定期的なアクションを実行する**:たとえば、Twitter からフィードに定期的にデータを収集します。
 
-* **毎日のメンテナンスを実行する:** 日常的なログの除去、バックアップの実行、その他のメンテナンス タスクなどです。 
+* **毎日のメンテナンスを実行する**:日常的なログの除去、バックアップの実行、その他のメンテナンス タスクなどです。 
 
   たとえば、管理者は、今後 9 か月間毎日午前 1 時にデータベースをバックアップする、といったことがあります。
 

@@ -4,19 +4,19 @@ ms.service: redis-cache
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
-ms.openlocfilehash: 2c96604093542c2697c691ad8fb8bf11e77e2d0b
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 2627554647c6c20cbdedfec53c1028b3edfa9c9c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572358"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53111826"
 ---
-Premium キャッシュを作成するには、[Azure Portal](https://portal.azure.com) にサインインし、**[リソースの作成]** > **[データベース]** > **[Redis Cache]** の順にクリックします。
+Premium キャッシュを作成するには、[Azure portal](https://portal.azure.com) にサインインし、**[リソースの作成]** > **[データベース]** > **[Azure Cache for Redis]** の順にクリックします。
 
 ![キャッシュの作成](media/redis-cache-premium-create/redis-cache-new-cache-menu.png)
 
 > [!NOTE]
-> キャッシュは、Azure ポータルだけでなく、Resource Manager テンプレート、PowerShell、または Azure CLI を使用して作成することもできます。 Azure Redis Cache の作成について詳しくは、[キャッシュの作成](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)に関するページをご覧ください。
+> キャッシュは、Azure ポータルだけでなく、Resource Manager テンプレート、PowerShell、または Azure CLI を使用して作成することもできます。 Azure Cache for Redis の作成について詳しくは、[キャッシュの作成](../articles/azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)に関するページを参照してください。
 > 
 > 
 

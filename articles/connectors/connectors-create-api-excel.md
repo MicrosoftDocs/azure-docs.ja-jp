@@ -1,25 +1,25 @@
 ---
-title: Excel Online に接続する - Azure Logic Apps | Microsoft Docs
+title: Excel Online に接続する - Azure Logic Apps
 description: Microsoft Excel REST API と Azure Logic Apps を使用してデータを管理します
-ms.service: logic-apps
 services: logic-apps
+ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-ms.suite: integration
 tags: connectors
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 917b9abd4a32b7951313c5555f4111dff990078c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 28739ad65462acc9f2d2ed7db1e9ed14d19f032c
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230953"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314521"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Azure Logic Apps を使用して Excel Online データを管理する
 
-Azure Logic Apps と Excel Online コネクタを使用して、Excel Online for Business または OneDrive のデータに基づいて自動化されたタスクとワークフローを作成できます。 このコネクタは、データの操作とスプレッドシートの管理を行う際に役立つアクションを提供します。たとえば、次のアクションがあります。 
+Azure Logic Apps と Excel Online コネクタを使用して、Excel Online for Business または OneDrive のデータに基づいて自動化されたタスクとワークフローを作成できます。 このコネクタは、データの操作とスプレッドシートの管理を行う際に役立つアクションを提供します。たとえば、次のアクションがあります。
 
 * 新しいワークシートとテーブルを作成します。
 * ワークシート、テーブル、および行の取得と管理を行います。
@@ -34,9 +34,9 @@ Azure Logic Apps と Excel Online コネクタを使用して、Excel Online for
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
 
-* 職場アカウントまたは個人の Microsoft アカウント用の [Office 365 アカウント](https://www.office.com/)。 
+* 職場アカウントまたは個人の Microsoft アカウント用の [Office 365 アカウント](https://www.office.com/)。
 
   Excel データは、OneDrive などのストレージ フォルダーに、コンマ区切り値 (CSV) ファイルとして存在できます。 
   同じ CSV ファイルを、[フラット ファイル コネクタ](../logic-apps/logic-apps-enterprise-integration-flatfile.md)で使用することもできます。
@@ -53,7 +53,7 @@ Azure Logic Apps と Excel Online コネクタを使用して、Excel Online for
 
 1. 検索ボックスに、フィルターとして「excel」と入力します。 アクションの一覧で、目的のアクションを選択します。
 
-1. Office 365 アカウントへのサインインを求められたら、**[サインイン]** を選択します。 
+1. Office 365 アカウントへのサインインを求められたら、**[サインイン]** を選択します。
 
    Excel Online への接続を作成してデータにアクセスしてよいという承認が、この資格情報によってロジック アプリに与えられます。
 
@@ -61,10 +61,10 @@ Azure Logic Apps と Excel Online コネクタを使用して、Excel Online for
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの Swagger ファイルによって記述される、アクションや制限などの技術的詳細については、次のコネクタのリファレンス ページを参照してください。
+コネクタの OpenAPI (以前の Swagger) ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、コネクタのリファレンス ページを参照してください。
 
-* [Excel Online for Business](/connectors/excelonlinebusiness/) 
-* [Excel Online for OneDrive](/connectors/excelonline/) 
+* [Excel Online for Business](/connectors/excelonlinebusiness/)
+* [Excel Online for OneDrive](/connectors/excelonline/)
 
 ## <a name="get-support"></a>サポートを受ける
 

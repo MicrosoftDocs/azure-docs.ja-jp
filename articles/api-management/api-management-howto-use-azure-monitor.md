@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 8b95c311cd91ab6db84fb6640be5b6c1a6c0a9a5
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 6a4e9a0c33b227716227213e94948df430566065
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443119"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622197"
 ---
 # <a name="monitor-published-apis"></a>発行された API を監視する
 
@@ -40,8 +40,8 @@ Azure Monitor を使用すると、Azure リソースのメトリックまたは
 ## <a name="prerequisites"></a>前提条件
 
 + [Azure API Management の用語](api-management-terminology.md)について学習します。
-+ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
-+ また、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」のチュートリアルも完了します。
++ 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)。
++ また、次のチュートリアルを完了すること: [最初の API のインポートと発行](import-and-publish.md)。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -77,21 +77,28 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 
 アラートを構成するには、以下の手順に従います。
 
-1. ページの下部にあるメニュー バーの **[アラート (クラシック)]** を選択します。
+1. ページの下部にあるメニュー バーの **[アラート]** を選択します。
 
-    ![alerts](./media/api-management-azure-monitor/api-management-alert-rules-blade.png)
+    ![alerts](./media/api-management-azure-monitor/alert-menu-item.png)
 
-2. **[メトリック アラートの追加]** を選択します。
-3. このアラートの**名前**を入力します。
-4. 監視するメトリックとして、**[Unauthorized Gateway Requests]\(未承認ゲートウェイ要求\)** を選択します。
-5. **[所有者、共同作成者、閲覧者に電子メールを送信]** を選択します。
-6. **[OK]** をクリックします。
-7. API キーなしで、Conference API を呼び出してみます。 この API Management サービスの所有者として、電子メール アラートを受信します。 
+2. このアラートに対して **[新しいアラート ルール]** をクリックします。
+3. **[条件の追加]** をクリックします。
+4. [シグナルの種類] ドロップダウンの **[メトリック]** を選択します。
+5. 監視するシグナルとして、**[Unauthorized Gateway Requests]\(未承認ゲートウェイ要求\)** を選択します。
 
-    > [!TIP]
-    > アラート ルールは、トリガーされたときに webhook または Azure Logic App を呼び出すこともできます。
+    ![alerts](./media/api-management-azure-monitor/signal-type.png)
 
-    ![アラートのセットアップ](./media/api-management-azure-monitor/set-up-alert.png)
+6. **[シグナル ロジックの構成]** ビューで、アラートをトリガーするしきい値を指定して、**[完了]** をクリックします。
+
+    ![alerts](./media/api-management-azure-monitor/threshold.png)
+
+7. 既存のアクション グループを選択するか、新しいアクション グループを作成します。 次の例では、メールが管理者に送信されます。 
+
+    ![alerts](./media/api-management-azure-monitor/action-details.png)
+
+8. 名前、アラート ルールの説明を入力し、重大度を選択します。 
+9. **[アラート ルールの作成]** を押します。
+10. ここで、API キーなしで、Conference API を呼び出してみます。 アラートがトリガーされ、メールが管理者に送信されます。 
 
 ## <a name="activity-logs"></a>アクティビティ ログ
 
@@ -124,7 +131,7 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 
     ![診断ログ](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 
-3. **[診断を有効にする]** をクリックします。 診断ログをメトリックと共にストレージ アカウントにアーカイブし、それらをイベント ハブにストリーム配信したり、Log Analytics に送信したりすることができます。 
+3. **[診断を有効にする]** をクリックします。 診断ログをメトリックと共にストレージ アカウントにアーカイブし、それらをイベント ハブにストリーム配信したり、Azure Monitor ログに送信したりすることができます。 
 
 現時点では、API Management は、個々の API 要求についての診断ログ (1 時間ごとにバッチ処理) を、次のスキーマを持つエントリで提供します。
 
@@ -173,46 +180,46 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 }  
 ```
 
-| プロパティ  | type | 説明 |
+| プロパティ  | Type | 説明 |
 | ------------- | ------------- | ------------- |
 | isRequestSuccess | ブール値 | 応答の状態コードが 2xx または 3xx の範囲内で HTTP 要求が完了した場合は True |
 | time | date-time | ゲートウェイによる HTTP 要求の受信タイムスタンプ |
-| operationName | string | "Microsoft.ApiManagement/GatewayLogs" (定数値) |
-| category | string | "GatewayLogs" (定数値) |
+| operationName | 文字列 | "Microsoft.ApiManagement/GatewayLogs" (定数値) |
+| category | 文字列 | "GatewayLogs" (定数値) |
 | durationMs | integer | ゲートウェイが要求を受信した時点から、応答全体が送信された時点までのミリ秒数 |
-| callerIpAddress | string | 直接 (中間の場合もあります) のゲートウェイ呼び出し元の IP アドレス |
-| correlationId | string | API Management によって割り当てられる一意の http 要求識別子 |
-| location | string | 要求を処理したゲートウェイが存在する Azure リージョンの名前 |
-| httpStatusCodeCategory | string | http 応答状態コードのカテゴリ: 成功 (301 以下または 304 または 307)、未承認 (401、403、429)、エラー (400、500 から 600)、その他 |
-| resourceId | string | API Management リソース /SUBSCRIPTIONS/<subscription>/RESOURCEGROUPS/<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/<name> の ID |
+| callerIpAddress | 文字列 | 直接 (中間の場合もあります) のゲートウェイ呼び出し元の IP アドレス |
+| correlationId | 文字列 | API Management によって割り当てられる一意の http 要求識別子 |
+| location | 文字列 | 要求を処理したゲートウェイが存在する Azure リージョンの名前 |
+| httpStatusCodeCategory | 文字列 | HTTP 応答状態コードのカテゴリ: 成功 (301 以下または 304 または 307)、未承認 (401、403、429)、エラー (400、500 から 600)、その他 |
+| resourceId | 文字列 | API Management リソース /SUBSCRIPTIONS/\<サブスクリプション>/RESOURCEGROUPS/\<リソース グループ>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<名前> の ID |
 | properties | オブジェクト | 現在の要求のプロパティ |
-| method | string | 受信要求の HTTP メソッド |
-| url | string | 受信要求の URL |
-| clientProtocol | string | 受信要求の HTTP プロトコル バージョン |
+| method | 文字列 | 受信要求の HTTP メソッド |
+| url | 文字列 | 受信要求の URL |
+| clientProtocol | 文字列 | 受信要求の HTTP プロトコル バージョン |
 | responseCode | integer | クライアントに送信された HTTP 応答の状態コード |
-| backendMethod | string | バックエンドに送信された要求の HTTP メソッド |
-| backendUrl | string | バックエンドに送信された要求の URL |
+| backendMethod | 文字列 | バックエンドに送信された要求の HTTP メソッド |
+| backendUrl | 文字列 | バックエンドに送信された要求の URL |
 | backendResponseCode | integer | バックエンドから受信した HTTP 応答のコード |
-| backendProtocol | string | バックエンドに送信された要求の HTTP プロトコル バージョン | 
+| backendProtocol | 文字列 | バックエンドに送信された要求の HTTP プロトコル バージョン | 
 | requestSize | integer | 要求の処理中にクライアントから受信したバイト数 | 
 | responseSize | integer | 要求の処理中にクライアントに送信されたバイト数 | 
-| cache | string | 要求の処理における API Management キャッシュ使用の状態 (ヒット、ミス、なし) | 
+| cache | 文字列 | 要求の処理における API Management キャッシュ使用の状態 (ヒット、ミス、なし) | 
 | cacheTime | integer | API Management キャッシュの IO 全体 (接続バイト、送信バイト、受信バイト) に費やされたミリ秒数 | 
 | backendTime | integer | バックエンドの IO 全体 (接続バイト、送信バイト、受信バイト) に費やされたミリ秒数 | 
 | clientTime | integer | クライアントの IO 全体 (接続バイト、送信バイト、受信バイト) に費やされたミリ秒数 | 
-| apiId | string | 現在の要求の API エンティティ識別子 | 
-| operationId | string | 現在の要求の操作エンティティ識別子 | 
-| productId | string | 現在の要求の製品エンティティ識別子 | 
-| userId | string | 現在の要求のユーザー エンティティ識別子 | 
-| apimSubscriptionId | string | 現在の要求のサブスクリプション エンティティ識別子 | 
-| backendId | string | 現在の要求のバックエンド エンティティ識別子 | 
+| apiId | 文字列 | 現在の要求の API エンティティ識別子 | 
+| operationId | 文字列 | 現在の要求の操作エンティティ識別子 | 
+| productId | 文字列 | 現在の要求の製品エンティティ識別子 | 
+| userId | 文字列 | 現在の要求のユーザー エンティティ識別子 | 
+| apimSubscriptionId | 文字列 | 現在の要求のサブスクリプション エンティティ識別子 | 
+| backendId | 文字列 | 現在の要求のバックエンド エンティティ識別子 | 
 | lastError | オブジェクト | 最後の要求処理エラー | 
 | elapsed | integer | ゲートウェイが要求を受信してからエラーが発生した時点までの経過ミリ秒数 | 
-| source | string | エラーの原因となったポリシー (または処理中の内部ハンドラー) の名前 | 
-| scope | string | エラーの原因となったポリシーを含んでいるポリシー ドキュメントのスコープ | 
-| section | string | エラーの原因となったポリシーを含んでいるポリシー ドキュメントのセクション | 
-| reason | string | エラーの理由 | 
-| message | string | エラー メッセージ | 
+| source | 文字列 | エラーの原因となったポリシー (または処理中の内部ハンドラー) の名前 | 
+| scope | 文字列 | エラーの原因となったポリシーを含んでいるポリシー ドキュメントのスコープ | 
+| section | 文字列 | エラーの原因となったポリシーを含んでいるポリシー ドキュメントのセクション | 
+| reason | 文字列 | エラーの理由 | 
+| message | 文字列 | エラー メッセージ | 
 
 ## <a name="next-steps"></a>次の手順
 

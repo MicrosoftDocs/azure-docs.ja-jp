@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 03/28/2019
 ms.author: alkohli
-ms.openlocfilehash: b8aac8a6a666bf3f360ef2867ff15933ad72dbd7
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 34bc4d7cbdbb89cd9ff3f334ca32087c474735b7
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166986"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620089"
 ---
-# <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>チュートリアル: Azure Data Box Gateway のデプロイを準備する (プレビュー)
+# <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway のデプロイを準備する
 
 
 これは、Azure Data Box Gateway を完全にデプロイするために必要な一連のチュートリアルのうち最初のものです。 このチュートリアルでは、Data Box Gateway リソースをデプロイするために Azure portal を準備する方法を説明します。 
@@ -29,20 +29,14 @@ ms.locfileid: "49166986"
 > * 仮想デバイスのイメージのダウンロード
 > * アクティブ化キーの取得
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
-
-> [!IMPORTANT]
-> - Data Box Gateway はプレビュー段階にあります。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。 
-
-### <a name="get-started"></a>作業開始
+## <a name="get-started"></a>作業開始
 
 Data Box Gateway をデプロイするには、以下の順序どおりにチュートリアルを参照してください。
 
 | **#** | **手順** | **概要** |
 | --- | --- | --- | 
 | 1. |**[Data Box Gateway のために Azure portal を準備する](data-box-gateway-deploy-prep.md)** |Data Box Gateway リソースを作成して構成した後で、Data Box Gateway 仮想デバイスをプロビジョニングします。 |
-| 2. |**[Hyper-V で Data Box Gateway をプロビジョニングする](data-box-gateway-deploy-provision-hyperv.md)** <br><br><br>**[VMware で Data Box Gateway をプロビジョニングする](data-box-gateway-deploy-provision-vmware.md)**|Hyper-V の場合、Windows Server 2016 または Windows Server 2012 R2 上で Hyper-V を実行するホスト システムに Data Box Gateway 仮想デバイスをプロビジョニングして接続します。 <br><br><br> VMware の場合、VMware ESXi 6.0 または 6.5 を実行するホスト システムに Data Box Gateway 仮想デバイスをプロビジョニングして接続します。<br></br> |
+| 2. |**[Hyper-V で Data Box Gateway をプロビジョニングする](data-box-gateway-deploy-provision-hyperv.md)** <br><br><br>**[VMware で Data Box Gateway をプロビジョニングする](data-box-gateway-deploy-provision-vmware.md)**|Hyper-V の場合、Windows Server 2016 または Windows Server 2012 R2 上で Hyper-V を実行するホスト システムに Data Box Gateway 仮想デバイスをプロビジョニングして接続します。 <br><br><br> VMware の場合、VMware ESXi 6.0、6.5、または 6.7 を実行するホスト システムに Data Box Gateway 仮想デバイスをプロビジョニングして接続します。<br></br> |
 | 手順 3. |**[Data Box Gateway を接続、設定、アクティブ化する](data-box-gateway-deploy-connect-setup-activate.md)** |ローカル Web UI に接続して、デバイス設定を完了し、デバイスをアクティブ化します。 これで、SMB 共有をプロビジョニングできます。  |
 | 4. |**[Data Box Gateway でデータを転送する](data-box-gateway-deploy-add-shares.md)** |共有を追加し、SMB または NFS を介して共有に接続します。 |
 
@@ -56,97 +50,112 @@ Data Box Gateway をデプロイするには、以下の順序どおりにチュ
 
 開始する前に次の点を確認します。
 
-* Microsoft Azure サブスクリプションで Data Box Gateway リソースが有効になっていること。
-* アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
+- Microsoft Azure サブスクリプションで Data Box Gateway リソースがサポートされていること。 従量課金制のサブスクリプションには対応していません。
+- アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
 
 ### <a name="for-the-data-box-gateway-device"></a>Data Box Gateway デバイスの場合
 
 仮想デバイスをデプロイする前に次の点を確認します。
 
-* Windows Server 2012 R2 以降の Hyper-V または VMware (ESXi 6.0 または 6.5) を実行し、デバイスのプロビジョニングに使用できるホスト システムへのアクセス権があること。
-* ホスト システムで、次のリソースを Data Box 仮想デバイスのプロビジョニング専用に使用できること。
+- Windows Server 2012 R2 以降の上に配置された Hyper-V、または VMware (ESXi 6.0、6.5、または 6.7) を実行し、デバイスのプロビジョニングに使用できるホスト システムへのアクセス権があること。
+- ホスト システムで、次のリソースを Data Box 仮想デバイスのプロビジョニング専用に使用できること。
   
-  * 最小で 4 コア。
-  * 少なくとも 8 GB の RAM。 
-  * ネットワーク インターフェイス 1 つ。
-  * 250 GB の OS ディスク。
-  * システム データ用の 2 TB の仮想ディスク。
+  - 少なくとも 4 つの仮想プロセッサ。
+  - 少なくとも 8 GB の RAM。
+  - ネットワーク インターフェイス 1 つ。
+  - 250 GB の OS ディスク。
+  - システム データ用の 2 TB の仮想ディスク。
 
 ### <a name="for-the-datacenter-network"></a>データセンター ネットワークの前提条件
 
 開始する前に次の点を確認します。
 
-* Data Box Gateway デバイスのネットワーク要件に従ってデータセンターのネットワークが構成されていること。 詳細については、[Data Box Gateway のシステム要件](data-box-gateway-system-requirements.md)に関する記事を参照してください。
+- Data Box Gateway デバイスのネットワーク要件に従ってデータセンターのネットワークが構成されていること。 詳細については、[Data Box Gateway のシステム要件](data-box-gateway-system-requirements.md)に関する記事を参照してください。
 
-* Data Box Gateway で 20 Mbps 以上の専用インターネット帯域幅が常に利用できること。 この帯域幅はその他のアプリケーションと共有できません。 ネットワーク調整を使用する場合は、調整が機能するために、32 Mbps 以上のインターネット帯域幅を使用することをお勧めします。
+- Data Box Gateway の通常の動作条件下における帯域幅は次のとおりです。
+
+    - デバイスが常に最新の状態に保たれるように最低 10 Mbps のダウンロード帯域幅。
+    - ファイル転送用に最低 20 Mbps の専用のアップロード/ダウンロード帯域幅。
 
 ## <a name="create-a-new-resource"></a>新しいリソースを作成
 
-新しい Data Box Gateway リソースを作成するには、次の手順を実行します。 
-
 仮想マシンを管理するために既存の Data Box Gateway リソースがある場合は、この手順をスキップして、「[アクティブ化キーの取得](#get-the-activation-key)」に進みます。
 
-Azure portal で次の手順を実行して Data Box リソースを作成します。
-1. Microsoft Azure 資格情報を使用し、Azure プレビュー ポータルにログインします。URL は [https://aka.ms/databox-edge](https://aka.ms/databox-edge) です。 
+Data Box Gateway リソースを作成するには、Azure portal で次の手順を実行します。
 
-2. Data Box Edge プレビューに使用するサブスクリプションを選択します。 Data Box Edge リソースをデプロイするリージョンを選択します。 **[Data Box Gateway]** オプションで **[作成]** をクリックします。
+1. Microsoft Azure の資格情報を使用して、次のサイトにサインインします。
+
+    - Azure portal (URL: [https://portal.azure.com](http://portal.azure.com))。
+    - または、Azure Government ポータル (URL: [https://portal.azure.us](https://portal.azure.us))。 詳細については、[ポータルを使用して Azure Government に接続する](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)方法に関するページを参照してください。
+
+2. 左側のウィンドウで、**[+ リソースの作成]** を選択します。 **[Data Box Edge / Data Box Gateway]** を検索します。 [Data Box Edge / Data Box Gateway] を選択します。 **作成**を選択します。
+3. Data Box Gateway デバイスに使用するサブスクリプションを選択します。 Data Box Gateway リソースをデプロイするリージョンを選択します。 このリリースでは、米国東部、東南アジア、西ヨーロッパを選択できます。 デバイスをデプロイする地理的リージョンに最も近い場所を選択します。 **[Data Box Gateway]** オプションで **[作成]** を選択します。
 
     ![Data Box Gateway サービスの検索](media/data-box-gateway-deploy-prep/data-box-gateway-edge-sku.png)
 
-3. 新しいリソースについて、次の情報を入力または選択します。
+4. **[基本]** タブで、次の**プロジェクト情報**を入力または選択します。
     
     |Setting  |値  |
     |---------|---------|
-    |リソース名   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 - 50 文字で、英字、数字、ハイフンを使用します。<br> 名前の最初と最後には、英字か数字を使用します。        |
-    |サブスクリプション    |サブスクリプションは、課金アカウントにリンクされます。 |
+    |サブスクリプション    |事前に選択した内容に応じて自動的に設定されます。 サブスクリプションは、課金アカウントにリンクされます。 |
     |リソース グループ  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/resource-group-overview.md)をご覧ください。     |
-    |Location     |このリリースでは、米国東部、米国西部 2、東南アジア、西ヨーロッパを選択できます。 <br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
+
+5. 次の**インスタンス情報**を入力または選択します。
+
+    |Setting  |値  |
+    |---------|---------|
+    |名前   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 - 50 文字で、英字、数字、ハイフンを使用します。<br> 名前の最初と最後には、英字か数字を使用します。        |   
+    |リージョン     |このリリースでは、リソースのデプロイ先として、米国東部、東南アジア、西ヨーロッパを選択できます。 Azure Government の場合は、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」に記載されているすべての政府機関向けリージョンを選択できます。 <br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
     
     ![Data Box Gateway リソースの作成](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     
-4. Click **OK**.
+6. **[Review + create]\(レビュー + 作成\)** を選択します。
  
-リソースの作成には数分かかります。 リソースが正常に作成されると通知が表示されます。
+7. **[確認と作成]** タブで、**価格の詳細**、**使用条件**、リソースの詳細を確認します。 **作成**を選択します。
 
+    ![Data Box Gateway リソースの詳細を確認する](media/data-box-gateway-deploy-prep/data-box-gateway-resource1.png)
+
+リソースの作成には数分かかります。 リソースが正常に作成されてデプロイされると通知が表示されます。 **[リソースに移動]** を選択します。
+
+![Data Box Gateway リソースの詳細を確認する](media/data-box-gateway-deploy-prep/data-box-gateway-resource2.png)
 
 ## <a name="download-the-virtual-device-image"></a>仮想デバイスのイメージのダウンロード
 
-Data Box Gateway リソースを作成したら、ホスト システムに仮想デバイスをプロビジョニングするために、適切な仮想デバイスのイメージをダウンロードする必要があります。 仮想デバイスのイメージはオペレーティング システムに固有で、Azure portal でリソースの **[クイック スタート]** ページからダウンロードできます。
+Data Box Gateway リソースを作成したら、ホスト システムに仮想デバイスをプロビジョニングするために、適切な仮想デバイスのイメージをダウンロードする必要があります。 仮想デバイスのイメージは、オペレーティング システムごとに存在します。
 
 > [!IMPORTANT]
 > Data Box Gateway 上で実行されるソフトウェアは、Data Box Gateway リソースに対してのみ使用できます。
 
+[Azure portal](https://portal.azure.com/) から次の手順に従って、仮想デバイスのイメージをダウンロードしてください。
 
-[Azure Portal](https://portal.azure.com/) で、次の手順を実行します。
-
-1. 作成したリソースをクリックしてから、**[概要]** をクリックします。 既存の Azure Data Box Gateway リソースがある場合は、そのリソースをクリックしてから、**[概要]** に進みます。
+1. 作成したリソースで、**[概要]** を選択します。 既存の Azure Data Box Gateway リソースがある場合は、そのリソースを選択してから、**[概要]** に進みます。 **[デバイスの設定]** を選択します。
 
     ![新しい Data Box Gateway リソース](media/data-box-gateway-deploy-prep/data-box-gateway-resource-created.png)
 
-4. 右側のウィンドウのクイック スタートで、ダウンロードするイメージに対応するリンクをクリックします。 イメージ ファイルは約 4.8 GB です。
+2. **[イメージのダウンロード]** タイルで、VM のプロビジョニングに使用するホスト サーバーから、オペレーティング システムに対応する仮想デバイスのイメージを選択します。 イメージ ファイルは約 5.6 GB です。
    
    * [Windows Server 2012 R2 以降の Hyper-V 用 VHDX](https://aka.ms/dbe-vhdx-2012)
-   * [VMWare ESXi 6.0 または 6.5 用 VMDK](https://aka.ms/dbe-vmdk).
+   * [VMware ESXi 6.0、6.5、または 6.7 用 VMDK](https://aka.ms/dbe-vmdk)。
+
+    ![Data Box Gateway の仮想デバイスのイメージをダウンロードする](media/data-box-gateway-deploy-prep/data-box-gateway-download-image.png)
 
 5. ファイルをローカル ドライブにダウンロードして解凍し、解凍したファイルの場所をメモしておきます。
 
 
 ## <a name="get-the-activation-key"></a>アクティブ化キーの取得
 
-Data Box Gateway リソースが起動して稼働中になったら、アクティブ化キーを取得する必要があります。 このキーを使用して、Data Box Gateway デバイスをアクティブ化し、リソースに接続します。
+Data Box Gateway リソースが起動して稼働中になったら、アクティブ化キーを取得する必要があります。 このキーを使用して、Data Box Gateway デバイスをアクティブ化し、リソースに接続します。 このキーは Azure portal ですぐに入手できます。
 
-アクティブ化キーを使用して、Data Box Gateway リソースに対してアクティブ化する必要があるすべての Data Box Gateway デバイスを登録します。 このキーは Azure portal ですぐに入手できます。
+1. 作成したリソースを選択してから、**[概要]** を選択します。 **[デバイスの設定]** の **[Configure and activate]\(構成とアクティブ化\)** タイルに移動します。
 
-1. 作成したリソースをクリックしてから、**[概要]** をクリックします。
+    ![[Configure and activate]\(構成とアクティブ化\) タイル](media/data-box-gateway-deploy-prep/data-box-gateway-configure-activate.png)
 
-    ![新しい Data Box Gateway リソース](media/data-box-gateway-deploy-prep/data-box-gateway-resource-created.png)
-
-2. **[キーの生成]** をクリックして、アクティブ化キーを作成します。 コピー アイコンをクリックしてキーをコピーし、後で使用できるように保存します。
+2. **[キーの生成]** を選択して、アクティブ化キーを作成します。 コピー アイコンを選択してキーをコピーし、後で使用できるように保存します。
 
     ![アクティブ化キーの取得](media/data-box-gateway-deploy-prep/get-activation-key.png)
 
 > [!IMPORTANT]
-> - アクティブ化キーは生成後 3 日間で有効期限が切れます。 
+> - アクティブ化キーは生成後 3 日間で有効期限が切れます。
 > - キーの有効期限が切れた場合は、新しいキーを生成してください。 古いキーは無効です。
 
 ## <a name="next-steps"></a>次の手順

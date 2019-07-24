@@ -1,33 +1,34 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Salesforce Sandbox の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Salesforce Sandbox の統合 | Microsoft Docs
 description: Azure Active Directory と Salesforce Sandbox の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: ee54c39e-ce20-42a4-8531-da7b5f40f57c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 48dcb4a3b1e06ab62905092055ba1b48bd0dddb7
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6794d7eaccb488bb345227161f0bca02f14bc518
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114498"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852567"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>チュートリアル: Azure Active Directory と Salesforce Sandbox の統合
+# <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>チュートリアル:Azure Active Directory と Salesforce Sandbox の統合
 
 このチュートリアルでは、Salesforce Sandbox と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
 Sandbox を使用すると、Salesforce 運用組織内のデータとアプリケーションを侵害することなく、多様な用途 (開発、テスト、トレーニングなど) ごとに別環境に組織の複数コピーを作成できます。
-詳細については、[サンドボックスの概要](https://help.salesforce.com/articleView?id=create_test_instance.htm&language=en_us&type=5)に関するページを参照してください。
+詳細については、 [サンドボックスの概要](https://help.salesforce.com/articleView?id=create_test_instance.htm&language=en_us&type=5)に関するページを参照してください。
 
 Salesforce Sandbox と Azure AD の統合には、次の利点があります。
 
@@ -158,7 +159,7 @@ Salesforce Sandbox で Azure AD のシングル サインオンを構成して�
 
     ![Configure single sign-on](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
-12. SAML のシングル サインオン設定を構成するには、**[New from Metadata File]\(メタデータ ファイルから新規\)** をクリックします。
+12. SAML のシングル サインオン設定を構成するには、**[New from Metadata File]\(メタデータ ファイルから新規)** をクリックします。
 
     ![Configure single sign-on](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
@@ -211,7 +212,7 @@ Salesforce Sandbox で Azure AD のシングル サインオンを構成して�
 
     ![Configure single sign-on](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
-23. SAML のシングル サインオン設定を構成するには、**[New from Metadata File]\(メタデータ ファイルから新規\)** をクリックします。
+23. SAML のシングル サインオン設定を構成するには、**[New from Metadata File]\(メタデータ ファイルから新規)** をクリックします。
 
     ![Configure single sign-on](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
@@ -258,7 +259,7 @@ Salesforce Sandbox で Azure AD のシングル サインオンを構成して�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。

@@ -2,50 +2,52 @@
 author: PatAltimore
 ms.service: active-directory-b2c
 ms.topic: include
-ms.date: 11/03/2016
+ms.date: 11/30/2018
 ms.author: patricka
-ms.openlocfilehash: 9ad715f47f2de9c6f9032ed07232f45fb33b0114
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 0d9f0a24d84bd18bdf1fac84c744cc34a7d89ab3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50134363"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52742256"
 ---
-アプリケーションでプロファイル編集を有効にする場合は、**プロファイル編集**ポリシーを使用します。 このポリシーは、プロファイル編集中の顧客のエクスペリエンスと、正常に完了したときにアプリケーションが受け取るトークンのコンテンツを記述します。
+アプリケーションでプロファイル編集を有効にする場合は、**プロファイル編集**ユーザー フローを使用します。 このユーザー フローは、プロファイル編集中の顧客のエクスペリエンスと、正常に完了したときにアプリケーションが受け取るトークンのコンテンツを記述します。
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 
-設定のポリシー セクションで **[プロファイルの編集ポリシー]** を選択し、**[+ 追加]** をクリックします。
+**[管理]** にある **[ユーザー フロー]** を選択し、**[+ 新しいユーザー フロー]** をクリックします。
 
-![[プロファイルの編集ポリシー] を選択して [追加] をクリック](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-policy.png)
+![新しいユーザー フローを選択する](media/active-directory-b2c-create-profile-editing-policy/add-b2c-new-user-flow.png)
 
-参照するアプリケーションのポリシーの**名前**を入力します。 たとえば、「 `SiPe`」のように入力します。
+**[推奨]** タブの **[プロファイル編集]** を選択します。
 
-**[ID プロバイダー]** を選択し、**[ローカル アカウント サインイン]** チェック ボックスをオンにします。 既に構成されている場合は、ソーシャル ID プロバイダーを選択することもできます。 Click **OK**.
+参照するアプリケーションのユーザー フローの**名前**を入力します。 たとえば、「 `SiPe`」のように入力します。
 
-![ID プロバイダーとして [ローカル アカウント サインイン] を選択して [OK] をクリック](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-identity-providers.png)
+**[ID プロバイダー]** の **[ローカル アカウント サインイン]** チェック ボックスをオンにします。 既に構成されている場合は、ソーシャル ID プロバイダーを選択することもできます。
 
-**[プロファイルの属性]** を選択します。 コンシューマーがそのプロファイル内で表示したり編集したりすることのできる属性を選択します。 たとえば、**[国/リージョン]**、**[表示名]**、**[郵便番号]** の各チェック ボックスをオンにします。 Click **OK**.
+![ID プロバイダーとして [ローカル アカウント サインイン] を選択して [OK] をクリック](media/active-directory-b2c-create-profile-editing-policy/add-b2c-profile-editing-identity-providers.png)
 
-![属性を選択して [OK] をクリック](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-attributes.png)
+**[ユーザー属性]** の **[さらに表示する]** をクリックします。 **[属性を収集する]** 列で、コンシューマーがそのプロファイル内で表示したり編集したりすることのできる属性を選択します。 たとえば、**[国/リージョン]**、**[表示名]**、**[郵便番号]** の各チェック ボックスをオンにします。
 
-**[アプリケーション クレーム]** を選択します。 プロファイル編集エクスペリエンスの成功後にアプリケーションに戻される承認トークンで返される要求を選択します。 たとえば、**[表示名]** および **[郵便番号]** を選択します。
+**[要求を返す]** 列で、プロファイル編集エクスペリエンスの成功後にアプリケーションに戻される承認トークンで返される要求を選択します。 たとえば、**[表示名]** および **[郵便番号]** を選択します。
 
-![アプリケーション要求を選択して [OK] をクリック](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-application-claims.png)
+Click **OK**.
 
-**[作成]** をクリックして、ポリシーを追加します。 ポリシーが **B2C_1_SiPe** として表示されます。 名前には **B2C_1_** というプレフィックスが追加されます。
+![アプリケーション要求を選択して [OK] をクリック](media/active-directory-b2c-create-profile-editing-policy/add-b2c-user-attributes.png)
 
-**[B2C_1_SiPe]** を選択することによってポリシーを開きます。 テーブルに指定されている設定を確認し、**[今すぐ実行]** をクリックします。
+**[作成]** をクリックして、ユーザー フローを追加します。 ユーザー フローが **B2C_1_SiPe** として表示されます。 名前には **B2C_1_** というプレフィックスが追加されます。
 
-![ポリシーを選択して実行](media/active-directory-b2c-create-profile-editing-policy/run-b2c-editing-policy.png)
+**[ユーザー フローを実行します]** を選択します。 テーブルに指定されている設定を確認し、**[ユーザー フローを実行します]** をクリックします。
+
+![ユーザー フローを選択して実行](media/active-directory-b2c-create-profile-editing-policy/add-b2c-profile-editing-run-user-flow.png)
 
 | Setting      | 値  |
 | ------------ | ------ |
 | **アプリケーション** | Contoso B2C アプリ |
-| **応答 URL の選択** | `https://localhost:44316/` |
+| **応答 URL** | `https://localhost:44316/` |
 
 新しいブラウザー タブが開き、構成したプロファイル編集のコンシューマー エクスペリエンスを確認できます。
 
 > [!NOTE]
-> ポリシーの作成と更新が有効になるまで、最大で 1 分間かかります。
+> ユーザー フロー の作成と更新が有効になるまで、最大で 1 分間かかります。
 >

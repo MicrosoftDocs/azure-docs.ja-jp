@@ -5,15 +5,15 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/13/2018
+ms.date: 12/28/2018
 ms.author: adgera
 ms.custom: include file
-ms.openlocfilehash: 42aa275e692e4e2e9b7ca38825c828c1f56247fb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: e81b8fb06240d566e46ca0b45a0910e014dee329
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628166"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53995728"
 ---
 ロールベースのアクセス制御は、アクセス、アクセス許可、ロールを管理するための継承によるセキュリティ戦略です。 子孫のロールは、親のロールからアクセス許可を継承します。 アクセス許可は、親ロールから継承しないで割り当てることもできます。 必要に応じて、割り当てたロールをカスタマイズすることもできます。
 

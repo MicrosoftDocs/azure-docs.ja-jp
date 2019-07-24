@@ -5,17 +5,17 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: include
-ms.date: 05/22/2018
+ms.date: 04/08/2019
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 104fe53271e04980f2bd68876e0edb22f76a1d8c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d28244d75da540948093c775ffc525a80e362526
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34684574"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59286849"
 ---
-Azure データセンターにパッケージを発送するには、FedEx、UPS、または DHL を利用できます。 
+Azure データセンターにパッケージを発送するには、FedEx、UPS、または DHL を利用できます。 FedEx または DHL 以外の運送業者を使用する場合、以下から Azure Data Box Operations チームまでお問い合わせください。 `adbops@microsoft.com`
 
 - Microsoft がドライブを返送するときに利用する FedEx、UPS、または DHL の有効な運送業者アカウント番号を入力してください。 
     
@@ -23,3 +23,4 @@ Azure データセンターにパッケージを発送するには、FedEx、UPS
     - アジアおよびオーストラリアの場所からドライブを返送する場合は、DHL アカウント番号が推奨されます。 
     - アカウント番号をお持ちでない場合は、[FedEx](http://www.fedex.com/us/oadr/) または [DHL](http://www.dhl.com/) の運送業者アカウントを作成してください。
 - パッケージを発送する際には、[Microsoft Azure サービス条件](https://azure.microsoft.com/support/legal/services-terms/)に従う必要があります。
+- 破損や処理の遅延のリスクを避けるために、ディスクは適切に梱包してください。

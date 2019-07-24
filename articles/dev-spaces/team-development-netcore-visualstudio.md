@@ -1,85 +1,26 @@
 ---
-title: .NET Core と Visual Studio を使用する Azure Dev Spaces でのチーム開発 | Microsoft Docs
+title: .NET Core と Visual Studio を使用した Azure Dev Spaces でのチーム開発
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.component: azds-kubernetes
-author: zr-msft
-ms.author: zarhoads
-ms.date: 07/09/2018
+author: DrEsteban
+ms.author: stevenry
+ms.date: 12/09/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 0b0b80bace73798d64c198c31799fa62886f38e0
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
+ms.openlocfilehash: 58807aa5a540de6eaa9a337caa0c34fee9408296
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705363"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59361439"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Azure Dev Spaces を使用したチーム開発
 
-このチュートリアルでは、複数の開発スペースを使用して異なる開発環境で同時に作業し、個別の作業を同じクラスター内の独立した開発スペースに分離させておく方法を説明します。
-
-## <a name="call-another-container"></a>別のコンテナーを呼び出す
-このセクションでは、2 つ目のサービス (`mywebapi`) を作成し、`webfrontend` でそのサービスを呼び出します。 各サービスは別々のコンテナーで実行されます。 その後、両方のコンテナーでデバッグします。
-
-![](media/common/multi-container.png)
-
-### <a name="download-sample-code-for-mywebapi"></a>*mywebapi* のサンプル コードをダウンロードする
-時間を節約するために、GitHub リポジトリからサンプル コードをダウンロードしましょう。 https://github.com/Azure/dev-spaces に移動し、**[Clone or download]** をクリックして GitHub リポジトリをダウンロードします。 このセクションのコードは、`samples/dotnetcore/getting-started/mywebapi` にあります。
-
-### <a name="run-mywebapi"></a>*mywebapi* を実行する
-1. "*別の Visual Studio ウィンドウ*" で `mywebapi` プロジェクトを開きます。
-1. 前に `webfrontend` プロジェクトで行ったように、起動設定ドロップダウンから **[Azure Dev Spaces]** を選択します。 今回は新しい AKS クラスターを作成するのではなく、作成済みのものを選択します。 前述のように、[スペース] は既定の `default` のままにし、**[OK]** をクリックします。 [出力] ウィンドウを見ると、デバッグを開始したときの作業速度を上げるために、Visual Studio によって開発空間でこの新しいサービスの "ウォーム アップ" が開始されたことがわかります。
-1. F5 キーを押し、サービスがビルドされ、展開されるまで待ちます。 準備ができると、Visual Studio のステータス バーがオレンジ色に変わります。
-1. **[出力]** ウィンドウの **[Azre Dev Spaces for AKS]** ウィンドウに表示されるエンドポイント URL を書き留めます。 これは、 http://localhost:\<portnumber\> のように表示されます。 コンテナーはローカルで実行されているように見えますが、実際には Azure の開発空間で実行されています。
-2. `mywebapi` の準備ができたら、ブラウザーで localhost アドレスを開き、URL に `/api/values` を追加して `ValuesController` の既定の GET API を呼び出します。 
-3. すべての手順が正常に完了すると、次のような `mywebapi` サービスからの応答を確認できます。
-
-    ![](media/get-started-netcore-visualstudio/WebAPIResponse.png)
-
-### <a name="make-a-request-from-webfrontend-to-mywebapi"></a>*webfrontend* から *mywebapi* に対して要求を行う
-次に、`mywebapi` に対して要求を行う `webfrontend` のコードを記述しましょう。 `webfrontend` プロジェクトがある Visual Studio ウィンドウに切り替えます。 `HomeController.cs` ファイルで、About メソッドのコードを次のコードに*置き換えます*。
-
-   ```csharp
-   public async Task<IActionResult> About()
-   {
-      ViewData["Message"] = "Hello from webfrontend";
-
-      using (var client = new System.Net.Http.HttpClient())
-            {
-                // Call *mywebapi*, and display its response in the page
-                var request = new System.Net.Http.HttpRequestMessage();
-                request.RequestUri = new Uri("http://mywebapi/api/values/1");
-                if (this.Request.Headers.ContainsKey("azds-route-as"))
-                {
-                    // Propagate the dev space routing header
-                    request.Headers.Add("azds-route-as", this.Request.Headers["azds-route-as"] as IEnumerable<string>);
-                }
-                var response = await client.SendAsync(request);
-                ViewData["Message"] += " and " + await response.Content.ReadAsStringAsync();
-            }
-
-      return View();
-   }
-   ```
-
-前述のコード例は、`azds-route-as` ヘッダーを受信要求から送信要求に転送します。 これにより、チーム シナリオでの生産性の高い開発エクスペリエンスがどのように促進されるのかについては、後ほど説明します。
-
-### <a name="debug-across-multiple-services"></a>複数のサービスでデバッグする
-1. この時点で、`mywebapi` は引き続きデバッガーがアタッチされた状態で実行されています。 そうでない場合は、`mywebapi` プロジェクトで F5 キーを押します。
-1. `api/values/{id}` の GET 要求を処理する、`Controllers/ValuesController.cs` ファイルの `Get(int id)` メソッドにブレークポイントを設定します。
-1. 上記のコードを貼り付けた `webfrontend` プロジェクトで、GET 要求を `mywebapi/api/values` に送信する直前にブレークポイントを設定します。
-1. `webfrontend` プロジェクトで F5 キーを押します。 Visual Studio はブラウザーで適切な localhost ポートを再度開き、Web アプリが表示されます。
-1. ページの上部にある **[About]** リンクをクリックすると、`webfrontend` プロジェクトのブレークポイントがトリガーされます。 
-1. F10 キーを押して続行します。 `mywebapi` プロジェクトのブレークポイントがトリガーされます。
-1. F5 キーを押して続行し、`webfrontend` プロジェクトのコードに戻ります。
-1. F5 キーをもう一度押すと要求が完了し、ブラウザーでページが返されます。 Web アプリの About ページに、2 つのサービスによって連結されたメッセージ ("Hello from webfrontend and Hello from mywebapi") が表示されます。
-
-お疲れさまでした。 これで、各コンテナーを個別に開発して展開できる、複数コンテナー アプリケーションが作成されました。
+このチュートリアルでは、開発者のチームが Dev Spaces を使用して同じ Kubernetes クラスター内で同時に共同作業する方法を学習します。
 
 ## <a name="learn-about-team-development"></a>チーム開発について学ぶ
 
@@ -89,14 +30,13 @@ ms.locfileid: "51705363"
 * モックを作成したり、依存関係をシミュレートしたりする必要なく、コードをコミットする前に、エンド ツー エンドでコードをテストする。
 
 ### <a name="challenges-with-developing-microservices"></a>マイクロサービスの開発に伴う課題
-現時点では、サンプル アプリケーションはそれほど複雑ではありません。 しかし、実際の開発では、さらに多くのサービスが追加され、開発チームが拡大するにつれて、すぐに課題が生じます。
+現時点では、サンプル アプリケーションは複雑ではありません。 しかし、実際の開発では、さらに多くのサービスが追加され、開発チームが拡大するにつれて、すぐに課題が生じます。
 
-他の多くのサービスと対話するサービスの開発に取り組む自分の姿を想像してみてください。
-
-- 開発のためにすべてをローカルで実行するのは非現実的になる可能性があります。 開発用コンピューターに、アプリ全体を実行できるだけのリソースがない場合があります。 また、アプリに、パブリックに到達できる必要があるエンドポイントがある場合もあります (アプリで SaaS アプリからの webhook に応答するなど)。
-- 依存するサービスだけを実行するよう試みることはできますが、その場合、依存関係の完全なクロージャ (依存関係の依存関係など) を把握しておく必要があります。 あるいは、依存関係を扱っていなかったために、依存関係を構築し、実行する方法が簡単にはわからないという問題が生じます。
-- サービスの依存関係の多くをシミュレートしたり、モックを作成したりする開発者もいます。 これが役立つ場合もありますが、モックの管理に開発労力を費やすことになる可能性があります。 さらに、開発環境が運用環境と異なって見えるようになり、微妙なバグが入り込む可能性もあります。
-- その結果、あらゆる種類のエンド ツー エンド テストの実行が困難になります。 実際には、統合テストはコミット後にのみ行われる可能性があります。つまり、開発サイクルの後半に問題が発生します。
+* 開発用マシンには、必要なすべてのサービスを同時に実行するのに十分なリソースがない可能性があります。
+* 一部のサービスには、パブリックに到達可能であることが必要である可能性があります。 たとえば、サービスには、Webhook に応答するエンドポイントが必要になるかもしれません。
+* サービスのサブセットを実行したい場合は、すべてのサービス間の完全な依存関係階層を把握しておく必要があります。 この階層を判断するのは、特にサービスの数が増えるのに応じて困難になる可能性があります。
+* サービスの依存関係の多くをシミュレートしたり、モックを作成したりする開発者もいます。 これは有効な方法ですが、これらのモックの管理はすぐに開発コストに影響を与える可能性があります。 さらに、この方法では開発環境が運用環境と異なって見えるようになり、特定しにくいバグが発生するおそれもあります。
+* その結果、あらゆる種類の統合テストの実行が困難になります。 実際には、統合テストはコミット後にのみ行われる場合があります。つまり、問題は開発サイクルの後半に発生します。
 
     ![](media/common/microservices-challenges.png)
 
@@ -106,29 +46,55 @@ Azure Dev Spaces を使用して、Azure に "*共有*" 開発空間をセット
 ### <a name="work-in-your-own-space"></a>自分のスペースで作業する
 サービスのコードを開発するときには、チェックインできる状態になるまで、多くの場合、コードは良好な状態ではありません。 引き続きコードの調整とテストを繰り返し、ソリューションを試します。 Azure Dev Spaces では、**スペース**という概念を導入しています。このスペースにより、チーム メンバーの妨げになることを心配せずに、単独で作業を行うことができます。
 
-次の手順を実行して、`webfrontend` サービスと `mywebapi` サービスが、どちらも **`default` 開発空間**で実行されていることを確認します。
+## <a name="use-dev-spaces-for-team-development"></a>チーム開発に Dev Spaces を使用する
+*webfrontend* -> *mywebapi* サンプル アプリケーションを使用して、これらのアイデアを具体的な例で示します。 次のシナリオを考えてみましょう。開発者である Scott は、*mywebapi* サービス "*のみ*" を変更する必要があるとします。 *webfrontend* は、Scott が更新作業の一環として変更する必要はありません。
+
+Dev Spaces を使用 "_しない_" 場合、Scott が更新プログラムを開発およびテストするための方法として次のいくつかの方法が考えられます。そして、そのいずれも理想的ではありません。
+* すべてのコンポーネントをローカルで実行する。これには、Docker がインストールされたより強力な開発用マシン (と場合によっては MiniKube) が必要です。
+* Kubernetes クラスター上の独立した名前空間ですべてのコンポーネントを実行する。 *webfrontend* は変更されないため、独立した名前空間を使用するのはクラスター リソースの無駄です。
+* *mywebapi* のみを実行し、手動で REST 呼び出しを実行してテストする。 この種のテストでは、完全なエンド ツー エンドのフローはテストされません。
+* 開発者が *mywebapi* の別のインスタンスに要求を送信できるようにする、開発に重点を置いたコードを *webfrontend* に追加する。 このコードを追加すると、*webfrontend* サービスが複雑になります。
+
+### <a name="set-up-your-baseline"></a>ベースラインを設定する
+最初に、サービスのベースラインをデプロイする必要があります。 このデプロイは "前回の既知の正常な状態" を表すため、ローカル コードとチェックイン バージョンの動作を簡単に比較できます。 次に、このベースラインに基づいて子空間を作成して、より大きなアプリケーションのコンテキスト内で *mywebapi* に対する変更をテストできるようにします。
+
+1. [Dev Spaces サンプル アプリケーション](https://github.com/Azure/dev-spaces)を複製します。`git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
+1. リモート ブランチ *azds_updates* をチェックアウトします。`git checkout -b azds_updates origin/azds_updates`
 1. 両方のサービスの F5/デバッグ セッションをすべて閉じます。ただし、Visual Studio ウィンドウでプロジェクトを開いたままにしておきます。
-2. `mywebapi` プロジェクトがある Visual Studio ウィンドウに切り替え、Ctrl + F5 キーを押してデバッガーをアタッチせずにサービスを実行します。
-3. `webfrontend` プロジェクトがある Visual Studio ウィンドウに切り替え、Ctrl + F5 キーを押してこのサービスも同様に実行します。
+1. _mywebapi_ プロジェクトがある Visual Studio ウィンドウに切り替えます。
+1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[プロパティ]** を選択します。
+1. 左側の **[デバッグ]** タブを選択して、Azure Dev Spaces の設定を表示します。
+1. サービスに対して F5 キーまたは Ctrl + F5 キーを押したときに使用される空間を作成するために、**[変更]** を選択します。
+1. [スペース] ボックスの一覧の **[\<Create New Space…\>]\(<新しいスペースの作成...>\)** を選択します。
+1. 親空間が **\<なし\>** に設定されていることを確認し、空間名「**dev**」を入力します。 [OK] をクリックします。
+1. Ctrl + F5 キーを押して、デバッガーをアタッチせずに _mywebapi_ を実行します。
+1. _webfrontend_ プロジェクトがある Visual Studio ウィンドウに切り替え、Ctrl + F5 キーを押してこれも同様に実行します。
 
 > [!Note]
 > Ctrl + F5 キーを押して Web ページが最初に表示された後に、ブラウザーを更新することが必要な場合があります。
 
-パブリック URL を開き、Web アプリに移動するすべてのユーザーは、既定の `default` スペースを使用して両方のサービスを介して実行される、作成済みのコード パスを呼び出します。 `mywebapi` の開発を続けるとします。開発空間を使用している他の開発者の作業を妨げずに続行するにはどうすればよいのでしょうか。 それには、独自のスペースを設定することです。
+> [!TIP]
+> 上記の手順を使用すると、手動でベースラインを設定できます。ただし、チームでは CI/CD を使用して、コミットされたコードでベースラインを自動的に最新の状態に保つことをお勧めします。
+>
+> [Azure DevOps を使用した CI/CD の設定に関するガイド](how-to/setup-cicd.md)を参考にして、次の図のようなワークフローを作成します。
+>
+> ![サンプルの CI/CD の図](media/common/ci-cd-complex.png)
+
+パブリック URL を開き、Web アプリに移動するすべてのユーザーは、既定の _dev_ 空間を使用して両方のサービスを介して実行される、作成済みのコード パスを呼び出すことになります。 ここでは、*mywebapi* の開発を続けるとします。開発空間を使用している他の開発者の作業を妨げずに続行するにはどうすればよいのでしょうか。 それには、独自のスペースを設定することです。
 
 ### <a name="create-a-new-dev-space"></a>新しい開発空間を作成する
-Visual Studio 内から、F5 キーまたは Ctrl + F5 キーを押してサービスを実行するときに使用される追加のスペースを作成できます。 スペースには任意の名前を付けることができます。内容に合わせて自由に名前を付けることができます (例:  `sprint4`、`demo`)。
+Visual Studio 内から、F5 キーまたは Ctrl + F5 キーを押してサービスを実行するときに使用される追加のスペースを作成できます。 スペースには任意の名前を付けることができます。内容に合わせて自由に名前を付けることができます (例:  _sprint4_ または _demo_)。
 
 新しいスペースを作成するには、次の手順を実行します。
-1. `mywebapi` プロジェクトがある Visual Studio ウィンドウに切り替えます。
+1. *mywebapi* プロジェクトがある Visual Studio ウィンドウに切り替えます。
 2. **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[プロパティ]** を選択します。
 3. 左側の **[デバッグ]** タブを選択して、Azure Dev Spaces の設定を表示します。
 4. ここから、F5 キーまたは Ctrl + F5 キーを押したときに使用されるクラスターやスペースを変更または作成できます。 *以前に作成した Azure Dev Space が選択されていることを確認します。*
-5. [スペース] ドロップダウンで、**[<Create New Space…>]\(<新しいスペースの作成…>\)** を選択します。
+5. [スペース] ボックスの一覧の **[\<Create New Space…\>]\(<新しいスペースの作成...>\)** を選択します。
 
     ![](media/get-started-netcore-visualstudio/Settings.png)
 
-6. **[空間の追加]** ダイアログで、親の空間を **[default]\(既定\)** に設定し、新しい空間の名前を入力します。 誰が作業しているスペースであるかを同僚がわかるように、新しいスペースに自分の名前 (例: "scott") を使用できます。 Click **OK**.
+6. **[空間の追加]** ダイアログで、親の空間を **dev** に設定し、新しい空間の名前を入力します。 誰が作業しているスペースであるかを同僚がわかるように、新しいスペースに自分の名前 (例: "scott") を使用できます。 Click **OK**.
 
     ![](media/get-started-netcore-visualstudio/AddSpace.png)
 
@@ -138,7 +104,7 @@ Visual Studio 内から、F5 キーまたは Ctrl + F5 キーを押してサー�
 
 ### <a name="update-code-for-mywebapi"></a>*mywebapi* のコードを更新する
 
-1. `mywebapi` プロジェクトで、`Controllers/ValuesController.cs` ファイルの `string Get(int id)` メソッドのコードを次のように変更します。
+1. *mywebapi* プロジェクトで、`Controllers/ValuesController.cs` ファイル内の `string Get(int id)` メソッドのコードを次のように変更します。
  
     ```csharp
     [HttpGet("{id}")]
@@ -149,18 +115,20 @@ Visual Studio 内から、F5 キーまたは Ctrl + F5 キーを押してサー�
     ```
 
 2. この更新されたコード ブロックにブレークポイントを設定します (既に設定されている場合があります)。
-3. F5 キーを押して、`mywebapi` サービスを開始します。 これにより、選択したスペース (ここでは `scott`) を使用してクラスターでサービスが開始されます。
+3. F5 キーを押して _mywebapi_ サービスを開始します。これにより、選択した空間を使用してクラスターでサービスが開始されます。 この場合の選択した空間は _scott_ です。
 
-さまざまなスペースのしくみを理解するうえで役立つ図を次に示します。 紫色のパスは、`default` スペースを使用した要求を示しています。この既定のパスは、URL の先頭にスペースが追加されていない場合に使用されます。 ピンク色のパスは、`default/scott` スペースを使用した要求を示しています。
+さまざまなスペースのしくみを理解するうえで役立つ図を次に示します。 紫色のパスは、_dev_ 空間を使用した要求を示しています。これは、URL の先頭に空間が追加されていない場合に使用される既定のパスです。 ピンク色のパスは、_dev/scott_ 空間を使用した要求を示しています。
 
 ![](media/common/Space-Routing.png)
 
 Azure Dev Spaces のこの組み込み機能を使用すると、共有環境でコードをエンド ツー エンドでテストできます。各開発者が自分のスペースにサービスの完全なスタックを再作成する必要はありません。 このガイドの以前の手順で示したように、このルーティングではアプリ コードで伝達ヘッダーを転送する必要があります。
 
-### <a name="test-code-running-in-the-defaultscott-space"></a>`default/scott` スペースで実行されているコードをテストする
-新しいバージョンの `mywebapi` を `webfrontend` と共にテストするには、ブラウザーで `webfrontend` のパブリック アクセス ポイントの URL (例: http://webfrontend.123456abcdef.eastus.aksapp.io) を開き、About ページに移動します。 "Hello from webfrontend and Hello from mywebapi" という元のメッセージが表示されます。
+### <a name="test-code-running-in-the-devscott-space"></a>_dev/scott_ 空間で実行されているコードをテストする
+*mywebapi* の新しいバージョンと *webfrontend* をテストするには、ブラウザーで *webfrontend* のパブリック アクセス ポイントの URL (たとえば、 http://dev.webfrontend.123456abcdef.eus.azds.io) を開き、About ページに移動します。 "Hello from webfrontend and Hello from mywebapi" という元のメッセージが表示されます。
 
-URL に "scott.s." の部分を追加して、 http://scott.s.webfrontend.123456abcdef.eastus.aksapp.io になるようにし、ブラウザーを更新します。 `mywebapi` プロジェクトで設定したブレークポイントに到達します。 F5 キーを押して続行すると、"Hello from webfrontend and mywebapi now says something new" という新しいメッセージがブラウザーに表示されます。 これは、`mywebapi` で更新したコードのパスが `default/scott` スペースで実行されているためです。
+URL に "scott.s." の部分を追加して、 http://scott.s.dev.webfrontend.123456abcdef.eus.azds.io になるようにし、ブラウザーを更新します。 *mywebapi* プロジェクトで設定したブレークポイントに到達します。 F5 キーを押して続行すると、"Hello from webfrontend and mywebapi now says something new" という新しいメッセージがブラウザーに表示されます。 これは、*mywebapi* で更新したコードのパスが _dev/scott_ 空間で実行されているためです。
+
+最新の変更を常に含む _dev_ 空間があり、このチュートリアルのセクションで説明されているようにアプリケーションが DevSpace の空間ベースのルーティングを利用するように設計されていると仮定した場合、大規模なアプリケーションのコンテキスト内で新機能をテストする際に Dev Spaces がいかに役立つかは容易に想像できます。 "_すべての_" サービスをプライベート空間にデプロイする代わりに、_dev_ から派生するプライベート空間を作成し、実際に作業しているサービスのみを "アップ" することができます。 Dev Spaces ルーティング インフラストラクチャでは、_dev_ 空間で実行されている最新バージョンを既定で使用する一方で、プライベート空間で検出できる限りのサービスを利用して、残りの処理が行われます。 さらにすばらしいことに、"_複数の_" 開発者が互いに影響を与えることなく、自分の空間で同時に、異なるサービスをアクティブに開発することができます。
 
 ### <a name="well-done"></a>お疲れさまでした。
 ファースト ステップ ガイドを修了しました。 以下の方法について学習しました。
@@ -170,6 +138,7 @@ URL に "scott.s." の部分を追加して、 http://scott.s.webfrontend.123456
 > * コンテナー内のコードを繰り返し開発する。
 > * 2 つのサービスを個別に開発し、Kubernetes の DNS サービス検索を使用して別のサービスを呼び出す。
 > * チーム環境でコードを生産的に開発してテストする。
+> * Dev Spaces を使用して機能のベースラインを確立し、より大規模なマイクロサービス アプリケーションのコンテキスト内で、分離された変更を簡単にテストする
 
 Azure Dev Spaces の概要を理解できたら、[開発空間をチーム メンバーと共有](how-to/share-dev-spaces.md)し、共同作業の容易さについてチームの理解を深めましょう。
 

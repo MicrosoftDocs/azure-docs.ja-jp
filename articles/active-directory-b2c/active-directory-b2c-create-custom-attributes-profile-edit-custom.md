@@ -3,21 +3,21 @@ title: Azure Active Directory B2C でカスタム ポリシーに独自の属性
 description: 拡張プロパティおよびカスタム属性を使用し、ユーザー インターフェイスにそれらを含めるチュートリアル。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 5513e0ff434862ea7eee42cb94ff2a0f67f6d390
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.subservice: B2C
+ms.openlocfilehash: 41c3db1c9a7295d939aa34a36f86c0dfa9fecd91
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338746"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59797126"
 ---
-# <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: カスタム プロファイル編集ポリシーのカスタム属性を使用
+# <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C:カスタム プロファイル編集ポリシーでカスタム属性を使用する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -46,7 +46,6 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 >Azure AD B2C ディレクトリには、通常、`b2c-extensions-app` という名前の Web アプリが含まれています。 このアプリケーションは、主に、Azure Portal で作成されたカスタム要求用の B2C 組み込みポリシーによって使用されます。 このアプリケーションを使用して拡張プロパティを B2C カスタム ポリシーに登録することは、上級ユーザーのみにお勧めします。  
 手順については、この記事の「**次のステップ**」のセクションをご覧ください。
 
-
 ## <a name="create-a-new-application-to-store-the-extension-properties"></a>拡張プロパティを格納するための新しいアプリケーションを作成する
 
 1. ブラウズ セッションを開いて [Azure Portal](https://portal.azure.com) に移動します。 構成する B2C ディレクトリの管理者資格情報を使用してサインインします。
@@ -56,51 +55,49 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
     * Web アプリケーションの名前: **WebApp-GraphAPI-DirectoryExtensions**。
     * アプリケーションの種類: **Web アプリ/API**。
     * サインオン URL: **https://{tenantName}.onmicrosoft.com/WebApp-GraphAPI-DirectoryExtensions**。
-5. **作成**を選択します。
+5. **作成** を選択します。
 6. 新しく作成された Web アプリケーションを選択します。
 7. **［設定］** > **［必要なアクセス許可］** の順に選択します。
 8. API **Windows Azure Active Directory** を選択します。
-9. [アプリケーションのアクセス許可] で **[ディレクトリ データの読み取りと書き込み]** チェック ボックスをオンにます。 次に、**[保存]** を選択します。
+9. [アプリケーションのアクセス許可] の **[ディレクトリ データの読み取りと書き込み]** チェック ボックスをオンにします。 次に、**[保存]** を選択します。
 10. **[アクセス許可の付与]** を選択し、確認のために **[はい]** をクリックします。
 11. 次の識別子をクリップボードにコピーして保存します。
     * **アプリケーション ID**。 例: `103ee0e6-f92d-4183-b576-8c3739027780`.
     * **オブジェクト ID**。 例: `80d8296a-da0a-49ee-b6ab-fd232aa45201`.
 
-
-
 ## <a name="modify-your-custom-policy-to-add-the-applicationobjectid"></a>カスタム ポリシーを変更して **ApplicationObjectId** を追加する
 
-「[Azure Active Directory B2C: カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」に記載の手順を行った場合は、**TrustFrameworkBase.xml**、**TrustFrameworkExtensions.xml**、**SignUpOrSignin.xml**、**ProfileEdit.xml**、**PasswordReset.xml** という名前の[サンプル ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip)がダウンロードおよび変更されています。 この手順では、これらのファイルにさらに変更を加えます。
+「[Azure Active Directory B2C: カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」の手順に従った場合は、**TrustFrameworkBase.xml**、**TrustFrameworkExtensions.xml**、**SignUpOrSignin.xml**、**ProfileEdit.xml**、**PasswordReset.xml** という名前の[サンプル ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip)をダウンロードして変更しました。 この手順では、これらのファイルにさらに変更を加えます。
 
 * 次の例のように、**TrustFrameworkBase.xml** ファイルを開いて `Metadata` セクションを追加します。 `ApplicationObjectId` の値には以前に記録したオブジェクト ID、`ClientId` の値には以前に記録したアプリケーション ID を挿入します。 
 
     ```xml
     <ClaimsProviders>
-        <ClaimsProvider>
-          <DisplayName>Azure Active Directory</DisplayName>
-            <TechnicalProfile Id="AAD-Common">
+      <ClaimsProvider>
+        <DisplayName>Azure Active Directory</DisplayName>
+        <TechnicalProfile Id="AAD-Common">
           <DisplayName>Azure Active Directory</DisplayName>
           <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-              
+
           <!-- Provide objectId and appId before using extension properties. -->
           <Metadata>
             <Item Key="ApplicationObjectId">insert objectId here</Item>
             <Item Key="ClientId">insert appId here</Item>
           </Metadata>
           <!-- End of changes -->
-              
+
           <CryptographicKeys>
             <Key Id="issuer_secret" StorageReferenceId="TokenSigningKeyContainer" />
           </CryptographicKeys>
           <IncludeInSso>false</IncludeInSso>
           <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
         </TechnicalProfile>
-        </ClaimsProvider>
+      </ClaimsProvider>
     </ClaimsProviders>
     ```
 
 > [!NOTE]
-> **TechnicalProfile** が新しく作成された拡張プロパティに初めて書き込むときに、1 回限りのエラーが発生することがあります。 拡張機能プロパティは、初めて使われるときに作成されます。  
+> **TechnicalProfile** が新しく作成された拡張プロパティに初めて書き込むときに、1 回限りのエラーが発生することがあります。 拡張機能プロパティは、初めて使われるときに作成されます。
 
 ## <a name="use-the-new-extension-property-or-custom-attribute-in-a-user-journey"></a>ユーザー体験で新しい拡張機能プロパティまたはカスタム属性を使用する
 
@@ -130,13 +127,13 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
     ```xml
     <BuildingBlocks>
-      <ClaimsSchema> 
-        <ClaimType Id="extension_loyaltyId"> 
-          <DisplayName>Loyalty Identification Tag</DisplayName> 
-          <DataType>string</DataType> 
-          <UserHelpText>Your loyalty number from your membership card</UserHelpText> 
-          <UserInputType>TextBox</UserInputType> 
-        </ClaimType> 
+      <ClaimsSchema>
+        <ClaimType Id="extension_loyaltyId">
+          <DisplayName>Loyalty Identification Tag</DisplayName>
+          <DataType>string</DataType>
+          <UserHelpText>Your loyalty number from your membership card</UserHelpText>
+          <UserInputType>TextBox</UserInputType>
+        </ClaimType>
       </ClaimsSchema>
     </BuildingBlocks>
     ```
@@ -157,7 +154,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
         <InputClaim ClaimTypeReferenceId="alternativeSecurityId" />
         <InputClaim ClaimTypeReferenceId="userPrincipalName" />
         <InputClaim ClaimTypeReferenceId="givenName" />
-            <InputClaim ClaimTypeReferenceId="surname" />
+        <InputClaim ClaimTypeReferenceId="surname" />
 
         <!-- Add the loyalty identifier -->
         <InputClaim ClaimTypeReferenceId="extension_loyaltyId"/>
@@ -167,7 +164,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
         <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
         <OutputClaim ClaimTypeReferenceId="givenName" />
         <OutputClaim ClaimTypeReferenceId="surname" />
-        
+
         <!-- Add the loyalty identifier -->
         <OutputClaim ClaimTypeReferenceId="extension_loyaltyId"/>
         <!-- End of changes -->
@@ -263,44 +260,43 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 1. **TechnicalProfile** に従って変更することで、ソーシャル アカウントにサインインするフローに新しい要求を追加します。 ソーシャル アカウントおよびフェデレーション アカウントでは、次の 2 つの **TechnicalProfile** を使用してサインインします。 これらは、ユーザー オブジェクトのロケーターとして **alternativeSecurityId** を使用してユーザー データの書き込みおよび読み取りを行います。
 
-  ```xml
+   ```xml
     <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 
     <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
-  ```
+   ```
 
 2. 組み込みポリシーとカスタム ポリシー間で同じ拡張属性を使用します。 ポータルのエクスペリエンスを使用して拡張属性 (カスタム属性とも呼ばれます) を追加すると、これらの属性が、すべての B2C テナントに存在する **b2c-extensions-app** を使用して登録されます。 カスタム ポリシーで拡張属性を使用するには、次の手順を行います。
 
-  a. portal.azure.com の B2C テナント内で、**[Azure Active Directory]** に移動し、**[アプリの登録]** を選択します。  
-  b. 自分の **b2c-extensions-app** を検索して選択します。  
-  c. **Essentials** で、**アプリケーション ID** と**オブジェクト ID** を入力します。  
-  d. これらを、以下のように **AAD-Common** TechnicalProfile メタデータに含めます。  
+   a. portal.azure.com の B2C テナント内で、**[Azure Active Directory]** に移動し、**[アプリの登録]** を選択します。  
+   b. 自分の **b2c-extensions-app** を検索して選択します。  
+   c. **Essentials** で、**アプリケーション ID** と**オブジェクト ID** を入力します。  
+   d. これらを、以下のように **AAD-Common** TechnicalProfile メタデータに含めます。  
 
-  ```xml
+   ```xml
       <ClaimsProviders>
         <ClaimsProvider>
-              <DisplayName>Azure Active Directory</DisplayName>
-            <TechnicalProfile Id="AAD-Common">
-                <DisplayName>Azure Active Directory</DisplayName>
-                <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-                <!-- Provide objectId and appId before using extension properties. -->
-                <Metadata>
-                  <Item Key="ApplicationObjectId">insert objectId here</Item> <!-- This is the "Object ID" from the "b2c-extensions-app"-->
-                  <Item Key="ClientId">insert appId here</Item> <!--This is the "Application ID" from the "b2c-extensions-app"-->
-                </Metadata>
-  ```
+          <DisplayName>Azure Active Directory</DisplayName>
+          <TechnicalProfile Id="AAD-Common">
+            <DisplayName>Azure Active Directory</DisplayName>
+            <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+            <!-- Provide objectId and appId before using extension properties. -->
+            <Metadata>
+              <Item Key="ApplicationObjectId">insert objectId here</Item> <!-- This is the "Object ID" from the "b2c-extensions-app"-->
+              <Item Key="ClientId">insert appId here</Item> <!--This is the "Application ID" from the "b2c-extensions-app"-->
+            </Metadata>
+   ```
 
 3. ポータルのエクスペリエンスとの整合性を保ちます。 カスタム ポリシーで使用する前に、ポータルの UI を使用してこれらの属性を作成します。 ポータルで属性 **ActivationStatus** を作成するときに、次のようにこの属性を参照する必要があります。
 
-  ```
-  extension_ActivationStatus in the custom policy.
-  extension_<app-guid>_ActivationStatus via Graph API.
-  ```
-
+   ```
+   extension_ActivationStatus in the custom policy.
+   extension_<app-guid>_ActivationStatus via Graph API.
+   ```
 
 ## <a name="reference"></a>リファレンス
 
-拡張プロパティの詳細については、記事「[ディレクトリ スキーマ拡張機能 | Graph API の概念](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)」を参照してください。
+拡張プロパティの詳細については、記事「[ディレクトリ スキーマ拡張機能 | Graph API の概念](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions)」を参照してください。
 
 > [!NOTE]
 > * **TechnicalProfile** は、エンドポイントの名前、メタデータ、およびプロトコルを定義する要素の種類 (または関数) です。 **TechnicalProfile** には、Identity Experience Framework によって実行される要求の交換が詳細に示されています。 この関数がオーケストレーションの手順または別の **TechnicalProfile** から呼び出されると、**InputClaims** と **OutputClaims** が呼び出し元によってパラメーターとして指定されます。  

@@ -2,21 +2,23 @@
 title: Azure Site Recovery を使用したオンプレミスの物理サーバーの Azure へのディザスター リカバリーのために構成サーバーを管理する | Microsoft Docs
 description: この記事では、物理サーバーの Azure へのディザスター リカバリーのために Azure Site Recovery 構成サーバーを管理する方法について説明します。
 services: site-recovery
-author: Rajeswari-Mamilla
+author: mayurigupta13
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/29/2018
-ms.author: ramamill
-ms.openlocfilehash: 0e8dbf47c40339c90a0e28c3ef497a8da963e481
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 02/28/2019
+ms.author: mayg
+ms.openlocfilehash: 10bec01a3b90776c8dd8c32a74ba7754264da131
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231023"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59050137"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>物理サーバー ディザスター リカバリー用の構成サーバーの管理
 
 Azure への物理サーバーのディザスター リカバリーに [Azure Site Recovery](site-recovery-overview.md) サービスを使うときは、オンプレミスの構成サーバーを設定します。 構成サーバーは、オンプレミスのマシンと Azure の間の通信を調整し、データのレプリケーションを管理します。 この記事は、展開後に構成サーバーを管理するための一般的なタスクをまとめたものです。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +40,7 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
 | NIC の種類 | VMXNET3 (VMware VM としてデプロイされている場合) |
 | IP アドレスの種類 | 静的 |
 | インターネットへのアクセス | サーバーは、次の URL にアクセスできる必要があります。 <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (スケールアウト プロセス サーバーには必要なし) <br> - time.nist.gov <br> - time.windows.com |
-| ポート | 443 (コントロール チャネルのオーケストレーション)<br>9443 (データ転送)|
+| Port | 443 (コントロール チャネルのオーケストレーション)<br>9443 (データ転送)|
 
 ## <a name="download-the-latest-installation-file"></a>最新のインストール ファイルのダウンロード
 
@@ -50,7 +52,7 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
 4. **[サーバーの追加]** ページで、[ダウンロード] をクリックして登録キーをダウンロードします。 このキーは、構成サーバーのインストール中に Azure Site Recovery サービスに登録するために必要になります。
 5. **[Download the Microsoft Azure Site Recovery Unified Setup (Microsoft Azure Site Recovery 統合セットアップのダウンロード)]** リンクをクリックして構成サーバーの最新バージョンをダウンロードします。
 
-  ![ダウンロード ページ](./media/physical-manage-configuration-server/downloadcs.png)
+   ![ダウンロード ページ](./media/physical-manage-configuration-server/downloadcs.png)
 
 
 ## <a name="install-and-register-the-server"></a>サーバーをインストールして登録する
@@ -77,7 +79,7 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
 9. **[インストール場所]** で、バイナリをインストールしキャッシュを格納する場所を選択します。 選択するドライブには使用可能なディスク領域が 5 GB 以上必要ですが、600 GB 以上の空き領域があるキャッシュ ドライブを使用することをお勧めします。
 
     ![インストール場所](./media/physical-manage-configuration-server/combined-wiz8.png)
-10. **[ネットワークの選択]** で、構成サーバーがレプリケーション データを送受信するリスナー (ネットワーク アダプターと SSL ポート) を指定します。 既定では、ポート 9443 がレプリケーション トラフィックの送受信用に使用されます。このポート番号は、実際の環境の要件に合わせて変更できます。 ポート 9443 に加え、ポート 443 も開きます。このポートは、Web サーバーがレプリケーション操作を調整するために使用されます。 ポート 443 はレプリケーション トラフィックの送受信用に使用しないでください。
+10. **[ネットワークの選択]** で、最初に、モビリティ サービスの検出とソース マシンへのプッシュ インストールのために組み込みプロセス サーバーによって使用される NIC を選択し、次に、構成サーバーによって Azure との接続に使用される NIC を選択します。 既定では、ポート 9443 がレプリケーション トラフィックの送受信用に使用されます。このポート番号は、実際の環境の要件に合わせて変更できます。 ポート 9443 に加え、ポート 443 も開きます。このポートは、Web サーバーがレプリケーション操作を調整するために使用されます。 ポート 443 はレプリケーション トラフィックの送受信用に使用しないでください。
 
     ![[ネットワークの選択]](./media/physical-manage-configuration-server/combined-wiz9.png)
 
@@ -106,13 +108,13 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
 
 ### <a name="parameters"></a>parameters
 
-|パラメーター名| type | 説明| 値|
+|パラメーター名| Type | 説明| 値|
 |-|-|-|-|
 | /ServerMode|必須|構成サーバーとプロセス サーバーの両方をインストールするか、プロセス サーバーだけをインストールするかを指定します。|CS<br>PS|
 |/InstallLocation|必須|コンポーネントがインストールされているフォルダー。| コンピューター上の任意のフォルダー|
 |/MySQLCredsFilePath|必須|MySQL サーバーの資格情報が保存されているファイルのパス。|ファイルは下記の形式である必要があります。|
 |/VaultCredsFilePath|必須|コンテナーの資格情報ファイルのパス。|有効なファイル パス|
-|/EnvType|必須|保護する環境の種類。 |VMware<br>NonVMware|
+|/EnvType|必須|保護する環境の種類 |VMware<br>NonVMware|
 |/PSIP|必須|レプリケーション データの転送に使用する NIC の IP アドレス。| 任意の有効な IP アドレス|
 |/CSIP|必須|構成サーバーがリッスンする NIC の IP アドレス。| 任意の有効な IP アドレス|
 |/PassphraseFilePath|必須|パスフレーズ ファイルの場所の完全パス。|有効なファイル パス|
@@ -128,15 +130,15 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
 ### <a name="create-file-input-for-mysqlcredsfilepath"></a>MYSQLCredsFilePath のファイル入力を作成する
 
 MySQLCredsFilePath パラメーターは、入力としてファイルを受け取ります。 次の形式を使用してファイルを作成し、これを入力 MySQLCredsFilePath パラメーターとして渡します。
-```
+```ini
 [MySQLCredentials]
-MySQLRootPassword = "Password>"
+MySQLRootPassword = "Password"
 MySQLUserPassword = "Password"
 ```
 ### <a name="create-file-input-for-proxysettingsfilepath"></a>ProxySettingsFilePath のファイル入力を作成する
 ProxySettingsFilePath パラメーターは、入力としてファイルを受け取ります。 次の形式を使用してファイルを作成し、これを入力 ProxySettingsFilePath パラメーターとして渡します。
 
-```
+```ini
 [ProxySettings]
 ProxyAuthentication = "Yes/No"
 Proxy IP = "IP Address"
@@ -149,43 +151,44 @@ ProxyPassword="Password"
 次のように、構成サーバー マシンのプロキシ設定を変更できます。
 
 1. 構成サーバーにログオンします。
-2. ショートカットを使用して cspsconfigtool.exe を起動します。
+2. デスクトップのショートカットを使用して cspsconfigtool.exe を起動します。
 3. **[Vault Registration (コンテナーの登録)]** タブをクリックします。
 4. ポータルから新しいコンテナー登録ファイルをダウンロードし、これをツールへの入力として指定します。
 
-  ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
+   ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. 新しいプロキシの詳細を入力し、**[登録]** をクリックします。
 6. 管理者として PowerShell コマンド ウィンドウを開きます。
 7. 次のコマンドを実行します。
-  ```
-  $pwd = ConvertTo-SecureString -String MyProxyUserPassword
-  Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
-  net stop obengine
-  net start obengine
-  ```
 
-  >[!WARNING]
-  追加のプロセス サーバーがこの構成サーバーに接続されている場合は、デプロイ内の[すべてのスケールアウト プロセス サーバーでプロキシ設定を修正する](vmware-azure-manage-process-server.md#modify-proxy-settings-for-an-on-premises-process-server)必要があります。
+   ```powershell
+   $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
+   Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
+   net stop obengine
+   net start obengine
+   ```
+
+   > [!WARNING]
+   > 追加のプロセス サーバーがこの構成サーバーに接続されている場合は、デプロイ内の[すべてのスケールアウト プロセス サーバーでプロキシ設定を修正する](vmware-azure-manage-process-server.md#modify-proxy-settings-for-an-on-premises-process-server)必要があります。
 
 ## <a name="reregister-a-configuration-server-with-the-same-vault"></a>同じコンテナーに構成サーバーを再登録する
-  1. 構成サーバーにログインします。
-  2. デスクトップのショートカットを使用して cspsconfigtool.exe を起動します。
-  3. **[Vault Registration (コンテナーの登録)]** タブをクリックします。
-  4. ポータルから新しい登録ファイルをダウンロードし、これをツールへの入力として指定します。
-        ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
-  5. プロキシ サーバーの詳細を入力し、**[登録]** をクリックします。  
-  6. 管理者の PowerShell コマンド ウィンドウを開きます。
-  7. 次のコマンドを実行します。
+1. 構成サーバーにログインします。
+2. デスクトップのショートカットを使用して cspsconfigtool.exe を起動します。
+3. **[Vault Registration (コンテナーの登録)]** タブをクリックします。
+4. ポータルから新しい登録ファイルをダウンロードし、これをツールへの入力として指定します。
+      ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
+5. プロキシ サーバーの詳細を入力し、**[登録]** をクリックします。  
+6. 管理者の PowerShell コマンド ウィンドウを開きます。
+7. 次のコマンドを実行します。
 
-      ```
-      $pwd = ConvertTo-SecureString -String MyProxyUserPassword
-      Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
-      net stop obengine
-      net start obengine
-      ```
+    ```powershell
+    $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
+    Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
+    net stop obengine
+    net start obengine
+    ```
 
-  >[!WARNING]
-  複数のプロセス サーバーがある場合は、[それらを再登録](vmware-azure-manage-process-server.md#reregister-a-process-server)必要があります。
+   > [!WARNING]
+   > 複数のプロセス サーバーがある場合は、[それらを再登録](vmware-azure-manage-process-server.md#reregister-a-process-server)必要があります。
 
 ## <a name="register-a-configuration-server-with-a-different-vault"></a>構成サーバーを別のコンテナーに登録する
 
@@ -205,9 +208,9 @@ ProxyPassword="Password"
 6. プロキシ サーバーの詳細を入力し、**[登録]** をクリックします。  
 7. 管理者の PowerShell コマンド ウィンドウを開きます。
 8. 次のコマンドを実行します。
-    ```
+    ```powershell
     $pwd = ConvertTo-SecureString -String MyProxyUserPassword
-    Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
+    Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $pwd
     net stop obengine
     net start obengine
     ```
@@ -245,47 +248,47 @@ ProxyPassword="Password"
 4. **[はい]** をクリックして、サーバーの削除を確認します。
 
 ### <a name="uninstall-the-configuration-server-and-its-dependencies"></a>構成サーバーとその依存関係をアンインストールする
-  > [!TIP]
-  Azure Site Recovery で構成サーバーを再利用する予定がある場合は、手順 4. に直接スキップできます。
+> [!TIP]
+>   Azure Site Recovery で構成サーバーを再利用する予定がある場合は、手順 4. に直接スキップできます。
 
 1. 管理者として構成サーバーにログオンします。
 2. コントロール パネルを開き、[プログラム]、[プログラムのアンインストール] の順に移動します。
 3. 次の順序でプログラムをアンインストールします。
-  * Microsoft Azure Recovery Services エージェント
-  * Microsoft Azure Site Recovery Mobility Service/マスター ターゲット サーバー
-  * Microsoft Azure Site Recovery プロバイダー
-  * Microsoft Azure Site Recovery 構成サーバー/プロセス サーバー
-  * Microsoft Azure Site Recovery 構成サーバーの依存関係
-  * MySQL Server 5.5
+   * Microsoft Azure Recovery Services エージェント
+   * Microsoft Azure Site Recovery Mobility Service/マスター ターゲット サーバー
+   * Microsoft Azure Site Recovery プロバイダー
+   * Microsoft Azure Site Recovery 構成サーバー/プロセス サーバー
+   * Microsoft Azure Site Recovery 構成サーバーの依存関係
+   * MySQL Server 5.5
 4. 管理者のコマンド プロンプトで、次のコマンドを実行します。
-  ```
-  reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
-  ```
+   ```
+   reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
+   ```
 
 ## <a name="delete-or-unregister-a-configuration-server-powershell"></a>構成サーバーの削除または登録解除 (PowerShell)
 
-1. Azure PowerShell モジュールを[インストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0)します。
+1. Azure PowerShell モジュールを[インストール](https://docs.microsoft.com/powershell/azure/install-Az-ps)します。
 2. 次のコマンドを使用して、Azure アカウントにログインします。
     
-    `Connect-AzureRmAccount`
+    `Connect-AzAccount`
 3. コンテナーが存在するサブスクリプションを選択します。
 
-     `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
+     `Get-AzSubscription –SubscriptionName <your subscription name> | Select-AzSubscription`
 3.  コンテナーのコンテキストを設定します。
     
-    ```
-    $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
-    Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
+    ```powershell
+    $Vault = Get-AzRecoveryServicesVault -Name <name of your vault>
+    Set-AzSiteRecoveryVaultSettings -ARSVault $Vault
     ```
 4. 構成サーバーを取得して選択します。
 
-    `$fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
+    `$Fabric = Get-AzSiteRecoveryFabric -FriendlyName <name of your configuration server>`
 6. 構成サーバーを削除します。
 
-    `Remove-AzureRmSiteRecoveryFabric -Fabric $fabric [-Force] `
+    `Remove-AzSiteRecoveryFabric -Fabric $Fabric [-Force]`
 
 > [!NOTE]
-> Remove-AzureRmSiteRecoveryFabric の **-Force** オプションを使用すると、構成サーバーを強制的に削除できます。
+> Remove-AzSiteRecoveryFabric の **-Force** オプションを使用すると、構成サーバーを強制的に削除できます。
 
 ## <a name="renew-ssl-certificates"></a>SSL 証明書を更新する
 構成サーバーには Web サーバーが組み込まれていて、この Web サーバーにより、構成サーバーに接続されたモビリティ サービス、プロセス サーバー、マスター ターゲット サーバーのアクティビティが調整されます。 Web サーバーは、SSL 証明書を使ってクライアントを認証します。 証明書は 3 年で有効期限が切れ、いつでも更新できます。

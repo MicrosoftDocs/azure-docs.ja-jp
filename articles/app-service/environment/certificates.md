@@ -1,5 +1,5 @@
 ---
-title: 証明書と Azure App Service Environment
+title: 証明書と App Service Environment - Azure
 description: ASE における証明書に関連するさまざまなトピックについて説明します
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: 3d417d560d8a88100f31def27c7db5f9b2493062
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.custom: seodec18
+ms.openlocfilehash: bcb0c806d916b9dff4461cad829a1d75e8df7cf6
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167797"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271897"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>証明書と App Service Environment 
 
@@ -32,8 +33,8 @@ ASE は、シングル テナント システムです。 シングル テナン
 
 ILB ASE で証明書を構成するには、次の 2 つのオプションがあります。  ILB ASE に既定のワイルドカード証明書を設定するか、ASE 内の個別の Web アプリに証明書を設定します。  どちらを選択した場合でも、次の証明書属性を適切に構成する必要があります。
 
-- **Subject**: ワイルドカード ILB ASE 証明書用に、この属性を *.[your-root-domain-here] に設定する必要があります。 アプリ用に証明書を作成する場合は、これは [appname].[your-root-domain-here] にする必要があります。
-- **Subject Alternative Name**: この属性には、ワイルドカード ILB ASE 証明書用に、*.[your-root-domain-here] と *.scm.[your-root-domain-here] の両方を含める必要があります。 アプリ用に証明書を作成する場合は、これを [appname].[your-root-domain-here] と [appname].scm.[your-root-domain-here] にする必要があります。
+- **Subject:** この属性は、ワイルドカード ILB ASE 証明書用に *.[your-root-domain-here] に設定する必要があります。 アプリ用に証明書を作成する場合は、これは [appname].[your-root-domain-here] にする必要があります。
+- **Subject Alternative Name:** この属性には、ワイルドカード ILB ASE 証明書用に *.[your-root-domain-here] と *.scm.[your-root-domain-here] の両方を含める必要があります。 アプリ用に証明書を作成する場合は、これを [appname].[your-root-domain-here] と [appname].scm.[your-root-domain-here] にする必要があります。
 
 3 番目のバリアントとして、ワイルドカード参照を使用する代わりに、証明書の SAN 内の個別のアプリ名をすべて含む ILB ASE 証明書を作成することができます。 この方法の問題は、ASE に配置するアプリの名前を事前にすべて把握しておく必要があることです。そうしないと、ILB ASE 証明書を常に更新し続ける必要があります。
 

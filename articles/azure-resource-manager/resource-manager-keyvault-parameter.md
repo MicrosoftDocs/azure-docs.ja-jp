@@ -10,36 +10,39 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2018
+ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 06719f3a92dae805081ea85c346df97ebed0e0dc
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 93b92a8a3b8aacd1f665725643314858fe92ad3c
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078072"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233770"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す
 
-デプロイ時に、セキュリティで保護された値 (パスワードなど) をパラメーターとして渡す必要がある場合は、[Azure Key Vault](../key-vault/key-vault-whatis.md) からその値を取得できます。 値を取得するには、キー コンテナーとパラメーター ファイル内のシークレットを参照します。 参照するのは Key Vault ID だけであるため、値が公開されることはありません。 キー コンテナーは、デプロイ先のリソース グループとは異なるサブスクリプションに存在していてもかまいません。
+パラメーター ファイルに安全な値 (パスワードなど) を直接置く代わりに、デプロイ時に、[Azure Key Vault](../key-vault/key-vault-whatis.md) から値を取得できます。 値を取得するには、キー コンテナーとパラメーター ファイル内のシークレットを参照します。 参照するのは Key Vault ID だけであるため、値が公開されることはありません。 キー コンテナーは、デプロイ先のリソース グループとは異なるサブスクリプションに存在していてもかまいません。
 
-## <a name="deploy-a-key-vault-and-secret"></a>Key Vault とシークレットのデプロイ
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-キー コンテナーとシークレットを作成するには、Azure CLI または PowerShell のいずれかを使用します。 `enabledForTemplateDeployment` はキー コンテナーのプロパティです。 Resource Manager のデプロイからこのキー コンテナー内のシークレットにアクセスするには、`enabledForTemplateDeployment` を `true` にする必要があります。 
+## <a name="deploy-key-vaults-and-secrets"></a>キー コンテナーとシークレットをデプロイする
 
-次のサンプルの Azure PowerShell と Azure CLI スクリプトは、キー コンテナーとシークレットを作成する方法を示しています。
+Key Vault とシークレットを作成する方法については、次をご覧ください。
 
-Azure CLI では、次を使用します。
+- [CLI を使用したシークレットの設定と取得](../key-vault/quick-create-cli.md)
+- [PowerShell を使用したシークレットの設定と取得](../key-vault/quick-create-powershell.md)
+- [ポータルを使用したシークレットの設定と取得](../key-vault/quick-create-portal.md)
+- [.NET を使用したシークレットの設定と取得](../key-vault/quick-create-net.md)
+- [Node.js を使用したシークレットの設定と取得](../key-vault/quick-create-node.md)
 
-```azurecli-interactive
-keyVaultName='{your-unique-vault-name}'
-resourceGroupName='{your-resource-group-name}'
-location='centralus'
-userPrincipalName='{your-email-address-associated-with-your-subscription}'
+Key Vault と Resource Manager テンプレート デプロイの統合には、他にも考慮事項と要件がいくつかあります。
 
-# Create a resource group
-az group create --name $resourceGroupName --location $location
+- `enabledForTemplateDeployment` はキー コンテナーのプロパティです。 Resource Manager のデプロイからこのキー コンテナー内のシークレットにアクセスするには、`enabledForTemplateDeployment` を `true` にする必要があります。 
+- 自分がキー コンテナーを所有していないときにシークレットを追加するには、所有者がキー コンテナー セキュリティ ポリシー設定を更新する必要があります。
 
+Azure CLI と Azure PowerShell の次のサンプルでこの方法を確認できます。
+
+```azurecli
 # Create a Key Vault
 az keyvault create \
   --name $keyVaultName \
@@ -47,53 +50,23 @@ az keyvault create \
   --location $location \
   --enabled-for-template-deployment true
 az keyvault set-policy --upn $userPrincipalName --name $keyVaultName --secret-permissions set delete get list
-
-# Create a secret with the name, vmAdminPassword
-password=$(openssl rand -base64 32)
-echo $password
-az keyvault secret set --vault-name $keyVaultName --name 'vmAdminPassword' --value $password
 ```
 
-PowerShell では、次を使用します。
-
-```azurepowershell-interactive
-$keyVaultName = "{your-unique-vault-name}"
-$resourceGroupName="{your-resource-group-name}"
-$location='Central US'
-$userPrincipalName='{your-email-address-associated-with-your-subscription}'
-
-New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-
-New-AzureRmKeyVault `
+```azurepowershell
+New-AzKeyVault `
   -VaultName $keyVaultName `
   -resourceGroupName $resourceGroupName `
   -Location $location `
   -EnabledForTemplateDeployment
-Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userPrincipalName -PermissionsToSecrets set,delete,get,list
-
-$password = openssl rand -base64 32
-echo $password
-$secretvalue = ConvertTo-SecureString $password -AsPlainText -Force
-Set-AzureKeyVaultSecret -VaultName $keyVaultName -Name "vmAdminPassword" -SecretValue $secretvalue
+Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userPrincipalName -PermissionsToSecrets set,delete,get,list
 ```
 
-PowerShell スクリプトを Cloud Shell 以外で実行する場合は、代わりに次のコマンドを使用してパスワードを生成します。
+## <a name="grant-access-to-the-secrets"></a>シークレットへのアクセスを許可する
 
-```powershell
-Add-Type -AssemblyName System.Web
-[System.Web.Security.Membership]::GeneratePassword(16,3)
-```
-
-Resource Manager テンプレートを使用する場合は、「[チュートリアル: Resource Manager テンプレートのデプロイで Azure Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md#prepare-the-key-vault)」を参照してください。
-
-> [!NOTE]
-> 各Azure サービスには、特定のパスワード要件があります。 たとえば、Azure 仮想マシンの要件については、「[VM を作成する際のパスワードの要件は何ですか](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)」で確認できます。
-
-## <a name="enable-access-to-the-secret"></a>シークレットへのアクセスの有効化
-
-`enabledForTemplateDeployment` を `true` に設定する以外に、テンプレートをデプロイするユーザーは、リソース グループとキー コンテナーなど、キー コンテナーを含むスコープに対して `Microsoft.KeyVault/vaults/deploy/action` アクセス許可を持っている必要があります。 このアクセスは、[所有者](../role-based-access-control/built-in-roles.md#owner)ロールと[共同作成者](../role-based-access-control/built-in-roles.md#contributor)ロールが許可します。 キー コンテナーを作成すると所有者になるので、そのアクセス許可持つことになります。 キー コンテナーが別のサブスクリプション以下にある場合、キー コンテナーの所有者がアクセス権を付与する必要があります。
+テンプレートをデプロイするユーザーは、リソース グループとキー コンテナーなど、キー コンテナーを含むスコープに対して `Microsoft.KeyVault/vaults/deploy/action` アクセス許可を持っている必要があります。 このアクセスは、[所有者](../role-based-access-control/built-in-roles.md#owner)ロールと[共同作成者](../role-based-access-control/built-in-roles.md#contributor)ロールが許可します。 キー コンテナーを作成すると所有者になるので、そのアクセス許可持つことになります。 キー コンテナーが別のサブスクリプション以下にある場合、キー コンテナーの所有者がアクセス権を付与する必要があります。
 
 次の手順は、最小限のアクセス許可を持つロールを作成する方法と、ユーザーを割り当てる方法を示します
+
 1. カスタム ロール定義の JSON ファイルを作成します。
 
     ```json
@@ -119,80 +92,27 @@ Resource Manager テンプレートを使用する場合は、「[チュート�
     ```azurepowershell
     $resourceGroupName= "<Resource Group Name>" # the resource group which contains the Key Vault
     $userPrincipalName = "<Email Address of the deployment operator>"
-    New-AzureRmRoleDefinition -InputFile "<PathToTheJSONFile>" 
-    New-AzureRmRoleAssignment -ResourceGroupName $resourceGroupName -RoleDefinitionName "Key Vault resource manager template deployment operator" -SignInName $userPrincipalName
+    New-AzRoleDefinition -InputFile "<PathToTheJSONFile>" 
+    New-AzRoleAssignment -ResourceGroupName $resourceGroupName -RoleDefinitionName "Key Vault resource manager template deployment operator" -SignInName $userPrincipalName
     ```
 
-    `New-AzureRmRoleAssignment` サンプルでは、カスタム ロールをリソース グループ レベルのユーザーに割り当てます。  
+    `New-AzRoleAssignment` サンプルでは、カスタム ロールをリソース グループ レベルのユーザーに割り当てます。  
 
 [Managed Applications](../managed-applications/overview.md) のテンプレートで Key Vault を使用する場合は、**アプライアンス リソース プロバイダー** サービス プリンシパルにアクセス許可を付与する必要があります。 詳細については、「[Access Key Vault secret when deploying Azure Managed Applications](../managed-applications/key-vault-access.md)」(Azure Managed Applications のデプロイ時に Key Vault シークレットにアクセスする) を参照してください。
 
-## <a name="reference-a-secret-with-static-id"></a>固定 ID でのシークレットの参照
+## <a name="reference-secrets-with-static-id"></a>固定 ID でのシークレットの参照
 
-キー コンテナーのシークレットを受け取るテンプレートは、その他のテンプレートに似ています。 これは、**テンプレートではなく、パラメーター ファイルでキー コンテナーを参照する**ためです。 次の図は、パラメーター ファイルがシークレットを参照し、その値をテンプレートに渡すしくみを示しています。
+この手法では、テンプレートではなく、パラメーター ファイルでキー コンテナーを参照します。 次の図は、パラメーター ファイルがシークレットを参照し、その値をテンプレートに渡すしくみを示しています。
 
-![静的 ID](./media/resource-manager-keyvault-parameter/statickeyvault.png)
+![Resource Manager キー コンテナー統合の固定 ID の図](./media/resource-manager-keyvault-parameter/statickeyvault.png)
 
-たとえば、[次のテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/keyvaultparameter/sqlserver.json)では、管理者のパスワードを含む SQL データベースがデプロイされます。 パスワード パラメーターは、セキュリティで保護された文字列に設定されます。 しかしこのテンプレートでは、その値がどこから来るかは指定されません。
+[チュートリアル:Resource Manager テンプレートのデプロイで Azure Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md)」では、この手法が利用されます。 このチュートリアルでは、管理者パスワードを含む仮想マシンをデプロイします。 パスワード パラメーターは、セキュリティで保護された文字列に設定されます。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "adminLogin": {
-      "type": "string"
-    },
-    "adminPassword": {
-      "type": "securestring"
-    },
-    "sqlServerName": {
-      "type": "string"
-    }
-  },
-  "resources": [
-    {
-      "name": "[parameters('sqlServerName')]",
-      "type": "Microsoft.Sql/servers",
-      "apiVersion": "2015-05-01-preview",
-      "location": "[resourceGroup().location]",
-      "tags": {},
-      "properties": {
-        "administratorLogin": "[parameters('adminLogin')]",
-        "administratorLoginPassword": "[parameters('adminPassword')]",
-        "version": "12.0"
-      }
-    }
-  ],
-  "outputs": {
-  }
-}
-```
+![Resource Manager キー コンテナー統合の固定 ID のテンプレート ファイル](./media/resource-manager-keyvault-parameter/resource-manager-key-vault-static-id-template-file.png)
 
-ここで、前のテンプレートのためにパラメーター ファイルを作成します。 このパラメーター ファイルで、テンプレート内のパラメーターの名前に一致するパラメーターを指定します。 パラメーター値のために、キー コンテナーのシークレットを参照します。 シークレットを参照するには、Key Vault のリソース識別子とシークレットの名前を渡します。 [次のパラメーター ファイル](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/keyvaultparameter/sqlserver.parameters.json)では、Key Vault シークレットが既に存在しているという前提で、リソース ID に静的な値を指定します。 このファイルをローカルにコピーし、サブスクリプション ID、コンテナー名、および SQL サーバー名を設定します。
+ここで、前のテンプレートのためにパラメーター ファイルを作成します。 このパラメーター ファイルで、テンプレート内のパラメーターの名前に一致するパラメーターを指定します。 パラメーター値のために、キー コンテナーのシークレットを参照します。 シークレットを参照するには、Key Vault のリソース識別子とシークレットの名前を渡します。
 
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "adminLogin": {
-            "value": "exampleadmin"
-        },
-        "adminPassword": {
-            "reference": {
-              "keyVault": {
-                "id": "/subscriptions/<subscription-id>/resourceGroups/examplegroup/providers/Microsoft.KeyVault/vaults/<vault-name>"
-              },
-              "secretName": "examplesecret"
-            }
-        },
-        "sqlServerName": {
-            "value": "<your-server-name>"
-        }
-    }
-}
-```
+![Resource Manager キー コンテナー統合の固定 ID のパラメーター ファイル](./media/resource-manager-keyvault-parameter/resource-manager-key-vault-static-id-parameter-file.png)
 
 現在のバージョン以外のバージョンのシークレットを使用する必要がある場合は、`secretVersion` プロパティを使用します。
 
@@ -201,33 +121,31 @@ Resource Manager テンプレートを使用する場合は、「[チュート�
 "secretVersion": "cd91b2b7e10e492ebb870a6ee0591b68"
 ```
 
-ここで、テンプレートをデプロイし、パラメーター ファイルを渡します。 GitHub のサンプル テンプレートを使用できますが、環境に合わせて値が設定されているローカル パラメーター ファイルを使用する必要があります。
+テンプレートをデプロイし、パラメーター ファイルを渡します。
 
 Azure CLI では、次を使用します。
 
-```azurecli-interactive
-az group create --name datagroup --location $location
+```azurecli
+az group create --name $resourceGroupName --location $location
 az group deployment create \
-    --name exampledeployment \
-    --resource-group datagroup \
-    --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/keyvaultparameter/sqlserver.json \
-    --parameters @sqlserver.parameters.json
+    --resource-group $resourceGroupName \
+    --template-uri <The Template File URI> \
+    --parameters <The Parameter File>
 ```
 
 PowerShell では、次を使用します。
 
-```powershell-interactive
-New-AzureRmResourceGroup -Name datagroup -Location $location
-New-AzureRmResourceGroupDeployment `
-  -Name exampledeployment `
-  -ResourceGroupName datagroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/keyvaultparameter/sqlserver.json `
-  -TemplateParameterFile sqlserver.parameters.json
+```powershell
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+New-AzResourceGroupDeployment `
+  -ResourceGroupName $resourceGroupName `
+  -TemplateUri <The Template File URI> `
+  -TemplateParameterFile <The Parameter File>
 ```
 
-## <a name="reference-a-secret-with-dynamic-id"></a>動的 ID でのシークレットの参照
+## <a name="reference-secrets-with-dynamic-id"></a>動的 ID でのシークレットの参照
 
-前のセクションでは、Key Vault シークレットの静的リソース ID をパラメーターから渡す方法について説明しました。 しかし参照すべき Key Vault シークレットがデプロイごとに変わる状況も考えられます。 また、パラメーター ファイルに参照パラメーターを作成するのではなく、単にテンプレートでパラメーター値を渡すこともできます。 いずれの場合でも、リンクされたテンプレートを使用して、キー コンテナー シークレットのリソース ID を動的に生成することができます。
+前のセクションでは、Key Vault シークレットの静的リソース ID をパラメーターから渡す方法について説明しました。 しかし参照すべき Key Vault シークレットがデプロイごとに変わる状況も考えられます。 または、パラメーター ファイルに参照パラメーターを作成するのではなく、テンプレートでパラメーター値を渡すこともできます。 いずれの場合でも、リンクされたテンプレートを使用して、キー コンテナー シークレットのリソース ID を動的に生成することができます。
 
 パラメーター ファイルではテンプレート式が使用できないので、パラメーター ファイルでリソース ID を動的に生成することはできません。 
 
@@ -332,26 +250,25 @@ New-AzureRmResourceGroupDeployment `
 
 Azure CLI では、次を使用します。
 
-```azurecli-interactive
-az group create --name datagroup --location $location
+```azurecli
+az group create --name $resourceGroupName --location $location
 az group deployment create \
-    --name exampledeployment \
-    --resource-group datagroup \
+    --resource-group $resourceGroupName \
     --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-key-vault-use-dynamic-id/azuredeploy.json \
-    --parameters vaultName=<your-vault> vaultResourceGroupName=examplegroup secretName=examplesecret
+    --parameters vaultName=$keyVaultName vaultResourceGroupName=examplegroup secretName=examplesecret
 ```
 
 PowerShell では、次を使用します。
 
 ```powershell
-New-AzureRmResourceGroup -Name datagroup -Location $location
-New-AzureRmResourceGroupDeployment `
-  -Name exampledeployment `
-  -ResourceGroupName datagroup `
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+New-AzResourceGroupDeployment `
+  -ResourceGroupName $resourceGroupName `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-key-vault-use-dynamic-id/azuredeploy.json `
-  -vaultName <your-vault> -vaultResourceGroupName examplegroup -secretName examplesecret
+  -vaultName $keyVaultName -vaultResourceGroupName $keyVaultResourceGroupName -secretName $secretName
 ```
 
 ## <a name="next-steps"></a>次の手順
-* Key Vault の全般的な情報については、「[Azure Key Vault の概要](../key-vault/key-vault-get-started.md)」をご覧ください。
-* キー シークレットの詳細な参照例については、 [Key Vault の例](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)を参照してください。
+
+- キー コンテナーの一般的な情報については、「[Azure Key Vault とは](../key-vault/key-vault-overview.md)」をご覧ください。
+- キー シークレットの詳細な参照例については、 [Key Vault の例](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)を参照してください。

@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 10/25/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 68532ec4ae7e6d6b496ece8d08755555f756a60e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4f0c93c41a468b62baf1ec50d030f235d36a8dd2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413453"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006475"
 ---
-# <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>チュートリアル: Azure CLI を使用して URL に基づいて Web トラフィックをルーティングする
+# <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>チュートリアル:Azure CLI を使用して URL に基づいて Web トラフィックをルーティングする
 
 皆さんは、Web トラフィックを管理する IT 管理者として、顧客またはユーザーができるだけ早く必要な情報を取得できるよう支援したいと考えています。 そのエクスペリエンスを最適化する方法の 1 つとして、Web トラフィックをその種類ごとに異なるサーバー リソースにルーティングすることが考えられます。 このチュートリアルでは、アプリケーションの各種トラフィックに対し、Azure CLI を使用して Application Gateway のルーティングをセットアップ、構成する方法について説明します。 このルーティングによって、トラフィックは、URL に基づいて異なるサーバー プールにリダイレクトされます。
 
@@ -234,7 +234,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-アプリケーション ゲートウェイのパブリック IP アドレスを取得するには、az network public-ip show を使用します。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 たとえば、*http://40.121.222.19*、*http://40.121.222.19:8080/images/test.htm*、*http://40.121.222.19:8080/video/test.htm* などです。
+アプリケーション ゲートウェイのパブリック IP アドレスを取得するには、az network public-ip show を使用します。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 たとえば、`http://40.121.222.19`、`http://40.121.222.19:8080/images/test.htm`、`http://40.121.222.19:8080/video/test.htm` などです。
 
 ```azurecli-interactive
 az network public-ip show \

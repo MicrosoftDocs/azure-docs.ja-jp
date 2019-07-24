@@ -5,17 +5,17 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/5/2018
+ms.date: 04/02/2019
 ms.author: cherylmc
-Customer intent: As someone with a networking background, I want to connect my corporoate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: c02020ba8d49b123cf8914214d52ac40896a3c20
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
+ms.openlocfilehash: 7b7adcc85b9274af45ddab653e875377e959e40c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248182"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58876328"
 ---
-# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>チュートリアル: Azure Virtual WAN を使用して ExpressRoute の関連付けを作成する (プレビュー)
+# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>チュートリアル:Azure Virtual WAN を使用して ExpressRoute の関連付けを作成する (プレビュー)
 
 このチュートリアルでは、Virtual WAN で ExpressRoute 回線と関連付けを使用して Azure リソースに接続する方法を示します。 Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください
 
@@ -37,16 +37,17 @@ ms.locfileid: "51248182"
 
 ## <a name="before-you-begin"></a>開始する前に
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
 ## <a name="register"></a>この機能を登録する
 
-Virtual WAN を構成する前に、まずプレビューにサブスクリプションを登録する必要があります。 これを行わないと、ポータルで Virtual WAN を使用できません。 登録するには、サブスクリプション ID を明記して、**azurevirtualwan@microsoft.com** にメールを送信します。 サブスクリプションが登録されると、メールが届きます。
+Virtual WAN を構成する前に、まずプレビューにサブスクリプションを登録する必要があります。 これを行わないと、ポータルで Virtual WAN を使用できません。 登録を行うには、サブスクリプション ID を記載したメールを **azurevirtualwan\@microsoft.com** までお送りください。 サブスクリプションが登録されると、メールが届きます。
 
 **プレビュー考慮事項:**
 
-* 利用可能なリージョン: 米国中西部
-* [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported) をサポートする国で、ExpressRoute 回線を有効にする必要があります
+[ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported) をサポートする国では、ExpressRoute 回線を有効にする必要があります。
 
 ## <a name="vnet"></a>1.仮想ネットワークの作成
 
@@ -68,16 +69,16 @@ Virtual WAN を構成する前に、まずプレビューにサブスクリプ�
 
 ## <a name="hub"></a>4.回線を検索してハブに関連付ける
 
-1. vWAN を選択し、**[仮想 WAN アーキテクチャ]** で **[ExpressRoute 回線]** を選択します。
-2. ExpressRoute 回線が vWAN と同じサブスクリプション内にある場合は、お使いのサブスクリプションから **[ExpressRoute 回線の選択]** をクリックします。 
-3. プルダウンを使用して、ハブに関連付ける ExpressRoute を選択します。
-4. ExpressRoute 回線が同じサブスクリプション内に存在しない、または[認証キーとピア ID](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md) を指定している場合は、**[Find a circuit redeeming an authorization key]\(認証キーを利用する回線の検出\)** を選択します。
-5. 次の詳細を入力します。
-* **承認キー** - 前述のように、回線の所有者によって生成されます。
-* **ピア回線 URI** - 回線の所有者によって指定された回線 URI であり、回線の一意の識別子。
-* **ルーティングの重み** - [ルーティングの重み](../expressroute/expressroute-optimize-routing.md) によって、異なるピアリング場所から複数の回線が同じハブに接続される場合に、特定のパスを優先させることができます。
-6. **[回線の検索]** をクリックし、回線を選択します (見つかった場合)。
-7. ドロップダウンから 1 つ以上のハブを選択し、**[保存]** をクリックします。
+1. vWAN を選択し、**[仮想 WAN のアーキテクチャ]** で **[ExpressRoute 回線]** を選択します。
+1. ExpressRoute 回線が vWAN と同じサブスクリプション内にある場合は、お使いのサブスクリプションで **[ExpressRoute 回線の選択]** をクリックします。 
+1. プルダウンを使用して、ハブに関連付ける ExpressRoute を選択します。
+1. ExpressRoute 回線が同じサブスクリプション内に存在しない場合、または[認証キーとピア ID](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md) が提供されている場合は、**[Find a circuit redeeming an authorization key]\(認可キーを利用する回線の検出\)** を選択します
+1. 次の詳細を入力します。
+1. **承認キー** - 前述のように、回線の所有者によって生成されます。
+1. **ピア回線 URI** - 回線の所有者によって指定された回線 URI であり、回線の一意の識別子。
+1. **ルーティングの重み** - [ルーティングの重み](../expressroute/expressroute-optimize-routing.md)によって、異なるピアリング場所から複数の回線が同じハブに接続される場合に、特定のパスを優先させることができます
+1. **[Find circuit]\(回線の検索\)** をクリックし、回線を選択します (見つかった場合)。
+1. ドロップダウンから 1 つ以上のハブを選択し、**[保存]** をクリックします。
 
 ## <a name="vnet"></a>5.VNet をハブに接続する
 
@@ -110,10 +111,10 @@ Azure VM とリモート サイト間の通信を監視するための接続を�
 
 ## <a name="cleanup"></a>9.リソースのクリーンアップ
 
-これらのリソースが不要になったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。 "myResourceGroup" をリソース グループの名前に置き換えて、次の PowerShell コマンドを実行します。
+これらのリソースが不要になったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。 "myResourceGroup" をリソース グループの名前に置き換えて、次の PowerShell コマンドを実行します。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>次の手順

@@ -3,7 +3,7 @@ title: Azure Active Directory を使用して Batch 管理ソリューション�
 description: Azure Resource Manager でビルドしたアプリケーションと Batch リソース プロバイダーを使用して Azure AD で認証します。
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
-ms.author: danlep
-ms.openlocfilehash: a52dbdad3842760c447e22f4274ab944750840e7
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: lahugh
+ms.openlocfilehash: 22cab5f22eccabf9176d777b1e3a3356cbf37c4f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816788"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534244"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Batch 管理ソリューションの認証に Active Directory を使用する
 
@@ -28,7 +28,7 @@ Azure Batch 管理サービスを呼び出すアプリケーションは、[Azur
 
 Batch Management .NET ライブラリでは、Batch アカウント、アカウント キー、アプリケーション、およびアプリケーション パッケージを操作するための型を公開します。 Batch Management .NET ライブラリは Azure リソース プロバイダー クライアントであり、[Azure Resource Manager][resman_overview] と共に使用してこれらのリソースをプログラムで管理します。 Azure AD は、Batch Management .NET ライブラリなどの Azure リソース プロバイダー クライアントや、[Azure Resource Manager][resman_overview] を通じて行われた要求の認証に必要です。
 
-この記事では、Batch Management .NET ライブラリを使用するアプリケーションでの認証に Azure AD を使用する方法について説明します。 Azure AD の統合認証を使用して、サブスクリプション管理者や共同管理者を認証する方法を説明します。 GitHub で入手できる [AccountManagment][acct_mgmt_sample] サンプル プロジェクトを使いながら、Batch Management .NET ライブラリで Azure AD を使用する手順を説明します。
+この記事では、Batch Management .NET ライブラリを使用するアプリケーションでの認証に Azure AD を使用する方法について説明します。 Azure AD の統合認証を使用して、サブスクリプション管理者や共同管理者を認証する方法を説明します。 GitHub で入手できる [AccountManagement][acct_mgmt_sample] サンプル プロジェクトを使いながら、Batch Management .NET ライブラリで Azure AD を使用する手順を説明します。
 
 Batch Management .NET ライブラリと AccountManagement サンプルの使用の詳細については、「[.NET 用の Batch 管理クライアント ライブラリを使用した Batch アカウントとクォータの管理](batch-management-dotnet.md)」を参照してください。
 
@@ -137,5 +137,5 @@ Azure AD を使用して Batch 管理アプリケーションを認証するに�
 [aad_auth_scenarios]:../active-directory/develop/authentication-scenarios.md "Azure AD の認証シナリオ"
 [aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Azure Active Directory とアプリケーションの統合"
 [acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
-[azure_portal]: http://portal.azure.com
+[azure_portal]: https://portal.azure.com
 [resman_overview]: ../azure-resource-manager/resource-group-overview.md

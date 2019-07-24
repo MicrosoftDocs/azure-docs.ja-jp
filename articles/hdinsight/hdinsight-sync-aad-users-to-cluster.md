@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b63f2566220d556f9695687dc743a7d47e27acf1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ebb1e3614309f92fc21442100a13c53291b3acbb
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984315"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407289"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory ユーザーを HDInsight クラスターに同期する
 
@@ -40,7 +40,7 @@ ms.locfileid: "46984315"
 
 4. **作成**を選択します。
 
-## <a name="use-the-ambari-rest-api-to-synchronize-users"></a>Ambari REST API を使用してユーザーを同期する
+## <a name="use-the-apache-ambari-rest-api-to-synchronize-users"></a>Apache Ambari REST API を使用してユーザーを同期する
 
 クラスターの作成プロセス中に指定されたユーザー グループは、その時点で同期されます。 ユーザーの同期は、1 時間に 1 回自動的に実行されます。 ユーザーを直ちに同期するには、またはクラスターの作成中に指定されたグループ以外のグループを同期するには、Ambari REST API を使用します。
 
@@ -123,12 +123,12 @@ ms.locfileid: "46984315"
 
 5. この結果は、状態が **[完了]** であり、新しいユーザーが 1 人作成され、そのユーザーにメンバシップが割り当てられたことを示しています。 この例では、ユーザーが Azure AD 内の同じグループに追加されたため、ユーザーは "HiveUsers" 同期済み LDAP グループに割り当てられます。
 
-> [!NOTE]
+> [!NOTE]  
 > 前のメソッドは、クラスターの作成中にドメイン設定の **[Access user group] (アクセス ユーザー グループ)** プロパティで指定された Azure AD グループのみを同期します。 詳細については、「[create an HDInsight cluster (HDInsight クラスターを作成する)](domain-joined/apache-domain-joined-configure.md)」を参照してください。
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>新しく追加された Azure AD ユーザーを確認する
 
-新しい Azure AD ユーザーが追加されたことを確認するには、[Ambari Web UI](hdinsight-hadoop-manage-ambari.md) を開きます。 **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** を参照することによって、Ambari Web UI にアクセスします。 クラスター管理者のユーザー名とパスワードを入力します。
+新しい Azure AD ユーザーが追加されたことを確認するには、[Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) を開きます。 **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** を参照することによって、Ambari Web UI にアクセスします。 クラスター管理者のユーザー名とパスワードを入力します。
 
 1. Ambari ダッシュボードから、**[管理者]** メニューの下にある **[Ambari の管理]** を選択します。
 
@@ -148,6 +148,6 @@ ms.locfileid: "46984315"
 
 ## <a name="see-also"></a>関連項目
 
-* [ESP HDInsight での Hive ポリシーの構成](hdinsight-domain-joined-run-hive.md)
-* [ESP での HDInsight クラスターの管理](hdinsight-domain-joined-manage.md)
-* [Ambari に対するユーザーの承認](hdinsight-authorize-users-to-ambari.md)
+* [ESP HDInsight での Apache Hive ポリシーの構成](hdinsight-domain-joined-run-hive.md)
+* [ESP を使用する HDInsight クラスターを管理する](hdinsight-domain-joined-manage.md)
+* [Apache Ambari に対するユーザーの承認](hdinsight-authorize-users-to-ambari.md)

@@ -3,20 +3,20 @@ title: Azure のデータのコピー ツールを使用してオンプレミス
 description: Azure データ ファクトリを作成し、データのコピー ツールを使用してオンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーします。
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: nabhishek
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
-ms.date: 01/04/2018
-ms.author: jingwang
-ms.openlocfilehash: 91c6939e42f0a8a5126883e5258017b2c38e6f2a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.date: 04/09/2018
+ms.author: abnarain
+ms.openlocfilehash: 26bc6861602cae349c8ebaafefe070c119a93e87
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613972"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59261527"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>データのコピー ツールを使用してオンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -130,21 +130,21 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 1. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
 1. **[リソース グループ]** で、次の手順のいずれかを行います。
   
-      - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
+   - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
 
-      - **[新規作成]** を選択し、リソース グループの名前を入力します。 
+   - **[新規作成]** を選択し、リソース グループの名前を入力します。 
         
-      リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。
+     リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。
 1. **[バージョン]** で、**[V2]** を選択します。
 1. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 Data Factory によって使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他の場所やリージョンに存在していてもかまいません。
 1. **[ダッシュボードにピン留めする]** をオンにします。 
-1. **作成**を選択します。
+1. **作成** を選択します。
 1. ダッシュボードに、**[Deploying Data Factory]\(Data Factory をデプロイしています\)** というステータスを示した次のタイルが表示されます。
 
     ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/tutorial-hybrid-copy-data-tool/deploying-data-factory.png)
 1. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
   
-    ![データ ファクトリのホーム ページ](./media/tutorial-hybrid-copy-data-tool/data-factory-home-page.png)
+     ![データ ファクトリのホーム ページ](./media/tutorial-hybrid-copy-data-tool/data-factory-home-page.png)
 1. **[Author & Monitor]\(作成と監視\)** をクリックして、別のタブで Data Factory ユーザー インターフェイスを起動します。 
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>データのコピー ツールを使用してパイプラインを作成する
@@ -165,7 +165,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
    ![SQL Server の選択](./media/tutorial-hybrid-copy-data-tool/select-source-data-store.png)
 
-1. [New Linked Service (SQL Server)]\(新しいリンクされたサービス (SQL Server)\) で、**[名前]**** に「**SqlServerLinkedService**」と入力します。 **[Connect via integration runtime]\(統合ランタイム経由で接続\)** で **[+新規]** を選択します。 セルフホステッド統合ランタイムを作成してマシンにダウンロードし、それを Data Factory に登録する必要があります。 セルフホステッド統合ランタイムによって、オンプレミスの環境とクラウドとの間でデータがコピーされます。
+1. [New Linked Service (SQL Server)]\(新しいリンクされたサービス (SQL Server)\) で、**[名前]** に「**SqlServerLinkedService**」と入力します。 **[Connect via integration runtime]\(統合ランタイム経由で接続\)** で **[+新規]** を選択します。 セルフホステッド統合ランタイムを作成してマシンにダウンロードし、それを Data Factory に登録する必要があります。 セルフホステッド統合ランタイムによって、オンプレミスの環境とクラウドとの間でデータがコピーされます。
 
    ![セルフホステッド統合ランタイムを作成する](./media/tutorial-hybrid-copy-data-tool/create-integration-runtime-link.png)
 
@@ -187,91 +187,89 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
 1. **[統合ランタイム]** フィールドで **TutorialIntegrationRuntime** が選択されていることを確認します。
 
-    ![統合ランタイムの選択](./media/tutorial-hybrid-copy-data-tool/integration-runtime-selected.png)
+      ![統合ランタイムの選択](./media/tutorial-hybrid-copy-data-tool/integration-runtime-selected.png)
 
 1. **[Specify the on-premises SQL Server database]\(オンプレミスの SQL Server データベースを指定\)** で、次の手順を実行します。 
 
-      a. **[名前]** に「**SqlServerLinkedService**」と入力します。
+    a. **[名前]** に「**SqlServerLinkedService**」と入力します。
 
-      b. **[サーバー名]** にオンプレミスの SQL Server インスタンスの名前を入力します。
+    b. **[サーバー名]** にオンプレミスの SQL Server インスタンスの名前を入力します。
 
-      c. **[データベース名]** にオンプレミスのデータベースの名前を入力します。
+    c. **[データベース名]** にオンプレミスのデータベースの名前を入力します。
 
-      d. **[認証の種類]** で適切な認証を選択します。
+    d. **[認証の種類]** で適切な認証を選択します。
 
-      e. **[ユーザー名]** に、オンプレミスの SQL Server へのアクセス権を持つユーザーの名前を入力します。
+    e. **[ユーザー名]** に、オンプレミスの SQL Server へのアクセス権を持つユーザーの名前を入力します。
 
-      f. ユーザーの**パスワード**を入力します。 **[完了]** を選択します。 
+    f. ユーザーの**パスワード**を入力します。 **[完了]** を選択します。 
 
 1. **[次へ]** を選択します。
 
-     ![](./media/tutorial-hybrid-copy-data-tool/select-source-linked-service.png)
+   ![](./media/tutorial-hybrid-copy-data-tool/select-source-linked-service.png)
 
 1. **[Select tables from which to copy the data or use a custom query]\(データのコピー元またはカスタム クエリの使用元となるテーブルの選択\)** ページで、一覧の **[dbo].[emp]** テーブルを選択し、**[次へ]** を選択します。 データベースに基づいて、その他のテーブルを選択できます。
 
-     ![Product テーブルの選択](./media/tutorial-hybrid-copy-data-tool/select-emp-table.png)
+   ![Product テーブルの選択](./media/tutorial-hybrid-copy-data-tool/select-emp-table.png)
 
 1. **[ターゲット データ ストア]** ページで **[新しい接続の作成]** を選択します
 
-     //image create-new-sink-connection.png
-
-     ![配布先のリンクされたサービスの作成](./media/tutorial-hybrid-copy-data-tool/create-new-sink-connection.png)
+   ![配布先のリンクされたサービスの作成](./media/tutorial-hybrid-copy-data-tool/create-new-sink-connection.png)
 
 1. **[New Linked Service]\(新しいリンクされたサービス\)** で、**[Azure BLOB]**、**[続行]** の順に選択します。 
 
-     ![Blob Storage の選択](./media/tutorial-hybrid-copy-data-tool/select-destination-data-store.png)
+   ![Blob Storage の選択](./media/tutorial-hybrid-copy-data-tool/select-destination-data-store.png)
 
 1. **[New Linked Service (Azure Blob Storage)]\(新しいリンクされたサービス (Azure Blob Storage)\)** ダイアログで、次の手順を実行します。 
 
-     a. **[名前]**** に「**AzureStorageLinkedService**」と入力します。
+       a. Under **Name****, enter **AzureStorageLinkedService**.
 
-     b. **[Connect via integration runtime]\(統合ランタイム経由で接続\)**  で **[TutorialIntegrationRuntime]** を選択します
+       b. Under **Connect via integration runtime**, select **TutorialIntegrationRuntime**
 
-     c. **[ストレージ アカウント名]** ボックスの一覧から、使用するストレージ アカウントを選択します。 
+       c. Under **Storage account name**, select your storage account from the drop-down list. 
 
-     d. **[次へ]** を選択します。
+       d. Select **Next**.
 
-     ![ストレージ アカウントを指定する](./media/tutorial-hybrid-copy-data-tool/specify-azure-blob-storage-account.png)
+   ![ストレージ アカウントを指定する](./media/tutorial-hybrid-copy-data-tool/specify-azure-blob-storage-account.png)
 
 1. **[ターゲット データ ストア]** ダイアログで、**[次へ]** を選択します。 **[接続のプロパティ]** で、**[Azure storage service]\(Azure ストレージ サービス\)** として **[Azure Blob Storage]** を選択します。 **[次へ]** を選択します。 
 
-     ![接続のプロパティ](./media/tutorial-hybrid-copy-data-tool/select-connection-properties.png)
+   ![接続のプロパティ](./media/tutorial-hybrid-copy-data-tool/select-connection-properties.png)
 
 1. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ダイアログで、**[フォルダーのパス]** に「**adftutorial/fromonprem**」と入力します。 前提条件の 1 つとして **adftutorial** コンテナーを作成しました。 output フォルダーが存在しない場合は (この場合は **fromonprem**)、Data Factory によって自動的に作成されます。 また、**[参照]** ボタンを使用して、Blob Storage とそのコンテナー/フォルダーに移動することもできます。 **[ファイル名]** で値を指定しない場合は、既定でソースの名前 (この場合は **dbo.emp**) が使用されます。
            
-     ![出力ファイルまたはフォルダーの選択](./media/tutorial-hybrid-copy-data-tool/choose-output-file-folder.png)
+   ![出力ファイルまたはフォルダーの選択](./media/tutorial-hybrid-copy-data-tool/choose-output-file-folder.png)
 
 1. **[File format settings]\(ファイル形式設定\)** ダイアログで **[次へ]** を選択します。 
 
-     ![[File format settings]\(ファイル形式設定\) ページ](./media/tutorial-hybrid-copy-data-tool/file-format-settings-page.png)
+   ![[File format settings]\(ファイル形式設定\) ページ](./media/tutorial-hybrid-copy-data-tool/file-format-settings-page.png)
 
 1. **[設定]** ダイアログで **[次へ]** を選択します。 
 
-     ![[設定] ページ](./media/tutorial-hybrid-copy-data-tool/settings-page.png)
+   ![[設定] ページ](./media/tutorial-hybrid-copy-data-tool/settings-page.png)
 
 1. **[概要]** ダイアログですべての設定の値を確認し、**[次へ]** を選択します。 
 
-     ![概要ページ](./media/tutorial-hybrid-copy-data-tool/summary-page.png)
+   ![概要ページ](./media/tutorial-hybrid-copy-data-tool/summary-page.png)
 
 1. **[Deployment]\(デプロイ\)** ページで **[監視]** を選択して、作成されたパイプラインまたはタスクを監視します。
 
-     ![[Deployment]\(デプロイ\) ページ](./media/tutorial-hybrid-copy-data-tool/deployment-page.png)
+   ![[Deployment]\(デプロイ\) ページ](./media/tutorial-hybrid-copy-data-tool/deployment-page.png)
 
 1. **[監視]** タブでは、作成したパイプラインの状態を表示できます。 **[アクション]** 列のリンクを使用すると、パイプラインの実行に関連付けられているアクティビティの実行を表示したり、パイプラインを再実行したりできます。 
 
-     ![パイプラインの実行を監視する](./media/tutorial-hybrid-copy-data-tool/monitor-pipeline-runs.png)
+   ![パイプラインの実行を監視する](./media/tutorial-hybrid-copy-data-tool/monitor-pipeline-runs.png)
 
 1. **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択して、パイプラインの実行に関連付けられているアクティビティの実行を表示します。 コピー操作の詳細を確認するために、**[アクション]** 列にある **[詳細]** リンク (眼鏡アイコン) を選択します。 再度**パイプラインの実行**ビューに切り替えるには、一番上にある **[パイプライン]** を選択します。
 
-     ![アクティビティの実行を監視する](./media/tutorial-hybrid-copy-data-tool/monitor-activity-runs.png)
+   ![アクティビティの実行を監視する](./media/tutorial-hybrid-copy-data-tool/monitor-activity-runs.png)
 
 1. **adftutorial** コンテナーの **fromonprem** フォルダーに出力ファイルがあることを確認します。 
 
-     ![出力 BLOB](./media/tutorial-hybrid-copy-data-tool/output-blob.png)
+   ![出力 BLOB](./media/tutorial-hybrid-copy-data-tool/output-blob.png)
 
 1. 左側の **[編集]** タブを選択して、編集モードに切り替えます。 ツールによって作成されたリンクされたサービス、データセット、パイプラインをエディターを使用して更新できます。 **[コード]** を選択すると、エディターで開かれているエンティティに関する JSON コードが表示されます。 これらのエンティティを Data Factory の UI で編集する方法について詳しくは、[このチュートリアルの Azure Portal バージョン](tutorial-copy-data-portal.md)を参照してください。
 
-     ![[編集] タブ](./media/tutorial-hybrid-copy-data-tool/edit-tab.png)
+   ![[編集] タブ](./media/tutorial-hybrid-copy-data-tool/edit-tab.png)
 
 
 ## <a name="next-steps"></a>次の手順

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 7199009553eb7aae31db3f913fe4de87e03d74ba
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 5cce4337e3ef95c6407d46d9b8b6401fe4f6600b
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
-ms.locfileid: "27744114"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497742"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>StorSimple 診断ツールを使用して、8000 シリーズ デバイスに関する問題のトラブルシューティングを行います。
 
@@ -289,7 +289,7 @@ HCS Vnic Resource             Online HCS Cluster Group
 hcs_cloud_connectivity_...    Online HCS Cluster Group
 hcs_controller_replacement    Online HCS Cluster Group
 hcs_datapath_service          Online HCS Cluster Group
-hcs_management_servic         Online HCS Cluster Group
+hcs_management_service        Online HCS Cluster Group
 hcs_nvram_service             Online HCS Cluster Group
 hcs_passive_datapath          Online HCS Passive Cluster Group
 hcs_platform_service          Online HCS Cluster Group
@@ -414,10 +414,10 @@ Controller0>
 
 次の表では、システム情報に含まれるさまざまな Windows PowerShell パラメーターが何に対応するかを示します。 
 
-| PowerShell パラメーター    | [説明]  |
+| PowerShell パラメーター    | 説明  |
 |-------------------------|------------------|
 | インスタンス ID             | すべてのコントローラーに一意の識別子または GUID が関連付けられています。|
-| 名前                    | Azure ポータルでデバイスのデプロイ中に構成されるデバイスのフレンドリ名。 既定のフレンドリ名は、デバイスのシリアル番号です。 |
+| Name                    | Azure ポータルでデバイスのデプロイ中に構成されるデバイスのフレンドリ名。 既定のフレンドリ名は、デバイスのシリアル番号です。 |
 | モデル                   | ご利用の StorSimple 8000 シリーズ デバイスのモデル。 モデルは 8100 または 8600 です。|
 | SerialNumber            | デバイスのシリアル番号は、出荷時に割り当てられる 15 個の文字です。 たとえば、8600-SHX0991003G44HT は次の内容を示します。<br> 8600 – デバイス モデルです。<br>SHX – 製造サイトです。<br> 0991003 - 特定の製品を示します。 <br> G44HT- 最後の 5 桁は、一意のシリアル番号を作成するためにインクリメントされます。 これは連番でない場合があります。|
 | TimeZone                | Azure ポータルでデバイスのデプロイ中に構成されるデバイスのタイム ゾーン。|
@@ -434,7 +434,7 @@ Controller0>
 | CisAgentVersion         | StorSimple デバイスで実行されている CIS エージェントのバージョン。 このエージェントにより、Azure で実行されている StorSimple Manager サービスと通信できるようになります。|
 | MdsAgentVersion         | StorSimple デバイスで実行されている MDS エージェントに対応するバージョン。 このエージェントは、データを監視および診断サービス (MDS) に移動します。|
 | Lsisas2Version          | StorSimple デバイスの LSI ドライバーに対応するバージョン。|
-| Capacity                | デバイスの合計容量 (バイト単位)。|
+| 容量                | デバイスの合計容量 (バイト単位)。|
 | RemoteManagementMode    | Windows PowerShell インターフェイスを使用してデバイスをリモート管理できるかどうかを示します。 |
 | FipsMode                | デバイスで米国連邦情報処理標準 (FIPS) モードが有効になっているかどうかを示します。 FIPS 140 標準には、機密データ保護のために米国連邦政府のコンピューター システムに使用することが承認されている暗号化アルゴリズムが定義されています。 Update 4 以降を実行しているデバイスでは、既定で FIPS モードが有効になっています。 |
 

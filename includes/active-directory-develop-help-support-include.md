@@ -1,16 +1,16 @@
 ---
 author: CelesteDG
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.topic: include
 ms.date: 08/06/2018
 ms.author: celested
-ms.openlocfilehash: f937c6f5b2a1928287e4037e3f92feca0d35157b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 2bf0c0c9a7af3ecc3b85d1bd449ac25ee211987c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600882"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55480527"
 ---
 ## <a name="help-and-support"></a>ヘルプとサポート
 

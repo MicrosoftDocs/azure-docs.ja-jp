@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: annahar
-ms.openlocfilehash: ff6f3444847d9c78836a44ca95f9b00160c29ef4
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b1873b770a6b4280b7098c68ecb75cc1411fe453
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630730"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650566"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Azure Portal を使用して仮想マシンに複数の IP アドレスを割り当てる
 
->[!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
->
-この記事では、Azure ポータルを使用して Azure Resource Manager デプロイ モデルで仮想マシン (VM) を作成する方法について説明します。 クラシック デプロイ モデルで作成されたリソースには、複数の IP アドレスを割り当てることはできません。 Azure のデプロイ モデルの詳細については、[デプロイ モデルの概要](../resource-manager-deployment-model.md)に関する記事をご覧ください。
+> [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
+> 
+> この記事では、Azure ポータルを使用して Azure Resource Manager デプロイ モデルで仮想マシン (VM) を作成する方法について説明します。 クラシック デプロイ モデルで作成されたリソースには、複数の IP アドレスを割り当てることはできません。 Azure のデプロイ モデルの詳細については、[デプロイ モデルの概要](../resource-manager-deployment-model.md)に関する記事をご覧ください。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
@@ -36,11 +36,11 @@ ms.locfileid: "38630730"
 
 ## <a name="add"></a>VM に IP アドレスを追加する
 
-プライベート IP アドレスとパブリック IP アドレスを Azure ネットワーク インターフェイスに追加するには、次の手順を実行します。 次のセクションの例では、[シナリオ](#Scenario)で説明している 3 つの IP 構成を使用した VM を既に所有していることを前提としていますが、必須ではありません。
+プライベート IP アドレスとパブリック IP アドレスを Azure ネットワーク インターフェイスに追加するには、次の手順を実行します。 次のセクションの例では、[シナリオ](#scenario)で説明している 3 つの IP 構成を使用した VM を既に所有していることを前提としていますが、必須ではありません。
 
 ### <a name="coreadd"></a>主な手順
 
-1. 必要に応じて、https://portal.azure.com で Azure Portal を開き、サインインします。
+1. 必要に応じて、 https://portal.azure.com で Azure Portal を開き、サインインします。
 2. そのポータルで、**[その他のサービス]** をクリックし、フィルター ボックスに「*virtual machines*」と入力して、**[Virtual Machines]** をクリックします。
 3. **[Virtual Machines]** ウィンドウで、IP アドレスを追加する VM をクリックします。 表示された仮想マシン ウィンドウで **[ネットワーク インターフェイス]** をクリックして、IP アドレスを追加するネットワーク インターフェイスを選択します。 次の図に示す例では、「*myVM*」という名前の VM の「*myNIC*」という名前の NIC を選択しています。
 
@@ -76,7 +76,7 @@ ms.locfileid: "38630730"
 
 パブリック IP アドレスは、パブリック IP アドレス リソースの設定の 1 つです。 IP 構成に関連付ける予定で、まだ IP 構成に関連付けられていないパブリック IP アドレス リソースがある場合は、次の手順を省略して、必要に応じてそれに続く手順の 1 つを実行します。 利用できるパブリック IP アドレス リソースがない場合は、次の手順を実行して 1 つ作成します。
 
-1. 必要に応じて、https://portal.azure.com で Azure Portal を開き、サインインします。
+1. 必要に応じて、 https://portal.azure.com で Azure Portal を開き、サインインします。
 3. ポータルで、**[リソースの作成]** > **[ネットワーク]** > **[パブリック IP アドレス]** の順に選択します。
 4. 次の図に示すように、表示される **[パブリック IP アドレスの作成]** ウィンドウで **[名前]** を入力し、**[IP アドレスの割り当て]** のタイプ、**[サブスクリプション]**、**[リソース グループ]**、**[場所]** を選択してから、**[作成]** をクリックします。
 

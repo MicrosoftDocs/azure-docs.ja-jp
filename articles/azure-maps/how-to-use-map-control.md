@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 850f9b28c112c11fd98a8abc81a1811cd26d81cc
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 9e3a442a3d6c420c548979327c193628efbee5aa
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166032"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549220"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Maps のマップ コントロールを使用する
 
@@ -23,46 +23,155 @@ ms.locfileid: "49166032"
 
 マップ コントロール クライアント側 JavaScript ライブラリを使って、Web ページにマップを埋め込むことができます。
 
-1. 新しいファイルを作成し、**MapSearch.html** という名前を付けます。
+1. 新しい HTML ファイルを作成します。
 
-2. Azure Maps のスタイル シートとスクリプト ソースの参照を、ファイルの `<head>` 要素に追加します。
+2. Azure Maps Web SDK に読み込みます。 これは、次に示す 2 つのオプションのどちらかを使用して行うことができます。
 
-    ```html
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css" />
-    <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script>
+    a. ファイルの `<head>` 要素内のスタイル シートとスクリプトの参照に URL エンドポイントを追加することで、グローバルにホストされる CDN バージョンの Azure Maps Web SDK を使用します。
+
+    ```HTML
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     ```
 
-3. ブラウザーで新しいマップをレンダリングするには、**#map** 参照を `<style>` 要素に追加します。
+    b. または、[azure-maps-control](https://www.npmjs.com/package/azure-maps-control) NPM パッケージを使用して、Azure Maps Web SDK のソース コードをローカルに読み込み、アプリを使用してホストします。 このパッケージには TypeScript 定義も含まれています。
 
-    ```html
+    > npm install azure-maps-control
+
+    次に、Azure Maps のスタイル シートとスクリプト ソースの参照を、ファイルの `<head>` 要素に追加します。
+
+    ```HTML
+    <link rel="stylesheet" href="node_modules/azure-maps-control/dist/css/atlas.min.css" type="text/css">
+    <script src="node_modules/azure-maps-control/dist/js/atlas.min.js"></script>
+    ```
+
+3. ページの本文全体を埋めるようにマップをレンダリングするには、次の `<style>` 要素を `<head>` 要素に追加します。
+
+    ```HTML
     <style>
-        #map {
-            width: 100%;
-            height: 100%;
+        html, body {
+            margin: 0;
+        }
+
+        #myMap {
+            height: 100vh;
+            width: 100vw;
         }
     </style>
     ```
 
-4. マップ コントロールを初期化するには、html 本文に新しいセクションを定義し、スクリプトを作成します。 スクリプトには固有の Azure Maps アカウント キーを使用します。 アカウントを作成するか、キーを確認する必要がある場合は、「[Azure Maps のアカウントとキーを管理する方法](how-to-manage-account-keys.md)」を参照してください。 **setLanguage** メソッドには、マップ ラベルとコントロールに使用される言語を指定します。 サポートされている言語の詳細については、[サポートされている言語](https://docs.microsoft.com/azure/azure-maps/supported-languages)に関するページを参照してください。
+4. ページの本文で、`<div>` 要素を追加して **myMap** の `id` を指定します。
 
-    ```html
-    <div id="map">
-        <script>
-            atlas.setSubscriptionKey("<_your account key_>");
-            atlas.setLanguage("en");
-            var map = new atlas.Map("map", {
-                center: [-122.33263,47.59093],
-                zoom: 12
-            });
-        </script>
-    </div>
+    ```HTML
+    <body>
+        <div id="myMap"></div>
+    </body>
     ```
 
-5. Web ブラウザーでファイルを開き、レンダリングされたマップを表示します。
+5. マップ コントロールを初期化するには、html 本文に新しいセクションを定義し、スクリプトを作成します。 [認証オプション](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)を使用してマップを認証するには、固有の Azure Maps アカウント キーまたは Azure Active Directory (AAD) 資格情報を使用します。 アカウントを作成するか、キーを確認する必要がある場合は、「[Azure Maps のアカウントとキーを管理する方法](how-to-manage-account-keys.md)」を参照してください。 **language** オプションには、マップ ラベルとコントロールに使用される言語を指定します。 サポートされている言語の詳細については、[サポートされている言語](supported-languages.md)に関するページを参照してください。 サブスクリプション キーを使用して認証する場合は、次のようになります。
+
+    ```HTML
+    <script type="text/javascript">
+        var map = new atlas.Map('myMap', {
+            center: [-122.33, 47.6],
+            zoom: 12,
+            language: 'en-US',
+            authOptions: {
+                authType: 'subscriptionKey',
+                subscriptionKey: '<Your Azure Maps Key>'
+            }
+        });
+    </script>
+    ```
+
+    Azure Active Directory (AAD) を使用して認証する場合は、次のようになります。
+
+    ```HTML
+    <script type="text/javascript">
+        var map = new atlas.Map('myMap', {
+            center: [-122.33, 47.6],
+            zoom: 12,
+            language: 'en-US',
+            authOptions: {
+                authType: 'aad',
+                clientId: '<Your AAD Client Id>',
+                aadAppId: '<Your AAD App Id>',
+                aadTenant: 'msft.ccsctp.net'
+            }
+        });
+    </script>
+    ```
+
+    詳細については、「[Azure Maps による認証](azure-maps-authentication.md)」を参照してください。
+
+6. 必要に応じて、ページの見出しに次のメタ タグ要素を追加すると役立つ場合があります。
+
+    ```HTML
+    <!-- Ensures that IE and Edge uses the latest version and doesn't emulate an older version -->
+    <meta http-equiv="x-ua-compatible" content="IE=Edge">
+
+    <!-- Ensures the web page looks good on all screen sizes. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    ```
+
+7. すべてをまとめると、HTML ファイルは次のようなコードになります。
+
+    ```HTML
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title></title>
+
+        <meta charset="utf-8">
+
+        <!-- Ensures that IE and Edge uses the latest version and doesn't emulate an older version -->
+        <meta http-equiv="x-ua-compatible" content="IE=Edge">
+
+        <!-- Ensures the web page looks good on all screen sizes. -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+
+        <style>
+            html, body {
+                margin: 0;
+            }
+
+            #myMap {
+                height: 100vh;
+                width: 100vw;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="myMap"></div>
+
+        <script type="text/javascript">
+            //Create an instance of the map control and set some options.
+            var map = new atlas.Map('myMap', {
+                center: [-122.33, 47.6],
+                zoom: 12,
+                language: 'en-US',
+                authOptions: {
+                    authType: 'subscriptionKey',
+                    subscriptionKey: '<Your Azure Maps Key>'
+                }
+            });
+        </script>
+    </body>
+    </html>
+    ```
+
+8. Web ブラウザーでファイルを開き、レンダリングされたマップを表示します。 これは次のようなコードになります。
+
+    <iframe height="700" style="width: 100%;" scrolling="no" title="マップ コントロールの使用方法" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true"><a href='https://codepen.io'>CodePen</a> の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による Pen 「<a href='https://codepen.io/azuremaps/pen/yZpEYL/'>How to use the map control (マップ コントロールの使用方法)</a>」を参照してください。
+    </iframe>
 
 ## <a name="next-steps"></a>次の手順
 
-例全体を使用してマップを作成する方法については、以下を参照してください。
+マップを作成して操作する方法について説明します。
 
 > [!div class="nextstepaction"]
 > [マップを作成する](map-create.md)

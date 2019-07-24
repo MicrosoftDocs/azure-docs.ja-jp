@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,14 +16,15 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: f311f951e09e064b8eac779b1082c666fe029479
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bee16ed8205453546702946628c98c73b0f34b15
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977247"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103810"
 ---
-# <a name="quickstart-update-an-application-in-azure-active-directory"></a>クイック スタート: Azure Active Directory でアプリケーションを更新する
+# <a name="quickstart-update-an-application-in-azure-active-directory"></a>クイック スタート:Azure Active Directory のアプリケーションを更新する
 
 Azure Active Directory (Azure AD) にアプリケーションを登録したエンタープライズ開発者および SaaS (サービスとしてのソフトウェア) プロバイダーは、Web API などの他のリソースにアクセスするようにアプリケーションを構成して、他の組織などでアプリケーションを利用できるようにすることが必要な場合があります。
 
@@ -44,7 +45,7 @@ Web/confidential クライアント アプリケーションが認証を必要�
 
 同意フレームワークでは、リソース アプリケーションによって公開されている Web API (Microsoft Graph API など) にクライアントがアクセスできるようになる前に、要求されたアクセス許可に基づいてクライアントに必要なアクセス許可が付与されていることを確認します。 既定では、すべてのアプリケーションが **Azure Active Directory** (Graph API) および Azure クラシック デプロイ モデルのアクセス許可を選択できます。 また、[Graph API の [サインインとユーザー プロファイルの読み取り] アクセス許可](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails)が既定で選択されています。 Office 365 のサブスクリプションを保有しているアカウントが存在するテナントにクライアントを登録しようとしている場合には、SharePoint と Exchange Online 用の Web API とアクセス許可を選択できます。 目的の Web API ごとに 2 種類のアクセス許可から選択できます。
 
-- アプリケーションのアクセス許可: クライアント アプリケーションは、(ユーザー コンテキストなしで) アプリケーションとして Web API に直接アクセスする必要があります。 この種類のアクセス許可には管理者の同意が必要であるほか、ネイティブ クライアント アプリケーションでは使用できません。
+- アプリケーションのアクセス許可: クライアント アプリケーションは、アプリケーション自体として (ユーザー コンテキストなしで) Web API に直接アクセスする必要があります。 この種類のアクセス許可には管理者の同意が必要であるほか、ネイティブ クライアント アプリケーションでは使用できません。
 - 委任されたアクセス許可: クライアント アプリケーションは、サインインしているユーザーとして Web API にアクセスする必要があります。アクセスにあたっては、選択されているアクセス許可に応じて制限が適用されます。 この種類のアクセス許可は、管理者の同意が必要でない限り、ユーザーが付与できます。
 
   > [!NOTE]
@@ -59,24 +60,24 @@ Web/confidential クライアント アプリケーションが認証を必要�
    ![アプリケーションの登録の更新](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration.png)
 
 4. アプリケーションのメイン登録ページが表示され、そのアプリケーションの **[設定]** ページがそこに含まれています。 Web アプリケーションの資格情報を追加するには:
-  1. **[設定]** ページの **[キー]** セクションを選択します。
-  2. 証明書を追加するには:
-    - **[公開キーのアップロード]** を選択します。
-    - アップロードするファイルを選択します。 ファイルの種類は .cer、.pem、.crt のいずれかである必要があります。
-  - パスワードを追加するには:
-    - 鍵の説明を追加します。
-    - 期間を選択します。
-    - **[保存]** を選択します。 構成の変更を保存すると、右端の列に鍵の値が格納されます。 クライアント アプリケーションのコードで使用するので、**必ず鍵をコピーしておいてください**。このページを一度閉じると、鍵にアクセスできなくなります。
+   1. **[設定]** ページの **[キー]** セクションを選択します。
+   1. 証明書を追加するには:
+      - **[公開キーのアップロード]** を選択します。
+      - アップロードするファイルを選択します。 ファイルの種類は .cer、.pem、.crt のいずれかである必要があります。
+   1. パスワードを追加するには:
+      - 鍵の説明を追加します。
+      - 期間を選択します。
+      - **[保存]** を選択します。 構成の変更を保存すると、右端の列に鍵の値が格納されます。 クライアント アプリケーションのコードで使用するので、**必ず鍵をコピーしておいてください**。このページを一度閉じると、鍵にアクセスできなくなります。
 
 5. 次の手順に従い、クライアントからリソース API にアクセスするためのアクセス許可を追加します。
-  1. **[設定]** ページで **[必要なアクセス許可]** セクションを選択し、**[追加]** を選択します。
-  1. **[API を選択します]** を選択し、選択するリソースの種類を選択します。
-  1. 利用可能な API の一覧を参照するか、検索ボックスを使用して、ディレクトリ内にあって Web API を公開している利用可能なリソース アプリケーションの中から選択します。 目的のリソースを選択し、**[選択]** をクリックします。
-  1. **[アクセスの有効化]** ページで、アプリケーションのアクセス許可や委任されたアクセス許可のうち、アプリケーションが API にアクセスするうえで必要なものを選択します。
+   1. **[設定]** ページで **[必要なアクセス許可]** セクションを選択し、**[追加]** を選択します。
+   1. **[API を選択します]** を選択し、選択するリソースの種類を選択します。
+   1. 利用可能な API の一覧を参照するか、検索ボックスを使用して、ディレクトリ内にあって Web API を公開している利用可能なリソース アプリケーションの中から選択します。 目的のリソースを選択し、**[選択]** をクリックします。
+   1. **[アクセスの有効化]** ページで、アプリケーションのアクセス許可や委任されたアクセス許可のうち、アプリケーションが API にアクセスするうえで必要なものを選択します。
    
-  ![アプリケーションの登録の更新 - アクセス許可 API](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-api.png)
+   ![アプリケーションの登録の更新 - アクセス許可 API](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-api.png)
 
-  ![アプリケーションの登録の更新 - アクセス許可](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms.png)
+   ![アプリケーションの登録の更新 - アクセス許可](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms.png)
 
 6. 完了したら、**[アクセスの有効化]** ページで **[選択]** ボタンを選択し、**[API アクセスの追加]** ページ で **[完了]** ボタンを選択します。 **[必要なアクセス許可]** ページに戻ります。ページでは API の一覧に新しいリソースが追加されています。
 
@@ -97,8 +98,8 @@ Web/confidential クライアント アプリケーションが認証を必要�
 4. アプリケーションのメイン登録ページが表示され、そのアプリケーションの **[設定]** ページが開きます。 アプリケーションの登録ページで **[マニフェスト]** をクリックして、**[マニフェストの編集]** ページに切り替えます。 Web ベースのマニフェスト エディターが開き、ポータルでマニフェストを**編集**できます。 必要があれば、**[ダウンロード]** をクリックしてローカルで編集します。編集を終えたら **[アップロード]** をクリックすると、アプリケーションに編集後のマニフェストが適用されます。
 5. この例では、`oauth2Permissions` コレクションに以下の JSON 要素を追加して、リソース/API で `Employees.Read.All` という新しいスコープを公開します。 既存の `user_impersonation` スコープは、登録時に既定で提供されます。 `user_impersonation` は、クライアント アプリケーションがリソースに対するアクセス許可を要求するにあたり、サインインしたユーザーの ID を使えるようにするためのものです。 既存の `user_impersonation` スコープ要素の後にコンマを追加したうえで、リソースのニーズに応じてプロパティの値を変更してください。 
 
-  ```json
-  {
+   ```json
+   {
     "adminConsentDescription": "Allow the application to have read-only access to all Employee data.",
     "adminConsentDisplayName": "Read-only access to Employee records",
     "id": "2b351394-d7a7-4a84-841e-08a6a17e4cb8",
@@ -107,17 +108,17 @@ Web/confidential クライアント アプリケーションが認証を必要�
     "userConsentDescription": "Allow the application to have read-only access to your Employee data.",
     "userConsentDisplayName": "Read-only access to your Employee records",
     "value": "Employees.Read.All"
-  }
-  ```
+   }
+   ```
 
-  > [!NOTE]
-  > `id` の値は、プログラムによって、または [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx) などの GUID 生成ツールを使って作成する必要があります。 `id` は、Web API によって公開されるスコープの一意の識別子となります。 クライアントに対して Web API にアクセスするためのアクセス許可が適切に構成されていると、そのクライアントには、Azure AD によって OAuth 2.0 アクセス トークンが発行されます。 クライアントが Web API を呼び出すときには、このアクセス トークンを提示することになります。そして、このアクセス トークンでは、スコープ (scp) 要求がアプリケーションの登録時に要求されたアクセス許可のとおりに設定されています。
-  >
-  > 公開するスコープは、必要に応じて後から追加することもできます。 たとえば、Web API で、さまざまな機能が関連付けられたスコープをいくつも公開しているとします。 リソースでは、受け取った OAuth 2.0 アクセス トークンのスコープ (`scp`) 要求を評価することによって、実行時に Web API へのアクセスを制御します。
+   > [!NOTE]
+   > `id` の値は、プログラムによって、または [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx) などの GUID 生成ツールを使って作成する必要があります。 `id` は、Web API によって公開されるスコープの一意の識別子となります。 クライアントに対して Web API にアクセスするためのアクセス許可が適切に構成されていると、そのクライアントには、Azure AD によって OAuth 2.0 アクセス トークンが発行されます。 クライアントが Web API を呼び出すときには、このアクセス トークンを提示することになります。そして、このアクセス トークンでは、スコープ (scp) 要求がアプリケーションの登録時に要求されたアクセス許可のとおりに設定されています。
+   >
+   > 公開するスコープは、必要に応じて後から追加することもできます。 たとえば、Web API で、さまざまな機能が関連付けられたスコープをいくつも公開しているとします。 リソースでは、受け取った OAuth 2.0 アクセス トークンのスコープ (`scp`) 要求を評価することによって、実行時に Web API へのアクセスを制御します。
 
 6. 完了したら、**[保存]** をクリックします。 これで Web API の構成が終わり、ディレクトリ内の他のアプリケーションが利用できるようになりました。
 
-  ![アプリケーションの登録の更新](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-manifest.png)
+   ![アプリケーションの登録の更新](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-manifest.png)
 
 ### <a name="verify-the-web-api-is-exposed-to-other-applications-in-your-tenant"></a>テナント内の他のアプリケーションに Web API が公開されているかどうかの確認
 
@@ -129,7 +130,7 @@ Web/confidential クライアント アプリケーションが認証を必要�
 
 3. **[アクセスの有効化]** ページに新しいスコープが表示されていれば、クライアントのアクセス許可の要求で利用できる状態です。
 
-  ![新しいアクセス許可の表示](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms-newscopes.png)
+   ![新しいアクセス許可の表示](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms-newscopes.png)
 
 ### <a name="more-on-the-application-manifest"></a>アプリケーション マニフェストの詳細
 
@@ -144,7 +145,7 @@ Web/confidential クライアント アプリケーションが認証を必要�
 
 前に説明したように、独自のアプリケーションのための API を公開してそれにアクセスするだけでなく、クライアント アプリケーションを登録して、Microsoft のリソースにより公開されている API にアクセスすることもできます。 Microsoft Graph API (ポータルのリソース/API 一覧では "Microsoft Graph") は、Azure AD に登録されているすべてのアプリケーションが利用できます。 Office 365 サブスクリプションにサインアップしたアカウントが存在するテナントにクライアント アプリケーションを登録した場合には、さまざまな Office 365 リソースにより公開されているスコープにもアクセスできます。
 
-Microsoft Graph API により公開されているスコープの全容については、[Microsoft Graph のアクセス許可に関するリファレンス](https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference)を参照してください。
+Microsoft Graph API により公開されているスコープの全容については、[Microsoft Graph のアクセス許可に関するリファレンス](https://docs.microsoft.com/graph/permissions-reference)を参照してください。
 
 > [!NOTE]
 > 現時点では、ネイティブ クライアント アプリケーションに [Access your organization's directory]\(組織のディレクトリにアクセスする\) アクセス許可を使用した場合、そのアプリケーションで Azure AD Graph API しか呼び出すことができなくなるという制約があります。 この制約は、Web アプリケーションには適用されません。
@@ -156,7 +157,7 @@ Azure AD にアプリケーションを登録するときには、自分が所�
 シングルテナント アプリケーションとマルチテナント アプリケーションの違いに注意することが重要です。  
 
 - シングルテナント アプリケーションは、1 つの組織で使用することを想定しています。 典型例としては、エンタープライズ開発者が作成した基幹業務 (LOB) アプリケーションが挙げられます。 シングルテナント アプリケーションには、アプリケーションを登録したテナントと同じテナントに存在するアカウントのユーザーのみがアクセスできます。 このため、1 つのディレクトリにプロビジョニングするだけで済みます。
-- マルチテナント アプリケーションは、多数の組織で使用することを想定しています。 サービスとしてのソフトウェア (SaaS) Web アプリケーションとも呼ばれ、独立系ソフトウェア ベンダー (ISV) が作成したアプリケーションがその典型例です。 マルチテナント アプリケーションは、ユーザーがアクセスする必要があるテナントそれぞれにプロビジョニングする必要があります。 アプリケーションが登録されているテナント以外のテナントの場合、登録にはユーザーまたは管理者の同意が必要です。 ネイティブ クライアント アプリケーションは、リソース所有者のデバイスにインストールされるので、既定でマルチテナントになります。 同意フレームワークの詳細については、前の「[同意フレームワークの概要](#overview-of-the-consent-framework)」セクションを参照してください。
+- マルチテナント アプリケーションは、多数の組織で使用することを想定しています。 サービスとしてのソフトウェア (SaaS) Web アプリケーションとも呼ばれ、独立系ソフトウェア ベンダー (ISV) が作成したアプリケーションがその典型例です。 マルチテナント アプリケーションは、ユーザーがアクセスする必要があるテナントそれぞれにプロビジョニングする必要があります。 アプリケーションが登録されているテナント以外のテナントの場合、登録にはユーザーまたは管理者の同意が必要です。 ネイティブ クライアント アプリケーションは、リソース所有者のデバイスにインストールされるので、既定でマルチテナントになります。 同意フレームワークの詳細については、前の「同意フレームワークの概要」セクションを参照してください。
 
 アプリケーションをマルチテナントにするには、アプリケーション登録の変更と、Web アプリケーション自体に対する変更の両方が必要です。 以下のセクションでは、そのどちらについても説明します。
 
@@ -184,17 +185,17 @@ Azure AD にアプリケーションを登録するときには、自分が所�
 Web アプリケーションではほかにも、次のものが提供されることがあります。
 
 - 管理者による "会社のサインアップ"。 このエクスペリエンスは "管理者の同意" とも呼ばれ、管理者が組織内の "*すべてのユーザー*" に代わって同意を与えることができるようにするものです。 管理者の同意を与えることができるのは、グローバル管理者ロールに属するアカウントで認証したユーザーのみです。それ以外のユーザーが同意しようとしても、エラーが発生します。
-- ユーザーのサインアップ エクスペリエンス。 ユーザーの画面に [サインアップ] ボタンが表示されます。このボタンを押すと、ブラウザーが Azure AD OAuth2.0 の `/authorize` エンドポイントまたは OpenID Connect の `/userinfo` エンドポイントにリダイレクトされます。 これらのエンドポイントでは、アプリケーションが id_token を調べて、新しいユーザーに関する情報を取得できます。 サインアップ フェーズの後は、「[同意フレームワークの概要](#overview-of-the-consent-framework)」セクションで示したものとよく似た同意プロンプトがユーザーに表示されます。
+- ユーザーのサインアップ エクスペリエンス。 ユーザーの画面に [サインアップ] ボタンが表示されます。このボタンを押すと、ブラウザーが Azure AD OAuth2.0 の `/authorize` エンドポイントまたは OpenID Connect の `/userinfo` エンドポイントにリダイレクトされます。 これらのエンドポイントでは、アプリケーションが id_token を調べて、新しいユーザーに関する情報を取得できます。 サインアップ フェーズの後は、「同意フレームワークの概要」セクションで示したものとよく似た同意プロンプトがユーザーに表示されます。
 
 マルチテナント アクセスとサインイン/サインアップ エクスペリエンスのサポートに必要なアプリケーションの変更の詳細については、次を参照してください。
 
 - [マルチテナント アプリケーション パターンを使用してすべての Azure Active Directory (AD) ユーザーがサインインできるようにする方法](howto-convert-app-to-be-multi-tenant.md)
 - [マルチテナント コード サンプル](https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multi-tenant)の一覧。
-- [クイック スタート: Azure AD のサインイン ページに会社のブランドを追加する](../fundamentals/customize-branding.md)
+- [クイック スタート:Azure AD のサインイン ページに会社のブランドを追加する](../fundamentals/customize-branding.md)
 
-## <a name="enabling-oauth-20-implicit-grant-for-single-page-applications"></a>シングルページ アプリケーションでの OAuth 2.0 Implicit Grant の有効化
+## <a name="enabling-oauth-20-implicit-grant-for-single-page-applications"></a>シングル ページ アプリケーションでの OAuth 2.0 暗黙的な許可の有効化
 
-シングルページ アプリケーション (SPA) の場合、ブラウザーで実行される JavaScript ヘビーなフロント エンドを備え、このフロントエンドからアプリケーションの Web API バックエンドを呼び出してビジネス ロジックを実行するというのが典型的な構造です。 Azure AD でホストされている SPA では、Azure AD によるユーザー認証と、アプリケーションの JavaScript クライアントによるバックエンド Web API の呼び出しを保護するためのトークンの取得に、OAuth 2.0 Implicit Grant を使用します。
+シングル ページ アプリケーション (SPA) は、ブラウザー上で実行される JavaScript ヘビーなフロント エンドを使用して通常構成されています。これがアプリケーションの Web API バックエンドを呼び出してビジネス ロジックを実行します。 Azure AD でホストされている SPA では、Azure AD によるユーザー認証と、アプリケーションの JavaScript クライアントによるバックエンド Web API の呼び出しを保護するためのトークンの取得に、OAuth 2.0 Implicit Grant を使用します。
 
 この認証プロトコルはほかにも、ユーザーが同意した後、クライアントとアプリケーション用に構成されている他の Web API リソースとの間に発生する呼び出しを保護するトークンを取得するときにも利用できます。 暗黙的な認可付与の詳細と、それが自身のアプリケーションのシナリオに適しているかどうかの判断に役立つ情報は、「[Azure Active Directory (AD) での OAuth2 の暗黙的な許可フローについて](v1-oauth2-implicit-grant-flow.md)」を参照してください。
 
@@ -210,9 +211,9 @@ Web アプリケーションではほかにも、次のものが提供される�
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]** をクリックして、構成するアプリケーションを検索/クリックします。 アプリケーションのメイン登録ページが表示され、そのアプリケーションの **[設定]** ページが開きます。
 4. アプリケーションの登録ページで **[マニフェスト]** をクリックして、**[マニフェストの編集]** ページに切り替えます。 Web ベースのマニフェスト エディターが開き、ポータルでマニフェストを**編集**できます。 "oauth2AllowImplicitFlow" を探し、値を "true" に設定します。 既定値は "false" です。
    
-  ```json
-  "oauth2AllowImplicitFlow": true,
-  ```
+   ```json
+   "oauth2AllowImplicitFlow": true,
+   ```
 5. 更新したマニフェストを保存します。 保存が完了すると、ユーザー認証に OAuth 2.0 Implicit Grant を使用するように Web API が構成されます。
 
 ## <a name="next-steps"></a>次の手順

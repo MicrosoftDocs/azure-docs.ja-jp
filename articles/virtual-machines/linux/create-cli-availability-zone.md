@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: c202379f236bcd2fea05ad9d135096bc724898e7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ee714cd87676c519c1bbfca2c08b62287299114e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956423"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700623"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Azure CLI を使用して可用性ゾーン内に Linux 仮想マシンを作成する
 
@@ -29,13 +29,13 @@ ms.locfileid: "46956423"
 
 可用性ゾーンを使用するには、[サポートされている Azure リージョン](../../availability-zones/az-overview.md#regions-that-support-availability-zones)に仮想マシンを作成します。
 
-[Azure CLI](/cli/azure/install-az-cli2) の最新版がインストールされていること、および [az login](/cli/azure/reference-index#az_login) で Azure アカウントにログインしていることを確認します。
+[Azure CLI](/cli/azure/install-az-cli2) の最新版がインストールされていること、および [az login](/cli/azure/reference-index) で Azure アカウントにログインしていることを確認します。
 
 
 ## <a name="check-vm-sku-availability"></a>提供されている VM SKU の確認
 提供されている VM サイズ (SKU) は、リージョンやゾーンによって異なる場合があります。 可用性ゾーンの使用計画を立てやすくするために、提供されている VM SKU を Azure リージョンとゾーンごとに一覧表示することができます。 そうすることで適切な VM サイズを選び、必要な回復性をすべてのゾーンにわたって確保することができます。 さまざまな VM の種類とサイズについて詳しくは、[VM サイズの概要](sizes.md)に関するページを参照してください。
 
-[az vm list-skus](/cli/azure/vm#az_vm_list_skus) コマンドで、利用可能な VM SKU を表示することができます。 次の例では、*eastus2* リージョンで提供されている VM SKU を一覧表示しています。
+[az vm list-skus](/cli/azure/vm) コマンドで、利用可能な VM SKU を表示することができます。 次の例では、*eastus2* リージョンで提供されている VM SKU を一覧表示しています。
 
 ```azurecli
 az vm list-skus --location eastus2 --output table
@@ -62,7 +62,7 @@ virtualMachines   eastus2    Standard_E4_v3              Standard   E4_v3    1,2
 
 ## <a name="create-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。  
+[az group create](/cli/azure/group) コマンドでリソース グループを作成します。  
 
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンの前にリソース グループを作成する必要があります。 この例では、*myResourceGroupVM* という名前のリソース グループが *eastus2* リージョンに作成されます。 米国東部 2 は、可用性ゾーンをサポートする Azure リージョンの 1 つです。
 
@@ -74,7 +74,7 @@ az group create --name myResourceGroupVM --location eastus2
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-仮想マシンを作成するには、[az vm create](/cli/azure/vm#az_vm_create) コマンドを使用します。 
+仮想マシンを作成するには、[az vm create](/cli/azure/vm) コマンドを使用します。 
 
 仮想マシンを作成するときに、オペレーティング システム イメージ、ディスクのサイズ、管理者資格情報など、いくつかの選択肢があります。 この例では、Ubuntu Server を実行する *myVM* という名前の仮想マシンを作成します。 VM は、可用性ゾーン *1* に作成されます。 既定では、VM は、*Standard_DS1_v2* サイズで作成されます。
 
@@ -102,7 +102,7 @@ VM の作成には数分かかることがあります。 VM が作成される�
 
 VM が可用性ゾーンに展開されると、その VM のマネージド ディスクが同じ可用性ゾーンに作成されます。 既定では、パブリック IP アドレスもそのゾーンに作成されます。 次の例では、これらのリソースについての情報を取得します。
 
-VM のマネージド ディスクが可用性ゾーンにあることを確認するには、[az vm show](/cli/azure/vm#az_vm_show) コマンドを使ってディスク ID を取得します。この例ではディスク ID を変数に格納し、後の手順で使用します。 
+VM のマネージド ディスクが可用性ゾーンにあることを確認するには、[az vm show](/cli/azure/vm) コマンドを使ってディスク ID を取得します。この例ではディスク ID を変数に格納し、後の手順で使用します。 
 
 ```azurecli-interactive
 osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)
@@ -149,7 +149,7 @@ az disk show --resource-group myResourceGroupVM --name $osdiskname
 }
 ```
 
-[az vm list-ip-addresses](/cli/azure/vm#az_vm_list_ip_addresses) コマンドを使って、*myVM* 内のパブリック IP アドレス リソースの名前を取得します。 この例では名前を変数に格納し、後の手順で使用します。
+[az vm list-ip-addresses](/cli/azure/vm) コマンドを使って、*myVM* 内のパブリック IP アドレス リソースの名前を取得します。 この例では名前を変数に格納し、後の手順で使用します。
 
 ```azurecli
 ipaddressname=$(az vm list-ip-addresses -g myResourceGroupVM -n myVM --query "[].virtualMachine.network.publicIpAddresses[].name" -o tsv)

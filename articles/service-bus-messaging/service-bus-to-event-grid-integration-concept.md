@@ -3,23 +3,23 @@ title: Azure Service Bus と Event Grid の統合の概要 | Microsoft Docs
 description: Service Bus メッセージングと Event Grid の統合の説明
 services: service-bus-messaging
 documentationcenter: .net
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 09/15/2018
-ms.author: spelluru
-ms.openlocfilehash: 2173a24eb3bbaafe9dcf25461eb5357ba3a6e7ad
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.author: aschhab
+ms.openlocfilehash: 9df321980db3a2481f0d8cc007546822fea46f9e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166901"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59049848"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure Service Bus と Event Grid の統合の概要
 
@@ -35,18 +35,18 @@ Service Bus では、レシーバーがない場合にキューまたはサブ�
 
 ![19][]
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ### <a name="verify-that-you-have-contributor-access"></a>共同作成者アクセスがあることの確認
-
-Service Bus 名前空間に移動して、次に示すように **[アクセス制御 (IAM)]** を選択します。
-
-![1][]
+Service Bus 名前空間に移動して、**[アクセス制御 (IAM)]** を選択し、**[ロールの割り当て]** を選択します。名前空間への共同作成者アクセス権を持っていることを確認します。 
 
 ### <a name="events-and-event-schemas"></a>イベントとイベント スキーマ
 
 現在の Service Bus では、2 つのシナリオでイベントが送信されます。
 
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
-* [DeadletterMessagesAvailable](#dead-lettered-messages-available-event)
+* DeadletterMessagesAvailable
 
 さらに、Service Bus では、標準の Event Grid セキュリティと[認証メカニズム](https://docs.microsoft.com/azure/event-grid/security-authentication)が使用されます。
 
@@ -118,7 +118,7 @@ Service Bus 名前空間に移動して、次に示すように **[アクセス�
 
 Service Bus 名前空間の Event Grid サブスクリプションは、次の 3 とおりの方法で作成できます。
 
-* [Azure Portal](#portal-instructions) で次のように実行します
+* Azure ポータルで次の操作を行います。
 * [Azure CLI](#azure-cli-instructions)
 * [PowerShell](#powershell-instructions)
 
@@ -155,23 +155,23 @@ az eventgrid event-subscription create --resource-id $namespaceid --name “<YOU
 
 ## <a name="powershell-instructions"></a>PowerShell の手順
 
-Azure PowerShell がインストールされていることを確認してください。 [インストーラーをダウンロード](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.4.0)します。 **Windows + X** キーを押し、管理者のアクセス許可で新しい PowerShell コンソールを開きます。 Azure Portal 内のコマンド シェルを使用してもかまいません。
+Azure PowerShell がインストールされていることを確認してください。 [インストーラーをダウンロード](https://docs.microsoft.com/powershell/azure/install-Az-ps)します。 **Windows + X** キーを押し、管理者のアクセス許可で新しい PowerShell コンソールを開きます。 Azure Portal 内のコマンド シェルを使用してもかまいません。
 
-```PowerShell-interactive
-Connect-AzureRmAccount
+```powershell-interactive
+Connect-AzAccount
 
-Select-AzureRmSubscription -SubscriptionName "<YOUR SUBSCRIPTION NAME>"
+Select-AzSubscription -SubscriptionName "<YOUR SUBSCRIPTION NAME>"
 
 # This might be installed already
-Install-Module AzureRM.ServiceBus
+Install-Module Az.ServiceBus
 
-$NSID = (Get-AzureRmServiceBusNamespace -ResourceGroupName "<YOUR RESOURCE GROUP NAME>" -Na
+$NSID = (Get-AzServiceBusNamespace -ResourceGroupName "<YOUR RESOURCE GROUP NAME>" -Na
 mespaceName "<YOUR NAMESPACE NAME>").Id
 
-New-AzureRmEVentGridSubscription -EventSubscriptionName “<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>” -ResourceId $NSID -Endpoint "<YOUR FUNCTION URL>” -SubjectEndsWith “<YOUR SERVICE BUS SUBSCRIPTION NAME>”
+New-AzEVentGridSubscription -EventSubscriptionName “<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>” -ResourceId $NSID -Endpoint "<YOUR FUNCTION URL>” -SubjectEndsWith “<YOUR SERVICE BUS SUBSCRIPTION NAME>”
 ```
 
-ここから、他のセットアップ オプションを調べたり、[イベントが送信されていることをテスト](#test-that-events-are-flowing)したりできます。
+ここから、他のセットアップ オプションを調べたり、イベントが送信されていることをテストしたりできます。
 
 ## <a name="next-steps"></a>次の手順
 

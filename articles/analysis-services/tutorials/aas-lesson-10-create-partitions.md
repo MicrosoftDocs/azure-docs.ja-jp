@@ -1,19 +1,19 @@
 ---
-title: 'Azure Analysis Services チュートリアル - レッスン 10: パーティションを作成する | Microsoft Docs'
+title: 'Azure Analysis Services チュートリアルのレッスン 10: パーティションを作成する | Microsoft Docs'
 description: この Azure Analysis Services チュートリアル プロジェクトでパーティションを作成する方法を説明します。
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5aaaee6f9a69f9cb619935f18f614d7572a755d7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 91d34065753ae29b14aad8580bf922b8213a7988
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429698"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738625"
 ---
 # <a name="create-partitions"></a>パーティションを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "49429698"
 このレッスンの推定所要時間: **15 分**  
   
 ## <a name="prerequisites"></a>前提条件  
-このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンの作業を実行する前に、前のレッスン「[レッスン 9: 階層を作成する](../tutorials/aas-lesson-9-create-hierarchies.md)」を終えている必要があります。  
+このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンのタスクを実行する前に、前のレッスン「[レッスン 9: 階層を作成する](../tutorials/aas-lesson-9-create-hierarchies.md)」を終えている必要があります。  
   
 ## <a name="create-partitions"></a>パーティションを作成する  
   
@@ -40,7 +40,7 @@ ms.locfileid: "49429698"
 
     ![aas-lesson10-query-editor](../tutorials/media/aas-lesson10-query-editor.png)
 
-6.  [Filter Rows] ダイアログ ボックスの **[Show rows where: OrderDate]** の **is after or equal to** をそのままにして､日付フィールドに **1/1/2010** と入力します｡ **And** 演算子は選択状態のままにして､**is before** を選択し､日付フィールドに **1/1/2011** を入力して､**[OK]** をクリックします｡
+6.  [Filter Rows] ダイアログ ボックスの **[Show rows where: OrderDate]** の **is after or equal to** をそのままにして､日付フィールドに「**1/1/2010**」と入力します。 **And** 演算子は選択状態のままにして､**is before** を選択し､日付フィールドに **1/1/2011** を入力して､**[OK]** をクリックします｡
 
     ![aas-lesson10-filter-rows](../tutorials/media/aas-lesson10-filter-rows.png)
     
@@ -108,5 +108,5 @@ Partition Manager で､新しく作成した各パーティションの **Last 
   
     ![aas-lesson10-process-complete](../tutorials/media/aas-lesson10-process-complete.png)
   
- ## <a name="whats-next"></a>次の手順
-次の｢[レッスン 11: ロールを作成する](../tutorials/aas-lesson-11-create-roles.md)｣に進みます｡ 
+## <a name="whats-next"></a>次の手順
+次のレッスン｢[レッスン 11: ロールを作成する](../tutorials/aas-lesson-11-create-roles.md)｣に進みます。 

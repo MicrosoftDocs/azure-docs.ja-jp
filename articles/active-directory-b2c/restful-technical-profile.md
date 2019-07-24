@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 内のカスタム ポリシーで RESTful 技
 description: Azure Active Directory B2C 内のカスタム ポリシーで RESTful 技術プロファイルを定義します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 930cdddd8a9e039fa9c29a348a0a66eb25d254fe
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.subservice: B2C
+ms.openlocfilehash: 7ff14af756a55ccc6bbf40dd39d49c5168f4af1f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44382900"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076328"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) B2C では、独自の RESTful サービスに
 - **検証技術プロファイル** - 検証技術プロファイルは、RESTful サービスを呼び出します。 検証技術プロファイルでは、ユーザー体験を続ける前に、ユーザーが入力したデータを検証します。 検証技術プロファイルにより、エラー メッセージが自己宣言されたページに表示され、出力要求で返されます。
 - **要求の交換** - RESTful サービスへの呼び出しは、オーケストレーションの手順を経て行われます。 このシナリオでは、エラー メッセージを表示するためのユーザー インターフェイスはありません。 REST API がエラーを返す場合、ユーザーは、エラー メッセージがある証明書利用者アプリケーションにリダイレクトで戻されます。
 
-## <a name="protocol"></a>プロトコル
+## <a name="protocol"></a>Protocol
 
 **Protocol** 要素の **Name** 属性は、`Proprietary` に設定する必要があります。 **handler** 属性には、Azure AD B2C により使用される、プロトコルハンドラー アセンブリの完全修飾名が存在する必要があります `Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
 
@@ -85,8 +85,8 @@ Azure Active Directory (Azure AD) B2C では、独自の RESTful サービスに
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ServiceUrl | [はい] | REST API エンドポイントの URL。 | 
-| AuthenticationType | [はい] | RESTful 要求プロバイダーにより実行されている認証の種類。 可能な値: `None`、`Basic`、または `ClientCertificate`。 `None` の値は、REST API が匿名でないことを示します。 `Basic` の値は、REST API が HTTP 基本認証で保護されていることを示します。 Azure AD B2C などの検証されたユーザーのみが API にアクセスできます。 `ClientCertificate` の (推奨) 値は、REST API がクライアント証明書認証を使用してアクセスを制限していることを示します。 Azure AD B2C などの適切な証明書があるサービスのみがサービスにアクセスできます。 | 
+| ServiceUrl | はい | REST API エンドポイントの URL。 | 
+| AuthenticationType | はい | RESTful 要求プロバイダーにより実行されている認証の種類。 可能な値: `None`、`Basic`、または `ClientCertificate`。 `None` の値は、REST API が匿名でないことを示します。 `Basic` の値は、REST API が HTTP 基本認証で保護されていることを示します。 Azure AD B2C などの検証されたユーザーのみが API にアクセスできます。 `ClientCertificate` の (推奨) 値は、REST API がクライアント証明書認証を使用してアクセスを制限していることを示します。 Azure AD B2C などの適切な証明書があるサービスのみがサービスにアクセスできます。 | 
 | SendClaimsIn | いいえ  | RESTful クレーム プロバイダーへの入力要求の送信方法を指定します。 可能な値: `Body` (既定)、`Form`、`Header`、または `QueryString`。 `Body` の値は、要求本文で、JSON 形式で送信される入力要求です。 `Form` の値は、要求本文で、キーの値をアンパサンド ' &' で区切った形式で送信される入力要求です。 `Header` の値は、要求本文で送信される入力要求です。 `QueryString` の値は、要求クエリ文字列で送信される入力要求です。 | 
 | ClaimsFormat | いいえ  | 出力要求の形式を指定します。 可能な値: `Body` (既定)、`Form`、`Header`、または `QueryString`。 `Body` の値は、要求本文で、JSON 形式で送信される出力要求です。 `Form` の値は、要求本文で、キーの値をアンパサンド ' &' で区切った形式で送信される出力要求です。 `Header` の値は、要求本文で送信される出力要求です。 `QueryString` の値は、要求クエリ文字列で送信される出力要求です。 | 
 | DebugMode | いいえ  | 技術プロファイルをデバッグ モードで実行します。 デバッグ モードでは、REST API はより多くの情報を返すことができます。 返却エラー メッセージ セクションを参照してください。 | 
@@ -111,8 +111,8 @@ Azure Active Directory (Azure AD) B2C では、独自の RESTful サービスに
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| BasicAuthenticationUsername | [はい] | 認証に使用されるユーザー名。 | 
-| BasicAuthenticationPassword | [はい] | 認証に使用されるパスワード。 |
+| BasicAuthenticationUsername | はい | 認証に使用されるユーザー名。 | 
+| BasicAuthenticationPassword | はい | 認証に使用されるパスワード。 |
 
 次の例は、基本的な認証を用いた技術プロファイルを示しています。
 
@@ -136,7 +136,7 @@ Azure Active Directory (Azure AD) B2C では、独自の RESTful サービスに
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ClientCertificate | [はい] | 認証に使用する X509 証明書 (RSA キー セット)。 | 
+| ClientCertificate | はい | 認証に使用する X509 証明書 (RSA キー セット)。 | 
 
 ```XML
 <TechnicalProfile Id="REST-API-SignUp">
@@ -159,11 +159,11 @@ REST API は、「そのユーザーは CRM システムでは見つかりませ
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| version | [はい] | 1.0.0 | 
-| status | [はい] | 409 | 
+| version | はい | 1.0.0 | 
+| status | はい | 409 | 
 | code | いいえ  | `DebugMode` が有効な場合に表示される、RESTful エンドポイント プロバイダーからのエラー コード。 | 
 | requestId | いいえ  | `DebugMode` が有効な場合に表示される、RESTful エンドポイント プロバイダーからの要求識別子。 | 
-| userMessage | [はい] | ユーザーに示されるエラー メッセージ。 | 
+| userMessage | はい | ユーザーに示されるエラー メッセージ。 | 
 | developerMessage | いいえ  | `DebugMode` が有効な場合に表示される、問題の詳細な説明とそれを修正する方法。 | 
 | moreInfo | いいえ  | `DebugMode` が有効な場合に表示される、追加情報をポイントする URI。 | 
 
@@ -200,7 +200,7 @@ public class ResponseContent
 - [ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する](active-directory-b2c-custom-rest-api-netfw.md) 
 - [HTTP 基本認証を使用して RESTful サービスを保護する](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 - [クライアント証明書を使用して RESTful サービスを保護する](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
-- [チュートリアル: ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する](active-directory-b2c-rest-api-validation-custom.md)
+- [チュートリアル:REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する](active-directory-b2c-rest-api-validation-custom.md)」をご覧ください
 
  
 

@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,14 +16,15 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: ddc04d32f76515cb93d2cde3fe4eccaab7e4c291
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0038dcc10aafa191121b2797f68d66a3e32b3fa7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245360"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207451"
 ---
-# <a name="quickstart-remove-an-application-from-azure-active-directory"></a>クイック スタート: Azure Active Directory からのアプリケーションを削除する
+# <a name="quickstart-remove-an-application-from-azure-active-directory"></a>クイック スタート:Azure Active Directory からアプリケーションを削除する
 
 Azure Active Directory (Azure AD) を使用してアプリケーションを登録したエンタープライズ開発者や SaaS (サービスとしてのソフトウェア) プロバイダーは、Azure AD テナントからのアプリケーションの登録の削除が必要になる場合があります。
 

@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と HubSpot の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と HubSpot の統合 | Microsoft Docs
 description: Azure Active Directory と HubSpot の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 57343ccd-53ea-4e62-9e54-dee2a9562ed5
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 76a19668453b35b39359bef442f7f34a06623cbe
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8bbb307654d4aaf753a4a3284875dee4f5707f2a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49433488"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901732"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>チュートリアル: Azure Active Directory と HubSpot の統合
+# <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>チュートリアル:Azure Active Directory と HubSpot の統合
 
 このチュートリアルでは、HubSpot と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -87,7 +88,7 @@ HubSpot で Azure AD のシングル サインオンを構成してテストす�
 
 1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[HubSpot テスト ユーザーの作成](#creating-a-hubspot-saml-test-user)** - HubSpot で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+3. **HubSpot テスト ユーザーの作成** - HubSpot で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
 5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
@@ -164,7 +165,7 @@ HubSpot で Azure AD のシングル サインオンを構成してテストす�
 
     d. **[ID プロバイダー のシングル サインオン URL]** テキストボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
-    e. ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開きます。 その内容をクリップボードにコピーし、**[X.509 Certificate] (X.509 証明書)** テキストボックスに貼り付けます。
+    e. ダウンロードした **証明書 (Base64)**  ファイルをメモ帳で開きます。 その内容をクリップボードにコピーし、 **[X.509 証明書]** テキストボックスに貼り付けます。
 
     f. **[確認]** をクリックします。
 
@@ -186,7 +187,7 @@ HubSpot で Azure AD のシングル サインオンを構成してテストす�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに、**brittasimon@yourcompanydomain.extension** と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
@@ -214,7 +215,7 @@ HubSpot の場合、プロビジョニングは手動で行います。
 
     ![Configure single sign-on](./media/hubspot-tutorial/user2.png)
 
-5. **[Add email addess(es)]\(電子メール アドレスの追加)** テキストボックスにユーザーの電子メール アドレスを **brittasimon@contoso.com** のように入力し、**[Next]\(次へ)** をクリックします。
+5. **[Add email addess(es)]\(メール アドレスの追加\)** ボックスにユーザーのメール アドレス (例: **brittasimon\@contoso.com**) を入力し、**[Next]\(次へ\)** をクリックします。
 
     ![Configure single sign-on](./media/hubspot-tutorial/user3.png)
 

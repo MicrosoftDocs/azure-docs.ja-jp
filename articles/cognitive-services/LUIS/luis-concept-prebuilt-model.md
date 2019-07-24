@@ -1,21 +1,22 @@
 ---
-title: 事前構築済みモデル - エンティティ、意図、ドメイン - LUIS
-titleSuffix: Azure Cognitive Services
+title: 事前構築済みのモデル
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 事前構築済みモデルでは、ドメイン、意図、発話、およびエンティティが提供されます。 事前構築済みドメインでアプリを始めることも、後でアプリに関連するドメインを追加することもできます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 6237dc66e6e085a2501642abd679844c38e98ed1
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 5d2ea9d971eff22ddeed4122c9697ca3096697b0
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210535"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882847"
 ---
 # <a name="prebuilt-domain-intent-and-entity-models"></a>事前構築済みのドメイン、意図、エンティティ モデル
 
@@ -27,7 +28,7 @@ LUIS では、3 種類の事前構築済みモデルが提供されています�
 
 |モデルの種類|内容|
 |--|--|
-|ドメイン|意図、発話、エンティティ|
+|Domain|意図、発話、エンティティ|
 |意図|意図、発話|
 |エンティティ|エンティティのみ| 
 

@@ -1,280 +1,258 @@
 ---
-title: 'チュートリアル: Azure Active Directory と AnswerHub の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と AnswerHub の統合 | Microsoft Docs
 description: Azure Active Directory と AnswerHub の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 818b91d7-01df-4b36-9706-f167c710a73c
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/16/2017
+ms.topic: tutorial
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 447a3911bc1f021fb1ca2658716de1910b5379b6
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 95d6ff44a8d760150df491b67ee56d62c4daff31
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044082"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882792"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>チュートリアル: Azure Active Directory と AnswerHub の統合
+# <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>チュートリアル:Azure Active Directory と AnswerHub の統合
 
 このチュートリアルでは、AnswerHub と Azure Active Directory (Azure AD) を統合する方法について説明します。
+AnswerHub と Azure AD の統合には、以下の利点があります。
 
-AnswerHub と Azure AD の統合には、次の利点があります。
+* Azure AD を使用して、AnswerHub にアクセスするユーザーを管理できます。
+* ユーザーが自分の Azure AD アカウントを使用して AnswerHub に自動的にサインイン (シングル サインオン) できるようにできます。
+* 中央の場所 (Azure portal) から自分のアカウントを管理できます。
 
-- Azure AD で誰が AnswerHub にアクセスできるかを制御できます
-- ユーザーが自分の Azure AD アカウントで AnswerHub に自動的にサインオンされる (シングル サインオン) ようにできます
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure AD と AnswerHub の統合を構成するには、次の項目が必要です。
+Azure AD と AnswerHub の統合を構成するには、以下が必要です。
 
-- Azure AD サブスクリプション
-- AnswerHub でのシングル サインオンが有効なサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[1 か月の試用版](https://azure.microsoft.com/pricing/free-trial/)を開始できます。
+* シングル サインオンが有効な AnswerHub サブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの AnswerHub の追加
-2. Azure AD シングル サインオンの構成とテスト
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-## <a name="adding-answerhub-from-the-gallery"></a>ギャラリーからの AnswerHub の追加
-AnswerHub の Azure AD への統合を構成するには、AnswerHub をギャラリーから管理対象 SaaS アプリの一覧に追加する必要があります。
+* AnswerHub では、SP Initiated SSO がサポートされます。
 
-**ギャラリーから AnswerHub を追加するには、次の手順を実行します。**
+## <a name="add-answerhub-from-the-gallery"></a>ギャラリーからの AnswerHub の追加
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+AnswerHub の Azure AD への統合を設定するには、ギャラリーから AnswerHub をマネージド SaaS アプリの一覧に追加する必要があります。
 
-    ![Active Directory][1]
+**ギャラリーから AnswerHub を追加するには:**
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+1. [Azure Portal](https://portal.azure.com) の左側のウィンドウで、**[Azure Active Directory]** を選択します。
 
-    ![[アプリケーション]][2]
-    
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+    ![[Azure Active Directory] ボタン](common/select-azuread.png)
 
-    ![[アプリケーション]][3]
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** を選択します。
 
-4. 検索ボックスに「**AnswerHub**」と入力します。
+    ![Enterprise Applications blade](common/enterprise-applications.png)
 
-    ![Azure AD のテスト ユーザーの作成](./media/answerhub-tutorial/tutorial_answerhub_search.png)
+3. アプリケーションを追加するには、ウィンドウの上部の **[新しいアプリケーション]** を選択します。
 
-5. 結果ウィンドウで **[AnswerHub]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-    ![Azure AD のテスト ユーザーの作成](./media/answerhub-tutorial/tutorial_answerhub_addfromgallery.png)
+4. 検索ボックスに「**AnswerHub**」と入力します。 結果リストで **[AnswerHub]** を選択し、**[追加]** を選択します。
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションでは、"Britta Simon" という名前のテスト ユーザーに基づいて、AnswerHub で Azure AD のシングル サインオンを構成およびテストします。
+     ![結果一覧の AnswerHub](common/search-new-app.png)
 
-シングル サインオンを機能させるには、Azure AD が Azure AD のユーザーに対応する AnswerHub のユーザーを認識している必要があります。 つまり、Azure AD ユーザーと AnswerHub の関連するユーザーの間のリンク関係が確立されている必要があります。
+## <a name="set-up-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの設定とテスト
 
-AnswerHub で、Azure AD での **[ユーザー名]** の値を **[ユーザー名]** の値として割り当てることによってリンク関係を確立します。
+このセクションでは、Britta Simon という名前のテスト ユーザーを使用して、AnswerHub で Azure AD のシングル サインオンを構成およびテストします。
+シングル サインオンでは、Azure AD ユーザーと AnswerHub の関連ユーザーの間で、リンクを確立する必要があります。
 
-AnswerHub で Azure AD のシングル サインオンを構成およびテストするには、次の構成要素を完了する必要があります。
+AnswerHub で Azure AD のシングル サインオンを構成およびテストするには、以下のタスクを完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[AnswerHub テスト ユーザーの作成](#creating-an-answerhub-test-user)** - Azure AD でのユーザーにリンクされた、AnswerHub での Britta Simon の対応するユーザーを作成します。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. [Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on) - ユーザーがこの機能を使用できるようにします。
+2. [AnswerHub シングル サインオンの構成](#configure-answerhub-single-sign-on) - アプリケーション側でシングル サインオンの設定を行います。
+3. [Azure AD テスト ユーザーの作成](#create-an-azure-ad-test-user) - 名前は Britta Simon にします。
+4. [Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user) - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. [AnswerHub テスト ユーザーの作成](#create-answerhub-test-user) - Azure AD テスト ユーザーに対応し、リンクされます。
+6. [シングル サインオンのテスト](#test-single-sign-on)。構成が機能することを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にし、AnswerHub アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure Portal で Azure AD シングル サインオンを設定します。
 
-**AnswerHub で Azure AD のシングル サインオンを構成するには、次の手順を実行します。**
+**AnswerHub で Azure AD シングル サインオンを構成するには:**
 
-1. Azure Portal の **[AnswerHub]** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **[AnswerHub]** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![Configure single sign-on][4]
+    ![[シングル サインオン] ボタン](common/select-sso.png)
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![Configure single sign-on](./media/answerhub-tutorial/tutorial_answerhub_samlbase.png)
+2. **[シングル サインオン方式の選択]** ダイアログ ボックスで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-3. **[AnswerHub Domain and URLs] \(AnswerHub のドメインと URL)** セクションで、次の手順を実行します。
+    ![[シングル サインオン方式の選択] ダイアログ ボックス](common/select-saml-option.png)
 
-    ![Configure single sign-on](./media/answerhub-tutorial/tutorial_answerhub_url.png)
+3. **[SAML でシングル サインオンをセットアップします]** ページで、編集アイコンを選択して **[基本的な SAML 構成]** ダイアログ ボックスを開きます。
 
-    a. **[サインオン URL]** ボックスに、`https://<company>.answerhub.com` のパターンを使用して URL を入力します。
+    ![[SAML でシングル サインオンをセットアップします] ページ](common/edit-urls.png)
 
-    b. **[識別子]** ボックスに、`https://<company>.answerhub.com` の形式で URL を入力します。
+4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[AnswerHub クライアント サポート チーム](mailto:success@answerhub.com)に問い合わせてください。 
- 
-4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+    ![[基本的な SAML 構成] セクション](common/sp-identifier.png)
 
-    ![Configure single sign-on](./media/answerhub-tutorial/tutorial_answerhub_certificate.png) 
+    a. **[サインオン URL]** ボックスに、次のパターンで URL を入力します。`https://<company>.answerhub.com`
 
-5. **[保存]** ボタンをクリックします。
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。`https://<company>.answerhub.com`
 
-    ![Configure single sign-on](./media/answerhub-tutorial/tutorial_general_400.png)
+    > [!NOTE]
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 この値を取得するには、[AnswerHub サポート チーム](mailto:success@answerhub.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[AnswerHub Configuration] \(AnswerHub 構成)** セクションで、**[Configure AnswerHub] \(AnswerHub の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス] セクション**から、**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、実際の要件に従って、**[証明書 (Base64)]** の横にある **[ダウンロード]** リンクを選択し、証明書を自分のコンピューターに保存します。
 
-    ![Configure single sign-on](./media/answerhub-tutorial/tutorial_answerhub_configure.png) 
+    ![証明書のダウンロード リンク](common/certificatebase64.png)
 
-7. 別の Web ブラウザーのウィンドウで、管理者として AnswerHub 企業サイトにログインします。
-   
-    >[!NOTE]
-    >AnswerHub の構成について不明点がある場合は、[AnswerHub サポート チーム](mailto:success@answerhub.com.)にお問い合わせください。
-   
-8. **[Administration]** に移動します。
+6. **[AnswerHub のセットアップ]** セクションで、実際の要件に基づいて適切な URL をコピーします。
 
-9. **[User and Group]** タブをクリックします。
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-10. 左側のナビゲーション ウィンドウで、**[Social Settings]** セクションの **[SAML Setup]** をクリックします。
+   これらの URL はコピーできます。
+    - ログイン URL
 
-11. **[IDP Config]** タブをクリックします。
+    - Azure AD 識別子
 
-12. **[IDP Config]** タブで、次の手順を実行します。
+    - ログアウト URL
 
-     ![SAML のセットアップ](./media/answerhub-tutorial/ic785172.png "SAML Setup")  
-  
-     a. **[IDP Login URL] \(IDP ログイン URL)** テキスト ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
-  
-     b. **[IDP Logout URL] \(IDP ログアウト URL)** テキスト ボックスに、Azure Portal からコピーした**サインアウト URL** 値を貼り付けます。
-     
-     c. **[IDP Name Identifier Format] \(IDP 名前識別子形式)** テキスト ボックスに、Azure Portal の **[ユーザー属性]** セクションで選択したのと同じユーザー識別子の値を入力します。
-  
-     d. **[Keys and Certificates]** をクリックします。
+### <a name="configure-answerhub-single-sign-on"></a>AnswerHub のシングル サインオンの構成
 
-13. [Keys and Certificates] タブでは、次の手順を実行します。
-    
-     ![Keys and Certificates (キーと証明書)](./media/answerhub-tutorial/ic785173.png "Keys and Certificates")  
- 
-     a. Azure Portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[IDP Public Key (x509 Format)] \(IDP 公開キー (x509 形式))** テキスト ボックスに貼り付けます。
-  
-     b. **[Save]** をクリックします。
+このセクションでは、AnswerHub のシングル サインオンを設定します。  
 
-14. **[IDP Config]** タブで、**[Save]** をクリックします。
+**AnswerHub のシングル サインオンを構成するには:**
 
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+1. 別の Web ブラウザー ウィンドウで、AnswerHub 企業サイトに管理者としてサインインします。
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
-
-![Azure AD ユーザーの作成][100]
-
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
-
-1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
-
-    ![Azure AD のテスト ユーザーの作成](./media/answerhub-tutorial/create_aaduser_01.png) 
-
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
-    
-    ![Azure AD のテスト ユーザーの作成](./media/answerhub-tutorial/create_aaduser_02.png) 
-
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
- 
-    ![Azure AD のテスト ユーザーの作成](./media/answerhub-tutorial/create_aaduser_03.png) 
-
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
- 
-    ![Azure AD のテスト ユーザーの作成](./media/answerhub-tutorial/create_aaduser_04.png) 
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
-
-    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
-
-    d. **Create** をクリックしてください。
- 
-### <a name="creating-an-answerhub-test-user"></a>AnswerHub テスト ユーザーの作成
-
-Azure AD ユーザーが AnswerHub にログインできるようにするには、そのユーザーを AnswerHub にプロビジョニングする必要があります。  
-AnswerHub の場合、プロビジョニングは手動で行います。
-
-**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
-
-1. **AnswerHub** 企業サイトに管理者としてログインします。
+    > [!NOTE]
+    > AnswerHub の構成について不明な点がある場合は、[AnswerHub サポート チーム](mailto:success@answerhub.com.)にお問い合わせください。
 
 2. **[Administration]** に移動します。
 
-3. **[Users & Groups]** タブをクリックします。
+3. **[User and Groups]\(ユーザーとグループ\)** タブの左側のウィンドウで、**[Social Settings]\(ソーシャル設定\)** セクションの **[SAML Setup]\(SAML セットアップ\)** を選択します。
 
-4. 左側のナビゲーション ウィンドウで、**[Manage Users]** セクションの **[Create or import users]** をクリックします。
-   
-   ![Users & Groups (ユーザーとグループ)](./media/answerhub-tutorial/ic785175.png "Users & Groups")
+4. **[IDP Config]\(IDP 構成\)** タブで、以下の手順を実行します。
 
-5. プロビジョニングする有効な Azure Active Directory ユーザー アカウントの**電子メール アドレス**、**ユーザー名**、**パスワード**を対応するボックスに入力し、**[Save]** をクリックします。
+    ![[User & Groups]\(ユーザーとグループ\) タブ](./media/answerhub-tutorial/ic785172.png "SAML セットアップ")  
+  
+    a. **[IDP Login URL]\(IDP ログイン URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** を貼り付けます。
+  
+    b. **[IDP Logout URL]\(IDP ログアウト URL\)** ボックスに、Azure portal からコピーした **[ログアウト URL]** を貼り付けます。
 
->[!NOTE]
->他の AnswerHub ユーザー アカウントの作成ツールまたは AnswerHub から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+    c. **[IDP Name Identifier Format]\(IDP 名前識別子形式\)** ボックスに、Azure portal の **[ユーザー属性]** セクションで選択した**識別子**の値を入力します。
+  
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Keys and Certificates]\(キーと証明書\)** を選択します。
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+5. **[Keys and Certificates]\(キーと証明書\)** セクションで、以下の手順を実行します。
 
-このセクションでは、AnswerHub へのアクセス権を付与することによって、Britta Simon が Azure シングル サインオンを使用できるようにします。
+    ![[Keys and Certificates]\(キーと証明書\) セクション](./media/answerhub-tutorial/ic785173.png "キーと証明書")  
 
-![ユーザーの割り当て][200] 
+    a. Azure portal からダウンロードした Base64 でエンコードされた証明書をメモ帳で開き、その内容をコピーしてから、**[IDP Public Key (x509 Format)]\(IDP 公開キー (x509 形式)\)** ボックスに貼り付けます。
+  
+    b. **[保存]** を選択します。
 
-**Britta Simon を AnswerHub に割り当てるには、次の手順を実行します。**
+6. **[IDP Config]\(IDP 構成\)** タブで、もう一度 **[Save]\(保存\)** を選択します。
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-    ![ユーザーの割り当て][201] 
+このセクションでは、Azure ポータルで Britta Simon というテスト ユーザーを作成します。
+
+**Azure AD テスト ユーザーを作成するには:**
+
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
+
+    ![[Azure Active Directory]、[ユーザー]、[すべてのユーザー] の選択](common/users.png)
+
+2. 画面の上部にある **[新しいユーザー]** を選択します。
+
+    ![[新しいユーザー] ボタン](common/new-user.png)
+
+3. ユーザー プロパティで、以下の手順を実行します。
+
+    ![ユーザー プロパティ](common/user-properties.png)
+
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** ボックスに、「**brittasimon@<yourcompanydomain.extension>**」と入力します。  
+    たとえば、「 BrittaSimon@contoso.com 」のように入力します。
+
+    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
+
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+
+このセクションでは、Britta Simon に AnswerHub へのアクセスを許可することで、彼女が Azure AD シングル サインオンを使用できるように設定します。
+
+**Azure AD テスト ユーザーを割り当てるには:**
+
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[AnswerHub]** の順に選択します。
+
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
 2. アプリケーションの一覧で、**[AnswerHub]** を選択します。
 
-    ![Configure single sign-on](./media/answerhub-tutorial/tutorial_answerhub_app.png) 
+    ![アプリケーションの一覧](common/all-applications.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![ユーザーの割り当て][202] 
+    ![[ユーザーとグループ] の選択](common/users-groups-blade.png)
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** を選択し、**[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
 
-    ![ユーザーの割り当て][203]
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+5. **[ユーザーとグループ]** ダイアログ ボックスの **[ユーザー]** の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンを選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+6. SAML アサーション内にロール値が必要な場合、**[ロールの選択]** ダイアログ ボックスで、一覧からユーザーに適したロールを選択します。 
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
+7. 画面の下部にある **[選択]** ボタンを選択します。
+
+8. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
+
+### <a name="create-an-answerhub-test-user"></a>AnswerHub テスト ユーザーの作成
+
+Azure AD ユーザーが AnswerHub にサインインできるようにするには、それらを AnswerHub に追加する必要があります。 AnswerHub では、このタスクを手動で実行します。
+
+**ユーザー アカウントを設定するには:**
+
+1. **AnswerHub** 企業サイトに管理者としてサインインします。
+
+2. **[Administration]** に移動します。
+
+3. **[User & Groups]\(ユーザーとグループ\)** タブを選択します。
+
+4. 左側のウィンドウの **[Manage Users]\(ユーザーの管理\)** セクションで、**[Create or import users]\(ユーザーの作成またはインポート\)** を選択し、**[Users & Groups]\(ユーザーとグループ\)** を選択します。
+
+   ![[User & Groups]\(ユーザーとグループ\) タブ](./media/answerhub-tutorial/ic785175.png "ユーザーとグループ")
+
+5. 追加したい有効な Azure AD アカウントの**メール アドレス**、**ユーザー名**、**パスワード**を適切なボックスに入力してから、**[Save]\(保存\)** を選択します。
+
+> [!NOTE]
+> AnswerHub から提供されている他のユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントを設定できます。
+
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルの [AnswerHub] タイルをクリックすると、AnswerHub アプリケーションに自動的にサインオンされます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルで [AnswerHub] タイルを選択すると、SSO を設定した AnswerHub に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory の統合に関するチュートリアル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/answerhub-tutorial/tutorial_general_01.png
-[2]: ./media/answerhub-tutorial/tutorial_general_02.png
-[3]: ./media/answerhub-tutorial/tutorial_general_03.png
-[4]: ./media/answerhub-tutorial/tutorial_general_04.png
-
-[100]: ./media/answerhub-tutorial/tutorial_general_100.png
-
-[200]: ./media/answerhub-tutorial/tutorial_general_200.png
-[201]: ./media/answerhub-tutorial/tutorial_general_201.png
-[202]: ./media/answerhub-tutorial/tutorial_general_202.png
-[203]: ./media/answerhub-tutorial/tutorial_general_203.png
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

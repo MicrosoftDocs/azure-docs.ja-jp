@@ -3,20 +3,20 @@ title: Azure Data Lake Storage Gen1 での Azure Active Directory を使用し�
 description: Azure Data Lake Storage Gen1 で Azure Active Directory を使用して認証する方法について説明します
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: b74696be433b00a5afb3416295b6317975aa6873
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: twooley
+ms.openlocfilehash: f83cf183bee930dd07c707b0eb49125cecd70b84
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967661"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58884637"
 ---
 # <a name="authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Data Lake Storage Gen1 での Azure Active Directory を使用した認証
 
@@ -35,7 +35,7 @@ Azure Data Lake Storage Gen1 では、認証するために Azure Active Directo
 * 空欄は、その認証オプションがサポートされていないことを表します。
 
 
-|右の項目とともに以下の認証オプションを使用                   |.NET         |Java     |PowerShell |Azure CLI | Python   |REST ()     |
+|右の項目とともに以下の認証オプションを使用                   |.NET         |Java     |PowerShell |Azure CLI | Python   |REST     |
 |:---------------------------------------------|:------------|:--------|:----------|:-------------|:---------|:--------|
 |エンドユーザー (MFA なし\*\*)                        |   ✔ |    ✔    |    ✔      |       ✔      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-without-multi-factor-authentication)**(非推奨)     |    **[✔*](data-lake-store-end-user-authenticate-rest-api.md)**    |
 |エンドユーザー (MFA あり)                           |    **[✔*](data-lake-store-end-user-authenticate-net-sdk.md)**        |    **[✔*](data-lake-store-end-user-authenticate-java-sdk.md)**     |    ✔      |       **[✔*](data-lake-store-get-started-cli-2.0.md)**      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-with-multi-factor-authentication)**     |    ✔    |

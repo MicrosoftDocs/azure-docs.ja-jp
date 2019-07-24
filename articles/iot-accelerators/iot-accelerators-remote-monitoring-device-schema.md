@@ -2,31 +2,34 @@
 title: リモート監視ソリューションのデバイス スキーマ - Azure | Microsoft Docs
 description: この記事では、リモート監視ソリューションのシミュレートされたデバイスを定義する JSON スキーマについて説明します。
 author: dominicbetts
-manager: timlt
+manager: philmea
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 01/29/2018
+ms.date: 12/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: f312f29e14c371e7b500f3eee6471151e3544513
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 3c2bca45a7927689992cf44fb70199e246641760
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338857"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445424"
 ---
 # <a name="understand-the-device-model-schema"></a>デバイス モデル スキーマについて
 
-リモート監視ソリューションでシミュレートされたデバイスを使用して、その動作をテストすることができます。 リモート監視ソリューションをデプロイすると、一連のシミュレートされたデバイスが自動的にプロビジョニングされます。 既存のシミュレートされたデバイスをカスタマイズすることも、独自のデバイスを作成することもできます。
+リモート監視ソリューションでシミュレートされたデバイスを使用して、その動作をテストすることができます。 リモート監視ソリューションには、シミュレートされたデバイスを実行するためのデバイス シミュレーション サービスが含まれています。 リモート監視ソリューションをデプロイすると、一連のシミュレートされたデバイスが自動的にプロビジョニングされます。 既存のシミュレートされたデバイスをカスタマイズすることも、独自のデバイスを作成することもできます。
 
 この記事では、シミュレートされたデバイスの機能と動作を指定するデバイス モデル スキーマについて説明します。 デバイス モデルは JSON ファイルに格納されます。
+
+> [!NOTE]
+> このデバイス モデル スキーマは、デバイス シミュレーション サービスでホストされているシミュレートされたデバイスに対してのみ有効です。 実際のデバイスを作成する場合は、「[デバイスをリモート監視ソリューション アクセラレータに接続する](iot-accelerators-connecting-devices.md)」を参照してください。
 
 次の記事は、現在の記事に関連しています。
 
 * 「[デバイス モデルの動作の実装](iot-accelerators-remote-monitoring-device-behavior.md)」では、シミュレートされたデバイスの動作を実装するために使用する JavaScript ファイルについて説明します。
 * 「[新しいシミュレートされたデバイスの作成](iot-accelerators-remote-monitoring-create-simulated-device.md)」では、すべてをうまくまとめて、新しいシミュレートされたデバイスの種類をソリューションにデプロイする方法を示しています。
 
-この記事では、次のことについて説明します:
+この記事では、次のことについて説明します。
 
 >[!div class="checklist"]
 > * JSON ファイルを使用して、シミュレートされたデバイス モデルを定義する

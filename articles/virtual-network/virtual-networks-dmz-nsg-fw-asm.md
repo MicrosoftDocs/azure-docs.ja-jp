@@ -1,6 +1,6 @@
 ---
-title: DMZ の例 - ファイアウォールと NSG から成る DMZ を構築してアプリケーションを保護する | Microsoft Docs
-description: ファイアウォールとネットワーク セキュリティ グループ (NSG) から成る DMZ を構築する
+title: 境界ネットワークの例 – 境界ネットワークを構築し、ファイアウォールと NSG を使用してアプリケーションを保護する | Microsoft Docs
+description: ファイアウォールとネットワーク セキュリティ グループ (NSG) を使用して境界ネットワークを構築する
 services: virtual-network
 documentationcenter: na
 author: tracsman
@@ -14,58 +14,61 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0271c9212b093bd803518ebeaa4b7d9682cc773
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23126930"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997466"
 ---
-# <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>例 2 - ファイアウォールと NSG から成る DMZ を構築してアプリケーションを保護する
-[セキュリティ境界のベスト プラクティス ページに戻る][HOME]
+# <a name="example-2-build-a-perimeter-network-to-protect-applications-with-a-firewall-and-nsgs"></a>例 2:境界ネットワークを構築し、ファイアウォールと NSG を使用してアプリケーションを保護する
+[「Microsoft クラウド サービスとネットワーク セキュリティ」ページに戻る][HOME]
 
-この例では、ファイアウォールと 4 台の Windows Server、ネットワーク セキュリティ グループから成る DMZ を作成します。 また、各手順をより深く理解できるように、関連するコマンドを順に説明します。 さらに、「トラフィックに関するシナリオ」セクションでは、DMZ の防御層におけるトラフィックの進行過程を詳しく説明しています。 最後の「参照」セクションでは、さまざまなシナリオでテストおよび実験ができるように、この環境を構築するための完全なコードと手順を紹介します。 
+この例では、ファイアウォール、4 台の Windows Server コンピューター、およびネットワーク セキュリティ グループ (NSG) を使用して境界ネットワーク (*DMZ*、"*非武装地帯*"、"*スクリーン サブネット*" とも呼ばれます) を作成する方法を示します。 また、各手順をより深く理解できるように、関連する各コマンドについても詳しく説明します。 「トラフィックのシナリオ」セクションでは、トラフィックが境界ネットワークの防御層を通過する過程を順を追って説明します。 最後の「参照」セクションでは、さまざまなシナリオでテストおよび実験ができるように、この環境を構築するための完全なコードと手順を紹介します。
 
-![受信 DMZ + NVA および NSG][1]
+![NVA、NSG を含む受信境界ネットワーク][1]
 
-## <a name="environment-description"></a>環境の説明
-この例で使用するサブスクリプションには、以下のものが含まれています。
+## <a name="environment"></a>環境 
+この例は、以下の項目を含む Azure サブスクリプションを使用するシナリオに基づいています。
 
-* 2 つのクラウド サービス: "FrontEnd001" と "BackEnd001"
-* 2 つのサブネット ("FrontEnd" と "BackEnd") を含む仮想ネットワーク "CorpNetwork"
-* 両方のサブネットに適用される単一のネットワーク セキュリティ グループ
-* フロントエンド サブネットに接続されたネットワーク仮想アプライアンス (この例では Barracuda NextGen Firewall)
-* アプリケーション Web サーバーを表す Windows サーバー ("IIS01")
-* アプリケーション バックエンド サーバーを表す 2 つの Windows サーバー ("AppVM01"、"AppVM02")
-* DNS サーバーを表す Windows サーバー ("DNS01")
+* 2 つのクラウド サービス: FrontEnd001 と BackEnd001。
+* 次の 2 つのサブネットを持つ CorpNetwork という名前の仮想ネットワーク:FrontEnd と BackEnd。
+* 両方のサブネットに適用される単一の NSG。
+* ネットワーク仮想アプライアンス:FrontEnd サブネットに接続されている Barracuda NextGen ファイアウォール。
+* アプリケーション Web サーバーを表す Windows Server コンピューター:IIS01。
+* アプリケーション バックエンド サーバーを表す 2 つの Windows Server コンピューター:AppVM01 と AppVM02。
+* DNS サーバーを表す Windows Server コンピューター:DNS01。
 
 > [!NOTE]
-> この例では Barracuda NextGen ファイアウォールを使用していますが、他にもさまざまなネットワーク仮想アプライアンスを使用できます。
+> この例では Barracuda NextGen ファイアウォールを使用していますが、他にも多くのネットワーク仮想アプライアンスを使用できます。
 > 
 > 
 
-以上に示した環境の大部分は、このページの「参照」セクションで紹介している PowerShell スクリプトで構築します。 VM と Virtual Network の構築については、スクリプト例には含まれていますが、このドキュメントでは詳細な説明を省略します。
+この例で示した環境の大部分は、この記事の「参照」セクションで紹介している PowerShell スクリプトで構築します。 VM と仮想ネットワークはスクリプトで構築しますが、そのプロセスについての詳しい説明はこのドキュメントにはありません。
 
 環境を構築するには
 
-1. 「参照」セクションに示しているネットワーク構成用 xml ファイルを保存します (特定のシナリオに一致するように、名前、ロケーション情報、IP アドレスを更新します)。
-2. スクリプトを実行する環境に合わせてスクリプト内のユーザー変数を更新します (サブスクリプション、サービス名など)。
+1. 「参照」セクションに示しているネットワーク構成用 XML ファイルを保存します (ご自身のシナリオに一致するように、名前、ロケーション情報、IP アドレスを更新します)。
+2. スクリプトを実行する環境に合わせて PowerShell スクリプト内のユーザー定義変数を更新します (サブスクリプション、サービス名など)。
 3. PowerShell でスクリプトを実行します。
 
-**注**: PowerShell スクリプトで示されたリージョンは、ネットワーク構成用 xml ファイルで示されたリージョンと一致する必要があります。
+> [!NOTE]
+> PowerShell スクリプトで指定されたリージョンと、ネットワーク構成用 XML ファイルで指定されたリージョンが一致している必要があります。
+>
+>
 
-スクリプトが正常に実行された後、必要に応じて次の手順を別途実行します。
+スクリプトが正常に実行したら、次の手順を実行できます。
 
-1. ファイアウォール ルールを設定します。この点については、以降の「ファイアウォール ルール」というセクションで取り上げます。
-2. この DMZ 構成を使ったテストを実行するために、必要に応じて「参照」セクションにある 2 つのスクリプトを実行します。簡単な Web アプリケーションを含む Web サーバーとアプリケーション サーバーがこれらのスクリプトによってセットアップされます。
+1. ファイアウォール ルールを設定します。 この記事の「ファイアウォール ルール」のセクションを参照してください。
+2. 必要に応じて、簡単な Web アプリケーションを含む Web サーバーとアプリ サーバーをセットアップして、この境界ネットワーク構成でのテストを行うことができます。 「参照」セクションに示している 2 つのアプリケーション スクリプトを使用できます。
 
-次のセクションでは、ネットワーク セキュリティ グループに関連してスクリプトに含まれる大部分のステートメントを説明しています。
+次のセクションでは、NSG に関連するスクリプトのステートメントの大部分について説明します。
 
-## <a name="network-security-groups-nsg"></a>ネットワーク セキュリティ グループ (NSG)
-この例では、NSG グループを作成し、そこに 6 つのルールを設定します。 
+## <a name="nsgs"></a>NSG
+この例では、NSG グループを作成し、そこに 6 つのルールを設定します。
 
 > [!TIP]
-> 一般的には、具体的な "Allow" ルールを作成してから、包括的な "Deny" ルールを作成してください。 どのルールが先に評価されるかは、割り当てる優先度によって決まります。 具体的なルールが一度適用されたトラフィックに対しては、他のルールは評価されません。 NSG ルールは、(サブネットから見て) 受信方向または送信方向のどちらか一方に適用できます。
+> 一般的には、具体的な "Allow" ルールを作成してから、包括的な "Deny" ルールを作成してください。 どのルールが先に評価されるかは、割り当てる優先度によって決まります。 特定のルールに該当することが判明したトラフィックに対しては、他のルールは評価されません。 NSG ルールは、(サブネットから見て) 受信方向または送信方向のどちらか一方に適用できます。
 > 
 > 
 
@@ -74,202 +77,211 @@ ms.locfileid: "23126930"
 1. 内部的な DNS トラフィック (ポート 53) を許可する。
 2. インターネットから任意の VM への RDP トラフィック (ポート 3389) を許可する。
 3. インターネットから NVA (ファイアウォール) への HTTP トラフィック (ポート 80) を許可する。
-4. IIS01 から AppVM1 への任意のトラフィック (すべてのポート) を許可する。
-5. インターネットから VNet 全体 (両方のサブネット) への任意のトラフィック (すべてのポート) を拒否する。
-6. フロントエンド サブネットからバックエンド サブネットへの任意のトラフィック (すべてのポート) を拒否する。
+4. IIS01 から AppVM01 へのすべてのトラフィック (すべてのポート) を許可する。
+5. インターネットから仮想ネットワーク全体 (両方のサブネット) へのすべてのトラフィック (すべてのポート) を拒否する。
+6. FrontEnd サブネットから BackEnd サブネットへのすべてのトラフィック (すべてのポート) を拒否する。
 
-これらのルールが各サブネットにバインドされている状態で、インターネットから Web サーバーへの HTTP 要求が受信された場合、ルール 3 (Allow) とルール 5 (Deny) の両方が該当しますが、ルール 3 の方が優先度が高いので、ルール 3 のみが適用され、ルール 5 は作用しません。 したがって、ファイアウォールへの HTTP 要求は許可されます。 同じトラフィックが DNS01 サーバーに到達しようとしている場合は、ルール 5 (Deny) が最初に適用されるので、トラフィックはサーバーに到達できません。 フロントエンド サブネットからバックエンド サブネットへの通信は、ルール 6 (Deny) によってブロックされます (ルール 1 とルール 4 で許可されたトラフィックを除く)。これによって、フロントエンドにある Web アプリケーションのセキュリティが攻撃者によって侵害されたとしてもバックエンド ネットワークは保護されるため、バックエンドの "保護された" ネットワークに対する攻撃者のアクセスは (AppVM01 サーバー上で公開されているリソースに) 限定されます。
+これらのルールが各サブネットにバインドされている状態で、インターネットから Web サーバーへの HTTP 要求が受信された場合、ルール 3 (Allow) とルール 5 (Deny) の両方が該当するように思われますが、ルール 3 の方が優先度が高いので、ルール 3 のみが適用されます。 ルール 5 は作用しません。 したがって、ファイアウォールへの HTTP 要求は許可されます。
 
-インターネットへ向かうトラフィックは、既定の送信ルールによって許可されています。 この例では、送信トラフィックを許可していますが、送信ルールに対する変更は一切行っていません。 トラフィックを双方向でロックダウンするには、ユーザー定義ルーティングが必要です。ユーザー定義ルーティングについては、別の例で詳しく説明しています。[メインのセキュリティ境界ドキュメント][HOME]を参照してください。
+同じトラフィックが DNS01 サーバーに到達しようとしている場合は、ルール 5 (Deny) が最初に適用されるので、トラフィックはサーバーに到達できません。 FrontEnd サブネットから BackEnd サブネットへの通信は、ルール 6 (Deny) によってブロックされます (ルール 1 とルール 4 で許可されたトラフィックを除く)。 これによって、FrontEnd にある Web アプリケーションのセキュリティが攻撃者によって侵害されたとしても BackEnd ネットワークは保護されます。 この場合、BackEnd の "保護された" ネットワークに対する攻撃者のアクセスは制限されます。 (攻撃者のアクセスは AppVM01 サーバー上で公開されているリソースのみに限定されます。)
 
-上に挙げた NSG ルールは、「[例 1 - NSG を使用して単純な DMZ を構築する][Example1]」で使用した NSG ルールとよく似ています。 個々の NSG ルールとその属性について詳しくは、そのドキュメントで NSG の説明を再確認してください。
+インターネットへ向かうトラフィックは、既定の送信ルールによって許可されています。 この例では、送信トラフィックを許可していますが、送信ルールに対する変更は一切行っていません。 両方向のトラフィックをロック ダウンするには、ユーザー定義ルーティングが必要です。 この手法については、[メインのセキュリティ境界ドキュメント][HOME]の別の例で説明しています。
 
-## <a name="firewall-rules"></a>ファイアウォール ルール
-ファイアウォールを管理したり、必要な構成を作成したりするには、管理クライアントを PC にインストールする必要があります。 デバイスの管理方法については、ご利用のファイアウォール (または他の NVA) ベンダーのドキュメントを参照してください。 以降、このセクションでは、ファイアウォールそのものの構成について説明しています。ファイアウォールの構成は、(Azure ポータルや PowerShell ではなく) ベンダーの管理クライアントを使って行います。
+ここで説明した NSG ルールは、「[例 1 - NSG を使用して単純な DMZ を構築する][Example1]」で使用した NSG ルールと似ています。 個々の NSG ルールとその属性について詳しくは、その記事で NSG の説明を再確認してください。
 
-この例で使用するクライアントをダウンロードして Barracuda に接続する手順については、 [Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)
+## <a name="firewall-rules"></a>ファイアウォール規則
+ファイアウォールを管理し、必要な構成を作成するには、コンピューターに管理クライアントをインストールする必要があります。 デバイスの管理方法については、ご利用のファイアウォール (または他の NVA) ベンダーのドキュメントを参照してください。 以降、このセクションでは、ファイアウォールそのものの構成について説明しています。ファイアウォールの構成は、(Azure portal や PowerShell ではなく) ベンダーの管理クライアントを使って行います。
 
-ファイアウォールには、転送ルールを作成する必要があります。 この例でルーティングするのは、インターネットからファイアウォールを介して Web サーバーに到達する受信トラフィックだけであるため、必要な転送 NAT ルールは 1 つだけです。 この例に使用されている Barracuda NextGen ファイアウォールでそれに該当するのが、そのトラフィックを許可する Destination NAT ルール ("Dst NAT") です。
+この例で使用するクライアントをダウンロードして Barracuda ファイアウォールに接続する手順については、「[Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)」を参照してください。
 
-次のルールを作成するには (または既にある既定のルールを確認するには)、Barracuda NG Admin クライアント ダッシュボードの [configuration] タブに移動し、[Operational Configuration] セクションの [Ruleset] をクリックします。 ファイアウォールに対して既にアクティブになっているルールと非アクティブのルールとが "Main Rules" というグリッドに表示されます。 このグリッドの右上隅に小さな緑色の "+" ボタンがあります。新しいルールはこのボタンをクリックして作成します (注: ファイアウォールが変更できないように "ロック" されている場合があります。ボタンに "Lock" と表示されていてルールを作成したり編集したりできない場合は、このボタンをクリックしてルールセットの "ロックを解除" し、編集できる状態にしてください)。 既存のルールを編集するには、そのルールを選択して右クリックし、[Edit Rule] を選択します。
+ファイアウォールには、転送ルールを作成する必要があります。 この例のシナリオでルーティングするのは、インターネットからファイアウォールを介して Web サーバーに到達する受信トラフィックだけであるため、必要な転送 NAT ルールは 1 つだけです。 この例に使用されている Barracuda ファイアウォールでそれに該当するのが、そのトラフィックを許可する Destination NAT ルール (Dst NAT) です。
 
-新しいルールを作成して名前を付けます ("WebTraffic" など)。 
+次のルールを作成するには (または既にある既定のルールを確認するには)、次の手順を実行します。
+1. Barracuda NG Admin クライアント ダッシュボードで、[configuration]\(構成\) タブの **[Operational Configuration]\(操作の構成\)** セクションで **[Ruleset]\(ルールセット\)** を選択します。 
 
-Destination NAT ルールのアイコンは次のように表示されます: ![Destination NAT アイコン][2]
+   ファイアウォールに対して既にアクティブになっているルールと非アクティブのルールとが **[Main Rules]\(メイン ルール\)** というグリッドに表示されます。
+
+2. 新しいルールを作成するには、このグリッドの右上隅にある小さな緑色の **+** ボタンを選択します。 (ファイアウォールがロックされている場合があります。 ボタンに "**ロック**" と表示されていてルールの作成や編集ができない場合は、このボタンを選択してルールセットのロックを解除し、編集できる状態にしてください。)
+  
+3. 既存のルールを編集するには、そのルールを選択して右クリックし、**[Edit Rule]\(ルールの編集\)** を選択します。
+
+新しいルールを作成して名前を付けます (**WebTraffic** など)。 
+
+Destination NAT ルールのアイコンは ![Destination NAT アイコン][2]
 
 ルール自体は次のように表示されます。
 
-![ファイアウォール規則][3]
+![ファイアウォール ルール][3]
 
-この場合、HTTP のポート 80 または HTTPS のポート 443 を宛先としてファイアウォールに到達したすべての受信トラフィックは、ファイアウォールの "DHCP1 Local IP" インターフェイスから送出され、IP アドレス 10.0.1.5 の Web サーバーにリダイレクトされます。 トラフィックはポート 80 に着信し、Web サーバーのポート 80 に向かうため、ポートの変更は必要ありません。 しかし仮に Web サーバーの待機ポートが 8080 であった場合、ファイアウォールの受信ポートである 80 を Web サーバーの受信ポートである 8080 に変換する必要があります。その場合は、[Target List] に「10.0.1.5:8080」と入力することになります。
+HTTP のポート 80 または HTTPS のポート 443 を宛先としてファイアウォールに到達したすべての受信トラフィックは、ファイアウォールの DHCP1 Local IP インターフェイスから送出され、IP アドレス 10.0.1.5 の Web サーバーにリダイレクトされます。 トラフィックはポート 80 に着信し、Web サーバーのポート 80 に向かうため、ポートの変更は必要ありません。 しかし仮に Web サーバーの待機ポートが 8080 であった場合、ファイアウォールの受信ポートである 80 を Web サーバーの受信ポートである 8080 に変換する必要があります。その場合は、[Target List]\(ターゲット リスト\) に「10.0.1.5:8080」と入力することになります。
 
-[Connection Method] も指定する必要があります。インターネットからの宛先ルールには、"Dynamic SNAT" が最適です。 
+接続方法も指定する必要があります。 インターネットからの宛先ルールとしては、Dynamic SNAT が最適な方法です。
 
-これまでに作成したルールは 1 つだけですが、優先度は正しく設定することが大切です。 ファイアウォールに対して設定されたすべてのルールの中で、この新しいルールがグリッドの一番下 ("BLOCKALL" ルールの下) に設定されている場合、新しいルールがまったく機能しません。 Web トラフィック用に新しく作成したルールが BLOCKALL ルールよりも上に来るようにしてください。
+これまでに作成したルールは 1 つだけですが、優先度を正しく設定することが重要です。 ファイアウォールに対して設定されたすべてのルールの中で、この新しいルールがグリッドの一番下 (BLOCKALL ルールの下) に設定されている場合、新しいルールがまったく機能しません。 Web トラフィック用に新しく作成したルールが BLOCKALL ルールよりも上に来るようにしてください。
 
-作成したルールは、ファイアウォールにプッシュしたうえでアクティブにする必要があります。その作業を行わないと、ルールの変更が反映されません。 プッシュとアクティブ化のプロセスについては、次のセクションで説明します。
+作成したルールは、ファイアウォールにプッシュしたうえでアクティブにする必要があります その作業を行わないと、ルールの変更が反映されません。 プッシュとアクティブ化のプロセスについては、次のセクションで説明します。
 
 ## <a name="rule-activation"></a>ルールのアクティブ化
-このルールを追加したら、そのルールセットをファイアウォールにアップロードしてアクティブ化する必要があります。
+ルールをルールセットに追加したので、そのルールセットをファイアウォールにアップロードしてアクティブ化する必要があります。
 
 ![ファイアウォール ルールのアクティブ化][4]
 
-管理クライアントの右上隅に一連のボタンがあります。 [Send Changes] ボタンをクリックして、変更済みのルールをファイアウォールに送信し、そのうえで [Activate] ボタンをクリックしてください。
+管理クライアントの右上隅にボタンのグループがあります。 **[Send Changes]\(変更の送信\)** を選択して変更したルールセットをファイアウォールに送信したら、**[Activate]\(アクティブ化\)** を選択します。
 
-ファイアウォールのルールセットをアクティブ化すれば、この例における環境の構築は完了です。 必要に応じて「参照」セクションにある Post Build スクリプトを実行し、以降のトラフィックのシナリオをテストするためのアプリケーションをこの環境に追加してください。
+ファイアウォールのルールセットをアクティブ化したので、環境の構築は完了です。 必要に応じて、「参照」セクションにあるサンプル アプリケーション スクリプトを実行して、環境にアプリケーションを追加できます。 アプリケーションを追加したら、次のセクションで説明されているトラフィックのシナリオをテストできます。
 
 > [!IMPORTANT]
-> Web サーバーに直接到達するわけではないことに注意してください。 FrontEnd001.CloudApp.Net にある HTTP ページがブラウザーから要求されたとき、HTTP エンドポイント (ポート 80) はまず、そのトラフィックを Web サーバーにではなくファイアウォールに渡します。 その後ファイアウォールが、先ほど作成したルールに従って、Web サーバーへのネットワーク アドレス変換をその要求に対して実行します。
+> Web サーバーに直接到達するわけではないことに注意してください。 FrontEnd001.CloudApp.Net にある HTTP ページがブラウザーから要求されたとき、HTTP エンドポイント (ポート 80) はまず、そのトラフィックを Web サーバーにではなくファイアウォールに渡します。 その後ファイアウォールが、先ほど作成したルールに従って、NAT を使用して Web サーバーに要求をマップします。
 > 
 > 
 
 ## <a name="traffic-scenarios"></a>トラフィックのシナリオ
-#### <a name="allowed-web-to-web-server-through-firewall"></a>(許可) Web からファイアウォールを介して Web サーバーにアクセス
+#### <a name="allowed-web-to-web-server-through-the-firewall"></a>(許可) Web からファイアウォールを介して Web サーバーにアクセス
 1. インターネット ユーザーが、FrontEnd001.CloudApp.Net (インターネットに接続されたクラウド サービス) にある HTTP ページを要求します。
 2. クラウド サービスは、ポート 80 で開放されているエンドポイントを介して、ファイアウォールのローカル インターフェイス 10.0.1.4:80 にトラフィックを渡します。
-3. フロントエンド サブネットが、以下に示す受信ルールの処理を開始します。
-   1. NSG ルール 1 (DNS) は該当しません。次のルールに進みます。
-   2. NSG ルール 2 (RDP) は該当しません。次のルールに進みます。
-   3. NSG ルール 3 (インターネットからファイアウォール) が該当し、トラフィックが許可され、ルールの処理はここで終了します。
+3. FrontEnd サブネットが、以下に示す受信ルールの処理を開始します。
+   1. NSG ルール 1 (DNS) は該当しません。 次のルールに進みます。
+   2. NSG ルール 2 (RDP) は該当しません。 次のルールに進みます。
+   3. NSG ルール 3 (インターネットからファイアウォール) が該当します。 トラフィックが許可されます。 ルールの処理はここで終了します。
 4. トラフィックがファイアウォールの内部 IP アドレス (10.0.1.4) に到達します。
 5. ファイアウォール転送ルールは、これをポート 80 のトラフィックと見なし、Web サーバー IIS01 にこのトラフィックをリダイレクトします。
 6. Web トラフィックをリッスンしている IIS01 が、この要求を受け取って、その処理を開始します。
-7. IIS01 が AppVM01 上の SQL Server に情報を求めます。
-8. フロントエンド サブネットに送信ルールはないので、トラフィックは許可されます。
-9. バックエンド サブネットが、以下に示す受信ルールの処理を開始します。
-   1. NSG ルール 1 (DNS) は該当しません。次のルールに進みます。
-   2. NSG ルール 2 (RDP) は適用されず、次のルールに進みます。
-   3. NSG ルール 3 (インターネットからファイアウォール) は該当しません。次のルールに進みます。
-   4. NSG ルール 4 (IIS01 から AppVM01) が該当し、トラフィックが許可され、ルールの処理はここで終了します。
-10. AppVM01 は SQL クエリを受信し、応答します。
-11. バックエンド サブネットに送信ルールは存在しないので、応答は許可されます。
-12. フロントエンド サブネットが、以下に示す受信ルールの処理を開始します。
-    1. バックエンド サブネットからフロントエンド サブネットへの受信トラフィックに適用される NSG ルールは存在しません。つまり、該当する NSG ルールはありません。
+7. IIS01 が AppVM01 上の SQL Server インスタンスに情報を要求します。
+8. FrontEnd サブネットに送信ルールはないので、トラフィックは許可されます。
+9. BackEnd サブネットが、以下に示す受信ルールの処理を開始します。
+   1. NSG ルール 1 (DNS) は該当しません。 次のルールに進みます。
+   2. NSG ルール 2 (RDP) は該当しません。 次のルールに進みます。
+   3. NSG ルール 3 (インターネットからファイアウォール) は該当しません。 次のルールに進みます。
+   4. NSG ルール 4 (IIS01 から AppVM01) が該当します。 トラフィックが許可されます。 ルールの処理はここで終了します。
+10. AppVM01 上の SQL Server インスタンスが要求を受信し、応答します。
+11. BackEnd サブネットに送信ルールは存在しないので、応答は許可されます。
+12. FrontEnd サブネットが、以下に示す受信ルールの処理を開始します。
+    1. BackEnd サブネットから FrontEnd サブネットへの受信トラフィックに適用される NSG ルールは存在しません。つまり、該当する NSG ルールはありません。
     2. サブネット間のトラフィックを許可する既定のシステム ルールであれば、このトラフィックを許可するので、トラフィックは許可されます。
-13. IIS サーバーが SQL 応答を受信し、HTTP 応答を完成させて要求元に送信します。
-14. これはファイアウォールからの NAT セッションであるため、応答の (最初の) 宛先はファイアウォールです。
+13. IIS01 が AppVM01 からの応答を受信し、HTTP 応答を完成させて要求元に送信します。
+14. これはファイアウォールからの NAT セッションであるため、応答の最初の宛先はファイアウォールです。
 15. ファイアウォールが Web サーバーから応答を受信し、インターネット ユーザーに返します。
-16. フロント エンド サブネットに送信ルールは存在しないので、この応答は許可され、インターネット ユーザーは要求した Web ページを受信します。
+16. FrontEnd サブネットに対する送信ルールは存在しないので、応答は許可され、インターネット ユーザーは Web ページを受信します。
 
-#### <a name="allowed-rdp-to-backend"></a>(許可) バックエンドへの RDP
-1. インターネット上のサーバー管理者が BackEnd001.CloudApp.Net:xxxxx 上の AppVM01 に対する RDP セッションを要求します。ここで、xxxxx は AppVM01 に対する RDP のポート番号で、ランダムに割り当てられます (割り当てられたポートは、Azure Portal 上で、または PowerShell を使用して見つけることができます)。
-2. ファイアウォールが待機するのは FrontEnd001.CloudApp.Net のアドレスのみであるため、このトラフィック フローにファイアウォールは関係しません。
-3. バックエンド サブネットが、以下に示す受信ルールの処理を開始します。
-   1. NSG ルール 1 (DNS) は該当しません。次のルールに進みます。
-   2. NSG ルール 2 (RDP) が該当し、トラフィックが許可され、ルールの処理はここで終了します。
-4. 送信ルールがない場合は、既定のルールが適用され、戻りトラフィックが許可されます。
+#### <a name="allowed-rdp-to-backend"></a>(許可) BackEnd への RDP
+1. インターネット上のサーバー管理者が BackEnd001.CloudApp.Net:*xxxxx* 上の AppVM01 に対する RDP セッションを要求します。ここで、*xxxxx* は AppVM01 に対する RDP のポート番号で、ランダムに割り当てられます。 (割り当てられたポートは、Azure portal 上で、または PowerShell を使用して見つけることができます。)
+2. ファイアウォールがリッスンするのは FrontEnd001.CloudApp.Net のアドレスのみであるため、このトラフィック フローにファイアウォールは関係しません。
+3. BackEnd サブネットが、以下に示す受信ルールの処理を開始します。
+   1. NSG ルール 1 (DNS) は該当しません。 次のルールに進みます。
+   2. NSG ルール 2 (RDP) が該当します。 トラフィックが許可されます。 ルールの処理はここで終了します。
+4. 送信ルールがないので、既定のルールが適用され、戻りトラフィックが許可されます。
 5. RDP セッションが可能な状態になります。
 6. AppVM01 はユーザー名とパスワードを求めるメッセージを表示します。
 
 #### <a name="allowed-web-server-dns-lookup-on-dns-server"></a>(許可) DNS サーバーに対する Web サーバーの DNS 参照
 1. Web サーバーである IIS01 が、www.data.gov にあるデータ フィードを必要としています。そのためにはアドレスを解決する必要があります。
-2. VNet 用のネットワーク構成にはプライマリ DNS サーバーとして、DNS01 (バックエンド サブネット上の 10.0.2.4) がリストされており、IIS01 は DNS 要求を DNS01 に送信します。
-3. フロントエンド サブネットに送信ルールはないので、トラフィックは許可されます。
-4. バックエンド サブネットが、以下に示す受信ルールの処理を開始します。
-   1. NSG ルール 1 (DNS) が該当し、トラフィックが許可され、ルールの処理はここで終了します。
-5. DNS サーバーは要求を受信します。
-6. DNS サーバーは、アドレスがキャッシュされていないことがわかると、インターネット上のルート DNS サーバーに要求します。
-7. バックエンド サブネットに送信ルールはないので、トラフィックは許可されます。
-8. インターネット DNS サーバーが応答します。このセッションは内部から開始されたため、応答は許可されます。
-9. DNS サーバーは応答をキャッシュし、最初の要求に応答して IIS01 に返します。
-10. バックエンド サブネットに送信ルールはないので、トラフィックは許可されます。
-11. フロントエンド サブネットが、以下に示す受信ルールの処理を開始します。
-    1. バックエンド サブネットからフロントエンド サブネットへの受信トラフィックに適用される NSG ルールは存在しません。つまり、該当する NSG ルールはありません。
+2. 仮想ネットワーク用のネットワーク構成にはプライマリ DNS サーバーとして、DNS01 (BackEnd サブネット上の 10.0.2.4) が示されています。 IIS01 は DNS 要求を DNS01 に送信します。
+3. FrontEnd サブネットに送信ルールはないので、トラフィックは許可されます。
+4. BackEnd サブネットが、以下に示す受信ルールの処理を開始します。
+   1. NSG ルール 1 (DNS) が該当します。 トラフィックが許可されます。 ルールの処理はここで終了します。
+5. DNS サーバーが要求を受信します。
+6. DNS サーバーは、アドレスがキャッシュされていないことがわかると、インターネット上のルート DNS サーバーを照会します。
+7. BackEnd サブネットに送信ルールはないので、トラフィックは許可されます。
+8. インターネット DNS サーバーが応答します。 このセッションは内部から開始されたため、応答は許可されます。
+9. DNS サーバーは応答をキャッシュし、IIS01 からの要求に応答します。
+10. BackEnd サブネットに送信ルールはないので、トラフィックは許可されます。
+11. FrontEnd サブネットが、以下に示す受信ルールの処理を開始します。
+    1. BackEnd サブネットから FrontEnd サブネットへの受信トラフィックに適用される NSG ルールは存在しません。つまり、該当する NSG ルールはありません。
     2. サブネット間のトラフィックを許可する既定のシステム ルールであれば、このトラフィックを許可するので、トラフィックは許可されます。
 12. IIS01 が DNS01 から応答を受信します。
 
-#### <a name="allowed-web-server-access-file-on-appvm01"></a>(許可) Web サーバーが AppVM01 上のファイルにアクセスする
+#### <a name="allowed-web-server-file-access-on-appvm01"></a>(許可) Web サーバーによる AppVM01 上のファイルへのアクセス
 1. IIS01 が AppVM01 上のファイルを要求します。
-2. フロントエンド サブネットに送信ルールはないので、トラフィックは許可されます。
-3. バックエンド サブネットが、以下に示す受信ルールの処理を開始します。
-   1. NSG ルール 1 (DNS) は該当しません。次のルールに進みます。
-   2. NSG ルール 2 (RDP) は適用されず、次のルールに進みます。
-   3. NSG ルール 3 (インターネットからファイアウォール) は該当しません。次のルールに進みます。
-   4. NSG ルール 4 (IIS01 から AppVM01) が該当し、トラフィックが許可され、ルールの処理はここで終了します。
+2. FrontEnd サブネットに送信ルールはないので、トラフィックは許可されます。
+3. BackEnd サブネットが、以下に示す受信ルールの処理を開始します。
+   1. NSG ルール 1 (DNS) は該当しません。 次のルールに進みます。
+   2. NSG ルール 2 (RDP) は該当しません。 次のルールに進みます。
+   3. NSG ルール 3 (インターネットからファイアウォール) は該当しません。 次のルールに進みます。
+   4. NSG ルール 4 (IIS01 から AppVM01) が該当します。 トラフィックが許可されます。 ルールの処理はここで終了します。
 4. AppVM01 が要求を受信し、ファイルを返します (アクセスが許可されている場合)。
-5. バックエンド サブネットに送信ルールは存在しないので、応答は許可されます。
-6. フロントエンド サブネットが、以下に示す受信ルールの処理を開始します。
-   1. バックエンド サブネットからフロントエンド サブネットへの受信トラフィックに適用される NSG ルールは存在しません。つまり、該当する NSG ルールはありません。
+5. BackEnd サブネットに送信ルールは存在しないので、応答は許可されます。
+6. FrontEnd サブネットが、以下に示す受信ルールの処理を開始します。
+   1. BackEnd サブネットから FrontEnd サブネットへの受信トラフィックに適用される NSG ルールは存在しません。つまり、該当する NSG ルールはありません。
    2. サブネット間のトラフィックを許可する既定のシステム ルールであれば、このトラフィックを許可するので、トラフィックは許可されます。
-7. IIS サーバーがファイルを受信します。
+7. IIS01 がファイルを受信します。
 
 #### <a name="denied-web-direct-to-web-server"></a>(拒否) Web サーバーへの直接 Web アクセス
-Web サーバー (IIS01) とファイアウォールは同じクラウド サービス内に置かれているため、外部に公開された同じ IP アドレスを共有しています。 つまり HTTP トラフィックはすべてファイアウォールにリダイレクトされます。 要求は正常に処理されますが、Web サーバーに直接到達しているわけではありません。必ずファイアウォールを経由して Web サーバーに到達します。 トラフィック フローについては、このセクションの 1 つ目のシナリオを参照してください。
+Web サーバー IIS01 とファイアウォールは同じクラウド サービス内に置かれているため、外部に公開された同じ IP アドレスを共有しています。 そのため HTTP トラフィックはすべてファイアウォールにリダイレクトされます。 要求は正常に処理されますが、Web サーバーに直接到達しているわけではありません。 指定されたとおりに、最初にファイアウォールを経由します。 トラフィック フローについては、このセクションの 1 つ目のシナリオを参照してください。
 
-#### <a name="denied-web-to-backend-server"></a>(拒否) Web からバックエンド サーバー
+#### <a name="denied-web-to-backend-server"></a>(拒否) Web から BackEnd サーバー
 1. インターネット ユーザーが、BackEnd001.CloudApp.Net サービスを介して AppVM01 上のファイルにアクセスを試みます。
 2. ファイル共有用に開放されたエンドポイントがないので、このアクセスはクラウド サービスを通過できず、サーバーに到達しません。
-3. 何らかの理由でエンドポイントが開放されていたとしても、NSG ルール 5 (インターネットから VNet) によってこのトラフィックはブロックされます。
+3. 何らかの理由でエンドポイントが開放されていたとしても、NSG ルール 5 (インターネットから仮想ネットワーク) によってこのトラフィックはブロックされます。
 
-#### <a name="denied-web-dns-lookup-on-dns-server"></a>(拒否) DNS サーバーに対する Web DNS 参照
+#### <a name="denied-web-dns-lookup-on-the-dns-server"></a>(拒否) DNS サーバーに対する Web DNS 参照
 1. インターネット ユーザーが、BackEnd001.CloudApp.Net サービスを介して DNS01 上の内部 DNS レコードを参照しようとしています。
 2. DNS 用に開放されたエンドポイントがないので、このアクセスはクラウド サービスを通過できず、サーバーに到達しません。
-3. 何らかの理由でエンドポイントが開放されていたとしても、NSG ルール 5 (インターネットから VNet) によってこのトラフィックはブロックされます (注: ルール 1 (DNS) は次の 2 つの理由で該当しません。1 つ目は発信元のアドレスがインターネットであるということ。このルールが該当するのは発信元としてのローカル VNet のみです。2 つ目は、Allow ルールでトラフィックが拒否されることは決してないということです)。
+3. 何らかの理由でエンドポイントが開放されていたとしても、NSG ルール 5 (インターネットから仮想ネットワーク) によってこのトラフィックはブロックされます。 (ルール 1 [DNS] は次の 2 つの理由で該当しません。 1 つ目は発信元のアドレスがインターネットであるということ。このルールが該当するのは、発信元がローカル仮想ネットワークの場合のみです。 2 つ目は、Allow ルールでトラフィックが拒否されることは決してないということです。)
 
-#### <a name="denied-web-to-sql-access-through-firewall"></a>(拒否) ファイアウォールを経由した Web から SQL へのアクセス
+#### <a name="denied-web-to-sql-access-through-the-firewall"></a>(拒否) ファイアウォールを経由した Web から SQL へのアクセス
 1. インターネット ユーザーが、FrontEnd001.CloudApp.Net (インターネットに接続されたクラウド サービス) にある SQL データを要求します。
 2. SQL 用に開放されているエンドポイントがないので、このアクセスはクラウド サービスを通過できず、ファイアウォールに到達しません。
-3. 何らかの理由でエンドポイントが開放されていた場合、フロントエンド サブネットは、受信ルールの処理を開始します。
-   1. NSG ルール 1 (DNS) は該当しません。次のルールに進みます。
-   2. NSG ルール 2 (RDP) は適用されず、次のルールに進みます。
-   3. NSG ルール 2 (インターネットからファイアウォール) が該当し、トラフィックが許可され、ルールの処理はここで終了します。
+3. 何らかの理由でエンドポイントが開放されていた場合、FrontEnd サブネットは、受信ルールの処理を開始します。
+   1. NSG ルール 1 (DNS) は該当しません。 次のルールに進みます。
+   2. NSG ルール 2 (RDP) は該当しません。 次のルールに進みます。
+   3. NSG ルール 3 (インターネットからファイアウォール) が該当します。 トラフィックが許可されます。 ルールの処理はここで終了します。
 4. トラフィックがファイアウォールの内部 IP アドレス (10.0.1.4) に到達します。
 5. ファイアウォールは SQL 用の転送ルールを持たず、トラフィックを破棄します。
 
 ## <a name="conclusion"></a>まとめ
-アプリケーションをファイアウォールで保護したり、バックエンド サブネットを受信トラフィックから切り離したりする方法として、これは比較的わかりやすい部類に入ります。
+この例は、アプリケーションをファイアウォールで保護したり、バックエンド サブネットを受信トラフィックから切り離したりする方法としては比較的わかりやすい部類に入ります。
 
 その他の例およびネットワーク セキュリティ境界の概要については、[こちら][HOME]を参照してください。
 
 ## <a name="references"></a>参照
-### <a name="main-script-and-network-config"></a>主要なスクリプトとネットワーク構成
-PowerShell スクリプト ファイルに完全なスクリプトを保存します。 "NetworkConf2.xml" という名前のファイルにネットワーク構成を保存します。
-必要に応じて、ユーザー定義の変数を変更します。 スクリプトを実行し、前述のファイアウォール ルールのセットアップ手順に従ってください。
+### <a name="full-script-and-network-config"></a>完全なスクリプトとネットワーク構成
+PowerShell スクリプト ファイルに完全なスクリプトを保存します。 NetworkConf2.xml という名前のファイルにネットワーク構成スクリプトを保存します。
+必要に応じて、ユーザー定義の変数を変更します。 スクリプトを実行し、この記事の「ファイアウォール ルール」のセクションの手順に従ってください。
 
 #### <a name="full-script"></a>完全なスクリプト
-このスクリプトは、ユーザー定義の変数に基づいています。
+このスクリプトは、ユーザー定義の変数に基づいて、次の手順を実行します。
 
-1. Azure サブスクリプションに接続する
-2. 新しいストレージ アカウントの作成
-3. ネットワーク構成ファイルの定義に従って VNet を 1 つ、サブネットを 2 つ新規に作成する
-4. Windows サーバーの VM を 4 つ作成する
-5. NSG を構成する
-   * NSG を作成
-   * NSG にルールを設定
-   * 適切なサブネットに NSG をバインド
+1. Azure サブスクリプションに接続します。
+2. ストレージ アカウントを作成します。
+3. ネットワーク構成ファイルの定義に従って、仮想ネットワークを 1 つ、サブネットを 2 つ作成します。
+4. 4 つの Windows Server VM を構築します。
+5. NSG を構成します。 構成では、次の手順を実行します。
+   * NSG を作成します。
+   * NSG にルールを設定します。
+   * 適切なサブネットに NSG をバインドします。
 
-この PowerShell スクリプトは、インターネットに接続されている PC またはサーバー上でローカルに実行する必要があります。
+この PowerShell スクリプトは、インターネットに接続されているコンピューターまたはサーバー上でローカルに実行する必要があります。
 
 > [!IMPORTANT]
-> このスクリプトを実行すると、PowerShell に警告またはその他の情報メッセージが表示される場合があります。 赤色のエラー メッセージのみが問題の原因となります。
+> このスクリプトを実行すると、PowerShell に警告またはその他の情報メッセージが表示される場合があります。 考慮する必要があるのは、赤色のエラー メッセージのみです。
 > 
 > 
 
+```powershell
     <# 
      .SYNOPSIS
-      Example of DMZ and Network Security Groups in an isolated network (Azure only, no hybrid connections)
+      Example of a perimeter network and Network Security Groups in an isolated network. (Azure only. No hybrid connections.)
 
      .DESCRIPTION
-      This script will build out a sample DMZ setup containing:
-       - A default storage account for VM disks
-       - Two new cloud services
-       - Two Subnets (FrontEnd and BackEnd subnets)
-       - A Network Virtual Appliance (NVA), in this case a Barracuda NextGen Firewall
-       - One server on the FrontEnd Subnet (plus the NVA on the FrontEnd subnet)
-       - Three Servers on the BackEnd Subnet
-       - Network Security Groups to allow/deny traffic patterns as declared
+      This script will build out a sample perimeter network setup containing:
+       - A default storage account for VM disks.
+       - Two new cloud services.
+       - Two subnets (the FrontEnd and BackEnd subnets).
+       - A network virtual appliance (NVA): a Barracuda NextGen Firewall.
+       - One server on the FrontEnd subnet (plus the NVA on the FrontEnd subnet).
+       - Three servers on the BackEnd subnet.
+       - Network Security Groups to allow/deny traffic patterns as declared.
 
-      Before running script, ensure the network configuration file is created in
-      the directory referenced by $NetworkConfigFile variable (or update the
+      Before running the script, ensure the network configuration file is created in
+      the directory referenced by the $NetworkConfigFile variable (or update the
       variable to reflect the path and file name of the config file being used).
 
      .Notes
-      Security requirements are different for each use case and can be addressed in a
-      myriad of ways. Please be sure that any sensitive data or applications are behind
+      Security requirements are different for each use case and can be addressed in many ways. Be sure that any sensitive data or applications are behind
       the appropriate layer(s) of protection. This script serves as an example of some
-      of the techniques that can be used, but should not be used for all scenarios. You
-      are responsible to assess your security needs and the appropriate protections
-      needed, and then effectively implement those protections.
+      of the techniques that you can use, but it should not be used for all scenarios. You
+      are responsible for assessing your security needs and the appropriate protections
+      and then effectively implementing those protections.
 
       FrontEnd Service (FrontEnd subnet 10.0.1.0/24)
        myFirewall - 10.0.1.4
@@ -292,9 +304,9 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
         $SubnetName = @()
         $VMIP = @()
 
-    # User Defined Global Variables
-      # These should be changes to reflect your subscription and services
-      # Invalid options will fail in the validation section
+    # User-Defined Global Variables
+      # These should be changed to reflect your subscription and services.
+      # Invalid options will fail in the validation section.
 
       # Subscription Access Details
         $subID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -323,15 +335,15 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
       # NSG Details
         $NSGName = "MyVNetSG"
 
-    # User Defined VM Specific Config
-        # Note: To ensure proper NSG Rule creation later in this script:
-        #       - The Web Server must be VM 1
-        #       - The AppVM1 Server must be VM 2
-        #       - The DNS server must be VM 4
+    # User-Defined VM-Specific Config
+        # To ensure proper NSG rule creation later in this script:
+        #       - The web server must be VM 1.
+        #       - The AppVM1 server must be VM 2.
+        #       - The DNS server must be VM 4.
         #
         #       Otherwise the NSG rules in the last section of this
         #       script will need to be changed to match the modified
-        #       VM array numbers ($i) so the NSG Rule IP addresses
+        #       VM array numbers ($i) so the NSG rule IP addresses
         #       are aligned to the associated VM IP addresses.
 
         # VM 0 - The Network Virtual Appliance (NVA)
@@ -352,7 +364,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
           $SubnetName += $FESubnet
           $VMIP += "10.0.1.5"
 
-        # VM 2 - The First Appliaction Server
+        # VM 2 - The First Application Server
           $VMName += "AppVM01"
           $ServiceName += $BackEndService
           $VMFamily += "Windows"
@@ -361,7 +373,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
           $SubnetName += $BESubnet
           $VMIP += "10.0.2.5"
 
-        # VM 3 - The Second Appliaction Server
+        # VM 3 - The Second Application Server
           $VMName += "AppVM02"
           $ServiceName += $BackEndService
           $VMFamily += "Windows"
@@ -380,8 +392,8 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
           $VMIP += "10.0.2.4"
 
     # ----------------------------- #
-    # No User Defined Varibles or   #
-    # Configuration past this point #
+    # No user-defined variables or   #
+    # configuration past this point #
     # ----------------------------- #
 
       # Get your Azure accounts
@@ -389,14 +401,14 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
         Set-AzureSubscription –SubscriptionId $subID -ErrorAction Stop
         Select-AzureSubscription -SubscriptionId $subID -Current -ErrorAction Stop
 
-      # Create Storage Account
+      # Create storage account
         If (Test-AzureName -Storage -Name $StorageAccountName) { 
             Write-Host "Fatal Error: This storage account name is already in use, please pick a diffrent name." -ForegroundColor Red
             Return}
         Else {Write-Host "Creating Storage Account" -ForegroundColor Cyan 
               New-AzureStorageAccount -Location $DeploymentLocation -StorageAccountName $StorageAccountName}
 
-      # Update Subscription Pointer to New Storage Account
+      # Update subscription pointer to new storage account
         Write-Host "Updating Subscription Pointer to New Storage Account" -ForegroundColor Cyan 
         Set-AzureSubscription –SubscriptionId $subID -CurrentStorageAccountName $StorageAccountName -ErrorAction Stop
 
@@ -422,20 +434,20 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
         $FatalError = $true}
     Else { Write-Host "The network config file was found" -ForegroundColor Green
             If (-Not (Select-String -Pattern $DeploymentLocation -Path $NetworkConfigFile)) {
-                Write-Host 'The deployment location was not found in the network config file, please check the network config file to ensure the $DeploymentLocation varible is correct and the netowrk config file matches.' -ForegroundColor Yellow
+                Write-Host 'The deployment location was not found in the network config file, please check the network config file to ensure the $DeploymentLocation variable is correct and the network config file matches.' -ForegroundColor Yellow
                 $FatalError = $true}
             Else { Write-Host "The deployment location was found in the network config file." -ForegroundColor Green}}
 
     If ($FatalError) {
-        Write-Host "A fatal error has occured, please see the above messages for more information." -ForegroundColor Red
+        Write-Host "A fatal error has occurred, please see the above messages for more information." -ForegroundColor Red
         Return}
     Else { Write-Host "Validation passed, now building the environment." -ForegroundColor Green}
 
-    # Create VNET
+    # Create virtual network
         Write-Host "Creating VNET" -ForegroundColor Cyan 
         Set-AzureVNetConfig -ConfigurationPath $NetworkConfigFile -ErrorAction Stop
 
-    # Create Services
+    # Create services
         Write-Host "Creating Services" -ForegroundColor Cyan
         New-AzureService -Location $DeploymentLocation -ServiceName $FrontEndService -ErrorAction Stop
         New-AzureService -Location $DeploymentLocation -ServiceName $BackEndService -ErrorAction Stop
@@ -451,16 +463,16 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
                     Set-AzureSubnet  –SubnetNames $SubnetName[$i] | `
                     Set-AzureStaticVNetIP -IPAddress $VMIP[$i] | `
                     New-AzureVM –ServiceName $ServiceName[$i] -VNetName $VNetName -Location $DeploymentLocation
-                # Set up all the EndPoints we'll need once we're up and running
-                # Note: Web traffic goes through the firewall, so we'll need to set up a HTTP endpoint.
-                #       Also, the firewall will be redirecting web traffic to a new IP and Port in a
+                # Set up all the endpoints we'll need once we're up and running.
+                # Note: Web traffic goes through the firewall, so we'll need to set up an HTTP endpoint.
+                #       Also, the firewall will be redirecting web traffic to a new IP and port in a
                 #       forwarding rule, so the HTTP endpoint here will have the same public and local
                 #       port and the firewall will do the NATing and redirection as declared in the
                 #       firewall rule.
                 Add-AzureEndpoint -Name "MgmtPort1" -Protocol tcp -PublicPort 801  -LocalPort 801  -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | Update-AzureVM
                 Add-AzureEndpoint -Name "MgmtPort2" -Protocol tcp -PublicPort 807  -LocalPort 807  -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | Update-AzureVM
                 Add-AzureEndpoint -Name "HTTP"      -Protocol tcp -PublicPort 80   -LocalPort 80   -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | Update-AzureVM
-                # Note: A SSH endpoint is automatically created on port 22 when the appliance is created.
+                # Note: An SSH endpoint is automatically created on port 22 when the appliance is created.
                 }
             Else
                 {
@@ -483,7 +495,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
         Write-Host "Building the NSG" -ForegroundColor Cyan
         New-AzureNetworkSecurityGroup -Name $NSGName -Location $DeploymentLocation -Label "Security group for $VNetName subnets in $DeploymentLocation"
 
-      # Add NSG Rules
+      # Add NSG rules
         Write-Host "Writing rules into the NSG" -ForegroundColor Cyan
         Get-AzureNetworkSecurityGroup -Name $NSGName | Set-AzureNetworkSecurityRule -Name "Enable Internal DNS" -Type Inbound -Priority 100 -Action Allow `
             -SourceAddressPrefix VIRTUAL_NETWORK -SourcePortRange '*' `
@@ -515,15 +527,15 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
             -DestinationAddressPrefix $BEPrefix -DestinationPortRange '*' `
             -Protocol *
 
-        # Assign the NSG to the Subnets
+        # Assign the NSG to the subnets
             Write-Host "Binding the NSG to both subnets" -ForegroundColor Cyan
             Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName -SubnetName $FESubnet -VirtualNetworkName $VNetName
             Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName -SubnetName $BESubnet -VirtualNetworkName $VNetName
 
-    # Optional Post-script Manual Configuration
-      # Configure Firewall
-      # Install Test Web App (Run Post-Build Script on the IIS Server)
-      # Install Backend resource (Run Post-Build Script on the AppVM01)
+    # Optional Post-Script Manual Configuration
+      # Configure firewall
+      # Install test web app (run post-build script on the IIS server)
+      # Install back-end resources (run post-build script on AppVM01)
       Write-Host
       Write-Host "Build Complete!" -ForegroundColor Green
       Write-Host
@@ -532,12 +544,13 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
       Write-Host " - Install Test Web App (Run Post-Build Script on the IIS Server)" -ForegroundColor Gray
       Write-Host " - Install Backend resource (Run Post-Build Script on the AppVM01)" -ForegroundColor Gray
       Write-Host
-
+```
 
 #### <a name="network-config-file"></a>ネットワーク構成ファイル
-この xml ファイルに実際のロケーション情報に反映して保存し、このファイルへのリンクを上記スクリプト内の $NetworkConfigFile 変数に追加します。
+この XML ファイルに実際のロケーション情報を反映して保存し、このファイルへのリンクを上記スクリプト内の $NetworkConfigFile 変数に追加します。
 
-    <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+```xml
+    <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
         <Dns>
           <DnsServers>
@@ -566,9 +579,10 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
         </VirtualNetworkSites>
       </VirtualNetworkConfiguration>
     </NetworkConfiguration>
+```
 
 #### <a name="sample-application-scripts"></a>サンプル アプリケーション スクリプト
-これに対応するサンプル アプリケーション、およびその他の DMZ の例をインストールしたい場合は、[サンプル アプリケーション スクリプト][SampleApp]をご利用ください。
+この例や他の境界ネットワークの例のサンプル アプリケーションをインストールする場合は、[サンプル アプリケーション スクリプト][SampleApp]を参照してください。
 
 <!--Image References-->
 [1]: ./media/virtual-networks-dmz-nsg-fw-asm/example2design.png "NSG での受信 DMZ"

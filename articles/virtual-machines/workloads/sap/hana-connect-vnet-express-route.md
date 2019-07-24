@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a64a60603cd9898386a975313afc676e3b253326
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: cb14d0784ecb87c85b02952880e9eb5744d205a2
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353599"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58850671"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>HANA Large Instances に仮想ネットワークを接続する
 
@@ -28,13 +28,15 @@ Azure Virtual Network を作成したら、SAP HANA on Azure Large Instances に
 > [!NOTE] 
 > この手順が完了するまで最大で 30 分かかることがあります。 新しいゲートウェイは指定された Azure サブスクリプション内で作成されてから、指定された Azure Virtual Network に接続されます。
 
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
+
 ゲートウェイが既に存在する場合は、それが ExpressRoute ゲートウェイかどうかを確認します。 ExpressRoute ゲートウェイでない場合は、そのゲートウェイを削除し、ExpressRoute ゲートウェイとして再作成します。 ExpressRoute ゲートウェイが既に確立されている場合は、この記事の後述の「仮想ネットワークをリンクする」というセクションを参照してください。 
 
 - [Azure Portal](https://portal.azure.com/) または PowerShell を使用して、お使いの仮想ネットワークに接続された ExpressRoute VPN ゲートウェイを作成します。
   - Azure Portal を使用する場合、新しい **Virtual Network ゲートウェイ**を追加し、ゲートウェイの種類として **[ExpressRoute]** を選択します。
   - PowerShell を使用する場合は、まず、最新の [Azure PowerShell SDK](https://azure.microsoft.com/downloads/) をダウンロードして、それを使用します。 次のコマンドは ExpressRoute ゲートウェイを作成します。 _$_ の後に続くテキストはユーザー定義変数で、ユーザー固有の情報で更新する必要があります。
 
-```PowerShell
+```powershell
 # These Values should already exist, update to match your environment
 $myAzureRegion = "eastus"
 $myGroupName = "SAP-East-Coast"
@@ -47,15 +49,15 @@ $myGWPIPName = "VNet01GWPIP"
 $myGWSku = "HighPerformance" # Supported values for HANA large instances are: HighPerformance or UltraPerformance
 
 # These Commands create the Public IP and ExpressRoute Gateway
-$vnet = Get-AzureRmVirtualNetwork -Name $myVNetName -ResourceGroupName $myGroupName
-$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
-New-AzureRmPublicIpAddress -Name $myGWPIPName -ResourceGroupName $myGroupName `
+$vnet = Get-AzVirtualNetwork -Name $myVNetName -ResourceGroupName $myGroupName
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
+New-AzPublicIpAddress -Name $myGWPIPName -ResourceGroupName $myGroupName `
 -Location $myAzureRegion -AllocationMethod Dynamic
-$gwpip = Get-AzureRmPublicIpAddress -Name $myGWPIPName -ResourceGroupName $myGroupName
-$gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $myGWConfig -SubnetId $subnet.Id `
+$gwpip = Get-AzPublicIpAddress -Name $myGWPIPName -ResourceGroupName $myGroupName
+$gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name $myGWConfig -SubnetId $subnet.Id `
 -PublicIpAddressId $gwpip.Id
 
-New-AzureRmVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName -Location $myAzureRegion `
+New-AzVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName -Location $myAzureRegion `
 -IpConfigurations $gwipconfig -GatewayType ExpressRoute `
 -GatewaySku $myGWSku -VpnType PolicyBased -EnableBgp $true
 ```
@@ -71,7 +73,7 @@ New-AzureRmVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName
 
 接続ごとに異なる AuthGUID を使用して、各仮想ネットワーク ゲートウェイで次のコマンドを実行します。 次のスクリプトに示す最初の 2 つのエントリは、Microsoft から提供される情報です。 また、AuthGUID はすべての仮想ネットワークとそのゲートウェイに固有のものです。 別の Azure Virtual Network を追加する場合は、HANA Large Instances を Azure に接続する ExpressRoute 回線の AuthID がもう 1 つ必要になります。 
 
-```PowerShell
+```powershell
 # Populate with information provided by Microsoft Onboarding team
 $PeerID = "/subscriptions/9cb43037-9195-4420-a798-f87681a0e380/resourceGroups/Customer-USE-Circuits/providers/Microsoft.Network/expressRouteCircuits/Customer-USE01"
 $AuthGUID = "76d40466-c458-4d14-adcf-3d1b56d1cd61"
@@ -85,9 +87,9 @@ $myGWLocation = "East US"
 $myConnectionName = "VNet01GWConnection"
 
 # Create a new connection between the ER Circuit and your Gateway using the Authorization
-$gw = Get-AzureRmVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName
+$gw = Get-AzVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName
     
-New-AzureRmVirtualNetworkGatewayConnection -Name $myConnectionName `
+New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 -ResourceGroupName $myGroupName -Location $myGWLocation -VirtualNetworkGateway1 $gw `
 -PeerId $PeerID -ConnectionType ExpressRoute -AuthorizationKey $AuthGUID
 ```

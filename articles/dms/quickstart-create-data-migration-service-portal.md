@@ -1,24 +1,24 @@
 ---
-title: 'クイック スタート: Azure portal を使用して Azure Database Migration Service インスタンスを作成する | Microsoft Docs'
+title: クイック スタート:Azure ポータルを使用して Azure Database Migration Service インスタンスを作成する | Microsoft Docs
 description: Azure ポータルを使用して Azure Database Migration Service のインスタンスを作成します。
 services: database-migration
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
-ms.reviewer: ''
-ms.service: database-migration
+ms.reviewer: craigg
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 10/09/2018
-ms.openlocfilehash: 7df19efc52f0771a10535c10625dd959a6edc90a
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.date: 03/12/2019
+ms.openlocfilehash: af5ffdb1c1f030c2bbc0616d027c06b59f1a34de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958017"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177468"
 ---
-# <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>クイック スタート: Azure portal を使用して Azure Database Migration Service のインスタンスを作成する
+# <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>クイック スタート:Azure Portal を使用して Azure Database Migration Service のインスタンスを作成する
 このクイック スタートでは、Azure Portal を使用して Azure Database Migration Service のインスタンスを作成します。  サービスを作成したら、それを使用してオンプレミスの SQL Server から Azure SQL Database にデータを移行できます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
@@ -56,7 +56,7 @@ Database Migration Service の最初のインスタンスを作成する前に�
 
         Azure portal で VNET を作成する方法の詳細については、[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/vnet)に関する記事を参照してください。
 
-    - **[価格レベル]** に [Basic: 1 vCore]\(Basic: 1 仮想コア\) を選択します。
+    - [Basic:1 vCore]\(Basic: 1 仮想コア\) を **[価格レベル]** で選択します。
 
         ![移行サービスの作成](media/quickstart-create-data-migration-service-portal/dms-create-service1.png)
 

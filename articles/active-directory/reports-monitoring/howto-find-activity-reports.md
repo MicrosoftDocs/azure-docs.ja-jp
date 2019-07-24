@@ -3,22 +3,23 @@ title: Azure Portal で Azure Active Directory のユーザー アクティビ�
 description: Azure Portal で Azure Active Directory のアクティビティ レポートがある場所について説明します。
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: fab94088d1d54012a955b0663b078d03b13d6299
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d47072713c57576abe780134792c3a5cbc27127c
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624914"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439041"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure Portal でアクティビティ レポートを見つける
 
@@ -47,23 +48,50 @@ ms.locfileid: "51624914"
 
 ### <a name="filtering-on-audit-logs"></a>監査ログのフィルター処理
 
-監査レポートで高度なフィルター処理を使用すると、**[アクティビティ カテゴリ]** フィルターで指定することで、特定のカテゴリの監査データにアクセスできます。 たとえば、セルフサービスによるパスワードのリセットに関連するすべてのアクティビティを表示するには、**[Self-service password management]\(セルフ サービスによるパスワード管理\)** カテゴリを選択します。 
+監査レポートで高度なフィルター処理を使用すると、**[カテゴリ]** フィルターで指定することで、特定のカテゴリの監査データにアクセスできます。 たとえば、ユーザーに関連するすべてのアクティビティを表示するには、**UserManagement** カテゴリを選択します。 
 
-    ![Category options on the Filter Audit Logs page](./media/howto-find-activity-reports/06.png "Category options on the Filter Audit Logs page")
+次のようなカテゴリがあります。
 
-アクティビティのカテゴリには、以下が含まれます。
+- All
+- AdministrativeUnit
+- ApplicationManagement
+- Authentication
+- Authorization
+- Contact
+- Device
+- DeviceConfiguration
+- DirectoryManagement
+- EntitlementManagement
+- GroupManagement
+- その他
+- ポリシー
+- ResourceManagement
+- RoleManagement
+- UserManagement
 
+**[サービス]** ドロップダウン フィルターを使用して、特定のサービスでフィルター処理することもできます。 たとえば、セルフサービスによるパスワード管理に関連するすべての監査イベントを取得するには、**[Self-service Password Management]\(セルフサービスによるパスワード管理\)** フィルターを選択します。
+
+次のようなサービスがあります。
+
+- All
+- アクセス レビュー
+- アカウント プロビジョニング 
+- アプリケーション SSO
+- 認証方法
+- B2C
+- 条件付きアクセス
 - Core Directory (コア ディレクトリ)
-- Self-service Password Management \(セルフサービスによるパスワード管理)
+- エンタイトルメント管理
+- Identity Protection
+- 招待されたユーザー
+- PIM
 - セルフサービスによるグループ管理
-- アカウント プロビジョニング
-
+- Self-service Password Management \(セルフサービスによるパスワード管理)
+- 使用条件
 
 ## <a name="sign-ins-report"></a>サインイン レポート 
 
 **[サインイン]** ビューには、すべてのユーザー サインインと、**アプリケーションの使用状況**レポートが表示されます。 アプリケーションの使用状況に関する情報は、**[エンタープライズ アプリケーション]** の概要の **[管理]** セクションで確認することもできます。
-
-    ![Enterprise applications](./media/howto-find-activity-reports/484.png "Enterprise applications")
 
 サインイン レポートにアクセスするには:
 
@@ -112,6 +140,89 @@ ms.locfileid: "51624914"
 - [リスクの高いサインイン](concept-risky-sign-ins.md)
 
     ![セキュリティ レポート](./media/howto-find-activity-reports/04.png "セキュリティ レポート")
+
+## <a name="troubleshoot-issues-with-activity-reports"></a>アクティビティ レポートに関する問題のトラブルシューティング
+
+### <a name="missing-data-in-the-downloaded-activity-logs"></a>ダウンロードしたアクティビティ ログにデータが見つからない
+
+#### <a name="symptoms"></a>現象 
+
+アクティビティ ログ (監査またはサインイン) をダウンロードしましたが、選択した期間のレコードがまったく表示されません。 なぜですか? 
+
+ ![レポート](./media/troubleshoot-missing-data-download/01.png)
+ 
+#### <a name="cause"></a>原因
+
+Azure portal でアクティビティ ログをダウンロードする場合は、新しい順に並べ替えられた最新の 250000 件のレコードに制限されます。 
+
+#### <a name="resolution"></a>解決策
+
+[Azure AD Reporting API](concept-reporting-api.md) を利用すると、任意の時点のレコードを最大 100 万件取得できます。
+
+### <a name="missing-audit-data-for-recent-actions-in-the-azure-portal"></a>Azure portal で最近の操作の監査データが見つからない
+
+#### <a name="symptoms"></a>現象
+
+Azure Portal でいくつかの操作を実行したので、`Activity logs > Audit Logs` ブレードでこれらの操作の監査ログが表示されるはずですが、見つかりません。
+
+ ![レポート](./media/troubleshoot-missing-audit-data/01.png)
+ 
+#### <a name="cause"></a>原因
+
+操作はアクティビティ ログにすぐには表示されません。 アクティビティ ログの待ち時間を次の表に示します。 
+
+| レポート | &nbsp; | 待ち時間 (P95) | 待ち時間 (P99) |
+|--------|--------|---------------|---------------|
+| ディレクトリ監査 | &nbsp; | 2 分 | 5 分 |
+| サインイン アクティビティ | &nbsp; | 2 分 | 5 分 | 
+
+#### <a name="resolution"></a>解決策
+
+15 分から 2 時間待ってから、操作がログに表示されるかどうかを確認します。 2 時間が経過した後もログが表示されない場合は、[サポート チケットを発行](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。Microsoft が調査します。
+
+### <a name="missing-logs-for-recent-user-sign-ins-in-the-azure-ad-sign-ins-activity-log"></a>Azure AD のサインイン アクティビティ ログで最近のユーザー サインインのログが見つからない
+
+#### <a name="symptoms"></a>現象
+
+最近 Azure portal にサインインしたので `Activity logs > Sign-ins` ブレードにこれらの操作のサインイン ログが表示されるはずですが、見つかりません。
+
+ ![レポート](./media/troubleshoot-missing-audit-data/02.png)
+ 
+#### <a name="cause"></a>原因
+
+操作はアクティビティ ログにすぐには表示されません。 アクティビティ ログの待ち時間を次の表に示します。 
+
+| レポート | &nbsp; | 待ち時間 (P95) | 待ち時間 (P99) |
+|--------|--------|---------------|---------------|
+| ディレクトリ監査 | &nbsp; | 2 分 | 5 分 |
+| サインイン アクティビティ | &nbsp; | 2 分 | 5 分 | 
+
+#### <a name="resolution"></a>解決策
+
+15 分から 2 時間待ってから、操作がログに表示されるかどうかを確認します。 2 時間が経過した後もログが表示されない場合は、[サポート チケットを発行](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。Microsoft が調査します。
+
+### <a name="i-cant-view-more-than-30-days-of-report-data-in-the-azure-portal"></a>Azure portal で 30 日より前のレポート データを表示できません
+
+#### <a name="symptoms"></a>現象
+
+Azure portal で 30 日より前のサインイン データおよび監査データを表示できません。 なぜですか? 
+
+ ![レポート](./media/troubleshoot-missing-audit-data/03.png)
+
+#### <a name="cause"></a>原因
+
+Azure Active Directory Actions には、ライセンスに応じて次の期間のアクティビティ レポートが保存されます。
+
+| レポート           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| ---              | ----   |  ---           | ---                 | ---                 |
+| ディレクトリ監査  | &nbsp; |   7 日     | 30 日             | 30 日             |
+| サインイン アクティビティ | &nbsp; | 使用できません。 7 日間分のサインインについては、個人のユーザー プロファイル ブレードからアクセスできます | 30 日 | 30 日             |
+
+詳細については、「[Azure Active Directory レポートのアイテム保持ポリシー](reference-reports-data-retention.md)」を参照してください。  
+
+#### <a name="resolution"></a>解決策
+
+30 日を超えてデータを保持するには、2 つの方法があります。 [Azure AD レポート API](concept-reporting-api.md) を使用してデータをプログラムで取得し、データベースに保存することができます。 また、監査ログを Splunk や SumoLogic などのサード パーティの SIEM システムに統合することもできます。
 
 ## <a name="next-steps"></a>次の手順
 

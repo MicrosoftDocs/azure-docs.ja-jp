@@ -1,29 +1,27 @@
 ---
-title: Azure リソース (プレビュー) の Azure Active Directory 管理 ID を持つ blob およびキューへのアクセスの認証 - Azure Storage |Microsoft Docs
+title: Azure リソースの Azure Active Directory 管理 ID を持つ blob およびキューへのアクセスの認証 - Azure Storage |Microsoft Docs
 description: Azure の Blob およびキュー ストレージは、Azure リソースの管理 ID を使用する Azure Active Directory 認証をサポートします。 Azure リソースの管理 ID を使用して、Azure の仮想マシン、関数アプリ、仮想マシン スケール セット、およびその他においてで実行されているアプリケーションから blob およびキューへのアクセスを認証することができます。 Azure リソースの管理 ID を使用し、Azure AD の認証機能を利用して、クラウドで動作するアプリケーションに資格情報を保存することを避けることができます。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 03/21/2019
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: d8382cac86abb112018195695340ed12663a2333
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.subservice: common
+ms.openlocfilehash: dfdb419a5c06dc50717c0a8a3bdaffb302db52d0
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427418"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793018"
 ---
-# <a name="authenticate-access-to-blobs-and-queues-with-managed-identities-for-azure-resources-preview"></a>Azure リソース (プレビュー) に対するマネージド ID を使用して BLOB およびキューへのアクセスを認証する
+# <a name="authenticate-access-to-blobs-and-queues-with-managed-identities-for-azure-resources"></a>Azure リソースに対するマネージド ID を使用して BLOB およびキューへのアクセスを認証する
 
 Azure の Blob およびキュー ストレージは、Azure Active Directory (Azure AD) 認証を[ Azure リソースの管理 ID ](../../active-directory/managed-identities-azure-resources/overview.md)を使用してサポートします。 Azure リソースに対するマネージド ID により、Azure の仮想マシン (VM)、関数アプリ、仮想マシン スケール セットなどで実行されているアプリケーションから BLOB およびキューへのアクセスを、Azure AD 資格情報を使用して認証することができます。 Azure リソースの管理 ID を使用し、Azure AD の認証機能を利用して、クラウドで動作するアプリケーションに資格情報を保存することを避けることができます。  
 
-管理 ID から blob コンテナーまたはキューへのアクセス許可を付与するには、ロールベースのアクセス制御 (RBAC) ロールを適切なスコープでそのリソースに対するアクセス許可を含む管理 ID に割り当てます。 ストレージの RBAC ロールについては、[RBAC でストレージ データへのアクセス許可を管理する (プレビュー)](storage-auth-aad-rbac.md) 方法に関するページを参照してください。 
+管理 ID から blob コンテナーまたはキューへのアクセス許可を付与するには、ロールベースのアクセス制御 (RBAC) ロールを適切なスコープでそのリソースに対するアクセス許可を含む管理 ID に割り当てます。 ストレージの RBAC ロールについては、[RBAC を使用したストレージ データへのアクセス権の管理](storage-auth-aad-rbac.md)に関するページをご覧ください。 
 
 この記事では Azure VM から 管理 ID を使用して Azure Blob または キューストレージ の認証を受ける方法について説明しています。  
-
-[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="enable-managed-identities-on-a-vm"></a>VM 上の管理 ID を有効にする
 
@@ -37,21 +35,23 @@ VM から blob およびキューへのアクセス認証に対し Azure リソ�
 
 ## <a name="assign-an-rbac-role-to-an-azure-ad-managed-identity"></a>Azure AD のマネージド ID に RBAC ロールを割り当てる
 
-Azure Storage アプリケーションからマネージド ID の認証を行うには、最初に、そのマネージド ID に対してロールベースのアクセス制御 (RBAC) の設定を構成します。 コンテナーとキューのアクセス許可を含む RBAC ロールは、Azure Storage によって定義されます。 マネージド ID に RBAC ロールを割り当てると、そのマネージド ID にそのリソースへのアクセス権が付与されます。 詳しくは、[RBAC を使用した Azure BLOB とキューのデータへのアクセス権の管理 (プレビュー)](storage-auth-aad-rbac.md) に関するページをご覧ください。
+Azure Storage アプリケーションからマネージド ID の認証を行うには、最初に、そのマネージド ID に対してロールベースのアクセス制御 (RBAC) の設定を構成します。 コンテナーとキューのアクセス許可を含む RBAC ロールは、Azure Storage によって定義されます。 マネージド ID に RBAC ロールを割り当てると、そのマネージド ID にそのリソースへのアクセス権が付与されます。 詳細については、[RBAC を使用した Azure BLOB とキューのデータへのアクセス権の管理](storage-auth-aad-rbac.md)に関するページをご覧ください。
 
 ## <a name="get-a-managed-identity-access-token"></a>管理 ID アクセス トークンの取得
 
 管理 ID を使用して認証するには、アプリケーションまたはスクリプトは、管理 ID へのアクセス トークンを取得する必要があります。 アクセス トークンを取得する方法については、「[アクセストークンを取得するために Azure VM 上の Azure リソースの管理 ID を使用する方法](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)」を参照してください。
 
-## <a name="net-code-example-create-a-block-blob"></a>.NET コード例: ブロック BLOB の作成
+OAuth トークンを使用して BLOB とキューの操作を承認するには、HTTPS を使用する必要があります。
+
+## <a name="net-code-example-create-a-block-blob"></a>.NET コード例: ブロック BLOB を作成する
 
 このコード例では、管理 ID アクセス トークンがあることを前提としています。 アクセス トークンは、管理 ID によるブロック BLOB の作成を承認するために使用されます。
 
 ### <a name="add-references-and-using-statements"></a>参照と using ステートメントを追加する  
 
-Visual Studio で、Azure Storage クライアント ライブラリのプレビュー バージョンをインストールします。 **[ツール]** メニューで、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。 次のコマンドをコンソールに入力します。
+Visual Studio で、Azure Storage クライアント ライブラリをインストールします。 **[ツール]** メニューで、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。 次のコマンドをコンソールに入力します。
 
-```
+```powershell
 Install-Package https://www.nuget.org/packages/WindowsAzure.Storage  
 ```
 
@@ -63,7 +63,7 @@ using Microsoft.WindowsAzure.Storage.Auth;
 
 ### <a name="create-credentials-from-the-managed-identity-access-token"></a>管理 ID アクセス トークンから資格情報を作成する
 
-ブロック BLOB を作成するには、プレビュー パッケージで提供されている **TokenCredentials** クラスを使用します。 以前取得した管理 ID アクセス トークンを渡して、**TokenCredentials** の新しいインスタンスを作成します。
+ブロック BLOB を作成するには、**TokenCredentials** クラスを使用します。 以前取得した管理 ID アクセス トークンを渡して、**TokenCredentials** の新しいインスタンスを作成します。
 
 ```dotnet
 // Create storage credentials from your managed identity access token.
@@ -79,7 +79,6 @@ CloudBlockBlob blob = new CloudBlockBlob(new Uri("https://storagesamples.blob.co
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Storage の RBAC ロールについては、[RBAC で Azure Storage データへのアクセス許可を管理する (プレビュー)](storage-auth-aad-rbac.md) 方法に関するページを参照してください。
+- Azure Storage の RBAC ロールについては、[RBAC を使用したストレージ データへのアクセス権の管理](storage-auth-aad-rbac.md)に関するページをご覧ください。
 - ストレージ アプリケーション内からコンテナーやキューへのアクセスを承認する方法については、[ストレージ アプリケーションで Azure AD を使用する](storage-auth-aad-app.md)方法に関するページを参照してください。
-- Azure AD ID で Azure CLI と PowerShell にログインする方法については、「[Azure AD ID を使用し、CLI または PowerShell で Azure Storage にアクセスする (プレビュー)](storage-auth-aad-script.md)」を参照してください。
-- Azure の BLOB とキューの Azure AD 統合に関する詳細については、Azure Storage チームのブログ投稿「[Announcing the Preview of Azure AD Authentication for Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/)」(Azure Storage の Azure AD Authentication のプレビューの発表) を参照してください。
+- Azure AD ID で Azure CLI と PowerShell にサインインする方法については、[CLI または PowerShell での Azure AD ID を使用した Azure Storage へのアクセス](storage-auth-aad-script.md)に関するページをご覧ください。

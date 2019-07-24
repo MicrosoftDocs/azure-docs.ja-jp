@@ -10,14 +10,14 @@ ms.reviewer: klam, estfan, LADocs
 ms.custom: vs-azure
 ms.topic: article
 ms.date: 03/30/2017
-ms.openlocfilehash: 068e5399073959d2c5aa6c4bbeb0d7bccf7d05e6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 9cd1946d8fa670764bcc95b82298d07cc70417bd
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393781"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191325"
 ---
-# <a name="overview-azure-serverless-with-azure-logic-apps-and-azure-functions"></a>概要: Azure Logic Apps および Azure Functions を備えた Azure Serverless
+# <a name="overview-azure-serverless-with-azure-logic-apps-and-azure-functions"></a>概要:Azure Logic Apps および Azure Functions を備えた Azure Serverless
 
 [サーバーレス](https://azure.microsoft.com/solutions/serverless/) アプリケーションには、開発速度の向上、必要なコードの削減、およびスケールの簡素化という利点があります。  この記事では、サーバーレス ソリューションのさまざまな属性と Azure Serverless サービスについて説明します。
 
@@ -41,7 +41,7 @@ Logic Apps の操作を開始するには、[最初のロジック アプリの�
 
 ## <a name="how-can-i-build-and-deploy-serverless-applications-in-azure"></a>Azure でサーバーレス アプリケーションを構築してデプロイするにはどうすればよいですか。
 
-Azure は、サーバーレス アプリの開発、デプロイ、管理の全体にわたる、豊富な機能を持つツール セットを提供しています。  アプリは Azure Portal で直接、または [Visual Studio のツール](logic-apps-serverless-get-started-vs.md)を使用して構築できます。  アプリケーションが開発されたら、そのアプリケーションを[直ちにデプロイ](logic-apps-create-deploy-template.md)できます。  Azure ではまた、サーバーレス アプリに対する監視も提供されます。  この監視には、API または SDK 経由で、あるいは Log Analytics と Application Insights に対する統合ツールを使用して Azure Portal からアクセスできます。
+Azure は、サーバーレス アプリの開発、デプロイ、管理の全体にわたる、豊富な機能を持つツール セットを提供しています。  アプリは Azure Portal で直接、または [Visual Studio のツール](logic-apps-serverless-get-started-vs.md)を使用して構築できます。  アプリケーションが開発されたら、そのアプリケーションを[直ちにデプロイ](logic-apps-create-deploy-template.md)できます。  Azure ではまた、サーバーレス アプリに対する監視も提供されます。  この監視には、Azure portal からのアクセス、API または SDK 経由のアクセス、または Azure Monitor ログおよび Application Insights に対する統合ツールでのアクセスが可能です。
 
 ## <a name="next-steps"></a>次の手順
 

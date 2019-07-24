@@ -4,7 +4,7 @@ description: Azure PowerShell と Resource Manager デプロイ モデルを使�
 keywords: ''
 services: virtual-machines-windows
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,17 +13,21 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2018
-ms.author: zarhoads
-ms.openlocfilehash: fbbe6753bd8aa3e43c8a45db5692ce38c18de50c
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 02/12/2019
+ms.author: cynthn
+ms.openlocfilehash: 1935286d94b0d72a59fc5d478705e23a7f7425e9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467295"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236608"
 ---
 # <a name="change-the-availability-set-for-a-windows-vm"></a>Windows VM の可用性セットの変更
 以下の手順では、Azure PowerShell を使用して VM の可用性セットを変更する方法について説明します。 VM を可用性セットに追加できるのは、VM の作成時のみです。 可用性セットを変更するには、仮想マシンを削除してから作成し直す必要があります。 
+
+この記事は、2019 年 2 月 12 日に [Azure Cloud Shell](https://shell.azure.com/powershell) と [Az PowerShell モジュール](https://docs.microsoft.com/powershell/azure/install-az-ps) バージョン 1.2.0 を使用して最後にテストされました。
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="change-the-availability-set"></a>可用性セットを変更する 
 
@@ -35,18 +39,18 @@ ms.locfileid: "49467295"
     $vmName = "myVM"
     $newAvailSetName = "myAvailabilitySet"
 
-# Get the details of the VM to be moved to the Availablity Set
-    $originalVM = Get-AzureRmVM `
+# Get the details of the VM to be moved to the Availability Set
+    $originalVM = Get-AzVM `
        -ResourceGroupName $resourceGroup `
        -Name $vmName
 
 # Create new availability set if it does not exist
-    $availSet = Get-AzureRmAvailabilitySet `
+    $availSet = Get-AzAvailabilitySet `
        -ResourceGroupName $resourceGroup `
        -Name $newAvailSetName `
        -ErrorAction Ignore
     if (-Not $availSet) {
-    $availSet = New-AzureRmAvailabilitySet `
+    $availSet = New-AzAvailabilitySet `
        -Location $originalVM.Location `
        -Name $newAvailSetName `
        -ResourceGroupName $resourceGroup `
@@ -56,15 +60,15 @@ ms.locfileid: "49467295"
     }
     
 # Remove the original VM
-    Remove-AzureRmVM -ResourceGroupName $resourceGroup -Name $vmName    
+    Remove-AzVM -ResourceGroupName $resourceGroup -Name $vmName    
 
 # Create the basic configuration for the replacement VM
-    $newVM = New-AzureRmVMConfig `
+    $newVM = New-AzVMConfig `
        -VMName $originalVM.Name `
        -VMSize $originalVM.HardwareProfile.VmSize `
        -AvailabilitySetId $availSet.Id
   
-    Set-AzureRmVMOSDisk `
+    Set-AzVMOSDisk `
        -VM $newVM -CreateOption Attach `
        -ManagedDiskId $originalVM.StorageProfile.OsDisk.ManagedDisk.Id `
        -Name $originalVM.StorageProfile.OsDisk.Name `
@@ -72,7 +76,7 @@ ms.locfileid: "49467295"
 
 # Add Data Disks
     foreach ($disk in $originalVM.StorageProfile.DataDisks) { 
-    Add-AzureRmVMDataDisk -VM $newVM `
+    Add-AzVMDataDisk -VM $newVM `
        -Name $disk.Name `
        -ManagedDiskId $disk.ManagedDisk.Id `
        -Caching $disk.Caching `
@@ -81,15 +85,24 @@ ms.locfileid: "49467295"
        -CreateOption Attach
     }
     
-# Add NIC(s)
-    foreach ($nic in $originalVM.NetworkProfile.NetworkInterfaces) {
-        Add-AzureRmVMNetworkInterface `
-           -VM $newVM `
-           -Id $nic.Id
+# Add NIC(s) and keep the same NIC as primary
+    foreach ($nic in $originalVM.NetworkProfile.NetworkInterfaces) {    
+    if ($nic.Primary -eq "True")
+        {
+            Add-AzVMNetworkInterface `
+            -VM $newVM `
+            -Id $nic.Id -Primary
+            }
+        else
+            {
+              Add-AzVMNetworkInterface `
+              -VM $newVM `
+              -Id $nic.Id 
+                }
     }
 
 # Recreate the VM
-    New-AzureRmVM `
+    New-AzVM `
        -ResourceGroupName $resourceGroup `
        -Location $originalVM.Location `
        -VM $newVM `

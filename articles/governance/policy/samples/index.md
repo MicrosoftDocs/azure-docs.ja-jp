@@ -1,20 +1,18 @@
 ---
-title: Azure Policy のサンプル インデックス
-description: Azure Policy のサンプルのインデックス
-services: azure-policy
+title: ポリシーのサンプルのインデックス
+description: Azure Policy のサンプルのインデックス。 カテゴリには、名前付け、タグ、Key Vault、ネットワーク、ストレージなどがあります。
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 09/18/2018
+ms.date: 03/19/2019
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 32a1ef9b20314bb0b55277faeb20f2bdc1da2d11
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 5a39614d544157695b8b2f02ab5f1fe4427d5ca5
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054678"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59796903"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy のサンプル
 
@@ -25,6 +23,10 @@ ms.locfileid: "47054678"
 [!INCLUDE [azure-policy-samples-compute](../../../../includes/azure-policy-samples-compute.md)]
 
 [!INCLUDE [azure-policy-samples-datalake](../../../../includes/azure-policy-samples-datalake.md)]
+
+[!INCLUDE [azure-policy-samples-guest-configuration](../../../../includes/azure-policy-samples-guest-configuration.md)]
+
+[!INCLUDE [azure-policy-samples-keyvault](../../../../includes/azure-policy-samples-keyvault.md)]
 
 [!INCLUDE [azure-policy-samples-monitoring](../../../../includes/azure-policy-samples-monitoring.md)]
 

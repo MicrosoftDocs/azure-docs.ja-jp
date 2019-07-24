@@ -3,9 +3,9 @@ title: Microsoft Threat Modeling Tool - Azure | Microsoft Docs
 description: Threat Modeling Tool で使用できるすべての機能について説明します
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 76e49fc0e680acbc2b7b7c62b69fbf72d6690acf
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 601f3bf05388406c8f96a7351f7fb3aa4de2650a
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
-ms.locfileid: "26754747"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389321"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Threat Modeling Tool 機能の概要
 
@@ -46,7 +46,7 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 
 ![メニュー項目](./media/azure-security-threat-modeling-tool-feature-overview/menuitems.png)
 
-| ラベル                               | 詳細      |
+| Label                               | 詳細      |
 | --------------------------------------- | ------------ |
 | **ファイル** | <ul><li>ファイルを開く、保存する、閉じる</li><li>OneDrive アカウントのサインイン/サインアウトを行う。</li><li>リンクを共有する (表示と編集)。</li><li>ファイル情報を表示する。</li><li>新しいテンプレートを既存のモデルに適用する。</li></ul> |
 | **Edit (編集)** | 操作の取り消しとやり直し、コピー、貼り付け、削除を行う。 |
@@ -107,7 +107,7 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 
 | 要素のプロパティ                               | 詳細      |
 | --------------------------------------- | ------------ |
-| **名前** | 簡単に認識できるように、プロセス、ストア、入力/終端、フローに名前を付ける場合に役立ちます。 |
+| **Name** | 簡単に認識できるように、プロセス、ストア、入力/終端、フローに名前を付ける場合に役立ちます。 |
 | **スコープ外** | オンにすると、要素は脅威生成マトリックスから取得されます (推奨されません)。 |
 | **Reason for out of scope (スコープ外の理由)** | スコープ外が選択された理由をユーザーに通知する理由のフィールド。 |
 
@@ -149,7 +149,7 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 - **ドラッグ アンド ドロップ**: 目的のデータ フローをグリッドにドラッグし、両端を適切な要素に接続します。
 - **Shift キーを押しながらクリック**: 1 つ目の要素 (データの送信) をクリックし、Shift キーを押しながら 2 つ目の要素 (データの受信) をクリックします。 右クリックし、**[接続]** を選択します。 双方向データ フローを使用している場合、順番は重要ではありません。
 
-### <a name="properties"></a>[プロパティ]
+### <a name="properties"></a>Properties
 
  ステンシル上で変更できるプロパティを表示するには、ステンシルを選択します。それに応じて情報が設定されます。 以下の例は、**[データベース]** ステンシルをダイアグラムにドラッグする前後を示しています。
 
@@ -207,5 +207,5 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 
 ## <a name="next-steps"></a>次の手順
 
-* コミュニティにテンプレートを投稿するには、[GitHub](https://github.com/Microsoft/threat-modeling-templates) ページにアクセスしてください。 
-* このツールの使用を開始するには、[ダウンロード](https://aka.ms/tmtpreview) ページにアクセスしてください。
+- ご質問、ご意見、懸念事項は tmtextsupport@microsoft.com に送信してください。 **[Threat Modeling Tool をダウンロード](https://aka.ms/threatmodelingtool)** すると、すぐに使い始めることができます。
+- コミュニティにテンプレートを投稿するには、[GitHub](https://github.com/Microsoft/threat-modeling-templates) ページにアクセスしてください。

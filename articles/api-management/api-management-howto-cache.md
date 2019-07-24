@@ -11,19 +11,20 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 12/15/2016
+ms.topic: conceptual
+ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 7458ad6e0a864d742f74ce743ce3179594113c00
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: a0459eb67b5a79219e556cb03473a5ddf691b49d
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
-ms.locfileid: "26127779"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577018"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>キャッシュを追加して Azure API Management のパフォーマンスを向上させる
+
 API Management では、応答のキャッシュ用に操作を構成できます。 応答のキャッシュを行うと、API の遅延、帯域幅の消費、頻繁に変更されないデータの Web サービスの負荷が大幅に小さくなります。
- 
+
 キャッシュの詳細については、「[API Management のキャッシュ ポリシー](api-management-caching-policies.md)」と「[Azure API Management のカスタム キャッシュ](api-management-sample-cache-by-key.md)」を参照してください。
 
 ![キャッシュ ポリシー](media/api-management-howto-cache/cache-policies.png)
@@ -33,6 +34,11 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 > [!div class="checklist"]
 > * API の応答キャッシュの追加
 > * 動作中のキャッシュの確認
+
+## <a name="availability"></a>可用性
+
+> [!NOTE]
+> 内部キャッシュは Azure API Management の**従量課金**レベルでは利用できません。 代わりに[外部 Azure Cache for Redis を使用](api-management-howto-cache-external.md)できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,11 +57,11 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 4. API の一覧で **[Demo Conference API]\(デモ会議 API\)** をクリックします。
 5. **[GetSpeakers]** を選択します。
 6. 画面の上部の **[デザイン]** タブを選択します。
-7. **[受信処理]** ウィンドウで、(鉛筆の横にある) 三角形をクリックします。
+7. **[受信処理]** セクションで、**[</>]** アイコンをクリックします。
 
     ![コード エディター](media/api-management-howto-cache/code-editor.png)
-8. **[コード エディター]** を選択します。
-9. **inbound** 要素で、次のポリシーを追加します。
+
+8. **inbound** 要素で、次のポリシーを追加します。
 
         <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
             <vary-by-header>Accept</vary-by-header>
@@ -63,11 +69,14 @@ API Management では、応答のキャッシュ用に操作を構成できま�
             <vary-by-header>Authorization</vary-by-header>
         </cache-lookup>
 
-10. **outbound** 要素で、次のポリシーを追加します。
+9. **outbound** 要素で、次のポリシーを追加します。
 
         <cache-store caching-mode="cache-on" duration="20" />
 
     **[期間]** は、キャッシュに入れられた応答の有効期間を指定します。 この例では、間隔は **20** 秒です。
+
+> [!TIP]
+> 外部キャッシュを使用している場合は、「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」の説明に従って、キャッシュ ポリシーの `caching-type` 属性を指定する必要がある場合があります。 詳しくは、「[API Management のキャッシュ ポリシー](api-management-caching-policies.md)」をご覧ください。
 
 ## <a name="test-operation"> </a>操作の呼び出しとキャッシュのテスト
 動作中のキャッシュを確認するには、開発者ポータルから操作を呼び出します。
@@ -82,6 +91,7 @@ API Management では、応答のキャッシュ用に操作を構成できま�
 ## <a name="next-steps"> </a>次のステップ
 * キャッシュ ポリシーの詳細については、[API Management ポリシー リファレンス][API Management policy reference]の[キャッシュ ポリシー][Caching policies]に関するページを参照してください。
 * ポリシー式を使ってキーごとにアイテムをキャッシュする方法については、「 [Azure API Management のカスタム キャッシュ](api-management-sample-cache-by-key.md)」を参照してください。
+* 外部の Azure Cache for Redis の使用方法について詳しくは、「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」をご覧ください。
 
 [api-management-management-console]: ./media/api-management-howto-cache/api-management-management-console.png
 [api-management-echo-api]: ./media/api-management-howto-cache/api-management-echo-api.png

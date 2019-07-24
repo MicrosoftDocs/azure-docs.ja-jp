@@ -2,18 +2,18 @@
 title: System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする
 description: System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする方法について説明する
 services: backup
-author: adigan
-manager: NKolli1
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/19/2018
-ms.author: adigan
-ms.openlocfilehash: 7e95fa0cc6b5f9476df68ab44e5dbc8bb5432d52
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/31/2019
+ms.author: kasinh
+ms.openlocfilehash: ef976667ec580ea75dd1b8566c7bdddf35eeb0fc
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234458"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298315"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする
 この記事では、Microsoft Exchange Server を Azure Backup にバックアップするために System Center 2012 R2 Data Protection Manager (DPM) サーバーを構成する方法を説明します。  
@@ -113,7 +113,7 @@ Exchange サーバーに DPM 保護エージェントをインストールする
 * **元の Exchange Server の場所に回復する:** データは元の Exchange サーバーに回復します。
 * **Exchange Server 上の別のデータベースに回復する:** データは別の Exchange サーバー上の別のデータベースに回復します。
 * **回復用データベースに回復する:** データは Exchange 回復データベース (RDB) に回復します。
-* **ネットワーク フォルダーにコピーする:** データはネットワーク フォルダーに回復します。
+* **回復用データベースに回復する:** データはネットワーク フォルダーに回復します。
 * **テープにコピーする:** テープ ライブラリまたはスタンドアロンのテープ ドライブが DPM サーバーに接続され、そこで構成されている場合、回復ポイントは空きテープにコピーされます。
 
     ![オンライン レプリケーションの選択](./media/backup-azure-backup-exchange-server/choose-online-replication.png)

@@ -6,16 +6,15 @@ manager: rochakm
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 1f38cd62a1394d45716e7224cc03a059fcaf9e13
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 68efc039c5de5d7f61b7ce34e74c6c2cf4bad027
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247757"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670878"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>多層 SAP NetWeaver アプリ デプロイのディザスター リカバリーを設定する
 
@@ -81,7 +80,7 @@ ABAP アプリケーション サーバーのログオン グループの管理�
 
 ファイル共有クラスターを実装してクラスタリングを処理することもできます。 [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) では、UNC パスを介して /sapmnt グローバル ディレクトリにアクセスするための、セントラル サービス デプロイ パターンを最近変更しました。 ただし、/sapmnt UNC 共有の高可用性は確保することをお勧めします。 セントラル サービス インスタンスでこれを実現するには、Windows Server フェールオーバー クラスターと、Windows Server 2016 のスケールアウト ファイル サーバー (SOFS) および記憶域スペース ダイレクト (S2D) 機能を使用します。 
  > [!NOTE]
- > 現在 Azure Site Recovery でサポートされるのは、記憶域スペース ダイレクトを使ったクラッシュ整合性ポイント レプリケーションのみです。 
+ > 現在 Azure Site Recovery でサポートされるのは、記憶域スペース ダイレクトと SIOS Datakeeper のパッシブ ノードを使ったクラッシュ整合性ポイント レプリケーションのみです
 
 
 ## <a name="disaster-recovery-considerations"></a>ディザスター リカバリーの考慮事項
@@ -167,5 +166,5 @@ Azure ディザスター リカバリー データ センターへのすべて�
 詳しくは、「[Site Recovery でのフェールオーバー](site-recovery-failover.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-* Site Recovery を使用して SAP NetWeaver デプロイ用のディザスター リカバリー ソリューションの構築に関する詳細を確認するために、ダウンロード可能なホワイト ペーパー「[SAP NetWeaver: Building a Disaster Recovery Solution with Azure Site Recovery](https://aka.ms/asr-sap)」 (SAP NetWeaver: Azure Site Recovery でディザスターリカバリー ソリューションを構築する) をご覧ください。 このホワイトペーパーでは、さまざまな SAP アプリケーションに関する推奨事項、Azure 上の SAP でサポートされるアプリケーションと VM の種類、ディザスター リカバリー ソリューションのテスト計画のオプションについて説明しています。
+* Site Recovery を使用して SAP NetWeaver デプロイ用のディザスター リカバリー ソリューションを構築する方法の詳細については、「[SAP NetWeaver: Azure Site Recovery を使用したディザスター リカバリー ソリューションの構築](https://aka.ms/asr-sap)」に関するダウンロード可能なホワイト ペーパーをご覧ください。 このホワイトペーパーでは、さまざまな SAP アプリケーションに関する推奨事項、Azure 上の SAP でサポートされるアプリケーションと VM の種類、ディザスター リカバリー ソリューションのテスト計画のオプションについて説明しています。
 * Site Recovery を使用した[他のワークロードのレプリケート](site-recovery-workload.md)に関する記事をご覧ください。

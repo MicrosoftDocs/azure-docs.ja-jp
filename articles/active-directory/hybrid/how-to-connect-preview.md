@@ -1,26 +1,27 @@
 ---
-title: 'Azure AD Connect: プレビュー段階の機能 |Microsoft Docs'
+title: Azure AD Connect:プレビュー段階の機能 | Microsoft Docs
 description: このトピックでは、Azure AD Connect のプレビュー段階の機能について詳しく説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: c75cd8cf-3eff-4619-bbca-66276757cc07
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: ab64cc2fc206772fe0f842af9d2f4c3596d76c07
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309091"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173336"
 ---
 # <a name="more-details-about-features-in-preview"></a>プレビュー段階の機能の詳細
 このトピックでは、現在プレビュー段階の機能を使用する方法について説明します。

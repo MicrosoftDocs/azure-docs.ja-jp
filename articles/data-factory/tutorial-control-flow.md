@@ -9,21 +9,21 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/22/2018
+ms.date: 02/20/2019
 ms.author: shlo
-ms.openlocfilehash: 9aab9df353ea5691b4132741e9b4a97b0afd9d17
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9a03094683a973db16aa949f0610bc7f9914be45
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262150"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649222"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
+
 このチュートリアルでは、いくつかの制御フロー機能を紹介する Data Factory パイプラインを作成します。 このパイプラインでは、Azure Blob Storage 内のコンテナーから同じストレージ アカウント内の別のコンテナーへの単純なコピーを行います。 コピー アクティビティが成功した場合は、成功したコピー操作の詳細 (書き込まれたデータの量など) を成功電子メールで送信します。 コピー アクティビティが失敗した場合は、コピー失敗の詳細 (エラー メッセージなど) を失敗電子メールで送信します。 チュートリアル全体を通じて、パラメーターを渡す方法が示されます。
 
-シナリオの概要: ![概要](media/tutorial-control-flow/overview.png)
+シナリオの概要:![概要](media/tutorial-control-flow/overview.png)
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -57,7 +57,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     John|Doe
     Jane|Doe
     ```
-2. [Azure Storage Explorer](http://storageexplorer.com/) などのツールを使用して **adfv2branch** コンテナーを作成し、このコンテナーに **input.txt** ファイルをアップロードします。
+
+2. [Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用して **adfv2branch** コンテナーを作成し、このコンテナーに **input.txt** ファイルをアップロードします。
 
 ## <a name="create-visual-studio-project"></a>Visual Studio プロジェクトの作成
 
@@ -72,11 +73,11 @@ Visual Studio 2015/2017 を使用して、C# .NET コンソール アプリケ�
 ## <a name="install-nuget-packages"></a>NuGet パッケージのインストール
 
 1. **[ツール]** -> **[NuGet パッケージ マネージャー]** -> **[パッケージ マネージャー コンソール]** の順にクリックします。
-2. **パッケージ マネージャー コンソール**で、次のコマンドを実行してパッケージをインストールします。
+2. **パッケージ マネージャー コンソール**で、次のコマンドを実行してパッケージをインストールします。 詳細については、[Microsoft.Azure.Management.DataFactory nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)を参照してください。
 
-    ```
-    Install-Package Microsoft.Azure.Management.DataFactory -Prerelease
-    Install-Package Microsoft.Azure.Management.ResourceManager -Prerelease
+    ```powershell
+    Install-Package Microsoft.Azure.Management.DataFactory
+    Install-Package Microsoft.Azure.Management.ResourceManager
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
     ```
 
@@ -95,7 +96,7 @@ Visual Studio 2015/2017 を使用して、C# .NET コンソール アプリケ�
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. 次の静的変数を **Program クラス**に追加します。 プレースホルダーは実際の値に置き換えてください。 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+2. 次の静的変数を **Program クラス**に追加します。 プレースホルダーは実際の値に置き換えてください。 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。(「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
     ```csharp
         // Set variables
@@ -140,6 +141,7 @@ Visual Studio 2015/2017 を使用して、C# .NET コンソール アプリケ�
     ```
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
+
 Program.cs ファイルで "CreateOrUpdateDataFactory" 関数を作成します。
 
 ```csharp
@@ -174,6 +176,7 @@ Factory df = CreateOrUpdateDataFactory(client);
 ```
 
 ## <a name="create-an-azure-storage-linked-service"></a>Azure Storage のリンクされたサービスを作成する
+
 Program.cs ファイルで "StorageLinkedServiceDefinition" 関数を作成します。
 
 ```csharp
@@ -189,6 +192,7 @@ static LinkedServiceResource StorageLinkedServiceDefinition(DataFactoryManagemen
     return linkedService;
 }
 ```
+
 **Azure Storage のリンクされたサービス**を作成する次のコードを **Main** メソッドに追加します。 サポートされるプロパティと詳細については、[Azure BLOB のリンクされたサービスのプロパティ](connector-azure-blob-storage.md#linked-service-properties)に関するページを参照してください。
 
 ```csharp
@@ -200,11 +204,12 @@ client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, storageLink
 このセクションでは、ソース用とシンク用の 2 つのデータセットを作成します。 
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>ソース Azure BLOB のためのデータセットを作成する
+
 **Azure BLOB データセット**を作成する次のコードを **Main** メソッドに追加します。 サポートされるプロパティと詳細については、[Azure BLOB データセットのプロパティ](connector-azure-blob-storage.md#dataset-properties)に関するページを参照してください。
 
 Azure BLOB 内のソース データを表すデータセットを定義します。 この BLOB データセットは、前の手順で作成した Azure Storage のリンクされたサービスを参照し、次の内容を記述します。
 
-- コピー元 BLOB の場所: **FolderPath** と **FileName**。
+- コピー元 BLOB の場所:**FolderPath** と **FileName**。
 - FolderPath ではパラメーターが使用されていることに注意してください。 "sourceBlobContainer" はパラメーターの名前であり、この式は実行パイプラインに渡された値に置き換えられます。 パラメーターを定義する構文は `@pipeline().parameters.<parameterName>` です。
 
 Program.cs ファイルで "SourceBlobDatasetDefinition" 関数を作成します。
@@ -258,13 +263,14 @@ client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSourceDataset
 client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSinkDatasetName, SinkBlobDatasetDefinition(client));
 ```
 
-## <a name="create-a-c-class-emailrequest"></a>C# クラス EmailRequest を作成する
+## <a name="create-a-c-class-emailrequest"></a>C# クラスを作成する:EmailRequest
+
 C# プロジェクトで、**EmailRequest** という名前のクラスを作成します。 これは、パイプラインで電子メールが送信されるときに要求本文で送信されるプロパティを定義します。 このチュートリアルでは、パイプラインから電子メールに次の 4 つのプロパティが送信されます。
 
 - **Message**: 電子メールの本文。 成功したコピーでは、このプロパティには実行の詳細 (書き込まれたデータの数) が含まれています。 失敗したコピーでは、このプロパティにはエラーの詳細が含まれています。
 - **Data factory name**: データ ファクトリの名前
 - **Pipeline name**: パイプラインの名前
-- **Receiver**: 渡されるパラメーター。 このプロパティは、電子メールの受信者を指定します。
+- **Receiver**:渡されるパラメーター。 このプロパティは、電子メールの受信者を指定します。
 
 ```csharp
     class EmailRequest
@@ -290,10 +296,13 @@ C# プロジェクトで、**EmailRequest** という名前のクラスを作成
         }
     }
 ```
+
 ## <a name="create-email-workflow-endpoints"></a>電子メール ワークフロー エンドポイントを作成する
+
 電子メール送信をトリガーするには、[Logic Apps](../logic-apps/logic-apps-overview.md) を使用してワークフローを定義します。 ロジック アプリ ワークフローの作成の詳細については、[ロジック アプリを作成する方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。 
 
 ### <a name="success-email-workflow"></a>成功電子メールのワークフロー 
+
 `CopySuccessEmail` という名前のロジック アプリ ワークフローを作成します。 ワークフロー トリガーを `When an HTTP request is received` として定義し、`Office 365 Outlook – Send an email` のアクションを追加します。
 
 ![成功電子メールのワークフロー](media/tutorial-control-flow/success-email-workflow.png)
@@ -319,6 +328,7 @@ C# プロジェクトで、**EmailRequest** という名前のクラスを作成
     "type": "object"
 }
 ```
+
 これは、前のセクションで作成した **EmailRequest** クラスに合わせたものです。 
 
 要求はロジック アプリ デザイナーで次のようになります。
@@ -337,6 +347,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ```
 
 ## <a name="fail-email-workflow"></a>失敗電子メールのワークフロー 
+
 **CopySuccessEmail** を複製し、**CopyFailEmail** という別の Logic Apps ワークフローを作成します。 要求トリガー内の `Request Body JSON schema` は同じです。 `Subject` のように単純に電子メールの書式を変更し、失敗電子メールになるように調整します。 たとえば次のようになります。
 
 ![ロジック アプリ デザイナー - 失敗電子メールのワークフロー](media/tutorial-control-flow/fail-email-workflow.png)
@@ -357,7 +368,9 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 //Fail Request Url
 https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=000000
 ```
+
 ## <a name="create-a-pipeline"></a>パイプラインを作成する。
+
 コピー アクティビティと dependsOn プロパティが含まれているパイプラインを作成する次のコードを Main メソッドに追加します。 このチュートリアルのパイプラインに含まれる 1 つのアクティビティ (コピー アクティビティ) では、ソースおよびシンクとして別個の BLOB データセットが取り込まれます。 コピー アクティビティの成功と失敗に応じて、異なる電子メール タスクが呼び出されます。
 
 このパイプラインでは、次の機能を使用します。
@@ -441,12 +454,15 @@ static PipelineResource PipelineDefinition(DataFactoryManagementClient client)
             return resource;
         }
 ```
+
 パイプラインを作成する次のコードを **Main** メソッドに追加します。
 
 ```
 client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, PipelineDefinition(client));
 ```
+
 ### <a name="parameters"></a>parameters
+
 パイプラインの最初のセクションでは、パラメーターを定義します。 
 
 - sourceBlobContainer - ソース BLOB データセットによって使用されるパイプライン内のパラメーターです。
@@ -462,7 +478,9 @@ Parameters = new Dictionary<string, ParameterSpecification>
         { "receiver", new ParameterSpecification { Type = ParameterType.String } }
     },
 ```
+
 ### <a name="web-activity"></a>Web アクティビティ
+
 Web アクティビティでは、任意の REST エンドポイントを呼び出すことができます。 このアクティビティの詳細については、[Web アクティビティ](control-flow-web-activity.md)に関する記事を参照してください。 このパイプラインでは、Web アクティビティを使用して Logic Apps 電子メール ワークフローを呼び出します。 2 つの Web アクティビティを作成します。1 つは **CopySuccessEmail** ワークフローを呼び出し、もう 1 つは **CopyFailWorkFlow** を呼び出します。
 
 ```csharp
@@ -482,6 +500,7 @@ Web アクティビティでは、任意の REST エンドポイントを呼び�
             }
         }
 ```
+
 "Url" プロパティには、Logic Apps ワークフローから対応する要求 URL エンドポイントを貼り付けます。 "Body" プロパティには、"EmailRequest" クラスのインスタンスを渡します。 この電子メール要求には次のプロパティが含まれます。
 
 - Message – `@{activity('CopyBlobtoBlob').output.dataWritten` から渡される値。 前のコピー アクティビティのプロパティにアクセスし、dataWritten の値を渡します。 失敗の場合、`@{activity('CopyBlobtoBlob').error.message` の代わりにエラー出力を渡します。
@@ -492,6 +511,7 @@ Web アクティビティでは、任意の REST エンドポイントを呼び�
 このコードでは、前のコピー アクティビティの成功に応じて、新しいアクティビティの依存関係を作成します。
 
 ## <a name="create-a-pipeline-run"></a>パイプラインの実行を作成する
+
 **パイプラインの実行をトリガーする**次のコードを **Main** メソッドに追加します。
 
 ```csharp
@@ -509,6 +529,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ```
 
 ## <a name="main-class"></a>Main クラス 
+
 最終的な Main メソッドは、次のようになります。 プログラムをビルドして実行し、パイプラインの実行をトリガーしてください。
 
 ```csharp
@@ -540,6 +561,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ```
 
 ## <a name="monitor-a-pipeline-run"></a>パイプラインの実行を監視する
+
 1. データのコピーが完了するまでパイプラインの実行の状態を継続的にチェックする次のコードを **Main** メソッドに追加します。
 
     ```csharp
@@ -579,6 +601,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
     ```
 
 ## <a name="run-the-code"></a>コードの実行
+
 アプリケーションをビルドして起動し、パイプラインの実行を確認します。
 コンソールに、データ ファクトリ、リンクされたサービス、データセット、パイプライン、およびパイプラインの実行の作成の進捗状況が表示されます。 その後、パイプラインの実行状態が確認されます。 コピー アクティビティの実行の詳細と、データの読み取り/書き込みのサイズが表示されるまで待ちます。 次に、Azure Storage Explorer などのツールを使用して、変数で指定したように BLOB が "inputBlobPath" から "outputBlobPath" にコピーされていることを確認します。
 
@@ -735,6 +758,7 @@ Press any key to exit...
 ```
 
 ## <a name="next-steps"></a>次の手順
+
 このチュートリアルでは、以下の手順を実行しました。 
 
 > [!div class="checklist"]

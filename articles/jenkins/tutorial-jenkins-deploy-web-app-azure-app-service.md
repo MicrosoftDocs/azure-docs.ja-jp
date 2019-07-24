@@ -3,21 +3,21 @@ title: チュートリアル - Jenkins を使用して GitHub から Azure App S
 description: GitHub からの継続的インテグレーション (CI) と Azure App Service への継続的デプロイ (CD) を Java Web アプリで行えるよう、Jenkins を設定します
 services: jenkins
 ms.service: jenkins
-author: tomarcher
+author: tomarchermsft
 ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 274de7ac63df0afc1a59e197deebeb7929cf1ef8
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 90f89f9ffb1d55e7621c87f168375251c78d9730
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51855013"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533495"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>チュートリアル: Jenkins の継続的インテグレーションおよびデプロイを使用して GitHub から Azure App Service にデプロイする
 
-このチュートリアルでは、Jenkins で継続的インテグレーション (CI) と継続的デプロイ (CD) を設定して、GitHub から [Azure App Service on Linux](/azure/app-service/containers/app-service-linux-intro) にサンプル Java Web アプリをデプロイします。 GitHub にコミットをプッシュしてアプリを更新すると、Jenkins によって自動的にお客様のアプリがビルドされ、Azure App Service に再発行されます。 このチュートリアルのサンプル アプリは、[Spring Boot](http://projects.spring.io/spring-boot/) フレームワークを使用して開発されました。 
+このチュートリアルでは、Jenkins で継続的インテグレーション (CI) と継続的デプロイ (CD) を設定して、GitHub から [Azure App Service on Linux](/azure/app-service/containers/app-service-linux-intro) にサンプル Java Web アプリをデプロイします。 GitHub にコミットをプッシュしてアプリを更新すると、Jenkins によって自動的にお客様のアプリがビルドされ、Azure App Service に再発行されます。 このチュートリアルのサンプル アプリは、[Spring Boot](https://projects.spring.io/spring-boot/) フレームワークを使用して開発されました。 
 
 ![概要](media/tutorial-jenkins-deploy-web-app-azure-app-service/overview.png)
 
@@ -43,9 +43,9 @@ ms.locfileid: "51855013"
 
 * Java Development Kit (JDK) と Maven ツールがインストールされた、Azure Linux VM 上の [Jenkins](https://jenkins.io/) サーバー
 
-  Jenkins サーバーがない場合はまず、[Azure Linux VM での Jenkins サーバーの作成](/azure/jenkins/install-jenkins-solution-template)に関するページの手順を Azure portal で完了してください
+  Jenkins サーバーがない場合は、まず、Azure portal で [Azure Linux VM での Jenkins サーバーの作成](/azure/jenkins/install-jenkins-solution-template)に関するページの手順を完了してください。
 
-* サンプル Java Web アプリ用の作業コピー ([フォーク](#fork)) を取得するための [GitHub](https://github.com) アカウント。 
+* サンプル Java Web アプリ用の作業コピー (フォーク) を取得するための [GitHub](https://github.com) アカウント。 
 
 * [Azure CLI](/cli/azure/install-azure-cli) (ローカルのコマンド ラインまたは [Azure Cloud Shell](/azure/cloud-shell/overview) で実行できます)
 
@@ -61,7 +61,7 @@ ms.locfileid: "51855013"
 
 1. **[Available]\(利用可能\)** タブで、以下のプラグインを選択します。
 
-   - [Mobile Apps](https://plugins.jenkins.io/azure-app-service)
+   - [Azure App Service](https://plugins.jenkins.io/azure-app-service)
    - [GitHub Branch Source](https://plugins.jenkins.io/github-branch-source)
    - Jenkins [Environment Injector プラグイン](https://plugins.jenkins.io/envinject)
    - [Azure Credentials](https://plugins.jenkins.io/azure-credentials)
@@ -92,7 +92,7 @@ Jenkins によって GitHub が監視され、お客様の GitHub フォーク�
 > 
 > 以下の手順では、Jenkins が GitHub と連携できるよう、お客様の GitHub ユーザー名とパスワードを使用して個人用アクセス トークン資格情報を作成します。 
 > ただし、お客様の GitHub アカウントで 2 要素認証が使用される場合は、GitHub でお客様のトークンを作成して、代わりにそのトークンが使用されるよう Jenkins を設定します。 
-> 詳細については、[Jenkins の GitHub プライグイン](https://wiki.jenkins.io/display/JENKINS/Github+Plugin)に関するドキュメントを参照してください。
+> 詳細については、[Jenkins の GitHub プライグイン](https://wiki.jenkins.io/display/JENKINS/GitHub+Plugin)に関するドキュメントを参照してください。
 
 1. **[Manage Jenkins]\(Jenkins の管理\)** ページで **[Configure System]\(システムの構成\)** を選択します。 
 
@@ -164,7 +164,7 @@ az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourS
 
    | プロパティ | 値 | 説明 | 
    |----------|-------|-------------| 
-   | **サブスクリプション ID** | <*yourAzureSubscription-ID*> | お客様の Azure サブスクリプションの GUID 値 <p>**ヒント**: お客様の Azure サブスクリプション ID がわからない場合は、コマンド ラインまたは Cloud Shell で次の Azure CLI コマンドを実行してから `id` GUID 値を使用します。 <p>`az account list` | 
+   | **サブスクリプション ID** | <*yourAzureSubscription-ID*> | お客様の Azure サブスクリプションの GUID 値 <p>**ヒント**:お客様の Azure サブスクリプション ID がわからない場合は、コマンド ラインまたは Cloud Shell で次の Azure CLI コマンドを実行してから `id` GUID 値を使用します。 <p>`az account list` | 
    | **クライアント ID** | <*yourAzureServicePrincipal-ID*> | お客様の Azure サービス プリンシパル用に先ほど生成された `appId` GUID 値 | 
    | **クライアント シークレット** | <*yourSecurePassword*> | `password` 値、またはお客様が自分の Azure サービス プリンシパルに指定した "シークレット" | 
    | **テナント ID** | <*yourAzureActiveDirectoryTenant-ID*> | お客様の Azure Active Directory テナントの `tenant` GUID 値 | 
@@ -193,7 +193,7 @@ Jenkins で、お客様のアプリをビルドしてデプロイするための
 
    1. 表示される **[Properties Content]\(プロパティ コンテンツ\)** ボックスで、以下の環境変数とそれらの値を追加します。 
 
-      ```text
+      ```ini
       AZURE_CRED_ID=yourAzureServicePrincipalName
       RES_GROUP=yourWebAppAzureResourceGroupName
       WEB_APP=yourWebAppName
@@ -212,7 +212,7 @@ Jenkins で、お客様のアプリをビルドしてデプロイするための
 1. お客様の GitHub フォークの `src/main/resources/` フォルダーに、`web.config` という名前でアプリ構成ファイルを作成します。ここには次の XML が含まれますが、`$(JAR_FILE_NAME)` を `gs-spring-boot-0.1.0.jar` に置き換えてください。
 
    ```xml
-   <?xml version="1.0" encoding="UTF-8">
+   <?xml version="1.0" encoding="UTF-8"?>
    <configuration>
       <system.webServer>
          <handlers>
@@ -225,7 +225,7 @@ Jenkins で、お客様のアプリをビルドしてデプロイするための
 
 1. お客様の GitHub フォークのルート フォルダーに、`Jenkinsfile` という名前でビルドとデプロイのスクリプトを作成します。ここには、次のテキストが含まれます ([GitHub のソースはこちら](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/doc/resources/jenkins/Jenkinsfile-webapp-se))。
 
-   ```text  
+   ```groovy
    node {
       stage('init') {
          checkout scm

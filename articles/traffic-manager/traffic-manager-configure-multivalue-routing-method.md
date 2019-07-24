@@ -1,5 +1,5 @@
 ---
-title: Azure Traffic Manager を使用して複数値のトラフィックのルーティング方法を構成する | Microsoft Docs
+title: Azure Traffic Manager を使用して複数値のトラフィックのルーティング方法を構成する
 description: この記事では、トラフィックを A/AAAA エンドポイントにルーティングするように Traffic Manager を構成する方法について説明します。
 services: traffic-manager
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
-ms.openlocfilehash: d9a0342332c2483b859e916b50fd05c9cb1e3395
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: de7288e2062fdfab363c46749b34c7afcacbb6e1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986766"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094805"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Traffic Manager での複数値ルーティング方法の構成
 
@@ -39,6 +39,7 @@ Traffic Manager プロファイル用のリソース グループを作成しま
 
 1. 画面の左上で、**[リソースの作成]** > **[ネットワーク]** > **[Traffic Manager プロファイル]** > **[作成]** の順に選択します。
 2. **[Traffic Manager プロファイルの作成]** で、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[作成]** を選択します。
+    
     | Setting                 | 値                                              |
     | ---                     | ---                                                |
     | Name                   | この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名.trafficmanager.net になるためです。                                   |
@@ -46,9 +47,9 @@ Traffic Manager プロファイル用のリソース グループを作成しま
     | サブスクリプション            | サブスクリプションを選択します。                          |
     | リソース グループ          | *myResourceGroupTM1* を選択します。 |
     | Location                | これはリソース グループの場所を指定する設定であり、グローバルにデプロイされる Traffic Manager プロファイルには影響しません。                              |
-    |
+   |        |           | 
   
-    ![Traffic Manager プロファイルの作成](./media/traffic-manager-multivalue-routing-method/create-traffic-manager-profile.png)
+   ![Traffic Manager プロファイルの作成](./media/traffic-manager-multivalue-routing-method/create-traffic-manager-profile.png)
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager エンドポイントの追加
 
@@ -66,9 +67,9 @@ Traffic Manager プロファイル用のリソース グループを作成しま
     |        |           |
 
 4. 手順 2. と 3. を繰り返して、*myEndpoint2* という名前のもう 1 つのエンドポイントを追加します。**[完全修飾ドメイン名 (FQDN) または IP]** には、2 つ目のエンドポイントのパブリック IP アドレスを入力します。
-5.  両方のエンドポイントは、追加が完了すると、**[Traffic Manager プロファイル]** に、監視ステータスが **[オンライン]** の状態で表示されます。
+5. 両方のエンドポイントは、追加が完了すると、**[Traffic Manager プロファイル]** に、監視ステータスが **[オンライン]** の状態で表示されます。
 
-    ![Traffic Manager エンドポイントの追加](./media/traffic-manager-multivalue-routing-method/add-endpoint.png)
+   ![Traffic Manager エンドポイントの追加](./media/traffic-manager-multivalue-routing-method/add-endpoint.png)
  
 ## <a name="next-steps"></a>次の手順
 

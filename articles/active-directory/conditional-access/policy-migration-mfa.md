@@ -1,140 +1,120 @@
 ---
-title: Azure Portal での多要素認証が必要なクラシック ポリシーの移行 | Microsoft Docs
+title: Azure Portal での多要素認証が必要なクラシック ポリシーの移行
 description: この記事では、Azure Portal で多要素認証が必要なクラシック ポリシーを移行する方法を示します。
 services: active-directory
-keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
-documentationcenter: ''
-author: MarkusVi
-manager: mtillman
-editor: ''
-ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
+ms.subservice: conditional-access
+ms.topic: tutorial
 ms.date: 06/13/2018
-ms.author: markvi
+ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: nigu
-ms.openlocfilehash: 20a15bf94826df0b058be59ff242c46878ea26dd
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e6661cee8ba6176bd706d31a10a8f20549e29e4d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630077"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59795051"
 ---
-# <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Azure Portal での多要素認証が必要なクラシック ポリシーの移行 
+# <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Azure Portal での多要素認証が必要なクラシック ポリシーの移行
 
-この記事では、クラウド アプリの**多要素認証**が必要なクラシック ポリシーを移行する方法を示します。 前提条件ではありませんが、クラシック ポリシーの移行を開始する前に「[Azure Portal でクラシック ポリシーを移行する](policy-migration.md)」を読むことをお勧めします。
+このチュートリアルでは、クラウド アプリの**多要素認証**が必要なクラシック ポリシーを移行する方法を示します。 前提条件ではありませんが、クラシック ポリシーの移行を開始する前に「[Azure Portal でクラシック ポリシーを移行する](policy-migration.md)」を読むことをお勧めします。
 
+## <a name="overview"></a>概要
 
- 
-## <a name="overview"></a>概要 
-
-この記事のシナリオでは、クラウド アプリの**多要素認証**が必要なクラシック ポリシーを移行する方法を示します。 
+この記事のシナリオでは、クラウド アプリの**多要素認証**が必要なクラシック ポリシーを移行する方法を示します。
 
 ![Azure Active Directory](./media/policy-migration/33.png)
-
 
 移行プロセスは、次の手順から構成されます。
 
 1. [クラシック ポリシーを開き](#open-a-classic-policy)、構成設定を取得します。
-2. 新しい Azure AD 条件付きアクセス ポリシーを作成し、クラシック ポリシーを置き換えます。 
-3. クラシック ポリシーを無効にします。
-
-
+1. 新しい Azure AD 条件付きアクセス ポリシーを作成し、クラシック ポリシーを置き換えます。 
+1. クラシック ポリシーを無効にします。
 
 ## <a name="open-a-classic-policy"></a>クラシック ポリシーを開く
 
 1. [Azure Portal](https://portal.azure.com) の左側のナビゲーション バーで、**[Azure Active Directory]** をクリックします。
 
-    ![Azure Active Directory](./media/policy-migration-mfa/01.png)
+   ![Azure Active Directory](./media/policy-migration-mfa/01.png)
 
-2. **[Azure Active Directory]** ページの **[管理]** セクションで、**[条件付きアクセス]** をクリックします。
+1. **[Azure Active Directory]** ページの **[管理]** セクションで、**[条件付きアクセス]** をクリックします。
 
-    ![条件付きアクセス](./media/policy-migration-mfa/02.png)
+   ![条件付きアクセス](./media/policy-migration-mfa/02.png)
 
-3. **[管理]** セクションで、**[クラシック ポリシー (プレビュー)]** をクリックします。
+1. **[管理]** セクションで、**[クラシック ポリシー (プレビュー)]** をクリックします。
 
-    ![クラシック ポリシー](./media/policy-migration-mfa/12.png)
+   ![クラシック ポリシー](./media/policy-migration-mfa/12.png)
 
-4. クラシック ポリシーの一覧で、クラウド アプリの**多要素認証**が必要なポリシーをクリックします。
+1. クラシック ポリシーの一覧で、クラウド アプリの**多要素認証**が必要なポリシーをクリックします。
 
-    ![クラシック ポリシー](./media/policy-migration-mfa/13.png)
-
+   ![クラシック ポリシー](./media/policy-migration-mfa/13.png)
 
 ## <a name="create-a-new-conditional-access-policy"></a>新しい条件付きアクセス ポリシーを作成する
 
-
 1. [Azure Portal](https://portal.azure.com) の左側のナビゲーション バーで、**[Azure Active Directory]** をクリックします。
 
-    ![Azure Active Directory](./media/policy-migration/01.png)
+   ![Azure Active Directory](./media/policy-migration/01.png)
 
-2. **[Azure Active Directory]** ページの **[管理]** セクションで、**[条件付きアクセス]** をクリックします。
+1. **[Azure Active Directory]** ページの **[管理]** セクションで、**[条件付きアクセス]** をクリックします。
 
-    ![条件付きアクセス](./media/policy-migration/02.png)
+   ![条件付きアクセス](./media/policy-migration/02.png)
 
+1. **[条件付きアクセス]** ページで **[新規]** ページを開くには、上部のツール バーの **[追加]** をクリックします。
 
+   ![条件付きアクセス](./media/policy-migration/03.png)
 
-3. **[条件付きアクセス]** ページで **[新規]** ページを開くには、上部のツール バーの **[追加]** をクリックします。
+1. **[新規]** ページの **[名前]** ボックスに、ポリシーの名前を入力します。
 
-    ![条件付きアクセス](./media/policy-migration/03.png)
+   ![条件付きアクセス](./media/policy-migration/29.png)
 
-4. **[新規]** ページの **[名前]** ボックスに、ポリシーの名前を入力します。
+1. **[割り当て]** セクションで、**[ユーザーとグループ]** をクリックします。
 
-    ![条件付きアクセス](./media/policy-migration/29.png)
+   ![条件付きアクセス](./media/policy-migration/05.png)
 
-5. **[割り当て]** セクションで、**[ユーザーとグループ]** をクリックします。
+   1. クラシック ポリシーですべてのユーザーを選択している場合は、**[すべてのユーザー]** をクリックします。 
 
-    ![条件付きアクセス](./media/policy-migration/05.png)
+   ![条件付きアクセス](./media/policy-migration/35.png)
 
-    a. クラシック ポリシーですべてのユーザーを選択している場合は、**[すべてのユーザー]** をクリックします。 
+   1. クラシック ポリシーでグループを選択している場合は、**[ユーザーとグループの選択]** をクリックし、必要なユーザーとグループを選択します。
 
-    ![条件付きアクセス](./media/policy-migration/35.png)
+   ![条件付きアクセス](./media/policy-migration/36.png)
 
-    b. クラシック ポリシーでグループを選択している場合は、**[ユーザーとグループの選択]** をクリックし、必要なユーザーとグループを選択します。
+   1. 除外されたグループがある場合は、**[除外]** タブをクリックし、必要なユーザーとグループを選択します。 
 
-    ![条件付きアクセス](./media/policy-migration/36.png)
+   ![条件付きアクセス](./media/policy-migration/37.png)
 
-    c. 除外されたグループがある場合は、**[除外]** タブをクリックし、必要なユーザーとグループを選択します。 
+1. **[新規]** ページで **[クラウド アプリ]** ページを開くには、**[割り当て]** セクションで **[クラウド アプリ]** をクリックします。
 
-    ![条件付きアクセス](./media/policy-migration/37.png)
+1. **[クラウド アプリ]** ページで、次の手順を実行します。
 
-6. **[新規]** ページで **[クラウド アプリ]** ページを開くには、**[割り当て]** セクションで **[クラウド アプリ]** をクリックします。
+   ![条件付きアクセス](./media/policy-migration/08.png)
 
-8. **[クラウド アプリ]** ページで、次の手順を実行します。
+   1. **[アプリを選択]** をクリックします。
 
-    ![条件付きアクセス](./media/policy-migration/08.png)
+   1. **[選択]** をクリックします。
 
-    a. **[アプリを選択]** をクリックします。
+   1. **[選択]** ページでクラウド アプリを選択し、**[選択]** をクリックします。
 
-    b. **[選択]** をクリックします。
+   1. **[クラウド アプリ]** ページで、**[完了]** をクリックします。
 
-    c. **[選択]** ページでクラウド アプリを選択し、**[選択]** をクリックします。
+1. **[多要素認証を要求する]** を選択している場合:
 
-    d. **[クラウド アプリ]** ページで、**[完了]** をクリックします。
+   ![条件付きアクセス](./media/policy-migration/26.png)
 
+   1. **[アクセス制御]** セクションで、**[許可]** をクリックします。
 
+   ![条件付きアクセス](./media/policy-migration/27.png)
 
-9. **[多要素認証を要求する]** を選択している場合:
+   1. **[許可]** ページで、**[アクセス権の付与]** をクリックし、**[多要素認証を要求する]** をクリックします。
 
-    ![条件付きアクセス](./media/policy-migration/26.png)
+   1. **[選択]** をクリックします。
 
-    a. **[アクセス制御]** セクションで、**[許可]** をクリックします。
+1. **[オン]** をクリックしてポリシーを有効にします。
 
-    ![条件付きアクセス](./media/policy-migration/27.png)
-
-    b. **[許可]** ページで、**[アクセス権の付与]** をクリックし、**[多要素認証を要求する]** をクリックします。
-
-    c. **[選択]** をクリックします。
-
-
-10. **[オン]** をクリックしてポリシーを有効にします。
-
-    ![条件付きアクセス](./media/policy-migration/30.png)
-
-
+   ![条件付きアクセス](./media/policy-migration/30.png)
 
 ## <a name="disable-the-classic-policy"></a>クラシック ポリシーを無効にする
 
@@ -142,13 +122,8 @@ ms.locfileid: "39630077"
 
 ![クラシック ポリシー](./media/policy-migration-mfa/14.png)
 
-
-
 ## <a name="next-steps"></a>次の手順
 
 - クラシック ポリシーの移行について詳しくは、「[Azure Portal でクラシック ポリシーを移行する](policy-migration.md)」をご覧ください。
-
-
 - 条件付きアクセス ポリシーの構成方法を把握するには、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」を参照してください。
-
-- 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」を参照してください。 
+- 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」を参照してください。

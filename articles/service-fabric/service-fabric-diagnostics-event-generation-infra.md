@@ -3,8 +3,8 @@ title: Azure Service Fabric のプラットフォーム レベルの監視 | Mic
 description: Azure Service Fabric クラスターの監視と診断に使用するプラットフォーム レベルのイベントとログについて説明します。
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
-manager: timlt
+author: srrengar
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -12,30 +12,29 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/25/2018
-ms.author: dekapur
-ms.openlocfilehash: 96bbb221f5fa133ee88a09d489627e3d2f9b0713
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.date: 11/21/2018
+ms.author: srrengar
+ms.openlocfilehash: cbdbedf32e8a3dad85262f287b27a03df780d95a
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409188"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662518"
 ---
-# <a name="monitoring-the-cluster-and-platform"></a>クラスターとプラットフォームの監視
+# <a name="monitoring-the-cluster"></a>クラスターの監視
 
-ハードウェアとクラスターが予想どおりに動作しているかどうかを確認するために、プラットフォーム レベルで監視することが重要です。 Service Fabric では、ハードウェアの障害時にもアプリケーションを実行し続けることができますが、エラーがアプリケーションと基になるインフラストラクチャのどちらで発生しているのかを診断する必要があります。 また、ハードウェアの追加や削除を決定する際に役立つ適切な容量計画を作成するために、クラスターを監視する必要があります。
+ハードウェアとクラスターが予想どおりに動作しているかどうかを確認するために、クラスター レベルで監視することが重要です。 Service Fabric では、ハードウェアの障害時にもアプリケーションを実行し続けることができますが、エラーがアプリケーションと基になるインフラストラクチャのどちらで発生しているのかを診断する必要があります。 また、ハードウェアの追加や削除を決定する際に役立つ適切な容量計画を作成するために、クラスターを監視する必要があります。
 
-Service Fabric は、EventStore や標準で提供されるさまざまなログ チャネルを通じて、構造化されたプラットフォーム イベントを "[Service Fabric イベント](service-fabric-diagnostics-events.md)" としていくつか公開しています。 
+Service Fabric は、EventStore や標準で提供されるさまざまなログ チャネルを通じて、構造化されたプラットフォーム イベントを [Service Fabric イベント](service-fabric-diagnostics-events.md)としていくつか公開しています。 
 
-EventStore は、エンティティごとの単位 (クラスター、ノード、アプリケーション、サービス、パーティション、レプリカ、コンテナーを含むエンティティ) でクラスターのイベントへのアクセスをユーザーに提供し、REST API と Service Fabric クライアント ライブラリを介してそれらを公開します。 開発/テスト クラスターを監視して、運用クラスターの状態について特定時点の情報を取得するためには、EventStore を使用します。 これについて詳しくは、「[EventStore の概要](service-fabric-diagnostics-eventstore.md)」を参照してください。
+Windows では、Service Fabric イベントは、稼働およびデータのチャネルとメッセージング チャネルの選択に使用される、一連の関連する `logLevelKeywordFilters` を持つ単一の ETW プロバイダーから提供されます。これが、発信される Service Fabric イベントを必要に応じて取り出してフィルター処理する方法となっています。
 
-Service Fabric は、運用クラスターを監視するパイプラインの設定用に、以下のログ チャネルも標準で提供しています。
-
-* [**運用時**](service-fabric-diagnostics-event-generation-operational.md)  
-Service Fabric およびクラスターによって実行される高レベルの操作。起動中のノード、デプロイ中の新しいアプリケーション、アップグレードのロールバックなどのイベントが含まれます。
+* **稼働** Service Fabric とクラスターで実行される高度な操作。ノードの起動、新しいアプリケーションのデプロイ、アップグレードのロールバックなどのイベントが含まれます。すべてのイベント一覧については、[こちら](service-fabric-diagnostics-event-generation-operational.md)を参照してください。  
 
 * **運用時 - 詳細**  
 正常性レポートおよび負荷分散の判定。
+
+運用チャネルには、ETW/Windows イベント ログ、[EventStore](service-fabric-diagnostics-eventstore.md) (Windows クラスターに対してバージョン 6.2 以降の Windows で利用可能) など、さまざまな方法でアクセスできます。 EventStore は、エンティティごとの単位 (クラスター、ノード、アプリケーション、サービス、パーティション、レプリカ、コンテナーを含むエンティティ) でクラスターのイベントへのアクセスをユーザーに提供し、REST API と Service Fabric クライアント ライブラリを介してそれらを公開します。 開発/テスト クラスターを監視して、運用クラスターの状態について特定時点の情報を取得するためには、EventStore を使用します。
 
 * **データおよびメッセージング**  
 メッセージング (現在は ReverseProxy のみ) やデータ パス (Reliable Services モデル) で生成された重要なログおよびイベント。
@@ -56,7 +55,7 @@ Service Fabric およびクラスターによって実行される高レベル�
 
 これらの各種チャネルは、推奨されるプラットフォーム レベルのほとんどのログに対応します。 プラットフォーム レベルのログを向上させるには、正常性モデルをよく理解することに努め、カスタム正常性レポートを追加し、カスタム **パフォーマンス カウンター**を追加することを検討し、サービスやアプリケーションがクラスターに及ぼす影響をリアルタイムで把握できるようにします。
 
-これらのログを利用するために、クラスターの作成時に [診断] を有効にしておくことを強くお勧めします。 診断をオンにすることで、クラスターをデプロイしたときに、Microsoft Azure 診断が、稼働、Reliable Services、Reliable Actors の各チャネルを認識し、データを保存できるようになります。詳細については、「[Windows Azure 診断を使用したイベントの集計と収集](service-fabric-diagnostics-event-aggregation-wad.md)」を参照してください。
+これらのログを利用するために、Azure portal でクラスターの作成中に [診断] を有効にしておくことを強くお勧めします。 診断をオンにすることで、クラスターをデプロイしたときに、Microsoft Azure Diagnostics が、稼働、Reliable Services、Reliable Actors の各チャネルを認識し、データを保存できるようになります。詳細については、「[Windows Azure Diagnostics を使用したイベントの集計と収集](service-fabric-diagnostics-event-aggregation-wad.md)」を参照してください。
 
 ## <a name="azure-service-fabric-health-and-load-reporting"></a>Azure Service Fabric の正常性と負荷のレポート
 
@@ -67,7 +66,7 @@ Service Fabric には、次の記事で詳述する独自の正常性モデル�
 - [Service Fabric のカスタム正常性レポートの追加](service-fabric-report-health.md)
 - [Service Fabric の正常性レポートの確認](service-fabric-view-entities-aggregated-health.md)
 
-正常性監視は、サービスの運用のさまざまな側面に不可欠です。 正常性監視は、Service Fabric が指定されたアプリケーションのアップグレードを実行するときに特に重要となります。 サービスの各アップグレード ドメインがアップグレードされ、顧客が利用できるようになった後、デプロイが次のアップグレード ドメインに移る前に、現在のアップグレード ドメインが正常性チェックに合格する必要があります。 正常な状態を実現できない場合、デプロイがロールバックされ、アプリケーションは既知の良好な状態に維持されます。 サービスがロールバックされる前に一部の顧客が影響を受ける場合もありますが、ほとんどの顧客では問題が発生することはありません。 また、人間のオペレーターによる操作を待たなくても、比較的速やかに問題が解決されます。 コードに組み込まれている正常性チェックが増えるほど、デプロイの問題に対するサービスの耐性が向上します。
+正常性の監視は、サービス運用のさまざまな側面 (特にアプリケーションのアップグレード時) に重要です。 サービスの各アップグレード ドメインがアップグレードされた後、デプロイが次のアップグレード ドメインに移る前に、現在のアップグレード ドメインが正常性チェックに合格する必要があります。 正常な状態を実現できない場合、デプロイがロールバックされ、アプリケーションは既知の正常な状態に維持されます。 サービスがロールバックされる前に一部の顧客が影響を受ける場合もありますが、ほとんどの顧客では問題が発生することはありません。 また、人間のオペレーターによる操作を待たなくても、比較的速やかに問題が解決されます。 コードに組み込まれている正常性チェックが増えるほど、デプロイの問題に対するサービスの耐性が向上します。
 
 サービスの正常性のもう 1 つの側面は、サービスのメトリックの報告です。 メトリックはリソース使用量のバランスを取るために使用されるため、Service Fabric において重要です。 また、メトリックはシステムの正常性を示すインジケーターにもなります。 たとえば、多数のサービスを使用するアプリケーションがあり、各インスタンスから 1 秒あたりの要求数 (RPS) メトリックが報告されているとします。 あるサービスが別のサービスよりも多くのリソースを使用している場合、Service Fabric はクラスター内でサービス インスタンスを移動させ、リソース使用率を均等に維持することを試みます。 リソース使用率のしくみの詳細については、「[Service Fabric のリソース使用量と負荷をメトリックで管理する](service-fabric-cluster-resource-manager-metrics.md)」をご覧ください。
 
@@ -76,7 +75,7 @@ Service Fabric には、次の記事で詳述する独自の正常性モデル�
 > [!TIP]
 > 重み付けされたメトリックを使いすぎないようにしてください。 バランスを取るためにサービス インスタンスが移動されている理由を理解しにくくなる可能性があります。 少数のメトリックでも十分に役立ちます。
 
-アプリケーションの正常性とパフォーマンスを示すことができる情報が、メトリックと正常性レポートの候補となります。 CPU パフォーマンス カウンターではノードの使用状況がわかりますが、1 つのノードで複数のサービスが実行されている場合があるため、特定のサービスが正常かどうかを示すわけではありません。 しかし、RPS、処理された項目数、要求の待機時間などのメトリックは、いずれも特定のサービスの正常性を示すことができます。
+アプリケーションの正常性とパフォーマンスを示すことができる情報が、メトリックと正常性レポートの候補となります。 **CPU パフォーマンス カウンターではノードの使用状況がわかりますが、1 つのノードで複数のサービスが実行されている場合があるため、特定のサービスが正常かどうかを示すわけではありません。** しかし、RPS、処理された項目数、要求の待機時間などのメトリックは、いずれも特定のサービスの正常性を示すことができます。
 
 ## <a name="service-fabric-support-logs"></a>Service Fabric のサポート ログ
 
@@ -91,11 +90,13 @@ Service Fabric の使用時に収集されるパフォーマンス カウンタ�
 クラスターのパフォーマンス データの収集は、次の 2 とおりの方法で設定できます。
 
 * **エージェントの使用**  
-エージェントは通常、収集可能なパフォーマンス メトリックの一覧を保持しており、ユーザーが収集または変更するメトリックを選択することは比較的簡単なプロセスであるため、これはマシンからパフォーマンスを収集するための推奨される方法です。 Log Analytics エージェントの詳細については、[Service Fabric の Log Analytics を構成する方法](service-fabric-diagnostics-event-analysis-oms.md)に関する記事および [Log Analytics エージェントの設定](../log-analytics/log-analytics-windows-agent.md)に関する記事をご覧ください。Log Analytics エージェントは、クラスター VM やデプロイ済みのコンテナーのパフォーマンス データを取得できる監視エージェントです。
+エージェントは通常、収集可能なパフォーマンス メトリックの一覧を保持しており、ユーザーが収集または変更するメトリックを選択することは比較的簡単なプロセスであるため、これはマシンからパフォーマンスを収集するための推奨される方法です。 Azure Monitor ログを提供している Azure Monitor の詳細については、Service Fabric の [Azure Monitor ログの統合](service-fabric-diagnostics-event-analysis-oms.md)に関する記事と [Log Analytics エージェントの設定](../log-analytics/log-analytics-windows-agent.md)に関する記事を参照してください。Log Analytics エージェントは、クラスター VM やデプロイ済みのコンテナーのパフォーマンス データを取得できる監視エージェントです。
 
-* **パフォーマンス カウンターをテーブルに書き込むための診断の構成**  
-Azure 上のクラスターの場合、クラスター内の VM から適切なパフォーマンス カウンターを取得するように Azure 診断の構成を変更し、コンテナーをデプロイする場合は Azure 診断が Docker の統計を取得できるようにします。 パフォーマンス カウンターの収集を設定する方法については、Service Fabric での [WAD のパフォーマンス カウンター](service-fabric-diagnostics-event-aggregation-wad.md)の構成に関する記事をご覧ください。
+* **Azure Table Storage に対するパフォーマンス カウンター**  
+パフォーマンス メトリックは、イベントと同じテーブル ストレージに送信することもできます。 この場合、クラスター内の VM から適切なパフォーマンス カウンターを取得するように Azure Diagnostics の構成を変更し、コンテナーをデプロイする場合は Azure Diagnostics が Docker の統計を取得できるようにします。 パフォーマンス カウンターの収集を設定する方法については、Service Fabric での [WAD のパフォーマンス カウンター](service-fabric-diagnostics-event-aggregation-wad.md)の構成に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
-ログとイベントを任意の分析プラットフォームに送信するには、これらを集計しておく必要があります。 [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) に関する記事と [WAD](service-fabric-diagnostics-event-aggregation-wad.md) に関する記事を読んで、推奨されるオプションについて理解を深めてください。
+* Service Fabric の [Azure Monitor ログの統合](service-fabric-diagnostics-event-analysis-oms.md)に関する記事を参照して、クラスター診断を収集し、カスタム クエリとアラートを作成します
+* Service Fabric の組み込みの診断エクスペリエンスについては、[EventStore](service-fabric-diagnostics-eventstore.md) に関するページを参照してください
+* Service Fabric の[一般的な診断シナリオ](service-fabric-diagnostics-common-scenarios.md)をいくつか紹介します

@@ -1,5 +1,5 @@
 ---
-title: App Service Environment のカスタム設定
+title: App Service Environment のカスタム設定 - Azure
 description: App Service Environment のカスタム構成設定
 services: app-service
 documentationcenter: ''
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/22/2016
+ms.date: 01/16/2018
 ms.author: stefsch
-ms.custom: mvc
-ms.openlocfilehash: d60cdca78c143996fa5935726db0631321c9e2fe
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.custom: seodec18
+ms.openlocfilehash: 6463759dbd217cd054f838c09c7cfcf99a06aa2c
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
-ms.locfileid: "26129517"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390815"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service Environment のカスタム構成設定
-## <a name="overview"></a>Overview
-App Service Environment は単一の顧客に分離されるため、App Service Environment にのみ適用できる特定の構成設定があります。 この記事では、App Service Environment で使用可能な、固有の各種カスタマイズについて説明します。
+## <a name="overview"></a>概要
+App Service Environment (ASE) は単一の顧客に分離されるため、App Service Environment にのみ適用できる特定の構成設定があります。 この記事では、App Service Environment で使用可能な、固有の各種カスタマイズについて説明します。
 
 App Service 環境がない場合は、 [App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)に関するページを参照してください。
 
@@ -65,10 +65,11 @@ App Service Environment は、 [Azure リソース エクスプローラー](htt
 ただし、変更を送信してから反映されるまでに、App Service Environment 内のフロント エンドの数に 30 分をかけた程度の時間がかかります。
 たとえば、App Service Environment に 4 つのフロント エンドがある場合、構成の更新が完了するまでに約 2 時間かかります。 構成の変更がロールアウトされている間は、App Service Environment で他のスケーリング操作や構成の変更操作は実行できません。
 
-## <a name="disable-tls-10"></a>TLS 1.0 の無効化
-お客様 (特に PCI 準拠の監査に対応しているお客様) から繰り返したずねられるのは、アプリで TLS 1.0 を明示的に無効にする方法についてです。
+## <a name="disable-tls-10-and-tls-11"></a>TLS 1.0 と TLS 1.1 の無効化
 
-TLS 1.0 は、次の **clusterSettings** エントリで無効にすることができます。
+TLS の設定をアプリごとに管理したい場合は、[TLS 設定の適用](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl#enforce-tls-versions)に関するドキュメントに記載されたガイダンスが参考になります。 
+
+ASE のすべてのアプリについて、TLS 1.0 と TLS 1.1 のインバウンド トラフィックをすべて無効にしたい場合は、次の **clusterSettings** エントリを設定してください。
 
         "clusterSettings": [
             {
@@ -76,6 +77,8 @@ TLS 1.0 は、次の **clusterSettings** エントリで無効にすることが
                 "value": "1"
             }
         ],
+
+設定の名前は 1.0 になっていますが、これを構成すると、TLS 1.0 と TLS 1.1 の両方が無効化されます。
 
 ## <a name="change-tls-cipher-suite-order"></a>TLS 暗号スイートの順序変更
 お客様から寄せられるもう 1 つの質問は、サーバーによってネゴシエートされた暗号のリストを変更できるかどうかということです。これは、以下に示したように **clusterSettings** を変更することで実行できます。 利用できる暗号スイートのリストは、[こちらの MSDN の記事](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx) で確認できます。

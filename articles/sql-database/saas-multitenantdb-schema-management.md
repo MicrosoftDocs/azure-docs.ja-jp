@@ -9,18 +9,18 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: billgib
+ms.reviewer: billgib, sstein
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: e7aeb273d4ae276d3460c3de1f404230276cffb7
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 12/18/2018
+ms.openlocfilehash: c7c10608d90f7659b108d2d8c80038f59396de2d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056643"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878076"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>共有マルチテナント SQL データベースを使用している SaaS アプリケーションでのスキーマの管理
- 
+
 このチュートリアルでは、サービスとしてのソフトウェア (SaaS) アプリケーションで、データベース フリートを保持する際の課題について考察します。 データベースのフリート間でスキーマの変更を展開するための、ソリューションが示されています。
 
 他のアプリケーションと同様に、Wingtip Tickets SaaS アプリは時間の経過に従って進化し、データベースへの変更が必要になる場合があります。 変更では、スキーマまたは参照データに影響を与えたり、データベース メンテナンス タスクを適用したりする可能性があります。 テナント パターンごとのデータベースを使用している SaaS アプリケーションの場合、大規模になる可能性があるテナント データベースのフリート間で変更を調整する必要があります。 さらに、データベース プロビジョニング プロセスにこれらの変更を組み込み、新しいデータベースが作成されるときに確実に含まれるようにします。
@@ -53,7 +53,7 @@ ms.locfileid: "47056643"
 - Azure PowerShell がインストールされている必要があります。 詳細については、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
 
 > [!NOTE]
-> このチュートリアルでは、限定プレビューに含まれる Azure SQL Database サービスの機能 ([Elastic Database ジョブ](sql-database-elastic-database-client-library.md)) を使用します。 このチュートリアルを実行する場合、サブスクリプション ID を *SaaSFeedback@microsoft.com* までお送りください (件名: Elastic Jobs Preview)。 サブスクリプションが有効であることを通知するメールが届いたら、[最新のプレリリース ジョブ コマンドレットをダウンロードしてインストール](https://github.com/jaredmoo/azure-powershell/releases)します。 このプレビューは限定的であるため、関連する質問やサポートについては、*SaaSFeedback@microsoft.com* にお問い合わせください。
+> このチュートリアルでは、限定プレビューに含まれる Azure SQL Database サービスの機能 ([Elastic Database ジョブ](sql-database-elastic-database-client-library.md)) を使用します。 このチュートリアルを実行する場合、ご使用のサブスクリプション ID を *SaaSFeedback\@microsoft.com* までお送りください (件名: Elastic Jobs Preview)。 サブスクリプションが有効であることを通知するメールが届いたら、[最新のプレリリース ジョブ コマンドレットをダウンロードしてインストール](https://github.com/jaredmoo/azure-powershell/releases)します。 このプレビューは限定的であるため、関連する質問やサポートについては、*SaaSFeedback\@microsoft.com* にお問い合わせください。
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS スキーマ管理パターンの概要
 
@@ -64,12 +64,12 @@ ms.locfileid: "47056643"
 ## <a name="elastic-jobs-limited-preview"></a>エラスティック ジョブの限定プレビュー
 
 Azure SQL Database の統合機能となった新しいバージョンのエラスティック ジョブが入手可能です。 現在、この新しいバージョンのエラスティック ジョブは限定プレビュー中です。 現在、この限定プレビューでは、ジョブ エージェントを作成するための PowerShell と、ジョブを作成および管理するための T-SQL の使用がサポートされています。
-> [!NOTE] 
+> [!NOTE]
 > このチュートリアルでは、限定プレビューに含まれる SQL Database サービスの機能を使用します (Elastic Database ジョブ)。 このチュートリアルを実行する場合、サブスクリプション ID を SaaSFeedback@microsoft.com までお送りください (件名: Elastic Jobs Preview)。 サブスクリプションが有効であることを通知するメールが届いたら、最新のプレリリース ジョブ コマンドレットをダウンロードしてインストールします。 このプレビューは限定的であるため、関連する質問やサポートについては、SaaSFeedback@microsoft.com にお問い合わせください。
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Wingtip Tickets SaaS マルチテナント データベース アプリケーションのソース コードとスクリプトを入手する
 
-Wingtip Tickets SaaS マルチテナント データベースのスクリプトとアプリケーション ソース コードは、GitHub の [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) リポジトリで入手できます。 Wingtip Tickets SaaS のスクリプトをダウンロードしてブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。 
+Wingtip Tickets SaaS マルチテナント データベースのスクリプトとアプリケーション ソース コードは、GitHub の [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) リポジトリで入手できます。 Wingtip Tickets SaaS のスクリプトをダウンロードしてブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。
 
 ## <a name="create-a-job-agent-database-and-new-job-agent"></a>ジョブ エージェント データベースと新しいジョブ エージェントの作成
 
@@ -84,9 +84,9 @@ Wingtip Tickets SaaS マルチテナント データベースのスクリプト�
 
 #### <a name="prepare"></a>準備
 
-各テナントのデータベースの **VenueTypes** テーブルには、一連の会場タイプが含まれています。 各会場タイプは、会場で開催できるイベントの種類を定義します。 これらの会場タイプは、テナント イベント アプリに表示される背景画像に対応しています。  この演習では、すべてのデータベースに更新をデプロイして、*Motorcycle Racing* と *Swimming Club* の 2 つの会場タイプを追加します。 
+各テナントのデータベースの **VenueTypes** テーブルには、一連の会場タイプが含まれています。 各会場タイプは、会場で開催できるイベントの種類を定義します。 これらの会場タイプは、テナント イベント アプリに表示される背景画像に対応しています。  この演習では、すべてのデータベースに更新をデプロイして、2 つの会場タイプ*Motorcycle Racing* と *Swimming Club* を追加します。
 
-最初に、各テナント データベースに含まれている会場の種類を確認します。 SQL Server Management Studio (SSMS) でテナント データベースの 1 つに接続し、VenueTypes テーブルを調べます。  このテーブルは、データベース ページからアクセスする Azure Portal のクエリ エディターでクエリを実行することもできます。 
+最初に、各テナント データベースに含まれている会場の種類を確認します。 SQL Server Management Studio (SSMS) でテナント データベースの 1 つに接続し、VenueTypes テーブルを調べます。  このテーブルは、データベース ページからアクセスする Azure Portal のクエリ エディターでクエリを実行することもできます。
 
 1. SSMS を開き、テナント サーバー *tenants1-dpt-&lt;ユーザー&gt;.database.windows.net* に接続します。
 1. 現在、*Motorcycle Racing* および *Swimming Club* が**含まれていない**ことを確認するために、*tenants1-dpt-&lt;ユーザー&gt;* サーバーの *contosoconcerthall* データベースを参照し、*VenueTypes* テーブルに対してクエリを実行します。

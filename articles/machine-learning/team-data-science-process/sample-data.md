@@ -1,26 +1,22 @@
 ---
-title: Azure BLOB コンテナー、SQL Server、Hive テーブルのデータのサンプリング | Microsoft Docs
-description: さまざまな Azure 環境に格納されているデータを探索する方法について説明します。
+title: 別の Azure ストレージの場所にあるデータをサンプリングする - Team Data Science Process
+description: Azure BLOB コンテナー、SQL Server、Hive テーブルのデータをサンプリングして、小さくても代表的で管理しやすいサイズに縮小します。
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 80a9dfae-e3a6-4cfb-aecc-5701cfc7e39d
 ms.service: machine-learning
-ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: deguhath
-ms.openlocfilehash: 60431578ba8b5c740fe5e1124dcdad32c3cb2ede
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: fc91aec80f74488125649cfe807757ba5ae49c9b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344087"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466338"
 ---
 # <a name="heading"></a>Azure BLOB コンテナー、SQL Server、Hive テーブルのデータのサンプリング
 
@@ -30,7 +26,7 @@ ms.locfileid: "51344087"
 * [**SQL Server のデータ**](sample-data-sql-server.md)は、SQL と Python プログラミング言語の両方を使用してサンプリングします。 
 * [**Hive テーブルのデータ**](sample-data-hive.md)は、Hive クエリを使用してサンプリングします。
 
-このサンプリング タスクは、 [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)の 1 ステップです。
+このサンプリング タスクは、 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)の 1 ステップです。
 
 **データをサンプリングする理由**
 

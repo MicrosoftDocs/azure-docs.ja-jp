@@ -1,5 +1,5 @@
 ---
-title: 既存のカスタム SSL 証明書の Azure Web Apps へのバインド | Microsoft Docs
+title: 既存のカスタム SSL 証明書のバインド - Azure App Service | Microsoft Docs
 description: Azure App Service で、Web アプリ、モバイル アプリのバックエンド、または API アプリにカスタム SSL 証明書をバインドする方法について説明します。
 services: app-service\web
 documentationcenter: nodejs
@@ -14,17 +14,17 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: a543561658d593398ca74f8ae68dd6d0d27bcdaa
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.custom: seodec18
+ms.openlocfilehash: 0a5b8bdbcd5a05574d824e3f57cfc23967278e27
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636458"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487738"
 ---
-# <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>チュートリアル: 既存のカスタム SSL 証明書を Azure Web Apps にバインドする
+# <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-app-service"></a>チュートリアル:既存のカスタム SSL 証明書を Azure App Service にバインドする
 
-Azure Web Apps では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、信頼された証明機関から購入したカスタム SSL 証明書を [Azure Web Apps](app-service-web-overview.md) にバインドする方法について説明します。 完了したら、カスタムの DNS ドメインの HTTPS エンドポイントで、Web アプリにアクセスできるようになります。
+Azure App Service では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、信頼された証明機関から購入したカスタム SSL 証明書を [Azure App Service](overview.md) にバインドする方法について説明します。 完了したら、カスタムの DNS ドメインの HTTPS エンドポイントでアプリにアクセスできるようになります。
 
 ![カスタム SSL 証明書付きの Web アプリ](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 
@@ -39,14 +39,14 @@ Azure Web Apps では、高度にスケーラブルな自己適用型の Web ホ
 > * スクリプトを使って TLS 管理を自動化する
 
 > [!NOTE]
-> カスタム SSL 証明書を取得する必要がある場合、Azure Portal から直接取得して Web アプリにバインドすることができます。 [App Service 証明書のチュートリアル](web-sites-purchase-ssl-web-site.md)に従ってください。
+> カスタム SSL 証明書を取得する必要がある場合、Azure portal から直接取得してアプリにバインドすることができます。 [App Service 証明書のチュートリアル](web-sites-purchase-ssl-web-site.md)に従ってください。
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、以下が必要です。
 
 - [App Service アプリを作成する](/azure/app-service/)
-- [カスタム DNS 名を Web アプリにマップする](app-service-web-tutorial-custom-domain.md)
+- [カスタム DNS 名を App Service アプリにマップする](app-service-web-tutorial-custom-domain.md)
 - 信頼された証明機関から SSL 証明書を取得する
 - SSL 証明書要求の署名に利用した秘密キーを用意する
 
@@ -70,7 +70,7 @@ App Service で証明書を使用するには、証明書が次のすべての�
 
 ## <a name="bind-your-ssl-certificate"></a>SSL 証明書のバインド
 
-Web アプリに、SSL 証明書をアップロードする準備ができました。
+アプリに SSL 証明書をアップロードする準備ができました。
 
 ### <a name="merge-intermediate-certificates"></a>中間証明書を結合する
 
@@ -114,7 +114,7 @@ IIS または _Certreq.exe_ を使用して証明書の要求を生成した場�
 
 ### <a name="upload-your-ssl-certificate"></a>SSL 証明書のアップロード
 
-SSL 証明書をアップロードするには、Web アプリの左側のナビゲーションで **[SSL 設定]** をクリックします。
+SSL 証明書をアップロードするには、アプリの左側のナビゲーションで **[SSL 設定]** をクリックします。
 
 **[証明書のアップロード]** をクリックします。 
 
@@ -139,9 +139,9 @@ App Service による証明書のアップロードが完了すると、**[SSL �
 >
 >
 
-**[SSL Type] \(SSL の種類)** で、**[Server Name Indication (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** ベースの SSL を使用するか IP ベースの SSL を使用するかを選択します。
+**[SSL Type] \(SSL の種類)** で、**[Server Name Indication (SNI)](https://en.wikipedia.org/wiki/Server_Name_Indication)** ベースの SSL を使用するか IP ベースの SSL を使用するかを選択します。
 
-- **SNI ベースの SSL** - SNI ベースの SSL バインドを複数追加することができます。 このオプションでは、複数の SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (ブラウザーのサポートに関するより包括的な情報については、「[Server Name Indication](http://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。
+- **SNI ベースの SSL** - SNI ベースの SSL バインドを複数追加することができます。 このオプションでは、複数の SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (ブラウザーのサポートに関するより包括的な情報については、「[Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。
 - **IP ベースの SSL** - IP ベースの SSL バインドを 1 つだけ追加することができます。 このオプションでは、SSL 証明書を 1 つだけ使用して、専用のパブリック IP アドレスを保護します。 複数のドメインを保護するには、同じ SSL 証明書を使用してすべてのドメインを保護する必要があります。 これは、SSL バインドの従来のオプションです。
 
 **[Add Binding] \(バインドの追加)** をクリックします。
@@ -154,24 +154,24 @@ App Service による証明書のアップロードが完了すると、**[SSL �
 
 ## <a name="remap-a-record-for-ip-ssl"></a>IP SSL の A レコードの再マップ
 
-Web アプリで IP ベースの SSL を使用していない場合、[カスタム ドメインの HTTPS のテスト](#test)に関するセクションにスキップしてください。
+アプリで IP ベースの SSL を使用していない場合、[カスタム ドメインの HTTPS のテスト](#test)に関するセクションにスキップしてください。
 
-既定では、Web アプリは、共有のパブリック IP アドレスを使用します。 IP ベースの SSL で証明書をバインドすると、Web アプリ用の新規の専用 IP アドレスが App Service によって作成されます。
+既定では、アプリは、共有のパブリック IP アドレスを使用します。 IP ベースの SSL で証明書をバインドすると、アプリ用の新規の専用 IP アドレスが App Service によって作成されます。
 
-Web アプリに A レコードをマップした場合は、この新規の専用 IP アドレスでドメイン レジストリを更新します。
+アプリに A レコードをマップした場合は、この新規の専用 IP アドレスでドメイン レジストリを更新します。
 
-Web アプリの **[カスタム ドメイン]** ページが、新規の専用 IP アドレスで更新されます。 [この IP アドレスをコピー](app-service-web-tutorial-custom-domain.md#info)して、この新しい IP アドレスに [A レコードを再マップ](app-service-web-tutorial-custom-domain.md#map-an-a-record)します。
+アプリの **[カスタム ドメイン]** ページが、新規の専用 IP アドレスで更新されます。 [この IP アドレスをコピー](app-service-web-tutorial-custom-domain.md#info)して、この新しい IP アドレスに [A レコードを再マップ](app-service-web-tutorial-custom-domain.md#map-an-a-record)します。
 
 <a name="test"></a>
 
 ## <a name="test-https"></a>HTTPS のテスト
 
-この時点で残っている作業は、HTTPS がカスタム ドメインで機能するかどうかを確認することだけです。 さまざまなブラウザーで `https://<your.custom.domain>` にアクセスし、Web アプリの要求を処理できることを確認します。
+この時点で残っている作業は、HTTPS がカスタム ドメインで機能するかどうかを確認することだけです。 さまざまなブラウザーで `https://<your.custom.domain>` にアクセスし、アプリの要求を処理できることを確認します。
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 
 > [!NOTE]
-> Web アプリで証明書検証エラーが返された場合は、自己署名証明書を使用している可能性があります。
+> アプリで証明書検証エラーが返された場合は、自己署名証明書を使用している可能性があります。
 >
 > そうでない場合は、証明書を PFX ファイルにエクスポートするときに中間証明書を含めなかった可能性があります。
 
@@ -187,9 +187,9 @@ Web アプリの **[カスタム ドメイン]** ページが、新規の専用 
 
 ## <a name="enforce-https"></a>HTTPS の適用
 
-既定では、どなたでも引き続き HTTP を使用して Web アプリにアクセスできます。 すべての HTTP 要求を HTTPS ポートにリダイレクトできます。
+既定では、どなたでも引き続き HTTP を使用してアプリにアクセスできます。 すべての HTTP 要求を HTTPS ポートにリダイレクトできます。
 
-Web アプリ ページで、左側のナビゲーションにある **[SSL 設定]** を選択します。 その後、**[HTTPS のみ]** で、**[On]** を選択します。
+アプリ ページで、左側のナビゲーションにある **[SSL 設定]** を選択します。 その後、**[HTTPS のみ]** で、**[On]** を選択します。
 
 ![HTTPS の適用](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
 
@@ -203,7 +203,7 @@ Web アプリ ページで、左側のナビゲーションにある **[SSL 設�
 
 アプリでは既定で [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.2 が有効です。これは、[PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) などの業界標準で推奨されている TLS レベルです。 異なる TLS バージョンを適用するには、次の手順を実行します。
 
-Web アプリ ページで、左側のナビゲーションにある **[SSL 設定]** を選択します。 次に、**[TLS version]\(TLS バージョン\)** で、必要な最低限の TLS バージョンを選択します。 この設定により、受信呼び出しのみが制御されます。 
+アプリ ページで、左側のナビゲーションにある **[SSL 設定]** を選択します。 次に、**[TLS version]\(TLS バージョン\)** で、必要な最低限の TLS バージョンを選択します。 この設定により、受信呼び出しのみが制御されます。 
 
 ![TLS 1.1/1.2 の適用](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
 
@@ -211,7 +211,7 @@ Web アプリ ページで、左側のナビゲーションにある **[SSL 設�
 
 ## <a name="automate-with-scripts"></a>スクリプトで自動化する
 
-[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/overview) を使用すると、Web アプリの SSL バインドをスクリプトで自動化することができます。
+[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/overview) を使用すると、アプリの SSL バインドをスクリプトで自動化することができます。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -248,10 +248,12 @@ az webapp config set \
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 次のコマンドは、エクスポートした PFX ファイルをアップロードし、SNI ベースの SSL バインドを追加します。
 
-```PowerShell
-New-AzureRmWebAppSSLBinding `
+```powershell
+New-AzWebAppSSLBinding `
     -WebAppName <app_name> `
     -ResourceGroupName <resource_group_name> `
     -Name <dns_name> `
@@ -260,9 +262,9 @@ New-AzureRmWebAppSSLBinding `
     -SslState SniEnabled
 ```
 ## <a name="public-certificates-optional"></a>パブリック証明書 (省略可能)
-アプリがクライアントとしてリモート リソースにアクセスする必要があり、リモート リソースが証明書認証を必要とする場合は、[パブリック証明書](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/)を Web アプリにアップロードできます。 パブリック証明書は、アプリの SSL バインディングには必要ありません。
+アプリがクライアントとしてリモート リソースにアクセスする必要があり、リモート リソースが証明書認証を必要とする場合は、[パブリック証明書](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/)をアプリにアップロードできます。 パブリック証明書は、アプリの SSL バインディングには必要ありません。
 
-アプリにパブリック証明書を読み込んで使用する方法の詳細については、「[Azure App Service のアプリケーション コードに SSL 証明書を使用する](https://docs.microsoft.com/azure/app-service/app-service-web-ssl-cert-load)」を参照してください。 App Service Environment でも、アプリでパブリック証明書を使用することができます。 LocalMachine の証明書ストアに証明書を格納する必要がある場合は、App Service Enviroment で Web アプリを使用する必要があります。 詳細については、[Web アプリに合わせてパブリック証明書を構成する方法](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer)に関するページをご覧ください。
+アプリにパブリック証明書を読み込んで使用する方法の詳細については、「[Azure App Service のアプリケーション コードに SSL 証明書を使用する](app-service-web-ssl-cert-load.md)」を参照してください。 App Service Environment でも、アプリでパブリック証明書を使用することができます。 LocalMachine の証明書ストアに証明書を格納する必要がある場合は、App Service Environment でアプリを使用する必要があります。 詳細については、[App Service アプリに合わせてパブリック証明書を構成する方法](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer)に関するページを参照してください。
 
 ![パブリック証明書のアップロード](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 

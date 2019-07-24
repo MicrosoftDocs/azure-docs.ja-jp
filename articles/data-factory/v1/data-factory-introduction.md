@@ -1,6 +1,6 @@
 ---
 title: データ統合サービスである Data Factory の概要 | Microsoft Docs
-description: データの移動と変換を調整、自動化するクラウド データ統合サービスである Azure Data Factory について説明します。
+description: Azure Data Factory の概要を理解する:データの移動と変換を調整および自動化するクラウド データ統合サービス。
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -9,17 +9,16 @@ ms.assetid: cec68cb5-ca0d-473b-8ae8-35de949a009e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 0cdf10f4898ba103f9b6f65179300a10c9e33cdf
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 9bf8c51fda6985f88ecffa60b32c1c62e364a511
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43087173"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014932"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -73,7 +72,7 @@ Data Factory を使用すれば、データ パイプラインのコピー ア�
 ### <a name="transform-and-enrich"></a>変換と強化
 クラウド上の一元的なデータ ストアにデータが集まったら、HDInsight Hadoop、Spark、Data Lake Analytics、Machine Learning などのコンピューティング サービスを使って、そのデータを処理または転送します。 保守しやすい管理されたスケジュールで確実に変換データを生成し、信頼性の高いデータを運用環境に提供する必要があります。 
 
-### <a name="publish"></a>[発行] 
+### <a name="publish"></a>発行 
 変換したデータをクラウドから SQL Server などのオンプレミス ソースに送信します。 または、BI や分析ツールなどのアプリケーションで利用できるよう、それをクラウド ストレージ ソース内に保持することもできます。
 
 ## <a name="key-components"></a>主なコンポーネント
@@ -120,7 +119,7 @@ Data Factory ではリンクされたサービスは 2 つの理由で使用さ�
 
 ### <a name="relationship-between-data-factory-entities"></a>Data Factory エンティティ間の関係
 
-![図: クラウド データ統合サービスである Data Factory - 主要な概念](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+![図:クラウド データ統合サービスである Data Factory - 主要な概念](./media/data-factory-introduction/data-integration-service-key-concepts.png)
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 現時点では、データ ファクトリは、米国西部、米国東部、北ヨーロッパ リージョンで作成できます。 ただし、データ ファクトリは、他の Azure リージョン内のデータ ストアやコンピューティング サービスにアクセスし、データ ストア間でデータを移動したり、コンピューティング サービスを使用してデータを処理したりできます。

@@ -3,17 +3,17 @@ title: Azure IoT Central アプリケーションでテレメトリ ルールを
 description: Azure IoT Central のテレメトリ ルールを使用すると、ほぼリアルタイムでデバイスを監視し、ルールがトリガーされたときに、電子メールの送信などのアクションを自動的に呼び出すことができます。
 author: ankitgupta
 ms.author: ankitgup
-ms.date: 11/02/2018
+ms.date: 02/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d085777e347e1e892c3a49f4f37aa1d8130ef18c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0fb7cdaa24d139549545c93c920d60936d3c9fc1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005735"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517234"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでテレメトリ ルールを作成して通知を設定する
 
@@ -27,50 +27,42 @@ Azure IoT Central を使用して、接続されたデバイスをリモート�
 
 テレメトリ ルールを作成するには、デバイス テンプレートに少なくとも 1 つのテレメトリの測定値が定義されている必要があります。 この例では、温度と湿度のテレメトリを送信する、冷蔵の自動販売機を使用します。 ルールは、デバイスによってレポートされる温度を監視し、80 度以上になったときに電子メールを送信します。
 
-1. Device Explorer を使用して、ルールを追加する対象のデバイス テンプレートに移動します。
-
-1. 選択したテンプレートで、既存のデバイスをクリックします。 
-
-    >[!TIP] 
-    >テンプレートにデバイスが何もない場合は、まず新しいデバイスを追加します。
+1. **[デバイス テンプレート]** ページを使用して、ルールを追加する対象のデバイス テンプレートに移動します。
 
 1. まだルールを作成していない場合は、次の画面が表示されます。
 
-    ![ルールがまだありません](media\howto-create-telemetry-rules\Rules_Landing_Page.png)
+    ![ルールがまだありません](media/howto-create-telemetry-rules/Rules_Landing_Page.png)
 
-1. **[ルール]** タブで、**[テンプレートの編集]**、**[+ 新しいルール]** の順にクリックして、作成できるルールの種類を確認します。
+1. **[ルール]** タブで、**[+ 新しいルール]** を選択して、作成できるルールの種類を確認します。
 
-1. **[テレメトリ]** をクリックして、デバイスのテレメトリを監視するルールを作成します。
+1. **[テレメトリ]** を選択して、デバイスのテレメトリを監視するルールを作成します。
 
-    ![ルールの種類](media\howto-create-telemetry-rules\Rule_Types.png)
+    ![ルールの種類](media/howto-create-telemetry-rules/Rule_Types.png)
 
 1. このデバイス テンプレートでルールを識別するのに役立つ名前を入力します。
 
 1. このテンプレート用に作成されたすべてのデバイスに対してすぐにルールを有効にするには、**[このテンプレートのすべてのデバイスに対してルールを有効にする]** を切り替えます。
 
-   ![ルールの詳細](media\howto-create-telemetry-rules\Rule_Detail.png)
-    
+   ![ルールの詳細](media/howto-create-telemetry-rules/Rule_Detail.png)
+
     このルールは、デバイス テンプレートの下にあるすべてのデバイスに自動的に適用されます。
-    
 
 ### <a name="configure-the-rule-conditions"></a>ルールの条件を構成する
 
 条件は、ルールによって監視される基準を定義します。
 
-1. **[条件]** の横にある **[+]** をクリックして、新しい条件を追加します。
+1. **[条件]** の横にある **[+]** を選択して、新しい条件を追加します。
 
 1. 監視するテレメトリを **[測定値]** ドロップダウンから選択します。
 
-   ![条件](media\howto-create-telemetry-rules\Aggregate_Condition_Filled_Out.png)
-
 1. 次に、**[集計]**、**[演算子]** の順に選択し、**[しきい値]** を指定します。
-    - 集計は省略可能です。 集計を選択しない場合、条件を満たすテレメトリ データ ポイントごとにルールがトリガーします。 たとえば、温度が 80 度を超えるとトリガーするようにルールが設定されている場合、デバイスが 80 度を超える温度を報告すると、ほぼ即座にルールがトリガーします。
-    - Average、Min、Max、Count のような集計関数が選択されている場合、ユーザーは条件を評価する必要がある **[集計時間枠]** を指定する必要があります。 たとえば、期間を「5 分」に設定し、ルールの検索対象を 80 度を超える平均気温とする場合、平均気温が少なくとも 5 分間 80 度を超えるとルールがトリガーします。 ルールの評価頻度は **[集計時間枠]** と同じです。つまり、この例では、ルールは 5 分ごとに 1 回評価されます。
+   - 集計は省略可能です。 集計を選択しない場合、条件を満たすテレメトリ データ ポイントごとにルールがトリガーします。 たとえば、温度が 80 度を超えるとトリガーされるようにルールが設定されている場合、デバイスが 80 度を超える温度を報告すると、ほぼ即座にルールがトリガーされます。
+   - Average、Min、Max、Count のような集計関数が選択されている場合、ユーザーは条件を評価する必要がある **[集計時間枠]** を指定する必要があります。 たとえば、期間を「5 分」に設定し、ルールの検索対象を 80 度を超える平均気温とする場合、平均気温が少なくとも 5 分間 80 度を超えるとルールがトリガーします。 ルールの評価頻度は **[集計時間枠]** と同じです。つまり、この例では、ルールは 5 分ごとに 1 回評価されます。
 
-    >[!NOTE]
-    >**[条件]** では、複数のテレメトリ測定値を追加できます。 複数の条件を指定する場合、ルールをトリガーするためにはすべての条件が満たされる必要があります。 各条件は暗黙的に "AND" 句で結合されます。 集計を使用する場合、すべての測定値を集計する必要があります。
-    
-    
+     ![条件](media/howto-create-telemetry-rules/Aggregate_Condition_Filled_Out.png)
+
+     >[!NOTE]
+     >**[条件]** では、複数のテレメトリ測定値を追加できます。 複数の条件を指定する場合、ルールをトリガーするためにはすべての条件が満たされる必要があります。 各条件は暗黙的に "AND" 句で結合されます。 集計を使用する場合、すべての測定値を集計する必要があります。
 
 ### <a name="configure-actions"></a>アクションを構成する
 
@@ -78,18 +70,16 @@ Azure IoT Central を使用して、接続されたデバイスをリモート�
 
 1. **[アクション]** の横にある **+** を選択します。 使用可能なアクションの一覧が表示されます。  
 
-    ![アクションを追加する](media\howto-create-telemetry-rules\Add_Action.png)
+    ![アクションを追加する](media/howto-create-telemetry-rules/Add_Action.png)
 
 1. **[電子メール]** アクションを選択し、**[宛先]** フィールドに有効な電子メール アドレスを入力して、ルールがトリガーされた際に電子メールの本文に表示されるメモを指定します。
 
     > [!NOTE]
     > 電子メールは、アプリケーションに追加されており、少なくとも 1 回はログインしているユーザーにのみ送信されます。 Azure IoT Central での[ユーザー管理](howto-administer.md)について詳しくは、こちらをご覧ください。
 
-   ![アクションを構成する](media\howto-create-telemetry-rules\Configure_Action.png)
+   ![アクションを構成する](media/howto-create-telemetry-rules/Configure_Action.png)
 
 1. ルールを保存するには、**[保存]** を選択します。 ルールは数分以内に有効になり、アプリケーションに送信されるテレメトリの監視が開始されます。 ルールで指定した条件を満たすと、構成した電子メールのアクションがトリガーされます。
-
-1. **[完了]** を選択して、**[テンプレートの編集]** モードを終了します。
 
 Microsoft Flow や Webhook などの他のアクションをルールに追加することができます。 ルールごとに最大 5 つのアクションを追加できます。
 
@@ -122,4 +112,5 @@ Microsoft Flow や Webhook などの他のアクションをルールに追加�
 
 - [ルールに Microsoft Flow のアクションを追加する](howto-add-microsoft-flow.md)
 - [ルールに Webhook アクションを追加する](howto-create-webhooks.md)
+- [1 つまたは複数のルールから実行する複数のアクションをグループ化する](howto-use-action-groups.md)
 - [デバイスの管理方法](howto-manage-devices.md)

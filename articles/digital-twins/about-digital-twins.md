@@ -3,18 +3,18 @@ title: Azure Digital Twins の概要 | Microsoft Docs
 description: 空間インテリジェンスを実現する Azure IoT ソリューション、Azure Digital Twins について詳しく説明します。
 author: julieseto
 ms.author: jseto
-ms.date: 10/10/2018
+ms.date: 12/14/2018
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 84f329c0a97d0f79a5f612fb3054b82a182e4da9
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 2848f9ce97c2bdad59d86031c5894219875b6059
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287372"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437114"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Azure Digital Twins の概要
 
@@ -27,12 +27,12 @@ Azure Digital Twins を使用すると、多数の雑多なセンサーのデー
 - オフィスの空きスペースの使用を最適化する。
 
 Azure Digital Twins は、あらゆる種類の環境が対象となります。 倉庫やオフィス、学校、病院、銀行は、そのほんの一例です。 スタジアムや工場、パーキング、公園、スマート グリッド、都市に使用することもできます。 たとえば、次のシナリオに Azure Digital Twins を使用可能です。
- 
-- 複数の州全体の気温を毎日追跡する。 
+
+- 複数の州全体の気温を毎日追跡する。
 - 複雑なドローンの経路を監視する。
-- 自律型車両を特定する。 
-- ビルの入居率を分析する。 
-- 店舗内で最も稼働率の高いレジを調べる。 
+- 自律型車両を特定する。
+- ビルの入居率を分析する。
+- 店舗内で最も稼働率の高いレジを調べる。
 
 実世界のビジネス シナリオが何であれ、Azure Digital Twins を通じて、対応するデジタル インスタンスをプロビジョニングすることができます。
 
@@ -94,7 +94,7 @@ Azure Digital Twins は、現実世界とその多くの関係を表現するの
 
 現実世界を絶えず追跡する IoT のデバイスやセンサーと Azure Digital Twins との接続には、Azure IoT Hub が使用されます。 次の図は、Azure Digital Twins と他の Azure IoT サービスの関係を示しています。
 
-![Azure Digital Twins は Azure IoT Hub を基盤として構築されたサービス](./media/overview/azure-digital-twins-in-iot-ecosystem.png)
+![Azure Digital Twins は Azure IoT Hub を基盤として構築されたサービス][1]
 
 IoT の詳細については、[Azure IoT のテクノロジとソリューション](https://docs.microsoft.com/azure/iot-fundamentals/iot-services-and-technologies)に関するページを参照してください。
 
@@ -102,15 +102,18 @@ IoT の詳細については、[Azure IoT のテクノロジとソリューシ�
 
 Azure Digital Twins についての短いデモをご覧ください。
 
-> [!div class="nextstepaction"]
-> [クイック スタート: Azure Digital Twins を使用して空き部屋を探す](./quickstart-view-occupancy-dotnet.md)
+>[!div class="nextstepaction"]
+>[クイック スタート:Azure Digital Twins を使用して空き部屋を探す](./quickstart-view-occupancy-dotnet.md)
 
 Azure Digital Twins を使用して設備管理アプリケーションについて詳しく見ていきます。
 
-> [!div class="nextstepaction"]
-> [チュートリアル: Azure Digital Twins をデプロイし、空間グラフを構成する](./tutorial-facilities-setup.md)
+>[!div class="nextstepaction"]
+>[チュートリアル:Azure Digital Twins をデプロイし、空間グラフを構成する](./tutorial-facilities-setup.md)
 
 Azure Digital Twins の主要な概念について説明します。
 
-> [!div class="nextstepaction"]
-> [Digital Twins オブジェクト モデルと空間インテリジェンス グラフを理解する](./concepts-objectmodel-spatialgraph.md)
+>[!div class="nextstepaction"]
+>[Digital Twins オブジェクト モデルと空間インテリジェンス グラフを理解する](./concepts-objectmodel-spatialgraph.md)
+
+<!-- Images -->
+[1]: media/overview/azure-digital-twins-in-iot-ecosystem.png

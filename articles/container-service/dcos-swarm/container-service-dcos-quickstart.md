@@ -1,5 +1,5 @@
 ---
-title: Azure Container Service クイックスタート - DC/OS のデプロイ
+title: (非推奨) Azure Container Service クイック スタート - DC/OS クラスターのデプロイ
 description: Azure Container Service クイックスタート - DC/OS のデプロイ
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4cd7f2284f3449fe8abdf1a6f8e85b9b0b712d7a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: efaf82c3f378f572c289b587dbe5df1923a58c62
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998561"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000514"
 ---
-# <a name="deploy-a-dcos-cluster"></a>DC/OS クラスターのデプロイ
+# <a name="deprecated-deploy-a-dcos-cluster"></a>(非推奨) Docker DC/OS クラスターのデプロイ
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 DC/OS は、最新のコンテナー化されたアプリケーションを実行するための分散プラットフォームを提供します。 Azure Container Service を使用すると、運用開始準備の整った DC/OS クラスターのプロビジョニングを簡単かつ迅速に行うことができます。 このクイック スタートでは、DC/OS クラスターをデプロイして基本的なワークロードを実行するのに必要な基本的な手順を詳しく説明します。
 

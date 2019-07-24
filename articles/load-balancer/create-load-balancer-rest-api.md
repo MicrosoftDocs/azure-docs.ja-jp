@@ -1,5 +1,6 @@
 ---
-title: REST API を使用して Azure Load Balancer を作成する | Microsoft Docs
+title: REST API を使用して Azure Load Balancer を作成する
+titlesuffix: Azure Load Balancer
 description: REST API を使用して Azure Load Balancer を作成する方法を説明します。
 services: load-balancer
 documentationcenter: na
@@ -7,20 +8,21 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: kumud
-ms.openlocfilehash: 2f5d3584a429ce35e6905b14bb412c3782fb0185
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 159fe9d6a891858d8d2cc2315e9544b79eb44cff
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416921"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079723"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>REST API を使用して基本の Azure Load Balancer を作成する
 
-Azure Load Balancer は、ロード バランサ―のフロントエンドに到着した新しい受信フローを、ルールと正常性プローブに従って、バックエンド プールのインスタンスに分配します。 Load Balancer は、Basic と Standard の 2 種類の SKU で使用できます。 2 つの SKU バージョンの違いを理解するために、[Load Balancer のSKU を比較](load-balancer-overview.md#skus)します。
+Azure Load Balancer は、ロード バランサ―のフロントエンドに到着した新しい受信フローを、ルールと正常性プローブに従って、バックエンド プールのインスタンスに分配します。 Load Balancer で使用できる SKU は 2 種類です。Basic と Standard です。 2 つの SKU バージョンの違いを理解するために、[Load Balancer のSKU を比較](load-balancer-overview.md#skus)します。
  
 この手引きでは、複数の VM 間での受信要求の負荷分散に役立てるための[Azure REST API](/rest/api/azure/)を使用したAzure Basic Load Balancer の作成方法を示しています。 完全なリファレンス ドキュメントと追加サンプルは[Azure Load Balancer REST reference](/rest/api/load-balancer/)で確認できます。
  
@@ -31,7 +33,7 @@ Azure Load Balancer は、ロード バランサ―のフロントエンドに�
   ```
 ### <a name="uri-parameters"></a>URI パラメーター
 
-|Name  |場所  |必須 |type |説明 |
+|Name  |イン  |必須 |type |説明 |
 |---------|---------|---------|---------|--------|
 |subscriptionId   |  path       |  True       |   string      |  Microsoft Azure サブスクリプションを一意に識別するサブスクリプションの資格情報。 サブスクリプション ID は、全ての修理依頼についてURI の一部を生じさせます。      |
 |resourceGroupName     |     path    | True        |  string       |   リソース グループの名前。     |
@@ -49,7 +51,7 @@ Azure Load Balancer は、ロード バランサ―のフロントエンドに�
 | location | string | リソースの場所。 [List Locations](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations)操作を使用して、最新の場所一覧を取得します。 |
 
 
-## <a name="example-create-and-update-a-basic-load-balancer"></a>例: Basic Load Balancer の作成と更新
+## <a name="example-create-and-update-a-basic-load-balancer"></a>例:Basic Load Balancer の作成と更新
 
 この例では、最初にリソースと一緒に Basic Load Balancer を作成します。 次に、フロント エンド IP 構成、バックエンド アドレス プール、負荷分散規則、正常性プローブ、そして受信の NAT 規則を含むロード バランサ―のリソースを構成します。
 

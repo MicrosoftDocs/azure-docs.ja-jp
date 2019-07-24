@@ -3,17 +3,17 @@ title: Azure IoT Central アプリケーションでデバイス セットを使
 description: オペレーターとして、Azure IoT Central アプリケーションでデバイス セットを使用する方法。
 author: ellenfosborne
 ms.author: elfarber
-ms.date: 01/21/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: a5dd018197ff78ff0563349fd941308c3684a456
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a28cf68eb449b563d93a139b830752748c448dd6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51004121"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759817"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでデバイス セットを使用する
 
@@ -27,7 +27,7 @@ ms.locfileid: "51004121"
 
 1. 左側のナビゲーション メニューで **[Device Sets] (デバイス セット)** を選択します。
 
-1. **[+ 新規]** をクリックします。
+1. **[+新規]** を選択します。
 
     ![新しいデバイス セット](media/howto-use-device-sets/image1.png)
 
@@ -48,9 +48,11 @@ ms.locfileid: "51004121"
 
 1. 左側のナビゲーション メニューで **[Device Sets] (デバイス セット)** を選択します。
 
+1. デバイス セットを選択します。
+
 1. **[ダッシュボード]** タブを選択します。
 
-1. **[テンプレートの編集]** をクリックします。
+1. **[編集]** を選択します。
 
     ![[Design Mode] (デザイン モード) オン](media/howto-use-device-sets/image3.png)
 
@@ -59,7 +61,7 @@ ms.locfileid: "51004121"
 1. リンク タイルを追加します。
     1. 右側のウィンドウで **[Link] (リンク)** を選択します。
     1. リンクに**タイトル**を指定します。
-    1. リンクをクリックしたときに開く URL を選択します。
+    1. リンクを選択したときに開く URL を選択します。
     1. **[Title] (タイトル)** の下に表示される説明をリンクに指定します。
     1. **[保存]** を選択します。
 
@@ -69,9 +71,6 @@ ms.locfileid: "51004121"
 
 1. グリッドを追加します。 グリッドはデバイス セットのデバイスの表で、選択可能な列があります。
     1. 右側のウィンドウで **[Grid] (グリッド)** を選択します。
-
-        ![グリッドの選択](media/howto-use-device-sets/image8.png)
-
     1. グリッドに**タイトル**を指定します。
     1. **[追加/削除]** を選択して、表示する列を選択します。 ポップアップ表示されるパネルで、表示する列を選び、右の矢印を選んで選択します。
     1. **[OK]** を選択します。
@@ -81,31 +80,24 @@ ms.locfileid: "51004121"
 
     1. グリッドをドラッグ アンド ドロップして**ダッシュボード**に配置します。
 
-    > [!NOTE]
-    > 複数のイメージ、リンク、およびグリッドを追加することができます。
+        > [!NOTE]
+        > 複数のイメージ、リンク、およびグリッドを追加することができます。
   
-    1. **[Done]** をクリックします。
+    1. **[完了]** を選択します。
 
-    ![[Design Mode] (デザイン モード) オフ](media/howto-use-device-sets/image10.png)
+### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>デバイス セット ダッシュボードでの場所マップの構成
 
-
-### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>デバイス セット ダッシュボードでの場所マップの構成 
 場所マップを追加して、マップでデバイス セットの場所を視覚化することができます。
 
 デバイス セット ダッシュボードに場所マップを追加するには、デバイス テンプレートで場所プロパティを構成している必要があります (「[Create a Location Property powered by Azure Maps](howto-set-up-template.md)」 (Azure Maps を利用する場所プロパティを作成する) を参照)。
 
-
 1. ご利用のデバイス セット ダッシュボードで、ライブラリからマップを選択します。
-
-    ![デバイス セット ダッシュボードのマップ](media/howto-use-device-sets/LocationMaps1.png)
-
 2. タイトルを付けて、以前にデバイス プロパティの一部として構成した場所プロパティを選択します。
 3. 保存すると、デバイス セットにデバイスの場所を示すマップ タイルが表示されます。
-4. これで、オペレーターがデバイス セット ダッシュボードを表示したときに、場所マップを含む、構成済みのすべてのタイルが表示され、すべてのデバイスの場所がひとめでわかるようになります。 
-    
-> [!NOTE] 
-> マップは任意のサイズに変更することができます。 マップでピンをクリックすると、デバイスの情報、名前と場所が表示されます。 ポップアップをクリックして、デバイスのプロパティ ページに移動できます。  
+4. これで、オペレーターがデバイス セット ダッシュボードを表示したときに、場所マップを含む、構成済みのすべてのタイルが表示され、すべてのデバイスの場所がひとめでわかるようになります。
 
+> [!NOTE]
+> マップは任意のサイズに変更することができます。 マップ内のピンを選択すると、デバイスの情報、名前と場所が表示されます。 ポップアップを選択して、デバイスのプロパティ ページに移動できます。
 
 ## <a name="configure-the-list-for-your-device-set"></a>デバイス セットのリストの構成
 
@@ -127,7 +119,7 @@ ms.locfileid: "51004121"
 
 ## <a name="analytics"></a>Analytics
 
-デバイス セットの分析は、左側のナビゲーション メニューにあるメインの分析タブと同じです。 分析については、[分析を作成する方法](howto-create-analytics.md)に関する記事に詳細情報が記載されています。
+デバイス セットの分析は、左側のナビゲーション メニューにあるメインの分析タブと同じです。 分析については、[分析を作成する方法](howto-use-device-sets.md)に関する記事に詳細情報が記載されています。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/27/2018
+ms.date: 03/14/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: f2cb5d33b8d7a7442da16a38e268c56de363a9c6
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: secdec18
+ms.openlocfilehash: ad8ab0466ed902a2852fe83293fc270cfcaab208
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274084"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997662"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Cloudyn で Azure サブスクリプションとアカウントをアクティブ化する
 
-Azure Resource Manager の資格情報を追加または更新すると、Cloudyn は Azure テナント内のすべてのアカウントとサブスクリプションを検出できるようになります。 仮想マシンで Azure 診断拡張機能も有効になっていると、Cloudyn は CPU やメモリなどの拡張メトリックを収集できます。 この記事では、Azure Resource Manager API を使って新規アカウントおよび既存アカウントに対するアクセスを有効にする方法を説明します。 また、アカウントに関する一般的な問題を解決する方法についても説明します。
+Azure Resource Manager の資格情報を追加または更新すると、Cloudyn は Azure テナント内のすべてのアカウントとサブスクリプションを検出できるようになります。 仮想マシンで Azure Diagnostics 拡張機能も有効になっていると、Cloudyn は CPU やメモリなどの拡張メトリックを収集できます。 この記事では、Azure Resource Manager API を使って新規アカウントおよび既存アカウントに対するアクセスを有効にする方法を説明します。 また、アカウントに関する一般的な問題を解決する方法についても説明します。
 
 サブスクリプションが _アクティブ化されていない_ 場合、Cloudyn はほとんどの Azure サブスクリプション データにアクセスできません。 Cloudyn がこれらのデータにアクセスできるように、_アクティブ化されていない_ アカウントを編集する必要があります。
 
@@ -41,7 +41,7 @@ CloudynCollector アプリケーションを割り当てるには、Azure サブ
 3. Azure Active Directory で **[ユーザー設定]** を選択します。
 4. **[アプリの登録]** オプションを確認します。
     - **[はい]** に設定されている場合は、管理者以外のユーザーでも AD アプリを登録できます。 この設定は、Azure AD テナント内のすべてのユーザーがアプリを登録できることを意味します。  
-    ![アプリの登録](./media/activate-subs-accounts/app-register.png)
+    ![[ユーザー設定] で [アプリの登録] を選択](./media/activate-subs-accounts/app-register.png)
     - **[アプリの登録]** オプションが **[いいえ]** に設定されている場合は、テナント管理者ユーザーのみが Azure Active Directory アプリを登録できます。 テナント管理者が CloudynCollector アプリケーションを登録する必要があります。
 
 
@@ -53,12 +53,12 @@ CloudynCollector アプリケーションを割り当てるには、Azure サブ
 
 1. Cloudyn ポータルで、右上にある歯車アイコンをクリックし、**[クラウド アカウント]** を選択します。
 2. **[Add new account]\(新しいアカウントの追加\)** をクリックし、**[Add new account]\(新しいアカウントの追加\)** ボックスを表示します。 必要な情報を入力します。  
-    ![[Add new account]\(新しいアカウントの追加\) ボックス](./media/activate-subs-accounts//add-new-account.png)
+    ![[新しいアカウントを追加] ボックスに必要な情報を入力](./media/activate-subs-accounts/add-new-account.png)
 
 ### <a name="update-a-subscription"></a>サブスクリプションを更新する
 
 1. アカウント管理で Cloudyn に既に存在する _アクティブ化されていない_ サブスクリプションを更新する場合は、親 _テナント GUID_ の右にある編集用の鉛筆アイコンをクリックします。 サブスクリプションは親テナントの下でグループ化されるため、サブスクリプションを個別にアクティブ化しないようにします。
-    ![サブスクリプションの再検出](./media/activate-subs-accounts/existing-sub.png)
+    ![[サブスクリプションの再検出] ボックスで自分のテナント ID を選択](./media/activate-subs-accounts/existing-sub.png)
 2. 必要に応じて、テナント ID を入力します。 テナント ID がわからない場合は、次の手順を使って調べます。
     1. [Azure Portal](https://portal.azure.com) にサインインします。
     2. Azure Portal で、**[Azure Active Directory]** を選びます。
@@ -106,7 +106,7 @@ Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前�
 Cloudyn を有効にできるのは、Azure サービス管理者だけです。 共同管理者のアクセス許可では不十分です。 ただし、この管理者の要件は回避できます。 Azure Active Directory 管理者に、PowerShell スクリプトを使用して **CloudynAzureCollector** を承認するアクセス許可を付与するように要求できます。 次のスクリプトは、Azure Active Directory の Service Principal **CloudynAzureCollector** を登録するアクセス許可を付与します。
 
 
-```
+```powershell
 #THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #Tenant - enter your tenant ID or Name

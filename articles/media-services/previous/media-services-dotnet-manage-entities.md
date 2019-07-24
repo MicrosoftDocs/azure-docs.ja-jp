@@ -2,7 +2,7 @@
 title: Media Services .NET SDK を使用するアセットと関連エンティティの管理
 description: Media Services SDK for .NET を使用してアセットと関連エンティティを管理する方法について説明します。
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: af5baf3444196e5a0e8412d9ab4f019fdccb033e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a686465b0006c2e9aac6e06cb4ab12d30921e8c5
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783681"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58802679"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Media Services .NET SDK を使用するアセットと関連エンティティの管理
 > [!div class="op_single_selector"]
@@ -28,10 +28,12 @@ ms.locfileid: "33783681"
 > 
 > 
 
-このトピックでは、.NET で Azure Media Services エンティティを管理する方法を説明します。 
+> [!NOTE]
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 [v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)も参照してください。
 
->[!NOTE]
-> 2017 年 4 月 1 日からは、レコードの合計数が最大クォータより小さい場合でも、アカウント内の 90 日前より古いすべてのジョブ レコードが、関連付けられているタスク レコードと共に自動的に削除されます。 たとえば、2017 年 4 月 1 日には、アカウント内の 2016 年 12 月 31 日より古いジョブ レコードはすべて、自動的に削除されます。 ジョブやタスクの情報をアーカイブする必要がある場合は、このトピックで説明するコードを使うことができます。
+このトピックでは、.NET で Azure Media Services エンティティを管理する方法を説明します。
+
+2017 年 4 月 1 日からは、レコードの合計数が最大クォータより小さい場合でも、アカウント内の 90 日前より古いすべてのジョブ レコードが、関連付けられているタスク レコードと共に自動的に削除されます。 たとえば、2017 年 4 月 1 日には、アカウント内の 2016 年 12 月 31 日より古いジョブ レコードはすべて、自動的に削除されます。 ジョブやタスクの情報をアーカイブする必要がある場合は、このトピックで説明するコードを使うことができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -352,7 +354,7 @@ Media Services では、アセットまたはそのファイルに関するア�
 ## <a name="delete-a-job"></a>ジョブを削除する
 ジョブを削除するには、State プロパティで指定されているジョブの状態を確認する必要があります。 終了または取り消し済みのジョブは削除できますが、キューに登録済み、スケジュール済み、処理中などの他の状態のジョブは、取り消さないと削除できません。
 
-次のコード例では、ジョブを削除する方法を示します。この例では、ジョブの状態をチェックして、状態が終了または取り消し済みであるときに削除します。 このコードは、ジョブ参照の取得については、このトピックの前述のセクション「ジョブ参照を取得する」に依存します。
+次のコード例では、ジョブを削除する方法を示します。この例では、ジョブの状態をチェックして、状態が終了または取り消し済みであるときに削除します。 このコードは、ジョブへの参照を取得するためのこのトピックの以前のセクション「ジョブ参照を取得する」に依存します。
 
 ```csharp
     static void DeleteJob(string jobId)

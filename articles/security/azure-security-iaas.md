@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 057c98d4bac87b4e43e5beb8268d3d3bdbe3ec85
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: da165634f5323183b633ee3c8a59e0d2607e8ef1
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364263"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409756"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
 
@@ -38,26 +38,26 @@ ms.locfileid: "46364263"
 ## <a name="protect-vms-by-using-authentication-and-access-control"></a>認証とアクセス制御を使用して VM を保護する
 VM 保護の第一歩は、承認されたユーザーのみが新しい VM を設定し、VM にアクセスできるようにすることです。
 
-**ベスト プラクティス**: VM へのアクセスを制御する。   
-**詳細**: [Azure ポリシー](../azure-policy/azure-policy-introduction.md)を使用して、組織内のリソース向けの規則を確立し、カスタマイズ ポリシーを作成します。 これらのポリシーを[リソース グループ](../azure-resource-manager/resource-group-overview.md)などのリソースに適用します。 リソース グループに属する VM は、それらのポリシーを継承します。
+**ベスト プラクティス**:VM へのアクセスを制御する。   
+**詳細**:[Azure ポリシー](../azure-policy/azure-policy-introduction.md)を使用して、組織内のリソース向けの規則を確立し、カスタマイズ ポリシーを作成します。 これらのポリシーを[リソース グループ](../azure-resource-manager/resource-group-overview.md)などのリソースに適用します。 リソース グループに属する VM は、それらのポリシーを継承します。
 
 組織に多数のサブスクリプションがある場合は、これらのサブスクリプションのアクセス、ポリシー、およびコンプライアンスを効率的に管理する方法が必要になることがあります。 [Azure 管理グループ](../azure-resource-manager/management-groups-overview.md)の範囲は、サブスクリプションを上回ります。 サブスクリプションを管理グループ (コンテナー) にまとめ、それらのグループに管理条件を適用できます。 管理グループ内のすべてのサブスクリプションは、グループに適用された条件を自動的に継承します。 管理グループを使うと、サブスクリプションの種類に関係なく、大きな規模でエンタープライズ レベルの管理を行うことができます。
 
-**ベスト プラクティス**: VM の設定とデプロイ方法のばらつきを減らす。   
-**詳細**: [Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) テンプレートを使用して、デプロイの選択の自由を強化し、環境内の VM を理解してインベントリを実行しやすくします。
+**ベスト プラクティス**:VM の設定とデプロイ方法のばらつきを減らす。   
+**詳細**:[Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) テンプレートを使用して、デプロイの選択の自由を強化し、環境内の VM を理解してインベントリを実行しやすくします。
 
-**ベスト プラクティス**: 特権アクセスをセキュリティで保護する。   
-**詳細**: [最低限の特権](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)と Azure に組み込まれているロールを使用して、ユーザーが VM へのアクセスと設定を実行できるようにします。
+**ベスト プラクティス**:特権アクセスをセキュリティで保護する。   
+**詳細**:[最低限の特権](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)と Azure に組み込まれているロールを使用して、ユーザーが VM へのアクセスと設定を実行できるようにします。
 
-- [仮想マシン共同作成者](../role-based-access-control/built-in-roles.md#virtual-machine-contributor): VM を管理することはできますが、それが接続されている仮想ネットワークまたはストレージ アカウントを管理することはできません。
-- [従来の仮想マシン共同作成者](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): クラシック デプロイ モデルを使って作成された VM を管理することはできますが、その VM が接続されている仮想ネットワークまたはストレージ アカウントを管理することはできません。
-- [セキュリティ マネージャー](../role-based-access-control/built-in-roles.md#security-manager): セキュリティ コンポーネント、セキュリティ ポリシー、VM を管理できます。
-- [DevTest Labs ユーザー](../role-based-access-control/built-in-roles.md#devtest-labs-user): すべてを表示し、VM を接続、開始、再起動、シャットダウンできます。
+- [仮想マシン共同作成者](../role-based-access-control/built-in-roles.md#virtual-machine-contributor):VM を管理することはできますが、それが接続されている仮想ネットワークまたはストレージ アカウントを管理することはできません。
+- [従来の仮想マシン共同作成者](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor):クラシック デプロイ モデルを使って作成された VM を管理することはできますが、その VM が接続されている仮想ネットワークまたはストレージ アカウントを管理することはできません。
+- [セキュリティ管理者](../role-based-access-control/built-in-roles.md#security-admin):Security Center のみ:セキュリティ ポリシーの表示、セキュリティ状態の表示、セキュリティ ポリシーの編集、アラートと推奨事項の表示、アラートと推奨事項の却下を行うことができます。
+- [DevTest Labs ユーザー](../role-based-access-control/built-in-roles.md#devtest-labs-user):すべてを表示し、VM を接続、開始、再起動、シャットダウンできます。
 
 サブスクリプション管理者と共同管理者は、この設定を変更して、彼らをサブスクリプション内のすべての VM の管理者にすることができます。 マシンにログインするすべてのサブスクリプション管理者と共同管理者を信頼できることを確認してください。
 
 > [!NOTE]
-> ライフサイクルが同じ VM は、同じリソース グループにまとめることをお勧めします。 使用するリソースをリソース グループを使ってデプロイして監視し、請求額をまとめることができます。
+> ライフサイクルが同じ VM は、同じリソース グループにまとめることをお勧めします。 皆さんが使用するリソースは、リソース グループを使ってデプロイして監視し、請求額をまとめることができます。
 >
 >
 
@@ -75,17 +75,17 @@ Microsoft Antimalware には、リアルタイム保護、スケジュールさ�
 
 デプロイと検出の組み込み (アラートとインシデント) を容易にするために、Microsoft Antimalware とパートナー ソリューションを [Azure Security Center](https://docs.microsoft.com/azure/security-center/) と統合できます。
 
-**ベスト プラクティス**: マルウェアから保護するためにマルウェア対策ソリューションをインストールする。   
-**詳細**: [Microsoft パートナーのソリューションまたは Microsoft Antimalware をインストール](../security-center/security-center-install-endpoint-protection.md)します。
+**ベスト プラクティス**:マルウェアから保護するためにマルウェア対策ソリューションをインストールする。   
+**詳細**:[Microsoft パートナーのソリューションまたは Microsoft Antimalware をインストール](../security-center/security-center-install-endpoint-protection.md)します。
 
-**ベスト プラクティス**: マルウェア対策ソリューションを Security Center と統合して、保護の状態を監視する。   
-**詳細**: [Security Center でエンドポイントの保護に関する問題を管理](../security-center/security-center-partner-integration.md)します。
+**ベスト プラクティス**:マルウェア対策ソリューションを Security Center と統合して、保護の状態を監視する。   
+**詳細**:[Security Center でエンドポイントの保護に関する問題を管理](../security-center/security-center-partner-integration.md)します。
 
 ## <a name="manage-your-vm-updates"></a>VM の更新の管理
 Azure VM は、他の VM と同じように、ユーザーによって管理されることを意図しています。 Azure では、それらに対して Windows 更新プログラムをプッシュしません。 VM の更新は、お客様が管理する必要があります。
 
-**ベスト プラクティス**: VM を最新の状態に保つ。   
-**詳細**: Azure Automation の [Update Management](../automation/automation-update-management.md) ソリューションを使用すると、Azure、オンプレミスの環境、またはその他のクラウド プロバイダーにデプロイされた Windows コンピューターと Linux コンピューターに関して、オペレーティング システムの更新プログラムを管理できます。 すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。
+**ベスト プラクティス**:VM を最新の状態に保つ。   
+**詳細**:Azure Automation の [Update Management](../automation/automation-update-management.md) ソリューションを使用すると、Azure、オンプレミスの環境、またはその他のクラウド プロバイダーにデプロイされた Windows コンピューターと Linux コンピューターに関して、オペレーティング システムの更新プログラムを管理できます。 すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。
 
 Update Management で管理されるコンピューターでは、評価と更新プログラムのデプロイに次の構成を使用します。
 
@@ -96,17 +96,17 @@ Update Management で管理されるコンピューターでは、評価と更�
 
 Windows Update を使用している場合は、自動 Windows Update の設定は有効のままにしておきます。
 
-**ベスト プラクティス**: デプロイ時に作成したイメージに Windows 更新プログラムの最新の適用が含まれていることを確認する。   
-**詳細**: Windows の更新プログラムを確認してすべてインストールすることは、あらゆるデプロイの第一歩です。 独自にイメージをデプロイするときや、独自のライブラリからイメージをデプロイするときは、このことが特に重要となります。 ただし、Azure Marketplace のイメージは既定で自動的に更新されますが、公開リリース後は遅れが発生する可能性があります (最大数週間)。
+**ベスト プラクティス**:デプロイ時に作成したイメージに Windows 更新プログラムの最新の適用が含まれていることを確認する。   
+**詳細**:Windows の更新プログラムを確認してすべてインストールすることは、あらゆるデプロイの第一歩です。 独自にイメージをデプロイするときや、独自のライブラリからイメージをデプロイするときは、このことが特に重要となります。 ただし、Azure Marketplace のイメージは既定で自動的に更新されますが、公開リリース後は遅れが発生する可能性があります (最大数週間)。
 
-**ベスト プラクティス**: VM を定期的に再デプロイして、OS の最新バージョンを使用する。   
-**詳細**: VM を [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使用して VM を定義して、簡単に再デプロイできるようにします。 テンプレートを使用すると、必要なときに、修正プログラムが適用されセキュリティで保護された VM を設定できます。
+**ベスト プラクティス**:VM を定期的に再デプロイして、OS の最新バージョンを使用する。   
+**詳細**:VM を [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使用して VM を定義して、簡単に再デプロイできるようにします。 テンプレートを使用すると、必要なときに、修正プログラムが適用されセキュリティで保護された VM を設定できます。
 
-**ベスト プラクティス**: 最新のセキュリティ更新プログラムをインストールする。   
-**詳細**: お客様が最初に Azure に移動するワークロードに、ラボと外部向けのシステムがあります。 インターネットへのアクセスが必要なアプリケーションまたはサービスを Azure VM でホストしている場合は、修正プログラムの適用を忘れずに実行してください。 これは、オペレーティング システムへの修正プログラムの適用だけではありません。 サード パーティ アプリケーションでも、修正プログラムの未適用による脆弱性が原因で問題が発生する可能性があります。このような問題は、適切な修正プログラム管理が行われていれば回避できます。
+**ベスト プラクティス**:最新のセキュリティ更新プログラムをインストールする。   
+**詳細**:お客様が最初に Azure に移動するワークロードに、ラボと外部向けのシステムがあります。 インターネットへのアクセスが必要なアプリケーションまたはサービスを Azure VM でホストしている場合は、修正プログラムの適用を忘れずに実行してください。 これは、オペレーティング システムへの修正プログラムの適用だけではありません。 サード パーティ アプリケーションでも、修正プログラムの未適用による脆弱性が原因で問題が発生する可能性があります。このような問題は、適切な修正プログラム管理が行われていれば回避できます。
 
-**ベスト プラクティス**: バックアップ ソリューションをデプロイしてテストする。   
-**詳細**: セキュリティ更新プログラムと同様、バックアップについても、他の操作と同じ方法で対処する必要があります。 これは、クラウドに拡張する運用環境に含まれるシステムに該当します。
+**ベスト プラクティス**:バックアップ ソリューションをデプロイしてテストする。   
+**詳細**:セキュリティ更新プログラムと同様、バックアップについても、他の操作と同じ方法で対処する必要があります。 これは、クラウドに拡張する運用環境に含まれるシステムに該当します。
 
 テスト用システムと開発用システムは、ユーザーがオンプレミス環境の経験で使い慣れているのと同様の復元機能を提供できるバックアップ戦略に沿う必要があります。 Azure に移動する運用ワークロードは、可能な限り、既存のバックアップ ソリューションと統合するのが適切です。 または、[Azure Backup](../backup/backup-azure-vms-first-look-arm.md) を使用してバックアップ要件に対処することもできます。
 
@@ -128,7 +128,7 @@ Windows Update を使用している場合は、自動 Windows Update の設定�
 
 Security Center は脅威を積極的に監視でき、脅威のリスクはセキュリティ通知で公開されます。 関連性のある脅威は、セキュリティ インシデントと呼ばれる 1 つのビューに集約されます。
 
-Security Center では、データを[Azure Log Analytics](../log-analytics/log-analytics-overview.md) に格納します。 Log Analytics には、アプリケーションとリソースの操作に関する分析情報を提供するクエリ言語と分析エンジンがあります。 データは、[Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md)、管理ソリューション、およびクラウドやオンプレミスの仮想マシンにインストールされたエージェントからも収集されます。 この共有機能は、環境の全体像を把握するうえで役に立ちます。
+Security Center では、データを [Azure Monitor ログ](../log-analytics/log-analytics-overview.md)に格納します。 Azure Monitor ログには、アプリケーションとリソースの操作に関する分析情報を提供するクエリ言語と分析エンジンがあります。 データは、[Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md)、管理ソリューション、およびクラウドやオンプレミスの仮想マシンにインストールされたエージェントからも収集されます。 この共有機能は、環境の全体像を把握するうえで役に立ちます。
 
 許可のないユーザーがセキュリティ制御を回避しようとする試みは、VM を強固なセキュリティで保護していなければ認識できません。
 
@@ -137,8 +137,8 @@ VM のプロセスが必要以上に多くのリソースを消費している�
 
 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) を使用してリソースの正常性を把握することをお勧めします。 Azure Monitor には次の特長があります。
 
-- [Azure 診断ログ ファイル](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md): VM のリソースを監視し、パフォーマンスと可用性を損なう可能性がある問題を特定できます。
-- [Azure 診断拡張機能](../monitoring-and-diagnostics/azure-diagnostics.md): Windows VM 監視と診断機能を備えています。 この拡張機能を [Azure Resource Manager テンプレート](../virtual-machines/windows/extensions-diagnostics-template.md)に含めることによって、これらの機能を有効にすることができます。
+- [Azure 診断ログ ファイル](../azure-monitor/platform/diagnostic-logs-overview.md):VM のリソースを監視し、パフォーマンスと可用性を損なう可能性がある問題を特定できます。
+- [Microsoft Azure 診断拡張機能](../azure-monitor/platform/diagnostics-extension-overview.md):Windows VM 監視と診断機能を備えています。 この拡張機能を [Azure Resource Manager テンプレート](../virtual-machines/windows/extensions-diagnostics-template.md)に含めることによって、これらの機能を有効にすることができます。
 
 VM のパフォーマンスを監視していない組織は、パフォーマンス パターンにおけるある変化が正常であるか異常であるかを判断できません。 消費しているリソースが通常よりも多い VM は、外部リソースからの攻撃を受けているか、その VM で実行されているプロセスが侵害されていることを示唆している可能性があります。
 
@@ -149,17 +149,17 @@ VM のパフォーマンスを監視していない組織は、パフォーマ�
 
 Azure Disk Encryption 使用時のベスト プラクティスを次に示します。
 
-**ベスト プラクティス**: VM の暗号化を有効にする。   
-**詳細**: Azure Disk Encryption は、暗号化キーを生成してキー コンテナーに書き込みます。 Key Vault の暗号化キーを管理するには、Azure AD 認証が必要です。 この目的で Azure AD アプリケーションを作成します。 認証には、クライアント シークレット ベースの認証か、[クライアント証明書ベースの Azure AD 認証](../active-directory/active-directory-certificate-based-authentication-get-started.md)を使用できます。
+**ベスト プラクティス**:VM の暗号化を有効にする。   
+**詳細**:Azure Disk Encryption は、暗号化キーを生成してキー コンテナーに書き込みます。 Key Vault の暗号化キーを管理するには、Azure AD 認証が必要です。 この目的で Azure AD アプリケーションを作成します。 認証には、クライアント シークレット ベースの認証か、[クライアント証明書ベースの Azure AD 認証](../active-directory/active-directory-certificate-based-authentication-get-started.md)を使用できます。
 
-**ベスト プラクティス**: 暗号化キーのセキュリティに対する追加レイヤーとしてキー暗号化キー (KEK) を使用する。 キー コンテナーに KEK を追加します。   
-**詳細**: キー コンテナー内にキー暗号化キーを作成するには、[Add-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) コマンドレットを使用します。 キー管理用のオンプレミスのハードウェア セキュリティ モジュール (HSM) から KEK をインポートすることもできます。 詳細については、[Key Vault](../key-vault/key-vault-hsm-protected-keys.md) のドキュメントを参照してください。 キー暗号化キーが指定されている場合、Azure Disk Encryption では、Key Vault への書き込みの前に、そのキーを使用して暗号化シークレットがラップされます。 このキーのエスクロー コピーをオンプレミスのキー管理 HSM で保持することは、キーを誤って削除した場合の二重の保護を提供します。
+**ベスト プラクティス**:暗号化キーのセキュリティに対する追加レイヤーとしてキー暗号化キー (KEK) を使用する。 キー コンテナーに KEK を追加します。   
+**詳細**: キー コンテナーにキー暗号化キーを作成するには、[Add-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey) コマンドレットを使用します。 キー管理用のオンプレミスのハードウェア セキュリティ モジュール (HSM) から KEK をインポートすることもできます。 詳細については、[Key Vault](../key-vault/key-vault-hsm-protected-keys.md) のドキュメントを参照してください。 キー暗号化キーが指定されている場合、Azure Disk Encryption では、Key Vault への書き込みの前に、そのキーを使用して暗号化シークレットがラップされます。 このキーのエスクロー コピーをオンプレミスのキー管理 HSM で保持することは、キーを誤って削除した場合の二重の保護を提供します。
 
-**ベスト プラクティス**: ディスクを暗号化する前に、[スナップショット](../virtual-machines/windows/snapshot-copy-managed-disk.md)またはバックアップ、あるいはその両方を作成する。 バックアップは、暗号化中に予期しないエラーが発生した場合の回復オプションを提供します。   
-**詳細**: マネージド ディスクを含む VM では、暗号化する前にバックアップが必要です。 バックアップを作成した後、**Set-AzureRmVMDiskEncryptionExtension** コマンドレットで *-skipVmBackup* パラメーターを指定して、マネージド ディスクを暗号化できます。 暗号化された VM のバックアップと復元方法の詳細については、[Azure Backup](../backup/backup-azure-vms-encryption.md) に関する記事を参照してください。
+**ベスト プラクティス**:ディスクを暗号化する前に、[スナップショット](../virtual-machines/windows/snapshot-copy-managed-disk.md)またはバックアップ、あるいはその両方を作成する。 バックアップは、暗号化中に予期しないエラーが発生した場合の回復オプションを提供します。   
+**詳細**:マネージド ディスクを含む VM では、暗号化する前にバックアップが必要になります。 バックアップを作成した後、**Set-AzVMDiskEncryptionExtension** コマンドレットで *-skipVmBackup* パラメーターを指定して、マネージド ディスクを暗号化できます。 暗号化された VM のバックアップと復元方法の詳細については、[Azure Backup](../backup/backup-azure-vms-encryption.md) に関する記事を参照してください。
 
-**ベスト プラクティス**: 暗号化シークレットがリージョンの境界を超えないようにするため、Azure Disk Encryption ではキー コンテナーと VM を同じリージョンに併置する必要がある。   
-**詳細**: 暗号化する VM と同じリージョン内にキー コンテナーを作成して使用します。
+**ベスト プラクティス**:暗号化シークレットがリージョンの境界を越えないようにするため、Azure Disk Encryption ではキー コンテナーと VM を同じリージョンに併置する必要がある。   
+**詳細**:暗号化する VM と同じリージョン内にキー コンテナーを作成して使用します。
 
 Azure Disk Encryption を適用すると、次のビジネス ニーズに対応できます。
 

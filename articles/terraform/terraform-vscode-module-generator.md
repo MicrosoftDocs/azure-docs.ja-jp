@@ -2,24 +2,24 @@
 title: Azure で Yeoman を使用して Terraform ベース テンプレートを作成する
 description: Azure で Yeoman を使用して Terraform ベース テンプレートを作成する方法について説明します。
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: Terraform、DevOps、仮想マシン、Azure、Yeoman
-author: v-mavick
+author: tomarchermsft
 manager: jeconnoc
-ms.author: v-mavick
+ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/08/2018
-ms.openlocfilehash: 15ef4795544044427805e21f7a8e98646c9cf9bd
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 7e66f374a1f5f4fb050f366fdad0e787292101f8
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284337"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526743"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Azure で Yeoman を使用して Terraform ベース テンプレートを作成する
 
 [Terraform](https://docs.microsoft.com/azure/terraform/
-) は Azure にインフラストラクチャを簡単に作成する方法を提供します。 [Yeoman](http://yeoman.io/)は、優れた*ベスト プラクティス*フレームワークを提供する一方で、モジュール開発者が Terraform モジュールを作成するジョブを大幅に簡素化します。
+) は Azure にインフラストラクチャを簡単に作成する方法を提供します。 [Yeoman](https://yeoman.io/)は、優れた*ベスト プラクティス*フレームワークを提供する一方で、モジュール開発者が Terraform モジュールを作成するジョブを大幅に簡素化します。
 
 このアーティクルでは、Yeoman モジュール ジェネレーターを使用してベースの Terraform テンプレートを作成する方法を説明します。 その後、新しい Terraform テンプレートをテストする方法について説明します。次の 2 とおりの方法を使用します。
 
@@ -28,11 +28,11 @@ ms.locfileid: "52284337"
 
 ## <a name="prerequisites"></a>前提条件
 
-- **Azure サブスクリプション**: Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
-- **Visual Studio Code**: [Visual Studio Code](https://www.bing.com/search?q=visual+studio+code+download&form=EDGSPH&mkt=en-us&httpsmsn=1&refig=dffc817cbc4f4cb4b132a8e702cc19a3&sp=3&ghc=1&qs=LS&pq=visual+studio+code&sk=LS1&sc=8-18&cvid=dffc817cbc4f4cb4b132a8e702cc19a3&cc=US&setlang=en-US) を使用して、Yeoman　ジェネレーターによって作成されたファイルを確認します。 ただし、任意のコード エディターを使用することもできます。
-- **Terraform**: Yeoman　で作成したモジュールを実行するには[Terraform](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure )のインストールが必要になります。
-- **Docker**: Yeoman ジェネレーターによって作成したモジュールを実行するのに[Docker](https://www.docker.com/get-started)を使用します。 (サンプルモジュールの実行に、Docker の代わりに Ruby　を使用しても良い。)
-- **Go プログラミング言語**: Yeoman で生成されたテストケースは Go で書かれているため、[Go](https://golang.org/) のインストールが必要になります。
+- **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+- **Visual Studio Code**:[Visual Studio Code](https://www.bing.com/search?q=visual+studio+code+download&form=EDGSPH&mkt=en-us&httpsmsn=1&refig=dffc817cbc4f4cb4b132a8e702cc19a3&sp=3&ghc=1&qs=LS&pq=visual+studio+code&sk=LS1&sc=8-18&cvid=dffc817cbc4f4cb4b132a8e702cc19a3&cc=US&setlang=en-US) を使用して、Yeoman ジェネレーターによって作成されたファイルを確認します。 ただし、任意のコード エディターを使用することもできます。
+- **Terraform**:Yeoman で作成したモジュールを実行するには、[Terraform](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure ) のインストールが必要になります。
+- **Docker**:Yeoman ジェネレーターによって作成したモジュールを実行するために、[Docker](https://www.docker.com/get-started) を使用します。 (サンプルモジュールの実行に、Docker の代わりに Ruby　を使用しても良い。)
+- **Go プログラミング言語**: Yeoman によって生成されたテスト ケースは Go で記述されているため、[Go](https://golang.org/) のインストールが必要になります。
 
 >[!NOTE]
 >このチュートリアルの手順のほとんどには、コマンドラインのエントリが含まれます。 ここで説明した手順は、すべてのオペレーティング システムとコマンド ライン ツールに適用されます。 ここで紹介している例では、ローカル環境には PowerShell を、Cloud Shell 環境には Git Bash を使用しました。
@@ -73,8 +73,8 @@ Yeoman テンプレートは、**現在のディレクトリ**内にファイル
 1. 作成しようとしている新しい空のディレクトリを含む親ディレクトリに移動します。
 1. 「 `mkdir <new-directory-name>` 」を入力します。
 
-    >[!NOTE]
-    ><new-directory-name> を新しいディレクトリの名前に置き換えます。 この例では、新しいディレクトリを `GeneratorDocSample` という名前にします。
+    > [!NOTE]
+    > `<new-directory-name>` を新しいディレクトリの名前に置き換えます。 この例では、新しいディレクトリを `GeneratorDocSample` という名前にします。
 
     ![mkdir](media/terraform-vscode-module-generator/ymg-mkdir-GeneratorDocSample.png)
 
@@ -140,16 +140,16 @@ Yeoman モジュール ジェネレーターで作成されたファイルのい
 
 ビルド ステップを定義します。 その手順は次のとおりです。
 
-- **ビルド**: main.tf ファイルの書式設定を検証します。
-- **ユニット**: 生成されたモジュールのスケルトンには、単体テストのコードは含まれません。 単体テストのシナリオを指定する場合は、ここでそのコードを追加します。
-- **e2e**: モジュールのエンド ツー エンド テストを実行します。
+- **ビルド**:main.tf ファイルの書式設定を検証します。
+- **ユニット**:生成されたモジュールのスケルトンには、単体テストのコードは含まれません。 単体テストのシナリオを指定する場合は、ここでそのコードを追加します。
+- **e2e**:モジュールのエンド ツー エンド テストを実行します。
 
-### <a name="test"></a>test
+### <a name="test"></a>テスト
 
 - テスト ケースは Go で述されています。
 - テストのすべてのコードは、エンド ツー エンド テストです。
 - エンド ツー エンド テストでは、Terraform の使用を試行して、**フィクスチャ**下で定義されたすべての項目をプロビジョニングし、**template_output.go** コード内の出力を定義済みの期待値と比較します。
-- **Gopkg.lock** と **Gopkg.toml**: 依存関係を定義します。 
+- **Gopkg.lock** と **Gopkg.toml**:依存関係を定義します。 
 
 ## <a name="test-your-new-terraform-module-using-a-docker-file"></a>Docker ファイルを使用して新しい Terraform モジュールをテストする
 
@@ -248,16 +248,16 @@ Docker ファイルに代わり Cloud Shell を使用することで、このプ
 
 1. この時点で、環境変数には既に、Cloud Shell によって自動的に GOPATH が構成されています。 このパスを確認するには、「`go env`」と入力します。
 
-1. $GOPATH フォルダーがまだ存在しない場合は、「`mkdir ~/go`」と入力して作成します。
+1. $GOPATH フォルダーがまだ存在しない場合は、作成します。「 `mkdir ~/go` 」を入力します。
 
-1. 「`mkdir ~/go/src`」と入力して、$GOPATH フォルダー内に 1 つフォルダーを作成します。 このフォルダーは、自分が作成する可能性のある各種プロジェクト フォルダー (次の手順で作成する <your-module-name> フォルダーなど) を格納したり整理したりする目的で使用します。
+1. $GOPATH フォルダー内に 1 つのフォルダーを作成します。「 `mkdir ~/go/src` 」を入力します。 このフォルダーは、自分が作成する可能性のある各種プロジェクト フォルダー (次の手順で作成する `<your-module-name>` フォルダーなど) を格納したり整理したりする目的で使用します。
 
-1. 「`mkdir ~/go/src/<your-module-name>`」と入力して、Terraform モジュールを格納するためのフォルダーを作成します。
+1. Terraform モジュールを格納するためのフォルダーを作成します。「 `mkdir ~/go/src/<your-module-name>` 」を入力します。
 
     >[!NOTE]
     >この例では、フォルダー名を `my-module-name` としました。
 
-1. 「`cd ~/go/src/<your-module-name>`」と入力して、目的のモジュールのフォルダーに移動します。
+1. 目的のモジュール フォルダーに移動します。「`cd ~/go/src/<your-module-name>`」と入力します
 
 ### <a name="create-and-test-your-terraform-module"></a>Terraform モジュールを作成してテストする
 
@@ -283,4 +283,4 @@ Docker ファイルに代わり Cloud Shell を使用することで、このプ
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure Terraform Visual Studio Code の拡張機能をインストールして使用する。](https://docs.microsoft.com/azure/terraform/terraform-vscode-extension)
+> [Azure Terraform Visual Studio Code 拡張機能のインストールと使用](https://docs.microsoft.com/azure/terraform/terraform-vscode-extension)

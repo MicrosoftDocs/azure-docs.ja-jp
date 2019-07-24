@@ -1,6 +1,6 @@
 ---
 title: Azure の Windows VM での IaaS ディスクのバックアップとディザスター リカバリー | Microsoft Docs
-description: この記事では、Azure の IaaS 仮想マシンとディスクのバックアップおよびディザスター リカバリーを計画する方法について説明します。 このドキュメントでは、管理ディスクと非管理対象ディスクの両方について説明しています。
+description: この記事では、Azure の IaaS 仮想マシンとディスクのバックアップおよびディザスター リカバリーを計画する方法について説明します。 このドキュメントでは、マネージド ディスクと非管理対象ディスクの両方について説明しています。
 services: virtual-machines-linux
 cloud: Azure
 documentationcenter: na
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: luywang
-ms.openlocfilehash: 0a6a9029e9fb8627b1a9434a540d8a4d6c4e6789
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.subservice: disks
+ms.openlocfilehash: ce0187da1f7356b546addb317fef5b1ec8e77332
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38718701"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457712"
 ---
 [!INCLUDE [virtual-machines-common-premium-storage.md](../../../includes/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks.md)]

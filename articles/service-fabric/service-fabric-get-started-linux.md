@@ -4,7 +4,7 @@ description: Linux にランタイムと SDK をインストールし、ロー�
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 00164789d7f37277127878911c3f368a56ec7710
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 9f738ab5022d1378925d920818e3f89fc2a1ee6d
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616974"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670528"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -74,7 +74,7 @@ Service Fabric ランタイムと共通 SDK の手動インストールの場合
 2. ソース リストに Service Fabric リポジトリを追加します。
 
     ```bash
-    sudo sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main" > /etc/apt/sources.list.d/servicefabric.list'
+    sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main" > /etc/apt/sources.list.d/servicefabric.list'
     ```
 
 3. ソース リストに `dotnet` リポジトリを追加します。
@@ -104,7 +104,14 @@ Service Fabric ランタイムと共通 SDK の手動インストールの場合
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. 新しく追加されたリポジトリに基づいてパッケージ リストを更新します。
+7. Azul JDK キーを APT キーリングに追加し、そのリポジトリを設定します。
+
+    ```bash
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9
+    sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
+    ```
+
+8. 新しく追加されたリポジトリに基づいてパッケージ リストを更新します。
 
     ```bash
     sudo apt-get update
@@ -155,7 +162,7 @@ Service Fabric ランタイムと共通 SDK の手動インストールの場合
 sudo apt-get install servicefabricsdkcommon
 ```
 
->   [!TIP]
+> [!TIP]
 >   Service Fabric パッケージのライセンス受け取りを自動化するコマンドを以下に示します。
 >   ```bash
 >   echo "servicefabric servicefabric/accepted-eula-ga select true" | sudo debconf-set-selections
@@ -172,7 +179,7 @@ SDK インストールに付属する Service Fabric ランタイムには、次
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | OpenJDK 1.8 | npm から暗黙的に | latest |
+Ubuntu | 2.0.0 | AzulJDK 1.8 | npm から暗黙的に | latest |
 RHEL | - | OpenJDK 1.8 | npm から暗黙的に | latest |
 
 ## <a name="set-up-a-local-cluster"></a>ローカル クラスターをセットアップする
@@ -212,7 +219,7 @@ Service Fabric には、ターミナルから Yeoman テンプレート ジェ�
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
     nvm install node
     ```
-2. npm からマシンに [Yeoman](http://yeoman.io/) テンプレート ジェネレーターをインストールします。
+2. npm からマシンに [Yeoman](https://yeoman.io/) テンプレート ジェネレーターをインストールします。
 
     ```bash
     npm install -g yo
@@ -232,14 +239,14 @@ Service Fabric には、ターミナルから Yeoman テンプレート ジェ�
 
 ## <a name="set-up-java-development"></a>Java 開発をセットアップする
 
-Java を使用して Service Fabric サービスをビルドするには、JDK 1.8 および Gradle をインストールしてビルド タスクを実行します。 次のスニペットで Open JDK 1.8 と Gradle をインストールしてください。 Service Fabric Java ライブラリが Maven から取り込まれます。
+Java を使用して Service Fabric サービスをビルドするには、Gradle をインストールしてビルド タスクを実行します。 次のコマンドを実行して、Gradle をインストールします。 Service Fabric Java ライブラリが Maven から取り込まれます。
 
 
 * Ubuntu
 
     ```bash
-    sudo apt-get install openjdk-8-jdk-headless
-    sudo apt-get install gradle
+    curl -s https://get.sdkman.io | bash
+    sdk install gradle 5.1
     ```
 
 * Red Hat Enterprise Linux 7.4 (Service Fabric プレビュー サポート)
@@ -265,11 +272,11 @@ Eclipse IDE for Java Developers または Eclipse IDE for Java EE Developers 内
 > 
 > Ubuntu では、パッケージ インストーラー (`apt` または `apt-get`) を使用するのではなく、Eclipse サイトから直接インストールすることをお勧めします。 そうすることで、Eclipse の最新バージョンを確実に入手することができます。 Eclipse IDE for Java Developers または Eclipse IDE for Java EE Developers をインストールできます。
 
-1. Eclipse で、Eclipse Neon 以降および Buildship バージョン 2.2.1 以降がインストールされていることを確認します。 **[ヘルプ]** > **[Eclipse について]** > **[インストール詳細]** の順に選択して、インストールされたコンポーネントのバージョンを確認します。 Buildship は、「[Eclipse Buildship: Eclipse Plug-ins for Gradle (Eclipse Buildship: Gradle 用の Eclipse プラグイン)][buildship-update]」の手順に従って更新できます。
+1. Eclipse で、Eclipse Neon 以降および Buildship バージョン 2.2.1 以降がインストールされていることを確認します。 **[ヘルプ]** > **[Eclipse について]** > **[インストール詳細]** の順に選択して、インストールされたコンポーネントのバージョンを確認します。 Buildship は、[Eclipse Buildship:Gradle 用の Eclipse プラグイン][buildship-update]に関するページの手順に従って更新できます。
 
 2. **[Help]\(ヘルプ\)** > **[Install New Software]\(新しいソフトウェアのインストール\)** の順に選択して、Service Fabric プラグインをインストールします。
 
-3. **[Work with]\(作業対象\)** ボックスに「**http://dl.microsoft.com/eclipse**」と入力します。
+3. **[Work with]\(作業対象\)** ボックスに「 **https://dl.microsoft.com/eclipse** 」と入力します。
 
 4. **[追加]** を選択します。
 

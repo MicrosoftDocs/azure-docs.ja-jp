@@ -1,23 +1,24 @@
 ---
-title: 'クイック スタート: リモート画像の分析 - REST、Java - Computer Vision'
+title: クイック スタート:リモート画像の分析 - REST、Java
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Java で Computer Vision API を使用して画像を分析します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/27/2019
 ms.author: pafarley
-ms.openlocfilehash: 2503d8cda05787885935ffab1be6b1efd85ad0cd
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: 213b227c4ab3f97d9f8787f4e84348e36c43a6e6
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852114"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630505"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-java-in-computer-vision"></a>クイック スタート: Computer Vision で REST API と Java を使用してリモート画像を分析する
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>クイック スタート:Computer Vision の REST API と Java を使用してリモート画像を分析する
 
 このクイック スタートでは、Computer Vision の REST API を使用して、リモートに格納されている画像を分析し、視覚的特徴を抽出します。 [画像分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)メソッドを使うと、画像の内容に基づいて視覚的特徴を抽出できます。
 
@@ -55,9 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. `Main` パブリック クラスを次のコードで置換し、必要に応じてコードに次の変更を加えます。
    1. `subscriptionKey` 値を、サブスクリプション キーに置き換えます。
    1. 必要に応じて、サブスクリプション キーを取得した Azure リージョンの[画像分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)メソッドのエンドポイント URL で `uriBase` 値を置き換えます。
-   1. 必要に応じて、分析したい別の画像の URL で `imageToAnalyze` 値を置き換えます。
-1. 保存し、Java プロジェクトをビルドします。
-1. IDE を使用している場合は、`Main` を実行します。 それ以外の場合は、コマンド プロンプト ウィンドウを開き、`java` コマンドを利用してコンパイルしたクラスを実行します。 たとえば、「 `java Main` 」のように入力します。
+   1. 必要に応じて、`imageToAnalyze` 値を、分析したい別の画像の URL に置き換えます。
 
 ```java
 public class Main {
@@ -124,6 +123,25 @@ public class Main {
     }
 }
 ```
+
+## <a name="compile-and-run-the-program"></a>プログラムをコンパイルして実行する
+
+1. 保存し、Java プロジェクトをビルドします。
+1. IDE を使用している場合は、`Main` を実行します。
+
+または、コマンド ライン ウィンドウからプログラムを実行する場合は、次のコマンドを実行します。 これらのコマンドでは、`Main.java` と同じフォルダー内の `libs` という名前のフォルダーにライブラリが含まれていると想定しています。そうでない場合は、`libs` をご使用のライブラリへのパスに置き換える必要があります。
+
+1. `Main.java` ファイルをコンパイルします。
+
+    ```bash
+    javac -cp ".;libs/*" Main.java
+    ```
+
+1. プログラムを実行します。 QnA Maker API に要求が送信され、KB が作成された後、30 秒おきに結果がポーリングされます。 それぞれの応答は、コマンド ライン ウィンドウに出力されます。
+
+    ```bash
+    java -cp ".;libs/*" Main
+    ```
 
 ## <a name="examine-the-response"></a>結果の確認
 

@@ -9,17 +9,16 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 58f612906af55575e9d42307af924ea0a8501ca1
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 08e7341bfd1c384e41e6d3f1bd7810552899849a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140347"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092193"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Data Management Gateway - 高可用性とスケーラビリティ (プレビュー)
 > [!NOTE]
@@ -30,8 +29,8 @@ ms.locfileid: "42140347"
 
 > [!NOTE]
 > この記事では、Integration Runtime (初期の Data Management Gateway) の基本を理解していることを前提とします。 まだ理解が不十分な場合は、「[Data Management Gateway](data-factory-data-management-gateway.md)」をご覧ください。
-
->**このプレビュー機能は、Data Management Gateway バージョン 2.12.xxxx.x 以降で正式にサポートされています**。 バージョン 2.12.xxxx.x またはそれ以降を使用していることを確認してください。 Data Management Gateway の最新バージョンは、[こちら](https://www.microsoft.com/download/details.aspx?id=39717)からダウンロードできます。
+> 
+> **このプレビュー機能は、Data Management Gateway バージョン 2.12.xxxx.x 以降で正式にサポートされています**。 バージョン 2.12.xxxx.x またはそれ以降を使用していることを確認してください。 Data Management Gateway の最新バージョンは、[こちら](https://www.microsoft.com/download/details.aspx?id=39717)からダウンロードできます。
 
 ## <a name="overview"></a>概要
 ポータルから、1 つの論理ゲートウェイを複数のオンプレミス コンピューターにインストールされているデータ管理ゲートウェイと関連付けることができます。 これらのコンピューターは、**ノード**と呼ばれます。 最大で **4 つのノードを**を 1 つの論理ゲートウェイに関連付けできます。 1 つの論理ゲートウェイと複数のノード (ゲートウェイがインストールされているオンプレミス コンピューター) を関連付ける利点は次のとおりです。  
@@ -164,14 +163,14 @@ ms.locfileid: "42140347"
 
 - 証明書は必ず、公的に信頼されている X509 v3 証明書とします。 公的 (第三者) 証明機関 (CA) によって発行された証明書を使用することを推奨します。
 - 統合ランタイムの各ノードは、資格情報マネージャー アプリケーションを実行するクライアント マシンだけでなく、この証明書を信頼する必要があります。 
-> [!NOTE]
-> Copy Wizard/ Azure Portal から資格情報を安全に設定するとき、資格情報マネージャー アプリケーションが使用されます。 また、オンプレミス/プライベート データ ストアと同じネットワークにあるあらゆるマシンから起動できます。
+  > [!NOTE]
+  > Copy Wizard/ Azure Portal から資格情報を安全に設定するとき、資格情報マネージャー アプリケーションが使用されます。 また、オンプレミス/プライベート データ ストアと同じネットワークにあるあらゆるマシンから起動できます。
 - ワイルドカード証明書がサポートされます。 FQDN 名が **node1.domain.contoso.com** の場合、証明書のサブジェクト名として ***.domain.contoso.com** を使用できます。
 - サブジェクトの別名の最後の項目のみが使用され、現行の制限に起因してその他はすべて無視されるため、SAN 証明書は推奨されません。 例:  SAN が **node1.domain.contoso.com** と **node2.domain.contoso.com** の SAN 証明書がある場合、FQDN が **node2.domain.contoso.com** のマシンでのみこの証明書を使用できます。
 - SSL 証明書のために、Windows Server 2012 R2 でサポートされている任意のキー サイズをサポートします。
 - CNG キーを使用する証明書はサポートされていません。
 
-#### <a name="faq-when-would-i-not-enable-this-encryption"></a>FAQ: どのようなときにこの暗号化を有効にしないほうがよいでしょうか。
+#### <a name="faq-when-would-i-not-enable-this-encryption"></a>よくあるご質問: どのようなときにこの暗号化を有効にしないほうがよいでしょうか。
 暗号化を有効にすると、(公開証明書を持つ) インフラストラクチャの特定のコストを増やします。そのため、以下の場合、暗号化を有効にしないことがあります。
 - 信頼されているネットワークまたは IP/SEC のような透過的暗号化のあるネットワークで統合ランタイムが実行されているとき。 このチャネル通信は信頼されているネットワーク内に制限されるため、追加の暗号化は必要ではないことがあります。
 - 統合ランタイムが運用環境で実行されていないとき。 TLS/SSL 証明書コストの削減に役立ちます。
@@ -188,7 +187,7 @@ Azure Portal では、ゲートウェイ ノードの状態と共に、各ノー
 監視のプロパティ | 説明
 :------------------ | :---------- 
 Name | ゲートウェイに関連付けられている論理ゲートウェイとノードの名前です。  
-Status | 論理ゲートウェイとゲートウェイ ノードの状態です  (たとえば、オンライン/オフライン/制限/ など)。これらの状態の詳細については、「[ゲートウェイの状態](#gateway-status)」セクションをご覧ください。 
+Status | 論理ゲートウェイとゲートウェイ ノードの状態です  例:オンライン、オフライン、制限あり、など。これらの状態の詳細については、「[ゲートウェイの状態](#gateway-status)」セクションをご覧ください。 
 Version | 論理ゲートウェイと各ゲートウェイ ノードのバージョンを示します。 論理ゲートウェイのバージョンは、グループ内のノードで多数を占めるバージョンに基づいて決定されます。 論理ゲートウェイの設定の中にさまざまなバージョンのノードがある場合は、論理ゲートウェイと同じバージョン番号を持つノードのみが適切に機能します。 それ以外のノードは制限モードであり、手動で更新する必要があります (自動更新に失敗する場合のみ)。 
 使用可能なメモリ | ゲートウェイ ノードで使用可能なメモリです。 この値は、ほぼリアルタイムのスナップショットです。 
 CPU 使用率 | ゲートウェイ ノードの CPU 使用率。 この値は、ほぼリアルタイムのスナップショットです。 

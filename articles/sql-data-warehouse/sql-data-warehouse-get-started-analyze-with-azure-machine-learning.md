@@ -2,20 +2,20 @@
 title: Azure Machine Learning を使用したデータの分析 | Microsoft Docs
 description: Azure Machine Learning を使用し、Azure SQL Data Warehouse で保存されたデータに基づいて予測機械学習モデルを構築します。
 services: sql-data-warehouse
-author: kavithaj
+author: anumjs
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
-ms.date: 04/17/2018
-ms.author: kavithaj
+ms.subservice: consume
+ms.date: 03/22/2019
+ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 4324b1ac343a0e2b77c21d7834beffae08403953
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 7f9500adc6871c4c9f81c32bf456bc36cf91db4b
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247528"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402560"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの分析
 > [!div class="op_single_selector"]
@@ -42,9 +42,9 @@ ms.locfileid: "43247528"
 このデータは、AdventureWorksDW データベースの dbo.vTargetMail ビューにあります。 このデータを読み取るには、次の手順を実行します。
 
 1. [Azure Machine Learning Studio][Azure Machine Learning studio] にサインインし、実験をクリックします。
-2. **[+新規]** をクリックし、**[Blank Experiment (空の実験)]** を選択します。
-3. 実験の名前として「対象を絞ったマーケティング」と入力します。
-4. [モジュール] ウィンドウから **[リーダー]** モジュールをキャンバスにドラッグします。
+2. 画面の左下にある **[+ 新規]** をクリックし、**[Blank Experiment]\(空白の実験\)** を選択します。
+3. 実験の名前を入力します: Targeted Marketing。
+4. **[Data Input and output]\(データの入力と出力\)** の **[データのインポート]** モジュールを、モジュール ウィンドウからキャンバスにドラッグします。
 5. [プロパティ] ウィンドウで、SQL Data Warehouse データベースの詳細を指定します。
 6. 目的のデータを読み取るためのデータベース **クエリ** を指定します。
 
@@ -77,31 +77,29 @@ FROM [dbo].[vTargetMail]
 ## <a name="2-clean-the-data"></a>2.データを整理する
 データを整理するには、モデルとの関連性が低い列をいくつか削除します。 これを行うには、次の手順を実行します。
 
-1. **[プロジェクト列]** モジュールをキャンバスにドラッグします。
+1. **[データ変換] < [操作]** の **[Select Columns in Dataset]\(データセットの列の選択\)** モジュールをキャンバスにドラッグします。 このモジュールを **[データのインポート]** モジュールに接続します。
 2. [プロパティ] ウィンドウの **[列セレクターの起動]** をクリックし、削除する列を指定します。
    ![[プロジェクト列]][4]
-3. CustomerAlternateKey と GeographyKey の 2 つの列を除外します。
+3. 2 つの列が除外されます: CustomerAlternateKey と GeographyKey。
    ![不要な列を削除する][5]
 
 ## <a name="3-build-the-model"></a>手順 3.モデルを構築する
-データを 80 対 20 に分割し、80% を機械学習モデルのトレーニングに、20% をモデルのテストに使用します。 今回の二項分類の問題には "2 クラス" アルゴリズムを使用します。
+データが 80 対 20 に分割されます。80% が機械学習モデルのトレーニングに、20% はモデルのテストに使用されます。 今回の二項分類の問題には "2 クラス" アルゴリズムを使用します。
 
 1. **[分割]** モジュールをキャンバスにドラッグします。
-2. [プロパティ] ウィンドウの [Fraction of rows in the first output dataset (最初の出力データセットにおける列の割合)] に「0.8」と入力します。
+2. プロパティ ウィンドウで、[Fraction of rows in the first output dataset]\(最初の出力データセットにおける列の割合\) に「0.8」と入力します。
    ![データをトレーニング セットとテスト セットに分割する][6]
 3. **[2 クラス ブースト デシジョン ツリー]** モジュールをキャンバスにドラッグします。
-4. **[モデルのトレーニング]** モジュールをキャンバスにドラッグし、入力内容を指定します。 次に、[プロパティ] ウィンドウで **[Launch column selector (列セレクターの起動)]** をクリックします。
-   * 1 つ目の入力: ML アルゴリズム。
-   * 2 つ目の入力: アルゴリズムをトレーニングするためのデータ。
+4. **[モデルのトレーニング]** モジュールをキャンバスにドラッグし、そのモジュールを **[Two-Class Boosted Decision Tree]\(2 クラス ブースト デシジョン ツリー\)** モジュール (ML アルゴリズム) と **[分割]** (アルゴリズムをトレーニングするデータ) モジュールに接続して、入力を指定します。 
      ![[モデルのトレーニング] モジュールを接続する][7]
-5. 予測する列として **[BikeBuyer]** 列を選択します。
+5. 次に、[プロパティ] ウィンドウで **[Launch column selector (列セレクターの起動)]** をクリックします。 予測する列として **[BikeBuyer]** 列を選択します。
    ![予測する列を選択する][8]
 
 ## <a name="4-score-the-model"></a>4.モデルにスコアを付ける
 ここでは、テスト データに対するモデルのパフォーマンスをテストします。 選択したアルゴリズムを別のアルゴリズムと比較し、どちらのパフォーマンスが優れているかを評価します。
 
-1. **[Score Model (モデルのスコア付け)]** モジュールをキャンバスにドラッグします。
-    1 つ目の入力: トレーニング済みのモデル、2 つ目の入力: テスト データ。![[Score Model (モデルのスコア付け)]][9]
+1. **[Score Model]\(モデルのスコア付け\)** モジュールをキャンバスにドラッグし、**[モデルのトレーニング]** モジュールと **[Split Data]\(データの分割\)** モジュールに接続します。
+   ![モデルにスコアを付ける][9]
 2. **[2 クラスのベイズ ポイント マシン]** を実験キャンバスにドラッグします。 このアルゴリズムのパフォーマンスを 2 クラスのブースト デシジョン ツリーのパフォーマンスと比較します。
 3. [モデルのトレーニング] モジュールと [モデルのスコア付け] モジュールをコピーしてキャンバスに貼り付けます。
 4. **[モデルの評価]** モジュールをキャンバスにドラッグし、2 つのアルゴリズムを比較します。
@@ -124,18 +122,18 @@ FROM [dbo].[vTargetMail]
 予測機械学習モデルの構築の詳細については、[Azure での機械学習の概要][Introduction to Machine Learning on Azure]に関するページを参照してください。
 
 <!--Image references-->
-[1]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img1_reader.png
-[2]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img2_visualize.png
-[3]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img3_readerdata.png
-[4]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img4_projectcolumns.png
-[5]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img5_columnselector.png
-[6]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img6_split.png
-[7]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img7_train.png
-[8]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img8_traincolumnselector.png
-[9]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img9_score.png
-[10]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img10_evaluate.png
-[11]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img11_evalresults.png
-[12]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img12_scoreresults.png
+[1]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img1-reader-new.png
+[2]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img2-visualize-new.png
+[3]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img3-readerdata-new.png
+[4]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img4-projectcolumns-new.png
+[5]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img5-columnselector-new.png
+[6]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img6-split-new.png
+[7]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img7-train-new.png
+[8]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img8-traincolumnselector-new.png
+[9]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img9-score-new.png
+[10]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img10-evaluate-new.png
+[11]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img11-evalresults-new.png
+[12]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img12-scoreresults-new.png
 
 
 <!--Article references-->

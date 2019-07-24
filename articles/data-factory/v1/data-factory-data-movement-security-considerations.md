@@ -8,17 +8,16 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 222558a6596c676034e52812d3b2dd0c77e1466b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 083770c24a6c8939f8d1ff9f0efd5d18aff9dcb0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046903"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539617"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - データ移動のセキュリティに関する考慮事項
 
@@ -47,6 +46,8 @@ Azure コンプライアンスと、Azure が独自のインフラストラク�
 - **クラウド シナリオ** - このシナリオでは、ソースと移動先の両方にインターネットを通じてパブリックにアクセスできます。 これには、Azure Storage、Azure SQL Data Warehouse、Azure SQL Database、Azure Data Lake Store、Amazon S3、Amazon Redshift などの管理クラウド ストレージ サービス、Salesforce などの SaaS サービス、FTP や OData などの Web プロトコルが該当します。 サポートされているデータ ソースの完全な一覧は、[ここで](data-factory-data-movement-activities.md#supported-data-stores-and-formats)確認できます。
 - **ハイブリッド シナリオ** - このシナリオでは、ソースと移動先のどちらかがファイアウォールの内側またはオンプレミスの企業ネットワーク内にあるか、データ ストアがプライベート ネットワーク/仮想ネットワーク内 (ほとんどの場合はソース) にあり、パブリックにアクセスできません。 仮想マシンでホストされているデータベース サーバーもこのシナリオに該当します。
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ## <a name="cloud-scenarios"></a>クラウド シナリオ
 ### <a name="securing-data-store-credentials"></a>データ ストアの資格情報の保護
 Azure Data Factory では、データ ストアの資格情報を保護するために、**Microsoft が管理する証明書**を使用して**暗号化**します。 証明書は、**2 年**ごとに交換されます (証明書の更新と資格情報の移行が行われます)。 暗号化された資格情報は、**Azure Data Factory 管理サービスによって管理される Azure Storage** に安全に格納されます。 Azure Storage のセキュリティの詳細については、「[Azure Storage のセキュリティの概要](../../security/security-storage-overview.md)」を参照してください。
@@ -73,10 +74,10 @@ Azure Data Lake Store では、アカウントに格納されているデータ�
 Azure Blob Storage と Azure Table Storage では、Storage Service Encryption (SSE) をサポートしています。SSE により、データをストレージに永続化する前の暗号化と取得前の暗号化解除が自動的に実行されます。 詳細については、「[保存データ向け Azure Storage Service Encryption](../../storage/common/storage-service-encryption.md)」をご覧ください。
 
 #### <a name="amazon-s3"></a>Amazon S3
-Amazon S3 では、保存データのクライアント暗号化とサーバー暗号化の両方をサポートしています。 詳細については、「[暗号化を使用したデータの保護](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html)」をご覧ください。 現在、Data Factory では仮想プライベート クラウド (VPC) 内の Amazon S3 はサポートしていません。
+Amazon S3 では、保存データのクライアント暗号化とサーバー暗号化の両方をサポートしています。 詳細については、「[暗号化を使用したデータの保護](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html)」をご覧ください。 現在、Data Factory では仮想プライベート クラウド (VPC) 内の Amazon S3 はサポートしていません。
 
 #### <a name="amazon-redshift"></a>Amazon Redshift
-Amazon Redshift では、保存データのクラスター暗号化をサポートしています。 詳細については、「[Amazon Redshift データベース暗号化](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)」をご覧ください。 現在、Data Factory では VPC 内の Amazon Redshift はサポートしていません。 
+Amazon Redshift では、保存データのクラスター暗号化をサポートしています。 詳細については、「[Amazon Redshift データベース暗号化](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)」をご覧ください。 現在、Data Factory では VPC 内の Amazon Redshift はサポートしていません。 
 
 #### <a name="salesforce"></a>Salesforce
 Salesforce では、ファイル、添付ファイル、カスタム フィールドをすべて暗号化できる Shield Platform Encryption をサポートしています。 詳細については、「[Understanding the Web Server OAuth Authentication Flow (Web サーバーの OAuth 認証フローについて)](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm)」をご覧ください。  
@@ -94,7 +95,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 - Azure Portal またはコピー ウィザードから HTTPS 経由で**プレーンテキスト**を使用する (セキュリティが低下します)。 資格情報は、プレーンテキスト形式でオンプレミスのゲートウェイに渡されます。
 - コピー ウィザードから **JavaScript 暗号化ライブラリを使用する**。
 - **ClickOnce ベースの資格情報マネージャー アプリケーション**を使用する。 ClickOnce アプリケーションは、ゲートウェイにアクセスできるオンプレミスのコンピューターで実行され、データ ストアの資格情報を設定します。 このオプションと次のオプションが最も安全なオプションです。 既定では、資格情報マネージャー アプリケーションは、通信をセキュリティで保護するために、ゲートウェイ コンピューターのポート 8050 を使用します。  
-- [New-AzureRmDataFactoryEncryptValue](/powershell/module/azurerm.datafactories/New-AzureRmDataFactoryEncryptValue) PowerShell コマンドレットを使用して、資格情報を暗号化します。 コマンドレットはゲートウェイに構成されている証明書を使用して資格情報を暗号化します。 このコマンドレットから返された暗号化済みの資格情報を使用し、[New-AzureRmDataFactoryLinkedService](/powershell/module/azurerm.datafactories/new-azurermdatafactorylinkedservice) コマンドレットで使用する JSON ファイル、またはポータルの Data Factory エディターの JSON スニペット内の **connectionString** の **EncryptedCredential** 要素にその資格情報を追加できます。 このオプションと ClickOnce アプリケーションが最も安全なオプションです。 
+- [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) PowerShell コマンドレットを使用して、資格情報を暗号化します。 コマンドレットはゲートウェイに構成されている証明書を使用して資格情報を暗号化します。 このコマンドレットから返された暗号化済みの資格情報を使用し、[New-AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) コマンドレットで使用する JSON ファイル内、またはポータルの Data Factory エディターの JSON スニペット内の **connectionString** の **EncryptedCredential** 要素にその資格情報を追加できます。 このオプションと ClickOnce アプリケーションが最も安全なオプションです。 
 
 #### <a name="javascript-cryptography-library-based-encryption"></a>JavaScript 暗号化ライブラリ ベースの暗号化
 [コピー ウィザード](data-factory-copy-wizard.md)から [JavaScript 暗号化ライブラリ](https://www.microsoft.com/download/details.aspx?id=52439)を使用して、データ ストアの資格情報を暗号化できます。 このオプションを選択した場合、コピー ウィザードがゲートウェイの公開キーを取得し、そのキーを使用してデータ ストアの資格情報を暗号化します。 資格情報はゲートウェイ コンピューターによって暗号化が解除され、Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) によって保護されます。
@@ -126,11 +127,11 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 次の表には、ハイブリッド データ移動のソースと移動先の場所の異なる組み合わせに基づいたネットワークとゲートウェイの構成の推奨事項がまとめてあります。
 
-| ソース | 変換先 | ネットワーク構成 | ゲートウェイの設定 |
+| ソース | 宛先 | ネットワーク構成 | ゲートウェイの設定 |
 | ------ | ----------- | --------------------- | ------------- | 
-| オンプレミスの | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | IPSec VPN (ポイント対サイトまたはサイト間) | ゲートウェイはオンプレミスまたは VNet の Azure 仮想マシン (VM) にインストールできます | 
-| オンプレミスの | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | ExpressRoute (プライベート ピアリング) | ゲートウェイはオンプレミスまたは VNet の Azure VM にインストールできます | 
-| オンプレミスの | パブリック エンドポイントが存在する Azure ベースのサービス | ExpressRoute (パブリック ピアリング) | ゲートウェイはオンプレミスにインストールする必要があります | 
+| オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | IPSec VPN (ポイント対サイトまたはサイト間) | ゲートウェイはオンプレミスまたは VNet の Azure 仮想マシン (VM) にインストールできます | 
+| オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | ExpressRoute (プライベート ピアリング) | ゲートウェイはオンプレミスまたは VNet の Azure VM にインストールできます | 
+| オンプレミス | パブリック エンドポイントが存在する Azure ベースのサービス | ExpressRoute (パブリック ピアリング) | ゲートウェイはオンプレミスにインストールする必要があります | 
 
 次の図は、オンプレミス データベースと Azure サービス間でのデータの移動に ExpressRoute および IPSec VPN (Virtual Network を使用) を使用した場合の Data Management Gateway の使用方法を示しています。
 
@@ -166,7 +167,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 | ------------- | ----------- | 
 | 8050 (TCP) | 資格情報マネージャー アプリケーションがゲートウェイでオンプレミス データ ストアの資格情報を安全に設定するために必要です。 | 
 
-![ゲートウェイのポートの要件](media\data-factory-data-movement-security-considerations/gateway-port-requirements.png) 
+![ゲートウェイのポートの要件](media/data-factory-data-movement-security-considerations/gateway-port-requirements.png)
 
 #### <a name="ip-configurations-whitelisting-in-data-store"></a>データ ストアの IP 構成/ホワイトリスト登録
 クラウドの一部のデータ ストアでは、アクセス元のコンピューターの IP アドレスをホワイトリストに登録する必要もあります。 ゲートウェイ コンピューターの IP アドレスがファイアウォールで適切にホワイトリストに登録/構成されていることを確認します。
@@ -177,7 +178,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 - [Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../../cosmos-db/firewall-support.md)
-- [Amazon Redshift](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
+- [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

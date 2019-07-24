@@ -3,28 +3,30 @@ title: スキーマが異なるクラウド データベース間のクエリ | 
 description: 列方向のパーティションでデータベース間クエリを設定する方法
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 5dbf6fb1b59999481348d3b4ad4775a77295b70d
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.date: 01/25/2019
+ms.openlocfilehash: e7ba8057cd22c5cc1080b4a6d95f17bf76d4acb2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238899"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459436"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>スキーマが異なるクラウド データベース間のクエリ (プレビュー)
+
 ![異なるデータベースのテーブルにまたがるクエリ][1]
 
 列方向にパーティション分割されたデータベースでは、データベースごとに異なるテーブル セットを使用します。 これは、異なるデータベースではスキーマが異なることを意味します。 たとえば、あるデータベースに在庫に関するすべてのテーブルが含まれていて、別のデータベースには会計に関連するすべてのテーブルが含まれているケースが該当します。 
 
 ## <a name="prerequisites"></a>前提条件
+
 * ユーザーは、ALTER ANY EXTERNAL DATA SOURCE アクセス許可を所有している必要があります。 このアクセス許可は、ALTER DATABASE アクセス許可に含まれています。
 * ALTER ANY EXTERNAL DATA SOURCE アクセス許可は、基になるデータ ソースを参照するために必要です。
 
@@ -40,6 +42,7 @@ ms.locfileid: "50238899"
 4. [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) 
 
 ## <a name="create-database-scoped-master-key-and-credentials"></a>データベース スコープのマスター キーと資格情報の作成
+
 この資格情報は、リモート データベースに接続するために、エラスティック クエリによって使用されます。  
 
     CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'master_key_password';
@@ -52,6 +55,7 @@ ms.locfileid: "50238899"
 >
 
 ## <a name="create-external-data-sources"></a>外部データ ソースの作成
+
 構文:
 
     <External_Data_Source> ::=
@@ -67,6 +71,7 @@ ms.locfileid: "50238899"
 >
 
 ### <a name="example"></a>例
+
 次の例では、外部データ ソースに対して CREATE ステートメントを使用する方法について説明します。 
 
     CREATE EXTERNAL DATA SOURCE RemoteReferenceData 
@@ -83,6 +88,7 @@ ms.locfileid: "50238899"
     select * from sys.external_data_sources; 
 
 ### <a name="external-tables"></a>外部テーブル
+
 構文:
 
     CREATE EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name . ] table_name  
@@ -96,6 +102,8 @@ ms.locfileid: "50238899"
       [ OBJECT_NAME = N'nonescaped_object_name',] 
 
 ### <a name="example"></a>例
+
+```sql
     CREATE EXTERNAL TABLE [dbo].[customer]( 
         [c_id] int NOT NULL, 
         [c_firstname] nvarchar(256) NULL, 
@@ -109,16 +117,18 @@ ms.locfileid: "50238899"
     ( 
            DATA_SOURCE = RemoteReferenceData 
     ); 
+```
 
 次の例では、外部テーブルの一覧を現在のデータベースから取得する方法を示します。 
 
     select * from sys.external_tables; 
 
 ### <a name="remarks"></a>解説
+
 エラスティック クエリでは、既存の外部テーブル構文を拡張して、RDBMS 型の外部データ ソースを使用する外部テーブルを定義します。 列方向のパーティション分割のための外部テーブルの定義は、次の側面に対応しています。 
 
-* **スキーマ**: 外部テーブル DDL は、クエリで使用できるスキーマを定義します。 外部テーブル定義に指定するスキーマは、実際のデータが格納されているリモート データベース内のテーブルのスキーマに一致する必要があります。 
-* **リモート データベース参照**: 外部テーブル DDL は、外部データ ソースを参照します。 外部データ ソースは、実際のテーブル データが格納されているリモート データベース論理サーバー名とデータベース名を指定します。 
+* **スキーマ**: 外部テーブル DDL では、ご利用のクエリで使用できるスキーマが定義されます。 外部テーブル定義に指定するスキーマは、実際のデータが格納されているリモート データベース内のテーブルのスキーマに一致する必要があります。 
+* **リモート データベース参照**:外部テーブル DDL では、外部データ ソースが参照されます。 外部データ ソースは、SQL データベース サーバー名と、実際のテーブル データが格納されているリモート データベースのデータベース名を指定します。 
 
 前のセクションで説明したように外部データ ソースを使用する、外部テーブルを作成するための構文を次に示します。 
 
@@ -133,11 +143,14 @@ SCHEMA_NAME 句と OBJECT_NAME 句は、外部テーブル定義をリモート 
 **CREATE/DROP EXTERNAL TABLE に対するアクセス許可**: 外部テーブル DDL に ALTER ANY EXTERNAL DATA SOURCE アクセス許可が必要です。これは、基になるデータ ソースを参照する場合にも必要です。  
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
+
 外部テーブルへのアクセス権を持つユーザーは、外部データ ソース定義に指定された資格情報の下で、基になるリモート テーブルへのアクセス権を自動的に取得します。 外部データ ソースの資格情報を介した特権の不要な昇格を回避するために、外部テーブルへのアクセスを慎重に管理する必要があります。 外部テーブルへのアクセスは、通常の SQL 権限を使用して、通常のテーブルの場合と同様に許可または禁止することができます。  
 
 ## <a name="example-querying-vertically-partitioned-databases"></a>例: 列方向にパーティション分割されたデータベースのクエリ
+
 次のクエリは、注文と注文明細行用の 2 つのローカル テーブルと、顧客用のリモート テーブルの間で 3 方向の結合を実行します。 これは、エラスティック クエリの参照データのユース ケースの例を示します。 
 
+```sql
     SELECT      
      c_id as customer,
      c_lastname as customer_name,
@@ -151,30 +164,33 @@ SCHEMA_NAME 句と OBJECT_NAME 句は、外部テーブル定義をリモート 
     JOIN  order_line 
     ON o_id = ol_o_id and o_c_id = ol_c_id
     WHERE c_id = 100
-
+```
 
 ## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>T-SQL リモート実行のストアド プロシージャ: sp\_execute_remote
+
 エラスティック クエリには、リモート データベースへの直接アクセスを提供するストアド プロシージャも導入されています。 このストアド プロシージャは [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) と呼ばれ、リモート データベースでリモート ストアド プロシージャまたは T-SQL コードを実行するときに使用できます。 使用できるパラメーターは次のとおりです。 
 
-* データ ソース名 (nvarchar): RDBMS 型の外部データ ソースの名前。 
-* クエリ (nvarchar): リモート データベースで実行する T-SQL クエリ。 
-* パラメーター宣言 (nvarchar) (省略可能): (sp_executesql などの) クエリ パラメーターで使用される、パラメーターのデータ型定義を含む文字列。 
-* パラメーター値のリスト (省略可能): (sp_executesql などの) パラメーター値のコンマ区切りリスト。
+* データ ソース名 (nvarchar): RDBMS 型の外部データ ソースの名前です。 
+* クエリ (nvarchar): リモート データベース上で実行する T-SQL クエリです。 
+* パラメーター宣言 (nvarchar) (省略可能): (sp_executesql などの) クエリ パラメーターで使用される、パラメーターのデータ型定義を含む文字列です。 
+* パラメーター値のリスト (省略可能): (sp_executesql などの) パラメーター値のコンマ区切りリストです。
 
 sp\_execute\_remote では、起動パラメーターで指定された外部データ ソースを使用して、指定された T-SQL ステートメントをリモート データベースで実行します。 リモート データベースへの接続には、外部データ ソースの資格情報を使用します。  
 
 例: 
 
+```sql
     EXEC sp_execute_remote
         N'MyExtSrc',
         N'select count(w_id) as foo from warehouse' 
-
-
+```
 
 ## <a name="connectivity-for-tools"></a>ツールの接続性
+
 通常の SQL Server 接続文字列を使用して、BI およびデータ統合ツールを、エラスティック クエリが有効でかつ外部テーブルが定義されている SQL DB サーバー上のデータベースに接続できます。 使用しているツールのデータ ソースとして SQL Server がサポートされていることを確認してください。 次に、ツールを使用して接続する他の SQL Server データベースと同様に、エラスティック クエリ データベースと外部テーブルを参照します。 
 
 ## <a name="best-practices"></a>ベスト プラクティス
+
 * SQL DB のファイアウォール構成で Azure Services のアクセスを有効にすることで、エラスティック クエリ エンドポイント データベースにリモート データベースへのアクセスが許可されていることを確認します。 さらに、外部データ ソース定義に指定された資格情報を使ってリモート データベースに正常にログインでき、リモート テーブルへのアクセス許可を取得できることを確認します。  
 * エラスティック クエリは、計算の大部分をリモート データベース上で実行できるクエリに最適です。 通常、最適なクエリ パフォーマンスが得られるのは、リモート データベース上で評価可能な選択的なフィルター述語を使用した場合、またはリモート データベース上で完全に実行できる結合を使用した場合となります。 その他のクエリ パターンでは、リモート データベースから大量のデータを読み込むことが必要になる場合があり、パフォーマンスが低下する可能性があります。 
 

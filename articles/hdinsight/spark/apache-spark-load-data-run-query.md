@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure HDInsight での Apache Spark クラスターへのデータの読み込みとクエリの実行 '
+title: 'チュートリアル:Azure HDInsight での Apache Spark クラスターへのデータの読み込みとクエリの実行 '
 description: Azure HDInsight で Spark クラスターにデータを読み込み、対話型のクエリを実行する方法を説明します。
 services: azure-hdinsight
 author: hrasheed-msft
@@ -8,15 +8,15 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.author: hrasheed
-ms.date: 11/06/2018
-ms.openlocfilehash: f279d7ca40eac1764ec5549aecec36b0f62034e8
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.date: 04/03/2019
+ms.openlocfilehash: 18f5d34e50a4ed4ed82a3ceb4740d594ce4bd78d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495777"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59274010"
 ---
-# <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>チュートリアル: Azure HDInsight での Apache Spark クラスターへのデータの読み込みとクエリの実行
+# <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight での Apache Spark クラスターへのデータの読み込みとクエリの実行
 
 このチュートリアルでは、csv ファイルからデータフレームを作成する方法と、Azure HDInsight で [Apache Spark](https://spark.apache.org/) クラスターに対して対話型の Spark SQL クエリを実行する方法を説明します。 Spark で、データフレームは、名前付きの列に編成されたデータの分散型コレクションです。 データフレームは概念的には、リレーショナル データベースのテーブルまたは R/Python のデータ フレームと同等です。
  
@@ -24,8 +24,6 @@ ms.locfileid: "52495777"
 > [!div class="checklist"]
 > * csv ファイルからデータフレームを作成する
 > * データフレームでクエリを実行する
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +36,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ![対話型 Spark SQL クエリのデータのスナップショット](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "対話型 Spark SQL クエリのデータのスナップショット")
 
 
-1. 前提条件で作成した Jupyter Notebook を開きます。
+1. 前提条件で作成した Jupyter Notebook を開き、PySpark で新しいノートブックを作成します。
+
+    > [!NOTE]  
+    > PySpark カーネルを使用して Notebook を作成すると、最初のコード セルを実行するときに `spark` セッションが自動的に作成されます。 セッションを明示的に作成する必要はありません。
+
 2. 次のコードを Notebook の空のセルに貼り付け、**Shift + Enter** キーを押してコードを実行します。 このコードにより、このシナリオに必要な種類がインポートされます。
 
     ```python
@@ -58,10 +60,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     csvFile.write.saveAsTable("hvac")
     ```
 
-    > [!NOTE]
-    > PySpark カーネルを使用して Notebook を作成すると、最初のコード セルを実行するときに `spark` セッションが自動的に作成されます。 セッションを明示的に作成する必要はありません。
-
-
 ## <a name="run-queries-on-the-dataframe"></a>データフレームでクエリを実行する
 
 テーブルを作成したら、データに対して対話型のクエリを実行できます。
@@ -77,17 +75,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
      ![対話型の Spark クエリの表形式の出力](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "対話型の Spark クエリの表形式の出力")
 
-3. 他の視覚化でも結果を表示できます。 同じ出力に対する領域グラフを表示するには、**[領域]** を選択し、他の値を次のように設定します。
+2. 他の視覚化でも結果を表示できます。 同じ出力に対する領域グラフを表示するには、**[領域]** を選択し、他の値を次のように設定します。
 
     ![対話型の Spark クエリ結果の領域グラフ](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "対話型の Spark クエリ結果の領域グラフ")
 
-10. Notebook の **[ファイル]** メニューで、**[Save and Checkpoint]\(保存とチェックポイント)** をクリックします。 
+3. ノートブックのメニュー バーから **[ファイル]** > **[Save and Checkpoint]\(保存とチェックポイント)** に移動します。
 
-11. [次のチュートリアル](apache-spark-use-bi-tools.md)をすぐに開始する場合は、Notebook を開いたままにしておきます。 開始しない場合は、Notebook の **[ファイル]** メニューで **[Close and Halt]\(閉じて停止)** を選択し、Notebook をシャットダウンしてクラスター リソースを解放します。
+4. [次のチュートリアル](apache-spark-use-bi-tools.md)をすぐに開始する場合は、Notebook を開いたままにしておきます。 開始しない場合は、ノートブックのメニュー バーから **[ファイル]** >  **[Close and Halt]\(閉じて停止)** に移動し、ノートブックをシャットダウンしてクラスター リソースを解放します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-HDInsight を使用すると、データと Jupyter Notebook は Azure Storage または Azure Data Lake Store に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。 すぐに次のチュートリアルに取り掛かる場合は、クラスターを保持することができます。
+HDInsight を使用すると、データと Jupyter Notebook は Azure Storage または Azure Data Lake Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。 すぐに次のチュートリアルに取り掛かる場合は、クラスターを保持することができます。
 
 Azure Portal で、クラスターを開き、**[削除]** を選択します。
 
@@ -98,11 +96,10 @@ Azure Portal で、クラスターを開き、**[削除]** を選択します。
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、以下の内容を学習しました。
-
-* Apache Spark データフレームを作成します。
-* データフレームに対して Spark SQL を実行します。
+> [!div class="checklist"]
+> * Apache Spark データフレームを作成します。
+> * データフレームに対して Spark SQL を実行します。
 
 次の記事に進んで、Apache Spark に登録したデータを Power BI などの BI 分析ツールに取り込む方法を確認してください。 
 > [!div class="nextstepaction"]
 > [BI ツールを使用したデータの分析](apache-spark-use-bi-tools.md)
-

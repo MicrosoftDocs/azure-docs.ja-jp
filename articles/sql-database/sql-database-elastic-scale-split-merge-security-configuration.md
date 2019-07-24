@@ -3,52 +3,59 @@ title: Split-Merge セキュリティの構成 | Microsoft Docs
 description: Elastic Scale の Split/Merge サービスを使用して暗号化するための x409 資格情報を設定します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: VanMSFT
+ms.author: vanto
+ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 6967805044bb11e9aed3fe66d580df059f7a461a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/18/2018
+ms.openlocfilehash: 7ca7e653cc42323f4313ef955de40416154b4ecf
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231399"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651670"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge セキュリティの構成
+
 Split/Merge サービスを使用するには、セキュリティが正しく構成されていなければなりません。 このサービスは、Microsoft Azure SQL Database の Elastic Scale 機能の一部です。 詳しくは、「 [Elastic Scale の分割とマージ サービス チュートリアル](sql-database-elastic-scale-configure-deploy-split-and-merge.md)」をご覧ください。
 
 ## <a name="configuring-certificates"></a>証明書の構成
+
 証明書は次の 2 つの方法で構成されます。 
 
 1. [SSL 証明書を構成するには](#to-configure-the-ssl-certificate)
 2. [クライアント証明書を構成するには](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>証明書を取得するには
+
 証明書はパブリック証明機関 (CA) または [Windows Certificate Service](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx)から取得できます。 これは証明書を取得するための推奨方法です。
 
 これらの方法が利用可能でない場合は、 **自己署名証明書**を生成できます。
 
 ## <a name="tools-to-generate-certificates"></a>証明書を生成するツール
+
 * [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
 * [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>ツールを実行するには
+
 * Visual Studio の開発者コマンド プロンプトで、「 [Visual Studio コマンド プロンプト](https://msdn.microsoft.com/library/ms229859.aspx) 
   
     インストールされている場合は、次のように参照します。
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* 「 [Windows 8.1: キットとツールのダウンロード](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* 「[Windows 8.1:キットとツールのダウンロード](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)」から WDK を取得します
 
 ## <a name="to-configure-the-ssl-certificate"></a>SSL 証明書を構成するには
+
 通信の暗号化やサーバーの認証には SSL 証明書が必要です。 以下の 3 つのシナリオから最適なものを選択し、すべての手順を実行します。
 
 ### <a name="create-a-new-self-signed-certificate"></a>新しい自己署名証明書を作成する
+
 1. [自己署名証明書を作成する](#create-a-self-signed-certificate)
 2. [自己署名 SSL 証明書用の PFX ファイルを作成する](#create-pfx-file-for-self-signed-ssl-certificate)
 3. [クラウド サービスに SSL 証明書をアップロードする](#upload-ssl-certificate-to-cloud-service)
@@ -76,17 +83,17 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 3. [サービス構成ファイルの CA 証明書を更新する](#update-ca-certificate-in-service-configuration-file)
 4. [クライアント証明書を発行する](#issue-client-certificates)
 5. [クライアント証明書の PFX ファイルを作成する](#create-pfx-files-for-client-certificates)
-6. [クライアント証明書をインポートする](#Import-Client-Certificate)
+6. [クライアント証明書をインポートする](#import-client-certificate)
 7. [クライアント証明書のサムプリントをコピーする](#copy-client-certificate-thumbprints)
 8. [許可されているクライアントをサービス構成ファイルに構成する](#configure-allowed-clients-in-the-service-configuration-file)
 
 ### <a name="use-existing-client-certificates"></a>既存のクライアント証明書を使用する
 1. [Find CA Public Key](#find-ca-public-key)
-2. [CA 証明書をクラウド サービスにアップロードする](#Upload-CA-certificate-to-cloud-service)
-3. [サービス構成ファイルの CA 証明書を更新する](#Update-CA-Certificate-in-Service-Configuration-File)
-4. [クライアント証明書のサムプリントをコピーする](#Copy-Client-Certificate-Thumbprints)
+2. [CA 証明書をクラウド サービスにアップロードする](#upload-ca-certificate-to-cloud-service)
+3. [サービス構成ファイルの CA 証明書を更新する](#update-ca-certificate-in-service-configuration-file)
+4. [クライアント証明書のサムプリントをコピーする](#copy-client-certificate-thumbprints)
 5. [許可されているクライアントをサービス構成ファイルに構成する](#configure-allowed-clients-in-the-service-configuration-file)
-6. [クライアント証明書の失効確認を構成する](#Configure-Client-Certificate-Revocation-Check)
+6. [クライアント証明書の失効確認を構成する](#configure-client-certificate-revocation-check)
 
 ## <a name="allowed-ip-addresses"></a>許可された IP アドレス
 サービス エンドポイントへのアクセスは特定範囲の IP アドレスに制限できます。
@@ -114,24 +121,29 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 既定の構成では、HTTPS エンドポイントへのすべてのアクセスを許可します。 この設定は、さらに制限できます。
 
 ### <a name="changing-the-configuration"></a>構成の変更
-エンドポイントに適用されるアクセス制御ルールのグループは、**サービス構成ファイル**の **<EndpointAcls>** セクションに構成されます。
+エンドポイントに適用されるアクセス制御ルールのグループは、**サービス構成ファイル**の **\<EndpointAcls>** セクションに構成されます。
 
-    <EndpointAcls>
-      <EndpointAcl role="SplitMergeWeb" endPoint="HttpIn" accessControl="DenyAll" />
-      <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="AllowAll" />
-    </EndpointAcls>
+```xml
+<EndpointAcls>
+    <EndpointAcl role="SplitMergeWeb" endPoint="HttpIn" accessControl="DenyAll" />
+    <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="AllowAll" />
+</EndpointAcls>
+```
 
-アクセス制御グループ内のルールは、サービス構成ファイルの <AccessControl name=""> セクションに構成されます。 
+アクセス制御グループ内のルールは、サービス構成ファイルの \<AccessControl name=""> セクションに構成されます。 
 
 形式は、ネットワーク アクセス制御リスト ドキュメントに説明があります。
 たとえば、HTTPS エンドポイントへのアクセスを範囲 100.100.0.0 ～ 100.100.255.255 の IP のみ許可する場合、ルールは次のようになります。
 
-    <AccessControl name="Retricted">
-      <Rule action="permit" description="Some" order="1" remoteSubnet="100.100.0.0/16"/>
-      <Rule action="deny" description="None" order="2" remoteSubnet="0.0.0.0/0" />
-    </AccessControl>
-    <EndpointAcls>
+```xml
+<AccessControl name="Retricted">
+    <Rule action="permit" description="Some" order="1" remoteSubnet="100.100.0.0/16"/>
+    <Rule action="deny" description="None" order="2" remoteSubnet="0.0.0.0/0" />
+</AccessControl>
+<EndpointAcls>
     <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="Restricted" />
+</EndpointAcls>
+```
 
 ## <a name="denial-of-service-prevention"></a>サービス拒否 (DOS) 防止
 サービス拒否の攻撃を検出および防止するための支援として次の 2 種類のメカニズムがあります。
@@ -147,22 +159,29 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 ## <a name="restricting-number-of-concurrent-accesses"></a>同時実行アクセス数の制御
 この動作を構成するための設定は、次のとおりです。
 
-    <Setting name="DynamicIpRestrictionDenyByConcurrentRequests" value="false" />
-    <Setting name="DynamicIpRestrictionMaxConcurrentRequests" value="20" />
+```xml
+<Setting name="DynamicIpRestrictionDenyByConcurrentRequests" value="false" />
+<Setting name="DynamicIpRestrictionMaxConcurrentRequests" value="20" />
+```
 
 この保護を有効にするには、DynamicIpRestrictionDenyByConcurrentRequests を true に変更します。
 
 ## <a name="restricting-rate-of-access"></a>アクセス レートの制限
 この動作を構成するための設定は、次のとおりです。
 
-    <Setting name="DynamicIpRestrictionDenyByRequestRate" value="true" />
-    <Setting name="DynamicIpRestrictionMaxRequests" value="100" />
-    <Setting name="DynamicIpRestrictionRequestIntervalInMilliseconds" value="2000" />
+```xml
+<Setting name="DynamicIpRestrictionDenyByRequestRate" value="true" />
+<Setting name="DynamicIpRestrictionMaxRequests" value="100" />
+<Setting name="DynamicIpRestrictionRequestIntervalInMilliseconds" value="2000" />
+```
 
 ## <a name="configuring-the-response-to-a-denied-request"></a>拒否された要求に対する応答の構成
 次の設定は、拒否された要求への応答を構成します。
 
-    <Setting name="DynamicIpRestrictionDenyAction" value="AbortRequest" />
+```xml
+<Setting name="DynamicIpRestrictionDenyAction" value="AbortRequest" />
+```
+
 サポートされている他の値については、IIS の Dynamic IP Security に関するドキュメントを参照してください。
 
 ## <a name="operations-for-configuring-service-certificates"></a>サービス証明書を構成する操作
@@ -178,7 +197,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
       -n "CN=myservice.cloudapp.net" ^
       -e MM/DD/YYYY ^
       -r -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.1" ^
-      -a sha1 -len 2048 ^
+      -a sha256 -len 2048 ^
       -sv MySSL.pvk MySSL.cer
 
 カスタマイズするには、次のように実行します。
@@ -225,12 +244,16 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 
 この機能を無効にするには、次のようにして、サービス構成ファイルでこの設定を false にします。
 
-    <Setting name="SetupWebAppForClientCertificates" value="false" />
-    <Setting name="SetupWebserverForClientCertificates" value="false" />
+```xml
+<Setting name="SetupWebAppForClientCertificates" value="false" />
+<Setting name="SetupWebserverForClientCertificates" value="false" />
+```
 
 次に、CA 証明書の設定で、SSL 証明書と同じサムプリントを次のようにコピーします。
 
-    <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```xml
+<Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 ## <a name="create-a-self-signed-certification-authority"></a>自己署名証明機関を作成する
 認証機関として機能する自己署名証明書を作成するには、次の手順を実行します。
@@ -239,7 +262,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
     -n "CN=MyCA" ^
     -e MM/DD/YYYY ^
      -r -cy authority -h 1 ^
-     -a sha1 -len 2048 ^
+     -a sha256 -len 2048 ^
       -sr localmachine -ss my ^
       MyCA.cer
 
@@ -273,11 +296,15 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 ## <a name="update-ca-certificate-in-service-configuration-file"></a>サービス構成ファイルの CA 証明書を更新する
 サービス構成ファイルの次の設定のサムプリント値を、クラウド サービスにアップロードされた証明書のサムプリントを使用して、次のように更新します。
 
-    <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```xml
+<Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 同じサムプリントを使用して、次の設定の値を更新します。
 
-    <Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
+```xml
+<Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
+```
 
 ## <a name="issue-client-certificates"></a>クライアント証明書を発行する
 サービスへのアクセスが許可された各個人は、排他的に使用するクライアント証明書を持っている必要があります。また、秘密キーを保護するための強力なパスワードを独自に選択する必要があります。 
@@ -288,7 +315,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
       -n "CN=My ID" ^
       -e MM/DD/YYYY ^
       -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.2" ^
-      -a sha1 -len 2048 ^
+      -a sha256 -len 2048 ^
       -in "MyCA" -ir localmachine -is my ^
       -sv MyID.pvk MyID.cer
 
@@ -331,17 +358,23 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 * 表示される [証明書] ダイアログ ボックスで [詳細] タブをクリックする
 * すべてが表示されていることを確認する
 * 一覧の Thumbprint という名前のフィールドを選択する
-* サムプリントの値をコピーする ** 最初の桁の前にある非表示の Unicode 文字を削除する ** すべてのスペースを削除する
+* サムプリントの値をコピーする
+  * 最初の桁の前にある非表示の Unicode 文字を削除する
+  * すべてのスペースを削除する
 
 ## <a name="configure-allowed-clients-in-the-service-configuration-file"></a>許可されているクライアントをサービス構成ファイルに構成する
 サービス構成ファイルの次の設定値を、サービスへのアクセスが許可されたクライアント証明書のコンマで区切られたサムプリント一覧を使用して更新します。
 
-    <Setting name="AllowedClientCertificateThumbprints" value="" />
+```xml
+<Setting name="AllowedClientCertificateThumbprints" value="" />
+```
 
 ## <a name="configure-client-certificate-revocation-check"></a>クライアント証明書の失効確認を構成する
 既定の設定では、証明機関によるクライアント証明書の失効状態の確認は行われません。 クライアント証明書を発行した証明機関がこのような確認をサポートする場合にこの確認をオンにするには、X509RevocationMode 列挙型に定義された値の 1 つを使用して次のように設定を変更します。
 
-    <Setting name="ClientCertificateRevocationCheck" value="NoCheck" />
+```xml
+<Setting name="ClientCertificateRevocationCheck" value="NoCheck" />
+```
 
 ## <a name="create-pfx-file-for-self-signed-encryption-certificates"></a>自己署名の暗号化証明書の PFX ファイルを作成する
 暗号化証明書は、次のように実行します。
@@ -374,7 +407,9 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 ## <a name="update-encryption-certificate-in-service-configuration-file"></a>サービス構成ファイルの暗号化証明書を更新する
 サービス構成ファイルの次の設定のサムプリント値を、クラウド サービスにアップロードされた証明書のサムプリントを使用して、次のように更新します。
 
-    <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
+```xml
+<Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 ## <a name="common-certificate-operations"></a>一般的な証明操作
 * SSL 証明書の構成
@@ -445,7 +480,9 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 ## <a name="other-security-considerations"></a>その他のセキュリティの考慮事項
 このドキュメントで説明した SSL の設定では、HTTPS エンドポイント使用時のサービスとクライアント間の通信を暗号化します。 この暗号化が重要なのは、通信には、データベース アクセスの資格証明と他の潜在的な機密情報が含まれているためです。 ただし、このサービスでは、Microsoft Azure サブスクリプションでメタデータ ストレージ用に指定した Microsoft Azure SQL Database 内の内部テーブルに、資格情報を含む内部の状態が維持されることに注意してください。 このデータベースは、サービス構成ファイルの設定の一部として次のように定義されたものです (.CSCFG ファイル)。 
 
-    <Setting name="ElasticScaleMetadata" value="Server=…" />
+```xml
+<Setting name="ElasticScaleMetadata" value="Server=…" />
+```
 
 このデータベースに格納されている資格情報が暗号化されます。 ただし、ベスト プラクティスとして、サービス デプロイメントにおける Web ロールとワーカー ロールの両方を最新に保ち、両者がメタデータのデータベースと保存された資格情報の暗号化と解読に使用する証明書へアクセスする際の安全性が保たれるようにします。 
 

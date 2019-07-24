@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 19e9bbafa1c560e7fa28be9945bc13cb0e342edc
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388563"
 documentType: LandingData
-title: Azure Front Door Service のドキュメント (プレビュー)
+title: Azure Front Door Service のドキュメント
 metadata:
-  title: Azure Front Door Service のドキュメント (プレビュー)
-  meta.description: Azure Front Door Service provides a scalable and secure entry point for fast delivery of your global web applications. Learn how to use Front Door with our quickstarts, tutorials, and samples.
+  title: Azure Front Door Service のドキュメント
+  meta.description: 'Azure Front Door Service provides a scalable and secure entry point for fast delivery of your global web applications. Learn how to use Front Door with our quickstarts, tutorials, and samples.'
   services: frontdoor
   author: dlepow
   ms.service: frontdoor
@@ -19,33 +13,33 @@ metadata:
 abstract:
   description: Azure Front Door Service では、グローバルな Web アプリケーションを高速に配信するためのセキュリティで保護されたスケーラブルなエントリ ポイントが提供されます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Front Door の使用方法を確認してください。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: グローバル Web アプリケーションの高可用性を実現する、Front Door を作成します。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Azure Portal
-      href: quickstart-create-front-door.md
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: ニーズに応じた Azure Front Door Service の構成方法について学習します。
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: グローバル Web アプリケーションの高可用性を実現する、Front Door を作成します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Azure Portal
+            href: quickstart-create-front-door.md
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="front-door-custom-domain.md">Front Door にカスタム ドメインを追加する</a>
-    - html: <a href="front-door-custom-domain-https.md">カスタム ドメインの HTTPS を有効にする</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: ニーズに応じた Azure Front Door Service の構成方法について学習します。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="front-door-custom-domain.md">Front Door にカスタム ドメインを追加する</a>
+          - html: <a href="front-door-custom-domain-https.md">カスタム ドメインの HTTPS を有効にする</a>
+  - title: リファレンス
     items:
-    - title: コマンド ライン
-      html: <p><a href="/cli/azure/ext/front-door">Azure CLI</a></p><p><a href="https://go.microsoft.com/fwlink/?linkid=2020942">Azure PowerShell</a></p>
-    - title: REST ()
-      html: <p><a href="/rest/api/frontdoor">REST API</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: '<p><a href="/cli/azure/ext/front-door">Azure CLI</a></p><p><a href="https://go.microsoft.com/fwlink/?linkid=2020942">Azure PowerShell</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/frontdoor">REST API</a></p>

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: d40e23a7cc113a9db297a7dbf00a2372063dfb52
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 13ea2b68027c81bca7b43cef62cf7039aa0ea8dd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059214"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443472"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure のセキュリティとコンプライアンスのブループリント: UK OFFICIAL のための 3 層 IaaS Web アプリケーション
 
@@ -57,7 +57,7 @@ ms.locfileid: "39059214"
 (1) Application Gateway
 - WAF - 有効
 - WAF モード - 防止
-- ルール セット: OWASP 3.0
+- ルール セット:OWASP 3.0
 - ポート 80 の HTTP リスナー
 - NSG を通じて規制される接続性/トラフィック
 - パブリック IP アドレス エンドポイントが定義済み (Azure)
@@ -129,7 +129,7 @@ Storage
 
 ### <a name="deployment-architecture"></a>デプロイ アーキテクチャ:
 
-**オンプレミスのネットワーク**: 組織に実装されているプライベート ローカル エリア ネットワーク。
+**オンプレミスのネットワーク**: 組織内に実装されているプライベートなローカル エリア ネットワーク。
 
 **運用 VNet**: 運用 [VNet](https://docs.microsoft.com/azure/Virtual-Network/virtual-networks-overview) (仮想ネットワーク) は、Azure で実行されているアプリケーションとその他の運用リソースをホストします。 各 VNet には、ネットワーク トラフィックの分離と管理に使用される複数のサブネットが含まれることがあります。
 
@@ -139,26 +139,26 @@ Storage
 
 **データベース層**: 高可用性を実現するために [SQL Server Always On 可用性グループ](https://msdn.microsoft.com/library/hh510230.aspx)を使用して永続的なデータ ストレージを提供します。 顧客は [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview) を PaaS の代替として使用できます。
 
-**ゲートウェイ**: [VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) は、オンプレミスのネットワーク内のルーターと運用 VNet 間に接続性を提供します。
+**ゲートウェイ**: [VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) は、オンプレミスのネットワーク内のルーターと運用 VNet 間の接続性を提供します。
 
 **インターネット ゲートウェイとパブリック IP アドレス**: インターネット ゲートウェイは、インターネットを通じてユーザーにアプリケーション サービスを公開します。 これらのサービスにアクセスするトラフィックは、レイヤー 7 のルーティングと負荷分散の機能を Web アプリケーション ファイアウォール (WAF) 保護と共に提供する [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) を使用して保護されます。
 
 **管理 VNet**: この [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) には、運用 VNet で実行されているワークロードの管理および監視機能を実装するリソースが含まれます。
 
-**ジャンプボックス**: [要塞ホスト](https://en.wikipedia.org/wiki/Bastion_host)とも呼ばれ、運用 VNet で VM に接続するために管理者が使用する、ネットワーク上の安全な VM です。 ジャンプボックスの NSG は、セーフ リストにあるパブリック IP アドレスからのリモート トラフィックのみを許可します。 リモート デスクトップ (RDP) トラフィックを許可するには、トラフィックのソースが NSG で定義されている必要があります。 運用リソースの管理は、セキュリティで保護されたジャンプボックス VM を使用して RDP を介して行われます。
+**ジャンプボックス**: [要塞ホスト](https://en.wikipedia.org/wiki/Bastion_host)とも呼ばれ、運用 VNet で VM に接続するために管理者が使用する、ネットワーク上の安全な VM です。 jumpbox の NSG は、セーフ リストにあるパブリック IP アドレスからのリモート トラフィックのみを許可します。 リモート デスクトップ (RDP) トラフィックを許可するには、トラフィックのソースが NSG で定義されている必要があります。 運用リソースの管理は、セキュリティで保護されたジャンプボックス VM を使用して RDP を介して行われます。
 
 **ユーザー定義ルート**: [ユーザー定義ルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)は、Azure VNet 内の IP トラフィックのフローを定義するために使用されます。
 
 **ネットワーク ピアリング VNet** : 運用 VNet と管理 VNet は [VNet ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)を使用して接続されます。
 これらの VNet は別々のリソースとして管理されますが、これらの仮想マシンのすべての接続性の目的では 1 つとして表示されます。 これらのネットワークは、プライベート IP アドレスを使用して相互に直接通信します。 VNet ピアリングは、同じ Azure リージョン内の VNet が対象です。
 
-**ネットワーク セキュリティ グループ**: [NSG](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) には、VNet 内のトラフィックを許可または拒否するアクセス制御リストが含まれています。 NSG を使用して、サブネットまたは個々の VM レベルでトラフィックを保護できます。
+**ネットワーク セキュリティ グループ**: [NSG](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) には、VNet 内のトラフィックを許可または拒否するアクセス制御リストが含まれます。 NSG を使用して、サブネットまたは個々の VM レベルでトラフィックを保護できます。
 
 **Active Directory Domain Services (AD DS)**: このアーキテクチャでは、専用 [Active Directory Domain Services](https://technet.microsoft.com/library/hh831484.aspx) デプロイが提供されます。
 
-**ログ記録と監査**: [Azure アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)は、操作を開始したユーザー、操作の発生時期、操作の状態、操作を調査するのに役立つ可能性のあるその他のプロパティの値など、サブスクリプション内のリソースに対して行われた操作をキャプチャします。 Azure アクティビティ ログは、サブスクリプションのすべてのアクションをキャプチャする Azure プラットフォーム サービスです。 必要に応じてログをアーカイブまたはエクスポートできます。
+**ログ記録と監査**: [Azure アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)には、操作を開始したユーザー、操作の発生時期、操作の状態、操作の調査に役立つ可能性のあるその他のプロパティの値など、サブスクリプション内のリソースに対して行われた操作がキャプチャされます。 Azure アクティビティ ログは、サブスクリプションのすべてのアクションをキャプチャする Azure プラットフォーム サービスです。 必要に応じてログをアーカイブまたはエクスポートできます。
 
-**ネットワーク監視およびアラート**: [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) は、VNet 内のネットワーク トラフィックのネットワーク パケット キャプチャ、フロー ログ記録、トポロジ ツール、診断を提供するプラットフォーム サービスです。
+**ネットワーク監視およびアラート**: [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) は、VNet 内のネットワーク トラフィックに対するネットワーク パケット キャプチャ、フロー ログ記録、トポロジ ツール、および診断を提供するプラットフォーム サービスです。
 
 ## <a name="guidance-and-recommendations"></a>ガイダンスと推奨事項
 
@@ -168,15 +168,15 @@ Storage
 
 ### <a name="logging-and-audit"></a>ログ記録と監査
 
-**監視**: [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started) は、すべての Azure リソースのアクティビティ ログ、メトリック、診断ログを監視するための単一ソースを提供するプラットフォーム サービスです。 Azure Monitor は、Azure のリソースのメトリックとログを視覚化、クエリ、ルーティング、アーカイブし、そのメトリックとログに対してアクションを実行するように構成できます。 リソース ベースのアクセス制御を使用して監査証跡をセキュリティで保護し、ユーザーがログを変更する権限を持たないようにすることをお勧めします。
+**監視**:[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started) は、すべての Azure リソースのアクティビティ ログ、メトリック、および診断ログを監視するための単一ソースを提供するプラットフォーム サービスです。 Azure Monitor は、Azure のリソースのメトリックとログを視覚化、クエリ、ルーティング、アーカイブし、そのメトリックとログに対してアクションを実行するように構成できます。 リソース ベースのアクセス制御を使用して監査証跡をセキュリティで保護し、ユーザーがログを変更する権限を持たないようにすることをお勧めします。
 
-**アクティビティ ログ**: [Azure アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)は、サブスクリプションのリソースに対して実行された操作に関する洞察を提供するように構成します。
+**アクティビティ ログ**: [Azure アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)を構成して、サブスクリプションのリソースに対して実行された操作に関する分析情報が得られるようにします。
 
 **診断ログ**: [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)は、リソースによって出力されるすべてのログです。 これらのログには、Windows イベント システム ログ、BLOB、テーブル、キューのログが含まれることがあります。
 
-**ファイアウォール ログ**: Application Gateway は、完全な診断とアクセス ログを提供します。 WAF が有効になっているアプリケーション ゲートウェイに対してファイアウォールのログを使用できます。
+**ファイアウォール ログ**: Application Gateway は、完全な診断ログとアクセス ログを提供します。 WAF が有効になっているアプリケーション ゲートウェイに対してファイアウォールのログを使用できます。
 
-**ログ アーカイブ**: ログ データ ストレージは、アーカイブのために定義済みのリテンション期間にわたって一元管理された Azure ストレージ アカウントに書き込むように構成できます。 Azure Log Analytics を使用するかサード パーティ製 SIEM システムを使用してログを処理することができます。
+**ログ アーカイブ**: ログ データ ストレージは、アーカイブのために定義済みのリテンション期間にわたって、一元管理された Azure ストレージ アカウントに書き込むように構成できます。 Azure Monitor のログを使用するかサード パーティ製 SIEM システムを使用してログを処理することができます。
 
 ### <a name="identity"></a>ID
 
@@ -186,7 +186,7 @@ Storage
 
 [Azure 仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)。
 
-**Active Directory 統合**: 専用 AD DS のアーキテクチャの代わりに、お客様は [Azure Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity#using-azure-active-directory) 統合または[オンプレミスのフォレストに参加している Azure 内の Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity#using-active-directory-in-azure-joined-to-an-on-premises-forest) を使用できます。
+**Active Directory 統合**: 専用 AD DS のアーキテクチャの代わりに、お客様は [Azure Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity) 統合または[オンプレミスのフォレストに参加している Azure 内の Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity) を使用できます。
 
 ### <a name="security"></a>セキュリティ
 
@@ -194,7 +194,7 @@ Storage
 
 お客様は、管理 VNet とジャンプボックスに接続するときに、[強化されたセキュリティ管理モデル](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/securing-privileged-access)を使用して環境をセキュリティで保護することも検討できます。 セキュリティを強化するために、[特権アクセス ワークステーション](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/privileged-access-workstations#what-is-a-privileged-access-workstation-paw)と RDGateway 構成を使用することをお勧めします。 ネットワーク仮想アプライアンスとパブリック/プライベート DMZ を使用すると、セキュリティがさらに強化されます。
 
-**ネットワークのセキュリティ保護**: [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) (NSG) は、正しく構成されていないか無効になっているゲートウェイをバイパスして受信トラフィックに対する第 2 レベルの保護を提供するために各サブネットに対してお勧めします。 例 - [NSG をデプロイするための Resource Manager テンプレート](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/networkSecurityGroups)。
+**ネットワークのセキュリティ保護**: [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) (NSG) は、正しく構成されていないか無効になっているゲートウェイをバイパスするインバウンド トラフィックに対して第 2 レベルの保護を提供するために、各サブネットに対してお勧めします。 例 - [NSG をデプロイするための Resource Manager テンプレート](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/networkSecurityGroups)。
 
 **パブリック エンドポイントのセキュリティ保護**: インターネット ゲートウェイは、インターネットを通じてユーザーにアプリケーション サービスを公開します。 これらのサービスにアクセスするトラフィックは、Web アプリケーション ファイアウォールと HTTPS プロトコル管理を提供する [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) を使用して保護されます。
 
@@ -204,14 +204,13 @@ Storage
 
 **懸念事項の分離**: この参照アーキテクチャは、VNet を管理操作用とビジネス操作用に分離します。 分離された VNet とサブネットにより、「[Microsoft クラウド サービスとネットワーク セキュリティ](https://docs.microsoft.com/azure/best-practices-network-security)」のベスト プラクティスに従ってネットワーク セグメント間に NSG を使用して、トラフィックの受信と送信の制限などのトラフィック管理を実行できます。
 
+**リソース管理**: VM、VNet、ロード バランサーなどの Azure リソースは、[Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)にグループ化することで管理されます。 リソース ベースのアクセス制御ロールを各リソース グループに割り当てて、許可されているユーザーのみにアクセスを制限することができます。
 
-  **リソース管理**: VM、VNet、ロード バランサーなどの Azure リソースは、[Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groupsresource)にグループ化することで管理されます。 リソース ベースのアクセス制御ロールを各リソース グループに割り当てて、許可されているユーザーのみにアクセスを制限することができます。
+**アクセス制御の制限**: [ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) を使用して、アプリケーション内のリソースを管理します。[カスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)を使用すると、RBAC では DevOps が各階層に対して実行できる操作を制限できます。 権限を付与する場合は、[最小限の特権の原則](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1)を使用します。 構成の変更がすべて計画されたものであることを確認するため、すべての管理操作をログに記録し、定期的な監査を実行します。
 
-**アクセスの制御制限**: [ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (RBAC) を使用し、DevOps が各階層で実行できる操作を制限するために使用できる[カスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) RBAC を使用して、アプリケーション内のリソースを管理します。 権限を付与する場合は、[最小限の特権の原則](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1)を使用します。 すべての管理操作をログに記録し、定期的な監査を実行して、構成変更が計画されていることを確認します。
+**インターネット アクセス**: この参照アーキテクチャでは、[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) をインターネット接続ゲートウェイおよびロード バランサーとして利用します。 一部のお客様は、[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) の代わりにサード パーティ製のネットワーク仮想アプライアンスを使用してネットワーク セキュリティのレイヤーを追加することも検討できます。
 
-**インターネット アクセス**: この参照アーキテクチャは、[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) をインターネット接続ゲートウェイおよびロード バランサーとして利用します。 一部のお客様は、[Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) の代わりにサード パーティ製のネットワーク仮想アプライアンスを使用してネットワーク セキュリティのレイヤーを追加することも検討できます。
-
-**Azure Security Center**: [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) では、サブスクリプション内のリソースのセキュリティの状態を一元的に表示することができ、リソースの侵害を防ぐうえで役立つ推奨事項が提供されます。 よりきめ細かいポリシーを有効にするためにも使用できます。 たとえば、特定のリソース グループにポリシーを適用できるので、企業はリスクへの対策を調整できます。 Azure サブスクリプションで Azure Security Center を有効にすることをお勧めします。
+**Azure Security Center**:[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) では、サブスクリプション内のリソースのセキュリティの状態を一元的に表示することができ、リソースの侵害を防ぐうえで役立つ推奨事項が提供されます。 よりきめ細かいポリシーを有効にするためにも使用できます。 たとえば、特定のリソース グループにポリシーを適用できるので、企業はリスクへの対策を調整できます。 Azure サブスクリプションで Azure Security Center を有効にすることをお勧めします。
 
 ## <a name="ncsc-cloud-security-principles-compliance-documentation"></a>NCSC クラウド セキュリティに関する原則のコンプライアンス ドキュメント
 

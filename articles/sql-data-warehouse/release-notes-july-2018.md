@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 08/06/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: c7d2211ca69fcd18588ea1b20b638b2970b8439c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 123198b21122a23d81794db0a5ca2051b15ee2e7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318845"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834202"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-july-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 7 月
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 7 月に導入された新しい機能と変更点について説明します。
@@ -24,11 +24,11 @@ Azure SQL Data Warehouse では、継続的に機能強化を図っています�
 [Azure SQL Data Warehouse](https://aka.ms/sqldw) は、シャッフル操作を改善するインスタント データ アクセスの導入により、パフォーマンスを新たな水準へと進化させます。 インスタント データ アクセスとは、SQL Server から SQL Server へのダイレクトなネイティブ データ操作を使用することで、データ移動操作のオーバーヘッドを軽減するものです。 SQL Server エンジンをデータ移動用に直接統合する SQL Data Warehouse では、業界標準として知られる [TPC Benchmark™ H (TPC-H)](http://www.tpc.org/tpch/) からのワークロードを使用した場合、**Amazon Redshift よりも 67% 高速**な動作を実現します。
 
 ![Azure SQL Data Warehouse は Amazon Redshift よりも高速で安価です](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/eb3b908a-464d-4847-b384-9f296083a737.png)
-<sub>出典: [Gigaom Research Analyst Report: Data Warehouse in the Cloud Benchmark](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
+<sub>出典:[Gigaom Research Analyst Report:Data Warehouse in the Cloud Benchmark](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
 
 [Gigaom Research](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/) のレポートでは、実行時のパフォーマンスだけでなく、特定のワークロードに対するコスト (米国ドル) を定量化する価格性能比も測定されています。 30 TB のワークロードでは、SQL Data Warehouse は Redshift よりも **23% 以上低コスト**となっています。 SQL Data Warehouse では、処理性能を柔軟にスケーリングできるだけでなく、ワークロードの一時停止や再開も可能なので、お客様は従量課金でサービスを利用しながら、コストを最大限に削減することができます。
 ![Azure SQL Data Warehouse は Amazon Redshift よりも高速で安価です](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/cb76447e-621e-414b-861e-732ffee5345a.png)
-<sub>出典: [Gigaom Research Analyst Report: Data Warehouse in the Cloud Benchmark](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
+<sub>出典:[Gigaom Research Analyst Report:Data Warehouse in the Cloud Benchmark](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
 
 ### <a name="query-concurrency"></a>クエリのコンカレンシー
 SQL Data Warehouse は、組織内でのデータの可用性を確保するうえでも役立ちます。 サービスが強化され、128 件のクエリを同時実行できるようになったことで、他の要求によってブロックされることなく、同じデータベースに対してより多くのユーザーがクエリを実行できるようになりました。 これに対し、Amazon Redshift ではクエリの同時実行数が最大 50 件であるため、組織内でのデータ アクセスが大きく制限されます。
@@ -137,7 +137,7 @@ SQL Data Warehouse の概要について学習したので、次は[SQL Data War
 [Customer Advisory Team のブログ]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [顧客の成功事例]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
 [機能に関する要求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[Stack Overflow フォーラム]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Stack Overflow フォーラム]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [create a SQL Data Warehouse]: ./create-data-warehouse-portal.md

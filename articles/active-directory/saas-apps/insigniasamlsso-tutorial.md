@@ -4,23 +4,24 @@ description: Azure Active Directory と Insignia SAML SSO の間でシングル 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 828c981c-c3dd-4eb2-8699-0f732baa43f6
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 776ad8445c1968928a631ae1a401db4c65a6bb6d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dc492142200c7fd028360d01c2602904531550dc
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421243"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58884484"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>チュートリアル: Azure Active Directory と Insignia SAML SSO の統合
 
@@ -111,16 +112,17 @@ Insignia SAML SSO で Azure AD のシングル サインオンを構成してテ
     ![[Insignia SAML SSO のドメインと URL] のシングル サインオン情報](./media/insigniasamlsso-tutorial/tutorial_insigniasamlsso_url.png)
 
     a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    
     | |
     |--|
     | `https://<customername>.insigniails.com/ils` |
     | `https://<customername>.insigniails.com/` |
-    | `https://<customername>.insigniailsusa.com/ ` |
+    | `https://<customername>.insigniailsusa.com/` |
 
     b. **[識別子]** ボックスに、`https://<customername>.insigniailsusa.com/<uniqueid>` の形式で URL を入力します。
 
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 この値を取得するには、[Insignia SAML SSO クライアント サポート チーム](http://www.insigniasoftware.com/insignia/Techsupport.aspx)にお問い合わせください。 
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 この値を取得するには、[Insignia SAML SSO クライアント サポート チーム](https://www.insigniasoftware.com/insignia/Techsupport.aspx)にお問い合わせください。 
  
 
 1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
@@ -135,10 +137,10 @@ Insignia SAML SSO で Azure AD のシングル サインオンを構成してテ
 
     ![Insignia SAML SSO 構成](./media/insigniasamlsso-tutorial/tutorial_insigniasamlsso_configure.png) 
 
-1. **Insignia SAML SSO** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)**、**サインアウト URL、SAML シングル サインオン サービス URL** を [Insignia SAML SSO サポート チーム](http://www.insigniasoftware.com/insignia/Techsupport.aspx)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. **Insignia SAML SSO** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)**、**サインアウト URL、SAML シングル サインオン サービス URL** を [Insignia SAML SSO サポート チーム](https://www.insigniasoftware.com/insignia/Techsupport.aspx)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -175,7 +177,7 @@ Insignia SAML SSO で Azure AD のシングル サインオンを構成してテ
  
 ### <a name="create-an-insignia-saml-sso-test-user"></a>Insignia SAML SSO テスト ユーザーの作成
 
-このセクションでは、Insignia Library System で Britta Simon というユーザーを作成します。 [Insignia Library System サポート チーム](http://www.insigniasoftware.com/insignia/Techsupport.aspx)と連携して、Insignia Library System プラットフォームにユーザーを追加してください。
+このセクションでは、Insignia Library System で Britta Simon というユーザーを作成します。 [Insignia Library System サポート チーム](https://www.insigniasoftware.com/insignia/Techsupport.aspx)と連携して、Insignia Library System プラットフォームにユーザーを追加してください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -212,7 +214,7 @@ Insignia SAML SSO で Azure AD のシングル サインオンを構成してテ
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Insignia SAML SSO のタイルをクリックすると、自動的に Insignia SAML SSO アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

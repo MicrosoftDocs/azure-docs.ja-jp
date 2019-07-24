@@ -1,48 +1,48 @@
 ---
-title: Anomaly Finder API と Ruby の使用方法 - Microsoft Cognitive Services | Microsoft Docs
-description: Ruby と Cognitive Services の Anomaly Finder API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: How to use the Anomaly Finder API with Ruby - Microsoft Cognitive Services | Microsoft Docs
+description: Get information and code samples to help you quickly get started using Ruby and the Anomaly Finder API in Cognitive Services.
 services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.component: anomaly-detection
+ms.subservice: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 97b02bfc2e388757306ae6180cf66f6870437218
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 020c957baf6673365d64c613bd908a440bc3d05c
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457631"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56735035"
 ---
-# <a name="use-the-anomaly-finder-api-with-ruby"></a>Anomaly Finder API と Ruby の使用
+# <a name="use-the-anomaly-finder-api-with-ruby"></a>Use the Anomaly Finder API with Ruby
 
 [!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
-この記事は、Anomaly Finder API と Ruby の使用をすぐに開始し、時系列データの異常検出結果を取得するタスクを実行するために役立つ情報とコード サンプルを提供します。
+This article provides information and code samples to help you quickly get started using the Anomaly Finder API with Ruby to accomplish task of getting anomaly detection result of time series data.
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
-## <a name="getting-anomaly-points-with-anomaly-finder-api-using-ruby"></a>Ruby を使用して Anomaly Finder API で異常ポイントを取得する 
+## <a name="getting-anomaly-points-with-anomaly-finder-api-using-ruby"></a>Getting anomaly points with Anomaly Finder API using Ruby 
 [!INCLUDE [DataContract](../includes/datacontract.md)]
 
-### <a name="example-of-time-series-data"></a>時系列データの例
-時系列データ ポイントの例は、次のとおりです。
+### <a name="example-of-time-series-data"></a>Example of time series data
+The example of the time series data points is as follows,
 
 [!INCLUDE [Request](../includes/request.md)]
 
-### <a name="analyze-data-and-get-anomaly-points-ruby-example"></a>データを分析して異常ポイントを取得する Ruby の例
+### <a name="analyze-data-and-get-anomaly-points-ruby-example"></a>Analyze data and get anomaly points Ruby example
 
-この例を使用する手順は次のとおりです。
+The steps of using the example are as follows.
 
-1. 'gem install rest-client' を実行して [rest-client](https://github.com/rest-client/rest-client) をインストールします。
-2. 以下のコードを .rb ファイルとして保存します。
-3. `[YOUR_SUBSCRIPTION_KEY]` 値を、有効なサブスクリプション キーに置き換えます。
-4. `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` を例または独自のデータ ポイントに置き換えます。
-5. 実行し、応答を確認します。
+1. Install [rest-client](https://github.com/rest-client/rest-client) by running 'gem install rest-client'.
+2. Save below code as a .rb file.
+3. Replace the `[YOUR_SUBSCRIPTION_KEY]` value with your valid subscription key.
+4. Replace the `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` with the example or your own data points.
+5. Execute and check the response.
 
 ```ruby
 # https://github.com/rest-client/rest-client
@@ -76,12 +76,12 @@ response = RestClient::Request.execute(
 puts response.body
 ```
 
-### <a name="example-response"></a>応答の例
+### <a name="example-response"></a>Example response
 
-成功応答が JSON で返されます。 応答のサンプルは次のとおりです。
+A successful response is returned in JSON. Sample response is as follows.
 [!INCLUDE [Response](../includes/response.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>Next steps
 
 > [!div class="nextstepaction"]
-> [REST API リファレンス](https://dev.labs.cognitive.microsoft.com/docs/services/anomaly-detection/operations/post-anomalydetection)
+> [REST API reference](https://dev.labs.cognitive.microsoft.com/docs/services/anomaly-detection/operations/post-anomalydetection)

@@ -1,25 +1,21 @@
 ---
-title: 'Azure Cosmos DB: SQL Java API、SDK、およびリソース | Microsoft Docs'
+title: Azure Cosmos DB は:SQL Java API、SDK およびリソース
 description: リリース日、提供終了日、Azure Cosmos DB SQL Java SDK の各バージョン間の変更など、SQL Java API と SDK に関するあらゆる詳細を提供します。
-services: cosmos-db
-author: rnagpal
-manager: kfile
-editor: cgronlun
+author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 06/29/2018
-ms.author: rnagpal
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7d00d6236b601d145be03e6086bec2d72faafcd
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.date: 03/13/2019
+ms.author: sngun
+ms.openlocfilehash: cb8a97a29a14ecd5601495048bcbe1aff748d892
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344939"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617134"
 ---
-# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Java SDK: リリース ノートとリソース
+# <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
@@ -30,28 +26,50 @@ ms.locfileid: "37344939"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
 SQL API Java SDK は、同期操作をサポートしています。 非同期サポートの場合は、[SQL API Async Java SDK](sql-api-sdk-async-java.md) を使用してください。 
 
-<table>
-
-<tr><td>**SDK のダウンロード**</td><td>[Maven](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)</td></tr>
-
-<tr><td>**API ドキュメント**</td><td>[Java API リファレンス ドキュメント](/java/api/com.microsoft.azure.documentdb)</td></tr>
-
-<tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-java/)</td></tr>
-
-<tr><td>**作業の開始**</td><td>[Java SDK の開始](sql-api-java-get-started.md)</td></tr>
-
-<tr><td>**Web アプリ チュートリアル**</td><td>[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-java-application.md)</td></tr>
-
-<tr><td>**サポートされている最小ランタイム**</td><td>[JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)</td></tr>
-</table></br>
+| |  |
+|---|---|
+|**SDK のダウンロード**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
+|**API ドキュメント**|[Java API リファレンス ドキュメント](/java/api/com.microsoft.azure.documentdb)|
+|**SDK への協力**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
+|**作業開始**|[Java SDK の開始](sql-api-java-get-started.md)|
+|**Web アプリ チュートリアル**|[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-java-application.md)|
+|**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
+* ハッシュ V2 の PartitionKey のバグが修正されました。
+
+### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
+* 複合インデックスのサポートが追加されました。
+* グローバル エンドポイント マネージャーが強制的に更新されるように、バグが修正されました。
+* ダイレクト モードでの事前条件のある upsert のバグが修正されました。
+
+### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
+* ゲートウェイ アドレス キャッシュでのバグが修正されました。
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+* 直接モードに対するマルチリージョンの書き込みサポートが追加されました。
+* プロキシから、ServiceUnavailable 例外としてスローされた IOExceptions を処理するためのサポートが追加されました。
+* エンドポイントの検出再試行ポリシーのバグが修正されました。
+* 確実に BaseDatabaseAccountConfigurationProvider で null ポインター例外がスローされないように、バグが修正されました。
+* QueryIterator で null が返されないように、バグが修正されました。
+* 確実に大きな PartitionKey が許可されるように、バグが修正されました
+
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+* ゲートウェイ モードに対するマルチリージョンの書き込みサポートが追加されました。
+
+### <a name="a-name11641164"></a><a name="1.16.4"/>1.16.4
+* クエリのパーティション キー範囲の読み取りでのバグが修正されました。
+
+### <a name="a-name11631163"></a><a name="1.16.3"/>1.16.3
+* DirectHttps モードでの継続トークン ヘッダー サイズの設定に関するバグが修正されました。
 
 ### <a name="a-name11621162"></a><a name="1.16.2"/>1.16.2
 * ストリーミングのフェールオーバーに対するサポートが追加されました。
@@ -78,7 +96,7 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 
 ### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
 * JSON シリアル化のパフォーマンスが向上しました。
-* この SDK バージョンでは、https://aka.ms/cosmosdb-emulator からダウンロードできる Azure Cosmos DB エミュレーターの最新バージョンが必要です。
+* この SDK バージョンでは、 https://aka.ms/cosmosdb-emulator からダウンロードできる Azure Cosmos DB エミュレーターの最新バージョンが必要です。
 
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
 * Microsoft フレンド ライブラリの内部変更。
@@ -105,11 +123,11 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 * コレクションの作成直後の要求に対して "所有者リソースが見つかりません" という例外を引き起こす可能性のある、セッション コンテナー内のいくつかのバグを修正しました。
 
 ### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](sql-api-sql-query.md#Aggregates)に関するトピックを参照してください。
+* 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](how-to-sql-query.md#Aggregates)に関するトピックを参照してください。
 * Change Feed のサポートを追加しました。
 * RequestOptions.setPopulateQuotaInfo を介したコレクション クォータ情報のサポートを追加しました。
 * RequestOptions.setScriptLoggingEnabled を介したストアド プロシージャ スクリプトのログ記録のサポートを追加しました。
-* スロットル エラーが発生した場合に DirectHttps モードのクエリがハングすることがあるバグを修正しました。
+* スロットル エラーが発生した場合に DirectHttps モードのクエリが応答を停止させるおそれのあるバグを修正しました。
 * セッションの整合性モードのバグを修正しました。
 * 要求レートが高いときに HttpContext の NullReferenceException を引き起こす可能性のあるバグを修正しました。
 * DirectHttps モードのパフォーマンスを改善しました。
@@ -124,7 +142,7 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
 * 直接接続モードでの接続リークを防ぐために、接続管理のバグを修正しました。
-* NullReferenece 例外がスローされる場合がある TOP クエリのバグを修正しました。
+* NullReference 例外がスローされる場合がある TOP クエリのバグを修正しました。
 * 内部キャッシュのネットワーク呼び出しの数を減らすことでパフォーマンスを改善しました。
 * トラブルシューティングを適切に行うために、状態コード、ActivityID、要求 URI を DocumentClientException に追加しました。
 
@@ -205,6 +223,13 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.1.3](#2.1.3) |2018 年 3 月 13 日 |--- |
+| [2.1.2](#2.1.2) |2018 年 3 月 9 日 |--- |
+| [2.1.1](#2.1.1) |2018 年 12 月 13 日 |--- |
+| [2.1.0](#2.1.0) |2018 年 11 月 20 日 |--- |
+| [2.0.0](#2.0.0) |2018 年 9 月 21 日 |--- |
+| [1.16.4](#1.16.4) |2018 年 9 月 10 日 |--- |
+| [1.16.3](#1.16.3) |2018 年 9 月 9 日 |--- |
 | [1.16.2](#1.16.2) |2018 年 6 月 29 日 |--- |
 | [1.16.1](#1.16.1) |2018 年 5 月 16 日 |--- |
 | [1.16.0](#1.16.0) |2018 年 3 月 15 日 |--- |
@@ -232,7 +257,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 | [1.3.0](#1.3.0) |2015 年 10 月 5 日 |--- |
 | [1.2.0](#1.2.0) |2015 年 8 月 5 日 |--- |
 | [1.1.0](#1.1.0) |2015 年 7 月 9 日 |--- |
-| [1.0.1](#1.0.1) |2015 年 5 月 12 日 |--- |
+| 1.0.1 |2015 年 5 月 12 日 |--- |
 | [1.0.0](#1.0.0) |2015 年 4 月 7 日 |--- |
 | 0.9.5-prelease |2015 年 3 月 9 日 |2016 年 2 月 29 日 |
 | 0.9.4-prelease |2015 年 2 月 17 日 |2016 年 2 月 29 日 |

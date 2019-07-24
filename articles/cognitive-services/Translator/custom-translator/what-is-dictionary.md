@@ -5,24 +5,24 @@ description: 辞書とは、Microsoft Translator で常に同じように翻訳�
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: 3a92e41ad9611981777012cd231845587a6f947b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.topic: conceptual
+ms.openlocfilehash: bfefb1fe44959bc7e5186a0f14813f41256cf2d5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626917"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775443"
 ---
 # <a name="what-is-a-dictionary"></a>辞書とは
 
 辞書とは、一連の句または文、そしてそれに対応する翻訳を指定する、アラインされたドキュメントのペアです。 特定の句または文がソースに出現したとき、辞書に指定した翻訳を Microsoft Translator にいつも使用させたい場合は、トレーニングに辞書を使用します。 辞書は、用語集や用語ベースと呼ばれることもあります。 指定したすべての用語を強制的に "置換" する手段が辞書であると考えられます。
 
-辞書が正しく機能するのは、Microsoft ニューラル機械翻訳 (NMT) システムが完全にサポートされる言語ペアのプロジェクトのみです。 言語の完全な一覧については、 http://www.aka.ms/translatorlanguages を参照してください。
+辞書が正しく機能するのは、Microsoft ニューラル機械翻訳 (NMT) システムが完全にサポートされる言語ペアのプロジェクトのみです。 [言語の完全な一覧を確認してください](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。
 
-## <a name="phrase-dictionary"></a>句辞書 
+## <a name="phrase-dictionary"></a>句辞書
 お客様のモデルのトレーニングに句辞書を含めた場合、そこに記載されている語句は、自分が指定したとおりに翻訳されます。 文の残りの部分は、普通に翻訳されます。 翻訳すべきでない句は、句辞書を使用して指定できます。その場合は、辞書のソース ファイルとターゲット ファイルに同じ未翻訳の句を指定します。
 
 ## <a name="sentence-dictionary"></a>文辞書
@@ -36,9 +36,9 @@ ms.locfileid: "51626917"
 
 ## <a name="recommendations"></a>Recommendations
 
-- 辞書は、トレーニング データが含まれたトレーニング済みモデルに代わるものではありません。  単語や文を検索して置換するのが辞書の基本的な機能です。  一般に、ご自分のトレーニング マテリアルを使用して完全な文をシステムに学習させる方が、辞書を使うよりも賢明な選択です。 
+- 辞書は、トレーニング データが含まれたトレーニング済みモデルに代わるものではありません。  単語や文を検索して置換するのが辞書の基本的な機能です。  一般に、ご自分のトレーニング マテリアルを使用して完全な文をシステムに学習させる方が、辞書を使うよりも賢明な選択です。
 - 句辞書は控えめに使用してください。 文中の句が置換されると、その文の残りの部分を翻訳するためのコンテキストが文中から失われるか制限されます。 結果、文中の語句は句辞書に従って翻訳されるものの、多くの場合、文全体の翻訳の品質は低下します。
-- 句辞書は、製品名 ("Microsoft SQL Server")、固有名詞 ("City of Hamburg")、製品の機能 ("pivot table") などの複合名詞に適しています。 動詞や形容詞にはそれほど適しません。一般に、ソース言語またはターゲット言語で語形変化が頻出するためです。 複合名詞以外を句辞書に登録することは避けてください。 
+- 句辞書は、製品名 ("Microsoft SQL Server")、固有名詞 ("City of Hamburg")、製品の機能 ("pivot table") などの複合名詞に適しています。 動詞や形容詞にはそれほど適しません。一般に、ソース言語またはターゲット言語で語形変化が頻出するためです。 複合名詞以外を句辞書に登録することは避けてください。
 - 辞書を使用している場合、お客様の翻訳における大文字化と句読点には、お客様のターゲット ファイル内で使用されている大文字化と句読点が反映されます。 お客様の入力文とお客様の辞書ファイルに含まれているソース文との一致を特定する際、大文字化と句読点は無視されます。 たとえば、ソース ファイルで "City of Hamburg" を、ターゲット ファイルで "Ciudad de hamburg" を指定する辞書を使用して、英語からスペイン語への翻訳システムをトレーニングしたとしましょう。 "city of Hamburg" という句を含んだ文の翻訳を要求した場合、"city of Hamburg" が辞書ファイルの項目 "City of Hamburg" と一致し、最終的な翻訳で "Ciudad de hamburg" にマップされます。
 - 1 つの単語が辞書ファイルに複数回出現した場合は、指定されている最後の項目がシステムによって常に使用されます。 同じ単語に対して複数の翻訳を辞書に含めることは避けてください。
 

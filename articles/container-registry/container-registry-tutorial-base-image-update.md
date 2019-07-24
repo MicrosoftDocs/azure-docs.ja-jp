@@ -1,21 +1,21 @@
 ---
-title: チュートリアル - Azure Container Registry Tasks を使用して基本イメージの更新時のコンテナー イメージ ビルドを自動化する
-description: このチュートリアルでは、基本イメージが更新されたときにクラウドでコンテナー イメージ ビルドを自動的にトリガーするようにタスクを構成する方法を説明します。
+title: チュートリアル - 基本イメージの更新時のコンテナー イメージ ビルドを自動化する - Azure Container Registry タスク
+description: このチュートリアルでは、基本イメージが更新されたときにクラウドでコンテナー イメージ ビルドを自動的にトリガーするように Azure Container Registry タスクを構成する方法を説明します。
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 54e8892787fa2b7b093609ee5d09f3a87e103411
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: a5d89051ef479cf9d87ca8f921e05c6d0be12b8c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856583"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58892179"
 ---
-# <a name="tutorial-automate-image-builds-on-base-image-update-with-azure-container-registry-tasks"></a>チュートリアル: Azure Container Registry Tasks を使用して基本イメージの更新時のイメージ ビルドを自動化する
+# <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>チュートリアル:Azure コンテナー レジストリで基本イメージの更新時にコンテナー イメージ ビルドを自動化する 
 
 ACR Tasks では、いずれかの基本イメージ内で OS またはアプリケーション フレームワークに修正プログラムを適用したときなど、コンテナーの基本イメージが更新されたときのビルド実行の自動化をサポートしています。 このチュートリアルでは、コンテナーの基本イメージがレジストリにプッシュされている場合に、クラウドでビルドをトリガーする ACR Tasks でタスクを作成する方法を説明します。
 
@@ -73,11 +73,13 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 このチュートリアルでは、基本イメージの更新シナリオについて説明します。 [コード サンプル][code-sample]には 2 つの Docker ファイルが含まれます。これは、アプリケーション イメージと、アプリケーションイメージがベースとして指定するイメージです。 以下のセクションでは、基本イメージの新しいバージョンがコンテナー レジストリにプッシュされたときに、アプリケーション イメージ ベースのビルドを自動的にトリガーする ACR タスクを作成します。
 
-[Dockerfile-app][dockerfile-app]: 基になる Node.js バージョンを表示する静的な Web ページをレンダリングする小さな Node.js Web アプリケーションです。 バージョン文字列がシミュレートされ、基本イメージで定義されている環境変数 `NODE_VERSION` の内容が表示されます。
+[Dockerfile-app][dockerfile-app]:基になる Node.js バージョンを表示する静的な Web ページをレンダリングする小さな Node.js Web アプリケーションです。 バージョン文字列がシミュレートされ、基本イメージで定義されている環境変数 `NODE_VERSION` の内容が表示されます。
 
-[Dockerfile-base][dockerfile-base]: `Dockerfile-app` によってそのベースとして指定されるイメージ。 これ自体が [Node][base-node] イメージに基づき、`NODE_VERSION` 環境変数を含みます。
+[Dockerfile-base][dockerfile-base]:`Dockerfile-app` によってそのベースとして指定されるイメージ。 これ自体が [Node][base-node] イメージに基づき、`NODE_VERSION` 環境変数を含みます。
 
 以降のセクションでは、タスクを作成し、基本イメージ Docker ファイルで値 `NODE_VERSION` を更新してから、ACR Tasks を使用して基本イメージをビルドします。 ACR タスクによって新しい基本イメージがレジストリにプッシュされると、アプリケーション イメージのビルドが自動的にトリガーされます。 必要に応じて、アプリケーション コンテナー イメージをローカルで実行して、ビルドされたイメージの別のバージョンの文字列を表示します。
+
+このチュートリアルの ACR タスクでは、Dockerfile で指定されている単一のコンテナー イメージをビルドしてプッシュします。 ACR タスクでは、[複数ステップ タスク](container-registry-tasks-multi-step.md)を実行することもできます。その場合、YAML ファイルを使用して、複数のコンテナーをビルド、プッシュ、および (必要に応じて) テストする手順を定義します。
 
 ## <a name="build-the-base-image"></a>基本イメージをビルドする
 
@@ -128,7 +130,7 @@ az acr task run --registry $ACR_NAME --name taskhelloworld
 
 次のオプションの手順を実行する場合は、タスクが完了したら、**実行 ID** ("da6" など) をメモしておきます。
 
-### <a name="optional-run-application-container-locally"></a>オプション: アプリケーション コンテナーをローカルで実行する
+### <a name="optional-run-application-container-locally"></a>省略可能:アプリケーション コンテナーをローカルで実行する
 
 ローカルで作業し (Cloud Shell ではなく)、Docker がインストールされている場合は、コンテナーを実行して、その基本イメージをリビルドする前に Web ブラウザーでアプリケーションのレンダリングを確認します。 Cloud Shell を使用する場合は、このセクションをスキップしてください (Cloud Shell では `az acr login` または `docker run` はサポートされていません)。
 
@@ -144,7 +146,7 @@ az acr login --name $ACR_NAME
 docker run -d -p 8080:80 $ACR_NAME.azurecr.io/helloworld:<run-id>
 ```
 
-ブラウザーで http://localhost:8080 に移動します。次のような Node.js バージョン番号が Web ページに表示されます。 後の手順で、バージョン文字列に "a" を追加して、バージョンを増やします。
+ブラウザーで `http://localhost:8080` に移動します。次のような Node.js バージョン番号が Web ページに表示されます。 後の手順で、バージョン文字列に "a" を追加して、バージョンを増やします。
 
 ![ブラウザーに表示されたサンプル アプリケーションのスクリーンショット][base-update-01]
 
@@ -214,7 +216,7 @@ da1                       Linux       Succeeded  Manual        2018-09-17T22:29:
 
 新しくビルドされたコンテナーを実行する次のオプションの手順を実行し、更新後のバージョン番号を表示する場合は、イメージの更新によってトリガーされたビルドの**実行 ID** の値をメモしておきます (前の出力では "da8")。
 
-### <a name="optional-run-newly-built-image"></a>オプション: 新しくビルドされたイメージを実行する
+### <a name="optional-run-newly-built-image"></a>省略可能:新しくビルドされたイメージを実行する
 
 ローカルで作業しており (Cloud Shell ではなく)、Docker がインストールされている場合は、そのビルドが完了したら新しいアプリケーション イメージを実行します。 `<run-id>` を、前の手順で取得した実行 ID に置き換えます。 Cloud Shell を使用する場合は、このセクションをスキップしてください (Cloud Shell では `docker run` はサポートされていません)。
 
@@ -256,11 +258,11 @@ az ad sp delete --id http://$ACR_NAME-pull
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
 [az-acr-build]: /cli/azure/acr#az-acr-build-run
-[az-acr-task-create]: /cli/azure/acr#az-acr-task-create
-[az-acr-task-run]: /cli/azure/acr#az-acr-task-run
+[az-acr-task-create]: /cli/azure/acr
+[az-acr-task-run]: /cli/azure/acr#az-acr-run
 [az-acr-login]: /cli/azure/acr#az-acr-login
-[az-acr-task-list-runs]: /cli/azure/acr#az-acr-task-list-runs
-[az-acr-task]: /cli/azure/acr#az-acr-task
+[az-acr-task-list-runs]: /cli/azure/acr
+[az-acr-task]: /cli/azure/acr
 
 <!-- IMAGES -->
 [base-update-01]: ./media/container-registry-tutorial-base-image-update/base-update-01.png

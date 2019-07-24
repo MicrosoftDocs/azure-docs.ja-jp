@@ -1,23 +1,24 @@
 ---
-title: Azure ExpressRoute 回線の構成ワークフロー | Microsoft Docs
-description: このページでは、ExpressRoute の回線とピアリングを構成するためのワークフローについて段階的に説明します。
+title: 回線構成のワークフロー - ExpressRoute:Azure| Microsoft Docs
+description: このページでは、ExpressRoute の回線とピアリングを構成するためのワークフローについて説明します。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 12/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 765050c9c21c7ba752535fc391cc9bb7d8ac4083
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.custom: seodec18
+ms.openlocfilehash: 3ffcc5ac2193e607573ceb93717258f5349d1f15
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301040"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101689"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー
 このページでは、サービス プロビジョニングと上位のルーティング構成ワークフローについて段階的に説明します。
 
-![](./media/expressroute-workflows/expressroute-circuit-workflow.png)
+![回線のワークフロー](./media/expressroute-workflows/expressroute-circuit-workflow.png)
 
 下の図とそれに対応する手順は、ExpressRoute 回線をエンドツーエンドでプロビジョニングするための作業を示しています。 
 
@@ -35,7 +36,7 @@ ms.locfileid: "43301040"
      > 
      > 
      
-     ![](./media/expressroute-workflows/routing-workflow.png)
+     ![ワークフローのルーティング](./media/expressroute-workflows/routing-workflow.png)
 5. ExpressRoute 回線に仮想ネットワークをリンクする - 仮想ネットワークを ExpressRoute 回線にリンクできます。 指示に従い、回線に [VNet をリンク](expressroute-howto-linkvnet-arm.md) してください。 VNet は ExpressRoute 回線と同じ Azure サブスクリプションに配置するか、別のサブスクリプションに配置できます。
 
 ## <a name="expressroute-circuit-provisioning-states"></a>ExpressRoute 回線のプロビジョニング状態

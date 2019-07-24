@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: アカウントとアクセス許可 | Microsoft Docs'
+title: Azure AD Connect:アカウントとアクセス許可 | Microsoft Docs
 description: このトピックでは、使用および作成されるアカウントと、必要なアクセス許可について説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.reviewer: cychua
 ms.assetid: b93e595b-354a-479d-85ec-a95553dd9cc2
@@ -12,18 +12,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/12/2018
-ms.component: hybrid
+ms.topic: reference
+ms.date: 01/24/2019
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: a3bce69236586bcd0a250c47f1129ac0d94e8b26
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d145407331ed652f21510483b51a4617bf28e2fa
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231484"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879120"
 ---
-# <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: アカウントとアクセス許可
+# <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect:アカウントとアクセス許可
 
 ## <a name="accounts-used-for-azure-ad-connect"></a>Azure AD Connect に使用されるアカウント
 
@@ -39,7 +40,10 @@ Azure AD Connect では、オンプレミス (Windows Server Active Directory) �
 
 Azure AD Connect を実行するためのこれら 3 つのアカウントに加え、Azure AD Connect をインストールするには、次のアカウントが別途必要となります。  次のとおりです。
 
-- **AD DS エンタープライズ管理者アカウント**:      Azure AD Connect のインストールに使用します。
+- **ローカル管理者アカウント**: Azure AD Connect をインストールし、コンピューターでのローカル管理者アクセス許可を持っている管理者。
+
+- **AD DS エンタープライズ管理者アカウント**: 必要に応じて、上記の "AD DS コネクタ アカウント" を作成するために使用します。
+
 - **Azure AD 全体管理者アカウント**:  Azure AD コネクタ アカウントを作成したり、Azure AD を構成したりする目的で使用します。
 
 - **SQL SA アカウント (任意)**:     通常版の SQL Server を使用して ADSync データベースを作成する目的で使用します。  この SQL Server は、Azure AD Connect のインストール環境に対してローカルでもリモートでもかまいません。  このアカウントは、エンタープライズ管理者と同じアカウントにすることもできます。  現在では、SQL 管理者が帯域外でデータベースのプロビジョニングを実行し、データベース所有者権限を持つ Azure AD Connect 管理者がインストールできるようになっています。  詳細については、「[Install Azure AD Connect using SQL delegated administrator permissions (SQL によって委任された管理者の権限を使用した Azure AD Connect のインストール)](how-to-connect-install-sql-delegation.md)」を参照してください。
@@ -64,10 +68,10 @@ AD DS エンタープライズ管理者アカウントは、オンプレミス�
 DirSync からアップグレードする場合は、AD DS エンタープライズ管理者の資格情報を使用して、DirSync で使用されるアカウントのパスワードをリセットします。 Azure AD グローバル管理者の資格情報も必要になります。
 
 ### <a name="azure-ad-global-admin-credentials"></a>Azure AD 全体管理者の資格情報
-これらの資格情報を使用するのはインストール中のみであり、インストールの完了後には使用しません。 この資格情報は、Azure AD への変更の同期に使用される [Azure AD コネクタ アカウント](#azure-ad-service-account)を作成するために使用します。 また、このアカウントにより、同期が Azure AD の機能として有効化されます。
+これらの資格情報を使用するのはインストール中のみであり、インストールの完了後には使用しません。 この資格情報は、Azure AD への変更の同期に使用される Azure AD コネクタ アカウントを作成するために使用します。 また、このアカウントにより、同期が Azure AD の機能として有効化されます。
 
 ### <a name="ad-ds-connector-account-required-permissions-for-express-settings"></a>AD DS コネクタ アカウントの必須のアクセス許可 (簡単設定の場合)
-[AD DS コネクタ アカウント](#active-directory-account)は、Windows Server AD の読み取りと書き込みを目的に作成され、簡単設定によって作成された場合、以下のアクセス許可を持ちます。
+AD DS コネクタ アカウントは、Windows Server AD の読み取りと書き込みを目的に作成され、簡単設定によって作成された場合、以下のアクセス許可を持ちます。
 
 | アクセス許可 | 使用対象 |
 | --- | --- |
@@ -86,9 +90,9 @@ DirSync からアップグレードする場合は、AD DS エンタープライ
 
 | ウィザード ページ | 収集される資格情報 | 必要なアクセス許可 | 用途 |
 | --- | --- | --- | --- |
-| 該当なし |インストール ウィザードを実行するユーザー |ローカル サーバーの管理者 |<li>同期サービスの実行に使用する [ADSync サービス アカウント](#azure-ad-connect-sync-service-account)を作成します。 |
-| Azure への接続 |Azure AD ディレクトリの資格情報 |Azure AD でのグローバル管理者ロール |<li>Azure AD ディレクトリの同期を有効にします。</li>  <li>Azure AD で進行中の同期操作に使用する [Azure AD コネクタ アカウント](#azure-ad-service-account)を作成します。</li> |
-| AD DS に接続 |オンプレミスの Active Directory の資格情報 |Active Directory 内の Enterprise Admins (EA) グループのメンバー |<li>Active Directory で [AD DS コネクタ アカウント](#active-directory-account)を作成し、それに対するアクセス許可を付与します。 この作成されたアカウントは、同期中にディレクトリ情報を読み取るまたは書き込むために使用されます。</li> |
+| 該当なし |インストール ウィザードを実行するユーザー |ローカル サーバーの管理者 |<li>同期サービスの実行に使用する ADSync サービス アカウントを作成します。 |
+| Azure への接続 |Azure AD ディレクトリの資格情報 |Azure AD でのグローバル管理者ロール |<li>Azure AD ディレクトリの同期を有効にします。</li>  <li>Azure AD で進行中の同期操作に使用する Azure AD コネクタ アカウントを作成します。</li> |
+| AD DS に接続 |オンプレミスの Active Directory の資格情報 |Active Directory 内の Enterprise Admins (EA) グループのメンバー |<li>Active Directory で AD DS コネクタ アカウントを作成し、それに対するアクセス許可を付与します。 この作成されたアカウントは、同期中にディレクトリ情報を読み取るまたは書き込むために使用されます。</li> |
 
 
 ## <a name="custom-installation-settings"></a>カスタム インストールの設定
@@ -103,10 +107,10 @@ DirSync からアップグレードする場合は、AD DS エンタープライ
 
 | ウィザード ページ | 収集される資格情報 | 必要なアクセス許可 | 用途 |
 | --- | --- | --- | --- |
-| 該当なし |インストール ウィザードを実行するユーザー |<li>ローカル サーバーの管理者</li><li>完全な SQL Server を使用する場合、ユーザーは SQL のシステム管理者 (SA) である必要があります</li> |既定では、 [同期エンジン サービス アカウント](#azure-ad-connect-sync-service-account)として使用するローカル アカウントを作成します。 このアカウントは、管理者が特定のアカウントを指定しなかった場合のみ作成します。 |
+| 該当なし |インストール ウィザードを実行するユーザー |<li>ローカル サーバーの管理者</li><li>完全な SQL Server を使用する場合、ユーザーは SQL のシステム管理者 (SA) である必要があります</li> |既定では、同期エンジン サービス アカウントとして使用するローカル アカウントを作成します。 このアカウントは、管理者が特定のアカウントを指定しなかった場合のみ作成します。 |
 | 同期サービスのインストール、サービス アカウントのオプション |AD またはローカル ユーザー アカウントの資格情報 |ユーザー。アクセス許可は、インストール ウィザードにより付与されます。 |管理者がアカウントを指定している場合は、このアカウントは、同期サービスのサービス アカウントとして使用します。 |
-| Azure への接続 |Azure AD ディレクトリの資格情報 |Azure AD でのグローバル管理者ロール |<li>Azure AD ディレクトリの同期を有効にします。</li>  <li>Azure AD で進行中の同期操作に使用する [Azure AD コネクタ アカウント](#azure-ad-service-account)を作成します。</li> |
-| ディレクトリの接続 |Azure AD に接続する各フォレストのオンプレミス Active Directory の資格情報 |アクセス許可はどの機能を有効にするかによって異なります。詳細については、「[AD DS コネクタ アカウントの作成](#create-the-ad-dso-connector-account)」を参照してください。 |このアカウントは、同期中にディレクトリ情報を読み取るまたは書き込むために使用されます。 |
+| Azure への接続 |Azure AD ディレクトリの資格情報 |Azure AD でのグローバル管理者ロール |<li>Azure AD ディレクトリの同期を有効にします。</li>  <li>Azure AD で進行中の同期操作に使用する Azure AD コネクタ アカウントを作成します。</li> |
+| ディレクトリの接続 |Azure AD に接続する各フォレストのオンプレミス Active Directory の資格情報 |アクセス許可はどの機能を有効にするかによって異なります。詳細については、「AD DS コネクタ アカウントの作成」を参照してください。 |このアカウントは、同期中にディレクトリ情報を読み取るまたは書き込むために使用されます。 |
 | AD FS サーバー |ウィザードを実行しているユーザーのログオン資格情報では接続できない場合に、リスト内の各サーバーについてウィザードが資格情報を収集します。 |ドメイン管理者 |AD FS サーバー ロールをインストールして構成します。 |
 | Web アプリケーション プロキシ サーバー |ウィザードを実行しているユーザーのログオン資格情報では接続できない場合に、リスト内の各サーバーについてウィザードが資格情報を収集します。 |ターゲット コンピューターのローカル管理者 |WAP サーバー ロールをインストールして構成します。 |
 | プロキシ信頼資格情報 |フェデレーション サービスの信頼資格情報 (FS からの信頼証明書の登録にプロキシが使用する資格情報) |ドメイン アカウント (AD FS サーバーのローカル管理者) |FS-WAP 信頼証明書の初回登録 |
@@ -117,7 +121,7 @@ DirSync からアップグレードする場合は、AD DS エンタープライ
 >[!IMPORTANT]
 >ADSyncConfig.psm1 という名前の新しい PowerShell モジュールがビルド **1.1.880.0** (2018 年 8 月にリリース) に導入されました。これには、Azure AD DS コネクタ アカウント用の適切な Active Directory アクセス許可を構成するのに役立つコマンドレットのコレクションが含まれています。
 >
->詳しくは、「[Azure AD Connect: Configure AD DS Connector Account Permission](how-to-connect-configure-ad-ds-connector-account.md)」(Azure AD Connect: AD DS コネクタ アカウントのアクセス許可を構成する) をご覧ください
+>詳しくは、「[Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成](how-to-connect-configure-ad-ds-connector-account.md)」を参照してください。
 
 **[ディレクトリの接続]** ページで指定するアカウントは、インストールの前に Active Directory に存在している必要があります。  Azure AD Connect バージョン 1.1.524.0 以降には、Azure AD Connect ウィザードが Active Directory への接続に使う **AD DS コネクタ アカウント**を作成できるオプションがあります。  
 
@@ -133,7 +137,7 @@ DirSync からアップグレードする場合は、AD DS エンタープライ
 | Exchange メールのパブリック フォルダー |パブリック フォルダーに関して、「[Exchange メールのパブリック フォルダー](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)」に記載された属性への読み取りアクセス許可。 | 
 | パスワードの書き戻し |ユーザー向けの「[パスワード管理の概要](../authentication/howto-sspr-writeback.md)」に記載された属性への書き込みアクセス許可。 |
 | デバイスの書き戻し |「[デバイスの書き戻し](how-to-connect-device-writeback.md)」に説明されているように、PowerShell スクリプトを使用して付与されたアクセス許可。 |
-| グループの書き戻し |同期された **Office 365 グループ**のグループ オブジェクトの読み取り、作成、更新、削除。  詳しくは、「[グループの書き戻し](how-to-connect-preview.md#group-writeback)」をご覧ください。|
+| グループの書き戻し |**Office 365 グループ**を Exchange がインストールされているフォレストに書き戻すことができます。  詳しくは、「[グループの書き戻し](how-to-connect-preview.md#group-writeback)」をご覧ください。|
 
 ## <a name="upgrade"></a>アップグレード
 Azure AD Connect のいずれかのバージョンから新しいリリースにアップグレードする場合、次のアクセス許可が必要です。
@@ -154,7 +158,7 @@ Azure AD Connect のいずれかのバージョンから新しいリリースに
 
 ![AD アカウント](./media/reference-connect-accounts-permissions/adsyncserviceaccount.png)
 
-カスタム設定を使用した場合、インストールを開始する前に、アカウントを作成する必要があります。  「[AD DS コネクタ アカウントの作成](#create-the-ad-dso-connector-account)」を参照してください。
+カスタム設定を使用した場合、インストールを開始する前に、アカウントを作成する必要があります。  「AD DS コネクタ アカウントの作成」を参照してください。
 
 ### <a name="adsync-service-account"></a>ADSync サービス アカウント
 同期サービスは、複数のアカウントで実行できます。 これは、**仮想サービス アカウント** (VSA)、**グループの管理されたサービス アカウント** (gMSA/sMSA)、または通常のユーザー アカウントで実行できます。 サポートされるオプションは、新規インストールを実行した場合、Connect の 2017 年 4 月のリリースで変更されます。 Azure AD Connect の以前のリリースからアップグレードする場合は、これらの追加のオプションは利用できません。
@@ -195,7 +199,7 @@ Azure AD Connect のいずれかのバージョンから新しいリリースに
 
 ![VSA](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
 
-VSA は、同期エンジンと SQL が同じサーバー上にあるシナリオで使用するためのものです。 リモートの SQL を使用する場合は、代わりに[グループの管理されたサービス アカウント](#managed-service-account)を使用することをお勧めします。
+VSA は、同期エンジンと SQL が同じサーバー上にあるシナリオで使用するためのものです。 リモートの SQL を使用する場合は、代わりにグループの管理されたサービス アカウントを使用することをお勧めします。
 
 この機能では、Windows Server 2008 R2 以降が必要です。 Windows Server 2008 に Azure AD Connect をインストールする場合、インストールは代わりに[ユーザー アカウント](#user-account)を使用してフォールバックします。
 
@@ -245,7 +249,7 @@ Azure AD での同期サービスのアカウント数の上限は 20 です。 
 |Express 設定を使用したインストール | [Azure AD Connect の高速インストール](how-to-connect-install-express.md)|
 |カスタマイズした設定を使用したインストール | [Azure AD Connect のカスタム インストール](./how-to-connect-install-custom.md)|
 |DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](how-to-dirsync-upgrade-get-started.md)|
-|インストール後に | [インストールの確認とライセンスの割り当て ](how-to-connect-post-installation.md)|
+|インストール後に | [インストールの確認とライセンスの割り当て](how-to-connect-post-installation.md)|
 
 ## <a name="next-steps"></a>次の手順
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

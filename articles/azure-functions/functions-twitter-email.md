@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 4c9f92f80275d04cd1bab408213fd02abf5c9139
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5e0ef8287b7ce257cd551a1ace043ccbed72b50b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279400"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087093"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps と統合される関数を作成する
 
@@ -57,10 +57,10 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
 
     | Setting      |  推奨値   | Description                                        |
     | --- | --- | --- |
-    | **名前** | MyCognitiveServicesAccnt | 一意のアカウント名を選択します。 |
+    | **Name** | MyCognitiveServicesAccnt | 一意のアカウント名を選択します。 |
     | **場所** | 米国西部 | お近くの場所を使用します。 |
     | **[価格レベル]** | F0 | まずは低いレベルを選んでください。 呼び出し回数が不足する場合は、高いレベルにスケーリングします。|
-    | **[リソース グループ]** | myResourceGroup | このチュートリアルでは、すべてのサービスで同じリソース グループを使用します。|
+    | **リソース グループ** | myResourceGroup | このチュートリアルでは、すべてのサービスで同じリソース グループを使用します。|
 
 4. **[作成]** をクリックして、リソースを作成します。 
 
@@ -125,7 +125,7 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
     ```
     この関数コードは、要求で受信したセンチメント スコアに基づいて、色のカテゴリを返します。 
 
-4. 関数をテストするには、一番右の **[テスト]** をクリックして [テスト] タブを展開します。**[要求本文]`0.2` に「`0.2`」という値を入力し、**[実行]** をクリックします。 応答本文で **RED** という値が返されます。 
+4. 関数をテストするには、一番右の **[テスト]** をクリックして [テスト] タブを展開します。[要求本文]`0.2` に「」という値を入力し、**[実行]** をクリックします。 応答本文で **RED** という値が返されます。 
 
     ![Azure Portal で関数をテストする](./media/functions-twitter-email/07-function-test.png)
 
@@ -143,8 +143,8 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
 
     | Setting      |  推奨値   | Description                                        |
     | ----------------- | ------------ | ------------- |
-    | **名前** | TweetSentiment | アプリの適切な名前を選択します。 |
-    | **[リソース グループ]** | myResourceGroup | 以前と同じ既存のリソース グループを選択します。 |
+    | **Name** | TweetSentiment | アプリの適切な名前を選択します。 |
+    | **リソース グループ** | myResourceGroup | 以前と同じ既存のリソース グループを選択します。 |
     | **場所** | 米国東部 | 近くの場所を選択します。 |    
 
 4. 適切な設定値を入力したら、**[作成]** をクリックしてロジック アプリを作成します。 
@@ -169,7 +169,7 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
     | ----------------- | ------------ | ------------- |
     | **[検索テキスト]** | #Azure | 選択した間隔で新しいツイートが十分に投稿される程度に一般的なハッシュタグを使用します。 Free レベルを使用している状態で、使用頻度の高すぎるハッシュタグを使用すると、Cognitive Services API でのトランザクションのクォータがすぐに上限に達してしまう場合があります。 |
     | **間隔** | 15 | 頻度の単位での、Twitter に対する要求間の間隔です。 |
-    | **頻度** | [分] | Twitter のポーリングに使用する頻度の単位です。  |
+    | **頻度** | 分 | Twitter のポーリングに使用する頻度の単位です。  |
 
 3.  **[保存]** をクリックして、Twitter アカウントに接続します。 
 
@@ -242,7 +242,7 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
 | **[件名]** | "ネガティブなツイートのセンチメントを検出しました"  | 電子メール通知の件名。  |
 | **本文** | [ツイート テキスト]、[場所] | **[ツイート テキスト]** パラメーターと **[場所]** パラメーターをクリックします。 |
 
-5.  **[Save]** をクリックします。
+1. **[Save]** をクリックします。
 
 これでワークフローが完成したので、ロジック アプリを有効にして、関数の動作を確認できます。
 

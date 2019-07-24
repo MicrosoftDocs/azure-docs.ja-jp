@@ -2,19 +2,20 @@
 title: チュートリアル - Power BI Desktop を使用して Azure Analysis Services に接続する | Microsoft Docs
 author: minewiskan
 manager: kfile
+description: Power BI Desktop で Azure Analysis Services に接続する方法について説明します。
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: ad97fd7569690d0d199b0ce1a82f31f8dfa64c26
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 5d021aa7a6d55bb071340ebcd8e7090a4b0c2e2f
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426132"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188812"
 ---
-# <a name="tutorial-connect-with-power-bi-desktop"></a>チュートリアル: Power BI Desktop を使用して接続する
+# <a name="tutorial-connect-with-power-bi-desktop"></a>チュートリアル:Power BI Desktop を使用して接続する
 
 このチュートリアルでは、Power BI Desktop を使用して、サーバー上の adventureworks サンプル モデル データベースに接続します。 作成したタスクで、モデルへの一般的なユーザー接続とモデル データからの基本的なレポートの作成をシミュレートします。
 
@@ -29,10 +30,10 @@ ms.locfileid: "49426132"
 - adventureworks サンプル モデル データベースへの[*読み取り*](../analysis-services-server-admins.md)アクセス許可を付与します。
 - [最新の Power BI Desktop をインストールします](https://powerbi.microsoft.com/desktop)。
 
-## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
-このチュートリアルでは、ポータルにログインしてサーバー名のみを取得します。 通常、ユーザーはサーバー管理者からサーバー名を入手します。
+## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+このチュートリアルでは、ポータルにサインインしてサーバー名のみを取得します。 通常、ユーザーはサーバー管理者からサーバー名を入手します。
 
-[ポータル](https://portal.azure.com/)にログインします。
+[ポータル](https://portal.azure.com/)にサインインします。
 
 ## <a name="get-server-name"></a>サーバー名を取得する
 Power BI Desktop からサーバーに接続するには、まずサーバー名が必要です。 ポータルからサーバー名を取得できます。
@@ -51,7 +52,7 @@ Power BI Desktop からサーバーに接続するには、まずサーバー名
 
    ![サーバー名とモデル データベースを指定する](./media/analysis-services-tutorial-pbid/aas-pbid-connect-aas-servername.png)
 
-3. メッセージが表示されたら、ログイン資格情報を入力します。 入力するアカウントには、少なくとも adventureworks サンプル モデル データベースの読み取りアクセス許可が必要です。
+3. メッセージが表示されたら、資格情報を入力します。 入力するアカウントには、少なくとも adventureworks サンプル モデル データベースの読み取りアクセス許可が必要です。
 
     Power BI Desktop で adventureworks モデルが開き、[レポート] ビューに空のレポートが表示されます。 **[フィールド]** リストには、非表示にされているものを除くすべてのモデル オブジェクトが表示されます。 右下隅に接続ステータスが表示されます。
 

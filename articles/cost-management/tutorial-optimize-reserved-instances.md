@@ -5,22 +5,22 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/17/2018
+ms.date: 03/18/2019
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: db4a2356d3de91e4951acd69dc858730349019d6
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: a9c6e99d3eff14c364d5eba3e6256382f9df6bc4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274554"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182712"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
 
-# <a name="tutorial-optimize-reserved-instances"></a>チュートリアル: 予約インスタンスを最適化する
+# <a name="tutorial-optimize-reserved-instances"></a>チュートリアル:予約インスタンスを最適化する
 
 このチュートリアルでは、Azure およびアマゾン ウェブ サービス (AWS) の予約インスタンスのコストと稼働率を Cloudyn を使って最適化する方法について説明します。 どちらのクラウド サービス プロバイダーも、予約インスタンスとは、将来における VM の使用を前もって約束する長期的な契約へのコミットメントをいいます。 そして標準的な従量課金制の VM 価格モデルと比べて、大幅なコスト削減効果を見込むことができます。 コスト削減効果は、ご利用の予約インスタンスのキャパシティを最大限に活用したときに初めて実現されます。
 
@@ -112,7 +112,7 @@ Reserved Instance Purchase Impact (予約インスタンス購入の影響) レ�
 
 一方、実行時間がその 50% にすぎない場合、損益分岐点は 10 か月目となり、コスト削減効果は年間わずか 49.74 ドルとなります。 この例に示した種類のインスタンスについては、予約購入のメリットはないと考えられます。 次の図を参照してください。
 
-![Azure での損益分岐点](./media/tutorial-optimize-reserved-instances/azure04.png)
+![Azure VM の損益分岐点の例](./media/tutorial-optimize-reserved-instances/azure04.png)
 
 ## <a name="view-ri-costs"></a>RI のコストを確認する
 
@@ -127,11 +127,11 @@ Actual Cost Analysis (実績コスト分析) レポートと Analysis Over Time 
 
 Cloudyn ポータルで **[コスト]** > **[コスト分析]** の順に移動し、**[Actual Cost Analysis]\(実績コスト分析\)** または **[Actual Cost Over Time]\(時系列実績コスト\)** を選択します。 次に、フィルターを設定します。 たとえば、Azure/VM サービスだけをフィルターで抽出し、リソースの種類や価格モデルでグループ化することができます。 次の図を参照してください。
 
-![予約インスタンスの実績コスト](./media/tutorial-optimize-reserved-instances/azure05.png)
+![予約インスタンスの実績コストの例](./media/tutorial-optimize-reserved-instances/azure05.png)
 
 次の図に示したように、サービス (この例では **Azure/VM**) でフィルタリングしたり、**[価格モデル]** や **[リソースの種類]** でグループ化したりすることができます。
 
-![実績コスト レポートのグループ化とフィルター](./media/tutorial-optimize-reserved-instances/azure06.png)
+![価格モデルやリソースの種類でグループ化された実績コスト レポートのグループとフィルターの例](./media/tutorial-optimize-reserved-instances/azure06.png)
 
 1 回限りの料金、使用料、ライセンス料など、支払いの種類を分析することもできます。
 
@@ -145,7 +145,7 @@ Actual Cost (実績コスト) レポートを見ると、11 月 16 日にコス�
 
 このレポートを表示するには、**[コスト]** > **[コスト分析]** に移動し、**[Amortized Cost Analysis]\(償却コスト分析\)** または **[Amortized Cost Over Time]\(時系列償却コスト\)** を選択します。
 
-![予約インスタンスの償却コスト](./media/tutorial-optimize-reserved-instances/azure07.png)
+![償却された予約インスタンス コストを示すレポートの例](./media/tutorial-optimize-reserved-instances/azure07.png)
 
 ## <a name="optimize-aws-ri-costs"></a>AWS RI のコストを最適化する
 
@@ -166,25 +166,25 @@ Cloudyn では、オンデマンド インスタンスの使用量が比較さ�
 
 次の図は、レポートから提示された購入の推奨情報を示しています。
 
-![購入の推奨情報](./media/tutorial-optimize-reserved-instances/aws01.png)
+![EC2 購入推奨情報レポートの購入推奨情報を示す例](./media/tutorial-optimize-reserved-instances/aws01.png)
 
 この例では、Cloudyn\_A アカウントに関して、予約インスタンスの購入推奨情報が 32 件表示されています。 購入の推奨情報にすべて従った場合、年間 137,770 ドルのコスト削減効果を見込むことができます。 Cloudyn から提示される購入の推奨情報は、実行中のワークロードの使用量が今後も変わらないことを前提としています。
 
 それぞれの購入が推奨される理由について詳細な情報を確認するには、**[Justifications]\(理由\)** の正符号 ( **+** ) をクリックします。 次に示したのは、一覧に表示される最初の推奨情報の例です。
 
-![購入が推奨される理由](./media/tutorial-optimize-reserved-instances/aws02.png)
+![購入理由詳細を示す例](./media/tutorial-optimize-reserved-instances/aws02.png)
 
 この例では、ワークロードをオンデマンドで実行した場合、年間 90,456 ドルかかることが示されています。 一方、事前に予約購入した場合、同じワークロードでもコストは 56,592 ドルと、年間 33,864 ドルのコスト削減効果が得られます。
 
 **[EC2 RI Purchase Impact]\(EC2 RI 購入の影響\)** の横の正符号をクリックすると、1 年間にわたる損益分岐点が表示され、購入の投資効果が得られるおおよその時期を把握できます。 次の例では、購入から約 8 か月間が経過すると、オンデマンドの累積コストが、RI の累積コストを上回り始めます。
 
-![購入の影響](./media/tutorial-optimize-reserved-instances/aws03.png)
+![購入の影響詳細を示す例](./media/tutorial-optimize-reserved-instances/aws03.png)
 
 コスト削減効果が現れるのは、その時点からになります。
 
 提示された購入の推奨情報の正確性は、**[Instances over Time]\(時系列インスタンス数\)** を見て確認できます。 この例では、過去 30 日間、平均で 6 つのインスタンスがワークロードに使用されていることを確認できます。
 
-![時系列インスタンス数](./media/tutorial-optimize-reserved-instances/aws04.png)
+![時系列のインスタンス使用履歴を示す例](./media/tutorial-optimize-reserved-instances/aws04.png)
 
 ## <a name="modify-unused-reservations"></a>未使用の予約に変更を加える
 
@@ -196,23 +196,23 @@ AWS は、特定の可用性ゾーンおよびリージョンを対象に予約�
 
 次の図は、未使用の予約インスタンスを含んだレポートを示しています。
 
-![未使用の予約](./media/tutorial-optimize-reserved-instances/unused-ri01.png)
+![未使用予約に関するまとめ情報を示す例](./media/tutorial-optimize-reserved-instances/unused-ri01.png)
 
 **[詳細]** の正符号をクリックすると、特定の予約の詳細が表示されます。
 
-![未使用の予約の詳細](./media/tutorial-optimize-reserved-instances/unused-ri02.png)
+![未使用予約の詳細を示す例](./media/tutorial-optimize-reserved-instances/unused-ri02.png)
 
 この例では、未使用の予約が、さまざまな可用性ゾーンに合計 77 個存在します。 1 つ目の予約には、未使用のインスタンスが 51 個あります。 この一覧の下の方を見てみると、**us-east-1c** 可用性ゾーンの **m3.2xlarge** タイプのインスタンスを使って行うことができる予約インスタンスの変更案が表示されています。
 
 一覧の 1 つ目の予約について **[変更]** をクリックすると、**[Modify RI]\(RI の変更\)** ページが開いて、予約についてのデータが表示されます。
 
-![RI の変更](./media/tutorial-optimize-reserved-instances/unused-ri03.png)
+![変更可能予約を示す例](./media/tutorial-optimize-reserved-instances/unused-ri03.png)
 
 変更可能な予約インスタンスが一覧表示されます。 次の例に示す図では、変更可能な未使用の予約は 51 個ですが、2 つの予約で 54 個必要です。 未使用の予約をすべて使い切るように変更した場合、4 つのインスタンスは引き続きオンデマンドで実行されます。 この例では、未使用の予約を 2 分割し、1 つ目の予約で 30 個、2 つ目の予約で 21 個使用するようにします。
 
 1 つ目の予約のエントリに表示されている正符号をクリックして、**[Reservation quantity]\(予約数量\)** を「**30**」に設定します。 2 つ目のエントリについては、予約数量を「**21**」に設定し、**[適用]** をクリックします。
 
-![予約数量の変更](./media/tutorial-optimize-reserved-instances/unused-ri04.png)
+![予約数量変更を示す例](./media/tutorial-optimize-reserved-instances/unused-ri04.png)
 
 この予約に関して未使用になっていたインスタンスをすべて使い切ることができました。今後、51 インスタンスがオンデマンドで実行されることはありません。 この例では、オンデマンドの使用を大幅に削減し、支払い済みの予約を使用することで、所属する組織のコストを削減することができました。
 

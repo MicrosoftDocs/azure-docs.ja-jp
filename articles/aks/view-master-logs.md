@@ -5,44 +5,54 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 5f151db9cb2cf7a5ef242f777cd2ad1820c856a8
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 77908e24a19a48bf9b84d5d5b664bf0443159118
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636689"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537764"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Kubernetes マスター ノード ログの有効化とレビュー
 
-Azure Kubernetes Service (AKS) では、*kube-apiserver* や *kube-controller-manager* などのマスター コンポーネントが、マネージド サービスとして提供されます。 管理者は、*kubelet* とコンテナー ランタイムを実行するノードを作成して管理し、 マネージド Kubernetes API サーバーを通じてアプリケーションをデプロイします。 アプリケーションやサービスのトラブルシューティングを行う際には、これらのマスター コンポーネントによって生成されたログを表示する必要が生じることがあります。 この記事では、Azure Log Analytics を使用して、Kubernetes マスター コンポーネントからのログを有効にし、それらのログを照会する方法について説明します。
+Azure Kubernetes Service (AKS) では、*kube-apiserver* や *kube-controller-manager* などのマスター コンポーネントが、マネージド サービスとして提供されます。 管理者は、*kubelet* とコンテナー ランタイムを実行するノードを作成して管理し、 マネージド Kubernetes API サーバーを通じてアプリケーションをデプロイします。 アプリケーションやサービスのトラブルシューティングを行う際には、これらのマスター コンポーネントによって生成されたログを表示する必要が生じることがあります。 この記事では、Azure Monitor ログを使用して、Kubernetes マスター コンポーネントからのログを有効にし、それらのログを照会する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事では、Azure アカウントで既存の AKS クラスターが実行されていることを前提条件としています。 AKS クラスターがまだない場合は、[Azure CLI][cli-quickstart] または [Azure Portal][portal-quickstart] を使用して AKS クラスターを作成してください。 Log Analytics は、RBAC 対応と非 RBAC 対応のどちらの AKS クラスターとでも動作します。
+この記事では、Azure アカウントで既存の AKS クラスターが実行されていることを前提条件としています。 AKS クラスターがまだない場合は、[Azure CLI][cli-quickstart] または [Azure Portal][portal-quickstart] を使用して AKS クラスターを作成してください。 Azure Monitor ログは、RBAC 対応と非 RBAC 対応のどちらの AKS クラスターとでも動作します。
 
 ## <a name="enable-diagnostics-logs"></a>診断ログの有効化
 
-複数のソースからデータを効率よく収集してレビューできるようにするため、Log Analytics では、環境に関するインサイトを取得するためのクエリ言語と分析エンジンが提供されています。 ワークスペースは、データの照合と分析のために使用されます。ワークスペースは、他の Azure サービス (Application Insights や Security Center など) と統合できます。 別のプラットフォームを使用してログを分析する必要がある場合は、Azure ストレージ アカウントやイベント ハブに診断ログを送信することもできます。 詳しくは、「[Azure Log Analytics とは][log-analytics-overview]」をご覧ください。
+複数のソースからデータを効率よく収集してレビューできるようにするため、Azure Monitor ログでは、環境に関するインサイトを取得するためのクエリ言語と分析エンジンが提供されています。 ワークスペースは、データの照合と分析のために使用されます。ワークスペースは、他の Azure サービス (Application Insights や Security Center など) と統合できます。 別のプラットフォームを使用してログを分析する必要がある場合は、Azure ストレージ アカウントやイベント ハブに診断ログを送信することもできます。 詳しくは、[Azure Monitor ログの概要][log-analytics-overview]に関する記事をご覧ください。
 
-Log Analytics の有効化と管理は、Azure Portal で行います。 AKS クラスターの Kubernetes マスター コンポーネントのログ収集を有効にするには、Web ブラウザーで Azure Portal を開き、次の手順を実行します。
+Azure Monitor ログの有効化と管理は、Azure portal で行います。 AKS クラスターの Kubernetes マスター コンポーネントのログ収集を有効にするには、Web ブラウザーで Azure Portal を開き、次の手順を実行します。
 
 1. AKS クラスターのリソース グループを選択します (*myResourceGroup* など)。 個別の AKS クラスター リソースを含んだリソース グループは選択しないでください (*MC_myResourceGroup_myAKSCluster_eastus* など)。
 1. 左側で、**[診断設定]** を選択します。
 1. AKS クラスター (*myAKSCluster* など) を選択し、**[診断をオンにする]** を選択します。
-1. 名前 (*myAKSLogs* など) を入力し、**[Log Analytics への送信]** オプションを選択します。
-    * Log Analytics の *[構成]* を選択し、既存のワークスペースまたは **[新しいワークスペースの作成]** を選択します。
+1. 名前 (*myAKSClusterLogs* など) を入力し、**[Send to Log Analytics workspace]\(Log Analytics ワークスペースに送信\)** オプションを選択します。
+    * Log Analytics ワークスペースの *[構成]* を選択し、既存のワークスペースまたは **[新しいワークスペースの作成]** を選択します。
     * ワークスペースを作成する必要がある場合は、名前、リソース グループ、および場所を指定します。
-1. 使用可能なログの一覧で、有効にするログを選択します (*kube-apiserver*、*kube-controller-manager*、*kube-scheduler* など)。 Log Analytics が有効になった後、構成画面に戻り、収集されるログを変更することもできます。
+1. 使用可能なログの一覧から、有効にするログを選択します。 既定で、*kube-apiserver*、*kube-controller-manager*、および *kube-scheduler* ログが有効になっています。 *kube-audit* および *cluster-autoscaler* などの追加のログを有効にすることが可能です。 Log Analytics ワークスペースが有効になった後、構成画面に戻り、収集されるログを変更することもできます。
 1. 準備ができたら **[保存]** を選択し、選択したログの収集を有効にします。
+
+> [!NOTE]
+> AKS では、機能フラグがサブスクリプション上で有効された後に作成またはアップグレードされたクラスターの監査ログのみがキャプチャされます。 *AKSAuditLog* 機能フラグを登録するには、次の例に示すように [az feature register][az-feature-register] コマンドを使用します。
+>
+> `az feature register --name AKSAuditLog --namespace Microsoft.ContainerService`
+>
+> status (状態) に *Registered (登録済み)* が表示されるまで待ちます。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
+>
+> `az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAuditLog')].{Name:name,State:properties.state}"`
+>
+> 準備ができたら、[az provider register][az-provider-register] コマンドを使用して、AKS リソース プロバイダーの登録を更新します。
+>
+> `az provider register --namespace Microsoft.ContainerService`
 
 次に示すポータルのスクリーン ショットは、*[診断設定]* ウィンドウと、Log Analytics ワークスペースを作成するオプションの例です。
 
-![AKS クラスターの Log Analytics に使用する Log Analytics ワークスペースを有効にする](media/view-master-logs/enable-oms-log-analytics.png)
-
->[!NOTE]
->OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。
+![AKS クラスターの Azure Monitor ログに使用する Log Analytics ワークスペースを有効にする](media/view-master-logs/enable-oms-log-analytics.png)
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>AKS クラスター上のテスト ポッドのスケジュール設定
 
@@ -78,7 +88,7 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>収集したデータの表示
 
-診断ログが有効になって Log Analytics ワークスペースに表示されるまでには、数分かかる場合があります。 Azure Portal で、Log Analytics ワークスペースのリソース グループ (*myResourceGroup* など) を選択し、Log Analytics リソース (*myAKSLogs* など) を選択します。
+診断ログが有効になって Log Analytics ワークスペースに表示されるまでには、数分かかる場合があります。 Azure portal で、Log Analytics ワークスペースのリソース グループ (*myResourceGroup* など) を選択し、Log Analytics リソース (*myAKSLogs* など) を選択します。
 
 ![AKS クラスターの Log Analytics ワークスペースを選択する](media/view-master-logs/select-log-analytics-workspace.png)
 
@@ -133,6 +143,9 @@ AzureDiagnostics
 [cli-quickstart]: kubernetes-walkthrough.md
 [portal-quickstart]: kubernetes-walkthrough-portal.md
 [log-analytics-overview]: ../log-analytics/log-analytics-overview.md
-[analyze-log-analytics]: ../log-analytics/log-analytics-tutorial-viewdata.md
+[analyze-log-analytics]: ../azure-monitor/learn/tutorial-viewdata.md
 [kubelet-logs]: kubelet-logs.md
 [aks-ssh]: ssh.md
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

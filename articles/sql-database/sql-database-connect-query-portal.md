@@ -1,5 +1,5 @@
 ---
-title: Azure Portal：クエリ エディターを使用した Azure SQL Database の照会 | Microsoft Docs
+title: Azure portal:クエリ エディターを使用した Azure SQL Database の照会 | Microsoft Docs
 description: SQL クエリ エディターを使用して、Azure Portal で SQL Database に接続する方法について説明します。 また、Transact-SQL (T-SQL) ステートメントを実行して、データの照会と編集を行います。
 keywords: sql database への接続, azure portal, ポータル, クエリ エディター
 services: sql-database
@@ -12,87 +12,97 @@ author: AyoOlubeko
 ms.author: ayolubek
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: d7b5c6b95cd11cd90f9d326e03e787a7196dcfd0
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 02/12/2019
+ms.openlocfilehash: b2109afe6760eb87269a33ed74784149c2bf3e03
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913157"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105796"
 ---
-# <a name="quickstart-azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>クイック スタート: Azure portal: SQL クエリ エディターを使って接続とデータの照会を行う
+# <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>クイック スタート:Azure portal の SQL クエリ エディターを使用した接続とデータの照会
 
-SQL クエリ エディターは、Azure Portal から離れずに、Azure SQL Database または Azure SQL Data Warehouse に対して SQL クエリを効率的かつ簡単に実行できるブラウザー クエリ ツールです。 このクイック スタートでは、クエリ エディターを使用して SQL Database に接続し、Transact-SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、および削除する方法について説明します。
+SQL クエリ エディターは、お使いの Azure SQL Database または Azure SQL Data Warehouse で SQL クエリを実行するための簡単な方法を示した Azure portal ブラウザー ツールです。 このクイック スタートでは、クエリ エディターを使用して SQL データベースに接続し、Transact-SQL ステートメントを実行してデータのクエリ、挿入、更新、および削除を実行する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートでは、次のクイック スタートで作成されたリソースが出発点として使用されます。
+このチュートリアルを完了するには、次のものが必要です。
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+- Azure SQL Database。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
+
+  || 単一データベース |
+  |:--- |:--- |
+  | Create| [ポータル](sql-database-single-database-get-started.md) | 
+  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | 
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | 
+  | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| 
+  |||
 
 > [!NOTE]
-> SQL Server のファイアウォール設定で、[Azure サービスへのアクセスを許可する] が [オン] に設定されていることを確認します。 このオプションにより、SQL クエリ エディターはデータベースおよびデータ ウェアハウスにアクセスできるようになります。
+> SQL Server のファイアウォール設定で、**[Azure サービスへのアクセスを許可する]** オプションが **[オン]** に設定されていることを確認します。 このオプションにより、SQL クエリ エディターはデータベースおよびデータ ウェアハウスにアクセスできるようになります。
 
-## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
+## <a name="sign-in-the-azure-portal"></a>Azure portal へのサインイン
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 
-
 ## <a name="connect-using-sql-authentication"></a>SQL 認証を使用して接続する
 
-1. 左側のメニューの **[SQL データベース]** をクリックし、照会するデータベースをクリックします。
+1. 左側のメニューから **[SQL データベース]** を選択して、**mySampleDatabase** を選びます。
 
-2. データベースの SQL Database ページで、左側のメニューの **[クエリ エディター (プレビュー)]** を見つけてクリックします。
+2. 左側のメニューで、**[クエリ エディター (プレビュー)]** を探して選択します。 **[ログイン]** ページが表示されます。
 
     ![クエリ エディターの検索](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 
-3. **[ログイン]** をクリックし、メッセージが表示されたら **[SQL Server 認証]** を選択して、データベースの作成時に指定したサーバー管理者ログインとパスワードを入力します。
+3. **[認証の種類]** ドロップダウン メニューから **[SQL Server 認証]** を選択して、データベースの作成に使用するサーバー管理者アカウントのユーザー ID とパスワードを入力します。
 
-    ![login](./media/sql-database-connect-query-portal/login-menu.png)
+    ![sign in](./media/sql-database-connect-query-portal/login-menu.png) 
 
-4. **[OK]** をクリックしてログインします。
+4. **[OK]** を選択します。
 
 
-## <a name="connect-using-azure-ad"></a>Azure AD を使用して接続する
+## <a name="connect-using-azure-active-directory"></a>Azure Active Directory への接続
 
-Active Directory 管理者を構成すると、1 つの ID で Azure Portal と SQL Database にログインできます。 次の手順に従って、作成済みの SQL Server の Active Directory 管理者を構成します。
+Active Directory (AD) 管理者を構成すると、1 つの ID を使って Azure portal と SQL データベースにサインインできます。 お使いの SQL Server の AD 管理者を構成するには、次の手順に従います。
 
 > [!NOTE]
-> 電子メール アカウント (outlook.com、hotmail.com、live.com、gmail.com、yahoo.com など) は、Active Directory 管理者としてまだサポートされていません。 Azure Active Directory でネイティブに作成されたユーザー、または Azure Active Directory にフェデレーションされたユーザーを必ず選択してください。
+> * 電子メール アカウント (たとえば、outlook.com、gmail.com、yahoo.com など) は、AD 管理者としてまだサポートされていません。 Azure AD でネイティブに作成されたユーザーか、Azure AD にフェデレーションされたユーザーのどちらかを必ず選択します。
+> * Azure AD 管理者のサインインは、2 要素認証が有効になっているアカウントでは機能しません。
 
-1. 左側のメニューの **[SQL Server]** を選択し、サーバーの一覧から使用する SQL Server を選択します。
+1. 左側のメニューから **[すべてのリソース]** を選択してから、お使いの SQL Server を選択します。
 
-2. SQL Server の設定メニューから、**[Active Directory 管理者]** を選択します。
+2. お使いの SQL Server の **[設定]** メニューから、**[Active Directory 管理者]** を選択します。
 
-3. Active Directory 管理者ブレードで、**[管理者の設定]** をクリックし、Active Directory 管理者になるユーザーまたはグループを選択します。
+3. AD 管理者ページのツールバーから、**[管理者の設定]** を選択し、ユーザーまたはグループを AD 管理者として選択します。
 
     ![Active Directory を選択する](./media/sql-database-connect-query-portal/select-active-directory.png)
 
-4. Active Directory 管理者ブレードの上部にある **[保存]** をクリックして、Active Directory 管理者を設定します。
+4. AD 管理者ページのツールバーから、**[保存]** を選択します。
 
-クエリを実行する SQL データベースに移動し、左側のメニューから **[Data explorer (プレビュー)]** をクリックします。 Data explorer ページが開き、データベースに自動的に接続されます。
+5. **mySampleDatabase** データベースに移動して、左側のメニューから **[クエリ エディター (プレビュー)]** を選択します。 **[ログイン]** ページが表示されます。 AD 管理者である場合は、右側にある **[Active Directory シングル サインオン]** の下に、サインインしたことを示すメッセージが表示されます。 
+   
+6. **[OK]** を選択します。
 
 
-## <a name="run-query-using-query-editor"></a>クエリ エディターを使用してクエリを実行する
+## <a name="view-data"></a>データの表示
 
-認証されたら、クエリ エディター ウィンドウに次のクエリを入力して、カテゴリ単位で上位 20 個の製品を照会します。
+1. 認証されたら、クエリ エディターに次の SQL を貼り付けて、カテゴリごとに上位 20 個の製品を取得します。
 
-```sql
- SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
- FROM SalesLT.ProductCategory pc
- JOIN SalesLT.Product p
- ON pc.productcategoryid = p.productcategoryid;
-```
+   ```sql
+    SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
+    FROM SalesLT.ProductCategory pc
+    JOIN SalesLT.Product p
+    ON pc.productcategoryid = p.productcategoryid;
+   ```
 
-**[実行]** をクリックし、**[結果]** ウィンドウでクエリの結果を確認します。
+2. ツールバーで、**[実行]** を選択して、**[結果]** ウィンドウで出力を確認します。
 
 ![クエリ エディターの結果](./media/sql-database-connect-query-portal/query-editor-results.png)
 
-## <a name="insert-data-using-query-editor"></a>クエリ エディターを使用してデータを挿入する
+## <a name="insert-data"></a>データを挿入する
 
-次のコードを使用して、SalesLT.Product テーブルに新しい製品を挿入します。ここでは [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントを使用します。
+次の [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL ステートメントを実行して、`SalesLT.Product` テーブルに新しい製品を追加します。
 
-1. クエリ ウィンドウで、先ほどのクエリを次のクエリに置き換えます。
+1. 前のクエリを次のクエリに置き換えます。
 
    ```sql
    INSERT INTO [SalesLT].[Product]
@@ -114,13 +124,15 @@ Active Directory 管理者を構成すると、1 つの ID で Azure Portal と 
            ,GETDATE() );
    ```
 
-2. ツール バーの **[実行]** をクリックして、Product テーブルに新しい行を挿入します。
 
-## <a name="update-data-using-query-editor"></a>クエリ エディターを使用してデータを更新する
+2. **[実行]** を選択して、新しい行を `Product` テーブルに挿入します。 **メッセージ** ペインに、**[クエリが成功しました: 影響を受ける行: 1]** と表示されます。
 
-次のコードを使用して、先ほど追加した新しい製品を更新します。ここでは [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ステートメントを使用します。
 
-1. クエリ ウィンドウで、先ほどのクエリを次のクエリに置き換えます。
+## <a name="update-data"></a>データの更新
+
+次の [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL ステートメントを実行して、新しい製品を変更します。
+
+1. 前のクエリを次のクエリに置き換えます。
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -128,45 +140,39 @@ Active Directory 管理者を構成すると、1 つの ID で Azure Portal と 
    WHERE Name = 'myNewProduct';
    ```
 
-2. ツール バーの **[実行]** をクリックして、Product テーブルの指定した行を更新します。
+2. **[実行]** を選択して、`Product` テーブルの指定した行を更新します。 **メッセージ** ペインに、**[クエリが成功しました: 影響を受ける行: 1]** と表示されます。
 
-## <a name="delete-data-using-query-editor"></a>クエリ エディターを使用してデータを削除する
+## <a name="delete-data"></a>データの削除
 
-次のコードを使用して、先ほど追加した新しい製品を削除します。ここでは [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL ステートメントを使用します。
+次の [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL ステートメントを実行して、新しい製品を削除します。
 
-1. クエリ ウィンドウで、先ほどのクエリを次のクエリに置き換えます。
+1. 前のクエリを次のクエリに置き換えます。
 
    ```sql
    DELETE FROM [SalesLT].[Product]
    WHERE Name = 'myNewProduct';
    ```
 
-2. ツール バーの **[実行]** をクリックして、Product テーブルの指定した行を削除します。
+2. **[実行]** を選択して、`Product` テーブルの指定した行を削除します。 **メッセージ** ペインに、**[クエリが成功しました: 影響を受ける行: 1]** と表示されます。
 
 
 ## <a name="query-editor-considerations"></a>クエリ エディターに関する考慮事項
 
 クエリ エディターを操作するときは次の点に注意してください。
 
-1. Azure SQL Server のファイアウォール設定で、[Azure サービスへのアクセスを許可する] が [オン] に設定されていることを確認します。 このオプションにより、SQL クエリ エディターは SQL データベースおよびデータ ウェアハウスにアクセスできるようになります。
+* クエリ エディターを使用して仮想ネットワークの SQL Server データベースを照会することはできません。
 
-2. SQL サーバーが Virtual Network 内に存在する場合、クエリ エディターを使って、そのサーバーのデータベースを照会することはできません。
+* F5 キーを押してクエリ エディターのページを更新すると、操作中のクエリは失われます。
 
-3. F5 キーを押すと、クエリ エディター ページが更新され、作業中のクエリが失われます。 クエリを実行するには、ツール バーの [実行] ボタンを使用します。
+* クエリ エディターは、`master` データベースへの接続をサポートしません。
 
-4. クエリ エディターは、master DB への接続をサポートしません。
+* クエリの実行には、5 分のタイムアウトがあります。
 
-5. クエリの実行には、5 分のタイムアウトがあります。
+* geography データ型に関してクエリ エディターでサポートされるのは円柱投影のみです。
 
-6. Azure Active Directory 管理者ログインは、2 要素認証が有効になっているアカウントでは機能しません。
-
-7. 電子メール アカウント (outlook.com、hotmail.com、live.com、gmail.com、yahoo.com など) は、Active Directory 管理者としてまだサポートされていません。 Azure Active Directory でネイティブに作成されたユーザー、または Azure Active Directory にフェデレーションされたユーザーを必ず選択してください。
-
-8. geography データ型に関してクエリ エディターでサポートされるのは円柱投影のみです。
-
-9. データベース テーブルおよびビューでは、IntelliSense はサポートされていません。 ただし、エディターでは、既に入力されている名前のオート コンプリートをサポートしています。
+* データベース テーブルおよびビューでは、IntelliSense はサポートされていません。 ただし、エディターでは、既に入力されている名前のオートコンプリートをサポートしています。
 
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure SQL Database でサポートされる Transact-SQL については、[SQL Database の Transact-SQL の相違点](sql-database-transact-sql-information.md)に関する記事をご覧ください。
+Azure SQL Database でサポートされる Transact-SQL の詳細については、「[SQL Database への移行時に Transact-SQL の相違点を解決する](sql-database-transact-sql-information.md)」を参照してください。

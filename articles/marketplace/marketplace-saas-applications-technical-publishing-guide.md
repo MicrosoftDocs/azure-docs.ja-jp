@@ -14,16 +14,16 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: f1a6825cdfab2375f1a6f1858ef14684d374dae2
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: b653b0276cedea1e3b45adf7a9dc390b24f0d03f
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123484"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213621"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS アプリケーションのオファー発行ガイド
 
-SaaS アプリケーションは、"お問い合わせ"、"今すぐ試す"、"今すぐ入手する" の 3 つの行動喚起を使用して、マーケットプレースに公開できます。 このガイドでは、これら 3 つのオプションとそれぞれの要件について説明します。 
+SaaS アプリケーションは、3 つの行動喚起"お問い合わせ"、"今すぐ試す"、"今すぐ入手する" を使用して、マーケットプレースに公開できます。 このガイドでは、これら 3 つのオプションとそれぞれの要件について説明します。 
 
 ## <a name="offer-overview"></a>オファーの概要  
 
@@ -39,9 +39,9 @@ SaaS アプリケーションは、両方の Azure ネットショップで入�
 
 | SaaS アプリのオファー | ビジネス要件 | 技術的な要件 |  
 | --- | --- | --- |  
-| **お問い合わせ** | [はい] | いいえ  |  
-| **PowerBI/Dynamics** | [はい] | あり (Azure AD の統合) |  
-| **SaaS アプリ**| [はい] | あり (Azure AD の統合) |     
+| **お問い合わせ** | はい | いいえ  |  
+| **PowerBI/Dynamics** | はい | あり (Azure AD の統合) |  
+| **SaaS アプリ**| はい | あり (Azure AD の統合) |     
 
 ## <a name="saas-list"></a>SaaS のリスト
 
@@ -94,7 +94,7 @@ SaaS アプリケーションの技術面の要件はシンプルです。 パ�
 * [Active Directory に重点を置いた Microsoft Azure ビデオ](https://azure.microsoft.com/resources/videos/index/?services=active-directory)
 
 無料の Azure Active Directory トレーニングは以下で利用できます。  
-* [IT プロ向けの Microsoft Azure コンテンツ シリーズ: Azure Active Directory](https://mva.microsoft.com/en-US/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
+* [IT プロ向けの Microsoft Azure コンテンツ シリーズ:Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
 
 さらに、Azure Active Directory は、サービス更新プログラムを確認するサイトを提供しています   
 * [Azure AD サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory)
@@ -140,15 +140,19 @@ SaaS ベースの技術的ソリューションをサブスクリプションと
 | 要件 | 詳細 |  
 |:--- |:--- |  
 |請求/メータリング | オファーについては、毎月均一料金で課金されます。 使用量ベースの価格と使用量ベースの "補正発注" 機能は、現時点でサポートされていません。 |  
-|解約 | オファーは、いつでも顧客が解約できます。 |  
+|キャンセル | オファーは、いつでも顧客が解約できます。 |  
 |トランザクションのランディング ページ | Azure の共同ブランドのトランザクションのランディング ページをホストします。ここでは、ユーザーが自身の SaaS サービス アカウントを作成して管理します。 |   
 | サブスクリプション API | SaaS サブスクリプションと対話できるサービスを公開して、ユーザー アカウントとサービス プランを作成、更新、および削除します。 重要な API の変更には、24 時間以内に対応する必要があります。 重要でない API の変更は定期的にリリースされます。 |  
 
-## <a name="next-steps"></a>次の手順
-まだ行っていない場合は、 
+>[!Note]
+>クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。  Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[Cloud Solution Providers (クラウド ソリューション プロバイダー)](./cloud-solution-providers.md)」を参照してください。
 
-- マーケットプレースに[登録](https://azuremarketplace.microsoft.com/sell)する
+## <a name="next-steps"></a>次の手順
+まだ行っていない場合は、
+
+- マーケットプレースに[登録](https://azuremarketplace.microsoft.com/sell)します。
 
 登録済みかつ新しいオファーを作成しているまたは既存のオファーを操作している場合は、
 
-- [Cloud パートナー ポータルにログイン](https://cloudpartner.azure.com)して、オファーを作成または完成させる
+- [Cloud パートナー ポータルにログイン](https://cloudpartner.azure.com)して、オファーを作成または完成させます。
+- 詳細については、「[Azure SaaS アプリケーション プラン](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-offer)」を参照してください。

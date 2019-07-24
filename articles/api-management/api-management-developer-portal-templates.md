@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 2bdb8c30ffa630f85d666f3a16ce2b9dcdab6492
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 00d5e3df78e85d19a519786dad1a1b176ad7fa08
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29118226"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733061"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法
 
@@ -31,7 +31,10 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 
 テンプレートは、システムで生成された開発者ポータル ページのコンテンツ (API ドキュメント、製品、ユーザー認証など) をカスタマイズするために使用します。 [DotLiquid](http://dotliquidmarkup.org/) 構文と、用意されているローカライズされた文字列リソース、アイコン、およびページ コントロールのセットを使用して、表示されるページの内容を自由に構成できます。
 
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+
 ## <a name="developer-portal-templates-overview"></a>開発者ポータル テンプレートの概要
+
 テンプレートの編集は、管理者としてログインしているときに**開発者ポータル**から実行できます。 開発者ポータルにアクセスするには、まず Azure Portal を開き、API Management インスタンスのサービス ツール バーにある **[開発者ポータル]** をクリックします。
 
 開発者ポータル テンプレートにアクセスするには、左側のカスタマイズ アイコンをクリックしてカスタマイズ メニューを表示し、 **[テンプレート]** をクリックします。
@@ -42,15 +45,15 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 
 ![開発者ポータル テンプレート][api-management-templates-menu]
 
-テンプレートをクリックすると、そのテンプレートによってカスタマイズできる開発者ポータルのページが表示されます。 この例では、**製品リスト** テンプレートが表示されています。 **製品リスト** テンプレートは、赤色の四角形によって示されている画面の領域を制御します。 
+テンプレートをクリックすると、そのテンプレートによってカスタマイズできる開発者ポータルのページが表示されます。 この例では、**製品リスト** テンプレートが表示されています。 **製品リスト** テンプレートは、赤色の四角形によって示されている画面の領域を制御します。
 
 ![製品リスト テンプレート][api-management-developer-portal-templates-overview]
 
-**ユーザー プロファイル** テンプレートなどのいくつかのテンプレートと同じように、同じページのさまざまな部分をカスタマイズします。 
+**ユーザー プロファイル** テンプレートなどのいくつかのテンプレートと同じように、同じページのさまざまな部分をカスタマイズします。
 
 ![ユーザー プロファイル テンプレート][api-management-user-profile-templates]
 
-各開発者ポータル テンプレート用のエディターでは、ページの下部に 2 つのセクションが表示されます。 左側にはテンプレートの編集ウィンドウが表示され、右側にはテンプレートのデータ モデルが表示されます。 
+各開発者ポータル テンプレート用のエディターでは、ページの下部に 2 つのセクションが表示されます。 左側にはテンプレートの編集ウィンドウが表示され、右側にはテンプレートのデータ モデルが表示されます。
 
 テンプレート編集ウィンドウには、開発者ポータルの対応するページの外観と動作を制御するマークアップが含まれています。 テンプレートのマークアップでは、 [DotLiquid](http://dotliquidmarkup.org/) 構文を使用します。 DotLiquid 用の一般的なエディターの 1 つに、 [設計者向け DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)があります。 編集中にテンプレートに加えられた変更はブラウザーにリアルタイムで表示されますが、テンプレートを[保存](#to-save-a-template)して[発行](#to-publish-a-template)するまで顧客の目に触れることはありません。
 
@@ -115,7 +118,7 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
         <li>
             <h3><a href="/products/{{product.id}}">{{product.title}}</a></h3>
             {{product.description}}
-        </li>    
+        </li>
     {% endfor %}
     </ul>
     <paging-control></paging-control>
@@ -159,7 +162,7 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 
 **[はい]** をクリックして確定します。
 
-![確認][api-management-revert-template-confirm]
+![Confirm][api-management-revert-template-confirm]
 
 元に戻す操作が完了すると、前に発行したバージョンのテンプレートが開発者ポータルで有効になります。
 
@@ -172,7 +175,7 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 
 **[はい]** をクリックして確定します。
 
-![確認][api-management-reset-template-confirm]
+![Confirm][api-management-reset-template-confirm]
 
 すべてのテンプレートを既定のバージョンに復元するには、テンプレートの一覧で **[Restore default templates (既定のテンプレートの復元)]** をクリックします。
 
@@ -206,10 +209,3 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 [api-management-reset-template]: ./media/api-management-developer-portal-templates/api-management-reset-template.png
 [api-management-reset-template-confirm]: ./media/api-management-developer-portal-templates/api-management-reset-template-confirm.png
 [api-management-restore-templates]: ./media/api-management-developer-portal-templates/api-management-restore-templates.png
-
-
-
-
-
-
-

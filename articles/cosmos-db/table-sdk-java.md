@@ -1,25 +1,21 @@
 ---
-title: Azure Cosmos DB Table API for Java | Microsoft Docs
+title: Azure Cosmos DB Table API for Java
 description: リリース日、提供終了日、各バージョン間で行われた変更など、Azure Cosmos DB Table API に関するすべてについて説明します。
-services: cosmos-db
-author: yarong
-manager: kfile
-editor: ''
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: java
 ms.topic: reference
 ms.date: 11/20/2017
-ms.author: yaronyg
-ms.custom: ''
-ms.openlocfilehash: 3bb4a433b06deff27ce80ab1fb631efde29a3f83
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+author: wmengmsft
+ms.author: wmeng
+ms.openlocfilehash: 724f0b9eb09b9eecad5b0a360d9301616d1494f1
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465578"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035144"
 ---
-# <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Azure Cosmos DB Table API for Java: リリース ノートとリソース
+# <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Azure Cosmos DB Table API for Java:リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -31,7 +27,7 @@ ms.locfileid: "49465578"
 |   |   |
 |---|---|
 |**SDK のダウンロード**|[ダウンロード オプション](https://github.com/azure/azure-storage-java#download)|
-|**API ドキュメント**|[Java API リファレンス ドキュメント](http://azure.github.io/azure-storage-java/)|
+|**API ドキュメント**|[Java API リファレンス ドキュメント](https://azure.github.io/azure-storage-java/)|
 |**SDK への協力**|[GitHub](https://github.com/Azure/azure-storage-java#contribute-code-or-provide-feedback)|
 
 > [!IMPORTANT]

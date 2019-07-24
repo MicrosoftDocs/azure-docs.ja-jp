@@ -3,19 +3,19 @@ title: 品詞のタグ付け - Linguistic Analysis API
 description: Linguistic Analysis API の品詞タグ付け機能でテキストの各単語のカテゴリまたは品詞を識別する方法について説明します。
 services: cognitive-services
 author: RichardSunMS
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 09/27/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: a01fcea4ae6c8950d578bacefc2f064586d7306b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 0269397b0f8da66d2bafecfb427ba705fdfff001
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238524"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883153"
 ---
 # <a name="part-of-speech-tagging"></a>品詞のタグ付け
 
@@ -80,4 +80,4 @@ ms.locfileid: "48238524"
 
 ## <a name="specification"></a>仕様
 
-トークン化については、[Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42) の仕様を利用しています。
+トークン化については、[Penn Treebank](https://catalog.ldc.upenn.edu/LDC99T42) の仕様を利用しています。

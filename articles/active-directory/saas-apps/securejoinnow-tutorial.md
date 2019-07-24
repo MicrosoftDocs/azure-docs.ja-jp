@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と SecureW2 JoinNow Connector の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と SecureW2 JoinNow Connector の統合 | Microsoft Docs
 description: Azure Active Directory と SecureW2 JoinNow Connector の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 283f8c935556006a21812578d0638b72adb6eed0
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5b367befb90ec28ece963d67b479749e1c8ad363
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37906318"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175321"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-securew2-joinnow-connector"></a>チュートリアル: Azure Active Directory と SecureW2 JoinNow Connector の統合
+# <a name="tutorial-azure-active-directory-integration-with-securew2-joinnow-connector"></a>チュートリアル:Azure Active Directory と SecureW2 JoinNow Connector の統合
 
 このチュートリアルでは、SecureW2 JoinNow Connector と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -154,11 +155,11 @@ SecureW2 JoinNow Connector で Azure AD のシングル サインオンを構成
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-securew2-joinnow-connector-test-user"></a>SecureW2 JoinNow Connector テスト ユーザーを作成する
 
-このセクションでは、SecureW2 JoinNow Connector で Britta Simon というユーザーを作成します。 [SecureW2 JoinNow Connector クライアント サポート チーム](mailto:support@securew2.com)と協力して、SecureW2 JoinNow Connector プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、SecureW2 JoinNow Connector で Britta Simon というユーザーを作成します。  [SecureW2 JoinNow Connector クライアント サポート チーム](mailto:support@securew2.com)と協力して、SecureW2 JoinNow Connector プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 2aa8036149f4056f2d197f0712b86104f5cf2215
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 2fbf29385b9a14cf5d4a9df621f0767a32079587
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095047"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094577"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作
 
@@ -47,13 +47,13 @@ ms.locfileid: "44095047"
 
 既定では、バックエンドへの要求は、元の要求のコピーとして初期化されます。 バックエンドの URL を設定することに加え、HTTP メソッドやヘッダー、クエリ文字列のパラメーターに変更を加えることができます。 変更後の値から、[アプリケーション設定]や[元のクライアント要求のパラメーター]を参照することが可能です。
 
-バックエンドへの要求は、ポータルでプロキシの詳細ページの "*要求のオーバーライド*" セクションを展開して変更することができます。 
+バックエンドへの要求は、ポータルで [proxy detail]\(プロキシの詳細\) ページの *[request override]\(要求のオーバーライド\)* セクションを展開して変更することができます。 
 
 ### <a name="modify-response"></a>応答を変更する
 
 既定では、クライアントへの応答は、バックエンドからの応答のコピーとして初期化されます。 応答の状態コード、理由の文字列、ヘッダー、本文には、変更を加えることができます。 変更後の値から、[アプリケーション設定]や[元のクライアント要求のパラメーター]、[バックエンドからの応答のパラメーター]を参照することが可能です。
 
-バックエンドへの要求は、ポータルでプロキシの詳細ページの "*応答のオーバーライド*" セクションを展開して変更することができます。 
+バックエンドへの要求は、ポータルで [proxy detail]\(プロキシの詳細\) ページの *[response override]\(応答のオーバーライド\)* セクションを展開して変更することができます。 
 
 ## <a name="using-variables"></a>変数を使用する
 
@@ -80,21 +80,21 @@ ms.locfileid: "44095047"
 #### <a name="additional-request-parameters"></a>要求のパラメーター (その他)
 構成の値には、ルート テンプレートのパラメーターに加え、次の値を使うことができます。
 
-* **{request.method}**: 元の要求に使われていた HTTP メソッド。
-* **{request.headers.\<HeaderName\>}**: 元の要求から読み取り可能なヘッダー。 *\<HeaderName\>* は、読み取るヘッダーの名前に置き換えます。 該当するヘッダーが要求に含まれていない場合、この値は空の文字列になります。
-* **{request.querystring.\<ParameterName\>}**: 元の要求から読み取り可能なクエリ文字列パラメーター。 *\<ParameterName\>* は、読み取るパラメーターの名前に置き換えます。 該当するパラメーターが要求に含まれていない場合、この値は空の文字列になります。
+* **{request.method}**:元の要求に使われていた HTTP メソッド。
+* **{request.headers.\<HeaderName\>}**:元の要求から読み取り可能なヘッダー。 *\<HeaderName\>* は、読み取るヘッダーの名前に置き換えます。 該当するヘッダーが要求に含まれていない場合、この値は空の文字列になります。
+* **{request.querystring.\<ParameterName\>}**:元の要求から読み取り可能なクエリ文字列パラメーター。 *\<ParameterName\>* は、読み取るパラメーターの名前に置き換えます。 該当するパラメーターが要求に含まれていない場合、この値は空の文字列になります。
 
 ### <a name="response-parameters"></a>バックエンドからの応答のパラメーターを参照する
 
 応答のパラメーターは、クライアントへの応答に加える変更の一部として使うことができます。 構成の値には、次の値を使うことができます。
 
-* **{backend.response.statusCode}**: バックエンドからの応答で返される HTTP 状態コード。
-* **{backend.response.statusReason}**: バックエンドからの応答で返される HTTP 理由文字列。
-* **{backend.response.headers.\<HeaderName\>}**: バックエンドの応答から読み取り可能なヘッダー。 *\<HeaderName\>* は、読み取るヘッダーの名前に置き換えます。 該当するヘッダーが応答に含まれていない場合、この値は空の文字列になります。
+* **{backend.response.statusCode}**:バックエンドからの応答で返される HTTP 状態コード。
+* **{backend.response.statusReason}**:バックエンドからの応答で返される HTTP 理由文字列。
+* **{backend.response.headers.\<HeaderName\>}**:バックエンドの応答から読み取り可能なヘッダー。 *\<HeaderName\>* は、読み取るヘッダーの名前に置き換えます。 該当するヘッダーが応答に含まれていない場合、この値は空の文字列になります。
 
 ### <a name="use-appsettings"></a>アプリケーション設定を参照する
 
-[関数アプリに対して定義されているアプリケーション設定](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings#develop)を参照することもできます。その場合は、設定名をパーセント記号 (%) で囲みます。
+[関数アプリに対して定義されているアプリケーション設定](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings)を参照することもできます。その場合は、設定名をパーセント記号 (%) で囲みます。
 
 たとえば、*https://%ORDER_PROCESSING_HOST%/api/orders* のバックエンド URL で、"%ORDER_PROCESSING_HOST%" は ORDER_PROCESSING_HOST 設定の値に置き換えられます。
 
@@ -139,19 +139,19 @@ ms.locfileid: "44095047"
 
 各プロキシには、上の例の *proxy1* のようなフレンドリ名があります。 対応するプロキシ定義オブジェクトは、以下のプロパティによって定義されます。
 
-* **matchCondition**: 必須 - このプロキシの実行をトリガーする要求を定義するオブジェクト。 [HTTP トリガー]と共有される、次の 2 つのプロパティが含まれています。
-    * _methods_: プロキシが応答する HTTP メソッドの配列。 指定しない場合、プロキシはルートのすべての HTTP メソッドに応答します。
-    * _route_: 必須 - プロキシがどの要求 URL に応答するかを制御するルート テンプレートを定義します。 HTTP トリガーとは異なり、既定値はありません。
-* **backendUri**: 要求のプロキシ先となる、バックエンド リソースの URL。 この値から、アプリケーション設定や元のクライアント要求のパラメーターを参照することが可能です。 このプロパティが含まれていない場合、Azure Functions は HTTP 200 OK で応答します。
-* **requestOverrides**: バックエンドへの要求に対する変換を定義するオブジェクト。 「[requestOverrides オブジェクトの定義]」をご覧ください。
-* **responseOverrides**: クライアントへの応答に対する変換を定義するオブジェクト。 「[responseOverrides オブジェクトの定義]」をご覧ください。
+* **matchCondition**:必須 - このプロキシの実行をトリガーする要求を定義するオブジェクト。 [HTTP トリガー]と共有される、次の 2 つのプロパティが含まれています。
+    * _methods_:プロキシが応答する HTTP メソッドの配列。 指定しない場合、プロキシはルートのすべての HTTP メソッドに応答します。
+    * _route_:必須 - プロキシがどの要求 URL に応答するかを制御するルート テンプレートを定義します。 HTTP トリガーとは異なり、既定値はありません。
+* **backendUri**:要求のプロキシ先となる、バックエンド リソースの URL。 この値から、アプリケーション設定や元のクライアント要求のパラメーターを参照することが可能です。 このプロパティが含まれていない場合、Azure Functions は HTTP 200 OK で応答します。
+* **requestOverrides**:バックエンドへの要求に対する変換を定義するオブジェクト。 「[requestOverrides オブジェクトの定義]」をご覧ください。
+* **responseOverrides**:クライアントへの応答に対する変換を定義するオブジェクト。 「[responseOverrides オブジェクトの定義]」をご覧ください。
 
 > [!NOTE] 
 > Azure Functions プロキシの *route* プロパティ では、Function App ホスト構成の *routePrefix* プロパティは考慮されません。 `/api` のようなプレフィックスを含める場合は、*route* プロパティに含める必要があります。
 
-### <a name="disableProxies"></a>個々のプロキシを無効する
+### <a name="disableProxies"></a> 個々のプロキシを無効する
 
-個々のプロキシを無効にするには、`proxies.json` ファイル内のプロキシに `"disabled": true` を追加します。 これにより、matchCondidtion を満たす要求はすべて 404 を返します。
+個々のプロキシを無効にするには、`proxies.json` ファイル内のプロキシに `"disabled": true` を追加します。 これにより、matchCondition を満たす要求はすべて 404 を返します。
 ```json
 {
     "$schema": "http://json.schemastore.org/proxies",
@@ -161,19 +161,36 @@ ms.locfileid: "44095047"
             "matchCondition": {
                 "route": "/example"
             },
-            "backendUri": "www.example.com"
+            "backendUri": "https://<AnotherApp>.azurewebsites.net/api/<FunctionName>"
         }
     }
 }
 ```
 
+### <a name="applicationSettings"></a> アプリケーションの設定
+
+プロキシの動作は、いくつかのアプリ設定によって制御できます。 これらについては、[関数のアプリ設定のリファレンス](./functions-app-settings.md)で説明されています
+
+* [AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL](./functions-app-settings.md#azure_function_proxy_disable_local_call)
+* [AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES](./functions-app-settings.md#azure_function_proxy_backend_url_decode_slashes)
+
+### <a name="reservedChars"></a> 予約文字 (文字列形式)
+
+プロキシで JSON ファイルのすべての文字列が読み取られるときは、エスケープ記号として \ が使用されます。 プロキシでは、中括弧も解釈されます。 以下の例の完全なセットを参照してください。
+
+|Character|エスケープ文字|例|
+|-|-|-|
+|{ または }|{{ または }}|`{{ example }}` --> `{ example }`
+| \ | \\\\ | `example.com\\text.html` --> `example.com\text.html`
+|"|\\\"| `\"example\"` --> `"example"`
+
 ### <a name="requestOverrides"></a>requestOverrides オブジェクトの定義
 
 バックエンド リソースが呼び出されたときに要求に対して行う変更は、requestOverrides オブジェクトで定義します。 このオブジェクトは、次のプロパティによって定義されます。
 
-* **backend.request.method**: バックエンドを呼び出す際に使用される HTTP メソッドです。
-* **backend.request.querystring.\<ParameterName\>**: バックエンドの呼び出し時に設定できるクエリ文字列パラメーターです。 *\<ParameterName\>* は、設定するパラメーターの名前に置き換えます。 空の文字列を指定した場合、このパラメーターはバックエンドへの要求に反映されません。
-* **backend.request.headers.\<HeaderName\>**: バックエンドの呼び出し時に設定できるヘッダーです。 *\<HeaderName\>* は、設定するヘッダーの名前に置き換えます。 空の文字列を指定した場合、このヘッダーはバックエンドへの要求に反映されません。
+* **backend.request.method**:バックエンドを呼び出す際に使用される HTTP メソッドです。
+* **backend.request.querystring.\<ParameterName\>**:バックエンドの呼び出し時に設定できるクエリ文字列パラメーターです。 *\<ParameterName\>* は、設定するパラメーターの名前に置き換えます。 空の文字列を指定した場合、このパラメーターはバックエンドへの要求に反映されません。
+* **backend.request.headers.\<HeaderName\>**:バックエンドの呼び出し時に設定できるヘッダーです。 *\<HeaderName\>* は、設定するヘッダーの名前に置き換えます。 空の文字列を指定した場合、このヘッダーはバックエンドへの要求に反映されません。
 
 アプリケーション設定や元のクライアント要求のパラメーターを値から参照することができます。
 
@@ -202,10 +219,10 @@ ms.locfileid: "44095047"
 
 クライアントに返される応答に対して行う変更は、requestOverrides オブジェクトで定義します。 このオブジェクトは、次のプロパティによって定義されます。
 
-* **response.statusCode**: クライアントに返される HTTP 状態コード。
-* **response.statusReason**: クライアントに返される HTTP 理由文字列。
-* **response.body**: クライアントに返される本体の文字列表記。
-* **response.headers.\<HeaderName\>**: クライアントへの応答時に設定可能なヘッダー。 *\<HeaderName\>* は、設定するヘッダーの名前に置き換えます。 空の文字列を指定した場合、このヘッダーは応答に反映されません。
+* **response.statusCode**:クライアントに返される HTTP 状態コード。
+* **response.statusReason**:クライアントに返される HTTP 理由文字列。
+* **response.body**:クライアントに返される本体の文字列表記。
+* **response.headers.\<HeaderName\>**:クライアントへの応答時に設定可能なヘッダー。 *\<HeaderName\>* は、設定するヘッダーの名前に置き換えます。 空の文字列を指定した場合、このヘッダーは応答に反映されません。
 
 アプリケーション設定や元のクライアント要求のパラメーター、バックエンドからの応答のパラメーターを値から参照することができます。
 
@@ -232,7 +249,7 @@ ms.locfileid: "44095047"
 > この例では、応答の本文が直接設定されているため、`backendUri` プロパティは必要ありません。 この例では、Azure Functions プロキシを使って API のモッキングを行う方法を説明しています。
 
 [Azure Portal]: https://portal.azure.com
-[HTTP トリガー]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#http-trigger
+[HTTP トリガー]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
 [requestOverrides オブジェクトの定義]: #requestOverrides

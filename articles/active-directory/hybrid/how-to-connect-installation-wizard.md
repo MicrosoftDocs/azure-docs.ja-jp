@@ -5,23 +5,24 @@ keywords: Azure AD Connect インストール ウィザードの 2 回目の実�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: d800214e-e591-4297-b9b5-d0b1581cc36a
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c5f5f59329e8f4e34a4c08a5819d0e4d96fe2f5c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8ff2caae7cb387f4f0d88cf059d01ad28861b9ad
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310641"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191989"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect 同期: インストール ウィザードの 2 回目の実行
 初めて Azure AD Connect のインストール ウィザードを実行すると、インストールの構成方法が手順に沿って表示されます。 インストール ウィザードをもう一度実行すると、メンテナンスのオプションが表示されます。
@@ -72,7 +73,7 @@ Azure AD Connect を使用して ADFS をインストールした場合は、こ
 ![環境内のすべてのディレクトリの一覧を含むページ](./media/how-to-connect-installation-wizard/refreshschema.png)
 
 ## <a name="configure-staging-mode"></a>ステージング モードの構成
-このオプションを使用すると、サーバー上のステージング モードを有効または無効にすることができます。 ステージング モードとその使用方法の詳細については、「 [操作](how-to-connect-sync-operations.md#staging-mode)」を参照してください。
+このオプションを使用すると、サーバー上のステージング モードを有効または無効にすることができます。 ステージング モードとその使用方法の詳細については、「 [操作](how-to-connect-sync-staging-server.md)」を参照してください。
 
 このオプションでは、ステージングが現時点で有効になっているか無効になっているかが表示されます。  
 ![Option that is also showing the current state of staging mode](./media/how-to-connect-installation-wizard/stagingmodecurrentstate.png)
@@ -90,5 +91,5 @@ Azure AD Connect を使用して ADFS をインストールした場合は、こ
 
 **概要トピック**
 
-* [Azure AD Connect sync: 同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)

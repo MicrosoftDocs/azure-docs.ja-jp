@@ -3,19 +3,19 @@ title: Azure HDInsight を使用した HBase のトラブルシューティン�
 description: HBase と Azure HDInsight の操作についてよく寄せられる質問とその回答を示します。
 services: hdinsight
 ms.service: hdinsight
-author: nitinver
-ms.author: nitinver
-ms.custom: hdinsightactive
+author: hrasheed-msft
+ms.author: hrasheed
+ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
-ms.date: 7/7/2017
-ms.openlocfilehash: e25a2dcaf9b7c820f5d7e0312fb2cb55fc558882
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.date: 12/06/2018
+ms.openlocfilehash: 37a8882653ffede121d2e2cd3f3357741d8d641a
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39593901"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361933"
 ---
-# <a name="troubleshoot-hbase-by-using-azure-hdinsight"></a>Azure HDInsight を使用した HBase のトラブルシューティング
+# <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache HBase のトラブルシューティング
 
 Apache Ambari で Apache HBase ペイロードを操作するときに発生する主な問題とその解決策について説明します。
 
@@ -30,7 +30,7 @@ HBase Master UI に、すべてのリージョン サーバーのバランスが
 未割り当てのリージョンを通常の状態に戻すには、次の手順を実行します。
 
 1. SSH を使用して HDInsight HBase クラスターにサインインします。
-2. `hbase zkcli` コマンドを実行して Zookeeper シェルに接続します。
+2. `hbase zkcli` コマンドを実行して Apache ZooKeeper シェルに接続します。
 3. `rmr /hbase/regions-in-transition` コマンドまたは `rmr /hbase-unsecure/regions-in-transition` コマンドを実行します。
 4. `exit` コマンドを使用して `hbase zkcli` シェルを終了します。
 5. Apache Ambari UI を開き、Active HBase Master サービスを再起動します。
@@ -46,7 +46,7 @@ HBase Master UI に、すべてのリージョン サーバーのバランスが
 ### <a name="resolution-steps"></a>解決手順
 
 1. SSH を使用して HDInsight HBase クラスターにサインインします。
-2. `hbase zkcli` コマンドを実行して Zookeeper シェルに接続します。
+2. `hbase zkcli` コマンドを実行して Apache ZooKeeper シェルに接続します。
 3. `rmr /hbase/regions-in-transition` コマンドまたは `rmr /hbase-unsecure/regions-in-transition` コマンドを実行します。
 4. `exit` コマンドを使用して `hbase zkcli` シェルを終了します。
 5. Ambari UI で、Active HBase Master サービスを再起動します。
@@ -56,7 +56,7 @@ HBase Master UI に、すべてのリージョン サーバーのバランスが
 
 ### <a name="issue"></a>問題
 
-HDInsight クラスター上でローカル Hadoop 分散ファイル システム (HDFS) のセーフ モードが解除されない。
+HDInsight クラスター上でローカル Apache Hadoop 分散ファイル システム (HDFS) のセーフ モードが解除されない。
 
 ### <a name="detailed-description"></a>詳しい説明
 
@@ -211,7 +211,7 @@ HDInsight クラスターが少数のノードにスケールダウンされて�
 
 ### <a name="resolution-steps"></a>解決手順
 
-Phoenix に接続するには、アクティブな Zookeeper ノードの IP アドレスを指定する必要があります。 sqlline.py が接続しようとしている Zookeeper サービスが稼働していることを確認します。
+Apache Phoenix に接続するには、アクティブな Apache ZooKeeper ノードの IP アドレスを指定する必要があります。 sqlline.py が接続しようとしている Zookeeper サービスが稼働していることを確認します。
 1. SSH を使用して HDInsight クラスターにサインインします。
 2. 次のコマンドを入力します。
                 
@@ -247,7 +247,7 @@ Phoenix に接続するには、アクティブな Zookeeper ノードの IP ア
    ```apache
            ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189) 
    ```
-6. Ambari UI で、次の手順に従って、すべての Zookeeper ノードで HMaster サービスを再起動します。
+6. Apache Ambari UI で、次の手順に従って、すべての ZooKeeper ノード上で HMaster サービスを再起動します。
 
     1. HBase の **[Summary]\(概要\)** セクションで、**[HBase]** > **[Active HBase Master]** に移動します。 
     2. **[Components]\(コンポーネント\)** セクションで、HBase Master サービスを再起動します。
@@ -288,7 +288,7 @@ No server address listed in *hbase: meta* for region xxx. (リージョン xxx �
 
 ### <a name="detailed-description"></a>詳しい説明
 
-Linux クラスターで、*hbase: meta* テーブルがオンラインになっていないことを示すメッセージが表示される場合があります。 `hbck` を実行すると、"hbase: meta table replicaId 0 is not found on any region"\(hbase: meta テーブルの replicaId 0 がどのリージョンでも見つかりません\) と報告されます。 HBase の再起動後に、HMaster が初期化できなかったことが問題と考えられます。 この場合、HMaster のログに、"No server address listed in hbase: meta for region hbase: backup \<region name\>"\(リージョン hbase: backup <リージョン名> の hbase: meta にサーバー アドレスがありません\) というメッセージが示されます。  
+Linux クラスターで、*hbase: meta* テーブルがオンラインになっていないことを示すメッセージが表示される場合があります。 `hbck` を実行すると、"hbase: meta table replicaId 0 is not found on any region"\(hbase: meta テーブルの replicaId 0 がどのリージョンでも見つかりません\) と報告されます。 HBase の再起動後に、HMaster が初期化できなかったことが問題と考えられます。 HMaster のログに、次のメッセージが示される場合があります: "No server address listed in hbase: meta for region hbase: backup \<region name\>" (リージョン hbase: backup \<リージョン名\> の hbase: meta にサーバー アドレスがありません)。  
 
 ### <a name="resolution-steps"></a>解決手順
 
@@ -314,12 +314,12 @@ Linux クラスターで、*hbase: meta* テーブルがオンラインになっ
 
 ### <a name="additional-reading"></a>その他の情報
 
-[HBase テーブルを処理できない](http://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
+[HBase テーブルを処理できない](https://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
 
 
 ### <a name="error"></a>Error
 
-HMaster times out with a fatal exception similar to "java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned." ("java.io.IOException: namespace テーブルの割り当てを 300000 ms 待機してタイムアウトしました" のような致命的な例外によって HMaster がタイムアウトしました。)
+HMaster times out with a fatal exception similar to "java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned." ("java.io.IOException: namespace テーブルの割り当てを 300000 ms 待機してタイムアウトしました" に類似した致命的な例外によって HMaster がタイムアウトしました。)
 
 ### <a name="detailed-description"></a>詳しい説明
 
@@ -331,7 +331,7 @@ HMaster times out with a fatal exception similar to "java.io.IOException: Timedo
   
 ### <a name="resolution-steps"></a>解決手順
 
-1. Ambari UI で、**[HBase]** > **[Configs]\(構成\)** に移動します。 カスタム hbase-site.xml ファイルに次の設定を追加します。 
+1. Apache Ambari UI 内で、**[HBase]** > **[Configs]\(構成\)** に移動します。 カスタム hbase-site.xml ファイルに次の設定を追加します。 
 
    ```apache
    Key: hbase.master.namespace.init.timeout Value: 2400000  
@@ -344,9 +344,9 @@ HMaster times out with a fatal exception similar to "java.io.IOException: Timedo
 
 ### <a name="issue"></a>問題
 
-リージョン サーバーでの再起動の失敗は、ベスト プラクティスに従うことで防ぐことができます。 HBase リージョン サーバーの再起動を予定しているときは、負荷の大きいワークロード アクティビティを一時停止することをお勧めします。 シャットダウンの進行中に、アプリケーションが引き続きリージョン サーバーに接続していると、リージョン サーバーの再起動操作が数分遅れます。 また、最初にすべてのテーブルをフラッシュしておくことをお勧めします。 テーブルをフラッシュする方法については、「[HDInsight HBase: How to improve HBase cluster restart time by flushing tables (HDInsight HBase: テーブルをフラッシュして HBase クラスターの再起動時間を短縮する方法)](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/)」をご覧ください。
+リージョン サーバーでの再起動の失敗は、ベスト プラクティスに従うことで防ぐことができます。 HBase リージョン サーバーの再起動を予定しているときは、負荷の大きいワークロード アクティビティを一時停止することをお勧めします。 シャットダウンの進行中に、アプリケーションが引き続きリージョン サーバーに接続していると、リージョン サーバーの再起動操作が数分遅れます。 また、最初にすべてのテーブルをフラッシュしておくことをお勧めします。 テーブルをフラッシュする方法については、[HDInsight HBase:テーブルをフラッシュして Apache HBase クラスターの再起動時間を短縮する方法](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/) に関するページを参照してください。
 
-Ambari UI から HBase リージョン サーバーでの再起動操作を開始すると、リージョン サーバーが停止しても、すぐには再起動していないことがすぐにわかります。 
+Apache Ambari UI から HBase リージョン サーバー上での再起動操作を開始すると、リージョン サーバーが停止しても、すぐには再起動していないことがすぐにわかります。 
 
 バックグラウンドで次のことが行われています。 
 
@@ -367,7 +367,7 @@ Ambari UI から HBase リージョン サーバーでの再起動操作を開�
            2017-03-21 13:22:40,285 - File['/var/run/hbase/hbase-hbase-regionserver.pid'] {'action': ['delete']}
            2017-03-21 13:22:40,285 - Deleting File['/var/run/hbase/hbase-hbase-regionserver.pid']
    ```
-強制シャットダウンにより、リージョン サーバー プロセスが停止されても、プロセスに関連付けられているポートが解放されない場合があります。 この状況により、次のログに示すように、リージョン サーバーの起動時に AddressBindException が発生する可能性があります。 これは、リージョン サーバーが起動に失敗したワーカー ノードの /var/log/hbase ディレクトリにある region-server.log で確認できます。 
+   強制シャットダウンにより、リージョン サーバー プロセスが停止されても、プロセスに関連付けられているポートが解放されない場合があります。 この状況により、次のログに示すように、リージョン サーバーの起動時に AddressBindException が発生する可能性があります。 これは、リージョン サーバーが起動に失敗したワーカー ノードの /var/log/hbase ディレクトリにある region-server.log で確認できます。 
 
    ```apache
 

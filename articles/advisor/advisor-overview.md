@@ -3,22 +3,19 @@ title: Azure Advisor の概要 | Microsoft Docs
 description: Azure Advisor を使用して、Azure のデプロイを最適化します。
 services: advisor
 documentationcenter: NA
-author: manbeenkohli
-manager: ''
-ms.assetid: ''
+author: kasparks
 ms.service: advisor
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/16/2016
-ms.author: makohli
-ms.openlocfilehash: e1d7edef304dc91829066f19b6974f0bcf0be0a5
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.date: 02/01/2019
+ms.author: kasparks
+ms.openlocfilehash: 1a72225ce29b7a94f2fc402488f6b998cde0a0fb
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42146205"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494547"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure Advisor の概要
 
@@ -36,9 +33,9 @@ Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通して�
 
 Advisor ダッシュボードに、すべてのサブスクリプションの個人用に設定された推奨事項が表示されます。  フィルターを適用して、特定のサブスクリプションやリソースの種類の推奨事項を表示できます。  推奨事項は、4 つのカテゴリに分割されています。 
 
-* **高可用性** – ビジネスに不可欠なアプリケーションの継続稼働を保証し、さらに向上させることができます。 詳細については、「[Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)」を参照してください。
-* **セキュリティ** – セキュリティ侵害に至る可能性がある脅威と脆弱性を検出します。 詳細については、「[Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)」を参照してください。
-* **パフォーマンス** – アプリケーションの速度を向上させます。 詳細については、「[Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)」を参照してください。
+* **高可用性**: ビジネスに不可欠なアプリケーションの継続稼働を確保し、さらに向上させることができます。 詳細については、「[Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)」を参照してください。
+* **セキュリティ**: セキュリティ侵害に至る可能性がある脅威と脆弱性を検出します。 詳細については、「[Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)」を参照してください。
+* **パフォーマンス**: アプリケーションの速度を向上させます。 詳細については、「[Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)」を参照してください。
 * **コスト**: Azure の全体的な支出を最適化し、削減します。 詳細については、「[Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)」を参照してください。
 
   ![Advisor の推奨事項の種類](./media/advisor-overview/advisor-dashboard.png)
@@ -64,7 +61,7 @@ Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通して�
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Advisor が推奨事項を提供するリソースは?
 
-Advisor は、仮想マシン、可用性セット、アプリケーション ゲートウェイ、App Services、SQL Server、および Redis Cache に関する推奨事項を提供します。
+Advisor により、仮想マシン、可用性セット、アプリケーション ゲートウェイ、App Services、SQL Server、Azure Cache for Redis に関する推奨事項が提供されます。
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>推奨事項は延期したり無視したりできるか?
 

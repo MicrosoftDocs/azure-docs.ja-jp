@@ -1,70 +1,72 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 02922cea6e26b820dc193d73ef38f9e716a477be
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233040"
 documentType: LandingData
-title: Azure Policy のドキュメント
+title: Azure Policy サービスのドキュメント
 metadata:
   title: Azure Policy のドキュメント - チュートリアル、API リファレンス
-  description: Azure Policy では、リソースに対してルールと効果を適用するポリシー定義によって IT の問題を管理および防止できます。 Azure Policy を使用すると、リソースは会社の標準やサービス レベル アグリーメントに準拠した状態で維持されます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、ポリシー定義の作成、割り当て、管理を行う方法を確認してください。
-  services: azure-policy
+  description: Azure Policy では、リソースに対してルールと効果を適用するポリシー定義によって IT の問題を管理および防止できます。 Azure Policy を使用すると、リソースは会社の標準やサービス レベル アグリーメントに準拠した状態で維持されます。
   author: DCtheGeek
   manager: carmonm
   ms.service: azure-policy
   ms.topic: landing-page
-  ms.date: 09/18/2018
+  ms.date: 03/16/2019
   ms.author: dacoulte
 abstract:
-  description: Azure Policy では、リソースに対してルールと効果を適用するポリシー定義によって IT の問題を管理および防止できます。 Azure Policy を使用すると、リソースは会社の標準やサービス レベル アグリーメントに準拠した状態で維持されます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、ポリシー定義の作成、割り当て、管理を行う方法を確認してください。
+  description: Azure Policy では、リソースに対してルールと効果を適用するポリシー定義によって IT の問題を管理および防止できます。 Azure Policy を使用すると、リソースは会社の標準やサービス レベル アグリーメントに準拠した状態で維持されます。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: Azure でポリシー定義の作成、割り当て、管理を行う方法について説明します。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: ./media/portal.svg
-      text: Azure Portal
-      href: ./assign-policy-portal
-    - image:
-        src: ./media/powershell.svg
-      text: Azure PowerShell
-      href: ./assign-policy-powershell
-    - image:
-        src: ./media/cli.svg
-      text: Azure CLI
-      href: ./assign-policy-azurecli
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Azure でポリシー定義の作成、割り当て、管理を行う方法について説明します。
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: Azure でポリシー定義の作成、割り当て、管理を行う方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              alt: Azure Portal
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Azure Portal
+            href: ./assign-policy-portal
+          - image:
+              alt: Azure PowerShell
+              src: ./media/powershell.svg
+            text: Azure PowerShell
+            href: ./assign-policy-powershell
+          - image:
+              alt: Azure CLI
+              src: ./media/cli.svg
+            text: Azure CLI
+            href: ./assign-policy-azurecli
+          - image:
+              alt: Resource Manager テンプレート
+              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+            text: Resource Manager テンプレート
+            href: ./assign-policy-template
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/governance/policy/tutorials/create-and-manage">Azure ポリシーの作成と管理</a>
-- title: サンプル
-  items:
-  - type: paragraph
-    text: 次の JSON のサンプルを使用すると、Azure でポリシー定義を作成できます。
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: Azure でポリシー定義の作成、割り当て、管理を行う方法について説明します。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/governance/policy/tutorials/create-and-manage">Azure ポリシーの作成と管理</a>
+          - html: <a href="/azure/governance/policy/tutorials/create-custom-policy-definition">カスタム ポリシー定義の作成</a>
+  - title: サンプル
     items:
-    - html: <a href="/azure/governance/policy/samples/index">Azure PowerShell</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Azure 内でポリシー定義を作成する際に役立つサンプルをご覧ください。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/governance/policy/samples/index">サンプルの目次</a>
+  - title: リファレンス
     items:
-    - title: コマンド ライン
-      html: <p><a href="/cli/azure/policy">Azure CLI</a></p>
-    - title: PowerShell
-      html: <p><a href="/powershell/module/azurerm.resources/#policies">Azure PowerShell</a></p>
-    - title: REST API
-      html: <p><a href="/rest/api/policy-insights/policyevents">イベント</a></p><p><a href="/rest/api/policy-insights/policystates">状態</a></p><p><a href="/rest/api/resources/policyassignments">割り当て</a></p><p><a href="/rest/api/resources/policydefinitions">ポリシーの定義</a></p><p><a href="/rest/api/resources/policysetdefinitions">イニシアティブの定義</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">ポリシー追跡対象リソース</a></p><p><a href="/rest/api/policy-insights/remediations">修復</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: '<p><a href="/cli/azure/policy">Azure CLI</a></p><p><a href="/powershell/module/az.resources/#policies">Azure PowerShell (ポリシー)</a></p><p><a href="/powershell/module/az.policyinsights#policy_insights">Azure PowerShell (ポリシーの分析情報)</a></p><p><a href="https://www.powershellgallery.com/packages/Az.GuestConfiguration">Azure PowerShell (ゲスト構成)</a></p>'
+          - title: Resource Manager テンプレート
+            html: <p><a href="/azure/templates/microsoft.authorization/policyassignments">割り当て</a></p><p><a href="/azure/templates/microsoft.authorization/policydefinitions">ポリシーの定義</a></p><p><a href="/azure/templates/microsoft.authorization/policysetdefinitions">イニシアティブの定義</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/policy-insights/policyevents">イベント</a></p><p><a href="/rest/api/policy-insights/policystates">状態</a></p><p><a href="/rest/api/resources/policyassignments">割り当て</a></p><p><a href="/rest/api/resources/policydefinitions">ポリシーの定義</a></p><p><a href="/rest/api/resources/policysetdefinitions">イニシアティブの定義</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">ポリシー追跡対象リソース</a></p><p><a href="/rest/api/policy-insights/remediations">修復</a></p><p><a href="/rest/api/guestconfiguration/">ゲスト構成</a></p>

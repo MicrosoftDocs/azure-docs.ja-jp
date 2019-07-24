@@ -1,5 +1,5 @@
 ---
-title: Azure Search で複合データ型をモデル化する方法 | Microsoft Docs
+title: 複合データ型をモデル化する方法 - Azure Search
 description: 階層または入れ子になったデータ構造は、フラット化された行セットとコレクション データ型を使用して、Azure Search インデックスでモデル化できます。
 author: brjohnstmsft
 manager: jlembicz
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 81298bedd43a89ea948753dffc5f80248f5429ca
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 973623d6c4cb57518af2012bccf67c969146d23c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799075"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311985"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>Azure Search で複合データ型をモデル化する方法
 Azure Search インデックスの設定に使用する外部データセットの中には、下部構造が階層または入れ子となっているために、表形式の行セットに適切に分解できないものが存在します。 このような構造の例として、単一の顧客に複数の住所と電話番号が含まれるケース、単一の SKU に複数の色とサイズが含まれるケース、1 冊の書籍に複数の著者が存在するケースなどが挙げられます。 モデル化の際に使う用語では、このような構造を "*複合データ型*"、"*コンパウンド データ型*"、"*コンポジット データ型*"、"*集合体データ型*" などの用語で呼ぶことがあります。
@@ -65,14 +66,14 @@ Azure Search インデックスの設定に使用する外部データセット�
 > 
 > 
 
-## <a name="part-1-flatten-the-array-into-individual-fields"></a>パート 1: 個々のフィールドに配列をフラット化する
+## <a name="part-1-flatten-the-array-into-individual-fields"></a>パート 1:個々のフィールドに配列をフラット化する
 このデータセットを格納する Azure Search インデックスを作成するには、入れ子になった下部構造のそれぞれに対応するフィールドを作成します。ここでの下部構造とは、[コレクション](https://msdn.microsoft.com/library/azure/dn798938.aspx) データ型 (または文字列の配列) である `locationsID` と `locationsDescription` を指します。 これらのフィールドでは、John Smith の `locationsID` フィールドに値 "1" と "2" のインデックスを作成し、Jen Campbell の `locationsID` フィールドに値 "3" と "4" のインデックスを作成します。  
 
 Azure Search では、データは次のように表示されます。 
 
 ![sample data, 2 rows](./media/search-howto-complex-data-types/sample-data.png)
 
-## <a name="part-2-add-a-collection-field-in-the-index-definition"></a>パート 2: インデックス定義にコレクションのフィールドを追加する
+## <a name="part-2-add-a-collection-field-in-the-index-definition"></a>パート 2:インデックス定義にコレクションのフィールドを追加する
 インデックス スキーマでは、フィールド定義は次の例のようになります。
 
 ~~~~

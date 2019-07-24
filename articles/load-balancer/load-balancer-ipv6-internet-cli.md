@@ -1,5 +1,6 @@
 ---
-title: IPv6 でのパブリック ロード バランサーの作成 - Azure CLI | Microsoft Docs
+title: IPv6 のパブリック ロード バランサーを作成する - Azure CLI
+titlesuffix: Azure Load Balancer
 description: Azure CLI を使用して IPv6 のパブリック ロード バランサーを作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
@@ -8,16 +9,17 @@ keywords: ipv6, azure load balancer, デュアル スタック, パブリック 
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: kumud
-ms.openlocfilehash: e3d6611c8a5c6faf3d1e070d1bafa2027adfc0cb
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 1caa8e7554024c3b2e3d86436d3d494d7995169a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739840"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53142021"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Azure CLI を使用して IPv6 のパブリック ロード バランサーを作成する
 
@@ -44,11 +46,11 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
 
 ロード バランサーをデプロイするには、次のオブジェクトを作成して構成します。
 
-* **フロントエンド IP 構成**: 受信ネットワーク トラフィックのパブリック IP アドレスが含まれます。
-* **バックエンド アドレス プール**: ロード バランサーからネットワーク トラフィックを受信する、仮想マシンのネットワーク インターフェイス (NIC) が含まれます。
-* **負荷分散規則**: ロード バランサーのパブリック ポートをバック エンド アドレス プール内のポートにマッピングする規則が含まれます。
-* **受信 NAT 規則**: ロード バランサーのパブリック ポートをバックエンド アドレス プール内の特定の仮想マシンのポートにマッピングするネットワーク アドレス変換 (NAT) 規則が含まれます。
-* **プローブ**: バックエンド アドレス プール内の仮想マシン インスタンスの可用性を確認するために使用する正常性プローブが含まれます。
+* **フロントエンド IP 構成**:受信ネットワーク トラフィックのパブリック IP アドレスが含まれます。
+* **バックエンド アドレス プール**:ロード バランサーからネットワーク トラフィックを受信する、仮想マシンのネットワーク インターフェイス (NIC) が含まれます。
+* **負荷分散規則**:ロード バランサーのパブリック ポートをバック エンド アドレス プール内のポートにマッピングする規則が含まれます。
+* **受信 NAT 規則**:ロード バランサーのパブリック ポートをバックエンド アドレス プール内の特定の仮想マシンのポートにマッピングするネットワーク アドレス変換 (NAT) 規則が含まれます。
+* **プローブ**:バックエンド アドレス プール内の仮想マシン インスタンスの可用性を確認するために使用する正常性プローブが含まれます。
 
 ## <a name="set-up-azure-cli"></a>Azure CLI をセットアップする
 

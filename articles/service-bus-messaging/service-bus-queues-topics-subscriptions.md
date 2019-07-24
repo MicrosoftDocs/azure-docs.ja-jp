@@ -3,18 +3,19 @@ title: Azure Service Bus のメッセージング キュー、トピック、サ
 description: Service Bus メッセージング エンティティの概要です。
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: spelluru
-ms.openlocfilehash: 047c4c37090db77f7a7a692604dd63c5effff9fa
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: aschhab
+ms.openlocfilehash: 7cacabf4f171189810e943043b5513e20113d962
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409763"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847033"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus のキュー、トピック、サブスクリプション
 
@@ -32,15 +33,15 @@ Service Bus のメッセージング機能の中核を形成するメッセー�
 
 ### <a name="create-queues"></a>キューの作成
 
-キューは、[Azure Portal](service-bus-quickstart-portal.md)、[PowerShell](service-bus-quickstart-powershell.md)[CLI](service-bus-quickstart-cli.md)、または [Resource Manager テンプレート](service-bus-resource-manager-namespace-queue.md)を使用して作成します。 その後、[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) オブジェクトを使用して、メッセージの送信と受信を行います。 
+キューは、[Azure Portal](service-bus-quickstart-portal.md)、[PowerShell](service-bus-quickstart-powershell.md)[CLI](service-bus-quickstart-cli.md)、または [Resource Manager テンプレート](service-bus-resource-manager-namespace-queue.md)を使用して作成します。 その後、[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) オブジェクトを使用して、メッセージの送信と受信を行います。
 
-キューの簡単な作成方法と、キューに対するメッセージの送信と受信を行う方法については、各メソッドの[クイック スタート](service-bus-quickstart-portal.md)を参照してください。 キューの使用方法の詳細なチュートリアルについては、「[Service Bus のキューの使用](service-bus-dotnet-get-started-with-queues.md)」を参照してください。 
+キューの簡単な作成方法と、キューに対するメッセージの送信と受信を行う方法については、各メソッドの[クイック スタート](service-bus-quickstart-portal.md)を参照してください。 キューの使用方法の詳細なチュートリアルについては、「[Service Bus のキューの使用](service-bus-dotnet-get-started-with-queues.md)」を参照してください。
 
 作業用サンプルについては、GitHub の [BasicSendReceiveUsingQueueClient サンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingQueueClient)を参照してください。
 
 ### <a name="receive-modes"></a>受信モード
 
-Service Bus がメッセージを受信する 2 つの異なるモードを指定できます (*ReceiveAndDelete* または *PeekLock*)。 [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) モードでは、受信は単発の操作です。つまり、Service Bus は要求を受信すると、メッセージを読み取り中としてマークしてアプリケーションに返します。 **ReceiveAndDelete** モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このシナリオを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus がメッセージを読み取り中としてマークするため、アプリケーションは、再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージを見落とすことになります。
+Service Bus がメッセージを受信する 2 つの異なるモードを指定できます。*ReceiveAndDelete* または *PeekLock* です。 [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) モードでは、受信は単発の操作です。つまり、Service Bus は要求を受信すると、メッセージを読み取り中としてマークしてアプリケーションに返します。 **ReceiveAndDelete** モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このシナリオを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus がメッセージを読み取り中としてマークするため、アプリケーションは、再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージを見落とすことになります。
 
 [PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) モードでは、メッセージの受信処理は 2 段階になります。これにより、メッセージが失われることを許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにそのメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージに対して [CompleteAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) を呼び出して受信処理の第 2 段階を完了します。 Service Bus は、**CompleteAsync** の呼び出しを確認すると、メッセージを読み取り済みとしてマークします。
 
@@ -56,9 +57,9 @@ Service Bus がメッセージを受信する 2 つの異なるモードを指�
 
 ### <a name="create-topics-and-subscriptions"></a>トピックとサブスクリプションを作成する
 
-トピックの作成は、前のセクションで説明したキューの作成と似ています。 メッセージの送信は、[TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient) クラスを使用して行います。 メッセージを受信するには、トピックに対して 1 つまたは複数のサブスクリプションを作成します。 キューの場合に似ていますが、[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) オブジェクトの代わりに [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) オブジェクトを使用して、サブスクリプションからメッセージを受信します。 サブスクリプション クライアントを作成し、トピックの名前とサブスクリプションの名前、さらに必要に応じて受信モードをパラメーターとして渡します。 
+トピックの作成は、前のセクションで説明したキューの作成と似ています。 メッセージの送信は、[TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient) クラスを使用して行います。 メッセージを受信するには、トピックに対して 1 つまたは複数のサブスクリプションを作成します。 キューの場合に似ていますが、[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) オブジェクトの代わりに [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) オブジェクトを使用して、サブスクリプションからメッセージを受信します。 サブスクリプション クライアントを作成し、トピックの名前とサブスクリプションの名前、さらに必要に応じて受信モードをパラメーターとして渡します。
 
-完全な作業用サンプルについては、Github の [BasicSendReceiveUsingTopicSubscriptionClient サンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingTopicSubscriptionClient)を参照してください。
+完全な作業用サンプルについては、GitHub の [BasicSendReceiveUsingTopicSubscriptionClient サンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingTopicSubscriptionClient)を参照してください。
 
 ### <a name="rules-and-actions"></a>ルールとアクション
 
@@ -66,14 +67,14 @@ Service Bus がメッセージを受信する 2 つの異なるモードを指�
 
 完全な作業用サンプルについては、GitHub の [TopicSubscriptionWithRuleOperationsSample サンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/TopicSubscriptionWithRuleOperationsSample)を参照してください。
 
-使用可能なフィルター値の詳細については、[SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) クラスと [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) クラスのドキュメントを参照してください。 
+使用可能なフィルター値の詳細については、[SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) クラスと [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) クラスのドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 Service Bus のメッセージングの詳細と使用例については、次の詳細トピックをご覧ください。
 
 * [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
-* [クイック スタート: Azure Portal と .NET を使用してメッセージを送受信する](service-bus-quickstart-portal.md)
-* [チュートリアル: Azure Portal とトピック/サブスクリプションを使用して在庫を更新する](service-bus-tutorial-topics-subscriptions-portal.md)
+* [クイック スタート:Microsoft Azure portal と .NET を使用してメッセージを送受信する](service-bus-quickstart-portal.md)
+* [チュートリアル:Microsoft Azure portal とトピック/サブスクリプションを使用して在庫を更新する](service-bus-tutorial-topics-subscriptions-portal.md)
 
 

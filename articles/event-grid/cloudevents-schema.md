@@ -8,22 +8,24 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
-ms.openlocfilehash: 3865a94192a65a2cb8a761cc1da30317f605548b
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 0195ce82396a7b05335242a38a2881e1b2d1afb3
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287202"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317495"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>CloudEvents スキーマを Event Grid で使用する
 
-Azure Event Grid では、[既定のイベント スキーマ](event-schema.md)に加えて、[CloudEvents JSON スキーマ](https://github.com/cloudevents/spec/blob/master/json-format.md)内のイベントをネイティブ サポートしています。 [CloudEvents](http://cloudevents.io/) は、イベント データを記述するための[オープンな仕様](https://github.com/cloudevents/spec/blob/master/spec.md)です。
+Azure Event Grid では、[既定のイベント スキーマ](event-schema.md)に加えて、[CloudEvents JSON スキーマ](https://github.com/cloudevents/spec/blob/master/json-format.md)内のイベントをネイティブ サポートしています。 [CloudEvents](https://cloudevents.io/) は、イベント データを記述するための[オープンな仕様](https://github.com/cloudevents/spec/blob/master/spec.md)です。
 
 CloudEvents を使用すると、クラウド ベースのイベントを発行したり使用したりするための共通のイベント スキーマを提供し、相互運用性を簡略化することができます。 このスキーマを使用すれば、ツールを統一化したり、イベントのルーティングや処理方法を標準化したり、外部のイベント スキーマを共通の方法で逆シリアル化することができます。 共通のスキーマを使用することで、プラットフォーム間での作業をより簡単に統合できます。
 
-CloudEvents は、[Cloud Native Compute Foundation](https://www.cncf.io/) を通じ、複数の[コラボレーター](https://github.com/cloudevents/spec/blob/master/community/contributors.md) (マイクロソフトを含む) によって構築されています。 現在、バージョン 0.1 が提供されています。
+CloudEvents は、[Cloud Native Computing Foundation](https://www.cncf.io/) を通じ、複数の[コラボレーター](https://github.com/cloudevents/spec/blob/master/community/contributors.md) (マイクロソフトを含む) によって構築されています。 現在、バージョン 0.1 が提供されています。
 
 この記事では、Event Grid で CloudEvents スキーマを使用する方法について説明します。
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 ## <a name="install-preview-feature"></a>プレビュー機能のインストール
 
@@ -60,7 +62,7 @@ CloudEvents は、[Cloud Native Compute Foundation](https://www.cncf.io/) を通
 
 CloudEvents v0.1 では、次のプロパティが使えます。
 
-| CloudEvents        | type     | JSON 値の例             | 説明                                                        | Event Grid のマッピング
+| CloudEvents        | Type     | JSON 値の例             | 説明                                                        | Event Grid のマッピング
 |--------------------|----------|--------------------------------|--------------------------------------------------------------------|-------------------------
 | eventType          | String   | "com.example.someevent"          | 発生したオカレンスの種類                                   | eventType
 | eventTypeVersion   | String   | "1.0"                            | eventType のバージョン (省略可能)                            | dataVersion
@@ -68,10 +70,10 @@ CloudEvents v0.1 では、次のプロパティが使えます。
 | source             | URI      | "/mycontext"                     | イベント プロデューサーの説明                                       | topic#subject
 | eventID            | String   | "1234-1234-1234"                 | イベントの ID                                                    | id
 | eventTime          | Timestamp| "2018-04-05T17:31:00Z"           | イベントが発生したときのタイムスタンプ (省略可能)                    | eventTime
-| schemaURL          | URI      | "https://myschema.com"           | データ属性が準拠しているスキーマへのリンク (省略可能) | *使用されません*
+| schemaURL          | URI      | "https:\//myschema.com"           | データ属性が準拠しているスキーマへのリンク (省略可能) | *使用されません*
 | contentType        | String   | "application/json"               | データ エンコード形式の説明 (省略可能)                       | *使用されません*
 | 拡張機能         | マップ      | { "extA": "vA", "extB", "vB" }  | 追加のメタデータ (省略可能)                                 | *使用されません*
-| data               | オブジェクト   | { "objA": "vA", "objB", "vB" }  | イベント ペイロード (省略可能)                                       | data
+| data               | Object   | { "objA": "vA", "objB", "vB" }  | イベント ペイロード (省略可能)                                       | data
 
 詳しくは、[CloudEvents の仕様](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes)をご覧ください。
 

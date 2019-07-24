@@ -1,0 +1,122 @@
+- name: 概要
+  items:
+    - name: SQL Server VM とは
+      href: virtual-machines-windows-sql-server-iaas-overview.md
+    - name: リリース ノート
+      href: virtual-machines-windows-sql-server-iaas-release-notes.md
+- name: クイック スタート
+  items:
+    - name: SQL VM の作成 - ポータル
+      href: quickstart-sql-vm-create-portal.md
+    - name: SQL VM の作成 - PowerShell
+      href: quickstart-sql-vm-create-powershell.md
+- name: 概念
+  items:
+    - name: ベスト プラクティス
+      items:
+        - name: パフォーマンスのベスト プラクティス
+          href: virtual-machines-windows-sql-performance.md
+        - name: セキュリティに関する考慮事項
+          href: virtual-machines-windows-sql-security.md
+        - name: アプリケーション パターン
+          href: virtual-machines-windows-sql-server-app-patterns-dev-strategies.md
+    - name: ビジネス継続性
+      items:
+        - name: 高可用性のオプション
+          href: virtual-machines-windows-sql-high-availability-dr.md
+        - name: Always On 可用性グループ
+          href: virtual-machines-windows-portal-sql-availability-group-overview.md
+        - name: バックアップと復元
+          href: virtual-machines-windows-sql-backup-recovery.md
+        - name: SQL Server 2014 の自動バックアップ
+          href: virtual-machines-windows-sql-automated-backup.md
+        - name: SQL Server 2016 以降の自動バックアップ
+          href: virtual-machines-windows-sql-automated-backup-v2.md
+    - name: 管理
+      items:
+        - name: VM への接続
+          href: virtual-machines-windows-sql-connect.md
+        - name: ストレージの構成
+          href: virtual-machines-windows-sql-server-storage-configuration.md
+        - name: 管理タスクの自動化
+          items:
+            - name: SQL Server IaaS Agent 拡張機能の使用
+              href: virtual-machines-windows-sql-server-agent-extension.md
+            - name: 自動修正
+              href: virtual-machines-windows-sql-automated-patching.md
+            - name: Azure Key Vault 統合の構成
+              href: virtual-machines-windows-ps-sql-keyvault.md
+- name: ハウツー ガイド
+  items:
+    - name: SQL VM の作成
+      items:
+        - name: ポータルの使用
+          href: virtual-machines-windows-portal-sql-server-provision.md
+        - name: Azure PowerShell の使用
+          href: virtual-machines-windows-ps-sql-create.md
+    - name: SQL VM のライセンス モデルの変更
+      href: virtual-machines-windows-sql-ahb.md
+    - name: 移行
+      items:
+        - name: SQL Server データベースを移行する
+          href: virtual-machines-windows-migrate-sql.md
+    - name: 高可用性の構成
+      items:
+        - name: Azure Storage を使用したバックアップと復元
+          href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
+        - name: Always On 可用性グループ
+          items:
+            - name: Azure SQL VM CLI
+              href: virtual-machines-windows-sql-availability-group-cli.md
+            - name: Azure portal テンプレート
+              href: virtual-machines-windows-portal-sql-alwayson-availability-groups.md
+            - name: Azure クイック スタート テンプレート
+              href: virtual-machines-windows-sql-availability-group-quickstart-template.md
+            - name: 複数のリージョン
+              href: virtual-machines-windows-portal-sql-availability-group-dr.md
+            - name: 手動で構成
+              items:
+                - name: 前提条件
+                  href: virtual-machines-windows-portal-sql-availability-group-prereq.md
+                - name: チュートリアル
+                  href: virtual-machines-windows-portal-sql-availability-group-tutorial.md
+                - name: ロード バランサー - Azure portal
+                  href: virtual-machines-windows-portal-sql-alwayson-int-listener.md
+                - name: ロード バランサー - Azure PowerShell
+                  href: virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md
+        - name: フェールオーバー クラスター インスタンス
+          items:
+            - name: 構成
+              href: virtual-machines-windows-portal-sql-create-failover-cluster.md
+- name: リファレンス
+  items:
+    - name: Azure PowerShell
+      href: /powershell/azure/overview
+    - name: Azure CLI
+      href: /cli/azure/
+    - name: T-SQL
+      href: 'https://docs.microsoft.com/sql/t-sql/language-reference'
+    - name: SQL Server ドライバー
+      href: 'https://docs.microsoft.com/sql/connect/sql-connection-libraries'
+    - name: REST
+      href: /rest/api/
+- name: リソース
+  items:
+    - name: FAQ
+      href: virtual-machines-windows-sql-server-iaas-faq.md
+    - name: 価格
+      href: virtual-machines-windows-sql-server-pricing-guidance.md
+    - name: PaaS または IaaS
+      href: ../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json
+    - name: SQL Server Data Tools (SSDT)
+      href: 'https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
+    - name: SQL Server Management Studio (SSMS)
+      href: 'https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms'
+    - name: SQL Server Tools
+      href: 'https://docs.microsoft.com/sql/tools/overview-sql-tools'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'

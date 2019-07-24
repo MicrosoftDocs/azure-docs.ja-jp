@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/10/2018
+ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: 4d30cca0106e52706326bfd91a2d0dfb0a64ca04
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0988902e0a2154f2935a01ddcfb6a460be693df3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258461"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093805"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 Windows 仮想マシン (VM) をオンプレミスから Microsoft Azure にアップロードする前に、仮想ハード ディスク (VHD または VHDX) を準備する必要があります。 Azure では、VHD ファイル形式で容量固定ディスクの**第 1 世代の VM のみ**がサポートされています。 VHD のサイズの上限は、1,023 GB です。 第 1 世代の VM は、VHDX ファイル システムから VHD ファイル システムに、また容量可変ディスクから容量固定ディスクに変換できます。 ただし、VM の世代を変更することはできません。 詳細については、[Hyper-V で第 1 世代と第 2 世代のどちらの VM を作成する必要があるか](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)に関するページを参照してください。
@@ -73,6 +73,16 @@ Azure にアップロードする予定の VM で、[管理者特権でのコマ
     ```PowerShell
     netsh winhttp reset proxy
     ```
+
+    VM で特定のプロキシを使用する必要がある場合は、Azure の IP アドレス ([168.63.129.16](https://blogs.msdn.microsoft.com/mast/2015/05/18/what-is-the-ip-address-168-63-129-16/
+)) にプロキシ例外追加する必要があります。これにより VM は Azure に接続できます。
+    ```
+    $proxyAddress="<your proxy server>"
+    $proxyBypassList="<your list of bypasses>;168.63.129.16"
+
+    netsh winhttp set proxy $proxyAddress $proxyBypassList
+    ```
+
 3. ディスク SAN ポリシーを [Onlineall](https://technet.microsoft.com/library/gg252636.aspx) に設定します。
    
     ```PowerShell
@@ -283,7 +293,7 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
     ```PowerShell
     winmgmt /verifyrepository
     ```
-    リポジトリが破損している場合は、「[WMI: Repository Corruption, or Not? (WMI: リポジトリの破損かどうかの確認)](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not)」を参照してください。
+    リポジトリが破損している場合は、「[WMI:Repository Corruption, or Not (WMI: リポジトリが破損しているかどうか)](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not)」を参照してください。
 
 5. 他のアプリケーションでポート 3389 を使用していないことを確認します。 このポートは、Azure の RDP サービスに使用します。 **netstat -anob** を実行して、VM でどのポートが使用されているかを確認できます。
 
@@ -310,14 +320,14 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 
 9. 次の AD ポリシーで、次の必要なアクセス アカウントのいずれも削除していないことを確認します。
 
-    - [コンピューターの構成]\[Windows の設定]\[セキュリティ設定]\[ローカル ポリシー]\[ユーザー権利の割り当て]\[ネットワーク経由でコンピューターへアクセス]
+   - [コンピューターの構成]\[Windows の設定]\[セキュリティ設定]\[ローカル ポリシー]\[ユーザー権利の割り当て]\[ネットワーク経由でコンピューターへアクセス]
 
-    このポリシーには、次のグループが表示されている必要があります。
+     このポリシーには、次のグループが表示されている必要があります。
 
-    - 管理者
-    - Backup Operators
-    - Everyone
-    - ユーザー
+   - 管理者
+   - Backup Operators
+   - Everyone
+   - ユーザー
 
 10. VM を再起動して、Windows が引き続き正常であり、RDP 接続を使用してアクセス可能であることを確認します。 この時点で、ローカル Hyper-V に VM を作成して、VM が完全に開始されていることを確認し、この VM が RDP でアクセス可能であるかどうかをテストできます。
 
@@ -377,7 +387,7 @@ sysrep は、Windows インストールに組み込むことができるプロ�
 - [特殊化されたディスクからの VM の作成](create-vm-specialized.md)
 - [特殊化された VHD ディスクからの VM の作成](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
 
-一般化されたイメージを作成する場合は、sysprep を実行する必要があります。 Sysprep の詳細については、「[Sysprep の使用方法: 紹介](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。 
+一般化されたイメージを作成する場合は、sysprep を実行する必要があります。 Sysprep の詳細については、「[How to Use Sysprep:An Introduction (Sysprep の使用方法: 紹介)](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。 
 
 Windows ベースのコンピューターにインストールされているロールまたはアプリケーションには、この一般化をサポートしていないものもあります。 そのため、この手順を実行する前に、以下の記事を参照して、そのコンピューターのロールが sysprep でサポートされていることを確認してください。 詳しくは、「[Sysprep Support for Server Roles (サーバー ロールの sysprep サポート)](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」を参照してください。
 
@@ -398,20 +408,20 @@ Windows ベースのコンピューターにインストールされているロ
 7. これで VHD をアップロードする準備ができました。 一般化されたディスクから VM を作成する方法の詳細については、[一般化した VHD のアップロードと Azure での新しい VM の作成](sa-upload-generalized.md)に関するページをご覧ください。
 
 
+>[!NOTE]
+> custom unattend.xml はサポートされていません。 additionalUnattendContent プロパティはサポートされていますが、Azure プロビジョニング エージェントが使用する unattend.xml に [microsoft-windows-shell-setup](https://docs.microsoft.com/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) オプションを追加するためのサポートは限られています。 例:   FirstLogonCommands と LogonCommands を追加するには、[additionalUnattendContent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) を使用できます。 「[additionalUnattendContent FirstLogonCommands example (additionalUnattendContent FirstLogonCommands の例)](https://github.com/Azure/azure-quickstart-templates/issues/1407)」も参照してください。
+
+
 ## <a name="complete-recommended-configurations"></a>推奨される構成を完了する
 次の設定は、VHD のアップロードに影響しません。 ただし、これらを構成しておくことを強くお勧めします。
 
-* [Azure VM エージェント](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をインストールします。 その後で、VM 拡張機能を有効にできます。 VM 拡張機能によって、パスワードのリセットや RDP の構成など、VM で使用する重要な機能のほとんどが実装されます。 詳細については、次を参照してください。
+* [Azure VM エージェント](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をインストールします。 その後で、VM 拡張機能を有効にできます。 VM 拡張機能によって、パスワードのリセットや RDP の構成など、VM で使用する重要な機能のほとんどが実装されます。 詳細については、「[Azure 仮想マシン エージェントの概要](../extensions/agent-windows.md)」を参照してください。
+* Azure で VM を作成した後は、パフォーマンスを向上させるために、ページ ファイルを "テンポラル ドライブ" ボリューム上に置くことをお勧めします。 これは以下のようにしてセットアップできます。
 
-    - [VM エージェントおよび拡張機能 – パート 1](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-1/)
-    - [VM エージェントおよび拡張機能 – パート 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)
-
-*  Azure で VM を作成した後は、パフォーマンスを向上させるために、ページ ファイルを "テンポラル ドライブ" ボリューム上に置くことをお勧めします。 これは以下のようにしてセットアップできます。
-
-    ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile" -Type MultiString -force
-    ```
-VM に接続されているデータ ディスクがある場合、テンポラル ドライブ ボリュームのドライブ文字は通常 "D" になります。 この文字は、使用可能なドライブ数や行った設定に応じて異なる場合があります。
+   ```PowerShell
+   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
+   ```
+  VM に接続されているデータ ディスクがある場合、テンポラル ドライブ ボリュームのドライブ文字は通常 "D" になります。 この文字は、使用可能なドライブ数や行った設定に応じて異なる場合があります。
 
 ## <a name="next-steps"></a>次の手順
 * [Resource Manager デプロイメント向けに Windows VM イメージを Azure にアップロードする](upload-generalized-managed.md)

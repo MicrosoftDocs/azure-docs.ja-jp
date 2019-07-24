@@ -1,237 +1,293 @@
-items:
-- name: Azure IoT の基礎
-  href: ../iot-fundamentals/index.yml
 - name: IoT ソリューション アクセラレータのドキュメント
-  href: index.yml
+  href: index.md
 - name: 概要
+  expanded: true
   items:
-  - name: IoT ソリューション アクセラレータとは
-    href: about-iot-accelerators.md
-- name: クイック スタート
+    - name: IoT ソリューション アクセラレータとは
+      href: about-iot-accelerators.md
+    - name: AzureIoTSolution.com
+      href: iot-accelerators-permissions.md
+- name: リモート監視
   items:
-  - name: リモート監視ソリューションを試す
-    href: quickstart-remote-monitoring-deploy.md
-  - name: コネクテッド ファクトリ ソリューションを試す
-    href: quickstart-connected-factory-deploy.md
-  - name: 予測メンテナンス ソリューションを試す
-    href: quickstart-predictive-maintenance-deploy.md
-  - name: デバイス シミュレーション ソリューションを試す
-    href: quickstart-device-simulation-deploy.md
-- name: チュートリアル
-  items:
-  - name: リモート監視
-    items:
-    - name: IoT デバイスの監視
-      href: iot-accelerators-remote-monitoring-monitor.md
-    - name: デバイスの問題の検出
-      href: iot-accelerators-remote-monitoring-automate.md
-    - name: デバイスの構成
-      href: iot-accelerators-remote-monitoring-manage.md
-    - name: アラートでの根本原因分析の実施
-      href: iot-accelerators-remote-monitoring-root-cause-analysis.md
-    - name: アラートの利用とデバイスの問題の修正
-      href: iot-accelerators-remote-monitoring-maintain.md
-    - name: デバイス構成の一括更新
-      href: iot-accelerators-remote-monitoring-bulk-configuration-update.md
-    - name: エッジでの異常の検出
-      href: iot-accelerators-remote-monitoring-edge.md
-  - name: デバイスのシミュレーション
-    items:
-    - name: シミュレーションの作成と実行
-      href: iot-accelerators-device-simulation-create-simulation.md
-    - name: シミュレートされたカスタム デバイスの作成
-      href: iot-accelerators-device-simulation-create-custom-device.md
-- name: 概念
-  items:
-  - name: リモート監視
-    href: iot-accelerators-remote-monitoring-sample-walkthrough.md
-    items:
-    - name: アーキテクチャの選択
-      href: iot-accelerators-remote-monitoring-architectural-choices.md
-    - name: デバイス モデル スキーマ
-      href: iot-accelerators-remote-monitoring-device-schema.md
-    - name: デバイス モデルの動作
-      href: iot-accelerators-remote-monitoring-device-behavior.md
-  - name: 予測メンテナンス
-    href: iot-accelerators-predictive-walkthrough.md
-  - name: 接続済みファクトリ
-    href: iot-accelerators-connected-factory-features.md
-    items:
-    - name: アーキテクチャ
-      href: iot-accelerators-connected-factory-sample-walkthrough.md
-  - name: azureiotsolutions.com でのアクセス許可
-    href: iot-accelerators-permissions.md
-- name: ハウツー ガイド
-  items:
-  - name: リモート監視
-    items:
-    - name: 物理デバイスの接続
+    - name: 概要
+      href: iot-accelerators-remote-monitoring-sample-walkthrough.md
       items:
-      - name: Windows 上の C
-        href: iot-accelerators-connecting-devices.md
-      - name: Linux 上の C
-        href: iot-accelerators-connecting-devices-linux.md
-      - name: Raspberry Pi の C
-        href: iot-accelerators-connecting-pi-c.md
-      - name: Node.js (汎用)
-        href: iot-accelerators-connecting-devices-node.md
-      - name: Raspberry Pi の Node.js
-        href: iot-accelerators-connecting-pi-node.md
-      - name: MXChip IoT DevKit
-        href: iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md
-    - name: IoT Edge デバイスの追加
-      href: iot-accelerators-remote-monitoring-add-edge-device.md
-    - name: IoT Edge パッケージのインポート
-      href: iot-accelerators-remote-monitoring-import-edge-package.md
-    - name: 自動デバイス管理パッケージのインポート
-      href: iot-accelerators-remote-monitoring-import-adm-package.md
-    - name: SIM データの統合
-      href: iot-accelerators-remote-monitoring-telefonica-sim.md
-    - name: シミュレート対象デバイスを作成します
-      href: iot-accelerators-remote-monitoring-create-simulated-device.md
-    - name: シミュレートされたデバイスをデプロイする
-      href: iot-accelerators-remote-monitoring-deploy-simulated-device.md
-    - name: UI のカスタマイズ
-      href: iot-accelerators-remote-monitoring-customize.md
+        - name: アーキテクチャの選択
+          href: iot-accelerators-remote-monitoring-architectural-choices.md
+    - name: クイック スタート
       items:
-      - name: ページの追加
-        href: iot-accelerators-remote-monitoring-customize-page.md
-      - name: サービスの追加
-        href: iot-accelerators-remote-monitoring-customize-service.md
-      - name: グリッドの追加
-        href: iot-accelerators-remote-monitoring-customize-grid.md
-      - name: ポップアップの追加
-        href: iot-accelerators-remote-monitoring-customize-flyout.md
-      - name: パネルの追加
-        href: iot-accelerators-remote-monitoring-customize-panel.md
-    - name: マイクロサービスをカスタマイズして再展開する
-      href: iot-accelerators-microservices-example.md
-    - name: CLI を使用したデプロイ
-      href: iot-accelerators-remote-monitoring-deploy-cli.md
-    - name: ローカルでのデプロイ
-      href: iot-accelerators-remote-monitoring-deploy-local.md
+        - name: リモート監視ソリューションを試す
+          href: quickstart-remote-monitoring-deploy.md
+    - name: チュートリアル
       items:
-      - name: Visual Studio
-        href: iot-accelerators-remote-monitoring-deploy-local.md
-      - name: Docker
-        href: iot-accelerators-remote-monitoring-deploy-local-docker.md
-    - name: 電子メール アクション
-      href: iot-accelerators-remote-monitoring-email-actions.md
-    - name: Power BI によるテレメトリの視覚化
-      href: iot-accelerators-integrate-data-powerbi.md
-    - name: Azure Time Series Insights とリモート監視の統合
-      href: iot-accelerators-remote-monitoring-integrate-time-series-insights.md
-    - name: Data Lake によるテレメトリの分析
-      href: iot-accelerators-integrate-data-lake.md
-    - name: ロールベースのアクセス制御の構成
-      href: iot-accelerators-remote-monitoring-rbac.md
-    - name: テレメトリ エクスプローラーへのアクセスを許可する
-      href: iot-accelerators-remote-monitoring-rbac-tsi.md
-  - name: 接続済みファクトリ
-    items:
-    - name: ダッシュボードの使用
-      href: iot-accelerators-connected-factory-dashboard.md
-    - name: ゲートウェイの選択
-      href: iot-accelerators-connected-factory-gateway-deployment.md
-    - name: OPC Publisher の利用
-      href: https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md
-    - name: ソリューション アクセラレータの構成
-      href: iot-accelerators-connected-factory-configure.md
-    - name: ソリューション アクセラレータのカスタマイズ
-      href: iot-accelerators-connected-factory-customize.md
-  - name: デバイスのシミュレーション
-    items:
-    - name: 既存の IoT ハブの使用
-      href: iot-accelerators-device-simulation-choose-hub.md
-    - name: シミュレートされた高度なデバイスの作成
-      href: iot-accelerators-device-simulation-advanced-device.md
-    - name: Time Series Insights によるテレメトリの視覚化
-      href: iot-accelerators-device-simulation-time-series-insights.md
-    - name: Protbuf を使用してテレメトリをシリアル化する
-      href: iot-accelerators-device-simulation-protobuf.md
-    - name: カスタム Docker イメージのデプロイ
-      href: iot-accelerators-device-simulation-deploy-image.md
-- name: リファレンス
+        - name: IoT デバイスの監視
+          href: iot-accelerators-remote-monitoring-monitor.md
+        - name: デバイスの問題の検出
+          href: iot-accelerators-remote-monitoring-automate.md
+        - name: デバイスの構成
+          href: iot-accelerators-remote-monitoring-manage.md
+        - name: アラートでの根本原因分析の実施
+          href: iot-accelerators-remote-monitoring-root-cause-analysis.md
+        - name: アラートの利用とデバイスの問題の修正
+          href: iot-accelerators-remote-monitoring-maintain.md
+        - name: デバイス構成の一括更新
+          href: iot-accelerators-remote-monitoring-bulk-configuration-update.md
+        - name: エッジでの異常の検出
+          href: iot-accelerators-remote-monitoring-edge.md
+    - name: ハウツー ガイド
+      items:
+        - name: ソリューションのデプロイ
+          items:
+            - name: CLI を使用したデプロイ
+              href: iot-accelerators-remote-monitoring-deploy-cli.md
+            - name: Visual Studio を使用したローカルでのデプロイ
+              href: iot-accelerators-remote-monitoring-deploy-local.md
+            - name: VS Code を使用したローカルでのデプロイ
+              href: iot-accelerators-remote-monitoring-deploy-local-vscode.md
+            - name: IntelliJ を使用したローカルでのデプロイ
+              href: iot-accelerators-remote-monitoring-deploy-local-java.md
+            - name: Docker を使用したローカルでのデプロイ
+              href: iot-accelerators-remote-monitoring-deploy-local-docker.md
+        - name: 実デバイスの接続
+          items:
+            - name: Windows 上の C
+              href: iot-accelerators-connecting-devices.md
+            - name: Linux 上の C
+              href: iot-accelerators-connecting-devices-linux.md
+            - name: Raspberry Pi の C
+              href: iot-accelerators-connecting-pi-c.md
+            - name: Node.js (汎用)
+              href: iot-accelerators-connecting-devices-node.md
+            - name: Raspberry Pi の Node.js
+              href: iot-accelerators-connecting-pi-node.md
+            - name: MXChip IoT DevKit
+              href: iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md
+        - name: デバイスのシミュレーション
+          items:
+            - name: シミュレート対象デバイスを作成します
+              href: iot-accelerators-remote-monitoring-create-simulated-device.md
+            - name: シミュレートされたデバイスをデプロイする
+              href: iot-accelerators-remote-monitoring-deploy-simulated-device.md
+        - name: UI のカスタマイズ
+          href: iot-accelerators-remote-monitoring-customize.md
+          items:
+            - name: ページの追加
+              href: iot-accelerators-remote-monitoring-customize-page.md
+            - name: サービスの追加
+              href: iot-accelerators-remote-monitoring-customize-service.md
+            - name: グリッドの追加
+              href: iot-accelerators-remote-monitoring-customize-grid.md
+            - name: ポップアップの追加
+              href: iot-accelerators-remote-monitoring-customize-flyout.md
+            - name: パネルの追加
+              href: iot-accelerators-remote-monitoring-customize-panel.md
+        - name: マイクロサービスをカスタマイズして再展開する
+          href: iot-accelerators-microservices-example.md
+        - name: デバイス構成パッケージのインポート
+          href: iot-accelerators-remote-monitoring-import-adm-package.md
+        - name: IoT Edge デバイスへの接続
+          items:
+            - name: IoT Edge デバイスの追加
+              href: iot-accelerators-remote-monitoring-add-edge-device.md
+            - name: IoT Edge パッケージのインポート
+              href: iot-accelerators-remote-monitoring-import-edge-package.md
+        - name: 電子メール アクションの構成
+          href: iot-accelerators-remote-monitoring-email-actions.md
+        - name: アクセス制御の構成
+          href: iot-accelerators-remote-monitoring-rbac.md
+        - name: テレメトリの調査
+          items:
+            - name: Power BI によるテレメトリの視覚化
+              href: iot-accelerators-integrate-data-powerbi.md
+            - name: Azure Time Series Insights とリモート監視の統合
+              href: iot-accelerators-remote-monitoring-integrate-time-series-insights.md
+            - name: Data Lake によるテレメトリの分析
+              href: iot-accelerators-integrate-data-lake.md
+            - name: テレメトリ エクスプローラーへのアクセスを許可する
+              href: iot-accelerators-remote-monitoring-rbac-tsi.md
+        - name: SIM データの統合
+          href: iot-accelerators-remote-monitoring-telefonica-sim.md
+    - name: リファレンス
+      items:
+        - name: デバイス モデル スキーマ
+          href: iot-accelerators-remote-monitoring-device-schema.md
+        - name: デバイス モデルの動作
+          href: iot-accelerators-remote-monitoring-device-behavior.md
+    - name: リソース
+      items:
+        - name: 開発者向けリファレンス ガイド (.NET)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
+        - name: 開発者向けリファレンス ガイド (Java)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/wiki/Developer-Reference-Guide'
+        - name: 開発者向けトラブルシューティング ガイド
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
+        - name: GitHub リポジトリ (.NET)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet'
+        - name: GitHub リポジトリ (Java)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java'
+        - name: リモート監視に関する FAQ
+          href: iot-accelerators-faq-rm-v2.md
+- name: 産業用 IoT
   items:
-  - name: リモート監視
-    items:
-    - name: 開発者向けリファレンス ガイド
-      href: https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide
-    - name: 開発者向けトラブルシューティング ガイド
-      href: https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide
-  - name: デバイスのシミュレーション
-    items:
-    - name: 開発者向けリファレンス ガイド
-      href: https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide
-  - name: セキュリティ
-    items:
-    - name: セキュリティのアーキテクチャ
-      href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-accelerators/rc/rc
-    - name: セキュリティのベスト プラクティス
-      href: /azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-accelerators/rc/rc
-    - name: IoT デプロイのセキュリティ保護
-      href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-accelerators/rc/rc
-    - name: 徹底的なセキュリティ
-      href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-accelerators/rc/rc
+    - name: 概要
+      items:
+        - name: 産業用 IoT とは
+          href: overview-iot-industrial.md
+        - name: OPC Twin
+          items:
+            - name: OPC Twin とは
+              href: overview-opc-twin.md
+            - name: OPC Twin アーキテクチャ
+              href: overview-opc-twin-architecture.md
+        - name: OPC Vault
+          items:
+            - name: OPC Vault とは
+              href: overview-opc-vault.md
+        - name: 接続済みファクトリ
+          items:
+            - name: コネクテッド ファクトリの概要
+              href: iot-accelerators-connected-factory-features.md
+            - name: コネクテッド ファクトリのアーキテクチャ
+              href: iot-accelerators-connected-factory-sample-walkthrough.md
+    - name: クイック スタート
+      items:
+        - name: コネクテッド ファクトリ ソリューションを試す
+          href: quickstart-connected-factory-deploy.md
+    - name: ハウツー ガイド
+      items:
+        - name: 接続済みファクトリ
+          items:
+            - name: ダッシュボードの使用
+              href: iot-accelerators-connected-factory-dashboard.md
+            - name: ゲートウェイの選択
+              href: iot-accelerators-connected-factory-gateway-deployment.md
+            - name: OPC Publisher の利用
+              href: 'https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md'
+            - name: ソリューション アクセラレータの構成
+              href: iot-accelerators-connected-factory-configure.md
+            - name: ソリューション アクセラレータのカスタマイズ
+              href: iot-accelerators-connected-factory-customize.md
+        - name: OPC Twin
+          items:
+            - name: OPC Twin サービスをデプロイする
+              href: howto-opc-twin-deploy-existing.md
+            - name: IoT Edge に OPC Twin モジュールをデプロイする
+              href: howto-opc-twin-deploy-modules.md
+            - name: OPC Twin の依存関係のみをデプロイする
+              href: howto-opc-twin-deploy-dependencies.md
+        - name: OPC Vault
+          items:
+            - name: 既存のプロジェクトに OPC Vault をデプロイする
+              items:
+                - name: OPC クライアントと OPC PLC の通信をセキュリティで保護する
+                  href: howto-opc-vault-deploy-existing-client-plc-communication.md
+                - name: OPC UA クライアントと OPC UA サーバー アプリケーションを保護する
+                  href: howto-opc-vault-deploy-existing-client-server-communication.md
+            - name: OPC Vault をゼロからデプロイする
+              href: howto-opc-vault-deploy-scratch.md
+    - name: リソース
+      items:
+        - name: GitHub リポジトリ
+          href: 'https://github.com/Azure/azure-iot-connected-factory'
+        - name: 接続済みファクトリに関する FAQ
+          href: iot-accelerators-faq-cf.md
+- name: デバイスのシミュレーション
+  items:
+    - name: 概要
+      href: iot-accelerators-device-simulation-overview.md
+    - name: クイック スタート
+      items:
+        - name: デバイス シミュレーション ソリューションを試す
+          href: quickstart-device-simulation-deploy.md
+    - name: チュートリアル
+      items:
+        - name: シミュレーションの作成と実行
+          href: iot-accelerators-device-simulation-create-simulation.md
+        - name: シミュレートされたカスタム デバイスの作成
+          href: iot-accelerators-device-simulation-create-custom-device.md
+    - name: ハウツー ガイド
+      items:
+        - name: 既存の IoT ハブの使用
+          href: iot-accelerators-device-simulation-choose-hub.md
+        - name: シミュレートされた高度なデバイスの作成
+          href: iot-accelerators-device-simulation-advanced-device.md
+        - name: Time Series Insights によるテレメトリの視覚化
+          href: iot-accelerators-device-simulation-time-series-insights.md
+        - name: Protbuf を使用してテレメトリをシリアル化する
+          href: iot-accelerators-device-simulation-protobuf.md
+        - name: カスタム Docker イメージのデプロイ
+          href: iot-accelerators-device-simulation-deploy-image.md
+    - name: リソース
+      items:
+        - name: 開発者向けリファレンス ガイド
+          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
+        - name: GitHub リポジトリ
+          href: 'https://github.com/Azure/device-simulation-dotnet'
+- name: 予測メンテナンス
+  items:
+    - name: 概要
+      href: iot-accelerators-predictive-walkthrough.md
+    - name: クイック スタート
+      items:
+        - name: 予測メンテナンス ソリューションを試す
+          href: quickstart-predictive-maintenance-deploy.md
+    - name: リソース
+      items:
+        - name: GitHub リポジトリ
+          href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
+- name: 参照アーキテクチャ
+  items:
+    - name: 概要
+      href: iot-accelerators-architecture-overview.md
+    - name: ダウンロード
+      href: 'https://aka.ms/iotrefarchitecture'
+    - name: パートナー実装
+      items:
+        - name: Intel コネクテッド ロジスティクス プラットフォーム
+          href: 'https://www.azureiotsolutions.com/Accelerators#description/intel-connected-logistics-platform'
+        - name: Edge Dynamometer Analysis
+          href: 'https://www.azureiotsolutions.com/Accelerators#description/edge-dynamometer-analysis'
+        - name: デジタル サイネージ ソリューション
+          href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
 - name: 関連項目
   items:
-  - name: 解決方法
-    items:
-    - name: IoT ソリューション アクセラレータ
-      href: /azure/iot-accelerators
-    - name: IoT Central
-      href: https://docs.microsoft.com/microsoft-iot-central/
-  - name: プラットフォーム サービス
-    items:
-    - name: IoT Hub
-      href: /azure/iot-hub
-    - name: IoT Hub Device Provisioning Service
-      href: /azure/iot-dps
-    - name: IoT サービスの SDK
-      href: /azure/iot-hub/iot-hub-devguide-sdks  azure-iot-service-sdks
-    - name: マップ
-      href: /azure/azure-maps
-    - name: Time Series Insights
-      href: /azure/time-series-insights
-  - name: Edge
-    items:
-    - name: IoT Edge
-      href: /azure/iot-edge
-    - name: IoT デバイス SDK
-      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-  - name: Stream Analytics
-    href: /azure/stream-analytics/
-  - name: Event Hubs
-    href: /azure/event-hubs/
-  - name: Machine Learning
-    href: /azure/machine-learning/
+    - name: 解決方法
+      items:
+        - name: IoT ソリューション アクセラレータ
+          href: /azure/iot-accelerators
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+    - name: プラットフォーム サービス
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: IoT サービスの SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: マップ
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT デバイス SDK
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+    - name: Stream Analytics
+      href: /azure/stream-analytics/
+    - name: Event Hubs
+      href: /azure/event-hubs/
+    - name: Machine Learning
+      href: /azure/machine-learning/
 - name: リソース
   items:
-  - name: GitHub リポジトリ
-    items:
-    - name: リモート監視 (.NET)
-      href: https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet
-    - name: リモート監視 (Java)
-      href: https://github.com/Azure/azure-iot-pcs-remote-monitoring-java
-    - name: 接続済みファクトリ
-      href: https://github.com/Azure/azure-iot-connected-factory
-    - name: 予測メンテナンス
-      href: https://github.com/Azure/azure-iot-predictive-maintenance
-    - name: デバイスのシミュレーション
-      href: https://github.com/Azure/device-simulation-dotnet
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/
-  - name: FAQ
-    href: iot-accelerators-faq.md
-  - name: リモート監視に関する FAQ
-    href: iot-accelerators-faq-rm-v2.md
-  - name: 接続済みファクトリに関する FAQ
-    href: iot-accelerators-faq-cf.md
-  - name: スタック オーバーフロー
-    href: https://stackoverflow.com/questions/tagged/azure-iot-suite
-ms.openlocfilehash: b36278d1e2a85cd7759d81b022fb1883b7ca2aa6
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680941"
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: FAQ
+      href: iot-accelerators-faq.md
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-iot-suite'
+    - name: リモート監視 V1
+      href: 'https://docs.microsoft.com/previous-versions/azure/iot-suite/'

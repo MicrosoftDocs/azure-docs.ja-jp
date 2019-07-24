@@ -12,23 +12,27 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d3682d18fb849b2d851bae0986f9e61f216aaf2c
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: bbe757ccd1d6a37cbcf04f3ecd6dd088ef1ff211
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639130"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353022"
 ---
 # <a name="virtual-machine-offer"></a>仮想マシンのオファー
 
-このセクションは仮想マシン (VM) の発行の要素についての概要であり、[Azure Marketplace](https://azuremarketplace.microsoft.com) への発行元のためのガイドとして提供されています。  この観点から、次の主要な部分に分かれています。
+|    |    |
+|-----------------------------------------------------------------|------------------------------------------|
+| このセクションでは、仮想マシンの新しいオファーを [Azure Marketplace](https://azuremarketplace.microsoft.com) に発行する方法について説明します。 Windows ベースの仮想マシンと Linux ベースの仮想マシンの両方に対してサポートが提供されます。これにはオペレーティング システム仮想ハード ディスク (VHD) と 0 台以上のデータ VHD が含まれています。 | ![仮想マシン アイコン](./media/virtual-machine-icon.png)  |
 
-- [前提条件](./cpp-prerequisites.md) - VM オファーを作成または発行する前の、技術要件およびビジネス要件の一覧を示します。
-- [VM オファーを作成する](./cpp-create-offer.md) - この記事では、[Cloud パートナー ポータル](https://cloudpartner.azure.com)を使用して新しい VM オファー エントリを作成するために必要な手順を示します。
-- [VM の技術資産を作成する](./cpp-create-technical-assets.md) - VM ソリューション用の技術資産を作成する方法、およびこのパッケージを Azure Marketplace での VM オファーとして構成する方法を説明します
-- [VM オファーを発行する](./cpp-publish-offer.md) - Azure Marketplace に発行するためにオファーを送信する方法について説明します
+
+## <a name="publishing-overview"></a>公開の概要
+
+この[ご利用の Azure Marketplace オファーの最適化](https://channel9.msdn.com/Events/Build/2017/P4026?ocid=player)に関するビデオでは、Azure Marketplace の概要をご覧になれます。たとえば、このマーケットプレース上に発行する方法 (仮想マシン ソリューションを使用)、ご利用の製品ページでのユーザー エクスペリエンスやオプションの体験版エクスペリエンスを最適化する方法、ユーザーの潜在顧客が生成される方法、これらを使用して顧客のエンゲージメントを最適化する方法などが説明されます。
+
+> [!VIDEO https://channel9.msdn.com/Events/Build/2017/P4026/player]
 
 
 ## <a name="vm-publishing-process-flow"></a>VM 発行プロセスのフロー

@@ -99,20 +99,13 @@ items:
   - name: メンテナンスと更新
     href: maintenance-and-updates.md
   - name: Disk Storage
-    href: about-disks-and-vhds.md
     items:
-    - name: Managed Disks
+    - name: マネージド ディスクの概要
       href: managed-disks-overview.md
-    - name: Premium SSD
-      href: premium-storage.md
-    - name: Standard SSD
-      href: disks-standard-ssd.md
-    - name: ウルトラ SSD
-      href: disks-ultra-ssd.md
-    - name: Premium Storage のパフォーマンス
+    - name: IaaS VM 用のディスクの種類の選択
+      href: disks-types.md
+    - name: 高パフォーマンス用の設計
       href: premium-storage-performance.md
-    - name: Standard Storage
-      href: standard-storage.md
     - name: ディスクのスケーラビリティ ターゲット
       href: disk-scalability-targets.md
     - name: ディスクのバックアップとディザスター リカバリー
@@ -131,8 +124,6 @@ items:
     href: monitor.md
   - name: バックアップと回復
     href: backup-recovery.md
-  - name: ハイ パフォーマンス コンピューティング
-    href: high-performance-computing.md
   - name: デプロイに関する考慮事項
     items:
     - name: インフラストラクチャのガイドライン
@@ -146,6 +137,7 @@ items:
     - name: CLI の使用
       href: create-cli-complete.md
     - name: テンプレートの使用
+      displayName: Azure Resource Manager, ARM
       href: create-ssh-secured-vm-from-template.md
     - name: REST API を使用する
       href: create-vm-rest-api.md
@@ -153,6 +145,8 @@ items:
       href: copy-vm.md
   - name: VM のセキュリティ保護
     items:
+    - name: ジャストインタイム アクセス
+      href: ../../security-center/security-center-just-in-time.md
     - name: 暗号化
       href: encrypt-disks.md
     - name: アクセス制御の使用
@@ -170,24 +164,33 @@ items:
       - name: 詳細な手順
         href: create-ssh-keys-detailed.md
   - name: VM の保護
-    href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     items:
-    - name: 単一の VM のバックアップ
-      href: ../../backup/quick-backup-vm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: 複数の VM のバックアップ
-      href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: ディスクの復元
-      href: ../../backup/tutorial-restore-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: 個々のファイルの復元
-      href: ../../backup/tutorial-restore-files.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: VM をバックアップする
+      href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      items:
+      - name: 単一の VM のバックアップ
+        href: ../../backup/quick-backup-vm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: 複数の VM のバックアップ
+        href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: ディスクの復元
+        href: ../../backup/tutorial-restore-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: 個々のファイルの復元
+        href: ../../backup/tutorial-restore-files.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: VM のディザスター リカバリーの設定
+      href: ../../site-recovery/site-recovery-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      items:
+      - name: VM のディザスター リカバリーを有効にする
+        href: ../../site-recovery/azure-to-azure-tutorial-enable-replication.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: VM のディザスター リカバリーの演習を実行する
+        href: ../../site-recovery/azure-to-azure-tutorial-dr-drill.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: VM を別のリージョンにフェールオーバーする
+        href: ../../site-recovery/azure-to-azure-tutorial-failover-failback.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
   - name: VM の管理
     items:
     - name: VM の使用状況
       href: vm-usage.md
     - name: 一般的な CLI タスク
       href: cli-manage.md
-    - name: VM の移動
-      href: move-vm.md
     - name: VM サイズの変更
       href: change-vm-size.md
     - name: OS ディスクの交換
@@ -240,6 +243,8 @@ items:
     items:
     - name: VM の前払い - Azure の予約
       href: prepay-reserved-vm-instances.md
+    - name: RedHat ソフトウェアの前払い
+      href: prepay-rhel-software-charges.md
     - name: SUSE ソフトウェアの前払い
       href: prepay-suse-software-charges.md
     - name: Azure の予約とは
@@ -282,6 +287,8 @@ items:
       href: capture-image.md
     - name: Packer でイメージを作成する
       href: build-image-with-packer.md
+    - name: Azure での RHEL イメージ
+      href: rhel-images.md
     - name: 既存のディスクをダウンロードする
       href: download-vhd.md
   - name: 可用性とスケール
@@ -353,6 +360,8 @@ items:
         href: cloudfoundry-get-started.md
       - name: 初めてのアプリのデプロイ
         href: cloudfoundry-deploy-your-first-app.md
+    - name: Cassandra
+      href: https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-cassandra?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: OpenShift
       items:
       - name: OpenShift の概要
@@ -390,12 +399,7 @@ items:
       - name: Linux 上の MS SQL
         href: /sql/linux/sql-server-linux-azure-virtual-machine
     - name: ハイ パフォーマンス コンピューティング (HPC)
-      href: hpcpack-cluster-options.md
-      items:
-      - name: NAMD の実行
-        href: classic/hpcpack-cluster-namd.md
-      - name: NVIDIA GPU ドライバーのインストール
-        href: n-series-driver-setup.md
+      href: https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/
     - name: IBM Db2 pureScale
       items:
       - name: アーキテクチャ
@@ -404,8 +408,6 @@ items:
         href: deploy-ibm-db2-purescale-azure.md
   - name: ストレージの管理
     items:
-    - name: ディスクに関する FAQ
-      href: faq-for-disks.md
     - name: ディスクを追加する
       items:
       - name: Azure CLI
@@ -414,37 +416,45 @@ items:
         href: attach-disk-portal.md
     - name: ディスクを取り外す
       href: detach-disk.md
+    - name: テンプレートによるディスクのデプロイ
+      displayName: Azure Resource Manager, ARM
+      href: using-managed-disks-template-deployments.md
     - name: ディスクのサイズの変更
       href: expand-disks.md
     - name: ディスクのスナップショットの作成
       href: snapshot-copy-managed-disk.md
     - name: 非管理対象ディスクのバックアップ
       href: incremental-snapshots.md
-    - name: 管理ディスクに変換する
-      href: convert-unmanaged-to-managed-disks.md
-    - name: Standard と Premium 間でディスクを変換する
-      href: convert-disk-storage.md
+    - name: 移行と変換
+      items:
+      - name: Azure Site Recovery を使用した Premium Storage への移行
+        href: migrate-to-premium-storage-using-azure-site-recovery.md
+      - name: 管理ディスクに変換する
+        href: convert-unmanaged-to-managed-disks.md
+      - name: Standard と Premium 間でディスクを変換する
+        href: convert-disk-storage.md
     - name: ファイルを VM にコピーする
       href: copy-files-to-linux-vm-using-scp.md
-    - name: Azure Site Recovery を使用した Premium Storage への移行
-      href: migrate-to-premium-storage-using-azure-site-recovery.md
-    - name: アタッチされていないディスクの検出
-      href: find-unattached-disks.md
-    - name: File Storage を使用する
-      href: mount-azure-file-storage-on-linux-using-smb.md
-    - name: テンプレートによるディスクのデプロイ
-      href: using-managed-disks-template-deployments.md
-    - name: 書き込みアクセラレータの使用
-      href: how-to-enable-write-accelerator.md
-    - name: ウルトラ SSD を有効にする
-      href: disks-enable-ultra-ssd.md
-    - name: パフォーマンスを最適化する
-      href: optimization.md
+    - name: パフォーマンス
       items:
+      - name: 書き込みアクセラレータの使用
+        href: how-to-enable-write-accelerator.md
+      - name: ウルトラ SSD を有効にする
+        href: disks-enable-ultra-ssd.md
+      - name: ディスクのベンチマークの実行
+        href: disks-benchmarks.md
+      - name: パフォーマンスの最適化
+        href: optimization.md
       - name: ソフトウェア RAID を構成する
         href: configure-raid.md
       - name: LVM を構成する
         href: configure-lvm.md
+    - name: アタッチされていないディスクの検出
+      href: find-unattached-disks.md
+    - name: File Storage を使用する
+      href: mount-azure-file-storage-on-linux-using-smb.md
+    - name: ディスクに関する FAQ
+      href: faq-for-disks.md
   - name: ネットワークの管理
     items:
     - name: Create virtual network
@@ -475,15 +485,22 @@ items:
     - name: PowerShell
       href: /azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?context=azure/virtual-machines/linux/context/linux-vm-context
     - name: Azure Resource Manager テンプレート
+      displayName: ARM
       href: /azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?context=azure/virtual-machines/linux/context/linux-vm-context
-    - name: REST ()
+    - name: REST
       href: /azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm?context=azure/virtual-machines/linux/context/linux-vm-context
     - name: Azure SDK
       href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?context=azure/virtual-machines/linux/context/linux-vm-context
   - name: VM 拡張機能の使用
     href: ../extensions/overview.md
-  - name: VM の移行
+  - name: VM を移動および移行する
     items:
+    - name: サブスクリプションまたはリソース グループを変更する
+      href: move-vm.md
+    - name: VM を別のリージョンに移行する
+      href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: 可用性ゾーンに移動する
+      href: ../../site-recovery/move-azure-vms-avset-azone.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: AWS とオンプレミスの VM を移行する
       href: ../windows/on-prem-to-azure.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
       items:
@@ -522,33 +539,37 @@ items:
     href: https://azure.microsoft.com/develop/nodejs/#azure-sdk
   - name: Python
     href: https://azure.microsoft.com/develop/python/
-  - name: REST ()
+  - name: REST
     href: /rest/api/compute
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.compute/allversions
 - name: リソース
   items:
   - name: テンプレートの作成
-    href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    displayName: Azure Resource Manager, ARM
+    href: /azure/azure-resource-manager/
   - name: Microsoft Learn でスキルを身に付ける
     href: /learn/browse/?products=azure-virtual-machines
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
-  - name: コミュニティ テンプレート
-    href: https://azure.microsoft.com/documentation/templates
+  - name: Azure クイック スタート テンプレート
+    displayName: Azure Resource Manager, ARM
+    href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/#Linux
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/regions/services/
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-virtual-machine
+    href: https://stackoverflow.com/questions/tagged/azure-virtual-machine
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: FAQ
     href: faq.md
 - name: トラブルシューティング
   href: ../troubleshooting/index.md
-ms.openlocfilehash: e6420c4777e86cecacb1177270c8e5ea9445744d
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: f7503998b2dd5149f2e12fe5e8f6891b0b33d386
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890638"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649911"

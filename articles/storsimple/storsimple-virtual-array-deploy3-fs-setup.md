@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/17/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf507fb21b314a6811db1c1e45a4356381caada1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a931b303e40e41bc23e8b586e1d37e600625b1a8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111850"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881063"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple Virtual Array をデプロイする - Azure Portal を介してファイル サーバーとしてセットアップする
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -40,16 +40,16 @@ StorSimple Virtual Array を構成およびセットアップする前に、以�
 ## <a name="step-by-step-setup"></a>セットアップの手順
 StorSimple Virtual Array をセットアップして構成するには、次の手順を実行します。
 
-## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>手順 1: ローカル Web UI のセットアップを完了し、デバイスを登録する
+## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>手順 1:ローカル Web UI の設定を完了し、デバイスを登録する
 #### <a name="to-complete-the-setup-and-register-the-device"></a>セットアップを完了し、デバイスを登録するには
-1. ブラウザー ウィンドウを開き、ローカル Web UI に接続します。 次のコマンドを入力します。
+1. ブラウザー ウィンドウを開き、ローカル Web UI に接続します。 型: 
    
    `https://<ip-address of network interface>`
    
    前の手順に記載されている接続 URL を使用します。 Web サイトのセキュリティ証明書に問題があることを示すエラーが表示されます。 **[この Web ページの閲覧を続ける]** をクリックして、この Web ページに進みます。
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image2.png)
-2. 仮想アレイの Web UI に **StorSimpleAdmin** としてサインインします。 [Hyper-V での StorSimple Virtual Array のプロビジョニング](storsimple-virtual-array-deploy2-provision-hyperv.md)に関する記事または[VMware での StorSimple Virtual Array のプロビジョニング](storsimple-virtual-array-deploy2-provision-vmware.md)に関する記事の手順 3: 仮想アレイの起動に関するページで変更したデバイス管理者のパスワードを入力します。
+2. 仮想アレイの Web UI に **StorSimpleAdmin** としてサインインします。 デバイス管理者のパスワード ([Hyper-V での StorSimple Virtual Array のプロビジョニング](storsimple-virtual-array-deploy2-provision-hyperv.md)に関する記事または [VMware での StorSimple Virtual Array のプロビジョニング](storsimple-virtual-array-deploy2-provision-vmware.md)に関する記事の手順 3 の仮想アレイの起動に関するセクションで変更したもの) を入力します。
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image3.png)
 3. **[ホーム]** ページが表示されます。 このページは、仮想アレイを構成し、StorSimple デバイス マネージャー サービスに登録するうえで必要なさまざまな設定を掲載しています。 **ネットワーク設定**、**Web プロキシの設定**、**時刻の設定**はオプションです。 必須の設定は、**デバイスの設定**と**クラウドの設定**のみです。
@@ -87,7 +87,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
    
    **[Web プロキシ]** ページで、以下のことを実行します。
    
-   1. *http://&lt;host-IP アドレスまたは FDQN&gt;:ポート番号*の形式で、**[Web プロキシ URL]** を指定します。 HTTPS URL はサポートされていないことに注意してください。
+   1. "*http://&lt;host-IP アドレスまたは FQDN&gt;:ポート番号*" の形式で、**[Web プロキシ URL]** を指定します。 HTTPS URL はサポートされていないことに注意してください。
    2. **[認証]** に **[基本]** または **[なし]** を指定します。
    3. 認証を使用する場合は、**ユーザー名**と**パスワード**も指定する必要があります。
    4. **[Apply]** をクリックします。 これにより、構成済みの Web プロキシ設定が検証され、適用されます。
@@ -98,12 +98,12 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
     **[時刻の設定]** ページで、次の操作を行います。
     
     1. ドロップダウン リストから、デバイスをデプロイする地理的な場所に基づいて **タイム ゾーン** を選択します。 デバイスの既定のタイム ゾーンは太平洋標準時です。 デバイスは、スケジュールされたすべての操作でこのタイム ゾーンを使用します。
-    2. デバイスの **[プライマリ NTP サーバー]** を指定するか、time.windows.com の既定値をそのまま使用します。データ センターからインターネットへの NTP トラフィックがネットワークで許可されていることを確認します。
+    2. デバイスの **[プライマリ NTP サーバー]** を指定するか、time.windows.com の既定値をそのまま使用します。 データ センターからインターネットへの NTP トラフィックがネットワークで許可されていることを確認します。
     3. 必要に応じて、デバイスの **[セカンダリ NTP サーバー]** を指定します。
     4. **[Apply]** をクリックします。 これにより、構成済みの時刻設定が検証され、適用されます。
 11. デバイスのクラウドの設定を構成します。 この手順では、ローカル デバイスの構成を完了してから、StorSimple デバイス マネージャー サービスにそのデバイスを登録します。
     
-    1. StorSimple Virtual Array の「 **手順 2. サービス登録キーを取得する** 」で取得した [サービス登録キー](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) を入力します。
+    1. **サービス登録キー** (StorSimple Virtual Array の「[手順 2: サービス登録キーを取得する](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)」で取得したもの) を入力します。
     2. このサービスに登録する最初のデバイスの場合は、**サービス データ暗号化キー**が提供されます。 このキーをコピーし、安全な場所に保存しておきます。 このキーは、StorSimple デバイス マネージャー サービスに追加のデバイスを登録するときに、サービス登録キーと共に必要になります。 
        
        このサービスに登録する最初のデバイスでない場合は、サービス データ暗号化キーを指定する必要があります。 詳しくは、ローカル Web UI の「 [サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) 」を参照してください。
@@ -117,7 +117,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
     
     ![ファイル サーバーの構成](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png)
 
-## <a name="step-2-configure-the-device-as-file-server"></a>手順 2: デバイスをファイル サーバーとして構成する
+## <a name="step-2-configure-the-device-as-file-server"></a>手順 2:デバイスをファイル サーバーとして構成する
 必要なデバイスのセットアップを完了するには、[Azure Portal](https://portal.azure.com/) で次の手順を実行します。
 
 #### <a name="to-configure-the-device-as-file-server"></a>デバイスをファイル サーバーとして構成するには
@@ -129,15 +129,15 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
     ![ファイル サーバーの構成](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
 3. コマンド バーで **[構成]** をクリックします。 これにより **[構成]** ブレードが開きます。 **[構成]** ブレードで、次の操作を行います。
    
-    1. ファイル サーバー名は自動的に設定されます。
+   1. ファイル サーバー名は自動的に設定されます。
     
-    2. クラウド ストレージ暗号化は必ず **[有効]** に設定します。 これによりクラウドに送信されるすべてのデータが暗号化されます。 
+   2. クラウド ストレージ暗号化は必ず **[有効]** に設定します。 これによりクラウドに送信されるすべてのデータが暗号化されます。 
     
-    3. ユーザー定義のキーの暗号化には 256 ビット AES キーが使用されます。 32 文字のキーを指定し、そのキーを確認のために再入力します。 後で参照できるように、キー管理アプリケーションにキーを記録します。
+   3. ユーザー定義のキーの暗号化には 256 ビット AES キーが使用されます。 32 文字のキーを指定し、そのキーを確認のために再入力します。 後で参照できるように、キー管理アプリケーションにキーを記録します。
     
-    4. **[必要な設定の構成]** をクリックして、デバイスで使用するストレージ アカウントの資格情報を指定します。 ストレージ アカウントの資格情報が構成されていない場合は、**[新規追加]** をクリックします。 **使用するストレージ アカウントがブロック BLOB をサポートしていることを確認します。ページ BLOB はサポートされていません。** [ブロック BLOB とページ BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)に関する詳細情報。
+   4. **[必要な設定の構成]** をクリックして、デバイスで使用するストレージ アカウントの資格情報を指定します。 ストレージ アカウントの資格情報が構成されていない場合は、**[新規追加]** をクリックします。 **使用するストレージ アカウントがブロック BLOB をサポートしていることを確認します。ページ BLOB はサポートされていません。** [ブロック BLOB とページ BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)に関する詳細情報。
    
-    ![ファイル サーバーの構成](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
+      ![ファイル サーバーの構成](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. **[ストレージ アカウント資格情報の追加]** ブレードで、次の操作を行います。 
 
     1. サービスと同じサブスクリプションにストレージ アカウントがある場合は、現在のサブスクリプションを選択します。 サービス サブスクリプション外のストレージ アカウントの場合は、[その他] を指定します。 
@@ -166,7 +166,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
    
    共有の追加に進みます。
 
-## <a name="step-3-add-a-share"></a>手順 3: 共有を追加する
+## <a name="step-3-add-a-share"></a>手順 3:共有の追加
 共有を作成するには、[Azure Portal](https://portal.azure.com/) で次の手順を実行します。
 
 #### <a name="to-create-a-share"></a>共有を作成するには
@@ -175,32 +175,32 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
    ![共有の追加](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs15m.png)
 2. 次の共有設定を指定します。
 
-    1. 共有の一意の名前。 名前は 3 ～ 127 文字を含む文字列である必要があります。
+   1. 共有の一意の名前。 名前は 3 ～ 127 文字を含む文字列である必要があります。
     
-    2. 共有の**説明** (省略可能)。 説明は、共有の所有者の特定に役立ちます。
+   2. 共有の**説明** (省略可能)。 説明は、共有の所有者の特定に役立ちます。
     
-    3. 共有の**種類**。 **[階層化]** または **[ローカル固定]** を種類として選択できます。既定では [階層化] に設定されています。 ローカルの保証、低待機時間、高パフォーマンスを必要とするワークロードでは、 **[ローカル固定]** 共有を選択します。 それ以外のデータの場合は、 **[階層化]** を選択します。
-    ローカル固定の共有はシック プロビジョニングされ、共有上のプライマリ データがデバイスに対してローカルのままになり、クラウドへの書き込みは行われません。 一方、階層化共有はシン プロビジョニングされます。 階層化共有を作成した場合、領域の 10% はローカル層にプロビジョニングされ、90% はクラウドにプロビジョニングされます。 たとえば、1 TB ボリュームをプロビジョニングした場合、データが階層化されるとき、100 GB はローカル領域に格納され、900 GB はクラウドに使用されます。 このため、これはデバイスのすべてのローカル領域が不足すると、階層化共有をプロビジョニングできないことを意味します。
+   3. 共有の**種類**。 **[階層化]** または **[ローカル固定]** を種類として選択できます。既定では [階層化] に設定されています。 ローカルの保証、低待機時間、高パフォーマンスを必要とするワークロードでは、 **[ローカル固定]** 共有を選択します。 それ以外のデータの場合は、 **[階層化]** を選択します。
+      ローカル固定の共有はシック プロビジョニングされ、共有上のプライマリ データがデバイスに対してローカルのままになり、クラウドへの書き込みは行われません。 一方、階層化共有はシン プロビジョニングされます。 階層化共有を作成した場合、領域の 10% はローカル層にプロビジョニングされ、90% はクラウドにプロビジョニングされます。 たとえば、1 TB ボリュームをプロビジョニングした場合、データが階層化されるとき、100 GB はローカル領域に格納され、900 GB はクラウドに使用されます。 このため、これはデバイスのすべてのローカル領域が不足すると、階層化共有をプロビジョニングできないことを意味します。
    
-    4. **[Set default full permissions to (既定の完全なアクセス許可を設定)]** フィールドで、この共有にアクセスするユーザーまたはグループにアクセス許可を割り当てます。 ユーザーまたはユーザー グループの名前を *john@contoso.com* の形式で指定します。 この共有にアクセスする管理者特権を許可するには、(1 人のユーザーではなく) ユーザー グループを使用することをおすすめします。 ここで割り当てたアクセス許可は、ファイル エクスプローラーを使用して変更できます。
+   4. **[Set default full permissions to (既定の完全なアクセス許可を設定)]** フィールドで、この共有にアクセスするユーザーまたはグループにアクセス許可を割り当てます。 ユーザーまたはユーザー グループの名前を *john\@contoso.com* の形式で指定します。 この共有にアクセスする管理者特権を許可するには、(1 人のユーザーではなく) ユーザー グループを使用することをおすすめします。 ここで割り当てたアクセス許可は、ファイル エクスプローラーを使用して変更できます。
    
-    5. **[追加]** をクリックして、共有を作成します。 
+   5. **[追加]** をクリックして、共有を作成します。 
     
-        ![共有の追加](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
+       ![共有の追加](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
    
-        共有の作成が進行中であることが通知されます。
+       共有の作成が進行中であることが通知されます。
    
-        ![共有の追加](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
+       ![共有の追加](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
    
-    指定した設定で共有を作成すると、**[共有]** ブレードは更新され、新しい共有が反映されます。 既定では、監視とバックアップが共有に対して有効です。
+      指定した設定で共有を作成すると、**[共有]** ブレードは更新され、新しい共有が反映されます。 既定では、監視とバックアップが共有に対して有効です。
    
-    ![共有の追加](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
+      ![共有の追加](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
 
-## <a name="step-4-connect-to-the-share"></a>手順 4: 共有に接続する
+## <a name="step-4-connect-to-the-share"></a>手順 4:共有に接続する
 次に、前の手順で作成した 1 つ以上の共有に接続する必要があります。 StorSimple Virtual Array に接続されている Windows Server ホストで、次の手順を実行します。
 
 #### <a name="to-connect-to-the-share"></a>共有に接続するには
-1. ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) + R キーを押します。[ファイル名を指定して実行] ウィンドウで、パスとして *&#92;&#92;&lt;ファイル サーバー名&gt;* を指定します。*file server name* は、ファイル サーバーに割り当てたデバイス名で置き換えます。 **[OK]** をクリックします。
+1. ![](./media/storsimple-virtual-array-deploy3-fs-setup/image22.png) + R キーを押します。[ファイル名を指定して実行] ウィンドウで、パスとして *&#92;&#92;&lt;ファイル サーバー名&gt;* を指定します。*file server name* は、ファイル サーバーに割り当てたデバイス名で置き換えます。 Click **OK**.
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image23.png)
 2. これによりファイル エクスプローラーが開きます。 フォルダーとして作成した共有が表示されます。 コンテンツを表示するには、共有 (フォルダー) を選択してダブルクリックします。
@@ -208,6 +208,6 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image24.png)
 3. これらの共有にファイルを追加して、バックアップを作成することができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ローカル Web UI を使用して [StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法を確認します。
 

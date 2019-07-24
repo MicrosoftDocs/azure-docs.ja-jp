@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
-ms.openlocfilehash: a5f07d02bfe4032d77a17e5972b88f6530125f28
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 91d28802b4af23da5b8060fa7c8f9a7e843a7dab
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38634970"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840267"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>SendGrid を使用した Azure での電子メールの送信方法
 ## <a name="overview"></a>概要
@@ -43,7 +43,7 @@ SendGrid は、信頼性の高い[トランザクション メール配信]、�
 [SendGrid NuGet パッケージ](https://www.nuget.org/packages/Sendgrid) は、SendGrid API を取得し、すべての依存関係を備えたアプリケーションを構成する最も簡単な方法です。 NuGet は Microsoft Visual Studio 2015 以降に含まれる Visual Studio 拡張機能であり、これを使用してライブラリおよびツールのインストールと更新を簡単に行うことができます。
 
 > [!NOTE]
-> Visual Studio 2015 よりも前のバージョンの Visual Studio を利用している場合、NuGet をインストールするには、[http://www.nuget.org](http://www.nuget.org)にアクセスして、**[Install NuGet]** をクリックしてください。
+> Visual Studio 2015 よりも前のバージョンの Visual Studio を利用している場合、NuGet をインストールするには、[https://www.nuget.org](https://www.nuget.org)にアクセスして、**[Install NuGet]** をクリックしてください。
 >
 >
 
@@ -71,7 +71,7 @@ SendGrid の .NET クラス ライブラリは、**SendGrid** という名前で
     using SendGrid;
     using SendGrid.Helpers.Mail;
 
-## <a name="how-to-create-an-email"></a>方法: 電子メールを作成する
+## <a name="how-to-create-an-email"></a>方法:電子メールを作成する
 **SendGridMessage** オブジェクトを使用して電子メール メッセージを作成します。 メッセージ オブジェクトを作成すると、電子メール送信者、電子メール受信者、電子メールの件名、本文などのプロパティやメソッドを設定することができます。
 
 次の例に、すべての値が設定された電子メール オブジェクトの作成方法を示します。
@@ -95,7 +95,7 @@ SendGrid の .NET クラス ライブラリは、**SendGrid** という名前で
 
 **SendGrid** 型でサポートされるすべてのプロパティとメソッドの詳細については、GitHub の [sendgrid-csharp][sendgrid-csharp] に関するページを参照してください。
 
-## <a name="how-to-send-an-email"></a>方法: 電子メールを送信する
+## <a name="how-to-send-an-email"></a>方法:電子メールを送信する
 電子メール メッセージを作成した後で、SendGrid の API を使用してメッセージを送信することができます。 または、[.NET の組み込みライブラリ][NET-library]を使用する方法もあります。
 
 電子メールを送信するには、SendGrid API キーを指定する必要があります。 API キーを構成する方法の詳細については、SendGrid の API キーの[ドキュメント][documentation]を参照してください。
@@ -142,7 +142,7 @@ SendGrid の .NET クラス ライブラリは、**SendGrid** という名前で
         }
     }
     
-## <a name="how-to-send-email-from-asp-net-core-api-using-mailhelper-class"></a>方法: MailHelper クラスを使用して ASP .NET Core API から電子メールを送信する
+## <a name="how-to-send-email-from-asp-net-core-api-using-mailhelper-class"></a>方法:MailHelper クラスを使用して ASP .NET Core API から電子メールを送信する
 
 以下の例は、`SendGrid.Helpers.Mail` 名前空間の `MailHelper` クラスを使用して、ASP .NET Core API から複数の受信者に単一の電子メールを送信する際に使用できます。 この例では、ASP .NET Core 1.0 を使用しています。 
 
@@ -218,7 +218,7 @@ SendGrid の .NET クラス ライブラリは、**SendGrid** という名前で
        }
     }
     
-## <a name="how-to-add-an-attachment"></a>方法: 添付ファイルを追加する
+## <a name="how-to-add-an-attachment"></a>方法:添付ファイルを追加する
 添付ファイルをメッセージに追加するには、**AddAttachment** メソッドを呼び出し、少なくとも添付するファイル名と Base64 でエンコードされた内容を指定します。 複数のファイルを添付するには、添付する各ファイルにつき 1 回このメソッドを呼び出すか、**AddAttachments** メソッドを使用します。 次の例に、メッセージに添付ファイルを追加する方法を示します。
 
     var banner2 = new Attachment()
@@ -231,7 +231,7 @@ SendGrid の .NET クラス ライブラリは、**SendGrid** という名前で
     };
     msg.AddAttachment(banner2);
 
-## <a name="how-to-use-mail-settings-to-enable-footers-tracking-and-analytics"></a>方法: 電子メール設定を使用してフッター、追跡、および分析を有効にする
+## <a name="how-to-use-mail-settings-to-enable-footers-tracking-and-analytics"></a>方法:電子メール設定を使用してフッター、追跡、および分析を有効にする
 SendGrid では、電子メール設定と追跡設定を使用することでその他の電子メール機能も利用することができます。 これらの設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、サブスクリプション追跡などの特定の機能を有効にすることができます。 アプリの完全な一覧については、[設定に関するドキュメント][settings-documentation]を参照してください。
 
 アプリは、**SendGridMessage** クラスの一部として実装されたメソッドを使用する **SendGrid** 電子メール メッセージに適用できます。 次の例に、フッター フィルターとクリック追跡フィルターの使用方法を示します。
@@ -247,7 +247,7 @@ SendGrid では、電子メール設定と追跡設定を使用することで�
 ### <a name="click-tracking"></a>クリック追跡
     msg.SetClickTracking(true);
 
-## <a name="how-to-use-additional-sendgrid-services"></a>方法: その他の SendGrid サービスを使用する
+## <a name="how-to-use-additional-sendgrid-services"></a>方法:その他の SendGrid サービスを使用する
 SendGrid のいくつかの API と webhook を使用して、Azure アプリケーション内でその他の機能を利用することができます。 詳細については、[SendGrid API のリファレンス][SendGrid API documentation]を参照してください。
 
 ## <a name="next-steps"></a>次の手順

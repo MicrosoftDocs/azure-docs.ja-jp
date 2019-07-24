@@ -1,20 +1,19 @@
 ---
 title: Spark からの Azure Cosmos DB Cassandra API に対する削除操作
 description: この記事では、Spark から Azure Cosmos DB Cassandra API のテーブルのデータを削除する方法について説明します。
-services: cosmos-db
-author: anagha-microsoft
+author: kanshiG
+ms.author: govindk
+ms.reviewer: sngun
 ms.service: cosmos-db
-ms.component: cosmosdb-cassandra
-ms.devlang: spark-scala
+ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: ankhanol
-ms.openlocfilehash: 6a6e2df5e11d59353bb33e9b812db78cf63bd43c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: fc9e0dabd226952bea3bd14da0747c5b6292c2e2
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223527"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54036547"
 ---
 # <a name="delete-data-in-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Spark から Azure Cosmos DB Cassandra API テーブルのデータを削除する
 

@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub クォータと調整について | Microsoft Docs
 description: 開発者ガイド - IoT Hub に適用されるクォータと予想される調整動作の説明。
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.author: dobett
-ms.openlocfilehash: b7ef5d2853cdf4a7b09aa52c510c268cb42a245f
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 14c563fda48bc7c54dcce1e1ccbfba716b6c73ad
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395158"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59049605"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
 
@@ -42,14 +42,18 @@ ms.locfileid: "49395158"
 | cloud-to-device の受信<sup>1</sup> <br/> (デバイスが HTTPS を使用する場合のみ)| 16.67/sec/unit (1000/分/単位) | 16.67/sec/unit (1000/分/単位) | 833.33/sec/unit (50000/分/単位) |
 | ファイルのアップロード | 1.67 ファイル アップロード通知/秒/単位 (100/分/単位) | 1.67 ファイル アップロード通知/秒/単位 (100/分/単位) | 83.33 ファイル アップロード通知/秒/単位 (5000/分/単位) |
 | ダイレクト メソッド<sup>1</sup> | 160 KB/秒/ユニット<sup>2</sup> | 480 KB/秒/ユニット<sup>2</sup> | 24 MB/秒/ユニット<sup>2</sup> | 
-| ツイン (デバイスとモジュール) の読み取り<sup>1</sup> | 10/秒 | 10/秒または 1/秒/ユニット以上 | 50/秒/ユニット |
-| ツインの更新 (デバイスとモジュール)<sup>1</sup> | 10/秒 | 10/秒または 1/秒/ユニット以上 | 50/秒/ユニット |
+| クエリ | 20/分/ユニット | 20/分/ユニット | 1000/分/ユニット |
+| ツイン (デバイスとモジュール) の読み取り<sup>1</sup> | 100/秒 | 100/秒または 10/秒/ユニット以上 | 500/秒/ユニット |
+| ツインの更新 (デバイスとモジュール)<sup>1</sup> | 50/秒 | 50/秒または 5/秒/ユニット以上 | 250/秒/ユニット |
 | ジョブの操作<sup>1、3</sup>  <br/> (作成、更新、一覧表示、削除) | 1.67/sec/unit (100/分/単位) | 1.67/sec/unit (100/分/単位) | 83.33/sec/unit (5000/分/単位) |
 | ジョブ デバイス操作<sup>1</sup> <br/> (ツインの更新、ダイレクト メソッドの呼び出し) | 10/秒 | 10/秒または 1/秒/ユニット以上 | 50/秒/ユニット |
 | 構成と Edge の展開<sup>1</sup> <br/> (作成、更新、一覧表示、削除) | 0.33/秒/単位 (20/分/単位) | 0.33/秒/単位 (20/分/単位) | 0.33/秒/単位 (20/分/単位) |
+| デバイス ストリーム開始速度<sup>4</sup> | 5 つの新しいストリーム/秒 | 5 つの新しいストリーム/秒 | 5 つの新しいストリーム/秒 |
+| 同時接続デバイス ストリームの最大数<sup>4</sup> | 50 | 50 | 50 |
+| デバイス ストリームの最大データ転送量<sup>4</sup> (1 日あたりのボリュームの集計) | 300 MB | 300 MB | 300 MB |
 
 
-<sup>1</sup> この機能は、IoT Hub の Basic レベルでは使用できません。 詳しくは、[適切な IoT Hub の選び方](iot-hub-scaling.md)に関するページをご覧ください。 <br/><sup>2</sup> 調整メーター サイズは 8 KB です。 <br/><sup>3</sup> アクティブ デバイスのインポート/エクスポート ジョブは、一度に 1 つしか保持できません。
+<sup>1</sup> この機能は、IoT Hub の Basic レベルでは使用できません。 詳しくは、[適切な IoT Hub の選び方](iot-hub-scaling.md)に関するページをご覧ください。 <br/><sup>2</sup>調整メーター サイズは 4 KB です。 <br/><sup>3</sup> アクティブ デバイスのインポート/エクスポート ジョブは、一度に 1 つしか保持できません。 <br/><sup>4</sup>IoT Hub デバイス ストリームは、S1、S2、S3、および F1 の SKU の場合のみ使用可能です。
 
 "*デバイスの接続*" スロットルは、IoT Hub を使用して新しいデバイス接続を確立できる速度を制御します。 "*デバイスの接続*" スロットルでは、同時に接続されるデバイスの最大数は制御されません。 "*デバイスの接続*" レートのスロットルは、IoT Hub にプロビジョニングされたユニット数に依存します。
 
@@ -82,7 +86,7 @@ IoT Hub により、その他の運用上の制限が適用されます。
 <sup>1</sup> この機能は、IoT Hub の Basic レベルでは使用できません。 詳しくは、[適切な IoT Hub の選び方](iot-hub-scaling.md)に関するページをご覧ください。
 
 > [!NOTE]
-> 現時点では、1 つの IoT ハブに接続できるデバイスの最大数は、500,000 です。 この制限を引き上げるには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
+> 現時点では、1 つの IoT ハブに接続できるデバイスの最大数は、1,000,000 です。 この制限を引き上げるには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
 
 ## <a name="latency"></a>Latency
 IoT Hub は、すべての操作の待機時間を短くするように努めています。 ただし、ネットワークの状態およびその他の予測不能な要因のため、最大待機時間を保証することはできません。 ソリューションを設計するときに、次のようなことを行う必要があります。

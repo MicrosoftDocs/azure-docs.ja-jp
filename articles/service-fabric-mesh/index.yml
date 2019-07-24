@@ -1,26 +1,26 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 029342b5db33a7c713e915ae72066f732b6f46f0
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: eaceb3170e3b3f7bd155f42521102365401f0421
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979422"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337453"
 documentType: LandingData
 title: Azure Service Fabric Mesh のドキュメント
 metadata:
   title: Azure Service Fabric Mesh のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
   meta.description: Azure Service Fabric Mesh is a fully managed service enabling developers to deploy containerized applications without managing virtual machines, storage, or networking resources. Learn how to use Service Fabric Mesh with our quickstarts and tutorials.
   services: service-fabric-mesh
-  author: rwike77
+  author: dkkapur
   manager: timlt
   ms.service: service-fabric-mesh
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/26/2018
-  ms.author: ryanwi
+  ms.author: dekapur
 abstract:
-  description: Azure Service Fabric Mesh は、開発者がインフラストラクチャを管理することなくミッション クリティカルなアプリケーションをビルドしてデプロイできるようにするフル マネージド サービスです。  Service Fabric Mesh を使用すると、オンデマンドでスケーリングされる安全な分散型のマイクロサービス アプリケーションをビルドして実行できます。 Microsoft が提供するクイック スタートやチュートリアルを使用して、Service Fabric Mesh の使用方法を確認してください。  詳細については、<a href="/azure/service-fabric-mesh/service-fabric-mesh-overview">Service Fabric Mesh の概要</a>に関するページと<a href="/azure/service-fabric-mesh/service-fabric-mesh-faq">よく寄せられる質問</a>に関するページを参照してください。
+  description: Azure Service Fabric Mesh は、開発者がインフラストラクチャを管理することなくミッション クリティカルなアプリケーションをビルドしてデプロイできるようにするフル マネージド サービスです。  Service Fabric mesh を使用すると、オンデマンドでスケーリングされる安全な分散型のマイクロサービス アプリケーションをビルドして実行できます。 Microsoft が提供するクイック スタートやチュートリアルを使用して、Service Fabric Mesh の使用方法を確認してください。  詳細については、<a href="/azure/service-fabric-mesh/service-fabric-mesh-overview">Service Fabric Mesh の概要</a>に関するページと<a href="/azure/service-fabric-mesh/service-fabric-mesh-faq">よく寄せられる質問</a>に関するページを参照してください。
 sections:
 - title: 5 分間のクイック スタート
   items:

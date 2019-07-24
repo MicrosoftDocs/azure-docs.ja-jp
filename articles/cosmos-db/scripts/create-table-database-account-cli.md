@@ -1,20 +1,21 @@
 ---
-title: Azure CLI スクリプト - Azure Cosmos DB の Table API アカウント、データベース、テーブルを作成する | Microsoft Docs
+title: Azure CLI のスクリプト - Azure Cosmos DB の Table API アカウント、データベース、テーブルを作成する
 description: Azure CLI のサンプル スクリプト - Azure Cosmos DB の Table API アカウント、データベース、テーブルを作成する
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: 178ecfe6971a47009781d8866986d936f8e3a5d2
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.reviewer: sngun
+ms.openlocfilehash: afb92b34db00f9294b03dc096f72c698a44b30da
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019558"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54035323"
 ---
-# <a name="azure-cosmos-db-create-a-table-api-account-using-azure-cli"></a>Azure Cosmos DB: Azure CLI を使用して Table API アカウントを作成する
+# <a name="azure-cosmos-db-create-a-table-api-account-using-azure-cli"></a>Azure Cosmos DB は:Azure CLI を使用して Table API アカウントを作成する
 
 この CLI サンプル スクリプトでは、Azure Cosmos DB の Table API アカウント、データベース、テーブルを作成します。
 

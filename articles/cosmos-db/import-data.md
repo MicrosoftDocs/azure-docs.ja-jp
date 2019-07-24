@@ -1,23 +1,17 @@
 ---
-title: Azure Cosmos DB のデータベース移行ツール | Microsoft Docs
+title: Azure Cosmos DB のデータベース移行ツール
 description: オープン ソースの Azure Cosmos DB データ移行ツールを使用して、MongoDB、SQL Server、Table Storage、Amazon DynamoDB、CSV、JSON ファイルなどのさまざまなソースからデータを Azure Cosmos DB にインポートする方法について説明します。 CSV から JSON への変換についても説明します。
-keywords: csv を json へ、データベース移行ツール、csv を json へ
-services: cosmos-db
 author: deborahc
-manager: kfile
-editor: monicar
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/15/2018
+ms.date: 02/22/2019
 ms.author: dech
-ms.custom: mvc
-ms.openlocfilehash: e04e3443cdd3bf7aa32d023fc053950c58cf1449
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 023b344d796ea5297cda202e7baa2f0e0ef5eebd
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853967"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315812"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>データ移行ツールを使用して Azure Cosmos DB にデータを移行する
 
@@ -27,7 +21,7 @@ Azure Cosmos DB で使用する API を教えてください。
 
 * **[SQL API](documentdb-introduction.md)** - データ移行ツールで提供される任意のソース オプションを使用して、データをインポートできます。
 * **[Table API](table-introduction.md)** - データ移行ツールまたは AzCopy を使用してデータをインポートできます。 詳細については、「[Azure Cosmos DB Table API で使用するデータのインポート](table-import.md)」を参照してください。
-* **[MongoDB API](mongodb-introduction.md)** - データ移行ツールでは現在、Azure Cosmos DB MongoDB API をソースやターゲットとしてサポートしていません。 Azure Cosmos DB 内の MongoDB API コレクションとの間でデータを移行する必要がある場合は、「[Azure Cosmos DB: How to migrate data for the MongoDB API (Azure Cosmos DB: MongoDB API のデータを移行する方法)](mongodb-migrate.md)」の手順をご覧ください。 なお、データ移行ツールを使用して MongoDB から Azure Cosmos DB SQL API コレクションにデータをエクスポートし、SQL API で使用することは可能です。
+* **[Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md)** - データ移行ツールでは現在、Azure Cosmos DB の MongoDB 用 API はソースやターゲットとしてサポートされていません。 Azure Cosmos DB のコレクションに、またはコレクションから、データを移行する必要がある場合は、[MongoDB のデータを Azure Cosmos DB の MongoDB 用 API で Cosmos データベースに移行する方法](mongodb-migrate.md)に関する記事をご覧ください。 なお、データ移行ツールを使用して MongoDB から Azure Cosmos DB SQL API コレクションにデータをエクスポートし、SQL API で使用することは可能です。
 * **[Gremlin API](graph-introduction.md)** - 現時点では、Gremlin API アカウントのインポート ツールとしてデータ移行ツールはサポートされていません。
 
 このチュートリアルに含まれるタスクは次のとおりです。
@@ -64,7 +58,7 @@ Azure Cosmos DB で使用する API を教えてください。
 
 ## <a id="Install"></a>インストール
 
-移行ツールのソース コードは、GitHub の[このリポジトリ](https://github.com/azure/azure-documentdb-datamigrationtool)で入手できます。 ソリューションをローカルにダウンロードしてコンパイルするか、[プリコンパイル済みのバイナリをダウンロード](https://cosmosdbportalstorage.blob.core.windows.net/datamigrationtool/2018.02.28-1.8.1/dt-1.8.1.zip)してから、次のいずれかを実行できます。
+移行ツールのソース コードは、GitHub の[このリポジトリ](https://github.com/azure/azure-documentdb-datamigrationtool)で入手できます。 ソリューションをローカルにダウンロードしてコンパイルするか、[プリコンパイル済みのバイナリをダウンロード](https://aka.ms/csdmtool)してから、次のいずれかを実行できます。
 
 * **Dtui.exe**: グラフィカル インターフェイス バージョンのツール
 * **Dt.exe**: コマンド ライン バージョンのツール
@@ -114,7 +108,7 @@ dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t
 ## <a id="MongoDB"></a>MongoDB からのインポート
 
 > [!IMPORTANT]
-> MongoDB 対応の Azure Cosmos DB アカウントにインポートする場合は、こちらの[指示](mongodb-migrate.md)に従ってください。
+> Azure Cosmos DB の MongoDB 用 API で構成されている Cosmos アカウントにインポートする場合は、こちらの[指示](mongodb-migrate.md)に従ってください。
 
 MongoDB ソース インポーター オプションを使用すると、単一の MongoDB コレクションからインポートすることができます。必要に応じて、クエリを使用してドキュメントをフィルター処理したり、プロジェクションを使用してドキュメント構造を変更したりすることもできます。  
 
@@ -201,7 +195,7 @@ SQL ソースの場合と同様、[入れ子の区切り記号] プロパティ�
 
 DomainInfo.Domain_Name や RedirectInfo.Redirecting などのエイリアスに注目してください。 入れ子の区切り記号 "." を指定することで、インポート ツールによって、インポート中に DomainInfo や RedirectInfo のサブドキュメントが作成されます。 Azure Cosmos DB で生成されるドキュメントの例を以下に示します。
 
-*{ "DomainInfo": { "Domain_Name": "ACUS.GOV", "Domain_Name_Address": "http://www.ACUS.GOV" }, "Federal Agency": "Administrative Conference of the United States", "RedirectInfo": { "Redirecting": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
+*{ "DomainInfo": { "Domain_Name": "ACUS.GOV", "Domain_Name_Address": "https:\//www.ACUS.GOV" }, "Federal Agency":"Administrative Conference of the United States", "RedirectInfo": { "Redirecting": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
 
 CSV ファイルに含まれる引用符なしの値に関して、インポート ツールは型情報の推測を試みます (引用符で囲まれた値は、常に文字列として扱われます)。  型は、数値型、DateTime 型、ブール型の順に識別されます。  
 
@@ -392,17 +386,17 @@ Azure Cosmos DB アカウントの接続文字列は、「[Azure Cosmos DB ア�
 
  ![Azure Cosmos DB 日付時刻インポート オプションのスクリーンショット](./media/import-data/datetimeoptions.png)
 
-* 文字列: 文字列値として保持します。
-* エポック: エポック番号値として保持します。
+* 文字列: 文字列値として保持します
+* エポック: エポック番号値として保持します
 * 両方: 文字列値およびエポック番号値の両方を保持します。 このオプションにより、サブドキュメントが作成されます。例: "date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
 
 Azure Cosmos DB 一括インポーターには、次の詳細オプションがあります。
 
 1. バッチ サイズ: ツールのバッチ サイズは既定で 50 に設定されています。  インポートするドキュメントが大きい場合は、バッチ サイズを減らすことを検討してみてください。 反対に、インポートするドキュメントが小さい場合は、バッチ サイズを増やすことを検討してみてください。
 2. スクリプトの最大サイズ (バイト単位): スクリプトの最大サイズは既定で 512 KB に設定されています。
-3. Disable Automatic Id Generation (自動 ID 生成を無効にする): インポートする各ドキュメントに ID フィールドが含まれている場合は、このオプションを選択するとパフォーマンスを向上させることができます。 一意の ID フィールドがないドキュメントはインポートされません。
-4. Update Existing Documents (既存のドキュメントを更新する): 既定では、ID が競合する既存のドキュメントは置き換えられません。 このオプションを選択すると、ID が一致する既存のドキュメントを上書きできます。 この機能は、既存のドキュメントを更新するスケジュールされたデータ移行に役立ちます。
-5. Number of Retries on Failure (エラー発生時の再試行回数): 一時的なエラー (ネットワーク接続の中断など) が発生したときに Azure Cosmos DB への接続を再試行する回数を指定します。
+3. 自動 ID 生成を無効にする: インポートする各ドキュメントに ID フィールドが含まれている場合は、このオプションを選択するとパフォーマンスを向上させることができます。 一意の ID フィールドがないドキュメントはインポートされません。
+4. 既存のドキュメントを更新する: 既定では、ID が競合する既存のドキュメントは置き換えられません。 このオプションを選択すると、ID が一致する既存のドキュメントを上書きできます。 この機能は、既存のドキュメントを更新するスケジュールされたデータ移行に役立ちます。
+5. エラー発生時の再試行回数: 一時的なエラー (ネットワーク接続の中断など) が発生したときに Azure Cosmos DB への接続を再試行する回数を指定します。
 6. 再試行の間隔: 一時的なエラー (ネットワーク接続の中断など) が発生した場合に Azure Cosmos DB への接続を次に再試行するまでの待機時間を指定します。
 7. 接続モード: Azure Cosmos DB で使用する接続モードを指定します。 使用できる選択肢は、DirectTcp、DirectHttps、およびゲートウェイです。 Direct という語が付いている接続モードの方が高速です。これに対して、ゲートウェイ モードはポート 443 のみを使用するため、ファイアウォールとの適合性が高いという特徴があります。
 
@@ -447,16 +441,16 @@ Azure Cosmos DB アカウントの接続文字列は、[Azure Cosmos DB アカ�
 
  ![Azure Cosmos DB 日付時刻インポート オプションのスクリーンショット](./media/import-data/datetimeoptions.png)
 
-* 文字列: 文字列値として保持します。
-* エポック: エポック番号値として保持します。
+* 文字列: 文字列値として保持します
+* エポック: エポック番号値として保持します
 * 両方: 文字列値およびエポック番号値の両方を保持します。 このオプションにより、サブドキュメントが作成されます。例: "date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
 
 Azure Cosmos DB シーケンシャル レコード インポーターには、次の詳細オプションがあります。
 
 1. 並列要求の数: 並列要求の数は既定で 2 に設定されています。 インポートするドキュメントが小さい場合は、並列要求の数を増やすことを検討してみてください。 この数が大きすぎると、インポート時にレートが制限される場合があります。
-2. Disable Automatic Id Generation (自動 ID 生成を無効にする): インポートする各ドキュメントに ID フィールドが含まれている場合は、このオプションを選択するとパフォーマンスを向上させることができます。 一意の ID フィールドがないドキュメントはインポートされません。
-3. Update Existing Documents (既存のドキュメントを更新する): 既定では、ID が競合する既存のドキュメントは置き換えられません。 このオプションを選択すると、ID が一致する既存のドキュメントを上書きできます。 この機能は、既存のドキュメントを更新するスケジュールされたデータ移行に役立ちます。
-4. Number of Retries on Failure (エラー発生時の再試行回数): 一時的なエラー (ネットワーク接続の中断など) が発生したときに Azure Cosmos DB への接続を再試行する回数を指定します。
+2. 自動 ID 生成を無効にする: インポートする各ドキュメントに ID フィールドが含まれている場合は、このオプションを選択するとパフォーマンスを向上させることができます。 一意の ID フィールドがないドキュメントはインポートされません。
+3. 既存のドキュメントを更新する: 既定では、ID が競合する既存のドキュメントは置き換えられません。 このオプションを選択すると、ID が一致する既存のドキュメントを上書きできます。 この機能は、既存のドキュメントを更新するスケジュールされたデータ移行に役立ちます。
+4. エラー発生時の再試行回数: 一時的なエラー (ネットワーク接続の中断など) が発生したときに Azure Cosmos DB への接続を再試行する回数を指定します。
 5. 再試行の間隔: 一時的なエラー (ネットワーク接続の中断など) が発生したときに Azure Cosmos DB への接続を次に再試行するまでの待機時間を指定します。
 6. 接続モード: Azure Cosmos DB で使用する接続モードを指定します。 使用できる選択肢は、DirectTcp、DirectHttps、およびゲートウェイです。 Direct という語が付いている接続モードの方が高速です。これに対して、ゲートウェイ モードはポート 443 のみを使用するため、ファイアウォールとの適合性が高いという特徴があります。
 

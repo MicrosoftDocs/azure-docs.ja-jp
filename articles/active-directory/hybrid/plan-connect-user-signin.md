@@ -1,26 +1,27 @@
 ---
-title: 'Azure AD Connect: ユーザー サインイン | Microsoft Docs'
+title: Azure AD Connect:ユーザー サインイン | Microsoft Docs
 description: Azure AD Connect ユーザー サインインのカスタム設定。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 547b118e-7282-4c7f-be87-c035561001df
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/31/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 38086d0e975956aefe4fcde4eda67d939d58f617
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cb44c64540cc461bca4e305f7783f7c6b612591b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365844"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996331"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect ユーザーのサインイン オプション
 Azure Active Directory (Azure AD) Connect では、ユーザーは同じパスワードを使用して、クラウドとオンプレミス両方のリソースにサインインできます。 この記事では、Azure AD へのサインインに使用する ID を選択できるようにするために、各 ID モデルの主要な概念について説明します。
@@ -74,7 +75,9 @@ Office 365、SaaS アプリケーション、およびその他の Azure AD ベ�
 ### <a name="federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2"></a>Windows Server 2012 R2 の AD FS を使用した新規または既存のファームを使用するフェデレーション
 フェデレーション サインインでは、ユーザーはオンプレミスのパスワードを使用して Azure AD ベースのサービスにサインインできます。 企業ネットワーク上にいる時には、パスワードを入力する必要すらありません。 AD FS によるフェデレーション オプションを使用すれば、Windows Server 2012 R2 の AD FS を使用した新規または既存のファームをデプロイできます。 既存のファームを指定する場合は、Azure AD Connect によってファームと Azure AD との間に信頼が構成され、それにより、ユーザーがサインインできるようになります。
 
-<center>![Windows Server 2012 R2 の AD FS を使用したフェデレーション](./media/plan-connect-user-signin/federatedsignin.png)</center>
+<center>
+
+![Windows Server 2012 R2 の AD FS を使用したフェデレーション](./media/plan-connect-user-signin/federatedsignin.png)</center>
 
 #### <a name="deploy-federation-with-ad-fs-in-windows-server-2012-r2"></a>Windows Server 2012 R2 の AD FS を使用してフェデレーションをデプロイする
 
@@ -123,7 +126,7 @@ Azure AD のサインイン エクスペリエンスは、同期するユーザ�
 Azure AD Connect は、ドメインに対して定義されているUPN サフィックスをリストし、それらを Azure AD 内のカスタム ドメインと照合しようとします。 その後、ユーザーが実行するべき適切な操作を支援します。
 Azure AD のサインイン ページには、オンプレミスの Active Directory に対して定義されている UPN サフィックスの一覧と、各サフィックスの状態が表示されます。 状態値は、次のいずれかになります。
 
-| State | 説明 | 必要な対処 |
+| 状態 | 説明 | 必要な対処 |
 |:--- |:--- |:--- |
 | Verified |Azure AD Connect が、Azure AD で一致する確認済みのドメインを検出しました。 このドメインのすべてのユーザーは、オンプレミスの資格情報を使用してサインインできます。 |対処は必要ありません。 |
 | 未確認 |Azure AD Connect が Azure AD 内の一致するカスタム ドメインを検出しましたが、そのドメインはまだ確認されていません。 ドメインが確認されなかった場合、そのドメインのユーザーの UPN サフィックスは、同期後に既定のサフィックス (.onmicrosoft.com) へと変更されます。 | [Azure AD でカスタム ドメインを確認します。](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
@@ -151,7 +154,8 @@ Azure AD ディレクトリのカスタム ドメインの状態と、オンプ�
 以下の説明では、UPN サフィックスが contoso.com である場合を想定しています。これは、オンプレミス ディレクトリで UPN の一部分として使用されます (例: user@contoso.com)。
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>簡易設定/パスワード ハッシュの同期
-| State | ユーザーの Azure サインイン エクスペリエンスへの影響 |
+
+| 状態 | ユーザーの Azure サインイン エクスペリエンスへの影響 |
 |:---:|:--- |
 | 追加されていません |この場合、contoso.com のカスタム ドメインは Azure AD ディレクトリに追加されていません。 オンプレミスの UPN にサフィックス @contoso.com が付いているユーザーは、オンプレミスの UPN を使用して Azure にサインインすることができません。 代わりに、Azure AD によって提供された新しい UPN を使用する必要があります。この UPN は、既定の Azure AD ディレクトリのサフィックスを追加して作成されます。 たとえば、azurecontoso.onmicrosoft.com という Azure AD ディレクトリにユーザーを同期する場合、オンプレミス ユーザー user@contoso.com には、user@azurecontoso.onmicrosoft.com という UPN が与えられます。 |
 | 未確認 |この場合、カスタム ドメイン contoso.com は既に Azure AD ディレクトリに追加されています。 ただし、まだ確認されていません。 ドメインを確認しないままユーザーの同期を進めようとすると、"追加されていません" のシナリオの場合と同様の方法で、Azure AD からユーザーに新しい UPN が割り当てられます。 |
@@ -162,7 +166,7 @@ Azure AD ディレクトリのカスタム ドメインの状態と、オンプ�
 
 ユーザー サインイン オプションとして **[AD FS とのフェデレーション]** を選択した場合、Azure AD でのフェデレーションの作成を続行するには、カスタム ドメインが必要です。 この例では、カスタム ドメイン contoso.com が Azure AD ディレクトリに追加されている必要があります。
 
-| State | ユーザーの Azure サインイン エクスペリエンスへの影響 |
+| 状態 | ユーザーの Azure サインイン エクスペリエンスへの影響 |
 |:---:|:--- |
 | 追加されていません |これは、Azure AD Connect が、UPN サフィックス contoso.com と一致するカスタム ドメインを Azure AD ディレクトリ内に検出できなかったことを意味します。 ユーザーが AD FS を使用して、オンプレミス UPN (user@contoso.com など) でサインインできるようにするには、カスタム ドメイン contoso.com を追加する必要があります。 |
 | 未確認 |この場合は、Azure AD Connect の確認メッセージに、後でドメインを確認する方法についての適切な情報が示されます。 |

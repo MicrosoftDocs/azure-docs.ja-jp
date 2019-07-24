@@ -1,34 +1,35 @@
 ---
-title: LUIS 作成済みエンティティ url リファレンス - Azure | Microsoft Docs
+title: url 作成済みエンティティ
 titleSuffix: Azure
 description: この記事には、Language Understanding (LUIS) での url 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 1615d7e37119f185ebbb3bd674bc006d96d72e4d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 5fb62c38bde98d946694790adb860240eaa59fa9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030171"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530179"
 ---
-# <a name="url-entity"></a>url エンティティ
+# <a name="url-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの url 作成済みエンティティ
 url エンティティは、ドメイン名または IP アドレスを含む URL を抽出します。 このエンティティは既にトレーニングされているので、URL を含む発話の例をアプリケーションに追加する必要はありません。 url エンティティは、`en-us` カルチャでのみサポートされます。 
 
 ## <a name="types-of-urls"></a>url のタイプ
-url は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) Github リポジトリから管理されます。
+url は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) GitHub リポジトリから管理されます。
 
 ## <a name="resolution-for-prebuilt-url-entity"></a>作成済み url エンティティの解決
 次の例では、**builtin.url** エンティティの解決を示します。
 
-```JSON
+```json
 {
-  "query": "http://www.luis.ai is a great cognitive services example of artificial intelligence",
+  "query": "https://www.luis.ai is a great cognitive services example of artificial intelligence",
   "topScoringIntent": {
     "intent": "None",
     "score": 0.781975448
@@ -41,7 +42,7 @@ url は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/ma
   ],
   "entities": [
     {
-      "entity": "http://www.luis.ai",
+      "entity": "https://www.luis.ai",
       "type": "builtin.url",
       "startIndex": 0,
       "endIndex": 17

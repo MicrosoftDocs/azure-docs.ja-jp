@@ -1,5 +1,5 @@
 ---
-title: Azure Marketplace SEO パブリッシャー ガイド | Microsoft Docs
+title: Azure Marketplace SEO ガイド | Microsoft Docs
 description: 検索エンジンの最適化 (SEO) を最大化するためのガイダンスを提供します。
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -12,21 +12,23 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 04/09/2019
 ms.author: pbutlerm
-ms.openlocfilehash: b8ca5fc5348818a7d0f1075557d4fe5c7e3bef44
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: da7b59400baa4c964dff71fa1f842fede9d68df1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807826"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59787091"
 ---
-<a name="azure-marketplace-seo-publisher-guide"></a>Azure Marketplace SEO パブリッシャー ガイド
-=======================================
+# <a name="azure-marketplace-seo-guidance"></a>Azure Marketplace SEO ガイド
 
-### <a name="general-explanation-of-algorithm"></a>アルゴリズムの一般的な説明
+この記事は、[Azure Marketplace](https://azuremarketplace.microsoft.com) と [AppSource](https://appsource.microsoft.com) の検索機能により、オファーの探索可能性を最大化する方法を説明します。 
 
-マーケットプレースでは、サイトの検索機能を強化するための Azure Search が使用されます。 アルゴリズムは、用語の出現頻度/逆文書頻度 ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)) に基づきます。 標準の [Lucene アナライザー](http://lucene.apache.org/core/)が使用されます。
+
+## <a name="general-explanation-of-algorithm"></a>アルゴリズムの一般的な説明
+
+Microsoft マーケットプレースでは、サイトの検索機能を強化するために Azure Search が使用されます。 アルゴリズムは、用語の出現頻度/逆文書頻度 ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)) に基づきます。 標準の [Lucene アナライザー](https://lucene.apache.org/core/)が使用されます。
 
 一般的に、すべてのテキスト フィールド、カテゴリ、および業界が適合性の重み付けに加味されます。 他のアプリではあまり使用されないももの、お客様のアプリで頻繁に使用される特殊な用語は、検索でより高い一致スコアが付けられます。 "VM" などの用語が含まれる場合、あまり効果が上がらないかもしれませんが、"Azure search" のような用語は大きな効果を発揮します。
 以下に、考慮すべき重要なフィールドを示します。
@@ -42,7 +44,7 @@ ms.locfileid: "48807826"
 |  |  |  |
 
 
-### <a name="other-tips"></a>その他のヒント
+## <a name="other-tips"></a>その他のヒント
 
 -   検索の提案は、ユーザー アクティビティの負荷を高めます。 アプリの名前/発行元に対する一致を優先します。 簡単な説明は、検索語句が発行元/アプリの名前に完全に一致しない場合に重要なフィールドになります。
 -   ダウンロード用の文書には、検索の重み付けは含めません。

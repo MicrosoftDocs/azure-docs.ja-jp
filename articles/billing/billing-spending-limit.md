@@ -4,7 +4,7 @@ description: Azure の使用制限のしくみと削除方法を説明します�
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jlian
+manager: alherz
 editor: ''
 tags: billing
 ms.service: billing
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: cwatson
-ms.openlocfilehash: 614102d65407485d31963afa9185400938a7d95b
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.author: banders
+ms.openlocfilehash: c234f75ec752ec79e9f2a051f79e91bdde81de15
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423087"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845374"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Azure の使用制限のしくみと削除方法を理解する
 
@@ -29,7 +29,7 @@ Azure の使用制限は、信用取引金額を超過する支出を防ぐた�
 
 使用量が、サブスクリプションに含まれている月額料金を使い果たす額に到達した場合、デプロイしたサービスは、請求の残りの期間、無効になります。 
 
-たとえば、サブスクリプションに含まれているすべてのクレジットを使用した場合は、デプロイした Cloud Services は運用環境から削除され、Azure 仮想マシンは停止し、割り当てが解除されます。 ストレージ アカウントおよびデータベース内のデータは、読み取り専用で使用できます。
+たとえば、サブスクリプションに含まれているすべてのクレジットを使用した場合は、デプロイした Cloud Services は運用環境から削除され、Azure 仮想マシンは停止し、割り当てが解除されます。 ストレージ アカウントのデータは、読み取り専用で使用できます。
 
 翌請求期間の開始時点で、サブスクリプション オファーに複数月のクレジットが含まれる場合、サブスクリプションは自動的に再び有効化されます。 この後、Cloud Services を再デプロイし、ストレージ アカウントおよびデータベースに完全にアクセスできるようになります。
 
@@ -46,7 +46,7 @@ Azure の使用制限は、信用取引金額を超過する支出を防ぐた�
 使用制限を削除するには、次の手順に従ってください。
 
 1. [アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
-1. サブスクリプションを選択します。 使用制限に達したためにサブスクリプションが無効にされている場合は、"サブスクリプションの使用制限に達したので、課金されないように無効にされました。" という通知をクリックします。 それ以外の場合は、**[サブスクリプションの状態]** 領域の **[使用制限の削除]** をクリックします。
+1. サブスクリプションを選択します。 使用制限に達したためにサブスクリプションが無効にされている場合は、次の通知をクリックします:"サブスクリプションの使用制限に達したので、課金されないように無効にされました。" それ以外の場合は、**[サブスクリプションの状態]** 領域の **[使用制限の削除]** をクリックします。
 1. 適切なオプションを選択します。
 
 ![使用制限を削除するためのオプションを選択](./media/billing-spending-limit/remove-spending-limit.PNG)
@@ -84,6 +84,6 @@ Azure の使用制限は、信用取引金額を超過する支出を防ぐた�
 
 ![Marketplace 購入警告](./media/billing-understand-your-azure-marketplace-charges/marketplace-warning.PNG)
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

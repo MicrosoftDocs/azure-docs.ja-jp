@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 904387def0fd8842f196e80cfcf72d9dd1639458
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: c9accf09da240f6d3235edd3c9da1876529d8654
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957704"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650752"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Azure VM でリモート デスクトップ サービスが起動しない
 
 この記事では、Azure 仮想マシン (VM) への接続時にリモート デスクトップ サービス (TermService) が起動しないか起動に失敗する場合の問題のトラブルシューティングを行う方法について説明します。
 
 > [!NOTE]  
-> Azure には、リソースの作成と操作を行う、[Azure Resource Manager およびクラシック](../../azure-resource-manager/resource-manager-deployment-model.md)という 2 つの異なるデプロイ モデルがあります。 この記事では、Resource Manager デプロイ モデルの使用について説明します。 新しいデプロイでは、クラシック デプロイ モデルではなく、このモデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作を行うデプロイメント モデルが 2 種類あります。[Azure Resource Manager とクラシックです](../../azure-resource-manager/resource-manager-deployment-model.md)。 この記事では、Resource Manager デプロイ モデルの使用について説明します。 新しいデプロイでは、クラシック デプロイ モデルではなく、このモデルを使用することをお勧めします。
 
 ## <a name="symptoms"></a>現象
 
@@ -37,16 +37,16 @@ VM に接続しようとすると、次のシナリオが発生します。
 
 - イベント ビューアーを使用して、VM でイベント ログをリモートで表示します。 リモート デスクトップ サービス (TermService) が起動していないか、起動に失敗していることがわかります。 サンプル ログを以下に示します。
 
-    **ログの名前**:      システム </br>
-    **ソース**:        サービス コントロール マネージャー </br>
-    **日付**:          12/16/2017 11:19:36 AM</br>
-    **イベント ID**:      7022</br>
-    **タスクのカテゴリ**: なし</br>
-    **レベル**:         エラー</br>
-    **キーワード**:      クラシック</br>
-    **ユーザー**:          N/A</br>
+    **ログ名**:    システム </br>
+    **ソース**:      サービス コントロール マネージャー </br>
+    **日付**:        12/16/2017 11:19:36 AM</br>
+    **イベント ID**:    7022</br>
+    **タスク カテゴリ**:なし</br>
+    **レベル**:       Error</br>
+    **キーワード**:    クラシック</br>
+    **ユーザー**:        該当なし</br>
     **コンピューター**:      vm.contoso.com</br>
-    **説明**: Remote Desktop Services サービスは起動時に停止しました。 
+    **説明**:Remote Desktop Services サービスは起動時に停止しました。 
 
     次のクエリを実行して、これらのエラーを検索するシリアル アクセス コンソール機能を使用することもできます。 
 
@@ -99,20 +99,21 @@ VM に接続しようとすると、次のシナリオが発生します。
 
     |  Error |  推奨事項 |
     |---|---|
-    |5 - ACCESS DENIED |[アクセス拒否エラーによる TermService サービスの停止](#termService-service-is-stopped-because-of-an-access-denied-problem)に関する記述を参照してください。 |   |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |「[TermService サービスが無効化されている](#termService-service-is-disabled)」を参照してください。  |  
-    |1058 - ERROR_SERVICE_DISABLED  |「[TermService サービスがクラッシュまたはハングする](#termService-service-crashes-or-hangs)」を参照してください。  |
+    |5 - ACCESS DENIED |[アクセス拒否エラーによる TermService サービスの停止](#termservice-service-is-stopped-because-of-an-access-denied-problem)に関する記述を参照してください。 |
+    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |「[TermService サービスが無効化されている](#termservice-service-is-disabled)」を参照してください。  |  
+    |1058 - ERROR_SERVICE_DISABLED  |「[TermService サービスがクラッシュまたはハングする](#termservice-service-crashes-or-hangs)」を参照してください。  |
     |1059 - ERROR_CIRCULAR_DEPENDENCY |問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。|
-    |1067 - ERROR_PROCESS_ABORTED  |「[TermService サービスがクラッシュまたはハングする](#termService-service-crashes-or-hangs)」を参照してください。  |
+    |1067 - ERROR_PROCESS_ABORTED  |「[TermService サービスがクラッシュまたはハングする](#termservice-service-crashes-or-hangs)」を参照してください。  |
     |1068 - ERROR_SERVICE_DEPENDENCY_FAIL|問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。|
-    |1069 - ERROR_SERVICE_LOGON_FAILED  |「[TermService service fails because of logon failure](#termService-service-fails-because-of-logon-failure)」 (ログオンの失敗が原因で TermService サービスが失敗する) を参照してください |
-    |1070 - ERROR_SERVICE_START_HANG   | 「[TermService サービスがクラッシュまたはハングする](#termService-service-crashes-or-hangs)」を参照してください。 |
-    |1077 - ERROR_SERVICE_NEVER_STARTED   | 「[TermService サービスが無効化されている](#termService-service-is-disabled)」を参照してください。  |
+    |1069 - ERROR_SERVICE_LOGON_FAILED  |「[TermService service fails because of logon failure](#termservice-service-fails-because-of-logon-failure)」 (ログオンの失敗が原因で TermService サービスが失敗する) を参照してください |
+    |1070 - ERROR_SERVICE_START_HANG   | 「[TermService サービスがクラッシュまたはハングする](#termservice-service-crashes-or-hangs)」を参照してください。 |
+    |1077 - ERROR_SERVICE_NEVER_STARTED   | 「[TermService サービスが無効化されている](#termservice-service-is-disabled)」を参照してください。  |
     |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。 |
-    |1753   |問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。   |   |5 - ACCESS DENIED |[アクセス拒否エラーによる TermService サービスの停止](#termService-service-is-stopped-because-of-an-access-denied-error)に関する記述を参照してください。 |
+    |1753   |問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。   |
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>アクセス拒否の問題が原因で TermService サービスが停止する
 
-1. [シリアル コンソール](serial-console-windows.md#)に接続し、PowerShell インスタンスを開きます。
+1. [シリアル コンソール](serial-console-windows.md)に接続し、PowerShell インスタンスを開きます。
 2. 次のスクリプトを実行して、プロセス モニター ツールをダウンロードします。
 
    ```
@@ -205,7 +206,7 @@ VM に接続しようとすると、次のシナリオが発生します。
 
 1. [復旧 VM に OS ディスクを接続します](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 復旧 VM へのリモート デスクトップ接続を開始します。 接続したディスクが [ディスクの管理] コンソールで **[オンライン]** になっていることを確認します。 接続された OS ディスクに割り当てられたドライブ文字をメモします。
-3.  管理者特権でのコマンド プロンプト インスタンス (**[管理者として実行]**) を開きます。 次に、以下のスクリプトを実行します。 接続された OS ディスクに割り当てられたドライブ文字が **F** であると仮定します。これを、ご利用の VM の適切な値に置き換えます。 
+3. 管理者特権でのコマンド プロンプト インスタンス (**[管理者として実行]**) を開きます。 次に、以下のスクリプトを実行します。 接続された OS ディスクに割り当てられたドライブ文字が **F** であると仮定します。これを、ご利用の VM の適切な値に置き換えます。 
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv

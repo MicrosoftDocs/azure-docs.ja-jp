@@ -4,16 +4,16 @@ description: Anomaly Finder に備わる高度なアルゴリズムを使用す�
 services: cognitive-services
 author: tonyxing
 ms.service: cognitive-services
-ms.component: anomaly-detection
+ms.subservice: anomaly-detection
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: tonyxing
-ms.openlocfilehash: c0c15f077a0a7dd302a377aa6f82ba2f8533d862
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 41d20cfd9821fbd2a34a66754e5c2da3d6439fd2
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456254"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56726815"
 ---
 # <a name="what-is-anomaly-finder"></a>Anomaly Finder とは
 

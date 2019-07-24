@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: ed4399e2d58924f89d4201979ffe1fb903a05d0c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: tables
+ms.openlocfilehash: 5d83e61282d2f21a3016997e324d0f58eff15e78
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522630"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813009"
 ---
 # <a name="modeling-relationships"></a>リレーションシップのモデル化
 この記事では、Azure テーブル ストレージ ソリューションの設計に役立つモデル化プロセスについて説明します。
@@ -101,7 +101,7 @@ ms.locfileid: "39522630"
 実装上の検討内容に応じて、Table service で一対一のリレーションシップを実装する必要が生じることもあります。  
 
 * ラージ エンティティを処理する (詳細については、「 [ラージ エンティティ パターン](table-storage-design-patterns.md#large-entities-pattern)」を参照してください)。  
-* アクセス制御を実装する (詳細については、 [共有アクセス署名でのアクセスを制御する](#controlling-access-with-shared-access-signatures)参照してください)。  
+* アクセス制御を実装する (詳細については、共有アクセス署名でのアクセスの制御に関する記事を参照してください)。  
 
 ## <a name="join-in-the-client"></a>クライアントでの結合
 Table service でのリレーションシップのモデル化には何とおりかの方法があるものの、Table service を使う主な理由はスケーラビリティとパフォーマンスの 2 つであることを忘れないでください。 ソリューションのパフォーマンスとスケーラビリティを損なう多数のリレーションシップをモデル化しようとしていることに気が付いた場合は、そのすべてのデータ リレーションシップをテーブル設計に組み込む必要があるかどうかを確認する必要があります。 クライアント アプリケーションで必要な結合が実行されるようにすると、設計を簡素化し、ソリューションのスケーラビリティとパフォーマンスを向上させることができます。  
@@ -117,7 +117,7 @@ Table service でのリレーションシップのモデル化には何とおり
 
 ![Person テーブル](media/storage-table-design-guide/storage-table-design-IMAGE04.png)
 
-クライアント コードの同じテーブル内の複数のエンティティ種類の詳細については、このガイドの後述のセクション [異種のエンティティ種類の使用](#working-with-heterogeneous-entity-types) を参照してください。 クライアント コードでエンティティの種類を認識する方法の例が示されています。  
+クライアント コードの同じテーブル内の複数のエンティティ種類の詳細については、このガイドで後述する異種のエンティティ種類の使用に関するセクションを参照してください。 クライアント コードでエンティティの種類を認識する方法の例が示されています。  
 
 
 ## <a name="next-steps"></a>次の手順

@@ -1,25 +1,19 @@
 ---
-title: ExpressRoute 回線の NAT 要件 | Microsoft Docs
+title: '回線の NAT 要件 - ExpressRoute: Azure | Microsoft Docs'
 description: このページでは、ExpressRoute 回線の NAT を構成および管理するための詳細な要件について説明します。
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: carmonm
-editor: ''
-ms.assetid: 867bf936-c851-485f-84c8-d8d6e33fee9f
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/12/2017
+ms.topic: conceptual
+ms.date: 01/30/2019
 ms.author: cherylmc
-ms.openlocfilehash: 2a9903b0e3c04a7098f7a8e529801483b10af142
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.custom: seodec18
+ms.openlocfilehash: 508a20e826c2f7bf1260bde6858eb4472c16a5c0
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
-ms.locfileid: "23409267"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496527"
 ---
 # <a name="expressroute-nat-requirements"></a>ExpressRoute NAT の要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、NAT をセットアップして管理する必要があります。 一部の接続プロバイダーでは、NAT のセットアップと管理が管理されたサービスとして提供されています。 このようなサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 このようなサービスが提供されていない場合は、次に示す要件に従う必要があります。 
@@ -27,7 +21,7 @@ ExpressRoute を使用して Microsoft クラウド サービスに接続する�
 [ExpressRoute の回線とルーティング ドメイン](expressroute-circuit-peerings.md) のページをお読みになり、さまざまなルーティング ドメインの概要をご確認ください。 Azure パブリックと Microsoft ピアリングのパブリック IP アドレス要件を満たすために、ネットワークと Microsoft の間に NAT をセットアップすることをお勧めします。 このセクションでは、セットアップする NAT インフラストラクチャに関して説明します。
 
 ## <a name="nat-requirements-for-microsoft-peering"></a>Microsoft ピアリングの NAT 要件
-Microsoft ピアリング パスにより、Azure パブリック ピアリング パスでサポートされていない Microsoft クラウド サービスに接続できます。 対象となるサービスには、Exchange Online、SharePoint Online、Skype for Business、Dynamics 365 などの Office 365 サービスが含まれます。 Microsoft は今後、Microsoft ピアリングで双方向の接続をサポートする予定です。 Microsoft クラウド サービスに向かうトラフィックは有効な IPv4 アドレスに SNAT 変換しないと、Microsoft ネットワークに入れません。 Microsoft クラウド サービスからご利用のネットワークに送信されるトラフィックは、[非対称ルーティング](expressroute-asymmetric-routing.md)を回避するためにインターネット エッジで SNAT 変換する必要があります。 下の図は、Microsoft ピアリングのために NAT をセットアップするしくみを上のレベルで示しています。
+Microsoft ピアリング パスにより、Azure パブリック ピアリング パスでサポートされていない Microsoft クラウド サービスに接続できます。 対象となるサービスには、Exchange Online、SharePoint Online、Skype for Business、Dynamics 365 などの Office 365 サービスが含まれます。 Microsoft は今後、Microsoft ピアリングで双方向の接続をサポートする予定です。 Microsoft クラウド サービスに向かうトラフィックは有効な IPv4 アドレスに SNAT 変換しないと、Microsoft ネットワークに入れません。 Microsoft クラウド サービスからご利用のネットワークに送信されるトラフィックは、[非対称ルーティング](expressroute-asymmetric-routing.md)を回避するためにインターネット エッジで SNAT 変換する必要があります。 下の図に、Microsoft ピアリングのために NAT を設定する方法の概要を示します。
 
 ![](./media/expressroute-nat/expressroute-nat-microsoft.png) 
 
@@ -47,6 +41,11 @@ Microsoft ピアリング パスにより、Azure パブリック ピアリン�
 ![ExpressRoute を使用した非対称ルーティング](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
 
 ## <a name="nat-requirements-for-azure-public-peering"></a>Azure パブリック ピアリングの NAT 要件
+
+> [!NOTE]
+> Azure パブリック ピアリングは新しい回線では使用できません。
+> 
+
 Azure パブリック ピアリング パスを利用すれば、パブリック IP アドレスで Azure にホストされているすべてのサービスに接続できます。 たとえば、 [ExpessRoute FAQ](expressroute-faqs.md) の一覧にあるサービスや Microsoft Azure で ISV によりホストされているサービスです。 
 
 > [!IMPORTANT]
@@ -67,7 +66,7 @@ Azure パブリック ピアリング パスを利用すれば、パブリック
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ルーティング](expressroute-routing.md)と [QoS](expressroute-qos.md) の要件を参照してください。
 * ワークフロー情報については、「 [ExpressRoute 回線のプロビジョニング ワークフローと回線の状態](expressroute-workflows.md)」を参照してください。
 * ExpressRoute 接続を構成します。

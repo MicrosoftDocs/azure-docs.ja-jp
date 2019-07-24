@@ -1,33 +1,35 @@
 ---
-title: Azure サブスクリプションを Azure Active Directory B2C にリンクする方法 | Microsoft Docs
+title: Azure サブスクリプションをリンクする方法 - Azure Active Directory B2C | Microsoft Docs
 description: Azure AD B2C テナントの Azure サブスクリプションへの課金を有効にするためのステップ バイ ステップ ガイドです。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/05/2017
+ms.date: 01/24/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 80ba42d7eab1726c7add6c4c9426b7dde3b55480
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.subservice: B2C
+ms.openlocfilehash: c914b3a3ab40971cf9318cafc787d358dab2faff
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445943"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196176"
 ---
-# <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>Azure サブスクリプションを Azure AD B2C テナントにリンクする
+# <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Azure サブスクリプションを Azure Active Directory B2C テナントにリンクする
 
 > [!IMPORTANT]
-> Azure AD B2C の使用量の課金と価格に関する最新情報については、「[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)」をご覧ください。
+> Azure Active Directory (Azure AD) B2C の使用量の課金と価格に関する最新情報については、「[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)」をご覧ください。
 
 Azure AD B2C の利用料金は、Azure サブスクリプションに課金されます。 Azure AD B2C テナントを作成したら、テナント管理者はその Azure AD B2C テナントを Azure サブスクリプションに明示的にリンクする必要があります。 この記事では、その方法について説明します。
 
 > [!NOTE]
-> Azure AD B2C テナントにリンクされたサブスクリプションは、Azure AD B2C の使用量の課金にのみ使用できます。 このサブスクリプションは、"*Azure AD B2C テナント内*" における他の Azure サービスまたは Office 365 ライセンスの追加には使用できません。
+> Azure AD B2C テナントにリンクされているサブスクリプションは、追加の Azure AD B2C リソースを含む Azure AD B2C の使用や他の Azure リソースの課金に使用できます。  これは、Azure AD B2C テナント内における他の Azure ライセンス ベース サービスまたは Office 365 ライセンスの追加には使用できません。
 
- サブスクリプションをリンクするには、ターゲットの Azure サブスクリプション内に Azure AD B2C "リソース" を作成します。 多くの Azure AD B2C "リソース" は、他の Azure リソース (VM、データ ストレージ、LogicApps など) と共に単一の Azure サブスクリプション内で作成できます。 サブスクリプション内のすべてのリソースは、サブスクリプションが関連付けられた Azure AD テナントに移動することで確認できます。
+サブスクリプションをリンクするには、ターゲットの Azure サブスクリプション内に Azure AD B2C "リソース" を作成します。 多くの Azure AD B2C "リソース" は、他の Azure リソース (VM、データ ストレージ、LogicApps など) と共に単一の Azure サブスクリプション内で作成できます。 サブスクリプション内のすべてのリソースは、サブスクリプションが関連付けられた Azure AD テナントに移動することで確認できます。
+
+Azure AD B2C では Azure クラウド ソリューション プロバイダー (CSP) サブスクリプションがサポートされています。 機能は、Azure AD B2C とすべての Azure リソースで、API または Azure portal を使用して使用できます。 CSP サブスクリプションの管理者は、すべての Azure リソースと同じ方法で、Azure AD B2C との関係をリンク、移動、および削除できます。 ロールベースのアクセス制御を使用した Azure AD B2C の管理は、Azure AD B2C テナントと Azure CSP サブスクリプション間の関連付けの影響を受けません。 ロール ベースのアクセス制御は、サブスクリプションベースのロールではなく、テナントベースのロールを使用して実現されます。
 
 続行するには、有効な Azure サブスクリプションが必要です。
 
@@ -81,10 +83,6 @@ Azure サブスクリプション内に Azure AD B2C リソースが正常に作
 ![B2C リソース設定](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
 
 ## <a name="known-issues"></a>既知の問題
-
-### <a name="csp-subscriptions"></a>CSP サブスクリプション
-
-現時点では、Azure AD B2C テナントは CSP サブスクリプションにリンク**できません**。
 
 ### <a name="self-imposed-restrictions"></a>自己制限
 

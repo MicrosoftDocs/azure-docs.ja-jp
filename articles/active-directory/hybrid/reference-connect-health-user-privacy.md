@@ -4,21 +4,22 @@ description: このドキュメントでは、Azure AD Connect Health とユー�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 04/26/2018
 ms.author: billmath
-ms.openlocfilehash: 7d3f625524161703b7be822c1db0fd5b21030dca
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 27e5ae48a8194c05a19e5164ee2cc6be68967a62
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306351"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112757"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>ユーザー プライバシーと Azure AD Connect Health 
 
@@ -61,17 +62,17 @@ Azure AD Connect Health では、各監視対象サーバーや、監視対象�
 Azure AD Connect Health では、テナントの**すべて**の登録済みサービスのデータ収集を停止することもできます。 操作を実行する前に、すべてのグローバル管理者の慎重な検討と十分な確認をお勧めします。 プロセスが開始されると、Connect Health サービスはすべてのサービスのすべてのデータの受信、処理、およびレポートを停止します。 Connect Health サービスの既存のデータは 30 日を超えない範囲で保持されます。
 特定のサーバーのデータ収集を停止する場合は、特定のサーバーの削除時の手順に従ってください。 テナントのデータ収集を停止するには、次の手順に従って、データの収集を停止し、テナントのすべてのサービスを削除します。
 
-1.  メイン ブレードの構成で **[全般設定]** をクリックします。 
-2.  ブレードの上部にある **[データ収集の停止]** ボタンをクリックします。 プロセスが開始されると、テナント構成設定のその他のオプションは使用できなくなります。  
+1. メイン ブレードの構成で **[全般設定]** をクリックします。 
+2. ブレードの上部にある **[データ収集の停止]** ボタンをクリックします。 プロセスが開始されると、テナント構成設定のその他のオプションは使用できなくなります。  
  
- ![データ収集の停止](./media/reference-connect-health-user-privacy/gdpr4.png)
+   ![データ収集の停止](./media/reference-connect-health-user-privacy/gdpr4.png)
   
-3.  データ収集の停止による影響を受けるオンボード サービスの一覧を確認します。 
-4.  正確なテナント名を入力し、**[削除]** アクション ボタンを有効にします
-5.  **[削除]** をクリックし、すべてのサービスの削除を実行します。 Connect Health は、オンボード サービスから送信されたすべてのデータの受信、処理、レポートを停止します。 プロセス全体で最大 24 時間かかることがあります。 この手順は元に戻せないことに注意してください。 
-6.  プロセスが完了した後は、Connect Health に登録されているサービスは表示されなくなります。 
+3. データ収集の停止による影響を受けるオンボード サービスの一覧を確認します。 
+4. 正確なテナント名を入力し、**[削除]** アクション ボタンを有効にします
+5. **[削除]** をクリックし、すべてのサービスの削除を実行します。 Connect Health は、オンボード サービスから送信されたすべてのデータの受信、処理、レポートを停止します。 プロセス全体で最大 24 時間かかることがあります。 この手順は元に戻せないことに注意してください。 
+6. プロセスが完了した後は、Connect Health に登録されているサービスは表示されなくなります。 
 
- ![データ収集の停止後](./media/reference-connect-health-user-privacy/gdpr5.png)
+   ![データ収集の停止後](./media/reference-connect-health-user-privacy/gdpr5.png)
 
 ## <a name="re-enable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Azure AD Connect Health でのデータの収集と 監視を再度有効にする
 以前に削除された監視対象サービスについて Azure AD Connect Health での監視を再度有効にするには、正常性エージェントをアンインストールし、すべてのサーバーに[正常性エージェントを再インストールする](how-to-connect-health-agent-install.md)必要があります。
@@ -84,14 +85,14 @@ Azure AD Connect Health でテナントのデータ収集を再開すること�
 > アクションが 24 時間無効になった後、次の手順が使用可能になります。
 > データの収集を有効にすると、Connect Health の分析情報の提示とデータの監視では、以前に収集されたレガシ データは表示されません。 
 
-1.  メイン ブレードの構成で **[全般設定]** をクリックします。 
-2.  ブレードの上部にある **[データ収集の有効化]** ボタンをクリックします。 
+1. メイン ブレードの構成で **[全般設定]** をクリックします。 
+2. ブレードの上部にある **[データ収集の有効化]** ボタンをクリックします。 
  
- ![データ収集を有効にする](./media/reference-connect-health-user-privacy/gdpr6.png)
+   ![データ収集を有効にする](./media/reference-connect-health-user-privacy/gdpr6.png)
  
-3.  正確なテナント名を入力し、**[有効化]** ボタンをアクティブにします。
-4.  **[有効化]** ボタンをクリックし、Connect Health サービスのデータ収集の権限を許可します。 変更はすぐに適用されます。 
-5.  [インストール プロセス](how-to-connect-health-agent-install.md)に関する記事に従って監視対象のサーバーにエージェントを再インストールすると、ポータルにサービスが表示されます。  
+3. 正確なテナント名を入力し、**[有効化]** ボタンをアクティブにします。
+4. **[有効化]** ボタンをクリックし、Connect Health サービスのデータ収集の権限を許可します。 変更はすぐに適用されます。 
+5. [インストール プロセス](how-to-connect-health-agent-install.md)に関する記事に従って監視対象のサーバーにエージェントを再インストールすると、ポータルにサービスが表示されます。  
 
 
 ## <a name="next-steps"></a>次の手順

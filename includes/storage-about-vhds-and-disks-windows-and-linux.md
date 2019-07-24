@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7f36f297e4d167954f9fdc600357d84efb73296d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: aa740cfb203f50dc97a06359774dae367a20252b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51263323"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55147944"
 ---
 ## <a name="about-vhds"></a>VHD について
 
@@ -71,6 +71,6 @@ Managed Disks の多くの機能を活用するために、新しい VM には M
 | ディスクの種類 | ソリッド ステート ドライブ (SSD) | ソリッド ステート ドライブ (SSD) | ハード ディスク ドライブ (HDD)  
 | 概要  | I/O 集中型のワークロードを実行している VM またはミッション クリティカルな運用環境をホストしている VM 向けの、SSD ベースの高パフォーマンスで待ち時間の少ないディスク サポート |一貫したパフォーマンスと信頼性が HDD よりも優れている。 低 IOPS ワークロード用に最適化| 不定期に起こるアクセス用の HDD ベースのコスト効果の高いディスク
 | シナリオ  | 運用環境のワークロードやパフォーマンスに影響されやすいワークロード |Web サーバー、あまり使用されていないエンタープライズ アプリケーション、および開発/テスト| バックアップ、重要ではない、不定期に起こるアクセス
-| ディスク サイズ | P4: 32 GiB (マネージド ディスクのみ)<br>P6: 64 GiB (マネージド ディスクのみ)<br>P10: 128 GiB<br>P15: 256 GiB (マネージド ディスクのみ)<br>P20: 512 GiB<br>P30: 1024 GiB<br>P40: 2048 GiB<br>P50: 4,095 GiB<br>P60: 8,192 GiB * (8 TiB)<br>P70: 16,384 GiB * (16 TiB)<br>P80: 32,767 GiB * (32 TiB) |マネージド ディスクのみ:<br>E10: 128 GiB<br>E15: 256 GiB<br>E20: 512 GiB<br>E30: 1024 GiB<br>E40: 2048 GiB<br>E50: 4095 GiB<br>E60: 8,192 GiB * (8 TiB)<br>E70: 16,384 GiB * (16 TiB)<br> E80: 32,767 GiB * (32 TiB) | アンマネージド ディスク: 1 GiB ～ 4 TiB (4095 GiB) <br><br>管理ディスク:<br> S4: 32 GiB <br>S6: 64 GiB <br>S10: 128 GiB <br>S15: 256 GiB <br>S20: 512 GiB <br>S30: 1024 GiB <br>S40: 2048 GiB<br>S50: 4095 GiB<br>S60: 8,192 GiB * (8 TiB)<br>S70: 16,384 GiB * (16 TiB)<br>S80: 32,384 GiB * (32 TiB)
-| ディスクあたりの最大スループット | P4: 25 MiB/秒<br> P6: 50 MiB/秒<br> P10: 100 MiB/秒<br> P15: 200 MiB/秒<br> P20: 150 MiB/秒<br> P30: 200 MiB/秒<br> P40-P50: 250 MiB/秒<br> P60: 480 MiB/秒 *<br> P70-P80: 750 MiB/秒 * | E10-E50: 最大 60 MiB/秒<br> E60: 最大 300 MiB/秒 *<br> E70-E80: 500 MiB/秒 *| S4 - S50: 最大 60 MiB/秒<br> S60: 最大 300 MiB/秒 *<br> S70-S80: 最大 500 MiB/秒 *
-| ディスクあたりの最大 IOPS | P4: 120 IOPS<br> P6: 240 IOPS<br> P10: 500 IOPS<br> P15: 1100 IOPS<br> P20: 2300 IOPS<br> P30: 5000 IOPS<br> P40-P50: 7500 IOPS<br> P60: 12,500 IOPS *<br> P70: 15,000 IOPS *<br> P80: 20,000 IOPS * | E10-E50: 最大 500 IOPS<br> E60: 最大 1300 IOPS *<br> E70-E80: 最大 2000 IOPS * | S4-S50: 最大 500 IOPS<br> S60: 最大 1300 IOPS *<br> S70-S80: 最大 2000 IOPS *
+| ディスク サイズ | P4:32 GiB (マネージド ディスクのみ)<br>P6:64 GiB (マネージド ディスクのみ)<br>P10:128 GiB<br>P15:256 GiB (マネージド ディスクのみ)<br>P20:512 GiB<br>P30:1,024 GiB<br>P40:2,048 GiB<br>P50:4,095 GiB<br>P60:8,192 GiB * (8 TiB)<br>P70:16,384 GiB * (16 TiB)<br>P80:32,767 GiB * (32 TiB) |マネージド ディスクのみ:<br>E4:32 GiB<br>E6:64 GiB<br>E10:128 GiB<br>E15:256 GiB<br>E20:512 GiB<br>E30:1,024 GiB<br>E40:2,048 GiB<br>E50:4,095 GiB<br>E60:8,192 GiB * (8 TiB)<br>E70:16,384 GiB * (16 TiB)<br> E80:32,767 GiB * (32 TiB) | 非管理対象ディスク:1 GiB - 4 TiB (4095 GiB) <br><br>管理ディスク:<br> S4:32 GiB <br>S6:64 GiB <br>S10:128 GiB <br>S15:256 GiB <br>S20:512 GiB <br>S30:1,024 GiB <br>S40:2,048 GiB<br>S50:4,095 GiB<br>S60:8,192 GiB * (8 TiB)<br>S70:16,384 GiB * (16 TiB)<br>S80:32,767 GiB * (32 TiB)
+| ディスクあたりの最大スループット | P4:25 MiB/秒<br> P6:50 MiB/秒<br> P10:100 MiB/秒<br> P15:125 MiB/秒<br> P20:150 MiB/秒<br> P30:200 MiB/秒<br> P40 - P50:250 MiB/秒<br> P60:480 MiB/秒 *<br> P70 - P80:750 MiB/秒 * | E10 - E50:最大 60 MiB/秒<br> E60:最大 300 MiB/秒 *<br> E70 - E80:500 MiB/秒 *| S4 - S50:最大 60 MiB/秒<br> S60:最大 300 MiB/秒 *<br> S70 - S80:最大 500 MiB/秒 *
+| ディスクあたりの最大 IOPS | P4:120 IOPS<br> P6:240 IOPS<br> P10:500 IOPS<br> P15:1,100 IOPS<br> P20:2,300 IOPS<br> P30:5,000 IOPS<br> P40 - P50:7,500 IOPS<br> P60:12,500 IOPS *<br> P70:15,000 IOPS *<br> P80:20,000 IOPS * | E10 - E50:最大 500 IOPS<br> E60:最大 1,300 IOPS *<br> E70 - E80:最大 2,000 IOPS * | S4 - S50:最大 500 IOPS<br> S60:最大 1,300 IOPS *<br> S70 - S80:最大 2,000 IOPS *

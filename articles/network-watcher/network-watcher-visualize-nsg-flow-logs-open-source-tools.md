@@ -1,6 +1,6 @@
 ---
-title: オープン ソース ツールを使用した Azure Network Watcher NSG フロー ログの視覚化 | Microsoft Docs
-description: このページでは、オープン ソース ツールを使用して、NSG フロー ログを視覚化する方法について説明します。
+title: Network Watcher と Elastic Stack を使用してネットワーク セキュリティ グループのフロー ログを管理および分析する | Microsoft Docs
+description: Network Watcher と Elastic Stack を使用して Azure のネットワーク セキュリティ グループ フロー ログを管理および分析します。
 services: network-watcher
 documentationcenter: na
 author: mattreatMSFT
@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 6debfaed28be2b5dee5e24a443b791f75f7bea8f
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 7361eff0f76271564fd5a0e9b8a18221ec4138e3
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634194"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099005"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>オープン ソース ツールを使用した Azure Network Watcher NSG フロー ログの視覚化
 
 ネットワーク セキュリティ グループのフロー ログの情報は、ネットワーク セキュリティ グループでのイングレスおよびエグレス IP トラフィックについて理解するのに役立ちます。 こうしたフロー ログからは、ルールごとの送信および受信フロー、フローが適用されている NIC、フローに関する 5 組の情報 (送信元/送信先 IP、送信元/送信先ポート、プロトコル)、およびトラフィックの許可/拒否の状況が分かります。
 
 これらのフロー ログを手動で解析したり、そこから手動で有用な情報を取得したりするのは難しいかもしれません。 しかし、いくつかのオープン ソース ツールによって、こうしたデータを視覚化できます。 この記事では、Elastic Stack を使用してこれらのログを視覚化するソリューションについて説明します。このソリューションによって、Kibana ダッシュボードのフロー ログに簡単にインデックスを作成して視覚化できます。
+
+> [!Warning]  
+> 次の手順は、フロー ログのバージョン 1 に使用できます。 詳細については、「[ネットワーク セキュリティ グループのフローのログ記録の概要](network-watcher-nsg-flow-logging-overview.md)」を参照してください。 次の手順は、変更しなければ、ログ ファイルのバージョン 2 で使用できません。
 
 ## <a name="scenario"></a>シナリオ
 

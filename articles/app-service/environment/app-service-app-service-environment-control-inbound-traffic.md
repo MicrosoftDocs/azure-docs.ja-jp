@@ -1,5 +1,5 @@
 ---
-title: App Service 環境への受信トラフィックを制御する方法
+title: App Service 環境への受信トラフィックを制御する - Azure
 description: App Service 環境への受信トラフィックを制御するネットワーク セキュリティ ルールを構成する方法について説明します。
 services: app-service
 documentationcenter: ''
@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
-ms.openlocfilehash: ed72bf3202d6cb2d2161bc0df693d3e6a1fc58ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: 84575dcb67845a074ce19cf9d819e1dda3f90e20
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22987007"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271978"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>App Service 環境への受信トラフィックを制御する方法
 ## <a name="overview"></a>概要
-App Service 環境は、Azure Resource Manager 仮想ネットワーク**と**クラシック デプロイメント モデル[仮想ネットワーク][virtualnetwork]の**どちらにでも**作成できます。  App Service 環境の作成時に、新しい仮想ネットワークと新しいサブネットを定義できます。  または、既存の仮想ネットワークと既存のサブネットに App Service 環境を作成することもできます。  また、2016 年 6 月に行われた変更で、パブリック アドレス範囲と RFC1918 アドレス空間 (つまりプライベート アドレス) のどちらかを使用した仮想ネットワークに ASE をデプロイできるようになりました。  App Service 環境の作成方法の詳細については、「[App Service 環境の作成方法][HowToCreateAnAppServiceEnvironment]」を参照してください。
+App Service 環境は、Azure Resource Manager 仮想ネットワーク**と**クラシック デプロイ モデル[仮想ネットワーク][virtualnetwork]の**どちらにでも**作成できます。  App Service 環境の作成時に、新しい仮想ネットワークと新しいサブネットを定義できます。  または、既存の仮想ネットワークと既存のサブネットに App Service 環境を作成することもできます。  また、2016 年 6 月に行われた変更で、パブリック アドレス範囲と RFC1918 アドレス空間 (つまりプライベート アドレス) のどちらかを使用した仮想ネットワークに ASE をデプロイできるようになりました。  App Service 環境の作成方法の詳細については、「[App Service 環境の作成方法][HowToCreateAnAppServiceEnvironment]」を参照してください。
 
 App Service 環境は常にサブネット内で作成する必要があります。これは、HTTP トラフィックと HTTPS トラフィックが特定のアップストリーム IP アドレスのみから受け取られるように、アップストリーム デバイスおよびサービスの背後で受信トラフィックをロックダウンするために使用できるネットワーク境界がサブネットによって提供されるためです。
 
@@ -38,16 +39,16 @@ App Service 環境は常にサブネット内で作成する必要がありま�
 
 App Service 環境で使用されるポートの一覧を次に示します。 特に断りのない限り、すべてのポートは **TCP** です。
 
-* 454: SSL を介した App Service Environment の管理および保守のために Azure インフラストラクチャによって使用される**必須ポート**。  このポートへのトラフィックはブロックしないでください。  このポートは常に、ASE のパブリック VIP にバインドします。
-* 455: SSL を介した App Service Environment の管理および保守のために Azure インフラストラクチャによって使用される**必須ポート**。  このポートへのトラフィックはブロックしないでください。  このポートは常に、ASE のパブリック VIP にバインドします。
-* 80: App Service 環境において App Service プランで実行されているアプリへの受信 HTTP トラフィック用の既定のポート。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
-* 443: App Service 環境において App Service プランで実行されているアプリへの受信 SSL トラフィック用の既定のポート。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
-* 21: FTP 用のコントロール チャネル。  FTP が使用されていない場合は、このポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドできます。
-* 990: FTPS 用のコントロール チャネル。  FTPS が使用されていない場合は、このポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドできます。
-* 10001 ～ 10020: FTP 用のデータ チャネル。  コントロール チャネルと同様、FTP が使用されていない場合は、これらのポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドできます。
-* 4016: Visual Studio 2012 でのリモート デバッグに使用されます。  機能が使用されていない場合は、このポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
-* 4018: Visual Studio 2013 でのリモート デバッグに使用されます。  機能が使用されていない場合は、このポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
-* 4020: Visual Studio 2015 でのリモート デバッグに使用されます。  機能が使用されていない場合は、このポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
+* 454:SSL を介した App Service Environment の管理および保守のために Azure インフラストラクチャによって使用される**必須ポート**。  このポートへのトラフィックはブロックしないでください。  このポートは常に、ASE のパブリック VIP にバインドします。
+* 455:SSL を介した App Service Environment の管理および保守のために Azure インフラストラクチャによって使用される**必須ポート**。  このポートへのトラフィックはブロックしないでください。  このポートは常に、ASE のパブリック VIP にバインドします。
+* 80:App Service Environment において App Service プランで実行されているアプリへの受信 HTTP トラフィック用の既定のポート。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
+* 443:App Service Environment において App Service プランで実行されているアプリへの受信 SSL トラフィック用の既定のポート。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
+* 21:FTP 用のコントロール チャネル。  FTP が使用されていない場合は、このポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドできます。
+* 990:FTPS 用のコントロール チャネル。  FTPS が使用されていない場合は、このポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドできます。
+* 10001 ～ 10020:FTP 用のデータ チャネル。  コントロール チャネルと同様、FTP が使用されていない場合は、これらのポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドできます。
+* 4016:Visual Studio 2012 でのリモート デバッグに使用されます。  機能が使用されていない場合は、このポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
+* 4018:Visual Studio 2013 でのリモート デバッグに使用されます。  機能が使用されていない場合は、このポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
+* 4020:Visual Studio 2015 でのリモート デバッグに使用されます。  機能が使用されていない場合は、このポートを安全にブロックできます。  ILB 対応の ASE では、このポートを ASE の ILB アドレスにバインドします。
 
 ## <a name="outbound-connectivity-and-dns-requirements"></a>発信接続と DNS の要件
 App Service 環境が正常に機能するためには、さまざまなエンドポイントへの発信アクセスも必要です。 [ExpressRoute を使用した環境のネットワーク構成](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) の記事の「必要なネットワーク接続」というセクションに、App Service Environment で使用されるすべての外部エンドポイントが掲載されています。
@@ -59,7 +60,7 @@ App Service 環境では、仮想ネットワーク用に構成された有効�
 ## <a name="creating-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 ネットワーク セキュリティ グループの動作の詳細については、次の[情報][NetworkSecurityGroups]を参照してください。  下の Azure Service Management のサンプルは、ネットワーク セキュリティ グループの特徴に触れています。ここでは、App Service 環境を含むサブネットでのネットワーク セキュリティ グループの構成と適用に注目しています。
 
-**注:** ネットワーク セキュリティ グループは、 [Azure Portal](https://portal.azure.com) を利用して視覚的に構成することも、Azure PowerShell を利用して構成することもできます。
+**注:** ネットワーク セキュリティ グループは、[Azure portal](https://portal.azure.com) を利用して視覚的に構成することも、Azure PowerShell を利用して構成することもできます。
 
 ネットワーク セキュリティ グループは、最初に、サブスクリプションに関連付けられたスタンドアロン エンティティとして作成されます。 ネットワーク セキュリティ グループは Azure リージョン内に作成されるため、ネットワーク セキュリティ グループが App Service 環境と同じリージョンに作成されるようにします。
 

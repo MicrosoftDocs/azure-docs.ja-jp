@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d7943119ed29e03afb6b089a913d4ba2baddc166
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 69ee0c0add2895b30a60db577cc11c83a0e00bb8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49433077"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57854774"
 ---
 # <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>Cloud パートナー ポータルで新しい IoT Edge モジュールのオファーを作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "49433077"
 
 ## <a name="new-offer-form"></a>新しいオファー フォーム 
 
-[Cloud パートナー ポータル](http://cloudpartner.azure.com/)にサインインし、左側のメニュー バーで **[+ 新しいプラン]** を選択します。 [新しいプラン] メニューで、**[IoT Edge モジュール]** を選択して **[新しいオファー]** フォームを表示し、新しい ioT Edge モジュール オファーの資産を定義するプロセスを開始します。 
+[Cloud パートナー ポータル](https://cloudpartner.azure.com/)にサインインし、左側のメニュー バーで **[+ 新しいプラン]** を選択します。 [新しいプラン] メニューで、**[IoT Edge モジュール]** を選択して **[新しいオファー]** フォームを表示し、新しい ioT Edge モジュール オファーの資産を定義するプロセスを開始します。 
 
 ![新しい IoT Edge モジュール オファーのユーザー インターフェイスの選択](./media/new-iot-edge-module-offer.png)
 

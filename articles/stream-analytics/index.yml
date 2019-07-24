@@ -1,22 +1,22 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 439ac4e49941e425601124f2209eb67faa74cd43
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: f43db52a3fcfef17b56d5053b56e315e81fda27e
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687166"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732587"
 documentType: LandingData
 title: Stream Analytics のドキュメント
 metadata:
   title: Azure Stream Analytics のドキュメント - チュートリアル、API リファレンス
   meta.description: Learn how to run IoT analytics in the cloud with fully-managed event processing. Analyze data in real time from applications, sensors, devices, and more.
   services: stream-analytics
-  author: jasonwhowell
+  author: mamccrea
   ms.author: mamccrea
-  manager: kfile
   ms.service: stream-analytics
   ms.topic: landing-page
-  ms.date: 04/25/2018
+  ms.date: 12/06/2018
+  ms.custom: seodec18
 abstract:
   description: フル マネージドのイベント処理エンジンである Stream Analytics を使用してクラウド内で IoT (モノのインターネット) 分析を実行する方法について説明します。 チュートリアルなどのドキュメントでは、アプリケーション、センサー、デバイス、ソーシャル メディアなどからリアルタイムでデータを分析する方法を紹介します。
   aside:
@@ -25,7 +25,7 @@ abstract:
       height: 110
       src: ./media/index/streaming-analytics-thumbnail.png
       width: 250
-    title: Azure Stream Analytics を使用して、クラウドと IoT Edge 上でのリアルタイム分析と ML モデルを有効にします。 (1:15:05)
+    title: Azure Stream Analytics を使用したリアルタイム分析と機械学習 (1:15:05)
     href: https://myignite.techcommunity.microsoft.com/sessions/65358?source=sessions#ignite-html-anchor
     width: 250
 sections:
@@ -69,8 +69,8 @@ sections:
     - title: プレビュー
       html: <p><a href="stream-analytics-previews#public-previews">パブリック プレビュー</a></p><p><a href="stream-analytics-previews#private-previews">プライベート プレビュー</a></p>
     - title: コマンド ライン
-      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/?view=azurermps-6.8.1#stream_analytics">Azure PowerShell</a></p>
+      html: <p><a href="https://docs.microsoft.com/powershell/module/az.streamanalytics/#stream_analytics">Azure PowerShell</a></p>
     - title: Languages
       html: <p><a href="/dotnet/api/microsoft.azure.management.streamanalytics?view=azuremgmtstreamanalytics-1.8.3">.NET</a></p><p><a href="https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference">Stream Analytics クエリ言語</a></p>
-    - title: REST ()
-      html: <p><a href="/rest/api/streamanalytics">REST API リファレンスに関するページ</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/streamanalytics">REST API リファレンス</a></p>

@@ -1,0 +1,76 @@
+items:
+- name: 概要
+  items:
+  - name: クラウド パートナー ポータルについて
+    href: ./cloud-partner-portal-what-is-the-cloud-partner-portal.md
+- name: 作業開始
+  items:
+  - name: クラウド パートナー ポータルの概要
+    href: ./cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
+  - name: サポートされる製品
+    href: ./Cloud-partner-portal-products-that-can-get-published-via-portal.md
+- name: ハウツー ガイド
+  items:
+  - name: 仮想マシンの管理
+    items:
+    - name: 仮想マシンのオファーの作成
+      href: ./cloud-partner-portal-publish-virtual-machine.md
+      items:
+      - name: 前提条件
+        href: ./cloud-partner-portal-publish-virtual-machine.md#what-are-pre-requisites-for-publishing-a-vm
+      - name: Microsoft 開発者アカウントの登録
+        href: ./cloud-partner-portal-dev-center-accounts-registration.md
+      - name: 新しい VM オファーの作成
+        href: ./cloud-partner-portal-publish-virtual-machine.md#how-to-create-a-new-vm-offer
+      - name: オファーの設定フォーム
+        href: ./cloud-partner-portal-publish-virtual-machine.md#how-to-fill-out-the-offer-settings-form
+      - name: '[SKU] フォーム'
+        href: ./cloud-partner-portal-publish-virtual-machine.md#how-to-create-skus
+        items:
+        - name: 価格
+          href: ./cloud-partner-portal-publish-virtual-machine.md#pricing
+        - name: VM イメージ
+          href: cloud-partner-portal-publish-virtual-machine.md#vm-images
+      - name: '[Marketplace] フォーム'
+        href: ./cloud-partner-portal-publish-virtual-machine.md#marketplace-form
+      - name: '[サポート] フォーム'
+        href: cloud-partner-portal-publish-virtual-machine.md#support-form
+    - name: VM オファーの発行
+      href: ./Cloud-partner-portal-make-offer-live-on-Azure-Marketplace.md
+    - name: 既存のオファーの更新
+      href: ./cloud-partner-portal-update-existing-offer.md
+    - name: VM オファーおよび SKU の削除
+      href: ./cloud-partner-portal-delete-an-offer.md
+    - name: クラウド パートナー ポータルへの移行
+      href: ./cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md
+  - name: Azure Marketplace 販売者ガイド
+    href: ./cloud-partner-portal-seller-guide.md
+  - name: 潜在顧客の獲得
+    href: ./cloud-partner-portal-get-customer-leads.md
+    items:
+    - name: Azure テーブル
+      href: ./cloud-partner-portal-lead-management-instructions-azure-table.md
+    - name: Dynamics CRM Online
+      href: ./cloud-partner-portal-lead-management-instructions-dynamics.md
+    - name: Salesforce
+      href: ./cloud-partner-portal-lead-management-instructions-salesforce.md
+    - name: Marketo
+      href: ./cloud-partner-portal-lead-management-instructions-marketo.md
+  - name: 発行元プロファイルの管理
+    href: ./cloud-partner-portal-manage-publisher-profile.md
+  - name: ユーザーの管理
+    href: ./cloud-partner-portal-manage-users.md
+  - name: サポートを受ける
+    href: ./cloud-partner-portal-support-for-cloud-partner-portal.md
+- name: リソース
+  items:
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+ms.openlocfilehash: 1edb304ce457eac6db66b31b126309c4427f2c9e
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340797"

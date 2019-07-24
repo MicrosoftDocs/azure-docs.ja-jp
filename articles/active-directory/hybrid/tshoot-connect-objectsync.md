@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: オブジェクト同期のトラブルシューティング | Microsoft Docs'
+title: Azure AD Connect:オブジェクト同期のトラブルシューティング | Microsoft Docs
 description: このトピックでは、トラブルシューティング タスクを使用してオブジェクト同期の問題のトラブルシューティングを行う手順を示します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.service: active-directory
 ms.workload: identity
@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c810e121b751d098bd0fbda09db51c031f003460
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 82139178d4c1db4774d539180e41e49699d8ee12
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310241"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174216"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync を使用したオブジェクト同期のトラブルシューティング
 この条項では、トラブルシューティングタスクを使用し、オブジェクト同期の問題のトラブルシューティングを行う手順を示します。 Azure Active Directory (Azure AD) Connect でどのようにトラブルシューティングが行われるか確認するには、[ このショートビデオ ](https://aka.ms/AADCTSVideo) をご覧ください。
@@ -36,13 +37,13 @@ Azure AD Connect のバージョン 1.1.749.0 以上のデプロイについて�
 4.  [追加のタスク] ページに移動し、[トラブルシューティング] を選択して [次へ] をクリックします。
 5.  トラブルシューティング ページで、[起動] をクリックして PowerShell でトラブルシューティング メニューを起動します。
 6.  メイン メニューで、[オブジェクト同期のトラブルシューティング]\(Troubleshoot Object Synchronization\) を選択します。
-![](media\tshoot-connect-objectsync\objsynch11.png)
+![](media/tshoot-connect-objectsync/objsynch11.png)
 
 ### <a name="troubleshooting-input-parameters"></a>入力パラメーターのトラブルシューティング
 トラブルシューティング タスクでは、次の入力パラメーターが必要です。
 1.  **オブジェクトの識別名** – これは、トラブルシューティングが必要なオブジェクトの識別名です
 2.  **AD コネクタ名** – これは、上記のオブジェクトが存在している AD フォレストの名前です。
-3.  Azure AD テナント グローバル管理者の資格情報![](media\tshoot-connect-objectsync\objsynch1.png)
+3.  Azure AD テナント グローバル管理者の資格情報![](media/tshoot-connect-objectsync/objsynch1.png)
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>トラブルシューティング タスクの結果を理解する
 トラブルシューティング タスクでは、次のチェックが実行されます。
@@ -59,27 +60,27 @@ Azure AD Connect のバージョン 1.1.749.0 以上のデプロイについて�
 ### <a name="upn-suffix-is-not-verified-with-azure-ad-tenant"></a>UPN サフィックスが Azure AD テナントで検証されない
 UserPrincipalName (UPN)/代替ログイン ID サフィックスが Azure AD テナントで検証されない場合、Azure Active Directory では、UPN サフィックスが既定のドメイン名 "onmicrosoft.com" に置き換えられます。
 
-![](media\tshoot-connect-objectsync\objsynch2.png)
+![](media/tshoot-connect-objectsync/objsynch2.png)
 
 ### <a name="changing-upn-suffix-from-one-federated-domain-to-another-federated-domain"></a>ユーザー プリンシパル名サフィックスを、あるフェデレーション ドメインから別のフェデレーション ドメインに変更する
 Azure Active Directory では、UserPrincipalName (UPN)/代替ログイン ID サフィックスの同期を、あるフェデレーション ドメインから別のフェデレーション ドメインへと変更することはできません。 これは、Azure AD テナントで検証され、かつ認証の種類がフェデレーションであるドメインに適用されます。
 
-![](media\tshoot-connect-objectsync\objsynch3.png) 
+![](media/tshoot-connect-objectsync/objsynch3.png) 
 
 ### <a name="azure-ad-tenant-dirsync-feature-synchronizeupnformanagedusers-is-disabled"></a>Azure AD テナントの DirSync 機能 'SynchronizeUpnForManagedUsers' が無効になっている
 Azure AD テナントの DirSync 機能 'SynchronizeUpnForManagedUsers' が無効になっている場合、Azure Active Directory では、管理された認証を使用しているライセンス ユーザー アカウントについて、UserPrincipalName/代替ログイン ID への同期更新を行うことができません。
 
-![](media\tshoot-connect-objectsync\objsynch4.png)
+![](media/tshoot-connect-objectsync/objsynch4.png)
 
 ## <a name="object-is-filtered-due-to-domain-filtering"></a>オブジェクトがドメイン フィルタリングによってフィルター処理されている
 ### <a name="domain-is-not-configured-to-sync"></a>ドメインが同期するように構成されていない
 ドメインが構成されていないため、オブジェクトはスコープ外となります。 下記の例では、オブジェクトの属しているドメインが同期対象から除外されているため、オブジェクトが同期スコープ外となっています。
 
-![](media\tshoot-connect-objectsync\objsynch5.png)
+![](media/tshoot-connect-objectsync/objsynch5.png)
 
 ### <a name="domain-is-configured-to-sync-but-is-missing-run-profilesrun-steps"></a>ドメインが同期用に構成されているが、実行プロファイル/実行スッテップがない
 ドメインの実行プロファイル/実行スッテップがないため、オブジェクトはスコープ外となります。 下記の例では、オブジェクトの属しているドメインにフル インポート実行プロファイルの実行ステップがないため、オブジェクトが同期スコープ外となっています。
-![](media\tshoot-connect-objectsync\objsynch6.png)
+![](media/tshoot-connect-objectsync/objsynch6.png)
 
 ## <a name="object-is-filtered-due-to-ou-filtering"></a>オブジェクトが OU フィルタリングによってフィルター処理されている
 OU フィルタリング構成によって、オブジェクトは同期スコープ外となります。 下記の例では、オブジェクトは OU=NoSync,DC=bvtadwbackdc,DC=com に属しています。  この OU は同期スコープに含まれません。</br>
@@ -98,7 +99,7 @@ OU フィルタリング構成によって、オブジェクトは同期スコ�
 ## <a name="html-report"></a>HTML レポート
 トラブルシューティング タスクでは、オブジェクトを分析するだけでなく、オブジェクトについてわかっているすべての情報を含んだ、HTML レポートを生成することもできます。 この HTML レポートを必要に応じてサポート チームと共有し、さらなるトラブルシューティングを行うこともできます。
 
-![](media\tshoot-connect-objectsync\objsynch8.png)
+![](media/tshoot-connect-objectsync/objsynch8.png)
 
 ## <a name="next-steps"></a>次の手順
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

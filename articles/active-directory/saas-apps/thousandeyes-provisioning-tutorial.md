@@ -1,29 +1,29 @@
 ---
-title: 'チュートリアル: ThousandEyes を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+title: チュートリアル:ThousandEyes を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを ThousandEyes に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
-manager: mtillman
+manager: daveba
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 03/28/2019
 ms.author: asmalser-msft
-ms.openlocfilehash: d2912c687d4968a239d5af747df4115ffd71bbeb
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bb9ac9974be94195f6ed0315aece7dfea749ce33
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345762"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59271783"
 ---
-# <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>チュートリアル: ThousandEyes を構成し、自動ユーザー プロビジョニングに対応させる
-
+# <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>チュートリアル:ThousandEyes を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure AD から ThousandEyes にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで ThousandEyes と Azure AD で実行する必要がある手順について説明します。 
 
@@ -31,9 +31,9 @@ ms.locfileid: "44345762"
 
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
-*   Azure Active Directory テナント
-*   [Standard プラン](https://www.thousandeyes.com/pricing)以上が有効な ThousandEyes テナント 
-*   Admin アクセス許可がある ThousandEyes のユーザー アカウント 
+* Azure Active Directory テナント
+* [Standard プラン](https://www.thousandeyes.com/pricing)以上が有効な ThousandEyes テナント 
+* Admin アクセス許可がある ThousandEyes のユーザー アカウント 
 
 > [!NOTE]
 > Azure AD プロビジョニング統合では、Standard プラン以上の ThousandEyes チームで使用できる [ThousandEyes SCIM API](https://success.thousandeyes.com/PublicArticlePage?articleIdParam=kA044000000CnWrCAK) が必要です。
@@ -48,10 +48,9 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="important-tips-for-assigning-users-to-thousandeyes"></a>ユーザーを ThousandEyes に割り当てる際の重要なヒント
 
-*   単一の Azure AD ユーザーを ThousandEyes に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
+* 単一の Azure AD ユーザーを ThousandEyes に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
 
-*   ThousandEyes にユーザーを割り当てるときは、**ユーザー** ロールまたは別の有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選ぶ必要があります。 **[既定のアクセス]** ロールはプロビジョニングでは使うことができず、このロールのユーザーはスキップされます。
-
+* ThousandEyes にユーザーを割り当てるときは、**ユーザー** ロールまたは別の有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選ぶ必要があります。 **[既定のアクセス]** ロールはプロビジョニングでは使うことができず、このロールのユーザーはスキップされます。
 
 ## <a name="configuring-user-provisioning-to-thousandeyes"></a>ThousandEyes へのユーザー プロビジョニングの構成 
 
@@ -60,9 +59,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 > [!TIP]
 > ThousandEyes では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Azure Portal](https://portal.azure.com) で説明されている手順に従ってください。 シングル サインオンは自動プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
-
 ### <a name="configure-automatic-user-account-provisioning-to-thousandeyes-in-azure-ad"></a>Azure AD で ThousandEyes への自動ユーザー アカウント プロビジョニングを構成する
-
 
 1. [Azure Portal](https://portal.azure.com) で、**[Azure Active Directory]、[エンタープライズ アプリ]、[すべてのアプリケーション]** セクションの順に移動します。
 
@@ -74,7 +71,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![ThousandEyes のプロビジョニング](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
 
-5. **[管理者資格情報]** セクションで、ThousandEyes のアカウントによって生成された **[シークレット トークン]** を入力します (トークンは、ThousandEyes アカウントの **[Security & Authentication]\(セキュリティと認証\)** で確認できます)。 
+5. **[管理者資格情報]** セクションで、ThousandEyes のアカウントによって生成された **[OAuth ベアラー トークン]** を入力します (トークンは、ThousandEyes アカウントの **[プロファイル]** で確認できます)。
 
     ![ThousandEyes のプロビジョニング](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 
@@ -82,7 +79,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 7. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、[エラーが発生したときにメール通知を送信します] チェック ボックスをオンにします。
 
-8. **[Save]** をクリックします。 
+8. **[Save]** をクリックします。
 
 9. [マッピング] セクションの **[Synchronize Azure Active Directory Users to ThousandEyes]\(Azure Active Directory ユーザーを ThousandEyes に同期する\)** を選びます。
 
@@ -90,12 +87,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 11. ThousandEyes に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
-12. **[Save]** をクリックします。 
+12. **[Save]** をクリックします。
 
 これにより、[ユーザーとグループ] セクションで ThousandEyes に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。このログには、プロビジョニング サービスによって実行されたすべてのアクションが記載されています。
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
-
 
 ## <a name="additional-resources"></a>その他のリソース
 

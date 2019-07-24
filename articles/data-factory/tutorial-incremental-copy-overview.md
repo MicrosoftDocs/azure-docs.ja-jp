@@ -9,22 +9,21 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 5151ef834a35f410d8caf9904cd3c7567a8958ad
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: cb75e943416c227730589ab5e7feeb7b8ba5e245
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43088778"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957931"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>ソース データ ストアからターゲット データ ストアにデータを増分読み込みする
 
 データ統合ソリューションでは、初回のフル データ読み込みの後、増分 (または差分) データを読み込む手法が広く利用されています。 このセクションの各チュートリアルでは、Azure Data Factory を使用して、データを増分読み込みするさまざまな方法を紹介しています。
 
-## <a name="delta-data-loading-by-using-a-watermark"></a>基準値を使用した差分データの読み込み
+## <a name="delta-data-loading-from-database-by-using-a-watermark"></a>基準値を使用してデータベースから差分データを読み込む
 このケースでは、ソース データベースにおける基準値を定義します。 基準値とは、最終更新タイムスタンプやインクリメントされるキーを格納する列のことです。 差分読み込みソリューションでは、古い基準値から新しい基準値までの間に生じた変更済みのデータが読み込まれます。 このアプローチのワークフローを表したのが次の図です。 
 
 ![基準値を使用するためのワークフロー](media/tutorial-incremental-copy-overview/workflow-using-watermark.png)
@@ -34,7 +33,7 @@ ms.locfileid: "43088778"
 - [Azure SQL Database 内の 1 つのテーブルから Azure BLOB ストレージにデータを増分コピーする](tutorial-incremental-copy-powershell.md)
 - [オンプレミスの SQL Server にある複数のテーブルから Azure SQL Database にデータを増分コピーする](tutorial-incremental-copy-multiple-tables-powershell.md)
 
-## <a name="delta-data-loading-by-using-the-change-tracking-technology"></a>Change Tracking テクノロジを使用した差分データの読み込み
+## <a name="delta-data-loading-from-sql-db-by-using-the-change-tracking-technology"></a>Change Tracking テクノロジを使用して SQL DB から差分データを読み込む
 Change Tracking テクノロジは、SQL Server と Azure SQL Database において、アプリケーションのための効率的な変更追跡メカニズムとなる軽量ソリューションです。 挿入、更新、削除されたデータをアプリケーションから簡単に特定することができます。 
 
 このアプローチのワークフローを表したのが次の図です。
@@ -43,6 +42,18 @@ Change Tracking テクノロジは、SQL Server と Azure SQL Database におい
 
 具体的な手順については、次のチュートリアルを参照してください。 <br/>
 [Change Tracking テクノロジを使用して Azure SQL Database から Azure BLOB ストレージにデータを増分コピーする](tutorial-incremental-copy-change-tracking-feature-powershell.md)
+
+## <a name="loading-new-and-changed-files-only-by-using-lastmodifieddate"></a>LastModifiedDate を使用して新しいファイルと変更済みのファイルを読み込む
+まずファイルのメタデータ (LastModifiedDate) を取得したうえで、新しいファイルと変更済みのファイルのみを対象のストアにコピーします。
+
+具体的な手順については、次のチュートリアルを参照してください。 <br/>
+[LastModifiedDate に基づいて新しいファイルと変更済みのファイルを Azure Blob Storage から Azure Blob Storage に増分コピーする](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
+
+## <a name="loading-new-files-only-by-using-time-partitioned-folder-or-file-name"></a>時間でパーティション分割されたフォルダーまたはファイルの名前を使用して新しいファイルを読み込む
+ファイルまたはフォルダーが時間 (ファイル名またはフォルダー名に含まれるタイムスライス情報) でパーティション分割されているときに (例: /yyyy/mm/dd/file.csv)、新しいファイルのみをコピーすることができます。 
+
+具体的な手順については、次のチュートリアルを参照してください。 <br/>
+[時間でパーティション分割されたフォルダー名またはファイル名に基づく新しいファイルを Azure Blob Storage から Azure Blob Storage に増分コピーする](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)
 
 ## <a name="next-steps"></a>次の手順
 次のチュートリアルに進みます。 

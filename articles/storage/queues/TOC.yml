@@ -1,13 +1,155 @@
 items:
+- name: Azure Storage のドキュメント
+  href: /azure/storage/
 - name: 概要
   items:
-  - name: キューの概要
+  - name: Azure キューとは
     href: storage-queues-introduction.md
-- name: 作業開始
+  expanded: true
+- name: クイック スタート
   items:
   - name: ストレージ アカウントの作成
-    href: ../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-  - name: 開発
+    displayName: resource manager, resource manager template, template, ARM
+    href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+  - name: コードを使用しないクエリの管理
+    items:
+    - name: Azure ポータル
+      href: storage-quickstart-queues-portal.md
+  - name: キューを使用した開発
+    items:
+    - name: .NET
+      href: storage-quickstart-queues-dotnet.md
+- name: サンプル
+  items:
+  - name: .NET
+    href: ../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+  - name: Java
+    href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+- name: 概念
+  items:
+  - name: ストレージ アカウント
+    href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+  - name: セキュリティ
+    items:
+    - name: Authorization
+      href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      items:
+      - name: Azure AD による認証
+        href: ../common/storage-auth-aad.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      - name: 共有キーによる承認
+        href: /rest/api/storageservices/authorize-with-shared-key
+      - name: SAS による承認
+        href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: セキュリティ ガイド
+      href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: 保存データの暗号化
+      href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: カスタマー キーでの保存時の暗号化
+      href: ../common/storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: 高度な脅威保護
+      href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: Azure Storage クライアントのセキュリティで保護された TLS の有効化
+      href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+  - name: データの冗長性
+    href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    items:
+    - name: ローカル冗長ストレージ
+      href: ../common/storage-redundancy-lrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: ゾーン冗長ストレージ
+      href: ../common/storage-redundancy-zrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: geo 冗長ストレージ
+      href: ../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: ディザスター リカバリーとフェールオーバー
+      href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: RA-GRS を使用した HA アプリの設計
+      href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+  - name: パフォーマンスとスケーリング
+    items:
+    - name: スケーラビリティとパフォーマンスのターゲット
+      href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: パフォーマンスとスケーラビリティのチェックリスト
+      href: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+  - name: コンカレンシー
+    href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+  - name: 監視とトラブルシューティング
+    items:
+    - name: トラブルシューティングのチュートリアル
+      href: ../common/storage-e2e-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: 監視、診断、およびトラブルシューティング
+      href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: Azure Portal での監視
+      href: ../common/storage-monitor-storage-account.md??toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: メトリックとログ
+      items:
+      - name: Azure Monitor のメトリック
+        href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      - name: 新しいメトリックへの移行
+        href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      - name: Storage Analytics
+        href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      - name: Storage Analytics のメトリック (クラシック)
+        href: ../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      - name: Storage Analytics のログ
+        href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+- name: 方法
+  items:
+  - name: ストレージ アカウント
+    items:
+    - name: ストレージ アカウントの管理
+      href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: ストレージ アカウントのアップグレード
+      href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+  - name: セキュリティ保護
+    items:
+    - name: キュー データへのアクセスの承認
+      items:
+      - name: ユーザーの承認オプション
+        items:
+        - name: ポータル
+          href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: CLI または PowerShell
+          href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      - name: RBAC を使用したアクセス権の管理
+        items:
+        - name: ポータル
+          href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: CLI
+          href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: PowerShell
+          href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      - name: Azure AD による認証
+        items:
+        - name: アプリケーションからの認証
+          href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: マネージド ID による認証
+          href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      - name: 共有キーによる承認
+        items:
+        - name: 接続文字列の構成
+          href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Azure Storage REST API の使用
+          href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: ファイアウォールと仮想ネットワークの構成
+      href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: クライアント側暗号化
+      items:
+      - name: .NET
+        href: ../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      - name: Java
+        href: ../common/storage-client-side-encryption-java.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+      - name: Python
+        href: ../common/storage-client-side-encryption-python.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: Azure Storage クライアントのセキュリティで保護された TLS の有効化
+      href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+    - name: 安全な転送が必要
+      href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+  - name: 障害復旧
+    items:
+    - name: アカウントのフェールオーバーを開始する
+      href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+  - name: ストレージ エミュレーターの使用
+    href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+  - name: キューを使用した開発
     items:
     - name: .NET
       href: storage-dotnet-how-to-use-queues.md
@@ -23,72 +165,7 @@ items:
       href: storage-python-how-to-use-queue-storage.md
     - name: Ruby
       href: storage-ruby-how-to-use-queue-storage.md
-    - name: PowerShell
-      href: storage-powershell-how-to-use-queues.md
-- name: 概念
-  items:
-  - name: ストレージ アカウント
-    href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    items:
-    - name: ストレージ アカウントの管理
-      href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: ストレージ アカウントのアップグレード
-      href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-  - name: Authorization
-    href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    items:
-    - name: Azure AD による認証
-      href: ../common/storage-auth-aad.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      items:
-      - name: RBAC を使用したアクセス権の管理
-        href: ../common/storage-auth-aad-rbac.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      - name: アプリケーションからの認証
-        href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      - name: マネージド ID による認証
-        href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      - name: CLI または PowerShell での Azure AD ID の使用
-        href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: 共有キーによる承認
-      href: /rest/api/storageservices/authorize-with-shared-key
-    - name: SAS による承認
-      href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-- name: 方法
-  items:
-  - name: 計画と設計
-    items:
-    - name: データの冗長性
-      items:
-      - name: 冗長性の概要
-        href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      - name: ローカル冗長ストレージ
-        href: ../common/storage-redundancy-lrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      - name: ゾーン冗長ストレージ
-        href: ../common/storage-redundancy-zrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      - name: geo 冗長ストレージ
-        href: ../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: RA-GRS を使用した HA アプリの設計
-      href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: スケーラビリティとパフォーマンスのターゲット
-      href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: パフォーマンスとスケーラビリティのチェックリスト
-      href: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: コンカレンシー
-      href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: ディザスター リカバリーの ガイダンス
-      href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-  - name: 開発
-    items:
-    - name: サンプル
-      items:
-      - name: .NET
-        href: ../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      - name: Java
-        href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: 接続文字列の構成
-      href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: ストレージ エミュレーターの使用
-      href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-  - name: 管理
+  - name: キューの管理
     items:
     - name: Azure キュー用の PowerShell
       href: storage-powershell-how-to-use-queues.md
@@ -96,52 +173,6 @@ items:
       href: ../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: 中国、政府機関、ドイツのクラウド用の PowerShell
       href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Azure Automation
-      href: ../common/storage-manage-with-automation.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-  - name: セキュリティ保護
-    items:
-    - name: セキュリティ ガイド
-      href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: ファイアウォールと仮想ネットワークの構成
-      href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Azure Storage クライアントのセキュリティで保護された TLS の有効化
-      href: ../common/storage-security-tls.md
-    - name: コンプライアンス認証
-      href: ../common/storage-compliance-offerings.md
-    - name: クライアント側暗号化
-      items:
-      - name: .NET
-        href: ../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      - name: Java
-        href: ../common/storage-client-side-encryption-java.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      - name: Python
-        href: ../common/storage-client-side-encryption-python.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: 保存データの暗号化
-      href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: 共有キー認証
-      href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
-    - name: Shared Access Signatures (SAS)
-      href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: 安全な転送が必要
-      href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-  - name: 監視とトラブルシューティング
-    items:
-    - name: トラブルシューティングのチュートリアル
-      href: ../common/storage-e2e-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: 監視、診断、およびトラブルシューティング
-      href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: メトリックとログ
-      items:
-      - name: Azure Monitor のメトリック
-        href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      - name: 新しいメトリックへの移行
-        href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      - name: Storage Analytics
-        href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-      - name: メトリックの有効化と表示 (クラシック)
-        href: ../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-  - name: サンプル
-    href: https://azure.microsoft.com/documentation/samples/?service=storage&term=queue
 - name: リファレンス
   items:
   - name: PowerShell
@@ -165,18 +196,18 @@ items:
   - name: Node.js
     href: https://docs.microsoft.com/javascript/api/overview/azure/storage
   - name: Ruby
-    href: http://azure.github.io/azure-storage-ruby
+    href: https://azure.github.io/azure-storage-ruby
   - name: PHP
-    href: http://azure.github.io/azure-storage-php/
+    href: https://azure.github.io/azure-storage-php/
   - name: Python
     href: https://docs.microsoft.com/python/api/overview/azure/storage
   - name: C++
-    href: http://azure.github.io/azure-storage-cpp
+    href: https://azure.github.io/azure-storage-cpp
   - name: iOS
-    href: http://azure.github.io/azure-storage-ios/
+    href: https://azure.github.io/azure-storage-ios/
   - name: Android
-    href: http://azure.github.io/azure-storage-android
-  - name: REST ()
+    href: https://azure.github.io/azure-storage-android
+  - name: REST
     items:
     - name: BLOB、キュー、テーブル、ファイル
       href: /rest/api/storageservices
@@ -184,6 +215,9 @@ items:
       href: /rest/api/storagerp
     - name: Import/Export
       href: /rest/api/storageimportexport
+  - name: Resource Manager テンプレート
+    displayName: ARM
+    href: /azure/templates/microsoft.storage/allversions
 - name: リソース
   items:
   - name: Azure のロードマップ
@@ -197,7 +231,7 @@ items:
   - name: 料金計算ツール
     href: https://azure.microsoft.com/pricing/calculator/
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/windows-azure-storage
+    href: https://stackoverflow.com/questions/tagged/windows-azure-storage
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=storage
   - name: Azure ストレージ エクスプローラー
@@ -229,7 +263,7 @@ items:
       - name: リソース プロバイダー
         href: https://github.com/Azure/azure-sdk-for-net
     - name: Node.js
-      href: http://azure.github.io/azure-storage-node/
+      href: https://azure.github.io/azure-storage-node/
     - name: Java
       href: https://github.com/Azure/azure-storage-java
     - name: C++
@@ -242,9 +276,11 @@ items:
       href: https://github.com/Azure/azure-storage-ruby
     - name: iOS
       href: https://github.com/Azure/azure-storage-ios
-ms.openlocfilehash: 70ae757477631d7c09cc8f9f6306703ea799f759
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+  - name: コンプライアンス認証
+    href: ../common/storage-compliance-offerings.md
+ms.openlocfilehash: 0aaac348743077c15fd1b25416e7509adeee3d56
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632980"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754713"

@@ -1,72 +1,100 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: aa53bfd0028813479b99e84638eaf6f39dac5008
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456288"
 documentType: LandingData
-title: Bing News Search のドキュメント
+title: Bing News Search API ドキュメント
+titleSuffix: Azure Cognitive Services
 metadata:
-  title: Bing Web Search のドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
-  description: Bing News Search API を使用して、ユーザーのクエリに関連する Web からニュースを取得する方法について説明します。 チュートリアルでは、このサービスを使用するアプリを構築する方法を説明します。
+  title: Bing Web Search API のドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
+  description: Bing News Search API を使用して Web でニュースを検索する方法について説明します。
   services: cognitive-services
   author: mikedodaro
   manager: rosh
   ms.service: cognitive-services
-  ms.component: bing-video-search
+  ms.subservice: bing-video-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/02/2017
+  ms.date: 01/16/2019
   ms.author: v-gedod
 abstract:
-  description: Bing News Search API は、Bing よって特定される、ユーザーのクエリに関連するニュース記事の一覧を返すことによって、Bing News と同様のエクスペリエンスを提供します。
+  description: Bing News Search API を使用すると、アプリケーションに Bing のニュース検索機能を統合できます。 この API を使用して検索クエリを送信すると、bing.com/news のように、複数のカテゴリやソースから関連するニュース記事を取得できます。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: クエリを作成して JSON 応答を表示することで、Bing News Search API の使用を開始します。
-  - type: list
-    style: icon48
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/bing-news-search/search-the-web
+            html: <p>Bing News Search API について説明します</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Bing News Search API とは
+          - href: /azure/cognitive-services/bing-news-search/concepts/send-search-queries
+            html: <p>Bing News Search API に検索要求を送信する方法について説明します。</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: 検索クエリの送信
+          - href: /azure/cognitive-services/bing-news-search/concepts/search-for-news
+            html: <p>複数の種類やカテゴリのニュースを検索する方法について説明します。</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: ニュースの検索
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: media/index/logo_csharp.svg
-      href: csharp
-      text: C&#35;
-    - image:
-        src: media/index/logo_java.svg
-      href: java
-      text: Java
-    - image:
-        src: media/index/logo_nodejs.svg
-      href: nodejs
-      text: Node.js
-    - image:
-        src: media/index/logo_php.svg
-      href: php
-      text: PHP
-    - image:
-        src: media/index/logo_python.svg
-      href: python
-      text: Python
-    - image:
-        src: media/index/logo_ruby.svg
-      href: ruby
-      text: Ruby
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Bing News Search API を使用してアプリケーションを開発します。
-  - type: paragraph
-    text: <a href="tutorial-bing-news-search-single-page-app">シングルページの Web アプリ</a> &#124; <a href="tutorial-bing-news-search-single-page-app-source">ソース コード</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Web でのニュース検索に使用する方法
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_csharp.svg
+            href: news-search-sdk-quickstart
+            text: 'C&#35;'
+          - image:
+              src: media/index/logo_java.svg
+            href: news-sdk-java-quickstart
+            text: Java
+          - image:
+              src: media/index/logo_nodejs.svg
+            href: news-search-sdk-node-quickstart
+            text: Node.js
+          - image:
+              src: media/index/logo_php.svg
+            href: php
+            text: PHP
+          - image:
+              src: media/index/logo_python.svg
+            href: news-sdk-python-quickstart
+            text: Python
+          - image:
+              src: media/index/logo_ruby.svg
+            href: ruby
+            text: Ruby
+  - title: ステップバイステップのチュートリアル
     items:
-    - title: API
-      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference">Bing News Search API v7</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference">Bing News Search API v5</a></p>
-    - title: SDK
-      html: <p><a href="sdk.md">Bing Search SDK</a></p>
+      - type: paragraph
+        text: Bing News Search API を使用してアプリケーションを開発します。
+      - type: paragraph
+        text: <a href="tutorial-bing-news-search-single-page-app">単一ページの Web アプリ</a>
+  - title: サンプル
+    items:
+      - type: paragraph
+        text: 'Bing News Search API のサンプルを見つける:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="sdk.md">コード サンプル</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: API
+            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference">Bing News Search API v7</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference">Bing News Search API v5</a></p>'
+          - title: SDK
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingnews?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/newssearch?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/newssearch?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-newssearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/newssearch">Go</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: CLI
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'

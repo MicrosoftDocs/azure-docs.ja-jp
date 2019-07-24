@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/31/2018
+ms.date: 03/18/2019
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 7b9c9a600d105d4b7fbbeb4f52ee42b5eb2bcaaa
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: bb5a4b3a3019007948a9996ed6715e755f284f9e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275872"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175169"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -51,15 +51,15 @@ Cloudyn ポータルですべての使用状況とコストを確認します。
 
 レポートの例を以下に示します。
 
-![レポートの例](./media/tutorial-review-usage/actual-cost01.png)
+![実績経過コスト レポートの例](./media/tutorial-review-usage/actual-cost01.png)
 
 レポートには、過去 30 日間の支出がすべて表示されます。 Azure サービスに関する支出のみを表示するには、サービス グループを適用してから、すべての Azure サービスをフィルターします。 次の図は、フィルターされたサービスを示しています。
 
-![フィルターされたサービス](./media/tutorial-review-usage/actual-cost02.png)
+![フィルター処理された Azure サービスを示す例](./media/tutorial-review-usage/actual-cost02.png)
 
 前の例では、2018-10-29 以降に費やされた金額が以前より少なくなっています。 しかし、列が多すぎると、傾向がわかりにくくなる場合があります。 レポート ビューを折れ線グラフや面グラフに変更して、他のビューでデータを確認できます。 次の画像では、傾向がわかりやすくなっています。
 
-![レポートにおける傾向](./media/tutorial-review-usage/actual-cost03.png)
+![Azure VM コストの減少傾向を示す例](./media/tutorial-review-usage/actual-cost03.png)
 
 この例を続けると、Azure VM のコストが低下したことを確認できます。 他の Azure サービスのコストも、その日に低下し始めています。 ここで、支出低下の原因を確認します。 この例では、大規模な作業のプロジェクトが完了したため、多くの Azure サービスの使用量も低下しました。
 
@@ -77,31 +77,39 @@ Cloudyn ポータルですべての使用状況とコストを確認します。
 
 ポータルの上部にあるメニューで、**[オプティマイザー]** > **[Sizing Optimization]\(サイズ設定の最適化\)** > **[Cost Effective Sizing Recommendations]\(コスト効率の高いサイズ設定に関する推奨事項\)** の順にクリックします。 必要に応じて、フィルターを適用して結果を減らします。 以下に例の画像を示します。
 
-![Azure VM](./media/tutorial-review-usage/sizing01.png)
+![Azure VM の費用効果の高いサイズ設定に関する推奨事項レポート](./media/tutorial-review-usage/sizing01.png)
 
 この例では、推奨事項に従って VM インスタンスの種類を変更することで、2,382 ドル節約できました。 最初の推奨事項を参照するには、**[詳細]** の下にあるプラス記号 (+) をクリックします。 最初の推奨事項の詳細は次のように示されます。
 
-![推奨事項の詳細](./media/tutorial-review-usage/sizing02.png)
+![推奨事項の詳細を示す例](./media/tutorial-review-usage/sizing02.png)
 
 **[候補リスト]** の横にあるプラス記号をクリックして、VM インスタンス ID を表示します。
 
-![候補リスト](./media/tutorial-review-usage/sizing03.png)
+![サイズを変更する VM 候補の一覧を示す例](./media/tutorial-review-usage/sizing03.png)
 
 使用状況の非効率性の検出に関するチュートリアル ビデオを見るには、[Cloudyn での VM サイズの最適化](https://youtu.be/1xaZBNmV704)に関する記事を参照してください。
 
-Azure Cost Management では、Azure サービスのコスト節約のための推奨事項も提供されます。 詳細については、「[チュートリアル: 推奨事項に従ってコストを最適化する](tutorial-acm-opt-recommendations.md)」を参照してください。
+Azure Cost Management では、Azure サービスのコスト節約のための推奨事項も提供されます。 詳細については、「[チュートリアル: Optimize costs from recommendations](tutorial-acm-opt-recommendations.md)」 (チュートリアル: 推奨事項に従ってコストを最適化する) を参照してください。
 
 ## <a name="create-alerts-for-unusual-spending"></a>異常な支出に対するアラートを作成する
 
-異常な支出や浪費のリスクについて、関係者に自動的にアラートを表示することができます。 予算やコストのしきい値に基づくアラートをサポートするレポートを使用することで、アラートをすばやく簡単に作成することができます。
+アラートを使用すると、異常な支出や浪費のリスクについて、関係者に自動的に通知できます。 予算やコストのしきい値に基づくアラートをサポートするレポートを使用することで、アラートを作成することができます。
 
-任意のコスト レポートを使用して、支出のアラートを作成します。 この例では、Azure VM の支出が総予算に近づいた場合に通知する実績超過コスト レポートを使用します。 アラートを作成するには、以降の手順をすべて実行する必要があります。 ポータルの上部にあるメニューで、**[コスト]** > **[コスト分析]** > **[実績超過コスト]** の順にクリックします。 **[グループ]** を **[サービス]** に設定し、**[Filter on the service]\(サービスのフィルター\)** を **[Azure/VM]** に設定します。 レポートの右上にある **[アクション]** をクリックしてから **[レポートのスケジュール]** を選択します。
+この例では、**実績経過コスト** レポートを使用して、Azure VM の支出が合計予算に近づいたときに通知を送信します。 このシナリオでは、合計予算が 20,000 ドルで、コストが予算の半分 (9,000 ドル) に近づいたときに通知を受け取り、コストが 10,000 ドルに達したときに追加のアラートを受け取ります。
 
-[Save or Schedule this report]\(このレポートを保存またはスケジュールする\) ボックスの **[スケジュール]** タブを使用して、必要な頻度でレポートを自分自身にメールで送信するようにします。 必ず **[メールで送信]** を選択してください。 使用したタグ、グループ、およびフィルターは、メールで送信されるレポートに含まれます。 **[しきい値]** タブをクリックして、**[Actual Cost vs.Threshold]\(実際のコスト対しきい値\)** を選択します。 総予算が 20,000 ドルで、コストがその約半分に近づいたときに通知を受け取る場合は、10,000 ドルに対して**赤色のアラーム**、9,000 ドルに対して**黄色のアラーム**を作成します。 入力する値にコンマは含めないでください。 次に、連続アラートの数を選択します。 指定したアラートの合計数に達すると、それ以上アラートは送信されません。 スケジュールされたレポートを保存します。
+1. Cloudyn ポータルの上部にあるメニューで、**[コスト]** > **[コスト分析]** > **[実績経過コスト]** の順に選択します。
+2. **[グループ]** を **[サービス]** に設定し、**[Filter on the service]\(サービスのフィルター\)** を **[Azure/VM]** に設定します。
+3. レポートの右上にある **[アクション]** を選択してから **[レポートのスケジュール]** を選択します。
+4. スケジュールされた間隔でレポートのメールを自分に送信するには、**[Save or Schedule this report]\(このレポートを保存またはスケジュールする\)** ダイアログの **[スケジューリング]** タブを選択します。 必ず **[メールで送信]** を選択してください。 使用するタグ、グループ、およびフィルターは、メールで送信されるレポートに含まれます。
+5. **[しきい値]** タブを選択して、**[Actual Cost vs.Threshold]\(実際のコスト対しきい値\)** を選択します。
+   1. **[Red alert]\(赤色のアラート\)** しきい値ボックスに、「10000」と入力します。
+   2. **[Yellow alert]\(黄色のアラート\)** しきい値ボックスに、「9000」と入力します。
+   3. **[Number of consecutive alerts]\(連続アラートの回数\)** ボックスに、受信する連続アラートの回数を入力します。 指定したアラートの合計数に達すると、それ以上アラートは送信されません。
+6. **[保存]** を選択します。
 
-![レポートの例](./media/tutorial-review-usage/schedule-alert01.png)
+![支出しきい値に基づいて赤色と黄色のアラートが示された例](./media/tutorial-review-usage/schedule-alert01.png)
 
-原価率対予算のしきい値メトリックを選択して、アラートを作成することもできます。 そのメトリックを使用すると、通貨値の代わりに、予算のパーセンテージを使用できます。
+**原価率対予算**のしきい値メトリックを選択して、アラートを作成することもできます。 これにより、しきい値を通貨値ではなく予算の割合として指定できます。
 
 ## <a name="export-data"></a>データのエクスポート
 

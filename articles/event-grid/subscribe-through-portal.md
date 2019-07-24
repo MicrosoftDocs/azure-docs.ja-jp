@@ -2,17 +2,17 @@
 title: ポータルを使用した Azure Event Grid サブスクリプション
 description: ポータルから Event Grid サブスクリプションを作成する方法について説明します。
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/08/2018
-ms.author: tomfitz
-ms.openlocfilehash: eb48e40007a25992a9a399176b6a4f93be89efc8
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.date: 01/08/2019
+ms.author: spelluru
+ms.openlocfilehash: b54bc52a2feaf4646d801265ddb273c2c86158ee
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344088"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477908"
 ---
 # <a name="subscribe-to-events-through-portal"></a>ポータルを使用したイベントのサブスクライブ
 

@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 4/15/2019
 ms.author: mayg
-ms.openlocfilehash: c05a97dc5a5fe9a0e8a6f1a8598ff82fcf488ab2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2e1cbb2446501d0afda29eba179e388b5a22e6a8
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253280"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565684"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための IP アドレス指定を設定する
 
@@ -30,8 +30,8 @@ ms.locfileid: "51253280"
 
 レプリケーションとフェールオーバー戦略を計画する際の重要な問題の 1 つとして、フェールオーバー後の Azure VM への接続方法があります。 レプリカの Azure VM のネットワーク戦略を設計する場合は、いくつかの選択肢があります。
 
-- **異なる IP アドレスを使用する**: レプリケートされた Azure VM ネットワークに対して異なる IP アドレス範囲を使用することを選択できます。 このシナリオでは、VM はフェールオーバー後に新しい IP アドレスを取得するため、DNS の更新が必要になります。
-- **同じ IP アドレスを保持する**: フェールオーバー後、Azure ネットワークに対して、プライマリのオンプレミス サイトと同じ IP アドレス範囲を使用することができます。 同じ IP アドレスを維持することで、フェールオーバー後のネットワーク関連の問題が少なくなるため、復旧が簡単になります。 ただし、Azure にレプリケートする場合は、フェールオーバー後に IP アドレスの新しい場所でルートを更新する必要があります。
+- **異なる IP アドレスを使用する**:レプリケートされた Azure VM ネットワークに対して異なる IP アドレス範囲を使用することを選択できます。 このシナリオでは、VM はフェールオーバー後に新しい IP アドレスを取得するため、DNS の更新が必要になります。
+- **同じ IP アドレスを保持する**:フェールオーバー後、Azure ネットワークに対して、プライマリのオンプレミス サイトと同じ IP アドレス範囲を使用することができます。 同じ IP アドレスを維持することで、フェールオーバー後のネットワーク関連の問題が少なくなるため、復旧が簡単になります。 ただし、Azure にレプリケートする場合は、フェールオーバー後に IP アドレスの新しい場所でルートを更新する必要があります。
 
 ## <a name="retaining-ip-addresses"></a>IP アドレスの保持
 
@@ -49,8 +49,8 @@ Site Recovery には、サブネットのフェールオーバーを使用して
 - Woodgrove Bank は、オンプレミス サイトでそのビジネス アプリをホストします。 モバイル アプリは Azure でホストします。
 - オンプレミス エッジ ネットワークと Azure 仮想ネットワークとの間には、VPN サイト間接続が存在します。 VPN 接続により、Azure 内の仮想ネットワークはオンプレミス ネットワークの拡張として表示されます。
 - Woodgrove では、Site Recovery を使用して、オンプレミスのワークロードを Azure にレプリケートしたいと考えています。
- - Woodgrove には、ハード コーディングされた IP アドレスに依存するアプリがあるため、Azure にフェールオーバーした後、アプリの IP アドレスを保持する必要があります。
- - Azure で実行されているリソースが使用する IP アドレスの範囲は、 172.16.1.0/24、172.16.2.0/24 です。
+  - Woodgrove には、ハード コーディングされた IP アドレスに依存するアプリがあるため、Azure にフェールオーバーした後、アプリの IP アドレスを保持する必要があります。
+  - Azure で実行されているリソースが使用する IP アドレスの範囲は、 172.16.1.0/24、172.16.2.0/24 です。
 
 ![サブネットのフェールオーバー前](./media/site-recovery-network-design/network-design7.png)
 
@@ -62,7 +62,7 @@ Woodgrove が IP アドレスを維持したまま VM を Azure にレプリケ�
 
 1. オンプレミス マシンのフェールオーバーの後に Azure VM が作成される Azure 仮想ネットワークを作成します。 これは、アプリケーションがシームレスにフェールオーバーできるように、オンプレミス ネットワークの拡張機能となります。
 2. フェールオーバー前に、Site Recovery で、マシンのプロパティに同じ IP アドレスを割り当てます。 フェールオーバー後、Site Recovery は Azure 仮想マシンにこのアドレスを割り当てます。
-3. フェールオーバーが実行され、同じ IP アドレスで Azure VM が作成されると、それらは [Vnet 間接続](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)を使用してネットワークに接続します。 このアクションはスクリプト化することができます。
+3. フェールオーバーが実行され、同じ IP アドレスで Azure VM が作成されると、それらは [Vnet 間接続](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)を使用してネットワークに接続します。 このアクションはスクリプト化することができます。
 4. 192.168.1.0/24 が Azure に移動したことを反映させるためには、ルートを変更する必要があります。
 
 

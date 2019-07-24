@@ -64,5 +64,5 @@ sections:
     items:
     - title: コマンド ライン
       html: <p><a href="/cli/azure/acs">Azure CLI</a></p>
-    - title: REST ()
+    - title: REST
       html: <p><a href="/rest/api/container-service">REST API</a></p>

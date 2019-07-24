@@ -1,26 +1,26 @@
 ---
 title: 高速データベース復旧 - Azure SQL Database | Microsoft Docs
-description: Azure SQL Database には、単一データベース、エラスティック プール、および Azure SQL Data Warehouse を対象に、高速で一貫性のあるデータベース復旧、瞬間的なトランザクションのロールバック、および積極的なログの切り捨て動作を提供する、新しい機能があります。
+description: Azure SQL Database には、Azure SQL Database の単一データベースとプールされたデータベース、Azure SQL Data Warehouse のデータベースを対象に、高速で一貫性のあるデータベース復旧、瞬間的なトランザクションのロールバック、積極的なログの切り捨てを提供する新しい機能があります。
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: mashamsft
+ms.author: mathoma
+ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/11/2018
-ms.openlocfilehash: 20ad792ffa1c06e75cd39e4549b8d897a663db3e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.date: 01/25/2019
+ms.openlocfilehash: 6d962a40fe0e1a7658c0d5ac30c7fd04bfb7fb0f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239969"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475450"
 ---
 # <a name="accelerated-database-recovery-preview"></a>高速データベース復旧 (プレビュー)
 
-**高速データベース復旧 (ADR)** は、SQL データベース エンジンの復旧プロセスを再設計することで、実行時間の長いトランザクションがある場合などにデータベースの可用性を大幅に向上させる、新しい SQL データベース エンジン機能です。 ADR は現在、単一データベース、エラスティック プール、および Azure SQL Data Warehouse で使用できます。 ADR の主な利点は次のとおりです。
+**高速データベース復旧 (ADR)** は、SQL データベース エンジンの復旧プロセスを再設計することで、実行時間の長いトランザクションがある場合などにデータベースの可用性を大幅に向上させる、新しい SQL データベース エンジン機能です。 現在、ADR は、Azure SQL Database の単一データベースとプールされたデータベース、Azure SQL Data Warehouse のデータベースに使用できます。 ADR の主な利点は次のとおりです。
 
 - **高速で一貫性のあるデータベース復旧**
 
@@ -127,4 +127,4 @@ ADR には次の 4 つの主要コンポーネントがあります。
 
 ## <a name="to-enable-adr-during-this-preview-period"></a>プレビュー期間中に ADR を有効化するには
 
-この機能のプレビュー期間中に高速データベース復元 (ADR) の詳細を確認したり、機能をお試しいただくには、[adr@microsoft.com](mailto:adr@microsoft.com) までメールでお問い合わせください。 メールには、(単一データベース、エラスティック プール、および Azure Data Warehouse の) 論理サーバーの名前を記載してください。 この機能はプレビュー版なので、運用サーバーで機能を試すことは避けてください。
+この機能のプレビュー期間中に高速データベース復元 (ADR) の詳細を確認したり、機能をお試しいただくには、[adr@microsoft.com](mailto:adr@microsoft.com) までメールでお問い合わせください。 電子メールに、ご利用の SQL Database サーバーの名前 (SQL Database の単一データベースとプールされたデータベース、Azure SQL Data Warehouse のデータベース用) を含めてください。 この機能はプレビュー版なので、運用サーバーで機能を試すことは避けてください。

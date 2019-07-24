@@ -1,70 +1,77 @@
+items:
 - name: Conversation Learner のドキュメント
 - name: 概要
-  expanded: true
   items:
-    - name: Conversation Learner とは
-      href: overview.md
-    - name: サポートされている言語
-      href: languages-supported.md
+  - name: Conversation Learner とは
+    href: overview.md
+  - name: サポートされている言語
+    href: languages-supported.md
+  expanded: true
 - name: 概念
   items:
-    - name: 制御フロー
-      href: control-flow.md
-    - name: 既定値と境界
-      href: cl-values-and-boundaries.md
+  - name: 制御フロー
+    href: control-flow.md
+  - name: 既定値と境界
+    href: cl-values-and-boundaries.md
 - name: ハウツー ガイド
   items:
-    - name: Conversation Learner を使ってみる
-      href: quickstart.md
-    - name: Hello World
-      href: tutorials/1-hello-world.md
-    - name: 待機アクションと非待機アクション
-      href: tutorials/2-wait-vs-nonwait-actions.md
-    - name: エンティティの概要
-      href: tutorials/3-introduction-to-entities.md
-    - name: 予期されるエンティティ
-      href: tutorials/4-expected-entity.md
-    - name: 負の値のエンティティ
-      href: tutorials/5-negatable-entities.md
-    - name: 複数値のエンティティ
-      href: tutorials/6-multi-value-entities.md
-    - name: 組み込みのエンティティ
-      href: tutorials/7-built-in-entities.md
-    - name: 代替入力
-      href: tutorials/8-alternative-inputs.md
-    - name: ダイアログを記録する
-      href: tutorials/9-log-dialogs.md
-    - name: エンティティ検出コールバック
-      href: tutorials/10-entity-detection-callback.md
-    - name: セッション コールバック
-      href: tutorials/11-session-callbacks.md
-    - name: API 呼び出し
-      href: tutorials/12-api-calls.md
-    - name: カード (パート 1)
-      href: tutorials/13-cards-1.md
-    - name: カード (パート 2)
-      href: tutorials/14-cards-2.md
-    - name: ブランチと "元に戻す"
-      href: tutorials/15-branching-and-undo.md
-    - name: バージョン管理とタグ付け
-      href: tutorials/16-versioning-and-tagging.md
-    - name: ハイブリッド ボット
-      href: tutorials/17-hybrid-bots.md
-    - name: デモ - パスワードのリセット
-      href: tutorials/demo-password-reset.md
-    - name: デモ - ピザの注文
-      href: tutorials/demo-pizza-order.md
-    - name: デモ - VR アプリ起動ツール
-      href: tutorials/demo-vr-app-launcher.md
-    - name: Conversation Learner ボットのデプロイ
-      href: deploy-to-bf.md
-    - name: Conversation Learner での学習方法
-      href: how-to-teach-cl.md
-    - name: ユーザー データを管理する方法
-      href: managing-data.md
+  - name: Conversation Learner を使ってみる
+    href: quickstart.md
+  - name: Hello World
+    href: tutorials/01-hello-world.md
+  - name: トレーニングの概要
+    href: tutorials/02-intro-to-training.md
+  - name: 待機アクションと非待機アクション
+    href: tutorials/03-wait-vs-nonwait-actions.md
+  - name: エンティティの概要
+    href: tutorials/04-introduction-to-entities.md
+  - name: 予期されるエンティティ
+    href: tutorials/05-expected-entity.md
+  - name: 負の値のエンティティ
+    href: tutorials/06-negatable-entities.md
+  - name: 複数値のエンティティ
+    href: tutorials/07-multi-value-entities.md
+  - name: 事前トレーニング済みエンティティ
+    href: tutorials/08-pre-trained-entities.md
+  - name: エンティティ リゾルバー
+    href: tutorials/09-entity-resolvers.md
+  - name: 代替入力
+    href: tutorials/10-alternative-inputs.md
+  - name: ダイアログを記録する
+    href: tutorials/11-log-dialogs.md
+  - name: エンティティ検出コールバック
+    href: tutorials/12-entity-detection-callback.md
+  - name: セッション コールバック
+    href: tutorials/13-session-callbacks.md
+  - name: API 呼び出し
+    href: tutorials/14-api-calls.md
+  - name: カード
+    href: tutorials/15-cards.md
+  - name: ハイブリッド ボット
+    href: tutorials/16-hybrid-bots.md
+  - name: ブランチと "元に戻す"
+    href: tutorials/17-branch-undo.md
+  - name: バージョン管理とタグ付け
+    href: tutorials/18-version-tag.md
+  - name: デモ - パスワードのリセット
+    href: tutorials/demo-password-reset.md
+  - name: デモ - ピザの注文
+    href: tutorials/demo-pizza-order.md
+  - name: Conversation Learner ボットのデプロイ
+    href: deploy-to-bf.md
+  - name: Conversation Learner での学習方法
+    href: how-to-teach-cl.md
+  - name: ユーザー データを管理する方法
+    href: managing-data.md
 - name: リソース
   items:
-    - name: Conversation Learner のサンプル ボット
-      href: 'https://github.com/Microsoft/ConversationLearner-Samples'
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
+  - name: Conversation Learner のサンプル ボット
+    href: https://github.com/Microsoft/ConversationLearner-Samples
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+ms.openlocfilehash: ac1c54259fd7660bc0ebf51fc44936577f5dab61
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792087"

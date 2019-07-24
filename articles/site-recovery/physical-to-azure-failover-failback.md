@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 309da6f7753d95bc6830d61ecca7d86e002ddedf
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: edb169d131aafd045fdf0f670e1dda87677d57ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214838"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834679"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Azure にレプリケートされた物理サーバーのフェールオーバーとフェールバック
 
@@ -24,7 +24,7 @@ Site Recovery を使用して Azure にレプリケートされた物理サー�
 
 フェールオーバーとフェールバックには 4 つの段階があります。
 
-1. **Azure にフェールオーバーする**: オンプレミス サイトのコンピューターを Azure にフェールオーバーします。
+1. **Azure にフェールオーバーする**: オンプレミス サイトのマシンを Azure にフェールオーバーします。
 2. **Azure VM を再保護する**: Azure VM がオンプレミスの VMware VM へのレプリケートが開始されるように、Azure VM を再保護します。
 3. **オンプレミスにフェールオーバーする**: フェールオーバーを実行して、Azure からフェールバックします。
 4. **オンプレミス VM を再保護する**: データがフェールバックされたら、フェールバック先のオンプレミスの VMware VM を再保護します。これにより、オンプレミスの VMware VM は Azure へのレプリケートを開始できるようになります。
@@ -36,7 +36,7 @@ Site Recovery を使用して Azure にレプリケートされた物理サー�
 1. **[保護されたアイテム]** で、**[レプリケートされたアイテム]** をクリックし、マシンを選びます。
 
 2. **[レプリケートされたアイテム]** ウィンドウには、マシンの情報、正常性状態、および最新の使用可能な復旧ポイントの概要が表示されます。 **[プロパティ]** をクリックすると、詳細が表示されます。
-3. **[コンピューティングとネットワーク]** で、Azure 名、リソース グループ、ターゲット サイズ、[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)、および[マネージド ディスクの設定](#managed-disk-considerations)を変更できます。
+3. **[コンピューティングとネットワーク]** で、Azure 名、リソース グループ、ターゲット サイズ、[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)、およびマネージド ディスクの設定を変更できます
 4. ネットワーク設定 (フェールオーバー後に Azure VM が配置されるネットワークやサブネット、割り当てられる IP アドレスなど) を表示および変更できます。
 5. **[ディスク]** で、マシンのオペレーティング システム ディスクとデータ ディスクに関する情報を確認できます。
 

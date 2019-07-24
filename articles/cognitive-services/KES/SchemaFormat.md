@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Knowledge Exploration Service (KES) API のスキーマ形式について説明します。
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 07f5536641b55aadf9d8b2623bf4797b8dcd7bd5
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 51a812762659bcc67762b82e9c120772065aab53
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129252"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549689"
 ---
 # <a name="schema-format"></a>スキーマ形式
 
@@ -41,16 +41,16 @@ ms.locfileid: "46129252"
 
 サポートされている属性のデータ型のリストを次に示します。
 
-| type | 説明 | [操作] | 例 |
+| Type | 説明 | Operations | 例 |
 |------|-------------|------------|---------|
-| String | 文字列 (1 から 1024 文字) | equals、starts_with | "hello world" |
-| Int32 | 符号付き 32 ビット整数 | equals、starts_with、is_between | 2016 |
-| Int64 | 符号付き 64 ビット整数 | equals、starts_with、is_between | 9876543210 |
-| Double | 倍精度浮動小数点数値 | equals、starts_with、is_between | 1.602e-19 |
-| 日付 | 日付 (1400-01-01 から 9999-12-31) | equals、is_between | '2016-03-14' |
-| Guid | グローバル一意識別子 | equals | "602DD052-CC47-4B23-A16A-26B52D30C05B" |
-| BLOB | 内部的に圧縮された非インデックス データ | *なし* | "Empower every person and every organization on the planet to achieve more" |
-| 複合 | 複数のサブ属性の複合| *該当なし* | { "Name":"harry shum", "Affiliation":"microsoft" } |
+| `String` | 文字列 (1 から 1024 文字) | equals、starts_with | "hello world" |
+| `Int32` | 符号付き 32 ビット整数 | equals、starts_with、is_between | 2016 |
+| `Int64` | 符号付き 64 ビット整数 | equals、starts_with、is_between | 9876543210 |
+| `Double` | 倍精度浮動小数点数値 | equals、starts_with、is_between | 1.602e-19 |
+| `Date` | 日付 (1400-01-01 から 9999-12-31) | equals、is_between | '2016-03-14' |
+| `Guid` | グローバル一意識別子 | equals | "602DD052-CC47-4B23-A16A-26B52D30C05B" |
+| `Blob` | 内部的に圧縮された非インデックス データ | *なし* | "Empower every person and every organization on the planet to achieve more" |
+| `Composite` | 複数のサブ属性の複合| *該当なし* | { "Name":"harry shum", "Affiliation":"microsoft" } |
 
 String 属性は、ユーザー クエリの一部として表示することができる文字列値を表すために使用されます。  完全一致の *equals* 演算と、"micros" と "microsoft" の一致など、クエリ入力候補シナリオの *starts_with* 演算をサポートします。  誤植を処理するための大文字と小文字を区別しないファジー一致は、今後のリリースでサポートされる予定です。
 

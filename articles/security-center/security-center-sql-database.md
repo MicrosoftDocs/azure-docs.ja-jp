@@ -3,8 +3,8 @@ title: Azure Security Center と Azure SQL Database サービス | Microsoft Doc
 description: この記事では、Azure SQL Database に存在するデータベースのセキュリティに Security Center を活かす方法について説明します。
 services: sql-database
 documentationcenter: na
-author: TerryLanfear
-manager: MBaldwin
+author: rkarlin
+manager: barbkess
 editor: ''
 ms.assetid: f109adfd-daed-4257-9692-2042a1399480
 ms.service: security-center
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
-ms.author: terrylan
-ms.openlocfilehash: d8be831469659993da4f9f392e23b9408eb283e3
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: rkarlin
+ms.openlocfilehash: 0a889de79b6a5921007614dac8d610c1be0222d2
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302222"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114090"
 ---
 # <a name="azure-security-center-and-azure-sql-database-service"></a>Azure Security Center と Azure SQL Database サービス
 [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) は、脅威の防御、検出、対応を可能にする機能です。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
@@ -60,7 +60,7 @@ Security Center には [Azure ポータル](https://azure.microsoft.com/features
 セキュリティ ポリシーを設定するには、[セキュリティ センター] ブレードの **[ポリシー]** タイルを選択します。 セキュリティ ポリシーを有効にするサブスクリプションは、**[セキュリティ ポリシー]** ブレードで選択します。 **[防止ポリシー]** を選択し、そのサブスクリプションで使用するセキュリティの推奨事項を **[オン]** にしてください。
 ![セキュリティ ポリシー][3]
 
-詳細については、[セキュリティ ポリシーの設定](security-center-policies.md)に関するページを参照してください。
+詳細については、[セキュリティ ポリシーの設定](tutorial-security-policy.md)に関するページを参照してください。
 
 ## <a name="manage-security-recommendation"></a>セキュリティの推奨事項への対応
 セキュリティ センターは、Azure リソースのセキュリティの状態を定期的に分析します。 セキュリティ センターでは、潜在的なセキュリティの脆弱性が特定されると、推奨事項が作成されます。 推奨事項では、必要なコントロールを構成する手順を説明します。
@@ -85,7 +85,7 @@ Azure リソースに関する推奨事項を確認するには、[セキュリ�
 推奨事項の詳細については、[セキュリティに関する推奨事項の管理](security-center-recommendations.md)についてのページを参照してください。
 
 ## <a name="monitor-security-health"></a>セキュリティ正常性を監視する
-サブスクリプションのリソースに対して [セキュリティ ポリシー](security-center-policies.md) を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。  リソースのセキュリティの状態は、**[リソース セキュリティの正常性]** タイルで確認できます。 **[リソース セキュリティの正常性]** タイルの **[データ]** をクリックすると、**[Data Resources (データ リソース)]** ブレードが開き、監査や Transparent Data Encryption が有効になっていないなど、SQL の問題に関する推奨事項が示されます。 また、データベースの全般的なヘルス状態に関する推奨事項も示されます。
+サブスクリプションのリソースに対して [セキュリティ ポリシー](tutorial-security-policy.md) を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。  リソースのセキュリティの状態は、**[リソース セキュリティの正常性]** タイルで確認できます。 **[リソース セキュリティの正常性]** タイルの **[データ]** をクリックすると、**[Data Resources (データ リソース)]** ブレードが開き、監査や Transparent Data Encryption が有効になっていないなど、SQL の問題に関する推奨事項が示されます。 また、データベースの全般的なヘルス状態に関する推奨事項も示されます。
 ![リソースのセキュリティ正常性][6]
 
 詳細については、[セキュリティ ヘルスの監視](security-center-monitoring.md)に関するページを参照してください。

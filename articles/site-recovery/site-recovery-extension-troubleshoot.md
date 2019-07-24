@@ -5,14 +5,14 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: troubleshooting
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: ddbfdc9928122373b82d043fac0777576c5fe99e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5ea701682c03370cea46f9126ecf78427a776371
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227486"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103538"
 ---
 # <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Azure Site Recovery エージェントに関する問題のトラブルシューティング
 
@@ -21,39 +21,39 @@ ms.locfileid: "51227486"
 
 ## <a name="azure-site-recovery-extension-time-out"></a>Azure Site Recovery 拡張機能がタイムアウトになる  
 
-エラー メッセージ: 「開始する拡張機能の操作の追跡中にタスクの実行がタイムアウトになりました」<br>
-エラー コード: "151076"
+エラー メッセージ:「開始する拡張機能の操作の追跡中にタスクの実行がタイムアウトになりました」<br>
+エラー コード:"151076"
 
  Azure Site Recovery は、保護の有効化ジョブの一部として、仮想マシンに拡張機能をインストールします。 以下のいずれかの状況によって、保護をトリガーできず、ジョブが失敗する場合があります。 次のトラブルシューティング手順を完了してから、必要な操作を再試行してください。
 
-**原因 1:[ エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
-**原因 2:[ VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**原因 3: [Site Recovery 拡張機能の更新または読み込みに失敗した](#the-site-recovery-extension-fails-to-update-or-load)**  
+**原因 1:[エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**原因 2:[VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**原因 3:[Site Recovery 拡張機能の更新または読み込みに失敗した](#the-site-recovery-extension-fails-to-update-or-load)**  
 
-エラー メッセージ: "Previous site recovery extension operation is taking more time than expected."(前の Site Recovery 機能拡張の操作に想定以上に時間がかかっています。)<br>
-エラー コード: "150066"<br>
+エラー メッセージ:「Previous site recovery extension operation is taking more time than expected. (前の Site Recovery 機能拡張の操作に想定以上に時間がかかっています。)」<br>
+エラー コード:"150066"<br>
 
-**原因 1:[ エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
-**原因 2:[ VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**原因 3: [Site Recovery 拡張機能の状態が正しくない](#the-site-recovery-extension-fails-to-update-or-load)**  
+**原因 1:[エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**原因 2:[VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**原因 3:[Site Recovery 拡張機能の状態が正しくない](#the-site-recovery-extension-fails-to-update-or-load)**  
 
 ## <a name="protection-fails-because-the-vm-agent-is-unresponsive"></a>VM エージェントが応答しないために保護に失敗する
 
-エラー メッセージ: 「開始する拡張機能の操作の追跡中にタスクの実行がタイムアウトになりました。」<br>
-エラー コード: "151099"<br>
+エラー メッセージ:「開始する拡張機能の操作の追跡中にタスクの実行がタイムアウトになりました。」<br>
+エラー コード:"151099"<br>
 
 このエラーは、仮想マシンの Azure ゲスト エージェントが準備完了状態にない場合に発生することがあります。
 [Azure Portal](https://portal.azure.com/) で Azure ゲスト エージェントの状態を調べられます。 保護しようとしている仮想マシンに移動し、[VM]、[設定]、[プロパティ]、[エージェントの状態] と移動して状態を調べます。 ほとんどの場合、エージェントの状態は、仮想マシンの再起動後に準備完了になります。 ただし、再起動が不可能な場合や、再起動後も問題に直面している場合は、次のトラブルシューティング手順を完了してください。
 
-**原因 1:[ エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
-**原因 2:[ VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**原因 1:[エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**原因 2:[VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 
 
-エラー メッセージ: 「開始する拡張機能の操作の追跡中にタスクの実行がタイムアウトになりました。」<br>
-エラー コード: "151095"<br>
+エラー メッセージ:「開始する拡張機能の操作の追跡中にタスクの実行がタイムアウトになりました。」<br>
+エラー コード:"151095"<br>
 
 これは、Linux マシン上のエージェントのバージョンが古くなっている場合に発生します。 次のトラブルシューティング手順を完了してください。<br>
-  **原因 1:[ VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+  **原因 1:[VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 ## <a name="causes-and-solutions"></a>原因とソリューション
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>エージェントが VM にインストールされているが応答しない (Windows VM の場合)
@@ -77,15 +77,15 @@ Linux VM の場合、エージェントに関連するエラーまたは拡張�
 
 1. [Linux VM エージェントを更新](../virtual-machines/linux/update-agent.md)する手順に従います。
 
- > [!NOTE]
- > ディストリビューション リポジトリを通してのみエージェントを更新することを "*強くお勧め*" します。 エージェント コードを直接 GitHub からダウンロードして、更新することはお勧めしません。 最新のエージェントをディストリビューションで使用できない場合は、そのエージェントをインストールする方法をディストリビューション サポートにお問い合わせください。 最新のエージェントを確認するには、GitHub リポジトリの [Windows Azure Linux エージェント](https://github.com/Azure/WALinuxAgent/releases)のページをご覧ください。
+   > [!NOTE]
+   > ディストリビューション リポジトリを通してのみエージェントを更新することを "*強くお勧め*" します。 エージェント コードを直接 GitHub からダウンロードして、更新することはお勧めしません。 最新のエージェントをディストリビューションで使用できない場合は、そのエージェントをインストールする方法をディストリビューション サポートにお問い合わせください。 最新のエージェントを確認するには、GitHub リポジトリの [Windows Azure Linux エージェント](https://github.com/Azure/WALinuxAgent/releases)のページをご覧ください。
 
 2. `ps -e` コマンドを実行して、Azure エージェントが VM で実行されていることを確認します。
 
- このプロセスが実行されていない場合は、次のコマンドを使用してプロセスを再起動します。
+   このプロセスが実行されていない場合は、次のコマンドを使用してプロセスを再起動します。
 
- * Ubuntu の場合: `service walinuxagent start`
- * その他のディストリビューションの場合: `service waagent start`
+   * Ubuntu の場合: `service walinuxagent start`
+   * その他のディストリビューションの場合: `service waagent start`
 
 3. [エージェントの自動再起動を構成します](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash)。
 4. 仮想マシンの保護を有効にします。

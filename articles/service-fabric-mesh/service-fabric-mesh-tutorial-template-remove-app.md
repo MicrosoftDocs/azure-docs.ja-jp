@@ -3,7 +3,7 @@ title: チュートリアル-Azure Service Fabric Mesh で実行されている�
 description: このチュートリアルでは、Service Fabric Mesh で実行されているアプリケーションを削除する方法について説明し、リソースを削除します。
 services: service-fabric-mesh
 documentationcenter: .net
-author: rwike77
+author: dkkapur
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -12,17 +12,17 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/15/2018
-ms.author: ryanwi
+ms.date: 01/11/2019
+ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f366413ae5f758601dfebc2a29ff848feb756083
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: adc5b96f29f610c63bcfa24a3b5f761c04d41d5b
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960432"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339671"
 ---
-# <a name="tutorial-remove-an-application-and-resources"></a>チュートリアル: アプリケーションとリソースを削除します
+# <a name="tutorial-remove-an-application-and-resources"></a>チュートリアル:アプリケーションとリソースを削除する
 
 このチュートリアルは、シリーズの第 4 部です。 [Service Fabric Mesh に対し事前に展開されていた](service-fabric-mesh-tutorial-template-deploy-app.md)実行中のアプリケーションを削除する方法について説明します。 
 
@@ -34,9 +34,9 @@ ms.locfileid: "46960432"
 
 このチュートリアル シリーズで学習する内容は次のとおりです。
 > [!div class="checklist"]
-> * [テンプレートを使用して Azure Service Fabric Mesh にアプリケーションを配置する](service-fabric-mesh-tutorial-template-deploy-app.md)
+> * [テンプレートを使用して Azure Service Fabric Mesh にアプリケーションをデプロイする](service-fabric-mesh-tutorial-template-deploy-app.md)
 > * [ローカルで実行している Service Fabric Mesh アプリケーションをスケールする](service-fabric-mesh-tutorial-template-scale-services.md)
-> * [ローカルで実行している Service Fabric Mesh アプリケーションをアップグレードする](service-fabric-mesh-tutorial-template-upgrade-app.md)
+> * [Service Fabric Mesh で実行されているアプリケーションをアップグレードする](service-fabric-mesh-tutorial-template-upgrade-app.md)
 > * アプリケーションの削除
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
@@ -47,7 +47,7 @@ ms.locfileid: "46960432"
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)できます。
 
-* [Azure Cloud Shell](service-fabric-mesh-howto-setup-cli.md) を開く、または[、Azure CLI と Service Fabric Mesh CLI をローカルにインストール](service-fabric-mesh-howto-setup-cli.md#install-the-service-fabric-mesh-cli-locally)します。
+* [Azure Cloud Shell](service-fabric-mesh-howto-setup-cli.md) を開くか、または[Azure CLI と Service Fabric Mesh CLI をローカルにインストール](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli)します。
 
 ## <a name="delete-the-resource-group-and-all-the-resources"></a>リソース グループとすべてのリソースを削除します
 

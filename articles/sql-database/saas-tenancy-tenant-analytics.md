@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: bd766dfb712921a57dd23c4fdecc25dd623eb833
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 12/18/2018
+ms.openlocfilehash: 0be39aaf5526ea288764fc72d6c498cca2d659b7
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393266"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481690"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>抽出されたデータを使用したクロステナント分析 - シングルテナント アプリ
  
@@ -91,9 +91,9 @@ ms.locfileid: "47393266"
 2. 選択した分析ストアに合わせて、スクリプト内の $DemoScenario 変数を設定します。
     - 列ストアを使用せずに SQL データベースを使用するには、**$DemoScenario** = **2** を設定します。
     - 列ストアを使用して SQL データベースを使用するには、**$DemoScenario** = **3** を設定します。  
-3. **F5** キーを押して、テナント分析ストアを作成するデモ スクリプト (*Deploy-TenantAnalytics<XX>.ps1* スクリプトを呼び出すスクリプト) を実行します。 
+3. **F5** キーを押して、テナント分析ストアを作成するデモ スクリプト (*Deploy-TenantAnalytics\<XX>.ps1* スクリプトを呼び出すスクリプト) を実行します。 
 
-アプリケーションをデプロイし、対象のテナント データを入力しました。次に、[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使用して、**tenants1-dpt-&lt;User&gt;** サーバーと **catalog-dpt-&lt;User&gt;** サーバーに接続します。[ログイン] には *developer*、[パスワード] には *P@ssword1* を使用します。 詳しいガイダンスについては、[入門チュートリアル](saas-dbpertenant-wingtip-app-overview.md)をご覧ください。
+アプリケーションをデプロイし、対象のテナント データを入力しました。次に、[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使用して、**tenants1-dpt-&lt;User&gt;** サーバーと **catalog-dpt-&lt;User&gt;** サーバーに接続します。ログイン名として「*developer*」、パスワードとして「*P\@ssword1*」を使用します。 詳しいガイダンスについては、[入門チュートリアル](saas-dbpertenant-wingtip-app-overview.md)をご覧ください。
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
@@ -120,7 +120,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 
 1. SSMS で、catalog-dpt-&lt;User&gt; の **jobaccount** データベースに接続します。
 2. SSMS で *…\Learning Modules\Operational Analytics\Tenant Analytics\TargetGroups.sql* を開きます。 
-3. スクリプトの先頭の @User 変数を変更し、<User> を Wingtip SaaS アプリのデプロイ時に使用したユーザー値に置き換えます。
+3. スクリプトの先頭の @User 変数を変更し、`<User>` を Wingtip SaaS アプリのデプロイ時に使用したユーザー値に置き換えます。
 4. **F5** キーを押してスクリプトを実行し、2 つのターゲット グループを作成します。
 
 ### <a name="extract-raw-data-from-all-tenants"></a>すべてのテナントから生データを抽出する
@@ -134,7 +134,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 
 1. SSMS で、catalog-dpt-&lt;User&gt; サーバーの **jobaccount** データベースに接続します。
 2. SSMS で *...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql* を開きます。
-3. スクリプトの先頭の @User を変更し、<User> を Wingtip SaaS アプリのデプロイ時に使用したユーザー名に置き換えます。 
+3. スクリプトの先頭の @User を変更し、`<User>` を Wingtip SaaS アプリのデプロイ時に使用したユーザー名に置き換えます。 
 4. F5 キーを押してスクリプトを実行します。このスクリプトにより、各テナント データベースからチケット データと顧客データを抽出するジョブが作成され、実行されます。 このジョブはデータを分析ストアに保存します。
 5. tenantanalytics データベースの TicketsRawData テーブルを照会して、テーブルにすべてのテナントのチケット情報が設定されていることを確認します。
 
@@ -169,13 +169,13 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 次の手順に従って、Power BI に接続し、以前に作成したビューをインポートします。
 
 1. Power BI Desktop を起動します。
-2. [ホーム] リボンの **[データを取得]** をクリックし、メニューの **[その他…]** を選択します。
+2. [ホーム] リボンの **[データを取得]** をクリックし、メニューの **[その他…]**  を選択します。
 3. **[データを取得]** ウィンドウで、Azure SQL Database を選択します。
 4. データベース ログイン ウィンドウで、サーバー名 (catalog-dpt-&lt;User&gt;.database.windows.net) を入力します。 **[データ接続モード]** の **[インポート]** を選択し、[OK] をクリックします。 
 
     ![signinpowerbi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. 左側のウィンドウで **[データベース]** を選択し、ユーザー名として *developer*、パスワードとして *P@ssword1* を入力します。 **[接続]** をクリックします。  
+5. 左側のウィンドウで **[データベース]** を選択し、ユーザー名として「*developer*」、パスワードとして「*P\@ssword1*」を入力します。 **[接続]** をクリックします。  
 
     ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
@@ -207,7 +207,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 
 Contoso Concert Hall の上記のプロットは、購入が殺到する状態がすべてのイベントで発生しているわけではないことを示しています。 フィルター オプションを操作して、他の会場の販売動向を確認します。
 
-チケット販売パターンに関する洞察により、Wingtip Tickets でビジネス モデルを最適化できます。 Wingtip では、すべてのテナントに均等に課金するのではなく、コンピューティング サイズが異なるサービス層を導入する必要があると考えられます。 1 日により多くのチケットを販売する必要がある大規模な会場には、サービス レベル アグリーメント (SLA) が高い上位層を提供できます。 これらの会場では、データベースごとのリソースの上限が高いプールにデータベースを配置できます。 各サービス層に時間単位の販売割り当てを設定し、割り当てを超えた場合は追加料金が課金されるようにすることもできます。 売上が定期的に激増する大規模な会場は上位層からメリットが得られ、Wingtip Tickets はサービスをより効率的に収益化できます。
+チケット販売パターンに関する洞察により、Wingtip Tickets でビジネス モデルを最適化できます。 Wingtip では、すべてのテナントに均等に課金するのではなく、コンピューティング サイズが異なるサービス レベルを導入する必要があると考えられます。 1 日により多くのチケットを販売する必要がある大規模な会場には、サービス レベル アグリーメント (SLA) が高い上位層を提供できます。 これらの会場では、データベースごとのリソースの上限が高いプールにデータベースを配置できます。 各サービス層に時間単位の販売割り当てを設定し、割り当てを超えた場合は追加料金が課金されるようにすることもできます。 売上が定期的に激増する大規模な会場は上位層からメリットが得られ、Wingtip Tickets はサービスをより効率的に収益化できます。
 
 その一方で、Wingtip Tickets の一部の顧客は、サービス コストに見合うだけのチケットを販売するのに苦戦していると不満を漏らしています。 これらの洞察に、業績が低迷している会場のチケットの売上を伸ばす機会がおそらくあります。 売上が増加すれば、サービスの知覚価値が高まります。 fact_Tickets を右クリックし、**[新しいメジャー]** を選択します。 **AverageTicketsSold** という新しいメジャーの次の式を入力します。
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 62e15b5845ed9faa605f978f0d2fd427c9c3ee9b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f1e2b9dfc329e67d94fba998a01d593b992ba90f
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008183"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886810"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行する - アーキテクチャのベスト プラクティス
 
@@ -49,7 +49,7 @@ Azure HDInsight クラスターは、特定の種類の計算を利用するた�
 |[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
 |[Azure リソース マネージャーのテンプレート](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
 
-詳細については、[HDInsight のクラスターの種類](../hadoop/apache-hadoop-introduction.md)に関する記事を参照してください。
+詳細については、[HDInsight でのクラスターの種類](../hadoop/apache-hadoop-introduction.md)に関する記事を参照してください。
 
 ## <a name="use-transient-on-demand-clusters"></a>一時的なオンデマンド クラスターを使用する
 
@@ -57,7 +57,7 @@ HDInsight クラスターは、長期間未使用の状態が続くことがあ�
 
 クラスターを削除しても、関連付けられているストレージ アカウントと外部メタデータは削除されません。 このクラスターは、同じストレージ アカウントと metastore を使用して、後で再作成することができます。
 
-オンデマンドの HDInsight クラスターの作成は、Azure Data Factory を使用してスケジュールすることができます。 詳細については、「[Azure Data Factory を使用して HDInsight でオンデマンドの Hadoop クラスターを作成する](../hdinsight-hadoop-create-linux-clusters-adf.md)」を参照してください。
+オンデマンドの HDInsight クラスターの作成は、Azure Data Factory を使用してスケジュールすることができます。 詳細については、「[Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する](../hdinsight-hadoop-create-linux-clusters-adf.md)」の記事を参照してください。
 
 ## <a name="decouple-storage-from-compute"></a>コンピューティングからストレージを切り離す
 
@@ -65,33 +65,35 @@ HDInsight クラスターは、長期間未使用の状態が続くことがあ�
 
 HDInsight クラスターでは、ストレージをコンピューティングと同じ場所にデプロイする必要はなく、Azure Storage、Azure Data Lake Storage、またはその両方に配置することができます。 ストレージをコンピューティングから切り離すことには、次の利点があります。
 
-- クラスター間でのデータ共有
-- 一時的なクラスターの使用 (データがクラスターに依存しないため)
-- ストレージ コストの削減
-- ストレージとコンピューティングの個別のスケーリング
-- リージョン間でのデータのレプリケーション
+- クラスター間でのデータ共有。
+- データがクラスターに依存していないための一時的なクラスターの使用。
+- ストレージ コストの削減。
+- ストレージとコンピューティングの個別のスケーリング。
+- リージョン間でのデータ レプリケーション。
 
 コンピューティング クラスターは Azure リージョン内のストレージ アカウント リソースの近くに作成され、コンピューティングとストレージを切り離した場合のパフォーマンス コストを軽減します。 高速ネットワークにより、コンピューティング ノードは Azure Storage 内のデータに効率的にアクセスできます。
 
 ## <a name="use-external-metadata-stores"></a>外部のメタデータ ストアを使用する
 
-HDInsight クラスターで動作する主な metastore には、Hive と Oozie の 2 つがあります。 Hive metastore は、Hadoop、Spark、LLAP、Presto、Pig などのデータ処理エンジンで使用できる中心的なスキーマ リポジトリです。 Oozie metastore には、スケジューリングの詳細と、進行中および完了した Hadoop ジョブの状態が格納されます。
+
+HDInsight クラスターで動作する主なメタストアには、[Apache Hive](https://hive.apache.org/) と [Apache Oozie](https://oozie.apache.org/) の 2 つがあります。 Hive metastore は、Hadoop、Spark、LLAP、Presto、Apache Pig などのデータ処理エンジンで使用できる中央のスキーマ リポジトリです。 Oozie metastore には、スケジューリングの詳細と、進行中および完了した Hadoop ジョブの状態が格納されます。
+
 
 HDInsight では、Hive metastore と Oozie metastore に Azure SQL Database を使用します。 HDInsight クラスターで metastore を設定する方法は 2 とおりあります。
 
 1. 既定の metastore
 
     - 追加コストはありません。
-    - クラスターが削除されると metastore も削除されます。
-    - metastore は異なるクラスター間では共有できません。
+    - metastore は、クラスターが削除されると削除されます。
+    - metastore を異なるクラスター間で共有することはできません。
     - DTU の上限が 5 である基本的な Azure SQL DB が使用されます。
 
 1. カスタムの外部 metastore
 
     - 外部の Azure SQL Database を metastore として指定します。
     - Hive スキーマ Oozie ジョブの詳細を含むメタデータを失うことなく、クラスターを作成および削除できます。
-    - 単一の metastore DB をさまざまな種類のクラスターと共有できます。
-    - metastore を必要に応じてスケールアップできます。
+    - 1 つの metastore DB を異なる種類のクラスターで共有できます。
+    - metastore は、必要に応じてスケールアップできます。
     - 詳細については、[Azure HDInsight での外部メタデータ ストアの使用](../hdinsight-use-external-metadata-stores.md)に関する記事を参照してください。
 
 ## <a name="best-practices-for-hive-metastore"></a>Hive metastore のベスト プラクティス
@@ -103,10 +105,10 @@ HDInsight では、Hive metastore と Oozie metastore に Azure SQL Database を
 - ある HDInsight クラスター バージョン用に作成された metastore を別のバージョンのクラスターと共有しないでください。 異なるバージョンの Hive は異なるスキーマを使用します。 たとえば、1 つの metastore を Hive 1.2 クラスターと Hive 2.1 クラスターの両方で共有することはできません。
 - カスタム metastore を定期的にバックアップします。
 - metastore と HDInsight クラスターを同じリージョンで保持します。
-- Azure portal や Azure Log Analytics などの Azure SQL Database 監視ツールを使用して、metastore のパフォーマンスと可用性を監視します。
+- Azure portal や Azure Monitor ログなどの Azure SQL Database 監視ツールを使用して、metastore のパフォーマンスと可用性を監視します。
 - 必要に応じて **ANALYZE TABLE** コマンドを実行して、表と列の統計を生成します。 たとえば、「 `ANALYZE TABLE [table_name] COMPUTE STATISTICS` 」のように入力します。
 
-## <a name="best-practices-for-different-types-of-workloads"></a>さまざまな種類のワークロードのベスト プラクティス
+## <a name="best-practices-for-different-workloads"></a>さまざまなワークロードのベスト プラクティス
 
 - 応答時間が改善された対話型 Hive クエリに LLAP クラスターを使用することを検討します。[LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP)  は、クエリのメモリ内キャッシュを可能にする Hive 2.0 の新機能です。 LLAP により、Hive クエリは速くなり、 [場合によっては Hive 1.x と比べて最大 26 倍高速化](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)されます。
 - Hive ジョブの代わりに Spark ジョブを使用することを検討します。

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: rezas
-ms.openlocfilehash: b7919a86c5f0b6b6990b465ed0c563fb42ea8bbc
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: e5387f1e44a55b0a30f8620b49d237ac1e1ec2b6
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747917"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730598"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>デバイス ツイン、モジュール ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語
 
@@ -34,12 +34,12 @@ IoT Hub には SQL に似た強力な言語が備わっており、[デバイス
     "deviceId": "myDeviceId",
     "etag": "AAAAAAAAAAc=",
     "status": "enabled",
-    "statusUpdateTime": "0001-01-01T00:00:00",    
-    "connectionState": "Disconnected",    
+    "statusUpdateTime": "0001-01-01T00:00:00",
+    "connectionState": "Disconnected",
     "lastActivityTime": "0001-01-01T00:00:00",
     "cloudToDeviceMessageCount": 0,
-    "authenticationType": "sas",    
-    "x509Thumbprint": {    
+    "authenticationType": "sas",
+    "x509Thumbprint": {
         "primaryThumbprint": null,
         "secondaryThumbprint": null
     },
@@ -168,15 +168,15 @@ SELECT * FROM devices.modules
 デバイスと devices.modules コレクション間の結合は許可されません。 デバイスを超えてモジュール ツインのクエリを実行する場合は、タグに基づいて行います。 このクエリでは、スキャン中状態のすべてのデバイスのすべてのモジュール ツインが返されます。
 
 ```sql
-Select * from devices.modules where properties.reported.status = 'scanning'
+SELECT * FROM devices.modules WHERE properties.reported.status = 'scanning'
 ```
 
 このクエリでは、スキャン中状態のすべてのモジュール ツインが返されますが、指定したデバイスのサブセット上のみです。
 
 ```sql
-Select * from devices.modules 
-  where properties.reported.status = 'scanning' 
-  and deviceId IN ['device1', 'device2']
+SELECT * FROM devices.modules
+  WHERE properties.reported.status = 'scanning'
+  AND deviceId IN ['device1', 'device2']
 ```
 
 ### <a name="c-example"></a>C# の例
@@ -207,7 +207,7 @@ query オブジェクトは、クエリに必要な逆シリアル化オプシ�
 
 簡単なクエリの使用例を次に示します。
 
-```nodejs
+```javascript
 var query = registry.createQuery('SELECT * FROM devices', 100);
 var onResults = function(err, results) {
     if (err) {
@@ -326,7 +326,7 @@ SELECT <select_list>
 
 ## <a name="from-clause"></a>FROM 句
 
-**FROM <from_specification>** 句には、デバイス ツインのクエリを実行するための **FROM devices** とデバイスの詳細ごとにジョブのクエリを実行するための **FROM devices.jobs** の 2 つの値のみを使用できます。
+**FROM <from_specification>** 句では、デバイス ツインにクエリを実行するための **FROM devices**、またはジョブのデバイスごとの詳細にクエリを実行するための **FROM devices.jobs** の 2 つの値のみを想定できます。
 
 
 ## <a name="where-clause"></a>WHERE 句
@@ -361,7 +361,7 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-**attribute_name** は、FROM コレクションの JSON ドキュメントのプロパティを参照します。 SELECT 句の例は、[デバイス ツインのクエリの概要](iot-hub-devguide-query-language.md#get-started-with-device-twin-queries)に関するセクションに記載されています。
+**attribute_name** は、FROM コレクションの JSON ドキュメントのプロパティを参照します。 SELECT 句の例は、デバイス ツインのクエリの概要に関するセクションに記載されています。
 
 現在のところ、**SELECT** * 以外の選択句は、デバイス ツインの集計クエリでのみサポートされています。
 

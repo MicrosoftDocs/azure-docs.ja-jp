@@ -1,23 +1,17 @@
 ---
 title: ServiceNow で Azure サービス正常性アラートを構成する | Microsoft Docs
 description: ServiceNow インスタンスに送られたサービス正常性イベントについて、個人用に設定された通知を取得します。
-author: shawntabrizi
-services: service-health
-documentationcenter: service-health
-ms.assetid: ''
-ms.service: service-health
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: stephbaron
+ms.author: stbaron
 ms.topic: article
+ms.service: service-health
 ms.date: 11/14/2017
-ms.author: shtabriz
-ms.openlocfilehash: 1f5984f8f28832c33d3a5a844fde72e7286ad251
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f17215a5695128bf2ea507efa0c12fdbba9467d2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433791"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858860"
 ---
 # <a name="configure-service-health-alerts-with-servicenow"></a>ServiceNow でサービス正常性アラートを構成する
 
@@ -78,7 +72,7 @@ ms.locfileid: "39433791"
                     short_description += " - Service Issue - ";
                 } else if (event.data.context.activityLog.properties.incidentType == "Maintenance") {
                     short_description += " - Planned Maintenance - ";
-                } else if (event.data.context.activityLog.properties.incidentType == "Information" || event.data.context.activityLog.properties.incidentType == "ActionRequired") {
+                } else if (event.data.context.activityLog.properties.incidentType == "Informational" || event.data.context.activityLog.properties.incidentType == "ActionRequired") {
                     short_description += " - Health Advisory - ";
                 }
                 short_description += event.data.context.activityLog.properties.title;
@@ -154,15 +148,15 @@ ms.locfileid: "39433791"
 
 ## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>ServiceNow を使用して Azure Portal でアラートを作成する
 ### <a name="for-a-new-action-group"></a>新しいアクション グループの場合:
-1. [この記事](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)の手順 1. ～ 8. に従って、新しいアクション グループでアラートを作成します。
+1. [この記事](../azure-monitor/platform/alerts-activity-log-service-notifications.md)の手順 1. ～ 8. に従って、新しいアクション グループでアラートを作成します。
 
 1. **[アクション]** の一覧で以下を定義します。
 
-    a. **アクションの種類:** *webhook*
+    a. **[アクションの種類]:***webhook*
 
     b. **詳細:** 先ほど保存した ServiceNow の**統合 URL**。
 
-    c. **名前:** webhook の名前、別名、または識別子。
+    c. **[名前]:** Webhook の名前、別名、または識別子。
 
 1. 完了したら **[保存]** を選択して、アラートを作成します。
 
@@ -175,16 +169,16 @@ ms.locfileid: "39433791"
 
 1. **[アクション]** の一覧に以下を追加します。
 
-    a. **アクションの種類:** *webhook*
+    a. **[アクションの種類]:***webhook*
 
     b. **詳細:** 先ほど保存した ServiceNow の**統合 URL**。
 
-    c. **名前:** webhook の名前、別名、または識別子。
+    c. **[名前]:** Webhook の名前、別名、または識別子。
 
 1. 完了したら **[保存]** を選択して、アクション グループを更新します。
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>HTTP POST 要求によって webhook 統合をテストする
-1. 送信するサービス正常性のペイロードを作成します。 サービス正常性 webhook ペイロードの例については、「[Azure アクティビティ ログ アラートのための webhook](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)」を参照してください。
+1. 送信するサービス正常性のペイロードを作成します。 サービス正常性 webhook ペイロードの例については、「[Azure アクティビティ ログ アラートのための webhook](../azure-monitor/platform/activity-log-alerts-webhook.md)」を参照してください。
 
 1. 次のような HTTP POST 要求を作成します。
 
@@ -201,6 +195,6 @@ ms.locfileid: "39433791"
 
 ## <a name="next-steps"></a>次の手順
 - [既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。
-- [アクティビティ ログ アラート webhook スキーマ](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)を確認します。 
-- [サービス正常性の通知](../monitoring-and-diagnostics/monitoring-service-notifications.md)について学習します。
-- [アクション グループ](../monitoring-and-diagnostics/monitoring-action-groups.md)について学習します。
+- [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)を確認します。 
+- [サービス正常性の通知](../azure-monitor/platform/service-notifications.md)について学習します。
+- [アクション グループ](../azure-monitor/platform/action-groups.md)について学習します。

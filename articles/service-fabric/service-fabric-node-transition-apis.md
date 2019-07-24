@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/12/2017
 ms.author: lemai
-ms.openlocfilehash: 95c3726caeb19d6bbf7153533951bb18cd7d0e57
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: df0e53736c08fd2c26c467def7328e85f2989f26
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055405"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752944"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>Start Node API と Stop Node API を Node Transition API に置き換える
 
 ## <a name="what-do-the-stop-node-and-start-node-apis-do"></a>Stop Node API と Start Node API の機能
 
-Stop Node API (マネージド: [StopNodeAsync()][stopnode]、PowerShell: [Stop-ServiceFabricNode][stopnodeps]) は、Service Fabric ノードを停止します。  Service Fabric ノードはプロセスであり、VM やマシンではありません。そのため、VM やマシンは停止されません。  以降、"ノード" という記述は Service Fabric ノードのことを指します。  ノードを停止すると、そのノードは "*停止*" 状態になり、クラスターのメンバーから外れ、サービスをホストできなくなります。このようにして、"*ダウン*" 状態のノードをシミュレートします。  これは、アプリケーションをテストするためにシステム エラーを作り出すのに便利な方法です。  Start Node API (マネージド: [StartNodeAsync()][startnode]、PowerShell: [Start-ServiceFabricNode][startnodeps]]) は、Stop Node API で停止したノードを通常の状態に戻します。
+Stop Node API (マネージド:[StopNodeAsync()][stopnode]、PowerShell:[Stop-ServiceFabricNode][stopnodeps]) は、Service Fabric ノードを停止します。  Service Fabric ノードはプロセスであり、VM やマシンではありません。そのため、VM やマシンは停止されません。  以降、"ノード" という記述は Service Fabric ノードのことを指します。  ノードを停止すると、そのノードは "*停止*" 状態になり、クラスターのメンバーから外れ、サービスをホストできなくなります。このようにして、"*ダウン*" 状態のノードをシミュレートします。  これは、アプリケーションをテストするためにシステム エラーを作り出すのに便利な方法です。  The Start Node API (マネージド:[StartNodeAsync()][startnode]、PowerShell:[Start-ServiceFabricNode][startnodeps]]) は、Stop Node API で停止したノードを通常の状態に戻します。
 
 ## <a name="why-are-we-replacing-these"></a>API を置き換える理由
 
@@ -38,14 +38,14 @@ Stop Node API (マネージド: [StopNodeAsync()][stopnode]、PowerShell: [Stop-
 
 ## <a name="introducing-the-node-transition-apis"></a>Node Transition API の概要
 
-上記の問題に対処するため、新しい API セットを開発しました。  新しい Node Transition API (マネージド: [StartNodeTransitionAsync()][snt]) は、Service Fabric ノードを "*停止*" 状態にするためにも、"*停止*" 状態から通常の稼働状態に戻すためにも使用できます。  API の名前に "Start" という文字が含まれていますが、これはノードを開始するという意味ではありません。  ノードを "*停止*" または "開始" のいずれかの状態に遷移させるための非同期操作を開始することを意味しています。
+上記の問題に対処するため、新しい API セットを開発しました。  新しい Node Transition API (マネージド:[StartNodeTransitionAsync()][snt]) は、Service Fabric ノードを "*停止*" 状態にするためにも、"*停止*" 状態から通常の稼働状態に戻すためにも使用できます。  API の名前に "Start" という文字が含まれていますが、これはノードを開始するという意味ではありません。  ノードを "*停止*" または "開始" のいずれかの状態に遷移させるための非同期操作を開始することを意味しています。
 
 **使用方法**
 
-Node Transition API を呼び出したときに例外がスローされなければ、非同期操作はシステムによって受け入れられおり、実行されます。  呼び出しが成功していても、操作が完了しているとは限りません。  操作の現在の状態に関する情報を取得するには、Node Transition API を呼び出したときに使用した guid を指定して、Node Transition Progress API (マネージド: [GetNodeTransitionProgressAsync()][gntp]) を呼び出します。  Node Transition Progress API は、NodeTransitionProgress オブジェクトを返します。  このオブジェクトの State プロパティを見れば、操作の現在の状態がわかります。  値が "Running" の場合、操作は実行中です。  "Completed" の場合、エラーが発生することなく操作が完了しています。  "Faulted" の場合、操作の実行に問題が発生しています。  問題の内容は、Result プロパティの Exception プロパティに示されています。  State プロパティの詳細については https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate を参照してください。また、コード例については、下の “使用例” セクションをご覧ください。
+Node Transition API を呼び出したときに例外がスローされなければ、非同期操作はシステムによって受け入れられおり、実行されます。  呼び出しが成功していても、操作が完了しているとは限りません。  操作の現在の状態に関する情報を取得するには、この操作のために Node Transition API を呼び出したときに使用した guid を指定して、Node Transition Progress API (マネージド:[GetNodeTransitionProgressAsync()][gntp]) を呼び出します。  Node Transition Progress API は、NodeTransitionProgress オブジェクトを返します。  このオブジェクトの State プロパティを見れば、操作の現在の状態がわかります。  値が "Running" の場合、操作は実行中です。  "Completed" の場合、エラーが発生することなく操作が完了しています。  "Faulted" の場合、操作の実行に問題が発生しています。  問題の内容は、Result プロパティの Exception プロパティに示されています。  State プロパティの詳細については https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate を参照してください。また、コード例については、下の “使用例” セクションをご覧ください。
 
 
-**停止したノードとダウンしたノードを見分ける方法** Node Transition API を使用してノードを "*停止*" した場合、ノード クエリの出力 (マネージド: [GetNodeListAsync()][nodequery]、PowerShell: [Get-servicefabricnode][nodequeryps]) を見ると、このノードの *IsStopped* プロパティの値が true になっているのがわかります。  これは、*NodeStatus* プロパティの値 (*Down*) とは異なります。  *NodeStatus* プロパティの値が *Down* であるにもかかわらず、*IsStopped* が false の場合、そのノードは Node Transition API で停止されたのではなく、別の理由により "*ダウン*" しています。  *IsStopped* プロパティが true で、*NodeStatus* プロパティが *Down* の場合、そのノードは Node Transition API で停止されています。
+**停止したノードとダウンしたノードを見分ける方法** Node Transition API を使用してノードを "*停止*" した場合、ノード クエリの出力 (マネージド:[GetNodeListAsync()][nodequery]、PowerShell:[Get-ServiceFabricNode][nodequeryps]) を見ると、このノードの *IsStopped* プロパティの値が true になっているのがわかります。  これは、*NodeStatus* プロパティの値 (*Down*) とは異なります。  *NodeStatus* プロパティの値が *Down* であるにもかかわらず、*IsStopped* が false の場合、そのノードは Node Transition API で停止されたのではなく、別の理由により "*ダウン*" しています。  *IsStopped* プロパティが true で、*NodeStatus* プロパティが *Down* の場合、そのノードは Node Transition API で停止されています。
 
 "*停止*" されているノードを Node Transition API を使って開始すると、そのノードはクラスターの通常のメンバーとして再び機能するようになります。  ノード クエリ API の出力では、*IsStopped* は false に、*NodeStatus* は Down 以外のいずれか (Up など) になります。
 
@@ -159,7 +159,7 @@ Node Transition API を呼び出したときに例外がスローされなけれ
             }
             while (!wasSuccessful);
 
-            // Now call StartNodeTransitionProgressAsync() until hte desired state is reached.
+            // Now call StartNodeTransitionProgressAsync() until the desired state is reached.
             await WaitForStateAsync(fc, guid, TestCommandProgressState.Completed).ConfigureAwait(false);
         }
 ```
@@ -202,7 +202,7 @@ Node Transition API を呼び出したときに例外がスローされなけれ
             }
             while (!wasSuccessful);
 
-            // Now call StartNodeTransitionProgressAsync() until hte desired state is reached.
+            // Now call StartNodeTransitionProgressAsync() until the desired state is reached.
             await WaitForStateAsync(fc, guid, TestCommandProgressState.Completed).ConfigureAwait(false);
         }
 ```
@@ -280,11 +280,11 @@ Node Transition API を呼び出したときに例外がスローされなけれ
         }
 ```
 
-[stopnode]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.faultmanagementclient?redirectedfrom=MSDN#System_Fabric_FabricClient_FaultManagementClient_StopNodeAsync_System_String_System_Numerics_BigInteger_System_Fabric_CompletionMode_
+[stopnode]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.faultmanagementclient?redirectedfrom=MSDN
 [stopnodeps]: https://msdn.microsoft.com/library/mt125982.aspx
-[startnode]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.faultmanagementclient?redirectedfrom=MSDN#System_Fabric_FabricClient_FaultManagementClient_StartNodeAsync_System_String_System_Numerics_BigInteger_System_String_System_Int32_System_Fabric_CompletionMode_System_Threading_CancellationToken_
+[startnode]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.faultmanagementclient?redirectedfrom=MSDN
 [startnodeps]: https://msdn.microsoft.com/library/mt163520.aspx
-[nodequery]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient#System_Fabric_FabricClient_QueryClient_GetNodeListAsync_System_String_
+[nodequery]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient
 [nodequeryps]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode
-[snt]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.testmanagementclient#System_Fabric_FabricClient_TestManagementClient_StartNodeTransitionAsync_System_Fabric_Description_NodeTransitionDescription_System_TimeSpan_System_Threading_CancellationToken_
-[gntp]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.testmanagementclient#System_Fabric_FabricClient_TestManagementClient_GetNodeTransitionProgressAsync_System_Guid_System_TimeSpan_System_Threading_CancellationToken_
+[snt]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.testmanagementclient
+[gntp]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.testmanagementclient

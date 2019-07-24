@@ -1,24 +1,23 @@
 ---
 title: Azure CLI を使用した Azure Database for MariaDB ファイアウォール規則の作成と管理
 description: この記事では、Azure CLI コマンド ラインを使って Azure Database for MariaDB ファイアウォール規則を作成し、管理する方法について説明します。
-services: mariadb
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.devlang: azure-cli
-ms.topic: article
-ms.date: 11/10/2018
-ms.openlocfilehash: 1dba4b99dc50d1908b7b3d0488ba6ebf2f85c2a4
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.devlang: azurecli
+ms.topic: conceptual
+ms.date: 04/09/2019
+ms.openlocfilehash: 562987b953f0a8a20a917e208f43557bd768c0a0
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516552"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793219"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MariaDB ファイアウォール規則の作成と管理
-サーバーレベルのファイアウォール規則を使用すると、管理者は特定の IP アドレスまたは IP アドレス範囲からの Azure Database for MariaDB サーバーへのアクセスを管理できます。 便利な Azure CLI コマンドを使用すると、サーバーを管理するためのファイアウォール規則の作成、更新、削除、一覧化、表示などができます。 Azure Database for MariaDB ファイアウォールの概要については、「[Azure Database for MariaDB サーバーのファイアウォール規則](./concepts-firewall-rules.md)」をご覧ください。
+サーバーレベルのファイアウォール規則を使用して、特定の IP アドレスまたは IP アドレス範囲からの Azure Database for MariaDB サーバーへのアクセスを管理できます。 便利な Azure CLI コマンドを使用すると、サーバーを管理するためのファイアウォール規則の作成、更新、削除、一覧化、表示などができます。 Azure Database for MariaDB ファイアウォールの概要については、「[Azure Database for MariaDB サーバーのファイアウォール規則](./concepts-firewall-rules.md)」をご覧ください。
+
+仮想ネットワーク (VNet) 規則を使用して、サーバーへのアクセスをセキュリティで保護することもできます。 [Azure CLI を使用した仮想ネットワーク サービス エンドポイントと規則の作成と管理](howto-manage-vnet-cli.md)の詳細を確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 * [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)。
@@ -28,24 +27,24 @@ ms.locfileid: "51516552"
 Azure CLI の **az mariadb server firewall-rule** コマンドで、ファイアウォール規則を作成、削除、一覧表示、表示、更新します。
 
 コマンド:
-- **create**: Azure MariaDB サーバーのファイアウォール規則を作成します。
-- **delete**: Azure MariaDB サーバーのファイアウォール規則を削除します。
-- **list**: Azure MariaDB サーバーのファイアウォール規則を一覧表示します。
-- **show**: Azure MariaDB サーバーのファイアウォール規則の詳細を表示します。
-- **update**: Azure MariaDB サーバーのファイアウォール規則を更新します。
+- **create**:Azure MariaDB サーバーのファイアウォール規則を作成します。
+- **delete**:Azure MariaDB サーバーのファイアウォール規則を削除します。
+- **list**:Azure MariaDB サーバーのファイアウォール規則を一覧表示します。
+- **show**:Azure MariaDB サーバーのファイアウォール規則の詳細を表示します。
+- **update**:Azure MariaDB サーバーのファイアウォール規則を更新します。
 
-## <a name="log-in-to-azure-and-list-your-azure-database-for-mariadb-servers"></a>Azure にログインして Azure Database for MariaDB サーバーを一覧表示する
+## <a name="sign-in-to-azure-and-list-your-azure-database-for-mariadb-servers"></a>Azure にサインインして Azure Database for MariaDB サーバーを一覧表示する
 **az login** コマンドを使用して、ご利用の Azure アカウントで Azure CLI に安全に接続します。
 
 1. コマンド ラインから次のコマンドを実行します。
-```azurecli
-az login
-```
-このコマンドにより、次の手順で使用するコードが出力されます。
+   ```azurecli
+   az login
+   ```
+   このコマンドにより、次の手順で使用するコードが出力されます。
 
 2. Web ブラウザーを使用して [https://aka.ms/devicelogin](https://aka.ms/devicelogin) ページを開いた後、コードを入力します。
 
-3. プロンプトで、Azure 資格情報を使用してログインします。
+3. プロンプトで、Azure 資格情報を使用してサインインします。
 
 4. ログインの認証が完了すると、サブスクリプションの一覧がコンソールに出力されます。 目的のサブスクリプションの ID をコピーして、使用する現在のサブスクリプションを設定します。 [az account set](/cli/azure/account#az-account-set) コマンドを使用します。
    ```azurecli-interactive
@@ -122,3 +121,4 @@ az mariadb server firewall-rule delete --resource-group myresourcegroup --server
 ## <a name="next-steps"></a>次の手順
 - 詳細については、「[Azure Database for MariaDB サーバーのファイアウォール規則](./concepts-firewall-rules.md)」を参照してください。
 - [Azure portal を使用した Azure Database for MariaDB ファイアウォール規則の作成と管理](./howto-manage-firewall-portal.md)。
+- [Azure CLI を使用して仮想ネットワーク サービス エンドポイントと規則を作成および管理](howto-manage-vnet-cli.md)して、サーバーへのアクセスのセキュリティ保護を強化します。

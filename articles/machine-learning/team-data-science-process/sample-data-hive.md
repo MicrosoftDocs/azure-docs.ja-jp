@@ -1,26 +1,22 @@
 ---
-title: Azure HDInsight Hive テーブル内のデータのサンプリング | Microsoft Docs
-description: Azure HDInsight (Hadopop) Hive テーブルのデータをダウンサンプリングする
-services: machine-learning,hdinsight
-documentationcenter: ''
-author: deguhath
+title: Azure HDInsight Hive テーブル内のデータのサンプリング - Team Data Science Process
+description: Hive クエリを使用して Azure HDInsight Hive テーブルに格納されているデータをダウンサンプリングし、データを分析で管理しやすいサイズに削減します。
+services: machine-learning
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: f31e8d01-0fd4-4a10-b1a7-35de3c327521
 ms.service: machine-learning
-ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: deguhath
-ms.openlocfilehash: 8a1fd001980efbff27f10cfb4be1502cd2f9f402
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: c417950e07ae3c6922aa260a3ef40d862870aa1e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345931"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452330"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Azure HDInsight Hive テーブル内のデータのサンプリング
 この記事では、Hive クエリを使用して Azure HDInsight Hive テーブルに格納されているデータをダウンサンプリングして、分析で管理しやすいサイズに削減する方法について説明します。 一般的に使用されている 3 つのサンプリング方法について説明します。
@@ -32,7 +28,7 @@ ms.locfileid: "51345931"
 **データをサンプリングする理由**
 分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。 ダウンサンプリングすると、データの理解、探索、および特徴エンジニアリングが容易になります。 Team Data Science Process におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
 
-このサンプリング タスクは、 [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)の 1 ステップです。
+このサンプリング タスクは、 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)の 1 ステップです。
 
 ## <a name="how-to-submit-hive-queries"></a>Hive クエリを送信する方法
 Hive クエリは、Hadoop クラスターのヘッド ノード上の Hadoop コマンド ライン コンソールから送信できます。 これを行うには、Hadoop クラスターのヘッド ノードにログインし、Hadoop コマンド ライン コンソールを開き、そこから Hive クエリを送信します。 Hadoop コマンド ライン コンソールで Hive クエリを送信する手順については、「[Hive クエリを送信する方法](move-hive-tables.md#submit)」をご覧ください。
@@ -85,7 +81,7 @@ Hive クエリは、Hadoop クラスターのヘッド ノード上の Hadoop �
     on b.catfield=c.catfield
 
 ## <a name="stratified"></a>階層サンプリング
-取得したサンプルに、母集団と同じ比率のカテゴリ別のサンプル値がある場合、ランダム サンプリングは、カテゴリ変数に関して階層化されます。 上記と同じ例で、州ごとに次の件数のデータがあるとします。NJ には 100 件のデータ、NY には 60 件のデータ、WA には 300 件のデータ。 階層のサンプリングの割合を 0.5 に指定すると、取得されるサンプルは NJ、NY、WA それぞれで 50 件、30 件、150 件となります。
+取得したサンプルに、母集団と同じ比率のカテゴリ別のサンプル値がある場合、ランダム サンプリングは、カテゴリ変数に関して階層化されます。 上記と同じ例で、州ごとに次の件数のデータがあるものとします。NJ には 100 件のデータ、NY には 60 件のデータ、WA には 300 件のデータ。 階層のサンプリングの割合を 0.5 に指定すると、取得されるサンプルは NJ、NY、WA それぞれで 50 件、30 件、150 件となります。
 
 クエリの使用例を次に示します。
 

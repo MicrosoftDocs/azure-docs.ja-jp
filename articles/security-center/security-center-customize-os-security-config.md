@@ -4,7 +4,7 @@ description: この記事では、Security Center の評価をカスタマイズ
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: ''
 ms.service: security-center
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 925f45f8d251882cfc8acf4b04902cea45451dd4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c0c37724e61490c8c33b5e2d37879549bbc6d7ce
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007265"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402118"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Azure Security Center での OS セキュリティ構成のカスタマイズ (プレビュー)
 
@@ -32,7 +32,7 @@ Azure Security Center は、ファイアウォール、監査、パスワード 
 規則をカスタマイズすることで、どの構成オプションが自らの環境により適しているかを組織がコントロールできます。 カスタマイズされた評価ポリシーを設定してから、それをサブスクリプション内のすべての該当するマシンに適用することができます。
 
 > [!NOTE]
-> - 現在、OS セキュリティ構成のカスタマイズは Windows Server バージョン 2008、2008 R2、2012、2012 R2 のオペレーティング システムでのみ使用できます。
+> - 現在、OS セキュリティ構成のカスタマイズは Windows Server バージョン 2008、2008 R2、2012、2012 R2、2016 のオペレーティング システムでのみ使用できます。
 > - 構成は、選択したサブスクリプションの下にあるすべてのワークスペースに接続されたすべての VM とコンピューターに適用されます。
 > - OS セキュリティ構成のカスタマイズは、Security Center の Standard レベルでのみ使用できます。
 >
@@ -60,7 +60,7 @@ Security Center で既定の OS セキュリティ構成をカスタマイズす
 3.  カスタマイズするサブスクリプションの行で、**設定の編集**をクリックします。
 
 4. **[セキュリティ構成の編集]** を選択します。  
-    
+
     ![[セキュリティ構成の編集] ウィンドウ](media/security-center-customize-os-security-config/blade.png)
 
 5. 手順に従って、ファイルをダウンロードして編集し、変更したファイルをアップロードします。
@@ -90,29 +90,29 @@ Security Center で既定の OS セキュリティ構成をカスタマイズす
 >
 >
 
-カスタマイズ ファイルを編集する際、1 つまたはすべての規則を変更できます。 各規則セットには、次に示すようにレジストリ、監査ポリシー、セキュリティ ポリシーの 3 つのカテゴリに分かれる *rules* セクションが含まれています。
+カスタマイズ ファイルを編集する際、1 つまたはすべての規則を変更できます。 各規則セットには *rules* セクションが含まれており、次に示すようにレジストリ、監査ポリシー、セキュリティ ポリシーの 3 つのカテゴリに分かれています。
 
 ![3 つの規則セットのカテゴリ](media/security-center-customize-os-security-config/rules-section.png)
 
 各カテゴリには、独自の属性セットがあります。 次の属性を変更できます。
 
-- **expectedValue**: この属性のフィールド データの種類は、*規則の種類*ごとにサポートされている値と一致する必要があります。次に例を示します。
+- **expectedValue**:この属性のフィールド データの種類は、*規則の種類*ごとにサポートされている値と一致する必要があります。次に例を示します。
 
-  - **baselineRegistryRules**: この値は、その規則で定義されている [regValueType](https://msdn.microsoft.com/library/windows/desktop/ms724884) と一致する必要があります。
+  - **baselineRegistryRules**:この値は、その規則で定義されている [regValueType](https://msdn.microsoft.com/library/windows/desktop/ms724884) と一致する必要があります。
 
-  - **baselineAuditPolicyRules**: 次の文字列値のいずれかを使用します。
+  - **baselineAuditPolicyRules**:次のいずれかの文字列値を使用します。
 
     - *Success and Failure*
 
     - *Success*
 
-  - **baselineSecurityPolicyRules**: 次の文字列値のいずれかを使用します。
+  - **baselineSecurityPolicyRules**:次のいずれかの文字列値を使用します。
 
     - *No one*
 
-    - *Administrators*、*Backup Operators* など、許可されているユーザー グループの一覧
+    - 許可されているユーザー グループの一覧。たとえば、*Administrators*、*Backup Operators* です。
 
--   **state**: *Disabled* または *Enabled* オプションを含むことのできる文字列。 このプライベート プレビュー リリースでは、文字列の大文字と小文字が区別されます。
+-   **state**: *Disabled* または *Enabled* オプションを含むことのできる文字列。 このリリースでは、文字列の大文字と小文字が区別されます。
 
 これらのフィールドのみ構成できます。 ファイルの形式またはサイズに違反した場合は、変更を保存できません。 有効な JSON 構成ファイルをアップロードする必要があることを伝えるエラー メッセージが届きます。
 
@@ -121,7 +121,7 @@ Security Center で既定の OS セキュリティ構成をカスタマイズす
 次の 3 つのセクションでは、上記の規則の例を示します。 *expectedValue* 属性と *state* 属性は変更できます。
 
 **baselineRegistryRules**
-```
+```json
     {
     "hive": "LocalMachine",
     "regValueType": "Int",
@@ -144,7 +144,7 @@ Security Center で既定の OS セキュリティ構成をカスタマイズす
 ```
 
 **baselineAuditPolicyRules**
-```
+```json
     {
     "auditPolicyId": "0cce923a-69ae-11d9-bed3-505054503030",
     "ruleId": "37745508-95fb-44ec-ab0f-644ec0b16995",
@@ -161,7 +161,7 @@ Security Center で既定の OS セキュリティ構成をカスタマイズす
 ```
 
 **baselineSecurityPolicyRules**
-```
+```json
     {
     "sectionName": "Privilege Rights",
     "settingName": "SeIncreaseWorkingSetPrivilege",
@@ -194,17 +194,17 @@ Security Center で既定の OS セキュリティ構成をカスタマイズす
 
 新しいカスタム規則には、新しいカスタム ソースのマーク (! ="Microsoft") が付けられます。 *ruleId* フィールドは null または空にすることができます。 空の場合は、Microsoft によって生成されます。 空でない場合は、規則全体 (既定とカスタム) を通して一意となる有効な GUID が必要です。 コア フィールドに関する以下の制約をご確認ください。
 
--   **originalId**: null または空にすることができます。 *originalId* が空でない場合は、有効な GUID である必要があります。
+-   **originalId**:null または空にすることができます。 *originalId* が空でない場合は、有効な GUID である必要があります。
 
--   **cceId**: null または空にすることができます。 *cceId* が空でない場合は、一意である必要があります。
+-   **cceId**:null または空にすることができます。 *cceId* が空でない場合は、一意である必要があります。
 
 -   **ruleType**: Registry、AuditPolicy、SecurityPolicy のいずれかを選択します。
 
 -   **Severity**: Unknown、Critical、Warning、Informational のいずれかを選択します。
 
--   **analyzeOperation**: *Equals* を指定する必要があります。
+-   **analyzeOperation**:*Equals* を指定する必要があります。
 
--   **auditPolicyId**: 有効な GUID を指定する必要があります。
+-   **auditPolicyId**:有効な GUID を指定する必要があります。
 
 -   **regValueType**: Int、Long、String、MultipleString のいずれかを選択します。
 
@@ -216,7 +216,7 @@ Security Center で既定の OS セキュリティ構成をカスタマイズす
 新しいカスタム規則の例:
 
 **レジストリ**:
-```
+```json
     {
     "hive": "LocalMachine",
     "regValueType": "Int",
@@ -225,7 +225,7 @@ Security Center で既定の OS セキュリティ構成をカスタマイズす
     "valueName": "MyValueName",
     "originalId": "",
     "cceId": "",
-    "ruleName": "My new registry rule”, "baselineRuleType": "Registry",
+    "ruleName": "My new registry rule", "baselineRuleType": "Registry",
     "expectedValue": "123", "severity": "Critical",
     "analyzeOperation": "Equals",
     "source": "MyCustomSource",
@@ -233,7 +233,7 @@ Security Center で既定の OS セキュリティ構成をカスタマイズす
     }
 ```
 **セキュリティ ポリシー**:
-```
+```json
    {
    "sectionName": "Privilege Rights",
    "settingName": "SeDenyBatchLogonRight",
@@ -248,7 +248,7 @@ Security Center で既定の OS セキュリティ構成をカスタマイズす
    }
 ```
 **監査ポリシー**:
-```
+```json
    {
    "auditPolicyId": "0cce923a-69ae-11d9-bed3-505054503030",
    "originalId": "",
@@ -275,7 +275,7 @@ Security Center で既定の OS セキュリティ構成をカスタマイズす
 
 | **エラー**                                | **説明**                                                                                                                              |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| BaselineConfiguratiohSchemaVersionError  | 無効または空のプロパティ *schemaVersion* が見つかりました。 この値は *{0}* に設定する必要があります。                                                         |
+| BaselineConfigurationSchemaVersionError  | 無効または空のプロパティ *schemaVersion* が見つかりました。 この値は *{0}* に設定する必要があります。                                                         |
 | BaselineInvalidStringError               | プロパティ *{0}* に *\\n* を含めることはできません。                                                                                                         |
 | BaselineNullRuleError                    | ベースライン構成規則の一覧に、*null* 値を持つ規則が含まれています。                                                                         |
 | BaselineRuleCceIdNotUniqueError          | CCE-ID *{0}* が一意ではありません。                                                                                                                  |
@@ -298,7 +298,7 @@ Security Center で既定の OS セキュリティ構成をカスタマイズす
 | BaselineRuleTypeDoesntMatchError         | 規則の実際の種類は *{0}* ですが、*ruleType* プロパティは *{1}* です。                                                                          |
 | BaselineRuleUnpermittedChangesError      | 変更できるのは *expectedValue* プロパティと *state* プロパティだけです。                                                                       |
 | BaselineTooManyRules                     | 許容されるカスタマイズされた規則の最大数は {0} 規則です。 指定の構成には、規則が {1}、既定の規則が {2}、カスタマイズされた規則が {3} 含まれています。 |
-| ErrorNoConfigurationStatus               | 構成状態が見つかりませんでした。 目的の構成状態 (*Default* または *Custom*) を指定してください。                                    |
+| ErrorNoConfigurationStatus               | 構成状態が見つかりませんでした。 目的の構成状態を指定してください(*Default* または *Custom*)。                                    |
 | ErrorNonEmptyRulesetOnDefault            | 構成状態が既定値に設定されています。 *BaselineRulesets* の一覧は null または空にする必要があります。                                                          |
 | ErrorNullRulesetsPropertyOnCustom        | 指定された構成状態は *Custom* ですが、*baselineRulesets* プロパティは null または空です。                                             |
 | ErrorParsingBaselineConfig               | 指定された構成が無効です。 定義されている 1 つ以上の値が null 値または無効な種類です。                                  |

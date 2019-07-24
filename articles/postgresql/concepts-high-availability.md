@@ -1,20 +1,17 @@
 ---
 title: Azure Database for PostgreSQL での高可用性の概念
 description: この記事では、Azure Database for PostgreSQL を使用する場合の高可用性の情報を提供します。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 6c39cfdd3bfe244296290c4083644ea7e1b35672
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.topic: conceptual
+ms.date: 02/01/2019
+ms.openlocfilehash: d43647b57469efa4581dc1c74a842a51e9d54ad7
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298995"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699818"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL での高可用性の概念
 Azure Database for PostgreSQL サービスは、保証された高いレベルの可用性を提供します。 財務的な裏付けのあるサービス レベル アグリーメント (SLA) は、一般公開時に 99.99% です。 このサービスを使用すると、アプリケーション ダウンタイムはほぼ存在しません。
@@ -35,5 +32,5 @@ HA モデルと同様に、Azure Database for PostgreSQL がスケールアッ�
 スケール操作中、データベース接続の中断が発生します。 クライアント アプリケーションは切断され、未処理のコミットされていないトランザクションは取り消されます。 クライアント アプリケーションが接続を再試行するか、または新しい接続を作成すると、ゲートウェイはその接続を新しくサイズ設定されたインスタンスに転送します。 
 
 ## <a name="next-steps"></a>次の手順
-- サービスの概要については、「 [Azure Database for PostgreSQL の概要](overview.md)」をご覧ください
-- 再試行ロジックの概要については、「[Azure Database for PostgreSQL の一時的な接続エラーに対処する](concepts-connectivity.md)」をご覧ください
+- [一時的な接続エラーへの対処](concepts-connectivity.md)について学習する
+- [読み取りレプリカを使用してデータをレプリケートする](howto-read-replicas-portal.md)方法を学習する

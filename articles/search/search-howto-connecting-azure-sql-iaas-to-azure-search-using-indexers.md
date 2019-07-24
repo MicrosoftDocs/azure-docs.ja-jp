@@ -1,32 +1,37 @@
 ---
-title: Azure Search への SQL VM 接続 | Microsoft Docs
+title: 検索インデックスのための Azure SQL 仮想マシンの VM 接続 - Azure Search
 description: 暗号化された接続を有効にして、Azure Search のインデクサーから Azure の仮想マシン (VM) 上の SQL Server に接続できるようにファイアウォールを構成します。
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/23/2017
+ms.date: 02/04/2019
 ms.author: heidist
-ms.openlocfilehash: 7800e83891cb336bb896299b8fd4d6b3ba590178
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.custom: seodec2018
+ms.openlocfilehash: 90e5a133bac519cbc5ab2d7b112d51a019e8f698
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366462"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751380"
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure VM での Azure Search インデクサーから SQL Server への接続の構成
 「[インデクサーを使用した Azure Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)」で説明したように、**Azure VM 上の SQL Server** (略して **SQL Azure VM**) に対してインデクサーを作成することは、Azure Search でサポートされています。ただし、最初にセキュリティ関連のいくつかの前提条件に対応する必要があります。 
 
-**タスクの所要時間:** 約 30 分 (VM に証明書をインストール済みであることが前提)
+Azure Search から VM 上の SQL Server への接続は、パブリック インターネット接続です。 これらの接続のために通常従うすべてのセキュリティ手段は以下にも適用されます。
+
++ Azure VM 上の SQL Server インスタンスの完全修飾ドメイン名のために、[認証機関プロバイダー](https://en.wikipedia.org/wiki/Certificate_authority#Providers)から証明書を取得します。
++ 証明書を VM インストールし、この記事の手順を使用して、VM で暗号化された接続を有効にし、構成します。
 
 ## <a name="enable-encrypted-connections"></a>暗号化された接続を有効にする
 Azure Search には、パブリック インターネット接続経由のすべてのインデクサー要求のための暗号化されたチャネルが必要です。 このセクションでは、これを機能させるための手順を示します。
 
 1. 証明書のプロパティを調べて、サブジェクト名が VM の完全修飾ドメイン名 (FQDN) であることを確認します。 プロパティは、CertUtils などのツールまたは証明書スナップインを使用して表示できます。 FQDN は、 **Azure Portal** で、VM サービス ブレードの [Essentials] セクションにある [[パブリック IP アドレス/DNS 名ラベル]](https://portal.azure.com/)フィールドから入手できます。
    
-   * 新しい **Resource Manager** テンプレートを使用して作成された VM の場合、FQDN の形式は `<your-VM-name>.<region>.cloudapp.azure.com` です。 
-   * **クラシック** VM として作成された VM の場合、FQDN の形式は `<your-cloud-service-name.cloudapp.net>` です。 
+   * 新しい **Resource Manager** テンプレートを使用して作成された VM の場合、FQDN の形式は `<your-VM-name>.<region>.cloudapp.azure.com` です。
+   * **クラシック** VM として作成された VM の場合、FQDN の形式は `<your-cloud-service-name.cloudapp.net>` です。
+
 2. レジストリ エディター (regedit) を使用して、証明書を使用するように SQL Server を構成します。 
    
     このタスクにはよく SQL Server 構成マネージャーが使用されますが、このシナリオでは使用できません。 SQL Server 構成マネージャーでは、インポートされている証明書が検出されません。これは、Azure 上の VM の FQDN が、VM によって特定された FQDN と一致しないためです (VM は、ドメインをローカル コンピューターまたはそれが参加しているネットワーク ドメインとして識別します)。 名前が一致しない場合は、regedit を使用して証明書を指定します。
@@ -37,9 +42,11 @@ Azure Search には、パブリック インターネット接続経由のすべ
    * **証明書**キーの値を、VM にインポートした SSL 証明書の**拇印**に設定します。
      
      拇印を取得する方法は複数ありますが、いくつかの方法は他の方法よりも優れています。 MMC の **証明書** スナップインからコピーする場合は、 [このサポート記事で説明されているように](https://support.microsoft.com/kb/2023869/)非表示の先頭文字を含めてしまい、その結果、接続を試みたときにエラーが発生する可能性があります。 この問題を修正するための回避策はいくつかあります。 最も簡単な方法は、regedit のキー値フィールドで Backspace キーを押してから拇印の最初の文字を再入力して、先頭文字を削除することです。 また、別のツールを使用して拇印をコピーすることもできます。
+
 3. サービス アカウントにアクセス許可を付与します。 
    
     SQL Server サービス アカウントに SSL 証明書の秘密キーに関する適切なアクセス許可が付与されていることを確認します。 この手順を見過ごすと、SQL Server は起動されません。 このタスクには**証明書**スナップインまたは **CertUtils** を使用できます。
+    
 4. SQL Server サービスを再起動します。
 
 ## <a name="configure-sql-server-connectivity-in-the-vm"></a>VM で SQL Server への接続を構成する

@@ -1,25 +1,44 @@
 ---
-title: 'チュートリアル 7: LUIS での Simple エンティティとフレーズ リスト'
+title: シンプルなエンティティ、フレーズ リスト
 titleSuffix: Azure Cognitive Services
-description: 発話から機械学習データを抽出する
+description: このチュートリアルでは、Simple エンティティを使用して発話から雇用ジョブ名の機械学習データを抽出します。 抽出精度を向上させるために、Simple エンティティに固有の用語のフレーズ リストを追加します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: f3e931344d2d2294c03756d630c688df1e5da9a8
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: ea9a2df1f06ba6836ef88bc57dc3f95fd31e1ee9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425256"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526570"
 ---
-# <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>チュートリアル 7: Simple エンティティとフレーズ リストを使用して名前を抽出する
+# <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>チュートリアル:Simple エンティティとフレーズ リストを使用して名前を抽出する
 
 このチュートリアルでは、**Simple** エンティティを使用して発話から雇用ジョブ名の機械学習データを抽出します。 抽出精度を向上させるために、Simple エンティティに固有の用語のフレーズ リストを追加します。
+
+Simple エンティティは、単語または語句に含まれている単一のデータ概念を検出します。
+
+**このチュートリアルで学習する内容は次のとおりです。**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * サンプル アプリをインポートする
+> * Simple エンティティを追加する 
+> * フレーズ リストを追加して単語のシグナルを強化する
+> * トレーニング 
+> * 発行 
+> * エンドポイントから意図とエンティティを取得する
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+
+## <a name="simple-entity"></a>シンプル エンティティ
 
 このチュートリアルでは、ジョブ名を抽出する新しい Simple エンティティを追加します。 この LUIS アプリのシンプル エンティティの目的は、ジョブ名がどのようなもので、発話のどこで見つけられるかを、LUIS に教えることです。 発話のジョブ名部分は、単語の選択や発話の長さに基づいて、発話ごとに異なります。 LUIS には、ジョブ名を使用するすべての意図にわたってジョブ名の例が必要です。  
 
@@ -29,35 +48,7 @@ Simple エンティティがこのデータの種類に適しているのは次�
 * データが正規表現のような整形式ではない。
 * 電話番号またはデータの事前構築済みエンティティのような一般的なデータではない。
 * リスト エンティティなどの既知の単語のリストにデータが正確に一致しない。
-* 複合エンティティや階層構造エンティティのような他のデータ項目がデータに含まれていない。
-
-**このチュートリアルで学習する内容は次のとおりです。**
-
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * 既存のチュートリアル アプリを使用する
-> * Simple エンティティを追加してアプリから職務を抽出する
-> * フレーズ リストを追加してジョブの単語のシグナルを強化する
-> * トレーニング 
-> * [発行] 
-> * エンドポイントから意図とエンティティを取得する
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="use-existing-app"></a>既存のアプリを使用する
-
-最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
-
-以前のチュートリアルの HumanResources アプリがない場合は、次の手順を使用します。
-
-1.  [アプリの JSON ファイル](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-composite-HumanResources.json)をダウンロードして保存します。
-
-2. JSON を新しいアプリにインポートします。
-
-3. **[管理]** セクションの **[バージョン]** タブで、バージョンを複製し、それに `simple` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 バージョン名は URL ルートの一部として使用されるため、URL 内で有効ではない文字を名前に含めることはできません。
-
-## <a name="simple-entity"></a>シンプル エンティティ
-Simple エンティティは、単語または語句に含まれている単一のデータ概念を検出します。
+* 複合エンティティやコンテキスト ロールのような他のデータ項目がデータに含まれていない。
 
 チャット ボットからの次の発話について考えます。
 
@@ -86,25 +77,38 @@ Simple エンティティは、単語または語句に含まれている単一�
 
 発話例でエンティティがマークされたら、フレーズ リストを追加して、Simple エンティティのシグナルを強化することが重要です。 フレーズ リストは正確な一致として使用**されず**、期待するすべての可能な値である必要はありません。 
 
+## <a name="import-example-app"></a>サンプル アプリをインポートする
+
+1.  意図のチュートリアルから [app JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/intentonly.json)をダウンロードして保存します。
+
+2. JSON を新しいアプリにインポートします。
+
+3. **[管理]** セクションの **[バージョン]** タブで、バージョンを複製し、それに `simple` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 バージョン名は URL ルートの一部として使用されるため、URL 内で有効ではない文字を名前に含めることはできません。
+
+## <a name="mark-entities-in-example-utterances-of-an-intent"></a>意図の発話の例でエンティティにマークを付ける
+
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. **[Intents]\(意図\)** ページで、意図 **ApplyForJob** を選択します。 
+1. **[Intents]\(意図\)** ページで、意図 **ApplyForJob** を選択します。 
 
-3. 発話 `I want to apply for the new accounting job` で、`accounting` を選択し、ポップアップ メニューの一番上のフィールドに「`Job`」と入力して、**[新しいエンティティの作成]** を選択します。 
+1. 発話 `I want to apply for the new accounting job` で、`accounting` を選択し、ポップアップ メニューの一番上のフィールドに「`Job`」と入力して、**[新しいエンティティの作成]** を選択します。 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "エンティティの作成手順が強調表示されている \"ApplyForJob\" 意図を含む LUIS のスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
+    [![エンティティの作成手順が強調表示されている 'ApplyForJob' の意図を示した LUIS のスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "エンティティの作成手順が強調表示されている 'ApplyForJob' の意図を示した LUIS のスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
-4. ポップアップ ウィンドウでエンティティ名と型を確認し、**[Done]\(完了\)**  を選択します。
+1. ポップアップ ウィンドウでエンティティ名と型を確認し、**[Done]\(完了\)**  を選択します。
 
     ![名前に "Job"、型に "Simple" が指定された、Simple エンティティの作成ポップアップ モデル ダイアログ](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-5. 発話 `Submit resume for engineering position` の中の `engineering` という単語にジョブのエンティティとしてラベルを付けます。 `engineering` という単語を選択し、ポップアップ メニューから **[ジョブ]** を選択します。 
+1. 残りの発話で、ジョブに関連する単語を **Job** エンティティでマークします。これを行うには、単語またはフレーズを選択してから、ポップアップ メニューで **Job** を選択します。 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Job エンティティのラベル付けが強調表示されている LUIS のスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
+    [![ジョブ エンティティのラベル付けが強調表示されたLUIS のスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "ジョブ エンティティのラベル付けが強調表示されたLUIS のスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
-    すべての発話にラベルを付けますが、5  件の発話では、職務関連の単語やフレーズについて LUIS に認識させるには不十分です。 数値が使用されている職務には、例は不要です。正規表現エンティティが使用されているためです。 単語または語句のジョブには少なくともさらに 15 例が必要です。 
 
-6. 発話を追加し、職務に関する単語またはフレーズを **Job** エンティティとしてマークします。 ジョブの種類は、雇用サービスの雇用全体にわたって一般的なものです。 特定の業界に関連するジョブが必要な場合は、それをジョブの単語に反映させる必要があります。 
+## <a name="add-more-example-utterances-and-mark-entity"></a>発話例をさらに追加してエンティティにマークを付ける
+
+シンプル エンティティでは、予測精度を高めるために多くの例が必要です。 
+ 
+1. 発話を追加し、職務に関する単語またはフレーズを **Job** エンティティとしてマークします。 
 
     |発話|Job エンティティ|
     |:--|:--|
@@ -123,102 +127,66 @@ Simple エンティティは、単語または語句に含まれている単一�
     |タイル職人に応募します。|タイル|
     |造園技師に応募するための履歴書を添付します。|造園技師|
     |生物学教授への応募に必要な履歴書を同封します。|生物学教授|
-    |写真撮影の職に応募します。|写真撮影|git 
+    |写真撮影の職に応募します。|写真撮影|
 
-## <a name="label-entity-in-example-utterances"></a>発話例での Label エンティティ
-
-エンティティのラベル付けまたは _マーク付け_ は、発話例の中でエンティティが見つかった位置を LUIS に示します。
+## <a name="mark-job-entity-in-other-intents"></a>他の意図のジョブ エンティティにマークを付ける
 
 1. 左側のメニューから **[Intents]\(意図\)** を選びます。
 
-2. 意図の一覧から **[GetJobInformation]** を選択します。 
+1. 意図の一覧から **[GetJobInformation]** を選択します。 
 
-3. 発話の例のジョブにラベルを付けます。
+1. 発話の例のジョブにラベルを付けます。
 
-    |発話|Job エンティティ|
-    |:--|:--|
-    |データベースの仕事はありますか。|データベース|
-    |経理関連の新しい職を探しています|経理|
-    |シニア エンジニアではどのようなポストがありますか。|シニア エンジニア|
+    発話の例が他の意図よりも多く含まれている意図の方が、予測精度が上である可能性が高くなります。 
 
-    発話の例は他にもありますが、ジョブの単語が含まれていません。
-
-## <a name="train"></a>トレーニング
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>意図への変更をテストできるようにアプリをトレーニングする 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>[発行]
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>トレーニング済みのモデルがエンドポイントからクエリ可能になるようにアプリを発行する
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>エンドポイントから意図とエンティティを取得する 
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>エンドポイントから意図およびエンティティ予測を取得する 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. アドレスの URL の末尾に移動し、「`Here is my c.v. for the programmer job`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、`ApplyForJob` 発話が返される必要があります。
+2. アドレスの URL の末尾に移動し、「`Here is my c.v. for the engineering job`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 この発話はラベル付けされたどの発話とも同じではないので、よいテストであり、`ApplyForJob` 発話が返される必要があります。
 
-    ```JSON
+    ```json
     {
-      "query": "Here is my c.v. for the programmer job",
+      "query": "Here is my c.v. for the engineering job",
       "topScoringIntent": {
         "intent": "ApplyForJob",
-        "score": 0.9826467
+        "score": 0.98052007
       },
       "intents": [
         {
           "intent": "ApplyForJob",
-          "score": 0.9826467
+          "score": 0.98052007
         },
         {
           "intent": "GetJobInformation",
-          "score": 0.0218927357
-        },
-        {
-          "intent": "MoveEmployee",
-          "score": 0.007849265
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.00349470088
-        },
-        {
-          "intent": "Utilities.Confirm",
-          "score": 0.00348804821
+          "score": 0.03424581
         },
         {
           "intent": "None",
-          "score": 0.00319909188
-        },
-        {
-          "intent": "FindForm",
-          "score": 0.00222647213
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.00211193133
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.00172086991
-        },
-        {
-          "intent": "Utilities.Cancel",
-          "score": 0.00138010911
+          "score": 0.0015820954
         }
       ],
       "entities": [
         {
-          "entity": "programmer",
+          "entity": "engineering",
           "type": "Job",
           "startIndex": 24,
-          "endIndex": 33,
-          "score": 0.5230502
+          "endIndex": 34,
+          "score": 0.668959737
         }
       ]
     }
     ```
     
-    LUIS は正しい意図 **ApplyForJob** を見つけ、正しいエンティティ **Job** を `programmer` の値と共に抽出しました。
+    LUIS は正しい意図 **ApplyForJob** を見つけ、正しいエンティティ **Job** を `engineering` の値と共に抽出しました。
 
 
 ## <a name="names-are-tricky"></a>名前には注意が必要
@@ -226,53 +194,25 @@ LUIS アプリによって、確実性の高い適切な意図が検出され、
 
 次の JSON では、LUIS は正しい意図 `ApplyForJob` で応答していますが、`lead welder` はジョブ名として抽出されませんでした。 
 
-```JSON
+```json
 {
-  "query": "This is the lead welder paperwork.",
+  "query": "This is the lead welder paperwork",
   "topScoringIntent": {
     "intent": "ApplyForJob",
-    "score": 0.468558252
+    "score": 0.860295951
   },
   "intents": [
     {
       "intent": "ApplyForJob",
-      "score": 0.468558252
+      "score": 0.860295951
     },
     {
       "intent": "GetJobInformation",
-      "score": 0.0102701457
-    },
-    {
-      "intent": "MoveEmployee",
-      "score": 0.009442534
-    },
-    {
-      "intent": "Utilities.StartOver",
-      "score": 0.00639619166
+      "score": 0.07265678
     },
     {
       "intent": "None",
-      "score": 0.005859333
-    },
-    {
-      "intent": "Utilities.Cancel",
-      "score": 0.005087704
-    },
-    {
-      "intent": "Utilities.Stop",
-      "score": 0.00315379258
-    },
-    {
-      "intent": "Utilities.Help",
-      "score": 0.00259344373
-    },
-    {
-      "intent": "FindForm",
-      "score": 0.00193389168
-    },
-    {
-      "intent": "Utilities.Confirm",
-      "score": 0.000420796918
+      "score": 0.00482481951
     }
   ],
   "entities": []
@@ -281,94 +221,78 @@ LUIS アプリによって、確実性の高い適切な意図が検出され、
 
 名前は何でもかまわないため、シグナルを強化する単語のフレーズ リストが LUIS にある場合、LUIS はエンティティをより正確に予測します。
 
-## <a name="to-boost-signal-add-phrase-list"></a>シグナルを強化するためにフレーズ リストを追加する
+## <a name="to-boost-signal-of-the-job-related-words-add-a-phrase-list-of-job-related-words"></a>ジョブに関連する単語のシグナルを強化するためにジョブに関連する単語のフレーズ リストを追加する
 
-LUIS-Samples の GitHub リポジトリから [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) ファイルを開きます。 リストに含まれるジョブの単語およびフレーズは 1,000 を超えます。 自分にとって意味のあるジョブの単語がリストにあるか確認します。 単語またはフレーズがリストにない場合は、自分で追加します。
+Azure-Samples の GitHub リポジトリから [jobs-phrase-list.csv](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) ファイルを開きます。 リストに含まれるジョブの単語およびフレーズは 1,000 を超えます。 自分にとって意味のあるジョブの単語がリストにあるか確認します。 単語またはフレーズがリストにない場合は、自分で追加します。
 
 1. LUIS アプリの **[ビルド]** セクションで、**[アプリのパフォーマンス向上]** メニューの **[フレーズ リスト]** を選択します。
 
-2. **[Create new phrase list]\(新しいフレーズ リストの作成\)** を選択します。 
+1. **[Create new phrase list]\(新しいフレーズ リストの作成\)** を選択します。 
 
-3. 新しいフレーズ リスト `Job` に名前を付けて、そのリストを jobs-phrase-list.csv から **[値]** テキスト ボックスにコピーします。 [Enter] を選択します。 
+1. 新しいフレーズ リスト `JobNames` に名前を付けて、そのリストを jobs-phrase-list.csv から **[値]** テキスト ボックスにコピーします。 [Enter] を選択します。 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
+    [![新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    フレーズ リストに単語をさらに追加したい場合は、**[Related Values]\(関連する値\)** を確認し、関連のある単語を追加します。 
+    フレーズ リストに単語をさらに追加したい場合は、**[推奨]** を選択してから、新しい **[Related Values]\(関連する値\)** を確認し、関連のある単語を追加します。 
 
-4. **[保存]** を選択して、フレーズ リストをアクティブにします。
+    これらの値は、すべてがジョブのシノニムとして扱われる必要があるため、**[These values are interchangeable]\(これらの値は交換可能\)** をオンのままにしておきます。 交換可能と交換不能の[フレーズ リストの概念](luis-concept-feature.md#how-to-use-phrase-lists)について学習してください。
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "フレーズ リストの値ボックスに単語が入力されている、新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
+1. **[保存]** を選択して、フレーズ リストをアクティブにします。
 
-5. フレーズ リストが使用されるように、アプリを再度[トレーニング](#train)して[発行](#publish)します。
+    [![フレーズ リストの値ボックスに単語が表示されている、新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "フレーズ リストの値ボックスに単語が表示されている、新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
-6. 同じ発話 `This is the lead welder paperwork.` を含むエンドポイントにクエリを再実行します。
+1. フレーズ リストが使用されるように、アプリを再度トレーニングして発行します。
+
+1. 同じ発話 `This is the lead welder paperwork.` を含むエンドポイントにクエリを再実行します。
 
     JSON 応答には、抽出された次のエンティティが含まれています。
 
-    ```JSON
-    {
-        "query": "This is the lead welder paperwork.",
-        "topScoringIntent": {
-            "intent": "ApplyForJob",
-            "score": 0.920025647
+    ```json
+      {
+      "query": "This is the lead welder paperwork.",
+      "topScoringIntent": {
+        "intent": "ApplyForJob",
+        "score": 0.983076453
+      },
+      "intents": [
+        {
+          "intent": "ApplyForJob",
+          "score": 0.983076453
         },
-        "intents": [
-            {
-            "intent": "ApplyForJob",
-            "score": 0.920025647
-            },
-            {
-            "intent": "GetJobInformation",
-            "score": 0.003800706
-            },
-            {
-            "intent": "Utilities.StartOver",
-            "score": 0.00299335527
-            },
-            {
-            "intent": "MoveEmployee",
-            "score": 0.0027167045
-            },
-            {
-            "intent": "None",
-            "score": 0.00259556063
-            },
-            {
-            "intent": "FindForm",
-            "score": 0.00224019377
-            },
-            {
-            "intent": "Utilities.Stop",
-            "score": 0.00200693542
-            },
-            {
-            "intent": "Utilities.Cancel",
-            "score": 0.00195913855
-            },
-            {
-            "intent": "Utilities.Help",
-            "score": 0.00162656687
-            },
-            {
-            "intent": "Utilities.Confirm",
-            "score": 0.0002851904
-            }
-        ],
-        "entities": [
-            {
-            "entity": "lead welder",
-            "type": "Job",
-            "startIndex": 12,
-            "endIndex": 22,
-            "score": 0.8295959
-            }
-        ]
+        {
+          "intent": "GetJobInformation",
+          "score": 0.0120766377
+        },
+        {
+          "intent": "None",
+          "score": 0.00248388131
+        }
+      ],
+      "entities": [
+        {
+          "entity": "lead welder",
+          "type": "Job",
+          "startIndex": 12,
+          "endIndex": 22,
+          "score": 0.8373154
+        }
+      ]
     }
     ```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+
+## <a name="related-information"></a>関連情報
+
+* [意図のチュートリアル (エンティティなし)](luis-quickstart-intents-only.md)
+* [Simple エンティティ](luis-concept-entity-types.md)の概念に関する情報
+* [フレーズ リスト](luis-concept-feature.md)の概念に関する情報
+* [トレーニング方法](luis-how-to-train.md)
+* [発行方法](luis-how-to-publish-app.md)
+* [LUIS ポータルでのテスト方法](luis-interactive-test.md)
+
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,21 +1,17 @@
 ---
-title: テンプレートを使用した Web アプリのデプロイ - Azure Cosmos DB | Microsoft Docs
+title: テンプレートを使用した Web アプリのデプロイ - Azure Cosmos DB
 description: Azure Resource Manager テンプレートを使用して、Azure Cosmos DB アカウント、Azure App Service Web Apps、サンプル Web アプリケーションをデプロイする方法について説明します。
-services: cosmos-db, app-service\web
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: sngun
-ms.custom: mvc
-ms.openlocfilehash: 29a2335a3a4077866b71e4303c240ad8352371ba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1a63de4642850e425cc785e0d89197178ceec1a6
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243779"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54041018"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Azure Cosmos DB と Azure App Service Web Apps のデプロイ
 このチュートリアルでは、Azure Resource Manager テンプレートを使用して、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) Web アプリ、サンプル Web アプリケーションをデプロイおよび統合する方法について説明します。
@@ -121,12 +117,12 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 ## <a name="next-steps"></a>次の手順
 お疲れさまでした。 Azure Resource Manager テンプレートを使用して、Azure Cosmos DB、App Service Web アプリ、サンプル Web アプリケーションをデプロイしました。
 
-* Azure Cosmos DB の詳細については、[こちら](http://azure.com/docdb)をご覧ください。
+* Azure Cosmos DB の詳細については、[こちら](https://azure.microsoft.com/services/cosmos-db/)をご覧ください。
 * Azure App Service Web Apps の詳細については、 [ここ](https://go.microsoft.com/fwlink/?LinkId=325362)をクリックしてください。
 * Azure リソース マネージャーのテンプレートの詳細については、 [ここ](https://msdn.microsoft.com/library/azure/dn790549.aspx)をクリックしてください。
 
 ## <a name="whats-changed"></a>変更内容
-* Web サイトから App Service への変更ガイドについては、「 [Azure App Service と既存の Azure サービス](https://go.microsoft.com/fwlink/?LinkId=529714)
+* Web サイトから App Service に変更するためのガイドについては、次を参照してください。[Azure App Service と既存の Azure サービス](https://go.microsoft.com/fwlink/?LinkId=529714)
 
 > [!NOTE]
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。

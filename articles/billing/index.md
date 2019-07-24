@@ -10,21 +10,18 @@ ms.service: billing
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 05/24/2018
-ms.author: cwatson
-ms.openlocfilehash: 1e44f79fea337a79f3c30f60db7eb9a55182db6c
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 02/19/2019
+ms.author: banders
+ms.openlocfilehash: e150525b6f5fd1814f13595fbd4ea7e3bccde4fc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986578"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60368541"
 ---
 # <a name="azure-billing-and-cost-management-documentation"></a>Azure の課金とコスト管理に関するドキュメント
 
 Azure の課金の確認、使用量とコストの監視、アカウントとサブスクリプションの管理の方法について説明します。
-
-> [!div class="nextstepaction"]
-> [Azure の課金に関するドキュメントの改善にご協力ください](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 <ul class="panelContent cardsF">
     <li>
@@ -53,9 +50,9 @@ Azure の課金の確認、使用量とコストの監視、アカウントと�
                         <p>
                         <a href="/azure/billing/billing-getting-started">予想外のコストを防ぐ</a><br/>
                         <a href="/azure/azure-resource-manager/resource-group-using-tags?toc=/azure/billing/TOC.json">リソース タグの利用</a><br/>
-                        <a href="/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json">コストの分析を開始する - EA のみ</a><br/>
-                        <a href="/azure/cost-management/tutorial-acm-create-budgets?toc=/azure/billing/TOC.json">予算を作成して管理する - EA のみ</a><br/>
-                        <a href="/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json">最適化に関する推奨事項 - EA のみ</a>
+                        <a href="/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json">コストの分析を開始する</a><br/>
+                        <a href="/azure/cost-management/tutorial-acm-create-budgets?toc=/azure/billing/TOC.json">予算を作成して管理する</a><br/>
+                        <a href="/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json">推奨事項を最適化する</a>
                         </p>
                     </div>
                 </div>
@@ -187,5 +184,5 @@ Azure の課金の確認、使用量とコストの監視、アカウントと�
             </div>
         </div>
     </li>
-    
+
 </ul>

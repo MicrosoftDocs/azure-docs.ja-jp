@@ -1,6 +1,6 @@
 ---
 title: HDInsight での Apache Kafka の概要 - Azure
-description: HDInsight での Apache Kafka について説明します。その機能と役割について説明し、例と概要情報の入手先を紹介します。
+description: HDInsight での Apache Kafka について説明します。Apache Kafka の機能と役割について説明し、例および概要情報の入手先を紹介します。
 services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 04/11/2018
-ms.openlocfilehash: 587279d247b945b787051721d256f00a090d56db
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 4d054542d600f2569170f40b8f6c053e005fc8af
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313964"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889190"
 ---
 # <a name="what-is-apache-kafka-on-hdinsight"></a>HDInsight での Apache Kafka とは
 
@@ -38,7 +38,7 @@ ms.locfileid: "52313964"
 
     詳細については、[HDInsight 上の Apache Kafka による高可用性](apache-kafka-high-availability.md)に関するページを参照してください。
 
-* Azure Log Analytics を使用して、HDInsight 上の Kafka を監視できます。 Log Analytics は、ディスクおよび NIC のメトリック、Kafka からの JMX メトリックなど、仮想マシン レベルの情報を表示します。
+* Azure Monitor ログを使用して、HDInsight 上の Kafka を監視できます。 Azure Monitor ログでは、ディスクおよび NIC のメトリック、Kafka からの JMX メトリックなど、仮想マシン レベルの情報が表示されます。
 
     詳細については、[HDInsight 上の Apache Kafka のログの分析](apache-kafka-log-analytics-operations-management.md)に関するページを参照してください。
 
@@ -60,23 +60,23 @@ Kafka では、**トピック**にレコード (データ) が格納されます
 
 以下に、HDInsight 上の Kafka を使用して実行できる一般的なタスクと パターンを示します。
 
-* **Apache Kafka データのレプリケーション**: Kafka には、MirrorMaker ユーティリティが用意されています。このユーティリティは、Kafka クラスター間でデータをレプリケートします。
+* **Apache Kafka のデータのレプリケーション**: Kafka には、MirrorMaker ユーティリティが用意されています。このユーティリティにより、Kafka クラスター間でデータがレプリケートされます。
 
     MirrorMaker の使用方法については、[HDInsight 上の Apache Kafka を使用した Apache Kafka トピックのレプリケート](apache-kafka-mirroring.md)に関するページを参照してください。
 
-* **発行-購読のメッセージング パターン**: Kafka は、Kafka トピックにレコードを発行するためのプロデューサー API を提供します。 コンシューマー API は、トピックの購読に使用されます。
+* **発行-購読のメッセージング パターン**: Kafka では、Kafka トピックにレコードを発行するためのプロデューサー API が提供されます。 コンシューマー API は、トピックの購読に使用されます。
 
     詳細については、[HDInsight での Apache Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。
 
-* **ストリーム処理**: リアルタイムのストリーム処理には、通常、Kafka と共に Apache Storm または Spark が使用されます。 Kafka 0.10.0.0 (HDInsight バージョン 3.5 および 3.6) では、Storm や Spark を必要とせずに、ストリーミング ソリューションを構築できるストリーミング API が導入されました。
+* **ストリーム処理**:リアルタイムのストリーム処理には、通常、Kafka と共に Apache Storm または Spark が使用されます。 Kafka 0.10.0.0 (HDInsight バージョン 3.5 および 3.6) では、Storm や Spark を必要とせずに、ストリーミング ソリューションを構築できるストリーミング API が導入されました。
 
     詳細については、[HDInsight での Apache Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。
 
-* **水平スケール**: Kafka は、HDInsight クラスター内のノード間でストリームを分割します。 コンシューマー プロセスを各パーティションと関連付けることにより、レコード使用時の負荷分散を実現することができます。
+* **水平スケール**: Kafka では、HDInsight クラスター内のノード間でストリームが分割されます。 コンシューマー プロセスを各パーティションと関連付けることにより、レコード使用時の負荷分散を実現することができます。
 
     詳細については、[HDInsight での Apache Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。
 
-* **順番どおりに処理**: 各パーティション内で、レコードは、受信された順番にストリームに格納されます。 パーティションごとに 1 つのコンシューマー プロセスを関連付けることで、レコードが順番通りに確実に処理されるようになります。
+* **順番どおりの配信**: 各パーティション内で、レコードは、受信された順番にストリームに格納されます。 パーティションごとに 1 つのコンシューマー プロセスを関連付けることで、レコードが順番通りに確実に処理されるようになります。
 
     詳細については、[HDInsight での Apache Kafka の使用開始](apache-kafka-get-started.md)に関するページを参照してください。
 
@@ -86,7 +86,7 @@ Kafka では、**トピック**にレコード (データ) が格納されます
 
 * **アクティビティの追跡**: Kafka ではレコードの受信順序のログ記録が提供されるため、アクティビティの追跡と再現に使用することができます。 たとえば、Web サイト上またはアプリケーション内のユーザー アクションです。
 
-* **集計**: ストリーム処理を使用して異なるストリームからの情報を集計し、情報をまとめて運用データに一元化することができます。
+* **集計**:ストリーム処理を使用して異なるストリームからの情報を集計し、情報をまとめて運用データに一元化することができます。
 
 * **変換**: ストリーム処理を使用して入力された複数のトピックからのデータを結合し、1 つまたは複数の出力トピックに変換することができます。
 
@@ -94,8 +94,8 @@ Kafka では、**トピック**にレコード (データ) が格納されます
 
 次のリンクを使用することで、HDInsight で Apache Kafka を使用する方法を知ることができます。
 
-* [クイック スタート: HDInsight 上の Apache Kafka を作成する](apache-kafka-get-started.md)
+* [クイック スタート:HDInsight 上の Apache Kafka を作成する](apache-kafka-get-started.md)
 
-* [チュートリアル: HDInsight 上の Apache Kafka で Apache Spark を使用する](../hdinsight-apache-spark-with-kafka.md)
+* [チュートリアル:HDInsight 上の Apache Kafka で Apache Spark を使用する](../hdinsight-apache-spark-with-kafka.md)
 
-* [チュートリアル: HDInsight 上の Apache Kafka で Apache Storm を使用する](../hdinsight-apache-storm-with-kafka.md)
+* [チュートリアル:HDInsight 上の Apache Kafka で Apache Storm を使用する](../hdinsight-apache-storm-with-kafka.md)

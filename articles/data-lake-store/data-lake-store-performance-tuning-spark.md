@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: d280ef50d91f2e9b5157de5ec918e496f9887681
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: dc92e7d2fcc911aeb6d92b91dd2d430af3c502ad
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127671"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401709"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight の Spark と Azure Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス
 
@@ -53,18 +53,18 @@ HDInsight で Spark を実行する場合は、既定では、各物理コアに
 
 Data Lake Storage Gen1 内のデータを操作する Spark 分析ワークロードを実行する場合は、Data Lake Storage Gen1 のパフォーマンスを最大限に引き出すために、HDInsight の最新バージョンを使用することをお勧めします。 ジョブが I/O 集中型の場合、パフォーマンス向上を目的として特定のパラメーターを構成できます。  Data Lake Storage Gen1 は、高スループットを処理できるスケーラブルなストレージ プラットフォームです。  ジョブが主に読み取りまたは書き込みで構成されている場合は、Data Lake Storage Gen1 との間の I/O のコンカレンシーを向上させると、パフォーマンスが向上する可能性があります。
 
-I/O 集中型のジョブの同時実行性を向上させる一般的な方法はいくつかあります。
+I/O 集中型のジョブのコンカレンシーを向上させる一般的な方法はいくつかあります。
 
 **手順 1: クラスターで実行するアプリの数を決定する** – 現在の 1 つを含めて、いくつのアプリがクラスターで実行されるかを知っておくべきです。  各 Spark 設定の既定値は、同時に実行するアプリは 4 つと想定しています。  そのため、各アプリに対して使用可能なクラスターは 25% しかありません。  優れたパフォーマンスを得るには、Executor の数を変更することで、既定の設定をオーバーライドします。  
 
-**手順 2: Executor-memory を設定する** – 最初に設定するのは、Executor-memory です。  メモリは、実行しようとしているジョブに依存します。  Executor あたりに割り当てるメモリを少なくすることで、同時実行数を増やすことができます。  ジョブを実行したときにメモリ不足例外が発生した場合は、このパラメーターの値を大きくする必要があります。  別の方法としては、メモリ容量が大きいクラスターを使用してメモリ量を増やすか、クラスター内のサイズを増やすことが挙げられます。  メモリの量が増えると使用できる Executor の数も増えて、同時実行性が向上されます。
+**手順 2:Executor-memory を設定する** – 最初に設定するのは、Executor-memory です。  メモリは、実行しようとしているジョブに依存します。  Executor あたりに割り当てるメモリを少なくすることで、コンカレンシー数を増やすことができます。  ジョブを実行したときにメモリ不足例外が発生した場合は、このパラメーターの値を大きくする必要があります。  別の方法としては、メモリ容量が大きいクラスターを使用してメモリ量を増やすか、クラスター内のサイズを増やすことが挙げられます。  メモリの量が増えると使用できる Executor の数も増えて、コンカレンシーが向上されます。
 
 **手順 3: Executor-cores を設定する** – I/O 集中型ワークロードには複雑な操作がないため、Executor あたりの並列タスク数を増やすために、Executor-cores 数を多く設定して始めると便利です。  適切な出発点として、Executor-cores を 4 に設定します。   
 
     executor-cores = 4
 Executor-cores の数を増やすと多くの並列処理を行うことができます。Executor-cores を変えて試してみてください。  さらに複雑な操作を含むジョブの場合は、Executor あたりのコアの数を減らす必要があります。  Executor-cores を 4 より大きくすると、ガベージ コレクションが非効率的になりパフォーマンスが低下する可能性があります。
 
-**手順 4: クラスターの YARN メモリの量を決定する** – この情報は、Ambari で使用できます。  YARN に移動し、[Configs] (構成) タブを表示します。YARN メモリは、このウィンドウに表示されます。  
+**手順 4: クラスターの YARN メモリの量を決定する** – この情報は、Ambari で使用できます。  YARN に移動し、[Configs] \(構成) タブを表示します。YARN メモリは、このウィンドウに表示されます。  
 ウィンドウには、既定の YARN コンテナーのサイズも表示されます。  YARN コンテナーのサイズは、Executor パラメーターごとのメモリと同じです。
 
     Total YARN memory = nodes * YARN memory per node

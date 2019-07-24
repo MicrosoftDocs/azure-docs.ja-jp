@@ -4,23 +4,24 @@ description: ハイブリッド ID の設計上の考慮事項ガイドを読ん
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 02d48768-ea9e-4bfe-ae54-b54c4bd0a789
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: eb3bd1b2186d323c5b9d10d89bb68c03bd2b84a8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 41741249e9b1a142d75392025236a4d333b67666
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46305711"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201484"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory ハイブリッド ID の設計上の考慮事項 - 次の段階
 要件を定義し、モバイル デバイスのすべての選択肢を検討したので、次の段階ではユーザーと組織に最適なサポート インフラストラクチャをデプロイします。
@@ -43,10 +44,10 @@ ms.locfileid: "46305711"
 次のリソースには、モバイル デバイス管理ソリューションに関する最新ニュースと更新が頻繁に掲載されます。
 
 * [Microsoft Enterprise Mobility ブログ](https://cloudblogs.microsoft.com/ENTERPRISEMOBILITY/)
-* [Microsoft In The Cloud ブログ](http://blogs.technet.com/b/in_the_cloud/)
-* [Microsoft Intune ブログ](http://blogs.technet.com/b/microsoftintune/)
-* [Microsoft System Center Configuration Manager ブログ](http://blogs.technet.com/b/configurationmgr/)
-* [Microsoft System Center Configuration Manager Team ブログ](http://blogs.technet.com/b/configmgrteam/)
+* [Microsoft In The Cloud ブログ](https://blogs.technet.com/b/in_the_cloud/)
+* [Microsoft Intune ブログ](https://blogs.technet.com/b/microsoftintune/)
+* [Microsoft System Center Configuration Manager ブログ](https://blogs.technet.com/b/configurationmgr/)
+* [Microsoft System Center Configuration Manager Team ブログ](https://blogs.technet.com/b/configmgrteam/)
 
 ## <a name="see-also"></a>関連項目
 [設計上の考慮事項の概要](plan-hybrid-identity-design-considerations-overview.md)

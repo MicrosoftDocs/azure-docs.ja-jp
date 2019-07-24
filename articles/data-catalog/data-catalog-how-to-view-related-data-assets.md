@@ -2,17 +2,17 @@
 title: Azure Data Catalog で関連するデータ資産を表示する方法
 description: この記事では、Azure Data Catalog で選択したデータ資産に関連するデータ資産を表示する方法について説明します。
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 156673bfac9bfa38772e4daca166e3431f81c09a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: b01c328812113ad721b7632978ad28e54a6a3ef1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405011"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996477"
 ---
 # <a name="how-to-view-related-data-assets-in-azure-data-catalog"></a>Azure Data Catalog で関連するデータ資産を表示する方法を説明します。
 Azure Data Catalog を使用すると、選択したデータ資産に関連するデータ資産を表示し、それらの関係を表示できます。 
@@ -31,7 +31,7 @@ Azure Data Catalog を使用すると、選択したデータ資産に関連す�
 ## <a name="view-related-data-assets"></a>関連するデータ資産の表示
 選択したデータ セットに関連するデータ資産を表示するには、次の図に示すように、**[リレーションシップ]** タブを使用します。 
 
-![Azure Data Catalog - 関連するデータ資産の表示](media\data-catalog-how-to-view-related-data-assets\relationships-tab.png)
+![Azure Data Catalog - 関連するデータ資産の表示](media/data-catalog-how-to-view-related-data-assets/relationships-tab.png)
 
 この例では、選択した **ProductSubcategory** データ資産に 2 つの関係があります。 
 
@@ -43,7 +43,7 @@ Azure Data Catalog を使用すると、選択したデータ資産に関連す�
 
 列の完全修飾名などの詳細を表示するには、マウスを移動して上に重ねます。次の画像のようなポップアップが表示されます。 
 
-![Azure Data Catalog - リレーションシップのポップアップ](media\data-catalog-how-to-view-related-data-assets\relationship-popup.png)
+![Azure Data Catalog - リレーションシップのポップアップ](media/data-catalog-how-to-view-related-data-assets/relationship-popup.png)
 
 既に登録されている資産間のリレーションシップを含めるには、これらの資産を再登録します。
 

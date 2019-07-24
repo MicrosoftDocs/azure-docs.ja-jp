@@ -1,6 +1,6 @@
 ---
-title: "Azure のドイツ IoT サービス |Microsoft ドキュメント"
-description: "Azure ドイツの IoT Suite の開始点"
+title: Azure Germany IoT サービス | Microsoft Docs
+description: Azure Germany 用の IoT Suite の開始点を提供します
 services: germany
 cloud: na
 documentationcenter: na
@@ -12,65 +12,66 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2017
+ms.date: 08/01/2018
 ms.author: ralfwi
-ms.openlocfilehash: c15c084592b57b074e339cad7ac8c3197375542d
-ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
+ms.openlocfilehash: 89fbcdaad6e5e7379209854781423161ca2740b0
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "58408419"
 ---
-# <a name="azure-germany-iot-services"></a>Azure のドイツ IoT サービス
+# <a name="azure-germany-iot-services"></a>Azure Germany IoT サービス
 
-## <a name="iot-suite"></a>IoT Suite
-Azure IoT Suite 用のすべての必要なサービス Azure ドイツで利用できます。 
+## <a name="iot-solution-accelerators"></a>IoT ソリューション アクセラレータ
+Azure IoT Suite に必要なサービスはすべて、Azure Germany で利用できます。 
 
 ### <a name="variations"></a>バリエーション
-Azure IoT Suite Azure ドイツのホーム ページは、グローバル Azure 内のページと異なります。 使用して[http://www.azureiotsuite.de](http://www.azureiotsuite.de)し、指示に従います。 
+Azure Germany での Azure IoT Suite のホーム ページは、グローバル Azure のページとは異なります。
 
-## <a name="preconfigured-solutions"></a>構成済みのソリューション
-次の構成済みソリューションのいずれかで開始する可能性があります。 
+## <a name="solution-accelerators"></a>ソリューション アクセラレータ
+次のソリューション アクセラレータのいずれかを使って開始する必要がある場合があります。 
 
 ### <a name="remote-monitoring"></a>リモート監視
-リモートの監視構成済みのソリューションの IoT Suite は、リモートの場所で実行されている複数のコンピューター用のエンド ツー エンド監視ソリューションの実装です。 このソリューションは、主要な Azure サービスを組み合わせることで、ビジネス シナリオの汎用的な実装を実現したものです。 独自の実装の開始点として、ソリューションを使用しを特定のビジネス要件を満たすようにカスタマイズできます。
+リモート監視のソリューション アクセラレータは、リモートの場所で実行されている複数のコンピューターを対象としたエンドツーエンドの監視ソリューションの実装です。 このソリューションは、主要な Azure サービスを組み合わせることで、ビジネス シナリオの汎用的な実装を実現したものです。 このソリューションを独自の実装の開始点として使用し、固有のビジネス要件を満たすようにカスタマイズすることができます。
 
-### <a name="predictive-maintenance"></a>予測的なメンテナンス
-IoT Suite の予測的なメンテナンスの構成済みソリューションは、障害が発生する可能性があるポイントを予測するビジネス シナリオに対応したエンド ツー エンド ソリューションです。 この構成済みソリューションを使用すると、メンテナンスの最適化などのアクティビティを先手を打って実行できます。 ソリューションでは、Azure IoT Hub、Stream Analytics では、Machine Learning ワークスペースなど、主要な Azure IoT Suite サービスを結合します。 このワークスペースには、公開されているサンプル データ セットに基づいて航空機エンジンの残存耐用年数 (RUL) を予測するモデルが含まれています。 ソリューションは、完全を計画して、特定のビジネス要件を満たすソリューションを実装するための出発点として IoT ビジネス シナリオを実装します。
+### <a name="predictive-maintenance"></a>予測メンテナンス
+予測メンテナンスのソリューション アクセラレータは、障害が発生する可能性があるポイントを予測するビジネス シナリオに対応したエンド ツー エンド ソリューションです。 このソリューションを使用すると、メンテナンスの最適化などのアクティビティを先を見越して実行できます。 このソリューションは、Azure IoT Hub、Stream Analytics、Machine Learning ワークスペースなどの主要な Azure IoT Suite サービスを組み合わせたものです。 このワークスペースには、公開されているサンプル データ セットに基づいて航空機エンジンの残存耐用年数 (RUL) を予測するモデルが含まれています。 このソリューションでは、固有のビジネス要件を満たすソリューションを計画および実装するための開始点として使用できる、IoT ビジネス シナリオが完全に実装されています。
 
 
-## <a name="deploying-the-preconfigured-solutions"></a>構成済みのソリューションの配置
+## <a name="deploying-the-solution-accelerator"></a>ソリューション アクセラレータのデプロイ
 
-どちらのソリューションは、web サイトを使用して、または PowerShell を使用して、2 つの方法で展開できます。
+ソリューションはどちらも、Web サイト経由または PowerShell 経由の 2 つの方法でデプロイできます。
 
-### <a name="deploy-via-website"></a>Web サイトでの展開します。
+### <a name="deploy-via-website"></a>Web サイト経由のデプロイ
 
-指示に従って、[構成済みのソリューションのためのチュートリアル](../iot-suite/iot-suite-getstarted-preconfigured-solutions.md)前述のホーム ページを使用しています。
+前に述べたホーム ページを使用して、[構成済みのソリューションについてのチュートリアル](../iot-accelerators/iot-accelerators-remote-monitoring-explore.md)の手順に従います。
 
-### <a name="deploy-via-powershell"></a>PowerShell を使用して展開します。
+### <a name="deploy-via-powershell"></a>PowerShell 経由でのデプロイ
 
-完全なバージョン (Azure リソース マネージャーのテンプレートと Visual Studio を使用) がある、*リモート監視*ソリューションです。 ダウンロード、 [GitHub のリポジトリを Azure IoT-リモートの監視](https://github.com/Azure/azure-iot-remote-monitoring)です。 PowerShell 配置 Azure ドイツのようなその他の環境の準備ができました。 提供、*環境*パラメーター"AzureGermanCloud、"次のように表示されます。
+*リモート監視*のソリューション用に完全なバージョン (Azure Resource Manager テンプレートと Visual Studio を使用) があります。 [GitHub の Azure-IoT-Remote-Monitoring リポジトリ](https://github.com/Azure/azure-iot-remote-monitoring)からダウンロードします。 PowerShell のデプロイは、Azure Germany などの他の環境向けの準備ができています。 *環境*パラメーターに "AzureGermanCloud" を指定するため、次のようになります。
 
     build.cmd cloud debug AzureGermanCloud
 
-Bing Maps は現在 Azure ドイツでは使用できませんし、したがって、サブスクライブできません自動的にします。 グローバル Azure サービスにサブスクライブして、あるサービスを使用して、この問題を解決できます。 
+現在、Bing Maps を Azure Germany で使用することはできないため、自動的にサブスクライブすることはできません。 グローバル Azure のサービスをサブスクライブし、そこでサービスを使用することで、この問題を解決できます。 
 
 > [!NOTE]
-> Bing マップする方法が説明されている、ここで使用する、ときに、Azure ドイツ環境がままにします。
+> ここで説明された方法で Bing Maps を使用すると、Azure Germany 環境から移動します。
 
-これを行う方法を次に示します。
+これを行うには、次の手順を行います。
 
-1. グローバル Azure ポータルでをクリックして、Bing Maps API を作成**+ 新規**の検索、 **Bing Maps API for Enterprise**、画面の指示に従います。
-2. グローバル Azure ポータルからエンタープライズ キーの Bing Maps API を取得します。 
-    1. グローバル Azure ポータルに、Bing Maps API for Enterprise がある場合、リソース グループを参照します。
-    2. をクリックして**すべて設定** > **キー管理**です。 
-    3. 2 つのキーを参照してください: MasterKey と QueryKey です。 QueryKey の値をコピーします。
-3. 最新のコードのプルダウン、 [GitHub のリポジトリを Azure IoT-リモートの監視](https://github.com/Azure/azure-iot-remote-monitoring)です。
-4. 環境内でコマンドライン配置のガイダンスに従って、クラウドの展開の実行、`/docs/`リポジトリ フォルダーです。 
-5. 展開を実行した後、ルート フォルダーで検索、 **. user.config**配置時に作成されたファイルです。 このファイルをテキスト エディターで開きます。 
-6. QueryKey をコピーした値を含めるには、次の行を変更します。 `<setting name="MapApiQueryKey" value="" />`
-7. 手順 4. を繰り返して、ソリューションを再展開します。
+1. **[+ 新規]** をクリックし、**Bing Maps API for Enterprise** を検索して、画面の指示に従うことで、グローバル Azure portal で Bing Maps API を作成します。
+2. グローバル Azure portal から Bing Maps API for Enterprise キーを取得します。 
+    1. グローバル Azure portal で、Bing Maps API for Enterprise が含まれるリソース グループを参照します。
+    2. **[すべての設定]** > **[キーの管理]** の順にクリックします。 
+    3. 次の 2 つのキーが表示されます: MasterKey と QueryKey です。 QueryKey の値をコピーします。
+3. [GitHub の Azure-IoT-Remote-Monitoring リポジトリ](https://github.com/Azure/azure-iot-remote-monitoring)から最新のコードをプルダウンします。
+4. `/docs/` リポジトリ フォルダーにあるコマンドライン デプロイ ガイダンスに従って、ご利用の環境でクラウドのデプロイを実行します。 
+5. デプロイを実行したら、ルート フォルダーでデプロイ時に作成された **.user.config** ファイルを探します。 このファイルをテキスト エディターで開きます。 
+6. QueryKey 用にコピーした値を含めて、次の行を変更します。`<setting name="MapApiQueryKey" value="" />`
+7. 手順 4 を繰り返して、ソリューションを再デプロイします。
  
 
 
 ## <a name="next-steps"></a>次の手順
-補足情報と更新プログラムは、サブスクライブ、 [Azure ドイツ ブログ](https://blogs.msdn.microsoft.com/azuregermany/)です。
+補足情報と更新情報については、[Azure Germany のブログ](https://blogs.msdn.microsoft.com/azuregermany/)を参照してください。

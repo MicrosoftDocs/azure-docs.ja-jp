@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 9d11a34c499029550de12e8a47f7de0b1beac7b6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 596ac871067886ee3124c0f21beb35cb3b8fe1ae
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235039"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593813"
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Azure Load Balancer での Azure Resource Manager のサポートの使用
 
@@ -32,7 +32,7 @@ Resource Manager を使用する場合、Azure Load Balancer には次の子リ�
 * バックエンド アドレス プール: 負荷分散先の仮想マシンのネットワーク インターフェイス カード (NIC) に関連付けられた IP アドレスです。
 * 負荷分散規則: 規則のプロパティでは、特定のフロントエンド IP とポートの組み合わせを、一連のバックエンド IP アドレスとポートの組み合わせにマップします。 1 つのロード バランサーで複数の負荷分散規則を使用できます。 各規則は、VM に関連付けられた、フロントエンド IP/ポートとバックエンド IP/ポートの組み合わせです。
 * プローブ: プローブを使用すると、VM インスタンスの正常性を追跡できます。 正常性プローブが失敗した場合、VM インスタンスは自動的にローテーションから除外されます。
-* 受信 NAT 規則: フロントエンド IP を通過し、バックエンド IP に配信される受信トラフィックを定義する NAT 規則です。
+* インバウンド NAT 規則: フロントエンド IP を通過し、バックエンド IP に配信されるインバウンド トラフィックを定義する NAT 規則です。
 
 ![](./media/load-balancer-arm/load-balancer-arm.png)
 
@@ -58,7 +58,7 @@ Azure Load Balancer を使用したクイックスタート テンプレート�
 
 Azure Resource Manager コマンドレット、コマンド ライン ツール、REST API を使用する場合は、以下をご覧ください。
 
-* [Azure ネットワークのコマンドレット](https://docs.microsoft.com/powershell/module/azurerm.network#networking) を使用して、ロード バランサーを作成できます。
+* [Azure ネットワークのコマンドレット](https://docs.microsoft.com/powershell/module/az.network#networking) を使用して、ロード バランサーを作成できます。
 * [Azure リソース マネージャーを使用したロード バランサーの作成方法](load-balancer-get-started-ilb-arm-ps.md)
 * [Azure リソース管理での Azure CLI の使用](../xplat-cli-azure-resource-manager.md)
 * [Load Balancer REST API](https://msdn.microsoft.com/library/azure/mt163651.aspx)

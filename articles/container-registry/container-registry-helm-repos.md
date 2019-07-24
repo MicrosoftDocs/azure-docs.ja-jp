@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: iainfou
-ms.openlocfilehash: 140d663524696f19844fea8906b181f468b7d157
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: ba0e1386d67e920f1805d244f9042044bb462ec9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647009"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551995"
 ---
 # <a name="use-azure-container-registry-as-a-helm-repository-for-your-application-charts"></a>アプリケーションのグラフに Helm リポジトリとして Azure Container Registry を使用する
 
@@ -137,7 +137,7 @@ $ helm inspect myacrhelm/wordpress
 appVersion: 4.9.8
 description: Web publishing platform for building blogs and websites.
 engine: gotpl
-home: http://www.wordpress.com/
+home: https://www.wordpress.com/
 icon: https://bitnami.com/assets/stacks/wordpress/img/wordpress-stack-220x234.png
 keywords:
 - wordpress

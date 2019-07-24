@@ -1,26 +1,22 @@
 ---
-title: Team Data Science Process の特徴選択 | Microsoft Docs
+title: Team Data Science Process の特徴選択
 description: 特徴選択の目的について説明し、機械学習のデータ強化プロセスにおけるその役割の例を示します。
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 878541f5-1df8-4368-889a-ced6852aba47
 ms.service: machine-learning
-ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: deguhath
-ms.openlocfilehash: 2504d14bad3a7a3b3845e880e40034ef7e4c126b
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a74f2c21746deb16372174d4a769f9abb825a1cd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838631"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473310"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Team Data Science Process (TDSP) の特徴選択
 この記事では、特徴選択の目的について説明し、機械学習のデータ強化プロセスにおける特徴選択の役割の例を示します。 例は、Azure Machine Learning Studio で描画しています。 
@@ -29,8 +25,8 @@ ms.locfileid: "34838631"
 
 特徴のエンジニアリングと選択は Team Data Science Process (TDSP) の一部です。TDSP の概要については、「[Team Data Science Process とは](overview.md)」を参照してください。 特徴エンジニアリングと特徴選択は、TDSP の**特徴の開発**ステップの一部です。
 
-* **特徴エンジニアリング**: このプロセスは、データ内の既存の生の特徴から、関連する特徴を作成し、学習アルゴリズムの予測力を高めようとします。
-* **特徴選択**: このプロセスは、トレーニング問題の次元を削減するために、元のデータの特徴のキーのサブセットを選択します。
+* **特徴エンジニアリング**:このプロセスは、データに内在している既存の生の特徴から、関連する特徴を作成し、学習アルゴリズムの予測力を高めようとします。
+* **特徴選択**:このプロセスは、トレーニング問題の次元を削減しようとして、元のデータが持つ特徴のキーのサブセットを選択します。
 
 通常、**特徴エンジニアリング**は追加の特徴を生成するために最初に適用され、その後、無関係な特徴、重複した特徴、関連性の高い特徴を排除するために**特徴選択**の手順が実行されます。
 
@@ -46,21 +42,21 @@ ms.locfileid: "34838631"
 
 Azure Machine Learning Studio には、特徴選択に提供されるモジュールがあります。 次の図に示すように、これらのモジュールには、[フィルターに基づく特徴選択][filter-based-feature-selection]と [Fisher 線形判別分析][fisher-linear-discriminant-analysis]が含まれます。
 
-![特徴選択の例](./media/select-features/feature-Selection.png)
+![特徴選択モジュール](./media/select-features/feature-Selection.png)
 
 たとえば、[フィルターに基づく特徴選択][filter-based-feature-selection]モジュールを考えてみます。 便宜上、テキスト マイニングの例を引き続き使用します。 [特徴ハッシュ][feature-hashing] モジュールから 256 の特徴セットが作成された後、回帰モデルを作成する場合を想定します。応答変数は "Col1" で、これには書籍レビューの評価 1 ～ 5 が含まれます。 応答変数は "Col1" で、書籍レビューの評価を 1 ～ 5 で表すこととします。 [フィルターに基づく特徴の選択][filter-based-feature-selection]モジュールに、"Col1" というターゲット属性を持つ 50 の特徴を含むデータセットが生成されます。 次の図に、この実験のフローと入力パラメーターを示します。
 
-![特徴選択の例](./media/select-features/feature-Selection1.png)
+![フィルターに基づく特徴選択モジュールのプロパティ](./media/select-features/feature-Selection1.png)
 
 次の図は、結果として得られるデータセットを示します。
 
-![特徴選択の例](./media/select-features/feature-Selection2.png)
+![フィルターに基づく特徴選択モジュールの結果のデータセット](./media/select-features/feature-Selection2.png)
 
 それぞれの特徴は、それ自体と対象の属性 "Col1" 間のピアソンの相関関係に基づいて評価されます。 上位のスコアを持つ特徴は保持されます。
 
 次の図は、選択した特徴に対応するスコアを示します。
 
-![特徴選択の例](./media/select-features/feature-Selection3.png)
+![フィルターに基づく特徴選択モジュールのスコア](./media/select-features/feature-Selection3.png)
 
 この[フィルターに基づく特徴選択][filter-based-feature-selection]を適用すると、256 のうち 50 の特徴が選択されます。これらの特性は、"ピアソンの相関関係" スコアリング メソッドに基づいて、対象の属性 "Col1" を持つ最も関連性が高い特徴であるためです。
 

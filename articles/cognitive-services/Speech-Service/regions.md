@@ -1,56 +1,91 @@
 ---
-title: Speech Service のリージョン
+title: リージョン - Speech Services
 titlesuffix: Azure Cognitive Services
 description: Speech Service のリージョンに関するリファレンスです。
 services: cognitive-services
 author: mahilleb-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: mahilleb
-ms.openlocfilehash: 088e581da7511797a0f39959d867c6298262462a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.date: 03/12/2019
+ms.author: panosper
+ms.custom: seodec18
+ms.openlocfilehash: eb3697eefb5835305b2ec80ca1e77ccade19e44f
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242332"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578190"
 ---
-# <a name="regions-of-the-speech-service"></a>Speech Service のリージョン
+# <a name="speech-service-supported-regions"></a>Speech Service がサポートされているリージョン
 
-Speech Service は、さまざまなリージョンで使用できます。
-サブスクリプションを作成する場合は、ニーズに応じて、使用可能なリージョンを選択できます。
+Speech Service を使用すると、アプリケーションで音声をテキストに変換し、音声翻訳を実行し、テキストを音声に変換することができます。 このサービスは、Speech SDK および REST API に固有のエンドポイントを使用して複数のリージョンで利用できます。
 
-そのサブスクリプションを使用する場合は、選択したリージョンを考慮する必要があります。
-
-## <a name="rest-api"></a>REST API
-
-適切なリージョン固有のエンドポイントを選択するには、REST API を使用します。
-詳細については、「[REST API](rest-apis.md)」を参照してください。
+必ず、ご利用のサブスクリプションのリージョンと一致するエンドポイントを選択してください。
 
 ## <a name="speech-sdk"></a>Speech SDK
 
-[Speech Service SDK](speech-sdk.md) では、リージョンは文字列として (たとえば、C# 用の Speech SDK では `SpeechConfig.FromSubscription` へのパラメーターとして) 指定されます。
+[Speech SDK](speech-sdk.md) では、リージョンは文字列として (たとえば、C# 用の Speech SDK では `SpeechConfig.FromSubscription` へのパラメーターとして) 指定されます。
 
-### <a name="regions-for-speech-recognition-and-translation"></a>音声認識と翻訳のリージョン
+### <a name="speech-recognition-and-translation"></a>音声認識と翻訳
 
-次の表は、**音声認識**と**翻訳**に使用可能なリージョンの一覧です。
+Speech SDK は、**音声認識**と**翻訳**のために以下のリージョンで使用できます。
 
   リージョン | Speech SDK パラメーター | 音声カスタマイズ ポータル
  ------|-------|--------
  米国西部 | `westus` | https://westus.cris.ai
- 米国西部 2 | `westus2` | https://westus2.cris.ai 
+ 米国西部 2 | `westus2` | https://westus2.cris.ai
  米国東部 | `eastus` | https://eastus.cris.ai
  米国東部 2 | `eastus2` | https://eastus2.cris.ai
+ 米国中央部 | `centralus` | https://centralus.cris.ai
+ 米国中北部 | `northcentralus` | https://northcentralus.cris.ai
+ 米国中南部 | `southcentralus` | https://southcentralus.cris.ai
+ インド中部 | `centralindia` | https://centralindia.cris.ai
  東アジア | `eastasia` | https://eastasia.cris.ai
  東南アジア | `southeastasia` | https://southeastasia.cris.ai
+ 東日本 | `japaneast` | https://japaneast.cris.ai
+ 韓国中部 | `koreacentral` | https://koreacentral.cris.ai
+ オーストラリア東部 | `australiaeast` | https://australiaeast.cris.ai
+ カナダ中部 | `canadacentral` | https://canadacentral.cris.ai
  北ヨーロッパ | `northeurope` | https://northeurope.cris.ai
  西ヨーロッパ | `westeurope` | https://westeurope.cris.ai
+ 英国南部 | `uksouth` | https://uksouth.cris.ai
+ フランス中部 | `francecentral` | https://francecentral.cris.ai
 
+### <a name="intent-recognition"></a>意図認識
 
-### <a name="regions-for-intent-recognition"></a>意図認識のリージョン
+Speech SDK を介して**意図認識**を使用できるリージョンは以下の通りです。
 
-Speech SDK 経由で**意図認識**に使用可能なリージョンは、[Language Understanding サービスのリージョンのページ](/azure/cognitive-services/luis/luis-reference-regions)に一覧表示されています。
-一覧表示されている公開リージョンごとに、対応する Speech SDK リージョン パラメーターがエンドポイントのドメイン名の最初の部分として決定されます。
-たとえば、米国西部の公開リージョンを指定するには `westus` を使用します。
+ グローバル リージョン | リージョン | Speech SDK パラメーター
+ ------|-------|--------
+ アジア | 東アジア | `eastasia`
+ アジア | 東南アジア | `southeastasia`
+ オーストラリア | オーストラリア東部 | `australiaeast`
+ ヨーロッパ | 北ヨーロッパ | `northeurope`
+ ヨーロッパ | 西ヨーロッパ | `westeurope`
+ 北米 | 米国東部 | `eastus`
+ 北米 | 米国東部 2 | `eastus2`
+ 北米 | 米国中南部 | `southcentralus`
+ 北米 | 米国中西部 | `westcentralus`
+ 北米 | 米国西部 | `westus`
+ 北米 | 米国西部 2 | `westus2`
+ 南アメリカ | ブラジル南部 | `brazilsouth`
+
+これは、[Language Understanding サービス (LUIS)](/azure/cognitive-services/luis/luis-reference-regions) でサポートされている公開リージョンのサブセットです。
+
+## <a name="rest-apis"></a>REST API
+
+Speech Service は、音声テキスト変換要求とテキスト読み上げ要求用の REST エンドポイントも公開しています。
+
+### <a name="speech-to-text"></a>音声テキスト変換
+
+音声テキスト変換のリファレンス ドキュメントについては、[REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) に関するページを参照してください。
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+
+### <a name="text-to-speech"></a>テキスト読み上げ
+
+テキスト読み上げのリファレンス ドキュメントについては、[REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) に関するページを参照してください。
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]

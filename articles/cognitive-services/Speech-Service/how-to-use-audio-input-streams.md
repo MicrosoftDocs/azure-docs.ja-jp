@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Speech SDK のオーディオ入力ストリーム API の機能の概要です。
 services: cognitive-services
 author: fmegen
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: fmegen
-ms.openlocfilehash: b7779131a0fd30d263fa87f2e55c9642984d054b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: f34504dddaa21cc162476d1fdb462e7be5c48629
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467972"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877305"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>Speech SDK のオーディオ入力ストリーム API について
 
@@ -48,7 +48,7 @@ Speech SDK の**オーディオ入力ストリーム** API では、マイクま
           this.config = config;
       }
 
-      public size_t Read(byte *buffer, size_t size) {
+      public int Read(byte[] buffer, uint size) {
           // returns audio data to the caller.
           // e.g. return read(config.YYY, buffer, size);
       }

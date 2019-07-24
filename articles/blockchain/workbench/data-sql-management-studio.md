@@ -5,21 +5,21 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 01/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 405104554b4ee8e773b6d2e39966a262f98beb6d
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a5554f1fe0a14799a100aefc975a110d3a9a6311
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242097"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088725"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>SQL Server Management Studio で Azure Blockchain Workbench データを使用します
 
-Microsoft SQL Server Management Studio は、 Azure Blockhain ワークベンチの SQL データベースに対してクエリを短時間で作成およびテストする機能を提供します。 このセクションでは、SQL Server Management Studio 内から Azure Blockchain ワークベンチの SQL データベースに接続する方法を、段階ごとに説明します。
+Microsoft SQL Server Management Studio では、Azure Blockchain ワークベンチの SQL データベースに対してクエリを短時間で作成およびテストする機能が提供されます。 このセクションでは、SQL Server Management Studio 内から Azure Blockchain ワークベンチの SQL データベースに接続する方法を、段階ごとに説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,16 +34,16 @@ Microsoft SQL Server Management Studio は、 Azure Blockhain ワークベンチ
 
 3. **[サーバーに接続]** ダイアログで、サーバー名とお使いのデータベース資格情報を入力します。
 
-    Azure Blockchain Workbench の展開プロセスによって作成された資格情報を使用している場合、ユーザー名は **dbadmin** となり、パスワードは展開時に指定したパスワードです。
+    Azure Blockchain Workbench のデプロイプロセスによって作成された資格情報を使用している場合、ユーザー名は **dbadmin** となり、パスワードはデプロイ時に指定したパスワードです。
 
     ![SQL 資格情報を入力します](./media/data-sql-management-studio/sql-creds.png)
 
- 4. SQL Server Management Studio では、Azure Blockchain Workbench データベース内のデータベース、データベース ビュー、およびストアド プロシージャの一覧が表示されます。
+   1. SQL Server Management Studio では、Azure Blockchain Workbench データベース内のデータベース、データベース ビュー、およびストアド プロシージャの一覧が表示されます。
 
-    ![データベースの一覧](./media/data-sql-management-studio/db-list.png)
+      ![データベースの一覧](./media/data-sql-management-studio/db-list.png)
 
 5. データベース ビューのいずれかに関連付けられているデータを表示するには、以下の手順を使用して、自動的に選択ステートメントを生成できます。
-6. オブジェクト エクスプローラーのデータベースビューのいずれかを右クリック。
+6. オブジェクト エクスプローラーのデータベースビューのいずれかを右クリックします。
 7. **[スクリプトビュー]** を選択します。
 8. **[SELECT]** を選択します。
 9. **新しいクエリ エディター ウィンドウ**を選択します。

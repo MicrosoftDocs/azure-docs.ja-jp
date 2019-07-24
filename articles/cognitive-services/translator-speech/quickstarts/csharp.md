@@ -1,23 +1,24 @@
 ---
-title: 'クイック スタート: C# での Translator Speech API'
+title: クイック スタート:Translator Speech API (C#)
 titlesuffix: Azure Cognitive Services
 description: Translator Speech API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: v-jaswel
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a05ab716c8aea958e13ebba0dc9ceb09bf3d7cce
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: a76c11341d0e145e6d2e9f86a7300ddb9319f6f5
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913531"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673889"
 ---
-# <a name="quickstart-translator-speech-api-with-c"></a>クイック スタート: C# での Translator Speech API 
+# <a name="quickstart-translator-speech-api-with-c"></a>クイック スタート:Translator Speech API (C#)
 <a name="HOLTop"></a>
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
@@ -26,7 +27,7 @@ ms.locfileid: "50913531"
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です  (無料の Community Edition でかまいません。)Mac OS または Linux を使用する場合は、代わりにテキスト エディター [Visual Studio Code] (https://code.visualstudio.com/Download) を使用することもできます。
+このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です  (無料の Community Edition でかまいません。)Mac OS または Linux を使用する場合は、代わりにテキスト エディター [Visual Studio Code](https://code.visualstudio.com/Download) を使用することもできます。
 
 下記のコードからコンパイルする実行可能ファイルと同じフォルダーに、"speak.wav" という名前の .wav ファイルを置く必要があります。 この .wav ファイルは、標準の PCM (16 ビット、16 kHz、モノラル形式) である必要があります。
 
@@ -157,7 +158,7 @@ namespace TranslateSpeechQuickStart
 > [!div class="nextstepaction"]
 > [Translator Speech のチュートリアル](../tutorial-translator-speech-csharp.md)
 
-## <a name="see-also"></a>関連項目 
+## <a name="see-also"></a>関連項目
 
 [Translator Speech の概要](../overview.md)
 [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

@@ -1,19 +1,20 @@
 ---
-title: ポータルで Azure Search 管理アクセス用の RBAC ロールを設定する |Microsoft Docs
-description: Azure Portal でのロールベースの管理制御。
+title: ポータルで Azure 管理アクセス用の RBAC ロールを設定する - Azure Search
+description: Azure Search Management の管理タスクを制御および委任するための、Azure portal でのロールベースの管理制御 (RBAC)。
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 04/05/2019
 ms.author: heidist
-ms.openlocfilehash: 1a463c9eb52ffe2a667cdeace7478e67233a0806
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 34def35eba1e5c1645e6e1f9a505704d153ac716
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792928"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59277785"
 ---
 # <a name="set-rbac-roles-for-administrative-access"></a>管理アクセス用の RBAC ロールを設定する
 
@@ -26,7 +27,7 @@ Azure では、ポータルまたはリソース マネージャー API で管�
 
 Azure Search の場合、ロールは次の管理タスクをサポートするアクセス許可レベルに関連付けられています。
 
-| 役割 | タスク |
+| Role | タスク |
 | --- | --- |
 | Owner |API キー、インデックス、インデクサー、インデクサー データ ソース、インデクサー スケジュールなど、サービス上のサービスやオブジェクトを作成または削除します。<p>カウントとストレージ サイズなど、サービスの状態を表示します。<p>ロール メンバーシップを追加または削除します (所有者のみがロール メンバーシップを管理できます)。<p>サブスクリプション管理者とサービス所有者には、所有者ロールに自動メンバーシップがあります。 |
 | Contributor |RBAC ロール管理を除き、アクセス レベルは所有者と同じです。 たとえば、共同作成者はオブジェクトの作成や削除、[API キー](search-security-api-keys.md)の表示や再生成は可能ですが、ロール メンバーシップは変更できません。 |

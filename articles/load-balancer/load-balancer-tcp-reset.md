@@ -1,35 +1,33 @@
 ---
-title: アイドル時のロード バランサーの TCP リセット | Microsoft Docs
+title: アイドル時のロード バランサーの TCP リセット
+titlesuffix: Azure Load Balancer
 description: アイドル タイムアウト時に双方向 TCP RST パケットを使用するロード バランサー
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 46b152c5-6a27-4bfc-bea3-05de9ce06a57
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/08/2018
+ms.date: 01/29/2019
 ms.author: kumud
-ms.openlocfilehash: 9aa3811eb03d38a4c6ab8203512f3e6699098122
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 52524e6291faae8ccc27c0d53e9e38ab63a4c8d5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883637"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58132431"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>アイドル時に TCP リセットを使用するロード バランサー (パブリック プレビュー)
 
-[Standard Load Balancer](load-balancer-standard-overview.md) を使用して、各構成可能なアイドル タイムアウトに対して双方向 TCP リセット (TCP RST パケット) を使用することで、シナリオに合わせたさらに予測可能なアプリケーションの動作を作成できます。  ロード バランサーの既定の動作では、フローのアイドル タイムアウトに達したときに、警告なしでフローを削除します。
+[Standard Load Balancer](load-balancer-standard-overview.md) を使用して、特定の規則のアイドル時の TCP リセットを有効にすることにより、シナリオのより予測可能なアプリケーション動作を作成します。 ロード バランサーの既定の動作では、フローのアイドル タイムアウトに達したときに、警告なしでフローを削除します。  この機能を有効にすると、ロード バランサーがアイドル タイムアウト時に双方向 TCP リセット (TCP RST パケット) を送信します。  これは、接続がタイムアウトしたため、使用できなくなったことをアプリケーション エンドポイントに通知します。  エンドポイントは、必要に応じて直ちに新しい接続を確立できます。
 
 ![ロード バランサー TCP リセット](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
 
 >[!NOTE] 
->アイドル タイムアウト時の TCP リセットを使用するロード バランサーは、現時点ではパブリック プレビューとして、限定された一連の[リージョン](#regions)で使用できます。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
+>アイドル タイムアウト時の TCP リセットを使用するロード バランサーは、現時点ではパブリック プレビューとして使用できます。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
  
 この既定の動作は変更でき、受信 NAT 規則、負荷分散規則、[送信規則](https://aka.ms/lboutboundrules)に基づいて、アイドル タイムアウト時の TCP リセットの送信を有効にできます。  規則ごとに有効にすると、ロード バランサーは双方向 TCP リセット (TCP RST パケット) を、クライアントとサーバーの両方のエンドポイントに対して、一致するすべてのフローのアイドル タイムアウト時に送信します。
 
@@ -71,21 +69,10 @@ API バージョン 2018-07-01 を使用して、規則ごとにアイドル タ
 
 ## <a name="regions"></a>利用可能なリージョン。
 
-このパラメーターは、以下のリージョンで現在有効です。  ここに記載されていないリージョンでは、このパラメーターには効果がありません。
-
-| リージョン |
-|---|
-| 東南アジア |
-| 西ヨーロッパ |
-| 米国東部 2 |
-| 英国北部 |
-| 米国西部 |
-
-プレビューが他のリージョンにも展開されると、この表は更新されます。  
+すべてのリージョンで利用できます。
 
 ## <a name="limitations"></a>制限事項
 
-- [利用可能なリージョン](#regions)は限定されています。
 - ポータルは、TCP リセットを構成または表示するためには使用できません。  代わりに、テンプレート、REST API、Az CLI 2.0、または PowerShell を使用します。
 
 ## <a name="next-steps"></a>次の手順

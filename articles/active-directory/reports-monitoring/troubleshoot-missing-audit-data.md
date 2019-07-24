@@ -3,27 +3,28 @@ title: 'トラブルシューティング: Azure Active Directory アクティ�
 description: Azure Active Directory アクティビティ ログにデータが見つからない問題の解決策を提供します。
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.assetid: 7cbe4337-bb77-4ee0-b254-3e368be06db7
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 01/15/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 871dd3fda0ee5dc350a468f16e8f389ac3c71d34
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4b25c09b140102c0788a939c48f48300242fc6ee
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41918678"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437239"
 ---
-# <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>トラブルシューティング: Azure Active Directory アクティビティ ログにデータが見つからない 
+# <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>トラブルシューティング:Azure Active Directory アクティビティ ログにデータが見つからない 
 
 ## <a name="i-cant-find-audit-logs-for-recent-actions-in-the-azure-portal"></a>Azure portal での最近の操作の監査ログが見つかりません
 

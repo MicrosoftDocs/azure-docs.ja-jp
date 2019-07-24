@@ -1,5 +1,5 @@
 ---
-title: Azure Search の API バージョン | Microsoft Docs
+title: .NET SDK と REST API の API のバージョン管理 - Azure Search
 description: Azure Search REST API のバージョン ポリシーと .NET SDK のクライアント ライブラリ
 author: brjohnstmsft
 manager: jlembicz
@@ -9,19 +9,20 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: brjohnst
-ms.openlocfilehash: 8d1e30b0bca3c63fe4528c06e5389d8cbe27a7e6
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.custom: seodec2018
+ms.openlocfilehash: c07a0c8f5440033455c69fe40806adf9b548c16f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113607"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631156"
 ---
 # <a name="api-versions-in-azure-search"></a>Azure Search の API バージョン
 Azure Search は、機能の更新を定期的にロールアウトします。 このような更新が発生すると、下位互換性を維持するために、API の新しいバージョンが必要になる場合があります (毎回とは限りません)。 新しいバージョンが発行されると、お客様は検索サービスの更新内容をコードに統合するタイミングと方法を管理することができます。
 
 原則として、Azure Search チームでは、必要な場合にのみ新しい API バージョンを発行しています。お客様側で新しい API バージョンを使用するためにコードをアップグレードする作業が必要になる可能性があるからです。 下位互換性が保たれなくなる形で API の一部の要素が変更された場合に限り、新しいバージョンが必要です。 このような変更は、既存の機能に修正を加えたことや、新機能において既存の API のセキュリティ構成を変更したことが原因で発生することがあります。
 
-SDK 更新プログラムにも同じルールが適用されます。 Azure Search SDK は[セマンティック バージョニング](http://semver.org/) ルールに従います。そのため、バージョンにはメジャー、マイナー、およびビルド番号という 3 つの部分があります (たとえば、1.1.0)。 SDK の新しいメジャー バージョンは、下位互換性が保たれなくなる変更が生じた場合にのみリリースされます。 下位互換性が保たれる機能更新の場合はマイナー バージョンがインクリメントされ、バグ修正の場合はビルド バージョンのみがインクリメントされます。
+SDK 更新プログラムにも同じルールが適用されます。 Azure Search SDK は[セマンティック バージョニング](https://semver.org/) ルールに従います。そのため、バージョンにはメジャー、マイナー、およびビルド番号という 3 つの部分があります (たとえば、1.1.0)。 SDK の新しいメジャー バージョンは、下位互換性が保たれなくなる変更が生じた場合にのみリリースされます。 下位互換性が保たれる機能更新の場合はマイナー バージョンがインクリメントされ、バグ修正の場合はビルド バージョンのみがインクリメントされます。
 
 > [!NOTE]
 > Azure Search サービスのインスタンスは、最新のバージョンを含む複数の REST API バージョンをサポートします。 バージョンが最新ではなくなった場合でも、そのバージョンを引き続き使用できますが、最新バージョンを使用するようにコードを移行することをお勧めします。 REST API を使用している場合は、api-version パラメーターを使用して、すべての要求に API バージョンを指定する必要があります。 .NET SDK を使用している場合は、使用している SDK のバージョンによって REST API の対応するバージョンが決まります。 サービスが新しいバージョンの API をサポートするようにアップグレードされた場合でも、使用中の古い SDK のコードを変更なしで引き続き実行できます。
@@ -29,7 +30,7 @@ SDK 更新プログラムにも同じルールが適用されます。 Azure Sea
 ## <a name="snapshot-of-current-versions"></a>現在のバージョンのスナップショット
 Azure Search とのすべてのプログラミング インターフェイスの現行バージョンのスナップショットを次に示します。
 
-| インターフェイス | 最新のメジャー バージョン | 状態 |
+| インターフェイス | 最新のメジャー バージョン | Status |
 | --- | --- | --- |
 | [.NET SDK](https://aka.ms/search-sdk) |5.0 |一般公開、2018 年 4 月にリリース済み |
 | [.NET SDK のプレビュー](https://aka.ms/search-sdk-preview) |4.0.1-preview |プレビュー (2017 年 5 月リリース) |
@@ -56,6 +57,6 @@ Azure Search の場合は常に、まず REST API によって、次に .NET SDK
 
 そのため、プレビュー バージョンに依存した実稼働コードの作成はお勧めしません。 古いプレビュー バージョンを使用している場合は、一般公開 (GA) バージョンに移行することをお勧めします。
 
-.NET SDK の場合: コード移行のガイダンスについては、 [.NET SDK のアップグレード](search-dotnet-sdk-migration.md)に関する記事を参照してください。
+.NET SDK の場合:コード移行のガイダンスについては、[.NET SDK のアップグレード](search-dotnet-sdk-migration.md)に関する記事を参照してください。
 
 一般的な可用性とは、Azure Search がサービス レベル アグリーメント (SLA) の下で稼働することを意味します。 SLA については、 [Azure Search のサービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)に関する記事を参照してください。

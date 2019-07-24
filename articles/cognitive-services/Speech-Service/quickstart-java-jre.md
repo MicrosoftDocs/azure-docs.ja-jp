@@ -1,84 +1,54 @@
 ---
-title: 'クイック スタート: Java (Windows または Linux) での音声認識'
+title: クイック スタート:音声を認識する、Java (Windows、Linux) - Speech Services
 titleSuffix: Azure Cognitive Services
-description: Java (Windows または Linux) での音声認識方法の詳細
+description: このクイック スタートでは、コンピューターのマイクからユーザーの音声をキャプチャしてテキストに文字起こしする単純な Java アプリケーションの作成について説明します。
 services: cognitive-services
 author: fmegen
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: 2b39084443690b99391268acb6352763657e2a3c
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: fe565d63e72b5ec2798dde03ba4f4bd9ff4f48a7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218578"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59009401"
 ---
-# <a name="quickstart-recognize-speech-in-java-on-windows-or-linux-by-using-the-speech-service-sdk"></a>クイック スタート: Windows または Linux で Java と Speech Service SDK を使用して音声を認識する
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>クイック スタート:Speech SDK for Java を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-この記事では、[Speech Service SDK](speech-sdk.md) を使用して、Java コンソール アプリケーションを作成します。 PC のマイクからリアルタイムで音声をテキストに変換します。 アプリケーションは、Speech SDK Maven パッケージと、64 ビット Windows または Ubuntu Linux 16.04 上の Eclipse Java IDE (v4.8) で構築されます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
+この記事では、[Speech SDK](speech-sdk.md) を使用して、Java コンソール アプリケーションを作成 します。 PC のマイクからリアルタイムで音声をテキストに変換します。 アプリケーションは、Speech SDK Maven パッケージと、64 ビット Windows、64 ビット Ubuntu Linux 16.04/18.04、または macOS 10.13 以降の Eclipse Java IDE (v4.8) を使用してビルドされます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
 
 > [!NOTE]
 > Speech Devices SDK および Roobo デバイスについては、[Speech Devices SDK](speech-devices-sdk.md) を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、Speech サービス サブスクリプション キーが必要です。 1 つ無料で取得できます。 詳しくは、「[Speech Service を無料で試す](get-started.md)」を参照してください。
+このクイック スタートでは以下が必要です。
+
+* オペレーティング システム:Windows (64 ビット)、Ubuntu Linux 16.04/18.04 (64 ビット)、または macOS 10.13 以降
+* [Eclipse Java IDE](https://www.eclipse.org/downloads/)
+* [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) または [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* Speech Service 用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
+
+Ubuntu 16.04/18.04 を実行している場合は、Eclipse を開始する前に、これらの依存関係がインストールされていることを確認してください。
+
+```console
+sudo apt-get update
+sudo apt-get install build-essential libssl1.0.0 libasound2 wget
+```
+
+Windows (64 ビット版) を実行している場合は、お使いのプラットフォーム用の Microsoft Visual C++ 再頒布可能パッケージがインストールされていることを確認してください。
+* [Visual Studio 2017 の Microsoft Visual C++ 再頒布可能パッケージをダウンロードする](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 
 
 ## <a name="create-and-configure-project"></a>プロジェクトの作成と構成
 
-Eclipse を開始する前に Ubuntu 16.04 を使用している場合は、次のコマンドを実行して、必要なパッケージがインストールされていることを確認します。
-
-  ```sh
-  sudo apt-get update
-  sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
-  ```
-
-1. Eclipse を起動します。
-
-1. [Eclipse Launcher] で、新しいディレクトリの名前を **[Workspace]** フィールドに入力します。 次に **[Launch]** を選択します。
-
-   ![[Eclipse Launcher] のスクリーンショット](media/sdk/qs-java-jre-01-create-new-eclipse-workspace.png)
-
-1. しばらくすると、Eclipse IDE のメイン ウィンドウが表示されます。 ウェルカム画面が表示される場合は画面を閉じます。
-
-1. Eclipse メニュー バーから、 **[File]** > **[New]** > **[Project]** を選択して新しいプロジェクトを作成します。
-
-1. **[新しいプロジェクト]** ダイアログ ボックスが表示されます。 **[Java Project]** を選択し、**[Next]** を選択します。
-
-   ![Java プロジェクトが強調表示されている [新しいプロジェクト] ダイアログ ボックスのスクリーンショット](media/sdk/qs-java-jre-02-select-wizard.png)
-
-1. [New Java Project] ウィザードが開始されます。 **[Project name]** フィールドに「**quickstaart**」と入力し、実行環境として **[JavaSE-1.8]** を選択します。 **[完了]** を選択します。
-
-   ![[新規 Java プロジェクト] ウィザードのスクリーンショット](media/sdk/qs-java-jre-03-create-java-project.png)
-
-1. **[Open Associated Perspective?]\(パースペクティブを開きますか?)** というウィンドウが表示される場合は、**[Open Perspective]\(パースペクティブを開く)** を選択します。
-
-1. **Package explorer** で、**quickstart** プロジェクトを右クリックします。 コンテキスト メニューから、**[Configure]** > **[Convert to Maven Project]** を選択します。
-
-   ![パッケージ エクスプローラーのスクリーンショット](media/sdk/qs-java-jre-04-convert-to-maven-project.png)
-
-1. **[Create new POM]** ウィンドウが表示されます。 **[Group Id]** フィールドに、 **com.microsoft.cognitiveservices.speech.samples** と入力し、**[Artifact Id]** フィールドに、**quickstart** と入力します。 続けて、**[完了]** を選択します。
-
-   ![[Create new POM] ウィンドウのスクリーンショット](media/sdk/qs-java-jre-05-configure-maven-pom.png)
-
-1. **pom.xml** ファイルを開いて編集します。
-
-   * ファイルの最後にある、終了タグ `</project>` の前に、次に示すように Speech SDK 用の Maven リポジトリへの参照を含む `repositories` 要素を作成します。
-
-     [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#repositories)]
-
-  * その後、依存関係として Speech SDK バージョン 1.1.0 を指定した `dependencies` 要素も追加します。
-
-     [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#dependencies)]
-
-   * 変更を保存します。
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
@@ -105,16 +75,15 @@ F11 キーを押すか、**[Run]**  >  **[Debug]** の順に選択します。
 
 ![認識が成功した後のコンソール出力のスクリーンショット](media/sdk/qs-java-jre-07-console-output.png)
 
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-このサンプルは、`quickstart/java-jre` フォルダーで探してください。
-
 ## <a name="next-steps"></a>次の手順
 
+オーディオ ファイルから音声を読み取る方法など、追加のサンプルは GitHub で入手できます。
+
 > [!div class="nextstepaction"]
-> [Speech SDK for Java を使用して音声から意図を認識する](how-to-recognize-intents-from-speech-java.md)
+> [GitHub で Java のサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>関連項目
 
-- [音声を変換する](how-to-translate-speech-csharp.md)
+- [クイック スタート:音声を翻訳する、Java (Windows、Linux)](quickstart-translate-speech-java-jre.md)
 - [音響モデルをカスタマイズする](how-to-customize-acoustic-models.md)
 - [言語モデルをカスタマイズする](how-to-customize-language-model.md)

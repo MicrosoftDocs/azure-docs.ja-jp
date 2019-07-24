@@ -4,26 +4,26 @@ titlesuffix: Azure Cognitive Services
 description: Academic Knowledge API で研究分野エンティティに使用できる属性について説明します。
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: 862fd6d506d5f1ca6f7f532f80f53a29200f33db
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: e9d6badf76efd03c0520a728af7b3e47b25f200a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900429"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878954"
 ---
 # <a name="field-of-study-entity"></a>研究分野エンティティ
 
 <sub> *次の属性は、研究分野エンティティに固有です。(Ty = '6') </sub>
 
-Name    |説明                            |type       | [操作]
+Name    |説明                            |type       | 操作
 ------- | ------------------------------------- | --------- | ----------------------------
-ID      |エンティティ ID                              |Int64      |等しい
+Id      |エンティティ ID                              |Int64      |等しい
 FN      |研究分野の標準化名         |String     |等しい
 DFN     |研究分野の表示名            |String     |なし
 CC      |研究分野の引用の総数    |Int32      |なし  

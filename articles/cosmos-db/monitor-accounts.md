@@ -1,22 +1,21 @@
 ---
-title: Azure Cosmos DB の要求およびストレージの監視 | Microsoft Docs
+title: Azure Cosmos DB でパフォーマンスとストレージのメトリックを監視する
 description: パフォーマンス メトリック (要求やサーバー エラーなど) と使用状況メトリック (ストレージ消費など) を利用して、Azure Cosmos DB アカウントを監視する方法について説明します。
-services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/19/2017
+ms.date: 12/06/2018
 ms.author: sngun
-ms.openlocfilehash: 1f4bf4ba660e83be9879c56d04b27c932d563e17
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.custom: seodec18
+ms.openlocfilehash: a12e0f567747b67c67f7bc825df1079d852e2f16
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354069"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448240"
 ---
-# <a name="monitor-azure-cosmos-db"></a>Azure Cosmos DB を監視する
+# <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB でパフォーマンスとストレージのメトリックを監視する
+
 Azure Cosmos DB アカウントは、[Azure Portal](https://portal.azure.com/) から監視できます。 Azure Cosmos DB アカウントごとに、メトリックの完全なスイートが提供されており、スループット、ストレージ、可用性、待機時間、一貫性を監視できます。
 
 メトリックは、[アカウント] ページ、新しい [メトリック] ページ、または Azure Monitor で確認できます。
@@ -28,7 +27,7 @@ Azure Cosmos DB アカウントは、[Azure Portal](https://portal.azure.com/) �
 
    Azure Portal には、使用可能なコレクション メトリックのスイートが表示されます。 スループット、ストレージ、可用性、待機時間、一貫性の各メトリックは別々のタブに配置されています。 提供されているメトリックの詳細を表示するには、各メトリック ウィンドウの右上にある双方向矢印をクリックします。
 
-   ![メトリック スイートを示す [監視] レンズのスクリーン ショット](./media/monitor-accounts/metrics-suite.png)
+   ![メトリック スイートを示す [監視] レンズのスクリーンショット](./media/monitor-accounts/metrics-suite.png)
 
 ## <a name="view-performance-metrics-by-using-azure-monitoring"></a>Azure Monitoring を使用してパフォーマンス メトリックを表示する
 1. [Azure Portal](https://portal.azure.com/) で、左側のバーの **[モニター]** をクリックします。
@@ -44,7 +43,7 @@ Azure Cosmos DB アカウントは、[Azure Portal](https://portal.azure.com/) �
    * 当日の要求数合計
    * ストレージ使用量
    
-   ![要求とストレージ使用状況を示す [監視] レンズのスクリーン ショット](./media/monitor-accounts/documentdb-total-requests-and-usage.png)
+   ![要求とストレージ使用状況を示す [監視] レンズのスクリーンショット](./media/monitor-accounts/documentdb-total-requests-and-usage.png)
 3. **[要求]** タイルの右上にある双方向矢印をクリックすると、詳細な **[メトリック]** ページが開きます。
 4. **[メトリック]** ページには、合計要求数に関する詳細が表示されます。 
 

@@ -1,21 +1,22 @@
 ---
 title: Speech SDK for C# を使用して音声を翻訳する
 titleSuffix: Azure Cognitive Services
-description: Speech SDK for C# を使用して音声を翻訳する方法を示します。
+description: この記事では、C# 環境で Speech SDK を使用して音声を翻訳するサンプル コードを紹介します。
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 12/06/2018
 ms.author: wolfma
-ms.openlocfilehash: b99b120056350977df0bc671abd29c2d76c7222d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: b4e3c2c678789e661b4d6e2d857da2a298ae68f6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466700"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877186"
 ---
 # <a name="translate-speech-with-the-cognitive-services-speech-sdk-for-c"></a>Cognitive Services Speech SDK for C# を使用して音声を翻訳する
 

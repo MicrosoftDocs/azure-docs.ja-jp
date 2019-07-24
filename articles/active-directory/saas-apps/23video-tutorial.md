@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と 23 Video の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と 23 Video の統合 | Microsoft Docs
 description: Azure Active Directory と 23 Video の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 5e73dd1d-3995-4a73-b9cf-1b2318d49cb3
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 8b4b41551a1679948518846a63eee87bbd1bbfd9
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ec0cfaaf0d4ae692581d63c7745660ffeacfb11f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222667"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175746"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-23-video"></a>チュートリアル: Azure Active Directory と 23 Video の統合
+# <a name="tutorial-azure-active-directory-integration-with-23-video"></a>チュートリアル:Azure Active Directory と 23 Video の統合
 
 このチュートリアルでは、23 Video と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +89,7 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 
 23 Video で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[23 Video テスト ユーザーの作成](#creating-a-23-video-test-user)** - 23 Video で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -102,15 +103,15 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 
 1. Azure Portal の **23 Video** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/23video-tutorial/tutorial_23video_samlbase.png)
+    ![Configure single sign-on](./media/23video-tutorial/tutorial_23video_samlbase.png)
 
 3. **[23 Video のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/23video-tutorial/tutorial_23video_url.png)
+    ![Configure single sign-on](./media/23video-tutorial/tutorial_23video_url.png)
 
     a. **[サインオン URL]** ボックスに、`https://<subdomain>.23video.com` のパターンを使用して URL を入力します。
 
@@ -121,21 +122,21 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
  
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[Configure Single Sign-On]](./media/23video-tutorial/tutorial_23video_certificate.png) 
+    ![Configure single sign-on](./media/23video-tutorial/tutorial_23video_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/23video-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/23video-tutorial/tutorial_general_400.png)
 
 6. **[23 Video 構成]** セクションで、**[23 Video の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/23video-tutorial/tutorial_23video_configure.png) 
+    ![Configure single sign-on](./media/23video-tutorial/tutorial_23video_configure.png) 
 
 7. **23 Video** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** を [23 Video サポート チーム](mailto:support@23company.com)に送信する必要があります。 
 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -166,7 +167,7 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-23-video-test-user"></a>23 Video テスト ユーザーの作成
 
@@ -208,7 +209,7 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 
 2. アプリケーションの一覧で **[23 Video]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/23video-tutorial/tutorial_23video_app.png) 
+    ![Configure single sign-on](./media/23video-tutorial/tutorial_23video_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 

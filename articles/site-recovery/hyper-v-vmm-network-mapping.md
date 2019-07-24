@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: cecc1df23ebed88db315e7de14ea850ba5297697
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: cefde79cf8c544a6900b1efa5dbcefbc43638d40
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212983"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009972"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Hyper-V VM の Azure へのディザスター リカバリーのためにネットワーク マッピングを準備する
 
@@ -24,8 +24,8 @@ ms.locfileid: "50212983"
 ## <a name="prepare-network-mapping-for-replication-to-azure"></a>Azure へのレプリケーションのネットワーク マッピングを準備する
 
 Azure にレプリケートすると、ネットワーク マッピングによって、ソース VMM サーバーの VM ネットワークとターゲット Azure 仮想ネットワーク間がマップされます。 マッピングでは次が行われます。
-    -  **ネットワーク接続** - レプリケートされた Azure VM が、マップされたネットワークに確実に接続されます。 同じネットワーク上でフェールオーバーするすべてのマシンが、別々の復旧計画でフェールオーバーされた場合でも、相互に接続できます。
-    - **ネットワーク ゲートウェイ** - ターゲット Azure ネットワークでネットワーク ゲートウェイをセットアップすると、VM は、他のオンプレミスの仮想マシンに接続できます。
+-  **ネットワーク接続** - レプリケートされた Azure VM が、マップされたネットワークに確実に接続されます。 同じネットワーク上でフェールオーバーするすべてのマシンが、別々の復旧計画でフェールオーバーされた場合でも、相互に接続できます。
+- **ネットワーク ゲートウェイ** - ターゲット Azure ネットワークでネットワーク ゲートウェイをセットアップすると、VM は、他のオンプレミスの仮想マシンに接続できます。
 
 ネットワーク マッピングは次のように動作します。
 
@@ -74,8 +74,8 @@ Azure にレプリケートすると、ネットワーク マッピングによ�
 ---|---|---
 GoldCloud1 | GoldCloud2 |
 SilverCloud1| SilverCloud2 |
-GoldCloud2 | <p>該当なし</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
-SilverCloud2 | <p>該当なし</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
+GoldCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
+SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
 
 ### <a name="logical-and-vm-network-settings"></a>論理設定と VM ネットワークの設定
 

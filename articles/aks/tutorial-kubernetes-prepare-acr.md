@@ -3,22 +3,21 @@ title: Kubernetes on Azure のチュートリアル - コンテナー レジス�
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、Azure Container Registry インスタンスを作成し、サンプルのアプリケーション コンテナー イメージをアップロードします。
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4f240d346457717c66a6ed189cfd8610c7a764da
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 1ba320a523d21beebe089084f40efff4b36dc4af
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41924801"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753573"
 ---
-# <a name="tutorial-deploy-and-use-azure-container-registry"></a>チュートリアル: Azure Container Registry をデプロイして使用する
+# <a name="tutorial-deploy-and-use-azure-container-registry"></a>チュートリアル:Azure Container Registry をデプロイして使用する
 
-Azure Container Registry (ACR) は、Docker コンテナー イメージ用の Azure ベースのプライベート レジストリです。 プライベート コンテナー レジストリを使用すると、アプリケーションとカスタム コードを安全にビルドおよびデプロイすることができます。 7 つのパートのうちの 2 番目のこのチュートリアルでは、ACR インスタンスをデプロイして、それにコンテナー イメージをプッシュします。 学習内容は次のとおりです。
+Azure Container Registry (ACR) は、コンテナー イメージ用のプライベート レジストリです。 プライベート コンテナー レジストリを使用すると、アプリケーションとカスタム コードを安全にビルドおよびデプロイすることができます。 7 つのパートのうちの 2 番目のこのチュートリアルでは、ACR インスタンスをデプロイして、それにコンテナー イメージをプッシュします。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
 > * Azure Container Registry (ACR) インスタンスを作成する
@@ -26,13 +25,13 @@ Azure Container Registry (ACR) は、Docker コンテナー イメージ用の A
 > * イメージを ACR にアップロードする
 > * レジストリ内のイメージを表示する
 
-以降のチュートリアルでは、この ACR インスタンスが AKS の Kubernetes クラスターと統合され、アプリケーションがイメージからデプロイされます。
+追加のチュートリアルでは、この ACR インスタンスが AKS の Kubernetes クラスターと統合され、アプリケーションがイメージからデプロイされます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 [前のチュートリアル][aks-tutorial-prepare-app]では、単純な Azure Voting アプリケーション用のコンテナー イメージを作成しました。 Azure Voting アプリのイメージを作成していない場合、[チュートリアル 1 - コンテナー イメージの作成][aks-tutorial-prepare-app]に関するページに戻ってください。
 
-このチュートリアルでは、Azure CLI バージョン 2.0.44 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
+このチュートリアルでは、Azure CLI バージョン 2.0.53 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
 ## <a name="create-an-azure-container-registry"></a>Azure Container Registry を作成する
 
@@ -44,7 +43,7 @@ Azure Container Registry を作成するには、まず、リソース グルー
 az group create --name myResourceGroup --location eastus
 ```
 
-[az acr create][az-acr-create] コマンドを使用して Azure Container Registry インスタンスを作成し、独自のレジストリ名を指定します。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 このチュートリアルの残りの部分では、コンテナー レジストリ名のプレースホルダーとして `<acrName>` を使用します。 *Basic* SKU は、ストレージとスループットのバランスが取れた、開発目的のコスト最適化されたエントリ ポイントです。
+[az acr create][az-acr-create] コマンドを使用して Azure Container Registry インスタンスを作成し、独自のレジストリ名を指定します。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 このチュートリアルの残りの部分では、コンテナー レジストリ名のプレースホルダーとして `<acrName>` を使用します。 独自の一意のレジストリ名を指定します。 *Basic* SKU は、ストレージとスループットのバランスが取れた、開発目的のコスト最適化されたエントリ ポイントです。
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -101,7 +100,7 @@ tiangolo/uwsgi-nginx-flask                           flask         788ca94b2313 
 
 ## <a name="push-images-to-registry"></a>イメージをレジストリにプッシュ
 
-これで、*azure-vote-front* イメージを ACR インスタンスにプッシュできるようになりました。 [docker push][docker-push] を使用して、次のように、イメージ名に独自の *acrLoginServer* アドレスを指定します。
+ビルドしてタグ付けしたイメージと共に、*azure-vote-front* イメージを ACR インスタンスにプッシュします。 [docker push][docker-push] を使用して、次のように、イメージ名に独自の *acrLoginServer* アドレスを指定します。
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v1
@@ -161,12 +160,12 @@ Azure に Kubernetes クラスターをデプロイする方法については�
 [docker-push]: https://docs.docker.com/engine/reference/commandline/push/
 
 <!-- LINKS - internal -->
-[az-acr-create]: /cli/azure/acr#create
-[az-acr-list]: /cli/azure/acr#list
+[az-acr-create]: /cli/azure/acr
+[az-acr-list]: /cli/azure/acr
 [az-acr-login]: https://docs.microsoft.com/cli/azure/acr#az-acr-login
 [az-acr-list]: https://docs.microsoft.com/cli/azure/acr#az-acr-list
-[az-acr-repository-list]: /cli/azure/acr/repository#list
-[az-acr-repository-show-tags]: /cli/azure/acr/repository#show-tags
+[az-acr-repository-list]: /cli/azure/acr/repository
+[az-acr-repository-show-tags]: /cli/azure/acr/repository
 [az-group-create]: /cli/azure/group#az-group-create
 [azure-cli-install]: /cli/azure/install-azure-cli
 [aks-tutorial-deploy-cluster]: ./tutorial-kubernetes-deploy-cluster.md

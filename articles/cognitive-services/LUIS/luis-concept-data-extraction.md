@@ -1,23 +1,24 @@
 ---
-title: LUIS でのデータ抽出の概念 - Language Understanding
-titleSuffix: Azure Cognitive Services
-description: Language Understanding (LUIS) から抽出できるデータの種類について説明します。
+title: データの抽出
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: 意図とエンティティが含まれる発話テキストからデータを抽出します。 Language Understanding (LUIS) から抽出できるデータの種類について説明します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 284cc8ec6c2325df069d06039a6a22169c3107e7
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 35f1521884de3a4a0971b6e1c00f92a9094a8550
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638343"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526291"
 ---
-# <a name="data-extraction"></a>データの抽出
+# <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>意図とエンティティが含まれる発話テキストからデータを抽出する
 LUIS を使用すると、ユーザーの自然言語での発話から情報を取得できます。 この情報は、アクションを実行するために、プログラム、アプリケーション、またはチャットボットで使用できるような方法で抽出されます。 以降のセクションで、JSON の例を使用して、意図とエンティティから返されるデータについて説明します。
 
 抽出するのが最も困難なデータは機械学習データです。その理由は、テキストが完全一致ではないためです。 機械学習[エンティティ](luis-concept-entity-types.md)のデータ抽出は、期待どおりのデータを受け取っていると確信できるまでは、[作成サイクル](luis-concept-app-iteration.md)の一環とする必要があります。
@@ -105,7 +106,7 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 }
 ```
 
-|ドメイン|データ オブジェクト|データ型|データの場所|値|
+|Domain|データ オブジェクト|データ型|データの場所|値|
 |--|--|--|--|--|
 |Utilities|意図|String|intents[0].intent|"<b>Utilities</b>.ShowNext"|
 |Communication|意図|String|intents[1].intent|<b>Communication</b>.StartOver"|
@@ -169,9 +170,11 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 
 |データ オブジェクト|エンティティ名|値|
 |--|--|--|
-|シンプル エンティティ|"Customer"|"bob jones"|
+|シンプル エンティティ|`Customer`|`bob jones`|
 
 ## <a name="hierarchical-entity-data"></a>階層構造エンティティ データ
+
+**階層エンティティは最終的に非推奨になります。エンティティのサブタイプを決定するには、階層エンティティではなく、[エンティティ ロール](luis-concept-roles.md)を使用します。**
 
 [階層構造](luis-concept-entity-types.md)エンティティは、機械学習され、単語またはフレーズを含めることができます。 子は、コンテキストによって識別されます。 テキストの完全一致を使用して親子関係を見つけようとしている場合は、[リスト](#list-entity-data) エンティティを使用してください。
 
@@ -194,7 +197,7 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 ```
 
 |データ オブジェクト|親|子|値|
-|--|--|--|--|--|
+|--|--|--|--|
 |階層構造エンティティ|Location|ToLocation|"paris"|
 
 ## <a name="composite-entity-data"></a>複合エンティティ データ
@@ -424,16 +427,25 @@ number の `2` と ToLocation `paris` の間には、どのエンティティに
 ```
 
 ## <a name="extracting-names"></a>名前の抽出
-名前は、文字と単語のほぼすべての組み合わせが考えられるため、発話から名前を取得することは困難です。 抽出する名前の種類に応じて、複数のオプションがあります。 以下はルールというよりはガイドラインです。
+名前は、文字と単語のほぼすべての組み合わせが考えられるため、発話から名前を取得することは困難です。 抽出する名前の種類に応じて、複数のオプションがあります。 次の推奨事項はルールではなく、詳細なガイドラインです。
+
+### <a name="add-prebuilt-personname-and-geographyv2-entities"></a>事前構築済みの PersonName エンティティと GeographyV2 エンティティを追加する
+
+[PersonName](luis-reference-prebuilt-person.md) エンティティと [GeographyV2](luis-reference-prebuilt-geographyV2.md) エンティティは、いくつかの[言語カルチャ](luis-reference-prebuilt-entities.md)で利用できます。 
 
 ### <a name="names-of-people"></a>人の名前
-人の名前は、言語およびカルチャに応じて、幾分ある種の形式を持つことがあります。 姓と名を子として持つ階層構造エンティティか、姓と名の役割を持つシンプルなエンティティを使用します。 必ず発話のさまざまな部分に姓と名を使用している例を提供してください。また、None 意図を含むあらゆる意図にわたるさまざまな長さの発話で、姓と名を使用している例を提供してください。 エンドポイントの発話を定期的に[確認](luis-how-to-review-endoint-utt.md)して、適切に予測されていないすべての名前にラベルを付けます。
+
+人の名前は、言語およびカルチャに応じて、幾分ある種の形式を持つことがあります。 事前構築済みの **[personName](luis-reference-prebuilt-person.md)** エンティティ、または氏名の[ロール](luis-concept-roles.md)が含まれる**[簡易エンティティ](luis-concept-entity-types.md#simple-entity)** のどちらかを使用します。 
+
+簡易エンティティを使用する場合は、必ず発話のさまざまな部分に姓と名を使用している例を提供してください。また、None 意図を含むあらゆる意図にわたるさまざまな長さの発話で、姓と名を使用している例を提供してください。 エンドポイントの発話を定期的に[確認](luis-how-to-review-endoint-utt.md)して、適切に予測されていないすべての名前にラベルを付けます。
 
 ### <a name="names-of-places"></a>場所の名前
-場所の名前は、設定されており、市区町村、郡、州、都道府県、国などがあります。 アプリで一連の既知の場所を使用する場合は、リスト エンティティを検討してください。 すべての場所の名前を検索する必要がある場合は、シンプル エンティティを作成し、さまざまな例を提供してください。 場所名のフレーズ リストを追加して、アプリ内で場所名がどのように表記されるかを補強してください。 エンドポイントの発話を定期的に[確認](luis-how-to-review-endoint-utt.md)して、適切に予測されていないすべての名前にラベルを付けます。
+
+場所の名前は、設定されており、市区町村、郡、州、都道府県、国などがあります。 位置情報を抽出するには、事前構築済みエンティティ **[geographyV2](luis-reference-prebuilt-geographyv2.md)** を使用します。
 
 ### <a name="new-and-emerging-names"></a>新しい名前
-一部のアプリでは、製品や企業などの新しい名前を検索できる必要があります。 これは、最も困難な種類のデータ抽出です。 シンプル エンティティから始めて、フレーズ リストを追加します。 エンドポイントの発話を定期的に[確認](luis-how-to-review-endoint-utt.md)して、適切に予測されていないすべての名前にラベルを付けます。
+
+一部のアプリでは、製品や企業などの新しい名前を検索できる必要があります。 これらの種類の名前は、最も困難な種類のデータ抽出です。 **[簡易エンティティ](luis-concept-entity-types.md#simple-entity)** から始めて、[フレーズ リスト](luis-concept-feature.md)を追加します。 エンドポイントの発話を定期的に[確認](luis-how-to-review-endoint-utt.md)して、適切に予測されていないすべての名前にラベルを付けます。
 
 ## <a name="pattern-roles-data"></a>パターンの役割データ
 役割は、エンティティのコンテキスト上の差異です。
@@ -602,6 +614,7 @@ Pattern.any エンティティは、[パターン](luis-concept-patterns.md)の�
 ```
 
 ## <a name="data-matching-multiple-entities"></a>複数のエンティティに一致するデータ
+
 LUIS では、発話内で検出されたすべてのエンティティを返します。 その結果、チャットボットでは、結果に基づいて決定を行う必要があります。 発話内には多数のエンティティが存在する可能性があります。
 
 `book me 2 adult business tickets to paris tomorrow on air france`
@@ -727,6 +740,46 @@ LUIS エンドポイントでは、異なるエンティティ内に同じデー
           "value": "business"
         }
       ]
+    }
+  ]
+}
+```
+
+## <a name="data-matching-multiple-list-entities"></a>複数のリスト エンティティに一致するデータ
+
+単語またはフレーズが複数のリスト エンティティに一致すると、エンドポイント クエリからそれぞれのリスト エンティティが返されます。
+
+クエリ `when is the best time to go to red rock?` の場合、アプリの複数のリストに単語 `red` があると、LUIS ではすべてのエンティティを認識し、JSON エンドポイントの応答の一部としてエンティティの配列を返します。 
+
+```JSON
+{
+  "query": "when is the best time to go to red rock?",
+  "topScoringIntent": {
+    "intent": "Calendar.Find",
+    "score": 0.06701678
+  },
+  "entities": [
+    {
+      "entity": "red",
+      "type": "Colors",
+      "startIndex": 31,
+      "endIndex": 33,
+      "resolution": {
+        "values": [
+          "Red"
+        ]
+      }
+    },
+    {
+      "entity": "red rock",
+      "type": "Cities",
+      "startIndex": 31,
+      "endIndex": 38,
+      "resolution": {
+        "values": [
+          "Destinations"
+        ]
+      }
     }
   ]
 }

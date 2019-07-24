@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: e6a3fab0e6b3b092ddb55043882c4d284268abfc
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 7c2a1c586b4d6f5f9f6e34a091702a35f994544f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006857"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726631"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Hortonworks サンドボックスで Azure Data Lake Tools for Visual Studio を使用する
 
-Azure Data Lake には、汎用の Hadoop クラスターで動作するツールが含まれています。 このドキュメントでは、ローカルの仮想マシンで実行されている Hortonworks サンドボックスで Data Lake ツールを使用するために必要な手順を説明します。
+Azure Data Lake には、汎用の Apache Hadoop クラスターで動作するツールが含まれています。 このドキュメントでは、ローカルの仮想マシンで実行されている Hortonworks サンドボックスで Data Lake ツールを使用するために必要な手順を説明します。
 
 Hortonworks サンドボックスを使用すると、ローカルの開発環境で Hadoop を使用できます。 開発したソリューションを大規模にデプロイしたい場合に、HDInsight クラスターに移行できます。
 
@@ -34,7 +34,7 @@ Hortonworks サンドボックスを使用すると、ローカルの開発環�
 
 ## <a name="configure-passwords-for-the-sandbox"></a>サンドボックスのパスワードを構成する
 
-Hortonworks サンドボックスが実行中であることを確認します。 次に、[Hortonworks サンドボックスの概要](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords)に関する記事の手順に従います。 これにより、SSH `root` アカウントと Ambari `admin` アカウントのパスワードを構成します。 これらのパスワードは、Visual Studio からサンドボックスに接続する際に使用されます。
+Hortonworks サンドボックスが実行中であることを確認します。 次に、[Hortonworks サンドボックスの概要](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords)に関する記事の手順に従います。 これにより、SSH `root` アカウントと Apache Ambari `admin` アカウントのパスワードを構成します。 これらのパスワードは、Visual Studio からサンドボックスに接続する際に使用されます。
 
 ## <a name="connect-the-tools-to-the-sandbox"></a>サンドボックスにツールを接続する
 
@@ -60,18 +60,18 @@ Hortonworks サンドボックスが実行中であることを確認します�
 
     ![ダイアログ ボックスのスクリーンショット ([更新] ボタンを強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > 更新プロセスでは、Ambari を使用して、Data Lake Tools for Visual Studio で必要とされる要件に合わせて Hortonworks サンドボックス構成が変更されます。
 
 6. 検証が終わったら、**[完了]** をクリックして、構成を完了します。
     ![ダイアログ ボックスのスクリーンショット ([完了] ボタンを強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect.png)
 
-     >[!NOTE]
+     >[!NOTE]  
      > 開発環境の処理速度と仮想マシンに割り当てられたメモリの量によっては、サービスの構成と検証に数分かかることがあります。
 
 上記の手順を終了すると、サーバー エクスプローラーの **[HDInsight]** セクションに **[HDInsight local cluster]\(HDInsight ローカル クラスター\)** エントリが表示されます。
 
-## <a name="write-a-hive-query"></a>Hive クエリを記述する
+## <a name="write-an-apache-hive-query"></a>Apache Hive クエリを記述する
 
 Hive には、構造化データを操作するための、SQL に似たクエリ言語 (HiveQL) が用意されています。 次の手順は、ローカル クラスターに対してオンデマンド クエリを実行する方法を示しています。
 
@@ -99,8 +99,8 @@ Hive には、構造化データを操作するための、SQL に似たクエ�
 
     **[ジョブの状態]** が **[完了]** に変わったら、有向非巡回グラフ (DAG) が表示されます。 このダイアグラムは、Hive クエリを処理するときに Tez によって決定された実行パスを示しています。 Tez は、ローカル クラスター上の Hive の既定の実行エンジンです。
 
-    > [!NOTE]
-    > Linux ベースの HDInsight クラスターを使用する場合も、Tez が既定の実行エンジンです。 Windows ベースの HDInsight では既定ではありません。 Tez を使用するには、Hive クエリの先頭に `set hive.execution.engine = tez;` という行を追加する必要があります。
+    > [!NOTE]  
+    > Linux ベースの HDInsight クラスターを使用する場合も、Apache Tez が既定の実行エンジンです。 Windows ベースの HDInsight では既定ではありません。 Tez を使用するには、Hive クエリの先頭に `set hive.execution.engine = tez;` という行を追加する必要があります。
 
     **[ジョブの出力]** リンクをクリックすると、出力が表示されます。 この例では、"823" と表示されます。これは、sample_08 テーブル内の行の数です。 **[ジョブのログ]** リンクと **[Download YARN Log (YARN ログのダウンロード)]** リンクを使用すると、ジョブに関する診断情報を表示できます。
 
@@ -110,7 +110,7 @@ Hive には、構造化データを操作するための、SQL に似たクエ�
 
     これによって、処理中に生成された出力ログが **[HiveServer2 Output (HiveServer2 出力)]** ウィンドウにストリーム表示されます。
 
-    > [!NOTE]
+    > [!NOTE]  
     > これは、ジョブが完了した後に **[ジョブのログ]** リンクから取得できるのと同じ情報です。
 
     ![出力ログのスクリーンショット](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output.png)
@@ -127,7 +127,7 @@ Hive には、構造化データを操作するための、SQL に似たクエ�
 
 **[Hive Sample (Hive サンプル)]** プロジェクトには、**WebLogAnalysis.hql** と **SensorDataAnalysis.hql** という 2 つのスクリプトが含まれています。 これらのスクリプトを送信する際も、ウィンドウの上部にある **[送信]** ボタンを使用できます。
 
-## <a name="create-a-pig-project"></a>Pig プロジェクトを作成する
+## <a name="create-an-apache-pig-project"></a>Apache Pig プロジェクトを作成する
 
 Hive には構造化データを操作するための SQL に似た言語が用意されていますが、Pig はデータで変換を実行することによって機能します。 Pig は変換のパイプラインを作成できる言語 (Pig Latin) を備えています。 ローカル クラスターで Pig を使用するには、次の手順に従います。
 
@@ -200,5 +200,5 @@ Data Lake Tools では、Hadoop で実行されたジョブに関する情報も
 
 ## <a name="next-steps"></a>次の手順
 
-* [Hortonworks Sandbox の使い方のヒント](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
-* [Hadoop チュートリアル: HDP の概要](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
+* [Hortonworks Sandbox の使い方のヒント](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+* [Apache Hadoop チュートリアル: HDP の概要](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)

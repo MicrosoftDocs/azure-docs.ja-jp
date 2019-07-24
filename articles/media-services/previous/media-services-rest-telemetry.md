@@ -4,7 +4,7 @@ description: この記事では、REST API を使用して Azure Media Services 
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: e1a314fb-cc05-4a82-a41b-d1c9888aab09
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ceb2eafdb3df0d24a98d0d3b4afc7d1d9424b4de
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9c654c65577c44b1773ff98cb1206beeb5206ba4
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785841"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317648"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>REST での Azure Media Services テレメトリの構成
 
@@ -34,7 +34,7 @@ ms.locfileid: "33785841"
 - 通知エンドポイントを取得する
 - 監視するための通知エンドポイントを作成する 
 
-    通知エンドポイントを作成するには、EndPointType を AzureTable (2) に設定し、endPontAddress をストレージ テーブル (例: https://telemetryvalidationstore.table.core.windows.net/)) に設定します。
+    通知エンドポイントを作成するには、EndPointType を AzureTable (2) に設定し、endPontAddress をストレージ テーブル (例: https:\//telemetryvalidationstore.table.core.windows.net/) に設定します。
   
 - 監視構成を取得する
 
@@ -46,7 +46,7 @@ ms.locfileid: "33785841"
  
 ## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Media Services に関連付けられたストレージ アカウントを取得する
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts HTTP/1.1
     x-ms-version: 2.13
@@ -74,7 +74,7 @@ ms.locfileid: "33785841"
 
 ## <a name="get-the-notification-endpoints"></a>通知エンドポイントを取得する
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
     x-ms-version: 2.13
@@ -107,7 +107,7 @@ ms.locfileid: "33785841"
  
 ## <a name="create-a-notification-endpoint-for-monitoring"></a>監視するための通知エンドポイントを作成する
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
     x-ms-version: 2.13
@@ -121,12 +121,12 @@ ms.locfileid: "33785841"
     
     {  
         "Name":"monitoring",
-        "EndPointAddress":"https://telemetryvalidationstore.table.core.windows.net/",
+        "EndPointAddress":"https:\//telemetryvalidationstore.table.core.windows.net/",
         "EndPointType":2
     }
 
->[!NOTE]
->必ず、"https://telemetryvalidationstore.table.core.windows.net" の値をご利用のストレージ アカウントに変更してください。
+> [!NOTE]
+> "https:\//telemetryvalidationstore.table.core.windows.net" 値は、必ず実際に使用するストレージ アカウントに変更してください。
 
 ### <a name="response"></a>Response
 
@@ -149,7 +149,7 @@ ms.locfileid: "33785841"
  
 ## <a name="get-the-monitoring-configurations"></a>監視構成を取得する
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations HTTP/1.1
     x-ms-version: 2.13
@@ -179,7 +179,7 @@ ms.locfileid: "33785841"
 
 ## <a name="add-a-monitoring-configuration"></a>監視構成を追加する
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations HTTP/1.1
     x-ms-version: 2.13
@@ -222,7 +222,7 @@ ms.locfileid: "33785841"
 
 ## <a name="stop-telemetry"></a>テレメトリを停止する
 
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 
     DELETE https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')
     x-ms-version: 2.13

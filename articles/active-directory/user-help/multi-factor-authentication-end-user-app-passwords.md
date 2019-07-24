@@ -1,23 +1,25 @@
 ---
-title: Azure Active Directory でアプリ パスワードを管理する方法 | Microsoft Docs
-description: このページは、アプリ パスワードの詳細と、2 段階認証 に関連した用途を理解するのに役立ちます。
+title: アプリ パスワードを管理する方法 - Azure Active Directory | Microsoft Docs
+description: アプリ パスワードの詳細と、2 段階認証に関連した用途について学習します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: richagi
 ms.assetid: 345b757b-5a2b-48eb-953f-d363313be9e5
 ms.workload: identity
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 836f426be950e33031ff74276218d1ba59f1f2f7
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.custom: user-help, seo-update-azuread-jan
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c6790fa1cbb10999a751b31bcb27db2edcb67b4a
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300915"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517761"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>2 段階認証のアプリ パスワードを管理する
 
@@ -38,7 +40,7 @@ Outlook 2010 などの特定の非ブラウザー アプリは、2 段階認証�
 
 アプリ パスワードは、最初の 2 段階認証の登録時に付与されます。 複数のパスワードが必要な場合、次のような 2 段階認証の使用方法に基づいて、追加のパスワードを作成できます。
 
-- **職場または学校のアカウントと MyApps ポータルで 2 段階認証を使用する。** この記事の「[MyApps ポータルを使用してアプリ パスワードを作成および削除する](#create-and-delete-app-passwords-using-the-myapps-portal)」セクションの手順を使用して、アプリ パスワードを作成および削除します。 MyApps ポータルとその使用方法の詳細については、「[Azure Active Directory の MyApps ポータルとは](active-directory-saas-access-panel-introduction.md)」を参照してください。
+- **職場または学校のアカウントと MyApps ポータルで 2 段階認証を使用する。** この記事の「MyApps ポータルを使用してアプリ パスワードを作成および削除する」セクションの手順を使用して、アプリ パスワードを作成および削除します。 MyApps ポータルとその使用方法の詳細については、「[Azure Active Directory の MyApps ポータルとは](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
 - **職場または学校のアカウントと Office 365 ポータルで 2 段階認証を使用する。** この記事の「[Office 365 ポータルを使用してアプリ パスワードを作成および削除する](#create-and-delete-app-passwords-using-the-office-365-portal)」セクションの手順を使用して、アプリ パスワードを作成および削除します。
 
@@ -87,7 +89,7 @@ My Apps ポータル経由でアプリ パスワードを作成および削除�
 
 1. 職場または学校のアカウントにサインインします。
 
-2. https://portal.office.com へ移動して、**Office 365 ポータル** ページの右上から **[設定]** アイコンを選択し、**[追加のセキュリティ確認]** を展開します。
+2. [https://portal.office.com](https://portal.office.com) に移動して、**Office 365 ポータル** ページの右上の **[設定]** アイコンを選択し、**[追加のセキュリティ確認]** を展開します。
 
     ![展開した [追加のセキュリティ確認] 領域を示す Office ポータル](media/security-info/security-info-o365password.png)
 
@@ -103,7 +105,7 @@ My Apps ポータル経由でアプリ パスワードを作成および削除�
 
 1. 職場または学校のアカウントにサインインします。
 
-2. https://portal.office.com へ移動して、**Office 365 ポータル** ページの右上から **[設定]** アイコンを選択し、**[追加のセキュリティ確認]** を選択します。
+2. [https://portal.office.com](https://portal.office.com) に移動して、**Office 365 ポータル** ページの右上の **[設定]** アイコンを選択し、**[追加のセキュリティ確認]** を選択します。
 
 3. **アプリ パスワードを作成して管理する**ことを示す該当のテキストを選択して、**アプリ パスワード** ページを開きます。
 
@@ -121,4 +123,4 @@ My Apps ポータル経由でアプリ パスワードを作成および削除�
 
 - [2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md)
 
-- SMS や電話を受ける代わりに、[Microsoft Authenticator アプリ](microsoft-authenticator-app-how-to.md)の通知を使用してサインインを確認する
+- SMS や電話を受ける代わりに、[Microsoft Authenticator アプリ](user-help-auth-app-download-install.md)の通知を使用してサインインを確認する

@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: エンティティ リンク アプリを構築する - C#'
+title: チュートリアル:エンティティ リンク アプリを構築する - C#
 titlesuffix: Azure Cognitive Services
 description: Entity Linking API を使用して、テキストを分析し、名前付きエンティティをナレッジ ベースの関連エントリにリンクします。
 services: cognitive-services
 author: DavidLiCIG
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: entity-linking-intelligence
+ms.subservice: entity-linking-intelligence
 ms.topic: tutorial
 ms.date: 07/06/2016
 ms.author: davl
-ms.openlocfilehash: 907b4cab483f1bf63a864094530784f9c632a1c8
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: fc1bdd5c6ad4829e22af9922c6749e60f842abaf
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365640"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594034"
 ---
-# <a name="tutorial-build-an-entity-linking-app-with-c"></a>チュートリアル: C# でエンティティ リンク アプリを構築する
+# <a name="tutorial-build-an-entity-linking-app-with-c"></a>チュートリアル:C# を使用してエンティティ リンク アプリを構築する
 
 Microsoft の Entity Linking は、テキストを分析し、名前付きエンティティをナレッジ ベース内の関連エントリにリンクする自然言語処理ツールです。 
 
@@ -32,7 +32,7 @@ Microsoft の Entity Linking は、テキストを分析し、名前付きエン
 
 Entity Linking Intelligence Service API クライアント ライブラリは [SDK](https://www.github.com/microsoft/cognitive-entitylinking-windows) を介してダウンロードできます。 ダウンロードした ZIP ファイルは、任意のフォルダーに抽出する必要があります、多くのユーザーは Visual Studio 2015 フォルダーを選択します。
 
-### <a name="step-1-subscribe-entity-linking-intelligence-service-and-get-your-own-key">手順 1: Entity Linking Intelligence Service にサブスクライブしてキーを取得する</a>
+### <a name="step-1-subscribe-entity-linking-intelligence-service-and-get-your-own-key">手順 1:Entity Linking Intelligence Service にサブスクライブしてキーを取得する</a>
 Entity Linking Intelligence Service を使用する前に、API キーにサインアップする必要があります。 [サブスクリプション](https://www.microsoft.com/cognitive-services/en-us/sign-up)に関するページを参照してください。 プライマリ キーとセカンダリ キーの両方をこのチュートリアルで利用できます。
 
 ### <a name="step-2-create-a-new-project-in-visual-studio">手順 2: Visual Studio で新しいプロジェクトを作成する</a>
@@ -41,7 +41,7 @@ Visual Studio で新しいプロジェクトを作成することから始めま
 
  ![ユニバーサル アプリを作成する](./Images/CreateUWP.png)
 
-### <a name="step-3-add-the-entity-linking-nuget-package-to-your-project">手順 3: プロジェクトに Entity Linking NuGet パッケージを追加する</a>
+### <a name="step-3-add-the-entity-linking-nuget-package-to-your-project">手順 3:プロジェクトに Entity Linking NuGet パッケージを追加する</a>
 
 Cognitive Services の Entity Linking は NuGet.org パッケージとしてリリースされており、使用する前にインストールする必要があります。
 プロジェクトに追加するには、**[ソリューション エクスプローラー]** タブに移動し、プロジェクトを右クリックして **[NuGet パッケージの管理]** を選択します。
@@ -54,7 +54,7 @@ Cognitive Services の Entity Linking は NuGet.org パッケージとしてリ�
 
  ![プロジェクトに含まれる NuGet ライブラリ](./Images/NugetLibraryInProject.png)
  
-### <a name="step-4-add-an-input-and-output-text-block-to-your-apps-xaml">手順 4: 入力と出力のテキスト ブロックをアプリの XAML に追加する</a>
+### <a name="step-4-add-an-input-and-output-text-block-to-your-apps-xaml">手順 4:入力と出力のテキスト ブロックをアプリの XAML に追加する</a>
 **ソリューション エクスプローラー**で **MainPage.xaml** に移動し、ファイルをダブルクリックします。新しいウィンドウにファイルが表示されます。 **[デザイナー]** タブの **[XAML]** ボタンをダブルクリックすると、**ビジュアルデザイナー**が非表示になり、コード ビューのすべての領域が確保されるので便利です。
 
  ![プロジェクトに含まれる NuGet ライブラリ](./Images/UWPMainPage.png)
@@ -74,7 +74,7 @@ Cognitive Services の Entity Linking は NuGet.org パッケージとしてリ�
 </Grid>
  ```
  
-### <a name="step-5-proceed-to-add-entity-linking-intelligence-service">手順 5: Entity Linking Intelligence Service の追加に進む</a>
+### <a name="step-5-proceed-to-add-entity-linking-intelligence-service">手順 5:Entity Linking Intelligence Service の追加に進む</a>
  
 これでユーザー インターフェイスが作成されました。 Entity Linking サービスを使用する前に、button_Click ハンドラーを追加する必要があります。 **ソリューション エクスプローラー**から **MainPage.xaml** を開きます。 ボタンの最後に button_Click ハンドラーを追加します。
  

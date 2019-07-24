@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: eec13db8bdbe1f40a51df14077adb8740e977f5d
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 1a5b883a8c9688d4545c0e98c00f78a2e982a611
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138414"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079717"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Visual Studio Mobile Center で Real User Measurements を Traffic Manager に送信する方法
 
@@ -28,29 +28,29 @@ Real User Measurements を Traffic Manager に送信するように、Visual Stu
 
 Real User Measurements を構成するには、キーを取得し、RUM パッケージでアプリをインストルメント化する必要があります。
 
-## <a name="step-1-obtain-a-key"></a>手順 1: キーを取得する
+## <a name="step-1-obtain-a-key"></a>手順 1:キーを取得する
     
 測定値を取得し、クライアント アプリケーションから Traffic Manager に送信されると、その測定値は、Real User Measurements (RUM) キーと呼ばれる一意の文字列を使用して、サービスによって識別されます。 RUM キーを取得するには、Azure Portal、REST API、または PowerShell/CLI インターフェイスを使用します。
 
 Azure Portal を使用して RUM キーを取得するには、次の手順を実行します。
-   1. ブラウザーから Azure Portal にサインインします。 まだアカウントを持っていない場合は、1 か月間の無料試用版にサインアップできます。
-   2. ポータルの検索バーで、変更の対象となる Traffic Manager プロファイル名を検索し、表示された結果内で Traffic Manager プロファイルをクリックします。
-   3. Traffic Manager プロファイル ページで、**[設定]** で **[Real User Measurements]** をクリックします。
-   4. **[キーの生成]** をクリックして、新しい RUM キーを作成します。
+1. ブラウザーから Azure Portal にサインインします。 まだアカウントを持っていない場合は、1 か月間の無料試用版にサインアップできます。
+2. ポータルの検索バーで、変更の対象となる Traffic Manager プロファイル名を検索し、表示された結果内で Traffic Manager プロファイルをクリックします。
+3. Traffic Manager プロファイル ページで、**[設定]** で **[Real User Measurements]** をクリックします。
+4. **[キーの生成]** をクリックして、新しい RUM キーを作成します。
         
    ![Real User Measurements キーの生成](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
-   **図 1: Real User Measurements キーの生成**
+   "**図 1:リアル ユーザー測定キーの生成**
 
-   5.   ページには、生成された RUM キーと、HTML ページに埋め込む必要がある JavaScript コード スニペットが表示されます。
+5. ページには、生成された RUM キーと、HTML ページに埋め込む必要がある JavaScript コード スニペットが表示されます。
  
    ![Real User Measurements キーの JavaScript コード](./media/traffic-manager-create-rum-visual-studio/rum-key.png)
 
-   **図 2: Real User Measurements キーと測定 JavaScript**
+   "**図 2:Real User Measurements キーと測定 JavaScript**
  
-   6. **[コピー]** をクリックして、RUM キーをコピーします。 
+6. **[コピー]** をクリックして、RUM キーをコピーします。 
 
-## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>手順 2: Mobile Center SDK の RUM パッケージでアプリをインストルメント化する
+## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>手順 2:Mobile Center SDK の RUM パッケージでアプリをインストルメント化する
 
 Visual Studio Mobile Center を初めてご利用になる場合は、[Web サイト](https://mobile.azure.com)を参照してください。 SDK 統合手順の詳細については、「[Getting Started with the Android SDK (Android SDK の概要)](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android)」を参照してください。
 
@@ -72,7 +72,7 @@ Real User Measurements を使用するには、次の手順を実行します。
     **app/build.gradle** ファイルで、次の行を追加します。
 
     ```groovy
-    dependencies {   
+    dependencies {
      
         def mobileCenterSdkVersion = '0.12.1-16+3fe5b08'
         compile "com.microsoft.azure.mobile:mobile-center-rum:${mobileCenterSdkVersion}"

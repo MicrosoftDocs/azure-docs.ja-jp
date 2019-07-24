@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 41509c1f35d42a1e8558299b4244ad515c36ec17
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.date: 02/25/2019
+ms.openlocfilehash: 2c95ec4d88e55af0becc73719bcc6126501267db
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816057"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866829"
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL Database - テーブル監査のためのダウンレベル クライアントのサポートと IP エンドポイントの変更
 
@@ -28,6 +28,7 @@ ms.locfileid: "48816057"
 [データベース監査](sql-database-auditing.md) は TDS リダイレクションに対応する SQL クライアントと自動的に連動します。 なお、Blob 監査メソッドを使用している場合、リダイレクトは適用されません。
 
 ## <a id="subheading-1"></a>ダウンレベル クライアントのサポート
+
 TDS 7.4 を実装するクライアントもリダイレクトをサポートします。 この例外には一部のリダイレクション機能に対応していない JDBC 4.0 とリダイレクションが実装されていない Tedious for Node.JS があります。
 
 「ダウンレベル クライアント」、つまり、TDS バージョンが 7.3 以前のクライアントの場合、接続文字列のサーバー FQDN を変更する必要があります。
@@ -43,9 +44,10 @@ TDS 7.4 を実装するクライアントもリダイレクトをサポートし
 * JDBC (JDBC は TDS 7.4 対応ですが、一部の TDS リダイレクション機能に対応していません。)
 * Tedious (Node.JS 用)
 
-**注記:** 上のサーバー FDQN 変更は SQL サーバー レベル監査ポリシーの適用にも役に立ちます。データベースごとの構成が必要ありません (一時的な軽減)。
+**注記:** 上記のサーバー FDQN 変更は SQL サーバー レベル監査ポリシーの適用にも役に立ちます。データベースごとの構成が必要ありません (一時的な軽減)。
 
 ## <a id="subheading-2"></a>監査を有効にしたときの IP エンドポイントの変更
+
 テーブル監査を有効にすると、データベースの IP エンドポイントが変更されます。 ファイアウォールを厳密に設定している場合は、この変更に従ってファイアウォールの設定を更新してください。
 
 データベースの新しい IP エンドポイントは、データベース リージョンによって異なります。
@@ -78,5 +80,4 @@ TDS 7.4 を実装するクライアントもリダイレクトをサポートし
 | 米国中西部 |52.161.29.186, 52.161.27.213 |
 | カナダ中部 |13.88.248.106, 13.88.248.110 |
 | カナダ東部 |40.86.227.82, 40.86.225.194 |
-| 英国北部 |13.87.101.18, 13.87.100.232 |
-| 英国南部 2 |13.87.32.202, 13.87.32.226 |
+| 英国南部 |13.87.32.202, 13.87.32.226 |

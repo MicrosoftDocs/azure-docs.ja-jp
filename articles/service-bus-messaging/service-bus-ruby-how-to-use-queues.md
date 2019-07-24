@@ -3,34 +3,40 @@ title: Ruby で Azure Service Bus キューを使用する方法 | Microsoft Doc
 description: Azure での Service Bus キューの使用方法を学習します。 コード サンプルは Ruby で記述されています。
 services: service-bus-messaging
 documentationcenter: ruby
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 0a11eab2-823f-4cc7-842b-fbbe0f953751
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 09/10/2017
-ms.author: spelluru
-ms.openlocfilehash: 2ad5ac7b191e3be9fbb8eebb754fef2f430c0473
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 04/10/2019
+ms.author: aschhab
+ms.openlocfilehash: 6c42fbffd0b4569a9b04dede94061e716c48ecf1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407095"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59786049"
 ---
 # <a name="how-to-use-service-bus-queues-with-ruby"></a>Ruby で Service Bus キューを使用する方法
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-このガイドでは、Service Bus キューの使用方法について説明します。 サンプルは Ruby で記述され、Azure gem を利用しています。 紹介するシナリオは、**キューの作成、メッセージの送受信**、**キューの削除**です。 Service Bus キューの詳細については、[「次のステップ」](#next-steps)セクションを参照してください。
+このチュートリアルでは、Ruby アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信する方法を学習します。 サンプルは Ruby で記述され、Azure gem を利用しています。
 
-[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+## <a name="prerequisites"></a>前提条件
+1. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
+2. 「[Azure portal を使用して Service Bus キューを作成する](service-bus-quickstart-portal.md)」の手順に従ってください。
+    1. Service Bus **キュー**の**概要**をお読みください。 
+    2. Service Bus **名前空間**を作成します。 
+    3. **接続文字列**を取得します。 
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-   
+        > [!NOTE]
+        > このチュートリアルでは、Ruby を使用して Service Bus 名前空間で**キュー**を作成します。 
+
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 
 ## <a name="how-to-create-a-queue"></a>キューの作成方法

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/31/2018
 ms.author: saysa
-ms.openlocfilehash: f381285d29d70d6f5da6a6cd319c682cd0c6a235
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3b1e6f769d5c65065d95ac96c4ab4ed10702e5cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444540"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089898"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Jenkins を使用した Linux アプリケーションのビルドと配置
 Jenkins は、アプリの継続的な統合とデプロイを行うための一般的なツールです。 この記事では、Jenkins を使用して Azure Service Fabric アプリケーションをビルドし、デプロイする方法について説明します。
@@ -229,11 +229,11 @@ Jenkins をセットアップした後は、次のセクション、「[Jenkins 
 1. Jenkins の **[Build Triggers (ビルド トリガー)]** タブで、目的のビルド オプションを選択します。 この例では、リポジトリへのプッシュが行われるたびにビルドがトリガーされるようにします。そのため、**[GitHub hook trigger for GITScm polling (GITScm ポーリングの GitHub フック トリガー)]** を選択します。 (以前、このオプションの名前は **[Build when a change is pushed to GitHub (変更が GitHub にプッシュされたときにビルド)]** でした)。
 1. **[ビルド]** タブで、Java アプリケーションまたは .NET Core アプリケーションのどちらをビルドするかに応じて、次のいずれかを実行します。
 
-   * **Java アプリケーションの場合:** **[ビルド ステップの追加]** ドロップダウンから **[Gradle スクリプトの呼び出し]** を選択します。 **[詳細設定]** をクリックします。 詳細メニューで、**[Root build script (ルート ビルド スクリプト)]** にアプリケーションのパスを指定します。 ウィジェットは、指定されたパスから build.gradle を取得し、適切に動作します。 [ActorCounter アプリケーション](https://github.com/Azure-Samples/service-fabric-java-getting-started/tree/master/reliable-services-actor-sample/Actors/ActorCounter)の場合、これは `${WORKSPACE}/reliable-services-actor-sample/Actors/ActorCounter` です。
+   * **Java アプリケーションの場合:****[ビルド ステップの追加]** ドロップダウンから **[Gradle スクリプトの呼び出し]** を選択します。 **[詳細設定]** をクリックします。 詳細メニューで、**[Root build script (ルート ビルド スクリプト)]** にアプリケーションのパスを指定します。 ウィジェットは、指定されたパスから build.gradle を取得し、適切に動作します。 [ActorCounter アプリケーション](https://github.com/Azure-Samples/service-fabric-java-getting-started/tree/master/reliable-services-actor-sample/Actors/ActorCounter)の場合、これは `${WORKSPACE}/reliable-services-actor-sample/Actors/ActorCounter` です。
 
      ![Service Fabric Jenkins のビルド アクション][build-step]
 
-   * **.NET Core アプリケーションの場合:** **[ビルド ステップの追加]** ドロップダウンから **[Execute Shell (シェルの実行)]** を選択します。 表示されるコマンド ボックスで、ディレクトリを、build.sh ファイルが配置されているパスに最初に変更する必要があります。 ディレクトリが変更されると、build.sh スクリプトが実行され、アプリケーションがビルドされます。
+   * **.NET Core アプリケーションの場合:****[ビルド ステップの追加]** ドロップダウンから **[シェルの実行]** を選択します。 表示されるコマンド ボックスで、ディレクトリを、build.sh ファイルが配置されているパスに最初に変更する必要があります。 ディレクトリが変更されると、build.sh スクリプトが実行され、アプリケーションがビルドされます。
 
       ```sh
       cd /var/jenkins_home/workspace/[Job Name]/[Path to build.sh]  # change directory to location of build.sh file
@@ -246,31 +246,31 @@ Jenkins をセットアップした後は、次のセクション、「[Jenkins 
 
 1. ビルド後のアクションでアプリを Service Fabric クラスターにデプロイするように Jenkins を構成するには、Jenkins コンテナー内のそのクラスターの証明書の位置が必要です。 Jenkins コンテナーをクラスター内またはクラスター外のどちらで実行するかに応じて、次のいずれかを選択し、クラスター証明書の位置を書き留めます。
 
-   * **クラスター内で実行される Jenkins の場合:** 証明書へのパスは、コンテナー内から *Certificates_JenkinsOnSF_Code_MyCert_PEM* 環境変数の値をエコーして確認できます。
+   * **クラスター内で実行される Jenkins の場合:** 証明書へのパスは、コンテナー内から *Certificates_JenkinsOnSF_Code_MyCert_PEM* 環境変数の値をエコーすることによって確認できます。
 
       ```sh
       echo $Certificates_JenkinsOnSF_Code_MyCert_PEM
       ```
    
    * **クラスター外で実行される Jenkins の場合:** 次の手順に従って、クラスター証明書をコンテナーにコピーします。
-      1. 証明書は、PEM 形式でなければなりません。 PEM ファイルがない場合は、証明書の PFX ファイルから作成できます。 PFX ファイルがパスワードで保護されていない場合は、ホストから次のコマンドを実行します。
+     1. 証明書は、PEM 形式でなければなりません。 PEM ファイルがない場合は、証明書の PFX ファイルから作成できます。 PFX ファイルがパスワードで保護されていない場合は、ホストから次のコマンドを実行します。
 
-         ```sh
-         openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:
-         ``` 
+        ```sh
+        openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:
+        ``` 
 
-      PFX ファイルがパスワードで保護されている場合は、`-passin` パラメーターにパスワードを含めます。 例: 
+        PFX ファイルがパスワードで保護されている場合は、`-passin` パラメーターにパスワードを含めます。 例: 
 
-         ```sh
-         openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:MyPassword1234!
-         ``` 
+        ```sh
+        openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:MyPassword1234!
+        ``` 
 
-      1. Jenkins コンテナーのコンテナーの ID を取得するには、ホストから `docker ps` を実行します。
-      1. 次の Docker コマンドを使用して、PEM ファイルをコンテナーにコピーします。
+     1. Jenkins コンテナーのコンテナーの ID を取得するには、ホストから `docker ps` を実行します。
+     1. 次の Docker コマンドを使用して、PEM ファイルをコンテナーにコピーします。
     
-         ```sh
-         docker cp clustercert.pem [first-four-digits-of-container-ID]:/var/jenkins_home
-         ``` 
+        ```sh
+        docker cp clustercert.pem [first-four-digits-of-container-ID]:/var/jenkins_home
+        ``` 
 
 あともう少しで終了です。 Jenkins ジョブは開いたままにください。 残りのタスクは、アプリケーションを Service Fabric クラスターにデプロイするようにビルド後のステップを構成することだけです。
 
@@ -298,10 +298,10 @@ Jenkins をセットアップした後は、次のセクション、「[Jenkins 
 
 1. Azure Active Directory サービス プリンシパルを作成し、Azure サブスクリプションで権限を割り当てるには、「[Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)」の手順に従ってください。 次の点に注意してください。
 
-   * トピックの手順を実行する際は、*[アプリケーション ID]*、*[アプリケーション キー]*、*[ディレクトリ ID (テナント ID)]*、および *[サブスクリプション ID]* の値を必ずコピーし、保存してください。 それらは Jenkins で Azure 資格情報を構成するために必要です。
+   * トピック内の手順を実行しているときに、必ず次の値をコピーして保存してください:*アプリケーション ID*、*アプリケーション キー*、*ディレクトリ ID (テナント ID)*、および*サブスクリプション ID*。 それらは Jenkins で Azure 資格情報を構成するために必要です。
    * ディレクトリに[必要な権限](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)がない場合は、管理者に依頼して、権限を付与するかサービス プリンシパルを作成してもらう必要があります。または、Jenkins のジョブ用に **[Post-Build Actions (ビルド後のアクション)]** でクラスターの管理エンドポイントを構成する必要があります。
    * 「[Azure Active Directory アプリケーションを作成する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-azure-active-directory-application)」のセクションでは、**[サインオン URL]** に適切な形式の URL を入力することができます。
-   * 「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role)」のセクションでは、アプリケーションにクラスターのリソース グループの*閲覧者*ロールを割り当てることができます。
+   * 「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)」のセクションでは、アプリケーションにクラスターのリソース グループの*閲覧者*ロールを割り当てることができます。
 
 1. Jenkins ジョブに戻って、**[Post-build Actions (ビルド後のアクション)]** タブをクリックします。
 1. **[Post-Build Actions (ビルド後のアクション)]** ボックスの一覧の **[Deploy Service Fabric Project (Service Fabric プロジェクトのデプロイ)]** を選択します。 
@@ -309,10 +309,10 @@ Jenkins をセットアップした後は、次のセクション、「[Jenkins 
 1. Jenkins 資格情報プロバイダーで、**[種類]** ドロップダウンから **[Microsoft Azure サービス プリンシパル]** を選択します。
 1. 手順 1 でサービス プリンシパルを設定するときに保存した値を使用して、次のフィールドを設定します。
 
-   * **クライアント ID:** *アプリケーション ID*
-   * **クライアント シークレット:** *アプリケーション キー*
-   * **テナント ID**: *ディレクトリ ID*
-   * **サブスクリプション ID**: *サブスクリプション ID*
+   * **クライアント ID**:*アプリケーション ID*
+   * **クライアント シークレット**:*アプリケーション キー*
+   * **テナント ID**:*ディレクトリ ID*
+   * **サブスクリプション ID**:*サブスクリプション ID*
 1. Jenkins で資格情報を選択するために使用するわかりやすい **ID** と、簡単な **[説明]** を入力します。 次に、**[Verify Service Principal (サービス プリンシパルの検証)]** をクリックします。 検証が成功したら、**[追加]** をクリックします。
 
    ![Service Fabric の Jenkins での Azure 資格情報の入力](./media/service-fabric-cicd-your-linux-application-with-jenkins/enter-azure-credentials.png)

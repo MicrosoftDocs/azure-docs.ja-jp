@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 03/07/2019
 ms.author: crdun
-ms.openlocfilehash: b595e62e032743be2655406ac02c8db94cf708f9
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 45b5ac0c9b3535e5cc5efdc6827d694b41e0b8dd
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281768"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57732117"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Azure Mobile Apps SDK for Android の使用方法
 
@@ -53,20 +53,28 @@ Azure Mobile Apps SDK for Android では、タブレットとスマートフォ�
 
 2 つの **build.gradle** ファイルを変更します。
 
-1. 次のコードを、"*プロジェクト*" レベルの **build.gradle** ファイルの *buildscript* タグ内に追加します。
+1. 次のコードを、"*プロジェクト*" レベルの **build.gradle** ファイルに追加します。
 
-    ```text
+    ```gradle
     buildscript {
         repositories {
             jcenter()
+            google()
+        }
+    }
+
+    allprojects {
+        repositories {
+            jcenter()
+            google()
         }
     }
     ```
 
 2. 次のコードを、"*モジュール アプリ*" レベルの **build.gradle** ファイルの *dependencies* タグ内に追加します。
 
-    ```text
-    compile 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
+    ```gradle
+    implementation 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
     ```
 
     現在の最新バージョンは 3.4.0 です。 サポートされているバージョンの一覧については、[Bintray][14] を参照してください。
@@ -189,15 +197,15 @@ public final void setPriority(Integer priority) {
 }
 ```
 
-Mobile Apps バックエンドに追加のテーブルを作成する方法については、「[方法: テーブル コントローラーを定義する][15]」(.NET バックエンド) または「[方法: 動的スキーマを使用してテーブルを定義する][16]」(Node.js バックエンド) を参照してください。
+Mobile Apps バックエンドに追加のテーブルを作成する方法については、「[方法:テーブル コントローラーを定義する][15]」(.NET バックエンド) または「[方法: 動的スキーマを使用してテーブルを定義する][16]」(Node.js バックエンド) を参照してください。
 
 Azure Mobile Apps バックエンド テーブルでは 5 つの特別なフィールドが定義されます。そのうちの 4 つはクライアントで使用できます。
 
-* `String id`: レコードのグローバルに一意の ID。  ベスト プラクティスとして、ID は [UUID][17] オブジェクトの文字列表現にします。
-* `DateTimeOffset updatedAt`: 前回の更新の日付/時刻。  updatedAt フィールドはサーバーによって設定されます。クライアント コードで設定されることはありません。
-* `DateTimeOffset createdAt`: オブジェクトが作成された日付/時刻。  createdAt フィールドはサーバーによって設定されます。クライアント コードで設定されることはありません。
-* `byte[] version`: 通常、文字列として表され、バージョンもサーバーによって設定されます。
-* `boolean deleted`: レコードが削除されたが、まだ消去されていないことを示します。  クラスのプロパティとして `deleted` を使用しないでください。
+* `String id`:レコードのグローバルに一意の ID。  ベスト プラクティスとして、ID は [UUID][17] オブジェクトの文字列表現にします。
+* `DateTimeOffset updatedAt`:前回の更新の日付/時刻。  updatedAt フィールドはサーバーによって設定されます。クライアント コードで設定されることはありません。
+* `DateTimeOffset createdAt`:オブジェクトが作成された日付/時刻。  createdAt フィールドはサーバーによって設定されます。クライアント コードで設定されることはありません。
+* `byte[] version`:通常、文字列として表され、バージョンもサーバーによって設定されます。
+* `boolean deleted`:レコードが削除されたが、まだ消去されていないことを示します。  クラスのプロパティとして `deleted` を使用しないでください。
 
 `id` フィールドは必須です。  `updatedAt` フィールドと `version` フィールドはオフライン同期に使用されます (それぞれ増分同期、競合の解決用)。  `createdAt` フィールドは参照フィールドであり、クライアントによって使用されません。  名前は、プロパティの "ネットワーク経由" の名前であり、調整することはできません。  ただし、[gson][3] ライブラリを使用して、オブジェクトと "ネットワーク経由" の名前との間のマッピングを作成することができます。  例: 
 
@@ -427,7 +435,7 @@ List<ToDoItem> result = mToDoTable
 テーブル内のすべてのレコードを取得するには、コードを実装して、すべてのページを反復処理します。
 
 ```java
-List<MyDataModel> results = new List<MyDataModel>();
+List<MyDataModel> results = new ArrayList<>();
 int nResults;
 do {
     int currentCount = results.size();
@@ -446,7 +454,7 @@ do {
 > [!TIP]
 > 適切なページ サイズは、要求実行時のメモリ使用量と、データを完全に受信するときの帯域幅の使用量と遅延と間のバランスです。  既定値 (50 個のレコード) は、あらゆるデバイスに適しています。  メモリがより大きいデバイスで操作する場合は、最大 500 に増やします。  500 レコードを超えるページ サイズを設定すると、許容できない遅延や大容量メモリの問題が発生することがわかっています。
 
-### <a name="chaining"></a>方法: クエリ メソッドを連結する
+### <a name="chaining"></a>方法:クエリ メソッドを連結する
 
 バックエンド テーブルのクエリに使用するメソッドは連結できます。 クエリ メソッドを連結することで、フィルター処理した行を並べ替えてから、それらの行の特定の列を選択してページングを行うことができます。 複雑な論理フィルターも作成できます。  各クエリ メソッドでは、query オブジェクトが返されます。 一連のメソッドを完結させてクエリを実際に実行するには、 **execute** メソッドを呼び出します。 例: 
 
@@ -496,7 +504,7 @@ List<ToDoItem> results = mToDoTable
 
 前のコードの *listitem* 属性は、リスト内の個々の行のレイアウトの ID を指定します。 次のコードではチェック ボックスおよび関連テキストを指定し、リストの項目ごとに 1 回インスタンス化しています。 このレイアウトでは **id** フィールドが表示されないため、さらに複雑なレイアウトで、表示する追加のフィールドを指定します。 このコードは、**row_list_to_do.xml** ファイルに含まれています。
 
-```java
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -520,7 +528,7 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 
 アダプターの **getView** メソッドをオーバーライドします。 例: 
 
-```
+```java
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
@@ -672,7 +680,7 @@ ToDoItem result = mToDoTable
     .get();
 ```
 
-## <a name="untyped"></a>方法: 型指定のないデータを処理する
+## <a name="untyped"></a>方法:型指定のないデータを処理する
 
 型指定のないプログラミング モデルでは、JSON のシリアル化を正確に制御することができます。  一般的なシナリオの中には、型指定のないプログラミング モデルをした方が良いものもあります。 たとえば、バックエンド テーブルに多くの行が含まれているものの、列のサブセットを参照するだけでよい場合などです。  型指定されたモデルでは、Mobile Apps バックエンドで定義されたすべての列をデータ クラスに定義する必要があります。  データにアクセスするための API 呼び出しのほとんどは、型指定されたプログラミングでの呼び出しに似ています。 主な違いとして、型指定のないモデルでは、**MobileServiceTable** オブジェクトの代わりに **MobileServiceJsonTable** オブジェクトのメソッドを呼び出します。
 
@@ -767,10 +775,10 @@ public void showAllUntyped(View view) {
 
 Azure Mobile Apps クライアント SDK はオフライン同期も実装します。このためには、SQLite データベースを使用して、サーバー データのコピーをローカルに格納します。  オフライン テーブルで実行される操作では、モバイル接続は不要です。  オフライン同期は回復力とパフォーマンスに優れる一方で、競合の解決にはより複雑なロジックを必要とします。  Azure Mobile Apps クライアント SDK は、次の機能を実装します。
 
-* 増分同期: 更新されたレコードや新しいレコードのみがダウンロードされるため、帯域幅とメモリ消費量を節約できます。
-* オプティミスティック コンカレンシー: 操作は成功することが前提とされます。  競合の解決は、更新がサーバーで実行されるまで延期されます。
-* 競合の解決: SDK が、サーバーで競合の変更が行われたことを検出して、ユーザーに通知するフックを提供します。
-* 論理削除: 削除されたレコードは削除済みとマークされ、他のデバイスはオフラインキャッシュを更新することができます。
+* 増分同期:更新されたレコードや新しいレコードのみがダウンロードされるため、帯域幅とメモリ消費量を節約できます。
+* オプティミスティック コンカレンシー:操作は成功することが前提とされます。  競合の解決は、更新がサーバーで実行されるまで延期されます。
+* 競合の解決:SDK が、サーバーで競合の変更が行われたことを検出して、ユーザーに通知するフックを提供します。
+* 論理削除:削除されたレコードは削除済みとマークされ、他のデバイスはオフラインキャッシュを更新することができます。
 
 ### <a name="initialize-offline-sync"></a>オフライン同期を初期化する
 
@@ -907,7 +915,7 @@ App Service は、Facebook、Google、Microsoft アカウント、Twitter、Azur
 
 テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。 さらに、認証されたユーザーの SID を使用して要求を変更することもできます。  詳細については、 [認証の概要] に関するページと、Server SDK のハウツー ドキュメントを参照してください。
 
-### <a name="caching"></a>認証: サーバー フロー
+### <a name="caching"></a>認証:サーバー フロー
 
 次のコードでは、Google プロバイダーを使用してサーバー フローのログイン プロセスを開始します。  Google プロバイダーのセキュリティ要件のため、追加の構成が必要です。
 
@@ -959,7 +967,7 @@ customtabs にプロジェクトを構成する必要もあります。  まず�
 
 **redirectUriScheme** を、アプリケーションの `build.gradle` ファイルに追加します。
 
-```text
+```gradle
 android {
     buildTypes {
         release {
@@ -974,17 +982,17 @@ android {
 }
 ```
 
-最後に、`build.gradle` ファイルの依存関係一覧に `com.android.support:customtabs:23.0.1` を追加します。
+最後に、`build.gradle` ファイルの依存関係一覧に `com.android.support:customtabs:28.0.0` を追加します。
 
-```text
+```gradle
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.google.code.gson:gson:2.3'
-    compile 'com.google.guava:guava:18.0'
-    compile 'com.android.support:customtabs:23.0.1'
-    compile 'com.squareup.okhttp:okhttp:2.5.0'
-    compile 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
-    compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@jar'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.code.gson:gson:2.3'
+    implementation 'com.google.guava:guava:18.0'
+    implementation 'com.android.support:customtabs:28.0.0'
+    implementation 'com.squareup.okhttp:okhttp:2.5.0'
+    implementation 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
+    implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@jar'
 }
 ```
 
@@ -1076,7 +1084,7 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
 1. [Active Directory ログイン用の App Service の構成方法][22]に関するチュートリアルに従って、AAD のサインイン用にモバイル アプリ バックエンドを構成します。 ネイティブ クライアント アプリケーションを登録する省略可能な手順を確実に実行します。
 2. build.gradle ファイルを変更して以下の定義を追加し、ADAL をインストールします。
 
-    ```
+    ```gradle
     repositories {
         mavenCentral()
         flatDir {
@@ -1091,11 +1099,11 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
         exclude 'META-INF/MSFTSIG.SF'
     }
     dependencies {
-        compile fileTree(dir: 'libs', include: ['*.jar'])
-        compile('com.microsoft.aad:adal:1.1.1') {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation('com.microsoft.aad:adal:1.16.1') {
             exclude group: 'com.android.support'
-        } // Recent version is 1.1.1
-        compile 'com.android.support:support-v4:23.0.0'
+        } // Recent version is 1.16.1
+        implementation 'com.android.support:support-v4:28.0.0'
     }
     ```
 
@@ -1188,7 +1196,7 @@ mClient = new MobileServiceClient("https://myappname.azurewebsites.net");
 mClient.setAndroidHttpClientFactory(new OkHttpClientFactory() {
     @Override
     public OkHttpClient createOkHttpClient() {
-        OkHttpClient client = new OkHttpClinet();
+        OkHttpClient client = new OkHttpClient();
         client.setReadTimeout(60, TimeUnit.SECONDS);
         client.setWriteTimeout(60, TimeUnit.SECONDS);
         return client;
@@ -1281,7 +1289,7 @@ FieldNamingStrategy namingStrategy = new FieldNamingStrategy() {
 client.setGsonBuilder(
     MobileServiceClient
         .createMobileServiceGsonBuilder()
-        .setFieldNamingStrategy(namingStategy)
+        .setFieldNamingStrategy(namingStrategy)
 );
 ```
 
@@ -1289,31 +1297,31 @@ client.setGsonBuilder(
 
 <!-- URLs. -->
 [Get started with Azure Mobile Apps]: app-service-mobile-android-get-started.md
-[ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
-[Mobile Services SDK for Android]: http://go.microsoft.com/fwlink/p/?LinkID=717033
+[ASCII control codes C0 and C1]: https://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
+[Mobile Services SDK for Android]: https://go.microsoft.com/fwlink/p/?LinkID=717033
 [Azure portal]: https://portal.azure.com
 [認証の概要]: app-service-mobile-android-get-started-users.md
 [1]: https://static.javadoc.io/com.google.code.gson/gson/2.8.5/com/google/gson/JsonObject.html
-[2]: http://hashtagfail.com/post/44606137082/mobile-services-android-serialization-gson
+[2]: https://hashtagfail.com/post/44606137082/mobile-services-android-serialization-gson
 [3]: https://www.javadoc.io/doc/com.google.code.gson/gson/2.8.5
-[4]: http://go.microsoft.com/fwlink/p/?LinkId=296840
+[4]: https://go.microsoft.com/fwlink/p/?LinkId=296840
 [5]: app-service-mobile-android-get-started-push.md
 [6]: ../notification-hubs/notification-hubs-push-notification-overview.md#integration-with-app-service-mobile-apps
 [7]: app-service-mobile-android-get-started-users.md#cache-tokens
-[8]: http://azure.github.io/azure-mobile-apps-android-client/com/microsoft/windowsazure/mobileservices/table/MobileServiceTable.html
-[9]: http://azure.github.io/azure-mobile-apps-android-client/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html
+[8]: https://azure.github.io/azure-mobile-apps-android-client/com/microsoft/windowsazure/mobileservices/table/MobileServiceTable.html
+[9]: https://azure.github.io/azure-mobile-apps-android-client/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html
 [10]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [11]: app-service-mobile-node-backend-how-to-use-server-sdk.md
-[12]: http://azure.github.io/azure-mobile-apps-android-client/
+[12]: https://azure.github.io/azure-mobile-apps-android-client/
 [13]: app-service-mobile-android-get-started.md#create-a-new-azure-mobile-app-backend
-[14]: http://go.microsoft.com/fwlink/p/?LinkID=717034
+[14]: https://go.microsoft.com/fwlink/p/?LinkID=717034
 [15]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#define-table-controller
 [16]: app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations
 [17]: https://developer.android.com/reference/java/util/UUID.html
 [18]: https://github.com/google/guava/wiki/ListenableFutureExplained
-[19]: http://www.odata.org/documentation/odata-version-3-0/
-[20]: http://hashtagfail.com/post/46493261719/mobile-services-android-querying
+[19]: https://www.odata.org/documentation/odata-version-3-0/
+[20]: https://hashtagfail.com/post/46493261719/mobile-services-android-querying
 [21]: https://github.com/Azure-Samples/azure-mobile-apps-android-quickstart
-[22]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
-[Future]: http://developer.android.com/reference/java/util/concurrent/Future.html
-[AsyncTask]: http://developer.android.com/reference/android/os/AsyncTask.html
+[22]: ../app-service/configure-authentication-provider-aad.md
+[Future]: https://developer.android.com/reference/java/util/concurrent/Future.html
+[AsyncTask]: https://developer.android.com/reference/android/os/AsyncTask.html

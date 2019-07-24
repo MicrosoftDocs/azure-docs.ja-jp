@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: a429bfae001cad044da9ef729c021c8128cbfefe
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 614c3e1831680fff50058cd5192449f8e6e28179
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090012"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59049798"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Azure REST API を使用して Azure Network Watcher でパケット キャプチャを管理する
 
 > [!div class="op_single_selector"]
-> - [Azure ポータル](network-watcher-packet-capture-manage-portal.md)
+> - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
@@ -40,6 +40,9 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
 - [**パケット キャプチャを停止する**](#stop-packet-capture)
 - [**パケット キャプチャを削除する**](#delete-packet-capture)
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="before-you-begin"></a>開始する前に
 
 このシナリオでは、Network Watcher Rest API を呼び出して IP フロー検証を実行します。 PowerShell を使用している REST API を呼び出すには、ARMClient を使用します。 ARMClient は、[Chocolatey 上の ARMClient](https://chocolatey.org/packages/ARMClient) に関するページの chocolatey 上にあります。
@@ -50,7 +53,7 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
 
 ## <a name="log-in-with-armclient"></a>ARMClient でログインする
 
-```PowerShell
+```powershell
 armclient login
 ```
 
@@ -60,7 +63,7 @@ armclient login
 
 次のコードには変数が必要です。
 
-- **subscriptionId** - サブスクリプション ID は **Get-AzureRMSubscription** コマンドレットで取得することもできます。
+- **subscriptionId** - サブスクリプション ID は **Get-AzSubscription** コマンドレットで取得することもできます。
 - **resourceGroupName** - 仮想マシンを含むリソース グループの名前。
 
 ```powershell
@@ -210,11 +213,12 @@ armclient get "https://management.azure.com/subscriptions/${subscriptionId}/Reso
 
 ```json
 {
-    "name": "vm1PacketCapture",     "id": "/subscriptions/{guid}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatche rName}/packetCaptures/{packetCaptureName}",
-   "captureStartTime" : "9/7/2016 12:35:24PM",
-   "packetCaptureStatus" : "Stopped",
-   "stopReason" : "TimeExceeded"
-   "packetCaptureError" : [ ]
+    "name": "vm1PacketCapture",
+    "id": "/subscriptions/{guid}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}",
+    "captureStartTime" : "9/7/2016 12:35:24PM",
+    "packetCaptureStatus" : "Stopped",
+    "stopReason" : "TimeExceeded",
+    "packetCaptureError" : [ ]
 }
 ```
 
@@ -300,9 +304,9 @@ armclient delete "https://management.azure.com/subscriptions/${subscriptionId}/R
 
 ## <a name="next-steps"></a>次の手順
 
-Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob ストレージを使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」をご覧ください。 使用できるツールとして他に Storage Explorer があります。 Storage Explorer の詳細は、次のリンクで確認することができます。[Storage Explorer](http://storageexplorer.com/)
+Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob ストレージを使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」をご覧ください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、次のリンクを参照してください。[Storage Explorer](https://storageexplorer.com/)
 
-[アラートがトリガーするパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、仮想マシンのアラートを使用してパケット キャプチャを自動化する方法を確認する。
+[アラートがトリガーするパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、仮想マシンのアラートを使用してパケット キャプチャを自動化する方法を確認する
 
 
 

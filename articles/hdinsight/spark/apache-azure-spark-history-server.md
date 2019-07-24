@@ -9,30 +9,30 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 4627593e4ab96c63423a7afd6152f3a004bc6c3f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 96c2f1c021e27a8f5a0f4d2af2b34970b9d44e80
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042365"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524176"
 ---
-# <a name="use-extended-spark-history-server-to-debug-and-diagnose-spark-applications"></a>拡張された Spark History Server を使用して Spark アプリケーションのデバッグと診断を行う
+# <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>拡張された Apache Spark History Server を使用して Apache Spark アプリケーションのデバッグと診断を行う
 
-この記事では、拡張された Spark History Server を使用して、完成して実行されている Spark アプリケーションのデバッグおよび診断を行う方法に関するガイダンスを提供します。 この拡張には、[データ] タブ、[グラフ] タブ、[診断] タブが含まれています。**[データ]** タブでは、Spark ジョブの入力データと出力データを確認できます。 **[グラフ]** タブでは、データ フローを確認し、ジョブ グラフを再生できます。 **[診断]** タブでは、**データ スキュー**、**時間のずれ**、**Executor Usage Analysis\(Executor 利用状況分析\)** を参照できます。
+この記事では、拡張された Apache Spark History Server を使用して、完成して実行されている Spark アプリケーションのデバッグおよび診断を行う方法に関するガイダンスを提供します。 この拡張には、[データ] タブ、[グラフ] タブ、[診断] タブが含まれています。**[データ]** タブでは、Spark ジョブの入力データと出力データを確認できます。 **[グラフ]** タブでは、データ フローを確認し、ジョブ グラフを再生できます。 **[診断]** タブでは、**データ スキュー**、**時間のずれ**、**Executor Usage Analysis\(Executor 利用状況分析\)** を参照できます。
 
-## <a name="get-access-to-spark-history-server"></a>Spark History Server にアクセスする
+## <a name="get-access-to-apache-spark-history-server"></a>Apache Spark History Server にアクセスする
 
-Spark History Server は、完了および実行中の Spark アプリケーションの Web UI です。 
+Apache Spark History Server は、完了および実行中の Spark アプリケーションの Web UI です。 
 
-### <a name="open-the-spark-history-server-web-ui-from-azure-portal"></a>Spark History Server Web UI を Azure portal から開く
+### <a name="open-the-apache-spark-history-server-web-ui-from-azure-portal"></a>Apache Spark History Server Web UI を Azure portal から開く
 
-1. [Azure Portal](https://portal.azure.com/) で Spark クラスターを開きます。 詳細については、「[クラスターの一覧と表示](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters)」を参照してください。
+1. [Azure Portal](https://portal.azure.com/) で Spark クラスターを開きます。 詳細については、「[クラスターの一覧と表示](../hdinsight-administer-use-portal-linux.md#showClusters)」を参照してください。
 2. **クイック リンク**の **[クラスター ダッシュボード]** をクリックし、**[Spark History Server]** をクリックします。 入力を求められたら、Spark クラスターの管理者資格情報を入力します。 
 
     ![Spark History Server](./media/apache-azure-spark-history-server/launch-history-server.png "Spark History Server")
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>Spark History Server Web UI を URL で開く
-次の URL を参照することで、Spark History Server を開きます。<ClusterName> を、お客様の Spark クラスター名に置き換えてください。
+次の URL を参照することで、Spark History Server を開きます。`<ClusterName>` を、お客様の Spark クラスター名に置き換えてください。
 
    ```
    https://<ClusterName>.azurehdinsight.net/sparkhistory
@@ -87,7 +87,7 @@ Spark History Server Web UI は次のようになります。
     ![グラフのフィードバック](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
 
-## <a name="graph-tab-in-spark-history-server"></a>Spark History Server の [グラフ] タブ
+## <a name="graph-tab-in-apache-spark-history-server"></a>Apache Spark History Server の [グラフ] タブ
 ジョブの [グラフ] ビューを取得するには、ジョブ ID を選択し、[ツール] メニューの **[グラフ]** をクリックします。
 
 + 生成されたジョブ グラフで、ジョブの概要をチェックします。 
@@ -106,11 +106,11 @@ Spark History Server Web UI は次のようになります。
 
 + **[再生]** ボタンをクリックすることで、ジョブを再生できます。[停止] ボタンをクリックすることで、いつでも停止できます。 タスクは、再生時の状態を示す色を使用して表示されます。
 
-    + 緑 (成功) : ジョブは正常に完了しています。
-    + オレンジ (再試行) : 失敗はしたが、ジョブの最終結果には影響しないタスクのインスタンス。 これらのタスクには、重複しているものや、後で成功した可能性がある再試行インスタンスがあります。
-    + 青 (実行中) : タスクは実行されています。
-    + 白 (待機中またはスキップ) : タスクが実行を待機しているか、ステージがスキップされています。
-    + 赤 (失敗) : タスクは失敗しています。
+  + 緑 (成功) :ジョブは正常に完了しています。
+  + オレンジ (再試行) :失敗はしたが、ジョブの最終結果には影響しないタスクのインスタンス。 これらのタスクには、重複しているものや、後で成功した可能性がある再試行インスタンスがあります。
+  + 青 (実行中) :タスクは実行されています。
+  + 白 (待機中またはスキップ) :タスクが実行を待機しているか、ステージがスキップされています。
+  + 赤 (失敗) :タスクは失敗しています。
 
     ![グラフの色のサンプル (実行中)](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
  
@@ -119,7 +119,7 @@ Spark History Server Web UI は次のようになります。
 
     ![グラフの色のサンプル (失敗)](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
  
-    > [!NOTE]
+    > [!NOTE]  
     > 各ジョブの再生が許可されます。 不完全なジョブでは、再生はサポートされていません。
 
 
@@ -132,25 +132,25 @@ Spark History Server Web UI は次のようになります。
     ![グラフのツールヒント](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
 
 + ジョブ グラフ タブでは、ステージに次の条件を満たすタスクがあると、そのステージにヒントと小さなアイコンが表示されます。
-    + データ スキュー: データ読み取りサイズが、このステージ内のすべてのタスクの平均データ読み取りサイズの 2 倍を超えており、なおかつ 10 MB を超えている
-    + 時間のずれ: 実行時間が、このステージ内のすべてのタスクの平均実行時間の 2 倍を超えており、なおかつ 2 分を超えている
+  + データ スキュー: データ読み取りサイズが、このステージ内のすべてのタスクの平均データ読み取りサイズの 2 倍を超えており、なおかつ 10 MB を超えている。
+  + 時間のずれ: 実行時間が、このステージ内のすべてのタスクの平均実行時間の 2 倍を超えており、なおかつ 2 分を超えている。
 
     ![グラフのスキュー アイコン](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
 + ジョブ グラフ ノードには、各ステージの次の情報が表示されます。
-    + ID。
-    + 名前または説明。
-    + タスクの総数。
-    + データの読み取り: 入力サイズとシャッフル読み取りサイズの合計。
-    + データの書き込み: 出力サイズとシャッフル書き込みサイズの合計。
-    + 実行時間: 最初の試行の開始時刻から最後の試行の完了時刻までの時間。
-    + 行数: 入力レコード、出力レコード、シャッフル読み取りレコード、およびシャッフル書き込みレコードの合計。
-    + 進行状況。
+  + ID。
+  + 名前または説明。
+  + タスクの総数。
+  + データの読み取り: 入力サイズとシャッフル読み取りサイズの合計。
+  + データの書き込み: 出力サイズとシャッフル書き込みサイズの合計。
+  + 実行時間: 最初の試行の開始時刻から最後の試行の完了時刻までの時間。
+  + 行数: 入力レコード、出力レコード、シャッフル読み取りレコード、およびシャッフル書き込みレコードの合計。
+  + 進行状況。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 既定では、ジョブ グラフ ノードには、各ステージの最後の試行に関する情報 (ステージの実行時間以外) が表示されますが、再生中は各試行の情報が表示されます。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 読み取りと書き込みのデータ サイズでは、1MB = 1000 KB = 1000 * 1000 バイトが使用されています。
 
 + **[フィードバックをお寄せください]** をクリックすることで、問題のフィードバックを送信できます。
@@ -158,7 +158,7 @@ Spark History Server Web UI は次のようになります。
     ![グラフのフィードバック](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
 
-## <a name="diagnosis-tab-in-spark-history-server"></a>Spark History Server の [診断] タブ
+## <a name="diagnosis-tab-in-apache-spark-history-server"></a>Apache Spark History Server の [診断] タブ
 ジョブの [診断] ビューを取得するには、ジョブ ID を選択し、[ツール] メニューの **[診断]** をクリックします。 [診断] タブには、**[データ スキュー]**、**[時間のずれ]**、**[Executor Usage Analysis\(Executor 利用状況分析\)]** が含まれています。
     
 + それぞれのタブを選択して、**データ スキュー**、**時間のずれ**、**Executor Usage Analysis\(Executor 利用状況分析\)** を確認します。
@@ -168,7 +168,7 @@ Spark History Server Web UI は次のようになります。
 ### <a name="data-skew"></a>データ スキュー
 **[データ スキュー]** タブをクリックすると、指定されたパラメーターに基づいて、対応する偏りのあるタスクが表示されます。 
 
-+ **パラメーターの指定** - 最初のセクションには、データ スキューの検出に使用するパラメーターが表示されます。 組み込みの規則では、読み取られたタスク データが、読み取られたタスク データの平均量の 3 倍を超えており、なおかつ 10 MB を超えていることが指定されています。 偏りのあるタスクの独自の規則を定義する場合は、パラメーターを選択できます。それに応じて、**[傾斜したステージ]** と**スキュー グラフ**のセクションが更新されます。
++ **パラメーターの指定** - 最初のセクションには、データ スキューの検出に使用するパラメーターが表示されます。 組み込みの規則では、読み取られたタスク データが、読み取られたタスク データの平均量の 3 倍を超えており、なおかつ 10 MB を超えています。 偏りのあるタスクの独自の規則を定義する場合は、パラメーターを選択できます。それに応じて、**[傾斜したステージ]** と**スキュー グラフ**のセクションが更新されます。
 
 + **傾斜したステージ** - 2 番目のセクションには、上記で指定した条件を満たす偏りのあるタスクがあるステージが表示されます。 ステージに偏りのあるタスクが複数ある場合、傾斜したステージのテーブルには、最も偏っているタスク (データ スキューのデータが最大のタスクなど) だけが表示されます。
 
@@ -312,10 +312,10 @@ History Server エラーが発生した場合は、次の手順に従ってイ�
     https://hdinsighttoolingstorage.blob.core.windows.net/shsscriptactions/upgrade_spark_enhancement.sh
    ```
 
-    + **[ヘッド]** と **[ワーカー]** をオンにします。
-    + **パラメーター**: bash の使用法に従ってパラメーターを設定します。
+   + **[ヘッド]** と **[ワーカー]** をオンにします。
+   + **パラメーター**: bash の使用法に従ってパラメーターを設定します。
 
-    ![ログまたは修正プログラムのアップグレード](./media/apache-azure-spark-history-server/sparkui-upload2.png)
+     ![ログまたは修正プログラムのアップグレード](./media/apache-azure-spark-history-server/sparkui-upload2.png)
 
 
 ## <a name="known-issues"></a>既知の問題
@@ -326,8 +326,8 @@ History Server エラーが発生した場合は、次の手順に従ってイ�
 
 ## <a name="next-steps"></a>次の手順
 
-* [HDInsight での Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
-* [Spark の設定を構成する](apache-spark-settings.md)
+* [HDInsight 上の Apache Spark クラスターのリソースを管理する](apache-spark-resource-manager.md)
+* [Apache Spark の設定を構成する](apache-spark-settings.md)
 
 
 ## <a name="contact-us"></a>お問い合わせ

@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 938d8efeaa88cc5bebbf33e525132a030f1b3c7c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 689207339db0250d42fc64c33f43c42c18317d41
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112505"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313007"
 ---
-# <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>チュートリアル: ELK を使用して Service Fabric アプリケーションを監視する
+# <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>チュートリアル:ELK を使用して Service Fabric アプリケーションを監視する
 
 このチュートリアルは、シリーズの第 4 部です。 ここでは、ELK (Elasticsearch、Logstash、Kibana) を使用して、Azure で実行されている Service Fabric アプリケーションを監視する方法について説明します。
 
@@ -44,7 +44,7 @@ ms.locfileid: "37112505"
 
 このチュートリアルを開始する前に
 
-* Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
+* Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
 * [第 2 部](service-fabric-tutorial-debug-log-local-cluster.md)で指定した場所にログを出力するようアプリケーションを設定します。
 * [第 3 部](service-fabric-tutorial-java-deploy-azure.md)を完了し、ログを Event Hubs に送信するよう構成された Service Fabric クラスターを実行します。
 * "リッスン" アクセス許可が含まれた Event Hubs のポリシーと、第 3 部の関連付けられた主キー。
@@ -109,7 +109,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
     logstash-plugin install logstash-input-azureeventhub
     ```
 
-4. 次の内容で Logstash 構成ファイルを作成します。または、既存の Logstash 構成ファイルを変更します。ファイルを作成する場合、Azure で ELK Bitnami イメージを使用するのであれば、```/opt/bitnami/logstash/conf/access-log.conf``` で Logstash 構成ファイルを作成する必要があります。
+4. 次の内容で Logstash 構成ファイルを作成します。または、既存の Logstash 構成ファイルを変更します。ファイルを作成する場合、Azure で ELK Bitnami イメージを使用するのであれば、```/opt/bitnami/logstash/conf/access-log.conf``` で構成ファイルを作成する必要があります。
 
     ```json
     input
@@ -149,13 +149,13 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
     curl 'localhost:9200/_cat/indices?v'
     ```
 
-8. **http://SERVER-IP** で Kibana ダッシュボードにアクセスし、Kibana のユーザー名とパスワードを入力します。 Azure で ELK イメージを使用した場合、既定のユーザー名は "user" になり、パスワードは**ブート診断**で取得したものになります。
+8. **http:\//SERVER-IP** で Kibana ダッシュボードにアクセスし、Kibana のユーザー名とパスワードを入力します。 Azure で ELK イメージを使用した場合、既定のユーザー名は "user" になり、パスワードは**ブート診断**で取得したものになります。
 
     ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * ELK サーバーを立ち上げて Azure で実行する

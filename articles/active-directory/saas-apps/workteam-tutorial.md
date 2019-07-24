@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Workteam の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Workteam の統合 | Microsoft Docs
 description: Azure Active Directory と Workteam の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 8d6ca6395e4f5e1aca361c56e21afc4e6bd1fc0c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a7cd986544dfb1472f5cc8a013fec951dca42a59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43132446"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898654"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workteam"></a>チュートリアル: Azure Active Directory と Workteam の統合
+# <a name="tutorial-azure-active-directory-integration-with-workteam"></a>チュートリアル:Azure Active Directory と Workteam の統合
 
 このチュートリアルでは、Workteam と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -145,7 +146,7 @@ Workteam で Azure AD のシングル サインオンを構成してテストす
 
     c. **[SAML Entity ID]\(SAML エンティティ ID\)** ボックスに、Azure portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
-    d. Azure portal からダウンロードした **Base-64 でエンコードされた証明書**をメモ帳で開き、その内容をコピーして **[SAML Signing Certificate (Base64)]\(SAML 署名証明書 (Base64)\)** ボックスに貼り付けます。
+    d. Azure portal からダウンロードした **Base-64 でエンコードされた証明書**をメモ帳で開き、その内容をコピーして **[SAML Signing Certificate (Base64)]\(SAML 署名証明書 (Base64)\)** ボックスに貼り付けます。
 
     e. Click **OK**.
 
@@ -199,7 +200,7 @@ Azure AD ユーザーが Workteam にログインできるようにするには�
 
     a. **[Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **Brittasimon**)。
 
-    b. **[Email]\(電子メール\)** ボックスに、ユーザーのメール アドレスを入力します (例: **Brittasimon@contoso.com**)。
+    b. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (例: **Brittasimon\@contoso.com**) を入力します。
 
     c. Click **OK**.
 
@@ -238,7 +239,7 @@ Azure AD ユーザーが Workteam にログインできるようにするには�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Workteam] タイルをクリックすると、自動的に Workteam アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

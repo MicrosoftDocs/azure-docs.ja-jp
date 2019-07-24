@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: Bing News Search (C#)'
+title: Visual Studio と C# の接続済みサービスを使用して Bing News Search API に接続する
 titleSuffix: Azure Cognitive Services
 description: ASP.NET Core Web アプリケーションから Bing News Search に接続します。
 services: cognitive-services
 author: ghogen
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: f1f5c590216975ce6b0813da6d9d98279d591454
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 2925ca5a303876a68b6d605c7312d43af102b6e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804346"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088470"
 ---
-# <a name="tutorial-connect-to-bing-news-search-api-by-using-connected-services-in-visual-studio"></a>チュートリアル: Visual Studio の接続済みサービスを使用して Bing News Search API に接続する
+# <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>チュートリアル:Visual Studio と C# の接続済みサービスを使用して Bing News Search API に接続する
 
 Bing News Search を使用すると、Web にスコープした広告のない検索エンジンのパワーを、アプリおよびサービスで利用できるようになります。 Bing News Search は Cognitive Services で利用できる検索サービスの 1 つです。
 
@@ -87,14 +87,14 @@ Bing News Search を使用すると、Web にスコープした広告のない�
 
 Bing News Search API のサポートをプロジェクトに追加したので、ここでは、API を使用してインテリジェント検索を Web ページに追加する方法を示します。
 
-1.  *Startup.cs* 内の `ConfigureServices` メソッドで、`IServiceCollection.AddSingleton` の呼び出しを追加します。 これにより、キー設定を含む構成オブジェクトがプロジェクト内のコードから使用できるようになります。
+1. *Startup.cs* 内の `ConfigureServices` メソッドで、`IServiceCollection.AddSingleton` の呼び出しを追加します。 これにより、キー設定を含む構成オブジェクトがプロジェクト内のコードから使用できるようになります。
  
    ```csharp
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddMvc();
-            services.AddSingleton<IConfiguration>(Configuration);
-        }
+       public void ConfigureServices(IServiceCollection services)
+       {
+           services.AddMvc();
+           services.AddSingleton<IConfiguration>(Configuration);
+       }
    ```
 
 

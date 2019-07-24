@@ -4,7 +4,7 @@ description: Service Fabric CLI sfctl chaos のコマンドについて説明し
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 1e77dfdec902b64f2524c790bda6742eaa1105fc
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: b584ec301f0f4841c8df8fbbafb410abf645c373
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669176"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666751"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 chaos テスト サービスの開始、停止、レポートを実行します。
@@ -28,9 +28,9 @@ chaos テスト サービスの開始、停止、レポートを実行します�
 |サブグループ|説明|
 | --- | --- |
 | [schedule](service-fabric-sfctl-chaos-schedule.md) | chaos のスケジュールを取得および設定します。 |
-## <a name="commands"></a>コマンド
+## <a name="commands"></a>command
 
-|コマンド|説明|
+|command|説明|
 | --- | --- |
 | events | 継続トークンまたは時間範囲に基づいて Chaos イベントの次のセグメントを取得します。 |
 | get | Chaos の状態を取得します。 |
@@ -47,9 +47,9 @@ Chaos イベントの次のセグメントを取得するには、ContinuationTo
 |引数|説明|
 | --- | --- |
 | --continuation-token | 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらない場合は、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。 |
-| --end-time-utc | Chaos レポートが生成される時間範囲の終了時刻を表す Windows ファイル時間。 詳しくは、「[DateTime.ToFileTimeUtc Method](https://docs.microsoft.com/dotnet/api/system.datetime.tofiletimeutc?redirectedfrom=MSDN&view=netframework-4.7.2#System_DateTime_ToFileTimeUtc)」(DateTime.ToFileTimeUtc メソッド) をご覧ください。 |
+| --end-time-utc | Chaos レポートが生成される時間範囲の終了時刻を表す Windows ファイル時間。 詳しくは、「[DateTime.ToFileTimeUtc Method](https://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)」(DateTime.ToFileTimeUtc メソッド) をご覧ください。 |
 | --max-results | ページング クエリの一部として返される結果の最大数。 このパラメーターは、返される結果の数に上限を定義します。 返された結果が、構成で定義したメッセージの最大サイズの制限に収まらない場合は、指定した最大結果数よりも少なくなる場合があります。 このパラメーターがゼロまたは指定されていない場合、ページング クエリには、応答メッセージに収まるできるだけ多くの結果が含まれます。 |
-| --start-time-utc | Chaos レポートが生成される時間範囲の開始時刻を表す Windows ファイル時間。 詳しくは、「[DateTime.ToFileTimeUtc Method](https://docs.microsoft.com/dotnet/api/system.datetime.tofiletimeutc?redirectedfrom=MSDN&view=netframework-4.7.2#System_DateTime_ToFileTimeUtc)」(DateTime.ToFileTimeUtc メソッド) をご覧ください。 |
+| --start-time-utc | Chaos レポートが生成される時間範囲の開始時刻を表す Windows ファイル時間。 詳しくは、「[DateTime.ToFileTimeUtc Method](https://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)」(DateTime.ToFileTimeUtc メソッド) をご覧ください。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
@@ -60,7 +60,7 @@ Chaos イベントの次のセグメントを取得するには、ContinuationTo
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-chaos-get"></a>sfctl chaos get
 Chaos の状態を取得します。
@@ -81,7 +81,7 @@ Chaos が実行中かどうかを示す Chaos の状態、Chaos の実行に使�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-chaos-start"></a>sfctl chaos start
 クラスターで Chaos を開始します。
@@ -97,14 +97,14 @@ Chaos が実行中かどうかを示す Chaos の状態、Chaos の実行に使�
 | --context | (文字列, 文字列) 型のキーと値のペアの JSON エンコード マップ。 マップを使用して、混乱の実行に関する情報を記録できます。 このようなペアが 100 を超えることはできませんし、各文字列 (キーまたは値) の最大は 4095 文字です。 このマップは、オプションで特定の実行に関するコンテキストを格納するために、混乱実行を開始するユーザーによって設定されます。 |
 | --disable-move-replica-faults | move primary と move secondary の障害を無効にします。 |
 | --max-cluster-stabilization | すべてのクラスター エンティティが安定し正常な状態になるまで待機する最長時間。  既定値\: 60。 <br><br> Chaos は、繰り返して実行し、各繰り返しの開始時にクラスターのエンティティの正常性を検証します。 検証中に、クラスターのエンティティが MaxClusterStabilizationTimeoutInSeconds の時間内に安定して正常にならない場合、Chaos は検証失敗イベントを生成します。 |
-| --max-concurrent-faults | 各イテレーションで誘発される同時実行のエラーの最大数。 Chaos は繰り返して実行し、2 つの連続する繰り返しは検証フェーズで区切られます。 同時実行性が高いほど、障害の挿入は積極的になり、より複雑な一連の状態が誘発されて、バグが発見されます。 2 または 3 の値で始めて、注意しながら値を増やすことをお勧めします。  既定値\: 1。 |
+| --max-concurrent-faults | 各イテレーションで誘発される同時実行のエラーの最大数。 Chaos は繰り返して実行し、2 つの連続する繰り返しは検証フェーズで区切られます。 コンカレンシーが高いほど、障害の挿入は積極的になり、より複雑な一連の状態が誘発されて、バグが発見されます。 2 または 3 の値で始めて、注意しながら値を増やすことをお勧めします。  既定値\: 1。 |
 | --max-percent-unhealthy-apps | Chaos 中にクラスターの正常性を評価するときに、エラーを報告する前の異常なアプリケーションの最大許容パーセンテージ。 <br><br> エラーを報告する前の異常なアプリケーションの最大許容パーセンテージ。 たとえば、アプリケーションの 10% の異常を許容するには、この値を 10 にします。 パーセンテージは、異常な可能性のあるアプリケーションの最大許容パーセンテージを表します。この値を超えるとクラスターはエラーの状態と見なされます。 許容パーセンテージ内であっても、1 つ以上の異常なアプリケーションがある場合は、正常性は Warning として評価されます。 これは、異常なアプリケーションの数をクラスター内のアプリケーション インスタンスの総数で割ることによって計算されます。ApplicationTypeHealthPolicyMap に含まれているアプリケーションの種類のアプリケーションは除外されます。 切り上げ計算が実行され、少数のアプリケーションに対する 1 つのエラーは許容されます。 既定のパーセンテージは 0 です。 |
 | --max-percent-unhealthy-nodes | Chaos 中にクラスターの正常性を評価するときに、エラーを報告する前の異常なノードの最大許容パーセンテージ。 <br><br> エラーを報告する前の異常なノードの最大許容パーセンテージ。 たとえば、ノードの 10% の異常を許容するには、この値を 10 にします。 パーセンテージは、異常な可能性のあるノードの最大許容パーセンテージを表します。この値を超えるとクラスターはエラーの状態と見なされます。 許容パーセンテージ内であっても、1 つ以上の異常なノードがある場合は、正常性は Warning として評価されます。 パーセンテージは、異常なノードの数をクラスター内のノードの総数で割ることによって計算されます。 切り上げ計算が実行され、少数のノードに対する 1 つのエラーは許容されます。 既定のパーセンテージは 0 です。 大規模なクラスターでは、ダウンしているか修復を必要とするノードがいくつか必ず存在するため、それが許容されるようにこのパーセンテージを構成する必要があります。 |
 | --time-to-run | 自動停止するまでに Chaos が実行される合計時間 (秒)。 最大許容値は、4,294,967,295 (System.UInt32.MaxValue) です。  既定値\: 4294967295。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 | --wait-time-between-faults | 1 つのイテレーション内で連続する障害の間の時間 (秒単位)。  既定値\: 20。 <br><br> 値が大きいほど、障害間のオーバーラップは少なくなり、クラスターの状態遷移のシーケンスは単純になります。 1 ～ 5 の値で始めて、注意しながら値を増やすことをお勧めします。 |
 | --wait-time-between-iterations | Chaos の 2 つの連続するイテレーション間の時間区切り (秒単位)。 値が大きいほど、障害挿入率は低くなります。  既定値\: 30。 |
-| --warning-as-error | 警告をエラーとして処理するための正常性ポリシーを設定します。 |
+| --warning-as-error | 警告がエラーと同じ重大度で処理されることを示します。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -114,7 +114,7 @@ Chaos が実行中かどうかを示す Chaos の状態、Chaos の実行に使�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-chaos-stop"></a>sfctl chaos stop
 Chaos がクラスターで実行している場合は停止し、Chaos のスケジュールを停止状態にします。
@@ -135,7 +135,8 @@ Chaos が新しい障害を実行するのを停止します。 転送中の障�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+
 
 ## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。

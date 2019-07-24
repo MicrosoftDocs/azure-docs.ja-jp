@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics でのパフォーマンス カウンターの収集と分析 | Microsoft Docs
-description: Log Analytics では、Windows および Linux のエージェントのパフォーマンスを分析するためにパフォーマンス カウンターが収集されます。  この記事では、Windows および Linux の両方のエージェントでのパフォーマンス カウンターの収集の構成方法、ワークスペースに格納されたそれらの詳細、および Azure Portal でのそれらの分析方法について説明します。
+title: Azure Monitor でのパフォーマンス カウンターの収集と分析 | Microsoft Docs
+description: Azure Monitor では、Windows および Linux のエージェントのパフォーマンスを分析するためにパフォーマンス カウンターが収集されます。  この記事では、Windows および Linux の両方のエージェントでのパフォーマンス カウンターの収集の構成方法、ワークスペースに格納されたそれらの詳細、および Azure Portal でのそれらの分析方法について説明します。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -8,29 +8,27 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/19/2017
+ms.date: 11/28/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: ffc3443c0c4bca214cc576e1345ad09874287426
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 93f47529e3be44ff1db4e089bdcdca3eb1b4dea3
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336632"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728354"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Log Analytics での Windows および Linux のパフォーマンス データ ソース
-Windows および Linux のパフォーマンス カウンターから、ハードウェア コンポーネント、オペレーティング システム、およびアプリケーションのパフォーマンスに関する情報が得られます。  Log Analytics は、長期的な分析とレポートのためにパフォーマンス データを集計することに加えて、ほぼリアルタイム (NRT) 分析のために頻繁な間隔でパフォーマンス カウンターを収集することができます。
+# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Monitor での Windows および Linux のパフォーマンス データ ソース
+Windows および Linux のパフォーマンス カウンターから、ハードウェア コンポーネント、オペレーティング システム、およびアプリケーションのパフォーマンスに関する情報が得られます。  Azure Monitor は、長期的な分析とレポートのためにパフォーマンス データを集計することに加えて、ほぼリアルタイム (NRT) 分析のために頻繁な間隔でパフォーマンス カウンターを収集することができます。
 
 ![パフォーマンス カウンター](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>パフォーマンス カウンターの構成
-パフォーマンス カウンターは、[Log Analytics の [設定] の [データ] メニュー](agent-data-sources.md#configuring-data-sources)から構成します。
+パフォーマンス カウンターは、[[詳細設定] の [データ] メニュー](agent-data-sources.md#configuring-data-sources)から構成します。
 
-新しい Log Analytics ワークスペースの Windows または Linux パフォーマンス カウンターを初めて構成する場合は、いくつかの一般的なカウンターをすばやく作成するためのオプションが表示されます。  それぞれのオプションの横には、チェック ボックスが表示されます。  最初に作成するカウンターがオンになっていることを確認し、 **[Add the selected performance counters (選択されたパフォーマンス カウンターを追加する)]** をクリックします。
+新しいワークスペースの Windows または Linux のパフォーマンス カウンターを初めて構成する場合、いくつかの一般的なカウンターをすばやく作成するためのオプションが表示されます。  それぞれのオプションの横には、チェック ボックスが表示されます。  最初に作成するカウンターがオンになっていることを確認し、 **[Add the selected performance counters (選択されたパフォーマンス カウンターを追加する)]** をクリックします。
 
 Windows のパフォーマンス カウンターの場合、パフォーマンス カウンターごとに特定のインスタンスを選択できます。 Linux のパフォーマンス カウンターの場合、各カウンターに対して選択したインスタンスが、そのすべての子カウンターに適用されます。 次の表は、Linux と Windows の両方のパフォーマンス カウンターで利用できる共通のインスタンスを示しています。
 
@@ -90,7 +88,7 @@ Azure Portal を使用して Linux のパフォーマンス カウンターを�
 | interval | オブジェクトのカウンターを収集する頻度。 |
 
 
-次の表は、構成ファイルで指定できるオブジェクトとカウンターを一覧表示しています。  「[Log Analytics で Linux アプリケーションのパフォーマンス カウンターを収集する](data-sources-linux-applications.md)」に記載されているとおり、特定のアプリケーションで使用できる追加のカウンターがあります。
+次の表は、構成ファイルで指定できるオブジェクトとカウンターを一覧表示しています。  「[Collect performance counters for Linux applications in Azure Monitor (Azure Monitor で Linux アプリケーションのパフォーマンス カウンターを収集する)](data-sources-linux-applications.md)」に記載されているとおり、特定のアプリケーションで使用できる追加のカウンターがあります。
 
 | オブジェクト名 | カウンター名 |
 |:--|:--|
@@ -101,8 +99,8 @@ Azure Portal を使用して Linux のパフォーマンス カウンターを�
 | 論理ディスク | Disk Read Bytes/sec  |
 | 論理ディスク | Disk Reads/sec  |
 | 論理ディスク | Disk Transfers/sec |
-| 論理ディスク |  Disk Write Bytes/sec |
-| 論理ディスク |  Disk Writes/sec |
+| 論理ディスク | Disk Write Bytes/sec |
+| 論理ディスク | Disk Writes/sec |
 | 論理ディスク | Free Megabytes |
 | 論理ディスク | Logical Disk Bytes/sec |
 | メモリ | % Available Memory |
@@ -184,7 +182,7 @@ Azure Portal を使用して Linux のパフォーマンス カウンターを�
     </source>
 
 ## <a name="data-collection"></a>データ収集
-Log Analytics は、カウンターがインストールされているすべてのエージェントについて、指定されたサンプル間隔ですべての指定されたパフォーマンス カウンターを収集します。  データは集計されず、サブスクリプションで指定した期間、すべてのログ検索ビューで生データを利用できます。
+Azure Monitor は、カウンターがインストールされているすべてのエージェントについて、指定されたサンプル間隔ですべての指定されたパフォーマンス カウンターを収集します。  データは集計されず、サブスクリプションで指定した期間、すべてのログ クエリ ビューで生データを利用できます。
 
 ## <a name="performance-record-properties"></a>パフォーマンス レコードのプロパティ
 パフォーマンス レコードには、 **Perf** の型と、次の表に示すプロパティがあります。
@@ -197,7 +195,7 @@ Log Analytics は、カウンターがインストールされているすべて
 | CounterValue |カウンターの数値。 |
 | InstanceName |イベント インスタンスの名前。  インスタンスがない場合は空白です。 |
 | ObjectName |パフォーマンス オブジェクトの名前 |
-| SourceSystem |データが収集されたエージェントの種類。 <br><br>OpsManager – Windows エージェント、直接接続または SCOM <br> Linux – すべての Linux エージェント  <br> AzureStorage – Azure 診断 |
+| SourceSystem |データが収集されたエージェントの種類。 <br><br>OpsManager – Windows エージェント、直接接続または SCOM <br> Linux – すべての Linux エージェント  <br>  AzureStorage – Azure Diagnostics |
 | TimeGenerated |データがサンプリングされた日付と時刻。 |
 
 ## <a name="sizing-estimates"></a>サイズ見積もり
@@ -205,10 +203,10 @@ Log Analytics は、カウンターがインストールされているすべて
 
     1 MB x (number of counters) x (number of agents) x (number of instances)
 
-## <a name="log-searches-with-performance-records"></a>パフォーマンス レコードでのログ検索
-次の表は、パフォーマンス レコードを取得するログ検索のさまざまな例をまとめたものです。
+## <a name="log-queries-with-performance-records"></a>パフォーマンス レコードに対するログ クエリ
+次の表は、パフォーマンス レコードを取得するログ クエリのさまざまな例をまとめたものです。
 
-| クエリ | 説明 |
+| Query | 説明 |
 |:--- |:--- |
 | Perf |すべてのパフォーマンス データ |
 | Perf &#124; where Computer == "MyComputer" |特定のコンピューターからのすべてのパフォーマンス データ |
@@ -227,5 +225,5 @@ Log Analytics は、カウンターがインストールされているすべて
 
 ## <a name="next-steps"></a>次の手順
 * MySQL および Apache HTTP Server を含む [Linux アプリケーションからパフォーマンス カウンターを収集します](data-sources-linux-applications.md)。
-* [ログ検索](../../log-analytics/log-analytics-queries.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
-* 詳細な視覚化および分析を行うために、収集されたデータを [Power BI](../../log-analytics/log-analytics-powerbi.md) にエクスポートします。
+* [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。  
+* 詳細な視覚化および分析を行うために、収集されたデータを [Power BI](powerbi.md) にエクスポートします。

@@ -3,21 +3,21 @@ title: Stream Analytics から Azure Data Lake Storage Gen1 へのデータの�
 description: Azure Stream Analytics を使用した Azure Data Lake Storage Gen1 へのデータのストリーム
 services: data-lake-store,stream-analytics
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: edb58e0b-311f-44b0-a499-04d7e6c07a90
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.author: nitinme
-ms.openlocfilehash: 0d9ddbeae3a666d3b3cf56f80ae633a7ecaa650a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.author: twooley
+ms.openlocfilehash: d3dbacd58b3bda3fbf8ee8ad5f175eccc2cb2a24
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294035"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58877552"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Azure Stream Analytics を使用した Azure Storage Blob から Azure Data Lake Storage Gen1 へのデータ ストリーム
 この記事では、Azure Data Lake Storage Gen1 を Azure Stream Analytics ジョブの出力として使用する方法について説明します。 ここでは、Azure Storage BLOB (入力) からデータを読み取り、そのデータを Azure Data Lake Storage Gen1 (出力) に書き込む簡単なシナリオを紹介します。
@@ -54,17 +54,17 @@ ms.locfileid: "46294035"
 
     ![ジョブへの入力の追加](./media/data-lake-store-stream-analytics/create.input.2.png "ジョブへの入力の追加")
 
-    * **[入力のエイリアス]** で、このジョブ入力の一意の名前を入力します。
-    * **[ソースの種類]** で、**[データ ストリーム]** を選択します。
-    * **[ソース]** で、**[BLOB ストレージ]** を選択します。
-    * **[サブスクリプション]** で、**[現在のサブスクリプションの BLOB ストレージを使う]** を選択します。
-    * **[ストレージ アカウント]** で、前提条件の一部として作成したストレージ アカウントを選択します。 
-    * **[コンテナー]** で、選択したストレージ アカウント内に作成したコンテナーを選択します。
-    * **[イベントのシリアル化の形式]** で、**[CSV]** を選択します。
-    * **[区切り記号]** で、**[タブ]** を選択します。
-    * **[エンコード]** で、**[UTF-8]** を選択します。
+   * **[入力のエイリアス]** で、このジョブ入力の一意の名前を入力します。
+   * **[ソースの種類]** で、**[データ ストリーム]** を選択します。
+   * **[ソース]** で、**[BLOB ストレージ]** を選択します。
+   * **[サブスクリプション]** で、**[現在のサブスクリプションの BLOB ストレージを使う]** を選択します。
+   * **[ストレージ アカウント]** で、前提条件の一部として作成したストレージ アカウントを選択します。 
+   * **[コンテナー]** で、選択したストレージ アカウント内に作成したコンテナーを選択します。
+   * **[イベントのシリアル化の形式]** で、**[CSV]** を選択します。
+   * **[区切り記号]** で、**[タブ]** を選択します。
+   * **[エンコード]** で、**[UTF-8]** を選択します。
 
-    **Create** をクリックしてください。 これで、ポータルは、この入力を追加して接続をテストします。
+     **Create** をクリックしてください。 これで、ポータルは、この入力を追加して接続をテストします。
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>ジョブに Data Lake Storage Gen1 出力を作成
@@ -84,15 +84,15 @@ ms.locfileid: "46294035"
 
     ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.3.png "ジョブへの出力の追加")
 
-    * **[アカウント名]** で、ジョブ出力の送信先として作成済みの Data Lake Storage Gen1 アカウントを選択します。
-    * **[パス プレフィックスのパターン]** で、指定した Data Lake Storage Gen1 アカウント内にファイルを書き込むために使用するファイル パスを入力します。
-    * プレフィックス パスで日付トークンを使用する場合は、**[日付形式]** でファイルを編成する日付形式を選択できます。
-    * プレフィックス パスで時刻トークンを使用する場合は、**[時刻形式]** でファイルを編成する時刻形式を選択できます。
-    * **[イベントのシリアル化の形式]** で、**[CSV]** を選択します。
-    * **[区切り記号]** で、**[タブ]** を選択します。
-    * **[エンコード]** で、**[UTF-8]** を選択します。
+   * **[アカウント名]** で、ジョブ出力の送信先として作成済みの Data Lake Storage Gen1 アカウントを選択します。
+   * **[パス プレフィックスのパターン]** で、指定した Data Lake Storage Gen1 アカウント内にファイルを書き込むために使用するファイル パスを入力します。
+   * プレフィックス パスで日付トークンを使用する場合は、**[日付形式]** でファイルを編成する日付形式を選択できます。
+   * プレフィックス パスで時刻トークンを使用する場合は、**[時刻形式]** でファイルを編成する時刻形式を選択できます。
+   * **[イベントのシリアル化の形式]** で、**[CSV]** を選択します。
+   * **[区切り記号]** で、**[タブ]** を選択します。
+   * **[エンコード]** で、**[UTF-8]** を選択します。
     
-    **Create** をクリックしてください。 これで、ポータルは、この出力を追加して接続をテストします。
+     **Create** をクリックしてください。 これで、ポータルは、この出力を追加して接続をテストします。
     
 ## <a name="run-the-stream-analytics-job"></a>Stream Analytics ジョブの実行
 
@@ -106,7 +106,7 @@ ms.locfileid: "46294035"
 
     **[開始]** をクリックしてジョブを開始します。 ジョブが開始されるまでに数分かかる場合があります。
 
-3. Blob からデータを取得するジョブをトリガーするには、サンプル データ ファイルを BLOB コンテナーにコピーします。 サンプル データ ファイルは [Azure Data Lake Git リポジトリ](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)で取得できます。 このチュートリアルでは、**vehicle1_09142014.csv** ファイルをコピーします。 [Azure Storage Explorer](http://storageexplorer.com/)などのさまざまなクライアントを使用して、BLOB コンテナーにデータをアップロードすることができます。
+3. Blob からデータを取得するジョブをトリガーするには、サンプル データ ファイルを BLOB コンテナーにコピーします。 サンプル データ ファイルは [Azure Data Lake Git リポジトリ](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)で取得できます。 このチュートリアルでは、**vehicle1_09142014.csv** ファイルをコピーします。 [Azure Storage Explorer](https://storageexplorer.com/)などのさまざまなクライアントを使用して、BLOB コンテナーにデータをアップロードすることができます。
 
 4. **[概要]** タブの **[監視]** で、データがどのように処理されたかを確認します。
 

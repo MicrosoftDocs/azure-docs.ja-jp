@@ -3,24 +3,25 @@ title: Azure Active Directory アプリケーション プロキシを使用す�
 description: Azure AD アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項について説明しています。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 2321ccf115e3b517bdc593c0c428c61d5dd90968
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4d80f58215b1a8f1b93db158cd2f47186ba6354a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39367091"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180294"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項
 
@@ -40,7 +41,7 @@ ms.locfileid: "39367091"
 
 Azure AD テナントにサインアップするとき、指定した国によってテナントのリージョンが決まります。 アプリケーション プロキシを有効にすると、テナント用のアプリケーション プロキシ サービス インスタンスは、Azure AD テナントと同じリージョン、またはその最寄りのリージョン内で選択されるか作成されます。
 
-たとえば、Azure AD テナントのリージョンが欧州連合 (EU) の場合、すべてのアプリケーション プロキシ コネクタは、EU 内の Azure データセンターにあるサービス インスタンスを使用します。 ユーザーが公開アプリケーションにアクセスする場合、トラフィックはこの場所のアプリケーション プロキシ サービス インスタンスを経由して送信されます。
+たとえば、Azure AD テナントの国またはリージョンが英国の場合、すべてのアプリケーション プロキシ コネクタは、EU のデータ センターにあるサービス インスタンスを使用します。 ユーザーが公開アプリケーションにアクセスする場合、トラフィックはこの場所のアプリケーション プロキシ サービス インスタンスを経由して送信されます。
 
 ## <a name="considerations-for-reducing-latency"></a>待機時間を削減するための考慮事項
 
@@ -79,17 +80,17 @@ Azure と企業ネットワークの間に専用の VPN または ExpressRoute �
 
 ユーザーとアプリケーション プロキシ サービス間の接続を制御するために実行できることはほとんどありません。 ユーザーは、ホーム ネットワーク、コーヒー ショップ、または別の国からアプリをアクセスする可能性があります。 代わりに、アプリケーション プロキシ サービスからアプリケーション プロキシ コネクタへの接続とアプリケーション プロキシ コネクタからアプリへの接続を最適化できます。 環境内に次のパターンを組み込むことを検討してください。
 
-### <a name="pattern-1-put-the-connector-close-to-the-application"></a>パターン 1: アプリケーションの近くへのコネクタの配置
+### <a name="pattern-1-put-the-connector-close-to-the-application"></a>パターン 1:アプリケーションの近くへのコネクタの配置
 
 顧客のネットワーク内の対象アプリケーションの近くにコネクタを配置します。 この構成では、コネクタとアプリケーションが閉じているため、トポロジ図の手順 3 が最小限に抑えられます。 
 
 コネクタがドメイン コントローラーを見通す必要がある場合は、このパターンが得策です。 このパターンはほとんどのシナリオに適しているため、大半のユーザーが使用しています。 このパターンとパターン 2 を組み合わせて、サービスとコネクタ間のトラフィックを最適化することもできます。
 
-### <a name="pattern-2-take-advantage-of-expressroute-with-public-peering"></a>パターン 2: パブリック ピアリングを使用した ExpressRoute の活用
+### <a name="pattern-2-take-advantage-of-expressroute-with-microsoft-peering"></a>パターン 2:Microsoft ピアリングを使用した ExpressRoute の利用
 
-パブリック ピアリングを使用して ExpressRoute を設定済みの場合、アプリケーション プロキシとコネクタ間のトラフィック用により高速な ExpressRoute 接続を利用できます。 この場合でも、コネクタはネットワーク上のアプリケーションに近い場所に配置します。
+Microsoft ピアリングを使用して ExpressRoute が設定されている場合、アプリケーション プロキシとコネクタ間のトラフィック用により高速な ExpressRoute 接続を利用できます。 この場合でも、コネクタはネットワーク上のアプリケーションに近い場所に配置します。
 
-### <a name="pattern-3-take-advantage-of-expressroute-with-private-peering"></a>パターン 3: プライベート ピアリングを使用した ExpressRoute の活用
+### <a name="pattern-3-take-advantage-of-expressroute-with-private-peering"></a>パターン 3:プライベート ピアリングを使用した ExpressRoute の利用
 
 Azure と企業ネットワークとの間に、プライベート ピアリングを使用して専用の VPN または ExpressRoute を設定済みの場合、別の選択肢があります。 この構成では、通常、Azure の仮想ネットワークは企業ネットワークの拡張機能と見なされます。 そのため、Azure データセンターにコネクタをインストールする一方で、コネクタからアプリへの接続について厳しい待ち時間の要件を満たすことができます。
 
@@ -111,13 +112,13 @@ Azure と企業ネットワークとの間に、プライベート ピアリン�
 
 以下のシナリオでは、説明をわかりやすくするため、各接続に番号を付けて "ホップ" と呼びます。
 
-- **ホップ 1**: ユーザーからアプリケーション プロキシ サービスへ
-- **ホップ 2**: アプリケーション プロキシ サービスからアプリケーション プロキシ コネクタへ
-- **ホップ 3**: アプリケーション プロキシ コネクタからターゲット アプリケーションへ 
+- **ホップ 1**:ユーザーからアプリケーション プロキシ サービスへ
+- **ホップ 2**:アプリケーション プロキシ サービスからアプリケーション プロキシ コネクタへ
+- **ホップ 3**:アプリケーション プロキシ コネクタからターゲット アプリケーションへ 
 
 ### <a name="use-case-1"></a>ユース ケース 1
 
-**シナリオ:** アプリは米国内の組織のネットワークにあり、ユーザーは同じリージョン内に存在している。 Azure データセンターと企業ネットワークの間に ExpressRoute または VPN は存在しません。
+**シナリオ:** アプリは米国内の組織のネットワークにあり、ユーザーは同じリージョン内に存在します。 Azure データセンターと企業ネットワークの間に ExpressRoute または VPN は存在しません。
 
 **推奨事項:** 前のセクションで説明したパターン 1 に従います。 待ち時間を改善するには、必要に応じて ExpressRoute の使用を検討してください。
 
@@ -127,7 +128,7 @@ Azure と企業ネットワークとの間に、プライベート ピアリン�
 
 ### <a name="use-case-2"></a>ユース ケース 2
 
-**シナリオ:** アプリは米国内の組織のネットワークにあり、ユーザーは世界中に分散している。 Azure データセンターと企業ネットワークの間に ExpressRoute または VPN は存在しません。
+**シナリオ:** アプリは米国内の組織のネットワークにあり、ユーザーはグローバルに分散しています。 Azure データセンターと企業ネットワークの間に ExpressRoute または VPN は存在しません。
 
 **推奨事項:** 前のセクションで説明したパターン 1 に従います。 
 
@@ -137,21 +138,21 @@ Azure と企業ネットワークとの間に、プライベート ピアリン�
 
 ### <a name="use-case-3"></a>ユース ケース 3
 
-**シナリオ:** アプリは米国内の組織のネットワークにある。 パブリック ピアリングを使用した ExpressRoute が、Azure と企業ネットワークの間に存在します。
+**シナリオ:** アプリは米国内の組織のネットワークにあります。 Microsoft ピアリングを使用した ExpressRoute が、Azure と企業ネットワークの間に存在します。
 
-**推奨事項:**: 前のセクションで説明したパターン 1 とパターン 2 に従います。
+**推奨事項:** 前のセクションで説明したパターン 1 とパターン 2 に従います。
 
 最初に、コネクタを可能な限りアプリケーションの近くに配置します。 これで、ホップ 2 には ExpressRoute が自動的に使用されます。 
 
-ExpressRoute リンクでパブリック ピアリングを使用している場合、プロキシとコネクタの間のトラフィックはそのリンク経由で送信されます。 ホップ 2 の待ち時間が最適化されます。
+ExpressRoute リンクで Microsoft ピアリングを使用している場合、プロキシとコネクタの間のトラフィックはそのリンク経由で送信されます。 ホップ 2 の待ち時間が最適化されます。
 
 ![プロキシとコネクタ間の ExpressRoute を示す図](./media/application-proxy-network-topology/application-proxy-pattern3.png)
 
 ### <a name="use-case-4"></a>ユース ケース 4
 
-**シナリオ:** アプリは米国内の組織のネットワークにある。 プライベート ピアリングを使用した ExpressRoute が、Azure と企業ネットワークの間に存在します。
+**シナリオ:** アプリは米国内の組織のネットワークにあります。 プライベート ピアリングを使用した ExpressRoute が、Azure と企業ネットワークの間に存在します。
 
-**推奨事項:**: 前のセクションで説明したパターン 3 に従います。
+**推奨事項:** 前のセクションで説明したパターン 3 に従います。
 
 ExpressRoute プライベート ピアリング経由で企業ネットワークに接続されている Azure データセンターにコネクタを配置します。 
 
@@ -173,7 +174,7 @@ ExpressRoute プライベート ピアリング経由で企業ネットワーク
 
 ## <a name="next-steps"></a>次の手順
 
-- [アプリケーション プロキシを有効にする](application-proxy-enable.md)
+- [アプリケーション プロキシを有効にする](application-proxy-add-on-premises-application.md)
 - [シングル サインオンを有効にする](application-proxy-configure-single-sign-on-with-kcd.md)
 - [条件付きアクセスを有効にする](application-proxy-integrate-with-sharepoint-server.md)
 - [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](application-proxy-troubleshoot.md)

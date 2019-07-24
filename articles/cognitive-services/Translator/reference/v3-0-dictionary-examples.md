@@ -3,23 +3,23 @@ title: Translator Text API の Dictionary Examples メソッド
 titlesuffix: Azure Cognitive Services
 description: Translator Text API の Dictionary Examples メソッドを使用します。
 services: cognitive-services
-author: Jann-Skotdal
-manager: cgronlun
+author: v-pawal
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 1e6bd1b7ddb38d0fad33ab9d282f8edc4ff8c765
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d48349b802023d9a05bf14898440837b7793715d
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129133"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578272"
 ---
-# <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3.0: Dictionary Examples
+# <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3.0: 辞書の例
 
-辞書内の用語がコンテキストで使用される方法を示す例を提供します。 この操作は、[辞書検索](.\v3-0-dictionary-lookup.md)と一緒に使用されます。
+辞書内の用語がコンテキストで使用される方法を示す例を提供します。 この操作は、[辞書検索](./v3-0-dictionary-lookup.md)と一緒に使用されます。
 
 ## <a name="request-url"></a>要求 URL
 
@@ -42,11 +42,11 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
   </tr>
   <tr>
     <td>from</td>
-    <td>"*必須のパラメーター*"。<br/>入力テキストの言語を指定します。 ソース言語は、`dictionary` スコープに含まれている[サポートされている言語](.\v3-0-languages.md)のいずれかとする必要があります。</td>
+    <td>"*必須のパラメーター*"。<br/>入力テキストの言語を指定します。 ソース言語は、`dictionary` スコープに含まれている[サポートされている言語](./v3-0-languages.md)のいずれかとする必要があります。</td>
   </tr>
   <tr>
     <td>to</td>
-    <td>"*必須のパラメーター*"。<br/>出力テキストの言語を指定します。 ターゲット言語は、`dictionary` スコープに含まれている[サポートされている言語](.\v3-0-languages.md)のいずれかとする必要があります。</td>
+    <td>"*必須のパラメーター*"。<br/>出力テキストの言語を指定します。 ターゲット言語は、`dictionary` スコープに含まれている[サポートされている言語](./v3-0-languages.md)のいずれかとする必要があります。</td>
   </tr>
 </table>
 
@@ -56,8 +56,8 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
   <th width="20%">headers</th>
   <th>説明</th>
   <tr>
-    <td>_1 つの承認_<br/>_ヘッダー_></td>
-    <td>"*必須の要求ヘッダー*" です。<br/>[認証に使用できるオプション](./v3-0-reference.md#authentication)に関するページをご覧ください。</td>
+    <td>認証ヘッダー</td>
+    <td>"<em>必須の要求ヘッダー</em>" です。<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
@@ -77,9 +77,9 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 要求の本文は JSON 配列です。 各配列要素は、次のプロパティを持つ JSON オブジェクトです。
 
-  * `Text`: 検索する用語を指定する文字列。 これは、前の`normalizedText`辞書検索[要求の逆翻訳からの ](.\v3-0-dictionary-lookup.md) フィールドの値とする必要があります。 これは、`normalizedSource` フィールドの値にもなります。
+  * `Text`:検索する用語を指定する文字列。 これは、前の`normalizedText`辞書検索[要求の逆翻訳からの ](./v3-0-dictionary-lookup.md) フィールドの値とする必要があります。 これは、`normalizedSource` フィールドの値にもなります。
 
-  * `Translation`: [辞書検索](.\v3-0-dictionary-lookup.md)操作によって既に返されている翻訳済みテキストを指定する文字列。 これは、[辞書検索](.\v3-0-dictionary-lookup.md)応答の `translations` リストにある `normalizedTarget` フィールドの値とする必要があります。 サービスからは、ソースとターゲットの特定の単語ペアの例が返されます。
+  * `Translation`:[辞書検索](./v3-0-dictionary-lookup.md)操作によって既に返されている翻訳済みテキストを指定する文字列。 これは、[辞書検索](./v3-0-dictionary-lookup.md)応答の `translations` リストにある `normalizedTarget` フィールドの値とする必要があります。 サービスからは、ソースとターゲットの特定の単語ペアの例が返されます。
 
 例を示します。
 
@@ -98,23 +98,23 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 正常な応答は、入力配列内の文字列ごとに 1 つの結果が含まれる JSON 配列となります。 結果オブジェクトには次のプロパティが含まれています。
 
-  * `normalizedSource`: ソース用語の正規化された形式を与える文字列。 通常、これは、要求本文内の一致するリスト インデックスの `Text` フィールドの値と同一である必要があります。
+  * `normalizedSource`:ソース用語の正規化された形式を与える文字列。 通常、これは、要求本文内の一致するリスト インデックスの `Text` フィールドの値と同一である必要があります。
     
-  * `normalizedTarget`: ターゲット用語の正規化形式を与える文字列。 通常、これは、要求本文内の一致するリスト インデックスの `Translation` フィールドの値と同一である必要があります。
+  * `normalizedTarget`:ターゲット用語の正規化形式を与える文字列。 通常、これは、要求本文内の一致するリスト インデックスの `Translation` フィールドの値と同一である必要があります。
   
-  * `examples`: (ソース用語、ターゲット用語) ペアの例のリスト。 リストの各要素は、次のプロパティを持つオブジェクトです。
+  * `examples`:(ソース用語、ターゲット用語) ペアの例のリスト。 リストの各要素は、次のプロパティを持つオブジェクトです。
 
-    * `sourcePrefix`: 完全な例を形成するために `sourceTerm` の値の _前_ に連結する文字列。 空白文字は、必要なときは既にそこに存在するので追加しないでください。 この値は空の文字列でもかまいません。
+    * `sourcePrefix`:完全な例を形成するために `sourceTerm` の値の "_前_" に連結する文字列。 空白文字は、必要なときは既にそこに存在するので追加しないでください。 この値は空の文字列でもかまいません。
 
-    * `sourceTerm`: 実際の用語検索に等しい文字列。 完全な例を形成するために、この文字列は `sourcePrefix` および `sourceSuffix` を伴って追加されます。 その値は区別されており、ユーザー インターフェイス内で、太字にするなど、マークすることができます。
+    * `sourceTerm`:実際の用語検索に等しい文字列。 完全な例を形成するために、この文字列は `sourcePrefix` および `sourceSuffix` を伴って追加されます。 その値は区別されており、ユーザー インターフェイス内で、太字にするなど、マークすることができます。
 
-    * `sourceSuffix`: 完全な例を形成するために `sourceTerm` の値の _後_ に連結する文字列。 空白文字は、必要なときは既にそこに存在するので追加しないでください。 この値は空の文字列でもかまいません。
+    * `sourceSuffix`:完全な例を形成するために `sourceTerm` の値の "_後_" に連結する文字列。 空白文字は、必要なときは既にそこに存在するので追加しないでください。 この値は空の文字列でもかまいません。
 
-    * `targetPrefix`: ターゲットを除けば、`sourcePrefix` に類似する文字列です。
+    * `targetPrefix`:ターゲットを除けば、`sourcePrefix` に類似する文字列です。
 
-    * `targetTerm`: ターゲットを除けば、`sourceTerm` に類似する文字列です。
+    * `targetTerm`:ターゲットを除けば、`sourceTerm` に類似する文字列です。
 
-    * `targetSuffix`: ターゲットを除けば、`sourceSuffix` に類似する文字列です。
+    * `targetSuffix`:ターゲットを除けば、`sourceSuffix` に類似する文字列です。
 
     > [!NOTE]
     > 辞書に例が存在しない場合、応答は 200 (OK) になりますが、`examples` リストは空のリストとなります。

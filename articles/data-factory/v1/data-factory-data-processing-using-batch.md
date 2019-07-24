@@ -9,17 +9,16 @@ ms.assetid: 688b964b-51d0-4faa-91a7-26c7e3150868
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b8a9973738ac28a686488a816da0f7da5fe2ac3e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f78275af5faaf19a4993a5ae4414b0163f9a4d9d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238524"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124152"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
 > [!NOTE]
@@ -27,9 +26,12 @@ ms.locfileid: "51238524"
 
 この記事では、大規模なデータセットの移動と処理をスケジュールに沿って自動的に行う、サンプル ソリューションのアーキテクチャについて説明します。 また、Data Factory と Azure Batch を使用してソリューションを実装する、エンドツーエンドのチュートリアルも提供します。
 
-この記事には、サンプル ソリューション全体のチュートリアルが含まれるため、通常の記事よりも長くなっています。 Batch と Data Factory のご使用が初めての方は、Batch と Data Factory のサービスについて知り、これらがどのように連携するかを学ぶことができます。 サービスについてある程度知識があり、ソリューションを設計、構築している場合は、この記事の[アーキテクチャのセクション](#architecture-of-sample-solution)に重点を置くこともできます。 プロトタイプまたはソリューションを開発してする場合は、[チュートリアル](#implementation-of-sample-solution)の詳細な手順を試すこともお勧めです。 内容に関するご意見や、ご利用法についてお聞かせください。
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+この記事には、サンプル ソリューション全体のチュートリアルが含まれるため、通常の記事よりも長くなっています。 Batch と Data Factory のご使用が初めての方は、Batch と Data Factory のサービスについて知り、これらがどのように連携するかを学ぶことができます。 サービスについてある程度知識があり、ソリューションを設計、構築している場合は、この記事のアーキテクチャのセクションに重点を置くこともできます。 プロトタイプまたはソリューションを開発している場合は、チュートリアルの詳細な手順を試すこともお勧めです。 内容に関するご意見や、ご利用法についてお聞かせください。
 
 最初に、クラウドの大規模なデータセットの処理に、Data Factory と Batch のサービスがどのように役立つかについて説明します。     
+
 
 ## <a name="why-azure-batch"></a>Azure Batch を選ぶ理由
  Batch を使用して、大規模な並列コンピューティングやハイパフォーマンス コンピューティング (HPC) のアプリケーションをクラウドで効率的に実行することができます。 Batch は、仮想マシン (VM) の管理されたコレクションを実行するため、大量の計算を必要とする作業をスケジュールするためのプラットフォーム サービスです。 ジョブのニーズに合わせてコンピューティング リソースを自動的にスケーリングできます。
@@ -41,7 +43,7 @@ Batch サービスでは、複数のアプリケーションを並列で大規�
 * [Batch の基本](../../batch/batch-technical-overview.md)
 * [Batch 機能の概要](../../batch/batch-api-basics.md)
 
-また、Batch の詳細については、[Batch のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/batch/)に関するページを参照してください。
+必要な場合は、「[Batch のドキュメント](https://docs.microsoft.com/azure/batch/)」で Batch の詳細を確認してください。
 
 ## <a name="why-azure-data-factory"></a>Azure Data Factory を選ぶ理由
 Data Factory は、データの移動や変換を調整し自動化するクラウドベースのデータ統合サービスです。 Data Factory を使用すると、オンプレミスおよびクラウドのデータ ストアから中央のデータ ストアにデータを移動する、マネージド データ パイプラインを作成できます。 たとえば、Azure BLOB ストレージなどです。 Data Factory を使用すると、Azure HDInsight や Azure Machine Learning などのサービスを利用してデータを処理または変換することができます。 スケジュールされた方法 (たとえば、時間単位、日単位、週単位) でデータ パイプラインを実行するようにスケジュールを設定することもできます。 パイプラインを一目で監視および管理して、問題を特定し、行動を取ることができます。
@@ -51,7 +53,7 @@ Data Factory は、データの移動や変換を調整し自動化するクラ�
 * [Data Factory の概要](data-factory-introduction.md)
 * [最初のデータ パイプラインの作成](data-factory-build-your-first-pipeline.md)   
 
-必要に応じて、Data Factory の詳細について「[Azure Data Factory のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/data-factory/)」を参照してください。
+必要な場合は、「[the Data Factory documentation](https://docs.microsoft.com/rest/api/datafactory/v1/data-factory-data-factory)」 (Data Factory のドキュメント) で Data Factory の詳細を確認してください。
 
 ## <a name="data-factory-and-batch-together"></a>Data Factory と Batch の連携
 Data Factory には組み込みのアクティビティが含まれています。 たとえば、コピー アクティビティは、コピー元データ ストアからコピー先データ ストアにデータをコピーまたは移動するために使用されます。 Hive アクティビティは、Azure で Hadoop クラスター (HDInsight) を使用してデータを処理するために使用されます。 サポートされている変換アクティビティの一覧については、[データの変換アクティビティ](data-factory-data-transformation-activities.md)に関する記事を参照してください。
@@ -84,7 +86,7 @@ Data Factory には組み込みのアクティビティが含まれています�
 ## <a name="implementation-of-the-sample-solution"></a>サンプル ソリューションの実装
 サンプル ソリューションは意図的に単純にしています。 Data Factory と Batch を併用してデータセットを処理する方法を示すために設計されています。 このソリューションでは、時系列で編成された入力ファイル内の検索語句 "Microsoft" の出現回数をカウントします。 出力ファイルにその数を出力します。
 
-**時間:** Azure、Data Factory、および Batch の基礎を理解し、次の前提条件をすべて満たしている場合、このソリューションの完成までにかかる時間は 1～2 時間です。
+**時間:** Azure、Data Factory、および Batch の基礎を理解し、次の前提条件をすべて満たしている場合、このソリューションの完成までにかかる時間は 1 ～ 2 時間です。
 
 ### <a name="prerequisites"></a>前提条件
 #### <a name="azure-subscription"></a>Azure サブスクリプション
@@ -94,7 +96,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 このチュートリアルでは、ストレージ アカウントを使用してデータを保存します。 ストレージ アカウントがない場合は、[ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)に関するページを参照してください。 サンプル ソリューションでは、Blob Storage を使用します。
 
 #### <a name="azure-batch-account"></a>Azure Batch アカウント
-[Azure Portal](http://portal.azure.com/) を使用して Batch アカウントを作成します。 詳細については、[Batch アカウントの作成と管理](../../batch/batch-account-create-portal.md)に関するページを参照してください。 Batch のアカウント名とアカウント キーをメモしておきます。 また、[New-AzureRmBatchAccount](https://docs.microsoft.com/powershell/module/azurerm.batch/new-azurermbatchaccount) コマンドレットを使用して Batch アカウントを作成することもできます。 このコマンドレットの使用手順については、[Batch PowerShell コマンドレットの概要](../../batch/batch-powershell-cmdlets-get-started.md)に関するページを参照してください。
+[Azure Portal](https://portal.azure.com/) を使用して Batch アカウントを作成します。 詳細については、[Batch アカウントの作成と管理](../../batch/batch-account-create-portal.md)に関するページを参照してください。 Batch のアカウント名とアカウント キーをメモしておきます。 また、[New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) コマンドレットを使用して Batch アカウントを作成することもできます。 このコマンドレットの使用手順については、[Batch PowerShell コマンドレットの概要](../../batch/batch-powershell-cmdlets-get-started.md)に関するページを参照してください。
 
 サンプル ソリューションでは、(データ ファクトリ パイプラインを通じて間接的に) Batch を使用して、VM の管理コレクションであるコンピューティング ノードのプールで、同じ方法でデータを処理します。
 
@@ -175,7 +177,7 @@ public IDictionary<string, string> Execute(
   * **logger**。 logger を使用すると、パイプラインの "User" ログとして表示されるデバッグ コメントを作成できます。
 * メソッドから、今後、カスタム アクティビティの連結に使用できるディクショナリが返されます。 この機能はまだ実装されていないため、メソッドからは空のディクショナリが返されるだけです。
 
-#### <a name="procedure-create-the-custom-activity"></a>手順: カスタム アクティビティの作成
+#### <a name="procedure-create-the-custom-activity"></a>手順:カスタム アクティビティの作成
 1. Visual Studio で .NET クラス ライブラリ プロジェクトを作成します。
 
    a. Visual Studio 2012/2013/2015 を起動します。
@@ -186,7 +188,7 @@ public IDictionary<string, string> Execute(
 
    d. 右側にあるプロジェクトの種類の一覧から **[クラス ライブラリ]** を選択します。
 
-   e. **MyDotNetActivity** for the **MyDotNetActivity**に関する記事を参照してください。
+   e. **[プロジェクト名]** に「**MyDotNetActivity**」と入力します。
 
    f. **[場所]** で [**C:\\ADF**] を選択します。 **ADF** フォルダーが存在しない場合は作成します。
 
@@ -202,7 +204,7 @@ public IDictionary<string, string> Execute(
 1. **Azure Storage** NuGet パッケージをプロジェクトにインポートします。 このパッケージは、このサンプルで Blob Storage API を使用するために必要です。
 
     ```powershell
-    Install-Package Azure.Storage
+    Install-Package Az.Storage
     ```
 1. 次の using ディレクティブをプロジェクト内のソース ファイルに追加します。
 
@@ -523,7 +525,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 次のチュートリアルでは、追加情報を示します。
 
-#### <a name="step-1-create-the-data-factory"></a>手順 1: Data Factory を作成する
+#### <a name="step-1-create-the-data-factory"></a>手順 1:Data Factory の作成
 1. [Azure Portal](https://portal.azure.com/) にサインインしてから、次の手順を実行します。
 
    a. 左側のメニューの **[新規]** を選択します。
@@ -546,7 +548,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    ![[データ ファクトリ] ページ](./media/data-factory-data-processing-using-batch/image6.png)
 
-#### <a name="step-2-create-linked-services"></a>手順 2. リンク サービスを作成する
+#### <a name="step-2-create-linked-services"></a>手順 2:リンクされたサービスを作成します
 リンクされたサービスは、データ ストアまたはコンピューティング サービスをデータ ファクトリにリンクします。 この手順では、ストレージ アカウントと Batch アカウントをデータ ファクトリにリンクします。
 
 #### <a name="create-an-azure-storage-linked-service"></a>Azure Storage のリンクされたサービスを作成する
@@ -595,7 +597,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. コマンド バーの **[デプロイ]** を選択して、リンクされたサービスをデプロイします。
 
-#### <a name="step-3-create-datasets"></a>手順 3: データセットを作成する
+#### <a name="step-3-create-datasets"></a>手順 3:データセットを作成する
 この手順では、入力データと出力データを表すデータセットを作成します。
 
 #### <a name="create-the-input-dataset"></a>入力データセットを作成する
@@ -734,7 +736,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. ツール バーの **[デプロイ]** をクリックし、**OutputDataset** を作成してデプロイします。
 
-#### <a name="step-4-create-and-run-the-pipeline-with-a-custom-activity"></a>手順 4: カスタム アクティビティを使用して、パイプラインを作成して実行する
+#### <a name="step-4-create-and-run-the-pipeline-with-a-custom-activity"></a>手順 4:カスタム アクティビティを使用して、パイプラインを作成して実行する
 この手順では、以前に作成したカスタム アクティビティである、1 つのアクティビティでパイプラインを作成します。
 
 > [!IMPORTANT]
@@ -800,12 +802,12 @@ test custom activity Microsoft test custom activity Microsoft
    * カスタム アクティビティの **linkedServiceName** プロパティは、**AzureBatchLinkedService** を示します。これによって、Batch でカスタム アクティビティが実行する必要がある Data Factory がわかります。
    * **concurrency** の設定は重要です。 既定値を使用する場合は、Batch プールにコンピューティング ノードが複数ある場合でも、スライスは 1 つずつ処理されます。 そのため、Batch の並行処理機能を利用することはありません。 **concurrency** をより大きな値に設定した場合、2 とすると、つまり 2 つのスライス (Batch 内の 2 つのタスクに対応する) が、同時に処理できます。 この場合、Batch プール内の VM が両方利用されます。 concurrency プロパティを適切に設定します。
    * 既定では、1 つのみのタスク (スライス) が、VM 上で任意のポイントで実行されます。 Batch プールの既定では、**[VM ごとの最大タスク]** は 1 に設定されています。 前提条件の一環で、このプロパティを 2 に設定してプールを作成しました。 そのため、VM 上で 2 つのデータ ファクトリ スライスを同時に実行できます。
-    - **isPaused** プロパティは、既定で false に設定されています。 この例では、スライスが過去に開始されているので、パイプラインは即時に実行されます。 このプロパティを **true** に設定すると、パイプラインを一時停止できます。また **false** に設定し直すと再開されます。
-    -   **start** 時刻と **end** 時刻は 5 時間離れています。 スライスは毎時生成されるため、パイプラインによって 5 つのスライスが生成されます。
+     - **isPaused** プロパティは、既定で false に設定されています。 この例では、スライスが過去に開始されているので、パイプラインは即時に実行されます。 このプロパティを **true** に設定すると、パイプラインを一時停止できます。また **false** に設定し直すと再開されます。
+     -   **start** 時刻と **end** 時刻は 5 時間離れています。 スライスは毎時生成されるため、パイプラインによって 5 つのスライスが生成されます。
 
 1. コマンド バーの **[デプロイ]** を選択して、パイプラインをデプロイします。
 
-#### <a name="step-5-test-the-pipeline"></a>手順 5: パイプラインをテストする
+#### <a name="step-5-test-the-pipeline"></a>手順 5:パイプラインをテストする
 この手順では、ファイルを入力フォルダーにドロップして、パイプラインをテストします。 まず、入力フォルダーごとに 1 つのファイルを使用してパイプラインをテストします。
 
 1. Azure Portal の **[データ ファクトリ]** ブレードで、**[ダイアグラム]** を選択します。
@@ -930,11 +932,11 @@ Data Factory サービスによって、Batch に `adf-poolname:job-xxx` とい�
 #### <a name="extend-the-sample"></a>サンプルの拡張
 Data Factory および Batch の機能の詳細については、このサンプルを拡張することができます。 たとえば、異なる時間範囲でスライスを処理するには、次の手順を実行します。
 
-1. `inputfolder` にサブフォルダー 2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08、および 2015-11-16-09 を追加します。 これらのフォルダーに入力ファイルを配置します。 パイプラインの終了時刻を `2015-11-16T05:00:00Z` から `2015-11-16T10:00:00Z` に変更します。 **[ダイアグラム]** ビューで、**[InputDataset]** をダブルクリックして、入力スライスが準備完了であることを確認します。 **[OutputDataset]** をダブルクリックして、出力スライスの状態を表示します。 **準備完了**の状態である場合、出力フォルダーで出力ファイルを確認します。
+1. `inputfolder` にサブフォルダー2015-11-16-05、2015-11-16-06、201-11-16-07、2011-11-16-08、および 2015-11-16-09 を追加します。 これらのフォルダーに入力ファイルを配置します。 パイプラインの終了時刻を `2015-11-16T05:00:00Z` から `2015-11-16T10:00:00Z` に変更します。 **[ダイアグラム]** ビューで、**[InputDataset]** をダブルクリックして、入力スライスが準備完了であることを確認します。 **[OutputDataset]** をダブルクリックして、出力スライスの状態を表示します。 **準備完了**の状態である場合、出力フォルダーで出力ファイルを確認します。
 
-1. 特に Batch 上で発生する処理のように、どのようにソリューションのパフォーマンスに影響するかを理解するには、**concurrency** の設定を増加または減少させます。 **concurrency** 設定の詳細については、「手順 4: カスタム アクティビティを使用して、パイプラインを作成して実行する」を参照してください。
+1. 特に Batch 上で発生する処理のように、どのようにソリューションのパフォーマンスに影響するかを理解するには、**concurrency** の設定を増加または減少させます。 **concurrency** 設定の詳細については、「手順 4:カスタム アクティビティを使用して、パイプラインを作成して実行する」を参照してください。
 
-1. **[VM ごとの最大タスク]** を高くまたは低くして、プールを作成します。 新しく作成したプールを使用するには、データ ファクトリ ソリューションで、Batch のリンクされたサービスを更新します。 **[VM ごとの最大タスク]** 設定の詳細については、「手順 4: カスタム アクティビティを使用して、パイプラインを作成して実行する」を参照してください。
+1. **[VM ごとの最大タスク]** を高くまたは低くして、プールを作成します。 新しく作成したプールを使用するには、データ ファクトリ ソリューションで、Batch のリンクされたサービスを更新します。 **[VM ごとの最大タスク]** 設定の詳細については、「手順 4:カスタム アクティビティを使用して、パイプラインを作成して実行する」を参照してください。
 
 1. **[自動スケール]** 機能で、Batch プールを作成します。 Batch プール内のコンピューティング ノードの自動スケールは、アプリケーションによって使用される処理能力を動的に調整します。 
 
@@ -956,13 +958,13 @@ Data Factory および Batch の機能の詳細については、このサンプ
 
 1. サンプル ソリューションで、**Execute** メソッドは、出力データ スライスを生成するために入力データ スライスを処理する、**Calculate** メソッドを呼び出します。 入力データを処理し、**Execute** メソッドで呼び出される **Calculate** メソッドを、メソッドの呼び出しに置換する独自のメソッドを記述することができます。
 
-### <a name="next-steps-consume-the-data"></a>次の手順: データの処理
+### <a name="next-steps-consume-the-data"></a>次のステップ:データの処理
 データを処理した後、Power BI などのオンライン ツールで使用することができます。 Power BI や Azure で使用する方法を理解するために役立つリンクを次に示します。
 
 * [Power BI でのデータセットの参照](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
 * [Power BI Desktop の概要](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
 * [Power BI でのデータの更新](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
-* [Azure と Power BI - 基本的な概要](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
+* [Azure と Power BI:基本的な概要](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
 ## <a name="references"></a>参照
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
@@ -978,4 +980,4 @@ Data Factory および Batch の機能の詳細については、このサンプ
   * [.NET 向け Batch クライアント ライブラリの概要](../../batch/quick-run-dotnet.md)
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
-[batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
+[batch-explorer-walkthrough]: https://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx

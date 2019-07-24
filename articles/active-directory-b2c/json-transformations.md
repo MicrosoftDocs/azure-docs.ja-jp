@@ -3,19 +3,19 @@ title: Azure Active Directory B2C の Identity Experience Framework スキーマ
 description: Azure Active Directory B2C の Identity Experience Framework スキーマの JSON 要求変換の例
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: d712286cb4ea5e67474ec11d56d99eaf2cabec3e
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.subservice: B2C
+ms.openlocfilehash: 88d447f86dd54fc9479a6d7d2006b9a8639ad09e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433074"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089235"
 ---
 # <a name="json-claims-transformations"></a>JSON 要求変換
 
@@ -29,9 +29,9 @@ JSON データから、指定された要素を取得します。
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJson | string | 項目を取得する要求変換で使用される ClaimTypes。 |
-| InputParameter | claimToExtract | string | 抽出する JSON 要素の名前。 |
-| OutputClaim | extractedClaim | string | このclaims transformation が呼び出された後に生成される ClaimType は、 _claimToExtract_ 入力パラメーターに指定された要素の値です。 |
+| InputClaim | inputJson | 文字列 | 項目を取得する要求変換で使用される ClaimTypes。 |
+| InputParameter | claimToExtract | 文字列 | 抽出する JSON 要素の名前。 |
+| OutputClaim | extractedClaim | 文字列 | このclaims transformation が呼び出された後に生成される ClaimType は、 _claimToExtract_ 入力パラメーターに指定された要素の値です。 |
 
 次の例では、JSON データから要求変換によって`emailAddress`要素が抽出されます。`{"emailAddress": "someone@example.com", "displayName": "Someone"}`
 
@@ -51,12 +51,12 @@ JSON データから、指定された要素を取得します。
 
 ### <a name="example"></a>例
 
-- 入力要求：
-    - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Someone"}
-- 入力パラメーター：
+- 入力要求:
+  - **inputJson**: {"emailAddress": "someone@example.com", "displayName":"Someone"}
+- 入力パラメーター:
     - **claimToExtract**: emailAddress
 - 出力要求： 
-    - **extractedClaim**: someone@example.com
+  - **extractedClaim**: someone@example.com
 
 
 ## <a name="getclaimsfromjsonarray"></a>GetClaimsFromJsonArray
@@ -65,11 +65,11 @@ Json データから、指定された要素の一覧を取得します。
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | jsonSourceClaim | string | 項目を取得する要求変換で使用される ClaimTypes。 |
+| InputClaim | jsonSourceClaim | 文字列 | 項目を取得する要求変換で使用される ClaimTypes。 |
 | InputParameter | errorOnMissingClaims | ブール値 | 要求の 1 つが不足している場合は、エラーをスローするかどうかを指定します。 |
-| InputParameter | includeEmptyClaims | string | 空の要求を含めるかどうかを指定します。 |
-| InputParameter | jsonSourceKeyName | string | 要素のキー名 |
-| InputParameter | jsonSourceValueName | string | 要素の値の名前 |
+| InputParameter | includeEmptyClaims | 文字列 | 空の要求を含めるかどうかを指定します。 |
+| InputParameter | jsonSourceKeyName | 文字列 | 要素のキー名 |
+| InputParameter | jsonSourceValueName | 文字列 | 要素の値の名前 |
 | OutputClaim | コレクション | 文字列、int、ブール値、および datetime |抽出する要求のリスト。 要求の名前は、_jsonSourceClaim_ に指定されている入力要求の名前と同じでなければなりません。 |
 
 次の例では、要求変換によって、次の要求が JSON データから抽出されます。 email (文字列)、displayName (文字列)、membershipNum (int)、アクティブ (ブール値) 、および birthdate (datetime)。
@@ -100,18 +100,18 @@ Json データから、指定された要素の一覧を取得します。
 ```    
 
 - 入力要求：
-    - **jsonSourceClaim**: [{「キー」:"email"、"value":"someone@example.com"}、{「キー」:"displayName"、"value":"Someone"}、{「キー」:"membershipNum"、"value": 6353399}、{「キー」:"active"、"value": true}、{「キー」:"birthdate"、"value":"1980-09-23T00:00:00Z"}]
+  - **jsonSourceClaim**: [{「キー」:"email"、"value":"someone@example.com"}、{「キー」:"displayName"、"value":"Someone"}、{「キー」:"membershipNum"、"value": 6353399}、{「キー」:"active"、"value": true}、{「キー」:"birthdate"、"value":"1980-09-23T00:00:00Z"}]
 - 入力パラメーター：
     - **errorOnMissingClaims**：false
     - **includeEmptyClaims**：false
     - **jsonSourceKeyName**：キー
     - **jsonSourceValueName**: value
 - 出力要求：
-    - **email**: "someone@example.com"
-    - **displayName**: "Someone"
-    - **membershipNum**: 6353399
-    - **アクティブ**: true
-    - **birthdate**: 1980-09-23T00:00:00Z
+  - **email**: "someone@example.com"
+  - **displayName**:"Someone"
+  - **membershipNum**:6353399
+  - **アクティブ**: true
+  - **birthdate**:1980-09-23T00:00:00Z
 
 ## <a name="getnumericclaimfromjson"></a>GetNumericClaimFromJson
 
@@ -119,8 +119,8 @@ JSON データから、指定した数値の (長) 要素を取得します。
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJson | string | 項目を取得する要求変換で使用される ClaimTypes。 |
-| InputParameter | claimToExtract | string | 抽出する JSON 要素の名前。 |
+| InputClaim | inputJson | 文字列 | 項目を取得する要求変換で使用される ClaimTypes。 |
+| InputParameter | claimToExtract | 文字列 | 抽出する JSON 要素の名前。 |
 | OutputClaim | extractedClaim | long | この ClaimsTransformation が呼び出された後に生成される ClaimType　は、 _claimToExtract_ 入力パラメーターに指定された要素の値であります。 |
 
 次の例では、JSON データから要求変換によって`id`要素が抽出されます。
@@ -149,12 +149,12 @@ JSON データから、指定した数値の (長) 要素を取得します。
 
 ### <a name="example"></a>例
 
-- 入力要求：
-    - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Someone", "id" : 6353399}
+- 入力要求:
+  - **inputJson**: {"emailAddress": "someone@example.com", "displayName":"Someone", "id" :6353399}
 - 入力パラメーター
     - **claimToExtract**:  id
-- 出力要求： 
-    - **extractedClaim**: 6353399
+- 出力要求: 
+    - **extractedClaim**:6353399
 
 ## <a name="getsinglevaluefromjsonarray"></a>GetSingleValueFromJsonArray
 
@@ -162,8 +162,8 @@ JSON データの配列から最初の要素を取得します。
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJsonClaim | string | JSON 配列から項目を取得する要求変換で使用される ClaimTypes。 |
-| OutputClaim | extractedClaim | string | この ClaimsTransformation が呼び出された後に生成される ClaimTypeは、 JSON 配列の最初の要素です。 |
+| InputClaim | inputJsonClaim | 文字列 | JSON 配列から項目を取得する要求変換で使用される ClaimTypes。 |
+| OutputClaim | extractedClaim | 文字列 | この ClaimsTransformation が呼び出された後に生成される ClaimTypeは、 JSON 配列の最初の要素です。 |
 
 次の例では、JSON 配列から要求変換によって最初の要素（メールアドレス）が抽出されます `["someone@example.com", "Someone", 6353399]`。
 
@@ -180,10 +180,10 @@ JSON データの配列から最初の要素を取得します。
 
 ### <a name="example"></a>例
 
-- 入力要求：
-    - **inputJsonClaim**: ["someone@example.com", "Someone", 6353399]
+- 入力要求:
+  - **inputJsonClaim**: ["someone@example.com", "Someone", 6353399]
 - 出力要求： 
-    - **extractedClaim**: someone@example.com
+  - **extractedClaim**: someone@example.com
 
 ## <a name="xmlstringtojsonstring"></a>XmlStringToJsonString
 
@@ -191,8 +191,8 @@ XML データを JSON 形式に変換します。
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | xml | string | データを XML から JSON 形式に変換する要求変換で使用される ClaimTypes。 |
-| OutputClaim | json | string | この ClaimsTransformation が呼び出された後に生成される ClaimType は、JSON 形式のデータであります。 |
+| InputClaim | xml | 文字列 | データを XML から JSON 形式に変換する要求変換で使用される ClaimTypes。 |
+| OutputClaim | json | 文字列 | この ClaimsTransformation が呼び出された後に生成される ClaimType は、JSON 形式のデータであります。 |
 
 ```XML
 <ClaimsTransformation Id="ConvertXmlToJson" TransformationMethod="XmlStringToJsonString">

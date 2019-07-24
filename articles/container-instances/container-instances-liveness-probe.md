@@ -2,18 +2,18 @@
 title: Azure Container Instances で liveness probe を構成する
 description: Azure Container Instances で liveness probe を構成して、異常なコンテナーを再起動する方法について説明します
 services: container-instances
-author: jluk
+author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: juluk
-ms.openlocfilehash: 1582f0d7ec688bc72cc9d1aa6ae0ddb0a6ad3a17
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.author: danlep
+ms.openlocfilehash: 89b76fc68c113b7931894c0cf003ffd846c646ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213073"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899725"
 ---
 # <a name="configure-liveness-probes"></a>liveness probe の構成
 

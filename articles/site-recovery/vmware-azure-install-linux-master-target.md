@@ -1,17 +1,19 @@
 ---
 title: オンプレミス サイトへのフェールバックのために Linux マスター ターゲット サーバーをインストールする | Microsoft Docs
 description: Azure Site Recovery を使用して、VMware VM の Azure へのディザスター リカバリー中に、オンプレミス サイトへのフェールバック用に Linux マスター ターゲット サーバーを設定する方法について説明します。
-author: nsoneji
+author: mayurigupta13
+services: site-recovery
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/11/2018
-ms.author: nisoneji
-ms.openlocfilehash: 415b50b94052e7d428ddfa55d5288c8954a3ff1a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 03/06/2019
+ms.author: mayg
+ms.openlocfilehash: 98718709038d7fd753e5eb3d45c130085c5accd9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212371"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099054"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>フェールバック用の Linux マスター ターゲット サーバーをインストールする
 仮想マシンを Azure にフェールオーバー後、仮想マシンをオンプレミス サイトにフェールバックできます。 フェールバックするには、Azure からオンプレミス サイトへの仮想マシンを再保護する必要があります。 このプロセスには、トラフィックを受信するオンプレミス マスター ターゲット サーバーが必要です。 
@@ -20,6 +22,7 @@ ms.locfileid: "50212371"
 
 > [!IMPORTANT]
 > マスター ターゲット サーバー リリース 9.10.0 以降、最新のマスター ターゲット サーバーは Ubuntu 16.04 サーバーにのみインストールできます。 CentOS6.6 に新規インストールすることはできません。 ただし、9.10.0 バージョンを使って古いマスター ターゲット サーバーのアップグレードを続けることはできます。
+> LVM 上のマスター ターゲット サーバーはサポートされません。
 
 ## <a name="overview"></a>概要
 この記事では、Linux のマスター ターゲットをインストールする手順について説明します。
@@ -40,7 +43,7 @@ ms.locfileid: "50212371"
 次のサイズのガイドラインに従って、マスター ターゲットを作成します。
 - **RAM**: 6 GB 以上
 - **OS ディスク サイズ**: 100 GB 以上 (OS をインストールする場合)
-- **リテンション ドライブの追加ディスク サイズ**: 1 TB
+- **リテンション ドライブの追加ディスク サイズ**: 1 TB (テラバイト)
 - **CPU コア数**: 4 コア以上
 
 次の Ubuntu カーネルがサポートされています。
@@ -59,7 +62,7 @@ ms.locfileid: "50212371"
 
 次の手順で Ubuntu 16.04.2 64-bit オペレーティング システムをインストールします。
 
-1.   [ダウンロード リンク](https://www.ubuntu.com/download/server/thank-you?version=16.04.2&architecture=amd64)に移動し、最も近いミラーを選択して、Ubuntu 16.04.2 最小構成 64 ビット ISO をダウンロードします。
+1.   [ダウンロード リンク](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso)に移動し、最も近いミラーを選択して、Ubuntu 16.04.2 最小構成 64 ビット ISO をダウンロードします。
 Ubuntu 16.04.2 最小構成 64-bit ISO を DVD ドライブに保存し、システムを起動します。
 
 1.  優先する言語として **[English]\(英語\)** を選択し、**Enter** キーを押します。
@@ -165,15 +168,15 @@ Linux 仮想マシンの各 SCSI ハード ディスクの ID を取得するに
 
 5. **[disk.EnableUUID]** と表示される行が存在するかどうかを確認します。
 
-    - その値が存在していて **False** に設定されている場合、**True** に値を変更します (値の大文字小文字は区別されません)。
+   - その値が存在していて **False** に設定されている場合、**True** に値を変更します (値の大文字小文字は区別されません)。
 
-    - その値が存在していて **True** に設定されている場合は、**[Cancel]\(キャンセル\)** をクリックします。
+   - その値が存在していて **True** に設定されている場合は、**[Cancel]\(キャンセル\)** をクリックします。
 
-    - そのような値が存在しない場合、**[Add Row]\(行の追加\)** をクリックします。
+   - そのような値が存在しない場合、**[Add Row]\(行の追加\)** をクリックします。
 
-    - 名前列に **disk.EnableUUID** を追加し、値を **TRUE** に設定します。
+   - 名前列に **disk.EnableUUID** を追加し、値を **TRUE** に設定します。
 
-    ![[disk.EnableUUID] が存在するかどうかを確認する](./media/vmware-azure-install-linux-master-target/image25.png)
+     ![[disk.EnableUUID] が存在するかどうかを確認する](./media/vmware-azure-install-linux-master-target/image25.png)
 
 #### <a name="disable-kernel-upgrades"></a>カーネルのアップグレードを無効にする
 
@@ -182,7 +185,7 @@ Azure Site Recovery マスター ターゲット サーバーには特定バー�
 #### <a name="download-and-install-additional-packages"></a>その他のパッケージをダウンロードおよびインストールする
 
 > [!NOTE]
-> 追加パッケージをダウンロードしてインストールするには、インターネットに接続できることを確認してください。 インターネットに接続できない場合は、これらの RPM パッケージを手動で検索してインストールする必要があります。
+> 追加パッケージをダウンロードしてインストールするには、インターネットに接続できることを確認してください。 インターネットに接続できない場合は、これらの Deb パッケージを手動で検索してインストールする必要があります。
 
  `apt-get install -y multipath-tools lsscsi python-pyasn1 lvm2 kpartx`
 
@@ -284,7 +287,6 @@ Linux を使用してこれをダウンロードするには、次のように�
 2. 構成サーバーの IP アドレスをメモします。 次のコマンドを実行してマスター ターゲット サーバーをインストールし、さらに構成サーバーに登録します。
 
     ```
-    ./install -q -d /usr/local/ASR -r MT -v VmWare
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
     ```
 

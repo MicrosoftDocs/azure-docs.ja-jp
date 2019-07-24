@@ -3,7 +3,7 @@ title: Azure Cloud Shell の Bash でファイルを永続化する | Microsoft 
 description: Azure Cloud Shell の Bash でファイルを永続化する方法についてのチュートリアルです。
 services: azure
 documentationcenter: ''
-author: jluk
+author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
-ms.author: juluk
-ms.openlocfilehash: 606b36be4a2bbeff8dd226f41341d60e23f0d988
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.author: damaerte
+ms.openlocfilehash: 0aa00af543a3d21db9b8ad0ed808a8bff0b534e1
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163279"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246272"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
@@ -102,8 +102,10 @@ Cloud Shell にマウントされた Azure ファイル共有は、いつでも�
 
 [!INCLUDE [PersistingStorage-endblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
 
+注:ファイル内に関数を定義して、PowerShell コマンドレットから呼び出す必要がある場合は、ドット演算子が含まれていることが要件になります。 例: . .\MyFunctions.ps1
+
 ## <a name="next-steps"></a>次の手順
 [Cloud Shell の Bash のクイックスタート](quickstart.md) <br>
 [Cloud Shell の PowerShell のクイック スタート](quickstart-powershell.md) <br>
-[Microsoft Azure Files ストレージについて](https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) <br>
+[Microsoft Azure Files ストレージについて](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
 [ストレージのタグについて](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

@@ -1,0 +1,53 @@
+- name: FHIR 用の Azure API
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure API for FHIR について
+      href: overview.md
+    - name: FHIR Server for Azure について
+      href: overview-open-source-server.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: Azure API for FHIR をデプロイする - ポータル
+      href: fhir-paas-portal-quickstart.md
+    - name: Azure API for FHIR をデプロイする - PowerShell
+      href: fhir-paas-powershell-quickstart.md
+    - name: Azure API for FHIR をデプロイする - CLI
+      href: fhir-paas-cli-quickstart.md
+    - name: FHIR Server for Azure をデプロイする - ポータル
+      href: fhir-oss-portal-quickstart.md
+    - name: FHIR Server for Azure をデプロイする - PowerShell
+      href: fhir-oss-powershell-quickstart.md
+    - name: FHIR Server for Azure をデプロイする - CLI
+      href: fhir-oss-cli-quickstart.md
+    - name: CORS を構成する
+      href: configure-cross-origin-resource-sharing.md
+- name: チュートリアル
+  expanded: false
+  items:
+    - name: Postman を使用して FHIR API にアクセスする
+      href: access-fhir-postman-tutorial.md
+    - name: SMART on FHIR プロキシを使用する
+      href: use-smart-on-fhir-proxy.md
+- name: ハウツー ガイド
+  expanded: false
+  items:
+    - name: リソース アプリケーションを登録する
+      href: register-resource-azure-ad-client-app.md
+    - name: 機密クライアント アプリケーションを登録する
+      href: register-confidential-azure-ad-client-app.md
+    - name: パブリック クライアント アプリケーションを登録する
+      href: register-public-azure-ad-client-app.md
+    - name: サービス クライアント アプリケーションを登録する
+      href: register-service-azure-ad-client-app.md
+    - name: Azure API for FHIR のトークンを取得する - CLI
+      href: get-healthcare-apis-access-token-cli.md
+    - name: ID オブジェクト ID を見つける
+      href: find-identity-object-ids.md
+- name: リソース
+  items:
+    - name: FAQ
+      href: fhir-faq.md
+    - name: サポートされる機能
+      href: fhir-features-supported.md

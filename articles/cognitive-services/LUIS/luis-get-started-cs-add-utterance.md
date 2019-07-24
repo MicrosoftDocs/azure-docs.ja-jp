@@ -1,21 +1,22 @@
 ---
-title: C# クイック スタート - モデルの変更と LUIS アプリのトレーニング
-titleSuffix: Azure Cognitive Services
-description: この C# クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。 発話の例は、意図にマッピングされる会話形式のユーザー テキストです。 意図に対する発話の例を与えるには、ユーザーによって入力されるどのようなテキストが、どの意図に属しているかを LUIS に学習させます。
+title: 変更、アプリのトレーニング、C#
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: この C# クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 04/08/2019
 ms.author: diberry
-ms.openlocfilehash: aab9651092f7ad5dbc78c31db8df4ef3538fedfc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e9f8d274d81cdefbf9dfb41708cd537b2d60471a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039974"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59273466"
 ---
 # <a name="quickstart-change-model-using-c"></a>クイック スタート: C# を使ってモデルを変更する
 
@@ -28,7 +29,7 @@ ms.locfileid: "47039974"
 * C# プログラミング言語がインストールされていること。
 * NuGet パッケージ ([JsonFormatterPlus](https://www.nuget.org/packages/JsonFormatterPlus) と [CommandLine](https://www.nuget.org/packages/CommandLineParser/))。
 
-[!INCLUDE [Code is available in LUIS-Samples Github repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
 
 ## <a name="example-utterances-json-file"></a>発話の例の JSON ファイル
 
@@ -36,19 +37,19 @@ ms.locfileid: "47039974"
 
 ## <a name="create-quickstart-code"></a>クイック スタート コードの作成 
 
-Visual Studio で .Net Framework を使用して新しい **Windows クラシック デスクトップ コンソール** アプリを作成します。 
+Visual Studio 上で .NET Framework を使用して新しい **Windows クラシック デスクトップ コンソール** アプリを作成します。 プロジェクトに `ConsoleApp1` と名前を付けます。
 
 ![Visual Studio プロジェクトの種類](./media/luis-quickstart-cs-add-utterance/vs-project-type.png)
 
 ### <a name="add-the-systemweb-dependency"></a>System.Web の依存関係を追加する
 
-Visual Studio プロジェクトに **System.Web** が必要です。 ソリューション エクスプローラーで **[参照]** を右クリックし、**[参照の追加]** を選択します。
+Visual Studio プロジェクトに **System.Web** が必要です。 ソリューション エクスプローラーで **[参照]** を右クリックし、[アセンブリ] セクションから **[参照の追加]** を選択します。
 
 ![System.web の参照を追加する](./media/luis-quickstart-cs-add-utterance/system.web.png)
 
 ### <a name="add-other-dependencies"></a>その他の依存関係を追加する
 
-Visual Studio プロジェクトに **JsonFormatterPlus** と **CommandLineParser** が必要です。 ソリューション エクスプローラーで、**[参照設定]** を右クリックし、**[NuGet パッケージの管理]** を選択します。2 つのパッケージをそれぞれ検索して追加してください。 
+Visual Studio プロジェクトに **JsonFormatterPlus** と **CommandLineParser** が必要です。 ソリューション エクスプローラーで、**[参照設定]** を右クリックし、**[NuGet パッケージの管理]** を選択します。2 つのパッケージをそれぞれ参照して追加します。 
 
 ![サード パーティの依存関係の追加](./media/luis-quickstart-cs-add-utterance/add-dependencies.png)
 
@@ -56,14 +57,14 @@ Visual Studio プロジェクトに **JsonFormatterPlus** と **CommandLineParse
 ### <a name="write-the-c-code"></a>C# コードを作成する
 次のような **Program.cs** ファイルを作成します。
 
-```CSharp
+```C#
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp3
+namespace ConsoleApp1
 {
     class Program
     {
@@ -74,7 +75,7 @@ namespace ConsoleApp3
 }
 ```
 
-依存関係を追加します。
+次のように依存関係を更新します。
 
    [!code-csharp[Add the dependencies](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=1-11 "Add the dependencies")]
 
@@ -98,9 +99,7 @@ LUIS ID と文字列を **Program** クラスに追加します。
 
 発話の例をファイルから追加するメソッドを **Program** クラスに追加します。
 
-   [!code-csharp[Add example utterances from file.
-](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=77-86 "Add example utterances from file.
-")]
+   [!code-csharp[Add example utterances from file.](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=77-86 "Add example utterances from file.")]
 
 モデルに変更が適用されたら、モデルをトレーニングします。 メソッドを **Program** クラスに追加します。
 
@@ -116,7 +115,7 @@ LUIS ID と文字列を **Program** クラスに追加します。
 
 ### <a name="copy-utterancesjson-to-output-directory"></a>utterances.json を出力ディレクトリにコピーします。
 
-ソリューション エクスプローラーで `utterances.json` を右クリックし、**[プロパティ]** を選択します。 プロパティ ウィンドウで、`Content` の **[ビルド アクション]** と、`Copy Always` の **[出力ディレクトリにコピー]** をマークします。  
+ソリューション エクスプローラーで、ソリューション エクスプローラーのプロジェクト名を右クリックして `utterances.json` を追加し、**[追加]**、**[既存の項目]** の順に選択します。 `utterances.json` ファイルを選択します。 これで、ファイルがプロジェクトに追加されます。 次に、これを出力方向に追加する必要があります。 `utterances.json` を右クリックし、**[プロパティ]** を選択します。 プロパティ ウィンドウで、`Content` の **[ビルド アクション]** と、`Copy Always` の **[出力ディレクトリにコピー]** をマークします。  
 
 ![JSON ファイルをコンテンツとしてマークする](./media/luis-quickstart-cs-add-utterance/content-properties.png)
 
@@ -128,8 +127,8 @@ Visual Studio でコードをビルドします。
 
 プロジェクトの /bin/Debug ディレクトリで、コマンド ラインからアプリケーションを実行します。 
 
-```CMD
-ConsoleApp\bin\Debug> ConsoleApp1.exe --add utterances.json --train --status
+```console
+ConsoleApp1.exe --add utterances.json --train --status
 ```
 
 このコマンドラインで、発話の追加 API を呼び出した結果が表示されます。 

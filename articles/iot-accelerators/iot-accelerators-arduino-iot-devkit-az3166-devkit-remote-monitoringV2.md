@@ -1,104 +1,113 @@
 ---
-title: IoT DevKit をクラウドへ -- IoT DevKit AZ3166 をリモート監視 IoT ソリューション アクセラレータに接続する | Microsoft Docs
-description: このチュートリアルでは、IoT DevKit AZ3166 上のセンサーの状態を監視および視覚化するためにリモート監視 IoT ソリューション アクセラレータに送信する方法を説明します。
+title: IoT DevKit をリモート監視ソリューション アクセラレータに接続する - Azure | Microsoft Docs
+description: このハウツー ガイドでは、テレメトリを IoT DevKit AZ3166 デバイス上のセンサーから監視および視覚化するためのリモート監視ソリューション アクセラレータに送信する方法について説明します。
 author: isabelcabezasm
 manager: ''
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.devlang: c
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: 32742b2a680370f443051e2d86f90d94e8632850
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 3551d088c1d02715bf9ace09d7eb0048bc10111e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720584"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105252"
 ---
-# <a name="connect-mxchip-iot-devkit-az3166-to-the-iot-remote-monitoring-solution-accelerator"></a>MXChip IoT DevKit AZ3166 を IoT リモート監視ソリューション アクセラレータに接続する
+# <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>IoT DevKit デバイスをリモート監視ソリューション アクセラレータに接続する
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-IoT DevKit でサンプル アプリを実行し、センサー データをソリューション アクセラレータに送信する方法を説明します。
+このハウツー ガイドでは、IoT DevKit デバイス上でサンプル アプリケーションを実行する方法を示します。 このサンプル コードでは、DevKit デバイス上のセンサーからお使いのソリューション アクセラレータにテレメトリが送信されます。
 
-[MXChip IoT DevKit](https://aka.ms/iot-devkit) は、豊富な周辺機器とセンサーを備えたオールインワンの Arduino 互換ボードです。 Visual Studio Code の [Azure IoT Workbench](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) を使用して開発できます。 また、Microsoft Azure サービスを活用したモノのインターネット (IoT) ソリューションのプロトタイプを作成する手順を示す[プロジェクト カタログ](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/)が付属しています。
+[MXChip IoT DevKit](https://aka.ms/iot-devkit) は、豊富な周辺機器とセンサーを備えたオールインワンの Arduino 互換ボードです。 Visual Studio Code で [Azure IoT Device Workbench](https://aka.ms/iot-workbench) または [Azure IoT Tools](https://aka.ms/azure-iot-tools) 拡張機能パックを使用して、これを開発することができます。 [プロジェクト カタログ](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/)に、IoT ソリューションをプロトタイプ化するのに役立つサンプル アプリケーションが含まれています。
 
-## <a name="what-you-need"></a>必要なもの
+## <a name="before-you-begin"></a>開始する前に
 
-[ファースト ステップ ガイド](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)を読み、**次のセクションだけを完了**します。
+このチュートリアルを完了するには、最初に次のタスクを行います。
 
-* ハードウェアの準備
-* Wi-Fi を構成する
-* DevKit の使用を開始する
-* 開発環境の準備
+* 「[IoT DevKit AZ3166 をクラウドの Azure IoT Hub に接続する](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)」の手順に従って、DevKit を準備します。
 
-## <a name="open-the-remote-monitoring-sample-in-vs-code"></a>VS Code でリモート監視サンプルを開く
+## <a name="open-sample-project"></a>サンプル プロジェクトを開く
 
-1. IoT DevKit がお使いのコンピューターに接続されて**いない**ことを確認します。 まず VS Code を起動し、DevKit をコンピューターに接続します。
+VS Code でリモート監視サンプルを開くには:
 
-2. `F1` をクリックしてコマンド パレットを開き、**[IoT Workbench: Examples]\(IoT Workbench: 例)** を入力して選択します。 次に、**[IoT DevKit]** をボードとして選択します。
+1. IoT DevKit がお使いのコンピューターに接続されていないことを確認します。 まず VS Code を起動し、DevKit をコンピューターに接続します。
 
-3. **[リモート監視]** を見つけ、**[Open Sample]\(サンプルを開く\)** をクリックします。 プロジェクト フォルダーを含む新しい VS Code ウィンドウが開きます。
-  ![IoT Workbench、リモート監視の選択サンプル](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-example.png)
+1. `F1` をクリックしてコマンド パレットを開き、**[Azure IoT Device Workbench:Open Examples...]\(Azure IoT Device Workbench: 例を開く...\)** を入力して選択します。次に、**[IoT DevKit]** をボードとして選択します。
 
-## <a name="configure-iot-hub-device-connection-string"></a>IoT Hub デバイスの接続文字列を構成する
+1. **[リモート監視]** を見つけ、**[Open Sample]\(サンプルを開く\)** をクリックします。 新しい VS Code ウィンドウが開いて、プロジェクト フォルダーが表示されます。
 
-1. IoT DevKit を**構成モード**に切り替えます。 そのためには、次の手順を実行します。
-   * **A** ボタンを押しながら、
-   * **リセット** ボタンを押して離します。
+   ![IoT Workbench、リモート監視サンプルの選択](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-example.png)
 
-2. 画面に、DevKit の ID と "構成" が表示されます。
-   
-  ![IoT DevKit 構成モード](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/devkit-configuration-mode.png)
+## <a name="configure-the-device"></a>デバイスを構成する
 
-3. `F1` をクリックしてコマンド パレットを開き、**[IoT Workbench: Device]\(IoT Workbench: デバイス)** を入力して選択した後、[Config Device Settings]\(デバイス設定の構成\) を選択します。
+お使いの DevKit デバイス上に IoT Hub デバイス接続文字列を構成するには:
 
-4. コピーした接続文字列を貼り付け、`Enter` をクリックして構成します。
+1. IoT DevKit を**構成モード**に切り替えます。
 
-## <a name="build-and-upload-the-device-code"></a>デバイス コードのビルドとアップロード
+    * **A** ボタンを押しながら、
+    * **リセット** ボタンを押して離します。
 
-1. `F1` をクリックしてコマンド パレットを開き、**[IoT Workbench: Device]\(IoT Workbench: デバイス)** を入力して選択した後、[Device Upload]\(デバイスのアップロード\) を選択します。
-  ![IoT Workbench: デバイス - > アップロード](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-device-upload.png)
+1. 画面に、DevKit の ID と `Configuration` が表示されます。
 
-1. VS Code でコンパイルが開始され、コードが DevKit にアップロードされます。
-  ![IoT Workbench: デバイス - > アップロード完了](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-device-uploaded.png)
+    ![IoT DevKit 構成モード](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/devkit-configuration-mode.png)
 
-DevKit が再起動され、コードの実行が開始されます。
+1. **F1** キーを押してコマンド パレットを開き、**[Azure IoT Device Workbench: デバイス設定の構成...] > [Config Device Connection String]\(デバイス接続文字列の構成\)** を入力して選択します。
 
-## <a name="test-the-project"></a>プロジェクトのテスト
+1. コピーしておいた接続文字列を貼り付け、**Enter** キーを押してデバイスを構成します。
+
+## <a name="build-the-code"></a>コードのビルド
+
+デバイス コードをビルドしてアップロードするには:
+
+1. `F1` キーを押してコマンド パレットを開き、**[Azure IoT Device Workbench: Upload Device Code]\(Azure IoT Device Workbench: デバイス コードのアップロード\)** を入力して選択します。
+
+1. VS Code によってコードがコンパイルされ、DevKit デバイスにアップロードされます。
+
+    ![IoT Workbench:デバイス - > アップロード](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-device-uploaded.png)
+
+1. DevKit デバイスが再起動し、アップロードしたコードが実行されます。
+
+## <a name="test-the-sample"></a>サンプルをテストする
+
+DevKit デバイスにアップロードしたサンプル アプリケーションが動作していることを確認するには、次の手順を完了します。
 
 ### <a name="view-the-telemetry-sent-to-remote-monitoring-solution"></a>リモート監視ソリューションに送信されたテレメトリを表示する
 
-サンプル アプリの実行時に、DevKit によって Wi-Fi 経由でセンサー データがリモート監視ソリューションに送信されます。 結果を表示するには、次の手順に従います。
+サンプル アプリが実行されているときは、DevKit デバイスのセンサー データから Wi-fi 経由でソリューション アクセラレータにテレメトリが送信されます。 テレメトリを表示するには:
 
-1. ソリューション ダッシュボードに移動し、**[デバイス]** をクリックします。
+1. ソリューション ダッシュボードに移動し、**[デバイス エクスプローラー]** をクリックします。
 
-2. デバイス名をクリックすると、右側のタブに DevKit のセンサー状態がリアルタイム表示されます。
-  ![Azure IoT Suite でのセンサー データ](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-dashboard.png)
+1. DevKit デバイスのデバイス名をクリックします。 右側のタブで、DevKit から送信されるテレメトリをリアルタイムで確認できます。
 
-### <a name="send-a-c2d-message"></a>C2D メッセージを送信する
+    ![Azure IoT Suite でのセンサー データ](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-dashboard.png)
 
-Remote Monitoring ソリューションを使用すると、デバイス上のリモート メソッドを呼び出すことができます。 コード例では、センサーが選択されたときに**メソッド** セクションに表示される 3 つのメソッドを発行します。
+### <a name="control-the-devkit-device"></a>DevKit デバイスを制御する
+
+リモート監視ソリューション アクセラレータを使用して、デバイスをリモートで制御できます。 サンプル コードでは 3 つのメソッドが実装されます。**[デバイス エクスプローラー]** ページでデバイスを選択すると表示される **[メソッド]** セクションでこれらを確認できます。
 
 ![IoT DevKit メソッド](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-methods.png)
 
-"LedColor" メソッドを使用して DevKit LED の 1 つの色を変更してみましょう。
+いずれかの DevKit LED の色を変更するには、**LedColor** メソッドを使用します。
 
-1. デバイス一覧からデバイス名を選択し、**[ジョブ]** をクリックします。
+1. デバイスの一覧からデバイス名を選択し、**[ジョブ]** をクリックします。
 
-  ![ジョブを作成する](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-job.png)
+    ![ジョブを作成する](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-job.png)
 
-2. 下のようにジョブを構成し、**[適用]** をクリックします。
-  * ジョブを選択: **Run メソッド**
-  * メソッド名: **LedColor**
-  * ジョブ名: **ChangeLedColor**
-  
-  ![ジョブの設定](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-suite-change-color.png)
+1. 次の値を使用してジョブを構成し、**[適用]** をクリックします。
 
-数秒後、DevKit により RGB LED (A ボタンの下) の色が変化します。
+   * ジョブを選択:**Run メソッド**
+   * メソッド名:**LedColor**
+   * ジョブ名:**ChangeLedColor**
 
-![IoT DevKit の赤い LED](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-devkit-led.png)
+     ![ジョブの設定](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-suite-change-color.png)
+
+1. 数秒後、DevKit 上の RGB LED (A ボタンの下) の色が変化します。
+
+    ![IoT DevKit の赤い LED](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-devkit-led.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -112,13 +121,13 @@ Remote Monitoring ソリューションを使用すると、デバイス上の�
 
 問題が発生した場合は、[IoT DevKit の FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) に関するページを参照するか、以下のチャネルを使用して Microsoft までお問い合わせください。
 
-* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
-* [StackOverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>次の手順
 
-ここでは、DevKit デバイスを Azure IoT リモート監視ソリューション アクセラレータに接続して、センサー データを視覚化する方法を説明しました。推奨する次の手順は、以下のとおりです。
+ここでは、DevKit デバイスをお使いのリモート監視ソリューション アクセラレータに接続する方法を説明しました。推奨する次の手順は、以下のとおりです。
 
-* [Azure IoT ソリューション アクセラレータの概要](https://docs.microsoft.com/azure/iot-suite/)
-* [UI のカスタマイズ](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)
+* [Azure IoT ソリューション アクセラレータの概要](https://docs.microsoft.com/azure/iot-accelerators/)
+* [UI のカスタマイズ](iot-accelerators-remote-monitoring-customize.md)
 * [IoT DevKit を Azure IoT Central アプリケーションに接続する](../iot-central/howto-connect-devkit.md)

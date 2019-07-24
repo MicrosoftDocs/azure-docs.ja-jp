@@ -1,5 +1,5 @@
 ---
-title: ILB App Service Environment を Azure Application Gateway と統合する
+title: ILB App Service Environment とアプリケーション ゲートウェイを統合する - Azure
 description: ILB App Service Environment のアプリを Application Gateway と統合する方法についてのチュートリアル
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
-ms.openlocfilehash: 749b554b8cf99ce849e0e3ab7b3a9478d8705e54
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.custom: seodec18
+ms.openlocfilehash: ea46b5e57e4e508a3311de8633ae61d346b574eb
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422996"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114197"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>ILB App Service Environment を Azure Application Gateway と統合する #
 
@@ -64,7 +65,7 @@ GatewaySubnet という名前ではないサブネットを使う必要があり
 
 1. Azure Portal で、**[新規]** > **[ネットワーク]** > **[アプリケーション ゲートウェイ]** に移動します。
 
-1. **[基本]** 領域で次のように設定します。
+2. **[基本]** 領域で次のように設定します。
 
    a. **[名前]** に、Application Gateway の名前を入力します。
 
@@ -72,13 +73,13 @@ GatewaySubnet という名前ではないサブネットを使う必要があり
 
    c. **[サブスクリプション]** で、App Service Environment の仮想ネットワークが使っているものと同じサブスクリプションを選びます。
 
-   d. **[リソース グループ]** で、リソース グループを作成または選択します。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[リソース グループ]** で、リソース グループを作成または選択します。
 
    e. **[場所]** で、App Service Environment 仮想ネットワークの場所を選びます。
 
    ![新しい Application Gateway の作成の基礎][2]
 
-1. **[設定]** 領域で次のように設定します。
+3. **[設定]** 領域で次のように設定します。
 
    a. **[仮想ネットワーク]** で、App Service Environment の仮想ネットワークを選びます。
 
@@ -86,7 +87,7 @@ GatewaySubnet という名前ではないサブネットを使う必要があり
 
    c. **[IP アドレスの種類]** で、**[パブリック]** を選びます。
 
-   d. **[パブリック IP アドレス]** で、パブリック IP アドレスを選びます。 パブリック IP アドレスがない場合は、ここで作成します。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[パブリック IP アドレス]** で、パブリック IP アドレスを選びます。 パブリック IP アドレスがない場合は、ここで作成します。
 
    e. **[プロトコル]** で、**[HTTP]** または **[HTTPS]** を選びます。 HTTPS を構成する場合は、PFX 証明書を提供する必要があります。
 
@@ -94,25 +95,25 @@ GatewaySubnet という名前ではないサブネットを使う必要があり
 
    ![新しい Application Gateway の作成の設定][3]
     
-1. **[概要]** セクションで設定を確認し、**[OK]** を選びます。 Application Gateway のセットアップが完了するまでに、30 分少々かかる可能性があります。  
+4. **[概要]** セクションで設定を確認し、**[OK]** を選びます。 Application Gateway のセットアップが完了するまでに、30 分少々かかる可能性があります。  
 
-1. Application Gateway のセットアップが完了したら、Application Gateway ポータルに移動します。 **[バックエンド プール]** を選択します。 ILB App Service Environment の ILB アドレスを追加します。
+5. Application Gateway のセットアップが完了したら、Application Gateway ポータルに移動します。 **[バックエンド プール]** を選択します。 ILB App Service Environment の ILB アドレスを追加します。
 
    ![バックエンド プールを構成する][4]
 
-1. バックエンド プールの構成処理が完了した後、**[正常性プローブ]** を選びます。 アプリに使うドメイン名の正常性プローブを作成します。 
+6. バックエンド プールの構成処理が完了した後、**[正常性プローブ]** を選びます。 アプリに使うドメイン名の正常性プローブを作成します。 
 
    ![正常性プローブを構成する][5]
     
-1. 正常性プローブの構成処理が完了した後、**[HTTP 設定]** を選びます。 既存の設定を編集し、**[カスタム プローブの使用]** を選んで、構成したプローブを選びます。
+7. 正常性プローブの構成処理が完了した後、**[HTTP 設定]** を選びます。 既存の設定を編集し、**[カスタム プローブの使用]** を選んで、構成したプローブを選びます。
 
    ![HTTP 設定を構成する][6]
     
-1. Application Gateway の **[概要]** セクションに移動し、Application Gateway が使うパブリック IP アドレスをコピーします。 その IP アドレスをアプリ ドメイン名の A レコードとして設定するか、CNAME レコードでそのアドレスの DNS 名を使用します。 パブリック IP アドレスを選んで、それをパブリック IP アドレスの UI にコピーするほうが、Application Gateway の **[概要]** セクションのリンクからコピーするより簡単です。 
+8. Application Gateway の **[概要]** セクションに移動し、Application Gateway が使うパブリック IP アドレスをコピーします。 その IP アドレスをアプリ ドメイン名の A レコードとして設定するか、CNAME レコードでそのアドレスの DNS 名を使用します。 パブリック IP アドレスを選んで、それをパブリック IP アドレスの UI にコピーするほうが、Application Gateway の **[概要]** セクションのリンクからコピーするより簡単です。 
 
    ![Application Gateway ポータル][7]
 
-1. アプリのカスタム ドメイン名を ILB App Service Environment に設定します。 ポータルでアプリに移動し、**[設定]** の **[カスタム ドメイン]** を選びます。
+9. アプリのカスタム ドメイン名を ILB App Service Environment に設定します。 ポータルでアプリに移動し、**[設定]** の **[カスタム ドメイン]** を選びます。
 
    ![アプリでカスタム ドメイン名を設定する][8]
 
@@ -133,6 +134,6 @@ Web アプリのカスタム ドメイン名の設定について詳しくは、
 [9]: ./media/integrate-with-application-gateway/appgw-iplist.png
 
 <!--LINKS-->
-[appgw]: http://docs.microsoft.com/azure/application-gateway/application-gateway-introduction
+[appgw]: https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction
 [custom-domain]: ../app-service-web-tutorial-custom-domain.md
 [ilbase]: ./create-ilb-ase.md

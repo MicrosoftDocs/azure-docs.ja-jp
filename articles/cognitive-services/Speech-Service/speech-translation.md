@@ -1,48 +1,77 @@
 ---
-title: Speech Translation について
+title: Azure Speech Services による音声翻訳
 titlesuffix: Azure Cognitive Services
-description: Speech Translation の機能の概要を説明します。
+description: Speech Services を使用すると、音声のエンド ツー エンドでリアルタイムの多言語翻訳機能を、アプリケーション、ツール、デバイスに追加することができます。 同じ API を、音声間の翻訳と、音声テキスト変換の両方に使用できます。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/28/2018
+ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: af363a45ab113d89c7aad7a38c6e10d335bc6035
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 95682612b4b0fdb1baa5038039630e74abddb1a9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469145"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890476"
 ---
-# <a name="about-the-speech-translation-api"></a>Speech Translation API について
+# <a name="what-is-speech-translation"></a>音声翻訳とは何か
 
-Speech Service API を使用すると、音声のエンド ツー エンドでリアルタイムの多言語翻訳機能を、アプリケーション、ツール、デバイスに追加することができます。 同じ API を、音声間の翻訳と、音声テキスト変換の両方に使用できます。
+Azure Speech Services の音声翻訳では、オーディオ ストリームをリアルタイムに処理し、複数言語の音声間翻訳や音声テキスト翻訳を実行することができます。 Speech SDK を使用すると、アプリケーション、ツール、およびデバイスから、提供されたオーディオのソース トランスクリプションや翻訳出力にアクセスすることができます。 音声の検出中には中間トランスクリプションと翻訳結果が返され、最終的な結果は、合成された音声に変換することができます。
 
-Translator Speech API では、クライアント アプリケーションは、サービスに音声オーディオをストリーミングし、結果のストリームを受け取ります。 これらの結果には、ソース言語での認識されたテキストと、ターゲット言語での翻訳が含まれます。 発話が完了するまでは中間翻訳を提供でき、完了した時点で最終的な翻訳を提供できます。
+Microsoft の翻訳エンジンは、統計的機械翻訳 (SMT) とニューラル機械翻訳 (NMT) という 2 つのアプローチによって強化されています。 SMT では、高度な統計分析を使用して、いくつかの単語の文脈から考えられる最善の翻訳が推定されます。 NMT では、ニューラル ネットワークを使用して、文全体のコンテキストを踏まえた、正確で自然な翻訳が提供されます。
 
-必要に応じて、最終的な翻訳の合成オーディオ バージョンを準備して、真の音声間翻訳を実現できます。
+現在、Microsoft では、特に一般的な言語への翻訳に NMT を使用しています。 [音声間翻訳に使用できるすべての言語](language-support.md#speech-translation)で、NMT が導入されています。 音声テキスト変換では、言語ペアに応じて SMT または NMT を使用できます。 ターゲット言語が NMT によってサポートされている場合、翻訳全体が NMT によって処理されます。 ターゲット言語が NMT によってサポートされていない場合は、2 つの言語間の "ピボット" として英語を使用する NMT と SMT のハイブリッド翻訳となります。
 
-Speech Translation API では、WebSocket プロトコルを使用して、クライアントとサーバーの間に全二重通信チャンネルを提供します。 ただし、ユーザーは WebSocket を処理する必要はありません。Speech SDK が代わって処理します。
+## <a name="core-features"></a>コア機能
 
-Speech Translation API では、Microsoft のさまざまな製品やサービスで利用されているのと同じテクノロジが採用されています。 このサービスは、既に世界中の何千もの企業でアプリケーションやワークフローに使用されています。
+Speech SDK および REST API を通じて使用可能な機能を以下に示します。
 
-## <a name="about-the-technology"></a>テクノロジについて
+| ユース ケース | SDK | REST |
+|----------|-----|------|
+| 認識結果を使用した音声テキスト翻訳。 | はい | いいえ  |
+| 音声間翻訳。 | はい | いいえ  |
+| 中間認識と翻訳結果。 | はい | いいえ  |
 
-基になっている Microsoft の翻訳エンジンは、統計的機械翻訳 (SMT) とニューラル機械翻訳 (NMT) の 2 種類です。 後者は、ニューラル ネットワークを採用した人工知能アプローチであり、機械翻訳に対する最新のアプローチです。 NMT は、正確さだけでなく、流ちょうさや自然さについても、よりよい翻訳を提供します。 こうした流ちょうさが得られるのは、NMT では 1 つの文章のコンテキスト全体を使用して言葉を変換することが主な理由です。
+## <a name="get-started-with-speech-translation"></a>音声翻訳を使ってみる
 
-今日では、Microsoft はよく使われるほとんどの言語で NMT に移行しており、SMT はあまり使われない言語に対してのみ採用されています。 [音声間翻訳に使用できるすべての言語](language-support.md#speech-translation)で、NMT が導入されています。 音声テキスト変換では、言語ペアに応じて SMT または NMT を使用できます。 ターゲット言語が NMT によってサポートされている場合、翻訳全体が NMT によって処理されます。 ターゲット言語が NMT によってサポートされていない場合は、2 つの言語間の "ピボット" として英語を使用する NMT と SMT のハイブリッド翻訳となります。
+10 分もかからずにコードを実行できるように設計されたクイック スタートが用意されています。 以下の表は、音声翻訳のクイック スタートを言語別に整理して示したものです。
 
-モデル間の違いは、翻訳エンジンの内部で吸収されます。 エンド ユーザーが気付くのは、翻訳品質の向上だけです (特に、中国語、日本語、アラビア語)。
+| クイック スタート | プラットフォーム | API リファレンス |
+|------------|----------|---------------|
+| [C#、.NET Core](quickstart-translate-speech-dotnetcore-windows.md) |  Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| [C#、.NET Framework](quickstart-translate-speech-dotnetframework-windows.md) |  Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| [C#、UWP](quickstart-translate-speech-uwp.md) |  Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| [C++](quickstart-translate-speech-cpp-windows.md) |  Windows | [Browse](https://aka.ms/csspeech/cppref)|
+| [Java](quickstart-translate-speech-java-jre.md) |  Windows | [Browse](https://aka.ms/csspeech/javaref) |
 
-> [!NOTE]
-> Microsoft の翻訳エンジンの背後にあるテクノロジについての学習に興味がありますか。 「[機械翻訳](https://www.microsoft.com/en-us/translator/mt.aspx)」をご覧ください。
+## <a name="sample-code"></a>サンプル コード
+
+Speech SDK のサンプル コードは、GitHub 上で入手できます。 これらのサンプルでは、ファイルやストリームからの音声の読み取り、連続的および単発の認識/翻訳、カスタム モデルの使用など、一般的なシナリオについて説明されています。
+
+* [音声テキスト変換と翻訳のサンプル (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+
+## <a name="migration-guides"></a>移行ガイド
+
+> [!WARNING]
+> Translator Speech は、2019 年 10 月 15 日に使用停止になる予定です。
+
+アプリケーション、ツール、または製品で Translator Speech をご使用の方に向けて、Speech Services への移行に役立つガイドを作成しました。
+
+* [Translator Speech API から Speech Services に移行する](how-to-migrate-from-translator-speech-api.md)
+
+## <a name="reference-docs"></a>リファレンス ドキュメント
+
+* [Speech SDK](speech-sdk-reference.md)
+* [Speech Devices SDK](speech-devices-sdk.md)
+* [REST API: 音声テキスト変換](rest-speech-to-text.md)
+* [REST API: テキスト読み上げ](rest-text-to-speech.md)
+* [REST API: 一括文字起こしとカスタマイズ](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>次の手順
 
-* [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
-* [C# で音声を翻訳する方法を確認します](how-to-translate-speech-csharp.md)
-* [C++ で音声を翻訳する方法を確認する](how-to-translate-speech-cpp.md)
-* [Java で音声を翻訳する方法を確認する](how-to-translate-speech-java.md)
+* [Speech Services のサブスクリプション キーを無料で取得する](get-started.md)
+* [Speech SDK を取得する](speech-sdk.md)

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Bing Autosuggest API の分析を取得する方法について説明します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: ea7bf0c19392ba61c9479302ae1a5fd72f0303bf
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: de72de6725172d118672292e1681d09f0dab291a
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886894"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008765"
 ---
 # <a name="how-to-get-analytics-for-bing-autosuggest-api"></a>Bing Autosuggest API の分析を取得する方法
 

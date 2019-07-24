@@ -1,6 +1,6 @@
 ---
-title: PIM で Azure AD ディレクトリ ロールに対するセキュリティの警告を構成する | Microsoft Docs
-description: Azure AD Privileged Identity Management (PIM) で Azure AD ディレクトリ ロールに対するセキュリティの警告を構成する方法を説明します。
+title: PIM で Azure AD ロールに対するセキュリティ アラートを構成する - Azure Active Directory | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) で Azure AD ロールに対するセキュリティ アラートを構成する方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -9,30 +9,72 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
-ms.date: 11/01/2018
+ms.subservice: pim
+ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: e7204c223681b9a33c439b0d9fc653167422384a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ce0d99fb283be8cbeba6f8a7954ff49161a2d511
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011699"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59496711"
 ---
-# <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>PIM で Azure AD ディレクトリ ロールに対するセキュリティの警告を構成する
+# <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールに対するセキュリティ アラートを構成する
 
-環境内で疑わしいアクティビティや危険なアクティビティが行われると、Azure AD Privileged Identity Management (PIM) によりアラートが生成されます。 アラートは、トリガーされると PIM ダッシュボードに表示されます。 アラートを選択して、アラートをトリガーしたユーザーまたはロールが一覧表示されたレポートを表示します。
+環境内で疑わしいアクティビティや危険なアクティビティが行われると、Azure Active Directory (Azure AD) Privileged Identity Management (PIM) によりアラートが生成されます。 アラートは、トリガーされると PIM ダッシュボードに表示されます。 アラートを選択して、アラートをトリガーしたユーザーまたはロールが一覧表示されたレポートを表示します。
 
 ![PIM のセキュリティ アラート - スクリーンショット](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
 ## <a name="security-alerts"></a>セキュリティのアラート
 
-このセクションでは、ディレクトリ ロールのすべてのセキュリティ アラートの一覧を、修正方法および回避方法と共に示します。 重大度には、次のような意味があります。
+このセクションでは、Azure AD ロールのすべてのセキュリティ アラートの一覧を、修正方法および回避方法と共に示します。 重大度には、次のような意味があります。
 
 * **高**: ポリシー違反のため直ちに対処が必要です。
-* **Medium**:早急の対処は必要ありませんが、ポリシー違反の可能性が通知されています。
+* **中**: 早急の対処は必要ありませんが、ポリシー違反の可能性が通知されています。
 * **低**: 早急な対処は必要ありませんが、望ましいポリシー変更が提案されています。
+
+### <a name="administrators-arent-using-their-privileged-roles"></a>管理者が特権ロールを使用してません
+
+| | |
+| --- | --- |
+| **重大度** | 低 |
+| **このアラートが表示される理由** | 特権ロールが割り当てられているユーザーは、攻撃の可能性を高める必要がありません。 アクティブに使用されていないアカウントでは、攻撃者が気付かれずに居続けることもより簡単です。 |
+| **修正方法** | リスト内のユーザーを確認し、必要のない特権ロールから、これらのユーザーを削除します。 |
+| **防止** | 業務上の正当な理由があるユーザーにのみ、特権ロールを割り当てます。 </br>定期的な[アクセス レビュー](pim-how-to-start-security-review.md)をスケジュールして、ユーザーにまだそれらのアクセスが必要なことを確認します。 |
+| **ポータル内での軽減策のアクション** | 対象の特権ロールからアカウントを削除します。 |
+| **トリガー** | ユーザーがロールをアクティブ化しないで一定の時間が経過するとトリガーされます。 |
+| **日数** | この設定では、ユーザーがロールをアクティブ化しないままでいられる日数を 0 ～ 100 で指定します。|
+
+### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>ロールをアクティブ化するのに多要素認証は必要ありません
+
+| | |
+| --- | --- |
+| **重大度** | 低 |
+| **このアラートが表示される理由** | MFA を使用しないと、侵害されたユーザーが特権ロールをアクティブ化できます。 |
+| **修正方法** | ロールのリストを確認し、すべてのロールに対して [MFA を要求](pim-how-to-change-default-settings.md)します。 |
+| **防止** | すべてのロールに対して [MFA を要求](pim-how-to-change-default-settings.md)します。  |
+| **ポータル内での軽減策のアクション** | 特権ロールのアクティブ化には MFA が必要とします。 |
+
+### <a name="the-tenant-doesnt-have-azure-ad-premium-p2"></a>テナントに Azure AD Premium P2 がありません
+
+| | |
+| --- | --- |
+| **重大度** | 低 |
+| **このアラートが表示される理由** | 現在のテナントに Azure AD Premium P2 がありません。 |
+| **修正方法** | [Azure AD のエディション](../fundamentals/active-directory-whatis.md)に関する情報を確認します。 Azure AD Premium P2 にアップグレードします。 |
+
+### <a name="potential-stale-accounts-in-a-privileged-role"></a>Potential stale accounts in a privileged role (特権ロール内のアカウントが古い可能性があります)
+
+| | |
+| --- | --- |
+| **重大度** | Medium |
+| **このアラートが表示される理由** | 過去 90 日間にパスワードを変更していない特権ロール内のアカウントです。 このようなアカウントは、保守されておらず、攻撃者に対して脆弱なサービス アカウントまたは共有アカウントの可能性があります。 |
+| **修正方法** | リスト内のアカウントを確認します。 もうアクセスが不要になっているアカウントは、特権ロールから削除します。 |
+| **防止** | パスワードを知っているユーザーの変更がある場合に、共有されているアカウントが、強固なパスワードのローテーションを行っていることを確認します。 </br>[アクセス レビュー](pim-how-to-start-security-review.md)を使用して特権ロールを持つアカウントを定期的に確認し、不要になっているロールの割り当てを削除します。 |
+| **ポータル内での軽減策のアクション** | 対象の特権ロールからアカウントを削除します。 |
+| **ベスト プラクティス** | パスワードを使って認証を行い、全体管理者やセキュリティ管理者などの高い特権を持つ管理者ロールに割り当てられる共有、サービス、および緊急アクセス用のアカウントでは、次の場合にパスワードをローテーションする必要があります。<ul><li>管理アクセス権の悪用や侵害が関係するセキュリティ インシデントの後</li><li>管理者ではなくなったユーザーの特権を変更した後 (たとえば、IT 管理者であった従業員が IT 部門から異動したり退職したりした後)</li><li>IT スタッフの認識された侵害や変更がない場合でも、一定の間隔で (たとえば、毎四半期または毎年)</li></ul>これらのアカウントの資格情報には複数のユーザーがアクセスできるので、資格情報をローテーションして、それらのロールから抜けたユーザーがアカウントにアクセスできないようにする必要があります。 [詳細情報](https://aka.ms/breakglass) |
 
 ### <a name="roles-are-being-assigned-outside-of-pim"></a>ロールが PIM の範囲外に割り当てられています
 
@@ -43,28 +85,6 @@ ms.locfileid: "51011699"
 | **修正方法** | リスト内のユーザーを確認し、PIM の外部で割り当てられた特権ロールから、これらのユーザーを削除します。 |
 | **防止** | PIM の外部でユーザーが特権ロールを割り当てられた場所を調査し、そこからの今後の割り当てを禁止します。 |
 | **ポータル内での軽減策のアクション** | 対象の特権ロールからアカウントを削除します。 |
-
-### <a name="potential-stale-accounts-in-a-privileged-role"></a>Potential stale accounts in a privileged role (特権ロール内のアカウントが古い可能性があります)
-
-| | |
-| --- | --- |
-| **重大度** | Medium |
-| **このアラートが表示される理由** | 最近パスワードが変更されていないアカウントは、管理されていないサービス アカウントまたは共有アカウントの可能性があります。 特権ロールのこれらのアカウントは、攻撃者に対して脆弱です。 |
-| **修正方法** | リスト内のアカウントを確認します。 もうアクセスが不要になっているアカウントは、特権ロールから削除します。 |
-| **防止** | パスワードを知っているユーザーの変更がある場合に、共有されているアカウントが、強固なパスワードのローテーションを行っていることを確認します。 </br>アクセス レビューを使用して特権ロールを持つアカウントを定期的に確認し、不要になっているロールの割り当てを削除します。 |
-| **ポータル内での軽減策のアクション** | 対象の特権ロールからアカウントを削除します。 |
-
-### <a name="users-arent-using-their-privileged-roles"></a>ユーザーが特権ロールを使用していません
-
-| | |
-| --- | --- |
-| **重大度** | 低 |
-| **このアラートが表示される理由** | 特権ロールが割り当てられているユーザーは、攻撃の可能性を高める必要がありません。 アクティブに使用されていないアカウントでは、攻撃者が気付かれずに居続けることもより簡単です。 |
-| **修正方法** | リスト内のユーザーを確認し、必要のない特権ロールから、これらのユーザーを削除します。 |
-| **防止** | 業務上の正当な理由があるユーザーにのみ、特権ロールを割り当てます。 </br>定期的なアクセス レビューをスケジュールして、ユーザーにまだそれらのアクセスが必要なことを確認します。 |
-| **ポータル内での軽減策のアクション** | 対象の特権ロールからアカウントを削除します。 |
-| **トリガー** | ユーザーがロールをアクティブ化しないで一定の時間が経過するとトリガーされます。 |
-| **日数** | この設定では、ユーザーがロールをアクティブ化しないままでいられる日数を 0 ～ 100 で指定します。|
 
 ### <a name="there-are-too-many-global-administrators"></a>グローバル管理者が多すぎます
 
@@ -92,16 +112,6 @@ ms.locfileid: "51011699"
 | **アクティブ化の更新の時間枠** | この設定では、不審な更新の追跡に使用する期間を日、時間、分、および秒で指定します。 |
 | **Number of activation renewals (アクティブ化の更新回数)** | この設定では、アラートを行う必要があるとみなす、指定した時間枠内でのアクティブ化の回数を 2 ～ 100 で指定します。 スライダーを動かすか、テキスト ボックスに数字を入力して設定を変更できます。 |
 
-### <a name="roles-dont-require-mfa-for-activation"></a>Roles don't require MFA for activation (ロールがアクティブ化のために MFA を要求していません)
-
-| | |
-| --- | --- |
-| **重大度** | 低 |
-| **このアラートが表示される理由** | MFA を使用しないと、侵害されたユーザーが特権ロールをアクティブ化できます。 |
-| **修正方法** | ロールのリストを確認し、すべてのロールに対して [MFA を要求](pim-how-to-change-default-settings.md)します。 |
-| **防止** | すべてのロールに対して [MFA を要求](pim-how-to-change-default-settings.md)します。  |
-| **ポータル内での軽減策のアクション** | 特権ロールのアクティブ化には MFA が必要とします。 |
-
 ## <a name="configure-security-alert-settings"></a>セキュリティ アラート設定の構成
 
 環境およびセキュリティ上の目標に合わせて、PIM のセキュリティ アラートの一部をカスタマイズすることができます。 以下の手順に従ってセキュリティ アラートの設定を開きます。
@@ -120,4 +130,4 @@ ms.locfileid: "51011699"
 
 ## <a name="next-steps"></a>次の手順
 
-- [PIM で Azure AD ディレクトリ ロールの設定を構成する](pim-how-to-change-default-settings.md)
+- [PIM で Azure AD ロールの設定を構成する](pim-how-to-change-default-settings.md)

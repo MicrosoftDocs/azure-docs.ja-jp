@@ -3,7 +3,7 @@ items:
   href: index.yml
 - name: 概要
   items:
-  - name: Azure DB for PostgreSQL
+  - name: Azure DB for PostgreSQL とは
     href: overview.md
 - name: クイック スタート
   items:
@@ -11,6 +11,8 @@ items:
     href: quickstart-create-server-database-portal.md
   - name: DB の作成 - Azure CLI
     href: quickstart-create-server-database-azure-cli.md
+  - name: DB の作成 - Azure CLI アップコマンド
+    href: quickstart-create-server-up-azure-cli.md
   - name: 接続とクエリ
     items:
     - name: Python
@@ -37,7 +39,8 @@ items:
     - name: Azure CLI
       href: tutorial-design-database-using-azure-cli.md
   - name: 2 - Web アプリの設計 - Python
-    href: ../app-service/containers/tutorial-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
+    href: ../app-service/containers/tutorial-python-postgresql-app.md
+    maintainContext: true
   - name: 3 - 監視と調整
     href: tutorial-monitor-and-tune.md
 - name: サンプル
@@ -92,7 +95,7 @@ items:
         href: concepts-query-store-scenarios.md
       - name: クエリ ストアのベスト プラクティス
         href: concepts-query-store-best-practices.md
-    - name: '[Query Performance Insight]'
+    - name: Query Performance Insight
       href: concepts-query-performance-insight.md
     - name: パフォーマンスに関する推奨事項
       href: concepts-performance-recommendations.md
@@ -104,6 +107,16 @@ items:
       href: concepts-connectivity.md
     - name: Azure Kubernetes Service (AKS) を使用した開発
       href: concepts-aks.md
+    - name: Java
+      items:
+      - name: Spring Data JDBC の構成
+        href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-postgresql
+      - name: Spring Data JPA の構成
+        href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-postgresql
+  - name: レプリケーション
+    items:
+    - name: 読み取りレプリカ
+      href: concepts-read-replicas.md
 - name: ハウツー ガイド
   items:
   - name: ユーザーの作成
@@ -172,12 +185,22 @@ items:
     items:
     - name: Azure ポータル
       href: howto-restart-server-portal.md
+    - name: Azure CLI
+      href: howto-restart-server-cli.md
+  - name: レプリケーション
+    items:
+    - name: Azure portal を使用した読み取りレプリカの管理
+      href: howto-read-replicas-portal.md
+    - name: Azure CLI を使用した読み取りレプリカの作成
+      href: howto-read-replicas-cli.md
 - name: リファレンス
   items:
   - name: Azure CLI
     href: /cli/azure/postgres
   - name: REST API
     href: /rest/api/postgresql
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.dbforpostgresql/allversions
 - name: リソース
   items:
   - name: Microsoft Learn でスキルを身に付ける
@@ -220,9 +243,9 @@ items:
     href: partners-migration-postgresql.md
   - name: データベース移行ガイド
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 5106878f2ea330ec3fb664c044605574f22ddafd
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 5958953a879a84a3a0b78b91ca276ad4bf48fc00
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334841"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629186"

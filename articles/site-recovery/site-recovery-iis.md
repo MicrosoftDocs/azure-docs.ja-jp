@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery を使用して多層 IIS ベース Web アプリケーションのディザスター リカバリーを設定する | Microsoft Docs
 description: Azure Site Recovery を使用して IIS Web ファームの仮想マシンをレプリケートする方法について説明します。
-author: nsoneji
-manager: gauravd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
-ms.author: nisoneji
-ms.openlocfilehash: bac995829e90fea35eebf5e5e57a0ffb85bbba0c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 11/27/2018
+ms.author: mayg
+ms.openlocfilehash: aa42371692cd5d0dc96835db5b66fe0877b90665
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211827"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320499"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>多層 IIS ベース Web アプリケーションのディザスター リカバリーの設定
 
@@ -60,10 +60,10 @@ ARR、IIS サーバー、アプリケーション サーバー、および SQL S
 
 シナリオ | セカンダリ サイトへ | Azure へ
 --- | --- | ---
-Hyper-V | [はい] | [はい]
-VMware | [はい] | [はい]
-物理サーバー | いいえ  | [はい]
-Azure|該当なし|[はい]
+Hyper-V | はい | はい
+VMware | はい | はい
+物理サーバー | いいえ  | はい
+Azure|NA|はい
 
 ## <a name="replicate-virtual-machines"></a>仮想マシンのレプリケート
 

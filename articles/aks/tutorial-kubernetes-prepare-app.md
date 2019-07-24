@@ -3,22 +3,21 @@ title: Kubernetes on Azure のチュートリアル - アプリケーション�
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、Docker Compose を使用して複数コンテナー アプリを準備およびビルドする方法を説明します。その後、AKS にデプロイすることができます。
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 20a57a0d528fa6a291aa66f91ff6ddd71053f478
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 9212e065ff7f6b0e3df1b90296f54159762bdaf9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297062"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002012"
 ---
-# <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) 用のアプリケーションの準備
+# <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) 用のアプリケーションの準備
 
-このチュートリアルは、7 つあるうちの 1 番目で、複数コンテナー アプリケーションを Kubernetes で使用する準備をします。 Docker Compose などの既存の開発ツールは、アプリケーションをローカルでビルドしてテストするために使用されます。 学習内容は次のとおりです。
+7 つのパートのうちの 1 番目であるこのチュートリアルでは、複数コンテナー アプリケーションを Kubernetes で使用する準備をします。 Docker Compose などの既存の開発ツールは、アプリケーションをローカルでビルドしてテストするために使用されます。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
 > * GitHub からサンプル アプリケーション ソースを複製する
@@ -29,7 +28,7 @@ ms.locfileid: "46297062"
 
 ![Azure 上の Kubernetes クラスターの図](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
 
-この後のチュートリアルでは、このコンテナー イメージが Azure Container Registry にアップロードされ、AKS クラスターにデプロイされます。
+追加のチュートリアルでは、このコンテナー イメージが Azure Container Registry にアップロードされ、AKS クラスターにデプロイされます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -49,7 +48,7 @@ Azure Cloud Shell には、これらのチュートリアルのすべてのス�
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 ```
 
-ディレクトリを変更して、複製されたディレクトリから作業するようにします。
+複製されたディレクトリに移動します。
 
 ```console
 cd azure-voting-app-redis
@@ -90,7 +89,7 @@ b68fed4b66b6        redis             "docker-entrypoint..."   57 seconds ago   
 
 ## <a name="test-application-locally"></a>ローカルでアプリケーションをテストする
 
-実行中のアプリケーションを表示するには、ローカルの Web ブラウザーで「 http://localhost:8080」と入力します。 次の例で示すように、サンプル アプリケーションが読み込まれます。
+実行中のアプリケーションを表示するには、ローカルの Web ブラウザーで「 `http://localhost:8080`」と入力します。 次の例で示すように、サンプル アプリケーションが読み込まれます。
 
 ![Azure 上の Kubernetes クラスターの図](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
 

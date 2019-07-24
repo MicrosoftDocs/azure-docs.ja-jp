@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: fca56453d931588fdb5e509237ac538f0de9d0ec
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 0c06283080a4ee51f863714e4c515672299b420d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214394"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59799288"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>Azure Site Recovery でのネットワーク セキュリティ グループ
 
@@ -45,7 +45,7 @@ Resource Manager デプロイ モデルでは、NSG をサブネットまたは�
 
 Azure Site Recovery により、オンプレミスの [HYPER-V 仮想マシン](hyper-v-azure-architecture.md)、[VMware 仮想マシン](vmware-azure-architecture.md)、および[物理サーバー](physical-azure-architecture.md)のディザスター リカバリーと Azure への移行が可能になります。 オンプレミスから Azure へのすべてのシナリオで、レプリケーション データは Azure Storage アカウントに送信され、格納されます。 レプリケーション中に仮想マシンの料金は発生しません。 Azure へのフェールオーバーを実行すると、Site Recovery は Azure IaaS 仮想マシンを自動的に作成します。
 
-Azure へのフェールオーバー後に VM が作成された場合、NSG を使って仮想ネットワークおよび VM へのネットワーク トラフィックを制限することができます。 Site Recovery は、フェールオーバー操作の一部としては NSG を作成しません。 フェールオーバーを開始する前に、必要な Azure NGS を作成することをお勧めします。 そうすれば、Site Recovery の強力な[復旧計画](site-recovery-create-recovery-plans.md)で自動化スクリプトを使って、フェールオーバーの間にフェールオーバーされた VM に NSG を自動的に関連付けることができます。
+Azure へのフェールオーバー後に VM が作成された場合、NSG を使って仮想ネットワークおよび VM へのネットワーク トラフィックを制限することができます。 Site Recovery は、フェールオーバー操作の一部としては NSG を作成しません。 フェールオーバーを開始する前に、必要な Azure NSG を作成することをお勧めします。 そうすれば、Site Recovery の強力な[復旧計画](site-recovery-create-recovery-plans.md)で自動化スクリプトを使って、フェールオーバーの間にフェールオーバーされた VM に NSG を自動的に関連付けることができます。
 
 たとえば、フェールオーバー後の VM 構成が上で詳しく説明した[シナリオ例](concepts-network-security-group-with-site-recovery.md#using-network-security-groups)に似ている場合、次のようになります。
 -   ターゲット Azure リージョンでの DR 計画の一部として、**Contoso VNet** および **Contoso サブネット**を作成できます。
@@ -61,7 +61,7 @@ Azure Site Recovery によって、[Azure 仮想マシン](azure-to-azure-archit
 
 Azure VM レプリケーションでは、ソース Azure リージョンの NSG ルールで、レプリケーション トラフィックに対して[送信接続](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)を許可する必要があります。 この [NSG 構成の例](azure-to-azure-about-networking.md#example-nsg-configuration)を使用すると、これらの必要なルールもテストして確認することができます。
 
-Site Recovery は、フェールオーバー操作の一部としては NSG を作成またはレプリケートしません。 フェールオーバーを開始する前に、ターゲット Azure リージョンに必要な NGS を作成しておくことをお勧めします。 そうすれば、Site Recovery の強力な[復旧計画](site-recovery-create-recovery-plans.md)で自動化スクリプトを使って、フェールオーバーの間にフェールオーバーされた VM に NSG を自動的に関連付けることができます。
+Site Recovery は、フェールオーバー操作の一部としては NSG を作成またはレプリケートしません。 フェールオーバーを開始する前に、ターゲット Azure リージョンに必要な NSG を作成しておくことをお勧めします。 そうすれば、Site Recovery の強力な[復旧計画](site-recovery-create-recovery-plans.md)で自動化スクリプトを使って、フェールオーバーの間にフェールオーバーされた VM に NSG を自動的に関連付けることができます。
 
 前に説明した[シナリオ例](concepts-network-security-group-with-site-recovery.md#using-network-security-groups)について考えます。
 -   VM に対してレプリケーションが有効になっていると、Site Recovery はターゲット Azure リージョン上に **Contoso VNet** と **Contoso サブネット**のレプリカを作成できます。

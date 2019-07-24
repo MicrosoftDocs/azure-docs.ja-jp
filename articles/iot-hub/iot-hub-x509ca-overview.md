@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 6a9b4fc5479dda58dd024cdf93cbdf4853f9c965
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: b7464e5cc052ecade4a10102de947d37a63c962a
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42142207"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571156"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>X.509 CA 証明書を使用したデバイス認証
 
@@ -40,7 +40,7 @@ X.509 CA 証明書は、各デバイスの証明書チェーンの最上位に�
 
 閉じた IoT ネットワークでの実験または使用のためには、自己署名 X.509 CA を作成することもできます。
 
-X.509 CA 証明書の入手方法に関係なく、必ずその対応する秘密キー シークレットを保存し、常に保護されている状態にしておいてください。  これは、X.509 CA 認証で信頼を構築するために必須です。 
+X.509 CA 証明書の入手方法に関係なく、必ずその対応する秘密キー シークレットを保存し、常に保護されている状態にしておいてください。  これは、X.509 CA 認証で信頼を構築するために必須です。
 
 [自己署名 CA 証明書の作成](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)方法を参照してください。これは、この機能の説明全体で実験用にご利用いただけます。
 
@@ -49,6 +49,8 @@ X.509 CA 証明書の入手方法に関係なく、必ずその対応する秘�
 X.509 CA 証明書の所有者は、中間 CA に暗号で署名できます。この CA は別の中間 CA に署名し、その CA はまた別の中間 CA に署名します。これは、最後の中間 CA がデバイスに署名することによってこのプロセスを終了するまで続きます。 この結果、証明書の信頼チェーンと呼ばれる、証明書の連鎖が生成されます。 現実的には、これは署名デバイスへと向かう信頼の委任として機能します。 この委任によって、暗号で変化する保管チェーンが確立され、署名キーの共有が回避されるため重要です。
 
 ![img-generic-cert-chain-of-trust](./media/generic-cert-chain-of-trust.png)
+
+デバイス証明書 (リーフ証明書とも呼ばれる) では、*サブジェクト名*が、Azure IoT Hub で IoT デバイスを登録するときに使用された**デバイス ID** に設定されている必要があります。 この設定は認証に必要です。
 
 デバイスの署名時に行う証明書チェーンの作成方法については、[ここ](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)を参照してください。
 
@@ -60,13 +62,15 @@ X.509 CA 証明書を IoT Hub に登録します。この証明書は、登録�
 
 所有の証明ステップには、ユーザーと IoT Hub 間で暗号のチャレンジと応答のプロセスが含まれます。  デジタル証明書の内容がパブリックであるために傍受されやすい場合、IoT Hub は、ユーザーが実際に CA 証明書を所有していることを確かめようとします。  IoT Hub はこれを、ランダム チャレンジを生成することによって行います。このチャレンジには、CA 証明書の対応する秘密キーで署名する必要があります。  前述のように秘密キー シークレットを保存して保護している場合、このステップを完了するための情報を持っているのは当該ユーザーのみです。 秘密キーの秘密性が、この方法における信頼の源です。  チャレンジに署名後、結果を含むファイルをアップロードすることによってこのステップを完了します。
 
-CA 証明書の登録方法については、[ここ](iot-hub-security-x509-get-started.md#registercerts)を参照してください。
+[CA 証明書の登録](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)方法については、こちらをご覧ください。
 
 ## <a name="how-to-create-a-device-on-iot-hub"></a>IoT Hub 上にデバイスを作成する方法
 
 デバイス偽装を防ぐために、IoT Hub は、どのようなデバイスが必要であるかを指定するようユーザーに要求します。  これは、IoT Hub のデバイス レジストリにデバイス エントリを作成することによって行います。  このプロセスは、IoT Hub [Device Provisioning Service](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) を使用している場合は自動化されます。 
 
-手動で IoT Hub にデバイスを作成する方法については、[ここ](iot-hub-security-x509-get-started.md#createdevice)を参照してください。
+手動で IoT Hub にデバイスを作成する方法については、[ここ](iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub)を参照してください。
+
+IoT ハブの X.509 デバイスを作成する
 
 ## <a name="authenticating-devices-signed-with-x509-ca-certificates"></a>X.509 CA 証明書で署名されたデバイスを認証する
 
@@ -74,7 +78,7 @@ X.509 CA 証明書を登録し、デバイスに署名して証明書の信頼�
 
 IoT Hub へのデバイス接続が正常に行われると、認証プロセスは完了です。これはまた、セットアップが正しいことも示しています。
 
-このデバイス接続手順を完了する方法については、[ここ](iot-hub-security-x509-get-started.md#authenticatedevice)を参照してください。
+このデバイス接続手順を完了する方法については、[ここ](iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

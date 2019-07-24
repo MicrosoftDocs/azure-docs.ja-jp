@@ -4,24 +4,24 @@ description: この記事では、Azure StorSimple Data Manager の概要を説�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 1dd09328-262b-43ef-8099-73241b49a925
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 03/27/2017
+ms.topic: conceptual
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2992be9aa289f4f5fda63b9b59d3e80e234dd434
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8a2972b8fbc31a3f945f40949128b3f37f2f4b77
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33780570"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312480"
 ---
-# <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>Azure StorSimple から Azure Media Services アカウントへのファイルのアップロード
+# <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>Azure StorSimple から Azure Media Services アカウントへのファイルのアップロード  
 
 この記事では、Azure StorSimple Data Manager の概要を説明します。 また、StorSimple からデータを抽出し、このデータを資産として Azure Media Services (AMS) アカウントにアップロードする方法を紹介するチュートリアルへのリンクも掲載しています。
 
@@ -47,7 +47,7 @@ Media Services で、デジタル ファイルを資産にアップロードし�
 
 ## <a name="see-also"></a>関連項目
 
-[Data Manager で .NET SDK を使用してジョブをトリガーする](../../storsimple/storsimple-data-manager-dotnet-jobs.md)
+[Data Manager 内で .NET SDK を使用してジョブをトリガーする](../../storsimple/storsimple-data-manager-dotnet-jobs.md)
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

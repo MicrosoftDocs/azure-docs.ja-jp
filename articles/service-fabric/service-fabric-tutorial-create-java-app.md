@@ -15,26 +15,19 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: e4552157cab846356c57a135d4e273f5a545bce9
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 559c02e74e97093a15b1d768eb5a3b32502db64e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667219"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314588"
 ---
-# <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>チュートリアル: Service Fabric 上に Java Web API フロントエンド サービスとステートフル バックエンド サービスを含むアプリケーションを作成する
+# <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>チュートリアル:Service Fabric 上に Java Web API フロントエンド サービスとステートフル バックエンド サービスを含むアプリケーションを作成する
 
-このチュートリアルは、シリーズの第 1 部です。 最後まで読み進めていけば、クラスター内のステートフルなバックエンド サービスに投票結果を保存する Java Web フロントエンドを備えた投票アプリケーションが完成します。 このチュートリアル シリーズでは、作業用の Mac OSX または Linux 開発者マシンが必要です。 投票アプリケーションを手動で作成しない場合は、[完成したアプリケーションのソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-java-quickstart)し、「[投票のサンプル アプリケーションの概要](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application)」に進むことができます。
+このチュートリアルは、シリーズの第 1 部です。 最後まで読み進めていけば、クラスター内のステートフルなバックエンド サービスに投票結果を保存する Java Web フロントエンドを備えた投票アプリケーションが完成します。 このチュートリアル シリーズでは、作業用の Mac OSX または Linux 開発者マシンが必要です。 投票アプリケーションを手動で作成しない場合は、[完成したアプリケーションのソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-java-quickstart)し、「[投票のサンプル アプリケーションの概要](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application)」に進むことができます。 また、[Java Reliable Services のクイック スタート](service-fabric-quickstart-java-reliable-services.md)に従うことも検討してください。
+
 
 ![ローカルの投票アプリ](./media/service-fabric-tutorial-create-java-app/votingjavalocal.png)
-
-シリーズの第 1 部で学習する内容は次のとおりです。
-
-> [!div class="checklist"]
-> * Java ステートフル リライアブル サービスを作成する
-> * Java ステートレス Web アプリケーション サービスを作成する
-> * サービスのリモート処理を使用してステートフル サービスと通信する
-> * ローカル Service Fabric クラスターにアプリケーションをデプロイする
 
 このチュートリアル シリーズで学習する内容は次のとおりです。
 > [!div class="checklist"]
@@ -43,6 +36,15 @@ ms.locfileid: "43667219"
 > * [アプリケーションを Azure クラスターにデプロイする](service-fabric-tutorial-java-deploy-azure.md)
 > * [アプリケーションの監視と診断を設定する](service-fabric-tutorial-java-elk.md)
 > * [CI/CD を設定します](service-fabric-tutorial-java-jenkins.md)
+
+
+シリーズの第 1 部で学習する内容は次のとおりです。
+
+> [!div class="checklist"]
+> * Java ステートフル リライアブル サービスを作成する
+> * Java ステートレス Web アプリケーション サービスを作成する
+> * サービスのリモート処理を使用してステートフル サービスと通信する
+> * ローカル Service Fabric クラスターにアプリケーションをデプロイする
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,7 +55,7 @@ ms.locfileid: "43667219"
 
 ## <a name="create-the-front-end-java-stateless-service"></a>フロントエンド Java ステートレス サービスを作成する
 
-まず、投票アプリケーションの Web フロントエンドを作成します。 Java ステートレス サービスは、AngularJS に基づく Web UI をホストする軽量な HTTP サーバーに適しています。 ユーザーからの要求はこのステートレス サービスによって処理され、投票を格納するステートフル サービスにリモート プロシージャ コールとして送信されます。 
+まず、投票アプリケーションの Web フロントエンドを作成します。 AngularJS を使用する Web UI は、軽量 HTTP サーバーを実行する Java ステートレス サービスに要求を送信します。 このサービスは各要求を処理し、投票を保存するためにリモート プロシージャ呼び出しをステートフル サービスに送信します。 
 
 1. Eclipse を起動します。
 
@@ -74,6 +76,7 @@ ms.locfileid: "43667219"
     ![アプリケーションの作成後の Eclipse Package Explorer]( ./media/service-fabric-tutorial-create-java-app/eclipse-package-explorer.png)
 
 前のスクリーンショットの Package Explorer の各項目を次の表で簡単に説明します。 
+
 | **Package Explorer の項目** | **説明** |
 | --- | --- |
 | PublishProfiles | ローカルおよび Azure Service Fabric クラスターのプロファイルの詳細が記述された JSON ファイルが含まれています。 アプリケーションをデプロイするときに、これらのファイルの内容がプラグインによって使用されます。 |
@@ -85,7 +88,7 @@ ms.locfileid: "43667219"
 
 ### <a name="add-html-and-javascript-to-the-votingweb-service"></a>HTML と JavaScript を VotingWeb サービスに追加する
 
-ステートレス サービスによってレンダリングできる UI を追加するには、*VotingApplication/VotingWebPkg/Code* に HTML ファイルを追加します。 これにより、この HTML ファイルは、ステートレス Java サービスに埋め込まれた軽量 HTTP サーバーによってレンダリングされるようになります。
+ステートレス サービスによってレンダリングできる UI を追加するには、HTML ファイルを追加します。 これにより、この HTML ファイルは、ステートレス Java サービスに埋め込まれた軽量 HTTP サーバーによってレンダリングされるようになります。
 
 1. *VotingApplication* ディレクトリを展開して *VotingApplication/VotingWebPkg/Code* ディレクトリに移動します。
 
@@ -101,12 +104,12 @@ ms.locfileid: "43667219"
 <!DOCTYPE html>
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <body>
 
 <script>
-var app = angular.module('VotingApp', ['ui.bootstrap']); 
+var app = angular.module('VotingApp', ['ui.bootstrap']);
 app.controller("VotingAppController", ['$rootScope', '$scope', '$http', '$timeout', function ($rootScope, $scope, $http, $timeout) {
     $scope.votes = [];
     
@@ -114,8 +117,8 @@ app.controller("VotingAppController", ['$rootScope', '$scope', '$http', '$timeou
         $http.get('getStatelessList')
             .then(function successCallback(response) {
         $scope.votes = Object.assign(
-          {},
-          ...Object.keys(response.data) .
+            {},
+            ...Object.keys(response.data) .
             map(key => ({[decodeURI(key)]: response.data[key]}))
         )
         },
@@ -124,7 +127,7 @@ app.controller("VotingAppController", ['$rootScope', '$scope', '$http', '$timeou
         });
     };
 
-    $scope.remove = function (item) {            
+    $scope.remove = function (item) {
        $http.get("removeItem", {params: { item: encodeURI(item) }})
             .then(function successCallback(response) {
                 $scope.refresh();
@@ -135,14 +138,14 @@ app.controller("VotingAppController", ['$rootScope', '$scope', '$http', '$timeou
     };
 
     $scope.add = function (item) {
-        if (!item) {return;}        
+        if (!item) {return;}
         $http.get("addItem", {params: { item: encodeURI(item) }})
             .then(function successCallback(response) {
                 $scope.refresh();
             },
             function errorCallback(response) {
                 alert(response);
-            });        
+            });
     };
 }]);
 </script>
@@ -209,7 +212,7 @@ app.controller("VotingAppController", ['$rootScope', '$scope', '$http', '$timeou
 
 **VotingWeb** サブプロジェクトの *VotingWeb/src/statelessservice/VotingWeb.java* ファイルを開きます。 **VotingWeb** サービスは、ステートレス サービスへのゲートウェイであり、フロントエンド API の通信リスナーを設定します。
 
-ファイル内の **createServiceInstanceListeners** メソッドの内容を以下に置き換え、変更を保存します。
+ファイル内の既存の **createServiceInstanceListeners** メソッドを以下の内容に置き換え、変更を保存します。
 
 ```java
 @Override
@@ -217,7 +220,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 
     EndpointResourceDescription endpoint = this.getServiceContext().getCodePackageActivationContext().getEndpoint(webEndpointName);
     int port = endpoint.getPort();
-    
+
     List<ServiceInstanceListener> listeners = new ArrayList<ServiceInstanceListener>();
     listeners.add(new ServiceInstanceListener((context) -> new HttpCommunicationListener(context, port)));
     return listeners;
@@ -228,7 +231,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 
 HTTP 通信リスナーは、HTTP サーバーを設定し、投票アクションを定義する API を公開するコントローラーとして機能します。 *VotingWeb/src/statelessservice* フォルダーの *statelessservice* パッケージを右クリックして **[New]\(新規\) -> [File]\(ファイル\)** の順に選択します。  ファイルに *HttpCommunicationListener.java* という名前を付け、**[Finish]\(完了\)** をクリックします。
 
-ファイルの内容を次のように置き換え、変更を保存します。  後の「[HttpCommunicationListener.java ファイルを更新する](#updatelistener_anchor)」では、バックエンド サービスの投票データのレンダリング、読み取り、および書き込みを行うための変更をこのファイルに加えます。  ここでは、リスナーは単に投票アプリの静的 HTML を返します。
+ファイルの内容を次のように置き換え、変更を保存します。  後の HttpCommunicationListener.java ファイルの更新では、バックエンド サービスの投票データのレンダリング、読み取り、および書き込みを行うための変更をこのファイルに加えます。  ここでは、リスナーは単に投票アプリの静的 HTML を返します。
 
 ```java
 // ------------------------------------------------------------
@@ -269,10 +272,10 @@ public class HttpCommunicationListener implements CommunicationListener {
 
     private static final String HEADER_CONTENT_TYPE = "Content-Type";
     private static final int STATUS_OK = 200;
-    private static final int STATUS_NOT_FOUND = 404; 
+    private static final int STATUS_NOT_FOUND = 404;
     private static final int STATUS_ERROR = 500;
     private static final String RESPONSE_NOT_FOUND = "404 (Not Found) \n";
-    private static final String MIME = "text/html";  
+    private static final String MIME = "text/html";
     private static final String ENCODING = "UTF-8";
 
     private static final String ROOT = "wwwroot/";
@@ -283,12 +286,12 @@ public class HttpCommunicationListener implements CommunicationListener {
     private final int port;
 
     public HttpCommunicationListener(StatelessServiceContext context, int port) {
-        this.partitionKey = new ServicePartitionKey(0); 
+        this.partitionKey = new ServicePartitionKey(0);
         this.context = context;
         this.port = port;
     }
 
-    // Called by openAsync when the class is instantiated 
+    // Called by openAsync when the class is instantiated
     public void start() {
         try {
             logger.log(Level.INFO, "Starting Server");
@@ -304,14 +307,14 @@ public class HttpCommunicationListener implements CommunicationListener {
             public void handle(HttpExchange t) {
                 try {
                     File file = new File(ROOT + FILE_NAME).getCanonicalFile();
-    
+
                     if (!file.isFile()) {
                       // Object does not exist or is not a file: reject with 404 error.
                       t.sendResponseHeaders(STATUS_NOT_FOUND, RESPONSE_NOT_FOUND.length());
                       OutputStream os = t.getResponseBody();
                       os.write(RESPONSE_NOT_FOUND.getBytes());
                       os.close();
-                    } else {    
+                    } else {
                       Headers h = t.getResponseHeaders();
                       h.set(HEADER_CONTENT_TYPE, MIME);
                       t.sendResponseHeaders(STATUS_OK, 0);
@@ -326,7 +329,7 @@ public class HttpCommunicationListener implements CommunicationListener {
 
                       fs.close();
                       os.close();
-                    }  
+                    }
                 } catch (Exception e) {
                     logger.log(Level.WARNING, null, e);
                 }
@@ -387,14 +390,14 @@ public class HttpCommunicationListener implements CommunicationListener {
 
 ### <a name="configure-the-listening-port"></a>リスニング ポートを構成する
 
-VotingWeb サービス フロントエンド サービスが作成されると、Service Fabric によって、サービスがリッスンするポートが選択されます。  VotingWeb サービスは、このアプリケーションのフロント エンドとして機能して外部のトラフィックを受け入れるため、このサービスを固定のウェルノウン ポートにバインドしましょう。 Package Explorer で、*VotingApplication/VotingWebPkg/ServiceManifest.xml* を開きます。  **Resources** セクションの **Endpoint** リソースを検索し、**Port** 値を 8080、または別のポートに変更します。 アプリケーションをローカルでデプロイして実行するには、アプリケーションのリスニング ポートをコンピューター上で開いて、使用できるようにする必要があります。 **ServiceManifest** 要素内 (```<DataPackage>``` 要素のすぐ下) に次のコード スニペットを貼り付けます。
+VotingWeb サービス フロントエンド サービスが作成されると、Service Fabric によって、サービスがリッスンするポートが選択されます。  VotingWeb サービスは、このアプリケーションのフロント エンドとして機能して外部のトラフィックを受け入れるため、このサービスを固定のウェルノウン ポートにバインドしましょう。 Package Explorer で、*VotingApplication/VotingWebPkg/ServiceManifest.xml* を開きます。  **Resources** セクションの **Endpoint** リソースを検索し、**Port** 値を 8080 に変更します (チュートリアル全体で、このポートを使い続けます)。 アプリケーションをローカルでデプロイして実行するには、アプリケーションのリスニング ポートをコンピューター上で開いて、使用できるようにする必要があります。 **ServiceManifest** 要素内 (```<DataPackage>``` 要素のすぐ下) に次のコード スニペットを貼り付けます。
 
 ```xml
 <Resources>
     <Endpoints>
-      <!-- This endpoint is used by the communication listener to obtain the port on which to 
-           listen. Please note that if your service is partitioned, this port is shared with 
-           replicas of different partitions that are placed in your code. -->
+        <!-- This endpoint is used by the communication listener to obtain the port on which to
+            listen. Please note that if your service is partitioned, this port is shared with
+            replicas of different partitions that are placed in your code. -->
         <Endpoint Name="WebEndpoint" Protocol="http" Port="8080" />
     </Endpoints>
   </Resources>
@@ -425,7 +428,7 @@ package statefulservice;
 
 import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.List; 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -441,14 +444,14 @@ import microsoft.servicefabric.data.collections.ReliableHashMap;
 import microsoft.servicefabric.data.utilities.AsyncEnumeration;
 import microsoft.servicefabric.data.utilities.KeyValuePair;
 
-import system.fabric.StatefulServiceContext; 
+import system.fabric.StatefulServiceContext;
 
-import rpcmethods.VotingRPC; 
+import rpcmethods.VotingRPC;
 
 class VotingDataService extends StatefulService implements VotingRPC {
     private static final String MAP_NAME = "votesMap";
     private ReliableStateManager stateManager;
-    
+
     protected VotingDataService (StatefulServiceContext statefulServiceContext) {
         super (statefulServiceContext);
     }
@@ -457,50 +460,50 @@ class VotingDataService extends StatefulService implements VotingRPC {
     protected List<ServiceReplicaListener> createServiceReplicaListeners() {
         this.stateManager = this.getReliableStateManager();
         ArrayList<ServiceReplicaListener> listeners = new ArrayList<>();
-        
+
         listeners.add(new ServiceReplicaListener((context) -> {
             return new FabricTransportServiceRemotingListener(context,this);
         }));
-        
+
         return listeners;
     }
-    
+
     // Method that will be invoked via RPC from the front end to retrieve the complete set of votes in the map
     public CompletableFuture<HashMap<String,String>> getList() {
         HashMap<String, String> tempMap = new HashMap<String, String>();
 
-        try {                    
+        try {
 
             ReliableHashMap<String, String> votesMap = stateManager
                     .<String, String> getOrAddReliableHashMapAsync(MAP_NAME).get();
-                        
+
             Transaction tx = stateManager.createTransaction();
             AsyncEnumeration<KeyValuePair<String, String>> kv = votesMap.keyValuesAsync(tx).get();
             while (kv.hasMoreElementsAsync().get()) {
                 KeyValuePair<String, String> k = kv.nextElementAsync().get();
-                tempMap.put(k.getKey(), k.getValue()); 
+                tempMap.put(k.getKey(), k.getValue());
             }
-            
-            tx.close();                    
-            
+
+            tx.close();
+
 
         } catch (Exception e) {
             e.printStackTrace();
-        }  
-        
+        }
+
         return CompletableFuture.completedFuture(tempMap);
     }
-    
+
     // Method that will be invoked via RPC from the front end to add an item to the votes list or to increase the
     // vote count for a particular item
     public CompletableFuture<Integer> addItem(String itemToAdd) {
-        AtomicInteger status = new AtomicInteger(-1); 
+        AtomicInteger status = new AtomicInteger(-1);
 
         try {
-            
+
             ReliableHashMap<String, String> votesMap = stateManager
-                    .<String, String> getOrAddReliableHashMapAsync(MAP_NAME).get();                    
-            
+                    .<String, String> getOrAddReliableHashMapAsync(MAP_NAME).get();
+
             Transaction tx = stateManager.createTransaction();
             votesMap.computeAsync(tx, itemToAdd, (k, v) -> {
                 if (v == null) {
@@ -508,48 +511,50 @@ class VotingDataService extends StatefulService implements VotingRPC {
                 }
                 else {
                     int numVotes = Integer.parseInt(v);
-                    numVotes = numVotes + 1;                            
+                    numVotes = numVotes + 1;
                     return Integer.toString(numVotes);
                 }
-            }).get(); 
-            
-            tx.commitAsync().get();
-            tx.close(); 
+            }).get();
 
-            status.set(1);                            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return CompletableFuture.completedFuture(new Integer(status.get()));
-    }
-    
-    // Method that will be invoked via RPC from the front end to remove an item
-    public CompletableFuture<Integer> removeItem(String itemToRemove) {
-        AtomicInteger status = new AtomicInteger(-1); 
-        try {
-            ReliableHashMap<String, String> votesMap = stateManager
-                    .<String, String> getOrAddReliableHashMapAsync(MAP_NAME).get();
-            
-            Transaction tx = stateManager.createTransaction();
-            votesMap.removeAsync(tx, itemToRemove).get();
             tx.commitAsync().get();
-            tx.close();                    
-            
+            tx.close();
+
             status.set(1);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         return CompletableFuture.completedFuture(new Integer(status.get()));
     }
-    
+
+    // Method that will be invoked via RPC from the front end to remove an item
+    public CompletableFuture<Integer> removeItem(String itemToRemove) {
+        AtomicInteger status = new AtomicInteger(-1);
+        try {
+            ReliableHashMap<String, String> votesMap = stateManager
+                    .<String, String> getOrAddReliableHashMapAsync(MAP_NAME).get();
+
+            Transaction tx = stateManager.createTransaction();
+            votesMap.removeAsync(tx, itemToRemove).get();
+            tx.commitAsync().get();
+            tx.close();
+
+            status.set(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return CompletableFuture.completedFuture(new Integer(status.get()));
+    }
+
 }
 ```
 
+これで、フロントエンド ステートレス サービスとバックエンド サービスのスケルトンを作成できました。
+
 ## <a name="create-the-communication-interface-to-your-application"></a>アプリケーションへの通信インターフェイスを作成する
 
-これで、フロントエンド ステートレス サービスとバックエンド サービスのスケルトンを作成できました。 次の手順では、この 2 つのサービスを接続します。 フロントエンドとバックエンドのどちらのサービスも、投票アプリケーションの動作を定義する VotingRPC と呼ばれるインターフェイスを利用しています。 このインターフェイスは、フロントエンド サービスとバックエンド サービスの両方によって実装され、2 つのサービス間のリモート プロシージャ コール (RPC) を可能にします。 Eclipse では Gradle サブプロジェクトの追加がサポートされていないため、このインターフェイスを含むパッケージを手動で追加する必要があります。
+ 次の手順は、フロントエンド ステートレス サービスとバックエンド サービスを接続することです。 どちらのサービスも、投票アプリケーションの動作を定義する VotingRPC と呼ばれるインターフェイスを利用しています。 このインターフェイスは、フロントエンド サービスとバックエンド サービスの両方によって実装され、2 つのサービス間のリモート プロシージャ コール (RPC) を可能にします。 残念ながら、Eclipse では Gradle サブプロジェクトの追加がサポートされていないため、このインターフェイスを含むパッケージを手動で追加する必要があります。
 
 1. Package Explorer で **Voting** プロジェクトを右クリックし、**[New]\(新規\) -> [Folder]\(フォルダー\)** の順にクリックします。 フォルダーに **VotingRPC/src/rpcmethods** という名前を付けます。
 
@@ -574,9 +579,9 @@ class VotingDataService extends StatefulService implements VotingRPC {
     
         CompletableFuture<Integer> removeItem(String itemToRemove);
     }
-    ``` 
+    ```
 
-4. *Voting/VotingRPC* ディレクトリに *build.gradle* という名前のファイルを作成し、ファイル内に以下を貼り付けます。 この gradle ファイルは、他のサービスによってインポートされる jar ファイルをビルドおよび作成するために使用されます。 
+4. *Voting/VotingRPC* ディレクトリに *build.gradle* という名前の空のファイルを作成し、ファイル内に以下を貼り付けます。 この gradle ファイルは、他のサービスによってインポートされる jar ファイルをビルドおよび作成するために使用されます。 
 
     ```gradle
     apply plugin: 'java'
@@ -608,7 +613,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
     jar {
         from configurations.compile.collect {
             (it.isDirectory() && !it.getName().contains("native")) ? it : zipTree(it)}
-        
+
         manifest {
                 attributes(
                 'Main-Class': 'rpcmethods.VotingRPC')
@@ -616,15 +621,15 @@ class VotingDataService extends StatefulService implements VotingRPC {
             destinationDir = file('./')
         }
     
-        exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA' 
+        exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
     }
-    
+
     defaultTasks 'clean', 'jar'
     ```
 
 5. *Voting/settings.gradle* ファイルに、新しく作成したプロジェクトをビルドに含めるための行を追加します。 
 
-    ```gradle 
+    ```gradle
     include ':VotingRPC'
     ```
 
@@ -634,13 +639,13 @@ class VotingDataService extends StatefulService implements VotingRPC {
     server.createContext("/getStatelessList", new HttpHandler() {
         @Override
         public void handle(HttpExchange t) {
-            try {                    
+            try {
                 t.sendResponseHeaders(STATUS_OK,0);
                 OutputStream os = t.getResponseBody();
-                
+    
                 HashMap<String,String> list = ServiceProxyBase.create(VotingRPC.class, new URI("fabric:/VotingApplication/VotingDataService"), partitionKey, TargetReplicaSelector.DEFAULT, "").getList().get();
                 String json = new Gson().toJson(list);
-                os.write(json.getBytes(ENCODING));                   
+                os.write(json.getBytes(ENCODING));
                 os.close();
             } catch (Exception e) {
                 logger.log(Level.WARNING, null, e);
@@ -653,14 +658,14 @@ class VotingDataService extends StatefulService implements VotingRPC {
         public void handle(HttpExchange t) {
             try {
                 OutputStream os = t.getResponseBody();
-                URI r = t.getRequestURI();     
+                URI r = t.getRequestURI();
     
                 Map<String, String> params = queryToMap(r.getQuery());
-                String itemToRemove = params.get("item");                    
-                
+                String itemToRemove = params.get("item");
+
                 Integer num = ServiceProxyBase.create(VotingRPC.class, new URI("fabric:/VotingApplication/VotingDataService"), partitionKey, TargetReplicaSelector.DEFAULT, "").removeItem(itemToRemove).get();
-                
-                if (num != 1) 
+    
+                if (num != 1)
                 {
                     t.sendResponseHeaders(STATUS_ERROR, 0);
                 } else {
@@ -684,10 +689,10 @@ class VotingDataService extends StatefulService implements VotingRPC {
                 URI r = t.getRequestURI();
                 Map<String, String> params = queryToMap(r.getQuery());
                 String itemToAdd = params.get("item");
-                
+
                 OutputStream os = t.getResponseBody();
                 Integer num = ServiceProxyBase.create(VotingRPC.class, new URI("fabric:/VotingApplication/VotingDataService"), partitionKey, TargetReplicaSelector.DEFAULT, "").addItem(itemToAdd).get();
-                if (num != 1) 
+                if (num != 1)
                 {
                     t.sendResponseHeaders(STATUS_ERROR, 0);
                 } else {
@@ -731,14 +736,14 @@ class VotingDataService extends StatefulService implements VotingRPC {
 
 1. *Voting/build.gradle* ファイルの内容を以下に置き換えます。
 
-    ```gradle 
+    ```gradle
     apply plugin: 'java'
     apply plugin: 'eclipse'
     
     subprojects {
         apply plugin: 'java'
-    } 
-        
+    }
+    
     defaultTasks 'clean', 'jar', 'copyDeps'
     ```
 
@@ -778,7 +783,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
         configurations.compile.filter {!it.toString().contains("native")}.each{
             from it
         }
-        
+    
         configurations.compile.filter {it.toString().contains("native")}.each{
             from zipTree(it)
         }
@@ -798,7 +803,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
     
     jar {
         from configurations.compile.collect {(it.isDirectory() && !it.getName().contains("native")) ? it : zipTree(it)}
-        
+    
         manifest {
             attributes(
                 'Main-Class': 'statelessservice.VotingWebServiceHost')
@@ -806,11 +811,11 @@ class VotingDataService extends StatefulService implements VotingRPC {
             destinationDir = file('../VotingApplication/VotingWebPkg/Code/')
         }
     
-        exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA' 
+        exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
     }
     
     defaultTasks 'clean', 'jar', 'copyDeps'
-    ``` 
+    ```
 
 3. *Voting/VotingDataService/build.gradle* ファイルの内容を置き換えます。 
 
@@ -848,7 +853,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
         configurations.compile.filter {!it.toString().contains("native")}.each{
             from it
         }
-        
+    
         configurations.compile.filter {it.toString().contains("native")}.each{
             from zipTree(it)
         }
@@ -869,7 +874,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
     jar {
         from configurations.compile.collect {
             (it.isDirectory() && !it.getName().contains("native")) ? it : zipTree(it)}
-        
+    
         manifest {
             attributes('Main-Class': 'statefulservice.VotingDataServiceHost')
     
@@ -877,7 +882,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
             destinationDir = file('../VotingApplication/VotingDataServicePkg/Code/')
         }
     
-        exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA' 
+        exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
     }
     
     defaultTasks 'clean', 'jar', 'copyDeps'
@@ -891,21 +896,23 @@ class VotingDataService extends StatefulService implements VotingRPC {
 
 2. ローカル Service Fabric クラスターを実行します。 この手順は開発環境 (Mac または Linux) によって異なります。
 
-    Mac を使用している場合は、次のコマンドを使用してローカル クラスターを実行します。**-v** パラメーターに渡すコマンドを自分のワークスペースへのパスに置き換えてください。
+    Mac を使用している場合は、次のコマンドを使用してローカル クラスターを実行します。**-v** パラメーターに渡すコマンドは、自分のワークスペースへのパスに置き換えます。
 
     ```bash
     docker run -itd -p 19080:19080 -p 8080:8080 -p --name sfonebox servicefabricoss/service-fabric-onebox
-    ``` 
+    ```
+    [OS X の設定ガイド](service-fabric-get-started-mac.md)で、詳細な手順を参照してください。
 
     Linux マシンで実行している場合は、次のコマンドを使用してローカル クラスターを起動します。 
 
     ```bash 
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
+    [Linux の設定ガイド](service-fabric-get-started-linux.md)で、詳細な手順を参照してください。
 
 4. Eclipse の Package Explorer で、**Voting** プロジェクトを右クリックし、**[Service Fabric] -> [Publish Application...]\(アプリケーションの発行...\)** の順にクリックします 
 5. **[Publish Application]\(アプリケーションの発行\)** ウィンドウで、ドロップダウンから **[Local.json]** を選択し、**[Publish]\(発行\)** をクリックします。
-6. Web ブラウザーを使用して **http://localhost:8080** にアクセスし、ローカル Service Fabric クラスターで実行されているアプリケーションを表示します。 
+6. Web ブラウザーを使用して http:\//localhost:8080 にアクセスし、ローカル Service Fabric クラスターで実行されているアプリケーションを表示します。 
 
 ## <a name="next-steps"></a>次の手順
 

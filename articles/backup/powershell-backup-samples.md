@@ -2,19 +2,19 @@
 title: Azure Backup PowerShell のサンプル
 description: Azure Backup PowerShell のサンプル
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: sample
-ms.date: 09/07/2017
-ms.author: markgal
+ms.date: 01/31/2019
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 841e8df146610de636a2f58c02c8ac2633ba2328
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0fa22ea85d05ef6514c8b7da0d148a3262a1bbc3
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607483"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494869"
 ---
 # <a name="azure-backup-powershell-samples"></a>Azure Backup PowerShell のサンプル
 

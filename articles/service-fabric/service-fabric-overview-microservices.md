@@ -3,8 +3,8 @@ title: Azure でのマイクロサービスの概要 | Microsoft Docs
 description: マイクロサービスでクラウド アプリケーションを構築することが現代のアプリケーション開発にとって重要である理由と Azure Service Fabric がそれを達成するためのプラットフォームを提供するしくみの概要
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: fae2be85-0ab4-4cd3-9d1f-e0d95fe1959b
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
-ms.author: msfussell
-ms.openlocfilehash: 48df598ab12c509952b7712bb8cc9fe21355325f
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.author: atsenthi
+ms.openlocfilehash: 1e02e4fdf0dbe04d8756fc6355c6a9e414b27d2b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613683"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665604"
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>マイクロサービスの手法でアプリケーションを構築する理由は何ですか。
 
@@ -33,11 +33,11 @@ ms.locfileid: "51613683"
 
 これらのビジネス ニーズが、アプリケーションの構築 *方法* に影響します。
 
-マイクロサービスに対する Azure のアプローチの詳細については、「 [Microservices: An application revolution powered by the cloud (マイクロサービス: クラウドによって実現されるアプリケーションの革命)](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)」を参照してください。
+マイクロサービスに対する Azure のアプローチの詳細については、「[Microservices:An application revolution powered by the cloud. (マイクロサービス: クラウドによって実現されるアプリケーションの革命)](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)」を参照してください。
 
 ## <a name="monolithic-vs-microservice-design-approach"></a>モノリシックとマイクロサービスのデザイン アプローチの比較
 
-アプリケーションは時間の経過に伴って進化します。 成功したアプリケーションは便利であることで進化します。 失敗したアプリケーションは進化せず、最終的には非推奨となります。 問題は、現在の要件についての知識と、その要件が将来どうなるかということです。 たとえば、ある部署のためにレポート アプリケーションを構築するとします。 そのアプリケーションは社内のみで使用され、レポートの存続期間は短いことがわかっているとします。 選択する手法は、たとえば、数千万の顧客にビデオ コンテンツを配信するサービスを構築する場合とは異なります。
+アプリケーションは時間の経過に伴って進化します。 成功したアプリケーションは便利であることで進化します。 失敗したアプリケーションは進化せず、最終的には非推奨となります。 そこで問題です。現在の要件についておよびその要件が将来どうなるかについてどれほどのことをご存じでしょうか。 たとえば、ある部署のためにレポート アプリケーションを構築するとします。 そのアプリケーションは社内のみで使用され、レポートの存続期間は短いことがわかっているとします。 選択する手法は、たとえば、数千万の顧客にビデオ コンテンツを配信するサービスを構築する場合とは異なります。
 
 アプリケーションは後で再設計可能であると承知した上で、何かを概念実証として完成させることが推進要因となることがあります。 利用されることがない過剰なエンジニアリングには意味がありません。 これは、普通、エンジニアリング上の得失評価となります。 一方、企業がクラウドの構築について話す際に、成長と利用が期待されます。 問題はその成長と規模が予想できないことです。 早期に試作品を作成し、同時に、将来の成功に対処するための道を歩んでいることを確認することが望まれます。 これが、構築、測定、学習、繰り返しからなるリーン スタートアップ手法です。
 
@@ -149,7 +149,7 @@ Service Fabric では、マイクロサービス手法を使ったアプリケ�
 
 * 障害が発生したサービスのデプロイ、アップグレード、検出、再起動、サービスの検出、メッセージのルーティング、状態の管理、正常性の監視などを行うシステム サービスを提供するプラットフォーム。
 * コンテナー内で実行するアプリケーションまたはプロセスとして実行されるアプリケーションをデプロイする機能。 Service Fabric は、コンテナーとプロセスのオーケストレーターです。
-* マイクロサービスとしてのアプリケーションの構築を支援する高生産性プログラミング API: [ASP.NET Core、Reliable Actors、Reliable Services](service-fabric-choose-framework.md)。 たとえば、正常性や診断に関する情報が得ることができ、また、組み込みの高可用性を利用することができます。
+* マイクロサービスとしてのアプリケーションの構築を支援する高生産性プログラミング API:[ASP.NET Core、Reliable Actors、Reliable Services](service-fabric-choose-framework.md)。 たとえば、正常性や診断に関する情報が得ることができ、また、組み込みの高可用性を利用することができます。
 
 ***Service Fabric はサービスの構築方法に依存しないため、任意のテクノロジを利用できます。しかし、マイクロサービスの構築を簡単にする組み込みのプログラミング API が提供されています。***
 
@@ -197,7 +197,7 @@ Service Fabric の目的は、マイクロサービス アプリケーション�
 ## <a name="next-steps"></a>次の手順
 
 * [Service Fabric の用語の概要](service-fabric-technical-overview.md)
-* [Microservices: An application revolution powered by the cloud (マイクロサービス: クラウドによって実現されるアプリケーションの革命)](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
+* [マイクロサービス:クラウドによって実現されるアプリケーションの革命](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png

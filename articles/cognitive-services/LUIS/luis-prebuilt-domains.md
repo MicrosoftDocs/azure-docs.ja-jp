@@ -1,21 +1,22 @@
 ---
-title: Language Understanding (LUIS) の事前構築済みドメイン
+title: Language Understanding の事前構築済みドメイン
 titleSuffix: Azure Cognitive Services
 description: LUIS には一連の事前構築済みドメインが含まれており、一般的な会話形式のユーザー シナリオを簡単に追加できます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+ms.custom: seodec18
+manager: nitinme
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: b1c7ced4a934ea5d094e0c54a295870986f09933
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: e1b99396c4739dc6f1b7a4da0164553d4c25ef3c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651824"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867105"
 ---
 # <a name="add-prebuilt-domains-for-common-usage-scenarios"></a>一般的な使用シナリオの事前構築済みドメインを追加する 
 
@@ -49,7 +50,7 @@ LUIS には事前構築済みドメインの一連の事前構築済み意図が
 
 LUIS から、正しい意図と会議の件名が返されます。
 
-```JSON
+```json
 {
   "query": "Schedule a meeting with John Smith in Seattle next week",
   "topScoringIntent": {

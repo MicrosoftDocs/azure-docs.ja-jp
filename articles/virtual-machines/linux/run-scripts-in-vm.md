@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 05/02/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: cb811e3dba7be87c83b9893db682475351ada1c1
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 3881a6d0ee1139fa481908f09b6e96efda24a5cd
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267001"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979005"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>Linux VM でスクリプトを実行する
 
@@ -25,19 +25,19 @@ ms.locfileid: "35267001"
 
 * Azure 仮想マシンでスクリプトをダウンロードして実行します。
 * Azure Resource Manager テンプレート、Azure CLI、REST API、PowerShell または Azure Portal を使用して実行できます。
-* スクリプト ファイルは、Azure ストレージや GitHub からダウンロードするか、Azure Portal からの実行時にお使いの PC から提供されます。
-* Windows マシンで PowerShell スクリプト、Linux マシンで Bash スクリプトを実行します。
+* スクリプト ファイルは、Azure ストレージや GitHub からダウンロードするか、Azure Portal からの実行時にお使いの PC から指定できます。
+* PowerShell スクリプトは Windows マシンで実行し、Bash スクリプトは Linux マシンで実行します。
 * デプロイ後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。
 
-## <a name="run-command"></a>Run Command
+## <a name="run-command"></a>実行コマンド
 
-[Run Command](run-command.md) 機能では、スクリプトを使用して仮想マシンやアプリケーションの管理およびトラブルシューティングを行うことができます。この機能は、ゲスト ファイアウォールで RDP ポートや SSH ポートが開かれていないなど、マシンに到達不能なときにも使用できます。
+[実行コマンド](run-command.md)機能では、スクリプトを使用して仮想マシンやアプリケーションの管理およびトラブルシューティングを行うことができます。この機能は、ゲスト ファイアウォールで RDP ポートや SSH ポートが開かれていないなど、マシンに到達不能なときにも使用できます。
 
 * Azure 仮想マシンでスクリプトを実行します。
-* [Azure Portal](run-command.md)、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、[Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)、または [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) を使用して実行できます。
+* [Azure Portal](run-command.md)、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、[Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)、または [PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) を使用して実行できます。
 * Azure Portal でスクリプトをすばやく実行し、出力を確認して、必要に応じて繰り返すことができます。
 * スクリプトは直接入力するか、組み込みのスクリプトを使用できます。
-* Windows マシンで PowerShell スクリプト、Linux マシンで Bash スクリプトを実行します。
+* PowerShell スクリプトは Windows マシンで実行し、Bash スクリプトは Linux マシンで実行します。
 * 仮想マシンやアプリケーション管理、および到達不能な仮想マシンでスクリプトを実行するのに役立ちます。
 
 ## <a name="hybrid-runbook-worker"></a>Hybrid Runbook Worker
@@ -69,6 +69,6 @@ ms.locfileid: "35267001"
 お使いの VM 内でスクリプトやコマンドを実行できるさまざまな機能について確認します。
 
 * [カスタム スクリプト拡張機能](../extensions/custom-script-linux.md)
-* [Run Command](run-command.md)
+* [実行コマンド](run-command.md)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md)
 * [Serial console](serial-console.md)

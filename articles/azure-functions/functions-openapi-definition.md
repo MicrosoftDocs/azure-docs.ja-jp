@@ -12,16 +12,16 @@ ms.date: 11/26/2018
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 2d50e4c2352444d29bdb090bc9a2a7947ecc6a50
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 6daa29b4e8f09a4f8a40c3b92d2e2e86a5dea6aa
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496028"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993174"
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>関数の OpenAPI 定義の作成
 
-REST API は、多くの場合、OpenAPI 定義 (以前の [Swagger](http://swagger.io/) ファイル) を使用して記述されます。 この定義には、API で使用できる操作の情報と、API の要求データと応答データを構造化する方法に関する情報が含まれています。
+REST API は、多くの場合、OpenAPI 定義 (以前の [Swagger](https://swagger.io/) ファイル) を使用して記述されます。 この定義には、API で使用できる操作の情報と、API の要求データと応答データを構造化する方法に関する情報が含まれています。
 
 このチュートリアルでは、風力タービンの応急修復がコスト効率に優れているかどうかを確認する関数を作成します。 その後、その関数を他のアプリやサービスから呼び出せるように、関数アプリの OpenAPI 定義を作成します。
 
@@ -123,7 +123,7 @@ REST API は、多くの場合、OpenAPI 定義 (以前の [Swagger](http://swag
 
 ## <a name="generate-the-openapi-definition"></a>OpenAPI 定義を生成する
 
-OpenAPI 定義を生成する準備ができています。 この定義は、API Apps、[PowerApps](functions-powerapps-scenario.md)、[Microsoft Flow](../azure-functions/app-service-export-api-to-powerapps-and-flow.md) など、他の Microsoft テクノロジだけでなく、サード パーティ製の開発者ツール、たとえば、[Postman](https://www.getpostman.com/docs/importing_swagger) や[その他多数のパッケージ](http://swagger.io/tools/)でも使用できます。
+OpenAPI 定義を生成する準備ができています。 この定義は、API Apps、[PowerApps](functions-powerapps-scenario.md)、[Microsoft Flow](../azure-functions/app-service-export-api-to-powerapps-and-flow.md) など、他の Microsoft テクノロジだけでなく、サード パーティ製の開発者ツール、たとえば、[Postman](https://www.getpostman.com/docs/importing_swagger) や[その他多数のパッケージ](https://swagger.io/tools/)でも使用できます。
 
 1. API がサポートする "*動詞*" (ここでは POST) のみを選択します。 これにより、生成された API 定義がさらにきれいになります。
 
@@ -141,7 +141,7 @@ OpenAPI 定義を生成する準備ができています。 この定義は、AP
 
     ![API 定義のソース](media/functions-openapi-definition/api-definition-source.png)
 
-    この手順により、関数アプリのドメインから OpenAPI ファイルをホストするエンドポイント、[OpenAPI エディター](http://editor.swagger.io)のインライン コピー、API 定義テンプレート ジェネレーターなど、関数アプリの一連の OpenAPI オプションが有効になります。
+    この手順により、関数アプリのドメインから OpenAPI ファイルをホストするエンドポイント、[OpenAPI エディター](https://editor.swagger.io)のインライン コピー、API 定義テンプレート ジェネレーターなど、関数アプリの一連の OpenAPI オプションが有効になります。
 
 1. **[API 定義テンプレートを生成する]**  >  **[保存]** をクリックします。
 
@@ -168,7 +168,7 @@ OpenAPI 定義を生成する準備ができています。 この定義は、AP
         parameters: []
         description: >-
             Replace with Operation Object
-            #http://swagger.io/specification/#operationObject
+            #https://swagger.io/specification/#operationObject
         responses:
             '200':
             description: Success operation

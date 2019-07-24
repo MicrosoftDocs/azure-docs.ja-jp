@@ -3,17 +3,15 @@ title: Azure Database for MariaDB のサーバーを復元する方法
 description: この記事では、Azure portal を使用して Azure Database for MariaDB のサーバーを復元する方法について説明します。
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 899f0bfa3075c92ac31e2b4f5fab9093a1dc6806
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 04/15/2019
+ms.openlocfilehash: 23d683fea494ad0509af359d6e49519f2bc6aa99
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999047"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615780"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB のサーバーのバックアップと復元を行う方法
 
@@ -65,11 +63,11 @@ Azure Database for MariaDB では、サーバーの過去の特定時点まで�
 
 3. [復元] フォームに必要な情報を入力します。
 
-   ![Azure Database for MariaDB - 情報の復元 ](./media/howto-restore-server-portal/3-restore.png)
-  - **復元ポイント**: 復元先の特定の時点を選択します。
-  - **対象サーバー**: 新しいサーバーの名前を指定します。
-  - **場所**: リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
-  - **価格レベル**: ポイントインタイム リストアを行うときは、これらのパラメーターを変更することはできません。 ソース サーバーと同じレベルになります。 
+   ![Azure Database for MariaDB - 情報の復元](./media/howto-restore-server-portal/3-restore.png)
+   - **復元ポイント**:復元先の特定の時点を選択します。
+   - **対象サーバー**:新しいサーバーの名前を指定します。
+   - **場所**:リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
+   - **価格レベル**:ポイントインタイム リストアを行うときは、これらのパラメーターを変更することはできません。 ソース サーバーと同じレベルになります。 
 
 4. **[OK]** をクリックして、特定の時点までサーバーを復元します。 
 
@@ -81,12 +79,12 @@ Azure Database for MariaDB では、サーバーの過去の特定時点まで�
 ## <a name="geo-restore"></a>geo リストア
 地理冗長バックアップを使用するようにサーバーを構成した場合は、新しいサーバーをその既存のサーバーのバックアップから作成できます。 この新しいサーバーは、Azure Database for MariaDB を使用できる任意のリージョンに作成できます。  
 
-1. ポータルの左上隅にある **[リソースの作成]** ボタン (+) を選択します。 検索ボックスに「**Azure Database for MariaDB**」と入力して、サービスを検索します。
+1. **[データベース]** > **[Azure Database for MariaDB]** の順に選択します。 検索ボックスに「**MariaDB**」と入力してサービスを検索することもできます。
 
    !["Azure Database for MariaDB" のオプション](./media/howto-restore-server-portal/2_navigate-to-mariadb.png)
 
 2. フォームの **[ソースの選択]** ドロップダウンで **[バックアップ]** を選択します。 この操作により、geo 冗長バックアップが有効になっているサーバーの一覧が読み込まれます。 これらのバックアップの中から、新しいサーバーのソースとして使用するものを選択します。
-   ![ソースの選択: バックアップと geo 冗長バックアップの一覧](./media/howto-restore-server-portal/2-georestore.png)
+   ![ソースの選択:バックアップと geo 冗長バックアップの一覧](./media/howto-restore-server-portal/2-georestore.png)
 
    > [!NOTE]
    > サーバーが最初に作成された時点では、すぐには geo リストアで使用できない可能性があります。 必要なメタデータが設定されるまで数時間かかる場合があります。

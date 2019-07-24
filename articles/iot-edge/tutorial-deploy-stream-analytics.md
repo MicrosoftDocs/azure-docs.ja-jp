@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - ASA ジョブを Azure IoT Edge デバイスに展開する | Microsoft Docs
+title: Azure Stream Analytics ジョブをデバイスにデプロイするチュートリアル - Azure IoT Edge | Microsoft Docs
 description: このチュートリアルでは、Azure Stream Analytics をモジュールとして IoT Edge デバイスに展開します
 author: kgremban
 manager: philmea
@@ -7,16 +7,15 @@ ms.author: kgremban
 ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
-services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 2188e21cfd29ac8ac2d44878819ee62a3e2d555e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 31330c3d2b10e6245db775da4039fd1948539df4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566943"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106017"
 ---
-# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>チュートリアル: Azure Stream Analytics を IoT Edge モジュールとして展開する (プレビュー)
+# <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>チュートリアル: Azure Stream Analytics を IoT Edge モジュールとしてデプロイする
 
 IoT ソリューションの多くが、分析サービスを使用して、IoT デバイスからクラウドに送信されたデータの分析情報を得ます。 Azure IoT Edge を使用すると、[Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) ロジックを取得し、そのロジックをデバイス自体に移動できます。 エッジで利用統計情報のストリームを処理することで、アップロードされるデータの量を削減し、アクションにつながる分析情報への対応にかかる時間を短縮できます。
 
@@ -34,11 +33,10 @@ Azure Stream Analytics には、クラウド上と IoT Edge デバイス上の�
 > * Azure Stream Analytics ジョブを Azure portal から IoT Edge デバイスに展開します。
 
 <center>
-![チュートリアル アーキテクチャ図](./media/tutorial-deploy-stream-analytics/ASATutorialDiagram.png)
+
+![図 - チュートリアルのアーキテクチャ、ASA ジョブのステージングとデプロイ](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
 </center>
 
->[!NOTE]
->IoT Edge の Azure Stream Analytics モジュールは[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)段階にあります。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -100,7 +98,7 @@ Azure portal で Stream Analytics ジョブが作成されたら、ジョブの�
 
 1. **[ジョブ トポロジ]** で、**[入力]**、**[ストリーム入力の追加]** の順に選択します。
 
-   ![Azure Stream Analytics の入力](./media/tutorial-deploy-stream-analytics/asa_input.png)
+   ![Azure Stream Analytics での入力の追加](./media/tutorial-deploy-stream-analytics/asa_input.png)
 
 1. ドロップダウン リストで、**[Edge Hub]** を選択します。
 
@@ -110,7 +108,7 @@ Azure portal で Stream Analytics ジョブが作成されたら、ジョブの�
 
 1. **[ジョブ トポロジ]** で **[出力]** を開き、**[追加]** を選択します。
 
-   ![Azure Stream Analytics の出力](./media/tutorial-deploy-stream-analytics/asa_output.png)
+   ![Azure Stream Analytics での出力の追加](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
 1. ドロップダウン リストで、**[Edge Hub]** を選択します。
 
@@ -207,7 +205,7 @@ IoT Edge デバイスに Azure Stream Analytics ジョブをデプロイする�
 
     新しい Stream Analytics モジュールが、IoT Edge エージェント モジュールおよび IoT Edge ハブと共に実行されていることがわかります。
 
-    ![モジュールの出力](./media/tutorial-deploy-stream-analytics/module_output2.png)
+    ![デバイスごとに報告される tempSensor および ASA モジュール](./media/tutorial-deploy-stream-analytics/module_output2.png)
 
 ## <a name="view-data"></a>データの表示
 
@@ -218,9 +216,9 @@ IoT Edge デバイスに Azure Stream Analytics ジョブをデプロイする�
    ```cmd/sh
    iotedge list  
    ```
-<!--
+   <!--
    ![Docker output](./media/tutorial-deploy-stream-analytics/docker_output.png)
--->
+   -->
 1. すべてのシステム ログとメトリック データを表示します。 Stream Analytics モジュールの名前を使用してください。
 
    ```cmd/sh
@@ -229,7 +227,7 @@ IoT Edge デバイスに Azure Stream Analytics ジョブをデプロイする�
 
 30 秒間の温度が 70 度に達するまで、マシンの温度が徐々に上昇するのを観察できます。 次に、Stream Analytics モジュールによってリセットがトリガーされ、マシンの温度が 21 度まで下降します。 
 
-   ![Docker のログ](./media/tutorial-deploy-stream-analytics/docker_log.png)
+   ![モジュール ログへのコマンド出力をリセットする](./media/tutorial-deploy-stream-analytics/docker_log.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ 
 

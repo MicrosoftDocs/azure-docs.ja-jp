@@ -3,7 +3,7 @@ title: エラスティック プールを使用した複数の SQL Database の�
 description: エラスティック プールを使用して、複数 (数百や数千) の SQL データベースを管理およびスケーリングします。 一定の価格で必要な場所にリソースを配布できます。
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-pool
+ms.subservice: elastic-pools
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: a6e2be02f9954a036fdcb67a15c73cc82670834b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.date: 02/28/2019
+ms.openlocfilehash: 96160745fa8702fc6f931904098c28d8968de2c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283565"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010239"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング
 
@@ -34,6 +34,9 @@ SaaS 開発者は、複数のデータベースで構成される大規模なデ
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
+
+> [!IMPORTANT]
+> エラスティック プールでは、データベース単位の請求はありません。 課金は、使用量やプールがアクティブであったのが 1 時間に満たないということに関係なく、プールが存在していた時間の最上位の eDTU または仮想コアを使用して 1 時間単位で行われます。
 
 エラスティック プールを使用することで、開発者は、複数のデータベースで共有されるプールのリソースを購入でき、個々のデータベースの使用期間が予測しづらい場合にも対応できます。 [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)または [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)のいずれかに基づいて、プールのリソースを構成できます。 プールのリソース要件は、そのデータベースの使用量の合計によって決まります。 プールで使用可能なリソースの量は、開発者の予算に応じて決められます。 開発者は、単純にプールにデータベースを追加し、データベースに対する最小および最大のリソース (選択したリソース モデルに応じて、最小および最大の DTU、または最小および最大の仮想コアのいずれか) を設定してから、予算に基づいてプールのリソースを設定します。 開発者はプールを使用することで、リーン スタートアップの段階から成熟企業の段階に至るまで、サービスをシームレスに拡大し続けることができます。
 
@@ -70,9 +73,9 @@ DB1 と類似する使用パターンを持つデータベースが他にもあ�
 
 次の理由からこの例は理想的です。
 
-* 各データベースのピーク時の使用量と、平均使用量に大きな差があります。
-* 各データベースのピーク使用時間が異なります。
-* eDTU は、多くのデータベース間で共有されます。
+- 各データベースのピーク時の使用量と、平均使用量に大きな差があります。
+- 各データベースのピーク使用時間が異なります。
+- eDTU は、多くのデータベース間で共有されます。
 
 プールの価格は、プール eDTU の機能を表します。 プールの eDTU 単価は単一データベースの DTU 単価の 1.5 倍ですが、**プール eDTU は多数のデータベースで共有できるため、合計 eDTU は少なくて済みます**。 これらの価格と eDTU 共有の特徴が、プールで節約を可能にするベースとなります。
 
@@ -89,23 +92,24 @@ Single Database のコンピューティング サイズを使用した場合と
 
 リソースを共有することで、プール内のすべてのデータベースが、単一のデータベースで使用可能な上限に達するまで、リソースを同時に使用できるわけではありません。 同時にピークになるデータベース数が少ないほど、プール リソースを低く設定して、よりプールのコスト効果を高めることができます。 一般的に、そのリソースの上限まで同時にピークになることができるのは、プールの 2/3 (67%) 以下のデータベースです。
 
-***DTU ベースの購入モデルの例***<br>
-200 eDTU のプール内の 3 つの S3 データベースのコストを削減する場合、同時にピークになることが許容されるのは、これらのデータベースのうちの 2 つまでです。 これら 4 つの S3 データベースの 3 つ以上が同時にピークとなる場合、プール サイズを 200 eDTU よりも大きくする必要があります。 プール サイズを 200 eDTU よりも大きくした場合、単一データベースのコンピューティング サイズを使用した場合よりもコストを低く抑えるには、プールの S3 データベース数を増やす必要があります。
+***DTU ベースの購入モデルの例***
+
+ 200 eDTU のプール内の 3 つの S3 データベースのコストを削減する場合、同時にピークになることが許容されるのは、これらのデータベースのうちの 2 つまでです。 これら 4 つの S3 データベースの 3 つ以上が同時にピークとなる場合、プール サイズを 200 eDTU よりも大きくする必要があります。 プール サイズを 200 eDTU よりも大きくした場合、単一データベースのコンピューティング サイズを使用した場合よりもコストを低く抑えるには、プールの S3 データベース数を増やす必要があります。
 
 この例では、プール内の他のデータベースの使用は考慮されていないことに注意してください。 すべてのデータベースがある特定の時間にいくらか使用されている場合、同時にピークとなることができるのは、2/3 (67%) 未満のデータベースです。
 
 ### <a name="resource-utilization-per-database"></a>各データベースのリソース使用量
+
 データベースのピーク時と平均使用時の差が大きいということは、使用量が低い時間が長く、使用量が高い時間が短いことを示します。 使用量がこのようなパターンになっている場合、リソースを複数のデータベースで共有するのが適しています。 データベースのピーク時の使用量が平均使用量よりも約 1.5 倍多い場合、プールを使用することを検討した方がよいでしょう。
 
-***DTU ベースの購入モデルの例***<br>
-S3 データベースが、ピーク時には 100 DTU を使用し、平均では 67 DTU 以下を使用する場合、eDTU をプールで共有するのが適しています。 または、S1 データベースがピーク時には 20 DTU を使用し、平均では 13 DTU 以下を使用する場合、プールが適しています。
+**DTU ベースの購入モデルの例**: S3 データベースが、ピーク時には 100 DTU を使用し、平均では 67 DTU 以下を使用する場合、eDTU をプールで共有するのが適しています。 または、S1 データベースがピーク時には 20 DTU を使用し、平均では 13 DTU 以下を使用する場合、プールが適しています。
 
 ## <a name="how-do-i-choose-the-correct-pool-size"></a>正しいプール サイズを選択するにはどうすればよいですか?
 
 プールに最適なサイズは、プール内のすべてのデータベースに必要な合計リソースに左右されます。 これには、次の値を特定する必要があります。
 
-* プール内のすべてのデータベースに使用される最大リソース数 (選択したリソース モデルに応じて、最大 DTU または最大仮想コアのいずれか)。
-* プール内のすべてのデータベースに使用される記憶域の最大バイト数。
+- プール内のすべてのデータベースに使用される最大リソース数 (選択したリソース モデルに応じて、最大 DTU または最大仮想コアのいずれか)。
+- プール内のすべてのデータベースに使用される記憶域の最大バイト数。
 
 各リソース モデルで使用可能なサービス レベルについては、「[DTU-based purchasing model](sql-database-service-tiers-dtu.md)」(DTU ベースの購入レベル) または「[vCore-based purchasing model (preview)](sql-database-service-tiers-vcore.md)」(vCore ベースの購入モデル) をご覧ください。
 
@@ -113,11 +117,11 @@ S3 データベースが、ピーク時には 100 DTU を使用し、平均で�
 
 1. プールに必要な eDTU または vCore は、次のように見積もります。
 
-   DTU ベースの購入モデルの場合: MAX(<*DB の合計数* X *DB あたりの DTU 平均使用率*>,<br>  
-   < *同時にピークとなる DB の数* X *DB あたりのピーク DTU 使用率* )
+   DTU ベースの購入モデルの場合:MAX(<*DB の合計数* X *DB あたりの DTU 平均使用率*>,<br>  
+   <*同時にピークとなる DB の数* X *DB あたりのピーク DTU 使用率*)
 
-   vCore ベースの購入モデルの場合: MAX(<*DB の合計数* X *DB あたりの vCore 平均使用率*>,<br>  
-   < *同時にピークとなる DB の数* X *DB あたりのピーク vCore 使用率* )
+   仮想コアベースの購入モデルの場合:MAX(<*DB の合計数* X *DB あたりの仮想コア平均使用率*>,<br>  
+   <*同時にピークとなる DB の数* X *DB あたりのピーク vCore 使用率*)
 
 2. プール内のすべてのデータベースに必要なバイト数を追加することで、プールに必要なストレージ領域を見積もります。 次に、このストレージの容量を提供する eDTU プール サイズを決定します。
 3. DTU ベースの購入モデルの場合、手順 1 と手順 2 の eDTU の見積もりのうち、大きい方を使用します。 vCore ベースの購入モデルの場合、手順 1 の vCore の見積もりを使用します。
@@ -133,17 +137,25 @@ S3 データベースが、ピーク時には 100 DTU を使用し、平均で�
 複数のデータベースを操作するための他のデータベース ツールの詳細については、「[Azure SQL Database によるスケール アウト](sql-database-elastic-scale-introduction.md)」を参照してください。
 
 ### <a name="business-continuity-options-for-databases-in-an-elastic-pool"></a>エラスティック プール内のデータベースのためのビジネス継続性オプション
+
 プールされたデータベースは、一般的に、単一データベースで使用できるのと同じ[ビジネス継続性機能](sql-database-business-continuity.md)をサポートしています。
 
-- **ポイントインタイム リストア**: ポイントインタイム リストアは、自動データベース バックアップを使用して、プール内のデータベースを特定の時点に復旧します。 「 [ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)
+- **ポイントインタイム リストア**
 
-- **geo リストア**: geo リストアは、データベースがホストされているリージョン内のインシデントのためにデータベースが使用できない場合の既定の復旧オプションを提供します。 「 [Azure SQL Database を復元する、またはセカンダリにフェールオーバーする](sql-database-disaster-recovery.md)
+  ポイントインタイム リストアは、自動データベース バックアップを使用して、プール内のデータベースを特定の時点に復元します。 「 [ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)
 
-- **アクティブ geo レプリケーション**: geo リストアが提供できるものよりアグレッシブな復旧要件があるアプリケーションの場合は、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を構成します。
+- **geo リストア**
+
+  geo リストアは、データベースがホストされているリージョンでのインシデントのためにデータベースが利用できない場合にも既定の復旧オプションを提供します。 「 [Azure SQL Database を復元する、またはセカンダリにフェールオーバーする](sql-database-disaster-recovery.md)
+
+- **アクティブ geo レプリケーション**
+
+  geo リストアが提供できるものよりアグレッシブな復旧要件があるアプリケーションの場合は、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)または[自動フェールオーバー グループ](sql-database-auto-failover-group.md)を構成します。
 
 ## <a name="creating-a-new-sql-database-elastic-pool-using-the-azure-portal"></a>Azure Portal を使用した新しい SQL Database エラスティック プールの作成
 
 Azure Portal でエラスティック プールを作成できる方法には次の 2 つがあります。
+
 1. エラスティック プールは、**Marketplace** で "**SQL エラスティック プール**" を検索するか、[SQL エラスティック プール] 参照ブレードの **[+追加]** をクリックする方法で作成できます。 このプールのプロビジョニング ワークフローでは、新しいサーバーまたは既存のサーバーを指定できます。
 2. または、既存の SQL Server に移動して **[プールの作成]** をクリックし、サーバーに直接プールを作成することで、エラスティック プールを作成できます。 ここでの唯一の違いは、プールのプロビジョニング ワークフローの最中にサーバーを指定する手順をスキップすることです。
 
@@ -162,8 +174,8 @@ Azure Portal では、エラスティック プールとそのプール内のデ
 
 エラスティック プールの監視を開始するには、ポータルでエラスティック プールを検索して開きます。 最初に、エラスティック プールの状態の概要を示す画面が表示されます。 次のトピックがあります。
 
-* エラスティック プールのリソース使用率を示す監視グラフ
-* エラスティック プールに関する最近のアラートと推奨事項 (使用可能な場合)
+- エラスティック プールのリソース使用率を示す監視グラフ
+- エラスティック プールに関する最近のアラートと推奨事項 (使用可能な場合)
 
 次の図に、エラスティック プールの例を示します。
 
@@ -189,9 +201,23 @@ Azure Portal では、エラスティック プールとそのプール内のデ
 
 詳細については、[Azure Portal での SQL Database アラートの作成](sql-database-insights-alerts-portal.md)に関するトピックを参照してください。
 
+## <a name="customer-case-studies"></a>お客様導入事例
+
+- [SnelStart](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-snelstart/)
+
+  SnelStart は、Azure SQL Database とエラスティック プールを使用して、新しい Azure SQL データベースを 1 か月あたり 1,000 台追加し、自社のビジネス サービスを急速に拡大しました。
+
+- [Umbraco](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-umbraco/)
+
+  Umbraco は、Azure SQL Database とエラスティック プールを使用して、クラウド上の数千のテナント向けに迅速にサービスをプロビジョニングしてスケーリングしています。
+
+- [Daxko/CSI](https://customers.microsoft.com/story/csi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services)
+
+  Daxko/CSI は、Azure SQL Database とエラスティック プールを使用して、開発サイクルを迅速化し、顧客サービスとパフォーマンスを強化しています。
+
 ## <a name="next-steps"></a>次の手順
 
 - エラスティック プールをスケーリングするには、[エラスティック プールのスケーリング](sql-database-elastic-pool.md)および[エラスティック プールのスケーリングのサンプル コード](scripts/sql-database-monitor-and-scale-pool-powershell.md)に関するページをご覧ください
-* ビデオについては、[Azure SQL Database のエラスティック機能に関する Microsoft Virtual Academy のビデオ コース](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)をご覧ください。
-* エラスティック プールを使用する SaaS アプリケーションの設計パターンの詳細については、「 [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
-* エラスティック プールを使用した SaaS チュートリアルについては、「[Introduction to the Wingtip SaaS application (Wingtip SaaS アプリケーションの概要)](sql-database-wtp-overview.md)」を参照してください。
+- ビデオについては、[Azure SQL Database のエラスティック機能に関する Microsoft Virtual Academy のビデオ コース](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)をご覧ください。
+- エラスティック プールを使用する SaaS アプリケーションの設計パターンの詳細については、「 [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
+- エラスティック プールを使用した SaaS チュートリアルについては、「[Introduction to the Wingtip SaaS application (Wingtip SaaS アプリケーションの概要)](sql-database-wtp-overview.md)」を参照してください。

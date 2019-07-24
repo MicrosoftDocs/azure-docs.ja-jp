@@ -1,6 +1,6 @@
 ---
-title: Azure Search .NET SDK バージョン 1.1 へのアップグレード | Microsoft Docs
-description: Azure Search .NET SDK バージョン 1.1 へのアップグレード
+title: Azure Search .NET SDK バージョン 1.1 へのアップグレード - Azure Search
+description: 以前の API バージョンから Azure Search .NET SDK バージョン 1.1 にコードを移行します。 新機能と必要なコード変更について説明します。
 author: brjohnstmsft
 manager: jlembicz
 services: search
@@ -9,12 +9,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: brjohnst
-ms.openlocfilehash: ccefd21e2aa89a2b46129956b3c4417d548cbf32
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 82823bae76521080634d4f7ff285d94ce8495fbf
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31796746"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317289"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-11"></a>Azure Search .NET SDK バージョン 1.1 へのアップグレード
 
@@ -47,15 +48,15 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
 
 <a name="ListOfChangesV1"></a>
 
-### <a name="list-of-breaking-changes-in-version-11"></a>バージョン 1.1 における重大な変更の一覧
+## <a name="list-of-breaking-changes-in-version-11"></a>バージョン 1.1 における重大な変更の一覧
 以下の一覧は、変更によってアプリケーション コードが影響を受ける可能性の高い順になっています。
 
-#### <a name="indexbatch-and-indexaction-changes"></a>IndexBatch と IndexAction の変更
+### <a name="indexbatch-and-indexaction-changes"></a>IndexBatch と IndexAction の変更
 `IndexBatch.Create` は名前が `IndexBatch.New` に変更され、`params` 引数はなくなりました。 `IndexBatch.New` は、異なる種類のアクション (マージ、削除など) が混在するバッチに使用できます。 さらに、すべてのアクションが同じバッチを作成するための新しい静的メソッドがあります。`Delete`、`Merge`、`MergeOrUpload`、および `Upload` です。
 
 `IndexAction` はパブリック コンストラクターを持たなくなり、そのプロパティは変更可能になっています。 さまざまな目的のアクションの作成には、新しい静的メソッドである `Delete`、`Merge`、`MergeOrUpload`、および `Upload` を使用する必要があります。 `IndexAction.Create` は削除されました。 ドキュメントだけを受け取るオーバーロードを使用していた場合は、代わりに `Upload` を使用してください。
 
-##### <a name="example"></a>例
+#### <a name="example"></a>例
 次のようなコードがあるものとします。
 
     var batch = IndexBatch.Create(documents.Select(doc => IndexAction.Create(doc)));
@@ -71,10 +72,10 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
     var batch = IndexBatch.Upload(documents);
     indexClient.Documents.Index(batch);
 
-#### <a name="indexbatchexception-changes"></a>IndexBatchException の変更
+### <a name="indexbatchexception-changes"></a>IndexBatchException の変更
 `IndexBatchException.IndexResponse` プロパティは名前が `IndexingResults` に変更され、型は `IList<IndexingResult>` になりました。
 
-##### <a name="example"></a>例
+#### <a name="example"></a>例
 次のようなコードがあるものとします。
 
     catch (IndexBatchException e)
@@ -95,7 +96,7 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
 
 <a name="OperationMethodChanges"></a>
 
-#### <a name="operation-method-changes"></a>操作メソッドの変更
+### <a name="operation-method-changes"></a>操作メソッドの変更
 Azure Search .NET SDK の各操作は、同期および非同期の呼び出し元に対するメソッドのオーバーロードのセットとして公開されます。 これらのメソッド オーバーロードのシグネチャと要素分解は、バージョン 1.1 で変更されました。
 
 たとえば、旧バージョンの SDK の「インデックス統計の取得」操作は、次のようなシグネチャを公開しました。
@@ -151,10 +152,10 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 * 拡張メソッドで、HTTP の重要ではない細部の多くが呼び出し元に開示しないようになっています。 たとえば、以前のバージョンの SDK では、HTTP 状態コードで応答オブジェクトが返されましたが、操作メソッドはエラーを示す状態コードに対して `CloudException` をスローするため、応答オブジェクトをチェックする必要はほとんどありませんでした。 新しい拡張メソッドはモデル オブジェクトだけを返すので、コードでラップを解除する必要がある問題が減ります。
 * 逆に、コア インターフェイスでは、必要がある場合に HTTP レベルでの詳細な制御を提供するメソッドが公開されるようになっています。 要求に含めるカスタム HTTP ヘッダーを渡すことができ、`AzureOperationResponse<T>` 型の戻り値を使用すると操作の `HttpRequestMessage` および `HttpResponseMessage` に直接アクセスできます。 `AzureOperationResponse` は `Microsoft.Rest.Azure` 名前空間に定義され、`Hyak.Common.OperationResponse` を置き換えます。
 
-#### <a name="scoringparameters-changes"></a>ScoringParameters の変更
+### <a name="scoringparameters-changes"></a>ScoringParameters の変更
 最新の SDK に `ScoringParameter` という新しいクラスが追加され、検索クエリでスコアリング プロファイルにパラメーターを簡単に指定できるようになりました。 これまで、`SearchParameters` クラスの `ScoringProfiles` プロパティは `IList<string>` と型指定されていました。このプロパティが `IList<ScoringParameter>` と型指定されるようになりました。
 
-##### <a name="example"></a>例
+#### <a name="example"></a>例
 次のようなコードがあるものとします。
 
     var sp = new SearchParameters();
@@ -172,7 +173,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
             new ScoringParameter("mapCenterParam", GeographyPoint.Create(lat, lon))
         };
 
-#### <a name="model-class-changes"></a>モデル クラスの変更
+### <a name="model-class-changes"></a>モデル クラスの変更
 「[操作メソッドの変更](#OperationMethodChanges)」で説明されているシグネチャの変更により、`Microsoft.Azure.Search.Models` 名前空間の多くのクラスの名前が変更されるか、クラスが削除されました。 例: 
 
 * `IndexDefinitionResponse` は `AzureOperationResponse<Index>` によって置き換えられました
@@ -184,7 +185,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 
 まとめると、モデル オブジェクトをラップするためだけに存在していた `OperationResponse`派生クラスが削除されました。 残りのクラスについては、サフィックスが `Response` から `Result` に変更されました。
 
-##### <a name="example"></a>例
+#### <a name="example"></a>例
 次のようなコードがあるものとします。
 
     IndexerGetStatusResponse statusResponse = null;
@@ -217,7 +218,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 
     IndexerExecutionResult lastResult = status.LastResult;
 
-##### <a name="response-classes-and-ienumerable"></a>応答クラスと IEnumerable
+#### <a name="response-classes-and-ienumerable"></a>応答クラスと IEnumerable
 コードに影響する可能性のあるその他の変更として、コレクションを保持する応答クラスが `IEnumerable<T>`を実装しなくなりました。 代わりに、コレクション プロパティに直接アクセスすることができます。 たとえば、次のようなコードがあるものとします。
 
     DocumentSearchResponse<Hotel> response = indexClient.Documents.Search<Hotel>(searchText, sp);
@@ -234,7 +235,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
         Console.WriteLine(result.Document);
     }
 
-##### <a name="special-case-for-web-applications"></a>Web アプリケーションの特殊な例
+#### <a name="special-case-for-web-applications"></a>Web アプリケーションの特殊な例
 `DocumentSearchResponse` を直接シリアル化して検索結果をブラウザーに送信する Web アプリケーションがある場合、コードを変更する必要があります。変更しないと、結果が正しくシリアル化されません。 たとえば、次のようなコードがあるものとします。
 
     public ActionResult Search(string q = "")
@@ -267,10 +268,10 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 
 開発者自身がコード内でこのようなケースを探す必要があります。`JsonResult.Data` は `object` 型であるため、**コンパイラは警告を生成しません**。
 
-#### <a name="cloudexception-changes"></a>CloudException の変更
+### <a name="cloudexception-changes"></a>CloudException の変更
 `CloudException` クラスは、`Hyak.Common` 名前空間から `Microsoft.Rest.Azure` 名前空間に移動されました。 また、その `Error` プロパティの名前が `Body` に変更されています。
 
-#### <a name="searchserviceclient-and-searchindexclient-changes"></a>SearchServiceClient と SearchIndexClient の変更
+### <a name="searchserviceclient-and-searchindexclient-changes"></a>SearchServiceClient と SearchIndexClient の変更
 `Credentials` プロパティの型が、`SearchCredentials` からその基本クラス `ServiceClientCredentials` に変更されました。 `SearchIndexClient` または `SearchServiceClient` の `SearchCredentials` にアクセスする必要がある場合は、新しい `SearchCredentials` プロパティを使用してください。
 
 古いバージョンの SDK では、`SearchServiceClient` および `SearchIndexClient` に `HttpClient` パラメーターを受け取るコンストラクターがありました。 これらは、`HttpClientHandler` と、`DelegatingHandler` オブジェクトの配列を受け取るコンストラクターに置き換えられました。 これにより、必要な場合に前処理 HTTP 要求にカスタム ハンドラーをインストールするのが容易になります。
@@ -291,7 +292,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 
 また、資格情報パラメーターの型が `ServiceClientCredentials`に変更されたことにも注意してください。 `SearchCredentials` は `ServiceClientCredentials` から派生しているので、コードへの影響はないものと思われます。
 
-#### <a name="passing-a-request-id"></a>要求 ID の受け渡し
+### <a name="passing-a-request-id"></a>要求 ID の受け渡し
 古いバージョンの SDK では、要求 ID は `SearchServiceClient` または `SearchIndexClient` で設定でき、REST API へのすべての要求に組み込まれていました。 これは、サポートに連絡する必要がある場合、Search サービスに関する問題のトラブルシューティングに役立ちました。 しかし、すべての操作に同じ ID を使用するのではなく、操作ごとに一意の要求 ID を設定する方が便利です。 このため、`SearchServiceClient` および `SearchIndexClient` の `SetClientRequestId` メソッドは削除されました。 代わりに、省略可能な `SearchRequestOptions` パラメーターを使用して、各操作メソッドに要求 ID を渡すことができます。
 
 > [!NOTE]
@@ -299,7 +300,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 > 
 > 
 
-#### <a name="example"></a>例
+### <a name="example"></a>例
 次のようなコードがあるものとします。
 
     client.SetClientRequestId(Guid.NewGuid());
@@ -310,7 +311,7 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 
     long count = client.Documents.Count(new SearchRequestOptions(requestId: Guid.NewGuid()));
 
-#### <a name="interface-name-changes"></a>インターフェイス名の変更
+### <a name="interface-name-changes"></a>インターフェイス名の変更
 操作グループのインターフェイス名が、対応するプロパティ名と一致するようにすべて変更されています。
 
 * `ISearchServiceClient.Indexes` の型の名前が、`IIndexOperations` から `IIndexesOperations` に変更されました。
@@ -322,17 +323,17 @@ Azure Search .NET SDK の各操作は、同期および非同期の呼び出し�
 
 <a name="BugFixesV1"></a>
 
-### <a name="bug-fixes-in-version-11"></a>バージョン 1.1 でのバグ修正
+## <a name="bug-fixes-in-version-11"></a>バージョン 1.1 でのバグ修正
 古いバージョンの Azure Search .NET SDK には、カスタム モデル クラスのシリアル化に関するバグがありました。 このバグは、null 非許容値型のプロパティを使用してカスタム モデル クラスを作成した場合に発生する可能性がありました。
 
-#### <a name="steps-to-reproduce"></a>再現手順
+### <a name="steps-to-reproduce"></a>再現手順
 null 非許容値型のプロパティを使用してカスタム モデル クラスを作成します。 たとえば、`int?` ではなく `int` 型のパブリック `UnitCount` プロパティを追加します。
 
 その型の既定値 (たとえば、 `int`の場合は 0) でドキュメントのインデックスを設定した場合、フィールドは Azure Search では null になります。 その後、そのドキュメントを検索した場合、`Search` の呼び出しで、`null` を `int` に変換できないことを示す `JsonSerializationException` がスローされます。
 
 また、意図した値ではなく null がインデックスに書き込まれるため、フィルターは期待どおりに機能しません。
 
-#### <a name="fix-details"></a>修正の詳細
+### <a name="fix-details"></a>修正の詳細
 この問題は、SDK のバージョン 1.1 で解決されました。 次のようなモデル クラスがあるものとします。
 
     public class Model
@@ -344,7 +345,7 @@ null 非許容値型のプロパティを使用してカスタム モデル ク�
 
 さらに `IntValue` を 0 に設定します。現在では、この値はネットワーク上で正しく 0 としてシリアル化され、インデックスに 0 と格納されるようになっています。 ラウンドトリップも予期したとおりに動作します。
 
-この方法で注意すべき潜在的な問題が 1 つあります。null 非許容プロパティを使用する種類のモデルを使用する場合、対応するフィールドに null 値が含まれるドキュメントがインデックス内に存在しないことを、開発者が**保証する**必要があります。 SDK も Azure Search REST API も、このことを強制する役には立ちません。
+この方法には、注意すべき潜在的な問題が 1 つあります。null 非許容プロパティを含むモデル タイプ使用する場合、対応するフィールドに null 値が含まれるドキュメントがインデックス内に存在しないことを、開発者が**保証する**必要があります。 SDK も Azure Search REST API も、このことを強制する役には立ちません。
 
 これは単なる仮定上の問題ではありません。`Edm.Int32` 型の既存のインデックスに新しいフィールドを追加する場合を考えてみてください。 インデックスの定義を更新した後、(Azure Search ではすべての型が null を許容するので) すべてのドキュメントでその新しいフィールドの値が null になります。 その後、そのフィールドが null 非許容型の `int` プロパティであるモデル クラスを使用した場合、ドキュメントを取得しようとすると、次のような `JsonSerializationException` が発生します。
 

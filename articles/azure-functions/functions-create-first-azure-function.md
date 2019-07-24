@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: a1a593dc037901f6661bc8c7268d835bc5a48c94
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 1b7efd4f36d5587667010d25f30a3e7945faee4f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900618"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997807"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure Portal で初めての関数を作成する
 
@@ -32,7 +32,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure アカウントで Azure Portal (<http://portal.azure.com>) にサインインします。
+Azure アカウントで Azure Portal (<https://portal.azure.com>) にサインインします。
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 

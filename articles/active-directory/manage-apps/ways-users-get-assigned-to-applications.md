@@ -3,23 +3,24 @@ title: アプリケーションにユーザーを割り当てる方法 | Microso
 description: ユーザーがテナントでアプリケーションに割り当てられる方法について理解します。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: barbkess
-ms.openlocfilehash: d34671d4197735ea2c30aafc8fd01a5893427ff3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: celested
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: be36bfeb0991dc4a4b7fce723cadb6b508c0d6a3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226848"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198723"
 ---
 # <a name="how-to-assign-users-to-applications"></a>ユーザーをアプリケーションに割り当てる方法
 
@@ -33,15 +34,15 @@ ms.locfileid: "51226848"
 
 2.  管理者が、アプリケーションにユーザーがメンバーとなっている[グループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)。次のグループが含まれます。
 
-  * オンプレミスから同期されたグループ
+    * オンプレミスから同期されたグループ
 
-  * クラウドで作成された静的なセキュリティ グループ
+    * クラウドで作成された静的なセキュリティ グループ
 
-  * クラウドで作成された[動的なセキュリティ グループ](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal)
+    * クラウドで作成された[動的なセキュリティ グループ](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal)
 
-  * クラウドで作成された Office 365 グループ
+    * クラウドで作成された Office 365 グループ
 
-  * [すべてのユーザー](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups) グループ
+    * [すべてのユーザー](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups) グループ
 
 3.  管理者が [[アプリケーションのセルフ サービス アクセス]](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) を有効にして、[[アプリケーション アクセス パネル]](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) の **[アプリの追加]** 機能を**ビジネス承認なし**で使用するアプリケーションの追加をユーザーに許可します。
 
@@ -55,9 +56,9 @@ ms.locfileid: "51226848"
 
 8.  管理者は、[Microsoft Office 365](https://products.office.com/) などのファースト パーティ アプリケーションのライセンスを、ユーザーがメンバーとなっているグループに割り当てます。
 
-9.  [管理者がすべてのユーザーによるアプリケーションの使用に同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)したら、ユーザーはアプリケーションにサインインします。
+9.  [管理者がすべてのユーザーによるアプリケーションの使用に同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)したら、ユーザーはアプリケーションにサインインします。
 
-10. ユーザーはアプリケーションにサインインすることで、[アプリケーションに同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)します。
+10. ユーザーはアプリケーションにサインインすることで、[アプリケーションに同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)します。
 
 ## <a name="next-steps"></a>次の手順
 [Azure Active Directory でのアプリケーションの管理](what-is-application-management.md)

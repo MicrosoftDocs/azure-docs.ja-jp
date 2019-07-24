@@ -1,26 +1,21 @@
 ---
-title: Azure Cosmos DB でテーブル データのクエリを実行する方法 | Microsoft Docs
+title: Azure Cosmos DB でテーブル データのクエリを実行する方法
 description: Azure Cosmos DB でテーブル データのクエリを実行する方法を学習する
-services: cosmos-db
-author: kanshiG
-manager: kfile
-editor: ''
-tags: ''
+author: wmengmsft
+ms.author: wmeng
 ms.service: cosmos-db
-ms.component: cosmosdb-table
-ms.devlang: na
+ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 11/15/2017
-ms.author: govindk
-ms.custom: mvc
-ms.openlocfilehash: 9d47928984330f2366da066c221e2bb502aa7193
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.reviewer: sngun
+ms.openlocfilehash: 28e9b420f3abc972e047af72e1b5bc755e7f9d2b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442949"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001641"
 ---
-# <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>チュートリアル: Table API を使って Azure Cosmos DB を照会する
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>チュートリアル:Table API を使って Azure Cosmos DB に対するクエリを実行する
 
 Azure Cosmos DB [Table API](table-introduction.md) では、キー/値 (テーブル) データに対する OData クエリと [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) クエリがサポートされます。  
 
@@ -83,14 +78,14 @@ https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and
 
 | パーティション キー | 行キー | 電子メール | PhoneNumber |
 | --- | --- | --- | --- |
-| Ben |Smith | Ben@contoso.com| 425-555-0102 |
+| Smith |Ben | Ben@contoso.com| 425-555-0102 |
 
 ## <a name="query-by-using-linq"></a>LINQ を使用したクエリ 
 LINQ を使用してクエリを実行することもできます。これは、対応する OData クエリ式に変換されます。 .NET SDK を使用してクエリを作成する方法の例を次に示します。
 
 ```csharp
 CloudTableClient tableClient = account.CreateCloudTableClient();
-CloudTable table = tableClient.GetTableReference("people");
+CloudTable table = tableClient.GetTableReference("People");
 
 TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>()
     .Where(

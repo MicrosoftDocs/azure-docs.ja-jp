@@ -6,13 +6,13 @@ author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 11/08/2018
-ms.openlocfilehash: ad23599d1df5d07e912f634435f8b44b441d87e6
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.date: 01/17/2019
+ms.openlocfilehash: c49044d8bd96efb7e86cf54509c32033900be305
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298533"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58180910"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>イベント ドメインを使用してトピックを管理し、イベントを発行する
 
@@ -24,6 +24,8 @@ ms.locfileid: "51298533"
 * ドメインにイベントを発行する
 
 イベント ドメインについて学習するには、「[Event Grid トピックを管理するためのイベント ドメインについて](event-domains.md)」をご覧ください。
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 ## <a name="install-preview-feature"></a>プレビュー機能のインストール
 
@@ -132,14 +134,14 @@ New-AzureRmEventGridSubscription `
 
 イベントをサブスクライブするテスト エンドポイントが必要な場合は、受信イベントを表示する[ビルド済みの Web アプリ](https://github.com/Azure-Samples/azure-event-grid-viewer)をいつでもデプロイすることができます。 `https://<your-site-name>.azurewebsites.net/api/updates` のテスト Web サイトにイベントを送信できます。
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 トピックに設定されているアクセス許可は Azure Active Directory で格納され、明示的に削除する必要があります。 ユーザーにトピックへの書き込みアクセス権限がある場合、イベント サブスクリプションを削除しても、イベント サブスクリプションを作成するためのアクセスは取り消されません。
 
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>Event Grid ドメインにイベントを発行する
 
-ドメインにイベントを発行することは、[カスタム トピックに発行する](./post-to-custom-topic.md)ことと同じです。 唯一の違いは、各イベントの送信先となるトピックを指定する必要があることです。 次のイベントの配列では、`"id": "1111"` のイベントが `foo` に送信され、`"id": "2222"` のイベントはトピック `bar` に送信されます。
+ドメインにイベントを発行することは、[カスタム トピックに発行する](./post-to-custom-topic.md)ことと同じです。 ただし、カスタム トピックに発行するのではなく、すべてのイベントをドメイン エンドポイントに発行します。 JSON イベント データでは、イベントの送信先のトピックを指定します。 次のイベントの配列では、`"id": "1111"` のイベントが `demotopic1` に送信され、`"id": "2222"` のイベントはトピック `demotopic2` に送信されます。
 
 ```json
 [{
@@ -168,7 +170,15 @@ New-AzureRmEventGridSubscription `
 }]
 ```
 
-Azure CLI でドメインのキーを取得するには、以下を使用します。
+Azure CLI を使用してドメイン エンドポイントを取得するには、以下を使用します。
+
+```azurecli-interactive
+az eventgrid domain show \
+  -g <my-resource-group> \
+  -n <my-domain>
+```
+
+ドメインのキーを取得するには、以下を使用します。
 
 ```azurecli-interactive
 az eventgrid domain key list \
@@ -176,7 +186,15 @@ az eventgrid domain key list \
   -n <my-domain>
 ```
 
-PowerShell では、次を使用します。
+PowerShell を使用してドメイン エンドポイントを取得するには、以下を使用します。
+
+```azurepowershell-interactive
+Get-AzureRmEventGridDomain `
+  -ResourceGroupName <my-resource-group> `
+  -Name <my-domain>
+```
+
+ドメインのキーを取得するには、以下を使用します。
 
 ```azurepowershell-interactive
 Get-AzureRmEventGridDomainKey `

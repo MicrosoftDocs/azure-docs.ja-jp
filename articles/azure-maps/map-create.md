@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 659f6def7e6bb045606b7214a4b8b4cab693117b
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 222fc5e9083c03ff0d4e31927363c5f517cf32a9
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248169"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699366"
 ---
 # <a name="create-a-map"></a>マップを作成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "50248169"
 <iframe height='500' scrolling='no' title='CameraOptions を介してマップを作成する' src='//codepen.io/azuremaps/embed/qxKBMN/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Location Based Services (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) によって、Pen の <a href='https://codepen.io/azuremaps/pen/qxKBMN/'>Create a map via `CameraOptions` </a> を表示します。
 </iframe>
 
-上記のコードでは、`new atlas.Map()` によって [Map オブジェクト](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)が作成され、中心とズームが設定されます。 中央やズーム レベルなどのマップのプロパティは、[CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraoptions?view=azure-iot-typescript-latest) の一部です。
+上記のコードでは、`new atlas.Map()` によって [Map オブジェクト](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)が作成され、中心とズームが設定されます。 中央やズーム レベルなどのマップのプロパティは、[CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) の一部です。
 
 <a id="setCameraBoundsOptions"></a>
 
@@ -40,16 +40,16 @@ ms.locfileid: "50248169"
 <iframe height='500' scrolling='no' title='CameraBoundsOptions を介してマップを作成する' src='//codepen.io/azuremaps/embed/ZrRbPg/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) によって、Pen の <a href='https://codepen.io/azuremaps/pen/ZrRbPg/'>Create a map via `CameraBoundsOptions` </a> を表示します。
 </iframe>
 
-上記のコードでは、`new atlas.Map()` を介して[マップ オブジェクト](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)が構築されています。 `CameraBoundsOptions` などの Map プロパティは、Map クラスの [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) 関数を介して定義できます。 境界とパディングのプロパティは、`setCamera` を使用して設定します。
+上記のコードでは、`new atlas.Map()` を介して[マップ オブジェクト](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)が構築されています。 `CameraBoundsOptions` などの Map プロパティは、Map クラスの [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 関数を介して定義できます。 境界とパディングのプロパティは、`setCamera` を使用して設定します。
 
 ### <a name="animate-map-view"></a>マップ ビューをアニメーション化する
 
 <iframe height='500' scrolling='no' title='マップ ビューをアニメーション化する' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/WayvbO/'>Animate Map View</a>」Pen を表示します。
 </iframe>
 
-上記のコードの最初のコード ブロックでは、`new atlas.Map()` によって [Map オブジェクト](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)が作成されます。 中央やズーム レベルなどのマップのプロパティは、[CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraoptions?view=azure-iot-typescript-latest) の一部です。 `CameraOptions` は、マップコンストラクターで、またはマップ クラスの [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) 関数を介して定義できます。 [マップ スタイル](https://review.docs.microsoft.com/azure/azure-maps/supported-map-styles?branch=pr-en-us-54960)は `road` に設定されます。
+上記のコードの最初のコード ブロックでは、`new atlas.Map()` によって [Map オブジェクト](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)が作成されます。 中央やズーム レベルなどのマップのプロパティは、[CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) の一部です。 `CameraOptions` は、マップコンストラクターで、またはマップ クラスの [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 関数を介して定義できます。 [マップ スタイル](https://docs.microsoft.com/azure/azure-maps/supported-map-styles)は `road` に設定されます。
 
-2 番目のコード ブロックでは、アニメーション マップ関数が作成されます。この関数は、[setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) 関数によって、[AnimateOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.animationoptions?view=azure-iot-typescript-latest) を定義して、マップ ビュー内の変化をアニメーション化します。 関数は、[Animate Map] ボタンをクリックしてトリガーされ、クリックするたびにランダムなズーム レベルが生成されます。
+2 番目のコード ブロックでは、アニメーション マップ関数が作成されます。この関数は、[setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) 関数によって、[AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions) を定義して、マップ ビュー内の変化をアニメーション化します。 関数は、[Animate Map] ボタンをクリックしてトリガーされ、クリックするたびにランダムなズーム レベルが生成されます。
 
 ## <a name="try-out-the-code"></a>コードを実行する
 

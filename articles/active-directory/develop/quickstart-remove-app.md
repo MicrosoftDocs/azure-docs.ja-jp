@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,21 +16,22 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 916d34a0af1490404cb9f7851b3117f1967c54d0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 20d7218b9b1d53b3cfb72a12ee34a77956327ce2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240904"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093196"
 ---
-# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform-preview"></a>クイック スタート: Microsoft ID プラットフォームに登録されたアプリケーションを削除する (プレビュー)
+# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform-preview"></a>クイック スタート:Microsoft ID プラットフォームに登録されたアプリケーションを削除する (プレビュー)
 
 アプリケーションを Microsoft ID プラットフォームに登録したエンタープライズ開発者や SaaS (サービスとしてのソフトウェア) プロバイダーは、アプリケーションの登録の削除が必要になる場合があります。
 
 このクイック スタートでは、次の方法について説明します。
 
-* [自分または自分の組織が作成したアプリケーションを削除する](#remove-an-application-authored-by-your-organization)
-* [他の組織が作成したアプリケーションを削除する](#remove-an-application-authoried-by-another-organization)
+* 自分または自分の組織が作成したアプリケーションを削除する
+* 他の組織が作成したアプリケーションを削除する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,8 +52,8 @@ ms.locfileid: "51240904"
 4. **[概要]** ページで **[削除]** を選択します。
 5. アプリの削除を確認する画面で **[はい]** を選択します。
 
-  > [!NOTE]
-  > アプリケーションを削除するには、アプリケーションの所有者の一覧に含まれているか、管理者特権を持っている必要があります。
+   > [!NOTE]
+   > アプリケーションを削除するには、アプリケーションの所有者の一覧に含まれているか、管理者特権を持っている必要があります。
 
 ## <a name="remove-an-application-authored-by-another-organization"></a>他の組織が作成したアプリケーションを削除する
 

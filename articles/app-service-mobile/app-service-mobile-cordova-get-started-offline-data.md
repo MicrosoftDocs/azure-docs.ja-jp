@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: c12328a441a8cc438fa3e974863cc8adf8651b50
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 44c54b570a38eb1a3b9ca773893599d1d497dfa2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27593716"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972152"
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>Cordova モバイル アプリのオフライン同期を有効にする
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "27593716"
 
 このチュートリアルは、チュートリアル「 [Apache Cordova クイック スタート]」を完了した際に作成される Mobile Apps 用の Cordova クイック スタート ソリューションに基づいています。 このチュートリアルでは、クイックスタート ソリューションを更新して、Azure Mobile Apps のオフライン機能を追加します。  また、アプリのオフライン固有のコードについても取り上げます。
 
-オフラインの同期機能の詳細については、トピック「 [増分同期]」をご覧ください。 API 使用量の詳細については、[API ドキュメント](https://azure.github.io/azure-mobile-apps-js-client)をご覧ください。
+オフラインの同期機能の詳細については、トピック「 [Azure Mobile Apps でのオフライン データ同期]」をご覧ください。 API 使用量の詳細については、[API ドキュメント](https://azure.github.io/azure-mobile-apps-js-client)をご覧ください。
 
 ## <a name="add-offline-sync-to-the-quickstart-solution"></a>クイック スタート ソリューションへのオフライン同期の追加
 オフライン同期コードは、アプリに追加する必要があります。 オフライン同期には、cordova-sqlite-storage プラグインが必要です。このプラグインは、Azure Mobile Apps プラグインがプロジェクトに含まれる場合に、自動的にアプリに追加されます。 クイック スタート プロジェクトには、これらの両方のプラグインが含まれています。
@@ -136,7 +136,7 @@ ms.locfileid: "27593716"
 
 コンテキストによって追跡された保留中のローカル更新のあるテーブルに対してプルが実行された場合、そのプル操作は自動的にプッシュをトリガーします。 このサンプルの項目を更新、追加、完了するとき、明示的な **push** の呼び出しは省略できます。冗長であるためです。
 
-提供されたコードでは、リモートの todoItem テーブルのすべてのレコードが照会されますが、クエリ ID とクエリを **push**に渡すことでレコードをフィルター処理することも可能です。 詳細については、「 *Azure Mobile Apps でのオフライン データ同期* 」の「 [増分同期]」セクションを参照してください。
+提供されたコードでは、リモートの todoItem テーブルのすべてのレコードが照会されますが、クエリ ID とクエリを **push**に渡すことでレコードをフィルター処理することも可能です。 詳細については、「 *Azure Mobile Apps でのオフライン データ同期* 」の「 [Azure Mobile Apps でのオフライン データ同期]」セクションを参照してください。
 
 ## <a name="optional-disable-authentication"></a>(省略可能) 認証の無効化
 
@@ -187,8 +187,8 @@ ms.locfileid: "27593716"
     データがデータベースとローカル ストアの間で同期されており、アプリが接続されていない状況で追加した項目が含まれていることを確認してください。
 
 ## <a name="additional-resources"></a>その他のリソース
-* [増分同期]
-* [Visual Studio Tools for Apache Cordova]
+* [Azure Mobile Apps でのオフライン データ同期]
+* [Apache Cordova の Visual Studio ツール]
 
 ## <a name="next-steps"></a>次の手順
 * [オフライン同期サンプル]で、競合解決など、より高度なオフライン同期機能について学びます。
@@ -201,13 +201,13 @@ ms.locfileid: "27593716"
 <!-- URLs. -->
 [Apache Cordova クイック スタート]: app-service-mobile-cordova-get-started.md
 [オフライン同期サンプル]: https://github.com/Azure-Samples/app-service-mobile-cordova-client-conflict-handling
-[増分同期]: app-service-mobile-offline-data-sync.md
-[Cloud Cover: Offline Sync in Azure Mobile Services]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Azure Mobile Apps でのオフライン データ同期]: app-service-mobile-offline-data-sync.md
+[Cloud Cover: Offline Sync in Azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Adding Authentication]: app-service-mobile-cordova-get-started-users.md
 [authentication]: app-service-mobile-cordova-get-started-users.md
 [Work with the .NET backend server SDK for Azure Mobile Apps]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[Visual Studio Community 2015]: http://www.visualstudio.com/
-[Visual Studio Tools for Apache Cordova]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
+[Visual Studio Community 2015]: https://www.visualstudio.com/
+[Apache Cordova の Visual Studio ツール]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
 [Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
 [ASP.NET Server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js Server SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md

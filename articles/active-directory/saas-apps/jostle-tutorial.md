@@ -1,234 +1,202 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Jostle の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Jostle の統合 | Microsoft Docs
 description: Azure Active Directory と Jostle の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 9ca4ca1f-8f68-4225-81a6-1666b486d6a8
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/30/2017
+ms.topic: tutorial
+ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: b988d908b995b1144837c8642a8864a87e2fc61a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6304f4afa05850ced8b88bb81c0f94e4a31fb5be
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437528"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59277271"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-jostle"></a>チュートリアル: Azure Active Directory と Jostle の統合
+# <a name="tutorial-azure-active-directory-integration-with-jostle"></a>チュートリアル:Azure Active Directory と Jostle の統合
 
 このチュートリアルでは、Jostle と Azure Active Directory (Azure AD) を統合する方法について説明します。
-
 Jostle と Azure AD の統合には、次の利点があります。
 
-- Jostle にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Jostle にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます
+* Jostle にアクセスする Azure AD ユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Jostle に自動的にサインイン (シングル サインオン) できるようにすることができます。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure AD と Jostle の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション
-- Jostle でのシングル サインオンが有効なサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
+* Jostle でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの Jostle の追加
-1. Azure AD シングル サインオンの構成とテスト
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+
+* Jostle では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-jostle-from-the-gallery"></a>ギャラリーからの Jostle の追加
+
 Azure AD への Jostle の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Jostle を追加する必要があります。
 
 **ギャラリーから Jostle を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Active Directory][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-    ![[アプリケーション]][2]
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-1. ウィンドウ上部の **[追加]** をクリックします。
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![add_01](./media/jostle-tutorial/add_01.png)
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-1. **[アプリケーションの追加]** の下にある検索ボックスに「**Jostle**」と入力します。
+4. 検索ボックスに「**Jostle**」と入力し、結果パネルで **Jostle** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
-    ![add_02](./media/jostle-tutorial/add_02.png)
+     ![結果一覧の Jostle](common/search-new-app.png)
 
-1. 結果ウィンドウで **[Jostle]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-    ![Azure AD のテスト ユーザーの作成](./media/jostle-tutorial/tutorial_jostle_addfromgallery.png)
-
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Jostle で Azure AD のシングル サインオンを構成し、テストします。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Jostle ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Jostle の関連ユーザーの間で、リンク関係が確立されている必要があります。
-
-Jostle で、Azure AD の **[ユーザー名]** の値を **[Username]** の値として割り当ててリンク関係を確立します。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Jostle で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと Jostle 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Jostle で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[Jostle テスト ユーザーの作成](#creating-a-jostle-test-user)** - Jostle で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Jostle シングル サインオンの構成](#configure-jostle-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[Jostle のテスト ユーザーの作成](#create-jostle-test-user)** - Jostle で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にし、Jostle アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-**Jostle で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+Jostle で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. Azure Portal の **Jostle** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **Jostle** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![Configure single sign-on][4]
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-    ![Configure single sign-on](./media/jostle-tutorial/tutorial_jostle_samlbase.png)
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-1. **[Jostle Domain and URLs]\(Jostle のドメインと URL\)** セクションで、次の手順を実行します。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    ![url_01](./media/jostle-tutorial/url_01.png)
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-    a. **[サインオン URL]** ボックスに、「`https://login-prod.jostle.us`」と入力します。
+4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    b. **[識別子]** ボックスに、「`https://jostle.us`」と入力します。
+    ![[Jostle のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
-    c. **[詳細な URL 設定の表示]** チェック ボックスをオンにします。
+    a. **[サインオン URL]** テキスト ボックスに、URL として「`https://login-prod.jostle.us`」と入力します。
 
-    d. **[応答 URL]** ボックスに、「`https://login-prod.jostle.us/saml/SSO/alias/newjostle.us`」と入力します。
+    b. **[識別子]** ボックスに、URL として「`https://jostle.us`」と入力します。
 
-1. **[ユーザー属性]** セクションで、**[ユーザー識別子]** フィールドに「`user.userprincipalname`」と入力します。
+    c. **[応答 URL]** ボックスに、URL として「`https://login-prod.jostle.us/saml/SSO/alias/newjostle.us`」と入力します。
 
-    ![url_02](./media/jostle-tutorial/url_02.png)
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
-1. ウィンドウの上部にある **[保存]** をクリックします。
+    ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-1. **[SAML 署名証明書]** に移動し、**[アクティブ]** に設定されていることを確認します。 **[メタデータ XML]** をクリックし、メタデータ ファイルをダウンロードします。
+6. **[Jostle のセットアップ]** セクションで、要件どおりの適切な URL をコピーします。
 
-    ![url_03](./media/jostle-tutorial/url_03.png)
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-1. Jostle 側にシングル サインオンを構成するには、ダウンロードしたメタデータ XML を [Jostle サポート チーム](mailto:support@jostle.me)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+    a. ログイン URL
 
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
->
+    b. Azure AD 識別子
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+    c. ログアウト URL
+
+### <a name="configure-jostle-single-sign-on"></a>Jostle のシングル サインオンの構成
+
+**Jostle** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Jostle サポート チーム](mailto:support@jostle.me)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-![Azure AD ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
-1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/jostle-tutorial/create_aaduser_01.png)
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
-1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/jostle-tutorial/create_aaduser_02.png)
+    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    たとえば、BrittaSimon@contoso.com のように指定します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/jostle-tutorial/create_aaduser_03.png)
-
-1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
-
-    ![Azure AD のテスト ユーザーの作成](./media/jostle-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
-
-    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
     d. **Create** をクリックしてください。
 
-### <a name="creating-a-jostle-test-user"></a>Jostle のテスト ユーザーの作成
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Jostle で Britta Simon というユーザーを作成します。 Jostle に Britta Simon を追加する方法がわからない場合は、[Jostle サポート チーム](mailto:support@jostle.me)に連絡し、テスト ユーザーを追加して SSO を有効にしてください。
+このセクションでは、Britta Simon に Jostle へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Jostle]** を選択します。
+
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+
+2. アプリケーションの一覧で **[Jostle]** を選択します。
+
+    ![アプリケーションの一覧の [Jostle] リンク](common/all-applications.png)
+
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
+
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
+
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
+
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+
+6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+
+7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+
+### <a name="create-jostle-test-user"></a>Jostle のテスト ユーザーの作成
+
+このセクションでは、Jostle で Britta Simon というユーザーを作成します。  [Jostle サポート チーム](mailto:support@jostle.me)と連携し、Jostle プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 > [!NOTE]
 > Azure Active Directory アカウント所有者が電子メールを受信し、リンクに従ってアカウントを確認すると、そのアカウントがアクティブになります。
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、Britta Simon に Jostle へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
-
-![ユーザーの割り当て][200]
-
-**Jostle に Britta Simon を割り当てるには、次の手順に従います。**
-
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
-
-    ![ユーザーの割り当て][201]
-
-1. アプリケーションの一覧で **[Jostle]** を選択します。
-
-    ![Configure single sign-on](./media/jostle-tutorial/tutorial_jostle_app.png)
-
-1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
-
-    ![ユーザーの割り当て][202]
-
-1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![ユーザーの割り当て][203]
-
-1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
-
-1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
-
-1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで Jostle のタイルをクリックすると、Jostle アプリケーションのページに自動的にログインします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネル上で [Jostle] タイルをクリックすると、SSO を設定した Jostle に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/jostle-tutorial/tutorial_general_01.png
-[2]: ./media/jostle-tutorial/tutorial_general_02.png
-[3]: ./media/jostle-tutorial/tutorial_general_03.png
-[4]: ./media/jostle-tutorial/tutorial_general_04.png
-
-[100]: ./media/jostle-tutorial/tutorial_general_100.png
-
-[200]: ./media/jostle-tutorial/tutorial_general_200.png
-[201]: ./media/jostle-tutorial/tutorial_general_201.png
-[202]: ./media/jostle-tutorial/tutorial_general_202.png
-[203]: ./media/jostle-tutorial/tutorial_general_203.png
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -1,0 +1,54 @@
+- name: Windows Virtual Desktop
+  href: index.yml
+- name: 概要
+  items:
+    - name: Windows Virtual Desktop とは
+      href: overview.md
+- name: チュートリアル
+  items:
+    - name: 1. Windows Virtual Desktop でテナントを作成する
+      href: tenant-setup-azure-active-directory.md
+    - name: 2. Azure Marketplace を使用してホスト プールを作成する
+      href: create-host-pools-azure-marketplace.md
+    - name: 3. アプリ グループを管理する
+      href: manage-app-groups.md
+    - name: 4. PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する
+      href: create-service-principal-role-powershell.md
+- name: 操作方法
+  items:
+    - name: Windows Virtual Desktop リソースに接続する
+      items:
+        - name: Windows 7 および Windows 10 に接続する
+          href: connect-windows-7-and-10.md
+        - name: Web クライアントに接続する
+          href: connect-web.md
+    - name: Azure Resource Manager テンプレートを使用してホスト プールを作成する
+      href: create-host-pools-arm-template.md
+    - name: PowerShell を使用してホスト プールを作成する
+      href: create-host-pools-powershell.md
+    - name: ホスト プールのユーザー プロファイル共有を設定する
+      href: create-host-pools-user-profile.md
+    - name: Windows Virtual Desktop の負荷分散方法を構成する
+      href: configure-host-pool-load-balancing.md
+    - name: 診断機能を使用して問題を特定する
+      href: diagnostics-role-service.md
+    - name: マスター VHD イメージを準備してカスタマイズする
+      href: set-up-customize-master-image.md
+    - name: セッション ホストを自動的にスケーリングする
+      href: set-up-scaling-script.md
+- name: 概念
+  items:
+    - name: Windows Virtual Desktop の環境
+      href: environment-setup.md
+    - name: Windows Virtual Desktop における委任されたアクセス
+      href: delegated-access-virtual-desktop.md
+    - name: ホスト プールの負荷分散方法
+      href: host-pool-load-balancing.md
+- name: リファレンス
+  items:
+    - name: PowerShell
+      href: /powershell/windows-virtual-desktop/overview
+- name: リソース
+  items:
+    - name: 技術コミュニティ サポート グループ
+      href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'

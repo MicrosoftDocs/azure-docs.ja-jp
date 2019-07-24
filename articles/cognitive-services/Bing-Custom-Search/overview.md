@@ -1,57 +1,51 @@
 ---
-title: Bing Custom Search とは
+title: Bing Custom Search API とは
 titlesuffix: Azure Cognitive Services
-description: Bing Custom Search の概要を示します
+description: Bing Custom Search API を使用すると、関心のあるトピックに合わせてカスタマイズした検索エクスペリエンスを作成できます。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: overview
-ms.date: 09/29/2017
+ms.date: 03/4/2019
 ms.author: aahi
-ms.openlocfilehash: 2be1d76cc37de2ce2965cc08c116b37286bd8b52
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: e788da047cb0567fc00f27130621a2f21e575dc4
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163247"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337738"
 ---
-# <a name="what-is-bing-custom-search"></a>Bing Custom Search とは
+# <a name="what-is-the-bing-custom-search-api"></a>Bing Custom Search API とは
 
-Bing Custom Search を使用すると、関心のあるトピックに合わせてカスタマイズした検索エクスペリエンスを作成できます。 たとえば、検索エクスペリエンスを提供する Web サイトを所有している場合は、Bing が検索するドメイン、Web サイト、および Web ページを指定できます。 ユーザーは、関係のないコンテンツが含まれる検索結果のページを移動し続けるのではなく、関心のあるコンテンツに合わせてカスタマイズされた検索結果を参照できます。
+Bing Custom Search API を使用すると、関心のあるトピックに合わせてカスタマイズした、広告なしの検索エクスペリエンスを作成できます。 Bing で検索するドメインと Web ページを指定できるほか、特定のコンテンツをピン留め、ブースト、またはレベル下げすることもできます。そのようにして Web の表示をカスタムすれば、適合度の高い検索結果をユーザーがすばやく見つけることができるようになります。 
 
-Web のカスタム ビューを作成するには、Bing Custom Search [ポータル](https://customsearch.ai)を使用します。 ポータルでは、Bing に検索させたいドメイン、Web サイト、および Web ページと、検索させたくない Web サイトを指定できるカスタムの検索インスタンスを作成できます。 ポータルを使うと、わかっているコンテンツの URL を指定するだけでなく、追加したい関連コンテンツを検索することもできます。
+## <a name="features"></a>機能
 
-ポータルでは、ユーザーが特定の検索用語を入力した場合に、検索結果の一番上に特定の Web ページをピン留めすることもできます。 
+|機能  |説明  |
+|---------|---------|
+|[カスタム リアルタイム検索候補](define-custom-suggestions.md)     | ユーザーが入力するときにドロップダウン リストとして表示される検索候補を提供します。       | 
+|[カスタム画像検索エクスペリエンス](get-images-from-instance.md)     | カスタム検索インスタンスで指定されたドメインや Web サイトから画像を検索する機能を実現できます。        |        
+|[カスタム動画検索エクスペリエンス](get-videos-from-instance.md)     | カスタム検索インスタンスで指定されたドメインやサイトから動画を検索する機能を実現できます。        |    
+|[カスタム検索インスタンスの共有](share-your-custom-search.md)     | 検索インスタンスをチームのメンバーと共有することで、インスタンスの編集やテストを共同で行うことができます。        | 
+|[アプリケーションや Web サイトの UI の構成](hosted-ui.md)     | 検索インスタンスをチームのメンバーと共有することで、インスタンスの編集やテストを共同で行うことができます。        | 
+## <a name="workflow"></a>ワークフロー
 
-インスタンスを定義した後、Custom Search API を呼び出すことによって、Web サイト、デスクトップ アプリ、またはモバイル アプリにカスタム検索を統合できます。 Web ベースのサイトまたはアプリケーションがある場合は、ホストされている UI に検索インターフェイスを表示させることができます。
+カスタマイズした検索インスタンスは、[Bing Custom Search ポータル](https://customsearch.ai)を使用して作成できます。 Bing に検索させたいドメイン、Web サイト、Web ページと、検索させたくない Web サイトとを指定するカスタムの検索インスタンスをポータルから作成することができます。 ポータルを使用して、検索エクスペリエンスをプレビューしたり、API から提供される検索ランキングを調整したり、必要に応じて、Web サイトやアプリケーションにレンダリングする検索可能なユーザー インターフェイスを構成したりすることができます。
 
-次の画像は、カスタム検索が簡単に統合できることを示しています。
+作成した検索インスタンス (と必要に応じてユーザー インターフェイス) は、Bing Custom Search API を呼び出すことで、既存の Web サイトやアプリケーションに統合することができます。
 
-![画像 alt](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/cognitive-services/Bing-Custom-Search/media/BCS-Overview.png "Bing Custom Search の動作方法")
+![API で Bing Custom Search に接続できることを示す画像](media/BCS-Overview.png "Bing Custom Search のしくみ")
 
-## <a name="adding-custom-search-box-suggestions"></a>カスタム検索ボックスの候補の追加
-
-カスタム検索ボックスの候補を使用して、カスタム検索エクスペリエンスを強化することができます。 この機能を使うと、検索エクスペリエンスに関連するカスタムの検索候補を提供できます。 ユーザーが検索ボックスに入力すると、ユーザーの部分的なクエリ文字列に基づき、ドロップダウン リストにクエリ文字列の候補が表示されます。 カスタム検索候補のみを返すか、Bing の検索候補も含めるかを指定できます。 詳細については、[こちら](define-custom-suggestions.md)を参照してください。
-
-## <a name="adding-custom-image-search-experience"></a>カスタム画像検索エクスペリエンスの追加
-
-画像によりカスタム検索エクスペリエンスを強化できます。 Web の結果と同様に、カスタム検索では Web サイトのインスタンスのリストでの画像の検索がサポートされています。 詳細については、[こちら](get-images-from-instance.md)を参照してください。
-
-## <a name="adding-custom-video-search-experience"></a>カスタム動画検索エクスペリエンスの追加
-
-動画によりカスタム検索エクスペリエンスを強化できます。 Web の結果と同様に、カスタム検索では Web サイトのインスタンスのリストでの動画の検索がサポートされています。 詳細については、[こちら](get-videos-from-instance.md)を参照してください。
-
-## <a name="sharing-your-custom-search-instance-with-others"></a>カスタム検索インスタンスの他のユーザーとの共有
-
-インスタンスをチームのメンバーと共有することで、インスタンスの編集やテストを簡単に共同で行うことができます。 詳細については、[こちら](share-your-custom-search.md)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 すぐに使い始める方法は、「[Create your first Bing Custom Search instance](quick-start.md)」 (最初の Bing Custom Search インスタンスを作成する) を参照してください。
 
 検索インスタンスのカスタマイズについて詳しくは、[カスタム検索インスタンスの定義](define-your-custom-view.md)に関するページをご覧ください。
+
+既存のサービスやアプリケーションにおける検索結果の使用については、[Bing の利用と表示の要件](./use-and-display-requirements.md)に関するページを必ずお読みください。
 
 各カスタム検索エンドポイントのリファレンス コンテンツをよく理解してください。 リファレンスには、検索結果を要求するときに使用するエンドポイント、ヘッダー、クエリ パラメーターが記載されています。 また、応答オブジェクトの定義も記載されています。
 
@@ -60,5 +54,3 @@ Web のカスタム ビューを作成するには、Bing Custom Search [ポー�
 - [Custom Video API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference)
 - [Custom Autosuggest API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference)
 
-
-検索結果の使用に関するルールを逸脱しないよう、[Bing の使用上および表示上の要件](./use-and-display-requirements.md)に関するページを必ず読んでください。

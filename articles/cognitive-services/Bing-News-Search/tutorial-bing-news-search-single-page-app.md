@@ -1,24 +1,26 @@
 ---
-title: 'チュートリアル: Bing News Search シングルページ アプリ'
+title: チュートリアル:単一ページの Web アプリを作成する - Bing News Search API
 titlesuffix: Azure Cognitive Services
-description: シングルページ Web アプリケーションで Bing News Search API を使用する方法を説明します。
+description: このチュートリアルを使用して、検索クエリを Bing News API に送信し、Web ページ内に結果を表示できる単一ページの Web アプリケーションを構築します。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 10/30/2017
+ms.date: 01/10/2019
 ms.author: v-gedod
-ms.openlocfilehash: 1d27751d12c82736ca519bb3a0e9bcd49bef4a47
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.custom: seodec2018
+ms.openlocfilehash: 29539ba39e724208093910f8fb6fa2d3bc309bda
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803649"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55885040"
 ---
-# <a name="tutorial-single-page-news-search-app"></a>チュートリアル: 単一ページの News Search アプリ
-Bing News Search API を使うと、Web を検索して、検索クエリに関連するニュースの種類の結果を取得できます。 このチュートリアルでは、Bing News Search API を使用して検索結果をページに表示する単一ページの Web アプリケーションを構築します。 このアプリケーションには、HTML、CSS、JavaScript のコンポーネントが含まれます。
+# <a name="tutorial-create-a-single-page-web-app"></a>チュートリアル:単一ページの Web アプリの作成
+
+Bing News Search API を使うと、Web を検索して、検索クエリに関連するニュースの種類の結果を取得できます。 このチュートリアルでは、Bing News Search API を使用して検索結果をページに表示する単一ページの Web アプリケーションを構築します。 このアプリケーションには、HTML、CSS、JavaScript のコンポーネントが含まれます。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingNewsSearchApp.html) で入手できます。
 
 <!-- Remove until we can replace it with sanitized copy
 ![Single-page Bing News Search app](media/news-search-singlepage.png)
@@ -37,8 +39,6 @@ Bing News Search API を使うと、Web を検索して、検索クエリに関�
 > * 発生する可能性のあるエラーを処理する
 
 このチュートリアルのページでは、すべてが自己完結しています。外部のフレームワーク、スタイル シート、画像ファイルを使用することはありません。 広くサポートされている JavaScript 言語機能のみを使用し、現在のバージョンの主要な Web ブラウザーすべてで動作します。
-
-このチュートリアルでは、ソース コードの一部を選択して説明します。 完全な[ソース コード](tutorial-bing-news-search-single-page-app-source.md)を入手できます。 例を実行するには、ソース コードをコピーしてテキスト エディターに貼り付け、`bing.html` として保存します。
 
 ## <a name="app-components"></a>アプリのコンポーネント
 他の単一ページ Web アプリと同様に、このチュートリアルのアプリケーションには 3 つのパーツが含まれています。

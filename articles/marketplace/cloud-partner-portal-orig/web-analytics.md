@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 20a4e24800b2fa05990d294cb374841c50c4f79b
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 89cc8c4bffe910de0861d7f44925a10df3811fdb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807389"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097476"
 ---
 <a name="web-analytics"></a>Web Analytics
 =============
@@ -49,7 +49,7 @@ ms.locfileid: "48807389"
 
 使用例: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
 
-2. (上級): サポートされているいずれかの汎用キャンペーン ID を URL 内で使用する。 必要な ref タグを追加できる柔軟な表記法がサポートされています。以下の追加タグが自動的に認識されます。
+1. (上級): サポートされているいずれかの汎用キャンペーン ID を URL 内で使用する。 必要な ref タグを追加できる柔軟な表記法がサポートされています。以下の追加タグが自動的に認識されます。
     
     1. **utm\_campaign**
     2. **utm\_source**
@@ -94,7 +94,7 @@ ms.locfileid: "48807389"
 
 プラン全体のコンバージョン率表示と同様、このグラフでは、各種キャンペーンの貢献度内訳を確認できます。 このグラフは、コンバージョン率が相対的に高いキャンペーンの流入元を特定するのに役立ちます。
 
-### <a name="distribution-by-campaign"></a>**キャンペーンごとの分布**
+### <a name="distribution-by-campaign"></a> **キャンペーンごとの分布**
 
 ![WebAnalytics4](./media/si-getting-started/WebAnalytics4.png)
 

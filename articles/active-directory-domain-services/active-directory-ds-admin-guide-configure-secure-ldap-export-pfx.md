@@ -4,23 +4,23 @@ description: Azure AD Domain Services マネージド ドメイン用の Secure 
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2017
 ms.author: ergreenl
-ms.openlocfilehash: a97b16451392ce0e84eb7b49a6fc71fb03adab12
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 801ba3b84ba9956ca8d13916ac4d90060a7f4037
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157294"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883455"
 ---
 # <a name="create-a-pfx-file-with-the-secure-ldap-ldaps-certificate-for-a-managed-domain"></a>マネージド ドメイン用の Secure LDAP (LDAPS) 証明書で .PFX ファイルを作成する
 
@@ -82,7 +82,7 @@ LDAPS 証明書を PFX ファイルにエクスポートするには:
 
 14. **[セキュリティ]** ページで **[パスワード]** オプションを選択し、.PFX ファイルを保護するためのパスワードを入力します。 次のタスクで必要になるので、このパスワードを覚えておいてください。 **[次へ]** をクリックします。
 
-    ![証明書のエクスポート - パスワード ](./media/active-directory-domain-services-admin-guide/secure-ldap-export-select-password.png)
+    ![証明書のエクスポート - パスワード](./media/active-directory-domain-services-admin-guide/secure-ldap-export-select-password.png)
 
     > [!NOTE]
     > このパスワードを書き留めておいてください。 「[タスク 3 - マネージド ドメインに対してセキュリティで保護された LDAP を有効にする](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)」で、このマネージド ドメインの Secure LDAP を有効にするときに必要になります。

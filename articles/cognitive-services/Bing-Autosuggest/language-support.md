@@ -4,24 +4,24 @@ titleSuffix: Azure Cognitive Services
 description: Bing Autosuggest API でサポートされる言語と地域の一覧。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 112c22815903841f3ffb8c78db4f8bffc60cb6b1
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829718"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011009"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Bing Autosuggest API の言語と地域のサポート
 
 Bing Autosuggest API でサポートされている言語を次に示します。
 
-| Language    | 言語コード |
+| 言語    | 言語コード |
 |:----------- |:-------------:|
 | アラビア語      | `ar`          |
 | 中国語 (中華人民共和国)     | `zh-CN`          |

@@ -1,32 +1,33 @@
 ---
-title: 'チュートリアル: ナレッジ ベースを作成、発行し、ナレッジ ベースから回答する - REST、C# - QnA Maker'
-titleSuffix: Azure Cognitive Services
+title: 作成、発行、回答
+titleSuffix: QnA Maker - Azure Cognitive Services
 description: この REST ベースのチュートリアルでは、プログラムでナレッジ ベースを作成して発行した後、そのナレッジ ベースから質問に回答する手順について説明します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 10/29/2018
+ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 013b74165afe6eafee337bd00ca88b1034ad5662
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: d209d73d67af96e99589dddcb71b6b50214356ee
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299563"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58877280"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>チュートリアル: C# を使用してナレッジ ベースを作成し、質問に回答する
 
 このチュートリアルでは、プログラムでナレッジ ベース (KB) を作成、発行した後、そのナレッジ ベースを使用してユーザーの質問に回答する手順について説明します。 
 
 > [!div class="checklist"]
-* ナレッジ ベースの作成 
-* 作成の状態を確認する
-* ナレッジ ベースをトレーニングして発行する
-* エンドポイント情報を取得する
-* Curl を使用してナレッジ ベースを照会する
+> * ナレッジ ベースの作成 
+> * 作成の状態を確認する
+> * ナレッジ ベースをトレーニングして発行する
+> * エンドポイント情報を取得する
+> * Curl を使用してナレッジ ベースを照会する
 
 
 このクイック スタートで呼び出す QnA Maker API は次のとおりです。
@@ -43,7 +44,7 @@ ms.locfileid: "51299563"
 * [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、ダッシュボードで **[リソース管理]** の **[キー]** を選択します。 
 
 > [!NOTE] 
-> 完全なソリューション ファイルは、[**Azure-Samples/cognitive-services-qnamaker-csharp** Github リポジトリ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base)から入手できます。
+> 完全なソリューション ファイルは、[**Azure-Samples/cognitive-services-qnamaker-csharp** GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base)から入手できます。
 
 ## <a name="create-a-knowledge-base-project"></a>ナレッジ ベース プロジェクトを作成する
 
@@ -157,7 +158,7 @@ KB にアクセスして質問を送信し、最適な回答を受け取るた�
 
 |ヘッダー名|ヘッダー値|
 |--|--|
-|Authorization|`Endpoint ` + **プライマリ エンドポイント**<br>例: `Endpoint xxxxxxx`<br>`Endpoint` というテキストとプライマリ エンドポイントの値の間のスペースに注意してください。 
+|Authorization|`Endpoint` + **プライマリ エンドポイント**<br>例: `Endpoint xxxxxxx`<br>`Endpoint` というテキストとプライマリ エンドポイントの値の間のスペースに注意してください。 
 
 要求の本文では、適切な JSON を渡す必要があります。
 
@@ -185,7 +186,7 @@ KB の詳細を取得するために次のメソッドを追加します。 こ�
   "userId": "AAAc3841df0b42cdb00f53a49d51a89c",
   "urls": [
     "https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs",
-    "https://docs.microsoft.com/en-us/bot-framework/resources-bot-framework-faq"
+    "https://docs.microsoft.com/bot-framework/resources-bot-framework-faq"
   ],
   "sources": [
     "Custom Editorial"

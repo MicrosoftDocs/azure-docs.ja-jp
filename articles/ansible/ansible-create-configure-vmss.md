@@ -1,19 +1,19 @@
 ---
 title: Ansible を使用して Azure 内に仮想マシン スケール セットを作成する
 description: Ansible を使用して、Azure 内で仮想マシン スケール セットを作成し、構成する方法について説明します
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, プレイブック, 仮想マシン, 仮想マシン スケール セット, vmss
-author: tomarcher
+author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/24/2018
-ms.openlocfilehash: f3b08c41d3bf083c7cca5897cee11a1a4b9c9092
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 1176987ab318a97a7db6a12e619e7b7db06ad2da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918577"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097891"
 ---
 # <a name="create-virtual-machine-scale-sets-in-azure-using-ansible"></a>Ansible を使用して Azure 内に仮想マシン スケール セットを作成する
 Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 Ansible を使用すると、他の Azure リソースを管理するのと同様に、Azure 内の仮想マシン スケール セット (VMSS) を管理できます。 この記事では、Ansible を使用して、仮想マシン スケール セットを作成し、スケール アウトする方法について説明します。 
@@ -37,7 +37,7 @@ Ansible を使用すると、環境でのリソースの展開と構成を自動
 
 *admin_password* の値には、独自のパスワードを入力してください。
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       resource_group: myResourceGroup
@@ -141,7 +141,7 @@ Ansible プレイブックを実行するには、次のような **ansible-play
 
 プレイブックを実行すると、次の例のような出力が表示され、仮想マシン スケール セットが正常に作成されたことが示されます。
 
-  ```bash
+  ```Output
   PLAY [localhost] ***********************************************************
 
   TASK [Gathering Facts] *****************************************************
@@ -190,7 +190,7 @@ Ansible プレイブックを実行するには、次のような **ansible-play
 
 ここで、インスタンス数を 2 から 3 に増やしましょう。 次の Ansible プレイブック コードは、仮想マシン スケールに関する情報を取得し、その容量を 2 から 3 に変更します。 
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       resource_group: myResourceGroup
@@ -225,7 +225,7 @@ Ansible プレイブックを実行するには、次のような **ansible-play
 
 Ansible プレイブックを実行して得られた出力を見ると、仮想マシン スケール セットが正常にスケールアウトされたことがわかります。
 
-  ```bash
+  ```Output
   PLAY [localhost] **********************************************************
 
   TASK [Gathering Facts] ****************************************************
@@ -275,4 +275,6 @@ Cloud Shell 内でコマンドを実行した結果を見ると、現在 3 つ�
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"] 
-> [VMSS 用の Ansible サンプル プレイブック](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)
+> [Ansible を使用して仮想マシン スケール セットにアプリケーションをデプロイする](https://docs.microsoft.com/azure/ansible/ansible-deploy-app-vmss)
+> 
+> [Ansible を使用して仮想マシン スケール セットを自動的にスケーリングする](https://docs.microsoft.com/azure/ansible/ansible-auto-scale-vmss)

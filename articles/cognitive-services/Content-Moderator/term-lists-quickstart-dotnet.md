@@ -4,20 +4,20 @@ titlesuffix: Azure Cognitive Services
 description: Content Moderator SDK for C# を使用し、カスタム用語リストと照らしてテキストをモデレートする方法。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: af65fffaf864fd4d5b7123b4c6b66644ef6624e7
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: da8ad71ccf8b58ddf3ef7cc6a2f9e9c732913caa
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310866"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858401"
 ---
-# <a name="quickstart-check-text-against-a-custom-term-list-in-c"></a>クイック スタート: C# でカスタム用語リストと照らしてテキストを確認する
+# <a name="quickstart-check-text-against-a-custom-term-list-in-c"></a>クイック スタート:C# でカスタム用語リストと照らしてテキストを確認する
 
 Azure Content Moderator の既定のグローバルな用語リストは、ほとんどのコンテンツ モデレーションのニーズに十分対応できます。 しかし、組織に固有の用語のスクリーニングが必要になる場合があります。 たとえば、さらに詳しくレビューするために、競合他社名にタグを付けたい場合などです。 
 

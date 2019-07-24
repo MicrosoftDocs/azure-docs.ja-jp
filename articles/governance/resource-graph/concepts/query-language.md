@@ -1,19 +1,19 @@
 ---
-title: Azure Resource Graph クエリ言語の概要
-description: Azure Resource Graph のクエリ言語のしくみについて説明します。
-services: resource-graph
+title: クエリ言語を理解する
+description: Azure Resource Graph で使用可能な Kusto の演算子と関数について説明します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/22/2018
+ms.date: 12/11/2018
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 09bcedc5250755f06ba23b84a0ae90b4d43a23db
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.custom: seodec18
+ms.openlocfilehash: 08e4f09665a3501073f55b7f5b82bf51cf508ea9
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086167"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59276679"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Resource Graph クエリ言語の概要
 
@@ -51,6 +51,7 @@ Resource Graph でサポートされている関数の一覧を次に示しま�
 - [strcat()](/azure/kusto/query/strcatfunction)
 - [isnotempty()](/azure/kusto/query/isnotemptyfunction)
 - [tostring()](/azure/kusto/query/tostringfunction)
+- [zip()](/azure/kusto/query/zipfunction)
 
 ## <a name="next-steps"></a>次の手順
 

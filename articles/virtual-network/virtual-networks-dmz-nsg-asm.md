@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: ed172d552e1e4c9ee27c58abcd7ad2d98df21579
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 115a459c6a9e4ea96931c89272a49396f0656258
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23125500"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993341"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-classic-powershell"></a>例 1 – 従来の PowerShell を使用して、NSG を使用する単純な DMZ を作成する
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
@@ -98,15 +98,15 @@ ms.locfileid: "23125500"
    * "Priority" では、トラフィック フローを評価する順序を設定します。 数値が低いほど、優先度は高くなります。 ルールが特定のトラフィック フローに適用されると、それ以降のルールの処理は行われなくなります。 したがって、優先度 1 のルールがトラフィックを許可し、優先度 2 のルールがトラフィックを拒否する場合、両方のルールをトラフィックに適用すると、トラフィックのフローは許可されます (ルール 1 の方が優先度が高く、これが有効になると、それ以降、ルールは適用されないからです)。
    * “Action” は、このルールの影響を受けるトラフィックがブロックされるか、それとも許可されるかを示します。
 
-    ```PowerShell    
-    Get-AzureNetworkSecurityGroup -Name $NSGName | `
+     ```PowerShell    
+     Get-AzureNetworkSecurityGroup -Name $NSGName | `
         Set-AzureNetworkSecurityRule -Name "Enable Internal DNS" `
         -Type Inbound -Priority 100 -Action Allow `
         -SourceAddressPrefix VIRTUAL_NETWORK -SourcePortRange '*' `
         -DestinationAddressPrefix $VMIP[4] `
         -DestinationPortRange '53' `
         -Protocol *
-    ```
+     ```
 
 3. このルールは、インターネットからの RDP トラフィックが、バインドされたサブネットにある任意のサーバー上の RDP ポートに流れるのを許可します。 このルールでは、特種なタイプのアドレス プレフィックス ("VIRTUAL_NETWORK" と "INTERNET") を使用します。 これらのタグを使用すれば、アドレス プレフィックスのカテゴリが大きくなっても容易に対処することができます。
 
@@ -203,7 +203,7 @@ ms.locfileid: "23125500"
 5. AppVM01 がユーザー名とパスワードのプロンプトを表示します。
 
 #### <a name="allowed-web-server-dns-look-up-on-dns-server"></a>(*許可*) DNS サーバーに対する Web サーバーの DNS 参照
-1. Web サーバーである IIS01 が、www.data.gov にあるデータ フィードを必要としています。そのためにはアドレスを解決する必要があります。
+1. Web サーバーである IIS01 が、 www.data.gov にあるデータ フィードを必要としています。そのためにはアドレスを解決する必要があります。
 2. VNet 用のネットワーク構成にはプライマリ DNS サーバーとして、DNS01 (バックエンド サブネット上の 10.0.2.4) がリストされており、IIS01 は DNS 要求を DNS01 に送信します。
 3. フロントエンド サブネットに送信ルールはないので、トラフィックは許可されます。
 4. バックエンド サブネットが、以下に示す受信ルールの処理を開始します。
@@ -544,7 +544,7 @@ Else { Write-Host "Validation passed, now building the environment." -Foreground
 この xml ファイルに実際のロケーション情報に反映して保存し、このファイルへのリンクを上記スクリプト内の $NetworkConfigFile 変数に追加します。
 
 ```XML
-<NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+<NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
   <VirtualNetworkConfiguration>
     <Dns>
       <DnsServers>
@@ -576,7 +576,7 @@ Else { Write-Host "Validation passed, now building the environment." -Foreground
 ```
 
 #### <a name="sample-application-scripts"></a>サンプル アプリケーション スクリプト
-これに対応するサンプル アプリケーション、およびその他の DMZ の例をインストールしたい場合は、[サンプル アプリケーション スクリプト][SampleApp]をご利用ください。
+このためのサンプル アプリケーションやその他の DMZ の例をインストールする場合は、[サンプル アプリケーション スクリプト][SampleApp]のリンクに用意されています。
 
 ## <a name="next-steps"></a>次の手順
 * XML ファイルを更新して保存する

@@ -35,6 +35,8 @@ items:
     href: ../functions-cli-samples.md
 - name: 概念
   items:
+  - name: パターンと概念
+    href: durable-functions-concepts.md
   - name: 関数の種類と機能
     href: durable-functions-types-features-overview.md
   - name: バインド
@@ -120,7 +122,7 @@ items:
   - name: MSDN フォーラム
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-functions
+    href: https://stackoverflow.com/questions/tagged/azure-functions
   - name: Twitter
     href: https://twitter.com/hashtag/DurableFunctions?src=hash
   - name: 製品フィードバックの提供
@@ -129,9 +131,9 @@ items:
     href: https://github.com/Azure/azure-functions-durable-extension
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=functions&updatetype=&platform=
-ms.openlocfilehash: a6a0849aa272b53131c1bef7883fd0b0f76938fa
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 7056804d4c84bccf3335e9a5913989083d013115
+ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52636616"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "54102535"

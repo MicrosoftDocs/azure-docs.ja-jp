@@ -1,31 +1,31 @@
 ---
-title: Azure Machine Learning REST API のエラー コード | Microsoft Docs
+title: REST API のエラー コード - Azure Machine Learning Studio | Microsoft Docs
 description: Azure Machine Learning Web サービスに対する操作では、これらのエラー コードが返されることがあります。
 keywords: ''
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
+author: xiaoharper
+ms.custom: seodec18
+ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: 0923074b-3728-439d-a1b8-8a7245e39be4
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: fbedf355c6b1c45d581408a962b875544838087f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 8e91d0cd68997dee9bb00cceeaa6b697f6644ee5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836091"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100957"
 ---
-# <a name="machine-learning-rest-api-error-codes"></a>Machine Learning REST API のエラー コード
+# <a name="azure-machine-learning-studio-rest-api-error-codes"></a>Azure Machine Learning Studio REST API のエラー コード
  
-Azure Machine Learning Web サービスに対する操作では、次のエラー コードが返されることがあります。
+Azure Machine Learning Studio の Web サービスの操作で、次のエラー コードが返されることがあります。
  
 ## <a name="badargument-http-status-code-400"></a>BadArgument (HTTP 状態コード 400)
  
@@ -241,7 +241,7 @@ Web サービス パッケージが無効です。 指定された Web パッケ
 | エラー コード | ユーザー メッセージ |
 | ---------- |--------------|
 | NoMoreResources | 要求に使用できるリソースがありません。 |
-| RequestThrottled | {0} エンドポイントに対して要求が調整されました。 このエンドポイントの最大の同時実行数は {1} です。 |
+| RequestThrottled | {0} エンドポイントに対して要求が調整されました。 このエンドポイントの最大のコンカレンシー数は {1} です。 |
 | TooManyConcurrentRequests | 送信された同時実行要求が多すぎます。 |
 | TooManyHostsBeingInitialized | 同時に初期化されるホストが多すぎます。 調整/再試行を検討してください。 |
 | TooManyHostsBeingInitializedPerModel | 同時に初期化されるホストが多すぎます。 調整/再試行を検討してください。 |

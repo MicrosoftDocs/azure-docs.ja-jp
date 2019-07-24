@@ -1,28 +1,22 @@
 ---
-title: ExpressRoute の顧客のルーター構成サンプル | Microsoft Docs
+title: ルーター構成サンプル - Azure ExpressRoute | Microsoft Docs
 description: このページでは、Cisco と Juniper のルーター構成のサンプルを示します。
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: carmonm
-editor: ''
-ms.assetid: 564826bc-017a-4683-a385-37c9fa814948
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/10/2016
+ms.date: 12/06/2018
 ms.author: cherylmc
-ms.openlocfilehash: 032e584dc5abf59e9e3e8d80673b402f1fbf721b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: 2d7fb060896de8df266489451a11ba343760c747
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23013107"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079961"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>ルーティングをセットアップして管理するためのルーター構成のサンプル
-このページでは、Cisco IOS-XE と Juniper MX シリーズ ルーターのインターフェイスとルーティングを構成するサンプルを示します。 これらはガイダンスとしてのみ使用することを目的としたサンプルであり、現状のまま使用することはできません。 ベンダーと協力して、ネットワークに適した構成を考えてください。 
+このページでは、ExpressRoute を使用する場合の、Cisco IOS-XE と Juniper MX シリーズ ルーターのインターフェイスとルーティング構成のサンプルを示します。 これらはガイダンスとしてのみ使用することを目的としたサンプルであり、現状のまま使用することはできません。 ベンダーと協力して、ネットワークに適した構成を考えてください。 
 
 > [!IMPORTANT]
 > このページのサンプルは、ガイダンスとしてのみ使用することを目的としています。 ベンダーの販売/技術チームおよび自社のネットワーク チームと協力して、ニーズに対応する適切な構成を考える必要があります。 Microsoft では、このページに示す構成に関連する問題には対応できません。 サポートの問題については、デバイス ベンダーに問い合わせる必要があります。
@@ -70,7 +64,7 @@ ms.locfileid: "23013107"
      exit-address-family
     !
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3.BGP セッションでアドバタイズするプレフィックスの設定
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>手順 3.BGP セッションでアドバタイズするプレフィックスの設定
 特定のプレフィックスをマイクロソフトにアドバタイズするようにルーターを構成することができます。 その方法を紹介したのが以下のサンプルです。
 
     router bgp <Customer_ASN>
@@ -155,7 +149,7 @@ ms.locfileid: "23013107"
         }                                   
     }
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3.BGP セッションでアドバタイズするプレフィックスの設定
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>手順 3.BGP セッションでアドバタイズするプレフィックスの設定
 特定のプレフィックスをマイクロソフトにアドバタイズするようにルーターを構成することができます。 その方法を紹介したのが以下のサンプルです。
 
     policy-options {
@@ -210,6 +204,6 @@ ms.locfileid: "23013107"
         }                                   
     }
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 詳細については、 [ExpressRoute の FAQ](expressroute-faqs.md) を参照してください。
 

@@ -3,8 +3,8 @@ title: Azure Service Fabric Reliable Collection のトランザクションと�
 description: Azure Service Fabric Reliable State Manager と Reliable Collection トランザクションとロック。
 services: service-fabric
 documentationcenter: .net
-author: mcoskun
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: masnider,rajak
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
 ms.service: service-fabric
@@ -13,30 +13,30 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
-ms.author: mcoskun
-ms.openlocfilehash: 79be861a70abb0331d971b00e753691e77642637
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: aljo
+ms.openlocfilehash: 9785a09a3ac3e119507b4ac28075d887c7edc619
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207368"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662042"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric Reliable Collection のトランザクションとロック モード
 
 ## <a name="transaction"></a>トランザクション
 トランザクションは、作業の単一の論理ユニットとして実行される一連の操作です。
 トランザクションは、次の ACID プロパティを示す必要があります。 (参照: https://technet.microsoft.com/library/ms190612)
-* **原子性**: トランザクションはアトミック作業ユニットである必要があります。 つまり、そのすべてのデータ変更が実行されるか、いずれもが実行されないということです。
-* **整合性**: 完了すると、トランザクションが整合性のある状態ですべてのデータを残す必要があります。 すべての内部データ構造は、トランザクション終了時に正しくなければなりません。
-* **分離**: 同時実行トランザクションによって行われた変更は、その他の同時実行トランザクションによって加えられた変更から分離する必要があります。 ITransaction 内の操作に使用される分離レベルは、操作を実行する IReliableState によって決まります。
-* **持続性**: トランザクションが完了すると、その影響は完全にシステム内に存在します。 システム障害が発生しても変更は永続化します。
+* **原子性**:トランザクションはアトミック作業ユニットである必要があります。 つまり、そのすべてのデータ変更が実行されるか、いずれもが実行されないということです。
+* **整合性**:完了すると、トランザクションが整合性のある状態ですべてのデータを残す必要があります。 すべての内部データ構造は、トランザクション終了時に正しくなければなりません。
+* **分離**:同時実行トランザクションによって行われた変更は、その他の同時実行トランザクションによって加えられた変更から分離する必要があります。 ITransaction 内の操作に使用される分離レベルは、操作を実行する IReliableState によって決まります。
+* **持続性**:トランザクションが完了すると、その影響は完全にシステム内に存在します。 システム障害が発生しても変更は永続化します。
 
 ### <a name="isolation-levels"></a>分離レベル
 分離レベルは、トランザクションを他のトランザクションによって行われた変更から分離する必要がある度合を定義します。
 Reliable Collection では、次の 2 つの分離レベルがサポートされています。
 
-* **反復可能読み取り**: 他のトランザクションによって変更されたがまだコミットされていないデータをステートメントから読み取ることができないように指定するほか、現在のトランザクションが完了するまで、現在のトランザクションで読み取られたデータをその他のトランザクションが変更できないように指定します。 詳細については、[https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx) を参照してください。
-* **スナップショット**: トランザクションの任意のステートメントによって読み取られたデータが、トランザクションの開始時に存在していたデータとトランザクション上の整合性を持つように指定します。
+* **反復可能読み取り**:他のトランザクションによって変更されたがまだコミットされていないデータをステートメントから読み取ることができないように指定するほか、現在のトランザクションが完了するまで、現在のトランザクションで読み取られたデータをその他のトランザクションが変更できないように指定します。 詳細については、[https://msdn.microsoft.com/library/ms173763.aspx](https://msdn.microsoft.com/library/ms173763.aspx) を参照してください。
+* **スナップショット**:トランザクションの任意のステートメントによって読み取られたデータが、トランザクションの開始時に存在していたデータとトランザクション上の整合性を持つように指定します。
   トランザクションで認識されるのは、トランザクション開始前にコミットされたデータ変更のみです。
   現在のトランザクションの開始後に他のトランザクションによって行われたデータ変更は、現在のトランザクションで実行されているステートメントには認識されません。
   それはつまり、トランザクションの開始時に存在していたコミット済みデータのスナップショットを、トランザクション内のステートメントが取得しているかのように機能するということです。
@@ -62,7 +62,7 @@ Reliable Dictionary と Reliable Queue では、Read Your Writes がサポート
 Reliable Collection では、すべてのトランザクションは緻密な 2 段階ロックを実装しています。つまり、トランザクションが中止またはコミットのいずれかで終了するまで、取得したロックを解放しないということです。
 
 Reliable Dictionary では、1 つのエンティティ操作のすべてに対して、行レベルのロックを使用します。
-Reliable Queue では、同時実行よりもトランザクション FIFO プロパティの厳密さが優先されます。
+Reliable Queue では、コンカレンシーよりもトランザクション FIFO プロパティの厳密さが優先されます。
 Reliable Queue は操作レベルのロックを使用しており、一度に `TryPeekAsync` および/または `TryDequeueAsync` による 1 つのトランザクションと `EnqueueAsync` による 1 つのトランザクションが許可されます。
 FIFO の保持のため、`TryPeekAsync` または `TryDequeueAsync` により Reliable Queue が空であると認識されたことがある場合、`EnqueueAsync` のロックも行われることに注意してください。
 
@@ -75,10 +75,10 @@ FIFO の保持のため、`TryPeekAsync` または `TryDequeueAsync` により R
 
 次に示すのは、ロックの互換性対応表です。
 
-| 要求\許可 | なし | 共有 | 更新 | 排他的 |
+| 要求\許可 | なし | 共有 | アップデート | 排他的 |
 | --- |:--- |:--- |:--- |:--- |
 | 共有 |競合なし |競合なし |競合 |競合 |
-| 更新 |競合なし |競合なし |競合 |競合 |
+| アップデート |競合なし |競合なし |競合 |競合 |
 | 排他的 |競合なし |競合 |競合 |競合 |
 
 デッドロック検出のために、Reliable Collection API のタイムアウト引数が使用されます。

@@ -1,28 +1,29 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Shmoop For Schools の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Shmoop For Schools の統合 | Microsoft Docs
 description: Azure Active Directory と Shmoop For Schools の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 1d75560a-55b3-42e9-bda1-92b01c572d8e
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: b5826fd3067ac337808b9e27040dee808cd6a01c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4091b20e97ca76629260a7420beecb77412b0d39
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39045959"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453016"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>チュートリアル: Azure Active Directory と Shmoop For Schools の統合
+# <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>チュートリアル:Azure Active Directory と Shmoop For Schools の統合
 
 このチュートリアルでは、Shmoop For Schools と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -130,7 +131,7 @@ Shmoop For Schools で Azure AD のシングル サインオンを構成して�
 
     a. **[属性の追加]** ダイアログ ボックスを開くには、**[属性の追加]** を選択します。
     
-    ![Configure single sign-on ](./media/shmoopforschools-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/shmoopforschools-tutorial/tutorial_attribute_04.png)
     
     ![Configure single sign-on](./media/shmoopforschools-tutorial/tutorial_attribute_05.png)
     
@@ -146,7 +147,7 @@ Shmoop For Schools で Azure AD のシングル サインオンを構成して�
 
     ![Configure single sign-on](./media/shmoopforschools-tutorial/tutorial_general_400.png)
 
-7. **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリケーション フェデレーション メタデータ URL\)** をコピーし、メモ帳に貼り付けます。
+7.  **[SAML 署名証明書]**  セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、メモ帳に貼り付けます。
 
     ![証明書のダウンロードのリンク](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_certificate.png)
 
@@ -227,7 +228,7 @@ Shmoop For Schools で Azure AD のシングル サインオンを構成して�
 
 アクセス パネルで **[Shmoop For Schools]** タイルを選択すると、自動的に Shmoop For Schools アプリケーションにサインインします。
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

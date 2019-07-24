@@ -7,13 +7,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/11/2018
-ms.openlocfilehash: c437f350e394dc8c264903508a2a5a66fa8225a7
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 7a1e440a8dc8f518e272df9e126771df54390ed5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49346576"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53161986"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics のクエリのトラブルシューティング
 
@@ -47,47 +48,47 @@ Azure Stream Analytics で並列処理を活用していることを確認しま
 
 Azure Stream Analytics ジョブの次のサンプル クエリには、1 つのストリーム入力と 2 つの参照データ入力があり、Azure Table Storage に出力が行われます。 このクエリはイベント ハブと 2 つの参照 BLOB からのデータを結合し、名前とカテゴリの情報を取得します。
 
-![SELECT INTO クエリの例](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
+![Stream Analytics の SELECT INTO クエリの例](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
 ジョブが実行中なのに出力でイベントが生成されていないことに注意してください。 次に示す **[監視]** タイルでは、入力からデータが生成中であることがわかります。しかし、**JOIN** のどのステップが原因ですべてのイベントが欠落したのかはわかりません。
 
-![[監視] タイル](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
+![Stream Analytics の [監視] タイル](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
  
 この状況では、いくつかの SELECT INTO ステートメントを追加して、JOIN の中間結果と入力から読み取られたデータの "ログを記録" することができます。
 
 この例では、2 つの "一時的な出力" を新しく追加しました。 これらの出力には任意のシンクを使用してかまいません。 ここでは例として Azure Storage を使用します。
 
-![SELECT INTO ステートメントの追加](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
+![Stream Analytics クエリへの SELECT INTO ステートメントの追加](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
 
 クエリは次のように書き換えることができます。
 
-![書き換えられた SELECT INTO クエリ](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
+![書き換えられた SELECT INTO Stream Analytics クエリ](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
 
 もう一度ジョブを開始して、数分間実行します。 temp1 と temp2 の各クエリによって、Visual Studio Cloud Explorer で次のテーブルが生成されます。
 
 **temp1 テーブル**
-![SELECT INTO temp1 テーブル](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
+![SELECT INTO temp1 テーブル Stream Analytics クエリ](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
 
 **temp2 テーブル**
-![SELECT INTO temp2 テーブル](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
+![SELECT INTO temp2 テーブル Stream Analytics クエリ](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
 
 ご覧のとおり、temp1 と temp2 のどちらにもデータがあり、temp2 では名前列が正しく入力されています。 しかし出力には依然としてデータがなく、何らかの問題が発生していることがわかります。
 
-![データのない SELECT INTO output1 テーブル](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
+![データのない SELECT INTO output1 テーブル Stream Analytics クエリ](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
 
 データをサンプリングすることで、2 番目の JOIN に問題があることがほぼ確実にわかります。 BLOB から参照データをダウンロードして確認できます。
 
-![SELECT INTO 参照テーブル](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
+![SELECT INTO ref テーブル Stream Analytics クエリ](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
 
 ご覧のとおり、この参照データの GUID の形式が temp2 の "from" 列の形式と異なります。 これが、データが想定どおりに output1 に届かなかった原因です。
 
 データ形式を修正して参照 BLOB にアップロードし、やり直すことができます。
 
-![SELECT INTO 一時テーブル](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
+![SELECT INTO temp テーブル Stream Analytics クエリ](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
 
 今度は、出力のデータが想定どおりに書式設定されて入力されます。
 
-![SELECT INTO 最終テーブル](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
+![SELECT INTO final テーブル Stream Analytics クエリ](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
 
 ## <a name="get-help"></a>問い合わせ
 

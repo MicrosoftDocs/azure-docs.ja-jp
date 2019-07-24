@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Linguistic Analysis API で、テキストの構造を識別する自然言語処理 (NLP) ツールにアクセスできるようにする方法について説明します。
 services: cognitive-services
 author: RichardSunMS
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: overview
 ms.date: 10/10/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 17b2cbf26169f2f996dca610bd87d20b72b86114
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: c9a645a16a618ae075b9a0947f394e6833a14fb6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237604"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883170"
 ---
 # <a name="what-is-the-linguistic-analysis-api-preview"></a>Linguistic Analysis API とは (プレビュー)
 

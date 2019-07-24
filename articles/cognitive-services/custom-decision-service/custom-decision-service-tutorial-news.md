@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: 記事のパーソナル化 - Custom Decision Service'
+title: チュートリアル:記事のパーソナル化 - Custom Decision Service
 titlesuffix: Azure Cognitive Services
 description: コンテキストに応じた意思決定のための記事のパーソナル化に関するチュートリアル。
 services: cognitive-services
 author: slivkins
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: b142fe2051c017d0c0ec3c4cac6aaedd563f6cd7
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: d8ddafe20ff93e7ae4d51e2180bbd40447729234
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366337"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983034"
 ---
-# <a name="tutorial-article-personalization-for-contextual-decision-making"></a>チュートリアル: コンテキストに応じた意思決定のための記事のパーソナル化
+# <a name="tutorial-article-personalization-for-contextual-decision-making"></a>チュートリアル:コンテキストに応じた意思決定のための記事のパーソナル化
 
 このチュートリアルでは、Web サイトのフロント ページにある記事の選択をパーソナル化することに焦点を当てています。 Custom Decision Service は、たとえば、フロント ページの記事の "*複数の*" リストに影響を与えます。 おそらく、このページは、政治とスポーツのみを扱うニュース Web サイトです。 このページには、政治、スポーツ、最新ニュースの、3 つのランク付けされた記事リストが示されます。
 
@@ -44,13 +44,13 @@ Custom Decision Service は、顧客によって提供される RSS フィード
 </channel></rss>
 ```
 
-記事の順序は重要です。 記事の順序は既定のランキングを指定します。これは、記事の順序に関する最も妥当な推測に基づいて決定します。 この既定のランキングは、[ダッシュボード](#performance-dashboard)でのパフォーマンス比較に使用されます。
+記事の順序は重要です。 記事の順序は既定のランキングを指定します。これは、記事の順序に関する最も妥当な推測に基づいて決定します。 この既定のランキングは、ダッシュボードでのパフォーマンス比較に使用されます。
 
 フィード形式の詳細については、[API リファレンス](custom-decision-service-api-reference.md#action-set-api-customer-provided)を参照してください。
 
 ## <a name="register-a-new-app"></a>新しいアプリの登録
 
-1. [Microsoft アカウント](https://account.microsoft.com/account)を使用してサインインします。 リボンの **[My Portal]\(マイ ポータル\)** をクリックします。
+1. [Microsoft アカウント](https://portal.ds.microsoft.com/)を使用してサインインします。 リボンの **[My Portal]\(マイ ポータル\)** をクリックします。
 
 2. 新しいアプリケーションを登録するために、**[新しいアプリ]** ボタンをクリックします。
 

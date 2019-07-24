@@ -3,24 +3,25 @@ title: Azure AD v2.0 JavaScript シングル ページ アプリケーション 
 description: JavaScript SPA アプリケーションで、Azure Active Directory v2.0 エンドポイントからのアクセス トークンを必要とする API を呼び出す方法
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: navyasric
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/09/2018
-ms.author: andret
+ms.date: 03/20/2019
+ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 08095c869b7da56cebd3240176af4b0ca996a473
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2a791cbe805a573567671f455a0729008f7dbaba
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49983976"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630266"
 ---
 [!INCLUDE [1. Introduction](../../../includes/active-directory-develop-guidedsetup-javascriptspa-introduction.md)]
 [!INCLUDE [2. Setup](../../../includes/active-directory-develop-guidedsetup-javascriptspa-setup.md)]

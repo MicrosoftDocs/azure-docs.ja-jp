@@ -1,21 +1,22 @@
 ---
-title: Node.js を使用してプログラムで LUIS アプリを作成する | Microsoft Docs
+title: Node.js を使用して発話をインポートする
 titleSuffix: Azure
 description: LUIS Authoring API を使用して、CSV 形式の既存のデータからプログラムで LUIS アプリを作成する方法を説明します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: 729e19deb5efc91fb874214299f34fbb46d9bbdc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 314d121e8964ba1cdbb457260826d85bf8505fbc
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034044"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883255"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Node.js を使用したプログラムによる LUIS アプリの作成
 
@@ -25,7 +26,7 @@ LUIS は、[LUIS](luis-reference-regions.md) Web サイトによって実行さ�
 
 * [LUIS](luis-reference-regions.md) Web サイトにログインし、[アカウント設定] で [ オーサリング キー ](luis-concept-keys.md#authoring-key) を見つけます。 このキーを使用して、Authoring API を呼び出します。
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-* このチュートリアルでは、架空の会社のユーザー要求のログが含まれた CSV ファイルをまず使用します。 [こちら](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/IoT.csv)でダウンロードできます。
+* このチュートリアルでは、架空の会社のユーザー要求のログが含まれた CSV ファイルをまず使用します。 [こちら](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv)でダウンロードできます。
 * NPM を使用して最新の Node.js をインストールします。 これは、[こちら](https://nodejs.org/en/download/)からダウンロードできます。
 * **[推奨]** IntelliSense およびデバッグ用の Visual Studio Code。[こちら](https://code.visualstudio.com/)から無料でダウンロードできます。
 
@@ -34,12 +35,12 @@ LUIS を念頭に置いて作成されていないシステムがあっても、
 
 `IoT.csv` ファイルを開きます。 このファイルには、架空のホーム オートメーション サービスに対するユーザー クエリのログが含まれています。ログには、クエリの分類方法、ユーザーの発話、クエリから引き出された有用な情報を含む列が含まれています。 
 
-![CSV ファイル](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
+![既存のデータの CSV ファイル](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
 
 **RequestType** 列は意図として使用でき、**Request** 列は発話の例を示していることがわかります。 その他のフィールドは、発話に出現した場合にエンティティとして使用できます。 意図、エンティティ、発話の例があるため、単純なサンプル アプリの要件が揃っています。
 
 ## <a name="steps-to-generate-a-luis-app-from-non-luis-data"></a>LUIS 以外のデータから LUIS アプリを作成する手順
-ソース ファイルから新しい LUIS アプリを作成するには、まず CSV ファイルのデータを解析し、このデータを、Authoring API を使用して LUIS にアップロードできる形式に変換します。 解析されたデータから、どのような意図とエンティティがあるかに関する情報を収集します。 次に、API 呼び出しを行ってアプリを作成し、解析されたデータから収集された意図とエンティティを追加します。 LUIS アプリを作成したら、解析されたデータから発話の例を追加できます。 このフローは、次のコードの最後の部分で確認できます。 このコードをコピーまたは[ダウンロード](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/index.js)し、`index.js` に保存します。
+ソース ファイルから新しい LUIS アプリを作成するには、まず CSV ファイルのデータを解析し、このデータを、Authoring API を使用して LUIS にアップロードできる形式に変換します。 解析されたデータから、どのような意図とエンティティがあるかに関する情報を収集します。 次に、API 呼び出しを行ってアプリを作成し、解析されたデータから収集された意図とエンティティを追加します。 LUIS アプリを作成したら、解析されたデータから発話の例を追加できます。 このフローは、次のコードの最後の部分で確認できます。 このコードをコピーまたは[ダウンロード](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js)し、`index.js` に保存します。
 
    [!code-javascript[Node.js code for calling the steps to build a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/index.js)]
 
@@ -69,33 +70,33 @@ CSV の発話を含む列エントリは、LUIS が理解できる JSON 形式�
         }
 ```
 
-この例では、`intentName` は CSV ファイルの **Request** 列見出しの下のユーザー要求から取得され、`entityName` は重要な情報が含まれたその他の列から取得されています。 たとえば、**Operation** または **Device** のエントリがあり、その文字列が実際の要求にも含まれている場合は、エンティティとしてラベル付けできます。 次のコードは、この解析プロセスを示しています。 このコードをコピーまたは[ダウンロード](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_parse.js)し、`_parse.js` に保存できます。
+この例では、`intentName` は CSV ファイルの **Request** 列見出しの下のユーザー要求から取得され、`entityName` は重要な情報が含まれたその他の列から取得されています。 たとえば、**Operation** または **Device** のエントリがあり、その文字列が実際の要求にも含まれている場合は、エンティティとしてラベル付けできます。 次のコードは、この解析プロセスを示しています。 このコードをコピーまたは[ダウンロード](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_parse.js)し、`_parse.js` に保存できます。
 
    [!code-javascript[Node.js code for parsing a CSV file to extract intents, entities, and labeled utterances](~/samples-luis/examples/build-app-programmatically-csv/_parse.js)]
 
 
 
 ## <a name="create-the-luis-app"></a>LUIS アプリを作成する
-データが JSON に解析されたら、LUIS アプリに追加します。 次のコードでは LUIS アプリを作成します。 このコードをコピーまたは[ダウンロード](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_create.js)し、`_create.js` に保存します。
+データが JSON に解析されたら、LUIS アプリに追加します。 次のコードでは LUIS アプリを作成します。 このコードをコピーまたは[ダウンロード](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_create.js)し、`_create.js` に保存します。
 
    [!code-javascript[Node.js code for creating a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/_create.js)]
 
 
 ## <a name="add-intents"></a>意図の追加
-アプリを作成したら、意図を追加する必要があります。 次のコードでは LUIS アプリを作成します。 このコードをコピーまたは[ダウンロード](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_intents.js)し、`_intents.js` に保存します。
+アプリを作成したら、意図を追加する必要があります。 次のコードでは LUIS アプリを作成します。 このコードをコピーまたは[ダウンロード](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_intents.js)し、`_intents.js` に保存します。
 
    [!code-javascript[Node.js code for creating a series of intents](~/samples-luis/examples/build-app-programmatically-csv/_intents.js)]
 
 
 ## <a name="add-entities"></a>複数エンティティの追加
-次のコードでは、LUIS アプリにエンティティを追加します。 このコードをコピーまたは[ダウンロード](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_entities.js)し、`_entities.js` に保存します。
+次のコードでは、LUIS アプリにエンティティを追加します。 このコードをコピーまたは[ダウンロード](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_entities.js)し、`_entities.js` に保存します。
 
    [!code-javascript[Node.js code for creating entities](~/samples-luis/examples/build-app-programmatically-csv/_entities.js)]
    
 
 
 ## <a name="add-utterances"></a>発話の追加
-LUIS アプリでエンティティと意図が定義されたら、発話を追加できます。 次のコードでは、[Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) API を使用しています。この API により、一度に最大 100 個の発話を追加できます。  このコードをコピーまたは[ダウンロード](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_upload.js)し、`_upload.js` に保存します。
+LUIS アプリでエンティティと意図が定義されたら、発話を追加できます。 次のコードでは、[Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) API を使用しています。この API により、一度に最大 100 個の発話を追加できます。  このコードをコピーまたは[ダウンロード](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_upload.js)し、`_upload.js` に保存します。
 
    [!code-javascript[Node.js code for adding utterances](~/samples-luis/examples/build-app-programmatically-csv/_upload.js)]
 
@@ -106,9 +107,9 @@ LUIS アプリでエンティティと意図が定義されたら、発話を追
 ### <a name="install-nodejs-dependencies"></a>Node.js の依存関係をインストールする
 ターミナル/コマンド ラインで、NPM から Node.js の依存関係をインストールします。
 
-````
+```console
 > npm install
-````
+```
 
 ### <a name="change-configuration-settings"></a>構成設定を変更する
 このアプリケーションを使用するには、index.js ファイル内の値を独自のエンドポイント キーに変更し、アプリに付ける名前を指定する必要があります。 また、アプリのカルチャを設定したり、バージョン番号を変更したりすることもできます。
@@ -116,28 +117,31 @@ LUIS アプリでエンティティと意図が定義されたら、発話を追
 index.js ファイルを開き、ファイルの先頭にあるこれらの値を変更します。
 
 
-````JavaScript
+```javascript
 // Change these values
 const LUIS_programmaticKey = "YOUR_PROGRAMMATIC_KEY";
 const LUIS_appName = "Sample App";
 const LUIS_appCulture = "en-us"; 
 const LUIS_versionId = "0.1";
-````
+```
+
 ### <a name="run-the-script"></a>スクリプトを実行する
 Node.js を使用して、ターミナル/コマンド ラインからスクリプトを実行します。
 
-````
+```console
 > node index.js
-````
+```
+
 or
-````
+
+```console
 > npm start
-````
+```
 
 ### <a name="application-progress"></a>アプリケーションの進行状況
 アプリケーションの実行中は、コマンド ラインに進行状況が表示されます。 コマンド ライン出力には、LUIS からの応答の形式が含まれています。
 
-````
+```console
 > node index.js
 intents: ["TurnOn","TurnOff","Dim","Other"]
 entities: ["Operation","Device","Room"]
@@ -157,7 +161,7 @@ retrying add examples...
 
 Results of add utterances = [{"response":[{"value":{"UtteranceText":"turn on the lights","ExampleId":-67649},"hasError":false},{"value":{"UtteranceText":"turn the heat on","ExampleId":-69067},"hasError":false},{"value":{"UtteranceText":"switch on the kitchen fan","ExampleId":-3395901},"hasError":false},{"value":{"UtteranceText":"turn off bedroom lights","ExampleId":-85402},"hasError":false},{"value":{"UtteranceText":"turn off air conditioning","ExampleId":-8991572},"hasError":false},{"value":{"UtteranceText":"kill the lights","ExampleId":-70124},"hasError":false},{"value":{"UtteranceText":"dim the lights","ExampleId":-174358},"hasError":false},{"value":{"UtteranceText":"hi how are you","ExampleId":-143722},"hasError":false},{"value":{"UtteranceText":"answer the phone","ExampleId":-69939},"hasError":false},{"value":{"UtteranceText":"are you there","ExampleId":-149588},"hasError":false},{"value":{"UtteranceText":"help","ExampleId":-81949},"hasError":false},{"value":{"UtteranceText":"testing the circuit","ExampleId":-11548708},"hasError":false}]}]
 upload done
-````
+```
 
 
 

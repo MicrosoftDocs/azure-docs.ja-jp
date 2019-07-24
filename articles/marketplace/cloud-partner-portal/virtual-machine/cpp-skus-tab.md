@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 4ecc259d40cdcba93a484f27e27191e967f10ff1
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: e05813297707165d59d1b1ed969b54fb0f433277
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639113"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848092"
 ---
 # <a name="virtual-machine-skus-tab"></a>仮想マシンの SKU タブ
 
@@ -62,8 +62,8 @@ ms.locfileid: "49639113"
 | **オペレーティング システムの種類の選択** | 指定された OS の特定のベンダーまたはリリース。 |
 | **OS フレンドリ名** | 顧客に表示するオペレーティング システムの名前。  |
 | **推奨される VM サイズ** | 標準化されたリストから最大 6 個の推奨される VM サイズを選択できるようにします。  潜在顧客にはこれらの推奨項目が目立つように表示されますが、ソリューションのイメージと互換性のある VM サイズならどれでも指定できます。 | 
-| **ポートを開く**| 開くポートと、SKU でサポートするプロトコル。  これらの構成は、ソリューション VM のネットワークに対して構成した仮想ネットワークと一致する必要があります。 これらの設定は、VM のデプロイ中に有効になります。 ただし、SKU を発行した後で、ポートの設定を変更できます。 詳細については、「[Azure portal を使用して仮想マシンへのポートを開く方法](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal)」を参照してください。 <br/>次の既定のネットワーク マッピングがすべての VM に追加されます。 &emsp; Windows: 3389 -> 3389 TCP、5986 -> 5986 TCP。&emsp; Linux: 22 -> 22、TCP (SSH)。 |
-| **ディスクのバージョン**  | 関連付けられたソリューション VM。ディスク バージョン番号とディスク URL で指定されます。 ディスク バージョンは、[セマンティック バージョン](http://semver.org/)形式 `<major>.<minor>.<patch>` である必要があります。  URL は、オペレーティング システム VHD に対して作成した Shared Access Signature URI です。  SKU あたり最大 8 つのディスク バージョンを追加することができますが、SKU について最も大きな番号のディスク バージョンだけが Azure Marketplace で表示されます。 その他のバージョンは、API を使用してのみ表示されます。  <!--TD: Add more specific link to API --> <br/> **[新しいデータ ディスク]** アコーディオン セクションでは、最大 15 個のデータ ディスクを VM にアタッチすることができます。  SKU を所定の VM バージョンと関連付けられたデータ ディスクで発行すると、この構成は変更できなくなります。  さらに VM バージョンが SKU に追加された場合、そのバージョンでも同じ数のデータ ディスクをサポートする必要があります。 <br/> Azure ベースの VM イメージを作成していない場合、このフィールドを後で追加または更新できます。  関連付けられている VM リソースの作成の詳細については、[VM の技術資産の作成](./cpp-create-technical-assets.md)に関するセクションをご覧ください。  
+| **ポートを開く**| 開くポートと、SKU でサポートするプロトコル。  これらの構成は、ソリューション VM のネットワークに対して構成した仮想ネットワークと一致する必要があります。 これらの設定は、VM のデプロイ中に有効になります。 ただし、SKU を発行した後で、ポートの設定を変更できます。 詳細については、「[Azure portal を使用して仮想マシンへのポートを開く方法](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal)」を参照してください。 <br/>次の既定のネットワーク マッピングがすべての VM に追加されます。 &emsp; Windows:3389 -> 3389 TCP、5986 -> 5986 TCP、&emsp; Linux:22 -> 22、TCP (SSH)。 |
+| **ディスクのバージョン**  | 関連付けられたソリューション VM。ディスク バージョン番号とディスク URL で指定されます。 ディスク バージョンは、[セマンティック バージョン](https://semver.org/)形式 `<major>.<minor>.<patch>` である必要があります。  URL は、オペレーティング システム VHD に対して作成した Shared Access Signature URI です。  SKU あたり最大 8 つのディスク バージョンを追加することができますが、SKU について最も大きな番号のディスク バージョンだけが Azure Marketplace で表示されます。 その他のバージョンは、API を使用してのみ表示されます。  <!--TD: Add more specific link to API --> <br/> **[新しいデータ ディスク]** アコーディオン セクションでは、最大 15 個のデータ ディスクを VM にアタッチすることができます。  SKU を所定の VM バージョンと関連付けられたデータ ディスクで発行すると、この構成は変更できなくなります。  さらに VM バージョンが SKU に追加された場合、そのバージョンでも同じ数のデータ ディスクをサポートする必要があります。 <br/> Azure ベースの VM イメージを作成していない場合、このフィールドを後で追加または更新できます。  関連付けられている VM リソースの作成の詳細については、[VM の技術資産の作成](./cpp-create-technical-assets.md)に関するセクションをご覧ください。  
 |  |  |
 
 <!-- TD: The CPP UX warning msg indicates that underscores are also supported in these SKU IDs. I suspect this might be true for other identifiers. --> 
@@ -77,7 +77,7 @@ ms.locfileid: "49639113"
 
 ### <a name="simplified-currency-pricing"></a>簡略化された通貨による価格
 
-2018 年 9 月 1 日以降、「**簡略化された通貨による価格**」という新しいセクションがポータルに追加されます。 Microsoft では、世界中でより予測可能な価格とお客様からの回収を実現することにより、Azure Marketplace でのビジネスの合理化を図っています。 この合理化には、お客様に請求する通貨の数を減らすことが含まれます。  詳細については、「[Azure Marketplace の既存の VM オファーを更新する](./cpp-update-existing-offer.md)」を参照してください。
+2018 年 9 月 1 日以降、**[Simplified Currency Pricing] (簡略化された通貨による価格)** という新しいセクションがポータルに追加されます。 Microsoft では、世界中でより予測可能な価格とお客様からの回収を実現することにより、Azure Marketplace でのビジネスの合理化を図っています。 この合理化には、お客様に請求する通貨の数を減らすことが含まれます。  詳細については、「[Azure Marketplace の既存の VM オファーを更新する](./cpp-update-existing-offer.md)」を参照してください。
 
 
 ### <a name="additional-information-on-taxes-and-prices"></a>税金と価格に関する追加情報

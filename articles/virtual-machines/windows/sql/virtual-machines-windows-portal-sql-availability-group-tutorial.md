@@ -3,7 +3,7 @@ title: SQL Server 可用性グループ - Azure Virtual Machines - チュート�
 description: このチュートリアルでは、Azure Virtual Machines に SQL Server Always On 可用性グループを作成する方法を説明します。
 services: virtual-machines
 documentationCenter: na
-authors: MikeRayMSFT
+author: MikeRayMSFT
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 42a4ea1e4dc352e56fbd65f69c9ed71e3b0c1038
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d86538fca907f7181bf58ff236bba8de186641fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238077"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003452"
 ---
-# <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Azure VM での AlwaysOn 可用性グループの手動構成
+# <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>チュートリアル:Azure VM での AlwaysOn 可用性グループの手動構成
 
 このチュートリアルでは、Azure Virtual Machines に SQL Server Always On 可用性グループを作成する方法を説明します。 チュートリアル全体では、2 つの SQL Server にデータベース レプリカで可用性グループを作成します。
 
@@ -45,12 +45,15 @@ ms.locfileid: "51238077"
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | クラスター監視用のファイル共有 |  
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server サービス アカウント | ドメイン アカウント |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server エージェント サービス アカウント | ドメイン アカウント |  
-|![正方形](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|ファイアウォール ポートを開く | - SQL Server: **1433** (既定インスタンス用) <br/> - データベース ミラーリング エンドポイント: **5022** または使用可能な任意のポート <br/> - 可用性グループ ロードバランサーの IP アドレスの正常性プローブ: **59999** または使用可能な任意のポート <br/> - クラスター コア ロードバランサーの IP アドレスの正常性プローブ: **58888** または使用可能な任意のポート |
+|![正方形](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|ファイアウォール ポートを開く | - SQL Server:**1433** (既定インスタンス用) <br/> - データベース ミラーリング エンドポイント:**5022** または使用可能な任意のポート <br/> - 可用性グループ ロードバランサーの IP アドレスの正常性プローブ:**59999** または使用可能な任意のポート <br/> - クラスター コア ロードバランサーの IP アドレスの正常性プローブ:**58888** または使用可能な任意のポート |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|フェールオーバー クラスタリング機能を追加する | 両方の SQL Server にこの機能が必要です |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|インストール ドメイン アカウント | - 各 SQL Server 上のローカル管理者 <br/> - SQL Server の各インスタンスの SQL Server sysadmin 固定サーバー ロールのメンバー  |
 
 
 チュートリアルを始める前に、[Azure Virtual Machines で Always On 可用性グループを作成するための前提条件を満たす](virtual-machines-windows-portal-sql-availability-group-prereq.md)必要があります。 これらの前提条件が既に満たされている場合は、「[クラスターを作成する](#CreateCluster)」に進んでかまいません。
+
+  >[!NOTE]
+  > このチュートリアルで説明する手順の多くは、[Azure SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md) と [Azure クイック スタート テンプレート](virtual-machines-windows-sql-availability-group-quickstart-template.md)で自動化できるようになりました。
 
 
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
@@ -296,7 +299,7 @@ Repeat these steps on the second SQL Server.
 
     ![新しい可用性グループ ウィザード、最初のデータの同期を選択](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. **[最初のデータ同期を選択]** ページで、**[完全]** を選び、共有ネットワークの場所を指定します。 この場所としては、[先に作成したバックアップ共有](#backupshare)を使います。 この例では、 **\\\\\<1 番目の SQL Server\>\Backup\\** でした。 **[次へ]** をクリックします。
+8. **[最初のデータ同期を選択]** ページで、**[完全]** を選び、共有ネットワークの場所を指定します。 この場所としては、[先に作成したバックアップ共有](#backupshare)を使います。 この例では、**\\\\\<1 番目の SQL Server\>\Backup\\\** でした。 **[次へ]** をクリックします。
 
    >[!NOTE]
    >完全同期では、SQL Server の 1 番目のインスタンスにあるデータベースの完全バックアップが作成されて、2 番目のインスタンスに復元されます。 大規模なデータベースの場合、完全同期は長い時間がかかることがあるのでお勧めできません。 手動でデータベースのバックアップを作成し、`NO RECOVERY` で復元することにより、この時間を短縮できます。 可用性グループを構成する前に 2 番目の SQL Server のデータベースが `NO RECOVERY` で既に復元されている場合は、**[参加のみ]** を選びます。 可用性グループを構成した後でバックアップを作成する場合は、**[最初のデータ同期をスキップ]** を選びます。
@@ -355,8 +358,8 @@ Azure Load Balancer には、Standard Load Balancer または Basic Load Balance
 
    | Setting | フィールド |
    | --- | --- |
-   | **名前** |ロード バランサーのテキスト名を使います (例: **sqlLB**)。 |
-   | **種類** |内部 |
+   | **Name** |ロード バランサーのテキスト名を使います (例: **sqlLB**)。 |
+   | **Type** |内部 |
    | **Virtual Network** |Azure 仮想ネットワークの名前を使います。 |
    | **サブネット** |仮想マシンが存在するサブネットの名前を使います。  |
    | **IP アドレスの割り当て** |静的 |
@@ -399,7 +402,7 @@ Azure Load Balancer には、Standard Load Balancer または Basic Load Balance
 
    | Setting | 説明 | 例
    | --- | --- |---
-   | **名前** | Text | SQLAlwaysOnEndPointProbe |
+   | **Name** | Text | SQLAlwaysOnEndPointProbe |
    | **プロトコル** | TCP を選びます | TCP |
    | **ポート** | 未使用の任意のポート | 59999 |
    | **間隔**  | プローブの試行の間隔 (秒単位) |5 |
@@ -412,9 +415,10 @@ Azure Load Balancer には、Standard Load Balancer または Basic Load Balance
 1. ロード バランサーをクリックし、**[負荷分散規則]** をクリックして、**[+ 追加]** をクリックします。
 
 1. 次のようにリスナーの負荷分散規則を設定します。
+
    | Setting | 説明 | 例
    | --- | --- |---
-   | **名前** | Text | SQLAlwaysOnEndPointListener |
+   | **Name** | Text | SQLAlwaysOnEndPointListener |
    | **フロントエンド IP アドレス** | アドレスを選びます |ロード バランサーの作成時に作成したアドレスを使います。 |
    | **プロトコル** | TCP を選びます |TCP |
    | **ポート** | 可用性グループ リスナーのポートを使用する | 1433 |
@@ -441,7 +445,7 @@ WSFC の IP アドレスもロード バランサー上に存在する必要が�
 
    | Setting | 説明 | 例
    | --- | --- |---
-   | **名前** | Text | WSFCEndPointProbe |
+   | **Name** | Text | WSFCEndPointProbe |
    | **プロトコル** | TCP を選びます | TCP |
    | **ポート** | 未使用の任意のポート | 58888 |
    | **間隔**  | プローブの試行の間隔 (秒単位) |5 |
@@ -452,9 +456,10 @@ WSFC の IP アドレスもロード バランサー上に存在する必要が�
 1. 負荷分散規則を設定します。 **[負荷分散規則]** をクリックし、**[+ 追加]** をクリックします。
 
 1. クラスターのコア IP アドレスの負荷分散規則を次のように設定します。
+
    | Setting | 説明 | 例
    | --- | --- |---
-   | **名前** | Text | WSFCEndPoint |
+   | **Name** | Text | WSFCEndPoint |
    | **フロントエンド IP アドレス** | アドレスを選びます |WSFC の IP アドレスの構成時に作成したアドレスを使用します。 これはリスナーの IP アドレスとは異なります |
    | **プロトコル** | TCP を選びます |TCP |
    | **ポート** | クラスター IP アドレスのポートを使用します。 これは、リスナー プローブ ポートには使用されない使用可能なポートです。 | 58888 |
@@ -502,15 +507,15 @@ SQL Server Management Studio で、リスナー ポートを設定します。
 
 1. **sqlcmd** ユーティリティを使用して接続をテストします。 たとえば次のスクリプトは、Windows 認証を使用し、リスナー経由でプライマリ レプリカとの **sqlcmd** 接続を確立しています。
 
-  ```cmd
-  sqlcmd -S <listenerName> -E
-  ```
+   ```cmd
+   sqlcmd -S <listenerName> -E
+   ```
 
-  リスナーが既定のポート (1433) 以外のポートを使用している場合は、そのポートを接続文字列で指定します。 たとえば、次の sqlcmd コマンドは、ポート 1435 でリスナーに接続します。
+   リスナーが既定のポート (1433) 以外のポートを使用している場合は、そのポートを接続文字列で指定します。 たとえば、次の sqlcmd コマンドは、ポート 1435 でリスナーに接続します。
 
-  ```cmd
-  sqlcmd -S <listenerName>,1435 -E
-  ```
+   ```cmd
+   sqlcmd -S <listenerName>,1435 -E
+   ```
 
 SQLCMD 接続では、プライマリ レプリカをホストしている SQL Server インスタンスに対して自動的に接続されます。
 

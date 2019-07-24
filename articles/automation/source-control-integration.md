@@ -3,66 +3,122 @@ title: Azure Automation でのソース管理の統合
 description: この記事では、Azure Automation での GitHub とのソース管理の統合について説明します。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/26/2018
+ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5778c38d5a0c44e42b83fd139078be1f0bb45f7f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 81602f1a30fb753d7a8fcfccace581cd8c7b2f0c
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023749"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607094"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure Automation でのソース管理の統合
 
-ソース管理では、GitHub または Azure DevOps のソース管理リポジトリ内のスクリプトを使用して、Automation アカウントの Runbook を最新の状態に維持することができます。 ソース管理により、チームとの共同作業、変更の追跡、Runbook の以前のバージョンへのロールバックを簡単に実行できるようになります。 たとえば、ソース管理を使用すると、開発、テスト、運用の Automation アカウントに対して、ソース管理内の異なるブランチを同期できます。 これにより、開発環境でテストされたコードを、運用の Automation アカウントに昇格することが容易になります。
+ソース管理では、GitHub または Azure Repos のソース管理リポジトリ内のスクリプトを使用して、Automation アカウントの Runbook を最新の状態に維持することができます。 ソース管理により、チームとの共同作業、変更の追跡、Runbook の以前のバージョンへのロールバックを簡単に実行できるようになります。 たとえば、ソース管理を使用すると、開発、テスト、運用の Automation アカウントに対して、ソース管理内の異なるブランチを同期できます。 これにより、開発環境でテストされたコードを、運用の Automation アカウントに昇格することが容易になります。 Automation とソース管理の統合では、ソース管理リポジトリからの一方向の同期がサポートされます。
 
 Azure Automation は、次の 3 種類のソース管理をサポートしています。
 
 * GitHub
-* Azure DevOps (Git)
-* Azure DevOps (TFVC)
+* Azure Repos (Git)
+* Azure Repos (TFVC)
 
 ## <a name="pre-requisites"></a>前提条件
 
-* ソース管理リポジトリ (GitHub または Azure DevOps)
-* ソース管理リポジトリに対する適切な[アクセス許可](#personal-access-token-permissions)
-* [実行アカウントと接続](manage-runas-account.md)
+* ソース管理リポジトリ (GitHub または Azure Repos)
+* [実行アカウント](manage-runas-account.md)
+* Automation アカウントに[最新の Azure モジュール](automation-update-azure-modules.md)があることを確認してください
 
 > [!NOTE]
 > ソース管理の同期ジョブは、ユーザーの Automation アカウントの下で実行され、その他の Automation ジョブと同じレートで課金されます。
 
-## <a name="configure-source-control"></a>ソース管理を構成する
+## <a name="configure-source-control---azure-portal"></a>ソース管理を構成する - Azure portal
 
-Automation アカウント内で、**[Source Control (preview)] (ソース管理 (プレビュー))** を選択し、**[+ 追加]** をクリックします
+Automation アカウント内で、**[ソース管理]** を選択し、**[+ 追加]** をクリックします
 
 ![ソース管理の選択](./media/source-control-integration/select-source-control.png)
 
-**[ソース管理の種類]** を選択し、**[認証]** をクリックします。
-
-アプリのアクセス許可の要求ページを確認し、**[Accept] (承認)** をクリックします。
+**[ソース管理の種類]** を選択し、**[認証]** をクリックします。 ブラウザー ウィンドウが開き、サインインを求められます。プロンプトに従って認証を完了します。
 
 **[Source Control Summary] (ソース管理の概要)** ページで情報を入力し、**[保存]** をクリックします。 次の表に、指定できるフィールドの説明を示します。
 
 |プロパティ  |説明  |
 |---------|---------|
-|ソース管理名     | ソース管理のわかりやすい名前        |
-|ソース管理の種類     | ソース管理のソースの種類。 使用できるオプションは次のとおりです。</br> Github</br>Azure DevOps (Git)</br> Azure DevOps (TFVC)        |
-|リポジトリ     | リポジトリまたはプロジェクトの名前。 この値は、ソース管理リポジトリから取得されます。 例: $/ContosoFinanceTFVCExample         |
+|ソース管理名     | ソース管理のためのフレンドリ名。 *この名前は、アルファベットと数字でのみ構成されている必要があります。*        |
+|ソース管理の種類     | ソース管理のソースの種類。 使用できるオプションは次のとおりです。</br> GitHub</br>Azure Repos (Git)</br> Azure Repos (TFVC)        |
+|リポジトリ     | リポジトリまたはプロジェクトの名前。 最初の 200 個のリポジトリが返されます。 リポジトリを検索するには、フィールドに名前を入力して、**[Search on GitHub]\(GitHub で検索\)** をクリックします。|
 |[Branch]\(ブランチ\)     | ソース ファイルの抽出元のブランチ。 TFVC ソース管理の種類では、ブランチのターゲット設定は使用できません。          |
-|フォルダー パス     | 同期する Runbook が含まれているフォルダー。例: /Runbooks         |
+|フォルダー パス     | 同期する Runbook が含まれているフォルダー。例: /Runbooks </br>*指定されたフォルダー内の Runbook のみが同期されます。再帰はサポートされていません。*        |
 |自動同期     | ソース管理リポジトリでコミットが行われたときに、自動同期をオンまたはオフにします         |
 |Runbook の発行     | **[オン]** に設定されている場合は、ソース管理から同期されたときに Runbook が自動的に発行されます。         |
 |説明     | 詳細情報を入力するテキスト フィールド        |
 
 ![ソース管理の概要](./media/source-control-integration/source-control-summary.png)
 
+> [!NOTE]
+> ソース管理を構成する際は、確実に正しいアカウントでログインします。 正しいかどうかが不明な場合、ブラウザーで新しいタブを開き、visualstudio.com または github.com からログアウトし、ソース管理にもう一度接続してみてください。
+
+## <a name="configure-source-control---powershell"></a>ソース管理を構成する - PowerShell
+
+PowerShell を使用して Azure Automation のソース管理を構成することもできます。 PowerShell コマンドレットを使用してソース管理を構成するには、個人用アクセス トークン (PAT) が必要です。 [New-AzureRmAutomationSourceControl](/powershell/module/AzureRM.Automation/New-AzureRmAutomationSourceControl) を使用してソース管理の接続を作成します。 このコマンドレットでは、個人用アクセス トークンのセキュアな文字列が必要です。セキュアな文字列を作成する方法については、[ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6) に関するページをご覧ください。
+
+### <a name="azure-repos-git"></a>Azure Repos (Git)
+
+```powershell-interactive
+New-AzureRmAutomationSourceControl -Name SCReposGit -RepoUrl https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname> -SourceType VsoGit -AccessToken <secureStringofPAT> -Branch master -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
+```
+
+### <a name="azure-repos-tfvc"></a>Azure Repos (TFVC)
+
+```powershell-interactive
+New-AzureRmAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<accountname>.visualstudio.com/<projectname>/_versionControl -SourceType VsoTfvc -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
+```
+
+### <a name="github"></a>GitHub
+
+```powershell-interactive
+New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<accountname>/<reponame>.git -SourceType GitHub -FolderPath "/MyRunbooks" -Branch master -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
+```
+
+### <a name="personal-access-token-permissions"></a>個人用アクセス トークンのアクセス許可
+
+ソース管理には、個人用アクセス トークンに対するいくつかの最小限のアクセス許可が必要です。 次の表に、GitHub と Azure Repos で必要な最小限のアクセス許可を示します。
+
+#### <a name="github"></a>GitHub
+
+GitHub で個人用アクセス トークンを作成する方法について詳しくは、「[コマンドラインの個人用アクセス トークンの作成](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)」をご覧ください。
+
+|Scope (スコープ)  |説明  |
+|---------|---------|
+|**レポジトリ**     |         |
+|repo:status     | コミット状態へのアクセス         |
+|repo_deployment      | デプロイ状態へのアクセス         |
+|public_repo     | パブリック リポジトリへのアクセス         |
+|**admin:repo_hook**     |         |
+|write:repo_hook     | リポジトリ フックの書き込み         |
+|read:repo_hook|リポジトリ フックの読み取り|
+
+#### <a name="azure-repos"></a>Azure Repos
+
+Azure Repos で個人用アクセス トークンを作成する方法について詳しくは、「[Authenticate access with personal access tokens (個人用アクセス トークンによるアクセスの認証)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)」をご覧ください。
+
+|Scope (スコープ)  |
+|---------|
+|コード (読み取り)     |
+|プロジェクトおよびチーム (読み取り)|
+|ID (読み取り)      |
+|ユーザー プロファイル (読み取り)     |
+|作業項目 (読み取り)    |
+|サービス接続 (読み取り、クエリ、管理)<sup>1</sup>    |
+
+<sup>1</sup>サービス接続のアクセス許可は、自動同期を有効にした場合にのみ必要です。
+
 ## <a name="syncing"></a>同期中
 
-ソース管理の統合の構成時に自動同期を構成すると、初期同期が自動的に開始されます。 自動同期が設定されていない場合は、**[Source control (Preview)] (ソース管理 (プレビュー))** ページの表でソースを選択します。 **[Start Sync] (同期の開始)** をクリックして、同期プロセスを開始します。  
+**[ソース管理]** ページの表でソースを選択します。 **[Start Sync] (同期の開始)** をクリックして、同期プロセスを開始します。
 
 **[Sync jobs] (同期ジョブ)** タブをクリックすると、現在の同期ジョブまたは以前の同期ジョブの状態を表示することができます。**[ソース管理]** ドロップダウン リストで、ソース管理を選択します。
 
@@ -73,7 +129,7 @@ Automation アカウント内で、**[Source Control (preview)] (ソース管理
 ```output
 ========================================================================================================
 
-Azure Automation Source Control Public Preview.
+Azure Automation Source Control.
 Supported runbooks to sync: PowerShell Workflow, PowerShell Scripts, DSC Configurations, Graphical, and Python 2.
 
 Setting AzureRmEnvironment.
@@ -103,40 +159,17 @@ Source Control Sync Summary:
 ========================================================================================================
 ```
 
-## <a name="personal-access-token-permissions"></a>個人用アクセス トークンのアクセス許可
-
-ソース管理には、個人用アクセス トークンに対するいくつかの最小限のアクセス許可が必要です。 次の表に、GitHub と Azure DevOps で必要な最小限のアクセス許可を示します。
-
-### <a name="github"></a>GitHub
-
-|Scope (スコープ)  |説明  |
-|---------|---------|
-|**レポジトリ**     |         |
-|repo:status     | コミット状態へのアクセス         |
-|repo_deployment      | デプロイ状態へのアクセス         |
-|public_repo     | パブリック リポジトリへのアクセス         |
-|**admin:repo_hook**     |         |
-|write:repo_hook     | リポジトリ フックの書き込み         |
-|read:repo_hook|リポジトリ フックの読み取り|
-
-### <a name="azure-devops"></a>Azure DevOps
-
-|Scope (スコープ)  |
-|---------|
-|コード (読み取り)     |
-|プロジェクトおよびチーム (読み取り)|
-|ID (読み取り)      |
-|ユーザー プロファイル (読み取り)     |
-|作業項目 (読み取り)    |
-|サービス接続 (読み取り、クエリ、管理)<sup>1</sup>    |
-
-<sup>1</sup>サービス接続のアクセス許可は、自動同期を有効にした場合にのみ必要です。
+**[ソース管理の同期ジョブの概要]** ページの **[すべてのログ]** を選択すると、追加のログを使用できます。 このような追加のログ エントリは、ソース管理を使用する際に発生する可能性がある問題のトラブルシューティングに役立ちます。
 
 ## <a name="disconnecting-source-control"></a>ソース管理の切断
 
-ソース管理リポジトリから切断するには、Automation アカウントの **[アカウント設定]** の下の **[Source control (Preview)] (ソース管理 (プレビュー))** を開きます。
+ソース管理リポジトリから切断するには、Automation アカウントの **[アカウント設定]** の下の **[ソース管理]** を開きます。
 
 削除するソース管理を選択します。 **Source Control Summary (ソース管理の概要)** ページで **削除** をクリックします。
+
+## <a name="encoding"></a>エンコード
+
+ソース管理リポジトリで複数のユーザーがさまざまなエディターを使用して Runbook を編集しているとき、エンコードの問題が発生する可能性があります。 このような状況では、正しくない文字が Runbook に含まれることがあります。 詳しくは、「[エンコード問題の一般的な原因](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

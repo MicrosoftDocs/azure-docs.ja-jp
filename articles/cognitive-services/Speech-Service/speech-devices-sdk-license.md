@@ -1,25 +1,26 @@
 ---
-title: Speech Devices SDK のライセンス契約
+title: Speech Devices SDK のライセンス契約 - Speech Services
 titleSuffix: Azure Cognitive Services
 description: Speech Devices SDK のライセンス契約。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/28/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: dea27d7363210580d5f040de7ea1db770701d9c9
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 825a6035a997eb27a3e8e5833a792bdd985997c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466122"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084625"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>Speech Devices SDK のライセンス契約
 
-## <a name="microsoft-software-license-termsbrspeech-devices-software-development-kit-sdk"></a>マイクロソフト ソフトウェア ライセンス条項<br>Speech Devices ソフトウェア開発キット (SDK) 
+## <a name="microsoft-software-license-termsbrspeech-devices-software-development-kit-sdk"></a>マイクロソフト ソフトウェア ライセンス条項<br>Speech Devices ソフトウェア開発キット (SDK)
 
 > 米国在住のお客様 (または主たる営業所が米国に所在する企業) は、後述の「拘束力のある仲裁および集団訴訟権の放棄」の条項を参照してください。 この条項は、紛争解決方法に影響を与えるものです。
 
@@ -51,13 +52,13 @@ e)  本ソフトウェア (上記の該当する条項に従うことを条件�
 
 f)  本ソフトウェアは、必ず Microsoft Azure Cognitive Services の音声サービスと組み合わせて使用する必要があります。これ以外のものと組み合わせて使用することは認められません。
 
-**3\. データ収集。** 本ソフトウェアでは、他の Microsoft 製品とのやり取りによりデータが収集され、当該データが Microsoft に送信されることがあります。 Microsoft が収集した個人データの処理に関する詳細については、Microsoft のプライバシーに関する声明 (http://go.microsoft.com/fwlink/?LinkId=248681) を参照してください。
+**3\. データ収集。** 本ソフトウェアでは、他の Microsoft 製品とのやり取りによりデータが収集され、当該データが Microsoft に送信されることがあります。 Microsoft が収集した個人データの処理に関する詳細については、Microsoft のプライバシーに関する声明 (https://go.microsoft.com/fwlink/?LinkId=248681) を参照してください。
 
 **4\. プレリリース ソフトウェア。** 本ソフトウェアは、プレリリース版です。 正常な動作は保証されていません。 製品版とは異なるものになる可能性があります。
 
 **5\. フィードバック。** お客様が Microsoft に対して本ソフトウェアに関するフィードバックを提供した場合、お客様は Microsoft に対し、方法および目的を問わず当該フィードバックを使用、共有、および商品化する権利を無償で付与するものとします。 お客様は、Microsoft がお客様からのフィードバックを自己のソフトウェアまたはドキュメントに組み込んだことによって当該ソフトウェアまたはドキュメントに関するライセンスを第三者に供与することを余儀なくされるような内容のライセンスが適用されるフィードバックを提供しないものとします。 これらの権利は、本契約よりも優先されます。
 
-**6\. 期間** 本契約は、お客様による承諾の時点をもって発効し、お客様または Microsoft がいつでも解除できるものとします。 
+**6\. 期間** 本契約は、お客様による承諾の時点をもって発効し、お客様または Microsoft がいつでも解除できるものとします。
 
 **7\. 解除。** Microsoft は、お客様が本契約の条項のいずれかに違反した場合には、他のいかなる権利にも影響を及ぼすことなく、本契約を解除できるものとします。 お客様は、この場合において、本ソフトウェアのコピーおよび本ソフトウェアのコンポーネント パーツをすべて破棄しなければなりません。
 
@@ -82,9 +83,9 @@ b)  カナダ。 お客様が本ソフトウェアをカナダで入手された
 c)  ドイツおよびオーストリア。
 
 > (i)   保証。 適切にライセンスを取得したソフトウェアは、実質的に、本ソフトウェアに付属しているマイクロソフト資料に説明されているとおり動作します。 ただし、マイクロソフトは、ライセンスを取得したソフトウェアに関して一切の契約上の保証を行いません。
-
+> 
 > (ii)  賠償責任の制限。 マイクロソフトは、故意による行為、重過失があった場合、および製造物責任法に基づく請求が申し立てられた場合、ならびに死亡または個人もしくは人身に対する傷害が発生した場合、制定法に従って責任を負います。
-
+> 
 > 前項 (ii) を条件として、Microsoft は、重大な契約上の義務、すなわち、その義務を履行することで本契約の正当な履行が促進され、その義務に違反した場合には本契約の目的が危うくなり、その義務が遵守されることを当事者が常に信頼しているような義務 (いわゆる "基本義務") に違反した場合に限り、軽過失について責任を負います。 その他の場合、マイクロソフトは軽過失について責任を負いません。
 
 **15\. 保証の免責。本ソフトウェアは "現状有姿" を条件にライセンス供与されます。本ソフトウェアの使用に伴う危険は、お客様の負担とします。マイクロソフトは明示的な補償、保証、条件提示を一切行いません。適用法令によって認められる限り、マイクロソフトは、商品性、特定目的に対する適合性、非侵害性に関する黙示の保証については一切責任を負いません。**

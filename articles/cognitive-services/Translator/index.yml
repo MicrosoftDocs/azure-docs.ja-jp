@@ -1,106 +1,100 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d74ef4b68545c349c8df2cb7090ee8c26e2cd3e4
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622859"
 documentType: LandingData
 title: Translator Text のドキュメント
 metadata:
   title: Translator Text API のドキュメント - クイックスタート、チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
   description: Translator Text を使用してテキストを複数の言語で翻訳する方法について説明します。
   services: cognitive-services
-  author: Jann-Skotdal
+  author: v-pawal
   manager: Chris.Wendt
   ms.service: cognitive-services
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/06/18
+  ms.date: 02/21/2019
   ms.author: v-jansko
 abstract:
-  description: Translator Text はクラウドベースの機械翻訳サービスです。これを使用すると、単純な REST API 呼び出しによってほぼリアルタイムでテキストを翻訳することができます。 この API では、最新のニューラル機械翻訳テクノロジが使用され、統計的機械翻訳テクノロジが提供されます。 Custom Translator は、ニューラル翻訳システムを構築できるようにする、Translator Text API の拡張機能です。 カスタマイズした翻訳システムを使用すると、Translator Text API または <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/">Microsoft Speech Service</a> を使ってテキストを翻訳できます。 ニューラル機械翻訳と統計的機械翻訳の両方で、サポートされている言語の一覧については、<a href="languages.md">サポートされている言語</a>に関するページを参照してください。
+  description: 'Translator Text はクラウドベースの機械翻訳サービスです。これを使用すると、単純な REST API 呼び出しによってほぼリアルタイムでテキストを翻訳することができます。 この API では、最新のニューラル機械翻訳テクノロジが使用され、統計的機械翻訳テクノロジが提供されます。 Custom Translator は、ニューラル翻訳システムを構築できるようにする、Translator Text API の拡張機能です。 カスタマイズした翻訳システムを使用すると、Translator Text API または <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/">Microsoft Speech Service</a> を使ってテキストを翻訳できます。 ニューラル機械翻訳と統計的機械翻訳の両方で、サポートされている言語の一覧については、<a href="languages.md">サポートされている言語</a>に関するページを参照してください。'
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/translator/translator-info-overview
+            html: <p>Translator Text API について確認します</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Translator Text API とは
+          - href: /azure/cognitive-services/translator/custom-translator/overview
+            html: <p>Custom Translator について確認します</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Custom Translator とは
+          - href: /azure/cognitive-services/translator/custom-translator/quickstart-build-deploy-custom-model
+            html: <p>Custom Translator の使い方について確認します</p>
+            image:
+              src: ../media/index/i_get-started.svg
+            title: Custom Translator のクイック スタート
+  - title: 5 分間のクイック スタート
     items:
-    - href: /azure/cognitive-services/translator/translator-info-overview
-      html: <p>Translator Text API について確認します</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Translator Text API とは
-    - href: /azure/cognitive-services/translator/custom-translator/overview
-      html: <p>Custom Translator について確認します</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Custom Translator (プレビュー) とは
-    - href: /azure/cognitive-services/translator/custom-translator/quickstart-build-deploy-custom-model
-      html: <p>Custom Translator の使い方について確認します</p>
-      image:
-        src: ../media/index/i_get-started.svg
-      title: Custom Translator のクイック スタート
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: Translator Text API の使用を開始します。
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/logo_csharp.svg
-      title: C#
-    - image:
-        src: media/index/logo_java.svg
-      title: Java
-    - image:
-        src: media/index/logo_nodejs.svg
-      title: Node.js
-    - image:
-        src: media/index/logo_python.svg
-      title: Python
-    - image:
-        src: media/index/logo_go.svg
-      title: Go
-    rows:
-    - title: 1 つの言語から別の言語にテキストを翻訳する
-      values:
-      - href: quickstart-csharp-translate
-      - href: quickstart-java-translate
-      - href: quickstart-nodejs-translate
-      - href: quickstart-python-translate
-      - href: quickstart-go-translate
-    - title: 1 つのスクリプトから別のスクリプトにテキストを変換する
-      values:
-      - href: quickstart-csharp-transliterate
-      - href: quickstart-java-transliterate
-      - href: quickstart-nodejs-transliterate
-      - href: quickstart-python-transliterate
-      - href: quickstart-go-transliterate
-    - title: テキストの言語を特定する
-      values:
-      - href: quickstart-csharp-detect
-      - href: quickstart-java-detect
-      - href: quickstart-nodejs-detect
-      - href: quickstart-python-detect
-      - href: quickstart-go-detect
-    - title: 別の翻訳と用法を取得する
-      values:
-      - href: quickstart-csharp-dictionary
-      - href: quickstart-java-dictionary
-      - href: quickstart-nodejs-dictionary
-      - href: quickstart-python-dictionary
-      - href: quickstart-go-dictionary
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Translator Text API を使用してアプリケーションを開発する方法について説明します。
-  - type: paragraph
-    text: <a href="tutorial-wpf-translation-csharp.md">C# を使用して Translator Text の WPF アプリケーションを作成する</a>
-- title: リファレンス
-  items:
-  - type: paragraph
-    text: <p><a href="reference/v3-0-reference.md">API リファレンス</a></p>
+      - type: paragraph
+        text: Translator Text API の使用を開始します。
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/logo_csharp.svg
+            title: 'C#'
+          - image:
+              src: media/index/logo_java.svg
+            title: Java
+          - image:
+              src: media/index/logo_nodejs.svg
+            title: Node.js
+          - image:
+              src: media/index/logo_python.svg
+            title: Python
+          - image:
+              src: media/index/logo_go.svg
+            title: Go
+        rows:
+          - title: 1 つの言語から別の言語にテキストを翻訳する
+            values:
+              - href: quickstart-csharp-translate
+              - href: quickstart-java-translate
+              - href: quickstart-nodejs-translate
+              - href: quickstart-python-translate
+              - href: quickstart-go-translate
+          - title: 1 つのスクリプトから別のスクリプトにテキストを変換する
+            values:
+              - href: quickstart-csharp-transliterate
+              - href: quickstart-java-transliterate
+              - href: quickstart-nodejs-transliterate
+              - href: quickstart-python-transliterate
+              - href: quickstart-go-transliterate
+          - title: テキストの言語を特定する
+            values:
+              - href: quickstart-csharp-detect
+              - href: quickstart-java-detect
+              - href: quickstart-nodejs-detect
+              - href: quickstart-python-detect
+              - href: quickstart-go-detect
+          - title: 別の翻訳と用法を取得する
+            values:
+              - href: quickstart-csharp-dictionary
+              - href: quickstart-java-dictionary
+              - href: quickstart-nodejs-dictionary
+              - href: quickstart-python-dictionary
+              - href: quickstart-go-dictionary
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: Translator Text API を使用してアプリケーションを開発する方法について説明します。
+      - type: paragraph
+        text: '<li><a href="tutorial-wpf-translation-csharp.md">Translator Text の WPF アプリの作成 (C#)</a></li><li><a href="tutorial-build-flask-app-translation-synthesis.md">Flask 翻訳アプリの作成 (Python)</a></li>'
+  - title: リファレンス
+    items:
+      - type: paragraph
+        text: <p><a href="reference/v3-0-reference.md">API リファレンス</a></p>

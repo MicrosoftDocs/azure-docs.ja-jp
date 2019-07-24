@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 236809336975eec94d7decd9822fc9143ae19bfb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0af6e87d3e0b4b3b40b63db07384d4a33a9d43e1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981027"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998951"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle ASM をセットアップする  
 
@@ -42,7 +42,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
-リソース グループを作成するには、[az group create](/cli/azure/group#az_group_create) コマンドを使用します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この例では、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。
+リソース グループを作成するには、[az group create](/cli/azure/group) コマンドを使用します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この例では、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -50,7 +50,7 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="create-a-vm"></a>VM の作成
 
-Oracle データベース イメージに基づいて仮想マシンを作成し、Oracle ASM を使用するようにそれを構成するには、[az vm create](/cli/azure/vm#az_vm_create) コマンドを使用します。 
+Oracle データベース イメージに基づいて仮想マシンを作成し、Oracle ASM を使用するようにそれを構成するには、[az vm create](/cli/azure/vm) コマンドを使用します。 
 
 次の例では、myVM という名前の VM が作成されます。サイズは Standard_DS2_v2 で、50 GB のデータ ディスクが 4 つ装着されます。 これらがキーの既定の場所にまだ存在しない場合、SSH キーも作成されます。  特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。  
 
@@ -90,7 +90,7 @@ ssh <publicIpAddress>
 
 Oracle ASM をインストールするには、次の手順を実行します。 
 
-Oracle ASM のインストールの詳細については、「[Oracle ASMLib Downloads for Oracle Linux 6 (Oracle Linux 6 用の Oracle ASMLib のダウンロード)](http://www.oracle.com/technetwork/server-storage/linux/asmlib/ol6-1709075.html)」を参照してください。  
+Oracle ASM のインストールの詳細については、「[Oracle ASMLib Downloads for Oracle Linux 6 (Oracle Linux 6 用の Oracle ASMLib のダウンロード)](https://www.oracle.com/technetwork/server-storage/linux/asmlib/ol6-1709075.html)」を参照してください。  
 
 1. ASM インストールを続行するには、root としてログインする必要があります。
 
@@ -104,7 +104,7 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
     yum list | grep oracleasm 
     yum -y install kmod-oracleasm.x86_64 
     yum -y install oracleasm-support.x86_64 
-    wget http://download.oracle.com/otn_software/asmlib/oracleasmlib-2.0.12-1.el6.x86_64.rpm 
+    wget https://download.oracle.com/otn_software/asmlib/oracleasmlib-2.0.12-1.el6.x86_64.rpm 
     yum -y install oracleasmlib-2.0.12-1.el6.x86_64.rpm 
     rm -f oracleasmlib-2.0.12-1.el6.x86_64.rpm
    ```
@@ -336,24 +336,24 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
 
 10. フォルダーのアクセス許可を変更します。
 
-   ```bash
-   chmod -R 775 /opt 
-   chown grid:oinstall /opt 
-   chown oracle:oinstall /dev/sdc1 
-   chown oracle:oinstall /dev/sdd1 
-   chown oracle:oinstall /dev/sde1 
-   chown oracle:oinstall /dev/sdf1 
-   chmod 600 /dev/sdc1 
-   chmod 600 /dev/sdd1 
-   chmod 600 /dev/sde1 
-   chmod 600 /dev/sdf1
-   ```
+    ```bash
+    chmod -R 775 /opt 
+    chown grid:oinstall /opt 
+    chown oracle:oinstall /dev/sdc1 
+    chown oracle:oinstall /dev/sdd1 
+    chown oracle:oinstall /dev/sde1 
+    chown oracle:oinstall /dev/sdf1 
+    chmod 600 /dev/sdc1 
+    chmod 600 /dev/sdd1 
+    chmod 600 /dev/sde1 
+    chmod 600 /dev/sdf1
+    ```
 
 ## <a name="download-and-prepare-oracle-grid-infrastructure"></a>Oracle Grid Infrastructure のダウンロードと準備
 
 Oracle Grid Infrastructure ソフトウェアをダウンロードして準備するには、次の手順を実行します。
 
-1. [Oracle ASM のダウンロード ページ](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-2240591.html)から Oracle Grid Infrastructure をダウンロードします。 
+1. [Oracle ASM のダウンロード ページ](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-2240591.html)から Oracle Grid Infrastructure をダウンロードします。 
 
    "**Oracle Database 12c Release 1 Grid Infrastructure (12.1.0.2.0) for Linux x86-64**" というダウンロード タイトルの下で、2 つの .zip ファイルをダウンロードします。
 
@@ -402,7 +402,7 @@ Oracle Grid Infrastructure ソフトウェアをダウンロードして準備�
 ## <a name="prepare-your-local-client-and-vm-to-run-x11"></a>x11 を実行するようにローカル クライアントと VM を用意する
 Oracle ASM を構成するとき、インストールと構成を完了するためにグラフィカル インターフェイスが必要になります。 x11 プロトコルを利用し、このインストールを簡単にします。 X11 機能が既に有効で構成されているクライアント システム (Mac または Linux) を使用している場合、Windows マシン固有のこの構成と設定を省略できます。 
 
-1. [PuTTY](http://www.putty.org/) および [Xming](https://xming.en.softonic.com/) を Windows コンピューターにダウンロードします。 続行する前に、両方のアプリケーションのインストールを既定値で完了する必要があります。
+1. [PuTTY](https://www.putty.org/) および [Xming](https://xming.en.softonic.com/) を Windows コンピューターにダウンロードします。 続行する前に、両方のアプリケーションのインストールを既定値で完了する必要があります。
 
 2. PuTTY をインストールしたら、コマンド プロンプトを開き、PuTTY フォルダー (例: C:\Program Files\PuTTY) に移動し、`puttygen.exe` を実行してキーを生成します。
 
@@ -583,8 +583,8 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>次の手順
 
-[チュートリアル: Oracle DataGuard の構成](configure-oracle-dataguard.md)
+[チュートリアル:Oracle DataGuard の構成](configure-oracle-dataguard.md)
 
-[チュートリアル: Oracle GoldenGate の構成](Configure-oracle-golden-gate.md)
+[チュートリアル:Oracle GoldenGate の構成](Configure-oracle-golden-gate.md)
 
 [Oracle DB の構築](oracle-design.md)を確認する

@@ -1,162 +1,197 @@
-items:
 - name: QnA Maker のドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: QnA Maker とは
-    href: Overview/overview.md
+    - name: QnA Maker とは
+      href: Overview/overview.md
 - name: クイック スタート
   items:
-  - name: REST API の使用
-    items:
     - name: 新しいナレッジ ベースの作成
-      items:
-      - name: C#
-        href: Quickstarts/create-new-kb-csharp.md
-      - name: Go
-        href: Quickstarts/create-new-kb-go.md
-      - name: Java
-        href: Quickstarts/create-new-kb-java.md
-      - name: Node.js
-        href: Quickstarts/create-new-kb-nodejs.md
-      - name: Python
-        href: Quickstarts/create-new-kb-python.md
-    - name: ナレッジ ベースの公開
-      items:
-      - name: C#
-        href: Quickstarts/publish-kb-csharp.md
-      - name: Go
-        href: Quickstarts/publish-kb-go.md
-      - name: Java
-        href: Quickstarts/publish-kb-java.md
-      - name: Node.js
-        href: Quickstarts/publish-kb-nodejs.md
-      - name: Python
-        href: Quickstarts/publish-kb-python.md
+      href: How-To/create-knowledge-base.md
     - name: ナレッジ ベースから回答を取得する
       items:
-      - name: C#
-        href: Quickstarts/get-answer-from-knowledge-base-csharp.md
-      - name: Go
-        href: Quickstarts/get-answer-from-knowledge-base-go.md
-      - name: Java
-        href: Quickstarts/get-answer-from-knowledge-base-java.md
-      - name: Node.js
-        href: Quickstarts/get-answer-from-knowledge-base-nodejs.md
-      - name: Python
-        href: Quickstarts/get-answer-from-knowledge-base-python.md
+        - name: Postman の使用
+          href: Quickstarts/get-answer-from-kb-using-postman.md
+        - name: cURL の使用
+          href: Quickstarts/get-answer-from-kb-using-cURL.md
+    - name: REST API の使用
+      items:
+        - name: 新しいナレッジ ベースの作成
+          items:
+            - name: 'C#'
+              href: Quickstarts/create-new-kb-csharp.md
+            - name: Go
+              href: Quickstarts/create-new-kb-go.md
+            - name: Java
+              href: Quickstarts/create-new-kb-java.md
+            - name: Node.js
+              href: Quickstarts/create-new-kb-nodejs.md
+            - name: Python
+              href: Quickstarts/create-new-kb-python.md
+        - name: ナレッジ ベースの公開
+          items:
+            - name: 'C#'
+              href: Quickstarts/publish-kb-csharp.md
+            - name: Go
+              href: Quickstarts/publish-kb-go.md
+            - name: Java
+              href: Quickstarts/publish-kb-java.md
+            - name: Node.js
+              href: Quickstarts/publish-kb-nodejs.md
+            - name: Python
+              href: Quickstarts/publish-kb-python.md
+        - name: ナレッジ ベースから回答を取得する
+          items:
+            - name: 'C#'
+              href: Quickstarts/get-answer-from-knowledge-base-csharp.md
+            - name: Go
+              href: Quickstarts/get-answer-from-knowledge-base-go.md
+            - name: Java
+              href: Quickstarts/get-answer-from-knowledge-base-java.md
+            - name: Node.js
+              href: Quickstarts/get-answer-from-knowledge-base-nodejs.md
+            - name: Python
+              href: Quickstarts/get-answer-from-knowledge-base-python.md
 - name: チュートリアル
   items:
-  - name: KB を作成して回答する
-    displayName: curl, publish, chit-chat, chit chat
-    href: Tutorials/create-publish-query-in-portal.md
-  - name: C# を使用して KB を作成して回答する
-    href: Tutorials/create-publish-answer.md
-  - name: QnA Maker ボットを作成する
-    href: Tutorials/create-qna-bot.md
+    - name: KB を作成して回答する
+      displayName: 'curl, publish, chit-chat, chit chat'
+      href: Tutorials/create-publish-query-in-portal.md
+    - name: 'C# を使用して KB を作成して回答する'
+      href: Tutorials/create-publish-answer.md
+    - name: QnA Maker ボットを作成する
+      href: Tutorials/create-qna-bot.md
 - name: 概念
   items:
-  - name: ナレッジ ベース
-    href: Concepts/knowledge-base.md
-  - name: ナレッジ ベースの開発ライフサイクル
-    href: Concepts/development-lifecycle-knowledge-base.md
-  - name: ベスト プラクティス
-    href: Concepts/best-practices.md
-  - name: 信頼度スコア
-    displayName: DefaultAnswer, Default answer
-    href: Concepts/confidence-score.md
-  - name: サポートされるデータ ソース
-    href: Concepts/data-sources-supported.md
+    - name: ナレッジ ベース
+      href: Concepts/knowledge-base.md
+      displayName: 'metadata, pair'
+    - name: ナレッジ ベースの開発ライフサイクル
+      href: Concepts/development-lifecycle-knowledge-base.md
+    - name: ベスト プラクティス
+      href: Concepts/best-practices.md
+      displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
+    - name: 信頼度スコア
+      displayName: 'DefaultAnswer, Default answer'
+      href: Concepts/confidence-score.md
+    - name: サポートされるデータ ソース
+      href: Concepts/data-sources-supported.md
+      displayName: 'metadata, pair, sharepoint, authentication, permissions, faq, pdf, excel, xls, rtf, html, txt, tsv, url, end of line, new line, carriage return, markdown, commonmark, format, standard'
 - name: ハウツー ガイド
   items:
-  - name: ナレッジ ベースの管理
-    items:
-    - name: ナレッジ ベースの作成と公開
-      href: Quickstarts/create-publish-knowledge-base.md
-    - name: ナレッジ ベースの作成
-      href: How-To/create-knowledge-base.md
-    - name: ナレッジ ベースへのおしゃべりの追加
-      href: How-to/chit-chat-knowledge-base.md
-    - name: メタデータと GenerateAnswer API の使用
-      href: How-To/metadata-generateanswer-usage.md
-    - name: プレビューからのナレッジ ベースの移行
-      href: Tutorials/migrate-knowledge-base.md
-    - name: ナレッジ ベースの編集
-      href: How-To/edit-knowledge-base.md
-    - name: ナレッジ ベースの共同作業
-      href: How-To/collaborate-knowledge-base.md
-    - name: 別の言語によるナレッジ ベースの作成
-      href: How-To/language-knowledge-base.md
-    - name: ナレッジ ベースの公開
-      href: How-To/publish-knowledge-base.md
-    - name: ナレッジ ベースのテスト
-      href: How-To/test-knowledge-base.md
-  - name: 他のサービスとの統合
-    items:
-    - name: QnA Maker と LUIS の統合
-      href: Tutorials/integrate-qnamaker-luis.md
-  - name: サービスの管理
-    items:
-    - name: QnA Maker サービスの設定
-      href: How-To/set-up-qnamaker-service-azure.md
-    - name: ナレッジ ベースに関する分析の取得
-      href: How-To/get-analytics-knowledge-base.md
-    - name: キーの管理
-      href: How-To/key-management.md
-    - name: QnA Maker のデプロイのための容量の選択
-      href: Tutorials/choosing-capacity-qnamaker-deployment.md
-    - name: QnA Maker サービスのアップグレード
-      href: How-To/upgrade-qnamaker-service.md
-    - name: QnA Maker のビジネス継続性計画の作成
-      href: How-To/business-continuity-plan.md
-    - name: QnAMaker ランタイムのトラブルシューティングと更新
-      href: How-To/troubleshooting-runtime.md
-  - name: REST API を使用する
-    items:
-    - name: C#
-      href: Quickstarts/csharp.md
-    - name: Java
-      href: Quickstarts/java.md
-    - name: Node.js
-      href: Quickstarts/nodejs.md
-    - name: Python
-      href: Quickstarts/python.md
-    - name: Go
-      href: Quickstarts/go.md
+    - name: ナレッジ ベースの管理
+      items:
+        - name: ナレッジ ベースの作成と公開
+          href: Quickstarts/create-publish-knowledge-base.md
+          displayName: 'create bot, bot, publish to bot, test, edit'
+        - name: ナレッジ ベースへのおしゃべりの追加
+          href: How-to/chit-chat-knowledge-base.md
+        - name: ナレッジ ベースの移行
+          href: Tutorials/migrate-knowledge-base.md
+        - name: ナレッジ ベースの編集
+          href: How-To/edit-knowledge-base.md
+          displayName: 'metadata, pair'
+        - name: セキュリティで保護された Sharepoint ファイルの追加
+          href: How-To/add-sharepoint-datasources.md
+          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+        - name: ナレッジ ベースの共同作業
+          href: How-To/collaborate-knowledge-base.md
+        - name: 別の言語によるナレッジ ベースの作成
+          href: How-To/language-knowledge-base.md
+        - name: ナレッジ ベースのテスト
+          href: How-To/test-knowledge-base.md
+        - name: アクティブ ラーニングを使用してナレッジ ベースを改善する
+          href: How-to/improve-knowledge-base.md
+          displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning'
+    - name: ナレッジ ベースの使用
+      items:
+        - name: メタデータと GenerateAnswer API の使用
+          href: How-To/metadata-generateanswer-usage.md
+          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters'
+        - name: ボットとの統合
+          href: Tutorials/integrate-qnamaker-luis.md
+    - name: サービスの管理
+      items:
+        - name: QnA Maker サービスの設定
+          href: How-To/set-up-qnamaker-service-azure.md
+        - name: ナレッジ ベースに関する分析の取得
+          href: How-To/get-analytics-knowledge-base.md
+        - name: キーの管理
+          href: How-To/key-management.md
+        - name: QnA Maker のデプロイのための容量の選択
+          href: Tutorials/choosing-capacity-qnamaker-deployment.md
+        - name: QnA Maker サービスのアップグレード
+          href: How-To/upgrade-qnamaker-service.md
+        - name: QnA Maker のビジネス継続性計画の作成
+          href: How-To/business-continuity-plan.md
+        - name: QnAMaker ランタイムのトラブルシューティングと更新
+          href: How-To/troubleshooting-runtime.md
+    - name: REST API を使用する
+      items:
+        - name: 'C#'
+          href: Quickstarts/csharp.md
+        - name: Java
+          href: Quickstarts/java.md
+        - name: Node.js
+          href: Quickstarts/nodejs.md
+        - name: Python
+          href: Quickstarts/python.md
+        - name: Go
+          href: Quickstarts/go.md
 - name: リファレンス
   items:
-  - name: REST API リファレンスに関するページ
-    href: https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff
-  - name: FAQ
-    href: faqs.md
-  - name: 制限
-    href: limits.md
-  - name: 用語集
-    href: glossary.md
-  - name: HTTP 応答コード
-    displayName: 200, 2xx, 400, 401, 403, 404
-    href: http-response-codes.md
+    - name: REST API リファレンス
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff'
+    - name: FAQ
+      href: faqs.md
+    - name: 制限
+      href: limits.md
+    - name: 用語集
+      href: glossary.md
+    - name: HTTP 応答コード
+      displayName: '200, 2xx, 400, 401, 403, 404'
+      href: http-response-codes.md
+    - name: サンプル
+      items:
+        - name: QnA Maker のヘルプ ボット
+          href: 'https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot'
+    - name: SDK
+      items:
+        - name: 'C#'
+          items:
+            - name: NuGet
+              href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/'
+        - name: Go
+          items:
+            - name: SDK
+              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v4.0/qnamaker'
+        - name: Node.js
+          items:
+            - name: NPM
+              href: 'https://www.npmjs.com/package/azure-cognitiveservices-qnamaker'
+        - name: Python
+          items:
+            - name: pip
+              href: 'https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/'
+        - name: Ruby
+          items:
+            - name: Gem
+              href: 'https://rubygems.org/gems/azure_cognitiveservices_qnamaker'
 - name: リソース
   items:
-  - name: リージョン別の提供状況
-    href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/
-  - name: 料金と制限
-    href: https://aka.ms/qnamaker-pricing
-  - name: 言語とリージョンのサポート
-    href: Overview/language-support.md
-  - name: スタック オーバーフロー
-    href: https://stackoverflow.com/questions/tagged/QnAMaker
-  - name: UserVoice
-    href: https://aka.ms/qnamaker-uservoice
-  - name: Search
-    href: https://docs.microsoft.com/search/index?search=QnAMaker
-  - name: ブログ
-    href: https://blog.botframework.com/category/QnAMaker/
-ms.openlocfilehash: e9adfa628172efa5417a14202e5f5832088fedca
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835762"
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 料金と制限
+      href: 'https://aka.ms/qnamaker-pricing'
+    - name: 言語のサポート
+      href: Overview/language-support.md
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/QnAMaker'
+    - name: UserVoice
+      href: 'https://aka.ms/qnamaker-uservoice'
+    - name: Search
+      href: 'https://docs.microsoft.com/search/index?search=QnAMaker'
+    - name: ブログ
+      href: 'https://blog.botframework.com/category/QnAMaker/'

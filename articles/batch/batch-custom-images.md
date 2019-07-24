@@ -2,18 +2,18 @@
 title: カスタム イメージから Azure Batch プールをプロビジョニングする | Microsoft Docs
 description: カスタム イメージから Batch プールを作成して、アプリケーションで必要なソフトウェアとデータを含むコンピューティング ノードをプロビジョニングします。 カスタム イメージは、Batch ワークロードを実行するコンピューティング ノードを構成するための効率的な方法です。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 10/04/2018
-ms.author: danlep
-ms.openlocfilehash: 7d0526dd233afd3976b22d257300681db0bfcead
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.author: lahugh
+ms.openlocfilehash: 0bc43b82a987ab065677bdbb56de73ef341c249d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885213"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752128"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>カスタム イメージを使用して仮想マシンのプールを作成する 
 
@@ -50,7 +50,13 @@ Azure では、Azure VM の OS とデータ ディスクのスナップショッ
 
 ### <a name="prepare-a-vm"></a>VM を準備する 
 
-イメージ用に新しい VM を作成する場合は、Batch によってサポートされている Azure Marketplace イメージをマネージド イメージのベース イメージとして使用し、それをカスタマイズします。  Azure Batch でサポートされている Azure Marketplace イメージ参照の一覧を取得するには、[ノード エージェント SKU の一覧表示](/rest/api/batchservice/account/listnodeagentskus)操作に関する記事をご覧ください。 サード パーティのイメージをベース イメージとして使用することはできません。
+イメージ用に新しい VM を作成する場合は、Batch によってサポートされている Azure Marketplace イメージをマネージド イメージのベース イメージとして使用し、それをカスタマイズします。  Azure Batch でサポートされている Azure Marketplace イメージ参照の一覧を取得するには、[ノード エージェント SKU の一覧表示](/rest/api/batchservice/account/listnodeagentskus)操作に関する記事をご覧ください。 
+
+> [!NOTE]
+> 基本イメージとして追加のライセンスと購入条件のあるサード パーティのイメージを使用することはできません。 このような Marketplace イメージについては、[Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+) VM または [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+) VM のガイダンスを参照してください。
+
 
 * VM がマネージド ディスクを使用して作成されていることを確認してください。 これは VM を作成するときの既定のストレージ設定です。
 * VM には、Azure 拡張機能 (カスタム スクリプト拡張機能など) をインストールしないでください。 イメージにプレインストールされた拡張機能が含まれる場合、Azure で Batch プールのデプロイ時に問題が発生する可能性があります。
@@ -63,7 +69,7 @@ Azure では、Azure VM の OS とデータ ディスクのスナップショッ
 
 ### <a name="create-an-image-from-one-or-more-snapshots"></a>1 つ以上のスナップショットからイメージを作成する
 
-スナップショットからマネージド イメージを作成するには、[az image create](/cli/azure/image#az_image_create) コマンドなどの Azure コマンドライン ツールを使用します。 イメージを作成する際には、OS ディスクのスナップショットを指定し、必要に応じて 1 つ以上のデータ ディスク スナップショットを指定することができます。
+スナップショットからマネージド イメージを作成するには、[az image create](/cli/azure/image) コマンドなどの Azure コマンドライン ツールを使用します。 イメージを作成する際には、OS ディスクのスナップショットを指定し、必要に応じて 1 つ以上のデータ ディスク スナップショットを指定することができます。
 
 ## <a name="create-a-pool-from-a-custom-image-in-the-portal"></a>ポータルでカスタム イメージからプールを作成する
 

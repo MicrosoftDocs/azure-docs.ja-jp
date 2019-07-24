@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 283171fa00837a8a7b4e0a13d7bca5645cf63a83
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 7ff91a4fdc4bf0118c231a1ac18ebb521530a980
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633067"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447012"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>HDInsight に含まれる MapReduce サンプルを実行する
 
@@ -25,43 +25,43 @@ HDInsight 上の Apache Hadoop に含まれている MapReduce サンプルを�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **HDInsight クラスター**: [Linux 向けの HDInsight の Hadoop と Hive で作業開始](apache-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
+* **HDInsight クラスター**:[Linux 上の HDInsight で Apache Hadoop と Apache Hive の使用の開始](apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
-* **An SSH クライアント**: 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+* **SSH クライアント**:詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 ## <a name="the-mapreduce-examples"></a>MapReduce サンプル
 
-**場所**: サンプルは次の HDInsight クラスターに置かれています。`/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`
+**場所**:サンプルは次の HDInsight クラスターに置かれています。`/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`
 
-**内容**: 次のサンプルがこのアーカイブに含まれています。
+**内容**:次のサンプルがこのアーカイブに含まれています。
 
-* `aggregatewordcount`: 入力ファイル内の単語をカウントする集計ベースの mapreduce プログラム。
-* `aggregatewordhist`: 入力ファイル内の単語のヒストグラムを計算する集計ベースの mapreduce プログラム。
-* `bbp`: Bailey-Borwein-Plouffe を使用して Pi の正確な数値を計算する mapreduce プログラム。
-* `dbcount`: データベースに保存されているページビューのログをカウントするサンプル ジョブ。
-* `distbbp`: BBP 公式を使用して Pi の正確なビットを計算する mapreduce プログラム。
+* `aggregatewordcount`:入力ファイル内の単語をカウントする集計ベースの mapreduce プログラム。
+* `aggregatewordhist`:入力ファイル内の単語のヒストグラムを計算する集計ベースの mapreduce プログラム。
+* `bbp`:Bailey-Borwein-Plouffe を使用して Pi の正確な数値を計算する mapreduce プログラム。
+* `dbcount`:データベースに保存されているページビューのログをカウントするサンプル ジョブ。
+* `distbbp`:BBP 公式を使用して Pi の正確なビットを計算する mapreduce プログラム。
 * `grep`:入力内の正規表現の一致項目をカウントする mapreduce プログラム。
-* `join`: 並べ替えられ、均等に分割されたデータセット上の結合を実行するジョブ。
-* `multifilewc`: 複数のファイルの単語をカウントするジョブ。
-* `pentomino`: pentomino 問題のソリューションを見つける、タイル並べの mapreduce プログラム。
-* `pi`: 準モンテカルロ法を使用して Pi を推定する mapreduce プログラム。
-* `randomtextwriter`: ノードあたり 10 GB のランダムなテキスト データを書き込む mapreduce プログラム。
-* `randomwriter`: ノードあたり 10 GB のランダムなデータを書き込む mapreduce プログラム。
-* `secondarysort`: Reduce フェーズに対する 2 番目の並べ替えを定義する例。
-* `sort`: ランダム ライターによって書き込まれたデータを並べ替える mapreduce プログラム。
-* `sudoku`: 数独問題を解くプログラム。
-* `teragen`: terasort のデータを生成します。
-* `terasort`: terasort を実行します。
-* `teravalidate`: terasort の結果をチェックします。
-* `wordcount`: 入力ファイル内の単語をカウントする mapreduce プログラム。
-* `wordmean`: 入力ファイル内の単語の長さの平均をカウントする mapreduce プログラム。
-* `wordmedian`: 入力ファイル内の単語の長さの中央値をカウントする mapreduce プログラム。
-* `wordstandarddeviation`: 入力ファイル内の単語の長さの偏差値をカウントする mapreduce プログラム。
+* `join`:並べ替えられ、均等に分割されたデータセット上の結合を実行するジョブ。
+* `multifilewc`:複数のファイルの単語をカウントするジョブ。
+* `pentomino`:pentomino 問題のソリューションを見つける、タイル並べの mapreduce プログラム。
+* `pi`:準モンテカルロ法を使用して Pi を推定する mapreduce プログラム。
+* `randomtextwriter`:ノードあたり 10 GB のランダムなテキスト データを書き込む mapreduce プログラム。
+* `randomwriter`:ノードあたり 10 GB のランダムなデータを書き込む mapreduce プログラム。
+* `secondarysort`:Reduce フェーズに対する 2 番目の並べ替えを定義する例。
+* `sort`:ランダム ライターによって書き込まれたデータを並べ替える mapreduce プログラム。
+* `sudoku`:数独問題を解くプログラム。
+* `teragen`:terasort のデータを生成します。
+* `terasort`:terasort を実行します。
+* `teravalidate`:terasort の結果をチェックします。
+* `wordcount`:入力ファイル内の単語をカウントする mapreduce プログラム。
+* `wordmean`:入力ファイル内の単語の長さの平均をカウントする mapreduce プログラム。
+* `wordmedian`:入力ファイル内の単語の長さの中央値をカウントする mapreduce プログラム。
+* `wordstandarddeviation`:入力ファイル内の単語の長さの偏差値をカウントする mapreduce プログラム。
 
-**ソース コード**: これらのサンプルのソース コードは、次の HDInsight クラスターに含まれています。`/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`
+**ソース コード**:これらのサンプルのソース コードは、次の HDInsight クラスターに含まれています。`/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`
 
 ## <a name="run-the-wordcount-example"></a>Wordcount 例の実行
 
@@ -95,7 +95,7 @@ HDInsight 上の Apache Hadoop に含まれている MapReduce サンプルを�
 
     このジョブに対する入力は、`/example/data/gutenberg/davinci.txt` から読み取られます。 この例の出力は、`/example/data/davinciwordcount` に格納されます。 両方のパスは、ローカル ファイル システムではなく、クラスターの既定のストレージに配置されます。
 
-   > [!NOTE]
+   > [!NOTE]  
    > wordcount サンプルのヘルプで説明したように、複数の入力ファイルを指定することもできます。 たとえば、 `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` は davinci.txt と ulysses.txt の両方の単語をカウントします。
 
 5. ジョブが完了したら、次のコマンドを使用して出力を表示します。
@@ -167,17 +167,17 @@ yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar 
 
 GraySort はベンチマーク ソートです。 その評価尺度は、大量のデータ (通常は最低でも 100 TB のデータ) をソートした際のソート速度 (TB/分) です。
 
-このサンプルでは、比較的高速に実行できるように、中程度のサイズの 10 GB のデータを使用します。 使用する MapReduce アプリケーションは、Owen O'Malley と Arun Murthy によって開発されたものです。 これらのアプリケーションは、2009 年にテラバイト ソート ベンチマークの汎用目的 ("daytona") 部門で 0.578 TB/分 (173 分で 100 TB) という年間記録を樹立しました。 これも含めたソート ベンチマークの詳細については、 [Sortbenchmark](http://sortbenchmark.org/) サイトを参照してください。
+このサンプルでは、比較的高速に実行できるように、中程度のサイズの 10 GB のデータを使用します。 使用する MapReduce アプリケーションは、Owen O'Malley と Arun Murthy によって開発されたものです。 これらのアプリケーションは、2009 年にテラバイト ソート ベンチマークの汎用目的 ("daytona") 部門で 0.578 TB/分 (173 分で 100 TB) という年間記録を樹立しました。 これも含めたソート ベンチマークの詳細については、 [Sortbenchmark](https://sortbenchmark.org/) サイトを参照してください。
 
 このサンプルでは 3 組の MapReduce プログラムを使用します。
 
-* **TeraGen**: データ行を生成してソートする MapReduce プログラム
+* **TeraGen**:データ行を生成してソートする MapReduce プログラム
 
-* **TeraSort**: 入力データをサンプリングし、MapReduce を使用してデータを合計順にソートする
+* **TeraSort**:入力データをサンプリングし、MapReduce を使用してデータを合計順にソートする
 
     TeraSort は、カスタム パーティショナーを除けば、標準的な MapReduce ソートです。 このパーティショナーは、各 reduce のキー範囲を定義する N-1 サンプル キーの並べ替えられた一覧を使用します。 特に、sample[i-1] <= key < sample[i] となるキーはすべて reduce i に送られます。 このパーティショナーでは、reduce i の出力がすべて reduce i+1 の出力より小さくなることが保証されます。
 
-* **TeraValidate**: 出力がグローバルにソートされていることを検証する MapReduce プログラム
+* **TeraValidate**:出力がグローバルにソートされていることを検証する MapReduce プログラム
 
     出力ディレクトリ内のファイルごとにマップを 1 つ作成します。各マップは各キーが前のキー以下であることを保証します。 Map 関数は、各ファイルの最初と最後のキーのレコードを生成します。 Reduce 関数は、ファイル i の最初のキーがファイル i-1 の最後のキーよりも大きいことを保証します。 問題が見つかった場合は、Reduce フェーズの出力として報告され、順序が間違っているキーが報告されます。
 
@@ -209,14 +209,10 @@ GraySort はベンチマーク ソートです。 その評価尺度は、大量
 
 この記事では、Linux ベースの HDInsight クラスターに付属するサンプルを実行する方法を説明しました。 HDInsight で Pig、Hive、および MapReduce を使用する方法のチュートリアルについては、次のトピックをご覧ください。
 
-* [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
-* [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
-* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
+* [HDInsight 上の Apache Hadoop で Apache Pig を使用する](hdinsight-use-pig.md)
+* [HDInsight 上の Apache Hadoop で Apache Hive を使用する](hdinsight-use-hive.md)
+* [HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)
 
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-introduction]:apache-hadoop-introduction.md
-
-
-
-[hdinsight-samples]: hdinsight-run-samples.md
 

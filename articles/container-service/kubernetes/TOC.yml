@@ -66,8 +66,8 @@
     - name: Azure CLI
       href: /cli/azure/acs
     - name: PowerShell
-      href: /powershell/module/azurerm.compute
-    - name: REST ()
+      href: /powershell/module/az.compute
+    - name: REST
       href: /rest/api/container-service
 - name: リソース
   items:
@@ -82,6 +82,6 @@
     - name: 利用可能なリージョン
       href: 'https://azure.microsoft.com/regions/services/'
     - name: スタック オーバーフロー
-      href: 'http://stackoverflow.com/questions/tagged/azure-container-service'
+      href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'

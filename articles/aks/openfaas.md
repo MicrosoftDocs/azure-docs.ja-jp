@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: dc0f4bd1e5b07e30f3c89807fbbbc908b3149810
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 5ed6e0b21b00ede3f78a102fd004e5706ae3cea5
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542533"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571220"
 ---
 # <a name="using-openfaas-on-aks"></a>AKS での OpenFaaS の使用
 
-[OpenFaaS][open-faas] は、コンテナーの上にサーバーレス関数を作成するためのフレームワークです。 オープン ソース プロジェクトであることから、コミュニティ内で大規模に導入されています。 このドキュメントでは、Azure Kubernetes Service (AKS) クラスター上で OpenFaas をインストールし、使用する方法について説明します。
+[OpenFaaS][open-faas] は、コンテナーを使用してサーバーレス関数を作成するためのフレームワークです。 オープン ソース プロジェクトであることから、コミュニティ内で大規模に導入されています。 このドキュメントでは、Azure Kubernetes Service (AKS) クラスター上で OpenFaas をインストールし、使用する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,43 +29,48 @@ ms.locfileid: "45542533"
 * 開発システムにインストールされた Azure CLI。
 * システムにインストールされた Git コマンド ライン ツール。
 
-## <a name="get-openfaas"></a>OpenFaaS を入手する
+## <a name="add-the-openfaas-helm-chart-repo"></a>OpenFaaS helm チャート リポジトリを追加する
 
-開発システムに OpenFaaS プロジェクト リポジトリを複製します。
-
-```azurecli-interactive
-git clone https://github.com/openfaas/faas-netes
-```
-
-複製されたリポジトリのディレクトリに移動します。
+OpenFaaS は、最新の変更をすべて取得するために、独自の helm チャートを保持します。
 
 ```azurecli-interactive
-cd faas-netes
+helm repo add openfaas https://openfaas.github.io/faas-netes/
+helm repo update
 ```
 
 ## <a name="deploy-openfaas"></a>OpenFaaS をデプロイする
 
 OpenFaaS と OpenFaaS 関数は、それぞれ独自の Kubernetes 名前空間に格納するようにしてください。
 
-OpenFaaS システム用の名前空間を作成します。
+OpenFaaS システムと関数用の名前空間を作成します。
 
 ```azurecli-interactive
-kubectl create namespace openfaas
+kubectl apply -f https://raw.githubusercontent.com/openfaas/faas-netes/master/namespaces.yml
 ```
 
-OpenFaaS 関数用に、2 つ目の名前空間を作成します。
+OpenFaaS UI ポータルと REST API のパスワードを生成します。
 
 ```azurecli-interactive
-kubectl create namespace openfaas-fn
+# generate a random password
+PASSWORD=$(head -c 12 /dev/urandom | shasum| cut -d' ' -f1)
+
+kubectl -n openfaas create secret generic basic-auth \
+--from-literal=basic-auth-user=admin \
+--from-literal=basic-auth-password="$PASSWORD"
 ```
+
+`echo $PASSWORD` を使用して、シークレットの値を取得できます。
+
+ここで作成するパスワードは、OpenFaaS ゲートウェイで基本認証を有効にするために helm チャートで使用されます。helm チャートはクラウド LoadBalancer を介してインターネットに公開されています。
 
 複製されたリポジトリには、OpenFaaS 用の Helm チャートが含まれています。 このチャートを使用して、OpenFaaS を AKS クラスター内にデプロイします。
 
 ```azurecli-interactive
-helm install --namespace openfaas -n openfaas \
-  --set functionNamespace=openfaas-fn, \
-  --set serviceType=LoadBalancer, \
-  --set rbac=false chart/openfaas/
+helm upgrade openfaas --install openfaas/openfaas \
+    --namespace openfaas  \
+    --set basic_auth=true \
+    --set functionNamespace=openfaas-fn \
+    --set serviceType=LoadBalancer
 ```
 
 出力:
@@ -104,7 +109,7 @@ gateway            ClusterIP      10.0.156.194   <none>         8080/TCP        
 gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP   7m
 ```
 
-OpenFaaS システムをテストするには、ポート 8080、上の外部 IP アドレスを参照します (この例では `http://52.186.64.52:8080`)。
+OpenFaaS システムをテストするには、ポート 8080、上の外部 IP アドレスを参照します (この例では `http://52.186.64.52:8080`)。 ログインするように求められます。 パスワードを取得するには、`echo $PASSWORD` を入力します。
 
 ![OpenFaaS の UI](media/container-service-serverless/openfaas.png)
 
@@ -112,6 +117,15 @@ OpenFaaS システムをテストするには、ポート 8080、上の外部 IP
 
 ```console
 brew install faas-cli
+```
+
+`$OPENFAAS_URL` を上記のパブリック IP に設定します。
+
+Azure CLI でログインします。
+
+```azurecli-interactive
+export OPENFAAS_URL=http://52.186.64.52:8080
+echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 ```
 
 ## <a name="create-first-function"></a>最初の関数を作成する
@@ -233,10 +247,11 @@ curl -s http://52.186.64.52:8080/function/cosmos-query
 
 ## <a name="next-steps"></a>次の手順
 
-OpenFaas の既定のデプロイは、OpenFaaS ゲートウェイと関数の両方についてロック ダウンする必要があります。 安全な構成オプションについては、[Alex Ellis のブログ投稿](https://blog.alexellis.io/lock-down-openfaas/)に詳しい説明があります。
+OpenFaaS ワークショップで、GitHub ボットの作成方法、シークレットの使用方法、メトリックの表示方法、自動スケーリングなどのトピックを扱う一連のハンズオン ラボにより、さらに知識を深めることができます。
 
 <!-- LINKS - external -->
 [install-mongo]: https://docs.mongodb.com/manual/installation/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [open-faas]: https://www.openfaas.com/
 [open-faas-cli]: https://github.com/openfaas/faas-cli
+[openfaas-workshop]: https://github.com/openfaas/workshop

@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 562fc267a056d6908af5b89fd7a93e858f1c6165
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: b4c484f3dd118a19291741b071432b09894e836c
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092613"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593303"
 ---
-# <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>チュートリアル: Azure Security Center を使用して Linux 仮想マシンを監視する
+# <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>チュートリアル:Azure Security Center を使用して Linux 仮想マシンを監視する
 
 Azure リソースのセキュリティの状態は、Azure Security Center で可視化することができます。 Security Center には、包括的なセキュリティ監視機能が備わっています。 他の方法では見過ごされてしまう可能性のある脅威も検出することが可能です。 このチュートリアルでは、Azure Security Center と次の方法について説明します。
  
@@ -47,7 +47,7 @@ Security Center の機能はデータを検出するだけではありません�
 
 ## <a name="set-up-data-collection"></a>データ収集を設定する
 
-VM のセキュリティ構成を可視化するためには、まず Security Center のデータ収集を設定する必要があります。 これには、データ収集をオンにすることが含まれます。これにより、ご利用のサブスクリプションでのすべての VM 上に Microsoft Monitoring Agent が自動的にインストールされます。
+VM のセキュリティ構成を可視化するためには、まず Security Center のデータ収集を設定する必要があります。 これには、データ収集をオンにすることが含まれます。これにより、ご利用のサブスクリプションのすべての VM に Microsoft Monitoring Agent が自動的にインストールされます。
 
 1. Security Center ダッシュボードで、**[セキュリティ ポリシー]** をクリックしてサブスクリプションを選択します。 
 2. **[データ収集]** の **[自動プロビジョニング]** で **[オン]** を選択します。
@@ -61,11 +61,11 @@ VM のセキュリティ構成を可視化するためには、まず Security C
 
 Security Center によるデータの収集と推奨事項の提示の対象となる項目は、セキュリティ ポリシーを使って定義します。 Azure リソースのまとまりごとに異なるセキュリティ ポリシーを適用することができます。 既定ではすべてのポリシー項目と照らして Azure リソースが評価されますが、すべての Azure リソースを対象として、または特定のリソース グループを対象として、個々のポリシー項目を無効にすることができます。 Security Center のセキュリティ ポリシーの詳細については、「[Azure Security Center でのセキュリティ ポリシーの設定](../../security-center/security-center-policies.md)」を参照してください。 
 
-すべての Azure サブスクリプションを対象とするセキュリティ ポリシーを設定するには、次の手順を行います。
+サブスクリプション全体を対象とするセキュリティ ポリシーを設定するには、次の手順に従います。
 
-1. Security Center ダッシュボードで、**[セキュリティ ポリシー]** を選択してご利用のサブスクリプションを選択します。
+1. Security Center ダッシュボードで、**[セキュリティ ポリシー]** を選択し、ご利用のサブスクリプションを選択します。
 2. **[セキュリティ ポリシー]** ブレードで **[セキュリティ ポリシー]** を選択します。 
-3. [セキュリティ ポリシー - セキュリティ ポリシー] ブレードで、サブスクリプションに適用するポリシー項目をオンまたはオフにします。
+3. **[セキュリティ ポリシー - セキュリティ ポリシー]** ブレードで、サブスクリプションに適用するポリシー項目をオンまたはオフにします。
 4. 設定の選択が完了したら、ブレードの上部にある **[保存]** を選択します。 
 
 ![固有のポリシー](./media/tutorial-azure-security/unique-policy.png)
@@ -106,13 +106,13 @@ Security Center による構成データの収集が開始されると、設定�
 
 Security Center には、リソースの構成に関する推奨事項を提示するだけでなく、脅威の検出に関するアラートを表示する機能が備わっています。 このセキュリティ アラート機能は、各 VM、Azure のネットワーク ログ、および接続されているパートナー ソリューションから収集されるデータを集計し、Azure リソースに対するセキュリティ面の脅威を検出するものです。 Security Center の脅威検出機能の詳細については、「[Azure Security Center の検出機能](../../security-center/security-center-detection-capabilities.md)」を参照してください。
 
-セキュリティ アラート機能を使用するには、Security Center の価格レベルを *Free* から *Standard* に変更する必要があります。 この価格レベルに引き上げるときは、60 日間の**無料試用版**をご利用いただけます。 
+セキュリティ アラート機能を使用するには、Security Center の価格レベルを *Free* から *Standard* に変更する必要があります。 この価格レベルに引き上げるときは、**無料試用版**をご利用いただけます。 
 
 価格レベルを変更する方法は、次のとおりです。  
 
 1. Security Center ダッシュボードで、**[セキュリティ ポリシー]** をクリックしてサブスクリプションを選択します。
 2. **[価格レベル]** を選択します。
-3. **[Standard]** を選択して、ブレードの上部にある **[保存]** をクリックします。
+3. **[Standard]** を選択し、ブレードの上部にある **[保存]** をクリックします。
 
 
 価格レベルを変更すると、セキュリティ面の脅威が検出されるたびにセキュリティ アラートのグラフにデータが反映されるようになります。

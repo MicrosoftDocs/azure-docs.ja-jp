@@ -4,7 +4,7 @@ description: このクイック スタートでは、Linux コンピューター
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
@@ -13,16 +13,16 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/02/2018
+ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1eab54d16dcc0facace9a51a4cf5b5d1243baf4f
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 9f4e001909fb739aa368e5201649e85cce9906d3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025395"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521922"
 ---
-# <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>クイックスタート: Linux コンピューターでの Azure Security Center の利用開始
+# <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>クイック スタート:Linux コンピューターでの Azure Security Center の利用開始
 Azure サブスクリプションの利用を開始した後で、Linux エージェントをプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されている Linux リソースに対して Security Center を有効にできます。
 
 このクイックスタートでは、Linux コンピューターに Linux エージェントをインストールする方法を示します。
@@ -30,34 +30,34 @@ Azure サブスクリプションの利用を開始した後で、Linux エー�
 ## <a name="prerequisites"></a>前提条件
 セキュリティ センターを使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
-このクイックスタートを開始するには、Security Center の Standard 価格レベルを使用する必要があります。 アップグレード手順については、「[クイックスタート: Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)」をご覧ください。 Security Center の Standard は最初の 60 日間、無料でお試しいただけます。
+このクイックスタートを開始するには、Security Center の Standard 価格レベルを使用する必要があります。 アップグレード手順については、「[クイックスタート: Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)」をご覧ください。 Security Center の Standard は無料でお試しいただけます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
 ## <a name="add-new-linux-computer"></a>新しい Linux コンピューターの追加
 
 1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/) にサインインします。
 2. **[Microsoft Azure]** メニューの **[セキュリティ センター]** を選択します。 **[セキュリティ センター - 概要]** が開きます。
 
- ![Security Center の概要][2]
+   ![Security Center の概要][2]
 
-3. Security Center メイン メニューの **[作業の開始]** を選択します。
+3. Security Center メイン メニューの **[使用の開始]** を選択します。
 4. **[作業の開始]** タブを選択します。![[作業の開始]][3]
 
 5. **[Azure 以外のコンピューターの新規追加]** の **[構成]** をクリックします。Log Analytics ワークスペースの一覧が表示されます。 該当する場合、一覧には、自動プロビジョニングが有効になっているときに Security Center によって作成された既定のワークスペースが含まれます。 このワークスペースまたは使用する別のワークスペースを選択します。
 
     ![Azure 以外のコンピューターの追加](./media/quick-onboard-linux-computer/non-azure.png)
 
-6.  **[直接エージェント]** ページの **[Linux 用エージェントのインストールとオンボード]** で、**[コピー]** を選択して *wget*コマンドをコピーします。
+6. **[直接エージェント]** ページの **[Linux 用エージェントのインストールとオンボード]** で、**[コピー]** を選択して *wget*コマンドをコピーします。
 
-7.  メモ帳を開き、このコマンドを貼り付けます。 このファイルを、Linux コンピューターからアクセスできる場所に保存します。
+7. メモ帳を開き、このコマンドを貼り付けます。 このファイルを、Linux コンピューターからアクセスできる場所に保存します。
 
 ## <a name="install-the-agent"></a>エージェントをインストールする
 
-1.  Linux コンピューターで、前に保存したファイルを開きます。 コンテンツ全体を選択し、コピーしてターミナル コンソールを開き、コマンドを貼り付けます。
-2.  インストールの完了後、*pgrep* コマンドを実行して、*omsagent* がインストールされていることを検証できます。 次に示すように、コマンドから *omsagent* PID (プロセス ID) が返されます。
+1. Linux コンピューターで、前に保存したファイルを開きます。 コンテンツ全体を選択し、コピーしてターミナル コンソールを開き、コマンドを貼り付けます。
+2. インストールの完了後、*pgrep* コマンドを実行して、*omsagent* がインストールされていることを検証できます。 次に示すように、コマンドから *omsagent* PID (プロセス ID) が返されます。
 
-  ![エージェントをインストールする][5]
+   ![エージェントをインストールする][5]
 
-Linux 用の Security Center エージェントのログは */var/opt/microsoft/omsagent/<workspace id>/log/* にあります
+Linux 用の Security Center エージェントのログは */var/opt/microsoft/omsagent/\<ワークスペース ID>/log/* にあります
 
   ![エージェントのログ][6]
 
@@ -85,7 +85,7 @@ Linux 用の Security Center エージェントのログは */var/opt/microsoft/
 このクイック スタートでは、Linux コンピューターでエージェントをプロビジョニングしました。 Security Center の使用方法について学習するには、セキュリティ ポリシーの構成とリソースのセキュリティの評価に関するチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: セキュリティ ポリシーの定義と評価](tutorial-security-policy.md)
+> [チュートリアル:セキュリティ ポリシーの定義と評価](tutorial-security-policy.md)
 
 <!--Image references-->
 [1]: ./media/quick-onboard-linux-computer/portal.png

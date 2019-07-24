@@ -8,23 +8,26 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2018
+ms.date: 04/08/2019
 ms.author: celested
 ms.reviewer: elisol, bryanla
-ms.custom: aaddev
-ms.openlocfilehash: dd164882f9820cab970edd4d01f2f28c26771f88
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.custom: aaddev, seoapril2019
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1b5ec950a91f3ed0099873e40c7235a9d59f0cb2
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815221"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59787392"
 ---
-# <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>方法: アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する
+# <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>方法:アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する
+
+この記事では、Azure AD アプリケーション ギャラリーでアプリケーションを一覧表示し、シングル サインオン (SSO) を実装し、一覧を管理する方法を示します。
 
 ## <a name="what-is-the-azure-ad-application-gallery"></a>Azure AD アプリケーション ギャラリーとは
 
@@ -45,7 +48,10 @@ ms.locfileid: "48815221"
 
 - パスワード SSO の場合、シングル サインオンが期待どおりに動作するように、アプリケーションがフォーム認証をサポートしてパスワード保管を実行できることを確認してください。
 
-- 自動ユーザー プロビジョニング要求の場合、上記のフェデレーション プロトコルのいずれかを使用して、シングル サインオン機能を有効にして、アプリケーションをギャラリーに一覧表示する必要があります。 ポータルで SSO とユーザー プロビジョニングを一緒に要求することができます (まだ一覧表示されていない場合)。
+- 自動ユーザー プロビジョニング要求の場合、SAML 2.0/WS-Fed を使用して、シングル サインオン機能を有効にして、アプリケーションをギャラリーに一覧表示する必要があります。 ポータルで SSO とユーザー プロビジョニングを一緒に要求することができます (まだ一覧表示されていない場合)。
+
+>[!NOTE]
+>SCIM コネクタに関する多数の要求に取り組んでいるため、ポータルでの新しい要求の受け取りを停止しました。 今後、通知があるまでは要求を控えてください。 この遅延により、ご不便をおかけして申し訳ありません。
 
 ## <a name="submit-the-request-in-the-portal"></a>ポータルで要求を送信する
 
@@ -72,19 +78,19 @@ Microsoft のチームが詳細をレビューし、それに応じてアクセ�
 
 Azure AD アプリケーション ギャラリーにアプリケーションを一覧表示するには、まず、AzureAD でサポートされている、次のフェデレーション プロトコルのいずれかを実装し、Azure AD アプリケーション　ギャラリーの条件に同意する必要があります。 [こちら](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)から、Azure AD アプリケーション ギャラリーの使用条件を読み取ります。
 
-- **OpenID Connect**: Open ID Connect プロトコルを使用してアプリケーションを Azure AD と統合するには、[開発者向けの手順](authentication-scenarios.md)に従ってください。
+- **OpenID Connect**:Open ID Connect プロトコルを使用してアプリケーションを Azure AD と統合するには、[開発者向けの手順](authentication-scenarios.md)に従ってください。
 
     ![ギャラリーに OpenID Connect アプリケーションを公開するタイムライン](./media/howto-app-gallery-listing/openid.png)
 
     * OpenID Connect を使用してギャラリー内の一覧にアプリケーションを追加する場合は、上記の **[OpenID Connect & OAuth 2.0]** を選択します。
     * アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。 
 
-*   **SAML 2.0** または **WS-Fed**: アプリが SAML 2.0 をサポートしている場合、[カスタム アプリケーションを追加する手順](../active-directory-saas-custom-apps.md)を使って、Azure AD テナントと直接統合できます。
+- **SAML 2.0** または **WS-Fed**:アプリが SAML 2.0 をサポートしている場合、[カスタム アプリケーションを追加する手順](../active-directory-saas-custom-apps.md)を使って、Azure AD テナントと直接統合できます。
 
-    ![ギャラリーに SAML 2.0 または WS-Fed アプリケーションを公開するタイムライン](./media/howto-app-gallery-listing/saml.png)
+  ![ギャラリーに SAML 2.0 または WS-Fed アプリケーションを公開するタイムライン](./media/howto-app-gallery-listing/saml.png)
 
-    * **SAML 2.0** または **WS-Fed** を使用してギャラリー内の一覧にアプリケーションを追加する場合は、上記の **[SAMl 2.0/WS-Fed]** を選択します。
-    * アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。
+  * **SAML 2.0** または **WS-Fed** を使用してギャラリー内の一覧にアプリケーションを追加する場合は、上記の **[SAMl 2.0/WS-Fed]** を選択します。
+  * アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。
 
 ## <a name="implementing-sso-using-password-sso"></a>パスワード SSO を使用した SSO の実装
 
@@ -107,6 +113,16 @@ Azure AD アプリ ギャラリーの既存のアプリケーションを更新�
     * Azure AD ギャラリーから既存のアプリケーションを削除する場合は、**[Remove existing application listing]** \(既存のアプリケーション公開を削除する\) を選びます。
     * アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。 
 
+## <a name="listing-requests-by-customers"></a>要求を顧客別に一覧表示する
+
+顧客は、**[App requests by Customers]\(顧客によるアプリ要求\)** -> **[Submit new request]\(新しい要求の送信\)** をクリックして、アプリケーションの一覧表示の要求を送信できます。
+
+![顧客が要求したアプリ タイル](./media/howto-app-gallery-listing/customer-submit-request.png)
+
+以下は、顧客が要求したアプリケーションのフローです
+
+![顧客が要求したアプリ フロー](./media/howto-app-gallery-listing/customer-request.png)
+
 ## <a name="timelines"></a>タイムライン
 
 SAML 2.0 または WS-Fed アプリケーションをギャラリーに公開するプロセスのタイムラインは、7 ～ 10 営業日です。
@@ -116,10 +132,6 @@ SAML 2.0 または WS-Fed アプリケーションをギャラリーに公開す
 OpenID Connect アプリケーションをギャラリーに公開するプロセスのタイムラインは、2 ～ 5 営業日です。
 
    ![ギャラリーに SAML アプリケーションを公開するタイムライン](./media/howto-app-gallery-listing/timeline2.png)
-
-ユーザー プロビジョニング サポートを使用してアプリケーションをギャラリーに公開するプロセスのタイムラインは、40 ～ 45 営業日です。
-
-   ![ギャラリーに SAML アプリケーションを公開するタイムライン](./media/howto-app-gallery-listing/provisioningtimeline.png)
 
 ## <a name="escalations"></a>エスカレーション
 

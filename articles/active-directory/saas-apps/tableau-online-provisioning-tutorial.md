@@ -1,27 +1,29 @@
 ---
-title: 'チュートリアル: Tableau Online を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+title: チュートリアル:Tableau Online を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを Tableau Online に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: zchia
 writer: zchia
 manager: beatrizd-msft
-ms.assetid: na
+ms.assetid: 0be9c435-f9a1-484d-8059-e578d5797d8e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 03/27/2019
 ms.author: v-wingf-msft
-ms.openlocfilehash: 4f6297fa8477ff4794bee589737e047993427c06
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f732eebd410a6b52a21a46925a29bf4676f7c8cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345864"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59270788"
 ---
-# <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>チュートリアル: Tableau Online を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>チュートリアル:Tableau Online を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルの目的は、Azure AD が自動的にユーザーまたはグループを Tableau Online にプロビジョニングまたは Tableau Online からプロビジョニング解除するように構成するために、Tableau Online と Azure Active Directory (Azure AD) で実行される手順を示すことです。
 
@@ -46,25 +48,19 @@ Azure AD で自動ユーザー プロビジョニング用に Tableau Online を
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure Active Directory のボタン][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-    ![[エンタープライズ アプリケーション] セクション][2]
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-3. Tableau Online を追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![[新しいアプリケーション] ボタン][3]
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Tableau Online**」と入力します。
+4. 検索ボックスに「**Tableau Online**」と入力し、結果ウィンドウで **[Tableau Online]** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
 
-    ![Tableau Online のプロビジョニング](./media/tableau-online-provisioning-tutorial/AppSearch.png)
-
-5. 結果パネルで **[Tableau Online]** を選択し、**[追加]** をクリックして Tableau Online を SaaS アプリケーションの一覧に追加します。
-
-    ![Tableau Online のプロビジョニング](./media/tableau-online-provisioning-tutorial/AppSearchResults.png)
-
-    ![Tableau Online のプロビジョニング](./media/tableau-online-provisioning-tutorial/AppCreation.png)
+    ![結果一覧の Tableau Online](common/search-new-app.png)
 
 ## <a name="assigning-users-to-tableau-online"></a>Tableau Online へのユーザーの割り当て
 
@@ -89,11 +85,13 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="to-configure-automatic-user-provisioning-for-tableau-online-in-azure-ad"></a>Azure AD で Tableau Online の自動ユーザー プロビジョニングを構成するには:
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、**[Azure Active Directory] > [エンタープライズ アプリ] > [すべてのアプリケーション]** に移動します。
+1. [Azure portal](https://portal.azure.com) にサインインし、**[エンタープライズ アプリケーション]**、**[すべてのアプリケーション]**、**[Tableau Online]** の順に選択します。
 
-2. SaaS アプリケーションの一覧から Tableau Online を選択します。
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-    ![Tableau Online のプロビジョニング](./media/tableau-online-provisioning-tutorial/AppInstanceSearch.png)
+2. アプリケーションの一覧で **[Tableau Online]** を選択します。
+
+    ![アプリケーションの一覧の Tableau Online のリンク](common/all-applications.png)
 
 3. **[プロビジョニング]** タブを選択します。
 
@@ -105,23 +103,26 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. **[管理者資格情報]** セクションの **[ドメイン]**、**[管理ユーザー名]**、**[管理パスワード]**、**[コンテンツ URL]** に、Tableau Online アカウントの情報を入力します。
 
-    *   **[ドメイン]** フィールドに、手順 6. に基づくサブドメインを設定します。
+   * **[ドメイン]** フィールドに、手順 6. に基づくサブドメインを設定します。
 
-    *   **[管理ユーザー名]** フィールドに、Clarizen テナントの管理者アカウントのユーザー名を入力します。 例: admin@contoso.com.
+   * **[管理ユーザー名]** フィールドに、Clarizen テナントの管理者アカウントのユーザー名を入力します。 例: admin@contoso.com.
 
-    *   **[管理パスワード]** フィールドに、管理者ユーザー名に対応する管理者アカウントのパスワードを入力します。
+   * **[管理パスワード]** フィールドに、管理者ユーザー名に対応する管理者アカウントのパスワードを入力します。
 
-    *   **[コンテンツ URL]** フィールドに、手順 6. に基づくサブドメインを設定します。
+   * **[コンテンツ URL]** フィールドに、手順 6. に基づくサブドメインを設定します。
 
 6. **[ドメイン]** および **[コンテンツ URL]** の値は、Tableau Online の管理者アカウントにログインした後、管理者ページの URL から抽出できます。
 
-    *   Tableau Online アカウントの **[ドメイン]** は、URL の中の次の部分からコピーできます。![Tableau Online のプロビジョニング](./media/tableau-online-provisioning-tutorial/DomainUrlPart.png)
+    * Tableau Online アカウントの **[ドメイン]** は、URL の中の次の部分からコピーできます。
 
-    *   Tableau Online アカウントの **[コンテンツ URL]** は、次のセクションからコピーできます。この値は、アカウントのセットアップ中に定義されます。 この例では、"contoso" という値が該当します。![Tableau Online のプロビジョニング](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
+        ![Tableau Online のプロビジョニング](./media/tableau-online-provisioning-tutorial/DomainUrlPart.png)
+
+    * Tableau Online アカウントの **[コンテンツ URL]** は、次のセクションからコピーできます。この値は、アカウントのセットアップ中に定義されます。 この例では、値は "contoso" です。
+
+        ![Tableau Online のプロビジョニング](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
 
         > [!NOTE]
-        > 実際の**ドメイン**は、ここに示したものとは異なる場合があります。 
-
+        > 実際の**ドメイン**は、ここに示したものとは異なる場合があります。
 
 7. 手順 5 に示されたフィールドに値を入力したら、**[テスト接続]** をクリックして、Azure AD が Tableau Online に接続できることを確認します。 接続できない場合は、使用中の Tableau Online アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
@@ -131,35 +132,35 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![Tableau Online のプロビジョニング](./media/tableau-online-provisioning-tutorial/EmailNotification.png)
 
-10. **[Save]** をクリックします。
+9. **[Save]** をクリックします。
 
-11. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Tableau]\(Azure Active Directory ユーザーを Tableau に同期する\)** を選択します。
+10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Tableau]\(Azure Active Directory ユーザーを Tableau に同期する\)** を選択します。
 
     ![Tableau Online のプロビジョニング](./media/tableau-online-provisioning-tutorial/UserMappings.png)
 
-12. **[属性マッピング]** セクションで、Azure AD から Tableau Online に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Tableau Online のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+11. **[属性マッピング]** セクションで、Azure AD から Tableau Online に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Tableau Online のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
     ![Tableau Online のプロビジョニング](./media/tableau-online-provisioning-tutorial/UserAttributeMapping.png)
 
-13. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to Tableau]\(Azure Active Directory グループを Tableau に同期する\)** を選択します。
+12. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to Tableau]\(Azure Active Directory グループを Tableau に同期する\)** を選択します。
 
     ![Tableau Online のプロビジョニング](./media/tableau-online-provisioning-tutorial/GroupMappings.png)
 
-14. **[属性マッピング]** セクションで、Azure AD から Tableau Online に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Tableau Online のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+13. **[属性マッピング]** セクションで、Azure AD から Tableau Online に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Tableau Online のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
     ![Tableau Online のプロビジョニング](./media/tableau-online-provisioning-tutorial/GroupAttributeMapping.png)
 
-15. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
+14. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-16. Tableau Online に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+15. Tableau Online に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
     ![Tableau Online のプロビジョニング](./media/tableau-online-provisioning-tutorial/ProvisioningStatus.png)
 
-17. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Tableau Online にプロビジョニングするユーザーやグループを定義します。
+16. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Tableau Online にプロビジョニングするユーザーやグループを定義します。
 
     ![Tableau Online のプロビジョニング](./media/tableau-online-provisioning-tutorial/ScopeSync.png)
 
-18. プロビジョニングの準備ができたら、**[保存]** をクリックします。
+17. プロビジョニングの準備ができたら、**[保存]** をクリックします。
 
     ![Tableau Online のプロビジョニング](./media/tableau-online-provisioning-tutorial/SaveProvisioning.png)
 
@@ -171,7 +172,6 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-
 
 ## <a name="next-steps"></a>次の手順
 

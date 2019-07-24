@@ -1,5 +1,5 @@
 ---
-title: Azure DC/OS クラスターでの ACR の使用
+title: (非推奨) Azure DC/OS クラスターでの ACR の使用
 description: Azure Container Service の DC/OS クラスターで Azure Container Registry を使用する
 services: container-service
 author: julienstroheker
@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 81b5bd18ea367b68adfc41ee97768b3b28967a42
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8319f2f5405271679d0c11d4ac68492cdec8fc14
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986634"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100123"
 ---
-# <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>DC/OS クラスターで ACR を使用してアプリケーションをデプロイする
+# <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>(非推奨) DC/OS クラスターで ACR を使用してアプリケーションをデプロイする
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 この記事では、DC/OS クラスターで Azure Container Registry を使う方法について説明します。 ACR を使うと、コンテナー イメージをプライベートに保存して管理することができます。 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -129,7 +131,7 @@ docker run ubuntu --name base-image
 
 ```azurecli-interactive
 docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo
-````
+```
 
 Azure Container Registry にログインします。 名前は loginServer 名に、--username はコンテナー レジストリの名前に、--password は提供されたパスワードの 1 つに、それぞれ置き換えます。
 

@@ -1,32 +1,19 @@
 ---
-title: Azure Application Gateway 上の Web アプリケーション ファイアウォール ルールのカスタマイズ - Azure CLI | Microsoft Docs
+title: Azure Application Gateway での Web アプリケーション ファイアウォール ルールのカスタマイズ - Azure CLI
 description: この記事では、Azure CLI を使用して Application Gateway 上で Web アプリケーション ファイアウォール ルールをカスタマイズする方法について説明します。
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.custom: ''
-ms.workload: infrastructure-services
-ms.date: 07/26/2017
+ms.date: 2/22/2019
 ms.author: victorh
-ms.openlocfilehash: c02e4edabdcb73bc14c64b42788cddc98d78498c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5e364c597b8c524e95297f279003462f2d16abe1
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964123"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56726263"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-cli"></a>Azure CLI 2.0 を使用した Web アプリケーション ファイアウォール ルールのカスタマイズ
-
-> [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-customize-waf-rules-portal.md)
-> * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
-> * [Azure CLI](application-gateway-customize-waf-rules-cli.md)
 
 Azure Application Gateway Web アプリケーション ファイアウォール (WAF) は、Web アプリケーションを保護します。 こうした保護は、Open Web Application Security Project (OWASP) コア ルール セット (CRS) によって提供されます。 ルールによっては誤検出を発生させて、実際のトラフィックを妨げることがあります。 このため、Application Gateway には、ルール グループとルールをカスタマイズする機能が用意されています。 特定のルール グループおよびルールの詳細については、[Web アプリケーション ファイアウォールの CRS 規則グループと規則の一覧](application-gateway-crs-rulegroups-rules.md)に関するページを参照してください。
 
@@ -44,7 +31,7 @@ az network application-gateway waf-config list-rule-sets --type OWASP
 
 以下の出力は、前の例から返される応答を簡略化したものです。
 
-```
+```json
 [
   {
     "id": "/subscriptions//resourceGroups//providers/Microsoft.Network/applicationGatewayAvailableWafRuleSets/",
@@ -97,7 +84,7 @@ az network application-gateway waf-config list-rule-sets --group "REQUEST-910-IP
 
 以下の出力は、前の例から返される応答を簡略化したものです。
 
-```
+```json
 [
   {
     "id": "/subscriptions//resourceGroups//providers/Microsoft.Network/applicationGatewayAvailableWafRuleSets/",
@@ -133,6 +120,19 @@ az network application-gateway waf-config list-rule-sets --group "REQUEST-910-IP
 ```azurecli-interactive
 az network application-gateway waf-config set --resource-group AdatumAppGatewayRG --gateway-name AdatumAppGateway --enabled true --rule-set-version 3.0 --disabled-rules 910018 910017
 ```
+
+## <a name="mandatory-rules"></a>必須ルール
+
+次の一覧には、防止モードの場合に WAF による要求のブロックをトリガーする条件が含まれます (検出モードでは例外としてログ記録されます)。 これらを構成したり、無効にしたりすることはできません。
+
+* 本文の検査がオフになっている場合を除き (XML、JSON、フォーム データ)、要求本文の解析に失敗すると、要求がブロックされる
+* 要求本文 (ファイルなし) のデータの長さが、構成されている制限を超えている場合
+* 要求本文 (ファイルを含む) のサイズが制限を超えている場合
+* WAF エンジンで内部エラーが発生した場合
+
+CRS 3.x 固有: 
+
+* インバウンド異常スコアがしきい値を超えました
 
 ## <a name="next-steps"></a>次の手順
 

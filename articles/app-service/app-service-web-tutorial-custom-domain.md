@@ -1,5 +1,5 @@
 ---
-title: 既存のカスタム DNS 名を Azure Web Apps にマップする | Microsoft Docs
+title: 既存のカスタム DNS 名をマップする - Azure App Service | Microsoft Docs
 description: 既存のカスタム DNS ドメイン名 (バニティ ドメイン) を、Azure App Service の Web アプリ、モバイル アプリ バックエンド、または API アプリに追加する方法について説明します。
 keywords: App Service, Azure App Service, ドメイン マッピング, ドメイン名, 既存のドメイン, ホスト名
 services: app-service\web
@@ -15,21 +15,21 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 30199005db93f9a43a37d2c72bb34dd772265419
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.custom: seodec18
+ms.openlocfilehash: 7139906ac22f8d0dbf6cd6e2d69289c4b910b2b0
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43664889"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486089"
 ---
-# <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>チュートリアル: 既存のカスタム DNS 名を Azure Web Apps にマップする
+# <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>チュートリアル:既存のカスタム DNS 名を Azure App Service にマップする
 
-[Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、既存のカスタム DNS 名を Azure Web Apps にマップする方法について説明します。
+[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、既存のカスタム DNS 名を Azure App Service にマップする方法について説明します。
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * CNAME レコードを使用してサブドメイン (たとえば `www.contoso.com`) をマップする
@@ -48,11 +48,11 @@ ms.locfileid: "43664889"
   たとえば、`contoso.com` と `www.contoso.com` の DNS エントリを追加するには、`contoso.com` ルート ドメインに対して DNS 設定を構成できる必要があります。
 
   > [!NOTE]
-  > 既存のドメイン名がない場合は、[Azure Portal を使用してドメインを購入する](custom-dns-web-site-buydomains-web-app.md)ことを検討してください。 
+  > 既存のドメイン名がない場合は、[Azure Portal を使用してドメインを購入する](manage-custom-dns-buy-domain.md)ことを検討してください。 
 
 ## <a name="prepare-the-app"></a>アプリの準備
 
-Web アプリにカスタム DNS 名をマップするには、Web アプリの [App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が有料レベル (**Shared**、**Basic**、**Standard**、または **Premium**) である必要があります。 この手順では、App Service アプリがサポートされている価格レベルであることを確認します。
+Web アプリにカスタム DNS 名をマップするには、Web アプリの [App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が有料レベル (Azure Functions の **Shared**、**Basic**、**Standard**、**Premium**、または **従量課金**) である必要があります。 この手順では、App Service アプリがサポートされている価格レベルであることを確認します。
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -145,7 +145,7 @@ Azure Portal のアプリ ページの左側のナビゲーションで、**[カ
 
 **[ホスト名の追加]** ページが表示されます 
 
-**[ホスト名レコード タイプ]** が **[CNAME (www.example.com または任意のサブドメイン)]** に設定されていることを確認します。
+**[ホスト名レコード タイプ]** が **[CNAME (www\.example.com または任意のサブドメイン)]** に設定されていることを確認します。
 
 **[ホスト名の追加]** を選択します。
 
@@ -156,7 +156,7 @@ Azure Portal のアプリ ページの左側のナビゲーションで、**[カ
 ![追加された CNAME レコード](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> SSL バインドの追加については、「[既存のカスタム SSL 証明書を Azure Web Apps にバインドする](app-service-web-tutorial-custom-ssl.md)」を参照してください。
+> SSL バインドの追加については、「[既存のカスタム SSL 証明書を Azure App Service にバインドする](app-service-web-tutorial-custom-ssl.md)」を参照してください。
 
 手順を飛ばしていたり、どこかで入力ミスがあったりした場合、ページの下部に検証エラーが表示されます。
 
@@ -200,6 +200,15 @@ A レコードをアプリにマップする場合、App Service では **2 つ*
 | A | `@` | 「[アプリの IP アドレスをコピーする](#info)」で取得した IP アドレス |
 | TXT | `@` | `<app_name>.azurewebsites.net` |
 
+> [!NOTE]
+> 推奨される [CNAME レコード](#map-a-cname-record)の代わりに A レコードを使用してサブドメイン (`www.contoso.com`など) を追加するには、A レコードと TXT レコードが次の表のようになっている必要があります。
+>
+> | レコード タイプ | Host | 値 |
+> | - | - | - |
+> | A | `www` | 「[アプリの IP アドレスをコピーする](#info)」で取得した IP アドレス |
+> | TXT | `www` | `<app_name>.azurewebsites.net` |
+>
+
 レコードが追加されると、DNS レコード ページは次の例のようになります。
 
 ![DNS レコード ページ](./media/app-service-web-tutorial-custom-domain/a-record.png)
@@ -231,7 +240,7 @@ Azure Portal のアプリの **[カスタム ドメイン]** ページに戻り�
 ![追加された A レコード](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> SSL バインドの追加については、「[既存のカスタム SSL 証明書を Azure Web Apps にバインドする](app-service-web-tutorial-custom-ssl.md)」を参照してください。
+> SSL バインドの追加については、「[既存のカスタム SSL 証明書を Azure App Service にバインドする](app-service-web-tutorial-custom-ssl.md)」を参照してください。
 
 手順を飛ばしていたり、どこかで入力ミスがあったりした場合、ページの下部に検証エラーが表示されます。
 
@@ -273,7 +282,7 @@ Azure Portal のアプリ ページの左側のナビゲーションで、**[カ
 
 **[ホスト名の追加]** ボタンがアクティブになります。 
 
-**[ホスト名レコード タイプ]** が **[CNAME レコード (www.example.com または任意のサブドメイン)]** に設定されていることを確認します。
+**[ホスト名レコード タイプ]** が **[CNAME レコード (www\.example.com または任意のサブドメイン)]** に設定されていることを確認します。
 
 **[ホスト名の追加]** を選択します。
 
@@ -286,7 +295,7 @@ Azure Portal のアプリ ページの左側のナビゲーションで、**[カ
 ![追加された CNAME レコード](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 > [!NOTE]
-> SSL バインドの追加については、「[既存のカスタム SSL 証明書を Azure Web Apps にバインドする](app-service-web-tutorial-custom-ssl.md)」を参照してください。
+> SSL バインドの追加については、「[既存のカスタム SSL 証明書を Azure App Service にバインドする](app-service-web-tutorial-custom-ssl.md)」を参照してください。
 
 ## <a name="test-in-browser"></a>ブラウザーでテストする
 
@@ -305,7 +314,7 @@ Azure Portal のアプリ ページの左側のナビゲーションで、**[カ
 
 ## <a name="migrate-an-active-domain"></a>アクティブなドメインの移行
 
-ライブ サイトとその DNS ドメイン名を App Service にダウンタイムなしで移行する方法については、「[Azure App Service へのアクティブな DNS 名の移行](app-service-custom-domain-name-migrate.md)」をご覧ください。
+ライブ サイトとその DNS ドメイン名を App Service にダウンタイムなしで移行する方法については、「[Azure App Service へのアクティブな DNS 名の移行](manage-custom-dns-migrate-domain.md)」をご覧ください。
 
 ## <a name="redirect-to-a-custom-directory"></a>カスタム ディレクトリにリダイレクトする
 
@@ -334,24 +343,26 @@ az webapp config hostname add \
     --hostname <fully_qualified_domain_name> 
 ``` 
 
-詳細については、「[カスタム ドメインを Web アプリにマップする](scripts/app-service-cli-configure-custom-domain.md)」を参照してください 
+詳細については、「[カスタム ドメインを Web アプリにマップする](scripts/cli-configure-custom-domain.md)」を参照してください 
 
 ### <a name="azure-powershell"></a>Azure PowerShell 
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 次のコマンドでは、構成済みカスタム DNS 名を App Service アプリに追加します。 
 
-```PowerShell  
-Set-AzureRmWebApp `
+```powershell  
+Set-AzWebApp `
     -Name <app_name> `
     -ResourceGroupName <resource_group_name> ` 
     -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net") 
 ```
 
-詳細については、「[カスタム ドメインを Web アプリに割り当てる](scripts/app-service-powershell-configure-custom-domain.md)」を参照してください。
+詳細については、「[カスタム ドメインを Web アプリに割り当てる](scripts/powershell-configure-custom-domain.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * CNAME レコードを使用してサブドメインをマップする
@@ -363,4 +374,4 @@ Set-AzureRmWebApp `
 次のチュートリアルに進み、カスタム SSL 証明書を Web アプリにバインドする方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [既存のカスタム SSL 証明書を Azure Web Apps にバインドする](app-service-web-tutorial-custom-ssl.md)
+> [既存のカスタム SSL 証明書を Azure App Service にバインドする](app-service-web-tutorial-custom-ssl.md)

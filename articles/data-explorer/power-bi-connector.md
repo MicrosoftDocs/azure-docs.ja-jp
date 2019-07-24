@@ -1,21 +1,20 @@
 ---
-title: 'クイック スタート: Power BI 用 Azure Data Explorer コネクタを使用してデータを視覚化する'
+title: クイック スタート:Power BI 用 Azure Data Explorer コネクタを使用してデータを視覚化する
 description: Power BI のデータは 3 とおりの方法を使用して視覚化できます。このクイック スタートでは、そのうちの 1 つである Azure Data Explorer 用 Power BI コネクタを使用した方法を説明します。
-services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: 3cb8f52677991997a0176a9f8d408e2fd6d2d8d9
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 1be13090244a94c1bf3f731c8b6d73fa0848c393
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51974273"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59047604"
 ---
-# <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>クイック スタート: Power BI 用 Azure Data Explorer コネクタを使用してデータを視覚化する
+# <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>クイック スタート:Power BI 用 Azure Data Explorer コネクタを使用してデータを視覚化する
 
 Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Power BI はビジネス分析ソリューションであり、データを視覚化して、組織全体で結果を共有することができます。
 
@@ -53,14 +52,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |---|---|---|
     | クラスター | *https://help.kusto.windows.net* | ヘルプ クラスターの URL。 その他のクラスターでは、URL が *https://\<クラスター名\>.\<リージョン\>.kusto.windows.net* 形式になります。 |
     | Database | 空白 | 接続先のクラスターでホストされるデータベース。 これは後の手順で選択します。 |
-    | テーブル名 | 空白 | データベース内のいずれかのテーブルまたは `StormEvents  | take 1000` などのクエリ。 これは後の手順で選択します。 |
+    | テーブル名 | 空白 | データベース内のいずれかのテーブル、または <code>StormEvents \| take 1000</code> のようなクエリ。 これは後の手順で選択します。 |
     | [詳細オプション] | 空白 | クエリのオプション (結果セットのサイズなど)。 |
     | データ接続モード | *DirectQuery* | Power BI がデータをインポートするか、直接データ ソースに接続するかを決定します。 このコネクタでは、どちらかのオプションを使用できます。 |
     | | | |
 
 1. ヘルプ クラスターへの接続がまだない場合は、サインインしてください。 組織アカウントでサインインし、**[接続]** を選択します。
 
-    ![[サインイン]](media/power-bi-connector/sign-in.png)
+    ![サインイン](media/power-bi-connector/sign-in.png)
 
 1. **[ナビゲーター]** 画面で **[Samples]** データベースを展開し、**[StormEvents]** を選択して **[編集]** を選択します。
 
@@ -91,4 +90,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [クイック スタート: Power BI にインポートされたクエリを使用してデータを視覚化する](power-bi-imported-query.md)
+> [クイック スタート:Power BI にインポートされたクエリを使用してデータを視覚化する](power-bi-imported-query.md)

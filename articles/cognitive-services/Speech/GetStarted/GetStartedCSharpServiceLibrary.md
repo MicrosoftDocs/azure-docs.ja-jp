@@ -6,18 +6,19 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: e9b3d3207f5aca6cba3555ba2578b5c66b3bd193
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 0f445d1fff48ee7a04c0b1c1d64c808f87d824b7
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343693"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673166"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>クイック スタート: .NET Windows 用に C&#35; で Bing Speech 認識サービス ライブラリを使用する
+# <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>クイック スタート:.NET Windows 用に C&#35; で Bing Speech 認識サービス ライブラリを使用する
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
@@ -46,17 +47,17 @@ Speech API は、Cognitive Services (以前の Project Oxford) の一部です�
 >
 > * サブスクリプション キーを使用します。 提供された C# サービス ライブラリ サンプル アプリケーションで、コマンドライン パラメーターの 1 つとして、サブスクリプション キーを指定する必要があります。 詳しくは、「[サンプル アプリケーションを実行する](#step-3-run-the-sample-application)」をご覧ください。
 
-## <a name="step-1-install-the-sample-application"></a>手順 1: サンプル アプリケーションをインストールする
+## <a name="step-1-install-the-sample-application"></a>手順 1:サンプル アプリケーションをインストールする
 
 1. Visual Studio 2015 を起動し、**[ファイル]** > **[開く]** > **[プロジェクト/ソリューション]** を選択します。
 
 2. SpeechClient.sln という名前の Visual Studio 2015 ソリューション (.sln) ファイルをダブルクリックして開きます。 Visual Studio でソリューションが開きます。
 
-## <a name="step-2-build-the-sample-application"></a>手順 2: サンプル アプリケーションをビルドする
+## <a name="step-2-build-the-sample-application"></a>手順 2:サンプル アプリケーションを構築する
 
 Ctrl キーと Shift キーを押しながら B キーを押すか、リボン メニューで **[ビルド]** を選択します。 その後、**[ソリューションのビルド]** を選択します。
 
-## <a name="step-3-run-the-sample-application"></a>手順 3: サンプル アプリケーションを実行する
+## <a name="step-3-run-the-sample-application"></a>手順 3:サンプル アプリケーションの実行
 
 1. ビルドが完了したら、F5 キーを押すか、リボン メニューの **[開始]** を選択してサンプルを実行します。
 
@@ -64,17 +65,17 @@ Ctrl キーと Shift キーを押しながら B キーを押すか、リボン �
 
 3. 次の引数を指定して `SpeechClientSample.exe` を実行します。
 
-   * Arg [0]: 入力音声 WAV ファイルを指定します。
-   * Arg [1]: 音声のロケールを指定します。
-   * Arg[2]: 認識モードを指定します (`ShortPhrase` モードの場合は *Short*、`LongDictation` モードの場合は *Long* と指定します)。
-   * Arg[3]: 音声認識サービスにアクセスするためのサブスクリプション キーを指定します。
+   * Arg[0]:入力音声 WAV ファイルを指定します。
+   * Arg[1]:音声のロケールを指定します。
+   * Arg[2]:認識モードを指定します。`ShortPhrase` モードの場合は *Short*、`LongDictation` モードの場合は *Long* です。
+   * Arg[3]:音声認識サービスにアクセスするためのサブスクリプション キーを指定します。
 
 ## <a name="samples-explained"></a>サンプルの説明
 
 ### <a name="recognition-modes"></a>認識モード
 
-* `ShortPhrase` モード: 発話時間は最大 15 秒です。 データがサーバーに送信されると、クライアントは複数の部分結果と、最終的な最善の結果 (1 つ) を受け取ります。
-* `LongDictation` モード: 発話時間は最大 10 分です。 データがサーバーに送信されると、クライアントはサーバーが指定した文の区切り位置に基づいて、複数の部分結果と複数の最終結果を受け取ります。
+* `ShortPhrase` モード:発話時間は最大 15 秒です。 データがサーバーに送信されると、クライアントは複数の部分結果と、最終的な最善の結果 (1 つ) を受け取ります。
+* `LongDictation` モード:発話時間は最大 10 分です。 データがサーバーに送信されると、クライアントはサーバーが指定した文の区切り位置に基づいて、複数の部分結果と複数の最終結果を受け取ります。
 
 ### <a name="supported-audio-formats"></a>サポートされている音声形式
 
@@ -88,20 +89,20 @@ Speech API では、次のコーデックを使用した音声/WAV がサポー�
 
 SpeechClient を作成するには、まず Preferences オブジェクトを作成する必要があります。 Preferences オブジェクトとは、音声認識サービスの動作を構成する一連のパラメーターのことです。 次のフィールドで構成されます。
 
-* `SpeechLanguage`: 音声認識サービスに送信される音声のロケールです。
-* `ServiceUri`: 音声認識サービスの呼び出しに使用されるエンドポイントです。
-* `AuthorizationProvider`: 音声認識サービスにアクセスするためのトークンを取得するために使用される IAuthorizationProvider 実装です。 このサンプルでは Cognitive Services 承認プロバイダーが提供されていますが、トークンのキャッシュを処理するための独自の実装を作成することを強くお勧めします。
-* `EnableAudioBuffering`: 高度なオプションです。 [接続管理](#connection-management)に関する記事をご覧ください。
+* `SpeechLanguage`:音声認識サービスに送信される音声のロケールです。
+* `ServiceUri`:音声認識サービスの呼び出しに使用されるエンドポイントです。
+* `AuthorizationProvider`:音声認識サービスにアクセスするためのトークンを取得するために使用される IAuthorizationProvider 実装です。 このサンプルでは Cognitive Services 承認プロバイダーが提供されていますが、トークンのキャッシュを処理するための独自の実装を作成することを強くお勧めします。
+* `EnableAudioBuffering`:高度なオプションです。 [接続管理](#connection-management)に関する記事をご覧ください。
 
 ### <a name="speech-input"></a>音声入力
 
 SpeechInput オブジェクトは、次の 2 つのフィールドで構成されます。
 
-* **Audio**: SDK が音声を取得する際の取得元となる、任意のストリーム実装です。 読み取りをサポートする、任意の[ストリーム](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx)を指定できます。
+* **オーディオ**:SDK が音声を取得する際の取得元となる、任意のストリーム実装です。 読み取りをサポートする、任意の[ストリーム](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx)を指定できます。
    > [!NOTE]
    > SDK は、読み取り時にストリームが **0** を返したときに、ストリームの終端を検出します。
 
-* **RequestMetadata**: 音声認識要求に関するメタデータです。 詳しくは、[リファレンス](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html)をご覧ください。
+* **RequestMetadata**:音声認識要求に関するメタデータです。 詳しくは、[リファレンス](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html)をご覧ください。
 
 ### <a name="speech-request"></a>音声認識要求
 
@@ -151,7 +152,7 @@ SpeechClient オブジェクトと SpeechInput オブジェクトをインスタ
 ---what's the weather like  
 ---***** Phrase Recognition Status = [Success]   
 ***What's the weather like? (Confidence:High)  
-What's the weather like? (Confidence:High) 
+What's the weather like? (Confidence:High)
 ```
 
 ## <a name="connection-management"></a>接続管理

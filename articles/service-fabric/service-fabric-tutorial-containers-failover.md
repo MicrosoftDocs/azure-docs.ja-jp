@@ -4,7 +4,7 @@ description: このチュートリアルでは、Azure Service Fabric コンテ�
 services: service-fabric
 documentationcenter: ''
 author: suhuruli
-manager: timlt
+manager: chackdan
 editor: suhuruli
 tags: servicefabric
 keywords: Docker, コンテナー, マイクロサービス, Service Fabric, Azure
@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b099d1765f0ed56d6768501086bf8b9f83d5a86a
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 0a3edac7638d8b63086482cdecf8d74bde426c35
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112271"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665629"
 ---
-# <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>チュートリアル: Service Fabric でのコンテナー サービスのフェールオーバーとスケーリングをデモンストレーションする
+# <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>チュートリアル:Service Fabric でのコンテナー サービスのフェールオーバーとスケーリングのデモンストレーション
 
 このチュートリアルは、シリーズの第 3 部です。 このチュートリアルでは、Service Fabric コンテナー アプリケーションでのフェールオーバーの処理方法について説明します。 さらに、コンテナーのスケーリング方法を説明します。 このチュートリアルでは、次のことを行いました。
 
@@ -63,8 +63,8 @@ Web フロントエンドをスケーリングするには、次の手順のよ�
 
 これで Web フロントエンドのインスタンス数をスケーリングできる状態になりました。
 
-3. この数値を **2** に変更し、**[Scale Service]\(サービスのスケール\)** をクリックします。
-4. ツリー ビューの **fabric:/TestContainer/azurevotefront** ノードをクリックし、パーティション ノード (GUID で表されます) を展開します。
+1. この数値を **2** に変更し、**[Scale Service]\(サービスのスケール\)** をクリックします。
+1. ツリー ビューの **fabric:/TestContainer/azurevotefront** ノードをクリックし、パーティション ノード (GUID で表されます) を展開します。
 
 ![sfxscaledone][sfxscaledone]
 

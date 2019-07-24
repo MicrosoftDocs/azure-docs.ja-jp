@@ -1,6 +1,6 @@
 ---
-title: ディザスター リカバリー ソリューションの設計 - Azure SQL Database | Microsoft Docs
-description: フェールオーバー パターンを適切に選んで、ディザスター リカバリーを実現するクラウド ソリューションを設計する方法について説明します。
+title: Design disaster recovery solutions - Azure SQL Database | Microsoft Docs
+description: Learn how to design your cloud solution for disaster recovery by choosing the right failover pattern.
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -11,165 +11,166 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 08/27/2018
-ms.openlocfilehash: 9ed01103a83073d1bbb22f476a9115af816571aa
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 01/25/2019
+ms.openlocfilehash: 6a332ce265a4bb41a9ad3c0c3a29683187a0f0d4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166556"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760497"
 ---
-# <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>SQL Database エラスティック プールを使用したアプリケーションの障害復旧戦略
-長年にわたって、私たちはクラウド サービスが絶対確実なものではなく、壊滅的な状況になる可能性があることを学んできました。 SQL Database には、そのような状況が発生した場合にアプリケーションのビジネス継続性を提供するための機能がいくつかあります。 [エラスティック プール](sql-database-elastic-pool.md)と Single Database は、同様のディザスター リカバリー (DR) 機能をサポートしています。 この記事では、SQL Database のこれらのビジネス継続性機能を活用する、エラスティック プールのいくつかの DR 戦略について説明します。
+# <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Disaster recovery strategies for applications using SQL Database elastic pools
 
-この記事では、次のような標準的な SaaS ISV アプリケーション パターンを使用します。
+Over the years we have learned that cloud services are not foolproof and catastrophic incidents happen. SQL Database provides several capabilities to provide for the business continuity of your application when these incidents occur. [Elastic pools](sql-database-elastic-pool.md) and single databases support the same kind of disaster recovery (DR) capabilities. This article describes several DR strategies for elastic pools that leverage these SQL Database business continuity features.
 
-<i>最新のクラウド ベースの Web アプリケーションが、エンド ユーザーごとに 1 つの SQL Database をプロビジョニングします。ISV は多数の顧客を抱えており、テナント データベースと呼ばれる多数のデータベースを使用します。通常、テナント データベースのアクティビティ パターンは予測できないため、ISV はエラスティック プールを使用して、長期間にわたるデータベース コストを予測可能にします。エラスティック プールは、ユーザー アクティビティが急増した場合のパフォーマンスの管理も簡略化します。アプリケーションは、テナント データベースだけでなく、ユーザー プロファイルの管理、セキュリティの確保、使用パターンの収集などのためのデータベースもいくつか使用します。個々のテナントの可用性は、アプリケーションの可用性全体には影響しません。ただし、管理データベースの可用性とパフォーマンスは、アプリケーションの機能にとって重要であり、管理データベースがオフラインになると、アプリケーション全体がオフラインになります。</i>  
+This article uses the following canonical SaaS ISV application pattern:
 
-この記事では、費用重視型スタートアップ アプリケーションから、厳しい可用性要件があるアプリケーションまで、さまざまなシナリオを対象とした DR 戦略について説明します。
+A modern cloud-based web application provisions one SQL database for each end user. The ISV has many customers and therefore uses many databases, known as tenant databases. Because the tenant databases typically have unpredictable activity patterns, the ISV uses an elastic pool to make the database cost very predictable over extended periods of time. The elastic pool also simplifies the performance management when the user activity spikes. In addition to the tenant databases the application also uses several databases to manage user profiles, security, collect usage patterns etc. Availability of the individual tenants does not impact the application’s availability as whole. However, the availability and performance of management databases is critical for the application’s function and if the management databases are offline the entire application is offline.
+
+This article discusses DR strategies covering a range of scenarios from cost sensitive startup applications to ones with stringent availability requirements.
 
 > [!NOTE]
-> Premium または Business Critical データベースとエラスティック プールを使用している場合、これらをゾーン冗長デプロイ構成に変換することで、リージョン障害に対する回復性を与えることができます。 「[ゾーン冗長データベース](sql-database-high-availability.md)」をご覧ください。
+> If you are using Premium or Business Critical databases and elastic pools, you can make them resilient to regional outages by converting them to zone redundant deployment configuration. See [Zone-redundant databases](sql-database-high-availability.md).
 
-## <a name="scenario-1-cost-sensitive-startup"></a>シナリオ 1. 費用重視型スタートアップ
-<i>新規事業を立ち上げたところであり、コストに非常に敏感になっています。アプリケーションのデプロイと管理は簡略化する一方で、個々の顧客に対する SLA は制限付きでもよいと思っています。ただし、全体的には、アプリケーションがオフラインになることがないようにしたいと考えています。</i>
+## <a name="scenario-1-cost-sensitive-startup"></a>Scenario 1. Cost sensitive startup
 
-簡素化の要件を満たすために、すべてのテナント データベースを選択した Azure リージョンの 1 つのエラスティック プールにデプロイし、管理データベースを geo レプリケートされる Single Database としてデプロイする必要があります。 テナントのディザスター リカバリーには、geo リストアを使用します。この機能は、追加コストなしで利用できます。 管理データベースの可用性を確保するには、自動フェールオーバー グループを使用して管理データベースを別のリージョンに geo レプリケートする必要があります (手順 1)。 このシナリオでのディザスター リカバリー構成の継続的なコストは、セカンダリ データベースの合計コストと等しくなります。 この構成を次の図に示します。
+I am a startup business and am extremely cost sensitive.  I want to simplify deployment and management of the application and I can have a limited SLA for individual customers. But I want to ensure the application as a whole is never offline.
 
-![図 1](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-1.png)
+To satisfy the simplicity requirement, deploy all tenant databases into one elastic pool in the Azure region of your choice and deploy management databases as geo-replicated single databases. For the disaster recovery of tenants, use geo-restore, which comes at no additional cost. To ensure the availability of the management databases, geo-replicate them to another region using an auto-failover group (step 1). The ongoing cost of the disaster recovery configuration in this scenario is equal to the total cost of the secondary databases. This configuration is illustrated on the next diagram.
 
-プライマリ リージョンで障害が発生した場合にアプリケーションをオンラインにするための復旧手順を、次の図に示します。
+![Figure 1](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-1.png)
 
-* フェールオーバー グループが DR リージョンへの管理データベースの自動フェールオーバーを開始します。 アプリケーションは新しいプライマリに自動的に再接続され、新しいアカウントとテナント データベースがすべて DR リージョンに作成されるようになります。 既存の顧客は、データが一時的に使用不可になります。
-* 元のプールと同じ構成で、エラスティック プールを作成します (2)。
-* geo リストアを使用して、テナント データベースのコピーを作成します (3)。 エンド ユーザー接続ごとに個々の復元をトリガーすることを検討してもよいほか、その他のアプリケーション固有の優先度スキームを使用することもできます。
+If an outage occurs in the primary region, the recovery steps to bring your application online are illustrated by the next diagram.
 
+* The failover group initiates automatic failover of the management database to the DR region. The application is automatically reconnected to the new primary and all new accounts and tenant databases are created in the DR region. The existing customers see their data temporarily unavailable.
+* Create the elastic pool with the same configuration as the original pool (2).
+* Use geo-restore to create copies of the tenant databases (3). You can consider triggering the individual restores by the end-user connections or use some other application-specific priority scheme.
 
-この時点で、アプリケーションは DR リージョンでオンラインに戻りますが、一部の顧客がデータにアクセスするときに遅延が発生します。
+At this point your application is back online in the DR region, but some customers experience delay when accessing their data.
 
-![図 2](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-2.png)
+![Figure 2](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-2.png)
 
-障害が一時的であった場合は、DR リージョンですべてのデータベースの復元が完了する前に、プライマリ リージョンが Azure によって復旧されることがあります。 その場合は、プライマリ リージョンへのアプリケーションの移動を調整する必要があります。 この処理の手順は、次の図のようになります。
+If the outage was temporary, it is possible that the primary region is recovered by Azure before all the database restores are complete in the DR region. In this case, orchestrate moving the application back to the primary region. The process takes the steps illustrated on the next diagram.
 
-* 未処理のすべての geo リストア要求を取り消します。   
-* 管理データベースをプライマリ リージョンにフェールオーバーします (5)。 リージョンの復旧後、古いプライマリは自動的にセカンダリになります。 ここで、もう一度役割を切り替えます。 
-* アプリケーションの接続文字列を、元のプライマリ リージョンを示す文字列に変更します。 これで、新しいアカウントとテナント データベースがすべてプライマリ リージョンに作成されるようになります。 一部の既存の顧客は、データが一時的に使用不可になります。   
-* DR プール内のすべてのデータベースを読み取り専用に設定して、DR リージョンで変更できないようにします (6)。 
-* 復旧後に変更された DR プール内のデータベースごとに、プライマリ プール内の対応するデータベースの名前を変更するか、そのデータベースを削除します (7)。 
-* 更新されたデータベースを DR プールからプライマリ プールにコピーします (8)。 
-* DR プールを削除します (9)。
+* Cancel all outstanding geo-restore requests.
+* Fail over the management databases to the primary region (5). After the region’s recovery, the old primaries have automatically become secondaries. Now they switch roles again.
+* Change the application's connection string to point back to the primary region. Now all new accounts and tenant databases are created in the primary region. Some existing customers see their data temporarily unavailable.
+* Set all databases in the DR pool to read-only to ensure they cannot be modified in the DR region (6).
+* For each database in the DR pool that has changed since the recovery, rename or delete the corresponding databases in the primary pool (7).
+* Copy the updated databases from the DR pool to the primary pool (8).
+* Delete the DR pool (9)
 
-この時点で、アプリケーションはプライマリ リージョンでオンラインになり、プライマリ プールですべてのテナント データベースが使用可能になります。
+At this point your application is online in the primary region with all tenant databases available in the primary pool.
 
-![図 3](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-3.png)
+![Figure 3](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-3.png)
 
-この戦略の主な**メリット**は、データ層の冗長性を確保するための継続的なコストが低いことです。 バックアップは、アプリケーションの書き換えや追加コストなしで、SQL Database サービスによって自動的に作成されます。  コストは、エラスティック データベースが復元されるときにのみ発生します。 **トレードオフ**は、すべてのテナント データベースの完全な復旧に長時間かかることです。 必要な時間は、DR リージョンで開始する復元の合計数と、テナント データベース全体のサイズによって決まります。 一部のテナントの復元を他より優先する場合でも、同じリージョンで開始される他のすべての復元との競合が発生します。これは、既存の顧客のデータベースへの全体的な影響を最小限にするために、サービスが調停および調整されるためです。 また、テナント データベースの復旧は、DR リージョンで新しいエラスティック プールが作成されるまで開始できません。
+The key **benefit** of this strategy is low ongoing cost for data tier redundancy. Backups are taken automatically by the SQL Database service with no application rewrite and at no additional cost.  The cost is incurred only when the elastic databases are restored. The **trade-off** is that the complete recovery of all tenant databases takes significant time. The length of time depends on the total number of restores you initiate in the DR region and overall size of the tenant databases. Even if you prioritize some tenants' restores over others, you are competing with all the other restores that are initiated in the same region as the service arbitrates and throttles to minimize the overall impact on the existing customers' databases. In addition, the recovery of the tenant databases cannot start until the new elastic pool in the DR region is created.
 
-## <a name="scenario-2-mature-application-with-tiered-service"></a>シナリオ 2. 階層化されたサービスを備えた成熟したアプリケーション
-<i>階層化されたサービス プランを備え、試用版を利用している顧客と有料の顧客とで異なる SLA を持つ、成熟した SaaS アプリケーションがあります。試用版の顧客については、できるだけコストを削減する必要があります。試用版の顧客にはダウンタイムが生じてもかまいませんが、その可能性は低くします。有料の顧客には、ダウンタイムは契約を失いかねないリスクです。そのため、有料の顧客は常にデータにアクセスできるようにします。</i> 
+## <a name="scenario-2-mature-application-with-tiered-service"></a>Scenario 2. Mature application with tiered service
 
-このシナリオを実現するには、試用版のテナントを別のエラスティック プールに置くことによって、試用版のテナントと有料のテナントを分離する必要があります。 試用版の顧客は、テナントあたりの eDTU または仮想コアが低く、SLA が低レベルで、復旧時間が長くなります。 有料の顧客は、テナントあたりの eDTU または仮想コアが高いプールに配置され、SLA が高レベルになります。 最短の復旧時間を保証するために、有料の顧客のテナント データベースは geo レプリケートする必要があります。 この構成を次の図に示します。 
+I am a mature SaaS application with tiered service offers and different SLAs for trial customers and for paying customers. For the trial customers, I have to reduce the cost as much as possible. Trial customers can take downtime but I want to reduce its likelihood. For the paying customers, any downtime is a flight risk. So I want to make sure that paying customers are always able to access their data.
 
-![図 4](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
+To support this scenario, separate the trial tenants from paid tenants by putting them into separate elastic pools. The trial customers have lower eDTU or vCores per tenant and lower SLA with a longer recovery time. The paying customers are in a pool with higher eDTU or vCores per tenant and a higher SLA. To guarantee the lowest recovery time, the paying customers' tenant databases are geo-replicated. This configuration is illustrated on the next diagram.
 
-最初のシナリオと同様に、管理データベースはかなりアクティブに使用されるので、geo レプリケートされる Single Database を使用します (1)。 そうすることで、新しい顧客サブスクリプションやプロファイルの更新などの管理操作について、予測可能なパフォーマンスが保証されます。 管理データベースのプライマリが存在するリージョンがプライマリ リージョンになり、管理データベースのセカンダリが存在するリージョンが DR リージョンになります。
+![Figure 4](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
 
-有料の顧客のテナント データベースについては、プライマリ リージョンにプロビジョニングされた "有料" プール内にアクティブなデータベースが配置されます。 DR リージョン内に、同じ名前のセカンダリ プールをプロビジョニングしてください。 各テナントは、セカンダリ プールに geo レプリケートされます (2)。 そうすることで、フェールオーバーを使用して、すべてのテナント データベースを迅速に復旧することができます。 
+As in the first scenario, the management databases are quite active so you use a single geo-replicated database for it (1). This ensures the predictable performance for new customer subscriptions, profile updates, and other management operations. The region in which the primaries of the management databases reside is the primary region and the region in which the secondaries of the management databases reside is the DR region.
 
-プライマリ リージョンで障害が発生した場合にアプリケーションをオンラインにするための復旧手順を、次の図に示します。
+The paying customers’ tenant databases have active databases in the “paid” pool provisioned in the primary region. Provision a secondary pool with the same name in the DR region. Each tenant is geo-replicated to the secondary pool (2). This enables quick recovery of all tenant databases using failover.
+
+If an outage occurs in the primary region, the recovery steps to bring your application online are illustrated in the next diagram:
 
 ![Figure 5](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
 
-* すぐに管理データベースを DR リージョンにフェールオーバーします (3)。
-* アプリケーションの接続文字列を、DR リージョンを示す文字列に変更します。 これで、新しいアカウントとテナント データベースがすべて DR リージョンに作成されるようになります。 既存の試用版の顧客は、一時的にデータを使用できなくなります。
-* 可用性をすぐに回復させるために、有料のテナントのデータベースを DR リージョンのプールにフェールオーバーします (4)。 フェールオーバーは、迅速なメタデータ レベルの変更であるため、エンド ユーザー接続ごとにオンデマンドで個々のフェールオーバーがトリガーされる最適化を検討してください。 
-* セカンダリ データベースがセカンダリである間は変更ログを処理する容量しか必要ないため、セカンダリ プールの eDTU サイズまたは仮想コアの値がプライマリよりも小さかった場合は、すぐにプールの容量を増やして、すべてのテナントのワークロードに完全に対応できるようにする必要があります (5)。 
-* 試用版の顧客のデータベース用に、DR リージョンに同じ名前と構成で新しいエラスティック プールを作成します (6)。 
-* 試用版の顧客のプールが作成されたら、geo リストアを使用して、新しいプールに個々の試用テナント データベースを復元します (7)。 エンド ユーザー接続ごとに個々の復元をトリガーすることを検討するか、その他のアプリケーション固有の優先度スキームを使用してください。
+* Immediately fail over the management databases to the DR region (3).
+* Change the application’s connection string to point to the DR region. Now all new accounts and tenant databases are created in the DR region. The existing trial customers see their data temporarily unavailable.
+* Fail over the paid tenant's databases to the pool in the DR region to immediately restore their availability (4). Since the failover is a quick metadata level change, consider an optimization where the individual failovers are triggered on demand by the end-user connections.
+* If your secondary pool eDTU size or vCore value was lower than the primary because the secondary databases only required the capacity to process the change logs while they were secondaries, immediately increase the pool capacity now to accommodate the full workload of all tenants (5).
+* Create the new elastic pool with the same name and the same configuration in the DR region for the trial customers' databases (6).
+* Once the trial customers’ pool is created, use geo-restore to restore the individual trial tenant databases into the new pool (7). Consider triggering the individual restores by the end-user connections or use some other application-specific priority scheme.
 
-この時点で、アプリケーションは DR リージョンでオンラインに戻ります。 有料の顧客はいずれもデータにアクセスできますが、試用版の顧客はデータにアクセスするときに遅延が発生します。
+At this point your application is back online in the DR region. All paying customers have access to their data while the trial customers experience delay when accessing their data.
 
-DR リージョンでアプリケーションを復元した *後* で、Azure によってプライマリ リージョンが復旧される場合は、DR リージョンでアプリケーションを実行し続けることも、プライマリ リージョンにフェールバックすることもできます。 フェールオーバー処理が完了する "*前*" に、プライマリ リージョンが復旧される場合は、直ちにフェールバックすることを考慮する必要があります。 フェールバックの手順は、次の図のようになります。 
+When the primary region is recovered by Azure *after* you have restored the application in the DR region you can continue running the application in that region or you can decide to fail back to the primary region. If the primary region is recovered *before* the failover process is completed, consider failing back right away. The failback takes the steps illustrated in the next diagram:
 
-![図 6](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
+![Figure 6](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
 
-* 未処理のすべての geo リストア要求を取り消します。   
-* 管理データベースをフェールオーバーします (8)。 リージョンの復旧後、古いプライマリは自動的にセカンダリになります。 これが再びプライマリになります。  
-* 有料テナント データベースをフェールオーバーします (9)。 同様に、リージョンの復旧後、古いプライマリは自動的にセカンダリになります。 これらが再びプライマリになります。 
-* DR リージョンで変更された、復元された試用データベースを、読み取り専用に設定します (10)。
-* 復旧後に変更された、試用版の顧客の DR プール内のデータベースごとに、試用版の顧客のプライマリ プール内にある対応するデータベースの名前を変更するか、そのデータベースを削除します (11)。 
-* 更新されたデータベースを DR プールからプライマリ プールにコピーします (12)。 
-* DR プールを削除します (13)。 
+* Cancel all outstanding geo-restore requests.
+* Fail over the management databases (8). After the region’s recovery, the old primary automatically become the secondary. Now it becomes the primary again.  
+* Fail over the paid tenant databases (9). Similarly, after the region’s recovery, the old primaries automatically become the secondaries. Now they become the primaries again.
+* Set the restored trial databases that have changed in the DR region to read-only (10).
+* For each database in the trial customers DR pool that changed since the recovery, rename or delete the corresponding database in the trial customers primary pool (11).
+* Copy the updated databases from the DR pool to the primary pool (12).
+* Delete the DR pool (13).
 
 > [!NOTE]
-> フェールオーバー操作は非同期です。 復旧時間を最小限に抑えるには、少なくとも 20 個のデータベースをひとまとめにして、テナント データベースのフェールオーバー コマンドを実行することが重要です。 
-> 
-> 
+> The failover operation is asynchronous. To minimize the recovery time it is important that you execute the tenant databases' failover command in batches of at least 20 databases.
 
-この戦略の主な **メリット** は、有料の顧客に最高の SLA を提供できることです。 また、試用 DR プールが作成されしだい、新たな試用がブロックされなくなることも保証できます。 **トレードオフ**は、このセットアップでは、有料顧客用のセカンダリ DR プールのコストによって、テナント データベースの総コストが増加することです。 さらに、セカンダリ プールのサイズが異なる場合は、フェールオーバー後、DR リージョンでプールのアップグレードが完了するまで、有料の顧客に対するパフォーマンスが低下します。 
+The key **benefit** of this strategy is that it provides the highest SLA for the paying customers. It also guarantees that the new trials are unblocked as soon as the trial DR pool is created. The **trade-off** is that this setup increases the total cost of the tenant databases by the cost of the secondary DR pool for paid customers. In addition, if the secondary pool has a different size, the paying customers experience lower performance after failover until the pool upgrade in the DR region is completed.
 
-## <a name="scenario-3-geographically-distributed-application-with-tiered-service"></a>シナリオ 3. 階層化されたサービスを備え、地理的に分散したアプリケーション
-<i>階層化したサービス プランを備えた、成熟した SaaS アプリケーションがあります。有料の顧客に極めて高い SLA を提供し、障害発生時の影響のリスクを最小限に抑えたいと考えています。短い中断でも、顧客は不満に感じるためです。有料の顧客が常にデータにアクセスできることが重要です。試用版は無料であり、試用期間中は SLA は提供されません。</i> 
+## <a name="scenario-3-geographically-distributed-application-with-tiered-service"></a>Scenario 3. Geographically distributed application with tiered service
 
-このシナリオをサポートするには、3 つの個別のエラスティック プールを使用します。 有料の顧客のテナント データベースを格納するには、データベースあたりの eDTU または仮想コアが高い 2 つの同じサイズのプールを、2 つの異なるリージョンにプロビジョニングしてください。 試用版のテナントを含む 3 つ目のプールは、データベースあたりの eDTU または仮想コアは低くなり、2 つのリージョンのいずれかにプロビジョニングされます。
+I have a mature SaaS application with tiered service offers. I want to offer a very aggressive SLA to my paid customers and minimize the risk of impact when outages occur because even brief interruption can cause customer dissatisfaction. It is critical that the paying customers can always access their data. The trials are free and an SLA is not offered during the trial period.
 
-障害時に最短の復旧時間を保証するために、有料の顧客のテナント データベースは、プライマリ データベースを 50% ずつという割合で、2 つのリージョンそれぞれに geo レプリケートします。 同様に、各リージョンにセカンダリ データベースを 50% ずつ配置します。 こうすることで、リージョンがオフラインになった場合、有料の顧客のデータベースの 50% だけが影響を受け、フェールオーバーされることになります。 他のデータベースは影響を受けず、そのまま残ります。 この構成を示したのが次の図です。
+To support this scenario, use three separate elastic pools. Provision two equal size pools with high eDTUs or vCores per database in two different regions to contain the paid customers' tenant databases. The third pool containing the trial tenants can have lower eDTUs or vCores per database and be provisioned in one of the two regions.
 
-![図 4](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
+To guarantee the lowest recovery time during outages, the paying customers' tenant databases are geo-replicated with 50% of the primary databases in each of the two regions. Similarly, each region has 50% of the secondary databases. This way, if a region is offline, only 50% of the paid customers' databases are impacted and have to fail over. The other databases remain intact. This configuration is illustrated in the following diagram:
 
-前のシナリオと同様に、管理データベースはかなりアクティブに使用されるので、geo レプリケートされる Single Database として構成する必要があります (1)。 そうすることで、新しい顧客サブスクリプションやプロファイルの更新などの管理操作について、予測可能なパフォーマンスが保証されます。 リージョン A は管理データベースのプライマリ リージョンになり、リージョン B は管理データベースの復旧のために使用されます。
+![Figure 4](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
 
-有料の顧客のテナント データベースも geo レプリケートされますが、プライマリとセカンダリがリージョン A とリージョン B に分割されます (2)。 こうすることで、障害の影響を受けたテナント プライマリ データベースを他のリージョンにフェールオーバーし、使用可能にすることができます。 残りの半分のテナント データベースはまったく影響を受けません。 
+As in the previous scenarios, the management databases are quite active so configure them as single geo-replicated databases (1). This ensures the predictable performance of the new customer subscriptions, profile updates and other management operations. Region A is the primary region for the management databases and the region B is used for recovery of the management databases.
 
-次の図は、リージョン A で障害が発生した場合に実行する復旧手順を示しています。
+The paying customers’ tenant databases are also geo-replicated but with primaries and secondaries split between region A and region B (2). This way, the tenant primary databases impacted by the outage can fail over to the other region and become available. The other half of the tenant databases are not be impacted at all.
+
+The next diagram illustrates the recovery steps to take if  an outage occurs in region A.
 
 ![Figure 5](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
 
-* すぐに管理データベースをリージョン B にフェールオーバーします (3)。
-* アプリケーションの接続文字列を、リージョン B 内の管理データベースを示す文字列に変更します。管理データベースに変更を施し、新しいアカウントとテナント データベースがリージョン B に作成されるようにすると共に、既存のテナント データベースもそこで見つかるようにします。 既存の試用版の顧客は、一時的にデータを使用できなくなります。
-* 可用性をすぐに回復させるために、有料のテナントのデータベースをリージョン B のプール 2 にフェールオーバーします (4)。 フェールオーバーは、迅速なメタデータ レベルの変更であるため、エンド ユーザー接続ごとにオンデマンドで個々のフェールオーバーがトリガーされる最適化を検討することもできます。 
-* これで、プール 2 にはプライマリ データベースだけが含まれるようになり、プールの総ワークロードが増えるため、すぐに eDTU サイズまたは仮想コア数を増やすことができます (5)。 
-* 試用版の顧客のデータベース用に、リージョン B に同じ名前と構成で新しいエラスティック プールを作成します (6)。 
-* プールが作成されたら、geo リストアを使用して、プールに個々の試用テナント データベースを復元します (7)。 エンド ユーザー接続ごとに個々の復元をトリガーすることを検討してもよいほか、その他のアプリケーション固有の優先度スキームを使用することもできます。
+* Immediately fail over the management databases to region B (3).
+* Change the application’s connection string to point to the management databases in region B. Modify the management databases to make sure the new accounts and tenant databases are created in region B and the existing tenant databases are found there as well. The existing trial customers see their data temporarily unavailable.
+* Fail over the paid tenant's databases to pool 2 in region B to immediately restore their availability (4). Since the failover is a quick metadata level change, you may consider an optimization where the individual failovers are triggered on demand by the end-user connections.
+* Since now pool 2 contains only primary databases, the total workload in the pool increases and can immediately increase its eDTU size (5) or number of vCores.
+* Create the new elastic pool with the same name and the same configuration in the region B for the trial customers' databases (6).
+* Once the pool is created use geo-restore to restore the individual trial tenant database into the pool (7). You can consider triggering the individual restores by the end-user connections or use some other application-specific priority scheme.
 
 > [!NOTE]
-> フェールオーバー操作は非同期です。 復旧時間を最小限に抑えるには、少なくとも 20 個のデータベースをひとまとめにして、テナント データベースのフェールオーバー コマンドを実行することが重要です。 
-> 
+> The failover operation is asynchronous. To minimize the recovery time, it is important that you execute the tenant databases' failover command in batches of at least 20 databases.
 
-この時点で、アプリケーションはリージョン B でオンラインに戻ります。有料の顧客はいずれもデータにアクセスできますが、試用版の顧客はデータにアクセスするときに遅延が発生します。
+At this point your application is back online in region B. All paying customers have access to their data while the trial customers experience delay when accessing their data.
 
-リージョン A が復旧するときに、試用版の顧客のためにリージョン B を使用するか、試用版の顧客のリージョン A のプールを使用してフェールバックするかを判断する必要があります。判断条件の 1 つは、復旧以降に変更された試用テナント データベースの割合です。 判断に関係なく 2 つのプール間で有料のテナントを再調整する必要があります。 次の図は、試用版のテナント データベースがリージョン A にフェールバックするときの処理を示しています。  
+When region A is recovered you need to decide if you want to use region B for trial customers or failback to using the trial customers pool in region A. One criteria could be the % of trial tenant databases modified since the recovery. Regardless of that decision, you need to re-balance the paid tenants between two pools. the next diagram illustrates the process when the trial tenant databases fail back to region A.  
 
-![図 6](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
+![Figure 6](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
 
-* 試用 DR プールへの未処理のすべての geo リストア要求を取り消します。   
-* 管理データベースをフェールオーバーします (8)。 リージョンの復旧後、古いプライマリは自動的にセカンダリになっています。 これが再びプライマリになります。  
-* どの有料テナント データベースをプール 1 にフェールバックするかを選択し、セカンダリへのフェールオーバーを開始します (9)。 リージョンの復旧後に、プール 1 のすべてのデータベースは自動的にセカンダリになっています。 これで、それらの 50% が再びプライマリになります。 
-* プール 2 のサイズを元の eDTU または仮想コア数に戻します (10)。
-* リージョン B 内の復元されたすべての試用データベースを読み取り専用に設定します (11)。
-* 復旧後に変更された試用 DR プール内のデータベースごとに、試用プライマリ プール内の対応するデータベースの名前を変更するか、そのデータベースを削除します (12)。 
-* 更新されたデータベースを DR プールからプライマリ プールにコピーします (13)。 
-* DR プールを削除します (14)。 
+* Cancel all outstanding geo-restore requests to trial DR pool.
+* Fail over the management database (8). After the region’s recovery, the old primary automatically became the secondary. Now it becomes the primary again.  
+* Select which paid tenant databases fail back to pool 1 and initiate failover to their secondaries (9). After the region’s recovery, all databases in pool 1 automatically became secondaries. Now 50% of them become primaries again.
+* Reduce the size of pool 2 to the original eDTU (10) or number of vCores.
+* Set all restored trial databases in the region B to read-only (11).
+* For each database in the trial DR pool that has changed since the recovery, rename or delete the corresponding database in the trial primary pool (12).
+* Copy the updated databases from the DR pool to the primary pool (13).
+* Delete the DR pool (14).
 
-この戦略の主な **メリット** は、次のとおりです。
+The key **benefits** of this strategy are:
 
-* 障害が 50% を超えるテナント データベースに影響することはないため、有料の顧客のために最高レベルの SLA をサポートできます。 
-* 復旧中に試用 DR プールが作成されしだい、新たな試用がブロックされなくなることを保証できます。 
-* プール 1 とプール 2 のセカンダリ データベースの 50% はプライマリ データベースよりもアクティブに使用されなくなるため、プールの容量をより効率的に使用できます。
+* It supports the most aggressive SLA for the paying customers because it ensures that an outage cannot impact more than 50% of the tenant databases.
+* It guarantees that the new trials are unblocked as soon as the trail DR pool is created during the recovery.
+* It allows more efficient use of the pool capacity as 50% of secondary databases in pool 1 and pool 2 are guaranteed to be less active than the primary databases.
 
-主な **トレードオフ** は、次のとおりです。
+The main **trade-offs** are:
 
-* 管理データベースに対する CRUD 操作の遅延は、リージョン A に接続しているエンド ユーザーの方がリージョン B に接続しているエンド ユーザーよりも短くなります。この操作は、管理データベースのプライマリに対して実行されるためです。
-* 管理データベースに、より複雑な設計が必要になります。 たとえば、各テナント レコードには、フェールオーバーとフェールバック時に変更する必要がある場所タグが必要です。  
-* リージョン B のプールのアップグレードが完了するまで、有料の顧客に対するパフォーマンスが通常よりも低下することがあります。 
+* The CRUD operations against the management databases have lower latency for the end users connected to region A than for the end users connected to region B as they are executed against the primary of the management databases.
+* It requires more complex design of the management database. For example, each tenant record has a location tag that needs to be changed during failover and failback.  
+* The paying customers may experience lower performance than usual until the pool upgrade in region B is completed.
 
-## <a name="summary"></a>まとめ
-この記事では、SaaS ISV マルチテナント アプリケーションで使用されるデータベース層のディザスター リカバリー戦略に焦点を当てています。 戦略は、ビジネス モデル、顧客に提供する SLA、予算の制約など、アプリケーションのニーズに基づいて選択する必要があります。各戦略のメリットとトレードオフの概要が説明されているため、それを参考にして判断できます。 また、アプリケーションによっては、他の Azure コンポーネントが含まれることがあります。 したがって、ビジネス継続性ガイダンスを確認し、こうしたコンポーネントとデータベース層の復旧を調整する必要があります。 Azure でデータベース アプリケーションの復旧を管理する方法の詳細については、[ディザスター リカバリーのためのクラウド ソリューションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページをご覧ください。  
+## <a name="summary"></a>Summary
 
-## <a name="next-steps"></a>次の手順
-* Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください。
-* ビジネス継続性の概要およびシナリオについては、 [ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
-* 自動バックアップを使用して復旧する方法については、 [サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関するページをご覧ください
-* より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
-* 自動バックアップを使用したアーカイブについては、 [データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
+This article focuses on the disaster recovery strategies for the database tier used by a SaaS ISV multi-tenant application. The strategy you choose is based on the needs of the application, such as the business model, the SLA you want to offer to your customers, budget constraint etc. Each described strategy outlines the benefits and trade-off so you could make an informed decision. Also, your specific application likely includes other Azure components. So you review their business continuity guidance and orchestrate the recovery of the database tier with them. To learn more about managing recovery of database applications in Azure, refer to [Designing cloud solutions for disaster recovery](sql-database-designing-cloud-solutions-for-disaster-recovery.md).  
 
+## <a name="next-steps"></a>Next steps
+
+* To learn about Azure SQL Database automated backups, see [SQL Database automated backups](sql-database-automated-backups.md).
+* For a business continuity overview and scenarios, see [Business continuity overview](sql-database-business-continuity.md).
+* To learn about using automated backups for recovery, see [restore a database from the service-initiated backups](sql-database-recovery-using-backups.md).
+* To learn about faster recovery options, see [Active geo-replication](sql-database-active-geo-replication.md) and [Auto-failover groups](sql-database-auto-failover-group.md).
+* To learn about using automated backups for archiving, see [database copy](sql-database-copy.md).

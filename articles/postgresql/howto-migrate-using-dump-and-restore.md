@@ -1,20 +1,17 @@
 ---
 title: Azure Database for PostgreSQL でダンプおよび復元する方法
 description: ダンプ ファイルに PostgreSQL データベースを抽出し、Azure Database for PostgreSQL で pg_dump によって作成されたファイルから復元する方法について説明します。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 7c67cac7a5579386921b2b949e9312cb4e5da172
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: d406132c4e359c78567ae47a3acba5b73aa39820
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984674"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564206"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>ダンプと復元を使用した PostgreSQL データベースの移行
 [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) を使用して PostgreSQL データベースをダンプ ファイルに抽出し、[pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) を使用して、pg_dump によって作成されたアーカイブ ファイルから PostgreSQL データベースを復元することができます。
@@ -71,8 +68,10 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
     ```
 
 ### <a name="for-the-restore"></a>復元
-- バックアップ ファイルは､移行先の Azure Database for PostgreSQL サーバーと同じリージョンにある Azure VM に移動し、その VM から pg_restore を実行することで､ネットワーク待機時間を短縮することをお勧めします。 また､VM は [accelerated networking](..\virtual-network\create-vm-accelerated-networking-powershell.md) を有効にした状態で作成することもお勧めします。
+- バックアップ ファイルは､移行先の Azure Database for PostgreSQL サーバーと同じリージョンにある Azure VM に移動し、その VM から pg_restore を実行することで､ネットワーク待機時間を短縮することをお勧めします。 また､VM は [accelerated networking](../virtual-network/create-vm-accelerated-networking-powershell.md) を有効にした状態で作成することもお勧めします。
+
 - 既定では、すでにその設定になっているはずですが､ダンプ ファイルを開いて､データの insert 後に create index ステートメントがあることを確認してください｡ そのようになっていない場合は、データの insert の後に create index ステートメントを移動します。
+
 - -fc および -j *#* スイッチを付けて復元することで､復元を並列処理します。 *#* ターゲット サーバーのコアの数です。 *#* をターゲット サーバーのコア数の 2 倍に設定することで､その影響を確認することもできます｡ 例: 
 
     ```
@@ -80,6 +79,13 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
     ```
 
 - ダンプ ファイルを編集することもできます｡先頭に *set synchronous_commit = off;* コマンド､最後に *set synchronous_commit = on;* コマンドを追加してください｡ アプリによってデータが変更される前の､最後にオンにするようにしないと､後続データが失われることがあります。
+
+- ターゲットの Azure Database for PostgreSQL サーバーで、復元の前に以下を行うことを検討してください。
+    - クエリ パフォーマンスの追跡をオフにする。これら統計は移行中は必要ないからです。 これを行うには、pg_stat_statements.track、pg_qs.query_capture_mode、および pgms_wait_sampling.query_capture_mode を NONE に設定します。
+
+    - 移行の速度を上げるために、32 vCore メモリ最適化のようなハイ コンピューティングとハイ メモリの SKU を使用する。 復元が完了したら、希望する SKU に簡単に戻すことができます。 SKU が大きいほど、pg_restore コマンドの対応する `-j` パラメーターを増やすことで、より多くの並行処理を実現できます。 
+
+    - ターゲット サーバーの IOPS を上げると、復元のパフォーマンスが向上する可能性がある。 サーバーのストレージ サイズを増やすことで、より高い IOPS をプロビジョニングできます。 この設定は元に戻せませんが、IOPS を高くすることで、将来実際のワークロードにメリットがあるかどうか検討してください。
 
 これらのコマンドは､運用環境で使用する前にテスト環境でテスト､検証してください。
 

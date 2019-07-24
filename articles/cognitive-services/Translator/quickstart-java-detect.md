@@ -1,148 +1,187 @@
 ---
-title: 'クイック スタート: テキストの言語を認識する、Java - Translator Text API'
+title: クイック スタート:テキストの言語を検出する (Java) - Translator Text API
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、Java で Translator Text API を使ってソース テキストの言語を認識します。
+description: このクイック スタートでは、Java と Translator Text REST API を使用して、指定されたテキストの言語を検出する方法について説明します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/21/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: dcf7529ab0b9d7eb6792e2934d59a24c7a834174
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c7e56043e8ec6e8764800d4437ee071d33d79d5e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415561"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58178035"
 ---
-# <a name="quickstart-identify-language-from-text-with-the-translator-text-rest-api-java"></a>クイック スタート: Translator Text REST API を使用してテキストの言語を認識する (Java)
+# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-java"></a>クイック スタート:Translator Text API と Java を使用してテキストの言語を検出する
 
-このクイック スタートでは、Translator Text API を使ってソース テキストの言語を認識します。
+このクイック スタートでは、Java と Translator Text REST API を使用して、指定されたテキストの言語を検出する方法について説明します。
+
+このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードをコンパイルして実行するには、[JDK 7 または 8](https://aka.ms/azure-jdks) が必要です。 好みの Java IDE がある場合はそれを使用してください。ただしテキスト エディターでも問題ありません。
+* [JDK 7 以降](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Gradle](https://gradle.org/install/)
+* Translator Text の Azure サブスクリプション キー
 
-Translator Text API を使用するには、サブスクリプション キーも必要となります。「[Translator Text API にサインアップする方法](translator-text-how-to-signup.md)」を参照してください。
+## <a name="initialize-a-project-with-gradle"></a>Gradle を使用してプロジェクトを初期化する
 
-## <a name="detect-request"></a>検出要求
+まずは、このプロジェクトの作業ディレクトリを作成しましょう。 コマンド ライン (またはターミナル) から、次のコマンドを実行します。
 
-以下のコードは、[Detect](./reference/v3-0-detect.md) メソッドを使ってソース テキストの言語を認識します。
+```console
+mkdir detect-sample
+cd detect-sample
+```
 
-1. 任意のコード エディターで新しい Java プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `subscriptionKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. プログラムを実行します。
+次に、Gradle プロジェクトを初期化します。 次のコマンドを実行すると、Gradle の重要なビルド ファイルが作成されます。特に重要なのは `build.gradle.kts` です。これは、アプリケーションを作成して構成するために、実行時に使用されます。 作業ディレクトリから次のコマンドを実行します。
+
+```console
+gradle init --type basic
+```
+
+**DSL** を選択するよう求められたら、**Kotlin** を選択します。
+
+## <a name="configure-the-build-file"></a>ビルド ファイルを構成する
+
+`build.gradle.kts` の場所を特定し、好みの IDE またはテキスト エディターで開きます。 その後、次のビルド構成をコピーします。
+
+```
+plugins {
+    java
+    application
+}
+application {
+    mainClassName = "Detect"
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile("com.squareup.okhttp:okhttp:2.5.0")
+    compile("com.google.code.gson:gson:2.8.5")
+}
+```
+
+このサンプルでは、HTTP 要求の処理に OkHttp を使用し、JSON の処理と解析に Gson を使用していることに注意してください。 ビルド構成について詳しくは、「[Creating New Gradle Builds](https://guides.gradle.org/creating-new-gradle-builds/)」(新しい Gradle ビルドの作成) をご覧ください。
+
+## <a name="create-a-java-file"></a>Java ファイルを作成する
+
+サンプル アプリ用のフォルダーを作成しましょう。 作業ディレクトリから、次のコマンドを実行します。
+
+```console
+mkdir -p src/main/java
+```
+
+次に、このフォルダー内に `Detect.java` というファイルを作成します。
+
+## <a name="import-required-libraries"></a>必要なライブラリをインポートする
+
+`Detect.java` を開き、次のインポート ステートメントを追加します。
 
 ```java
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import javax.net.ssl.HttpsURLConnection;
+import com.google.gson.*;
+import com.squareup.okhttp.*;
+```
 
-/*
- * Gson: https://github.com/google/gson
- * Maven info:
- *     groupId: com.google.code.gson
- *     artifactId: gson
- *     version: 2.8.1
- */
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
-/* NOTE: To compile and run this code:
-1. Save this file as Detect.java.
-2. Run:
-    javac Detect.java -cp .;gson-2.8.1.jar -encoding UTF-8
-3. Run:
-    java -cp .;gson-2.8.1.jar Detect
-*/
+## <a name="define-variables"></a>変数の定義
 
+まず、プロジェクトのパブリック クラスを作成する必要があります。
+
+```java
 public class Detect {
+  // All project code goes here...
+}
+```
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+次の行を `Detect` クラスに追加します。
 
-// Replace the subscriptionKey string value with your valid subscription key.
-    static String subscriptionKey = "ENTER KEY HERE";
+```java
+String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
+String url = "https://api.cognitive.microsofttranslator.com/detect?api-version=3.0";
+```
 
-    static String host = "https://api.cognitive.microsofttranslator.com";
-    static String path = "/detect?api-version=3.0";
+## <a name="create-a-client-and-build-a-request"></a>クライアントを作成して要求をビルドする
 
-    static String text = "Salve, mondo!";
+次の行を `Detect` クラスに追加して、`OkHttpClient` をインスタンス化します。
 
-    public static class RequestBody {
-        String Text;
+```java
+// Instantiates the OkHttpClient.
+OkHttpClient client = new OkHttpClient();
+```
 
-        public RequestBody(String text) {
-            this.Text = text;
-        }
-    }
+次に、POST 要求をビルドしましょう。 言語検出するテキストは変更してかまいません。
 
-    public static String Post (URL url, String content) throws Exception {
-        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("Content-Length", content.length() + "");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-        connection.setRequestProperty("X-ClientTraceId", java.util.UUID.randomUUID().toString());
-        connection.setDoOutput(true);
+```java
+// This function performs a POST request.
+public String Post() throws IOException {
+    MediaType mediaType = MediaType.parse("application/json");
+    RequestBody body = RequestBody.create(mediaType,
+            "[{\n\t\"Text\": \"Salve mondo!\"\n}]");
+    Request request = new Request.Builder()
+            .url(url).post(body)
+            .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
+            .addHeader("Content-type", "application/json").build();
+    Response response = client.newCall(request).execute();
+    return response.body().string();
+}
+```
 
-        DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
-        byte[] encoded_content = content.getBytes("UTF-8");
-        wr.write(encoded_content, 0, encoded_content.length);
-        wr.flush();
-        wr.close();
+## <a name="create-a-function-to-parse-the-response"></a>応答を解析するための関数を作成する
 
-        StringBuilder response = new StringBuilder ();
-        BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
-        String line;
-        while ((line = in.readLine()) != null) {
-            response.append(line);
-        }
-        in.close();
+このシンプルな関数は、Translator Text サービスからの JSON 応答を解析し、整形するものです。
 
-        return response.toString();
-    }
+```java
+// This function prettifies the json response.
+public static String prettify(String json_text) {
+    JsonParser parser = new JsonParser();
+    JsonElement json = parser.parse(json_text);
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    return gson.toJson(json);
+}
+```
 
-    public static String Detect () throws Exception {
-        URL url = new URL (host + path);
+## <a name="put-it-all-together"></a>すべてをまとめた配置
 
-        List<RequestBody> objList = new ArrayList<RequestBody>();
-        objList.add(new RequestBody(text));
-        String content = new Gson().toJson(objList);
+最後に、要求を実行して応答を取得します。 次の行をプロジェクトに追加します。
 
-        return Post(url, content);
-    }
-
-    public static String prettify(String json_text) {
-        JsonParser parser = new JsonParser();
-        JsonElement json = parser.parse(json_text);
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(json);
-    }
-
-    public static void main(String[] args) {
-        try {
-            String response = Detect ();
-            System.out.println (prettify (response));
-        }
-        catch (Exception e) {
-            System.out.println (e);
-        }
+```java
+public static void main(String[] args) {
+    try {
+        Detect detectRequest = new Detect();
+        String response = detectRequest.Post();
+        System.out.println(prettify(response));
+    } catch (Exception e) {
+        System.out.println(e);
     }
 }
 ```
 
-## <a name="detect-response"></a>検出応答
+## <a name="run-the-sample-app"></a>サンプル アプリを実行する
 
-成功した応答は、次の例に示すように JSON で返されます。
+以上で、サンプル アプリを実行する準備が整いました。 コマンド ライン (またはターミナル セッション) で作業ディレクトリのルートに移動して、次のコマンドを実行します。
+
+```console
+gradle build
+```
+
+ビルドが完了したら、次のコマンドを実行します。
+
+```console
+gradle run
+```
+
+## <a name="sample-response"></a>応答のサンプル
+
+国の省略形は、こちらの[言語一覧](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support)で確認してください。
 
 ```json
 [
@@ -175,3 +214,12 @@ public class Detect {
 
 > [!div class="nextstepaction"]
 > [GitHub で Java のコード例を詳しく見てみる](https://aka.ms/TranslatorGitHub?type=&language=java)
+
+## <a name="see-also"></a>関連項目
+
+* [テキストを翻訳する](quickstart-java-translate.md)
+* [テキストを表記変換する](quickstart-java-transliterate.md)
+* [入力によって言語を識別する](quickstart-java-detect.md)
+* [別の翻訳を取得する](quickstart-java-dictionary.md)
+* [サポートされている言語の一覧を取得する](quickstart-java-languages.md)
+* [入力から文章の長さを判定する](quickstart-java-sentences.md)

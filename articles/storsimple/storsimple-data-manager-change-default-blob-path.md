@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: f73d9dcedee5165af752b9e10fb70de860e8e98b
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: cdaf991c25c23dee4f87b44142c1482bf892bcf2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
-ms.locfileid: "27862402"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011636"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>BLOB パスを既定のパスから変更する
 
@@ -33,7 +33,7 @@ StorSimple Data Manager サービスに正しく構成されたジョブ定義�
 
 Azure 関数を作成するには、次の手順を実行します。
 
-1. [Azure ポータル](http://portal.azure.com/)にアクセスします。
+1. [Azure ポータル](https://portal.azure.com/)にアクセスします。
 
 2. **[+ リソースの作成]** をクリックします。 **[検索]** ボックスに「**Function App**」と入力し、**Enter** キーを押します。 表示されるアプリの一覧で、**[Function App]** を選んでクリックします。
 

@@ -3,8 +3,8 @@ title: Kestrel を使用して Azure の Service Fabric アプリに HTTPS エ�
 description: このチュートリアルでは、Kestrel を使用して ASP.NET Core フロントエンド Web サービスに HTTPS エンドポイントを追加し、アプリケーションをクラスターにデプロイする方法を学習します。
 services: service-fabric
 documentationcenter: .net
-author: rwike77
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -12,17 +12,17 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/12/2018
-ms.author: ryanwi
+ms.date: 01/17/2019
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 4333a234efe96f32541254819c9c5f21bb031757
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: a8f4e89adec0a6be001f3e6d6df1a252677c5916
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115078"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59045732"
 ---
-# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>チュートリアル: Kestrel を使用して ASP.NET Core Web API フロントエンド サービスに HTTPS エンドポイントを追加する
+# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>チュートリアル:Kestrel を使用して ASP.NET Core Web API フロントエンド サービスに HTTPS エンドポイントを追加する
 
 このチュートリアルは、シリーズの第 3 部です。  Service Fabric 上で実行されている ASP.NET Core サービスで HTTPS を有効にする方法を学習します。 完了すると、ポート 443 でリッスンする、HTTPS が有効な ASP.NET Core Web フロントエンドを備えた投票アプリケーションを作成できます。 [.NET Service Fabric アプリケーションの構築](service-fabric-tutorial-deploy-app-to-party-cluster.md)に関するページの投票アプリケーションを手動で作成しない場合は、完成したアプリケーションの[ソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)できます。
 
@@ -44,20 +44,23 @@ ms.locfileid: "49115078"
 > * [Azure Pipelines を使用して CI/CD を構成する](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [アプリケーションの監視と診断を設定する](service-fabric-tutorial-monitoring-aspnet.md)
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを開始する前に
 
-* Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
+* Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
 * [Visual Studio 2017](https://www.visualstudio.com/) バージョン 15.5 以降をインストールし、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
 * [Service Fabric SDK をインストール](service-fabric-get-started.md)します。
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>証明書を取得する、または開発用の自己署名証明書を作成する
 
-運用アプリケーションの場合は、[証明機関 (CA)](https://wikipedia.org/wiki/Certificate_authority) から取得した証明書を使用してください。 開発およびテスト用には、自己署名証明書を作成して使用することができます。 Service Fabric SDK には、自己署名証明書を作成して `Cert:\LocalMachine\My` 証明書ストアにインポートするための *CertSetup.ps1* スクリプトが含まれています。 コマンド プロンプトを管理者として開き、次のコマンドを実行して、サブジェクト名が "CN=localhost" の証明書を作成します。
+運用アプリケーションの場合は、[証明機関 (CA)](https://wikipedia.org/wiki/Certificate_authority) から取得した証明書を使用してください。 開発およびテスト用には、自己署名証明書を作成して使用することができます。 Service Fabric SDK には、自己署名証明書を作成して `Cert:\LocalMachine\My` 証明書ストアにインポートするための *CertSetup.ps1* スクリプトが含まれています。 コマンド プロンプトを管理者として開き、次のコマンドを実行して、サブジェクト名が "CN=mytestcert" の証明書を作成します。
 
 ```powershell
-PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=localhost
+PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=mytestcert
 ```
 
 既に証明書 PFX ファイルがある場合は、次のコマンドを実行して証明書を `Cert:\LocalMachine\My` 証明書ストアにインポートします。
@@ -83,8 +86,8 @@ Visual Studio を**管理者**として起動し、投票ソリューション�
 <ServiceManifest Name="VotingWebPkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <ServiceTypes>
     <StatelessServiceType ServiceTypeName="VotingWebType" />
   </ServiceTypes>
@@ -158,7 +161,9 @@ serviceContext =>
         }))
 ```
 
-さらに、次のメソッドを追加して、Kestrel がサブジェクトを使用して `Cert:\LocalMachine\My` ストア内の証明書を見つけることができるようにします。  前の PowerShell コマンドを使用して自己署名証明書を作成した場合は、"&lt;your_CN_value&gt;" を "localhost" に置き換えます。または、証明書の CN を使用します。
+さらに、次のメソッドを追加して、Kestrel がサブジェクトを使用して `Cert:\LocalMachine\My` ストア内の証明書を見つけることができるようにします。  
+
+前の PowerShell コマンドを使用して自己署名証明書を作成した場合は、"&lt;your_CN_value&gt;" を "mytestcert" に置き換えます。または、証明書の CN を使用します。
 
 ```csharp
 private X509Certificate2 GetCertificateFromStore()
@@ -191,8 +196,8 @@ private X509Certificate2 GetCertificateFromStore()
 <ServiceManifest Name="VotingWebPkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <ServiceTypes>
     <StatelessServiceType ServiceTypeName="VotingWebType" />
   </ServiceTypes>
@@ -238,7 +243,7 @@ powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
 ソリューション エクスプローラーで、**[VotingWeb]** を右クリックし、**[追加]**->**[新しい項目]** の順に選択し、"SetCertAccess.ps1" という名前の新しいファイルを追加します。  *SetCertAccess.ps1* ファイルを編集して、次のスクリプトを追加します。
 
 ```powershell
-$subject="localhost"
+$subject="mytestcert"
 $userGroup="NETWORK SERVICE"
 
 Write-Host "Checking permissions to certificate $subject.." -ForegroundColor DarkCyan
@@ -295,7 +300,7 @@ if ($cert -eq $null)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="VotingData_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="VotingData_PartitionCount" DefaultValue="1" />
@@ -339,29 +344,29 @@ if ($cert -eq $null)
 
 ## <a name="run-the-application-locally"></a>ローカルでアプリケーションを実行する
 
-ソリューション エクスプローラーで、**Voting** アプリケーションを選択し、**Application URL** プロパティを "https://localhost:443" に設定します。
+ソリューション エクスプローラーで、**Voting** アプリケーションを選択し、**Application URL** プロパティを "https:\//localhost:443" に設定します。
 
-すべてのファイルを保存した後、F5 キーを押してアプリケーションをローカルで実行します。  アプリケーションのデプロイ後、Web ブラウザーで [https://localhost:443](https://localhost:443) が開かれます。 自己署名証明書を使用している場合、この Web サイトのセキュリティが PC によって信頼されていないことを示す警告が表示されます。  Web ページに進みます。
+すべてのファイルを保存した後、F5 キーを押してアプリケーションをローカルで実行します。  アプリケーションのデプロイ後、Web ブラウザーで https:\//localhost:443 が開かれます。 自己署名証明書を使用している場合、この Web サイトのセキュリティが PC によって信頼されていないことを示す警告が表示されます。  Web ページに進みます。
 
 ![投票アプリケーション][image2]
 
 ## <a name="install-certificate-on-cluster-nodes"></a>クラスター ノードに証明書をインストールする
 
-アプリケーションを Azure にデプロイする前に、リモート クラスター ノードの `Cert:\LocalMachine\My` ストアに証明書をインストールします。  フロントエンド Web サービスがクラスター ノードで開始されると、スタートアップ スクリプトによって証明書が参照され、アクセス許可が構成されます。
+アプリケーションを Azure にデプロイする前に、すべてのリモート クラスター ノードの `Cert:\LocalMachine\My` ストアに証明書をインストールします。  サービスは、クラスターの別のノードに移動することができます。  フロントエンド Web サービスがクラスター ノードで開始されると、スタートアップ スクリプトによって証明書が参照され、アクセス許可が構成されます。
 
-最初に、証明書を PFX ファイルにエクスポートします。 certlm.msc アプリケーションを開き、**[個人]**>**[証明書]** の順に移動します。  *[localhost]* を右クリックし、**[すべてのタスク]**>**[エクスポート]** の順に選択します。
+最初に、証明書を PFX ファイルにエクスポートします。 certlm.msc アプリケーションを開き、**[個人]**>**[証明書]** の順に移動します。  *[mytestcert]* 証明書を右クリックし、**[すべてのタスク]**>**[エクスポート]** の順に選択します。
 
 ![証明書をエクスポートします。][image4]
 
 エクスポート ウィザードで、**[はい、秘密キーをエクスポートします]** を選択し、Personal Information Exchange (PFX) 形式を選択します。  ファイルを *C:\Users\sfuser\votingappcert.pfx* にエクスポートします。
 
-次に、[Add-AzureRmServiceFabricApplicationCertificate](/powershell/module/azurerm.servicefabric/Add-AzureRmServiceFabricApplicationCertificate) コマンドレットを使用して、リモート クラスターに証明書をインストールします。
+次に、[Add-AzServiceFabricApplicationCertificate](/powershell/module/az.servicefabric/Add-azServiceFabricApplicationCertificate) コマンドレットを使用して、リモート クラスターに証明書をインストールします。
 
 > [!Warning]
 > アプリケーションの開発およびテスト用には自己署名証明書で十分です。 運用アプリケーションの場合は、自己署名証明書ではなく、[証明機関 (CA)](https://wikipedia.org/wiki/Certificate_authority) から取得した証明書を使用してください。
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 
 $vaultname="sftestvault"
 $certname="VotingAppPFX"
@@ -394,7 +399,7 @@ Write-Host "Writing secret to $certname in vault $vaultname"
 $secret = Set-AzureKeyVaultSecret -VaultName $vaultname -Name $certname -SecretValue $secretValue
 
 # Add a certificate to all the VMs in the cluster.
-Add-AzureRmServiceFabricApplicationCertificate -ResourceGroupName $groupname -Name $clustername -SecretIdentifier $secret.Id -Verbose
+Add-AzServiceFabricApplicationCertificate -ResourceGroupName $groupname -Name $clustername -SecretIdentifier $secret.Id -Verbose
 ```
 
 ## <a name="open-port-443-in-the-azure-load-balancer"></a>Azure Load Balancer のポート 443 を開く
@@ -408,18 +413,18 @@ $RGname="voting_RG"
 $port=443
 
 # Get the load balancer resource
-$resource = Get-AzureRmResource | Where {$_.ResourceGroupName –eq $RGname -and $_.ResourceType -eq "Microsoft.Network/loadBalancers"}
-$slb = Get-AzureRmLoadBalancer -Name $resource.Name -ResourceGroupName $RGname
+$resource = Get-AzResource | Where {$_.ResourceGroupName –eq $RGname -and $_.ResourceType -eq "Microsoft.Network/loadBalancers"}
+$slb = Get-AzLoadBalancer -Name $resource.Name -ResourceGroupName $RGname
 
 # Add a new probe configuration to the load balancer
-$slb | Add-AzureRmLoadBalancerProbeConfig -Name $probename -Protocol Tcp -Port $port -IntervalInSeconds 15 -ProbeCount 2
+$slb | Add-AzLoadBalancerProbeConfig -Name $probename -Protocol Tcp -Port $port -IntervalInSeconds 15 -ProbeCount 2
 
 # Add rule configuration to the load balancer
-$probe = Get-AzureRmLoadBalancerProbeConfig -Name $probename -LoadBalancer $slb
-$slb | Add-AzureRmLoadBalancerRuleConfig -Name $rulename -BackendAddressPool $slb.BackendAddressPools[0] -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -Probe $probe -Protocol Tcp -FrontendPort $port -BackendPort $port
+$probe = Get-AzLoadBalancerProbeConfig -Name $probename -LoadBalancer $slb
+$slb | Add-AzLoadBalancerRuleConfig -Name $rulename -BackendAddressPool $slb.BackendAddressPools[0] -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -Probe $probe -Protocol Tcp -FrontendPort $port -BackendPort $port
 
 # Set the goal state for the load balancer
-$slb | Set-AzureRmLoadBalancer
+$slb | Set-AzLoadBalancer
 ```
 
 ## <a name="deploy-the-application-to-azure"></a>Azure にアプリケーションを展開する

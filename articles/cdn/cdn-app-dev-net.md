@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 5379586355ece98af6295236d6cbd09cb31c742b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 838c76e6a383b61ff465f3ed7506af34c8cd01d4
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38454466"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58916616"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 開発の概要
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "38454466"
 > 
 > 
 
-[.NET 向け Azure CDN ライブラリ](https://msdn.microsoft.com/library/mt657769.aspx) を使用すると、CDN プロファイルとエンドポイントの作成と管理を自動化できます。  このチュートリアルでは、単純な .NET コンソール アプリケーションを作成しながら、使用可能な操作のいくつかを紹介します。  このチュートリアルは、.NET 向け Azure CDN ライブラリのすべての側面を詳細に説明することを目的としていません。
+[.NET 向け Azure CDN ライブラリ](/dotnet/api/overview/azure/cdn) を使用すると、CDN プロファイルとエンドポイントの作成と管理を自動化できます。  このチュートリアルでは、単純な .NET コンソール アプリケーションを作成しながら、使用可能な操作のいくつかを紹介します。  このチュートリアルは、.NET 向け Azure CDN ライブラリのすべての側面を詳細に説明することを目的としていません。
 
 このチュートリアルを完了するには、Visual Studio 2015 が必要です。  [Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) は、自由にダウンロードできます。
 
@@ -155,7 +155,7 @@ Visual Studio 2015 で、**[ファイル]**、**[新規]**、**[プロジェク�
 
 これで、プログラムの基本的な構造が作成されました。次に、`Main` メソッドによって呼び出されるメソッドを作成します。
 
-## <a name="authentication"></a>認証
+## <a name="authentication"></a>Authentication
 Azure CDN Management Library を使用するには、サービス プリンシパルを認証し、認証トークンを取得する必要があります。  このメソッドは、ADAL を使用してトークンを取得します。
 
 ```csharp
@@ -338,7 +338,7 @@ Visual Studio の **[開始]** をクリックして、プログラムをコン�
 ## <a name="next-steps"></a>次の手順
 このチュートリアルの完成したプロジェクトを確認するには、 [サンプルをダウンロード](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c)してください。
 
-Azure CDN Management Library for .NET に関連するドキュメントについては、 [MSDN のリファレンス](https://msdn.microsoft.com/library/mt657769.aspx)を参照してください。
+Azure CDN Management Library for .NET に関連するドキュメントについては、 [MSDN のリファレンス](/dotnet/api/overview/azure/cdn)を参照してください。
 
 [PowerShell](cdn-manage-powershell.md) で CDN リソースを管理します。
 

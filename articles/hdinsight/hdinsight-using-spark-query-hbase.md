@@ -2,30 +2,31 @@
 title: Spark を使用して HBase のデータの読み取りと書き込みを行う - Azure HDInsight
 description: Spark HBase コネクタを使用して、Spark クラスターから HBase クラスターに対するデータの読み取りと書き込みを行います。
 services: hdinsight
-author: maxluk
-ms.author: maxluk
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/05/2018
-ms.openlocfilehash: 1136d97ad1c1d02320331e6d2013b68526d5abb4
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.date: 03/12/2019
+ms.openlocfilehash: 200691f7af16e82d554d0e1e019b6a4e5c75949f
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277904"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260131"
 ---
-# <a name="use-spark-to-read-and-write-hbase-data"></a>Spark を使用して HBase データを読み取る/書き込む
+# <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache Spark を使用した Apache HBase データの読み取り/書き込み
 
-通常、Apache HBase は、低レベルの API (スキャン、取得、および配置) または Phoenix を使用した SQL 構文のいずれかでクエリされます。 Apache は Spark HBase コネクタも備えており、これは HBase に格納されたデータをクエリおよび変更するための便利で効率的な代替手段となります。
+通常、Apache HBase は、低レベルの API (スキャン、取得、および配置) または Apache Phoenix を使用した SQL 構文のいずれかでクエリされます。 Apache は Apache Spark HBase コネクタも備えており、これは HBase に格納されたデータをクエリおよび変更するための便利で効率的な代替手段となります。
 
 ## <a name="prerequisites"></a>前提条件
 
-* 2 つの別個の HDInsight クラスター。1 つは HBase で、もう 1 つは Spark 2.1 (HDInsight 3.6) がインストールされた Spark です。
+* 2 つの別個の HDInsight クラスター。1 つは HBase で、もう 1 つは Spark 2.1 (HDInsight 3.6) 以上がインストールされた Spark です。
 * Spark クラスターは最小限の待ち時間で HBase クラスターと直接通信できる必要があります。そのため、両方のクラスターを同じ仮想ネットワークにデプロイする構成をお勧めします。 詳細については、「[Azure Portal を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)」をご覧ください。
-* 各クラスターへの SSH アクセス。
-* 各クラスターの既定のストレージへのアクセス。
+* SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+* クラスターのプライマリ ストレージの [URI スキーム](hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Blob Storage では wasb://、Azure Data Lake Storage Gen2 では abfs://、Azure Data Lake Storage Gen1 では adl:// です。 Blob Storage または Data Lake Storage Gen2 で安全な転送が有効になっている場合、URI はそれぞれ wasbs:// または abfss:// になります。「[安全な転送](../storage/common/storage-require-secure-transfer.md)」も参照。
+
 
 ## <a name="overall-process"></a>全体的なプロセス
 
@@ -38,20 +39,25 @@ Spark クラスターが HDInsight クラスターのクエリを実行できる
 5. Spark のスキーマを HBase にマップするカタログを定義します。
 6. RDD または DataFrame API を使用して HBase データと対話します。
 
-## <a name="prepare-sample-data-in-hbase"></a>HBase でサンプル データを準備する
+## <a name="prepare-sample-data-in-apache-hbase"></a>Apache HBase でサンプル データを準備する
 
-この手順では、Spark を使用してクエリできる単純なテーブルを HBase に作成し、データを設定します。
+この手順では、Spark を使用してクエリできる単純なテーブルを Apache HBase に作成し、データを設定します。
 
-1. SSH を使用して、HBase クラスターのヘッド ノードに接続します。 詳細については、「[SSH を使用して HDInsight (Hadoop) に接続する](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
-2. HBase シェルを実行します。
+1. SSH を使用して、HBase クラスターのヘッド ノードに接続します。 詳細については、「[SSH を使用して HDInsight (Hadoop) に接続する](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。  `HBASECLUSTER` を HBase クラスターの名前に置き換え、`sshuser` を ssh ユーザー アカウント名に置き換えて以下のコマンドを編集し、そのコマンドを入力します。
+
+    ```
+    ssh sshuser@HBASECLUSTER-ssh.azurehdinsight.net
+    ```
+
+2. 以下のコマンドを入力して HBase シェルを開始します。
 
         hbase shell
 
-3. `Personal`、`Office` という列ファミリを持つ `Contacts` テーブルを作成します。
+3. 以下のコマンドを入力して、`Personal` および `Office` という列ファミリを持つ `Contacts` テーブルを作成します。
 
         create 'Contacts', 'Personal', 'Office'
 
-4. いくつかのサンプル データ行を読み込みます。
+4. 以下のコマンドを入力して、いくつかのサンプル データ行を読み込みます。
 
         put 'Contacts', '1000', 'Personal:Name', 'John Dole'
         put 'Contacts', '1000', 'Personal:Phone', '1-425-000-0001'
@@ -62,119 +68,99 @@ Spark クラスターが HDInsight クラスターのクエリを実行できる
         put 'Contacts', '8396', 'Office:Phone', '230-555-0191'
         put 'Contacts', '8396', 'Office:Address', '5415 San Gabriel Dr.'
 
-## <a name="acquire-hbase-sitexml-from-your-hbase-cluster"></a>HBase クラスターから hbase-site.xml を取得する
+5. 以下のコマンドを入力して HBase シェルを終了します。
 
-1. SSH を使用して、HBase クラスターのヘッド ノードに接続します。
-2. ローカル ストレージから HBase クラスターの既定のストレージのルートに hbase-site.xml をコピーします。
+        exit 
 
-        hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml /
+## <a name="copy-hbase-sitexml-to-spark-cluster"></a>hbase-site.xml を Spark クラスターにコピーする
+ローカル ストレージから Spark クラスターの既定ストレージのルートに hbase-site.xml をコピーします。  以下のコマンドを編集して、構成を反映します。  次に、開いている HBase クラスターへの SSH セッションから、以下のコマンドを入力します。
 
-3. [Azure Portal](https://portal.azure.com) を使用して HBase クラスターに移動します。
-4. ストレージ アカウントを選択します。 
+| 構文の値 | 新しい値|
+|---|---|
+|[URI スキーム](hdinsight-hadoop-linux-information.md#URI-and-scheme) | ストレージを反映するように変更します。  以下の構文は、安全な転送が有効になった Blob ストレージ用です。|
+|`SPARK_STORAGE_CONTAINER`|Spark クラスターで使用される既定のストレージ コンテナー名に置き換えます。|
+|`SPARK_STORAGE_ACCOUNT`|Spark クラスターで使用される既定のストレージ アカウント名に置き換えます。|
 
-    ![ストレージ アカウント](./media/hdinsight-using-spark-query-hbase/storage-accounts.png)
-
-5. 一覧で、[既定値] 列の下にチェックマークが付いているストレージ アカウントを選択します。
-
-    ![既定のストレージ アカウント](./media/hdinsight-using-spark-query-hbase/default-storage.png)
-
-6. [ストレージ アカウント] ウィンドウで、[BLOB] タイルを選択します。
-
-    ![[BLOB] タイル](./media/hdinsight-using-spark-query-hbase/blobs-tile.png)
-
-7. コンテナーの一覧で、HBase クラスターが使用しているコンテナーを選択します。
-8. ファイル リストで `hbase-site.xml` を選択します。
-
-    ![HBase-site.xml](./media/hdinsight-using-spark-query-hbase/hbase-site-xml.png)
-
-9. [BLOB のプロパティ] パネルで [ダウンロード] を選択し、ローカル コンピューター上の場所に `hbase-site.xml` を保存します。
-
-    ![[ダウンロード]](./media/hdinsight-using-spark-query-hbase/download.png)
+```
+hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CONTAINER@SPARK_STORAGE_ACCOUNT.blob.core.windows.net/
+```
 
 ## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>Spark クラスターに hbase-site.xml を配置する
 
-1. [Azure Portal](https://portal.azure.com) を使用して Spark クラスターに移動します。
-2. ストレージ アカウントを選択します。
+1. SSH を使用して、Spark クラスターのヘッド ノードに接続します。
 
-    ![ストレージ アカウント](./media/hdinsight-using-spark-query-hbase/storage-accounts.png)
-
-3. 一覧で、[既定値] 列の下にチェックマークが付いているストレージ アカウントを選択します。
-
-    ![既定のストレージ アカウント](./media/hdinsight-using-spark-query-hbase/default-storage.png)
-
-4. [ストレージ アカウント] ウィンドウで、[BLOB] タイルを選択します。
-
-    ![[BLOB] タイル](./media/hdinsight-using-spark-query-hbase/blobs-tile.png)
-
-5. コンテナーの一覧で、Spark クラスターが使用しているコンテナーを選択します。
-6. [アップロード] を選択します。
-
-    ![アップロード](./media/hdinsight-using-spark-query-hbase/upload.png)
-
-7. 先ほどローカル コンピューターにダウンロードした `hbase-site.xml` ファイルを選択します。
-
-    ![hbase-site.xml のアップロード](./media/hdinsight-using-spark-query-hbase/upload-selection.png)
-
-8. [アップロード] を選択します。
-9. SSH を使用して、Spark クラスターのヘッド ノードに接続します。
-10. Spark クラスターの既定のストレージから、クラスターのローカル ストレージの Spark 2 構成フォルダーに `hbase-site.xml` をコピーします。
+2. 以下のコマンドを入力して、Spark クラスターの既定のストレージから、クラスターのローカル ストレージの Spark 2 構成フォルダーに `hbase-site.xml` をコピーします。
 
         sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
 
 ## <a name="run-spark-shell-referencing-the-spark-hbase-connector"></a>Spark HBase コネクターを参照する Spark Shell を実行する
 
-1. SSH を使用して、Spark クラスターのヘッド ノードに接続します。
-2. Spark HBase コネクター パッケージを指定して、Spark シェルを起動します。
+1. 開いている Spark クラスターへの SSH セッションから以下のコマンドを入力して、Spark シェルを開始します。
 
-        spark-shell --packages com.hortonworks:shc-core:1.1.0-2.1-s_2.11 --repositories http://repo.hortonworks.com/content/groups/public/
+    ```
+    spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/
+    ```  
 
-3. この Spark シェル インスタンスを開いたままで、次の手順に進みます。
+2. この Spark シェル インスタンスを開いたままで、次の手順に進みます。
 
 ## <a name="define-a-catalog-and-query"></a>カタログとクエリを定義する
 
-この手順では、Spark のスキーマを HBase にマップするカタログ オブジェクトを定義します。 
+この手順では、Apache Spark のスキーマを Apache HBase にマップするカタログ オブジェクトを定義します。  
 
-1. 開いている Spark シェルで、次の `import` ステートメントを実行します。
+1. 開いている Spark シェルで、次の `import` ステートメントを入力します。
 
-        import org.apache.spark.sql.{SQLContext, _}
-        import org.apache.spark.sql.execution.datasources.hbase._
-        import org.apache.spark.{SparkConf, SparkContext}
-        import spark.sqlContext.implicits._
+    ```scala
+    import org.apache.spark.sql.{SQLContext, _}
+    import org.apache.spark.sql.execution.datasources.hbase._
+    import org.apache.spark.{SparkConf, SparkContext}
+    import spark.sqlContext.implicits._
+    ```  
 
-2. HBase で作成した Contacts テーブルのカタログを定義します。
-    1. `Contacts` という名前の HBase テーブルのカタログ スキーマを定義します。
-    2. rowkey を `key` として指定し、Spark で使用されている列名を、HBase で使用されている列ファミリ、列名、列タイプにマップします。
-    3. また、rowkey を、`rowkey` の特定の列ファミリ `cf` を持つ名前付きの列 (`rowkey`) として詳細に定義する必要があります。
+2. 以下のコマンドを入力して、HBase で作成した Contacts テーブルのカタログを定義します。
 
-            def catalog = s"""{
-                |"table":{"namespace":"default", "name":"Contacts"},
-                |"rowkey":"key",
-                |"columns":{
-                |"rowkey":{"cf":"rowkey", "col":"key", "type":"string"},
-                |"officeAddress":{"cf":"Office", "col":"Address", "type":"string"},
-                |"officePhone":{"cf":"Office", "col":"Phone", "type":"string"},
-                |"personalName":{"cf":"Personal", "col":"Name", "type":"string"},
-                |"personalPhone":{"cf":"Personal", "col":"Phone", "type":"string"}
-                |}
-            |}""".stripMargin
+    ```scala
+    def catalog = s"""{
+        |"table":{"namespace":"default", "name":"Contacts"},
+        |"rowkey":"key",
+        |"columns":{
+        |"rowkey":{"cf":"rowkey", "col":"key", "type":"string"},
+        |"officeAddress":{"cf":"Office", "col":"Address", "type":"string"},
+        |"officePhone":{"cf":"Office", "col":"Phone", "type":"string"},
+        |"personalName":{"cf":"Personal", "col":"Name", "type":"string"},
+        |"personalPhone":{"cf":"Personal", "col":"Phone", "type":"string"}
+        |}
+    |}""".stripMargin
+    ```
 
-3. HBase で、`Contacts` テーブルの DataFrame を提供するメソッドを定義します。
+    このコードは以下のことを実行します。  
 
-            def withCatalog(cat: String): DataFrame = {
-                spark.sqlContext
-                .read
-                .options(Map(HBaseTableCatalog.tableCatalog->cat))
-                .format("org.apache.spark.sql.execution.datasources.hbase")
-                .load()
-            }
+     a. `Contacts` という名前の HBase テーブルのカタログ スキーマを定義します。  
+     b. rowkey を `key` として指定し、Spark で使用されている列名を、HBase で使用されている列ファミリ、列名、列タイプにマップします。  
+     c. また、rowkey を、`rowkey` の特定の列ファミリ `cf` を持つ名前付きの列 (`rowkey`) として詳細に定義する必要があります。  
+
+3. 以下のコマンドを入力して、HBase で `Contacts` テーブルの DataFrame を提供するメソッドを定義します。
+
+    ```scala
+    def withCatalog(cat: String): DataFrame = {
+        spark.sqlContext
+        .read
+        .options(Map(HBaseTableCatalog.tableCatalog->cat))
+        .format("org.apache.spark.sql.execution.datasources.hbase")
+        .load()
+     }
+    ```
 
 4. DataFrame のインスタンスを作成します。
 
-        val df = withCatalog(catalog)
+    ```scala
+    val df = withCatalog(catalog)
+    ```  
 
 5. DataFrame のクエリを実行します。
 
-        df.show()
+    ```scala
+    df.show()
+    ```
 
 6. 2 行のデータが表示されます。
 
@@ -187,12 +173,16 @@ Spark クラスターが HDInsight クラスターのクエリを実行できる
 
 7. 一時テーブルを登録して、Spark SQL を使用して HBase テーブルのクエリを実行できるようにします。
 
-        df.registerTempTable("contacts")
+    ```scala
+    df.createTempView("contacts")
+    ```
 
 8. `contacts` テーブルに対して SQL クエリを発行します。
 
-        val query = spark.sqlContext.sql("select personalName, officeAddress from contacts")
-        query.show()
+    ```scala
+    val query = spark.sqlContext.sql("select personalName, officeAddress from contacts")
+    query.show()
+    ```
 
 9. 次のような結果が表示されます。
 
@@ -207,30 +197,36 @@ Spark クラスターが HDInsight クラスターのクエリを実行できる
 
 1. Contact の新しいレコードを挿入するには、`ContactRecord` クラスを定義します。
 
-        case class ContactRecord(
-            rowkey: String,
-            officeAddress: String,
-            officePhone: String,
-            personalName: String,
-            personalPhone: String
-            )
+    ```scala
+    case class ContactRecord(
+        rowkey: String,
+        officeAddress: String,
+        officePhone: String,
+        personalName: String,
+        personalPhone: String
+        )
+    ```
 
 2. `ContactRecord` のインスタンスを作成し、配列に挿入します。
 
-        val newContact = ContactRecord("16891", "40 Ellis St.", "674-555-0110", "John Jackson","230-555-0194")
+    ```scala
+    val newContact = ContactRecord("16891", "40 Ellis St.", "674-555-0110", "John Jackson","230-555-0194")
 
-        var newData = new Array[ContactRecord](1)
-        newData(0) = newContact
+    var newData = new Array[ContactRecord](1)
+    newData(0) = newContact
+    ```
 
 3. 新しいデータの配列を HBase に保存します。
 
-        sc.parallelize(newData).toDF.write
-        .options(Map(HBaseTableCatalog.tableCatalog -> catalog))
-        .format("org.apache.spark.sql.execution.datasources.hbase").save()
+    ```scala
+    sc.parallelize(newData).toDF.write.options(Map(HBaseTableCatalog.tableCatalog -> catalog, HBaseTableCatalog.newTable -> "5")).format("org.apache.spark.sql.execution.datasources.hbase").save()
+    ```
 
 4. 結果を確認します。
-    
-        df.show()
+
+    ```scala  
+    df.show()
+    ```
 
 5. 次のような出力結果が表示されます。
 
@@ -244,4 +240,4 @@ Spark クラスターが HDInsight クラスターのクエリを実行できる
 
 ## <a name="next-steps"></a>次の手順
 
-* [Spark HBase コネクタ](https://github.com/hortonworks-spark/shc)
+* [Apache Spark HBase コネクタ](https://github.com/hortonworks-spark/shc)

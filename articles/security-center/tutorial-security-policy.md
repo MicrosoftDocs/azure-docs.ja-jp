@@ -1,110 +1,262 @@
 ---
-title: 'Azure Security Center チュートリアル: セキュリティ ポリシーの定義と評価 | Microsoft Docs'
-description: 'Azure Security Center チュートリアル: セキュリティ ポリシーの定義と評価'
+title: セキュリティ ポリシーの操作 | Microsoft Docs
+description: この記事では、Azure Security Center でセキュリティ ポリシーを操作する方法について説明します。
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2018
-ms.author: rkarlin
-ms.openlocfilehash: fcd3c2a95cea0a838fc16149a0a74fad95ea3300
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.date: 3/28/2019
+ms.author: monhaber
+ms.openlocfilehash: 1931026869e930caef2ff2f92fb85dade15a9c8c
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027063"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578443"
 ---
-# <a name="tutorial-define-and-assess-security-policies"></a>チュートリアル: セキュリティ ポリシーの定義と評価
-Security Center は、ワークロードの望ましい構成を定義するセキュリティ ポリシーを使用して、会社や規制のセキュリティ要件に確実に準拠できるようにします。 Azure サブスクリプションでポリシーを定義し、それらをワークロードの種類またはデータの機密度に合わせて調整すると、計算、アプリケーション、ネットワーク、データとストレージ、ID とアクセスの各リソースについてのセキュリティ推奨事項を Security Center から得ることができます。 このチュートリアルで学習する内容は次のとおりです。
+# <a name="working-with-security-policies"></a>セキュリティ ポリシーの操作
 
-> [!div class="checklist"]
-> * セキュリティ ポリシーを構成する
-> * リソースのセキュリティを評価する
+この記事では、セキュリティ ポリシーの構成方法と、それの Security Center での表示方法について説明します。 Azure Security Center では、オンボードされている各サブスクリプションに、[組み込みのセキュリティ ポリシー](security-center-policy-definitions.md)が自動的に割り当てられます。 これらは、ポリシーを管理グループや複数のサブスクリプションに渡って設定できる [Azure Policy](../governance/policy/overview.md) で構成することも可能です。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)を作成してください。
-
-## <a name="prerequisites"></a>前提条件
-このチュートリアルで説明されている機能を実行するには、Security Center の Standard 価格レベルを使用する必要があります。 Security Center Standard は最初の 60 日間、無料でお試しいただけます。 Standard にアップグレードする方法については、[Azure サブスクリプションでの Security Center Standard の利用開始](security-center-get-started.md)に関するクイックスタートを参照してください。
-
-## <a name="configure-security-policy"></a>セキュリティ ポリシーを構成する
-Security Center では、Azure サブスクリプションごとに自動で既定のセキュリティ ポリシーが作成されます。 セキュリティ ポリシーは、そのサブスクリプションのセキュリティ要件に従ってオンまたはオフにできる推奨事項で構成されます。 既定のセキュリティ ポリシーを変更するには、そのサブスクリプションの所有者、共同作成者、またはセキュリティ管理者である必要があります。
-
-1. Security Center のメイン メニューで、**[セキュリティ ポリシー]** を選択します。
-2. 使用するサブスクリプションを選択します。
-
-  ![セキュリティ ポリシー](./media/tutorial-security-policy/tutorial-security-policy-fig1.png)  
-
-3. **[計算とアプリ]**、**[ネットワーク]**、**[データ]** で、監視する各セキュリティ構成を **[オン]** に設定します。 Security Center は環境の構成を継続的に評価し、脆弱性が存在する場合にセキュリティの推奨事項を生成します。 セキュリティ構成が非推奨の場合や適切でない場合は、**[オフ]** を選択してください。 たとえば、開発/テスト環境では、運用環境と同じレベルのセキュリティが必要でない場合があります。 環境に適用できるポリシーを選択した後、**[保存]** をクリックします。
-
-  ![セキュリティ構成](./media/tutorial-security-policy/tutorial-security-policy-fig6.png)  
-
-Security Center がこれらのポリシーを処理し、推奨事項を生成するまで待機します。 システムの更新や OS 構成など、一部の構成は最大で 12 時間かかる可能性がありますが、ネットワーク セキュリティ グループと暗号化の構成はほぼ瞬時に評価できます。 Security Center ダッシュボードに推奨事項が表示されたら、次の手順に進むことができます。
-
-## <a name="assess-security-of-resources"></a>リソースのセキュリティを評価する
-1. 有効にされたセキュリティ ポリシーに従って、Security Center は必要に応じて一連のセキュリティ推奨事項を提供します。 最初に、仮想マシンとコンピューターの推奨事項を確認することをお勧めします。 Security Center ダッシュボードで、**[概要]**、**[計算とアプリ]** の順にクリックします。
-
-  ![コンピューティング](./media/tutorial-security-policy/tutorial-security-policy-fig2.png)
-
-  赤色の (優先度の高い) 推奨事項を優先して、それぞれの推奨事項を確認します。 これらの推奨事項には、Security Center から直接解決策を実装できるものもあります ([エンドポイント保護の問題](https://docs.microsoft.com/azure/security-center/security-center-install-endpoint-protection)など)。 その他の推奨事項では、解決策を適用するガイドラインのみが示されます (ディスクの暗号化がないことに関する推奨事項など)。
-
-2. 関連するコンピューティングの推奨事項にすべて対応したら、次のワークロード (ネットワーク) に移ります。 Security Center ダッシュボードで、**[概要]**、**[ネットワーク]** の順にクリックします。
-
-  ![ネットワーク](./media/tutorial-security-policy/tutorial-security-policy-fig3.png)
-
-  ネットワークの推奨事項のページには、ネットワーク構成、インターネット接続エンドポイント、ネットワーク トポロジに関するセキュリティの問題の一覧があります。 **[計算とアプリ]** の場合と同様に、ネットワークの推奨事項には統合された解決策を示すものと示さないものがあります。
-
-3. 関連するネットワークの推奨事項にすべて対応したら、次のワークロード (ストレージおよびデータ) に移ります。 Security Center ダッシュボードで、**[概要]**、**[データ & ストレージ]** の順にクリックします。
-
-  ![データ リソース](./media/tutorial-security-policy/tutorial-security-policy-fig4.png)
-
-  **[データ リソース]** ページには、Azure SQL サーバーおよびデータベースの監査、SQL データベースの暗号化、Azure ストレージ アカウントの暗号化の有効化に関する推奨事項が表示されます。 これらのワークロードがない場合、推奨事項は表示されません。 **[計算とアプリ]** の場合と同様に、データとストレージの推奨事項には統合された解決策を示すものと示さないものがあります。
-
-4. 関連するデータとストレージの推奨事項にすべて対応したら、次のワークロード (ID およびアクセス) に移ります。 Security Center ダッシュボードで、**[概要]**、**[ID およびアクセス]** の順にクリックします。
-
-  ![ID およびアクセス](./media/tutorial-security-policy/tutorial-security-policy-fig5.png)
-
-  **[ID およびアクセス]** ページには、次のような推奨事項が表示されます。
-
-   - サブスクリプションで特権アカウントの MFA を有効にする
-   - 書き込みアクセス許可を持つ外部アカウントをサブスクリプションから削除する
-   - 外部の特権アカウントをサブスクリプションから削除する
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-このコレクションの他のクイックスタートとチュートリアルは、このクイックスタートに基づいています。 引き続き次のクイックスタートとチュートリアルを行う予定の場合、Standard レベルの実行を継続して、自動プロビジョニングを有効のままにしてください。 続行しないまたは Free レベルに戻したい場合:
-
-1. Security Center のメイン メニューに戻り、**[セキュリティ ポリシー]** を選択します。
-2. Free に戻したいサブスクリプションまたはポリシーを選択します。 **[セキュリティ ポリシー]** が開きます。
-3. **[ポリシー コンポーネント]** で、**[価格レベル]** を選択します。
-4. **[Free]** を選択して、Standard レベルから Free レベルにサブスクリプションを変更します。
-5. **[保存]** を選択します。
-
-自動プロビジョニングを無効にする場合:
-
-1. Security Center のメイン メニューに戻り、**[セキュリティ ポリシー]** を選択します。
-2. 自動プロビジョニングを無効にするサブスクリプションを選択します。
-3. **[セキュリティ ポリシー - データ収集]** で、**[オンボード]** の **[オフ]** を選択して、自動プロビジョニングを無効にします。
-4. **[保存]** を選択します。
+PowerShell を使用してポリシーを設定する手順については、「[クイック スタート: Azure PowerShell モジュールを使用してポリシーの割り当てを作成し、準拠していないリソースを特定する](../governance/policy/assign-policy-powershell.md)」を参照してください。
 
 >[!NOTE]
-> 自動プロビジョニングを無効しても、Microsoft Monitoring Agent がプロビジョニングされている Azure VM からエージェントは削除されません。 自動プロビジョニングを無効にすると、リソースのセキュリティの監視が制限されます。
+> Security Center では、Azure Policy との統合が開始されました。 既存のお客様は、Security Center における以前のセキュリティ ポリシーではなく、Azure Policy の新しい組み込みイニシアティブに自動的に移行されます。 この変更は、Azure Policy に新しいイニシアティブが存在すること以外、お客様のリソースや環境には影響を与えません。
+
+## <a name="what-are-security-policies"></a>セキュリティ ポリシーとは
+セキュリティ ポリシーは、ワークロードの必要な構成を定義し、会社や規制のセキュリティ要件に確実に準拠できるようにします。 Azure Policy では、Azure サブスクリプションのポリシーを定義して、ワークロードの種類やデータの機密性に合わせてそれを調整することが可能です。 たとえば、個人を特定できる情報のような、規制されたデータが使用されるアプリケーションには、他のワークロードより高いレベルのセキュリティが必要です。 設定を管理グループまたはサブスクリプション間でのポリシーを設定する [Azure Policy](../governance/policy/overview.md) します。
+
+Azure Security Center から取得するセキュリティに関する推奨事項は、ご使用のセキュリティ ポリシーによって駆動されます。 ユーザーは、それへの準拠を監視して、潜在的な脆弱性を特定し、脅威を軽減することができます。 自分に合った選択肢を判断する方法の詳細については、[組み込みのセキュリティ ポリシー](security-center-policy-definitions.md)の一覧を参照してください。
+
+Security Center を有効にすると、Security Center に組み込まれたセキュリティ ポリシーは、Azure Policy で、Security Center カテゴリの組み込みイニシアティブとして反映されます。 ビルトインのイニシアティブは、Security Center のすべての登録済みサブスクリプション (Free または Standard レベル) に対して自動的に割り当てられます。 組み込みイニシアティブに含まれるのは監査ポリシーだけです。
+
+
+### <a name="management-groups"></a>管理グループ
+組織に多数のサブスクリプションがある場合は、これらのサブスクリプションのアクセス、ポリシー、およびコンプライアンスを効率的に管理する方法が必要になることがあります。 Azure 管理グループの範囲は、サブスクリプションを上回ります。 "管理グループ" と呼ばれるコンテナーにサブスクリプションを整理して、管理グループに管理ポリシーを適用できます。 管理グループ内のすべてのサブスクリプションは、管理グループに適用されたポリシーを自動的に継承します。 各ディレクトリには、"ルート" 管理グループと呼ばれる 1 つの最上位管理グループがあります。 このルート管理グループは階層に組み込まれており、すべての管理グループとサブスクリプションはルート管理グループにまとめられます。 ルート管理グループにより、グローバル ポリシーと RBAC の割り当てをディレクトリ レベルで適用できます。 Azure Security Center で使用する管理グループを設定するには、「[Azure Security Center に対するテナント全体の可視性を確保する](security-center-management-groups.md)」の指示に従ってください。
+
+> [!NOTE]
+> 管理グループとサブスクリプションの階層を理解することが重要です。 管理グループ、ルート管理、および管理グループへのアクセスの詳細については、「[Organize your resources with Azure Management Groups (Azure 管理グループを使用してリソースを整理する)](../governance/management-groups/index.md#root-management-group-for-each-directory)」を参照してください。
 >
 
+## <a name="how-security-policies-work"></a>セキュリティ ポリシーのしくみ
+Security Center では、Azure サブスクリプションごとに自動で既定のセキュリティ ポリシーが作成されます。 Azure Policy のポリシーを編集すると、以下の操作を行うことができます。
+- 新しいポリシー定義を作成する。
+- 組織全体または組織内の部署を表す、管理グループおよびサブスクリプションにまたがってポリシーを割り当てる。
+- ポリシーのコンプライアンスを監視する。
+
+Azure Policy の詳細については、「[コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)」を参照してください。
+
+Azure ポリシーは、次のコンポーネントで構成されています。
+
+- **ポリシー**は、規則です。
+- **イニシアティブ**は、ポリシーのコレクションです。
+- **割り当て**は、特定のスコープ (管理グループ、サブスクリプション、またはリソース グループ) にイニシアティブまたはポリシーを適用することです。
+
+## <a name="view-security-policies"></a>セキュリティ ポリシーの表示
+
+Security Center でセキュリティ ポリシーを表示するには:
+
+1. **Security Center** ダッシュボードで **[セキュリティ ポリシー]** を選択します。
+
+    ![[ポリシー管理] ウィンドウ](./media/security-center-policies/security-center-policy-mgt.png)
+
+   **[ポリシー管理]** 画面には、管理グループ、サブスクリプション、およびワークスペースの数、および管理グループの構造が表示されます。
+
+   > [!NOTE]
+   > - Security Center のダッシュボードの **[サブスクリプションの対象範囲]** に表示されるサブスクリプション数が、**[ポリシー管理]** に表示されるサブスクリプション数より多い場合があります。 [サブスクリプションの対象範囲] は、Standard、Free、および "対象外の" サブスクリプションの数を示します。 "対象外の" サブスクリプションでは、Security Center が有効になっておらず、**[ポリシー管理]** に表示されません。
+   >
+
+   表には次の列が表示されます。
+
+   - **[ポリシー イニシアティブ割り当て]** - サブスクリプションまたは管理グループに割り当てられている Security Center の[組み込みポリシー](security-center-policy-definitions.md)およびイニシアティブ。
+   - **[カバレッジ]** - 管理グループ、サブスクリプション、またはワークスペースが実行されている価格レベル (Free または Standard) を識別します。  Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
+   - **[設定]** - サブスクリプションに **[設定の編集]** リンクがあります。 **[設定の編集]** を選択すると、それぞれのサブスクリプションまたは管理グループの [Security Center の設定](security-center-policies-overview.md)を更新できます。
+   - **セキュリティ スコア** - [セキュリティ スコア](security-center-secure-score.md)は、お客様のワークロードのセキュリティ体制がどれだけ安全であるかの測定値を提供するもので、改善のための推奨事項を優先度付けする助けになります。
+
+2. ポリシーを参照するサブスクリプションまたは管理グループを選択します。
+
+   - **[セキュリティ ポリシー]** 画面には、選択したサブスクリプションまたは管理グループに割り当てられているポリシーによって実行される動作が表示されます。
+   - 上部のリンクを使用すると、サブスクリプションまたは管理グループに**割り当て**られているそれぞれのポリシーを開くことができます。 このリンクを使用すると、割り当てにアクセスしたり、ポリシーを編集または無効にしたりすることができます。 たとえば、割り当てられている特定のポリシーによってエンドポイントが実質的に保護されないようになっている場合、そのリンクを使用してポリシーにアクセスし、それを編集または無効にできます。
+   - ポリシーの一覧では、サブスクリプションまたは管理グループに対して実際に適用されているポリシーを確認できます。 つまり、スコープに適用されている各ポリシーの設定が考慮され、ユーザーにはポリシーで実行されたアクションの累積的な結果が提供されます。 たとえば、1 つの割り当てでポリシーは無効になっているが、別では AuditIfNotExist に設定されている場合、累積的な効果により AuditIfNotExist が適用されます。 よりアクティブな効果が常に優先されます。
+   - 設定できるポリシーの効果は、Append、Audit、AuditIfNotExists、Deny、DeployIfNotExists、Disabled です。 効果が適用されるしくみの詳細については、[Policy の効果](../governance/policy/concepts/effects.md)に関するページを参照してください。
+
+   ![ポリシー画面](./media/security-center-policies/policy-screen.png)
+
+> [!NOTE]
+> - 割り当てられているポリシーを確認すると、複数の割り当てが表示され、各割り当てのそれぞれの構成を参照できます。
+
+## <a name="edit-security-policies"></a>セキュリティ ポリシーの編集
+[Azure Policy](../governance/policy/tutorials/create-and-manage.md) では、各 Azure サブスクリプションおよび管理グループの既定のセキュリティ ポリシーを編集できます。 セキュリティ ポリシーを変更するには、サブスクリプションまたはそれが含まれる管理グループの所有者、共同作成者、セキュリティ管理者のいずれかである必要があります。
+
+Azure Policy でセキュリティ ポリシーを編集する方法の詳細については、「[コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)」を参照してください。
+
+REST API 経由または Windows PowerShell を使用して、Azure Policy ポータルからセキュリティ ポリシーを編集できます。 次の例では、REST API を使用して編集する手順を示します。
+
+
+## <a name="disable-security-policies"></a>セキュリティ ポリシーの無効化
+既定のセキュリティ ポリシーによって、お使いの環境に関係のない推奨事項が生成される場合は、推奨事項を送信するポリシー定義を無効にして、推奨事項の生成を停止できます。
+推奨事項の詳細については、[セキュリティに関する推奨事項の管理](security-center-recommendations.md)についてのページを参照してください。
+
+1. Security Center 内の **[Policy & Compliance]\(ポリシーとコンプライアンス\)** セクションで **[セキュリティ ポリシー]** をクリックします。
+
+   ![ポリシー管理](./media/tutorial-security-policy/policy-management.png)
+
+2. 推奨設定を無効にするサブスクリプションまたは管理グループをクリックします。
+
+1. 割り当てられたポリシーをクリックします。
+
+   ![ポリシーの無効化](./media/tutorial-security-policy/security-policy.png)
+
+1. **[パラメーター]** セクションで、推奨事項を呼び出すポリシーのうち、無効にするものを検索します。次に、ドロップダウン リストから **[無効]** を選択します。
+
+   ![ポリシーの無効化](./media/tutorial-security-policy/disable-policy.png)
+1. **[Save]** をクリックします。
+   > [!Note]
+   > ポリシー無効化の変更が有効になるまでに、最大 12 時間かかる場合があります。
+
+
+### <a name="configure-a-security-policy-using-the-rest-api"></a>REST API を使用してセキュリティ ポリシーを構成する
+
+Azure Policy とのネイティブ統合の一環として、Azure Security Center では、Azure Policy の REST API を利用してポリシー割り当てを作成できます。 次の手順では、ポリシー割り当ての作成と既存の割り当てのカスタマイズの手順について説明します。 
+
+Azure Policy で重要な概念: 
+
+-  **ポリシー定義** はルールです 
+
+-  **イニシアチブ** はポリシー定義 (ルール) の集まりです 
+
+-  **割り当て** は、特定のスコープ (管理グループ、サブスクリプションなど) にイニシアティブまたはポリシーを適用することです 
+
+Security Center では、そのセキュリティ ポリシーをすべて含んだ組み込みイニシアティブがあります。 Azure リソースに対する Security Center のポリシーを評価するために、評価する管理グループやサブスクリプションで割り当てを作成する必要があります。  
+
+組み込みイニシアティブでは、既定で Security Center のポリシーがすべて有効になっています。 組み込みイニシアティブから特定のポリシーを無効にできます。たとえば、**Web アプリケーション ファイアウォール**の効果パラメーターを **[無効]** に変更することで、このポリシーを除くすべての Security Center のポリシーを適用できます。 
+
+### <a name="api-examples"></a>API の例
+
+以下の例では、次のように変数を置き換えてください。
+
+- **{scope}** には、ポリシーを適用する管理グループまたはサブスクリプションの名前を入力します。
+- **{poicyAssignmentName}** には、[関連するポリシー割り当ての名前](#policy-names)を入力します。
+- **{name}** 名、またはポリシーの変更を承認する管理者の名前を入力します。
+
+この例では、サブスクリプションまたは管理グループで組み込み Security Center イニシアティブを割り当てる方法を示します
+ 
+    PUT  
+    https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+
+    Request Body (JSON) 
+
+    { 
+
+      "properties":{ 
+
+    "displayName":"Enable Monitoring in Azure Security Center", 
+
+    "metadata":{ 
+
+    "assignedBy":"{Name}" 
+
+    }, 
+
+    "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
+
+    "parameters":{}, 
+
+    } 
+
+    } 
+
+この例では、次のポリシーを無効にして、サブスクリプションで組み込み Security Center イニシアティブを割り当てる方法を示します。 
+
+- システムの更新プログラム ("systemUpdatesMonitoringEffect") 
+
+- セキュリティ構成 ("systemConfigurationsMonitoringEffect") 
+
+- エンドポイント保護 ("endpointProtectionMonitoringEffect") 
+
+
+    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+    
+    Request Body (JSON) 
+    
+    { 
+    
+      "properties":{ 
+    
+    "displayName":"Enable Monitoring in Azure Security Center", 
+    
+    "metadata":{ 
+    
+    "assignedBy":"{Name}" 
+    
+    }, 
+    
+    "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
+    
+    "parameters":{ 
+    
+    "systemUpdatesMonitoringEffect":{"value":"Disabled"}, 
+    
+    "systemConfigurationsMonitoringEffect":{"value":"Disabled"}, 
+    
+    "endpointProtectionMonitoringEffect":{"value":"Disabled"}, 
+    
+    }, 
+    
+     } 
+    
+    } 
+
+この例では、割り当てを削除する方法を示します。
+
+    DELETE   
+    https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+
+
+### ポリシー名参照<a name="policy-names"></a>
+
+|Security Center でのポリシー名|Azure Policy で表示されるポリシー名 |ポリシー効果パラメーター名|
+|----|----|----|
+|SQL の暗号化 |暗号化されていない SQL データベースの Azure Security Center での監視 |sqlEncryptionMonitoringEffect| 
+|SQL 監査 |未監査の SQL データベースの Azure Security Center での監視 |sqlAuditingMonitoringEffect|
+|システムの更新プログラム |システムの更新プログラムの不足の Azure Security Center での監視 |systemUpdatesMonitoringEffect|
+|ストレージ暗号化 |ストレージ アカウントでの BLOB 暗号化の不足の監査 |storageEncryptionMonitoringEffect|
+|JIT ネットワーク アクセス |可能なネットワーク Just In Time (JIT) アクセスの Azure Security Center での監視 |jitNetworkAccessMonitoringEffect |
+|アダプティブ アプリケーション制御 |可能なアプリのホワイトリスト登録の Azure Security Center での監視 |adaptiveApplicationControlsMonitoringEffect|
+|ネットワーク セキュリティ グループ |制限が少なすぎるネットワーク アクセスの Azure Security Center での監視 |networkSecurityGroupsMonitoringEffect| 
+|セキュリティ構成 |OS の脆弱性の Azure Security Center での監視 |systemConfigurationsMonitoringEffect| 
+|エンドポイント保護 |Endpoint Protection の不足の Azure Security Center での監視 |endpointProtectionMonitoringEffect |
+|ディスクの暗号化 |暗号化されていない VM ディスクの Azure Security Center での監視 |diskEncryptionMonitoringEffect|
+|脆弱性評価 |VM の脆弱性の Azure Security Center での監視 |vulnerabilityAssessmentMonitoringEffect|
+|Web アプリケーション ファイアウォール |保護されていない Web アプリケーションの Azure Security Center での監視 |webApplicationFirewallMonitoringEffect |
+|次世代のファイアウォール |保護されていないネットワーク エンドポイントの Azure Security Center での監視| |
+
+
+### <a name="who-can-edit-security-policies"></a>セキュリティ ポリシーを編集できるユーザーは誰ですか。
+Security Center ではロールベースのアクセス制御 (RBAC) が使用されています。RBAC が提供する組み込みのロールは、Azure でユーザー、グループ、サービスに割り当てることができます。 ユーザーが Security Center を開くと、アクセス権のあるリソースに関する情報のみが表示されます。 これは、サブスクリプションまたはリソースが属するリソース グループについて、所有者、共同作成者、閲覧者のいずれかのロールがユーザーに割り当てられていることを意味します。 これらのロールに加え、Security Center には、次の 2 つの固有のロールがあります。
+
+- セキュリティ閲覧者:Security Center に対する閲覧権限を持ちます。推奨事項、アラート、ポリシー、および正常性を確認できますが、変更を加えることはできません。
+- セキュリティ管理者:セキュリティ閲覧者と同じ閲覧権限を持ちますが、セキュリティ ポリシーの更新と推奨事項とアラートの解除を実行することもできます。
+
+
+
 ## <a name="next-steps"></a>次の手順
-このチュートリアルでは、Security Center での基本的なポリシー定義とワークロードのセキュリティ評価について説明しました。例:
+この記事では、Azure Policy でのセキュリティ ポリシーの編集方法について説明しました。 Security Center の詳細については、次の記事を参照してください。
 
-> [!div class="checklist"]
-> * 会社や規制のセキュリティ要件に確実に準拠できるようにするセキュリティ ポリシーの構成
-> * コンピューティング、ネットワーク、SQL およびストレージ、アプリケーションの各リソースに関するセキュリティ評価
+* [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md):Azure Security Center について計画し、設計上の考慮事項を理解する方法について説明しています。
+* [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md):Azure リソースの正常性を監視する方法について説明しています。
+* [Azure Security Center でのセキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md):セキュリティの警告の管理と対応の方法について説明しています。
+* [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md):パートナー ソリューションの正常性状態を監視する方法について説明しています。
+* [Azure Security Center に対するテナント全体の可視性を確保する](security-center-management-groups.md):Azure Security Center の管理グループを設定する方法について説明しています。
+* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md):このサービスの使用に関してよく寄せられる質問とその回答を紹介しています。
+* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/):Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
-次のチュートリアルに進み、Security Center を使用してリソースを保護する方法について学習してください。
-
-> [!div class="nextstepaction"]
-> [リソースの保護](tutorial-protect-resources.md)
+Azure Policy について詳しくは、「[Azure Policy とは](../governance/policy/overview.md)」をご覧ください。

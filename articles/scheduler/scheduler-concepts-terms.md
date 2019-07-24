@@ -8,14 +8,14 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 07b7cce4b026464ba34296b54c4ae90d6d2b1afa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 67f51b078b8e92592e9593d7d254e6985265eee8
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981163"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651271"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure Scheduler の概念、用語集、エンティティ
 
@@ -69,21 +69,21 @@ Azure Scheduler では、複数のジョブの種類がサポートされてい�
 高レベルでは、Scheduler ジョブには次の基本的な部分があります。
 
 * ジョブ タイマーが起動するときに実行するアクション
-* 省略可能: ジョブを実行する時間
-* 省略可能: ジョブを繰り返し実行するタイミングと頻度
-* 省略可能: プライマリ アクションが失敗した場合に実行するエラー アクション
+* 省略可能:ジョブを実行する時間
+* 省略可能:ジョブを繰り返し実行するタイミングと頻度
+* 省略可能:プライマリ アクションが失敗した場合に実行するエラー アクション
 
 ジョブには、ジョブのスケジュールされた次回の実行時刻など、システム指定のデータも含まれています。 ジョブのコードの定義は、JavaScript Object Notation (JSON) 形式のオブジェクトであり、次の要素が含まれます。
 
 | 要素 | 必須 | 説明 | 
 |---------|----------|-------------| 
-| [**startTime**](#start-time) | いいえ  | [ISO 8601 形式](http://en.wikipedia.org/wiki/ISO_8601)のタイム ゾーン オフセットを含むジョブの開始時刻 | 
-| [**action**](#action) | [はい] | **errorAction** オブジェクトを含む場合がある、プライマリ アクションの詳細 | 
+| [**startTime**](#start-time) | いいえ  | [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)のタイム ゾーン オフセットを含むジョブの開始時刻 | 
+| [**action**](#action) | はい | **errorAction** オブジェクトを含む場合がある、プライマリ アクションの詳細 | 
 | [**errorAction**](#error-action) | いいえ  | プライマリ アクションが失敗した場合に実行するセカンダリ アクションの詳細 |
 | [**recurrence**](#recurrence) | いいえ  | 定期的なジョブの頻度や間隔などの詳細 | 
 | [**retryPolicy**](#retry-policy) | いいえ  | アクションを再試行する頻度の詳細 | 
-| [**state**](#state) | [はい] | ジョブの現在の状態の詳細 |
-| [**status**](#status) | [はい] | サービスによって制御される、ジョブの現在のステータスの詳細 |
+| [**state**](#state) | はい | ジョブの現在の状態の詳細 |
+| [**status**](#status) | はい | サービスによって制御される、ジョブの現在のステータスの詳細 |
 ||||
 
 後のセクションで説明されている要素の完全な詳細を含む HTTP アクションに対する包括的なジョブ定義の例を次に示します。 
@@ -137,13 +137,13 @@ Azure Scheduler では、複数のジョブの種類がサポートされてい�
 
 ## <a name="starttime"></a>startTime
 
-**StartTime** オブジェクトでは、開始時刻とタイム ゾーン オフセットを [ISO 8601 形式](http://en.wikipedia.org/wiki/ISO_8601)で指定できます。
+**StartTime** オブジェクトでは、開始時刻とタイム ゾーン オフセットを [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)で指定できます。
 
 <a name="action"></a>
 
 ## <a name="action"></a>action
 
-Scheduler ジョブは、指定されたスケジュールに基づいてプライマリ **アクション**を実行します。 Scheduler は、HTTP、Storage キュー、Service Bus キュー、Service Bus トピックのアクションをサポートしています。 プライマリ **アクション**が失敗した場合、Scheduler はエラーを処理するセカンダリ [ **errorAction** ](#errorAction) を実行できます。 **アクション** オブジェクトでは次の要素が記述されています。
+Scheduler ジョブは、指定されたスケジュールに基づいてプライマリ **アクション**を実行します。 Scheduler は、HTTP、Storage キュー、Service Bus キュー、Service Bus トピックのアクションをサポートしています。 プライマリ **アクション**が失敗した場合、Scheduler はエラーを処理するセカンダリ [ **errorAction** ](#erroraction) を実行できます。 **アクション** オブジェクトでは次の要素が記述されています。
 
 * アクションのサービスの種類
 * アクションの詳細
@@ -271,7 +271,7 @@ Scheduler ジョブが失敗したときのために、再試行ポリシーを�
 
 | プロパティ | 必須 | 値 | 説明 | 
 |----------|----------|-------|-------------| 
-| **retryType** | [はい] | **Fixed**、**None** | 再試行ポリシーを指定するか (**fixed**) しないか (**none**) を決定します。 | 
+| **retryType** | はい | **Fixed**、**None** | 再試行ポリシーを指定するか (**fixed**) しないか (**none**) を決定します。 | 
 | **retryInterval** | いいえ  | PT30S | 再試行の間隔と頻度を [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)で指定します。 最小値は 15 秒、最大値は 18 か月です。 | 
 | **retryCount** | いいえ  | 4 | 再試行の回数を指定します。 最大値は 20 です。 | 
 ||||
@@ -319,5 +319,5 @@ Scheduler ジョブが失敗したときのために、再試行ポリシーを�
 * [概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
 * [複雑なスケジュールと高度な繰り返しを作成する](scheduler-advanced-complexity.md)
 * [制限、クォータ、既定値、エラー コード](scheduler-limits-defaults-errors.md)
-* [Azure Scheduler REST API リファレンス](https://docs.microsoft.com/rest/api/schedule)
+* [Azure Scheduler REST API リファレンス](/rest/api/scheduler)
 * [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)

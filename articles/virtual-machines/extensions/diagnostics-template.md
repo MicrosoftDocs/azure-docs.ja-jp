@@ -1,6 +1,6 @@
 ---
 title: Azure 仮想マシンに監視と診断を追加する | Microsoft Docs
-description: Azure Resource Manager テンプレートを使用して、Azure 診断の拡張機能を備えた新しい Windows 仮想マシンを作成します。
+description: Azure Resource Manager テンプレートを使用して、Azure Diagnostics の拡張機能を備えた新しい Windows 仮想マシンを作成します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: sbtron
@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 792a3401c483327eb7fb9fcd88039bc09025b3ef
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 00b4a145da9104cab410c5a07f6d7ec5ded5c45d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944954"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893545"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Windows VM と Azure Resource Manager テンプレートで監視と診断を利用する
-Azure 診断の拡張機能は、Windows ベースの Azure 仮想マシンに監視および診断機能を提供します。 Azure Resource Manager テンプレートの一部として拡張機能を組み込むことにより、仮想マシンでこれらの機能を有効にすることができます。 仮想マシン テンプレートの一部として拡張機能を含める方法については、「 [VM 拡張機能を使用した Azure リソース マネージャー テンプレートの作成](../windows/template-description.md#extensions) 」を参照してください。 この記事では、Windows 仮想マシン テンプレートに Azure 診断の拡張機能を追加する方法について説明します。  
+Azure Diagnostics の拡張機能は、Windows ベースの Azure 仮想マシンに監視および診断機能を提供します。 Azure Resource Manager テンプレートの一部として拡張機能を組み込むことにより、仮想マシンでこれらの機能を有効にすることができます。 仮想マシン テンプレートの一部として拡張機能を含める方法については、「 [VM 拡張機能を使用した Azure リソース マネージャー テンプレートの作成](../windows/template-description.md#extensions) 」を参照してください。 この記事では、Windows 仮想マシン テンプレートに Azure Diagnostics の拡張機能を追加する方法について説明します。  
 
-## <a name="add-the-azure-diagnostics-extension-to-the-vm-resource-definition"></a>VM のリソースの定義に Azure 診断の拡張機能を追加する
+## <a name="add-the-azure-diagnostics-extension-to-the-vm-resource-definition"></a>VM のリソースの定義に Azure Diagnostics の拡張機能を追加する
 Windows 仮想マシンで診断の拡張機能を有効にするには、Resource Manager テンプレートで拡張機能を VM リソースとして追加する必要があります。
 
 単純なリソース マネージャー ベースの仮想マシンでは、次のように拡張機能の構成を仮想マシンの *resources* の配列に追加します。 
@@ -92,13 +92,13 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、Resour
     "type": "string",
     "metadata": {
 "description": "The name of an existing storage account to which diagnostics data is transfered."
-    }        
+    }
 },
 "existingdiagnosticsStorageResourceGroup": {
     "type": "string",
     "metadata": {
 "description": "The resource group for the storage account specified in existingdiagnosticsStorageAccountName"
-      }
+    }
 }
 ```
 
@@ -159,25 +159,25 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、Resour
 上記のメトリックの構成により、以下の名前付け規則を使用してテーブルが診断ストレージ アカウントに生成されます。
 
 * **WADMetrics**: すべての WADMetrics テーブルの標準プレフィックス
-* **PT1H** または **PT1M**: テーブルに 1 時間または 1 分間以上の集計データが含まれることを示します
-* **P10D**: テーブルがデータの収集を開始してから 10 日間のデータがテーブルに含まれることを示します
+* **PT1H** または **PT1M**: テーブルに 1 時間または 1 分間の集計データが含まれることを示します
+* **P10D**: テーブルに、そのテーブルがデータの収集を開始してから 10 日間のデータが含まれることを示します
 * **V2S**: 文字列定数
 * **yyyymmdd**: テーブルがデータの収集を開始した日付
 
-例: *WADMetricsPT1HP10DV2S20151108* の場合、2015 年 11 月 11 日から 10 日間に 1 時間以上集計されたメトリック データを含みます    
+例:*WADMetricsPT1HP10DV2S20151108* には、2015 年 11 月 11 日からの 10 日間に 1 時間にわたって集計されたメトリック データが含まれます    
 
 各 WADMetrics テーブルには次の列が含まれます。
 
-* **PartitionKey**: パーティション キーは *resourceID* の値に基づいて構築され、VM リソースを一意に識別します。 例: 002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>  
+* **PartitionKey**:パーティション キーは、VM リソースを一意に識別するように *resourceID* 値に基づいて構成されます。 次に例を示します。`002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
 * **RowKey**: `<Descending time tick>:<Performance Counter Name>` の形式に従います。 降順の時間ティック計算は、最大時間ティックから集計期間の開始時間を引いたものです。 たとえば、サンプル期間が 2015 年 11 月 10 日 00:00 (UTC) に開始された場合、計算は `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)` になります。 メモリで使用可能なバイト数のパフォーマンス カウンターの場合、行キーは `2519551871999999999__:005CMemory:005CAvailable:0020Bytes` のようになります。
-* **CounterName**: パフォーマンス カウンターの名前。 これは、xml 構成に定義されている *counterSpecifier* と一致します。
+* **CounterName**: パフォーマンス カウンターの名前です。 これは、xml 構成に定義されている *counterSpecifier* と一致します。
 * **Maximum**: 集計期間中のパフォーマンス カウンターの最大値。
-* **Minimum**: 集計期間中のパフォーマンス カウンターの最小値。
-* **Total**: 集計期間中に報告されたパフォーマンス カウンターのすべての値の合計。
-* **Count**: パフォーマンス カウンターについて報告された値の合計数。
-* **Average**: 集計期間中のパフォーマンス カウンターの平均 (合計/カウント) の値。
+* **最小**:集計期間中のパフォーマンス カウンターの最小値。
+* **Total**: 報告されたパフォーマンス カウンターのすべての値の合計。
+* **Count**:パフォーマンス カウンターに関して報告された値の総数。
+* **Average**: 集計期間中のパフォーマンス カウンターの平均 (合計/個数) 値。
 
 ## <a name="next-steps"></a>次の手順
 * 診断の拡張機能を備えた Windows 仮想マシンの完全なサンプル テンプレートについては、「[201-vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)」を参照してください   
 * [Azure PowerShell](../windows/ps-template.md) または [Azure コマンド ライン](../linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を使用した Azure Resource Manager テンプレートのデプロイ
-* [Azure リソース マネージャーのテンプレートの作成](../../resource-group-authoring-templates.md)
+*  [Azure リソース マネージャーのテンプレートの作成](../../resource-group-authoring-templates.md)

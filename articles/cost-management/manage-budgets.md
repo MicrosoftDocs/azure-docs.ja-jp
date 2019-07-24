@@ -1,23 +1,23 @@
 ---
 title: Azure での Cloudyn 予算の管理 | Microsoft Docs
-description: この記事では、Cloudyn で予算を作成して管理する方法について説明します。
+description: この記事では、Cloudyn で予算を短時間で作成し、管理を始める方法について説明します。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 9/18/2018
+ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: bbd232c819a11de691c4d3c3209273b064eddf62
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: vitavor
+ms.custom: seodec18
+ms.openlocfilehash: 4a456ed0c239b58809fc0ffb83d97aa7db475b70
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963436"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009106"
 ---
-# <a name="manage-budgets"></a>予算の管理
+# <a name="manage-azure-budgets-with-cloudyn"></a>Cloudyn で Azure の予算を管理する
 
 予算と予算ベースのアラートを設定して、クラウドのガバナンスとアカウンタビリティを向上させることができます。 この記事では、Cloudyn で予算を短時間で作成し、管理を始める方法について説明します。
 
@@ -40,7 +40,7 @@ Azure Cost Management には Cloudyn と同様の機能があります。 Azure 
 3. 予算年のフィールドで、予算を作成する年度を選択します。
 4. 月ごとに、予算値を設定します。 設定が完了したら、**[保存]** をクリックします。
 この例では、2018 年 6 月の月間予算が 135,000 ドルに設定されています。 この年の合計予算は、1,615,000.00 ドルです。
-![予算の作成](./media/manage-budgets/set-budget.png)
+![毎月の予算を設定する予算ページを作成する](./media/manage-budgets/set-budget.png)
 
 
 年間予算のファイルをインポートするには、次の手順を実行します。
@@ -64,11 +64,11 @@ Azure Cost Management には Cloudyn と同様の機能があります。 Azure 
 
 レポートの別の利用方法として、累積コストと予算の比較を表示できます。 累積コストを表示するには、**[フィールドの表示/非表示]** で **[累積コスト]** と **[合計予算]** を選択します。 下の例は、年度の開始以降の累積コストを示しています。
 
-![累積予算](./media/manage-budgets/accumulated-budget.png)
+![累積コストと合計予算の例、コストと予算の時系列比較のレポート](./media/manage-budgets/accumulated-budget.png)
 
 将来のどこかの時点で、累積コストが予算を超える可能性があります。 グラフ ビューの種類を _[折れ線]_ に変更すると、それを簡単に確認できます。
 
-![折れ線グラフで表示された予算](./media/manage-budgets/budget-line.png)
+![月別のコスト レポートに折れ線グラフで示された予算](./media/manage-budgets/budget-line.png)
 
 ## <a name="create-budget-alerts-for-a-filter"></a>特定の条件に対して予算アラートを作成する
 
@@ -81,7 +81,7 @@ Azure Cost Management には Cloudyn と同様の機能があります。 Azure 
 
 [Cost vs.Budget Over Time]\(コストと予算の時系列比較\) レポートで、**[アクション]** をクリックし、**[レポートのスケジュール設定]** を選択します。 [しきい値] タブで、しきい値メトリックを選択します。 たとえば、**[Cost percentage vs. budget] \(コスト割合と予算の比較\)** を選択します。 アラートの種類を選択し、予算のパーセント値を入力します。 通知が 1 回だけでよい場合は、**[Number of consecutive alerts]\(連続アラートの回数\)** を選択し、「_1_」を入力します。 **[Save]** をクリックします。
 
-![予算アラート](./media/manage-budgets/budget-alert.png)
+!["このレポートを保存またはスケジュール" ボックスで予算アラートを作成する](./media/manage-budgets/budget-alert.png)
 
 ## <a name="next-steps"></a>次の手順
 

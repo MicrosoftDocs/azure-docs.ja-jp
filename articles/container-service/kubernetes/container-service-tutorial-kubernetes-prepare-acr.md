@@ -1,24 +1,27 @@
 ---
-title: Azure Container Service チュートリアル - ACR の準備
+title: (非推奨) Azure Container Service チュートリアル - ACR の準備
 description: Azure Container Service チュートリアル - ACR の準備
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 735aca5509373f840c56e28887088f7a696ca137
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: d0107e09bf8706ba7d4c813814103ca109262d8d
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024088"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657401"
 ---
-# <a name="deploy-and-use-azure-container-registry"></a>Azure Container Registry をデプロイして使用する
+# <a name="deprecated-deploy-and-use-azure-container-registry"></a>(非推奨) Azure Container Registry をデプロイして使用する
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Azure Kubernetes Service を使用するこのチュートリアルの更新版については、「[チュートリアル: Azure Container Registry をデプロイして使用する](../../aks/tutorial-kubernetes-prepare-acr.md)」をご覧ください。
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Azure Container Registry (ACR) は、Docker コンテナー イメージ用の Azure ベースのプライベート レジストリです。 7 つのパートのうちの 2 番目のこのチュートリアルでは、Azure Container Registry インスタンスのデプロイ、およびこのインスタンスへのコンテナー イメージのプッシュについて説明します。 手順は次のとおりです。
 
@@ -138,7 +141,7 @@ Result
 azure-vote-front
 ```
 
-次に特定のイメージのタグを表示するには、[az acr repository show-tags](/cli/azure/acr/repository#show-tags) コマンドを使用します。
+次に特定のイメージのタグを表示するには、[az acr repository show-tags](/cli/azure/acr/repository) コマンドを使用します。
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository azure-vote-front --output table

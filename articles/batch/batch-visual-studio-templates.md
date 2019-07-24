@@ -1,9 +1,9 @@
 ---
-title: Visual Studio テンプレートを使用して Batch ソリューションを構築する - Azure | Microsoft Docs
+title: Visual Studio テンプレートを使用してソリューションを構築する - Azure Batch | Microsoft Docs
 description: Visual Studio プロジェクト テンプレートを使用して、多くのコンピューティング処理を要するワークロードを Azure Batch 上に実装して実行する方法について説明します。
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a44c249a957050afb500decd094183c71d6ca5e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 085bfa582b676f34a02e4c1c5ae7e69c49e5cb4e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114098"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538125"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Visual Studio プロジェクト テンプレートを使用して Batch ソリューションをすぐに開始する
 
@@ -62,7 +62,7 @@ Batch 用の Visual Studio テンプレート (**ジョブ マネージャー**�
     
     * Azure Batch Job Manager with Job Splitter (Azure Batch ジョブ マネージャーとジョブ スプリッター)
     * Azure Batch Task Processor (Azure Batch タスク プロセッサ)
-  * Visual Studio のオンライン ギャラリーから [Microsoft Azure Batch][vs_gallery_templates] プロジェクト テンプレートをダウンロードする。
+  * Visual Studio のオンライン ギャラリーから[Microsoft Azure Batch プロジェクト テンプレート][vs_gallery_templates]をダウンロードする
 * [アプリケーション パッケージ](batch-application-packages.md) 機能を使用してジョブ マネージャーとタスク プロセッサを Batch コンピューティング ノードにデプロイする予定がある場合は、ご利用の Batch アカウントにストレージ アカウントを関連付ける必要があります。
 
 ## <a name="preparation"></a>準備
@@ -111,21 +111,21 @@ Batch 用の Visual Studio テンプレート (**ジョブ マネージャー**�
 
 **Framework ディレクトリ内のファイル**
 
-* `Configuration.cs`: ジョブの構成データ (Batch アカウントの詳細、リンクされたストレージ アカウントの資格情報、ジョブ/タスク情報、ジョブのパラメーターなど) の読み込みがカプセル化されています。 また、Batch で定義されている環境変数には、このファイルの Configuration.EnvironmentVariable クラスを通じてアクセスすることができます (Batch のドキュメントでタスクの環境設定に関するページを参照)。
-* `IConfiguration.cs`: Configuration クラスの実装を抽象化します。ダミーの構成オブジェクトを使用して、実際のジョブ スプリッターの単体テストを実行することができます。
-* `JobManager.cs`: ジョブ マネージャー プログラムのコンポーネントを指揮します。 ジョブ スプリッターの初期化と呼び出しのほか、ジョブ スプリッターから返されたタスクを TaskSubmitter にディスパッチする役割を果たします。
-* `JobManagerException.cs`: ジョブ マネージャーの強制終了につながるエラーを表します。 JobManagerException は、強制終了の過程で具体的な診断情報を出力する "予期" されたエラーをラップするために使用されます。
-* `TaskSubmitter.cs`: このクラスは、ジョブ スプリッターから返されたタスクを Batch ジョブに追加する役割を果たします。 JobManager クラスは、タスクを効率的かつタイミングよくジョブに追加できるように、一連のタスクをバッチ単位に集約し、そのバッチごとに、バックグラウンド スレッドで TaskSubmitter.SubmitTasks を呼び出します。
+* `Configuration.cs`:ジョブの構成データ (Batch アカウントの詳細、リンクされたストレージ アカウントの資格情報、ジョブ/タスク情報、ジョブのパラメーターなど) の読み込みがカプセル化されています。 また、Batch で定義されている環境変数には、このファイルの Configuration.EnvironmentVariable クラスを通じてアクセスすることができます (Batch のドキュメントでタスクの環境設定に関するページを参照)。
+* `IConfiguration.cs`:Configuration クラスの実装を抽象化します。ダミーの構成オブジェクトを使用して、実際のジョブ スプリッターの単体テストを実行することができます。
+* `JobManager.cs`:ジョブ マネージャー プログラムのコンポーネントを指揮します。 ジョブ スプリッターの初期化と呼び出しのほか、ジョブ スプリッターから返されたタスクを TaskSubmitter にディスパッチする役割を果たします。
+* `JobManagerException.cs`:ジョブ マネージャーの強制終了につながるエラーを表します。 JobManagerException は、強制終了の過程で具体的な診断情報を出力する "予期" されたエラーをラップするために使用されます。
+* `TaskSubmitter.cs`:このクラスは、ジョブ スプリッターから返されたタスクを Batch ジョブに追加する役割を果たします。 JobManager クラスは、タスクを効率的かつタイミングよくジョブに追加できるように、一連のタスクをバッチ単位に集約し、そのバッチごとに、バックグラウンド スレッドで TaskSubmitter.SubmitTasks を呼び出します。
 
 **ジョブ スプリッター**
 
-`JobSplitter.cs`: このクラスには、ジョブをタスクに分割するためのアプリケーション固有のロジックが記述されています。 ジョブ マネージャー フレームワークは JobSplitter.Split メソッドを呼び出して一連のタスクを取得します。Batch ジョブにはそれらのタスクが、メソッドから返されるタイミングで追加されます。 実際のジョブのロジックは、このクラスに追加することになります。 ジョブの分割後のタスクを表す一連の CloudTask インスタンスを返すように Split メソッドを実装してください。
+`JobSplitter.cs`:このクラスには、ジョブをタスクに分割するためのアプリケーション固有のロジックが記述されています。 ジョブ マネージャー フレームワークは JobSplitter.Split メソッドを呼び出して一連のタスクを取得します。Batch ジョブにはそれらのタスクが、メソッドから返されるタイミングで追加されます。 実際のジョブのロジックは、このクラスに追加することになります。 ジョブの分割後のタスクを表す一連の CloudTask インスタンスを返すように Split メソッドを実装してください。
 
 **.NET の標準的なコマンド ライン プロジェクト ファイル**
 
-* `App.config`: .NET の標準的なアプリケーション構成ファイル。
-* `Packages.config`: NuGet パッケージの標準的な依存関係ファイル。
-* `Program.cs`: プログラムのエントリ ポイントと最上位の例外処理が含まれています。
+* `App.config`:.NET の標準的なアプリケーション構成ファイル。
+* `Packages.config`:NuGet パッケージの標準的な依存関係ファイル。
+* `Program.cs`:プログラムのエントリ ポイントと最上位の例外処理が含まれています。
 
 ### <a name="implementing-the-job-splitter"></a>ジョブ スプリッターの実装
 ジョブ マネージャー テンプレート プロジェクトを開いたとき、初期設定では JobSplitter.cs ファイルが表示されるようになっています。 実際のワークロードのタスクに関する分割ロジックは、以下に示した Split() メソッドを使って実装できます。
@@ -280,13 +280,13 @@ Batch でタスクを実行するために必ずしもタスク プロセッサ�
 
 **Framework ディレクトリ内のファイル**
 
-* `Configuration.cs`: ジョブの構成データ (Batch アカウントの詳細、リンクされたストレージ アカウントの資格情報、ジョブ/タスク情報、ジョブのパラメーターなど) の読み込みがカプセル化されています。 また、Batch で定義されている環境変数には、このファイルの Configuration.EnvironmentVariable クラスを通じてアクセスすることができます (Batch のドキュメントでタスクの環境設定に関するページを参照)。
-* `IConfiguration.cs`: Configuration クラスの実装を抽象化します。ダミーの構成オブジェクトを使用して、実際のジョブ スプリッターの単体テストを実行することができます。
-* `TaskProcessorException.cs`: ジョブ マネージャーの強制終了につながるエラーを表します。 TaskProcessorException は、強制終了の過程で具体的な診断情報を出力する "予期" されたエラーをラップするために使用されます。
+* `Configuration.cs`:ジョブの構成データ (Batch アカウントの詳細、リンクされたストレージ アカウントの資格情報、ジョブ/タスク情報、ジョブのパラメーターなど) の読み込みがカプセル化されています。 また、Batch で定義されている環境変数には、このファイルの Configuration.EnvironmentVariable クラスを通じてアクセスすることができます (Batch のドキュメントでタスクの環境設定に関するページを参照)。
+* `IConfiguration.cs`:Configuration クラスの実装を抽象化します。ダミーの構成オブジェクトを使用して、実際のジョブ スプリッターの単体テストを実行することができます。
+* `TaskProcessorException.cs`:ジョブ マネージャーの強制終了につながるエラーを表します。 TaskProcessorException は、強制終了の過程で具体的な診断情報を出力する "予期" されたエラーをラップするために使用されます。
 
 **タスク プロセッサ**
 
-* `TaskProcessor.cs`: タスクを実行します。 タスク プロセッサ フレームワークによって TaskProcessor.Run メソッドが呼び出されます。 実際のタスクに対するアプリケーション固有のロジックは、このクラスに追加することになります。 Run メソッドを実装して、次の処理を実行します。
+* `TaskProcessor.cs`:タスクを実行します。 タスク プロセッサ フレームワークによって TaskProcessor.Run メソッドが呼び出されます。 実際のタスクに対するアプリケーション固有のロジックは、このクラスに追加することになります。 Run メソッドを実装して、次の処理を実行します。
   * タスクのパラメーターを解析して検証する
   * 呼び出す外部プログラムのコマンド ラインを作成する
   * デバッグに必要となる診断情報をログに記録する
@@ -297,9 +297,9 @@ Batch でタスクを実行するために必ずしもタスク プロセッサ�
 
 **.NET の標準的なコマンド ライン プロジェクト ファイル**
 
-* `App.config`: .NET の標準的なアプリケーション構成ファイル。
-* `Packages.config`: NuGet パッケージの標準的な依存関係ファイル。
-* `Program.cs`: プログラムのエントリ ポイントと最上位の例外処理が含まれています。
+* `App.config`:.NET の標準的なアプリケーション構成ファイル。
+* `Packages.config`:NuGet パッケージの標準的な依存関係ファイル。
+* `Program.cs`:プログラムのエントリ ポイントと最上位の例外処理が含まれています。
 
 ## <a name="implementing-the-task-processor"></a>タスク プロセッサの実装
 タスク プロセッサ テンプレート プロジェクトを開いたとき、初期設定では TaskProcessor.cs ファイルが表示されるようになっています。 実際のワークロードのタスクに関する実行ロジックは、以下に示した Run() メソッドを使って実装できます。

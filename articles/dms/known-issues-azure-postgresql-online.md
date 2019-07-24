@@ -3,27 +3,27 @@ title: Azure Database for MySQL へのオンライン移行に関する既知の
 description: Azure Database for MySQL へのオンライン移行に関する既知の問題と移行の制限事項について学習します。
 services: database-migration
 author: HJToland3
-ms.author: scphang
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+ms.author: jtoland
+manager: craigg
+ms.reviewer: craigg
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 09/22/2018
-ms.openlocfilehash: e30ffe2dd79d55e856ef297608745b60578cf7e7
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.date: 03/12/2019
+ms.openlocfilehash: f52eb1699b980e84195ec34eb543c4523328c893
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46131032"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181998"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Azure DB for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項
 
 PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に関する既知の問題点と制限事項について、後続のセクションで説明します。 
 
 ## <a name="online-migration-configuration"></a>オンライン移行の構成
-- ソースの PostgreSQL サーバーは、バージョン 9.5.11、9.6.7、または 10.3 以降を実行している必要があります。 詳しくは、「[サポートされている PostgreSQL Database バージョン](1.2.%09https:/docs.microsoft.com/azure/postgresql/concepts-supported-versions)」の記事をご覧ください。
+- ソースの PostgreSQL サーバーは、バージョン 9.5.11、9.6.7、または 10.3 以降を実行している必要があります。 詳しくは、「[サポートされている PostgreSQL Database バージョン](../postgresql/concepts-supported-versions.md)」の記事をご覧ください。
 - 同じバージョンの移行のみがサポートされています。 たとえば、PostgreSQL 9.5.11 から Azure Database for PostgreSQL 9.6.7 への移行はサポートされていません。
 - **ソース PostgreSQL の postgresql.conf** ファイルで論理レプリケーションを有効にするには、次のパラメーターを設定します。
     - **wal_level** = logical
@@ -76,30 +76,30 @@ PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に�
 
 ## <a name="datatype-limitations"></a>データ型に関する制限事項
 
-- **制限事項**: ソース PostgreSQL データベースに ENUM データ型がある場合、移行は、継続的同期中に失敗します。
+- **制限事項**:ソース PostgreSQL データベースに ENUM データ型がある場合、移行は、継続的同期中に失敗します。
 
     **対処法**: ENUM データ型を、Azure Database for PostgreSQL で変化する文字に変更します。
 
-- **制限**: テーブルに主キーがない場合、継続的同期は失敗します。
+- **制限事項**:テーブルに主キーがない場合、継続的同期は失敗します。
 
     **対処法**: 移行を続行するには、テーブルの主キーを一時的に設定します。 データの移行が完了した後は、主キーを削除できます。
 
 ## <a name="lob-limitations"></a>LOB に関する制限事項
 ラージ オブジェクト (LOB) 列は、サイズが大きくなる可能性のある列です。 PostgreSQL では、LOB データ型の例として、XML、JSON、IMAGE、TEXT などがあります。
 
-- **制限事項**: LOB のデータ型を主キーとして使用すると、移行は失敗します。
+- **制限事項**:LOB のデータ型を主キーとして使用すると、移行は失敗します。
 
     **対処法**: 主キーを、LOB ではない他のデータ型または列に置き換えます。
 
-- **制限事項**: ラージ オブジェクト (LOB) 列の長さが 32 KB を超える場合、ターゲットにおいてデータが切り捨てられることがあります。 次のクエリを使用して、LOB 列の長さを確認できます。
+- **制限事項**:ラージ オブジェクト (LOB) 列の長さが 32 KB を超える場合、ターゲットにおいてデータが切り捨てられることがあります。 次のクエリを使用して、LOB 列の長さを確認できます。
 
     ```
     SELECT max(length(cast(body as text))) as body FROM customer_mail
     ```
 
-    **対処法**: 32 KB を超える LOB オブジェクトがある場合は、エンジニアリング チーム ([dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)) に相談してください。
+    **対処法**: 32 KB を超える LOB 列がある場合は、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) でエンジニアリング チームに相談してください。
 
-- **制限**: テーブルにLOB 列があり、テーブルに主キーが設定されていない場合、このテーブルのデータが移行されない可能性があります。
+- **制限事項**:テーブルにLOB 列があり、テーブルに主キーが設定されていない場合、このテーブルのデータが移行されない可能性があります。
 
     **対処法**: 移行を続行するには、テーブルの主キーを一時的に設定します。 データの移行が完了した後は、主キーを削除できます。
 

@@ -3,24 +3,25 @@ title: Azure AD アプリケーション プロキシ コネクタのサイレ�
 description: Azure AD アプリケーション プロキシ コネクタの無人インストールを実行して、オンプレミスのアプリへの安全なリモート アクセスを実現する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.author: barbkess
-ms.reviewer: harshja
+ms.author: celested
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 3f8ef9ea3a46dde77ac27e7105148ac886f9212d
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bb193119186c2cf9e758f8c74f99f18c5fb389b8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39362939"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58792520"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Azure AD アプリケーション プロキシ コネクタ用の無人インストール スクリプトを作成します。
 
@@ -33,7 +34,7 @@ ms.locfileid: "39362939"
 * コネクタのインストールと登録を別の手順の一部として統合する。
 * コネクタのビットを含むが未登録の標準的なサーバー イメージを作成する。
 
-[アプリケーション プロキシ コネクタ](application-proxy-connectors.md)を機能させるには、グローバル管理者のアカウントとパスワードを使用して、Azure AD ディレクトリにコネクタを登録する必要があります。 通常、この情報は、コネクタのインストール時にポップアップ ダイアログ ボックスに入力しますが、このプロセスを PowerShell を使用して自動化できます。
+[アプリケーション プロキシ コネクタ](application-proxy-connectors.md)を機能させるには、アプリケーション管理者のアカウントとパスワードを使用して、Azure AD ディレクトリにコネクタを登録する必要があります。 通常、この情報は、コネクタのインストール時にポップアップ ダイアログ ボックスに入力しますが、このプロセスを PowerShell を使用して自動化できます。
 
 無人インストールには 2 つの手順があります。 最初に、コネクタをインストールします。 次に、コネクタを Azure AD に登録します。 
 

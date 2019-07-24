@@ -2,22 +2,20 @@
 title: Azure Data Factory の Azure PowerShell サンプル | Microsoft Docs
 description: Azure PowerShell サンプル - データ ファクトリの作成と管理で役立つスクリプト。
 services: data-factory
-author: douglaslMS
-manager: douglaslMS
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.author: douglasl
-ms.openlocfilehash: 6daa9288da20c7def04242419fab20efeca52f09
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+author: sharonlo101
+ms.author: shlo
+manager: craigg
+ms.openlocfilehash: c822ebdea2bab6f4c6c05cf2d4a4b822d6e02f3f
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052530"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575683"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>Azure Data Factory の Azure PowerShell サンプル
 

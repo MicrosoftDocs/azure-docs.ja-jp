@@ -14,18 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 2a0f6b75c540f319848805e8a9bda7b166d5d709
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: b7ac96d3588923727a71cf6152ba36481ef44545
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138661"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526658"
 ---
-#  <a name="network-virtual-appliance-issues-in-azure"></a>Azure でのネットワーク仮想アプライアンスの問題
+# <a name="network-virtual-appliance-issues-in-azure"></a>Azure でのネットワーク仮想アプライアンスの問題
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Microsoft Azure でサードパーティのネットワーク仮想アプライアンス (NVA) を使用しているときに、VM または VPN の接続の問題が発生する可能性があります。 この記事では、NVA 構成に対する基本の Azure Platform の要件を確認するのに役立つ基本的な手順を示します。
 
-サードパーティの NVA および Azure プラットフォームとの統合向けのテクニカル サポートは、NVA のベンダーによって提供されます。 NVA に関する接続性やルーティングの問題がある場合は、直接 [NVA のベンダーにお問い合わせ](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)いただく必要があります。
+サードパーティの NVA および Azure プラットフォームとの統合向けのテクニカル サポートは、NVA のベンダーによって提供されます。
+
+> [!NOTE]
+> NVA に関する接続性やルーティングの問題がある場合は、直接 [NVA のベンダーにお問い合わせ](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)いただく必要があります。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -37,6 +42,7 @@ Microsoft Azure でサードパーティのネットワーク仮想アプライ�
 - NVA から直接通信する仮想ネットワークのサブネット上の UDR
 - NVA 内のテーブルとルールのルーティング (例: NIC1 から NIC2)
 - ネットワーク トラフィックの送受信を確認するための NVA NIC のトレース
+- Standard SKU と Public IP を使用するときは、NSG が作成されていて、NVA へのトラフィックのルーティングを許可する明示的なルールが存在する必要があります。
 
 ## <a name="basic-troubleshooting-steps"></a>基本的なトラブルシューティングの手順
 
@@ -52,27 +58,25 @@ Microsoft Azure でサードパーティのネットワーク仮想アプライ�
 
 Azure Portal の使用
 
-1.  [Azure portal](https://portal.azure.com) で NVA リソースを検索し、ネットワークを選択して、ネットワーク インターフェイスを選択します。
-2.  [ネットワーク インターフェイス] ページで、[IP 構成] を選択します。
-3.  IP 転送が有効になっていることを確認します。
+1. [Azure portal](https://portal.azure.com) で NVA リソースを検索し、ネットワークを選択して、ネットワーク インターフェイスを選択します。
+2. [ネットワーク インターフェイス] ページで、[IP 構成] を選択します。
+3. IP 転送が有効になっていることを確認します。
 
 PowerShell の使用
 
 1. PowerShell を開き、ご自分の Azure アカウントにサインインします。
 2. 次のコマンドを実行します (かっこで囲まれた値をご自分の情報に置き換えます)。
 
-        Get-AzureRmNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>  
+   ```powershell
+   Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
+   ```
 
 3. **EnableIPForwarding** プロパティを確認します。
- 
 4. IP 転送が有効になっていない場合は、次のコマンドを実行して有効にします。
 
-          $nic2 = Get-AzureRmNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
-          $nic2.EnableIPForwarding = 1
-          Set-AzureRmNetworkInterface -NetworkInterface $nic2
-          Execute: $nic2 #and check for an expected output:
-          EnableIPForwarding   : True
-          NetworkSecurityGroup : null
+   $nic2 = Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName> $nic2.EnableIPForwarding = 1 Set-AzNetworkInterface -NetworkInterface $nic2 Execute: $nic2 #and check for an expected output:EnableIPForwarding   :True NetworkSecurityGroup : null
+
+**Standard SKU と Pubilc IP の使用時に NVA を確認する** Standard SKU と Public IP の使用時には、NSG が作成済みで、明示的なルールでトラフィックの NVA へのルーティングが許可されている必要があります。
 
 **トラフィックを NVA にルーティングできるかどうかを確認する**
 
@@ -82,13 +86,13 @@ PowerShell の使用
 
 **トラフィックで NVA に到達できるかどうかを確認する**
 
-1.  [Azure portal](https://portal.azure.com) で **Network Watcher** を開いて、**[IP フローの確認]** を選択します。 
-2.  VM および NVA の IP アドレスを指定して、トラフィックが任意のネットワーク セキュリティ グループ (NSG) によってブロックされるかどうかを確認します。
-3.  トラフィックをブロックする NSG ルールがある場合は、**有効なセキュリティ**規則で NSG を検索して、トラフィックで通過できるように更新します。 次に、もう一度 **[IP フローの確認]** を実行して **[接続のトラブルシューティング]** を使用し、VM からご利用の内部または外部の IP アドレスへの TCP 通信をテストします。
+1. [Azure portal](https://portal.azure.com) で **Network Watcher** を開いて、**[IP フローの確認]** を選択します。 
+2. VM および NVA の IP アドレスを指定して、トラフィックが任意のネットワーク セキュリティ グループ (NSG) によってブロックされるかどうかを確認します。
+3. トラフィックをブロックする NSG ルールがある場合は、**有効なセキュリティ**規則で NSG を検索して、トラフィックで通過できるように更新します。 次に、もう一度 **[IP フローの確認]** を実行して **[接続のトラブルシューティング]** を使用し、VM からご利用の内部または外部の IP アドレスへの TCP 通信をテストします。
 
 **NVA および VM が予想されるトラフィックをリッスンしているかどうかを確認する**
 
-1.  RDP または SSH を使用して NVA に接続して、次のコマンドを実行します。
+1. RDP または SSH を使用して NVA に接続して、次のコマンドを実行します。
 
     Windows の場合:
 
@@ -97,7 +101,7 @@ PowerShell の使用
     Linux の場合:
 
         netstat -an | grep -i listen
-2.  結果に一覧されている NVA ソフトウェアによって使用される TCP ポートが表示されない場合は、それらのポートに到達するトラフィックをリッスンして応答するように、NVA と VM 上にアプリケーションを構成する必要があります。 [必要に応じて、NVA のベンダーにお問い合わせください](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
+2. 結果に一覧されている NVA ソフトウェアによって使用される TCP ポートが表示されない場合は、それらのポートに到達するトラフィックをリッスンして応答するように、NVA と VM 上にアプリケーションを構成する必要があります。 [必要に応じて、NVA のベンダーにお問い合わせください](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
 
 ## <a name="check-nva-performance"></a>NVA のパフォーマンスの確認
 
@@ -105,7 +109,7 @@ PowerShell の使用
 
 CPU 使用率が 100 パーセントに近い場合は、影響するネットワーク パケットが低下する問題が発生する可能性があります。 ご利用の VM では、Azure portal で特定の期間の平均 CPU が報告されます。 CPU のスパイク時に、高い CPU の原因となっているゲスト VM 上のプロセスを調査して、可能であれば、そのプロセスを軽減させます。 また、より大きい SKU サイズに VM のサイズを変更するか、仮想マシン スケール セットの場合は、インスタンス数を増やしたり、CPU 使用率に自動スケールを設定したりする必要がある場合もあります。 これらの問題のいずれかについては、必要に応じて、[NVA のベンダーにお問い合わせください](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
 
-### <a name="validate-vm-network-statistics"></a>VM ネットワークの統計を検証する 
+### <a name="validate-vm-network-statistics"></a>VM ネットワークの統計を検証する
 
 VM ネットワークでスパイクを使用したり、高い使用率の期間を示したりする場合は、スループット機能をさらに高めるために、VM の SKU サイズを増加させる必要もある可能性があります。 高速ネットワークを有効にすることで、VM を再デプロイすることもできます。 NVA で高速ネットワーク機能がサポートされているかどうかを確認するには、必要に応じて、[NVA のベンダーにお問い合わせください](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
 
@@ -116,16 +120,15 @@ VM ネットワークでスパイクを使用したり、高い使用率の期�
 
 1. 同時ネットワーク追跡をキャプチャするには、次のコマンドを実行します。
 
-    Windows の場合:
+   **Windows の場合**
 
-        netsh trace start capture=yes tracefile=c:\server_IP.etl scenario=netconnection
+   netsh trace start capture=yes tracefile=c:\server_IP.etl scenario=netconnection
 
-    Linux の場合:
+   **Linux の場合**
 
-        sudo tcpdump -s0 -i eth0 -X -w vmtrace.cap
+   sudo tcpdump -s0 -i eth0 -X -w vmtrace.cap
 
 2. ソース VM から宛先 VM に対して **PsPing** または **Nmap** を使用します (例: `PsPing 10.0.0.4:80` または `Nmap -p 80 10.0.0.4`)。
-
 3. [ネットワーク モニター](https://www.microsoft.com/download/details.aspx?id=4865)または tcpdump を使用して、宛先 VM からネットワーク トレースを開きます。 `IPv4.address==10.0.0.4 (Windows netmon)` または `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux) など、**PsPing** または **Nmap** を実行したソース VM の IP に表示フィルターを適用します。
 
 ### <a name="analyze-traces"></a>トレースの分析
@@ -133,4 +136,3 @@ VM ネットワークでスパイクを使用したり、高い使用率の期�
 バックエンド VM トレースにパケットが着信していない場合、NSG または UDR により妨害されているか、NVA ルーティング テーブルが正しくない可能性があります。
 
 パケットを受信しているのに応答がない場合は、VM アプリケーションまたはファイアウォールに関する問題に対処する必要があります。 これらの問題のいずれかについては、[必要に応じて、NVA のベンダーにお問い合わせください](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
-

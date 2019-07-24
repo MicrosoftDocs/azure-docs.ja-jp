@@ -1,35 +1,44 @@
 items:
-- name: SQL DB のドキュメント
+- name: SQL Database のドキュメント
   href: index.yml
 - name: SQL Database サービス
   items:
-  - name: SQL DB とは
+  - name: SQL Database とは
     href: sql-database-technical-overview.md
   - name: Azure SQL のバージョンを選択する
     href: sql-database-paas-vs-sql-server-iaas.md
+  - name: リリース ノート
+    href: sql-database-release-notes.md
 - name: クイック スタート
   items:
+  - name: 単一データベースのクイック スタート ガイド
+    href: sql-database-single-database-quickstart-guide.md
+  - name: マネージド インスタンスのクイック スタート ガイド
+    href: sql-database-managed-instance-quickstart-guide.md
   - name: Create
     items:
-    - name: 単一データベース
-      href: sql-database-get-started-portal.md
+    - name: 単一データベース - ポータル
+      href: sql-database-single-database-get-started.md
+    - name: 単一データベース - テンプレート
+      displayName: Azure Resource Manager template, ARM
+      href: sql-database-single-database-get-started-template.md
     - name: マネージド インスタンス
       href: sql-database-managed-instance-get-started.md
   - name: 構成
     items:
-    - name: 論理サーバーのファイアウォール規則
-      href: sql-database-get-started-portal-firewall.md
+    - name: サーバーレベルの IP ファイアウォール規則
+      href: sql-database-server-level-firewall-rule.md
     - name: マネージド インスタンスへのクライアント VM 接続
       href: sql-database-managed-instance-configure-vm.md
     - name: マネージド インスタンスへのポイント対サイト接続
       href: sql-database-managed-instance-configure-p2s.md
   - name: データを読み込む
     items:
-    - name: 単一データベースへの BACPAC のインポート
+    - name: BACPAC を新しいデータベースにインポートする
       href: sql-database-import.md
-    - name: マネージド インスタンスへのデータベース バックアップの復元
+    - name: マネージド インスタンスにデータベースのバックアップを復元する
       href: sql-database-managed-instance-get-started-restore.md
-  - name: クエリ
+  - name: Query
     href: sql-database-connect-query.md
     items:
     - name: SSMS
@@ -63,19 +72,27 @@ items:
   expanded: true
 - name: チュートリアル
   items:
-  - name: 1 - SSMS を使用して DB を設計する
-    href: sql-database-design-first-database.md
-  - name: 2 - .NET を使用して DB を設計する
-    href: sql-database-design-first-database-csharp.md
-  - name: 3 - DMS を使用して単一の Azure SQL データベースに移行する
-    href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
-  - name: 4 - SQL DB をセキュリティ保護する
-    href: sql-database-security-tutorial.md
-  - name: 5 - geo 分散型データベースを実装する
+  - name: SQL Database でのデータベースの設計
+    items:
+    - name: SSMS を使用したデータベースの設計
+      href: sql-database-design-first-database.md
+    - name: .NET を使用したデータベースの設計
+      href: sql-database-design-first-database-csharp.md
+  - name: SQL Database への移行
+    items:
+    - name: DMS を使用して単一データベースまたはプール データベースに移行する
+      href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
+    - name: DMS を使用してマネージド インスタンスに移行する
+      href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
+  - name: SQL Database のセキュリティ
+    items:
+    - name: 単一データベースとプールされたデータベースのセキュリティ
+      href: sql-database-security-tutorial.md
+    - name: Managed Instance のセキュリティ
+      href: sql-database-managed-instance-aad-security-tutorial.md
+  - name: 地理的に分散したデータベースの実装
     href: sql-database-implement-geo-distributed-database.md
-  - name: 6 - DMS を使用してマネージド インスタンスに移行する
-    href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
-  - name: 7 - Azure SQL データ同期を設定する
+  - name: Azure SQL Data Sync の設定
     href: sql-database-get-started-sql-data-sync.md
 - name: サンプル
   items:
@@ -85,87 +102,94 @@ items:
     href: sql-database-cli-samples.md
   - name: Azure PowerShell
     href: sql-database-powershell-samples.md
+  - name: Azure Resource Manager
+    displayName: ARM template
+    href: sql-database-resource-manager-samples.md
 - name: 概念
   items:
   - name: モデルの購入
     items:
-    - name: 仮想コアと DTU
-      href: sql-database-service-tiers.md
-    - name: 仮想コアベースの購入モデル
-      items:
-      - name: 仮想コア サービス レベルの選択
-        href: sql-database-service-tiers-vcore.md
-      - name: General Purpose および Business Critical
-        href: sql-database-service-tiers-general-purpose-business-critical.md
-      - name: ハイパースケール
-        href: sql-database-service-tier-hyperscale.md
-      - name: ハイパースケールに関する FAQ
-        href: sql-database-service-tier-hyperscale-faq.md
+    - name: 概要
+      href: sql-database-purchase-models.md
+    - name: 仮想コアベースのモデル
+      href: sql-database-service-tiers-vcore.md
     - name: DTU サービス レベル
       href: sql-database-service-tiers-dtu.md
     - name: 予約容量の前払い
       href: sql-database-reserved-capacity.md
-  - name: 論理サーバー
+    - name: Premium RS サービス レベルから移行する
+      href: sql-database-service-tiers-prs.md
+  - name: コンピューティングとストレージ
     items:
-    - name: 作成と管理
-      href: sql-database-logical-servers.md
-    - name: リソース制限
-      href: sql-database-resource-limits-logical-server.md
-    - name: 接続のアーキテクチャ
-      href: sql-database-connectivity-architecture.md
-    - name: T-SQL の相違点
-      href: sql-database-transact-sql-information.md
-    - name: トランザクション レプリケーション - 単一データベースとエラスティック プール
-      href: replication-to-sql-database.md
+    - name: 概要
+      href: sql-database-service-tiers-general-purpose-business-critical.md
+    - name: General Purpose / Standard サービス レベル
+      href: sql-database-service-tier-general-purpose.md
+    - name: Business Critical / Premium サービス レベル
+      href: sql-database-service-tier-business-critical.md
+    - name: ハイパースケール サービス レベル
+      href: sql-database-service-tier-hyperscale.md
+    - name: ハイパースケールに関する FAQ
+      href: sql-database-service-tier-hyperscale-faq.md
   - name: Single Database
     items:
-    - name: 作成と管理
+    - name: 単一データベースの概要
+      href: sql-database-single-index.yml
+    - name: 単一データベースの機能
+      href: sql-database-single-database.md
+    - name: Management API リファレンス
       href: sql-database-single-databases-manage.md
-    - name: 仮想コアベースのリソース制限
-      href: sql-database-vcore-resource-limits-single-databases.md
-    - name: DTU ベースのリソース制限
-      href: sql-database-dtu-resource-limits-single-databases.md
-    - name: リソースのスケール
-      href: sql-database-single-database-scale.md
+    - name: T-SQL の相違点
+      href: sql-database-transact-sql-information.md
+    - name: データベース サーバーとリソース
+      items:
+      - name: データベース サーバーの概要
+        href: sql-database-servers.md
+      - name: データベース サーバーのリソース制限
+        href: sql-database-resource-limits-database-server.md
+      - name: 接続のアーキテクチャ
+        href: sql-database-connectivity-architecture.md
+    - name: 単一データベースのリソース
+      items:
+      - name: 仮想コアベースのリソース制限
+        href: sql-database-vcore-resource-limits-single-databases.md
+      - name: DTU ベースのリソース制限
+        href: sql-database-dtu-resource-limits-single-databases.md
+      - name: リソースのスケール
+        href: sql-database-single-database-scale.md
   - name: エラスティック プール
     items:
     - name: エラスティック プール
       href: sql-database-elastic-pool.md
-    - name: 作成と管理
+    - name: エラスティック プールのリソース
+      items:
+      - name: 仮想コアベースのリソース制限
+        href: sql-database-vcore-resource-limits-elastic-pools.md
+      - name: DTU ベースのリソース制限
+        href: sql-database-dtu-resource-limits-elastic-pools.md
+      - name: リソースのスケール
+        href: sql-database-elastic-pool-scale.md
+    - name: プール リソースの管理
       href: sql-database-elastic-pool-manage.md
-    - name: 仮想コアベースのリソース制限
-      href: sql-database-vcore-resource-limits-elastic-pools.md
-    - name: DTU ベースのリソース制限
-      href: sql-database-dtu-resource-limits-elastic-pools.md
-    - name: リソースのスケール
-      href: sql-database-elastic-pool-scale.md
   - name: マネージド インスタンス
     items:
-    - name: マネージド インスタンス
+    - name: マネージド インスタンスの概要
       href: sql-database-managed-instance-index.yml
-    - name: 概要
+    - name: マネージド インスタンスの機能
       href: sql-database-managed-instance.md
+    - name: Management API リファレンス
+      href: sql-database-managed-instance-create-manage.md
     - name: リソース制限
       href: sql-database-managed-instance-resource-limits.md
-    - name: VNet 統合
-      items:
-      - name: VNet 構成
-        href: sql-database-managed-instance-vnet-configuration.md
-      - name: '[カスタム DNS]'
-        href: sql-database-managed-instance-custom-dns.md
-      - name: ネットワーク構成の同期
-        href: sql-database-managed-instance-sync-network-configuration.md
-      - name: 接続のアーキテクチャ
-        href: sql-database-managed-instance-connectivity-architecture.md
-      - name: アプリケーションの接続
-        href: sql-database-managed-instance-connect-app.md
+    - name: 接続のアーキテクチャ
+      href: sql-database-managed-instance-connectivity-architecture.md
     - name: T-SQL の相違点
       href: sql-database-managed-instance-transact-sql-information.md
-    - name: トランザクション レプリケーション
-      href: replication-with-sql-database-managed-instance.md
+    - name: Managed Instance のタイム ゾーン
+      href: sql-database-managed-instance-timezone.md
   - name: サービスとしてのプラットフォーム
     items:
-    - name: サービスとしてのプラットフォーム
+    - name: サービスとしてのプラットフォームの概要
       href: sql-database-paas.yml
     - name: ビジネス継続性
       href: sql-database-business-continuity.md
@@ -174,19 +198,17 @@ items:
     - name: 自動バックアップ
       href: sql-database-automated-backups.md
     - name: 長期のバックアップ リテンション期間
-      items:
-      - name: 長期のバックアップ リテンション期間
-        href: sql-database-long-term-retention.md
-      - name: Azure Blob Storage を使用した構成
-        href: sql-database-long-term-backup-retention-configure.md
-      - name: Azure コンテナーを使用した構成 (非推奨)
-        href: sql-database-long-term-backup-retention-configure-vault.md
+      href: sql-database-long-term-retention.md
+    - name: 計画メンテナンス イベント
+      href: sql-database-planned-maintenance.md
     - name: フェールオーバー グループと geo レプリケーション
       items:
-      - name: フェールオーバー グループと geo レプリケーション
-        href: sql-database-geo-replication-overview.md
-      - name: geo レプリケーションの構成 - ポータル
-        href: sql-database-geo-replication-portal.md
+      - name: アクティブ geo レプリケーション
+        href: sql-database-active-geo-replication.md
+      - name: 自動フェールオーバー グループ
+        href: sql-database-auto-failover-group.md
+      - name: アクティブ geo レプリケーションの構成 - ポータル
+        href: sql-database-active-geo-replication-portal.md
       - name: レプリカのセキュリティの構成
         href: sql-database-geo-replication-security-config.md
     - name: データベースの復旧オプション
@@ -199,33 +221,24 @@ items:
         href: sql-database-disaster-recovery.md
       - name: 復旧の演習
         href: sql-database-disaster-recovery-drills.md
-    - name: アプリの設計
-      items:
-      - name: ディザスター リカバリーの設計
-        href: sql-database-designing-cloud-solutions-for-disaster-recovery.md
-      - name: エラスティック プールの設計
-        href: sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
-      - name: アプリのアップグレードの設計
-        href: sql-database-manage-application-rolling-upgrade.md
   - name: セキュリティ
     items:
-    - name: セキュリティ
+    - name: セキュリティの概要
       href: sql-database-security-index.yml
-    - name: 概要
+    - name: セキュリティ機能
+      displayName: compliance, fedramp, soc, fact, fisc, hitrust, pci, iso
       href: sql-database-security-overview.md
-    - name: 高度な脅威保護
+    - name: Advanced Data Security
       items:
-      - name: 高度な脅威保護
-        href: sql-advanced-threat-protection.md
+      - name: Advanced Data Security
+        href: sql-database-advanced-data-security.md
       - name: データの検出と分類
         href: sql-database-data-discovery-and-classification.md
       - name: 脆弱性評価
         href: sql-vulnerability-assessment.md
-      - name: 脅威の検出 - SQL Database
-        href: sql-database-threat-detection.md
-      - name: 脅威の検出 - マネージド インスタンス
-        href: sql-database-managed-instance-threat-detection.md
-    - name: ファイアウォール規則
+      - name: 高度な脅威保護
+        href: sql-database-threat-detection-overview.md
+    - name: サーバーレベルの IP ファイアウォール規則
       items:
       - name: 作成と管理
         href: sql-database-firewall-configure.md
@@ -240,52 +253,34 @@ items:
       - name: ログインとユーザー
         href: sql-database-manage-logins.md
     - name: Azure AD 認証
-      items:
-      - name: Azure AD 認証
-        href: sql-database-aad-authentication.md
-      - name: Azure AD 認証の構成
-        href: sql-database-aad-authentication-configure.md
-      - name: 条件付きアクセス
-        href: sql-database-conditional-access.md
-      - name: 多要素認証
-        href: sql-database-ssms-mfa-authentication.md
-      - name: 多要素認証の構成
-        href: sql-database-ssms-mfa-authentication-configure.md
+      href: sql-database-aad-authentication.md
     - name: 監査
       items:
-      - name: 監査 - サーバー、プール、データベース
+      - name: SQL Database 監査の概要
         href: sql-database-auditing.md
       - name: 監査 - マネージド インスタンス
         href: sql-database-managed-instance-auditing.md
-      - name: テーブルの監査 (非推奨)
-        href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
+      - name: 監査ログの形式
+        href: sql-database-audit-log-format.md
     - name: 動的データ マスク
-      items:
-      - name: 動的データ マスク
-        href: sql-database-dynamic-data-masking-get-started.md
-      - name: マスクの構成
-        href: sql-database-dynamic-data-masking-get-started-portal.md
+      href: sql-database-dynamic-data-masking-get-started.md
     - name: Always Encrypted
       items:
       - name: 証明書ストアの使用
         href: sql-database-always-encrypted.md
       - name: Azure キー コンテナーの使用
         href: sql-database-always-encrypted-azure-key-vault.md
-    - name: Azure SQL での TDE
+    - name: 透過的なデータ暗号化 (TDE)
       items:
       - name: Azure SQL での TDE
         href: transparent-data-encryption-azure-sql.md
       - name: Bring Your Own Key を使用した TDE
         href: transparent-data-encryption-byok-azure-sql.md
-      - name: BYOK を使用した TDE の構成
-        href: transparent-data-encryption-byok-azure-sql-configure.md
-      - name: TDE BYOK キーの回転
-        href: transparent-data-encryption-byok-azure-sql-key-rotation.md
-      - name: TDE 保護機能の削除
-        href: transparent-data-encryption-byok-azure-sql-remove-tde-protector.md
-  - name: 柔軟なスケーラビリティ
+  - name: スケーラビリティ
     items:
-    - name: リソースのスケーラビリティ
+    - name: スケーラビリティの概要
+      href: sql-database-scalability-index.yml
+    - name: スケールアップ/スケールダウン
       href: sql-database-scale-resources.md
     - name: 読み取りスケールアウト
       href: sql-database-read-scale-out.md
@@ -293,30 +288,124 @@ items:
       items:
       - name: データベース シャーディング
         href: sql-database-elastic-scale-introduction.md
+      - name: 用語集
+        href: sql-database-elastic-scale-glossary.md
       - name: エラスティック クライアント ライブラリ - 統合
         href: sql-database-elastic-database-client-library.md
-      - name: エラスティック データベース クライアント ライブラリのアップグレード
-        href: sql-database-elastic-scale-upgrade-client-library.md
       - name: シャード マップ
         href: sql-database-elastic-scale-shard-map-management.md
       - name: クエリのルーティング
         href: sql-database-elastic-scale-data-dependent-routing.md
       - name: 資格情報を管理する
         href: sql-database-elastic-scale-manage-credentials.md
-      - name: シャード クエリ実行
-        href: sql-database-elastic-scale-multishard-querying.md
-      - name: エラスティック ツール
-        href: sql-database-elastic-scale-glossary.md
       - name: シャード データの移動
         href: sql-database-elastic-scale-overview-split-and-merge.md
-      - name: エラスティック クライアント ライブラリ - Dapper
-        href: sql-database-elastic-scale-working-with-dapper.md
       - name: エラスティック ツールに関する FAQ
         href: sql-database-elastic-scale-faq.md
+    - name: エラスティック クエリ
+      href: sql-database-elastic-query-overview.md
+    - name: エラスティック トランザクション
+      href: sql-database-elastic-transactions-overview.md
+  - name: 監視とチューニング
+    items:
+    - name: 監視とチューニングの概要
+      href: sql-database-monitoring-tuning-index.yml
+    - name: 監視とパフォーマンスのチューニング
+      href: sql-database-monitor-tune-overview.md
+    - name: パフォーマンスの監視
+      items:
+      - name: Query Performance Insight
+        href: sql-database-query-performance.md
+      - name: Azure SQL Analytics の監視
+        href: https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql
+      - name: 診断テレメトリのログ記録
+        href: sql-database-metrics-diag-logging.md
+    - name: インテリジェント パフォーマンス
+      items:
+      - name: 自動チューニング
+        href: sql-database-automatic-tuning.md
+      - name: Intelligent Insights によるパフォーマンスの分析
+        href: sql-database-intelligent-insights.md
+      - name: チューニング操作と推奨事項
+        href: sql-database-performance.md
+      - name: データベース アドバイザーのパフォーマンスに関する推奨事項
+        href: sql-database-advisor.md
+  - name: データベース機能
+    items:
+    - name: 概要
+      href: sql-database-features-index.yml
+    - name: SQL 機能の比較
+      href: sql-database-features.md
+    - name: マルチモデル機能
+      href: sql-database-multi-model-features.md
+    - name: メモリ内
+      href: sql-database-in-memory.md
+    - name: トランザクション レプリケーション
+      href: sql-database-managed-instance-transactional-replication.md
+    - name: SQL データ同期
+      href: sql-database-sync-data.md
+    - name: テンポラル テーブル
+      href: sql-database-temporal-tables.md
+    - name: ジョブの自動化
+      href: sql-database-job-automation-overview.md
+    - name: 機械学習
+      items:
+      - name: Machine Learning の概要
+        href: sql-database-machine-learning-services-overview.md
+      - name: 主な相違点
+        href: sql-database-machine-learning-services-differences.md
+- name: ハウツー ガイド
+  items:
+  - name: 概要
+    href: sql-database-howto.md
+  - name: 単一データベース
+    items:
+    - name: 概要
+      href: sql-database-howto-single-database.md
+    - name: 単一データベース/プールされたデータベースへの移行
+      href: sql-database-single-database-migrate.md
+    - name: 移行後の SQL Database の管理
+      href: sql-database-manage-after-migration.md
+    - name: レプリケーションの構成
+      href: replication-to-sql-database.md
+    - name: 脅威検出の構成
+      href: sql-database-threat-detection.md
+    - name: Azure Blob Storage を使用したバックアップ保有期間の構成
+      href: sql-database-long-term-backup-retention-configure.md
+    - name: Elastic Database ジョブの構成
+      href: elastic-jobs-overview.md
+    - name: 動的データ マスクの構成
+      href: sql-database-dynamic-data-masking-get-started-portal.md
+    - name: geo レプリケーションの構成 - ポータル
+      href: sql-database-geo-replication-portal.md
+    - name: geo レプリカのセキュリティの構成
+      href: sql-database-geo-replication-security-config.md
+    - name: インメモリ機能を試す
+      href: sql-database-in-memory-sample.md
+    - name: 自動チューニングの有効化
+      href: sql-database-automatic-tuning-enable.md
+    - name: 自動チューニングの電子メール通知の有効化
+      href: sql-database-automatic-tuning-email-notifications.md
+    - name: パフォーマンスに関する推奨事項の適用
+      href: sql-database-advisor-portal.md
+    - name: アラートを作成する
+      href: sql-database-insights-alerts-portal.md
+    - name: 接続のトラブルシューティング
+      href: sql-database-troubleshoot-common-connection-issues.md
+    - name: ファイル空き領域の管理
+      href: sql-database-file-space-management.md
+    - name: 接続の問題に対する Resource Health の使用
+      href: sql-database-resource-health.md
+    - name: データベース シャーディング
+      items:
+      - name: エラスティック データベース クライアント ライブラリのアップグレード
+        href: sql-database-elastic-scale-upgrade-client-library.md
       - name: シャード化されたアプリの作成
         href: sql-database-elastic-scale-get-started.md
       - name: 水平方向のシャード データに対するクエリ
         href: sql-database-elastic-query-getting-started.md
+      - name: マルチシャード クエリ
+        href: sql-database-elastic-scale-multishard-querying.md
       - name: シャード データの移動
         href: sql-database-elastic-scale-configure-deploy-split-and-merge.md
       - name: セキュリティ構成
@@ -325,166 +414,68 @@ items:
         href: sql-database-elastic-scale-add-a-shard.md
       - name: シャード マップに関する問題の解決
         href: sql-database-elastic-database-recovery-manager.md
-      - name: シャード化された DB の移行
+      - name: シャード化されたデータベースの移行
         href: sql-database-elastic-convert-to-use-elastic-tools.md
       - name: カウンターの作成
         href: sql-database-elastic-database-perf-counters.md
       - name: Entity Framework を使用する
         href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
-  - name: SQL 機能の比較
-    href: sql-database-features.md
-  - name: 監視とパフォーマンスのチューニング
-    items:
-    - name: 監視とチューニングの概要
-      href: sql-database-monitor-tune-overview.md
-    - name: インテリジェント パフォーマンス
+      - name: Dapper Framework を使用する
+        href: sql-database-elastic-scale-working-with-dapper.md
+    - name: 分散データにクエリを実行する
       items:
-      - name: チューニング アドバイザー
-        items:
-        - name: チューニング操作と推奨事項
-          href: sql-database-performance.md
-        - name: '[Query Performance Insight]'
-          href: sql-database-query-performance.md
-        - name: データベース アドバイザーのパフォーマンスに関する推奨事項
-          href: sql-database-advisor.md
-        - name: パフォーマンスに関する推奨事項の適用
-          href: sql-database-advisor-portal.md
-      - name: 高度な監視
-        items:
-        - name: Azure SQL Analytics の監視
-          href: https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql
-        - name: 診断テレメトリのログ記録
-          href: sql-database-metrics-diag-logging.md
-      - name: 自動化されたトラブルシューティング
-        items:
-        - name: Intelligent Insights によるパフォーマンスの分析
-          href: sql-database-intelligent-insights.md
-        - name: Intelligent Insights を使用したパフォーマンスのトラブルシューティング
-          href: sql-database-intelligent-insights-troubleshoot-performance.md
-        - name: Intelligent Insights 診断ログの使用
-          href: sql-database-intelligent-insights-use-diagnostics-log.md
-      - name: 自動チューニング
-        items:
-        - name: 自動チューニングの概要
-          href: sql-database-automatic-tuning.md
-        - name: 自動チューニングの有効化
-          href: sql-database-automatic-tuning-enable.md
-        - name: 電子メール通知の有効化
-          href: sql-database-automatic-tuning-email-notifications.md
-      - name: インテリジェントなクエリの処理
-        items:
-        - name: インテリジェントなクエリの処理
-          href: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json
-        - name: アダプティブ クエリ処理
-          href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
-    - name: 手動チューニング
-      items:
-      - name: 手動チューニング
-        href: sql-database-performance-guidance.md
-      - name: DMV を使用したパフォーマンスの監視
-        href: sql-database-monitoring-with-dmvs.md
-      - name: クエリ ストアの操作
-        href: sql-database-operate-query-store.md
-      - name: メモリ内
-        href: sql-database-in-memory-oltp-monitoring.md
-      - name: 拡張イベント
-        items:
-        - name: 拡張イベント
-          href: sql-database-xevent-db-diff-from-svr.md
-        - name: 拡張イベント - イベント ファイル
-          href: sql-database-xevent-code-event-file.md
-        - name: 拡張イベント - リング バッファー
-          href: sql-database-xevent-code-ring-buffer.md
-    - name: アラートを作成する
-      href: sql-database-insights-alerts-portal.md
-    - name: 接続のトラブルシューティング
-      href: sql-database-troubleshoot-common-connection-issues.md
-    - name: Azure Automation
-      href: sql-database-manage-automation.md
-  - name: データベース間の操作
-    items:
-    - name: Elastic Database ジョブ
-      items:
-      - name: Elastic Database ジョブ
-        href: elastic-jobs-overview.md
-      - name: 作成と管理 (PowerShell)
-        href: elastic-jobs-powershell.md
-      - name: 作成と管理 (T-SQL)
-        href: elastic-jobs-tsql.md
-      - name: (古いエラスティック ジョブからの) 移行
-        href: elastic-jobs-migrate.md
-      - name: エラスティック ジョブ (非推奨)
-        items:
-        - name: エラスティック ジョブ (非推奨)
-          href: sql-database-elastic-jobs-overview.md
-        - name: エラスティック ジョブのインストール (非推奨)
-          href: sql-database-elastic-jobs-service-installation.md
-        - name: ジョブの作成 - ポータル (非推奨)
-          href: sql-database-elastic-jobs-create-and-manage.md
-        - name: ジョブの作成 - Azure PowerShell (非推奨)
-          href: sql-database-elastic-jobs-powershell.md
-        - name: ジョブの作成 - サンプル アプリ (非推奨)
-          href: sql-database-elastic-jobs-getting-started.md
-        - name: エラスティック ジョブのアンインストール (非推奨)
-          href: sql-database-elastic-jobs-uninstall.md
-    - name: エラスティック クエリ
-      items:
-      - name: エラスティック クエリ
-        href: sql-database-elastic-query-overview.md
       - name: 垂直方向にパーティション分割されたデータに対するクエリ
         href: sql-database-elastic-query-getting-started-vertical.md
       - name: スケールアウトされたデータ層のレポート
         href: sql-database-elastic-query-horizontal-partitioning.md
       - name: スキーマが異なるテーブル間のクエリ
         href: sql-database-elastic-query-vertical-partitioning.md
-    - name: エラスティック トランザクション
-      href: sql-database-elastic-transactions-overview.md
-  - name: マルチテナント SaaS
+    - name: エラスティック ジョブ
+      items:
+      - name: 作成と管理 (PowerShell)
+        href: elastic-jobs-powershell.md
+      - name: 作成と管理 (T-SQL)
+        href: elastic-jobs-tsql.md
+      - name: (古いエラスティック ジョブからの) 移行
+        href: elastic-jobs-migrate.md
+  - name: マネージド インスタンス
     items:
-    - name: SaaS の設計パターン
-      href: saas-tenancy-app-design-patterns.md
-    - name: SaaS Video Indexer
-      href: saas-tenancy-video-index-wingtip-brk3120-20171011.md
-    - name: SaaS アプリのセキュリティ
-      href: saas-tenancy-elastic-tools-multi-tenant-row-level-security.md
-  - name: データベースの開発
-    items:
-    - name: データベースの開発
-      href: sql-database-develop-overview.md
-    - name: JSON データ
-      href: sql-database-json-features.md
-    - name: メモリ内
-      href: sql-database-in-memory.md
-    - name: テンポラル テーブル
-      href: sql-database-temporal-tables.md
-    - name: 保持ポリシー
-      href: sql-database-temporal-tables-retention-policy.md
-    - name: インメモリの構成
-      href: sql-database-in-memory-oltp-migration.md
-- name: ハウツー ガイド
-  items:
-  - name: SQL Database への移行
-    items:
-    - name: SQL Database への移行
-      href: sql-database-cloud-migrate.md
+    - name: 概要
+      href: sql-database-howto-managed-instance.md
     - name: マネージド インスタンスへの移行
       href: sql-database-managed-instance-migrate.md
-    - name: Managed Instance への TDE 証明書の移行
+    - name: マネージド インスタンスへの TDE 証明書の移行
       href: sql-database-managed-instance-migrate-tde-certificate.md
-    - name: 移行後の SQL Database の管理
-      href: sql-database-manage-after-migration.md
+    - name: マネージド インスタンス サブネットのサイズの決定
+      href: sql-database-managed-instance-determine-size-vnet-subnet.md
+    - name: マネージド インスタンス用の新しい VNet とサブネットの作成
+      href: sql-database-managed-instance-create-vnet-subnet.md
+    - name: マネージド インスタンス用の既存の VNet とサブネットの構成
+      href: sql-database-managed-instance-configure-vnet-subnet.md
+    - name: カスタム DNS の構成
+      href: sql-database-managed-instance-custom-dns.md
+    - name: ネットワーク構成の同期
+      href: sql-database-managed-instance-sync-network-configuration.md
+    - name: 管理エンドポイント IP アドレスの検索
+      href: sql-database-managed-instance-find-management-endpoint-ip-address.md
+    - name: 組み込みのファイアウォール保護の確認
+      href: sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md
+    - name: トランザクション レプリケーション
+      href: replication-with-sql-database-managed-instance.md
+    - name: 脅威検出の構成
+      href: sql-database-managed-instance-threat-detection.md
+    - name: アプリケーションの接続
+      href: sql-database-managed-instance-connect-app.md
   - name: データの読み込みと移動
     items:
-    - name: Azure 内での DB のコピー
+    - name: Azure 内でのデータベースのコピー
       href: sql-database-copy.md
-    - name: BACPAC からの DB のインポート
+    - name: BACPAC ファイルからのデータベースのインポート
       href: sql-database-import.md
-    - name: BACPAC への DB のエクスポート
+    - name: BACPAC ファイルへのデータベースのエクスポート
       href: sql-database-export.md
     - name: データ同期
       items:
-      - name: SQL データ同期
-        href: sql-database-sync-data.md
       - name: データ同期エージェント
         href: sql-database-data-sync-agent.md
       - name: スキーマ変更のレプリケート
@@ -499,16 +490,66 @@ items:
       href: sql-database-load-from-csv-with-bcp.md
     - name: ADF を使用したデータの読み込み
       href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
-  - name: ファイル空き領域の管理
-    href: sql-database-file-space-management.md
-  - name: 接続の問題に対する Resource Health の使用
-    href: sql-database-resource-health.md
+  - name: データベースを監視して調整する
+    items:
+    - name: 手動チューニング
+      href: sql-database-performance-guidance.md
+    - name: DMV を使用したパフォーマンスの監視
+      href: sql-database-monitoring-with-dmvs.md
+    - name: クエリ ストアを使用したパフォーマンスの監視
+      href: sql-database-operate-query-store.md
+    - name: Intelligent Insights を使用したパフォーマンスのトラブルシューティング
+      href: sql-database-intelligent-insights-troubleshoot-performance.md
+    - name: Intelligent Insights 診断ログの使用
+      href: sql-database-intelligent-insights-use-diagnostics-log.md
+    - name: インメモリ OLTP スペースの監視
+      href: sql-database-in-memory-oltp-monitoring.md
+    - name: 拡張イベント
+      items:
+      - name: 拡張イベント
+        href: sql-database-xevent-db-diff-from-svr.md
+      - name: 拡張イベント - イベント ファイル
+        href: sql-database-xevent-code-event-file.md
+      - name: 拡張イベント - リング バッファー
+        href: sql-database-xevent-code-ring-buffer.md
+  - name: 機能の構成
+    items:
+    - name: Azure AD 認証の構成
+      href: sql-database-aad-authentication-configure.md
+    - name: 条件付きアクセス
+      href: sql-database-conditional-access.md
+    - name: 多要素 AAD 認証
+      href: sql-database-ssms-mfa-authentication.md
+    - name: 多要素認証の構成
+      href: sql-database-ssms-mfa-authentication-configure.md
+    - name: 一時的なリテンション ポリシーの構成方法
+      href: sql-database-temporal-tables-retention-policy.md
+    - name: BYOK を使用した TDE の構成
+      href: transparent-data-encryption-byok-azure-sql-configure.md
+    - name: TDE BYOK キーの回転
+      href: transparent-data-encryption-byok-azure-sql-key-rotation.md
+    - name: TDE 保護機能の削除
+      href: transparent-data-encryption-byok-azure-sql-remove-tde-protector.md
+    - name: インメモリ OLTP の構成
+      href: sql-database-in-memory-oltp-migration.md
+    - name: Azure Automation
+      href: sql-database-manage-automation.md
   - name: アプリの開発
     items:
-    - name: 接続
-      href: sql-database-libraries.md
+    - name: 概要
+      href: sql-database-develop-overview.md
+    - name: JSON データの使用
+      href: sql-database-json-features.md
+    - name: ASP.NET App Service の使用
+      href: /azure/app-service/app-service-web-tutorial-dotnet-sqldatabase?toc=/azure/sql-database/toc.json
+    - name: Azure Functions の使用
+      href: ../azure-functions/functions-scenario-database-table-cleanup.md?toc=/azure/sql-database/toc.json
+    - name: Azure Logic Apps の使用
+      href: /azure/connectors/connectors-create-api-sqlazure?toc=/azure/sql-database/toc.json
     - name: Spark コネクタの使用
       href: sql-database-spark-connector.md
+    - name: Azure Search によるインデックス作成
+      href: /azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers?toc=/azure/sql-database/toc.json
     - name: アプリの認証
       href: sql-database-client-id-keys.md
     - name: エラー メッセージ
@@ -527,64 +568,86 @@ items:
       href: sql-database-develop-cplusplus-simple.md
     - name: Excel
       href: sql-database-connect-excel.md
-  - name: マルチテナント SaaS サンプル アプリケーション
+    - name: Java
+      items:
+      - name: Spring Data JDBC の使用
+        href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-sql-server
+      - name: Spring Data JPA の使用
+        href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-sql-server
+  - name: アプリケーションの設計
     items:
-    - name: Wingtip Tickets のサンプル
-      href: saas-tenancy-welcome-wingtip-tickets-app.md
-    - name: 一般的なガイダンス
-      href: saas-tenancy-wingtip-app-guidance-tips.md
-    - name: スタンドアロン アプリケーション
+    - name: ディザスター リカバリーの設計
+      href: sql-database-designing-cloud-solutions-for-disaster-recovery.md
+    - name: エラスティック プールの設計
+      href: sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
+    - name: アプリのアップグレードの設計
+      href: sql-database-manage-application-rolling-upgrade.md
+    - name: マルチテナント SaaS
       items:
-      - name: サンプル アプリのデプロイ
-        href: saas-standaloneapp-get-started-deploy.md
-      - name: テナントのプロビジョニング
-        href: saas-standaloneapp-provision-and-catalog.md
-    - name: テナントごとのデータベース
-      items:
-      - name: チュートリアルの概要
-        href: saas-dbpertenant-wingtip-app-overview.md
-      - name: サンプル アプリのデプロイ
-        href: saas-dbpertenant-get-started-deploy.md
-      - name: テナントのプロビジョニング
-        href: saas-dbpertenant-provision-and-catalog.md
-      - name: データベース パフォーマンスの監視
-        href: saas-dbpertenant-performance-monitoring.md
-      - name: Log Analytics による監視
-        href: saas-dbpertenant-log-analytics.md
-      - name: 1 つのテナントの復元
-        href: saas-dbpertenant-restore-single-tenant.md
-      - name: テナント スキーマの管理
-        href: saas-tenancy-schema-management.md
-      - name: テナント間のレポート
-        href: saas-tenancy-cross-tenant-reporting.md
-      - name: テナント分析
+      - name: SaaS の設計パターン
+        href: saas-tenancy-app-design-patterns.md
+      - name: SaaS Video Indexer
+        href: saas-tenancy-video-index-wingtip-brk3120-20171011.md
+      - name: SaaS アプリのセキュリティ
+        href: saas-tenancy-elastic-tools-multi-tenant-row-level-security.md
+      - name: マルチテナント SaaS サンプル アプリケーション
         items:
-        - name: SQL DB の場合
-          href: saas-tenancy-tenant-analytics.md
-        - name: SQL DW の場合
-          href: saas-tenancy-tenant-analytics-adf.md
-      - name: geo 復元を使用したディザスター リカバリー
-        href: saas-dbpertenant-dr-geo-restore.md
-      - name: データベースの geo レプリケーションを使用したディザスター リカバリー
-        href: saas-dbpertenant-dr-geo-replication.md
-    - name: マルチテナント データベース
-      items:
-      - name: サンプル アプリのデプロイ
-        href: saas-multitenantdb-get-started-deploy.md
-      - name: テナントのプロビジョニング
-        href: saas-multitenantdb-provision-and-catalog.md
-      - name: データベース パフォーマンスの監視
-        href: saas-multitenantdb-performance-monitoring.md
-      - name: アドホック クエリの実行
-        href: saas-multitenantdb-adhoc-reporting.md
-      - name: テナント スキーマの管理
-        href: saas-multitenantdb-schema-management.md
-      - name: 分析用の ETL
-        href: saas-multitenantdb-tenant-analytics.md
+        - name: Wingtip Tickets のサンプル
+          href: saas-tenancy-welcome-wingtip-tickets-app.md
+        - name: 一般的なガイダンス
+          href: saas-tenancy-wingtip-app-guidance-tips.md
+        - name: 単一アプリケーション
+          items:
+          - name: サンプル アプリのデプロイ
+            href: saas-standaloneapp-get-started-deploy.md
+          - name: テナントのプロビジョニング
+            href: saas-standaloneapp-provision-and-catalog.md
+        - name: テナントごとのデータベース
+          items:
+          - name: チュートリアルの概要
+            href: saas-dbpertenant-wingtip-app-overview.md
+          - name: サンプル アプリのデプロイ
+            href: saas-dbpertenant-get-started-deploy.md
+          - name: テナントのプロビジョニング
+            href: saas-dbpertenant-provision-and-catalog.md
+          - name: データベース パフォーマンスの監視
+            href: saas-dbpertenant-performance-monitoring.md
+          - name: Azure Monitor ログを使用した監視
+            href: saas-dbpertenant-log-analytics.md
+          - name: 1 つのテナントの復元
+            href: saas-dbpertenant-restore-single-tenant.md
+          - name: テナント スキーマの管理
+            href: saas-tenancy-schema-management.md
+          - name: テナント間のレポート
+            href: saas-tenancy-cross-tenant-reporting.md
+          - name: テナント分析
+            items:
+            - name: SQL Database を使用した場合
+              href: saas-tenancy-tenant-analytics.md
+            - name: SQL Data Warehouse を使用した場合
+              href: saas-tenancy-tenant-analytics-adf.md
+        - name: geo 復元を使用したディザスター リカバリー
+          href: saas-dbpertenant-dr-geo-restore.md
+        - name: データベースの geo レプリケーションを使用したディザスター リカバリー
+          href: saas-dbpertenant-dr-geo-replication.md
+      - name: マルチテナント データベース
+        items:
+        - name: サンプル アプリのデプロイ
+          href: saas-multitenantdb-get-started-deploy.md
+        - name: テナントのプロビジョニング
+          href: saas-multitenantdb-provision-and-catalog.md
+        - name: データベース パフォーマンスの監視
+          href: saas-multitenantdb-performance-monitoring.md
+        - name: アドホック クエリの実行
+          href: saas-multitenantdb-adhoc-reporting.md
+        - name: テナント スキーマの管理
+          href: saas-multitenantdb-schema-management.md
+        - name: 分析用の ETL
+          href: saas-multitenantdb-tenant-analytics.md
 - name: リファレンス
   items:
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.sql/#sql
+    href: /powershell/module/az.sql
   - name: Azure CLI
     href: /cli/azure/sql
   - name: .NET
@@ -601,8 +664,11 @@ items:
     href: /sql/connect/php/microsoft-php-driver-for-sql-server
   - name: T-SQL
     href: /sql/t-sql/language-reference
-  - name: REST ()
+  - name: REST
     href: /rest/api/sql/
+  - name: SQL 用 Resource Manager テンプレート
+    displayName: ARM
+    href: /azure/templates/microsoft.sql/allversions
   - name: SQL Server のツール
     href: /sql/tools/overview-sql-tools
   - name: SQL Server Management Studio (SSMS)
@@ -628,12 +694,12 @@ items:
       href: /sql/connect/odbc/microsoft-odbc-driver-for-sql-server
 - name: リソース
   items:
+  - name: 用語集
+    href: sql-database-glossary-terms.md
   - name: Microsoft Learn でスキルを身に付ける
     href: /learn/browse/?products=azure-sql-database
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
-  - name: FAQ
-    href: sql-database-faq.md
   - name: パブリック データ セット
     href: sql-database-public-data-sets.md
   - name: 接続のトラブルシューティング
@@ -643,7 +709,7 @@ items:
   - name: MSDN フォーラム
     href: https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/sql-azure
+    href: https://stackoverflow.com/questions/tagged/sql-azure
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=sql-database
   - name: サービスの更新情報
@@ -651,10 +717,24 @@ items:
   - name: アーキテクチャ センター
     href: /azure/architecture/
   - name: 顧客事例
-    href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 12add5f8ee32ce3c5207a604ef7cad821d5e5a4e
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+    href: https://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
+  - name: エラスティック ジョブ (非推奨)
+    items:
+    - name: エラスティック ジョブ (非推奨)
+      href: sql-database-elastic-jobs-overview.md
+    - name: エラスティック ジョブのインストール (非推奨)
+      href: sql-database-elastic-jobs-service-installation.md
+    - name: ジョブの作成 - ポータル (非推奨)
+      href: sql-database-elastic-jobs-create-and-manage.md
+    - name: ジョブの作成 - Azure PowerShell (非推奨)
+      href: sql-database-elastic-jobs-powershell.md
+    - name: ジョブの作成 - サンプル アプリ (非推奨)
+      href: sql-database-elastic-jobs-getting-started.md
+    - name: エラスティック ジョブのアンインストール (非推奨)
+      href: sql-database-elastic-jobs-uninstall.md
+ms.openlocfilehash: d789a7d8cb42d0871dcd09e55036f965daef0d9f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165268"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59786925"

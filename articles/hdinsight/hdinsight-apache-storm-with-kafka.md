@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: HDInsight の Apache Storm と Apache Kafka - Azure '
+title: 'チュートリアル: Apache Storm と Apache Kafka を使用してデータの読み書きを行う - Azure HDInsight'
 description: HDInsight の Apache Storm と Apache Kafka を使用してストリーミング パイプラインを作成する方法について説明します。 このチュートリアルでは、KafkaBolt コンポーネントと KafkaSpout コンポーネントを使用して Kafka からデータをストリーミングします。
 services: hdinsight
 author: hrasheed-msft
@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 05/21/2018
-ms.openlocfilehash: 74cdaed91624e9d0602ce6a85ccc5cd341b9519e
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.date: 12/06/2018
+ms.openlocfilehash: dca789a850e5df58024d13b8f592765e55c39485
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496623"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316951"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>チュートリアル: HDInsight 上の Apache Kafka で Apache Storm を使用する
 
@@ -37,9 +37,9 @@ ms.locfileid: "52496623"
 
 * Kafka トピックの作成方法を熟知していること。 詳細については、[HDInsight の Kafka のクイックスタート](./kafka/apache-kafka-get-started.md)に関するドキュメントをご覧ください。
 
-* Storm ソリューション (トポロジ) の作成とデプロイの方法を熟知していること。 具体的には、[Flux](https://storm.apache.org/releases/current/flux.html) フレームワークを使用するトポロジです。 詳細については、[Java での Storm トポロジの作成](./storm/apache-storm-develop-java-topology.md)に関するドキュメントをご覧ください。
+* Storm ソリューション (トポロジ) の作成とデプロイの方法を熟知していること。 具体的には、[Apache Storm Flux](https://storm.apache.org/releases/current/flux.html) フレームワークを使用するトポロジです。 詳細については、「[Java での Apache Storm トポロジの作成](./storm/apache-storm-develop-java-topology.md)」を参照してください。
 
-* [Java JDK 1.8](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) 以上 HDInsight 3.5 以降には Java 8 が必要です。
+* [Java JDK 1.8](https://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) 以上 HDInsight 3.5 以降には Java 8 が必要です。
 
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
@@ -54,7 +54,7 @@ ms.locfileid: "52496623"
     * `JAVA_HOME\bin` (または同等のパス)。
     * Maven がインストールされているディレクトリ。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの手順には、HDInsight の Storm クラスターと HDInsight の Kafka クラスターの両方を含む Azure リソース グループが必要です。 これらのクラスターは両方とも、Strom クラスターが Kafka クラスターと直接通信できるように、Azure 仮想ネットワーク内に配置します。
 > 
 > 利便性のために、このドキュメントは、必要なすべての Azure リソースを作成できるテンプレートにリンクしています。 
@@ -65,19 +65,19 @@ ms.locfileid: "52496623"
 
 Apache Storm には、Apache Kafka を操作するためのコンポーネントがいくつか用意されています。 このチュートリアルでは、次のコンポーネントを使用します。
 
-* `org.apache.storm.kafka.KafkaSpout`: このコンポーネントは Kafka からデータを読み取ります。 このコンポーネントは、次のコンポーネントに依存します。
+* `org.apache.storm.kafka.KafkaSpout`:このコンポーネントは Kafka からデータを読み取ります。 このコンポーネントは、次のコンポーネントに依存します。
 
-    * `org.apache.storm.kafka.SpoutConfig`: スパウト コンポーネントの構成を提供します。
+    * `org.apache.storm.kafka.SpoutConfig`:スパウト コンポーネントの構成を提供します。
 
     * `org.apache.storm.spout.SchemeAsMultiScheme` と `org.apache.storm.kafka.StringScheme`: Kafka のデータを Storm のタプルに変換します。
 
-* `org.apache.storm.kafka.bolt.KafkaBolt`: このコンポーネントはデータを Kafka に書き込みます。 このコンポーネントは、次のコンポーネントに依存します。
+* `org.apache.storm.kafka.bolt.KafkaBolt`:このコンポーネントはデータを Kafka に書き込みます。 このコンポーネントは、次のコンポーネントに依存します。
 
-    * `org.apache.storm.kafka.bolt.selector.DefaultTopicSelector`: 書き込まれるトピックを記述します。
+    * `org.apache.storm.kafka.bolt.selector.DefaultTopicSelector`:書き込みの対象となるトピックを記述します。
 
-    * `org.apache.kafka.common.serialization.StringSerializer`: データを文字列値としてシリアル化するようにボルトを構成します。
+    * `org.apache.kafka.common.serialization.StringSerializer`:データを文字列値としてシリアル化するようにボルトを構成します。
 
-    * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`: Storm トポロジ内で使用されるタプル データ構造から、Kafka に格納されたフィールドにマップします。
+    * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`:Storm トポロジ内で使用されるタプル データ構造から、Kafka に格納されたフィールドにマップします。
 
 これらのコンポーネントは、`org.apache.storm : storm-kafka` パッケージで提供されます。 Storm のバージョンに適合するパッケージ バージョンを使用してください。 HDInsight 3.6 の場合、Storm のバージョンは 1.1.0 です。
 その他の Kafka コンポーネントが含まれた `org.apache.kafka : kafka_2.10` パッケージも必要です。 Kafka のバージョンに適合するパッケージ バージョンを使用してください。 HDInsight 3.6 の場合、Kafka のバージョンは 0.10.0.0 です。
@@ -124,26 +124,26 @@ Apache Storm には、Apache Kafka を操作するためのコンポーネント
 
 * Kafka-reader: Kafka からデータを読み取り、Storm クラスターの HDFS 互換ファイル ストアに格納します。
 
-    > [!WARNING] 
+    > [!WARNING]  
     > HDInsight で使用される HDFS 互換ストレージを Storm で操作できるようにするには、スクリプト アクションが必要です。 このスクリプトでは、Storm の `extlib` パスに複数の jar ファイルをインストールします。 このチュートリアルのテンプレートでは、クラスターの作成時に、このスクリプトが自動的に使用されます。
     >
     > Storm クラスターの作成にこのドキュメントのテンプレートを使用しない場合は、スクリプト アクションをクラスターに手動で適用する必要があります。
     >
-    > このスクリプト アクションは `https://hdiconfigactions2.blob.core.windows.net/stormextlib/stormextlib.sh` にあり、Storm クラスターのスーパーバイザー ノードと Nimbus ノードに適用されます。 スクリプト アクションの使用方法の詳細については、[スクリプト アクションを使用した HDInsight のカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関するドキュメントをご覧ください。
+    > このスクリプト アクションは [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) にあり、Storm クラスターのスーパーバイザー ノードと Nimbus ノードに適用されます。 スクリプト アクションの使用方法の詳細については、[スクリプト アクションを使用した HDInsight のカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関するドキュメントをご覧ください。
 
 これらのトポロジは、[Flux](https://storm.apache.org/releases/1.1.2/flux.html) で定義されています。 Flux は Storm 0.10.x で導入されており、これによりトポロジ構成とコードを切り離すことができます。 Flux フレームワークを使用するトポロジの場合、YAML ファイルでトポロジを定義します。 YAML ファイルはトポロジの一部として含めることができるほか、 トポロジを送信するときに使用するスタンドアロン ファイルにもなります。 Flux では実行時の変数代入もサポートされており、以下の例ではこれを使用しています。
 
 これらのトポロジの実行時に、次のパラメーターが設定されます。
 
-* `${kafka.topic}`: トポロジの読み取り/書き込みの対象になる Kafka トピックの名前。
+* `${kafka.topic}`:トポロジの読み取り/書き込みの対象になる Kafka トピックの名前。
 
-* `${kafka.broker.hosts}`: Kafka ブローカーが実行されるホスト。 ブローカー情報は、KafkaBolt が Kafka への書き込み時に使用します。
+* `${kafka.broker.hosts}`:Kafka ブローカーが実行されるホスト。 ブローカー情報は、KafkaBolt が Kafka への書き込み時に使用します。
 
-* `${kafka.zookeeper.hosts}`: Kafka クラスター上で Zookeeper が実行されるホスト。
+* `${kafka.zookeeper.hosts}`:Kafka クラスター上で Zookeeper が実行されるホスト。
 
-* `${hdfs.url}`: HDFSBolt コンポーネントのファイル システム URL。 Azure ストレージ アカウントと Azure Data Lake Store のどちらにデータを書き込むかを示します。
+* `${hdfs.url}`:HDFSBolt コンポーネントのファイル システム URL。 Azure Storage アカウントと Azure Data Lake Storage のどちらにデータを書き込むかを示します。
 
-* `${hdfs.write.dir}`: データの書き込み先のディレクトリ。
+* `${hdfs.write.dir}`:データの書き込み先のディレクトリ。
 
 Flux トポロジの詳細については、[https://storm.apache.org/releases/1.1.2/flux.html](https://storm.apache.org/releases/1.1.2/flux.html) を参照してください。
 
@@ -373,7 +373,7 @@ streams:
 | `kafka.broker.hosts` | Kafka ブローカー ホスト (ワーカー ノード)。 |
 | `kafka.topic` | トポロジで使用される Kafka トピック。 |
 | `hdfs.write.dir` | Kafka-reader トポロジによる書き込み先のディレクトリ。 |
-| `hdfs.url` | Storm クラスターで使用されるファイル システム。 Azure ストレージ アカウントの場合、値として `wasb:///` を使用します。 Azure Data Lake Store の場合、値として `adl:///` を使用します。 |
+| `hdfs.url` | Storm クラスターで使用されるファイル システム。 Azure ストレージ アカウントの場合、値として `wasb:///` を使用します。 Azure Data Lake Storage Gen2 の場合、値として `abfs:///` を使用します。 Azure Data Lake Storage Gen1 の場合、値として `adl:///` を使用します。 |
 
 ## <a name="create-the-clusters"></a>クラスターの作成
 
@@ -383,7 +383,7 @@ HDInsight の Apache Kafka では、パブリック インターネットを介�
 
 ![Azure 仮想ネットワークにおける Strom クラスターと Kafka クラスターの図](./media/hdinsight-apache-storm-with-kafka/storm-kafka-vnet.png)
 
-> [!NOTE]
+> [!NOTE]  
 > SSH や [Apache Ambari](https://ambari.apache.org/) など、クラスター上の他のサービスは、インターネット経由でアクセスできます。 HDInsight で使用できるパブリック ポートの詳細については、「[HDInsight で使用されるポートと URI](hdinsight-hadoop-port-settings-for-services.md)」を参照してください。
 
 Azure 仮想ネットワークを作成し、その仮想ネットワーク内に Kafka クラスターと Storm クラスターを作成するには、次の手順に従います。
@@ -400,32 +400,32 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
     * HDInsight バージョン 3.6 上の Kafka (3 ワーカー ノード)
     * HDInsight バージョン 3.6 上の Storm (3 ワーカー ノード)
 
-  > [!WARNING]
-  > HDInsight で Kafka の可用性を保証するには、クラスターに少なくとも 3 つのワーカー ノードが必要です。 このテンプレートは、3 つのワーカー ノードが含まれる Kafka クラスターを作成します。
+   > [!WARNING]  
+   > HDInsight で Kafka の可用性を保証するには、クラスターに少なくとも 3 つのワーカー ノードが必要です。 このテンプレートは、3 つのワーカー ノードが含まれる Kafka クラスターを作成します。
 
 2. 次のガイダンスに従って、**[カスタム デプロイ]** セクションの各エントリに入力します。
 
-    2. 次の情報に従って、**[カスタマイズされたテンプレート]** セクションの各エントリに入力します。
+   1. 次の情報に従って、**[カスタマイズされたテンプレート]** セクションの各エントリに入力します。
 
-    | Setting | 値 |
-    | --- | --- |
-    | サブスクリプション | お使いの Azure サブスクリプション |
-    | リソース グループ | リソースが含まれるリソース グループ。 |
-    | Location | リソースが作成される Azure リージョン。 |
-    | [Kafka Cluster Name]\(Kafka クラスター名\) | Kafka クラスターの名前。 |
-    | [Storm Cluster Name]\(Storm クラスター名\) | Storm クラスターの名前。 |
-    | [Cluster Login User Name]\(クラスター ログイン ユーザー名\) | クラスターの管理者ユーザー名。 |
-    | [クラスター ログイン パスワード] | クラスターの管理者ユーザー パスワード。 |
-    | [SSH ユーザー名] | クラスター用に作成する SSH ユーザー。 |
-    | [SSH パスワード] | SSH ユーザーのパスワード。 |
+      | Setting | 値 |
+      | --- | --- |
+      | サブスクリプション | お使いの Azure サブスクリプション |
+      | リソース グループ | リソースが含まれるリソース グループ。 |
+      | Location | リソースが作成される Azure リージョン。 |
+      | [Kafka Cluster Name]\(Kafka クラスター名\) | Kafka クラスターの名前。 |
+      | [Storm Cluster Name]\(Storm クラスター名\) | Storm クラスターの名前。 |
+      | [Cluster Login User Name]\(クラスター ログイン ユーザー名\) | クラスターの管理者ユーザー名。 |
+      | [クラスター ログイン パスワード] | クラスターの管理者ユーザー パスワード。 |
+      | [SSH ユーザー名] | クラスター用に作成する SSH ユーザー。 |
+      | [SSH パスワード] | SSH ユーザーのパスワード。 |
    
-    ![テンプレート パラメーターの画像](./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png)
+      ![テンプレート パラメーターの画像](./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png)
 
 3. **使用条件**を読み、**[上記の使用条件に同意する]** をオンにします。
 
 4. 最後に、**[ダッシュボードにピン留めする]** をオンにし、**[購入]** をクリックします。
 
-> [!NOTE]
+> [!NOTE]  
 > クラスターの作成には最大で 20 分かかります。
 
 ## <a name="build-the-topology"></a>トポロジの作成
@@ -434,17 +434,17 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
 
 2. **hdinsight-storm-java-kafka** ディレクトリで次のコマンドを使用して、プロジェクトをコンパイルしデプロイ用のパッケージを作成します。
 
-  ```bash
-  mvn clean package
-  ```
+   ```bash
+   mvn clean package
+   ```
 
     このパッケージ処理では、`target` ディレクトリに `KafkaTopology-1.0-SNAPSHOT.jar` という名前のファイルが作成されます。
 
 3. 次のコマンドを使用して、HDInsight の Storm クラスターにパッケージをコピーします。 `sshuser` をクラスターの SSH ユーザー名に置き換えます。 `stormclustername` を __Storm__ クラスターの名前に置き換えます。
 
-  ```bash
-  scp ./target/KafkaTopology-1.0-SNAPSHOT.jar sshuser@stormclustername-ssh.azurehdinsight.net:KafkaTopology-1.0-SNAPSHOT.jar
-  ```
+   ```bash
+   scp ./target/KafkaTopology-1.0-SNAPSHOT.jar sshuser@stormclustername-ssh.azurehdinsight.net:KafkaTopology-1.0-SNAPSHOT.jar
+   ```
 
     メッセージが表示されたら、クラスターの作成時に使用したパスワードを入力します。
 
@@ -463,7 +463,7 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
     ($brokerHosts -join ":9092,") + ":9092"
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 次の Bash の例では、`$CLUSTERNAME` に __Kafka__ クラスターの名前が含まれていることを前提とします。 また、[jq](https://stedolan.github.io/jq/) バージョン 1.5 以降がインストールされているものとします。 プロンプトが表示されたら、クラスターのログイン アカウントのパスワードを入力してください。
 
     ```bash
@@ -474,7 +474,7 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
 
         wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > クラスターに 2 つ以上のブローカー ホストがある場合でも、すべてのホストの完全な一覧をクライアントに提供する必要はありません。 1 つまたは 2 つで十分です。
 
 2. 次のいずれかのを使用して、HDInsight クラスタ上の __Kafka__ の Kafka Broker ホストを検出します。
@@ -490,7 +490,7 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
     ($zookeeperHosts -join ":2181,") + ":2181"
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 次の Bash の例では、`$CLUSTERNAME` に __Kafka__ クラスターが含まれていることを前提とします。 および [jq](https://stedolan.github.io/jq/) がインストールされいていることを前提としています。 プロンプトが表示されたら、クラスターのログイン アカウントのパスワードを入力してください。
 
     ```bash
@@ -501,7 +501,7 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
 
         zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > クラスターに 2 つ以上の Zookeeper ホストがある場合でも、すべてのホストの完全な一覧をクライアントに提供する必要はありません。 1 つまたは 2 つで十分です。
 
     この値を保存します。これは後で使用します。
@@ -512,13 +512,13 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
         kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
         kafka.topic: stormtopic
 
-    > [!IMPORTANT]
-    > `hdfs.url` エントリは、Azure ストレージ アカウントを使用するクラスター用に構成されています。 Data Lake Store を使用する Storm クラスターでこのトポロジを使用するには、この値を `wasb` から `adl` に変更します。
+    > [!IMPORTANT]  
+    > `hdfs.url` エントリは、Azure ストレージ アカウントを使用するクラスター用に構成されています。 Data Lake Storage を使用する Storm クラスターでこのトポロジを使用するには、この値を `wasb` から `adl` に変更します。
 
 4. `dev.properties` ファイルを保存し、次のコマンドを使用して **Storm** クラスターにアップロードします。
 
      ```bash
-    scp dev.properties USERNAME@storm-BASENAME-ssh.azurehdinsight.net:dev.properties
+    scp dev.properties USERNAME@BASENAME-ssh.azurehdinsight.net:dev.properties
     ```
 
     **USERNAME** は、クラスターの SSH ユーザー名に置き換えます。 **BASENAME** は、クラスターの作成時に使用したベース名に置き換えます。
@@ -565,21 +565,21 @@ Kafka では、"_トピック_" にデータが格納されます。 Storm ト�
 
     このコマンドで使用されているパラメーターの意味は次のとおりです。
 
-    * `org.apache.storm.flux.Flux`: Flux を使用してこのトポロジを構成および実行します。
+    * `org.apache.storm.flux.Flux`:Flux を使用してこのトポロジを構成および実行します。
 
-    * `--remote`: トポロジを Nimbus に送信します。 トポロジは、クラスター内のワーカー ノード全体に配布されます。
+    * `--remote`:トポロジを Nimbus に送信します。 トポロジは、クラスター内のワーカー ノード全体に配布されます。
 
-    * `-R /writer.yaml`: `writer.yaml` ファイルを使用して、トポロジを構成します。 `-R` は、このリソースが jar ファイル内に含まれていることを指示しています。 リソースは jar のルートにあるため、`/writer.yaml` がリソースへのパスになります。
+    * `-R /writer.yaml`:`writer.yaml` ファイルを使用して、トポロジを構成します。 `-R` は、このリソースが jar ファイル内に含まれていることを指示しています。 リソースは jar のルートにあるため、`/writer.yaml` がリソースへのパスになります。
 
-    * `--filter`: `dev.properties` ファイルの値を使用して、`writer.yaml` トポロジのエントリを作成します。 たとえば、ファイル内の `kafka.topic` エントリの値を使用して、トポロジの定義内の `${kafka.topic}` エントリを置き換えます。
+    * `--filter`:`dev.properties` ファイルの値を使用して、`writer.yaml` トポロジのエントリを作成します。 たとえば、ファイル内の `kafka.topic` エントリの値を使用して、トポロジの定義内の `${kafka.topic}` エントリを置き換えます。
 
 ## <a name="start-the-reader"></a>リーダーの起動
 
 1. Storm クラスターへの SSH セッションで、次のコマンドを使用してリーダー トポロジを起動します。
 
-  ```bash
-  storm jar KafkaTopology-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /reader.yaml --filter dev.properties
-  ```
+   ```bash
+   storm jar KafkaTopology-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /reader.yaml --filter dev.properties
+   ```
 
 2. 少し待ってから、次のコマンドを使用して、リーダー トポロジによって作成されたファイルを表示します。
 
@@ -630,7 +630,7 @@ Azure Portal を使用してリソース グループを削除するには:
 2. 削除するリソース グループを見つけて、一覧の右側にある __[詳細]__ ボタン ([...]) を右クリックします。
 3. __[リソース グループの削除]__ を選択し、確認します。
 
-> [!WARNING]
+> [!WARNING]  
 > HDInsight クラスターの課金は、クラスターが作成されると開始し、クラスターが削除されると停止します。 課金は分単位なので、クラスターを使わなくなったら必ず削除してください。
 > 
 > HDInsight クラスター上の Kafka を削除すると、Kafka に格納されているすべてのデータが削除されます。

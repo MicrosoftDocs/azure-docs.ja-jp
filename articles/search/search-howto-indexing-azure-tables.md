@@ -1,7 +1,7 @@
 ---
-title: Azure Table Storage のインデックスを Azure Search で作成する | Microsoft Docs
-description: Azure Table Storage に格納されているデータのインデックスを Azure Search で作成する方法について説明します
-ms.date: 10/17/2018
+title: フルテキスト検索用に Azure Table Storage のコンテンツのインデックスを作成する - Azure Search
+description: Azure Table Storage に格納されているデータのインデックスを Azure Search インデクサーで作成する方法について説明します。
+ms.date: 03/01/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: 738518f94869a55cf80db1c87b8c74b167f5cce1
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec2018
+ms.openlocfilehash: e1b411ab54a5b666849893ba9d246eff85e7e54e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406927"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306886"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Azure Table Storage のインデックスを Azure Search で作成する
 この記事では、Azure Search を使用して、Azure Table Storage に格納されているデータのインデックスを作成する方法を示します。
@@ -29,7 +30,7 @@ ms.locfileid: "49406927"
 
 ここでは、REST API を使用したフローについて説明します。 
 
-### <a name="step-1-create-a-datasource"></a>手順 1: データ ソースを作成する
+### <a name="step-1-create-a-datasource"></a>手順 1:データソースの作成
 
 データ ソースは、インデックスを作成するデータ、データにアクセスするために必要な資格情報、および Azure Search がデータの変更を効率よく識別できるようにするポリシーを指定します。
 
@@ -66,8 +67,8 @@ ms.locfileid: "49406927"
 
 次のいずれかの方法でテーブルに対して資格情報を指定できます。 
 
-- **ストレージ アカウントへのフル アクセス接続文字列**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` この接続文字列は、Azure ポータルで次の順に移動することで取得できます。**ストレージ アカウント ブレード** > **[設定]** > **[キー]** (クラシック ストレージ アカウントの場合)、または **[設定]** > **[アクセス キー]** (Azure Resource Manager ストレージ アカウントの場合)。
-- **ストレージ アカウントの共有アクセス署名接続文字列**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` 共有アクセス署名には、コンテナ (ここではテーブル) とオブジェクト (テーブルの行) の一覧と読み取りアクセス許可が必要です。
+- **フル アクセス ストレージ アカウントの接続文字列**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` この接続文字列は、**ストレージ アカウント ブレード** > **[設定]** > **[キー]** と選択する (クラシック ストレージ アカウントの場合) か、**[設定]** > **[アクセス キー]** と選択する (Azure Resource Manager ストレージ アカウントの場合) ことで Azure Portal から取得できます。
+- **ストレージ アカウントの共有アクセス署名の接続文字列**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` 共有アクセス署名には、コンテナー (この場合はテーブル) 上およびオブジェクト (テーブル行) にリストおよび読み取りアクセス許可が必要です。
 -  **テーブルの共有アクセス署名**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` 共有アクセス署名には、テーブルに対するクエリ (読み取り) アクセス許可が必要です。
 
 ストレージの共有アクセス署名の詳細については、「[Shared Access Signature (SAS) の使用](../storage/common/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
@@ -75,7 +76,7 @@ ms.locfileid: "49406927"
 > [!NOTE]
 > 共有アクセス署名の資格情報を使用する場合は、その有効期限が切れないように、データ ソースの資格情報を更新された署名で定期的に更新する必要があります。 共有アクセス署名の資格情報の有効期限が切れた場合、インデクサーは失敗し、「接続文字列で指定された資格情報が無効か期限が切れています」のようなエラー メッセージが表示されます。  
 
-### <a name="step-2-create-an-index"></a>手順 2: インデックスを作成する
+### <a name="step-2-create-an-index"></a>手順 2:インデックスを作成する
 インデックスは、検索に使用する、ドキュメント内のフィールド、属性、およびその他の構成要素を指定します。
 
 インデックスを作成するには:
@@ -94,7 +95,7 @@ ms.locfileid: "49406927"
 
 インデックスの作成の詳細については、[インデックスの作成](https://docs.microsoft.com/rest/api/searchservice/create-index)に関する記事をご覧ください。
 
-### <a name="step-3-create-an-indexer"></a>手順 3: インデクサーを作成する
+### <a name="step-3-create-an-indexer"></a>手順 3:インデクサーの作成
 インデクサーはデータ ソースをターゲットの検索インデックスに接続し、データ更新を自動化するスケジュールを提供します。 
 
 インデックスとデータ ソースを作成した後、インデクサーを作成できます。

@@ -1,5 +1,5 @@
 ---
-title: 'VPN ゲートウェイの複数のサイト間接続を VNet に追加する: Azure Portal: Resource Manager| Microsoft Docs'
+title: '複数の VPN Gateway サイト間接続を VNet に追加するAzure portal: Resource Manager| Microsoft Docs'
 description: マルチサイトのサイト間接続を、既存の接続がある VPN Gateway に追加する
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 5830b3a4bdcd12c01626d9ff3f814d2e7612eaaa
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4b9f007e00d0912687b723bd4f7e747da893948d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29398612"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998836"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>既存の VPN ゲートウェイ接続を使用してサイト間接続を VNet に追加する
 
@@ -35,7 +35,7 @@ ms.locfileid: "29398612"
 この記事は、RouteBased VPN ゲートウェイが存在する Resource Manager VNet に適用されます。 次の手順は、ExpressRoute/サイト間の共存接続の構成には適用されません。 共存接続の詳細については、「[クラシック デプロイ モデルにおいて共存する ExpressRoute 接続とサイト間接続を構成する](../expressroute/expressroute-howto-coexist-resource-manager.md)」を参照してください。
 
 ### <a name="deployment-models-and-methods"></a>デプロイメント モデルおよび方法
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 以下の表は、この構成について新しい記事、追加のツールが利用できるようになったら更新されるものです。 記事が利用できるようになったら、表から直接リンクできるようにします。
 
@@ -45,14 +45,14 @@ ms.locfileid: "29398612"
 次の項目についてご確認ください。
 
 * ExpressRoute/S2S と共存する接続の作成ではない。
-* 既存の接続のある Resource Manager デプロイメント モデルを使用して作成した仮想ネットワークがある。
+* 既存の接続のある Resource Manager デプロイ モデルを使用して作成した仮想ネットワークがある。
 * VNet の仮想ネットワーク ゲートウェイがルートベースである。 VPN ゲートウェイがポリシーベースの場合は、仮想ネットワーク ゲートウェイを削除して、ルートベースとして新しい VPN ゲートウェイを作成する必要があります。
 * この VNet が接続する VNet のアドレスの範囲のいずれも重複していないこと。
 * 互換性のある VPN デバイスがあり、デバイスを構成できる人員がいる。 「 [VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」を参照してください。 VPN デバイスの構成に詳しくない場合や、オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。
 * VPN デバイスの外部接続用パブリック IP アドレスがある。 この IP アドレスを NAT の内側に割り当てることはできません。
 
 ## <a name="part1"></a>パート 1 - 接続の構成
-1. ブラウザーから [Azure Portal](http://portal.azure.com) に移動します。必要であれば Azure アカウントでサインインします。
+1. ブラウザーから [Azure Portal](https://portal.azure.com) に移動します。必要であれば Azure アカウントでサインインします。
 2. **[すべてのリソース]** をクリックして、リソースの一覧から **[仮想ネットワーク ゲートウェイ]** を見つけます。
 3. **[仮想ネットワーク ゲートウェイ]** ページで、**[接続]** をクリックします。
    
@@ -63,7 +63,7 @@ ms.locfileid: "29398612"
 5. **[接続追加]** ページで、次のフィールドを入力します。
    
    * **[名前]:** 作成している接続先のサイトに付ける名前です。
-   * **[接続の種類]:** **[サイト間 (IPsec)]** を選択します。
+   * **[接続の種類]**: **[サイト対サイト (IPsec)]** を選択します。
      
      ![[接続追加] ページ](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "[接続追加] ページ")<br>
 
@@ -94,4 +94,4 @@ ms.locfileid: "29398612"
 
 ## <a name="next-steps"></a>次の手順
 
-接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、仮想マシンの [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/virtual-machines) を参照してください。
+接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[仮想マシンのラーニング パス](/learn/paths/deploy-a-website-with-azure-virtual-machines/)を参照してください。

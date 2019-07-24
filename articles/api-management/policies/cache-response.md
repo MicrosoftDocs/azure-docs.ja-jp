@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: a019eb4556dc7cde34d51af6858f576e8ea9abcf
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 7c9edbf4b2d231453cd336521a04ba6b7714b696
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284533"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873832"
 ---
 # <a name="add-capabilities-to-a-backend-service"></a>バックエンド サービスへの機能の追加
 

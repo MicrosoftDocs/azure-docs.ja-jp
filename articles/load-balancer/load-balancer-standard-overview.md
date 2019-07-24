@@ -1,27 +1,27 @@
 ---
-title: Azure Standard Load Balancer の概要 | Microsoft Docs
+title: Azure Standard Load Balancer とは
+titlesuffix: Azure Load Balancer
 description: Azure Standard Load Balancer の機能の概要
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: ''
-ms.assetid: ''
+manager: twooley
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 03/28/2019
 ms.author: kumud
-ms.openlocfilehash: 17b4bc68b2dc996134626b1822cfd17f0a9a7572
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ee0dc1b9879c8a26c7f3e48cc8daf6ae3511b27a
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161643"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578528"
 ---
-# <a name="azure-load-balancer-standard-overview"></a>Azure Load Balancer Standard の概要
+# <a name="azure-standard-load-balancer-overview"></a>Azure Standard Load Balancer の概要
 
 Azure Load Balancer を使うと、アプリケーションを拡張し、サービスを高可用性にすることができます。 Load Balancer は、受信と送信のどちらのシナリオにも使うことができ、低遅延と高スループットを実現できるだけでなく、あらゆる TCP アプリケーションと UDP アプリケーションの数百万ものフローにスケールアップできます。 
 
@@ -74,6 +74,9 @@ Standard Load Balancer では、HTTPS アプリケーションを正確に監視
 
 ### <a name="az"></a>可用性ゾーン
 
+>[!IMPORTANT]
+>リージョン固有の情報を含む関連トピックについては、[Availability Zones](../availability-zones/az-overview.md) に関するページを参照してください。
+
 Standard Load Balancer は、可用性ゾーンを利用できるリージョンでの追加機能をサポートします。  これらの機能は、Standard Load Balancer のすべての機能に追加されます。  可用性ゾーンの構成は、パブリックと内部の Standard Load Balancer で利用できます。
 
 可用性ゾーンを備えたリージョンにデプロイされると、非ゾーンのフロントエンドは既定でゾーン冗長になります。   ゾーン冗長フロントエンドは、ゾーンの障害の影響を受けず、すべてのゾーンで同時に専用のインフラストラクチャによって提供されます。 
@@ -90,12 +93,12 @@ Standard Load Balancer は Azure Monitor を通じて多次元メトリックを
 
 | メトリック | 説明 |
 | --- | --- |
-| VIP 可用性 | Load Balancer Standard は、リージョン内から Load Balancer フロントエンドを経て、VM をサポートする SDN スタックに至るまでのデータ パスを継続的に学習します。 正常なインスタンスが保持されていれば、測定ではアプリケーションの負荷分散されたトラフィックと同じパスに従います。 顧客が使用しているデータ パスも検証されます。 測定はアプリケーションには見えないので、他の操作と干渉することはありません。|
-| DIP 可用性 | Load Balancer Standard では、構成設定に従ってアプリケーション エンドポイントの正常性を監視する、分散型の正常性プローブ サービスを使用します。 このメトリックは、Load Balancer プールの個々のインスタンス エンドポイントの集計ビューまたはエンドポイントごとのフィルター ビューを提供します。  正常性プローブ構成で示されているアプリケーションの正常性を、Load Balancer がどのように表示するのかを確認できます。
-| SYN パケット | Load Balancer Standard が TCP 接続を終了したり、TCP または UDP パケット フローと対話したりすることはありません。 フローとハンドシェイクは、常にソースと VM インスタンスの間で発生します。 TCP プロトコルのシナリオのトラブルシューティングを適切に行うために、SYN パケット カウンターを使用して TCP 接続試行の数を把握できます。 このメトリックは、受信済みの TCP SYN パケットの数を報告します。|
-| SNAT 接続 | Load Balancer Standard は、パブリック IP アドレス フロントエンドにマスカレードされた送信フローの数を報告します。 SNAT ポートは有限のリソースです。 このメトリックはアプリケーションが送信フローで SNAT にどれくらい依存しているかを示すことができます。  成功した送信 SNAT フローと失敗した送信 SNAT フローのカウンターがレポートされるので、送信フローの正常性について、トラブルシューティングしたり、理解したりするのに役立てることができます。|
-| バイト カウンター | Load Balancer Standard は、フロントエンドごとに処理されたデータを報告します。|
-| パケット カウンター | Load Balancer Standard は、フロントエンドごとに処理されたパケットを報告します。|
+| VIP 可用性 | Standard Load Balancer は、リージョン内からロード バランサー フロントエンドを経て、VM をサポートする SDN スタックに至るまでのデータ パスを継続的に学習します。 正常なインスタンスが保持されていれば、測定ではアプリケーションの負荷分散されたトラフィックと同じパスに従います。 顧客が使用しているデータ パスも検証されます。 測定はアプリケーションには見えないので、他の操作と干渉することはありません。|
+| DIP 可用性 | Standard Load Balancer では、構成設定に従ってアプリケーション エンドポイントの正常性を監視する、分散型の正常性プローブ サービスが使われます。 このメトリックは、Load Balancer プールの個々のインスタンス エンドポイントの集計ビューまたはエンドポイントごとのフィルター ビューを提供します。  正常性プローブ構成で示されているアプリケーションの正常性を、Load Balancer がどのように表示するのかを確認できます。
+| SYN パケット | Standard Load Balancer は、TCP 接続を終了したり、TCP または UDP のパケット フローと対話したりすることはありません。 フローとハンドシェイクは、常にソースと VM インスタンスの間で発生します。 TCP プロトコルのシナリオのトラブルシューティングを適切に行うために、SYN パケット カウンターを使用して TCP 接続試行の数を把握できます。 このメトリックは、受信済みの TCP SYN パケットの数を報告します。|
+| SNAT 接続 | Standard Load Balancer は、パブリック IP アドレス フロントエンドにマスカレードされた送信フローの数を報告します。 SNAT ポートは有限のリソースです。 このメトリックはアプリケーションが送信フローで SNAT にどれくらい依存しているかを示すことができます。  成功した送信 SNAT フローと失敗した送信 SNAT フローのカウンターがレポートされるので、送信フローの正常性について、トラブルシューティングしたり、理解したりするのに役立てることができます。|
+| バイト カウンター | Standard Load Balancer は、フロントエンドごとに処理されたデータ量を報告します。|
+| パケット カウンター | Standard Load Balancer は、フロントエンドごとに処理されたパケット数を報告します。|
 
 [Standard Load Balancer の診断の詳細な説明](load-balancer-standard-diagnostics.md)に関するページをご覧ください。
 
@@ -120,7 +123,7 @@ NSG と、ネットワーク セキュリティ グループをシナリオに�
 
 ### <a name="outbound"></a> 送信接続
 
-Load Balancer は、受信と送信のシナリオをサポートしています。  Standard Load Balancer は、送信接続に関して Basic Load Balancer と大きく異なります。
+Load Balancer は、受信と送信のシナリオをサポートしています。  Standard Load Balancer は、アウトバウンド接続に関して Basic Load Balancer と大きく異なります。
 
 仮想ネットワーク上の内部プライベート IP アドレスを Load Balancer フロントエンドのパブリック IP アドレスにマッピングするには、送信元ネットワーク アドレス変換 (SNAT) が使われます。
 
@@ -138,7 +141,7 @@ Standard Load Balancer では、[より堅牢かつスケーラブルで予測�
 送信接続の需要が多くなると予想されるため、または既に多くなっているために、SNAT ポートを増やす必要がある場合は、同じ仮想マシン リソースに対してフロントエンド、ルール、およびバックエンド プールを追加構成することにより、増分 SNAT ポート インベントリを追加することもできます。
 
 #### <a name="control-which-frontend-is-used-for-outbound"></a>送信に使用されるフロントエンドを制御する
-送信接続を、特定のフロントエンド IP アドレスからの発信のみに制限したい場合は、必要に応じて、送信マッピングを表すルールで送信 SNAT を無効にすることができます。
+アウトバウンド接続を、特定のフロントエンド IP アドレスからの発信のみに制限したい場合は、必要に応じて、アウトバウンド マッピングを表すルールで送信 SNAT を無効にすることができます。
 
 #### <a name="control-outbound-connectivity"></a>送信接続を制御する
 Standard Load Balancer は、仮想ネットワークのコンテキスト内に存在します。  仮想ネットワークは、分離されたプライベート ネットワークです。  パブリック IP アドレスとの関連付けが存在しない場合、パブリック接続は許可されません。  [VNET サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)は、仮想ネットワークの内側にあり、仮想ネットワークに対してローカルであるため、VNET サービス エンドポイントには到達できます。  仮想ネットワークの外部にある宛先への送信接続を確立したい場合は、次の 2 つのオプションがあります。
@@ -154,7 +157,7 @@ Standard SKU に関連付けられていない仮想マシン リソースの送
 [送信接続の詳細な説明](load-balancer-outbound-connections.md)に関するページをご覧ください。
 
 ### <a name="multife"></a>複数のフロントエンド
-Load Balancer は、複数のフロントエンドで複数のルールをサポートします。  Standard Load Balancer は、これを送信シナリオまで広げます。  送信シナリオは基本的に、受信負荷分散ルールの逆です。  受信負荷分散ルールも、送信接続に対する関連付けを作成します。 Standard Load Balancer は、負荷分散ルールを介して、仮想マシン リソースに関連付けられているすべてのフロントエンドを使います。  さらに、負荷分散ルールのパラメーターにより、送信接続のために負荷分散ルールを抑制することができ、特定のフロントエンドを選ぶことが (何も選ばないことも) できます。
+Load Balancer は、複数のフロントエンドで複数のルールをサポートします。  Standard Load Balancer は、これを送信シナリオまで広げます。  アウトバウンド シナリオは基本的に、インバウンド負荷分散ルールの逆です。  インバウンド負荷分散ルールも、アウトバウンド接続に対する関連付けを作成します。 Standard Load Balancer は、負荷分散ルールを介して、仮想マシン リソースに関連付けられているすべてのフロントエンドを使います。  さらに、負荷分散ルールのパラメーターにより、アウトバウンド接続のために負荷分散ルールを抑制することができ、特定のフロントエンドを選ぶことが (何も選ばないことも) できます。
 
 これに対し、Basic Load Balancer は単一のフロントエンドをランダムに選び、選ばれるものを制御する機能はありません。
 
@@ -162,7 +165,7 @@ Load Balancer は、複数のフロントエンドで複数のルールをサポ
 
 ### <a name="operations"></a> 管理操作
 
-Standard Load Balancer リソースは、まったく新しいインフラストラクチャ プラットフォーム上に存在します。  これにより、Standard SKU の管理操作は大幅に高速化され、通常、操作が完了するまでの時間は Standard SKU リソースごとに 30 秒未満です。  バックエンド プールのサイズが大きくなると、バックエンド プールの変更に必要な時間も長くなることに注意してください。
+Standard Load Balancer リソースは、まったく新しいインフラストラクチャ プラットフォーム上に存在します。  これにより、Standard SKU の管理操作は高速化され、通常、操作が完了するまでの時間は Standard SKU リソースごとに 30 秒未満です。  バックエンド プールのサイズが大きくなると、バックエンド プールの変更に必要な時間も長くなります。
 
 Standard Load Balancer のリソースは変更することができ、ある仮想マシンから別の仮想マシンに Standard パブリック IP アドレスを非常に速く移動することができます。
 
@@ -203,7 +206,7 @@ SKU は変更不可です。 一方の SKU からもう一方の SKU に移行�
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
-現在、Load Balancer Standard はすべてのパブリック クラウド リージョンで利用できます。
+現在、Standard Load Balancer はすべてのパブリック クラウド リージョンで利用できます。
 
 ## <a name="sla"></a>SLA
 
@@ -211,7 +214,12 @@ Standard Load Balancer は、99.99% の SLA で利用できます。  詳しく�
 
 ## <a name="pricing"></a>価格
 
-Standard Load Balancer は、構成された負荷分散ルールの数と、処理されたすべての受信および送信データの数に基づいて課金される製品です。 Standard Load Balancer の価格の情報については、[Load Balancer の価格](https://aka.ms/lbpricing)に関するページをご覧ください。
+Standard Load Balancer の使用量は課金されます。
+
+- 構成されている負荷分散規則とアウトバウンド規則の数 (インバウンド NAT 規則はルールの総数にカウントされません)
+- 規則に関係なくインバウンドとアウトバウンドで処理されたデータの量 
+
+Standard Load Balancer の価格の情報については、[Load Balancer の価格](https://azure.microsoft.com/pricing/details/load-balancer/)に関するページをご覧ください。
 
 ## <a name="limitations"></a>制限事項
 
@@ -230,7 +238,7 @@ Standard Load Balancer は、構成された負荷分散ルールの数と、処
 - [正常性プローブ](load-balancer-custom-probe-overview.md)について学習する。
 - [可用性ゾーン](../availability-zones/az-overview.md)の詳細を学習する。
 - [Standard Load Balancer の診断](load-balancer-standard-diagnostics.md)について学習する。
-- [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) での診断で[サポートされる多次元メトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers)について学習する。
+- [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) での診断で[サポートされる多次元メトリック](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers)について学習する。
 - [送信接続に対する Load Balancer](load-balancer-outbound-connections.md) の使用について学習する。
 - [アウトバウンド規則](load-balancer-outbound-rules-overview.md)について学習する。
 - [アイドル時の TCP リセット](load-balancer-tcp-reset.md)について学習する。

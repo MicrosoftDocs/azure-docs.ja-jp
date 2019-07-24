@@ -4,19 +4,19 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
-ms.openlocfilehash: 30b5ae499d29b8b78b5852074362841ac1ceb49f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: e087a1db008422aeec8fd4e073a7476eebe4d54b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50134025"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53729409"
 ---
 1. [Azure Portal] にサインインします。
 2. **[+ 新規]** > **[Web + モバイル]** > **[モバイル アプリ]** の順に選択し、Mobile Apps バックエンドの名前を入力します。
 3. **[リソース グループ]** で、既存のリソース グループを選択するか、新しく作成します (アプリと同じ名前を使用)。 
 4. **[App Service プラン]** では、既定のプラン ([Standard レベル](https://azure.microsoft.com/pricing/details/app-service/)) が選択されています。 別のプランを選択することも、[新しいプランを作成](../articles/app-service/app-service-plan-manage.md#create-an-app-service-plan)することもできます。 
 
-   App Service プランの設定により、アプリに関連付けられる[場所、機能、コスト、コンピューティング リソース](https://azure.microsoft.com/pricing/details/app-service/)が決まります。 App Services プランの詳細と、さまざまな価格レベルおよび目的の場所で新しいプランを作成する方法については、「[Azure App Service プランの概要](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。
+   App Service プランの設定により、アプリに関連付けられる[場所、機能、コスト、コンピューティング リソース](https://azure.microsoft.com/pricing/details/app-service/)が決まります。 App Services プランの詳細と、さまざまな価格レベルおよび目的の場所で新しいプランを作成する方法については、「[Azure App Service プランの概要](../articles/app-service/overview-hosting-plans.md)」を参照してください。
    
 5. **作成**を選択します。 この手順により、Mobile Apps バックエンドが作成されます。 
 6. 新しい Mobile Apps バックエンドの **[設定]** ウィンドウで、**[クイック スタート]** > お使いのクライアント アプリ プラットフォーム > **[データベースの接続]** の順に選択します。 

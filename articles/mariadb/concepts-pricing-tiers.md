@@ -3,26 +3,24 @@ title: Azure Database for MariaDB の価格レベル
 description: この記事では、Azure Database for MariaDB の価格レベルについて説明します。
 author: jan-eng
 ms.author: janeng
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 561244efd653294694cc16a1115962473e9a7cec
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.date: 04/15/2019
+ms.openlocfilehash: 5eb2ba509983918a55370ae0deafd019e03f53d8
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249030"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617786"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB の価格レベル
 
-Azure Database for MariaDB サーバーは、Basic、General Purpose、および Memory Optimized の 3 つの価格レベルのいずれかで作成できます。 価格レベルは、プロビジョニングできる仮想コアでのコンピューティング量、仮想コアあたりのメモリ、およびデータの格納に使用されるストレージ テクノロジによって区別されています。 リソースはすべて、MariaDB サーバー レベルでプロビジョニングされます。 1 つのサーバーには 1 つ以上のデータベースを含めることができます。
+Azure Database for MariaDB サーバーは、次の 3 つの価格レベルのいずれかで作成できます: Basic、汎用、メモリ最適化。 価格レベルは、プロビジョニングできる仮想コアでのコンピューティング量、仮想コアあたりのメモリ、およびデータの格納に使用されるストレージ テクノロジによって区別されています。 リソースはすべて、MariaDB サーバー レベルでプロビジョニングされます。 1 つのサーバーには 1 つ以上のデータベースを含めることができます。
 
 |    | **Basic** | **汎用** | **メモリ最適化** |
 |:---|:----------|:--------------------|:---------------------|
 | コンピューティング世代 | Gen 5 |Gen 5 | Gen 5 |
-| 仮想コア | 1、2 | 2、4、8、16、32 |2、4、8、16 |
+| 仮想コア | 1、2 | 2、4、8、16、32、64 |2、4、8、16、32 |
 | 仮想コアあたりのメモリ | 2 GB | 5 GB | 10 GB |
 | ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 4 TB | 5 GB ～ 4 TB |
 | ストレージの種類 | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
@@ -30,7 +28,7 @@ Azure Database for MariaDB サーバーは、Basic、General Purpose、および
 
 価格レベルを選択する場合は、まず次の表を参考にしてください。
 
-| [価格レベル]  | 対象のワークロード |
+| 価格レベル  | 対象のワークロード |
 |:-------------|:-----------------|
 | Basic | 低負荷なコンピューティングと I/O パフォーマンスを必要とするワークロード。 たとえば、開発やテスト、使用頻度の低い小規模なアプリケーションに使用するサーバーがこれに該当します。 |
 | 汎用 | 負荷分散されたコンピューティングとメモリ、およびスケーラブルな I/O スループットを必要とする大部分のビジネス ワークロード。 たとえば、Web アプリやモバイル アプリ、その他のエンタープライズ アプリケーションをホストするためのサーバーが挙げられます。|
@@ -51,12 +49,11 @@ Azure Database for MariaDB サーバーは、Basic、General Purpose、および
 | ストレージの種類 | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 4 TB | 5 GB ～ 4 TB |
 | ストレージの増分サイズ | 1 GB | 1 GB | 1 GB |
-| IOPS | 可変 |3 IOPS/GB<br/>最小 100 IOPS<br/>最大 6000 IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 6000 IOPS |
+| IOPS | 変数 |3 IOPS/GB<br/>最小 100 IOPS<br/>最大 6000 IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 6000 IOPS |
 
 サーバーの作成中および作成後に、ストレージ容量を追加できます。 Basic レベルでは、IOPS 保証は提供されません。 汎用およびメモリ最適化の価格レベルでは、IOPS は、プロビジョニング済みのストレージ サイズに合わせて 3 対 1 の比率でスケーリングされます。
 
-ご自身の I/O 使用量を監視するには、Azure Portal または Azure CLI コマンドを使用します。 監視すべき関連メトリックは、容量の上限、ストレージの割合、ストレージの使用量、および IO の割合です。
-<!--[storage limit, storage percentage, storage used, and IO percent](concepts-monitoring.md)-->
+ご自身の I/O 使用量を監視するには、Azure Portal または Azure CLI コマンドを使用します。 監視すべき関連メトリックは、[容量の上限、ストレージの割合、ストレージの使用量、および IO の割合](concepts-monitoring.md)です。
 
 ### <a name="reaching-the-storage-limit"></a>容量の上限に到達
 
@@ -66,7 +63,7 @@ Azure Database for MariaDB サーバーは、Basic、General Purpose、および
 
 サーバーのストレージがしきい値に近づいたときに、それを通知するアラートを設定しておくことで、読み取り専用状態に入るのを防ぐことをお勧めします。 
 
-<!--For more information, see the documentation on [how to set up an alert](howto-alert-on-metric.md).-->
+詳細については、[アラートの設定方法](howto-alert-metric.md)に関するドキュメントをご覧ください。
 
 ## <a name="backup"></a>バックアップ
 

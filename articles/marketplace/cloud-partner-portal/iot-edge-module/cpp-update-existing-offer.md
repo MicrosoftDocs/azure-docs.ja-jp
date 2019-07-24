@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 071837aac9fce405fcc5ef92e044a0265e0e5969
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: ca7bed26d91c28304638e85d6da93708bfcfcada
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49433400"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170311"
 ---
 # <a name="update-an-existing-iot-edge-module-offer"></a>既存の IoT Edge モジュール プランの更新
 
@@ -73,7 +73,7 @@ IoT Edge モジュール イメージがセキュリティ パッチ、追加機
 
 3.  **[SKU]** タブで、**[Add new SKU (新しい SKU の追加)]** を選択し、ポップアップ ウィンドウに **[SKU ID]** を指定します。
 
-4.  「[IoT Edge モジュールを Azure Marketplace に発行する](./cpp-publish-offer.md)」で説明している手順に従って、IoT Edge モジュールを再発行します。
+4.  [IoT Edge モジュールの Azure Marketplace への発行](./cpp-publish-offer.md)に関する記事で説明している手順に従って、IoT Edge モジュールを再発行します。
 
 5.  **[発行]** を選択し、新しい SKU を発行するワークフローを開始します。
 
@@ -86,7 +86,7 @@ IoT Edge モジュール イメージがセキュリティ パッチ、追加機
 
 2.  **[すべてのプラン]** から、更新するプランを見つけます。
 
-3.  **[Marketplace]** タブに移動します。「[IoT Edge モジュールを Azure Marketplace に発行する](./cpp-publish-offer.md)」の記事の手順に従って、メタデータを変更します。
+3.  **[Marketplace]** タブに移動します。[IoT Edge モジュールの Azure Marketplace への発行](./cpp-publish-offer.md)に関する記事の手順に従って、メタデータを変更します。
 
 4.  **[発行]** を選択し、変更を発行するワークフローを開始します。
 

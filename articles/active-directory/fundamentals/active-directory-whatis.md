@@ -1,19 +1,21 @@
 ---
-title: Azure Active Directory の概要 | Microsoft Docs
+title: Azure Active Directory とは - Azure Active Directory | Microsoft Docs
 description: 必要な用語、対象ユーザー、ライセンスの基本、および関連する機能を含め、Azure Active Directory について学習します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: overview
 ms.date: 11/13/2018
 ms.author: lizross
-ms.openlocfilehash: 1b1561ed8470c39b13def72774e253db28bf58d8
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: it-pro, seodec18, seo-update-azuread-jan
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0d3b3cd7e759892c2215f190a682f5f69818958d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686587"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442370"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory とは 
 Azure Active Directory (Azure AD) は、Microsoft のクラウドベースの ID およびアクセス管理サービスです。 Azure AD を使用すると、従業員が次のリソースにサインインおよびアクセスしやすくなります。
@@ -51,7 +53,7 @@ Azure AD の実装を強化するために、Azure Active Directory Basic、Prem
 
 - **"従量課金制" の機能ライセンス。** Azure Active Directory Business-to-Customer (B2C) などの機能ライセンスを別途取得することもできます。 B2C は、顧客向けアプリ用の ID およびアクセス管理ソリューションを提供するのに役立つ可能性があります。 詳細については、「[Azure Active Directory B2C のドキュメント](../../active-directory-b2c/index.yml)」を参照してください。
 
-Azure サブスクリプションを Azure AD に関連付ける方法の詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法](active-directory-how-subscriptions-associated-directory.md)」を参照してください。ユーザーにライセンスを割り当てる方法の詳細については、「[方法: Azure Active Directory ライセンスを割り当てる、または削除する](license-users-groups.md)」を参照してください。
+Azure サブスクリプションの Azure AD への関連付けの詳細については「[方法: Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する](active-directory-how-subscriptions-associated-directory.md)」を、ライセンスのユーザーへの割り当ての詳細については「[方法: Azure Active Directory ライセンスを割り当てる、または削除する](license-users-groups.md)」を参照してください。
 
 ## <a name="terminology"></a>用語集
 Azure AD とそのドキュメントについてより深く理解するためには、次の用語をご確認いただく必要があります。
@@ -71,7 +73,7 @@ Azure AD とそのドキュメントについてより深く理解するため�
 |Azure AD 全体管理者|この管理者ロールは、Azure AD テナントを作成したユーザーに自動的に割り当てられます。 全体管理者は、Azure AD と Azure AD にフェデレーションされたすべてのサービス (Exchange Online、SharePoint Online、Skype for Business Online など) に対して、すべての管理機能を実行することができます。 全体管理者は複数人配置することができますが、管理者ロールをユーザーに割り当てることができるのは全体管理者に限られます (これには他の全体管理者を割り当てることも含まれます)。<br><br>**注**<br>この管理者ロールは、Azure portal では全体管理者と呼ばれますが、Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では**会社の管理者**と呼ばれます。<br><br>さまざまな管理者ロールの詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。|
 |Microsoft アカウント (別称: MSA)|Outlook、OneDrive、Xbox LIVE、Office 365 など、コンシューマー向けの Microsoft 製品とクラウド サービスへのアクセスを提供する個人アカウントです。 お使いの Microsoft アカウントは、Microsoft が運営する Microsoft コンシューマー ID アカウント システムを使用して作成、保存されます。|
 
-## <a name="what-features-work-in-azure-ad"></a>Azure AD で利用できる機能
+## <a name="which-features-work-in-azure-ad"></a>Azure AD で利用できる機能
 Azure AD ライセンスを選択すると、組織向けの次の機能の一部またはすべてにアクセスできるようになります。
 
 |Category|説明|

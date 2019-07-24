@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 495806d47839d471976cd8dff112a1db0b072db9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 899adc8d4fb26ac64cd3fbd7096a8b8387900517
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006109"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722294"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>非対話型認証 .NET HDInsight アプリケーションを作成する
 アプリケーション独自の ID (非対話型) またはアプリケーションのサインイン ユーザーの ID (対話型) のいずれかで、Microsoft .NET Azure HDInsight アプリケーションを実行できます。 この記事では、Azure に接続して HDInsight を管理する非対話型認証 .NET アプリケーションを作成する方法について説明します。 対話型アプリケーションのサンプルについては、「[Azure HDInsight への接続](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight)」をご覧ください。 
@@ -37,13 +37,14 @@ Azure AD アプリケーションに[ロール](../role-based-access-control/bui
 2. 左側のメニューの **[リソース グループ]** を選択します。
 3. このチュートリアルの後半で Hive クエリを実行する HDInsight クラスターを含むリソース グループを選択します。 多数のリソース グループがある場合は、フィルターを使って目的のものを見つけることができます。
 4. リソース グループ メニューで **[アクセス制御 (IAM)]** を選択します。
-5. **[ユーザー]** で **[追加]** を選択します。
-6. 説明に従って、所有者ロールを Azure AD アプリケーションに追加します。 ロールが正常に追加されると、**[ユーザー]** にアプリケーションが所有者ロール付きで表示されます。 
+5. **[ロールの割り当て]** タブを選択して、現在のロールの割り当てを表示します。
+6. ページの上部で、**[ロールの割り当ての追加]** を選択します。
+7. 説明に従って、所有者ロールを Azure AD アプリケーションに追加します。 ロールが正常に追加されると、アプリケーションが所有者ロールに一覧表示されます。 
 
 ## <a name="develop-an-hdinsight-client-application"></a>HDInsight クライアント アプリケーションを開発する
 
 1. C# コンソール アプリケーションを作成します。
-2. 次の NuGet パッケージを追加します。
+2. 次の [NuGet](https://www.nuget.org/) パッケージを追加します。
 
         Install-Package Microsoft.Azure.Common.Authentication -Pre
         Install-Package Microsoft.Azure.Management.HDInsight -Pre

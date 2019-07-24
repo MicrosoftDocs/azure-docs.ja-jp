@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 67e74774-1748-43ea-8130-55275a18320f
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
@@ -17,14 +17,15 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 239c0d0adbe89dd3d1d7bc7244a52ab079a36ad4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f87573e23f2c0f48e54b6f03289969aab930e15c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952547"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200600"
 ---
-# <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>クイック スタート: 認証と承認のために Azure AD と連携する .NET Web API を構築する
+# <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>クイック スタート:認証と認可のために Azure AD と連携する .NET Web API を構築する
 
 [!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
@@ -48,7 +49,7 @@ ASP.NET Web アプリでは、こうした保護を、.NET Framework 4.5 に含�
 * [アプリのスケルトンをダウンロード](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip)するか、[完全なサンプルをダウンロード](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip)する。 両方とも、Visual Studio 2013 ソリューションです。
 * アプリケーションの登録先となる Azure AD テナントを持つ。 テナントを所有していない場合は、「 [How to get an Azure Active Directory tenant (Azure Active Directory テナントの取得方法)](quickstart-create-new-tenant.md)」を参照して取得してください。
 
-## <a name="step-1-register-an-application-with-azure-ad"></a>手順 1: アプリケーションを Azure AD に登録する
+## <a name="step-1-register-an-application-with-azure-ad"></a>手順 1:アプリケーションを Azure AD に登録する
 
 アプリケーションのセキュリティ保護を支援するには、まず、テナントでアプリケーションを作成し、Azure AD にいくつかの重要な情報を提供する必要があります。
 
@@ -65,7 +66,7 @@ ASP.NET Web アプリでは、こうした保護を、.NET Framework 4.5 に含�
 6. アプリケーションの **[設定] > [プロパティ]** ページで、アプリ ID URI を更新します。 テナント固有の識別子を入力します。 たとえば、「 `https://contoso.onmicrosoft.com/TodoListService`」のように入力します。
 7. 構成を保存します。 今後の手順でクライアント アプリケーションも登録する必要があるため、ポータルは開いたままにします。
 
-## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>手順 2: OWIN 認証パイプラインを使用するようにアプリを設定する
+## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>手順 2:OWIN 認証パイプラインを使用するようにアプリを設定する
 
 受信した要求およびトークンを検証するために、アプリケーションを Azure AD と通信するように設定する必要があります。
 
@@ -135,7 +136,7 @@ ASP.NET Web アプリでは、こうした保護を、.NET Framework 4.5 に含�
     * `ida:Tenant` には、Azure AD テナントの名前 (contoso.onmicrosoft.com など) を指定します。
     * `ida:Audience` には、Azure Portal で入力したアプリケーションのアプリ ID URI を指定します。
 
-## <a name="step-3-configure-a-client-application-and-run-the-service"></a>手順 3: クライアント アプリケーションを構成してサービスを実行する
+## <a name="step-3-configure-a-client-application-and-run-the-service"></a>手順 3:クライアント アプリケーションを構成してサービスを実行する
 
 To Do List Service の動作を確認できるようにするには、AAD からトークンを取得してサービスを呼び出せるように To Do List クライアントを構成する必要があります。
 

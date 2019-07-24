@@ -15,21 +15,21 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn;davberg
-ms.openlocfilehash: a8d071544462361e9750d3fa622467cd0000a040
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 43d0ab6552847df7f1f2a8599dcc7cb9a8fcb57b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056785"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698831"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM のコンピューティング ベンチマーク スコア
-次の SPECInt ベンチマーク スコアは、Windows Server を実行している高いパフォーマンスの Azure の VM ラインアップについてのコンピューティング パフォーマンスを示します。 コンピューティング ベンチマーク スコアは [Linux VM](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)にも利用できます。 
+次の SPECInt ベンチマーク スコアは、Windows Server を実行している高いパフォーマンスの Azure の VM ラインアップについてのコンピューティング パフォーマンスを示します。 コンピューティング ベンチマーク スコアは [Linux VM](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)にも利用できます。
 
 > [!NOTE]
 > Linux に関する値は最近更新され、より包括的な VM のセットが含まれるようになっています。
 
 ## <a name="a-series---compute-intensive"></a>A シリーズ - コンピューティング集中型
-| サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | 標準偏差 |
+| Size | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | 標準偏差 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_A8 |8 |1 |Intel Xeon CPU E5-2670 0 \@ 2.6 GHz |10 |236.1 |1.1 |
 | Standard_A9 |16 |2 |Intel Xeon CPU E5-2670 0 \@ 2.6 GHz |10 |450.3 |7.0 |
@@ -37,7 +37,7 @@ ms.locfileid: "39056785"
 | Standard_A11 |16 |2 |Intel Xeon CPU E5-2670 0 \@ 2.6 GHz |7 |454.7 |4.8 |
 
 ## <a name="dv2-series"></a>Dv2 シリーズ
-| サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | 標準偏差 |
+| Size | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | 標準偏差 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_D1_v2 |1 |1 |Intel Xeon E5-2673 v3 \@ 2.4 GHz |83 |36.6 |2.6 |
 | Standard_D2_v2 |2 |1 |Intel Xeon E5-2673 v3 \@ 2.4 GHz |27 |70.0 |3.7 |
@@ -50,7 +50,7 @@ ms.locfileid: "39056785"
 | Standard_D14_v2 |16 |2 |Intel Xeon E5-2673 v3 \@ 2.4 GHz |15 |460.8 |6.5 |
 
 ## <a name="g-series-gs-series"></a>G シリーズ、GS シリーズ
-| サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | 標準偏差 |
+| Size | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート | 標準偏差 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_G1、Standard_GS1 |2 |1 |Intel Xeon E5-2698B v3 \@ 2 GHz |31 |71.8 |6.5 |
 | Standard_G2、Standard_GS2 |4 |1 |Intel Xeon E5-2698B v3 \@ 2 GHz |5 |133.4 |13.0 |
@@ -59,7 +59,7 @@ ms.locfileid: "39056785"
 | Standard_G5、Standard_GS5 |32 |2 |Intel Xeon E5-2698B v3 \@ 2 GHz |22 |762.8 |3.7 |
 
 ## <a name="h-series"></a>H シリーズ
-| サイズ | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート  | 標準偏差 |
+| Size | vCPU 数 | NUMA ノード数 | CPU | 実行 | 平均のベース レート  | 標準偏差 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_H8 |8 |1 |Intel Xeon E5-2667 v3 \@ 3.2 GHz |5 |297.4 |0.9 |
 | Standard_H16 |16 |2 |Intel Xeon E5-2667 v3 \@ 3.2 GHz |5 |575.8 |6.8 |

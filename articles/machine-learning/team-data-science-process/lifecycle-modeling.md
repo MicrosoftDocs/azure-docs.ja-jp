@@ -1,28 +1,24 @@
 ---
-title: Team Data Science Process ライフサイクルのモデリング ステージ - Azure | Microsoft Docs
+title: Team Data Science Process ライフサイクルのモデリング ステージ
 description: データ サイエンス プロジェクトのモデリング ステージの目標、タスク、成果物
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
-ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: deguhath
-ms.openlocfilehash: 4043ae4cf8ab7d9716db834fed0019456f2a52d4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: c22c75b4fe900ecb96d016251c09e9ad6ec31f7c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227537"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474022"
 ---
-# <a name="modeling"></a>モデリング
+# <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクルのモデリング ステージ
 
 この記事では、Team Data Science Process (TDSP) のモデリング ステージに関連付けられている目標、タスク、成果物のアウトラインを示します。 このプロセスには、データ サイエンス プロジェクトを体系化するために使用できる推奨ライフサイクルが用意されています。 ライフサイクルは、プロジェクトで通常 (多くの場合に繰り返し) 実行される主要なステージのアウトラインを示します。
 
@@ -45,8 +41,8 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
 ## <a name="how-to-do-it"></a>方法
 このステージでは、以下に示す 3 つの主な課題に取り組みます。
 
-  * **特徴エンジニアリング**: モデルをトレーニングしやすくするために生データからデータの特徴を作成します。
-  * **モデル トレーニング**: 成功のメトリックを比較することで、最も正確に質問に回答できるモデルを見つけます。
+  * **特徴エンジニアリング**:モデルをトレーニングしやすくするために生データからデータの特徴を作成します。
+  * **モデル トレーニング**:成功のメトリックを比較することで、最も正確に質問に回答できるモデルを見つけます。
   * モデルが**運用環境に適している**かどうかを判断します。
 
 ### <a name="feature-engineering"></a>特徴エンジニアリング
@@ -67,7 +63,7 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
    * 別々の方法での成功のメトリックを比較し、質問に回答するための **"最適" なソリューションを判定する**。
 
 > [!NOTE]
-> **漏えいの防止**: モデルまたは機械学習アルゴリズムが非現実的なほど良好な予測を行うことができる、トレーニング データ セットの外部のデータを含めた場合、データ漏えいが発生する可能性があります。 信じられないほど良好な予測結果が得られた場合に、データ サイエンティストが不安を感じる理由として代表的なのが、この漏えいです。 これらの依存関係は検出しにくい場合があります。 漏えいを回避するには、多くの場合、分析データ セットの構築、モデルの作成、結果の精度の評価を繰り返し行うことが必要になります。 
+> **漏えいの防止**:モデルまたは機械学習アルゴリズムが非現実的なほど良好な予測を行うことができる、トレーニング データ セットの外部のデータを含めた場合、データ漏えいが発生する可能性があります。 信じられないほど良好な予測結果が得られた場合に、データ サイエンティストが不安を感じる理由として代表的なのが、この漏えいです。 これらの依存関係は検出しにくい場合があります。 漏えいを回避するには、多くの場合、分析データ セットの構築、モデルの作成、結果の精度の評価を繰り返し行うことが必要になります。 
 > 
 > 
 
@@ -76,9 +72,9 @@ Microsoft では、複数のアルゴリズムとパラメーター スイープ
 ## <a name="artifacts"></a>アーティファクト
 このステージで生成されるアーティファクトには、以下のものが含まれます。
 
-   * [特徴セット](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#feature-sets): モデリング用に作成された特徴は、**データ定義**レポートの **[特徴セット]** セクションに記載されます。 これには、特徴を生成するコードへのポインターと、特徴の生成方法についての説明が含まれます。
-   * [モデル レポート](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): 試行した各モデルについて、各実験の詳細を提供する標準のテンプレート ベースのレポートが生成されます。
-   * **チェックポイント判定**: モデルのパフォーマンスが、実稼働システムにデプロイするのに十分かどうかを評価します。 主な考慮事項の一部を以下に示します。
+   * [特徴セット](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#feature-sets):モデリング用に作成された特徴は、**データ定義**レポートの **[特徴セット]** セクションに記載されます。 これには、特徴を生成するコードへのポインターと、特徴の生成方法についての説明が含まれます。
+   * [モデル レポート](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md):試行した各モデルについて、各実験の詳細を提供する標準のテンプレート ベースのレポートが生成されます。
+   * **チェックポイント判定**:モデルのパフォーマンスが、実稼働システムにデプロイするのに十分かどうかを評価します。 主な考慮事項の一部を以下に示します。
      * テスト データから判断して、質問に対するモデルの回答に十分な確実性があるか。 
      * 別の方法を試す必要があるか。 追加データを収集する、特徴エンジニアリングをさらに実行する、他のアルゴリズムで実験する必要があるか。
 
@@ -94,4 +90,4 @@ TDSP のライフサイクルの各ステップへのリンクを次に示しま
 
 特定のシナリオ のプロセスに伴うすべての手順を初めから終わりまで完全に説明するチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 
 
-Azure Machine Learning Studio を使用して TDSP の手順を実行する方法の例については、「[Azure Machine Learning での Team Data Science Process の使用](https://aka.ms/datascienceprocess)」を参照してください。 
+Azure Machine Learning Studio を使用して TDSP の手順を実行する方法の例については、「[Azure Machine Learning での Team Data Science Process の使用](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)」を参照してください。 

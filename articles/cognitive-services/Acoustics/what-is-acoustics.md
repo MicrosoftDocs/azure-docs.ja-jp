@@ -1,65 +1,60 @@
 ---
-title: Project Acoustics とは
+title: Project Acoustics の概要
 titlesuffix: Azure Cognitive Services
-description: VR や従来型の画面を対象にしたプロジェクトは、Project Acoustics Unity プラグインによって閉塞、反響、立体化の効果を利用することができます。
+description: Project Acoustics は、3D 対話型エクスペリエンス用の音響エンジンです。ベイクされた波動物理学シミュレーションを対話型設計コントロールに統合します。
 services: cognitive-services
 author: kegodin
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: overview
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 6a3c97ead40cfb24604edac0624e38a9b0713fc0
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 1fc125322b83a0eb51095fac21dee05c7ffb39c1
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901026"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313619"
 ---
 # <a name="what-is-project-acoustics"></a>Project Acoustics とは
-VR や従来型の画面を対象にしたプロジェクトは、Project Acoustics Unity プラグインによって閉塞、反響、立体化の効果を利用することができます。 物理学に基づく波形シミュレーションにデザイナーの意図を重ねるゲーム音響効果を設計する手段となります。
+Project Acoustics は、3D 対話型エクスペリエンス用の波動音響エンジンです。 複雑なシーンの回折などの波動効果、ポータリングおよびリバーブ効果をモデル化します。手動のゾーン マークアップは必要ありません。 ゲーム エンジンとオーディオ ミドルウェアの統合も含まれます。 Project Acoustics の理念は、静的ライティングに似ています。詳細な物理学をオフラインでベイクし、物理的なベースラインを提供し、表現豊かな設計コントロールで軽量ランタイムを使用して、芸術的目標を達成します。
 
-## <a name="why-use-acoustics-in-virtual-environments"></a>仮想環境で音響効果を使う理由
-人間は、視聴覚の刺激を用いて周囲の状況を把握します。 仮想世界では、空間オーディオと音響効果を組み合わせることによってユーザーの臨場感を高めます。 ここで説明する音響効果ツールは、仮想世界を解析することによって、臨場感のある音響シミュレーションを作成すると共に、シミュレーション後の設計プロセスを支援します。 この解析は、周囲環境の各サーフェスについて、ジオメトリと素材の両方を対象とします。 シミュレーションには、到達方向 (ポータリング)、リバーブ出力、減衰時間、閉塞効果、障害物効果などのパラメーターが含まれます。
+![Acoustics のボクセルを示している "Gears of War 4" のスクリーンショット](media/gears-with-voxels.jpg)
 
-## <a name="how-does-this-approach-to-acoustics-work"></a>音響効果に対する実際のアプローチ
-このシステムの拠り所となるのは、仮想世界のオフライン計算です。解析を実行時に行った場合よりも複雑なシミュレーションが可能となります。 このオフライン計算によって、音響パラメーターのルックアップ テーブルが生成されます。 実行時にパラメーターに適用される規則は、デザイナーが指定します。 これらの規則を調整することで、きわめて現実感のある効果が得られ、さまざまなバックグラウンド オーディオ サウンドで強い感情強度と臨場感に溢れるシーンが可能となります。
+## <a name="using-wave-physics-for-interactive-acoustics"></a>対話型音響での波動物理学の使用
+レイベースの音響手法では、単一のソースからリスナーへのレイ キャストを使用して、オクルージョンを確認したり、いくつかのレイでローカル シーンのボリュームを予測することでリバーブを発生させたりすることができます。 しかし、これらの手法は信頼できない場合があります。小さな石で、大きな石と同じ程度に遮られるためです。 レイでは、音がオブジェクトの周りで屈折する方法 (回析として知られる現象) が考慮されません。 Project Acoustics のシミュレーションでは波動ベースのシミュレーションを使用して、これらの効果がキャプチャされます。 結果はより予測可能な信頼性の高いものとなります。
 
-## <a name="design-process-comparison"></a>設計プロセスの比較
-Project Acoustics プラグインは、Unity のシーンにおける音響効果に関して新しい設計プロセスを支援します。 この新しい設計プロセスを説明するために、現在、音響効果に広く用いられているアプローチと比較してみましょう。
+Project Acoustics の重要な革新は、音響シミュレーションを従来のサウンド設計の概念と統合することです。 シミュレーション結果は、オクルージョン、ポータリング、リバーブの従来のオーディオ DSP パラメーターに変換されます。 デザイナーは、この変換プロセスの制御を使用します。 Project Acoustics の背後にあるコア テクノロジの詳細については、[研究プロジェクトのページ](https://www.microsoft.com/en-us/research/project/project-triton/)を参照してください。
 
-### <a name="typical-approach-to-acoustics-today"></a>音響効果に対して現在用いられている一般的なアプローチ
-現在、音響効果に用いられている一般的なアプローチでは、リバーブ ボリュームを自分で描画します。
+![シーンを通る波動伝搬の水平方向の 2D スライスを示すアニメーション](media/wave-simulation.gif)
 
-![デザイン ビュー](media/reverbZonesAltSPace2.png)
+## <a name="setup"></a>セットアップ
+[Project Acoustics Unity の統合](unity-integration.md)はドラッグ アンド ドロップで行われ、Unity オーディオ エンジン プラグインが含まれます。 Project Acoustics C# コントロール コンポーネントを各オーディオ オブジェクトにアタッチして、Unity オーディオ ソース コントロールを補強します。
 
-そのうえで、各ゾーンのパラメーターを調整します。
+[Project Acoustics Unreal 統合](unreal-integration.md)には、Unreal 用のエディターおよびゲーム プラグインと、Wwise ミキサー プラグインが含まれます。 カスタム オーディオ コンポーネントでは、ライブ音響設計コントロールで Unreal 内に使い慣れた Wwise 機能が拡張されます。 設計コントロールは、Wwise のミキサー プラグインでも公開されます。
 
-![デザイン ビュー](media/TooManyReverbParameters.png)
+## <a name="workflow"></a>ワークフロー
+* **事前ベイク:** まず、ベイクを設定します。その場合、光軸を無視するなどして、音響に対応するジオメトリを選択します。 その後、自動マテリアル割り当てを編集し、ナビゲーション領域を選択して、リスナー サンプリングをガイドします。 リバーブ/ポータル/ルーム ゾーンの手動のマークアップはありません。
+* **ベイク:** 分析の手順はローカルで行われます。その際に、前述の選択内容に基づいて、シーンでボクセル化とその他の幾何解析を行います。 シーンのセットアップを確認するために、エディターで結果が視覚化されます。 ベイク送信時に、ボクセル データが Azure に送信され、音響ゲーム資産が返されます。
+* **ランタイム:** 資産をご自分のレベルに読み込むと、そのレベルで音響を聴けるようになります。 エディターで詳細なソースごとのコントロールを使用して、音響ライブを設計します。 コントロールはレベル スクリプトから実行することもできます。
 
-最後に、レイトレーシング ロジックを追加することによって、シーン全体で閉塞と障害物の適切なフィルタリング、そしてポータリングのためのパス検索ロジックを確保します。 このコードでは、実行時のコストが大きくなる場合があります。 また、コーナー周辺では滑らかさに問題があるほか、不規則な形状のシーンではエッジ ケースも存在します。
+## <a name="platforms"></a>プラットフォーム
+Project Acoustics ランタイム プラグインは現在、以下のプラットフォームにデプロイできます。
+*  Windows
+* Android
+* Xbox One
 
-### <a name="an-alternative-approach-with-physics-based-design"></a>物理学に基づく設計を使った代替アプローチ
-Project Acoustics の Unity プラグインに用意されているアプローチでは、静的なシーンの図形や素材を指定することができます。 シーンはボクセル化され、レイトレーシングがプロセスで使用されないため、単純化した音響メッシュも完璧な音響メッシュも与える必要がありません。 リバーブ ボリュームでシーンをマーク アップする必要もありません。 このプラグインは、シーンをクラウドにアップロードし、そこで物理学に基づく波形シミュレーションを使用します。 その結果はルックアップ テーブルとしてプロジェクトに統合され、それに変更を加えることで、美的効果やゲームプレイ上の効果を引き出すことができます。
+## <a name="download"></a>ダウンロード
+* [Project Acoustics Unity プラグインとサンプル](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
+* [Project Acoustics Unreal と Wwise のプラグインとサンプル](https://www.microsoft.com/download/details.aspx?id=58090)
+  * Xbox のバイナリとサポートについては、以下のサインアップ フォームを使用してお問い合わせください
 
-![デザイン ビュー](media/GearsWithVoxels.jpg)
-
-## <a name="requirements"></a>必要条件
-* Unity 2018.2 以上 (音響効果の焼き付け) および Unity 5.2 以上 (サウンド設計とデプロイ)
-* Windows 64 ビット Unity エディター
-* Azure Batch サブスクリプション (音響効果の焼き付け)
-* Unity スクリプト ランタイムは ".NET 4.x 相当" に設定する
-
-## <a name="platform-support"></a>プラットフォームのサポート
-* Windows デスクトップ (x86 および AMD64)
-* Windows UWP (x86、AMD64、ARM)
-* Android (x86 および ARM64)
-
-## <a name="download"></a>[ダウンロード]
-音響効果プラグインの評価に関心がある方は、[こちら](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)からご登録のうえ、デザイナー プレビューにご参加ください。
+## <a name="contact-us"></a>お問い合わせ
+* [Project Acoustics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics)
+* [サインアップして Project Acoustics の更新プログラムを受け取る](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)
 
 ## <a name="next-steps"></a>次の手順
-* [設計プロセス](design-process.md)の詳細を確認する。
-* [実際の Unity プロジェクトに音響効果を統合](getting-started.md)してみる。
+* [Project Acoustics のクイック スタート (Unity 用](unity-quickstart.md) または [Unreal 用)](unreal-quickstart.md) を試す
+* [Project Acoustics のサウンド設計理念](design-process.md)を確認する
 

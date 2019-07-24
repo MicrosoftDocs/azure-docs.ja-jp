@@ -3,28 +3,28 @@ title: アクションを繰り返す、または配列を処理するループ�
 description: Azure Logic Apps 内のワークフロー アクションを繰り返したり、配列を処理したりするループを作成する方法です
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.date: 03/05/2018
-ms.topic: article
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 5ba5e5abef4ebdc58c44cbe7f5ba584efe8abfc7
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+manager: jeconnoc
+ms.date: 01/05/2019
+ms.topic: article
+ms.openlocfilehash: 339d4270dc1803879607663e9e2db4a86591ec76
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233108"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523003"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps 内のワークフロー アクションを繰り返す、または配列を処理するループを作成する
 
-ロジック アプリで配列を反復処理するには、["Foreach" ループ](#foreach-loop)を使用するか、[シーケンシャル "Foreach" ループ](#sequential-foreach-loop)を使用します。 標準の "Foreach" ループのイテレーションが並列に実行されるのに対し、シーケンシャル "Foreach" ループのイテレーションは 1 回ずつ実行されます。 "Foreach" ループ が単独ロジック アプリの 1 回の実行で処理できる配列項目の最大数については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページをご覧ください。 
+ロジック アプリで配列を処理するために、["Foreach" ループ](#foreach-loop)を作成できます。 このループでは、配列の項目ごとに 1 つ以上のアクションが繰り返されます。 "Foreach" ループで処理できる配列項目の数に対する制限については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページを参照してください。 
 
-> [!TIP] 
+条件が満たされるか、状態が変更されるまでアクションを繰り返すには、["Until" ループ](#until-loop)を作成できます。 ロジック アプリでは最初にループ内部のすべてのアクションが実行されて、条件または状態がチェックされます。 条件が満たされると、ループが停止します。 そうでない場合は、ループが繰り返されます。 ロジック アプリの実行での "Until" ループの数に対する制限については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページを参照してください。 
+
+> [!TIP]
 > 配列を受け取るトリガーがあり、各配列項目のワークフローを実行する場合は、[**SplitOn** トリガー プロパティ](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)を使用してその配列を "*バッチ解除*" できます。 
-  
-条件を満たすまたは一部の状態が変更されるまでアクションを繰り返し実行するには、["Until" ループ](#until-loop)を使用します。 ロジック アプリは、まずループ内ですべてのアクションを実行し、最後の手順で状態をチェックします。 条件が満たされると、ループが停止します。 そうでない場合は、ループが繰り返されます。 単独ロジック アプリの 1 回の実行で処理できる "Until" ループの最大数については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページをご覧ください。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,21 +36,31 @@ ms.locfileid: "50233108"
 
 ## <a name="foreach-loop"></a>"Foreach" ループ
 
-配列内の各項目のアクションを繰り返すには、ロジック アプリのワークフローで "Foreach" ループを使用します。 "Foreach" ループには複数のアクションを指定し、それぞれに "Foreach" ループを入れ子にできます。 既定では、標準の "Foreach" ループのサイクルは並列に実行されます。 "Foreach" ループが実行できる並列サイクルの最大数については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページをご覧ください。
+"Foreach" ループは、配列項目ごとに 1 つ以上のアクションを繰り返し、配列でのみ動作します。 "Foreach" ループのイテレーションは並列で実行します。 ただし、[シーケンシャル "Foreach" ループ](#sequential-foreach-loop)を設定することにより、一度に 1 つのイテレーションを実行できます。 
 
-> [!NOTE] 
-> "Foreach" ループは配列でのみ機能し、ループ内のアクションは `@item()` リファレンスを使用して配列内の各項目を処理します。 配列にないデータを指定すると、ロジック アプリのワークフローが失敗します。 
+"Foreach" ループを使用する場合の考慮事項のいくつかを次に示します。
 
-たとえば、このロジック アプリは Web サイトの RSS フィードから概要 (日単位) を送信します。 アプリは "Foreach" ループを使用して、新しく見つかった項目それぞれについて電子メールを送信します。
+* 入れ子になったループでは、イテレーションは常に、並列ではなく順番に実行します。 入れ子になったループ内の項目に対して並列で操作を実行するには、[子ロジック アプリ](../logic-apps/logic-apps-http-endpoint.md)を作成して呼び出します。
+
+* 各ループ イテレーション中での変数に対する操作の予測可能な結果を取得するには、これらのループを順番に実行します。 たとえば、同時実行ループが終了すると、変数操作に対する増分、減分、追加で予測可能な結果が返されます。 ただし、同時実行ループでの各イテレーション中に、これらの操作で予期しない結果が返される可能性があります。 
+
+* "Foreach" ループ内のアクションは、[`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item)  
+式を使用して、配列内の各項目を参照して処理します。 配列にないデータを指定すると、ロジック アプリのワークフローが失敗します。 
+
+このロジック アプリの例では、Web サイトの RSS フィードの日次サマリーを送信します。 アプリは、新しい項目ごとに電子メールを送信する "Foreach" ループを使用します。
 
 1. Outlook.com や Office 365 の Outlook アカウントを使用して、[このサンプルのロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。
 
 2. RSS トリガーと電子メール送信アクションの間に、"Foreach" ループを追加します。 
 
-   ステップの間にループを追加するには、ループを追加する位置の矢印の上にポインターを移動します。 
-   表示される**プラス記号** (**+**) を選択し、**[Add a for each]\(for each の追加\)** を選択します。
+   1. ステップの間にループを追加するには、これらのステップ間の矢印の上にポインターを移動します。 
+   表示される**プラス記号** (**+**) を選択し、**[アクションの追加]** を選択します。
 
-   ![ステップの間に "Foreach" ループを追加する](media/logic-apps-control-flow-loops/add-for-each-loop.png)
+      ![[アクションの追加] を選択](media/logic-apps-control-flow-loops/add-for-each-loop.png)
+
+   1. 検索ボックスで、**[すべて]** を選択します。 検索ボックスに、フィルターとして「for each」と入力します。 アクションの一覧から、次のアクションを選択します。**For each - コントロール**
+
+      !["For each" ループを追加](media/logic-apps-control-flow-loops/select-for-each.png)
 
 3. これでループをビルドします。 **[動的なコンテンツの追加]** リストが表示された後に、**[Select an output from previous steps]\(前のステップから出力を選択する\)** で、RSS トリガーからの出力である **[フィード リンク]** 配列を選択します。 
 
@@ -63,7 +73,7 @@ ms.locfileid: "50233108"
 
    ![配列を選択する](media/logic-apps-control-flow-loops/for-each-loop-select-array.png)
 
-4. 各配列項目でアクションを実行するには、**[Send an email]\(電子メールを送信する\)** アクションを **For each** ループにドラッグします。 
+4. 各配列項目でアクションを実行するには、**電子メールを送信する** アクションをループにドラッグします。 
 
    ロジック アプリは次の例のようになります。
 
@@ -79,86 +89,93 @@ ms.locfileid: "50233108"
 
 ``` json
 "actions": {
-    "myForEachLoopName": {
-        "type": "Foreach",
-        "actions": {
-            "Send_an_email": {
-                "type": "ApiConnection",
-                "inputs": {
-                    "body": {
-                        "Body": "@{item()}",
-                        "Subject": "New CNN post @{triggerBody()?['publishDate']}",
-                        "To": "me@contoso.com"
-                    },
-                    "host": {
-                        "api": {
-                            "runtimeUrl": "https://logic-apis-westus.azure-apim.net/apim/office365"
-                        },
-                        "connection": {
-                            "name": "@parameters('$connections')['office365']['connectionId']"
-                        }
-                    },
-                    "method": "post",
-                    "path": "/Mail"
-                },
-                "runAfter": {}
-            }
-        },
-        "foreach": "@triggerBody()?['links']",
-        "runAfter": {},
-    }
-},
+   "myForEachLoopName": {
+      "type": "Foreach",
+      "actions": {
+         "Send_an_email": {
+            "type": "ApiConnection",
+            "inputs": {
+               "body": {
+                  "Body": "@{item()}",
+                  "Subject": "New CNN post @{triggerBody()?['publishDate']}",
+                  "To": "me@contoso.com"
+               },
+               "host": {
+                  "api": {
+                     "runtimeUrl": "https://logic-apis-westus.azure-apim.net/apim/office365"
+                  },
+                  "connection": {
+                     "name": "@parameters('$connections')['office365']['connectionId']"
+                  }
+               },
+               "method": "post",
+               "path": "/Mail"
+            },
+            "runAfter": {}
+         }
+      },
+      "foreach": "@triggerBody()?['links']",
+      "runAfter": {}
+   }
+}
 ```
 
 <a name="sequential-foreach-loop"></a>
 
-## <a name="foreach-loop-sequential"></a>"Foreach" ループ: シーケンシャル
+## <a name="foreach-loop-sequential"></a>"Foreach" ループ:シーケンシャル
 
-既定では、"Foreach" ループ内の各サイクルでは、各配列項目が並列に実行されます。 各サイクルをシーケンシャルに実行するには、"Foreach" ループに **[シーケンシャル]** オプションを設定します。
+既定では、"Foreach" ループのサイクルは並列に実行されます。 各サイクルをシーケンシャルに実行するには、ループの **[シーケンシャル]** オプションを設定します。 予測可能な結果が想定されるループ内でループや変数を入れ子にしている場合、"Foreach" ループは順番に実行する必要があります。 
 
 1. ループの右上隅で、**省略記号** (**...**) > **[設定]** と選択します。
 
    !["Foreach" ループで、[...] > [設定] を選択する](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
 
-2. **[シーケンシャル]** の設定をオンにし、**[終了]** を選択します。
+1. **[同時実行制御]** で、**[同時実行制御]** 設定を **[オン]** にします。 **[並列処理の次数]** スライダーを **1** まで動かし、**[完了]** を選択します。
 
-   !["Foreach" ループの [シーケンシャル] 設定をオンにする](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
+   ![同時実行制御をオンにする](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
 
-ロジック アプリの JSON 定義で、**operationOptions** パラメーターを `Sequential` に設定することもできます。 例: 
+ロジック アプリの JSON 定義を使用している場合、`operationOptions` パラメーターを追加することにより `Sequential` オプションを使用できます。たとえば次のようになります。
 
 ``` json
 "actions": {
-    "myForEachLoopName": {
-        "type": "Foreach",
-        "actions": {
-            "Send_an_email": {               
-            }
-        },
-        "foreach": "@triggerBody()?['links']",
-        "runAfter": {},
-        "operationOptions": "Sequential"
-    }
-},
+   "myForEachLoopName": {
+      "type": "Foreach",
+      "actions": {
+         "Send_an_email": { }
+      },
+      "foreach": "@triggerBody()?['links']",
+      "runAfter": {},
+      "operationOptions": "Sequential"
+   }
+}
 ```
 
 <a name="until-loop"></a>
 
 ## <a name="until-loop"></a>"Until" ループ
   
-条件を満たすまたは一部の状態が変更されるまでアクションを繰り返し実行するには、ロジック アプリのワークフローで "Until" ループを使用します。 "Until" ループを使用する一般的なユース ケースをいくつか紹介します。
+アクションを実行し、条件が満たされるか、状態が変更されるまで繰り返すには、これらのアクションを "Until" ループに入れます。 ロジック アプリでは最初にループ内部のすべてのアクションが実行されて、条件または状態がチェックされます。 条件が満たされると、ループが停止します。 そうでない場合は、ループが繰り返されます。
+
+"Until" ループを使用できる一般的なシナリオをいくつか紹介します。
 
 * 必要なレスポンスを受け取るまでエンドポイントを呼び出す。
-* データベースにレコードを作成し、そのレコード内の特定のフィールドが承認されるまで待ち、処理を続行する。 
 
-たとえば、このロジック アプリは、毎日午前 8 時 00 分に、変数の値が 10 と等しくなるまである変数を増分させます。 その後、このロジック アプリは現在の値を確認する電子メールを送信します。 この例では Office 365 Outlook を使用していますが、Logic Apps でサポートされている電子メール プロバイダーであれば何でも使用できます ([コネクターの一覧はこちらで確認できます](https://docs.microsoft.com/connectors/))。 別のメール アカウントをお使いの場合でも、全体的な手順は同じですが、UI がやや異なる場合があります。 
+* データベース内にレコードを作成する。 そのレコード内の特定のフィールドが承認されるまで待機します。 処理し続けます。 
 
-1. 空のロジック アプリを作成します。 ロジック アプリ デザイナーで、"繰り返し" を検索し、トリガー **[スケジュール - 繰り返し]** を選択します。 
+このロジック アプリ例は、毎日午前 8 時 00 分に開始し、ある変数の値が 10 と等しくなるまでその変数を増分させます。 その後、このロジック アプリは現在の値を確認する電子メールを送信します。 
 
-   ![[スケジュール - 繰り返し] トリガーを追加する](./media/logic-apps-control-flow-loops/do-until-loop-add-trigger.png)
+> [!NOTE]
+> これらの手順では Office 365 Outlook を使用できますが、Logic Apps がサポートするどの電子メール プロバイダーでも使用できます。 
+> [こちらからコネクタの一覧を確認してください](https://docs.microsoft.com/connectors/)。 別の電子メール アカウントを使用する場合、おおよその手順は変わりませんが、UI の表示がやや異なることがあります。 
 
-2. 間隔、頻度、時刻を設定して、トリガーが実行されるタイミングを指定します。 時刻を設定するには、**[詳細オプションを表示する]** を選択します。
+1. 空のロジック アプリを作成します。 ロジック アプリ デザイナーの検索ボックスの下で、**[すべて]** を選択します。 「定期的」を検索します。 
+   トリガーの一覧から、**[定期的なスケジュール]** を選択します。
 
-   ![[スケジュール - 繰り返し] トリガーを追加する](./media/logic-apps-control-flow-loops/do-until-loop-set-trigger-properties.png)
+   ![[定期的なスケジュール] トリガーの追加](./media/logic-apps-control-flow-loops/do-until-loop-add-trigger.png)
+
+1. 間隔、頻度、時刻を設定して、トリガーが実行されるタイミングを指定します。 時刻を設定するには、**[詳細オプションを表示する]** を選択します。
+
+   ![定期的なスケジュールを設定する](./media/logic-apps-control-flow-loops/do-until-loop-set-trigger-properties.png)
 
    | プロパティ | 値 |
    | -------- | ----- |
@@ -167,66 +184,77 @@ ms.locfileid: "50233108"
    | **設定時刻 (時間)** | 8 |
    ||| 
 
-3. トリガーで、**[新しいステップ]** > **[アクションの追加]** の順に選びます。 "変数" を検索し、アクション **[変数 - 変数を初期化する]** を選択します。
+1. トリガーで、**[新しいステップ]** を選択します。 
+   "変数" を検索し、次のアクションを選択します: **[変数の初期化 - 変数]**
 
-   ![[変数 - 変数を初期化する] アクションを追加する](./media/logic-apps-control-flow-loops/do-until-loop-add-variable.png)
+   ![変数の初期化 - 変数 を追加する](./media/logic-apps-control-flow-loops/do-until-loop-add-variable.png)
 
-4. 次の値を使用して変数を設定します。
+1. 次の値を使用して変数を設定します。
 
    ![変数のプロパティを設定する](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
-   | プロパティ | 値 | [説明] |
+   | プロパティ | 値 | 説明 |
    | -------- | ----- | ----------- |
    | **名前** | 制限 | 変数の名前 | 
    | **種類** | 整数 | 変数のデータ型 | 
    | **値** | 0 | 変数の開始値 | 
    |||| 
 
-5. **[変数を初期化する]** アクションの下で、**[新しいステップ]** > **[詳細]** と選択します。 ループ **[Add a do until]\(do until の追加\)** を選択します。
+1. **[変数を初期化する]** アクションの下で、**[新しいステップ]** を選択します。 
 
-   !["do until" ループを追加する](./media/logic-apps-control-flow-loops/do-until-loop-add-until-loop.png)
+1. 検索ボックスで、**[すべて]** を選択します。 "期限" を検索し、次のアクションを選択します: **[期限 - コントロール]**
 
-6. **Limit** 変数と **is equal to** 演算子を選択して、ループの終了条件をビルドします。 比較対象値として **10** と入力します。
+   ![[期限] ループを追加する](./media/logic-apps-control-flow-loops/do-until-loop-add-until-loop.png)
+
+1. **Limit** 変数と **is equal to** 演算子を選択して、ループの終了条件をビルドします。 
+   比較対象値として **10** と入力します。
 
    ![ループを停止させる終了条件をビルドする](./media/logic-apps-control-flow-loops/do-until-loop-settings.png)
 
-7. ループ内で、**[アクションの追加]** を選択します。 "変数" を検索し、アクション **[変数 - 変数の値を増やす]** を選択します。
+1. ループ内で、**[アクションの追加]** を選択します。 
+
+1. 検索ボックスで、**[すべて]** を選択します。 "変数" を検索し、次のアクションを選択します: **[変数の値を増やす - 変数]**
 
    ![変数の値を増やすアクションを追加する](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable.png)
 
-8. **[名前]** には、**Limit** 変数を選択します。 **[値]** には、「1」と入力します。 
+1. **[名前]** には、**Limit** 変数を選択します。 **[値]** には、「1」と入力します。 
 
-   !["Limit" を 1 ずつ増やす](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
+     !["Limit" を 1 ずつ増やす](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
-9. そのループの下のループ外の位置に、電子メールを送信するアクションを追加します。 メッセージに従ってメール アカウントにサインインします。
+1. ループ外部の下側で、**[新しいステップ]** を選択します。 
 
-   ![電子メールを送信するアクションを追加する](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
+1. 検索ボックスで、**[すべて]** を選択します。 
+     電子メールを送信するアクションを検索し、追加します。たとえば、次のようにします。 
 
-10. 電子メールのプロパティを設定します。 件名に **Limit** 変数を追加します。 こうすることで、次のように、変数の現在の値が指定の条件と一致していることを確認できます。
+     ![電子メールを送信するアクションを追加する](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
 
-    ![電子メールのプロパティを設定する](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
+1. メッセージに従ってメール アカウントにサインインします。
 
-    | プロパティ | 値 | [説明] |
-    | -------- | ----- | ----------- | 
-    | **To** | *<email-address@domain>* | 受信者の電子メール アドレス。 テストのために、自分の電子メール アドレスを使用します。 | 
-    | **[件名]** | "Limit" の現在の値は **Limit** | 電子メールの件名を指定します。 この例では、**Limit** 変数が含まれていることを確認してください。 | 
-    | **本文** | <*email-content*> | 送信する電子メール メッセージの内容を指定します。 この例では、任意のテキストを入力してください。 | 
-    |||| 
+1. 電子メール アクションのプロパティを設定します。 件名に **Limit** 変数を追加します。 こうすることで、次のように、変数の現在の値が指定の条件と一致していることを確認できます。
 
-11. ロジック アプリを保存し、 ロジック アプリを手動でテストするには、デザイナーのツール バーで **[実行]** を選択します。
+      ![電子メールのプロパティを設定する](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-    ロジックの実行が開始された後に、指定した内容の電子メールを受け取ります。
+      | プロパティ | 値 | 説明 |
+      | -------- | ----- | ----------- | 
+      | **To** | *\<email-address\@domain>* | 受信者の電子メール アドレス。 テストのために、自分の電子メール アドレスを使用します。 | 
+      | **[件名]** | "Limit" の現在の値は **Limit** | 電子メールの件名を指定します。 この例では、**Limit** 変数が含まれていることを確認してください。 | 
+      | **本文** | <*email-content*> | 送信する電子メール メッセージの内容を指定します。 この例では、任意のテキストを入力してください。 | 
+      |||| 
 
-    ![受信した電子メール](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
+1. ロジック アプリを保存し、 ロジック アプリを手動でテストするには、デザイナーのツール バーで **[実行]** を選択します。
+
+      ロジックの実行が開始された後に、指定した内容の電子メールを受け取ります。
+
+      ![受信した電子メール](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
 
 ## <a name="prevent-endless-loops"></a>無限ループを防ぐ
 
 "Until" ループには既定の制限が設定されており、次のいずれかの条件が発生すると実行が中止されます。
 
-| プロパティ | 既定値 | [説明] | 
+| プロパティ | 既定値 | 説明 | 
 | -------- | ------------- | ----------- | 
 | **カウント** | 60 | ループが終了するまでに実行されるループの最大数。 既定値は、60 サイクルです。 | 
-| **タイムアウト** | PT1H | ループが終了するまでにループが実行される最大時間数。 既定値は 1 時間で、ISO 8601 形式で指定されます。 <p>タイムアウト値は、ループのサイクルごとに評価されます。 ループ内のいずれかのアクションがタイムアウト制限よりも長い時間がかかった場合、現在のサイクルは中止されませんが、制限の条件が満たされていないため、次のサイクルは始まりません。 | 
+| **タイムアウト** | PT1H | ループが終了するまでにループが実行される最大時間数。 既定値は 1 時間で、ISO 8601 形式で指定されます。 <p>タイムアウト値は、ループのサイクルごとに評価されます。 ループ内のアクションがタイムアウト制限より長くなる場合、現在のサイクルは停止しません。 ただし、制限の条件が満たされていないため、次のサイクルは開始しません。 | 
 |||| 
 
 既定の制限を変更するには、ループ アクションのシェイプで **[詳細オプションを表示する]** を選択します。
@@ -239,73 +267,74 @@ ms.locfileid: "50233108"
 
 ``` json
 "actions": {
-    "Initialize_variable": {
-        // Definition for initialize variable action
-    },
-    "Send_an_email": {
-        // Definition for send email action
-    },
-    "Until": {
-        "type": "Until",
-        "actions": {
-            "Increment_variable": {
-                "type": "IncrementVariable",
-                "inputs": {
-                    "name": "Limit",
-                    "value": 1
-                },
-                "runAfter": {}
-            }
-        },
-        "expression": "@equals(variables('Limit'), 10)",
-        // To prevent endless loops, an "Until" loop 
-        // includes these default limits that stop the loop. 
-        "limit": { 
-            "count": 60,
-            "timeout": "PT1H"
-        },
-        "runAfter": {
-            "Initialize_variable": [
-                "Succeeded"
-            ]
-        },
-    }
-},
+   "Initialize_variable": {
+      // Definition for initialize variable action
+   },
+   "Send_an_email": {
+      // Definition for send email action
+   },
+   "Until": {
+      "type": "Until",
+      "actions": {
+         "Increment_variable": {
+            "type": "IncrementVariable",
+            "inputs": {
+               "name": "Limit",
+               "value": 1
+            },
+            "runAfter": {}
+         }
+      },
+      "expression": "@equals(variables('Limit'), 10)",
+      // To prevent endless loops, an "Until" loop 
+      // includes these default limits that stop the loop. 
+      "limit": { 
+         "count": 60,
+         "timeout": "PT1H"
+      },
+      "runAfter": {
+         "Initialize_variable": [
+            "Succeeded"
+         ]
+      }
+   }
+}
 ```
 
-もう 1 つの例では、この "Until" ループはリソースを作成し、HTTP レスポンスのボディが "完了" 状態で返されるときに中止される、HTTP エンドポイントを呼び出します。 無限ループを防ぐために、このループは次の条件のいずれかが発生する場合でも中止されます。
+この「期限」ループ例では、リソースを作成する HTTP エンドポイントを呼び出します。 HTTP 応答の本文で `Completed` ステータスが返されると、ループは停止します。 無限ループを防ぐために、このループは次の条件のいずれかが発生する場合でも中止されます。
 
 * ループが 10 回実行された。これは `count` 属性で指定されています。 既定値は 60 回です。 
-* ループが 2 時間実行を試行した。これは `timeout` 属性で ISO 8601 形式で指定されています。 既定値は 1 時間です。
+
+* ループが 2 時間実行した。これは `timeout` 属性で ISO 8601 形式で指定されています。 既定値は 1 時間です。
   
 ``` json
 "actions": {
-    "myUntilLoopName": {
-        "type": "Until",
-        "actions": {
-            "Create_new_resource": {
-                "type": "Http",
-                "inputs": {
-                    "body": {
-                        "resourceId": "@triggerBody()"
-                    },
-                    "url": "https://domain.com/provisionResource/create-resource",
-                    "body": {
-                        "resourceId": "@triggerBody()"
-                    }
-                },
-                "runAfter": {},
-                "type": "ApiConnection"
-            }
-        },
-        "expression": "@equals(triggerBody(), 'Completed')",
-        "limit": {
-            "count": 10,
-            "timeout": "PT2H"
-        },
-        "runAfter": {}
-    }
-},
+   "myUntilLoopName": {
+      "type": "Until",
+      "actions": {
+         "Create_new_resource": {
+            "type": "Http",
+            "inputs": {
+               "body": {
+                  "resourceId": "@triggerBody()"
+               },
+               "url": "https://domain.com/provisionResource/create-resource",
+               "body": {
+                  "resourceId": "@triggerBody()"
+               }
+            },
+            "runAfter": {},
+            "type": "ApiConnection"
+         }
+      },
+      "expression": "@equals(triggerBody(), 'Completed')",
+      "limit": {
+         "count": 10,
+         "timeout": "PT2H"
+      },
+      "runAfter": {}
+   }
+}
 ```
 
 ## <a name="get-support"></a>サポートを受ける

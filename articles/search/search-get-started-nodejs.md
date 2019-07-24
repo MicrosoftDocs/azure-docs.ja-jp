@@ -1,5 +1,5 @@
 ---
-title: Node.js での Azure Search の使用 | Microsoft Docs
+title: Node.js での Azure Search の使用 - Azure Search
 description: プログラミング言語として Node.js を使用して Azure のホスト型クラウド検索サービスに基づいた検索アプリケーションを作成する手順を示します。
 author: jj09
 manager: jlembicz
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 04/26/2017
 ms.author: jjed
-ms.openlocfilehash: 713e5304ca54039413f68ebc189dd049e77cdaa0
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.custom: seodec2018
+ms.openlocfilehash: 1b37b3c52abd3750c3452a46bdf5b0c5954de4dd
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527577"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005337"
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Node.js での Azure Search の使用
 > [!div class="op_single_selector"]
@@ -24,12 +25,12 @@ ms.locfileid: "39527577"
 
 検索エクスペリエンスとして Azure Search を使用するカスタム Node.js 検索アプリケーションを作成する方法を説明します。 このチュートリアルでは、 [Azure Search サービス REST API](https://msdn.microsoft.com/library/dn798935.aspx) を使用して、この演習で使用するオブジェクトおよび操作を作成します。
 
-[Node.js](https://Nodejs.org) と NPM、[Sublime Text 3](http://www.sublimetext.com/3)、および Windows 8.1 の Windows PowerShell を使用して、このコードを開発しテストしました。
+[Node.js](https://Nodejs.org) と NPM、[Sublime Text 3](https://www.sublimetext.com/3)、および Windows 8.1 の Windows PowerShell を使用して、このコードを開発しテストしました。
 
 このサンプルを実行するには、Azure Search サービスが必要です。このサービスには、[Azure Portal](https://portal.azure.com) でサインアップできます。 詳しい手順については、[ポータルでの Azure Search サービスの作成](search-create-service-portal.md)に関するページを参照してください。
 
 ## <a name="about-the-data"></a>データについて
-このサンプル アプリケーションでは、 [United States Geological Services (USGS)](http://geonames.usgs.gov/domestic/download_data.htm)からのデータをロードアイランド州でフィルター処理してデータサイズを削減して使用します。 このデータを使用して、病院や学校などの目立つ建物および河川、湖沼、山などの地理的特徴を返す検索アプリケーションを作成します。
+このサンプル アプリケーションでは、 [United States Geological Services (USGS)](https://geonames.usgs.gov/domestic/download_data.htm)からのデータをロードアイランド州でフィルター処理してデータサイズを削減して使用します。 このデータを使用して、病院や学校などの目立つ建物および河川、湖沼、山などの地理的特徴を返す検索アプリケーションを作成します。
 
 このアプリケーションでは、 **DataIndexer** プログラムは [Indexer](https://msdn.microsoft.com/library/azure/dn798918.aspx) コンストラクトを使用してインデックスを作成して読み込み、パブリック Azure SQL Database からフィルター処理された USGS データセットを取得します。 オンライン データ ソースに対する資格情報と接続情報は、プログラム コードで提供されます。 それ以上の構成は必要ありません。
 

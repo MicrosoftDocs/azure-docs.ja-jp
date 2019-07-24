@@ -16,16 +16,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 6e2fa77273ef35fae6c3b232cb36fa913faf879d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 9a0b12ec9d825fc665bd5beb89e911b80ed3889f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299051"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013878"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Microsoft Azure の Cloud Foundry に最初のアプリをデプロイする
 
-[Cloud Foundry](http://cloudfoundry.org) は、Microsoft Azure で使用できる一般的なオープン ソース プラットフォームです。 この記事では、Azure 環境にある Cloud Foundry にアプリケーションをデプロイして管理する方法について説明します。
+[Cloud Foundry](https://cloudfoundry.org) は、Microsoft Azure で使用できる一般的なオープン ソース プラットフォームです。 この記事では、Azure 環境にある Cloud Foundry にアプリケーションをデプロイして管理する方法について説明します。
 
 ## <a name="create-a-cloud-foundry-environment"></a>Cloud Foundry 環境を作成する
 
@@ -33,7 +33,7 @@ Azure に Cloud Foundry 環境を作成する方法はいくつかあります�
 
 - Azure Marketplace の [Pivotal Cloud Foundry オファー][pcf-azuremarketplace]を使用して、PCF Operations Manager と Azure Service Broker が含まれる標準環境を作成する。 マーケットプレースのオファーをデプロイする[全手順][pcf-azuremarketplace-pivotaldocs]は、Pivotal のドキュメントで確認できます。
 - [Pivotal Cloud Foundry を手動でデプロイする][pcf-custom]ことでカスタマイズされた環境を作成する。
-- Cloud Foundry 環境のデプロイを調整する VM である [BOSH](http://bosh.io)ディレクターをセットアップすることで、[オープン ソースの Cloud Foundry パッケージを直接デプロイする][oss-cf-bosh]。
+- Cloud Foundry 環境のデプロイを調整する VM である [BOSH](https://bosh.io)ディレクターをセットアップすることで、[オープン ソースの Cloud Foundry パッケージを直接デプロイする][oss-cf-bosh]。
 
 > [!IMPORTANT] 
 > PCF を Azure Marketplace からデプロイする場合は、Pivotal Apps Manager にアクセスするために必要な SYSTEMDOMAINURL と管理者の資格情報をメモに取ります。両方ともマーケットプレースのデプロイ ガイドで説明されています。 それらはこのチュートリアルを完了するために必要です。 マーケットプレースのデプロイでは、SYSTEMDOMAINURL の形式は https://system.*ip-address*.cf.pcfazure.com です。
@@ -77,7 +77,7 @@ cf target -o testorg -s dev
 
 ## <a name="deploy-an-application"></a>アプリケーションをデプロイする
 
-Hello Spring Cloud という名前の Cloud Foundry のサンプル アプリケーションを使用してみましょう。このアプリケーションは Java で記述されており、[Spring Framework](http://spring.io) と [Spring Boot](http://projects.spring.io/spring-boot/) をベースとしています。
+Hello Spring Cloud という名前の Cloud Foundry のサンプル アプリケーションを使用してみましょう。このアプリケーションは Java で記述されており、[Spring Framework](https://spring.io) と [Spring Boot](https://projects.spring.io/spring-boot/) をベースとしています。
 
 ### <a name="clone-the-hello-spring-cloud-repository"></a>Hello Spring Cloud リポジトリを複製する
 
@@ -90,7 +90,7 @@ cd hello-spring-cloud
 
 ### <a name="build-the-application"></a>アプリケーションのビルド
 
-[Apache Maven](http://maven.apache.org) を使用してアプリをビルドします。
+[Apache Maven](https://maven.apache.org) を使用してアプリをビルドします。
 
 ```bash
 mvn clean package
@@ -158,7 +158,7 @@ cf scale -i 2 hello-spring-cloud
 [cloudshell-docs]: https://docs.microsoft.com/azure/cloud-shell/overview
 [cf-orgs-spaces-docs]: https://docs.cloudfoundry.org/concepts/roles.html
 [spring-boot]: https://projects.spring.io/spring-boot/
-[spring-framework]: http://spring.io
+[spring-framework]: https://spring.io
 [cf-push-docs]: https://docs.cloudfoundry.org/concepts/how-applications-are-staged.html
 [cloudfoundry-docs]: https://docs.cloudfoundry.org
 [vsts-plugin]: https://github.com/Microsoft/vsts-cloudfoundry

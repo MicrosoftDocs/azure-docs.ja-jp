@@ -1,22 +1,21 @@
 ---
 title: Azure Cosmos DB でデータベース アカウントを管理する方法について
 description: Azure Cosmos DB でデータベース アカウントを管理する方法について
-services: cosmos-db
-author: christopheranderson
+author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 10/17/2018
-ms.author: chrande
-ms.openlocfilehash: 0683516d16bf1501eee83901c5171811b8c0e44d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.date: 04/08/2019
+ms.author: rimman
+ms.openlocfilehash: b2b5e58ca480aa3abaa0766319977b8d1160ebeb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621549"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283003"
 ---
-# <a name="manage-database-accounts-in-azure-cosmos-db"></a>Azure Cosmos DB でデータベース アカウントを管理する
+# <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos アカウントを管理する
 
-この記事では、マルチホームの設定、リージョンの追加/削除、複数の書き込みリージョンの構成、およびフェールオーバーの優先度の設定を行って、Azure Cosmos DB アカウントを管理する方法について説明します。 
+この記事では、お使いの Azure Cosmos アカウントを管理する方法について説明します。 具体的には、マルチホームの設定、リージョンの追加/削除、複数の書き込みリージョンの構成、およびフェールオーバーの優先度の設定を行います。 
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
@@ -33,61 +32,56 @@ az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource
 
 ## <a name="configure-clients-for-multi-homing"></a>マルチホームに関するクライアントの構成
 
-### <a id="configure-clients-multi-homing-dotnet"></a>.NET SDK
+### <a id="configure-clients-multi-homing-dotnet"></a>.NET SDK v2
 
 ```csharp
-// Create a new Connection Policy
 ConnectionPolicy policy = new ConnectionPolicy
     {
-        // Note: These aren't required settings for multi-homing,
-        // just suggested defaults
         ConnectionMode = ConnectionMode.Direct,
         ConnectionProtocol = Protocol.Tcp,
-        UseMultipleWriteLocations = true,
+        UseMultipleWriteLocations = true
     };
-// Add regions to Preferred locations
-// The name of the location will match what you see in the portal/etc.
-policy.PreferredLocations.Add("East US");
-policy.PreferredLocations.Add("North Europe");
+policy.SetCurrentLocation("West US 2");
 
-// Pass the Connection policy with the preferred locations on it to the client.
+// Pass the connection policy with the preferred locations on it to the client.
 DocumentClient client = new DocumentClient(new Uri(this.accountEndpoint), this.accountKey, policy);
+```
+
+### <a id="configure-clients-multi-homing-dotnet-v3"></a>.NET SDK v3 (プレビュー)
+
+```csharp
+CosmosConfiguration config = new CosmosConfiguration("endpoint", "key");
+config.UseCurrentRegion("West US");
+CosmosClient client = new CosmosClient(config);
 ```
 
 ### <a id="configure-clients-multi-homing-java-async"></a>Java Async SDK
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
-policy.setPreferredLocations(Collections.singleton("West US"));
+policy.setUsingMultipleWriteLocations(true);
+policy.setPreferredLocations(Collections.singletonList(region));
+
 AsyncDocumentClient client =
-        new AsyncDocumentClient.Builder()
-                .withMasterKey(this.accountKey)
-                .withServiceEndpoint(this.accountEndpoint)
-                .withConnectionPolicy(policy).build();
-```
-
-### <a id="configure-clients-multi-homing-java-sync"></a>Java Sync SDK
-
-```java
-ConnectionPolicy connectionPolicy = new ConnectionPolicy();
-Collection<String> preferredLocations = new ArrayList<String>();
-preferredLocations.add("Australia East");
-connectionPolicy.setPreferredLocations(preferredLocations);
-DocumentClient client = new DocumentClient(accountEndpoint, accountKey, connectionPolicy);
+    new AsyncDocumentClient.Builder()
+        .withMasterKeyOrResourceToken(this.accountKey)
+        .withServiceEndpoint(this.accountEndpoint)
+        .withConsistencyLevel(ConsistencyLevel.Eventual)
+        .withConnectionPolicy(policy).build();
 ```
 
 ### <a id="configure-clients-multi-homing-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
-// Set up the connection policy with your preferred regions
 const connectionPolicy: ConnectionPolicy = new ConnectionPolicy();
-connectionPolicy.PreferredLocations = ["West US", "Australia East"];
+connectionPolicy.UseMultipleWriteLocations = true;
+connectionPolicy.PreferredLocations = [region];
 
-// Pass that connection policy to the client
 const client = new CosmosClient({
   endpoint: config.endpoint,
   auth: { masterKey: config.key },
-  connectionPolicy
+  connectionPolicy,
+  consistencyLevel: ConsistencyLevel.Eventual
 });
 ```
 
@@ -95,40 +89,41 @@ const client = new CosmosClient({
 
 ```python
 connection_policy = documents.ConnectionPolicy()
-connection_policy.PreferredLocations = ['West US', 'Japan West']
-client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.account_key}, connection_policy)
+connection_policy.UseMultipleWriteLocations = True
+connection_policy.PreferredLocations = [region]
 
+client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.account_key}, connection_policy, documents.ConsistencyLevel.Session)
 ```
 
 ## <a name="addremove-regions-from-your-database-account"></a>データベース アカウントのリージョンの追加/削除
 
 ### <a id="add-remove-regions-via-portal"></a>Azure Portal
 
-1. Azure Cosmos DB アカウントに移動して、**[データをグローバルにレプリケートする]** メニューを開きます。
+1. お使いの Azure Cosmos アカウントに移動して、**[データをグローバルにレプリケートする]** メニューを開きます。
 
-2. リージョンを追加するには、目的のリージョンに対応する **"+"** ラベル付きの空の六角形をクリックして、マップから 1 つ以上のリージョンを選択します。 **+ [リージョンの追加]** オプションを選択し、ドロップダウン メニューからリージョンを選んでリージョンを追加することもできます。
+2. リージョンを追加するには、目的のリージョンに対応する六角形 (**+** ラベルが付いたもの) をマップ上で選択します。 別の方法でリージョンを追加するには、**[+ リージョンの追加]** オプションを選択し、ドロップダウン メニューからリージョンを選択します。
 
-3. リージョンを削除するには、チェックマーク付きの青い六角形をクリックするか、または右側のリージョンの横にある "ごみ箱" (🗑) を選択して、マップから 1 つ以上のリージョンを選択解除します。
+3. リージョンを削除するには、チェック マークの付いた青い六角形をマップ上で選択して、1 つ以上のリージョンを消去します。 または、右側で、リージョンの横にある "ごみ箱" (🗑) アイコンを選択します。
 
-4. [保存] をクリックして変更を保存します。
+4. 変更を保存するには、**[OK]** を選択します。
 
-   ![リージョンの追加/削除のメニュー](./media/how-to-manage-database-account/add-region.png)
+   ![リージョンの追加や削除を行うメニュー](./media/how-to-manage-database-account/add-region.png)
 
 単一リージョン書き込みモードでは、書き込みリージョンを削除できません。 その現在の書き込みリージョンを削除する前に、別のリージョンへのフェールオーバーを行う必要があります。
 
-複数リージョン書き込みモードでは、少なくとも 1 つのリージョンがある限り、どのリージョンも追加/削除できます。
+複数リージョン書き込みモードでは、少なくとも 1 つのリージョンがあれば、どのリージョンも追加または削除できます。
 
 ### <a id="add-remove-regions-via-cli"></a>Azure CLI
 
 ```bash
-# Given an account created with 1 region like so
-az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations 'eastus=0'
+# Create an account with 1 region
+az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations eastus=0
 
-# Add a new region by adding another region to the list
-az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations 'eastus=0 westus=1'
+# Add a region
+az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations eastus=0 westus=1
 
-# Remove a region by removing a region from the list
-az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations 'westus=0'
+# Remove a region
+az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations westus=0
 ```
 
 ## <a name="configure-multiple-write-regions"></a>複数の書き込みリージョンの構成
@@ -147,7 +142,7 @@ az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource
 
 ### <a id="configure-multiple-write-regions-arm"></a>Resource Manager テンプレート
 
-次の JSON コードは、Resource Manager テンプレートの例です。 これを使用すると、一貫性ポリシーが有界整合性制約で、最大整合性制約間隔が 5 秒で、許容される古い要求の最大数が 100 の Azure Cosmos アカウントをデプロイできます。 Resource Manager テンプレートの形式と構文について学習するには、[Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) のドキュメントを参照してください。
+次の JSON コードは、[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) テンプレートの例です。 これを使用すると、[有界整合性制約一貫性レベル](consistency-levels.md)で Azure Cosmos アカウントをデプロイすることができます。 最大整合性制約間隔は 5 秒に設定されます。 許容される古い要求の最大数は 100 に設定されます。 Resource Manager テンプレートの形式と構文について学習するには、[Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) に関する記事を参照してください。
 
 ```json
 {
@@ -206,39 +201,39 @@ az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource
 
 ### <a id="enable-manual-failover-via-portal"></a>Azure Portal
 
-1. Azure Cosmos アカウントに移動して、**[データをグローバルにレプリケートする]** メニューを開きます。
+1. お使いの Azure Cosmos アカウントに移動して、**[データをグローバルにレプリケートする]** メニューを開きます。
 
-2. メニューの上部にある **[手動フェールオーバー]** ボタンをクリックします。
+2. メニューの上部で、**[手動フェールオーバー]** を選択します。
 
    ![[データをグローバルにレプリケートする] メニュー](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. **[手動フェールオーバー]** メニューで新しい書き込みリージョンを選択してから、お客様の書き込みリージョンが変更されることを理解した旨を示すためにチェック ボックスをオンにします。
+3. **[手動フェールオーバー]** メニューで、新しい書き込みリージョンを選択します。 チェック ボックスをオンにして、このオプションによって書き込みリージョンが変更されることを理解していることを示します。
 
-4. [OK] をクリックしてフェールオーバーをトリガーします。
+4. フェールオーバーをトリガーするには、**[OK]** を選択します。
 
    ![手動フェールオーバーのポータル メニュー](./media/how-to-manage-database-account/manual-failover.png)
 
 ### <a id="enable-manual-failover-via-cli"></a>Azure CLI
 
 ```bash
-# Given your account currently has regions with priority like so: 'eastus=0 westus=1'
+# Given your account currently has regions with priority: eastus=0 westus=1
 # Change the priority order to trigger a failover of the write region
-az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations 'eastus=1 westus=0'
+az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations westus=0 eastus=1
 ```
 
-## <a id="automatic-failover"></a>Azure Cosmos アカウントでの自動フェールオーバーの有効化
+## <a id="automatic-failover"></a>Azure Cosmos DB アカウントでの自動フェールオーバーの有効化
 
 ### <a id="enable-automatic-failover-via-portal"></a>Azure Portal
 
-1. Azure Cosmos アカウントで、**[データをグローバルにレプリケートする]** ウィンドウを開きます。 
+1. Azure Cosmos DB アカウントで、**[データをグローバルにレプリケートする]** メニューを開きます。 
 
-2. ウィンドウの上部にある **[自動フェールオーバー]** ボタンをクリックします。
+2. ウィンドウの上部で、**[自動フェールオーバー]** を選択します。
 
    ![[データをグローバルにレプリケートする] メニュー](./media/how-to-manage-database-account/replicate-data-globally.png)
 
 3. **[自動フェールオーバー]** ウィンドウで、**[自動フェールオーバーの有効化]** を **[ON]** に設定してください。 
 
-4. メニューの下部にある [保存] をクリックします。
+4. **[保存]** を選択します。
 
    ![自動フェールオーバーのポータル メニュー](./media/how-to-manage-database-account/automatic-failover.png)
 
@@ -261,17 +256,17 @@ az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource
 
 ### <a id="set-failover-priorities-via-portal"></a>Azure Portal
 
-1. Azure Cosmos アカウントで、**[データをグローバルにレプリケートする]** ウィンドウを開きます。 
+1. お使いの Azure Cosmos アカウントで、**[データをグローバルにレプリケートする]** ウィンドウを開きます。 
 
-2. ウィンドウの上部にある **[自動フェールオーバー]** ボタンをクリックします。
+2. ウィンドウの上部で、**[自動フェールオーバー]** を選択します。
 
    ![[データをグローバルにレプリケートする] メニュー](./media/how-to-manage-database-account/replicate-data-globally.png)
 
 3. **[自動フェールオーバー]** ウィンドウで、**[自動フェールオーバーの有効化]** を **[ON]** に設定してください。 
 
-4. カーソルを置くと行の左側に表示される 3 つのドットを使い、読み込みリージョンをクリックアンドドラッグして、フェールオーバーの優先度を変更できます。 
+4. フェールオーバーの優先度を変更するには、カーソルを置くと行の左側に表示される 3 つのドットを使い、読み込みリージョンをドラッグします。 
 
-5. メニューの下部にある [保存] をクリックします。
+5. **[保存]** を選択します。
 
    ![自動フェールオーバーのポータル メニュー](./media/how-to-manage-database-account/automatic-failover.png)
 
@@ -280,13 +275,19 @@ az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource
 ### <a id="set-failover-priorities-via-cli"></a>Azure CLI
 
 ```bash
-az cosmosdb failover-priority-change --name <Azure Cosmos account name> --resource-group <Resource Group name> --failover-policies 'eastus=0 westus=2 southcentralus=1'
+# Assume region order is initially eastus=0 westus=1 automatic failover on account creation
+az cosmosdb failover-priority-change --name <Azure Cosmos account name> --resource-group <Resource Group name> --failover-policies westus=0 eastus=1
 ```
 
 ## <a name="next-steps"></a>次の手順
 
-次のドキュメントを使用して、Azure Cosmos DB における一貫性レベルとデータ競合の管理について学習できます。
+次の記事を参照してください。
 
-* [一貫性を管理する方法](how-to-manage-consistency.md)
-* [リージョン間での競合を管理する方法](how-to-manage-conflicts.md)
+* [一貫性の管理](how-to-manage-consistency.md)
+* [リージョン間の競合の管理](how-to-manage-conflicts.md)
+* [グローバル配信 - 内部のしくみ](global-dist-under-the-hood.md)
+* [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
+* [マルチホームに関するクライアントの構成](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [Azure Cosmos DB アカウントのリージョンを追加/削除する](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+* [カスタム競合解決ポリシーを作成する](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
 

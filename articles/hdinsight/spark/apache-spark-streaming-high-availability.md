@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: 8f680b60a8f457e1a8619ac044798ff02df15694
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1d9a7caa7ab70ef1f0da41e1ec3f30780f93536a
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013651"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53649723"
 ---
-# <a name="create-high-availability-spark-streaming-jobs-with-yarn"></a>YARN で可用性の高い Spark Streaming ジョブを作成する
+# <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>YARN で高可用性 Apache Spark Streaming ジョブを作成する
 
-Spark Streaming を使うと、データ ストリーム処理用に拡張性が高く、高スループットの、フォールト トレラント アプリケーションを実装することができます。 HDInsight Spark クラスター上の Spark Streaming アプリケーションを、Azure Event Hubs、Azure IoT Hub、Kafka、Flume、Twitter、ZeroMQ、生 TCP ソケットなどのさまざまなデータ ソースに、または HDFS ファイル システムで変更を監視することにより、接続できます。 Spark Streaming は、ノード障害の場合でも、特定のイベントが厳密に 1 回だけ処理されることを保証して、フォールト トレランスをサポートします。
+[Apache Spark](https://spark.apache.org/) Streaming を使用すると、データ ストリームを処理するためのスケーラブルで、かつ高スループットのフォールト トレラント アプリケーションを実装できます。 HDInsight Spark クラスター上の Spark Streaming アプリケーションを Azure Event Hubs、Azure IoT Hub、[Apache Kafka](https://kafka.apache.org/)、[Apache Flume](https://flume.apache.org/)、Twitter、[ZeroMQ](http://zeromq.org/)、生の TCP ソケットなどのさまざまなデータ ソースに、または [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) ファイル システムの変更を監視することによって接続できます。 Spark Streaming は、ノード障害の場合でも、特定のイベントが厳密に 1 回だけ処理されることを保証して、フォールト トレランスをサポートします。
 
 Spark Streaming が作成する実行時間の長いジョブの間に、データに変換を適用して、結果をファイル システム、データベース、ダッシュボード、コンソールにプッシュすることができます。 Spark Streaming は、定義された期間についてイベントのバッチを最初に収集することで、データのマイクロバッチを処理します。 次に、そのバッチを処理と出力のために送信します。 バッチの間隔は、通常、1 秒未満で定義されます。
 
@@ -54,7 +54,7 @@ RDD には、高可用性でフォールト トレラントの Spark Streaming �
 
 各イベントを 1 回 (1 回だけ) 処理するアプリケーションを作成するには、問題が発生した後にすべてのシステム障害ポイントが再起動する方法、およびデータの損失を回避する方法を検討します。 厳密に 1 回のセマンティクスでは、障害が発生した場所に関係なく、いずれの時点でもデータが失われず、メッセージの処理が再開可能である必要があります。 「[イベント処理を 1 回のみ伴う Spark Streaming ジョブの作成](apache-spark-streaming-exactly-once.md)」をご覧ください。
 
-## <a name="spark-streaming-and-yarn"></a>Spark Streaming と YARN
+## <a name="spark-streaming-and-apache-hadoop-yarn"></a>Spark Streaming と Apache Hadoop YARN
 
 HDInsight では、クラスターの処理は *Yet Another Resource Negotiator* (YARN) によって調整されます。 Spark Streaming の高可用性の設計には、Spark Streaming の技法だけでなく、YARN コンポーネントの技法も含まれます。  YARN を使った構成の例を次に示します。 
 
@@ -120,8 +120,8 @@ DStream チェックポイント処理でドライバーを復旧するには:
 
 ## <a name="next-steps"></a>次の手順
 
-* [Spark Streaming の概要](apache-spark-streaming-overview.md)
-* [イベント処理を 1 回のみ伴う Spark Streaming ジョブの作成](apache-spark-streaming-exactly-once.md)
-* [YARN での実行時間の長い Spark Streaming ジョブ](http://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) 
-* [Structured Streaming: フォールト トレラントなセマンティクス](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
-* [分離されたストリーム: 拡張性の高いストリーム処理のためのフォールト トレラント モデル](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)
+* [Apache Spark Streaming の概要](apache-spark-streaming-overview.md)
+* [正確に 1 回のイベント処理で Apache Spark Streaming ジョブを作成する](apache-spark-streaming-exactly-once.md)
+* [YARN での実行時間の長い Apache Spark Streaming ジョブ](https://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) 
+* [Structured Streaming:フォールト トレラントなセマンティクス](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
+* [分離されたストリーム:拡張性の高いストリーム処理のためのフォールト トレラント モデル](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)

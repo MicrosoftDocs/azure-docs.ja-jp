@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Bing Custom Search を使用して、Web のカスタム ビューから動画を取得する方法の概要です。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 5394f86e8a5d167830cb4061800f4cbf9a521713
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 202691bc03a7447cce28932406b00cc945a889db
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816412"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878291"
 ---
 # <a name="get-videos-from-your-custom-view"></a>カスタム ビューから動画を取得する
 

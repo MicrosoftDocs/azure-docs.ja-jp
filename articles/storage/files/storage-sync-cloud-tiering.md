@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: sikoo
-ms.component: files
-ms.openlocfilehash: a0f427ef84a6540522f521cd365e2422a70eb0cd
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.subservice: files
+ms.openlocfilehash: 871eb1663d6cba550f1403215b1d3ce5fe8278d3
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623653"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486106"
 ---
 # <a name="cloud-tiering-overview"></a>クラウドの階層化の概要
 クラウドの階層化は Azure File Sync のオプション機能です。この機能では、頻繁にアクセスされるファイルがサーバー上にローカルにキャッシュされ、その他のファイルはポリシー設定に基づいて Azure Files に階層化されます。 ファイルを階層化すると、Azure File Sync ファイル システム フィルター (StorageSync.sys) がローカルでファイルをポインターと置き換えるか、ポイントを再解析します。 再解析ポイントは Azure Files 内のファイルの URL を表します。 階層化されたファイルをサード パーティ アプリケーションで安全に識別できるように、階層化されたファイルには "オフライン" 属性と FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性の両方が NTFS 内で設定されます。
@@ -21,9 +21,12 @@ ms.locfileid: "51623653"
 ユーザーが階層化されたファイルを開くと、Azure File Sync によってファイル データが Azure Files からシームレスに再呼び出しされます。ユーザーは、ファイルが実際に Azure に格納されていることを知る必要はありません。 
  
  > [!Important]  
-    > 重要: クラウドの階層化は、Windows システム ボリューム上のサーバー エンドポイントではサポートされません。さらに、サイズが 64 KiB より大きいファイルしか Azure Files に階層化することはできません。
+ > クラウドの階層化は、Windows システム ボリューム上のサーバー エンドポイントではサポートされません。さらに、サイズが 64 KiB より大きいファイルしか Azure Files に階層化することはできません。
     
 Azure File Sync では 64 KiB よりも小さいファイルの階層化はサポートされていません。そのようなファイルを階層化および再呼び出することで生じるパフォーマンスのオーバーヘッドが領域の節約を上回るからです。
+
+ > [!Important]  
+ > 階層化されたファイルを再呼び出しするには、1 Mbps 以上のネットワーク帯域幅が必要です。 ネットワーク帯域幅が 1 Mbps 未満の場合、タイムアウト エラーでファイルの再呼び出しが失敗する可能性があります。
 
 ## <a name="cloud-tiering-faq"></a>クラウドの階層化の FAQ
 
@@ -82,11 +85,11 @@ Azure File Sync エージェントのバージョン 4.0 以上では、ファ�
    * **`fsutil` を使用して、ファイル上の再解析ポイントを確認します。**
        前記のオプションで説明したように、階層化されたファイルには必ず再解析ポイントが設定されます。 再解析ポインターは、Azure File Sync のファイル システム フィルター (StorageSync.sys) の特別なポインターです。 ファイルに再解析ポイントがあるかどうかを調べるには、管理者特権でのコマンド プロンプトまたは PowerShell ウィンドウで、`fsutil` ユーティリティを実行します。
     
-        ```PowerShell
+        ```powershell
         fsutil reparsepoint query <your-file-name>
         ```
 
-        ファイルに再解析ポイントがある場合、**Reparse Tag Value : 0x8000001e** と表示されることが想定されます。 この 16 進値は、Azure File Sync が所有する再解析ポイントの値です。また、出力には、Azure ファイル共有上のファイルへのパスを表す再解析データが含まれます。
+        ファイルに再解析ポイントがある場合、"**Reparse Tag Value: 0x8000001e**" と表示されることが想定されます。 この 16 進値は、Azure File Sync が所有する再解析ポイントの値です。また、出力には、Azure ファイル共有上のファイルへのパスを表す再解析データが含まれます。
 
         > [!WARNING]  
         > `fsutil reparsepoint` ユーティリティ コマンドには、再解析ポイントを削除する機能も含まれています。 Azure File Sync のエンジニア チームによって指示されない限り、このコマンドは実行しないでください。 このコマンドを実行すると、データが失われる可能性があります。 
@@ -98,7 +101,7 @@ Azure File Sync エージェントのバージョン 4.0 以上では、ファ�
 
 また、PowerShell を使ってファイルを強制的に再現することも可能です。 複数のファイル (フォルダー内にあるすべてのファイルなど) を一度に再現したい場合に、この方法が役立つことがあります。 Azure File Sync がインストールされているサーバー ノードへの PowerShell セッションを開き、次の PowerShell コマンドを実行します。
     
-    ```PowerShell
+    ```powershell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
     Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
     ```
@@ -111,7 +114,7 @@ Windows のエクスプローラーでは、**[サイズ]** と **[ディスク�
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>ファイルまたはディレクトリを強制的に階層化するには、どうすればよいですか。
 クラウドの階層化機能が有効な場合は、クラウド エンドポイントに指定されたボリューム空き領域の割合を達成するために、最終アクセス時刻と最終変更時刻に基づいてファイルが自動的に階層化されます。 ただし、手動で強制的にファイルを階層化する必要がある場合もあります。 長期間再使用する予定がない大きなファイルを保存して、当面ボリューム上に他のファイルとフォルダーのための領域を空けておきたい場合、手動による階層化が役立つ可能性があります。 次の PowerShell コマンドを使って、強制的に階層化できます。
 
-    ```PowerShell
+    ```powershell
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
     Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
     ```

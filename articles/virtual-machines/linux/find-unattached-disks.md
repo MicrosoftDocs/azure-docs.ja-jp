@@ -1,5 +1,5 @@
 ---
-title: 接続されていない Azure 管理ディスクおよび非管理対象ディスクを見つけて削除する | Microsoft Docs
+title: 接続されていない Azure マネージド ディスクおよび非管理対象ディスクを見つけて削除する | Microsoft Docs
 description: Azure CLI を使用して、接続されていない Azure 管理ディスクと非管理対象ディスク (VHD/ページ BLOB) を見つけて削除する方法
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,25 +15,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: ramankum
-ms.openlocfilehash: 1718b35aa68937cad4b3ae7e677e300506820bd0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.subservice: disks
+ms.openlocfilehash: 034d2433b2251351d54c2c5f41f78b5d45ab80e1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30323255"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470758"
 ---
-# <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>接続されていない Azure 管理ディスクおよび非管理対象ディスクを見つけて削除する
+# <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>接続されていない Azure マネージド ディスクおよび非管理対象ディスクを見つけて削除する
 Azure で仮想マシン (VM) を削除するとき、既定では、その VM に接続されているディスクはいずれも削除されません。 この機能は、意図せず VM を削除したことによるデータ損失を防ぐのに役立ちます。 VM が削除された後、接続されていないディスクに対する料金の支払いが続きます。 この記事では、接続されていないディスクを見つけて削除し、不要なコストを削減する方法を示します。 
 
 
-## <a name="managed-disks-find-and-delete-unattached-disks"></a>管理ディスク: 接続されていないディスクを見つけて削除する 
+## <a name="managed-disks-find-and-delete-unattached-disks"></a>マネージド ディスク:接続されていないディスクの検索と削除 
 
-次のスクリプトは、**ManagedBy** プロパティの値を調べることにより、接続されていない[管理ディスク](managed-disks-overview.md)を探します。 管理ディスクが VM に接続しているとき、**ManagedBy** プロパティには VM のリソース ID が含まれます。 管理ディスクが接続されていないとき、**ManagedBy** プロパティは null です。 スクリプトは Azure サブスクリプションのすべての管理ディスクを調べます。 **ManagedBy** プロパティに null が設定された管理ディスクをスクリプトが見つけると、そのディスクは接続されていないと判断します。
+次のスクリプトは、**ManagedBy** プロパティの値を調べることにより、接続されていない[マネージド ディスク](managed-disks-overview.md)を探します。 マネージド ディスクが VM に接続しているとき、**ManagedBy** プロパティには VM のリソース ID が含まれます。 マネージド ディスクが接続されていないとき、**ManagedBy** プロパティは null です。 スクリプトは Azure サブスクリプションのすべてのマネージド ディスクを調べます。 **ManagedBy** プロパティに null が設定されたマネージド ディスクをスクリプトが見つけると、そのディスクは接続されていないと判断します。
 
 >[!IMPORTANT]
->最初は、**deleteUnattachedDisks** 変数を 0 に設定してスクリプトを実行します。 この操作は、接続されていないすべての管理ディスクを検索して表示します。
+>最初は、**deleteUnattachedDisks** 変数を 0 に設定してスクリプトを実行します。 この操作は、接続されていないすべてのマネージド ディスクを検索して表示します。
 >
->接続されていないすべてのディスクを確認したら、再びスクリプトを実行します。このときは **deleteUnattachedDisks** 変数を 1 に設定します。 この操作は、接続されていないすべての管理ディスクを削除します。
+>接続されていないすべてのディスクを確認したら、再びスクリプトを実行します。このときは **deleteUnattachedDisks** 変数を 1 に設定します。 この操作は、接続されていないすべてのマネージド ディスクを削除します。
 >
 
 ```azurecli
@@ -58,7 +59,7 @@ do
 done
 ```
 
-## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>非管理対象ディスク: 接続されていないディスクを見つけて削除する 
+## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>アンマネージド ディスク:接続されていないディスクの検索と削除 
 
 非管理対象ディスクは、[Azure Storage アカウント](../../storage/common/storage-create-storage-account.md)で[ページ BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) として格納された VHD ファイルです。 次のスクリプトは、**LeaseStatus** プロパティの値を調べて、接続されていない非管理対象ディスク (ページ BLOB) を探します。 非管理対象ディスクが VM に接続されているとき、**LeaseStatus** プロパティは **Locked** に設定されています。 非管理対象ディスクが接続されていないとき、**LeaseStatus** プロパティは **Unlocked** に設定されています。 このスクリプトは、Azure サブスクリプションのすべての Azure ストレージ アカウントの非管理対象ディスクを調べます。 **LeaseStatus** プロパティに **Unlocked** が設定された非管理対象ディスクをスクリプトが見つけると、そのディスクが接続されていないと判断します。
 

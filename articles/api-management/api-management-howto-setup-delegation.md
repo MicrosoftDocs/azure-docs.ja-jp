@@ -12,20 +12,24 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2016
+ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: ab5d6c531b08a13d465811d68a07e07e9fb0167c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 796bea3c64ef7fc03367707461d13e0ea2514b8b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109462"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051758"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>ユーザーの登録と成果物のサブスクリプションを委任する方法
-委任を使用すると、開発者のサインイン/サインアップおよび成果物のサブスクリプション処理を、開発者ポータルの組み込みの機能ではなく、お客様の既存の Web サイトを使用して行うことができます。 これにより、お客様の Web サイトでユーザー データを保持し、独自の方法でこれらのステップの検証を実行できます。
+
+委任を使用すると、開発者のサインイン/サインアップおよび製品のサブスクリプション処理を、開発者ポータルの組み込みの機能ではなく、お客様の既存の Web サイトを使用して行うことができます。 これにより、お客様の Web サイトでユーザー データを保持し、独自の方法でこれらのステップの検証を実行できます。
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="delegate-signin-up"> </a>開発者のサインインおよびサインアップ処理の委任
-開発者のサインインおよびサインアップ処理をお客様の既存の Web サイトに委任するには、API Management 開発者ポータルから開始される該当する要求のエントリ ポイントとして動作する特殊な委任エンドポイントをサイト上に作成する必要があります。
+
+開発者のサインインおよびサインアップ処理を既存の Web サイトに委任するには、サイト上で特別な委任エンドポイントを作成する必要があります。 このエンドポイントは、API Management 開発者ポータルから開始された要求のエントリ ポイントとして機能する必要があります。
 
 最終的なワークフローは次のようになります。
 
@@ -34,7 +38,7 @@ ms.locfileid: "37109462"
 3. 委任エンドポイントにより、ユーザーにサインインまたはサインアップを求める UI にリダイレクトされるか、ユーザーにサインインまたはサインアップを求める UI が表示されます。
 4. サインインまたはサインアップが成功すると、ユーザーが最初の API Management 開発者ポータル ページにリダイレクトされます。
 
-これを実現するには、最初に委任エンドポイント経由で要求をルーティングするように API Management を設定します。 API Management パブリッシャー ポータルで、**[セキュリティ]** をクリックし、**[委任]** タブをクリックします。チェックボックスをクリックして、[サインインおよびサインアップの委任] を有効にします。
+これを実現するには、最初に委任エンドポイント経由で要求をルーティングするように API Management を設定します。 API Management パブリッシャー ポータルで、**[セキュリティ]** をクリックし、**[委任]** タブをクリックします。チェックボックスをクリックして、[Delegate sign in & sign up]\(サインインおよびサインアップ処理の委任\) を有効にします。
 
 ![[委任] ページ][api-management-delegation-signin-up]
 
@@ -45,7 +49,7 @@ ms.locfileid: "37109462"
 
 1. 次の形式の要求を受け取ります。
    
-   > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL of source page}&salt={string}&sig={string}*
+   > *http:\//www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={元のページの URL}&salt={文字列}&sig={文字列}*
    > 
    > 
    
@@ -85,26 +89,25 @@ ms.locfileid: "37109462"
 アカウントの管理操作を実行するには、次のクエリ パラメーターを渡す必要があります。
 
 * **operation**: 委任要求の種類を識別します (ChangePassword、ChangeProfile、または CloseAccount)
-* **userId**: 管理するアカウントのユーザー ID
+* **userId**: 管理するアカウントのユーザー ID。
 * **salt**: セキュリティ ハッシュの計算に使用される特殊な salt 文字列。
 * **sig**: 自分で計算したハッシュとの比較に使用される、計算によって求められたセキュリティ ハッシュ。
 
 ## <a name="delegate-product-subscription"> </a>成果物のサブスクリプション処理の委任
-成果物のサブスクリプション処理を委任するしくみは、ユーザーのサインイン/サインアップ処理の委任と似ています。 最終的なワークフローは次のようになります。
+製品のサブスクリプション処理を委任するしくみは、ユーザーのサインイン/サインアップ処理の委任と似ています。 最終的なワークフローは次のようになります。
 
-1. 開発者が API Management 開発者ポータルで成果物を選択し、[サブスクライブ] ボタンをクリックします。
+1. 開発者が API Management 開発者ポータルで製品を選択し、[サブスクライブ] ボタンをクリックします。
 2. ブラウザーが、委任エンドポイントにリダイレクトされます。
-3. 委任エンドポイントにより、必要な成果物のサブスクリプション操作が実行されます。ここでは任意の操作を実行でき、課金情報を要求する別のページへのリダイレクトしたり、追加の質問をたずねたりできます。また、ユーザーによる操作を求めることなく単に情報を保存することもあります。
+3. 委任エンドポイントで、必要な製品サブスクリプション手順が実行されます。 この手順の設計は、お客様に任されています。 この手順には、別のページへのリダイレクトを実行して請求先情報の入力を求める処理を含めることもできます。リダイレクト先のページでは、追加の質問をたずねることも、情報を保存するだけでユーザーのアクションを求めないこともできます。
 
 この機能を有効にするには、**[委任]** ページで **[成果物のサブスクリプションの委任]** をクリックします。
 
-次に、次の操作を実行するように委任エンドポイントを設定します。
+次に、以下の操作を実行するように委任エンドポイントを設定します。
 
 1. 次の形式の要求を受け取ります。
    
-   > *http://www.yourwebsite.com/apimdelegation?operation={operation}&productId={product to subscribe to}&userId={user making request}&salt={string}&sig={string}*
-   > 
-   > 
+   > *http:\//www.yourwebsite.com/apimdelegation?operation={操作}&productId={サブスクライブする製品}&userId={要求元のユーザー}&salt={文字列}&sig={文字列}*
+   >
    
     成果物のサブスクリプション処理のためのクエリ パラメーター:
    
@@ -113,22 +116,30 @@ ms.locfileid: "37109462"
      * "Unsubscribe": ユーザーの成果物のサブスクリプションを解除するための要求。
      * "Renew": (たとえば、有効期限が近づいている) サブスクリプションを更新するための要求。
    * **productId**: ユーザーから要求されたサブスクライブ対象の成果物の ID。
+   * **subscriptionId**: "*登録解除*" および "*更新*" 時 - 製品のサブスクリプション ID。
    * **userId**: 要求の対象のユーザーの ID。
    * **salt**: セキュリティ ハッシュの計算に使用される特殊な salt 文字列。
    * **sig**: 自分で計算したハッシュとの比較に使用される、計算によって求められたセキュリティ ハッシュ。
+
 2. 要求の送信元が Azure API Management であることを確認します (省略できますが、セキュリティ上強く推奨されます)。
    
-   * **productId**、**userId、および **salt** のクエリ パラメーターに基づいて、文字列の HMAC-SHA512 を計算します。
+   * **productId**、**userId**、および **salt** のクエリ パラメーターに基づいて、文字列の HMAC-SHA512 を計算します。
      
      > HMAC(**salt** + '\n' + **productId** + '\n' + **userId**)
      > 
      > 
    * 上の計算によって求められたハッシュを **sig** クエリ パラメーターの値と比較します。 2 つのハッシュ値が等しい場合は、次の手順に移動します。それ以外の場合は、要求を拒否します。
-3. **operation** で要求された操作の種類 (課金、追加の質問など) に基づいて、成果物のサブスクリプション処理を実行します。
+3. **operation** で要求された操作の種類 (課金、追加の質問など) に基づいて、製品のサブスクリプションを処理します。
 4. ユーザーがお客様の側の成果物を正常にサブスクライブすることができたら、 [成果物のサブスクリプションのための REST API を呼び出して]、ユーザーが API Management の成果物をサブスクライブできるようにします。
 
 ## <a name="delegate-example-code"> </a> コード例
-これらのコード サンプルでは、パブリッシャー ポータルの [委任] 画面に設定された "*委任検証キー*" を取得して、署名の検証に使用する HMAC を作成し、渡された returnUrl の有効性を証明する方法を示します。 同じコードは、わずかに変更するだけで、productId と userId に対して機能します。
+
+以下のコード サンプルは、次の操作を行う方法を示しています｡
+
+* "*委任検証キー*" を取得する。このキーは、パブリッシャー ポータルの [委任] 画面で設定されます。
+* HMAC を作成する。作成した HMAC は、署名の検証のために使用され、これにより、渡された returnUrl の有効性が証明されます。
+
+同じコードは、わずかに変更するだけで、productId と userId に対して機能します。
 
 **returnUrl のハッシュを生成する C# のコード**
 
@@ -171,11 +182,11 @@ var signature = digest.toString('base64');
 > 
 > 
 
-[Delegating developer sign-in and sign-up]: #delegate-signin-up
+[Delegating developer sign in and sign up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[シングル サインオン (SSO) トークンを要求]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
-[ユーザーを作成]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
-[成果物のサブスクリプションのための REST API を呼び出して]: https://docs.microsoft.com/rest/api/apimanagement/productsubscriptions
+[シングル サインオン (SSO) トークンの要求]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
+[ユーザーの作成]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
+[製品のサブスクリプション処理のための REST API の呼び出し]: https://docs.microsoft.com/rest/api/apimanagement/productsubscriptions
 [Next steps]: #next-steps
 [コードの例を次に示します]: #delegate-example-code
 

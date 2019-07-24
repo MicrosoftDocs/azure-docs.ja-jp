@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: a9dfcbf4be4b659d761d66d67d2ae4c7b70a245e
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: b857d1780e9734ce891ce2c0ce4bedf50dfe13e9
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284166"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871457"
 ---
 # <a name="add-a-forwarded-header"></a>転送ヘッダーの追加
 

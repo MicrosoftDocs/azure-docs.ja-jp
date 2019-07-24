@@ -15,16 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: mareat
-ms.openlocfilehash: e375476536e7fe150e3aabcae7cee942deac02d5
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 73173c144f979d4a10b90a16aec783fe51a3f90e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42144356"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000388"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Network Watcher と Grafana を使用してネットワーク セキュリティ グループのフロー ログを管理および分析する
 
 [ネットワーク セキュリティ グループ (NSG) のフロー ログ](network-watcher-nsg-flow-logging-overview.md)の情報を使用して、ネットワーク インターフェイスでのイングレスおよびエグレス IP トラフィックについて理解できます。 こうしたフロー ログからは、NSG ルールごとの送信および受信フロー、フローが適用されている NIC、フローに関する 5 組の情報 (送信元/送信先 IP、送信元/送信先ポート、プロトコル)、およびトラフィックの許可/拒否の状況がわかります。
+
+> [!Warning]  
+> 次の手順は、フロー ログのバージョン 1 に使用できます。 詳細については、「[ネットワーク セキュリティ グループのフローのログ記録の概要](network-watcher-nsg-flow-logging-overview.md)」を参照してください。 次の手順は、変更しなければ、ログ ファイルのバージョン 2 で使用できません。
 
 フロー ログが有効になっているネットワークには多くの NSG がある場合があります。 このログ データ量により、ログを解析して洞察を得ることが煩雑になります。 この記事では、オープン ソースのグラフ作成ツールである Grafana、分散型の検索および分析エンジンである ElasticSearch、オープン ソースのサーバー側のデータ処理パイプラインである Logstash を使用してこれらの NSG フロー ログを一元的に管理するソリューションについて説明します。  
 
@@ -179,7 +182,7 @@ sudo dpkg -i grafana_4.5.1_amd64.deb
 sudo service grafana-server start
 ```
 
-追加のインストール情報については、「[Installing on Debian / Ubuntu (Debian/Ubuntu へのインストール)](http://docs.grafana.org/installation/debian/)」をご覧ください。
+追加のインストール情報については、「[Installing on Debian / Ubuntu (Debian/Ubuntu へのインストール)](https://docs.grafana.org/installation/debian/)」をご覧ください。
 
 #### <a name="add-the-elasticsearch-server-as-a-data-source"></a>ElasticSearch サーバーをデータ ソースとして追加する
 

@@ -1,31 +1,32 @@
 ---
-title: Custom Speech Service から Speech Service に移行する
+title: Custom Speech Service から Speech Services に移行する
 titlesuffix: Azure Cognitive Services
-description: Custom Speech Service から Speech Service に移行する方法について説明します。
+description: Custom Speech Service は Speech Services の一部になっています。 Speech Services に切り替えると、品質と機能の最新の更新によるベネフィットがあります。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
-ms.openlocfilehash: 7cb8c992b4c131b7f28eca6c2f35ee9facdf8d4e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec18
+ms.openlocfilehash: 8a2c149faa0ec9d135713a123a33d7c220522496
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416105"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496005"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Custom Speech Service から Speech Service に移行する
 
 アプリケーションを Custom Speech Service から Speech Service に移行するには、この記事を参考にしてください。
 
-Custom Speech Service は Speech Service の一部になっています。 Speech Service に切り替えると、最新の品質と機能の更新のベネフィットがあります。
- 
+Custom Speech Service は Speech Service の一部になっています。 Speech Services に切り替えると、品質と機能の最新の更新によるベネフィットがあります。
+
 ## <a name="migration-for-new-customers"></a>新しいお客様の移行
 
-Speech Service の価格モデルは時間ベースになっており、より単純です。   
+Speech Service の価格モデルは時間ベースになっており、より単純です。  
 
 1. お使いのアプリケーションが使用可能なリージョンごとに Azure リソースを作成します。 Azure リソース名は **Speech** です。 同じリージョン内では、以下のサービスについて、個別のリソースを作成する代わりに、1 つの Azure リソースを使用できます。
 
@@ -34,26 +35,20 @@ Speech Service の価格モデルは時間ベースになっており、より�
     * テキスト読み上げ
     * 音声翻訳
 
-2. [Speech SDK](speech-sdk.md) をダウンロードします｡ 
+2. [Speech SDK](speech-sdk.md) をダウンロードします｡
 
-3. クイック スタート ガイドと SDK サンプルに従って、適切な API を使用します。 REST API を使用する場合は、正しいエンドポイントとリソース キーを使用する必要もあります。 
+3. クイック スタート ガイドと SDK サンプルに従って、適切な API を使用します。 REST API を使用する場合は、正しいエンドポイントとリソース キーを使用する必要もあります。
 
-4. Speech Service とその API を使用するようにクライアント アプリケーションを更新します。 
-
-> [!NOTE]
-> * Language Understanding (LUIS) で音声を有効にした場合は、同じリージョン内の 1 つの LUIS リソースで、LUIS だけでなく、すべての音声サービスに対応できます。 詳細については、「[音声から意図を認識する](how-to-recognize-intents-from-speech-csharp.md)」を参照してください。
-> * テキストからテキストへの翻訳は Speech Service の一部ではありません。 この機能には、専用の Azure リソース サブスクリプションが必要です。
-  
-
+4. Speech Services と API を使用するようにクライアント アプリケーションを更新します。
 
 ## <a name="migration-for-existing-customers"></a>既存のお客様の移行
 
-Speech Service ポータルで Speech Service に既存のリソース キーを移行します。 次の手順に従います。 
+Speech Services ポータルで Speech Services にご自分の既存のリソース キーを移行します。 次の手順に従います。
 
-> [!NOTE] 
-> リソース キーは、同じリージョン内でのみ移行できます。 
+> [!NOTE]
+> リソース キーは、同じリージョン内でのみ移行できます。
 
-1. [cris.ai](http://www.cris.ai) ポータルにサインインし、右上のメニューでサブスクリプションを選択します。 
+1. [cris.ai](https://cris.ai/Home/CustomSpeech) ポータルにサインインし、右上のメニューでサブスクリプションを選択します。
 
 2. **[Migrate selected subscription]\(選択したサブスクリプションの移行\)** を選択します。
 
@@ -61,10 +56,10 @@ Speech Service ポータルで Speech Service に既存のリソース キーを
 
 ## <a name="next-steps"></a>次の手順
 
-* [Speech Service を無料で試す](get-started.md)
+* [Speech Services を無料で試す](get-started.md)
 * [Speech to Text API](./speech-to-text.md) の概念を学習する
 
 ## <a name="see-also"></a>関連項目
 
 * [Speech Service とは](overview.md)
-* [Speech Service および Speech SDK のドキュメント](speech-sdk.md#get-the-sdk)
+* [Speech Services と Speech SDK のドキュメント](speech-sdk.md#get-the-sdk)

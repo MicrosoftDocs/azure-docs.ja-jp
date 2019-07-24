@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4f4aedd1d85a83e6f55d5729b82b88e2e9e8c00d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ae435c379a55ee2b3246cb3e757b79295c57988e
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415935"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338294"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - ストレージのベスト プラクティス
 
-この記事では、Azure HDInsight システムのデータ ストレージのための推奨事項について説明します。 これはオンプレミスの Apache Hadoop システムを Azure HDInsight に移行することを支援するためのベスト プラクティスを提供するシリーズの一部です。
+この記事では、Azure HDInsight システムのデータ ストレージのための推奨事項について説明します。 これは、オンプレミスの Apache Hadoop システムを Azure HDInsight に移行する際に役立つベスト プラクティスを紹介するシリーズの一部です。
 
-## <a name="choose-the-right-storage-system-for-hdinsight-clusters"></a>HDInsight クラスターのための適切なストレージ システムを選択する
+## <a name="choose-right-storage-system-for-hdinsight-clusters"></a>HDInsight クラスターのための適切なストレージ システムを選択する
 
 オンプレミスの Apache Hadoop ファイル システム (HDFS) のディレクトリ構造は、Azure Storage または Azure Data Lake Storage 内に再作成できます。 計算に使用される HDInsight クラスターを安全に削除できます。このとき、ユーザー データは失われません。 どちらのサービスも、HDInsight クラスターの既定のファイル システムと追加のファイル システムの両方として使用できます。 HDInsight クラスターとストレージ アカウントは、同じリージョンに置く必要があります。
 
@@ -34,9 +34,12 @@ Azure Storage は、別の拠点に geo レプリケーションできます。 
 
 次の形式の 1 つを使用して、Azure Storage に格納されているデータにアクセスできます。
 
-- `wasb:///`: 暗号化されていない通信を使用して既定のストレージにアクセスします。
-- `wasbs:///`: 暗号化された通信を使用して既定のストレージにアクセスします。
-- `wasb://<container-name>@<account-name>.blob.core.windows.net/`: 既定以外のストレージ アカウントを使用して通信するときに使用します。 
+|データ アクセス形式 |説明 |
+|---|---|
+|`wasb:///`|暗号化されていない通信を使用して既定のストレージにアクセスします。|
+|`wasbs:///`|暗号化された通信を使用して既定のストレージにアクセスします。|
+|`wasb://<container-name>@<account-name>.blob.core.windows.net/`|既定以外のストレージ アカウントを使用して通信するときに使用します。 |
+
 
 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../../storage/common/storage-scalability-targets.md)には、Azure ストレージ アカウントの現在の制限が記載されています。 アプリケーションで必要とされるスケーラビリティが、単一ストレージ アカウントあたりのスケーラビリティ ターゲットを超えている場合、複数のストレージ アカウントを使用し、それらのストレージ アカウント間でデータが分割されるようにアプリケーションを構築できます。
 
@@ -72,7 +75,7 @@ keytool -list -v -keystore /path/to/jre/lib/security/cacerts
 詳細については、次の記事を参照してください。
 
 - [Azure HDInsight クラスターで Azure Storage を使用する](../hdinsight-hadoop-use-blob-storage.md)
-- [Azure Storage Scalability and Performance Targets](../../storage/common/storage-scalability-targets.md)
+- [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../../storage/common/storage-scalability-targets.md)
 - [Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../../storage/common/storage-performance-checklist.md)
 - [Microsoft Azure Storage の監視、診断、およびトラブルシューティング](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)
 - [Azure Portal でのストレージ アカウントの監視](../../storage/common/storage-monitor-storage-account.md)
@@ -96,26 +99,27 @@ Data Lake Storage Gen2 の基本的な機能は、パフォーマンスの高い
 
 以前は、パフォーマンス、管理、およびセキュリティの領域では、クラウドベース分析は妥協する必要がありました。 Azure Data Lake Storage (ADLS) Gen2 の主要機能は次のとおりです。
 
-- **Hadoop と互換性のあるアクセス**: Azure Data Lake Storage Gen2 では、 [Hadoop 分散ファイル システム (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) を利用する場合と同様に、データの管理およびアクセスを可能にします。 新しい  [ABFS ドライバー](../../storage/data-lake-storage/abfs-driver.md) は、 [Azure HDInsight](../index.yml) 内に含まれているすべての Apache Hadoop 環境内で使用できます。 このドライバーにより、Data Lake Storage Gen2 に格納されているデータにアクセスできます。
+- **Hadoop と互換性のあるアクセス**:Azure Data Lake Storage Gen2 では、 [Hadoop 分散ファイル システム (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) を利用する場合と同様に、データの管理およびアクセスを可能にします。 新しい  [ABFS ドライバー](../../storage/data-lake-storage/abfs-driver.md) は、 [Azure HDInsight](../index.yml) 内に含まれているすべての Apache Hadoop 環境内で使用できます。 このドライバーにより、Data Lake Storage Gen2 に格納されているデータにアクセスできます。
 
-- **POSIX アクセス許可のスーパー セット**: Data Lake Gen2 のセキュリティ モデルは、ACL および POSIX のアクセス許可に加え、Data Lake Storage Gen2 固有の追加設定を完全サポートしています。 設定は、管理ツールを通じて構成することもできますし、Hive や Spark などのフレームワークを通じて構成することもできます。
+- **POSIX アクセス許可のスーパーセット**:Data Lake Gen2 のセキュリティ モデルは、ACL および POSIX のアクセス許可に加え、Data Lake Storage Gen2 固有の追加設定を完全サポートしています。 設定は、管理ツールを通じて構成することもできますし、Hive や Spark などのフレームワークを通じて構成することもできます。
 
-- **コスト効率**: Data Lake Storage Gen2 は、低コストのストレージ容量とトランザクションを備えています。 ライフサイクル全体を通したデータ遷移として、課金レートは、 [Azure Blob ストレージ ライフサイクル](../../storage/common/storage-lifecycle-managment-concepts.md)などの組み込みの機能を介してコストが最小限になるように変更します。
+- **コスト効率**:Data Lake Storage Gen2 は、低コストのストレージ容量とトランザクションを備えています。 ライフサイクル全体を通したデータ遷移として、課金レートは、 [Azure Blob ストレージ ライフサイクル](../../storage/common/storage-lifecycle-management-concepts.md)などの組み込みの機能を介してコストが最小限になるように変更します。
 
-- **Blob ストレージ ツール、フレームワーク、およびアプリの操作**: Data Lake Storage Gen2 では、Blob ストレージ用に今日存在するさまざまなツール、フレームワーク、およびアプリケーションを継続的に利用できます。
+- **BLOB ストレージ ツール、フレームワーク、およびアプリの操作**:Data Lake Storage Gen2 では、BLOB ストレージ用に今日存在するさまざまなツール、フレームワーク、およびアプリケーションを継続的に利用できます。
 
-- **最適化されたドライバー**: Azure Blob ファイル システム ドライバー (ABFS) は、ビッグ データ分析用に [特別に最適化されています](../../storage/data-lake-storage/abfs-driver.md) 。 該当する REST API は、dfs エンドポイント、dfs.core.windows.net を介して表示されます。
+- **最適化されたドライバー**:Azure Blob ファイル システム ドライバー (ABFS) は、ビッグ データ分析用に [特別に最適化されています](../../storage/data-lake-storage/abfs-driver.md) 。 該当する REST API は、dfs エンドポイント、dfs.core.windows.net を介して表示されます。
 
 次の形式の 1 つを使用して、ADLS Gen2 に格納されているデータにアクセスできます。
-- `abfs:///`: クラスターの既定の Data Lake Storage にアクセスします。
-- `abfs[s]://file_system@account_name.dfs.core.windows.net`: 既定以外の Data Lake Storage を使用して通信するときに使用します。
+- `abfs:///`:クラスターの既定の Data Lake Storage にアクセスします。
+- `abfs[s]://file_system@account_name.dfs.core.windows.net`:既定以外の Data Lake Storage を使用して通信するときに使用します。
 
 詳細については、次の記事を参照してください。
 
 - [Azure Data Lake Storage Gen2 プレビューの概要](../../storage/data-lake-storage/introduction.md)
 - [Azure BLOB ファイル システム ドライバー (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
+- [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
 
-## <a name="protect-azure-storage-key-visibility-within-the-on-premises-hadoop-cluster-configuration"></a>オンプレミスの Hadoop クラスター構成内で Azure Storage キーの可視性を保護する
+## <a name="secure-azure-storage-keys-within-on-premises-hadoop-cluster-configuration"></a>オンプレミスの Hadoop クラスター構成内の Azure Storage キーをセキュリティ保護する
 
 Hadoop 構成ファイルに追加される Azure ストレージ キーは、オンプレミスの HDFS と Azure Blob ストレージの間の接続を確立します。 これらのキーは、Hadoop の資格情報プロバイダー フレームワークを使用して暗号化することで保護できます。 暗号化されると、それらを安全に格納してアクセスできます。
 
@@ -144,18 +148,21 @@ hadoop credential create fs.azure.account.key.account.blob.core.windows.net -val
 hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode.xx.internal.cloudapp.net/path/to/jceks /user/user1/ wasb:<//yourcontainer@youraccount.blob.core.windows.net/>user1
 ```
 
-## <a name="restrict-access-to-azure-storage-data-using-sas-signatures"></a>SAS 署名を使用して Azure ストレージ データへのアクセスを制限する
+## <a name="restrict-azure-storage-data-access-using-sas"></a>SAS を使用して Azure Storage のデータ アクセスを制限する
 
 HDInsight には、既定の状態で、クラスターに関連付けられた Azure Storage アカウントのデータへのフル アクセス権があります。 blob コンテナーの Shared Access Signatures (SAS) を使用して、データへの読み取り専用アクセスをユーザーに提供するなど、データへのアクセスを制限できます。
 
 ### <a name="using-the-sas-token-created-with-python"></a>Python で作成された SAS トークンを使用する
 
 1. [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) ファイルを開き、次の値を変更します。
-    - policy_name: 作成する保存済みのポリシーに使用する名前。
-    - storage_account_name: 使用するストレージ アカウントの名前。
-    - storage_account_key: ストレージ アカウントのキー。
-    - storage_container_name: アクセスを制限するストレージ アカウントのコンテナー。
-    - example_file_path: コンテナーにアップロードされるファイルのパス
+
+    |トークンのプロパティ|説明|
+    |---|---|
+    |policy_name|作成する保存済みのポリシーに使用する名前。|
+    |storage_account_name|ご利用のストレージ アカウントの名前。|
+    |storage_account_key|ストレージ アカウントのキー。|
+    |storage_container_name|アクセスを制限するストレージ アカウントのコンテナー。|
+    |example_file_path|コンテナーにアップロードされるファイルのパス。|
 
 2. SASToken.py ファイルには、`ContainerPermissions.READ + ContainerPermissions.LIST` のアクセス許可が付いており、ユース ケースに基づいて調整できます。
 
@@ -165,11 +172,11 @@ HDInsight には、既定の状態で、クラスターに関連付けられた 
 
 5. Shared Access Signature によるコンテナーへのアクセスを制限するために、Ambari HDFS Configs Advanced Custom core-site Add プロパティの下のクラスターのコアサイト構成にカスタム エントリを追加します。
 
-6.  **[キー]**  と  **[値]**  フィールドに、次の値を使用します。
+6.   **[キー]**  と  **[値]**  フィールドに、次の値を使用します。
 
-    **[キー]**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **[値]**: 上記の手順 4 で Python アプリケーションから返された SAS キー。
+    **[キー]**:`fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **[値]**:上記の手順 4 で Python アプリケーションから返された SAS キー。
 
-7.  **[追加]**  ボタンをクリックしてこのキーと値を保存し、 **[保存]**  ボタンをクリックして構成の変更を保存します。 プロンプトが表示されたら、変更の説明 (「SAS ストレージ アクセスの追加」など) を追加し、 **[保存]** をクリックします。
+7.   **[追加]**  ボタンをクリックしてこのキーと値を保存し、  **[保存]**  ボタンをクリックして構成の変更を保存します。 プロンプトが表示されたら、変更の説明 (「SAS ストレージ アクセスの追加」など) を追加し、 **[保存]** をクリックします。
 
 8. Ambari Web UI で、左側の一覧から [HDFS] を選択して、右側の [サービス アクション] ドロップダウン リストから  **[すべて再起動]**  を選択します。 メッセージが表示されたら、 **[Confirm Restart All]\(すべての再起動の確認\)** を選択します。
 
@@ -183,7 +190,7 @@ Azure での SAS トークンの使用に関して 3 つの重要なことを覚
 
 3. 残念ながら、Hadoop の資格情報プロバイダーおよび復号化キー プロバイダー (ShellDecryptionKeyProvider) は、現在 SAS トークンと一緒に動作しないため、現在は可視性から保護できません。
 
-[Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する](../hdinsight-storage-sharedaccesssignature-permissions.md)を参照してください
+「[Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する](../hdinsight-storage-sharedaccesssignature-permissions.md)」をご覧ください。
 
 ## <a name="use-data-encryption-and-replication"></a>データの暗号化およびレプリケーションを使用する
 
@@ -201,7 +208,7 @@ Azure Data Lake Storage はローカル冗長ストレージ (LRS) を提供し�
 - [Azure Storage のレプリケーション](../../storage/common/storage-redundancy.md)
 - [Azure Data Lake Storage (ADLS) 向けの障害ガイダンス](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
 
-## <a name="attach-additional-azure-storage-accounts-to-the-cluster"></a>クラスターに Azure ストレージ アカウントを追加する
+## <a name="attach-additional-azure-storage-accounts-to-cluster"></a>クラスターに Azure ストレージ アカウントを追加する
 
 HDInsight の作成プロセス時に、既定のファイル システムとして Azure Storage アカウントまたは Azure Data Lake Storage アカウントが選択されます。 クラスター作成プロセス時またはクラスターが作成された後に、この既定のストレージ アカウントに加えて、同じ Azure サブスクリプションか、別の Azure サブスクリプションからストレージ アカウントをさらに追加することもできます。
 
@@ -214,7 +221,6 @@ HDInsight の作成プロセス時に、既定のファイル システムとし
 
 詳細については、次の記事を参照してください。
 - [HDInsight にストレージ アカウントを追加する](../hdinsight-hadoop-add-storage.md)
-- [クラスターに Azure ストレージ アカウントを追加する](https://blogs.msdn.microsoft.com/ashish/2016/08/25/hdinsight-attach-additional-azure-storage-accounts/)
 
 ## <a name="next-steps"></a>次の手順
 

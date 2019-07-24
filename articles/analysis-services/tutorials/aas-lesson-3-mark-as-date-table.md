@@ -1,19 +1,19 @@
 ---
-title: 'Azure Analysis Services チュートリアル - レッスン 3: 日付テーブルとしてマークする | Microsoft Docs'
+title: 'Azure Analysis Services チュートリアルのレッスン 3: 日付テーブルとしてマークする | Microsoft Docs'
 description: Azure Analysis Services チュートリアル プロジェクトで日付テーブルをマークする方法を説明します｡
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9cbbf8c5ea05915293c785028bdd0a47ba081036
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 4c383fe30b8a6be3a5915f3cc1c0f5e5712ab328
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426024"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54188999"
 ---
 # <a name="mark-as-date-table"></a>日付テーブルとしてマークする
 
@@ -28,7 +28,7 @@ ms.locfileid: "49426024"
 このレッスンの推定所要時間: **3 分**  
   
 ## <a name="prerequisites"></a>前提条件  
-このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンのタスクを実行する前に、前のレッスン「[レッスン 2: 日付テーブルとしてマークする](../tutorials/aas-lesson-2-get-data.md)」を終えている必要があります。 
+このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンのタスクを実行する前に、前のレッスン「[レッスン 2:データを取得する](../tutorials/aas-lesson-2-get-data.md)」を完了する必要があります。 
 
 ### <a name="to-rename-the-fulldatealternatekey-column"></a>FullDateAlternateKey 列の名前を変更する
 
@@ -49,5 +49,5 @@ ms.locfileid: "49426024"
   
 
 ## <a name="whats-next"></a>次の手順
-[レッスン 4: リレーションシップを作成する](../tutorials/aas-lesson-4-create-relationships.md)
+[レッスン 4: リレーションシップを作成する](../tutorials/aas-lesson-4-create-relationships.md)。
   

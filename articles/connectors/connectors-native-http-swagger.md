@@ -11,12 +11,12 @@ ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
-ms.openlocfilehash: e96e271fbb50a2485a22fab061ea160dc00cf3d6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 9408b66f74391b080ef46c758b07850b2ae8de57
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123174"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58893398"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Azure Logic Apps で HTTP + Swagger コネクタを使用して REST エンドポイントを呼び出す
 
@@ -28,7 +28,7 @@ ms.locfileid: "43123174"
 
 HTTP + Swagger トリガーおよびアクションは、[HTTP アクション](connectors-native-http.md)と同様に機能しますが、ロジック アプリ デザイナーでは、[Swagger メタデータ](https://swagger.io)から API の構造と出力を公開することでエクスペリエンスが向上します。 また、HTTP + Swagger コネクタをトリガーとして使用することもできます。 ポーリング トリガーを実装する場合は、「[Logic Apps から他の API、サービス、およびシステムを呼び出すカスタム API の作成](../logic-apps/logic-apps-create-api-app.md#polling-triggers)」に記載されているポーリング パターンに従ってください。
 
-では、[ロジック アプリのトリガーとアクション](connectors-overview.md)について詳しく説明します。
+では、[ロジック アプリのトリガーとアクション](../connectors/apis-list.md)について詳しく説明します。
 
 ロジック アプリでワークフローのアクションとして HTTP + Swagger 操作を使用する方法の例を次に示します。
 
@@ -40,7 +40,7 @@ HTTP + Swagger トリガーおよびアクションは、[HTTP アクション](
 4. Swagger ドキュメントの URL を入力します。
    
    * ロジック アプリ デザイナーで使用するには、この URL が HTTPS エンドポイントであり、CORS が有効になっている必要があります。
-   * Swagger ドキュメントがこの要件を満たしていない場合は、 [CORS を有効にした Azure Storage](#hosting-swagger-from-storage) を使用してドキュメントを格納できます。
+   * Swagger ドキュメントがこの要件を満たしていない場合は、CORS を有効にした Azure Storage を使用してドキュメントを格納できます。
 5. **[次へ]** をクリックし、Swagger ドキュメントを読み込んで表示します。
 6. HTTP 呼び出しに必要なすべてのパラメーターを追加します。
    
@@ -60,7 +60,7 @@ Azure Storage で Swagger ドキュメントを作成、構成し、格納する
 
 3. Swagger ファイルを BLOB にアップロードします。 
 
-   この手順は、[Azure Portal](https://portal.azure.com) から、または [Azure ストレージ エクスプローラー](http://storageexplorer.com/)などのツールから実行できます。
+   この手順は、[Azure Portal](https://portal.azure.com) から、または [Azure ストレージ エクスプローラー](https://storageexplorer.com/)などのツールから実行できます。
 
 4. Azure BLOB ストレージ内のドキュメントへの HTTPS リンクを参照します  
 
@@ -72,16 +72,16 @@ Azure Storage で Swagger ドキュメントを作成、構成し、格納する
 この HTTP + Swagger コネクタでサポートされているトリガーとアクションの詳細を次に示します。
 
 ## <a name="http--swagger-triggers"></a>HTTP + Swagger トリガー
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 [トリガーの詳細についてはこちらを参照してください。](connectors-overview.md) HTTP + Swagger コネクタにはトリガーが 1 つあります。
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 HTTP + Swagger コネクタにはトリガーが 1 つあります。 トリガーの詳細については[こちら](../connectors/apis-list.md)を参照してください。
 
 | トリガー | 説明 |
 | --- | --- |
 | HTTP + Swagger |HTTP 呼び出しを実行し、応答コンテンツを返します |
 
 ## <a name="http--swagger-actions"></a>HTTP + Swagger アクション
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 [アクションの詳細についてはこちらを参照してください。](connectors-overview.md) HTTP + Swagger コネクタには、使用可能なアクションが 1 つあります。
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 HTTP + Swagger コネクタには、使用可能なアクションが 1 つあります。 アクションの詳細については[こちら](../connectors/apis-list.md)を参照してください。
 
-| アクションを表示します。 | 説明 |
+| Action | 説明 |
 | --- | --- |
 | HTTP + Swagger |HTTP 呼び出しを実行し、応答コンテンツを返します |
 
@@ -92,13 +92,13 @@ HTTP + Swagger コネクタには、使用可能なアクションが 1 つ用�
 Swagger メタデータを使用して HTTP 送信要求を行います。
 アスタリスク (*) は、必須フィールドであることを意味します。
 
-| 表示名 | プロパティ名 | 説明 |
+| Display name | プロパティ名 | 説明 |
 | --- | --- | --- |
 | メソッド* |method |使用する HTTP 動詞 |
 | URI* |uri |HTTP 要求の URI |
 | headers |headers |含める HTTP ヘッダーの JSON オブジェクト |
 | 本文 |body |HTTP 要求の本文 |
-| Authentication |[認証] |要求に使用する認証 詳細については、「[HTTP コネクタ](connectors-native-http.md#authentication)」を参照してください。 |
+| Authentication |認証 |要求に使用する認証 詳細については、「[HTTP コネクタ](connectors-native-http.md#authentication)」を参照してください。 |
 
 **出力の詳細**
 
@@ -106,8 +106,8 @@ HTTP 応答
 
 | プロパティ名 | データ型 | 説明 |
 | --- | --- | --- |
-| headers |オブジェクト |応答ヘッダー |
-| 本文 |オブジェクト |応答オブジェクト |
+| headers |object |応答ヘッダー |
+| 本文 |object |応答オブジェクト |
 | 状態コード |int |HTTP 状態コード |
 
 ### <a name="http-responses"></a>HTTP 応答
@@ -123,7 +123,6 @@ HTTP 応答
 | 404 |見つかりません |
 | 500 |内部サーバー エラー。 不明なエラーが発生しました。 |
 
-- - -
 ## <a name="next-steps"></a>次の手順
 
 * [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)

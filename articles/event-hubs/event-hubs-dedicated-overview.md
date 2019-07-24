@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs Dedicated 容量の概要 | Microsoft Docs
-description: Microsoft Azure Event Hubs Dedicated 容量の概要。
+title: 専用イベント ハブの概要 - Azure Event Hubs | Microsoft Docs
+description: この記事では、イベント ハブのシングル テナント デプロイを提供する専用の Azure Event Hubs の概要について説明します。
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -12,33 +12,33 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 68a55d8a16e55e2f5e4b48153f045daa40c9a68c
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 2a1785b9c749a8c413987974446190aafc08ed3a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42145641"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105592"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Event Hubs Dedicated の概要
 
-
-  *Event Hubs Dedicated* 容量は、最も厳しい要件を持つお客様にシングル テナント デプロイを提供します。 フルスケールの Azure Event Hubs では、十分な耐久性を備えたストレージと 1 秒未満の待機時間により、1 秒当たり 200 万件以上のイベントまたは 1 秒当たり最大 2 GB のテレメトリを受信できます。 また、同じシステム上でのリアルタイム処理とバッチ処理により、統合されたソリューションを実現できます。 このプランに含まれる [Event Hubs Capture](event-hubs-capture-overview.md) では、1 つのストリームでリアルタイムのパイプラインとバッチ ベースのパイプラインの両方をサポートすることで、ソリューションの複雑さが軽減できます。
+*Event Hubs Dedicated* 容量は、最も厳しい要件を持つお客様にシングル テナント デプロイを提供します。 フルスケールの Azure Event Hubs では、十分な耐久性を備えたストレージと 1 秒未満の待機時間により、1 秒当たり 200 万件以上のイベントまたは 1 秒当たり最大 2 GB のテレメトリを受信できます。 また、同じシステム上でのリアルタイム処理とバッチ処理により、統合されたソリューションを実現できます。 このプランに含まれる [Event Hubs Capture](event-hubs-capture-overview.md) では、1 つのストリームでリアルタイムのパイプラインとバッチ ベースのパイプラインの両方をサポートすることで、ソリューションの複雑さが軽減できます。
 
 次の表では、Event Hubs で提供されるサービス レベルを比較しています。 Standard のほとんどの機能が従量課金であるのに対し、Event Hubs Dedicated プランは月額固定価格となっています。 Dedicated レベルの機能は Standard プランとすべて同じですが、要求の厳しいワークロードを実行するお客様向けにエンタープライズ スケールの容量で提供されます。 
 
-| Feature | 標準 | 専用 |
-| --- |:---:|:---:|:---:|
+| 機能 | Standard | 専用 |
+| --- |:---:|:---:|
 | イングレス イベント | 100 万イベントごとの課金 | あり |
 | スループット単位 (1 MB/秒イングレス、2 MB/秒エグレス) | 1 時間ごとの課金 | あり |
-| メッセージ サイズ | 256 KB | 1 MB |
-| パブリッシャー ポリシー | [はい] | [はい] |   
+| メッセージ サイズ | 1 MB | 1 MB |
+| パブリッシャー ポリシー | はい | はい |   
 | コンシューマー グループ | 20 | 20 |
-| メッセージ リプレイ | [はい] | [はい] |
+| メッセージ リプレイ | はい | はい |
 | 最大スループット ユニット | 20 (～ 100)   | 1 容量ユニット (CU) ≈ 50 |
 | 仲介型接続 | 1,000 (付属) | 100,000 (付属) |
-| 追加の仲介型接続 | [はい] | [はい] |
+| 追加の仲介型接続 | はい | はい |
 | メッセージのリテンション期間 | 1 日分が含まれます | 最大 7 日分が含まれます |
 | キャプチャ | 1 時間ごとの課金 | あり |
 
@@ -47,7 +47,6 @@ ms.locfileid: "42145641"
 Event Hubs Dedicated を使用することで実現する利点を次に示します。
 
 * 他のテナントからのノイズがないシングル テナント ホスティング。
-* メッセージ サイズを 1 MB に拡大 (Standard では 256 KB)。
 * パフォーマンスを常に再現可能。
 * ニーズの急増に対応するための容量を保証。
 * マイクロバッチおよび長期リテンション期間と統合できるように、Event Hubs の[キャプチャ](event-hubs-capture-overview.md)機能が含まれます。

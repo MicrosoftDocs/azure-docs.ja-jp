@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/14/2017
+ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d87642b93d58d92660a2df71f2561ffe502315a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7c6f0a6371b38f0271237db0f7d80b831ecc145c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257267"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088708"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple Virtual Array のデプロイ - Azure Portal の準備
 
@@ -43,7 +43,7 @@ StorSimple Virtual Array をデプロイするには、次の記事を順番に�
 | **#** | **手順** | **説明** | **参照ドキュメント** |
 | --- | --- | --- | --- |
 | 1. |**Azure Portal のセットアップ** |StorSimple Virtual Array をプロビジョニングする前に、StorSimple デバイス マネージャー サービスを作成して構成します。 |[ポータルを準備する](storsimple-virtual-array-deploy1-portal-prep.md) |
-| 2. |**Virtual Array のプロビジョニング** |Hyper-V の場合、Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 の Hyper-V を実行しているホスト システムで、StorSimple Virtual Array をプロビジョニングし、そのアレイに接続します。 <br></br> <br></br> VMware の場合、VMware ESXi 5.0、5.5、または 6.0 を実行しているホスト システムで、StorSimple Virtual Array をプロビジョニングし、そのアレイに接続します。<br></br> |[Hyper-V で Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [VMware で Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-vmware.md) |
+| 2. |**Virtual Array のプロビジョニング** |Hyper-V の場合、Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 の Hyper-V を実行しているホスト システムで、StorSimple Virtual Array をプロビジョニングし、そのアレイに接続します。 <br></br> <br></br> VMware の場合、VMware ESXi 5.0、5.5、6.0、または 6.5 を実行しているホスト システムで、StorSimple Virtual Array をプロビジョニングし、そのアレイに接続します。<br></br> |[Hyper-V で Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [VMware で Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-vmware.md) |
 | 手順 3. |**Virtual Array のセットアップ** |ファイル サーバーの場合: 初期セットアップを実行し、StorSimple ファイル サーバーを登録して、デバイスのセットアップを完了します。 これで、SMB 共有をプロビジョニングできます。 <br></br> <br></br> iSCSI サーバーの場合: 初期セットアップを実行し、StorSimple iSCSI サーバーを登録して、デバイスのセットアップを完了します。 これで、iSCSI ボリュームをプロビジョニングできます。 |[ファイル サーバーとして Virtual Array をセットアップする](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[iSCSI サーバーとして Virtual Array をセットアップする](storsimple-virtual-array-deploy3-iscsi-setup.md) |
 
 これで、Azure Portal をセットアップする準備が整いました。
@@ -71,7 +71,7 @@ StorSimple Virtual Array をデプロイするには、次の記事を順番に�
 
 仮想アレイをデプロイする前に次の点を確認します。
 
-* Windows Server 2008 R2 以降の Hyper-V または VMware (ESXi 5.0、5.5、6.0) を実行し、デバイスのプロビジョニングに使用できるホスト システムへのアクセス権があること。
+* Windows Server 2008 R2 以降の上に配置された Hyper-V、または VMware (ESXi 5.0、5.5、6.0、または 6.5) を実行し、デバイスのプロビジョニングに使用できるホスト システムへのアクセス権があること。
 * ホスト システムで、次のリソースを仮想アレイのプロビジョニング専用に使用できること。
   
   * 最小で 4 コア。
@@ -90,9 +90,9 @@ StorSimple Virtual Array をデプロイするには、次の記事を順番に�
 
 次の手順を順番に実行すると、StorSimple デバイス マネージャー サービス用のポータルを準備できます。
 
-## <a name="step-1-create-a-new-service"></a>手順 1. 新しいサービスを作成する
+## <a name="step-1-create-a-new-service"></a>手順 1:新しいサービスの作成
 
-StorSimple デバイス マネージャー サービスの 1 つのインスタンスで、複数の StorSimple Virtual Array を管理できます。 StorSimple デバイス マネージャー サービスのインスタンスを作成するには、次の手順を実行します。 既存の StorSimple デバイス マネージャー サービスで仮想アレイを管理する場合、この手順は省略して、「[手順 2: サービス登録キーを取得する](#step-2-get-the-service-registration-key)」に進みます。
+StorSimple デバイス マネージャー サービスの 1 つのインスタンスで、複数の StorSimple Virtual Array を管理できます。 StorSimple デバイス マネージャー サービスのインスタンスを作成するには、次の手順を実行します。 既存の StorSimple デバイス マネージャー サービスで仮想アレイを管理する場合、この手順は省略して、「[手順 2:サービス登録キーを取得する](#step-2-get-the-service-registration-key)」をご覧ください。
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
@@ -100,11 +100,11 @@ StorSimple デバイス マネージャー サービスの 1 つのインスタ�
 > サービスでストレージ アカウントの自動作成を有効にしていない場合は、サービスの作成が完了してから、1 つ以上のストレージ アカウントを作成する必要があります。
 > 
 > * ストレージ アカウントを自動的に作成していない場合は、「 [サービスの新しいストレージ アカウントを構成する](#optional-step-configure-a-new-storage-account-for-the-service) 」に移動して詳細な手順をご確認ください。
-> * ストレージ アカウントの自動作成を有効にしている場合は、「 [手順 2. サービス登録キーを取得する](#step-2-get-the-service-registration-key)」に進みます。
+> * ストレージ アカウントの自動作成を有効にしている場合は、「 [手順 2:サービス登録キーを取得する](#step-2-get-the-service-registration-key)」をご覧ください。
 > 
 > 
 
-## <a name="step-2-get-the-service-registration-key"></a>手順 2. サービス登録キーを取得する
+## <a name="step-2-get-the-service-registration-key"></a>手順 2:サービス登録キーを取得する
 
 StorSimple デバイス マネージャー サービスが稼働したら、サービス登録キーを取得する必要があります。 このキーを使用して StorSimple デバイスを登録し、サービスに接続します。
 
@@ -117,7 +117,7 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
 > 
 > 
 
-## <a name="step-3-download-the-virtual-array-image"></a>手順 3: 仮想アレイのイメージをダウンロードする
+## <a name="step-3-download-the-virtual-array-image"></a>手順 3:仮想アレイのイメージをダウンロードする
 
 サービス登録キーを取得したら、ホスト システムで仮想アレイをプロビジョニングするために、適切な仮想アレイのイメージをダウンロードする必要があります。 仮想アレイのイメージはオペレーティング システムに固有で、Azure Portal の [クイック スタート] ページからダウンロードできます。
 
@@ -137,10 +137,10 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
    
    * Windows Server 2012 以降の Hyper-V 用 VHDX
    * Windows Server 2008 R2 以降の Hyper-V 用 VHD
-   * VMWare ESXi 5.0、5.5、6.0 用 VMDK
+   * VMWare ESXi 5.0、5.5、6.0、または 6.5 用 VMDK
 5. ファイルをローカル ドライブにダウンロードして解凍し、解凍したファイルの場所をメモしておきます。
 
-## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>省略可能な手順: サービスの新しいストレージ アカウントを構成する
+## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>省略可能な手順:サービスの新しいストレージ アカウントを構成する
 
 この手順は省略可能で、サービスでストレージ アカウントの自動作成を有効にしていない場合にのみ実行する必要があります。
 
@@ -155,15 +155,15 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
 3. **[追加]** をクリックします。
 4. **[ストレージ アカウントの追加]** ブレードで、次の操作を行います。
    
-    1. **[サブスクリプション]** で **[現在]** を選択します。
+   1. **[サブスクリプション]** で **[現在]** を選択します。
    
-    2. Azure ストレージ アカウントの名前を指定します。
+   2. Azure ストレージ アカウントの名前を指定します。
    
-    3. **[有効にする]** を選択し、StorSimple デバイスとクラウドの間のネットワーク通信用に、セキュリティで保護されたチャネルを作成します。 **[無効にする]** は、プライベート クラウド内で動作している場合にのみ選択します。
+   3. **[有効にする]** を選択し、StorSimple デバイスとクラウドの間のネットワーク通信用に、セキュリティで保護されたチャネルを作成します。 **[無効にする]** は、プライベート クラウド内で動作している場合にのみ選択します。
    
-    4. **[追加]** をクリックします。 ストレージ アカウントが正常に作成されると、その旨が通知が表示されます。<br></br>
+   4. **[追加]** をクリックします。 ストレージ アカウントが正常に作成されると、その旨が通知が表示されます。<br></br>
    
-     ![既存のストレージ アカウントの資格情報の追加](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
+      ![既存のストレージ アカウントの資格情報の追加](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
 ## <a name="next-step"></a>次のステップ
 

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 076df176d7cd40c009aea27004fe0f4415999c80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5d3525952ec09474d60618c4f99138cef1fce57a
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23112280"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317512"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>StorSimple Virtual Array をデプロイする - Azure Portal を介して iSCSI サーバーとしてセットアップする
 
 ![iscsi セットアップ プロセス フロー](./media/storsimple-virtual-array-deploy3-iscsi-setup/iscsi4.png)
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 
 このデプロイ チュートリアルは、Microsoft Azure StorSimple Virtual Array に適用されます。 このチュートリアルでは、初期セットアップを実行し、StorSimple iSCSI サーバーを登録し、デバイス セットアップを完了した後、iSCSI サーバーとして構成された StorSimple Virtual Array でボリュームを作成、マウント、初期化、およびフォーマットする方法を説明します。 
 
@@ -36,19 +36,19 @@ ms.locfileid: "23112280"
 StorSimple Virtual Array を構成およびセットアップする前に、以下のことを確認します。
 
 * 「[StorSimple Virtual Array をデプロイする - Hyper-V で Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md)」または「[StorSimple Virtual Array をデプロイする - VMware で Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-vmware.md)」の説明に従って仮想アレイをプロビジョニングし、そのアレイに接続していること。
-* StorSimple Virtual Array を管理するために作成した、StorSimple デバイス マネージャー サービスからのサービス登録キーがあること。 詳細については、「[StorSimple Virtual Array のデプロイ - ポータルの準備](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)」の「**手順 2: サービス登録キーを取得する**」を参照してください。
+* StorSimple Virtual Array を管理するために作成した、StorSimple デバイス マネージャー サービスからのサービス登録キーがあること。 詳細については、「**手順 2: サービス登録キーを取得する**」 ([StorSimple Virtual Array のデプロイ - ポータルの準備](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)) を参照してください。
 * 既存の StorSimple デバイス マネージャー サービスに登録する 2 番目以降の仮想アレイの場合は、サービス データ暗号化キーがあるはずです。 このキーは、最初のデバイスがこのサービスに正常に登録されたときに生成されています。 このキーを紛失した場合は、「 **Web UI を使用した StorSimple Virtual Array の管理** 」の「 [サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)」を参照してください。
 
 ## <a name="step-by-step-setup"></a>セットアップの手順
 
 StorSimple Virtual Array をセットアップして構成するには、次の手順を実行します。
 
-* [手順 1: ローカル Web UI のセットアップを完了し、デバイスを登録する](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
-* [手順 2: 必要なデバイスのセットアップを完了する](#step-2-complete-the-required-device-setup)
-* [手順 3: ボリュームを追加する](#step-3-add-a-volume)
-* [手順 4: ボリュームをマウント、初期化、フォーマットする](#step-4-mount-initialize-and-format-a-volume)
+* [手順 1:ローカル Web UI の設定を完了し、デバイスを登録する](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
+* 手順 2:必要なデバイスのセットアップを完了する
+* [手順 3:ボリュームを追加する](#step-3-add-a-volume)
+* [手順 4:ボリュームをマウント、初期化、フォーマットする](#step-4-mount-initialize-and-format-a-volume)
 
-## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>手順 1: ローカル Web UI のセットアップを完了し、デバイスを登録する
+## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>手順 1:ローカル Web UI の設定を完了し、デバイスを登録する
 
 #### <a name="to-complete-the-setup-and-register-the-device"></a>セットアップを完了し、デバイスを登録するには
 
@@ -59,7 +59,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
     前の手順に記載されている接続 URL を使用します。 Web サイトのセキュリティ証明書に問題があることを知らせるエラーが表示されます。 **[続行]** をクリックして、この Web ページに進みます。
    
     ![セキュリティ証明書エラー](./media/storsimple-virtual-array-deploy3-iscsi-setup/image3.png)
-2. 仮想デバイスの Web UI に **StorSimpleAdmin**としてサインインします。 「[StorSimple Virtual Array をデプロイする - Hyper-V で仮想デバイスをプロビジョニングする](storsimple-virtual-array-deploy2-provision-hyperv.md)」または「[StorSimple Virtual Array をデプロイする - VMware で仮想デバイスをプロビジョニングする](storsimple-virtual-array-deploy2-provision-vmware.md)」の「手順 3: 仮想デバイスを起動する」で変更したデバイス管理者のパスワードを入力します。
+2. 仮想デバイスの Web UI に **StorSimpleAdmin**としてサインインします。 デバイス管理者のパスワード (「[StorSimple Virtual Array をデプロイする - Hyper-V で仮想デバイスをプロビジョニングする](storsimple-virtual-array-deploy2-provision-hyperv.md)」または「[StorSimple Virtual Array をデプロイする - VMware で仮想デバイスをプロビジョニングする](storsimple-virtual-array-deploy2-provision-vmware.md)」の「手順 3: 仮想デバイスを起動する」で変更したパスワード) を入力します。
    
     ![サインイン ページ](./media/storsimple-virtual-array-deploy3-iscsi-setup/image4.png)
 3. **[ホーム]** ページが表示されます。 このページは、仮想デバイスを構成し、StorSimple デバイス マネージャー サービスに登録するうえで必要なさまざまな設定を掲載しています。 **ネットワーク設定**、**Web プロキシの設定**、**時刻の設定**はオプションであることに注意してください。 必須の設定は、**デバイスの設定**と**クラウドの設定**のみです。
@@ -88,7 +88,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
       > iSCSI サーバーをドメインに参加させるには、仮想アレイが Microsoft Azure Active Directory の独自の組織単位 (OU) にあり、グループ ポリシー オブジェクト (GPO) が適用されていないことを確認します。
       > 
       > 
-   4. ダイアログ ボックスが表示されます。 ドメインの資格情報を指定された形式で入力します。 チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png)」の説明どおりに仮想デバイスをプロビジョニングして接続していること。 ドメインの資格情報が検証されます。 資格情報が間違っていると、エラー メッセージが表示されます。
+   4. ダイアログ ボックスが表示されます。 ドメインの資格情報を指定された形式で入力します。 操作を完了するには、チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png)。 ドメインの資格情報が検証されます。 資格情報が間違っていると、エラー メッセージが表示されます。
       
        ![資格情報](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
    5. **[Apply]** をクリックします。 これにより、デバイスの設定が適用、検証されます。
@@ -98,7 +98,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
    
     **[Web プロキシ設定]** ページで、以下のことを実行します。
    
-   1. *http://host-IP アドレス* または *FDQN:ポート番号* の形式で、**[Web プロキシ URL]** を指定します。 HTTPS URL はサポートされていないことに注意してください。
+   1. *http://\/host-IP アドレス*または *FQDN:ポート番号*の形式で、**[Web プロキシ URL]** を指定します。 HTTPS URL はサポートされていないことに注意してください。
    2. **[認証]** に **[基本]** または **[なし]** を指定します。
    3. 認証を使用する場合は、**[ユーザー名]** と **[パスワード]** も指定する必要があります。
    4. **[Apply]** をクリックします。 これにより、構成済みの Web プロキシ設定が検証され、適用されます。
@@ -109,12 +109,12 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
     **[時刻の設定]** ページで、次の操作を行います。
    
    1. ドロップダウン リストから、デバイスをデプロイする地理的な場所に基づいて **[タイム ゾーン]** を選択します。 デバイスの既定のタイム ゾーンは太平洋標準時です。 デバイスは、スケジュールされたすべての操作でこのタイム ゾーンを使用します。
-   2. デバイスの **[プライマリ NTP サーバー]** を指定するか、time.windows.com の既定値をそのまま使用します。データ センターからインターネットへの NTP トラフィックがネットワークで許可されていることを確認します。
+   2. デバイスの **[プライマリ NTP サーバー]** を指定するか、time.windows.com の既定値をそのまま使用します。 データ センターからインターネットへの NTP トラフィックがネットワークで許可されていることを確認します。
    3. 必要に応じて、デバイスの **[セカンダリ NTP サーバー]** を指定します。
    4. **[Apply]** をクリックします。 これにより、構成済みの時刻設定が検証され、適用されます。
 9. デバイスのクラウドの設定を構成します。 この手順では、ローカル デバイスの構成を完了してから、StorSimple デバイス マネージャー サービスにそのデバイスを登録します。
    
-   1. 「[StorSimple Virtual Array のデプロイ - ポータルの準備](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)」の「**手順 2. サービス登録キーを取得する**」で取得した**サービス登録キー**を入力します。
+   1. **サービス登録キー** (「**手順 2: サービス登録キーを取得する**」 ([StorSimple Virtual Array のデプロイ - ポータルの準備](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)) で取得したキー) を入力します。
    2. デバイスがこのサービスに登録する最初のデバイスでない場合は、 **サービス データ暗号化キー**を指定する必要があります。 このキーは、StorSimple デバイス マネージャー サービスに追加のデバイスを登録するときに、サービス登録キーと共に必要になります。 詳しくは、ローカル Web UI の「 [サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) 」をご覧ください。
    3. **[登録]** をクリックします。 これにより、デバイスが再起動します。 デバイスが正常に登録されるまでに、2 ～ 3 分間待機する必要がある場合があります。 デバイスが再起動したら、サインイン ページが表示されます。
       
@@ -125,7 +125,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
     
     ![デバイスの登録](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
 
-## <a name="step-2-configure-the-device-as-iscsi-server"></a>手順 2: デバイスを iSCSI サーバーとして構成する
+## <a name="step-2-configure-the-device-as-iscsi-server"></a>手順 2:デバイスを iSCSI サーバーとして構成する
 
 必要なデバイスのセットアップを完了するには、Azure Portal で次の手順を実行します。
 
@@ -152,7 +152,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
    
     ![デバイスを iSCSI サーバーとして構成](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
 
-## <a name="step-3-add-a-volume"></a>手順 3: ボリュームを追加する
+## <a name="step-3-add-a-volume"></a>手順 3:ボリュームを追加する
 
 1. **[デバイス]** ブレードで、先ほど iSCSI サーバーとして構成したデバイスを選択します。 **[...]** をクリック (または、この行を右クリック) して、コンテキスト メニューから **[ボリュームの追加]** を選択します。 コマンド バーから **[+ ボリュームの追加]** をクリックすることもできます。 これにより **[ボリュームの追加]** ブレードが開きます。
    
@@ -169,7 +169,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
      
      ![ボリュームを追加する](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
    * **[接続済みのホスト]** をクリックし、このボリュームに接続する iSCSI イニシエーターに対応するアクセス制御レコード (ACR) を選択して、**[選択]** をクリックします。 <br><br> 
-3. 新しい接続済みホストを追加するには、**[新規追加]** をクリックし、ホストの名前とその iSCSI 修飾名 (IQN) を入力して、**[追加]** をクリックします。 IQN がない場合は、「 [付録 A: Windows Server ホストの IQN を取得する](#appendix-a-get-the-iqn-of-a-windows-server-host)」をご覧ください。
+3. 新しい接続済みホストを追加するには、**[新規追加]** をクリックし、ホストの名前とその iSCSI 修飾名 (IQN) を入力して、**[追加]** をクリックします。 IQN がない場合は、「[付録 A: Windows Server ホストの IQN を取得する](#appendix-a-get-the-iqn-of-a-windows-server-host)」をご覧ください。
    
       ![ボリュームを追加する](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
 4. ボリュームの構成が完了したら、**[OK]** をクリックします。 指定した設定でボリュームが作成され、通知が表示されます。 既定では、監視とバックアップがボリュームに対して有効になります。
@@ -179,7 +179,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
    
    ![ボリュームを追加する](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
 
-## <a name="step-4-mount-initialize-and-format-a-volume"></a>手順 4: ボリュームをマウント、初期化、フォーマットする
+## <a name="step-4-mount-initialize-and-format-a-volume"></a>手順 4:ボリュームをマウント、初期化、フォーマットする
 
 次の手順に従って、Windows Server ホストに StorSimple ボリュームをマウント、初期化、フォーマットします。
 
@@ -226,9 +226,9 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
     
     ![オンラインのボリューム](./media/storsimple-virtual-array-deploy3-iscsi-setup/image33.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-ローカル Web UI を使用して、 [StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法を確認します。
+ローカル Web UI を使用して [StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法を確認します。
 
 ## <a name="appendix-a-get-the-iqn-of-a-windows-server-host"></a>付録 A: Windows Server ホストの IQN を取得する
 
@@ -239,7 +239,7 @@ Windows Server 2012 を実行する Windows ホストの iSCSI 修飾名 (IQN) �
 1. Windows ホストで、Microsoft iSCSI イニシエーターを起動します。
 2. **[iSCSI イニシエーターのプロパティ]** ウィンドウの **[構成]** タブで、**[イニシエーター名]** フィールドの文字列を選択してコピーします。
    
-    ![iSCSI イニシエーターのプロパティ](./media/storsimple-virtual-array-deploy3-iscsi-setup/image34.png)
+    ![[iSCSI イニシエーターのプロパティ]](./media/storsimple-virtual-array-deploy3-iscsi-setup/image34.png)
 3. この文字列を保存します。
 
 <!--Reference link-->

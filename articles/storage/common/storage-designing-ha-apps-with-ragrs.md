@@ -1,20 +1,20 @@
 ---
-title: Azure の読み取りアクセス geo 冗長ストレージ (RA-GRS) を使用した高可用性アプリケーションの設計 | Microsoft Docs
+title: 読み取りアクセス geo 冗長ストレージ (RA-GRS) を使用した高可用性アプリケーションの設計 | Microsoft Docs
 description: Azure の RA-GRS ストレージを使用して、サービス停止に対応できる高い柔軟性を備えた高可用性アプリケーションを設計する方法を説明します。
 services: storage
 author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 01/17/2019
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 718a8fb82c3d85baf94e2e9c316f40b964749912
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: be1c46c5bc2c8edcfeca81c82095687c4ddfd894
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231365"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225826"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS を使用した高可用性アプリケーションの設計
 
@@ -24,12 +24,12 @@ Azure Storage のようなクラウドベースのインフラストラクチャ
 
 この記事では、GRS と RA-GRS に重点を置いて説明します。 GRS では、データの 3 つのコピーがプライマリ リージョン (ストレージ アカウントの設定時に選択したリージョン) に保持され、 さらに 3 つのコピーがセカンダリ リージョン (Azure によって指定されたリージョン) に非同期的に保持されます。 RA-GRS は、セカンダリ コピーに対する読み取りアクセス権を持つ geo 冗長ストレージを提供します。
 
-どのプライマリ リージョンがどのセカンダリ リージョンとペアになっているかについては、「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)」を参照してください。
+どのプライマリ リージョンがどのセカンダリ リージョンとペアになっているかについては、「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)」をご覧ください。
 
 この記事にはコード スニペットが含まれています。また、記事の最後には、ダウンロードして実行できる完全なサンプルへのリンクも記載されています。
 
 > [!NOTE]
-> Azure Storage は、高可用性アプリケーションを構築するためのゾーン冗長ストレージ (ZRS) をサポートするようになりました。 ZRS は、多くのアプリケーションの冗長性ニーズに対してシンプルなソリューションを提供します。 ZRS は、単一のデータ センターに影響するハードウェア障害または壊滅的災害からの保護を提供します。 詳しくは、「[ゾーン冗長化ストレージ (ZRS): 高可用 Azure Storage アプリケーション](storage-redundancy-zrs.md)」をご覧ください。
+> Azure Storage は、高可用性アプリケーションを構築するためのゾーン冗長ストレージ (ZRS) をサポートするようになりました。 ZRS は、多くのアプリケーションの冗長性ニーズに対してシンプルなソリューションを提供します。 ZRS は、単一のデータ センターに影響するハードウェア障害または壊滅的災害からの保護を提供します。 詳細については、「[ゾーン冗長ストレージ (ZRS): 高可用 Azure Storage アプリケーション](storage-redundancy-zrs.md)」をご覧ください。
 
 ## <a name="key-features-of-ra-grs"></a>RA-GRS の主な特長
 
@@ -43,9 +43,7 @@ RA-GRS 用のアプリケーションを設計する際には、次の重要ポ�
 
 * ストレージ クライアント ライブラリを使用して、プライマリ リージョンまたはセカンダリ リージョンのデータと対話することができます。 プライマリ リージョンに対する読み取り要求がタイムアウトした場合に、その要求をセカンダリ リージョンに自動的にリダイレクトすることもできます。
 
-* プライマリ リージョンのデータのアクセシビリティに影響する重大な問題が発生した場合は、Azure チームが geo フェールオーバーをトリガーすることがあります。このとき、プライマリ リージョンを指す DNS エントリがセカンダリ リージョンを指すよう変更されます。
-
-* geo フェールオーバーが行われると、Azure によって新しいセカンダリ リージョンの場所が選択され、その場所にデータがレプリケートされます。そして、セカンダリ DNS エントリがセカンダリ リージョンを指すよう変更されます。 セカンダリ エンドポイントは、ストレージ アカウントがレプリケートを完了するまで使用できなくなります。 詳細については、「[Azure Storage の停止が発生した場合の対処方法](https://docs.microsoft.com/azure/storage/storage-disaster-recovery-guidance)」を参照してください。
+* プライマリ リージョンが使用できなくなった場合、アカウントのフェールオーバーを開始できます。 セカンダリ リージョンにフェールオーバーすると、プライマリ リージョンを指す DNS エントリがセカンダリ リージョンを指すよう変更されます。 フェールオーバーが完了すると、GRS アカウントと RA-GRS アカウントの書き込みアクセスが復元されます。 詳細については、「[Disaster recovery and storage account failover (preview) in Azure Storage (Azure Storage でのディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー))](storage-disaster-recovery-guidance.md)」を参照してください。
 
 ## <a name="application-design-considerations-when-using-ra-grs"></a>RA-GRS を使用する場合のアプリケーション設計に関する考慮事項
 
@@ -125,7 +123,7 @@ RA-GRS ストレージを使用するには、失敗した読み取り要求と�
 
     このシナリオでは、すべての読み取り要求が最初にプライマリ エンドポイントを試し、タイムアウトになるまで待機してからセカンダリ エンドポイントに切り替えるため、パフォーマンスの低下が起こります。
 
-これらのシナリオについては、**LocationMode** プロパティを **SecondaryOnly** に設定し、プライマリ エンドポイントで継続的な問題が起こっていることを確認したら、すべての読み取り要求を直接セカンダリ エンドポイントに送信する必要があります。 また、この時点でアプリケーションを読み取り専用モードに変更する必要もあります。 このアプローチは[サーキット ブレーカー パターン](https://msdn.microsoft.com/library/dn589784.aspx)と呼ばれます。
+これらのシナリオについては、**LocationMode** プロパティを **SecondaryOnly** に設定し、プライマリ エンドポイントで継続的な問題が起こっていることを確認したら、すべての読み取り要求を直接セカンダリ エンドポイントに送信する必要があります。 また、この時点でアプリケーションを読み取り専用モードに変更する必要もあります。 このアプローチは[サーキット ブレーカー パターン](/azure/architecture/patterns/circuit-breaker)と呼ばれます。
 
 ### <a name="update-requests"></a>更新要求
 
@@ -218,7 +216,7 @@ RA-GRS は、プライマリ リージョンからセカンダリ リージョ�
 
 再試行可能なエラーが発生した場合にアプリケーションが予想どおりに動作するかどうかをテストすることが重要です。 たとえば、問題が検出されたときにアプリケーションがセカンダリ リージョンに切り替わって読み取り専用モードになり、プライマリ リージョンが再び使用可能になったときに元に戻るかどうかをテストします。 そのためには、再試行可能なエラーをシミュレートしてその発生頻度を制御する方法が必要です。
 
-[Fiddler](http://www.telerik.com/fiddler) を使用すると、スクリプトで HTTP 応答をインターセプトして変更することができます。 このスクリプトは、プライマリ エンドポイントからの応答を識別し、その HTTP 状態コードを、ストレージ クライアント ライブラリが再試行できないエラーとして認識するコードに変更します。 下のコード スニペットは、**employeedata** テーブルに対する読み取り要求への応答をインターセプトして 502 ステータスを返す、Fiddler スクリプトの簡単な例を示しています。
+[Fiddler](https://www.telerik.com/fiddler) を使用すると、スクリプトで HTTP 応答をインターセプトして変更することができます。 このスクリプトは、プライマリ エンドポイントからの応答を識別し、その HTTP 状態コードを、ストレージ クライアント ライブラリが再試行できないエラーとして認識するコードに変更します。 下のコード スニペットは、**employeedata** テーブルに対する読み取り要求への応答をインターセプトして 502 ステータスを返す、Fiddler スクリプトの簡単な例を示しています。
 
 ```java
 static function OnBeforeResponse(oSession: Session) {
@@ -230,7 +228,7 @@ static function OnBeforeResponse(oSession: Session) {
 }
 ```
 
-より広範な要求をインターセプトし、そのうちのいくつかの **responseCode** だけを変更するようこのサンプル コードを拡張すれば、より現実的なシナリオをシミュレートすることもできます。 Fiddler スクリプトのカスタマイズの詳細については、Fiddler のドキュメント「[Modifying a Request or Response (要求または応答の変更)](http://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse)」を参照してください。
+より広範な要求をインターセプトし、そのうちのいくつかの **responseCode** だけを変更するようこのサンプル コードを拡張すれば、より現実的なシナリオをシミュレートすることもできます。 Fiddler スクリプトのカスタマイズの詳細については、Fiddler のドキュメント「[Modifying a Request or Response (要求または応答の変更)](https://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse)」を参照してください。
 
 アプリケーションを読み取り専用モードに切り替えるためのしきい値を構成可能にしている場合は、運用環境以外のトランザクション ボリュームを使って動作をテストしやすくなります。
 

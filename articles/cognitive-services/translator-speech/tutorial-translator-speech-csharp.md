@@ -1,23 +1,24 @@
 ---
-title: 'チュートリアル: Translator Speech API C#'
+title: チュートリアル:Translator Speech API (C#)
 titleSuffix: Azure Cognitive Services
 description: Translator Speech API を使用して、テキストをリアルタイムに翻訳します。
 services: cognitive-services
 author: v-jerkin
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 6a53eaf2154162ab9ec85a5a75c2cd52962b53a9
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 81ee3c7da43aa4d81838c90f4e8f41d114da72b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340428"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900830"
 ---
-# <a name="tutorial-translator-speech-application-in-c"></a>チュートリアル: C# での Translator Speech アプリケーション
+# <a name="tutorial-translator-speech-application-in-c"></a>チュートリアル:C# での Translator Speech アプリケーション
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
@@ -33,13 +34,13 @@ ms.locfileid: "49340428"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを行うには、Community Edition を含む Visual Studio 2017 のいずれかのエディションが必要です。 
+このチュートリアルを行うには、Community Edition を含む Visual Studio 2017 のいずれかのエディションが必要です。
 
 Visual Studio ソリューションでは、アプリケーションのインストーラーもビルドされます。 この機能をサポートするには、[WiX Toolset](http://wixtoolset.org/) と [WiX Toolset Visual Studio Extension](https://marketplace.visualstudio.com/items?itemName=RobMensching.WixToolsetVisualStudio2017Extension) が必要です。
 
 また、Translator Speech サービスのサブスクリプション キーも必要です (Microsoft Azure ダッシュ ボードから取得できます)。 ユーザーは、毎月最大 10 時間の発話を無料で翻訳できる、無料価格レベルを利用できます。 このチュートリアルでは、この価格レベルで十分です。
 
-また、サード パーティの [JSON.Net ライブラリ](https://www.newtonsoft.com/json) (提供元は Newtonsoft) も必要になります。 このアセンブリは、Visual Studio のオプションで [パッケージの復元] チェック ボックスが両方とも有効になっている場合、NuGet によって自動的にインストールされます。
+また、サード パーティの [JSON.NET ライブラリ](https://www.newtonsoft.com/json) (提供元は Newtonsoft) も必要になります。 このアセンブリは、Visual Studio のオプションで [パッケージの復元] チェック ボックスが両方とも有効になっている場合、NuGet によって自動的にインストールされます。
 
 ## <a name="trying-the-translation-app"></a>翻訳アプリの使用
 
@@ -63,7 +64,7 @@ Visual Studio で Speech Translator ソリューション (`SpeechTranslator.sln
 
 つまり、音声翻訳の場合は、トランスクリプション用にサポートされている言語をソース言語にする必要があります。 出力言語は、結果をテキストで出力するのであれば、テキスト翻訳用にサポートされている任意の言語を指定できます。 音声出力する場合は、テキスト読み上げ用にサポートされている言語しか翻訳できません。
 
-Microsoft では、新しい言語のサポートを不定期に追加する場合があります。 そのため、サポートされている言語のナレッジをアプリケーションでハード コードすることはしないでください。 代わりに、Translator Speech API では、サポートされている言語を実行時に取得できる、Languages エンドポイントが提供されます。 ユーザーは、次の中から 1 つ以上の言語一覧を受信できます。 
+Microsoft では、新しい言語のサポートを不定期に追加する場合があります。 そのため、サポートされている言語のナレッジをアプリケーションでハード コードすることはしないでください。 代わりに、Translator Speech API では、サポートされている言語を実行時に取得できる、Languages エンドポイントが提供されます。 ユーザーは、次の中から 1 つ以上の言語一覧を受信できます。
 
 | | |
 |-|-|
@@ -73,7 +74,7 @@ Microsoft では、新しい言語のサポートを不定期に追加する場�
 
 Languages エンドポイントにはサブスクリプション キーは必要なく、その使用はクォータに対してカウントされません。 URI は `https://dev.microsofttranslator.com/languages` で、結果は JSON 形式で返されます。
 
-`MainWindow.xaml.cs` 内の `UpdateLanguageSettingsAsync()` メソッド (下記) は、Languages エンドポイントを呼び出して、サポートされている言語の一覧を取得します。 
+`MainWindow.xaml.cs` 内の `UpdateLanguageSettingsAsync()` メソッド (下記) は、Languages エンドポイントを呼び出して、サポートされている言語の一覧を取得します。
 
 ```csharp
 private async Task UpdateLanguageSettingsAsync()
@@ -193,9 +194,9 @@ private async Task UpdateLanguageSettingsAsync()
 
 Languages エンドポイントは、要求の `Accept-Languages` ヘッダーを使って、言語名の表示言語を決定します。 たとえば、英語の話者が "German" と呼ぶ言語は、ドイツ語では "Deutsch"、スペイン語では "Alemán" と呼ばれますが、これらの違いが言語の一覧に反映されます。 このヘッダーにはシステムの既定の言語が使用されます。
 
-要求が送信され、JSON の応答が受信されると、応答が解析され、内部データ構造が生成されます。 これらの構造体は、ソース言語とターゲット言語を選択するメニューの作成に使用されます。 
+要求が送信され、JSON の応答が受信されると、応答が解析され、内部データ構造が生成されます。 これらの構造体は、ソース言語とターゲット言語を選択するメニューの作成に使用されます。
 
-使用可能な音声はユーザーが選択した言語によって決まるため、この時点では、まだ音声メニューを設定することはできません。 代わりに、各言語に対して使用可能な音声が、後の使用のために格納されます。 `ToLanguage_SelectionChanged` ハンドラー (同じソース ファイル内にあります) は、後でユーザーがターゲット言語を選択したときに、`UpdateVoiceComboBox()` を呼び出して音声メニューを更新します。 
+使用可能な音声はユーザーが選択した言語によって決まるため、この時点では、まだ音声メニューを設定することはできません。 代わりに、各言語に対して使用可能な音声が、後の使用のために格納されます。 `ToLanguage_SelectionChanged` ハンドラー (同じソース ファイル内にあります) は、後でユーザーがターゲット言語を選択したときに、`UpdateVoiceComboBox()` を呼び出して音声メニューを更新します。
 
 なお、ユーザーがアプリケーションを初めて実行する際には、ターゲット言語がランダムに選択されます (メニュー設定はセッションごとに格納されます)。
 
@@ -281,7 +282,7 @@ private void Connect()
         TranslateTo = ((ComboBoxItem)this.ToLanguage.SelectedItem).Tag.ToString(),
         Voice = voicename,
     };
-    
+
     options.Hostname = baseUrl;
     options.AuthHeaderKey = "Authorization";
     options.AuthHeaderValue = ""; // set later in ConnectAsync.
@@ -368,11 +369,11 @@ private void Connect()
 private async Task ConnectAsync(SpeechClientOptions options, bool suspendInputAudioDuringTTS)
 {
     await ADMAuthenticate(options);
-    
+
     TextMessageDecoder textDecoder;
-    
+
     s2smtClient = new SpeechClient((SpeechTranslateClientOptions)options, CancellationToken.None);
-    
+
     s2smtClient.OnBinaryData += (c, a) => { AddSamplesToPlay(a, suspendInputAudioDuringTTS); };
     s2smtClient.OnEndOfBinaryData += (c, a) => { AddSamplesToPlay(a, suspendInputAudioDuringTTS); };
     s2smtClient.OnTextData += (c, a) => { textDecoder.AppendData(a); lastReceivedPacketTick = DateTime.Now.Ticks; };
@@ -410,7 +411,7 @@ private async Task ConnectAsync(SpeechClientOptions options, bool suspendInputAu
     {
         SafeInvoke(() =>
         {
-            // We only care to react to server disconnect when our state is Connected. 
+            // We only care to react to server disconnect when our state is Connected.
             if (currentState == UiState.Connected)
             {
                 Log("E: Connection has been lost.");

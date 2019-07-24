@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure HDInsight での Apache Spark を使用した Azure Event Hubs からのデータの処理 '
+title: 'チュートリアル:Azure HDInsight で Apache Spark を使用して Azure Event Hubs からのデータを処理する '
 description: Azure HDInsight で Apache Spark を Azure Event Hubs に接続し、ストリーミング データを処理します。
 services: hdinsight
 ms.service: hdinsight
@@ -8,17 +8,17 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: eb2145d2e7b787bafa0b546449282454f7059999
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.date: 12/28/2018
+ms.openlocfilehash: 81104c7b206d4fe158df1ae9d329084ad88c3bdd
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283412"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976632"
 ---
-# <a name="tutorial-process-tweets-using-azure-event-hubs-and-spark-in-hdinsight"></a>チュートリアル: HDInsight での Azure Event Hubs と Spark を使用したツイートの処理
+# <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>チュートリアル:HDInsight で Azure Event Hubs と Apache Spark を使用してツイートを処理する
 
-このチュートリアルでは、ツイートを Azure イベント ハブに送信する Apache Spark ストリーミング アプリケーションを作成し、イベント ハブからツイートを読み取る別のアプリケーションを作成する方法を説明します。 Spark ストリーミングの詳細については、[Apache Spark ストリーミングの概要](http://spark.apache.org/docs/latest/streaming-programming-guide.html#overview)を参照してください。 HDInsight は、Azure の Spark クラスターに同じストリーミング機能をもたらします。
+このチュートリアルでは、ツイートを Azure イベント ハブに送信する [Apache Spark](https://spark.apache.org/) ストリーミング アプリケーションを作成し、イベント ハブからツイートを読み取る別のアプリケーションを作成する方法を説明します。 Spark ストリーミングの詳細については、[Apache Spark ストリーミングの概要](https://spark.apache.org/docs/latest/streaming-programming-guide.html#overview)を参照してください。 HDInsight は、Azure の Spark クラスターに同じストリーミング機能をもたらします。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -29,80 +29,106 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **記事「[チュートリアル: Azure HDInsight での Apache Spark クラスターへのデータの読み込みとクエリの実行](./apache-spark-load-data-run-query.md)**」を完了します。
+* **「[チュートリアル: Azure HDInsight での Apache Spark クラスターへのデータの読み込みとクエリの実行](./apache-spark-load-data-run-query.md)」の記事を完了します**。
 
 ## <a name="create-a-twitter-application"></a>Twitter アプリケーションを作成する
 
 ツイートのストリームを受け取るには、Twitter でアプリケーションを作成します。 手順に従って Twitter アプリケーションを作成し、このチュートリアルの完了に必要な値を書き留めます。
 
 1. [Twitter Application Management](https://apps.twitter.com/) を参照します。
-2. **[Create New App]** を選択します。
-3. 次の値を指定します。
+
+1. **[Create New App]** を選択します。
+
+1. 次の値を指定します。
 
     - Name: アプリケーション名を指定します。 このチュートリアルで使用されている値は **HDISparkStreamApp0423** です。 この名前は、一意の名前にする必要があります。
     - Description: アプリケーションの簡単な説明を入力します。 このチュートリアルで使用されている値は **A simple HDInsight Spark streaming application** です。
     - Website: アプリケーションの Web サイトを指定します。 有効な Web サイトである必要はありません。  このチュートリアルで使用されている値は **http://www.contoso.com** です。
     - Callback URL: 空白のままにしてかまいません。
 
-4. **[Yes, I have read and agree to the Twitter Developer Agreement]** を選択し、**[Create your Twitter application]** を選択します。
-5. **[Keys and Access Tokens]** タブをクリックします。
-6. ページの最後の **[Create my access token]** を選択します。
-7. ページから、次の値を書き留めます。  これらの値は、このチュートリアルの後の方で必要になります。
+1. **[Yes, I have read and agree to the Twitter Developer Agreement]** を選択し、**[Create your Twitter application]** を選択します。
+
+1. **[Keys and Access Tokens]** タブをクリックします。
+
+1. ページの最後の **[Create my access token]** を選択します。
+
+1. ページから、次の値を書き留めます。  これらの値は、このチュートリアルの後の方で必要になります。
 
     - **コンシューマー キー (API キー)**    
     - **コンシューマー シークレット (API シークレット)**  
     - **Access Token**
     - **アクセス トークン シークレット**   
 
-## <a name="create-an-azure-event-hub"></a>Azure Event Hub を作成します
+## <a name="create-an-azure-event-hubs-namespace"></a>Azure Event Hubs 名前空間を作成する
 
 このイベント ハブを使用して、ツイートを格納します。
 
-1. [Azure Portal](https://ms.portal.azure.com) にサインインします。
-2. 画面の左上の **[Create a resource]\(リソースの作成)** を選択します。
-3. **[モノのインターネット]**、**[Event Hubs]** の順に選択します。
+1. [Azure Portal](https://portal.azure.com) にサインインします。 
+
+1. 左側のメニューから、**[すべてのサービス]** を選択します。  
+
+1. **[モノのインターネット]** で、**[Event Hubs]** を選択します。 
 
     ![Spark ストリーミング サンプルの Event Hub を作成](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "Spark ストリーミング サンプルの Event Hub を作成")
-4. 新しいイベント ハブの名前空間に次の値を入力します。
 
-    - **名前**: イベント ハブの名前を入力します。  このチュートリアルで使用されている値は **myeventhubns20180403** です。
-    - **価格レベル**: **[Standard]** を選択します。
-    - **リソース グループ**: 新規作成するか、または Spark クラスターのリソース グループを選択するオプションがあります。 
-    - **場所**: 待機時間とコストを削減するために、HDInsight の Apache Spark クラスターと同じ **[場所]** を選択する必要があります。
+4. **[+ 追加]** を選択します。
+5. 新しい Event Hubs 名前空間の次の値を入力します。
 
-    ![Spark ストリーミング サンプルの Event Hub 名を指定](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Spark ストリーミング サンプルの Event Hub 名を指定")
-5. **[作成]** をクリックして、名前空間を作成します。
+    - **[名前]**:イベント ハブの名前を入力します。  このチュートリアルで使用されている値は **myeventhubns20180403** です。
 
-7. 次の手順を使用して、イベント ハブの名前空間を開きます。
+    - **価格レベル**:**[Standard]** を選択します。
 
-    1. Portal で **[すべてのサービス]** を選択します。
-    2. フィルター ボックスに、「**イベント ハブ**」と入力します。
-    3. 新しく作成した名前空間を選択します。
-    4. **[+ イベント ハブ]** を選択します。
+    - **サブスクリプション**:適切なサブスクリプションを選択します。
 
-8. 次の値を入力します。
+    - **[リソース グループ]**: ドロップダウン リストから既存のリソース グループを選択するか、または **[新規作成]** を選択して新しいリソース グループを作成します。
 
-    - 名前: イベント ハブの名前を指定します。
-    - パーティション数: 10
-    - メッセージの保持期間： 1。 
+    - **場所**: 待機時間とコストを削減するには、HDInsight の Apache Spark クラスターと同じ **[場所]** を選択します。
+
+    - **[Enable Auto-Inflate] (自動インフレを有効にする)**: (省略可能) 自動インフレは、トラフィックがそれに割り当てられているスループット ユニットの容量を超えると、Event Hubs 名前空間に割り当てられたスループット ユニットの数を自動的にスケール調整します。  
+
+    - **[Auto-Inflate Maximum Throughput Units] (自動インフレの最大スループット ユニット数)**: (省略可能) このスライダーは、**[Enable Auto-Inflate] (自動インフレを有効にする)** をオンにした場合にのみ表示されます。  
+
+      ![Spark ストリーミング サンプルの Event Hub 名を指定](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Spark ストリーミング サンプルの Event Hub 名を指定")
+6. **[作成]** をクリックして、名前空間を作成します。  デプロイは数分で完了します。
+
+## <a name="create-an-azure-event-hub"></a>Azure イベント ハブを作成する
+Event Hubs 名前空間がデプロイされたら、イベント ハブを作成します。  ポータルから:
+
+1. 左側のメニューから、**[すべてのサービス]** を選択します。  
+
+1. **[モノのインターネット]** で、**[Event Hubs]** を選択します。  
+
+1. 一覧から Event Hubs 名前空間を選択します。  
+
+1. **[Event Hubs 名前空間]** ページから、**[+ イベント ハブ]** を選択します。  
+1. **[Create Event Hub] (イベント ハブの作成)** ページで、次の値を入力します。
+
+    - **[名前]**:イベント ハブの名前を指定します。 
+ 
+    - **[パーティション数]**: 10.  
+
+    - **[メッセージの保持期間]**: 1.   
    
-    ![Spark ストリーミング サンプルの Event Hub 詳細を指定](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Spark ストリーミング サンプルの Event Hub 詳細を指定")
+      ![Spark ストリーミング サンプルの Event Hub 詳細を指定](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Spark ストリーミング サンプルの Event Hub 詳細を指定")
 
-9. **作成**を選択します。
-10. 名前空間の **[共有アクセス ポリシー]** (イベント ハブの共有アクセス ポリシーではありません) を選択し、**[RootManageSharedAccessKey]** を選択します。
+1. **作成**を選択します。  デプロイは数秒で完了し、[Event Hubs 名前空間] ページに戻されます。
+
+1. **[設定]** で、**[共有アクセス ポリシー]** を選択します。
+
+1. **[RootManageSharedAccessKey]** を選択します。
     
      ![Spark ストリーミング サンプルの Event Hub ポリシーを設定](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "Spark ストリーミング サンプルの Event Hub ポリシーを設定")
 
-11. **[主キー]** と **[接続文字列 - プライマリ キー]** の値を、チュートリアルの後半で使用するために保存します。
+1. **[主キー]** と **[接続文字列 - プライマリ キー]** の値を、チュートリアルの後半で使用するために保存します。
 
      ![Spark ストリーミング例の Event Hub ポリシー キーを表示](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "Spark ストリーミング例の Event Hub ポリシー キーを表示")
 
 
 ## <a name="send-tweets-to-the-event-hub"></a>ツイートをイベント ハブに送信する
 
-Jupyter Notebook を作成し、それに **SendTweetsToEventHub** と名付ける必要があります。 
+Jupyter Notebook を作成し、それに **SendTweetsToEventHub** という名前を付けます。 
 
-1. 次のコードを実行して、外部 Maven ライブラリを追加します。
+1. 次のコードを実行して、外部 Apache Maven ライブラリを追加します。
 
     ```
     %%configure
@@ -182,9 +208,9 @@ Jupyter Notebook を作成し、それに **SendTweetsToEventHub** と名付け�
 
 ## <a name="read-tweets-from-the-event-hub"></a>イベント ハブからツイートを読み取る
 
-別の Jupyter Notebook を作成し、**ReadTweetsFromEventHub** と名付ける必要があります。 
+別の Jupyter Notebook を作成し、それに **ReadTweetsFromEventHub** という名前を付けます。 
 
-1. 次のコードを実行して、外部 Maven ライブラリを追加します。
+1. 次のコードを実行して、外部 Apache Maven ライブラリを追加します。
 
     ```
     %%configure -f
@@ -218,7 +244,7 @@ Jupyter Notebook を作成し、それに **SendTweetsToEventHub** と名付け�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-HDInsight を使用すると、データは Azure Storage または Azure Data Lake Store に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 すぐに次のチュートリアルに取り掛かる場合は、クラスターをそのまま保持してもかまいません。それ以外の場合は、続行してクラスターを削除します。
+HDInsight では、データが Azure Storage または Azure Data Lake Storage に格納されるため、クラスターは使用されていないときに安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 すぐに次のチュートリアルを開始する場合は、クラスターをそのままにすることもできます。それ以外の場合は、処理を続行してクラスターを削除します。
 
 Azure Portal で、クラスターを開き、**[削除]** を選択します。
 

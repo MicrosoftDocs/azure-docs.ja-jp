@@ -1,0 +1,60 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 7ee79da6219452ace4f7e71bd670de3cfdc968fb
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232366"
+documentType: LandingData
+title: Azure SQL Database - スケーラビリティ
+metadata:
+  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
+  title: Azure SQL Database - スケーラビリティ
+  meta.description: Learn how to scale your Azure SQL Database.
+  services: sql-database
+  ms.subservice: scale-out
+  author: jovanpop-msft
+  manager: craigg
+  requires-business-manager-approval: false
+  ms.service: sql-database
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: overview
+  ms.date: 01/25/2019
+  ms.author: jovanpop-msft
+sections:
+- items:
+  - type: paragraph
+    text: Azure SQL Database を使用すると、コンピューティング能力を追加する (スケールアップ) またはデータベース ユニットを追加する (スケールアウト) することによって、お使いのデータベースを簡単にスケーリングできます。
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - title: スケールアップ
+      href: /azure/sql-database/sql-database-scale-resources
+      html: <p>最適な価格/パフォーマンス比率を見つけたり、パフォーマンスの問題を緩和したりするために、お使いの SQL データベースにリソースを簡単に追加または削除できます。</p>
+    - title: 読み取りスケールアウト
+      href: /azure/sql-database/sql-database-read-scale-out
+      html: <p>Business Critical レベルでは、データのコピーに対してレポート、分析、その他の読み取り専用クエリを実行できるデータベースの無料のレプリカが提供されます。</p>
+    - title: データベース シャーディング
+      href: /azure/sql-database/sql-database-elastic-scale-introduction
+      html: <p>複数のデータベースのシャードを使用して、単一のデータベースの最大のコンピューティングとストレージの制限を超えてデータベースをスケールアウトできます。</p>
+    - title: エラスティック クエリ
+      href: /azure/sql-database/sql-database-elastic-query-overview
+      html: <p>エラスティック クエリを使用して、グローバルに分散されたデータベースの一連のシャードに対して、標準的な Transact-SQL クエリを実行できます。</p>
+    - title: エラスティック トランザクション
+      href: /azure/sql-database/sql-database-elastic-transactions-overview
+      html: <p>グローバルな分散トランザクションを使用して、分散データに対してトランザクション的に一貫したアクセスが行われるようにします。</p>
+    - title: 複数データベース間のジョブ
+      href: /azure/sql-database/elastic-jobs-overview
+      html: <p>複数データベース間のエラスティック ジョブを使用して、一連のデータベースを管理します。</p>
+- title: その他のリソース
+  items:
+  - type: paragraph
+    text: データをスケーリングするのに役立つ追加機能について説明します。
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine">リンク サーバー</a>は、中心となる SQL Server データベース エンジン機能であり、この機能を使用して、Transact-SQL コードから別のデータベース エンジンに対する分散クエリを実行できます。
+    - html: <a href="sql-database-geo-replication-overview.md">geo レプリケーション</a>を使用すると、異なるリージョン内に任意の数の読み取り可能レプリカを配置できます。

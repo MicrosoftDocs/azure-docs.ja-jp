@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 1d49403ec04b2ec35291869385c316cb5ab3b0da
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8b2f16f45be1d095e9be8042611de328af36f064
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044911"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724062"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Azure portal を使用した Azure Data Lake Analytics の管理
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -32,11 +32,11 @@ ms.locfileid: "43044911"
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[リソースの作成]** > **[インテリジェンス + 分析]** > **Data Lake Analytics** をクリックします。
 3. 次の項目の値を選択します。 
-   1. **[名前]**: Data Lake Analytics アカウントの名前。
-   2. **[サブスクリプション]**: アカウントに使用する Azure サブスクリプション。
-   3. **[リソース グループ]**: アカウントの作成先の Azure リソース グループ。 
-   4. **[場所]**: Data Lake Analytics アカウントの Azure データセンター。 
-   5. **[Data Lake Store]**: Data Lake Analytics アカウントのために使用される既定のストア。 Azure Data Lake Store アカウントと Data Lake Analytics アカウントは、同じ場所にある必要があります。
+   1. **[名前]**:Data Lake Analytics アカウントの名前。
+   2. **サブスクリプション**:アカウントに使用する Azure サブスクリプション。
+   3. **[リソース グループ]**:アカウントの作成先の Azure リソース グループ。 
+   4. **[場所]**:Data Lake Analytics アカウントの Azure データセンター。 
+   5. **[Data Lake Store]**:Data Lake Analytics アカウントのために使用される既定のストア。 Azure Data Lake Store アカウントと Data Lake Analytics アカウントは、同じ場所にある必要があります。
 4. **Create** をクリックしてください。 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Data Lake Analytics アカウントの削除
@@ -98,9 +98,9 @@ Azure Data Factory や VM など、他の Azure サービスが Data Lake Analyt
 他の Azure サービスと同様に、ロールベースのアクセス制御 (RBAC) を使用して、ユーザーがサービスと対話する方法を制御できます。
 
 標準の RBAC ロールには、次のような機能があります。
-* **所有者**: ジョブの送信、ジョブの監視、任意のユーザーのジョブの取り消し、アカウントの構成を行えます。
-* **共同作成者**: ジョブの送信、ジョブの監視、任意のユーザーのジョブの取り消し、アカウントの構成を行えます。
-* **閲覧者**: ジョブの監視を行えます。
+* **所有者**:ジョブの送信、ジョブの監視、任意のユーザーのジョブの取り消し、アカウントの構成を行えます。
+* **共同作成者**:ジョブの送信、ジョブの監視、任意のユーザーのジョブの取り消し、アカウントの構成を行えます。
+* **閲覧者**:ジョブを監視できます。
 
 U-SQL 開発者が Data Lake Analytics サービスを使用できるようにするには、Data Lake Analytics の開発者ロールを使用します。 Data Lake Analytics の開発者ロールを使用すると、次の操作を行えます。
 * ジョブを送信する。
@@ -111,7 +111,7 @@ U-SQL 開発者が Data Lake Analytics サービスを使用できるように�
 ### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>Data Lake Analytics アカウントへのユーザーまたはセキュリティ グループの追加
 
 1. Azure Portal で Data Lake Analytics アカウントに移動します。
-2. **[アクセス制御 (IAM)]** > **[追加]** の順にクリックします。
+2. **[アクセス制御 (IAM)]** > **[ロールの割り当ての追加]** の順にクリックします。
 3. ロールを選択します。
 4. ユーザーを追加します。
 5. Click **OK**.
@@ -131,9 +131,9 @@ U-SQL 開発者が Data Lake Analytics サービスを使用できるように�
 
 2. **[新しいジョブ]** をクリックします。 各ジョブで、以下の項目を構成します。
 
-    1. **[ジョブ名]**: ジョブの名前。
-    2. **[優先度]**: 数値が小さいほど優先度が高くなります。 2 つのジョブがキューに登録されている場合は、優先度の値が小さい方のジョブが先に実行されます。
-    3. **[並行処理]**: このジョブのために予約する計算プロセスの最大数。
+    1. **[ジョブ名]**:ジョブの名前。
+    2. **[優先度]**:数値が小さいほど優先度が高くなります。 2 つのジョブがキューに登録されている場合は、優先度の値が小さい方のジョブが先に実行されます。
+    3. **[並行処理]**:このジョブのために予約する計算プロセスの最大数。
 
 3. **[ジョブの送信]** をクリックします。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: 9973eaa7e930d38e78289219e726b5934d82ee86
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cf53df30dfccb76a6f33621038ba7f031a69f6de
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33945384"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979695"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM 拡張機能のエラーのトラブルシューティング
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -32,7 +32,7 @@ Azure リソース マネージャー テンプレートは、Azure Powershell �
 
 Azure PowerShell:
 
-      Get-AzureRmVM -ResourceGroupName $RGName -Name $vmName -Status
+      Get-AzVM -ResourceGroupName $RGName -Name $vmName -Status
 
 出力例を次に示します。
 
@@ -62,10 +62,10 @@ Azure PowerShell:
 ## <a name="troubleshooting-extension-failures"></a>拡張機能のエラーのトラブルシューティング
 ### <a name="rerun-the-extension-on-the-vm"></a>VM での拡張機能の再実行
 VM でカスタム スクリプト拡張機能を使用してスクリプトを実行している場合、VM は正常に作成されたがスクリプトは失敗するというエラーが発生することがあります。 このような状況でこのエラーから回復するためにお勧めする方法は、拡張機能を削除してもう一度テンプレートを実行することです。
-注: 将来的には、拡張機能のアンインストールが不要になるように機能強化が行われるる予定です。
+注:将来は、この機能が強化され、拡張機能をアンインストールする必要はなくなります。
 
 #### <a name="remove-the-extension-from-azure-powershell"></a>Azure Powershell から拡張機能を削除する
-    Remove-AzureRmVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
+    Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
 
 拡張機能を削除した後、テンプレートを再実行して、VM 上でスクリプトを実行できます。
 

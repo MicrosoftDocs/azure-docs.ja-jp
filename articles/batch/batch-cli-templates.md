@@ -1,22 +1,23 @@
 ---
-title: Azure Batch ジョブをテンプレートを使用してエンドツーエンドで実行する | Microsoft Docs
+title: テンプレートを使用してジョブをエンドツーエンドで実行する - Azure Batch | Microsoft Docs
 description: テンプレート ファイルと Azure CLI を使用して、Batch のプール、ジョブ、タスクを作成します。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
 ms.devlang: na
 ms.topic: article
 ms.workload: big-compute
-ms.date: 08/02/2018
-ms.author: danlep
-ms.openlocfilehash: 753a36eb6fb7a0c007c62bbab7fe7390e706b1f5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 12/07/2018
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 5e592845f96cb0734daf3c9e07d60005de260386
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964294"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547679"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLI テンプレートとファイル転送を使用する
 
@@ -37,7 +38,7 @@ JSON ファイル用の [Azure CLI での既存の Batch サポート](batch-cli
 
 通常、ジョブは入力データ ファイルを使用して出力データ ファイルを生成します。 既定では、ストレージ アカウントは各 Batch アカウントに関連付けられています。 コーディングやストレージの資格情報を使用せずに、CLI を使用してこのストレージ アカウントとの間でファイルを転送します。
 
-たとえば、[ffmpeg](http://ffmpeg.org/) は、オーディオ/ビデオ ファイルを処理する一般的なアプリケーションです。 Azure Batch CLI を使用して ffmpeg を呼び出し、ソース ビデオ ファイルをさまざまな解像度にトランスコードする手順は次のとおりです。
+たとえば、[ffmpeg](https://ffmpeg.org/) は、オーディオ/ビデオ ファイルを処理する一般的なアプリケーションです。 Azure Batch CLI を使用して ffmpeg を呼び出し、ソース ビデオ ファイルをさまざまな解像度にトランスコードする手順は次のとおりです。
 
 -   プール テンプレートを作成します。 テンプレートを作成するユーザーには、ffmpeg アプリケーションを呼び出す方法とその要件に関する知識があります。作成者は、適切な OS、VM サイズ、ffmpeg のインストール方法 (アプリケーション パッケージの使用、パッケージ マネージャーの使用など)、プールの他のプロパティ値を指定します。 テンプレートを使用するときにパラメーターが作成されます。指定する必要があるのは、プール ID と VM の数だけです。
 

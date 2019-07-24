@@ -3,32 +3,32 @@ title: バックアップから Azure SQL Database を復元する | Microsoft D
 description: Azure SQL Database を特定の時点 (最長 35 日間) にロール バックすることができる、ポイントインタイム リストアについて説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: backup-restore
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 10/23/2018
-ms.openlocfilehash: ba6493f77b622a814c970b07fc2a23e7ce1d3624
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 03/12/2019
+ms.openlocfilehash: ca54ae11390b388c3158bd220ee5c7829172a5c3
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987564"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620480"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>データベースの自動バックアップを使用した Azure SQL Database の復旧
 
 既定で、SQL Database のバックアップは Geo レプリケートされている Blob ストレージ (RA-GRS) に格納されます。 [自動データベース バックアップ](sql-database-automated-backups.md)を使用したデータベースの復旧には、次のオプションを使用できます。
 
-- 保有期間内の特定の時点に復旧された、同じ論理サーバー上に新しいデータベースを作成する。
-- 削除済みデータベースの削除時に復旧された、同じ論理サーバー上にデータベースを作成する。
-- 最新のバックアップの時点に復旧された、同じリージョンの論理サーバー上に新しいデータベースを作成する。
-- 最後にレプリケートされたバックアップの時点に復旧された、任意の他のリージョンの論理サーバー上に新しいデータベースを作成する。
+- 保有期間内の特定の時点に復旧された、同じ SQL Database サーバー上に新しいデータベースを作成する。
+- 削除済みデータベースの削除時点に復旧された、同じ SQL Database サーバー上にデータベースを作成する。
+- 最新のバックアップの時点に復旧された、同じリージョンの SQL Database サーバー上に新しいデータベースを作成する。
+- 最後にレプリケートされたバックアップの時点に復旧された、任意の他のリージョンの SQL Database サーバー上に新しいデータベースを作成する。
 
-[長期保有期間のバックアップ](sql-database-long-term-retention.md)を構成している場合、任意のリージョンの任意の論理サーバー上に任意の LTR バックアップから新しいデータベースを作成することもできます。
+[長期保有期間のバックアップ](sql-database-long-term-retention.md)を構成している場合、任意のリージョンの任意の SQL Database サーバー上に任意の LTR バックアップから新しいデータベースを作成することもできます。
 
 > [!IMPORTANT]
 > 復元中に既存のデータベースを上書きすることはできません。
@@ -64,14 +64,14 @@ Standard または Premium サービス レベルを使用している場合、�
 |エラスティック プール (プールごと)|4|200|
 ||||
 
-一括復元を実行する機能は組み込まれていません。 このタスクを達成する 1 つの方法として、たとえば、 [Azure SQL Database: Full Server Recovery](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) スクリプトがあります。
+一括復元を実行する機能は組み込まれていません。 このタスクを達成する 1 つの方法として、たとえば、[Azure SQL Database:Full Server Recovery](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) スクリプトがあります。
 
 > [!IMPORTANT]
-> 自動バックアップを使って復旧するには、サブスクリプションにおける SQL Server の共同作成者ロールのメンバーまたはサブスクリプション所有者である必要があります。[RBAC の組み込みロール](../role-based-access-control/built-in-roles.md)に関するページを参照してください。 復旧には、Azure ポータル、PowerShell、または REST API を使用できます。 Transact-SQL は使用できません。
+> 自動バックアップを使って復旧するには、サブスクリプションにおける SQL Server の共同作成者ロールのメンバーまたはサブスクリプション所有者である必要があります。[RBAC の組み込みのロール](../role-based-access-control/built-in-roles.md)に関するページをご覧ください。 復旧には、Azure ポータル、PowerShell、または REST API を使用できます。 Transact-SQL は使用できません。
 
 ## <a name="point-in-time-restore"></a>ポイントインタイム リストア
 
-Azure portal、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases) を使用し、同じサーバー上の新しいデータベースとして、単一のデータベース、プールされたデータベース、または Managed Instance データベースを以前の時点に復元できます。 データベースは、任意のサービス層または計算サイズに復元できます。 データベースを復元するサーバーに十分なリソースがあることを確認します。 完了すると、復元されたデータベースは完全にアクセス可能な通常のオンライン データベースになります。 復元されたデータベースは、サービス レベルとコンピューティング サイズに基づいて通常料金が発生します。 データベースの復元が完了するまで、料金は発生しません。
+Azure portal、[PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases) を使用して、スタンドアロン データベース、プールされたデータベース、またはインスタンス データベースを、同じサーバーに新しいデータベースとして、以前の時点に復元できます。 データベースは、任意のサービス層または計算サイズに復元できます。 データベースを復元するサーバーに十分なリソースがあることを確認します。 完了すると、復元されたデータベースは完全にアクセス可能な通常のオンライン データベースになります。 復元されたデータベースは、サービス レベルとコンピューティング サイズに基づいて通常料金が発生します。 データベースの復元が完了するまで、料金は発生しません。
 
 通常、以前の時点へのデータベースの復元は、復旧の目的で行います。 その場合、復元されたデータベースを元のデータベースの代わりとして扱うか、データを取得して元のデータベースの更新に使用できます。
 
@@ -83,7 +83,7 @@ Azure portal、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm
 
   ユーザー エラーまたはアプリケーション エラーからの復旧のために、復元されたデータベースからデータを取得する場合は、復元されたデータベースから元のデータベースにデータを抽出するのに必要なデータ復旧のスクリプトを書き込み、実行する必要があります。 復元操作が完了するまでに時間がかかる可能性がありますが、復元プロセスを通して、復元しているデータベースがデータベース一覧に表示されます。 復元中にデータベースを削除すると、復元操作は取り消され、復元が完了していないデータベースの料金はかかりません。
 
-Azure portal を使用して単一のデータベース、プールされたデータベース、または Managed Instance データベースを特定の時点に復旧するには、データベースのページを開き、ツールバーの **[復元]** をクリックします。
+Azure portal を使用して単一のデータベース、プールされたデータベース、またはインスタンス データベースを特定の時点に復旧するには、データベースのページを開き、ツールバーの **[復元]** をクリックします。
 
 ![ポイントインタイム リストア](./media/sql-database-recovery-using-backups/point-in-time-recovery.png)
 
@@ -92,10 +92,8 @@ Azure portal を使用して単一のデータベース、プールされたデ�
 
 ## <a name="deleted-database-restore"></a>削除されたデータベースの復元
 
-Azure Portal、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase)、または [REST (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) を使用して、削除されたデータベースを同じ論理サーバー上の削除されたデータベースの削除時刻に復元できます。 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase) を使った復元の間に、削除されたデータベースを以前の時点に復元することができます。
+Azure portal、[PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)、または [REST (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) を使用して、同じ SQL Database サーバーに、削除されたデータベースを、そのデータベースの削除時点に復元できます。 [PowerShell を使用して Managed Instance 上の削除されたデータベースを復元](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance)できます。 [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) を使った復元の間に、削除されたデータベースを以前の時点に復元することができます。
 
-> [!Note]
-> 削除されたデータベースの復元は、Managed Instance で利用できません。
 > [!TIP]
 > 削除されたデータベースの復元方法を示すサンプル PowerShell スクリプトについては、[PowerShell を使用した SQL データベースの復元](scripts/sql-database-restore-database-powershell.md)に関するページを参照してください。
 > [!IMPORTANT]
@@ -116,9 +114,6 @@ Azure portal を使用して、削除されたみデータベースを、その[
 
 geo レプリケートされた最新のバックアップから任意の Azure リージョン内の任意のサーバーで SQL データベースを復元することができます。 geo リストアではソースとして geo 冗長バックアップが使用され、障害によってデータベースまたはデータセンターにアクセスできない場合でも、geo リストアを使用してデータベースを復旧できます。
 
-> [!Note]
-> geo 復元は、Managed Instance で利用できません。
-
 geo リストアは、データベースがホストされているリージョンでのインシデントが原因でデータベースが利用できない場合の既定の復旧オプションです。 リージョン内の大規模なインシデントにより、データベース アプリケーションが使用できなくなった場合、geo レプリケートされたバックアップから他の任意のリージョン内のサーバーにデータベースを復元できます。 バックアップが取得される時刻と、別のリージョンの Azure BLOB にその差分バックアップが geo レプリケートされる時刻には時間差があります。 この時間差は最大 1 時間なので、障害が発生した場合、最大 1 時間分のデータが損失する可能性があります。 次の図は、別のリージョン内の利用可能な最新のバックアップからのデータベースの復元を示しています。
 
 ![地理リストア](./media/sql-database-geo-restore/geo-restore-2.png)
@@ -129,11 +124,14 @@ geo リストアは、データベースがホストされているリージョ�
 geo セカンダリでのポイントインタイム リストアは、現在はサポートされていません。 ポイントインタイム リストアは、プライマリ データベースでのみ実行できます。 geo リストアを使用して障害から復旧する方法の詳細については、[障害からの復旧](sql-database-disaster-recovery.md)に関するページを参照してください。
 
 > [!IMPORTANT]
-> バックアップからの復旧は、目標復旧時点 (RPO) と推定復旧時間 (ERT) が最も長い、SQL Database で使用できるディザスター リカバリー ソリューションで最も基本的な方法です。 小さなサイズのデータベース (例: Basic サービス レベルのデータベース、またはエラスティック プールの小さなサイズのテナント データベース) を使用しているソリューションでは、多くの場合、ERT が最長 12 時間 (通常ははるかに短い時間で完了) である geo リストアが妥当な DR ソリューションです。 大きなデータベースを使用しているソリューションで、短時間で復旧する必要がある場合は、[フェールオーバー グループおよびアクティブ geo レプリケーション](sql-database-geo-replication-overview.md)の使用を検討します。 アクティブ geo レプリケーションでは、継続的にレプリケートされるセカンダリへのフェールオーバーを開始することだけが必要なので、RPO と ERT が大きく短縮されます。 ビジネスを継続するための選択の詳細については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページを参照してください。
+> バックアップからの復旧は、目標復旧時点 (RPO) と推定復旧時間 (ERT) が最も長い、SQL Database で使用できるディザスター リカバリー ソリューションで最も基本的な方法です。 小さなサイズのデータベース (例: Basic サービス レベルのデータベース、またはエラスティック プールの小さなサイズのテナント データベース) を使用しているソリューションでは、多くの場合、ERT が最長 12 時間 (通常ははるかに短い時間で完了) である geo リストアが妥当な DR ソリューションです。 大規模なデータベースを使用しているソリューションを短時間で復旧する必要がある場合は、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)または[自動フェールオーバー グループ](sql-database-auto-failover-group.md)の使用を検討する必要があります。 アクティブ geo レプリケーションでは、継続的にレプリケートされるセカンダリへのフェールオーバーを開始することだけが必要なので、RPO と ERT が大きく短縮されます。 自動フェールオーバー グループでは、データベースのグループを自動的にフェールオーバーできます。 ビジネスを継続するための選択の詳細については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページを参照してください。
 
 ### <a name="geo-restore-using-the-azure-portal"></a>Azure portal を使用した geo リストア
 
 Azure Portal を使用して、データベースをその [DTU ベースのモデル リテンション期間](sql-database-service-tiers-dtu.md)中または[仮想コアベースのモデル リテンション期間](sql-database-service-tiers-vcore.md)中に geo リストアするには、[SQL データベース] ページを開き、**[追加]** をクリックします。 **[ソースの選択]** テキスト ボックスで、**[バックアップ]** を選択します。 任意のリージョン内のサーバー上で復旧を実行するバックアップを指定します。
+
+> [!Note]
+> Azure portal を使用した Geo 復元は、マネージド インスタンスでは利用できません。 代わりに、PowerShell を使用してください。
 
 ## <a name="programmatically-performing-recovery-using-automated-backups"></a>自動バックアップを使用したプログラム実行の復旧
 
@@ -141,19 +139,29 @@ Azure Portal を使用して、データベースをその [DTU ベースのモ�
 
 ### <a name="powershell"></a>PowerShell
 
-- 単一のデータベースまたはプールされたデータベースを復元するには、「[Restore-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase)」を参照してください
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+
+- スタンドアロン データベースまたはプールされたデータベースを復元するには、「[Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase)」を参照してください。
 
   | コマンドレット | 説明 |
   | --- | --- |
-  | [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) |1 つまたは複数のデータベースを取得します。 |
-  | [Get-AzureRMSqlDeletedDatabaseBackup](/powershell/module/azurerm.sql/get-azurermsqldeleteddatabasebackup) | 復元する削除済みデータベースを取得します。 |
-  | [Get-AzureRmSqlDatabaseGeoBackup](/powershell/module/azurerm.sql/get-azurermsqldatabasegeobackup) |データベースの geo 冗長バックアップを取得します。 |
-  | [Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) |SQL Database を復元します。 |
+  | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) |1 つまたは複数のデータベースを取得します。 |
+  | [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | 復元する削除済みデータベースを取得します。 |
+  | [Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup) |データベースの geo 冗長バックアップを取得します。 |
+  | [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) |SQL Database を復元します。 |
 
   > [!TIP]
   > データベースのポイントインタイム リストアの実行方法を示すサンプル PowerShell スクリプトについては、[PowerShell を使用した SQL データベースの復元](scripts/sql-database-restore-database-powershell.md)に関するページを参照してください。
 
-- Managed Instance データベースを復元するには、「[Point-in-time restore of a database on Azure SQL Managed Instance using AzureRm.Sql PowerShell library](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/28/point-in-time-restore-of-a-database-on-azure-sql-managed-instance-using-azurerm-sql-powershell-library/)」(AzureRm.Sql PowerShell ライブラリを使用して Azure SQL Managed Instance 上の特定の時点のデータベースを復元する) を参照してください
+- マネージド インスタンス データベースを復元するには、「[Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase)」を参照してください。
+
+  | コマンドレット | 説明 |
+  | --- | --- |
+  | [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance) |1 つまたは複数のマネージド インスタンスを取得します。 |
+  | [Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase) | インスタンス データベースを取得します。 |
+  | [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase) |インスタンス データベースを復元します。 |
 
 ### <a name="rest-api"></a>REST API
 
@@ -166,7 +174,8 @@ REST API を使用して単一のデータベースまたはプールされた�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLI を使用して単一のデータベースまたはプールされたデータベースを復元するには、「[az sql db restore](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-restore)」を参照してください。
+- Azure CLI を使用して単一のデータベースまたはプールされたデータベースを復元するには、「[az sql db restore](/cli/azure/sql/db#az-sql-db-restore)」を参照してください。
+- Azure CLI を使用してマネージド インスタンスを復元するには、「[az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore)」を参照してください。
 
 ## <a name="summary"></a>まとめ
 
@@ -177,4 +186,4 @@ Azure CLI を使用して単一のデータベースまたはプールされた�
 - ビジネス継続性の概要およびシナリオについては、 [ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
 - Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください。
 - 長期のリテンション期間については、[長期のリテンション期間](sql-database-long-term-retention.md)に関する記事をご覧ください。
-- より迅速な復旧オプションについては、[フェールオーバー グループとアクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
+- より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)または[自動フェールオーバー グループ](sql-database-auto-failover-group.md)に関する記事を参照してください。

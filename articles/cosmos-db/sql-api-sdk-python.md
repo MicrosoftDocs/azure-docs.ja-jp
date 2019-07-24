@@ -1,25 +1,21 @@
 ---
-title: 'Azure Cosmos DB: SQL Python API、SDK、およびリソース | Microsoft Docs'
+title: Azure Cosmos DB は:SQL Python API、SDK、およびリソース
 description: リリース日、提供終了日、Azure Cosmos DB Python SDK の各バージョン間の変更など、SQL Python API と SDK に関するあらゆる詳細を提供します。
-services: cosmos-db
-author: rnagpal
-manager: kfile
-editor: cgronlun
+author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 9/24/2018
-ms.author: rnagpal
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75b5fd2f586a9122aa1248ba88d7ceab59b13215
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.date: 11/29/2018
+ms.author: sngun
+ms.openlocfilehash: 9903339cbf0958893fb0d11a8c1b6ab7d156aae7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269294"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548219"
 ---
-# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Python SDK: リリース ノートとリソース
+# <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Python SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
@@ -28,33 +24,45 @@ ms.locfileid: "48269294"
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST ()](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
-<table>
-
-<tr><td>**SDK のダウンロード**</td><td>[PyPI](https://pypi.org/project/azure-cosmos)</td></tr>
-
-<tr><td>**API ドキュメント**</td><td>[Python の API リファレンス ドキュメント](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)</td></tr>
-
-<tr><td>**SDK のインストール手順**</td><td>[Python SDK のインストール手順](https://github.com/Azure/azure-cosmos-python)</td></tr>
-
-<tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-cosmos-python)</td></tr>
-
-<tr><td>**作業開始**</td><td>[Python SDK の開始](sql-api-python-application.md)</td></tr>
-
-<tr><td>**現在サポートされているプラットフォーム**</td><td>[Python 2.7](https://www.python.org/downloads/) と [Python 3.5](https://www.python.org/downloads/)</td></tr>
-</table></br>
+| |  |
+|---|---|
+|**SDK のダウンロード**|[PyPI](https://pypi.org/project/azure-cosmos)|
+|**API ドキュメント**|[Python の API リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
+|**SDK のインストール手順**|[Python SDK のインストール手順](https://github.com/Azure/azure-cosmos-python)|
+|**SDK への協力**|[GitHub](https://github.com/Azure/azure-cosmos-python)|
+|**作業開始**|[Python SDK の開始](sql-api-python-application.md)|
+|**現在サポートされているプラットフォーム**|[Python 2.7](https://www.python.org/downloads/) と [Python 3.5](https://www.python.org/downloads/)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name302302"></a><a name="3.0.2"/>3.0.2
+* MultiPolygon データ型のサポートを追加しました
+* セッション読み取り再試行ポリシーでのバグ修正
+* ベース 64 文字列のデコード中における不適切なパディングの問題のバグ修正
+
+### <a name="a-name301301"></a><a name="3.0.1"/>3.0.1
+* LocationCache のバグ修正
+* エンドポイントの再試行ロジックのバグ修正
+* ドキュメントを修正しました
 
 ### <a name="a-name300300"></a><a name="3.0.0"/>3.0.0
 * マルチリージョンの書き込みがサポートされるようになりました。
 * 名前空間が azure.cosmos に変更されました。
 * コレクションとドキュメントの概念の名前がコンテナーとアイテムに変更され、document_client の名前が cosmos_client に変更されました。 
+
+### <a name="a-name233233"></a><a name="2.3.3"/>2.3.3
+* プロキシのサポートを追加しました
+* 変更フィードの読み取りのサポートを追加しました
+* コレクション クォータ ヘッダーのサポートを追加しました
+* 大規模なセッション トークンの問題のバグ修正
+* ReadMedia API のバグ修正
+* パーティション キー範囲のキャッシュのバグ修正
 
 ### <a name="a-name232232"></a><a name="2.3.2"/>2.3.2
 * 接続に問題が発生したとき、デフォルトで再試行されるようになりました。
@@ -145,6 +153,9 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [3.0.2](#3.0.2) |2018 年 11 月 15 日 |--- |
+| [3.0.1](#3.0.1) |2018 年 10 月 4 日 |--- |
+| [2.3.3](#2.3.3) |2018 年 9 月 8 日 |--- |
 | [2.3.2](#2.3.2) |2018 年 5 月 8 日 |--- |
 | [2.3.1](#2.3.1) |2017 年 12 月 21 日 |--- |
 | [2.3.0](#2.3.0) |2017 年 11 月 10 日 |--- |
@@ -160,7 +171,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 | [1.6.0](#1.6.0) |2016 年 3 月 29 日 |--- |
 | [1.5.0](#1.5.0) |2016 年 1 月 3 日 |--- |
 | [1.4.2](#1.4.2) |2015 年 10 月 6 日 |--- |
-| [1.4.1](#1.4.1) |2015 年 10 月 6 日 |--- |
+| 1.4.1 |2015 年 10 月 6 日 |--- |
 | [1.2.0](#1.2.0) |2015 年 8 月 6 日 |--- |
 | [1.1.0](#1.1.0) |2015 年 7 月 9 日 |--- |
 | [1.0.1](#1.0.1) |2015 年 5 月 25 日 |--- |

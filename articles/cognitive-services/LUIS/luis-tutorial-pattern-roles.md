@@ -1,25 +1,44 @@
 ---
-title: 'チュートリアル 4: 文脈的に関連するデータのパターン ロール'
+title: パターンの役割
 titleSuffix: Azure Cognitive Services
-description: パターンを使用して、正しい形式のテンプレート発話からデータを抽出します。 テンプレート発話は単純なエンティティとロールを使用して、移動元の場所や移動先の場所などの関連データを抽出します。
+description: パターンを使用すると、正しい形式のテンプレート発話からデータを抽出できます。 テンプレート発話は単純なエンティティとロールを使用して、移動元の場所や移動先の場所などの関連データを抽出します。
+ms.custom: seodec18
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: dd73ca876385cf81059228088f7b027f533315eb
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d6a2c9d92d79bed3f0e9a9976a64f6e11debba88
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277838"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523276"
 ---
-# <a name="tutorial-4-extract-contextually-related-patterns"></a>チュートリアル 4: 文脈的に関連するパターンを抽出する
+# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>チュートリアル:ロールを使って文脈的に関連するパターンを抽出する
 
-このチュートリアルでは、パターンを使用して、正しい形式のテンプレート発話からデータを抽出します。 テンプレート発話は単純なエンティティとロールを使用して、移動元の場所や移動先の場所などの関連データを抽出します。  パターンを使用するとき、意図に必要な発話の例は少なくなります。
+このチュートリアルでは、パターンを使用して、正しい形式のテンプレート発話からデータを抽出します。 テンプレート発話は[単純なエンティティ](luis-concept-entity-types.md#simple-entity)と[ロール](luis-concept-roles.md)を使用して、出発地や目的地などの関連データを抽出します。  パターンを使用するとき、意図に必要な発話の例は少なくなります。
+
+
+**このチュートリアルで学習する内容は次のとおりです。**
+
+> [!div class="checklist"]
+> * サンプル アプリをインポートする
+> * 新しいエンティティの作成
+> * 新しい意図の作成
+> * トレーニング
+> * 発行
+> * エンドポイントから意図とエンティティを取得する
+> * ロールを持つパターンを作成する
+> * 都市のフレーズ リストを作成する
+> * エンドポイントから意図とエンティティを取得する
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="using-roles-in-patterns"></a>パターンでロールを使う
 
 ロールの目的は、文脈的に関連するエンティティを発話から抽出することです。 「`Move new employee Robert Williams from Sacramento and San Francisco`」という発話で、移動元の都市と移動先の都市の値は互いに関連しており、それぞれの場所を表すのに共通の言語を使用しています。 
 
@@ -28,7 +47,7 @@ ms.locfileid: "51277838"
 
 新しい従業員と家族を、現在の都市から、架空の会社が所在する都市に移動させる必要があります。 新しい従業員はどの都市からも来る可能性があるため、場所を検出する必要があります。 リスト エンティティのようなセット リストは、リスト内の都市しか抽出されないため、機能しません。
 
-移動元と移動先の都市に関連付けられたロール名は、すべてのエンティティ間で一意である必要があります。 ロールが一意であることを確認する簡単な方法は、命名方針によってそれらのロールを上位のエンティティと結び付けることです。 **NewEmployeeRelocation** エンティティは、2 つのロール **NewEmployeeReloOrigin** と **NewEmployeeReloDestination** を持つシンプル エンティティです。 Relo は Relocation (配置換え) の略です。
+移動元と移動先の都市に関連付けられたロール名は、すべてのエンティティ間で一意である必要があります。 ロールが一意であることを確認する簡単な方法は、命名方針によってそれらのロールを上位のエンティティと結び付けることです。 **NewEmployeeRelocation** エンティティは、2 つのロール **NewEmployeeReloOrigin** と **NewEmployeeReloDestination** があるシンプルなエンティティです。 Relo は Relocation (配置換え) の略です。
 
 発話の例「`Move new employee Robert Williams from Sacramento and San Francisco`」には機械学習エンティティしか含まれていないため、エンティティが検出されるよう、十分な発話例を意図に提供することが重要です。  
 
@@ -36,27 +55,12 @@ ms.locfileid: "51277838"
 
 都市などの名前であるためシンプル エンティティの検出に問題がある場合、類似の値のフレーズ リストを追加することを検討してください。 これは、その種類の単語またはフレーズについて追加のシグナルを LUIS に与えることによって、都市名の検出を補助します。 フレーズ リストは、パターンが一致するために必要なエンティティ検出を補助することによってパターンを補助するにすぎません。 
 
-**このチュートリアルで学習する内容は次のとおりです。**
-
-> [!div class="checklist"]
-> * 既存のチュートリアル アプリを使用する
-> * 新しいエンティティの作成
-> * 新しい意図の作成
-> * トレーニング
-> * [発行]
-> * エンドポイントから意図とエンティティを取得する
-> * ロールを持つパターンを作成する
-> * 都市のフレーズ リストを作成する
-> * エンドポイントから意図とエンティティを取得する
-
-[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="use-existing-app"></a>既存のアプリを使用する
+## <a name="import-example-app"></a>サンプル アプリをインポートする
 最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
 
-以前のチュートリアルの HumanResources アプリがない場合は、次の手順を使用します。
+次の手順に従います。
 
-1.  [アプリの JSON ファイル](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json)をダウンロードして保存します。
+1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json)をダウンロードして保存します。
 
 2. JSON を新しいアプリにインポートします。
 
@@ -64,7 +68,7 @@ ms.locfileid: "51277838"
 
 ## <a name="create-new-entities"></a>新しいエンティティの作成
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 左側のナビゲーションから **[エンティティ]** を選択します。 
 
@@ -118,7 +122,7 @@ ms.locfileid: "51277838"
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>[発行]
+## <a name="publish"></a>発行
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
@@ -128,7 +132,7 @@ ms.locfileid: "51277838"
 
 2. アドレスの URL の末尾に移動し、「`Move Wayne Berry from Miami to Mount Vernon`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 
 
-    ```JSON
+    ```json
     {
       "query": "Move Wayne Berry from Newark to Columbus",
       "topScoringIntent": {
@@ -254,11 +258,11 @@ ms.locfileid: "51277838"
 
 ## <a name="get-intent-and-entities-from-endpoint"></a>エンドポイントから意図とエンティティを取得する
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. アドレスの URL の末尾に移動し、「`Move wayne berry from miami to mount vernon`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 
 
-    ```JSON
+    ```json
     {
       "query": "Move Wayne Berry from Miami to Mount Vernon",
       "topScoringIntent": {
@@ -365,23 +369,10 @@ ms.locfileid: "51277838"
         "label": "neutral",
         "score": 0.5
       }
-}
+   }
     ```
 
 意図スコアは大きく向上し、ロール名がエンティティの応答に含まれるようになりました。
-
-## <a name="hierarchical-entities-versus-roles"></a>階層エンティティとロール
-
-[階層構造のチュートリアル](luis-quickstart-intent-and-hier-entity.md)では、既存の従業員をある建物やオフィスから別の場所へ移動させるとき、**MoveEmployee** の意図が検出されました。 発話の例には移動元の場所と移動先の場所がありましたが、ロールは使用していませんでした。 代わりに、移動元と移動先は階層構造エンティティの子でした。 
-
-このチュートリアルでは、新しい従業員をある都市から別の都市に移動させることについての発話を人事管理アプリが検出します。 これら 2 種類の発話は同じですが、LUIS が持つ異なった能力によって解決されます。
-
-|チュートリアル|発話の例|移動元と移動先の場所|
-|--|--|--|
-|[階層構造 (ロールなし)](luis-quickstart-intent-and-hier-entity.md)|mv Jill Jones from **a-2349** to **b-1298**|a-2349、b-1298|
-|このチュートリアル (ロールあり)|Move Billy Patterson from **Yuma** to **Denver**.|Yuma、Denver|
-
-詳細については、「[ロールと階層エンティティ](luis-concept-roles.md#roles-versus-hierarchical-entities)」を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

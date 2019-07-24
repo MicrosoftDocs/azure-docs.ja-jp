@@ -1,0 +1,63 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 51bec37f6b052d51d6cc8f5a8667789bec9e6881
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235967"
+documentType: LandingData
+title: Azure SQL Database:監視とチューニング
+metadata:
+  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
+  title: Azure SQL Database - 監視とチューニング
+  meta.description: Learn how to monitor and tune your Azure SQL database.
+  services: sql-database
+  ms.subservice: performance
+  author: jovanpop-msft
+  manager: craigg
+  ms.service: sql-database
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: overview
+  ms.date: 02/08/2019
+  ms.author: jovanpop
+sections:
+- items:
+  - type: paragraph
+    text: Azure SQL Database では、データベースのワークロードの監視とチューニングを容易に行うことができます。
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - title: Query Performance Insights
+      href: /azure/sql-database/sql-database-query-performance
+      html: <p>Azure portal で組み込みの監視機能を使用して、お使いの Azure SQL データベース (単一のデータベースまたはプールされたデータベース) のリソース使用状況を簡単に監視します。</p>
+    - title: Azure の SQL 分析
+      href: https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql?toc=/azure/sql-database/toc.json
+      html: <p>Azure SQL Analytics の監視を利用すると、多数のデータベース、エラスティック プール、インスタンスを 1 つのウィンドウで簡単に監視できます。</p>
+    - title: 自動チューニング
+      href: /azure/sql-database/sql-database-automatic-tuning
+      html: <p>自動チューニングでは、パフォーマンスを向上させるために、自動的に推奨事項を提示し、クエリ プランの問題を修正し、インデックスの作成と削除を行います。</p>
+    - title: Intelligent Performance Insight
+      href: /azure/sql-database/sql-database-intelligent-insights
+      html: <p>Azure SQL Database の組み込みインテリジェンスでは、データベースのパフォーマンス低下の原因になる破壊的なイベントが検出されて、可能な場合は軽減策の推奨事項が提供されます。</p>
+    - title: パフォーマンスに関する推奨事項
+      href: /azure/sql-database/sql-database-advisor
+      html: <p>Azure SQL Database では、Azure portal でデータベースを最適化するために役立つ推奨事項が示されます。</p>
+    - title: メトリックとログ
+      href: /azure/sql-database/sql-database-metrics-diag-logging
+      html: <p>カスタム統合のため、データベース診断テレメトリを Azure SQL Analytics、Azure Event Hubs、または Azure Blob Storage にストリーム配信します。</p>
+- title: その他のリソース
+  items:
+  - type: paragraph
+    text: データベースのパフォーマンスを最適化するのに役立つその他の機能について説明しています。
+  - type: list
+    style: unordered
+    items:
+    - html: Azure SQL Database での<a href="sql-database-monitor-tune-overview.md">監視とチューニング</a>の詳細について説明されています。
+    - html: <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json">インテリジェントなクエリ処理</a>によって、データベースのパフォーマンスを向上できる方法について説明されています。
+    - html: クエリのパフォーマンスに関するリアルタイムの分析情報を取得できる SQL Server のコア テクノロジである<a href="sql-database-operate-query-store.md">クエリ ストア</a>を設定し、操作します。
+    - html: <a href="sql-database-operate-query-store.md">動的管理ビュー</a>を使用して、ワークロードのパフォーマンスを分析する方法について説明されています。
+    - html: <a href="sql-database-xevent-db-diff-from-svr.md">XEvents</a> を使用してデータベース アクティビティを監視する方法について説明しています。
+    - html: <a href="sql-database-performance-guidance.md">データベースを手動でチューニングする</a>方法について説明しています。

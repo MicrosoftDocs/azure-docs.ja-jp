@@ -1,21 +1,21 @@
 ---
-title: Azure Container Instances チュートリアル - アプリのデプロイ
-description: Azure Container Instances チュートリアル 3 / 3 - アプリケーションのデプロイ
+title: チュートリアル - Azure Container Instances にコンテナー アプリをデプロイする
+description: Azure Container Instances チュートリアル 3/3 - Azure Container Instances にコンテナー アプリケーションをデプロイする
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 3fe1ee3d23594d5c1697ed08b17cb0b4d5b7a2fd
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 210254a4404a5280e326bf40057331a784ff6148
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857637"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326741"
 ---
-# <a name="tutorial-deploy-a-container-to-azure-container-instances"></a>チュートリアル: Azure Container Instances へのコンテナーのデプロイ
+# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>チュートリアル:Azure Container Instances にコンテナー アプリケーションをデプロイする
 
 これは、3 部構成のシリーズの最後のチュートリアルです。 シリーズではこれまで、[コンテナー イメージを作成](container-instances-tutorial-prepare-app.md)して、[Azure Container Registry にプッシュ](container-instances-tutorial-prepare-acr.md)しました。 この記事で Azure Container Instances にコンテナーをデプロイして、このシリーズは完了です。
 
@@ -36,26 +36,20 @@ ms.locfileid: "48857637"
 
 ### <a name="get-registry-credentials"></a>レジストリ資格情報を取得する
 
-[2 つ目のチュートリアル](container-instances-tutorial-prepare-acr.md)で作成したようなプライベート コンテナー レジストリでホストされるイメージをデプロイする場合は、レジストリの資格情報を指定する必要があります。
+[2 つ目のチュートリアル](container-instances-tutorial-prepare-acr.md)で作成したようなプライベート コンテナー レジストリでホストされるイメージをデプロイする場合は、レジストリにアクセスするための資格情報を指定する必要があります。 「[Azure Container Instances から Azure Container Registry の認証を受ける](../container-registry/container-registry-auth-aci.md)」に示したように、レジストリへの "*プル*" アクセス許可を持った Azure Active Directory のサービス プリンシパルを作成して構成することが、多くのシナリオにおいてベスト プラクティスとなります。 必要なアクセス許可でサービス プリンシパルを作成するサンプル スクリプトについては、そちらの記事を参照してください。 サービス プリンシパルの ID とパスワードを書き留めておいてください。 これらの資格情報は、コンテナーをデプロイするときに使用します。
 
-まず、コンテナー レジストリ ログイン サーバーの完全な名前を取得します (`<acrName>` をレジストリ名で置き換えます)。
+また、コンテナー レジストリ ログイン サーバーの完全な名前が必要となります (`<acrName>` は実際のレジストリ名に置き換えてください)。
 
 ```azurecli
 az acr show --name <acrName> --query loginServer
 ```
 
-次に、コンテナー レジストリのパスワードを取得します。
-
-```azurecli
-az acr credential show --name <acrName> --query "passwords[0].value"
-```
-
 ### <a name="deploy-container"></a>コンテナーをデプロイする
 
-次に、[az container create][az-container-create] コマンドを使用して、コンテナーをデプロイします。 `<acrLoginServer>` および `<acrPassword>` を、前の 2 つのコマンドから取得した値に置き換えます。 `<acrName>` を、コンテナー レジストリの名前に置き換えます。
+次に、[az container create][az-container-create] コマンドを使用して、コンテナーをデプロイします。 `<acrLoginServer>` は、前のコマンドから取得した値に置き換えてください。 `<service-principal-ID>` と `<service-principal-password>` は、レジストリへのアクセス用に作成したサービス プリンシパルの ID とパスワードに置き換えます。 `<aciDnsLabel>` は、適切な DNS 名に置き換えてください。
 
 ```azurecli
-az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <acrName> --registry-password <acrPassword> --dns-name-label aci-demo --ports 80
+az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <service-principal-ID> --registry-password <service-principal-password> --dns-name-label <aciDnsLabel> --ports 80
 ```
 
 数秒以内に、Azure から最初の応答を受信します。 `--dns-name-label` の値は、コンテナー インスタンスを作成する Azure リージョン内で一意である必要があります。 コマンドを実行したときに **DNS 名ラベル**のエラー メッセージが表示された場合は、前述のコマンドの値を変更してください。

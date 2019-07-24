@@ -1,5 +1,5 @@
 ---
-title: Azure Event Hubs でさまざまなプロトコルを使用するコンシューマーとプロデューサー間でイベントを交換する | Microsoft Docs
+title: さまざまなプロトコルを使用するアプリ間でイベントを交換する - Azure Event Hubs| Microsoft Docs
 description: この記事では、さまざまなプロトコル (AMQP、Apache Kafka、および HTTPS) を使用するコンシューマーとプロデューサーが、Azure Event Hubs の使用時にイベントを交換する方法を示しています。
 services: event-hubs
 documentationcenter: ''
@@ -8,20 +8,20 @@ manager: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.custom: mvc
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/05/2018
+ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 54edeafbe950cde88c2c6051f95825cfaed52ac7
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: e704a2595130a2a815388447ac482ab96789d64a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285314"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453985"
 ---
-# <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>さまざまなプロトコル (AMQP、Kafka、および HTTPS) を使用するコンシューマーとプロデューサー間でイベントを交換する
-Azure Event Hubs は、コンシューマーとプロデューサー用に 3 つのプロトコル (AMQP、Kafka、および HTTPS) をサポートしています。 これらのプロトコルのそれぞれにメッセージの独自の表示方法があるため、当然、次のような疑問が生じます。アプリケーションがあるプロトコルでイベント ハブにイベントを送信し、それを別のプロトコルで使用する場合、イベントがコンシューマーに表示されるときにイベントのさまざまな部分や値はどのように見えるのでしょうか。 この記事では、プロデューサーとコンシューマーの両方で、イベント内の値がコンシューマー側アプリケーションによって正しく解釈されるようにするためのベスト プラクティスについて説明します。
+# <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>さまざまなプロトコルを使用するコンシューマーとプロデューサー間でイベントを交換する: AMQP、Kafka、HTTPS
+Azure Event Hubs は、コンシューマーとプロデューサー用に 3 つのプロトコルをサポートしています: AMQP、Kafka、HTTPS です。 これらのプロトコルのそれぞれにメッセージの独自の表示方法があるため、当然、次のような疑問が生じます。アプリケーションがあるプロトコルでイベント ハブにイベントを送信し、それを別のプロトコルで使用する場合、イベントがコンシューマーに表示されるときにイベントのさまざまな部分や値はどのように見えるのでしょうか。 この記事では、プロデューサーとコンシューマーの両方で、イベント内の値がコンシューマー側アプリケーションによって正しく解釈されるようにするためのベスト プラクティスについて説明します。
 
 この記事のアドバイスは、コード スニペットの開発で一覧にあるバージョンが使用されるクライアントに対応しています。
 

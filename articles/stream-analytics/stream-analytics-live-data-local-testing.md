@@ -1,5 +1,5 @@
 ---
-title: Visual Studio の Azure Stream Analytics ツールを使用してライブ データをローカルにテストする (プレビュー)
+title: Visual Studio 用の Azure Stream Analytics を使用してライブ データをテストする
 description: ライブ ストリーミング データを使用して Azure Stream Analytics ジョブをローカルにテストする方法について説明します。
 services: stream-analytics
 author: mamccrea
@@ -7,13 +7,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: f0a8978a9c2e0538a2e7bc4eab202604913e700b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: ea55d2f96a87503d43a69d288ce85dcff32a39ce
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984162"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090331"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Visual Studio の Azure Stream Analytics ツールを使用してライブ データをローカルにテストする (プレビュー)
 
@@ -33,28 +34,28 @@ Visual Studio の Azure Stream Analytics ツールを使用すると、Azure Eve
 
 1. [Visual Studio で Azure Stream Analytics クラウド プロジェクト](stream-analytics-quick-create-vs.md)を作成した後、**script.asaql** を開きます。 ローカル テストでは、ローカル入力とローカル出力が既定で使用されます。
 
-   ![ローカル入力とローカル出力を使用する Azure Stream Analytics Visual Studio ローカル テスト](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-local-input-output.png)
+   ![Azure Stream Analytics Visual Studio のローカル入力とローカル出力](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-local-input-output.png)
 
 2. ライブ データをテストするには、ドロップダウン ボックスから **[Use Cloud Input]\(クラウド入力を使用\)** を選択します。
 
-   ![ライブ クラウド入力を使用する Azure Stream Analytics Visual Studio ローカル テスト](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
+   ![Azure Stream Analytics Visual Studio のライブ クラウド入力](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
 
 
 3. **[Start Time]\(開始日時\)** を設定して、ジョブが入力データの処理を開始する日時を定義します。 ジョブは、正確な結果を得るため、事前に入力データを読み取ることが必要な場合があります。 既定の日時は、現在の日時の 30 分前に設定されます。
 
-   ![Azure Stream Analytics Visual Studio ローカル テストでのライブ データ開始時刻](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-start-time.png)
+   ![Azure Stream Analytics Visual Studio のライブ データ開始時刻](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-start-time.png)
 
 4. **[Run Locally]\(ローカルに実行\)** をクリックします。 コンソール ウィンドウに、実行の進行状況とジョブのメトリックが表示されます。 プロセスを停止する場合は、手動で行うことができます。 
 
-   ![Azure Stream Analytics Visual Studio ローカル テストでのライブ データ処理ウィンドウ](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-process-window.png)
+   ![Azure Stream Analytics Visual Studio のライブ データ処理ウィンドウ](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-process-window.png)
 
    出力結果は 3 秒ごとに更新され、ローカル実行結果ウィンドウには最初の 500 出力行が表示されて、出力ファイルはプロジェクト パスの **ASALocalRun** フォルダーに格納されます。 ローカル実行結果ウィンドウの **[Open Results Folder]\(結果フォルダーを開く\)** ボタンをクリックして、出力ファイルを開くこともできます。
 
-   ![Azure Stream Analytics Visual Studio ローカル テストでライブ データ結果フォルダーを開く](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-open-results-folder.png)
+   ![Azure Stream Analytics Visual Studio のライブ データ結果フォルダーを開く](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input-open-results-folder.png)
 
 5. クラウド出力シンクに結果を出力する場合は、2 番目のドロップダウン ボックスから **[Output to Cloud]\(クラウドに出力\)** を選択します。 Power BI と Azure Data Lake Storage は、出力シンクとしてサポートされていません。
 
-   ![Azure Stream Analytics Visual Studio ローカル テストでのクラウドへのライブ データ出力](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-output.png)
+   ![Azure Stream Analytics Visual Studio のクラウドへのライブ データ出力](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-output.png)
  
 ## <a name="limitations"></a>制限事項
 

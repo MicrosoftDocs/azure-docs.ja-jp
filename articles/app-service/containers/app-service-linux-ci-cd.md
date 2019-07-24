@@ -1,6 +1,6 @@
 ---
-title: Web App for Containers での Docker コンテナー レジストリからの継続的なデプロイ - Azure | Microsoft Docs
-description: Web App for Containers で Docker コンテナー レジストリからの継続的なデプロイを設定する方法。
+title: Web App for Containers での継続的なデプロイ - Azure App Service | Microsoft Docs
+description: Web App for Containers で継続的なデプロイを設定する方法について説明します。
 keywords: Azure App Service, Linux, Docker, acr, oss
 services: app-service
 documentationcenter: ''
@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2018
-ms.author: msangapu;yili
-ms.openlocfilehash: b26366edddc223b842cc5d38473bda42422f1840
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.author: yili
+ms.custom: seodec18
+ms.openlocfilehash: 4acadc4c08ef50e7d52303689c38c43f81187669
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298539"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315534"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Web App for Containers での継続的デプロイ
 

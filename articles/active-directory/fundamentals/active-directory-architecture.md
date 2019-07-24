@@ -1,28 +1,29 @@
 ---
-title: Azure Active Directory のアーキテクチャの概要 | Microsoft Docs
-description: Azure Active Directory テナントの概要、および Azure Active Directory で Azure を管理する方法を説明します。
+title: アーキテクチャの概要 - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory テナントの概要、および Azure Active Directory を使用して Azure を管理する方法を説明します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-custom: it-pro
-ms.openlocfilehash: 62ade1318b670b4eecf1be1a9255fe497d094a1a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 12819bdc20dea57a8a114bb4ff311f828be8b15a
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733215"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286216"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Azure Active Directory のアーキテクチャの概要
-Azure Active Directory (Azure AD) を使用すると、Azure のサービスやリソースへのアクセスをそのユーザーのために安全に管理することができます。 Azure AD には、必要な ID 管理機能がすべて備わっています。 Azure AD の機能については、「[Azure Active Directory とは](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)」を参照してください。
+Azure Active Directory (Azure AD) を使用すると、Azure のサービスやリソースへのアクセスをそのユーザーのために安全に管理することができます。 Azure AD には、必要な ID 管理機能がすべて備わっています。 Azure AD の機能については、「[Azure Active Directory とは](active-directory-whatis.md)」を参照してください。
 
-Azure AD で、ユーザーとグループを作成して管理できるほか、アクセス許可によって企業リソースに対するアクセスを許可したり拒否したりすることができます。 ID 管理については、「[Azure ID 管理の基礎](https://docs.microsoft.com/azure/active-directory/fundamentals-identity)」を参照してください。
+Azure AD で、ユーザーとグループを作成して管理できるほか、アクセス許可によって企業リソースに対するアクセスを許可したり拒否したりすることができます。 ID 管理については、「[Azure ID 管理の基礎](active-directory-whatis.md)」を参照してください。
 
 ## <a name="azure-ad-architecture"></a>Azure AD のアーキテクチャ
 Azure AD の地理的に分散されたアーキテクチャでは、広範な監視機能、自動再ルーティング機能、フェールオーバー、復旧機能を兼ね備えており、会社全体の可用性とパフォーマンスがお客様に提供されます。
@@ -34,11 +35,11 @@ Azure AD の地理的に分散されたアーキテクチャでは、広範な�
  *  データ センター
 
 ### <a name="service-architecture-design"></a>サービス アーキテクチャの設計
-一般に、アクセスと使用が容易でデータが豊富なシステムは、独立したビルディング ブロックまたはスケール ユニット ("*パーティション*") を Azure AD のデータ層に使用することで構築できます。 
+一般に、アクセスと使用が容易でデータが豊富なシステムは、独立したビルディング ブロックまたはスケール ユニットを使用して構築できます。 Azure AD データ層では、スケール ユニットは "*パーティション*" と呼ばれます。 
 
 データ層には、読み取り/書き込み機能を備えたさまざまなフロントエンド サービスが存在します。 次の図は、単一ディレクトリ パーティションの各構成要素が、地理的に分散されたデータ センターを通じて提供されるようすを示しています。 
 
-  ![単一ディレクトリ パーティション](./media/active-directory-architecture/active-directory-architecture.png)
+  ![単一ディレクトリ パーティションの図](./media/active-directory-architecture/active-directory-architecture.png)
 
 Azure AD アーキテクチャの構成要素には、プライマリ レプリカとセカンダリ レプリカが含まれます。
 
@@ -66,7 +67,7 @@ Azure AD のパーティション設計はエンタープライズ AD の設計�
 
 **フォールト トレランス**
 
-ハードウェアやネットワーク、ソフトウェアの障害に耐えることができれば、システムの可用性は向上します。 Azure AD ディレクトリの各パーティションには、高可用性のマスター レプリカ (プライマリ レプリカ) が存在します。 プライマリ レプリカで実行されるのは、パーティションへの書き込みだけです。 このレプリカは常時厳しく監視されており、障害が検出されると、書き込み先は直ちに (新たにプライマリとなる) 別のレプリカに切り替えられます。 フェールオーバー中は、書き込みの可用性が失われる場合があります (通常 1 ～ 2 分)。 この間、読み取りの可用性は影響を受けません。
+ハードウェアやネットワーク、ソフトウェアの障害に耐えることができれば、システムの可用性は向上します。 ディレクトリの各パーティションには、高可用性のマスター レプリカが存在します。プライマリ レプリカです。 プライマリ レプリカで実行されるのは、パーティションへの書き込みだけです。 このレプリカは常時厳しく監視されており、障害が検出されると、書き込み先は直ちに (新たにプライマリとなる) 別のレプリカに切り替えられます。 フェールオーバー中は、書き込みの可用性が失われる場合があります (通常 1 ～ 2 分)。 この間、読み取りの可用性は影響を受けません。
 
 読み取り操作 (書き込みよりも桁違いに多い) は必ずセカンダリ レプリカに対して行われます。 セカンダリ レプリカはすべて等価であるため、特定のパーティションのレプリカが失われても、(通常は同じデータセンター内の) 別のレプリカに読み取りを誘導することで簡単に対処することができます。
 

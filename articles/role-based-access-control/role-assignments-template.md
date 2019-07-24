@@ -1,6 +1,6 @@
 ---
-title: RBAC と Azure Resource Manager テンプレートを使用してアクセスを管理する | Microsoft Docs
-description: ロールベースのアクセス制御 (RBAC) と Azure Resource Manager テンプレートを使用してユーザー、グループ、アプリケーションのアクセス権を管理する方法を説明します。
+title: RBAC と Azure Resource Manager テンプレートを使用して Azure リソースへのアクセスを管理する | Microsoft Docs
+description: ロールベースのアクセス制御 (RBAC) と Azure Resource Manager テンプレートを使用してユーザー、グループ、アプリケーションの Azure リソースへのアクセスを管理する方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,19 +10,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5e080614d4f0001a0bf1b44dd402f37db2463e03
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 537ee35e96a41cd02605319e244d39c6567c3bf1
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206697"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337205"
 ---
-# <a name="manage-access-using-rbac-and-azure-resource-manager-templates"></a>RBAC と Azure Resource Manager テンプレートを使用してアクセスを管理する
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>RBAC と Azure Resource Manager テンプレートを使用して Azure リソースへのアクセスを管理する
 
-[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure に存在するリソースに対するアクセス権を管理するための手法です。 Azure PowerShell または Azure CLI を使う以外に、RBAC と [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使って Azure リソースへのアクセスを管理することもできます。 リソースを一貫して繰り返しデプロイする場合は、テンプレートが便利です。 この記事では、RBAC とテンプレートを使ってアクセスを管理する方法について説明します。
+[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure のリソースに対するアクセスを管理するための手法です。 Azure PowerShell または Azure CLI を使う以外に、RBAC と [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使って Azure リソースへのアクセスを管理することもできます。 リソースを一貫して繰り返しデプロイする場合は、テンプレートが便利です。 この記事では、RBAC とテンプレートを使ってアクセスを管理する方法について説明します。
 
 ## <a name="example-template-to-create-a-role-assignment"></a>ロールの割り当てを作成するためのテンプレートの例
 
@@ -92,16 +92,18 @@ RBAC でアクセス権を付与するには、ロールの割り当てを作成
 
 ## <a name="deploy-template-using-azure-powershell"></a>Azure PowerShell を使用してテンプレートを展開する
 
+[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
+
 Azure PowerShell を使用して前のテンプレートをデプロイするには、以下の手順のようにします。
 
 1. rbac-rg.json という名前の新しいファイルを作成し、前に示したテンプレートをコピーします。
 
 1. [Azure PowerShell](/powershell/azure/authenticate-azureps) にサインインします。
 
-1. ユーザー、グループ、またはアプリケーションの一意識別子を取得します。 たとえば、[Get-AzureRmADUser](/powershell/module/azurerm.resources/get-azurermaduser) コマンドを使って Azure AD ユーザーの一覧を表示できます。
+1. ユーザー、グループ、またはアプリケーションの一意識別子を取得します。 たとえば、[Get-AzADUser](/powershell/module/az.resources/get-azaduser) コマンドを使って Azure AD ユーザーの一覧を表示できます。
 
     ```azurepowershell
-    Get-AzureRmADUser
+    Get-AzADUser
     ```
 
 1. GUID ツールを使って、ロールの割り当てに使う一意識別子を生成します。 この識別子の形式は `11111111-1111-1111-1111-111111111111` になります。
@@ -109,21 +111,21 @@ Azure PowerShell を使用して前のテンプレートをデプロイするに
 1. リソース グループの例を作成します。
 
     ```azurepowershell
-    New-AzureRmResourceGroup -Name ExampleGroup -Location "Central US"
+    New-AzResourceGroup -Name ExampleGroup -Location "Central US"
     ```
 
-1. [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) コマンドを使って、デプロイを開始します。
+1. [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) コマンドを使って、デプロイを開始します。
 
     ```azurepowershell
-    New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
+    New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
     ```
 
     必要なパラメーターの指定を求められます。 出力の例を次に示します。
 
     ```Output
-    PS /home/user> New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
+    PS /home/user> New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
     
-    cmdlet New-AzureRmResourceGroupDeployment at command pipeline position 1
+    cmdlet New-AzResourceGroupDeployment at command pipeline position 1
     Supply values for the following parameters:
     (Type !? for Help.)
     principalId: 22222222-2222-2222-2222-222222222222
@@ -249,6 +251,6 @@ Azure CLI を使って前記のテンプレートをデプロイするには、�
     
 ## <a name="next-steps"></a>次の手順
 
-- [初めての Azure Resource Manager テンプレートを作成およびデプロイする](../azure-resource-manager/resource-manager-create-first-template.md)
+- [クイック スタート:Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
 - [Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/resource-group-authoring-templates.md)
 - [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?term=rbac)

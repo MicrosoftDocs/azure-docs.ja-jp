@@ -1,25 +1,26 @@
 ---
-title: Azure CLI を使用して Azure VMSS 上でシステム割り当てマネージド ID とユーザー割り当て ID を構成する方法
-description: Azure CLI を使用して、Azure VMSS 上でシステム割り当てマネージド ID とユーザー割り当てマネージド ID を構成する手順について説明します。
+title: Azure CLI を使用して Azure 仮想マシン スケール セット上にシステム割り当てマネージド ID とユーザー割り当て ID を構成する方法
+description: Azure CLI を使用して、仮想マシン スケール セット上にシステム割り当てマネージド ID とユーザー割り当てマネージド ID を構成するための順を追った説明。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: MarkusVi
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
-ms.author: daveba
-ms.openlocfilehash: eb8ec68bc7e19af77e94bdf38f8e2bc3322d7fc6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: markvi
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 04a3c9eba1f6498796a7e617b400649963c996d1
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993512"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444473"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Azure CLI を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
@@ -27,9 +28,9 @@ ms.locfileid: "46993512"
 
 Azure リソースのマネージド ID は、Azure Active Directory で自動的に管理される ID を Azure サービスに提供します。 この ID を使用して、コードに資格情報が含まれていなくても、Azure AD の認証をサポートする任意のサービスに認証することができます。 
 
-この記事では、Azure CLI を使用して、Azure 仮想マシン スケール セット (VMSS) 上で Azure リソースのマネージド ID に対して次の操作を実行する方法について説明します。
-- Azure VMSS 上でシステム割り当てマネージド ID を有効および無効にする
-- Azure VMSS 上でユーザー割り当てマネージド ID を追加および削除する
+この記事では、Azure CLI を使用して、Azure 仮想マシン スケール セット上で Azure リソースのマネージド ID に対して次の操作を実行する方法について説明します。
+- Azure 仮想マシン スケール セットでシステム割り当てマネージド ID を有効および無効にする
+- Azure 仮想マシン スケール セットでユーザー割り当てマネージド ID を追加および削除する
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -56,7 +57,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 ## <a name="system-assigned-managed-identity"></a>システム割り当てマネージド ID
 
-このセクションでは、Azure CLI を使用して、Azure VMSS 上でシステム割り当てマネージド ID を有効および無効にする方法について説明します。
+このセクションでは、Azure CLI を使用して、Azure 仮想マシン スケール セット上でシステム割り当てマネージド ID を有効および無効にする方法について説明します。
 
 ### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-virtual-machine-scale-set"></a>Azure 仮想マシン スケール セットの作成中にシステム割り当てマネージド ID を有効にする
 
@@ -113,11 +114,8 @@ az vmss update -n myVM -g myResourceGroup --set identity.type='UserAssigned'
 az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-Azure リソース VM 拡張機能のマネージド ID (2019 年 1 月に非推奨となる予定) を削除するには、[az vmss identity remove](/cli/azure/vmss/identity/#az-vmss-remove-identity) コマンドを使用してシステム割り当てマネージド ID を VMSS から削除します。
-
-```azurecli-interactive
-az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
-```
+> [!NOTE]
+> Azure リソースの VM 拡張機能 (非推奨になる予定) のマネージド ID をプロビジョニングしている場合は、[az vmss extension delete](https://docs.microsoft.com/cli/azure/vm/) を使用して削除する必要があります。 詳細については、[認証のための VM 拡張機能から Azure IMDS への移行](howto-migrate-vm-extension.md)に関するページを参照してください。
 
 ## <a name="user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID
 
@@ -125,7 +123,7 @@ az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGrou
 
 ### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-a-virtual-machine-scale-set"></a>仮想マシン スケール セットの作成中にユーザー割り当てマネージド ID を割り当てる
 
-このセクションでは、VMSS を作成する方法と、ユーザー割り当てマネージド ID を VMSS に割り当てる方法について説明します。 使用する VMSS が既にある場合は、このセクションをスキップして次のセクションに進んでください。
+このセクションでは、仮想マシン スケール セットを作成する方法と、ユーザー割り当てマネージド ID を仮想マシン スケール セットに割り当てる方法について説明します。 使用する仮想マシン スケール セットが既にある場合は、このセクションをスキップして次のセクションに進んでください。
 
 1. 使用するリソース グループが既にある場合は、この手順をスキップできます。 [az group create](/cli/azure/group/#az-group-create) を使用して、ユーザー割り当てマネージド ID の格納と配置を行う[リソース グループ](~/articles/azure-resource-manager/resource-group-overview.md#terminology)を作成します。 `<RESOURCE GROUP>` と `<LOCATION>` のパラメーターの値は、必ず実際の値に置き換えてください。 :
 
@@ -157,7 +155,7 @@ az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGrou
    }
    ```
 
-3. [az vmss create](/cli/azure/vmss/#az-vmss-create) を使用して VMSS を作成します。 次の例では、`--assign-identity` パラメーターで指定された新しいユーザー割り当てマネージド ID に関連付けられている VMSS を作成します。 `<RESOURCE GROUP>`、`<VMSS NAME>`、`<USER NAME>`、`<PASSWORD>`、および `<USER ASSIGNED IDENTITY>` の各パラメーターの値は、必ず実際の値に置き換えてください。 
+3. [az vmss create](/cli/azure/vmss/#az-vmss-create) を使用して仮想マシン スケール セットを作成します。 次の例では、`--assign-identity` パラメーターで指定された新しいユーザー割り当てマネージド ID に関連付けられている仮想マシン スケール セットを作成します。 `<RESOURCE GROUP>`、`<VMSS NAME>`、`<USER NAME>`、`<PASSWORD>`、および `<USER ASSIGNED IDENTITY>` の各パラメーターの値は、必ず実際の値に置き換えてください。 
 
    ```azurecli-interactive 
    az vmss create --resource-group <RESOURCE GROUP> --name <VMSS NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <USER ASSIGNED IDENTITY>
@@ -167,13 +165,10 @@ az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGrou
 
 1. [az identity create](/cli/azure/identity#az-identity-create) を使用して、ユーザー割り当てマネージド ID を作成します。  `-g` パラメーターにはユーザー割り当てマネージド ID を作成するリソース グループを指定し、`-n` パラメーターにはその名前を指定します。 `<RESOURCE GROUP>` と `<USER ASSIGNED IDENTITY NAME>` のパラメーターの値は、必ず実際の値に置き換えてください。
 
-    > [!IMPORTANT]
-    > 名前に特殊文字 (アンダースコアなど) が含まれるユーザー割り当てマネージド ID の作成は現在サポートされていません。 英数字を使用してください。 アップデートは後ほどご確認ください。  詳細については、[よく寄せられる質問と既知の問題](known-issues.md)に関する記事をご覧ください。
-
     ```azurecli-interactive
     az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
     ```
-応答には、次のように、作成されたユーザー割り当てマネージド ID の詳細が含まれています。
+   応答には、次のように、作成されたユーザー割り当てマネージド ID の詳細が含まれています。
 
    ```json
    {
@@ -190,18 +185,18 @@ az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGrou
    }
    ```
 
-2. [az vmss identity assign](/cli/azure/vmss/identity#az-vm-assign-identity) を使用して、ユーザー割り当てマネージド ID を VMSS に割り当てます。 `<RESOURCE GROUP>` と `<VMSS NAME>` のパラメーターの値は、必ず実際の値に置き換えてください。 `<USER ASSIGNED IDENTITY>` は、前の手順で作成されたユーザー割り当て ID のリソース `name` プロパティです。
+2. [az vmss identity assign](/cli/azure/vmss/identity) を使用して、ユーザー割り当てマネージド ID を仮想マシン スケール セットに割り当てます。 `<RESOURCE GROUP>` と `<VIRTUAL MACHINE SCALE SET NAME>` のパラメーターの値は、必ず実際の値に置き換えてください。 `<USER ASSIGNED IDENTITY>` は、前の手順で作成されたユーザー割り当て ID のリソース `name` プロパティです。
 
     ```azurecli-interactive
-    az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY>
+    az vmss identity assign -g <RESOURCE GROUP> -n <VIRTUAL MACHINE SCALE SET NAME> --identities <USER ASSIGNED IDENTITY>
     ```
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Azure 仮想マシン スケール セットからユーザー割り当てマネージド ID を削除する
 
-仮想マシン スケール セットからユーザー割り当てマネージド ID を削除するには、[az vmss identity remove](/cli/azure/vmss/identity#az-vmss-identity-remove) を使用します。 仮想マシン スケール セットに割り当てられている唯一のユーザー割り当てマネージド ID の場合は、ID 型の値から `UserAssigned` が削除されます。  `<RESOURCE GROUP>` と `<VMSS NAME>` のパラメーターの値は、必ず実際の値に置き換えてください。 `<USER ASSIGNED IDENTITY>` はユーザー割り当てマネージド ID の `name` プロパティになります。これは、`az vmss identity show` を使用して、仮想マシン スケール セットの ID セクションで見つけることができます。
+仮想マシン スケール セットからユーザー割り当てマネージド ID を削除するには、[az vmss identity remove](/cli/azure/vmss/identity#az-vmss-identity-remove) を使用します。 仮想マシン スケール セットに割り当てられている唯一のユーザー割り当てマネージド ID の場合は、ID 型の値から `UserAssigned` が削除されます。  `<RESOURCE GROUP>` と `<VIRTUAL MACHINE SCALE SET NAME>` のパラメーターの値は、必ず実際の値に置き換えてください。 `<USER ASSIGNED IDENTITY>` はユーザー割り当てマネージド ID の `name` プロパティになります。これは、`az vmss identity show` を使用して、仮想マシン スケール セットの ID セクションで見つけることができます。
 
 ```azurecli-interactive
-az vmss identity remove -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY>
+az vmss identity remove -g <RESOURCE GROUP> -n <VIRTUAL MACHINE SCALE SET NAME> --identities <USER ASSIGNED IDENTITY>
 ```
 
 仮想マシン スケール セットにシステム割り当てマネージド ID がないときに、ユーザー割り当てマネージド ID をすべて削除する場合は、次のコマンドを使用します。

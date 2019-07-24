@@ -1,103 +1,141 @@
 ---
-title: 'クイック スタート: サポートされている言語を取得する、Go - Translator Text API'
+title: 'クイック スタート: サポートされている言語を取得する (Go) - Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Go で Translator Text API を使った例を紹介しています。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/29/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 2a93ee7b4d2c8426ad7a7f30a986d07e14192cc4
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: bf33860b111900fed850158d6b80d5a9d4404893
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648294"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181607"
 ---
-# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-go"></a>クイック スタート: Translator Text REST API を使用してサポートされている言語を取得する (Go)
+# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-go"></a>クイック スタート: Translator Text API と Go を使用してサポートされている言語の一覧を取得する
 
-このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Translator Text API を使った例を紹介しています。
+このクイック スタートでは、Go と Translator Text REST API を使用し、GET 要求を行うことによって、サポートされている言語の一覧を取得する方法を説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを実行するためには、[Go ディストリビューション](https://golang.org/doc/install)をインストールする必要があります。 サンプル コードでは、**コア** ライブラリだけを使用するので、外部との依存関係はありません。
+このクイック スタートでは以下が必要です。
 
-Translator Text API を使用するには、サブスクリプション キーも必要となります。「[Translator Text API にサインアップする方法](translator-text-how-to-signup.md)」を参照してください。
+* [Go](https://golang.org/doc/install)
 
-## <a name="languages-request"></a>言語要求
+## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 
-次のコードは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を、[Languages](./reference/v3-0-languages.md) メソッドを使って取得する例を示しています。
+任意の IDE またはエディターを使用して新しい Go プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 次に、このコード スニペットをプロジェクトまたはフォルダーの `get-languages.go` という名前のファイルにコピーします。
 
-1. 任意のコード エディターで新しい Go プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `subscriptionKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. "go" という拡張子でファイルを保存します。
-5. Go がインストールされているコンピューターのコマンド プロンプトを開きます。
-6. ファイルをビルドします (例: "go build quickstart-languages.go")。
-7. ファイルを実行します (例: "quickstart-languages")。
-
-```golang
+```go
 package main
 
 import (
     "encoding/json"
     "fmt"
-    "io/ioutil"
+    "log"
     "net/http"
-    "time"
+    "net/url"
 )
+```
 
+## <a name="create-the-main-function"></a>main 関数を作成する
+
+アプリケーションの main 関数を作成しましょう。 コードが 1 行だけであることがわかります。 これは、Translator Text 用にサポートされている言語の一覧を取得して印刷するための 1 つの関数を作成しているためです。
+
+このコードをプロジェクトにコピーします。
+
+```go
 func main() {
-    // Replace the subscriptionKey string value with your valid subscription key
-    const subscriptionKey = "<Subscription Key>"
-
-    const uriBase = "https://api.cognitive.microsofttranslator.com"
-    const uriPath = "/languages?api-version=3.0"
-
-    const uri = uriBase + uriPath
-
-    client := &http.Client{
-        Timeout: time.Second * 2,
-    }
-
-    req, err := http.NewRequest("GET", uri, nil)
-    if err != nil {
-        fmt.Printf("Error creating request: %v\n", err)
-        return
-    }
-
-    req.Header.Add("Content-Type", "application/json")
-    req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
-
-    resp, err := client.Do(req)
-    if err != nil {
-        fmt.Printf("Error on request: %v\n", err)
-        return
-    }
-    defer resp.Body.Close()
-
-    body, err := ioutil.ReadAll(resp.Body)
-    if err != nil {
-        fmt.Printf("Error reading response body: %v\n", err)
-        return
-    }
-
-    var f interface{}
-    json.Unmarshal(body, &f)
-
-    jsonFormatted, err := json.MarshalIndent(f, "", "  ")
-    if err != nil {
-        fmt.Printf("Error producing JSON: %v\n", err)
-        return
-    }
-    fmt.Println(string(jsonFormatted))
+    /*
+     * This calls our getLanguages function, which we'll
+     * create in the next section. It takes a single argument,
+     * the subscription key.
+     */
+    getLanguages()
 }
 ```
 
-## <a name="languages-response"></a>言語応答
+## <a name="create-a-function-to-get-a-list-of-supported-languages"></a>サポートされている言語の一覧を取得する関数を作成する
+
+サポートされている言語の一覧を取得する関数を作成しましょう。
+
+```go
+func getLanguages() {
+    /*  
+     * In the next few sections, we'll add code to this
+     * function to make a request and handle the response.
+     */
+}
+```
+
+次に、URL を構築しましょう。 URL は、`Parse()` メソッドと `Query()` メソッドを使用して構築されます。
+
+このコードを `getLanguages` 関数内にコピーします。
+
+```go
+// Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
+u, _ := url.Parse("https://api.cognitive.microsofttranslator.com/languages")
+q := u.Query()
+q.Add("api-version", "3.0")
+u.RawQuery = q.Encode()
+```
+
+>[!NOTE]
+> エンドポイント、ルート、および要求パラメーターの詳細については、「[Translator Text API 3.0: Languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages)」を参照してください。
+
+## <a name="build-the-request"></a>要求を作成する
+
+要求本文を JSON としてエンコードしたので、ご自分の POST 要求を作成し、Translator Text API を呼び出すことができます。
+
+```go
+// Build the HTTP GET request
+req, err := http.NewRequest("GET", u.String(), nil)
+if err != nil {
+    log.Fatal(err)
+}
+// Add required headers
+req.Header.Add("Content-Type", "application/json")
+
+// Call the Translator Text API
+res, err := http.DefaultClient.Do(req)
+if err != nil {
+    log.Fatal(err)
+}
+```
+
+## <a name="handle-and-print-the-response"></a>応答を処理して出力する
+
+次のコードを `getLanguages` 関数に追加して、JSON 応答をデコードした後、結果を書式設定して出力します。
+
+```go
+// Decode the JSON response
+var result interface{}
+if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
+    log.Fatal(err)
+}
+// Format and print the response to terminal
+prettyJSON, _ := json.MarshalIndent(result, "", "  ")
+fmt.Printf("%s\n", prettyJSON)
+```
+
+## <a name="put-it-all-together"></a>すべてをまとめた配置
+
+これで、Translator Text API を呼び出して JSON 応答を返す簡単なプログラムが完成しました。 ここで、プログラムを実行してみましょう。
+
+```console
+go run get-languages.go
+```
+
+作成したコードをサンプル コードと比較したい場合は、完全なサンプルを [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go) から入手できます。
+
+## <a name="sample-response"></a>応答のサンプル
+
+国の省略形は、こちらの[言語一覧](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support)で確認してください。
 
 成功した応答は、次の例に示すように JSON で返されます。
 
@@ -191,3 +229,13 @@ GitHub の [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go) から 
 
 > [!div class="nextstepaction"]
 > [GitHub で Go パッケージを詳しく見てみる](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)
+
+## <a name="see-also"></a>関連項目
+
+Translator Text API を使用して以下を実行する方法を確認します。
+
+* [テキストを翻訳する](quickstart-go-translate.md)
+* [テキストを表記変換する](quickstart-go-transliterate.md)
+* [入力によって言語を識別する](quickstart-go-detect.md)
+* [別の翻訳を取得する](quickstart-go-dictionary.md)
+* [入力から文章の長さを判定する](quickstart-go-sentences.md)

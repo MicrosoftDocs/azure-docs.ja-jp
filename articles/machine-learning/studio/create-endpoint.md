@@ -1,61 +1,54 @@
 ---
-title: Machine Learning で Web サービス エンドポイントを作成する | Microsoft Docs
-description: Azure Machine Learning で Web サービス エンドポイントを作成する
+title: Web サービスのエンドポイントを作成する
+titleSuffix: Azure Machine Learning Studio
+description: Azure Machine Learning Studio で Web サービスのエンドポイントを作成します。 Web サービスの各エンドポイントは、個別にアドレス指定、スロットル、および管理されます。
 services: machine-learning
-documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
-editor: cgronlun
-ms.assetid: 4657fc1b-5228-4950-a29e-bc709259f728
 ms.service: machine-learning
-ms.component: studio
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 10/04/2016
-ms.openlocfilehash: 8cdf8c5ac3676d8abc9084fc842484aca5b6d1c7
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.subservice: studio
+ms.topic: conceptual
+author: xiaoharper
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 02/15/2019
+ms.openlocfilehash: ac434a696f6e77e5ce61b430232166e7727eda38
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833548"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084693"
 ---
-# <a name="creating-endpoints"></a>エンドポイントを作成する
+# <a name="create-endpoints-for-deployed-azure-machine-learning-studio-web-services"></a>デプロイされた Azure Machine Learning Studio Web サービスのエンドポイントを作成する
+
 > [!NOTE]
->  このトピックでは、**従来**の Machine Learning Web サービスに適用できる手法について説明します。
-> 
-> 
+> このトピックでは、**従来**の Machine Learning Web サービスに適用できる手法について説明します。
 
-お客様に先行して販売する Web サービスを作成するときは、それぞれのお客様に対して、Web サービスを作成した実験へのリンクが維持されているトレーニング済みのモデルを提供する必要があります。 さらに、実験に対する更新を、カスタマイズを上書きすることなく選択的にエンドポイントに適用する必要があります。
+Web サービスがデプロイされた後に、そのサービスに対して既定のエンドポイントが作成されます。 既定のエンドポイントは、その API キーを使用して呼び出すことができます。 Web サービス ポータルから、独自のキーでさらにエンドポイントを追加できます。
+Web サービスの各エンドポイントは、個別にアドレス指定、スロットル、および管理されます。 各エンドポイントは一意の URL と承認キーであり、お客様に配布することができます。
 
-そのために、Azure Machine Learning では、デプロイした Web サービスに対して複数のエンドポイントを作成できます。 Web サービスの各エンドポイントは、個別にアドレス指定、スロットル、および管理されます。 各エンドポイントは一意の URL と承認キーであり、お客様に配布することができます。
+## <a name="add-endpoints-to-a-web-service"></a>Web サービスにエンドポイントを追加する
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
-## <a name="adding-endpoints-to-a-web-service"></a>Web サービスにエンドポイントを追加する
-エンドポイントを Web サービスに追加する方法は 2 つあります。
-
-* プログラムを使用する
-* Azure Machine Learning Web サービス ポータルを使用する
-
-エンドポイントが作成されたら、同期 API、バッチ API、および Excel のワークシートによってそれを使用できます。 この UI によるエンドポイントの追加に加え、エンドポイントは Endpoint Management API を使用してプログラムで追加することもできます。
+Azure Machine Learning Web サービス ポータルを使用して、Web サービスにエンドポイントを追加できます。 エンドポイントが作成されたら、同期 API、バッチ API、および Excel のワークシートによってそれを使用できます。
 
 > [!NOTE]
 > Web サービスにエンドポイントを追加した場合、既定のエンドポイントを削除することはできません。
-> 
-> 
 
-## <a name="adding-an-endpoint-programmatically"></a>プログラムを使用してエンドポイントを追加する
-プログラムによって Web サービスにエンドポイントを追加するには、[AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) サンプル コードを使用します。
-
-## <a name="adding-an-endpoint-using-the-azure-machine-learning-web-services-portal"></a>Azure Machine Learning Web サービス ポータルを使用してエンドポイントを追加する
 1. Machine Learning Studio の左側のナビゲーション列で [Web サービス] をクリックします。
-2. Web サービス ダッシュボードの下部で、**[Manage endpoints (エンドポイントの管理)]** をクリックします。 Azure Machine Learning Web サービス ポータルが Web サービスのエンドポイント ページに表示されます。
+2. Web サービス ダッシュボードの下部で、**[Manage endpoints]\(エンドポイントの管理\)** をクリックします。 Azure Machine Learning Web サービス ポータルが Web サービスのエンドポイント ページに表示されます。
 3. **[新規]** をクリックします。
-4. 新しいエンドポイントの名前と説明を入力します。 エンドポイントの名前は、長さが 24 文字以内で、小文字のアルファベットまたは数字で構成されている必要があります。 ログ レベルとサンプル データが有効になっているかどうかを選択します。 ログ記録の詳細については、「[Machine Learning Web サービスのログ記録の有効化](web-services-logging.md)」をご覧ください。
+4. 新しいエンドポイントの名前と説明を入力します。 エンドポイントの名前は、長さが 24 文字以内で、小文字のアルファベットまたは数字で構成されている必要があります。 ログ レベルとサンプル データが有効になっているかどうかを選択します。 詳細については、「 [Machine Learning Web サービスのログ記録の有効化](web-services-logging.md)」を参照してください。
+
+## <a id="scaling"></a> 新しいエンドポイントを追加して Web サービスをスケーリングする
+
+既定では、発行される Web サービスはそれぞれ、20 件の同時実行要求をサポートするように構成されますが、200 件までの同時実行要求をサポートするように構成できます。 Azure Machine Learning Studio では、Web サービスで最大限のパフォーマンスを実現するために、設定が自動的に最適化され、ポータルの値は無視されます。
+
+同時呼び出しの最大数 200 件でサポートされる内容を上回る負荷の API を呼び出す場合は、同じ Web サービスに複数のエンドポイントを作成する必要があります。 その後、それら全体に負荷を無作為に分配できます。
+
+Web サービスのスケーリングは一般的なタスクです。 スケーリングの理由としてあげられるのは、200 件を越える同時要求のサポート、複数のエンドポイントによる可用性の向上、または Web サービス用の個別エンドポイントの提供です。 スケールを大きくするには、次の図に示すように [Azure Machine Learning Web サービス](https://services.azureml.net/) ポータルから同じ Web サービスに追加のエンドポイントを追加します。
+
+コンカレンシーの数を増やす場合、これに相当する高いレートで API を呼び出さないと悪影響が出ることがありますのでご注意ください。 高い負荷で構成された API に比較的低い負荷を割り当てた場合、不規則なタイムアウトや待機時間の急増が発生することがあります。
+
+同期 API は通常、短い待機時間が望まれる状況で使用されます。 ここでの待機時間とは、API が 1 つの要求を完了するのにかかる時間を指し、ネットワークの遅延に影響しないものです。 たとえば待機時間が 50 ms の API があるとします。 スロットル レベル "高" で同時呼び出しの最大数が 20 件のときに使用可能な容量をすべて使用するには、この API を 1 秒あたり 20 × 1000 / 50 = 400 回呼び出す必要があります。 さらに増やして、同時呼び出しの最大数 200 件にすると、API を 1 秒あたり 4,000 回呼び出すことができ、この場合の待機時間は 50 ms と想定されます。
 
 ## <a name="next-steps"></a>次の手順
-[Azure Machine Learning Web サービスを使用する方法](consume-web-services.md)。
 
+[Azure Machine Learning Web サービスを使用する方法](consume-web-services.md)

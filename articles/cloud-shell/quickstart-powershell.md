@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: damaerte
-ms.openlocfilehash: 65531b5507f9e3af3a9666074d9dcd9b7ee20271
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 1fc9883e0ea35c384c3bfc83e76b8eded48cbcba
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231187"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58905071"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell の PowerShell のクイックスタート
 
@@ -28,15 +28,17 @@ ms.locfileid: "50231187"
 > [!NOTE]
 > [Azure Cloud Shell の Bash](quickstart.md) のクイックスタートもあります。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="start-cloud-shell"></a>Cloud Shell の起動
 
 1. Azure Portal 上部のナビゲーションの **[Cloud Shell]** ボタンをクリックします
 
-  ![](media/quickstart-powershell/shell-icon.png)
+   ![](media/quickstart-powershell/shell-icon.png)
 
 2. ドロップダウンで PowerShell 環境を選ぶと、Azure ドライブ `(Azure:)` になります
 
-  ![](media/quickstart-powershell/environment-ps.png)
+   ![](media/quickstart-powershell/environment-ps.png)
 
 ## <a name="run-powershell-commands"></a>PowerShell コマンドを実行する
 
@@ -48,7 +50,7 @@ PS Azure:\> Get-Date
 # Expected Output
 Friday, July 27, 2018 7:08:48 AM
 
-PS Azure:\> Get-AzureRmVM -Status
+PS Azure:\> Get-AzVM -Status
 
 # Expected Output
 ResourceGroupName       Name       Location                VmSize   OsType     ProvisioningState  PowerState
@@ -103,7 +105,7 @@ PS Azure:\MySubscriptionName> dir AllResources
 
  `ResourceGroups` ディレクトリに移動し、特定のリソース グループ内で仮想マシンを検索できます。
 
-```azureowershell-interactive
+```azurepowershell-interactive
 PS Azure:\MySubscriptionName> cd ResourceGroups\MyResourceGroup1\Microsoft.Compute\virtualMachines
 
 PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup1\Microsoft.Compute\virtualMachines> dir
@@ -127,7 +129,7 @@ TestVm2   westus     Succeeded         Standard_DS1_v2 WindowsServer 2016-Datace
 
 `StorageAccounts` ディレクトリに入ることで、ストレージ リソース間を簡単に移動することができます。
 
-```azureowershell-interactive
+```azurepowershell-interactive
 PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files> dir
 
     Directory: Azure:\MySubscriptionNameStorageAccounts\MyStorageAccountName\Files
@@ -238,7 +240,7 @@ mywebapp2       Running  MyResourceGroup2   {mywebapp2.azurewebsites.net...   We
 mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   South Central US
 
 # You can use Azure cmdlets to Start/Stop your web apps
-PS Azure:\MySubscriptionName\WebApps> Start-AzureRmWebApp -Name mywebapp1 -ResourceGroupName MyResourceGroup1
+PS Azure:\MySubscriptionName\WebApps> Start-AzWebApp -Name mywebapp1 -ResourceGroupName MyResourceGroup1
 
 Name           State    ResourceGroup        EnabledHostNames                   Location
 ----           -----    -------------        ----------------                   --------
@@ -265,8 +267,8 @@ SSH を使ってサーバーまたは VM に対する認証を行うには、Clo
 
 ### <a name="using-ssh"></a>SSH の使用
 
-[こちら](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)の説明に従い、AzureRM コマンドレットを使って新しい VM 構成を作成します。
-`New-AzureRmVM` を呼び出してデプロイを始める前に、SSH 公開キーを VM の構成に追加します。
+[こちら](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)の説明に従い、Azure PowerShell コマンドレットを使って新しい VM 構成を作成します。
+`New-AzVM` を呼び出してデプロイを始める前に、SSH 公開キーを VM の構成に追加します。
 新しく作成される VM には `~\.ssh\authorized_keys` にある公開キーが含まれ、それにより VM への資格情報不要の SSH セッションが有効になります。
 
 ```azurepowershell-interactive
@@ -277,10 +279,10 @@ ssh-keygen -t rsa -b 2048 -f $HOME\.ssh\id_rsa
 
 # Ensure VM config is updated with SSH keys
 $sshPublicKey = Get-Content "$HOME\.ssh\id_rsa.pub"
-Add-AzureRmVMSshPublicKey -VM $vmConfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
+Add-AzVMSshPublicKey -VM $vmConfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 
 # Create a virtual machine
-New-AzureRmVM -ResourceGroupName <yourResourceGroup> -Location <vmLocation> -VM $vmConfig
+New-AzVM -ResourceGroupName <yourResourceGroup> -Location <vmLocation> -VM $vmConfig
 
 # SSH to the VM
 ssh azureuser@MyVM.Domain.Com
@@ -288,9 +290,9 @@ ssh azureuser@MyVM.Domain.Com
 
 ## <a name="list-available-commands"></a>使用可能なコマンドを一覧表示する
 
-`Azure` ドライブで、「`Get-AzureRmCommand`」と入力してコンテキスト固有の Azure コマンドを取得します。
+`Azure` ドライブで、「`Get-AzCommand`」と入力してコンテキスト固有の Azure コマンドを取得します。
 
-または、`Get-Command *azurerm* -Module AzureRM.*` を使うと、使用できる Azure コマンドをいつでも検索できます。
+または、`Get-Command *az* -Module Az.*` を使うと、使用できる Azure コマンドをいつでも検索できます。
 
 ## <a name="install-custom-modules"></a>カスタム モジュールをインストールする
 
@@ -307,7 +309,7 @@ Get-Help
 特定のコマンドの場合は、`Get-Help` の後にコマンドレットを指定します。
 
 ```azurepowershell-interactive
-Get-Help Get-AzureRmVM
+Get-Help Get-AzVM
 ```
 
 ## <a name="use-azure-files-to-store-your-data"></a>Azure Files を使ってデータを保存する

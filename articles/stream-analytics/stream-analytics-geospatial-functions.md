@@ -4,17 +4,16 @@ description: この記事では、Azure Stream Analytics ジョブで使用さ�
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/04/2018
-ms.openlocfilehash: 02d1f551c7ec2856bbfce65c5397f454f6b9d5be
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 12/06/2018
+ms.openlocfilehash: ad789a597da759b9a2d58138c7ed441389a12adb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43703337"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103134"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Stream Analytics 地理空間関数の概要
 
@@ -28,7 +27,7 @@ Azure Stream Analytics の地理空間関数は、地理空間データのスト
 * ジオフェンス
 * セル サイト間での電話の追跡
 
-Stream Analytics クエリ言語には、組み込みの地理空間関数が 7 つ (**CreateLineString**、**CreatePoint**、**CreatePolygon**、**ST_DISTANCE**、**ST_OVERLAPS**、**ST_INTERSECTS**、**ST_WITHIN**) あります。
+Stream Analytics クエリ言語には、組み込みの地理空間関数が 7 つあります(**CreateLineString**、**CreatePoint**、**CreatePolygon**、**ST_DISTANCE**、**ST_OVERLAPS**、**ST_INTERSECTS**、**ST_WITHIN**)。
 
 ## <a name="createlinestring"></a>CreateLineString
 
@@ -51,9 +50,9 @@ FROM input
   
 ### <a name="output-example"></a>出力例  
 
- {"type" : "LineString", "coordinates" : [ [-10.2, 3.0], [10.0, 10.0], [10.5, 10.5] ]}
+ {"type" :"LineString", "coordinates" : [ [-10.2, 3.0], [10.0, 10.0], [10.5, 10.5] ]}
 
- {"type" : "LineString", "coordinates" : [ [20.2321, -87.33], [10.0, 10.0], [10.5, 10.5] ]}
+ {"type" :"LineString", "coordinates" : [ [20.2321, -87.33], [10.0, 10.0], [10.5, 10.5] ]}
 
 詳しくは、[CreateLineString](https://msdn.microsoft.com/azure/stream-analytics/reference/createlinestring) のリファレンスをご覧ください。
 
@@ -78,9 +77,9 @@ FROM input
   
 ### <a name="output-example"></a>出力例
   
- {"type" : "Point", "coordinates" : [-10.2, 3.0]}  
+ {"type" :"Point", "coordinates" : [-10.2, 3.0]}  
   
- {"type" : "Point", "coordinates" : [20.2321, -87.33]}  
+ {"type" :"Point", "coordinates" : [20.2321, -87.33]}  
 
 詳しくは、[CreatePoint](https://msdn.microsoft.com/azure/stream-analytics/reference/createpoint) のリファレンスをご覧ください。
 
@@ -105,9 +104,9 @@ FROM input
   
 ### <a name="output-example"></a>出力例  
 
- {"type" : "Polygon", "coordinates" : [[ [-10.2, 3.0], [10.0, 10.0], [10.5, 10.5], [-10.2, 3.0] ]]}
+ {"type" :"Polygon", "coordinates" : [[ [-10.2, 3.0], [10.0, 10.0], [10.5, 10.5], [-10.2, 3.0] ]]}
  
- {"type" : "Polygon", "coordinates" : [[ [20.2321, -87.33], [10.0, 10.0], [10.5, 10.5], [20.2321, -87.33] ]]}
+ {"type" :"Polygon", "coordinates" : [[ [20.2321, -87.33], [10.0, 10.0], [10.5, 10.5], [20.2321, -87.33] ]]}
 
 詳しくは、[CreatePolygon](https://msdn.microsoft.com/azure/stream-analytics/reference/createpolygon) のリファレンスをご覧ください。
 

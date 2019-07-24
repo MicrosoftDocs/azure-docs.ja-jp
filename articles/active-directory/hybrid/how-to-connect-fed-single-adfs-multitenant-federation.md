@@ -5,23 +5,24 @@ keywords: フェデレーション, ADFS, AD FS, 複数のテナント, 単一�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 07/17/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: afc24d75b128c192efe14af061ac1df7521c7ef2
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 620255896e02319675928396c3d6e5e0d9865c0c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621263"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181730"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>複数の Azure AD インスタンスと単一の AD FS インスタンスとのフェデレーション
 
@@ -39,23 +40,23 @@ ms.locfileid: "51621263"
 
 Azure Active Directory contoso.onmicrosoft.com 内のドメイン contoso.com が、オンプレミス Active Directory 環境の contoso.com にインストールされたオンプレミスの AD FS と既に認証連携しているとします。 fabrikam.com は、fabrikam.onmicrosoft.com という Azure Active Directory 内のドメインです。
 
-## <a name="step-1-establish-a-two-way-trust"></a>手順 1: 双方向の信頼を確立する
+## <a name="step-1-establish-a-two-way-trust"></a>手順 1:双方向の信頼を確立する
  
 contoso.com の AD FS が fabrikam.com 内のユーザーを認証するためには、contoso.com と fabrikam.com との間に双方向の信頼が必要です。 [こちらの記事](https://technet.microsoft.com/library/cc816590.aspx)のガイドラインに従って双方向の信頼を作成してください。
  
-## <a name="step-2-modify-contosocom-federation-settings"></a>手順 2: contoso.com のフェデレーション設定を編集する 
+## <a name="step-2-modify-contosocom-federation-settings"></a>手順 2:contoso.com のフェデレーション設定を編集する 
  
-AD FS との間で認証連携された単一ドメインに使用される既定の発行者設定は "http://ADFSServiceFQDN/adfs/services/trust" です (例: "http://fs.contoso.com/adfs/services/trust")。 Azure Active Directory では、認証連携させるドメインごとに固有の発行者が必要となります。 同じ AD FS で 2 つのドメインのフェデレーションを行うことになるので、発行者の値は、Azure Active Directory との間で認証連携させるドメインごとに固有となるように編集する必要があります。 
+AD FS との間で認証連携された単一ドメインに使用される既定の発行者設定は "http\://ADFSServiceFQDN/adfs/services/trust" です (例: `http://fs.contoso.com/adfs/services/trust`)。 Azure Active Directory では、認証連携させるドメインごとに固有の発行者が必要となります。 同じ AD FS で 2 つのドメインのフェデレーションを行うことになるので、発行者の値は、Azure Active Directory との間で認証連携させるドメインごとに固有となるように編集する必要があります。 
  
 AD FS サーバーで Azure AD PowerShell (MSOnline モジュールがインストールされていることを確認) を開いて、次の手順を実行します。
  
 ドメイン contoso.com を含んだ Azure Active Directory に接続 (Connect-MsolService) し、contoso.com のフェデレーション設定を更新します (Update-MsolFederatedDomain -DomainName contoso.com –SupportMultipleDomain)。
  
-ドメイン フェデレーションの発行者設定が "http://contoso.com/adfs/services/trust" に変更され、Azure AD の証明書利用者信頼によって UPN サフィックスに基づく正しい issuerId 値が発行されるよう、発行要求規則が追加されます。
+ドメイン フェデレーションの発行者設定が "http\://contoso.com/adfs/services/trust" に変更され、Azure AD の証明書利用者信頼によって UPN サフィックスに基づく正しい issuerId 値が発行されるよう、発行要求規則が追加されます。
  
-## <a name="step-3-federate-fabrikamcom-with-ad-fs"></a>手順 3: fabrikam.com と AD FS とを認証連携させる
+## <a name="step-3-federate-fabrikamcom-with-ad-fs"></a>手順 3:fabrikam.com と AD FS とを認証連携させる
  
-Azure AD PowerShell セッションで、次の手順を実行します。まず、ドメイン fabrikam.com を含んだ Azure Active Directory に接続します。
+Azure AD powershell セッションで、次の手順を実行します。fabrikam.com ドメインを含む Azure Active Directory に接続します
 
     Connect-MsolService
 fabrikam.com のマネージド ドメインをフェデレーション ドメインに変換します。

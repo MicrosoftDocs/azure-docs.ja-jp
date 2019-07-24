@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: f9429e88525e27c0b6bad29d1927d53d05dfbcc8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3dbf0aea50f382a0b325bf068a200cde42098733
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33765366"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547597"
 ---
 # <a name="using-azure-cdn-with-cors"></a>CORS を利用した Azure CDN の使用
 ## <a name="what-is-cors"></a>CORS とは
-CORS (クロス オリジン リソース共有) は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。 クロスサイト スクリプティング攻撃の可能性を低減させるために、すべての最新の Web ブラウザーには [同一オリジン ポリシー](http://www.w3.org/Security/wiki/Same_Origin_Policy)と呼ばれるセキュリティ制限が実装されています。  これにより、Web ページは他のドメイン内の API を呼び出すことができません。  CORS を使用すれば、あるオリジン (オリジン ドメイン) から他のオリジン内の API を安全に呼び出すことができます。
+CORS (クロス オリジン リソース共有) は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。 クロスサイト スクリプティング攻撃の可能性を低減させるために、すべての最新の Web ブラウザーには [同一オリジン ポリシー](https://www.w3.org/Security/wiki/Same_Origin_Policy)と呼ばれるセキュリティ制限が実装されています。  これにより、Web ページは他のドメイン内の API を呼び出すことができません。  CORS を使用すれば、あるオリジン (オリジン ドメイン) から他のオリジン内の API を安全に呼び出すことができます。
 
 ## <a name="how-it-works"></a>動作のしくみ
 CORS 要求には、"*簡単な要求*" と "*複雑な要求*" の 2 種類があります。
@@ -32,7 +32,7 @@ CORS 要求には、"*簡単な要求*" と "*複雑な要求*" の 2 種類が�
 
 1. ブラウザーが、追加 **Origin** HTTP 要求ヘッダーを含む CORS 要求を送信します。 このヘッダーの値は、親ページを提供したオリジンで、"*プロトコル*"、"*ドメイン*"、および "*ポート*" の組み合わせとして定義されます。  https://www.contoso.com のページが fabrikam.com オリジン内のユーザーのデータにアクセスしようとすると、fabrikam.com に次の要求ヘッダーが送信されます。
 
-   `Origin: https://www.contoso.com`
+   `Origin: https:\//www.contoso.com`
 
 2. サーバーからは次のいずれかの応答が返される場合があります。
 
@@ -76,7 +76,7 @@ CORS でオリジンが設定される前に CDN に対し要求が行われて�
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
 
 > [!TIP]
-> **Azure CDN Premium from Verizon** では、正規表現を作成するエンジンとして [Perl Compatible Regular Expressions](http://pcre.org/) を使用します。  正規表現を検証するには、[Regular Expressions 101](https://regex101.com/) などのツールを使用できます。  スラッシュ (/) は正規表現で有効であり、エスケープする必要はありません。ただし、この文字のエスケープはベスト プラクティスだと考えられており、一部の正規表現検証ツールではエスケープするよう想定されていることに注意してください。
+> **Azure CDN Premium from Verizon** では、正規表現を作成するエンジンとして [Perl Compatible Regular Expressions](https://pcre.org/) を使用します。  正規表現を検証するには、[Regular Expressions 101](https://regex101.com/) などのツールを使用できます。  スラッシュ (/) は正規表現で有効であり、エスケープする必要はありません。ただし、この文字のエスケープはベスト プラクティスだと考えられており、一部の正規表現検証ツールではエスケープするよう想定されていることに注意してください。
 > 
 > 
 
@@ -85,7 +85,7 @@ CORS でオリジンが設定される前に CDN に対し要求が行われて�
 ![Rules example with regular expression](./media/cdn-cors/cdn-cors-regex.png)
 
 #### <a name="request-header-rule-for-each-origin"></a>オリジンごとの要求ヘッダー ルール
-正規表現を使用するのではなく、許可するオリジンごとに個別のルールを作成することもできます。この場合、**Request Header Wildcard (要求ヘッダーのワイルドカード)** [一致条件](https://msdn.microsoft.com/library/mt757336.aspx#Anchor_1)を使用します。 正規表現の方法と同様に、ルール エンジンは単独で CORS ヘッダーを設定します。 
+正規表現を使用するのではなく、許可するオリジンごとに個別のルールを作成することもできます。この場合、**Request Header Wildcard (要求ヘッダーのワイルドカード)** [一致条件](/previous-versions/azure/mt757336(v=azure.100)#Anchor_1)を使用します。 正規表現の方法と同様に、ルール エンジンは単独で CORS ヘッダーを設定します。 
 
 ![Rules example without regular expression](./media/cdn-cors/cdn-cors-no-regex.png)
 

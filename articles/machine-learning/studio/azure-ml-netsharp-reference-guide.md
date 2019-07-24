@@ -1,86 +1,81 @@
 ---
-title: Net# ニューラル ネットワーク仕様言語ガイド - Azure Machine Learning | Microsoft Docs
-description: Net# ニューラル ネットワーク仕様言語の構文と、Net# を使用してカスタム ニューラル ネットワーク モデルを作成する方法の例
+title: Net# によるカスタム ニューラル ネットワークの作成
+titleSuffix: Azure Machine Learning Studio
+description: Net# ニューラル ネットワーク仕様言語の構文ガイド。 Azure Machine Learning Studio でカスタム ニューラル ネットワーク モデルを作成する方法について説明します。
 services: machine-learning
-documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
-editor: cgronlun
-ms.assetid: cfd1454b-47df-4745-b064-ce5f9b3be303
 ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: studio
 ms.topic: reference
+author: xiaoharper
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 8a96cfdedcde9b4037627f3e61af862c0600ca20
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c352100392a5bf7b590b27b9448f7f37fb105fbe
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258479"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58886099"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>Azure Machine Learning のための Net# ニューラル ネットワーク仕様言語について
+# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio での Net# ニューラル ネットワーク仕様言語について
 
-Net# は、Microsoft が開発した言語で、ニューラル ネットワーク アーキテクチャを定義するために使用されます。 ニューラル ネットワークの構造を定義するために Net# を使用することで、ディープ ニューラル ネットワークや任意次元の畳み込みなどの複雑な構造を定義することが可能になり、これが画像、音声、映像などのデータを使用する学習に役立つことが知られています。
+Net# は、ディープ ニューラル ネットワークや任意次元の畳み込みなどの複雑なニューラル ネットワーク アーキテクチャを定義するために使用される、Microsoft が開発した言語です。 複雑な構造体を使用して、イメージ、ビデオ、オーディオなどのデータに関する学習を強化できます。
 
 次のコンテキストで Net # アーキテクチャの仕様をご利用いただけます。
 
-+ Microsoft Azure Machine Learning Studio のすべてのニューラル ネットワーク モジュール: [多クラス ニューラル ネットワーク](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)、[2 クラス ニューラル ネットワーク](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)、および[ニューラル ネットワーク回帰](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ MicrosoftML のニューラル ネットワーク関数: R 言語用の [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) と [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)、および Python 用の [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network)。
++ Microsoft Azure Machine Learning Studio のすべてのニューラル ネットワーク モジュール:[多クラス ニューラル ネットワーク](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)、[2 クラス ニューラル ネットワーク](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)、および[ニューラル ネットワーク回帰](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
++ Microsoft ML Server のニューラル ネットワーク関数: R 言語用の [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) と [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)、および Python 用の [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network)。
 
 
-この記事では、Net# でのカスタム ニューラル ネットワーク開発に必要な基本概念と構文について説明します。 
+この記事では、Net# でのカスタム ニューラル ネットワーク開発に必要な基本概念と構文について説明します。
 
 + ニューラル ネットワークの前提条件と主なコンポーネントの定義方法
 + Net# 仕様言語の構文とキーワード
-+ Net# を使用したカスタム ニューラル ネットワークの例 
++ Net# を使用したカスタム ニューラル ネットワークの例
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="neural-network-basics"></a>ニューラル ネットワークの基本
 
-ニューラル ネットワーク構造は、いくつかのレイヤーに編成されたノードによって構成され、各ノード間には、重みが付けられた結合 (またはエッジ) があります。 結合にはそれぞれ方向があり、結合ごとにソース ノードと宛先ノードを持ちます。  
+ニューラル ネットワーク構造は、いくつかのレイヤーに編成されたノードによって構成され、各ノード間には、重みが付けられた結合 (またはエッジ) があります。 結合にはそれぞれ方向があり、結合ごとにソース ノードと宛先ノードを持ちます。
 
-それぞれのトレーニング可能レイヤー (非表示レイヤーまたは出力レイヤー) には 1 つ以上の**結合バンドル**があります。 結合バンドルは、ソース層と、そのソース層からの結合の仕様で構成されています。 指定のバンドルでは、すべての結合が同じソース レイヤーと同じ宛先レイヤーを共有します。 Net# では、結合バンドルはバンドルの宛先層に属すると見なされます。
+それぞれのトレーニング可能レイヤー (非表示レイヤーまたは出力レイヤー) には 1 つ以上の**結合バンドル**があります。 結合バンドルは、ソース層と、そのソース層からの結合の仕様で構成されています。 特定のバンドル内では、すべての結合がソース レイヤーと宛先レイヤーを共有します。 Net# では、結合バンドルはバンドルの宛先層に属すると見なされます。
 
-Net# は、隠れ層や出力への入力のマッピング方法をカスタマイズできる、さまざまな種類の結合バンドルをサポートします。
+Net# では、さまざまな種類の結合バンドルがサポートされていて、入力がどのように非表示レイヤーや出力にマップされるかをカスタマイズできます。
 
 既定つまり標準のバンドルは、**フル バンドル**です。このバンドルでは、ソース層の各ノードが宛先層のすべてのノードに結合します。
 
 これに加えて、Net# は以下の 4 種類の詳細な結合バンドルをサポートします。
 
-+ **フィルター バンドル**。 ユーザーは、ソース層ノードと宛先層ノードの場所を使用して述語を定義できます。 述語が True の場合は常にノードが結合されます。
++ **フィルター バンドル**。 ソース レイヤー ノードと宛先レイヤー ノードの場所を使用すると、述語を定義できます。 述語が True の場合は常にノードが結合されます。
 
-+ **畳み込みバンドル**。 ユーザーはソース層の少数の隣接ノードを定義できます。 宛先層の各ノードは、ソース層の隣接ノードの 1 つに結合します。
++ **畳み込みバンドル**。 ソース レイヤーには、少数の隣接ノードを定義できます。 宛先層の各ノードは、ソース層の隣接ノードの 1 つに結合します。
 
 + **プーリング バンドル**および**応答正規化バンドル**。 これは、ユーザーがソース層の少数の隣接ノードを定義するという点で畳み込みバンドルと似ています。 違いは、これらのバンドルのエッジの重みがトレーニング可能でないことです。 代わりに、定義済みの関数がソース ノード値に適用され、宛先ノードの値を判断します。
 
 
 ## <a name="supported-customizations"></a>サポートされるカスタマイズ
 
-Azure Machine Learning で作成するニューラル ネットワーク モデルのアーキテクチャを使用すると、Net# で高度なカスタマイズができます。 次のようにすることができます。
+Azure Machine Learning Studio で作成するニューラル ネットワーク モデルのアーキテクチャは、Net# を使用して高度にカスタマイズできます。 次のようにすることができます。
 
 + 隠れ層を作成し、各層のノード数を管理する。
 + 層間の結合方法を指定する。
 + 畳み込みや重み共有バンドルなどの特殊な結合性の構造を定義する。
 + 複数のアクティブ化関数を指定する。
 
-仕様言語の構文の詳細については、「[構造の仕様](#Structure-specifications)」をご覧ください。  
+仕様言語の構文の詳細については、「[構造の仕様](#structure-specifications)」をご覧ください。
 
-一般的な機械学習タスク用にニューラル ネットワークを定義する単純または複雑な例については、「[例](#Examples-of-Net#-usage)」をご覧ください。
+一般的な機械学習タスク用にニューラル ネットワークを定義する単純または複雑な例については、「[例](#examples-of-net-usage)」をご覧ください。
 
 ## <a name="general-requirements"></a>一般的な要件
 
-+ 厳密に 1 つの出力層、少なくとも 1 つの入力層、およびゼロかそれ以上の隠れ層がなければなりません。 
-+ 各層には固定された数のノードが含まれ、これらのノードは概念的には任意の次元を長方形配列に格納したものです。 
-+ 入力層には関連付けられているトレーニング済みのパラメーターはなく、インスタンス データがネットワークに入る点を表します。 
-+ トレーニング可能な層 (隠れ層と出力層) には、重みおよびバイアスと呼ばれるトレーニング済みパラメーターが関連付けられています。 
-+ ソース ノードと宛先ノードは別々の層になければなりません。 
++ 厳密に 1 つの出力層、少なくとも 1 つの入力層、およびゼロかそれ以上の隠れ層がなければなりません。
++ 各層には固定された数のノードが含まれ、これらのノードは概念的には任意の次元を長方形配列に格納したものです。
++ 入力層には関連付けられているトレーニング済みのパラメーターはなく、インスタンス データがネットワークに入る点を表します。
++ トレーニング可能な層 (隠れ層と出力層) には、重みおよびバイアスと呼ばれるトレーニング済みパラメーターが関連付けられています。
++ ソース ノードと宛先ノードは別々の層になければなりません。
 + 結合は非循環でなければなりません。つまり、最初のソース ノードに戻る環状の結合が存在することはできません。
-+ 結合バンドルのソース層を出力層にすることはできません。  
++ 結合バンドルのソース層を出力層にすることはできません。
 
 ## <a name="structure-specifications"></a>構造の仕様
 
@@ -90,7 +85,7 @@ Azure Machine Learning で作成するニューラル ネットワーク モデ�
 
 定数宣言は省略可能です。 これは、ニューラル ネットワーク定義内で使用する値を定義する手段を提供します。 宣言のステートメントは、識別子とそれに続く等号、および値の式で構成されています。
 
-たとえば、次のステートメントは `x` 定数を定義します。  
+たとえば、次のステートメントは `x` 定数を定義します。
 
 `Const X = 28;`
 
@@ -109,7 +104,7 @@ Azure Machine Learning で作成するニューラル ネットワーク モデ�
 ```Net#
 input Data auto;
 hidden Hidden[5,20] from Data all;
-output Result[2] from Hidden all;  
+output Result[2] from Hidden all;
 ```
 
 + 次元を乗算すると、層内のノード数になります。 この例では、[5,20] という 2 つの次元があり、これは、層内に 100 個のノードがあることを意味します。
@@ -126,7 +121,7 @@ output Result[2] from Hidden all;
 ```Net#
 input Data auto;
 hidden Hidden auto from Data all;
-output Result auto from Hidden all;  
+output Result auto from Hidden all;
 ```
 
 トレーニング可能な層 (隠れ層または出力層) の宣言では、分類モデルの場合は既定が **sigmoid** で、回帰モデルの場合は **linear** の出力関数 (アクティブ化関数とも呼ばれる) をオプションで含めることができます。 既定を使用する場合でも、わかりやすくするのであれば、アクティブ化関数を明示的に指定できます。
@@ -171,10 +166,10 @@ output Result auto from Hidden all;
 ```Net#
 input Pixels [10, 20];
 hidden ByRow[10, 12] from Pixels where (s,d) => s[0] == d[0];
-hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;  
+hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 ```
 
-+ `ByRow` の述語で、`s` は、入力レイヤー `Pixels` のノードの長方形配列に対するインデックスを表すパラメーターです。また、`d` は、非表示レイヤー `ByRow` のノードの配列に対するインデックスを表すパラメーターです。 `s` と `d` の両方の型は、長さ 2 の整数のタプルです。 概念的に、`s` の範囲は `0 <= s[0] < 10` および `0 <= s[1] < 20` である整数のすべてのペア、`d` の範囲は `0 <= d[0] < 10` および `0 <= d[1] < 12` である整数のすべてのペアです。 
++ `ByRow` の述語で、`s` は、入力レイヤー `Pixels` のノードの長方形配列に対するインデックスを表すパラメーターです。また、`d` は、非表示レイヤー `ByRow` のノードの配列に対するインデックスを表すパラメーターです。 `s` と `d` の両方の型は、長さ 2 の整数のタプルです。 概念的に、`s` の範囲は `0 <= s[0] < 10` および `0 <= s[1] < 20` である整数のすべてのペア、`d` の範囲は `0 <= d[0] < 10` および `0 <= d[1] < 12` である整数のすべてのペアです。
 
 + 述語式の右側に条件があります。 この例では、`s` および `d` のすべての値について条件が True であり、ソース レイヤー ノードと宛先レイヤー ノードの間にエッジが存在します。 したがって、このフィルター式は、s[0] および d[0] が等しいすべての場合において、バンドルの `s` で定義されたノードと `d` で定義されたノードの間に、結合が含まれることを示します。
 
@@ -188,58 +183,57 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
 ## <a name="convolutional-bundles"></a>畳み込みバンドル
 
-トレーニング データが同質な構造を持つ場合、データの高レベル機能を学習するためには、一般に、畳み込み結合が使用されます。 たとえば、画像、音声、映像のデータでは、空間的または時間的なディメンショナリティがかなり均一です。  
+トレーニング データが同質な構造を持つ場合、データの高レベル機能を学習するためには、一般に、畳み込み結合が使用されます。 たとえば、画像、音声、映像のデータでは、空間的または時間的なディメンショナリティがかなり均一です。
 
-畳み込みバンドルでは、次元間をスライドする四角形の**カーネル**を採用しています。 本質的に、各カーネルは、局所的な隣接点に適用される重みのセットを定義し、これらは**カーネル アプリケーション**と呼ばれます。 ソース層のノードに対応するそれぞれのカーネル アプリケーションは**中央ノード**と呼ばれます。 カーネルの重みは多くの結合で共有されます。 畳み込みバンドルでは、各カーネルは四角形ですべてのカーネル アプリケーションは同一サイズです。  
+畳み込みバンドルでは、次元間をスライドする四角形の**カーネル**を採用しています。 本質的に、各カーネルは、局所的な隣接点に適用される重みのセットを定義し、これらは**カーネル アプリケーション**と呼ばれます。 ソース層のノードに対応するそれぞれのカーネル アプリケーションは**中央ノード**と呼ばれます。 カーネルの重みは多くの結合で共有されます。 畳み込みバンドルでは、各カーネルは四角形ですべてのカーネル アプリケーションは同一サイズです。
 
 畳み込みバンドルは、以下の属性をサポートします。
 
 **InputShape** は、この畳み込みバンドル用に、ソース層のディメンショナリティを定義します。 値は正の整数のタプルとする必要があります。 整数を乗算した数値はソース層内のノード数と一致している必要がありますが、それ以外はソース層で宣言されたディメンショナリティと一致する必要はありません。 このタプルの長さは、畳み込みバンドルの**アリティ**値になります 通常、アリティとは、関数が取ることができる引数またはオペランドの数を指します。
 
-カーネルの形状と場所を定義するには、以下のように、属性 **KernelShape**、**Stride**、**Padding**、**LowerPad**、**UpperPad** を使用します。   
+カーネルの形状と場所を定義するには、以下のように、属性 **KernelShape**、**Stride**、**Padding**、**LowerPad**、**UpperPad** を使用します。
 
-+ **KernelShape**: (必須) 畳み込みバンドルのカーネルごとにディメンショナリティを定義します。 値は、長さ、バンドルのアリティに相当する正の整数のタプルにする必要があります。 このタプルの各要素の値は、**InputShape** の対応する要素の値以下とする必要があります。 
++ **KernelShape**: (必須) 畳み込みバンドルのカーネルごとにディメンショナリティを定義します。 値は、長さ、バンドルのアリティに相当する正の整数のタプルにする必要があります。 このタプルの各要素の値は、**InputShape** の対応する要素の値以下とする必要があります。
 
-+ **Stride**: (オプション) 畳み込みのスライディング ステップ サイズ (次元ごとに 1 つのステップ サイズ) を定義します。これは、中央ノード間の距離です。 値は、長さ、バンドルのアリティに相当する正の整数のタプルにする必要があります。 このタプルの各要素の値は、**KernelShape** の対応する要素の値以下とする必要があります。 既定値は、すべての要素が 1 に等しいタプルです。 
++ **Stride**: (オプション) 畳み込みのスライディング ステップ サイズ (次元ごとに 1 つのステップ サイズ) を定義します。これは、中央ノード間の距離です。 値は、長さ、バンドルのアリティに相当する正の整数のタプルにする必要があります。 このタプルの各要素の値は、**KernelShape** の対応する要素の値以下とする必要があります。 既定値は、すべての要素が 1 に等しいタプルです。
 
-+ **Sharing**: (オプション) 畳み込みの各次元で共有する重みを定義します。 値としては、単一のブール値、またはバンドルのアリティを長さとするブール値のタプルが可能です。 単一のブール値は、すべての要素が指定された値に等しい、正しい長さのタプルに拡張されます。 既定値は、すべての値が True であるタプルです。 
++ **Sharing**: (オプション) 畳み込みの各次元で共有する重みを定義します。 値としては、単一のブール値、またはバンドルのアリティを長さとするブール値のタプルが可能です。 単一のブール値は、すべての要素が指定された値に等しい、正しい長さのタプルに拡張されます。 既定値は、すべての値が True であるタプルです。
 
-+ **MapCount**: (オプション) 畳み込みバンドルの機能マップの数を定義します。 値としては、単一の正の整数、またはバンドルのアリティを長さとする正の整数のタプルが可能です。 単一の整数値は、最初の要素が指定された値に等しく、残りのすべての要素が 1 に等しい、正しい長さのタプルに拡張されます。 既定値は 1 です。 機能マップの合計数は、タプルの要素を乗算した数です。 この合計数を要素ごとに因数分解することにより、宛先ノードでの機能マップ値のグループ化の方法が決定されます。 
++ **MapCount**: (オプション) 畳み込みバンドルの機能マップの数を定義します。 値としては、単一の正の整数、またはバンドルのアリティを長さとする正の整数のタプルが可能です。 単一の整数値は、最初の要素が指定された値に等しく、残りのすべての要素が 1 に等しい、正しい長さのタプルに拡張されます。 既定値は 1 です。 機能マップの合計数は、タプルの要素を乗算した数です。 この合計数を要素ごとに因数分解することにより、宛先ノードでの機能マップ値のグループ化の方法が決定されます。
 
-+ **Weights**: (オプション) バンドルの最初の重みを定義します。 値は、下記の定義のように、カーネル数にカーネルあたりの重みの数を乗算した結果を長さとする、浮動小数点値のタプルです。 既定の重みは無作為に生成されます。  
++ **Weights**: (オプション) バンドルの最初の重みを定義します。 値は、下記の定義のように、カーネル数にカーネルあたりの重みの数を乗算した結果を長さとする、浮動小数点値のタプルです。 既定の重みは無作為に生成されます。
 
 埋め込みを制御するプロパティ セットは 2 つあり、これらは相互に排他的です。
 
-+ **Padding**: (オプション) **既定の埋め込みスキーム**を使用して入力を埋め込む必要があるかどうかを判別します。 値は、単一のブール値、またはバンドルのアリティを長さとするブール値のタプルにすることができます。 
++ **Padding**: (オプション) **既定の埋め込みスキーム**を使用して入力を埋め込む必要があるかどうかを判別します。 値は、単一のブール値、またはバンドルのアリティを長さとするブール値のタプルにすることができます。
 
-    単一のブール値は、すべての要素が指定された値に等しい、正しい長さのタプルに拡張されます。 
-    
-    次元の値が True の場合、ソースはその次元に、ゼロ値のセルを使用して論理的に埋め込まれます。これは、その次元の最初と最後のカーネルの中央ノードがソース層のその次元の最初と最後のノードであるような、追加のカーネル アプリケーションをサポートするためです。 したがって、埋め込まれるソース レイヤーに `(InputShape[d] - 1) / Stride[d] + 1` 個のカーネルがちょうど収まるように、各次元の "ダミー" のノードの数が自動的に決定されます。 
-    
+    単一のブール値は、すべての要素が指定された値に等しい、正しい長さのタプルに拡張されます。
+
+    次元の値が True の場合、ソースはその次元に、ゼロ値のセルを使用して論理的に埋め込まれます。これは、その次元の最初と最後のカーネルの中央ノードがソース層のその次元の最初と最後のノードであるような、追加のカーネル アプリケーションをサポートするためです。 したがって、埋め込まれるソース レイヤーに `(InputShape[d] - 1) / Stride[d] + 1` 個のカーネルがちょうど収まるように、各次元の "ダミー" のノードの数が自動的に決定されます。
+
     次元の値が False の場合は、各側で残されるノードの数が等しくなるように (誤差は最大で 1)、カーネルが定義されます。 この属性の既定値は、すべての要素が False に等しいタプルです。
 
-+ **UpperPad** および **LowerPad**: (オプション) 使用する埋め込みの量をさらに詳細に管理します。 **重要:** これらの属性は、上記の **Padding** プロパティが定義されて***いない***場合にのみ定義できます。 値は、整数値のタプルで、長さがバンドルのアリティである必要があります。 これらの属性が指定されると、入力層の各次元の最上部と最下部に、"ダミー" のノードが追加されます。 次元の最上部と最下部に追加されるノードの数は、**LowerPad**[i] と **UpperPad**[i] で決定されます。 
++ **UpperPad** および **LowerPad**: (オプション) 使用する埋め込みの量をさらに詳細に管理します。 **重要:** これらの属性は、上記の **Padding** プロパティが定義されて***いない***場合にのみ定義できます。 値は、整数値のタプルで、長さがバンドルのアリティである必要があります。 これらの属性が指定されると、入力層の各次元の最上部と最下部に、"ダミー" のノードが追加されます。 次元の最上部と最下部に追加されるノードの数は、**LowerPad**[i] と **UpperPad**[i] で決定されます。
 
     カーネルが "ダミー" ではない "実際" のノードのみに対応するようにするには、以下の条件を満たす必要があります。
-      - **LowerPad** の各要素が厳密に `KernelShape[d]/2` 未満である。 
-      - **UpperPad** の各要素が `KernelShape[d]/2` を超過しない。 
-      - これらの属性の既定値は、すべての要素が 0 に等しいタプルです。 
+  - **LowerPad** の各要素が厳密に `KernelShape[d]/2` 未満である。
+  - **UpperPad** の各要素が `KernelShape[d]/2` を超過しない。
+  - これらの属性の既定値は、すべての要素が 0 に等しいタプルです。
 
     **Padding** = true に設定すると、「実際」の入力内のカーネルの「中央」を維持するのに必要なだけ埋め込みを行えるようになります。 これにより、出力サイズを計算するための演算が若干変更されます。 通常、出力サイズ *D* は `D = (I - K) / S + 1` で計算されます。ここで、`I` は入力サイズ、`K` はカーネル サイズ、`S` は Stride、`/` は整数除算 (ゼロへ丸め) を示します。 UpperPad = [1, 1] に設定すると、入力サイズ `I` は事実上 29 になるため、`D = (29 - 5) / 2 + 1 = 13` になります。 しかし、**Padding** = true に設定すると、基本的に `I` は `K - 1` によって引き上げられるため、`D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14` になります。 **UpperPad** と **LowerPad** の値を指定することで、単に **Padding** = true を設定したときよりも埋め込みをさらに詳細に管理できます。
 
-畳み込みネットワークとそのアプリケーションの詳細については、以下の記事を参照してください。 
+畳み込みネットワークとそのアプリケーションの詳細については、以下の記事を参照してください。
 
-+ [http://deeplearning.net/tutorial/lenet.html ](http://deeplearning.net/tutorial/lenet.html)
-+ [http://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf) 
-+ [http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf](http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf)  
++ [http://deeplearning.net/tutorial/lenet.html](http://deeplearning.net/tutorial/lenet.html)
++ [https://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf)
 
 ## <a name="pooling-bundles"></a>プーリング バンドル
 
 **プーリング バンドル**は、畳み込みの結合性と同様の幾何学構造を適用しながら、ソース ノード値に事前定義された関数を使用して、宛先ノード値が派生するようにします。 このため、プーリング バンドルにはトレーニング可能な状態 (重みまたはバイアス) はありません。 プーリング バンドルは、**Sharing**、**MapCount**、**Weights** を除くすべての畳み込み属性をサポートします。
 
-一般に、隣接するプーリング ユニットでまとめられたカーネルが重複することはありません。 各次元で Stride[d] が KernelShape[d] に等しい場合、取得される層は、畳み込みニューラル ネットワークで一般に採用される、従来型のローカル プーリング層です。 各宛先ノードで、ソース層のカーネルのアクティビティの最大値または平均値を計算します。  
+一般に、隣接するプーリング ユニットでまとめられたカーネルが重複することはありません。 各次元で Stride[d] が KernelShape[d] に等しい場合、取得される層は、畳み込みニューラル ネットワークで一般に採用される、従来型のローカル プーリング層です。 各宛先ノードで、ソース層のカーネルのアクティビティの最大値または平均値を計算します。
 
-以下にプーリング バンドルの例を示します。 
+以下にプーリング バンドルの例を示します。
 
 ```Net#
 hidden P1 [5, 12, 12]
@@ -247,29 +241,29 @@ hidden P1 [5, 12, 12]
   InputShape  = [ 5, 24, 24];
    KernelShape = [ 1,  2,  2];
    Stride      = [ 1,  2,  2];
-  }  
+  }
 ```
 
-+ バンドルのアリティは 3 (`InputShape`、`KernelShape`、`Stride` から成るタプルの長さ) です。 
-+ ソース レイヤーのノード数は、`5 * 24 * 24 = 2880` です。 
-+ **KernelShape** と **Stride** が等しいことから、これは従来型のローカル プーリング層です。 
++ バンドルのアリティは 3 (`InputShape`、`KernelShape`、`Stride` から成るタプルの長さ) です。
++ ソース レイヤーのノード数は、`5 * 24 * 24 = 2880` です。
++ **KernelShape** と **Stride** が等しいことから、これは従来型のローカル プーリング層です。
 + 宛先レイヤーのノード数は `5 * 12 * 12 = 1440` です。
 
-プーリング層の詳細については、以下の記事を参照してください。  
+プーリング層の詳細については、以下の記事を参照してください。
 
-+ [http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (セクション 3.4)
-+ [http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf) 
-+ [http://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](http://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
++ [https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (セクション 3.4)
++ [https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf)
++ [https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
 
 ## <a name="response-normalization-bundles"></a>応答正規化バンドル
 
-**応答正規化**は、Geoffrey Hinton らが「[ImageNet Classiﬁcation with Deep Convolutional Neural Networks](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)」(ディープ畳み込みニューラル ネットワークを使用した ImageNet 分類) という論文で最初に発表した、ローカル正規化スキームです。 
+**応答正規化**は、Geoffrey Hinton らが「[ImageNet Classification with Deep Convolutional Neural Networks](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)」(ディープ畳み込みニューラル ネットワークを使用した ImageNet 分類) という論文で最初に発表した、ローカル正規化スキームです。
 
-応答正規化は、ニューラル ネットの一般化を支援するために使用します。 あるニューロンが高度な活性レベルで発火しているときに、ローカルな応答正規化層によって周囲のニューロンの活性レベルを抑えます。 これは、`α`、`β`、`k` の 3 つのパラメーターと、畳み込み構造体 (または隣接する形状) で行います。 宛先層 **y** のすべてのニューロンは、ソース層のニューロン **x** に対応しています。 **y** のアクティブ化レベルは、次の公式で得られます。次の畳み込み構造体で定義されているように、`f` はニューロンのアクティブ化レベルで、`Nx` はカーネル (**x** に隣接するニューロンを含むセット) です。  
+応答正規化は、ニューラル ネットの一般化を支援するために使用します。 あるニューロンが高度な活性レベルで発火しているときに、ローカルな応答正規化層によって周囲のニューロンの活性レベルを抑えます。 これは、`α`、`β`、`k` の 3 つのパラメーターと、畳み込み構造体 (または隣接する形状) で行います。 宛先層 **y** のすべてのニューロンは、ソース層のニューロン **x** に対応しています。 **y** のアクティブ化レベルは、次の公式で得られます。次の畳み込み構造体で定義されているように、`f` はニューロンのアクティブ化レベルで、`Nx` はカーネル (**x** に隣接するニューロンを含むセット) です。
 
 ![畳み込み構造体の式](./media/azure-ml-netsharp-reference-guide/formula_large.png)
 
-応答正規化バンドルは、**Sharing**、**MapCount**、**Weights** を除くすべての畳み込み属性をサポートします。  
+応答正規化バンドルは、**Sharing**、**MapCount**、**Weights** を除くすべての畳み込み属性をサポートします。
 
 + カーネルが ***x*** と同じマップにニューロンを含んでいる場合、その正規化スキームを**同一マップ正規化**と呼びます。 同一マップ正規化を定義するには、**InputShape** の第 1 座標の値が 1 である必要があります。
 
@@ -282,11 +276,11 @@ hidden P1 [5, 12, 12]
 
 応答正規化バンドルは、先に説明した 4 つの属性に加え、以下の属性もサポートします。
 
-+ **Alpha**: (必須) 前の公式の `α` に対応する浮動小数点の値を指定します。 
-+ **Beta**: (必須) 前の公式の `β` に対応する浮動小数点の値を指定します。 
++ **Alpha**: (必須) 前の公式の `α` に対応する浮動小数点の値を指定します。
++ **Beta**: (必須) 前の公式の `β` に対応する浮動小数点の値を指定します。
 + **Offset**: (オプション) 前の公式の `k` に対応する浮動小数点の値を指定します。 既定値は 1 です。
 
-次に、これらの属性を使用して応答正規化バンドルを定義する例を示します。  
+次に、これらの属性を使用して応答正規化バンドルを定義する例を示します。
 
 ```Net#
 hidden RN1 [5, 10, 10]
@@ -295,16 +289,16 @@ from P1 response norm {
   KernelShape = [ 1,  3,  3];
   Alpha = 0.001;
   Beta = 0.75;
-  }  
+  }
 ```
 
-+ ソース層には、5 つのマップが含まれ、12 x 12 の各次元に、合計 1440 ノードがあります。 
-+ **KernelShape** の値は、これが、3 × 3 の四角形を隣接とする、同じマップ正規化層であることを示しています。 
-+ **Padding** の既定値は false のため、宛先層には次元あたり 10 ノードのみ含まれています。 ソース層のどのノードにも宛先層の 1 つのノードが対応するようにするには、Padding = [true, true, true]; を追加し、RN1 のサイズを [5, 12, 12] に変更します。  
++ ソース層には、5 つのマップが含まれ、12 x 12 の各次元に、合計 1440 ノードがあります。
++ **KernelShape** の値は、これが、3 × 3 の四角形を隣接とする、同じマップ正規化層であることを示しています。
++ **Padding** の既定値は false のため、宛先層には次元あたり 10 ノードのみ含まれています。 ソース層のどのノードにも宛先層の 1 つのノードが対応するようにするには、Padding = [true, true, true]; を追加し、RN1 のサイズを [5, 12, 12] に変更します。
 
 ## <a name="share-declaration"></a>共有の宣言
 
-Net# では、オプションで、共有の重みを持つ複数のバンドルの定義をサポートしています。 構造が同じであれば、任意の 2 つのバンドルの重みを共有することができます。 次の構文には共有の重みのバンドルを定義します。  
+Net# では、オプションで、共有の重みを持つ複数のバンドルの定義をサポートしています。 構造が同じであれば、任意の 2 つのバンドルの重みを共有することができます。 次の構文には共有の重みのバンドルを定義します。
 
 ```Net#
 share-declaration:
@@ -334,7 +328,7 @@ share-declaration:
     identifier
 ```
 
-たとえば、次の share 宣言では、層の名前を指定し、重みとバイアスの両方を共有するように指示しています。  
+たとえば、次の share 宣言では、層の名前を指定し、重みとバイアスの両方を共有するように指示しています。
 
 ```Net#
 Const {
@@ -353,49 +347,49 @@ output Result [2] {
   from H1 all;
   from H2 all;
   }
-share { H1, H2 } // share both weights and biases  
+share { H1, H2 } // share both weights and biases
 ```
 
-+ 入力機能は、2 つの同じサイズの入力層に分割されます。 
-+ 次に、隠れ層が 2 つの入力層の高い方のレベルの機能を計算します。 
-+ 共有宣言では、*H1* と *H2* をそれぞれの入力から同じ方法で計算するように指定します。  
++ 入力機能は、2 つの同じサイズの入力層に分割されます。
++ 次に、隠れ層が 2 つの入力層の高い方のレベルの機能を計算します。
++ 共有宣言では、*H1* と *H2* をそれぞれの入力から同じ方法で計算するように指定します。
 
-または、次のように、これを 2 つの個別の共有宣言で指定することもできます。  
+または、次のように、これを 2 つの個別の共有宣言で指定することもできます。
 
 ```Net#
-share { Data1 => H1, Data2 => H2 } // share weights  
+share { Data1 => H1, Data2 => H2 } // share weights
 <!-- -->
-    share { 1 => H1, 1 => H2 } // share biases  
+    share { 1 => H1, 1 => H2 } // share biases
 ```
 
-この簡易方法は、層に単一バンドルが含まれている場合のみ使用できます。 一般に、共有が可能なのは、該当する構造が同一の場合に限られます。つまり、サイズ、畳み込みの構造などが同一である場合です。  
+この簡易方法は、層に単一バンドルが含まれている場合のみ使用できます。 一般に、共有が可能なのは、該当する構造が同一の場合に限られます。つまり、サイズ、畳み込みの構造などが同一である場合です。
 
 ## <a name="examples-of-net-usage"></a>Net# の使用例
 
 このセクションでは、隠れ層の追加、隠れ層の他の層との対話方法の定義、および畳み込みネットワークの構築のための Net# の使用方法の例を示します。
 
-### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>シンプルなカスタム ニューラル ネットワークの定義: "Hello World" の例
+### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>シンプルなカスタム ニューラル ネットワークの定義:"Hello World" の例
 
 単一の隠れ層を持つニューラル ネットワーク モデルの作成方法をこのシンプルな例で示します。
 
 ```Net#
 input Data auto;
 hidden H [200] from Data all;
-output Out [10] sigmoid from H all;  
+output Out [10] sigmoid from H all;
 ```
 
-例では、次のようにいくつかの基本的なコマンドを示しています。  
+例では、次のようにいくつかの基本的なコマンドを示しています。
 
-+ 最初の行により入力レイヤーが定義されます (`Data` という名前)。 `auto` キーワードを使用すると、ニューラル ネットワークに入力例のすべての機能列が自動的に追加されます。 
++ 最初の行により入力レイヤーが定義されます (`Data` という名前)。 `auto` キーワードを使用すると、ニューラル ネットワークに入力例のすべての機能列が自動的に追加されます。
 + 2 行目で隠れ層が作成されます。 200 個のノードを持つこの非表示レイヤーに `H` という名前が割り当てられます。 この層は入力層に完全結合されます。
-+ 3 行目は、出力レイヤーを定義します。このレイヤーは `O` という名前で、10 個の出力ノードが含まれています。 ニューラル ネットワークが分類に使用される場合、クラスあたり 1 つの出力ノードがあります。 キーワード **sigmoid** は、出力層に適用される出力関数を示します。
++ 3 行目は、出力レイヤーを定義します。このレイヤーは `Out` という名前で、10 個の出力ノードが含まれています。 ニューラル ネットワークが分類に使用される場合、クラスあたり 1 つの出力ノードがあります。 キーワード **sigmoid** は、出力層に適用される出力関数を示します。
 
 ### <a name="define-multiple-hidden-layers-computer-vision-example"></a>複数の隠れ層の定義: コンピューター ビジョンの例
 
-次に、複数のカスタム隠れ層を持つ、もう少し複雑なニューラル ネットワークを定義する例を示します。  
+次に、複数のカスタム隠れ層を持つ、もう少し複雑なニューラル ネットワークを定義する例を示します。
 
 ```Net#
-// Define the input layers 
+// Define the input layers
 input Pixels [10, 20];
 input MetaData [7];
 
@@ -404,18 +398,18 @@ hidden ByRow [10, 12] from Pixels where (s,d) => s[0] == d[0];
 hidden ByCol [5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
 // Define the third hidden layer, which uses as source the hidden layers ByRow and ByCol
-hidden Gather [100] 
+hidden Gather [100]
 {
 from ByRow all;
 from ByCol all;
 }
 
 // Define the output layer and its sources
-output Result [10]  
+output Result [10]
 {
 from Gather all;
 from MetaData all;
-}  
+}
 ```
 
 このサンプルでは、以下のニューラル ネットワーク仕様言語の複数の機能を示しています。
@@ -428,11 +422,11 @@ from MetaData all;
 
 ### <a name="define-a-convolutional-network-for-multiclass-classification-digit-recognition-example"></a>複数クラス分類の畳み込みネットワークの定義: 数字認識の例
 
-次のネットワークの定義は数字を認識するように設計され、ニューラル ネットワークの高度なカスタマイズ技法を表しています。  
+次のネットワークの定義は数字を認識するように設計され、ニューラル ネットワークの高度なカスタマイズ技法を表しています。
 
 ```Net#
 input Image [29, 29];
-hidden Conv1 [5, 13, 13] from Image convolve 
+hidden Conv1 [5, 13, 13] from Image convolve
   {
   InputShape  = [29, 29];
   KernelShape = [ 5,  5];
@@ -440,7 +434,7 @@ hidden Conv1 [5, 13, 13] from Image convolve
   MapCount    = 5;
   }
 hidden Conv2 [50, 5, 5]
-from Conv1 convolve 
+from Conv1 convolve
   {
   InputShape  = [ 5, 13, 13];
   KernelShape = [ 1,  5,  5];
@@ -449,14 +443,14 @@ from Conv1 convolve
   MapCount    = 10;
   }
 hidden Hid3 [100] from Conv2 all;
-output Digit [10] from Hid3 all;  
+output Digit [10] from Hid3 all;
 ```
 
 + 構造には単一の入力レイヤー `Image` があります。
 + `convolve` キーワードは、`Conv1` という名前のレイヤーと `Conv2` という名前のレイヤーが畳み込みレイヤーであることを示しています。 これらの各層の宣言には、畳み込み属性の一覧が続きます。
 + このネットワークには第 3 の非表示レイヤー `Hid3` があり、これは第 2 の非表示レイヤー `Conv2` に完全結合されます。
 + 出力レイヤー `Digit` は、第 3 の非表示レイヤー `Hid3` のみに結合されます。 `all` キーワードは、出力レイヤーが `Hid3` に完全結合されることを示しています。
-+ 畳み込みのアリティは 3 (`InputShape`、`KernelShape`、`Stride, and `Sharing` から成るタプルの長さ) です。 
++ 畳み込みのアリティは 3 (`InputShape`、`KernelShape`、`Stride`、`Sharing` から成るタプルの長さ) です。
 + カーネルごとの重みの数は `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26` です。 または、`26 * 50 = 1300` です。
 + それぞれの隠れ層のノードは、次のように計算できます。
 
@@ -464,8 +458,8 @@ output Digit [10] from Hid3 all;
     `NodeCount\[2] = (13 - 5) / 2 + 1 = 5`
 
 + ノードの合計数は、レイヤーの宣言済みディメンショナリティ [50, 5, 5] を使用して、次のように計算できます: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
-+ `Sharing[d]` は、`d == 0` の場合にのみ False であるため、カーネルの数は `MapCount * NodeCount\[0] = 10 * 5 = 50` です。 
++ `Sharing[d]` は、`d == 0` の場合にのみ False であるため、カーネルの数は `MapCount * NodeCount\[0] = 10 * 5 = 50` です。
 
 ## <a name="acknowledgements"></a>謝辞
 
-ニューラル ネットワークのアーキテクチャをカスタマイズするための Net# 言語は Microsoft の Shon Katzenberger (設計者、Machine Learning) と Alexey Kamenev (ソフトウェア エンジニア、Microsoft Research) により開発されました。 機械学習と、画像検出からテキスト分析までの用途に社内利用されています。 詳細については、「[Azure ML のニューラル ネットワーク - Net# の概要](http://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)」を参照してください。
+ニューラル ネットワークのアーキテクチャをカスタマイズするための Net# 言語は Microsoft の Shon Katzenberger (設計者、Machine Learning) と Alexey Kamenev (ソフトウェア エンジニア、Microsoft Research) により開発されました。 機械学習と、画像検出からテキスト分析までの用途に社内利用されています。 詳細については、[Azure Machine Learning studio でのニューラル ネットの Net# の概要](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)に関するページを参照してください

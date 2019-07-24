@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 55a4b150471b87289cdd67dc8fbce92336850364
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 6a2e022697ced90d968075b7a4abe4163be7a539
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568820"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082808"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>バックアップ セットからの StorSimple ボリュームの復元
 
@@ -110,9 +110,9 @@ Update 4 では、Windows PowerShell コマンドレットを使用して、実�
    3. ボックスの一覧で、選択するバックアップのボリュームまたはバックアップのポリシーを選択します。
    4. **[適用]** をクリックしてこのクエリを実行します。
 
-    選択したボリュームまたはバックアップ ポリシーに関連付けられているバックアップが、バックアップ セットの一覧に表示されます。
+      選択したボリュームまたはバックアップ ポリシーに関連付けられているバックアップが、バックアップ セットの一覧に表示されます。
    
-    ![バックアップ セットの一覧](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
+      ![バックアップ セットの一覧](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
      
 3. バックアップ セットを展開して、関連付けられているボリュームを表示します。 これらのボリュームは、復元する前にホストおよびデバイス上でオフラインにする必要があります。 ボリュームをオフラインにするには、デバイスの **[ボリューム]** ブレードでボリュームにアクセスし、「[ボリュームをオフラインにする](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)」の手順を実行します。
    
@@ -127,9 +127,9 @@ Update 4 では、Windows PowerShell コマンドレットを使用して、実�
    
     ![確認ページ](./media/storsimple-8000-restore-from-backup-set-u2/restorebu2.png)
 
-7.  **[復元]** をクリックします。 復元ジョブが開始されます。このジョブは、**[ジョブ]** ページに表示されます。
+7. **[復元]** をクリックします。 復元ジョブが開始されます。このジョブは、**[ジョブ]** ページに表示されます。
 
-    ![確認ページ](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
+   ![確認ページ](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
 8. 復元操作が完了した後、ボリュームの内容がバックアップからのボリュームで置き換えられていることを確認します。
 

@@ -4,7 +4,7 @@ description: このトピックでは、Azure Media Services を使用したコ�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 89ede54a-6a9c-4814-9858-dcfbb5f4fed5
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2017
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ae0ff36c7e83120a9571e0f87788c25193027616
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5db2cb983c0c3cd0e2194f7686964d9ec3828d6f
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240139"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526607"
 ---
 # <a name="deliver-content-to-customers"></a>顧客へのコンテンツ配信
 ストリーミング コンテンツまたはビデオ オン デマンド コンテンツを顧客に配信するときの目標は、さまざまなネットワーク条件にある多様なデバイスに高品質のビデオを配信することにあります。
@@ -61,7 +61,7 @@ Media Services を使用すると、資産にフィルターを定義できま�
 * OnDemandOrigin ロケーターは、 メディアのストリーミング (MPEG-DASH、HLS、Smooth Streaming など) やファイルのプログレッシブ ダウンロードに使用します。
 * Shared Access Signature (SAS) URL ロケーターは、 メディア ファイルをローカル コンピューターにダウンロードする際に使用します。
 
-*アクセス ポリシー* は、アクセス許可 (読み取り、書き込み、一覧表示など) や、クライアントが特定の資産にアクセスできる期間を定義するために使用します。 一覧表示のアクセス許可 (AccessPermissions.List) は、OnDemandOrigin ロケーターを作成するときには使用しないでください。
+*アクセス ポリシー* は、アクセス許可 (読み取り、書き込み、一覧表示など) や、クライアントが特定の資産にアクセスできる期間を定義するために使用します。 一覧表示のアクセス許可 (AccessPermissions.List) は、OnDemandOrigin ロケーターの作成に使用しないでください。
 
 ロケーターには有効期限があります。 Azure ポータルにより、ロケーターの有効期限の日付が 100 年後に設定されます。
 
@@ -77,7 +77,7 @@ Media Services を使用すると、資産にフィルターを定義できま�
 ロケーターを作成する際、Azure Storage に必要な記憶域や伝達プロセスの関係上 30 秒の遅延が生じる場合があります。
 
 ## <a name="adaptive-streaming"></a>アダプティブ ストリーミング
-アダプティブ ビットレート テクノロジにより、ビデオ再生アプリケーションでネットワークの状態を判断し、複数のビットレートから選択することができます。 ネットワーク通信のパフォーマンスが低下した場合、低い画質レベルでビデオの再生を継続できるように、クライアントは以前より低いビットレートを選択することができます。 ネットワークの状態が改善したら、クライアントはより高画質なより高いビットレートに切り替えることができます。 Azure Media Services でサポートされるアダプティブ ビットレート テクノロジは、HTTP ライブ ストリーミング (HLS)、Smooth Streaming、MPEG-DASH です。
+アダプティブ ビットレート テクノロジにより、ビデオ再生アプリケーションでネットワークの状態を判断し、複数のビットレートから選択することができます。 ネットワーク通信のパフォーマンスが低下した場合、低い画質レベルでビデオの再生を継続できるように、クライアントは以前より低いビットレートを選択することができます。 ネットワークの状態が改善したら、クライアントはより高画質なより高いビットレートに切り替えることができます。 Azure Media Services は、次のアダプティブ ビットレート テクノロジをサポートしています: HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH。
 
 ユーザーにストリーミング URL を提供するには、最初に OnDemandOrigin ロケーターを作成する必要があります。 ロケーターを作成すると、ストリーミングするコンテンツが含まれている資産の基本パスが提供されます。 ただし、このコンテンツをストリーミングするためには、このパスをさらに変更する必要があります。 ストリーミング マニフェスト ファイルの完全な URL を構築するには、ロケーターのパスの値とマニフェスト ファイル (filename.ism) の名前を連結する必要があります。 その後、 **/Manifest** と適切な形式 (必要な場合) をロケーターのパスに付加します。
 
@@ -92,22 +92,22 @@ SSL 経由でのストリーミングを実行できるのは、コンテンツ�
 ### <a name="mpeg-dash-format"></a>MPEG-DASH 形式
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=mpd-time-csf)
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
 
 ### <a name="apple-http-live-streaming-hls-v4-format"></a>Apple HTTP Live Streaming (HLS) V4 形式
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=m3u8-aapl)
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
 
 ### <a name="apple-http-live-streaming-hls-v3-format"></a>Apple HTTP Live Streaming (HLS) V3 形式
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=m3u8-aapl-v3)
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
 
 ### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>Apple HTTP Live Streaming (HLS) 形式 (オーディオ専用フィルター付き)
 既定では、HLS マニフェストにはオーディオ専用トラックのみが含まれます。 これは、Apple ストアのセルラー ネットワーク用の認定で必要です。 この場合、クライアントの帯域幅が十分でないか、2G 接続を超えて接続されると、再生はオーディオ専用に切り替わります。 このため、バッファリングされることなく引き続きコンテンツがストリーミングされますが、画像は表示されません。 シナリオによっては、オーディオ専用よりもプレーヤーのバッファリングのほうが好ましい場合があります。 オーディオ専用トラックを削除する場合は、 **audio-only=false** を URL に追加します。
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,audio-only=false)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,audio-only=false)
 
 詳細については、 [動的マニフェストの構成のサポートと HLS 出力の追加機能](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)に関するページをご覧ください。
 
@@ -116,14 +116,14 @@ http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f
 
 例:
 
-http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
 ### <a id="fmp4_v20"></a>Smooth Streaming 2.0 マニフェスト (レガシ マニフェスト)
 既定では、Smooth Streaming のマニフェスト形式には、繰り返しタグ (r タグ) が含まれています。 ただし、一部のプレーヤーは、r タグをサポートしていません。 これらのプレーヤーを使用するクライアントは、r タグを無効にする形式を使用できます。
 
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=fmp4-v20)
 
-    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
+    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
 
 ## <a name="progressive-download"></a>プログレッシブ ダウンロード
 プログレッシブ ダウンロードでは、ファイル全体がダウンロードされる前に、メディアの再生を開始できます。 .ism* (ismv、isma、ismt、ismc) ファイルのプログレッシブ ダウンロードはできません。
@@ -134,7 +134,7 @@ http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f
 
 プログレッシブ ダウンロードで元のサービスからストリーミングするには、ストレージで暗号化された資産の暗号化を解除する必要があります。
 
-## <a name="download"></a>[ダウンロード]
+## <a name="download"></a>ダウンロード
 クライアント デバイスにコンテンツをダウンロードするには、SAS ロケーターを作成する必要があります。 SAS ロケーターでは、ファイルが配置されている Azure ストレージ コンテナーにアクセスできます。 ダウンロード URL を作成するには、ホストと SAS 署名の間にファイル名を埋め込む必要があります。
 
 次の例は、SAS ロケーターに基づいている URL を示しています。
@@ -157,7 +157,8 @@ http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>スムーズ ストリーミング マニフェスト バージョンへの変更
 2016 年 7 月より前のサービス リリースでは、Media Encoder Standard、メディア エンコーダー プレミアム ワークフロー、または以前の Azure Media Encoder によって生成された資産は、ダイナミック パッケージを使用してストリーミングされていました。返される Smooth Streaming のマニフェストはバージョン 2.0 に対応します。 バージョン 2.0 では、フラグメントの継続期間では、いわゆる繰り返し ("r") タグを使用しません。 例: 
 
-<?xml version="1.0" encoding="UTF-8"?>
+
+    <?xml version="1.0" encoding="UTF-8"?>
     <SmoothStreamingMedia MajorVersion="2" MinorVersion="0" Duration="8000" TimeScale="1000">
         <StreamIndex Chunks="4" Type="video" Url="QualityLevels({bitrate})/Fragments(video={start time})" QualityLevels="3" Subtype="" Name="video" TimeScale="1000">
             <QualityLevel Index="0" Bitrate="1000000" FourCC="AVC1" MaxWidth="640" MaxHeight="360" CodecPrivateData="00000001674D4029965201405FF2E02A100000030010000003032E0A000F42400040167F18E3050007A12000200B3F8C70ED0B16890000000168EB7352" />

@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 8752bc1977bac75928651a62576272ffc673ee7e
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 2d59235b067d9571bc8b64c33799431be6489502
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306302"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087212"
 ---
 # <a name="restore-azure-sql-data-warehouse-portal"></a>Azure SQL Data Warehouse の復元 (Portal)
 > [!div class="op_single_selector"]
@@ -23,9 +23,9 @@ ms.locfileid: "43306302"
 > * [ポータル][Portal]
 > * [PowerShell][PowerShell]
 > * [REST][REST]
->
->
-この記事では、Azure Portal を使用して Azure SQL Data Warehouse を復元する方法について説明します。
+> 
+> 
+> この記事では、Azure Portal を使用して Azure SQL Data Warehouse を復元する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 **DTU 容量を確認します。** 各 SQL Data Warehouse インスタンスは、既定の DTU クォータが割り当てられている SQL サーバー (例: myserver.database.windows.net) でホストされます。 SQL Data Warehouse を復元する前に、データベースの復元に必要な量の DTU クォータがSQL Server に残っていることを確認してください。 必要な DTU クォータを計算する方法と DTU を要求する方法については、[DTU クォータの変更の要求][Request a DTU quota change]に関するトピックをご覧ください。

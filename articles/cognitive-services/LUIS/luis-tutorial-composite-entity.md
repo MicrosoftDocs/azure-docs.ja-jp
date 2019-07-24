@@ -1,23 +1,24 @@
 ---
-title: 'チュートリアル 6: LUIS 複合エンティティを使用して複合データを抽出する'
+title: 複合エンティティのチュートリアル
 titleSuffix: Azure Cognitive Services
 description: さまざまな種類の抽出されたデータを、1 つの包含するエンティティにバンドルするための複合エンティティを追加します。 データをバンドルすることにより、クライアント アプリケーションはさまざまなデータ型で関連データを簡単に抽出できます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/09/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 1521bba188fcd7d8bade88196fe687929f414f93
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: c49090a5563a6d63c90b29cc7442c1e4ed9886e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283514"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091581"
 ---
-# <a name="tutorial-6-group-and-extract-related-data"></a>チュートリアル 6: 関連するデータのグループ化と抽出
+# <a name="tutorial-group-and-extract-related-data"></a>チュートリアル:関連するデータのグループ化と抽出
 このチュートリアルでは、さまざまな種類の抽出されたデータを、1 つの包含するエンティティにバンドルするための複合エンティティを追加します。 データをバンドルすることにより、クライアント アプリケーションはさまざまなデータ型で関連データを簡単に抽出できます。
 
 複合エンティティの目的は、関連するエンティティを親カテゴリのエンティティにグループ化することです。 複合エンティティが作成される前は、情報は個別のエンティティとして存在しています。 これは階層構造エンティティに似ていますが、異なる種類のエンティティを含むことができます。 
@@ -32,294 +33,149 @@ ms.locfileid: "51283514"
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * 既存のチュートリアル アプリを使用する
+> * サンプル アプリをインポートする
+> * 意図を作成する
 > * 複合エンティティを追加する 
 > * トレーニング
-> * [発行]
+> * 発行
 > * エンドポイントから意図とエンティティを取得する
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="use-existing-app"></a>既存のアプリを使用する
-最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
+## <a name="import-example-app"></a>サンプル アプリをインポートする
 
-以前のチュートリアルの HumanResources アプリがない場合は、次の手順を使用します。
-
-1.  [アプリの JSON ファイル](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-hier-HumanResources.json)をダウンロードして保存します。
+1.  リスト エンティティのチュートリアルから[アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json)をダウンロードして保存します。
 
 2. JSON を新しいアプリにインポートします。
 
 3. **[管理]** セクションの **[バージョン]** タブで、バージョンを複製し、それに `composite` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 バージョン名は URL ルートの一部として使用されるため、URL 内で有効ではない文字を名前に含めることはできません。
 
-
 ## <a name="composite-entity"></a>複合エンティティ
-個別のエンティティを論理的にグループ化できる場合は、複合エンティティを作成します。この論理的なグループ化は、クライアント アプリケーションに役立ちます。 
 
-このアプリでは、従業員名は **「Employee」(従業員)** リスト エンティティで定義されており、名前のシノニム、メール アドレス、会社の内線番号、携帯電話番号、および米国連邦税 ID を含みます。 
+このアプリでは、部署名は **Department** リスト エンティティで定義されていて、シノニムを含みます。 
 
-**MoveEmployee** 意図には、従業員をあるビルとオフィスから別のビルとオフィスに移動することを要求する発話の例があります。 ビルの名前が "A"、"B" などの英字であるのに対して、オフィスは "1234"、"13245" などの数値です。 
+**TransferEmployeeToDepartment** 意図には、従業員の新しい部署への異動を要求する発話の例が含まれます。 
 
-**MoveEmployee** 意図にある発話の例には、次が含まれます。
+この意図に含まれる発話の例を次に示します。
 
 |発話の例|
 |--|
-|John W.  Smith を a-2345 に移動する|
-|明日 x12345 を h-1234 にシフトする|
+|move John W. Smith to the accounting department (John W. Smith を会計部門に異動させる)|
+|transfer Jill Jones from to R&D (Jill Jones を R&D に異動させる)|
  
-この移動要求には、その従業員 (いずれかのシノニムを使用) と、最終的なビルとオフィスの場所を含める必要があります。 この要求にはまた、元のオフィスや、その移動が発生する日付も含めることができます。 
+異動要求には、部署名と従業員名が含まれる必要があります。 
 
-エンドポイントから抽出されたデータはこれらの情報を含み、それを `RequestEmployeeMove` 複合エンティティで返す必要があります。
+## <a name="add-the-personname-prebuilt-entity-to-help-with-common-data-type-extraction"></a>一般的な種類のデータを抽出するのに役立つ PersonName 事前構築済みエンティティを追加する
 
-```JSON
-"compositeEntities": [
-  {
-    "parentType": "RequestEmployeeMove",
-    "value": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
-    "children": [
-      {
-        "type": "builtin.datetimeV2.datetime",
-        "value": "march 3 2 p.m"
-      },
-      {
-        "type": "Locations::Destination",
-        "value": "z - 2345"
-      },
-      {
-        "type": "Employee",
-        "value": "jill jones"
-      },
-      {
-        "type": "Locations::Origin",
-        "value": "a - 1234"
-      }
-    ]
-  }
-]
-```
+LUIS には、一般的なデータ抽出のための事前構築済みエンティティが用意されています。 
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. 上部のナビゲーションから **[ビルド]** を選択し、左側のナビゲーション メニューから **[エンティティ]** を選択します。
 
-2. **[意図]** ページで、**[MoveEmployee]** 意図を選択します。 
+1. **[Manage prebuilt entity]\(事前構築済みエンティティの管理\)** ボタンを選択します。
 
-3. ツール バーの虫眼鏡アイコンを選択して発話一覧をフィルター処理します。 
+1. 事前構築済みエンティティの一覧から **[personName](luis-reference-prebuilt-person.md)** を選択し、**[完了]** を選択します。
 
-    [![](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png "虫眼鏡ボタンが強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png#lightbox)
+    ![[number] が選択されている事前構築済みエンティティ ダイアログのスクリーンショット](./media/luis-tutorial-composite-entity/add-personname-prebuilt-entity.png)
 
-4. フィルター テキスト ボックスに `tomorrow` を入力して、発話 `shift x12345 to h-1234 tomorrow` を検索します。
+    このエンティティは、クライアント アプリケーションに名前の認識を追加するのに役立ちます。
 
-    [![](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png "'tomorrow' のフィルターが強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png#lightbox)
+## <a name="create-composite-entity-from-example-utterances"></a>発話の例から複合エンティティを作成する
 
-    datetimeV2 でエンティティをフィルター処理する別の方法として、**[Entity filters] (エンティティ フィルター)** を選択し、一覧から **[datetimeV2]** を選択する方法があります。 
+1. 左側のナビゲーションで、**[Intents]\(意図\)** を選択します。
 
-5. 最初のエンティティ `Employee` を選択してから、ポップアップ メニューの一覧にある **「Wrap in composite entity」(複合エンティティにラップする)** を選択します。 
+1. 意図の一覧から **TransferEmployeeToDepartment** を選択します。
 
-    [![](media/luis-tutorial-composite-entity/hr-create-entity-1.png "複合内の最初のエンティティの選択が強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
+1. 発話 `place John Jackson in engineering` で、personName エンティティ `John Jackson` を選択し、以下の発話に対するポップアップ メニュー リストで **[Wrap in composite entity]\(複合エンティティにラップする\)** を選択します。 
 
+    ![ラップ複合を選択するドロップダウン ダイアログのスクリーンショット](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
 
-6. 次に、発話内の最後のエンティティ `datetimeV2` を直ちに選択します。 選択された単語の下に、複合エンティティを示す緑色のバーが描画されます。 ポップアップ メニューで、複合名 `RequestEmployeeMove` を入力して Enter キーを押します。 
+1. 次に、発話内の最後のエンティティ `engineering` を直ちに選択します。 選択された単語の下に、複合エンティティを示す緑色のバーが描画されます。 ポップアップ メニューで、複合名 `TransferEmployeeInfo` を入力して Enter キーを押します。 
 
-    [![](media/luis-tutorial-composite-entity/hr-create-entity-2.png "複合内の最後のエンティティの選択とエンティティの作成が強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
+    ![複合名を入力するドロップダウン ダイアログのスクリーンショット](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
-7. **「What type of entity do you want to create?」(どのような種類のエンティティを作成しますか?)** では、必要なほぼすべてのフィールドが一覧にあります。 元の場所だけがありません。 **[子エンティティを追加する]** を選択し、既存のエンティティの一覧から **[Locations::Origin]** を選択してから、**[完了]** を選択します。 
+1. **[What type of entity do you want to create?]\(どのような種類のエンティティを作成しますか?\)** では、必要なすべてのフィールドが一覧にあります: `personName` と `Department`。 **[完了]** を選択します。 事前構築済みのエンティティ personName が複合エンティティに追加されました。 複合エンティティの開始トークンと終了トークンの間に事前構築済みエンティティを出現させることができた場合、複合エンティティにはそれらの事前構築済みエンティティが含まれている必要があります。 事前構築済みエンティティが含まれていない場合、複合エンティティは正しく予測されませんが、個別の要素は正しく予測されます。
 
-    事前構築済みのエンティティ number が複合エンティティに追加されました。 複合エンティティの開始トークンと終了トークンの間に事前構築済みエンティティを出現させることができた場合、複合エンティティにはそれらの事前構築済みエンティティが含まれている必要があります。 事前構築済みエンティティが含まれていない場合、複合エンティティは正しく予測されませんが、個別の要素は正しく予測されます。
-
-    ![ポップアップ ウィンドウで別のエンティティを追加している 'MoveEmployee' 意図での LUIS のスクリーンショット](media/luis-tutorial-composite-entity/hr-create-entity-ddl.png)
-
-8. ツールバーの虫眼鏡を選択してフィルターを削除します。 
-
-9. すべての発話例をもう一度確認できるよう、単語 `tomorrow` をフィルターから削除します。 
+    ![複合名を入力するドロップダウン ダイアログのスクリーンショット](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
 
 ## <a name="label-example-utterances-with-composite-entity"></a>発話の例に複合エンティティのラベルを付ける
 
-
 1. 各発話の例で、複合に含まれている左端のエンティティを選択します。 次に、**「Wrap in composite entity」(複合エンティティにラップする)** を選択します。
 
-    [![](media/luis-tutorial-composite-entity/hr-label-entity-1.png "複合内の最初のエンティティの選択が強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
+1. 複合エンティティ内の最後の単語を選択してから、ポップアップ メニューから **[TransferEmployeeInfo]** を選択します。 
 
-2. 複合エンティティ内の最後の単語を選択してから、ポップアップ メニューから **[RequestEmployeeMove]** を選択します。 
+1. 意図のすべての発話に複合エンティティのラベルが付けられていることを確認します。 
 
-    [![](media/luis-tutorial-composite-entity/hr-label-entity-2.png "複合内の最後のエンティティの選択が強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-label-entity-2.png#lightbox)
-
-3. 意図のすべての発話に複合エンティティのラベルが付けられていることを確認します。 
-
-    [![](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "すべての発話にラベルが付いている 'MoveEmployee' での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
-
-## <a name="train"></a>トレーニング
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>意図への変更をテストできるようにアプリをトレーニングする 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>[発行]
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>トレーニング済みのモデルがエンドポイントからクエリ可能になるようにアプリを発行する
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>エンドポイントから意図とエンティティを取得する 
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>エンドポイントから意図およびエンティティ予測を取得する 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. アドレスの URL の末尾に移動し、「`Move Jill Jones from a-1234 to z-2345 on March 3 2 p.m.`」と入力します。 最後のクエリ文字列パラメーターは `q` です。これは発話のクエリです。 
+2. アドレスの URL の末尾に移動し、「`Move Jill Jones to DevOps`」と入力します。 最後のクエリ文字列パラメーターは `q` です。これは発話のクエリです。 
 
     このテストは複合が正しく抽出されたことを確認するためであるため、テストには、既存のサンプル発話または新しい発話のどちらを含めることもできます。 適切なテストでは、複合エンティティ内のすべての子エンティティを含めます。
 
-    ```JSON
+    ```json
     {
-      "query": "Move Jill Jones from a-1234 to z-2345 on March 3  2 p.m",
+      "query": "Move Jill Jones to DevOps",
       "topScoringIntent": {
-        "intent": "MoveEmployee",
-        "score": 0.9959525
+        "intent": "TransferEmployeeToDepartment",
+        "score": 0.9882747
       },
       "intents": [
         {
-          "intent": "MoveEmployee",
-          "score": 0.9959525
-        },
-        {
-          "intent": "GetJobInformation",
-          "score": 0.009858314
-        },
-        {
-          "intent": "ApplyForJob",
-          "score": 0.00728598563
-        },
-        {
-          "intent": "FindForm",
-          "score": 0.0058053555
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.005371796
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.00266987388
+          "intent": "TransferEmployeeToDepartment",
+          "score": 0.9882747
         },
         {
           "intent": "None",
-          "score": 0.00123299169
-        },
-        {
-          "intent": "Utilities.Cancel",
-          "score": 0.00116407464
-        },
-        {
-          "intent": "Utilities.Confirm",
-          "score": 0.00102653319
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.0006628214
+          "score": 0.00925369747
         }
       ],
       "entities": [
         {
-          "entity": "march 3 2 p.m",
-          "type": "builtin.datetimeV2.datetime",
-          "startIndex": 41,
-          "endIndex": 54,
-          "resolution": {
-            "values": [
-              {
-                "timex": "XXXX-03-03T14",
-                "type": "datetime",
-                "value": "2018-03-03 14:00:00"
-              },
-              {
-                "timex": "XXXX-03-03T14",
-                "type": "datetime",
-                "value": "2019-03-03 14:00:00"
-              }
-            ]
-          }
-        },
-        {
           "entity": "jill jones",
-          "type": "Employee",
+          "type": "builtin.personName",
           "startIndex": 5,
-          "endIndex": 14,
+          "endIndex": 14
+        },
+        {
+          "entity": "devops",
+          "type": "Department",
+          "startIndex": 19,
+          "endIndex": 24,
           "resolution": {
             "values": [
-              "Employee-45612"
+              "Development Operations"
             ]
           }
         },
         {
-          "entity": "z - 2345",
-          "type": "Locations::Destination",
-          "startIndex": 31,
-          "endIndex": 36,
-          "score": 0.9690751
-        },
-        {
-          "entity": "a - 1234",
-          "type": "Locations::Origin",
-          "startIndex": 21,
-          "endIndex": 26,
-          "score": 0.9713137
-        },
-        {
-          "entity": "-1234",
-          "type": "builtin.number",
-          "startIndex": 22,
-          "endIndex": 26,
-          "resolution": {
-            "value": "-1234"
-          }
-        },
-        {
-          "entity": "-2345",
-          "type": "builtin.number",
-          "startIndex": 32,
-          "endIndex": 36,
-          "resolution": {
-            "value": "-2345"
-          }
-        },
-        {
-          "entity": "3",
-          "type": "builtin.number",
-          "startIndex": 47,
-          "endIndex": 47,
-          "resolution": {
-            "value": "3"
-          }
-        },
-        {
-          "entity": "2",
-          "type": "builtin.number",
-          "startIndex": 50,
-          "endIndex": 50,
-          "resolution": {
-            "value": "2"
-          }
-        },
-        {
-          "entity": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
-          "type": "RequestEmployeeMove",
+          "entity": "jill jones to devops",
+          "type": "TransferEmployeeInfo",
           "startIndex": 5,
-          "endIndex": 54,
-          "score": 0.4027723
+          "endIndex": 24,
+          "score": 0.9607566
         }
       ],
       "compositeEntities": [
         {
-          "parentType": "RequestEmployeeMove",
-          "value": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
+          "parentType": "TransferEmployeeInfo",
+          "value": "jill jones to devops",
           "children": [
             {
-              "type": "builtin.datetimeV2.datetime",
-              "value": "march 3 2 p.m"
-            },
-            {
-              "type": "Locations::Destination",
-              "value": "z - 2345"
-            },
-            {
-              "type": "Employee",
+              "type": "builtin.personName",
               "value": "jill jones"
             },
             {
-              "type": "Locations::Origin",
-              "value": "a - 1234"
+              "type": "Department",
+              "value": "devops"
             }
           ]
         }
@@ -327,11 +183,20 @@ ms.locfileid: "51283514"
     }
     ```
 
-  この発話は、複合エンティティの配列を返します。 各エンティティには、型と値が与えられます。 子エンティティごとの精度を高めるには、複合の配列項目の型と値の組み合わせを使用して、エンティティの配列内の対応する項目を見つけます。  
+   この発話は、複合エンティティの配列を返します。 各エンティティには、型と値が与えられます。 子エンティティごとの精度を高めるには、複合の配列項目の型と値の組み合わせを使用して、エンティティの配列内の対応する項目を見つけます。  
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+
+## <a name="related-information"></a>関連情報
+
+* [リスト エンティティのチュートリアル](luis-quickstart-intents-only.md)
+* [複合エンティティ](luis-concept-entity-types.md)の概念に関する情報
+* [トレーニング方法](luis-how-to-train.md)
+* [発行方法](luis-how-to-publish-app.md)
+* [LUIS ポータルでのテスト方法](luis-interactive-test.md)
+
 
 ## <a name="next-steps"></a>次の手順
 

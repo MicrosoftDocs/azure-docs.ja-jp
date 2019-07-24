@@ -8,20 +8,20 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
-ms.reviewer: carlrab
+ms.author: danil
+ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 04/04/2018
-ms.openlocfilehash: 70096c8f3a5c07fa757b68494c04519b63435dcd
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 12/19/2018
+ms.openlocfilehash: 264d4cfc6b09813f34501a0e51d3100f4d2bce78
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166896"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217038"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Intelligent Insights Azure SQL Database パフォーマンス診断ログを使用する
 
-このページでは、[Intelligent Insights](sql-database-intelligent-insights.md) によって生成される Azure SQL Database パフォーマンス診断ログの使用方法、その形式、およびカスタム開発ニーズに対応するために含まれるデータについて説明します。 この診断ログは、[Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md)、[Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)、[Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションに送信できます。
+このページでは、[Intelligent Insights](sql-database-intelligent-insights.md) によって生成される Azure SQL Database パフォーマンス診断ログの使用方法、その形式、およびカスタム開発ニーズに対応するために含まれるデータについて説明します。 この診断ログは、[Azure Monitor ログ](../azure-monitor/insights/azure-sql.md)、[Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)、[Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションに送信できます。
 
 ## <a name="log-header"></a>ログ ヘッダー
 
@@ -39,9 +39,7 @@ ms.locfileid: "47166896"
 
 ## <a name="issue-id-and-database-affected"></a>問題 ID と影響を受けているデータベース
 
-問題識別プロパティ (issueId_d) を使用すると、パフォーマンスの問題を、解決されるまで一意に追跡できます。 Intelligent Insights は、各問題のライフサイクルを "Active"、"Verifying"、または "Complete" として監視します。 これらの各状態フェーズ中、Intelligent Insights はログに複数のイベント レコードを記録できます。 各エントリについて、問題 ID 番号が一意に維持されます。 Intelligent Insights は、ライフサイクルを通して問題を追跡し、診断ログに 15 分ごとに分析情報を生成します。
-
-パフォーマンスの問題が検出されると、それが継続する限り、その問題は状態 (status_s) プロパティで "Active" としてレポートされます。 検出された問題が緩和されると、その問題は検証され、状態 (status_s) プロパティで "Verifying" としてレポートされます。 問題が解消された場合は、状態 (status_s) プロパティでこの問題が "Completed" としてレポートされます。
+問題識別プロパティ (issueId_d) では、パフォーマンスの問題を解決まで一意に追跡できます。 ログ内の複数のイベント レコードで同じ問題の状態が報告されている場合は、それらのレコードで同じ問題 ID が共有されます。
 
 診断ログでは、問題 ID と共に、診断ログにレポートされている問題に関連する特定のイベントの開始 (intervalStartTime_t) と終了 (intervalEndTme_t) のタイムスタンプがレポートされます。
 
@@ -137,7 +135,7 @@ Intelligent Insights パフォーマンス ログの最後の部分には、識�
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-Intelligent Insights パフォーマンス ログは、[Azure Log Analytics]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションで使用できます。
+Intelligent Insights パフォーマンス ログは、[Azure Monitor ログ]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションで使用できます。
 
 ## <a name="next-steps"></a>次の手順
 - [Intelligent Insights](sql-database-intelligent-insights.md) の概念の習得

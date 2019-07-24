@@ -1,5 +1,5 @@
 ---
-title: 送信 IP アドレスの変更に備える方法 - Azure
+title: 送信 IP アドレスの変更に備える - Azure App Service
 description: 送信 IP アドレスの変更が予定されている場合に、変更後もアプリが動作し続けるようにする方法を説明します。
 services: app-service\web
 author: cephalin
@@ -10,12 +10,13 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
-ms.openlocfilehash: 2355fa5e3e7fd83b5d9f22d87c19f8152659fc97
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.custom: seodec18
+ms.openlocfilehash: ac62217af096653d61a79ff29ae352c8e950f8af
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309353"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719304"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>送信 IP アドレスの変更に備える方法
 
@@ -23,9 +24,9 @@ ms.locfileid: "49309353"
 
 ## <a name="determine-if-you-have-to-do-anything"></a>何もする必要がないかどうかを判断する
 
-* オプション 1: App Service アプリが、IP フィルター、明示的な対象リスト、またはルーティングやファイアウォールなどの送信トラフィックの特別な処理を使用していない場合は、何のアクションも必要ありません。
+* オプション 1:App Service アプリが、IP フィルター、明示的な対象リスト、またはルーティングやファイアウォールなどの送信トラフィックの特別な処理を使用していない場合は、何のアクションも必要ありません。
 
-* オプション 2: アプリが送信 IP アドレスの特別な処理 (下の例を参照) を使用している場合は、既存の送信 IP アドレスが存在するすべての場所に新しい送信 IP アドレスを追加します。 既存の IP アドレスの置き換えはしないでください。 新しい送信 IP アドレスは、次のセクションの手順に従って確認できます。
+* オプション 2:アプリが送信 IP アドレスの特別な処理 (下の例を参照) を使用している場合は、既存の送信 IP アドレスが存在するすべての場所に新しい送信 IP アドレスを追加します。 既存の IP アドレスの置き換えはしないでください。 新しい送信 IP アドレスは、次のセクションの手順に従って確認できます。
 
   たとえば、送信 IP アドレスがアプリの外部のファイアウォールに明示的に含まれている場合や、外部の支払いサービスでアプリの送信 IP アドレスを含んだ許可リストが使用されている場合があります。 お使いの送信アドレスがアプリの外部の場所にあるリスト内で構成されている場合は、それを変更する必要があります。
 
@@ -39,7 +40,7 @@ ms.locfileid: "49309353"
 
 3.  一覧から App Service アプリを選択します。
 
-4.  アプリが関数アプリの場合、「[Function app outbound IP addresses](../azure-functions/ip-addresses.md#find-outbound-ip-addresses)」(関数アプリの送信 IP アドレス) を参照してください。
+1.  アプリが関数アプリの場合、「[Function app outbound IP addresses](../azure-functions/ip-addresses.md#find-outbound-ip-addresses)」(関数アプリの送信 IP アドレス) を参照してください。
 
 4.  **[設定]** ヘッダーの下で、左側のナビゲーションにある **[プロパティ]** をクリックし、**[送信 IP アドレス]** というラベルの付いたセクションを見つけます。
 
@@ -47,4 +48,4 @@ ms.locfileid: "49309353"
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Azure によって開始された IP アドレスの変更に備える方法について説明しました。 Azure App Service での IP アドレスの詳細については、「[Azure App Service における受信 IP アドレスと送信 IP アドレス](app-service-ip-addresses.md)」を参照してください。
+この記事では、Azure によって開始された IP アドレスの変更に備える方法について説明しました。 Azure App Service での IP アドレスの詳細については、「[Azure App Service における受信 IP アドレスと送信 IP アドレス](overview-inbound-outbound-ips.md)」を参照してください。

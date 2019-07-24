@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs 認証とセキュリティ モデルの概要 | Microsoft Docs
-description: Event Hubs の認証とセキュリティ モデルの概要
+title: 認証とセキュリティ モデル - Azure Event Hubs | Microsoft Docs
+description: この記事では、Azure Event Hubs の認証とセキュリティ モデルについて説明します。
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 0e8dcf9eede744d52e38b742946a59944988f199
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 19b347423c28b4c615f90f325ead462b9d3e8e9e
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42144320"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990036"
 ---
-# <a name="event-hubs-authentication-and-security-model-overview"></a>Event Hubs の認証とセキュリティ モデルの概要
+# <a name="azure-event-hubs---authentication-and-security-model"></a>Azure Event Hubs - 認証とセキュリティ モデル
 
 Azure Event Hubs のセキュリティ モデルは、次の要件に対応します。
 
@@ -67,13 +68,13 @@ nm.CreateEventHub(ed);
 
 ### <a name="generate-tokens"></a>トークンを生成する
 
-SAS キーを使用してトークンを生成できます。 クライアントごとにトークンを 1 つだけ作成する必要があります。 トークンは、次のメソッドを使用して生成できます。 すべてのトークンは、 **EventHubSendKey** キーを使用して生成されます。 各トークンには、一意の URI が割り当てられます。
+SAS キーを使用してトークンを生成できます。 クライアントごとにトークンを 1 つだけ作成する必要があります。 トークンは、次のメソッドを使用して生成できます。 すべてのトークンは、 **EventHubSendKey** キーを使用して生成されます。 各トークンには、一意の URI が割り当てられます。 "resource" パラメーターは、サービス (ここではイベント ハブ) の URI エンドポイントに対応します。
 
 ```csharp
 public static string SharedAccessSignatureTokenProvider.GetSharedAccessSignature(string keyName, string sharedAccessKey, string resource, TimeSpan tokenTimeToLive)
 ```
 
-このメソッドを呼び出すときは、URI に `//<NAMESPACE>.servicebus.windows.net/<EVENT_HUB_NAME>/publishers/<PUBLISHER_NAME>`を指定する必要があります。 すべてのトークンで同じ URI を使用しますが、 `PUBLISHER_NAME`のみ、トークンごとに異なるものにする必要があります。 `PUBLISHER_NAME` はそのトークンを受信するクライアントの ID を表していると理想的です。
+このメソッドを呼び出すときは、URI に `https://<NAMESPACE>.servicebus.windows.net/<EVENT_HUB_NAME>/publishers/<PUBLISHER_NAME>`を指定する必要があります。 すべてのトークンで同じ URI を使用しますが、 `PUBLISHER_NAME`のみ、トークンごとに異なるものにする必要があります。 `PUBLISHER_NAME` はそのトークンを受信するクライアントの ID を表していると理想的です。
 
 このメソッドは、次の構造を持つトークンを生成します。
 

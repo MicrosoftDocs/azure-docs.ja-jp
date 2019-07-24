@@ -2,32 +2,34 @@
 title: Azure Event Grid のイベントをフィルター処理する方法
 description: イベントをフィルター処理する Azure Event Grid サブスクリプションを作成する方法を示します。
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/07/2018
-ms.author: tomfitz
-ms.openlocfilehash: fd0b2bda91ecb9b717f4cfe366c45bc95b21fd8e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.date: 01/07/2019
+ms.author: spelluru
+ms.openlocfilehash: 182a936e97cd6ed2527d618dfe777ae861c757e3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277564"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182253"
 ---
 # <a name="filter-events-for-event-grid"></a>Event Grid のイベントのフィルター処理
 
 この記事では、Event Grid サブスクリプションを作成するときにイベントをフィルター処理する方法について説明します。 イベントのフィルター処理のオプションの詳細については、「[Understand event filtering for Event Grid subscriptions (Event Grid サブスクリプションのイベントのフィルター処理について)](event-filtering.md)」を参照してください。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="filter-by-event-type"></a>イベントの種類でフィルター処理する
 
-Event Grid サブスクリプションを作成するときに、エンドポイントに送信する[イベントの種類](event-schema.md)を指定できます。 このセクションの例では、リソース グループのイベント サブスクリプションを作成しますが、送信されるイベントを `Microsoft.Resources.ResourceWriteFailure` と `Microsoft.Resources.ResourceWriteSuccess` に限定しています。 イベントの種類でイベントをフィルター処理する際にさらに柔軟性が必要な場合は、[高度な演算子とデータ フィールドを使用したフィルター処理](#filter-by-advanced-operators-and-data-fields)に関するセクションを参照してください。
+Event Grid サブスクリプションを作成するときに、エンドポイントに送信する[イベントの種類](event-schema.md)を指定できます。 このセクションの例では、リソース グループのイベント サブスクリプションを作成しますが、送信されるイベントを `Microsoft.Resources.ResourceWriteFailure` と `Microsoft.Resources.ResourceWriteSuccess` に限定しています。 イベントの種類でイベントをフィルター処理する際にさらに柔軟性が必要な場合は、高度な演算子とデータ フィールドを使用したフィルター処理に関するセクションを参照してください。
 
 PowerShell の場合は、サブスクリプションの作成時に `-IncludedEventType` パラメーターを使用します。
 
 ```powershell
 $includedEventTypes = "Microsoft.Resources.ResourceWriteFailure", "Microsoft.Resources.ResourceWriteSuccess"
 
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -EventSubscriptionName demoSubToResourceGroup `
   -ResourceGroupName myResourceGroup `
   -Endpoint <endpoint-URL> `
@@ -77,14 +79,14 @@ Resource Manager テンプレートの場合は、`includedEventTypes` プロパ
 
 ## <a name="filter-by-subject"></a>件名でフィルター処理する
 
-イベント データの件名でイベントをフィルター処理できます。 件名の先頭または末尾で照合する値を指定できます。 件名でイベントをフィルター処理する際にさらに柔軟性が必要な場合は、[高度な演算子とデータ フィールドを使用したフィルター処理](#filter-by-advanced-operators-and-data-fields)に関するセクションを参照してください。
+イベント データの件名でイベントをフィルター処理できます。 件名の先頭または末尾で照合する値を指定できます。 件名でイベントをフィルター処理する際にさらに柔軟性が必要な場合は、高度な演算子とデータ フィールドを使用したフィルター処理に関するセクションを参照してください。
 
 次の PowerShell の例では、件名の先頭でフィルター処理するイベント サブスクリプションを作成しています。 `-SubjectBeginsWith` パラメーターを使用して、イベントを特定のリソースのイベントに限定しています。 ネットワーク セキュリティ グループのリソース ID を渡します。
 
 ```powershell
-$resourceId = (Get-AzureRmResource -ResourceName demoSecurityGroup -ResourceGroupName myResourceGroup).ResourceId
+$resourceId = (Get-AzResource -ResourceName demoSecurityGroup -ResourceGroupName myResourceGroup).ResourceId
 
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -Endpoint <endpoint-URL> `
   -EventSubscriptionName demoSubscriptionToResourceGroup `
   -ResourceGroupName myResourceGroup `
@@ -94,9 +96,9 @@ New-AzureRmEventGridSubscription `
 次の PowerShell の例では、BLOB ストレージのサブスクリプションを作成しています。 ここでは、イベントは、件名の末尾が `.jpg` のイベントに限定されています。
 
 ```powershell
-$storageId = (Get-AzureRmStorageAccount -ResourceGroupName myResourceGroup -AccountName $storageName).Id
+$storageId = (Get-AzStorageAccount -ResourceGroupName myResourceGroup -AccountName $storageName).Id
 
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -EventSubscriptionName demoSubToStorage `
   -Endpoint <endpoint-URL> `
   -ResourceId $storageId `
@@ -218,15 +220,15 @@ PowerShell では、次を使用します。
 $topicName = <your-topic-name>
 $endpointURL = <endpoint-URL>
 
-New-AzureRmResourceGroup -Name gridResourceGroup -Location eastus2
-New-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Location eastus2 -Name $topicName
+New-AzResourceGroup -Name gridResourceGroup -Location eastus2
+New-AzEventGridTopic -ResourceGroupName gridResourceGroup -Location eastus2 -Name $topicName
 
-$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name $topicName).Id
+$topicid = (Get-AzEventGridTopic -ResourceGroupName gridResourceGroup -Name $topicName).Id
 
 $expDate = '<mm/dd/yyyy hh:mm:ss>' | Get-Date
 $AdvFilter1=@{operator="StringIn"; key="Data.color"; Values=@('blue', 'red', 'green')}
 
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -ResourceId $topicid `
   -EventSubscriptionName <event_subscription_name> `
   -Endpoint $endpointURL `
@@ -252,8 +254,8 @@ curl -X POST -H "aeg-sas-key: $key" -d "$event" $topicEndpoint
 PowerShell では、次を使用します。
 
 ```azurepowershell-interactive
-$endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name $topicName).Endpoint
-$keys = Get-AzureRmEventGridTopicKey -ResourceGroupName gridResourceGroup -Name $topicName
+$endpoint = (Get-AzEventGridTopic -ResourceGroupName gridResourceGroup -Name $topicName).Endpoint
+$keys = Get-AzEventGridTopicKey -ResourceGroupName gridResourceGroup -Name $topicName
 
 $eventID = Get-Random 99999
 $eventDate = Get-Date -Format s

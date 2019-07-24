@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: magattus
-ms.openlocfilehash: 45b3698dd77bda815218b43405d64819c3e4789f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ef713c954d6eab05259547a277db12a1e9036bcf
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091268"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650548"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Azure CDN の使用パターンを分析する
 
@@ -27,7 +27,7 @@ ms.locfileid: "49091268"
 
 ## <a name="core-analytics-via-azure-diagnostic-logs"></a>Azure 診断ログによるコア分析
 
-コア分析は、、すべての価格レベルの CDN エンドポイントで使用できます。 Azure 診断ログを使用すると、コア分析を、Azure Storage、イベント ハブ、または Azure Log Analytics にエクスポートできます。 Azure Log Analytics には、ユーザーによる構成とカスタマイズに対応したグラフを含むソリューションが用意されています。 Azure 診断ログの詳細については、「[Azure 診断ログ](cdn-azure-diagnostic-logs.md)」を参照してください。
+コア分析は、、すべての価格レベルの CDN エンドポイントで使用できます。 Azure Diagnostics ログを使用すると、コア分析を、Azure Storage、イベント ハブ、または Azure Monitor ログにエクスポートできます。 Azure Monitor ログには、ユーザーによる構成とカスタマイズに対応したグラフを含むソリューションが用意されています。 Azure 診断ログの詳細については、「[Azure 診断ログ](cdn-azure-diagnostic-logs.md)」を参照してください。
 
 ## <a name="verizon-core-reports"></a>Verizon コア レポート
 

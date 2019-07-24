@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights JavaScript クライアント ライブラリを調べる
+title: チュートリアル:Azure Time Series Insights JavaScript クライアント ライブラリを調べる | Microsoft Docs
 description: Azure Time Series Insights JavaScript クライアント ライブラリと、関連するプログラミング モデルについて説明します。
 author: ashannon7
 manager: cshankar
@@ -8,14 +8,15 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
-ms.openlocfilehash: 5f31dce98cd873a0bf4b750934384e1bf6d2564a
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.custom: seodec18
+ms.openlocfilehash: 8ed3213a40370b1ab2beb15a989a22017b058d65
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706995"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812074"
 ---
-# <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>チュートリアル: Azure Time Series Insights JavaScript クライアント ライブラリを調べる
+# <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>チュートリアル:Azure Time Series Insights JavaScript クライアント ライブラリを調べる
 
 Time Series Insights (TSI) に格納されたデータを照会して視覚化する Web 開発者を支援するために、JavaScript D3 ベースのクライアント ライブラリが開発されました。  このチュートリアルでは、サンプルの Web アプリケーションを使用して、TSI クライアント ライブラリと、関連するプログラミング モデルについて説明します。
 
@@ -82,7 +83,7 @@ Time Series Insights (TSI) に格納されたデータを照会して視覚化�
 
 3. `<div class="chartsWrapper">` 要素を展開すると、子の `<div>` 要素がさらに表示されます。 これらの要素は、各グラフ コントロールの例の配置に使用されます。 いくつかの `<div>` 要素のペアがあることに注意してください。それぞれが各グラフ例に対応しています。
 
-   - 1 つ目の (`class="rowOfCardsTitle"`) 要素には、グラフが何を表しているかを要約する、わかりやすいタイトルが含まれています。 たとえば、"Static Line Charts With Full-Size Legends" などです。
+   - 1 つ目の (`class="rowOfCardsTitle"`) 要素には、グラフが何を表しているかを要約する、わかりやすいタイトルが含まれています。 例: "Static Line Charts With Full-Size Legends" (フルサイズの凡例付きの静的な折れ線グラフ)。
    - 2 つ目の (`class="rowOfCards"`) 要素は、実際のグラフ コントロールを行内に配置する追加の子 `<div>` 要素を含む親です。
 
    ![本体の div 要素](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-divs.png)
@@ -95,8 +96,8 @@ Time Series Insights (TSI) に格納されたデータを照会して視覚化�
 
 詳細については説明しませんが、TSI クライアント ライブラリ **tsclient.js** は基本的に次の 2 つの重要なカテゴリの抽象化を提供します。
 
-- **TSI Query API を呼び出すためのラッパー メソッド**: 集計式を使用して TSI データを照会できるようにする REST API。 メソッドは、ライブラリの `TsiClient.Server` 名前空間の下に整理されています。
-- **いくつかの種類のグラフ コントロールを作成してデータを設定するためのメソッド**: TSI 集計データを Web ページにレンダリングするために使用されるメソッド。 メソッドは、ライブラリの `TsiClient.UX` 名前空間の下に整理されています。
+- **TSI Query API を呼び出すためのラッパー メソッド**:集計式を使用して TSI データを照会できるようにする REST API。 メソッドは、ライブラリの `TsiClient.Server` 名前空間の下に整理されています。
+- **いくつかの種類のグラフ コントロールを作成してデータを設定するためのメソッド**:TSI 集計データを Web ページにレンダリングするために使用されるメソッド。 メソッドは、ライブラリの `TsiClient.UX` 名前空間の下に整理されています。
 
 以下の概念は普遍的であり、一般的には TSI Client ライブラリ API に適用することができます。
 
@@ -146,7 +147,7 @@ TSI Client ライブラリ API は、集計式を頻繁に使用します。 集
    | `splitByObject`   | 分割用に使用する文字列プロパティ (省略可能 – null にすることができます)。 | `{property: 'Station', type: 'String'}` |
    | `color`         | レンダリングするオブジェクトの色。 | `'pink'` |
    | `alias`           | 集計式のフレンドリ名。 | `'Factory3Temperature'` |
-   | `contextMenuActions` | 視覚化時に時系列オブジェクトにバインドするアクションの配列 (省略可能)。 | 詳しくは、「高度な機能」セクションの「[ポップアップ コンテキスト メニュー](#popup-context-menus)」をご覧ください。 |
+   | `contextMenuActions` | 視覚化時に時系列オブジェクトにバインドするアクションの配列 (省略可能)。 | 詳しくは、「高度な機能」セクションの「ポップアップ コンテキスト メニュー」をご覧ください。 |
 
 3. `TsiClient.Server` API を使用して TSI クエリを呼び出し、集計データを要求します。
 
@@ -235,15 +236,15 @@ TSI クライアント ライブラリは、利用する価値がありそうな
 
 1. まず、一連のカスタム アクションが定義されます。 各アクションには、1 つ以上の要素を含む配列が含まれています。 各要素は、1 つのコンテキスト メニュー項目を定義しています。
 
-   - `barChartActions`: このアクションは、円グラフのコンテキスト メニューを定義します。1 つの項目を定義する 1 つの要素が含まれています。
-     - `name`: メニュー項目 "Print parameters to console" に使用されるテキストです。
-     - `action`: メニュー項目に関連付けられたアクションです。 アクションは常に、グラフを作成するために使用される集計式に基づいて 3 つの引数を受け取る匿名関数です。 この場合、引数はブラウザーのコンソール ウィンドウに書き込まれます。
-       - `ae`: 集計式の配列です。
-       - `splitBy`: splitBy 値です。
-       - `timestamp`: タイムスタンプです。
+   - `barChartActions`:このアクションは、円グラフのコンテキスト メニューを定義します。1 つの項目を定義する 1 つの要素が含まれています。
+     - `name`:メニュー項目 "Print parameters to console" に使用されるテキストです。
+     - `action`:メニュー項目に関連付けられたアクションです。 アクションは常に、グラフを作成するために使用される集計式に基づいて 3 つの引数を受け取る匿名関数です。 この場合、引数はブラウザーのコンソール ウィンドウに書き込まれます。
+       - `ae`:集計式の配列です。
+       - `splitBy`:splitBy 値です。
+       - `timestamp`:タイムスタンプです。
 
-   - `pieChartActions`: このアクションは、棒グラフのコンテキスト メニューを定義します。1 つの項目を定義する 1 つの要素が含まれています。 形とスキーマは前の `barChartActions` 要素と同じですが、棒グラフをインスタンス化してレンダリングするので、`action` 関数は大きく異なっています。 また、`ae` 引数が、実行時にメニュー項目が開くときに渡される集計式配列を指定するために使用されていることにも注意してください。 さらにこの関数は、`ae.contextMenu` プロパティに `barChartActions` コンテキスト メニューを設定します。
-   - `contextMenuActions`: このアクションは、折れ線グラフのコンテキスト メニューを定義します。3 つのメニュー項目を定義する 3 つの要素が含まれています。 各要素の形とスキーマは、前に説明した要素と同じです。 `barChartActions` 要素と同様に、最初の項目は 3 つの関数引数をブラウザーのコンソール ウィンドウに書き込みます。 `pieChartActions` 要素のように、2 番目の 2 つの項目は、それぞれ円グラフと棒グラフをインスタンス化してレンダリングします。 2 番目の 2 つの項目は、さらに `ae.contextMenu` プロパティにそれぞれ `pieChartActions` および `barChartActions` のコンテキスト メニューを設定します。
+   - `pieChartActions`:このアクションは、棒グラフのコンテキスト メニューを定義します。1 つの項目を定義する 1 つの要素が含まれています。 形とスキーマは前の `barChartActions` 要素と同じですが、棒グラフをインスタンス化してレンダリングするので、`action` 関数は大きく異なっています。 また、`ae` 引数が、実行時にメニュー項目が開くときに渡される集計式配列を指定するために使用されていることにも注意してください。 さらにこの関数は、`ae.contextMenu` プロパティに `barChartActions` コンテキスト メニューを設定します。
+   - `contextMenuActions`:このアクションは、折れ線グラフのコンテキスト メニューを定義します。3 つのメニュー項目を定義する 3 つの要素が含まれています。 各要素の形とスキーマは、前に説明した要素と同じです。 `barChartActions` 要素と同様に、最初の項目は 3 つの関数引数をブラウザーのコンソール ウィンドウに書き込みます。 `pieChartActions` 要素のように、2 番目の 2 つの項目は、それぞれ円グラフと棒グラフをインスタンス化してレンダリングします。 2 番目の 2 つの項目は、さらに `ae.contextMenu` プロパティにそれぞれ `pieChartActions` および `barChartActions` のコンテキスト メニューを設定します。
 
 2. 次に、2 つの集計式が `aes` 集計式配列にプッシュされ、各項目に `contextMenuActions` 配列が指定されます。 これらの式は、折れ線グラフ コントロールで使用されます。
 
@@ -259,13 +260,13 @@ TSI クライアント ライブラリは、利用する価値がありそうな
 
 ブラシは、ズームや調査などのアクションの定義で、時間範囲を特定するために使用されます。
 
-ブラシを説明するためのコードは、前の「[ポップアップ コンテキスト メニュー](#popup-context-menus-section)」の "Line Chart with Context Menu to Create Pie/Bar Chart" の例に示されています。
+ブラシを説明するためのコードは、前の「ポップアップ コンテキスト メニュー」の「円/棒グラフを作成するためのコンテキスト メニューを含む折れ線グラフ」の例に示されています。
 
 1. ブラシのアクションは、コンテキスト メニューとよく似ており、ブラシに一連のカスタム アクションを定義します。 各アクションには、1 つ以上の要素を含む配列が含まれています。 各要素は、1 つのコンテキスト メニュー項目を定義しています。
-   - `name`: メニュー項目 "Print parameters to console" に使用されるテキストです。
-   - `action`: メニュー項目に関連付けられたアクション。これは常に 2 つの引数を受け取る匿名関数です。 この場合、引数はブラウザーのコンソール ウィンドウに書き込まれます。
-      - `fromTime`: ブラシの選択範囲の "開始" タイムスタンプです。
-      - `toTime`: ブラシの選択範囲の "終了" タイムスタンプです。
+   - `name`:メニュー項目 "Print parameters to console" に使用されるテキストです。
+   - `action`:メニュー項目に関連付けられたアクション。これは常に 2 つの引数を受け取る匿名関数です。 この場合、引数はブラウザーのコンソール ウィンドウに書き込まれます。
+      - `fromTime`:ブラシの選択範囲の "開始" タイムスタンプです。
+      - `toTime`:ブラシの選択範囲の "終了" タイムスタンプです。
 
 2. ブラシのアクションは、別のグラフ オプション プロパティとして追加されます。 `brushContextMenuActions: brushActions` プロパティが `linechart.Render` 呼び出しに渡されることに注意してください。
 
@@ -285,6 +286,6 @@ TSI クライアント ライブラリは、利用する価値がありそうな
 説明したように、TSI Sample アプリケーションは、デモのデータ セットを使用します。 独自の TSI 環境とデータ セットを作成する方法については、次の記事に進んでください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: Azure Time Series Insights 環境を作成する](tutorial-create-populate-tsi-environment.md)
+> [チュートリアル:Azure Time Series Insights 環境を作成する](tutorial-create-populate-tsi-environment.md)
 
 

@@ -6,20 +6,20 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 80a26f7f2c97fdbc5342d8845277facd79f22a62
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 3890283f70bfd922d0c436f76b38d7f81d7b8c6f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210008"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107020"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>セカンダリ オンプレミス サイトにレプリケートされた Hyper-V VM のフェールオーバーとフェールバック
 
 [Azure Site Recovery](site-recovery-overview.md) サービスは、オンプレミスのコンピュータと Azure 仮想マシン (VM) のレプリケーション、フェールオーバー、およびフェールバックの管理と調整を行います。
 
-この記事では、System Center Virtual Machine Manager (VMM) クラウドで管理されている Hyper-V VM を、セカンダリ VMM サイトにフェールオーバーする方法について説明します。 フェールオーバーした後、オンプレミス サイトが使用可能になったときにオンプレミス サイトにフェールバックします。 この記事では、次のことについて説明します:
+この記事では、System Center Virtual Machine Manager (VMM) クラウドで管理されている Hyper-V VM を、セカンダリ VMM サイトにフェールオーバーする方法について説明します。 フェールオーバーした後、オンプレミス サイトが使用可能になったときにオンプレミス サイトにフェールバックします。 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * Hyper-V VM をプライマリ VMM クラウドからセカンダリ VMM クラウドにフェールオーバーする
@@ -49,7 +49,7 @@ Hyper-V VM の通常のフェールオーバーまたは計画されたフェー
 - 通常のフェールオーバーは、予期しない停電時に使用します。 このフェールオーバーを実行すると、Site Recovery はセカンダリ サイトに VM を作成し、電源を投入します。 同期されていない保留中のデータによっては、データの損失が発生する可能性があります。
 - 計画されたフェールオーバーは、メンテナンスや想定された停止時に使用できます。 このオプションではデータ損失は発生しません。 計画されたフェールオーバーがトリガーされると、ソース VM がシャット ダウンされます。 同期されていないデータが同期され、フェールオーバーがトリガーされます。 
 - 
-この手順では、通常のフェールオーバーを実行する方法について説明します。
+  この手順では、通常のフェールオーバーを実行する方法について説明します。
 
 
 1. **[設定]** > **[レプリケートされたアイテム]** で、[VM] > **[フェールオーバー]** をクリックします。
@@ -58,7 +58,7 @@ Hyper-V VM の通常のフェールオーバーまたは計画されたフェー
 3. VM を確認したら、フェールオーバーを**コミット**します。 これにより、利用可能なすべての復旧ポイントが削除されます。
 
 > [!WARNING]
-> **進行中のフェールオーバーをキャンセルしないでください**。フェールオーバーが開始される前に VM のレプリケーションが停止します。 進行中のフェールオーバーをキャンセルすると、フェールオーバーは停止しますが、VM が再びレプリケートされることはありません。  
+> **進行中のフェールオーバーを取り消さないでください**: フェールオーバーが開始される前に、VM のレプリケーションが停止されます。 進行中のフェールオーバーをキャンセルすると、フェールオーバーは停止しますが、VM が再びレプリケートされることはありません。  
 
 
 ## <a name="reverse-replicate-and-failover"></a>レプリケーションの反転とフェールオーバー

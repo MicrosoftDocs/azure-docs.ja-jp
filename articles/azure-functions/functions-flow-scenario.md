@@ -229,7 +229,7 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
     | **タイトル**           | Turbine 60 |
     | **LastServiceDate** | 08/04/2017 |
     | **MaxOutput**       | 2500 |
-    | **ServiceRequired** | [はい] |
+    | **ServiceRequired** | はい |
     | **EstimatedEffort** | 10 |
 
 3. **[Done]** をクリックします。

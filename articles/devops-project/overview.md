@@ -7,19 +7,19 @@ author: mlearned
 manager: douge
 editor: mlearned
 ms.assetid: ''
-ms.service: devops-project
+ms.service: az-devops-project
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 05/03/2018
 ms.author: mlearned
-ms.openlocfilehash: 9efb3c9bae790efed3d09274b1a77d7b8161d479
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 6ae2d0723b195ed59f8c6a7320245509145094df
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165241"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776599"
 ---
 # <a name="overview-of-azure-devops-projects"></a>Azure DevOps Projects の概要
 
@@ -68,7 +68,7 @@ DevOps Projects では、Azure DevOps の機能が利用されています。 De
 DevOps Projects を作成した後は、次のことができます。
 
 * ビルドとリリースのパイプラインをカスタマイズします
-* プル要求を使ってコードのフローを管理し、高い品質を維持します
+* Pull request を使ってコードのフローを管理し、高い品質を維持します
 * コードをマージして品質の水準を引き上げる前に、各コミットをテストしてビルドします
 * アプリケーションと共にバックログと問題を追跡します
 

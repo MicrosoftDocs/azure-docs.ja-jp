@@ -15,20 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/01/2017
 ms.author: cherylmc
-ms.openlocfilehash: 79bf6892c823da282c3e763921e830f986419854
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0955d95ebfd9e1f72ed1da577bf3520a70b71624
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23123840"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008329"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用した 強制トンネリングの構成
 
 強制トンネリングを使用すると、検査および監査のために、サイト間の VPN トンネルを介して、インターネットへのすべてのトラフィックをオンプレミスの場所に戻すようにリダイレクトする (つまり、"強制する") ことができます。 これは、ほとんどの企業 IT ポリシーの重要なセキュリティ要件です。 強制トンネリングを使用しない場合、Azure の VM からインターネットへのトラフィックは、トラフィックを検査または監査できるオプションを使用せずに、常に Azure ネットワーク インフラストラクチャからインターネットへ直接トラバースします。 認証されていないインターネット アクセスは、情報の漏えいまたは他の種類のセキュリティ侵害を招く可能性があります。
 
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-この記事では、クラシック デプロイ モデルを使用して作成された仮想ネットワークの強制トンネリングを構成する手順について説明します。 強制トンネリングは、ポータルを経由せずに、PowerShell を使用して構成できます。 Resource Manager のデプロイ モデル向けに強制トンネリングを構成する場合は、次のドロップダウン リストから従来の記事を選択します。
+この記事では、クラシック デプロイ モデルを使用して作成された仮想ネットワークの強制トンネリングを構成する手順について説明します。 強制トンネリングは、ポータルを経由せずに、PowerShell を使用して構成できます。 Resource Manager デプロイ モデル向けに強制トンネリングを構成する場合は、次のドロップダウン リストから Resource Manager の記事を選択します。
 
 > [!div class="op_single_selector"]
 > * [PowerShell - クラシック](vpn-gateway-about-forced-tunneling.md)
@@ -41,7 +41,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 * 各仮想ネットワーク サブネットには、システム ルーティング テーブルが組み込まれています。 システム ルーティング テーブルには、次の 3 つのグループがあります。
 
-  * **ローカル VNet ルート:** 直接、同じ仮想ネットワーク内の宛先 VM へ。
+  * **ローカル VNet ルーティング:** 直接、同じ仮想ネットワーク内の宛先 VM へ。
   * **オンプレミス ルート:** Azure VPN ゲートウェイへ。
   * **既定のルート:** 直接、インターネットへ。 前の 2 つのルートが網羅していないプライベート IP アドレスへ送信されるパケットは削除されます。
 * ユーザー定義ルートをリリースすることにより、既定のルートを追加するルーティング テーブルを作成し、そのルーティング テーブルを VNet サブネットに関連付け、それらのサブネットでの強制トンネリングを有効にすることができます。
@@ -66,7 +66,7 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 ## <a name="configure-forced-tunneling"></a>強制トンネリングについて
 次の手順は、仮想ネットワークで強制トンネリングを指定するのに役立ちます。 構成手順は、VNet ネットワーク構成ファイルに対応します。
 
-```
+```xml
 <VirtualNetworkSite name="MultiTier-VNet" Location="North Europe">
      <AddressSpace>
       <AddressPrefix>10.1.0.0/16</AddressPrefix>
@@ -104,38 +104,41 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
     </VirtualNetworkSite>
 ```
 
-この例では、仮想ネットワークである "MultiTier-VNet" には、"Frontend"、"Midtier"、"Backend" という 3 つのサブネットがあり、"DefaultSiteHQ" と 3 つの Branch の計 4 つのクロス プレミス接続があります。 
+この例では、仮想ネットワーク 'MultiTier-VNet' には 3 つのサブネット ('Frontend'、'Midtier'、'Backend' サブネット) があり、クロスプレミス接続は 4 つ ('DefaultSiteHQ' および 3 つの分岐) 用意されています。 
 
 以下の手順で "DefaultSiteHQ" を強制トンネリングの既定のサイト接続として設定し、強制トンネリングが使用されるように Midtier と Backend を構成します。
 
 1. ルーティング テーブルを作成します。 ルート テーブルを作成するには、以下のコマンドレットを使用します。
 
-  ```powershell
-  New-AzureRouteTable –Name "MyRouteTable" –Label "Routing Table for Forced Tunneling" –Location "North Europe"
-  ```
+   ```powershell
+   New-AzureRouteTable –Name "MyRouteTable" –Label "Routing Table for Forced Tunneling" –Location "North Europe"
+   ```
+
 2. 既定のルートをルーティング テーブルに追加します。 
 
-  次の例は、手順 1. で作成したルーティング テーブルに既定のルートを追加します。 サポートされている唯一のルートには、"VPNGateway" という次のホップへの宛先プレフィックスの「0.0.0.0/0」が付いています。
+   次の例は、手順 1. で作成したルーティング テーブルに既定のルートを追加します。 サポートされている唯一のルートには、"VPNGateway" という次のホップへの宛先プレフィックスの「0.0.0.0/0」が付いています。
 
-  ```powershell
-  Get-AzureRouteTable -Name "MyRouteTable" | Set-AzureRoute –RouteTable "MyRouteTable" –RouteName "DefaultRoute" –AddressPrefix "0.0.0.0/0" –NextHopType VPNGateway
-  ```
+   ```powershell
+   Get-AzureRouteTable -Name "MyRouteTable" | Set-AzureRoute –RouteTable "MyRouteTable" –RouteName "DefaultRoute" –AddressPrefix "0.0.0.0/0" –NextHopType VPNGateway
+   ```
+
 3. サブネットには、ルーティング テーブルを関連付けます。 
 
-  ルーティング テーブルを作成し、ルートを追加した後は、次の例を使用して、ルート テーブルを VNet サブネットに追加または関連付けます。 このサンプルでは、ルート テーブル "MyRouteTable" を VNet MultiTier-VNet の Midtier および Backend サブネットに追加します。
+   ルーティング テーブルを作成し、ルートを追加した後は、次の例を使用して、ルート テーブルを VNet サブネットに追加または関連付けます。 このサンプルでは、ルート テーブル "MyRouteTable" を VNet MultiTier-VNet の Midtier および Backend サブネットに追加します。
 
-  ```powershell
-  Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Midtier" -RouteTableName "MyRouteTable"
-  Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Backend" -RouteTableName "MyRouteTable"
-  ```
+   ```powershell
+   Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Midtier" -RouteTableName "MyRouteTable"
+   Set-AzureSubnetRouteTable -VirtualNetworkName "MultiTier-VNet" -SubnetName "Backend" -RouteTableName "MyRouteTable"
+   ```
+
 4. 強制トンネリングに既定のサイトを割り当てます。 
 
-  前の手順で、サンプルのコマンドレット スクリプトが、ルーティング テーブルを作成して、ルート テーブルを 2 つの VNet のサブネットに関連付けました。 残りの手順は、仮想ネットワークの複数サイト間接続でローカルのサイトを規定のサイトまたはトンネルとして選択します。
+   前の手順で、サンプルのコマンドレット スクリプトが、ルーティング テーブルを作成して、ルート テーブルを 2 つの VNet のサブネットに関連付けました。 残りの手順は、仮想ネットワークの複数サイト間接続でローカルのサイトを規定のサイトまたはトンネルとして選択します。
 
-  ```powershell
-  $DefaultSite = @("DefaultSiteHQ")
-  Set-AzureVNetGatewayDefaultSite –VNetName "MultiTier-VNet" –DefaultSite "DefaultSiteHQ"
-  ```
+   ```powershell
+   $DefaultSite = @("DefaultSiteHQ")
+   Set-AzureVNetGatewayDefaultSite –VNetName "MultiTier-VNet" –DefaultSite "DefaultSiteHQ"
+   ```
 
 ## <a name="additional-powershell-cmdlets"></a>その他の PowerShell コマンドレット
 ### <a name="to-delete-a-route-table"></a>ルート テーブルを削除するには

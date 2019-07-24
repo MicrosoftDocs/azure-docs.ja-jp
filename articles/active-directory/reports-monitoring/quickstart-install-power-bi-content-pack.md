@@ -3,26 +3,27 @@ title: Azure AD Power BI コンテンツ パックをインストールする | 
 description: Azure AD Power BI コンテンツ パックをインストールする方法について説明します
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
-manager: mtillman
+author: MarkusVi
+manager: daveba
 ms.assetid: fd5604eb-1334-4bd8-bfb5-41280883e2b5
 ms.service: active-directory
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: cd5da2a3c5fa3d9cd67715493eb649926badb694
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 69a69732d8cb42c248fa954ef9047e5876f40837
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622536"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437426"
 ---
-# <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>クイック スタート: Azure Active Directory Power BI コンテンツ パックをインストールする
+# <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>クイック スタート:Azure Active Directory Power BI コンテンツ パックのインストール
 
 |  |
 |--|
@@ -39,7 +40,7 @@ Azure Active Directory (Azure AD) 用 Power BI コンテンツ パックを使�
 
 * Power BI アカウント  これは、ご利用の O365 または Azure AD アカウントと同じアカウントです。 
 * Azure AD テナント ID。 これは、Azure portal の[プロパティ ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)で確認できるディレクトリの ID (**[ディレクトリ ID]**) です。
-* Azure AD Premium (P1/P2) ライセンス。 
+* Azure AD Premium (P1/P2) ライセンス。 Azure Active Directory エディションにアップグレードするには、「[Azure Active Directory Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。
 
 ## <a name="install-azure-ad-power-bi-content-pack"></a>Azure AD Power BI コンテンツ パックをインストールする 
 

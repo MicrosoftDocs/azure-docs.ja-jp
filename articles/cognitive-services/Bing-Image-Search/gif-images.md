@@ -1,37 +1,38 @@
 ---
-title: .gif イメージの取得 - Bing Image Search API
+title: Bing Image Search の API を使用した GIF 画像の検索
 titleSuffix: Azure Cognitive Services
-description: Bing Image Search API を使用し、.gif 画像に関する詳細情報を取得する方法。
+description: Bing Image Search API を使用して Web 全体から .gif 画像を検索します。
 services: cognitive-services
 author: MikeDodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: rosh
-ms.openlocfilehash: 82a096ccc1ead9bfb542663ae193539fc227c1fb
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.custom: seodec2018
+ms.openlocfilehash: e7b2c43e06c8fbc1f561defebf29fdd37bc8bfab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870249"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100906"
 ---
-# <a name="search-for-gif-images-using-the-bing-image-search-api"></a>Bing Image Search の API を使用した .gif 画像の検索
+# <a name="search-for-gif-images"></a>GIF 画像を検索する 
 
-Bing Image Search API では、最も関連性の高い .gif 画像を探し、Web 全体を検索することもできます。  開発者は、さまざまな会話シナリオで、人を引きつける gif を統合できます。 
+Bing Image Search API では、最も関連性の高い .gif 画像を探し、Web 全体を検索することもできます。  開発者は、さまざまな会話シナリオで、人を引きつける gif を統合できます。 
 
 次の URL は、アニメーション .gif 画像のクエリです。
-````
+```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
-````
+```
 [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query) パラメーターによって検索語句が指定されます。  上記のクエリでは、[imageType](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagetype) フィルター パラメーターによって `animatedGif` も指定されます。
 
 結果の例を見るには、次の URL で bing.com を検索してください。
-````
+```
 https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animatedgif
 
-````
+```
 ## <a name="query-parameters"></a>クエリ パラメーター
 
 クエリのパラメーターとオプションに関する詳細については、[Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query-parameters) ページをご覧ください。 サンプルは、「[Java を利用したアニメーション gif のサンプル検索](#gifExample)」という見出しの下にあります。
@@ -46,18 +47,19 @@ https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animate
 - *AnimatedGifHttps* は、https アドレスを出典とするアニメーション gif 画像のみを返します。 安全のため、アプリケーションの多くは、外部 Web リンクに接続するとき、https 経由を要求します。 たとえば、Apple App Store は Web サービスに接続するとき、転送中のユーザー データを暗号化する HTTPS を要求します。
 
 <a name="gifExample" />
+
 ## <a name="example-search-for-animated-gif-using-java"></a>Java を利用したアニメーション gif のサンプル検索
 
 次の URL では、アニメーション .gif 画像 `q=interesting` が検索されます。
-````
+```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageType=AnimatedGif&mkt=en-us
 
-````
+```
 次の例に示すように、この URL クエリは [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#headers) ヘッダーを要求します。
 
 次の Java サンプルは要求をビルドし、送信します。
 
-````
+```
 package gifSearch;
 import java.net.*;
 import java.util.*;
@@ -166,7 +168,7 @@ class SearchResults{
  }
 }
 
-````
+```
 
 ## <a name="results"></a>結果
 このコードは、次の結果を JSON オブジェクトとして取得します。

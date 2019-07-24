@@ -1,5 +1,5 @@
 ---
-title: Azure で App Service プランを管理する | Microsoft Docs
+title: App Service プランを管理する - Azure | Microsoft Docs
 description: App Service プランを管理するためのさまざまなタスクを実行する方法について説明します。
 keywords: App Service, Azure App Service, スケール, App Service プラン, 変更する, 作成する, 管理する, 管理
 services: app-service
@@ -15,16 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: f426982163a5e49264bc4f222f6869d9cbb40c89
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: seodec18
+ms.openlocfilehash: 936abe80a66c1dbe99e7d8a255fe8995a2df0803
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166068"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715663"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure で App Service プランを管理する
 
-[Azure App Service プラン](azure-web-sites-web-hosting-plans-in-depth-overview.md)は、App Service アプリの実行に必要なリソースを提供します。 このガイドでは、App Service プランを管理する方法を示します。
+[Azure App Service プラン](overview-hosting-plans.md)は、App Service アプリの実行に必要なリソースを提供します。 このガイドでは、App Service プランを管理する方法を示します。
 
 ## <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
@@ -35,7 +36,7 @@ ms.locfileid: "49166068"
 
 1. [Azure Portal](https://portal.azure.com) で **[新規]** > **[Web + モバイル]** の順に選択し、**[Web アプリ]** またはその他の App Service アプリの種類を選択します。
 
-1. 新しいアプリ用に既存の App Service プランを選択するか、プランを作成します。
+2. 新しいアプリ用に既存の App Service プランを選択するか、プランを作成します。
 
    ![Azure Portal でアプリを作成します。][createWebApp]
 

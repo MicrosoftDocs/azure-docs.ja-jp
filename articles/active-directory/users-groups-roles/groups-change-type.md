@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory で静的なグループ メンバーシップの種類を動的に変更する | Microsoft Docs
+title: 静的なグループ メンバーシップの種類を動的に変更する - Azure Active Directory | Microsoft Docs
 description: グループを自動的に設定するメンバーシップ ルールと、ルール参照を作成する方法。
 services: active-directory
 documentationcenter: ''
@@ -8,18 +8,19 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 4cc9c446c1a8ff7c82b08ba9787a40598a8b4cd4
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dd753ca4994975302a0bc6fede61964f80196d7c
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450732"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199603"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Azure Active Directory で静的なグループメンバーシップを動的に変更する
 
@@ -32,7 +33,7 @@ Azure Active Directory (Azure AD) で、グループのメンバーシップを�
 
 ## <a name="change-the-membership-type-for-a-group"></a>グループのメンバーシップの種類を変更する
 
-1. グローバル管理者またはテナントのユーザー アカウントの管理者であるアカウントで、[Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+1. グローバル管理者またはテナントのユーザー管理者であるアカウントで、[Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 2. **[グループ]** を選びます。
 3. **[すべてのグループ]** の一覧から、変更するグループを開きます。
 4. **[プロパティ]** を選択します。
@@ -46,14 +47,13 @@ Azure Active Directory (Azure AD) で、グループのメンバーシップを�
   
 2. **[動的クエリの追加]** を選び、ルールを指定します。
   
-   ![ルールを入力する](./media/groups-change-type/enter-rule.png)
+   ![動的なグループのルールを入力する](./media/groups-change-type/enter-rule.png)
   
 3. ルールを作成した後、ページの下部にある **[クエリの追加]** を選びます。
 4. グループの **[プロパティ]** ページで **[保存]** を選んで、変更を保存します。 グループの一覧でグループの **[メンバーシップの種類]** がすぐに更新されます。
 
 > [!TIP]
 > 入力したメンバーシップ ルールが正しくない場合、グループの変換が失敗する可能性があります。 ポータルの右上隅に通知が表示されます。ルールがシステムで受け付けられない理由の説明が含まれます。 それをよく読み、有効にするためにできる調整の方法を理解してください。 ルールの構文の例、メンバーシップ ルールでサポートされているプロパティ、演算子、および値の完全な一覧については、[Azure Active Directory でのグループに対する動的メンバーシップ ルール](groups-dynamic-membership.md)に関する記事を参照してください。
-
 
 ## <a name="change-membership-type-for-a-group-powershell"></a>グループのメンバーシップの種類を変更する (PowerShell)
 
@@ -62,7 +62,7 @@ Azure Active Directory (Azure AD) で、グループのメンバーシップを�
 
 既存のグループにおいてメンバーシップの管理を切り替える関数を次に示します。 この例では、GroupTypes プロパティを正しく操作し、動的なメンバーシップに関係のない値を保持するようにしてください。
 
-```
+```powershell
 #The moniker for dynamic groups as used in the GroupTypes property of a group object
 $dynamicGroupTypeString = "DynamicMembership"
 
@@ -106,13 +106,13 @@ function ConvertStaticGroupToDynamic
 ```
 グループを静的にするには:
 
-```
+```powershell
 ConvertDynamicGroupToStatic "a58913b2-eee4-44f9-beb2-e381c375058f"
 ```
 
 グループを動的にするには:
 
-```
+```powershell
 ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.displayName -startsWith ""Peter"""
 ```
 

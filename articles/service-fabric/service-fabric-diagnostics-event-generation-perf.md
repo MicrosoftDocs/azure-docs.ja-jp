@@ -4,7 +4,7 @@ description: Azure Service Fabric クラスターの監視と診断に使うパ�
 services: service-fabric
 documentationcenter: .net
 author: srrengar
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/16/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 1e6ea5d6ae321a0443631ec928912611a68346c6
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: ee1608c40801f568b38ace4670b0d5ea7f73003c
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408015"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663079"
 ---
 # <a name="performance-metrics"></a>パフォーマンス メトリック
 
@@ -31,13 +31,14 @@ ms.locfileid: "49408015"
 
 | カウンターのカテゴリ | カウンター名 |
 | --- | --- |
+| 論理ディスク | Logical Disk Free Space (論理ディスクの空き領域) |
 | PhysicalDisk(per Disk) | Avg.Disk Read Queue Length |
 | PhysicalDisk(per Disk) | Avg.Disk Write Queue Length |
 | PhysicalDisk(per Disk) | Avg.Disk sec/Read |
 | PhysicalDisk(per Disk) | Avg.Disk sec/Write |
 | PhysicalDisk(per Disk) | Disk Reads/sec  |
 | PhysicalDisk(per Disk) | Disk Read Bytes/sec  |
-| PhysicalDisk(per Disk) | Disk Writes/sec |
+| PhysicalDisk(per Disk) |  Disk Writes/sec |
 | PhysicalDisk(per Disk) | Disk Write Bytes/sec |
 | メモリ | Available MBytes |
 | PagingFile | % Usage |
@@ -49,6 +50,9 @@ ms.locfileid: "49408015"
 | Process (per service) | Virtual Bytes |
 | Process (per service) | Working Set |
 | Process (per service) | Working Set - Private |
+| Network Interface(all-instances) | Bytes recd |
+| Network Interface(all-instances) | Bytes sent |
+| Network Interface(all-instances) | Bytes total |
 | Network Interface(all-instances) | Output Queue Length |
 | Network Interface(all-instances) | Packets Outbound Discarded |
 | Network Interface(all-instances) | Packets Received Discarded |
@@ -65,6 +69,8 @@ ms.locfileid: "49408015"
 | .NET CLR Memory (per service) | # Total committed Bytes |
 | .NET CLR Memory (per service) | # Total reserved Bytes |
 | .NET CLR Memory (per service) | # Bytes in all Heaps |
+| .NET CLR Memory (per service) | Large Object Heap size |
+| .NET CLR Memory (per service) | # GC Handles |
 | .NET CLR Memory (per service) | # Gen 0 Collections |
 | .NET CLR Memory (per service) | # Gen 1 Collections |
 | .NET CLR Memory (per service) | # Gen 2 Collections |
@@ -76,7 +82,7 @@ Service Fabric は、大量のカスタム パフォーマンス カウンター
 
 クラスターにデプロイしているアプリケーションで Reliable Actors を使っている場合は、`Service Fabric Actor` および `Service Fabric Actor Method` カテゴリのカウンターを追加します (「[Reliable Actors の診断とパフォーマンス監視](service-fabric-reliable-actors-diagnostics.md)」をご覧ください)。
 
-Reliable Services を使っている場合は、同じように `Service Fabric Service` および `Service Fabric Service Method` カウンター カテゴリのカウンターを収集します。 
+Reliable Services またはサービスのリモート処理を使っている場合は、同様に、収集する必要のあるカウンターが含まれる `Service Fabric Service` および `Service Fabric Service Method` カウンター カテゴリがあります。[サービス リモートの処理での監視](service-fabric-reliable-serviceremoting-diagnostics.md)および [Reliable Services のパフォーマンス カウンター](service-fabric-reliable-services-diagnostics.md#performance-counters)に関する記事をご覧ください。 
 
 Reliable Collections を使っている場合は、`Service Fabric Transactional Replicator` の `Avg. Transaction ms/Commit` を追加して、トランザクションあたりの平均コミット待ち時間メトリックを収集することをお勧めします。
 

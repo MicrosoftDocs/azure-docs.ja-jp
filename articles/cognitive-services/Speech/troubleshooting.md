@@ -6,16 +6,17 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 80e39e845ab631ad5cc3ae8af9e2e42f09b521bf
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: e70e7b79be7dd4ea55c56898eaf8007d25732366
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342192"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673020"
 ---
 # <a name="troubleshooting-bing-speech"></a>Bing Speech のトラブルシューティング
 
@@ -52,7 +53,7 @@ Speech Recognition API の使用中に `HTTP 403 Forbidden` エラーが返さ�
 > [!NOTE]
 > `YOUR_SUBSCRIPTION_KEY` を自身のサブスクリプション キーに置き換えます。
 
-# <a name="powershelltabpowershell"></a>[Powershell](#tab/Powershell)
+# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```Powershell
 $FetchTokenHeader = @{
@@ -88,7 +89,7 @@ curl -v -X POST "https://api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Co
 > [!NOTE]
 > `YOUR_AUDIO_FILE` を録音済みのオーディオ ファイルへのパスに、`YOUR_ACCESS_TOKEN` を前の手順で返された承認トークンに置き換えます。
 
-# <a name="powershelltabpowershell"></a>[Powershell](#tab/Powershell)
+# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```Powershell
 

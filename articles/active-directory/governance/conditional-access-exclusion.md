@@ -1,6 +1,6 @@
 ---
-title: 条件付きアクセス ポリシーから除外されているユーザーを管理するための Azure AD アクセス レビューの使用 | Microsoft Docs
-description: Azure Active Directory (Azure AD) アクセス レビューを使用して、条件付きアクセス ポリシーから除外されているユーザーを管理する
+title: アクセス レビューを使用して、条件付きアクセス ポリシーから除外されているユーザーを管理する - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory (Azure AD) アクセス レビューを使用して、条件付きアクセス ポリシーから除外されているユーザーを管理する方法を説明します
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,18 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 0ae6c27091dd2938ec7410e78ae12dbe20509029
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7675441316e42c7f0a220abe77bc8c62158ef918
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167738"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577137"
 ---
-# <a name="use-azure-ad-access-reviews-to-manage-users-that-have-been-excluded-from-conditional-access-policies"></a>条件付きアクセス ポリシーから除外されているユーザーを管理するための Azure AD アクセス レビューの使用
+# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Azure AD アクセス レビューを使用して、条件付きアクセス ポリシーから除外されているユーザーを管理する
 
 理想的な世界では、すべてのユーザーが、組織のリソースへのアクセスをセキュリティで保護するアクセス ポリシーに従っているでしょう。 ただし、ビジネス ケースには、例外を認める必要がある場合もあります。 この記事では、どのような状況で除外が必要となる可能性があるかと、IT 管理者が Active Directory (Azure AD) アクセス レビューを使用してどのようにこのタスクを管理し、ポリシーの例外の監視を回避し、これらの例外が定期的にレビューされることの証明を監査者に提供できるかを示す、いくつかの例について説明します。
 
@@ -43,7 +44,7 @@ IT 管理者は、[Azure AD の条件付きアクセス](../conditional-access/o
 
 ## <a name="why-are-exclusions-challenging"></a>除外が困難な理由
 
-Azure AD では、ユーザーのグループに条件付きアクセス ポリシーの範囲を指定できます。 また、ディレクトリ ロール、個々のユーザー、またはゲスト ユーザーを選択することで、これらのユーザーの一部を除外することができます。 このような除外を構成すると、それらのユーザーにはポリシーの意図を適用できなくなることに注意してください。 これらの除外が、個々のユーザーのリストとして、または従来のオンプレミスのセキュリティ グループを使用して構成されている場合は、この除外リストの表示が制限され (ユーザーにその存在がわからないこともあります)、それに対する IT 管理者の制御が制限されます (ユーザーはセキュリティ グループに参加することでポリシーを回避できます)。 さらに、一度除外の対象となったユーザーは、ポリシーを必要としなくなったり、適格ではなくなったりする場合があります。
+Azure AD では、ユーザーのグループに条件付きアクセス ポリシーの範囲を指定できます。 また、Azure AD ロール、個々のユーザー、またはゲスト ユーザーを選択することで、これらのユーザーの一部を除外することができます。 このような除外を構成すると、それらのユーザーにはポリシーの意図を適用できなくなることに注意してください。 これらの除外が、個々のユーザーのリストとして、または従来のオンプレミスのセキュリティ グループを使用して構成されている場合は、この除外リストの表示が制限され (ユーザーにその存在がわからないこともあります)、それに対する IT 管理者の制御が制限されます (ユーザーはセキュリティ グループに参加することでポリシーを回避できます)。 さらに、一度除外の対象となったユーザーは、ポリシーを必要としなくなったり、適格ではなくなったりする場合があります。
 
 除外の開始時は、ポリシーをバイパスするユーザーのリストは短いリストです。 時間が経つにつれて、除外されたユーザーが増えていき、リストが長くなっていきます。 ある時点でリストを見直して、これらのユーザーのそれぞれを引き続き除外しておくべきかどうかを確認する必要があります。 技術的な観点でのリストの管理は比較的簡単ですが、誰がビジネス上の意思決定を行い、すべて監査可能であることをどのように確認するのでしょうか。
 
@@ -96,12 +97,12 @@ Azure AD では、ユーザーのグループに条件付きアクセス ポリ�
 
 アクセス レビューを使用して条件付きアクセス ポリシーの除外を管理する 2 つの例について説明します。
 
-## <a name="example-1-access-review-for-users-accessing-from-blocked-countries"></a>例 1: ブロックされている国からアクセスするユーザーのアクセス レビュー
+## <a name="example-1-access-review-for-users-accessing-from-blocked-countries"></a>例 1:ブロックされている国からアクセスするユーザーのアクセス レビュー
 
 特定の国からのアクセスをブロックする条件付きアクセス ポリシーがあるとします。 これには、ポリシーから除外されているグループが含まれます。 次に示す推奨されるアクセス レビューでは、グループのメンバーがレビューされます。
 
 > [!NOTE]
-> アクセス レビューを作成するには、グローバル管理者またはユーザー アカウント管理者のロールが必要です。
+> アクセス レビューを作成するには、グローバル管理者またはユーザー管理者のロールが必要です。
 
 1. このレビューは毎週繰り返し行われ、
 
@@ -117,7 +118,7 @@ Azure AD では、ユーザーのグループに条件付きアクセス ポリ�
 
     ![アクセス レビューの作成](./media/conditional-access-exclusion/create-access-review-1.png)
 
-## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>例 2: レガシ認証を使用してアクセスしているユーザーのアクセス レビュー
+## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>例 2:例 2: レガシ認証を使用してアクセスしているユーザーのアクセス レビュー
 
 レガシ認証と古いバージョンのクライアントを使用しているユーザーのアクセスをブロックする条件付きアクセス ポリシーがあるとします。 これには、ポリシーから除外されているグループが含まれます。 次に示す推奨されるアクセス レビューでは、グループのメンバーがレビューされます。
 
@@ -135,7 +136,7 @@ Azure AD では、ユーザーのグループに条件付きアクセス ポリ�
 
     ![アクセス レビューの作成](./media/conditional-access-exclusion/create-access-review-2.png)
 
-**Pro ヒント**: 多数の除外グループがあるために、複数のアクセス レビューを作成する必要がある場合は、Microsoft Graph のベータ版エンドポイントの API で、それらをプログラムで作成および管理できるようになりました。 最初に、[Azure AD アクセス レビューの API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root)に関するページと、[Microsoft Graph を使用した Azure AD アクセスの取得の例](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096)に関するページを参照してください。
+**Pro ヒント**:多数の除外グループがあるために、複数のアクセス レビューを作成する必要がある場合は、Microsoft Graph のベータ版エンドポイントの API で、それらをプログラムで作成および管理できるようになりました。 最初に、[Azure AD アクセス レビューの API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root)に関するページと、[Microsoft Graph を使用した Azure AD アクセスの取得の例](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096)に関するページを参照してください。
 
 ## <a name="access-review-results-and-audit-logs"></a>アクセス レビューの結果と監査ログ
 
@@ -157,5 +158,5 @@ IT 管理者は、ポリシーに照らした除外グループの管理が、�
 
 ## <a name="next-steps"></a>次の手順
 
-- [グループ メンバーまたはアプリケーション アクセスに対するアクセス レビューを Azure AD で作成する](create-access-review.md)
+- [グループまたはアプリケーションのアクセス レビューを作成する](create-access-review.md)
 - [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

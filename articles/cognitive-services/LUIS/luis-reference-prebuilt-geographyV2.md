@@ -1,23 +1,24 @@
 ---
-title: Geography V2 作成済みエンティティ - LUIS リファレンス
+title: Geography V2 作成済みエンティティ
 titleSuffix: Azure Cognitive Services
 description: この記事には、Language Understanding (LUIS) での geographyV2 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 3559bc02944f88f486104d4d9553f0c45a1f1754
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 17f612f2ee6c7d27dcec9f72ed3df1ed418eb3d2
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983414"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961611"
 ---
-# <a name="geographyv2-entity"></a>GeographyV2 エンティティ
+# <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの geographyV2 作成済みエンティティ
 作成済みの geographyV2 エンティティは、場所を検出します。 このエンティティは既にトレーニングされているので、GeographyV2 を含む発話の例をアプリケーション意図に追加する必要はありません。 GeographyV2 エンティティは、英語[カルチャ](luis-reference-prebuilt-entities.md)でサポートされています。
 
 ## <a name="subtypes"></a>サブタイプ
@@ -35,7 +36,7 @@ ms.locfileid: "46983414"
 ## <a name="resolution-for-geographyv2-entity"></a>GeographyV2 エンティティの解決
 次の例では、**builtin.geographyV2** エンティティの解決を示します。
 
-```JSON
+```json
 {
     "query": "Carol is visiting the sphinx in gizah egypt in africa before heading to texas",
     "topScoringIntent": {

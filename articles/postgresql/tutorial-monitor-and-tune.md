@@ -1,20 +1,19 @@
 ---
 title: Azure Database for PostgreSQL での監視およびチューニングに関するチュートリアル
 description: このチュートリアルでは、Azure Database for PostgreSQL での監視およびチューニングについて説明します。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: ef8809afa2da36f44384d784e32532b7b121e3a9
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: f05e0eef7680b08ce116cc0243d944f6a1db597c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379146"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536443"
 ---
-# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql"></a>チュートリアル: Azure Database for PostgreSQL を監視およびチューニングします
+# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql"></a>チュートリアル:Azure Database for PostgreSQL の監視とチューニング
 
 Azure Database for PostgreSQL は、サーバーのパフォーマンスの理解および向上に役立つ機能を備えています。 このチュートリアルで学習する内容は次のとおりです。
 > [!div class="checklist"]

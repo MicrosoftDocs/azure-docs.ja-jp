@@ -6,23 +6,21 @@ author: michaelhauss
 ms.service: storage
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 11/20/2018
 ms.author: michaelhauss
-ms.component: blobs
-ms.openlocfilehash: 43e9acb79b363e8f2cb00f6a4676d450c097bf3e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: blobs
+ms.openlocfilehash: 1ab799ef7eb9d7c591e76ab9180d4e3f4ba6ba59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261997"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007283"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>iOS から BLOB ストレージを使用する方法
 
 この記事では、Microsoft Azure BLOB ストレージを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Objective-C で記述され、 [iOS 用 Azure Storage クライアント ライブラリ](https://github.com/Azure/azure-storage-ios)を使用しています。 紹介するシナリオは、BLOB のアップロード、一覧の取得、ダウンロード、および削除です。 BLOB の詳細については、「 [次のステップ](#next-steps) 」のセクションを参照してください。 また、 [サンプル アプリ](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) をダウンロードし、iOS アプリケーションでの Azure Storage の使用例をすぐに確認することもできます。
 
-## <a name="what-is-blob-storage"></a>BLOB ストレージとは
-
-[!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
+Blob Storage の詳細については、「[Azure Blob Storage の概要](storage-blobs-introduction.md)」を参照してください。
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
@@ -126,14 +124,14 @@ Azure Storage のどの BLOB もコンテナーに格納する必要がありま
 }
 ```
 
-このコード例が正常に機能していることを確認するには、 [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com) で、 *newcontainer* がストレージ アカウントのコンテナーの一覧に含まれていることを確認します。
+このコード例が正常に機能していることを確認するには、 [Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com) で、 *newcontainer* がストレージ アカウントのコンテナーの一覧に含まれていることを確認します。
 
 ## <a name="set-container-permissions"></a>コンテナーのアクセス許可を設定する
 コンテナーのアクセス許可は、既定では、 **プライベート** アクセス用に構成されています。 ただし、コンテナーには、コンテナー アクセス用にいくつかの異なるオプションが用意されています。
 
-* **プライベート**: コンテナーと BLOB のデータはアカウント所有者に限り読み取ることができます。
-* **BLOB**: コンテナー内の BLOB のデータは匿名要求で読み取ることができますが、コンテナーのデータを読み取ることはできません。 クライアントはコンテナー内の BLOB を匿名要求で列挙することはできません。
-* **コンテナー**: コンテナーと BLOB のデータを匿名要求で読み取ることができます。 クライアントは匿名要求でコンテナー内の BLOB を列挙できますが、ストレージ アカウント内のコンテナーを列挙することはできません。
+* **プライベート**:コンテナーと BLOB のデータはアカウント所有者に限り読み取ることができます。
+* **BLOB**:該当するコンテナー内の BLOB データは匿名要求で読み取り可能ですが、コンテナー データは参照できません。 クライアントはコンテナー内の BLOB を匿名要求で列挙することはできません。
+* **コンテナー**:コンテナーと BLOB のデータを匿名要求で読み取ることができます。 クライアントは匿名要求でコンテナー内の BLOB を列挙できますが、ストレージ アカウント内のコンテナーを列挙することはできません。
 
 次の例では、**コンテナー** アクセス許可を指定したコンテナーの作成方法を示します。このアクセス許可により、インターネット上のすべてのユーザーに対して読み取り専用のパブリック アクセスが許可されます。
 
@@ -164,7 +162,7 @@ Azure Storage のどの BLOB もコンテナーに格納する必要がありま
 ```
 
 ## <a name="upload-a-blob-into-a-container"></a>コンテナーに BLOB をアップロードする
-「[Blob service の概念](#blob-service-concepts)」セクションで説明したように、BLOB ストレージには、ブロック BLOB、追加 BLOB、ページ BLOB という 3 種類の BLOB が用意されています。 Azure Storage iOS ライブラリは、3 つのタイプの BLOB すべてをサポートしています。 ほとんどの場合は、ブロック BLOB を使用することをお勧めします。
+Blob service の概念に関するセクションで説明したように、Blob Storage には、ブロック BLOB、追加 BLOB、ページ BLOB という 3 種類の BLOB が用意されています。 Azure Storage iOS ライブラリは、3 つのタイプの BLOB すべてをサポートしています。 ほとんどの場合は、ブロック BLOB を使用することをお勧めします。
 
 次の例では、NSString からブロック BLOB をアップロードする方法を示します。 同じ名前の BLOB が既にこのコンテナーに存在する場合は、この BLOB の内容が上書きされます。
 
@@ -205,7 +203,7 @@ Azure Storage のどの BLOB もコンテナーに格納する必要がありま
 }
 ```
 
-このコード例が正常に機能していることを確認するには、[Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com)で、コンテナー *containerpublic* に BLOB *sampleblob* が含まれていることを確認します。 この例では､パブリック コンテナーが使用されているため、このアプリケーションが機能することは､次の BLOB URI にアクセスすることによっても確認できます。
+このコード例が正常に機能していることを確認するには、[Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com)で、コンテナー *containerpublic* に BLOB *sampleblob* が含まれていることを確認します。 この例では､パブリック コンテナーが使用されているため、このアプリケーションが機能することは､次の BLOB URI にアクセスすることによっても確認できます。
 
     https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
 
@@ -218,12 +216,12 @@ NSString からのブロック BLOB のアップロードばかりでなく、NS
 * **prefix** - BLOB の一覧表示に使用するプレフィックスを指定できます。 このプレフィックスで始まる名前の BLOB のみが一覧表示されます。
 * **useFlatBlobListing** - 「[コンテナーおよび BLOB の名前付けと参照](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)」セクションで説明したように、Blob service はフラット ストレージ スキームですが、パス情報を使用して BLOB に名前を付けることで、仮想階層を作成できます。 ただし、フラットでない一覧表示は現在サポートされておらず､ まもなく公開されます｡ 現時点では、この値は **YES** にする必要があります。
 * **blobListingDetails** - BLOB を一覧表示するときに含める項目を指定できます。
-  * _AZSBlobListingDetailsNone_: コミット済みの BLOB のみを一覧表示し、BLOB メタデータは返しません。
-  * _AZSBlobListingDetailsSnapshots_: コミット済みの BLOB と BLOB スナップショットを一覧表示します。
-  * _AZSBlobListingDetailsMetadata_: 一覧に返された BLOB ごとに BLOB メタデータを取得します。
-  * _AZSBlobListingDetailsUncommittedBlobs_: コミット済みおよびコミット前の BLOB を一覧表示します。
-  * _AZSBlobListingDetailsCopy_: コピー プロパティを一覧に含めます。
-  * _AZSBlobListingDetailsAll_: 使用可能なコミット済みの BLOB、コミット前の BLOB、スナップショットをすべて一覧表示し、それらの BLOB に関するすべてのメタデータとコピーの状態を返します。
+  * _AZSBlobListingDetailsNone_:コミット済みの BLOB のみを一覧表示し、BLOB メタデータは返しません。
+  * _AZSBlobListingDetailsSnapshots_:コミット済みの BLOB と BLOB スナップショットを一覧表示します。
+  * _AZSBlobListingDetailsMetadata_:一覧に返された BLOB ごとに BLOB メタデータを取得します。
+  * _AZSBlobListingDetailsUncommittedBlobs_:コミット済みおよびコミット前の BLOB を一覧表示します。
+  * _AZSBlobListingDetailsCopy_:コピー プロパティを一覧に含めます。
+  * _AZSBlobListingDetailsAll_:使用可能なコミット済みの BLOB、コミット前の BLOB、スナップショットをすべて一覧表示し、それらの BLOB に関するすべてのメタデータとコピーの状態を返します。
 * **maxResults** - この操作に対して返される結果の最大数。 制限を設けない場合は -1 を使用します。
 * **completionHandler** - 一覧表示操作の結果を使用して実行するコードのブロック。
 
@@ -380,10 +378,10 @@ NSString からのブロック BLOB のアップロードばかりでなく、NS
 これで、iOS から BLOB ストレージを使用する方法を学習できました。 iOS ライブラリおよび Storage サービスの詳細については、次のリンク先をご覧ください。
 
 * [iOS 用 Azure Storage クライアント ライブラリ](https://github.com/azure/azure-storage-ios)
-* [Azure Storage iOS リファレンス ドキュメント](http://azure.github.io/azure-storage-ios/)
+* [Azure Storage iOS リファレンス ドキュメント](https://azure.github.io/azure-storage-ios/)
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure のストレージ チーム ブログ](https://blogs.msdn.com/b/windowsazurestorage)
 
-このライブラリに関してご質問がある場合は、お気軽に [MSDN Azure フォーラム](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) または [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files) に投稿してください。
+このライブラリに関してご質問がある場合は、お気軽に [MSDN Azure フォーラム](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) または [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files) に投稿してください。
 Azure Storage の機能についてご提案がある場合は、 [Azure Storage のフィードバック](https://feedback.azure.com/forums/217298-storage/)に投稿してください。
 

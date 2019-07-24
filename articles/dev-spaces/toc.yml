@@ -1,0 +1,79 @@
+items:
+- name: Azure Dev Spaces
+  items:
+  - name: 概要
+    href: index.yml
+  - name: クイック スタート
+    items:
+    - name: Java (VS Code と CLI)
+      href: quickstart-java.md
+    - name: .NET Core (VS Code と CLI)
+      href: quickstart-netcore.md
+    - name: .NET Core (Visual Studio 2017)
+      href: quickstart-netcore-visualstudio.md
+    - name: Node.js (VS Code と CLI)
+      href: quickstart-nodejs.md
+  - name: チュートリアル
+    items:
+    - name: Java (VS Code と CLI)
+      items:
+      - name: 1 - はじめに
+        href: get-started-java.md
+      - name: 2 - マルチサービス開発
+        href: multi-service-java.md
+      - name: 3 - チーム開発
+        href: team-development-java.md
+    - name: .NET Core (VS Code と CLI)
+      items:
+      - name: 1 - はじめに
+        href: get-started-netcore.md
+      - name: 2 - マルチサービス開発
+        href: multi-service-netcore.md
+      - name: 3 - チーム開発
+        href: team-development-netcore.md
+    - name: .NET Core (Visual Studio 2017)
+      items:
+      - name: 1 - はじめに
+        href: get-started-netcore-visualstudio.md
+      - name: 2 - マルチサービス開発
+        href: multi-service-netcore-visualstudio.md
+      - name: 3 - チーム開発
+        href: team-development-netcore-visualstudio.md
+    - name: Node.js (VS Code と CLI)
+      items:
+      - name: 1 - はじめに
+        href: get-started-nodejs.md
+      - name: 2 - マルチサービス開発
+        href: multi-service-nodejs.md
+      - name: 3 - チーム開発
+        href: team-development-nodejs.md
+  - name: 概念
+    items:
+    - name: Dev Spaces のしくみ
+      href: how-dev-spaces-works.md
+  - name: 方法
+    items:
+    - name: Azure Cloud Shell を使用して Kubernetes クラスターを作成する
+      href: how-to/create-cluster-cloud-shell.md
+    - name: Azure Dev Spaces を共有する
+      href: how-to/share-dev-spaces.md
+    - name: シークレットを管理する
+      href: how-to/manage-secrets.md
+    - name: カスタム NuGet フィードを使用する
+      href: how-to/use-custom-nuget-feed.md
+    - name: Azure Dev Spaces で kubectl を使用する
+      href: how-to/use-kubectl-with-azure-dev-spaces.md
+    - name: Azure Dev Spaces ツールをアップグレードする
+      href: how-to/upgrade-tools.md
+    - name: Azure Dev Spaces と共に CI/CD を使用する
+      href: how-to/setup-cicd.md
+    - name: Azure Dev Spaces の事業継続とディザスター リカバリー
+      href: how-to/dev-spaces-business-continuity.md
+  - name: トラブルシューティング
+    href: troubleshooting.md
+ms.openlocfilehash: 2584af119ba13e87d4249ce7cc7f605d88baa88e
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341324"

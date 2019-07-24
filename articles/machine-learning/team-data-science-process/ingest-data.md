@@ -1,26 +1,22 @@
 ---
-title: 分析用の Azure Storage 環境にデータを読み込む | Microsoft Docs
+title: 分析用の Azure Storage 環境にデータを読み込む - Team Data Science Process
 description: Azure Blob ストレージとの間のデータの移動
-services: machine-learning,storage
-documentationcenter: ''
-author: deguhath
+services: machine-learning
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: b8fbef77-3e80-4911-8e84-23dbf42c9bee
 ms.service: machine-learning
-ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: deguhath
-ms.openlocfilehash: a5db14b99a81c373fbc72f523798e1f3bbdf9285
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 56c45bf6db79ded64574a44399712951e82c1c3e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344503"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472407"
 ---
 # <a name="load-data-into-storage-environments-for-analytics"></a>分析用のストレージ環境にデータを読み込む
 

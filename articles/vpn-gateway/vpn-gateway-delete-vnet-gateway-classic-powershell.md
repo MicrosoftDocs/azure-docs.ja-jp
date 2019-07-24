@@ -1,5 +1,5 @@
 ---
-title: '仮想ネットワーク ゲートウェイの削除: PowerShell: Azure クラシック | Microsoft Docs'
+title: 仮想ネットワーク ゲートウェイを削除する:PowerShell:Azure クラシック | Microsoft Docs
 description: クラシック デプロイ モデルで、PowerShell を使用して仮想ネットワーク ゲートウェイを削除します。
 services: vpn-gateway
 documentationcenter: na
@@ -10,17 +10,17 @@ tags: azure-service-management
 ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cherylmc
-ms.openlocfilehash: 2c92db96820b9796ba2c952affcb3b3eef5b985e
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: ca014e4f5fbc4a5695dbc5fedc85826c71a2a906
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319848"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767772"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>PowerShell を使用して仮想ネットワーク ゲートウェイを削除する (クラシック)
 
@@ -32,7 +32,7 @@ ms.locfileid: "49319848"
 
 この記事は、クラシック デプロイ モデルで、PowerShell を使用して VPN ゲートウェイを削除するのに役立ちます。 仮想ネットワーク ゲートウェイを削除したら、ネットワーク構成ファイルを変更して、使用しなくなった要素を削除します。
 
-## <a name="connect"></a>ステップ 1: Azure への接続
+## <a name="connect"></a>手順 1:Azure への接続
 
 ### <a name="1-install-the-latest-powershell-cmdlets"></a>1.最新の PowerShell コマンドレットをインストールします。
 
@@ -46,7 +46,7 @@ Azure サービス管理 (SM) PowerShell コマンドレットの最新バージ
 Add-AzureAccount
 ```
 
-## <a name="export"></a>ステップ 2: ネットワーク構成ファイルのエクスポートと表示
+## <a name="export"></a>手順 2:ネットワーク構成ファイルのエクスポートと表示
 
 コンピューターにディレクトリを作成し、ネットワーク構成ファイルをそのディレクトリにエクスポートします。 このファイルを使用して、現在の構成情報を表示するだけでなく、ネットワーク構成を変更することもできます。
 
@@ -56,9 +56,9 @@ Add-AzureAccount
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
-テキスト エディターでファイルを開き、クラシック VNet の名前を確認します。 Azure Portal で VNet を作成するときには、Azure で使用される完全名はポータルには表示されません。 たとえば、Azure Portal に "ClassicVNet1" という名前で表示されている VNet は、ネットワーク構成ファイルではかなり長い名前である可能性があります。 "Group ClassicRG1 ClassicVNet1" のような名前の場合があります。 仮想ネットワーク名は、**'VirtualNetworkSite name ='** と示されています。 PowerShell コマンドレットを実行するときは、ネットワーク構成ファイルの名前を使用します。
+テキスト エディターでファイルを開き、クラシック VNet の名前を確認します。 Azure Portal で VNet を作成するときには、Azure で使用される完全名はポータルには表示されません。 たとえば、Azure Portal に "ClassicVNet1" という名前で表示されている VNet は、ネットワーク構成ファイルではかなり長い名前である可能性があります。 名前は次のように表示されます。"Group ClassicRG1 ClassicVNet1"。 仮想ネットワーク名は、**'VirtualNetworkSite name ='** と示されています。 PowerShell コマンドレットを実行するときは、ネットワーク構成ファイルの名前を使用します。
 
-## <a name="delete"></a>ステップ 3: 仮想ネットワーク ゲートウェイの削除
+## <a name="delete"></a>手順 3:仮想ネットワーク ゲートウェイの削除
 
 仮想ネットワーク ゲートウェイを削除すると、そのゲートウェイ経由での VNet への接続がすべて切断されます。 VNet に接続されている P2S クライアントがある場合、警告なしに切断されます。
 
@@ -74,7 +74,7 @@ Remove-AzureVNetGateway -VNetName "Group ClassicRG1 ClassicVNet1"
 Status : Successful
 ```
 
-## <a name="modify"></a>ステップ 4: ネットワーク構成ファイルの変更
+## <a name="modify"></a>手順 4:ネットワーク構成ファイルの変更
 
 仮想ネットワーク ゲートウェイを削除したときに、コマンドレットではネットワーク構成ファイルは変更されません。 構成ファイルを変更して、使用されなくなった要素を削除する必要があります。 以下のセクションは、ダウンロードしたネットワーク構成ファイルを変更する際に役立ちます。
 
@@ -181,7 +181,7 @@ VNet に対応する **GatewaySubnet** を削除します。
  </Subnets>
 ```
 
-## <a name="upload"></a>ステップ 5: ネットワーク構成ファイルのアップロード
+## <a name="upload"></a>手順 5: ネットワーク構成ファイルのアップロード
 
 変更を保存し、ネットワーク構成ファイルを Azure にアップロードします。 必要に応じて、ファイル パスを環境に合わせて変更してください。
 

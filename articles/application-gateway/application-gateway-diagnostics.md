@@ -1,33 +1,30 @@
 ---
-title: Application Gateway のアクセス ログ、パフォーマンス ログ、バックエンドの正常性、およびメトリックの監視
-description: Application Gateway のアクセス ログとパフォーマンス ログを有効にし、管理する方法について説明します。
+title: Azure Application Gateway のアクセス ログ、パフォーマンス ログ、バックエンドの正常性、メトリックの監視
+description: Azure Application Gateway のアクセス ログとパフォーマンス ログを有効にし、管理する方法について説明します
 services: application-gateway
-author: amitsriva
-manager: rossort
-tags: azure-resource-manager
+author: vhorne
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 6/20/2018
+ms.date: 3/28/2019
 ms.author: amitsriva
-ms.openlocfilehash: 3163d4d61dba958cdf71dd0470b943bba69b0191
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 367da8a1948b9feb42bc82d85762ae314fe165a0
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237199"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620878"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Application Gateway のバックエンドの正常性、診断ログ、およびメトリック
 
 Azure Application Gateway を使用すると、次の方法でリソースを監視できます。
 
-* [バックエンドの正常性](#back-end-health): Application Gateway は、Azure Portal と PowerShell を介して、バックエンド プール内のサーバーの正常性を監視する機能を提供します。 バックエンド プールの正常性は、パフォーマンスの診断ログでも確認できます。
+* [バックエンドの正常性](#back-end-health):Application Gateway は、Azure portal と PowerShell を介して、バックエンド プール内のサーバーの正常性を監視する機能を提供します。 バックエンド プールの正常性は、パフォーマンスの診断ログでも確認できます。
 
-* [ログ](#diagnostic-logging): リソースのパフォーマンス、アクセス、その他のデータを記録したログは、監視のために保存し使用することができます。
+* [ログ](#diagnostic-logging):リソースのパフォーマンス、アクセス、その他のデータを記録したログは、監視のために保存し使用することができます。
 
-* [メトリック](#metrics): 現在、Application Gateway にはパフォーマンス カウンターを表示する 7 つのメトリックがあります。
+* [メトリック](#metrics):現在、Application Gateway にはパフォーマンス カウンターを表示する 7 つのメトリックがあります。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="back-end-health"></a>バックエンドの正常性
 
@@ -52,10 +49,10 @@ Application Gateway は、ポータル、PowerShell、およびコマンド ラ�
 
 ### <a name="view-back-end-health-through-powershell"></a>PowerShell を介したバックエンドの正常性の表示
 
-次の PowerShell コードは、`Get-AzureRmApplicationGatewayBackendHealth` コマンドレットを使用してバックエンドの正常性を表示する方法を示します。
+次の PowerShell コードは、`Get-AzApplicationGatewayBackendHealth` コマンドレットを使用してバックエンドの正常性を表示する方法を示します。
 
 ```powershell
-Get-AzureRmApplicationGatewayBackendHealth -Name ApplicationGateway1 -ResourceGroupName Contoso
+Get-AzApplicationGatewayBackendHealth -Name ApplicationGateway1 -ResourceGroupName Contoso
 ```
 
 ### <a name="view-back-end-health-through-azure-cli"></a>Azure CLI を介したバックエンドの正常性の表示
@@ -95,21 +92,21 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ## <a name="diagnostic-logging"></a>診断ログ
 
-Azure の各種ログを使用して、アプリケーション ゲートウェイの管理とトラブルシューティングを行うことができます。 一部のログにはポータルからアクセスできます。 どのログも Azure Blob Storage から抽出し、[Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md)、Excel、Power BI などのさまざまなツールで表示できます。 各種ログの詳細については、以下の一覧を参照してください。
+Azure の各種ログを使用して、アプリケーション ゲートウェイの管理とトラブルシューティングを行うことができます。 一部のログにはポータルからアクセスできます。 どのログも Azure Blob Storage から抽出し、[Azure Monitor ログ](../azure-monitor/insights/azure-networking-analytics.md)、Excel、Power BI などのさまざまなツールで表示できます。 各種ログの詳細については、以下の一覧を参照してください。
 
-* **アクティビティ ログ**: [Azure アクティビティ ログ](../monitoring-and-diagnostics/insights-debugging-with-events.md) (以前の操作ログと監査ログ) を使用すると、Azure サブスクリプションに送信されるすべての操作とその操作の状態を表示できます。 アクティビティ ログ エントリは既定で収集され、Azure Portal で表示できます。
-* **アクセス ログ**: このログを使用すると、Application Gateway のアクセス パターンを確認し、重要な情報 (呼び出し元の IP、要求された URL、応答の待機時間、リターン コード、入出力バイト数など) を分析できます。アクセス ログは 300 秒ごとに収集されます。 このログには、Application Gateway のインスタンスごとに 1 つのレコードが含まれます。 Application Gateway のインスタンスは、instanceId プロパティで識別できます。
-* **パフォーマンス ログ**: このログを使用すると、Application Gateway のインスタンスの実行状況を確認できます。 このログでは、インスタンスごとのパフォーマンス情報 (処理された要求の総数、スループット (バイト単位)、失敗した要求の数、正常および異常なバックエンド インスタンスの数など) が取得されます。 パフォーマンス ログは 60 秒ごとに収集されます。
-* **ファイアウォール ログ**: このログを使用すると、Web アプリケーション ファイアウォールが構成された Application Gateway の、検出モードまたは防止モードでログに記録された要求を表示することができます。
+* **アクティビティ ログ**:[Azure アクティビティ ログ](../monitoring-and-diagnostics/insights-debugging-with-events.md) (以前の操作ログと監査ログ) を使用すると、Azure サブスクリプションに送信されるすべての操作とその操作の状態を表示できます。 アクティビティ ログ エントリは既定で収集され、Azure Portal で表示できます。
+* **アクセス ログ**:このログを使用して Application Gateway のアクセス パターンを表示し、重要な情報を分析できます。 これには、呼び出し元の IP、要求された URL、応答の待機時間、リターン コード、入出力バイトが含まれます。アクセス ログは 300 秒ごとに収集されます。 このログには、Application Gateway のインスタンスごとに 1 つのレコードが含まれます。 Application Gateway のインスタンスは、instanceId プロパティで識別されます。
+* **パフォーマンス ログ**:このログを使用すると、Application Gateway のインスタンスの実行状況を確認できます。 このログでは、インスタンスごとのパフォーマンス情報 (処理された要求の総数、スループット (バイト単位)、失敗した要求の数、正常および異常なバックエンド インスタンスの数など) が取得されます。 パフォーマンス ログは 60 秒ごとに収集されます。
+* **ファイアウォール ログ**:このログを使用すると、Web アプリケーション ファイアウォールが構成された Application Gateway の、検出モードまたは防止モードでログに記録された要求を表示することができます。
 
 > [!NOTE]
 > ログは、Azure Resource Manager デプロイ モデルでデプロイされたリソースについてのみ使用できます。 クラシック デプロイ モデルのリソースには使用できません。 2 つのモデルについて理解を深めるには、「[Resource Manager デプロイとクラシック デプロイ](../azure-resource-manager/resource-manager-deployment-model.md)」を参照してください。
 
 ログを保存するための 3 つのオプションがあります。
 
-* **ストレージ アカウント**: ストレージ アカウントは、ログを長期間保存し、必要に応じて参照する場合に最適です。
-* **イベント ハブ**: イベント ハブは、他のセキュリティ情報/イベント管理 (SEIM) ツールと統合してリソースに関するアラートを取得する場合に便利なオプションです。
-* **Log Analytics**: Log Analytics は、アプリケーションをリアルタイムに監視したり、傾向を見たりする一般的な用途に最適です。
+* **ストレージ アカウント**:ストレージ アカウントは、ログを長期間保存し、必要に応じて参照する場合に最適です。
+* **イベント ハブ**:イベント ハブは、他のセキュリティ情報/イベント管理 (SEIM) ツールと統合してリソースに関するアラートを取得する場合に便利なオプションです。
+* **Azure Monitor ログ**: Azure Monitor ログは、アプリケーションをリアルタイムに監視したり、傾向を見たりする一般的な用途に最適です。
 
 ### <a name="enable-logging-through-powershell"></a>PowerShell を使用したログの有効化
 
@@ -126,7 +123,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 3. 次の PowerShell コマンドレットを使用して、診断ログを有効にします。
 
     ```powershell
-    Set-AzureRmDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name> -StorageAccountId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> -Enabled $true     
+    Set-AzDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name> -StorageAccountId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> -Enabled $true     
     ```
     
 > [!TIP] 
@@ -134,7 +131,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 
 ### <a name="enable-logging-through-the-azure-portal"></a>Azure Portal を使用したログの有効化
 
-1. Azure Portal で、リソースを探して **[診断ログ]** をクリックします。
+1. Azure portal で、ご使用のリソースを見つけ、**[診断設定]** を選択します。
 
    Application Gateway では、次の 3 つのログを使用できます。
 
@@ -142,21 +139,15 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
    * パフォーマンス ログ
    * ファイアウォール ログ
 
-2. データの収集を開始するには、**[診断を有効にする]** をクリックします。
+2. データの収集を開始するには、**[診断を有効にする]** を選択します。
 
    ![診断の有効化][1]
 
-3. **[診断設定]** ブレードには、診断ログの設定が表示されます。 この例では、Log Analytics を使用してログを保存します。 **[Log Analytics]** の下にある **[構成]** をクリックして、ワークスペースを構成します。 イベント ハブとストレージ アカウントを使用して診断ログを保存することもできます。
+3. **[診断設定]** ページに、診断ログの設定が表示されます。 この例では、Log Analytics を使用してログを保存します。 イベント ハブとストレージ アカウントを使用して診断ログを保存することもできます。
 
    ![構成プロセスの開始][2]
 
-4. 既存の Log Analytics ワークスペースを選択するか、新規作成します。 この例では、既存のものを使用します。
-
-   ![Log Analytics ワークスペースのオプション][3]
-
-5. 設定を確認し、**[保存]** をクリックします。
-
-   ![設定が完了した [診断設定] ブレード][4]
+5. 設定の名前を入力し、設定を確認した後、**[保存]** を選択します。
 
 ### <a name="activity-log"></a>アクティビティ ログ
 
@@ -174,7 +165,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 |clientPort     | 要求の送信元ポート。       |
 |httpMethod     | 要求で使用される HTTP メソッド。       |
 |requestUri     | 受信した要求の URI。        |
-|RequestQuery     | **Server-Routed**: 要求が送信されたバックエンド プールのインスタンス。</br>**X-AzureApplicationGateway-LOG-ID**: 要求に使用する関連付け ID。 この ID を使用すると、バックエンド サーバー上のトラフィックの問題をトラブルシューティングできます。 </br>**SERVER-STATUS**: Application Gateway がバックエンドから受信した HTTP 応答コード。       |
+|RequestQuery     | **Server-Routed**:要求が送信されたバックエンド プールのインスタンス。</br>**X-AzureApplicationGateway-LOG-ID**:要求に使用する関連付け ID。 この ID を使用すると、バックエンド サーバー上のトラフィックの問題をトラブルシューティングできます。 </br>**SERVER-STATUS**:Application Gateway がバックエンドから受信した HTTP 応答コード。       |
 |UserAgent     | HTTP 要求ヘッダーからのユーザー エージェント。        |
 |httpStatus     | Application Gateway からクライアントに返される HTTP 状態コード。       |
 |httpVersion     | 要求の HTTP バージョン。        |
@@ -217,7 +208,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 |healthyHostCount     | バックエンド プール内の正常なホストの数。        |
 |unHealthyHostCount     | バックエンド プール内の異常なホストの数。        |
 |requestCount     | 処理された要求の数。        |
-|latency | インスタンスから要求を処理するバックエンドへの要求の待機時間 (ミリ秒単位)。 |
+|latency | インスタンスから要求を処理するバックエンドへの要求の平均待機時間 (ミリ秒単位)。 |
 |failedRequestCount| 失敗した要求の数。|
 |throughput| 最後のログ以降の平均スループット (1 秒あたりのバイト数)。|
 
@@ -298,12 +289,12 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 
 次のいずれかの方法を使用して、アクティビティ ログのデータを表示および分析できます。
 
-* **Azure Tools:** Azure PowerShell、Azure CLI、Azure REST API、または Azure Portal を使用して、アクティビティ ログから情報を取得します。 それぞれの方法の詳細な手順については、「[リソース マネージャーの監査操作](../azure-resource-manager/resource-group-audit.md)」を参照してください。
-* **Power BI**: [Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。 [Power BI 用 Azure アクティビティ ログ コンテンツ パック](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)を使用すると、事前に構成されたダッシュボードでデータを分析できます。ダッシュボードは、そのまま使用することも、カスタマイズすることもできます。
+* **Azure Tools**:Azure PowerShell、Azure CLI、Azure REST API、または Azure portal を使用して、アクティビティ ログから情報を取得します。 それぞれの方法の詳細な手順については、「[リソース マネージャーの監査操作](../azure-resource-manager/resource-group-audit.md)」を参照してください。
+* **Power BI**:[Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。 [Power BI 用 Azure アクティビティ ログ コンテンツ パック](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)を使用すると、事前に構成されたダッシュボードでデータを分析できます。ダッシュボードは、そのまま使用することも、カスタマイズすることもできます。
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>アクセス ログ、パフォーマンス ログ、ファイアウォール ログの表示と分析
 
-Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) は、BLOB ストレージ アカウントからカウンターとイベントのログ ファイルを収集できます。 このツールには、ログを分析するための視覚化と強力な検索機能が含まれています。
+[Azure Monitor ログ](../azure-monitor/insights/azure-networking-analytics.md)では、BLOB ストレージ アカウントからカウンターとイベントのログ ファイルを収集できます。 このツールには、ログを分析するための視覚化と強力な検索機能が含まれています。
 
 自身のストレージ アカウントに接続して、アクセス ログとパフォーマンス ログの JSON ログ エントリを取得することもできます。 JSON ファイルをダウンロードした後、そのファイルを CSV に変換し、Excel、Power BI などのデータ視覚化ツールで表示できます。
 
@@ -337,13 +328,13 @@ Microsoft は、人気のある [GoAccess](https://goaccess.io/) ログ アナ�
 
    バックエンド プールごとにフィルター処理を行って、特定のバックエンド プールの正常/異常なホストを表示できます。
 
-Application Gateway に移動して **[監視]** の **[メトリック]** をクリックします。 利用できる値を表示するには、**[メトリック]** ドロップダウン リストを選択します。
+アプリケーション ゲートウェイに移動して **[監視]** の **[メトリック]** を選択します。 利用できる値を表示するには、**[メトリック]** ドロップダウン リストを選択します。
 
 次の画像では、最後の 30 分間に表示された 3 つのメトリックの例を確認できます。
 
 [![](media/application-gateway-diagnostics/figure5.png "メトリック ビュー")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
 
-現在のメトリックの一覧を確認するには、「[Azure Monitor のサポートされるメトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md)」を参照してください。
+現在のメトリックの一覧を確認するには、「[Azure Monitor のサポートされるメトリック](../azure-monitor/platform/metrics-supported.md)」を参照してください。
 
 ### <a name="alert-rules"></a>アラート ルール
 
@@ -351,19 +342,19 @@ Application Gateway に移動して **[監視]** の **[メトリック]** を�
 
 次の例では、スループットのしきい値を超えた後に管理者に電子メールを送信するアラート ルールの作成手順を説明します。
 
-1. **[メトリック アラートの追加]** をクリックして **[ルールの追加]** ブレードを開きます。 このブレードには、メトリック ブレードからもアクセスできます。
+1. **[メトリック アラートの追加]** を選択して **[ルールの追加]** ページを開きます。 このページには、メトリック ページからもアクセスできます。
 
    ![[メトリック アラートの追加] ボタン][6]
 
-2. **[ルールの追加]** ブレードで、名前、条件、通知セクションを入力して、**[OK]** をクリックします。
+2. **[ルールの追加]** ページで、名前、条件、通知の各セクションに入力して、**[OK]** を選択します。
 
-   * **[条件]** セレクターで、**[より大きい]**、**[以上]**、**[未満]**、または **[以下]** の 4 つの値のいずれかを選択します。
+   * **[条件]** セレクターに入力できるのは、**[より大きい]**、**[以上]**、**[未満]**、または **[以下]** の 4 つの値です。
 
    * **[期間]** セレクターで、5 分から 6 時間までの期間を選択します。
 
    * **[メールの所有者、投稿者、閲覧者]** を選択すると、そのリソースのアクセス権を持つユーザーに基づいて電子メールを動的に送信できます。 それ以外の場合は、ユーザーのコンマ区切りの一覧を **[追加の管理者メール]** ボックスに指定できます。
 
-   ![[ルールの追加] ブレード][7]
+   ![[ルールの追加] ページ][7]
 
 しきい値を超えた場合、次の図のような電子メールが送信されます。
 
@@ -375,11 +366,11 @@ Application Gateway に移動して **[監視]** の **[メトリック]** を�
 
 アラート通知の詳細については、「[Microsoft Azure のアラートの概要](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)」を参照してください。
 
-webhook の詳細および webhook とアラートを使用する方法については、「[Azure メトリック アラートでの webhook の構成](../monitoring-and-diagnostics/insights-webhooks-alerts.md)」を参照してください。
+webhook の詳細および webhook とアラートを使用する方法については、「[Azure メトリック アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-* [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) を使用したカウンターとイベント ログの視覚化
+* [Azure Monitor ログ](../azure-monitor/insights/azure-networking-analytics.md)を使用して、カウンターとイベント ログを視覚化します。
 * [Power BI を使用した Azure アクティビティ ログの視覚化](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)に関するブログ
 * [Power BI などでの Azure アクティビティ ログの表示と分析](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)に関するブログ
 

@@ -5,17 +5,17 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 09/25/2018
+ms.date: 02/26/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: c99d3df23e0ba9733e8762fe8fc22a4c69d3bcfb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4b44eec5557d2083c38fe2714d93800f79b21b0f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236858"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338447"
 ---
-# <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>チュートリアル: Azure Virtual WAN を使用してサイト間接続を作成する
+# <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してサイト間接続を作成する
 
 このチュートリアルでは、Virtual WAN を使用して IPsec/IKE (IKEv1 と IKEv2) VPN 接続経由で Azure のリソースに接続する方法を示します。 この種類の接続では、外部接続用パブリック IP アドレスが割り当てられていてるオンプレミスの VPN デバイスが必要です。 Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください
 
@@ -40,6 +40,8 @@ ms.locfileid: "51236858"
 
 ## <a name="before-you-begin"></a>開始する前に
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
 ## <a name="vnet"></a>1.仮想ネットワークの作成
@@ -60,19 +62,19 @@ ms.locfileid: "51236858"
 2. **[VPN サイト]** ページで **[+ サイトの作成]** をクリックします。
 3. **[サイトの作成]** ページで、次のフィールドに入力します。
 
-  * **[名前]** - これは、オンプレミスのサイトの呼称です。
-  * **[パブリック IP アドレス]** - これは、オンプレミスのサイトにある VPN デバイスのパブリック IP アドレスです。
-  * **[プライベート アドレス空間]** - これは、オンプレミスのサイトにある IP アドレス空間です。 このアドレス空間宛てのトラフィックは、ローカル サイトにルーティングされます。
-  * **[サブスクリプション]** - サブスクリプションを確認します。
-  * **[リソース グループ]** - 使用するリソース グループ。
-  * **場所**。
+   * **[名前]** - これは、オンプレミスのサイトの呼称です。
+   * **[パブリック IP アドレス]** - これは、オンプレミスのサイトにある VPN デバイスのパブリック IP アドレスです。
+   * **[プライベート アドレス空間]** - これは、オンプレミスのサイトにある IP アドレス空間です。 このアドレス空間宛てのトラフィックは、ローカル サイトにルーティングされます。
+   * **[サブスクリプション]** - サブスクリプションを確認します。
+   * **[リソース グループ]** - 使用するリソース グループ。
+   * **場所**。
 4. **[詳細設定の表示]** をクリックして追加の設定を表示します。 **[BGP]** を選択して BGP を有効にすることができます。Azure のこのサイト用に作成されたすべての接続でこの機能が有効になります。 **[デバイス情報]** (省略可能なフィールド) に入力することもできます。 これにより、Azure チームがお客様の環境をよりよく理解し、将来の最適化の可能性を追加したり、トラブルシューティングに役立てることができます。
 5. **[Confirm]\(確認\)** をクリックします。
 6. **[確認]** をクリックすると、VPN サイト ページに状態が表示されます。 このサイトは "**プロビジョニング中**" から "**プロビジョニング済み**" に切り替わります。
 
 ## <a name="hub"></a>4.ハブを作成する
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-hub-include.md)]
+[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
 
 ## <a name="associate"></a>5.サイトをハブに関連付ける
 
@@ -267,10 +269,10 @@ Azure VM とリモート サイト間の通信を監視するための接続を�
 
 ## <a name="cleanup"></a>11.リソースのクリーンアップ
 
-これらのリソースが不要になったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。 "myResourceGroup" をリソース グループの名前に置き換えて、次の PowerShell コマンドを実行します。
+これらのリソースが不要になったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。 "myResourceGroup" をリソース グループの名前に置き換えて、次の PowerShell コマンドを実行します。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>次の手順

@@ -3,24 +3,23 @@ title: Azure Data Factory を使用して SQL Server から Blob Storage にデ�
 description: Azure Data Factory 内のセルフホステッド統合ランタイムを使って、オンプレミスのデータ ストアから Azure クラウドにデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: nabhishek
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.author: jingwang
-ms.openlocfilehash: d2d4957e7fa3114c1d5e8fa7696366fcb7c77002
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.author: abnarain
+ms.openlocfilehash: adec7b90d5c38ed85f4b6f9ada8a530eff3846b9
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615706"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59272514"
 ---
-# <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>チュートリアル: オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーする
+# <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>チュートリアル:オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーする
 このチュートリアルでは、オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーするデータ ファクトリ パイプラインを Azure PowerShell を使って作成します。 セルフホステッド統合ランタイムを作成して使用すると、オンプレミス データ ストアとクラウド データ ストア間でデータを移動できます。 
 
 > [!NOTE]
@@ -113,15 +112,10 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 ### <a name="windows-powershell"></a>Windows PowerShell
 
 #### <a name="install-azure-powershell"></a>Azure PowerShell をインストールする
-ご利用のマシンに最新バージョンの Azure PowerShell がまだインストールされていない場合はインストールします。 
 
-1. [Azure SDK のダウンロード](https://azure.microsoft.com/downloads/) ページにアクセスします。 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. **[コマンドライン ツール]** で、**[PowerShell]** セクションの **[Windows のインストール]** を選択します。 
-
-1. Azure PowerShell をインストールするには、MSI ファイルを実行します。 
-
-詳しい手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/install-azurerm-ps)」をご覧ください。 
+ご利用のマシンに最新バージョンの Azure PowerShell がまだインストールされていない場合はインストールします。 詳しい手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/install-Az-ps)」をご覧ください。 
 
 #### <a name="log-in-to-powershell"></a>PowerShell にログインする
 
@@ -132,13 +126,13 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 1. 次のコマンドを実行して、Azure Portal へのサインインに使用する Azure ユーザー名とパスワードを入力します。
        
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```        
 
 1. 複数の Azure サブスクリプションがある場合は、次のコマンドを実行して、使用するサブスクリプションを選択します。 **SubscriptionId** は、実際の Azure サブスクリプションの ID に置き換えてください。
 
     ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"       
+    Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
     ```
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
@@ -152,7 +146,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 1. Azure リソース グループを作成するには、次のコマンドを実行します。 
 
     ```powershell
-    New-AzureRmResourceGroup $resourceGroupName $location
+    New-AzResourceGroup $resourceGroupName $location
     ``` 
 
     リソース グループが既に存在する場合、上書きしないようお勧めします。 `$resourceGroupName` 変数に別の値を割り当てて、コマンドをもう一度実行します。
@@ -172,10 +166,10 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
     $location = "East US"
     ```  
 
-1. データ ファクトリを作成するために、次の `Set-AzureRmDataFactoryV2` コマンドレットを実行します。 
+1. データ ファクトリを作成するために、次の `Set-AzDataFactoryV2` コマンドレットを実行します。 
     
     ```powershell       
-    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
+    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
     ```
 
 > [!NOTE]
@@ -185,7 +179,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 >    The specified data factory name 'ADFv2TutorialDataFactory' is already in use. Data factory names must be globally unique.
 >    ```
 > * Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、"*共同作成者*" または "*所有者*" ロールに属しているか、Azure サブスクリプションの "*管理者*" である必要があります。
-> * 現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (Azure HDInsight など) は他のリージョンに配置できます。
+> * 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (Azure HDInsight など) は他のリージョンに配置できます。
 > 
 > 
 
@@ -202,7 +196,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 1. セルフホステッド統合ランタイムを作成します。 
 
     ```powershell
-    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $integrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
+    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $integrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ``` 
     出力例を次に示します。
 
@@ -218,7 +212,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 1. 作成された統合ランタイムの状態を取得するために、次のコマンドを実行します。
 
     ```powershell
-   Get-AzureRmDataFactoryV2IntegrationRuntime -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Status
+   Get-AzDataFactoryV2IntegrationRuntime -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Status
     ```
 
     出力例を次に示します。
@@ -243,7 +237,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 1. 次のコマンドを実行して、クラウドの Data Factory サービスにセルフホステッド統合ランタイムを登録するための "*認証キー*" を取得します。 次の手順でマシンにインストールするセルフホステッド統合ランタイムを登録するために、いずれかのキーをコピーします (二重引用符は除外)。 
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
+    Get-AzDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
     ```
     
     出力例を次に示します。
@@ -346,10 +340,10 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
 1. PowerShell で *C:\ADFv2Tutorial* フォルダーに切り替えます。
 
-1. リンクされたサービス AzureStorageLinkedService を作成するために、次の `Set-AzureRmDataFactoryV2LinkedService` コマンドレットを実行します。 
+1. リンクされたサービス AzureStorageLinkedService を作成するために、次の `Set-AzDataFactoryV2LinkedService` コマンドレットを実行します。 
 
    ```powershell
-   Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
+   Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
    ```
 
    出力例を次に示します。
@@ -424,17 +418,17 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
     > - ファイルを保存する前に、**\<servername>**、**\<databasename>**、**\<username>**、**\<password>** を実際の SQL Server インスタンスの値に置き換えてください。
     > - ユーザー アカウントまたはサーバー名にバックスラッシュ (\\) を使用する必要がある場合は、エスケープ文字 (\\) に続けて入力してください。 たとえば、「*mydomain\\\\myuser*」のように入力します。 
 
-1. 機密データ (ユーザー名、パスワードなど) を暗号化するには、`New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential` コマンドレットを実行します。  
+1. 機密データ (ユーザー名、パスワードなど) を暗号化するには、`New-AzDataFactoryV2LinkedServiceEncryptedCredential` コマンドレットを実行します。  
     この暗号化によって、資格情報が Data Protection Application Programming Interface (DPAPI) を使って暗号化されます。 暗号化された資格情報は、セルフホステッド統合ランタイム ノード (ローカル マシン) のローカルに格納されます。 暗号化された資格情報が含まれる出力ペイロードは別の JSON ファイル (この場合は "*encryptedLinkedService.json*") にリダイレクトできます。
     
    ```powershell
-   New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName $integrationRuntimeName -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
+   New-AzDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName $integrationRuntimeName -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
    ```
 
 1. 次のコマンドを実行します。これによって、EncryptedSqlServerLinkedService が作成されます。
 
    ```powershell
-   Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "EncryptedSqlServerLinkedService" -File ".\encryptedSqlServerLinkedService.json"
+   Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "EncryptedSqlServerLinkedService" -File ".\encryptedSqlServerLinkedService.json"
    ```
 
 
@@ -476,10 +470,10 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
     }
     ```
 
-1. データセット SqlServerDataset を作成するには、`Set-AzureRmDataFactoryV2Dataset` コマンドレットを実行します。
+1. データセット SqlServerDataset を作成するには、`Set-AzDataFactoryV2Dataset` コマンドレットを実行します。
 
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerDataset" -File ".\SqlServerDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerDataset" -File ".\SqlServerDataset.json"
     ```
 
     出力例を次に示します。
@@ -518,10 +512,10 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
     }
     ```
 
-1. データセット AzureBlobDataset を作成するには、`Set-AzureRmDataFactoryV2Dataset` コマンドレットを実行します。
+1. データセット AzureBlobDataset を作成するには、`Set-AzDataFactoryV2Dataset` コマンドレットを実行します。
 
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureBlobDataset" -File ".\AzureBlobDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureBlobDataset" -File ".\AzureBlobDataset.json"
     ```
 
     出力例を次に示します。
@@ -573,10 +567,10 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
     }
     ```
 
-1. パイプライン SQLServerToBlobPipeline を作成するには、`Set-AzureRmDataFactoryV2Pipeline` コマンドレットを実行します。
+1. パイプライン SQLServerToBlobPipeline を作成するには、`Set-AzDataFactoryV2Pipeline` コマンドレットを実行します。
 
     ```powershell
-    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SQLServerToBlobPipeline" -File ".\SQLServerToBlobPipeline.json"
+    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SQLServerToBlobPipeline" -File ".\SQLServerToBlobPipeline.json"
     ```
 
     出力例を次に示します。
@@ -593,7 +587,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 SQLServerToBlobPipeline パイプラインの実行を開始し、後で監視できるようパイプライン実行 ID をキャプチャします。
 
 ```powershell
-$runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName 'SQLServerToBlobPipeline'
+$runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName 'SQLServerToBlobPipeline'
 ```
 
 ## <a name="monitor-the-pipeline-run"></a>パイプラインの実行を監視します
@@ -602,7 +596,7 @@ $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -
 
     ```powershell
     while ($True) {
-        $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+        $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
 
         if (($result | Where-Object { $_.Status -eq "InProgress" } | Measure-Object).count -ne 0) {
             Write-Host "Pipeline run status: In Progress" -foregroundcolor "Yellow"

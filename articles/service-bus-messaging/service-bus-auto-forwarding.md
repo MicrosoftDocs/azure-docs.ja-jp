@@ -3,27 +3,27 @@ title: Azure Service Bus メッセージング エンティティの自動転送
 description: Service Bus キューまたはサブスクリプションを別のキューまたはトピックにチェーンする方法。
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: f7060778-3421-402c-97c7-735dbf6a61e8
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2018
-ms.author: spelluru
-ms.openlocfilehash: 608510f76d54cc5f3e10587a6f9d1306612672ad
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 85ab5e3bb963ee692e5b70af3eb90cc68cec361f
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391108"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593388"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>自動転送を使用した Service Bus エンティティのチェーン
 
-Service Bus の*自動転送*機能を使用すると、キューまたはサブスクリプションを同じ名前空間に属する別のキューまたはトピックにチェーンできます。 自動転送が有効な場合、Service Bus は元のキューまたはサブスクリプション (転送元) にあるメッセージを自動的に削除し、そのメッセージを転送先のキューまたはトピックに入れます。 転送先エンティティには､メッセージを直接送信することもできます｡ 配信不能キューなどのサブキューを別のキューまたはトピックにチェーンすることはできません。
+Service Bus の*自動転送*機能を使用すると、キューまたはサブスクリプションを同じ名前空間に属する別のキューまたはトピックにチェーンできます。 自動転送が有効な場合、Service Bus は元のキューまたはサブスクリプション (転送元) にあるメッセージを自動的に削除し、そのメッセージを転送先のキューまたはトピックに入れます。 転送先エンティティには､メッセージを直接送信することもできます｡
 
 ## <a name="using-autoforwarding"></a>自動転送の利用
 

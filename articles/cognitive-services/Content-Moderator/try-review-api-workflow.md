@@ -1,207 +1,142 @@
 ---
-title: API コンソールからのコンテンツ モデレーション ワークフロー - Content Moderator
+title: REST API コンソールを使用してモデレーション ワークフローを定義する - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: API コンソールからコンテンツ モデレーション ワークフローを使用する方法について説明します。
+description: Azure Content Moderator Review API シリーズを使用し、ご自分のコンテンツ ポリシーに基づいてカスタム ワークフローとしきい値を定義できます。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
-ms.topic: conceptual
-ms.date: 02/05/2018
+ms.subservice: content-moderator
+ms.topic: article
+ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: 4ef8951b30fa7aede08a1af3c834192b5ed18649
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: e150b1321f2fbd348e737222c752203281503643
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223852"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756578"
 ---
-# <a name="workflows-from-the-api-console"></a>API コンソールのワークフロー
+# <a name="define-and-use-moderation-workflows-rest"></a>モデレーション ワークフローを定義して使用する (REST)
 
-Azure Content Moderator で[ワークフロー操作](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59)を使用し、Review API を使用してワークフローを作成または更新し、ワークフローの詳細を取得することができます。 この API を使用すると、ワークフローに単純な式、複雑な式、入れ子にされた式を定義することができます。 ワークフローは、チームで使用できるレビュー ツールに表示されます。 ワークフローは、Review API のジョブ操作にも使用されます。
+ワークフローは、コンテンツをより効率的に処理するために使用できるクラウドベースのカスタマイズされたフィルターです。 ワークフローでは、さまざまなサービスに接続してさまざまな方法でコンテンツをフィルター処理した後、適切なアクションを実行することができます。 このガイドでは、API コンソールからワークフローの REST API を使用して、ワークフローを作成し、使用する方法を説明します。 API の構造を理解すれば、これらの呼び出しを REST と互換性のあるプラットフォームに簡単に移植することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-1. [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)に移動します。 まだサインアップしていない場合はサインアップします。 
-2. レビュー ツールの **[Settings]\(設定\)** で、レビュー ツールに表示される[ワークフロー チュートリアル](Review-Tool-User-Guide/Workflows.md)に従って **[Workflows]\(ワークフロー\)** タブを選択します。
-
-### <a name="browse-to-the-workflows-screen"></a>ワークフローの参照画面
-
-Content Moderator ダッシュボードで、**[Review]\(レビュー\)** > **[Settings]\(設定\)** > **[Workflows]\(ワークフロー\)** の順に選択します。 既定のワークフローが表示されます。
-
-  ![既定のワークフロー](images/default-workflow-listed.PNG)
-
-### <a name="get-the-json-definition-of-the-default-workflow"></a>既定ワークフローの JSON 定義を取得する
-
-ワークフローの **[Edit]\(編集\)** オプションを選択し、**[JSON]** タブを選択します。次の JSON 式が表示されます。
-
-    {
-        "Type": "Logic",
-        "If": {
-            "ConnectorName": "moderator",
-            "OutputName": "isAdult",
-            "Operator": "eq",
-            "Value": "true",
-            "Type": "Condition"
-            },
-        "Then": {
-        "Perform": [
-        {
-            "Name": "createreview",
-            "CallbackEndpoint": null,
-            "Tags": []
-        }
-        ],
-        "Type": "Actions"
-        }
-    }
-
-## <a name="get-workflow-details"></a>ワークフローの詳細を取得する
-
-**[Workflow - Get]\(ワークフロー - 取得\)** 操作を使用して、既存の既定ワークフローの詳細を取得します。
-
-レビュー ツールで、[[Credentials]\(資格情報\)](Review-Tool-User-Guide/credentials.md#the-review-tool) セクションに移動します。
-
-### <a name="browse-to-the-api-reference"></a>API リファレンスを参照する
-
-1. **[Credentials]\(資格情報\)** ビューで [[API reference]\(API リファレンス\)](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) を選択します。 
-2. **[Workflow - Create Or Update]\(ワークフロー - 作成または更新\)** ページが表示されたら、[[Workflow - Get]\(ワークフロー - 取得\)](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b44b3f9b0711b43c4c58) の参照に移動します。
-
-### <a name="select-your-region"></a>リージョンを選択する
-
-**API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。
-
-  ![[Workflow - Get]\(ワークフロー - 取得\) のリージョン選択](images/test-drive-region.png)
-
-  **[Workflow - Get]\(ワークフロー - 取得\)** API コンソールが開きます。
-
-### <a name="enter-parameters"></a>パラメーターを入力する
-
-**team**、**workflowname**、**Ocp-Apim-Subscription-Key** (サブスクリプション キー) の値を入力します。
-
-- **team**: [レビュー ツール アカウント](https://contentmoderator.cognitive.microsoft.com/)の設定時に作成したチーム ID。 
-- **workflowname**: ワークフローの名前。 `default`を使用します。
-- **Ocp-Apim-Subscription-Key**: **[設定]** タブにあります。詳細については、[概要](overview.md)に関するページを参照してください。
-
-  ![クエリ パラメーターとヘッダーを取得する](images/workflow-get-default.PNG)
-
-### <a name="submit-your-request"></a>要求を送信する
-  
-**[送信]** を選択します。 操作が成功すると、**[Response status]\(応答の状態\)** は `200 OK` になり、**[Response Content]\(応答のコンテンツ\)** ボックスには次の JSON ワークフローが表示されます。
-
-    {
-        "Name": "default",
-        "Description": "Default",
-        "Type": "Image",
-        "Expression": {
-        "If": {
-            "ConnectorName": "moderator",
-            "OutputName": "isadult",
-            "Operator": "eq",
-            "Value": "true",
-            "AlternateInput": null,
-            "Type": "Condition"
-            },
-        "Then": {
-            "Perform": [{
-                "Name": "createreview",
-                "Subteam": null,
-                "CallbackEndpoint": null,
-                "Tags": []
-            }],
-            "Type": "Actions"
-            },
-            "Else": null,
-            "Type": "Logic"
-            }
-    }
-
+- Content Moderator [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/) サイトにサインインするか、アカウントを作成します。
 
 ## <a name="create-a-workflow"></a>ワークフローを作成する
 
-レビュー ツールで、[[Credentials]\(資格情報\)](Review-Tool-User-Guide/credentials.md#the-review-tool) セクションに移動します。
+ワークフローを作成または更新するには、**[Workflow - Create Or Update](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59)** API リファレンス ページに移動し、ご自分の主なリージョンのボタン ([レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)の **[資格情報]** ページのエンドポイント URL 内にあります) を選択します。 これにより API コンソールが開始されます。ここで REST API 呼び出しを簡単に構築し実行することができます。
 
-### <a name="browse-to-the-api-reference"></a>API リファレンスを参照する
+![[Workflow - Create Or Update]\(ワークフロー - 作成または更新\) ページのリージョンの選択](images/test-drive-region.png)
 
-**[Credentials]\(資格情報\)** ビューで [[API reference]\(API リファレンス\)](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) を選択します。 **[Workflow - Create Or Update]\(ワークフロー - 作成または更新\)** ページが開きます。
+### <a name="enter-rest-call-parameters"></a>REST 呼び出しパラメーターを入力する
 
-### <a name="select-your-region"></a>リージョンを選択する
+**[team]**、**[workflowname]**、**[Ocp-Apim-Subscription-Key]** に値を入力します。
 
-**API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。
+- **team**: [レビュー ツール](https://contentmoderator.cognitive.microsoft.com/) アカウントの設定時に作成したチーム ID (レビュー ツールの [資格情報] 画面の **[ID]** フィールドにあります)。
+- **workflowname**: 追加する新しいワークフローの名前 (または、既存のワークフローを更新する場合は、既存の名前)。
+- **Ocp-Apim-Subscription-Key**: ご自分の Content Moderator キー。 [レビュー ツール](https://contentmoderator.cognitive.microsoft.com)の **[設定]** タブ内にあります。
 
-  ![[Workflow - Create Or Update]\(ワークフロー - 作成または更新\) ページのリージョンの選択](images/test-drive-region.png)
+![[Workflow - Create Or Update]\(ワークフロー - 作成または更新\) コンソールのクエリ パラメーターとヘッダー](images/workflow-console-parameters.PNG)
 
-  **[Workflow - Create Or Update]\(ワークフロー - 作成または更新\)** API コンソールが開きます。
+### <a name="enter-a-workflow-definition"></a>ワークフローの定義を入力する
 
-### <a name="enter-parameters"></a>パラメーターを入力する
+1. **[Request body]\(要求の本文\)** ボックスを編集して、**Description** および **Type** (`Image` または `Text`) の詳細を指定した JSON 要求を入力します。
+2. **Expression** については、既定のワークフローの JSON 式をコピーします。 最終的な JSON 文字列は次のようになります。
 
-**team**、**workflowname**、**Ocp-Apim-Subscription-Key** (サブスクリプション キー) の値を入力します。
-
-- **team**: [レビュー ツール アカウント](https://contentmoderator.cognitive.microsoft.com/)の設定時に作成したチーム ID。 
-- **workflowname**: 新しいワークフローの名前。
-- **Ocp-Apim-Subscription-Key**: **[設定]** タブにあります。詳細については、[概要](overview.md)に関するページを参照してください。
-
-  ![[Workflow - Create Or Update]\(ワークフロー - 作成または更新\) コンソールのクエリ パラメーターとヘッダー](images/workflow-console-parameters.PNG)
-
-### <a name="enter-the-workflow-definition"></a>ワークフローの定義を入力する
-
-1. **[Request body]\(要求の本文\)** ボックスを編集して、**[Description]\(説明\)** および **[Type]\(種類\)** (画像またはテキスト) の詳細が指定された JSON 要求を入力します。 
-2. **[Expression]\(式\)** の場合は、次のように、前のセクションの既定のワークフロー式をコピーします。
-
+```json
+{
+  "Description":"<A description for the Workflow>",
+  "Type":"Text",
+  "Expression":{
+    "Type":"Logic",
+    "If":{
+      "ConnectorName":"moderator",
+      "OutputName":"isAdult",
+      "Operator":"eq",
+      "Value":"true",
+      "Type":"Condition"
+    },
+    "Then":{
+      "Perform":[
         {
-            "Description": "Default workflow from API console",
-            "Type": "Image",
-            "Expression": 
-                // Copy the default workflow expression from the preceding section
-        }
+          "Name":"createreview",
+          "CallbackEndpoint":null,
+          "Tags":[
 
-    要求の本文は、次の JSON 要求のようになります。
-
-        {
-            "Description": "Default workflow from API console",
-            "Type": "Image",
-            "Expression": {
-                "Type": "Logic",
-                "If": {
-                    "ConnectorName": "moderator",
-                    "OutputName": "isAdult",
-                    "Operator": "eq",
-                    "Value": "true",
-                    "Type": "Condition"
-                    },
-                "Then": {
-                "Perform": [
-                {
-                    "Name": "createreview",
-                    "CallbackEndpoint": null,
-                    "Tags": [ ]
-                }
-                ],
-                "Type": "Actions"
-                }
-            }
+          ]
         }
- 
+      ],
+      "Type":"Actions"
+    }
+  }
+}
+```
+
+> [!NOTE]
+> この API を使用すると、ご自分のワークフローに単純な式、複雑な式、入れ子にされた式を定義することができます。 [Workflow - Create Or Update](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) のドキュメントには、より複雑なロジックの例が示されています。
+
 ### <a name="submit-your-request"></a>要求を送信する
   
 **[送信]** を選択します。 操作が成功すると、**[Response status]\(応答の状態\)** は `200 OK` になり、**[Response Content]\(応答のコンテンツ\)** ボックスには `true` と表示されます。
 
-### <a name="check-out-the-new-workflow"></a>新しいワークフローを確認する
+### <a name="examine-the-new-workflow"></a>新しいワークフローを確認する
 
-レビュー ツールで、**[Review]\(レビュー\)** > **[Settings]\(設定\)** > **[Workflows]\(ワークフロー\)** の順に選択します。 新しいワークフローが表示され、使用できる状態になります。
+[レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)で、**[設定]** > **[ワークフロー]** の順に選択します。 ご自分の新しいワークフローが一覧に表示されます。
 
-  ![レビュー ツールのワークフローリスト](images/workflow-console-new-workflow.PNG)
-  
-### <a name="review-your-new-workflow-details"></a>新しいワークフローの詳細を確認する
+![レビュー ツールのワークフローリスト](images/workflow-console-new-workflow.PNG)
 
-1. ワークフローの **[Edit]\(編集\)** オプションを選択し、**[Designer]\(デザイナー\)** タブと **[JSON]** タブを選択します。
+ご自分のワークフローの **[編集]** オプションを選択し、**[デザイナー]** タブに移動します。ここでは、JSON ロジックの直感的な表現を確認できます。
 
-   ![選択したワークフローの [Designer]\(デザイナー\) タブ](images/workflow-console-new-workflow-designer.PNG)
+![選択したワークフローの [Designer]\(デザイナー\) タブ](images/workflow-console-new-workflow-designer.PNG)
 
-2. ワークフローの JSON ビューを表示するには、**[JSON]** タブを選択します。
+## <a name="get-workflow-details"></a>ワークフローの詳細を取得する
+
+既存のワークフローに関する詳細を取得するには、**[Workflow - Get](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b44b3f9b0711b43c4c58)** API リファレンス ページに移動し、ご自分のリージョン (ご自分のキーが管理されているリージョン) のボタンを選択します。
+
+![[Workflow - Get]\(ワークフロー - 取得\) のリージョン選択](images/test-drive-region.png)
+
+上記のセクションと同様に、REST 呼び出しパラメーターを入力します。 今度は、**[workflowname]** が既存のワークフローの名前であることを確認してください。
+
+![クエリ パラメーターとヘッダーを取得する](images/workflow-get-default.PNG)
+
+**[送信]** を選択します。 操作が成功すると、**[Response status]\(応答の状態\)** は `200 OK` になり、**[Response Content]\(応答のコンテンツ\)** ボックスには次のような JSON 形式のワークフローが表示されます。
+
+```json
+{
+  "Name":"default",
+  "Description":"Default",
+  "Type":"Image",
+  "Expression":{
+    "If":{
+      "ConnectorName":"moderator",
+      "OutputName":"isadult",
+      "Operator":"eq",
+      "Value":"true",
+      "AlternateInput":null,
+      "Type":"Condition"
+    },
+    "Then":{
+      "Perform":[
+        {
+          "Name":"createreview",
+          "Subteam":null,
+          "CallbackEndpoint":null,
+          "Tags":[
+
+          ]
+        }
+      ],
+      "Type":"Actions"
+    },
+    "Else":null,
+    "Type":"Logic"
+  }
+}
+```
 
 ## <a name="next-steps"></a>次の手順
 
-* より複雑なワークフローの例については、[ワークフローの概要](workflow-api.md)に関するページを参照してください。
-* [コンテンツ モデレーション ジョブ](try-review-api-job.md) でワークフローを使用する方法について学習します。
+- [コンテンツ モデレーション ジョブ](try-review-api-job.md) でワークフローを使用する方法について学習します。

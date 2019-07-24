@@ -5,7 +5,7 @@ services: media-services
 documentationcenter: ''
 author: Juliako
 writer: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: bb1aca25-d23a-4520-8c45-44ef3ecd5371
 ms.service: media-services
@@ -13,16 +13,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: a023cb2ea1cf74c8029cc207c9b899631facb929
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 1775bbb2913f6b1a985ca7ec9e89bafed42fd0e6
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018266"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258209"
 ---
-# <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Azure ポータルを使用したストリーミング エンドポイントの管理
+# <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Azure ポータルを使用したストリーミング エンドポイントの管理 
 
 この記事では、Azure Portal を使用してストリーミング エンドポイントを管理する方法について説明します。 
 
@@ -83,7 +83,7 @@ Azure ポータルを使用してストリーミング エンドポイントを�
 
 1. [Maximum cache policy \(最大キャッシュ ポリシー)]: このストリーミング エンドポイントから提供されるアセットのキャッシュの有効期間を構成するために使用します。 値を設定しない場合は、既定値が使用されます。 既定値は Azure ストレージで直接定義することもできます。 ストリーミング エンドポイントで Azure CDN を有効にする場合、キャッシュ ポリシーの値は 600 秒以上に設定してください。  
 2. [Allowed IP addresses \(使用できる IP アドレス)]: 公開されているストリーミング エンドポイントへの接続を許可する IP アドレスを指定するために使用します。 IP アドレスが指定されていない場合、どの IP アドレスでも接続できます。 IP アドレスは、1 つの IP アドレス (例: ‘10.0.0.1’)、IP アドレスと CIDR サブネット マスクを使用した IP 範囲 (例: ‘10.0.0.1/22’)、IP アドレスとピリオドで区切られた 10 進数のサブネット マスクを使用した IP 範囲 (例: ‘10.0.0.1(255.255.255.0)’) のいずれかの形で指定できます。
-3. [Configuration for Akamai signature header authentication \(Akamai 署名ヘッダー認証の構成)]: Akamai サーバーからの署名ヘッダー認証要求を構成する方法 を指定するために使用します。 有効期限は UTC 時間で指定します。
+3. [Configuration for Akamai signature header authentication (Akamai 署名ヘッダー認証の構成)]: Akamai サーバーからの署名ヘッダー認証要求を構成する方法 を指定するために使用します。 有効期限は UTC 時間で指定します。
 
 ## <a name="scale-your-premium-streaming-endpoint"></a>Premium ストリーミング エンドポイントを拡張する
 

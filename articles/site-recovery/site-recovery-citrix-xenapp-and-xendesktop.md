@@ -5,14 +5,14 @@ author: ponatara
 manager: abhemraj
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: ponatara
-ms.openlocfilehash: 0b8d9765766191533745da4c653f1a91ce635c24
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 68f12bb7335da0a996aeadd752f59db0aa360a8e
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210314"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310523"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>多層 XenApp および Citrix XenDesktop デプロイのディザスター リカバリーを設定する
 
@@ -56,9 +56,9 @@ AD DNS サーバー、SQL データベース サーバー、Citrix Delivery Cont
 
 **シナリオ** | **セカンダリ サイトへ** | **Azure へ**
 --- | --- | ---
-**Hyper-V** | この記事で扱わない内容 | [はい]
-**VMware** | この記事で扱わない内容 | [はい]
-**物理サーバー** | この記事で扱わない内容 | [はい]
+**Hyper-V** | この記事で扱わない内容 | はい
+**VMware** | この記事で扱わない内容 | はい
+**物理サーバー** | この記事で扱わない内容 | はい
 
 ### <a name="versions"></a>バージョン
 お客様は、XenApp コンポーネントを、Hyper-V または VMware で実行されている Virtual Machines として、または物理サーバーとしてデプロイできます。 Azure Site Recovery を使用すると、物理デプロイと仮想デプロイの両方を Azure で保護できます。
@@ -130,17 +130,17 @@ XenApp コンポーネント VM のレプリケーションを有効にしたら
 
 1. 復旧計画で XenApp コンポーネントの仮想マシンを追加します。
 2. [復旧計画] > [+ 復旧計画] の順にクリックします。 復旧計画にわかりやすい名前を付けます。
-3. VMware 仮想マシンの場合: ソースに VMware プロセス サーバー、ターゲットに Microsoft Azure、デプロイ モデルに Resource Manager をそれぞれ選択し、[アイテムの選択] をクリックします。
-4. Hyper-V 仮想マシンの場合: ソースに VMM サーバー、ターゲットに Microsoft Azure 、デプロイ モデルに Resource Manager をそれぞれ選択し、[アイテムの選択] をクリックして、XenApp デプロイ VM を選択します。
+3. VMware 仮想マシンの場合:ソースに VMware プロセス サーバー、ターゲットに Microsoft Azure、デプロイ モデルに Resource Manager をそれぞれ選択し、[アイテムの選択] をクリックします。
+4. Hyper-V 仮想マシンの場合:ソースに VMM サーバー、ターゲットに Microsoft Azure 、デプロイ モデルに Resource Manager をそれぞれ選択し、[アイテムの選択] をクリックして、XenApp デプロイ VM を選択します。
 
 ### <a name="adding-virtual-machines-to-failover-groups"></a>フェールオーバー グループへの仮想マシンの追加
 
 復旧計画をカスタマイズして、特定の起動順序、スクリプト、または手動アクションのフェールオーバー グループを追加できます。 次のグループを復旧計画に追加する必要があります。
 
-1. グループ 1: AD DNS のフェールオーバー
-2. グループ 2: SQL Server VM のフェールオーバー
-2. グループ 3: VDA マスター イメージ VM のフェールオーバー
-3. グループ 4: 配信コントローラーと StoreFront サーバー VM のフェールオーバー
+1. フェールオーバー グループ 1:AD DNS
+2. フェールオーバー グループ 2:SQL Server VM
+2. フェールオーバー グループ 3:VDA マスター イメージ VM
+3. フェールオーバー グループ 4:配信コントローラーと StoreFront サーバー VM のフェールオーバー
 
 
 ### <a name="adding-scripts-to-the-recovery-plan"></a>復旧計画へのスクリプトの追加
@@ -149,16 +149,17 @@ XenApp コンポーネント VM のレプリケーションを有効にしたら
 
 カスタマイズした復旧計画は次のようになります。
 
-1. グループ 1: AD DNS のフェールオーバー
-2. グループ 2: SQL Server VM のフェールオーバー
-3. グループ 3: VDA マスター イメージ VM のフェールオーバー
+1. フェールオーバー グループ 1:AD DNS
+2. フェールオーバー グループ 2:SQL Server VM
+3. フェールオーバー グループ 3:VDA マスター イメージ VM
 
    >[!NOTE]     
    >手動またはスクリプトのアクションが含まれる手順 4、6、および 7 は、MCS/PVS カタログがあるオンプレミス XenApp 環境にのみ適用できます。
 
-4. グループ 3 の手動またはスクリプト アクション: マスター VDA VM をシャットダウンします。Azure にフェールオーバーされたマスター VDA VM は実行状態になります。 Azure のホスティングを使用して新しい MCS カタログを作成するには、マスター VDA VM を停止 (割り当て解除) 状態にする必要があります。 Azure portal から VM をシャットダウンします。
+4. グループ 3 の手動またはスクリプト アクション:マスター VDA VM をシャット ダウンします。
+マスター VDA VM は、Azure へのフェールオーバー時には実行中の状態になります。 Azure のホスティングを使用して新しい MCS カタログを作成するには、マスター VDA VM を停止 (割り当て解除) 状態にする必要があります。 Azure portal から VM をシャットダウンします。
 
-5. グループ 4: 配信コントローラーと StoreFront サーバー VM のフェールオーバー
+5. フェールオーバー グループ 4:配信コントローラーと StoreFront サーバー VM のフェールオーバー
 6. グループ 3 手動またはスクリプト アクション 1:
 
     "***Azure RM ホスト接続を追加する***"

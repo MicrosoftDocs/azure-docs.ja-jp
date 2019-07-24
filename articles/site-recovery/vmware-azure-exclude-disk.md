@@ -1,17 +1,19 @@
 ---
 title: Azure Site Recovery を使用した VMware の Azure へのディザスター リカバリーのレプリケーションからディスクを除外する | Microsoft Docs
 description: VMware の Azure へのディザスター リカバリーのレプリケーションから VM ディスクを除外する理由とその方法を説明します。
-author: nsoneji
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
-ms.date: 10/11/2018
-ms.author: nisoneji
-ms.openlocfilehash: f8e5fd094e453088dab83c1967bc0733f91a2b98
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 3/3/2019
+ms.author: mayg
+ms.topic: conceptual
+ms.openlocfilehash: 105074892cc6dfa4da1e7c8ddd0a0aad9f1b60a1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210588"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002887"
 ---
 # <a name="exclude-disks-from-replication-of-vmware-vms-to-azure"></a>VMware VM の Azure へのレプリケーションからディスクを除外する
 
@@ -54,7 +56,7 @@ Azure Site Recovery ポータルで[レプリケーションを有効にする](
 > * レプリケーションから除外できるのは、ベーシック ディスクだけです。 オペレーティング システム ディスクまたはダイナミック ディスクは除外できません。
 > * レプリケーションを有効にした後は、レプリケートするディスクを追加または削除することはできません。 ディスクを追加または除外する場合は、マシンの保護を無効にし、再度有効にする必要があります。
 > * アプリケーションが動作するために必要なディスクを除外した場合、Azure へのフェールオーバー後、レプリケートされたアプリケーションを実行できるように、Azure でディスクを手動で作成する必要があります。 別の方法として、Azure Automation を復旧計画に組み込んで、マシンのフェールオーバー時にディスクを作成することもできます。
-> * Window 仮想マシン: Azure で手動で作成したディスクはフェールバックされません。 たとえば、3 つのディスクをフェールオーバーし、Azure Virtual Machines に直接 2 つのディスクを作成した場合、フェールオーバーされた 3 つのディスクだけがフェールバックされます。 オンプレミスから Azure へのフェールバックまたは再保護に、手動で作成されたディスクを含めることはできません。
+> * Windows 仮想マシン: Azure に手動で作成したディスクはフェールバックされません。 たとえば、3 つのディスクをフェールオーバーし、Azure Virtual Machines に直接 2 つのディスクを作成した場合、フェールオーバーされた 3 つのディスクだけがフェールバックされます。 オンプレミスから Azure へのフェールバックまたは再保護に、手動で作成されたディスクを含めることはできません。
 > * Linux 仮想マシン: Azure に手動で作成したディスクはフェールバックされます。 たとえば、3 つのディスクをフェールオーバーし、Azure Virtual Machines に直接 2 つのディスクを作成した場合、5 つのディスクがすべてフェールバックされます。 手動で作成したディスクは、フェールバックから除外できません。
 >
 
@@ -65,7 +67,7 @@ Azure Site Recovery ポータルで[レプリケーションを有効にする](
 - SQL Server の tempdb 用ディスク
 - ページング ファイル (pagefile.sys) 用ディスク
 
-## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>例 1: SQL Server の tempdb 用ディスクを除外する
+## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>例 1:SQL Server の tempdb 用ディスクを除外する
 除外できる tempdb が存在する SQL Server 仮想マシンを考えてみましょう。
 
 仮想ディスクの名前は SalesDB です。
@@ -78,7 +80,7 @@ Azure Site Recovery ポータルで[レプリケーションを有効にする](
 DB-Disk0-OS | DISK0 | C:\ | オペレーティング システム ディスク
 DB-Disk1| Disk1 | D:\ | SQL システム データベースとユーザー データベース 1
 DB-Disk2 (保護対象から除外するディスク) | Disk2 | E:\ | 一時ファイル
-DB-Disk3 (保護対象から除外するディスク) | Disk3 | F:\ | SQL tempdb データベース (フォルダーのパスは F:\MSSQL\Data\) </br /> </br /> フェールオーバーの前にフォルダーのパスをメモしておくこと。
+DB-Disk3 (保護対象から除外するディスク) | Disk3 | F:\ | SQL tempdb データベース (フォルダーのパスは F:\MSSQL\Data\) <br /> <br />フェールオーバー前にフォルダー パスをメモします。
 DB-Disk4 | Disk4 |G:\ |ユーザー データベース 2
 
 仮想マシンの 2 つのディスク上のデータの変更は一時的であるため、SalesDB 仮想マシンを保護する一方で、Disk2 と Disk3 をレプリケーションから除外します。 Azure Site Recovery は、これらのディスクをレプリケートしません。 フェールオーバーが発生した場合、これらのディスクは Azure 上のフェールオーバー仮想マシンにも存在しません。
@@ -88,7 +90,7 @@ DB-Disk4 | Disk4 |G:\ |ユーザー データベース 2
 **ゲスト オペレーティング システム ディスク番号** | **ドライブ文字** | **ディスクに格納されているデータの種類**
 --- | --- | ---
 DISK0 | C:\ | オペレーティング システム ディスク
-Disk1 | E:\ | 一時記憶域</br /> </br />このディスクは Azure によって追加され、利用可能な最初のドライブ文字が割り当てられます。
+Disk1 | E:\ | 一時ストレージ<br /> <br />このディスクは Azure によって追加され、利用可能な最初のドライブ文字が割り当てられます。
 Disk2 | D:\ | SQL システム データベースとユーザー データベース 1
 Disk3 | G:\ | ユーザー データベース 2
 
@@ -152,7 +154,7 @@ Azure からオンプレミスの VMware にフェールオーバーしたとき
 **ゲスト オペレーティング システム ディスク番号** | **ドライブ文字** | **ディスクに格納されているデータの種類**
 --- | --- | ---
 DISK0 | C:\ | オペレーティング システム ディスク
-Disk1 | E:\ | 一時記憶域</br /> </br />このディスクは Azure によって追加され、利用可能な最初のドライブ文字が割り当てられます。
+Disk1 | E:\ | 一時ストレージ<br /> <br />このディスクは Azure によって追加され、利用可能な最初のドライブ文字が割り当てられます。
 Disk2 | D:\ | SQL システム データベースとユーザー データベース 1
 Disk3 | G:\ | ユーザー データベース 2
 
@@ -166,12 +168,12 @@ DISK0 | C:\ | オペレーティング システム ディスク
 Disk1 | D:\ | SQL システム データベースとユーザー データベース 1
 Disk2 | G:\ | ユーザー データベース 2
 
-## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>例 2: ページング ファイル (pagefile.sys) 用ディスクを除外する
+## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>例 2:ページング ファイル (pagefile.sys) 用ディスクを除外する
 
 除外できるページング ファイル ディスクが存在する仮想マシンを考えてみましょう。
 次の 2 つのケースがあります。
 
-### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>ケース 1: ページング ファイルが D: ドライブ上で構成されている
+### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>ケース 1:ページング ファイルが D: ドライブ上で構成されている
 ディスク構成を次に示します。
 
 **ディスク名** | **ゲスト オペレーティング システム ディスク番号** | **ドライブ文字** | **ディスクに格納されているデータの種類**
@@ -191,7 +193,7 @@ VMware から Azure に仮想マシンをフェールオーバーした後の Az
 **ディスク名** | **ゲスト オペレーティング システム ディスク番号** | **ドライブ文字** | **ディスクに格納されているデータの種類**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | オペレーティング システム ディスク
-DB-Disk1 | Disk1 | D:\ | 一時記憶域</br /> </br />pagefile.sys
+DB-Disk1 | Disk1 | D:\ | 一時ストレージ<br /> <br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | ユーザー データ 1
 DB-Disk3 | Disk3 | F:\ | ユーザー データ 2
 
@@ -201,7 +203,7 @@ Azure 仮想マシンにおけるページング ファイルの設定を次に�
 
 ![Azure 仮想マシンにおけるページング ファイルの設定](./media/vmware-azure-exclude-disk/pagefile-on-azure-vm-after-failover.png)
 
-### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>ケース 2: ページング ファイルが他のドライブ (D: 以外のドライブ) 上で構成されている
+### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>ケース 2:ページング ファイルが他のドライブ (D: 以外のドライブ) 上で構成されている
 
 ソース仮想マシンのディスク構成を次に示します。
 
@@ -218,10 +220,10 @@ DB-Disk3 | Disk3 | F:\ | ユーザー データ 2
 
 VMware から Azure に仮想マシンをフェールオーバーした後の Azure 仮想マシンのディスク構成を次に示します。
 
-**ディスク名**| **ゲスト オペレーティング システム ディスク番号**| **ドライブ文字** | **ディスクに格納されているデータの種類**
+**ディスク名** | **ゲスト オペレーティング システム ディスク番号** | **ドライブ文字** | **ディスクに格納されているデータの種類**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0  |C:\ |オペレーティング システム ディスク
-DB-Disk1 | Disk1 | D:\ | 一時記憶域</br /> </br />pagefile.sys
+DB-Disk1 | Disk1 | D:\ | 一時ストレージ<br /> <br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | ユーザー データ 1
 DB-Disk3 | Disk3 | F:\ | ユーザー データ 2
 

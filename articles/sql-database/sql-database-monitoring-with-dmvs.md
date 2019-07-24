@@ -1,5 +1,5 @@
 ---
-title: 動的管理ビューを使用した Azure SQL Database の監視 | Microsoft Docs
+title: DMV を使用して Azure SQL Database のパフォーマンスを監視する | Microsoft Docs
 description: 動的管理ビューを使用して Microsoft Azure SQL Database を監視することで、一般的なパフォーマンスの問題を検出および診断する方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -7,19 +7,19 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: juliemsft
+ms.author: jrasnick
+ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: c690e9b864d4b2b378814b478ea4918a9f75fbba
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.date: 12/19/2018
+ms.openlocfilehash: 371632a28d22583f8b206e4d8b9d2b6b4e510ab0
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288529"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563951"
 ---
-# <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>動的管理ビューを使用した Azure SQL Database の監視
+# <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>動的管理ビューを使用して Azure SQL Database のパフォーマンスを監視する
 
 Microsoft Azure SQL Database では、クエリのブロック、クエリの長時間実行、リソースのボトルネック、不適切なクエリ プランなどが原因で発生するパフォーマンスの問題を、動的管理ビューの一部を使用して診断できます。 このトピックでは、動的管理ビューを使用して一般的なパフォーマンスの問題を検出する方法について説明します。
 
@@ -131,8 +131,8 @@ ORDER BY end_time DESC;
 
 IO の上限に達した場合は 2 つのオプションがあります。
 
-- オプション 1: コンピューティング サイズまたはサービス レベルをアップグレードする
-- オプション 2: 最も多くの IO を消費しているクエリを特定して調整する
+- オプション 1:コンピューティング サイズまたはサービス レベルをアップグレードする
+- オプション 2:最も多くの IO を消費しているクエリを特定して調整する
 
 #### <a name="view-buffer-related-io-using-the-query-store"></a>クエリ ストアを使用したバッファー関連 IO の表示
 
@@ -549,7 +549,7 @@ FROM sys.dm_db_resource_stats;
 Azure SQL Database では、各サーバーの **master** データベースの **sys.resource_stats** ビューにアクティブなデータベース別のリソース利用情報が公開されます。 テーブルのデータは 5 分おきに集計されます。 Basic、Standard、Premium のサービス レベルでは、データをテーブルに表示するのに 5 分を超える時間がかかる可能性があります。このため、このデータはほぼリアルタイムの分析よりも過去の分析に役に立ちます。 **sys.resource_stats** ビューに照会すると、データベースの最近の履歴が表示され、選択した予約で必要なときに望ましいパフォーマンスが発揮されたかどうかを検証できます。
 
 > [!NOTE]
-> 次の例で **sys.resource_stats** に照会するためには、論理 SQL データベース サーバーの **master** データベースに接続する必要があります。
+> 次の例で **sys.resource_stats** に照会するには、ご使用の SQL Database サーバーの **master** データベースに接続する必要があります。
 
 次の例は、このビューのデータが表示されているところです。
 
@@ -574,7 +574,7 @@ ORDER BY start_time DESC
     ORDER BY start_time DESC;
     ```
 
-2. ワークロードがコンピューティング サイズにどの程度適合しているかを評価するには、リソース メトリック (CPU、読み取り、書き込み、ワーカー数、セッション数) の各点を分析する必要があります。 次に、**sys.resource_stats** を使用してこれらのリソース メトリックの平均値と最大値を報告するように修正したクエリを示します:
+2. ワークロードがコンピューティング サイズにどの程度適合しているかを評価するには、リソース メトリックの各側面を分析する必要があります。つまり、CPU、読み取り、書き込み、ワーカー数、セッション数です。 次に、**sys.resource_stats** を使用してこれらのリソース メトリックの平均値と最大値を報告するように修正したクエリを示します:
 
     ```sql
     SELECT

@@ -4,26 +4,27 @@ description: Azure AD Identity Protection 多要素認証登録ポリシーを�
 services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
 documentationcenter: ''
-author: MarkusVi
-manager: mtillman
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
-ms.component: identity-protection
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
-ms.author: markvi
-ms.reviewer: raluthra
-ms.openlocfilehash: 792a1fc2403e672c973577efd7a05c9c81d45ad4
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 03/19/2019
+ms.author: joflore
+ms.reviewer: sahandle
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cd3d5a19e861bd738f3c618610aadb77da30b384
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054083"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520345"
 ---
-# <a name="how-to-configure-the-multi-factor-authentication-registration-policy"></a>方法: 多要素認証登録ポリシーを構成する
+# <a name="how-to-configure-the-multi-factor-authentication-registration-policy"></a>方法:多要素認証登録ポリシーを構成する
 
 Azure AD Identity Protection は、ポリシーを構成することによって多要素認証 (MFA) 登録の展開を管理するのに役立ちます。 この記事では、このポリシーの使用目的およびその構成方法について説明します。
 
@@ -60,7 +61,7 @@ MFA 登録ポリシーは、[[Azure AD Identity Protection]](https://portal.azur
 
 - 適用されるアクセスの種類:  
 
-    ![ユーザーとグループ](./media/howto-mfa-policy/12.png)
+    ![Access](./media/howto-mfa-policy/12.png)
 
 - ポリシーの状態:
 

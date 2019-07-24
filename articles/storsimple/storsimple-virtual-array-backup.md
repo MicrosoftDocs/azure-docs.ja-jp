@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c926f0c80ce56cac3106ad97ec3ec2e18a8e2cc6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a61dcca1f78b6ba444a2deefcf6b8bb4fd5c5087
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109570"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121980"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>StorSimple Virtual Array 上の共有またはボリュームをバックアップする
 
@@ -32,7 +32,7 @@ StorSimple Virtual Array は、ファイル サーバーまたは iSCSI サー�
 
 ## <a name="back-up-shares-and-volumes"></a>共有やボリュームをバックアップする
 
-バックアップにより、特定の時点の共有やボリュームを保護し、回復性を向上させながら、復元時間を最小限に抑えることができます。 StorSimple デバイスでの共有またはボリュームのバックアップは 2 つの方法、つまり、**スケジュールされた**バックアップまたは**手動**バックアップのいずれかを使用して実行できます。 これらの各方法について、以下のセクションで説明します。
+バックアップにより、特定の時点の共有やボリュームを保護し、回復性を向上させながら、復元時間を最小限に抑えることができます。 StorSimple デバイスでの共有またはボリュームのバックアップは 2 つの方法で実行できます (**スケジュール**または**手動**)。 これらの各方法について、以下のセクションで説明します。
 
 ## <a name="change-the-backup-start-time"></a>バックアップの開始時刻を変更する
 
@@ -100,19 +100,19 @@ StorSimple Virtual Array の既定のバックアップ ポリシーは、1 日�
     ![バックアップ カタログに移動](./media/storsimple-virtual-array-backup/viewbackups1.png)
 2. フィルター処理に使用する次の条件を指定します。
    
-    - **時間範囲** – **[過去 1 時間]**、**[過去 24 時間]**、**[過去 7 日間]**、**[過去 30 日間]**、**[過去 1 年]**、**[ユーザー設定の日付]** を指定できます。
+   - **時間範囲** – **[過去 1 時間]**、**[過去 24 時間]**、**[過去 7 日間]**、**[過去 30 日間]**、**[過去 1 年]**、**[ユーザー設定の日付]** を指定できます。
     
-    - **デバイス** – StorSimple デバイス マネージャー サービスに登録されている iSCSI サーバーやファイル サーバーの一覧から選択します。
+   - **デバイス** – StorSimple デバイス マネージャー サービスに登録されている iSCSI サーバーやファイル サーバーの一覧から選択します。
    
-    - **開始** – (バックアップ ポリシーによって) 自動的に**スケジュール**するか、(ご自身で) **手動**で開始できます。
+   - **開始** – (バックアップ ポリシーによって) 自動的に**スケジュール**するか、(ご自身で) **手動**で開始できます。
    
-    ![バックアップのフィルター処理](./media/storsimple-virtual-array-backup/viewbackups2.png)
+     ![バックアップのフィルター処理](./media/storsimple-virtual-array-backup/viewbackups2.png)
 
 3. **[Apply]** をクリックします。 **[バックアップ カタログ]** ブレードに、フィルター処理されたバックアップの一覧が表示されます。 一度に表示できるバックアップ要素は 100 個だけです。
    
     ![更新されたバックアップ カタログ](./media/storsimple-virtual-array-backup/viewbackups3.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
 

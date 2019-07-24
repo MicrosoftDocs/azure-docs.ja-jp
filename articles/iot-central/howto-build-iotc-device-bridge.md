@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 11/8/2018
+ms.date: 03/26/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 83f053a8815f31803f536920497fdc42e72d2a2d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 246c9ad8ab3083c1b847c1c25230a7193a8192e3
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628612"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59263572"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>IoT Central デバイス ブリッジを構築して他の IoT クラウドを IoT Central に接続する
 
@@ -25,8 +25,10 @@ IoT Central デバイス ブリッジは、Sigfox、Particle、The Things Networ
 IoT Central デバイス ブリッジは、GitHub のオープン ソース ソリューションです。 カスタム Azure Resource Manager テンプレートといくつかの Azure リソースを Azure サブスクリプションにデプロイする [Deploy to Azure (Azure へのデプロイ)] ボタンが用意されています。 リソースには次のものがあります。
 -   Azure 関数アプリ
 -   Azure Storage アカウント
--   App Service プラン (S1 レベル)
--   Azure Key Vault 関数アプリはデバイス ブリッジの重要な要素です。 それは、単純な Webhook の統合によって、他の IoT プラットフォームまたは任意のカスタム プラットフォームから HTTP POST 要求を受信します。 Sigfox、Particle、および TTN の各クラウドに接続する方法を示す例が提供されています。 お使いのプラットフォームで関数アプリに HTTP POST 要求を送信できる場合は、カスタムの IoT クラウドに接続するようにこのソリューションを簡単に拡張できます。
+-   従量課金プラン
+-   Azure Key Vault
+
+関数アプリはデバイス ブリッジの重要な要素です。 それは、単純な Webhook の統合によって、他の IoT プラットフォームまたは任意のカスタム プラットフォームから HTTP POST 要求を受信します。 Sigfox、Particle、および TTN の各クラウドに接続する方法を示す例が提供されています。 お使いのプラットフォームで関数アプリに HTTP POST 要求を送信できる場合は、カスタムの IoT クラウドに接続するようにこのソリューションを簡単に拡張できます。
 関数アプリでは、IoT Central で受け入れられる形式にデータを変換し、DPS API を使用してそれを転送します。
 
 ![Azure 関数のスクリーンショット](media/howto-build-iotc-device-bridge/azfunctions.png)
@@ -37,10 +39,9 @@ IoT Central アプリで、転送されたメッセージ内のデバイス ID �
 手順は、GitHub リポジトリの README ファイルに詳細に記載されています。 
 
 ## <a name="pricing"></a>価格
-これは、すべてが Azure サブスクリプションでホストされます。 プロビジョニングされるリソースの推定コストの大半は、[App Service の Standard プランの価格]( https://azure.microsoft.com/en-us/pricing/details/app-service/windows/)しに由来します。 これに関する詳細とこれを軽減する可能性がある方法については、README ファイルで確認できます。
+Azure リソースは Azure サブスクリプションで提供されます。 価格に関する詳細については、[README ファイル](https://aka.ms/iotcentralgithubdevicebridge)をお読みください。
 
 ## <a name="next-steps"></a>次の手順
-
 ここでは、IoT Central デバイス ブリッジを構築する方法について説明しました。推奨される次の手順は以下のとおりです。
 
 > [!div class="nextstepaction"]

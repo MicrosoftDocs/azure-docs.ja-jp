@@ -3,17 +3,17 @@ title: Azure IoT Hub Device Provisioning Service でカスタム割り当てポ�
 description: Azure IoT Hub Device Provisioning Service でカスタム割り当てポリシーを使用する方法
 author: wesmc7777
 ms.author: wesmc
-ms.date: 08/15/2018
+ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: f2c9194b07774443a70eef8e879d895efeb338e9
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+manager: philmea
+ms.openlocfilehash: f0eb2f7358e8fb1564275e1de510f302d2eef90b
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458193"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500942"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>カスタム割り当てポリシーの使用方法
 
@@ -90,19 +90,19 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
 
 このセクションでは、カスタム割り当てポリシーを使用する新しい登録グループを作成します。 わかりやすくするため、この記事では[対称キーの構成証明](concepts-symmetric-key-attestation.md)を登録で使用します。 ソリューションをさらに安全にするには、信頼チェーンで [X.509 証明書構成証明](concepts-security.md#x509-certificates)を使用することを検討してください。
 
-1. [Azure portal](http://portal.azure.com) にサインインし、Device Provisioning Services のインスタンスを開きます。
+1. [Azure portal](https://portal.azure.com) にサインインし、Device Provisioning Services のインスタンスを開きます。
 
 2. **[登録を管理します]** タブを選択し、ページの上部にある **[登録グループの追加]** ボタンをクリックします。 
 
-3. **[登録グループの追加]** で、次の情報を入力し、**[保存]** をクリックします。
+3. **[登録グループの追加]** で、次の情報を入力して、**[保存]** ボタンをクリックします。
 
-    **[グループ名]**: **contoso-custom-allocated-devices** を入力します。
+    **[グループ名]**: 「**contoso-custom-allocated-devices**」を入力します。
 
-    **[Attestation Type]\(構成証明の種類\)**: **[対称キー]** を選択します。
+    **[構成証明の種類]**: **[対称キー]** を選択します。
 
     **[キーの自動生成]**: このチェック ボックスは既にオンになっているはずです。
 
-    **[デバイスをハブに割り当てる方法を選択してください]**: **[Custom (Use Azure Function)]\(カスタム (Azure 関数を使用)\)** を選択します。
+    **[デバイスをハブに割り当てる方法を選択してください]**: **[カスタム (Azure 関数を使用)]** を選択します。
 
     ![対称キー構成証明用にカスタム割り当て登録グループを追加する](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
@@ -111,11 +111,11 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
 
     両方の部門 IoT ハブに対してこの手順を実行する必要があります。
 
-    **[サブスクリプション]**: 複数のサブスクリプションがある場合は、部門 IoT ハブを作成したサブスクリプションを選択します。
+    **サブスクリプション**:複数のサブスクリプションがある場合は、部門 IoT ハブを作成したサブスクリプションを選択します。
 
     **[IoT ハブ]**: 作成した部門ハブのいずれかを選択します。
 
-    **[アクセス ポリシー]**: **[iothubowner]** を選択します。
+    **[アクセス ポリシー]:** **[iothubowner]** を選択します。
 
     ![部門 IoT ハブをプロビジョニング サービスとリンクする](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
 
@@ -318,7 +318,7 @@ Windows ベースのワークステーションを使用している場合は、
 
 1. **KEY** の値を、前に書き留めた**主キー**で置き換えます。
 
-    ```PowerShell
+    ```powershell
     $KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
 
     $REG_ID1='breakroom499-contoso-tstrsd-007'
@@ -334,7 +334,7 @@ Windows ベースのワークステーションを使用している場合は、
     echo "`n`n$REG_ID1 : $derivedkey1`n$REG_ID2 : $derivedkey2`n`n"
     ```
 
-    ```PowerShell
+    ```powershell
     breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
     mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
     ```
@@ -351,23 +351,7 @@ Windows ベースのワークステーションを使用している場合は、
 
 このセクションは、Windows ベースのワークステーション向けです。 Linux の例については、「[How to provision for multitenancy (マルチテナント用にプロビジョニングする方法)](how-to-provision-multitenant.md)」の VM のセットアップに関するセクションを参照してください。
 
-
-
-1. [CMake ビルド システム](https://cmake.org/download/) バージョン 3.11.4 をダウンロードします。 ダウンロードしたバイナリを、対応する暗号化ハッシュ値を使用して検証します。 次の例では、Windows PowerShell を使用して、x64 MSI 配布のバージョン 3.11.4 の暗号化ハッシュを検証しています。
-
-    ```PowerShell
-    PS C:\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
-    PS C:\Downloads> $hash.Hash -eq "56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869"
-    True
-    ```
-    
-    この記事の執筆時点では、CMake サイトにバージョン 3.11.4 用に次のハッシュ値が一覧表示されていました。
-
-    ```
-    6dab016a6b82082b8bcd0f4d1e53418d6372015dd983d29367b9153f1a376435  cmake-3.11.4-Linux-x86_64.tar.gz
-    72b3b82b6d2c2f3a375c0d2799c01819df8669dc55694c8b8daaf6232e873725  cmake-3.11.4-win32-x86.msi
-    56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869  cmake-3.11.4-win64-x64.msi
-    ```
+1. [CMake ビルド システム](https://cmake.org/download/)をダウンロードします。
 
     `CMake` のインストールを開始する**前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
 
@@ -376,7 +360,7 @@ Windows ベースのワークステーションを使用している場合は、
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
     ```
-    このリポジトリのサイズは現在約 220 MB です。 この操作は、完了するまでに数分かかります。
+    この操作は、完了するまでに数分かかります。
 
 
 3. git リポジトリのルート ディレクトリに `cmake` サブディレクトリを作成し、そのフォルダーに移動します。 
@@ -390,7 +374,7 @@ Windows ベースのワークステーションを使用している場合は、
 4. 次のコマンドを実行して、開発クライアント プラットフォームに固有の SDK のバージョンをビルドします。 シミュレートされたデバイスの Visual Studio ソリューションが `cmake` ディレクトリに生成されます。 
 
     ```cmd
-    cmake -Dhsm_type_symm_key:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
     
     `cmake` で C++ コンパイラが見つからない場合は、上記のコマンドの実行中にビルド エラーが発生している可能性があります。 これが発生した場合は、[Visual Studio コマンド プロンプト](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)でこのコマンドを実行してください。 
@@ -398,7 +382,7 @@ Windows ベースのワークステーションを使用している場合は、
     ビルドが成功すると、最後のいくつかの出力行は次のようになります。
 
     ```cmd/sh
-    $ cmake -Dhsm_type_symm_key:BOOL=ON ..
+    $ cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     -- Building for: Visual Studio 15 2017
     -- Selecting Windows SDK version 10.0.16299.0 to target Windows 10.0.17134.
     -- The C compiler identification is MSVC 19.12.25835.0
@@ -449,20 +433,24 @@ Windows ベースのワークステーションを使用している場合は、
 
 6. **prov\_dev\_client\_sample** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択します。 
 
+
 #### <a name="simulate-the-contoso-toaster-device"></a>Contoso トースター デバイスをシミュレートする
 
-1. Visual Studio の *ソリューション エクスプローラー* ウィンドウで、**hsm\_security\_client** プロジェクトに移動し、展開します。 **[ソース ファイル]** を展開し、**hsm\_client\_key.c** を開きます。 
-
-    `REGISTRATION_NAME` および `SYMMETRIC_KEY_VALUE` 定数の宣言を探します。 ファイルに次の変更を加えて保存します。
-
-    `REGISTRATION_NAME` 定数の値をトースター デバイスの登録 ID **breakroom499-contoso-tstrsd-007** で更新します。
-    
-    `SYMMETRIC_KEY_VALUE` 定数の値を、トースター デバイスに対して生成したデバイス キーで更新します。 値 **JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=** は一例に過ぎません。
+1. トースター デバイスをシミュレートするには、**prov\_dev\_client\_sample.c** で、コメントになっている `prov_dev_set_symmetric_key_info()` の呼び出しを探します。
 
     ```c
-    static const char* const REGISTRATION_NAME = "breakroom499-contoso-tstrsd-007";
-    static const char* const SYMMETRIC_KEY_VALUE = "JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=";
+    // Set the symmetric key if using they auth type
+    //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
+
+    関数呼び出しのコメントを解除し、プレースホルダーの値 (山かっこを含む) を、トースターの登録 ID とデバイス派生キー (先ほど生成したもの) に置き換えます。 以下に示したキーの値 **JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=** は、あくまで一例です。
+
+    ```c
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("breakroom499-contoso-tstrsd-007", "JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=");
+    ```
+   
+    ファイルを保存します。
 
 2. Visual Studio のメニューで **[デバッグ]** > **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、**[はい]** をクリックして、プロジェクトをリビルドしてから実行します。
 
@@ -485,20 +473,16 @@ Windows ベースのワークステーションを使用している場合は、
 
 #### <a name="simulate-the-contoso-heat-pump-device"></a>Contoso ヒート ポンプ デバイスをシミュレートする
 
-1. Visual Studio の *[ソリューション エクスプローラー]* ウィンドウに戻り、**hsm\_security\_client** プロジェクトに移動して、展開します。 **[ソース ファイル]** を展開し、**hsm\_client\_key.c** を開きます。 
-
-    `REGISTRATION_NAME` および `SYMMETRIC_KEY_VALUE` 定数の宣言を探します。 ファイルに次の変更を加えて保存します。
-
-    `REGISTRATION_NAME` 定数の値をヒート ポンプ デバイスの登録 ID **mainbuilding167-contoso-hpsd-088** で更新します。
-    
-    `SYMMETRIC_KEY_VALUE` 定数の値を、トースター デバイスに対して生成したデバイス キーで更新します。 値 **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=** は一例に過ぎません。
+1. ヒート ポンプ デバイスをシミュレートするには、**prov\_dev\_client\_sample.c** の `prov_dev_set_symmetric_key_info()` の呼び出しを、同じようにヒート ポンプの登録 ID とデバイス派生キー (先ほど生成したもの) で更新します。 以下に示したキーの値 **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=** も、あくまで一例です。
 
     ```c
-    static const char* const REGISTRATION_NAME = "mainbuilding167-contoso-hpsd-088";
-    static const char* const SYMMETRIC_KEY_VALUE = "6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=";
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("mainbuilding167-contoso-hpsd-088", "6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=");
     ```
+   
+    ファイルを保存します。
 
-7. Visual Studio のメニューで **[デバッグ]** > **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、**[はい]** をクリックして、プロジェクトをリビルドしてから実行します。
+2. Visual Studio のメニューで **[デバッグ]** > **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、**[はい]** をクリックして、プロジェクトをリビルドしてから実行します。
 
     次の出力は、シミュレートされたヒート ポンプ デバイスが正常に起動し、プロビジョニング サービス インスタンスに接続して、カスタム割り当てポリシーによって Contoso ヒート ポンプ IoT ハブに割り当てられる例です。
 
@@ -517,8 +501,6 @@ Windows ベースのワークステーションを使用している場合は、
     ```
 
 
-
-
 ## <a name="troubleshooting-custom-allocation-policies"></a>カスタム割り当てポリシーのトラブルシューティング
 
 次の表に、想定されるシナリオと、表示される可能性のある結果のエラー コードを示します。 この表は、Azure Functions でのカスタム割り当てポリシーのエラーのトラブルシューティングに利用してください。
@@ -529,7 +511,7 @@ Windows ベースのワークステーションを使用している場合は、
 | Webhook から "200 OK" が返され、"iotHubHostName" が有効な IoT ハブ ホスト名に設定されている | 結果の状態: 割り当て済み  | SDK からハブの情報と共に PROV_DEVICE_RESULT_OK が返される |
 | Webhook から "200 OK" が返され、応答に "iotHubHostName" が存在するが、空の文字列または null が設定されている | 結果の状態: 失敗<br><br> エラー コード: CustomAllocationIotHubNotSpecified (400208) | SDK から PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED が返される |
 | Webhook から "401 権限がありません" が返される | 結果の状態: 失敗<br><br>エラー コード: CustomAllocationUnauthorizedAccess (400209) | SDK から PROV_DEVICE_RESULT_UNAUTHORIZED が返される |
-| デバイスを無効にする個々の登録が作成された | 結果の状態: 無効 | SDK から PROV_DEVICE_RESULT_DISABLED が返される |
+| デバイスを無効にする個々の登録が作成された | 結果の状態: Disabled | SDK から PROV_DEVICE_RESULT_DISABLED が返される |
 | Webhook からエラー コード 429 以上が返される | DPS のオーケストレーションが何回も再試行される。 再試行ポリシーは現在以下の通り。<br><br>&nbsp;&nbsp;- 再試行回数: 10<br>&nbsp;&nbsp;- 初期間隔: 1 秒<br>&nbsp;&nbsp;- 増分: 9 秒 | SDK では、エラーが無視され、特定の期間内に別の状態の取得メッセージが送信される |
 | Webhook からその他の状態コードが返される | 結果の状態: 失敗<br><br>エラー コード: CustomAllocationFailed (400207) | SDK から PROV_DEVICE_RESULT_DEV_AUTH_ERROR が返される |
 
@@ -557,7 +539,7 @@ Windows ベースのワークステーションを使用している場合は、
 ## <a name="next-steps"></a>次の手順
 
 - 再プロビジョニングの詳細については、「[IoT Hub Device reprovisoning concepts](concepts-device-reprovision.md)」(IoT Hub デバイスの再プロビジョニングの概念) をご覧ください 
-- プロビジョニング解除の詳細については、「[自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」を参照してください 
+- プロビジョニング解除の詳細については、「[自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」をご覧ください 
 
 
 

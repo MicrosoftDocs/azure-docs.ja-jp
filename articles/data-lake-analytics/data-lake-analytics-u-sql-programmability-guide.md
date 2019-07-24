@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 0fa695218bb1112324ef2ddac80e52f927a5971b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: d1b230b40d1f880787334ebfd39e704e3a650baa
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045298"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59489658"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL プログラミング ガイド
 
@@ -133,9 +133,9 @@ U-SQL では現在、.NET Framework 4.5 を使っています。 このため、
 
 アセンブリ DLL とリソース ファイル (別のランタイム、ネイティブ アセンブリ、構成ファイルなど) は、それぞれ最大 400 MB までアップロードできます。 また、DEPLOY RESOURCE またはアセンブリとその追加ファイルの参照によりデプロイしたリソースのサイズは、合計 3 GB を超えることはできません。
 
-最後に、各 U-SQL データベースに格納できるアセンブリのバージョンは 1 つだけであるという点にご注意ください。 たとえば、NewtonSoft Json.Net ライブラリのバージョン 7 とバージョン 8 の両方が必要な場合には、それぞれを異なる 2 つのデータベースに登録する必要があります。 さらに、各スクリプトで参照できるアセンブリ DLL のバージョンも 1 つのみです。 U-SQL はこの点で、C# のアセンブリ管理とバージョン管理の規則に従っています。
+最後に、各 U-SQL データベースに格納できるアセンブリのバージョンは 1 つだけであるという点にご注意ください。 たとえば、NewtonSoft Json.NET ライブラリのバージョン 7 とバージョン 8 の両方が必要な場合には、それぞれを異なる 2 つのデータベースに登録する必要があります。 さらに、各スクリプトで参照できるアセンブリ DLL のバージョンも 1 つのみです。 U-SQL はこの点で、C# のアセンブリ管理とバージョン管理の規則に従っています。
 
-## <a name="use-user-defined-functions-udf"></a>ユーザー定義関数 (UDF) を使用する
+## <a name="use-user-defined-functions-udf"></a>ユーザー定義関数を使用する: UDF
 U-SQL のユーザー定義関数 (UDF) は、パラメーターを受け取り、複雑な計算などのアクションを実行し、そのアクションの結果を値として返すプログラミング ルーチンです。 UDF の戻り値とすることができるのは、単一のスカラー値のみです。 U-SQL の UDF は、C# の他のスカラー関数と同じく、U-SQL のベース スクリプトから呼び出すことができます。
 
 U-SQL のユーザー定義関数は、**public** と **static** で初期化することをお勧めします。
@@ -426,7 +426,7 @@ OUTPUT @rs2
 
 この例では一段階複雑なユース ケース シナリオとして、コードビハインド セクションにメモリ行セット全体に適用されるグローバル変数を使うというシナリオを紹介しました。
 
-## <a name="use-user-defined-types-udt"></a>ユーザー定義型 (UDT) を使用する
+## <a name="use-user-defined-types-udt"></a>ユーザー定義型を使用する: UDT
 ユーザー定義型 (UDT) は、U-SQL に用意されているもう 1 つのプログラミング機能です。 U-SQL の UDT の動作は、C# の一般的なユーザー定義型とよく似ています。 C# は、組み込みの型と独自のユーザー定義型のどちらも使用できる型付けの強固な言語です。
 
 U-SQL では、UDT が行セットの頂点間で渡されるときに、任意の UDT を暗黙的にシリアル化または逆シリアル化することができません。 このため、ユーザーは IFormatter インターフェイスを使って明示的なフォーマッタを指定する必要があります。 これにより、U-SQL に UDT のシリアル化および逆シリアル化メソッドが提供されます。
@@ -529,11 +529,11 @@ public class MyTypeFormatter : IFormatter<MyType>
 
 \<typeparam 名前 ="T"> は、シリアル化および逆シリアル化の対象となるオブジェクト グラフのルート型です。
 
-* **Deserialize**: 指定されたストリームのデータを逆シリアル化して、オブジェクトのグラフを再構成します。
+* **逆シリアル化**: 指定されたストリーム上のデータを逆シリアル化して、オブジェクトのグラフを再構成します。
 
-* **Serialize**: 指定されたルートのオブジェクトまたはオブジェクトのグラフをシリアル化し、指定されたストリームに送ります。
+* **シリアル化**: 指定されたルートのオブジェクトまたはオブジェクトのグラフをシリアル化し、指定されたストリームに送ります。
 
-`MyType` インスタンス: 型のインスタンスです。  
+`MyType` instance: 型のインスタンスです。  
 `IColumnWriter` writer / `IColumnReader` reader: 基になる列ストリームです。  
 `ISerializationContext` context: シリアル化の実行中にストリームのソースまたは宛先に関するコンテキストを指定するフラグのセットを定義する列挙型です。
 
@@ -895,7 +895,7 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 }
 ```
 
-## <a name="use-user-defined-aggregates-udagg"></a>ユーザー定義集計 (UDAGG) を使用する
+## <a name="use-user-defined-aggregates-udagg"></a>ユーザー定義集計を使用する: UDAGG
 ユーザー定義集計とは、U-SQL であらかじめ用意されていない集計関連の関数のことを指します。 たとえば、カスタムの算術計算、文字列の連結、文字列の操作などを実行する集計関数が、ユーザー定義集計に該当します。
 
 ユーザー定義集計の基底クラスの定義は、以下のとおりです。
@@ -946,7 +946,7 @@ public abstract class IAggregate<T1, T2, TResult> : IAggregate
 ```
 
 * T1: Accumulate の 1 つ目のパラメーター
-* T2: Accumulate の 2 つ目のパラメーター
+* T2:Accumulate の 2 つ目のパラメーター
 * TResult: Terminate の戻り値の型
 
 例: 
@@ -1025,7 +1025,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 
 このユース ケース シナリオでは、特定のユーザーのクラスの GUID を連結しています。
 
-## <a name="use-user-defined-objects-udo"></a>ユーザー定義オブジェクト (UDO) を使用する
+## <a name="use-user-defined-objects-udo"></a>ユーザー定義オブジェクトを使用する: UDO
 U-SQL を使うと、ユーザー定義オブジェクト (UDO) と呼ばれるカスタム プログラミング オブジェクトを定義できます。
 
 以下は、U-SQL の UDO の一覧です。
@@ -1067,11 +1067,11 @@ UDO は通常、U-SQL スクリプトの以下の U-SQL ステートメントの
 ## <a name="use-user-defined-extractors"></a>ユーザー定義エクストラクターを使用する
 U-SQL では、EXTRACT ステートメントを使って外部データをインポートできます。 EXTRACT ステートメントでは、組み込みの UDO エクストラクターを使用できます。  
 
-* *Extractors.Text()*: エンコーディングがさまざまに異なる区切りテキスト ファイルからの抽出に対応します。
+* *Extractors.Text()*: エンコードがさまざまに異なる区切りテキスト ファイルからの抽出に対応します。
 
-* *Extractors.Csv()*: エンコーディングがさまざまに異なるコンマ区切り値 (CSV) ファイルからの抽出に対応します。
+* *Extractors.Csv()*: エンコードがさまざまに異なるコンマ区切り値 (CSV) ファイルからの抽出に対応します。
 
-* *Extractors.Tsv()*: エンコーディングがさまざまに異なるタブ区切り値 (TSV) ファイルからの抽出に対応します。
+* *Extractors.Tsv()*: エンコードがさまざまに異なるタブ区切り値 (TSV) ファイルからの抽出に対応します。
 
 カスタム エクストラクターを開発すると便利なことがあります。 具体的には、データのインポート中に以下のいずれかのタスクが必要な場合に便利です。
 
@@ -1219,9 +1219,9 @@ OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ## <a name="use-user-defined-outputters"></a>ユーザー定義アウトプッターを使用する
 ユーザー定義アウトプッターは、U-SQL の組み込み機能を拡張するもう 1 つの U-SQL UDO です。 エクストラクターと同じく、アウトプッターも組み込みのものがいくつか用意されています。
 
-* *Outputters.Text()*: エンコーディングがさまざまに異なる区切りテキスト ファイルにデータを書き込みます。
-* *Outputters.Csv()*: エンコーディングがさまざまに異なるコンマ区切り値 (CSV) ファイルにデータを書き込みます。
-* *Outputters.Tsv()*: エンコーディングがさまざまに異なるタブ区切り値 (TSV) ファイルにデータを書き込みます。
+* *Outputters.Text()*: エンコードがさまざまに異なる区切りテキスト ファイルにデータを書き込みます。
+* *Outputters.Csv()*: エンコードがさまざまに異なるコンマ区切り値 (CSV) ファイルにデータを書き込みます。
+* *Outputters.Tsv()*: エンコードがさまざまに異なるタブ区切り値 (TSV) ファイルにデータを書き込みます。
 
 カスタム アウトプッターでは、独自に定義した形式でデータを書き込むことができます。 これは、以下のタスクに役に立つ場合があります。
 
@@ -1300,7 +1300,7 @@ string val = row.Get<string>(col.Name)
 
 この方法を使えば、メタデータのスキーマを問わず対応できる柔軟なアウトプッターを作成することができます。
 
-出力データは、`System.IO.StreamWriter` を使ってファイルに書き込まれます。 ストリームのパラメーターは `IUnstructuredWriter output` の一部として `output.BaseStrea` に設定されます。
+出力データは、`System.IO.StreamWriter` を使ってファイルに書き込まれます。 ストリームのパラメーターは `IUnstructuredWriter output` の一部として `output.BaseStream` に設定されます。
 
 行の反復処理が 1 回終わるごとにデータ バッファーをファイルにフラッシュすることが重要です。 また、`StreamWriter` オブジェクトは、Disposable 属性を有効にした状態 (既定の設定) で、**using** キーワードと共に使う必要があります。
 
@@ -1601,7 +1601,7 @@ CROSS APPLYis used to pass parameters
 new MyScript.MyApplier(param1, param2) AS alias(output_param1 string, …);
 ```
 
-SELECT 式でのアプライヤーの使用について詳しくは、「[U-SQL SELECT Selecting from CROSS APPLY and OUTER APPLY (U-SQL SELECT における CROSS APPLY と OUTER APPLY を使った選択)](https://msdn.microsoft.com/library/azure/mt621307.aspx)」をご覧ください。
+SELECT 式でのアプライヤーの使用について詳しくは、「[U-SQL SELECT Selecting from CROSS APPLY and OUTER APPLY (U-SQL SELECT における CROSS APPLY と OUTER APPLY を使った選択)](/u-sql/statements-and-expressions/select/from/select-selecting-from-cross-apply-and-outer-apply)」をご覧ください。
 
 ユーザー定義アプライヤーの基底クラスの定義は、以下のとおりです。
 
@@ -1775,7 +1775,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 
 ```
 103 Z1AB2CD123XY45889   Ford,Explorer,2005,SUV,152345
-303 Y0AB2CD34XY458890   Shevrolet,Cruise,2010,4Dr,32455
+303 Y0AB2CD34XY458890   Chevrolet,Cruise,2010,4Dr,32455
 210 X5AB2CD45XY458893   Nissan,Altima,2011,4Dr,74000
 ```
 
@@ -1815,7 +1815,7 @@ Combine_Expression :=
     USING_Clause.
 ```
 
-さらに詳しい情報については、「[COMBINE Expression (U-SQL) (COMBINE 式 (U-SQL))](https://msdn.microsoft.com/library/azure/mt621339.aspx)」を参照してください。
+さらに詳しい情報については、「[COMBINE Expression (U-SQL) (COMBINE 式 (U-SQL))](/u-sql/statements-and-expressions/combine-expression)」を参照してください。
 
 ユーザー定義コンバイナーを定義するには、`ICombiner` インターフェイスを作成する必要があります。ユーザー定義コンバイナーの定義では、[`SqlUserDefinedCombiner`] 属性は省略可能です。
 
@@ -1877,7 +1877,7 @@ CombinerMode 列挙型は、以下の値を取ることができます。
 
 キャッシュのために、LINQ クエリの実行の結果として List\<T\> 型のメモリ構造体を作成できます。具体的には List<`IRow`> です。 列挙では、匿名データ型も使用できます。
 
-LINQ クエリについて詳しくは「[LINQ クエリの概要 (C#)](https://msdn.microsoft.com/library/bb397906.aspx)」を、IEnumerable\<T\> インターフェイスについて詳しくは「[IEnumerable\<T\> インターフェイス](https://msdn.microsoft.com/library/9eekhta0(v=vs.110).aspx)」を、それぞれご覧ください。
+LINQ クエリについて詳しくは「[LINQ クエリの概要 (C#)](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)」を、IEnumerable\<T\> インターフェイスについて詳しくは「[IEnumerable\<T\> インターフェイス](/dotnet/api/system.collections.generic.ienumerable-1)」を、それぞれご覧ください。
 
 `IRowset` から実際のデータ値を取得するには、`IRow` インターフェイスの Get() メソッドを使います。
 

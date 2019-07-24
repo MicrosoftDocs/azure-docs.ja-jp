@@ -5,18 +5,19 @@ services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
+ms.author: estfan
 ms.reviewer: jehollan, klam, LADocs
 ms.topic: article
 ms.assetid: 19cbd921-7071-4221-ab86-b44d0fc0ecef
 ms.date: 08/25/2018
-ms.openlocfilehash: 69a4e4c59038599a7375466c46878bdd017582fa
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 1d3c4039ae823d3797e768af5892333d4d925268
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231612"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57789943"
 ---
-# <a name="scenario-trigger-logic-apps-with-azure-functions-and-azure-service-bus"></a>シナリオ: Azure Functions と Azure Service Bus でロジック アプリをトリガーする
+# <a name="scenario-trigger-logic-apps-with-azure-functions-and-azure-service-bus"></a>シナリオ: Azure Functions と Azure Service Bus を使用してロジック アプリをトリガーする
 
 Azure Functions を使用して、実行時間の長いリスナーまたはタスクをデプロイする必要がある場合に、ロジック アプリのトリガーを作成できます。 たとえば、キューをリッスンする関数を作成し、プッシュ トリガーとしてすぐにロジック アプリを起動することができます。
 
@@ -34,9 +35,9 @@ Azure Functions を使用して、実行時間の長いリスナーまたはタ�
 
 1. [Azure portal](https://portal.azure.com) にサインインして、空のロジック アプリを作成します。 
 
-   ロジック アプリを初めて使用する場合は、[初めてのロジック アプリを作成する方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するクイック スタートをご覧ください。
+   ロジック アプリを初めて使用する場合は、[クイック スタート:初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
-1. 検索ボックスに「HTTP 要求」と入力します。 トリガーの一覧から、**[HTTP 要求の受信時]** というトリガーを選択します。
+1. 検索ボックスに「HTTP 要求」と入力します。 トリガーの一覧で、トリガー **HTTP 要求の受信時**
 
    ![トリガーの選択](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger.png)
 
@@ -98,7 +99,7 @@ Azure Functions を使用して、実行時間の長いリスナーまたはタ�
 
 1. Azure portal で関数アプリを開いて展開します (まだ開いていない場合)。 
 
-1. 該当する関数アプリ名の **[関数]** を展開します。 **[関数]** ウィンドウの **[新しい関数]** を選択します。 **Service Bus キューのトリガー (C#)** のテンプレートを選択します。
+1. 該当する関数アプリ名の **[関数]** を展開します。 **[関数]** ウィンドウの **[新しい関数]** を選択します。 次のテンプレートを使用します。**Service Bus キューのトリガー - C#**
    
    ![Azure Functions ポータルを選択](./media/logic-apps-scenario-function-sb-trigger/newqueuetriggerfunction.png)
 
@@ -114,14 +115,14 @@ Azure Functions を使用して、実行時間の長いリスナーまたはタ�
    
    private static string logicAppUri = @"https://prod-05.westus.logic.azure.com:443/.........";
    
+   // Re-use instance of http clients if possible - https://docs.microsoft.com/en-us/azure/azure-functions/manage-connections
+   private static HttpClient httpClient = new HttpClient();
+   
    public static void Run(string myQueueItem, TraceWriter log)
    {
        log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
 
-       using (var client = new HttpClient())
-       {
-           var response = client.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")).Result;
-       }
+       var response = httpClient.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")).Result;
    }
    ```
 

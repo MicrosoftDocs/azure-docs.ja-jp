@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: d794648d3af086263ccffc782f3f3fdf6456eacc
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e24c5b2be1df41d84fa4461250f51cb009f77529
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013379"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331219"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x の host.json のリファレンス  
 
@@ -26,7 +26,7 @@ ms.locfileid: "51013379"
 *host.json* メタデータ ファイルには、関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 この記事では、v2 ランタイムで使用できる設定の一覧を紹介します。  
 
 > [!NOTE]
-> この記事は、Azure Functions 2.x を対象としています。  Functions 1.x の host.json のリファレンスについては、[Azure Functions 1.x の host.json のリファレンス](functions-host-json-v1.md)に関する記事を参照してください。
+> この記事は、Azure Functions 2.x を対象としています。  Functions 1.x の host.json のリファレンスについては、「[host.json reference for Azure Functions 1.x (Azure Functions 1.x の host.json のリファレンス)](functions-host-json-v1.md)」を参照してください。
 
 関数アプリの他の構成オプションは、[アプリの設定](functions-app-settings.md)で管理されます。
 
@@ -69,7 +69,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
           "default": "None"
         },
         "applicationInsights": {
-            "sampling": {
+            "samplingSettings": {
               "isEnabled": true,
               "maxTelemetryItemsPerSecond" : 5
             }
@@ -96,7 +96,26 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 この設定は [logging](#logging) の子です。
 
-[!INCLUDE [applicationInsights](../../includes/functions-host-json-applicationinsights.md)]
+[Application Insights のサンプリング機能](./functions-monitoring.md#configure-sampling)を制御します。
+
+```json
+{
+    "applicationInsights": {
+        "samplingSettings": {
+          "isEnabled": true,
+          "maxTelemetryItemsPerSecond" : 5
+        }
+    }
+}
+```
+
+> [!NOTE]
+> ログ サンプリングが原因で、一部の実行が Application Insights の [モニター] ブレードに表示されない場合があります。
+
+|プロパティ  |既定値 | 説明 |
+|---------|---------|---------| 
+|isEnabled|true|サンプリングを有効または無効にします。| 
+|maxTelemetryItemsPerSecond|5|サンプリングが開始されるしきい値。| 
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -104,7 +123,7 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 ## <a name="durabletask"></a>durableTask
 
-構成設定は、[Durable Functions のバインディング](durable-functions-bindings.md#host-json)に関する記事に記載されています。
+構成設定は、[Durable Functions のバインディング](durable/durable-functions-bindings.md#host-json)に関する記事に記載されています。
 
 ## <a name="eventhub"></a>eventHub
 
@@ -185,7 +204,28 @@ Application Insights など、関数アプリのログの動作を制御しま�
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|どのレベルでファイルのログ記録を有効にするかを定義します。  オプションは、`never`、`always`、`debugOnly` です。 |
 |logLevel|該当なし|アプリ内の関数に対するログ カテゴリのフィルター処理を定義するオブジェクト。 バージョン 2.x のログ カテゴリのフィルター処理は、ASP.NET Core のレイアウトに従います。 これにより、特定の関数についてログをフィルター処理できます。 詳しくは、ASP.NET Core のドキュメントの「[ログのフィルター処理](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)」をご覧ください。 |
+|console|該当なし| [console](#console) ログ記録の設定。 |
 |applicationInsights|該当なし| [applicationInsights](#applicationinsights) の設定。 |
+
+## <a name="console"></a>console
+
+この設定は [logging](#logging) の子です。 デバッグ モードでないときのコンソール ログ記録を制御します。
+
+```json
+{
+    "logging": {
+    ...
+        "console": {
+          "isEnabled": "false"
+        },
+    ...
+    }
+}
+```
+
+|プロパティ  |既定値 | 説明 |
+|---------|---------|---------| 
+|isEnabled|false|コンソール ログ記録を有効または無効にします。| 
 
 ## <a name="queues"></a>queues
 

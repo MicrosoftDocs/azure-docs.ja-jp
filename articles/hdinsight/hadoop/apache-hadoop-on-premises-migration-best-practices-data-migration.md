@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 492087f7eeca8628ac6ac9a9e42f355a9356f1ce
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 34a63c8f283f24fa58b4e2a41d3a44ff0c8c3c17
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584708"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003472"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - データ移行のベスト プラクティス
 
-この記事では、Azure HDInsight へのデータ移行に関する推奨事項について説明します。 これはオンプレミスの Apache Hadoop システムを Azure HDInsight に移行することを支援するためのベスト プラクティスを提供するシリーズの一部です。
+この記事では、Azure HDInsight へのデータ移行に関する推奨事項について説明します。 これは、オンプレミスの Apache Hadoop システムを Azure HDInsight に移行する際に役立つベスト プラクティスを紹介するシリーズの一部です。
 
-## <a name="migrate-data-from-on-premises-to-azure"></a>オンプレミスから Azure へのデータの移行
+## <a name="migrate-on-premises-data-to-azure"></a>オンプレミスのデータを Azure に移行する
 
 データをオンプレミスから Azure 環境に移行するには、主に次の 2 つのオプションがあります。
 
@@ -34,9 +34,9 @@ ms.locfileid: "52584708"
 
 次の表に、データ ボリュームとネットワーク帯域幅に基づくおおまかなデータ転送時間を示します。 データ移行に 3 週間以上かかることが予想される場合は Data Box を使用してください。
 
-|**データ量**|**ネットワーク帯域幅**|||
-|---|---|---|---|
-|| **45 Mbps (T3)**|**100 Mbps**|**1 Gbps**|**10 Gbps**
+|**データ量**|**ネットワーク帯域幅**||||
+|---|---|---|---|---|
+|| **45 Mbps (T3)**|**100 Mbps**|**1 Gbps**|**10 Gbps**|
 |1 TB (テラバイト)|2 日|1 日| 2 時間|14 分|
 |10 TB|22 日|10 日|1 日|2 時間|
 |35 TB|76 日|34 日|3 日|8 時間|
@@ -47,9 +47,11 @@ ms.locfileid: "52584708"
 |1 PB|6 年|3 年|97 日|10 日|
 |2 PB|12 年|5 年|194 日|19 日|
 
-ネットワーク経由でデータを転送するために、DistCp、Azure Data Factory、AzureCp などの Azure のネイティブ ツールを使用できます。 同じ目的で、サード パーティ製ツール WANDisco も使用できます。 オンプレミスから Azure のストレージ システムへの継続的なデータ転送には、Kafka Mirrormaker および Sqoop を使用できます。
+Apache Hadoop DistCp、Azure Data Factory、AzureCp などの Azure にネイティブなツールを使用して、ネットワーク経由でデータを転送できます。 同じ目的で、サード パーティ製ツール WANDisco も使用できます。 オンプレミスから Azure ストレージ システムへの継続的なデータ転送には、Apache Kafka Mirrormaker および Apache Sqoop を使用できます。
 
-## <a name="performance-considerations-when-using-apache-distcp"></a>Apache DistCp を使用するときのパフォーマンスに関する考慮事項
+
+## <a name="performance-considerations-when-using-apache-hadoop-distcp"></a>Apache Hadoop DistCp を使用する場合のパフォーマンスに関する考慮事項
+
 
 DistCp は、 MapReduce マップ ジョブを使用して、データ転送、エラーの処理、およびそれらのエラー回復を行う Apache プロジェクトです。 ソース ファイルの一覧が、各マップ タスクに割り当てられます。 マップ タスクは、割り当て済みのすべてのファイルを宛先にコピーします。 いくつかの手法によって、DistCp のパフォーマンスを向上させることができます。
 
@@ -86,27 +88,27 @@ hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatus
 
 ## <a name="metadata-migration"></a>メタデータの移行
 
-### <a name="hive"></a>Hive
+### <a name="apache-hive"></a>Apache Hive
 
 Hive metastore はスクリプトを使用するか、DB のレプリケーションを使用して移行できます。
 
 #### <a name="hive-metastore-migration-using-scripts"></a>スクリプトを使用した Hive metastore の移行
 
-1. オンプレミス Hive metastore から Hive DDL を生成します。 この手順は [ラッパー bash スクリプト] を使用して行うことができます。(https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md)
-1. 生成された DDL を編集して、HDFS の url を WASB/ADLS/ABFS の URL に置き換えます
-1. メタストア上の更新された DDL を HDInsight クラスターから実行します
-1. Hive metastore のバージョンが、オンプレミスとクラウド間で互換性があるかどうかを確認します
+1. オンプレミス Hive metastore から Hive DDL を生成します。 この手順は、[ラッパー bash スクリプト](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md)を使用して実行できます。
+1. 生成された DDL を編集して、HDFS URL を WASB/ADLS/ABFS URL に置き換えます。
+1. メタストア上の更新された DDL を HDInsight クラスターから実行します。
+1. Hive metastore バージョンがオンプレミスとクラウドの間で互換性があることを確認します。
 
 #### <a name="hive-metastore-migration-using-db-replication"></a>DB レプリケーションを使用した Hive metastore の移行
 
-- オンプレミス Hive metastore DB と HDInsight の metastore DB の間でデータベース レプリケーションをセットアップします
+- オンプレミスの Hive metastore DB と HDInsight metastore DB の間でデータベース レプリケーションを設定します。
 - 「Hive MetaTool」を使用して、HDFS の url を WASB/ABFS/WASB または ADLS の url で置き換えます。たとえば次のようにします
 
 ```bash
 ./hive --service metatool -updateLocation hdfs://nn1:8020/ wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
 ```
 
-### <a name="ranger"></a>Ranger
+### <a name="apache-ranger"></a>Apache Ranger
 
 - オンプレミスの Ranger ポリシーを xml ファイルにエクスポートします。
 - XSLT などのツールを使用して、オンプレミスの特定の HDFS ベースのパスを特定の WASB または ADLS に変換します。

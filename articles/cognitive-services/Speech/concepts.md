@@ -6,16 +6,17 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 6089f053472faaa7fa8c957904f73c7061cb2d3f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: c114c726bea34465972a282acac6b8acbbf9a80f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344927"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670422"
 ---
 # <a name="basic-concepts"></a>基本的な概念
 
@@ -76,14 +77,14 @@ Microsoft Speech Service はこれらの状態の一部に関わっているた�
 Microsoft 音声認識サービスでは、開発者が音声認識機能をアプリに追加するための手段として、2 つの方法が提供されています。
 
 - [REST API](GetStarted/GetStartedREST.md): アプリからサービスへの HTTP 呼び出しを使用して音声認識を行います。
-- [クライアント ライブラリ](GetStarted/GetStartedClientLibraries.md): 高度な機能を使用する場合は、Microsoft Speech クライアント ライブラリをダウンロードして、それらをアプリにリンクできます。  クライアント ライブラリは、各種言語 (C#、Java、JavaScript、ObjectiveC) を使用して、さまざまなプラットフォーム (Windows、Android、iOS) で使用できます。
+- [クライアント ライブラリ](GetStarted/GetStartedClientLibraries.md):高度な機能を使用する場合は、Microsoft Speech クライアント ライブラリをダウンロードして、それらをアプリにリンクできます。  クライアント ライブラリは、各種言語 (C#、Java、JavaScript、ObjectiveC) を使用して、さまざまなプラットフォーム (Windows、Android、iOS) で使用できます。
 
 | ユース ケース | [REST API](GetStarted/GetStartedREST.md) | [クライアント ライブラリ](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
-| 短い発話音声を変換する。たとえば、中間結果を使用しないコマンド (15 秒以下の音声) など | [はい] | [はい] |
-| 長い音声 (15 秒以上) を変換する | いいえ  | [はい] |
-| 中間結果を使って音声をストリーミングする | いいえ  | [はい] |
-| LUIS を使用して、音声から変換されたテキストの意味を解釈する | いいえ  | [はい] |
+| 短い発話音声を変換する。たとえば、中間結果を使用しないコマンド (15 秒以下の音声) など | はい | はい |
+| 長い音声 (15 秒以上) を変換する | いいえ  | はい |
+| 中間結果を使って音声をストリーミングする | いいえ  | はい |
+| LUIS を使用して、音声から変換されたテキストの意味を解釈する | いいえ  | はい |
 
  言語やプラットフォームに SDK がまだない場合は、[プロトコルのドキュメント](API-Reference-REST/websocketprotocol.md)に基づいて、独自の実装を作成することもできます。
 
@@ -92,7 +93,7 @@ Microsoft 音声認識サービスでは、開発者が音声認識機能をア�
 認識には 3 つのモードがあります。`interactive`、 `conversation`、および `dictation` です。 認識モードとは、ユーザーがどのように発話するかに基づいて、音声認識の方法を調整するものです。 アプリケーションに応じて、適切な認識モードを選択してください。
 
 > [!NOTE]
-> 認識モードの動作は、[REST プロトコル](#rest-speech-recognition-api)を使用した場合と [WebSocket プロトコル](#webSocket-speech-recognition-api)を使用した場合とで異なる場合があります。 たとえば、REST API では、conversation モードや dictation モードであっても、継続的な認識はサポートされません。
+> 認識モードの動作は、REST プロトコルを使用した場合と WebSocket プロトコルを使用した場合とで異なる場合があります。 たとえば、REST API では、conversation モードや dictation モードであっても、継続的な認識はサポートされません。
 > [!NOTE]
 > これらのモードは、REST または WebSocket プロトコルを直接使用した場合に適用されます。 [クライアント ライブラリ](GetStarted/GetStartedClientLibraries.md)では、異なるパラメーターを使用して認識モードが指定されます。 詳しくは、ご使用のクライアント ライブラリをご覧ください。
 
@@ -198,7 +199,7 @@ Microsoft Speech Service では、トランスクリプション応答でさま�
 
 ### <a name="n-best-values"></a>N-best 値
 
-人間どうしの会話でもそうですが、リスナー (聞き手) は、発話された内容を*完全に*聞き取れたかどうか知ることができません。 ただしリスナーは、発話内容の特定の解釈に対し、それが正確である*可能性*を割り当てることができます。 
+人間どうしの会話でもそうですが、リスナー (聞き手) は、発話された内容を*完全に*聞き取れたかどうか知ることができません。 ただしリスナーは、発話内容の特定の解釈に対し、それが正確である*可能性*を割り当てることができます。
 
 人は通常、頻繁にやりとりする相手と話をするときには、話された言葉を高確率で認識することができます。 コンピューター ベースの音声リスナーも、それと同様の精度を達成するべく設計されており、適切な条件下であれば、[人間と同等の聞き取り精度を実現できます](https://blogs.microsoft.com/next/2016/10/18/historic-achievement-microsoft-researchers-reach-human-parity-conversational-speech-recognition/#sm.001ykosqs14zte8qyxj2k9o28oz5v)。
 
@@ -308,7 +309,7 @@ Microsoft Speech Service では、多くの人が "不適切" として分類す
 
 | *profanity* の値 | 説明 |
 | - | - |
-| `masked` | 不適切表現をアスタリスクでマスクします。 これが既定の動作となります。 | 
+| `masked` | 不適切表現をアスタリスクでマスクします。 これが既定の動作となります。 |
 | `removed` | すべての結果から不適切表現を削除します。 |
 | `raw` | すべての結果で不適切表現を認識し、それらを返します。 |
 
@@ -322,7 +323,7 @@ Microsoft Speech Service では、多くの人が "不適切" として分類す
 
 #### <a name="profanity-only-utterances"></a>不適切表現のみの発話
 
-場合によっては、アプリケーションが不適切表現を削除するように構成されている場合に、ユーザーが不適切表現*だけ*を発話する可能性もあります。 そのような場合、認識モードが *dictation* または *conversation* になっていると、*speech.result* は返されません。 認識モードが *interactive* の場合は、状態コードが *NoMatch* になった状態で *speech.result* が返されます。 
+場合によっては、アプリケーションが不適切表現を削除するように構成されている場合に、ユーザーが不適切表現*だけ*を発話する可能性もあります。 そのような場合、認識モードが *dictation* または *conversation* になっていると、*speech.result* は返されません。 認識モードが *interactive* の場合は、状態コードが *NoMatch* になった状態で *speech.result* が返されます。
 
 ### <a name="profanity-value-raw"></a>Profanity 値 `Raw`
 

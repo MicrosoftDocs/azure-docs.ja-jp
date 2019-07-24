@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 50a5c8d515e27db7c2c65b484cdecad8ff00baf8
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: a5c62c67cd401c043352b06e6e6070a7fc0f1296
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165557"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889184"
 ---
-<!--author=SharS last changed: 9/17/15-->
-
 #### <a name="to-connect-through-the-serial-console"></a>シリアル コンソールを使用して接続するには
 1. シリアル ケーブルをデバイスに接続します (直接、または USB シリアル アダプターを使用)。
 2. **コントロール パネル**を開き、**[デバイス マネージャー]** を開きます。
@@ -23,11 +21,11 @@ ms.locfileid: "50165557"
 5. 右側のウィンドウで、**[接続の種類]** を **[シリアル]** に変更します。
 6. 右側のウィンドウで、適切な COM ポートを入力します。 シリアル構成パラメーターが次のように設定されていることを確認します。
    
-   * 速度: 115,200
-   * データ ビット: 8
-   * ストップ ビット: 1
-   * パリティ: なし
-   * フロー制御: なし
+   * 速度:115,200
+   * データ ビット:8
+   * ストップ ビット:1
+   * パリティ:なし
+   * フロー制御:なし
      
      これらの設定を次の図に示します。
      

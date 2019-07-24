@@ -3,8 +3,8 @@ title: Azure Monitor の Azure Active Directory 監査ログ スキーマを解�
 description: Azure Monitor (プレビュー) で使用する Azure AD 監査ログ スキーマについて説明します
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
-ms.date: 11/13/2018
-ms.author: priyamo
+ms.subservice: report-monitor
+ms.date: 12/14/2018
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0335c17c85313762c28aec8ba283e1944cceefd1
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4832776dee7c478996bcfc2a903a6d8e2a3c4426
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621396"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436967"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Azure Monitor の Azure AD 監査ログ スキーマを解釈する (プレビュー)
 
@@ -99,6 +100,49 @@ ms.locfileid: "51621396"
     } 
     ] 
 } 
+```
+
+```json
+{
+    "records": [
+    {
+        "time": "2018-12-10T00:03:46.6161822Z",
+        "resourceId": "/tenants/7918d4b5-0442-4a97-be2d-36f9f9962ece/providers/Microsoft.aadiam",
+        "operationName": "Update policy",
+        "operationVersion": "1.0",
+        "category": "AuditLogs",
+        "tenantId": "7918d4b5-0442-4a97-be2d-36f9f9962ece",
+        "resultSignature": "None",
+        "durationMs": 0,
+        "callerIpAddress": "<null>",
+        "correlationId": "192298c1-0994-4dd6-b05a-a6c5984c31cb",
+        "identity": "MS-PIM",
+        "level": "Informational",
+        "properties": {
+            "id": "Directory_VNXV4_28148892",
+            "category": "Policy",
+            "correlationId": "192298c1-0994-4dd6-b05a-a6c5984c31cb",
+            "result": 0,
+            "resultReason": "",
+            "activityDisplayName": "Update policy",
+            "activityDateTime": "2018-12-10T00:03:46.6161822+00:00",
+            "loggedByService": "Core Directory",
+            "operationType": "Update",
+            "initiatedBy": {},
+            "targetResources": [
+            {
+                "id": "5e7a8ae7-165d-44a4-a4f4-6141f8c8ef40",
+                "displayName": "Default Policy",
+                "type": "Policy",
+                "modifiedProperties": []
+            }
+            ],
+            "additionalDetails": []
+        }
+    }
+    ]
+}
+
 ```
 
 ## <a name="field-and-property-descriptions"></a>フィールドとプロパティの説明

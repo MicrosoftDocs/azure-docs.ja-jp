@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
-ms.component: common
-ms.openlocfilehash: 6a6508393fe935b456cde815d35f2fd4447cd2d4
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: ecfd86a7e4a8ef97663cc930906fd909b6f0fae8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528124"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011127"
 ---
 # <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Python による Microsoft Azure Storage のクライアント側の暗号化
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -48,7 +48,7 @@ ms.locfileid: "39528124"
 4. 次に、コンテンツ暗号化キー (CEK) を使用して、暗号化されたユーザー データを復号化します。
 
 ## <a name="encryption-mechanism"></a>暗号化メカニズム
-ストレージ クライアント ライブラリは [AES](http://en.wikipedia.org/wiki/Advanced_Encryption_Standard) を使用して、ユーザー データを暗号化します。 具体的には、AES で [暗号ブロック チェーン (CBC)](http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) モードを使用します。 サービスごとに動作が多少異なるため、以下でそれぞれについて説明します。
+ストレージ クライアント ライブラリは [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) を使用して、ユーザー データを暗号化します。 具体的には、AES で [暗号ブロック チェーン (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) モードを使用します。 サービスごとに動作が多少異なるため、以下でそれぞれについて説明します。
 
 ### <a name="blobs"></a>BLOB
 現在、クライアント ライブラリでは BLOB 全体の暗号化のみがサポートされています。 具体的には、**create*** メソッドを使用する場合に暗号化がサポートされます。 ダウンロードについては、完全ダウンロードと一部の範囲のダウンロードの両方がサポートされています。また、アップロードとダウンロードの両方の並列処理が可能です。
@@ -91,9 +91,9 @@ ms.locfileid: "39528124"
 2. クライアント ライブラリは 16 バイトのランダムな初期化ベクトル (IV) と 32 バイトのランダムなコンテンツ暗号化キー (CEK) を各エンティティごとに生成し、プロパティごとに新しい IV を派生させることで暗号化する個々のプロパティでエンベロープ暗号化を実行します。 暗号化されたプロパティは、バイナリ データとして格納されます。
 3. 次に、ラップされた CEK と追加の暗号化メタデータが、2 つの追加の予約済みプロパティとして格納されます。 最初の予約済みプロパティ (\_ClientEncryptionMetadata1) は文字列プロパティで、IV、バージョン、およびラップされたキーに関する情報を保持します。 2 番目の予約済みプロパティ (\_ClientEncryptionMetadata2) はバイナリ プロパティで、暗号化されたプロパティに関する情報を保持します。 この 2 番目のプロパティ (\_ClientEncryptionMetadata2) 内の情報自体が暗号化されます。
 4. これらの暗号化に必要な追加の予約済みプロパティにより、ユーザーが所有できるカスタム プロパティは 252 ではなく、250 個になります。 エンティティの合計サイズは、1 MB 未満である必要があります。
-   
+
    暗号化できるのは、文字列プロパティのみであることに注意してください。 他の種類のプロパティを暗号化する必要がある場合は、文字列に変換する必要があります。 暗号化された文字列はバイナリ プロパティとしてサービスで保存され、復号化された後、文字列 (EdmType.STRING 型の EntityProperties ではない、生の文字列) に変換されて戻されます。
-   
+
    テーブルの場合、暗号化ポリシーに加え、ユーザーは暗号化するプロパティを指定する必要があります。 そのためには、これらのプロパティを TableEntity オブジェクトに格納し、型を EdmType.STRING に、暗号化を true に設定するか、tableservice オブジェクトで encryption_resolver_function を設定します。 暗号化リゾルバーは、パーティション キー、行キー、プロパティ名を取得し、プロパティを暗号化するかどうかを示すブール値を返します。 暗号化時、クライアント ライブラリはこの情報を使用して、ネットワークへの書き込み時にプロパティを暗号化するかどうかを決定します。 また、デリゲートは、プロパティの暗号化方法に関するロジックを使用する可能性にも備えます。 (X の場合、プロパティ A を暗号化し、それ以外の場合はプロパティ A および B を暗号化するなど。)エンティティの読み込み中、またはクエリの実行中は、この情報を指定する必要はありません。
 
 ### <a name="batch-operations"></a>バッチ操作
@@ -105,9 +105,9 @@ ms.locfileid: "39528124"
 > [!NOTE]
 > エンティティは暗号化されているため、暗号化されたプロパティでフィルター処理を行うクエリを実行できません。  実行しようとすると、暗号化されたデータと、暗号化されていないデータの比較が行われるため、結果が不正確になります。
 > 
->
-クエリ操作を実行するには、結果セット内のすべてのキーを解決できる Key Resolver を指定する必要があります。 クエリの結果に含まれたエンティティをプロバイダーに解決できない場合、クライアント ライブラリでエラーがスローされます。 クエリでサーバー側のプロジェクションを実行する場合、クライアント ライブラリは選択した列に特別な暗号化メタデータ プロパティ (\_ClientEncryptionMetadata1 と \_ClientEncryptionMetadata2) を既定で追加します。
-
+> 
+> クエリ操作を実行するには、結果セット内のすべてのキーを解決できる Key Resolver を指定する必要があります。 クエリの結果に含まれたエンティティをプロバイダーに解決できない場合、クライアント ライブラリでエラーがスローされます。 クエリでサーバー側のプロジェクションを実行する場合、クライアント ライブラリは選択した列に特別な暗号化メタデータ プロパティ (\_ClientEncryptionMetadata1 と \_ClientEncryptionMetadata2) を既定で追加します。
+> 
 > [!IMPORTANT]
 > クライアント側の暗号化を使用する場合は、次の重要な点に注意してください。
 > 
@@ -115,8 +115,6 @@ ms.locfileid: "39528124"
 > * テーブルの場合、同様の制約があります。 暗号化メタデータを更新せずに暗号化されたプロパティを更新する行為は避けてください。
 > * 暗号化された BLOB にメタデータを設定する場合、メタデータの設定は付加的には行われないため、復号化に必要な暗号化関連メタデータが上書きされる可能性があります。 これはスナップショットにも該当します。暗号化された BLOB のスナップショットを作成するときにメタデータを指定しないでください。 メタデータを設定する必要がある場合は、最初に **get_blob_metadata** メソッドを呼び出し、現在の暗号化メタデータを取得してください。メタデータの設定中に、同時書き込みは行わないでください。
 > * 暗号化されたデータのみを処理する必要のあるユーザーについては、サービス オブジェクトで **require_encryption** フラグを有効にします。 詳細については、以下をご覧ください。
-> 
-> 
 
 ストレージ クライアント ライブラリでは、指定された KEK とキー リゾルバーによって、次のインターフェイスが実装されることを想定しています。 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) のサポートはまだ提供されていませんが、このライブラリに統合される予定です。
 
@@ -136,10 +134,10 @@ KEK で正常にデータを暗号化するには、次のメソッドを実装�
 
 * 暗号化では、キーは常に使用され、キーがないとエラーが発生します。
 * 復号化の場合:
-  
+
   * キーを取得するよう指定した場合にキー リゾルバーが起動します。 リゾルバーが指定されていても、キー識別子のマッピングがない場合、エラーがスローされます。
   * リゾルバーが指定されていない場合にキーが指定されると、そのキーの識別子が必須キー識別子と一致すると、そのキーが使用されます。 識別子が一致しなければ、エラーがスローされます。
-    
+
     BLOB、キュー、およびテーブルの詳細なエンド ツー エンド シナリオについては、azure.storage.samples の暗号化のサンプル <fix URL> を参照してください。
       KEK とキー リゾルバーのサンプル実装は、それぞれ KeyWrapper と KeyResolver としてサンプル ファイルに用意されています。
 
@@ -239,5 +237,5 @@ encrypted_property_1 = EntityProperty(EdmType.STRING, value, encrypt=True)
 ストレージ データを暗号化すると、パフォーマンスのオーバーヘッドが増えることに注意してください。 コンテンツ キーと IV を生成する必要があり、コンテンツ自体を暗号化する必要があります。また、追加のメタデータをフォーマットおよびアップロードする必要もあります。 このオーバーヘッドは、暗号化されるデータの量によって異なります。 開発中に、アプリケーションのパフォーマンスを常にテストすることをお勧めします。
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Storage Client Library for Java の PyPi パッケージ](https://pypi.python.org/pypi/azure-storage)
-* [Azure Storage Client Library for Python のソースコード](https://github.com/Azure/azure-storage-python)
+*  [Azure Storage Client Library for Java の PyPi パッケージ](https://pypi.python.org/pypi/azure-storage)
+*  [Azure Storage Client Library for Python のソースコード](https://github.com/Azure/azure-storage-python)

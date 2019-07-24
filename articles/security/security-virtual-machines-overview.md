@@ -4,7 +4,7 @@ description: この記事では、Azure 仮想マシンで使用できる Azure 
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 467b2c83-0352-4e9d-9788-c77fb400fe54
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: terrylan
-ms.openlocfilehash: fb053cb646d433d1e326747a4b48ed430583b847
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 15ac70891f23d95709d1998bca1ce29ad735cb87
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259107"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109080"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 仮想マシンのセキュリティの概要
 
@@ -47,16 +47,16 @@ Azure の Microsoft マルウェア対策は、アプリケーションやテナ
 
 Azure の Microsoft マルウェア対策を展開して有効にすると、次のコア機能を使用できるようになります。
 
-* **リアルタイム保護**: Cloud Services および仮想マシンでのアクティビティを監視し、マルウェアの実行を検出してブロックします。
-* **スケジュールに基づくスキャン**: 特定対象のスキャンを定期的に実行し、マルウェアや活動量の多いプログラムを検出します。
-* **マルウェアの駆除**: 悪意のあるファイルの削除や検疫、悪意のあるレジストリ エントリのクリーンアップなど、検出されたマルウェアへの対処を自動的に行います。
-* **シグネチャの更新**: 最新の保護シグネチャ (ウイルスの定義) を自動的にインストールし、事前に定義された頻度で保護を最新の状態に更新します。
-* **マルウェア対策エンジンの更新**: Azure の Microsoft マルウェア対策エンジンを自動的に更新します。
-* **マルウェア対策プラットフォームの更新**: Azure の Microsoft マルウェア対策プラットフォームを自動的に更新します。
-* **アクティブな保護**: 迅速に対応できるように、検出された脅威と疑わしいリソースに関するテレメトリ メタデータを Azure に報告します。 Microsoft Active Protection システム (MAPS) によりリアルタイムの同期署名配信を有効にします。
-* **サンプルのレポート**: Azure の Microsoft マルウェア対策サービスにサンプルを提供および報告し、サービスの調整およびトラブルシューティングを可能にします。
-* **除外**: パフォーマンスやその他の理由で、アプリケーションおよびサービスの管理者が特定のファイル、プロセス、ドライブを保護から除外できるようにします。
-* **マルウェア対策イベントの収集**: マルウェア対策サービスの状態、疑わしいアクティビティ、および実行された修復アクションをオペレーティング システムのイベント ログに記録し、ユーザーの Azure ストレージ アカウントにそれらを収集します。
+* **リアルタイム保護**:Cloud Services および Virtual Machines でのアクティビティを監視し、マルウェアの実行を検出してブロックします。
+* **スケジュールに基づくスキャン**:特定対象のスキャンを定期的に実行し、マルウェアや活動量の多いプログラムを検出します。
+* **マルウェアの駆除**:悪意のあるファイルの削除や検疫、悪意のあるレジストリ エントリのクリーンアップなど、検出されたマルウェアへの対処を自動的に行います。
+* **シグネチャの更新**:最新の保護シグネチャ (ウイルスの定義) を自動的にインストールし、事前に定義された頻度で保護を確実に最新の状態に更新します。
+* **マルウェア対策エンジンの更新**:Azure の Microsoft マルウェア対策エンジンを自動的に更新します。
+* **マルウェア対策プラットフォームの更新**:Azure の Microsoft マルウェア対策プラットフォームを自動的に更新します。
+* **アクティブな保護**:迅速に対応できるように、検出された脅威と疑わしいリソースに関するテレメトリ メタデータを Azure に報告します。 Microsoft Active Protection システム (MAPS) によりリアルタイムの同期署名配信を有効にします。
+* **サンプルのレポート**:Azure の Microsoft マルウェア対策サービスにサンプルを提供および報告し、サービスの調整およびトラブルシューティングを可能にします。
+* **除外**:パフォーマンスやその他の理由で、アプリケーションおよびサービスの管理者が特定のファイル、プロセス、ドライブを保護から除外できるようにします。
+* **マルウェア対策イベントの収集**:マルウェア対策サービスの状態、疑わしいアクティビティ、および実行された修復アクションをオペレーティング システムのイベント ログに記録し、ユーザーの Azure ストレージ アカウントにそれらを収集します。
 
 仮想マシンを保護するマルウェア対策ソフトウェアの詳細については、以下を参照してください。
 
@@ -90,8 +90,7 @@ Key Vault では、オプションとして、キーを保管するためのハ�
 
 詳細情報:
 
-* [Azure Key Vault とは](../key-vault/key-vault-whatis.md)
-* [Azure Key Vault の概要](../key-vault/key-vault-get-started.md)
+* [Azure Key Vault とは](../key-vault/key-vault-overview.md)
 * [Azure Key Vault ブログ](https://blogs.technet.microsoft.com/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>仮想マシン ディスクの暗号化
@@ -103,7 +102,7 @@ Azure Disk Encryption は、Windows および Linux 仮想マシン ディスク
 詳細情報:
 
 * [IaaS VM の Azure Disk Encryption](../security/azure-security-disk-encryption-overview.md)
-* [Quickstart: Encrypt a Windows IaaS VM with Azure PowerShell (クイック スタート: Azure PowerShell を使用して Windows IaaS VM を暗号化する)](../security/quick-encrypt-vm-powershell.md)
+* [クイック スタート:Azure PowerShell を使用して Windows IaaS VM を暗号化する](../security/quick-encrypt-vm-powershell.md)
 
 ## <a name="virtual-machine-backup"></a>仮想マシンのバックアップ
 
@@ -112,7 +111,6 @@ Azure Backup は、設備投資なしで、また最小限の運用コストで�
 詳細情報:
 
 * [Azure Backup とは](../backup/backup-introduction-to-azure-backup.md)
-* [Azure Backup のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/backup/)
 * [Azure Backup サービス FAQ](../backup/backup-azure-backup-faq.md)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
@@ -121,11 +119,11 @@ Azure Backup は、設備投資なしで、また最小限の運用コストで�
 
 Site Recovery:
 
-* **BCDR 戦略の簡素化**: Site Recovery では、1 か所から複数のビジネス ワークロードとアプリのレプリケーション、フェールオーバー、および復旧を簡単に処理できます。 Site Recovery はレプリケーションとフェールオーバーを調整しますが、アプリケーション データをインターセプトすることや、そのデータに関する情報を持つことはありません。
-* **柔軟なレプリケーション機能の提供**: Site Recovery を使うことで、Hyper-V 仮想マシン、VMware 仮想マシン、および Windows または Linux の物理サーバーで実行されているワークロードをレプリケートできます。
-* **簡単なフェールオーバーと復旧**: Site Recovery では、実稼働環境に影響を与えずにディザスター リカバリーの演習をサポートするテスト フェールオーバーを実行できます。 また、予期された停止の場合はデータ損失ゼロの計画されたフェールオーバーを実行し、予期しない停止の場合は (レプリケーションの頻度に応じた) 最小限のデータ損失で計画外のフェールオーバーを実行することもできます。 フェールオーバー後は、プライマリ サイトにフェールバックできます。 Site Recovery に用意されている復旧計画には、多層アプリケーションのフェールオーバーと復旧をカスタマイズできるように、スクリプトや Azure Automation ブックが含まれています。
-* **セカンダリ データセンターの排除**: オンプレミスのセカンダリ サイトまたは Azure にレプリケートできます。 ディザスター リカバリーのためのレプリケーション先として Azure を使用すると、セカンダリ サイトの管理に伴うコストと手間が削減されます。 レプリケートされたデータは Azure Storage に格納されます。
-* **既存の BCDR テクノロジとの統合**: Site Recovery は、その他のアプリケーションの BCDR 機能と連携します。 たとえば、Site Recovery を使用すると、企業のワークロードの SQL Server バックエンドを保護できます。 これには、SQL Server Always On による可用性グループのフェールオーバーの管理のネイティブ サポートが含まれます。
+* **BCDR 戦略を簡素化**:Site Recovery では、1 か所から複数のビジネス ワークロードとアプリのレプリケーション、フェールオーバー、および復旧を簡単に処理できます。 Site Recovery はレプリケーションとフェールオーバーを調整しますが、アプリケーション データをインターセプトすることや、そのデータに関する情報を持つことはありません。
+* **柔軟なレプリケーション機能の提供**:Site Recovery を使うことで、Hyper-V 仮想マシン、VMware 仮想マシン、および Windows または Linux の物理サーバーで実行されているワークロードをレプリケートできます。
+* **フェールオーバーと復旧のサポート**:Site Recovery では、運用環境に影響を与えずにディザスター リカバリーの練習ができるよう、テスト フェールオーバーの機能が用意されています。 また、予期された停止の場合はデータ損失ゼロの計画されたフェールオーバーを実行し、予期しない停止の場合は (レプリケーションの頻度に応じた) 最小限のデータ損失で計画外のフェールオーバーを実行することもできます。 フェールオーバー後は、プライマリ サイトにフェールバックできます。 Site Recovery に用意されている復旧計画には、多層アプリケーションのフェールオーバーと復旧をカスタマイズできるように、スクリプトや Azure Automation ブックが含まれています。
+* **セカンダリ データセンターを排除**:オンプレミスのセカンダリ サイトまたは Azure にレプリケートできます。 ディザスター リカバリーのためのレプリケーション先として Azure を使用すると、セカンダリ サイトの管理に伴うコストと手間が削減されます。 レプリケートされたデータは Azure Storage に格納されます。
+* **既存の BCDR テクノロジとの統合**:Site Recovery は、その他のアプリケーションの BCDR 機能と連携します。 たとえば、Site Recovery を使用すると、企業のワークロードの SQL Server バックエンドを保護できます。 これには、SQL Server Always On による可用性グループのフェールオーバーの管理のネイティブ サポートが含まれます。
 
 詳細情報:
 
@@ -166,8 +164,8 @@ Azure Virtual Machines は、FISMA、FedRAMP、HIPAA、PCI DSS レベル 1、そ
 
 詳細情報:
 
-* [Microsoft セキュリティ センター: コンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance)
-* [信頼されるクラウド: Microsoft Azure のセキュリティ、プライバシー、コンプライアンス](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
+* [Microsoft Trust Center:コンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance)
+* [信頼できるクラウド:Microsoft Azure のセキュリティ、プライバシー、コンプライアンス](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
 
 ## <a name="confidential-computing"></a>Confidential Computing
 

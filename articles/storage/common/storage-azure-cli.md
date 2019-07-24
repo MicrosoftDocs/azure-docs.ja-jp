@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: cd2399e25889cdc9c885b76e002e47415c0629e5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.subservice: common
+ms.openlocfilehash: f485f38d4c580937b027bb76d0c34c98f699ed93
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984387"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816851"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Azure Storage での Azure CLI の使用
 
@@ -30,15 +30,15 @@ ms.locfileid: "46984387"
 このガイドでは、Azure Storage の基本概念を理解していることを前提としています。 また、以下で指定されている、Azure および Storage サービスのアカウント作成要件を満たせることも前提としています。
 
 ### <a name="accounts"></a>アカウント
-* **Azure アカウント**: まだ Azure サブスクリプションを持っていない場合は、[無料 Azure アカウントを作成](https://azure.microsoft.com/free/)します。
-* **ストレージ アカウント**: 「[Azure ストレージ アカウントについて](storage-create-storage-account.md)」の「[ストレージ アカウントの作成](storage-quickstart-create-account.md)」を参照してください。
+* **Azure アカウント**: Azure サブスクリプションをまだお持ちでない場合は、[無料の Azure アカウントを作成](https://azure.microsoft.com/free/)できます。
+* **ストレージ アカウント**: [Azure ストレージ アカウントについて](storage-create-storage-account.md)は、「[ストレージ アカウントの作成](storage-quickstart-create-account.md)」を参照してください。
 
 ### <a name="install-the-azure-cli"></a>Azure CLI のインストール
 
 [Azure CLI のインストール](/cli/azure/install-az-cli2)に関するページに記載されている手順に従って、Azure CLI をダウンロードしてインストールします。
 
 > [!TIP]
-> インストールに問題がある場合は、その記事の「[Installation Troubleshooting](/cli/azure/install-az-cli2#installation-troubleshooting)」 (インストールのトラブルシューティング) セクションと、GitHub の「[インストールのトラブルシューティング](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md)」ガイドを確認してください。
+> インストールに問題がある場合は、その記事の「[Installation Troubleshooting](/cli/azure/install-az-cli2)」 (インストールのトラブルシューティング) セクションと、GitHub の「[インストールのトラブルシューティング](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md)」ガイドを確認してください。
 >
 
 ## <a name="working-with-the-cli"></a>CLI の使用
@@ -173,7 +173,7 @@ Done
 ## <a name="manage-storage-accounts"></a>ストレージ アカウントを管理する
 
 ### <a name="create-a-new-storage-account"></a>新しいストレージ アカウントの作成
-Azure Storage を使用するには、ストレージ アカウントが必要です。 コンピューターを構成して[サブスクリプションに接続](#connect-to-your-azure-subscription)できるようにすると、新しい Azure Storage アカウントを作成することができます。
+Azure Storage を使用するには、ストレージ アカウントが必要です。 コンピューターを構成してサブスクリプションに接続できるようにすると、新しい Azure ストレージ アカウントを作成することができます。
 
 ```azurecli
 az storage account create \
@@ -185,8 +185,8 @@ az storage account create \
 
 * `--location` [必須]: 場所。 たとえば "米国西部" にします。
 * `--name` [必須]: ストレージ アカウント名。 アカウント名に含めることができるのは、英小文字と数字のみで、文字数は 3 ～ 24 文字にする必要があります。
-* `--resource-group`[必須]: リソース グループの名前。
-* `--sku` [必須]: ストレージ アカウント SKU。 使用できる値は以下の通りです。
+* `--resource-group` [必須]: リソース グループの名前。
+* `--sku` [必須]: ストレージ アカウントの SKU。 使用できる値は以下の通りです。
   * `Premium_LRS`
   * `Standard_GRS`
   * `Standard_LRS`
@@ -197,7 +197,7 @@ az storage account create \
 
 Azure サブスクリプションでは複数のストレージ アカウントを持つことができます。 それらの 1 つを選んですべての後続のストレージ コマンドに使用するには、下記のように環境変数を設定します。
 
-まず、[az storage account keys list](/cli/azure/storage/account/keys#list) コマンドを使用してストレージ アカウント キーを表示します。
+まず、[az storage account keys list](/cli/azure/storage/account/keys) コマンドを使用してストレージ アカウント キーを表示します。
 
 ```azurecli-interactive
 az storage account keys list \
@@ -243,8 +243,8 @@ az storage container create --name <container_name>
 オプションの `--public-access` 引数を指定して、3 つのレベルの読み取りアクセスのいずれかを新しいコンテナーに設定することができます。
 
 * `off` (既定値): コンテナー データはアカウント所有者のみがアクセスできます。
-* `blob`: BLOB に対するパブリック読み取りアクセスです。
-* `container`: コンテナ―全体に対するパブリックの読み取りおよび一覧表示アクセスです。
+* `blob`:BLOB に対するパブリック読み取りアクセスです。
+* `container`:コンテナー全体に対するパブリックの読み取りおよび一覧表示アクセスです。
 
 詳細については、「 [コンテナーと BLOB への匿名読み取りアクセスを管理する](../blobs/storage-manage-access-to-resources.md)」を参照してください。
 
@@ -277,7 +277,7 @@ az storage blob download \
 
 ### <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
-コンテナー内の BLOB は、[az storage blob list](/cli/azure/storage/blob#az_storage_blob_list) コマンドで一覧表示します。
+コンテナー内の BLOB は、[az storage blob list](/cli/azure/storage/blob) コマンドで一覧表示します。
 
 ```azurecli
 az storage blob list \

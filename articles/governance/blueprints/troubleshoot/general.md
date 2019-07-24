@@ -1,19 +1,19 @@
 ---
-title: Azure Blueprints でエラーを解決する
-description: ブループリントの作成や割り当てで発生する問題を解決する方法について説明します
-services: blueprints
+title: 一般的なエラーのトラブルシューティング
+description: ブループリントの作成、割り当て、および削除で発生する問題を解決する方法について説明します
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
-ms.topic: conceptual
+ms.date: 12/11/2018
+ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: b910f90e70af4ce6d4243c06bfe5bd03d25d74d6
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.custom: seodec18
+ms.openlocfilehash: 42fdd6645a7a0e7cd9a2f0a7bc969e8eee62758c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092936"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789619"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure Blueprints でエラーを解決する
 
@@ -23,11 +23,11 @@ ms.locfileid: "50092936"
 
 多くのエラーは、ブループリントをスコープに割り当てることから発生します。 割り当てられなかったとき、デプロイの失敗に関する詳細がブループリントにより提供されます。 この情報から問題が示されるので、問題を解決すれば、次回のデプロイは成功します。
 
-1. **[すべてのサービス]** をクリックし、左側のウィンドウで **[ポリシー]** を検索して選択します。 **[ポリシー]** ページで **[ブループリント]** をクリックします。
+1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
 1. 左側のページから **[割り当てられたブループリント]** を選択し、検索ボックスを使用してブループリントの割り当てをフィルター処理し、失敗した割り当てを検索します。 **[プロビジョニング状態]** 列で割り当て表を並べ替え、失敗した割り当てをまとめて表示することもできます。
 
-1. 状態が _[失敗]_ のブループリントを左クリックし、**[割り当ての詳細を表示する]** を選択します。
+1. 状態が _[失敗]_ のブループリントを左クリックするか、**[割り当ての詳細を表示する]** を右クリックして選択します。
 
 1. ブループリント割り当てページの一番上に、割り当ての失敗を警告する赤いバナーが表示されます。 バナー内のどこでも良いのでクリックすると、詳細が表示されます。
 
@@ -35,7 +35,7 @@ ms.locfileid: "50092936"
 
 ## <a name="general-errors"></a>一般エラー
 
-### <a name="policy-violation"></a>シナリオ: ポリシー違反
+### <a name="policy-violation"></a>シナリオ:ポリシー違反
 
 #### <a name="issue"></a>問題
 
@@ -51,6 +51,20 @@ ms.locfileid: "50092936"
 #### <a name="resolution"></a>解決策
 
 ブルー プリントを変更して、エラーの詳細に含まれているポリシーと競合しないようにします。 変更できない場合、代替として、ブループリントがポリシーと競合しないようにポリシー割り当てのスコープを変更するという選択肢があります。
+
+### <a name="escape-function-parameter"></a>シナリオ:ブループリント パラメーターが関数である
+
+#### <a name="issue"></a>問題
+
+関数であるブループリント パラメーターが、成果物に渡される前に処理されます。
+
+#### <a name="cause"></a>原因
+
+`[resourceGroup().tags.myTag]` などの関数を使用するブループリント パラメーターを成果物に渡すと、動的関数ではなく、成果物に対して関数が設定されます。
+
+#### <a name="resolution"></a>解決策
+
+関数をパラメーターとして渡すには、ブループリント パラメーターが `[[resourceGroup().tags.myTag]` のようになるように、文字列全体を `[` でエスケープします。 エスケープ文字により、Blueprints によってブループリントが処理されるときに値が文字列として扱われます。 その後、関数は Blueprints によって成果物に配置され、意図したとおりに動的になります。 詳細については、[テンプレート ファイル構造に関する記事の構文](../../../azure-resource-manager/resource-group-authoring-templates.md#syntax)に関するセクションを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

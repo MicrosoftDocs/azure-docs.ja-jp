@@ -1,27 +1,26 @@
 ---
-title: Azure を対象とした MongoDB、Angular、Node のチュートリアル - パート 2 | Microsoft Docs
+title: Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - Node.js Express アプリを作成する
+titleSuffix: Azure Cosmos DB
 description: Angular と Node で MongoDB に使われる API をそのまま使用して、Azure Cosmos DB を対象とした MongoDB アプリを作成するチュートリアル シリーズのパート 2 です。
-services: cosmos-db
 author: johnpapa
-manager: kfile
-editor: ''
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 09/05/2017
+ms.date: 12/26/2018
 ms.author: jopapa
-ms.custom: mvc
-ms.openlocfilehash: 99fc6c7dc43f66d92b17f25ad0fba52ce8f34413
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.custom: seodec18
+ms.reviewer: sngun
+ms.openlocfilehash: 8dd725bed6364979a9388d5741bf17f667bda0b7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41917988"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435271"
 ---
-# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-2-create-a-nodejs-express-app-with-the-angular-cli"></a>Angular と Azure Cosmos DB を使って MongoDB アプリを作成する - パート 2: Angular CLI で Node.js Express アプリを作成する 
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - Node.js Express アプリを作成する
 
-複数のパートから成るこのチュートリアルでは、Node.js で Express、Angular、Azure Cosmos DB データベースを使って記述された新しい [MongoDB API](mongodb-introduction.md) アプリの作成方法を紹介します。
+複数のパートから成るこのチュートリアルでは、Express と Angular を使用して Node.js で新しいアプリを作成した後、[Azure Cosmos DB の MongoDB 用 API で構成された Cosmos アカウント](mongodb-introduction.md)にそれを接続する方法を紹介します。
 
 このチュートリアルのパート 2 では、[イントロダクション](tutorial-develop-mongodb-nodejs.md)の内容をベースとして、次のタスクについて取り上げます。
 
@@ -104,7 +103,7 @@ ms.locfileid: "41917988"
     * dist フォルダーに置かれるすべてのもの (静的コンテンツ) を提供する
     * アプリケーションを表示する。サーバーに存在しない GET 要求には index.html を返す (ディープ リンク)
     * app.listen でサーバーを起動する
-    * ポートが稼働状態であることをアロー関数を使ってログに出力する
+    * アロー関数を使って、ポートが稼働状態であることをログに出力する
     
    ```node
    const express = require('express');

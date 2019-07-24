@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: c3c79e7bd68e7c96b57ea66951c080b7d952ee8c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 4ea64b16a9a581683d3b7a44b4b331af435db22c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441759"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762723"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>開発者ポータル ページのスタイルをカスタマイズする
 
@@ -40,8 +40,8 @@ Azure API Management で開発者ポータルをカスタマイズするもっ�
 ## <a name="prerequisites"></a>前提条件
 
 + [Azure API Management の用語](api-management-terminology.md)について学習します。
-+ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
-+ また、「[Import and publish your first API (最初の API のインポートと発行)](import-and-publish.md)」のチュートリアルも完了します。
++ 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)。
++ また、次のチュートリアルを完了すること: [最初の API のインポートと発行](import-and-publish.md)。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -57,11 +57,11 @@ Azure API Management で開発者ポータルをカスタマイズするもっ�
     ページに表示される **[スタイル]** を使用して、すべての要素をカスタマイズできます。
 5. **[Change variable values to customize developer portal appearance:]\(変数の値を変更して開発者ポータルの外観をカスタマイズする:\)** フィールドに、「headings-color (見出しの色)」と入力します。
 
-    **@headings-color** 要素がページに表示されます。 この変数はテキストの色を制御します。
+    **\@headings-color** 要素がページに表示されます。 この変数はテキストの色を制御します。
 
     ![スタイルのカスタマイズ](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     
-6. **@headings-color** 変数のフィールドをクリックします。 
+6. **\@headings-color** 変数のフィールドをクリックします。 
     
     カラー ピッカーのドロップダウンが開きます。
 7. カラー ピッカーのドロップダウンから、新しい色を選択します。

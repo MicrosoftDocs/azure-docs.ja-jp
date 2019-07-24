@@ -1,25 +1,21 @@
 ---
-title: Azure Cosmos DB Table API for Node.js | Microsoft Docs
+title: Azure Cosmos DB Table API for Node.js
 description: リリース日、提供終了日、各バージョン間で行われた変更など、Azure Cosmos DB Table API に関するすべてについて説明します。
-services: cosmos-db
-author: yarong
-manager: kfile
-editor: ''
 ms.service: cosmos-db
-ms.component: cosmosdb-table
+ms.subservice: cosmosdb-table
 ms.devlang: nodejs
 ms.topic: reference
 ms.date: 11/20/2017
-ms.author: yaronyg
-ms.custom: ''
-ms.openlocfilehash: 4bdcb7c587ef05ced3c163136c52c81433a98cf4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+author: wmengmsft
+ms.author: wmeng
+ms.openlocfilehash: 1cf72069d545fc1f4c337a1b67f5fd4aa2ef143c
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468706"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54043721"
 ---
-# <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Azure Cosmos DB Table API for Node.js: リリース ノートとリソース
+# <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Azure Cosmos DB Table API for Node.js:リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -31,7 +27,7 @@ ms.locfileid: "49468706"
 |   |   |
 |---|---|
 |**SDK のダウンロード**|[NPM](https://www.npmjs.com/package/azure-storage)|
-|**API ドキュメント**|[Node.js の API リファレンス ドキュメント](http://azure.github.io/azure-storage-node/)|
+|**API ドキュメント**|[Node.js の API リファレンス ドキュメント](https://azure.github.io/azure-storage-node/)|
 |**SDK への協力**|[GitHub](https://github.com/Azure/azure-storage-node#contribute)|
 
 > [!IMPORTANT]

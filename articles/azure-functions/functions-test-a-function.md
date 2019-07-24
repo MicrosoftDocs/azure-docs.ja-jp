@@ -1,443 +1,382 @@
 ---
-title: Azure Functions のテスト | Microsoft Docs
-description: Postman、cURL、Node.js を使用して Azure 関数をテストします。
+title: Azure Functions のテスト
+description: Visual Studio の C# 関数と VS Code の JavaScript 関数の自動化テストを作成する
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 keywords: Azure Functions, 関数, イベント処理, webhook, 動的コンピューティング, サーバーレス アーキテクチャ, テスト
-ms.assetid: c00f3082-30d2-46b3-96ea-34faf2f15f77
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 02/02/2017
-ms.author: glenga
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b2605bb30d7a1442c471c8cf1483b106ca27581
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.date: 03/25/2019
+ms.author: cshoe
+ms.openlocfilehash: e0009e1c6380e02e2e0e24bf86e6dab435b6c022
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086762"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59357644"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure Functions のコードをテストするための戦略
 
-このトピックでは、関数をテストするさまざまな方法について説明します。一般的には次のようなアプローチを使用します。
+この記事では、Azure Functions の自動化テストを作成する方法を示します。 
 
-+ HTTP ベースのツール。cURL、Postman、Web ベースのトリガーを対象とした Web ブラウザーなど
-+ Azure Storage ベースのトリガーをテストするための Azure ストレージ エクスプローラー
-+ Azure Functions ポータルの [テスト] タブ
-+ タイマーによってトリガーされる関数
-+ テスト アプリケーションまたはフレームワーク
+すべてのコードをテストすることをお勧めします。ただし、Functions のロジックをまとめて Function の外部にテストを作成することで、最適な結果が得られる場合があります。 ロジックを切り離して抽象化することで、Function のコード行が制限され、Function 単独で他のクラスやモジュールを呼び出すことができます。 ただし、この記事では、HTTP およびタイマーによってトリガーされる関数に対して自動化テストを作成する方法を示します。
 
-これらのすべてのテスト方法で、クエリ文字列パラメーターまたは要求本文を通じて入力を受け取る HTTP トリガー関数が使用されています。 この関数は、最初のセクションで Azure portal を使用して作成します。
+次のコンテンツは、異なる言語と環境を対象とするため、2 つの異なるセクションに分かれています。 次の言語でのテストの作成を学習できます。
 
-## <a name="create-a-simple-function-for-testing-using-the-azure-portal"></a>Azure portal を使用してテストするための単純な関数を作成する
-このチュートリアルの大部分で、HttpTrigger JavaScript 関数テンプレートに少し変更を加えたバージョンを使用します。このテンプレートは、新しい関数を作成する際に入手できます。 関数の作成に関する支援が必要な場合は、この[チュートリアル](functions-create-first-azure-function.md)を参照してください。 [Azure Portal] でテスト関数を作成する際に、**HttpTrigger - JavaScript** テンプレートを選択します。
+- [xUnit を使用した Visual Studio での C#](#c-in-visual-studio)
+- [Jest を使用した VS Code での JavaScript](#javascript-in-vs-code)
 
-この既定の関数テンプレートは、本質的には "hello world" 関数であり、要求本文またはクエリ文字列パラメーター `name=<your name>` から名前を取得して返します。  このコードを更新して、要求本文で JSON コンテンツとして名前と住所を指定できるようにします。 関数は、これらが取得可能であれば、クライアントに返すようになります。   
+サンプル リポジトリは [GitHub](https://github.com/Azure-Samples/azure-functions-tests) で入手できます。
 
-次のコードで関数を更新します。これをテストに使用します。
+## <a name="c-in-visual-studio"></a>Visual Studio での C#
+次の例では、Visual Studio で C# 関数アプリを作成し、[xUnit](https://xunit.github.io) を使用して実行およびテストする方法を説明します。
 
-```javascript
-module.exports = function (context, req) {
-    context.log("HTTP trigger function processed a request. RequestUri=%s", req.originalUrl);
-    context.log("Request Headers = " + JSON.stringify(req.headers));
-    var res;
+![Visual Studio で C# を使って Azure Functions をテストする](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
-    if (req.query.name || (req.body && req.body.name)) {
-        if (typeof req.query.name != "undefined") {
-            context.log("Name was provided as a query string param...");
-            res = ProcessNewUserInformation(context, req.query.name);
-        }
-        else {
-            context.log("Processing user info from request body...");
-            res = ProcessNewUserInformation(context, req.body.name, req.body.address);
-        }
+### <a name="setup"></a>セットアップ
+
+環境を設定するには、関数を作成し、アプリをテストします。 次の手順では、テストをサポートするために必要なアプリと関数を作成できます。
+
+1. [新しい関数アプリを作成](./functions-create-first-azure-function.md)して *Functions* という名前を付けます
+2. [テンプレートから HTTP 関数を作成](./functions-create-first-azure-function.md)して *HttpTrigger* という名前を付けます。
+3. [テンプレートからタイマー関数を作成](./functions-create-scheduled-function.md)して *TimerTrigger* という名前を付けます。
+4. Visual Studio で **[ファイル] > [新規作成] > [プロジェクト] > [Visual C#] > [.NET Core] > [xUnit テスト プロジェクト]** の順にクリックして [xUnit テスト アプリを作成](https://xunit.github.io/docs/getting-started-dotnet-core)し、*Functions.Test* という名前を付けます。 
+5. Nuget を使用して、テスト アプリ [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) からの参照を追加します
+6. [*Functions.Test* アプリから *Functions* アプリを参照](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017)します。
+
+### <a name="create-test-classes"></a>テスト クラスの作成
+
+これでアプリケーションが作成されたため、自動テストの実行に使用するクラスを作成できます。
+
+各関数は、[ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) のインスタンスを取得して、メッセージ ログを処理します。 テストによっては、メッセージをログに記録しないことも、ログの実装方法に対する懸念がないこともあります。 その他のテストは、テストを渡すかどうかを判断するために、ログに記録されたメッセージを評価する必要があります。
+
+`ListLogger` クラスは、`ILogger` インターフェイスを実装するためのもので、テスト中に評価するメッセージの内部リストに保持されます。
+
+*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**NullScope.cs** という名前を付けて、次のコードを入力します。
+
+```csharp
+using System;
+
+namespace Functions.Tests
+{
+    public class NullScope : IDisposable
+    {
+        public static NullScope Instance { get; } = new NullScope();
+
+        private NullScope() { }
+
+        public void Dispose() { }
     }
-    else {
-        res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-    context.done(null, res);
-};
-function ProcessNewUserInformation(context, name, address) {
-    context.log("Processing user information...");
-    context.log("name = " + name);
-    var echoString = "Hello " + name;
-    var res;
-
-    if (typeof address != "undefined") {
-        echoString += "\n" + "The address you provided is " + address;
-        context.log("address = " + address);
-    }
-    res = {
-        // status: 200, /* Defaults to 200 */
-        body: echoString
-    };
-    return res;
 }
 ```
 
-## <a name="test-a-function-with-tools"></a>ツールを使用した関数のテスト
-Azure Portal の他にも、テスト用に関数をトリガーできるツールにはさまざまなものがあります。 たとえば、HTTP テスト ツール (UI ベースとコマンド ライン)、Azure Storage アクセス ツール、シンプルな Web ブラウザーを使用して、関数をトリガーできます。
+次に、*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**ListLogger.cs** という名前を付けて、次のコードを入力します。
 
-### <a name="test-with-a-browser"></a>ブラウザーを使用してテストする
-Web ブラウザーを使用すると、関数を HTTP 経由で簡単にトリガーできます。 本文のペイロードを必要とせず、クエリ文字列パラメーターのみを使用する GET 要求に対して、ブラウザーを使用できます。
+```csharp
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-上で定義した関数をテストするには、ポータルから**関数の URL** をコピーします。 その形式は、次のとおりです。
-
-    https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
-
-クエリ文字列に `name` パラメーターを追加します。 `<Enter a name here>` プレースホルダーに、実際の名前を使用します。
-
-    https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>&name=<Enter a name here>
-
-ブラウザーに URL を貼り付けると、次のような応答が取得されます。
-
-![テストの応答が表示されている Chrome ブラウザーのタブのスクリーン ショット](./media/functions-test-a-function/browser-test.png)
-
-これは Chrome ブラウザーの例で、XML で返された文字列をラップします。 その他のブラウザーには、文字列の値だけが表示されます。
-
-関数を実行すると、ポータルの **[ログ]** ウィンドウに、次のような出力が記録されます。
-
-    2016-03-23T07:34:59  Welcome, you are now connected to log-streaming service.
-    2016-03-23T07:35:09.195 Function started (Id=61a8c5a9-5e44-4da0-909d-91d293f20445)
-    2016-03-23T07:35:10.338 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/WesmcHttpTriggerNodeJS1?code=XXXXXXXXXX==&name=Glenn from a browser
-    2016-03-23T07:35:10.338 Request Headers = {"cache-control":"max-age=0","connection":"Keep-Alive","accept":"text/html","accept-encoding":"gzip","accept-language":"en-US"}
-    2016-03-23T07:35:10.338 Name was provided as a query string param.
-    2016-03-23T07:35:10.338 Processing User Information...
-    2016-03-23T07:35:10.369 Function completed (Success, Id=61a8c5a9-5e44-4da0-909d-91d293f20445)
-
-### <a name="test-with-postman"></a>Postman を使用してテストする
-Postman は、ほとんどの関数でテスト用に推奨されるツールで、Chrome ブラウザーに統合されています。 Postman をインストールする方法については、 [Postman の取得](https://www.getpostman.com/)に関するサイトを参照してください。 Postman を使用すると、HTTP 要求の多くの属性を制御できます。
-
-> [!TIP]
-> 最も使い慣れている HTTP テスト ツールを使用してください。 次のクライアントが Postman の代わりに使用できます。  
->
-> * [Fiddler](http://www.telerik.com/fiddler)  
-> * [Paw](https://luckymarmot.com/paw)  
->
->
-
-Postman で要求本文を使用して関数をテストするには、次の手順に従います。
-
-1. Chrome ブラウザー ウィンドウの左上隅にある **[アプリ]** ボタンをクリックして、Postman を起動します。
-2. **関数の URL** をコピーして Postman に貼り付けます。 URL には、アクセス コード クエリ文字列パラメーターが含まれています。
-3. HTTP メソッドを **POST**に変更します。
-4. **[Body (本文)]** > **[raw (未加工)]** の順にクリックし、次のような JSON 要求の本文を追加します。
-
-    ```json
+namespace Functions.Tests
+{
+    public class ListLogger : ILogger
     {
-        "name" : "Wes testing with Postman",
-        "address" : "Seattle, WA 98101"
+        public IList<string> Logs;
+
+        public IDisposable BeginScope<TState>(TState state) => NullScope.Instance;
+
+        public bool IsEnabled(LogLevel logLevel) => false;
+
+        public ListLogger()
+        {
+            this.Logs = new List<string>();
+        }
+
+        public void Log<TState>(LogLevel logLevel, 
+                                EventId eventId,
+                                TState state,
+                                Exception exception,
+                                Func<TState, Exception, string> formatter)
+        {
+            string message = formatter(state, exception);
+            this.Logs.Add(message);
+        }
     }
-    ```
-5. **[送信]** をクリックします。
+}
+```
 
-次の図は、このチュートリアルの単純なサンプル echo 関数のテストを示しています。
+`ListLogger` クラスは、`ILogger` インターフェイスによって縮小される次のメンバーを実装します。
 
-![Postman ユーザー インターフェイスのスクリーン ショット](./media/functions-test-a-function/postman-test.png)
+- **BeginScope**:スコープがログにコンテキストを追加します。 この場合、テストで `NullScope` クラスの静的インスタンスをポイントするだけで、テストを機能させることができます。
 
-関数を実行すると、ポータルの **[ログ]** ウィンドウに、次のような出力が記録されます。
+- **IsEnabled**:既定の値 `false` が指定されます。
 
-    2016-03-23T08:04:51  Welcome, you are now connected to log-streaming service.
-    2016-03-23T08:04:57.107 Function started (Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
-    2016-03-23T08:04:57.763 HTTP trigger function processed a request. RequestUri=https://functions841def78.azurewebsites.net/api/WesmcHttpTriggerNodeJS1?code=XXXXXXXXXX==
-    2016-03-23T08:04:57.763 Request Headers = {"cache-control":"no-cache","connection":"Keep-Alive","accept":"*/*","accept-encoding":"gzip","accept-language":"en-US"}
-    2016-03-23T08:04:57.763 Processing user info from request body...
-    2016-03-23T08:04:57.763 Processing User Information...
-    2016-03-23T08:04:57.763 name = Wes testing with Postman
-    2016-03-23T08:04:57.763 address = Seattle, W.A. 98101
-    2016-03-23T08:04:57.795 Function completed (Success, Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
+- **Log**:このメソッドは、指定された `formatter` 関数を使用してメッセージの書式を設定してから、結果のテキストを `Logs` コレクションに追加します。
 
-### <a name="test-with-curl-from-the-command-line"></a>コマンドラインで cURL を使用してテストする
-ソフトウェアのテストでは、アプリケーションをデバッグする際にコマンド ライン以外の詳しい調査が必要になることはめったにありません。 これは関数のテストの場合も同じです。 Linux ベースのシステムでは既定で cURL を使用できます。 Windows では、最初にダウンロードし、[cURL ツール](https://curl.haxx.se/)をインストールする必要があります。
+`Logs` コレクションは `List<string>` のインスタンスであり、コンストラクターで初期化されます。
 
-上で定義した関数をテストするには、ポータルから**関数の URL** をコピーします。 その形式は、次のとおりです。
+次に、*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**LoggerTypes.cs** という名前を付けて、次のコードを入力します。
 
-    https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
+```csharp
+namespace Functions.Tests
+{
+    public enum LoggerTypes
+    {
+        Null,
+        List
+    }
+}
+```
+この列挙型は、テストで使用されるロガーの種類を指定します。 
 
-これは、関数をトリガーするための URL です。 次のように、コマンド ラインで cURL コマンドを使用して、関数に対して GET (`-G` または `--get`) 要求を実行し、テストします。
+次に、*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**TestFactory.cs** という名前を付けて、次のコードを入力します。
 
-    curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
+```csharp
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Internal;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Extensions.Primitives;
+using System.Collections.Generic;
 
-この特定の例の場合は、次のように、cURL コマンドでデータ (`-d`) として渡すことができるクエリ文字列パラメーターが必要です。
+namespace Functions.Tests
+{
+    public class TestFactory
+    {
+        public static IEnumerable<object[]> Data()
+        {
+            return new List<object[]>
+            {
+                new object[] { "name", "Bill" },
+                new object[] { "name", "Paul" },
+                new object[] { "name", "Steve" }
 
-    curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code> -d name=<Enter a name here>
+            };
+        }
 
-コマンドを実行すると、コマンド ラインに次の関数出力が表示されます。
+        private static Dictionary<string, StringValues> CreateDictionary(string key, string value)
+        {
+            var qs = new Dictionary<string, StringValues>
+            {
+                { key, value }
+            };
+            return qs;
+        }
 
-![コマンド プロンプトの出力のスクリーンショット](./media/functions-test-a-function/curl-test.png)
+        public static DefaultHttpRequest CreateHttpRequest(string queryStringKey, string queryStringValue)
+        {
+            var request = new DefaultHttpRequest(new DefaultHttpContext())
+            {
+                Query = new QueryCollection(CreateDictionary(queryStringKey, queryStringValue))
+            };
+            return request;
+        }
 
-関数を実行すると、ポータルの **[ログ]** ウィンドウに、次のような出力が記録されます。
+        public static ILogger CreateLogger(LoggerTypes type = LoggerTypes.Null)
+        {
+            ILogger logger;
 
-    2016-04-05T21:55:09  Welcome, you are now connected to log-streaming service.
-    2016-04-05T21:55:30.738 Function started (Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
-    2016-04-05T21:55:30.738 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/HttpTriggerNodeJS1?code=XXXXXXX&name=Azure Functions
-    2016-04-05T21:55:30.738 Function completed (Success, Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
+            if (type == LoggerTypes.List)
+            {
+                logger = new ListLogger();
+            }
+            else
+            {
+                logger = NullLoggerFactory.Instance.CreateLogger("Null Logger");
+            }
 
-### <a name="test-a-blob-trigger-by-using-storage-explorer"></a>ストレージ エクスプローラーを使用して BLOB トリガーをテストする
-[Azure ストレージ エクスプローラー](http://storageexplorer.com/)を使用して、BLOB トリガー関数をテストできます。
+            return logger;
+        }
+    }
+}
+```
+`TestFactory` クラスは、次のメンバーを実装します。
 
-1. 関数アプリの [Azure Portal] で、C#、F#、または JavaScript の BLOB トリガー関数を作成します。 監視するパスを BLOB コンテナーの名前に設定します。 例: 
+- **Data**:このプロパティは、サンプル データの [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) コレクションを返します。 キー値のペアは、クエリ文字列に渡される値を表します。
 
-        files
-2. **+** ボタンをクリックし、使用するストレージ アカウントを選択または作成します。 **[Create]** をクリックします。
-3. 次のテキストが含まれたテキスト ファイルを作成して保存します。
+- **CreateDictionary**:このメソッドは、キー/値ペアを引数として受け取り、クエリ文字列値を表す `QueryCollection` を作成するために使用する新しい `Dictionary` を返します。
 
-        A text file for blob trigger function testing.
-4. [Azure ストレージ エクスプローラー](http://storageexplorer.com/)を実行し、監視対象のストレージ アカウントの BLOB コンテナーに接続します。
-5. **[アップロード]** をクリックして、テキスト ファイルをアップロードします。
+- **CreateHttpRequest**:このメソッドは、指定されたクエリ文字列パラメーターで初期化される HTTP 要求を作成します。
 
-    ![ストレージ エクスプローラーのスクリーンショット](./media/functions-test-a-function/azure-storage-explorer-test.png)
+- **CreateLogger**:このメソッドは、ロガーの種類に応じて、テストに使用されるロガー クラスを返します。 `ListLogger` は、テストで評価に使用できるログ記録されたメッセージを追跡します。
 
-既定の BLOB トリガー関数コードによって、ログに BLOB の処理がレポートされます。
+次に、*Functions.Test* アプリケーションを**右クリック**し、**[追加] > [クラス]** の順に選択し、**FunctionsTests.cs** という名前を付けて、次のコードを入力します。
 
-    2016-03-24T11:30:10  Welcome, you are now connected to log-streaming service.
-    2016-03-24T11:30:34.472 Function started (Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
-    2016-03-24T11:30:34.472 C# Blob trigger function processed: A text file for blob trigger function testing.
-    2016-03-24T11:30:34.472 Function completed (Success, Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
+```csharp
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Xunit;
 
-## <a name="test-a-function-within-functions"></a>関数内での関数のテスト
-Azure Functions ポータルは、HTTP 関数およびタイマーによってトリガーされる関数をテストするように設計されています。 関数を作成して、テストする他の関数をトリガーすることもできます。
+namespace Functions.Tests
+{
+    public class FunctionsTests
+    {
+        private readonly ILogger logger = TestFactory.CreateLogger();
 
-### <a name="test-with-the-functions-portal-run-button"></a>関数ポータルの [実行] ボタンを使用してテストする
-ポータルにある **[実行]** ボタンを使用すると、一部の限定的なテストを実施できます。 [実行] ボタンを使用する場合、要求本文は指定できますが、クエリ文字列パラメーターを指定したり、要求ヘッダーを更新したりすることはできません。
+        [Fact]
+        public async void Http_trigger_should_return_known_string()
+        {
+            var request = TestFactory.CreateHttpRequest("name", "Bill");
+            var response = (OkObjectResult)await HttpTrigger.Run(request, logger);
+            Assert.Equal("Hello, Bill", response.Value);
+        }
 
-前に作成した HTTP トリガー関数をテストするには、次のような JSON 文字列を **[要求本文]** フィールドに追加します。 その後、**[実行]** ボタンをクリックします。
+        [Theory]
+        [MemberData(nameof(TestFactory.Data), MemberType = typeof(TestFactory))]
+        public async void Http_trigger_should_return_known_string_from_member_data(string queryStringKey, string queryStringValue)
+        {
+            var request = TestFactory.CreateHttpRequest(queryStringKey, queryStringValue);
+            var response = (OkObjectResult)await HttpTrigger.Run(request, logger);
+            Assert.Equal($"Hello, {queryStringValue}", response.Value);
+        }
+
+        [Fact]
+        public void Timer_should_log_message()
+        {
+            var logger = (ListLogger)TestFactory.CreateLogger(LoggerTypes.List);
+            TimerTrigger.Run(null, logger);
+            var msg = logger.Logs[0];
+            Assert.Contains("C# Timer trigger function executed at", msg);
+        }
+    }
+}
+```
+このクラスで実装されるメンバーは次のとおりです。
+
+- **Http_trigger_should_return_known_string**:このテストは、HTTP 関数へのクエリ文字列値 `name=Bill` を含む要求を作成し、予期された応答が返されることを確認します。
+
+- **Http_trigger_should_return_string_from_member_data**:このテストは、xUnit 属性を使用して、HTTP 関数にサンプル データを提供します。
+
+- **Timer_should_log_message**:このテストは、`ListLogger` のインスタンスを作成してタイマー関数に渡します。 関数が実行されると、予期されたメッセージが存在することを確認するためにログがチェックされます。
+
+テストでアプリケーション設定にアクセスする場合は、[System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables) を使用できます。
+
+### <a name="run-tests"></a>テストの実行
+
+テストを実行するには、**テスト エクスプローラー**に移動し、**[すべて実行]** の順にクリックします。
+
+![Visual Studio で C# を使って Azure Functions をテストする](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
+
+### <a name="debug-tests"></a>テストのデバッグ
+
+テストをデバッグするには、テストにブレークポイントを設定し、**テスト エクスプローラー**に移動して、**[実行] > [前回の実行をデバッグする]** の順にクリックします。
+
+## <a name="javascript-in-vs-code"></a>VS Code での JavaScript
+
+次の例では、VS Code で JavaScript 関数アプリを作成し、[Jest](https://jestjs.io) を使用して実行およびテストする方法を説明します。 この手順では、[VS Code の Functions 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)を使用して Azure Functions を作成します。
+
+![VS Code で JavaScript を使って Azure Functions をテストする](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
+
+### <a name="setup"></a>セットアップ
+
+環境を設定するには、`npm init` を実行して空のフォルダーで新しい Node.js アプリを初期化します。
+
+```bash
+npm init -y
+```
+次に、次のコマンドを実行して Jest をインストールします。
+
+```bash
+npm i jest
+```
+この時点で _package.json_ を更新して、既存のテスト コマンドを次のコマンドに置き換えます。
+
+```bash
+"scripts": {
+    "test": "jest"
+}
+```
+
+### <a name="create-test-modules"></a>テスト モジュールを作成する
+プロジェクトが初期化されたら、自動テストの実行に使用するモジュールを作成できます。 最初に、*testing* という名前の、サポート モジュールを保持する新しいフォルダーを作成します。
+
+*testing* フォルダーに新しいファイルを追加して **defaultContext.js** という名前を付け、次のコードを追加します。
+
+```javascript
+module.exports = {
+    log: jest.fn()
+};
+```
+このモジュールは、*log* 関数をモックして既定の実行コンテキストを表します。
+
+次に、新しいファイルを追加して **defaultTimer.js** という名前を付け、次のコードを追加します。
+
+```javascript
+module.exports = {
+    IsPastDue: false
+};
+```
+このモジュールは、偽のタイマー インスタンスである `IsPastDue` プロパティを実装します。
+
+次に、VS Code の Functions 拡張機能を使用して、[JavaScript HTTP 関数を新規作成](https://code.visualstudio.com/tutorials/functions-extension/getting-started)して *HttpTrigger* という名前を付けます。 関数を作成した後、**index.test.js** という名前の同じフォルダーに新しいファイルを追加し、次のコードを追加します。
+
+```javascript
+const httpFunction = require('./index');
+const context = require('../testing/defaultContext')
+
+test('Http trigger should return known text', async () => {
+
+    const request = {
+        query: { name: 'Bill' }
+    };
+
+    await httpFunction(context, request);
+
+    expect(context.log.mock.calls.length).toBe(1);
+    expect(context.res.body).toEqual('Hello Bill');
+});
+```
+テンプレートからの HTTP 関数は、クエリ文字列に指定された名前と連結された文字列 "Hello" を返します。 このテストは、要求の偽のインスタンスを作成して HTTP 関数に渡します。 このテストは、*log* メソッドが 1 回呼び出され、返されるテキストが "Hello Bill" に等しいことを確認します。
+
+次に、VS Code の Functions 拡張機能を使用して、JavaScript タイマー関数を新規作成して *TimerTrigger*という名前を付けます。 関数を作成した後、**index.test.js** という名前の同じフォルダーに新しいファイルを追加し、次のコードを追加します。
+
+```javascript
+const timerFunction = require('./index');
+const context = require('../testing/defaultContext');
+const timer = require('../testing/defaultTimer');
+
+test('Timer trigger should log message', () => {
+    timerFunction(context, timer);
+    expect(context.log.mock.calls.length).toBe(1);
+});
+```
+テンプレートからのタイマー関数は、関数本文の最後のメッセージをログに記録します。 このテストは、*log* 関数が 1 回呼び出されることを確認します。
+
+### <a name="run-tests"></a>テストの実行
+キーを実行するには、**CTRL + ~** を押してコマンド ウィンドウを開き、`npm test` を実行します。
+
+```bash
+npm test
+```
+
+![VS Code で JavaScript を使って Azure Functions をテストする](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
+
+### <a name="debug-tests"></a>テストのデバッグ
+
+テストをデバッグするには、*launch.json* ファイルに次の構成を追加します。
 
 ```json
 {
-    "name" : "Wes testing Run button",
-    "address" : "USA"
+  "type": "node",
+  "request": "launch",
+  "name": "Jest Tests",
+  "program": "${workspaceRoot}\\node_modules\\jest\\bin\\jest.js",
+  "args": [
+      "-i"
+  ],
+  "internalConsoleOptions": "openOnSessionStart"
 }
 ```
 
-関数を実行すると、ポータルの **[ログ]** ウィンドウに、次のような出力が記録されます。
+次に、テストにブレークポイントを設定し、**F5** を押します。
 
-    2016-03-23T08:03:12  Welcome, you are now connected to log-streaming service.
-    2016-03-23T08:03:17.357 Function started (Id=753a01b0-45a8-4125-a030-3ad543a89409)
-    2016-03-23T08:03:18.697 HTTP trigger function processed a request. RequestUri=https://functions841def78.azurewebsites.net/api/wesmchttptriggernodejs1
-    2016-03-23T08:03:18.697 Request Headers = {"connection":"Keep-Alive","accept":"*/*","accept-encoding":"gzip","accept-language":"en-US"}
-    2016-03-23T08:03:18.697 Processing user info from request body...
-    2016-03-23T08:03:18.697 Processing User Information...
-    2016-03-23T08:03:18.697 name = Wes testing Run button
-    2016-03-23T08:03:18.697 address = USA
-    2016-03-23T08:03:18.744 Function completed (Success, Id=753a01b0-45a8-4125-a030-3ad543a89409)
+## <a name="next-steps"></a>次の手順
 
-
-### <a name="test-with-a-timer-trigger"></a>タイマー トリガーを使用してテストする
-機能の中には、ここまでに説明したツールでは十分にテストできないものがあります。 たとえば、メッセージが [Azure Queue Storage](../storage/queues/storage-dotnet-how-to-use-queues.md) にドロップされたときに実行されるキュー トリガー関数があるとします。 キューにメッセージをドロップするコードはいつでも記述することができます。コンソール プロジェクトにおける例を、この記事の後の方で示します。 しかし、関数を直接テストするための別の方法もあります。  
-
-キュー出力バインドを用いて構成されたタイマー トリガーを使用できます。 このタイマー トリガー コードで、テスト メッセージをキューに書き込むことができます。 このセクションでは、例を具体的に説明します。
-
-Azure Functions でのバインドの使用に関する詳細については、「 [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」を参照してください。
-
-#### <a name="create-a-queue-trigger-for-testing"></a>テスト用のキュー トリガーの作成
-この方法を実演するために、まず、`queue-newusers` という名前のキューに対してテストするキュー トリガー関数を作成します。 この関数は、Queue ストレージにドロップされた新しいユーザーの名前と住所の情報を処理します。
-
-> [!NOTE]
-> 別のキュー名を使用する場合は、必ず、 [キューおよびメタデータの名前付け](https://msdn.microsoft.com/library/dd179349.aspx) の規則に準拠した名前を使用してください。 そうしないと、エラーが発生します。
->
->
-
-1. 関数アプリの [Azure Portal] で、**[新しい関数]** > **[QueueTrigger - C#]** の順にクリックします。
-2. キュー関数で監視するキューの名前を入力します。
-
-        queue-newusers
-3. **+** ボタンをクリックし、使用するストレージ アカウントを選択または作成します。 **[Create]** をクリックします。
-4. 既定のキュー関数テンプレート コードのログ エントリを監視できるように、このポータルのブラウザー ウィンドウを開いたままにします。
-
-#### <a name="create-a-timer-trigger-to-drop-a-message-in-the-queue"></a>キューにメッセージをドロップするタイマー トリガーの作成
-1. 新しいブラウザー ウィンドウで [Azure Portal] を開き、関数アプリに移動します。
-2. **[新しい関数]** > **[TimerTrigger - C#]** の順にクリックします。 タイマー コードでキュー関数をテストする頻度を設定する CRON 式を入力します。 **[Create]** をクリックします。 テストを 30 秒ごとに実行する場合は、次の [CRON 式](https://wikipedia.org/wiki/Cron#CRON_expression)を使用できます。
-
-        */30 * * * * *
-3. 新しいタイマー トリガーの **[統合]** タブをクリックします。
-4. **[出力]** の **[+ New Output (+ 新しい出力)]** をクリックします。 **[キュー]**、**[選択]** の順にクリックします。
-5. **キュー メッセージ オブジェクト**に使用する名前をメモしておきます。 これをタイマー関数のコードで使用します。
-
-        myQueue
-6. メッセージの送信先キューの名前を入力します。
-
-        queue-newusers
-7. **[+]** ボタンをクリックし、前にキュー トリガーで使用したストレージ アカウントを選択します。 その後、 **[保存]** をクリックします。
-8. タイマー トリガーの **[開発]** タブをクリックします。
-9. 前に示したのと同じキュー メッセージ オブジェクト名を使用している場合は、C# タイマー関数に次のコードを使用できます。 その後、 **[保存]** をクリックします。
-
-    ```cs
-    using System;
-    using Microsoft.Extensions.Logging;
-
-    public static void Run(TimerInfo myTimer, out String myQueue, ILogger log)
-    {
-        String newUser =
-        "{\"name\":\"User testing from C# timer function\",\"address\":\"XYZ\"}";
-
-        log.Verbose($"C# Timer trigger function executed at: {DateTime.Now}");   
-        log.Verbose($"{newUser}");   
-
-        myQueue = newUser;
-    }
-    ```
-
-これで、上の CRON 式の例を使用している場合は、C# タイマー関数が 30 秒ごとに実行されるようになります。 タイマー関数のログに、各実行がレポートされます。
-
-    2016-03-24T10:27:02  Welcome, you are now connected to log-streaming service.
-    2016-03-24T10:27:30.004 Function started (Id=04061790-974f-4043-b851-48bd4ac424d1)
-    2016-03-24T10:27:30.004 C# Timer trigger function executed at: 3/24/2016 10:27:30 AM
-    2016-03-24T10:27:30.004 {"name":"User testing from C# timer function","address":"XYZ"}
-    2016-03-24T10:27:30.004 Function completed (Success, Id=04061790-974f-4043-b851-48bd4ac424d1)
-
-キュー関数のブラウザー ウィンドウに、処理されている各メッセージが表示されます。
-
-    2016-03-24T10:27:06  Welcome, you are now connected to log-streaming service.
-    2016-03-24T10:27:30.607 Function started (Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
-    2016-03-24T10:27:30.607 C# Queue trigger function processed: {"name":"User testing from C# timer function","address":"XYZ"}
-    2016-03-24T10:27:30.607 Function completed (Success, Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
-
-## <a name="test-a-function-with-code"></a>コードを使用した関数のテスト
-関数をテストするために外部アプリケーションまたはフレームワークを作成しなければならないことがあります。
-
-### <a name="test-an-http-trigger-function-with-code-nodejs"></a>コードを使用して HTTP トリガー関数をテストする: Node.js
-Node.js アプリを使用して HTTP 要求を実行し、関数をテストできます。
-次のように設定します。
-
-* 要求オプションの `host` を関数アプリのホストに設定する。
-* `path` に関数の名前を設定する。
-* `path` にアクセス コード (`<your code>`) を設定する。
-
-コード例:
-
-```javascript
-var http = require("http");
-
-var nameQueryString = "name=Wes%20Query%20String%20Test%20From%20Node.js";
-
-var nameBodyJSON = {
-    name : "Wes testing with Node.JS code",
-    address : "Dallas, T.X. 75201"
-};
-
-var bodyString = JSON.stringify(nameBodyJSON);
-
-var options = {
-  host: "functions841def78.azurewebsites.net",
-  //path: "/api/HttpTriggerNodeJS2?code=sc1wt62opn7k9buhrm8jpds4ikxvvj42m5ojdt0p91lz5jnhfr2c74ipoujyq26wab3wk5gkfbt9&" + nameQueryString,
-  path: "/api/HttpTriggerNodeJS2?code=sc1wt62opn7k9buhrm8jpds4ikxvvj42m5ojdt0p91lz5jnhfr2c74ipoujyq26wab3wk5gkfbt9",
-  method: "POST",
-  headers : {
-      "Content-Type":"application/json",
-      "Content-Length": Buffer.byteLength(bodyString)
-    }    
-};
-
-callback = function(response) {
-  var str = ""
-  response.on("data", function (chunk) {
-    str += chunk;
-  });
-
-  response.on("end", function () {
-    console.log(str);
-  });
-}
-
-var req = http.request(options, callback);
-console.log("*** Sending name and address in body ***");
-console.log(bodyString);
-req.end(bodyString);
-```
-
-
-出力:
-
-    C:\Users\Wesley\testing\Node.js>node testHttpTriggerExample.js
-    *** Sending name and address in body ***
-    {"name" : "Wes testing with Node.JS code","address" : "Dallas, T.X. 75201"}
-    Hello Wes testing with Node.JS code
-    The address you provided is Dallas, T.X. 75201
-
-関数を実行すると、ポータルの **[ログ]** ウィンドウに、次のような出力が記録されます。
-
-    2016-03-23T08:08:55  Welcome, you are now connected to log-streaming service.
-    2016-03-23T08:08:59.736 Function started (Id=607b891c-08a1-427f-910c-af64ae4f7f9c)
-    2016-03-23T08:09:01.153 HTTP trigger function processed a request. RequestUri=http://functionsExample.azurewebsites.net/api/WesmcHttpTriggerNodeJS1/?code=XXXXXXXXXX==
-    2016-03-23T08:09:01.153 Request Headers = {"connection":"Keep-Alive","host":"functionsExample.azurewebsites.net"}
-    2016-03-23T08:09:01.153 Name not provided as query string param. Checking body...
-    2016-03-23T08:09:01.153 Request Body Type = object
-    2016-03-23T08:09:01.153 Request Body = [object Object]
-    2016-03-23T08:09:01.153 Processing User Information...
-    2016-03-23T08:09:01.215 Function completed (Success, Id=607b891c-08a1-427f-910c-af64ae4f7f9c)
-
-
-### <a name="test-a-queue-trigger-function-with-code-c"></a>コードを使用してキュー トリガー関数をテストする: C# #
-キューにメッセージをドロップするコードを使用してキュー トリガーをテストできることは既に説明しました。 次のコード例は、[Azure Queue Storage の概要](../storage/queues/storage-dotnet-how-to-use-queues.md)に関するチュートリアルに記載されている C# コードをベースにしています。 他の言語のコードも、こちらのリンク先から入手できます。
-
-コンソール アプリでこのコードをテストするには、次の手順を実行する必要があります。
-
-* [app.config ファイルにストレージ接続文字列を構成します](../storage/queues/storage-dotnet-how-to-use-queues.md)。
-* `name` と `address` をパラメーターとしてアプリに渡します。 たとえば、「 `C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"` 」のように入力します。 (このコードは、実行時に新しいユーザーの名前と住所をコマンド ライン引数として受け取ります。)
-
-C# のコード例:
-
-```cs
-static void Main(string[] args)
-{
-    string name = null;
-    string address = null;
-    string queueName = "queue-newusers";
-    string JSON = null;
-
-    if (args.Length > 0)
-    {
-        name = args[0];
-    }
-    if (args.Length > 1)
-    {
-        address = args[1];
-    }
-
-    // Retrieve storage account from connection string
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
-
-    // Create the queue client
-    CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-
-    // Retrieve a reference to a queue
-    CloudQueue queue = queueClient.GetQueueReference(queueName);
-
-    // Create the queue if it doesn't already exist
-    queue.CreateIfNotExists();
-
-    // Create a message and add it to the queue.
-    if (name != null)
-    {
-        if (address != null)
-            JSON = String.Format("{{\"name\":\"{0}\",\"address\":\"{1}\"}}", name, address);
-        else
-            JSON = String.Format("{{\"name\":\"{0}\"}}", name);
-    }
-
-    Console.WriteLine("Adding message to " + queueName + "...");
-    Console.WriteLine(JSON);
-
-    CloudQueueMessage message = new CloudQueueMessage(JSON);
-    queue.AddMessage(message);
-}
-```
-
-キュー関数のブラウザー ウィンドウに、処理されている各メッセージが表示されます。
-
-    2016-03-24T10:27:06  Welcome, you are now connected to log-streaming service.
-    2016-03-24T10:27:30.607 Function started (Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
-    2016-03-24T10:27:30.607 C# Queue trigger function processed: {"name":"Wes testing queues","address":"in a console app"}
-    2016-03-24T10:27:30.607 Function completed (Success, Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
-
-
-<!-- URLs. -->
-
-[Azure Portal]: https://portal.azure.com
+関数に対する自動テストを記述する方法を習得したので、以下のリソースに進みます。
+- [HTTP によってトリガーされない関数を手動で実行する](./functions-manually-run-non-http.md)
+- [Azure Functions のエラー処理](./functions-bindings-error-pages.md)
+- [Azure Functions の Event Grid トリガーのローカル デバッグ](./functions-debug-event-grid-trigger-local.md)

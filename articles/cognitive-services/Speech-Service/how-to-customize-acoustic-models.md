@@ -1,27 +1,27 @@
 ---
-title: 'チュートリアル: Speech Service で音響モデルを作成する'
+title: チュートリアル:Speech Service を使用して音響モデルを作成する
 titlesuffix: Azure Cognitive Services
-description: Azure Cognitive Services の Speech Service を使用して音響モデルを作成する方法について説明します。
+description: Azure 上で Speech Services を使用して音響モデルを作成する方法について説明します。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 70fc9c34599f27eb5d67b79ef823f8037ae55ba9
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f2a111558fa3f515b797745dc51e32f625bbd91f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215244"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57844026"
 ---
-# <a name="tutorial-create-a-custom-acoustic-model"></a>チュートリアル: カスタム音響モデルを作成する
+# <a name="tutorial-create-a-custom-acoustic-model"></a>チュートリアル:カスタム音響モデルの作成
 
 カスタム音響モデルの作成が役立つのは、アプリケーションが、使われる録音デバイスや使用状況がはっきりしている特定の環境 (自動車など) で使用されることや、特定のユーザーによって使用されることを想定した設計になっている場合です。 たとえば、アクセント記号付きの音声、特定の背景ノイズ、録音に特定のマイクを使用する場合などです。
 
-この記事では、次のことについて説明します:
+この記事では、次のことについて説明します。
 > [!div class="checklist"]
 > * データを準備する
 > * 音響データセットをインポートする
@@ -33,9 +33,9 @@ Azure Cognitive Services アカウントをお持ちでない場合は、開始�
 
 [[Cognitive Services サブスクリプション]](https://cris.ai/Subscriptions) ページを開いて、Cognitive Services アカウントに接続されることを確認します。
 
-**[Connect existing subscription]\(既存のサブスクリプションに接続する\)** を選択すると、Azure portal で作成された Speech Service サブスクリプションに接続できます。
+**[Connect existing subscription]\(既存のサブスクリプションに接続する\)** を選択すると、Azure portal 内で作成された Speech Services サブスクリプションに接続できます。
 
-Azure portal での Speech Service サブスクリプションの作成については、「[Speech Service を無料で試す](get-started.md)」を参照してください。
+Azure portal 内での Speech Services サブスクリプションの作成については、「[Speech Services を無料で試す](get-started.md)」を参照してください。
 
 ## <a name="prepare-the-data"></a>データを準備する
 
@@ -69,7 +69,7 @@ Azure portal での Speech Service サブスクリプションの作成につい
 | サンプリング レート | 8,000 Hz (ヘルツ) または 16,000 Hz |
 | チャンネル | 1 (モノラル) |
 | サンプル形式 | PCM、16 ビット整数 |
-| ファイルの時間 | 0.1 秒 < 時間 < 12 秒 | 
+| ファイルの時間 | 0.1 秒 < 時間 < 12 秒 |
 | サイレンス カラー | > 0.1 秒 |
 | アーカイブ形式 | .zip |
 | 最大アーカイブ サイズ | 2 GB |
@@ -96,19 +96,19 @@ Azure portal での Speech Service サブスクリプションの作成につい
 
 文字起こしに対しては、システムによって処理できるように、テキストの正規化が行われます。 ただし、Custom Speech Service にデータをアップロードする "_前_" に、ユーザーが行う必要があるいくつかの重要な正規化があります。 文字起こしを準備する際に使用する適切な言語については、「[Speech Service を使用するための文字起こしガイドライン](prepare-transcription.md)」を参照してください。
 
-次の各セクションの手順は、[Speech Service ポータル](https://cris.ai)を使用して実行してください。
+次の各セクションの手順は、[Speech Services ポータル](https://cris.ai)を使用して実行してください。
 
 ## <a name="import-the-acoustic-dataset"></a>音響データセットをインポートする
 
 オーディオ ファイルと文字起こしの準備ができたら、それらをサービス Web ポータルにインポートできます。
 
-インポートするためには、まず [Speech Service ポータル](https://cris.ai)にサインインします。 次に、リボンの **[Custom Speech]** ボックスの一覧から **[Adaptation Data]\(適応データ\)** を選択します。 Custom Speech Service へのデータのアップロードを初めて行う場合は、**[データセット]** という名前の空のテーブルが表示されます。 
+インポートするためには、まず [Speech Services ポータル](https://cris.ai)にサインインしていることを確認します。 次に、リボンの **[Custom Speech]** ボックスの一覧から **[Adaptation Data]\(適応データ\)** を選択します。 Custom Speech Service へのデータのアップロードを初めて行う場合は、**[データセット]** という名前の空のテーブルが表示されます。
 
 **[音響データセット]** 行の **[インポート]** ボタンを選択します。すると、新しいデータセットをアップロードするためのページがサイトに表示されます。
 
 ![[Import Acoustic Data]\(音響データのインポート\) ページ](media/stt/speech-acoustic-datasets-import.png)
 
-**[名前]** ボックスと **[説明]** ボックスに、適切な情報を入力します。 アップロードしたさまざまなデータセットを追跡するのに役立つわかりやすい説明にします。 
+**[名前]** ボックスと **[説明]** ボックスに、適切な情報を入力します。 アップロードしたさまざまなデータセットを追跡するのに役立つわかりやすい説明にします。
 
 **[Transcriptions file (.txt)]\(文字起こしファイル (.txt)\)** ボックスと **[Audio files (.zip)]\(オーディオ ファイル (.zip)\)** ボックスの **[参照]** を選択し、プレーン テキストの文字起こしファイルと WAV ファイルの zip アーカイブを選択します。 準備が完了したら、**[インポート]** を選択してデータをアップロードします。 データがアップロードされます。 比較的大きなデータセットでは、インポート プロセスに数分かかることがあります。
 
@@ -126,11 +126,11 @@ Azure portal での Speech Service サブスクリプションの作成につい
 
 音響データセットの状態が *[Complete]\(完了\)* になったら、そのデータセットを使用してカスタム音響モデルを作成できます。 そのためには、**[Custom Speech]** ボックスの一覧の **[Acoustic Models]\(音響モデル\)** を選択します。 **[Your models]\(自分のモデル\)** という名前のテーブルに、自分のカスタム音響モデルがすべて一覧表示されます。 初めて使用するときはこのテーブルは空です。 テーブルのタイトルには現在のロケールが表示されます。 現在、音響モデルを作成できるのは英語 (米国) のみです。
 
-新しいモデルを作成するには、テーブル タイトルの下の **[Create New]\(新規作成\)** を選択します。 前と同じように、このモデルを識別しやすい名前と説明を入力します。 たとえば、**[説明]** フィールドを使って、モデルの作成に使用した開始モデルと音響データセットを記録できます。 
+新しいモデルを作成するには、テーブル タイトルの下の **[Create New]\(新規作成\)** を選択します。 前と同じように、このモデルを識別しやすい名前と説明を入力します。 たとえば、**[説明]** フィールドを使って、モデルの作成に使用した開始モデルと音響データセットを記録できます。
 
 次に、**[Base Acoustic Model]\(基本音響モデル\)** ボックスの一覧から基本モデルを選択します。 この基本モデルがカスタマイズの開始点です。 次の 2 つの基本音響モデルから選択できます。
-* **Microsoft Search and Dictation AM** モデルは、コマンド、検索クエリ、ディクテーションなどのアプリケーションに向けられた音声に適しています。 
-* **Microsoft Conversational モデル**は、会話形式の音声の認識に適しています。 この種類の音声は、通常は他の人に向けて発せられるものであり、コール センターや会議で発生します。 
+* **Microsoft Search and Dictation AM** モデルは、コマンド、検索クエリ、ディクテーションなどのアプリケーションに向けられた音声に適しています。
+* **Microsoft Conversational モデル**は、会話形式の音声の認識に適しています。 この種類の音声は、通常は他の人に向けて発せられるものであり、コール センターや会議で発生します。
 
 Conversational モデルでの部分結果の待機時間は、Search and Dictation モデルより長くなります。
 
@@ -147,12 +147,12 @@ Conversational モデルでの部分結果の待機時間は、Search and Dictat
 
 カスタマイズ プロセスの実行を開始する準備ができたら、**[作成]** を選択します。
 
-この新しいモデルに対応する新しいエントリが音響モデル テーブルに表示されます。 このテーブルには、プロセスの状態 (*[Waiting]\(待機中\)*、*[Processing]\(処理中\)*、または *[Complete]\(完了\)*) も表示されます。
+この新しいモデルに対応する新しいエントリが音響モデル テーブルに表示されます。 このテーブルには、プロセスの状態も表示されます (*[Waiting]\(待機中\)*、*[Processing]\(処理中\)*、または *[Complete]\(完了\)*)。
 
 ![[Acoustic Models]\(音響モデル\) ページ](media/stt/speech-acoustic-models-creating.png)
 
 ## <a name="next-steps"></a>次の手順
 
-- [Speech Service 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
+- [Speech Services 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
 - [C# で音声を認識する](quickstart-csharp-dotnet-windows.md)
 - [Git サンプル データ](https://github.com/Microsoft/Cognitive-Custom-Speech-Service)

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と YardiOne の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と YardiOne の統合 | Microsoft Docs
 description: Azure Active Directory と YardiOne の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 508957f6-caa5-4234-a7f3-90015937e4eb
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: d14cca505f85bdf0d8abd32a954487639fe54631
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 22abdcc004f3b353042d84cf01070fde7650367b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444220"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176188"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-yardione"></a>チュートリアル: Azure Active Directory と YardiOne の統合
+# <a name="tutorial-azure-active-directory-integration-with-yardione"></a>チュートリアル:Azure Active Directory と YardiOne の統合
 
 このチュートリアルでは、YardiOne と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -155,14 +156,14 @@ YardiOne で Azure AD シングル サインオンを構成してテストする
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-yardione-test-user"></a>YardiOne テスト ユーザーを作成する
 
 このセクションの目的は、YardiOne で Britta Simon という名前のユーザーを作成することです。 YardiOne は、ジャストインタイム プロビジョニングをサポートしています。これは、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 YardiOne へのアクセスを試行しているとき、ユーザーがまだ存在しない場合は新しいユーザーが作成されます。
 
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[YardiOne サポート チーム](https://clientcentral.yardi.com)に問い合わせてください。
+>ユーザーを手動で作成する必要がある場合は、 [YardiOne のサポート チーム](https://clientcentral.yardi.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -199,7 +200,7 @@ YardiOne で Azure AD シングル サインオンを構成してテストする
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [YardiOne] タイルをクリックすると、YardiOne アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

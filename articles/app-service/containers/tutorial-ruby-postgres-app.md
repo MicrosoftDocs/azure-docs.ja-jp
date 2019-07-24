@@ -1,31 +1,31 @@
 ---
-title: Azure App Service on Linux で Ruby および Postgres の Web アプリを構築する | Microsoft Docs
-description: Ruby アプリを Azure で動作させて、Azure の PostgreSQL データベースに接続する方法について説明します。
+title: Linux 上の Ruby (Rails) と Postgres - Azure App Service | Microsoft Docs
+description: Ruby アプリを Azure で動作させて、Azure の PostgreSQL データベースに接続する方法について説明します。 このチュートリアルでは Rails を使用します。
 services: app-service\web
 documentationcenter: ''
 author: cephalin
-manager: cfowler
+manager: jeconnoc
 ms.service: app-service-web
 ms.workload: web
 ms.devlang: ruby
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 03/27/2019
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 925537b3dff852921aad1e74d009e09fc90c394a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.custom: seodec18
+ms.openlocfilehash: 3ec19b1c564c09406ab1f29c38aef6332d80f8f1
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445078"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544690"
 ---
-# <a name="build-a-ruby-and-postgres-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Ruby および Postgres の Web アプリを構築する
+# <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Ruby および Postgres のアプリを構築する
 
-[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、Ruby Web アプリを作成し、PostgreSQL データベースに接続する方法について説明します。 このチュートリアルを終了すると、App Service on Linux で実行される [Ruby on Rails](http://rubyonrails.org/) アプリが完成します。
+[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、Ruby アプリを作成し、PostgreSQL データベースに接続する方法について説明します。 このチュートリアルを終了すると、App Service on Linux で実行される [Ruby on Rails](https://rubyonrails.org/) アプリが完成します。
 
 ![Azure App Service で動作している Ruby on Rails アプリ](./media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure で PostgreSQL データベースを作成する
@@ -43,7 +43,7 @@ ms.locfileid: "39445078"
 
 * [Git をインストールする](https://git-scm.com/)
 * [Ruby 2.3 をインストールする](https://www.ruby-lang.org/en/documentation/installation/)
-* [Ruby on Rails 5.1 をインストールする](http://guides.rubyonrails.org/v5.1/getting_started.html)
+* [Ruby on Rails 5.1 をインストールする](https://guides.rubyonrails.org/v5.1/getting_started.html)
 * [PostgreSQL をインストールして実行する](https://www.postgresql.org/download/)
 
 ## <a name="prepare-local-postgres"></a>ローカル Postgres を準備する
@@ -65,7 +65,7 @@ sudo -u postgres psql
 ご自身のサインイン済み Linux ユーザー名を使用して次のコマンドを実行し、データベースを作成できる Postgres ユーザーを作成します。
 
 ```bash
-sudo -u postgres createuser -d <signed_in_user>
+sudo -u postgres createuser -d <signed-in-user>
 ```
 
 <a name="step2"></a>
@@ -92,7 +92,7 @@ bundle install --path vendor/bundle
 
 ### <a name="run-the-sample-locally"></a>ローカルでサンプルを実行する
 
-[Rails の移行](http://guides.rubyonrails.org/active_record_migrations.html#running-migrations)を実行して、アプリケーションで必要なテーブルを作成します。 移行で作成されるテーブルを確認するには、Git レポジトリの _db/migrate_ ディレクトリを調べます。
+[Rails の移行](https://guides.rubyonrails.org/active_record_migrations.html#running-migrations)を実行して、アプリケーションで必要なテーブルを作成します。 移行で作成されるテーブルを確認するには、Git レポジトリの _db/migrate_ ディレクトリを調べます。
 
 ```bash
 rake db:create
@@ -125,10 +125,10 @@ Rails サーバーを停止するには、ターミナルで「`Ctrl + C`」と�
 
 [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) コマンドを使用して、PostgreSQL サーバーを作成します。
 
-Cloud Shell で次のコマンドを実行します。*\<postgres_server_name>* プレースホルダーは一意のサーバー名で置き換えてください。 このサーバー名は、Azure のすべてのサーバーで一意である必要があります。 
+Cloud Shell で次のコマンドを実行します。*\<postgres-server-name>* プレースホルダーは一意のサーバー名で置き換えてください。 このサーバー名は、Azure のすべてのサーバーで一意である必要があります。 
 
 ```azurecli-interactive
-az postgres server create --location "West Europe" --resource-group myResourceGroup --name <postgres_server_name> --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd! --sku-name GP_Gen4_2
+az postgres server create --location "West Europe" --resource-group myResourceGroup --name <postgres-server-name> --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd! --sku-name GP_Gen4_2
 ```
 
 Azure Database for PostgreSQL サーバーが作成されると、Azure CLI によって、次の例のような情報が表示されます。
@@ -137,10 +137,10 @@ Azure Database for PostgreSQL サーバーが作成されると、Azure CLI に�
 {
   "administratorLogin": "adminuser",
   "earliestRestoreDate": "2018-06-15T12:38:25.280000+00:00",
-  "fullyQualifiedDomainName": "<postgres_server_name>.postgres.database.azure.com",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgres_server_name>",
+  "fullyQualifiedDomainName": "<postgres-server-name>.postgres.database.azure.com",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgres-server-name>",
   "location": "westeurope",
-  "name": "<postgres_server_name>",
+  "name": "<postgres-server-name>",
   "resourceGroup": "myResourceGroup",
   "sku": {
     "capacity": 2,
@@ -155,22 +155,22 @@ Azure Database for PostgreSQL サーバーが作成されると、Azure CLI に�
 
 ### <a name="configure-server-firewall"></a>サーバーのファイアウォールを構成する
 
-Cloud Shell で [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) コマンドを使用して、Postgres サーバーでクライアント接続を許可するためのファイアウォール規則を作成します。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。 *\<postgres_server_name>* プレースホルダーは一意のサーバー名で置き換えてください。
+Cloud Shell で [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) コマンドを使用して、Postgres サーバーでクライアント接続を許可するためのファイアウォール規則を作成します。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。 *\<postgres-server-name>* プレースホルダーは一意のサーバー名で置き換えてください。
 
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres_server_name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres-server-name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
 
 > [!TIP] 
-> [アプリで使用する送信 IP アドレスのみを使用する](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)ことで、ファイアウォール規則による制限をさらに厳しくすることができます。
+> [アプリで使用する送信 IP アドレスのみを使用する](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips)ことで、ファイアウォール規則による制限をさらに厳しくすることができます。
 >
 
 ### <a name="connect-to-production-postgres-server-locally"></a>運用 Postgres サーバーにローカル接続する
 
-Cloud Shell で、Azure の Postgres サーバーに接続します。 前に _&lt;postgres_server_name>_ プレースホルダーに指定した値を使用します。
+Cloud Shell で、Azure の Postgres サーバーに接続します。 前に _&lt;postgres-server-name>_ プレースホルダーに指定した値を使用します。
 
 ```bash
-psql -U adminuser@<postgres_server_name> -h <postgres_server_name>.postgres.database.azure.com postgres
+psql -U adminuser@<postgres-server-name> -h <postgres-server-name>.postgres.database.azure.com postgres
 ```
 
 パスワードの入力を求められたら、データベース サーバーの作成時に指定した _My5up3r$tr0ngPa$w0rd!_ を使います。
@@ -188,7 +188,7 @@ CREATE DATABASE sampledb;
 _railsappuser_ というデータベース ユーザーを作成し、このユーザーに `sampledb` データベースのすべての特権を付与します。
 
 ```sql
-CREATE USER railsappuser WITH PASSWORD 'MyPostgresAzure2017'; 
+CREATE USER railsappuser WITH PASSWORD 'MyPostgresAzure2017';
 GRANT ALL PRIVILEGES ON DATABASE sampledb TO railsappuser;
 ```
 
@@ -220,13 +220,13 @@ production:
 ローカル ターミナルに戻って、次の環境変数を設定します。
 
 ```bash
-export DB_HOST=<postgres_server_name>.postgres.database.azure.com
+export DB_HOST=<postgres-server-name>.postgres.database.azure.com
 export DB_DATABASE=sampledb 
-export DB_USERNAME=railsappuser@<postgres_server_name>
+export DB_USERNAME=railsappuser@<postgres-server-name>
 export DB_PASSWORD=MyPostgresAzure2017
 ```
 
-構成した運用環境の値で Rails データベース移行を実行して、Azure Database for PostgreSQL 内の Postgres データベースにテーブルを作成します。 
+構成した運用環境の値で Rails データベース移行を実行して、Azure Database for PostgreSQL 内の Postgres データベースにテーブルを作成します。
 
 ```bash
 rake db:migrate RAILS_ENV=production
@@ -247,8 +247,8 @@ rails secret
 Rails の運用環境で使われる対応する変数に、秘密鍵を保存します。 便宜上、両方の変数に同じ鍵を使います。
 
 ```bash
-export RAILS_MASTER_KEY=<output_of_rails_secret>
-export SECRET_KEY_BASE=<output_of_rails_secret>
+export RAILS_MASTER_KEY=<output-of-rails-secret>
+export SECRET_KEY_BASE=<output-of-rails-secret>
 ```
 
 Rails 運用環境で JavaScript ファイルと CSS ファイルを提供できるようにします。
@@ -282,7 +282,7 @@ git commit -m "database.yml updates"
 
 アプリをデプロイする準備ができました。
 
-## <a name="deploy-to-azure"></a>[Deploy to Azure (Azure へのデプロイ)]
+## <a name="deploy-to-azure"></a>Deploy to Azure (Azure へのデプロイ)
 
 このステップでは、Postgres に接続された Rails アプリケーションを Azure App Service にデプロイします。
 
@@ -302,15 +302,15 @@ git commit -m "database.yml updates"
 
 App Service では、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用して、環境変数を "_アプリ設定_" として設定します。
 
-次の Cloud Shell コマンドでは、アプリ設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`、および `DB_PASSWORD` を構成します。 プレースホルダーの _&lt;appname>_ と _&lt;postgres_server_name>_ を置き換えます。
+次の Cloud Shell コマンドでは、アプリ設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`、および `DB_PASSWORD` を構成します。 プレースホルダーの _&lt;appname>_ と _&lt;postgres-server-name>_ を置き換えます。
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DB_HOST="<postgres_server_name>.postgres.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="railsappuser@<postgres_server_name>" DB_PASSWORD="MyPostgresAzure2017"
+az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<postgres-server-name>.postgres.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="railsappuser@<postgres-server-name>" DB_PASSWORD="MyPostgresAzure2017"
 ```
 
 ### <a name="configure-rails-environment-variables"></a>Rails 環境変数を構成する
 
-ローカル ターミナルで、Azure の Rails 運用環境用の新しい秘密鍵を生成します。
+ローカル ターミナルで、Azure の Rails 運用環境用の[新しいシークレット](configure-language-ruby.md#set-secret_key_base-manually)を生成します。
 
 ```bash
 rails secret
@@ -318,20 +318,20 @@ rails secret
 
 Rails 運用環境で必要な変数を構成します。
 
-次の Cloud Shell では、2 つの _&lt;output_of_rails_secret>_ プレースホルダーをローカル ターミナルで生成した新しい秘密鍵に置き換えます。
+次の Cloud Shell では、2 つの _&lt;output-of-rails-secret>_ プレースホルダーをローカル ターミナルで生成した新しい秘密鍵に置き換えます。
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings RAILS_MASTER_KEY="<output_of_rails_secret>" SECRET_KEY_BASE="<output_of_rails_secret>" RAILS_SERVE_STATIC_FILES="true" ASSETS_PRECOMPILE="true"
+az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings RAILS_MASTER_KEY="<output-of-rails-secret>" SECRET_KEY_BASE="<output-of-rails-secret>" RAILS_SERVE_STATIC_FILES="true" ASSETS_PRECOMPILE="true"
 ```
 
-`ASSETS_PRECOMPILE="true"` は、Git の各デプロイでアセットをプリコンパイルするように既定の Ruby コンテナーに指示します。
+`ASSETS_PRECOMPILE="true"` は、Git の各デプロイでアセットをプリコンパイルするように既定の Ruby コンテナーに指示します。 詳細については、「[アセットをプリコンパイルする](configure-language-ruby.md#precompile-assets)」および「[静的アセットを提供する](configure-language-ruby.md#serve-static-assets)」を参照してください。
 
 ### <a name="push-to-azure-from-git"></a>Git から Azure へのプッシュ
 
 ローカル ターミナルで、ローカル Git リポジトリに Azure リモートを追加します。
 
 ```bash
-git remote add azure <paste_copied_url_here>
+git remote add azure <paste-copied-url-here>
 ```
 
 Azure リモートにプッシュして、Ruby on Rails アプリケーションをデプロイします。 デプロイ ユーザーの作成時に指定したパスワードを入力するように求めるメッセージが表示されます。
@@ -357,9 +357,9 @@ remote: Running deployment command...
 < Output has been truncated for readability >
 ```
 
-### <a name="browse-to-the-azure-web-app"></a>Azure Web アプリの参照
+### <a name="browse-to-the-azure-app"></a>Azure アプリの参照
 
-`http://<app_name>.azurewebsites.net` を参照し、一覧にいくつかのタスクを追加します。
+`http://<app-name>.azurewebsites.net` を参照し、一覧にいくつかのタスクを追加します。
 
 ![Azure App Service で動作している Ruby on Rails アプリ](./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png)
 
@@ -470,21 +470,25 @@ git commit -m "added complete checkbox"
 git push azure master
 ```
 
-`git push` が完了したら、Azure Web アプリに移動し、新機能を試します。
+`git push` が完了したら、Azure アプリに移動し、新機能を試します。
 
 ![Azure に発行されたモデルとデータベースの変更](media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
 タスクを追加した場合は、そのタスクがデータベースに保持されます。 データ スキーマに対する更新では、既存のデータはそのまま残ります。
 
-## <a name="manage-the-azure-web-app"></a>Azure Web アプリを管理する
+## <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする
 
-[Azure Portal](https://portal.azure.com) に移動し、作成した Web アプリを管理します。
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-左側のメニューで **[App Services]** をクリックした後、Azure Web アプリの名前をクリックします。
+## <a name="manage-the-azure-app"></a>Azure アプリの管理
 
-![Azure Web アプリへのポータル ナビゲーション](./media/tutorial-php-mysql-app/access-portal.png)
+[Azure portal](https://portal.azure.com) に移動し、お客様が作成したアプリを管理します。
 
-Web アプリの [概要] ページを確認します。 ここでは、停止、開始、再開、参照、削除のような基本的な管理タスクを行うことができます。
+左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
+
+![Azure アプリへのポータル ナビゲーション](./media/tutorial-php-mysql-app/access-portal.png)
+
+お客様のアプリの [概要] ページを確認します。 ここでは、停止、開始、再開、参照、削除のような基本的な管理タスクを行うことができます。
 
 左側のメニューは、アプリを構成するためのページを示しています。
 
@@ -496,7 +500,7 @@ Web アプリの [概要] ページを確認します。 ここでは、停止�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * Azure で Postgres データベースを作成する
@@ -506,7 +510,12 @@ Web アプリの [概要] ページを確認します。 ここでは、停止�
 > * Azure から診断ログをストリーミングする
 > * Azure Portal でアプリを管理する
 
-次のチュートリアルに進み、カスタム DNS 名を Web アプリにマップする方法を学習してください。
+次のチュートリアルに進んで、カスタム DNS 名をアプリにマップする方法を確認してください。
 
 > [!div class="nextstepaction"]
-> [既存のカスタム DNS 名を Azure Web Apps にマップする](../app-service-web-tutorial-custom-domain.md)
+> [チュートリアル:カスタム DNS 名をアプリにマップする](../app-service-web-tutorial-custom-domain.md)
+
+または、他のリソースを参照してください。
+
+> [!div class="nextstepaction"]
+> [Ruby アプリを構成する](configure-language-ruby.md)

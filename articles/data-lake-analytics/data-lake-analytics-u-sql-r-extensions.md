@@ -9,20 +9,20 @@ ms.reviewer: jasonwhowell
 ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
-ms.openlocfilehash: b7e6c4911081d3b83ed99ab7316cb6fd810a0d60
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 59a52b2aeb83732a608f1fcf5bc4de907d25dfd1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048727"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58885028"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics で R コードを使用した U-SQL スクリプトの拡張
 
 R コードをデプロイする基本的な手順を以下の例で示します。
 * `REFERENCE ASSEMBLY` ステートメントを使用して、U-SQL スクリプト用の R 拡張機能を有効にします。
-* ` REDUCE` 操作を使用してキーの入力データをパーティション化します
+* `REDUCE` 操作を使用してキーの入力データをパーティション化します。
 * U-SQL 用の R 拡張機能には、レジューサ (`Extension.R.Reducer`) が組み込まれており、レジューサに割り当てられている各頂点で R コードを実行します。 
-* それぞれ `inputFromUSQL` と `outputToUSQL ` という名前の専用の名前付きデータ フレームを使用して、U-SQL と R の間でデータをやり取りします。入出力データ フレーム識別子の名前は固定されています (つまり、ユーザーがこれらの入出力データ フレーム識別子の定義済みの名前を変更することはできません)。
+* それぞれ `inputFromUSQL` と `outputToUSQL` という名前の専用の名前付きデータ フレームを使用して、U-SQL と R の間でデータをやり取りします。入出力データ フレーム識別子の名前は固定されています (つまり、ユーザーがこれらの入出力データ フレーム識別子の定義済みの名前を変更することはできません)。
 
 ## <a name="embedding-r-code-in-the-u-sql-script"></a>U-SQL スクリプトへの R コードの埋め込み
 
@@ -173,7 +173,7 @@ U-SQL の高度な分析拡張機能をインストールした後は、Data Lak
     DEPLOY RESOURCE @"/magrittr_1.5.zip";
 
     DECLARE @IrisData string =  @"/usqlext/samples/R/iris.csv";
-    DECLARE @OutputFileModelSummary string = @"/R/Output/CustomePackages.txt";
+    DECLARE @OutputFileModelSummary string = @"/R/Output/CustomPackages.txt";
 
     // R script to run
     DECLARE @myRScript = @"
@@ -208,5 +208,5 @@ U-SQL の高度な分析拡張機能をインストールした後は、Data Lak
 
 ## <a name="next-steps"></a>次の手順
 * [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
-* [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
+* [Data Lake Tools for Visual Studio を使用して U-SQL スクリプトを開発する](data-lake-analytics-data-lake-tools-get-started.md)
 * [Azure Data Lake Analytics ジョブに U-SQL ウインドウ関数を使用する](data-lake-analytics-use-window-functions.md)

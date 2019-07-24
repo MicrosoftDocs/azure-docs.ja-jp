@@ -1,0 +1,68 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 5f1d6005dd94bc700682e749f08c47356fcdc829
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56993335"
+documentType: LandingData
+title: Azure Sentinel プレビューのドキュメント
+metadata:
+  title: Azure Sentinel プレビューのドキュメント - チュートリアル、クイック スタート | Microsoft Doc
+  meta.description: Azure Sentinel is a cloud-native SIEM that provides intelligent security analytics for your entire enterprise at cloud scale.
+  services: sentinel
+  author: cmcclister
+  manager: carolz
+  ms.service: sentinel
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 02/28/19
+  ms.author: cmcclister
+abstract:
+  description: Azure Sentinel プレビューとは、企業全体にクラウド規模のインテリジェントなセキュリティ分析を提供するクラウドネイティブな SIEM です。 クラウドの速度と規模の際限をなくし、本当に重要なことに集中できるようにします。 クラウド アセットとオンプレミスのアセット、Office 365、Azure リソース、その他のクラウドすべてから簡単にデータを収集します。 Microsoft のセキュリティ分析の専門家による組み込みの機械学習を使用して、効率的に脅威を検出します。 これらの対応は、組み込みのオーケストレーションと自動プレイブックを使用して自動化できます。
+sections:
+- title: 5 分間のクイック スタート
+  items:
+  - type: paragraph
+    text: データを Azure Sentine にオンボードし、データや潜在的な脅威を視覚化する方法を説明します。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/deploy.svg
+      text: Azure Sentinel のオンボード
+      href: /azure/sentinel/quickstart-onboard
+    - image:
+        src: media/index/get-started.svg
+      text: Azure Sentinel の概要
+      href: /azure/sentinel/quickstart-get-visibility
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: セキュリティ ポリシーを定義する方法、悪意のあるアクティビティからリソースを保護する方法、セキュリティのアラートおよびインシデントに対応する方法について説明します。
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/sentinel/tutorial-detect-threats">Azure Sentinel を使用して脅威を検出する</a>
+    - html: <a href="/azure/sentinel/tutorial-respond-threats-playbook">脅威への自動対応を設定する</a>
+- title: Microsoft Learn でスキルを身に付ける
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Azure のセキュリティの概要
+      href: https://docs.microsoft.com/learn/azure
+      image:
+        src: media/index/tutorial.svg
+        href: https://docs.microsoft.com/learn/azure
+  - type: paragraph
+    text: <a href="/learn/browse/?term=security">対話型学習の詳細...</a>
+- title: リファレンス
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - html: <a href="https://azure.microsoft.com/updates/?product=sentinel">サービスの更新情報</a>

@@ -1,39 +1,41 @@
 ---
-title: Web サービス デプロイを使用する方法 - Azure Machine Learning
-description: Azure Machine Learning モデルをデプロイすることで作成された Web サービスを使用する方法について説明します。 Azure Machine Learning モデルをデプロイすると、REST API を公開する Web サービスが作成されます。 任意のプログラミング言語を使用して、この API 用のクライアントを作成することができます。 このドキュメントでは、Python と C# を使用して API にアクセスする方法について説明します。
+title: デプロイされた Web サービスを使用するクライアントを作成する
+titleSuffix: Azure Machine Learning service
+description: Azure Machine Learning モデルでモデルがデプロイされたときに生成された Web サービスを使用する方法について説明します。 REST API を公開する Web サービス。 任意のプログラミング言語を使用して、この API 用のクライアントを作成します。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
-ms.author: raymondl
-author: raymondlaghaeian
+ms.author: aashishb
+author: aashishb
 ms.reviewer: larryfr
-ms.date: 10/30/2018
-ms.openlocfilehash: 58c1b53a4b97aad7b916e593fd4d6b52b51b7a52
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 12/03/2018
+ms.custom: seodec18
+ms.openlocfilehash: a862c920f1e070ab1bbb8af2546bc3d4350347b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262909"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889949"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 
-Web サービスとして Azure Machine Learning モデルをデプロイすると、REST API が作成されます。 この API にデータを送信し、モデルによって返される予測を受信できます。 このドキュメントでは、C#、Go、Java、および Python を使用して Web サービス用のクライアントを作成する方法を説明します。
+Web サービスとして Azure Machine Learning モデルをデプロイすると、REST API が作成されます。 この API にデータを送信し、モデルによって返される予測を受信できます。 このドキュメントでは、C#、Go、Java、Python を使用して Web サービス用のクライアントを作成する方法について説明します。
 
-Web サービスは、Azure コンテナー インスタンス、Azure Kubernetes サービス、または Project Brainwave (Field Programmable Gate Array) にイメージをデプロイする際に作成されます。 イメージは、登録済みのモデルとスコアリング ファイルから作成されます。 Web サービスにアクセスするために使用される URI は、[Azure Machine Learning SDK](https://aka.ms/aml-sdk) を使用して取得できます。 認証が有効になっている場合は、SDK を使用して認証キーを取得することもできます。
+Web サービスは、Azure Container Instances、Azure Kubernetes Service、または Project Brainwave (Field Programmable Gate Array) にイメージをデプロイするときに作成されます。 イメージを登録済みのモデルとスコアリング ファイルから作成します。 [Azure Machine Learning SDK](https://aka.ms/aml-sdk) を使用して、Web サービスにアクセスするために使用される URI を取得します。 認証が有効になっている場合は、SDK を使用して認証キーを取得することもできます。
 
-ML Web サービスを使用するクライアントを作成する場合の一般的なワークフローは次のとおりです。
+機械学習 Web サービスを使用するクライアントを作成するための一般的なワークフローは、次のとおりです。
 
-1. SDK を使用して接続情報を取得する
-1. モデルで使用される要求データの種類を決定する
-1. Web サービスを呼び出すアプリケーションを作成する
+1. SDK を使用して接続情報を取得します。
+1. モデルで使用される要求データの種類を決定します。
+1. Web サービスを呼び出すアプリケーションを作成します。
 
 ## <a name="connection-information"></a>接続情報
 
 > [!NOTE]
-> Azure Machine Learning SDK は Web サービス情報を取得するために使用されます。 これは Python SDK です。 これは Web サービスに関する情報を取得するのに使用されますが、任意の言語を使用してサービスのクライアントを作成することができます。
+> Azure Machine Learning SDK を使用して、Web サービス情報を取得します。 これは Python SDK です。 任意の言語を使用して、サービスに対してクライアントを作成できます。
 
-Web サービスの接続情報は、Azure Machine Learning SDK を使用して取得できます。 [azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) クラスでは、クライアントを作成するために必要な情報が提供されます。 クライアント アプリケーションを作成するときに役立つ `Webservice` プロパティを以下に示します。
+[azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) クラスでは、クライアントを作成するために必要な情報が提供されます。 クライアント アプリケーションを作成するときに役立つ `Webservice` プロパティを以下に示します。
 
 * `auth_enabled` - 認証が有効になっている場合は `True`、それ以外の場合は `False` です。
 * `scoring_uri` - REST API のアドレス。
@@ -51,7 +53,7 @@ Web サービスの接続情報は、Azure Machine Learning SDK を使用して�
     print(service.scoring_uri)
     ```
 
-* `Webservice.list` を使用して、ワークスペース内のモデル用にデプロイされた Web サービスのリストを取得することができます。 フィルターを追加して、返される情報のリストを絞り込むことができます。 フィルター処理できる内容の詳細については、[Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#list) のリファレンス ドキュメントを参照してください。
+* `Webservice.list` を使用して、ワークスペース内のモデル用にデプロイされた Web サービスのリストを取得することができます。 フィルターを追加して、返される情報のリストを絞り込むことができます。 フィルター処理できる内容の詳細については、[Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) のリファレンス ドキュメントを参照してください。
 
     ```python
     services = Webservice.list(ws)
@@ -67,12 +69,12 @@ Web サービスの接続情報は、Azure Machine Learning SDK を使用して�
 
 ### <a name="authentication-key"></a>認証キー
 
-デプロイに対して認証が有効になっている場合、認証キーは自動的に作成されます。
+デプロイに対して認証を有効にした場合、認証キーが自動的に作成されます。
 
-* __Azure Kubernetes Service__ にデプロイする場合、認証は __既定で有効__ になります。
-* __Azure Container Instances__ にデプロイする場合、認証は __既定で無効__ になります。
+* Azure Kubernetes Service にデプロイする場合、認証は既定で有効になります。
+* Azure Container Instances にデプロイする場合、認証は既定で無効になります。
 
-認証を制御するには、デプロイの作成や更新時に、`auth_enabled` パラメーターを使用します。
+認証を制御するには、デプロイの作成や更新時に `auth_enabled` パラメーターを使用します。
 
 認証が有効になっている場合は、`get_keys` メソッドを使用して、プライマリおよびセカンダリ認証キーを取得できます。
 
@@ -82,7 +84,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> キーを再生成する必要がある場合は、[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#regen-key) を使用します。
+> キーを再生成する必要がある場合は、[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) を使用します。
 
 ## <a name="request-data"></a>要求データ
 
@@ -100,7 +102,7 @@ REST API では、要求の本文が次の構造の JSON ドキュメントで�
 > [!IMPORTANT]
 > データの構造は、サービス内のスコアリング スクリプトとモデルで予期される内容と一致する必要があります。 スコアリング スクリプトでは、データがモデルに渡される前に変更される可能性があります。
 
-たとえば、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook)例のモデルでは、10 個の数値の配列が予期されます。 この例のスコアリング スクリプトでは、要求から Numpy 配列が作成され、モデルに渡されます。 次の例には、このサービスで予期されるデータが示されています。
+たとえば、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)例のモデルでは、10 個の数値の配列が予期されます。 この例のスコアリング スクリプトでは、要求から Numpy 配列が作成され、モデルに渡されます。 次の例には、このサービスで予期されるデータが示されています。
 
 ```json
 {
@@ -124,9 +126,48 @@ REST API では、要求の本文が次の構造の JSON ドキュメントで�
 
 Web サービスでは、1 つの要求で複数のデータ セットを受け入れることができます。 応答の配列を含む JSON ドキュメントが返されます。
 
+### <a name="binary-data"></a>バイナリ データ
+
+モデルがバイナリ データ (画像など) を受け付ける場合は、デプロイで使用される `score.py` ファイルを生の HTTP 要求を受け付けるように変更する必要があります。 バイナリ データを受け付ける `score.py` の例を次に示します。
+
+```python 
+from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
+from azureml.contrib.services.aml_response import AMLResponse
+
+def init():
+    print("This is init()")
+
+@rawhttp
+def run(request):
+    print("This is run()")
+    print("Request: [{0}]".format(request))
+    if request.method == 'GET':
+        # For this example, just return the URL for GETs
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+        # For a real world solution, you would load the data from reqBody 
+        # and send to the model. Then return the response.
+        
+        # For demonstration purposes, this example just returns the posted data as the response.
+        return AMLResponse(reqBody, 200)
+    else:
+        return AMLResponse("bad request", 500)
+```
+
+> [!IMPORTANT]
+> `azureml.contrib` 名前空間は、このサービスが改善されるに従って頻繁に変更されます。 そのため、この名前空間内のものはすべて Microsoft によって完全にサポートされているものではなく、プレビューとして見なされる必要があります。
+>
+> これをローカルの開発環境でテストする必要がある場合は、次のコマンドを使用して、`contrib` 名前空間にコンポーネントをインストールできます。
+> 
+> ```shell
+> pip install azureml-contrib-services
+> ```
+
 ## <a name="call-the-service-c"></a>サービスを呼び出す (C#)
 
-この例では、C# を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook)例から作成された Web サービスを呼び出す方法を示します。
+この例では、C# を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)例から作成された Web サービスを呼び出す方法を示します。
 
 ```csharp
 using System;
@@ -215,7 +256,7 @@ namespace MLWebServiceClient
 
 ## <a name="call-the-service-go"></a>サービスを呼び出す (Go)
 
-この例では、Go を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook)例から作成された Web サービスを呼び出す方法を示します。
+この例では、Go を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)例から作成された Web サービスを呼び出す方法を示します。
 
 ```go
 package main
@@ -307,7 +348,7 @@ func main() {
 
 ## <a name="call-the-service-java"></a>サービスを呼び出す (Java)
 
-この例では、Java を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook)例から作成された Web サービスを呼び出す方法を示します。
+この例では、Java を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)例から作成された Web サービスを呼び出す方法を示します。
 
 ```java
 import java.io.IOException;
@@ -387,10 +428,9 @@ public class App {
 
 ## <a name="call-the-service-python"></a>サービスを呼び出す (Python)
 
-この例では、Python を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook)例から作成された Web サービスを呼び出す方法を示します。
+この例では、Python を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)例から作成された Web サービスを呼び出す方法を示します。
 
 ```python
-import requests
 import requests
 import json
 
@@ -446,7 +486,3 @@ print(resp.text)
 ```JSON
 [217.67978776218715, 224.78937091757172]
 ```
-
-## <a name="next-steps"></a>次の手順
-
-これで、デプロイされたモデルのクライアントを作成する方法がわかりました。次は、[IoT Edge デバイスにモデルをデプロイする](how-to-deploy-to-iot.md)方法を確認します。

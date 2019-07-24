@@ -1,5 +1,5 @@
 ---
-title: Log Analytics を使用して B2B メッセージを追跡する - Azure Logic Apps | Microsoft Docs
+title: Azure Monitor ログを使用して B2B メッセージを追跡する - Azure Logic Apps | Microsoft Docs
 description: Azure Log Analytics で統合アカウントと Azure Logic Apps の B2B 通信を追跡します
 services: logic-apps
 ms.service: logic-apps
@@ -9,16 +9,16 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 0bfb652d9e64b9dbf61ad4032f1449fd484cc80a
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 8cf5d9f3ee1503769a2ec199847175899bcd86bf
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233560"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193213"
 ---
-# <a name="track-b2b-messages-with-azure-log-analytics"></a>Azure Log Analytics を使用して B2B メッセージを追跡する
+# <a name="track-b2b-messages-with-azure-monitor-logs"></a>Azure Monitor ログで B2B メッセージを追跡する
 
-統合アカウントで取引先間の B2B 通信を設定すると、これらの取引先が AS2、X12、および EDIFACT などのプロトコルを使用してメッセージを交換できるようになります。 これらのメッセージが正しく処理されていることを確認するには、[Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用してこれらのメッセージを追跡できます。 たとえば、メッセージを追跡するために次の Web ベースの追跡機能を使用できます。
+統合アカウントで取引先間の B2B 通信を設定すると、これらの取引先が AS2、X12、および EDIFACT などのプロトコルを使用してメッセージを交換できるようになります。 これらのメッセージが正しく処理されていることを確認するには、[Azure Monitor ログ](../log-analytics/log-analytics-overview.md)を使用してこれらのメッセージを追跡できます。 たとえば、メッセージを追跡するために次の Web ベースの追跡機能を使用できます。
 
 * メッセージの数と状態
 * 受信確認の状態
@@ -27,7 +27,9 @@ ms.locfileid: "50233560"
 * 検索機能
 
 > [!NOTE]
-> このページでは、以前、これらのタスクの実行方法の手順を、[2019 年 1 月に廃止される](../log-analytics/log-analytics-oms-portal-transition.md) Microsoft Operations Management Suite (OMS) を使用して説明していましたが、代わりに、Azure Log Analytics を使用した手順に置き換えられています。 
+> このページでは、以前、Microsoft Operations Management Suite (OMS) を使用してこれらのタスクを実行する手順を説明していましたが、OMS は [2019 年 1 月に廃止される](../azure-monitor/platform/oms-portal-transition.md)ため、代わりに Azure Log Analytics を使用する手順に置き換えられています。 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,13 +37,13 @@ ms.locfileid: "50233560"
 
 * 監視とログが設定されている統合アカウント。 [統合アカウントを作成する方法](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)および[そのアカウントの監視とログを設定する方法](../logic-apps/logic-apps-monitor-b2b-message.md)を参照してください。
 
-* まだ実行していない場合は、[Log Analytics に診断データを発行](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)します。
+* まだ実行していない場合は、[Azure Monitor ログに診断データを発行](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)します。
 
-* 上記の要件を満たしたら、Log Analytics を使用して B2B 通信を追跡するために使用する Log Analytics ワークスペースも必要になります。 Log Analytics ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../log-analytics/log-analytics-quick-create-workspace.md)に関するページを参照してください。
+* 上記の要件を満たしたら、Log Analytics を使用して B2B 通信を追跡するために使用する Log Analytics ワークスペースも必要になります。 Log Analytics ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。
 
 ## <a name="install-logic-apps-b2b-solution"></a>Logic Apps B2B ソリューションをインストールする
 
-Log Analytics でロジック アプリの B2B メッセージを追跡するには、事前に Log Analytics に **Logic Apps B2B** ソリューションを追加します。 [Log Analytics へのソリューションの追加](../log-analytics/log-analytics-quick-create-workspace.md)に関する詳細を参照してください。
+Azure Monitor ログでロジック アプリの B2B メッセージを追跡するには、事前に Azure Monitor ログに **Logic Apps B2B** ソリューションを追加します。 [Azure Monitor ログへのソリューションの追加](../azure-monitor/learn/quick-create-workspace.md)に関する詳細を参照してください。
 
 1. [Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択します。 検索ボックスに「log analytics」と入力して検索し、**[Log Analytics]** を選択します。
 
@@ -128,7 +130,7 @@ B2B メッセージが処理された後、それらのメッセージの状態�
    * 組み込みのクエリで結果を検索するには、**[お気に入り]** を選択します。
 
    * [フィルターを追加することによってクエリを構築する方法](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)を参照してください。 
-   または、[Log Analytics でログ検索を使用してデータを見つける方法](../log-analytics/log-analytics-log-searches.md)に関する詳細を参照してください。
+   または、[Azure Monitor ログでログ検索を使用してデータを見つける方法](../log-analytics/log-analytics-log-searches.md)に関する詳細を参照してください。
 
    * 検索ボックス内のクエリを変更するには、フィルターとして使用する列と値でクエリを更新します。
 
@@ -237,7 +239,7 @@ EDIFACT メッセージごとのプロパティの説明を次に示します。
 
 ## <a name="next-steps"></a>次の手順
 
-* [Log Analytics での B2B メッセージのクエリ](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
+* [Azure Monitor ログで B2B メッセージのクエリを実行する](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 * [AS2 の追跡スキーマ](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [X12 の追跡スキーマ](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)
 * [カスタム追跡スキーマ](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)

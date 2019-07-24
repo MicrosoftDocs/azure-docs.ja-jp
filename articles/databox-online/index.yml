@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cd544367113986b3a3959c2bf50fac80a8b36bc5
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 376f2bd792cb1b3190507f5571a8b7a33daf2542
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309078"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439124"
 documentType: LandingData
 title: Azure Data Box のドキュメント - オンライン転送
 metadata:
@@ -16,15 +16,15 @@ metadata:
   ms.service: databox
   ms.subservice: edge
   ms.topic: landing-page
-  ms.date: 10/12/2018
+  ms.date: 03/25/2019
   ms.author: alkohli
 abstract:
-  description: Azure Data Box ファミリーでは、信頼性が高く、迅速かつ安価な方法で、数百テラバイトのデータを Azure に転送できます。 ネットワーク経由で高パフォーマンスのデータ転送を行うには、Data Box デバイスを使用します。<p>クラウド アーカイブ、ディザスター リカバリー、またはクラウド規模でのデータ処理のためにデータを送信する場合は、Data Box Gateway<SUP>プレビュー</SUP>を選択します。  データを Azure に移動するときに、データのフィルター処理、分析、変換を行う場合は、Data Box Edge<SUP>プレビュー</SUP>を使用します。</p><p>Microsoft が提供するチュートリアルを利用して、Data Box Gateway と Data Box Edge をネットワーク ベースの転送に活用する方法を学習してください。</p>
+  description: Azure Data Box ファミリーでは、信頼性が高く、迅速かつ安価な方法で、数百テラバイトのデータを Azure に転送できます。 ネットワーク経由で高パフォーマンスのデータ転送を行うには、Data Box デバイスを使用します。<p>クラウド アーカイブ、ディザスター リカバリー、またはクラウド規模でのデータ処理のためにデータを送信する場合は、Data Box Gateway を選択します。  データを Azure に移動するときに、データのフィルター処理、分析、変換を行う場合は、Data Box Edge を使用します。</p><p>Microsoft が提供するチュートリアルを利用して、Data Box Gateway と Data Box Edge をネットワーク ベースの転送に活用する方法を学習してください。</p>
 sections:
 - title: チュートリアル
   items:
   - type: paragraph
-    text: <b>Data Box Gateway<SUP>プレビュー</SUP>について</b>
+    text: <b>Data Box Gateway 向け</b>
   - type: list
     style: ordered
     items:
@@ -34,7 +34,7 @@ sections:
     - html: <a href="data-box-gateway-deploy-connect-setup-activate">Azure Data Box Gateway を接続、設定、アクティブ化する</a>
     - html: <a href="data-box-gateway-deploy-add-shares">Azure Data Box Gateway を使用してデータを転送する</a>
   - type: paragraph
-    text: <b>Data Box Edge<SUP>プレビュー</SUP>について</b>
+    text: <b>Data Box Edge 向け</b>
   - type: list
     style: ordered
     items:

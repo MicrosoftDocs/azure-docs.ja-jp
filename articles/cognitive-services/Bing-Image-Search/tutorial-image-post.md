@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: C# を使用して画像の詳細を抽出する - Bing Image Search API'
+title: チュートリアル:Bing Image Search API と C# を使用して画像の詳細情報を抽出する
 titleSuffix: Azure Cognitive Services
 description: この記事では、Bing Image Search API を使用して画像の詳細を抽出する C# アプリケーションを作成します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 9/14/2018
 ms.author: aahi
-ms.openlocfilehash: 96d011a04c97d309409062a286bdd7a17db9cda5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 567a220ce9adcb3cca9c70cef6a7058a85789eb7
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297658"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861749"
 ---
-# <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>チュートリアル: Bing Image Search API と C# を使用して画像の詳細を抽出する
+# <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>チュートリアル:Bing Image Search API と C# を使用して画像の詳細情報を抽出する
 
 Bing Image Search API で使用できる[エンドポイント](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-endpoint)は複数があります。 `/details` エンドポイントは画像を含む POST 要求を受け取ります。また、画像に関するさまざまな詳細を返すことができます。 この C# アプリケーションは、この API を使用して画像を送信し、Bing から返された詳細を表示します。これらは次のような JSON オブジェクトです。
 

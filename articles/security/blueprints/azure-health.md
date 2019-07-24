@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: c0255ff31353ca8fe0cf684af53a12654b400208
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 70721b8bfbecaf554a9502b9ec3417fc8e561b3f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407556"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58885946"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI
 
@@ -59,9 +59,9 @@ IaaS ソリューションは、オンプレミスの SQL ベースのソリュ�
 
 -   **[お客様の実装マトリックス](https://aka.ms/healthcrmblueprint)**: Microsoft Excel ブックに、関連する HITRUST の要件が示され、各要件を満たす際に Microsoft とお客様が負う責任が記載されます。
 
--   **[ヘルス レビュー。](https://aka.ms/healthreviewpaper)** このソリューションは、Coalfire systems, Inc. によってレビューされました。「Health Compliance (HIPAA, and HITRUST)\' Review and guidance for implementation (ヘルス コンプライアンス (HIPAA/HITRUST) レビューおよび実装のガイダンス)」には、監査担当者によるソリューションのレビューと、このブループリントを実稼働可能なデプロイに変える際の考慮事項が記載されています。
+-   **[ヘルス レビュー。](https://aka.ms/healthreviewpaper)** このソリューションは、Coalfire systems, Inc. によってレビューされました。「Health Compliance (HIPAA, and HITRUST) Review and guidance for implementation」(ヘルプ コンプライアンス (HIPAA/HITRUST) レビューおよび実装のためのガイダンス) には、監査担当者によるソリューションのレビューと、このブループリントを実稼働可能なデプロイに変える際の考慮事項が記載されています。
 
-# <a name="architectural-diagram"></a>アーキテクチャ図
+## <a name="architectural-diagram"></a>アーキテクチャ図
 
 
 ![](images/ra2.png)
@@ -76,40 +76,40 @@ IaaS ソリューションは、オンプレミスの SQL ベースのソリュ�
 
 サイト管理者は、顧客の Azure サブスクリプションに対して責任を負います。 全体的なデプロイを管理しますが、患者記録にアクセスすることはできません。
 
--   既定のロールの割り当て: [所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
+-   既定のロールの割り当て:[Owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
 
--   カスタム ロールの割り当て: 該当なし
+-   カスタム ロールの割り当て:該当なし
 
--   スコープ: サブスクリプション
+-   スコープ:サブスクリプション
 
 ### <a name="database-analyst"></a>データベース アナリスト
 
 データベース アナリストは、SQL Server インスタンスおよびデータベースを管理します。
 患者記録にアクセスすることはできません。
 
--   組み込みロールの割り当て: [SQL DB 共同作業者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-db-contributor)、[SQL Server 共同作業者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
+-   組み込みロールの割り当て:[SQL DB 共同作業者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-db-contributor)、[SQL Server 共同作業者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
 
--   カスタム ロールの割り当て: 該当なし
+-   カスタム ロールの割り当て:該当なし
 
--   スコープ: リソース グループ
+-   スコープ:ResourceGroup
 
- ### <a name="data-scientist"></a>データ サイエンティスト
+### <a name="data-scientist"></a>データ サイエンティスト
 
 
 データ サイエンティストは、Azure Machine Learning Studio サービスを運用します。 データのインポート、エクスポート、管理を行い、レポートを実行できます。 データ サイエンティストは患者データにアクセスできますが、管理特権はありません。
 
--   組み込みロールの割り当て: [ストレージ アカウント共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
+-   組み込みロールの割り当て:[Storage Account Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
--   カスタム ロールの割り当て: 該当なし
+-   カスタム ロールの割り当て:該当なし
 
--   スコープ: リソース グループ
+-   スコープ:ResourceGroup
 
 ### <a name="chief-medical-information-officer-cmio"></a>最高医療情報責任者 (CMIO)
 
 
 CMIO は、医療機関において情報科学/技術の専門家と医療従事者の境界線上に位置します。 通常、CMIO の任務には、分析を使用して、医療機関内でリソースが適切に割り当てられているかどうかを判断することが含まれます。
 
--   組み込みロールの割り当て: なし
+-   組み込みロールの割り当て:なし
 
 ### <a name="care-line-manager"></a>ケア ライン マネージャー
 
@@ -117,22 +117,22 @@ CMIO は、医療機関において情報科学/技術の専門家と医療従�
 ケア ライン マネージャーは、患者のケアに直接関与します。
 このロールは、個々の患者の状態を監視し、患者の特定のケア要件に対応するためのスタッフを確保する必要があります。 ケア ライン マネージャーは、患者記録を追加および更新する役割を担います。
 
--   組み込みロールの割り当て: なし
+-   組み込みロールの割り当て:なし
 
--   カスタム ロールの割り当て: HealthcareDemo.ps1 を実行して、患者の入院と退院の両方を処理する権限があります。
+-   カスタム ロールの割り当て:HealthcareDemo.ps1 を実行して、患者の入院と退院の両方を処理する特権があります。
 
--   スコープ: リソース グループ
+-   スコープ:ResourceGroup
 
 ### <a name="auditor"></a>監査担当者
 
 
 監査担当者は、コンプライアンスについてソリューションを評価します。 ネットワークに直接アクセスすることはできません。
 
--   組み込みロールの割り当て: [閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
+-   組み込みロールの割り当て:[Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
 
--   カスタム ロールの割り当て: 該当なし
+-   カスタム ロールの割り当て:該当なし
 
--   スコープ: サブスクリプション
+-   スコープ:サブスクリプション
 
 ## <a name="example-use-case"></a>ユース ケースの例
 
@@ -150,19 +150,19 @@ CMIO は、医療機関において情報科学/技術の専門家と医療従�
 
 **サイト管理者 -- Alex**
 
-*電子メール: Alex\_SiteAdmin*
+*電子メール:Alex\_SiteAdmin*
 
 Alex の仕事は、オンプレミス ネットワークの管理の負担を軽減し、管理コストを削減できるテクノロジを評価することです。 Alex はしばらくの間 Azure を評価していましたが、患者データをクラウドに保存する際の HiTrust のコンプライアンス要件を満たすために必要なサービスを構成しようと苦戦していました。 Alex は、Azure Health AI を選択してコンプライアンス対応ヘルス ソリューションをデプロイすることで、HiTrust の顧客要件を満たすための要件に対処しました。
 
 **データ サイエンティスト -- Debra**
 
-*電子メール: Debra\_DataScientist*
+*電子メール:Debra\_DataScientist*
 
 Debra は、医療記録を分析して患者ケアに関する洞察を示すモデルの使用と作成を担当しています。 Debra は、SQL と R 統計プログラミング言語を使用してモデルを作成しています。
 
 **データベース アナリスト -- Danny**
 
-*電子メール: Danny\_DBAnalyst*
+*電子メール:Danny\_DBAnalyst*
 
 Danny は、Contosoclinic のすべての患者データを格納する Microsoft SQL Server に関することに対応する主要連絡担当者です。 Danny は経験豊富な SQL Server 管理者であり、最近、Azure SQL Database について理解を深めました。
 
@@ -173,18 +173,18 @@ Caroline は、入院期間 (LOS) ソリューションによる予測を使用�
 
 **ケア ライン マネージャー -- Chris**
 
-*電子メール: Chris\_CareLineManager*
+*電子メール:Chris\_CareLineManager*
 
 Contosoclinic で患者の入院と退院の管理を直接担当する Chris は、LOS ソリューションによって生成される予測を使用して、入院中に患者にケアを提供する適切なスタッフを確保しています。
 
 **監査担当者 -- Han**
 
-*電子メール: Han\_Auditor*
+*電子メール:Han\_Auditor*
 
 Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者です。 Han は、Contosoclinc のネットワークを調査するために採用されました。 Han は、ブループリントと LOS ソリューションを使用して機密性の高い個人データを保存、処理、表示できるように、ソリューションで提供されるお客様の責任マトリックスを確認できます。
 
 
-# <a name="design-configuration"></a>設計の構成
+## <a name="design-configuration"></a>設計の構成
 
 
 このセクションでは、ブループリントに組み込まれている既定の構成とセキュリティ対策について詳しく説明します。
@@ -268,11 +268,11 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 **2.新しい患者の入院**
 
 デモ スクリプト  .\\HealthcareDemo.ps1 を、**BulkPatientadmission** スイッチを指定して使用すると (**デモのデプロイと実行**に関するページで概説)、次の処理パイプラインが実行されます。![](images/securetransact.png)
-**1. Azure Functions** がトリガーされ、関数が Azure Active Directory の[ベアラー トークン](/rest/api/)を要求します。
+**1.Azure Functions** がトリガーされ、関数が Azure Active Directory の[ベアラー トークン](/rest/api/)を要求します。
 
 **2.Key Vault** が、要求したトークンに関連付けられているシークレットを要求します。
 
-**3. Azure ロールが要求を検証し、Key Vault へのアクセス要求を承認します。
+**3.Azure ロール**が要求を検証し、Key Vault へのアクセス要求を承認します。
 
 **4.Key Vault** がシークレットを返します。この例では、SQL DB 接続文字列です。
 
@@ -345,8 +345,8 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 ### <a name="machine-learning"></a>Machine Learning
 
 
--   Machine Learning Studio Web サービスでは、[ログが有効](/azure/machine-learning/studio/web-services-logging)になっています。
-- [Machine Learning Studio](/azure/machine-learning/desktop-workbench/experimentation-service-configuration) Workbench を使用するには、ソリューション セットに予測機能を提供するために、実験を開発する必要があります。 [Workbench を統合](/azure/machine-learning/desktop-workbench/using-git-ml-project)すると、実験の管理を効率化できます。
+- Machine Learning Studio Web サービスでは、[ログが有効](/azure/machine-learning/studio/web-services-logging)になっています。
+- [Machine Learning Studio](/azure/machine-learning/studio/what-is-ml-studio) を使用するには、ソリューション セットに予測機能を提供するために、実験を開発する必要があります。
 
 ## <a name="security"></a>セキュリティ
 
@@ -359,10 +359,10 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 - [Application Insights](/azure/application-insights/app-insights-overview) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスの異常が検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。
 
 ### <a name="azure-alerts"></a>Azure アラート
-- アラートは Azure サービスの監視方法の 1 つであり、データに対する条件を構成できます。 また、アラートの条件が監視データと一致したときに、通知を受け取ることができます。
+- [アラート](/azure/azure-monitor/platform/alerts-metric)は Azure サービスの監視方法の 1 つであり、データに対する条件を構成できます。 また、アラートの条件が監視データと一致したときに、通知を受け取ることができます。
 
-### <a name="log-analytics"></a>Log Analytics
-[Log Analytics](/azure/operations-management-suite/operations-management-suite-overview) は管理サービスのコレクションです。
+### <a name="azure-monitor-logs"></a>Azure Monitor ログ
+[Azure Monitor ログ](/azure/operations-management-suite/operations-management-suite-overview)は、管理サービスのコレクションです。
 
 -   Security Center でワークスペースが有効になっています。
 

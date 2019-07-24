@@ -1,25 +1,21 @@
 ---
-title: 'Azure Cosmos DB: SQL .NET API、SDK、およびリソース | Microsoft Docs'
+title: Azure Cosmos DB は:SQL .NET API、SDK、およびリソース
 description: リリース日、提供終了日、Azure Cosmos DB .NET SDK の各バージョン間の変更など、SQL .NET API と SDK に関するあらゆる詳細を提供します。
-services: cosmos-db
-author: rnagpal
-manager: kfile
-editor: cgronlun
+author: SnehaGunda
 ms.service: cosmos-db
-ms.component: cosmosdb-sql
+ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
-ms.author: rnagpal
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27b7b4efdb14872ee2d841e17d2e253b6c7c30c3
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.author: sngun
+ms.openlocfilehash: 83a866b20d2802b7d49363b7c6451356e938eac1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389770"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838920"
 ---
-# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>SQL API 用の Azure Cosmos DB .NET SDK: ダウンロードおよびリリース ノート
+# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK for SQL API: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
@@ -28,28 +24,58 @@ ms.locfileid: "49389770"
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST ()](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
-<table>
-
-<tr><td>**SDK のダウンロード**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)</td></tr>
-
-<tr><td>**API ドキュメント**</td><td>[.NET API リファレンス ドキュメント](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)</td></tr>
-
-<tr><td>**サンプル**</td><td>[.NET コード サンプル](sql-api-dotnet-samples.md)</td></tr>
-
-<tr><td>**作業開始**</td><td>[Azure Cosmos DB .NET SDK を開始する](sql-api-get-started.md)</td></tr>
-
-<tr><td>**Web アプリ チュートリアル**</td><td>[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-dotnet-application.md)</td></tr>
-
-<tr><td>**現在サポートされているフレームワーク**</td><td>[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</td></tr>
-</table></br>
+| |  |
+|---|---|
+|**SDK のダウンロード**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)|
+|**API ドキュメント**|[.NET API リファレンス ドキュメント](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
+|**サンプル**|[.NET コード サンプル](sql-api-dotnet-samples.md)|
+|**作業開始**|[Azure Cosmos DB .NET SDK を開始する](sql-api-get-started.md)|
+|**Web アプリ チュートリアル**|[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-dotnet-application.md)|
+|**現在サポートされているフレームワーク**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1 プレビュー
+* パブリック プレビュー用の .NET SDK の[バージョン 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) のプレビュー 1。
+* 対象は .NET Standard です。.NET Framework 4.6.1 以降および .NET Core 2.0 以降をサポートします。
+* 最上位レベルの CosmosClient と関連する CosmosDatabases、CosmosContainers、および CosmosItems の各クラスとの間でメソッドが分割される新しいオブジェクト モデルです。 
+* ストリームをサポートします。 
+* 状態コードを返し、応答が返されない場合にのみ例外を返すようにサーバーからの CosmosResponseMessage を更新しました。 
+
+### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
+
+* 診断機能の強化
+
+### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
+
+* 環境変数設定 "POCOSerializationOnly" を追加しました。
+
+* DocumentDB.Spatial.Sql.dll が削除され、Microsoft.Azure.Documents.ServiceInterop.dll に含まれるようになりました
+
+### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+
+* StoredProcedure 実行呼び出しに対するフェールオーバー中の再試行ロジックの改善。
+
+* DocumentClientEventSource シングルトンを作成しました。 
+
+* ConnectionPolicy RequestTimeout を守っていない、GatewayAddressCache タイムアウトを修正しました。
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+
+* ダイレクト/TCP トランスポート診断のために、SDK の内部例外の種類である TransportException を追加しました。 例外メッセージ内に存在する場合、この種類は、クライアント接続の問題のトラブルシューティングに関する追加情報を出力します。
+
+* HttpClient 要求を送信するために使用する HTTP ハンドラー スタックである HttpMessageHandler を受け取る新しいコンストラクターのオーバーロードを追加しました (HttpClientHandler など)。
+
+* null 値を持つヘッダーが正しく処理されていなかったバグを修正しました。
+
+* コレクション キャッシュ検証を改善しました。
+
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 
 * System.Net.Security を 4.3.2 に更新しました。
@@ -172,7 +198,7 @@ ms.locfileid: "49389770"
 * 特定の条件で自動フェールオーバーするために SDK の耐障害性を改善しました。
 
 ### <a name="a-name11221122"></a><a name="1.12.2"/>1.12.2
-* WebException を時々発生させる問題 (リモート名を解決できなかった) を修正しました。
+* "リモート名を解決できませんでした" という WebException を時々発生させる問題を修正しました。
 * ReadDocumentAsync API に新しいオーバーロードを追加することで、型指定されたドキュメントを直接読み取るサポートを追加しました。
 
 ### <a name="a-name11211121"></a><a name="1.12.1"/>1.12.1
@@ -182,7 +208,7 @@ ms.locfileid: "49389770"
 * 文字列フィールドの並べ替えで、パーティションを横断する order-by クエリの継続が動作しなかった問題を修正しました。
 
 ### <a name="a-name11201120"></a><a name="1.12.0"/>1.12.0
-* 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](sql-api-sql-query.md#Aggregates)に関するトピックを参照してください。
+* 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。 [集計のサポート](how-to-sql-query.md#Aggregates)に関するトピックを参照してください。
 * パーティション分割コレクションの最小スループットが 10,100 RU/秒から 2,500 RU/秒になりました。
 
 ### <a name="a-name11141114"></a><a name="1.11.4"/>1.11.4
@@ -217,7 +243,7 @@ ms.locfileid: "49389770"
 * さまざまなバグを修正しました。
 
 ### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* 次の NotFoundException の原因となった問題が修正されました。認証トークンは現在の時刻で無効です。 地理的に分散したアカウントの読み取り領域にクエリを実行すると、例外が発生する場合があります。
+* "The read session is not available for the input session token (入力セッション トークンでは読み取りセッションを使用できません)" という NotFoundException の原因となった問題が修正されました。 地理的に分散したアカウントの読み取り領域にクエリを実行すると、例外が発生する場合があります。
 * ResourceResponse クラスで公開されている ResponseStream により、応答から基になるストリームへの直接アクセスが有効になります。
 
 ### <a name="a-name194194"></a><a name="1.9.4"/>1.9.4
@@ -225,7 +251,7 @@ ms.locfileid: "49389770"
 * カスタム オブジェクトの JsonSerializerSettings をデータのシリアル化に使用するときにパーティション キー ヘッダーの形式が正しくなくなる原因となっていた問題を修正しました。
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
-* 実行時間の長いクエリがエラーのために失敗した原因となった問題を修正しました。認証トークンは現在の時刻で無効です。
+* 実行時間の長いクエリが、"Authorization token is not valid at the current time (認証トークンは現在の時刻で無効です)" というエラーのために失敗する原因となっていた問題を修正しました。
 * クロス パーティションの TOP クエリおよび ORDER BY クエリから元の SqlParameterCollection を削除する問題が修正されました。
 
 ### <a name="a-name192192"></a><a name="1.9.2"/>1.9.2
@@ -243,7 +269,7 @@ ms.locfileid: "49389770"
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
 * 複数リージョンのデータベース アカウントのサポートを追加しました。
 * 調整された要求での再試行のサポートを追加しました。  ユーザーは、ConnectionPolicy.RetryOptions プロパティを構成することで、再試行の回数と最大待機時間をカスタマイズできます。
-* すべての DocumenClient プロパティおよびメソッドの署名を定義できる新しい IDocumentClient インターフェイスを追加しました。  また、この変更の一環として、IQueryable と IOrderedQueryable を作成する拡張メソッドを DocumentClient クラス自体のメソッドに変更しました。
+* すべての DocumentClient プロパティおよびメソッドの署名を定義できる新しい IDocumentClient インターフェイスを追加しました。  また、この変更の一環として、IQueryable と IOrderedQueryable を作成する拡張メソッドを DocumentClient クラス自体のメソッドに変更しました。
 * 特定の Azure Cosmos DB エンドポイント URI の ServicePoint.ConnectionLimit を設定する構成オプションを追加しました。  ConnectionPolicy.MaxConnectionLimit を使用して既定値 (50) を変更できます。
 * IPartitionResolver とその実装が非推奨になりました。  IPartitionResolver のサポートは廃止されました。 大量のストレージとスループットを必要とする場合は、パーティション分割コレクションの使用をお勧めします。
 
@@ -335,6 +361,10 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.2.3](#2.2.3) |2019 年 2 月 11 日 |--- |
+| [2.2.2](#2.2.2) |2019 年 2 月 5 日 |--- |
+| [2.2.1](#2.2.1) |2018 年 12 月 24 日 |--- |
+| [2.2.0](#2.2.0) |2018 年 12 月 7 日 |--- |
 | [2.1.3](#2.1.3) |2018 年 10 月 15 日 |--- |
 | [2.1.2](#2.1.2) |2018 年 10 月 4 日 |--- |
 | [2.1.1](#2.1.1) |2018 年 9 月 27 日 |--- |

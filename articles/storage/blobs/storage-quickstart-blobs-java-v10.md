@@ -1,5 +1,5 @@
 ---
-title: 'Azure クイック スタート: Java Storage SDK V10 を使用してオブジェクト ストレージ内に BLOB を作成する | Microsoft Docs'
+title: Azure クイックスタート:Java Storage SDK V10 を使用してオブジェクト ストレージ内に BLOB を作成する | Microsoft Docs
 description: このクイック スタートでは、Java Storage SDK を使用して、オブジェクト (Azure BLOB) ストレージ内にコンテナーを作成し、ファイルをアップロードし、オブジェクトを一覧表示し、ダウンロードします。
 services: storage
 author: roygara
@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: rogarana
-ms.openlocfilehash: 43db4ca12fbdf8ee637ca86e1a90cc3baf4ec572
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: f44a6b825f9e8871bb7d7877ebd1821038b45f65
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713284"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004883"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>クイック スタート: Java Storage SDK V10 を使用して BLOB をアップロード、ダウンロード、および一覧表示する
+# <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>クイック スタート:Java Storage SDK V10 を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
 このクイックスタートでは、新しい Java Storage SDK を使用して、Azure Blob Storage 内のコンテナーでブロック BLOB のアップロード、ダウンロード、一覧取得を行う方法を説明します。 この新しい Java SDK では、リアクティブ プログラミング モデルと、非同期処理が用意されている RxJava を使用します。 RxJava の詳細については、[Java VM のリアクティブ拡張機能に関するページ](https://github.com/ReactiveX/RxJava)を参照してください。 
 
@@ -25,7 +25,7 @@ ms.locfileid: "51713284"
 
 次の追加の前提条件がインストールされていることを確認してください。
 
-* コマンド ラインから動作する [Maven](http://maven.apache.org/download.cgi)、またはご使用の Java 統合開発環境
+* コマンド ラインから動作する [Maven](https://maven.apache.org/download.cgi)、またはご使用の Java 統合開発環境
 * [JDK](https://aka.ms/azure-jdks)
 
 ## <a name="download-the-sample-application"></a>サンプル アプリケーションのダウンロード
@@ -100,7 +100,7 @@ Cleaning up the sample and exiting!
 
 サンプルを制御するため、そのコードを実行するコマンドを入力します。 入力には、大文字と小文字の区別があります。
 
-[Azure Storage Explorer](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) などのツールを使って、Blob Storage 内のファイルを表示することもできます。 Azure Storage Explorer は無料のクロスプラットフォーム ツールであり、ストレージ アカウントの情報にアクセスできます。 
+[Azure Storage Explorer](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) などのツールを使って、Blob Storage 内のファイルを表示することもできます。 Azure Storage Explorer は無料のクロスプラットフォーム ツールであり、ストレージ アカウントの情報にアクセスできます。 
 
 ファイルを確認します。 次に、**[E]** を選択し、**[Enter]\(入力\)** を選択してデモを終了し、テスト ファイルを削除します。 サンプルの機能がわかったら、**Quickstart.java** ファイルを開いてコードを確認します。 
 
@@ -166,19 +166,19 @@ Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB を
 1. ファイルを BLOB にアップロードするには、ターゲット コンテナーの BLOB に対する参照を取得します。 
 2. BLOB 参照を取得すると、次のいずれかの API を使用してファイルを BLOB にアップロードできます。
 
-    * 低レベルの API。 たとえば、**BlockBlobURL** のインスタンス内に [BlockBlobURL.upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.upload?view=azure-java-stable#com_microsoft_azure_storage_blob__block_blob_u_r_l_upload_Flowable_ByteBuffer__long_BlobHTTPHeaders_Metadata_BlobAccessConditions_Context_) (PutBlob とも呼ばれる) や [BlockBlobURL.stageBlock](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.stageblock?view=azure-java-stable) (PutBLock とも呼ばれる) があります。 
+   * 低レベルの API。 たとえば、**BlockBlobURL** のインスタンス内に [BlockBlobURL.upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.upload?view=azure-java-stable#com_microsoft_azure_storage_blob__block_blob_u_r_l_upload_Flowable_ByteBuffer__long_BlobHTTPHeaders_Metadata_BlobAccessConditions_Context_) (PutBlob とも呼ばれる) や [BlockBlobURL.stageBlock](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.stageblock?view=azure-java-stable) (PutBLock とも呼ばれる) があります。 
 
-    * [TransferManager クラス](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._transfer_manager?view=azure-java-stable)内で提供される高レベル API。 たとえば、[TransferManager.uploadFileToBlockBlob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._transfer_manager.uploadfiletoblockblob?view=azure-java-stable) メソッドがあります。 
+   * [TransferManager クラス](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._transfer_manager?view=azure-java-stable)内で提供される高レベル API。 たとえば、[TransferManager.uploadFileToBlockBlob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._transfer_manager.uploadfiletoblockblob?view=azure-java-stable) メソッドがあります。 
 
-    この操作では、BLOB がまだ存在しない場合は、BLOB が作成されます。 既に存在する場合は、BLOB が上書きされます。
+     この操作では、BLOB がまだ存在しない場合は、BLOB が作成されます。 既に存在する場合は、BLOB が上書きされます。
 
 次のサンプル コードは、アップロードとダウンロードで使用されるローカル ファイルを作成し、 アップロード対象のファイルを **sourceFile** として格納し、BLOB の URL を **blob** に格納します。 次の例では、ファイルを **quickstart** という名前のコンテナーにアップロードします。
 
 ```java
 static void uploadFile(BlockBlobURL blob, File sourceFile) throws IOException {
-    
+
     FileChannel fileChannel = FileChannel.open(sourceFile.toPath());
-            
+
     // Uploading a file to the blobURL using the high-level methods available in TransferManager class
     // Alternatively call the Upload/StageBlock low-level methods from BlockBlobURL type
     TransferManager.uploadFileToBlockBlob(fileChannel, blob, 8*1024*1024, null)
@@ -198,20 +198,20 @@ static void uploadFile(BlockBlobURL blob, File sourceFile) throws IOException {
 ```java
 static void listBlobs(ContainerURL containerURL) {
     // Each ContainerURL.listBlobsFlatSegment call return up to maxResults (maxResults=10 passed into ListBlobOptions below).
-    // To list all Blobs, we are creating a helper static method called listAllBlobs, 
+    // To list all Blobs, we are creating a helper static method called listAllBlobs,
     // and calling it after the initial listBlobsFlatSegment call
     ListBlobsOptions options = new ListBlobsOptions(null, null, 10);
 
     containerURL.listBlobsFlatSegment(null, options)
-        .flatMap(containersListBlobFlatSegmentResponse -> 
-            listAllBlobs(containerURL, containersListBlobFlatSegmentResponse))    
+        .flatMap(containersListBlobFlatSegmentResponse ->
+            listAllBlobs(containerURL, containersListBlobFlatSegmentResponse))
                 .subscribe(response-> {
                     System.out.println("Completed list blobs request.");
                     System.out.println(response.statusCode());
                 });
 }
 
-private static Single <ContainersListBlobFlatSegmentResponse> listAllBlobs(ContainerURL url, ContainersListBlobFlatSegmentResponse response) {                
+private static Single <ContainersListBlobFlatSegmentResponse> listAllBlobs(ContainerURL url, ContainersListBlobFlatSegmentResponse response) {
     // Process the blobs returned in this result segment (if the segment is empty, blobs() will be null.
     if (response.body().blobs() != null) {
         for (Blob b : response.body().blobs().blob()) {
@@ -225,7 +225,7 @@ private static Single <ContainersListBlobFlatSegmentResponse> listAllBlobs(Conta
     else {
         System.out.println("There are no more blobs to list off.");
     }
-    
+
     // If there is not another segment, return this response as the final response.
     if (response.body().nextMarker() == null) {
         return Single.just(response);
@@ -234,17 +234,17 @@ private static Single <ContainersListBlobFlatSegmentResponse> listAllBlobs(Conta
         IMPORTANT: ListBlobsFlatSegment returns the start of the next segment; you MUST use this to get the next
         segment (after processing the current result segment
         */
-            
+
         String nextMarker = response.body().nextMarker();
 
         /*
         The presence of the marker indicates that there are more blobs to list, so we make another call to
         listBlobsFlatSegment and pass the result through this helper function.
         */
-            
-    return url.listBlobsFlatSegment(nextMarker, new ListBlobsOptions(null, null,1))
-        .flatMap(containersListBlobFlatSegmentResponse ->
-            listAllBlobs(url, containersListBlobFlatSegmentResponse));
+
+        return url.listBlobsFlatSegment(nextMarker, new ListBlobsOptions(null, null,1))
+            .flatMap(containersListBlobFlatSegmentResponse ->
+                listAllBlobs(url, containersListBlobFlatSegmentResponse));
     }
 }
 ```

@@ -3,8 +3,8 @@ title: Azure Active Directory アクティビティ ログ コンテンツ パ�
 description: Azure Active Directory アクティビティ ログ コンテンツ パックのエラー メッセージの一覧とエラーを修正するための手順を示します。
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
-manager: mtillman
+author: MarkusVi
+manager: daveba
 editor: ''
 ms.assetid: ffce7eb1-99da-4ea7-9c4d-2322b755c8ce
 ms.service: active-directory
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a76486eaf2f9df8eb47b8bb73f1577324152a80f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 78676ac2f2dcff74a27e0260a5d83e924f7c246f
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623300"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58434825"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Azure Active Directory アクティビティ ログ コンテンツ パックのエラーのトラブルシューティングを行う 
 
@@ -34,12 +35,13 @@ Azure Active Directory (Azure AD) の Power BI コンテンツ パックを操�
 
 - [更新が失敗しました](troubleshoot-content-pack.md#refresh-failed) 
 - [データ ソースの資格情報を更新できませんでした](troubleshoot-content-pack.md#failed-to-update-data-source-credentials) 
-- [データのインポートに時間がかかっています](troubleshoot-content-pack.md#importing-of-data-is-taking-too-long) 
+- [データのインポートに時間がかかっています](#data-import-is-too-slow) 
+
 この記事では、考えられる原因とこれらのエラーを修正する方法について説明します。
  
 ## <a name="refresh-failed"></a>更新が失敗しました 
  
-**このエラーがどのように表面化するか**: Power BI からの電子メールまたは更新履歴の失敗状態。 
+**このエラーがどのように表面化するか**:Power BI からの電子メールまたは更新履歴の失敗状態。 
 
 
 | 原因 | 修正方法 |
@@ -50,7 +52,7 @@ Azure Active Directory (Azure AD) の Power BI コンテンツ パックを操�
  
 ## <a name="failed-to-update-data-source-credentials"></a>データ ソースの資格情報を更新できませんでした 
  
-**このエラーがどのように表面化するか**: Power BI で、Azure AD アクティビティ ログ コンテンツ パックに接続するとき。 
+**このエラーがどのように表面化するか**:Power BI で、Azure AD アクティビティ ログ コンテンツ パックに接続するとき。 
 
 | 原因 | 修正方法 |
 | ---   | ---        |
@@ -61,7 +63,7 @@ Azure Active Directory (Azure AD) の Power BI コンテンツ パックを操�
 
 ## <a name="data-import-is-too-slow"></a>データのインポートが遅すぎます 
  
-**このエラーがどのように表面化するか**: Power BI でコンテンツ パックに接続した後、Azure AD アクティビティ ログ用のダッシュボードを準備するためのデータ インポート処理が開始されます。 **[データをインポートしています...]** というメッセージが表示され、それ以上は進みません。  
+**このエラーがどのように表面化するか**:Power BI でコンテンツ パックに接続した後、Azure AD アクティビティ ログ用のダッシュボードを準備するためのデータ インポート処理が開始されます。 次のメッセージが表示されます。**[データをインポートしています...]**。これ以上は進みません。  
 
 | 原因 | 修正方法 |
 | ---   | ---        |
@@ -69,6 +71,6 @@ Azure Active Directory (Azure AD) の Power BI コンテンツ パックを操�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure AD レポート用の Power BI コンテンツ パックをインストールする](quickstart-install-power-bi-content-pack.md)
+* [Azure AD レポート用の Power BI コンテンツ パックをインストールする](quickstart-install-power-bi-content-pack.md)。
 * [Azure AD レポート用の Power BI コンテンツ パックを使用してデータを視覚化する](howto-power-bi-content-pack.md)
 * [Azure Active Directory のサポートを得る方法](../fundamentals/active-directory-troubleshooting-support-howto.md)

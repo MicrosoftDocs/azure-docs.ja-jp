@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 03/04/2019
 ms.author: iainfou
-ms.openlocfilehash: 175fa625a94626cde4d782abd1e9629530cab8b4
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 6612d801804cdd1e092b50977230f24b378e64ba
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408524"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407138"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でエグレス トラフィックに静的パブリック IP アドレスを使用する
 
@@ -24,11 +24,11 @@ ms.locfileid: "47408524"
 
 この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
 
-また、Azure CLI バージョン 2.0.46 以降がインストール、構成されていること必要もあります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
+また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
 ## <a name="egress-traffic-overview"></a>エグレス トラフィックの概要
 
-AKS クラスターからの送信トラフィックは [Azure Load Balancer の規則に従っています｡][outbound-connections] `LoadBalancer` 型の最初の Kubernetes サービスが作成される前、エーAKS クラスターのエージェント ノードはどれも Azure Load Balancer プールのメンバーではありません。 この構成では、どのノードもインスタンス レベルのパブリック IP アドレスが持たないことになります｡ Azure では、送信フローを構成可能でも決定論的でもないパブリック ソース IP アドレスに変換します。
+AKS クラスターからの送信トラフィックは [Azure Load Balancer の規則に従っています｡][outbound-connections] `LoadBalancer` 型の最初の Kubernetes サービスが作成される前、AKS クラスターのエージェント ノードはどれも Azure Load Balancer プールのメンバーではありません。 この構成では、どのノードもインスタンス レベルのパブリック IP アドレスが持たないことになります｡ Azure では、送信フローを構成可能でも決定論的でもないパブリック ソース IP アドレスに変換します。
 
 `LoadBalancer` 型の Kubernetes サービスが作成されると、エージェント ノードは Azure Load Balancer プールに追加されます。 送信フローの場合、Azure はこれをロード バランサーで構成された最初のパブリック IP アドレスに変換します。 このパブリック IP アドレスで、そのリソースの有効期間の間のみ有効です。 Kubernetes LoadBalancer サービスを削除すると、関連付けられているロード バランサーと IP アドレスも削除されます。 デプロイし直された Kubernetes サービスに対して特定の IP アドレスを割り当てるか､あるいは IP アドレスを保持する場合は、静的パブリック IP アドレスを作成して､使用することができます。
 
@@ -36,7 +36,7 @@ AKS クラスターからの送信トラフィックは [Azure Load Balancer の
 
 AKS で使用する静的パブリック IP アドレスを作成する場合 その IP アドレス リソースは **ノード**リソース グループに作成する必要があります。 [az aks show][az-aks-show] コマンドを使用してリソース グループ名を取得し、 `--query nodeResourceGroup`クエリ パラメーターを追加します｡ 次の例では、リソース グループ名 *myResourceGroup* にある AKS クラスター名のノード リソース グループ *myAKSCluster* を取得しています｡
 
-```azurecli
+```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
 
 MC_myResourceGroup_myAKSCluster_eastus
@@ -44,7 +44,7 @@ MC_myResourceGroup_myAKSCluster_eastus
 
 次に、[az network public-ip create][az-network-public-ip-create] コマンドを使用して、静的パブリック IP アドレスを作成します。 上記コマンドで取得したノードのリソース グループ名を指定して､その IP アドレス リソースに対して､*myAKSPublicIP* などの名前を指定します｡
 
-```azurecli
+```azurecli-interactive
 az network public-ip create \
     --resource-group MC_myResourceGroup_myAKSCluster_eastus \
     --name myAKSPublicIP \
@@ -63,11 +63,11 @@ az network public-ip create \
     "ipAddress": "40.121.183.52",
     [..]
   }
-````
+```
 
 このパブリック IP アドレスは､後で [az network public ip list][ az-network-public-ip-list]コマンド を使用して取得することができます｡ 次の例に示すように､ノードのリソース グループ名を指定して、*ipAddress* に対するクエリを指定します｡
 
-```azurecli
+```azurecli-interactive
 $ az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query [0].ipAddress --output tsv
 
 40.121.183.52
@@ -104,7 +104,7 @@ kubectl apply -f egress-service.yaml
 基本的な*Debian* pod を起動してアタッチします｡
 
 ```console
-kubectl run -it --rm aks-ip --image=debian
+kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
 ```
 
 コンテナー内から web サイトにアクセスするには、`apt-get` を使用して､コンテナーに `curl` をインストールします｡
@@ -118,7 +118,7 @@ apt-get update && apt-get install curl -y
 ```console
 $ curl -s checkip.dyndns.org
 
-<html><head><title>Current IP Check</title></head><body>Current IP Address: 23.101.128.81</body></html>
+<html><head><title>Current IP Check</title></head><body>Current IP Address: 40.121.183.52</body></html>
 ```
 
 ## <a name="next-steps"></a>次の手順

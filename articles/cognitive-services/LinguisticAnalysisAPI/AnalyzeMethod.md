@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Linguistic Analysis API で Analyze メソッドを使用して特定の自然言語入力を分析する方法。
 services: cognitive-services
 author: RichardSunMS
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 87df00ae5ca12b168f2e1c03850da2e94cec350b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 02c41e2510fd77f4bb65143faf62737f0985d2b7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239304"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431140"
 ---
 # <a name="analyze-method"></a>Analyze メソッド
 
@@ -40,9 +40,9 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 Name | type | 必須 | 説明
 -----|-------|----------|------------
-**language**    | string | [はい] | 分析に使用する 2 文字の ISO 言語コード。 たとえば、英語は "en" です。
-**analyzerIds** | string のリスト | [はい] | 適用するアナライザーの GUID リスト。 詳細については、Analyzers に関するドキュメントを参照してください。
-**text**        | string | [はい] | 分析対象の未処理の入力。 単語や語句などの短い文字列、完全な文章、完全な段落や会話の場合があります。
+**language**    | string | はい | 分析に使用する 2 文字の ISO 言語コード。 たとえば、英語は "en" です。
+**analyzerIds** | string のリスト | はい | 適用するアナライザーの GUID リスト。 詳細については、Analyzers に関するドキュメントを参照してください。
+**text**        | string | はい | 分析対象の未処理の入力。 単語や語句などの短い文字列、完全な文章、完全な段落や会話の場合があります。
 
 ## <a name="response-json"></a>応答 (JSON)
 
@@ -50,16 +50,16 @@ Name | type | 必須 | 説明
 
 結果は次のようになります。
 
-Name | type | 説明
+Name | Type | 説明
 -----|------|--------------
-analyzerId | string | 指定したアナライザーの GUID
+analyzerId | 文字列 | 指定したアナライザーの GUID
 result | オブジェクト | アナライザーの結果
 
 結果の種類は入力アナライザーの種類によって変わることに注意してください。
 
 ### <a name="tokens-response-json"></a>トークン応答 (JSON)
 
-Name | type | 説明
+Name | Type | 説明
 -----|------|-------------
 result | 文オブジェクトのリスト | テキスト内に指定された文の境界 |
 result[x].Offset | int | 各文の開始文字オフセット |
@@ -67,8 +67,8 @@ result[x].Len | int | 各文の文字数 |
 result[x].Tokens | トークン オブジェクトのリスト | 文内に指定されたトークンの境界 |
 result[x].Tokens[y].Offset | int | トークンの開始文字オフセット |
 result[x].Tokens[y].Len | int | 各トークンの文字数 |
-result[x].Tokens[y].RawToken | string | 正規化前のそのトークン内の文字 |
-result[x].Tokens[y].NormalizedToken | string | 文字の正規化された形式。[解析ツリー](Constituency-Parsing.md)に問題なく使用できます。たとえば、開始のかっこ文字 '(' は '-LRB-' になります。 |
+result[x].Tokens[y].RawToken | 文字列 | 正規化前のそのトークン内の文字 |
+result[x].Tokens[y].NormalizedToken | 文字列 | 文字の正規化された形式。[解析ツリー](Constituency-Parsing.md)に問題なく使用できます。たとえば、開始のかっこ文字 '(' は '-LRB-' になります。 |
 
 入力例: `This is a test. Hello.'
 JSON の応答例:
@@ -147,7 +147,7 @@ JSON の応答例:
 
 `POST /analyze`
 
-要求の本文: JSON ペイロード
+要求本文: JSON ペイロード
 ```json
 {
   "language": "en",
@@ -158,7 +158,7 @@ JSON の応答例:
 }
 ```
 
-応答: JSON
+応答:JSON
 ```json
 [
   {

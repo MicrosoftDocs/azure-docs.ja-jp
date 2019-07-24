@@ -3,7 +3,7 @@ title: スケールアウトされたクラウド データベースの管理 | 
 description: エラスティック データベース ジョブ サービスを使用して、データベース グループ全体に対してスクリプトを実行します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: f5878c510e048bea2ce1aedaf4e0e5dbb4611caf
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.date: 12/04/2018
+ms.openlocfilehash: 8abb2e3ac4f62a3ea51cc686bbf23260fccc4077
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242519"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441374"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>スケールアウトされたクラウド データベースの管理
 
@@ -48,7 +48,7 @@ ms.locfileid: "50242519"
 
 スキーマの変更、資格情報の管理、参照データの更新、パフォーマンス データの収集、テナント (顧客) テレメトリの収集を簡単に実行できます。
 
-### <a name="reports"></a>レポート
+### <a name="reports"></a>Reports
 
 Azure SQL データベースのコレクションから 1 つのテーブルにデータを集約します。
 
@@ -81,8 +81,8 @@ Azure SQL データベースのカスタム グループを定義し、ジョブ
 2. カスタム定義のデータベース コレクションの作成、スケジュールの追加、結果セットの収集など、その他の機能にアクセスするには、PowerShell API を使用します。 **エラスティック プール**に対して実行するように制限されたジョブの簡単なインストール、作成、監視には、ポータルを使用します。
 3. ジョブ実行用に暗号化された資格情報を作成し、 [グループ内の各データベースにユーザー (またはロール) を追加します](sql-database-security-overview.md)。
 4. グループ内のすべてのデータベースに対して実行できるべき等 T-SQL スクリプトを作成します。
-5. 「 [Elastic Database ジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」の手順に従い、Azure ポータルを使用してジョブを作成します。
-6. または、PowerShell スクリプトを使用します。「[PowerShell を使用した SQL Database の Elastic Database ジョブの作成と管理 (プレビュー)](sql-database-elastic-jobs-powershell.md)」をご覧ください。
+5. 次の手順に従い、Azure portal を使用してジョブ作成します: [エラスティック データベース ジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)。
+6. または PowerShell スクリプトを使用します: [PowerShell を使用した SQL Database のエラスティック データベース ジョブの作成と管理 (プレビュー)](sql-database-elastic-jobs-powershell.md)。
 
 ## <a name="idempotent-scripts"></a>べき等スクリプト
 

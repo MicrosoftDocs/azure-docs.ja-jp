@@ -6,20 +6,19 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
-ms.date: 11/2/2017
-ms.openlocfilehash: c3904286fc998769b9a72522bd31d3a9797c55c2
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 12/06/2018
+ms.openlocfilehash: d5582038c35ba3b599be89b7b7939e644d55ea78
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008047"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408832"
 ---
-# <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>Azure HDInsight を使用した YARN のトラブルシューティング
+# <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Hadoop YARN のトラブルシューティング
 
 Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発生する主な問題とその解決策について説明します。
 
 ## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>クラスターで新しい YARN キューを作成する方法
-
 
 ### <a name="resolution-steps"></a>解決手順 
 
@@ -60,7 +59,7 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
 
 ### <a name="additional-reading"></a>その他の情報
 
-- [YARN CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
+- [Apache Hadoop YARN CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
 
 
 ## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>クラスターから YARN ログをダウンロードする方法
@@ -130,18 +129,11 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
 
     このコマンドによって、containerlogs.txt という名前のログ ファイルが作成されます。
 
-### <a name="additional-reading-2"></a> 参考情報
+### <a name="additional-reading-2"></a>その他の情報
 
-- [SSH を使用して HDInsight (Hadoop) に接続する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
+- [SSH を使用して HDInsight (Apache Hadoop) に接続する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
 - [Apache Hadoop YARN の概念とアプリケーション](https://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/)
 
 
 ### <a name="see-also"></a>関連項目
 [Azure HDInsight を使用したトラブルシューティング](hdinsight-troubleshoot-guide.md)
-
-
-
-
-
-
-

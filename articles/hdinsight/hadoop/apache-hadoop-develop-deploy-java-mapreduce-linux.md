@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3c16d85479399d7988be18f9b852563617bb824b
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: e1b4681bc8e42294be6b47a04a24e28f81703e6f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632654"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436859"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>HDInsight 上の Apache Hadoop 用の Java MapReduce プログラムを開発する
 
@@ -25,12 +25,12 @@ Apache Maven を使用して Java ベースの MapReduce アプリケーショ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 以降 (または同等の OpenJDK など)
+* [Java JDK](https://www.oracle.com/technetwork/java/javase/downloads/) 8 以降 (または同等の OpenJDK など)
     
     > [!NOTE]
     > HDInsight 3.4 以前のバージョンでは、Java 7 を使用します。 HDInsight 3.5 以降では、Java 8 を使用します。
 
-* [Apache Maven](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 
 ## <a name="configure-development-environment"></a>開発環境の設定
 
@@ -63,7 +63,7 @@ Java と JDK をインストールするときに、次のような環境変数�
 
     このコマンドにより、`artifactID` パラメーターで指定した名前 (この例では **wordcountjava**) のディレクトリが作成されます。このディレクトリには、次の項目が含まれます。
 
-   * `pom.xml` - [プロジェクト オブジェクト モデル (POM)](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
+   * `pom.xml` - [プロジェクト オブジェクト モデル (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
 
    * `src` - アプリケーションを含むディレクトリ。
 
@@ -94,7 +94,7 @@ Java と JDK をインストールするときに、次のような環境変数�
     </dependency>
    ```
 
-    これは、特定のバージョン (&lt;version\> 内に記載) に必要なライブラリ ( &lt;artifactId\> 内に記載) を定義しています。 この依存関係は、コンパイル時に既定の Maven リポジトリからダウンロードされます。 [Maven リポジトリ検索](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) を使用して、その他の情報を表示できます。
+    これは、特定のバージョン (&lt;version\> 内に記載) に必要なライブラリ ( &lt;artifactId\> 内に記載) を定義しています。 この依存関係は、コンパイル時に既定の Maven リポジトリからダウンロードされます。 [Maven リポジトリ検索](https://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) を使用して、その他の情報を表示できます。
    
     `<scope>provided</scope>` は、これらの依存関係はアプリケーションに付属せず、実行時に HDInsight クラスターによって提供されることを Maven に通知しています。
 
@@ -138,7 +138,7 @@ Java と JDK をインストールするときに、次のような環境変数�
     </build>
    ```
 
-    最初のプラグインは [Maven Shade Plugin](http://maven.apache.org/plugins/maven-shade-plugin/) を構成します。これは、アプリケーションで必要な依存関係を含む uberjar (fatjar と呼ばれることもある) を作成するために使用されます。 また、一部のシステムで問題が発生する可能性がある jar パッケージ内のライセンスの重複を防止します。
+    最初のプラグインは [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/) を構成します。これは、アプリケーションで必要な依存関係を含む uberjar (fatjar と呼ばれることもある) を作成するために使用されます。 また、一部のシステムで問題が発生する可能性がある jar パッケージ内のライセンスの重複を防止します。
 
     2 番目のプラグインは、対象の Java バージョンを構成します。
 
@@ -285,15 +285,15 @@ __USERNAME__ は、クラスターの SSH ユーザー名に置き換えます�
 
 このドキュメントでは、Java MapReduce ジョブを作成する方法を説明しました。 HDInsight を使用する他の方法については、次のドキュメントを参照してください。
 
-* [HDInsight での Hive の使用](hdinsight-use-hive.md)
-* [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
+* [HDInsight での Apache Hive の使用](hdinsight-use-hive.md)
+* [HDInsight での Apache Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
 詳細については、 [Java デベロッパー センター](https://azure.microsoft.com/develop/java/)も参照してください。
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
 [hdinsight-use-sqoop]:hdinsight-use-sqoop.md
 [hdinsight-ODBC]: hdinsight-connect-excel-hive-ODBC-driver.md
@@ -303,5 +303,5 @@ __USERNAME__ は、クラスターの SSH ユーザー名に置き換えます�
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 [hdinsight-power-query]:apache-hadoop-connect-excel-power-query.md
 
-[powershell-PSCredential]: http://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
+[powershell-PSCredential]: https://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
 

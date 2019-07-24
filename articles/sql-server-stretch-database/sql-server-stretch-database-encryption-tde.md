@@ -4,26 +4,24 @@ description: Azure での SQL Server Stretch Database に対する Transparent D
 services: sql-server-stretch-database
 documentationcenter: ''
 author: douglaslMS
-manager: barbkess
-editor: ''
+manager: craigg
 ms.assetid: a44ed8f5-b416-4c41-9b1e-b7271f10bdc3
 ms.service: sql-server-stretch-database
 ms.workload: data-management
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2016
 ms.author: douglasl
-ms.openlocfilehash: ceb355d2ba872ed5d3886c6dc82ca75b1854db0a
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 1e40e3d9eb1231666acda89c752ebc8f517e8fc6
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23055357"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53741540"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Azure での Stretch Database に対する Transparent Data Encryption (TDE) の有効化
 > [!div class="op_single_selector"]
-> * [Azure ポータル](sql-server-stretch-database-encryption-tde.md)
+> * [Azure Portal](sql-server-stretch-database-encryption-tde.md)
 > * [TSQL](sql-server-stretch-database-tde-tsql.md)
 >
 >
@@ -35,7 +33,7 @@ TDE は、データベース暗号化キーと呼ばれる対称キーを使用�
 ## <a name="enabling-encryption"></a>暗号化の有効化
 Stretch 対応 SQL Server データベースから移行したデータを格納している Azure データベースの TDE を有効にするには、次の操作を行います。
 
-1. [Azure ポータル](https://portal.azure.com)
+1.  [Azure ポータル](https://portal.azure.com)
 2. データベース ブレードで **[設定]** ボタンをクリックします。
 3. **[透過的なデータ暗号化]** オプションを選択します ![][1]
 4. **[オン]**、**[保存]** の順に選択します。
@@ -44,7 +42,7 @@ Stretch 対応 SQL Server データベースから移行したデータを格納
 ## <a name="disabling-encryption"></a>暗号化の無効化
 Stretch 対応 SQL Server データベースから移行したデータを格納している Azure データベースの TDE を無効にするには、次の操作を行います。
 
-1. [Azure ポータル](https://portal.azure.com)
+1.  [Azure ポータル](https://portal.azure.com)
 2. データベース ブレードで **[設定]** ボタンをクリックします。
 3. **[透過的なデータ暗号化]** オプションを選択します
 4. **[オフ]**、**[保存]** の順に選択します

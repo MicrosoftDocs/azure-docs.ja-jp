@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/22/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 56160b8db3bad5ebd04fc30442833d36f1633ed1
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: bb0e146ef32ba24c3911bae86806c84768c005ef
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123523"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023799"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Oracle Eloqua からデータをコピーする (プレビュー)
 
@@ -45,10 +44,10 @@ Oracle Eloqua のリンクされたサービスでは、次のプロパティが
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **Eloqua** に設定する必要があります | [はい] |
-| endpoint | Eloqua サーバーのエンドポイント。 Eloqua では、複数のデータ センターをサポートしてエンドポイントを特定し、資格情報を使って https://login.eloqua.com にログインしてから、`xxx.xxx.eloqua.com` というパターンのリダイレクトされた URL から**ベース URL** の部分をコピーします。 | [はい] |
-| username | `Eloqua\Alice` のような `SiteName\Username`の形式での Eloqua アカウントのサイト名とユーザー名。  | [はい] |
-| password | ユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**Eloqua** | はい |
+| endpoint | Eloqua サーバーのエンドポイント。 Eloqua では、複数のデータ センターをサポートしてエンドポイントを特定し、資格情報を使って https://login.eloqua.com にログインしてから、`xxx.xxx.eloqua.com` というパターンのリダイレクトされた URL から**ベース URL** の部分をコピーします。 | はい |
+| username | `Eloqua\Alice` のような `SiteName\Username`の形式での Eloqua アカウントのサイト名とユーザー名。  | はい |
+| password | ユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
 | usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |
@@ -76,7 +75,12 @@ Oracle Eloqua のリンクされたサービスでは、次のプロパティが
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Oracle Eloqua データセットでサポートされるプロパティの一覧を示します。
 
-Oracle Eloqua からデータをコピーするには、データセットの type プロパティを **EloquaObject** に設定します。 この種類のデータセットに追加の種類固有のプロパティはありません。
+Oracle Eloqua からデータをコピーするには、データセットの type プロパティを **EloquaObject** に設定します。 次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | データセットの type プロパティは、次のように設定する必要があります:**EloquaObject** | はい |
+| tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
 
@@ -88,7 +92,8 @@ Oracle Eloqua からデータをコピーするには、データセットの ty
         "linkedServiceName": {
             "referenceName": "<Eloqua linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -97,14 +102,14 @@ Oracle Eloqua からデータをコピーするには、データセットの ty
 
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、Oracle Eloqua ソースでサポートされるプロパティの一覧を示します。
 
-### <a name="eloquasource-as-source"></a>ソースとしての EloquaSource
+### <a name="eloqua-as-source"></a>ソースとしての Eloqua
 
 Oracle Eloqua からデータをコピーするは、コピー アクティビティのソースの種類を **EloquaSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **EloquaSource** に設定する必要があります | [はい] |
-| query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Accounts"`」のように入力します。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**EloquaSource** | はい |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Accounts"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 

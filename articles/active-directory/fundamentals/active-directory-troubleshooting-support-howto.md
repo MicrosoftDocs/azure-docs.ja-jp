@@ -1,27 +1,28 @@
 ---
-title: Azure Active Directory のサポートを受ける方法 | Microsoft Docs
-description: Azure Active Directory のサポートを受ける方法について説明します。
+title: ヘルプを検索してサポート チケットを開く - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory のヘルプを取得してサポート チケットを開く方法について説明します。
 services: active-directory
 documentationcenter: na
 author: eross-msft
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.workload: identity
 ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro
-ms.openlocfilehash: d7d499ed43ee2eab03e46e408104eca4af6a2945
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 22bf80c13ef3b18ab3119b6b35e529c8ad32f504
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729393"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285096"
 ---
-# <a name="how-to-get-support-for-azure-active-directory"></a>方法: Azure Active Directory のサポートを受ける
+# <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Azure Active Directory のヘルプを検索してサポート チケットを開く
 Microsoft は、Azure Active Directory (Azure AD) に関する技術、購入前、課金、サブスクリプションの各サポートを幅広く提供しています。 サポートは、Microsoft Azure の有料版および試用版サブスクリプションについて、オンラインと電話の両方で利用できます。 また、電話サポートとオンライン課金サポートは追加の言語で利用できます。 
 
 ## <a name="find-help-without-opening-a-support-ticket"></a>サポート チケットを開かずにヘルプを見つける
@@ -40,7 +41,7 @@ Microsoft は、Azure Active Directory (Azure AD) に関する技術、購入前
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-azure-portal"></a>Azure Portal で Azure AD のサポート チケットを開く方法
 
 > [!NOTE]
-> 課金またはサブスクリプションの問題については、[Office 365 管理センター](https://portal.office.com)を使用する必要があります。
+> 課金またはサブスクリプションの問題については、[Microsoft 365 管理センター](https://admin.microsoft.com)を使用する必要があります。
 > 
 
 1. [Azure Portal](https://portal.azure.com) にサインインし、**[Azure Active Directory]** を開きます。
@@ -60,22 +61,20 @@ Microsoft は、Azure Active Directory (Azure AD) に関する技術、購入前
 8. 連絡先情報を入力し、**[作成]** を選択します。
   ![問題のカテゴリについてのセルフヘルプのスクリーンショット](./media/active-directory-troubleshooting-support-howto/open-support-ticket.png)
 
-### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-office-365-portal"></a>Office 365 ポータルで Azure AD のサポート チケットを開く方法
+### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>Microsoft 365 管理センターで Azure AD のサポート チケットを開く方法
 
 > [!NOTE]
-> Office 365 管理センターで Azure AD のサポートを受けられるのは、管理者だけです。
-> 
+> [Microsoft 365 管理センター](https://admin.microsoft.com)で Azure AD のサポートを受けられるのは、管理者だけです。 
 
-1. Enterprise Mobility + Security (EMS) ライセンスを備えたアカウントで、[Office 365 管理センター](https://portal.office.com)にサインインします。
+1. Enterprise Mobility + Security (EMS) ライセンスを備えたアカウントで、[Microsoft 365 管理センター](https://admin.microsoft.com)にサインインします。
 
-2. **[サポート]** タイルで、**[新しいサービス リクエスト]** を選択します。![Office 365 ポータルのスクリーンショット](./media/active-directory-troubleshooting-support-howto/office-portal.png)
+2. **[サポート]** タイルで、**[新しいサービス リクエスト]** を選択します。
 
-3. **[サポートの概要]** ページで、**[ID 管理]** または **[User and domain management]\(ユーザーとドメインの管理\)** を選択します。![Azure AD のサポート カテゴリのスクリーンショット](./media/active-directory-troubleshooting-support-howto/select-identity.png)
+3. **[サポートの概要]** ページで、**[ID 管理]** または **[User and domain management]\(ユーザーとドメインの管理\)** を選択します。
 
 4. **[機能]** でサポートが必要な Azure AD 機能を選択します。
 
 5. **[症状]** で適切な症状を選択し、問題の概要と関連する詳細を指定して、**[次へ]** を選択します。
-  ![機能と症状のセルフヘルプのスクリーンショット](./media/active-directory-troubleshooting-support-howto/open-service-request.png)
 
 6. 提供されたいずれかのセルフヘルプ リソースを選択します。または、**[Yes, continue]\(はい、続行します\)** と **[No, cancel request]\(いいえ、リクエストを取り消します\)** のいずれかを選択します。
 

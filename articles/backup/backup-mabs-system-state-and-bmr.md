@@ -2,30 +2,30 @@
 title: Azure Backup Server でシステム状態を保護してベア メタルに回復する
 description: Azure Backup Server を使用して、システム状態をバックアップし、とベア メタル回復 (BMR) 保護を提供します。
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: ''
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: markgal
-ms.openlocfilehash: 7cb87847d6a1e191fb20dfa9cdf263066704eb6d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: raynew
+ms.openlocfilehash: 35ab150670cdc27efcedca233928e0c2184aeca6
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238813"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880099"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Azure Backup Server を使用してシステム状態をバックアップし、ベア メタルに回復する
 
 Azure Backup Server は、システム状態をバックアップし、ベア メタル回復 (BMR) 保護を提供します。
 
-*   **システム状態のバックアップ** : オペレーティング システム ファイルをバックアップするため、コンピューター起動時に復旧できますが、システム ファイルおよびレジストリは失われます。 システム状態のバックアップには次の項目が含まれています。
-    * ドメインのメンバー : ブート ファイル、COM + クラス登録データベース、レジストリ
-    * ドメイン コントローラー : Windows Server Active Directory (NTDS)、ブート ファイル、COM + クラス登録データベース、レジストリ、システム ボリューム (SYSVOL)
-    * クラスター サービスを実行しているコンピューター : クラスター サーバーのメタデータ
-    * 証明書サービスを実行しているコンピューター : 証明書データ
-* **ベア メタル バックアップ** : オペレーティング システム ファイルと重要なボリュームにあるすべてのデータ (ユーザー データを除く) をバックアップします。 定義上、BMR バックアップには、システム状態のバックアップが含まれます。 これは、コンピューターが起動せず、すべてを復旧する必要があるときの保護を提供します。
+*   **システム状態のバックアップ**: オペレーティング システム ファイルをバックアップします。これにより、コンピューターの起動時に復旧できますが、システム ファイルとレジストリは失われます。 システム状態のバックアップには次の項目が含まれています。
+    * ドメインのメンバー: ブート ファイル、COM+ クラス登録データベース、レジストリ
+    * ドメイン コントローラー:Windows Server Active Directory (NTDS)、ブート ファイル、COM+ クラス登録データベース、レジストリ、システム ボリューム (SYSVOL)
+    * クラスター サービスを実行しているコンピューター: クラスター サーバーのメタデータ
+    * 証明書サービスを実行しているコンピューター: 証明書データ
+* **ベア メタル バックアップ**: オペレーティング システム ファイルと重要なボリューム上のすべてのデータ (ユーザー データを除く) をバックアップします。 定義上、BMR バックアップには、システム状態のバックアップが含まれます。 これは、コンピューターが起動せず、すべてを復旧する必要があるときの保護を提供します。
 
 次の表は、バックアップと復旧を実行できる項目のまとめです。 システム状態および BMR を使用して保護できるアプリのバージョンの詳細については、「[What does Azure Backup Server back up?](backup-mabs-protection-matrix.md)」(Azure Backup Server がバックアップするもの) を参照してください。
 

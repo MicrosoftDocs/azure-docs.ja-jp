@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 646c30be171a5aaaa17e40eae3cef6952b2b2747
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 28b3851a52ec5fe69eaa531e2e08f66fb73cb1e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657062"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997979"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -34,7 +34,7 @@ ms.locfileid: "34657062"
 [kb4025334]:https://support.microsoft.com/help/4025334/windows-10-update-kb4025334
 
 [dv2-series]:https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dv2-series
-[ds-series]:https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#ds-series
+[ds-series]:https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
@@ -45,7 +45,7 @@ ms.locfileid: "34657062"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -235,9 +235,9 @@ Azure Load Balancer サービスは、Azure に "*内部ロード バランサ�
 
 クラスター ノードを含むリソース グループに、内部ロード バランサーをデプロイします。 その後、内部ロード バランサーのプローブ ポートを使って、必要なすべてのポート フォワーディング規則を構成します。 クライアントは仮想ホスト名を使用して接続できます。 DNS サーバーは、クラスターの IP アドレスを解決します。 内部ロード バランサーは、クラスターのアクティブ ノードへのポート フォワーディングを処理します。
 
-![図 1: 共有ディスクを使用しない Azure の Windows Server フェールオーバー クラスタリング構成][sap-ha-guide-figure-1001]
+![図 1:共有ディスクを使用しない Azure の Windows Server フェールオーバー クラスタリング構成][sap-ha-guide-figure-1001]
 
-_**図 1:** 共有ディスクを使わない Azure の Windows Server フェールオーバー クラスタリング構成_
+_**図 1:** 共有ディスクを使用しない Azure の Windows Server フェールオーバー クラスタリング構成_
 
 ## <a name="sap-ascsscs-ha-with-file-share"></a>ファイル共有を使用する SAP ASCS/SCS HA
 
@@ -252,11 +252,11 @@ SAP によって、共有ディスクをクラスター化する方法に代わ�
 * SAP セントラル サービス (独自のファイル構造、およびメッセージとエンキュー プロセスを含む) が、SAP グローバル ホスト ファイルから分離されます。
 * SAP セントラル サービスが、SAP ASCS/SCS インスタンスで実行されます。
 * SAP ASCS/SCS インスタンスがクラスター化され、\<ASCS/SCS 仮想ホスト名\> 仮想ホスト名を使ってアクセスできます。
-* SAP グローバル ファイルは SMB ファイル共有に配置され、\<SAP グローバル ホスト\> ホスト名: \\\\&lt;SAP グローバル ホスト&gt;\sapmnt\\&lt;SID&gt;\SYS\. を使ってアクセスされます。
+* SAP グローバル ファイルは SMB ファイル共有に配置され、\<SAP グローバル ホスト\> ホスト名\\\\&lt;SAP グローバル ホスト&gt;\sapmnt\\&lt;SID&gt;\SYS\. を使ってアクセスされます。
 * SAP ASCS/SCS インスタンスは、両方のクラスター ノード上のローカル ディスクにインストールされます。
 * \<ASCS/SCS 仮想ホスト名\> ネットワーク名は、&lt;SAP グローバル ホスト&gt; とは異なります。
 
-![図 2: SMB ファイル共有を使う SAP ASCS/SCS HA のアーキテクチャ][sap-ha-guide-figure-8004]
+![図 2:SMB ファイル共有を使う SAP ASCS/SCS HA のアーキテクチャ][sap-ha-guide-figure-8004]
 
 _**図 2:** SMB ファイル共有を使う新しい SAP ASCS/SCS HA のアーキテクチャ_
 
@@ -271,7 +271,7 @@ SMB ファイル共有の前提条件:
 SAP \<SID\> のクラスター ロールには、クラスター共有ディスクまたは汎用ファイル共有クラスター リソースは含まれません。
 
 
-![図 3: ファイル共有を使うための SAP \<SID\> クラスター ロール リソース][sap-ha-guide-figure-8005]
+![図 3:ファイル共有を使うための SAP \<SID\> クラスター ロール リソース][sap-ha-guide-figure-8005]
 
 _**図 3:** ファイル共有を使うための SAP &lt;SID&gt; クラスター ロール リソース_
 
@@ -280,7 +280,7 @@ _**図 3:** ファイル共有を使うための SAP &lt;SID&gt; クラスター
 
 スケールアウト ファイル共有を使って、SAP グローバル ホスト ファイルのホストと保護を行うことができます。 また、スケールアウト ファイル共有は、高可用性の SAPMNT ファイル共有サービスも提供します。
 
-![図 4: SAP グローバル ホスト ファイルの保護に使われるスケールアウト ファイル共有][sap-ha-guide-figure-8006]
+![図 4:SAP グローバル ホスト ファイルの保護に使われるスケールアウト ファイル共有][sap-ha-guide-figure-8006]
 
 _**図 4:** SAP グローバル ホスト ファイルの保護に使われるスケールアウト ファイル共有_
 
@@ -322,7 +322,7 @@ _**図 4:** SAP グローバル ホスト ファイルの保護に使われる�
 
 > [!IMPORTANT]
 > \<SAP グローバル ホスト\> を指し示している SAPMNT ファイル共有の名前を変更することはできません。 SAP は、共有名 "sapmnt" のみをサポートします。
-
+>
 > 詳しくは、「[SAP Note 2492395 - Can the share name sapmnt be changed?][2492395]」(SAP Note 2492395 - 共有名 sapmnt を変更できますか) をご覧ください。
 
 ### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>2 つのクラスターで SAP ASCS/SCS インスタンスとスケールアウト ファイル共有を構成する
@@ -333,7 +333,7 @@ _**図 4:** SAP グローバル ホスト ファイルの保護に使われる�
 >このシナリオの SAP ASCS/SCS インスタンスは、UNC パス \\\\&lt;SAP グローバル ホスト&gt;\sapmnt\\&lt;SID&gt;\SYS\. を使って SAP グローバル ホストにアクセスするように構成されます。
 >
 
-![図 5: 2 つのクラスターにデプロイされた SAP ASCS/SCS インスタンスとスケールアウト ファイル共有][sap-ha-guide-figure-8007]
+![図 5:2 つのクラスターにデプロイされた SAP ASCS/SCS インスタンスとスケールアウト ファイル共有][sap-ha-guide-figure-8007]
 
 _**図 5:** 2 つのクラスターにデプロイされた SAP ASCS/SCS インスタンスとスケールアウト ファイル共有_
 
@@ -360,4 +360,4 @@ _**図 5:** 2 つのクラスターにデプロイされた SAP ASCS/SCS イン�
 * [SAP ASCS/SCS インスタンス用の Windows フェールオーバー クラスターとファイル共有に SAP NetWeaver HA をインストールする][sap-high-availability-installation-wsfc-shared-disk]
 * [Azure での UPD 記憶域の 2 ノードの記憶域スペース ダイレクト スケール アウト ファイル サーバーのデプロイ][deploy-sofs-s2d-in-azure]
 * [Windows Server 2016 での記憶域スペース ダイレクト][s2d-in-win-2016]
-* [詳細: 記憶域スペース ダイレクトのボリューム][deep-dive-volumes-in-s2d]
+* [詳細:記憶域スペース ダイレクトのボリューム][deep-dive-volumes-in-s2d]

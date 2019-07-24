@@ -3,8 +3,8 @@ title: Azure Service Fabric CLI (sfctl) スクリプトのデプロイのサン�
 description: Azure Service Fabric CLI を使用した Azure Service Fabric クラスターへのアプリケーションのデプロイ
 services: service-fabric
 documentationcenter: ''
-author: TylerMSFT
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 04/16/2018
-ms.author: twhitney
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: d3e619750c45ac2d8e0b942a304aadfa05301624
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 1b90c4f8a1cdc5334425ba549a71bc189bc112b6
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069507"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668264"
 ---
 # <a name="deploy-an-application-to-a-service-fabric-cluster"></a>Service Fabric クラスターへのアプリケーションのデプロイ
 

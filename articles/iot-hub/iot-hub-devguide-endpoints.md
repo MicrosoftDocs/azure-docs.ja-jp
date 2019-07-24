@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub のエンドポイントについて | Microsoft Docs
 description: 開発者ガイド - IoT Hub デバイス向けおよびサービス向けエンドポイントに関する参照情報。
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.author: dobett
-ms.openlocfilehash: 43e2101f413985974b964f2261d852692bcac61d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5015068f9b165190bef3b0cb97ddb194e173303e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251442"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59045919"
 ---
 # <a name="reference---iot-hub-endpoints"></a>リファレンス - IoT Hub エンドポイント
 
@@ -22,8 +22,6 @@ ms.locfileid: "51251442"
 ## <a name="iot-hub-names"></a>IoT Hub 名
 
 ポータルのハブの **[概要]** ページで、エンドポイントをホストしている IoT ハブのホスト名を検索できます。 既定では、IoT Hub の DNS 名は `{your iot hub name}.azure-devices.net` のようになります。
-
-Azure DNS を使用して、IoT Hub のカスタム DNS 名を作成できます。 詳細については、「[Azure DNS を使用して Azure サービス用のカスタム ドメイン設定を提供する](../dns/dns-custom-domain.md)」をご覧ください。
 
 ## <a name="list-of-built-in-iot-hub-endpoints"></a>IoT Hub の組み込みエンドポイントの一覧
 
@@ -53,7 +51,7 @@ Azure IoT Hub はさまざまなアクターに機能を公開するマルチテ
 
   * *ダイレクト メソッド要求の受信*。 デバイスは、このエンドポイントを使用して、[ダイレクト メソッド](iot-hub-devguide-direct-methods.md)の要求をリッスンします。
 
-    これらのエンドポイントは、[MQTT v3.1.1](http://mqtt.org/)、HTTPS 1.1、および [AMQP 1.0](https://www.amqp.org/) の各プロトコルを使用して公開されます。 AMQP は、ポート 443 で [WebSockets](https://tools.ietf.org/html/rfc6455) 経由で使用することもできます。
+    これらのエンドポイントは、[MQTT v3.1.1](https://mqtt.org/)、HTTPS 1.1、および [AMQP 1.0](https://www.amqp.org/) の各プロトコルを使用して公開されます。 AMQP は、ポート 443 で [WebSockets](https://tools.ietf.org/html/rfc6455) 経由で使用することもできます。
 
 * **サービス エンドポイント**。 各 IoT Hub では、ソリューション バックエンドに対して一連のエンドポイントを公開し、デバイスと通信を行います。 唯一の例外は、これらのエンドポイントが [AMQP](https://www.amqp.org/) プロトコルを使用して公開のみが行われる場合です。 メソッド呼び出しのエンドポイントは、HTTPS プロトコルを介して公開されます。
   
@@ -83,6 +81,15 @@ IoT Hub エンドポイントはすべて [TLS](https://tools.ietf.org/html/rfc5
 * Service Bus トピック
 
 追加できるエンドポイントの数の制限については、「[クォータと調整](iot-hub-devguide-quotas-throttling.md)」をご覧ください。
+
+REST API の [Get Endpoint Health](https://docs.microsoft.com/de-de/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) を使用して、エンドポイントの正常性状態を取得できます。 ルーティングによるメッセージの待機時間に関する [IoT Hub メトリック](iot-hub-metrics.md)を使用して、エンドポイントの正常性が停止または異常の場合にエラーを特定し、デバッグすることをお勧めします。
+
+|正常性状態|説明|
+|---|---|
+|healthy|エンドポイントは想定どおりにメッセージを受け付けています。|
+|unhealthy|エンドポイントは想定どおりにメッセージを受け付けておらず、IoT Hub はこのエンドポイントへのデータ送信を再試行しています。 IoT Hub が最終的に一貫して正常状態を確立すると、異常なエンドポイントの状態が "正常" に更新されます。|
+|unknown|IoT Hub はエンドポイントとの接続を確立していません。 このエンドポイントとの間でメッセージが配信または拒否されたことはありません。|
+|dead|IoT Hub が再試行期間中にメッセージの送信を再試行した後、エンドポイントはメッセージを受け付けていません。|
 
 ## <a name="field-gateways"></a>フィールド ゲートウェイ
 

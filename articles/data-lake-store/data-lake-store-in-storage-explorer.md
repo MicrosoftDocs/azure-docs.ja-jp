@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: 537c94976dbb4f7753b7fafb3b6c94e97cc2cc17
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: bf2af67bb9498d4814f63fa66fdd50171ce0b4a1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126328"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534346"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Storage Explorer を使用して Azure Data Lake Storage Gen1 リソースを管理する
 
@@ -136,7 +136,7 @@ Data Lake Storage Gen1 アカウントを作成した後で、次の操作を実
 
    ![アップロードが進行中のダイアログ ボックス](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-drag.png) 
 
-> [!NOTE] 
+> [!NOTE]
 > ローカル コンピューター上のフォルダーとファイルは、アップロードを開始するために直接ドラッグできます。 
        
 ### <a name="download-folders-or-files-to-your-local-computer"></a>フォルダーまたはファイルをローカル コンピューターにダウンロードする
@@ -164,7 +164,7 @@ Data Lake Storage Gen1 アカウントを作成した後で、次の操作を実
 
 ![フォルダーをコピーするための選択](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-copy-paste.png)
 
-> [!NOTE] 
+> [!NOTE]
 > 異なる種類のストレージ間でのコピー/貼り付け操作はサポートされていません。 Data Lake Storage Gen1 のフォルダーまたはファイルをコピーして、それらを別の Data Lake Storage Gen1 アカウントに貼り付けることはできます。 一方、Data Lake Storage Gen1 のフォルダーやファイルをコピーして、Azure Blob Storage に貼り付けることも、その逆の操作を行うことも "*できません*"。
 > 
 > コピー/貼り付け操作は、フォルダーまたはファイルをローカル コンピューターにダウンロードして、目的の場所にアップロードすることで動作します。 ツールがバックエンドでアクションを実行することは "*ありません*"。 大きなファイルのコピー/貼り付け操作には時間がかかります。 パフォーマンスの高いファイルのコピーと移動の最適化が行われています。
@@ -195,7 +195,7 @@ URL がある場合は、エクスプローラーまたはブラウザーのア�
 
 
 ## <a name="next-steps"></a>次の手順
-* [最新の Storage Explorer のリリース ノートとビデオ](http://www.storageexplorer.com)を確認します。
+* [最新の Storage Explorer のリリース ノートとビデオ](https://www.storageexplorer.com)を確認します。
 * [Azure Storage Explorer で Azure Cosmos DB を管理する](https://docs.microsoft.com/azure/cosmos-db/storage-explorer)方法を学習します。
 * [Storage Explorer の概要](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)を参照します。
 * [Azure Data Lake Storage Gen1 の使用を開始する](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)。

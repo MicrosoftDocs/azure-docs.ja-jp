@@ -10,14 +10,14 @@ ms.service: security
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 03/30/2018
+ms.date: 01/16/2019
 ms.author: angrobe
-ms.openlocfilehash: 98cb089baa759b6569d1e1e06c90022eb75f5355
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e83a49f83fd8ac890a6c89eba3ef1c4a88f52df0
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228116"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390582"
 ---
 # <a name="azure-security-documentation"></a>Azure のセキュリティのドキュメント
 
@@ -162,7 +162,7 @@ ms.locfileid: "51228116"
     </li>
 </ul>
 
-<ul class="cardsL panelContent singlePanelContent" style="display:flex!important;"> 
+<ul class="cardsL panelContent singlePanelContent" style="display:flex!important;">
     <li style="list-style: none;">
         <div class="cardSize">
             <div class="cardPadding">
@@ -181,7 +181,7 @@ ms.locfileid: "51228116"
                                 <a class="barLink" href="/azure/security/abstract-azure-network-security">Azure のネットワーク セキュリティ</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/abstract-container-security-microsoft-azure">Microsoft Azure のコンテナーのセキュリティ</a>
+                                <a class="barLink" href="/azure/security/abstract-develop-secure-apps">セキュリティで保護されたアプリケーションを Azure 上で開発する</a>
                             </li>
                         </ul>
                     </div>
@@ -216,7 +216,7 @@ ms.locfileid: "51228116"
                                 <a class="barLink" href="/azure/security/azure-security-iaas">IaaS のセキュリティ</a>
                             </li>
                             <li style="list-style: none;">
-                                <a class="barLink" href="/azure/security/azure-service-fabric-security-best-practices">Service Fabric のセキュリティ</a>
+                                <a class="barLink" href="/azure/security/security-paas-deployments">PaaS デプロイのセキュリティ保護</a>
                             </li>
                             <li style="list-style: none;">
                                 <a class="barLink" href="/azure/security/azure-security-global-admin">Azure 管理者アカウントのセキュリティ保護</a>

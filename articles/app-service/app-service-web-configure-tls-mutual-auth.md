@@ -1,9 +1,9 @@
 ---
-title: Web アプリの TLS 相互認証を構成する方法
-description: Web アプリを TLS でクライアント証明書認証を使用するように構成する方法について説明します。
+title: TLS 相互認証の構成 - Azure App Service
+description: TLS でクライアント証明書認証を使用するようにアプリを構成する方法について説明します。
 services: app-service
 documentationcenter: ''
-author: naziml
+author: cephalin
 manager: erikre
 editor: jimbe
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
@@ -12,55 +12,43 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/08/2016
-ms.author: naziml
-ms.openlocfilehash: 894a77be05de131ab122f18c62d209e9829357f9
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.date: 02/22/2019
+ms.author: cephalin
+ms.custom: seodec18
+ms.openlocfilehash: 5702362add6a50f2f4525afbd3649f083f34b6fc
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056210"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671966"
 ---
-# <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>Web アプリの TLS 相互認証を構成する方法
-## <a name="overview"></a>概要
-さまざまな種類の認証を有効にすることで、Azure Web アプリへのアクセスを制限できます。 これを行う 1 つの方法は、要求が TLS と SSL を経由するときに、クライアント証明書を使用して認証することです。 このメカニズムは、TLS 相互認証またはクライアント証明書認証と呼ばれます。この記事では、クライアント証明書認証を使用するように Web アプリを設定する方法について詳しく説明します。
+# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Azure App Service に対する TLS 相互認証の構成
 
-> **注:** HTTPS ではなく HTTP 経由でサイトにアクセスする場合は、クライアント証明書を受信しません。 したがって、アプリケーションにクライアント証明書が必要な場合は、HTTP 経由でのアプリケーションへの要求を許可しないでください。
-> 
-> 
+さまざまな種類の認証を有効にすることで、Azure App Service アプリへのアクセスを制限できます。 その方法の 1 つとして、クライアント要求が TLS/SSL を経由するときにクライアント証明書を要求し、その証明書を検証することが挙げられます。 このメカニズムは TLS 相互認証またはクライアント証明書認証と呼ばれます。 この記事では、クライアント証明書認証を使用するようにアプリを設定する方法について説明します。
 
-[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+> [!NOTE]
+> HTTPS ではなく HTTP 経由でサイトにアクセスする場合は、クライアント証明書を受信しません。 したがって、アプリケーションにクライアント証明書が必要な場合は、HTTP 経由でのアプリケーションへの要求を許可しないでください。
+>
 
-## <a name="configure-web-app-for-client-certificate-authentication"></a>Web アプリのクライアント証明書認証を構成する
-Web アプリを、クライアント証明書を要求するように設定するには、Web アプリ用の clientCertEnabled サイト設定を追加し、true に設定する必要があります。 この設定は、Azure portal の SSL 証明書ブレードで構成することもできます。
+## <a name="enable-client-certificates"></a>クライアント証明書を有効にする
 
-[ARMClient ツール](https://github.com/projectkudu/ARMClient) を使用して、REST API 呼び出しを簡単に作成できます。 このツールを使用してサインインした後、次のコマンドを発行する必要があります。
+クライアント証明書を要求するようにアプリを設定するには、アプリの `clientCertEnabled` 設定を `true` に設定する必要があります。 この設定を行うには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
 
-    ARMClient PUT subscriptions/{Subscription Id}/resourcegroups/{Resource Group Name}/providers/Microsoft.Web/sites/{Website Name}?api-version=2015-04-01 @enableclientcert.json -verbose
+```azurecli-interactive
+az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
+```
 
-{} 内のすべての Web アプリの情報に置き換え、enableclientcert.json という名前の次の JSON コンテンツを持つファイルを作成します。
+## <a name="access-client-certificate"></a>クライアント証明書にアクセスする
 
-    {
-        "location": "My Web App Location",
-        "properties": {
-            "clientCertEnabled": true
-        }
-    }
+App Service では、要求の SSL 終了がフロントエンドのロード バランサー側で行われます。 [クライアント証明書を有効にした](#enable-client-certificates)状態で要求をアプリ コードに転送すると、App Service によって `X-ARR-ClientCert` 要求ヘッダーにクライアント証明書が挿入されます。 App Service がこのクライアント証明書に対して行うのは、この証明書をアプリに転送する処理だけです。 クライアント証明書の検証はアプリ コードが行います。
 
-"location" の値を、Web アプリが配置される場所に変更します。例: 米国中北部、米国西部など。
+ASP.NET の場合は、**HttpRequest.ClientCertificate** プロパティを通じてクライアント証明書を使用できます。
 
-https://resources.azure.com を使用して `clientCertEnabled` プロパティを `true`に反転することもできます。
+他のアプリケーション スタック (Node.js や PHP など) の場合は、`X-ARR-ClientCert` 要求ヘッダー内の base64 エンコード値を通じて、アプリでクライアント証明書を使用できます。
 
-> **注:** PowerShell から ARMClient を実行する場合、JSON ファイルの \@ 記号をアクサン グラーブ (`) でエスケープする必要があります。
-> 
-> 
+## <a name="aspnet-sample"></a>ASP.NET のサンプル
 
-## <a name="accessing-the-client-certificate-from-your-web-app"></a>Web アプリからクライアント証明書にアクセスする
-ASP.NET を使用し、クライアント証明書認証を使用するようにアプリを構成する場合、証明書は **HttpRequest.ClientCertificate** プロパティを通じて利用可能になります。 他のアプリケーション スタックの場合は、"X-ARR-ClientCert" 要求ヘッダー内の base64 エンコード値を通して、アプリでクライアント証明書を使用できます。 アプリケーションは、この値から証明書を作成した後、アプリケーションの認証と承認の目的でそれを使用できます。
-
-## <a name="special-considerations-for-certificate-validation"></a>証明書の検証に関する特別な考慮事項
-アプリケーションに送信されるクライアント証明書は、Azure Web Apps プラットフォームによる検証を受けません。 この証明書の検証は、Web アプリが実行する必要があります。 認証するために証明書のプロパティを検証するサンプル ASP.NET コードを次に示します。
-
+```csharp
     using System;
     using System.Collections.Specialized;
     using System.Security.Cryptography.X509Certificates;
@@ -176,22 +164,53 @@ ASP.NET を使用し、クライアント証明書認証を使用するように
                 // 4. Check thumprint of certificate
                 if (String.Compare(certificate.Thumbprint.Trim().ToUpper(), "30757A2E831977D8BD9C8496E4C99AB26CB9622B") != 0) return false;
 
-                // If you also want to test if the certificate chains to a Trusted Root Authority you can uncomment the code below
-                //
-                //X509Chain certChain = new X509Chain();
-                //certChain.Build(certificate);
-                //bool isValidCertChain = true;
-                //foreach (X509ChainElement chElement in certChain.ChainElements)
-                //{
-                //    if (!chElement.Certificate.Verify())
-                //    {
-                //        isValidCertChain = false;
-                //        break;
-                //    }
-                //}
-                //if (!isValidCertChain) return false;
-
                 return true;
             }
         }
     }
+```
+
+## <a name="nodejs-sample"></a>Node.js のサンプル
+
+次の Node.js サンプル コードは、`X-ARR-ClientCert` ヘッダーを取得し、[node-forge](https://github.com/digitalbazaar/forge) を使用して base64 エンコード PEM 文字列を証明書オブジェクトに変換して検証します。
+
+```javascript
+import { NextFunction, Request, Response } from 'express';
+import { pki, md, asn1 } from 'node-forge';
+
+export class AuthorizationHandler {
+    public static authorizeClientCertificate(req: Request, res: Response, next: NextFunction): void {
+        try {
+            // Get header
+            const header = req.get('X-ARR-ClientCert');
+            if (!header) throw new Error('UNAUTHORIZED');
+
+            // Convert from PEM to pki.CERT
+            const pem = `-----BEGIN CERTIFICATE-----${header}-----END CERTIFICATE-----`;
+            const incomingCert: pki.Certificate = pki.certificateFromPem(pem);
+
+            // Validate certificate thumbprint
+            const fingerPrint = md.sha1.create().update(asn1.toDer((pki as any).certificateToAsn1(incomingCert)).getBytes()).digest().toHex();
+            if (fingerPrint.toLowerCase() !== 'abcdef1234567890abcdef1234567890abcdef12') throw new Error('UNAUTHORIZED');
+
+            // Validate time validity
+            const currentDate = new Date();
+            if (currentDate < incomingCert.validity.notBefore || currentDate > incomingCert.validity.notAfter) throw new Error('UNAUTHORIZED');
+
+            // Validate issuer
+            if (incomingCert.issuer.hash.toLowerCase() !== 'abcdef1234567890abcdef1234567890abcdef12') throw new Error('UNAUTHORIZED');
+
+            // Validate subject
+            if (incomingCert.subject.hash.toLowerCase() !== 'abcdef1234567890abcdef1234567890abcdef12') throw new Error('UNAUTHORIZED');
+
+            next();
+        } catch (e) {
+            if (e instanceof Error && e.message === 'UNAUTHORIZED') {
+                res.status(401).send();
+            } else {
+                next(e);
+            }
+        }
+    }
+}
+```

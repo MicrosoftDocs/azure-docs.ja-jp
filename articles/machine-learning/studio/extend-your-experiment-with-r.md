@@ -1,28 +1,23 @@
 ---
-title: R を使用した実験の拡張 | Microsoft Docs
+title: R を使用した実験の拡張
+titleSuffix: Azure Machine Learning Studio
 description: R スクリプトの実行モジュール使用して、R 言語によって Azure Machine Learning Studio 機能を拡張する方法。
 services: machine-learning
-documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
-editor: cgronlun
-ms.assetid: 2c038a45-ba4d-42ea-9a88-e67391ef8c0a
 ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: studio
+ms.topic: conceptual
+author: xiaoharper
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 1f05119d94611df2e75afc3a56d9682d1149326c
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 8c1292d0d36874892a286d91b1e367c7336b99aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834476"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848798"
 ---
-# <a name="extend-your-experiment-with-r"></a>R を使用した実験の拡張
+# <a name="azure-machine-learning-studio-extend-your-experiment-with-r"></a>Azure Machine Learning Studio:R を使用した実験の拡張 
 [R スクリプトの実行][execute-r-script]モジュール使用して、R 言語によって Azure Machine Learning Studio 機能を拡張できます。
 
 このモジュールは、複数の入力データセットを受け取り、1 つのデータセットを出力として生成します。 [R スクリプトの実行][execute-r-script]モジュールの **R Script** パラメーターに、R スクリプトを入力できます。
@@ -32,7 +27,7 @@ ms.locfileid: "34834476"
     dataset1 <- maml.mapInputPort(1)
 
 ## <a name="listing-all-currently-installed-packages"></a>現在インストールされているすべてのパッケージを一覧表示する
-インストールされているパッケージの一覧を変更できます。 現在インストールされているパッケージの一覧は、「[R Packages Supported by Azure Machine Learning (Azure Machine Learning でサポートされている R パッケージ)](https://msdn.microsoft.com/library/azure/mt741980.aspx)」で確認できます。
+インストールされているパッケージの一覧を変更できます。 現在インストールされているパッケージの一覧については、「[R Packages Supported by Azure Machine Learning Studio](https://msdn.microsoft.com/library/azure/mt741980.aspx)」(Azure Machine Learning Studio でサポートされている R パッケージ) を参照してください。
 
 また、[R スクリプトの実行][execute-r-script]モジュールに次のコードを入力して、現在インストールされているパッケージの完全な一覧を取得することもできます。
 
@@ -46,7 +41,7 @@ ms.locfileid: "34834476"
 
 
 <!--
-For convenience, here is the [current full list with version numbers in Excel format](http://az754797.vo.msecnd.net/docs/RPackages.xlsx).
+For convenience, here is the [current full list with version numbers in Excel format](https://az754797.vo.msecnd.net/docs/RPackages.xlsx).
 -->
 
 ## <a name="importing-packages"></a>パッケージをインポートする
@@ -57,7 +52,7 @@ For convenience, here is the [current full list with version numbers in Excel fo
 
 上記の `my_favorite_package.zip` はパッケージが含まれているファイルです。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 
 <!-- Module References -->

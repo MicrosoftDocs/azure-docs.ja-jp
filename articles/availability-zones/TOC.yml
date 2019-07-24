@@ -1,0 +1,97 @@
+- name: Azure の回復性
+  items:
+    - name: Azure の回復性の機能に関するページ
+      href: 'https://azure.microsoft.com/features/resiliency'
+    - name: 回復性に優れた Azure 用アプリケーションの設計
+      href: 'https://docs.microsoft.com/azure/architecture/resiliency/'
+- name: 高可用性
+  items:
+    - name: Azure アプリケーションの高可用性
+      href: 'https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications'
+    - name: 可用性ゾーンのドキュメント
+      items:
+        - name: 可用性ゾーンとは
+          href: az-overview.md
+        - name: 仮想マシン
+          items:
+            - name: CLI を使用して可用性ゾーン内に Linux VM を作成する
+              href: ../virtual-machines/linux/create-cli-availability-zone.md
+            - name: PowerShell を使用して可用性ゾーン内に Windows VM を作成する
+              href: ../virtual-machines/windows/create-powershell-availability-zone.md
+            - name: Azure portal を使用して可用性ゾーン内に Windows VM を作成する
+              href: ../virtual-machines/windows/create-portal-availability-zone.md
+        - name: マネージド ディスク
+          items:
+            - name: CLI を使用して可用性ゾーン内にマネージド ディスクを追加する
+              href: '../virtual-machines/linux/add-disk.md#use-managed-disks'
+            - name: PowerShell を使用して可用性ゾーン内にマネージド ディスクを追加する
+              href: '../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine'
+        - name: 仮想マシン スケール セット
+          items:
+            - name: 可用性ゾーン内にスケール セットを作成する
+              href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md
+        - name: Load Balancer
+          items:
+            - name: Load Balancer とは
+              href: ../load-balancer/load-balancer-standard-overview.md
+            - name: Load Balancer Standard と Availability Zones
+              href: ../load-balancer/load-balancer-standard-availability-zones.md
+            - name: ゾーン冗長パブリック Standard Load Balancer を作成する
+              href: ../load-balancer/load-balancer-get-started-internet-az-portal.md
+              items:
+                - name: ゾーン冗長パブリック Standard Load Balancer を作成する (PowerShell)
+                  href: ../load-balancer/load-balancer-get-started-internet-az-powershell.md
+                - name: ゾーン冗長パブリック Standard Load Balancer を作成する (CLI)
+                  href: ../load-balancer/load-balancer-get-started-internet-az-cli.md
+            - name: ゾーン パブリック Standard Load Balancer を作成する
+              href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-portal.md
+              items:
+                - name: ゾーン パブリック Standard Load Balancer を作成する (PowerShell)
+                  href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-powershell.md
+                - name: ゾーン冗長パブリック Standard Load Balancer を作成する (CLI)
+                  href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-cli.md
+            - name: 可用性ゾーン間で VM の負荷分散を行う
+              href: ../load-balancer/load-balancer-standard-public-availability-zones-portal.md
+              items:
+                - name: Azure を使用して可用性ゾーン全体で VM の負荷分散を行う (CLI)
+                  href: ../load-balancer/load-balancer-standard-public-zone-redundant-cli.md
+        - name: パブリック IP アドレス
+          href: '../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address'
+        - name: SQL Database
+          items:
+            - name: SQL Database での可用性ゾーン
+              href: '../sql-database/sql-database-high-availability.md#zone-redundant-configuration'
+        - name: Storage
+          items:
+            - name: ゾーン冗長ストレージ
+              href: ../storage/common/storage-redundancy-zrs.md
+        - name: Event Hubs
+          items:
+            - name: Event Hubs の geo ディザスター リカバリー
+              href: '../event-hubs/event-hubs-geo-dr.md#availability-zones-preview'
+        - name: Service Bus
+          items:
+            - name: Service Bus の geo ディザスター リカバリー
+              href: '../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview'
+        - name: VPN Gateway
+          items:
+            - name: ゾーン冗長仮想ネットワーク ゲートウェイの作成
+              href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+        - name: ExpressRoute
+          items:
+            - name: ゾーン冗長仮想ネットワーク ゲートウェイの作成
+              href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+- name: ディザスター リカバリー
+  items:
+    - name: Azure Site Recovery を使用する
+      href: 'https://docs.microsoft.com/azure/site-recovery/'
+- name: Azure Backup
+  items:
+    - name: Azure Backup の使用
+      href: 'https://docs.microsoft.com/azure/backup/'
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Azure リージョン
+      href: 'https://azure.microsoft.com/regions/'

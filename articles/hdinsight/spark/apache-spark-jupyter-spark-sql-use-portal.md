@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Azure portal を使用して HDInsight に Spark クラスターを作成する'
+title: クイック スタート:Azure portal を使用して HDInsight に Spark クラスターを作成する
 description: このクイック スタートでは、Azure portal を使って、Azure HDInsight に Apache Spark クラスターを作成し、Spark SQL を実行する方法を示します。
 services: hdinsight
 author: hrasheed-msft
@@ -9,26 +9,26 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.custom: mvc
-ms.openlocfilehash: 370503cc463fd3683f47fe0b573ad83daa0b9d14
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 6f96195197daf026cddee10785e0cadae8096031
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584555"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111771"
 ---
-# <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-the-azure-portal"></a>クイック スタート: Azure portal を使用して HDInsight に Apache Spark クラスターを作成する
-Azure HDInsight に Apache Spark クラスターを作成し、Hive テーブルに対して Spark SQL クエリを実行する方法を説明します。 Apache Spark により、メモリ内処理を使用した、高速のデータ分析とクラスター コンピューティングが可能になります。 HDInsight での Spark について詳しくは、「[概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)」を参照してください。
+# <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して HDInsight に Apache Spark クラスターを作成する
+Azure HDInsight に Apache Spark クラスターを作成し、Hive テーブルに対して Spark SQL クエリを実行する方法を説明します。 Apache Spark により、メモリ内処理を使用した、高速のデータ分析とクラスター コンピューティングが可能になります。 HDInsight 上のSpark については、[Azure HDInsight での Apache Spark の概要](apache-spark-overview.md)に関する記事をご覧ください。
 
-このクイック スタートでは、Azure portal を使って HDInsight Spark クラスターを作成します。 クラスターは、クラスター記憶域として Azure Storage Blob を使います。 Data Lake Storage Gen2 の使用について詳しくは、「[クイック スタート: HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
+このクイック スタートでは、Azure portal を使って HDInsight Spark クラスターを作成します。 クラスターは、クラスター記憶域として Azure Storage Blob を使います。 Data Lake Storage Gen2 の使用法の詳細については、「[クイック スタート:HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > HDInsight クラスターの料金は、そのクラスターを使用しているかどうかに関係なく、分単位で課金されます。 使用後は、クラスターを必ず削除してください。 詳しくは、この記事の「[リソースのクリーンアップ](#clean-up-resources)」をご覧ください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="create-an-hdinsight-spark-cluster"></a>HDInsight Spark クラスターを作成する
 
-1. Azure portal で、**[リソースの作成]** > **[データ + 分析]** > **[HDInsight]** の順に選びます。 
+1. Azure portal で、**[リソースの作成]** > **[分析]** > **[HDInsight]** の順に選びます。 
 
     ![Azure portal 上の HDInsight](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster.png "Azure portal 上の HDInsight")
 2. **[基本]** で次の値を指定します。
@@ -37,11 +37,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |---------|---------|
     |**クラスター名**     | HDInsight Spark クラスターの名前を指定します。 このクイック スタートで使われるクラスターの名前は **myspark20180403** です。|
     |**サブスクリプション**     | ドロップダウンから、このクラスターに使う Azure サブスクリプションを選びます。 このクイックスタートで使うサブスクリプションは **&lt;Azure サブスクリプション>** です。 |
-    |**クラスターの種類**| 項目を展開し、クラスターの種類として **[Spark]** を選んで、Spark クラスターのバージョンを指定します。 <br/> <img src="./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster-type.png" alt = "Slect HDInsight clsuter type" /> |
+    |**クラスターの種類**| 項目を展開し、クラスターの種類として **[Spark]** を選んで、Spark クラスターのバージョンを指定します。 <br/> <img src="./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster-type.png" alt = "Select HDInsight cluster type" /> |
     |**クラスター ログイン ユーザー名**| クラスターのログイン ユーザー名を入力します。  既定の名前は *admin*です。クイック スタートの後半で、このアカウントを使って Jupyter Notebook にログインします。 |
     |**クラスター ログイン パスワード**| クラスターのログイン パスワードを入力します。 |
     |**Secure Shell (SSH) ユーザー名**| SSH ユーザー名を入力します。 このクイック スタートで使う SSH ユーザー名は **sshuser** です。 既定では、このアカウントは "*クラスター ログイン ユーザー名*" アカウントと同じパスワードを共有します。 |
-    |**[リソース グループ]**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 このクイック スタートで使うリソース グループ名は **myspark20180403rg** です。 |
+    |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 このクイック スタートで使うリソース グループ名は **myspark20180403rg** です。 |
     |**場所**     | リソース グループの場所を選びます。 テンプレートでは、この場所をクラスターの作成および既定のクラスター ストレージに使用します。 このクイック スタートで使う場所は **米国東部 2** です。 |
 
     ![HDInsight Spark クラスターの基本構成を作成する](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster-basic2.png "HDInsight Spark クラスターの基本構成を作成する")
@@ -49,21 +49,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     **[次へ]** を選んで、**[ストレージ]** ページに進みます。
 3. **[ストレージ]** で次の値を指定します。
 
-    - **[ストレージ アカウントの選択]**: **[新規作成]** を選び、新しいストレージ アカウントの名前を指定します。 このクイック スタートで使うストレージ アカウント名は **myspark20180403store** です。
+   - **[ストレージ アカウントの選択]**: **[新規作成]** を選び、新しいストレージ アカウントの名前を指定します。 このクイック スタートで使うストレージ アカウント名は **myspark20180403store** です。
 
-    ![HDInsight Spark クラスターのストレージ構成を作成する](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster-storage.png "HDInsight Spark クラスターのストレージ構成を作成する")
+     ![HDInsight Spark クラスターのストレージ構成を作成する](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster-storage.png "HDInsight Spark クラスターのストレージ構成を作成する")
 
-    > [!NOTE] 
-    > スクリーンショットでは、**[既存のものを選択]** が表示されています。 リンクには **[新規作成]** と **[既存のものを選択]** のどちらかが表示されます。
+     > [!NOTE]  
+     > スクリーンショットでは、**[既存のものを選択]** が表示されています。 リンクには **[新規作成]** と **[既存のものを選択]** のどちらかが表示されます。
 
-    **[既定のコンテナー]** には既定の名前が表示されます。  名前は必要に応じて変更できます。
+     **[既定のコンテナー]** には既定の名前が表示されます。  名前は必要に応じて変更できます。
 
-    **[次へ]** を選んで、**[サマリー]** ページに進みます。 
+     **[次へ]** を選んで、**[サマリー]** ページに進みます。 
 
 
 3. **[サマリー]** で **[作成]** を選びます。 クラスターの作成には約 20 分かかります。 次のセッションに進む前に、クラスターを作成する必要があります。
 
-HDInsight クラスターを作成する際に問題が発生した場合は、適切なアクセス許可がない可能性があります。 詳細については、「[アクセス制御の要件](../hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
+HDInsight クラスターを作成する際に問題が発生した場合は、適切なアクセス許可がない可能性があります。 詳細については、「[アクセス制御の要件](../hdinsight-hadoop-create-linux-clusters-portal.md)」を参照してください。
 
 ## <a name="create-a-jupyter-notebook"></a>Jupyter Notebook の作成
 

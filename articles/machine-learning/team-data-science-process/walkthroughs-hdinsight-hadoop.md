@@ -1,22 +1,22 @@
 ---
-title: Azure 上の Hive を使用した HDInsight Hadoop データ サイエンスのチュートリアル | Microsoft Docs
+title: Hive を用いた Azure HDInsight Hadoop での分析 - Team Data Science Process
 description: Azure HDInsight Hadoop で Hive を使用して予測分析を行う Team Data Science Process の例を紹介します。
 services: machine-learning
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: eae56eda72d775205a231e2c6482a1c0686d9251
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: d3c3278a058162632a6ba7ea9731e5f233190700
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445926"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57843710"
 ---
 # <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>Azure 上の Hive を使用した HDInsight Hadoop データ サイエンスのチュートリアル 
 
@@ -36,7 +36,7 @@ Team Data Science Process を実行するデータ サイエンスのチュー�
 
 ## <a name="predict-advertisement-clicks-using-hive-with-hdinsight-hadoop"></a>Hive と HDInsight Hadoop を使って広告クリックを予測する
 
-[1 TB データセットでの Azure HDInsight Hadoop クラスターの使用](hive-criteo-walkthrough.md)に関するチュートリアルでは、公開されている [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) のクリック データセットを使用して、チップが支払われるかどうかと、想定される金額の範囲を予測します。 このシナリオでは、[Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)と Hive を使って、データの格納、調査、特徴エンジニアリング、ダウン サンプリングが実行されています。 ユーザーが広告をクリックするかどうかを予測する二項分類モデルの構築、トレーニング、スコア付けを、Azure Machine Learning を使って行います。 そのモデルの 1 つを Web サービスとして公開する方法が、チュートリアルの最後に紹介されています。
+[1 TB データセットでの Azure HDInsight Hadoop クラスターの使用](hive-criteo-walkthrough.md)に関するチュートリアルでは、公開されている [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) のクリック データセットを使用して、チップが支払われるかどうかと、想定される金額の範囲を予測します。 このシナリオでは、[Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)と Hive を使って、データの格納、調査、特徴エンジニアリング、ダウン サンプリングが実行されています。 ユーザーが広告をクリックするかどうかを予測する二項分類モデルの構築、トレーニング、スコア付けを、Azure Machine Learning を使って行います。 そのモデルの 1 つを Web サービスとして公開する方法が、チュートリアルの最後に紹介されています。
 
 
 ## <a name="next-steps"></a>次の手順

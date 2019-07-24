@@ -3,7 +3,7 @@ items:
   href: index.md
 - name: 概要
   items:
-  - name: SQL Data Warehouse について
+  - name: SQL Data Warehouse の概要
     href: sql-data-warehouse-overview-what-is.md
   - name: SQL Data Warehouse のアーキテクチャ
     href: massively-parallel-processing-mpp-architecture.md
@@ -20,20 +20,24 @@ items:
 - name: リリース ノート
   href: release-notes.md
   items:
-  - name: 2018 年 10 月
-    href: release-notes-october-2018.md
-  - name: 2018 年 9 月
-    href: release-notes-september-2018.md
-  - name: 2018 年 8 月
-    href: release-notes-august-2018.md
-  - name: 2018 年 7 月
-    href: release-notes-july-2018.md
-  - name: 2018 年 6 月
-    href: release-notes-june-2018.md
-  - name: 2018 年 5 月
-    href: release-notes-may-2018.md
-  - name: 2018 年 4 月
-    href: release-notes-april-2018.md
+  - name: 最新のリリース
+    href: release-notes-10-0-10106-0.md
+  - name: Gen2 のリージョンのアップグレード スケジュール
+    href: gen2-migration-schedule.md
+  - name: アーカイブされたリリース ノート
+    items:
+    - name: 2018 年 9 月
+      href: release-notes-september-2018.md
+    - name: 2018 年 8 月
+      href: release-notes-august-2018.md
+    - name: 2018 年 7 月
+      href: release-notes-july-2018.md
+    - name: 2018 年 6 月
+      href: release-notes-june-2018.md
+    - name: 2018 年 5 月
+      href: release-notes-may-2018.md
+    - name: 2018 年 4 月
+      href: release-notes-april-2018.md
 - name: クイック スタート
   items:
   - name: 作成と接続
@@ -56,6 +60,12 @@ items:
       href: quickstart-scale-compute-powershell.md
     - name: T-SQL
       href: quickstart-scale-compute-tsql.md
+  - name: ワークロード管理
+    items:
+    - name: ワークロード分類子の作成 (プレビュー)
+      items:
+      - name: T-SQL
+        href: quickstart-create-a-workload-classifier-tsql.md
   expanded: true
 - name: 概念
   items:
@@ -67,7 +77,7 @@ items:
       href: ../sql-database/sql-database-control-access.md?toc=/azure/sql-data-warehouse/toc.json
     - name: ファイアウォール規則
       href: ../sql-database/sql-database-firewall-configure.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: ファイアウォールの仮想ネットワーク ルール
+    - name: Virtual Network サービスのエンドポイント
       href: ../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/sql-data-warehouse/toc.json
     - name: Authentication
       href: sql-data-warehouse-authentication.md?toc=/azure/sql-data-warehouse/toc.json
@@ -78,7 +88,9 @@ items:
     - name: 多要素認証
       href: ../sql-database/sql-database-ssms-mfa-authentication.md?toc=/azure/sql-data-warehouse/toc.json
     - name: 監査
-      href: sql-data-warehouse-auditing-overview.md
+      href: ../sql-database/sql-database-auditing.md?toc=/azure/sql-data-warehouse/toc.json
+    - name: データの検出と分類
+      href: https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc.json
     - name: 列レベルのセキュリティ
       href: column-level-security.md
     - name: 行レベルのセキュリティ
@@ -147,6 +159,10 @@ items:
     items:
     - name: リソース クラスとワークロード管理
       href: resource-classes-for-workload-management.md
+    - name: ワークロード分類 (プレビュー)
+      href: sql-data-warehouse-workload-classification.md
+    - name: ワークロードの重要度 (プレビュー)
+      href: sql-data-warehouse-workload-importance.md
     - name: メモリとコンカレンシーの制限
       href: memory-and-concurrency-limits.md
   - name: 管理容易性と監視
@@ -161,8 +177,6 @@ items:
       href: backup-and-restore.md
     - name: Recommendations
       href: sql-data-warehouse-concept-recommendations.md
-    - name: メンテナンス スケジュール
-      href: service-maintenance.md
     - name: トラブルシューティング
       href: sql-data-warehouse-troubleshoot.md
   - name: メンテナンス スケジュール
@@ -177,8 +191,6 @@ items:
     items:
     - name: 概要
       href: sql-data-warehouse-overview-integrate.md
-    - name: SQL Database エラスティック クエリ
-      href: how-to-use-elastic-query-with-sql-data-warehouse.md
 - name: ハウツー ガイド
   items:
   - name: セキュリティ保護
@@ -229,18 +241,18 @@ items:
     items:
     - name: ワークロードの分析
       href: analyze-your-workload.md
-  - name: 監視と調整
+  - name: 管理および監視
     items:
-    - name: ワークロードの監視
-      href: sql-data-warehouse-manage-monitor.md
     - name: Gen2 へのアップグレード
       href: upgrade-to-latest-generation.md
-    - name: Gen2 キャッシュの監視
-      href: sql-data-warehouse-how-to-monitor-cache.md
     - name: データ ウェアハウスの復元
       href: sql-data-warehouse-restore.md
-    - name: パフォーマンス レベルの自動化
-      href: manage-compute-with-azure-functions.md
+    - name: ワークロードの監視 - ポータル
+      href: sql-data-warehouse-monitor-workload-portal.md
+    - name: ワークロードの監視 - DMV
+      href: sql-data-warehouse-manage-monitor.md
+    - name: Gen2 キャッシュの監視
+      href: sql-data-warehouse-how-to-monitor-cache.md
   - name: 統合
     items:
     - name: 機械学習の使用
@@ -255,10 +267,12 @@ items:
         href: sql-data-warehouse-integrate-azure-stream-analytics.md
     - name: ダッシュボードとレポートのビルド
       items:
-      - name: SQL Database エラスティック クエリの構成
-        href: tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md
       - name: Power BI による視覚化
         href: sql-data-warehouse-get-started-visualize-with-power-bi.md
+  - name: トラブルシューティング
+    items:
+    - name: 接続
+      href: sql-data-warehouse-troubleshoot-connectivity.md
 - name: リファレンス
   items:
   - name: T-SQL
@@ -294,18 +308,18 @@ items:
   - name: サポート
     href: sql-data-warehouse-get-started-create-support-ticket.md
   - name: ビデオ
-    href: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+    href: sql-data-warehouse-videos.md
   - name: パートナー
     items:
     - name: Business intelligence
       href: sql-data-warehouse-partner-business-intelligence.md
     - name: データ統合
       href: sql-data-warehouse-partner-data-integration.md
-    - name: '[データ管理]'
+    - name: データ管理
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: ec30b0d6cdfeea74350bfdfdc6503992adf20285
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 52d14867099b85b2d03cc3c536026032fc56263f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578180"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620502"

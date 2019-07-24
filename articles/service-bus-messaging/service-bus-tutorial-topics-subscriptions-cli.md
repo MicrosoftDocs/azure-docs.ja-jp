@@ -9,14 +9,14 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 1d2be579dda9f90f06897f11d62ccd08076f892e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 60c4d1631717eea602e391387d57afe268efbace
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413572"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075886"
 ---
-# <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>チュートリアル: CLI とトピック/サブスクリプションを使用して在庫を更新する
+# <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>チュートリアル:CLI とトピック/サブスクリプションを使用して在庫を更新する
 
 Microsoft Azure Service Bus は、アプリケーションとサービスの間で情報を送信するマルチテナント クラウド メッセージング サービスです。 非同期操作により、柔軟なブローカー メッセージング、構造化された先入れ先出し型 (FIFO) のメッセージング、および発行/購読機能が可能になります。 このチュートリアルでは、公開/サブスクライブ チャネルで Azure CLI と Java を使用して、小売在庫シナリオで Service Bus トピックとサブスクリプションを使用する方法について説明します。
 
@@ -126,7 +126,7 @@ connectionString=$(az servicebus namespace authorization-rule keys list \
 
 ## <a name="create-filter-rules-on-subscriptions"></a>サブスクリプションに対してフィルター ルールを作成する
 
-名前空間とトピック/サブスクリプションがプロビジョニングされ、必要な資格情報を持っている場合、サブスクリプションに対してフィルター ルールを作成し、メッセージを送受信できる状態です。 [こちらの GitHub サンプル フォルダー](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/quickstarts-and-tutorials/tutorial-topics-subscriptions-filters-java/src/main/java/com/microsoft/azure/)でコードを調べることができます。
+名前空間とトピック/サブスクリプションがプロビジョニングされ、必要な資格情報を持っている場合、サブスクリプションに対してフィルター ルールを作成し、メッセージを送受信できる状態です。 [こちらの GitHub サンプル フォルダー](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)でコードを調べることができます。
 
 ## <a name="send-and-receive-messages"></a>メッセージを送受信する
 
@@ -148,7 +148,7 @@ connectionString=$(az servicebus namespace authorization-rule keys list \
 4. プログラムを実行するには、次のコマンドを発行します。 プレースホルダーを、前の手順で取得した接続文字列とトピック名に置き換えます。
 
    ```shell
-  java -jar .\target\tutorial-topics-subscriptions-filters-1.0.0-jar-with-dependencies.jar -c "myConnectionString" -t "myTopicName"
+   java -jar .\target\tutorial-topics-subscriptions-filters-1.0.0-jar-with-dependencies.jar -c "myConnectionString" -t "myTopicName"
    ```
 
    トピックに送信され、次に個々のサブスクリプションから受信する 10 個のメッセージを観察します。
@@ -177,7 +177,7 @@ az group delete --resource-group my-resourcegroup
     static final String[] Subscriptions = {"S1","S2","S3"};
     static final String[] Store = {"Store1","Store2","Store3","Store4","Store5","Store6","Store7","Store8","Store9","Store10"};
     static final String SysField = "sys.To";
-    static final String CustomField = "StoreId";    
+    static final String CustomField = "StoreId";
     int NrOfMessagesPerStore = 1; // Send at least 1.
 ```
 
@@ -185,7 +185,7 @@ az group delete --resource-group my-resourcegroup
 
 ```java
 public static void main(String[] args) {
-        TutorialTopicsSubscriptionsFilters app = new TutorialTopicsSubscriptionsFilters();
+    TutorialTopicsSubscriptionsFilters app = new TutorialTopicsSubscriptionsFilters();
         try {
             app.runApp(args);
             app.run();
@@ -197,11 +197,11 @@ public static void main(String[] args) {
 }
 
 public void run() throws Exception {
-        // Send sample messages.
-        this.sendMessagesToTopic();
+    // Send sample messages.
+    this.sendMessagesToTopic();
 
-        // Receive messages from subscriptions.
-        this.receiveAllMessages();
+    // Receive messages from subscriptions.
+    this.receiveAllMessages();
 }
 ```
 
@@ -211,43 +211,43 @@ public void run() throws Exception {
 
 ```java
 public void sendMessagesToTopic() throws Exception, ServiceBusException {
-         // Create client for the topic.
-        TopicClient topicClient = new TopicClient(new ConnectionStringBuilder(ConnectionString, TopicName));
+    // Create client for the topic.
+    TopicClient topicClient = new TopicClient(new ConnectionStringBuilder(ConnectionString, TopicName));
 
-        // Create a message sender from the topic client.
+    // Create a message sender from the topic client.
 
-        System.out.printf("\nSending orders to topic.\n");
+    System.out.printf("\nSending orders to topic.\n");
 
-        // Now we can start sending orders.
-        CompletableFuture.allOf(
-                SendOrders(topicClient,Store[0]),
-                SendOrders(topicClient,Store[1]),
-                SendOrders(topicClient,Store[2]),
-                SendOrders(topicClient,Store[3]),
-                SendOrders(topicClient,Store[4]),
-                SendOrders(topicClient,Store[5]),
-                SendOrders(topicClient,Store[6]),
-                SendOrders(topicClient,Store[7]),
-                SendOrders(topicClient,Store[8]),
-                SendOrders(topicClient,Store[9])                
-        ).join();
+    // Now we can start sending orders.
+    CompletableFuture.allOf(
+            SendOrders(topicClient,Store[0]),
+            SendOrders(topicClient,Store[1]),
+            SendOrders(topicClient,Store[2]),
+            SendOrders(topicClient,Store[3]),
+            SendOrders(topicClient,Store[4]),
+            SendOrders(topicClient,Store[5]),
+            SendOrders(topicClient,Store[6]),
+            SendOrders(topicClient,Store[7]),
+            SendOrders(topicClient,Store[8]),
+            SendOrders(topicClient,Store[9])
+    ).join();
 
-        System.out.printf("\nAll messages sent.\n");
-    }
+    System.out.printf("\nAll messages sent.\n");
+}
 
-     public CompletableFuture<Void> SendOrders(TopicClient topicClient, String store) throws Exception {
+    public CompletableFuture<Void> SendOrders(TopicClient topicClient, String store) throws Exception {
 
         for(int i = 0;i<NrOfMessagesPerStore;i++) {
             Random r = new Random();
-            final Item item = new Item(r.nextInt(5),r.nextInt(5),r.nextInt(5));         
-            IMessage message = new Message(GSON.toJson(item,Item.class).getBytes(UTF_8)); 
+            final Item item = new Item(r.nextInt(5),r.nextInt(5),r.nextInt(5));
+            IMessage message = new Message(GSON.toJson(item,Item.class).getBytes(UTF_8));
             // We always set the Sent to field
-            message.setTo(store);    
+            message.setTo(store);
             final String StoreId = store;
             Double priceToString = item.getPrice();
             final String priceForPut = priceToString.toString();
             message.setProperties(new HashMap<String, String>() {{
-                // Additionally we add a customer store field. In reality you would use sys.To or a customer property but not both. 
+                // Additionally we add a customer store field. In reality you would use sys.To or a customer property but not both.
                 // This is just for demo purposes.
                 put("StoreId", StoreId);
                 // Adding more potential filter / rule and action able fields
@@ -255,12 +255,12 @@ public void sendMessagesToTopic() throws Exception, ServiceBusException {
                 put("Color", item.getColor());
                 put("Category", item.getItemCategory());
             }});
-                        
-            System.out.printf("Sent order to Store %s. Price=%f, Color=%s, Category=%s\n", StoreId, item.getPrice(), item.getColor(), item.getItemCategory());            
+
+            System.out.printf("Sent order to Store %s. Price=%f, Color=%s, Category=%s\n", StoreId, item.getPrice(), item.getColor(), item.getItemCategory());
             topicClient.sendAsync(message);
         }
-               
-        return new CompletableFuture().completedFuture(null);         
+
+        return new CompletableFuture().completedFuture(null);
     }
 ```
 
@@ -269,59 +269,59 @@ public void sendMessagesToTopic() throws Exception, ServiceBusException {
 `receiveAllMessages()` メソッドから `receiveAllMessageFromSubscription()` メソッドが呼び出されます。次に、呼び出しごとにサブスクリプション クライアントが作成され、個々のサブスクリプションからメッセージが受信されます。
 
 ```java
-public void receiveAllMessages() throws Exception {     
+public void receiveAllMessages() throws Exception {
     System.out.printf("\nStart Receiving Messages.\n");
-    
+
     CompletableFuture.allOf(
             receiveAllMessageFromSubscription(Subscriptions[0]),
             receiveAllMessageFromSubscription(Subscriptions[1]),
-            receiveAllMessageFromSubscription(Subscriptions[2]) 
+            receiveAllMessageFromSubscription(Subscriptions[2])
             ).join();
 }
 
 public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscription) throws Exception {
-        
-        int receivedMessages = 0;
 
-        // Create subscription client.
-        IMessageReceiver subscriptionClient = ClientFactory.createMessageReceiverFromConnectionStringBuilder(new ConnectionStringBuilder(ConnectionString, TopicName+"/subscriptions/"+ subscription), ReceiveMode.PEEKLOCK);
+    int receivedMessages = 0;
 
-        // Create a receiver from the subscription client and receive all messages.
-        System.out.printf("\nReceiving messages from subscription %s.\n\n", subscription);
+    // Create subscription client.
+    IMessageReceiver subscriptionClient = ClientFactory.createMessageReceiverFromConnectionStringBuilder(new ConnectionStringBuilder(ConnectionString, TopicName+"/subscriptions/"+ subscription), ReceiveMode.PEEKLOCK);
 
-        while (true)
+    // Create a receiver from the subscription client and receive all messages.
+    System.out.printf("\nReceiving messages from subscription %s.\n\n", subscription);
+
+    while (true)
+    {
+        // This will make the connection wait for N seconds if new messages are available.
+        // If no additional messages come we close the connection. This can also be used to realize long polling.
+        // In case of long polling you would obviously set it more to e.g. 60 seconds.
+        IMessage receivedMessage = subscriptionClient.receive(Duration.ofSeconds(1));
+        if (receivedMessage != null)
         {
-            // This will make the connection wait for N seconds if new messages are available. 
-            // If no additional messages come we close the connection. This can also be used to realize long polling.
-            // In case of long polling you would obviously set it more to e.g. 60 seconds.
-            IMessage receivedMessage = subscriptionClient.receive(Duration.ofSeconds(1));
-            if (receivedMessage != null)
-            {
-                if ( receivedMessage.getProperties() != null ) {                                                                                
-                    System.out.printf("StoreId=%s\n", receivedMessage.getProperties().get("StoreId"));                                                                                          
-                    
-                    // Show the label modified by the rule action
-                    if(receivedMessage.getLabel() != null)
-                        System.out.printf("Label=%s\n", receivedMessage.getLabel());   
-                }
+            if ( receivedMessage.getProperties() != null ) {
+                System.out.printf("StoreId=%s\n", receivedMessage.getProperties().get("StoreId"));
                 
-                byte[] body = receivedMessage.getBody();
-                Item theItem = GSON.fromJson(new String(body, UTF_8), Item.class);
-                System.out.printf("Item data. Price=%f, Color=%s, Category=%s\n", theItem.getPrice(), theItem.getColor(), theItem.getItemCategory());                          
-                
-                subscriptionClient.complete(receivedMessage.getLockToken());
-                receivedMessages++;
+                // Show the label modified by the rule action
+                if(receivedMessage.getLabel() != null)
+                    System.out.printf("Label=%s\n", receivedMessage.getLabel());
             }
-            else
-            {
-                // No more messages to receive.
-                subscriptionClient.close();
-                break;
-            }
+            
+            byte[] body = receivedMessage.getBody();
+            Item theItem = GSON.fromJson(new String(body, UTF_8), Item.class);
+            System.out.printf("Item data. Price=%f, Color=%s, Category=%s\n", theItem.getPrice(), theItem.getColor(), theItem.getItemCategory());
+            
+            subscriptionClient.complete(receivedMessage.getLockToken());
+            receivedMessages++;
         }
-        System.out.printf("\nReceived %s messages from subscription %s.\n", receivedMessages, subscription);
-        
-        return new CompletableFuture().completedFuture(null);
+        else
+        {
+            // No more messages to receive.
+            subscriptionClient.close();
+            break;
+        }
+    }
+    System.out.printf("\nReceived %s messages from subscription %s.\n", receivedMessages, subscription);
+    
+    return new CompletableFuture().completedFuture(null);
 }
 ```
 

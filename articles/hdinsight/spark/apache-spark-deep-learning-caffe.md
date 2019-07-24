@@ -8,23 +8,23 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: 71322869eb9272fb59b98a0e21b1f639129572b7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c79f840becce43c47287ef38bd39ed3ac9168b73
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255928"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891081"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>分散型深層学習用に Azure HDInsight Spark で Caffe を使用する
 
 
 ## <a name="introduction"></a>はじめに
 
-深層学習は、医療、輸送、製造など、あらゆる分野に影響を与えています。 企業は、[画像分類](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/)、[音声認識](http://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)、物体認識、機械翻訳などの困難な問題を解決するための手段としてディープ ラーニングを取り入れるようになっています。 
+深層学習は、医療、輸送、製造など、あらゆる分野に影響を与えています。 企業は、[画像分類](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/)、[音声認識](https://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)、物体認識、機械翻訳などの困難な問題を解決するための手段としてディープ ラーニングを取り入れるようになっています。 
 
-[Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/)、[Tensorflow](https://www.tensorflow.org/)、MXNet、Theano など、[多くの人気の高いフレームワーク](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)が登場しています。Caffe は、最も有名な非シンボリック (命令的) ニューラル ネットワーク フレームワークの 1 つであり、コンピューター ビジョンを含む多くの分野で広く使用されています。 さらに、[CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) では、Caffe と Apache Spark を結合して、深層学習を既存の Hadoop クラスターで簡単に使用できるようにしています。 深層学習を Spark ETL パイプラインと一緒に使用して、システムの複雑さと完全なソリューション学習の待機時間を短縮できます。
+[Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/)、[Tensorflow](https://www.tensorflow.org/)、[Apache MXNet](https://mxnet.apache.org/)、Theano など、[多くの一般的なフレームワーク](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)が存在します。[Caffe](https://caffe.berkeleyvision.org/) は、最も有名な非シンボリック (命令的) ニューラル ネットワーク フレームワークの 1 つであり、コンピューター ビジョンを含む多くの分野で広く使用されています。 さらに、[CaffeOnSpark](https://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) では、Caffe と Apache Spark を結合して、深層学習を既存の Hadoop クラスターで簡単に使用できるようにしています。 深層学習を Spark ETL パイプラインと一緒に使用して、システムの複雑さと完全なソリューション学習の待機時間を短縮できます。
 
-[HDInsight](https://azure.microsoft.com/services/hdinsight/) は、Spark、Hive、Hadoop、HBase、Storm、Kafka、および ML Services 向けに最適化されたオープン ソース分析クラスターを提供するクラウド Hadoop サービスです。 HDInsight は、99.9% の SLA が保証されています。 これらのビッグ データ テクノロジと ISV アプリケーションはそれぞれ、企業向けのセキュリティ機能と監視機能を備えたマネージド クラスターとして簡単にデプロイ可能です。
+[HDInsight](https://azure.microsoft.com/services/hdinsight/) は、Apache Spark、Apache Hive、Apache Hadoop、Apache HBase、Apache Storm、Apache Kafka、および ML サービス向けに最適化されたオープンソースの分析クラスターを提供するクラウド Apache Hadoop サービスです。 HDInsight は、99.9% の SLA が保証されています。 これらのビッグ データ テクノロジと ISV アプリケーションはそれぞれ、企業向けのセキュリティ機能と監視機能を備えたマネージド クラスターとして簡単にデプロイ可能です。
 
 この記事では、HDInsight クラスター向けの [Caffe on Spark](https://github.com/yahoo/CaffeOnSpark) をインストールする方法を示します。 この記事では、組み込みの MNIST デモを使用して、CPU で HDInsight Spark を使用する分散型深層学習の使用方法についても示します。
 
@@ -37,13 +37,13 @@ ms.locfileid: "51255928"
 
 HDInsight は PaaS ソリューションであるため、優れたプラットフォーム機能が用意されています。したがって、いくつかのタスクを簡単に実行できます。 このブログ記事で使用する機能の 1 つは[スクリプト アクション](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)と呼ばれ、シェル コマンドを実行してクラスター ノード (ヘッド ノード、worker ノード、またはエッジ ノード) をカスタマイズ可能にします。
 
-## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>手順 1: すべてのノードに必要な依存関係をインストールする
+## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>手順 1:すべてのノードに必要な依存関係をインストールする
 
 最初に、依存関係をインストールする必要があります。 Caffe サイトと [CaffeOnSpark サイト](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)に、Spark の依存関係を YARN モードでインストールするために役立つ Wiki が用意されています。 HDInsight では、Spark を YARN モードでも使用します。 ただし、HDInsight プラットフォームの依存関係をいくつか追加する必要があります。 これを行うために、スクリプト アクションを使用し、それをすべてのヘッド ノードと worker ノードで実行します。 これらの依存関係は他のパッケージにも依存するため、このスクリプト アクションの実行には約 20 分かかります。 このスクリプト アクションは、GitHub の場所や既定の BLOB ストレージ アカウントなど、HDInsight クラスターで利用できる場所に配置する必要があります。
 
     #!/bin/bash
     #Please be aware that installing the below will add additional 20 mins to cluster creation because of the dependencies
-    #installing all dependencies, including the ones mentioned in http://caffe.berkeleyvision.org/install_apt.html, as well a few packages that are not included in HDInsight, such as gflags, glog, lmdb, numpy
+    #installing all dependencies, including the ones mentioned in https://caffe.berkeleyvision.org/install_apt.html, as well a few packages that are not included in HDInsight, such as gflags, glog, lmdb, numpy
     #It seems numpy will only needed during compilation time, but for safety purpose you install them on all the nodes
 
     sudo apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler maven libatlas-base-dev libgflags-dev libgoogle-glog-dev liblmdb-dev build-essential  libboost-all-dev python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
@@ -62,14 +62,14 @@ HDInsight は PaaS ソリューションであるため、優れたプラット�
 
 スクリプト アクションには、2 つの手順が含まれています。 最初の手順では、必要なすべてのライブラリをインストールします。 これらのライブラリには、Caffe のコンパイルに必要なライブラリ (gflags、glog など) と Caffe の実行に必要なライブラリ (numpy など) が含まれています。 ここでは CPU の最適化のために libatlas を使用しています。MKL や CUDA (GPU 用) などの他の最適化ライブラリのインストールについては、必ず CaffeOnSpark Wiki の説明に従ってください。
 
-2 番目の手順では、実行時に Caffe 用の protobuf 2.5.0 をダウンロードし、コンパイルしてインストールします。 protobuf 2.5.0 が[必要](https://github.com/yahoo/CaffeOnSpark/issues/87)です。ただし、このバージョンは Ubuntu 16 のパッケージとして入手できないため、ソース コードからコンパイルする必要があります。 コンパイル方法については、インターネットでもいくつかのリソースが見つかります。 詳細については、[このページ](http://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html)を参照してください。
+2 番目の手順では、実行時に Caffe 用の protobuf 2.5.0 をダウンロードし、コンパイルしてインストールします。 protobuf 2.5.0 が[必要](https://github.com/yahoo/CaffeOnSpark/issues/87)です。ただし、このバージョンは Ubuntu 16 のパッケージとして入手できないため、ソース コードからコンパイルする必要があります。 コンパイル方法については、インターネットでもいくつかのリソースが見つかります。 詳細については、[このページ](https://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html)を参照してください。
 
-作業を開始するには、このスクリプト アクションをクラスターに対して実行して、すべての worker ノードとヘッド ノード (HDInsight 3.5 用) に適用します。 既存のクラスターでスクリプト アクションを実行するか、クラスターの作成時にスクリプト アクションを使用します。 スクリプト アクションの詳細については、[こちらの](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#view-history-promote-and-demote-script-actions)ドキュメントを参照してください。
+作業を開始するには、このスクリプト アクションをクラスターに対して実行して、すべての worker ノードとヘッド ノード (HDInsight 3.5 用) に適用します。 既存のクラスターでスクリプト アクションを実行するか、クラスターの作成時にスクリプト アクションを使用します。 スクリプト アクションの詳細については、[こちらの](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)ドキュメントを参照してください。
 
 ![依存関係をインストールするスクリプト アクション](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
 
 
-## <a name="step-2-build-caffe-on-spark-for-hdinsight-on-the-head-node"></a>手順 2: ヘッド ノードで HDInsight 用 CaffeOnSpark をビルドする
+## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>手順 2:ヘッド ノードで HDInsight 用の Caffe on Apache Spark を構築する
 
 2 番目の手順では、ヘッド ノードで Caffe をビルドし、コンパイルされたライブラリをすべての worker ノードに配布します。 この手順では、[ヘッド ノードに ssh 接続する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)必要があります。 その後で、[CaffeOnSpark ビルド プロセス](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)に従う必要があります。 いくつかの手順が追加された次のスクリプトを使用して、CaffeOnSpark を構築できます。 
 
@@ -89,7 +89,7 @@ HDInsight は PaaS ソリューションであるため、優れたプラット�
 
     #compile CaffeOnSpark
     pushd ${CAFFE_ON_SPARK}
-    #always clean up the environment before building (especially when rebuiding), or there will be errors such as "failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occured: exec returned: 2"
+    #always clean up the environment before building (especially when rebuiding), or there will be errors such as "failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occurred: exec returned: 2"
     make clean 
     #the build step usually takes 20~30 mins, since it has a lot maven dependencies
     make build 
@@ -116,15 +116,15 @@ CaffeOnSpark のドキュメントに記載されていること以外に、い�
 - コンパイルされた Caffe ライブラリを BLOB ストレージに配置します。追加のコンパイル時間が発生するのを避けるために、後でスクリプト アクションを使用してこれらのライブラリをすべてのノードにコピーします。
 
 
-### <a name="troubleshooting-an-ant-buildexception-has-occurred-exec-returned-2"></a>トラブルシューティング: An Ant BuildException has occured: exec returned: 2 (Ant BuildException が発生しました: exec から返された値: 2)
+### <a name="troubleshooting-an-ant-buildexception-has-occurred-exec-returned-2"></a>トラブルシューティング:An Ant BuildException has occured: exec returned: (Ant BuildException が発生しました: exec から返された値:)2
 
 最初に CaffeOnSpark をビルドしようとしたときに次のメッセージが返される場合があります。
 
-    failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occured: exec returned: 2
+    failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occurred: exec returned: 2
 
 "make clean" でコード リポジトリをクリーンアップしてから "make build" を実行してください。正しい依存関係があれば、この問題は解決します。
 
-### <a name="troubleshooting-maven-repository-connection-time-out"></a>トラブルシューティング: Maven リポジトリの接続タイムアウト
+### <a name="troubleshooting-maven-repository-connection-time-out"></a>トラブルシューティング:Maven リポジトリの接続タイムアウト
 
 Maven から次のスニペットのような接続タイムアウト エラーが返される場合があります。
 
@@ -136,7 +136,7 @@ Maven から次のスニペットのような接続タイムアウト エラー�
 数分後に再試行する必要があります。
 
 
-### <a name="troubleshooting-test-failure-for-caffe"></a>トラブルシューティング: Caffe のテスト エラー
+### <a name="troubleshooting-test-failure-for-caffe"></a>トラブルシューティング:Caffe のテスト エラー
 
 おそらく、CaffeOnSpark の最終チェック時にテスト エラーが表示されます。 このメッセージは UTF-8 エンコードに関連すると考えられますが、Caffe の使用には影響しません。
 
@@ -146,7 +146,7 @@ Maven から次のスニペットのような接続タイムアウト エラー�
     Tests: succeeded 6, failed 1, canceled 0, ignored 0, pending 0
     *** 1 TEST FAILED ***
 
-## <a name="step-3-distribute-the-required-libraries-to-all-the-worker-nodes"></a>手順 3: すべての worker ノードに必要なライブラリを配布する
+## <a name="step-3-distribute-the-required-libraries-to-all-the-worker-nodes"></a>手順 3:すべての worker ノードに必要なライブラリを配布する
 
 次の手順では、ライブラリ (基本的に、CaffeOnSpark/caffe-public/distribute/lib/ と CaffeOnSpark/caffe-distri/distribute/lib/ に含まれるライブラリ) をすべてのノードに配布します。 これらのライブラリは手順 2 で BLOB ストレージに配置しました。この手順では、スクリプト アクションを使用して、すべてのヘッド ノードと worker ノードにライブラリをコピーします。
 
@@ -159,7 +159,7 @@ Maven から次のスニペットのような接続タイムアウト エラー�
 
 手順 2. ですべてのノードからアクセスできる BLOB ストレージに配置しているため、この手順では、このライブラリをすべてのノードにコピーするだけで構いません。
 
-## <a name="step-4-compose-a-caffe-model-and-run-it-in-a-distributed-manner"></a>手順 4: Caffe モデルを作成し、それを分散して実行する
+## <a name="step-4-compose-a-caffe-model-and-run-it-in-a-distributed-manner"></a>手順 4:Caffe モデルを作成し、それを分散して実行する
 
 上記の手順を実行すると、Caffe がインストールされます。 次の手順では、Caffe モデルを作成します。 
 
@@ -169,7 +169,7 @@ Caffe では "表現的アーキテクチャ" が使用されており、ほと�
 
 CaffeOnSpark には、MNIST トレーニング用にネットワーク トポロジの例が用意されています。 CaffeOnSpark の設計上の優れた点として、ネットワーク アーキテクチャ (ネットワークのトポロジ) と最適化が分離されています。 この場合、2 つのファイルが必要になります。 
 
-"ソルバー" ファイル (${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) は、最適化を監視し、パラメーターの更新を生成するために使用されます。 たとえば、CPU と GPU のどちらを使用するか、モーメンタムは何か、処理を何回繰り返すか、などを定義します。また、プログラムで使用するニューロン ネットワーク トポロジも定義します (これは、必要な 2 番目のファイルです)。 ソルバーの詳細については、[Caffe のドキュメント](http://caffe.berkeleyvision.org/tutorial/solver.html)を参照してください。
+"ソルバー" ファイル (${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) は、最適化を監視し、パラメーターの更新を生成するために使用されます。 たとえば、CPU と GPU のどちらを使用するか、モーメンタムは何か、処理を何回繰り返すか、などを定義します。また、プログラムで使用するニューロン ネットワーク トポロジも定義します (これは、必要な 2 番目のファイルです)。 ソルバーの詳細については、[Caffe のドキュメント](https://caffe.berkeleyvision.org/tutorial/solver.html)を参照してください。
 
 この例では、GPU ではなく CPU を使用するため、最後の行を次のように変更する必要があります。
 
@@ -187,7 +187,7 @@ CaffeOnSpark には、MNIST トレーニング用にネットワーク トポロ
 
 ![Caffe 構成](./media/apache-spark-deep-learning-caffe/Caffe-2.png)
 
-ネットワークを定義する方法の詳細については、[MNIST データセットに関する Caffe のドキュメント](http://caffe.berkeleyvision.org/gathered/examples/mnist.html)を参照してください。
+ネットワークを定義する方法の詳細については、[MNIST データセットに関する Caffe のドキュメント](https://caffe.berkeleyvision.org/gathered/examples/mnist.html)を参照してください。
 
 この記事では、この MNIST 例を使用します。 ヘッド ノードから次のコマンドを実行します。
 
@@ -294,8 +294,8 @@ SampleID は MNIST データセットの ID を表し、label はモデルによ
 * [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
-* [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="manage-resources"></a>リソースの管理
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)

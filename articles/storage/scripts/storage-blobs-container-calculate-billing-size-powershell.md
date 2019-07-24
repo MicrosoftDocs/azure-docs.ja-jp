@@ -15,18 +15,18 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: c37b416578a76e9b12e29d68e413d851796ccc6f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 02b4cfcc6d88430701f653665269532a4eb7092f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26368546"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59799254"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Blob コンテナーの合計課金サイズを計算する
 
 このスクリプトは、請求額を見積もるために Azure Blob ストレージ内のコンテナーのサイズを計算します。 スクリプトは、コンテナー内の Blob のサイズを合計します。
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -37,17 +37,17 @@ ms.locfileid: "26368546"
 
 BLOB コンテナーの合計サイズには、コンテナー自体のサイズとコンテナーの下のすべての BLOB のサイズが含まれます。
 
-次のセクションでは、BLOB コンテナーと BLOB のストレージ容量を計算する方法について説明します。 次のセクションでは Len(X) は文字列の文字数を表します。
+次のセクションでは、BLOB コンテナーと BLOB のストレージ容量を計算する方法について説明します。 次のセクションでは Len(X) は文字列の文字数を表します。
 
 ### <a name="blob-containers"></a>BLOB コンテナー
 
 次の計算では BLOB コンテナーごとに使用されるストレージの量を推定します。
 
-`
+```
 48 bytes + Len(ContainerName) * 2 bytes +
 For-Each Metadata[3 bytes + Len(MetadataName) + Len(Value)] +
 For-Each Signed Identifier[512 bytes]
-`
+```
 
 内訳は次のようになります。
 * コンテナーごとの 48 バイトのオーバーヘッドには、最終更新時刻、アクセス許可、パブリック設定、およびシステムのメタデータが含まれています。
@@ -64,28 +64,28 @@ For-Each Signed Identifier[512 bytes]
 
 * ブロック BLOB (ベース BLOB またはスナップショット):
 
-   `
+   ```
    124 bytes + Len(BlobName) * 2 bytes +
    For-Each Metadata[3 bytes + Len(MetadataName) + Len(Value)] +
    8 bytes + number of committed and uncommitted blocks * Block ID Size in bytes +
    SizeInBytes(data in unique committed data blocks stored) +
    SizeInBytes(data in uncommitted data blocks)
-   `
+   ```
 
 * ページ BLOB (ベース BLOB またはスナップショット):
 
-   `
+   ```
    124 bytes + Len(BlobName) * 2 bytes +
    For-Each Metadata[3 bytes + Len(MetadataName) + Len(Value)] +
    number of nonconsecutive page ranges with data * 12 bytes +
    SizeInBytes(data in unique pages stored)
-   `
+   ```
 
 内訳は次のようになります。
 
 * BLOB 毎に 124 のバイトのオーバーヘッドがありますが、これには次のものが含まれます。
     - 最終変更時刻
-    - サイズ
+    - Size
     - Cache-Control
     - Content-Type
     - Content-Language
@@ -101,18 +101,18 @@ For-Each Signed Identifier[512 bytes]
 * 格納されているメタデータのブロックごとに、名前 (ASCII 形式) の長さを加え、文字列値の長さを足します。
 
 * ブロック BLOB の場合:
-    * ブロック一覧の 8 バイト。
-    * ブロックの数にブロック ID のサイズ (バイト単位) を掛けたもの。
-    * コミットされたブロックとコミットされていないブロックすべてのデータのサイズ。 
-    
+  * ブロック一覧の 8 バイト。
+  * ブロックの数にブロック ID のサイズ (バイト単位) を掛けたもの。
+  * コミットされたブロックとコミットされていないブロックすべてのデータのサイズ。
+
     >[!NOTE]
     >スナップショットが使用されている場合、このサイズは、ベース BLOB またはスナップショット BLOB の一意のデータだけを含みます。 コミットされていないブロックが 1 週間後に使用されていなければ、ガベージ コレクションされます。 その後は、課金対象ではありません。
 
 * ページ BLOB の場合:
-    * 連続しないデータのあるページ範囲の数に 12 バイトを掛けます。 これは **GetPageRanges** API を呼び出すときに表示される一意のページ範囲の数です。
+  * 連続しないデータのあるページ範囲の数に 12 バイトを掛けます。 これは **GetPageRanges** API を呼び出すときに表示される一意のページ範囲の数です。
 
-    * 保存されているすべてのページのデータのサイズ (バイト単位)。 
-    
+  * 保存されているすべてのページのデータのサイズ (バイト単位)。
+
     >[!NOTE]
     >スナップショットを使用すると、計算中のベース BLOB またはスナップショット BLOB の一意のページだけがこのサイズに含まれます。
 
@@ -120,12 +120,12 @@ For-Each Signed Identifier[512 bytes]
 
 [!code-powershell[main](../../../powershell_scripts/storage/calculate-container-size/calculate-container-size-ex.ps1 "Calculate container size")]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - コンテナーのサイズの見積もりを提供する簡単なスクリプトについては、「[Blob ストレージ コンテナーの合計サイズを計算する](../scripts/storage-blobs-container-calculate-size-powershell.md)」を参照してください。
 
 - Azure ストレージの課金の詳細については、「[Understanding Windows Azure Storage Billing (Windows Azure Storage の課金について)](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)」をご覧ください。
 
-- Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.4.1)をご覧ください。
+- Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/overview)をご覧ください。
 
 - その他のストレージ PowerShell サンプル スクリプトは、[Azure Storage 用 PowerShell サンプル](../blobs/storage-samples-blobs-powershell.md)に関するページにあります。

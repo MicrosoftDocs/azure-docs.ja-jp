@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery を使用して VMM クラウド内の Hyper-V VM をセカンダリ サイトにレプリケートする場合のテスト結果 | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用して VMM クラウド内の Hyper-V VM をセカンダリ サイトにレプリケートする場合のパフォーマンス テストについて説明します。
-author: rayne-wiselman
-manager: carmonm
+author: sujayt
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
-ms.author: raynew
-ms.openlocfilehash: c5f0a972c3ab8b7016265d98fcb1b0890e03370f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.date: 12/27/2018
+ms.author: sutalasi
+ms.openlocfilehash: 7e2f5c344a0fb632956ab5d5b951ee69cff528ec
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210960"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482802"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>セカンダリ サイトへの Hyper-V レプリケーションのテスト結果
 
@@ -175,10 +175,10 @@ Hyper-V レプリカが使用する復旧サーバーのメモリは少なく、
 | CPU |\Processor(_Total)\% Processor Time |
 | 使用可能なメモリ |\Memory\Available MBytes |
 | IOPS |\PhysicalDisk(_Total)\Disk Transfers/sec |
-| VM 読み取り (IOPS) 操作数/秒 |\Hyper-V Virtual Storage Device(<VHD>)\Read Operations/Sec |
-| VM 書き込み (IOPS) 操作数/秒 |\Hyper-V Virtual Storage Device(<VHD>)\Write Operations/S |
-| VM 読み取りスループット |\Hyper-V Virtual Storage Device(<VHD>)\Read Bytes/sec |
-| VM 書き込みスループット |\Hyper-V Virtual Storage Device(<VHD>)\Write Bytes/sec |
+| VM 読み取り (IOPS) 操作数/秒 |\Hyper-V Virtual Storage Device(\<VHD>)\Read Operations/Sec |
+| VM 書き込み (IOPS) 操作数/秒 |\Hyper-V Virtual Storage Device(\<VHD>)\Write Operations/S |
+| VM 読み取りスループット |\Hyper-V Virtual Storage Device(\<VHD>)\Read Bytes/sec |
+| VM 書き込みスループット |\Hyper-V Virtual Storage Device(\<VHD>)\Write Bytes/sec |
 
 ## <a name="next-steps"></a>次の手順
 

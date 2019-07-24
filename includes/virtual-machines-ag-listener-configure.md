@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 93aa77edaedbd3984e9e83ccfb7374422952e83a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 276ddf0a70fa450451cd3ddc78c7610c4ab1edc1
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226668"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58494950"
 ---
 可用性グループ リスナーとは、SQL Server 可用性グループがリッスンする IP アドレスとネットワーク名のことです。 可用性グループ リスナーを作成するには、次の手順を実行します。
 
@@ -86,27 +86,27 @@ ms.locfileid: "50226668"
 
 1. <a name="setparam"></a>PowerShell でクラスターのパラメーターを設定します。
 
-  a. いずれかの SQL Server インスタンスに次の PowerShell スクリプトをコピーします。 環境に合わせて変数を更新してください。
+   a. いずれかの SQL Server インスタンスに次の PowerShell スクリプトをコピーします。 環境に合わせて変数を更新してください。
 
-  - `$ListenerILBIP` は、Azure Load Balancer に対して作成した、可用性グループ リスナーの IP アドレスです。
+   - `$ListenerILBIP` は、Azure Load Balancer に対して作成した、可用性グループ リスナーの IP アドレスです。
     
-  - `$ListenerProbePort` は、Azure Load Balancer に対して構成した、可用性グループ リスナーのポートです。
+   - `$ListenerProbePort` は、Azure Load Balancer に対して構成した、可用性グループ リスナーのポートです。
 
-  ```PowerShell
-  $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-  $IPResourceName = "<IPResourceName>" # the IP Address resource name
-  $ListenerILBIP = "<n.n.n.n>" # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
-  [int]$ListenerProbePort = <nnnnn>
+   ```powershell
+   $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+   $IPResourceName = "<IPResourceName>" # the IP Address resource name
+   $ListenerILBIP = "<n.n.n.n>" # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
+   [int]$ListenerProbePort = <nnnnn>
   
-  Import-Module FailoverClusters
+   Import-Module FailoverClusters
 
-  Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ListenerILBIP";"ProbePort"=$ListenerProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
-  ```
+   Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ListenerILBIP";"ProbePort"=$ListenerProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+   ```
 
-  b. いずれかのクラスター ノード上で PowerShell スクリプトを実行して、クラスター パラメーターを設定します。  
+   b. いずれかのクラスター ノード上で PowerShell スクリプトを実行して、クラスター パラメーターを設定します。  
 
-  > [!NOTE]
-  > SQL Server インスタンスが別個のリージョンに存在する場合は、PowerShell スクリプトを 2 回実行する必要があります。 1 回目の実行では、1 番目のリージョンの `$ListenerILBIP` と `$ListenerProbePort` を使用します。 2 回目の実行では、2 番目のリージョンの `$ListenerILBIP` と `$ListenerProbePort` を使用します。 クラスター ネットワーク名とクラスター IP リソース名も、リージョンごとに異なります。
+   > [!NOTE]
+   > SQL Server インスタンスが別個のリージョンに存在する場合は、PowerShell スクリプトを 2 回実行する必要があります。 1 回目の実行では、1 番目のリージョンの `$ListenerILBIP` と `$ListenerProbePort` を使用します。 2 回目の実行では、2 番目のリージョンの `$ListenerILBIP` と `$ListenerProbePort` を使用します。 クラスター ネットワーク名とクラスター IP リソース名も、リージョンごとに異なります。
 
 1. 可用性グループ クラスター ロールをオンラインにします。 **[フェールオーバー クラスター マネージャー]** の **[ロール]** で該当するロールを右クリックし、**[ロールの起動]** を選択します。
 
@@ -120,24 +120,24 @@ ms.locfileid: "50226668"
 
 1. <a name="setwsfcparam"></a>PowerShell でクラスターのパラメーターを設定します。
   
-  a. いずれかの SQL Server インスタンスに次の PowerShell スクリプトをコピーします。 環境に合わせて変数を更新してください。
+   a. いずれかの SQL Server インスタンスに次の PowerShell スクリプトをコピーします。 環境に合わせて変数を更新してください。
 
-  - `$ClusterCoreIP` は、Azure Load Balancer に対して作成した、WSFC コア クラスター リソースの IP アドレスです。 可用性グループ リスナーの IP アドレスとは異なります。
+   - `$ClusterCoreIP` は、Azure Load Balancer に対して作成した、WSFC コア クラスター リソースの IP アドレスです。 可用性グループ リスナーの IP アドレスとは異なります。
 
-  - `$ClusterProbePort` は、Azure Load Balancer に対して構成した、WSFC 正常性プローブのポートです。 可用性グループ リスナーのプローブとは異なります。
+   - `$ClusterProbePort` は、Azure Load Balancer に対して構成した、WSFC 正常性プローブのポートです。 可用性グループ リスナーのプローブとは異なります。
 
-  ```PowerShell
-  $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-  $IPResourceName = "<ClusterIPResourceName>" # the IP Address resource name
-  $ClusterCoreIP = "<n.n.n.n>" # the IP Address of the Cluster IP resource. This is the static IP address for the load balancer you configured in the Azure portal.
-  [int]$ClusterProbePort = <nnnnn> # The probe port from the WSFCEndPointprobe in the Azure portal. This port must be different from the probe port for the availability grouop listener probe port.
+   ```powershell
+   $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+   $IPResourceName = "<ClusterIPResourceName>" # the IP Address resource name
+   $ClusterCoreIP = "<n.n.n.n>" # the IP Address of the Cluster IP resource. This is the static IP address for the load balancer you configured in the Azure portal.
+   [int]$ClusterProbePort = <nnnnn> # The probe port from the WSFCEndPointprobe in the Azure portal. This port must be different from the probe port for the availability group listener probe port.
   
-  Import-Module FailoverClusters
+   Import-Module FailoverClusters
   
-  Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ClusterCoreIP";"ProbePort"=$ClusterProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
-  ```
+   Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ClusterCoreIP";"ProbePort"=$ClusterProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+   ```
 
-  b. いずれかのクラスター ノード上で PowerShell スクリプトを実行して、クラスター パラメーターを設定します。  
+   b. いずれかのクラスター ノード上で PowerShell スクリプトを実行して、クラスター パラメーターを設定します。  
 
 >[!WARNING]
 >可用性グループ リスナーの正常性プローブのポートは、クラスター コア IP アドレスの正常性プローブ ポートとは違っている必要があります。 これらの例では、リスナー ポートが 59999 で、クラスター コアの IP アドレスが 58888 です。 どちらのポートも、受信を許可するようにファイアウォール規則が設定されている必要があります。

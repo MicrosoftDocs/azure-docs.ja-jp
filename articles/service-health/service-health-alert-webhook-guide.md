@@ -1,25 +1,18 @@
 ---
 title: webhook を使用して既存の問題管理システム用に正常性通知を構成する | Microsoft Docs
 description: 既存の問題管理システムに送られたサービス正常性イベントについて、個人用に設定された通知を取得します。
-author: shawntabrizi
-manager: scotthit
-editor: ''
-services: service-health
-documentationcenter: service-health
-ms.assetid: ''
+author: stephbaron
+ms.author: stbaron
+ms.topic: conceptual
 ms.service: service-health
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.workload: Supportability
 ms.date: 3/27/2018
-ms.author: shtabriz
-ms.openlocfilehash: 8535caf482b10912e6f7bc6df445756094d7603f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 69b142cd46c006e562218c949fb450864589a661
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30261414"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838071"
 ---
 # <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>webhook を使用して既存の問題管理システム用に正常性通知を構成する
 
@@ -37,7 +30,7 @@ ms.locfileid: "30261414"
 ## <a name="configuring-a-custom-notification-using-the-service-health-webhook-payload"></a>サービス正常性の webhook ペイロードを使用してカスタム通知を構成する
 独自のカスタム webhook 統合をセットアップする場合は、サービス正常性の通知時に送信される JSON ペイロードを解析する必要があります。
 
-`ServiceHealth` webhook ペイロードの具体例については、[こちらの例](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)をご覧ください。
+`ServiceHealth` webhook ペイロードの具体例については、[こちらの例](../azure-monitor/platform/activity-log-alerts-webhook.md)をご覧ください。
 
 サービス正常性アラートを検出するには、`context.eventSource == "ServiceHealth"` を探します。 そこにあるプロパティのうち、取り込みに最も関連するプロパティは次のとおりです。
  * `data.context.activityLog.status`
@@ -66,7 +59,7 @@ https://app.azure.com/h/0DET-URB/bbadb3
 
 ## <a name="parsing-the-impacted-services-to-understand-the-full-scope-of-the-incident"></a>影響を受けるサービスを解析してインシデントの全体像を把握する
 サービス正常性アラートは、複数のリージョンとサービスにまたがる問題について通知することがあります。 完全な詳細情報を取得するには、`impactedServices` の値を解析する必要があります。
-この値に含まれているのは[エスケープされた JSON](http://json.org/) 文字列で、エスケープを解除すると、規則的に解析することができる別の JSON オブジェクトになります。
+この値に含まれているのは[エスケープされた JSON](https://json.org/) 文字列で、エスケープを解除すると、規則的に解析することができる別の JSON オブジェクトになります。
 
 ```json
 {"data.context.activityLog.properties.impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"Australia East\"},{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"Alerts & Metrics\"},{\"ImpactedRegions\":[{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"App Service\"}]"}
@@ -102,7 +95,7 @@ https://app.azure.com/h/0DET-URB/bbadb3
 
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>HTTP POST 要求によって webhook 統合をテストする
-1. 送信するサービス正常性のペイロードを作成します。 サービス正常性 webhook ペイロードの例については、「[Azure アクティビティ ログ アラートのための webhook](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)」を参照してください。
+1. 送信するサービス正常性のペイロードを作成します。 サービス正常性 webhook ペイロードの例については、「[Azure アクティビティ ログ アラートのための webhook](../azure-monitor/platform/activity-log-alerts-webhook.md)」を参照してください。
 
 2. 次のような HTTP POST 要求を作成します。
 
@@ -118,6 +111,6 @@ https://app.azure.com/h/0DET-URB/bbadb3
 4. [PagerDuty](https://www.pagerduty.com/) に移動して、統合が正常に設定されたことを確認します。
 
 ## <a name="next-steps"></a>次の手順
-- [アクティビティ ログ アラート webhook スキーマ](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)を確認します。 
-- [サービス正常性の通知](../monitoring-and-diagnostics/monitoring-service-notifications.md)について学習します。
-- [アクション グループ](../monitoring-and-diagnostics/monitoring-action-groups.md)について学習します。
+- [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)を確認します。 
+- [サービス正常性の通知](../azure-monitor/platform/service-notifications.md)について学習します。
+- [アクション グループ](../azure-monitor/platform/action-groups.md)について学習します。

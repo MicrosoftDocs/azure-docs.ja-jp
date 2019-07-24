@@ -1,15 +1,17 @@
+items:
 - name: Azure Storage のドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: はじめに
-      href: ./common/storage-introduction.md
-    - name: BLOB、ファイル、またはディスクの選択
-      href: ./common/storage-decide-blobs-files-disks.md
+  - name: はじめに
+    href: ./common/storage-introduction.md
+  - name: BLOB、ファイル、またはディスクの選択
+    href: ./common/storage-decide-blobs-files-disks.md
+  expanded: true
 - name: BLOB
-  href: ./blobs/storage-blobs-introduction.md
+  href: ./blobs/storage-blobs-overview.md
 - name: Data Lake Storage Gen2
-  href: ./data-lake-storage/introduction.md
+  href: ./blobs/data-lake-storage-introduction.md
 - name: ファイル
   href: ./files/storage-files-introduction.md
 - name: キュー
@@ -18,7 +20,13 @@
   href: ./tables/table-storage-overview.md
 - name: ディスク
   items:
-    - name: Windows
-      href: ../virtual-machines/windows/about-disks-and-vhds.md
-    - name: Linux
-      href: ../virtual-machines/linux/about-disks-and-vhds.md
+  - name: " Windows"
+    href: ../virtual-machines/windows/managed-disks-overview.md
+  - name: Linux
+    href: ../virtual-machines/linux/managed-disks-overview.md
+ms.openlocfilehash: 44904cb09b3865da6040fa581cf43dccf722db20
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329833"

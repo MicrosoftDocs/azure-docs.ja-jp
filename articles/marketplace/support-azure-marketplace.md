@@ -14,21 +14,21 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 9af0a8cc8e1e0cd57aa3baf79bbe5a552aa2ef12
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: de31ceea4faeecabd54c0d23e9263cbb4090925d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087594"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59791822"
 ---
-# <a name="support-for-the-marketplace"></a>Marketplace のサポート  
+# <a name="support-for-the-marketplace"></a>サポート (Marketplace)  
 Marketplace のサポート オプションの一覧です。  
 
 さらに、[C+AI コミュニティ フォーラムの Marketplace チャネル](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)で、多くの質問の答えを得ることができます。  
 
 ## <a name="onboarding"></a>オンボード
 
-オンボードおよび作業の開始に関するすべての問題を解決するには、Microsoft の [Marketplace 発行者のサポート](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820)のチケットを開きます。
+オンボーディングおよび開始方法に関する問題については、Microsoft の[マーケットプレース発行元サポート](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820)でチケットを開いてください。Microsoft パートナー ネットワークについて質問がある場合は、Microsoft [パートナー サポート](https://partner.microsoft.com/support)でチケットを開いてください。
 
 ## <a name="cloud-partner-portal"></a>クラウド パートナー ポータル  
 
@@ -40,9 +40,8 @@ Marketplace のサポート オプションの一覧です。
 
 | サポート窓口 | 説明 |  
 |:--- |:--- |  
-| Slack: [join.marketplace.azure.com](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | 技術的な問題に関してパートナーをサポートするために Slack 環境。 現在、この環境では約 350 以上のパートナーが活動しています。 |  
-| MSDN フォーラム: [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) にある Marketplace | Microsoft Developer Network のフォーラム。 |  
-| Stack Overflow: [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) にある Azure | ソリューションを取得し、Azure Marketplace に関連するあらゆることについて質問するための Stack Overflow 環境。<ul> <li>Stack Overflow: [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace) にある Azure Marketplace</li> <li>Stack Overflow: [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager) にある Azure Resource Manager</li> <li>Stack Overflow: [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine) にある Virtual Machines on Azure</li> <li>Stack Overflow: [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container) にある Containers on Azure</li> </ul> |
+| MSDN フォーラム:[social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) にある Marketplace | Microsoft Developer Network のフォーラム。 |  
+| Stack Overflow:[stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) にある Azure | ソリューションを取得し、Azure Marketplace に関連するあらゆることについて質問するための Stack Overflow 環境。<ul> <li>Stack Overflow:[stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace) にある Azure Marketplace</li> <li>Stack Overflow:[stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager) にある Azure Resource Manager</li> <li>Stack Overflow:[stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine) にある Virtual Machines on Azure</li> <li>Stack Overflow:[stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container) にある Containers on Azure</li> </ul> |
 | サポート (AppSource): [appsourcecrm@Microsoft.com](mailto:appsourcecrm@microsoft.com) | Dynamics アプリの発行のサポート |
 
 ## <a name="marketing-resources"></a>マーケティング リソース  
@@ -57,4 +56,4 @@ Marketplace のサポート オプションの一覧です。
 ## <a name="next-steps"></a>次の手順
 「[Azure Marketplace と AppSource のパブリッシャー ガイド](./marketplace-publishers-guide.md)」ページを参照してください。  
  
----  
+---

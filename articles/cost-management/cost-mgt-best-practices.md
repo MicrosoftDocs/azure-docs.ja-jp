@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/09/2018
+ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: 43a682568708ab0286328cf3e483ddc3d5cf9dd8
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+manager: vitavor
+ms.custom: seodec18
+ms.openlocfilehash: 493b71e503b6023eeea4a71e34d5405f84821e28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515354"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009641"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Azure Cost Management を使用してクラウドへの投資を最適化する方法
 
@@ -46,7 +46,7 @@ Azure Cost Management には、クラウドへの投資を最大化するため�
 - 解決するビジネス上の問題
 - 自分のリソースからの予想される使用パターン
 
-これらを確認することは、適切なプランを選択するのに役立ちます。 これにより、使用するインフラストラクチャと、Azure の効率を最大化するためのその使用方法が決まります。
+これらを確認することは、適切なオファリングを選択するのに役立ちます。 これにより、使用するインフラストラクチャと、Azure の効率を最大化するためのその使用方法が決まります。
 
 #### <a name="visibility"></a>表示
 
@@ -62,9 +62,9 @@ Azure Cost Management には、クラウドへの投資を最大化するため�
 
 #### <a name="iteration"></a>反復
 
-組織内のすべての人が、コスト管理のライフサイクルに関与する必要があります。 コストを最適化するには、継続的に関与する必要があります。 この反復的なプロセスについては厳密である必要があります。これは組織における責任あるクラウド ガバナンスのキー テナントと見なしてください。
+組織内のすべての人が、コスト管理のライフサイクルに関与する必要があります。 コストを最適化するには、継続的に関与する必要があります。 この反復的なプロセスについては厳密である必要があります。これは組織における責任あるクラウド ガバナンスの基本理念と見なしてください。
 
-![基本原則](./media/cost-mgt-best-practices/principles.png)
+![表示、アカウンタビリティ、および最適化を示す基本原則の図](./media/cost-mgt-best-practices/principles.png)
 
 ## <a name="plan-with-cost-in-mind"></a>コストを考慮して計画する
 
@@ -140,7 +140,7 @@ Azure Migrate は、オンプレミス データセンターでの組織の現�
 
 ### <a name="export-billing-data-on-a-schedule"></a>スケジュールに従って課金データをエクスポートする
 
-ダッシュボードや財務システムなどの外部システムに課金データをインポートする必要はありますか。 毎月ファイルを手動でダウンロードしなくて済むように、日次自動レポートをスケジュールすることができます。 また、課金データを Azure Storage アカウントにエクスポートし、[アクション グループ](../monitoring-and-diagnostics/monitoring-action-groups.md)を使用して通知を受け取ることができます。 その後、Azure データを使って、独自のシステムで使用できるカスタム データと結合することができます。
+ダッシュボードや財務システムなどの外部システムに課金データをインポートする必要はありますか。 Azure Storage への自動エクスポートを設定して、毎月手動でファイルをダウンロードしなくて済むようにします。 その後は、他のシステムによる自動統合を簡単に設定して、課金データを継続的に同期できます。
 
 課金データのエクスポートの詳細については、[データのエクスポートと管理](tutorial-export-acm-data.md)に関するページを参照してください。
 
@@ -157,7 +157,7 @@ Azure Migrate は、オンプレミス データセンターでの組織の現�
 
 ### <a name="cut-out-waste"></a>無駄をなくす
 
-Azure でインフラストラクチャをデプロイしたら、それが使用されていることを確認することが重要です。 すぐに節約を始める最も簡単な方法は、使用されていないリソースを確認して削除することです。 そこで、リソースが可能な限り効率的に使用されていることを判断する必要があります。
+Azure でインフラストラクチャをデプロイしたら、それが使用されていることを確認することが重要です。 すぐに節約を始める最も簡単な方法は、使用されていないリソースを確認して削除することです。 そこで、リソースが可能な限り効率的に使用されているかどうかを判断する必要があります。
 
 #### <a name="azure-advisor"></a>Azure Advisor
 
@@ -177,13 +177,13 @@ Azure には、組織でコストの削減のために利用できる数多く�
 
 #### <a name="azure-reservations"></a>Azure の予約
 
-Azure の予約では、仮想マシンまたは SQL Database のコンピューティング能力について、1 年単位または 3 年単位で前払いすることができます。 前払いすると、使用するリソースの割り引きを受けることができます。 Azure の予約では、仮想マシンまたは SQL Database のコンピューティング コストを大幅に削減できます。割引率は、従量課金制の料金に対し、1 年間または 3 年間の前払い契約で最大 72% となります。 予約は課金割引を提供するもので、仮想マシンまたは SQL Database の実行時の状態には影響しません。
+Azure の予約では、仮想マシンまたは SQL Database の計算キャパシティについて、1 年単位または 3 年単位で前払いすることができます。 前払いすると、使用するリソースの割り引きを受けることができます。 Azure の予約では、仮想マシンまたは SQL Database のコンピューティング コストを大幅に削減できます。割引率は、従量課金制の料金に対し、1 年間または 3 年間の前払い契約で最大 72% となります。 予約は課金割引を提供するもので、仮想マシンまたは SQL Database の実行時の状態には影響しません。
 
 詳細については、「[What are Azure Reservations?](../billing/billing-save-compute-costs-reservations.md)」 (Azure の予約とは) を参照してください。
 
 #### <a name="use-azure-hybrid-benefit"></a>Azure ハイブリッド特典を利用する
 
-オンプレミス デプロイで Windows Server または SQL Server のライセンスが既にある場合は、Azure ハイブリッド特典プログラムを使用して Azure でのコストを削減できます。 Windows Server を利用した場合、各ライセンスに OS のコストが含まれ (最大 2 台の仮想マシンが対象)、お客様が支払うのは基本的なコンピューティング コストのみとなります。 既存の SQL Server ライセンスを使用すれば、仮想コアベースの SQL Database オプションで最大 55% の節約となります。 オプションには、Azure Virtual Machines の SQL Server と SQL Server Integration Services が含まれます。
+オンプレミス デプロイで Windows Server または SQL Server のライセンスが既にある場合は、Azure ハイブリッド特典プログラムを使用して Azure でのコストを削減できます。 Windows Server を利用した場合、各ライセンスに OS のコストが含まれ (最大 2 台の仮想マシンが対象)、お客様が支払うのは基本的なコンピューティング コストのみとなります。 既存の SQL Server ライセンスを使用すれば、仮想コアベースの SQL Database オプションで最大 55% の節約となります。 オプションには、Azure 仮想マシン内の SQL Server と、SQL Server Integration Services が含まれます。
 
 詳細については、「[Azure Hybrid Benefit 節約額計算ツール](https://azure.microsoft.com/pricing/hybrid-benefit/)」を参照してください。
 

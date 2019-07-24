@@ -1,5 +1,5 @@
 ---
-title: Azure App Service on Linux で Java Enterprise Web アプリを構築する | Microsoft Docs
+title: Linux 上で Java Enterprise Web アプリを構築する - Azure App Service | Microsoft Docs
 description: Azure App Service on Linux 上の Wildfly で動作する Java Enterprise アプリを取得する方法について説明します。
 author: JasonFreeberg
 manager: routlaw
@@ -10,18 +10,19 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
-ms.openlocfilehash: 0772dbb1aaa6b00994bd653c19b006114377dc5f
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec18
+ms.openlocfilehash: 472ff85adaf72f91948c4072b12cca3ff8e59f37
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165460"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545352"
 ---
-# <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>チュートリアル: Azure で Java EE と Postgres の Web アプリを構築する
+# <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>チュートリアル:Azure で Java EE と Postgres の Web アプリを構築する
 
-このチュートリアルでは、Azure App Service に Java Enterprise Edition (EE) Web アプリを作成し、それを Postgres データベースに接続する方法について説明します。 完了すると、Azure [App Service on Linux](app-service-linux-intro.md) で稼働中の [Azure Database for Postgres](https://azure.microsoft.com/services/postgresql/) にデータを格納する [WildFly](http://www.wildfly.org/about/) アプリケーションが完成します。
+このチュートリアルでは、Azure App Service に Java Enterprise Edition (EE) Web アプリを作成し、それを Postgres データベースに接続する方法について説明します。 完了すると、Azure [App Service on Linux](app-service-linux-intro.md) で稼働中の [Azure Database for Postgres](https://azure.microsoft.com/services/postgresql/) にデータを格納する [WildFly](https://www.wildfly.org/about/) アプリケーションが完成します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > * Maven を使用して Java EE アプリを Azure にデプロイする
 > * Azure で Postgres データベースを作成する
@@ -32,8 +33,8 @@ ms.locfileid: "52165460"
 ## <a name="prerequisites"></a>前提条件
 
 1. [Git をダウンロードし、インストールします](https://git-scm.com/)
-1. [Maven 3 をダウンロードし、インストールします](https://maven.apache.org/install.html)
-1. [Azure CLI をダウンロードし、インストールします](https://docs.microsoft.com/cli/azure/install-azure-cli)
+2. [Maven 3 をダウンロードし、インストールします](https://maven.apache.org/install.html)
+3. [Azure CLI をダウンロードし、インストールします](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 ## <a name="clone-and-edit-the-sample-app"></a>サンプル アプリを複製して編集する
 
@@ -49,40 +50,24 @@ git clone https://github.com/Azure-Samples/wildfly-petstore-quickstart.git
 
 ### <a name="update-the-maven-pom"></a>Maven POM を更新する
 
-希望する名前とお客様のアプリ サービスのリソース グループを指定して、Maven POM を更新します。 これらの値は、Azure プラグインに挿入されます。これは、_pom.xml_ ファイルのかなり下の方にあります。 App Service プランまたはインスタンスを事前に作成する必要はありません。 リソース グループとアプリ サービスがまだ存在しない場合は、Maven プラグインによって作成されます。
+希望する名前と App Service のリソース グループを指定して、Maven Azure プラグインを更新します。 App Service プランまたはインスタンスを事前に作成する必要はありません。 リソース グループとアプリ サービスがまだ存在しない場合は、Maven プラグインによって作成されます。 
 
-_pom.xml_ の `<plugins>` セクションまで下へスクロールして、Azure プラグインを確認できます。 azure-webapp-maven-plugin の _pom.xml_ 内にある `<plugin>` 構成のセクションには、以下の構成が含まれている必要があります。
+_pom.xml_ の `<plugins>` セクション (200 行目) まで下へスクロールして、変更を行います。 
 
 ```xml
-      <!--*************************************************-->
-      <!-- Deploy to WildFly in App Service Linux           -->
-      <!--*************************************************-->
- 
-      <plugin>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.5.0</version>
-        <configuration>
- 
-          <!-- Web App information -->
-          <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
-          <appServicePlanName>${WEBAPP_PLAN_NAME}</appServicePlanName>
-          <appName>${WEBAPP_NAME}</appName>
-          <region>${REGION}</region>
- 
-          <!-- Java Runtime Stack for Web App on Linux-->
-          <linuxRuntime>wildfly 14-jre8</linuxRuntime>
- 
-        </configuration>
-      </plugin>
+<!-- Azure App Service Maven plugin for deployment -->
+<plugin>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>azure-webapp-maven-plugin</artifactId>
+  <version>${version.maven.azure.plugin}</version>
+  <configuration>
+    <appName>YOUR_APP_NAME</appName>
+    <resourceGroup>YOUR_RESOURCE_GROUP</resourceGroup>
+    <linuxRuntime>wildfly 14-jre8</linuxRuntime>
+  ...
+</plugin>  
 ```
-
-お客様が希望するリソース名を使用してプレースホルダーを置き換えます。
-```xml
-<azure.plugin.appname>YOUR_APP_NAME</azure.plugin.appname>
-<azure.plugin.resourcegroup>YOUR_RESOURCE_GROUP</azure.plugin.resourcegroup>
-```
-
+`YOUR_APP_NAME` と `YOUR_RESOURCE_GROUP` を、App Service とリソース グループの名前に置き換えます。
 
 ## <a name="build-and-deploy-the-application"></a>アプリケーションをビルドしてデプロイする
 
@@ -138,12 +123,27 @@ az postgres server create -n <desired-name> -g <same-resource-group> --sku-name 
 
 ### <a name="add-postgres-credentials-to-the-pom"></a>POM に Postgres 資格情報を追加する
 
-_pom.xml_ で、お客様の Postgres サーバー名、管理者ログイン名、パスワードを使用してプレースホルダーの値を置き換えます。 これらの値は、アプリケーションを再デプロイするときに、お客様の App Service インスタンスに環境変数として挿入されます。
+_pom.xml_ で、大文字のプレースホルダーの値を、Postgres サーバー名、管理者ログイン名、およびパスワードに置き換えます。 これらのフィールドは、Azure Maven プラグイン内にあります  (`<name>` タグ内ではなく、`<value>` タグ内の `YOUR_SERVER_NAME`、`YOUR_PG_USERNAME`、および `YOUR_PG_PASSWORD` を置き換えてください)。
 
 ```xml
-<azure.plugin.postgres-server-name>SERVER_NAME</azure.plugin.postgres-server-name>
-<azure.plugin.postgres-username>USERNAME@FIRST_PART_OF_SERVER_NAME</azure.plugin.postgres-username>
-<azure.plugin.postgres-password>PASSWORD</azure.plugin.postgres-password>
+<plugin>
+      ...
+      <appSettings>
+      <property>
+        <name>POSTGRES_CONNECTIONURL</name>
+        <value>jdbc:postgresql://YOUR_SERVER_NAME:5432/postgres?ssl=true</value>
+      </property>
+      <property>
+        <name>POSTGRES_USERNAME</name>
+        <value>YOUR_PG_USERNAME</value>
+      </property>
+      <property>
+        <name>POSTGRES_PASSWORD</name>
+        <value>YOUR_PG_PASSWORD</value>
+      </property>
+    </appSettings>
+  </configuration>
+</plugin>
 ```
 
 ### <a name="update-the-java-transaction-api"></a>Java トランザクション API を更新する
@@ -158,21 +158,22 @@ _pom.xml_ で、お客様の Postgres サーバー名、管理者ログイン名
 
 ## <a name="configure-the-wildfly-application-server"></a>WildFly アプリケーション サーバーを構成する
 
-再構成した目的のアプリケーションをデプロイする前に、Postgres モジュールとその依存関係を設定して WildFly アプリケーション サーバーを更新する必要があります。 サーバーを構成するには、`wildfly_config/` ディレクトリに 4 つのファイルが必要になります。
+再構成した目的のアプリケーションをデプロイする前に、Postgres モジュールとその依存関係を設定して WildFly アプリケーション サーバーを更新する必要があります。 他の構成情報については、「[Configure WildFly server (WildFly サーバーの構成)](configure-language-java.md#configure-wildfly-server)」を参照してください。
 
-- **postgresql-42.2.5.jar**: この JAR ファイルは、Postgres 用の JDBC ドライバーです。 詳細については、[公式 Web サイト](https://jdbc.postgresql.org/index.html)を参照してください。
-- **postgres-module.xml**: この XML ファイルでは、Postgres モジュール (org.postgres) の名前が宣言されます。 また、モジュールを使用するために必要なリソースと依存関係が指定されます。
-- **jboss_cli_commands.cl**: このファイルには、JBoss CLI によって実行される構成コマンドが含まれています。 これらのコマンドでは、WildFly アプリケーション サーバーへの Postgres モジュールの追加、資格情報の指定、JNDI 名の宣言、タイムアウトのしきい値の設定などを行います。JBoss CLI を使い慣れていない場合は、[公式ドキュメント](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli)を参照してください。
-- **startup_script.sh**: 最後のこのシェル スクリプトは、お客様の App Service インスタンスが起動されるたびに実行されます。 このスクリプトで実行される機能は、`jboss_cli_commands.cli` 内のコマンドを JBoss CLI にパイプ処理することの 1 つだけです。
+サーバーを構成するには、`wildfly_config/` ディレクトリに 4 つのファイルが必要になります。
+
+- **postgresql-42.2.5.jar**:この JAR ファイルは、Postgres 用の JDBC ドライバーです。 詳細については、[公式 Web サイト](https://jdbc.postgresql.org/index.html)を参照してください。
+- **postgres-module.xml**:この XML ファイルでは、Postgres モジュール (org.postgres) の名前が宣言されます。 また、モジュールを使用するために必要なリソースと依存関係が指定されます。
+- **jboss_cli_commands.cl**:このファイルには、JBoss CLI によって実行される構成コマンドが含まれています。 これらのコマンドでは、WildFly アプリケーション サーバーへの Postgres モジュールの追加、資格情報の指定、JNDI 名の宣言、タイムアウトのしきい値の設定などを行います。JBoss CLI を使い慣れていない場合は、[公式ドキュメント](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli)を参照してください。
+- **startup_script.sh**:最後のこのシェル スクリプトは、お客様の App Service インスタンスが起動されるたびに実行されます。 このスクリプトで実行される機能は、`jboss_cli_commands.cli` 内のコマンドを JBoss CLI にパイプ処理することの 1 つだけです。
 
 これらのファイル、特に _jboss_cli_commands.cli_ の内容を読むことを強くお勧めします。
 
 ### <a name="ftp-the-configuration-files"></a>構成ファイルを FTP で転送する
 
-`wildfly_config/` の内容を目的の App Service インスタンスに FTP で転送する必要があります。 お客様の FTP 資格情報を取得するには、Azure portal で [App Service] ブレードの **[発行プロファイルの取得]** ボタンをクリックします。 お客様の FTP ユーザー名とパスワードは、ダウンロードした XML ドキュメント内にあります。 発行プロファイルの詳細については、[このドキュメント](https://docs.microsoft.com/azure/app-service/app-service-deployment-credentials)を参照してください。
+`wildfly_config/` の内容を目的の App Service インスタンスに FTP で転送する必要があります。 お客様の FTP 資格情報を取得するには、Azure portal で [App Service] ブレードの **[発行プロファイルの取得]** ボタンをクリックします。 お客様の FTP ユーザー名とパスワードは、ダウンロードした XML ドキュメント内にあります。 発行プロファイルの詳細については、[このドキュメント](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)を参照してください。
 
 任意の FTP ツールを使用して、`wildfly_config/` 内の 4 つのファイルを `/home/site/deployments/tools/` に転送します  (ディレクトリではなく、ファイル自体だけを転送することに注意してください)。
-
 
 ### <a name="finalize-app-service"></a>App Service を最終処理する
 
@@ -195,9 +196,26 @@ mvn clean install -DskipTests azure-webapp:deploy
 これらのリソースが別のチュートリアルで不要である場合 (「次のステップ」を参照)、次のコマンドを実行して削除することができます。
 
 ```bash
-az group delete --name <your_resource_group> 
+az group delete --name <your-resource-group>
 ```
 
 ## <a name="next-steps"></a>次の手順
 
-これで、Java EE アプリケーションを App Service にデプロイできました。サービスの設定、トラブルシューティング、お客様のアプリケーションのスケーリングに関する詳細については、[Java エンタープライズ開発者ガイド](https://aka.ms/wildfly-quickstart)を参照してください。
+このチュートリアルでは、以下の内容を学習しました。
+
+> [!div class="checklist"]
+> * Maven を使用して Java EE アプリを Azure にデプロイする
+> * Azure で Postgres データベースを作成する
+> * Postgres を使用するために WildFly サーバーを構成する
+> * アプリを更新して再デプロイする
+> * WildFly 上で単体テストを実行する
+
+次のチュートリアルに進んで、カスタム DNS 名をアプリにマップする方法を確認してください。
+
+> [!div class="nextstepaction"]
+> [チュートリアル:カスタム DNS 名をアプリにマップする](../app-service-web-tutorial-custom-domain.md)
+
+または、他のリソースを参照してください。
+
+> [!div class="nextstepaction"]
+> [Java アプリを構成する](configure-language-java.md)

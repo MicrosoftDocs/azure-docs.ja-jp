@@ -4,7 +4,7 @@ description: インクルード ファイル
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 0c4908315bd7c0e4d83c7aba735cc4d102216a28
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: c13c9ece54d512adf271532a4ac17876a88d733e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988435"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59804467"
 ---
 ## <a name="test-your-code"></a>コードのテスト
 
@@ -35,7 +35,7 @@ Visual Studio を使用していない場合は、お使いの Web サーバー�
     ```
 1. ブラウザーを開き、「 http://<span></span>localhost:30662」または「 http://<span></span>localhost:{ポート}」と入力します (ここで、**"ポート"** は Web サーバーがリッスンしているポートです)。 index.html ファイルの内容と **[サインイン]** ボタンが表示されるはずです。
 
-<p/><!-- -->
+<p><!-- -->
 
 ### <a name="test-with-visual-studio"></a>Visual Studio でのテスト
 
@@ -43,7 +43,7 @@ Visual Studio を使用している場合は、プロジェクト ソリュー�
 
 ## <a name="test-your-application"></a>アプリケーションのテスト
 
-ブラウザーに index.html ファイルが読み込まれたら、**[サインイン]** をクリックします。 Microsoft Azure Active Directory (Azure AD) v2.0 エンドポイントを使用してサインインするように求められます。
+ブラウザーに index.html ファイルが読み込まれたら、**[サインイン]** をクリックします。 Microsoft ID プラットフォーム エンドポイントでサインインするように求められます。
 
 ![JavaScript SPA アカウントにサインインする](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 

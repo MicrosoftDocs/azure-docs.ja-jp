@@ -3,21 +3,22 @@ title: クイック スタート Azure AD のセルフサービスによるパ�
 description: このクイック スタートでは、ユーザーが自分のパスワードをリセットできるように、Azure AD のセルフサービスによるパスワードのリセットをすばやく構成します
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: c40cb3192d514d990ea2a5d66e1484ff204e9b10
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 58e3254d499e013dc686bf6b7d53f919a457c901
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223559"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371285"
 ---
-# <a name="quickstart-self-service-password-reset"></a>クイック スタート: セルフサービスによるパスワードのリセット
+# <a name="quickstart-self-service-password-reset"></a>クイック スタート:セルフサービスのパスワード リセット
 
 このクイック スタートでは、IT 管理者がユーザーにパスワードのリセットやアカウントのロック解除を許可するための単純な方法として、セルフサービスによるパスワードのリセット (SSPR) を構成する方法を説明します。
 
@@ -25,7 +26,7 @@ ms.locfileid: "39223559"
 
 * 少なくとも試用版ライセンスが有効になっている、動作している Azure AD テナント。
 * 全体管理者特権を持つアカウント。
-* 管理者が知っているパスワードを持つ、管理者以外のテスト ユーザー。ユーザーを作成する必要がある場合は、「[クイック スタート: Azure Active Directory に新しいユーザーを追加する](../add-users-azure-active-directory.md)」を参照してください。
+* 管理者が知っているパスワードを持つ、管理者以外のテスト ユーザー。ユーザーを作成する必要がある場合は、「[クイック スタート:Azure Active Directory に新しいユーザーを追加する](../add-users-azure-active-directory.md)」を参照してください。
 * 管理者以外のテスト ユーザーが所属している、テストするパイロット グループ。グループを作成する必要がある場合は、「[Azure Active Directory でグループを作成し、メンバーを追加する](../active-directory-groups-create-azure-portal.md)」を参照してください。
 
 ## <a name="enable-self-service-password-reset"></a>セルフ サービスのパスワード リセットを有効にする
@@ -39,17 +40,17 @@ ms.locfileid: "39223559"
     * **[Save]** をクリックします。
 
 3. **[認証方法]** ページで、以下を選択します。
-   * リセットのために必要な方法の数: **1**
+   * リセットに必要な方法の数:**1**
    * ユーザーが使用できる方法:
-      * **携帯電話**
-      * **会社電話**
+      * **電子メール**
+      * **モバイル アプリ コード (プレビュー)**
    * **[Save]** をクリックします。
 
-    ![認証][Authentication]
+     ![SSPR 用の認証方法を選択する][Authentication]
 
 4. **[登録]** ページで、以下を選択します。
-   * サインイン時にユーザーに登録を求める: **はい**
-   * ユーザーが認証情報を再確認するように求められるまでの日数を設定する: **365**
+   * サインイン時にユーザーに登録を求める:**はい**
+   * ユーザーが認証情報を再確認するように求められるまでの日数を設定する:**365**
 
 ## <a name="test-self-service-password-reset"></a>セルフサービスによるパスワードのリセットをテストする
 
@@ -64,7 +65,7 @@ ms.locfileid: "39223559"
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-セルフサービスのパスワード リセットは簡単に無効にできます。 Azure AD テナントを開いて **[パスワードのリセット]** > **[プロパティ]** の順に移動し、**[セルフ サービスによるパスワードのリセットが有効]** の **[なし]** を選択します。
+セルフサービスのパスワード リセットは簡単に無効にできます。 Azure AD テナントを開いて **[プロパティ]** > **[パスワードのリセット]** の順に移動し、**[セルフ サービスによるパスワードのリセットが有効]** の **[なし]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

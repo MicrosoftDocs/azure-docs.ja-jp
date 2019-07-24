@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0c7e8b7ab10771c611f80d36fb1c9ed0cf3e6f1b
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: d67c3e452da05c626721d4c3144e612e6f9e0af4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632358"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338446"
 ---
 # <a name="use-apache-datafu-pig-with-apache-pig-on-hdinsight"></a>HDInsight 上の Apache Pig で Apache DataFu Pig を使用する
 
@@ -29,21 +29,21 @@ DataFu Pig の詳細については、[https://datafu.apache.org/](https://dataf
 
 * Azure HDInsight クラスター (Linux または Windows ベース)
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
-*  [HDInsight での Pig の使用](hdinsight-use-pig.md)
+* [HDInsight での Apache Pig の使用](hdinsight-use-pig.md)に関する基礎知識があること
 
 ## <a name="install-datafu-on-linux-based-hdinsight"></a>Linux ベースの HDInsight に DataFu をインストールする
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > DataFu は、Linux ベースのクラスター バージョン 3.3 以降と、Windows ベースのクラスター上にインストールされています。 3.3 より前の Linux ベースのクラスターにはインストールされていません。
 >
 > Windows ベースのクラスター、または Linux ベースのクラスター バージョン 3.3 以降を使用している場合は、このセクションを省略してください。
 
 DataFu は、Maven リポジトリからダウンロードしてインストールできます。 次の手順を実行して、必要なバージョンを特定し HDInsight クラスターに追加します。
 
-> [!WARNING]
+> [!WARNING]  
 > DataFu のバージョンには、HDInsight では満たされていない要件がある場合があります。 たとえば、以前のバージョンの DataFu を使用すると、HDInsight に含まれていないバージョンの Pig が必要になる場合があります。
 
 ### <a name="find-a-version"></a>バージョンを特定する
@@ -62,35 +62,37 @@ DataFu は、Maven リポジトリからダウンロードしてインストー�
 
 2. wget ユーティリティを使用して DataFu jar ファイルをダウンロードするには、次のコマンドを使用します。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > コマンド内のリンクを先ほどコピーした URL に置き換えます。
 
     ```
-    wget http://central.maven.org/maven2/org/apache/datafu/datafu-pig/1.4.0/datafu-pig-1.4.0.jar
+    wget https://central.maven.org/maven2/org/apache/datafu/datafu-pig/1.4.0/datafu-pig-1.4.0.jar
     ```
 
 3. 次に、HDInsight クラスターの既定のストレージにファイルをアップロードします。 このファイルを既定のストレージに配置すると、クラスター内のすべてのノードで使用できるようになります。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > ファイル名のバージョン番号を、ダウンロードしたバージョンに置き換えます。
 
     ```
     hdfs dfs -put datafu-pig-1.4.0.jar /example/jars
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > 前のコマンドでは jar を `/example/jars` に格納しています。このディレクトリはクラスターのストレージに既に存在しています。 HDInsight クラスター ストレージのどこでも使用できます。
 
 ## <a name="use-datafu-with-pig"></a>Pig で DataFu を使用する
 
 このセクションの手順では、HDInsight での Pig の使用について理解していることを前提としています。 HDInsight で Pig を使用する方法の詳細については、 [HDInsight での Pig の使用](hdinsight-use-pig.md)に関するページをご覧ください。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 前のセクションの手順を使用して DataFu を手動でインストールした場合は、使用する前に登録する必要があります。
 >
 > * クラスターで Azure Storage を使用する場合は、`wasb://` パスを使用します。 たとえば、「 `register wasb:///example/jars/datafu-pig-1.4.0.jar` 」のように入力します。
 >
-> * クラスターで Azure Data Lake Store を使用する場合は、`adl://` パスを使用します。 たとえば、「 `register adl://home/example/jars/datafu-pig-1.4.0.jar` 」のように入力します。
+> * クラスターで Azure Data Lake Store Gen2 を使用する場合は、`abfs://` パスを使用します。 たとえば、「 `register abfs://home/example/jars/datafu-pig-1.4.0.jar` 」のように入力します。
+>
+> * クラスターで Azure Data Lake Store Gen1 を使用する場合は、`adl://` パスを使用します。 たとえば、「 `register adl://home/example/jars/datafu-pig-1.4.0.jar` 」のように入力します。
 
 通常は、DataFu の関数にエイリアスを定義します。 次の例では、`SHA` のエイリアスを定義しています。
 
@@ -140,4 +142,4 @@ DUMP mask;
 DataFu または Pig の詳細については、次のドキュメントを参照してください。
 
 * [Apache DataFu Pig の概要](https://datafu.apache.org/docs/datafu/getting-started.html)
-* [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
+* [HDInsight での Apache Pig の使用](hdinsight-use-pig.md)

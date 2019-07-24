@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 9057d9f5d63598ea249e8f3193b84fd715018829
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: b5e7864eae56a6f066590191373d35cb57693f37
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109973"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311681"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>データ分析パイプラインを運用化する
 
@@ -30,13 +30,13 @@ ms.locfileid: "43109973"
 | 2017 | 1 | 3 | AS | 9.435449 | 5.482143 | 572289 |
 | 2017 | 1 | 3 | DL | 6.935409 | -2.1893024 | 1909696 |
 
-この例のパイプラインは、新しい期間フライト データが到着するまで待ってから、その詳細なフライト情報を長期的な分析のために Hive データ ウェアハウスに格納します。 また、パイプラインは、毎日のフライト データだけを集計するはるかに小さいデータセットも作成します。 この毎日のフライト集計データは、Web サイトなどでレポートを提供するために SQL データベースに送られます。
+この例のパイプラインでは、新しい期間のフライト データが到着するまで待ってから、その詳細なフライト情報を長期的な分析のために Apache Hive データ ウェアハウスに格納します。 また、パイプラインは、毎日のフライト データだけを集計するはるかに小さいデータセットも作成します。 この毎日のフライト集計データは、Web サイトなどでレポートを提供するために SQL データベースに送られます。
 
 次の図はこの例のパイプラインを示したものです。
 
 ![フライト データ パイプライン](./media/hdinsight-operationalize-data-pipeline/pipeline-overview.png)
 
-## <a name="oozie-solution-overview"></a>Oozie ソリューションの概要
+## <a name="apache-oozie-solution-overview"></a>Apache Oozie ソリューションの概要
 
 このパイプラインでは、HDInsight Hadoop クラスターで実行されている Apache Oozie を使います。
 
@@ -139,7 +139,7 @@ Azure SQL Database の準備ができました。
 
 Oozie Web コンソールを使ってコーディネーター インスタンスとワークフロー インスタンスの状態を表示するには、HDInsight クラスターへの SSH トンネルを設定します。 詳しくは、「[SSH トンネル](hdinsight-linux-ambari-ssh-tunnel.md)」をご覧ください。
 
-> [!NOTE]
+> [!NOTE]  
 > Chrome と [Foxy Proxy](https://getfoxyproxy.org/) 拡張機能を使って、SSH トンネル経由でクラスターの Web リソースを参照することもできます。 トンネルのポート 9876 でホスト `localhost` を経由してすべての要求をプロキシするように構成します。 この方法は、Windows Subsystem for Linux (Bash on Windows 10 とも呼ばれます) と互換性があります。
 
 1. 次のコマンドを実行して、クラスターへの SSH トンネルを開きます。
@@ -150,13 +150,13 @@ Oozie Web コンソールを使ってコーディネーター インスタンス
 
 2. ヘッド ノードで Ambari に移動し、次のアドレスを参照して、トンネルが動作可能であることを確認します。
 
-    http://headnodehost:8080
+    http:\//headnodehost:8080
 
 3. Ambari 内から **Oozie Web コンソール**にアクセスするには、**[Oozie]**、**[クイック リンク]** の順に選び、**[Oozie Web Console]\(Oozie Web コンソール\)** を選びます。
 
 ### <a name="configure-hive"></a>Hive を構成する
 
-1. 1 か月のフライト データを含むサンプル CSV ファイルをダウンロードします。 ZIP ファイル `2017-01-FlightData.zip` を [HDInsight Github リポジトリ](https://github.com/hdinsight/hdinsight-dev-guide)からダウンロードし、その CSV ファイル `2017-01-FlightData.csv` を解凍します。 
+1. 1 か月のフライト データを含むサンプル CSV ファイルをダウンロードします。 ZIP ファイル `2017-01-FlightData.zip` を [HDInsight GitHub リポジトリ](https://github.com/hdinsight/hdinsight-dev-guide)からダウンロードし、CSV ファイル `2017-01-FlightData.csv` に解凍します。 
 
 2. この CSV ファイルを、HDInsight クラスターに接続されている Azure Storage アカウントにコピーして、`/example/data/flights` フォルダーに配置します。
 
@@ -176,7 +176,7 @@ Oozie Web コンソールを使ってコーディネーター インスタンス
 
 これで、サンプル データを利用できるようになりました。 ただし、パイプラインには処理用に 2 つの Hive テーブルが必要です。1 つは受信データ用 (`rawFlights`) で、もう 1 つは集約済みデータ用 (`flights`) です。 次のようにして、Ambari でこれらのテーブルを作成します。
 
-1. [http://headnodehost:8080](http://headnodehost:8080) に移動して Ambari にログインします。
+1. http:\///headnodehost:8080 に移動して Ambari にログインします。
 2. サービスの一覧から、**[Hive]** を選びます。
 
     ![Ambari での Hive の選択](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
@@ -430,7 +430,7 @@ day=03
 | month | フライトの集計を計算する日付の月の部分です。 現状のままにします。 |
 | day | フライトの集計を計算する日付の日の部分です。 現状のままにします。 |
 
-> [!NOTE]
+> [!NOTE]  
 > Oozie ワークフローを展開して実行する前に、忘れずに、`job.properties` ファイルのコピーを、お使いの環境に固有の値で更新してください。
 
 ### <a name="deploy-and-run-the-oozie-workflow"></a>Oozie ワークフローを展開して実行する
@@ -551,7 +551,7 @@ bash セッションから SCP を使って、Oozie ワークフロー (`workflo
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    コーディネーターは、`frequency` 属性で指定された間隔に従って、`start` と `end` の日付範囲内でアクションをスケジュールします。 スケジュールされた各アクションは、構成に従ってワークフローを実行します。 上記のように定義されたコーディネーターは、2017 年 1 月 1 日から 2017 年 1 月 5 日までアクションを実行するように構成されます。 頻度は、[Oozie 式言語](http://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation)の頻度式 `${coord:days(1)}` によって 1 日に設定されています。 これにより、コーディネーターはアクション (したがってワークフロー) を 1 日に 1 回実行するようにスケジュールします。 この例のように、過去の日付範囲の場合は、アクションは遅延なしで実行するようにスケジュールされます。 アクションの実行がスケジュールされる日付の開始時刻は、"*標準時刻*" と呼ばれます。 たとえば、2017 年 1 月 1 日のデータを処理する場合、コーディネーターは標準時刻 2017-01-01T00:00:00 GMT でアクションをスケジュールします。
+    コーディネーターは、`frequency` 属性で指定された間隔に従って、`start` と `end` の日付範囲内でアクションをスケジュールします。 スケジュールされた各アクションは、構成に従ってワークフローを実行します。 上記のように定義されたコーディネーターは、2017 年 1 月 1 日から 2017 年 1 月 5 日までアクションを実行するように構成されます。 頻度は、[Oozie 式言語](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation)の頻度式 `${coord:days(1)}` によって 1 日に設定されています。 これにより、コーディネーターはアクション (したがってワークフロー) を 1 日に 1 回実行するようにスケジュールします。 この例のように、過去の日付範囲の場合は、アクションは遅延なしで実行するようにスケジュールされます。 アクションの実行がスケジュールされる日付の開始時刻は、"*標準時刻*" と呼ばれます。 たとえば、2017 年 1 月 1 日のデータを処理する場合、コーディネーターは標準時刻 2017-01-01T00:00:00 GMT でアクションをスケジュールします。
 
 * ポイント 2: ワークフローの日付範囲内で、`dataset` 要素は特定の日付範囲のデータを HDFS で検索する場所を指定し、データを処理にまだ使用できるかどうかを Oozie が判断する方法を構成します。
 
@@ -566,7 +566,7 @@ bash セッションから SCP を使って、Oozie ワークフロー (`workflo
 
     空の `done-flag` 要素は、Oozie が指定された日時で入力データの存在をチェックするときに、Oozie がディレクトリまたはファイルの有無によってデータを利用できるかどうかを判断することを示します。 この例では、csv ファイルの存在です。 csv ファイルが存在する場合、Oozie はデータの準備が整っているものと見なし、ワークフロー インスタンスを開始してファイルを処理します。 csv ファイルが存在しない場合は、データの準備がまだできていないものと見なされ、ワークフローのその実行は待機状態になります。
 
-* ポイント 3:`data-in` 要素は、関連付けられているデータセットの `uri-template` の値を置き換えるときに標準時刻として使う特定のタイムスタンプを指定します。
+* ポイント 3: `data-in` 要素は、関連付けられているデータセットの `uri-template` の値を置き換えるときに標準時刻として使う特定のタイムスタンプを指定します。
 
     ```
     <data-in name="event_input1" dataset="ds_input1">
@@ -651,6 +651,6 @@ sqlDatabaseTableName=dailyflights
 
 ## <a name="next-steps"></a>次の手順
 
-* [Apache Oozie のドキュメント](http://oozie.apache.org/docs/4.2.0/index.html)
+* [Apache Oozie のドキュメント](https://oozie.apache.org/docs/4.2.0/index.html)
 
 <!-- * Build the same pipeline [using Azure Data Factory](tbd.md).  -->

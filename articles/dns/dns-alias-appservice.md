@@ -7,20 +7,20 @@ ms.service: dns
 ms.topic: article
 ms.date: 11/3/2018
 ms.author: victorh
-ms.openlocfilehash: 2b14753237e118540da6306fa9f06816f3e58b71
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: b08eae072c2fbe420401424baf97a25b4cbbe87b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980267"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086328"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>ゾーンの頂点で負荷分散された Azure Web アプリをホストする
 
-DNS プロトコルでは、ゾーンの頂点で A または AAAA レコード以外のものを割り当てることはできません。 ゾーンの頂点の例として、contoso.com があります。 Traffic Manager の背後でアプリケーションの負荷分散を行っているアプリケーションの所有者にとっては、この制限によって問題が生じます。 ゾーンの頂点レコードから Traffic Manager プロファイルをポイントすることはできません。 そのため、アプリケーションの所有者は回避策を使用する必要があります。 アプリケーション レイヤーでのリダイレクトでは、ゾーンの頂点から別のドメインにリダイレクトする必要があります。 たとえば、contoso.com から www.contoso.com へのリダイレクトです。 このようにすると、リダイレクト機能に単一障害点が発生します。
+DNS プロトコルでは、ゾーンの頂点で A または AAAA レコード以外のものを割り当てることはできません。 ゾーンの頂点の例として、contoso.com があります。 Traffic Manager の背後でアプリケーションの負荷分散を行っているアプリケーションの所有者にとっては、この制限によって問題が生じます。 ゾーンの頂点レコードから Traffic Manager プロファイルをポイントすることはできません。 そのため、アプリケーションの所有者は回避策を使用する必要があります。 アプリケーション レイヤーでのリダイレクトでは、ゾーンの頂点から別のドメインにリダイレクトする必要があります。 たとえば、contoso.com から www\.contoso.com へのリダイレクトです。 このようにすると、リダイレクト機能に単一障害点が発生します。
 
 エイリアス レコードを使用すると、この問題がなくなります。 アプリケーションの所有者は、ゾーンの頂点のレコードで、外部エンドポイントを持つ Traffic Manager プロファイルをポイントできます。 アプリケーションの所有者は、DNS ゾーン内の他のドメインで使用されているのと同じ Traffic Manager プロファイルをポイントできます。
 
-たとえば、contoso.com と www.contoso.com で、同じ Traffic Manager プロファイルをポイントできます。 これは、Traffic Manager に外部エンドポイントのみが構成されている場合に限ります。
+たとえば、contoso.com と www\.contoso.com で、同じ Traffic Manager プロファイルをポイントできます。 これは、Traffic Manager に外部エンドポイントのみが構成されている場合に限ります。
 
 この記事では、ドメインの頂点に対するエイリアス レコードを作成し、Web アプリ用に Traffic Manager プロファイルのエンドポイントを構成する方法について説明します。
 
@@ -30,7 +30,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 テスト対象の Azure DNS でホストできる利用可能なドメイン名が必要です。 このドメインに対するフル コントロールが必要となります。 フル コントロールには、このドメインのネーム サーバー (NS) レコードを設定する権限が含まれます。
 
-Azure DNS にドメインをホストする手順については、「[チュートリアル: Azure DNS にドメインをホストする](dns-delegate-domain-azure-dns.md)」を参照してください。
+Azure DNS 内でドメインをホストする手順については、「[チュートリアル:Azure DNS でドメインをホストする](dns-delegate-domain-azure-dns.md)」を参照してください。
 
 このチュートリアルで使用するドメインの例は contoso.com ですが、独自のドメイン名を使用してください。
 
@@ -76,7 +76,7 @@ App Service プランごとに 1 つずつ、2 つの Web アプリを作成し�
 
 リソース グループで Traffic Manager プロファイルを作成します。 既定値を使用し、trafficmanager.net 名前空間内で一意の名前を入力します。
 
-Traffic Manager プロファイルの作成については、「[クイック スタート: Web アプリケーションの高可用性を実現する Traffic Manager プロファイルの作成](../traffic-manager/quickstart-create-traffic-manager-profile.md)」をご覧ください。
+Traffic Manager プロファイルの作成方法の詳細については、[Web アプリケーションに高可用性を実現する Traffic Manager プロファイルの作成に関するクイック スタート](../traffic-manager/quickstart-create-traffic-manager-profile.md)を参照してください。
 
 ### <a name="create-endpoints"></a>エンドポイントを作成する
 
@@ -94,7 +94,7 @@ Traffic Manager プロファイルの作成については、「[クイック �
 
 ## <a name="create-dns-zone"></a>DNS ゾーンの作成
 
-既存の DNS ゾーンをテスト用に使用することも、新しいゾーンを作成することもできます。 Azure で新しい DNS ゾーンを作成して委任する方法については、「[チュートリアル: Azure DNS でドメインをホストする](dns-delegate-domain-azure-dns.md)」をご覧ください。
+既存の DNS ゾーンをテスト用に使用することも、新しいゾーンを作成することもできます。 Azure で新しい DNS ゾーンを作成して委任する方法については、「[チュートリアル:Azure DNS でドメインをホストする](dns-delegate-domain-azure-dns.md)」を参照してください。
 
 ### <a name="add-the-alias-record-set"></a>エイリアス レコード セットを追加する
 
@@ -106,7 +106,7 @@ DNS ゾーンの準備ができたら、ゾーンの頂点に対するエイリ�
 
    |Name  |type  |エイリアス レコード セット  |エイリアスの種類  |Azure リソース|
    |---------|---------|---------|---------|-----|
-   |@     |A|[はい]|Azure リソース|Traffic Manager - お使いのプロファイル|
+   |@     |A|はい|Azure リソース|Traffic Manager - お使いのプロファイル|
 
 ## <a name="add-custom-hostnames"></a>カスタム ホスト名を追加する
 
@@ -141,6 +141,6 @@ DNS ゾーンの準備ができたら、ゾーンの頂点に対するエイリ�
 
 エイリアス レコードの詳細については、次の記事を参照してください。
 
-- [チュートリアル: Azure パブリック IP アドレスを参照するエイリアス レコードを構成する](tutorial-alias-pip.md)
-- [チュートリアル: Traffic Manager で頂点のドメイン名をサポートするエイリアス レコードを構成する](tutorial-alias-tm.md)
+- [チュートリアル:Azure パブリック IP アドレスを参照するエイリアス レコードを構成する](tutorial-alias-pip.md)
+- [チュートリアル:Traffic Manager で頂点のドメイン名をサポートするエイリアス レコードを構成する](tutorial-alias-tm.md)
 - [DNS に関する FAQ](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)

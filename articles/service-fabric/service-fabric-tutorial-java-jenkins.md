@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b8c114ec3fe9b27d0318bf11a8b1fa8e3ce5f1c3
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 0a0f7cc8e3810a28fdbec914a9f37808c33ab878
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124982"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880593"
 ---
-# <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Tutorial: Service Fabric 上の Java アプリケーションに対して CI/CD を有効にするように Jenkins 環境を構成する
+# <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>チュートリアル:Service Fabric 上の Java アプリケーションに対して CI/CD を有効にするように Jenkins 環境を構成する
 
 このチュートリアルは、シリーズの第 5 部です。 Jenkins を使用してアプリケーションにアップグレードをデプロイする方法を示します。 このチュートリアルでは、Service Fabric Jenkins プラグインと、投票アプリケーションをホストする GitHub リポジトリを組み合わせて使用して、アプリケーションをクラスターにデプロイします。
 
@@ -72,15 +72,15 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
     * 初めてサインインした後は、自分のユーザー アカウントを作成することも、管理者アカウントを使用することもできます。
 
 1. 「[Generating a new SSH key and adding it to the SSH agent (新しい SSH キーの生成と SSH エージェントへの追加)](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)」で説明されている手順を使用して、Jenkins を利用できるように GitHub をセットアップします。 コマンドは Docker コンテナーから実行されるため、Linux 環境向けの手順に従ってください。
-    * GitHub の手順に従って SSH キーを生成します。 次に、リポジトリをホストしている GitHub アカウントに SSH キーを追加します。
-    * (ホストではなく) Jenkins Docker シェルで、前のリンク先に記載されているコマンドを実行します。
-    * ホストから Jenkins シェルにサインインするには、次のコマンドを使用します。
+   * GitHub の手順に従って SSH キーを生成します。 次に、リポジトリをホストしている GitHub アカウントに SSH キーを追加します。
+   * (ホストではなく) Jenkins Docker シェルで、前のリンク先に記載されているコマンドを実行します。
+   * ホストから Jenkins シェルにサインインするには、次のコマンドを使用します。
 
-    ```sh
-    docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
-    ```
+     ```sh
+     docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
+     ```
 
-    Jenkins コンテナー イメージがホストされているクラスターまたはマシンに公開 IP があることを確認します。 この公開 IP を使用することで、Jenkins インスタンスは GitHub から通知を受け取ることができます。
+     Jenkins コンテナー イメージがホストされているクラスターまたはマシンに公開 IP があることを確認します。 この公開 IP を使用することで、Jenkins インスタンスは GitHub から通知を受け取ることができます。
 
 ## <a name="create-and-configure-a-jenkins-job"></a>Jenkins ジョブの作成と構成
 
@@ -146,7 +146,7 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
 
     ```xml
     <?xml version="1.0" encoding="utf-8" standalone="no"?>
-    <ApplicationManifest xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingApplicationType" ApplicationTypeVersion="2.0.0">
+    <ApplicationManifest xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingApplicationType" ApplicationTypeVersion="2.0.0">
       <Description>Voting Application</Description>
       <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="VotingWebPkg" ServiceManifestVersion="2.0.0"/>
@@ -181,7 +181,7 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
     </CodePackage>
     ```
 
-1. アプリケーションのアップグレードを実行する Jenkins ジョブを初期化するために、新しい変更を GitHub リポジトリにプッシュします。
+1. アプリケーションのアップグレードを実行する Jenkins ジョブを初期化するには、新しい変更を GitHub リポジトリにプッシュします。
 
 1. Service Fabric Explorer で、**[アプリケーション]** ドロップダウンをクリックします。 アップグレードの状態を確認するには、**[アップグレードの進行中]** タブをクリックします。
 
@@ -193,7 +193,7 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * Service Fabric Jenkins コンテナーをマシンにデプロイする

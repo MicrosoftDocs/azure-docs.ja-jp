@@ -1,242 +1,249 @@
-items:
 - name: Azure DB for MySQL のドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: Azure DB for MySQL
-    href: overview.md
+    - name: Azure DB for MySQL とは
+      href: overview.md
 - name: クイック スタート
-  items:
-  - name: DB の作成 - ポータル
-    href: quickstart-create-mysql-server-database-using-azure-portal.md
-  - name: DB の作成 - Azure CLI
-    href: quickstart-create-mysql-server-database-using-azure-cli.md
-  - name: 接続とクエリ
-    items:
-    - name: PHP
-      href: connect-php.md
-    - name: Java
-      href: connect-java.md
-    - name: .NET
-      href: connect-csharp.md
-    - name: Python
-      href: connect-python.md
-    - name: Node.js
-      href: connect-nodejs.md
-    - name: Ruby
-      href: connect-ruby.md
-    - name: C++
-      href: connect-cpp.md
-    - name: Go
-      href: connect-go.md
-    - name: MySQL Workbench
-      href: connect-workbench.md
   expanded: true
+  items:
+    - name: DB の作成 - ポータル
+      href: quickstart-create-mysql-server-database-using-azure-portal.md
+    - name: DB の作成 - Azure CLI
+      href: quickstart-create-mysql-server-database-using-azure-cli.md
+    - name: DB の作成 - Azure CLI アップコマンド
+      href: quickstart-create-server-up-azure-cli.md
+    - name: 接続とクエリ
+      items:
+        - name: PHP
+          href: connect-php.md
+        - name: Java
+          href: connect-java.md
+        - name: .NET
+          href: connect-csharp.md
+        - name: Python
+          href: connect-python.md
+        - name: Node.js
+          href: connect-nodejs.md
+        - name: Ruby
+          href: connect-ruby.md
+        - name: C++
+          href: connect-cpp.md
+        - name: Go
+          href: connect-go.md
+        - name: MySQL Workbench
+          href: connect-workbench.md
 - name: チュートリアル
   items:
-  - name: 1 - データベースの設計
-    items:
-    - name: Azure ポータル
-      href: tutorial-design-database-using-portal.md
-    - name: Azure CLI
-      href: tutorial-design-database-using-cli.md
-  - name: 2 - Web アプリの作成
-    items:
-    - name: Wordpress - ポータル
-      href: https://portal.azure.com/#create/WordPress.WordPress
-    - name: PHP と MySQL
-      href: ../app-service/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
-    - name: Java と MySQL
-      href: ../app-service/app-service-web-tutorial-java-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
+    - name: 1 - データベースの設計
+      items:
+        - name: Azure ポータル
+          href: tutorial-design-database-using-portal.md
+        - name: Azure CLI
+          href: tutorial-design-database-using-cli.md
+        - name: Azure Resource Manager テンプレート
+          href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
+    - name: 2 - Web アプリの作成
+      items:
+        - name: コンテナーでの Wordpress と MySQL
+          href: ../app-service/containers/tutorial-multi-container-app.md
+          maintainContext: true
+        - name: PHP と MySQL
+          href: ../app-service/app-service-web-tutorial-php-mysql.md
+          maintainContext: true
 - name: サンプル
   items:
-  - name: Azure CLI
-    href: sample-scripts-azure-cli.md
+    - name: Azure CLI
+      href: sample-scripts-azure-cli.md
 - name: 概念
   items:
-  - name: DB とサーバー
-    items:
-    - name: サーバー
-      href: concepts-servers.md
-    - name: サポートされているバージョン
-      href: concepts-supported-versions.md
-    - name: 高可用性
-      href: concepts-high-availability.md
-  - name: リソース
-    items:
-    - name: 価格レベル
-      href: concepts-pricing-tiers.md
-    - name: 制限
-      href: concepts-limits.md
-  - name: データ アクセスとセキュリティ
-    items:
-    - name: ファイアウォール規則
-      href: concepts-firewall-rules.md
-    - name: SSL の構成
-      href: concepts-ssl-connection-security.md
-    - name: 高度な脅威保護
-      href: concepts-data-access-and-security-threat-protection.md
-    - name: VNet
-      href: concepts-data-access-and-security-vnet.md
-  - name: ビジネス継続性
-    items:
-    - name: 概要
-      href: concepts-business-continuity.md
-    - name: バックアップと復元
-      href: concepts-backup.md
-  - name: 監視
-    items:
+    - name: DB とサーバー
+      items:
+        - name: サーバー
+          href: concepts-servers.md
+        - name: サポートされているバージョン
+          href: concepts-supported-versions.md
+        - name: 高可用性
+          href: concepts-high-availability.md
+    - name: リソース
+      items:
+        - name: 価格レベル
+          href: concepts-pricing-tiers.md
+        - name: 制限
+          href: concepts-limits.md
+    - name: データ アクセスとセキュリティ
+      items:
+        - name: ファイアウォール規則
+          href: concepts-firewall-rules.md
+        - name: SSL の構成
+          href: concepts-ssl-connection-security.md
+        - name: 高度な脅威保護
+          href: concepts-data-access-and-security-threat-protection.md
+        - name: VNet
+          href: concepts-data-access-and-security-vnet.md
+    - name: ビジネス継続性
+      items:
+        - name: 概要
+          href: concepts-business-continuity.md
+        - name: バックアップと復元
+          href: concepts-backup.md
     - name: 監視
-      href: concepts-monitoring.md
-    - name: サーバー ログ
-      href: concepts-server-logs.md
-  - name: 開発
-    items:
-    - name: ドライバーとツールの互換性
-      href: concepts-compatibility.md
-    - name: アプリケーション開発
-      href: concepts-database-application-development.md
-    - name: 接続の回復性
-      href: concepts-connectivity.md
-    - name: Azure Kubernetes Service (AKS) を使用した開発
-      href: concepts-aks.md
-  - name: レプリケーション
-    items:
-    - name: データイン レプリケーション
-      href: concepts-data-in-replication.md
-    - name: 読み取りレプリカ
-      href: concepts-read-replicas.md
+      items:
+        - name: 監視
+          href: concepts-monitoring.md
+        - name: サーバー ログ
+          href: concepts-server-logs.md
+    - name: 開発
+      items:
+        - name: ドライバーとツールの互換性
+          href: concepts-compatibility.md
+        - name: アプリケーション開発
+          href: concepts-database-application-development.md
+        - name: 接続の回復性
+          href: concepts-connectivity.md
+        - name: Azure Kubernetes Service (AKS) を使用した開発
+          href: concepts-aks.md
+        - name: Java
+          items:
+            - name: Spring Data JDBC の構成
+              href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-mysql
+            - name: Spring Data JPA の構成
+              href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-mysql
+    - name: レプリケーション
+      items:
+        - name: データイン レプリケーション
+          href: concepts-data-in-replication.md
+        - name: 読み取りレプリカ
+          href: concepts-read-replicas.md
 - name: ハウツー ガイド
   items:
-  - name: サーバーの管理
-    items:
-    - name: Azure ポータル
-      href: howto-create-manage-server-portal.md
-  - name: ファイアウォール規則
-    items:
-    - name: Azure ポータル
-      href: howto-manage-firewall-using-portal.md
-    - name: Azure CLI
-      href: howto-manage-firewall-using-cli.md
-  - name: サーバーの復元
-    items:
-    - name: Azure ポータル
-      href: howto-restore-server-portal.md
-    - name: Azure CLI
-      href: howto-restore-server-cli.md
-  - name: データベースの移行
-    items:
-    - name: ダンプと復元
-      href: concepts-migrate-dump-restore.md
-    - name: インポートとエクスポート
-      href: concepts-migrate-import-export.md
-    - name: 最小限のダウンタイムでの移行
-      href: howto-migrate-online.md
-  - name: アプリケーションの接続
-    items:
-    - name: ユーザーの作成
-      href: howto-create-users.md
-    - name: Connection strings
-      href: howto-connection-string.md
-    - name: SSL の構成
-      href: howto-configure-ssl.md
-    - name: Web Apps
-      href: howto-connect-webapp.md
-  - name: サーバー パラメーターの構成
-    items:
-    - name: Azure ポータル
-      href: howto-server-parameters.md
-    - name: Azure CLI
-      href: howto-configure-server-parameters-using-cli.md
-  - name: サーバー ログへのアクセス
-    items:
-    - name: Azure ポータル
-      href: howto-configure-server-logs-in-portal.md
-    - name: Azure CLI
-      href: howto-configure-server-logs-in-cli.md
-  - name: 監視
-    items:
-    - name: メトリックに基づいたアラートの作成
-      href: howto-alert-on-metric.md
-  - name: レプリケーション
-    items:
-    - name: データイン レプリケーションの構成
-      href: howto-data-in-replication.md
-    - name: Azure portal を使用した読み取りレプリカの作成
-      href: howto-read-replicas-portal.md
-    - name: 読み取りレプリカ Azure CLI の作成
-      href: howto-read-replicas-cli.md
-  - name: トラブルシューティング
-    items:
-    - name: 接続エラーのトラブルシューティング
-      href: howto-troubleshoot-common-connection-issues.md
-    - name: クエリ パフォーマンスのトラブルシューティング
-      href: howto-troubleshoot-query-performance.md
-    - name: sys スキーマでビューを使用する方法
-      href: howto-troubleshoot-sys-schema.md
-  - name: 高度な脅威保護
-    items:
-    - name: Azure ポータル
-      href: howto-database-threat-protection-portal.md
-  - name: Virtual Network
-    items:
-    - name: Azure ポータル
-      href: howto-manage-vnet-using-portal.md
-    - name: Azure CLI
-      href: howto-manage-vnet-using-cli.md
-  - name: サーバーの再起動
-    items:
-    - name: Azure ポータル
-      href: howto-restart-server-portal.md
+    - name: サーバーの管理
+      items:
+        - name: Azure ポータル
+          href: howto-create-manage-server-portal.md
+    - name: ファイアウォール規則
+      items:
+        - name: Azure ポータル
+          href: howto-manage-firewall-using-portal.md
+        - name: Azure CLI
+          href: howto-manage-firewall-using-cli.md
+    - name: サーバーの復元
+      items:
+        - name: Azure ポータル
+          href: howto-restore-server-portal.md
+        - name: Azure CLI
+          href: howto-restore-server-cli.md
+    - name: データベースの移行
+      items:
+        - name: ダンプと復元
+          href: concepts-migrate-dump-restore.md
+        - name: インポートとエクスポート
+          href: concepts-migrate-import-export.md
+        - name: 最小限のダウンタイムでの移行
+          href: howto-migrate-online.md
+    - name: アプリケーションの接続
+      items:
+        - name: ユーザーの作成
+          href: howto-create-users.md
+        - name: Connection strings
+          href: howto-connection-string.md
+        - name: SSL の構成
+          href: howto-configure-ssl.md
+        - name: Web Apps
+          href: howto-connect-webapp.md
+    - name: サーバー パラメーターの構成
+      items:
+        - name: Azure ポータル
+          href: howto-server-parameters.md
+        - name: Azure CLI
+          href: howto-configure-server-parameters-using-cli.md
+    - name: サーバー ログへのアクセス
+      items:
+        - name: Azure ポータル
+          href: howto-configure-server-logs-in-portal.md
+        - name: Azure CLI
+          href: howto-configure-server-logs-in-cli.md
+    - name: 監視
+      items:
+        - name: メトリックに基づいたアラートの作成
+          href: howto-alert-on-metric.md
+    - name: レプリケーション
+      items:
+        - name: データイン レプリケーションの構成
+          href: howto-data-in-replication.md
+        - name: Azure portal を使用した読み取りレプリカの作成
+          href: howto-read-replicas-portal.md
+        - name: 読み取りレプリカ Azure CLI の作成
+          href: howto-read-replicas-cli.md
+    - name: トラブルシューティング
+      items:
+        - name: 接続エラーのトラブルシューティング
+          href: howto-troubleshoot-common-connection-issues.md
+        - name: クエリ パフォーマンスのトラブルシューティング
+          href: howto-troubleshoot-query-performance.md
+        - name: sys スキーマでビューを使用する方法
+          href: howto-troubleshoot-sys-schema.md
+    - name: 高度な脅威保護
+      items:
+        - name: Azure ポータル
+          href: howto-database-threat-protection-portal.md
+    - name: Virtual Network
+      items:
+        - name: Azure ポータル
+          href: howto-manage-vnet-using-portal.md
+        - name: Azure CLI
+          href: howto-manage-vnet-using-cli.md
+    - name: サーバーの再起動
+      items:
+        - name: Azure ポータル
+          href: howto-restart-server-portal.md
+        - name: Azure CLI
+          href: howto-restart-server-cli.md
 - name: リファレンス
   items:
-  - name: Azure CLI
-    href: /cli/azure/mysql
-  - name: REST API
-    href: /rest/api/mysql
-  - name: データイン レプリケーションのストアド プロシージャ
-    href: reference-data-in-stored-procedures.md
+    - name: Azure CLI
+      href: /cli/azure/mysql
+    - name: REST API
+      href: /rest/api/mysql
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.dbformysql/allversions
+    - name: データイン レプリケーションのストアド プロシージャ
+      href: reference-data-in-stored-procedures.md
 - name: リソース
   items:
-  - name: デプロイ テンプレート
-    href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformysql
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/?category=databases
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/mysql/
-  - name: MSDN フォーラム
-    href: https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL
-  - name: スタック オーバーフロー
-    href: https://stackoverflow.com/questions/tagged/azure-database-mysql
-  - name: ビデオ
-    items:
-    - name: 製品のビデオ
-      href: videos.md
-    - name: ハウツー ビデオ シリーズ
+    - name: デプロイ テンプレート
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformysql'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=databases'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/mysql/'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-database-mysql'
+    - name: ビデオ
       items:
-      - name: 製品の機能とベネフィットを学習する
-        href: https://aka.ms/mysql-intro-vid
-      - name: MySQL アプリを Azure に移行する
-        href: https://aka.ms/mysql-migrate-vid
-      - name: Web アプリをビルドしてデプロイする
-        href: https://aka.ms/mysql-webapps-vid
-      - name: OSBA を使用してコンテナーを接続する
-        href: https://aka.ms/mysql-osba-vid
-  - name: 機能をリクエストする
-    href: https://feedback.azure.com/forums/597982-azure-database-for-mysql
-  - name: 利用可能なリージョン
-    href: https://azure.microsoft.com/regions/services/
-  - name: サポート オプション
-    href: https://azure.microsoft.com/support/options/
-  - name: 顧客事例
-    href: https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20MySQL%20"
-  - name: パートナー
-    href: partners-migration-mysql.md
-  - name: データベース移行ガイド
-    href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 4bb7ab9d3944d958c1975663a7334d385f8cd9ed
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496355"
+        - name: 製品のビデオ
+          href: videos.md
+        - name: ハウツー ビデオ シリーズ
+          items:
+            - name: 製品の機能とベネフィットを学習する
+              href: 'https://aka.ms/mysql-intro-vid'
+            - name: MySQL アプリを Azure に移行する
+              href: 'https://aka.ms/mysql-migrate-vid'
+            - name: Web アプリをビルドしてデプロイする
+              href: 'https://aka.ms/mysql-webapps-vid'
+            - name: OSBA を使用してコンテナーを接続する
+              href: 'https://aka.ms/mysql-osba-vid'
+    - name: 機能をリクエストする
+      href: 'https://feedback.azure.com/forums/597982-azure-database-for-mysql'
+    - name: 利用可能なリージョン
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: サポート オプション
+      href: 'https://azure.microsoft.com/support/options/'
+    - name: 顧客事例
+      href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20MySQL%20"'
+    - name: パートナー
+      href: partners-migration-mysql.md
+    - name: データベース移行ガイド
+      href: 'https://datamigration.microsoft.com/'

@@ -1,21 +1,22 @@
 ---
-title: Azure MFA Server のアップグレード
+title: Azure MFA サーバーのアップグレード - Azure Active Directory
 description: Azure Multi-Factor Authentication Server を新しいバージョンにアップグレードする手順とガイダンスです。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: e0f3ec3ffa541e028835b0415201521c67eb7efa
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6c01c7a22800d633696382687feb7090a4ed8b60
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613819"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315663"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>最新の Azure Multi-Factor Authentication Server にアップグレードする
 

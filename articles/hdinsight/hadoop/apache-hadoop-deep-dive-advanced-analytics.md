@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 40536aae15f2ae9fa5e186cdbea1f75f7d264437
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 893273fc325eaf878814c07eb095c67f5ea3c3f1
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047142"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675060"
 ---
 # <a name="deep-dive---advanced-analytics"></a>詳細情報 - 高度な分析
 
@@ -56,14 +56,16 @@ HDInsight を使用すると、大量の構造化されたデータ、構造化�
 
 HDInsight には、次の高度な分析ワークフロー向けの、いくつかの機械学習オプションがあります。
 
-* [Machine Learning と Spark](#machine-learning-and-spark)
-* [R および ML Services](#r-and-r-server)
-* [Azure Machine Learning と Hive](#azure-machine-learning-and-hive)
-* [Spark とディープ ラーニング](#spark-and-deep-learning)
+* Machine Learning と Apache Spark
+* R および ML Services
+* Azure Machine Learning と Apache Hive
+* Apache Spark とディープ ラーニング
 
-### <a name="machine-learning-and-spark"></a>Machine Learning と Spark
+### <a name="machine-learning-and-apache-spark"></a>Machine Learning と Apache Spark
 
-[HDInsight Spark](../spark/apache-spark-overview.md) は、Azure でホストされる [Spark](http://spark.apache.org/) のサービスであり、メモリ内処理によりビッグ データ分析を向上させる、オープン ソースの統合された並列データ処理フレームワークです。 Spark 処理エンジンは、高速かつ簡単に高度な分析を行うことができるように作成されています。 Spark のメモリ内の分散計算機能により、Machine Learning とグラフ計算に使用される反復的なアルゴリズムに対して、Spark は適切な選択肢となります。 
+
+[HDInsight Spark](../spark/apache-spark-overview.md) は、Azure でホストされる [Apache Spark](https://spark.apache.org/) のサービスであり、メモリ内処理によりビッグ データ分析を向上させる、オープン ソースの統合された並列データ処理フレームワークです。 Spark 処理エンジンは、高速かつ簡単に高度な分析を行うことができるように作成されています。 Spark のメモリ内の分散計算機能により、Machine Learning とグラフ計算に使用される反復的なアルゴリズムに対して、Spark は適切な選択肢となります。 
+
 
 分散環境にアルゴリズム モデリング機能を提供するスケーラブルな機械学習ライブラリが 3 つあります。
 
@@ -75,11 +77,11 @@ HDInsight には、次の高度な分析ワークフロー向けの、いくつ�
 
 大量のデータセットとモデルを扱えるよう準備された [ML Services](../r-server/r-server-overview.md) を使用して、HDInsight の一部として HDInsight クラスターを作成できます。 この新しい機能により、データ サイエンティストや統計学の専門家は、使い慣れた R インターフェイスを使用して、HDInsight を介してオンデマンドでスケーリングすることができ、クラスターのセットアップとメンテナンスのオーバーヘッドがなくなります。
 
-### <a name="azure-machine-learning-and-hive"></a>Azure Machine Learning と Hive
+### <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning と Apache Hive
 
 [Azure Machine Learning Studio](https://studio.azureml.net/) は、モデルの予測分析ツールを提供するだけでなく、すぐに使用できる Web サービスとして予測モデルをデプロイするための、フル マネージド サービスを提供します。 また、Azure Machine Learning は、クラウドで予測分析の完全なソリューションを作成するためのツールを提供し、予測モデルを迅速に作成、テスト、運用化して管理します。 大規模なアルゴリズム ライブラリの中から選択し、モデルを構築するための Web ベースのスタジオを使用して、ご利用のモデルを簡単に Web サービスとしてデプロイできます。
 
-### <a name="spark-and-deep-learning"></a>Spark とディープ ラーニング
+### <a name="apache-spark-and-deep-learning"></a>Apache Spark とディープ ラーニング
 
 [ディープ ラーニング](https://www.microsoft.com/research/group/dltc/)とは、*ディープ ニューラル ネットワーク* (DNN) を使用する機械学習の分野であり、人間の脳の生物学的プロセスから着想を得たものです。 多くの研究者がディープ ラーニングを人工知能のための有効なアプローチであると考えています。 ディープ ラーニングの例をいくつか挙げると、音声言語翻訳ツール、画像認識システム、機械推定などがあります。 ディープ ラーニングでの独自の作業を効率化できるよう、Microsoft は無料で使いやすいオープンソースの [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) を開発しました。 このツールキットは、さまざまな Microsoft 製品や、ディープ ラーニングを大規模に展開する必要がある世界規模の会社、あるいは最新のアルゴリズムと手法に興味がある学生によって、広範囲に使用されています。 
 
@@ -118,19 +120,18 @@ HDInsight を使用した、高度な分析の機械学習パイプラインの�
 
 ## <a name="next-steps"></a>次の手順
 
-Hive と Azure Machine Learning
+Apache Hive と Azure Machine Learning
 
-* [Hive と Azure Machine Learning のエンド ツー エンド](../../machine-learning/team-data-science-process/hive-walkthrough.md)
+* [Apache Hive と Azure Machine Learning の詳細](../../machine-learning/team-data-science-process/hive-walkthrough.md)
 * [1 TB データセットでの Azure HDInsight Hadoop クラスターの使用](../../machine-learning/team-data-science-process/hive-criteo-walkthrough.md)
 
-Spark と MLLib
+Apache Spark と MLLib
 
-* [HDInsight での Spark を使用した機械学習](../../machine-learning/team-data-science-process/spark-overview.md)
-* [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](../spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results (Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する)](../spark/apache-spark-machine-learning-mllib-ipython.md)
+* [HDInsight での Apache Spark を使用した機械学習](../../machine-learning/team-data-science-process/spark-overview.md)
+* [Apache Spark と Machine Learning:HDInsight で Apache Spark を使用して、HVAC データを使用して建物の温度を分析する](../spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark と Machine Learning:HDInsight で Apache Spark を使用して食品の検査結果を予測する](../spark/apache-spark-machine-learning-mllib-ipython.md)
 
 ディープ ラーニング、Cognitive Toolkit など
 
-* [Azure HDInsight Spark での Cognitive Toolkit と TensorFlow を使用した驚異的な並列画像分類](https://blogs.technet.microsoft.com/machinelearning/2017/04/12/embarrassingly-parallel-image-classification-using-cognitive-toolkit-tensorflow-on-azure-hdinsight-spark/)
 * [Azure データ サイエンス仮想マシン](../../machine-learning/data-science-virtual-machine/overview.md)
 * [Azure HDInsight での H2O.ai の導入](https://azure.microsoft.com/blog/introducing-h2o-ai-with-on-azure-hdinsight-to-bring-the-most-robust-ai-platform-for-enterprises/)

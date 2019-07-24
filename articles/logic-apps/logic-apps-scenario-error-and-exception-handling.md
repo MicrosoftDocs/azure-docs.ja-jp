@@ -10,16 +10,16 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 0c6062fb9e9708b0fa6aef7a6d7390287cbf69d4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 58e59e4faa135e24124f494d90437b49caa30129
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124037"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098665"
 ---
-# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>シナリオ: ロジックアプリの例外処理とエラーのログ記録
+# <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>シナリオ: ロジック アプリの例外処理とエラーのログ記録
 
-このシナリオでは、ロジック アプリを拡張して例外処理への対応を強化する方法について説明します。 Azure Logic Apps における例外処理とエラー処理への対応状況を実際的な見地から明らかにしていきます。
+このシナリオでは、ロジック アプリを拡張して例外処理への対応を強化する方法について説明します。 次の質問に答える現実のユース ケースが使用されています。"Azure Logic Apps では例外とエラーの処理がサポートされていますか?"
 
 > [!NOTE]
 > 現在の Azure Logic Apps スキーマには、アクションに対する応答の標準テンプレートが用意されています。 このテンプレートには、内部的な検証と、API アプリから返されるエラー応答の両方が含まれます。
@@ -57,7 +57,7 @@ Dynamics CRM Online から送信されたレコードのログを記録するこ
 
 **要求**トリガーを次の例のように使用します。
 
-```` json
+``` json
 "triggers": {
         "request": {
           "type": "request",
@@ -90,7 +90,7 @@ Dynamics CRM Online から送信されたレコードのログを記録するこ
         }
       },
 
-````
+```
 
 
 ## <a name="steps"></a>手順
@@ -402,7 +402,7 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 エラーを表示するには、Cosmos DB からエラー レコードを取得して表示する MVC Web アプリを作成します。 現在のバージョンでは、**一覧表示**、**詳細表示**、**編集**、**削除**の各操作が含まれます。
 
 > [!NOTE]
-> 編集操作について: Cosmos DB では、ドキュメント全体が置き換えられます。 **一覧表示**と**詳細表示**に示したレコードは、あくまでサンプルです。 実際の患者予約レコードではありません。
+> 編集操作:Cosmos DB では、ドキュメント全体が置き換えられます。 **一覧表示**と**詳細表示**に示したレコードは、あくまでサンプルです。 実際の患者予約レコードではありません。
 
 これまでに説明した方法で作成した MVC アプリのサンプルの詳細を以下に示します。
 

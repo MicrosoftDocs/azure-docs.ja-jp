@@ -1,0 +1,18 @@
+items:
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+  - name: Cognitive Services
+    tocHref: /azure/cognitive-services/
+    topicHref: /azure/cognitive-services/index
+    items:
+    - name: Speech Services
+      tocHref: /azure/cognitive-services/translator/
+      topicHref: /azure/cognitive-services/speech-service/index
+ms.openlocfilehash: f937bf21e9813eee7bc6f58a0bb35530cd4c3a31
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59686109"

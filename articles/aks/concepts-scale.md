@@ -2,17 +2,17 @@
 title: 概念 - Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング
 description: ポッドの水平オートスケーラー、クラスター オートスケーラー、Azure Container Instances コネクタなど、Azure Kubernetes Service (AKS) でのスケーリングについて説明します。
 services: container-service
-author: iainfoulds
+author: zr-msft
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
-ms.author: iainfou
-ms.openlocfilehash: 3e460df8c4841a23c76ef8d7b254938ce46a2b45
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.date: 02/28/2019
+ms.author: zarhoads
+ms.openlocfilehash: d7df4d2c7e824f143201e2c6af220730bcd38fb2
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380694"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755974"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング オプション
 
@@ -23,7 +23,7 @@ Azure Kubernetes Service (AKS) でアプリケーションを実行すると、�
 - [手動によるスケーリング](#manually-scale-pods-or-nodes)
 - [ポッドの水平オートスケーラー (HPA)](#horizontal-pod-autoscaler)
 - [クラスター オートスケーラー](#cluster-autoscaler)
-- [AKS との Azure Container Instance (ACI) の統合](#burst-to-azure-container-instance)
+- [AKS との Azure Container Instance (ACI) の統合](#burst-to-azure-container-instances)
 
 ## <a name="manually-scale-pods-or-nodes"></a>ポッドまたはノードを手動でスケーリングする
 
@@ -51,7 +51,7 @@ AKS でポッドの水平オートスケーラーを開始するには、「[ポ
 
 ## <a name="cluster-autoscaler"></a>クラスター オートスケーラー
 
-ポッドの需要の変化に対応するために、Kubernetes には、ノード プール内で要求されるコンピューティング リソースに基づいてノードの数を調整するクラスター オートスケーラーがあります。 既定では、クラスター オートスケーラーはノード数での必要な変更について 10 秒ごとに API サーバーをチェックします。 クラスター オートスケーラーが変更が必要だと判断した場合、それに応じて AKS クラスター内のノードの数が増減されます。 クラスターオートスケーラーは、Kubernetes 1.10.x 以降を実行する RBAC 対応 AKS クラスターで動作します。
+ポッドの需要の変化に対応するために、Kubernetes には、ノード プール内で要求されるコンピューティング リソースに基づいてノードの数を調整するクラスター オートスケーラー (現在 AKS でプレビューの段階です) があります。 既定では、クラスター オートスケーラーはノード数での必要な変更について 10 秒ごとに API サーバーをチェックします。 クラスター オートスケーラーが変更が必要だと判断した場合、それに応じて AKS クラスター内のノードの数が増減されます。 クラスターオートスケーラーは、Kubernetes 1.10.x 以降を実行する RBAC 対応 AKS クラスターで動作します。
 
 ![Kubernetes クラスター オートスケーラー](media/concepts-scale/cluster-autoscaler.png)
 
@@ -65,7 +65,7 @@ AKS でクラスター オートスケーラーを開始するには、「[Azure
 
 ノード プールのリソース制約のためにスケジュール設定できないポッドを、クラスター オートスケーラーが確認した場合、ノード プール内のノードの数が、追加のコンピューティング リソースを提供するために増やされます。 これらの追加ノードが正常にデプロイされ、ノード プール内で使用できるようになると、ポッドはこれらのノードで実行するようにスケジュール設定されます。
 
-アプリケーションが迅速にスケーリングする必要がある場合、クラスター オートスケーラーによってデプロイされた追加ノードがスケジュール設定されたポッドを受け入れるまで、一部のポッドはスケジュール設定の待機状態のままのことがあります。 高いバースト需要のあるアプリケーションの場合、[仮想ノードと Azure Container Instances でスケーリング](#burst-to-azure-container-instance)できます。
+アプリケーションが迅速にスケーリングする必要がある場合、クラスター オートスケーラーによってデプロイされた追加ノードがスケジュール設定されたポッドを受け入れるまで、一部のポッドはスケジュール設定の待機状態のままのことがあります。 高いバースト需要のあるアプリケーションの場合、仮想ノードと Azure Container Instances でスケーリングできます。
 
 ### <a name="scale-down-events"></a>スケール ダウン イベント
 
@@ -81,7 +81,7 @@ AKS クラスターを迅速にスケーリングするために、Azure Contain
 
 ![ACI への Kubernetes バースト スケーリング](media/concepts-scale/burst-scaling.png)
 
-ACI では、追加のインフラストラクチャのオーバーヘッドなしに、コンテナー インスタンスを迅速にデプロイできます。 AKS で接続する場合、ACI は、AKS クラスターのセキュリティ保護された論理拡張機能になります。 Virtual Kubelet コンポーネントは、仮想の Kubernetes ノードとして ACI を表示する AKS クラスターにインストールされます。 Kubernetes は続いて、直接 AKS クラスター内にある VM ノード上のポッドとしてではなく、仮想ノードを通じた ACI インスタンスとして実行するポッドをスケジュール設定できます。
+ACI では、追加のインフラストラクチャのオーバーヘッドなしに、コンテナー インスタンスを迅速にデプロイできます。 AKS で接続する場合、ACI は、AKS クラスターのセキュリティ保護された論理拡張機能になります。 Virtual Kubelet コンポーネントは、仮想の Kubernetes ノードとして ACI を表示する AKS クラスターにインストールされます。 Kubernetes は続いて、直接 AKS クラスター内にある VM ノード上のポッドとしてではなく、仮想ノードを通じた ACI インスタンスとして実行するポッドをスケジュール設定できます。 仮想ノードは、現在 AKS でプレビューの段階です。
 
 アプリケーションは、仮想ノードを使用するために変更は不要です。 クラスター オートスケーラーが AKS クラスター内に新しいノードをデプロイするときに、デプロイは AKS と ACI にわたって遅延なくスケーリングできます。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Kubernetes クラスターの監視 - Sysdig
+title: (非推奨) Azure Kubernetes クラスターを監視する - Sysdig
 description: Sysdig を使用した Azure Container Service での Kubernetes クラスターの監視
 services: container-service
 author: bburns
@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: bbf59a35f420b5bbf292fbdaa5a8bbc173e4ee24
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 4aef241e2c86e4016c3c468fcdcfdfc620fc7aa9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091309"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998719"
 ---
-# <a name="monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>Sysdig を使用した Azure Container Service Kubernetes クラスターの監視
+# <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>(非推奨) Sysdig を使用して Azure Container Service Kubernetes クラスターを監視します
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルでは、[Azure Container Service を使用して Kubernetes クラスターを作成](container-service-kubernetes-walkthrough.md)したことを想定します。

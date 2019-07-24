@@ -4,7 +4,7 @@ description: Service Fabric Java SDK を使用していた古い Java アプリ�
 services: service-fabric
 documentationcenter: java
 author: rapatchi
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: rapatchi
-ms.openlocfilehash: 5f03f4fe1422f1665d857269c98a50827ed75d55
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: dbd85b3647a60ce873c1a55b851bd47ece103282
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958360"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661532"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Maven から Java ライブラリをフェッチするよう以前の Java Service Fabric アプリケーションを更新する
 最近、Service Fabric Java バイナリが Service Fabric Java SDK から Maven ホスティングに移行されました。 これで、**mavencentral** を使用して最新の Service Fabric Java 依存関係をフェッチできるようになりました。 このクイック スタートでは、以前に Service Fabric Java SDK と共に使用するように作成した既存の Java アプリケーションを更新します。Maven ベースのビルドに対応するように、Yeoman テンプレートまたは Eclipse を使用します。
@@ -27,17 +27,17 @@ ms.locfileid: "36958360"
 ## <a name="prerequisites"></a>前提条件
 1. 最初に既存の Java SDK をアンインストールする必要があります。
 
-  ```bash
-  sudo dpkg -r servicefabricsdkjava
-  ```
+   ```bash
+   sudo dpkg -r servicefabricsdkjava
+   ```
 2. [ここ](service-fabric-cli.md)に記載されている手順に従って、最新の Service Fabric CLI をインストールします。
 
 3. Service Fabric Java アプリケーションをビルドして操作するには、必ず JDK 1.8 と Gradle がインストールされている必要があります。 まだインストールしていない場合は、以下を実行して、JDK 1.8 (openjdk-8-jdk) と Gradle をインストールすることができます。
 
- ```bash
- sudo apt-get install openjdk-8-jdk-headless
- sudo apt-get install gradle
- ```
+   ```bash
+   sudo apt-get install openjdk-8-jdk-headless
+   sudo apt-get install gradle
+   ```
 4. [ここ](service-fabric-application-lifecycle-sfctl.md)に記載されている手順に従って、新しい Service Fabric CLI を使用するようにアプリケーションのインストール/アンインストール スクリプトを更新します。 参考にするために、入門用の[例](https://github.com/Azure-Samples/service-fabric-java-getting-started)を参照することができます。
 
 >[!TIP]
@@ -220,7 +220,7 @@ task copyDeps <<{
     }
 }
 ```
-一般に、Service Fabric ステートレス Java サービスに対するビルド スクリプトがどのようなものであるかを把握するには、入門用の例で任意のサンプルを参照してください。 EchoServer サンプルの build.gradle は、[ここ](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/Services/EchoServer/EchoServer1.0/EchoServerService/build.gradle)にあります。
+一般に、Service Fabric ステートレス Java サービスに対するビルド スクリプトがどのようなものであるかを把握するには、入門用の例で任意のサンプルを参照してください。 EchoServer サンプルの build.gradle は、[ここ](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/reliable-services-actor-sample/build.gradle)にあります。
 
 ## <a name="migrating-service-fabric-actor-service"></a>Service Fabric アクター サービスの移行
 

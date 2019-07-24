@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: cf6e2fa296d3d9f152edf22685b930586b4de524
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: de9261548ec79e206b0db87caabc1fa4c9ad6771
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024816"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56591552"
 ---
 <a name="retrieve-offers"></a>オファーを取得する
 ===============
@@ -32,17 +32,17 @@ ms.locfileid: "50024816"
 <a name="uri-parameters"></a>URI パラメーター
 --------------
 
-| ** 名前 **        |  **説明**                         |  **データの種類** |
+| **Name**         |  **説明**                         |  **データの種類** |
 | -------------    |  ------------------------------------    |  -----------   |
 |  publisherId     | パブリッシャー ID。たとえば、`contoso` |   String    |
-|  api-version     | API の最新バージョン                    |    日付        |
+|  api-version     | API の最新バージョン                    |    Date        |
 |  |  |
 
 
 <a name="header"></a>ヘッダー
 ------
 
-|  **名前**        |         **値**       |
+|  **Name**        |         **値**       |
 |  --------------- |       ----------------  |
 |  Content-Type    | `application/json`      |
 |  Authorization   | `Bearer YOUR_TOKEN`     |
@@ -73,7 +73,7 @@ ms.locfileid: "50024816"
 
 ### <a name="response-body-properties"></a>応答本文のプロパティ
 
-|  **名前**       |       **説明**                                                                                                  |
+|  **Name**       |       **説明**                                                                                                  |
 |  -------------  |      --------------------------------------------------------------------------------------------------------------    |
 |  offerTypeId    | オファーの種類を示します                                                                                           |
 |  publisherId    | パブリッシャーを一意に示す ID                                                                      |
@@ -98,7 +98,7 @@ ms.locfileid: "50024816"
 
 ### <a name="offer-status"></a>オファーの状態
 
-|  **名前**                    | **説明**                                  |
+|  **Name**                    | **説明**                                  |
 |  ------------------------    | -----------------------------------------------  |
 |  NeverPublished              | オファーは発行されていません。                  |
 |  NotStarted                  | 新しいオファーですが、開始されていません。                 |

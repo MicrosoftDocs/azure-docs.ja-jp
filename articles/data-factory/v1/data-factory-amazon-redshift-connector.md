@@ -9,17 +9,16 @@ ms.assetid: 01d15078-58dc-455c-9d9d-98fbdf4ea51e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7ece34809734478ddb52c12d5dbd92291231f439
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: dc72ec9bf2e7e7c5c77685368167357a0108f2d3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045689"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541929"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -29,7 +28,7 @@ ms.locfileid: "37045689"
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 最新バージョンの Data Factory サービスを使用している場合は、[V2 の Amazon Redshift コネクタ](../connector-amazon-redshift.md)に関するページをご覧ください。
 
-この記事では、Azure Data Factory のコピー アクティビティを使って、Amazon Redshift からデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。 
+この記事では、Azure Data Factory のコピー アクティビティを使って、Amazon Redshift からデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
 現在 Data Factory でサポートされているのは、Amazon Redshift から[サポートされているシンク データ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)へのデータ移動だけです。 他のデータ ストアから Amazon Redshift へのデータ移動はサポートされません。
 
@@ -37,7 +36,7 @@ ms.locfileid: "37045689"
 > Amazon Redshift から大量のデータをコピーするときに最適なパフォーマンスを得るには、Amazon Simple Storage Service (Amazon S3) 経由で組み込みの Redshift **UNLOAD** コマンドを使用することを検討してください。 詳細については、「[Amazon Redshift からのデータ コピーで UNLOAD を使用する](#use-unload-to-copy-data-from-amazon-redshift)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-* データをオンプレミスのデータ ストアに移動する場合は、オンプレミス コンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。 オンプレミスのマシンの IP アドレスを使用してゲートウェイが Amazon Redshift クラスターにアクセスすることを許可します。 手順については、「[Authorize access to the cluster (クラスターへのアクセスの許可)](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html)」を参照してください。
+* データをオンプレミスのデータ ストアに移動する場合は、オンプレミス コンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。 オンプレミスのマシンの IP アドレスを使用してゲートウェイが Amazon Redshift クラスターにアクセスすることを許可します。 手順については、「[Authorize access to the cluster (クラスターへのアクセスの許可)](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html)」を参照してください。
 * Azure データ ストアにデータを移動する場合は、[Microsoft Azure データセンターで使用されるコンピューティング IP アドレスと SQL 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページを参照してください。
 
 ## <a name="getting-started"></a>使用の開始
@@ -45,15 +44,15 @@ ms.locfileid: "37045689"
 
 パイプラインを作成する最も簡単な方法は、Azure Data Factory コピー ウィザードを使うことです。 コピー ウィザードを使用してパイプラインを作成する簡単な手順については、[コピー ウィザードを使用したパイプラインの作成のチュートリアル](data-factory-copy-data-wizard-tutorial.md)に関するページを参照してください。
 
-また、Azure Portal、Visual Studio、Azure PowerShell、またはその他のツールを使用してパイプラインを作成することもできます。 Azure Resource Manager テンプレート、.NET API、または REST API を使用してパイプラインを作成することもできます。 コピー アクティビティが含まれたパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。 
+また、Azure Portal、Visual Studio、Azure PowerShell、またはその他のツールを使用してパイプラインを作成することもできます。 Azure Resource Manager テンプレート、.NET API、または REST API を使用してパイプラインを作成することもできます。 コピー アクティビティが含まれたパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
-ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。 
+ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
 1. リンクされたサービスを作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表すデータセットを作成します。 
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティが含まれたパイプラインを作成します。 
+2. コピー操作用の入力データと出力データを表すデータセットを作成します。
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティが含まれたパイプラインを作成します。
 
-コピー ウィザードを使用すると、これらの Data Factory エンティティの JSON 定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 [JSON の使用例: Amazon Redshift から Azure Blob Storage へのデータのコピー](#json-example-copy-data-from-amazon-redshift-to-azure-blob)に、Amazon Redshift データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義が紹介されています。
+コピー ウィザードを使用すると、これらの Data Factory エンティティの JSON 定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 JSON の使用例:「Amazon Redshift から Azure Blob Storage へのデータのコピー」のページに、Amazon Redshift データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義が紹介されています。
 
 次のセクションでは、Amazon Redshift 用の Data Factory エンティティの定義に使用される JSON プロパティについて説明します。
 
@@ -63,12 +62,12 @@ ms.locfileid: "37045689"
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| **type** |このプロパティを **AmazonRedshift** に設定する必要があります。 |[はい] |
-| **server** |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |[はい] |
+| **type** |このプロパティを **AmazonRedshift** に設定する必要があります。 |はい |
+| **server** |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |はい |
 | **port** |Amazon Redshift サーバーがクライアント接続のリッスンに使用する TCP ポートの数。 |いいえ (既定値は 5439) |
-| **database** |Amazon Redshift データベースの名前。 |[はい] |
-| **username** |データベースへのアクセス権があるユーザーの名前。 |[はい] |
-| **password** |ユーザー アカウントのパスワードです。 |[はい] |
+| **database** |Amazon Redshift データベースの名前。 |はい |
+| **username** |データベースへのアクセス権があるユーザーの名前。 |はい |
+| **password** |ユーザー アカウントのパスワードです。 |はい |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
@@ -101,15 +100,15 @@ ms.locfileid: "37045689"
 
 ## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Amazon Redshift からのデータ コピーで UNLOAD を使用する
 
-Amazon Redshift の [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) コマンドでは、クエリの結果が Amazon S3 上の 1 つ以上のファイルにアンロードされます。 このコマンドは、Redshift から大きなデータセットをコピーするための方法として Amazon から推奨されています。
+Amazon Redshift の [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) コマンドでは、クエリの結果が Amazon S3 上の 1 つ以上のファイルにアンロードされます。 このコマンドは、Redshift から大きなデータセットをコピーするための方法として Amazon から推奨されています。
 
-**例: Amazon Redshift から Azure SQL Data Warehouse へのデータのコピー**
+**例:Amazon Redshift から Azure SQL Data Warehouse へのデータのコピー**
 
 この例では、Amazon Redshift から Azure SQL Data Warehouse にデータをコピーします。 この例では、Redshift の **UNLOAD** コマンド、ステージングされたコピー データ、Microsoft PolyBase を使用しています。
 
 このサンプル ユース ケースでは、コピー アクティビティを使用して、**redshiftUnloadSettings** オプションで構成されているように、最初に Amazon Redshift から Amazon S3 にデータをアンロードします。 次に、**stagingSettings** オプションの指定に従って、Amazon S3 から Azure Blob Storage にデータをコピーします。 最後に、PolyBase によってデータが SQL Data Warehouse に読み込まれます。 すべての中間形式は、コピー アクティビティによって処理されます。
 
-![Amazon Redshift から SQL Data Warehouse へのコピーのワークフロー](media\data-factory-amazon-redshift-connector\redshift-to-sql-dw-copy-workflow.png)
+![Amazon Redshift から SQL Data Warehouse へのコピーのワークフロー](media/data-factory-amazon-redshift-connector/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 {
@@ -139,8 +138,8 @@ Amazon Redshift の [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r
 }
 ```
 
-## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>JSON の使用例: Amazon Redshift から Azure Blob Storage へのデータのコピー
-このサンプルは、Amazon Redshift データベースから Azure Blob Storage にデータをコピーする方法を示します。 データは、コピー アクティビティを使用して、任意の[サポートされているシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に直接コピーできます。  
+## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>JSON の使用例:Amazon Redshift から Azure Blob Storage へのデータのコピー
+このサンプルは、Amazon Redshift データベースから Azure Blob Storage にデータをコピーする方法を示します。 データは、コピー アクティビティを使用して、任意の[サポートされているシンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に直接コピーできます。
 
 このサンプルでは、次の Data Factory のエンティティがあります。
 
@@ -163,7 +162,7 @@ Amazon Redshift の [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r
         "typeProperties":
         {
             "server": "< The IP address or host name of the Amazon Redshift server >",
-            "port": <The number of the TCP port that the Amazon Redshift server uses to listen for client connections.>,
+            "port": "<The number of the TCP port that the Amazon Redshift server uses to listen for client connections.>",
             "database": "<The database name of the Amazon Redshift database>",
             "username": "<username>",
             "password": "<password>"
@@ -340,8 +339,8 @@ Amazon Redshift の [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r
 | BOOLEAN |String |
 | CHAR |String |
 | VARCHAR |String |
-| DATE |Datetime |
-| TIMESTAMP |Datetime |
+| DATE |DateTime |
+| TIMESTAMP |DateTime |
 | TEXT |String |
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
@@ -351,7 +350,7 @@ Amazon Redshift の [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r
 リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行する再試行**ポリシー**をデータセットに構成することもできます。 何度スライスが実行されても同じデータが読み取られるようにしてください。 また、どのようにスライスを再実行するかに関係なく同じデータが読み取られるようにしてください。 詳細については、「[リレーショナル ソースからの反復可能な読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)」を参照してください。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
-コピー アクティビティのパフォーマンスに影響を及ぼす主な要因とパフォーマンスを最適化する方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。 
+コピー アクティビティのパフォーマンスに影響を及ぼす主な要因とパフォーマンスを最適化する方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 コピー アクティビティを使用したパイプライン作成の詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。

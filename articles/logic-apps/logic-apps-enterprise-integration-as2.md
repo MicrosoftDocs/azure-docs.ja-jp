@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: c9b7e1a9-4791-474c-855f-988bd7bf4b7f
 ms.date: 06/08/2017
-ms.openlocfilehash: 2604cdd6bf758858328c2d30fc4cde535f0a7148
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 3413b235d9202530eb1a3129637e3746bbe6585b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124664"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57872571"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の AS2 メッセージを交換する
 
@@ -35,7 +35,7 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 
 ## <a name="create-an-as2-agreement"></a>AS2 契約の作成
 
-1.  [Azure Portal](http://portal.azure.com "Azure Portal") にサインインします。  
+1.  [Azure Portal](https://portal.azure.com "Azure Portal") にサインインします。  
 
 2. Azure のメイン メニューで、**[すべてのサービス]** を選びます。 検索ボックスに「統合」と入力し、"**統合アカウント**" を選びます。
 
@@ -60,7 +60,7 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 
     ![契約の詳細の指定](./media/logic-apps-enterprise-integration-as2/agreement-3.png)  
 
-    | プロパティ | [説明] |
+    | プロパティ | 説明 |
     | --- | --- |
     | Name |契約の名前。 |
     | 契約の種類 | AS2 である必要があります |

@@ -16,29 +16,32 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 6ac37c3a53b0cc71bdab85fb86e0e85d998867aa
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 895e29d9855372e418ad5ebf2a3949dc01ddb8de
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300610"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59792420"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>特定の場所から Azure リージョンへの相対待機時間を確認する
 
 このチュートリアルでは、Azure [Network Watcher](network-watcher-monitoring-overview.md) サービスを使用して、ユーザーの統計分析に基づいてアプリケーションまたはサービスをデプロイする Azure リージョンを決定する方法について説明します。 このチュートリアルは、サービス プロバイダーの Azure への接続を評価する場合にも役立ちます。  
         
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="create-a-network-watcher"></a>ネットワーク ウォッチャーを作成する
 
 Azure [リージョン](https://azure.microsoft.com/regions)に 1 つ以上のネットワーク ウォッチャーが既にある場合は、このセクションのタスクをスキップできます。 ネットワーク ウォッチャーのリソース グループを作成します。 この例では、米国東部リージョンでリソース グループを作成しますが、任意の Azure リージョンでリソース グループを作成できます。
 
 ```powershell
-New-AzureRmResourceGroup -Name NetworkWatcherRG -Location eastus
+New-AzResourceGroup -Name NetworkWatcherRG -Location eastus
 ```
 
 ネットワーク ウォッチャーを作成します。 少なくとも 1 つの Azure リージョンでネットワーク ウォッチャーを作成する必要があります。 この例では、米国東部の Azure リージョンにネットワーク ウォッチャーを作成しています。
 
 ```powershell
-New-AzureRmNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG -Location eastus
+New-AzNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG -Location eastus
 ```
 
 ## <a name="compare-relative-network-latencies-to-a-single-azure-region-from-a-specific-location"></a>特定の場所から単一の Azure リージョンに対する相対的なネットワーク待機時間を比較する
@@ -46,7 +49,7 @@ New-AzureRmNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName Network
 特定の場所からサービスがデプロイされている Azure リージョンまでについてサービス プロバイダーを評価し、ユーザーから "サイトが遅い" などと報告される問題を解決します。 たとえば、次のコマンドは、2017 年 12 月 13 日から 15 日の米国ワシントン州と米国西部 2 Azure リージョン間のインターネット サービス プロバイダーの平均相対待機時間を返します。
 
 ```powershell
-Get-AzureRmNetworkWatcherReachabilityReport `
+Get-AzNetworkWatcherReachabilityReport `
   -NetworkWatcherName NetworkWatcher_eastus `
   -ResourceGroupName NetworkWatcherRG `
   -Location "West US 2" `
@@ -109,7 +112,7 @@ ReachabilityReport : [
 `-Location` を使用して特定の場所と特定の Azure リージョン間の相対的な待機時間を指定するのではなく、特定の物理的な場所からすべての Azure リージョンへの相対的な待機時間を判断することもできます。 たとえば、次のコマンドを使用すると、プライマリ ユーザーがワシントン州にある Comcast ユーザーである場合に、サービスをデプロイする Azure リージョンを評価できます。
 
 ```powershell
-Get-AzureRmNetworkWatcherReachabilityReport `
+Get-AzNetworkWatcherReachabilityReport `
   -NetworkWatcherName NetworkWatcher_eastus `
   -ResourceGroupName NetworkWatcherRG `
   -Provider "Comcast Cable Communications, LLC - ASN 7922" `
@@ -119,15 +122,15 @@ Get-AzureRmNetworkWatcherReachabilityReport `
   -EndTime "2017-12-15"
 ```
 
->[!NOTE]
-単一の場所を指定する場合とは異なり、場所を指定しない場合や、複数の場所 ("米国西部 2"、"米国西部" など) を指定する場合は、コマンドの実行時にインターネット サービス プロバイダーを指定する必要があります。 
+> [!NOTE]
+> 単一の場所を指定する場合とは異なり、場所を指定しない場合や、複数の場所 ("米国西部 2"、"米国西部" など) を指定する場合は、コマンドの実行時にインターネット サービス プロバイダーを指定する必要があります。 
 
 ## <a name="view-available"></a>使用できる国、州、市区町村、プロバイダーを表示する
 
 特定のインターネット サービス プロバイダー、国、州、および市区町村のデータを使用できます。 データを表示できるすべてのインターネット サービス プロバイダー、国、州、および市区町村の一覧を表示するには、次のコマンドを入力します。
 
 ```powershell
-Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
+Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
 ```
 
 前のコマンドで返された国、州、および市区町村のデータのみを使用できます。 前のコマンドでは、既存のネットワーク ウォッチャーを指定する必要があります。 この例では、*NetworkWatcherRG* というリソース グループの *NetworkWatcher_eastus* ネットワーク ウォッチャーを指定していますが、任意の既存のネットワーク ウォッチャーを指定できます。 既存のネットワーク ウォッチャーがない場合は、「[ネットワーク ウォッチャーを作成する](#create-a-network-watcher)」のタスクを実行して作成します。 
@@ -135,10 +138,10 @@ Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWa
 前のコマンドを実行した後は、必要に応じて、**Country**、**State**、**City** の有効な値を指定して返される出力をフィルター処理できます。  たとえば、米国ワシントン州シアトルで使用できるインターネット サービス プロバイダーの一覧を表示するには、次のコマンドを入力します。
 
 ```powershell
-Get-AzureRmNetworkWatcherReachabilityProvidersList `
+Get-AzNetworkWatcherReachabilityProvidersList `
   -NetworkWatcherName NetworkWatcher_eastus `
   -ResourceGroupName NetworkWatcherRG `
-  -City seattle `
+  -City Seattle `
   -Country "United States" `
   -State washington
 ```

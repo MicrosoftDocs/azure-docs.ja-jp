@@ -3,22 +3,22 @@ title: Azure Active Directory B2C での認証プロトコル | Microsoft Docs
 description: Azure Active Directory B2C によってサポートされるプロトコルを直接使用してアプリを作成する方法。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/07/2017
+ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 6cfa3e0cb23f13b50c0fb7cd4f07a8d53c0f3186
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.subservice: B2C
+ms.openlocfilehash: 47c99b14a41ac50e13198f934e38718e205e6e79
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340768"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55175642"
 ---
-# <a name="azure-ad-b2c-authentication-protocols"></a>Azure AD B2C: 認証プロトコル
-Azure Active Directory B2C (Azure AD B2C) では、業界標準のプロトコルである OpenID Connect と OAuth 2.0 をサポートすることによって Identity-as-a-Service (サービスとしての ID) 機能がアプリに提供されます。 このサービスは標準に準拠していますが、これらのプロトコルには、実装によって微妙な違いが存在する場合があります。 
+# <a name="azure-ad-b2c-authentication-protocols"></a>Azure AD B2C:認証プロトコル
+Azure Active Directory B2C (Azure AD B2C) では、業界標準である次の 2 つのプロトコルをサポートすることによって Identity-as-a-Service (サービスとしての ID) 機能がアプリに提供されます:OpenID Connect と OAuth 2.0。 このサービスは標準に準拠していますが、これらのプロトコルには、実装によって微妙な違いが存在する場合があります。 
 
 ここでは、オープン ソース ライブラリを使うのではなく、コードから直接 HTTP 要求を送信して処理する場合に役立つ情報を紹介します。 特定のプロトコルの詳細を学習する前に、このページを読むことをお勧めします。 ただし、Azure AD B2C について既に詳しい場合は、[プロトコル リファレンス ガイド](#protocols)にすぐに進んでもかまいません。
 
@@ -50,12 +50,12 @@ OAuth と OpenID Connect におけるフローはほぼすべて、情報のや�
 
 * **リソース サーバー** は、リソースまたはデータが存在する場所です。 承認サーバーを信頼し、OAuth クライアントを安全に認証、承認します。 また、ベアラー アクセス トークンを使用して、リソースへのアクセス許可を確実に付与します。
 
-## <a name="policies"></a>ポリシー
+## <a name="policies-and-user-flows"></a>ポリシーとユーザー フロー
 おそらく、Azure AD B2C のポリシーは、サービスの最も重要な機能です。 Azure AD B2C は、ポリシーを導入することによって、標準の OAuth 2.0 や OpenID Connect プロトコルを拡張します。 ポリシーにより、Azure AD B2C は単なる認証および承認以外の多くの機能を実行できます。 
 
-ポリシーには、サインアップ、サインイン、プロファイル編集など、コンシューマーの ID エクスペリエンスが完全に記述されています。 ポリシーは、管理 UI で定義できます。 ポリシーは、HTTP 認証要求の特別なクエリ パラメーターを使用して実行できます。 
+最も一般的な ID タスクを設定しやすくするために、Azure AD B2C ポータルには、**ユーザー フロー**という事前定義済みで構成できるポリシーが用意されています。 ユーザー フローには、サインアップ、サインイン、プロファイル編集など、コンシューマーの ID エクスペリエンスが完全に記述されています。 ユーザー フローは、管理 UI で定義できます。 ポリシーは、HTTP 認証要求の特別なクエリ パラメーターを使用して実行できます。 
 
-ポリシーは、OAuth 2.0 および OpenID Connect の標準機能ではないので、理解するために時間をかける必要があります。 詳細については、 [Azure AD B2C ポリシー リファレンス ガイド](active-directory-b2c-reference-policies.md)を参照してください。
+ポリシーとユーザー フローは、OAuth 2.0 および OpenID Connect の標準機能ではないので、理解するために時間をかける必要があります。 詳しくは、[Azure AD B2C のユーザー フロー リファレンス ガイド](active-directory-b2c-reference-policies.md)に関する記事をご覧ください。
 
 ## <a name="tokens"></a>トークン
 Azure AD B2C での OAuth 2.0 および OpenID Connect の実装では、ベアラー トークンが広範囲に使われています (JSON Web トークン (JWT) として表現されたベアラー トークンなど)。 ベアラー トークンは、保護されたリソースへの "ベアラー" アクセスを許可する簡易セキュリティ トークンです。
@@ -66,7 +66,7 @@ Azure AD B2C での OAuth 2.0 および OpenID Connect の実装では、ベア�
 
 ベアラー トークンがセキュリティ保護されたチャネル以外で転送された場合、悪意のある利用者が中間者攻撃によってトークンを取得し、保護されたリソースへの未承認のアクセスに使用する可能性があります。 後で使用するためにベアラー トークンを保存またはキャッシュするときにも、同じセキュリティ原則が適用されます。 アプリケーションでは、常に安全な方法でベアラー トークンを転送および保存してください。
 
-ベアラー トークンのセキュリティに関する考慮事項の詳細については、 [RFC 6750 セクション 5](http://tools.ietf.org/html/rfc6750)を参照してください。
+ベアラー トークンのセキュリティに関する考慮事項の詳細については、 [RFC 6750 セクション 5](https://tools.ietf.org/html/rfc6750)を参照してください。
 
 Azure AD B2C で使われている各種トークンの詳細については、[Azure AD のトークン リファレンス](active-directory-b2c-reference-tokens.md)を参照してください。
 

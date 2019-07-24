@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/21/2018
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: 4d9e47d6da45eaba19cbe089de3fdf053c36046a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.custom: seodec18
+ms.openlocfilehash: 8471ae8ed0b391df11d81569b5660a2b098f5793
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030679"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000927"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>チュートリアル: 推奨事項に従ってコストを最適化する
 
@@ -29,7 +29,7 @@ Azure Cost Management は Azure Advisor と連携して、コストの最適化�
 > * アクションを検証して仮想マシンが確実にサイズ変更されたことを確認する
 
 ## <a name="prerequisites"></a>前提条件
-推奨事項は、すべての [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) のお客様が利用できます。 コスト データを表示するには、次に示す 1 つ以上のスコープへの読み取りアクセス権が必要です。
+推奨事項は、各種のスコープと Azure アカウント ([Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) のお客様を含む) を対象に公開されています。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](understand-cost-mgt-data.md)」を参照してください。 コスト データを表示するには、次に示す 1 つ以上のスコープへの読み取りアクセス権が必要です。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 
 - サブスクリプション
 - リソース グループ
@@ -41,9 +41,11 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com/)) にサイ�
 
 ## <a name="view-cost-optimization-recommendations"></a>コストの最適化に関する推奨事項を表示する
 
-Azure Portal で、サービスの一覧の **[Cost Management + Billing]\(コスト管理 + 課金\)** をクリックします。 **[コスト管理]** の一覧で、**[Advisor の推奨事項]** を選択します。 Advisor のコストに関する推奨事項が表示されます。
+サブスクリプションのコスト最適化の推奨事項を表示するには、Azure portal で目的のスコープを開き、**[Advisor recommendations] \(Advisor の推奨事項\)** を選択します。
 
-![Advisor の推奨事項](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
+管理グループで推奨事項を確認するには、Azure portal で目的のスコープを開き、メニューで **[コスト分析]** を選択します。 別のスコープ (管理グループなど) に切り替えるには、**[スコープ]** ピルを使用します。 **[Advisor recommendations] \(Advisor の推奨事項\)** を選択します。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
+
+![Azure portal に表示される Cost Management の Advisor の推奨事項](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
 
 推奨事項の一覧には、使用の非効率性が表示されます。また、さらに費用を節約するために役立つ購入に関する推奨事項が表示されます。 合計の **[年間の潜在的な削減額]** には、推奨事項ルールに一致するすべての VM をシャットダウンするか割り当てを解除した場合に節約できる合計額が表示されます。 シャットダウンしたくない場合は、より安価な VM SKU へとサイズを変更することを検討する必要があります。
 
@@ -53,26 +55,26 @@ Azure Portal で、サービスの一覧の **[Cost Management + Billing]\(コ�
 
 Azure Advisor は、仮想マシンの使用状況を 14 日間にわたって監視して、使用率が低い仮想マシンを識別します。 CPU 使用率が 5% 以下で、ネットワークの使用率が 7 MB 以下である日が 4 日以上ある仮想マシンは、使用率が低い仮想マシンと見なされます。
 
-5% 以下の CPU 使用率設定が既定値ですが、この設定は調整できます。 設定の調整の詳細については、[使用率が低い仮想マシンの推奨事項](../advisor/advisor-get-started.md#configure-the-average-cpu-utilization-rule-for-the-low-usage-virtual-machine-recommendation)に関する[平均 CPU 使用率ルールの構成](../advisor/advisor-get-started.md#configure-the-average-cpu-utilization-rule-for-the-low-usage-virtual-machine-recommendation)の記事を参照してください。
+5% 以下の CPU 使用率設定が既定値ですが、この設定は調整できます。 設定の調整について詳しくは、[使用率の低い仮想マシンの推奨事項について平均 CPU 使用率ルールを構成する](../advisor/advisor-get-started.md#configure-low-usage-vm-recommendation)方法についての記事をご覧ください。
 
 設計によっては使用率が低くなるシナリオもありますが、多くの場合、仮想マシンのサイズをより安価なサイズに変更することでコストを削減できます。 サイズ変更アクションを選択した場合の実際の節約額は異なる可能性があります。 それでは仮想マシンのサイズ変更の例を見てみましょう。
 
 推奨事項の一覧から **[使用率が低い仮想マシンを適切なサイズに変更するかシャットダウンしてください]** の推奨事項をクリックします。 仮想マシンの候補一覧からサイズを変更する仮想マシンを選択してから、仮想マシンをクリックします。 仮想マシンの詳細が表示されるので、使用率のメトリックを確認できます。 **[年間の潜在的な削減額]** 値は、その VM をシャットダウンまたは削除した場合に節約できる額です。 VM のサイズを変更するとコストを節約できる可能性がありますが、年間の潜在的な削減額の全額は節約されません。
 
-![推奨事項の詳細](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
+![推奨事項の詳細の例](./media/tutorial-acm-opt-recommendations/recommendation-details.png)
 
 VM の詳細で、仮想マシンの使用率を確認して、適切なサイズ変更の候補であることを確認します。
 
-![VM の詳細](./media/tutorial-acm-opt-recommendations/vm-details.png)
+![履歴の使用率を示す VM の詳細の例](./media/tutorial-acm-opt-recommendations/vm-details.png)
 
 現在の仮想マシンのサイズをメモします。 仮想マシンのサイズを変更する必要があることを確認したら、仮想マシンの詳細を閉じて仮想マシンの一覧を表示します。
 
 シャットダウンまたはサイズを変更する候補の一覧から **[仮想マシンのサイズ変更]** を選択します。
-![仮想マシンのサイズ変更](./media/tutorial-acm-opt-recommendations/resize-vm.png)
+![仮想マシンのサイズを変更するオプションを伴う推奨事項の例](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
 次に、使用できるサイズ変更オプションの一覧が表示されます。 実際にシナリオに対応するベスト プラクティスと費用対効果を実現するものを選択します。 次の例で、選択されているオプションは **DS14\_V2** から **DS13\_V2** へのサイズ変更です。 この推奨事項に従うと、551.30 ドル/月または 6,615.60 ドル/年を節約できます。
 
-![サイズを選択する](./media/tutorial-acm-opt-recommendations/choose-size.png)
+![サイズを選択できる使用可能な VM サイズの一覧の例](./media/tutorial-acm-opt-recommendations/choose-size.png)
 
 適切なサイズを選択したら、**[選択]** をクリックしてサイズ変更アクションを開始します。
 
@@ -82,7 +84,7 @@ VM の詳細で、仮想マシンの使用率を確認して、適切なサイ�
 
 VM のサイズ変更が正常に完了したら、Azure の通知が表示されます。
 
-![サイズ変更の通知](./media/tutorial-acm-opt-recommendations/resized-notification.png)
+![正常にサイズ変更された仮想マシンの通知](./media/tutorial-acm-opt-recommendations/resized-notification.png)
 
 ## <a name="next-steps"></a>次の手順
 

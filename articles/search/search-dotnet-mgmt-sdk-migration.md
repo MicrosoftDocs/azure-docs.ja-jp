@@ -1,6 +1,6 @@
 ---
-title: Azure Search .NET Management SDK バージョン 2 へのアップグレード | Microsoft Docs
-description: Azure Search .NET Management SDK バージョン 2 へのアップグレード
+title: Azure Search .NET Management SDK バージョン 2 へのアップグレード - Azure Search
+description: 以前のバージョンから Azure Search .NET Management SDK バージョン 2 にアップグレードします。 新機能と必要なコード変更について説明します。
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -9,12 +9,13 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 01/15/2018
-ms.openlocfilehash: a6b6c01f0cc811abca90139e4c26c27b7bd7119f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 369e5283d7350729e0d8cc44f94f1f2e71b133c3
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790367"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316873"
 ---
 # <a name="upgrading-to-the-azure-search-net-management-sdk-version-2"></a>Azure Search .NET Management SDK バージョン 2 へのアップグレード
 バージョン 1.0.2 以前の [Azure Search .NET Management SDK](https://aka.ms/search-mgmt-sdk) を使用している場合、この記事を参考にして、バージョン 2 を使用するようにアプリケーションをアップグレードできます。

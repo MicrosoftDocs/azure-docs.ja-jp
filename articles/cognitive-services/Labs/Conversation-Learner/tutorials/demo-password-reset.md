@@ -6,25 +6,23 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bd0bcd79bb21dc3973b34086f6dad21b47a95c2f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6436193dadb5933074fdce861a31672a0f4849de
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240870"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227337"
 ---
-# <a name="demo-password-reset"></a>デモ - パスワードのリセット
-このデモでは、パスワードのリセットを支援する機能を備えた単純なテクニカル サポート ボットの例を紹介します。 
-
-Conversation Learner は、ドメイン外クラスを含め、簡単ではない会話の流れを伴うマルチ ターン シーケンスを学習することができます。 このデモンストレーションでは、コードやエンティティを一切使用しません。
+# <a name="demo-password-reset"></a>デモ:パスワード リセット
+このチュートリアルでは、Conversation Learner を利用したパスワードのリセットに役立つ簡単なテクニカル サポート ボットを紹介します。 ボットのモデルでは、ドメイン外クラスを含め、簡単ではない会話の流れとマルチ ターン シーケンスを学習することができます。 コードまたはエンティティを使用しないでタスクを実行できます。
 
 ## <a name="video"></a>ビデオ
 
-[![パスワードのデモのプレビュー](https://aka.ms/cl-demo-password-preview)](https://aka.ms/blis-demo-password)
+[![パスワードのデモのプレビュー](https://aka.ms/cl_Tutorial_v3_DemoPassword_Preview)](https://aka.ms/cl_Tutorial_v3_DemoPassword)
 
 ## <a name="requirements"></a>必要条件
 このチュートリアルでは、パスワードのリセット ボットが実行されている必要があります。
@@ -37,41 +35,48 @@ Web UI の [モデル] 一覧で、[Tutorial Demo Password Reset] (チュート�
 
 ### <a name="actions"></a>Actions
 
-ユーザーがパスワードに関して支援 (解決策を含む) を求める一連のアクションを作成してあります。
+モデルには、パスワードの一般的な問題の解決を手助けするアクションのセットが含まれています。
 
 ![](../media/tutorial_pw_reset_actions.PNG)
 
 ### <a name="training-dialogs"></a>トレーニング会話
 
-トレーニング会話は数多く存在します。 また、ドメイン外クラスのデモンストレーションも存在します。たとえば、"driving directions" といったユーザーの要求はドメイン外となります。ボットには、いくつかのドメイン外要求の例が与えられており、それらに対しては "I can't help with that." で応答します。
+モデルには、ドメイン外クラスのトレーニングのデモなど、複数のトレーニング会話も含まれています。 たとえば、道案内情報を要求するユーザーなどです。 サンプル ボットはデモのために少しトレーニングされており、"can't help with that" (それについてはお役に立てません) とだけ応答します。 既存のトレーニング会話のリストは、左側のパネルの [Train Dialogs]\(トレーニング会話\) の下にあります。
 
 ![](../media/tutorial_pw_reset_entities.PNG)
 
-例として、学習セッションを試してみましょう。
+1. 左側のパネルで、[Train Dialogs]\(トレーニング会話\) をクリックしてから、[New Train Dialog]\(新しいトレーニング会話\) ボタンをクリックします。
+2. [Type your message...]\(メッセージを入力...\) と表示されているチャット パネルに、「i lost my password」(パスワードをなくしました) と入力します。
+3. [Score Actions]\(アクションのスコア付け\) ボタンをクリックします。
+4. [Is that for your local account or Microsoft account?]\(それはローカル アカウントですか、Microsoft アカウントですか?\) という応答を選択します。
+5. [Type your message...]\(メッセージを入力...\) と表示されているチャット パネルに、「local account please」(ローカル アカウントです) と入力します
+6. [Score Actions]\(アクションのスコア付け\) ボタンをクリックします。
+7. 応答 [Which version of Windows do you have?]\(Windows のバージョンは何ですか?\) を選択します。
+8. [Type your message...]\(メッセージを入力...\) と表示されているチャット パネルに、「windows xp」と入力します
+9. [Score Actions]\(アクションのスコア付け\) ボタンをクリックします。
+10. [+Action]\(+ アクション\) ボタンをクリックします。
+11. [Bot's response...]\(ボットの応答...\) フィールドに、「SOLUTION:How to reset password on Windows XP」(解決策: Windows XP でパスワードをリセットする方法) と入力します。
+12. [Create]\(作成\) ボタンをクリックします。
 
-1. [Train Dialogs]\(トレーニング会話\) をクリックし、[New Train Dialog]\(新しいトレーニング会話\) をクリックします。
-1. 「I lost my password」と入力します。
-2. [Score Action]\(アクションのスコア付け\) をクリックします。
-3. [Is that for your local account or Microsoft account?] をクリックして選択します。
-4. 「Local account」と入力します。
-5. [Score Action]\(アクションのスコア付け\) をクリックします。
-3. [Which version of Windows do you have?] をクリックして選択します。
-4. 「Windows 8」と入力します。
-5. [Score Action]\(アクションのスコア付け\) をクリックします。
-6. [SOLUTION: how to reset password on Windows 8.] を選択します。
-4. [Done Teaching]\(学習の完了\) をクリックします。
+### <a name="training-dialogs-for-out-of-domain-scenarios"></a>ドメイン外のシナリオのトレーニング会話
 
-ドメイン外クラスをボットがどのように学習できるのかを試してみましょう。
-
-1. [Train Dialogs]\(トレーニング会話\) をクリックし、[New Train Dialog]\(新しいトレーニング会話\) をクリックします。
-1. 「web search」と入力します。
-    - これはドメイン外クラスの例です。 
-2. [Score Action]\(アクションのスコア付け\) をクリックします。
-3. [Sorry, I can't help with that.] をクリックして選択します。
-    - このオプションのスコアが現在は低いことに注目してください。 しかし、少し学習を重ねるとスコアが上昇します。
-4. [Done Teaching]\(学習の完了\) をクリックします。
-
-基本的なテクニカル サポートのデモを作成する方法や、解決策を提示するように学習させる方法、例外的な問い合わせに対処する方法を見てきました。
+1. 左側のパネルで、[Train Dialogs]\(トレーニング会話\) をクリックしてから、既存の "toy stores" (おもちゃ屋) トレーニング会話をクリックします。
+2. チャット パネルで、"toy stores" (おもちゃ屋) 発話をクリックします。
+3. [Add alternative input...]\(代替入力の追加...\) フィールドに「web search」(Web 検索) と入力して Enter キーを押します。
+4. [Add alternative input...]\(代替入力の追加...\) フィールドに「flight booking」(飛行機の予約) と入力して Enter キーを押します。
+5. [Save Changes]\(変更の保存\) ボタンをクリックします。
+6. [Save Edit]\(編集の保存\) ボタンをクリックします。
+7. 左側のパネルで、[Log Dialogs]\(会話記録\) をクリックしてから、[New Log Dialog]\(新しい会話記録\) ボタンをクリックします。
+8. [Type your message...]\(メッセージを入力...\) と表示されているチャット パネルに、「i can't find my password」(パスワードが見つかりません) と入力します
+9. [Type your message...]\(メッセージを入力...\) と表示されているチャット パネルに、「Microsoft account」(Microsoft アカウント) と入力します
+10. [Type your message...]\(メッセージを入力...\) と表示されているチャット パネルで、「thanks」(ありがとう) と入力します
+11. [Done Testing]\(テストの完了\) ボタンをクリックします。
+12. グリッド ビューで "i can't find my password" (パスワードが見つかりません) という会話記録をクリックします。
+13. チャット パネルで、誤って表示された "Solution:How to reset a Microsoft Account Password" (解決策: Microsoft アカウントのパスワードをリセットする方法) という応答をクリックします。
+14. [+Action]\(+ アクション\) ボタンをクリックします。
+15. [Bot's response...]\(ボットの応答...\) フィールドに、「You are welcome」(どう致しまして) と入力します
+16. [Create]\(作成\) ボタンをクリックします。
+17. [Save As Train Dialog]\(トレーニング会話として保存\) ボタンをクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

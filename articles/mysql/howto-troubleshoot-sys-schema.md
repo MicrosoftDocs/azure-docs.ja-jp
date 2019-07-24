@@ -1,20 +1,17 @@
 ---
 title: Azure Database for MySQL でパフォーマンスのチューニングとデータベースのメンテナンスに sys_schema を使用する方法
 description: この記事では、sys_schema を使ってパフォーマンスの問題を見つけ、Azure Database for MySQL のデータベースを保守する方法について説明します。
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/01/2018
-ms.openlocfilehash: 1e10e3b1b5f4518732408f254eb5767acb8485c6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 993c77056c09c1dc21d5317ddbfe8e937341718d
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446909"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542851"
 ---
 # <a name="how-to-use-sysschema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Azure Database for MySQL でパフォーマンスのチューニングとデータベースのメンテナンスに sys_schema を使用する方法
 
@@ -25,14 +22,14 @@ MySQL 5.5 で初めて導入された MySQL performance_schema では、メモ�
 sys_schema には 52 個のビューがあり、各ビューには次のいずれかのプレフィックスが付いています。
 
 - host_summary または io: I/O 関連の待機時間。
-- innoDB: innoDB バッファーの状態とロック。
-- memory: ホストとユーザーによるメモリ使用量。
-- schema: 自動インクリメントやインデックスなど、スキーマ関連の情報。
-- statement: SQL ステートメントについての情報。フル テーブル スキャンや長いクエリ時間が発生するステートメントの場合があります。
-- user: ユーザーによって消費されているリソースをユーザー別にグループ化したもの。 ファイル I/O、接続、メモリなどです。
-- wait: ホストまたはユーザーでグループ化された待機イベント。
+- innoDB: InnoDB バッファーの状態とロック。
+- メモリ:ホストとユーザーによるメモリ使用量。
+- スキーマ:自動インクリメントやインデックスなどのスキーマ関連の情報。
+- statement: SQL ステートメントに関する情報。フル テーブル スキャンや長いクエリ時間が発生するステートメントである場合があります。
+- ユーザー:消費され、ユーザーごとにグループ化されたリソース。 ファイル I/O、接続、メモリなどです。
+- wait: ホストまたはユーザーごとにグループ化された待機イベント。
 
-次に、sys_schema の一般的な使用パターンについて説明します。 最初に、使用パターンを**パフォーマンス チューニング**と**データベース メンテナンス**の 2 つのカテゴリに分けます。
+次に、sys_schema の一般的な使用パターンについて説明します。 まず、使用パターンを**パフォーマンスのチューニング**と**データベース メンテナンス**の 2 つのカテゴリにグループ化します。
 
 ## <a name="performance-tuning"></a>パフォーマンスのチューニング
 
@@ -40,15 +37,15 @@ sys_schema には 52 個のビューがあり、各ビューには次のいず�
 
 IO は、データベースで最もコストのかかる操作です。 *sys.user_summary_by_file_io* ビューのクエリを行うことにより、平均 IO 待機時間がわかります。 既定値の 125 GB でプロビジョニングされたこの例のストレージでは、IO 待機時間は約 15 秒です。
 
-![IO 待機時間: 125 GB](./media/howto-troubleshoot-sys-schema/io-latency-125GB.png)
+![io latency: 125 GB](./media/howto-troubleshoot-sys-schema/io-latency-125GB.png)
 
 Azure Database for MySQL ではストレージに応じて IO が増減するので、このプロビジョニングされたストレージを 1 TB に増やすと、IO 待機時間は 571 ミリ秒に減ります。
 
-![IO 待機時間: 1 TB](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
+![io latency: 1 TB](./media/howto-troubleshoot-sys-schema/io-latency-1TB.png)
 
 ### <a name="sysschematableswithfulltablescans"></a>*sys.schema_tables_with_full_table_scans*
 
-慎重に計画しても、多くのクエリでフル テーブル スキャンが行われる可能性があります。 インデックスの種類およびそれらを最適化する方法について詳しくは、「[Azure Database for MySQL でのクエリのパフォーマンスをトラブルシューティングする方法](./howto-troubleshoot-query-performance.md)」をご覧ください。 フル テーブル スキャンはリソースを大量に消費し、データベースのパフォーマンスを低下させます。 フル テーブル スキャンが行われたテーブルを調べる最も簡単な方法は、*sys.schema_tables_with_full_table_scans* ビューのクエリを行うことです。
+慎重に計画しても、多くのクエリでフル テーブル スキャンが行われる可能性があります。 インデックスの種類とそれらを最適化する方法の詳細については、[クエリのパフォーマンスをトラブルシューティングする方法](./howto-troubleshoot-query-performance.md)に関する記事を参照できます。 フル テーブル スキャンはリソースを大量に消費するため、データベースのパフォーマンスを低下させます。 フル テーブル スキャンが行われたテーブルを調べる最も簡単な方法は、*sys.schema_tables_with_full_table_scans* ビューのクエリを行うことです。
 
 ![フル テーブル スキャン](./media/howto-troubleshoot-sys-schema/full-table-scans.png)
 

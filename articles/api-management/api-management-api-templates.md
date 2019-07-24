@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 74f7956a0b705748228216b3f1aa52607ff55614
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: a78c03537d7fb3db6afa0c4a4e84c4746146ca85
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983497"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486376"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API Management の API テンプレート
+
 Azure API Management には、開発者ポータルの各ページの内容を、内容を構成するテンプレート セットを使用してカスタマイズする機能があります。 [DotLiquid](http://dotliquidmarkup.org/) 構文、好みのエディター ([DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)など)、および用意されているローカライズされた[文字列リソース](api-management-template-resources.md#strings)、[グリフ リソース](api-management-template-resources.md#glyphs)、および[ページ コントロール](api-management-page-controls.md)のセットをテンプレートで使用して、表示されるページの内容を自由に構成できます。  
   
 このセクションのテンプレートを使用して、開発者ポータルの API ページの内容をカスタマイズできます。  
@@ -40,6 +41,8 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 
 > [!NOTE]
 >  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)に関するページを参照してください。  
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ##  <a name="APIList"></a> API リスト  
  **API リスト** テンプレートを使用すると、開発者ポータルで API リスト ページの本文をカスタマイズすることができます。  
@@ -85,9 +88,9 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|type|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
-|apis|[API の概要](api-management-template-data-model-reference.md#APISummary)エンティティのコレクション。|現在のユーザーに表示される API。|  
+|`apis`|[API の概要](api-management-template-data-model-reference.md#APISummary)エンティティのコレクション。|現在のユーザーに表示される API。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   
@@ -340,17 +343,17 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|type|説明|  
+|プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
-|apiId|string|現在の API の ID。|  
-|apiName|string|API の名前。|  
-|apiDescription|string|API の説明。|  
-|api|[API の概要](api-management-template-data-model-reference.md#APISummary)エンティティ。|現在の API。|  
-|operation|[操作](api-management-template-data-model-reference.md#Operation)|現在表示されている操作。|  
-|sampleUrl|string|現在の操作の URL。|  
-|operationMenu|[操作メニュー](api-management-template-data-model-reference.md#Menu)|この API の操作のメニュー。|  
-|consoleUrl|URI|**[試してみる]** ボタンの URI。|  
-|サンプル|[Code sample](api-management-template-data-model-reference.md#Sample) エンティティのコレクション。|現在の操作のコード サンプル。|  
+|`apiId`|文字列|現在の API の ID。|  
+|`apiName`|文字列|API の名前。|  
+|`apiDescription`|文字列|API の説明。|  
+|`api`|[API の概要](api-management-template-data-model-reference.md#APISummary)エンティティ。|現在の API。|  
+|`operation`|[操作](api-management-template-data-model-reference.md#Operation)|現在表示されている操作。|  
+|`sampleUrl`|文字列|現在の操作の URL。|  
+|`operationMenu`|[Operation menu](api-management-template-data-model-reference.md#Menu)|この API の操作のメニュー。|  
+|`consoleUrl`|URI|**[試してみる]** ボタンの URI。|  
+|`samples`|[Code sample](api-management-template-data-model-reference.md#Sample) エンティティのコレクション。|現在の操作のコード サンプル。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   
@@ -998,7 +1001,7 @@ public class JavaSample
 <html>  
 <head>  
     <title>JSSample</title>  
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>  
 </head>  
 <body>  
   

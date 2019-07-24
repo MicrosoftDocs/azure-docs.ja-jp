@@ -1,23 +1,24 @@
 ---
-title: 'チュートリアル: Computer Vision API Java'
+title: チュートリアル:イメージの操作を実行する - Java
 titlesuffix: Azure Cognitive Services
 description: Microsoft Cognitive Services の Computer Vision API を使用する基本的な Java Swing アプリを探索します。 OCR を実行し、サムネイルを作成して、イメージ内の視覚的な特徴を操作します。
 services: cognitive-services
 author: KellyDF
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: tutorial
 ms.author: kefre
+ms.custom: seodec18
 ms.date: 09/21/2017
-ms.openlocfilehash: 36a8a49ee49636d186ca217ae223b1eebf9bb54b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 4f6af31ba6b04ddbecb7cb42cebe345b6af720ac
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340258"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868091"
 ---
-# <a name="tutorial-computer-vision-api-java"></a>チュートリアル: Computer Vision API Java
+# <a name="tutorial-computer-vision-api-java"></a>チュートリアル:Computer Vision API Java
 
 このチュートリアルでは、Azure Cognitive Services の Computer Vision REST API の機能について説明します。
 
@@ -455,7 +456,7 @@ Computer Vision の著名人機能は、有名な人物のイメージを分析�
 
 ### <a name="intelligently-generate-a-thumbnail"></a>サムネイルをインテリジェントに生成する
 
-Computer Vision のサムネイル機能は画像のサムネイルを生成します。 サムネイル機能は**スマート トリミング**機能を使用して、画像内の対象の領域を特定してサムネイルをその領域の中央に配置し、より美しいサムネイル イメージを生成します。
+Computer Vision のサムネイル機能はイメージのサムネイルを生成します。 サムネイル機能は**スマート トリミング**機能を使用して、イメージ内の対象の領域を特定してサムネイルをその領域の中央に配置し、より美しいサムネイル イメージを生成します。
 
 チュートリアル アプリケーションのサムネイル機能を完成させるには、次の手順を実行します。
 
@@ -777,7 +778,7 @@ Computer Vision の手書き認識機能は、手書きのテキストのイメ�
             
             // Check for success.
             if (textResponse.getStatusLine().getStatusCode() != 202) {
-                // An error occured. Return the JSON error message.
+                // An error occurred. Return the JSON error message.
                 HttpEntity entity = textResponse.getEntity();
                 String jsonString = EntityUtils.toString(entity);
                 return new JSONObject(jsonString);

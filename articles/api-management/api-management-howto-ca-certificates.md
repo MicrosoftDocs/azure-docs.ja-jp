@@ -13,18 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 9d3399ba6ee724d91117486744ad1431f53edbce
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 5161a35fd52b2f3d8374c76bdab60281e33dacf6
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43052917"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730649"
 ---
 # <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Azure API Management でカスタム CA 証明書を追加する方法
 
 Azure API Management を使用すると、信頼できるルート証明書ストアと中間証明書ストア内のマシンに CA 証明書をインストールできます。 サービスにカスタム CA 証明書が必要な場合、この機能を使用する必要があります。
 
 この記事では、Azure portal の Azure API Management サービス インスタンスの CA 証明書を管理する方法について説明します。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="step1"> </a>CA 証明書をアップロードする
 
@@ -49,7 +53,7 @@ Azure API Management を使用すると、信頼できるルート証明書ス�
     ![CA 証明書を追加する](media/api-management-howto-ca-certificates/03.png)  
 
 > [!NOTE]
-> `New-AzureRmApiManagementSystemCertificate` Powershell コマンドを使用して CA 証明書をアップロードできます。
+> `New-AzApiManagementSystemCertificate` Powershell コマンドを使用して CA 証明書をアップロードできます。
 
 ## <a name="step1a"> </a>クライアント証明書の削除
 

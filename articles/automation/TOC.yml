@@ -1,293 +1,288 @@
-items:
 - name: Azure Automation のユーザー ドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: Automation とは
-    href: automation-intro.md
+    - name: Automation とは
+      href: automation-intro.md
 - name: クイック スタート
-  items:
-  - name: Automation アカウントを作成する
-    href: automation-quickstart-create-account.md
-  - name: Runbook を作成する
-    href: automation-quickstart-create-runbook.md
-  - name: DSC 構成を作成する
-    displayName: DSC, state configuration, config, node configuration, node
-    href: automation-quickstart-dsc-configuration.md
   expanded: true
+  items:
+    - name: Automation アカウントを作成する
+      href: automation-quickstart-create-account.md
+    - name: Runbook を作成する
+      href: automation-quickstart-create-runbook.md
+    - name: DSC 構成を作成する
+      href: automation-quickstart-dsc-configuration.md
+      displayName: 'DSC, state configuration, config, node configuration, node'
 - name: チュートリアル
   items:
-  - name: 監視タスクによる更新されたファイルの追跡
-    displayName: hybrid runbook worker, hybrid worker, trigger
-    href: automation-watchers-tutorial.md
-  - name: VM の更新プログラムの管理
-    displayName: alert, patch
-    href: automation-tutorial-update-management.md
-  - name: Runbook による更新および変更の追跡のオンボード
-    href: automation-onboard-solutions.md
-  - name: 環境のソフトウェアの特定
-    displayName: inventory
-    href: automation-tutorial-installed-software.md
-  - name: VM に対する変更のトラブルシューティング
-    displayName: inventory
-    href: automation-tutorial-troubleshoot-changes.md
+    - name: 監視タスクによる更新されたファイルの追跡
+      href: automation-watchers-tutorial.md
+      displayName: 'hybrid runbook worker, hybrid worker, trigger'
+    - name: VM の更新プログラムの管理
+      href: automation-tutorial-update-management.md
+      displayName: 'alert, patch'
+    - name: Runbook による更新および変更の追跡のオンボード
+      href: automation-onboard-solutions.md
+    - name: 環境のソフトウェアの特定
+      href: automation-tutorial-installed-software.md
+      displayName: inventory
+    - name: VM に対する変更のトラブルシューティング
+      href: automation-tutorial-troubleshoot-changes.md
+      displayName: inventory
 - name: ハウツー ガイド
   items:
-  - name: 勤務時間外の VM の起動/停止
-    href: automation-solution-vm-management.md
-  - name: オンボード
-    items:
-    - name: 複数の VM のポータルからのオンボード
-      href: automation-onboard-solutions-from-browse.md
-    - name: Azure VM からのオンボード
-      href: automation-onboard-solutions-from-vm.md
-    - name: Automation アカウントからのオンボード
-      href: automation-onboard-solutions-from-automation-account.md
-  - name: 更新管理
-    items:
-    - name: Update Management の概要
-      displayName: dynamic groups, pre scripts, post scripts, reboot control, first party, pre download, inclusion
-      href: automation-update-management.md
-    - name: 複数の VM の更新プログラム管理
-      href: manage-update-multi.md
-    - name: 事前スクリプトと事後スクリプト
-      href: pre-post-scripts.md
-    - name: OMS の更新プログラムの展開を Azure に移行する
-      href: migrate-oms-update-deployments.md
-    - name: SCCM と Update Management の統合
-      displayName: Configuration Manager
-      href: oms-solution-updatemgmt-sccmintegration.md
-  - name: 変更の追跡
-    items:
-    - name: 変更の追跡の概要
-      displayName: wildcard, recursion, environment variables, registry
-      href: automation-change-tracking.md
-    - name: 追跡対象ファイルのファイル内容の表示
-      displayName: change tracking, hash
-      href: change-tracking-file-contents.md
-  - name: インベントリ
-    items:
-    - name: インベントリ コレクションでの VM の管理
-      href: automation-vm-inventory.md
-  - name: 認証とセキュリティ
-    items:
-    - name: スタンドアロン Automation アカウントを作成する
-      href: automation-create-standalone-account.md
-    - name: Automation 実行アカウントを管理する
-      displayName: certificate renewal
-      href: manage-runas-account.md
-    - name: AWS を使って認証を構成する
-      href: automation-config-aws-account.md
-    - name: ロールベースのアクセス制御を管理する
-      displayName: RBAC
-      href: automation-role-based-access-control.md
-  - name: Runbook を作成する
-    items:
-    - name: Runbook の種類
-      displayName: graphical, python, powershell, powershell workflow
-      href: automation-runbook-types.md
-    - name: Runbook を作成およびインポートする
-      href: automation-creating-importing-runbook.md
-    - name: グラフィカル Runbook を作成する
-      href: automation-first-runbook-graphical.md
-    - name: PowerShell Runbook を作成する
-      href: automation-first-runbook-textual-powershell.md
-    - name: PowerShell Workflow Runbook を作成する
-      href: automation-first-runbook-textual.md
-    - name: Python Runbook を作成する
-      href: automation-first-runbook-textual-python2.md
-    - name: テキスト形式の Runbook を編集する
-      displayName: powershell
-      href: automation-edit-textual-runbook.md
-    - name: グラフィック Runbook を編集する
-      href: automation-graphical-authoring-intro.md
-    - name: Runbook をテストする
-      href: automation-testing-runbook.md
-    - name: PowerShell ワークフローについての説明
-      href: automation-powershell-workflow.md
-    - name: 子 Runbook
-      href: automation-child-runbooks.md
-    - name: Runbook の出力
-      displayName: message streams, progress records, preference
-      href: automation-runbook-output-and-messages.md
-    - name: ソース管理の統合
-      displayName: github, vsts, azure devops, personal access token
-      href: source-control-integration.md
-    - name: ソース管理の統合 - レガシ
-      href: automation-source-control-integration-legacy.md
-      displayname: github
-    - name: グラフィカル Runbook SDK による Runbook の作成
-      href: graphical-runbook-sdk.md
-  - name: 自動化
-    items:
-    - name: Runbook を開始する
-      href: automation-starting-a-runbook.md
-    - name: webhook から Runbook を開始する
-      href: automation-webhooks.md
-    - name: Runbook の入力パラメーターを構成する
-      href: automation-runbook-input-parameters.md
-    - name: グラフィック Runbook でのエラー処理
-      href: automation-runbook-graphical-error-handling.md
-    - name: Runbook ジョブの追跡
-      displayName: fair share, activity log
-      href: automation-runbook-execution.md
-    - name: Azure Automation データを管理する
-      displayName: backup
-      href: automation-managing-data.md
-    - name: Azure Automation Runbook に JSON オブジェクトを渡す
-      href: automation-pass-json-string.md
-    - name: Python 2 パッケージの管理
-      href: python-packages.md
-  - name: Hybrid Runbook Worker
-    items:
-    - name: Hybrid Runbook Worker の概要
-      href: automation-hybrid-runbook-worker.md
-    - name: Windows Hybrid Runbook Worker のデプロイ
-      href: automation-windows-hrw-install.md
-    - name: Linux Hybrid Runbook Worker のデプロイ
-      displayName: signature validation
-      href: automation-linux-hrw-install.md
-    - name: Hybrid Runbook Worker での Runbook の実行
-      displayName: signed runbooks
-      href: automation-hrw-run-runbooks.md
-  - name: 状態の構成
-    displayName: DSC
-    items:
-    - name: 状態の構成の概要
+    - name: 勤務時間外の VM の起動/停止
+      href: automation-solution-vm-management.md
+    - name: オンボード
+      items:
+        - name: 複数の VM のポータルからのオンボード
+          href: automation-onboard-solutions-from-browse.md
+        - name: Azure VM からのオンボード
+          href: automation-onboard-solutions-from-vm.md
+        - name: Automation アカウントからのオンボード
+          href: automation-onboard-solutions-from-automation-account.md
+    - name: 更新管理
+      items:
+        - name: Update Management の概要
+          href: automation-update-management.md
+          displayName: 'dynamic groups, pre scripts, post scripts, reboot control, first party, pre download, inclusion'
+        - name: 複数の VM の更新プログラム管理
+          href: manage-update-multi.md
+        - name: 事前スクリプトと事後スクリプト
+          href: pre-post-scripts.md
+        - name: OMS の更新プログラムの展開を Azure に移行する
+          href: migrate-oms-update-deployments.md
+        - name: SCCM と Update Management の統合
+          href: oms-solution-updatemgmt-sccmintegration.md
+          displayName: Configuration Manager
+    - name: 変更の追跡
+      items:
+        - name: 変更の追跡の概要
+          href: automation-change-tracking.md
+          displayName: 'wildcard, recursion, environment variables, registry'
+        - name: 追跡対象ファイルのファイル内容の表示
+          href: change-tracking-file-contents.md
+          displayName: 'change tracking, hash'
+    - name: インベントリ
+      items:
+        - name: インベントリ コレクションでの VM の管理
+          href: automation-vm-inventory.md
+    - name: 認証とセキュリティ
+      items:
+        - name: スタンドアロン Automation アカウントを作成する
+          href: automation-create-standalone-account.md
+        - name: Automation 実行アカウントを管理する
+          href: manage-runas-account.md
+          displayName: certificate renewal
+        - name: AWS を使って認証を構成する
+          href: automation-config-aws-account.md
+        - name: ロールベースのアクセス制御を管理する
+          href: automation-role-based-access-control.md
+          displayName: RBAC
+    - name: Runbooks
+      items:
+        - name: Runbook を管理する
+          href: manage-runbooks.md
+        - name: Runbook の種類
+          href: automation-runbook-types.md
+          displayName: 'graphical, python, powershell, powershell workflow'
+        - name: Runbook を作成する
+          items:
+            - name: グラフィック Runbook
+              href: automation-first-runbook-graphical.md
+            - name: PowerShell Runbook
+              href: automation-first-runbook-textual-powershell.md
+            - name: PowerShell ワークフロー Runbook
+              href: automation-first-runbook-textual.md
+            - name: Python Runbook
+              href: automation-first-runbook-textual-python2.md
+            - name: グラフィカル Runbook SDK による Runbook の作成
+              href: graphical-runbook-sdk.md
+        - name: Runbook を編集する
+          items:
+            - name: テキスト形式の Runbook を編集する
+              href: automation-edit-textual-runbook.md
+              displayName: powershell
+            - name: グラフィック Runbook を編集する
+              href: automation-graphical-authoring-intro.md
+        - name: Runbook を開始する
+          href: start-runbooks.md
+        - name: webhook から Runbook を開始する
+          href: automation-webhooks.md
+        - name: Runbook の入力パラメーター
+          href: runbook-input-parameters.md
+          displayName: 'input,json'
+        - name: グラフィック Runbook でのエラー処理
+          href: automation-runbook-graphical-error-handling.md
+        - name: Runbook の実行
+          href: automation-runbook-execution.md
+          displayName: 'fair share, activity log, job'
+        - name: Azure Automation データを管理する
+          href: automation-managing-data.md
+          displayName: backup
+        - name: PowerShell ワークフローについての説明
+          href: automation-powershell-workflow.md
+        - name: 子 Runbook
+          href: automation-child-runbooks.md
+        - name: Runbook の出力
+          href: automation-runbook-output-and-messages.md
+          displayName: 'message streams, progress records, preference'
+        - name: ソース管理の統合
+          href: source-control-integration.md
+          displayName: 'github, vsts, azure devops, personal access token'
+        - name: ソース管理の統合 - レガシ
+          href: source-control-integration-legacy.md
+          displayname: github
+    - name: Hybrid Runbook Worker
+      items:
+        - name: Hybrid Runbook Worker の概要
+          href: automation-hybrid-runbook-worker.md
+        - name: Windows Hybrid Runbook Worker のデプロイ
+          href: automation-windows-hrw-install.md
+        - name: Linux Hybrid Runbook Worker のデプロイ
+          href: automation-linux-hrw-install.md
+          displayName: signature validation
+        - name: Hybrid Runbook Worker での Runbook の実行
+          href: automation-hrw-run-runbooks.md
+          displayName: signed runbooks
+    - name: 状態の構成
       displayName: DSC
-      href: automation-dsc-overview.md
-    - name: 使用の開始
-      displayName: DSC
-      href: automation-dsc-getting-started.md
-    - name: 目的の状態へのサーバーの構成と状態の構成での誤差の管理
-      displayName: DSC, compliance
-      href: tutorial-configure-servers-desired-state.md
-    - name: 管理のためのマシンのオンボード
-      displayName: DSC, state configuration
-      href: automation-dsc-onboarding.md
-    - name: DSC 構成のコンパイル
-      displayName: state configuration, composite resources, configurationData
-      href: automation-dsc-compile.md
-    - name: 複合リソースを使用した DSC 構成の作成
-      href: compose-configurationwithcompositeresources.md
-    - name: Chocolatey を使用した継続的なデプロイ
-      displayName: dsc, state configuration
-      href: automation-dsc-cd-chocolatey.md
-    - name: Log Analytics への状態の構成のレポート データの転送
-      displayName: DSC
-      href: automation-dsc-diagnostics.md
-  - name: 共有リソースの管理
-    items:
-    - name: 証明書
-      href: automation-certificates.md
-    - name: Connections
-      href: automation-connections.md
-    - name: 資格情報
-      href: automation-credentials.md
-    - name: 統合モジュール
-      href: automation-integration-modules.md
-    - name: スケジュール
-      href: automation-schedules.md
-    - name: variables
-      href: automation-variables.md
-    - name: Azure PowerShell モジュールの更新
-      href: automation-update-azure-modules.md
-  - name: シナリオ
-    items:
-    - name: Runbook ギャラリー
-      href: automation-runbook-gallery.md
-    - name: メトリック アラートによる Runbook の監視
-      href: automation-alert-metric.md
-    - name: Azure アラートから Runbook を開始する
-      displayName: Monitor, Azure Monitor
-      href: automation-create-alert-triggered-runbook.md
-    - name: Amazon Web Service VM を作成する
-      href: automation-scenario-aws-deployment.md
-    - name: GitHub Enterprise によるソース管理の統合
-      displayName: CI, runbooks
-      href: automation-scenario-source-control-integration-with-github-ent.md
-    - name: Azure DevOps によるソース管理の統合
-      displayName: VSTS, CI, runbooks
-      href: automation-scenario-source-control-integration-with-VSTS.md
-    - name: Azure Automation PowerShell Runbook に Azure Resource Manager テンプレートをデプロイする
-      href: automation-deploy-template-runbook.md
-    - name: Azure Automation を Event Grid および Microsoft Teams と統合する
-      href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md?toc=%2fazure%2fautomation%2ftoc.json
-  - name: 監視
-    items:
-    - name: Log Analytics に Azure Automation のジョブ データを転送する
-      href: automation-manage-send-joblogs-log-analytics.md
-  - name: 移行
-    items:
-    - name: Orchestrator から移行する
-      displayName: SCORCH, runbooks
-      href: automation-orchestrator-migration.md
+      items:
+        - name: 状態の構成の概要
+          href: automation-dsc-overview.md
+          displayName: DSC
+        - name: 使用の開始
+          href: automation-dsc-getting-started.md
+          displayName: DSC
+        - name: 目的の状態へのサーバーの構成と状態の構成での誤差の管理
+          href: tutorial-configure-servers-desired-state.md
+          displayName: 'DSC, compliance'
+        - name: 管理のためのマシンのオンボード
+          href: automation-dsc-onboarding.md
+          displayName: 'DSC, state configuration'
+        - name: DSC 構成のコンパイル
+          href: automation-dsc-compile.md
+          displayName: 'state configuration, composite resources, configurationData'
+        - name: 複合リソースを使用した DSC 構成の作成
+          href: compose-configurationwithcompositeresources.md
+        - name: Chocolatey を使用した継続的なデプロイ
+          href: automation-dsc-cd-chocolatey.md
+          displayName: 'dsc, state configuration'
+        - name: Azure Monitor ログに状態の構成のレポート データを転送する
+          href: automation-dsc-diagnostics.md
+          displayName: DSC
+    - name: 共有リソースの管理
+      items:
+        - name: スケジュール
+          href: shared-resources/schedules.md
+        - name: モジュール
+          href: shared-resources/modules.md
+        - name: Python 2 パッケージの管理
+          href: python-packages.md
+        - name: 資格情報
+          href: shared-resources/credentials.md
+        - name: Connections
+          href: automation-connections.md
+        - name: 証明書
+          href: shared-resources/certificates.md
+        - name: variables
+          href: shared-resources/variables.md
+        - name: Azure PowerShell モジュールの更新
+          href: automation-update-azure-modules.md
+        - name: Runbook 内の Az モジュール
+          href: az-modules.md
+    - name: シナリオ
+      items:
+        - name: Runbook ギャラリー
+          href: automation-runbook-gallery.md
+        - name: メトリック アラートによる Runbook の監視
+          href: automation-alert-metric.md
+        - name: Azure アラートから Runbook を開始する
+          href: automation-create-alert-triggered-runbook.md
+          displayName: 'Monitor, Azure Monitor'
+        - name: Amazon Web Service VM を作成する
+          href: automation-scenario-aws-deployment.md
+        - name: Azure Automation PowerShell Runbook に Azure Resource Manager テンプレートをデプロイする
+          href: automation-deploy-template-runbook.md
+        - name: Azure Automation を Event Grid および Microsoft Teams と統合する
+          href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md?toc=%2fazure%2fautomation%2ftoc.json
+        - name: Automation アカウントを別のサブスクリプションに移動する
+          href: how-to/move-account.md
+    - name: 監視
+      items:
+        - name: Azure Monitor ログに Azure Automation のジョブ データを転送する
+          href: automation-manage-send-joblogs-log-analytics.md
+    - name: 移行
+      items:
+        - name: Orchestrator から移行する
+          href: automation-orchestrator-migration.md
+          displayName: 'SCORCH, runbooks'
 - name: トラブルシューティング
   items:
-  - name: オンボード
-    displayName: troubleshoot
-    href: troubleshoot/onboarding.md
-  - name: Runbooks
-    displayName: troubleshoot
-    href: troubleshoot/runbooks.md
-  - name: 状態の構成 (DSC)
-    displayName: Desired State Configuration, troubleshoot
-    href: troubleshoot/desired-state-configuration.md
-  - name: Hybrid Runbook Worker
-    displayName: troubleshoot, HRW, hybrid worker
-    href: troubleshoot/hybrid-runbook-worker.md
-  - name: 変更履歴とインベントリ
-    displayName: troubleshoot
-    href: troubleshoot/change-tracking.md
-  - name: 更新管理
-    displayName: troubleshoot
-    href: troubleshoot/update-management.md
-  - name: 共有リソース
-    displayName: module, import
-    href: troubleshoot/shared-resources.md
-  - name: エージェントの更新に関する問題のトラブルシューティング
-    items:
-    - name: Windows
-      displayName: update agent, issue, hybrid runbook worker, hybrid worker, troubleshoot, windows
-      href: troubleshoot/update-agent-issues.md
-    - name: Linux
-      displayName: update agent, issue, hybrid runbook worker, hybrid worker, troubleshoot, linux
-      href: troubleshoot/update-agent-issues-linux.md
+    - name: オンボード
+      href: troubleshoot/onboarding.md
+      displayName: troubleshoot
+    - name: Runbooks
+      href: troubleshoot/runbooks.md
+      displayName: troubleshoot
+    - name: 状態の構成 (DSC)
+      href: troubleshoot/desired-state-configuration.md
+      displayName: 'Desired State Configuration, troubleshoot'
+    - name: Hybrid Runbook Worker
+      href: troubleshoot/hybrid-runbook-worker.md
+      displayName: 'troubleshoot, HRW, hybrid worker'
+    - name: 変更履歴とインベントリ
+      href: troubleshoot/change-tracking.md
+      displayName: troubleshoot
+    - name: 更新管理
+      href: troubleshoot/update-management.md
+      displayName: troubleshoot
+    - name: VM の開始/停止
+      href: troubleshoot/start-stop-vm.md
+      displayName: 'start,stop'
+    - name: 共有リソース
+      href: troubleshoot/shared-resources.md
+      displayName: 'module, import'
+    - name: エージェントの更新に関する問題のトラブルシューティング
+      items:
+        - name: Windows
+          href: troubleshoot/update-agent-issues.md
+          displayName: 'update agent, issue, hybrid runbook worker, hybrid worker, troubleshoot, windows'
+        - name: Linux
+          href: troubleshoot/update-agent-issues-linux.md
+          displayName: 'update agent, issue, hybrid runbook worker, hybrid worker, troubleshoot, linux'
 - name: リファレンス
   items:
-  - name: Azure PowerShell
-    href: /powershell/module/azurerm.automation
-  - name: Azure PowerShell (クラシック)
-    href: /powershell/module/azure/?view=azuresmps-3.7.0
-  - name: .NET
-    href: /dotnet/api/microsoft.azure.management.automation
-  - name: REST ()
-    href: /rest/api/automation
-  - name: REST (クラシック)
-    href: https://msdn.microsoft.com/library/azure/mt163781
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.automation
+    - name: Azure PowerShell (クラシック)
+      href: /powershell/module/azure/?view=azuresmps-3.7.0
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.automation
+    - name: REST
+      href: /rest/api/automation
+    - name: REST (クラシック)
+      href: 'https://msdn.microsoft.com/library/azure/mt163781'
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.automation/allversions
 - name: リソース
   items:
-  - name: Automation の紹介ビデオ
-    href: https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/?category=management-tools&query=automation
-  - name: MSDN フォーラム
-    href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/automation/
-  - name: 料金計算ツール
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: リリース ノート
-    href: https://azure.microsoft.com/updates/?product=automation
-  - name: サービスの更新情報
-    href: https://azure.microsoft.com/updates/?product=automation
-  - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-automation
-  - name: ビデオ
-    href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: ed1c82c799ea64c43a531d912fbc09022a918414
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838975"
+    - name: Automation の紹介ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=management-tools&query=automation'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/automation/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: リリース ノート
+      href: 'https://azure.microsoft.com/updates/?product=automation'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=automation'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-automation'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=automation'

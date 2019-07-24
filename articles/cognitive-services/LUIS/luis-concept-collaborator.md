@@ -1,25 +1,26 @@
 ---
-title: LUIS アプリのコラボレーション - Language Understanding
-titleSuffix: Azure Cognitive Services
-description: LUIS アプリには、1 人の所有者と省略可能なコラボレーターが必要です。
+title: コラボレーション
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: LUIS アプリには、1 人の所有者が必要です。さらに任意でコラボレーターを追加すれば、複数のユーザーで 1 つのアプリを作成することができます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 9acc0b04cbfa074f888d785930f357eaf94f310b
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 34ae47723762215fdea99362419c3875dc2e5942
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637325"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522747"
 ---
-# <a name="collaborating"></a>コラボレーション
+# <a name="collaborating-with-other-authors"></a>他の作成者との共同作業
 
-LUIS では、グループでアプリを作成できるように、コラボレーション機能が用意されています。
+LUIS アプリには、1 人の所有者が必要です。さらに任意でコラボレーターを追加すれば、複数のユーザーで 1 つのアプリを作成することができます。
 
 ## <a name="luis-account"></a>LUIS アカウント
 LUIS アカウントは、1 つの [Microsoft Live](https://login.live.com/) アカウントに関連付けられています。 各 LUIS アカウントには、そのアカウントがアクセスできるすべての LUIS アプリの作成に使用する、無料の[オーサリング キー](luis-concept-keys.md#authoring-key)が与えられます。 
@@ -29,7 +30,8 @@ LUIS アカウントは、多くの LUIS アプリを所有できます。
 Active Directory ユーザー アカウントの詳細については、「[Azure Active Directory テナント ユーザー](luis-how-to-collaborate.md#azure-active-directory-tenant-user)」を参照してください。 
 
 ## <a name="luis-app-owner"></a>LUIS アプリ所有者
-アプリを作成するアカウントが所有者です。 アプリごとに 1 人の所有者がいます。 所有者は、アプリの **[[設定]](luis-how-to-collaborate.md)** に表示されます。 アプリを削除できるのは、このアカウントです。 エンドポイント クォータが毎月の制限の 75% に達したときに電子メールを受信するのも、このアカウントです。 
+
+アプリを作成するアカウントが所有者です。アプリごとに 1 人の所有者がいます。 所有者は、アプリの **[[設定]](luis-how-to-collaborate.md)** ページに表示されます。 所有者は、エンドポイント クォータが毎月の制限の 75% に達したときにアプリの受信メールを削除できます。 
 
 ## <a name="authorization-roles"></a>承認ロール
 LUIS では、1 つの例外を除き、所有者とコラボレーターの異なるロールをサポートしていません。 所有者はアプリを削除できる唯一のアカウントです。
@@ -60,6 +62,10 @@ LUIS には所有権の移転の機能はありませんが、コラボレータ
 基本バージョンを[エクスポート](luis-how-to-manage-versions.md#export-version)します。 各作成者がこのバージョンをインポートします。 アプリをインポートするユーザーが、バージョンの所有者です。 アプリの変更が完了したら、バージョンをエクスポートします。 
 
 エクスポートされたアプリは JSON 形式ファイルなので、変更点を基本のエクスポートと比較することができます。 ファイルを結合して、新しいバージョンの JSON ファイルを 1 つ作成します。 JSON の **versionId** プロパティを変更して、マージされた新しいバージョンを示します。 このバージョンを元のアプリにインポートします。
+
+## <a name="collaborator-roles-vs-entity-roles"></a>コラボレーター ロールとエンティティのロール
+
+[エンティティのロール](luis-concept-roles.md)は、LUIS アプリのデータ モデルに適用されます。 コラボレーター ロールは、オーサリング アクセス許可のレベルに適用されます。 
 
 ## <a name="next-steps"></a>次の手順
 

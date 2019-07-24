@@ -1,0 +1,55 @@
+items:
+- name: メインフレームのホスト変更
+  items:
+  - name: 概要
+    items:
+    - name: 作業開始
+      href: overview.md
+    - name: ワークロード
+      href: partner-workloads.md
+  - name: 概念
+    items:
+    - name: Compute
+      href: concepts/mainframe-compute-azure.md
+    - name: Storage
+      href: concepts/mainframe-storage-azure.md
+  - name: Micro Focus
+    items:
+    - name: 作業開始
+      href: microfocus/get-started.md
+    - name: Enterprise Server をインストールする
+      href: microfocus/set-up-micro-focus-azure.md
+    - name: CICS BankDemo を実行する
+      href: microfocus/demo.md
+    - name: コンテナー内の Enterprise Server
+      href: microfocus/run-enterprise-server-container.md
+  - name: TmaxSoft OpenFrame
+    items:
+    - name: 作業開始
+      href: tmaxsoft/get-started.md
+    - name: OpenFrame のインストール
+      href: tmaxsoft/install-openframe-azure.md
+  - name: IBM
+    items:
+    - name: 作業開始
+      href: ibm/get-started.md
+    - name: IBM ZD&T をインストールする
+      href: ibm/install-ibm-z-environment.md
+    - name: ZD&T で ADCD を設定する
+      href: ibm/demo.md
+    - name: IBM DB2 pureScale
+      href: /azure/virtual-machines/linux/ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
+    - name: IBM DB2 pureScale のデプロイ
+      href: /azure/virtual-machines/linux/deploy-ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
+  - name: リソース
+    items:
+    - name: ホワイト ペーパー
+      href: mainframe-white-papers.md
+    - name: Azure のロードマップ
+      href: https://azure.microsoft.com/updates/
+ms.openlocfilehash: c0cec35997d398045f9c34904c8ee07755724572
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59788855"

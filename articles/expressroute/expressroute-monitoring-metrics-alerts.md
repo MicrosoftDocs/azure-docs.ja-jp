@@ -1,22 +1,27 @@
 ---
-title: Azure ExpressRoute の監視、メトリック、およびアラート | Microsoft Docs
+title: 監視、メトリック、およびアラート - Azure ExpressRoute | Microsoft Docs
 description: このページでは、ExpressRoute の監視について説明しています。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: fcdaf10ad30cee0e7b79304ff21d67560522875c
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.custom: seodec18
+ms.openlocfilehash: d78c110f3317f4dd9f16cbe243aeca437e9890a1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377799"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108799"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute の監視、メトリック、およびアラート
 
- この記事では、ExpressRoute の監視、メトリック、およびアラートについて説明します。 Azure Monitor を使用すると、Azure 全体のすべてのメトリック、アラート、診断ログを一元的に管理できます。
+この記事では、Azure Monitor を使用した ExpressRoute の監視、メトリック、およびアラートについて説明します。 Azure Monitor を使用すると、Azure 全体のすべてのメトリック、アラート、診断ログを一元的に管理できます。
+ 
+>[!NOTE]
+>**クラシック メトリック**の使用はお勧めしません。
+>
 
 ## <a name="circuit-metrics"></a>回線のメトリック
 
@@ -38,19 +43,18 @@ ms.locfileid: "49377799"
 
 1. アラートを構成するには、**Azure Monitor** に移動し、**[アラート]** をクリックします。
 
-  ![alerts](./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg)
+   ![alerts](./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg)
 
 2. **[+ ターゲットの選択]** をクリックし、ExpressRoute ゲートウェイの接続リソースを選択します。
 
-  ![target]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
+   ![target]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. アラートの詳細を定義します。
 
-  ![アクション グループ](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
-
+   ![アクション グループ](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
 
 4. アクション グループを定義して追加します。
 
-  ![アクション グループの追加](./media/expressroute-monitoring-metrics-alerts/actiongroup.png)
+   ![アクション グループの追加](./media/expressroute-monitoring-metrics-alerts/actiongroup.png)
 
 ## <a name="alerts-based-on-each-peering"></a>各ピアリングに基づくアラート
 
@@ -61,9 +65,10 @@ ms.locfileid: "49377799"
 **[アラートの条件]** で、[シグナルの種類] に **[アクティビティ ログ]** を選択し、[シグナル] を選択することができます。
 
   ![another](./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg)
-
+  
 ## <a name="next-steps"></a>次の手順
-* ExpressRoute 接続を構成します。
+
+ExpressRoute 接続を構成します。
   
   * [回線の作成と変更](expressroute-howto-circuit-arm.md)
   * [ピアリング構成の作成と変更](expressroute-howto-routing-arm.md)

@@ -1,91 +1,90 @@
-items:
-- name: Azure Table Storage のドキュメント
+- name: Azure Storage のドキュメント
+  href: /azure/storage/
+- name: 概要
+  expanded: true
   items:
-  - name: Azure Table Storage の概要
-    href: table-storage-overview.md
-  - name: Table Storage またはテーブル API の選択
-    href: /azure/cosmos-db/table-support
-    maintainContext: true
+    - name: Azure Table Storage の概要
+      href: table-storage-overview.md
+    - name: Table Storage またはテーブル API の選択
+      href: /azure/cosmos-db/table-support
+      maintainContext: true
 - name: クイック スタート
   items:
-  - name: ストレージ アカウントの作成
-    href: /azure/storage/common/storage-quickstart-create-account
-    maintainContext: true
-  - name: Azure portal でのテーブルの作成
-    href: table-storage-quickstart-portal.md
+    - name: ストレージ アカウントの作成
+      displayName: 'resource manager, resource manager template, template, ARM'
+      href: /azure/storage/common/storage-quickstart-create-account
+      maintainContext: true
+    - name: Azure portal でのテーブルの作成
+      href: table-storage-quickstart-portal.md
 - name: サンプル
   items:
-  - name: .NET
-    href: /azure/cosmos-db/table-storage-how-to-use-dotnet
-    maintainContext: true
-  - name: F#
-    href: https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
-    maintainContext: true
-  - name: Java
-    href: /azure/cosmos-db/table-storage-how-to-use-java
-    maintainContext: true
-  - name: Node.js
-    href: /azure/cosmos-db/table-storage-how-to-use-nodejs
-    maintainContext: true
-  - name: C++
-    href: /azure/cosmos-db/table-storage-how-to-use-c-plus
-    maintainContext: true
-  - name: PHP
-    href: /azure/cosmos-db/table-storage-how-to-use-php
-    maintainContext: true
-  - name: Python
-    href: /azure/cosmos-db/table-storage-how-to-use-python
-    maintainContext: true
-  - name: Ruby
-    href: /azure/cosmos-db/table-storage-how-to-use-ruby
-    maintainContext: true
-  - name: PowerShell
-    href: /azure/storage/tables/table-storage-how-to-use-powershell
-    maintainContext: true
+    - name: .NET
+      href: /azure/cosmos-db/table-storage-how-to-use-dotnet
+      maintainContext: true
+    - name: 'F#'
+      href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
+      maintainContext: true
+    - name: Java
+      href: /azure/cosmos-db/table-storage-how-to-use-java
+      maintainContext: true
+    - name: Node.js
+      href: /azure/cosmos-db/table-storage-how-to-use-nodejs
+      maintainContext: true
+    - name: C++
+      href: /azure/cosmos-db/table-storage-how-to-use-c-plus
+      maintainContext: true
+    - name: PHP
+      href: /azure/cosmos-db/table-storage-how-to-use-php
+      maintainContext: true
+    - name: Python
+      href: /azure/cosmos-db/table-storage-how-to-use-python
+      maintainContext: true
+    - name: Ruby
+      href: /azure/cosmos-db/table-storage-how-to-use-ruby
+      maintainContext: true
+    - name: PowerShell
+      href: /azure/storage/tables/table-storage-how-to-use-powershell
+      maintainContext: true
 - name: 概念
   items:
-  - name: ストレージ アカウント
-    href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-    items:
-    - name: ストレージ アカウントの管理
-      href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-    - name: ストレージ アカウントのアップグレード
-      href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-  - name: 高性能で拡張性の高いテーブルの設計
-    href: table-storage-design.md
-  - name: テーブル設計のガイドライン
-    href: table-storage-design-guidelines.md
-  - name: クエリに対応した設計
-    href: table-storage-design-for-query.md
-  - name: データの変更に対応した設計
-    href: table-storage-design-for-modification.md
-  - name: テーブル データの暗号化
-    href: table-storage-design-encrypt-data.md
-  - name: リレーションシップのモデル化
-    href: table-storage-design-modeling.md
-  - name: テーブルの設計パターン
-    href: table-storage-design-patterns.md
+    - name: ストレージ アカウント
+      href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+      items:
+        - name: ストレージ アカウントの管理
+          href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: ストレージ アカウントのアップグレード
+          href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: 高性能で拡張性の高いテーブルの設計
+      href: table-storage-design.md
+    - name: テーブル設計のガイドライン
+      href: table-storage-design-guidelines.md
+    - name: クエリに対応した設計
+      href: table-storage-design-for-query.md
+    - name: データの変更に対応した設計
+      href: table-storage-design-for-modification.md
+    - name: テーブル データの暗号化
+      href: table-storage-design-encrypt-data.md
+    - name: リレーションシップのモデル化
+      href: table-storage-design-modeling.md
+    - name: テーブルの設計パターン
+      href: table-storage-design-patterns.md
 - name: ハウツー ガイド
   items:
-  - name: ストレージ エミュレーターを使用する方法
-    href: /azure/storage/common/storage-use-emulator
-    maintainContext: true
-  - name: データの転送
-    items:
-    - name: AzCopy (v10)
-      href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-    - name: AzCopy on Windows (v8)
-      href: ../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-    - name: AzCopy on Linux (v8)
-      href: ../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: ストレージ エミュレーターを使用する方法
+      href: /azure/storage/common/storage-use-emulator
+      maintainContext: true
+    - name: データの転送
+      items:
+        - name: AzCopy (v10)
+          href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: AzCopy on Windows (v8)
+          href: ../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: AzCopy on Linux (v8)
+          href: ../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: アカウントのフェールオーバーを開始する
+      href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
 - name: リソース
   items:
-  - name: Table Storage REST API
-    href: https://docs.microsoft.com/rest/api/storageservices/table-service-rest-api
-    maintainContext: true
-ms.openlocfilehash: 229677b65ac833e3cd7b599c0111798f95ae61f3
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428642"
+    - name: Table Storage REST API
+      href: 'https://docs.microsoft.com/rest/api/storageservices/table-service-rest-api'
+      maintainContext: true

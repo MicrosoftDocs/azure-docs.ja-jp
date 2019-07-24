@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: overview
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: b0b835dde4b98619238eaac9449432aaa9acffd3
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 724352ae9f7c66dfeab293473ea79438e3b36254
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50670489"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56989321"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Avere vFXT for Azure とは 
 
@@ -20,7 +20,7 @@ Avere vFXT for Azure は、データ集約型のハイ パフォーマンス コ
 Avere vFXT でサポートされる一般的なコンピューティング シナリオは以下のとおりです。 
 
 * ハイブリッド クラウド アーキテクチャ: Avere vFXT for Azure ではハードウェア ストレージ システムと連携できるため、ファイルを移動せずにクラウド コンピューティングを利用できます。 
-* クラウド バースティング: Avere vFXT for Azure は、お客様が単一のプロジェクトでデータをクラウドに移行するのに役立ちます。または、ワークフロー全体を完全に "リフトアンドシフト" するのに役立ちます。 
+* クラウド バースティング: Avere vFXT for Azure は、お客様が単一のプロジェクトのために、データをクラウドに移行する場合や、ワークフロー全体を完全に "リフトアンドシフト" する場合に役立ちます。 
 
 ![Blob Storage とオンプレミスのデータセンターに接続された Azure サブスクリプション内の Avere vFXT システムの詳細を示す図](media/avere-vfxt-hybrid.png)
 
@@ -67,7 +67,7 @@ Avere vFXT では次の Azure リソースが使用されます。
 
 |Azure のコンポーネント|   |
 |----------|-----------|
-|仮想マシン|3 つ以上の D16s_v3 または E32s_v3|
+|仮想マシン|3 つ以上の E32s_v3|
 |Premium SSD ストレージ|200 GB の OS スペース、およびノードあたり 1 から 4 TB のキャッシュ |
 |ストレージ アカウント (オプション) |v2|
 |データ バックエンド ストレージ (オプション) | 1 つの空の LRS BLOB コンテナー |

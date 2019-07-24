@@ -4,7 +4,7 @@ description: Service Fabric CLI sfctl cluster のコマンドについて説明�
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -12,21 +12,21 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 4b0491d59e4ac495750a338ad743aab69ff47a4e
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 7bb399472d7e0ab14e6399fc8652d2eb132a866a
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494245"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663810"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 Service Fabric クラスターの選択、管理、および操作を行います。
 
-## <a name="commands"></a>コマンド
+## <a name="commands"></a>command
 
-|コマンド|説明|
+|command|説明|
 | --- | --- |
 | code-versions | Service Fabric クラスターでプロビジョニングされている Fabric のコード バージョンの一覧を取得します。 |
 | config-versions | Service Fabric クラスターでプロビジョニングされている Fabric の構成バージョンの一覧を取得します。 |
@@ -66,7 +66,7 @@ Service Fabric クラスターでプロビジョニングされている Fabric 
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-cluster-config-versions"></a>sfctl cluster config-versions
 Service Fabric クラスターでプロビジョニングされている Fabric の構成バージョンの一覧を取得します。
@@ -88,7 +88,7 @@ Service Fabric クラスターでプロビジョニングされている Fabric 
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-cluster-health"></a>sfctl cluster health
 Service Fabric クラスターの正常性を取得します。
@@ -114,7 +114,7 @@ Service Fabric クラスターの正常性を取得します。
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-cluster-manifest"></a>sfctl cluster manifest
 Service Fabric クラスター マニフェストを取得します。
@@ -135,14 +135,14 @@ Service Fabric クラスター マニフェストを取得します。 クラス
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-cluster-operation-cancel"></a>sfctl cluster operation-cancel
 ユーザーが誘発したフォールト操作を取り消します。
 
 StartDataLoss、StartQuorumLoss、StartPartitionRestart、StartNodeTransition の各 API は、CancelOperation を使用してキャンセルされた可能性のあるフォールト操作を開始できます。 force が false の場合、指定されたユーザーが誘発した操作は適切に停止され、クリーンアップされます。  force が true の場合、このコマンドは中止され、一部の内部状態は取り残される可能性があります。  force を true として指定する際は、注意してください。 force を true に設定した状態でこの API を呼び出すことは、最初に force を false に設定した状態で同じテスト コマンドに対してこの API の呼び出しが完了しているか、テスト コマンドで既に OperationState.RollingBack の OperationState が設定されていなければ許可されません。 
 
- 説明\: OperationState.RollingBack は、コマンドの実行によって生じた内部システム状態をシステムがクリーンアップすることを意味します。 テスト コマンドがデータ損失の原因だった場合、データは復元されません。  たとえば、StartDataLoss を呼び出した後にこの API を呼び出した場合、システムによってクリーンアップされるのは、コマンドの実行による内部状態のみです。 データ損失を引き起こすほどコマンドが進行した場合、対象パーティションのデータは復元されません。 
+説明\: OperationState.RollingBack は、コマンドの実行によって生じた内部システム状態をシステムがクリーンアップすることを意味します。  テスト コマンドがデータ損失の原因だった場合、データは復元されません。  たとえば、StartDataLoss を呼び出した後にこの API を呼び出した場合、システムによってクリーンアップされるのは、コマンドの実行による内部状態のみです。 データ損失を引き起こすほどコマンドが進行した場合、対象パーティションのデータは復元されません。 
 
 > [!NOTE]
 > この API は force==true を指定して呼び出した場合、内部状態は取り残される可能性があります。
@@ -163,7 +163,7 @@ StartDataLoss、StartQuorumLoss、StartPartitionRestart、StartNodeTransition �
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-cluster-operation-list"></a>sfctl cluster operation-list
 指定した入力でフィルター処理されたユーザーが誘発したフォールト操作の一覧を取得します。
@@ -186,7 +186,7 @@ StartDataLoss、StartQuorumLoss、StartPartitionRestart、StartNodeTransition �
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-cluster-provision"></a>sfctl cluster provision
 Service Fabric クラスターのコードまたは構成パッケージをプロビジョニングします。
@@ -209,7 +209,7 @@ Service Fabric クラスターのコードまたは構成パッケージを評�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-cluster-recover-system"></a>sfctl cluster recover-system
 現在クォーラム損失の状態に陥っているシステム サービスの復旧を試みる必要があることを Service Fabric クラスターに示します。
@@ -230,7 +230,7 @@ Service Fabric クラスターのコードまたは構成パッケージを評�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-cluster-report-health"></a>sfctl cluster report-health
 Service Fabric クラスターの正常性レポートを送信します。
@@ -249,7 +249,7 @@ Service Fabric クラスターの正常性レポートを送信します。
 | --remove-when-expired | 有効期限が切れたときにレポートを正常性ストアから削除するかどうかを示す値。 <br><br> true に設定した場合、レポートは、有効期限が切れると正常性ストアから削除されます。 false に設定した場合、レポートは、有効期限が切れるとエラーとして処理されます。 既定では、このプロパティの値は false です。 クライアントは、定期的にレポートする場合、RemoveWhenExpired を false (既定値) に設定する必要があります。 こうすることで、レポーターで問題 (デッドロックなど) が発生していてレポートできない場合に、正常性レポートの有効期限が切れると、エンティティはエラーと評価されます。 これにより、このエンティティの正常性はエラー状態と見なされます。 |
 | --sequence-number | 数値文字列で表された、この正常性レポートのシーケンス番号。 <br><br> レポートのシーケンス番号は、古いレポートを検出するために正常性ストアによって使用されます。 指定しない場合、シーケンス番号は、レポートが追加されたときに正常性クライアントによって自動的に生成されます。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
-| --ttl | この正常性レポートの有効期間。 このフィールドでは、この期間の指定に ISO8601 形式を使用しています。 <br><br> クライアントは、定期的にレポートする場合、レポートの送信頻度を有効期間よりも高くする必要があります。 クライアントは、遷移時にレポートする場合、有効期間を無限に設定できます。 有効期間が期限切れになると、正常性に関する情報を含む正常性イベントは、正常性ストアから削除される (RemoveWhenExpired が true の場合) か、エラーと評価されます (RemoveWhenExpired が false の場合)。 指定しない場合、有効期間の既定値は無限になります。 |
+| --ttl | この正常性レポートの有効期間。 このフィールドでは、この期間の指定に ISO8601 形式が使用されます。 <br><br> クライアントは、定期的にレポートする場合、レポートの送信頻度を有効期間よりも高くする必要があります。 クライアントは、遷移時にレポートする場合、有効期間を無限に設定できます。 有効期間が期限切れになると、正常性に関する情報を含む正常性イベントは、正常性ストアから削除される (RemoveWhenExpired が true の場合) か、エラーと評価されます (RemoveWhenExpired が false の場合)。 指定しない場合、有効期間の既定値は無限になります。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -259,12 +259,12 @@ Service Fabric クラスターの正常性レポートを送信します。
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-cluster-select"></a>sfctl cluster select
 Service Fabric クラスターのエンドポイントに接続します。
 
-セキュリティで保護されたクラスターに接続している場合は、証明書 (.crt) とキー ファイル (.key) の絶対パスを指定するか、両方を含む 1 つのファイル (.pem) を指定します。 両方は指定できません。 セキュリティで保護されたクラスターに接続している場合は、必要に応じて、CA バンドル ファイルまたは信頼された CA 証明書のディレクトリの絶対パスも指定します。
+セキュリティで保護されたクラスターに接続している場合は、証明書 (.crt) とキー ファイル (.key) の絶対パスを指定するか、両方を含む 1 つのファイル (.pem) を指定します。 両方は指定できません。 セキュリティで保護されたクラスターに接続している場合は、必要に応じて、CA バンドル ファイルまたは信頼された CA 証明書のディレクトリの絶対パスも指定します。 CA 証明書のディレクトリを使用している場合は、証明書ハッシュを計算し、適切なシンボリック リンクを作成するために、OpenSSL によって提供される `c_rehash <directory>` を最初に実行する必要があります。
 
 ### <a name="arguments"></a>引数
 
@@ -286,7 +286,7 @@ Service Fabric クラスターのエンドポイントに接続します。
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-cluster-show-connection"></a>sfctl cluster show-connection
 この sfctl インスタンスが接続されている Service Fabric クラスターを表示します。
@@ -299,7 +299,7 @@ Service Fabric クラスターのエンドポイントに接続します。
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-cluster-unprovision"></a>sfctl cluster unprovision
 Service Fabric クラスターのコードまたは構成パッケージをプロビジョニング解除します。
@@ -322,7 +322,7 @@ Service Fabric クラスターのコードまたは構成パッケージをプ�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-cluster-upgrade"></a>sfctl cluster upgrade
 Service Fabric クラスターのコードまたは構成バージョンのアップグレードを開始します。
@@ -340,19 +340,19 @@ Service Fabric クラスターのコードまたは構成バージョンのア�
 | --delta-health-evaluation | 各アップグレード ドメインの完了後に、絶対正常性評価ではなく、デルタ正常性評価を有効にします。 |
 | --delta-unhealthy-nodes | クラスターのアップグレード時に許容できるノードの正常性低下の最大許容パーセンテージ。  既定値\: 10。 <br><br> 差分は、アップグレードの開始時のノードの状態と、正常性評価の時のノードの状態の間で測定されます。 チェックは、すべてのアップグレード ドメインのアップグレード完了後に実行され、クラスターのグローバル状態が許容範囲内であることを確認します。 |
 | --failure-action | 指定可能な値\: "Invalid"、"Rollback"、"Manual"。 |
-| --force-restart | 強制的に再起動します。 |
-| --health-check-retry | 正常性チェックの再試行タイムアウト (ミリ秒単位)。 |
-| --health-check-stable | 正常性チェックの安定期間 (ミリ秒単位)。 |
-| --health-check-wait | 正常性チェックの待機期間 (ミリ秒単位)。 |
-| --replica-set-check-timeout | アップグレードするレプリカ セット チェックのタイムアウト (秒単位)。 |
+| --force-restart | コードのバージョンが変更されていない場合でも、アップグレード時にプロセスを強制的に再起動します。 <br><br> アップグレードでは、構成またはデータのみが変更されます。 |
+| --health-check-retry | アプリケーションまたはクラスターが正常ではない場合に正常性チェックを実行する間隔。 |
+| --health-check-stable | アプリケーションまたはクラスターが正常な状態である必要がある時間。この時間を超えると、アップグレードが次のアップグレード ドメインに進みます。 <br><br> 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 |
+| --health-check-wait | アップグレード ドメインの完了後、正常性チェック プロセスを開始するまでの、待機時間の長さ。 |
+| --replica-set-check-timeout | アップグレード ドメインの処理をブロックし、予期しない問題が発生したときに可用性の損失を防ぐための最長時間。 <br><br> このタイムアウトが期限切れになると、可用性の損失問題に関係なく、アップグレード ドメインの処理が続行されます。 タイムアウトは、各アップグレード ドメインの開始時にリセットされます。 有効な値は 0 から 42949672925 の範囲です (0 と 42949672925 を含みます)。 |
 | --rolling-upgrade-mode | 指定可能な値\: "Invalid"、"UnmonitoredAuto"、"UnmonitoredManual"、"Monitored"。  既定値\: UnmonitoredAuto。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 | --unhealthy-applications | エラーを報告する前の異常なアプリケーションの最大許容パーセンテージ。 <br><br> たとえば、アプリケーションの 10% の異常を許容するには、この値を 10 にします。 パーセンテージは、異常な可能性のあるアプリケーションの最大許容パーセンテージを表します。この値を超えるとクラスターはエラーの状態と見なされます。 許容パーセンテージ内であっても、1 つ以上の異常なアプリケーションがある場合は、正常性は Warning として評価されます。 これは、異常なアプリケーションの数をクラスター内のアプリケーション インスタンスの総数で割ることによって計算されます。ApplicationTypeHealthPolicyMap に含まれているアプリケーションの種類のアプリケーションは除外されます。 切り上げ計算が実行され、少数のアプリケーションに対する 1 つのエラーは許容されます。 |
 | --unhealthy-nodes | エラーを報告する前の異常なノードの最大許容パーセンテージ。 <br><br> たとえば、ノードの 10% の異常を許容するには、この値を 10 にします。 パーセンテージは、異常な可能性のあるノードの最大許容パーセンテージを表します。この値を超えるとクラスターはエラーの状態と見なされます。 許容パーセンテージ内であっても、1 つ以上の異常なノードがある場合は、正常性は Warning として評価されます。 パーセンテージは、異常なノードの数をクラスター内のノードの総数で割ることによって計算されます。 切り上げ計算が実行され、少数のノードに対する 1 つのエラーは許容されます。 大規模なクラスターでは、ダウンしているか修復を必要とするノードがいくつか必ず存在するため、それが許容されるようにこのパーセンテージを構成する必要があります。 |
 | --upgrade-domain-delta-unhealthy-nodes | クラスターのアップグレード時に許容できるアップグレード ドメイン ノードの正常性低下の最大許容パーセンテージ。  既定値\: 15。 <br><br> 差分は、アップグレードの開始時のアップグレード ドメイン ノードの状態と、正常性評価の時のアップグレード ドメイン ノードの状態の間で測定されます。 チェックは、すべてのアップグレード ドメインのアップグレード完了後にすべての完了したアップグレード ドメインに対して実行され、アップグレード ドメインの状態が許容範囲内であることを確認します。 |
-| --upgrade-domain-timeout | アップグレード ドメインのタイムアウト (ミリ秒単位)。 |
-| --upgrade-timeout | アップグレードのタイムアウト (ミリ秒単位)。 |
-| --warning-as-error | Warnings は Error と同じ重大度で扱われます。 |
+| --upgrade-domain-timeout | 各ドメインがアップグレードを完了する必要がある時間。この時間を超えると、FailureAction が実行されます。 <br><br> 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 |
+| --upgrade-timeout | アップグレード全体を完了する必要がある時間。この時間を超えると、FailureAction が実行されます。 <br><br> 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 |
+| --warning-as-error | 警告がエラーと同じ重大度で処理されることを示します。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -362,7 +362,7 @@ Service Fabric クラスターのコードまたは構成バージョンのア�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-cluster-upgrade-resume"></a>sfctl cluster upgrade-resume
 クラスターのアップグレードを次のアップグレード ドメインに進めます。
@@ -384,7 +384,7 @@ Service Fabric クラスターのコードまたは構成バージョンのア�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-cluster-upgrade-rollback"></a>sfctl cluster upgrade-rollback
 Service Fabric クラスターのアップグレードをロールバックします。
@@ -405,7 +405,7 @@ Service Fabric クラスターのコードまたは構成のアップグレー�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-cluster-upgrade-status"></a>sfctl cluster upgrade-status
 現在のクラスターのアップグレードの進行状況を取得します。
@@ -426,7 +426,7 @@ Service Fabric クラスターのコードまたは構成のアップグレー�
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-cluster-upgrade-update"></a>sfctl cluster upgrade-update
 Service Fabric クラスター アップグレードのアップグレード パラメーターを更新します。
@@ -440,20 +440,20 @@ Service Fabric クラスター アップグレードのアップグレード パ
 | --delta-health-evaluation | 各アップグレード ドメインの完了後に、絶対正常性評価ではなく、デルタ正常性評価を有効にします。 |
 | --delta-unhealthy-nodes | クラスターのアップグレード時に許容できるノードの正常性低下の最大許容パーセンテージ。  既定値\: 10。 <br><br> 差分は、アップグレードの開始時のノードの状態と、正常性評価の時のノードの状態の間で測定されます。 チェックは、すべてのアップグレード ドメインのアップグレード完了後に実行され、クラスターのグローバル状態が許容範囲内であることを確認します。 |
 | --failure-action | 指定可能な値\: "Invalid"、"Rollback"、"Manual"。 |
-| --force-restart | 強制的に再起動します。 |
-| --health-check-retry | 正常性チェックの再試行タイムアウト (ミリ秒単位)。 |
-| --health-check-stable | 正常性チェックの安定期間 (ミリ秒単位)。 |
-| --health-check-wait | 正常性チェックの待機期間 (ミリ秒単位)。 |
-| --replica-set-check-timeout | アップグレードするレプリカ セット チェックのタイムアウト (秒単位)。 |
+| --force-restart | コードのバージョンが変更されていない場合でも、アップグレード時にプロセスを強制的に再起動します。 <br><br> アップグレードでは、構成またはデータのみが変更されます。 |
+| --health-check-retry | アプリケーションまたはクラスターが正常ではない場合に正常性チェックを実行する間隔。 |
+| --health-check-stable | アプリケーションまたはクラスターが正常な状態である必要がある時間。この時間を超えると、アップグレードが次のアップグレード ドメインに進みます。 <br><br> 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 |
+| --health-check-wait | アップグレード ドメインの完了後、正常性チェック プロセスを開始するまでの、待機時間の長さ。 |
+| --replica-set-check-timeout | アップグレード ドメインの処理をブロックし、予期しない問題が発生したときに可用性の損失を防ぐための最長時間。 <br><br> このタイムアウトが期限切れになると、可用性の損失問題に関係なく、アップグレード ドメインの処理が続行されます。 タイムアウトは、各アップグレード ドメインの開始時にリセットされます。 有効な値は 0 から 42949672925 の範囲です (0 と 42949672925 を含みます)。 |
 | --rolling-upgrade-mode | 指定可能な値\: "Invalid"、"UnmonitoredAuto"、"UnmonitoredManual"、"Monitored"。  既定値\: UnmonitoredAuto。 |
 | --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
 | --unhealthy-applications | エラーを報告する前の異常なアプリケーションの最大許容パーセンテージ。 <br><br> たとえば、アプリケーションの 10% の異常を許容するには、この値を 10 にします。 パーセンテージは、異常な可能性のあるアプリケーションの最大許容パーセンテージを表します。この値を超えるとクラスターはエラーの状態と見なされます。 許容パーセンテージ内であっても、1 つ以上の異常なアプリケーションがある場合は、正常性は Warning として評価されます。 これは、異常なアプリケーションの数をクラスター内のアプリケーション インスタンスの総数で割ることによって計算されます。ApplicationTypeHealthPolicyMap に含まれているアプリケーションの種類のアプリケーションは除外されます。 切り上げ計算が実行され、少数のアプリケーションに対する 1 つのエラーは許容されます。 |
 | --unhealthy-nodes | エラーを報告する前の異常なノードの最大許容パーセンテージ。 <br><br> たとえば、ノードの 10% の異常を許容するには、この値を 10 にします。 パーセンテージは、異常な可能性のあるノードの最大許容パーセンテージを表します。この値を超えるとクラスターはエラーの状態と見なされます。 許容パーセンテージ内であっても、1 つ以上の異常なノードがある場合は、正常性は Warning として評価されます。 パーセンテージは、異常なノードの数をクラスター内のノードの総数で割ることによって計算されます。 切り上げ計算が実行され、少数のノードに対する 1 つのエラーは許容されます。 大規模なクラスターでは、ダウンしているか修復を必要とするノードがいくつか必ず存在するため、それが許容されるようにこのパーセンテージを構成する必要があります。 |
 | --upgrade-domain-delta-unhealthy-nodes | クラスターのアップグレード時に許容できるアップグレード ドメイン ノードの正常性低下の最大許容パーセンテージ。  既定値\: 15。 <br><br> 差分は、アップグレードの開始時のアップグレード ドメイン ノードの状態と、正常性評価の時のアップグレード ドメイン ノードの状態の間で測定されます。 チェックは、すべてのアップグレード ドメインのアップグレード完了後にすべての完了したアップグレード ドメインに対して実行され、アップグレード ドメインの状態が許容範囲内であることを確認します。 |
-| --upgrade-domain-timeout | アップグレード ドメインのタイムアウト (ミリ秒単位)。 |
+| --upgrade-domain-timeout | 各ドメインがアップグレードを完了する必要がある時間。この時間を超えると、FailureAction が実行されます。 <br><br> 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 |
 | --upgrade-kind | 指定可能な値\: "Invalid"、"Rolling"、"Rolling_ForceRestart"。  既定値\: Rolling。 |
-| --upgrade-timeout | アップグレードのタイムアウト (ミリ秒単位)。 |
-| --warning-as-error | Warnings は Error と同じ重大度で扱われます。 |
+| --upgrade-timeout | アップグレード全体を完了する必要がある時間。この時間を超えると、FailureAction が実行されます。 <br><br> 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 |
+| --warning-as-error | 警告がエラーと同じ重大度で処理されることを示します。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -463,7 +463,8 @@ Service Fabric クラスター アップグレードのアップグレード パ
 | --help -h | このヘルプ メッセージを表示して終了します。 |
 | --output -o | 出力形式。  使用可能な値\: json、jsonc、table、tsv。  既定値\: json。 |
 | --query | JMESPath クエリ文字列。 詳細と例については、http\://jmespath.org/ を参照してください。 |
-| --verbose | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。 |
+| --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
+
 
 ## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。

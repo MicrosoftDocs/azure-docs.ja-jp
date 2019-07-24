@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure File Sync を使用して Windows ファイル サーバーを拡張する | Microsoft Docs'
+title: チュートリアル - Azure File Sync を使用して Windows ファイル サーバーを拡張する | Microsoft Docs
 description: Azure File Sync を使用して Windows ファイル サーバーを拡張する方法について、開始から完了まで説明します。
 services: storage
 author: wmgries
@@ -7,16 +7,17 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: cc34411cc27870dbd9c707a34ebf34b96c7253dc
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.subservice: files
+ms.openlocfilehash: 9d7162eca3c2979b1dd333bdaf95c7c43e875b9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986119"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59049151"
 ---
-# <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>チュートリアル: Azure File Sync を使用して Windows ファイル サーバーを拡張する
-このチュートリアルでは、Azure File Sync を使用して Windows Server のストレージ容量を拡張するための基本的な手順を示します。このチュートリアルで使用しているのは Windows Server Azure VM ですが、通常はオンプレミス サーバーに対してこのプロセスを実行します。 ご自分の環境に Azure File Sync をデプロイする準備ができている場合は、代わりに「[Azure File Sync のデプロイ](storage-sync-files-deployment-guide.md)」の記事を使用してください。
+# <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>チュートリアル:Azure File Sync を使用して Windows ファイル サーバーを拡張する
+
+この記事では、Azure File Sync を使用して Windows サーバーのストレージ容量を拡張するための基本的な手順を示します。このチュートリアルでは Azure 仮想マシン (VM) の Windows Server を取り上げますが、通常はお客様のオンプレミス サーバーに対してこのプロセスを実行します。 ご自分の環境に Azure File Sync をデプロイする手順については、「[Azure File Sync のデプロイ](storage-sync-files-deployment-guide.md)」の記事を参照してください。
 
 > [!div class="checklist"]
 > * ストレージ同期サービスのデプロイ
@@ -28,111 +29,121 @@ ms.locfileid: "49986119"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
-Azure Portal ( https://portal.azure.com ) にサインインします。
+
+[Azure Portal](https://portal.azure.com) にサインインします。
 
 ## <a name="prepare-your-environment"></a>環境を準備する
-Azure File Sync をデプロイする前に、このチュートリアルのためにいくつかの設定を行う必要があります。Azure ストレージ アカウントとファイル共有を作成し、Windows Server 2016 Datacenter VM を作成して、そのサーバーを Azure File Sync 用に準備します。
+
+このチュートリアルでは、Azure File Sync をデプロイする前に次の手順を実行する必要があります。
+
+- Azure ストレージ アカウントおよびファイル共有を作成する
+- Windows Server 2016 Datacenter VM を設定する
+- Azure File Sync 用に Windows Server VM を準備する
 
 ### <a name="create-a-folder-and-txt-file"></a>フォルダーと .txt ファイルを作成する
 
-ローカル コンピューターに *FilesToSync* という名前の新しいフォルダーを作成し、*mytestdoc.txt* という名前のテキスト ファイルを追加します。 このチュートリアルの後の方で、そのファイルをファイル共有にアップロードします。
+ローカル コンピューターに _FilesToSync_ という名前の新しいフォルダーを作成し、_mytestdoc.txt_ という名前のテキスト ファイルを追加します。 このチュートリアルの後の方で、そのファイルをファイル共有にアップロードします。
 
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ### <a name="create-a-file-share"></a>ファイル共有を作成する
-次に、ファイル共有を作成します。
 
-1. Azure ストレージ アカウントのデプロイが完了したら、**[リソースに移動]** をクリックします。
-1. ストレージ アカウントのウィンドウで **[ファイル]** をクリックします。
+Azure ストレージ アカウントをデプロイした後、ファイル共有を作成します。
 
-    ![[ファイル] をクリックする](./media/storage-sync-files-extend-servers/click-files.png)
+1. Azure portal で **[リソースに移動]** を選択します。
+1. ストレージ アカウントのウィンドウで **[ファイル]** を選択します。
 
-1. **+ [ファイル共有]** をクリックします。
+    ![[ファイル] を選択する](./media/storage-sync-files-extend-servers/click-files.png)
 
-    ![ファイル共有の追加ボタンをクリックする](./media/storage-sync-files-extend-servers/create-file-share-portal2.png)
+1. **+ [ファイル共有]** を選択します。
 
-1. 新しいファイル共有に *afsfileshare* という名前を付け、**[クォータ]** に「1」と入力してから、**[作成]** をクリックします。 クォータは最大で 5 TiB にすることができますが、このチュートリアルでは 1 GB しか必要ありません。
+    ![ファイル共有の追加ボタンを選択する](./media/storage-sync-files-extend-servers/create-file-share-portal2.png)
+
+1. 新しいファイル共有に「_afsfileshare_」と名付けます。 **[クォータ]** に「1」と入力し、**[作成]** を選択します。 クォータは最大で 5 TiB にすることができますが、このチュートリアルでは 1 GB しか必要ありません。
 
     ![新しいファイル共有に名前とクォータを指定する](./media/storage-sync-files-extend-servers/create-file-share-portal3.png)
 
-1. 新しいファイル共有を選択し、ファイル共有上の場所に対して **[アップロード]** をクリックします。
+1. 新しいファイル共有を選択します。 ファイル共有の場所で、**[アップロード]** を選択します。
 
     ![ファイルをアップロードする](./media/storage-sync-files-extend-servers/create-file-share-portal5.png)
 
-1. .txt ファイルを作成した *FilesToSync* フォルダーを参照し、*mytestdoc.txt* を選択して **[アップロード]** をクリックします。
+1. お客様が .txt ファイルを作成した _FilesToSync_ フォルダーを参照し、_mytestdoc.txt_、**[アップロード]** の順に選択します。
 
     ![ファイル共有を参照する](./media/storage-sync-files-extend-servers/create-file-share-portal6.png)
 
-この時点で、Azure ストレージ アカウントと、1 つのファイルを含む Azure のファイル共有を作成できました。 次に、このチュートリアルでのオンプレミス サーバーを表す、Windows Server 2016 Datacenter がある Azure VM を作成します。
+この時点で、Azure ストレージ アカウントと、中に 1 つのファイルが含まれたファイル共有を作成できました。 次に、このチュートリアルでオンプレミス サーバーを表す、Windows Server 2016 Datacenter がある Azure VM をデプロイします。
 
 ### <a name="deploy-a-vm-and-attach-a-data-disk"></a>VM をデプロイしてデータ ディスクを接続する
 
-1. 次に、ポータルの左側にあるメニューを展開して、Azure portal の左上隅にある **[リソースの作成]** を選択します。
-1. **Azure Marketplace** リソースの一覧の上にある検索ボックスで **Windows Server 2016 Datacenter** を検索して選択し、**[作成]** を選択します。
-1. **[基本]** タブの **[プロジェクトの詳細]** で、このチュートリアルのために作成したリソース グループを選択します。
+1. Azure portal に移動して、左側のメニューを展開します。 左上隅にある **[リソースの作成]** を選択します。
+1. **Azure Marketplace** リソースの一覧の上にある検索ボックスで「**Windows Server 2016 Datacenter**」と検索し、結果の中からそれを選択します。 **[作成]** を選択します。
+1. **[基本]** タブに移動します。**[プロジェクトの詳細]** で、お客様がこのチュートリアルのために作成したリソース グループを選択します。
 
    ![ポータルのブレードで VM に関する基本情報を入力する](./media/storage-sync-files-extend-servers/vm-resource-group-and-subscription.png)
 
-1. **[インスタンスの詳細]** で、VM の名前を指定します (*myVM* など)。
-1. **[リージョン]**、**[可用性オプション]**、**[イメージ]**、**[サイズ]** は、既定の設定のままにしておきます。
+1. **[インスタンスの詳細]** で VM の名前を指定します。 たとえば、_myVM_ を使用します。
+1. **[リージョン]**、**[可用性オプション]**、**[イメージ]**、**[サイズ]** は、既定の設定を変更しないでください。
 1. **[管理者アカウント]** で、VM の **[ユーザー名]** と **[パスワード]** を指定します。
-1. **[受信ポートの規則]** で、**[Allow selected ports] (選択されたポートを許可する)** を選択してから、ドロップダウンから **[RDP (3389)]** と **[HTTP]** を選択します。
+1. **[受信ポートの規則]** で、**[選択されたポートを許可する]** を選択してから、ドロップダウン メニューで **[RDP (3389)]** と **[HTTP]** を選択します。
 
-   VM を作成する前に、データ ディスクを作成する必要があります。
+1. VM を作成する前に、データ ディスクを作成する必要があります。
 
-1. **[Next:Disks]\(次へ: ディスク\)** をクリックします
+   1. **[Next:Disks]\(次へ: ディスク\)** を選択します。
 
-   ![データ ディスクを追加する](./media/storage-sync-files-extend-servers/vm-add-data-disk.png)
+      ![データ ディスクを追加する](./media/storage-sync-files-extend-servers/vm-add-data-disk.png)
 
-1. **[ディスク]** タブの **[ディスクのオプション]** は、既定値のままにしておきます。
-1. **[データ ディスク]** で **[新しいディスクを作成し接続する]** をクリックします。
+   1. **[ディスク]** タブの **[ディスクのオプション]** は、既定値のままにしておきます。
+   1. **[データ ディスク]** で **[新しいディスクを作成し接続する]** を選択します。
 
-1. このチュートリアルのために **[サイズ (GiB)]** を **1 GB** に変更する以外は、既定値のままにしておきます。
+   1. このチュートリアルで **1 GB** に変更してかまわない **[サイズ (GiB)]** 以外は、既定の設定を使用します。
 
-   ![データ ディスクの詳細](./media/storage-sync-files-extend-servers/vm-create-new-disk-details.png)
+      ![データ ディスクの詳細](./media/storage-sync-files-extend-servers/vm-create-new-disk-details.png)
 
-1. Click **OK**.
-1. **[Review + create]\(レビュー + 作成\)** をクリックします。
-1. **Create** をクリックしてください。
+   1. **[OK]** を選択します。
+1. **[Review + create]\(レビュー + 作成\)** を選択します。
+1. **作成** を選択します。
 
-   **[通知]** アイコンをクリックすると、**デプロイの進行状況**を見ることができます。 新しい VM の作成が完了するまでに数分かかります。
+   **[通知]** アイコンを選択すると、**デプロイの進行状況**を見ることができます。 新しい VM の作成が完了するまでに数分かかることがあります。
 
-1. VM のデプロイが完了したら、**[リソースに移動]** をクリックします。
+1. お客様の VM のデプロイが完了したら、**[リソースに移動]** を選択します。
 
    ![リソースに移動](./media/storage-sync-files-extend-servers/vm-gotoresource.png)
 
-   この時点で、新しい仮想マシンを作成し、データ ディスクを接続できました。 次に、VM に接続する必要があります。
+この時点で、新しい仮想マシンを作成し、データ ディスクを接続できました。 次は VM に接続します。
 
 ### <a name="connect-to-your-vm"></a>VM に接続する
 
-1. Azure portal の仮想マシンのプロパティ ページで、**[接続]** をクリックします。
+1. Azure portal の仮想マシンのプロパティ ページで、**[接続]** を選択します。
 
    ![ポータルから Azure VM に接続する](./media/storage-sync-files-extend-servers/connect-vm.png)
 
-1. **[Connect to virtual machine]\(仮想マシンへの接続\)** ページで、ポート 3389 を介して **IP アドレス**を使って接続する既定のオプションをそのまま使用して、**[RDP ファイルのダウンロード]** をクリックします。
+1. **[仮想マシンに接続する]** ページで、ポート 3389 を介して **IP アドレス**で接続する既定のオプションをそのまま使用します。 **[RDP ファイルのダウンロード]** を選択します。
 
    ![RDP ファイルのダウンロード](./media/storage-sync-files-extend-servers/download-rdp.png)
 
-1. ダウンロードした RDP ファイルを開き、プロンプトが表示されたら **[接続]** をクリックします。
-1. **[Windows セキュリティ]** ウィンドウで、**[その他]**、**[別のアカウントを使用する]** の順に選択します。 ユーザー名として「*localhost\username*」と入力し、仮想マシン用に作成したパスワードを入力して、**[OK]** をクリックします。
+1. ダウンロードした RDP ファイルを開き、プロンプトが表示されたら **[接続]** を選択します。
+1. **[Windows セキュリティ]** ウィンドウで、**[その他]**、**[別のアカウントを使用する]** の順に選択します。 ユーザー名として「*localhost\username*」と入力し、お客様が仮想マシン用に作成したパスワードを入力して、**[OK]** を選択します。
 
    ![その他](./media/storage-sync-files-extend-servers/local-host2.png)
 
-1. サインイン処理中に証明書の警告が表示される場合があります。 **[はい]** または **[続行]** をクリックして接続を作成します。
+1. サインイン処理中に証明書の警告が表示される場合があります。 **[はい]** または **[続行]** を選択して接続を作成します。
 
-### <a name="prepare-the-windows-server"></a>Windows Server を準備する
-**Windows Server 2016 Datacenter** サーバーで、**[Internet Explorer セキュリティ強化の構成]** を無効にします。 この手順は、初回のサーバー登録でのみ必要です。 サーバーの登録後に再び有効にできます。
+### <a name="prepare-the-windows-server"></a>Windows サーバーを準備する
 
-**Windows Server 2016 Datacenter** VM で、**サーバー マネージャー**が自動的に開かれます。  **サーバー マネージャー**が既定で開かれない場合は、エクスプローラーでそれを検索します。
+Windows Server 2016 Datacenter サーバーで、[Internet Explorer セキュリティ強化の構成] を無効にします。 この手順は、初回のサーバー登録でのみ必要です。 サーバーの登録後に再び有効にできます。
 
-1. **サーバー マネージャー**で **[ローカル サーバー]** をクリックします。
+Windows Server 2016 Datacenter VM で、サーバー マネージャーが自動的に開かれます。  サーバー マネージャーが既定で開かれない場合は、エクスプローラーでそれを検索します。
+
+1. **サーバー マネージャー**で **[ローカル サーバー]** を選択します。
 
    ![サーバー マネージャー UI の左側にある [ローカル サーバー]](media/storage-sync-files-extend-servers/prepare-server-disable-ieesc-1.png)
 
-1. **[プロパティ]** サブウィンドウで、**[IE セキュリティ強化の構成]** リンクを選択します。  
+1. **[プロパティ]** ウィンドウで、**[IE セキュリティ強化の構成]** リンクを選択します。  
 
     ![サーバー マネージャー UI の [IE セキュリティ強化の構成] ウィンドウ](media/storage-sync-files-extend-servers/prepare-server-disable-ieesc-2.png)
 
@@ -140,37 +151,39 @@ Azure File Sync をデプロイする前に、このチュートリアルのた�
 
     ![[オフ] が選択された [Internet Explorer セキュリティ強化の構成] ポップアップ ウィンドウ](media/storage-sync-files-extend-servers/prepare-server-disable-ieesc-3.png)
 
-   これで、データ ディスクを VM に追加することができます。
+これで、データ ディスクを VM に追加することができます。
 
 ### <a name="add-the-data-disk"></a>データ ディスクを追加する
 
-1. まだ **Windows Server 2016 Datacenter** VM 上で、**[Files and storage services]\(ファイル サービスおよびストレージ サービス\)** > **[ボリューム]** > **[ディスク]** の順にクリックします。
+1. まだ **Windows Server 2016 Datacenter** VM 上で、**[Files and storage services]\(ファイル サービスおよびストレージ サービス\)** > **[ボリューム]** > **[ディスク]** の順に選択します。
 
     ![データ ディスク](media/storage-sync-files-extend-servers/your-disk.png)
 
-1. **Msft Virtual Disk** という名前の 1 GB のディスクを右クリックし、**[新しいボリューム]** をクリックします。
-1. 既定値をそのままにしてウィザードを完了し、割り当てられたドライブ文字を書き留め、**[作成]** をクリックします。
-1. **[閉じる]** をクリックします。
+1. **Msft Virtual Disk** という名前の 1 GB のディスクを右クリックし、**[新しいボリューム]** を選択します。
+1. ウィザードを終了します。 既定の設定を使用し、割り当てられたドライブ文字をメモします。
+1. **作成** を選択します。
+1. **[閉じる]** を選択します。
 
-   この時点で、ディスクをオンラインにし、ボリュームを作成できました。 VM 上でエクスプローラーを開き、新しいドライブが存在していることを確認することで、データ ディスクの追加が成功したことを確認できます。
+   この時点で、ディスクをオンラインにし、ボリュームを作成できました。 Windows Server VM でエクスプローラーを開いて、先ほど追加したデータ ディスクがあることを確認します。
 
-1. VM 上のエクスプローラーで **[この PC]** を展開し、新しいドライブをダブルクリックします。 この例では、F: ドライブです。
-1. 右クリックし、**[新規作成]** > **[フォルダー]** の順に選択します。 フォルダーに *FilesToSync* という名前を付けます。
-1. **FilesToSync** フォルダーをダブルクリックします。
-1. 右クリックし、**[新規作成]** > **[テキスト ドキュメント]** の順に選択します。 テキスト ファイルに *MyTestFile* という名前を付けます。
+1. VM のエクスプローラーで **[この PC]** を展開し、新しいドライブを開きます。 この例では、F: ドライブです。
+1. 右クリックし、**[新規作成]** > **[フォルダー]** の順に選択します。 フォルダーに _FilesToSync_ という名前を付けます。
+1. **FilesToSync** フォルダーを開きます。
+1. 右クリックし、**[新規作成]** > **[テキスト ドキュメント]** の順に選択します。 テキスト ファイルに _MyTestFile_ という名前を付けます。
 
     ![新しいテキスト ファイルを追加する](media/storage-sync-files-extend-servers/new-file.png)
 
 1. **エクスプローラー**と**サーバー マネージャー**を閉じます。
 
-### <a name="download-the-azurerm-powershell-module"></a>AzureRM PowerShell モジュールをダウンロードする
-次に、**Windows Server 2016 Datacenter** VM で、**AzureRM PowerShell モジュール**をサーバーにインストールします。
+### <a name="download-the-azure-powershell-module"></a>Azure PowerShell モジュールをダウンロードする
 
-1. VM で管理者特権の PowerShell ウィンドウを開きます
+次に、Windows Server 2016 Datacenter VM で、Azure PowerShell モジュールをサーバーにインストールします。
+
+1. VM で管理者特権の PowerShell ウィンドウを開きます。
 1. 次のコマンドを実行します。
 
    ```powershell
-   Install-Module -Name AzureRM -AllowClobber
+   Install-Module -Name Az
    ```
 
    > [!NOTE]
@@ -187,16 +200,17 @@ Azure File Sync をデプロイする前に、このチュートリアルのた�
    [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"):
    ```
 
-1. インストールを続行するには、`Yes` または `Yes to All` を選択します。
+1. インストールを続行するには、**Yes** または **Yes to All** と回答します。
 
-`AzureRM` モジュールは、Azure PowerShell コマンドレットのロールアップ モジュールです。 これをインストールすると、利用可能なすべての Azure Resource Manager モジュールがダウンロードされ、コマンドレットを使用できるようになります。
+`Az` モジュールは、Azure PowerShell コマンドレットのロールアップ モジュールです。 これをインストールすると、利用可能なすべての Azure Resource Manager モジュールがダウンロードされ、コマンドレットを使用できるようになります。
 
-この時点で、チュートリアルのための環境設定が完了し、**ストレージ同期サービス**のデプロイを開始する準備が整いました。
+この時点で、チュートリアル用にお客様の環境を設定できました。 これでストレージ同期サービスをデプロイできます。
 
-## <a name="deploy-the-service"></a>サービスをデプロイする 
-Azure File Sync のデプロイでは最初に、選択したサブスクリプションのリソース グループに**ストレージ同期サービス** リソースを配置します。 ストレージ同期サービスは、お客様がデプロイしたサブスクリプションとリソース グループからアクセス許可を継承します。
+## <a name="deploy-the-service"></a>サービスをデプロイする
 
-1. Azure portal で **[リソースの作成]** をクリックし、次に **Azure File Sync** を検索します。
+Azure File Sync をデプロイするには、最初に、お客様が選択したサブスクリプションのリソース グループに**ストレージ同期サービス** リソースを配置します。 ストレージ同期サービスは、そのサブスクリプションとリソース グループからアクセス許可を継承します。
+
+1. Azure portal で **[リソースの作成]** を選択し、次に **Azure File Sync** を検索します。
 1. 検索結果で、**[Azure File Sync]** を選択します。
 1. **[作成]** を選択して、**[ストレージ同期のデプロイ]** タブを開きます。
 
@@ -204,44 +218,46 @@ Azure File Sync のデプロイでは最初に、選択したサブスクリプ�
 
    開いたウィンドウに、次の情報を入力します。
 
-   | 値 | [説明] |
+   | 値 | 説明 |
    | ----- | ----- |
-   | **名前** | ストレージ同期サービスの (サブスクリプションごとに) 一意の名前。<br><br>このチュートリアルでは *afssyncservice02* を使用しています。 |
-   | **サブスクリプション** | このチュートリアルで使用しているサブスクリプション。 |
-   | **[リソース グループ]** | このチュートリアルで使用しているリソース グループ。<br><br>このチュートリアルでは、*afsresgroup101918* を使用しています。 |
+   | **Name** | ストレージ同期サービスの (サブスクリプションごとに) 一意の名前。<br><br>このチュートリアルでは _afssyncservice02_ を使用します。 |
+   | **サブスクリプション** | お客様がこのチュートリアルに使用する Azure サブスクリプション。 |
+   | **リソース グループ** | ストレージ同期サービスを含むリソース グループ。<br><br>このチュートリアルでは、_afsresgroup101918_ を使用します。 |
    | **場所** | 米国東部 |
 
 1. 完了したら、**[作成]** を選択して、**ストレージ同期サービス**をデプロイします。
-1. **[通知]** タブ、**[リソースに移動]** の順にクリックします。
+1. **[通知]** タブ、**[リソースに移動]** の順に選択します。
 
 ## <a name="install-the-agent"></a>エージェントをインストールする
+
 Azure File Sync エージェントは、Windows Server を Azure ファイル共有と同期できるようにするダウンロード可能なパッケージです。
 
-1. **Windows Server 2016 Datacenter** VM に戻り、**Internet Explorer** を開きます。
-1. [Microsoft ダウンロード センター](https://go.microsoft.com/fwlink/?linkid=858257)に移動します。 **Azure File Sync エージェント**のセクションまで下へスクロールして、**[ダウンロード]** をクリックします。
+1. **Windows Server 2016 Datacenter** VM で **Internet Explorer** を開きます。
+1. [Microsoft ダウンロード センター](https://go.microsoft.com/fwlink/?linkid=858257)に移動します。 **[Azure File Sync Agent]\(Azure File Sync エージェント\)** セクションまで下へスクロールして、**[ダウンロード]** を選択します。
 
    ![同期エージェントのダウンロード](media/storage-sync-files-extend-servers/sync-agent-download.png)
 
-1. **StorageSyncAgent_V3_WS2016.EXE** のチェック ボックスをオンにし、**[次へ]** をクリックします。
+1. **StorageSyncAgent_V3_WS2016.EXE** のチェック ボックスをオンにし、**[次へ]** を選択します。
 
    ![エージェントを選択する](media/storage-sync-files-extend-servers/select-agent.png)
 
-1. ファイルに対して、**[一度のみ許可]** > **[実行]** > **[開く]** の順に選択します。
+1. **[一度のみ許可]** > **[実行]** > **[開く]** を順に選択します。
 1. まだ PowerShell ウィンドウを閉じていない場合は閉じます。
 1. **ストレージ同期エージェントのセットアップ ウィザード**で、既定値を受け入れます。
-1. **[インストール]** をクリックします。
-1. **[完了]** をクリックします。
+1. **[インストール]** を選択します。
+1. **[完了]** を選択します。
 
-Azure Sync Service をデプロイし、**Windows Server 2016 Datacenter** VM にエージェントをインストールしました。 次に、VM を**ストレージ同期サービス**に登録する必要があります。
+Azure Sync Service をデプロイし、Windows Server 2016 Datacenter VM にエージェントをインストールしました。 次に、VM をストレージ同期サービスに登録する必要があります。
 
 ## <a name="register-windows-server"></a>Windows Server を登録する
-Windows Server をストレージ同期サービスに登録すると、サーバー (またはクラスター) とストレージ同期サービスの間に信頼関係が確立されます。 1 つのサーバーは、1 つのストレージ同期サービスにのみ登録でき、同じストレージ同期サービスに関連付けられている他のサーバーおよび Azure ファイル共有と同期できます。
 
-**Azure File Sync エージェント**がインストールされると、サーバー登録 UI が自動的に開かれます。 開かない場合は、ファイルの場所 (C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe) から手動で開くことができます。
+お客様の Windows サーバーをストレージ同期サービスに登録すると、サーバー (またはクラスター) とストレージ同期サービスの間に信頼関係が確立されます。 サーバーは、1 つのストレージ同期サービスにのみ登録できます。 そのストレージ同期サービスに関連付けられている他のサーバーおよび Azure ファイル共有と同期できます。
 
-1. VM でサーバー登録 UI が開いたら、**[OK]** をクリックします。
-1. **[サインイン]** をクリックして開始します。
-1. Azure アカウントの資格情報を使用してサインインし、**[サインイン]** をクリックします。
+Azure File Sync エージェントをインストールした後、サーバー登録 UI が自動的に開かれます。 開かない場合、ファイルの場所 `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.` から手動で開くことができます。
+
+1. VM でサーバー登録 UI が開いたら、**[OK]** を選択します。
+1. **[サインイン]** を選択して開始します。
+1. お客様の Azure アカウントの資格情報を使用してサインインし、**[サインイン]** を選択します。
 1. 次の情報を指定します。
 
    ![サーバー登録 UI のスクリーンショット](media/storage-sync-files-extend-servers/signin.png)
@@ -250,37 +266,39 @@ Windows Server をストレージ同期サービスに登録すると、サー�
    | ----- | ----- |
    | 値 | 説明 |
    | **Azure サブスクリプション** | このチュートリアルのストレージ同期サービスが含まれているサブスクリプション。 |
-   | **リソース グループ** | このチュートリアルのストレージ同期サービスが含まれているリソース グループ。 このチュートリアル全体で、*afsresgroup101918* を使用してきました。 |
-   | **ストレージ同期サービス** | このチュートリアルで使用したストレージ同期サービスの名前。 このチュートリアル全体で、*afssyncservice02* を使用してきました。 |
+   | **リソース グループ** | ストレージ同期サービスを含むリソース グループ。 このチュートリアルでは、_afsresgroup101918_ を使用します。 |
+   | **ストレージ同期サービス** | ストレージ同期サービスの名前。 このチュートリアルでは _afssyncservice02_ を使用します。 |
 
-1. **[登録]** をクリックして、サーバーの登録を完了します。
-1. 登録プロセスの一環として、追加のサインインを求められます。 サインインして **[次へ]** をクリックします。
-1. Click **OK**.
+1. **[登録]** を選択して、サーバーの登録を完了します。
+1. 登録プロセスの一環として、追加のサインインを求められます。 サインインして **[次へ]** を選択します。
+1. **[OK]** を選択します。
 
 ## <a name="create-a-sync-group"></a>同期グループを作成する
-同期グループは、一連のファイルの同期トポロジを定義します。 同期グループには、Azure ファイル共有と 1 つ以上のサーバー エンドポイントを表す、1 つのクラウド エンドポイントが含まれている必要があります。 サーバー エンドポイントは、登録されているサーバー上のパスを表します。
 
-1. 同期グループを作成するには、[Azure portal](https://portal.azure.com/) で、このチュートリアルのために作成したストレージ同期サービスの **+ [同期グループ]** を選択します。 このチュートリアルでは、例として *afssyncservice02* を使用しました。
+同期グループは、一連のファイルの同期トポロジを定義します。 同期グループには、Azure ファイル共有を表すクラウド エンドポイントが 1 つ含まれている必要があります。 さらに、同期グループにはサーバー エンドポイントが 1 つ以上含まれている必要があります。 サーバー エンドポイントは、登録されているサーバー上のパスを表します。 同期グループを作成するには:
+
+1. [Azure portal](https://portal.azure.com/) のストレージ同期サービスで **+ [同期グループ]** を選択します。 このチュートリアルでは *afssyncservice02* を使用します。
 
    ![Azure Portal で新しい同期グループを作成する](media/storage-sync-files-extend-servers/add-sync-group.png)
 
-1. 表示されるウィンドウで次の情報を入力して、同期グループとクラウド エンドポイントを作成します。
+1. 次の情報を入力して、同期グループとクラウド エンドポイントを作成します。
 
    | 値 | 説明 |
    | ----- | ----- |
-   | **同期グループ名** | この名前は、ストレージ同期サービス内で一意である必要がありますが、理にかなった任意の名前を指定できます。 このチュートリアルでは *afssyncgroup* を使用しています。|
+   | **同期グループ名** | この名前は、ストレージ同期サービス内で一意である必要がありますが、理にかなった任意の名前を指定できます。 このチュートリアルでは *afssyncgroup* を使用します。|
    | **サブスクリプション** | このチュートリアルのストレージ同期サービスをデプロイしたサブスクリプション。 |
-   | **ストレージ アカウント** |**[ストレージ アカウントの選択]** をクリックします。 表示されるウィンドウで、このチュートリアルのために作成した Azure ファイル共有のあるストレージ アカウントを選択します。 ここでは *afsstoracct101918* を使用しました。 |
-   | **Azure ファイル共有** | このチュートリアルのために作成した Azure ファイル共有の名前。 ここでは *afsfileshare* を使用しました。 |
+   | **ストレージ アカウント** | **[ストレージ アカウントの選択]** を選択します。 表示されるウィンドウで、お客様が作成した Azure ファイル共有があるストレージ アカウントを選択します。 このチュートリアルでは、*afsstoracct101918* を使用します。 |
+   | **Azure ファイル共有** | お客様が作成した Azure ファイル共有の名前。 このチュートリアルでは、*afsfileshare* を使用します。 |
 
-1. **Create** をクリックしてください。
+1. **作成** を選択します。
 
 同期グループを選択すると、1 つの**クラウド エンドポイント**ができたことを確認できます。
 
 ## <a name="add-a-server-endpoint"></a>サーバー エンドポイントを追加する
-サーバー エンドポイントは、登録済みサーバー上の特定の場所を表します。たとえば、サーバー ボリュームのフォルダーなどです。
 
-1. サーバー エンドポイントを追加するには、新しく作成した同期グループを選択し、**[サーバー エンドポイントの追加]** を選択します。
+サーバー エンドポイントは、登録されているサーバー上の特定の場所を表します。 たとえば、サーバー ボリューム上のフォルダーです。 サーバー エンドポイントを追加するには:
+
+1. 新しく作成した同期グループを選択し、**[サーバー エンドポイントの追加]** を選択します。
 
    ![[同期グループ] ウィンドウで新しいサーバー エンドポイントを追加する](media/storage-sync-files-extend-servers/add-server-endpoint.png)
 
@@ -289,12 +307,12 @@ Windows Server をストレージ同期サービスに登録すると、サー�
    | | |
    | ----- | ----- |
    | 値 | 説明 |
-   | **登録済みサーバー** | このチュートリアルのために作成したサーバーの名前。 このチュートリアルでは *afsvm101918* を使用しました |
-   | **パス** | このチュートリアルのために作成したドライブへの Windows Server パス。 この例では、*f:\filestosync* です。 |
+   | **登録済みサーバー** | お客様が作成したサーバーの名前。 このチュートリアルでは *afsvm101918* を使用します。 |
+   | **パス** | お客様が作成したドライブへの Windows Server パス。 このチュートリアルでは、*f:\filestosync* を使用します。 |
    | **クラウドの階層化** | このチュートリアルでは、無効のままにします。 |
    | **ボリュームの空き領域** | このチュートリアルでは空白のままにします。 |
 
-1. **Create** をクリックしてください。
+1. **作成** を選択します。
 
 Azure ファイル共有と Windows Server でファイルが同期されるようになりました。
 
@@ -305,7 +323,8 @@ Azure ファイル共有と Windows Server でファイルが同期されるよ�
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
 ## <a name="next-steps"></a>次の手順
-このチュートリアルでは、Azure File Sync を使用して Windows Server のストレージ容量を拡張するための基本的な手順を説明しました。Azure File Sync のデプロイ計画の全体像については、次のリンクに従ってください。
+
+このチュートリアルでは、Azure File Sync を使用して Windows サーバーのストレージ容量を拡張するための基本的な手順を説明しました。Azure File Sync のデプロイ計画の全体像については、次を参照してください。
 
 > [!div class="nextstepaction"]
 > [Azure File Sync のデプロイの計画](./storage-sync-files-planning.md)

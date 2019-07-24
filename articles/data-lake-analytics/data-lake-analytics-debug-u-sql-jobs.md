@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 11587d5a0520d42d554c13a525c3b57db82326aa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5417f66696191cebadc2af9c6d634419a0eb8e5b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229477"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526454"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>失敗した U-SQL ジョブに対するユーザー定義の C# コードをデバッグする
 
@@ -28,7 +28,7 @@ U-SQL は C# を使用した機能拡張モデルを提供しています。 U-S
 >
 
 > [!IMPORTANT]
-> Visual Studio でこの機能を使用するには、[Microsoft Visual C++ 2015 再頒布可能パッケージ Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) と [Windows ユニバーサル C ランタイム](https://www.microsoft.com/download/details.aspx?id=50410)の 2 つの更新プログラムが必要です。
+> Visual Studio では、この機能を使用するための次の 2 つの更新プログラムが必要です。[Microsoft Visual C++ 2015 再頒布可能パッケージの更新プログラム 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) と [Windows 用ユニバーサル C ランタイム](https://www.microsoft.com/download/details.aspx?id=50410)。
 >
 
 ## <a name="download-failed-vertex-to-local-machine"></a>失敗した頂点をローカル コンピューターにダウンロードする
@@ -80,7 +80,7 @@ C# ソース コードがキャプチャされるケースは 2 つあります�
 
 2. **FailedVertexDebugHost** プロジェクトのプロジェクト フォルダー パスを取得します。 
 
-3. **追加されたアセンブリのソース コード プロジェクト (右クリック) > [プロパティ]** で、左側にある **[ビルド]** タブを選択し、コピーしたパス (末尾は \bin\debug) を **[出力] > [出力パス]** に貼り付けます。 最終的な出力パスは、"<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\" のようになります。
+3. **追加されたアセンブリのソース コード プロジェクト (右クリック) > [プロパティ]** で、左側にある **[ビルド]** タブを選択し、コピーしたパス (末尾は \bin\debug) を **[出力] > [出力パス]** に貼り付けます。 最終的な出力パスは次のようになります。`<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\`
 
     ![Azure Data Lake Analytics U-SQL デバッグ PDB パス設定](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 

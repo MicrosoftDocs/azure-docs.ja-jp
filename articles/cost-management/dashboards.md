@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: 1d2b4a0cd78f3d68a76bd9186be4174f2dd1d86c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: vitavor
+ms.custom: seodec18
+ms.openlocfilehash: 7ea7cbf4526528eb481b6125b006d0c29d86deb2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999713"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001080"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>ダッシュボードで主なコスト メトリックを表示する
 
@@ -43,7 +43,7 @@ Cloudyn のダッシュボードには、レポートの高レベルのビュー
 カスタム ダッシュボードを作成するには:
 
 1. ホームページで、**[新規追加 +]** をクリックします。 [マイ ダッシュボード] ページが表示されます。  
-    ![[マイ ダッシュボード]](./media/dashboards/my-dashboard.png)
+    ![新しいレポートを追加する [マイ ダッシュボード] ページ](./media/dashboards/my-dashboard.png)
 2. **[Add New Report] (新しいレポートの追加)** をクリックします。 [Add Report] (レポートの追加) ボックスが表示されます。
 3. ダッシュボード ウィジェットに追加するレポートを選択します。 このウィジェットがダッシュボードに追加されます。
 4. ダッシュボードが完成するまで、前の手順を繰り返します。
@@ -63,7 +63,7 @@ Cloudyn のダッシュボードには、レポートの高レベルのビュー
 [パブリック] に対してカスタム ダッシュボードを共有するには:
 
 1. ダッシュボードで、**[Dashboard Settings] (ダッシュボードの設定)** をクリックします。 [Dashboard Settings] (ダッシュボードの設定) ボックスが表示されます。  
-    ![ダッシュボードのオプション](./media/dashboards/dashboard-options.png)
+    ![カスタム ダッシュボードのダッシュボード設定](./media/dashboards/dashboard-options.png)
 2. [Dashboard Settings] (ダッシュボードの設定) ボックスで、矢印記号をクリックしてから **[パブリック]** をクリックします。 [Public Dashboard] (パブリック ダッシュボード) 確認ダイアログ ボックスが表示されます。
 3. **[はい]** をクリックします。 ダッシュボードが他のユーザーから使用可能になります。
 
@@ -116,13 +116,13 @@ Cloudyn のダッシュボードには、レポートの高レベルのビュー
 または
 
 1. **[Dashboard Settings] (ダッシュボードの設定)** をクリックして使用可能なダッシュボードの一覧を表示し、既定として設定するダッシュボードを選択します。  
-    ![ダッシュボードのオプション](./media/dashboards/dashboard-options.png)
+    ![既定のダッシュボードのダッシュボード オプション](./media/dashboards/dashboard-options.png)
 2. ダッシュボードの行にある **[既定値]** をクリックします。 [Default Dashboard] (既定のダッシュボード) 確認ボックスが表示されます。
 3. **[はい]** をクリックします。 ダッシュボードが既定に設定されます。
 
 ## <a name="management-dashboard"></a>管理ダッシュボード
 Management ダッシュボード (MSP ユーザーの場合は MSP ダッシュボード) には、主なレポートの種類の特徴が含まれています。  
-![管理ダッシュボード](./media/dashboards/management-dash.png)
+![さまざまなレポートが表示されている管理ダッシュボード](./media/dashboards/management-dash.png)
 
 ### <a name="cost-entity-summary-enterprise-only"></a>コスト エンティティの概要 (Enterprise のみ)
 このウィジェットでは、管理されているコスト エンティティが要約されます (エンティティの数やアカウントの数を含む)。
@@ -158,7 +158,7 @@ Management ダッシュボード (MSP ユーザーの場合は MSP ダッシュ�
 
 ## <a name="cost-controller-dashboard"></a>Cost Controller ダッシュボード
 Cost Controller ダッシュボードには、事前に設定されたコスト割り当ての特徴が表示されます。  
-![Cost Controller ダッシュボード](./media/dashboards/cost-controller-dashboard.png)
+![さまざまなレポートが表示されている Cost Controller ダッシュボード](./media/dashboards/cost-controller-dashboard.png)
 
 ### <a name="cost-over-time"></a>時間経過コスト
 このウィジェットは、コスト傾向を突き止めるのに役立ちます。 ここでは、過去 30 日間の傾向に基づいて、最終日のコストが表示されます。
@@ -198,7 +198,7 @@ Cost Controller ダッシュボードには、事前に設定されたコスト�
 ## <a name="asset-controller-dashboard"></a>Asset Controller ダッシュボード
 
 このダッシュボードには、実行中のインスタンスの数、使用可能なディスクと使用中のディスク、インスタンスの種類の分布、およびストレージ情報が表示されます。  
-![Asset Controller ダッシュボード](./media/dashboards/asset-controller-dashboard.png)
+![さまざまなレポートが表示されている Asset Controller ダッシュボード](./media/dashboards/asset-controller-dashboard.png)
 
 ### <a name="compute-instances"></a>コンピューティング インスタンス
 このウィジェットでは、過去 30 日間の使用状況の傾向に基づいて、実行中のインスタンスの数が表示されます。
@@ -227,7 +227,7 @@ Cost Controller ダッシュボードには、事前に設定されたコスト�
 
 ## <a name="optimizer-dashboard"></a>Optimizer ダッシュボード
 このダッシュボードには、ダウンサイジングに関する推奨事項、未使用のリソース、および潜在的な削減が表示されます。  
-![Optimizer ダッシュボード](./media/dashboards/optimizer-dashboard.png)
+![さまざまなレポートが表示されている Optimizer ダッシュボード](./media/dashboards/optimizer-dashboard.png)
 
 ### <a name="ri-calculator"></a>RI 計算ツール
 このウィジェットでは、RI の購入に関する推奨事項の数が表示され、潜在的な年間の削減が表示されます。
@@ -257,7 +257,7 @@ Cost Controller ダッシュボードには、事前に設定されたコスト�
 
 ## <a name="s3-tracker-dashboard"></a>S3 Tracker ダッシュボード
 S3 Tracker ダッシュボードは、現在のストレージ使用状況と傾向を検索、分析、および表示するのに役立ちます。  
-![S3 Tracker ダッシュボード](./media/dashboards/s3-tracker-dashboard.png)
+![さまざまなレポートが表示されている S3 Tracker ダッシュボード](./media/dashboards/s3-tracker-dashboard.png)
 
 ### <a name="all-buckets"></a>すべてのバケット
 このウィジェットでは、すべてのバケットの合計サイズ (GB 単位) とバケット内のオブジェクトの総数が表示されます。
@@ -281,7 +281,7 @@ S3 Tracker ダッシュボードは、現在のストレージ使用状況と傾
 
 ## <a name="cloud-comparison-dashboard"></a>Cloud Comparison ダッシュボード
 Cloud Comparison ダッシュボードは、価格、CPU の種類、および RAM のサイズに基づいて、さまざまなクラウド プロバイダーのコストを比較するのに役立ちます。  
-![Cloud Comparison ダッシュボード](./media/dashboards/cloud-comparison-dashboard.png)
+![さまざまなレポートが表示されている Cloud Comparison ダッシュボード](./media/dashboards/cloud-comparison-dashboard.png)
 
 ### <a name="ec2-cost-in-azure-by-instance-type"></a>インスタンスの種類ごとの Azure での EC2 コスト
 このウィジェットでは、過去 30 日間のオンデマンド レートでの使用状況が表示されます。 ここでは、Amazon EC2 の現在のコストと Azure での潜在的なコストが比較されます。

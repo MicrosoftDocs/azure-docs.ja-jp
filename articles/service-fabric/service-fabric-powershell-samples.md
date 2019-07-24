@@ -3,8 +3,8 @@ title: Azure PowerShell のサンプル - Service Fabric | Microsoft Docs
 description: Azure PowerShell のサンプル - Service Fabric
 services: service-fabric
 documentationcenter: service-fabric
-author: rwike77
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 tags: ''
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: service-fabric
-ms.date: 04/09/2018
-ms.author: ryanwi
+ms.date: 11/29/2018
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 65f6252ecfa4e5850824fc7aa2e6eca2bdb88692
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8a3a80fb6ae20eddc3237d986ecda1d4cb5b65a5
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205758"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666038"
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell のサンプル
 
@@ -33,7 +33,6 @@ ms.locfileid: "34205758"
 |-|-|
 | **クラスターの作成** ||
 | [クラスターの作成 (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| Azure Service Fabric クラスターを作成します。 |
-|[テスト クラスターの作成 (Azure)](./scripts/service-fabric-powershell-create-test-cluster.md)| Azure 上で 3 ノードのテスト Service Fabric クラスターを作成します。|
 | **クラスター、ノード、およびインフラストラクチャの管理** ||
 | [アプリケーション証明書の追加](./scripts/service-fabric-powershell-add-application-certificate.md)| クラスター内のすべてのノードにアプリケーションの X.509 証明書を追加します。 |
 | [クラスター VM の RDP ポート範囲の更新](./scripts/service-fabric-powershell-change-rdp-port-range.md)|展開されたクラスター内にあるクラスター ノード VM の RDP ポート範囲を変更します。|

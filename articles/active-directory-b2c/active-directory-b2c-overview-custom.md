@@ -3,37 +3,37 @@ title: Azure Active Directory B2C のカスタム ポリシー | Microsoft Docs
 description: Azure Active Directory B2C のカスタム ポリシーについて説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/04/2018
+ms.date: 03/20/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 5634c14ee2b25600d66ff0f2c7385b2aaa9f1810
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.subservice: B2C
+ms.openlocfilehash: 7921454cc9269278db58fcc50bc63ca49b41b1e0
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699500"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417935"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシー
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-カスタム ポリシーは、Azure Active Directory (Azure AD) B2C テナントの動作を定義する構成ファイルです。 Azure AD B2C ポータルには、ID に関連した最も基本的なタスクについて、ビルトイン ポリシーが事前に定義されています。 カスタム ポリシーは、ID 開発者がさまざまなタスクを実現する目的で自由に編集することができます。
+カスタム ポリシーは、Azure Active Directory (Azure AD) B2C テナントの動作を定義する構成ファイルです。 Azure AD B2C ポータルでは、最も一般的な ID タスク用のユーザー フローが事前に定義されています。 カスタム ポリシーは、ID 開発者がさまざまなタスクを実現する目的で自由に編集することができます。
 
-## <a name="comparing-built-in-policies-and-custom-policies"></a>組み込みのポリシーとカスタム ポリシーの比較
+## <a name="comparing-user-flows-and-custom-policies"></a>ユーザー フローとカスタム ポリシーの比較
 
-| | 組み込みのポリシー | カスタム ポリシー |
+| | ユーザー フロー | カスタム ポリシー |
 |-|-------------------|-----------------|
 | 対象ユーザー | ID の専門知識を持つ、または持たないすべてのアプリケーション開発者。 | ID のプロフェッショナル、システム インテグレータ、コンサルタント、社内の ID チーム。 こうしたユーザーは、OpenIDConnect フローに慣れており、ID プロバイダーや要求ベースの認証を理解しています。 |
 | 構成方法 | ユーザー フレンドリなユーザー インターフェイス (UI) を備えた Azure portal。 | XML ファイルを直接編集して Azure portal にアップロードします。 |
-| UI のカスタマイズ | HTML と CSS を含む完全な UI のカスタマイズ。<br><br>カスタム文字列による多言語サポート。 | 同じ |
+| UI のカスタマイズ | HTML、CSS、および JavaScript を含む完全な UI のカスタマイズ。<br><br>カスタム文字列による多言語サポート。 | 同じ |
 | 属性のカスタマイズ | 標準属性とカスタム属性。 | 同じ |
 | トークンおよびセッション管理 | カスタム トークンおよび複数のセッション オプション。 | 同じ |
-| [ID プロバイダー] | 定義済みのローカル プロバイダーまたはソーシャル プロバイダー。 | 標準ベースの OIDC、OAUTH、SAML。 |
-| ID タスク | ローカル アカウントまたはさまざまなソーシャル アカウントによるサインアップまたはサインイン。<br><br>セルフサービスのパスワード リセット。<br><br>プロファイルの編集。<br><br>Multi-Factor Authentication。<br><br>トークンとセッションのカスタマイズ。<br><br>アクセス トークンのフロー。 | カスタム ID プロバイダーを使用して組み込みのポリシーと同じタスクを実現するか、カスタム スコープを使用。<br><br>登録時に別のシステムでユーザー アカウントをプロビジョニング。<br><br>独自の電子メール サービス プロバイダを使用して、ウェルカム メールを送信。<br><br>Azure AD B2C の外部のユーザー ストアを使用。<br><br>ユーザーが指定した情報を信頼できるシステムで検証 (API を使用)。 |
+| [ID プロバイダー] | 定義済みのローカル プロバイダーまたはソーシャル プロバイダー、およびほとんどの OIDC ID プロバイダー (Azure Active Directory テナントとのフェデレーションなど)。 | 標準ベースの OIDC、OAUTH、SAML。  REST API との統合を使用して認証を行うことも可能です。 |
+| ID タスク | ローカル アカウントまたはさまざまなソーシャル アカウントによるサインアップまたはサインイン。<br><br>セルフサービスのパスワード リセット。<br><br>プロファイルの編集。<br><br>Multi-Factor Authentication。<br><br>トークンとセッションのカスタマイズ。<br><br>アクセス トークンのフロー。 | カスタム ID プロバイダーを使用したユーザー フローと同じタスクの実行、またはカスタム スコープの使用。<br><br>登録時に別のシステムでユーザー アカウントをプロビジョニング。<br><br>独自の電子メール サービス プロバイダを使用して、ウェルカム メールを送信。<br><br>Azure AD B2C の外部のユーザー ストアを使用。<br><br>ユーザーが指定した情報を信頼できるシステムで検証 (API を使用)。 |
 
 ## <a name="policy-files"></a>ポリシー ファイル
 
@@ -43,7 +43,7 @@ ms.locfileid: "43699500"
 - **Extensions ファイル** - テナントの固有の構成変更を保持しています。
 - **証明書利用者 (RP) ファイル** - アプリケーションまたはサービス (証明書利用者) から直接呼び出される、単一タスクに焦点を置いています。 固有の各タスクには独自の RP が必要であり、ブランドの要件に応じて、この数は "アプリケーションの合計 x ユースケースの総数" になることがあります。
 
-Azure AD B2C での組み込みのポリシーは上に示した 3 つのファイルのパターンに従いますが、Azure portal が extensions ファイルへの変更をバックグラウンドで行なっている間、開発者には RP ファイルしか表示されません。
+Azure AD B2C でのユーザー フローは上に示した 3 つのファイルのパターンに従いますが、Azure portal が extensions ファイルへの変更をバックグラウンドで行なっている間、開発者には RP ファイルしか表示されません。
 
 ## <a name="custom-policy-core-concepts"></a>カスタム ポリシーの中心概念
 

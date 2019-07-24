@@ -1,135 +1,143 @@
 ---
-title: 'チュートリアル: Azure Active Directory と OpenAthens の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と OpenAthens の統合 | Microsoft Docs
 description: Azure Active Directory と OpenAthens の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: joflore
+manager: daveba
+ms.reviewer: barbkess
 ms.assetid: dd4adfc7-e238-41d5-8b25-1811f08078b6
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/05/2017
+ms.topic: tutorial
+ms.date: 1/4/2019
 ms.author: jeedes
-ms.openlocfilehash: 269b216a94b1233c5f9f9a634fda3c05e46cac90
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3eca6fc3ab788ee7085c0df5f6c9770858af29ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435908"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847350"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-openathens"></a>チュートリアル: Azure Active Directory と OpenAthens の統合
+# <a name="tutorial-azure-active-directory-integration-with-openathens"></a>チュートリアル:Azure Active Directory と OpenAthens の統合
 
 このチュートリアルでは、OpenAthens と Azure Active Directory (Azure AD) を統合する方法について説明します。
-
 OpenAthens と Azure AD の統合には、次の利点があります。
 
-- OpenAthens にアクセスするユーザーを Azure AD で制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に OpenAthens にサインオン (シングル サインオン) されるように指定できます。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* OpenAthens にアクセスするユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントで OpenAthens に自動的にサインイン (シングル サインオン) するように設定できます。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 OpenAthens と Azure AD の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション
-- OpenAthens でのシングル サインオンが有効なサブスクリプション
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の無料試用版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
+* OpenAthens でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの OpenAthens の追加
-1. Azure AD シングル サインオンの構成とテスト
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+
+* OpenAthens では、**IDP** によって開始される SSO がサポートされます
+
+* OpenAthens では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-openathens-from-the-gallery"></a>ギャラリーからの OpenAthens の追加
+
 Azure AD への OpenAthens の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に OpenAthens を追加する必要があります。
 
-**ギャラリーから OpenAthens を追加するには**
+**ギャラリーから OpenAthens を追加するには、次の手順に従います。**
 
-1. [Azure Portal](https://portal.azure.com) の左側のウィンドウで、**Azure Active Directory** アイコンを選択します。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure Active Directory のボタン][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-1. **[エンタープライズ アプリケーション]**、**[すべてのアプリケーション]** の順に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-    ![[エンタープライズ アプリケーション] ウィンドウ][2]
-    
-1. 新しいアプリケーションを追加するには、ダイアログ ボックスの上部にある **[新しいアプリケーション]** ボタンを選択します。
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-    ![[新しいアプリケーション] ボタン][3]
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-1. 検索ボックスに「**OpenAthens**」と入力し、結果パネルで **[OpenAthens]** を選択して、**[追加]** を選択します。
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-    ![結果一覧の OpenAthens](./media/openathens-tutorial/tutorial_openathens_addfromgallery.png)
+4. 検索ボックスに「**OpenAthens**」と入力し、結果パネルで **[OpenAthens]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+
+     ![結果一覧の OpenAthens](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" という名前のテスト ユーザーに基づいて、OpenAthens で Azure AD のシングル サインオンを構成し、テストします。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する OpenAthens ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと OpenAthens の関連ユーザーの間で、リンク関係が確立されている必要があります。
-
-OpenAthens で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユーザー名\)** の値として割り当ててリンク関係を確立します。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、OpenAthens で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと OpenAthens 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 OpenAthens で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. [Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on) - ユーザーがこの機能を使用できるようにします。
-1. [Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user) - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. [OpenAthens テスト ユーザーの作成](#create-a-openathens-test-user) - OpenAthens で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-1. [Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user) - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-1. [シングル サインオンのテスト](#test-single-sign-on) - 構成が機能するかどうかを確認します。
+1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[OpenAthens のシングル サインオンの構成](#configure-openathens-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[OpenAthens テスト ユーザーの作成](#create-openathens-test-user)** - OpenAthens で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、OpenAthens アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-**OpenAthens で Azure AD シングル サインオンを構成するには**
+OpenAthens で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. Azure Portal の **OpenAthens** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **OpenAthens** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![シングル サインオン構成のリンク][4]
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-1. シングル サインオンを有効にするには、**[シングル サインオン]** ダイアログ ボックスで、**[モード]** として **[SAML ベースのサインオン]** を選択します。
- 
-    ![[シングル サインオン] ダイアログ ボックス](./media/openathens-tutorial/tutorial_openathens_samlbase.png)
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-1. **[OpenAthens のドメインと URL]** セクションの **[識別子]** ボックスに、値「`https://login.openathens.net/saml/2/metadata-sp`」を入力します。
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-    ![[OpenAthens のドメインと URL] のシングル サインオン情報](./media/openathens-tutorial/tutorial_openathens_url.png)
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-1. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** を選択し、コンピューターにメタデータ ファイルを保存します。
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-    ![AMSL 署名証明書のダウンロードのリンク](./media/openathens-tutorial/tutorial_openathens_certificate.png) 
+5. **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル**をアップロードします。この手順については、後からこのチュートリアルの中で説明します。
 
-1. **[保存]** を選択します。
+    a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
-    ![[シングル サインオン] の [保存] ボタン](./media/openathens-tutorial/tutorial_general_400.png)
+    ![OpenAthens (メタデータのアップロード)](common/upload-metadata.png)
+
+    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、**[アップロード]** をクリックします。
+
+    ![OpenAthens (アップロードするメタデータの参照)](common/browse-upload-metadata.png)
+
+    c. メタデータ ファイルが正常にアップロードされると、**識別子**の値が、**[基本的な SAML 構成]** セクションのテキスト ボックスに自動的に設定されます。
+
+    ![[OpenAthens のドメインと URL] のシングル サインオン情報](common/idp-identifier.png)
+
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+
+    ![証明書のダウンロードのリンク](common/metadataxml.png)
+
+### <a name="configure-openathens-single-sign-on"></a>OpenAthens のシングル サインオンの構成
 
 1. 別の Web ブラウザー ウィンドウで、OpenAthens 企業サイトに管理者としてログインします。
 
-1. **[管理]** タブの一覧から **[接続]** を選択します。 
+2. **[管理]** タブの一覧から **[接続]** を選択します。 
 
     ![Configure single sign-on](./media/openathens-tutorial/tutorial_openathens_application1.png)
 
-1. **[SAML 1.1/2.0]** を選択し、**[構成]** を選択します。
+3. **[SAML 1.1/2.0]** を選択し、**[構成]** を選択します。
 
     ![Configure single sign-on](./media/openathens-tutorial/tutorial_openathens_application2.png)
     
-1. 構成を追加するには、**[参照]** を選択して Azure Portal からダウンロードしたメタデータ .xml ファイルをアップロードし、**[追加]** を選択します。
+4. 構成を追加するには、**[参照]** を選択して Azure Portal からダウンロードしたメタデータ .xml ファイルをアップロードし、**[追加]** を選択します。
 
     ![Configure single sign-on](./media/openathens-tutorial/tutorial_openathens_application3.png)
 
-1. **[詳細]** タブで、次の手順を実行します。
+5. **[詳細]** タブで、次の手順を実行します。
 
     ![Configure single sign-on](./media/openathens-tutorial/tutorial_openathens_application4.png)
 
@@ -147,98 +155,76 @@ OpenAthens で Azure AD のシングル サインオンを構成してテスト�
 
     g. **[変更の保存]** を選択します。
 
-> [!TIP]
-> アプリのセットアップ中、[Azure ポータル](https://portal.azure.com)内で上記の手順の簡易版を確認できるようになりました。 **[Active Directory]**  >  **[エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブを選択し、一番下の **[構成]** セクションから組み込みドキュメントにアクセスします。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント](https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+    h. **[</> Relying Party]\(</> 証明書利用者\)** タブで、**[Metadata URL]\(メタデータ URL\)** をコピーし、その URL をブラウザーで開いて **SP メタデータ XML** ファイルをダウンロードします。 Azure AD の **[基本的な SAML 構成]** セクションで、この SP メタデータ ファイルをアップロードします。
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+    ![Configure single sign-on](./media/openathens-tutorial/tutorial_openathens_application5.png)
 
-このセクションの目的は、Azure Portal で "Britta Simon" というテスト ユーザーを作成することです。
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
-   ![Azure AD のテスト ユーザーの作成][100]
+このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-**Azure AD でテスト ユーザーを作成するには**
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-1. Azure Portal の左側のウィンドウで、**[Azure Active Directory]** を選択します。
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
-    ![Azure Active Directory のボタン](./media/openathens-tutorial/create_aaduser_01.png)
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** を選びます。
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/openathens-tutorial/create_aaduser_02.png)
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** を選択します。
+    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    ![[追加] ボタン](./media/openathens-tutorial/create_aaduser_03.png)
-
-1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
-
-    ![[ユーザー] ダイアログ ボックス](./media/openathens-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、Britta Simon のメール アドレスを入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
-
-    d. **作成**を選択します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-### <a name="create-an-openathens-test-user"></a>OpenAthens テスト ユーザーの作成
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    たとえば、BrittaSimon@contoso.com のように指定します。
 
-OpenAthens では、Just-In-Time プロビジョニングがサポートされています。ユーザーは、認証が成功した後に自動的に作成されます。 このセクションでは、何も行う必要はありません。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
+
+    d. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に OpenAthens へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200] 
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[OpenAthens]** を選択します。
 
-**OpenAthens に Britta Simon を割り当てるには**
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** を選択します。
+2. アプリケーションの一覧で、「**OpenAthens**」と入力して選択します。
 
-    ![ユーザーの割り当て][201] 
+    ![アプリケーションの一覧の OpenAthens のリンク](common/all-applications.png)
 
-1. **アプリケーション**の一覧で **[OpenAthens]** を選択します。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![アプリケーションの一覧の OpenAthens のリンク](./media/openathens-tutorial/tutorial_openathens_app.png)  
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-1. 左側のメニューで **[ユーザーとグループ]** を選びます。
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[ユーザーとグループ] リンク][202]
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-1. **[追加]** ボタンを選びます。 **[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-    ![[割り当ての追加] ウィンドウ][203]
+6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-1. **[ユーザーとグループ]** ボックスの一覧で **[Britta Simon]** を選択します。
+7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
 
-1. **[ユーザーとグループ]** ボックスの一覧で **[選択]** を選択します。
+### <a name="create-openathens-test-user"></a>OpenAthens のテスト ユーザーの作成
 
-1. **[割り当ての追加]** ウィンドウで、**[割り当て]** を選択します。
-    
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+このセクションでは、Britta Simon というユーザーを OpenAthens に作成します。 OpenAthens では、**Just-In-Time ユーザー プロビジョニング**がサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 OpenAthens にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで **[OpenAthens]** タイルを選択すると、自動的に OpenAthens アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネル上で [OpenAthens] タイルをクリックすると、SSO を設定した OpenAthens に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* SaaS アプリと Azure Active Directory を統合する方法のチュートリアルの一覧については、[Azure AD で使用するための SaaS アプリ統合のチュートリアル](tutorial-list.md)に関するページをご覧ください。
-* Azure Active Directory でのアプリケーション アクセスとシングル サインオンの詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/openathens-tutorial/tutorial_general_01.png
-[2]: ./media/openathens-tutorial/tutorial_general_02.png
-[3]: ./media/openathens-tutorial/tutorial_general_03.png
-[4]: ./media/openathens-tutorial/tutorial_general_04.png
-
-[100]: ./media/openathens-tutorial/tutorial_general_100.png
-
-[200]: ./media/openathens-tutorial/tutorial_general_200.png
-[201]: ./media/openathens-tutorial/tutorial_general_201.png
-[202]: ./media/openathens-tutorial/tutorial_general_202.png
-[203]: ./media/openathens-tutorial/tutorial_general_203.png
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

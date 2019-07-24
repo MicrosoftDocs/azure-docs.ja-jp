@@ -1,26 +1,25 @@
 ---
-title: Azure Advisor のセキュリティに関する推奨事項 | Microsoft Docs
+title: Azure Advisor を使用してリソースのセキュリティを向上させる | Microsoft Docs
 description: Azure Advisor を使用して、Azure のデプロイのセキュリティを向上させます。
 services: advisor
 documentationcenter: NA
-author: manbeenkohli
+author: kasparks
 manager: ''
 ms.assetid: ''
 ms.service: advisor
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/16/2016
-ms.author: makohli
-ms.openlocfilehash: f96a9f3ea069f38768284876e27affd57677de87
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.date: 01/29/2019
+ms.author: kasparks
+ms.openlocfilehash: 290af605525d552e73c5f3a7a961593689326946
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42142345"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494325"
 ---
-# <a name="advisor-security-recommendations"></a>Advisor のセキュリティに関する推奨事項
+# <a name="make-resources-more-secure-with-azure-advisor"></a>Azure Advisor を使用してリソースのセキュリティを向上させる
 
 Azure Advisor は、すべての Azure リソースに関する推奨事項を、一貫性がある統合された形で提示します。 Azure Security Center と統合して、セキュリティに関する推奨事項を生成します。 セキュリティに関する推奨事項は、Advisor ダッシュボードの **[セキュリティ]** タブで取得できます。
 

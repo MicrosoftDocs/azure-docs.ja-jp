@@ -1,20 +1,17 @@
 ---
 title: Azure Database for MySQL データイン レプリケーションのストアド プロシージャ
 description: この記事では、データイン レプリケーションに使用されるすべてのストアド プロシージャを紹介します。
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2018
-ms.openlocfilehash: fb1a1b31d90df0022e5973de3ae2f55fb4c36701
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: a3c88953eea95871529e8ab257f52b694db443a9
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665948"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544857"
 ---
 # <a name="azure-database-for-mysql-data-in-replication-stored-procedures"></a>Azure Database for MySQL データイン レプリケーションのストアド プロシージャ
 

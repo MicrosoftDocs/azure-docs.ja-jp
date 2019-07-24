@@ -8,13 +8,13 @@ ms.date: 11/15/2017
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
-ms.component: disks
-ms.openlocfilehash: 92bf808da3791b84eb0beeb347b450fd24215e39
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: disks
+ms.openlocfilehash: 39e0a36b50a9e222e6016140967336ccda167514
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259396"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330054"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-linux"></a>Linux 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標
 
@@ -36,4 +36,3 @@ ms.locfileid: "51259396"
 ## <a name="see-also"></a>関連項目
 
 [Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits)
-

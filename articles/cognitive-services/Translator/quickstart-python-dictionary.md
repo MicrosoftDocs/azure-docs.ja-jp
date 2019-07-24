@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: 翻訳の代替候補を取得する (Python) - Translator Text API'
+title: クイック スタート:2 か国語辞書で単語を検索する、Python - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Python と Translator Text REST API を使用して、翻訳の代替候補を探す方法と特定のテキストの使用例を紹介します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/21/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 6e75ceb388b3111ea9ec31ba6bffded4077a019b
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 55cb9564205c99abc868413ebf43e575999198ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248678"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183698"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-python"></a>クイック スタート: Translator Text API と Python を使用して翻訳の代替候補を取得する
+# <a name="quickstart-look-up-words-with-bilingual-dictionary-using-python"></a>クイック スタート:Python を使用して 2 か国語辞書で単語を検索する
 
 このクイック スタートでは、Python と Translator Text REST API を使用して、翻訳の代替候補を探す方法と特定のテキストの使用例を紹介します。
 
@@ -32,7 +32,7 @@ ms.locfileid: "50248678"
 
 ## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 
-普段使用している IDE またはエディターで、新しい Python プロジェクトを作成します。 次に、このコード スニペットをプロジェクトの `dictionary-lookup.py` という名前のファイルにコピーします。
+任意の IDE またはエディターを使用して新しい Python プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 このコード スニペットをプロジェクトまたはフォルダーの `dictionary-lookup.py` という名前のファイルにコピーします。
 
 ```python
 # -*- coding: utf-8 -*-
@@ -60,16 +60,16 @@ else:
     print('Environment variable for TRANSLATOR_TEXT_KEY is not set.')
     exit()
 # If you want to set your subscription key as a string, uncomment the line
-# below and add your subscription key.
-#subscriptionKey = 'put_your_key_here'
+# below and add your subscription key. Then, be sure to delete your "os" import.
+# subscriptionKey = 'put_your_key_here'
 ```
 
-現在、1 つのエンドポイントが Translator Text 用に使用可能で、`base_url` として設定されています。 `path` によって、`dictionary/lookup` ルートが設定され、API のバージョン 3 を使用することが識別されます。
+Translator Text のグローバル エンドポイントは、`base_url` として設定されます。 `path` によって、`dictionary/lookup` ルートが設定され、API のバージョン 3 を使用することが識別されます。
 
 `params` は、ソース言語と出力言語を設定するために使用されます。 このサンプルでは、英語 (`en`) とスペイン語 (`es`) を使用します。
 
 >[!NOTE]
-> エンドポイント、ルート、要求パラメーターの詳細については、「[Translator Text API 3.0: Dictionary Lookup](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup)」を参照してください。
+> エンドポイント、ルート、および要求パラメーターの詳細については、「[Translator Text API 3.0: 辞書検索](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-dictionary-lookup)」をご覧ください。
 
 ```python
 base_url = 'https://api.cognitive.microsofttranslator.com'
@@ -123,7 +123,7 @@ print(json.dumps(response, sort_keys=True, indent=4, ensure_ascii=False, separat
 これで、Translator Text API を呼び出して JSON 応答を返す簡単なプログラムが完成しました。 ここで、プログラムを実行してみましょう。
 
 ```console
-python dictionary-lookup.py
+python alt-translations.py
 ```
 
 作成したコードをサンプル コードと比較したい場合は、完全なサンプルを [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python) から入手できます。
@@ -167,7 +167,7 @@ python dictionary-lookup.py
 
 ## <a name="see-also"></a>関連項目
 
-テキストの表記変換に加えて、Translator Text API を使用して次の操作を行う方法を学習します。
+Translator Text API を使用して以下を実行する方法を確認します。
 
 * [テキストを翻訳する](quickstart-python-translate.md)
 * [テキストを表記変換する](quickstart-python-transliterate.md)

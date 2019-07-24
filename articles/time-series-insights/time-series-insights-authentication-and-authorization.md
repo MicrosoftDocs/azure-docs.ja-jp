@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights の API によって認証と承認を行う方法
+title: Azure Time Series Insights の API によって認証と承認を行う方法 | Microsoft Docs
 description: この記事では、Azure Time Series Insights API を呼び出すカスタム アプリケーションの認証と承認を構成する方法を説明します。
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: cbd851737d7122ff8b0c75eb2050ab481c8cecc0
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.custom: seodec18
+ms.openlocfilehash: b9f3561155038e91bc278f5d7ddc995adb53ad78
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958467"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54197999"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
@@ -105,7 +106,7 @@ Time Series Insights へのアクセスが必要なアプリケーションが�
 
 ## <a name="next-steps"></a>次の手順
 - Time Series Insights API を呼び出すサンプル コードについては、[C# を使用したデータの照会](time-series-insights-query-data-csharp.md)に関する記事をご覧ください。
-- API リファレンスについては、[API リファレンスのクエリ](/rest/api/time-series-insights/time-series-insights-reference-queryapi)に関するページをご覧ください。
+- API リファレンスについては、[API リファレンスのクエリ](/rest/api/time-series-insights/ga-query-api)に関するページをご覧ください。
 
 > [!div class="nextstepaction"]
 > [サービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)

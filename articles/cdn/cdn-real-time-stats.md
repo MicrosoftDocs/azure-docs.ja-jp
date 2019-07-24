@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: e9b9522de6b2c54dc794b00100ffe358296ecfdd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eb20630533735fb46ea7743be75448329281938a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22997907"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58916565"
 ---
 # <a name="real-time-stats-in-microsoft-azure-cdn"></a>Microsoft Azure CDN でのリアルタイム統計情報
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="overview"></a>Overview
-この文書では、Microsoft Azure CDN のリアルタイム統計情報について説明します。  帯域幅、キャッシュの状態、CDN プロファイルへの同時接続数など、クライアントにコンテンツを配信するときのリアルタイム データは、この機能から得ることができます。 本番稼働イベントを含め、サービスの正常性を随時継続的に監視することができます。
+## <a name="overview"></a>概要
+この文書では、Microsoft Azure CDN のリアルタイム統計情報について説明します。  帯域幅、キャッシュの状態、CDN プロファイルへのコンカレント接続数など、クライアントにコンテンツを配信するときのリアルタイム データは、この機能から得ることができます。 本番稼働イベントを含め、サービスの正常性を随時継続的に監視することができます。
 
 次のグラフを使用できます。
 
@@ -62,7 +62,7 @@ ms.locfileid: "22997907"
 **[状態コード]** グラフは、選択された期間に特定の HTTP 応答コードが返された頻度を示します。
 
 > [!TIP]
-> 各 HTTP 状態コード オプションの詳細については、「 [Azure CDN HTTP Status Codes (Azure CDN HTTP 状態コード)](https://msdn.microsoft.com/library/mt759238.aspx)」を参照してください。
+> 各 HTTP 状態コード オプションの詳細については、「 [Azure CDN HTTP Status Codes (Azure CDN HTTP 状態コード)](/previous-versions/azure/mt759238(v=azure.100))」を参照してください。
 > 
 > 
 
@@ -76,7 +76,7 @@ HTTP 状態コードの一覧は、グラフの上に直接表示されます。
 **[キャッシュの状態]** グラフは、選択された期間に特定の種類のキャッシュ状態が発生した頻度を示します。 
 
 > [!TIP]
-> 各キャッシュ状態コード オプションの詳細については、「 [Azure CDN Cache Status Codes (Azure CDN キャッシュ状態コード)](https://msdn.microsoft.com/library/mt759237.aspx)」を参照してください。
+> 各キャッシュ状態コード オプションの詳細については、「 [Azure CDN Cache Status Codes (Azure CDN キャッシュ状態コード)](/previous-versions/azure/mt759237(v=azure.100))」を参照してください。
 > 
 > 
 
@@ -84,13 +84,13 @@ HTTP 状態コードの一覧は、グラフの上に直接表示されます。
 
 特定の状態コードについて記録されたデータを一時的に非表示にすることもできます。  グラフのすぐ下にある凡例から、非表示にする状態コードをクリックします。 状態コードはすぐにグラフから消えます。 その状態コードをもう一度クリックすると、再び表示されます。
 
-## <a name="connections"></a>接続
+## <a name="connections"></a>Connections
 ![Connections graph](./media/cdn-real-time-stats/cdn-connections.png)
 
 このグラフは、エッジ サーバーとの間で確立された接続の数を示しています。 資産に対する要求が CDN を通過するたびに接続が確立されます。
 
-## <a name="next-steps"></a>次のステップ
-* [Azure CDN のリアルタイム アラート](cdn-real-time-alerts.md)
-* [詳細な HTTP レポート](cdn-advanced-http-reports.md)
-* [使用量パターン](cdn-analyze-usage-patterns.md)
+## <a name="next-steps"></a>次の手順
+*  [Azure CDN のリアルタイム アラート](cdn-real-time-alerts.md)
+*  [詳細な HTTP レポート](cdn-advanced-http-reports.md)
+*  [使用量パターン](cdn-analyze-usage-patterns.md)
 

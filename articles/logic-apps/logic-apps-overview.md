@@ -11,16 +11,16 @@ ms.custom: mvc
 ms.date: 6/29/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: f5b39b428b894fcf5dddc0a7435353d174d83b78
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d9f3bb33ab0638fddfcf64e61642c236a03d6293
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231204"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54065273"
 ---
 # <a name="what-is-azure-logic-apps"></a>Azure Logic Apps とは
 
-[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) は、企業または組織の間でアプリ、データ、システム、サービスを統合する必要がある場合に、タスク、ビジネス プロセス、[ワークフロー](#logic-app-concepts)の自動化と調整に役立つクラウド サービスです。 Logic Apps を使えば、クラウド、オンプレミス、その両方のどこにあるかを問わず、アプリの統合、データの統合、システムの統合、Enterprise Application Integration (EAI)、および企業間 (B2B) 通信が可能になるスケーラブルなソリューションを設計および構築する作業を簡略化できます。
+[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) は、企業または組織の間でアプリ、データ、システム、サービスを統合する必要がある場合に、タスク、ビジネス プロセス、[ワークフロー](#logic-app-concepts)の自動化と調整に役立つクラウド サービスです。 Logic Apps を使えば、クラウド、オンプレミス、その両方のどこにあるかを問わず、アプリの[統合](https://azure.microsoft.com/product-categories/integration/)、データの統合、システムの統合、Enterprise Application Integration (EAI)、および企業間 (B2B) 通信が可能になるスケーラブルなソリューションを設計および構築する作業を簡略化できます。
 
 ロジック アプリを使って自動化できるワークロードには、たとえば次のようなものがあります。
 
@@ -118,11 +118,11 @@ Logic Apps の詳細については、以下のビデオで紹介しています
 
 * **ワークフロー**: ビジネス プロセスを一連のステップとして視覚化、設計、構築、自動化、デプロイします。
 
-* **マネージ コネクタ**: ロジック アプリにはデータ、サービス、システムへのアクセスが必要です。 データへの接続とアクセスおよびデータの操作のために設計された事前構築済みの Microsoft のマネージ コネクタを利用できます。 詳細については、[Azure Logic Apps のコネクタ](../connectors/apis-list.md)に関するページを参照してください。
+* **マネージド コネクタ**: ロジック アプリにはデータ、サービス、システムへのアクセスが必要です。 データへの接続とアクセスおよびデータの操作のために設計された事前構築済みの Microsoft のマネージ コネクタを利用できます。 詳細については、[Azure Logic Apps のコネクタ](../connectors/apis-list.md)に関するページを参照してください。
 
-* **トリガー**: 多くの Microsoft マネージ コネクタには、イベントや新しいデータが一定の条件を満たした場合に起動するトリガーが用意されています。 イベントとしては、メールを受信したり、Azure Storage アカウントに対する変更が検出されたりした場合などが考えられます。 トリガーが起動するたびに、Logic Apps エンジンによって、ワークフローを実行するロジック アプリ インスタンスが新たに作成されます。
+* **トリガー**: 多くの Microsoft マネージド コネクタには、イベントや新しいデータが一定の条件を満たした場合に起動するトリガーが用意されています。 イベントとしては、メールを受信したり、Azure Storage アカウントに対する変更が検出されたりした場合などが考えられます。 トリガーが起動するたびに、Logic Apps エンジンによって、ワークフローを実行するロジック アプリ インスタンスが新たに作成されます。
 
-* **アクション**: アクションとは、トリガーの後に発生するステップすべてを指します。 各アクションは通常、マネージ コネクタ、カスタム API、またはカスタム コネクタにより定義される 1 件の操作にマップされています。
+* **Actions**:アクションとは、トリガーの後に発生するステップすべてを指します。 各アクションは通常、マネージ コネクタ、カスタム API、またはカスタム コネクタにより定義される 1 件の操作にマップされています。
 
 * **Enterprise Integration Pack**: Logic Apps には、高度な統合シナリオ向けに BizTalk Server の機能が含まれています。 Enterprise Integration Pack は、ロジック アプリが検証や変換などを簡単に実行するためのコネクタを提供するものです。
 

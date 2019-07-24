@@ -2,21 +2,20 @@
 title: Kubernetes on Azure のチュートリアル - アプリケーションのデプロイ
 description: この Azure Kubernetes Service (AKS) チュートリアルでは、Azure Container Registry に格納されているカスタム イメージを使用して、複数コンテナーのアプリケーションをクラスターにデプロイします。
 services: container-service
-author: iainfoulds
-manager: jeconnoc
+author: zr-msft
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 08/14/2018
-ms.author: iainfou
+ms.date: 12/19/2018
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: bf817f553250ead449ec0d5db3d33acc2eff23f3
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 42437130d30a405af47289ae16d9851fb506a598
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41924793"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756265"
 ---
-# <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションの実行
+# <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>チュートリアル:Azure Kubernetes Service (AKS) でのアプリケーションの実行
 
 Kubernetes には、コンテナー化されたアプリケーション用の分散プラットフォームが用意されています。 独自のアプリケーションとサービスをビルドして Kubernetes クラスターにデプロイし、クラスターで可用性と接続性を管理できるようにします。 このチュートリアル (4/7) では、サンプル アプリケーションを Kubernetes クラスターにデプロイします。 学習内容は次のとおりです。
 
@@ -25,17 +24,17 @@ Kubernetes には、コンテナー化されたアプリケーション用の分
 > * Kubernetes でアプリケーションを実行する
 > * アプリケーションをテストする
 
-後続のチュートリアルでは、このアプリケーションがスケールアウトされて更新されます。
+追加のチュートリアルでは、このアプリケーションがスケールアウトされて更新されます。
 
-このチュートリアルは、Kubernetes の概念についての基礎知識があることを前提としています。Kubernetes の詳細については、[Kubernetes のドキュメント][kubernetes-documentation]をご覧ください。
+このクイックスタートは、Kubernetes の基本的な概念を理解していることを前提としています。 詳しくは、「[Azure Kubernetes Services (AKS) における Kubernetes の中心概念][kubernetes-concepts]」をご覧ください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 前のチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、このイメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。
 
-このチュートリアルを完了するには、事前に作成した `azure-vote-all-in-one-redis.yaml` Kubernetes マニフェスト ファイルが必要です。 このファイルは、前のチュートリアルでは、アプリケーションのソース コードと共にダウンロードされました。 リポジトリの複製が作成されていること、およびディレクトリが複製されたディレクトリに変更されていることを確認します。 これらの手順を完了しておらず、手順を実行する場合は、「[チュートリアル 1 - コンテナー イメージを作成する][aks-tutorial-prepare-app]」に戻ってください。
+このチュートリアルを完了するには、事前に作成した `azure-vote-all-in-one-redis.yaml` Kubernetes マニフェスト ファイルが必要です。 このファイルは、前のチュートリアルでは、アプリケーションのソース コードと共にダウンロードされました。 リポジトリの複製が作成されていること、およびディレクトリが複製されたディレクトリに変更されていることを確認します。 これらの手順を完了しておらず、順番に進めたい場合は、[チュートリアル 1 - コンテナー イメージを作成する][aks-tutorial-prepare-app]に関するページから開始してください。
 
-このチュートリアルでは、Azure CLI バージョン 2.0.44 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
+このチュートリアルでは、Azure CLI バージョン 2.0.53 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
 ## <a name="update-the-manifest-file"></a>マニフェスト ファイルを更新する
 
@@ -47,7 +46,7 @@ Kubernetes には、コンテナー化されたアプリケーション用の分
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-最初のチュートリアルで複製した git repo のサンプル マニフェスト ファイルは、*microsoft* というログイン サーバー名を使用します。 `vi` のようなテキスト エディターで、このマニフェスト ファイルを開きます。
+最初のチュートリアルで複製した git repo のサンプル マニフェスト ファイルは、*microsoft* というログイン サーバー名を使用します。 現在の場所が、複製された *azure-voting-app-redis* ディレクトリ内であることを確認し、テキスト エディター (`vi` など) でマニフェスト ファイルを開きます。
 
 ```console
 vi azure-vote-all-in-one-redis.yaml
@@ -69,7 +68,7 @@ containers:
   image: <acrName>.azurecr.io/azure-vote-front:v1
 ```
 
-ファイルを保存して閉じます。
+ファイルを保存して閉じます。 `vi` では、`:wq` を使用します。
 
 ## <a name="deploy-the-application"></a>アプリケーションのデプロイ
 
@@ -79,7 +78,7 @@ containers:
 kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
-次の例に示すように、クラスター内に Kubernetes オブジェクトが作成されます。
+次の出力例では、AKS クラスター内で正常に作成されたリソースが示されています。
 
 ```
 $ kubectl apply -f azure-vote-all-in-one-redis.yaml
@@ -92,25 +91,27 @@ service "azure-vote-front" created
 
 ## <a name="test-the-application"></a>アプリケーションをテストする
 
-アプリケーションをインターネットに公開する [Kubernetes サービス][kubernetes-service]が作成されます。 このプロセスには数分かかることがあります。 進行状況を監視するには、[kubectl get service][kubectl-get] コマンドと `--watch` 引数を使用します。
+アプリケーションが実行されると、Kubernetes サービスによってアプリケーション フロント エンドがインターネットに公開されます。 このプロセスが完了するまでに数分かかることがあります。
+
+進行状況を監視するには、[kubectl get service][kubectl-get] コマンドと `--watch` 引数を使います。
 
 ```console
 kubectl get service azure-vote-front --watch
 ```
 
-次の例に示すように、最初に *azure-vote-front* サービスの *EXTERNAL-IP* が "*保留中*" として表示されます。
+最初に、*azure-vote-front* サービスの *EXTERNAL-IP* が "*保留中*" として表示されます。
 
 ```
 azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
 ```
 
-*EXTERNAL-IP* アドレスが "*保留中*" から実際のパブリック IP アドレスに変わったら、`CTRL-C` を使用して kubectl ウォッチ プロセスを停止します。 次の例は、パブリック IP アドレスが割り当てられたことを示しています。
+*EXTERNAL-IP* アドレスが "*保留中*" から実際のパブリック IP アドレスに変わったら、`CTRL-C` を使用して `kubectl` ウォッチ プロセスを停止します。 次の出力例は、サービスに割り当てられている有効なパブリック IP アドレスを示しています。
 
 ```
 azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 ```
 
-アプリケーションが動作していることを確認するには、Web ブラウザーを開いて外部 IP アドレスにアクセスします。
+アプリケーションが動作していることを確認するには、Web ブラウザーを開いてサービスの外部 IP アドレスにアクセスします。
 
 ![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/azure-vote.png)
 
@@ -118,7 +119,7 @@ azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Azure vote アプリケーションを AKS の Kubernetes クラスターにデプロイしました。 以下の方法について学習しました。
+このチュートリアルでは、サンプルの Azure vote アプリケーションを AKS の Kubernetes クラスターにデプロイしました。 以下の方法について学習しました。
 
 > [!div class="checklist"]
 > * Kubernetes マニフェスト ファイルを更新する
@@ -134,11 +135,11 @@ azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[kubernetes-documentation]: https://kubernetes.io/docs/home/
-[kubernetes-service]: https://kubernetes.io/docs/concepts/services-networking/service/
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
 [aks-tutorial-scale]: ./tutorial-kubernetes-scale.md
-[az-acr-list]: /cli/azure/acr#list
+[az-acr-list]: /cli/azure/acr
 [azure-cli-install]: /cli/azure/install-azure-cli
+[kubernetes-concepts]: concepts-clusters-workloads.md
+[kubernetes-service]: concepts-network.md#services

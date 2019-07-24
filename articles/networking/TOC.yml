@@ -1,0 +1,142 @@
+- name: 概要
+  items:
+    - name: Azure のネットワークについて
+      href: networking-overview.md
+    - name: アーキテクチャ
+      items:
+        - name: 仮想データセンター
+          href: /azure/architecture/vdc/networking-virtual-datacenter
+        - name: 複数のネットワーク パスを使用した非対称ルーティング
+          href: ../expressroute/expressroute-asymmetric-routing.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: セキュリティで保護されたネットワークの設計
+          href: ../best-practices-network-security.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: ハブスポーク トポロジ
+          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke'
+        - name: ネットワーク セキュリティのベスト プラクティス
+          href: ../security/azure-security-network-security-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: 高可用性ネットワーク仮想アプライアンス
+          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha'
+        - name: 負荷分散方法の組み合わせ
+          href: ../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: Azure DNS と Traffic Manager を使用したディザスター リカバリー
+          href: disaster-recovery-dns-traffic-manager.md
+    - name: 計画と設計
+      items:
+        - name: 仮想ネットワーク
+          href: ../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: クロスプレミス接続 - VPN
+          href: ../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: クロスプレミス接続 - 専用プライベート
+          href: ../expressroute/expressroute-workflows.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: バックエンド接続の相互運用性
+          items:
+            - name: 前書きとテスト セットアップ
+              href: connectivty-interoperability-preface.md?toc=%2fazure%2fnetworking%2ftoc.json
+            - name: テスト セットアップの構成
+              href: connectivty-interoperability-configuration.md?toc=%2fazure%2fnetworking%2ftoc.json
+            - name: コントロール プレーンの分析
+              href: connectivty-interoperability-control-plane.md?toc=%2fazure%2fnetworking%2ftoc.json
+            - name: データ プレーンの分析
+              href: connectivty-interoperability-data-plane.md?toc=%2fazure%2fnetworking%2ftoc.json
+    - name: 概念
+      items:
+        - name: 仮想ネットワーク
+          href: ../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: ネットワークの負荷分散
+          href: ../load-balancer/load-balancer-overview.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: アプリケーションの負荷分散
+          href: ../application-gateway/overview.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: DNS
+          href: ../dns/dns-overview.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: DNS ベースのトラフィック分散
+          href: ../traffic-manager/traffic-manager-overview.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: オンプレミスへの接続 - VPN
+          href: ../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: オンプレミスへの接続 - 専用
+          href: ../expressroute/expressroute-introduction.md?toc=%2fazure%2fnetworking%2ftoc.json
+- name: 作業開始
+  items:
+    - name: 最初の仮想ネットワークの作成
+      href: ../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
+- name: 方法
+  items:
+    - name: インターネット接続
+      items:
+        - name: ネットワーク負荷分散パブリック サーバー
+          href: ../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: アプリケーション負荷分散パブリック サーバー
+          href: ../application-gateway/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: Web アプリケーションの保護
+          href: ../application-gateway/application-gateway-web-application-firewall-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: 場所に基づいた負荷分散
+          href: ../traffic-manager/traffic-manager-configure-geographic-routing-method.md?toc=%2fazure%2fnetworking%2ftoc.json
+    - name: 内部接続
+      items:
+        - name: ネットワーク負荷分散プライベート サーバー
+          href: ../load-balancer/load-balancer-get-started-ilb-arm-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: アプリケーション負荷分散プライベート サーバー
+          href: ../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: 仮想ネットワークへの接続 (同じ場所)
+          href: ../virtual-network/virtual-networks-create-vnetpeering-arm-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: 仮想ネットワークへの接続 (異なる場所)
+          href: ../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
+    - name: クロスプレミス接続
+      items:
+        - name: サイト間 VPN 接続を作成する (IPsec および IKE)
+          href: ../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: P2S VPN 接続を作成する (SSTP と証明書)
+          href: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: 専用プライベート接続を作成する (ExpressRoute)
+          href: ../expressroute/expressroute-howto-circuit-portal-resource-manager.md?toc=%2fazure%2fnetworking%2ftoc.json
+    - name: 管理
+      items:
+        - name: ネットワーク監視の概要
+          href: network-monitoring-overview.md
+        - name: Azure の上限に対するリソースの使用量の確認
+          href: check-usage-against-limits.md
+        - name: ネットワーク トポロジの表示
+          href: ../network-watcher/network-watcher-topology-powershell.md?toc=%2fazure%2fnetworking%2ftoc.json
+    - name: サンプルのスクリプト
+      items:
+        - name: Azure CLI
+          href: cli-samples.md
+        - name: Azure PowerShell
+          href: powershell-samples.md
+    - name: チュートリアル
+      items:
+        - name: VM の負荷分散
+          href: ../virtual-machines/linux/tutorial-load-balancer.md?toc=%2fazure%2fnetworking%2ftoc.json
+        - name: 仮想ネットワークへのコンピューターの接続
+          href: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/network'
+    - name: Azure PowerShell
+      href: 'https://docs.microsoft.com/powershell/module/az.network/'
+    - name: .NET
+      href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.management.network?view=azuremgmtnetwork-9.1.0-preview'
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: REST
+      href: 'https://msdn.microsoft.com/library/mt163658.aspx'
+- name: リソース
+  items:
+    - name: テンプレートの作成
+      href: /azure/azure-resource-manager/resource-group-authoring-templates?toc=%2fazure%2fnetworking%2ftoc.json
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: コミュニティ テンプレート
+      href: 'https://azure.microsoft.com/resources/templates/'
+    - name: ネットワークのブログ
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=virtual-network'

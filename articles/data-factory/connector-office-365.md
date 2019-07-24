@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 01/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 82fb2241b5988bae9587807c03e7bec50e7c1677
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: b86aef7de048690d689a87d4fb844f77ea986445
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955382"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297489"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Office 365 から Azure にデータをコピーする (プレビュー) 
 
@@ -34,7 +33,7 @@ Azure Data Factory では、Office 365 テナント内にある高機能な組�
 >- データ ファクトリとシンク データ ストアを含んだ Azure サブスクリプションは、Office 365 テナントと同じ Azure Active Directory (Azure AD) テナントの下に配置する必要があります。
 >- コピー アクティビティに使用されるリージョンとコピー先が、Office 365 テナント ユーザーのメールボックスの場所と同じリージョン内であることを確認してください。 Azure IR の場所がどのように決定されるかについては、[こちら](concepts-integration-runtime.md#integration-runtime-location)をご覧ください。 サポートされている Office リージョンと、対応する Azure リージョンの一覧については、[こちらの表](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Capabilities#data-regions)をご覧ください。
 >-  Office 365 のデータを **Azure Blob Storage** 内に読み込む場合は、Azure Blob Storage へのリンク済みサービスを定義する際に、**[サービス プリンシパル認証](connector-azure-blob-storage.md#service-principal-authentication)** を使用するようにしてください。[アカウント キー](connector-azure-blob-storage.md#account-key-authentication)、[共有アクセス署名](connector-azure-blob-storage.md#shared-access-signature-authentication)、[Azure リソースのマネージド ID](connector-azure-blob-storage.md#managed-identity) による認証は使わないようにしてください。
->-  Office 365 のデータを **Azure Data Lake Storage Gen1** 内に読み込む場合は、Azure Data Lake Storage Gen1 へのリンク済みサービスを定義する際に、[**サービス プリンシパル認証**](connector-azure-data-lake-store.md#using-service-principal-authentication)を使用するようにしてください。[Azure リソースのマネージド ID](connector-azure-data-lake-store.md#managed-identity) による認証は使わないようにしてください。
+>-  Office 365 のデータを **Azure Data Lake Storage Gen1** 内に読み込む場合は、Azure Data Lake Storage Gen1 へのリンク済みサービスを定義する際に、[**サービス プリンシパル認証**](connector-azure-data-lake-store.md#use-service-principal-authentication)を使用するようにしてください。[Azure リソースのマネージド ID](connector-azure-data-lake-store.md#managed-identity) による認証は使わないようにしてください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,9 +42,10 @@ Office 365 から Azure にデータをコピーするには、前提条件と�
 - Office 365 テナントの管理者は、[こちら](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/On-boarding)の説明に従って、オンボーディング アクションを完了する必要があります。
 - Azure Active Directory で Azure AD Web アプリケーションを作成し、構成します。  手順については、[Microsoft Azure での Ruby アプリケーションの作成](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)に関するページを参照してください。
 - 次の値を記録しておきます。Office 365 用のリンク済みサービスを定義するときに使います。
-    - テナント ID。  手順については、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)」をご覧ください。
+    - テナント ID。 手順については、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)」をご覧ください。
     - アプリケーション ID とアプリケーション キー。  手順については、「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)」をご覧ください。
-- Azure AD Web アプリケーションの所有者としてデータ アクセス要求を行うユーザーの ID を追加します (Azure AD Web アプリケーションから、[設定] > [所有者] > [所有者の追加])。
+- Azure AD Web アプリケーションの所有者としてデータ アクセス要求を行うユーザーの ID を追加します (Azure AD Web アプリケーションから、[設定] > [所有者] > [所有者の追加])。 
+    - ユーザー ID は、データの取得先の Office 365 組織に属している必要があり、Guest ユーザーであってはなりません。
 
 ## <a name="approving-new-data-access-requests"></a>新しいデータ アクセス要求の承認
 
@@ -79,11 +79,11 @@ Office 365 のリンクされたサービスでは、次のプロパティがサ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **Office365** に設定する必要があります | [はい] |
-| office365TenantId | Office 365 アカウントが属している Azure テナント ID です。 | [はい] |
-| servicePrincipalTenantId | Azure AD Web アプリケーションが存在するテナントの情報を指定します。 | [はい] |
-| servicePrincipalId | アプリケーションのクライアント ID を取得します。 | [はい] |
-| servicePrincipalKey | アプリケーションのキーを取得します。 Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります: **Office 365** | はい |
+| office365TenantId | Office 365 アカウントが属している Azure テナント ID です。 | はい |
+| servicePrincipalTenantId | Azure AD Web アプリケーションが存在するテナントの情報を指定します。 | はい |
+| servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
+| servicePrincipalKey | アプリケーションのキーを取得します。 Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 | はい |
 | connectVia | データ ストアに接続するために使用される統合ランタイム。  指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ  |
 
 >[!NOTE]
@@ -119,8 +119,8 @@ Office 365 からのデータ コピーについては、次のプロパティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **Office365Table** に設定する必要があります | [はい] |
-| tableName | Office 365 から抽出するデータセットの名前です。 抽出に使用できる Office 365 データセットの一覧については、[こちら](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#datasets)をご覧ください。 | [はい] |
+| type | データセットの type プロパティは **Office365Table** に設定する必要があります。 | はい |
+| tableName | Office 365 から抽出するデータセットの名前です。 抽出に使用できる Office 365 データセットの一覧については、[こちら](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#datasets)をご覧ください。 | はい |
 | predicate | Office 365 から抽出する行をフィルター処理するために使用できる述語式です。  各テーブルの述語フィルターに使用できる列とフィルター式の形式については、[こちら](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#filters)をご覧ください。 | いいえ <br>(述語が指定されていない場合は、既定の動作として、過去 30 日間のデータが抽出されます) |
 
 **例**

@@ -3,8 +3,8 @@ title: CI/CD を使用して Azure Service Fabric クラスターへコンテナ
 description: このチュートリアルでは、Visual Studio Azure DevOps を使用して、Azure Service Fabric コンテナー アプリケーションの継続的インテグレーションと継続的配置をセットアップする方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/29/2018
-ms.author: twhitney
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 06bc4be6ee485e61523d210b692c3fe2567cc62c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 37305f27203986ce2e3d06276b5169ffd9b41287
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443493"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668808"
 ---
-# <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル: CI/CD を使用して Service Fabric クラスターへコンテナー アプリケーションをデプロイする
+# <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル:CI/CD を使用して Service Fabric クラスターへコンテナー アプリケーションをデプロイする
 
 このチュートリアルはシリーズの第 2 部です。Visual Studio と Azure DevOps を使用して、Azure Service Fabric コンテナー アプリケーションの継続的インテグレーションと継続的配置を設定する方法について説明します。  既存の Service Fabric アプリケーションが必要で、「[Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする](service-fabric-host-app-in-a-container.md)」で作成されたアプリケーションを例として使用します。
 
@@ -65,7 +65,7 @@ Visual Studio の右下隅のステータス バーにある **[ソース管理*
 
 リポジトリを公開すると、ローカル リポジトリと同じ名前の新しいチーム プロジェクトが自分のアカウントに作成されます。 既存のチーム プロジェクトでリポジトリを作成するには、**[リポジトリ名]** の横にある **[詳細]** をクリックして、チーム プロジェクトを選択します。 **[See it on the web]\(Web を参照\)** を選択すると、Web でコードを表示できます。
 
-## <a name="configure-continuous-delivery-with-vsts"></a>VSTS を利用した継続的配信を設定する
+## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Azure Pipelines を使用して継続的デリバリーを構成する
 
 Azure DevOps のビルド定義では、順次実行される一連のビルド ステップで構成されたワークフローを記述します。 Service Fabric クラスターをデプロイするため、Service Fabric アプリケーション パッケージおよび他のアーティファクトを生成するビルド定義を作成します。 Azure DevOps の[ビルド定義](https://www.visualstudio.com/docs/build/define/create)について詳細を確認してください。 
 

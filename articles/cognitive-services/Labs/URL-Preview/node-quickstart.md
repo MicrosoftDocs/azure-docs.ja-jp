@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: Project URL Preview、Node.js'
+title: クイック スタート:Project URL Preview (Node.js)
 titlesuffix: Azure Cognitive Services
 description: Azure 上で Microsoft Cognitive Services の URL Preview の使用を開始します。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: url-preview
+ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 3367b39333c9d7334bc56b3acdf00453cc9705c0
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 5c373505cd381108366206c21ff09f25516d7969
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465051"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884292"
 ---
-# <a name="quickstart-url-preview-with-nodejs"></a>クイック スタート: Node.js での URL Preview 
+# <a name="quickstart-url-preview-with-nodejs"></a>クイック スタート:Node.js での URL Preview 
 
 次の Node の例では、SwiftKey Web サイト (https://swiftkey.com/en) の URL プレビューを作成します。
 
@@ -37,7 +37,7 @@ ms.locfileid: "49465051"
 
 このデモの完全なコードを次に示します。
 
-````
+```
 'use strict';
 
 let https = require('https');
@@ -83,7 +83,7 @@ let Search = function () {
 
 Search();
 
-````
+```
 
 ## <a name="next-steps"></a>次の手順
 - [C# のコード例](csharp.md)

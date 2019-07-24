@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 03e1974a91a8c3cceacab777e28e8e4a01ccb313
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/25/2019
+ms.openlocfilehash: 49686e407b2d733c04bad31706c6c4f315bf28bf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251595"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008665"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>既存のデータベースを移行してスケール アウト
 Azure SQL Database のデータベース ツール ( [Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)など) を使用して、既存のスケールアウトされたシャード化されたデータベースを簡単に管理できます。 最初に、 [シャード マップ マネージャー](sql-database-elastic-scale-shard-map-management.md)を使用するように既存のデータベース セットを変換します。 
@@ -30,7 +30,7 @@ Azure SQL Database のデータベース ツール ( [Elastic Database クライ
 3. 個々のシャードを準備します。  
 4. シャード マップにマッピングを追加します。
 
-これらの方法は、[.NET Framework クライアント ライブラリ](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)または「[Azure SQL DB - Elastic Database tools scripts (Azure SQL DB - エラスティック データベース ツール スクリプト)](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)」の PowerShell スクリプトを使用して実装できます。 この例では、PowerShell スクリプトを使用します。
+これらの方法は、[.NET Framework クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)または「[Azure SQL DB - Elastic Database tools scripts (Azure SQL DB - エラスティック データベース ツール スクリプト)](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)」の PowerShell スクリプトを使用して実装できます。 この例では、PowerShell スクリプトを使用します。
 
 ShardMapManager の詳細については、「 [シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)」を参照してください。 エラスティック データベース ツールの概要については、「 [Elastic Database 機能の概要](sql-database-elastic-scale-introduction.md)」を参照してください。
 
@@ -73,7 +73,7 @@ ShardMapManager の詳細については、「 [シャード マップの管理]
 
 ![範囲マッピング][2]
 
-または、 *リスト マッピング* を使用して複数のテナントを 1 つのデータベースに割り当てることにより、マルチテナント データベース モデルを実装できます。 たとえば、ID が 1 と 5 のテナントに関する情報を DB1 に格納し、DB2 にテナント 7 と 10 のデータを格納する、といったことができます。 
+または、*リスト マッピング* を使用して複数のテナントを 1 つのデータベースに割り当てることにより、マルチテナント データベース モデルを実装できます。 たとえば、ID が 1 と 5 のテナントに関する情報を DB1 に格納し、DB2 にテナント 7 と 10 のデータを格納する、といったことができます。 
 
 ![単一 DB 上の複数のテナント][3] 
 
@@ -98,10 +98,10 @@ ShardMapManager オブジェクトを使用してシャード マップを作成
     -RangeShardMapName 'RangeShardMap' 
     -ShardMapManager $ShardMapManager 
 
-### <a name="option-3-list-mappings-on-a-single-database"></a>オプション 3: 単一データベースでのリスト マッピング
+### <a name="option-3-list-mappings-on-an-individual-database"></a>オプション 3: 単一データベースでのリスト マッピング
 このパターンを設定するには、手順 2、オプション 1 で示したようなリスト マップも作成する必要があります。
 
-## <a name="step-3-prepare-individual-shards"></a>手順 3: 個々のシャードを準備する
+## <a name="step-3-prepare-individual-shards"></a>手順 3:個々のシャードを準備する
 各シャード (データベース) をシャード マップ マネージャーに追加します。 これは、マッピング情報を格納するための個々のデータベースの準備です。 各シャードで次のメソッドを実行します。
 
     Add-Shard 
@@ -111,7 +111,7 @@ ShardMapManager オブジェクトを使用してシャード マップを作成
     # The $ShardMap is the shard map created in step 2.
 
 
-## <a name="step-4-add-mappings"></a>手順 4: マッピングを追加する
+## <a name="step-4-add-mappings"></a>手順 4:マッピングを追加する
 マッピングの追加は、作成したシャード マップの種類によって異なります。 リスト マップを作成した場合は、リスト マッピングを追加します。 範囲マップを作成した場合は、範囲マッピングを追加します。
 
 ### <a name="option-1-map-the-data-for-a-list-mapping"></a>オプション 1: リスト マッピングのデータをマップする
@@ -138,7 +138,7 @@ ShardMapManager オブジェクトを使用してシャード マップを作成
     -SqlDatabaseName '<shard_database_name>' 
 
 
-### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-a-single-database"></a>手順 4、オプション 3: 単一データベースの複数テナントのデータをマップする
+### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-an-individual-database"></a>手順 4、オプション 3: 単一データベースの複数テナントのデータをマップする
 各テナントに対し、Add-ListMapping を実行します (オプション 1)。 
 
 ## <a name="checking-the-mappings"></a>マッピングの確認
@@ -154,7 +154,7 @@ ShardMapManager オブジェクトを使用してシャード マップを作成
 ## <a name="next-steps"></a>次の手順
 「[Azure SQL DB - Elastic Database tools scripts (Azure SQL DB - エラスティック データベース ツール スクリプト)](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)」から PowerShell スクリプトを取得します。
 
-ツールは GitHub ( [Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools)) にもあります。
+ツールは GitHub:[Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools) にもあります。
 
 マルチテナント モデルとシングルテナント モデルの間でデータを移動するには、分割/マージ ツールを使用します。 [分割/マージ ツール](sql-database-elastic-scale-get-started.md)を参照してください。
 

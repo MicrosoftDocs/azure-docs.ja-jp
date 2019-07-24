@@ -3,24 +3,25 @@ title: GPO を使用して IE 用 Azure アクセス パネル拡張機能をデ
 description: グループ ポリシーを使用してマイ アプリ ポータル用の Internet Explorer アドオンをデプロイする方法。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/08/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a21a21f40e731e8bc1d20e01d3671c372df65d84
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c7dfdd46714d367b61248d9376ce3e8888bb1ef7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622042"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176970"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法
 このチュートリアルでは、グループ ポリシーを使用して Internet Explorer 用のアクセス パネル拡張機能をユーザーのコンピューターにリモートでインストールする方法を示します。 この拡張機能は、 [パスワード ベースのシングル サインオン](what-is-single-sign-on.md#password-based-sso)を使用するように構成されているアプリにサインインする必要がある Internet Explorer ユーザーに必要なものです。
@@ -31,26 +32,26 @@ ms.locfileid: "51622042"
 
 ## <a name="prerequisites"></a>前提条件
 * [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx) を設定し、ユーザーのコンピューターをドメインに参加させている必要があります。
-* グループ ポリシー オブジェクト (GPO) を編集するには、"設定の編集" アクセス許可が必要です。 既定では、Domain Administrators、Enterprise Administrators、Group Policy Creator Owners の各セキュリティ グループ メンバーにはこのアクセス許可があります。 [詳細情報。](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
+* グループ ポリシー オブジェクト (GPO) を編集するには、"設定の編集" アクセス許可が必要です。 既定でこのアクセス許可を持っているセキュリティ グループのメンバーはDomain Administrators、Enterprise Administrators、Group Policy Creator Owners です。 [詳細情報。](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
-## <a name="step-1-create-the-distribution-point"></a>手順 1: 配布ポイントを作成する
+## <a name="step-1-create-the-distribution-point"></a>手順 1:配布ポイントを作成する
 最初に、拡張機能をリモートでインストールするコンピューターがアクセスできるネットワークの場所に、インストーラー パッケージを置く必要があります。 そのためには、次の手順に従います。
 
 1. サーバーに管理者としてログオンします。
 2. **[サーバー マネージャー]** ウィンドウで、**[ファイルおよび記憶域サービス]** に移動します。
    
     ![[ファイル サービスおよびストレージ サービス] を開く](./media/deploy-access-panel-browser-extension/files-services.png)
-3. **[共有]** タブに移動します。[タスク]  >  **[新しい共有...]** の順にクリックします
+3. **[共有]** タブに移動します。**[タスク]**  >  **[新しい共有...]** の順にクリックします
    
     ![[ファイル サービスおよびストレージ サービス] を開く](./media/deploy-access-panel-browser-extension/shares.png)
 4. **[新しい共有ウィザード]** を完了して、ユーザーのコンピューターからアクセスできるようにアクセス許可を設定します。 [共有の詳細についてはこちらを参照してください。](https://technet.microsoft.com/library/cc753175.aspx)
-5. 次の Microsoft Windows インストーラー パッケージ (.msi ファイル) をダウンロードします。[[Access Panel Extension.msi]](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
+5. 次の Microsoft Windows インストーラー パッケージ (.msi ファイル) をダウンロードします。[Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
 6. インストーラー パッケージを共有上の目的の場所にコピーします。
    
     ![.msi ファイルを共有にコピーする。](./media/deploy-access-panel-browser-extension/copy-package.png)
 7. クライアント コンピューターが共有のインストーラー パッケージにアクセスできることを確認します。 
 
-## <a name="step-2-create-the-group-policy-object"></a>手順 2: グループ ポリシー オブジェクトを作成する
+## <a name="step-2-create-the-group-policy-object"></a>手順 2:グループ ポリシー オブジェクトを作成する
 1. Active Directory Domain Services (AD DS) のインストールをホストしているサーバーにログオンします。
 2. サーバー マネージャーで、**[ツール]** > **[グループ ポリシーの管理]** に移動します。
    
@@ -71,7 +72,7 @@ ms.locfileid: "51622042"
    
     ![新しい GPO を編集する](./media/deploy-access-panel-browser-extension/edit-gpo.png)
 
-## <a name="step-3-assign-the-installation-package"></a>手順 3: インストール パッケージを割り当てる
+## <a name="step-3-assign-the-installation-package"></a>手順 3:インストール パッケージを割り当てる
 1. **[コンピューターの構成]** と **[ユーザーの構成]** のどちらを基にして拡張機能をデプロイするかを決めます。 [コンピューターの構成](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx)を使用すると、コンピューターにログオンしているユーザーに関係なく、拡張機能はコンピューターにインストールされます。 [ユーザーの構成](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx)では、ユーザーがログオンしているコンピューターに関係なく、拡張機能はユーザーに対してインストールされます。
 2. **[グループ ポリシー管理エディター]** の左側のウィンドウで、選択した構成の種類に応じて、次のどちらかのフォルダー パスに移動します。
    
@@ -80,7 +81,7 @@ ms.locfileid: "51622042"
 3. **[ソフトウェアのインストール]** を右クリックして、**[新規]**  >  **[パッケージ...]** の順に選択します
    
     ![新しいソフトウェア インストール パッケージを作成する](./media/deploy-access-panel-browser-extension/new-package.png)
-4. 「 [手順 1: 配布ポイントを作成する](#step-1-create-the-distribution-point)」でインストーラー パッケージをダウンロードした共有フォルダーに移動し、.msi ファイルを選択して、 **[開く]** をクリックします。
+4. 「[手順 1:配布ポイントを作成する](#step-1-create-the-distribution-point)」でインストーラー パッケージを含む共有フォルダーに移動し、.msi ファイルを選択して、**[開く]** をクリックします。
    
    > [!IMPORTANT]
    > 共有が同じサーバー上に存在する場合は、ローカル ファイル パスではなく、ネットワーク ファイル パスから .msi にアクセスしていることを確認します。
@@ -94,10 +95,10 @@ ms.locfileid: "51622042"
 
 選択した OU に拡張機能がデプロイされます。 [グループ ポリシー ソフトウェアのインストールの詳細についてはこちらを参照してください。](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
 
-## <a name="step-4-auto-enable-the-extension-for-internet-explorer"></a>手順 4: Internet Explorer の拡張機能を自動的に有効にする
+## <a name="step-4-auto-enable-the-extension-for-internet-explorer"></a>手順 4:Internet Explorer の拡張機能を自動的に有効にする
 Internet Explorer のすべての拡張機能は、インストーラーを実行するだけでなく、明示的に有効にしてからでないと使用できません。 グループ ポリシーを使用してアクセス パネル拡張機能を有効にするのには、次の手順に従います。
 
-1. **[グループ ポリシー管理エディター]** ウィンドウで、「 [手順 3: インストール パッケージを割り当てる](#step-3-assign-the-installation-package)」で選んだ構成の種類に応じて、次のどちらかのパスに移動します。
+1. **[グループ ポリシー管理エディター]** ウィンドウで、選択した構成の種類に応じて、次のどちらかのパスに移動します。これは、「[手順 3:インストール パッケージを割り当てる](#step-3-assign-the-installation-package)」で選択した構成の種類によって変わります。
    
    * `Computer Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
@@ -117,7 +118,7 @@ Internet Explorer のすべての拡張機能は、インストーラーを実�
 
 選択した OU のコンピューターで拡張機能が有効になります。 [グループ ポリシーを使用して Internet Explorer のアドオンを有効または無効にする方法の詳細については、こちらを参照してください。](https://technet.microsoft.com/library/dn454941.aspx)
 
-## <a name="step-5-optional-disable-remember-password-prompt"></a>手順 5 (省略可能): パスワードを保存するかどうかを確認するプロンプトを無効にする
+## <a name="step-5-optional-disable-remember-password-prompt"></a>手順 5 (省略可能):パスワードを保存するかどうかを確認するプロンプトを無効にする
 ユーザーがアクセス パネル拡張機能を使用してサインインするときに、Internet Explorer でパスワードを保存するかどうかを確認する次のプロンプトが表示されることがあります。
 
 ![パスワード プロンプト](./media/deploy-access-panel-browser-extension/remember-password-prompt.png)
@@ -148,10 +149,10 @@ Internet Explorer のすべての拡張機能は、インストーラーを実�
 > 
 > 
 
-## <a name="step-6-testing-the-deployment"></a>手順 6: デプロイのテスト
+## <a name="step-6-testing-the-deployment"></a>手順 6:デプロイのテスト
 拡張機能のデプロイメントが成功したかどうかを確認するには、次の手順に従います。
 
-1. **[コンピューターの構成]** を使用してデプロイした場合は、「 [手順 2: グループ ポリシー オブジェクトを作成する](#step-2-create-the-group-policy-object)」で選択した OU に属しているクライアント コンピューターにサインインします。 **[ユーザーの構成]** を使用してデプロイした場合は、その OU に属しているユーザーとしてサインインします。
+1. **[コンピューターの構成]** を使用してデプロイした場合は、「[手順 2:グループ ポリシー オブジェクトを作成する](#step-2-create-the-group-policy-object)」で選択した OU に属しているクライアント コンピューターにサインインします。 **[ユーザーの構成]** を使用してデプロイした場合は、その OU に属しているユーザーとしてサインインします。
 2. そのコンピューターでグループ ポリシーの変更が完全に更新されるには、2 回サインインする必要がある場合があります。 強制的に更新するには、**[コマンド プロンプト]** ウィンドウを開き、次のコマンドを実行します。`gpupdate /force`
 3. インストールが行われるには、コンピューターを再起動する必要があります。 起動には、通常の拡張機能のインストールよりかなり長い時間がかかる可能性があります。
 4. コンピューターが再起動したら、 **Internet Explorer**を開きます。 ウィンドウの右上隅の **[ツール]** (歯車アイコン) をクリックし、**[アドオンの管理]** をクリックします。

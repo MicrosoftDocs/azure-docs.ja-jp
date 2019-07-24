@@ -1,40 +1,41 @@
 ---
-title: Azure SQL Database サービス レベル - DTU | Microsoft Docs
-description: 単一のデータベースとプールされたデータベースに対してコンピューティング サイズとストレージ サイズを提供するサービス レベルについて説明します。
+title: Azure SQL Database サービス レベル - DTU ベースの購入モデル | Microsoft Docs
+description: コンピューティング サイズやストレージ サイズを提供するための単一データベースとプールされたデータベースに対する DTU ベースの購入モデルでのサービス レベルについて説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: sachinpMSFT
-ms.author: sachinp
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: 00e5a77bdf8554d473194b2e84947d7adb10df90
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 02/25/2019
+ms.openlocfilehash: 57a20ac29ec3a15db26e0ab2c0b61b57ab3a5882
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955260"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004008"
 ---
-# <a name="dtu-based-service-tiers"></a>DTU ベースのサービス レベル
+# <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU ベースの購入モデルでのサービス レベル
 
-DTU ベースのサービス レベルは、固定の付属ストレージ容量、固定のバックアップ保有期間、固定の価格を持つさまざまなコンピューティング サイズによって区別されます。 すべてのサービス レベルで、ダウンタイムなしでコンピューティング サイズを柔軟に変更できます。 単一データベースとエラスティック プールは、サービス レベルとコンピューティング サイズに基づいて時間単位で課金されます。
+DTU ベースの購入モデルでのサービス レベルは、固定された量の付属ストレージ、固定されたバックアップ保有期間、および固定された価格を持つさまざまなコンピューティング サイズによって区別されます。 DTU ベースの購入モデルでのすべてのサービス レベルによって、ダウンタイムなしでコンピューティング サイズを変更する柔軟性が提供されます。 単一データベースとエラスティック プールは、サービス レベルとコンピューティング サイズに基づいて時間単位で課金されます。
 
 > [!IMPORTANT]
-> SQL Database Managed Instance は、現在、パブリック プレビュー段階であり、DTU ベースの購入モデルをサポートしていません。 詳細については、[Azure SQL Database Managed Instance に関するページ](sql-database-managed-instance.md)を参照してください。
+> SQL Database Managed Instance は、DTU ベースの購入モデルをサポートしていません。 詳細については、[Azure SQL Database Managed Instance に関するページ](sql-database-managed-instance.md)を参照してください。
 > [!NOTE]
-> 仮想コアベースのサービス レベルの詳細については、[仮想コアベースのサービス レベル](sql-database-service-tiers-vcore.md)に関するページを参照してください。 DTU ベースのサービス レベルと仮想コアベースのサービス レベルの違いの詳細については、[Azure SQL Database の購入モデル](sql-database-service-tiers.md)に関するページを参照してください。
+> 仮想コアベースのサービス レベルの詳細については、[仮想コアベースのサービス レベル](sql-database-service-tiers-vcore.md)に関するページを参照してください。 DTU ベースのサービス レベルと仮想コアベースのサービス レベルの違いの詳細については、[Azure SQL Database の購入モデル](sql-database-purchase-models.md)に関するページを参照してください。
 
 ## <a name="compare-the-dtu-based-service-tiers"></a>DTU ベースのサービス レベルを比較する
 
 サービス レベルの選択は、主に、ビジネス継続性、ストレージ、およびパフォーマンスの要件に依存します。
+
 ||Basic|標準|Premium|
-| :-- | --: |--:| --:| --:|
-|対象のワークロード|開発、運用|開発、運用|開発、運用||
-|アップタイム SLA|99.99%|99.99%|99.99%|プレビューは対象外|
+| :-- | --: |--:| --:|
+|対象のワークロード|開発、運用|開発、運用|開発、運用|
+|アップタイム SLA|99.99%|99.99%|99.99%|
 |バックアップ保有期間|7 日|35 日|35 日|
 |CPU|低|低、中、高|中、高|
 |IO スループット (概算) |DTU あたり 2.5 IOPS| DTU あたり 2.5 IOPS | DTU あたり 48 IOPS|
@@ -48,13 +49,13 @@ DTU ベースのサービス レベルは、固定の付属ストレージ容量
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Single Database の DTU と容量の上限
 
-コンピューティング サイズは、単一データベースの場合はデータベース トランザクション ユニット (DTU) で、エラスティック プールの場合はエラスティック データベース トランザクション ユニット (eDTU) で表されます。 DTU と eDTU の詳細については、[DTU ベースの購入モデル](sql-database-service-tiers.md#dtu-based-purchasing-model)に関するページを参照してください。
+コンピューティング サイズは、単一データベースの場合はデータベース トランザクション ユニット (DTU) で、エラスティック プールの場合はエラスティック データベース トランザクション ユニット (eDTU) で表されます。 DTU と eDTU の詳細については、[DTU ベースの購入モデル](sql-database-purchase-models.md#dtu-based-purchasing-model)に関するページを参照してください。
 
 ||Basic|標準|Premium|
-| :-- | --: | --: | --: | --: |
+| :-- | --: | --: | --: |
 | 最大ストレージ サイズ | 2 GB | 1 TB (テラバイト) | 4 TB  |
-| 最大 DTU | 5 | 3000 | 4000 | |
-||||||
+| 最大 DTU | 5 | 3000 | 4000 | 
+|||||
 
 > [!IMPORTANT]
 > 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
@@ -62,16 +63,16 @@ DTU ベースのサービス レベルは、固定の付属ストレージ容量
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>エラスティック プールの eDTU、ストレージ、プールされているデータベースの上限
 
 | | **Basic** | **Standard** | **Premium** |
-| :-- | --: | --: | --: | --: |
+| :-- | --: | --: | --: |
 | データベースあたりの最大ストレージ サイズ  | 2 GB | 1 TB (テラバイト) | 1 TB (テラバイト) |
 | プールあたりの最大ストレージ サイズ | 156 GB | 4 TB | 4 TB |
 | データベースあたりの最大 eDTU 数 | 5 | 3000 | 4000 |
 | プールあたりの最大 eDTU 数 | 1600 | 3000 | 4000 |
 | プールあたりのデータベースの最大数 | 500  | 500 | 100 |
-||||||
+|||||
 
 > [!IMPORTANT]
-> 現在、米国中西部、中国東部、US DoD 中部、ドイツ中部、US DoD 東部、US Gov 南西部、USGov アイオワ、ドイツ北東部、中国北部を除くすべてのリージョンでは、Premium レベルで 1 TB を超えるストレージを使用できます。 それ以外のリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。 [P11 ～ P15 の現時点での制限](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
+> 現在、1 TB を超える Premium レベルのストレージは、中国東部、中国北部、ドイツ中部、ドイツ北東部、米国中西部、米国 DoD の各リージョンと、米国政府中部を除くすべてのリージョンで利用できます。 これらのリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。  詳しくは、[P11-P15 の現在の制限事項](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)に関するページをご覧ください。  
 > [!IMPORTANT]
 > 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
 
@@ -87,7 +88,7 @@ DTU の各測定に関連付けられている物理的な特性 (CPU、メモ�
 
 ### <a name="benchmark-summary"></a>ベンチマークの概要
 
-ASDB は、オンライン トランザクション処理 (OLTP) ワークロードで最も頻繁に発生するさまざまな基本的データベース操作のパフォーマンスを測定します。 ベンチマークはクラウド コンピューティングを考慮して設計されていますが、データベース スキーマ、データの設定、およびトランザクションは、OLTP ワークロードでよく使用される基本的な要素を広く表すように設計されています。
+このベンチマークは、オンライン トランザクション処理 (OLTP) ワークロードで最も頻繁に発生する、混在した基本的なデータベース操作のパフォーマンスを測定します。 ベンチマークはクラウド コンピューティングを考慮して設計されていますが、データベース スキーマ、データの設定、およびトランザクションは、OLTP ワークロードでよく使用される基本的な要素を広く表すように設計されています。
 
 ### <a name="schema"></a>スキーマ
 
@@ -165,7 +166,7 @@ ASDB は、オンライン トランザクション処理 (OLTP) ワークロー
 | サービスのクラス | スループットの測定 | 応答時間の要件 |
 | --- | --- | --- |
 | Premium |1 秒あたりのトランザクション数 |0.5 秒で第 95 百分位数 |
-| 標準 |1 分あたりのトランザクション数 |1.0 秒で第 90 百分位数 |
+| Standard |1 分あたりのトランザクション数 |1.0 秒で第 90 百分位数 |
 | 基本 |1 時間あたりのトランザクション数 |2.0 秒で第 80 百分位数 |
 
 ## <a name="next-steps"></a>次の手順

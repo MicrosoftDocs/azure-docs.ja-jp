@@ -2,7 +2,7 @@
 title: Azure Batch プール削除開始イベント | Microsoft Docs
 description: Batch のプール削除開始イベントのリファレンスです。
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: danlep
-ms.openlocfilehash: 8737b9ff6452730ff5a55fa7324e37f0fe715433
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: lahugh
+ms.openlocfilehash: 2352971af3844b56f93c16ebaf6cb23bd5fd8a5a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30312061"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474294"
 ---
 # <a name="pool-delete-start-event"></a>プール削除の開始イベント
 

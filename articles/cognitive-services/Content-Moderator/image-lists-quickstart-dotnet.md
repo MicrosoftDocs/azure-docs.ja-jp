@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: C# でカスタム リストと照らして画像を確認する - Content Moderator'
+title: クイック スタート:C# でカスタム リストと照らして画像を確認する - Content Moderator
 titlesuffix: Azure Cognitive Services
 description: Content Moderator SDK for C# を使用し、カスタム画像リストと照らして画像をモデレートする方法。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: 7165bdc4aebec886a57990281bc35c83b1d7bf04
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: ded5b097e7c8feab56e2d82cb44f92e3127519e2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309401"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55881793"
 ---
-# <a name="quickstart-moderate-with-custom-image-lists-in-c"></a>クイック スタート: C# でカスタム画像リストを使用してモデレートする
+# <a name="quickstart-moderate-with-custom-image-lists-in-c"></a>クイック スタート:C# でカスタム画像リストを使用してモデレートする
 
 この記事では、[Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) を使用して次の操作をすぐに開始するために役立つ情報とコード サンプルを提供します。
 - カスタム画像リストを作成する

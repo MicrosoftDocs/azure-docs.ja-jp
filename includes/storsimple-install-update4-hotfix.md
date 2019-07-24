@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: f0c631c765ba95602fb2ac3ab1fd72732793a199
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0755c01fe8e13e8e39c0b453198f2b67c51a2bc4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264087"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125125"
 ---
-<!--author=alkohli last changed: 01/23/18-->
-
 #### <a name="to-download-hotfixes"></a>修正プログラムをダウンロードするには
 
 次の手順を実行して、Microsoft Update カタログからソフトウェア更新プログラムをダウンロードします。
@@ -54,7 +52,7 @@ ms.locfileid: "51264087"
    
     最初の注文の更新プログラムをインストールするためのサンプル出力を次に示します。 最初の注文の更新プログラムについては、特定のファイルを指定する必要があります。
    
-        ````
+        ```
         Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
         \FirstOrderUpdate\HcsSoftwareUpdate.exe -Credential contoso\John
    
@@ -65,7 +63,7 @@ ms.locfileid: "51264087"
         be disrupted. Are you sure you want to continue?
         [Y] Yes [N] No [?] Help (default is "Y"): Y
    
-        ````
+        ```
 4. 修正プログラムのインストールの確認を求められたら、「 **Y** 」と入力します。
 5. `Get-HcsUpdateStatus` コマンドレットを使用して、更新プログラムを監視します。 更新プログラムはまずパッシブ コントローラーで完了します。 パッシブ コントローラーが更新されると、フェイル オーバーが発生し、もう一方のコントローラーに更新プログラムが適用されます。 更新プログラムは両方のコントローラーが更新されると完了します。
    
@@ -94,19 +92,19 @@ ms.locfileid: "51264087"
     > [!NOTE]
     > 場合によっては、更新がまだ進行中であっても、コマンドレットは `False` とレポートします。 修正プログラムが完了したことを確認するには、数分待ってから、このコマンドを再実行し、`RunInProgress` が `False` になっていることを確認します。 False の場合、修正プログラムは完了しています。
 
-6. ソフトウェアの更新が完了したら、システムのソフトウェア バージョンを確認します。 次のコマンドを入力します: 
+6. ソフトウェアの更新が完了したら、システムのソフトウェア バージョンを確認します。 型: 
    
     `Get-HcsSystem`
    
     次のバージョンが表示されます。
    
    * `FriendlySoftwareVersion: StorSimple 8000 Series Update 4.0`
-   *  `HcsSoftwareVersion: 6.3.9600.17820`
+   * `HcsSoftwareVersion: 6.3.9600.17820`
    
-    更新プログラムの適用後にバージョン番号が変わらない場合は、修正プログラムの適用に失敗したことを示します。 そのような場合は、[Microsoft サポート](../articles/storsimple/storsimple-contact-microsoft-support.md)にお問い合わせください。
+     更新プログラムの適用後にバージョン番号が変わらない場合は、修正プログラムの適用に失敗したことを示します。 そのような場合は、[Microsoft サポート](../articles/storsimple/storsimple-contact-microsoft-support.md)にお問い合わせください。
      
-    > [!IMPORTANT]
-    > 次の更新プログラムを適用する前に、`Restart-HcsController` コマンドレットを使用してアクティブ コントローラーを再起動する必要があります。
+     > [!IMPORTANT]
+     > 次の更新プログラムを適用する前に、`Restart-HcsController` コマンドレットを使用してアクティブ コントローラーを再起動する必要があります。
      
 7. 手順 3. ～ 5. を繰り返して、_FirstOrderUpdate_ フォルダーにダウンロードした Cis/MDS エージェントをインストールします。 
 8. 2 番目の注文の更新プログラムをインストールするには、手順 3 から 5 を繰り返します。 **2 番目の注文の更新プログラムについては、`Start-HcsHotfix cmdlet` だけを実行し、2 番目の注文の更新プログラムが含まれているフォルダーを指定することで、複数の更新プログラムをインストールできます。このコマンドレットを使用すると、フォルダー内の利用できるすべての更新プログラムが実行されます。** 更新プログラムが既にインストールされている場合、更新ロジックはそれを検出し、その更新プログラムを適用しません。 
@@ -125,7 +123,7 @@ KB4011837 を使用して、ディスク ファームウェアの更新プログ
 
 ディスク ファームウェアの更新プログラムをインストールするには、次の指示に従います。
 
-1. デバイスをメンテナンス モードにします。 **デバイスにメンテナンス モードで接続するときは、Windows PowerShell リモート処理を使用しないでください。デバイスのシリアル コンソールを通して接続したときは、代わりにデバイス コントローラーでこのコマンドレットを実行します。** 次のコマンドを入力します: 
+1. デバイスをメンテナンス モードにします。 **デバイスにメンテナンス モードで接続するときは、Windows PowerShell リモート処理を使用しないでください。デバイスのシリアル コンソールを通して接続したときは、代わりにデバイス コントローラーでこのコマンドレットを実行します。** 型: 
    
     `Enter-HcsMaintenanceMode`
    
@@ -166,7 +164,7 @@ KB4011837 を使用して、ディスク ファームウェアの更新プログ
         [Y] Yes [N] No (Default is "Y"): Y
         WARNING: Installation is currently in progress. This operation can take several minutes to complete.
 3. `Get-HcsUpdateStatus` コマンドを使用して、インストールの進行状況を監視します。 更新が完了すると、`RunInProgress` が `False` に変わります。
-4. インストールが完了すると、メンテナンス モードの修正プログラムがインストールされたコントローラーが再起動されます。 オプション 1 の **[Log in with full access]\(フル アクセスによるログイン\)** を選択し、ディスクのファームウェアのバージョンを確認します。 次のコマンドを入力します: 
+4. インストールが完了すると、メンテナンス モードの修正プログラムがインストールされたコントローラーが再起動されます。 オプション 1 の **[Log in with full access]\(フル アクセスによるログイン\)** を選択し、ディスクのファームウェアのバージョンを確認します。 型: 
    
    `Get-HcsFirmwareVersion`
    

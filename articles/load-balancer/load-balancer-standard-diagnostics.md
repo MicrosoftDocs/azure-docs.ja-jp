@@ -1,13 +1,11 @@
 ---
-title: Azure Standard Load Balancer による診断 | Microsoft Docs
+title: Azure Standard Load Balancer の診断
+titlesuffix: Azure Load Balancer
 description: Azure Standard Load Balancer による診断で利用できるメトリックと正常性情報を使用します。
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 46b152c5-6a27-4bfc-bea3-05de9ce06a57
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2018
 ms.author: Kumud
-ms.openlocfilehash: 6c730455e2d8b590a4e4b9ca0392985918678bf4
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 77c3c595994092ff2ca68f3cefa5eb3c8a54bcd6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167700"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189049"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Standard Load Balancer のメトリックと正常性の診断
 
 Azure Standard Load Balancer は、リソースに次の診断機能を提供しています。
-* **多次元メトリック**: パブリックと内部両方のロード バランサー構成用に、[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) によって新しい多次元診断機能が提供されています。 ロード バランサー リソースの監視、管理、トラブルシューティングを行うことができます。
+* **多次元メトリック**:パブリックと内部両方のロード バランサー構成用に、[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) によって新しい多次元診断機能が提供されています。 ロード バランサー リソースの監視、管理、トラブルシューティングを行うことができます。
 
-* **リソース正常性**: Azure Portal の [ロード バランサー] ページおよび ([Monitor]\(監視\) の) [リソース正常性] ページに、Standard Load Balancer のパブリック ロード バランサー構成の [リソース正常性] セクションが表示されます。
+* **リソース正常性**:Azure portal の [ロード バランサー] ページおよび ([監視] の) [リソース正常性] ページに、Standard Load Balancer のパブリック ロード バランサー構成の [リソース正常性] セクションが表示されます。
 
 この記事では、これらの機能の概要、および Standard Load Balancer でこれらの機能を使う方法について説明します。
 
@@ -59,7 +57,7 @@ Standard Load Balancer リソースのメトリックを表示するには:
 
 ![Standard Load Balancer のメトリックのプレビュー](./media/load-balancer-standard-diagnostics/LBMetrics1.png)
 
-*図: Standard Load Balancer の DIP 可用性と正常性プローブの状態のメトリック*
+*図:Standard Load Balancer の DIP 可用性と正常性プローブの状態のメトリック*
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>API を使用してプログラムで多次元メトリックを取得する
 
@@ -82,7 +80,7 @@ Standard Load Balancer リソースの VIP 可用性を取得するには:
 
 ![VIP のプローブ](./media/load-balancer-standard-diagnostics/LBMetrics-VIPProbing.png)
 
-*図: Load Balancer VIP プローブの詳細*
+*図:Load Balancer VIP プローブの詳細*
 
 アクティブな帯域内測定によってメトリックが生成されます。 リージョン内のプローブ サービスから測定のためのトラフィックが発生します。 このサービスは、パブリック フロント エンドでデプロイが作成されるとすぐにアクティブになり、パブリック フロント エンドが削除されるまで継続します。 
 
@@ -109,7 +107,7 @@ Standard Load Balancer リソースの DIP 可用性を取得するには:
 
 ![DIP 可用性](./media/load-balancer-standard-diagnostics/LBMetrics-DIPAvailability.png)
 
-*図: Load Balancer の VIP 可用性*
+*図:Load Balancer の VIP 可用性*
 
 正常性プローブは次の理由で失敗します。
 - リッスンしていないポート、応答していないポート、または正しくないプロトコルを使用しているポートに対して、正常性プローブを構成している。 サービスが Direct Server Return (DSR、またはフローティング IP) ルールを使っている場合は、サービスが、フロントエンド IP アドレスで構成されたループバックだけでなく、NIC の IP 構成の IP アドレスでリッスンしていることを確認します。
@@ -129,7 +127,7 @@ SNAT 接続の統計情報を取得するには:
 
 ![SNAT 接続](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
-*図: Load Balancer の SNAT 接続の数*
+*図:Load Balancer の SNAT 接続の数*
 
 
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>サービスに対する受信/送信接続の試行を確認する方法
@@ -140,7 +138,7 @@ SYN パケット メトリックは、特定のフロントエンドに関連付
 
 ![SYN 接続](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
-*図: Load Balancer の SYN の数*
+*図:Load Balancer の SYN の数*
 
 
 #### <a name="how-do-i-check-my-network-bandwidth-consumption"></a>ネットワーク帯域幅の消費量を確認する方法 
@@ -157,7 +155,7 @@ SYN パケット メトリックは、特定のフロントエンドに関連付
 
 ![バイト数](./media/load-balancer-standard-diagnostics/LBMetrics-ByteCount.png)
 
-*図: Load Balancer のバイト数*
+*図:Load Balancer のバイト数*
 
 #### <a name = "vipavailabilityandhealthprobes"></a>ロード バランサーのデプロイを診断する方法
 
@@ -169,7 +167,7 @@ VIP 可用性メトリックと正常性プローブ メトリックを 1 つの
 
 ![VIP 診断](./media/load-balancer-standard-diagnostics/LBMetrics-DIPnVIPAvailability.png)
 
-*図: DIP 可用性メトリックと VIP 可用性メトリックの組み合わせ*
+*図:DIP 可用性メトリックと VIP 可用性メトリックの組み合わせ*
 
 このグラフには次の情報が表示されます。
 - インフラストラクチャ自体は正常であり、VM をホストしているインフラストラクチャには到達可能で、複数の VM がバックエンドに配置されていました。 この情報は、VIP 可用性の青いトレース (100% と表示) によって示されています。 
@@ -193,19 +191,19 @@ Standard Load Balancer リソースの正常性状態は、**[Monitor]\(監視\)
 
    ![[Monitor]\(監視\) ページ](./media/load-balancer-standard-diagnostics/LBHealth1.png)
 
-   *図: Azure Monitor のサービス正常性のリンク*
+   *図:Azure Monitor のサービス正常性のリンク*
 
 2. **[リソース正常性]** を選び、**[サブスクリプション ID]** が選ばれていることと **[リソースの種類] = [ロード バランサー]** に設定されていることを確認します。
 
    ![リソースの正常性状態](./media/load-balancer-standard-diagnostics/LBHealth3.png)
 
-   *図: 正常性ビューを表示するリソースの選択*
+   *図:正常性ビューを表示するリソースの選択*
 
 3. 一覧で、正常性状態の履歴を表示するロード バランサー リソースを選択します。
 
     ![Load Balancer の正常性状態](./media/load-balancer-standard-diagnostics/LBHealth4.png)
 
-   *図: Load Balancer リソースの正常性ビュー*
+   *図:Load Balancer リソースの正常性ビュー*
  
 さまざまなリソースの正常性状態とその説明を次の表に示します。 
 
@@ -220,6 +218,6 @@ Standard Load Balancer リソースの正常性状態は、**[Monitor]\(監視\)
 - [Standard Load Balancer](load-balancer-standard-overview.md) の詳細を確認する。
 - [ロード バランサーの送信接続](https://aka.ms/lboutbound)の詳細を確認します。
 - [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) について学習する。
-- [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) および [REST API を使用してメトリックを取得する方法](https://docs.microsoft.com/rest/api/monitor/metrics/metrics_list)を学習する。
+- [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) および [REST API を使用してメトリックを取得する方法](/rest/api/monitor/metrics/list)を学習する。
 
 

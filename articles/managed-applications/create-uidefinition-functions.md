@@ -1,6 +1,6 @@
 ---
-title: Azure マネージ アプリケーションの UI 定義作成機能 | Microsoft Docs
-description: Azure マネージ アプリケーションの UI 定義を作成するときに使う機能について説明します
+title: Azure マネージド アプリケーションの UI 定義作成機能 | Microsoft Docs
+description: Azure マネージド アプリケーションの UI 定義を作成するときに使う機能について説明します。
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: a01a59a7e8c9757cb41d328cd26a34fa219f9152
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 80fd593eecf189d516a8c9d7ef2a94ec9f23fc39
+ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304506"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54063796"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 関数
 このセクションには、サポートされているすべての CreateUiDefinition 関数の署名が含まれています。
@@ -80,7 +80,7 @@ ms.locfileid: "34304506"
 たとえば、`element1` の出力値が `"bar"` の場合、この例は文字列 `"foobar!"` を返します。
 
 ```json
-"[concat('foo', steps('step1').element1), '!']"
+"[concat('foo', steps('step1').element1, '!')]"
 ```
 
 ### <a name="substring"></a>substring
@@ -101,7 +101,7 @@ ms.locfileid: "34304506"
 "[replace('Everything is terrible!', 'terrible', 'awesome')]"
 ```
 
-### <a name="guid"></a>GUID
+### <a name="guid"></a>guid
 グローバルに一意の文字列 (GUID) が生成されます。
 
 次の例では、`"c7bc8bdc-7252-4a82-ba53-7c468679a511"` などが返されます。
@@ -644,7 +644,7 @@ ms.locfileid: "34304506"
 ```
 
 ## <a name="math-functions"></a>算術関数
-### <a name="add"></a>追加
+### <a name="add"></a>add
 2 つの数値が加算され、結果が返されます。
 
 次の例は、 `3`を返します。
@@ -695,7 +695,7 @@ ms.locfileid: "34304506"
 "[mod(6, 4)]"
 ```
 
-### <a name="min"></a>Min
+### <a name="min"></a>min
 2 つの数値の小さい方が返されます。
 
 次の例は、 `1`を返します。

@@ -1,5 +1,5 @@
 ---
-title: HDInsight 上で Apache Pig を使用する
+title: Apache Pig の使用 - Azure HDInsight
 description: HDInsight 上の Apache Hadoop で Pig を使用する方法について説明します。
 services: hdinsight
 author: hrasheed-msft
@@ -9,30 +9,30 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 6a1247048907d81b3c9db644bcdb7b5e5eee5fba
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 2b0f3a4394267a808b6e6e0a73abfaf1e698ff1c
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633633"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445034"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>HDInsight 上の Apache Pig で Apache Pig を使用する
 
-HDInsight で [Apache Pig](http://pig.apache.org/) を使用する方法について説明します。
+HDInsight で [Apache Pig](https://pig.apache.org/) を使用する方法について説明します。
 
 Apache Pig は、*Pig Latin* として知られている手続き型言語を使用して Apache Hadoop 用のプログラムを作成するためのプラットフォームです。 Pig は、 *MapReduce* ソリューションを作成するために Java の代わりに使用され、Azure HDInsight に含まれています。 HDInsight で Pig を使用するさまざまな方法を次の表に示します。
 
 | **方法**  | **対話型** シェルの有無 | **バッチ** 処理の有無 | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
 |:--- |:---:|:---:|:--- |:--- |
-| [SSH](apache-hadoop-use-pig-ssh.md) |✔ |✔ | Linux |Linux、Unix、Mac OS X、または Windows |
+| [SSH](apache-hadoop-use-pig-ssh.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X、または Windows |
 | [REST API](apache-hadoop-use-pig-curl.md) |&nbsp; |✔ |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
 | [.NET SDK for Hadoop](apache-hadoop-use-pig-dotnet-sdk.md) |&nbsp; |✔ |Linux または Windows |Windows (現時点) |
-| [Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux または Windows | Windows |
+| [Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux または Windows |Windows |
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
-## <a id="why"></a>Pig を使用する理由
+## <a id="why"></a>Apache Pig を使用する理由
 
 Hadoop での MapReduce を使用したデータ処理における課題の 1 つは、map と reduce 関数のみを使用する処理ロジックの実装です。 複雑な処理では、多くの場合、望ましい結果を得るために、一緒にチェーンされている複数の MapReduce 操作に処理を分割する必要があります。
 
@@ -40,23 +40,23 @@ Pig では、データ フローに使用される一連の変換として処理
 
 Pig Latin 言語では、生の入力から 1 つ以上の変換を介して目的の出力を生成するデータ フローを記述できます。 Pig Latin プログラムはこの一般的なパターンに従います。
 
-* **Load**: 操作対象のデータをファイル システムから読み取ります。
+* **load**:操作対象のデータをファイル システムから読み取ります。
 
-* **Transform**: データを操作します。
+* **transform**:データを操作します。
 
-* **Dump または store**: データを画面に出力します。または、処理できるように保存します。
+* **dump または store**:データを画面に出力します。または、処理できるように保存します。
 
 ### <a name="user-defined-functions"></a>ユーザー定義関数
 
 Pig Latin ではユーザー定義関数 (UDF) もサポートされています。これを使用して、Pig Latin でのモデル化が困難なロジックを実装する外部コンポーネントを呼び出すことができます。
 
-Pig Latin の詳細については、「[Pig Latin Reference Manual 1](http://archive.cloudera.com/cdh/3/pig/piglatin_ref1.html)」および「[Pig Latin Reference Manual 2](http://archive.cloudera.com/cdh/3/pig/piglatin_ref2.html)」を参照してください。
+Pig Latin の詳細については、「[Pig Latin Reference Manual 1](https://archive.cloudera.com/cdh/3/pig/piglatin_ref1.html)」および「[Pig Latin Reference Manual 2](https://archive.cloudera.com/cdh/3/pig/piglatin_ref2.html)」を参照してください。
 
 Pig での UDF の使用例については、以下のドキュメントを参照してください。
 
-* [HDInsight における DataFu と Pig の使用](apache-hadoop-use-pig-datafu-udf.md) - DataFu は Apacheによって管理される便利な UDF のコレクションです。
-* [HDInsight における Python と Pig および Hive の使用](python-udf-hdinsight.md)
-* [HDInsight における C# と Hive および Pig の使用](apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [HDInsight における Apache DataFu と Apache Pig の使用](apache-hadoop-use-pig-datafu-udf.md) - DataFu は Apache によって管理される便利な UDF のコレクションです。
+* [HDInsight 上の Apache Pig と Apache Hive で Python を使用する](python-udf-hdinsight.md)
+* [HDInsight 上の Apache Hive と Apache Pig で C# を使用する](apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
 ## <a id="data"></a>サンプル データ
 
@@ -68,8 +68,8 @@ HDInsight にはさまざまなサンプル データ セットが用意され�
 
 前の例では、ログ レベルは ERROR です。
 
-> [!NOTE]
-> また、 [Apache Log4j](http://en.wikipedia.org/wiki/Log4j) ログ ツールを使用して log4j ファイルを生成し、そのファイルを BLOB にアップロードすることもできます。 手順については、「[データを HDInsight にアップロードする方法](../hdinsight-upload-data.md)」を参照してください。 HDInsight と共に Azure ストレージの BLOB を使用する方法の詳細については、「[HDInsight での Azure BLOB ストレージの使用](../hdinsight-hadoop-use-blob-storage.md)」を参照してください。
+> [!NOTE]  
+> また、 [Apache Log4j](https://en.wikipedia.org/wiki/Log4j) ログ ツールを使用して log4j ファイルを生成し、そのファイルを BLOB にアップロードすることもできます。 手順については、「[データを HDInsight にアップロードする方法](../hdinsight-upload-data.md)」を参照してください。 HDInsight と共に Azure ストレージの BLOB を使用する方法の詳細については、「[HDInsight での Azure BLOB ストレージの使用](../hdinsight-hadoop-use-blob-storage.md)」を参照してください。
 
 ## <a id="job"></a>サンプル ジョブ
 
@@ -93,12 +93,12 @@ HDInsight では、さまざまな方法を使用して Pig Latin ジョブを�
 
 | **方法**  | **対話型** シェルの有無 | **バッチ** 処理の有無 | 使用する **クラスターのオペレーティング システム** | 使用元の**クライアント** |
 |:--- |:---:|:---:|:--- |:--- |
-| [SSH](apache-hadoop-use-pig-ssh.md) |✔ |✔ | Linux |Linux、Unix、Mac OS X、または Windows |
+| [SSH](apache-hadoop-use-pig-ssh.md) |✔ |✔ |Linux |Linux、Unix、Mac OS X、または Windows |
 | [Curl](apache-hadoop-use-pig-curl.md) |&nbsp; |✔ |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
 | [.NET SDK for Hadoop](apache-hadoop-use-pig-dotnet-sdk.md) |&nbsp; |✔ |Linux または Windows |Windows (現時点) |
-| [Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux または Windows | Windows |
+| [Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux または Windows |Windows |
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="pig-and-sql-server-integration-services"></a>Pig および SQL Server Integration Services
@@ -115,17 +115,17 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 これで、HDInsight で Pig を使用する方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
 
 * [HDInsight へのデータのアップロード](../hdinsight-upload-data.md)
-* [HDInsight での Hive の使用][hdinsight-use-hive]
-* [HDInsight での Sqoop の使用](hdinsight-use-sqoop.md)
-* [HDInsight での Oozie の使用](../hdinsight-use-oozie.md)
+* [HDInsight での Apache Hive の使用][hdinsight-use-hive]
+* [HDInsight での Apache Sqoop の使用](hdinsight-use-sqoop.md)
+* [HDInsight での Apache Oozie の使用](../hdinsight-use-oozie-linux-mac.md)
 * [HDInsight での MapReduce ジョブの使用][hdinsight-use-mapreduce]
 
-[apachepig-home]: http://pig.apache.org/
-[putty]: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
-[curl]: http://curl.haxx.se/
-[pigtask]: http://msdn.microsoft.com/library/mt146781(v=sql.120).aspx
-[connectionmanager]: http://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
-[ssispack]: http://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
+[apachepig-home]: https://pig.apache.org/
+[putty]: https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
+[curl]: https://curl.haxx.se/
+[pigtask]: https://msdn.microsoft.com/library/mt146781(v=sql.120).aspx
+[connectionmanager]: https://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
+[ssispack]: https://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 
 [hdinsight-use-hive]:../hdinsight-use-hive.md
@@ -136,7 +136,7 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 
 [Powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
-[powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
+[powershell-start]: https://technet.microsoft.com/library/hh847889.aspx
 
 
 [image-hdi-pig-data-transformation]: ./media/hdinsight-use-pig/HDI.DataTransformation.gif

@@ -1,28 +1,21 @@
 ---
-title: 'Azure ExpressRoute の Microsoft ピアリングにルート フィルターを構成する: ポータル | Microsoft Docs'
-description: この記事では、Azure Portal を使って Microsoft ピアリングにルート フィルターを構成する方法について説明します
-documentationcenter: na
+title: Microsoft ピアリングにルート フィルターを構成する:Azure ExpressRoute - ポータル | Microsoft Docs
+description: この記事では、Azure portal を使って Microsoft ピアリングにルート フィルターを構成する方法について説明します。
 services: expressroute
 author: ganesr
-manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/26/2017
+ms.date: 09/26/2018
 ms.author: ganesr
-ms.openlocfilehash: ab0cd45334581f6f5c6dd6e86939e018df5de074
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.custom: seodec18
+ms.openlocfilehash: 0515b5e85c3bcf56f1f238620d6036d1be0bec7e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29387729"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104207"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Microsoft ピアリングにルート フィルターを構成する: Azure Portal
+# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Microsoft ピアリングにルート フィルターを構成する:Azure ポータル
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
@@ -78,7 +71,7 @@ Microsoft ピアリング経由でサービスに正しく接続するために�
  - アクティブな Microsoft ピアリングが必要です。 [ピアリング構成の作成と変更](expressroute-howto-routing-portal-resource-manager.md)に関するページの手順に従ってください。
 
 
-## <a name="prefixes"></a>手順 1 :一連のプレフィックスと BGP コミュニティ値を取得する
+## <a name="prefixes"></a>手順 1:一連のプレフィックスと BGP コミュニティ値を取得する
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1.一連の BGP コミュニティ値を取得する
 
@@ -88,40 +81,40 @@ Microsoft ピアリング経由でアクセスできるサービスに関連付�
 
 ルート フィルターで使用する BGP コミュニティ値をリストアップします。 たとえば Dynamics 365 サービスの BGP コミュニティ値は 12076:5040 です。
 
-## <a name="filter"></a>手順 2 :ルート フィルターとフィルター ルールを作成する
+## <a name="filter"></a>手順 2:ルート フィルターとフィルター ルールを作成する
 
 ルート フィルターに割り当てることができるルールは 1 つだけで、また "許可" タイプであることが必要です。 このルールに、一連の BGP コミュニティ値を関連付けることができます。
 
 ### <a name="1-create-a-route-filter"></a>1.ルート フィルターを作成する
 新しいリソースを作成するオプションを選択して、ルート フィルターを作成できます。 次の図に示すように、**[リソースの作成]** > **[ネットワーク]** > **[RouteFilter]** をクリックします。
 
-![ルート フィルターを作成する](.\media\how-to-routefilter-portal\CreateRouteFilter1.png)
+![ルート フィルターを作成する](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
 
 ルート フィルターは、リソース グループに配置する必要があります。 
 
-![ルート フィルターを作成する](.\media\how-to-routefilter-portal\CreateRouteFilter.png)
+![ルート フィルターを作成する](./media/how-to-routefilter-portal/CreateRouteFilter.png)
 
 ### <a name="2-create-a-filter-rule"></a>2.フィルター ルールを作成する
 
 ルート フィルターの [管理規則] タブを選択することで、ルールを追加および更新できます。
 
-![ルート フィルターを作成する](.\media\how-to-routefilter-portal\ManageRouteFilter.png)
+![ルート フィルターを作成する](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
 
 ドロップダウン リストから接続するサービスを選択し、接続が完了したときにルールを保存できます。
 
-![ルート フィルターを作成する](.\media\how-to-routefilter-portal\AddRouteFilterRule.png)
+![ルート フィルターを作成する](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
 
 
-## <a name="attach"></a>手順 3: ルート フィルターを ExpressRoute 回線にアタッチする
+## <a name="attach"></a>手順 3:ルート フィルターを ExpressRoute 回線にアタッチする
 
 [回線の追加] ボタンを選択し、ドロップダウン リストから、ExpressRoute 回線を選択することで、ルート フィルターを回線にアタッチできます。
 
-![ルート フィルターを作成する](.\media\how-to-routefilter-portal\AddCktToRouteFilter.png)
+![ルート フィルターを作成する](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
 
 接続プロバイダーによって ExpressRoute 回線のピアリングが構成される場合は、[回線の追加] ボタンを選択する前に ExpressRoute 回線ブレードから回線を更新します。
 
-![ルート フィルターを作成する](.\media\how-to-routefilter-portal\RefreshExpressRouteCircuit.png)
+![ルート フィルターを作成する](./media/how-to-routefilter-portal/RefreshExpressRouteCircuit.png)
 
 ## <a name="tasks"></a>一般的なタスク
 
@@ -129,7 +122,7 @@ Microsoft ピアリング経由でアクセスできるサービスに関連付�
 
 ポータルでリソースを開くときに、ルート フィルターのプロパティを表示できます。
 
-![ルート フィルターを作成する](.\media\how-to-routefilter-portal\ViewRouteFilter.png)
+![ルート フィルターを作成する](./media/how-to-routefilter-portal/ViewRouteFilter.png)
 
 
 ### <a name="updateproperties"></a>ルート フィルターのプロパティを更新するには
@@ -137,23 +130,23 @@ Microsoft ピアリング経由でアクセスできるサービスに関連付�
 [管理ルール] ボタンを選択することで、回線にアタッチした BGP コミュニティ値の一覧を更新できます。
 
 
-![ルート フィルターを作成する](.\media\how-to-routefilter-portal\ManageRouteFilter.png)
+![ルート フィルターを作成する](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
-![ルート フィルターを作成する](.\media\how-to-routefilter-portal\AddRouteFilterRule.png) 
+![ルート フィルターを作成する](./media/how-to-routefilter-portal/AddRouteFilterRule.png) 
 
 
 ### <a name="detach"></a>ExpressRoute 回線からルート フィルターをデタッチするには
 
 ルート フィルターから回線をデタッチするには、その回線を右クリックし、[関連付け解除] をクリックします。
 
-![ルート フィルターを作成する](.\media\how-to-routefilter-portal\DetachRouteFilter.png) 
+![ルート フィルターを作成する](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
 
 
 ### <a name="delete"></a>ルート フィルターを削除するには
 
 ルート フィルターを削除するには、[削除] ボタンを選択します。 
 
-![ルート フィルターを作成する](.\media\how-to-routefilter-portal\DeleteRouteFilter.png) 
+![ルート フィルターを作成する](./media/how-to-routefilter-portal/DeleteRouteFilter.png) 
 
 ## <a name="next-steps"></a>次の手順
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 273b0f1105d8b71b90a06e2627e201b97f12a754
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 4500fcfa6fbfb346a6e5c7fd045ba0046a901b91
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095397"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454257"
 ---
 # <a name="redeploy-a-vm-in-a-lab-in-azure-devtest-labs"></a>ラボ内の VM を Azure DevTest Labs で再デプロイする
 ラボの仮想マシン (VM) に対してリモート デスクトップ接続経由で接続できない場合は、VM を再デプロイし、接続を再試行します。 VM を再デプロイするときに、DevTest Labs は、それが実行されているノードから Azure インフラストラクチャ内の新しいノードに VM を移動します。 次に、すべての構成オプションと関連するリソースを保持したまま VM が起動されます。 この機能によって、ラボ内の Windows ベースの VM へのリモート デスクトップ接続やアプリケーション アクセスのトラブルシューティングに費やす時間を節約できます。 

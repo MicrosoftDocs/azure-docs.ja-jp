@@ -10,12 +10,12 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 67797f3bc5eadc126bad1051e793a8d3bc4590e5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: da6c9bb6cbd94ab5078641f25e42ad2203ff7a53
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800946"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402356"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure マネージド アプリケーションの概要
 
@@ -32,6 +32,8 @@ Azure マネージド アプリケーションを使用して、ユーザーが�
 ユーザーは、マネージド アプリケーションを各自のサブスクリプションでデプロイしますが、アプリケーションの管理、更新、またはサービスの提供を行う必要はありません。 すべてのユーザーが承認済みのバージョンを使用していることを保証できます。 ユーザーは、これらのアプリケーションを管理するためのアプリケーション固有のドメインの知識を深める必要はありません。 ユーザーは、アプリケーションのトラブルシューティングや問題の診断を気にすることなく、アプリケーションの更新プログラムを自動的に取得します。 
 
 IT チームは、マネージド アプリケーションを使用して、組織内のユーザーに事前承認済みのソリューションを提供できます。 これらのソリューションが組織の標準に準拠していることへの確信が得られます。
+
+マネージド アプリケーションでは現在、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) がサポートされません。
 
 ## <a name="types-of-managed-applications"></a>マネージド アプリケーションの種類
 
@@ -73,11 +75,11 @@ IT チームは、マネージド アプリケーションを使用して、組�
 
 ## <a name="azure-policy"></a>Azure Policy
 
-マネージド アプリケーションには、[Azure Policy](../azure-policy/azure-policy-introduction.md) を適用することができます。 ポリシーを適用することで、デプロイされたマネージド アプリケーションのインスタンスに、データやセキュリティの要件を確実に準拠させることができます。 アプリケーションで機密データを扱う場合は、そのデータに必要な保護の方法を検証しておいてください。 たとえば Office 365 のデータをアプリケーションで扱う場合、データ暗号化が有効であることを確認するポリシーを適用します。
+マネージド アプリケーションには、[Azure Policy](../governance/policy/overview.md) を適用することができます。 ポリシーを適用することで、デプロイされたマネージド アプリケーションのインスタンスに、データやセキュリティの要件を確実に準拠させることができます。 アプリケーションで機密データを扱う場合は、そのデータに必要な保護の方法を検証しておいてください。 たとえば Office 365 のデータをアプリケーションで扱う場合、データ暗号化が有効であることを確認するポリシーを適用します。
 
 ## <a name="next-steps"></a>次の手順
 
 この記事では、マネージド アプリケーションを使用する利点について説明しました。 次の記事にアクセスして、マネージド アプリケーションの定義を作成しましょう。
 
 > [!div class="nextstepaction"]
-> [クイック スタート: Azure マネージド アプリケーションの定義を発行する](publish-managed-app-definition-quickstart.md)
+> [クイック スタート:Azure マネージド アプリケーションの定義を発行する](publish-managed-app-definition-quickstart.md)

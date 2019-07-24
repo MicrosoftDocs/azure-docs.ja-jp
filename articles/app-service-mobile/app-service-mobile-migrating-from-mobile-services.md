@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: 5001704f47af0c7b07744f1dceb7aa58bdb6448c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: dfc5e2923215b1669b0a3300653ad0cae7379655
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32158870"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960737"
 ---
 # <a name="article-top"></a>既存の Azure Mobile Service を Azure App Service に移行する
 [Azure App Service は一般公開されており]、Azure Mobile Service サイトを簡単にインプレース移行し、Azure App Service の全機能を最大限に活用できます。  このドキュメントでは、Azure Mobile Service から Azure App Service にサイトを移行するときに必要な作業について説明します。
@@ -82,7 +82,7 @@ Azure App Service に移行した後は、価格設定がより自由になり�
 |:--- |:--- |
 | 無料 |F1 Free |
 | Basic |B1 Basic |
-| 標準 |S1 Standard |
+| Standard |S1 Standard |
 
 自分のアプリケーションに適した価格レベルを自由に選択できます。  App Service の価格に関する詳細については、 「 [App Service 価格] 」を参照してください。
 
@@ -176,7 +176,7 @@ PublishSettings ファイルがコンピューターにダウンロードされ�
 | Google |**MS\_GoogleClientID** |**MS\_GoogleClientSecret** | |
 | Azure AD |**MS\_AadClientID** | |**MS\_AadTenants** |
 
-注: **MS\_AadTenants** はテナント ドメインのコンマ区切りリストとして格納されています (Mobile Services ポータルの [許可されているテナント] フィールド)。
+注:**MS\_AadTenants** はテナント ドメインのコンマ区切りリストとして格納されています (Mobile Services ポータルの [許可されているテナント] フィールド)。
 
 > [!WARNING]
 > **[設定] メニューの認証メカニズムは使用しないでください。**
@@ -234,7 +234,7 @@ Mobile Services の *[API]* タブは Azure Portal では *[API の簡単操作]
 ### <a name="notification-hubs"></a>Notification Hubs
 Mobile Services では、プッシュ通信に Notification Hubs が使用されます。  次のアプリケーション設定を使用して、移行後、モバイル サービスに通知ハブをリンクします。
 
-| アプリケーション設定 | [説明] |
+| アプリケーション設定 | 説明 |
 |:--- |:--- |
 | **MS\_PushEntityNamespace** |通知ハブの名前空間 |
 | **MS\_NotificationHubName** |通知ハブの名前 |
@@ -244,7 +244,7 @@ Mobile Services では、プッシュ通信に Notification Hubs が使用され
 通知ハブは [Azure Portal] 経由で管理されます。  Notification Hub 名を書き留めます (アプリケーション設定で見つかります)。
 
 1. [Azure Portal] にログインします。
-2. **[参照]****[通知ハブ]** の順に選択します。
+2. **[参照]** **[通知ハブ]** の順に選択します。
 3. モバイル サービスに関連付けられている通知ハブの名前をクリックします。
 
 > [!NOTE]
@@ -267,7 +267,7 @@ Notification Hubs での導入前にモバイル サービスでプッシュを�
 ### <a name="app-settings"></a>その他のアプリ設定
 次の追加アプリ設定はモバイル サービスから移行され、 *[設定]* > *App [設定]* にあります。
 
-| アプリケーション設定 | [説明] |
+| アプリケーション設定 | 説明 |
 |:--- |:--- |
 | **MS\_MobileServiceName** |アプリの名前 |
 | **MS\_MobileServiceDomainSuffix** |ドメインのプレフィックス。 つまり  azure-mobile.net |
@@ -310,7 +310,7 @@ Notification Hubs での導入前にモバイル サービスでプッシュを�
 2. **[すべてのリソース]** または **[App Services]** を選択し、移行したモバイル サービスの名前をクリックします。
 3. [設定] ブレードが既定で開きます。
 4. [機能] メニューで **[診断ログ]** を選択します。
-5. **[アプリケーション ログ (ファイル システム)]**、**[詳細なエラー メッセージ]**、**[失敗した要求トレース]** のログの **[オン]** をクリックします。
+5. ログ **[アプリケーション ログ (ファイル システム)]**、**[詳細なエラー メッセージ]**、**[失敗した要求トレース]** について [オン] をクリックします。
 6. Web サーバーのログの **[ファイル システム]** をクリックします。
 7. **[保存]**
 
@@ -321,18 +321,18 @@ Notification Hubs での導入前にモバイル サービスでプッシュを�
 3. **[ツール]** ボタンをクリックします。
 4. [監視] メニューの **[ログ ストリーム]** を選択します。
 
-ログは、生成されるとウィンドウに表示されます。  ログをダウンロードし、後でデプロイ資格情報を利用して分析できます。 詳細については、[ログ]に関するドキュメントを参照してください。
+ログは、生成されるとウィンドウに表示されます。  ログをダウンロードし、後でデプロイ資格情報を利用して分析できます。 詳細については、[Logging]に関するドキュメントを参照してください。
 
 ## <a name="known-issues"></a>既知の問題
 ### <a name="deleting-a-migrated-mobile-app-clone-causes-a-site-outage"></a>移行したモバイル アプリの複製を削除すると、サイトが停止する
 Azure PowerShell を使用して、移行したモバイル サービスを複製し、その後複製を削除すると、運用サービスの DNS エントリが削除されます。  サイトは、インターネットからアクセスできなくなります。  
 
-解決方法: サイトを複製する必要がある場合は、ポータルを使用してください。
+解決策:サイトを複製する必要がある場合は、ポータルを使用してください。
 
 ### <a name="changing-webconfig-does-not-work"></a>Web.config の変更が機能しない
 ASP.NET サイトがある場合、`Web.config` ファイルの変更は適用されません。  Azure App Service は、Mobile Services ランタイムをサポートするために適切な `Web.config` ファイルを起動時に作成します。  XML 変換ファイルを使用することで特定の設定 (カスタム ヘッダーなど) をオーバーライドできます。  呼び出される `applicationHost.xdt` でファイルを作成します。このファイルは Azure Service の `D:\home\site` ディレクトリに格納されます。  カスタム デプロイ スクリプトで、または直接 Kudu を使用して、`applicationHost.xdt` ファイルをアップロードします。  次にドキュメントの例を示します。
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
   <system.webServer>
@@ -374,27 +374,27 @@ Traffic Manager プロファイルを作成するとき、移行されたモバ�
 
 <!-- Links -->
 [App Service 価格]: https://azure.microsoft.com/pricing/details/app-service/
-[Application Insights]: ../application-insights/app-insights-overview.md
+[Application Insights]: ../azure-monitor/app/app-insights-overview.md
 [自動スケール]: ../app-service/web-sites-scale.md
-[Azure App Service]: ../app-service/app-service-web-overview.md
+[Azure App Service]: ../app-service/overview.md
 [Azure クラシック ポータル]: https://manage.windowsazure.com
 [Azure Portal]: https://portal.azure.com
 [Azure Region]: https://azure.microsoft.com/regions/
 [Azure Scheduler プラン]: ../scheduler/scheduler-plans-billing.md
-[連続的にデプロイ]: ../app-service/app-service-continuous-deployment.md
+[連続的にデプロイ]: ../app-service/deploy-continuous-deployment.md
 [Mixed 名前空間を変換]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
-[curl]: http://curl.haxx.se/
+[curl]: https://curl.haxx.se/
 [custom domain names]: ../app-service/app-service-web-tutorial-custom-domain.md
-[Fiddler]: http://www.telerik.com/fiddler
+[Fiddler]: https://www.telerik.com/fiddler
 [Azure App Service は一般公開されており]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
 [Hybrid Connections]: ../app-service/app-service-hybrid-connections.md
-[ログ]: ../app-service/web-sites-enable-diagnostic-log.md
+[Logging]: ../app-service/troubleshoot-diagnostic-logs.md
 [Mobile Apps Node.js SDK]: https://github.com/azure/azure-mobile-apps-node
 [Mobile Services と App Service の比較]: app-service-mobile-value-prop-migration-from-mobile-services.md
 [Notification Hubs]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [パフォーマンス監視]: ../app-service/web-sites-monitor.md
-[Postman]: http://www.getpostman.com/
-[ステージング スロット]: ../app-service/web-sites-staged-publishing.md
+[Postman]: https://www.getpostman.com/
+[ステージング スロット]: ../app-service/deploy-staging-slots.md
 [VNet]: ../app-service/web-sites-integrate-with-vnet.md
 [XDT Transform Samples (XDT 変換サンプル)]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 [関数]: ../azure-functions/functions-overview.md

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: a3dfca48b52af39e7a536b3012a3f4cdac4e9a94
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: a2a730e2c3ca466a2705f053d7db0db12d7941da
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955169"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59786938"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Azure リソース グループのデプロイ プロジェクトを使用した Azure DevOps Services での継続的インテグレーション
 Azure テンプレートをデプロイするには、さまざまな段階 (ビルド、テスト、Azure へのコピー ("ステージング" とも呼ばれる)、テンプレートのデプロイ) でタスクを実行します。 テンプレートを Azure DevOps Services にデプロイする方法は 2 つあります。 どちらの方法でも同じ結果になるため、ワークフローに最適な方法を選択します。
@@ -29,6 +29,8 @@ Azure テンプレートをデプロイするには、さまざまな段階 (ビ
 
 この記事では、両方のオプションについて説明します。 最初のオプションには、Visual Studio で開発者が同じスクリプトを使用でき、ライフサイクル全体で一貫性が確保されるという利点があります。 2 番目のオプションでは、組み込みのスクリプトに代わる便利な方法が提供されます。 両方の手順では、Visual Studio デプロイ プロジェクトが Azure DevOps Services にチェックインしていることを前提としています。
 
+[!INCLUDE [updated-for-az](../includes/updated-for-az.md)]
+
 ## <a name="copy-artifacts-to-azure"></a>Azure へのアーティファクトのコピー
 シナリオに関係なく、テンプレートのデプロイメントに必要なアーティファクトがある場合、このアーティファクトに Azure Resource Manager のアクセス権を付与する必要があります。 これらのアーティファクトには、次のファイルを含めることができます。
 
@@ -37,7 +39,7 @@ Azure テンプレートをデプロイするには、さまざまな段階 (ビ
 * アプリケーションのバイナリ
 
 ### <a name="nested-templates-and-configuration-scripts"></a>入れ子になったテンプレートと構成スクリプト
-Visual Studio が提供する (または、Visual Studio のスニペットでビルドされた) テンプレートを使用すると、PowerShell スクリプトはアーティファクトをステージングするだけでなく、さまざまなデプロイメントのリソースに対する URI もパラメーター化します。 次に、スクリプトはアーティファクトを Azure のセキュリティで保護されたコンテナーにコピーし、そのコンテナーの SaS トークンを作成して、テンプレート デプロイメントにその情報を渡します。 入れ子になったテンプレートの詳細については、「 [テンプレート デプロイメントの作成](https://msdn.microsoft.com/library/azure/dn790564.aspx) 」を参照してください。  Azure DevOps Services のタスクを使用する場合は、テンプレートのデプロイに適したタスクを選択する必要があります。必要に応じて、ステージング手順からテンプレートのデプロイにパラメーター値を渡してください。
+Visual Studio が提供する (または、Visual Studio のスニペットでビルドされた) テンプレートを使用すると、PowerShell スクリプトはアーティファクトをステージングするだけでなく、さまざまなデプロイメントのリソースに対する URI もパラメーター化します。 次に、スクリプトはアーティファクトを Azure のセキュリティで保護されたコンテナーにコピーし、そのコンテナーの SaS トークンを作成して、テンプレート デプロイメントにその情報を渡します。 入れ子になったテンプレートの詳細については、「 [テンプレート デプロイメントの作成](/previous-versions/azure/reference/dn790564(v=azure.100)) 」を参照してください。  Azure DevOps Services のタスクを使用する場合は、テンプレートのデプロイに適したタスクを選択する必要があります。必要に応じて、ステージング手順からテンプレートのデプロイにパラメーター値を渡してください。
 
 ## <a name="set-up-continuous-deployment-in-azure-pipelines"></a>Azure Pipelines での継続的なデプロイの設定
 Azure Pipelines で PowerShell スクリプトを呼び出すには、ビルド パイプラインを更新する必要があります。 簡単に言うと、手順は次のとおりです。 
@@ -87,7 +89,7 @@ Azure Pipelines で PowerShell スクリプトを呼び出すには、ビルド 
       
       PowerShell スクリプトでは、次を使用します。
       
-      `Get-AzureRmSubscription`
+      `Get-AzSubscription`
       
       Azure CLI では、次を使用します。
       

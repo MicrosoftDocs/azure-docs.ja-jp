@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: 8b4ae066edc1c62c25762b5c6feebce1ecfff5a2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: tables
+ms.openlocfilehash: 97373f6f0138d3ed8028ed4327b7e6cf90ad76a7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521542"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470741"
 ---
 # <a name="design-for-querying"></a>クエリに対応した設計
 Table service ソリューションでは、読み取り、書き込み、またはその両方の負荷が高くなることがあります。 この記事では、読み取り操作を効率的に行える Table service を設計する際に注意する必要のある事柄を中心に取り上げます。 通常は、読み取り操作を効率的にサポートする設計は、書き込み操作についても効率が高くなります。 ただし、書き込み操作をサポートする設計には、さらに考慮すべき事柄があります。「[データの変更に対応した設計](table-storage-design-for-modification.md)」の記事を参照してください。

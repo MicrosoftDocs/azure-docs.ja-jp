@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs での Azure リソースのマネージド ID (プレビュー) | Microsoft Docs
-description: Azure Event Hubs で Azure リソースのマネージド ID を使用します
+title: Azure リソースのマネージド ID - Azure Event Hubs | Microsoft Docs
+description: この記事では、Azure Event Hubs で Azure リソースのマネージド ID を使用する方法について説明します
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -8,14 +8,15 @@ manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 815a6ff528e024ed1685b09b66f8fabce4d360c1
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 784d8c9280aeff7224f90ecee0b16c9c30381aeb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784555"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087730"
 ---
 # <a name="managed-identities-for-azure-resources-with-event-hubs"></a>Event Hubs での Azure リソースのマネージド ID
 
@@ -47,7 +48,7 @@ Event Hubs 名前空間の "所有者" ロールまたは "共同作成者" ロ�
 
 アプリケーションを作成したら、Azure Portal で新しく作成された Web アプリに移動し (チュートリアルにも示されています)、**[管理対象サービス ID]** ページに移動してこの機能を有効にします。 
 
-![](./media/event-hubs-managed-service-identity/msi1.png)
+![マネージド サービス ID ページ](./media/event-hubs-managed-service-identity/msi1.png)
  
 機能を有効にすると、Azure Active Directory に新しいサービス ID が作成され、App Service ホストに構成されます。
 
@@ -55,11 +56,7 @@ Event Hubs 名前空間の "所有者" ロールまたは "共同作成者" ロ�
 
 次に、Azure リソースのマネージド ID のプレビューをサポートしている Azure リージョン (**米国東部**、**米国東部 2**、**西ヨーロッパ**) のいずれかで、[Event Hubs 名前空間を作成](event-hubs-create.md)します。 
 
-ポータルで名前空間の **[アクセス制御 (IAM)]** ページに移動し、**[追加]** をクリックして、マネージド ID を**所有者**ロールに追加します。 そのためには、**[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。
-
-![](./media/event-hubs-managed-service-identity/msi2.png)
- 
-これで、Web アプリケーションのマネージド ID は、Event Hubs 名前空間と以前に作成したイベント ハブにアクセスできるようになりました。 
+ポータルで名前空間の **[アクセス制御 (IAM)]** ページに移動し、**[ロールの割り当ての追加]** をクリックして、マネージド ID を**所有者**ロールに追加します。 そのためには、**[アクセス許可の追加]** パネルの **[選択]** フィールドで Web アプリケーションの名前を検索し、エントリをクリックします。 その後、 **[保存]** をクリックします。 これで、Web アプリケーションのマネージド ID は、Event Hubs 名前空間と以前に作成したイベント ハブにアクセスできるようになりました。 
 
 ### <a name="run-the-app"></a>アプリの実行
 
@@ -71,7 +68,7 @@ Event Hubs 名前空間の "所有者" ロールまたは "共同作成者" ロ�
 
 これらの変更を行ったら、アプリケーションを発行して実行します。 適切な発行データを取得するには、Visual Studio で発行プロファイルをダウンロードしてインポートします。
 
-![](./media/event-hubs-managed-service-identity/msi3.png)
+![発行プロファイルのインポート](./media/event-hubs-managed-service-identity/msi3.png)
  
 メッセージを送受信するには、名前空間の名前と作成したエンティティの名前を入力し、**[send]** または **[receive]** をクリックします。 
  

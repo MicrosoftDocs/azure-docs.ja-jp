@@ -7,19 +7,20 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: d9db2182c20663cc048a5c9501df2586db25d2f3
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7a0962e5381a6e0a8da96bc7379c38aae73ee400
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364933"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207026"
 ---
 # <a name="how-to-configure-endpoints"></a>エンドポイントの構成方法
 
@@ -36,4 +37,4 @@ ms.locfileid: "49364933"
 -   使用する認証プロトコルに固有のエンドポイントをアプリケーション ID と共に使用して、アプリケーション固有の認証要求を作成します。
 
 ## <a name="next-steps"></a>次の手順
-[Azure Active Directory 開発者ガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide#authentication-and-authorization-protocols)
+[Azure Active Directory 開発者ガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)

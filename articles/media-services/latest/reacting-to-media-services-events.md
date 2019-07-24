@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 3541a5b33aa0bb98d9381b51caefc63b6aa677ad
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: cb5d6474a0c830933c712e1008015b5220617c96
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377550"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850906"
 ---
 # <a name="handling-event-grid-events"></a>Event Grid イベントの処理
 
@@ -24,26 +24,9 @@ Media Services イベントは、アプリケーションがモダンなサー�
 
 Media Services イベントの可用性は、Event Grid の[可用性](../../event-grid/overview.md)に関連付けられており、Event Grid の場合と同様に、他のリージョンで使用可能になります。  
 
-## <a name="available-media-services-events"></a>利用可能な Media Services イベント
+## <a name="media-services-events-and-schemas"></a>Media Services のイベントとスキーマ
 
-Event Grid は、[イベント サブスクリプション](../../event-grid/concepts.md#event-subscriptions)を使って、イベント メッセージをサブスクライバーにルーティングします。  現時点では、Media Services イベントのサブスクリプションには、次のイベントを含めることができます。  
-
-|イベント名|説明|
-|----------|-----------|
-| Microsoft.Media.JobStateChange| ジョブの状態が変更されたときに発生します。 |
-| Microsoft.Media.LiveEventConnectionRejected | エンコーダーの接続試行が拒否されました。 |
-| Microsoft.Media.LiveEventEncoderConnected | エンコーダーがライブ イベントとの接続を確立しました。 |
-| Microsoft.Media.LiveEventEncoderDisconnected | エンコーダーが切断されました。 |
-| Microsoft.Media.LiveEventIncomingDataChunkDropped | データ チャンクが遅すぎるか、タイムスタンプが重複している (新しいデータ チャンクのタイムスタンプが前のデータ チャンクの終了時間よりも古い) ため、メディア サーバーがデータ チャンクをドロップしました。 |
-| Microsoft.Media.LiveEventIncomingStreamReceived | メディア サーバーが、ストリームまたは接続において、各トラックの最初のデータ チャンクを受信しました。 |
-| Microsoft.Media.LiveEventIncomingStreamsOutOfSync | オーディオ ストリームとビデオ ストリームの同期がずれていることをメディア サーバーが検出しました。ユーザー エクスペリエンスへの影響はないと考えられるため、警告として使用してください。 |
-| Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | 外部エンコーダーから受信している 2 つのビデオ ストリームの同期がずれていることをメディア サーバーが検出しました。ユーザー エクスペリエンスへの影響はないと考えられるため、警告として使用してください。 |
-| Microsoft.Media.LiveEventIngestHeartbeat | ライブ イベントの実行中、各トラックについて 20 秒ごとに発行されます。 取り込みの正常性についての概要が得られます。 |
-| Microsoft.Media.LiveEventTrackDiscontinuityDetected | メディア サーバーが受信中のトラックの途切れを検出しました。 |
-
-## <a name="event-schema"></a>イベント スキーマ
-
-Media Services イベントには、データの変更に対応するために必要なすべての情報が含まれます。  Media Services イベントは、eventType プロパティが "Microsoft.Media" で始まっていることで識別できます。
+Event Grid は、[イベント サブスクリプション](../../event-grid/concepts.md#event-subscriptions)を使って、イベント メッセージをサブスクライバーにルーティングします。 Media Services イベントには、データの変更に対応するために必要なすべての情報が含まれます。 Media Services イベントは、eventType プロパティが "Microsoft.Media" で始まっていることで識別できます。
 
 詳細については、「[Media Services イベントのスキーマ](media-services-event-schemas.md)」を参照してください。
 

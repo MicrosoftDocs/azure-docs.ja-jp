@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/02/2018
 ms.author: glenga
-ms.openlocfilehash: 15d2e40127579fbd278cc3dc18653d782a515caa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5f55122b3bf4bb7160459d524b20dd1303cc0fd8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957314"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835422"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Functions でサポートされている言語
 
@@ -37,11 +37,9 @@ ms.locfileid: "46957314"
 
 ### <a name="experimental-languages"></a>試験段階の言語
 
-バージョン 1.x の試験段階の言語は、スケーリングが適切に行われず、一部のバインドがサポートされていません。 たとえば、1.x Python の場合、Functions ランタイムは関数呼び出しごとに *python.exe* を実行するため、低速です。 また、Python では HTTP バインドがサポートされていますが、要求オブジェクトにアクセスできません。
+バージョン 1.x の試験段階の言語は、スケーリングが適切に行われず、一部のバインドがサポートされていません。 たとえば、1.x での PowerShell の試験的なサポートはバージョン 5.1 に限定されています。これは、関数アプリを実行する VM に既定でインストールされているためです。 PowerShell スクリプトを実行する場合は、[Azure Automation](https://azure.microsoft.com/services/automation/) を検討してください。
 
-1.x での PowerShell の試験的なサポートはバージョン 5.1 に限定されています。これは、関数アプリを実行する VM に既定でインストールされているためです。 PowerShell スクリプトを実行する場合は、[Azure Automation](https://azure.microsoft.com/services/automation/) を検討してください。
-
-信頼性が大切である場合には、試験段階の言語は使用しないでください。それらの言語には公式なサポートがありません。 実験段階の言語で発生した問題については、サポート ケースを開かないでください。 
+信頼性が大切である場合には、試験段階の機能は使用しないでください。それらの言語には公式なサポートがありません。 実験段階の言語で発生した問題については、サポート ケースを開かないでください。 
 
 バージョン 2.x ランタイムでは、試験段階の言語はサポートされていません。 新しい言語のサポートは、運用環境でその言語をサポートできる場合にのみ追加されます。 
 
@@ -64,3 +62,6 @@ Azure Functions で GA またはプレビューであるいずれかの言語を
 
 > [!div class="nextstepaction"]
 > [Java](functions-reference-java.md)
+
+> [!div class="nextstepaction"]
+> [Python](functions-reference-python.md)

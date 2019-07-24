@@ -2,25 +2,17 @@
 title: Azure ポイント対サイト ルーティングについて | Microsoft Docs
 description: この記事は、ポイント対サイト VPN ルーティングの動作を理解するのに役立ちます。
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: ''
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/16/2018
+ms.date: 01/28/2019
 ms.author: anzaman
-ms.openlocfilehash: 620a2bf9221bdb7c46dc36a2b3ed23d853faff35
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 486a910226db5dc7b36aaf873e7bb8115eb78805
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031719"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189652"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>ポイント対サイト VPN ルーティングについて
 
@@ -44,7 +36,7 @@ ms.locfileid: "47031719"
 
 ### <a name="address-space"></a>アドレス空間
 
-* VNet1: 10.1.0.0/16
+* VNet1:10.1.0.0/16
 
 ### <a name="routes-added"></a>追加されたルート
 
@@ -68,13 +60,13 @@ Windows を使用しているクライアントは直接ピアリングされた
 
 ### <a name="address-space"></a>アドレス空間:
 
-* VNet1: 10.1.0.0/16
+* VNet1:10.1.0.0/16
 
-* VNet2: 10.2.0.0/16
+* VNet2:10.2.0.0/16
 
-* VNet3: 10.3.0.0/16
+* VNet3:10.3.0.0/16
 
-* VNet4: 10.4.0.0/16
+* VNet4:10.4.0.0/16
 
 ### <a name="routes-added"></a>追加されたルート
 
@@ -98,11 +90,11 @@ Windows、または別のサポート対象 OS を使用しているクライア
 
 ### <a name="address-space"></a>アドレス空間
 
-* VNet1: 10.1.0.0/16
+* VNet1:10.1.0.0/16
 
-* VNet2: 10.2.0.0/16
+* VNet2:10.2.0.0/16
 
-* VNet3: 10.3.0.0/16
+* VNet3:10.3.0.0/16
 
 ### <a name="routes-added"></a>追加されたルート
 
@@ -126,11 +118,11 @@ Windows、または別のサポートさ対象 OS を使用しているクライ
 
 ### <a name="address-space"></a>アドレス空間
 
-* VNet1: 10.1.0.0/16
+* VNet1:10.1.0.0/16
 
-* VNet2: 10.2.0.0/16
+* VNet2:10.2.0.0/16
 
-* VNet3: 10.3.0.0/16
+* VNet3:10.3.0.0/16
 
 ### <a name="routes-added"></a>追加されたルート
 
@@ -154,9 +146,9 @@ Windows クライアントと Windows 以外のクライアントは VNet1 に�
 
 ### <a name="address-space"></a>アドレス空間
 
-* VNet1: 10.1.0.0/16
+* VNet1:10.1.0.0/16
 
-* Site1: 10.101.0.0/16
+* Site1:10.101.0.0/16
 
 ### <a name="routes-added"></a>追加されたルート
 
@@ -180,9 +172,9 @@ Windows クライアントは VNet とブランチ オフィス (Site1) にア�
 
 ### <a name="address-space"></a>アドレス空間
 
-* VNet1: 10.1.0.0/16
+* VNet1:10.1.0.0/16
 
-* Site1: 10.101.0.0/16
+* Site1:10.101.0.0/16
 
 ### <a name="routes-added"></a>追加されたルート
 
@@ -207,13 +199,13 @@ Windows クライアントは VNet とブランチ オフィス (Site1) にア�
 
 ### <a name="address-space"></a>アドレス空間
 
-* VNet1: 10.1.0.0/16
+* VNet1:10.1.0.0/16
 
-* VNet2: 10.2.0.0/16
+* VNet2:10.2.0.0/16
 
-* VNet3: 10.3.0.0/16
+* VNet3:10.3.0.0/16
 
-* Site1: 10.101.0.0/16
+* Site1:10.101.0.0/16
 
 ### <a name="routes-added"></a>追加されたルート
 
@@ -237,13 +229,13 @@ Windows を使用しているクライアントは、サイト間 VPN 接続を�
 
 ### <a name="address-space"></a>アドレス空間
 
-* VNet1: 10.1.0.0/16
+* VNet1:10.1.0.0/16
 
-* VNet2: 10.2.0.0/16
+* VNet2:10.2.0.0/16
 
-* VNet3: 10.3.0.0/16
+* VNet3:10.3.0.0/16
 
-* Site1: 10.101.0.0/16
+* Site1:10.101.0.0/16
 
 ### <a name="routes-added"></a>追加されたルート
 

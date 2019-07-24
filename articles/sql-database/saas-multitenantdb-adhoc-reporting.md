@@ -11,13 +11,13 @@ author: AyoOlubeko
 ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: a5c829ee77f1ba61bf8b1a19488c51dabe2262a0
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.date: 10/30/2018
+ms.openlocfilehash: d4c5a2ca88f982626c8c2a8b37e4a7d6dfdbe599
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241976"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076362"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>複数の Azure SQL データベースにわたるアドホック分析クエリの実行
 
@@ -27,7 +27,7 @@ ms.locfileid: "50241976"
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-
+> 
 > * アドホック レポート データベースをデプロイする方法
 > * すべてのテナント データベースにわたって分散クエリを実行する方法
 
@@ -147,7 +147,7 @@ Wingtip Tickets SaaS Multi-tenant Database アプリケーションでは、テ�
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
-
+> 
 > * すべてのテナント データベースにわたって分散クエリを実行する
 > * アドホック レポート データベースをデプロイし、それにスキーマを追加し、分散クエリを実行します。
 

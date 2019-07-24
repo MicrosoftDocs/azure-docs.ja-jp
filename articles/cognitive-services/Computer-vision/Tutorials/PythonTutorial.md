@@ -1,31 +1,32 @@
 ---
-title: 'チュートリアル: Computer Vision API Python'
+title: チュートリアル:イメージの操作を実行する - Python
 titlesuffix: Azure Cognitive Services
 description: Jupyter Notebook を使用することで、Computer Vision API を Python で使用する方法について説明します。 人気のあるライブラリを使用して結果を視覚化します。
 services: cognitive-services
 author: KellyDF
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 11/6/2018
+ms.date: 11/06/2018
 ms.author: kefre
-ms.openlocfilehash: 16054d19c1ce6f211ebd3e2f0bbc4d152a255dda
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.custom: seodec18
+ms.openlocfilehash: b55b1fdf3b93d3865bdb115e43ff8583af61b45d
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51276969"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326427"
 ---
-# <a name="tutorial-computer-vision-api-python"></a>チュートリアル: Computer Vision API Python
+# <a name="tutorial-computer-vision-api-python"></a>チュートリアル:Computer Vision API Python
 
-このチュートリアルでは、Python で Computer Vision API を使用する方法と、広く使われているライブラリを使用して結果を視覚化する方法を示します。 チュートリアルの実行には、Jupyter を使用します。 対話型の Jupyter Notebook を使い始める方法については、[Jupyter のドキュメント](http://jupyter.readthedocs.io/en/latest/index.html)を参照してください。
+このチュートリアルでは、Python で Computer Vision API を使用する方法と、広く使われているライブラリを使用して結果を視覚化する方法を示します。 チュートリアルの実行には、Jupyter を使用します。 対話型の Jupyter Notebook を使い始める方法については、[Jupyter のドキュメント](https://jupyter.readthedocs.io/en/latest/index.html)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 - [Python 2.7 以降または 3.5 以降](https://www.python.org/downloads/)
 - [pip](https://pip.pypa.io/en/stable/installing/) ツール
-- [Jupyter Notebook](http://jupyter.org/install) がインストールされていること
+- [Jupyter Notebook](https://jupyter.org/install) がインストールされていること
 
 ## <a name="open-the-tutorial-notebook-in-jupyter"></a>Jupyter でチュートリアル ノートブックを開く 
 

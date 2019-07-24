@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 1/15/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 90b5697da0f134ccb3c9ddb66b5da138c8849189
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 6116212ae81eb334386eebab057af967309370d6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523412"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451174"
 ---
 # <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>Azure Import/Export ツールの使用 (クラシック デプロイ モデル)
 

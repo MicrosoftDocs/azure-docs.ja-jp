@@ -1,5 +1,5 @@
 ---
-title: Azure Log Analytics での Active Directory レプリケーションの状態の監視 | Microsoft Docs
+title: Azure Monitor で Active Directory のレプリケーション状態を監視する | Microsoft Docs
 description: Active Directory レプリケーションの状態ソリューション パックは、レプリケーションの失敗がないか Active Directory 環境を定期的に監視します。
 services: log-analytics
 documentationcenter: ''
@@ -10,19 +10,17 @@ ms.assetid: 1b988972-8e01-4f83-a7f4-87f62778f91d
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: d0156ccc3caea2f47296740d57422ccc706f84f1
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: f7bbde98c6ef35021cc03b2646193d3601ca1cff
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634236"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59425850"
 ---
-# <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Log Analytics で Active Directory レプリケーションの状態を監視する
+# <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Azure Monitor で Active Directory のレプリケーション状態を監視する
 
 ![AD レプリケーションの状態のシンボル](./media/ad-replication-status/ad-replication-status-symbol.png)
 
@@ -30,41 +28,43 @@ Active Directory は、エンタープライズ IT 環境の重要なコンポ�
 
 AD レプリケーションの状態ソリューション パックは、レプリケーションの失敗を Active Directory 環境で定期的に監視します。
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand-solution.md)]
+
 ## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
-* 評価されるドメインのメンバーであるドメイン コントローラーに、エージェントをインストールする必要があります。 または、メンバー サーバーにエージェントをインストールし、AD レプリケーションのデータを Log Analytics に送信するように、そのエージェントを構成する必要があります。 Windows コンピューターを Log Analytics に接続する方法の詳細については、[Log Analytics への Windows コンピューターの接続](../../azure-monitor/platform/agent-windows.md)に関するページを参照してください。 ドメイン コントローラーが、Log Analytics に接続する既存の System Center Operations Manager 環境の一部である場合、「[Operations Manager を Log Analytics に接続する](../../log-analytics/log-analytics-om-agents.md)」を参照してください。
-* Active Directory のレプリケーションの状態を Log Analytics ワークスペースに追加するには、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されている手順に従います。  さらに手動で構成する必要はありません。
+### <a name="install-agents-on-domain-controllers"></a>ドメイン コントローラーにエージェントをインストールする
+評価されるドメインのメンバーであるドメイン コントローラーに、エージェントをインストールする必要があります。 または、メンバー サーバーにエージェントをインストールし、AD レプリケーションのデータを Azure Monitor に送信するように、そのエージェントを構成する必要があります。 Windows コンピューターを Azure Monitor に接続する方法について詳しくは、[Azure Monitor への Windows コンピューターの接続](../../azure-monitor/platform/agent-windows.md)に関する記事をご覧ください。 ドメイン コントローラーが、Azure Monitor に接続する既存の System Center Operations Manager 環境の一部である場合は、[Azure Monitor への Operations Manager の接続](../../azure-monitor/platform/om-agents.md)に関する記事をご覧ください。
+
+### <a name="enable-non-domain-controller"></a>非ドメイン コントローラーを有効にする
+いずれのドメイン コントローラーも直接 Azure Monitor に接続しない場合、Azure Monitor に接続されているドメイン内の他の任意のコンピューターを使用して AD Replication Status ソリューション パック用にデータを収集し、そのデータを送信させることができます。
+
+1. コンピューターが、AD レプリケーションの状態ソリューションを使用して監視するドメインのメンバーであることを確認します。
+2. まだ接続されていない場合は、[Windows コンピューターを Azure Monitor に接続する](../../azure-monitor/platform/om-agents.md)か、[既存の Operations Manager 環境を使用してそれを Azure Monitor に接続します](../../azure-monitor/platform/om-agents.md)。
+3. そのコンピューターで、次のレジストリ キーを設定します。<br>キー:**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**<br>値:**IsTarget**<br>値のデータ: **true**
+
+   > [!NOTE]
+   > こうした変更は、Microsoft Monitoring Agent サービス (HealthService.exe) を再起動するまで反映されません。
+   > ### <a name="install-solution"></a>ソリューションをインストールする
+   > 「[監視ソリューションをインストールする](solutions.md#install-a-monitoring-solution)」で説明されている手順に従って、**Active Directory Replication Status** ソリューションをお使いの Log Analytics ワークスペースに追加します。 さらに手動で構成する必要はありません。
+
 
 ## <a name="ad-replication-status-data-collection-details"></a>AD レプリケーションの状態データの収集に関する詳細
 次の表は、AD レプリケーションの状態のデータの収集手段と、データの収集方法に関する各種情報をまとめたものです。
 
 | プラットフォーム | 直接エージェント | SCOM エージェント | Azure Storage | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
-|  Windows |&#8226; |&#8226; |  |  |&#8226; |5 日ごと |
+| Windows |&#8226; |&#8226; |  |  |&#8226; |5 日ごと |
 
-## <a name="optionally-enable-a-non-domain-controller-to-send-ad-data-to-log-analytics"></a>ドメイン コントローラー以外からの AD データの Log Analytics への送信を必要に応じて有効にする
-いずれのドメイン コントローラーも直接 Log Analytics に接続しない場合、Log Analytics に接続されているドメイン内の他の任意のコンピューターを使用して AD Replication Status ソリューション パック用にデータを収集し、そのデータを送信させることができます。
 
-### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-log-analytics"></a>ドメイン コントローラー以外から AD データを Log Analytics に送信できるようにするには
-1. コンピューターが、AD レプリケーションの状態ソリューションを使用して監視するドメインのメンバーであることを確認します。
-2. まだ接続されていない場合は、[Windows コンピューターを Log Analytics に接続する](../../log-analytics/log-analytics-om-agents.md)か、[既存の Operations Manager 環境を使用してそれを Log Analytics に接続します](../../log-analytics/log-analytics-om-agents.md)。
-3. そのコンピューターで、次のレジストリ キーを設定します。
-
-   * キー: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**
-   * 値: **IsTarget**
-   * 値のデータ: **true**
-
-   > [!NOTE]
-   > こうした変更は、Microsoft Monitoring Agent サービス (HealthService.exe) を再起動するまで反映されません。
-   >
-   >
 
 ## <a name="understanding-replication-errors"></a>レプリケーションの問題を理解する
-AD レプリケーションの状態データが Log Analytics に送信されたら、Log Analytics には現在のレプリケーション エラー数を示す、次のイメージのようなタイルが表示されます。  
-![AD レプリケーションの状態タイル](./media/ad-replication-status/oms-ad-replication-tile.png)
 
-**重大なレプリケーション エラー**は、Active Directory フォレストの[廃棄 (tombstone) の有効期間](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx)が 75% 以上のエラーです。
+[!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
+
+AD Replication Status タイルには、現在発生しているレプリケーション エラーの数が表示されます。 **重大なレプリケーション エラー**は、Active Directory フォレストの[廃棄 (tombstone) の有効期間](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx)が 75% 以上のエラーです。
+
+![AD レプリケーションの状態タイル](./media/ad-replication-status/oms-ad-replication-tile.png)
 
 タイルをクリックすると、エラーの詳細を確認できます。
 ![AD レプリケーションの状態ダッシュボード](./media/ad-replication-status/oms-ad-replication-dash.png)
@@ -106,11 +106,11 @@ AD レプリケーションの状態データが Log Analytics に送信され�
 >
 
 ### <a name="ad-replication-status-details"></a>AD レプリケーションの状態の詳細
-一覧のいずれかの任意の項目をクリックすると、ログ検索にその詳細を表示できます。 その項目に関連するエラーのみが表示されるよう、結果はフィルター処理されます。 たとえば、**[宛先サーバーの状態 (ADDC02)]** の最初のドメイン コントローラーをクリックすると、検索結果がフィルター処理され、エラーと、宛先サーバーとして示されているそのドメイン コントローラーが表示されます。
+一覧のいずれかの任意の項目をクリックすると、ログ クエリにその詳細を表示できます。 その項目に関連するエラーのみが表示されるよう、結果はフィルター処理されます。 たとえば、**[宛先サーバーの状態 (ADDC02)]** の最初のドメイン コントローラーをクリックすると、クエリ結果がフィルター処理されて、エラーと、宛先サーバーとして示されているそのドメイン コントローラーが表示されます。
 
-![検索結果内の AD レプリケーションの状態エラー](./media/ad-replication-status/oms-ad-replication-search-details.png)
+![クエリ結果内の AD レプリケーションの状態エラー](./media/ad-replication-status/oms-ad-replication-search-details.png)
 
-ここで、さらにフィルタリングを行い、検索クエリなどの修正を行います。 ログ検索の使用方法の詳細については、「 [ログ検索](../../log-analytics/log-analytics-queries.md)」を参照してください。
+ここで、さらにフィルタリングを行い、ログ クエリなどの修正を行います。 Azure Monitor でのログ クエリの使用について詳しくは、「[Azure Monitor でログ データを分析する](../../azure-monitor/log-query/log-query-overview.md)」をご覧ください。
 
 **[HelpLink]** フィールドには、その特定のエラーの追加情報を含む TechNet ページの URL が表示されます。 このエラーをトラブルシューティングして修正するには、このリンクをブラウザー ウィンドウにコピーして貼り付け、情報を確認します。
 
@@ -119,39 +119,40 @@ AD レプリケーションの状態データが Log Analytics に送信され�
 ![Excel にエクスポートされた AD レプリケーションの状態エラー](./media/ad-replication-status/oms-ad-replication-export.png)
 
 ## <a name="ad-replication-status-faq"></a>AD レプリケーションの状態の FAQ
-**Q: AD レプリケーションの状態データはどのような頻度で更新されますか?**
-A: この情報は 5 日おきに更新されます。
+**Q:AD レプリケーションの状態データはどのような頻度で更新されますか?**
+A:この情報は 5 日おきに更新されます。
 
-**Q: このデータの更新頻度を構成する方法がありますか?**
- A: 現時点ではありません。
+**Q:このデータの更新頻度を構成する方法がありますか?**
+A:現時点ではありません。
 
-**Q: レプリケーションの状態の確認用に、Log Analytics ワークスペースにすべてのドメイン コントローラーを追加する必要がありますか?**
-A: いいえ。ドメイン コントローラーは 1 つのみ追加します。 Log Analytics ワークスペースにドメイン コントローラーが複数ある場合、それらのすべてのデータが Log Analytics に送信されます。
+**Q:レプリケーションの状態の確認用に、Log Analytics ワークスペースにすべてのドメイン コントローラーを追加する必要がありますか?**
+A:いいえ。ドメイン コントローラーは 1 つのみ追加します。 Log Analytics ワークスペースにドメイン コントローラーが複数ある場合、それらのすべてのデータが Azure Monitor に送信されます。
 
-**Q: Log Analytics ワークスペースに、ドメイン コントローラーを追加したくありません。それでも AD レプリケーションの状態ソリューションを使用できますか?**
-A: はい。 レジストリ キー値を設定して、これを有効にできます。 「[ドメイン コントローラー以外から AD データを Log Analytics に送信できるようにするには](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms)」を参照してください。
+**Q:Log Analytics ワークスペースに、ドメイン コントローラーを追加したくありません。それでも AD レプリケーションの状態ソリューションを使用できますか?**
 
-**Q: データ収集を行うプロセスの名前は何ですか?**
- A: AdvisorAssessment.exe です。
+A:はい。 レジストリ キー値を設定して、これを有効にできます。 「[非ドメイン コントローラーを有効にする](#enable-non-domain-controller)」をご覧ください。
 
-**Q: データの収集にはどれくらいの時間がかかりますか?**
- A: Active Directory 環境の規模によって異なりますが、データの収集時間は通常は 15 分未満です。
+**Q:データ収集を行うプロセスの名前は何ですか?**
+A:AdvisorAssessment.exe です。
 
-**Q: どのような種類のデータが収集されますか?**
- A: LDAP 経由でレプリケーションの情報は収集されます。
+**Q:データの収集にはどれくらいの時間がかかりますか?**
+A:Active Directory 環境の規模によって異なりますが、データの収集時間は通常は 15 分未満です。
 
-**Q: データが収集されるタイミングを構成する方法はありますか?**
- A: 現時点ではありません。
+**Q:どのような種類のデータが収集されますか?**
+A:LDAP 経由でレプリケーションの情報は収集されます。
 
-**Q: データを収集するには、どのようなアクセス許可が必要ですか?**
-A: Active Directory への標準のアクセス許可で十分です。
+**Q:データが収集されるタイミングを構成する方法はありますか?**
+A:現時点ではありません。
+
+**Q:データを収集するには、どのようなアクセス許可が必要ですか?**
+A:Active Directory への標準のアクセス許可で十分です。
 
 ## <a name="troubleshoot-data-collection-problems"></a>データの収集の問題のトラブルシューティング
 AD レプリケーションの状態ソリューション パックでデータを収集する場合、Log Analytics ワークスペースには少なくとも 1 つのドメイン コントローラーが接続されている必要があります。 ドメイン コントローラーに接続するまで、**データをまだ収集している**ことを示すメッセージが表示されます。
 
-1 つのドメイン コントローラーの接続に支援が必要な場合は、「 [Windows コンピューターを Log Analytics に接続する](../../log-analytics/log-analytics-om-agents.md)」のドキュメントを参照してください。 または、ドメイン コントローラーが既存の System Center Operations Manager 環境に接続されている場合は、「 [System Center Operations Manager を Log Analytics に接続する](../../log-analytics/log-analytics-om-agents.md)」のドキュメントを参照してください。
+1 つのドメイン コントローラーの接続に支援が必要な場合は、[Azure Monitor への Windows コンピューターの接続](../../azure-monitor/platform/om-agents.md)に関する記事をご覧ください。 または、ドメイン コントローラーが既存の System Center Operations Manager 環境に接続されている場合は、[Azure Monitor への System Center Operations Manager の接続](../../azure-monitor/platform/om-agents.md)に関する記事をご覧ください。
 
-ドメイン コントローラーを Log Analytics または System Center Operations Manager に直接接続しない場合は、「[ドメイン コントローラー以外から AD データを Log Analytics に送信できるようにするには](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms)」を参照してください。
+ドメイン コントローラーを Azure Monitor または System Center Operations Manager に直接接続しない場合は、「[非ドメイン コントローラーを有効にする](#enable-non-domain-controller)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-* Active Directory のレプリケーション状態の詳細データを参照するには、「 [Log Analytics におけるログの検索](../../log-analytics/log-analytics-queries.md) 」を使用してください。
+* Active Directory のレプリケーション状態の詳細データを見るには、[Azure Monitor のログ クエリ](../../azure-monitor/log-query/log-query-overview.md)を使用します。

@@ -1,29 +1,29 @@
 ---
-title: 'クイック スタート: ナレッジ ベースを作成する - REST (Java) - QnA Maker'
+title: クイック スタート:ナレッジ ベースを作成する - REST (Java) - QnA Maker
 titlesuffix: Azure Cognitive Services
 description: この Java REST ベースのクイック スタートでは、Cognitive Services API アカウントの Azure ダッシュボードに表示される QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 02/04/2019
 ms.author: diberry
-ms.openlocfilehash: 47a900f6877355fb45481d7b04052387ab3619cf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ddeccd34cbdc72d76d8dd26e36a533f44a9274b8
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229596"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55866306"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>クイック スタート: Java を使用して QnA Maker でナレッジ ベースを作成する
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>クイック スタート:Java を使用して QnA Maker のナレッジ ベースを作成する
 
-このクイック スタートでは、QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。 QnA Maker は、[データ ソース](../Concepts/data-sources-supported.md)の FAQ などの半構造化コンテンツから質問とその回答を自動的に抽出します。 ナレッジ ベースのモデルは、API 要求の本文で送信される JSON で定義されます。 
+このクイック スタートでは、QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。 QnA Maker は、[データ ソース](../Concepts/data-sources-supported.md)の FAQ などの半構造化コンテンツから質問とその回答を自動的に抽出します。 ナレッジ ベースのモデルは、API 要求の本文で送信される JSON で定義されます。
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 
-## <a name="create-a-knowledge-base-file"></a>ナレッジ ベース ファイルを作成する 
+## <a name="create-a-knowledge-base-file"></a>ナレッジ ベース ファイルを作成する
 
 `CreateKB.java` という名前でファイルを作成します。
 
@@ -34,7 +34,7 @@ ms.locfileid: "51229596"
 [!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=1-5 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>必要な定数を追加する
-上記の必要な依存関係の後に、QnA Maker にアクセスするために必要な定数を `CreateKB` クラスに追加します。 `subscriptionKey` 変数の値を自分の QnA Maker キーに置き換えます。 クラスを閉じる最後の中かっこを追加する必要はありません。このクイック スタートの終わりにある最終的なコード スニペットに存在します。 
+上記の必要な依存関係の後に、QnA Maker にアクセスするために必要な定数を `CreateKB` クラスに追加します。 `subscriptionKey` 変数の値を自分の QnA Maker キーに置き換えます。 クラスを閉じる最後の中かっこを追加する必要はありません。このクイック スタートの終わりにある最終的なコード スニペットに存在します。
 
 [!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=26-34 "Add the required constants")]
 
@@ -48,7 +48,7 @@ ms.locfileid: "51229596"
 
 次に、以下の補助的な関数を `CreateKB` クラス内に追加します。
 
-1. JSON を読みやすい形式で出力するために、次の関数を追加します。    
+1. JSON を読みやすい形式で出力するために、次の関数を追加します。
 
     [!code-java[Add the PrettyPrint function](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=82-87 "Add the KB model definition classes")]
 
@@ -56,7 +56,7 @@ ms.locfileid: "51229596"
 
     [!code-java[Add class to manage the HTTP response](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=89-97 "Add class to manage the HTTP response")]
 
-3. QnA Maker API に対して POST 要求を行う次のメソッドを追加します。 `Ocp-Apim-Subscription-Key` は、認証に使用される QnA Maker サービス キーです。 
+3. QnA Maker API に対して POST 要求を行う次のメソッドを追加します。 `Ocp-Apim-Subscription-Key` は、認証に使用される QnA Maker サービス キーです。
 
     [!code-java[Add POST method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=99-121 "Add POST method")]
 
@@ -65,11 +65,11 @@ ms.locfileid: "51229596"
     [!code-java[Add GET method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=123-137 "Add GET method")]
 
 ## <a name="add-a-method-to-create-the-kb"></a>KB を作成するためのメソッドを追加する
-Post メソッドを呼び出すことによって KB を作成する次のメソッドを追加します。 
+Post メソッドを呼び出すことによって KB を作成する次のメソッドを追加します。
 
 [!code-java[Add CreateKB method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=139-144 "Add CreateKB method")]
 
-この API 呼び出しは、操作 ID を含んだ JSON 応答を返します。 この操作 ID を使用して、KB が正常に作成されたかどうかを判断します。 
+この API 呼び出しは、操作 ID を含んだ JSON 応答を返します。 この操作 ID を使用して、KB が正常に作成されたかどうかを判断します。
 
 ```JSON
 {
@@ -82,11 +82,11 @@ Post メソッドを呼び出すことによって KB を作成する次のメ�
 ```
 
 ## <a name="add-a-method-to-get-status"></a>状態を取得するためのメソッドを追加する
-作成状態を確認するための次のメソッドを追加します。 
+作成状態を確認するための次のメソッドを追加します。
 
 [!code-java[Add GetStatus method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=146-150 "Add GetStatus method")]
 
-成功または失敗が返されるまで、この呼び出しを繰り返します。 
+成功または失敗が返されるまで、この呼び出しを繰り返します。
 
 ```JSON
 {
@@ -100,10 +100,10 @@ Post メソッドを呼び出すことによって KB を作成する次のメ�
 ```
 
 ## <a name="add-a-main-method"></a>main メソッドを追加する
-main メソッドで KB を作成した後、状態をポーリングします。 _create_ という**操作 ID** は、POST 応答のヘッダー フィールド **Location** で返された後、GET 要求でルートの一部として使用されます。 **完了していない場合は、`while` ループで状態の取得を再試行します。 
+main メソッドで KB を作成した後、状態をポーリングします。 _create_ という**操作 ID** は、POST 応答のヘッダー フィールド **Location** で返された後、GET 要求でルートの一部として使用されます。 **完了していない場合は、`while` ループで状態の取得を再試行します。
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
- 
+
 ## <a name="compile-and-run-the-program"></a>プログラムをコンパイルして実行する
 
 1. gson ライブラリが `./libs` ディレクトリに存在することを確認します。 コマンド ラインで、`CreateKB.java` ファイルをコンパイルします。
@@ -118,9 +118,9 @@ main メソッドで KB を作成した後、状態をポーリングします�
     java -cp ",;libs/*" CreateKB
     ```
 
-作成されたナレッジ ベースは、QnA Maker ポータルの [[My knowledge bases]\(マイ ナレッジ ベース\)](https://www.qnamaker.ai/Home/MyServices) ページで確認できます。    
+作成されたナレッジ ベースは、QnA Maker ポータルの [[My knowledge bases]\(マイ ナレッジ ベース\)](https://www.qnamaker.ai/Home/MyServices) ページで確認できます。
 
-[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

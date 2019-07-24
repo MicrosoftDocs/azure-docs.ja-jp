@@ -1,29 +1,30 @@
 ---
 title: ディープ ラーニングと AI のフレームワーク - Azure | Microsoft Docs
-description: ディープ ラーニングと AI のフレームワーク
+description: Data Science Virtual Machine でサポートされているディープ ラーニングのフレームワークとツールについて説明します。
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: fbe3aeac3918142388edfa8cd053badd362d7fd7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 59f88d54d3542738f1a500c8c476995eb1535ecf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241924"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006489"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>ディープ ラーニングと AI のフレームワーク
-[データ サイエンス仮想マシン](https://aka.ms/dsvm) (DSVM) と[ディープ ラーニング VM](https://aka.ms/dsvm/deeplearning) は、多数のディープ ラーニング フレームワークをサポートし、予測分析や、画像および言語の理解などの認識機能を駆使した人工知能 (AI) アプリケーションの構築を支援します。 
+[データ サイエンス仮想マシン](https://aka.ms/dsvm) (DSVM) と[ディープ ラーニング VM](https://aka.ms/dsvm/deeplearning) は、多数のディープ ラーニング フレームワークをサポートし、予測分析や、画像および言語の理解などの認識機能を駆使した人工知能 (AI) アプリケーションの構築を支援します。
 
 ここでは、DSVM で利用可能すべてのなディープ ラーニング フレームワークの詳細を示します。
 
@@ -36,8 +37,7 @@ ms.locfileid: "51241924"
 | DSVM での構成/インストール方法  | Microsoft Cognitive Toolkit (CNTK) は、[Linux および Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) 上の Python 3.5 および [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) 上の Python 3.6 にインストールされています。   |
 | サンプルへのリンク      | サンプル Jupyter ノートブックが含まれています。     |
 | DSVM 上の関連ツール      | Keras      |
-| 使用/実行方法    | * ターミナルで、適切な環境をアクティブ化し、Python を実行します。 <br/>
- * Jupyter で、[Jupyter](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) または [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux) に接続し、サンプルの保存されている CNTK ディレクトリを開きます。 |
+| 使用/実行方法    | * ターミナルで、適切な環境をアクティブ化し、Python を実行します。 <br/> * Jupyter で: [Jupyter](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) または [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux) に接続し、サンプルの保存されている CNTK ディレクトリを開きます。 |
 
 ## <a name="tensorflow"></a>TensorFlow
 
@@ -48,8 +48,7 @@ ms.locfileid: "51241924"
 | DSVM での構成/インストール方法  | TensorFlow は、[Linux および Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) 上の Python 3.5 および [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) 上の Python 3.6 にインストールされています。  |
 | サンプルへのリンク      | サンプル Jupyter ノートブックが含まれています。     |
 | DSVM 上の関連ツール      | Keras      |
-| 使用/実行方法    | * ターミナルで、適切な環境をアクティブ化し、Python を実行します。 <br/>
- * Jupyter で、[Jupyter](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) または [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux) に接続し、サンプルの保存されている TensorFlow ディレクトリを開きます。  |
+| 使用/実行方法    | * ターミナルで、適切な環境をアクティブ化し、Python を実行します。 <br/> * Jupyter で: [Jupyter](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) または [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux) に接続し、サンプルの保存されている TensorFlow ディレクトリを開きます。  |
 
 ## <a name="horovod"></a>Horovod
 
@@ -71,8 +70,7 @@ ms.locfileid: "51241924"
 | DSVM での構成/インストール方法  | TensorFlow は、[Linux および Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) 上の Python 3.5 および [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) 上の Python 3.6 にインストールされています。 |
 | サンプルへのリンク      | https://github.com/fchollet/keras/tree/master/examples      |
 | DSVM 上の関連ツール      | Microsoft Cognitive Toolkit、TensorFlow、Theano      |
-| 使用/実行方法    | * ターミナルで、適切な環境をアクティブ化し、Python を実行します。 <br/>
- * Jupyter で、Github の場所からサンプルをダウンロードし、[Jupyter](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) または [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux) に接続してサンプル ディレクトリを開きます。 |
+| 使用/実行方法    | * ターミナルで、適切な環境をアクティブ化し、Python を実行します。 <br/> * Jupyter で: GitHub の場所からサンプルをダウンロードし、[Jupyter](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) または [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux) に接続してサンプル ディレクトリを開きます。 |
 
 ## <a name="caffe"></a>Caffe
 
@@ -84,7 +82,8 @@ ms.locfileid: "51241924"
 | Python 2.7 に切り替える方法 | `source activate root` を実行します。 |
 | サンプルへのリンク      | サンプルは `/opt/caffe/examples` に含まれています。      |
 | DSVM 上の関連ツール      | Caffe2      |
-### <a name="how-to-use--run-it"></a>使用/実行方法  
+
+### <a name="how-to-use--run-it"></a>使用/実行方法
 
 X2Go を使用して VM にログインした後、新しいターミナルを起動して次のように入力します
 
@@ -98,7 +97,7 @@ jupyter notebook
 
 バイナリは、/opt/caffe/build/install/bin にインストールされています。
 
-Caffe のインストールされるバージョンは Python 2.7 を必要とします。既定でアクティブ化される Python 3.5 では機能しません。 `source activate root` を実行して Anaconda 環境に切り替えます。 
+Caffe のインストールされるバージョンは Python 2.7 を必要とします。既定でアクティブ化される Python 3.5 では機能しません。 `source activate root` を実行して Anaconda 環境に切り替えます。
 
 ## <a name="caffe2"></a>Caffe2
 
@@ -121,8 +120,7 @@ Caffe のインストールされるバージョンは Python 2.7 を必要と�
 | DSVM での構成/インストール方法  | Chainer は、[Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) にインストールされています。 ChainerRL と ChainerCV もインストールされます。   |
 | サンプルへのリンク      | サンプル ノートブックは、JupyterHub に含まれています。 |
 | DSVM 上の関連ツール      | Caffe      |
-| 使用/実行方法  | * ターミナルで、[Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) 環境をアクティブ化し、_python_ を実行してから Chainer をインポートします。 <br/>
-* JupyterHub で、[JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux) に接続し、サンプルのノートブックが保存されている Chainer ディレクトリに移動します。
+| 使用/実行方法  | * ターミナルで、[Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) 環境をアクティブ化し、_python_ を実行してから Chainer をインポートします。 <br/> * JupyterHub で: [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux) に接続し、サンプルのノートブックが保存されている Chainer ディレクトリに移動します。
 
 
 ## <a name="deep-water"></a>Deep Water
@@ -135,7 +133,7 @@ Caffe のインストールされるバージョンは Python 2.7 を必要と�
 | サンプルへのリンク      | サンプル ノートブックは、JupyterHub に含まれています。      |
 | DSVM 上の関連ツール      | H2O、Sparkling Water      |
 
-### <a name="how-to-use--run-it"></a>使用/実行方法  
+### <a name="how-to-use--run-it"></a>使用/実行方法
 
 Deep Water では、cuDNN 5.1 と CUDA 8 が必要です。 他の深層学習フレームワークでは CUDA 9 および cuDNN 7 が使用されているため、これは既定ではライブラリ パスにありません。 Deep Water 用の CUDA 8 + cuDNN 5.1 を使用するには:
 
@@ -157,8 +155,7 @@ Deep Water を使用するには:
 | DSVM での構成/インストール方法  | MXNet は、Windows では `C:\dsvm\tools\mxnet` に、Linux では `/dsvm/tools/mxnet` にインストールされます。 Python バインディングは、[Linux および Windows 2012](dsvm-languages.md#python-linux-and-windows-server-2012-edition) 上の Python 3.5 および [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) 上の Python 3.6 にインストールされています。 Ubuntu にはR バインディングもインストールされています。   |
 | サンプルへのリンク      | サンプル Jupyter ノートブックが含まれています。    |
 | DSVM 上の関連ツール      | Keras      |
-| 使用/実行方法    | * ターミナルで、適切な環境をアクティブ化し、Python を実行します。 <br/>
- * Jupyter で [Jupyter](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) または [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux) に接続し、サンプルの保存されている mxnet ディレクトリを開きます。  |
+| 使用/実行方法    | * ターミナルで、適切な環境をアクティブ化し、Python を実行します。 <br/> * Jupyter で: [Jupyter](provision-vm.md#tools-installed-on-the-microsoft-data-science-virtual-machine) または [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux) に接続し、サンプルの保存されている mxnet ディレクトリを開きます。  |
  | ビルド ノート | MXNet は、Linux 上のソースから作成されています。 このビルドには、CUDA、cuDNN、NCCL、および MKL が含まれています。 |
 
 ## <a name="nvidia-digits"></a>NVIDIA DIGITS
@@ -168,7 +165,8 @@ Deep Water を使用するには:
 | 紹介   | ディープ ラーニング モデルを迅速にトレーニングするための NVIDIA 製ディープ ラーニング システム      |
 | サポートされている DSVM エディション      | Ubuntu     |
 | DSVM での構成/インストール方法  | DIGITS は `/dsvm/tools/DIGITS` にインストールされ、_digits_ という名前のサービスとして利用できます。   |
-### <a name="how-to-use--run-it"></a>使用/実行方法  
+
+### <a name="how-to-use--run-it"></a>使用/実行方法
 
 X2Go で VM にログインします。 ターミナルで、サービスを開始します:
 
@@ -197,12 +195,7 @@ X2Go で VM にログインします。 ターミナルで、サービスを開�
 | サポートされている DSVM エディション      | Ubuntu     |
 | DSVM での構成/インストール方法  | Theano は Python 2.7 (_root_) および Python 3.5 (_py35_) 環境にインストールされます。   |
 | DSVM 上の関連ツール      | Keras      |
-| 使用/実行方法    | * ターミナルで、必要な Python バージョン (root または py35) をアクティブ化し、python を実行した後、theano をインポートします。 <br/> 
-* Jupyter で、Python 2.7 または 3.5 カーネルを選択した後、theano をインポートします。  
-<br/>
-最近の MKL バグを回避するには、まず、MKL スレッドレイヤーを設定する必要があります。<br/><br/>
-_export MKL_THREADING_LAYER=GNU_
-|
+| 使用/実行方法    | * ターミナルで、必要な Python バージョン (root または py35) をアクティブ化し、python を実行した後、theano をインポートします。 <br/> * Jupyter で、Python 2.7 または 3.5 カーネルを選択した後、theano をインポートします。  <br/>最近の MKL バグを回避するには、まず、MKL スレッドレイヤーを設定する必要があります。<br/><br/>_export MKL_THREADING_LAYER=GNU_|
 
 
 
@@ -225,9 +218,7 @@ _export MKL_THREADING_LAYER=GNU_
 | DSVM での構成/インストール方法  | PyTorch は、[Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) にインストールされています。  |
 | サンプルへのリンク      | サンプル Jupyter ノートブックが含まれています。また、サンプルは /dsvm/samples/pytorch でも見つけることができます。      |
 | DSVM 上の関連ツール      | Torch      |
-| 使用/実行方法 | 
-* ターミナルで、適切な環境をアクティブ化し、Python を実行します。 <br/>
- * Jupyter で、[JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux) に接続し、サンプルの保存されている PyTorch ディレクトリを開きます。  |
+| 使用/実行方法 |* ターミナルで、適切な環境をアクティブ化し、Python を実行します。 <br/> * Jupyter で: [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux) に接続し、サンプルの保存されている PyTorch ディレクトリを開きます。  |
 
 ## <a name="mxnet-model-server"></a>MXNet モデル サーバー
 

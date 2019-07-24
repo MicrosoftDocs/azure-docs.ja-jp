@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と The Cloud Security Fabric の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と The Cloud Security Fabric の統合 | Microsoft Docs
 description: Azure Active Directory と The Cloud Security Fabric の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 9908dae627ae11a42e8e01a9a4f4d11f35ce0f8d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a556b38ca4947b71555ba7b023607b392900bdaf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422962"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210392"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-the-cloud-security-fabric"></a>チュートリアル: Azure Active Directory と The Cloud Security Fabric の統合
+# <a name="tutorial-azure-active-directory-integration-with-the-cloud-security-fabric"></a>チュートリアル:Azure Active Directory と The Cloud Security Fabric の統合
 
 このチュートリアルでは、The Cloud Security Fabric と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -108,12 +109,14 @@ The Cloud Security Fabric で Azure AD のシングル サインオンを構成�
     ![[The Cloud Security Fabric のドメインと URL] のシングル サインオン情報](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_url.png)
 
     a. **[サインオン URL]** ボックスに、次の URL を入力します。
+
     | |
     |--|
     | `https://platform.cloudlock.com` |
     | `https://app.cloudlock.com` |
 
     b. **[識別子]** ボックスに、次の形式で URL を入力します。
+    
     | |
     |--|
     | `https://platform.cloudlock.com/gate/saml/sso/<subdomain>` |
@@ -162,11 +165,11 @@ The Cloud Security Fabric で Azure AD のシングル サインオンを構成�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="create-a-the-cloud-security-fabric-test-user"></a>The Cloud Security Fabric テスト ユーザーの作成
 
-このセクションでは、The Cloud Security Fabric で Britta Simon というユーザーを作成します。 [The Cloud Security Fabric サポート チーム](mailto:support@cloudlock.com)と協力して、The Cloud Security Fabric プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、The Cloud Security Fabric で Britta Simon というユーザーを作成します。  [The Cloud Security Fabric サポート チーム](mailto:support@cloudlock.com) と協力して、The Cloud Security Fabric プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -203,7 +206,7 @@ The Cloud Security Fabric で Azure AD のシングル サインオンを構成�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで The Cloud Security Fabric のタイルをクリックすると、自動的に The Cloud Security Fabric アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -1,19 +1,15 @@
-items:
 - name: Azure Media Services v3
-  href: latest/media-services-overview.md
+  displayName: 'encode, stream, package, content protection, video analytics'
+  href: latest/
 - name: Azure Media Services v2 (legacy)
   href: previous/media-services-overview.md
-- name: Video Indexer
-  href: video-indexer/video-indexer-overview.md
+- name: Azure Media Services Video Indexer
+  href: video-indexer/
+- name: Azure Media Player
+  href: 'http://amp.azure.net/libs/amp/latest/docs/index.html'
 - name: リソース
   items:
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/?category=media
-  - name: 料金計算ツール
-    href: https://azure.microsoft.com/pricing/calculator/
-ms.openlocfilehash: dbb4907dea27226972006e449937537973e3fcb7
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290401"
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=media'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'

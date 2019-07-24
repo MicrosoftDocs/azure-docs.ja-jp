@@ -1,13 +1,14 @@
 items:
-- name: Azure Machine Learning サービス (プレビュー)
+- name: Azure Machine Learning サービス
   href: service/index.yml
 - name: Azure Machine Learning Studio
   href: studio/index.yml
 - name: Microsoft の ML 製品の比較
-  href: service/overview-more-machine-learning.md
-ms.openlocfilehash: e3a10bbc7d317534884a2b3f129eae3cc546a361
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+  href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
+  maintainContext: true
+ms.openlocfilehash: 59852fe858e9b4796fec476c1bfe41c0e0d0381e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887021"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175864"

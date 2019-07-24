@@ -1,40 +1,42 @@
 ---
-title: Azure Functions で接続を管理する方法
+title: Azure Functions での接続の管理
 description: 静的接続クライアントを使用して、Azure Functions のパフォーマンスの問題を回避する方法について説明します。
 services: functions
 author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 11/02/2018
+ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: eb5c302c807f85f24f53fa1ba32ef4cd7b52274a
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 4e9bd4e9ea467446c2814cdb8956a40b1503b027
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036463"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59784927"
 ---
-# <a name="how-to-manage-connections-in-azure-functions"></a>Azure Functions で接続を管理する方法
+# <a name="manage-connections-in-azure-functions"></a>Azure Functions での接続の管理
 
-関数アプリ内の Functions はリソースを共有します。それらの共有リソースの中には、HTTP 接続、データベース接続、ストレージなどの Azure サービスへの接続があります。 多くの関数が同時に実行されている場合、利用可能な接続がなくなる可能性があります。 この記事では、実際に必要な接続よりも多くの接続を使用しないように関数をコーディングする方法について説明します。
+関数アプリ内の関数はリソースを共有します。 それらの共有リソースの中には、HTTP 接続、データベース接続、Azure Storage などのサービスへの接続があります。 多くの関数が同時に実行されている場合、利用可能な接続がなくなる可能性があります。 この記事では、必要以上に多くの接続を使用しないように関数をコーディングする方法について説明します。
 
-## <a name="connections-limit"></a>接続の制限
+## <a name="connection-limit"></a>接続の制限
 
-利用できる接続の数が制限される理由の一部は、関数アプリが [Azure App Service サンドボックス](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)内で実行されるためです。 サンドボックスがコードに課す制限の 1 つは、[接続数の上限 (現在は 300)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits) です。 この制限に達すると、関数ランタイムは `Host thresholds exceeded: Connections` というメッセージでログを作成します。
+使用できる接続の数が制限される理由の 1 つは、関数アプリが[サンドボックス環境](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)で実行されるためです。 サンドボックスがコードに課す制限の 1 つは、インスタンスあたりの[接続数の上限 (現在、アクティブな接続数は 600、合計接続数は 1,200)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits) です。 この制限に達すると、関数ランタイムは `Host thresholds exceeded: Connections` というメッセージでログを作成します。
 
-より多くの要求を処理するために[スケール コントローラーが関数アプリのインスタンスを追加する](functions-scale.md#how-the-consumption-plan-works)と、制限を超える可能性が高くなります。 各関数アプリ インスタンスは一度に多くの関数を実行でき、そのすべてが 300 の制限に加算される接続を使用します。
+この制限はインスタンスごとに適用されます。  より多くの要求を処理するために、[スケール コントローラーによって関数アプリ インスタンスが追加](functions-scale.md#how-the-consumption-and-premium-plans-work)されると、インスタンスごとに接続の制限が適用されます。 つまり、接続のグローバルな制限はないので、すべてのアクティブ インスタンスでアクティブな接続の数が 600 をはるかに超える可能性があります。
 
-## <a name="use-static-clients"></a>静的クライアントを使用する
+トラブルシューティングを行う際には、関数アプリに対して Application Insights を有効にしたことを確認します。 Application Insights では、実行など、関数アプリのメトリックを表示できます。 詳細については、「[Application Insights でテレメトリを表示する](functions-monitoring.md#view-telemetry-in-application-insights)」を参照してください。  
 
-必要以上に多くの接続を保持しないようにするには、関数の呼び出しごとに新しいインスタンスを作成するのではなく、クライアント インスタンスを再利用します。 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)、[DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-)、Azure Storage クライアントのような .NET クライアントは、単一の静的クライアントを使用する場合に接続を管理できます。
+## <a name="static-clients"></a>静的クライアント
+
+必要以上に多くの接続を保持しないようにするには、関数の呼び出しごとに新しいインスタンスを作成するのではなく、クライアント インスタンスを再利用します。 関数の記述に使用するどの言語でも、クライアント接続を再利用することをお勧めします。 たとえば、単一の静的クライアントを使用すると、[HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)、[DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+)、Azure Storage クライアントなどの .NET クライアントで接続を管理できます。
 
 Azure Functions アプリケーションでサービス固有のクライアントを使用する場合のガイドラインを次に示します。
 
-- 関数の呼び出しごとに新しいクライアントを**作成しない**。
-- 関数の呼び出しごとに使用できる単一の静的クライアントを**作成する**。
-- 異なる関数が同じサービスを使用している場合、共有ヘルパー クラスで単一の静的クライアントを**作成することを検討する**。
+- 関数呼び出しごとに新しいクライアントを*作成しない*。
+- すべての関数呼び出しで使用できる単一の静的クライアントを*作成する*。
+- さまざまな関数が同じサービスを使用している場合は、共有ヘルパー クラスで単一の静的クライアントを作成することを*検討する*。
 
 ## <a name="client-code-examples"></a>クライアント コードの例
 
@@ -42,7 +44,7 @@ Azure Functions アプリケーションでサービス固有のクライアン�
 
 ### <a name="httpclient-example-c"></a>HttpClient の例 (C#)
 
-静的 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) を作成する C# 関数コードの例を次に示します。
+静的 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) インスタンスを作成する C# 関数コードの例を次に示します。
 
 ```cs
 // Create a single, static HttpClient
@@ -50,24 +52,24 @@ private static HttpClient httpClient = new HttpClient();
 
 public static async Task Run(string input)
 {
-    var response = await httpClient.GetAsync("http://example.com");
+    var response = await httpClient.GetAsync("https://example.com");
     // Rest of function
 }
 ```
 
-.NET の [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) については、"クライアントを破棄する方がよいですか" という質問がよく寄せられます。 一般的に、`IDisposable` を実装したオブジェクトは、使用の終了後に破棄します。 ただし、関数の終了時に静的クライアントの使用は終了しないため、静的クライアントは破棄しません。 アプリケーションの起動中は、静的クライアントを存続することができます。
+.NET の [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) について、"クライアントを破棄する方がよいですか" という質問がよく寄せられます。 一般に、`IDisposable` を実装したオブジェクトは、使用の終了後に破棄します。 ただし、関数の終了時に静的クライアントの使用は終了しないため、静的クライアントは破棄しません。 アプリケーションの起動中は、静的クライアントを存続することができます。
 
-### <a name="http-agent-examples-nodejs"></a>HTTP エージェントの例 (Node.js)
+### <a name="http-agent-examples-javascript"></a>HTTP エージェントの例 (JavaScript)
 
-優れた接続管理オプションが提供されることから、`node-fetch` モジュールなどの非ネイティブ メソッドではなくネイティブの [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) クラスを使用する必要があります。 接続パラメーターは `http.agent` クラスのオプションを使用して構成されます。 HTTP エージェントで利用できるオプションの詳細については、 [new Agent(\[options\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options) を参照してください。
+優れた接続管理オプションが提供されることから、`node-fetch` モジュールなどの非ネイティブ メソッドではなくネイティブの [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) クラスを使用する必要があります。 接続パラメーターは、`http.agent` クラスのオプションを使用して構成されます。 HTTP エージェントで利用できるオプションの詳細については、[new Agent(\[options\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options) を参照してください。
 
-`http.request()` で使用されるグローバル `http.globalAgent` では、これらのすべての値がそれぞれの既定値に設定されます。 関数の接続制限を構成するための推奨される方法は、グローバルに最大数を設定することです。 次の例は、関数アプリのソケットの最大数を設定します。
+`http.request()` で使用されるグローバル `http.globalAgent` クラスでは、これらのすべての値がそれぞれの既定値に設定されます。 関数の接続制限を構成するための推奨される方法は、グローバルに最大数を設定することです。 次の例は、関数アプリのソケットの最大数を設定します。
 
 ```js
 http.globalAgent.maxSockets = 200;
 ```
 
- 次の例は、HTTP 要求に対してのみ使用されるカスタム HTTP エージェントで新しい HTTP 要求を作成します。
+ 次の例では、その要求専用のカスタム HTTP エージェントを使用する新しい HTTP 要求を作成します。
 
 ```js
 var http = require('http');
@@ -108,16 +110,35 @@ public static async Task Run(string input)
 }
 ```
 
+### <a name="cosmosclient-code-example-javascript"></a>CosmosClient のコード例 (JavaScript)
+[CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) は、Azure Cosmos DB のインスタンスに接続します。 Azure Cosmos DB のドキュメントでは、[アプリケーションの有効期間中はシングルトン Azure Cosmos DB クライアントを使用する](../cosmos-db/performance-tips.md#sdk-usage)ことが推奨されています。 次の例では、関数内でそれを行うパターンの 1 つを示します。
+
+```javascript
+const cosmos = require('@azure/cosmos');
+const endpoint = process.env.COSMOS_API_URL;
+const masterKey = process.env.COSMOS_API_KEY;
+const { CosmosClient } = cosmos;
+
+const client = new CosmosClient({ endpoint, auth: { masterKey } });
+// All function invocations also reference the same database and container.
+const container = client.database("MyDatabaseName").container("MyContainerName");
+
+module.exports = async function (context) {
+    const { result: itemArray } = await container.items.readAll().toArray();
+    context.log(itemArray);
+}
+```
+
 ## <a name="sqlclient-connections"></a>SqlClient の接続
 
-関数のコードでは、SQL リレーショナル データベースに接続するために、SQL Server に対する .NET Framework データ プロバイダー ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) を使うことがあります。 これは、Entity Framework のような ADO.NET に依存するデータ フレームワークの基になるプロバイダーでもあります。 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) や [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+関数コードでは、SQL リレーショナル データベースに接続するために、.NET Framework Data Provider for SQL Server ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) を使用できます。 これは、ADO.NET に依存するデータ フレームワーク ([Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx) など) の基になるプロバイダーでもあります。 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) や [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
 ) の接続とは異なり、ADO.NET は接続プールを既定で実装します。 ただし、それでも接続を使い果たす可能性があるため、データベースへの接続を最適化する必要があります。 詳細については、「[SQL Server Connection Pooling (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)」(SQL Server の接続プーリング (ADO.NET)) をご覧ください。
 
 > [!TIP]
-> [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx) などの一部のデータ フレームワークは、通常、構成ファイルの **ConnectionStrings** セクションから接続文字列を取得します。 その場合は、関数アプリの設定およびローカル プロジェクトの [local.settings.json ファイル](functions-run-local.md#local-settings-file)の**接続文字列**コレクションに、SQL データベースの接続文字列を明示的に追加する必要があります。 関数のコードで [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) を作成する場合は、接続文字列の値を他の接続と共に**アプリケーションの設定**に格納する必要があります。
+> Entity Framework などの一部のデータ フレームワークは、通常、構成ファイルの **ConnectionStrings** セクションから接続文字列を取得します。 その場合は、関数アプリの設定およびローカル プロジェクトの [local.settings.json ファイル](functions-run-local.md#local-settings-file)の**接続文字列**コレクションに、SQL データベースの接続文字列を明示的に追加する必要があります。 関数コードで [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) のインスタンスを作成する場合は、他の接続と共に、接続文字列の値を**アプリケーションの設定**に保存する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 
-静的クライアントが推奨される理由の詳細については、「[不適切なインスタンス化のアンチパターン](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)」を参照してください。
+静的クライアントが推奨される理由の詳細については、「[不適切なインスタンス化のアンチパターン](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)」をご覧ください。
 
 Azure Functions のパフォーマンスに関するその他のヒントについては、「[Azure Functions のパフォーマンスと信頼性を最適化する](functions-best-practices.md)」を参照してください。

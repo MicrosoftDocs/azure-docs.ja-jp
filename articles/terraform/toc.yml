@@ -7,6 +7,8 @@ items:
     href: terraform-overview.md
 - name: クイック スタート
   items:
+  - name: マルチサービス アプリケーションの作成
+    href: terrafom-quickstart.md
   - name: Terraform のインストールと構成
     href: /azure/virtual-machines/linux/terraform-install-configure
     maintainContext: true
@@ -22,8 +24,10 @@ items:
       href: terraform-slot-walkthru.md
   - name: Containers
     items:
-    - name: AKS と Terraform を使用して Kubernetes クラスターを作成する
+    - name: AKS を使用して Kubernetes クラスターを作成する
       href: terraform-create-k8s-cluster-with-tf-and-aks.md
+    - name: AKS を使用してイングレス コントローラーとしての Application Gateway を備えた Kubernetes クラスターを作成する
+      href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
   - name: インフラストラクチャ
     items:
     - name: MSI が有効な Terraform VM の作成
@@ -36,6 +40,22 @@ items:
       href: terraform-create-vm-scaleset-network-disks-hcl.md
     - name: Packer カスタム イメージからの VM スケール セットのプロビジョニング
       href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
+  - name: ネットワーク
+    items:
+    - name: ハブとスポークのトポロジ
+      items:
+      - name: 1. ハブとスポークのトポロジの作成
+        href: terraform-hub-spoke-introduction.md
+      - name: 2. オンプレミス仮想ネットワークの作成
+        href: terraform-hub-spoke-on-prem.md
+      - name: 3. ハブ仮想ネットワークの作成
+        href: terraform-hub-spoke-hub-network.md
+      - name: 4. ハブ仮想ネットワーク アプライアンスの作成
+        href: terraform-hub-spoke-hub-nva.md
+      - name: 5. スポーク ネットワークの作成
+        href: terraform-hub-spoke-spoke-network.md
+      - name: 6. ネットワーク トポロジの接続の検証
+        href: terraform-hub-spoke-validation.md
   - name: ツール
     items:
     - name: Terraform Visual Studio Code 拡張機能のインストール
@@ -61,16 +81,16 @@ items:
   - name: Azure モジュールのレジストリ
     href: https://registry.terraform.io/modules/Azure
   - name: Terraform のリファレンス
-    href: http://aka.ms/terraform
+    href: https://aka.ms/terraform
 - name: リソース
   items:
   - name: Azure と Terraform
     href: https://azure.microsoft.com/solutions/devops/terraform/
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 332af09ce1ae94c94ed68efa269e190823c3916d
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: d83e1cbd4f3cd5d8a0a9ec167e197b53f20e0630
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638360"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999447"

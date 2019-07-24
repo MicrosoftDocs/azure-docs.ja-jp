@@ -4,23 +4,23 @@ titleSuffix: Azure Cognitive Services
 description: Bing Web Search API から検索結果をフィルター処理し、表示する方法について説明します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.assetid: 8B837DC2-70F1-41C7-9496-11EDFD1A888D
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 01/12/2017
+ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 700fae4e206e547037406d4f15f32cb167fbe6b9
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 26c38c34543683a3fc450d3a0ae932d8bd30dc98
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123591"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199495"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>検索応答に含まれる回答をフィルタリングする  
 
-Web のクエリを実行すると、Bing は検索に関連すると考えられるすべてのコンテンツを返します。 たとえば、検索クエリが "sailing+dinghies" の場合、応答に次のような回答が含まれる可能性があります。
+Web のクエリを実行すると、Bing はその検索で見つけたすべての関連コンテンツを返します。 たとえば、検索クエリが "sailing+dinghies" の場合、応答に次のような回答が含まれる可能性があります。
 
 ```json
 {
@@ -44,8 +44,16 @@ Web のクエリを実行すると、Bing は検索に関連すると考えら�
     }
 }    
 ```
+[responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#responsefilter) クエリ パラメーターを使用して、受け取るコンテンツの種類 (イメージ、ビデオ、ニュースなど) をフィルター処理できます。 指定された回答に関連するコンテンツを Bing が見つけると、それが返されます。 応答フィルターは、コンマ区切りの回答の一覧です。 
 
-画像、ビデオ、ニュースなど、特定の種類のコンテンツに関心がある場合は、[responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#responsefilter) クエリ パラメーターを使用して、その種類の回答のみを要求することができます。 Bing は、指定された回答に関連するコンテンツを検出すると、それを返します。 応答フィルターは、コンマ区切りの回答の一覧です。 次の例は、`responseFilter` を使用して「sailing dinghies」の画像、ビデオ、ニュースを要求する方法を示しています。 クエリ文字列をエンコードすると、コンマは %2C になります。  
+`responseFilter` 値の先頭に `-` 文字を追加すると、イメージなど、特定の種類のコンテンツを応答から除外できます。 コンマ (`,`) を使用して、除外する種類を区切ることができます。 例: 
+
+```
+&responseFilter=-images,-videos
+```
+
+
+次の例は、`responseFilter` を使用して「sailing dinghies」の画像、ビデオ、ニュースを要求する方法を示しています。 クエリ文字列をエンコードすると、コンマは %2C になります。  
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&responseFilter=images%2Cvideos%2Cnews&mkt=en-us HTTP/1.1  
@@ -57,7 +65,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-前のクエリに対する応答を次に示します。 ご覧のように、Bing は関連するビデオやニュースの結果は見つけていないので、それらは応答に含まれていません。
+前のクエリに対する応答を次に示します。 Bing では、関連するビデオやニュースの結果が見つかっていないため、それらは応答に含まれません。
 
 ```json
 {
@@ -80,12 +88,6 @@ Host: api.cognitive.microsoft.com
         }
     }
 }
-```
-
-応答から特定の種類のコンテンツ (画像など) を除外したい場合は、responseFilter 値にハイフン (マイナス) プレフィックスを付けて除外できます。 除外する種類はコンマで区切ってください。
-
-```
-&responseFilter=-images,-videos
 ```
 
 前の応答では、Bing はビデオやニュースの結果を返しませんでしたが、ビデオやニュースのコンテンツが存在しないということではありません。 単に、それらがページに含まれていなかったことを意味します。 ただし、[ページを移動して](./paging-webpages.md)他の結果を表示すれば、後続のページには含まれている可能性があります。 また、直接 [Video Search API](../bing-video-search/search-the-web.md) や [News Search API](../bing-news-search/search-the-web.md) のエンドポイントを呼び出すと、結果が応答に含まれる可能性があります。

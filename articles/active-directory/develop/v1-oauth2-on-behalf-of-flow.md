@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,13 @@ ms.date: 06/06/2017
 ms.author: celested
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: ab9f2638de6f74944eb27f024be3000209554cdf
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 53f8ec8a6833446663d7f142deefd595eed13136
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345138"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116267"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>On-Behalf-Of フローでの委任ユーザー ID を使用するサービス間の呼び出し
 
@@ -37,7 +38,7 @@ OAuth 2.0 On-Behalf-Of (OBO) フローにより、サービスまたは Web API 
 
 OBO フローは、[OAuth 2.0 認証コード付与フロー](v1-protocols-oauth-code.md)を使用するアプリケーションでユーザーが認証された後に開始されます。 その時点で、アプリケーションは中間層の Web API (API A) に、API A にアクセスするためのユーザーの要求と同意を含むアクセス トークン (トークン A) を送信します。次に、API A はダウンストリームの Web API (API B) に認証済み要求を行います。
 
-On-Behalf-Of フローは次の手順により構成されます: ![OAuth2.0 On-Behalf-Of フロー](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
+On-Behalf-Of フローは次の手順で構成されます。![OAuth2.0 の On-Behalf-Of フロー](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 1. クライアント アプリケーションは、トークン A を使用して API A に要求を発行します。
 1. API A が Azure AD トークン発行エンドポイントに対して認証処理を行い、API B にアクセスするためのトークンを要求します。
@@ -62,12 +63,12 @@ Azure AD で、中間層サービスとクライアント アプリケーショ�
     1. アプリケーションの種類に応じて、サインオン URL またはリダイレクト URL をベース URL に設定します。
     1. **[作成]** を選択して、アプリケーションを作成します。
 1. Azure portal を終了する前に、クライアント シークレットを生成します。
-    1. Azure portal でアプリケーションを選択して、**[設定]** を選択します。
-    1. [設定] メニューの **[キー]** を選択し、キー有効期間が 1 年または 2 年のキーを追加します。
-    1. このページを保存すると、Azure portal にキー値が表示されます。 キー値をコピーして安全な場所に保存します。
+   1. Azure portal でアプリケーションを選択して、**[設定]** を選択します。
+   1. [設定] メニューの **[キー]** を選択し、キー有効期間が 1 年または 2 年のキーを追加します。
+   1. このページを保存すると、Azure portal にキー値が表示されます。 キー値をコピーして安全な場所に保存します。
 
-    > [!IMPORTANT]
-    > 実装でアプリケーション設定を構成するには、このキーが必要です。 このキー値は二度と表示されず、他の方法で取得することはできません。 Azure portal で表示されたら、すぐに記録してください。
+      > [!IMPORTANT]
+      > 実装でアプリケーション設定を構成するには、このキーが必要です。 このキー値は二度と表示されず、他の方法で取得することはできません。 Azure portal で表示されたら、すぐに記録してください。
 
 ### <a name="register-the-client-application"></a>クライアント アプリケーションの登録
 
@@ -103,7 +104,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 
 クライアント アプリケーションは、共有シークレットまたは証明書によってセキュリティ保護されます。
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>最初のケース: 共有シークレットを使ったアクセス トークン要求
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>最初のケース:共有シークレットを使ったアクセス トークン要求
 
 共有シークレットを使用する場合、サービス間のアクセス トークン要求には、次のパラメーターが含まれてます。
 
@@ -137,7 +138,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=openid
 ```
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>2 番目のケース: 証明書を使ったアクセス トークン要求
+### <a name="second-case-access-token-request-with-a-certificate"></a>2 番目のケース:証明書を使ったアクセス トークン要求
 
 証明書を含むサービス間のアクセス トークン要求には、次のパラメーターが含まれています。
 
@@ -181,7 +182,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 | パラメーター | 説明 |
 | --- | --- |
-| token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer**タイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750) (OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750))](http://www.rfc-editor.org/rfc/rfc6750.txt)」を参照してください。 |
+| token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer**タイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。 |
 | scope |トークンで付与されるアクセスのスコープ。 |
 | expires_in |アクセス トークンが有効な時間の長さ (秒単位)。 |
 | expires_on |アクセス トークンの有効期限が切れる日時。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 この値は、キャッシュされたトークンの有効期間を調べるために使用されます。 |
@@ -263,16 +264,16 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdW
 
 応答には、UTF8 および Base64url でエンコードされた SAML トークンが含まれています。
 
-- **OBO 呼び出しから提供される SAML アサーションの SubjectConfirmationData**: ターゲット アプリケーションが **SubjectConfirmationData** の受信者の値を必要とする場合、その値はリソース アプリケーション構成で非ワイルドカードの応答 URL である必要があります。
-- **SubjectConfirmationData ノード**: このノードは、SAML 応答の一部ではないため、**InResponseTo** 属性を含めることはできません。 SAML トークンを受け取るアプリケーションは、**InResponseTo** 属性なしで SAML アサーションを受け入れることができる必要があります。
+- **OBO 呼び出しから提供される SAML アサーションの SubjectConfirmationData**:ターゲット アプリケーションで **SubjectConfirmationData** の受信者の値が必要な場合、その値はリソース アプリケーション構成内の非ワイルドカードの応答 URL である必要があります。
+- **SubjectConfirmationData ノード**:このノードは SAML 応答の一部ではないため、**InResponseTo** 属性を含めることはできません。 SAML トークンを受け取るアプリケーションは、**InResponseTo** 属性なしで SAML アサーションを受け入れることができる必要があります。
 
-- **同意**: OAuth フローでユーザー データを含む SAML トークンを受信するためには、同意が付与されている必要があります。 アクセス許可および管理者の同意を得る方法については、「[Azure Active Directory v1.0 エンドポイントでのアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent)」を参照してください。
+- **同意**:OAuth フローでユーザー データを含む SAML トークンを受信するためには、同意が付与されている必要があります。 アクセス許可および管理者の同意を得る方法については、「[Azure Active Directory v1.0 エンドポイントでのアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent)」を参照してください。
 
 ### <a name="response-with-saml-assertion"></a>SAML アサーションの応答
 
 | パラメーター | 説明 |
 | --- | --- |
-| token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer**タイプのみです。 ベアラー トークンについて詳しくは、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) を参照してください。 |
+| token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer**タイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。 |
 | scope |トークンで付与されるアクセスのスコープ。 |
 | expires_in |アクセス トークンが有効な時間の長さ (秒単位)。 |
 | expires_on |アクセス トークンの有効期限が切れる日時。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 この値は、キャッシュされたトークンの有効期間を調べるために使用されます。 |
@@ -280,14 +281,14 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdW
 | access_token |SAML アサーションを返すパラメーター。 |
 | refresh_token |更新トークン。 呼び出し元のサービスは、現在の SAML アサーションの期限が切れた後に、このトークンを使用して別のアクセス トークンを要求できます。 |
 
-- token_type: Bearer
-- expires_in: 3296
-- ext_expires_in: 0
-- expires_on: 1529627844
+- token_type:ベアラー
+- expires_in:3296
+- ext_expires_in:0
+- expires_on:1529627844
 - resource: `https://api.contoso.com`
-- access_token: \<SAML アサーション\>
+- access_token:\<SAML assertion\>
 - issued_token_type: urn:ietf:params:oauth:token-type:saml2
-- refresh_token: \<更新トークン\>
+- refresh_token:\<更新トークン\>
 
 ## <a name="client-limitations"></a>クライアントの制限事項
 

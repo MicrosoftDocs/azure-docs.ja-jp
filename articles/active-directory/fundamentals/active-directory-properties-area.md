@@ -1,24 +1,25 @@
 ---
-title: Azure Active Directory での組織のプライバシー情報の追加 | Microsoft Docs
-description: Azure Active Directory (Azure AD) の Properties エリアに組織のプライバシー情報を追加する方法。
+title: 組織のプライバシー情報の追加 - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory Properties エリアに組織のプライバシー情報を追加する方法について説明します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: lizross
 ms.reviewer: bpham
-ms.custom: it-pro
-ms.openlocfilehash: f32eeee8f02cee32eb05e14aa98387a20cb2e626
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.custom: it-pro, seodec18
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 98b4e3585f25a0b081e30c5524678a0f7bb27942
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48903987"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187272"
 ---
-# <a name="how-to-add-your-privacy-info-using-azure-active-directory"></a>How-to: Azure Active Directory を使用したプライバシー情報の追加
+# <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Azure Active Directory を使用して組織のプライバシー情報を追加する
 この記事では、テナント管理者が Azure ポータルから組織の Azure Active Directory (Azure AD) テナントにプライバシー関連の情報を追加する方法を説明します｡
 
 社内従業員と社外ゲストが組織のポリシーを確認できるよう､プライバシーに関するグローバルな問い合わせ先と組織のプライバシーに関する声明の両方を追加することを強くお勧めします｡ プライバシーに関する声明はそれぞれの会社に合わせて独自に作成､変更されるため､弁護士に相談することを強くお勧めします｡

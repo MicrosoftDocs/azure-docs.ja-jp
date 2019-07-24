@@ -1,19 +1,19 @@
 ---
 title: 顧客データ要求機能
 description: 顧客データ要求機能の概要
-author: dominicbetts
-ms.author: dobett
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robinsh
 ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 862ed2b38521cac3a4c83a9dc90db78f9f030ff1
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 1519637eddf909040131a1efac5738fc7cc8e565
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451818"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59791678"
 ---
 # <a name="summary-of-customer-data-request-features"></a>顧客データ要求機能の概要
 

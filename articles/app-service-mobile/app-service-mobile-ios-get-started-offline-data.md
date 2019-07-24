@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 2f415f1886c654f3bdd880cdccaadc7aa3e69892
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1283f812799fe71ef6987dbc7fab092aed4d3417
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32156497"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435135"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>iOS モバイル アプリでオフライン同期を有効にする
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -101,7 +101,7 @@ Mobile Apps のオフライン データ同期機能を使用すると、エン�
 
           if error != nil {
               // A real application would handle various errors like network conditions,
-              // server conflicts, etc via the MSSyncContextDelegate
+              // server conflicts, etc. via the MSSyncContextDelegate
               print("Error: \(error!.description)")
 
               // We will discard our changes and keep the server's copy for simplicity
@@ -141,10 +141,10 @@ Swift のアプリは、ユーザーが更新操作を実行したときと起�
 Core Data オフライン ストアを使用するときは、データ モデルで特定のテーブルとフィールドを定義する必要があります。 サンプル アプリケーションには、あらかじめ適切な形式でデータ モデルが含まれています。 このセクションでは、これらのテーブルとその使用方法について説明します。
 
 **QSDataModel.xcdatamodeld** を開きます。 4 つのテーブルが定義されています。3 つは SDK で使用され、1 つは To Do 項目自体に使用されます。
-  * MS_TableOperations: サーバーと同期する必要がある項目を追跡します。
-  * MS_TableOperationErrors: オフライン同期中に発生したエラーを追跡します。
-  * MS_TableConfig: すべてのプル操作に対する最後の同期操作の最終更新時刻を追跡します。
-  * TodoItem: To Do 項目を格納します。 システム列 **createdAt**、**updatedAt**、および **version** は省略可能なシステム プロパティです。
+  * MS_TableOperations:サーバーと同期する必要がある項目を追跡します。
+  * MS_TableOperationErrors:オフライン同期中に発生したエラーを追跡します。
+  * MS_TableConfig:すべてのプル操作に対する最後の同期操作の最終更新時刻を追跡します。
+  * TodoItem:To Do アイテムを格納します。 システム列 **createdAt**、**updatedAt**、および **version** は省略可能なシステム プロパティです。
 
 > [!NOTE]
 > Mobile Apps SDK では、"**``**" で始まる列名を予約しています。 このプレフィックスは、システム列以外のものに使用しないでください。 そうしないと、リモート バックエンドの使用時に列名が変更されます。
@@ -163,7 +163,7 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 | --- | --- |
 | id | Integer 64 |
 | itemId | String |
-| プロパティ | Binary Data |
+| properties | Binary Data |
 | table | String |
 | tableKind | Integer 16 |
 
@@ -176,7 +176,7 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 | --- | --- |
 | id |String |
 | operationId |Integer 64 |
-| プロパティ |Binary Data |
+| properties |Binary Data |
 | tableKind |Integer 16 |
 
  **MS_TableConfig**
@@ -195,13 +195,13 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 
 **TodoItem**
 
-| Attribute | type | 注 |
+| Attribute | type | Note |
 | --- | --- | --- |
 | id | String、必須のマーク |リモート ストア内のプライマリ キー |
-| 完了 | ブール | To Do 項目フィールド |
-| テキスト |String |To Do 項目フィールド |
-| createdAt | 日付 | (省略可能) **createdAt** システム プロパティにマップします。 |
-| updatedAt | 日付 | (省略可能) **updatedAt** システム プロパティにマップします。 |
+| complete | Boolean | To Do 項目フィールド |
+| text |String |To Do 項目フィールド |
+| createdAt | Date | (省略可能) **createdAt** システム プロパティにマップします。 |
+| updatedAt | Date | (省略可能) **updatedAt** システム プロパティにマップします。 |
 | version | String | (省略可能) 競合の検出に使用され、バージョンにマップします。 |
 
 ## <a name="setup-sync"></a>アプリケーションの同期動作を変更する
@@ -272,7 +272,7 @@ Core Data ローカル ストアを使用するときは、[正しいシステ�
 
 ## <a name="additional-resources"></a>その他のリソース
 * [Mobile Apps でのオフライン データ同期]
-* [Cloud Cover: Azure Mobile Services でのオフライン同期] \(このビデオは Mobile Services に関するものですが、Mobile Apps のオフライン同期も同様に機能します。\)
+* [Cloud Cover:Azure Mobile Services でのオフライン同期] \(このビデオは Mobile Services に関するものですが、Mobile Apps のオフライン同期も同様に機能します。\)
 
 <!-- URLs. -->
 
@@ -285,5 +285,5 @@ Core Data ローカル ストアを使用するときは、[正しいシステ�
 [defining-core-data-tableconfig-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-tableconfig-entity.png
 [defining-core-data-todoitem-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-todoitem-entity.png
 
-[Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
-[Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
+[Cloud Cover:Azure Mobile Services でのオフライン同期]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Azure Friday: Offline-enabled apps in Azure Mobile Services]: https://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/

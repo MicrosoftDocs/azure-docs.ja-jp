@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
-ms.component: blobs
-ms.openlocfilehash: a69d67ee455b447eb038903bb8fafb644d025662
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.subservice: blobs
+ms.openlocfilehash: a1dba92a9e156c82f49b9f6f85faf227fc652029
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565736"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240082"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Azure Storage に大量のランダム データを並行でアップロードする
 
@@ -35,7 +35,7 @@ Azure BLOB Storage では、データを格納するためのスケーラブル�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、以前の Storage のチュートリアル「[Create a virtual machine and storage account for a scalable application][previous-tutorial]」 (スケーラブルなアプリケーションの仮想マシンとストレージ アカウントを作成する) を完了している必要があります。
+このチュートリアルを完了するには、前の Storage のチュートリアル「[スケーラブルなアプリケーションの仮想マシンおよびストレージ アカウントの作成][previous-tutorial]」を完了している必要があります。
 
 ## <a name="remote-into-your-virtual-machine"></a>仮想マシンへのリモート接続
 

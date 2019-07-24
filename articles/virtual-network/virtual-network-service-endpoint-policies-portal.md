@@ -1,13 +1,10 @@
 ---
-title: サービス エンドポイント ポリシーの作成と関連付け - Azure portal | Microsoft Docs
+title: サービス エンドポイント ポリシーの作成と関連付け - Azure portal
+titlesuffix: Azure Virtual Network
 description: この記事では、Azure portal を使用してサービス エンドポイント ポリシーを設定し、関連付ける方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
 author: anithaa
-manager: narayan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 09/18/2018
 ms.author: anithaa
-ms.openlocfilehash: 6bd318da5b3cd667d0a39b9c963e8d3ffd472f41
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: aaa07759ed8b10578d024d5838ac1d2658778695
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633012"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999876"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Azure portal を使用してサービス エンドポイント ポリシーを作成、変更、または削除する
 
@@ -38,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン 
 
-Azure Portal ( http://portal.azure.com ) にサインインします。
+Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-service-endpoint-policy"></a>サービス エンドポイント ポリシーを作成する
 
@@ -46,28 +43,28 @@ Azure Portal ( http://portal.azure.com ) にサインインします。
 2. 検索ウィンドウに「サービス エンドポイント ポリシー」と入力し、**[Service endpoint policy (Preview)]\(サービス エンドポイント ポリシー (プレビュー)\)**、**[作成]** の順に選択します。
 3. **[基本]** に次の情報を入力するか、選択します。 
 
-   - サブスクリプション   : ポリシーのサブスクリプションを選択します。    
-   - リソース グループ: **[新規作成]** を選択し、「*myResourceGroup*」と入力します     
+   - サブスクリプション:ポリシーのサブスクリプションを選択します。    
+   - リソース グループ:**[新規作成]** を選択し、「*myResourceGroup*と入力します。     
    - 名前: myEndpointPolicy
-   - 場所: 米国中西部     
+   - 場所:米国中西部     
  
    ![サービス エンドポイント ポリシーの基本を作成する](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-startpane.PNG)
    
 4. **[ポリシー定義]** に次の情報を入力するか、選択します。
 
    - **[+ リソースの追加]** をクリックし、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[追加]** をクリックします。  
-   - スコープ: **[単一のアカウント]** または **[サブスクリプションのすべてのアカウント]** または **[リソース グループのすべてのアカウント]** を選択します。    
-   - サブスクリプション: ストレージ アカウントのサブスクリプションを選択します。 別のサブスクリプションのポリシーとストレージ アカウントを指定できます。   
-   - リソース グループ: リソース グループを選択します。 スコープの設定が [サブスクリプションのすべてのアカウント] または [リソース グループのすべてのアカウント] の場合は必須です。  
+   - スコープ:**[単一のアカウント]** または **[サブスクリプションのすべてのアカウント]** または **[リソース グループのすべてのアカウント]** を選択します。    
+   - サブスクリプション:ストレージ アカウントのサブスクリプションを選択します。 別のサブスクリプションのポリシーとストレージ アカウントを指定できます。   
+   - リソース グループ:リソース グループを選択します。 スコープの設定が [サブスクリプションのすべてのアカウント] または [リソース グループのすべてのアカウント] の場合は必須です。  
    - リソース: mystorageaccountportal    
    - さらにリソースを追加するには、**[+ リソースを追加する]** をクリックします。
    
    ![サービス エンドポイント ポリシーの定義を作成する](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-policydefinitionspane.PNG)
    
-5. 省略可能: **[タグ]** に次の情報を入力または選択します。
+5. 省略可能:**[タグ]** に次の情報を入力するか、選択します。
    
-   - キー: ポリシーのキーを選択します。 例: Dept     
-   - 値: キーの値ペアを入力します。 例: 財務
+   - キー:ポリシーのキーを選択します。 例:Dept     
+   - 値:キーの値ペアを入力します。 例:Finance
 
 6. **[確認および作成]** を選択します。 情報を確認して **[作成]** をクリックします。 さらに編集するには、**[前へ]** をクリックします。 
 
@@ -100,12 +97,12 @@ Azure Portal ( http://portal.azure.com ) にサインインします。
 2. **[ネットワーク]** を選択してから、**[仮想ネットワーク]** を選択します。
 3. **[仮想ネットワークの作成]** で、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[作成]** を選択します。
    - 名前: myVirtualNetwork      
-   - アドレス空間: 10.0.0.0/16      
-   - サブスクリプション: ご使用のサブスクリプションを選択します。 ポリシーは VNet と同じサブスクリプションにする必要があります     
-   - リソース グループ: **[既存のものを使用]** を選択し、*[myResourceGroup]* を選択します     
-   - [場所]: 米国中西部     
+   - アドレス空間:10.0.0.0/16      
+   - サブスクリプション:サブスクリプションを選択します。 ポリシーは VNet と同じサブスクリプションにする必要があります     
+   - リソース グループ:**[既存のものを使用]**、*[myResourceGroup]* の順に選択します。     
+   - 場所:米国中西部     
    - サブネット名: プライベート     
-   - アドレス範囲: 10.0.0.0/24
+   - アドレス範囲:10.0.0.0/24
      
 4. ポータルの上部にある **[Search resources, services, and docs]\(リソース、サービス、ドキュメントの検索\)** ボックスで、「*myVirtualNetwork*」の入力を開始します。 検索結果に **[myVirtualNetwork]** が表示されたら、それを選択します。
 5. **[設定]** で **[サブネット]** を選択し、**[プライベート]** を選択します。

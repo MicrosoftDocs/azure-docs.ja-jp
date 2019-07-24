@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: .NET SDK を使用して画像内の顔データを検出して表示する'
+title: チュートリアル:.NET SDK を使用して画像内の顔データを検出して表示する
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、Face API を使用して画像内の顔を検出し、フレームに収める Windows アプリを作成します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 11/05/2018
+ms.date: 02/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 8db2437b7f78271aee131cf5b4dfd9f06f744c66
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 6a60afc45894518f92115976876ddd50efa1e410
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852675"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310187"
 ---
-# <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>チュートリアル: 画像内の顔データを表示する WPF アプリの作成
+# <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>チュートリアル:画像内の顔データを表示する WPF アプリの作成
 
 このチュートリアルでは、.NET クライアント SDK を通じて Azure Face API を使用して、画像内の顔を検出した後にそのデータを UI に表示する方法を学習します。 ここでは、顔を検出し、それぞれの顔の周囲にフレームを描画して、ステータス バーに顔の説明を表示する、シンプルな Windows Presentation Framework (WPF) アプリケーションを作成します。 
 
@@ -49,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. Visual Studio で、[新しいプロジェクト] ダイアログを開きます。 **[インストール済み]**、**[Visual C#]** の順に展開し、**[WPF アプリ (.NET Framework)]** を選択します。
 1. アプリケーションの名前を **FaceTutorial** に設定し、**[OK]** をクリックします。
 1. 必須の NuGet パッケージを入手します。 ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。次のパッケージを見つけてインストールします。
-    - Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview
+    - [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
 
 ## <a name="add-the-initial-code"></a>初期コードの追加
 

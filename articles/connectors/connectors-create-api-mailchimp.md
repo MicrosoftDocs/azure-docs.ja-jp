@@ -28,7 +28,7 @@ MailChimp を使用してロジック アプリを作成するには、まず**�
 
 | プロパティ | 必須 | 説明 |
 | --- | --- | --- |
-| トークン |[はい] |MailChimp の資格情報を提供します |
+| トークン |はい |MailChimp の資格情報を提供します |
 
 > [!INCLUDE [Steps to create a connection to MailChimp](../../includes/connectors-create-api-mailchimp.md)]
 > 

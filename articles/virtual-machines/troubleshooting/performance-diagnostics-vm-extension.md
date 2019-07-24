@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a76b22feee84820f3acc963af70ec24669a216d7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 769305cc3d838832f8f445ac9623a1724603f968
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251970"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002735"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows 用 Azure パフォーマンス診断 VM 拡張機能
 
 Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフォーマンス診断データを収集するのに役立ちます。 この拡張機能では、分析を実行し、仮想マシンでのパフォーマンスの問題を特定して解決するための結果と推奨事項のレポートを提供します。 この拡張機能では、[PerfInsights](https://aka.ms/perfinsights) と呼ばれるトラブルシューティング ツールがインストールされます。
 
 > [!NOTE]
-    > クラシックではない VM に対して Azure portal から VM の診断を実行する場合は、新しいエクスペリエンスを使用することをお勧めします。 詳細については、「[Performance Diagnostics for Azure virtual machines](performance-diagnostics.md)」(Azure 仮想マシンのパフォーマンス診断) を参照してください。 
+> クラシックではない VM に対して Azure portal から VM の診断を実行する場合は、新しいエクスペリエンスを使用することをお勧めします。 詳細については、「[Performance Diagnostics for Azure virtual machines](performance-diagnostics.md)」(Azure 仮想マシンのパフォーマンス診断) を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -67,7 +67,7 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
 
 ### <a name="property-values"></a>プロパティ値
 
-|   **名前**   |**値/例**|       **説明**      |
+|   **Name**   |**値/例**|       **説明**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|API のバージョン。
 |publisher|Microsoft.Azure.Performance.Diagnostics|拡張機能の発行元名前空間。
@@ -77,7 +77,7 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
 |traceDurationInSeconds|300|いずれかのトレース オプションを選択した場合、トレースの期間。
 |perfCounterTrace|p|パフォーマンス カウンターのトレースを有効にするオプション。 有効な値: **p**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
 |networkTrace|n|ネットワーク トレースを有効にするオプション。 有効な値は、**n** または空の値です。 このトレースをキャプチャしない場合は、値を空のままにします。
-|xperfTrace|○|XPerf のトレースを有効にするオプション。 有効な値: **x**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
+|xperfTrace|x|XPerf のトレースを有効にするオプション。 有効な値: **x**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
 |storPortTrace|s|StorPort のトレースを有効にするオプション。 有効な値は、**s** または空の値です。 このトレースをキャプチャしない場合は、値を空のままにします。
 |srNumber|123452016365929|サポート チケット番号 (ある場合)。 ない場合は、値を空のままにします。
 |requestTimeUtc|2017-09-28T22:08:53.736Z|現在の日時 (UTC)。 ポータルを使ってこの拡張機能をインストールしている場合は、この値を指定する必要はありません。
@@ -89,7 +89,7 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
 
 Windows 仮想マシンにこの拡張機能をインストールするには、次の手順に従います。
 
-1. [Azure Portal](http://portal.azure.com) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. この拡張機能をインストールする仮想マシンを選びます。
 
     ![仮想マシンが強調表示されている Azure Portal のスクリーンショット](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
@@ -112,7 +112,7 @@ Windows 仮想マシンにこの拡張機能をインストールするには、
 ## <a name="remove-the-extension"></a>拡張機能を削除する
 仮想マシンから拡張機能を削除するには、以下の手順のようにします。
 
-1. [Azure Portal](http://portal.azure.com) にサインインし、この拡張機能を削除する仮想マシンを選択し、**[拡張機能]** ブレードを選択します。 
+1. [Azure Portal](https://portal.azure.com) にサインインし、この拡張機能を削除する仮想マシンを選択し、**[拡張機能]** ブレードを選択します。 
 2. 一覧でパフォーマンス診断拡張機能のエントリの **[...]** をクリックし、**[アンインストール]** を選択します。
 
     ![[アンインストール] が強調表示されている [拡張機能] ブレードのスクリーンショット](media/performance-diagnostics-vm-extension/uninstall-the-extension.png)
@@ -123,9 +123,9 @@ Windows 仮想マシンにこの拡張機能をインストールするには、
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 Azure 仮想マシン拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用できます。 その場合、Azure Resource Manager テンプレートのデプロイ時に Azure パフォーマンス診断 VM 拡張機能が実行されます。 サンプル テンプレートを次に示します。
 
-````
+```
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "vmName": {
@@ -207,18 +207,18 @@ Azure 仮想マシン拡張機能は、Azure Resource Manager テンプレート
     }
   ]
 }
-````
+```
 
 ## <a name="powershell-deployment"></a>PowerShell でのデプロイ
-`Set-AzureRmVMExtension` コマンドを使って、Azure パフォーマンス診断 VM 拡張機能を既存の仮想マシンにデプロイすることができます。
+`Set-AzVMExtension` コマンドを使って、Azure パフォーマンス診断 VM 拡張機能を既存の仮想マシンにデプロイすることができます。
 
 PowerShell
 
-````
+```
 $PublicSettings = @{ "storageAccountName"="mystorageaccount";"performanceScenario"="basic";"traceDurationInSeconds"=300;"perfCounterTrace"="p";"networkTrace"="";"xperfTrace"="";"storPortTrace"="";"srNumber"="";"requestTimeUtc"="2017-09-28T22:08:53.736Z";"resourceId"="VMResourceId" }
 $ProtectedSettings = @{"storageAccountKey"="mystoragekey" }
 
-Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
+Set-AzVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" `
     -Publisher "Microsoft.Azure.Performance.Diagnostics" `
@@ -227,7 +227,7 @@ Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -Settings $PublicSettings `
     -ProtectedSettings $ProtectedSettings `
     -Location WestUS
-````
+```
 
 ## <a name="information-on-the-data-captured"></a>キャプチャされるデータについて
 PerfInsights ツールは、選んだシナリオに応じて、さまざまなログ、構成、診断データを収集します。 詳細については、[PerfInsights のドキュメント](https://aka.ms/perfinsights)をご覧ください。

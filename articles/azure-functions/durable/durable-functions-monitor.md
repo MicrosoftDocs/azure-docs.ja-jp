@@ -2,20 +2,20 @@
 title: Durable Functions のモニター - Azure
 description: Azure Functions の Durable Functions 拡張機能を使って状態モニターを実装する方法を説明します。
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7af8015e424b4a9169a9b80ed5e7070a8fa6de1c
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 9be062ec42f054832225c17a65b06e47dbcbe990
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52638457"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607281"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions のモニター シナリオ - 天気ウォッチャーのサンプル
 
@@ -32,7 +32,7 @@ ms.locfileid: "52638457"
 * モニターは、ある条件が満たされたときに終了することも、別のプロセスによって終了することもできます。
 * モニターは、パラメーターを受け取ることができます。 サンプルでは、要求された場所と電話番号に同じ気象監視プロセスを適用する方法を示します。
 * モニターはスケーラブルです。 各モニターはオーケストレーション インスタンスであるため、新しい関数を作成したり、コードをさらに定義したりしなくても、複数のモニターを作成できます。
-* モニターは、より大規模なワークフローと簡単に統合できます。 モニターは、より複雑なオーケストレーション関数の 1 つのセクション、つまり[サブ オーケストレーション](https://docs.microsoft.com/azure/azure-functions/durable-functions-sub-orchestrations)にすることができます。
+* モニターは、より大規模なワークフローと簡単に統合できます。 モニターは、より複雑なオーケストレーション関数の 1 つのセクション、つまり[サブ オーケストレーション](durable-functions-sub-orchestrations.md)にすることができます。
 
 ## <a name="configuring-twilio-integration"></a>Twilio 統合の構成
 
@@ -54,12 +54,12 @@ API キーを入手したら、次の**アプリ設定**を関数アプリに追
 
 この記事では、サンプル アプリで使用されている次の関数について説明します。
 
-* `E3_Monitor`: `E3_GetIsClear` を定期的に呼び出すオーケストレーター関数。 `E3_GetIsClear` が true を返した場合に `E3_SendGoodWeatherAlert` を呼び出します。
-* `E3_GetIsClear`: ある場所の現在の気象条件を確認するアクティビティ関数です。
-* `E3_SendGoodWeatherAlert`: Twilio 経由で SMS メッセージを送信するアクティビティ関数です。
+* `E3_Monitor`:`E3_GetIsClear` を定期的に呼び出すオーケストレーター関数。 `E3_GetIsClear` が true を返した場合に `E3_SendGoodWeatherAlert` を呼び出します。
+* `E3_GetIsClear`:ある場所の現在の気象条件を確認するアクティビティ関数です。
+* `E3_SendGoodWeatherAlert`:Twilio 経由で SMS メッセージを送信するアクティビティ関数です。
 
 以下のセクションでは、C# スクリプトと JavaScript で使用される構成とコードについて説明します。 Visual Studio 開発用のコードは、この記事の最後に記載されています。
- 
+
 ## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>気象監視オーケストレーション (Visual Studio Code と Azure Portal のサンプル コード)
 
 **E3_Monitor** 関数は、オーケストレーター関数用の標準的な *function.json* を使います。
@@ -72,7 +72,7 @@ API キーを入手したら、次の**アプリ設定**を関数アプリに追
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
@@ -83,7 +83,7 @@ API キーを入手したら、次の**アプリ設定**を関数アプリに追
 3. **E3_GetIsClear** を呼び出し、要求された場所が晴れているかどうかを判断します。
 4. 天気が晴れの場合は、**E3_SendGoodWeatherAlert** を呼び出して、要求された電話番号に SMS 通知を送信します。
 5. 持続的タイマーを作成して、次のポーリング間隔でオーケストレーションを再開します。 サンプルでは、簡略化のためにハード コーディングされた値を使います。
-6. [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) がモニターの有効期限を経過するか SMS アラートが送信されるまで、実行を続けます。
+6. [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (C#) または `currentUtcDateTime` (JavaScript) がモニターの有効期限を経過するか SMS アラートが送信されるまで、実行を続けます。
 
 複数の **MonitorRequests** を送信して、複数のオーケストレーター インスタンスを同時に実行できます。 監視する場所と SMS アラートを送信する電話番号を指定することができます。
 
@@ -107,7 +107,7 @@ JavaScript サンプルでは通常の JSON オブジェクトをパラメータ
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
@@ -121,7 +121,7 @@ SMS メッセージを送信するコードを次に示します。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
 
@@ -134,8 +134,9 @@ POST https://{host}/orchestrators/E3_Monitor
 Content-Length: 77
 Content-Type: application/json
 
-{ "Location": { "City": "Redmond", "State": "WA" }, "Phone": "+1425XXXXXXX" }
+{ "location": { "city": "Redmond", "state": "WA" }, "phone": "+1425XXXXXXX" }
 ```
+
 ```
 HTTP/1.1 202 Accepted
 Content-Type: application/json; charset=utf-8
@@ -144,9 +145,6 @@ RetryAfter: 10
 
 {"id": "f6893f25acf64df2ab53a35c09d52635", "statusQueryGetUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "sendEventPostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/raiseEvent/{eventName}?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "terminatePostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason={text}&taskHub=SampleHubVS&connection=Storage&code={systemKey}"}
 ```
-
-   > [!NOTE]
-   > 現時点では、JavaScript オーケストレーションのスターター関数からインスタンス管理 URI を返すことはできません。 この機能は今後のリリースで追加される予定です。
 
 **E3_Monitor** インスタンスが起動し、要求された場所の現在の気象条件のクエリを実行します。 天気が晴れの場合はアラートを送信するアクティビティ関数を呼び出し、そうでない場合はタイマーを設定します。 タイマーの期限が切れると、オーケストレーションが再開されます。
 
@@ -168,7 +166,7 @@ RetryAfter: 10
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-オーケストレーションは、タイムアウトになるか晴天が検出されると[終了](durable-functions-instance-management.md#terminating-instances)します。 別の関数内で `TerminateAsync` を使うか、上の 202 応答で参照されている **terminatePostUri** HTTP POST webhook を呼び出して `{text}` を終了の理由に置き換えることもできます。
+オーケストレーションは、タイムアウトになるか晴天が検出されると[終了](durable-functions-instance-management.md)します。 別の関数内で `TerminateAsync` (.NET) または `terminate` (JavaScript) を使うか、上の 202 応答で参照されている **terminatePostUri** HTTP POST webhook を呼び出して `{text}` を終了の理由に置き換えることもできます。
 
 ```
 POST https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
@@ -177,6 +175,9 @@ POST https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf6
 ## <a name="visual-studio-sample-code"></a>Visual Studio のサンプル コード
 
 Visual Studio プロジェクトの単一の C# ファイルとしてのオーケストレーションを次に示します。
+
+> [!NOTE]
+> 下のサンプル コードを実行するには、`Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget パッケージをインストールする必要があります。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs)]
 

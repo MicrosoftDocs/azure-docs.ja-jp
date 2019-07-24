@@ -8,17 +8,17 @@ ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/20/2018
+ms.date: 12/21/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 7e654e070ce64b0f5e7f9fb5734bf0ec1584dbf6
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: a6fe5b0452771cd2e618d1a08cb2f4af52e3cc0d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423611"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538691"
 ---
-# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>チュートリアル: .NET API を使用して Azure Batch で並列ワークロードを実行する
+# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>チュートリアル:.NET API を使用して Azure Batch で並列ワークロードを実行する
 
 Azure Batch を使用すると、大規模な並列コンピューティングやハイパフォーマンス コンピューティング (HPC) のバッチ ジョブを Azure で効率的に実行することができます。 このチュートリアルでは、Batch を使用して並列ワークロードを実行する C# の例を紹介します。 一般的な Batch アプリケーション ワークフローのほか、Batch および Storage のリソースをプログラムで操作する方法を学習します。 学習内容は次のとおりです。
 
@@ -31,7 +31,7 @@ Azure Batch を使用すると、大規模な並列コンピューティング�
 > * タスクの実行を監視する
 > * 出力ファイルを取得する
 
-このチュートリアルでは、[ffmpeg](http://ffmpeg.org/) オープンソース ツールを使用して複数の MP4 メディア ファイルを並行して MP3 形式に変換します。 
+このチュートリアルでは、[ffmpeg](https://ffmpeg.org/) オープンソース ツールを使用して複数の MP4 メディア ファイルを並行して MP3 形式に変換します。 
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -175,8 +175,8 @@ CreateContainerIfNotExistAsync(blobClient, outputContainerName);
 
 `Program.cs` 内の 2 つのメソッドは、ファイルのアップロードに関連しています。
 
-* `UploadResourceFilesToContainerAsync`: ResourceFile オブジェクトのコレクションを返し、内部的に `UploadResourceFileToContainerAsync` を呼び出して、`inputFilePaths` パラメーターで渡される各ファイルをアップロードします。
-* `UploadResourceFileToContainerAsync`: 各ファイルを BLOB として入力用コンテナーにアップロードします。 ファイルのアップロード後、BLOB の Shared Access Signature (SAS) を取得し、それを表す ResourceFile オブジェクトを返します。
+* `UploadResourceFilesToContainerAsync`:ResourceFile オブジェクトのコレクションを返し、内部的に `UploadResourceFileToContainerAsync` を呼び出して、`inputFilePaths` パラメーターで渡される各ファイルをアップロードします。
+* `UploadResourceFileToContainerAsync`:各ファイルを BLOB として入力用コンテナーにアップロードします。 ファイルのアップロード後、BLOB の Shared Access Signature (SAS) を取得し、それを表す ResourceFile オブジェクトを返します。
 
 ```csharp
 string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
@@ -248,11 +248,14 @@ await job.CommitAsync();
 
 このサンプルでは、`AddTasksAsync` メソッドの呼び出しを使用してジョブにタスクを作成します。これにより、[CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) オブジェクトの一覧が作成されます。 各 `CloudTask` は、[CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) プロパティを使用することで、ffmpeg を実行して入力の `ResourceFile` オブジェクトを処理します。 ffmpeg は、以前にプールが作成されたときに各ノードにインストールされています。 ここでは、コマンド ラインで ffmpeg を実行して、各入力 MP4 (ビデオ) ファイルを MP3 (オーディオ) ファイルに変換します。
 
-このサンプルでは、コマンド ラインの実行後に MP3 ファイルの [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) オブジェクトを作成します。 各タスクの出力ファイル (この場合は 1 つ) は、タスクの [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) プロパティを使用して、リンクされているストレージ アカウントのコンテナーにアップロードされます。
+このサンプルでは、コマンド ラインの実行後に MP3 ファイルの [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) オブジェクトを作成します。 各タスクの出力ファイル (この場合は 1 つ) は、タスクの [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) プロパティを使用して、リンクされているストレージ アカウントのコンテナーにアップロードされます。 以前、コード サンプルでは、出力コンテナーへの書き込みアクセス権を得るために Shared Access Signature URL (`outputContainerSasUrl`) が取得されました。 `outputFile` オブジェクトに設定されている条件に注意してください。 タスクが正常に完了すると、タスクからの出力ファイルがコンテナーに単純にアップロードされます (`OutputFileUploadCondition.TaskSuccess`)。 実装の詳細については、GitHub の[コード サンプル](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial)を参照してください。
 
 その後、このサンプルは、[AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync) メソッドを使用してジョブにタスクを追加します。これにより、タスクは、コンピューティング ノードで実行するためにキューに登録されます。
 
 ```csharp
+ // Create a collection to hold the tasks added to the job.
+List<CloudTask> tasks = new List<CloudTask>();
+
 for (int i = 0; i < inputFiles.Count; i++)
 {
     string taskId = String.Format("Task{0}", i);
@@ -265,7 +268,7 @@ for (int i = 0; i < inputFiles.Count; i++)
         ".mp3");
     string taskCommandLine = String.Format("cmd /c {0}\\ffmpeg-3.4-win64-static\\bin\\ffmpeg.exe -i {1} {2}", appPath, inputMediaFile, outputMediaFile);
 
-    // Create a cloud task (with the task ID and command line) 
+    // Create a cloud task (with the task ID and command line)
     CloudTask task = new CloudTask(taskId, taskCommandLine);
     task.ResourceFiles = new List<ResourceFile> { inputFiles[i] };
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf0f06528b3571ce8307a2fed2fb9c43f608d15d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 58cd76e93b9d0888211e8339ae17170685e71e74
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656715"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480012"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します
 
@@ -46,7 +46,7 @@ ms.locfileid: "34656715"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -232,7 +232,7 @@ ms.locfileid: "34656715"
 | --- | --- |
 | PR1 | 00 |
 
-**表 2:** SAP ASCS/SCS インスタンスの詳細
+**表 2**: SAP ASCS/SCS インスタンスの詳細
 
 
 | 仮想ホスト名の役割 | 仮想ホスト名 | 静的 IP アドレス | 可用性セット |
@@ -271,12 +271,12 @@ Azure インフラストラクチャを準備するには、以下を完了し�
 * Windows Server 2016 を使用するときは [Azure クラウド監視][deploy-cloud-witness]を構成することをお勧めします。
 
 
-## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>スケールアウト ファイル サーバー クラスターを手動でデプロイする 
+## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>スケールアウト ファイル サーバー クラスターを手動でデプロイする 
 
-ブログ「[Storage Spaces Direct in Azure][ms-blog-s2d-in-azure]」(Azure における記憶域スペース ダイレクト) に説明されているように、次のコードを実行することによって、Microsoft スケールアウト ファイル サーバー クラスターを手動でデプロイできます。  
+ブログ「[Storage Spaces Direct in Azure][ms-blog-s2d-in-azure]」(Azure における記憶域スペース ダイレクト) に説明されているように、次のコードを実行することによって、Microsoft スケールアウト ファイル サーバー クラスターを手動でデプロイできます。  
 
 
-```PowerShell
+```powershell
 # Set an execution policy - all cluster nodes
 Set-ExecutionPolicy Unrestricted
 
@@ -316,15 +316,15 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 > スケールアウト ファイル サーバー リソース マネージャー テンプレートの UI に、VM の数を指定する必要があります。
 >
 
-### <a name="use-managed-disks"></a>Managed Disks の使用
+### <a name="use-managed-disks"></a>マネージド ディスクの使用
 
 記憶域スペース ダイレクトと Azure Managed Disks を備えたスケールアウト ファイル サーバー をデプロイするための Azure Resource Manager テンプレートは、[GitHub][arm-sofs-s2d-managed-disks] から入手できます。
 
 Managed Disks を使用することをお勧めします。
 
-![図 1: 管理ディスクを備えたスケールアウト ファイル サーバー リソース マネージャー テンプレートの UI 画面][sap-ha-guide-figure-8010]
+![図 1:マネージド ディスクを備えたスケールアウト ファイル サーバー Resource Manager テンプレートの UI 画面][sap-ha-guide-figure-8010]
 
-_**図 1**: 管理ディスクを備えたスケールアウト ファイル サーバー リソース マネージャー テンプレートの UI 画面_
+"_**図 1**: マネージド ディスクを備えたスケールアウト ファイル サーバー Resource Manager テンプレートの UI 画面_"
 
 このテンプレートで、次の操作を行います。
 1. **[VM 数]** ボックスに、最小数である「**2**」を入力します。
@@ -336,11 +336,11 @@ _**図 1**: 管理ディスクを備えたスケールアウト ファイル サ
 
 記憶域スペース ダイレクトと Azure 非管理ディスクを備えたスケールアウト ファイル サーバー をデプロイするための Azure Resource Manager テンプレートは、[GitHub][arm-sofs-s2d-non-managed-disks] から入手できます。
 
-![図 2: 管理ディスクを持たないスケールアウト ファイル サーバー Azure Resource Manager テンプレートの UI 画面][sap-ha-guide-figure-8011]
+![図 2:マネージド ディスクを備えていないスケールアウト ファイル サーバー Azure Resource Manager テンプレートの UI 画面][sap-ha-guide-figure-8011]
 
-_**図 2**: 管理ディスクを持たないスケールアウト ファイル サーバー Azure Resource Manager テンプレートの UI 画面_
+"_**図 2**: マネージド ディスクを備えていないスケールアウト ファイル サーバー Azure Resource Manager テンプレートの UI 画面_"
 
-**[ストレージ アカウントの種類]** ボックスで、**[Premium Storage]** を選択します。 その他の設定は、管理ディスクと同じです。
+**[ストレージ アカウントの種類]** ボックスで、**[Premium Storage]** を選択します。 その他の設定は、マネージド ディスクと同じです。
 
 ## <a name="next-steps"></a>次の手順
 

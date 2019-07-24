@@ -1,19 +1,19 @@
 ---
-title: 'Azure Analysis Services チュートリアル - レッスン 6: メジャーを作成する | Microsoft Docs'
+title: 'Azure Analysis Services チュートリアルのレッスン 6: メジャーを作成する | Microsoft Docs'
 description: この Azure Analysis Services チュートリアル プロジェクトでメジャーを作成する方法を説明します。
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ce38cac7a0b175004fbb670069ddbeefb53e96e7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0e9f798917b557d99259ece4773cce0853b15237
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428574"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54191685"
 ---
 # <a name="create-measures"></a>メジャーを作成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "49428574"
 このレッスンの推定所要時間: **30 分**  
   
 ## <a name="prerequisites"></a>前提条件  
-このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンの作業を実行する前に、前のレッスン「[レッスン 5: 計算列を作成する](../tutorials/aas-lesson-5-create-calculated-columns.md)」を終えている必要があります。  
+このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンのタスクを実行する前に、前のレッスン「[レッスン 5: 計算列を作成する](../tutorials/aas-lesson-5-create-calculated-columns.md)」を完了する必要があります。  
   
 ## <a name="create-measures"></a>メジャーを作成する  
   
@@ -122,6 +122,6 @@ ms.locfileid: "49428574"
 FactInternetSales テーブルに作成したメジャーは､ユーザーの選択したフィルターで定義された品目の売上高や経費､利幅などの重要な財務データの分析に使用できます｡  
   
 ## <a name="whats-next"></a>次の手順
-[レッスン 7: 主要業績評価指標を作成する](../tutorials/aas-lesson-7-create-key-performance-indicators.md)  
+[レッスン 7: 主要業績評価指標を作成する](../tutorials/aas-lesson-7-create-key-performance-indicators.md)。  
 
   

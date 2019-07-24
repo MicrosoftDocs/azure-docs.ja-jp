@@ -1,29 +1,31 @@
 ---
-title: Azure Machine Learning による TensorFlow モデルのトレーニング
-description: TensorFlow エスティ メータを利用して TensorFlow モデルの単一ノードや分散トレーニングを実行する方法を説明します
+title: TensorFlow と Keras を使用してモデルをトレーニングする
+titleSuffix: Azure Machine Learning service
+description: TensorFlow 推定器と Keras 推定器を利用して TensorFlow モデルと Keras モデルの単一ノードトレーニングと分散トレーニングを実行する方法について説明します
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: c761d0ac5d2c52241eadd18b2d8b65e00ccb34ba
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 04/19/2019
+ms.custom: seodec18
+ms.openlocfilehash: 78db7d21774750892c831ac220244c54594b78f3
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114986"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548356"
 ---
-# <a name="how-to-train-tensorflow-models"></a>TensorFlow モデルのトレーニング方法
+# <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>Azure Machine Learning サービスによる TensorFlow モデルと Keras モデルのトレーニング
 
-TensorFlow を利用したディープ ニューラル ネットワーク (DNN) トレーニングの場合、Azure Machine Learning には `Estimator` のカスタム `TensorFlow` クラスが用意されています。 Azure SDK の `TensorFlow` エスティメータ ([`tf.estimator.Estimator`](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator) クラスと融合されない) を利用することで､Azure コンピューティングでの単一ノード実行と分散実行の両方にで TensorFlow トレーニング ジョブを簡単に送信することができます。
+TensorFlow を利用したディープ ニューラル ネットワーク (DNN) トレーニングの場合、Azure Machine Learning には `Estimator` のカスタム `TensorFlow` クラスが用意されています。 Azure SDK の [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) 推定器 ([`tf.estimator.Estimator`](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator) クラスと融合されない) を利用することで､Azure コンピューティング上で単一ノード実行と分散実行の両方で TensorFlow トレーニング ジョブを簡単に送信できます。
 
 ## <a name="single-node-training"></a>単一ノードのトレーニング
 `TensorFlow` エスティメータによるトレーニングは、[基本 `Estimator`](how-to-train-ml-models.md) を使用する場合と似ているので、最初にハウツー記事を読み、そこで紹介されている概念を理解しておいてください。
   
-TensorFlow ジョブを実行するには､`TensorFlow` オブジェクトのインスタンスを作成します。 [コンピューティング ターゲット](how-to-set-up-training-targets.md#batch)オブジェクト`compute_target`は作成済みである必要があります｡
+TensorFlow ジョブを実行するには､`TensorFlow` オブジェクトのインスタンスを作成します。 [コンピューティング ターゲット](how-to-set-up-training-targets.md#amlcompute)オブジェクト`compute_target`は作成済みである必要があります｡
 
 ```Python
 from azureml.train.dnn import TensorFlow
@@ -37,7 +39,7 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
                     script_params=script_params,
                     compute_target=compute_target,
                     entry_script='train.py',
-                    conda_packages=['scikit-learn'],
+                    conda_packages=['scikit-learn'], # in case you need scikit-learn in train.py
                     use_gpu=True)
 ```
 
@@ -46,8 +48,8 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
 パラメーター | 説明
 --|--
 `source_directory` | トレーニング ジョブに必要なコードのすべてが含まれているローカル ディレクトリ。 このフォルダーは、ローカル コンピューターからリモート コンピューティングにコピーされています
-`script_params` | <コマンドライン引数, 値> ペアの形式で、トレーニング スクリプト `entry_script` にコマンドライン引数を指定するディクショナリ
-`compute_target` | トレーニング スクリプトの実行に使用するリモート コンピューティング (この例では [Batch AI](how-to-set-up-training-targets.md#batch) クラスター)
+`script_params` | <コマンドライン引数, 値> ペアの形式で、トレーニング スクリプト `entry_script` にコマンドライン引数を指定するディクショナリ。  `script_params` で詳細フラグを指定するには、`<command-line argument, "">` を使用します。
+`compute_target` | トレーニング スクリプトの実行に使用するリモートのコンピューティング先 (この例では Azure Machine Learning コンピューティング ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) クラスター)
 `entry_script` | リモート コンピューティングで実行するトレーニング スクリプトのファイルパス (`source_directory` を基準にした相対パス)。 このファイル、およびこのファイルと依存関係があるその他のファイルはすべて、このフォルダーに置かれている必要があります
 `conda_packages` | トレーニング スクリプトで必要な、conda を使用してインストールする Python パッケージのリスト。 この場合､トレーニング スクリプトはデータの読み込みに `sklearn` を使用しますから、インストールするこのパッケージを指定します｡  コンストラクターには `pip_packages` という名前のパラメーターもあり、必要な pip パッケージに対して使用できます
 `use_gpu` | トレーニングに GPU を使用するには、このフラグを `True` に設定します。 既定値は `False` です。
@@ -58,6 +60,21 @@ TensorFlow エスティメータを使用するため､トレーニングに使
 ```Python
 run = exp.submit(tf_est)
 ```
+
+## <a name="keras-support"></a>Keras のサポート
+[Keras](https://keras.io/) は、TensorFlow、CNTK、または Theano をバックエンドとしてサポートする、評判の良いハイレベルの DNN Python API です。 TensorFlow をバックエンドとして使用する場合は、TensFlow 推定器を簡単に使用して、Keras モデルをトレーニングできます。 Keras が追加された TensorFlow 推定器の例を次に示します。
+
+```Python
+from azureml.train.dnn import TensorFlow
+
+keras_est = TensorFlow(source_directory='./my-keras-proj',
+                       script_params=script_params,
+                       compute_target=compute_target,
+                       entry_script='keras_train.py',
+                       pip_packages=['keras'], # just add keras through pip
+                       use_gpu=True)
+```
+上記の TensorFlow 推定器コンストラクターは、pip を通して実行環境に Keras をインストールするように Azure Machine Learning サービスに指示します。 その後、`keras_train.py` で Keras API をインポートして、Keras モデルをトレーニングできます。 完全な例については、[こちらの Jupyter ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb)を参照してください。
 
 ## <a name="distributed-training"></a>分散トレーニング
 TensorFlow エスティメータではまた､Azure VM からなる CPU および GPU クラスターにまたがった大規模にモデルをトレーニングすることもできます。 分散 TensorFlow トレーニングはいくつかの API 呼び出しを使って簡単に行うことができます｡その間､それらワークロードの実行に必要なインフラストラクチャとオーケストレーションはすべて Azure Machine Learning によってバックグランドで管理されます｡
@@ -94,7 +111,7 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
 
 上記の例では､2 つのワーカー (ノード 1 つにワーカー 1 つ) を使って分散トレーニングが実行されます。
 
-Horovod と依存関係にあるファイルは自動的にインストールされますから､単に次のようにしてトレーニングスクリプト `train.py` にインポートすればよいだけです｡
+Horovod および依存関係にあるファイルが自動的にインストールされるので、次のようにトレーニング スクリプト `train.py` にインポートできます。
 
 ```Python
 import tensorflow as tf
@@ -148,7 +165,7 @@ TF_CONFIG='{
 }'
 ```
 
-TensorFlow の上位 [ `tf.estimator` ](https://www.tensorflow.org/api_docs/python/tf/estimator) API の場合、TensorFlow はこの `TF_CONFIG` 変数を自動的に解析して、自動的にクラスターの仕様をビルドします。 
+TensorFlow の上位 [`tf.estimator`](https://www.tensorflow.org/api_docs/python/tf/estimator) API を使用する場合、TensorFlow でこの `TF_CONFIG` 変数が解析され、クラスターの仕様が自動的にビルドされます。 
 
 これに対し TensorFlow の下位のコア API の場合は、ユーザーは自分で `TF_CONFIG` 変数を解析して､自分でトレーニング コード用の `tf.train.ClusterSpec` をビルドする必要があります｡ このためには､[この例](https://aka.ms/aml-notebook-tf-ps)の**トレーニング スクリプト**で次のようにします。
 
@@ -170,16 +187,8 @@ run = exp.submit(tf_est)
 ```
 
 ## <a name="examples"></a>例
-単一ノードの TensorFlow トレーニングについては､次のチュートリアルを参照してください。
-* [training/03.train-hyperparameter-tune-deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb)
 
-Horovod を使用した分散 TensorFlow については､次のチュートリアルを参照してください。
-* [training/04.distributed-tensorflow-with-horovod](https://github.com/Azure/MachineLearningNotebooks/tree/master/training/04.distributed-tensorflow-with-horovod)
-
-ネイティブの分散 TensorFlow については､次のチュートリアルを参照してください。
-* [training/05.distributed-tensorflow-with-parameter-server](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/05.distributed-tensorflow-with-parameter-server)
-
-これらの notebook を入手してください。
+[Github の分散型ディープ ラーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)のさまざまなノートブックを参照してください。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

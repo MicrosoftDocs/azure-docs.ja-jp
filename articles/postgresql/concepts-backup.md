@@ -1,20 +1,17 @@
 ---
 title: Azure Database for PostgreSQL でのバックアップと復元
 description: Azure Database for PostgreSQL サーバーの自動バックアップと復元について説明します。
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 707803e1f69a3146772e71ff711a48b510d8c9fc
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: b4086497375bb651f4c88411e3237b27740dfd07
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127569"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236755"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL でのバックアップと復元
 
@@ -41,7 +38,7 @@ Azure Database for PostgreSQL は、プロビジョニングされているサ�
 
 たとえば、サーバーを 250 GB でプロビジョニングした場合は、250 GB のバックアップ ストレージを追加料金なしで利用できます。 250 GB を超えたストレージ分についてのみ課金されます。
 
-## <a name="restore"></a>Restore
+## <a name="restore"></a>復元
 
 Azure Database for PostgreSQL で復元を実行すると、元のサーバーのバックアップから新しいサーバーが作成されます。
 
@@ -53,7 +50,7 @@ Azure Database for PostgreSQL で復元を実行すると、元のサーバー�
 復旧の推定所要時間は、データベースのサイズ、トランザクション ログのサイズ、ネットワーク帯域幅、同じリージョン内で同時に復旧するデータベースの合計数など、複数の要因によって異なります。 通常は 12 時間もかかりません。
 
 > [!IMPORTANT]
-> 削除したサーバーは、復元**できません**。 サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。
+> 削除したサーバーは、復元**できません**。 サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。 管理者は、デプロイ後の誤削除や予期せぬ変更からサーバーのリソースを保護するために、[管理ロック](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)を利用できます。
 
 ### <a name="point-in-time-restore"></a>ポイントインタイム リストア
 

@@ -1,23 +1,27 @@
 ---
 title: Azure Digital Twins で UDF をデバッグする方法 | Microsoft Docs
-description: Azure Digital Twins で UDF をデバッグする方法に関するガイドライン
+description: Azure Digital Twins で UDF をデバッグする方法に関するガイドライン。
 author: stefanmsft
 manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/27/2018
 ms.author: stefanmsft
-ms.openlocfilehash: ac7664e94c6e02ab90dbb1b32a54c8234614afe2
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.custom: seodec18
+ms.openlocfilehash: 6122cd4507ed0883d1b78ca519269c25098e55ff
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636273"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961416"
 ---
-# <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins のユーザー定義関数の問題をデバッグする方法
+# <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins でユーザー定義関数をデバッグする方法
 
-この記事では、ユーザー定義関数を診断する方法について説明します。 次に、それらを操作するときに直面する最も一般的なシナリオをいくつか紹介します。
+この記事では、ユーザー定義関数を診断してデバッグする方法について説明します。 次に、それらをデバッグするときの最も一般的なシナリオをいくつか紹介します。
+
+>[!TIP]
+> Activity Logs、Diagnostic Logs、Azure Monitor を使用し、Azure Digital Twins にデバッグ ツールを設定する方法の詳細については、[監視とログの構成](./how-to-configure-monitoring.md)方法に関するページを参照してください。
 
 ## <a name="debug-issues"></a>問題をデバッグする
 
@@ -25,48 +29,53 @@ Azure Digital Twins 内で発生するあらゆる問題を診断する方法に
 
 ### <a name="enable-log-analytics-for-your-instance"></a>インスタンスのログ分析を有効にする
 
-Azure Digital Twins インスタンスのログとメトリックは Azure Monitor を通じて公開されます。 次のドキュメントでは、[Azure portal](../log-analytics/log-analytics-quick-create-workspace.md)、[Azure CLI](../log-analytics/log-analytics-quick-create-workspace-cli.md)、または [PowerShell](../log-analytics/log-analytics-quick-create-workspace-posh.md) を通じて [Azure Log Analytics](../log-analytics/log-analytics-queries.md) ワークスペースを作成していると仮定しています。
+Azure Digital Twins インスタンスのログとメトリックは Azure Monitor で表示されます。 このドキュメントでは、[Azure portal](../azure-monitor/learn/quick-create-workspace.md)、[Azure CLI](../azure-monitor/learn/quick-create-workspace-cli.md)、または [PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md) を通じて [Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md) ワークスペースを作成していると仮定しています。
 
 > [!NOTE]
-> 初めて **Log Analytics** にイベントを送信するときに 5 分の遅延が発生することがあります。
+> 初めて Azure Monitor ログにイベントを送信するときに 5 分の遅延が発生することがあります。
 
-「[Azure リソースからのログ データの収集と使用](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」の記事を参考に、Azure portal、Azure CLI、または PowerShell を使用して Azure Digital Twins インスタンスの診断設定を有効にします。 すべてのログ カテゴリ、メトリック、および Azure Log Analytics ワークスペースを選択してください。
+Azure Digital Twins リソースの監視とログを構成する方法については、[こちら](./how-to-configure-monitoring.md)のページをご覧ください。
+
+Azure Portal、Azure CLI、または PowerShell を使用して Azure Digital Twins での診断ログ設定を構成するには、「[Azure リソースからのログ データの収集と使用](../azure-monitor/platform/diagnostic-logs-overview.md)」の記事をご覧ください。
+
+>[!IMPORTANT]
+> すべてのログ カテゴリ、メトリック、および Azure Log Analytics ワークスペースを選択してください。
 
 ### <a name="trace-sensor-telemetry"></a>センサー テレメトリのトレース
 
-Azure Digital Twins インスタンスの診断設定が有効になっていること、すべてのカテゴリが選択されていること、および Azure Log Analytics が選択されていることを確認します。
+センサー テレメトリをトレースするには、自分の Azure Digital Twins インスタンスで診断設定が有効になっていることを確認します。 次に、必要なすべてのログ カテゴリが選択されていることを確認します。 最後に、必要なログが Azure Monitor ログに送信されていることを確認します。
 
 センサー テレメトリのメッセージが対応するログと一致するように、送信されるイベント データに相関 ID を指定できます。 これを行うには、`x-ms-client-request-id` プロパティを GUID に設定します。
 
-テレメトリを送信した後は、Azure Log Analytics を開き、設定された相関 ID を使用してログに対してクエリを実行します。
+テレメトリを送信した後は、Log Analytics を開き、設定された相関 ID を使用してログに対してクエリを実行します。
 
 ```Kusto
 AzureDiagnostics
-| where CorrelationId = 'YOUR_CORRELATION_IDENTIFIER'
+| where CorrelationId == 'YOUR_CORRELATION_IDENTIFIER'
 ```
 
 | クエリの値 | 置換後の文字列 |
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | イベント データで指定した相関 ID |
 
-ユーザー定義関数をログに記録した場合、それらのログがカテゴリ `UserDefinedFunction` で Azure Log Analytics インスタンスに表示されます。 それらを取得するには、Azure Log Analytics で、次のクエリ条件を入力します。
+ユーザー定義関数のログ記録を有効にした場合、それらのログがカテゴリ `UserDefinedFunction` で Log Analytics インスタンスに表示されます。 それらを取得するには、Log Analytics で、次のクエリ条件を入力します。
 
 ```Kusto
 AzureDiagnostics
-| where Category = 'UserDefinedFunction'
+| where Category == 'UserDefinedFunction'
 ```
 
-強力なクエリ操作について詳しくは、[クエリの概要](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)に関するページをご覧ください。
+高性能なクエリ操作について詳しくは、[クエリの概要](../azure-monitor/log-query/get-started-queries.md)に関するページをご覧ください。
 
 ## <a name="identify-common-issues"></a>一般的な問題の識別
 
-ソリューションに対してトラブルシューティングを実行するときは、一般的な問題の診断と識別の両方が重要です。 ユーザー定義関数を開発するときに直面するいくつかの一般的な問題を以下にまとめています。
+ソリューションに対してトラブルシューティングを実行するときは、一般的な問題の診断と識別の両方が重要です。 ユーザー定義関数を開発するときに発生するいくつかの一般的な問題を以下のサブセクションにまとめます。
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-### <a name="ensure-a-role-assignment-was-created"></a>ロールの割り当てが作成されていることを確認する
+### <a name="check-if-a-role-assignment-was-created"></a>ロールの割り当てが作成されていることを確認する
 
-Management API 内にロールの割り当てが作成されないと、ユーザー定義関数に通知の送信、メタデータの取得、トポロジ内での計算された値の設定などのアクションを実行するアクセス権限が付与されません。
+Management API 内でロールの割り当てが作成されないと、ユーザー定義関数に通知の送信、メタデータの取得、トポロジ内での計算された値の設定などのアクションを実行するアクセス権限が付与されません。
 
 次の Management API を使用してユーザー定義関数にロールの割り当てが存在することを確認してください。
 
@@ -74,13 +83,13 @@ Management API 内にロールの割り当てが作成されないと、ユー�
 GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
 ```
 
-| パラメーター | 置換後の文字列 |
+| パラメーター値 | 置換後の文字列 |
 | --- | --- |
-| *YOUR_USER_DEFINED_FUNCTION_ID* | ロールの割り当てを取得するユーザー定義関数の ID|
+| YOUR_USER_DEFINED_FUNCTION_ID | ロールの割り当てを取得するユーザー定義関数の ID|
 
-ロールの割り当てを取得できない場合は、[ユーザー定義関数にロールの割り当てを作成する方法](./how-to-user-defined-functions.md)に関する記事をご覧ください。
+ロールが割り当てられていない場合、[ユーザー定義関数にロールの割り当てを作成する方法](./how-to-user-defined-functions.md)に関する記事をご覧ください。
 
-### <a name="check-if-the-matcher-will-work-for-a-sensors-telemetry"></a>センサー テレメトリでマッチャーが機能することを確認する
+### <a name="check-if-the-matcher-works-for-a-sensors-telemetry"></a>センサー テレメトリでマッチャーが機能することを確認する
 
 Azure Digital Twins インスタンスの Management API に対して次の呼び出しを実行すると、指定のマッチャーが指定のセンサーに適用されるかどうかを判断できます。
 
@@ -104,9 +113,9 @@ GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSO
 }
 ```
 
-### <a name="check-what-a-sensor-will-trigger"></a>トリガーされるセンサーを確認する
+### <a name="check-what-a-sensor-triggers"></a>トリガーされるセンサーを確認する
 
-Azure Digital Twins インスタンスの Management API に対して次の呼び出しを実行すると、指定のセンサーの受信テレメトリによってトリガーされるユーザー定義関数の識別子を判別できます。
+Azure Digital Twins の Management API に対して次の呼び出しを実行すると、指定のセンサーの受信テレメトリによってトリガーされるユーザー定義関数の識別子を判別できます。
 
 ```plaintext
 GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=UserDefinedFunctions
@@ -147,7 +156,7 @@ GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=Use
 
 ### <a name="issue-with-receiving-notifications"></a>通知の受信に関する問題
 
-トリガーされたユーザー定義関数内から通知を受信していない場合は、トポロジのオブジェクト型パラメーターが使用されている識別子の型と一致していることを確認します。
+トリガーされたユーザー定義関数から通知を受信していない場合は、トポロジのオブジェクト型パラメーターが使用されている識別子の型と一致していることを確認します。
 
 **正しくない**例:
 
@@ -159,7 +168,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Space", JSON.stringify(customNotification));
 ```
 
-このシナリオは、使用された識別子がセンサーを参照する一方で、指定されたトポロジのオブジェクト型が "Space" であるため発生します。
+このシナリオは、使用された識別子がセンサーを参照する一方で、指定されたトポロジのオブジェクト型が `Space` であるため発生します。
 
 **正しい**例:
 
@@ -192,7 +201,7 @@ function process(telemetry, executionContext) {
 
 診断設定を有効にした場合は、これらの一般的な例外が発生する可能性があります。
 
-1. **調整**: ユーザー定義関数が[サービスの制限](./concepts-service-limits.md)の記事で説明されている実行レート制限を超える場合、調整が行われます。 その制限が解除されるまで、調整は追加の操作が正常に実行されることを必要としません。
+1. **調整**: ユーザー定義関数が[サービスの制限](./concepts-service-limits.md)の記事で説明されている実行レート制限を超える場合、調整が行われます。 調整の制限が解除されるまで、それ以上操作を実行しても成功しません。
 
 1. **データが見つからない**: ユーザー定義関数が存在しないメタデータにアクセスを試行すると、操作は失敗します。
 
@@ -200,4 +209,4 @@ function process(telemetry, executionContext) {
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Digital Twins で[監視とログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)を有効にする方法について確認する。
+- Azure Digital Twins で[監視とログ](../azure-monitor/platform/activity-logs-overview.md)を有効にする方法について確認する。

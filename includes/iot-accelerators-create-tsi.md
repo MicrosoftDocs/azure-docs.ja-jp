@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/20/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 8c114ed137089e70899e601ebdc1d4d39f562601
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: ab3d4cbe8a200e91d02177e49446065cd9c228df
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43383082"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53609074"
 ---
 ## <a name="create-a-consumer-group"></a>コンシューマー グループの作成
 
@@ -41,7 +41,7 @@ Time Series Insights にテレメトリをストリーム配信するには、�
 
 [Azure Time Series Insights](../articles/time-series-insights/time-series-insights-overview.md) は、IoT 規模の時系列データをクラウドで管理するための、フル マネージドの分析、ストレージ、視覚化サービスです。 新しい Time Series Insights 環境を作成するには:
 
-1. [Azure Portal](http://portal.azure.com/) にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
 1. **[リソースの作成]** > **[モノのインターネット (IoT)]** > **[Time Series Insights]** を選択します。
 
@@ -54,7 +54,7 @@ Time Series Insights にテレメトリをストリーム配信するには、�
     | 環境名 | 次のスクリーンショットでは、**Contoso-TSI** という名前を使用しています。 この手順を完了したら、独自の一意の名前を選択してください。 |
     | サブスクリプション | ドロップダウンから Azure サブスクリプションを選択します。 |
     | リソース グループ | **contoso-simulation**。 使用しているソリューション アクセラレータの名前を使用します。 |
-    | Location | この記事では、**[米国東部]** を使用します。 環境は、デバイス シミュレーション アクセラレータと同じリージョンに作成します。 |
+    | 場所 | この記事では、**[米国東部]** を使用します。 環境は、デバイス シミュレーション アクセラレータと同じリージョンに作成します。 |
     | SKU |**S1** |
     | 容量 | **1** |
 

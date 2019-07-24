@@ -1,21 +1,22 @@
 ---
-title: LUIS アプリのエンタープライズの概念 - Language Understanding
-titleSuffix: Azure Cognitive Services
-description: 大規模な LUIS アプリの設計概念を理解します。
+title: エンタープライズの概念
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: 大規模な LUIS アプリや、LUIS と QnA Maker の両方を含んだ複数のアプリの設計概念を理解します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: bb4078c9131488e5077795df792de259d7c789dc
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: e5d7e2bfe1ee4e3ca248f40701aa65e757fc4d74
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638275"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59795504"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>LUIS アプリのエンタープライズ戦略
 エンタープライズ アプリについて以下の設計戦略を確認してください。
@@ -30,7 +31,7 @@ LUIS アプリの要求レートが[クォータ レート](https://azure.micros
 
 1 つのアプリをマスターとして指定します。 確認用として推奨される発話をマスター アプリに追加してから、その他のすべてのアプリに移動する必要があります。 これは、アプリを完全にエクスポートするか、ラベル付き発話をマスターから子に読み込むことで行います。 読み込みは、[単一の発話](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08)または[バッチ](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)に対して、[LUIS](luis-reference-regions.md) Web サイトまたはオーサリング API のどちらからでも実行できます。 
 
-アクティブ ラーニングのために定期的な (2 週間ごとなど) [エンドポイントの発話の確認](luis-how-to-review-endoint-utt.md)をスケジュール設定し、再トレーニングして再公開します。 
+アクティブ ラーニングのために定期的な (2 週間ごとなど) [エンドポイントの発話の確認](luis-how-to-review-endpoint-utterances.md)をスケジュール設定し、再トレーニングして再公開します。 
 
 ### <a name="assign-multiple-luis-keys-to-same-app"></a>同じアプリに複数の LUIS キーを割り当てる
 LUIS アプリで、1 つのキーのクォータで許可されているよりも多くのエンドポイント ヒット数を受け取る場合は、さらにキーを作成して LUIS アプリに割り当てます。 エンドポイント キー間でエンドポイント クエリを管理するには、トラフィック マネージャーまたはロード バランサーを作成します。 
@@ -38,7 +39,7 @@ LUIS アプリで、1 つのキーのクォータで許可されているより�
 ## <a name="when-your-monolithic-app-returns-wrong-intent"></a>モノリシック アプリから間違った意図が返ってくる場合
 アプリで多様なユーザー発話を予測する場合は、[ディスパッチ モデル](#dispatch-tool-and-model)の実装を検討します。 モノリシック アプリを分割すると、LUIS では、親アプリと子アプリ間で意図を混同することなく、意図の検出に集中できます。 
 
-アクティブ ラーニングのために定期的な (2 週間ごとなど) [エンドポイントの発話の確認](luis-how-to-review-endoint-utt.md)をスケジュール設定し、再トレーニングして再公開します。 
+アクティブ ラーニングのために定期的な (2 週間ごとなど) [エンドポイントの発話の確認](luis-how-to-review-endpoint-utterances.md)をスケジュール設定し、再トレーニングして再公開します。 
 
 ## <a name="when-you-need-to-have-more-than-500-intents"></a>500 を超える意図が必要な場合
 たとえば、500 以上の意図を含むオフィス アシスタントを開発しているとします。 200 の意図は会議のスケジュール関連、200 がリマインダーについて、200 が同僚に関する情報の取得、200 がメール送信用である場合、各グループが 1 つのアプリに収まるように意図をグループ化し、各意図を含むトップ レベルのアプリを作成します。 [ディスパッチ ツールとアーキテクチャ](#dispatch-tool-and-model)を使用して、トップ レベルのアプリを構築します。 [ディスパッチのチュートリアル][dispatcher-application-tutorial]で示されているように、カスケード型の呼び出しを使用するようにボットを変更します。 

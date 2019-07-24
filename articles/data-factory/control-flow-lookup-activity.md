@@ -9,16 +9,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: shlo
-ms.openlocfilehash: e437e7b7d5298af325ae2a5e2ba689b417bad022
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: bc695bf8398a39460eff9bbe4f791ba92b0fa7e0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002922"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019316"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory でのルックアップ アクティビティ
 
@@ -58,7 +57,7 @@ ms.locfileid: "39002922"
 ---- | ----------- | ---- | --------
 dataset | ルックアップ用のデータセット参照を提供します。 対応する各コネクタの記事の 「**データセットのプロパティ**」セクションから詳細を取得します。 | キーと値のペア | はい
 source | データセット固有のソース プロパティを含みます (コピー アクティビティ ソースと同じ)。 対応する各コネクタの記事の「**コピー アクティビティのプロパティ**」セクションから詳細を取得します。 | キーと値のペア | はい
-firstRowOnly | 最初の行のみまたはすべての行のどちらを返すかを示します。 | Boolean | いいえ。 既定値は `true` です。
+firstRowOnly | 最初の行のみまたはすべての行のどちらを返すかを示します。 | Boolean | いいえ。 既定では、 `true`です。
 
 > [!NOTE]
 
@@ -101,12 +100,12 @@ firstRowOnly | 最初の行のみまたはすべての行のどちらを返す�
     ```
 
 ### <a name="copy-activity-example"></a>コピー アクティビティの例
-この例では、コピー アクティビティは、Azure SQL Database インスタンス内の SQL テーブルから Azure Blob Storage にデータをコピーします。 SQL テーブルの名前は、Blob Storage 内の JSON ファイルに格納されます。 ルックアップ アクティビティは、実行時にテーブル名を検索します。 JSON は、この方法を使用して動的に変更されます。 パイプラインやデータセットを再デプロイする必要はありません。 
+この例では、コピー アクティビティは、Azure SQL データベース インスタンス内の SQL テーブルから Azure Blob Storage にデータをコピーします。 SQL テーブルの名前は、Blob Storage 内の JSON ファイルに格納されます。 ルックアップ アクティビティは、実行時にテーブル名を検索します。 JSON は、この方法を使用して動的に変更されます。 パイプラインやデータセットを再デプロイする必要はありません。 
 
 この例では、最初の行のみのルックアップを示します。 すべての行のルックアップについて、および ForEach アクティビティで結果をチェーンするには、「[Azure Data Factory を使って複数のテーブルを一括コピーする](tutorial-bulk-copy.md)」のサンプルを参照してください。
 
 ### <a name="pipeline"></a>パイプライン
-このパイプラインには、ルックアップとコピーという 2 つのアクティビティが含まれています。 
+このパイプラインには、ルックアップとコピーという 2 つのアクティビティが含まれます。 
 
 - ルックアップ アクティビティは、Azure Blob Storage 内の場所を表す **LookupDataset** を使用するように設定されています。 ルックアップ アクティビティは、この場所にある JSON ファイルから SQL テーブルの名前を読み取ります。 
 - コピー アクティビティは、SQL テーブルの名前であるルックアップ アクティビティの出力を使用します。 **SourceDataset** 内の **tableName** プロパティは、ルックアップ アクティビティからの出力を使用するように設定されています。 コピー アクティビティは、SQL テーブルから Azure Blob Storage 内の場所にデータをコピーします。 場所は **SinkDataset** プロパティによって指定されます。 
@@ -250,7 +249,7 @@ firstRowOnly | 最初の行のみまたはすべての行のどちらを返す�
 ```
 
 ### <a name="azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービス
-この Azure SQL Database インスタンスには、Blob Storage にコピーされるデータが格納されています。 
+この Azure SQL データベース インスタンスには、Blob Storage にコピーされるデータが格納されています。 
 
 ```json
 {
@@ -297,6 +296,15 @@ firstRowOnly | 最初の行のみまたはすべての行のどちらを返す�
     }
 ]
 ```
+
+## <a name="limitations-and-workarounds"></a>制限事項と回避策
+
+Lookup アクティビティと提案される回避策のいくつかの制限を次に示します。
+
+| 制限事項 | 対処法 |
+|---|---|
+| Lookup アクティビティの最大行数は 5,000 行で、最大サイズは 2 MB です。 | 最大行数またはサイズを超えないデータを取得する、内側パイプライン上で外側パイプラインが反復される 2 段のパイプラインを設計します。 |
+| | |
 
 ## <a name="next-steps"></a>次の手順
 Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 

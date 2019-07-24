@@ -7,16 +7,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: yizhon
-ms.openlocfilehash: 683f3ca88c349fef31f9647566dbed8a840f94dd
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 7788bca621a59ec8cdfe36edf73a99efca8c460c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451733"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59261396"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Azure IoT C SDK を使用した制約のあるデバイス向けの開発
 
 Azure IoT Hub C SDK は ANSI C (C99) で記述されており、ディスクおよびメモリのフットプリントが小さいさまざまなプラットフォームを操作するのに最適です。 推奨されるメモリは 64 KB 以上ですが、正確なメモリ フットプリントは、使用するプロトコル、開かれる接続数、および対象とするプラットフォームに依存します。
+> [!NOTE]
+> * Azure IoT C SDK では、開発に役立つリソース消費量情報が定期的に発行されます。  Microsoft の [GitHub リポジトリ](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md)にアクセスし、最新のベンチマークを確認してください。
+>
 
 C SDK は apt-get、NuGet、および MBED からパッケージ形式で入手できます。 制約のあるデバイスを対象とするには、ターゲット プラットフォームに対して SDK をローカルにビルドすることをお勧めします。 このドキュメントでは、[cmake](https://cmake.org/) を使用することにより、特定の機能を削除して C SDK のフットプリントを縮小する方法を示します。 さらに、このドキュメントでは、制約のあるデバイスを操作するための最適なプログラミング モデルについても説明します。
 
@@ -30,7 +33,7 @@ C SDK は apt-get、NuGet、および MBED からパッケージ形式で入手�
 
 ### <a name="remove-additional-protocol-libraries"></a>余分なプロトコル ライブラリを削除する
 
-今日、C SDK では、MQTT、MQTT over WebSocket、AMQP、AMQP over WebSocket、HTTPS という 5 つのプロトコルがサポートされています。 ほとんどのシナリオでは、クライアント上で実行されているプロトコルのうちの 1 つ、2 つを必要とします。したがって、使用しないプロトコル ライブラリは SDK から削除することができます。 シナリオに適した通信プロトコルの選択方法の詳細については、[IoT Hub の通信プロトコルの選択](iot-hub-devguide-protocols.md)に関する記事を参照してください。 たとえば、MQTT は、制約のあるデバイスに適する場合が多い軽量なプロトコルです。
+C SDK では、現在、次の 5 つのプロトコルがサポートされています: MQTT、MQTT over WebSocket、AMQP、AMQP over WebSocket、HTTPS。 ほとんどのシナリオでは、クライアント上で実行されているプロトコルのうちの 1 つ、2 つを必要とします。したがって、使用しないプロトコル ライブラリは SDK から削除することができます。 シナリオに適した通信プロトコルの選択方法の詳細については、[IoT Hub の通信プロトコルの選択](iot-hub-devguide-protocols.md)に関する記事を参照してください。 たとえば、MQTT は、制約のあるデバイスに適する場合が多い軽量なプロトコルです。
 
 AMQP ライブラリと HTTP ライブラリは、次の cmake コマンドを使用して削除できます。
 

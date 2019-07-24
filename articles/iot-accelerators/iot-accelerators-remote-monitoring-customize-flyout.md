@@ -141,4 +141,4 @@ npm start
 
 ページにポップアップを定義したので、次に[リモート監視ソリューション アクセラレータ Web UI のダッシュボードにパネルを追加](iot-accelerators-remote-monitoring-customize-panel.md)します。
 
-リモート監視ソリューション アクセラレータの概念について詳しくは、[リモート監視のアーキテクチャ](iot-accelerators-remote-monitoring-sample-walkthrough.md)に関するページをご覧ください。
+リモート監視ソリューション アクセラレータの概念に関する詳細については、[リモート監視のアーキテクチャ](iot-accelerators-remote-monitoring-sample-walkthrough.md)に関するページを参照してください。

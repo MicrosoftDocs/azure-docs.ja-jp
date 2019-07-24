@@ -1,26 +1,28 @@
 ---
-title: Azure でのデータ サイエンス仮想マシン用言語 | Microsoft Docs
-description: Azure でのデータ サイエンス仮想マシン用言語
+title: Data Science Virtual Machine でサポートされている言語
+titleSuffix: Azure
+description: Data Science Virtual Machine にプレインストールされているプログラム言語および関連ツールについて説明します。
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 411729155f5135c7e45588b69995274c9cac1315
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 586f37ff972a6102da351794365f719a185857fc
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418317"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58877416"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンでサポートされている言語 
 
@@ -143,7 +145,7 @@ DSVM での既定の Python 環境は、すべてのユーザーが読み取り�
 | ------------- | ------------- |
 | サポートされている言語バージョン | Microsoft R Open 3.x (CRAN-R と 100% 互換)<br /> Microsoft R Server 9.x Developer エディション (スケーラブルなエンタープライズ対応 R プラットフォーム)|
 | サポートされている DSVM エディション      | Linux、Windows     |
-| DSVM での構成/インストール方法  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: ` /usr/lib64/microsoft-r/3.3/lib64/R`    |
+| DSVM での構成/インストール方法  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: `/usr/lib64/microsoft-r/3.3/lib64/R`    |
 | サンプルへのリンク      | R 用のサンプル Jupyter ノートブックが含まれています     |
 | DSVM 上の関連ツール      | SparkR、Python、Julia      |
 ### <a name="how-to-use--run-it"></a>使用/実行方法    
@@ -191,7 +193,7 @@ R は、すべてのユーザーが読み取り可能なグローバル環境で
 | ------------- | ------------- |
 | サポートされている言語バージョン | 0.6 |
 | サポートされている DSVM エディション      | Linux、Windows     |
-| DSVM での構成/インストール方法  | Windows: `C:\JuliaPro-VERSION` にインストールされます<br /> Linux: `/opt/JuliaPro-VERSION` にインストールされます    |
+| DSVM での構成/インストール方法  | Windows:`C:\JuliaPro-VERSION` にインストール<br /> Linux:`/opt/JuliaPro-VERSION` にインストール    |
 | サンプルへのリンク      | Julia 用のサンプル Jupyter ノートブックが含まれています     |
 | DSVM 上の関連ツール      | Python、R      |
 ### <a name="how-to-use--run-it"></a>使用/実行方法    

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0c706130cfa60e0710373b2214e6834789a1b484
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 8b10892a087572f2e66a73539827601410e9aca2
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52160921"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54155050"
 documentType: LandingData
 title: App Service on Linux のドキュメント
 metadata:
@@ -62,15 +62,15 @@ sections:
     - image:
         src: ../media/index/zip.svg
       text: ZIP/WAR
-      href: ../app-service-deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - image:
         src: ../media/index/ftp.svg
       text: FTP
-      href: ../app-service-deploy-ftp.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../deploy-ftp.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - image:
         src: ../media/index/git-icon.svg
       text: ローカル Git
-      href: ../app-service-deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - image:
         src: https://docs.microsoft.com/azure/media/index/logo_vs-team-services.svg
       text: Azure DevOps
@@ -78,19 +78,19 @@ sections:
     - image:
         src: ../media/index/github-octicons.svg
       text: GitHub
-      href: ../app-service-continuous-deployment.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../deploy-continuous-deployment.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - image:
         src: ../media/index/bitbucket.svg
       text: Bitbucket
-      href: ../app-service-continuous-deployment.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../deploy-continuous-deployment.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - image:
         src: ../media/index/dropbox.svg
       text: Dropbox の同期
-      href: ../app-service-deploy-content-sync.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../deploy-content-sync.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - image:
         src: ../media/index/onedrive.svg
       text: OneDrive の同期
-      href: ../app-service-deploy-content-sync.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../deploy-content-sync.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
@@ -98,7 +98,7 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/app-service/containers/tutorial-dotnetcore-sqldb-app">.NET Core と Azure SQL DB</a>、<a href="/azure/app-service/containers/tutorial-java-enterprise-postgresql-app">Java Enterpise と PostgreSQL</a>、または <a href="/azure/app-service/containers/tutorial-nodejs-mongodb-app">Node.js と MongoDB</a> を使用してアプリケーションを作成する
+    - html: <a href="/azure/app-service/containers/tutorial-dotnetcore-sqldb-app">.NET Core と Azure SQL DB</a>、<a href="/azure/app-service/containers/tutorial-java-enterprise-postgresql-app">Java Enterprise と PostgreSQL</a>、または <a href="/azure/app-service/containers/tutorial-nodejs-mongodb-app">Node.js と MongoDB</a> を使用してアプリケーションを作成する
     - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">既存のカスタム ドメインをアプリケーションにマップする</a>
     - html: <a href="/azure/app-service/app-service-web-tutorial-custom-SSL">既存の SSL 証明書をアプリケーションにバインドする</a>
     - html: <a href="/azure/cdn/cdn-add-to-web-app">CDN をアプリケーションに追加する</a>
@@ -122,5 +122,5 @@ sections:
       html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/appservice">Azure CLI</a></p>
     - title: Languages
       html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/">Java</a></p>
-    - title: REST ()
-      html: <p><a href="/rest/api/appservice">REST API リファレンスに関するページ</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/appservice">REST API リファレンス</a></p>

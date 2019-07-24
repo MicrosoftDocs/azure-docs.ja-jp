@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli;
-ms.openlocfilehash: e0df86e40d0dc1092ad7ff04f01bbc3e5e3d1c4e
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: fb8cfd4767f6bb9afe1b5731d3b4db1c68a73056
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
-ms.locfileid: "27743052"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107129"
 ---
 # <a name="contact-microsoft-support"></a>Microsoft サポートに問い合わせる
 
@@ -63,14 +63,14 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 
 4. **[新しいサポート要求]** ブレードで、**[手順 3 連絡先情報]** をクリックします。 **[連絡先情報]** ブレードで、次の手順を実行します。
 
-    1. **[連絡先オプション]** で、希望する連絡方法 (電話または電子メール) および言語を指定します。 応答時間が、サブスクリプション プランに基づいて自動的に選択されます。
-    2. [連絡先情報] で、名前、電子メール、オプションの連絡先、国を指定します。 **[今後のサポート要求用に連絡先の変更を保存]** チェック ボックスをオンにします。
-    3. **Create** をクリックしてください。
+   1. **[連絡先オプション]** で、希望する連絡方法 (電話または電子メール) および言語を指定します。 応答時間が、サブスクリプション プランに基づいて自動的に選択されます。
+   2. [連絡先情報] で、名前、電子メール、オプションの連絡先、国を指定します。 **[今後のサポート要求用に連絡先の変更を保存]** チェック ボックスをオンにします。
+   3. **Create** をクリックしてください。
    
-        ![新しいポータルでの MS サポートへの問い合わせ](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
+       ![新しいポータルでの MS サポートへの問い合わせ](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
-    Microsoft サポートでは、この情報を使用してお客様に連絡し、詳細、診断、および解決策に関する情報を提供します。
-要求を送信した後、その要求を処理するサポート エンジニアから速やかに連絡があります。
+      Microsoft サポートでは、この情報を使用してお客様に連絡し、詳細、診断、および解決策に関する情報を提供します。
+      要求を送信した後、その要求を処理するサポート エンジニアから速やかに連絡があります。
 
 ## <a name="manage-a-support-request"></a>サポート要求を管理する
 

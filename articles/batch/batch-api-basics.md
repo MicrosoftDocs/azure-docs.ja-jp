@@ -1,26 +1,26 @@
 ---
-title: 開発者向け Azure Batch の概要 | Microsoft Docs
+title: 開発者のための概要 - Azure Batch | Microsoft Docs
 description: 開発の観点から、Batch サービスとその API の機能について説明します。
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
 ms.service: batch
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 08/22/2018
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b6e543a4835410368e752e70e7e8cb6d8805c0e
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.date: 12/18/2018
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 1107842444ad0ac77ab890f07e65c8b489030461
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735581"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617485"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -62,7 +62,7 @@ ms.locfileid: "45735581"
   * [開始タスク](#start-task)
   * [ジョブ マネージャー タスク](#job-manager-task)
   * [ジョブ準備タスクおよびジョブ解放タスク](#job-preparation-and-release-tasks)
-  * [マルチインスタンス タスク (MPI)](#multi-instance-tasks)
+  * マルチインスタンス タスク (MPI)
   * [Task dependencies](#task-dependencies)
 * [アプリケーション パッケージ](#application-packages)
 
@@ -153,7 +153,7 @@ Batch プールを作成するときは、Azure 仮想マシン構成と、プ�
 
 #### <a name="container-support-in-virtual-machine-pools"></a>仮想マシンのプールでのコンテナーのサポート
 
-Batch API を使用して仮想マシン構成プールを作成するときに、Docker コンテナーでタスクを実行するためのプールを設定できます。 現在は、Docker コンテナーをサポートするイメージを使ってプールを作成する必要があります。 Azure Marketplace の Windows Server 2016 Datacenter with Containers イメージを使用するか、Docker Community Edition (または Enterprise Edition) と必要なすべてのドライバーを含むカスタム VM イメージを指定する必要があります。 プール設定には、プールの作成時にコンテナー イメージを VM にコピーする[コンテナー構成](/rest/api/batchservice/pool/add#definitions_containerconfiguration)が含まれている必要があります。 これにより、プール上で実行されるタスクが、コンテナー イメージとコンテナー実行オプションを参照できます。
+Batch API を使用して仮想マシン構成プールを作成するときに、Docker コンテナーでタスクを実行するためのプールを設定できます。 現在は、Docker コンテナーをサポートするイメージを使ってプールを作成する必要があります。 Azure Marketplace の Windows Server 2016 Datacenter with Containers イメージを使用するか、Docker Community Edition (または Enterprise Edition) と必要なすべてのドライバーを含むカスタム VM イメージを指定する必要があります。 プール設定には、プールの作成時にコンテナー イメージを VM にコピーする[コンテナー構成](/rest/api/batchservice/pool/add)が含まれている必要があります。 これにより、プール上で実行されるタスクが、コンテナー イメージとコンテナー実行オプションを参照できます。
 
 詳細については、「[Azure Batch で Docker コンテナー アプリケーションを実行する](batch-docker-container-workloads.md)」を参照してください。
 
@@ -215,7 +215,7 @@ Batch でプール内のすべてのノードにタスクを均等に配分す�
 
 ### <a name="network-configuration"></a>ネットワーク構成
 
-プールのコンピューティング ノードを作成する必要のある Azure [仮想ネットワーク (VNet)](../virtual-network/virtual-networks-overview.md) のサブネットを指定できます。 詳細については、「[プール ネットワーク構成](#pool-network-configuration)」セクションを参照してください。
+プールのコンピューティング ノードを作成する必要のある Azure [仮想ネットワーク (VNet)](../virtual-network/virtual-networks-overview.md) のサブネットを指定できます。 詳細については、「プール ネットワーク構成」セクションを参照してください。
 
 
 ## <a name="job"></a>ジョブ
@@ -264,14 +264,14 @@ Batch で作成するジョブには、優先順位を割り当てることが�
 * Docker Hub またはプライベート レジストリ内の**コンテナー イメージ**参照、およびタスクがノード上で実行される Docker コンテナーを作成するための追加設定。 この情報は、プールがコンテナー構成で設定されている場合にのみ指定します。
 
 > [!NOTE]
-> タスクの最長有効期間 (ジョブに追加されてから完了するまで) は、7 日間です。 完了したタスクは、無期限に保持されます。最長有効期間内に完了しなかったタスクのデータにはアクセスできません。
+> タスクの最長有効期間 (ジョブに追加されてから完了するまで) は、180 日間です。 完了したタスクは 7 日間保持されます。最長有効期間内に完了しなかったタスクのデータにはアクセスできません。
 
 Batch サービスには、ノードで計算を実行するために定義するタスクに加えて、次のような特殊なタスクも用意されています。
 
 * [開始タスク](#start-task)
 * [ジョブ マネージャー タスク](#job-manager-task)
 * [ジョブ準備タスクおよびジョブ解放タスク](#job-preparation-and-release-tasks)
-* [マルチインスタンス タスク (MPI)](#multi-instance-tasks)
+* マルチインスタンス タスク (MPI)
 * [Task dependencies](#task-dependencies)
 
 ### <a name="start-task"></a>開始タスク
@@ -314,8 +314,8 @@ Batch サービスには、ノードで計算を実行するために定義す�
 ### <a name="job-preparation-and-release-tasks"></a>ジョブ準備タスクおよびジョブ解放タスク
 Batch には、ジョブ実行前の設定用にジョブ準備タスク、 ジョブ実行後のメンテナンスやクリーンアップ用にジョブ解放タスクが用意されています。
 
-* **ジョブ準備タスク**: ジョブ準備タスクは、タスクの実行がスケジュールされているすべてのコンピューティング ノードで、他のジョブ タスクの実行前に実行されます。 たとえば、ジョブごとに異なるものの、すべてのタスクによって共有されるデータをコピーするために、ジョブ準備タスクを使用することができます。
-* **ジョブ解放タスク**: ジョブが完了すると、少なくとも 1 つのタスクを実行したプールの各ノードでジョブ解放タスクが実行されます。 たとえば、ジョブ準備タスクによってコピーされたデータを削除したり、診断ログ データを圧縮してアップロードしたりするために、ジョブ解放タスクを使用することができます。
+* **ジョブの準備タスク**:ジョブ準備タスクは、タスクの実行がスケジュールされているすべてのコンピューティング ノードで、他のジョブ タスクの実行前に実行されます。 たとえば、ジョブごとに異なるものの、すべてのタスクによって共有されるデータをコピーするために、ジョブ準備タスクを使用することができます。
+* **ジョブの解放タスク**:ジョブが完了すると、少なくとも 1 つのタスクを実行したプールの各ノードでジョブ解放タスクが実行されます。 たとえば、ジョブ準備タスクによってコピーされたデータを削除したり、診断ログ データを圧縮してアップロードしたりするために、ジョブ解放タスクを使用することができます。
 
 ジョブ準備タスクとジョブ解放タスクのどちらでも、タスクの呼び出し時に実行するコマンド ラインを指定できます。 これらのタスクは、ファイルのダウンロード、管理者特権での実行、カスタム環境変数、最大実行期間、再試行回数、ファイルのリテンション期間などの機能を備えています。
 
@@ -326,7 +326,7 @@ Batch には、ジョブ実行前の設定用にジョブ準備タスク、 ジ�
 
 Batch .NET ライブラリを使用して MPI ジョブを Batch で実行する方法の詳細な説明については、「 [Azure Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行](batch-mpi.md)」を参照してください。
 
-### <a name="task-dependencies"></a>タスクの依存関係
+### <a name="task-dependencies"></a>Task dependencies
 [タスクの依存関係](batch-task-dependencies.md)は、名前が示すとおり、あるタスクを実行するには、事前にその他のタスクが完了している必要があることを指定できる機能です。 この機能は、"下流" のタスクが "上流" のタスクの出力を使用するような状況や、下流のタスクで必要になる初期化を上流のタスクで実行するような状況に対応できます。 この機能を使用するには、まず Batch ジョブでタスクの依存関係を有効にする必要があります。 その後、別のタスク (または他の複数のタスク) に依存するタスクごとに、どのタスクに依存するかを指定します。
 
 タスクの依存関係がある場合、シナリオを次のように構成できます。
@@ -355,13 +355,13 @@ Batch サービスは、ノード上のファイル システムの一部を " *
 
 ![コンピューティング ノードのディレクトリ構造][1]
 
-* **shared**: ノードで実行される " *すべて* " のタスクに、このディレクトリへの読み取り/書き込みアクセス権が与えられます。 ノード上で実行されるすべてのタスクは、このディレクトリのファイルを作成、読み取り、更新、削除することができます。 このディレクトリには、タスクから `AZ_BATCH_NODE_SHARED_DIR` 環境変数を参照することでアクセスできます。
-* **startup**: この場所は、開始タスクの作業ディレクトリとして使用されます。 開始タスクによってノードにダウンロードされるすべてのファイルは、ここに格納されます。 開始タスクは、このディレクトリの下で、ファイルを作成、読み取り、更新、削除できます。 このディレクトリには、タスクから `AZ_BATCH_NODE_STARTUP_DIR` 環境変数を参照することでアクセスできます。
-* **タスク**: ノード上で実行されるタスクごとに、ディレクトリが作成されます。 このディレクトリには、 `AZ_BATCH_TASK_DIR` 環境変数を参照することでアクセスできます。
+* **shared**:ノードで実行される "*すべて*" のタスクに、このディレクトリへの読み取り/書き込みアクセス権が与えられます。 ノード上で実行されるすべてのタスクは、このディレクトリのファイルを作成、読み取り、更新、削除することができます。 このディレクトリには、タスクから `AZ_BATCH_NODE_SHARED_DIR` 環境変数を参照することでアクセスできます。
+* **startup**:この場所は、開始タスクの作業ディレクトリとして使用されます。 開始タスクによってノードにダウンロードされるすべてのファイルは、ここに格納されます。 開始タスクは、このディレクトリの下で、ファイルを作成、読み取り、更新、削除できます。 このディレクトリには、タスクから `AZ_BATCH_NODE_STARTUP_DIR` 環境変数を参照することでアクセスできます。
+* **タスク**:ノード上で実行されるタスクごとに、ディレクトリが作成されます。 このディレクトリには、 `AZ_BATCH_TASK_DIR` 環境変数を参照することでアクセスできます。
 
     各タスク ディレクトリ内に、Batch サービスによって作業ディレクトリ (`wd`) が作成されます。その一意のパスは、`AZ_BATCH_TASK_WORKING_DIR` 環境変数によって指定されます。 このディレクトリは、タスクに読み取り/書き込みアクセスを提供します。 タスクは、このディレクトリの下で、ファイルを作成、読み取り、更新、および削除できます。 このディレクトリは、タスクに対して指定された *RetentionTime* 制約に基づいて保持されます。
 
-    `stdout.txt` および `stderr.txt`: これらのファイルは、タスクの実行中にタスク フォルダーに書き込まれます。
+    `stdout.txt` と `stderr.txt`: これらのファイルは、タスクの実行中にタスク フォルダーに書き込まれます。
 
 > [!IMPORTANT]
 > ノードをプールから削除すると、ノードに格納されている " *すべて* " のファイルが削除されます。
@@ -471,7 +471,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 ### <a name="accounting-for-task-failures-or-interruptions"></a>タスクのエラーや中断の理由
 タスクは、エラーが発生したり中断されたりする場合があります。 タスク アプリケーション自体でエラーが発生したり、タスクが実行されているノードが再起動したりすることがあります。また、プールの割り当て解除ポリシーがタスクの完了を待たずに直ちにノードを削除するように設定されている場合は、サイズ変更操作中にノードがプールから削除されることもあります。 どのようなケースでも、Batch によってタスクを自動的にキューに戻し、別のノードで実行することができます。
 
-断続的に発生する問題によって、タスクが応答を停止したり、実行に長い時間がかかるようになる場合もあります。 このような場合は、タスクに最大実行間隔を設定することができます。 最大実効間隔を超過すると、Batch サービスによってタスク アプリケーションが中断されます。
+断続的に発生する問題によって、タスクが応答を停止したり、実行に長い時間がかかるようになったりする場合もあります。 このような場合は、タスクに最大実行間隔を設定することができます。 最大実効間隔を超過すると、Batch サービスによってタスク アプリケーションが中断されます。
 
 ### <a name="connecting-to-compute-nodes"></a>コンピューティング ノードへの接続
 リモートからコンピューティング ノードにサインインすることによって、さらに踏み込んだデバッグやトラブルシューティングを実行できます。 Azure Portal を使用して、Windows ノードのリモート デスクトップ プロトコル (RDP) ファイルをダウンロードしたり、Linux ノードの Secure Shell (SSH) 接続情報を取得したりすることができます。 このような操作は、Batch API ([Batch .NET][net_rdpfile]、[Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh) など) で実行することもできます。
@@ -508,7 +508,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 * Batch ソリューションの構築に使用できる [Batch API とツール](batch-apis-tools.md)について学習します。
 * [Batch .NET クライアント ライブラリ](quick-run-dotnet.md)または [Python](quick-run-python.md) を使用した Batch 対応アプリケーションの開発に関する基本事項を確認してください。 これらのクイック スタートでは、Batch サービスを使用して複数のコンピューティング ノードでワークロードを実行するサンプル アプリケーションの開発手順を説明しています。また、Azure Storage を使用してワークロード ファイルのステージングと取得を行う方法についても取り上げています。
 * Batch ソリューションを開発するときに使用する [Batch Explorer][batch_labs] をダウンロードしてインストールします。 Batch Explorer は、Azure Batch アプリケーションの作成、デバッグ、および監視に役立ちます。 
-* [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch)、[Batch Community リポジトリ](https://github.com/Azure/Batch)、MSDN の [Azure Batch フォーラム][batch_forum]などのコミュニティ リソースを参照してください。 
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-batch)、[Batch Community リポジトリ](https://github.com/Azure/Batch)、MSDN の [Azure Batch フォーラム][batch_forum]などのコミュニティ リソースを参照してください。 
 
 [1]: ./media/batch-api-basics/node-folder-structure.png
 

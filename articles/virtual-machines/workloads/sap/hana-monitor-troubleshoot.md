@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 10709f4f2fcc341840753ef4c4eb479e29fb58d5
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 71970a74817665c97a9522fbc9a68dd3834252b9
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355411"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616358"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA 側からの監視とトラブルシューティング
 
@@ -27,18 +27,18 @@ SAP HANA on Azure (L インスタンス) に関連した問題を効果的に分
 
 SAP HANA のパフォーマンスに関連した FAQ は、以下の SAP Note で参照できます。
 
-- [SAP Note #2222200 – FAQ: SAP HANA のネットワーク](https://launchpad.support.sap.com/#/notes/2222200)
-- [SAP Note #2100040 – FAQ: SAP HANA の CPU](https://launchpad.support.sap.com/#/notes/0002100040)
-- [SAP Note #199997 – FAQ: SAP HANA のメモリ](https://launchpad.support.sap.com/#/notes/2177064)
-- [SAP Note #200000 – FAQ: SAP HANA のパフォーマンス最適化](https://launchpad.support.sap.com/#/notes/2000000)
-- [SAP Note #199930 – FAQ: SAP HANA の I/O 分析](https://launchpad.support.sap.com/#/notes/1999930)
-- [SAP Note #2177064 – FAQ: SAP HANA のサービスの再起動とクラッシュ](https://launchpad.support.sap.com/#/notes/2177064)
+- [SAP Note #2222200 – FAQ:SAP HANA ネットワーク](https://launchpad.support.sap.com/#/notes/2222200)
+- [SAP Note #2100040 – FAQ:SAP HANA CPU](https://launchpad.support.sap.com/#/notes/0002100040)
+- [SAP Note #199997 – FAQ:SAP HANA メモリ](https://launchpad.support.sap.com/#/notes/2177064)
+- [SAP Note #200000 – FAQ:SAP HANA パフォーマンスの最適化](https://launchpad.support.sap.com/#/notes/2000000)
+- [SAP Note #199930 – FAQ:SAP HANA I/O の分析](https://launchpad.support.sap.com/#/notes/1999930)
+- [SAP Note #2177064 – FAQ:SAP HANA のサービスの再起動とクラッシュ](https://launchpad.support.sap.com/#/notes/2177064)
 
 ## <a name="sap-hana-alerts"></a>SAP HANA アラート
 
-最初の手順として、現在の SAP HANA アラート ログを確認します。 SAP HANA Studio で、**[Administration Console (管理コンソール)]、[Alerts (アラート)]、[Show (表示)]、[all alerts (すべてのアラート)]** の順に移動します。 このタブには、設定されている最小および最大しきい値から外れる特定の値 (空き物理メモリ、CPU 使用率など) のすべての SAP HANA アラートが表示されます。 既定では、チェックが 15 分ごとに自動更新されます。
+最初の手順として、現在の SAP HANA アラート ログを確認します。 SAP HANA Studio で、**[管理コンソール]:[アラート]:[表示]: [すべてのアラート]** に進みます。 このタブには、設定されている最小および最大しきい値から外れる特定の値 (空き物理メモリ、CPU 使用率など) のすべての SAP HANA アラートが表示されます。 既定では、チェックが 15 分ごとに自動更新されます。
 
-![SAP HANA Studio で、[Administration Console (管理コンソール)]、[Alerts (アラート)]、[Show (表示)]、[all alerts (すべてのアラート)] の順に移動する](./media/troubleshooting-monitoring/image1-show-alerts.png)
+![SAP HANA Studio で、[管理コンソール]:[アラート]:[表示]: [すべてのアラート] に進みます。](./media/troubleshooting-monitoring/image1-show-alerts.png)
 
 ## <a name="cpu"></a>CPU
 
@@ -65,7 +65,7 @@ SAP HANA のパフォーマンスに関連した FAQ は、以下の SAP Note �
 
 高い CPU 使用率が原因でトリガーされるアラートには、いくつかの理由が考えられます。たとえば、特定のトランザクションの実行、データの読み込み、ジョブの停止、SQL ステートメントの長時間実行、クエリの低パフォーマンス (例: HANA キューブでの BW の場合) などです。
 
-トラブルシューティングの詳細な手順については、[SAP HANA トラブルシューティングの CPU 関連の原因と解決策](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false)に関するサイトを参照してください。
+トラブルシューティングの詳細な手順については、[SAP HANA トラブルシューティングの CPU 関連の原因と解決策](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false) に関するサイトを参照してください。
 
 ## <a name="operating-system"></a>オペレーティング システム
 
@@ -87,28 +87,28 @@ SAP HANA データベースによって割り当てられたメモリの量が�
 - 列ストア テーブルのメイン ストレージのメモリ使用量 (アラート 45)
 - ランタイム ダンプ ファイル (アラート 46)
 
-トラブルシューティングの詳細な手順については、[SAP HANA トラブルシューティングのメモリの問題](http://help.sap.com/saphelp_hanaplatform/helpdata/en/db/6ca50424714af8b370960c04ce667b/content.htm?frameset=/en/59/5eaa513dde43758b51378ab3315ebb/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=26&amp;show_children=false)に関するサイトを参照してください。
+トラブルシューティングの詳細な手順については、[SAP HANA トラブルシューティングのメモリの問題](https://help.sap.com/saphelp_hanaplatform/helpdata/en/db/6ca50424714af8b370960c04ce667b/content.htm?frameset=/en/59/5eaa513dde43758b51378ab3315ebb/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=26&amp;show_children=false) に関するサイトを参照してください。
 
 ## <a name="network"></a>ネットワーク
 
 [SAP Note #2081065 – SAP HANA ネットワークのトラブルシューティング](https://launchpad.support.sap.com/#/notes/2081065)のページを参照して、この SAP Note に記載されているネットワークに関するトラブルシューティングの手順を実行してください。
 
 1. サーバーとクライアント間のラウンド トリップ時間を分析します。
-  A. SQL スクリプト [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700) を実行します。
+  A. SQL スクリプト [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700)__ を実行します。
   
 2. ノード間通信を分析します。
-  A. SQL スクリプト [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700) を実行します。
+  A. SQL スクリプト [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700)__ を実行します。
 
 3. Linux コマンド **ifconfig** を実行します (出力は、パケット損失が発生しているかどうかを示します)。
 4. Linux コマンド **tcpdump** を実行します。
 
 さらに、オープン ソースの [IPERF](https://iperf.fr/) ツール (または同様のツール) を使用して、実際のアプリケーション ネットワーク パフォーマンスを測定します。
 
-トラブルシューティングの詳細な手順については、[SAP HANA トラブルシューティングのネットワークのパフォーマンスと接続の問題](http://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false)に関するサイトを参照してください。
+トラブルシューティングの詳細な手順については、[SAP HANA トラブルシューティングのネットワークのパフォーマンスと接続の問題](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) に関するサイトを参照してください。
 
 ## <a name="storage"></a>Storage
 
-I/O パフォーマンスに問題があると、エンドユーザーの観点からは、アプリケーション (またはシステム全体) が遅い、反応しない、さらには停止していると思われてしまう場合があります。 SAP HANA Studio の **[Volumes (ボリューム)]** タブでは、接続されているボリュームと、各サービスによってどのボリュームが使用されているかを確認できます。
+I/O パフォーマンスに問題がある場合、エンドユーザーからは、アプリケーション (またはシステム全体) が遅い、反応しない、さらには反応が停止しているように感じられる場合があります。 SAP HANA Studio の **[Volumes (ボリューム)]** タブでは、接続されているボリュームと、各サービスによってどのボリュームが使用されているかを確認できます。
 
 ![SAP HANA Studio の [Volumes (ボリューム)] タブでは、接続されているボリュームと、各サービスによってどのボリュームが使用されているかを確認できる](./media/troubleshooting-monitoring/image5-volumes-tab-a.png)
 
@@ -116,7 +116,7 @@ I/O パフォーマンスに問題があると、エンドユーザーの観点�
 
 ![画面下部では、接続されたボリュームの詳細 (ファイルや I/O の統計など) を確認できる](./media/troubleshooting-monitoring/image6-volumes-tab-b.png)
 
-トラブルシューティングの詳細な手順については、[SAP HANA トラブルシューティングの I/O 関連の根本原因と解決策](http://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/6ff98fa36541e997e4c719a632cbd8/content.htm?frameset=/en/47/4cb08a715c42fe9f7cc5efdc599959/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=55&amp;show_children=false)に関するサイトと [SAP HANA トラブルシューティングのディスク関連の根本原因と解決策](http://help.sap.com/saphelp_hanaplatform/helpdata/en/47/4cb08a715c42fe9f7cc5efdc599959/content.htm?frameset=/en/44/3e1db4f73d42da859008df4f69e37a/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=53&amp;show_children=false)に関するサイトを参照してください。
+トラブルシューティングの詳細な手順については、[SAP HANA トラブルシューティングの I/O 関連の原因と解決策](https://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/6ff98fa36541e997e4c719a632cbd8/content.htm?frameset=/en/47/4cb08a715c42fe9f7cc5efdc599959/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=55&amp;show_children=false) および [SAP HANA トラブルシューティングのディスク関連の原因と解決策](https://help.sap.com/saphelp_hanaplatform/helpdata/en/47/4cb08a715c42fe9f7cc5efdc599959/content.htm?frameset=/en/44/3e1db4f73d42da859008df4f69e37a/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=53&amp;show_children=false) に関するサイトを参照してください。
 
 ## <a name="diagnostic-tools"></a>診断ツール
 
@@ -130,7 +130,7 @@ SAP HANA Studio の **[System Information (システム情報)]** タブで、**
 
 ローカルに保存されている SQL Statements.zip ファイルを選択すると、対応する SQL ステートメントが含まれているフォルダーがインポートされます。 この時点で、これらの SQL ステートメントを使用して、さまざまな診断チェックを実行できます。
 
-たとえば、SAP HANA システム レプリケーションの帯域幅要件をテストするには、SQL コンソールで **[Replication: Bandwidth (レプリケーション: 帯域幅)]** の下の **Bandwidth** ステートメントを右クリックし、**[Open (開く)]** を選択します。
+たとえば、SAP HANA システム レプリケーションの帯域幅要件をテストするには、SQL コンソールで [Replication: Bandwidth (レプリケーション: 帯域幅)] の下の **Bandwidth** ステートメントを右クリックし、**** SQL コンソールの **[開く]** を選択します。
 
 完全な SQL ステートメントが開かれるので、入力パラメーター (変更セクション) を変更し、実行することができます。
 
@@ -138,7 +138,7 @@ SAP HANA Studio の **[System Information (システム情報)]** タブで、**
 
 別の例では、**[Replication: Overview (レプリケーション: 概要)]** の下のステートメントを右クリックします。 コンテキスト メニューで **[Execute (実行)]** を選択します。
 
-![別の例では、[Replication: Overview (レプリケーション: 概要)] の下のステートメントを右クリックし、 コンテキスト メニューで [Execute (実行)] を選択する](./media/troubleshooting-monitoring/image9-import-statements-c.png)
+![別の例では、[Replication: Overview (レプリケーション:概要)] の下のステートメントを右クリックします。 コンテキスト メニューで [Execute (実行)] を選択する](./media/troubleshooting-monitoring/image9-import-statements-c.png)
 
 その結果、次のように、トラブルシューティングに役立つ情報が表示されます。
 
@@ -158,7 +158,7 @@ SAP HANA サービスの現在の実行内容の概要を示す **HANA\_Services
 
 SAP HANA のサービス情報 (CPU、メモリなど) を示す **HANA\_Services\_Statistics**。
 
-![SAP HANA のサービス情報を示す HANA\_Services\_Statistics ](./media/troubleshooting-monitoring/image13-services-statistics.png)
+![SAP HANA のサービス情報を示す HANA\_Services\_Statistics](./media/troubleshooting-monitoring/image13-services-statistics.png)
 
 SAP HANA インスタンスの全般的な情報を示す **HANA\_Configuration\_Overview\_Rev110+**。
 

@@ -1,29 +1,28 @@
 ---
-title: Azure を対象とした MongoDB、Angular、Node のチュートリアル | Microsoft Docs
+title: MongoB API を使用する Node.Js、Angular アプリ (パート 1)
+titleSuffix: Azure Cosmos DB
 description: このチュートリアル シリーズでは、Angular と Node で MongoDB に使われる API をそのまま使用して、Azure Cosmos DB を対象とした MongoDB アプリを作成する方法について、動画を交えながら説明しています。
-services: cosmos-db
 author: johnpapa
-manager: kfile
-editor: ''
 ms.service: cosmos-db
-ms.component: cosmosdb-mongo
+ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 09/05/2017
+ms.date: 12/26/2018
 ms.author: jopapa
-ms.custom: mvc
-ms.openlocfilehash: 1a9d608e7f959b3fc164f87d408ccd268e8d2568
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.custom: seodec18
+ms.reviewer: sngun
+ms.openlocfilehash: ec88b8e78c2d73ffa4badbc8ceaa468b4e5169e0
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41918817"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54044350"
 ---
-# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db"></a>Angular と Azure Cosmos DB を使って MongoDB アプリを作成する 
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用して Angular アプリを作成する
 
-複数のパートから成るこのチュートリアルでは、Express、Angular、Node.js (MEAN スタック) を使って記述された新しい [MongoDB API](mongodb-introduction.md) アプリを作成し、Azure Cosmos DB データベースに接続する方法を紹介します。 Azure Cosmos DB は、MongoDB クライアント接続をサポートしています。そのため MongoDB を Azure Cosmos DB に置き換えても、MongoDB アプリに使うコードはそのまま利用できるうえ、さまざまな利点がもたらされます。 Azure Cosmos DB によってもたらされる利点としては、クラウドへの容易なデプロイ、スケーリング、セキュリティのほか、世界規模でレプリケートされるデータ、マルチモデルのサポート、超高速の読み取りと書き込みなどが挙げられます。 
+複数のパートから成るこのチュートリアルでは、Express と Angular を使用して Node.js で新しいアプリを作成した後、[Azure Cosmos DB の MongoDB 用 API で構成された Cosmos アカウント](mongodb-introduction.md)にそれを接続する方法を紹介します。
 
-Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を活かしたドキュメント データベース、キー/値データベース、グラフ データベースをすばやく作成、照会できます。 
+Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を活かしたドキュメント データベース、キー/値データベース、グラフ データベースをすばやく作成、照会できます。 
 
 このマルチパート チュートリアルに含まれるタスクは次のとおりです。
 

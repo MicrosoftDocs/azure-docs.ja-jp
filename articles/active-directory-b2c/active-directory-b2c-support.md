@@ -3,21 +3,21 @@ title: Azure Active Directory B2C のサポート | Microsoft Docs
 description: Azure Active Directory B2C のサポート要求を提出する方法。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 04eae00d40470d5f6c992d9a0c8c9b0b49d7495f
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.subservice: B2C
+ms.openlocfilehash: c40c1357b74b05f54bb2c2837554d9375e06f246
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007639"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163366"
 ---
-# <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: ファイル サポート要求
+# <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C:ファイル サポート要求
 Azure Portal で Azure Active Directory (Azure AD) B2C のサポート要求を提出するには、次の手順に従います。
 
 1. B2C テナントを、Azure サブスクリプションが関連付けられている別のテナントに切り替えます。 通常、移動先のテナントは、従業員のテナント、または Azure サブスクリプションにサインアップしたときに作成された既定のテナントです。 詳細については、「[Azure サブスクリプションが Azure AD に関連付けられる方法](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
@@ -54,7 +54,7 @@ Azure Portal で Azure Active Directory (Azure AD) B2C のサポート要求を�
     ![Support - Contact](./media/active-directory-b2c-support/support-contact.png)
 8. サポート要求を送信した後は、スタート画面の **[ヘルプとサポート]** をクリックした後 **[サポート要求の管理]** をクリックして、監視できます。
 
-## <a name="known-issue-filing-a-support-request-in-the-context-of-a-b2c-tenant"></a>既知の問題点: B2C テナントのコンテキストでのサポート要求の提出
+## <a name="known-issue-filing-a-support-request-in-the-context-of-a-b2c-tenant"></a>既知の問題:B2C テナントのコンテキストでのサポート要求の提出
 上で説明した手順 2 を実行せず、自分の B2C テナントのコンテキストでサポート要求を作成しようとすると、次のエラーが表示されます。
 
 > [!IMPORTANT]

@@ -4,14 +4,14 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
-ms.openlocfilehash: 1e3da265edd7b1edcc73b65c640511be6eb6835e
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 942c165a53ad07c0d359854fc737c195c6f2d50a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133772"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53736842"
 ---
-* [App Service の認証/承認の概要](../articles/app-service/app-service-authentication-overview.md)
+* [App Service の認証/承認の概要](../articles/app-service/overview-authentication-authorization.md)
 * モバイル アプリへの認証の追加: [iOS][ios-get-started-users]、[Android][android-get-started-users]、[Windows Universal][windows-get-started-users]、[Xamarin.Android][xamarin-android-get-started-users]、[Xamarin.iOS][xamarin-ios-get-started-users]、[Xamarin.Forms][xamarin-forms-get-started-users]、[Cordova][cordova-get-started-users]  
   App Service 認証をモバイル アプリに追加する方法について説明します。
 

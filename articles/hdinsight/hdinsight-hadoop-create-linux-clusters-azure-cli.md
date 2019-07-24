@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 93ee51c8a00e5cfcbffd56f96b627b68dd124aea
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: c9b1f3570ae3f9b945c87c2ce316c3f72e32b4ad
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034695"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792052"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して HDInsight クラスターを作成する
 
@@ -70,7 +70,7 @@ PowerShell または Bash などのコマンド ラインから、次の手順�
 
     * `storagename` には、ストレージ アカウントの一意の名前を指定します。
 
-        > [!NOTE]
+        > [!NOTE]  
         > このコマンドのパラメーターの詳細については、「`azure storage account create -h`」と入力してコマンドのヘルプを表示してください。
 
 5. ストレージ アカウントにアクセスするためのキーを取得します。
@@ -80,7 +80,7 @@ PowerShell または Bash などのコマンド ラインから、次の手順�
     * `groupname` には、リソース グループ名を指定します。
     * `storagename` には、ストレージ アカウントの名前を指定します。
 
-     返されたデータで、`key1` の `key` の値を保存します。
+      返されたデータで、`key1` の `key` の値を保存します。
 
 6. HDInsight クラスターを作成します。
 
@@ -90,8 +90,8 @@ PowerShell または Bash などのコマンド ラインから、次の手順�
 
     * `Hadoop` には、作成するクラスターの種類を指定します。 たとえば、`Hadoop`、`HBase`、`Kafka`、`Spark`、`Storm` などです。
 
-     > [!IMPORTANT]
-     > HDInsight クラスターにはさまざまな種類があり、それぞれに適したワークロードやテクノロジに対応しています。 複数の種類 (Storm と HBase など) を組み合わせたクラスターを作成することはできません。
+      > [!IMPORTANT]  
+      > HDInsight クラスターにはさまざまな種類があり、それぞれに適したワークロードやテクノロジに対応しています。 複数の種類 (Storm と HBase など) を組み合わせたクラスターを作成することはできません。
 
     * `location` には、前の手順で使用した場所を指定します。
 
@@ -105,34 +105,34 @@ PowerShell または Bash などのコマンド ラインから、次の手順�
 
     * `sshuser` と `sshuserpassword` には、SSH を使用してクラスターにアクセスするときに使用するユーザー名とパスワードを指定します。
 
-    > [!IMPORTANT]
-    > この例では、2 つの worker ノードを持つクラスターが作成されます。 クラスターの作成後にスケーリング操作を実行することによって、ワーカー ノードの数を変更することもできます。 32 個を超えるワーカー ノードの使用を予定している場合は、コアが 8 個以上で RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。 ヘッド ノード サイズは、クラスターの作成中に `--headNodeSize` パラメーターを使用して設定できます。
-    >
-    > ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
-
-    クラスターの作成処理は、完了までに数分かかる場合があります。 通常は約 15 です。
+      > [!IMPORTANT]  
+      > この例では、2 つの worker ノードを持つクラスターが作成されます。 クラスターの作成後にスケーリング操作を実行することによって、ワーカー ノードの数を変更することもできます。 32 個を超えるワーカー ノードの使用を予定している場合は、コアが 8 個以上で RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。 ヘッド ノード サイズは、クラスターの作成中に `--headNodeSize` パラメーターを使用して設定できます。
+      >
+      > ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
+      
+      クラスターの作成処理は、完了までに数分かかる場合があります。 通常は約 15 です。
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
+HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-hadoop-create-linux-clusters-portal.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 クラシック CLI を使用して HDInsight クラスターを作成したら、クラスターの使用方法について、以下のトピックを参照してください。
 
-### <a name="hadoop-clusters"></a>Hadoop クラスター
+### <a name="apache-hadoop-clusters"></a>Apache Hadoop クラスター
 
-* [HDInsight での Hive の使用](hadoop/hdinsight-use-hive.md)
-* [HDInsight の Hadoop での Pig の使用](hadoop/hdinsight-use-pig.md)
+* [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
+* [HDInsight での Apache Pig の使用](hadoop/hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
 
-### <a name="hbase-clusters"></a>HBase クラスター
+### <a name="apache-hbase-clusters"></a>Apache HBase クラスター
 
-* [HDInsight での HBase の使用](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [HDInsight での HBase の Java アプリケーションの開発](hbase/apache-hbase-build-java-maven-linux.md)
+* [HDInsight での Apache HBase の使用](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [HDInsight での Apache HBase の Java アプリケーションの開発](hbase/apache-hbase-build-java-maven-linux.md)
 
-### <a name="storm-clusters"></a>Storm クラスター
+### <a name="apache-storm-clusters"></a>Apache Storm クラスター
 
-* [HDInsight での Storm の Java トポロジの開発](storm/apache-storm-develop-java-topology.md)
-* [HDInsight の Storm での Python コンポーネントの使用](storm/apache-storm-develop-python-topology.md)
-* [HDInsight の Storm を使用したトポロジのデプロイと監視](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [HDInsight での Apache Storm の Java トポロジの開発](storm/apache-storm-develop-java-topology.md)
+* [HDInsight の Apache Storm での Python コンポーネントの使用](storm/apache-storm-develop-python-topology.md)
+* [Deploy and monitor topologies with Apache Storm on HDInsight (HDInsight の Storm を使用したトポロジのデプロイと監視)](storm/apache-storm-deploy-monitor-topology-linux.md)

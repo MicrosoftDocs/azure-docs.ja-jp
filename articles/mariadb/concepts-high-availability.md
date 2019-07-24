@@ -1,22 +1,20 @@
 ---
 title: Azure Database for MariaDB での高可用性の概念
 description: このトピックでは、Azure Database for MariaDB を使用する場合の高可用性の情報を提供します。
-author: jasonwhowell
-ms.author: jasonh
-editor: jasonwhowell
-services: mariadb
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 2f06c9515c6ee79ea7475452b7000d1babdbecfe
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 12/03/2018
+ms.openlocfilehash: ba561cba21b0b83b6a19fffc2fdfebe8ec8b8ed9
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956525"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351237"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での高可用性の概念
-Azure Database for MariaDB サービスは、保証された高いレベルの可用性を提供します。 財務的な裏付けのあるサービス レベル アグリーメント (SLA) は、一般公開時に 99.99% です。 SLA は、パブリック プレビューには適用されません。 このサービスを使用すると、アプリケーション ダウンタイムはほぼ存在しません。
+Azure Database for MariaDB サービスは、保証された高いレベルの可用性を提供します。 財務的な裏付けのあるサービス レベル アグリーメント (SLA) は、一般公開時に 99.99% です。 このサービスを使用すると、アプリケーション ダウンタイムはほぼ存在しません。
 
 ## <a name="high-availability"></a>高可用性
 高可用性 (HA) モデルは、ノード レベルの中断が発生した場合の組み込みのフェールオーバー メカニズムに基づいています。 ノード レベルの中断は、ハードウェア障害のために、またはサービスのデプロイに応答して発生する可能性があります。
@@ -34,4 +32,4 @@ HA モデルと同様に、Azure Database for MariaDB がスケールアップ�
 スケール操作中、データベース接続の中断が発生します。 クライアント アプリケーションは切断され、未処理のコミットされていないトランザクションは取り消されます。 クライアント アプリケーションが接続を再試行するか、または新しい接続を作成すると、ゲートウェイはその接続を新しくサイズ設定されたインスタンスに転送します。
 
 ## <a name="next-steps"></a>次の手順
-- サービスの概要については、[Azure Database for MariaDB の概要](overview.md)に関するページをご覧ください。
+- サービスの概要については、 [Azure Database for MariaDB の概要](overview.md)に関するページをご覧ください

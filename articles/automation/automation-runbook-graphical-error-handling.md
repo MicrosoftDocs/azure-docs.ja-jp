@@ -3,18 +3,18 @@ title: Azure Automation のグラフィカル Runbook におけるエラー処�
 description: この記事では、Azure Automation のグラフィカル Runbook でエラー処理ロジックを実装する方法について説明します。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 14112a9a9f64f20540a8f7e1d37cd31017238e59
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d7fe38334b71334d4dae9235643117efdf5fbd5d
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192712"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436690"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure Automation のグラフィカル Runbook におけるエラー処理
 
@@ -26,11 +26,11 @@ Runbook には、エラー処理が含まれている必要があります。 �
 
 実行中に発生する可能性がある PowerShell エラーには、強制終了になるエラーと強制終了にならないエラーがあります。 強制終了になるエラーと強制終了にならないエラーの違いは、次のとおりです。
 
-* **強制終了になるエラー**: 実行中の重大なエラー。コマンド (またはスクリプトの実行) は完全に停止します。 例として、存在しないコマンドレットの使用、コマンドレットが実行できなくなるような構文エラー、その他の致命的なエラーなどが挙げられます。
+* **強制終了になるエラー**:実行中の重大なエラー。コマンド (またはスクリプトの実行) は完全に停止します。 例として、存在しないコマンドレットの使用、コマンドレットが実行できなくなるような構文エラー、その他の致命的なエラーなどが挙げられます。
 
-* **強制終了にならないエラー**: 重大でないエラー。無視して実行を継続できます。 例として、ファイルが見つからない、アクセス許可に問題があるなど、操作上のエラーが挙げられます。
+* **強制終了にならないエラー**:重大でないエラー。無視して実行を継続できます。 例として、ファイルが見つからない、アクセス許可に問題があるなど、操作上のエラーが挙げられます。
 
-Azure Automation グラフィカル Runbook は、機能が向上して、エラー処理ができるようになりました。 例外を強制終了にならないエラーに変換して、アクティビティ間のエラー リンクを作成することができます。 この処理により、Runbook の作成者はエラーをキャッチし、実行後の状態または予期しない状態を管理することができます。  
+Azure Automation グラフィカル Runbook は、機能が向上して、エラー処理ができるようになりました。 例外を強制終了にならないエラーに変換して、アクティビティ間のエラー リンクを作成することができます。 この処理により、Runbook の作成者はエラーをキャッチし、実行後の状態または予期しない状態を管理することができます。  
 
 ## <a name="when-to-use-error-handling"></a>エラー処理を使用する場合
 
@@ -69,3 +69,4 @@ Runbook の作成者は、エラーが発生する可能性のある各アクテ
 * グラフィカル Runbook でのリンクおよびリンクの種類の詳細については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md#links-and-workflow)」を参照してください。
 
 * Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、[Runbook ジョブの追跡](automation-runbook-execution.md)に関するページを参照してください。
+

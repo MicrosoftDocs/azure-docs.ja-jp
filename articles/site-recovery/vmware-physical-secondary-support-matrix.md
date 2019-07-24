@@ -4,15 +4,16 @@ description: Azure Site Recovery を使用して VMware VM および物理サー
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
+services: site-recovery
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 04/08/2019
 ms.author: raynew
-ms.openlocfilehash: 8406cf2b31b87cdb4f6c9b6ba3d06559cf1d4d41
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: b316d6a8293d9f23eb89e8b6fffedac316759df4
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209804"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59360145"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>VMware VM および物理サーバーのセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
 
@@ -56,15 +57,15 @@ Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6
 
 **構成** | **サポートされています**  
 --- | --- 
-ホスト - NIC チーミング | [はい] 
-ホスト - VLAN | [はい] 
-ホスト - IPv4 | [はい] 
+ホスト - NIC チーミング | はい 
+ホスト - VLAN | はい 
+ホスト - IPv4 | はい 
 ホスト - IPv6 | いいえ  
 ゲスト VM - NIC チーミング | いいえ 
-ゲスト VM - IPv4 | [はい]
+ゲスト VM - IPv4 | はい
 ゲスト VM - IPv6 | いいえ 
-Gues VM - Windows/Linux - 静的 IP アドレス | [はい]
-ゲスト VM - マルチ NIC | [はい]
+Guest VM - Windows/Linux - 静的 IP アドレス | はい
+ゲスト VM - マルチ NIC | はい
 
 
 ## <a name="storage"></a>Storage
@@ -73,29 +74,29 @@ Gues VM - Windows/Linux - 静的 IP アドレス | [はい]
 
 **ストレージ (ホスト)** | **サポートされています** 
 --- | --- 
-NFS | [はい] 
+NFS | はい 
 SMB 3.0 | 該当なし 
-SAN (ISCSI) | [はい] 
-マルチパス (MPIO) | [はい] 
+SAN (ISCSI) | はい 
+マルチパス (MPIO) | はい 
 
 ### <a name="guest-or-physical-server-storage"></a>ゲストまたは物理サーバーのストレージ
 
 **構成** | **サポートされています** 
 --- | --- 
-VMDK | [はい] 
+VMDK | はい 
 VHD/VHDX | 該当なし 
 第 2 世代 VM | 該当なし 
-共有クラスター ディスク | [はい] 
+共有クラスター ディスク | はい 
 暗号化されたディスク | いいえ  
-UEFI| [はい] 
+UEFI| はい 
 NFS | いいえ  
 SMB 3.0 | いいえ  
-RDM | [はい] 
-1 TB より大きいディスク | [はい] 
-ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM | [はい] 
+RDM | はい 
+1 TB より大きいディスク | はい 
+ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM | はい 
 記憶域 | いいえ  
-ディスクのホット アド/削除 | [はい] 
-ディスクの除外 | [はい] 
+ディスクのホット アド/削除 | はい 
+ディスクの除外 | はい 
 マルチパス (MPIO) | 該当なし 
 
 ## <a name="vaults"></a>資格情報コンテナー
@@ -109,10 +110,10 @@ RDM | [はい]
 
 モビリティ サービスは、オンプレミスの VMware サーバー/物理サーバーとセカンダリ サイトの間のレプリケーションを調整します。 レプリケーションを設定するときは、モビリティ サービスとその他のコンポーネントが最新バージョンになっていることを確認する必要があります。
 
-**Update** | **詳細** 
---- | --- 
-Scout 更新プログラム | 最新の Scout 更新プログラムの[詳細とダウンロード](vmware-physical-secondary-disaster-recovery.md#updates) | Scout 更新プログラムは累積的です。
-コンポーネント更新プログラム | Scout 更新プログラムには、RX サーバー、構成サーバー、プロセス サーバーとマスター ターゲット サーバー、vContinuum サーバー、および保護するソース サーバーを含む、すべてのコンポーネントの更新プログラムが含まれます。<br/><br/> [詳細情報](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates)。
+| **Update** | **詳細** |
+| --- | --- |
+|Scout 更新プログラム | Scout 更新プログラムは累積的です。 <br/><br/> 最新の Scout 更新プログラムの[詳細とダウンロード](vmware-physical-secondary-disaster-recovery.md#updates) |
+|コンポーネント更新プログラム | Scout 更新プログラムには、RX サーバー、構成サーバー、プロセス サーバーとマスター ターゲット サーバー、vContinuum サーバー、および保護するソース サーバーを含む、すべてのコンポーネントの更新プログラムが含まれます。<br/><br/> [詳細情報](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates)。|
 
 
 ## <a name="next-steps"></a>次の手順

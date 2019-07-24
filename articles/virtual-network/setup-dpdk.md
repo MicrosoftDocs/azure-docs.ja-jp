@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
-ms.openlocfilehash: 34647c218bd5fd2eec775599a4d2f10373dbd2fd
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: c5cb840035c5d0d5694982324c7237c58001e689
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268278"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993863"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Linux 仮想マシンでの DPDK の設定
 
@@ -33,7 +33,7 @@ DPDK は、複数のオペレーティング システムの配布をサポー�
 
 ## <a name="benefit"></a>長所
 
-**より高速のパケット毎秒 (PPS)**: カーネルをバイパスしてユーザー空間でパケットを制御すると、コンテキスト切り替えが無くなることでサイクル数が減少します。 また、Azure Linux 仮想マシンで毎秒処理されるパケットのレートも向上します。
+**1 秒あたりのパケット数 (PPS) の向上**: カーネルをバイパスしてユーザー空間でパケットを制御すると、コンテキスト切り替えが無くなることでサイクル数が減少します。 また、Azure Linux 仮想マシンで毎秒処理されるパケットのレートも向上します。
 
 
 ## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
@@ -126,12 +126,12 @@ zypper \
      /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
      ```
 
-   *  `mkdir /mnt/huge` を使って、マウント用のディレクトリを作成します。
-   *  `mount -t hugetlbfs nodev /mnt/huge` を使って hugepage をマウントします。
-   *  `grep Huge /proc/meminfo` を使って、hugepage が予約されていることを確認します。
+   * `mkdir /mnt/huge` を使って、マウント用のディレクトリを作成します。
+   * `mount -t hugetlbfs nodev /mnt/huge` を使って hugepage をマウントします。
+   * `grep Huge /proc/meminfo` を使って、hugepage が予約されていることを確認します。
 
      > [!NOTE]
-     > DPDK の[手順](http://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment)に従って、hugepage がブートで予約されるように、grub ファイルを変更する方法があります。 ページの下部に手順があります。 Azure Linux 仮想マシンで実行している場合は、複数のリブートに及ぶ hugepage を予約するために、代わりに **/etc/config/grub.d** 下のファイルを変更してください。
+     > DPDK の[手順](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment)に従って、hugepage がブートで予約されるように、grub ファイルを変更する方法があります。 ページの下部に手順があります。 Azure Linux 仮想マシンで実行している場合は、複数のリブートに及ぶ hugepage を予約するために、代わりに **/etc/config/grub.d** 下のファイルを変更してください。
 
 2. MAC および IP アドレス: `ifconfig –a` を使用して、ネットワーク インターフェイスの MAC および IP アドレスを表示します。 *VF* ネットワーク インターフェイスおよび *NETVSC* ネットワーク インターフェイスは、同一の MAC アドレスを保持しますが、*NETVSC* ネットワーク インターフェイスだけが IP アドレスを保持します。 VF インターフェイスは、NETVSC インターフェイスの下位インターフェイスとして実行されています。
 
@@ -146,7 +146,7 @@ zypper \
 
 DPDK アプリケーションは、Azure で公開されたフェールセーフの PMD 経由で実行される必要があります。 VF PMD 経由でアプリケーションが直接実行される場合、一部のパケットは統合インターフェイス経由で表示されるので、VM を宛先とする**すべての**パケットが受信されることはありません。 
 
-DPDK アプリケーションをフェールセーフの PMD 経由で実行すると、該当のアプリケーションを宛先とするすべてのパケットが、そのアプリケーションで受信されることが保証されます。 また、ホストがサービス提供されている場合に VF が取り消されたとしても、アプリケーションは確実に、引き続き DPDK モードで実行されます。 フェールセーフの PMD の詳細については、[フェールセーフでのポーリング モードのドライバー ライブラリ](http://doc.dpdk.org/guides/nics/fail_safe.html)を参照してください。
+DPDK アプリケーションをフェールセーフの PMD 経由で実行すると、該当のアプリケーションを宛先とするすべてのパケットが、そのアプリケーションで受信されることが保証されます。 また、ホストがサービス提供されている場合に VF が取り消されたとしても、アプリケーションは確実に、引き続き DPDK モードで実行されます。 フェールセーフの PMD の詳細については、[フェールセーフでのポーリング モードのドライバー ライブラリ](https://doc.dpdk.org/guides/nics/fail_safe.html)を参照してください。
 
 ## <a name="run-testpmd"></a>testpmd を実行する
 

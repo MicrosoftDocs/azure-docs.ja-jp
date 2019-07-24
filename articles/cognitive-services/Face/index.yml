@@ -1,28 +1,49 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: af2dad930f4c236923b79481651f358ab747c84e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 0d2f7ad1f4c3603a831268d2ef7d6b881896fb2f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338252"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731261"
 documentType: LandingData
-title: Face サービスのドキュメント
+title: Face API のドキュメント
 metadata:
-  title: Face サービスのドキュメント - クイック スタート、チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
-  description: Face サービスを使用して、画像内の顔を検出および識別し、顔の情報を返す方法を説明します。 チュートリアルでは、この API を使用するアプリを構築する方法を説明します。
+  title: Face API のドキュメント - クイック スタート、チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
+  description: Face API を使用して、画像内の顔を検出および識別し、顔の情報を返す方法を説明します。 チュートリアルでは、この API を使用するアプリを構築する方法を説明します。
   services: cognitive-services
   author: PatrickFarley
-  manager: nolachar
+  manager: cgronlun
   ms.service: cognitive-services
-  ms.component: computer-vision
+  ms.subservice: face-api
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/31/2018
-  ms.author: nolachar
+  ms.date: 12/20/2018
+  ms.author: nitinme
 abstract:
   description: クラウドベースの Face API を使用すると、開発者は高度な顔アルゴリズムにアクセスできます。 Microsoft Face のアルゴリズムにより、顔属性の検出と顔認識が可能になります。 クイックスタート、チュートリアル、サンプルを使用して、さまざまな方法でコンテンツを分析する方法をご確認ください。
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/face/overview
+      html: <p>Face API について説明します。</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Face API とは
+    - href: /azure/cognitive-services/face/face-api-how-to-topics/howtodetectfacesinimage
+      html: <p>画像内の顔を検出する方法を説明します。</p>
+      image:
+        src: ../media/index/i_tasks.svg
+      title: 画像内の顔を検出する
+    - href: /azure/cognitive-services/face/face-how-to-install-containers
+      html: <p>コンテナーで Face API を使用する方法について説明します。</p>
+      image:
+        src: ../media/index/i_tasks.svg
+      title: コンテナーで Face API を使用する
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
@@ -53,12 +74,20 @@ sections:
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
-    text: Face サービスを使用してアプリケーションを開発する方法について説明します。
+    text: Face API を使用してアプリケーションを開発する方法について説明します。
   - type: list
     style: unordered
     items:
     - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinCSharpTutorial">Windows で画像内の顔を検出してフレームに収める</a></li>
     - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinJavaForAndroidTutorial">Android で画像内の顔を検出してフレームに収める</a></li>
+- title: サンプル
+  items:
+  - type: paragraph
+    text: Face API のサンプルを検索します。
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=Relevance">コード サンプル</a>
 - title: リファレンス
   items:
   - type: list
@@ -68,4 +97,8 @@ sections:
     - title: API
       html: <p><a href="APIReference">Face API</a></p>
     - title: SDK
-      html: <p><a href="https://github.com/Microsoft/Cognitive-Face-Windows">Windows</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules">Node.js</a></p> <p><a href="https://github.com/Microsoft/Cognitive-Face-Python">Python</a></p> <p><a href="https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face">Go</a></p> <p><a href="https://github.com/Microsoft/Cognitive-Face-Android">Android</a></p> <p><a href="https://github.com/Microsoft/Cognitive-Face-iOS">iOS</a></p>
+      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/face?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-face/?view=azure-node-latest">Node</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face">Go</a></p> <p><a href="https://github.com/Microsoft/Cognitive-Face-iOS">iOS</a></p>
+    - title: PowerShell
+      html: <p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
+    - title: CLI
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>

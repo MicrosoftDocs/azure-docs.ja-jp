@@ -6,16 +6,16 @@ author: hirokib
 manager: jrj
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 10/12/2018
 ms.author: elbutter
 ms.reviewer: craigg
-ms.openlocfilehash: 09f3126725b9a2cd6a8277447c0eed4a16838429
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: a835fbd427408afae9ea6ae1b1bc2a84c18b0c34
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49355364"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540459"
 ---
 # <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Striim の Azure SQL DW の Marketplace サービスのインストール ガイド
 
@@ -29,7 +29,7 @@ Striim クラスター名、パスワード、および管理者のパスワー�
 
 ![Striim を構成する][configure]
 
-デプロイした後、Azure portal で <VM Name>-masternode をクリックし、[接続] をクリックし、[Login using VM local account]\(VM ローカル アカウントを使用してログイン) をコピーします 
+デプロイした後、Azure portal で \<VM Name>-masternode をクリックし、[接続] をクリックして、[VM ローカル アカウントを使用してログインする] をコピーします 
 
 ![Striim を SQL Data Warehouse に接続する][connect]
 
@@ -55,7 +55,7 @@ sqljdbc42.jar を <https://www.microsoft.com/en-us/download/details.aspx?id=5467
 
 ![Striim クラスターを起動する][start-striim]
 
-ここで、お好きなブラウザーを開いて、<DNS Name>:9080 に移動します
+ここで、お好きなブラウザーを開いて、\<DNS Name>:9080 に移動します
 
 ![ログイン画面に移動する][navigate]
 

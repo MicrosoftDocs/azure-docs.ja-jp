@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 03/26/2018
-ms.openlocfilehash: bb6ad52f008ddeec5d3ecd3b0fdbc80dbf627101
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 02/15/2019
+ms.openlocfilehash: 0f96ee3a24a811d7e3ab7e65ba4ff14050541638
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685924"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443373"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Apache Sqoop を使用して、HDInsight 上の Apache Hadoop と SQL Database の間でデータをインポートおよびエクスポートする
 
@@ -23,10 +23,10 @@ ms.locfileid: "51685924"
 
 Azure HDInsight 上の Apache Hadoop クラスターと Azure SQL Database または Microsoft SQL Server データベースの間のインポートとエクスポートに Apache Sqoop を使用する方法について説明します。 このドキュメントの手順では、Hadoop クラスターのヘッド ノードから `sqoop` コマンドを直接使用します。 SSH を使用してヘッド ノードに接続し、このドキュメント内のコマンドを実行します。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの手順は、Linux を使用する HDInsight クラスターでのみ機能します。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
-> [!WARNING]
+> [!WARNING]  
 > このドキュメントで実行する手順は、`sqooptest` という名前の Azure SQL データベースが既に作成されていることを前提としています。
 >
 > このドキュメントでは、SQL Database に対するテーブルの作成とクエリを実行するために使用される T-SQL ステートメントを示します。 SQL Database でこれらのステートメントを使用できるクライアントは多数あります。 次のクライアントをお勧めします。
@@ -37,7 +37,7 @@ Azure HDInsight 上の Apache Hadoop クラスターと Azure SQL Database ま�
 
 ## <a name="create-the-table-in-sql-database"></a>SQL Database へのテーブルの作成
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > 「[クラスターと SQL データベースを作成する](hdinsight-use-sqoop.md)」で作成した HDInsight クラスターと SQL Database を使用している場合は、このセクションの手順を省略してください。 データベースとテーブルは、ドキュメント「[クラスターと SQL データベースを作成する](hdinsight-use-sqoop.md)」の手順の一部として作成されました。
 
 SQL クライアントを使用して、SQL Database 内の `sqooptest` データベースに接続します。 次の T-SQL コマンドを使用して、`mobiledata` という名前のテーブルを作成します。
@@ -104,8 +104,8 @@ GO
 
     データ内のフィールドはタブ文字で区切られていて、行は改行文字で終わっています。
 
-    > [!IMPORTANT]
-    > `wasb:///` パスは、Azure Storage を既定のクラスター記憶域として使用するクラスターで動作します。 Azure Data Lake Store を使用するクラスターでは、代わりに `adl:///` を使用してください。
+    > [!IMPORTANT]  
+    > `wasb:///` パスは、Azure Storage を既定のクラスター記憶域として使用するクラスターで動作します。 Azure Data Lake Storage Gen2 を使用するクラスターでは、代わりに `abfs:///` を使用します。 Azure Data Lake Storage Gen1 を使用するクラスターでは、代わりに `adl:///` を使用します。
 
 2. インポートが完了したら、次のコマンドを使用して、新しいディレクトリのデータを列挙します。
 
@@ -160,9 +160,9 @@ Sqoop を使用して、SQL Server からデータのインポートとエクス
 
 ここでは Sqoop の使用方法を説明しました。 詳細については、次を参照してください。
 
-* [HDInsight での Oozie の使用](../hdinsight-use-oozie.md): Oozie ワークフローで Sqoop アクションを使用します。
-* [HDInsight を使用したフライト遅延データの分析](../hdinsight-analyze-flight-delay-data.md): Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL データベースにデータをエクスポートします。
-* [HDInsight へのデータのアップロード](../hdinsight-upload-data.md): HDInsight/Azure BLOB ストレージにデータをアップロードするその他の方法を説明します。
+* [HDInsight での Apache Oozie の使用](../hdinsight-use-oozie-linux-mac.md):Oozie ワークフローで Sqoop アクションを使用します。
+* [HDInsight を使用したフライト遅延データの分析](../hdinsight-analyze-flight-delay-data-linux.md):Apache Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL Database にデータをエクスポートします。
+* [HDInsight へのデータのアップロード](../hdinsight-upload-data.md):HDInsight/Azure Blob Storage にデータをアップロードするその他の方法を説明します。
 
 [hdinsight-versions]:  ../hdinsight-component-versioning.md
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
@@ -171,8 +171,8 @@ Sqoop を使用して、SQL Server からデータのインポートとエクス
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
 [sqldatabase-get-started]: ../sql-database-get-started.md
 
-[powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
+[powershell-start]: https://technet.microsoft.com/library/hh847889.aspx
 [powershell-install]: /powershell/azureps-cmdlets-docs
-[powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
+[powershell-script]: https://technet.microsoft.com/library/ee176949.aspx
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html

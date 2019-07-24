@@ -56,7 +56,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742864.png)
 7. ページの各フィールドに、レプリカをホストする Azure 仮想マシン (VM) を作成するために使用する値を入力します。
    
-   | Setting | [説明] |
+   | Setting | 説明 |
    | --- | --- |
    | **イメージ** |OS と SQL Server の目的の組み合わせを選択します。 |
    | **VM サイズ** |ビジネス ニーズに最も適した VM のサイズを選択します。 |

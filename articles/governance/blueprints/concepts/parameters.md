@@ -1,19 +1,19 @@
 ---
-title: Azure Blueprint でパラメーターを使用して動的ブループリントを作成する
+title: パラメーターを使用して動的ブループリントを作成する
 description: 静的パラメーターと動的パラメーターについて、およびこれらを使用して動的ブループリントを作成する方法について説明します。
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: f6485b01c391ba336799ceb35ee67402b3603585
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.custom: seodec18
+ms.openlocfilehash: 9b5b151c62c4294563f704dc9a0cf7daeaca874f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093753"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279977"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>パラメーターを使用して動的ブループリントを作成する
 
@@ -40,8 +40,13 @@ Resource Manager テンプレート _アーティファクト_ は **secureStrin
 - Key Vault シークレット名
 - Key Vault シークレット バージョン
 
-参照される Key Vault は、Blueprint の割り当て先と同じサブスクリプションに存在している必要があります。
-また、Key Vault の**アクセス ポリシー** ページに構成されている**テンプレート デプロイの Azure Resource Manager にアクセスできる**必要があります。 この機能を有効にする方法については、Key Vault の「[テンプレートのデプロイを有効にする](../../../managed-applications/key-vault-access.md#enable-template-deployment)」を参照してください。 Azure Key Vault の詳細については、[Key Vault の概要](../../../key-vault/key-vault-overview.md)ページを参照してください。
+ブループリント割り当てにおいて**システム割り当てマネージド ID** が使用されている場合、参照された Key Vault はブループリント定義が割り当てられている同じサブスクリプションに存在する_必要があります_。
+
+ブループリント割り当てにおいて**ユーザー割り当てマネージド ID** が使用されている場合、参照された Key Vault は一元化されたサブスクリプションに存在する_可能性があります_。 ブループリント割り当て前に、マネージド ID には Key Vault に対する適切な権利が付与されている必要があります。
+
+いずれの場合も、Key Vault では**アクセス ポリシー** ページに構成されている**テンプレート デプロイの Azure Resource Manager にアクセスできる**必要があります。 この機能を有効にする方法については、Key Vault の「[テンプレートのデプロイを有効にする](../../../managed-applications/key-vault-access.md#enable-template-deployment)」を参照してください。
+
+Azure Key Vault の詳細については、[Key Vault の概要](../../../key-vault/key-vault-overview.md)ページを参照してください。
 
 ## <a name="parameter-types"></a>パラメーターの種類
 
@@ -51,7 +56,7 @@ Resource Manager テンプレート _アーティファクト_ は **secureStrin
 
 #### <a name="setting-static-parameters-in-the-portal"></a>ポータルで静的パラメーターを設定する
 
-1. **[すべてのサービス]** をクリックし、左側のウィンドウで **[ポリシー]** を検索して選択します。 **[ポリシー]** ページで **[ブループリント]** をクリックします。
+1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
 1. 左側のページから **[ブループリントの定義]** を選択します。
 
@@ -61,18 +66,18 @@ Resource Manager テンプレート _アーティファクト_ は **secureStrin
 
 1. パラメーター オプションを持つブループリントに追加されたアーティファクトの **[パラメーター]** 列に、**[X of Y parameters populated]\(X/Y のパラメーターが設定されました\)** が表示されます。 パラメーターを編集するには、そのアーティファクト行をクリックします。
 
-   ![ブループリントのパラメーター](../media/parameters/parameter-column.png)
+   ![ブループリント定義でのブループリントのパラメーター](../media/parameters/parameter-column.png)
 
 1. **[成果物の編集]** ページには、クリックしたアーティファクトに適した値オプションが表示されます。 アーティファクトの各パラメーターには、タイトル、値ボックス、チェックボックスがあります。 **静的パラメーター**にするには、チェックボックスをオフに設定します。 次の例では、_[場所]_ のチェックボックスがオフで、_[リソース グループ名]_ のチェックボックスはオンになっているため、場所のみが**静的パラメーター**です。
 
-   ![ブループリントの静的パラメーター](../media/parameters/static-parameter.png)
+   ![ブループリント アーティファクトでのブループリントの静的パラメーター](../media/parameters/static-parameter.png)
 
 #### <a name="setting-static-parameters-from-rest-api"></a>REST API で静的パラメーターを設定する
 
 各 REST API URI には、独自の値で置き換える必要のある変数があります。
 
 - `{YourMG}` - 実際の管理グループの名前に置き換えます
-- `{subscriptionId}` - サブスクリプション ID で置き換えます
+- `{subscriptionId}` - 実際のサブスクリプション ID に置き換えます
 
 ##### <a name="blueprint-level-parameter"></a>ブループリント レベルのパラメーター
 
@@ -81,7 +86,7 @@ REST API を使用してブループリントを作成するときに、[ブル�
 - REST API URI
 
   ```http
-  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint?api-version=2017-11-11-preview
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint?api-version=2018-11-01-preview
   ```
 
 - 要求本文
@@ -114,7 +119,7 @@ REST API を使用してブループリントを作成するときに、[ブル�
 - REST API URI
 
   ```http
-  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/roleOwner?api-version=2017-11-11-preview
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/roleOwner?api-version=2018-11-01-preview
   ```
 
 - 要求本文
@@ -139,7 +144,7 @@ REST API を使用してブループリントを作成するときに、[ブル�
 - REST API URI
 
   ```http
-  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/policyStorageTags?api-version=2017-11-11-preview
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/policyStorageTags?api-version=2018-11-01-preview
   ```
 
 - 要求本文
@@ -168,7 +173,7 @@ REST API を使用してブループリントを作成するときに、[ブル�
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>ポータルで動的パラメーターを設定する
 
-1. **[すべてのサービス]** をクリックし、左側のウィンドウで **[ポリシー]** を検索して選択します。 **[ポリシー]** ページで **[ブループリント]** をクリックします。
+1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
 1. 左側のページから **[ブループリントの定義]** を選択します。
 
@@ -176,7 +181,7 @@ REST API を使用してブループリントを作成するときに、[ブル�
 
 1. **[ブループリントの割り当て]** ページで、**[アーティファクト パラメーター]** セクションを見つけます。 少なくとも 1 つ以上の**動的パラメーター**を持つアーティファクトごとに、アーティファクトと構成オプションが表示されます。 ブループリントを割り当てる前に、パラメーターに必要な値を指定します。 次の例では、_Name_ がブループリント割り当てを完了するために定義する必要がある**動的パラメーター**です。
 
-   ![ブループリントの動的パラメーター](../media/parameters/dynamic-parameter.png)
+   ![ブループリント割り当て時のブループリントの動的パラメーター](../media/parameters/dynamic-parameter.png)
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>REST API で動的パラメーターを設定する
 
@@ -187,7 +192,7 @@ REST API を使用してブループリントを作成するときに、[ブル�
 - REST API URI
 
   ```http
-  PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2017-11-11-preview
+  PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
   ```
 
 - 要求本文
@@ -235,8 +240,8 @@ REST API を使用してブループリントを作成するときに、[ブル�
 
 ## <a name="next-steps"></a>次の手順
 
-- [ブループリントのライフサイクル](lifecycle.md)を参照する
-- [ブループリントの優先順位](sequencing-order.md)のカスタマイズを参照する
-- [ブループリントのリソース ロック](resource-locking.md)の使用方法を調べる
-- [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する
-- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する
+- [ブループリントのライフサイクル](lifecycle.md)を参照する。
+- [ブループリントの優先順位](sequencing-order.md)のカスタマイズを参照する。
+- [ブループリントのリソース ロック](resource-locking.md)の使用方法を調べる。
+- [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する。
+- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する。

@@ -1,6 +1,6 @@
 ---
-title: Azure Search についてよく寄せられる質問 (FAQ) | Microsoft Docs
-description: Microsoft Azure Search サービスについてよく寄せられる質問とその回答が掲載されています
+title: よく寄せられる質問 (FAQ) - Azure Search
+description: Microsoft Azure のホスト型クラウド検索サービスである、Microsoft Azure Search Service についてよく寄せられる質問とその回答が掲載されています。
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
-ms.openlocfilehash: 1491fdb0f208100619e569f9a74d5e697a0065a6
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.custom: seodec2018
+ms.openlocfilehash: 9ea4e4ec78e5613758bd9e5ff7a4fbd3273208c6
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841679"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312818"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure Search - よく寄せられる質問 (FAQ)
 
@@ -95,6 +96,6 @@ Azure Search は、複数のデータ ソース、[多数の言語の言語分�
 
 ## <a name="see-also"></a>関連項目
 
- [StackOverflow: Azure Search](https://stackoverflow.com/questions/tagged/azure-search)   
+ [StackOverflow:Azure Search](https://stackoverflow.com/questions/tagged/azure-search)   
  [Azure Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)  
  [Azure Search とは](search-what-is-azure-search.md)

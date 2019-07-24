@@ -1,186 +1,76 @@
 ---
-title: モデレーション ジョブと human-in-the-loop (人間参加) レビュー - Content Moderator
+title: レビュー、ワークフロー、ジョブの概念 - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: 最適な結果を得るには、マシン支援型モデレーションに人による監視を適用します。
+description: レビュー、ワークフロー、ジョブについて説明します
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 1/21/2018
+ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: b4a2f62b1c9cefb716cb217baf7389c3e7c790b8
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: c1d4ef640e2ae072dacba7a665b6689e3224c55c
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223257"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756289"
 ---
-# <a name="moderation-jobs-and-reviews"></a>モデレーション ジョブとレビュー
+# <a name="content-moderation-reviews-workflows-and-jobs"></a>コンテンツ モデレーションのレビュー、ワークフロー、ジョブ
 
-ビジネスに最適な結果を得るには、Azure Content Moderator [Review API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) を使用してマシン支援型モデレーションと human-in-the-loop (人間参加) 機能を組み合わせます。
+Content Moderator は、マシン支援型モデレーションと人間参加機能を組み合わせて、現実的なシナリオに最適なモデレーション プロセスを作成します。 これは、クラウドベースの[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)を介して行われます。 このガイドでは、レビュー ツールの主要な概念であるレビュー、ワークフロー、ジョブについて説明します。
 
-Review API には、コンテンツ モデレーション プロセスに人による監視を組み込むための次の方法が用意されています。
+## <a name="reviews"></a>レビュー
 
-* `Job` 操作は、マシン支援型モデレーションとヒューマン レビューの作成を 1 ステップとして開始するために使用されます。
-* `Review` 操作は、モデレーション手順以外の、ヒューマン レビューの作成に使用されます。
-* `Workflow` 操作は、レビュー作成のしきい値を使用してスキャンを自動化するワークフローの管理に使用されます。
+レビューでは、コンテンツがレビュー ツールにアップロードされ、**[レビュー]** タブに表示されます。ここから、ユーザーは適用されたタグを変更し、必要に応じて独自のカスタム タグを適用することができます。 ユーザーがレビューを送信すると、結果が指定のコールバック エンドポイントに送信され、コンテンツはサイトから削除されます。
 
-`Job` 操作と `Review` 操作は、状態と結果を受け取るためのコールバック エンドポイントを受け入れます。
+![レビュー ツールの Web サイトがブラウザーで開き、[レビュー] タブに表示されます。](./Review-Tool-user-Guide/images/image-workflow-review.png)
 
-この記事では、`Job` 操作と `Review` 操作について説明します。 ワークフロー定義の作成、編集、取得の方法については、[ワークフローの概要](workflow-api.md)に関するページを参照してください。
+レビューの作成を開始する方法については、[レビュー ツール ガイド](./review-tool-user-guide/review-moderated-images.md)のページを参照してください。プログラムでの実行方法については、[REST API ガイド](./try-review-api-review.md)のページを参照してください。
 
-## <a name="job-operations"></a>ジョブ操作
+## <a name="workflows"></a>Workflows
 
-### <a name="start-a-job"></a>ジョブを開始する
-`Job.Create` 操作を使用して、モデレーションとヒューマン レビューの作成ジョブを開始します。 Content Moderator でコンテンツがスキャンされ、指定したワークフローが評価されます。 ワークフローの結果に基づいて、レビューが作成されるか、その手順がスキップされます。 また、モデレーション後およびレビュー後のタグがコールバック エンドポイントに送信されます。
+ワークフローは、コンテンツのクラウドベースのカスタマイズされたフィルターです。 ワークフローで、さまざまなサービスに接続してさまざまな方法でコンテンツをフィルター処理した後、適切なアクションを実行することができます。 Content Moderator コネクタを使用すると、ワークフローでモデレーション タグを自動的に適用し、送信されたコンテンツを使用してレビューを作成できます。
 
-入力には次の情報が含まれています。
+### <a name="view-workflows"></a>ワークフローを表示する
 
-- レビュー チーム ID。
-- モデレーション対象のコンテンツ。
-- ワークフロー名 (既定は "default" ワークフローです)。
-- 通知用の API コールバック ポイント。
- 
-次の応答は、開始されたジョブの識別子を示しています。 ジョブ ID は、ジョブの状態の取得と、詳細情報の受け取りに使用します。
+既存のワークフローを表示するには、[レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)に移動して **[設定]** > **[ワークフロー]** の順に選択します。
 
-    {
-        "JobId": "2018014caceddebfe9446fab29056fd8d31ffe"
-    }
+![既定のワークフロー](images/default-workflow-listed.PNG)
 
-### <a name="get-job-status"></a>ジョブの状態の取得
+ワークフローは JSON 文字列として完全に記述することができるため、プログラムでアクセスできます。 ワークフローに対して **[編集]** オプションを選択してから **[JSON]** タブを選択すると、次のような JSON 式が表示されます。
 
-`Job.Get` 操作とジョブ ID を使用して、実行中または完了したジョブの詳細情報を取得します。 この操作は、モデレーション ジョブが非同期に実行されている間に、すぐに結果を返します。 結果はコールバック エンドポイントを介して返されます。
-
-入力には次の情報が含まれています。
-
-- レビュー チーム ID: 前回の操作で返されたジョブ識別子
-
-応答には次の情報が含まれています。
-
-- 作成したレビューの識別子 (この ID を使用して最終的なレビュー結果を取得します)。
-- ジョブの状態 (完了または進行中): 割り当てられたモデレーション タグ (キーと値のペア)。
-- ジョブ実行レポート。
- 
- 
-        {
-            "Id": "2018014caceddebfe9446fab29056fd8d31ffe",
-            "TeamName": "some team name",
-            "Status": "Complete",
-            "WorkflowId": "OCR",
-            "Type": "Image",
-            "CallBackEndpoint": "",
-            "ReviewId": "201801i28fc0f7cbf424447846e509af853ea54",
-            "ResultMetaData":[
-            {
-            "Key": "hasText",
-            "Value": "True"
-            },
-            {
-            "Key": "ocrText",
-            "Value": "IF WE DID \r\nALL \r\nTHE THINGS \r\nWE ARE \r\nCAPABLE \r\nOF DOING, \r\nWE WOULD \r\nLITERALLY \r\nASTOUND \r\nOURSELVE \r\n"
-            }
-            ],
-            "JobExecutionReport": [
-            {
-                "Ts": "2018-01-07T00:38:29.3238715",
-                "Msg": "Posted results to the Callbackendpoint: https://requestb.in/vxke1mvx"
-                },
-                {
-                "Ts": "2018-01-07T00:38:29.2928416",
-                "Msg": "Job marked completed and job content has been removed"
-                },
-                {
-                "Ts": "2018-01-07T00:38:29.0856472",
-                "Msg": "Execution Complete"
-                },
-            {
-                "Ts": "2018-01-07T00:38:26.7714671",
-                "Msg": "Successfully got hasText response from Moderator"
-                },
-                {
-                "Ts": "2018-01-07T00:38:26.4181346",
-                "Msg": "Getting hasText from Moderator"
-                },
-                {
-                "Ts": "2018-01-07T00:38:25.5122828",
-                "Msg": "Starting Execution - Try 1"
-                }
-            ]
-        }
- 
-![ヒューマン モデレーター用の画像レビュー](images/ocr-sample-image.PNG)
-
-## <a name="review-operations"></a>レビュー操作
-
-### <a name="create-reviews"></a>レビューを作成する
-
-ヒューマン レビューを作成するには、`Review.Create` 操作を使用します。 他の場所でモデレートするか、カスタム ロジックを使用してモデレーション タグを割り当てます。
-
-この操作には、次のような内容が入力されます。
-
-- レビュー対象のコンテンツ。
-- ヒューマン モデレーターによるレビューのために割り当てられたタグ (キーと値のペア)。
-
-次の応答はレビュー識別子を示します。
-
-    [
-        "201712i46950138c61a4740b118a43cac33f434",
-    ]
-
-
-### <a name="get-review-status"></a>レビューの状態を取得する
-モデレートされた画像のヒューマン レビューが完了した後の結果を取得するには、`Review.Get` 操作を使用します。 指定したコールバック エンドポイントを介して通知を受け取ります。 
-
-この操作は、2 つのタグ セットを返します。 
-
-* モデレーション サービスによって割り当てられたタグ
-* ヒューマン レビューが完了した後のタグ
-
-入力には、少なくとも以下が含まれています。
-
-- レビュー チーム名
-- 前の操作で返されたレビュー識別子
-
-応答には次の情報が含まれています。
-
-- レビューの状態
-- レビュー担当者によって確認されたタグ (キーと値のペア)
-- モデレーション サービスによって割り当てられたタグ (キーと値のペア)
-
-次のサンプル応答には、レビュー担当者が割り当てたタグ (**reviewerResultTags**) と初期タグ (**メタデータ**) の両方があります。
-
-    {
-        "reviewId": "201712i46950138c61a4740b118a43cac33f434",
-        "subTeam": "public",
-        "status": "Complete",
-        "reviewerResultTags": [
-        {
-            "key": "a",
-            "value": "False"
+```json
+{
+    "Type": "Logic",
+    "If": {
+        "ConnectorName": "moderator",
+        "OutputName": "isAdult",
+        "Operator": "eq",
+        "Value": "true",
+        "Type": "Condition"
         },
-        {
-            "key": "r",
-            "value": "True"
-        },
-        {
-            "key": "sc",
-            "value": "True"
-        }
-        ],
-        "createdBy": "{teamname}",
-        "metadata": [
-        {
-            "key": "sc",
-            "value": "true"
-        }
-        ],
-        "type": "Image",
-        "content": "https://reviewcontentprod.blob.core.windows.net/{teamname}/IMG_201712i46950138c61a4740b118a43cac33f434",
-        "contentId": "0",
-        "callbackEndpoint": "{callbackUrl}"
+    "Then": {
+    "Perform": [
+    {
+        "Name": "createreview",
+        "CallbackEndpoint": null,
+        "Tags": []
     }
+    ],
+    "Type": "Actions"
+    }
+}
+```
+
+ワークフローの作成と使用を開始する方法については、[レビュー ツール ガイド](./review-tool-user-guide/workflows.md)のページを参照してください。プログラムでの実行方法については、[REST API ガイド](./try-review-api-workflow.md)のページを参照してください。
+
+## <a name="jobs"></a>[ジョブ]
+
+モデレーション ジョブはコンテンツ モデレーション、ワークフロー、レビューの機能に対するある種のラッパーとして機能します。 このジョブは、Content Moderator の画像モデレーション API やテキスト モデレーション API を使用してコンテンツをスキャンし、指定したワークフローに対して確認します。 ワークフローの結果に基づいて、[レビュー ツール](./review-tool-user-guide/human-in-the-loop.md)でコンテンツのレビューを作成する場合と作成しない場合があります。 レビューとワークフローの両方をそれぞれの API を使用して作成および構成することができますが、ジョブ API を使用すると、プロセス全体の詳細なレポートを取得できます (指定したコールバック エンドポイントに送信できます)。
+
+ジョブの使用を開始する方法については、[REST API ガイド](./try-review-api-job.md)のページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

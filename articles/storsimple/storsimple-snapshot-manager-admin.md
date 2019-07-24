@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2016
 ms.author: v-sharos
-ms.openlocfilehash: a99b3d7336c3dc1a1f249915d6971a49f4b69be6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bc72da98800ef85ef14be0882ba856fbf01386b9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109220"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872185"
 ---
 # <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理
 
@@ -48,10 +48,10 @@ StorSimple Snapshot Manager を使用すると、現在のバックアップ ジ
 
 | 目的の操作 | 使用するチュートリアル |
 |:--- |:--- |
-| StorSimple Snapshot Manager について知りたい。 |[「What is StorSimple Snapshot Manager? (StorSimple Snapshot Manager について)」 ](storsimple-what-is-snapshot-manager.md) |
+| StorSimple Snapshot Manager について知りたい。 |[StorSimple Snapshot Manager とは](storsimple-what-is-snapshot-manager.md) |
 | StorSimple Snapshot Manager のインストール<br>StorSimple Snapshot Manager の再インストール<br>StorSimple Snapshot Manager の削除 |[「Deploy StorSimple Snapshot Manager (StorSimple Snapshot Manager のデプロイ)」](storsimple-snapshot-manager-deployment.md) |
 | StorSimple Snapshot Manager メニューと機能の使用方法 : <ul><li>メニュー バー</li><li>ツール バー</li><li>スコープ ウィンドウ</li><li>結果ウィンドウ</li><li>[操作] ウィンドウ</li><li>キーボード ナビゲーションとショートカット</li></ul> |[「StorSimple Snapshot Manager user interface (StorSimple Snapshot Manager のユーザー インターフェイス)」](storsimple-use-snapshot-manager.md) |
-| StorSimple Snapshot Manager に含まれている一般的な MMC 機能の使用方法: <ul><li>表示</li><li>ここから新しいウィンドウ</li><li>更新</li><li>リストのエクスポート</li><li>[ヘルプ]</li></ul> |[「Use the MMC menu actions in StorSimple Snapshot Manager (StorSimple Snapshot Manager での MMC メニュー操作の使用)」](storsimple-snapshot-manager-mmc-menu.md) |
+| StorSimple Snapshot Manager に含まれている一般的な MMC 機能の使用方法: <ul><li>表示</li><li>ここから新しいウィンドウ</li><li>更新</li><li>リストのエクスポート</li><li>[Help]</li></ul> |[「Use the MMC menu actions in StorSimple Snapshot Manager (StorSimple Snapshot Manager での MMC メニュー操作の使用)」](storsimple-snapshot-manager-mmc-menu.md) |
 | デバイスの追加または置き換え<br>デバイスの接続<br>インポートされたボリューム グループの確認<br>接続されたデバイスの更新<br>デバイスの認証<br>デバイスの詳細の表示<br>デバイスの構成の削除<br>デバイスのパスワードの変更<br>障害が発生したデバイスの置き換え<br> |[Use StorSimple Snapshot Manager to connect and manage StorSimple devices (StorSimple Snapshot Manager を使用した StorSimple デバイスの接続および管理)」](storsimple-snapshot-manager-manage-devices.md) |
 | ボリュームのマウント<br>ボリュームに関する情報を表示する<br>ボリュームを削除する<br>ボリュームの再スキャン<br>ベーシック ボリュームの構成とバックアップ<br>ダイナミック ミラー ボリュームの構成とバックアップ |[「Use StorSimple Snapshot Manager to view and manage volumes (StorSimple Snapshot Manager を使用したボリュームの表示と管理)」](storsimple-snapshot-manager-manage-volumes.md) |
 | ボリューム グループの表示<br>ボリューム グループの作成<br>ボリューム グループのバックアップ<br>ボリューム グループの編集<br>ボリューム グループの削除 |[「Use StorSimple Snapshot Manager to create and manage volume groups (StorSimple Snapshot Manager を使用したボリューム グループの作成と管理)」](storsimple-snapshot-manager-manage-volume-groups.md) |
@@ -59,6 +59,6 @@ StorSimple Snapshot Manager を使用すると、現在のバックアップ ジ
 | スケジュールされたバックアップ ジョブの表示と管理<br>最近実行されたバックアップ ジョブの表示と管理<br>現在実行中のバックアップ ジョブの表示と管理 |[「StorSimple Snapshot Manager を使用したバックアップ ジョブの表示と管理」](storsimple-snapshot-manager-manage-backup-jobs.md) |
 | ボリュームの復元<br>ボリュームまたはボリューム グループの複製<br>バックアップの削除<br>ファイルの復元<br>Storsimple Snapshot Manager データベースの復元 |[「Use StorSimple Snapshot Manager to manage the backup catalog (StorSimple Snapshot Manager を使用したバックアップ カタログの管理)」](storsimple-snapshot-manager-manage-backup-catalog.md) |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [StorSimple Snapshot Manager のダウンロード](https://www.microsoft.com/download/details.aspx?id=44220)。
 

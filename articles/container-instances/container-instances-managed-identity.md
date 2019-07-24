@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 8c3c7e94db1f09164d6248cf0b9b093db0cf1d69
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: ac0a84aa3121c6ebb91860c96c0f6692827c8a3f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578673"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336526"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Azure Container Instances でマネージド ID を使用する方法
 
@@ -28,9 +28,12 @@ ms.locfileid: "51578673"
 
 サンプルを調整することにより、Azure Container Instances 内の ID を有効にし、それを使って他の Azure サービスにアクセスします。 これらのサンプルは対話型です。 ただし実際には、コンテナー イメージがコードを実行して Azure サービスにアクセスします。
 
+> [!NOTE]
+> 現在、仮想ネットワークにデプロイされたコンテナー グループ内でマネージド ID を使用することはできません。
+
 ## <a name="why-use-a-managed-identity"></a>マネージド ID を使用する理由
 
-実行中のコンテナーでマネージド ID を使用すると、資格情報をコンテナー コード内で管理しなくても、[Azure AD 認証をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication)に対して認証することができます。 AD 認証をサポートしないサービスについては、Azure Key Vault の中にシークレットを格納し、マネージド ID を使って Key Vault にアクセスして資格情報を取得できます。 マネージド ID の使用法の詳細については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
+実行中のコンテナーでマネージド ID を使用すると、資格情報をコンテナー コード内で管理しなくても、[Azure AD 認証をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)に対して認証することができます。 AD 認証をサポートしないサービスについては、Azure Key Vault の中にシークレットを格納し、マネージド ID を使って Key Vault にアクセスして資格情報を取得できます。 マネージド ID の使用法の詳細については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
 
 > [!IMPORTANT]
 > 現在、この機能はプレビュー段階にあります。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。 現在、マネージド ID は Linux コンテナー インスタンスでのみサポートされています。
@@ -80,7 +83,7 @@ az keyvault secret set --name SampleSecret --value "Hello Container Instances!" 
 
 次に示す例に従い、Azure Container Instances のユーザー定義/システム定義のいずれかのマネージド ID を使って Key Vault にアクセスします。
 
-## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>例 1: ユーザー割り当ての ID を使用して Azure Key Vault にアクセスする
+## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>例 1:ユーザー割り当ての ID を使用して Azure Key Vault にアクセスする
 
 ### <a name="create-an-identity"></a>ID の作成
 
@@ -134,7 +137,7 @@ az container show --resource-group myResourceGroup --name mycontainer
 
 ### <a name="grant-user-assigned-identity-access-to-the-key-vault"></a>Key Vault へのアクセス権をユーザー割り当て ID に付与する
 
-次の [az keyvault set-policy](/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) コマンドを実行して、Key Vault に対するアクセス ポリシーを設定します。 次の例により、ユーザー割り当て ID が Key Vault からシークレットを取得できるようになります。
+次の [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest) コマンドを実行して、Key Vault に対するアクセス ポリシーを設定します。 次の例により、ユーザー割り当て ID が Key Vault からシークレットを取得できるようになります。
 
 ```azurecli-interactive
  az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $spID --secret-permissions get
@@ -179,7 +182,7 @@ curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-1
 {"value":"Hello Container Instances!","contentType":"ACIsecret","id":"https://mykeyvault.vault.azure.net/secrets/SampleSecret/xxxxxxxxxxxxxxxxxxxx","attributes":{"enabled":true,"created":1539965967,"updated":1539965967,"recoveryLevel":"Purgeable"},"tags":{"file-encoding":"utf-8"}}
 ```
 
-## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>例 2: システム割り当ての ID を使用して Azure Key Vault にアクセスする
+## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>例 2:システム割り当ての ID を使用して Azure Key Vault にアクセスする
 
 ### <a name="enable-a-system-assigned-identity-on-a-container-group"></a>コンテナー グループでシステム割り当て ID を有効にする
 
@@ -216,7 +219,7 @@ spID=$(az container show --resource-group myResourceGroup --name mycontainer --q
 
 ### <a name="grant-container-group-access-to-the-key-vault"></a>Key Vault へのアクセス権をコンテナー グループに付与する
 
-次の [az keyvault set-policy](/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) コマンドを実行して、Key Vault に対するアクセス ポリシーを設定します。 次の例により、システム定義 ID が Key Vault からシークレットを取得できるようになります。
+次の [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest) コマンドを実行して、Key Vault に対するアクセス ポリシーを設定します。 次の例により、システム定義 ID が Key Vault からシークレットを取得できるようになります。
 
 ```azurecli-interactive
  az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $spID --secret-permissions get
@@ -249,7 +252,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-次に、アクセス トークンを使って Key Vault に対して認証し、シークレットを読み取ります。 URL 内のキー コンテナー名を必ず置き換えてください (*https://mykeyvault.vault.azure.net/...*):
+次に、アクセス トークンを使って Key Vault に対して認証し、シークレットを読み取ります。 URL 内のキー コンテナー名を必ず置き換えてください (*https:\//mykeyvault.vault.azure.net/...*)。
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

@@ -3,7 +3,7 @@ title: Azure Batch プールの Azure ファイル共有 | Microsoft Docs
 description: Azure Batch の Linux または Windows プールの計算ノードから Azure Files 共有をマウントする方法
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 05/24/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: 88d7c0d033d7b517a396df27468de8be7ae20be9
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 1e9d039769e7fbcb9c2b7285aa727acd7322bcdf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34811790"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103334"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Batch プールと共に Azure ファイル共有を使用する
 
@@ -51,7 +51,7 @@ Batch では、タスクが Windows ノード上で実行されるたびに共�
 
 たとえば、各タスクのコマンド ラインの一部としてファイル共有をマウントするための `net use` コマンドを含めます。 ファイル共有をマウントするには、次の資格情報が必要になります。
 
-* **ユーザー名**: AZURE\\\<storageaccountname\> (たとえば、AZURE\\*mystorageaccountname*)
+* **[ユーザー名]**: AZURE\\\<storageaccountname\> (たとえば、AZURE\\*mystorageaccountname*)
 * **パスワード**: <StorageAccountKeyWhichEnds in==> (たとえば、*XXXXXXXXXXXXXXXXXXXXX==*)
 
 次のコマンドは、ストレージ アカウント *mystorageaccountname* にあるファイル共有 *myfileshare* を *S:* ドライブとしてマウントします。
@@ -66,16 +66,16 @@ net use S: \\mystorageaccountname.file.core.windows.net\myfileshare /user:AZURE\
 
 1. プールの構成で開始タスクを使用して、`cmdkey` コマンドライン ユーティリティを実行します。 これにより、各 Windows ノードで資格情報が保持されます。 開始タスクのコマンド ラインは、次のようになります。
 
-  ```
-  cmd /c "cmdkey /add:mystorageaccountname.file.core.windows.net /user:AZURE\mystorageaccountname /pass:XXXXXXXXXXXXXXXXXXXXX=="
+   ```
+   cmd /c "cmdkey /add:mystorageaccountname.file.core.windows.net /user:AZURE\mystorageaccountname /pass:XXXXXXXXXXXXXXXXXXXXX=="
 
-  ```
+   ```
 
 2. `net use` を使用して各タスクの一部として、各ノード上に共有をマウントします。 たとえば、次のタスク コマンド ラインは、*S:* ドライブとしてファイル共有をマウントします。 この後には、共有を参照するコマンドまたはスクリプトが続きます。 キャッシュされた資格情報は、`net use` の呼び出しの中で使用されます。 この手順では、プール上の開始タスクで使用したタスクと同じユーザー ID を使用していると仮定しています。すべてのシナリオに当てはまるわけではありません。
 
-  ```
-  cmd /c "net use S: \\mystorageaccountname.file.core.windows.net\myfileshare" 
-  ```
+   ```
+   cmd /c "net use S: \\mystorageaccountname.file.core.windows.net\myfileshare" 
+   ```
 
 ### <a name="c-example"></a>C# の例
 次の C# の例は、開始タスクを使用して Windows プール上に資格情報を保持する方法を示しています。 ストレージ ファイル サービス名とストレージの資格情報が、定義済みの定数として渡されます。 ここでは、プールのスコープを使って、標準の (管理者以外の) 自動ユーザー アカウントで開始タスクが実行されます。

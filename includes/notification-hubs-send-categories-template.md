@@ -8,22 +8,26 @@ ms.topic: include
 ms.date: 03/30/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 19352df7abff23ed44521a11e7907c84c8c0327f
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ce8496596f25b85719b8a6dff849ebf0fc3e5dc3
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "33835835"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58405603"
 ---
 このセクションでは、.NET コンソール アプリから、タグ付けされたテンプレート通知としてニュース速報を送信します。 
 
-1. Visual Studio で、Visual C# の新しいコンソール アプリケーションを作成します。
+1. Visual Studio で、Visual C# の新しいコンソール アプリケーションを作成します。a. メニューで、**[ファイル]** > **[新規作成]** > **[プロジェクト]** を選択します。
+    b. **[Visual C#]** を展開し、**[Windows デスクトップ]** を選択します。 
+    c. テンプレートの一覧から **[コンソール アプリ (.NET Framework)]** を選択します。 
+    d. アプリの**名前**を入力します。 
+    e. アプリの**フォルダー**を選択します。
+    f. **[OK]** を選択してプロジェクトを作成します。 
+2. Visual Studio のメイン メニューで、**[ツール]** > **[NuGet Package Manager]** > **[パッケージ マネージャー コンソール]** の順に選択してから、コンソール ウィンドウで次の文字列を入力します。
    
-      ![コンソール アプリケーションのリンク][13]
-
-2. Visual Studio のメイン メニューで、**[ツール]** > **[Library Package Manager]** > **[パッケージ マネージャー コンソール]** の順に選択してから、コンソール ウィンドウで次の文字列を入力します。
-   
-        Install-Package Microsoft.Azure.NotificationHubs
+    ```
+    Install-Package Microsoft.Azure.NotificationHubs
+    ```
    
 3. **[Enter]** を選択します。  
     この操作によって、[Microsoft.Azure.Notification Hubs NuGet パッケージ]を使用して Azure Notification Hubs SDK に参照が追加されます。

@@ -9,7 +9,7 @@ editor: ''
 tags: ''
 ms.assetid: 9dc268a9-32e8-402c-a43f-02b183c295c5
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -18,14 +18,15 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: sureshja
 ms.custom: aaddev
-ms.openlocfilehash: b8dba999ac6523aad29aae40b528fd010fec0550
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2dfbf920a0e1fc002f3bcbe90164e1fd13a0b978
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687352"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168048"
 ---
-# <a name="how-to-use-the-azure-ad-graph-api"></a>方法: Azure AD Graph API を使用する
+# <a name="how-to-use-the-azure-ad-graph-api"></a>方法:Azure AD Graph API を使用する
 
 Azure Active Directory (Azure AD) Graph API を使用すると、OData REST API エンドポイントを介して Azure AD にプログラムによってアクセスできます。 アプリケーションでは、Azure AD Graph API を使って、ディレクトリのデータとオブジェクトに対して、作成、読み取り、更新、および削除 (CRUD) の各操作を実行できます。 たとえば、Azure AD Graph API を使って、新しいユーザーの作成、ユーザーのプロパティの表示または更新、ユーザーのパスワードの変更、ロールベースでアクセスするためのグループ メンバーシップの確認、ユーザーの無効化または削除を行うことができます。 Azure AD Graph API の機能とアプリケーション シナリオの詳細については、[Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) に関するページと [Azure AD Graph API の前提条件](https://msdn.microsoft.com/library/hh974476.aspx)に関するページを参照してください。
 
@@ -38,10 +39,10 @@ Azure Active Directory (Azure AD) Graph API を使用すると、OData REST API 
 
 Graph API では、CRUD 操作を実行するディレクトリのデータとオブジェクト (つまり、リソースまたはエンティティ) にアクセスするために、Open Data (OData) プロトコルに基づく URL を使用できます。 Graph API で使用される URL は、4 つの主要部分で構成されます。主要部分は、サービス ルート、テナント ID、リソース パス、およびクエリ文字列オプション (https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]) です。`https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]` 次の URL の例を使用して説明します。`https://graph.windows.net/contoso.com/groups?api-version=1.6`
 
-* **サービス ルート**: Azure AD Graph API では、サービス ルートは常に https://graph.windows.net です。
-* **テナント ID**: このセクションでは、確認済み (登録済み) のドメイン名を指定できます。上記の例では contoso.com です。 テナント オブジェクト ID またはエイリアス ("myorganization" または "me") を指定することもできます。 詳しくは、[Azure AD Graph API のエンティティと操作のアドレス指定](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview)に関するページをご覧ください。
-* **リソース パス**: URL のこのセクションは、対話するリソース (ユーザー、グループ、特定のユーザー、特定のグループなど) を識別します。上記の例では、リソース セットのアドレスを指定する最上位の "groups" です。 特定のエンティティ ("users/{objectId}" や "users/userPrincipalName" など) のアドレスを指定することもできます。
-* **クエリ パラメーター**: リソース パス セクションとクエリ パラメーター セクションは疑問符 (?) で区切られます。 Azure AD Graph API ではすべての要求に "api-version" クエリ パラメーターが必要です。 Azure AD Graph API では、OData クエリ オプションの **$filter**、**$orderby**、**$expand**、**$top**、および **$format** もサポートします。 クエリ オプションの **$count**、**$inlinecount**、および **$skip** は現在サポートされていません。 詳細については、「[Azure AD Graph API でサポートされているクエリ、フィルター、およびページング オプション](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options)」を参照してください。
+* **サービス ルート**:Azure AD Graph API では、サービス ルートは常に https://graph.windows.net です。
+* **テナント識別子**:このセクションでは、確認済み (登録済み) のドメイン名を指定できます。上記の例では contoso.com です。 テナント オブジェクト ID またはエイリアス ("myorganization" または "me") を指定することもできます。 詳しくは、[Azure AD Graph API のエンティティと操作のアドレス指定](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview)に関するページをご覧ください。
+* **リソース パス**:URL のこのセクションは、対話するリソース (ユーザー、グループ、特定のユーザー、特定のグループなど) を識別します。上記の例では、リソース セットのアドレスを指定する最上位の "groups" です。 特定のエンティティ ("users/{objectId}" や "users/userPrincipalName" など) のアドレスを指定することもできます。
+* **クエリ パラメーター**:リソース パス セクションとクエリ パラメーター セクションは疑問符 (?) で区切られます。 Azure AD Graph API ではすべての要求に "api-version" クエリ パラメーターが必要です。 Azure AD Graph API では、OData クエリ オプションの **$filter**、**$orderby**、**$expand**、**$top**、および **$format** もサポートします。 クエリ オプションの **$count**、**$inlinecount**、および **$skip** は現在サポートされていません。 詳細については、「[Azure AD Graph API でサポートされているクエリ、フィルター、およびページング オプション](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options)」を参照してください。
 
 ## <a name="graph-api-versions"></a>Graph API のバージョン
 
@@ -66,7 +67,7 @@ Azure AD Graph API 用の Azure AD Graph Explorer を使用して、アプリケ
 
 ![Azure AD Graph API Explorer](./media/active-directory-graph-api-quickstart/graph_explorer.png)
 
-**Azure AD Graph Explorer を読み込む**: ツールを読み込むには、[https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/) に移動します。 **[ログイン]** をクリックし、Azure AD アカウント資格情報でサインインし、テナントに対して Azure AD Graph Explorer を実行できます。 独自のテナントに対して Azure AD Graph Explorer を実行する場合は、ユーザー自身またはユーザーの管理者がサインイン中に同意する必要があります。 Office 365 サブスクリプションがある場合は、Azure AD テナントが自動的に設定されます。 Office 365 にサインインするための資格情報は、実際は Azure AD アカウントであり、これらの資格情報を Azure AD Graph Explorer で使用できます。
+**Azure AD Graph Explorer を読み込む**:ツールを読み込むには、[https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/) に移動します。 **[ログイン]** をクリックし、Azure AD アカウント資格情報でサインインし、テナントに対して Azure AD Graph Explorer を実行できます。 独自のテナントに対して Azure AD Graph Explorer を実行する場合は、ユーザー自身またはユーザーの管理者がサインイン中に同意する必要があります。 Office 365 サブスクリプションがある場合は、Azure AD テナントが自動的に設定されます。 Office 365 にサインインするための資格情報は、実際は Azure AD アカウントであり、これらの資格情報を Azure AD Graph Explorer で使用できます。
 
 **クエリを実行する**:クエリを実行するには、要求テキスト ボックスにクエリを入力し、**[取得]** をクリックするか、**Enter** キーを押します。 結果が応答ボックスに表示されます。 たとえば、`https://graph.windows.net/myorganization/groups?api-version=1.6` は、サインインしたユーザー ディレクトリ内のすべてのグループ オブジェクトを一覧表示します。
 
@@ -82,13 +83,13 @@ Azure AD Graph Explorer の次の機能と制限事項に注意してくださ�
 
 ## <a name="using-fiddler-to-write-to-the-directory"></a>Fiddler を使用したディレクトリへの書き込み
 
-このクイックスタート ガイドでは、Azure AD ディレクトリに対する「書き込み」操作を練習するために、Fiddler Web Debugger を使用できます。 たとえば、ユーザーのプロファイル写真を取得してアップロードできます (これは Azure AD Graph Explorer ではできません)。 Fiddler の詳細とインストールについては、[http://www.telerik.com/fiddler](http://www.telerik.com/fiddler) をご覧ください。
+このクイックスタート ガイドでは、Azure AD ディレクトリに対する「書き込み」操作を練習するために、Fiddler Web Debugger を使用できます。 たとえば、ユーザーのプロファイル写真を取得してアップロードできます (これは Azure AD Graph Explorer ではできません)。 Fiddler の詳細とインストールについては、[https://www.telerik.com/fiddler](https://www.telerik.com/fiddler) をご覧ください。
 
 次の例では、Fiddler Web Debugger を使用して、Azure AD ディレクトリに新しいセキュリティ グループ 'MyTestGroup' を作成します。
 
-**アクセス トークンを取得する**: Azure AD Graph にアクセスするには、クライアントの Azure AD に対する認証が成功している必要があります。 詳細については、「 [Azure AD の認証シナリオ](authentication-scenarios.md)」を参照してください。
+**アクセス トークンを取得する**:Azure AD Graph にアクセスするには、クライアントの Azure AD に対する認証が成功している必要があります。 詳細については、「 [Azure AD の認証シナリオ](authentication-scenarios.md)」を参照してください。
 
-**クエリを構成して実行する**: 次の手順を完了します。
+**クエリを構成して実行する**:次の手順を完了します。
 
 1. Fiddler Web Debugger を開き、 **[Composer]** タブに切り替えます。
 2. 新しいセキュリティ グループを作成するため、プルダウン メニューから HTTP メソッドとして **[Post]** を選択します。 グループ オブジェクトに対する操作と権限の詳細については、[Azure AD Graph REST API リファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)の [Group](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#group-entity) に関するセクションを参照してください。

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: ce4ff3fe2917d4dc34718fccc740223df0c52e8e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4d93cfe78159fdf4ef3c34e8f80732603b701538
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970942"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521684"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Azure CLI を使用して仮想ネットワーク サービスのエンドポイントで PaaS リソースへのネットワーク アクセスを制限する
 
@@ -43,7 +43,7 @@ CLI をローカルにインストールして使用することを選択する�
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-仮想ネットワークを作成する前に、仮想ネットワークのリソース グループと、この記事で作成された他のすべてのリソースを作成する必要があります。 [az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+仮想ネットワークを作成する前に、仮想ネットワークのリソース グループと、この記事で作成された他のすべてのリソースを作成する必要があります。 [az group create](/cli/azure/group) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create \
@@ -51,7 +51,7 @@ az group create \
   --location eastus
 ```
 
-[az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) で、1 つのサブネットを含む仮想ネットワークを作成します。
+[az network vnet create](/cli/azure/network/vnet) で、1 つのサブネットを含む仮想ネットワークを作成します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -64,7 +64,7 @@ az network vnet create \
 
 ## <a name="enable-a-service-endpoint"></a>サービス エンドポイントを有効にする 
 
-サービス エンドポイントをサポートするサービスについてのみ、サービス エンドポイントを有効にできます。 [az network vnet list-endpoint-services](/cli/azure/network/vnet#az_network_vnet_list_endpoint_services) を使って、Azure の場所で使えるサービス エンドポイント対応のサービスを表示します。 次の例では、*eastus* リージョンで使える、サービス エンドポイント対応サービスの一覧が返されます。 返されるサービスの一覧は、サービス エンドポイント対応の Azure サービスが増えるにつれて、時間の経過と共に大きくなります。
+サービス エンドポイントをサポートするサービスについてのみ、サービス エンドポイントを有効にできます。 [az network vnet list-endpoint-services](/cli/azure/network/vnet) を使って、Azure の場所で使えるサービス エンドポイント対応のサービスを表示します。 次の例では、*eastus* リージョンで使える、サービス エンドポイント対応サービスの一覧が返されます。 返されるサービスの一覧は、サービス エンドポイント対応の Azure サービスが増えるにつれて、時間の経過と共に大きくなります。
 
 ```azurecli-interactive
 az network vnet list-endpoint-services \
@@ -72,7 +72,7 @@ az network vnet list-endpoint-services \
   --out table
 ``` 
 
-[az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) を使って、追加のサブネットを仮想ネットワークに作成します。 次の例では、*Microsoft.Storage* のサービス エンドポイントをサブネットに作成します。 
+[az network vnet subnet create](/cli/azure/network/vnet/subnet) を使って、追加のサブネットを仮想ネットワークに作成します。 次の例では、*Microsoft.Storage* のサービス エンドポイントをサブネットに作成します。 
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -85,7 +85,7 @@ az network vnet subnet create \
 
 ## <a name="restrict-network-access-for-a-subnet"></a>サブネットのネットワーク アクセスを制限する
 
-[az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) で、ネットワーク セキュリティ グループを作成します。 次の例では、*myNsgPrivate* という名前のネットワーク セキュリティ グループを作成します。
+[az network nsg create](/cli/azure/network/nsg) で、ネットワーク セキュリティ グループを作成します。 次の例では、*myNsgPrivate* という名前のネットワーク セキュリティ グループを作成します。
 
 ```azurecli-interactive
 az network nsg create \
@@ -93,7 +93,7 @@ az network nsg create \
   --name myNsgPrivate
 ```
 
-[az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) を使って、ネットワーク セキュリティ グループを *Private* サブネットに関連付けます。 次の例では、*myNsgPrivate* ネットワーク セキュリティ グループを *Private* サブネットに関連付けます。
+[az network vnet subnet update](/cli/azure/network/vnet/subnet) を使って、ネットワーク セキュリティ グループを *Private* サブネットに関連付けます。 次の例では、*myNsgPrivate* ネットワーク セキュリティ グループを *Private* サブネットに関連付けます。
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -103,7 +103,7 @@ az network vnet subnet update \
   --network-security-group myNsgPrivate
 ```
 
-[az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) でセキュリティ規則を作成します。 次の規則は、Azure Storage サービスに割り当てられたパブリック IP アドレスへの送信アクセスを許可します。 
+[az network nsg rule create](/cli/azure/network/nsg/rule) でセキュリティ規則を作成します。 次の規則は、Azure Storage サービスに割り当てられたパブリック IP アドレスへの送信アクセスを許可します。 
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -118,9 +118,11 @@ az network nsg rule create \
   --source-port-range "*" \
   --destination-address-prefix "Storage" \
   --destination-port-range "*"
+```
 
-Each network security group contains several [default security rules](security-overview.md#default-security-rules). The rule that follows overrides a default security rule that allows outbound access to all public IP addresses. The `destination-address-prefix "Internet"` option denies outbound access to all public IP addresses. The previous rule overrides this rule, due to its higher priority, which allows access to the public IP addresses of Azure Storage.
+各ネットワーク セキュリティ グループには、さまざまな[既定のセキュリティ規則](security-overview.md#default-security-rules)が含まれています。 次の規則は、すべてのパブリック IP アドレスへの送信アクセスを許可する既定のセキュリティ規則をオーバーライドします。 `destination-address-prefix "Internet"` オプションは、すべてのパブリック IP アドレスへの送信アクセスを拒否します。 この規則は、優先度が高い前の規則によってオーバーライドされます。これにより、Azure Storage のパブリック IP アドレスへのアクセスが許可されます。
 
+```azurecli-interactive
 az network nsg rule create \
   --resource-group myResourceGroup \
   --nsg-name myNsgPrivate \
@@ -133,9 +135,11 @@ az network nsg rule create \
   --source-port-range "*" \
   --destination-address-prefix "Internet" \
   --destination-port-range "*"
+```
 
-The following rule allows SSH traffic inbound to the subnet from anywhere. The rule overrides a default security rule that denies all inbound traffic from the internet. SSH is allowed to the subnet so that connectivity can be tested in a later step.
+次の規則は、任意の場所からサブネットへの SSH 受信トラフィックを許可します。 この規則は、インターネットからのすべての受信トラフィックを拒否する既定のセキュリティ規則をオーバーライドします。 後のステップで接続をテストできるように、サブネットへの SSH が許可されます。
 
+```azurecli-interactive
 az network nsg rule create \
   --resource-group myResourceGroup \
   --nsg-name myNsgPrivate \
@@ -156,7 +160,7 @@ az network nsg rule create \
 
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-[az storage account create](/cli/azure/storage/account#az_storage_account_create) で Azure ストレージ アカウントを作成します。 `<replace-with-your-unique-storage-account-name>` を Azure 全体で一意の名前 (3 ～ 24 文字で、数字と小文字のみを使用) に置き換えます。
+[az storage account create](/cli/azure/storage/account) で Azure ストレージ アカウントを作成します。 `<replace-with-your-unique-storage-account-name>` を Azure 全体で一意の名前 (3 ～ 24 文字で、数字と小文字のみを使用) に置き換えます。
 
 ```azurecli-interactive
 storageAcctName="<replace-with-your-unique-storage-account-name>"
@@ -168,7 +172,7 @@ az storage account create \
   --kind StorageV2
 ```
 
-ストレージ アカウントを作成した後、[az storage account show-connection-string](/cli/azure/storage/account#az_storage_account_show_connection_string) を使って、ストレージ アカウントの接続文字列を変数に取得します。 接続文字列は、後の手順でファイル共有を作成するときに使います。
+ストレージ アカウントを作成した後、[az storage account show-connection-string](/cli/azure/storage/account) を使って、ストレージ アカウントの接続文字列を変数に取得します。 接続文字列は、後の手順でファイル共有を作成するときに使います。
 
 ```azurecli-interactive
 saConnectionString=$(az storage account show-connection-string \
@@ -186,7 +190,7 @@ echo $saConnectionString
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>ストレージ アカウントにファイル共有を作成する
 
-[az storage share create](/cli/azure/storage/share#az_storage_share_create) を使って、ストレージ アカウントにファイル共有を作成します。 後の手順では、このファイル共有をマウントして、それへのネットワーク アクセスを確認します。
+[az storage share create](/cli/azure/storage/share) を使って、ストレージ アカウントにファイル共有を作成します。 後の手順では、このファイル共有をマウントして、それへのネットワーク アクセスを確認します。
 
 ```azurecli-interactive
 az storage share create \
@@ -197,7 +201,7 @@ az storage share create \
 
 ### <a name="deny-all-network-access-to-a-storage-account"></a>ストレージ アカウントへのすべてのネットワーク アクセスを拒否する
 
-既定では、ストレージ アカウントは、任意のネットワーク上のクライアントからのネットワーク接続を受け入れます。 選んだネットワークへのアクセスを制限するには、[az storage account update](/cli/azure/storage/account#az_storage_account_update) で既定のアクションを *Deny* に変更します。 ネットワーク アクセスが拒否されると、ストレージ アカウントには、どのネットワークからもアクセスできなくなります。
+既定では、ストレージ アカウントは、任意のネットワーク上のクライアントからのネットワーク接続を受け入れます。 選んだネットワークへのアクセスを制限するには、[az storage account update](/cli/azure/storage/account) で既定のアクションを *Deny* に変更します。 ネットワーク アクセスが拒否されると、ストレージ アカウントには、どのネットワークからもアクセスできなくなります。
 
 ```azurecli-interactive
 az storage account update \
@@ -208,7 +212,7 @@ az storage account update \
 
 ### <a name="enable-network-access-from-a-subnet"></a>サブネットからのネットワーク アクセスを有効にする
 
-[az storage account network-rule add](/cli/azure/storage/account/network-rule#az_storage_account_network_rule_add) を使って、*Private* サブネットからストレージ アカウントへのネットワーク アクセスを許可します。
+[az storage account network-rule add](/cli/azure/storage/account/network-rule) を使って、*Private* サブネットからストレージ アカウントへのネットワーク アクセスを許可します。
 
 ```azurecli-interactive
 az storage account network-rule add \
@@ -223,7 +227,7 @@ az storage account network-rule add \
 
 ### <a name="create-the-first-virtual-machine"></a>最初の仮想マシンを作成する
 
-[az vm create](/cli/azure/vm#az_vm_create) を使用して、*パブリック* サブネット内に VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。
+[az vm create](/cli/azure/vm) を使用して、*パブリック* サブネット内に VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。
 
 ```azurecli-interactive
 az vm create \
@@ -268,7 +272,7 @@ VM の作成には数分かかります。 作成された後、返された出�
 
 ## <a name="confirm-access-to-storage-account"></a>ストレージ アカウントへのアクセスを確認する
 
-*myVmPrivate* VM に SSH で接続します。 *<publicIpAddress>* を *myVmPrivate* VM のパブリック IP アドレスに置き換えます。
+*myVmPrivate* VM に SSH で接続します。 *\<publicIpAddress>* を *myVmPrivate VM* のパブリック IP アドレスに置き換えます。
 
 ```bash 
 ssh <publicIpAddress>
@@ -322,7 +326,7 @@ sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-sh
 
 *myVmPublic* VM への SSH セッションを終了します。
 
-お使いのコンピューターから、[az storage share list](/cli/azure/storage/share?view=azure-cli-latest#az_storage_share_list) を使って、ストレージ アカウントの共有の表示を試みます。 `<account-name>` をストレージ アカウント名に置き換え、`<account-key>` を「[ストレージ アカウントの作成](#create-a-storage-account)」で取得したキーに置き換えます。
+お使いのコンピューターから、[az storage share list](/cli/azure/storage/share?view=azure-cli-latest) を使って、ストレージ アカウントの共有の表示を試みます。 `<account-name>` をストレージ アカウント名に置き換え、`<account-key>` を「[ストレージ アカウントの作成](#create-a-storage-account)」で取得したキーに置き換えます。
 
 ```azurecli-interactive
 az storage share list \
@@ -334,7 +338,7 @@ az storage share list \
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-不要になったら、[az group delete](/cli/azure#az_group_delete) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除します。
+不要になったら、[az group delete](/cli/azure) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除します。
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes

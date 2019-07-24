@@ -4,22 +4,22 @@ description: Service Fabric クラスター リソース マネージャーの�
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 6c4421f9-834b-450c-939f-1cb4ff456b9b
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 48da92be0eef1154b490fb4829363598d6d66569
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: bfbdb05e8d2764d2b878e22d236cae30519da176
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211431"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666799"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>クラスター リソース マネージャーのアーキテクチャの概要
 Service Fabric クラスター リソース マネージャーは、クラスターで実行されている中央のサービスです。 これにより、特にリソースの消費量と任意の配置ルールについて、クラスターにおけるサービスの望まれる状態が管理されます。 
@@ -51,6 +51,7 @@ Service Fabric クラスター リソース マネージャーには、クラス
 次の図を見てみましょう。
 
 <center>
+
 ![リソース バランサーのアーキテクチャ][Image1]
 </center>
 
@@ -59,6 +60,7 @@ Service Fabric クラスター リソース マネージャーには、クラス
 次の図を見て、次に何が起こるのかを考えてみましょう。 たとえば、変更が必要であるとクラスター リソース マネージャーが判断するとします。 その他のシステム サービス (具体的には Failover Manager) と調整を行い、必要な変更を行います。 その後、必要なコマンドが適切なノードに送信されます (4)。 たとえば、リソース マネージャーが Node5 に過剰な負荷がかかっていることに気付き、サービス B を Node5 から Node4 に移動することにしたとします。 再構成後 (5)、クラスターは次のようになります。
 
 <center>
+
 ![リソース バランサーのアーキテクチャ][Image2]
 </center>
 

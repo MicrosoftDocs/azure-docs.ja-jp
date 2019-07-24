@@ -3,8 +3,8 @@ title: Service Fabric サービスのパーティション分割 | Microsoft Doc
 description: Service Fabric ステートフル サービスのパーティションの分割方法について説明します。 パーティション分割により、ローカル コンピューターにデータを保管し、データとコンピューティングのスケールを同時に調整できるようになります。
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: 3b7248c8-ea92-4964-85e7-6f1291b5cc7b
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
-ms.author: msfussell
-ms.openlocfilehash: ae7eba9997c4f567eb7b07e23ab42c9ac7740698
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.author: atsenthi
+ms.openlocfilehash: 833d87dab59890b9903ea8eecf2334d7dd1c7436
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388111"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666224"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services のパーティション分割
 この記事では、Azure Service Fabric Reliable Services のパーティション分割の基本概念について説明します。 この記事で使用するソース コードは、 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)にも掲載されています。
@@ -113,7 +113,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
 
 適切な分散ハッシュ アルゴリズムの特徴は、計算が簡単で、競合がほとんどなく、キーが均等に分散されることです。 効率的なハッシュ アルゴリズムのよい例として、 [FNV-1](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) ハッシュ アルゴリズムがあります。
 
-[Wikipedia のハッシュ関数のページ](http://en.wikipedia.org/wiki/Hash_function)は、ハッシュ コードのアルゴリズム選択全般に関する優れたリソースです。
+[Wikipedia のハッシュ関数のページ](https://en.wikipedia.org/wiki/Hash_function)は、ハッシュ コードのアルゴリズム選択全般に関する優れたリソースです。
 
 ## <a name="build-a-stateful-service-with-multiple-partitions"></a>複数のパーティションがあるステートフル サービスの構築
 まず、複数のパーティションがある信頼性の高いステートフル サービスを作成してみましょう。 この例では、同じパーティション内に同じアルファベットから始まる姓をすべて格納するという、ごく単純なアプリケーションを構築します。
@@ -129,11 +129,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
 1. **Visual Studio** で、 > **[ファイル]** > **[新規作成]** > **[プロジェクト]** の順に開きます。
 2. **[新しいプロジェクト]** ダイアログ ボックスで、Service Fabric アプリケーションを選択します
 3. プロジェクトに "AlphabetPartitions" と名前を付けます
-4. **[Create a Service]** (サービスの作成) ダイアログ ボックスで、下図のように **[ステートフル サービス]** を選択して "Alphabet.Processing" と名前を付けます。
-       ![Visual Studio の [新しいサービス] ダイアログ][1]
-
-  <!--  ![Stateful service screenshot](./media/service-fabric-concepts-partitioning/createstateful.png)-->
-
+4. **[Create a Service] (サービスの作成)** ダイアログ ボックスで、**[ステートフル サービス]** を選択して "Alphabet.Processing" と名前を付けます。
 5. パーティション数を設定します。 AlphabetPartitions プロジェクトの ApplicationPackageRoot フォルダーにある ApplicationManifest.xml ファイルを開き、下図のようにパラメーター Processing_PartitionCount を 26 に更新します。
    
     ```xml
@@ -167,7 +163,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
    
     このサービスの複数のレプリカは同じコンピューターでホストされる可能性があるので、レプリカに対するこのアドレスを一意にする必要があります。 そのため、パーティション ID + レプリカ ID を URL に含めています。 URL プレフィックスが一意であれば、HttpListener は同じポートでも複数のアドレスをリッスンできます。
    
-    セカンダリ レプリカも読み取り専用要求をリッスンするような高度な場合に備えて、追加の GUID があります。 この場合、プライマリからセカンダリに移行するときに新しい一意のアドレスを使用して、クライアントがアドレスを強制的に再解決するようにします。 ここでは、レプリカがすべての使用可能なホスト (IP、FQDM、localhost など) でリッスンするように、 '+' がアドレスとして使用されています。コード例を次に示します。
+    セカンダリ レプリカも読み取り専用要求をリッスンするような高度な場合に備えて、追加の GUID があります。 この場合、プライマリからセカンダリに移行するときに新しい一意のアドレスを使用して、クライアントがアドレスを強制的に再解決するようにします。 ここでは、レプリカがすべての使用可能なホスト (IP、FQDN、localhost など) でリッスンするように、 '+' がアドレスとして使用されていますコード例を次に示します。
    
     ```CSharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -234,7 +230,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
             return String.Format(
                 "User {0} {1}",
                 user,
-                addResult ? "sucessfully added" : "already exists");
+                addResult ? "successfully added" : "already exists");
         }
     }
     ```
@@ -362,7 +358,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     
     ![ブラウザーのスクリーン ショット](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
-サンプルの完全なソース コードについては、 [Github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)を参照してください。
+サンプルの完全なソース コードについては、 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)を参照してください。
 
 ## <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services および Reliable Actor によるサブプロセスのフォーク
 Service Fabric では、Reliable Services とそれに続く Reliable Actor によるサブプロセスのフォークはサポートされていません。 これがサポートされない理由は、サブプロセスを登録するために [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) を使用することができないこと、およびキャンセル トークンが登録済みのプロセスにのみ送信されることにあります。その結果、親プロセスがキャンセル トークンを受け取った後にサブプロセスが終了しない場合、アップグレードの失敗など、あらゆる種類の問題が発生します。 

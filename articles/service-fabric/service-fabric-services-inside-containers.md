@@ -3,7 +3,7 @@ title: Windows で Azure Service Fabric サービスをコンテナー化する
 description: Windows で Service Fabric Reliable Services と Reliable Actors サービスをコンテナー化する方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: anmolah
 editor: roroutra
 ms.assetid: 0b41efb3-4063-4600-89f5-b077ea81fa3a
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/23/2018
-ms.author: twhitney, anmola
-ms.openlocfilehash: 24ec0de77c796ad2abf8587b7542e53f745c532d
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.author: aljo, anmola
+ms.openlocfilehash: 147607bbea65199ff97459711ad6301a4ae93aa4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298658"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079828"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Windows で Service Fabric Reliable Services と Reliable Actors をコンテナー化する
 
@@ -38,9 +38,9 @@ Service Fabric は、Service Fabric マイクロサービス (Reliable Services 
 
 3. コンテナー化するコード パッケージごとに、プログラムのエントリ ポイントのローダーを初期化します。 次のコード スニペットに示されている静的コンストラクターをプログラム エントリ ポイント ファイルに追加します。
 
-  ```csharp
-  namespace MyApplication
-  {
+   ```csharp
+   namespace MyApplication
+   {
       internal static class Program
       {
           static Program()
@@ -53,7 +53,7 @@ Service Fabric は、Service Fabric マイクロサービス (Reliable Services 
           /// </summary>
           private static void Main()
           {
-  ```
+   ```
 
 4. プロジェクトをビルドして[パッケージ](service-fabric-package-apps.md#Package-App)を作成します。 ビルドしてパッケージを作成するには、ソリューション エクスプローラーでアプリケーション プロジェクトを右クリックして **[パッケージ]** コマンドを選択します。
 
@@ -79,49 +79,49 @@ Service Fabric は、Service Fabric マイクロサービス (Reliable Services 
 
 7. ApplicationManifest.xml と ServiceManifest.xml を変更し、コンテナー イメージ、リポジトリ情報、レジストリ認証、ポートとホスト間のマッピングを追加します。 マニフェストを変更する方法については、「[Windows で初めての Service Fabric コンテナー アプリケーションを作成する](service-fabric-get-started-containers.md)」を参照してください。 サービス マニフェストのコード パッケージ定義は、対応するコンテナー イメージで置き換える必要があります。 EntryPoint 型を ContainerHost 型に変更します。
 
-  ```xml
-<!-- Code package is your service executable. -->
-<CodePackage Name="Code" Version="1.0.0">
-  <EntryPoint>
+   ```xml
+   <!-- Code package is your service executable. -->
+   <CodePackage Name="Code" Version="1.0.0">
+   <EntryPoint>
     <!-- Follow this link for more information about deploying Windows containers to Service Fabric: https://aka.ms/sfguestcontainers -->
     <ContainerHost>
       <ImageName>myregistry.azurecr.io/samples/helloworldapp</ImageName>
     </ContainerHost>
-  </EntryPoint>
-  <!-- Pass environment variables to your container: -->
-</CodePackage>
-  ```
+   </EntryPoint>
+   <!-- Pass environment variables to your container: -->
+   </CodePackage>
+   ```
 
 8. レプリケーターとサービス エンドポイントについてポートとホスト間のマッピングを追加します。 Service Fabric によって実行時に両方のポートが割り当てられているため、割り当て済みポートをマッピングに使用するには、ContainerPort をゼロに設定します。
 
- ```xml
-<Policies>
-  <ContainerHostPolicies CodePackageRef="Code">
+   ```xml
+   <Policies>
+   <ContainerHostPolicies CodePackageRef="Code">
     <PortBinding ContainerPort="0" EndpointRef="ServiceEndpoint"/>
     <PortBinding ContainerPort="0" EndpointRef="ReplicatorEndpoint"/>
-  </ContainerHostPolicies>
-</Policies>
- ```
+   </ContainerHostPolicies>
+   </Policies>
+   ```
 
 9. コンテナーの分離モードを構成するには、「[分離モードの構成]( https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode)」を参照してください。 Windows では、コンテナーの 2 つの分離モード (プロセスおよび Hyper-V) がサポートされます。 以下のスニペットは、アプリケーション マニフェスト ファイルで分離モードがどのように指定されるかを示しています。
 
- ```xml
-<Policies>
-  <ContainerHostPolicies CodePackageRef="Code" Isolation="process">
-  ...
-  </ContainerHostPolicies>
-</Policies>
- ```
-  ```xml
-<Policies>
-  <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
-  ...
-  </ContainerHostPolicies>
-</Policies>
- ```
+   ```xml
+   <Policies>
+   <ContainerHostPolicies CodePackageRef="Code" Isolation="process">
+   ...
+   </ContainerHostPolicies>
+   </Policies>
+   ```
+   ```xml
+   <Policies>
+   <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
+   ...
+   </ContainerHostPolicies>
+   </Policies>
+   ```
 
 10. このアプリケーションをテストするには、バージョン 5.7 以降を実行しているクラスターにデプロイする必要があります。 ラインタイム バージョンが 6.1 以前の場合は、このプレビュー機能を有効にするようにクラスター設定を編集および更新する必要があります。 この[記事](service-fabric-cluster-fabric-settings.md)の手順に従って、次のように設定を追加します。
-```
+    ```
       {
         "name": "Hosting",
         "parameters": [
@@ -131,7 +131,7 @@ Service Fabric は、Service Fabric マイクロサービス (Reliable Services 
           }
         ]
       }
-```
+    ```
 
 11. 次に、編集したアプリケーション パッケージをこのクラスターに[デプロイ](service-fabric-deploy-remove-applications.md)します。
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 8c8f3cd67186450fdcf65c177ea0353d297a3b01
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2fc4f26f187301ea7a7a1e3051038f75da728547
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264128"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125362"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>証明書の署名要求ファイルを生成する
 
@@ -47,17 +47,17 @@ iOS アプリケーションにプッシュ通知を送信できるようにす�
 
 2. 新しいアプリの次の 3 つのフィールドを更新し、 **[Continue]** をクリックします。
 
-    * **Name**: **[App ID Description]** セクションの **[Name]** フィールドに、アプリのわかりやすい名前を入力します。
-    * **Bundle Identifier**: **[Explicit App ID]** セクションに、[アプリ ディストリビューション ガイド](https://help.apple.com/xcode/mac/current/#/dev91fe7130a)で説明したように `<Organization Identifier>.<Product Name>` の形式で**バンドル ID** を入力します。 使用する "*組織 ID*" と "*製品名*" は XCode プロジェクトを作成する際に使用する組織 ID と製品名に一致させる必要があります。 以下のスクリーンショットでは、組織 ID として *NotificationHubs*、製品名として *GetStarted* を使用しています。 この値と、XCode プロジェクトで使用する値が一致していることを確認することで、XCode で正しい発行プロファイルが使用できるようになります。
-    * **[Push Notifications (プッシュ通知)]**: **[App Services (アプリ サービス)]** セクションの **[Push Notifications (プッシュ通知)]** オプションを選択します。
+   * **[名前]**:**[App ID Description]\(アプリ ID の説明\)** セクションの **[Name]\(名前\)** フィールドに、アプリのわかりやすい名前を入力します。
+   * **[Bundle Identifier]\(バンドル識別子\)**: **[Explicit App ID]\(明示的なアプリ ID\)** セクションに、[アプリ ディストリビューション ガイド](https://help.apple.com/xcode/mac/current/#/dev91fe7130a)で説明されているように `<Organization Identifier>.<Product Name>` の形式で**バンドル識別子**を入力します。 使用する "*組織 ID*" と "*製品名*" は XCode プロジェクトを作成する際に使用する組織 ID と製品名に一致させる必要があります。 以下のスクリーンショットでは、組織 ID として *NotificationHubs*、製品名として *GetStarted* を使用しています。 この値と、XCode プロジェクトで使用する値が一致していることを確認することで、XCode で正しい発行プロファイルが使用できるようになります。
+   * **[Push Notifications]\(プッシュ通知\)**: **[App Services]\(アプリ サービス\)** セクションの **[Push Notifications]\(プッシュ通知\)** オプションを選択します。
 
-    ![新しいアプリ ID を登録するフォーム](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
+     ![新しいアプリ ID を登録するフォーム](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
 
-    このアクションで、アプリケーションID が生成され、情報の確認が求められます。 **[Register (登録)]** をクリックして新しいアプリケーション ID を確定します。
+     このアクションで、アプリケーションID が生成され、情報の確認が求められます。 **[Register (登録)]** をクリックして新しいアプリケーション ID を確定します。
 
-    **[Register]** をクリックすると、以下の図にあるような **[Registration complete]** 画面が表示されます。 **[Done]** をクリックします。
+     **[Register]** をクリックすると、以下の図にあるような **[Registration complete]** 画面が表示されます。 **[Done]** をクリックします。
 
-    ![エンタイトルメントが表示されるアプリ ID の登録完了](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
+     ![エンタイトルメントが表示されるアプリ ID の登録完了](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
 
 3. Developer センターで、アプリケーション ID の一覧から作成したアプリケーション ID を見つけ、その行をクリックします。
 

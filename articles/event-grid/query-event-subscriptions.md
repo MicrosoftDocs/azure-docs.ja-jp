@@ -2,22 +2,24 @@
 title: Azure Event Grid サブスクリプションのクエリを実行する
 description: Azure Event Grid サブスクリプションの一覧を表示する方法を説明します。
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/04/2018
-ms.author: tomfitz
-ms.openlocfilehash: 2b46cde4a352e647ee97669f116a6c1926879fa0
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.date: 01/04/2019
+ms.author: spelluru
+ms.openlocfilehash: ad9c2d492f70a697ef0e7dc3b7ed03b9938f2468
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302417"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181692"
 ---
 # <a name="query-event-grid-subscriptions"></a>Event Grid サブスクリプションのクエリを実行する 
 
 この記事では、Azure サブスクリプション内の Event Grid サブスクリプションの一覧を表示する方法を説明します。 既存の Event Grid サブスクリプションのクエリを実行するときは、サブスクリプションの種類を理解しておく必要があります。 取得するサブスクリプションの種類に基づいて、異なるパラメーターを指定します。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="resource-groups-and-azure-subscriptions"></a>リソース グループと Azure サブスクリプション
 
@@ -35,8 +37,8 @@ az eventgrid event-subscription list
 PowerShell では、次を使用します。
 
 ```azurepowershell-interactive
-Set-AzureRmContext -Subscription "My Azure Subscription"
-Get-AzureRmEventGridSubscription
+Set-AzContext -Subscription "My Azure Subscription"
+Get-AzEventGridSubscription
 ```
 
 Azure サブスクリプションに対する Event Grid サブスクリプションを取得するには、トピックの種類 **Microsoft.Resources.Subscriptions** を指定します。
@@ -50,7 +52,7 @@ az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.Subs
 PowerShell では、次を使用します。
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -TopicTypeName "Microsoft.Resources.Subscriptions"
+Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.Subscriptions"
 ```
 
 Azure サブスクリプション内のすべてのリソース グループに対する Event Grid サブスクリプションを取得するには、トピックの種類 **Microsoft.Resources.ResourceGroups** を指定します。
@@ -64,7 +66,7 @@ az eventgrid event-subscription list --topic-type-name "Microsoft.Resources.Reso
 PowerShell では、次を使用します。
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -TopicTypeName "Microsoft.Resources.ResourceGroups"
+Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.ResourceGroups"
 ```
 
 指定したリソース グループに対する Event Grid サブスクリプションを取得するには、パラメーターとしてリソース グループの名前を指定します。
@@ -78,7 +80,7 @@ az eventgrid event-subscription list --resource-group myResourceGroup
 PowerShell では、次を使用します。
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -ResourceGroupName myResourceGroup
+Get-AzEventGridSubscription -ResourceGroupName myResourceGroup
 ```
 
 ## <a name="custom-topics-and-azure-resources"></a>カスタム トピックと Azure リソース
@@ -96,7 +98,7 @@ az eventgrid event-subscription list --location westus2
 PowerShell では、次を使用します。
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -Location westus2
+Get-AzEventGridSubscription -Location westus2
 ```
 
 ある場所のカスタム トピックに対するサブスクリプションを取得するには、場所とトピックの種類 **Microsoft.EventGrid.Topics** を指定します。
@@ -110,7 +112,7 @@ az eventgrid event-subscription list --topic-type-name "Microsoft.EventGrid.Topi
 PowerShell では、次を使用します。
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -TopicTypeName "Microsoft.EventGrid.Topics" -Location westus2
+Get-AzEventGridSubscription -TopicTypeName "Microsoft.EventGrid.Topics" -Location westus2
 ```
 
 ある場所のストレージ アカウントに対するサブスクリプションを取得するには、場所とトピックの種類 **Microsoft.Storage.StorageAccounts** を指定します。
@@ -124,7 +126,7 @@ az eventgrid event-subscription list --topic-type "Microsoft.Storage.StorageAcco
 PowerShell では、次を使用します。
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -TopicTypeName "Microsoft.Storage.StorageAccounts" -Location westus2
+Get-AzEventGridSubscription -TopicTypeName "Microsoft.Storage.StorageAccounts" -Location westus2
 ```
 
 カスタム トピックに対する Event Grid サブスクリプションを取得するには、カスタム トピックの名前とそのリソース グループの名前を指定します。
@@ -138,7 +140,7 @@ az eventgrid event-subscription list --topic-name myCustomTopic --resource-group
 PowerShell では、次を使用します。
 
 ```azurepowershell-interactive
-Get-AzureRmEventGridSubscription -TopicName myCustomTopic -ResourceGroupName myResourceGroup
+Get-AzEventGridSubscription -TopicName myCustomTopic -ResourceGroupName myResourceGroup
 ```
 
 特定のリソースの Event Grid サブスクリプションを取得するには、リソース ID を指定します。
@@ -153,8 +155,8 @@ az eventgrid event-subscription list --resource-id $resourceid
 PowerShell では、次を使用します。
 
 ```azurepowershell-interactive
-$resourceid = (Get-AzureRmResource -Name mystorage -ResourceGroupName myResourceGroup).ResourceId
-Get-AzureRmEventGridSubscription -ResourceId $resourceid
+$resourceid = (Get-AzResource -Name mystorage -ResourceGroupName myResourceGroup).ResourceId
+Get-AzEventGridSubscription -ResourceId $resourceid
 ```
 
 ## <a name="next-steps"></a>次の手順

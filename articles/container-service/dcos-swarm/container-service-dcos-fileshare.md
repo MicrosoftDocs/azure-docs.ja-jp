@@ -1,5 +1,5 @@
 ---
-title: Azure DC/OS クラスターのファイル共有
+title: (非推奨) Azure DC/OS クラスターのファイル共有
 description: Azure Container Service でファイル共有を作成し、DC/OS クラスターにマウントします
 services: container-service
 author: julienstroheker
@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 4e03a0b450c9806edfb81a867fba97052659ec44
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e6651fc5988a1e1830807219cda02ab057db9a4f
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973506"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329822"
 ---
-# <a name="create-and-mount-a-file-share-to-a-dcos-cluster"></a>ファイル共有を作成し、DC/OS クラスターにマウントする
+# <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>(非推奨) ファイル共有を作成して DC/OS クラスターにマウントする
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 このチュートリアルでは、Azure でファイル共有を作成し、DC/OS クラスターの各エージェントとマスターにマウントする方法について説明します。 ファイル共有を設定すると、クラスター間で構成、アクセス、ログなどのファイルが共有しやすくなります。 このチュートリアルでは、次のタスクを実行します。
 

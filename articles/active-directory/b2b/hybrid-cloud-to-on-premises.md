@@ -1,21 +1,22 @@
 ---
-title: Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する | Microsoft Docs
-description: Azure AD B2B コラボレーションを使用してクラウド B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する方法について説明します。
+title: B2B ユーザーにオンプレミスのアプリへのアクセスを許可する - Azure Active Directory | Microsoft Docs
+description: Azure AD B2B Collaboration を使用してクラウド B2B ユーザーにオンプレミスのアプリへのアクセスを許可する方法について説明します。
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 57c807b7729b58d2537ee09ddd5d05d4f2afb55e
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b0e9536f009d478796bc9367a66630c02019dcd2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068845"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441255"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する
 
@@ -43,7 +44,7 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 
    B2B ユーザーのシナリオでは、オンプレミス ディレクトリでの承認に必要なゲスト ユーザー オブジェクトの作成に使用できる方法が 2 つあります。
 
-   - Microsoft Identity Manager (MIM) と [Microsoft Graph 用 MIM 管理エージェント](#create-b2b-guest-user-objects-through-mim-preview)。 
+   - Microsoft Identity Manager (MIM) と Microsoft Graph 用 MIM 管理エージェント。 
    - [PowerShell スクリプト](#create-b2b-guest-user-objects-through-a-script-preview)。 スクリプトの使用は、MIM を必要としない、より軽い解決策です。 
 
 次の図は、Azure AD アプリケーション プロキシと、オンプレミス ディレクトリ内の B2B ユーザー オブジェクトの生成を連携して、B2B ユーザーにオンプレミス IWA および KCD アプリへのアクセス権を付与する方法の概要を示しています。 番号が付いた手順については、図の下の詳細な説明を参照してください。

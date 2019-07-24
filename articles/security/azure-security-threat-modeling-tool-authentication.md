@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: b4b6e91f9b20166f63a4710f42726bf1d4090022
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 56620dc1d3e315caa3e259715ed84a539b91356d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251561"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888589"
 ---
 # <a name="security-frame-authentication--mitigations"></a>セキュリティ フレーム: 認証 | 対応策 
+
 | 製品/サービス | 記事 |
 | --------------- | ------- |
 | **Web アプリケーション**    | <ul><li>[標準の認証メカニズムを使用して Web アプリケーションに対する認証を行うことを検討する](#standard-authn-web-app)</li><li>[認証失敗のシナリオをアプリケーションが安全に処理する](#handle-failed-authn)</li><li>[ステップアップまたはアダプティブ認証を有効にする](#step-up-adaptive-authn)</li><li>[管理インターフェイスのロックが適切にロックダウンされていることを確認する](#admin-interface-lockdown)</li><li>[パスワードの再設定機能を安全に実装する](#forgot-pword-fxn)</li><li>[パスワードとアカウント ポリシーが実装されていることを確認する](#pword-account-policy)</li><li>[ユーザー名が列挙されないコントロールを実装する](#controls-username-enum)</li></ul> |
@@ -102,7 +103,7 @@ ms.locfileid: "51251561"
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| 詳細 | <p>組織のポリシーとベスト プラクティスに準拠しているパスワードおよびアカウント ポリシーを実装する必要があります。</p><p>ブルート フォース攻撃や辞書ベース推測を防ぐには、ユーザーが必ず複雑なパスワード (例: 12 文字以上、英数字と特殊文字) を設定するように、強力なパスワード ポリシーを実装します。</p><p>アカウント ロックアウト ポリシーは次のように実装されます。</p><ul><li>**ソフト ロックアウト:** ブルート フォース攻撃からのユーザー保護に適したオプションです。 たとえば、ユーザーが間違ったパスワードを 3 回入力するたびに、アプリケーションによりアカウントが 1 分間ロックダウンされます。これにより、パスワードのブルート フォース攻撃速度が低下し、攻撃を続行するメリットが少なくなります。 これに対してハード ロックアウト対策を実装しようとすると、アカウントを完全にロックして "DOS" を行うことになります。 アプリケーションが OTP (One Time Password) を生成し、それをアウトオブバンド (電子メール、SMS などで) でユーザーに送信することもできます。 また、失敗回数がしきい値を超えた時点で CAPTCHA を実装する方法もあります。</li><li>**ハード ロックアウト:** アプリケーションを攻撃しているユーザーを検出し、そのアカウントを、対応チームがフォレンジクス調査を行う時間を確保できるまで完全にロックアウトすることで対抗する場合は、必ずこの種類のロックアウトを適用します。 このプロセスの後に、ユーザーのアカウントを元に戻すか、そのユーザーに対して法的手段を取るかを決めることができます。 この方法では、攻撃者が、それ以上アプリケーションとインフラストラクチャに侵入できません。</li></ul><p>既定および予測可能なアカウントへの攻撃を防ぐには、すべてのキーやパスワードが変更可能で、インストール後に生成または変更されたことを確認します。</p><p>アプリケーションがパスワードを自動生成する必要がある場合は、自動生成されたパスワードがランダムで、エントロピーが高いことを確認します。</p>|
+| 詳細 | <p>組織のポリシーとベスト プラクティスに準拠しているパスワードおよびアカウント ポリシーを実装する必要があります。</p><p>ブルート フォース攻撃や辞書ベース推測を防ぐには: ユーザーが必ず複雑なパスワード (例: 12 文字以上、英数字と特殊文字) を設定するように、強力なパスワード ポリシーを実装する必要があります。</p><p>アカウント ロックアウト ポリシーは次のように実装されます。</p><ul><li>**ソフト ロックアウト:** ブルート フォース攻撃からのユーザー保護に適したオプションです。 たとえば、ユーザーが間違ったパスワードを 3 回入力するたびに、アプリケーションによりアカウントが 1 分間ロックダウンされます。これにより、パスワードのブルート フォース攻撃速度が低下し、攻撃を続行するメリットが少なくなります。 これに対してハード ロックアウト対策を実装しようとすると、アカウントを完全にロックして "DOS" を行うことになります。 アプリケーションが OTP (One Time Password) を生成し、それをアウトオブバンド (電子メール、SMS などで) でユーザーに送信することもできます。 また、失敗回数がしきい値を超えた時点で CAPTCHA を実装する方法もあります。</li><li>**ハード ロックアウト:** アプリケーションを攻撃しているユーザーを検出し、そのアカウントを、対応チームがフォレンジクス調査を行う時間を確保できるまで完全にロックアウトすることで対抗する場合は、必ずこの種類のロックアウトを適用します。 このプロセスの後に、ユーザーのアカウントを元に戻すか、そのユーザーに対して法的手段を取るかを決めることができます。 この方法では、攻撃者が、それ以上アプリケーションとインフラストラクチャに侵入できません。</li></ul><p>既定および予測可能なアカウントへの攻撃を防ぐには、すべてのキーやパスワードが変更可能で、インストール後に生成または変更されたことを確認します。</p><p>アプリケーションがパスワードを自動生成する必要がある場合は、自動生成されたパスワードがランダムで、エントロピーが高いことを確認します。</p>|
 
 ## <a id="controls-username-enum"></a>ユーザー名が列挙されないコントロールを実装する
 
@@ -135,7 +136,7 @@ ms.locfileid: "51251561"
 | **適用できるテクノロジ** | SQL Azure |
 | **属性**              | SQL バージョン - V12 |
 | **参照**              | [Azure Active Directory の認証を使用して SQL Database に接続する](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/) |
-| **手順** | **最小バージョン:** Azure SQL Database で Microsoft Directory に対する AAD 認証を使用するには Azure SQL Database V12 が必要です |
+| **手順** | **最小バージョン:** Azure SQL Database で Microsoft Directory に対する AAD 認証を使用するには、Azure SQL Database V12 が必要です |
 
 ## <a id="authn-account-pword"></a>SQL 認証モードを使用する場合は、SQL サーバーでアカウントとパスワード ポリシーが適用されていることを確認する
 
@@ -245,7 +246,7 @@ ms.locfileid: "51251561"
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Identity Server のデプロイ - キャッシュ](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
-| **手順** | <p>Identity Server にはシンプルなメモリ内キャッシュが組み込まれています。 これは小規模なネイティブ アプリには適していますが、次の理由により、中間層およびバックエンド アプリケーション用に拡張されません。</p><ul><li>こうしたアプリケーションには、一度に多数のユーザーがアクセスします。 大きな規模で動作しているときに、すべてのアクセス トークンを同じストアに保存すると分離の問題が発生し、課題が生じます。ユーザーが多数存在するほか、それぞれのユーザーに、そのユーザーのアプリがアクセスするリソースと同数のトークンがあります。つまり、その数は膨大で、参照操作にコストがかかるということです</li><li>こうしたアプリケーションは、通常、分散トポロジにデプロイされます。このトポロジでは、複数のノードが同じキャッシュにアクセスしなければなりません</li><li>プロセスがリサイクルおよび非アクティブ化されても、キャッシュされたトークンを保持する必要があります</li><li>上記のすべての理由により、Web アプリの実装中、既定の Identity Server のトークン キャッシュを、Azure Redis Cache などのスケーラブルな代替手段でオーバーライドすることをお勧めします</li></ul>|
+| **手順** | <p>Identity Server にはシンプルなメモリ内キャッシュが組み込まれています。 これは小規模なネイティブ アプリには適していますが、次の理由により、中間層およびバックエンド アプリケーション用に拡張されません。</p><ul><li>こうしたアプリケーションには、一度に多数のユーザーがアクセスします。 大きな規模で動作しているときに、すべてのアクセス トークンを同じストアに保存すると分離の問題が発生し、課題が生じます。ユーザーが多数存在するほか、それぞれのユーザーに、そのユーザーのアプリがアクセスするリソースと同数のトークンがあります。つまり、その数は膨大で、参照操作にコストがかかるということです</li><li>こうしたアプリケーションは、通常、分散トポロジにデプロイされます。このトポロジでは、複数のノードが同じキャッシュにアクセスしなければなりません</li><li>プロセスがリサイクルおよび非アクティブ化されても、キャッシュされたトークンを保持する必要があります</li><li>上記のすべての理由により、Web アプリの実装中、既定の Identity Server のトークン キャッシュを、Azure Cache for Redis などのスケーラブルな代替手段でオーバーライドすることをお勧めします</li></ul>|
 
 ## <a id="binaries-signed"></a>デプロイされたアプリケーションのバイナリがデジタル署名されていることを確認する
 
@@ -322,7 +323,7 @@ ms.locfileid: "51251561"
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | クライアント資格情報の種類 - なし |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_transport_client) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_transport_client) |
 | **手順** | 認証が存在しないということは、すべてのユーザーがこのサービスにアクセスできるということです。 クライアントを認証しないサービスでは、すべてのユーザーがその機能にアクセスできます。 アプリケーションは、クライアントの資格情報に対して認証を行うように構成してください。 これを行うには、トランスポート clientCredentialType を Windows または証明書に設定します。 |
 
 ### <a name="example"></a>例
@@ -338,7 +339,7 @@ ms.locfileid: "51251561"
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [ASP.NET Web API での認証と権限承認](http://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api)、[ASP.NET Web API (C#) の外部認証サービス](http://www.asp.net/web-api/overview/security/external-authentication-services) |
+| **参照**              | [ASP.NET Web API での認証と権限承認](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api)、[ASP.NET Web API (C#) の外部認証サービス](https://www.asp.net/web-api/overview/security/external-authentication-services) |
 | **手順** | <p>認証は、エンティティがその ID を証明するプロセスで、通常はユーザー名、パスワードなどの資格情報を使用します。 使用を検討できる認証プロトコルは複数あります。 その一部を次に示します。</p><ul><li>[クライアント証明書]</li><li>Windows ベース</li><li>フォーム ベース</li><li>フェデレーション - ADFS</li><li>フェデレーション - Azure AD</li><li>フェデレーション - Identity Server</li></ul><p>「参照」セクションのリンクは、認証スキームを実装して Web API をセキュリティで保護する方法について、細かなレベルの詳細情報をスキームごとに提供します。</p>|
 
 ## <a id="authn-aad"></a>Azure Active Directory でサポートされる標準的な認証シナリオを使用する
@@ -361,7 +362,7 @@ ms.locfileid: "51251561"
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [Web アプリケーション用 Azure Active Directory による最新の認証](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/)、[ADAL トークン キャッシュとしての Redis の使用](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
-| **手順** | <p>ADAL (Active Directory 認証ライブラリ) が使用する既定のキャッシュは、プロセス全体で使用できる静的ストアに依存するメモリ内キャッシュです。 ネイティブ アプリケーションには有用ですが、次の理由により、中間層およびバックエンド アプリケーション用に拡張されません。</p><ul><li>こうしたアプリケーションには、一度に多数のユーザーがアクセスします。 大きな規模で動作しているときに、すべてのアクセス トークンを同じストアに保存すると分離の問題が発生し、課題が生じます。ユーザーが多数存在するほか、それぞれのユーザーに、そのユーザーのアプリがアクセスするリソースと同数のトークンがあります。つまり、その数は膨大で、参照操作にコストがかかるということです</li><li>こうしたアプリケーションは、通常、分散トポロジにデプロイされます。このトポロジでは、複数のノードが同じキャッシュにアクセスしなければなりません</li><li>プロセスがリサイクルおよび非アクティブ化されても、キャッシュされたトークンを保持する必要があります</li></ul><p>上記のすべての理由により、Web アプリの実装中、既定の ADAL のトークン キャッシュを、Azure Redis Cache などのスケーラブルな代替手段でオーバーライドすることをお勧めします。</p>|
+| **手順** | <p>ADAL (Active Directory 認証ライブラリ) が使用する既定のキャッシュは、プロセス全体で使用できる静的ストアに依存するメモリ内キャッシュです。 ネイティブ アプリケーションには有用ですが、次の理由により、中間層およびバックエンド アプリケーション用に拡張されません。</p><ul><li>こうしたアプリケーションには、一度に多数のユーザーがアクセスします。 大きな規模で動作しているときに、すべてのアクセス トークンを同じストアに保存すると分離の問題が発生し、課題が生じます。ユーザーが多数存在するほか、それぞれのユーザーに、そのユーザーのアプリがアクセスするリソースと同数のトークンがあります。つまり、その数は膨大で、参照操作にコストがかかるということです</li><li>こうしたアプリケーションは、通常、分散トポロジにデプロイされます。このトポロジでは、複数のノードが同じキャッシュにアクセスしなければなりません</li><li>プロセスがリサイクルおよび非アクティブ化されても、キャッシュされたトークンを保持する必要があります</li></ul><p>上記のすべての理由により、Web アプリの実装中、既定の ADAL のトークン キャッシュを、Azure Cache for Redis などのスケーラブルな代替手段でオーバーライドすることをお勧めします。</p>|
 
 ## <a id="tokenreplaycache-adal"></a>ADAL 認証トークンのリプレイを防ぐために TokenReplayCache が使用されていることを確認する
 
@@ -454,8 +455,8 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、C#、Node.JS、  |
 | **属性**              | 該当なし、ゲートウェイの選択 - Azure IoT Hub |
-| **参照**              | 該当なし、[.NET での Azure IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/)、[Azure IoT Hub の使用と Node.JS](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted)、[SAS と 証明書による IoT のセキュリティ保護](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/)、[Git リポジトリ](https://github.com/Azure/azure-iot-sdks/tree/master/node) |
-| **手順** | <ul><li>**ジェネリック:** トランスポート層セキュリティ (TLS) または IPSec を使ってデバイスを認証します。 完全な非対称暗号を扱うことのできないデバイスでは、インフラストラクチャが事前共有キー (PSK) の使用をサポートしている必要があります。 Azure AD の OAuth をご利用ください。</li><li>**C#:** DeviceClient インスタンスを作成するとき、既定では、Create メソッドは、IoT Hub と通信するために AMQP プロトコルを使用する DeviceClient インスタンスを作成します。 HTTPS プロトコルを使用するには、プロトコルを引数として受け取る、Create メソッドのオーバーライドを使用します。 HTTPS プロトコルを使用する場合は、`Microsoft.AspNet.WebApi.Client` NuGet パッケージをプロジェクトに追加して、`System.Net.Http.Formatting` 名前空間を含める必要もあります。</li></ul>|
+| **参照**              | 該当なし、[.NET での Azure IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/)、[IoT Hub と Node.JS の概要](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted)、[SAS と証明書による IoT のセキュリティ保護](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/)、[Git リポジトリ](https://github.com/Azure/azure-iot-sdks/tree/master/node) |
+| **手順** | <ul><li>**ジェネリック:** トランスポート層セキュリティ (TLS) または IPSec を使ってデバイスを認証します。 完全な非対称暗号を扱うことのできないデバイスでは、インフラストラクチャが事前共有キー (PSK) の使用をサポートしている必要があります。 Azure AD の OAuth をご利用ください。</li><li>**C#:** DeviceClient インスタンスを作成するとき、既定では、Create メソッドによって、IoT Hub と通信するために AMQP プロトコルを使用する DeviceClient インスタンスが作成されます。 HTTPS プロトコルを使用するには、プロトコルを引数として受け取る、Create メソッドのオーバーライドを使用します。 HTTPS プロトコルを使用する場合は、`Microsoft.AspNet.WebApi.Client` NuGet パッケージをプロジェクトに追加して、`System.Net.Http.Formatting` 名前空間を含める必要もあります。</li></ul>|
 
 ### <a name="example"></a>例
 ```csharp
@@ -475,7 +476,7 @@ await deviceClient.SendEventAsync(message);
 ### <a name="example"></a>例
 **Node.JS: 認証**
 #### <a name="symmetric-key"></a>対称キー
-* Azure で IoT Hub を作成します
+* Azure で IoT ハブを作成します
 * デバイスの ID レジストリにエントリを作成します
     ```javascript
     var device = new iothub.Device(null);
@@ -489,7 +490,7 @@ await deviceClient.SendEventAsync(message);
     var connectionString = 'HostName=<HostName>DeviceId=<DeviceId>SharedAccessKey=<SharedAccessKey>';
     var client = clientFromConnectionString(connectionString);
     ```
-#### <a name="sas-token"></a>SAS トークン
+  #### <a name="sas-token"></a>SAS トークン
 * 対称キーを使用しているときに内部的に生成されますが、明示的に生成して使用することもできます
 * プロトコルを定義します: `var Http = require('azure-iot-device-http').Http;`
 * SAS トークンを作成します: 
@@ -506,7 +507,7 @@ await deviceClient.SendEventAsync(message);
     var base64UriEncoded = encodeURIComponent(base64signature);
     // construct authorization string
     var token = "SharedAccessSignature sr=" + resourceUri + "%2fdevices%2f"+deviceName+"&sig="
-    + base64UriEncoded + "&se=" + expires;
+  + base64UriEncoded + "&se=" + expires;
     if (policyName) token += "&skn="+policyName;
     return token;
     ```
@@ -514,7 +515,7 @@ await deviceClient.SendEventAsync(message);
     ```javascript
     Client.fromSharedAccessSignature(sas, Http); 
     ```
-#### <a name="certificates"></a>証明書
+  #### <a name="certificates"></a>証明書
 * OpenSSL などのツールを使用して自己署名 X509 証明書を生成し、証明書を格納する .cert ファイルと、キーを格納する .key ファイルを生成します
 * 証明書を使用してセキュリティで保護された接続を受け入れるデバイスをプロビジョニングします。
     ```javascript
@@ -566,7 +567,7 @@ await deviceClient.SendEventAsync(message);
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | StorageType - BLOB |
 | **参照**              | [コンテナーと BLOB への匿名読み取りアクセスを管理する](https://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/)、[Shared Access Signatures、第 1 部: SAS モデルについて](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/) |
-| **手順** | <p>既定では、コンテナーとコンテナー内の BLOB には、上位のストレージ アカウントの所有者のみがアクセスできます。 コンテナーとその BLOB に対する読み取りアクセス許可を匿名ユーザーに付与する場合は、コンテナーのアクセス許可を設定し、パブリック アクセスを許可できます。 パブリック アクセスが許可されたコンテナー内の BLOB は、匿名ユーザーが読み取ることができ、その際に要求の認証は不要です。</p><p>コンテナーへのアクセスは次のように管理できます。</p><ul><li>完全なパブリック読み取りアクセス: コンテナーと BLOB のデータを匿名の要求で読み取ることができます。 クライアントは匿名要求でコンテナー内の BLOB を列挙できますが、ストレージ アカウント内のコンテナーを列挙することはできません。</li><li>BLOB に限定したパブリック読み取りアクセス: 該当するコンテナー内の BLOB データは匿名要求で読み取り可能ですが、コンテナー データは参照できません。 クライアントはコンテナー内の BLOB を匿名要求で列挙することはできません</li><li>パブリック読み取りアクセスなし: コンテナーと BLOB のデータはアカウント所有者に限り読み取ることができます</li></ul><p>匿名アクセスは、匿名読み取りアクセスで特定の BLOB を常に使用する必要があるシナリオに最適です。 詳細な制御では、さまざまなアクセス許可を使用し、指定された期間において、制限付きアクセスを委任するための Shared Access Signature を作成できます。 機密データを含む可能性があるコンテナーと BLOB に、匿名アクセスが誤って付与されていないことを確認してください</p>|
+| **手順** | <p>既定では、コンテナーとコンテナー内の BLOB には、上位のストレージ アカウントの所有者のみがアクセスできます。 コンテナーとその BLOB に対する読み取りアクセス許可を匿名ユーザーに付与する場合は、コンテナーのアクセス許可を設定し、パブリック アクセスを許可できます。 パブリック アクセスが許可されたコンテナー内の BLOB は、匿名ユーザーが読み取ることができ、その際に要求の認証は不要です。</p><p>コンテナーへのアクセスは次のように管理できます。</p><ul><li>パブリック読み取りフル アクセス: コンテナーと BLOB のデータを匿名要求で読み取ることができます。 クライアントは匿名要求でコンテナー内の BLOB を列挙できますが、ストレージ アカウント内のコンテナーを列挙することはできません。</li><li>BLOB に限定したパブリック読み取りアクセス: 該当するコンテナー内の BLOB データは匿名要求で読み取り可能ですが、コンテナー データは参照できません。 クライアントはコンテナー内の BLOB を匿名要求で列挙することはできません</li><li>パブリック読み取りアクセスなし: コンテナーと BLOB のデータはアカウント所有者に限り読み取ることができます</li></ul><p>匿名アクセスは、匿名読み取りアクセスで特定の BLOB を常に使用する必要があるシナリオに最適です。 詳細な制御では、さまざまなアクセス許可を使用し、指定された期間において、制限付きアクセスを委任するための Shared Access Signature を作成できます。 機密データを含む可能性があるコンテナーと BLOB に、匿名アクセスが誤って付与されていないことを確認してください</p>|
 
 ## <a id="limited-access-sas"></a>SAS または SAP を使用して Azure Storage のオブジェクトへの制限付きアクセスを許可する
 
@@ -576,5 +577,5 @@ await deviceClient.SendEventAsync(message);
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし |
-| **参照**              | [Shared Access Signature、第 1 部: SAS モデルについて](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)、[Shared Access Signature、第 2 部: Blob Storage での SAS の作成と使用](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/)、[Shared Access Signature と Stored Access Policy を使用してアカウントのオブジェクトに対するアクセス権を委任する方法](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |
+| **参照**              | [Shared Access Signature、第 1 部: SAS モデルについて](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)、[Shared Access Signatures、第 2 部: Blob Storage での SAS の作成と使用](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/)、[Shared Access Signature と Stored Access Policy を使用してアカウントのオブジェクトに対するアクセス権を委任する方法](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |
 | **手順** | <p>Shared Access Signature (SAS) の使用は、アカウント アクセス キーを知らせずに、自分のストレージ アカウントのオブジェクトへの制限付きアクセスを他のクライアントに許可するための優れた方法です。 SAS とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。 クライアントは、SAS 内で適切なコンストラクターまたはメソッドに渡すだけで、SAS でストレージ リソースにアクセスできます。</p><p>SAS は、自分のアカウント キーを知らせたくないクライアントに、自分のストレージ アカウント内のリソースへのアクセスを許可する場合に使用できます。 ストレージ アカウント キーには、プライマリ キーとセカンダリ キーの両方が含まれており、これらによって、アカウントとそのすべてのリソースへの管理アクセスが付与されます。 これらのアカウント キーのいずれかを知らせると、悪意で、または誤ってアカウントが使用される可能性が生じます。 Shared Access Signature は、アカウント キーが不要で安全な代替方法です。この方法で、他のクライアントは、付与されたアクセス許可に従ってストレージ アカウント内のデータの読み取り、書き込み、削除を実行できます。</p><p>毎回の論理パラメーター セットが類似している場合は、Stored Access Policy (SAP) を使用することをお勧めします。 Stored Access Policy から派生した SAS を使用すると、その SAS を即時に無効にすることができるので、可能な限り常に Stored Access Policy を使用するベスト プラクティスが推奨されます。</p>|

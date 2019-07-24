@@ -4,7 +4,7 @@ description: このトピックでは、Azure Media Services を使用した DRM
 services: media-services
 documentationcenter: ''
 author: willzhan
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 03/14/2019
 ms.author: willzhan;juliako
-ms.openlocfilehash: 84e2eb6a16ce9ee4889eacbf394754c5c2544f7a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5c86a49cd9dc26f724de12ed2e5e77e645e4ab53
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245309"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886713"
 ---
-# <a name="hybrid-design-of-drm-subsystems"></a>DRM サブシステムのハイブリッド設計
+# <a name="hybrid-design-of-drm-subsystems"></a>DRM サブシステムのハイブリッド設計 
 
 このトピックでは、Azure Media Services を使用した DRM サブシステムのハイブリッド設計について説明します。
 
@@ -69,7 +69,7 @@ Microsoft は 3 つの DRM システムの完全なサポートを提供しま�
 ### <a name="drm-license-delivery"></a>DRM ライセンス配信
 
 * AMS: DRM ライセンスは AMS ライセンス配信サービスによって配信されます。
-* サード パーティ: DRM ライセンスは AMS の外部のサード パーティ製の DRM ライセンス サーバーによって配信されます。
+* サードパーティ: DRM ライセンスは AMS の外部のサード パーティ製 DRM ライセンス サーバーによって配信されます。
 
 ## <a name="configure-based-on-your-hybrid-scenario"></a>ハイブリッド シナリオに応じた構成
 
@@ -113,7 +113,7 @@ Microsoft は 3 つの DRM システムの完全なサポートを提供しま�
 
 ### <a name="sample-2"></a>サンプル 2
 
-* ソース (ベース) URL: http://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
+* ソース (ベース) URL: https://willzhanmswest.streaming.mediaservices.windows.net/1a670626-4515-49ee-9e7f-cd50853e41d8/Microsoft_HoloLens_TransformYourWorld_816p23.ism/Manifest 
 * PlayReady LA_URL (DASH & smooth): http://willzhan12.cloudapp.net/PlayReady/RightsManager.asmx 
 
 ### <a name="sample-3"></a>サンプル 3

@@ -1,26 +1,19 @@
 ---
-title: '仮想ネットワークを ExpressRoute 回線にリンクする: Azure Portal | Microsoft Docs'
+title: 仮想ネットワークを回線にリンクする - ExpressRoute:Azure portal | Microsoft Docs
 description: Azure ExpressRoute 回線に VNet を接続する 手順を説明します。
 services: expressroute
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: f5cb5441-2fba-46d9-99a5-d1d586e7bda4
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/08/2018
+ms.topic: conceptual
+ms.date: 12/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 47c0db66889dae5d74e2fcf46a27ec1397930e53
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 66c43556e698063b95ce1c3787458e40c9d71504
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256784"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079470"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>ポータルを使用して仮想ネットワークを ExpressRoute 回線に接続する
 > [!div class="op_single_selector"]
@@ -61,13 +54,13 @@ ms.locfileid: "51256784"
 
 1. ExpressRoute 回線と Azure プライベート ピアリングが正常に構成されていることを確認します。 指示に従って、[ExpressRoute 回線を作成](expressroute-howto-circuit-arm.md)し、[ルーティングを構成](expressroute-howto-routing-arm.md)します。 ExpressRoute 回線は次の図のようになります。
 
-  ![ExpressRoute 回線のスクリーンショット](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png)
+   ![ExpressRoute 回線のスクリーンショット](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png)
 2. ExpressRoute 回線に仮想ネットワーク ゲートウェイをリンクする接続のプロビジョニングを開始できるようになりました。 **[接続]** > **[追加]** をクリックして **[接続の追加]** ページを開き、値を構成します。
 
-  ![接続追加のスクリーンショット](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png)
+   ![接続追加のスクリーンショット](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png)
 3. 接続が正常に構成されると、接続オブジェクトにより、接続の情報が表示されます。
 
-  ![接続オブジェクトのスクリーンショット](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)
+   ![接続オブジェクトのスクリーンショット](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)
 
 ## <a name="connect-a-vnet-to-a-circuit---different-subscription"></a>VNet を回線に接続する - 異なるサブスクリプション
 
@@ -96,12 +89,16 @@ ms.locfileid: "51256784"
 
 回線所有者は、承認を作成します。 その結果、回線ユーザーが各自の仮想ネットワーク ゲートウェイを ExpressRoute 回線に接続するために使用できる承認キーが作成されます。 承認は、1 つの接続に対してのみ有効です。
 
+> [!NOTE]
+> 接続ごとに別個の認可が必要です。
+>
+
 1. [ExpressRoute] ページで **[承認]** をクリックし、承認の**名前**を入力して、**[保存]** をクリックします。
 
-  ![[Authorizations]](./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png)
+   ![[Authorizations]](./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png)
 2. 構成が保存されたら、**リソース ID** と**承認キー**をコピーします。
 
-  ![承認キー](./media/expressroute-howto-linkvnet-portal-resource-manager/authkey.png)
+   ![承認キー](./media/expressroute-howto-linkvnet-portal-resource-manager/authkey.png)
 
 **接続の承認を削除するには**
 
@@ -115,18 +112,18 @@ ms.locfileid: "51256784"
 
 1. **[+ 新規]** ボタンをクリックします。
 
-  ![[新規] をクリック](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection1.png)
+   ![[新規] をクリック](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection1.png)
 2. Marketplace で **"接続"** を検索し、選択して **[作成]** をクリックします。
 
-  ![接続の検索](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection2.png)
+   ![接続の検索](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection2.png)
 3. **[接続の種類]** を [ExpressRoute] に設定します。
 4. [基本] ページで詳細を入力し、**[OK]** をクリックします。
 
-  ![基本ページ](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
+   ![基本ページ](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 5. **[設定]** ページで **[仮想ネットワーク ゲートウェイ]** を選び、**[承認の利用]** チェック ボックスをオンにします。
 6. **承認キー**と**ピア回線 URI** を入力し、接続に名前を付けます。 Click **OK**.
 
-  ![[設定] ページ](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
+   ![[設定] ページ](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. **[概要]** ページの内容を確認し、**[OK]** をクリックします。
 
 **接続の承認を解除するには**

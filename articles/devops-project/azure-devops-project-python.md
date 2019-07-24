@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Azure DevOps Projects を使用して Python 用の CI/CD パイプラインを作成する'
+title: クイック スタート:Azure DevOps Projects を使用して Python 用の CI/CD パイプラインを作成する
 description: DevOps Projects を利用すると、Azure を使い始めるのが簡単になります。 いくつかの簡単な手順により、選択した Azure サービス上でアプリを稼働させることができます。
 ms.prod: devops
 ms.technology: devops-cicd
@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 90af443621ec47400779bdc1689fc07be558e4b8
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 695056be67294c6a0787bad61bf5ee00378275b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164542"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111431"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-projects"></a>Azure DevOps Projects を使用して Python 用の CI/CD パイプラインを作成する
 
@@ -64,7 +64,7 @@ Web App for Containers が既定のデプロイ ターゲットです。 前に�
 
     ![ダッシュボード ビュー](_img/azure-devops-project-python/dashboardnopreview.png) 
     
- DevOps Projects によって、CI ビルドおよびリリース トリガーが自動的に構成されます。 Web サイトに最新の作業を自動的にデプロイする CI/CD プロセスを使用して、Python アプリに対してチームで共同作業を行う準備ができました。
+   DevOps Projects によって、CI ビルドおよびリリース トリガーが自動的に構成されます。 Web サイトに最新の作業を自動的にデプロイする CI/CD プロセスを使用して、Python アプリに対してチームで共同作業を行う準備ができました。
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>コードの変更をコミットし、CI/CD を実行する
 

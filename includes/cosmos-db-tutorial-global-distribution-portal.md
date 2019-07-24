@@ -2,25 +2,19 @@
 title: Azure Cosmos DB のグローバルな分散
 description: Azure Portal で Azure Cosmos DB を使用してデータをグローバルにレプリケートする方法について説明します
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 03/26/2018
-ms.author: sngun
+ms.date: 12/26/2018
+ms.author: rimman
 ms.custom: include file
-ms.openlocfilehash: fb9418d47d2888467e1c1c40862833029111b75b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 751571820d52c003a7e740bd63af8c9d9e071c7a
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38747561"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53796115"
 ---
-Azure Cosmos DB のグローバルな分散については、Azure Cosmos DB のプログラム マネージャーである Andrew Liu がグローバル分散機能について解説しているビデオをご覧ください。
-
->[!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
-
-Cosmos DB におけるグローバル データベース レプリケーションのしくみの詳細については、[Cosmos DB を使用したデータのグローバル分散](../articles/cosmos-db/distribute-data-globally.md)に関する記事を参照してください。
-
 ## <a id="addregion"></a>Azure Portal を使用したグローバル データベース リージョンの追加
 Azure Cosmos DB は世界中のすべての [Azure リージョン][azureregions]で利用できます。 データベース アカウントの既定の一貫性レベルを選択すると、選択した既定の一貫性レベルとグローバル配信の必要性に応じて、1 つまたは複数のリージョンを関連付けることができます。
 
@@ -41,7 +35,7 @@ Azure Cosmos DB は世界中のすべての [Azure リージョン][azureregions
 
 エンド ユーザーの短い待ち時間の実現のため、アプリケーションのユーザーが存在する場所に対応するリージョンに、アプリケーションと Azure Cosmos DB の両方をデプロイすることをお勧めします。
 
-BCDR のため、「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン][bcdr]」に記載されているリージョン ペアに基づいてリージョンを追加することをお勧めします。
+BCDR のため、リージョン ペアに基づいてリージョンを追加することをお勧めします。リージョン ペアについては、「[ビジネス継続性とディザスター リカバリー (BCDR):Azure のペアになっているリージョン][bcdr]」をご覧ください。
 
 <!--
 

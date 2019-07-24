@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 33d7322bfa3c6e6143dd2d945c5ed86c15da2fb8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d8640881e83084dac7f4725115f48dcf7d29e787
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249967"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007591"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>OpenBSD ディスクイメージの作成と Azure へのアップロード
 この記事では、OpenBSD オペレーティング システムを格納した仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。 アップロードした VHD を独自のイメージとして使用し、Azure CLI で Azure の仮想マシン (VM) を作成することができます。
@@ -30,7 +30,7 @@ ms.locfileid: "51249967"
 この記事では、次の項目があることを前提としています。
 
 * **Azure サブスクリプション**- アカウントをお持ちでない場合でも、数分でアカウントを作成できます。 MSDN サブスクリプションをお持ちの場合は、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」をご覧ください。 それ以外の場合は、 [無料試用版のアカウントの作成](https://azure.microsoft.com/pricing/free-trial/)方法に関するページをご覧ください。  
-* **Azure CLI** - [Azure CLI](/cli/azure/install-azure-cli) の最新版がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしていることを確認します。
+* **Azure CLI** - [Azure CLI](/cli/azure/install-azure-cli) の最新版がインストールされ、[az login](/cli/azure/reference-index) を使用して Azure アカウントにログインしていることを確認します。
 * **.vhd ファイルにインストールされている OpenBSD オペレーティング システム**- サポートされている OpenBSD オペレーティング システム ([6.1 バージョン AMD64](https://ftp.openbsd.org/pub/OpenBSD/6.1/amd64/)) を仮想ハード ディスクにインストールしておきます。 .vhd ファイルを作成するツールはいくつかあります。 たとえば Hyper-V などの仮想化ソリューションを使用して .vhd ファイルを作成し、オペレーティング システムをインストールすることができます。 Hyper-V をインストールして使用する手順については、「 [Hyper-V をインストールして仮想マシンを作成する](https://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
 
 
@@ -56,7 +56,7 @@ Hyper-V のサポートが追加された OpenBSD オペレーティング シ�
     echo "https://ftp.openbsd.org/pub/OpenBSD" > /etc/installurl
     ```
    
-4. 既定では、`root` ユーザーは Azure 上の仮想マシンで無効になっています。 ユーザーはOpenBSD VM で `doas` コマンドを使用して、昇格された特権でコマンドを実行できます。 doas は、既定では有効になっています。 詳細については、[doas.conf](http://man.openbsd.org/doas.conf.5) をご覧ください。 
+4. 既定では、`root` ユーザーは Azure 上の仮想マシンで無効になっています。 ユーザーはOpenBSD VM で `doas` コマンドを使用して、昇格された特権でコマンドを実行できます。 doas は、既定では有効になっています。 詳細については、[doas.conf](https://man.openbsd.org/doas.conf.5) をご覧ください。 
 
 5. 次のように Azure エージェントの前提条件をインストールし、構成します。
 
@@ -103,13 +103,13 @@ Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed
 ```
 
 ## <a name="create-storage-resources-and-upload"></a>ストレージ リソースの作成とアップロード
-最初に、[az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+最初に、[az group create](/cli/azure/group) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-VHS をアップロードするには、ストレージ アカウントを、[az storage account create](/cli/azure/storage/account#az_storage_account_create) を使用して作成します。 ストレージ アカウント名は一意である必要があるため、独自の名前を入力してください。 次の例では、*mystorageaccount* という名前のストレージ アカウントを作成します。
+VHS をアップロードするには、ストレージ アカウントを、[az storage account create](/cli/azure/storage/account) を使用して作成します。 ストレージ アカウント名は一意である必要があるため、独自の名前を入力してください。 次の例では、*mystorageaccount* という名前のストレージ アカウントを作成します。
 
 ```azurecli
 az storage account create --resource-group myResourceGroup \
@@ -118,7 +118,7 @@ az storage account create --resource-group myResourceGroup \
     --sku Premium_LRS
 ```
 
-ストレージ アカウントへのアクセスを制御するには、次のように [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) を使用してストレージ キーを取得します。
+ストレージ アカウントへのアクセスを制御するには、次のように [az storage account keys list](/cli/azure/storage/account/keys) を使用してストレージ キーを取得します。
 
 ```azurecli
 STORAGE_KEY=$(az storage account keys list \
@@ -127,7 +127,7 @@ STORAGE_KEY=$(az storage account keys list \
     --query "[?keyName=='key1']  | [0].value" -o tsv)
 ```
 
-アップロードする VHD を論理的に分離するには、[az storage container create](/cli/azure/storage/container#az_storage_container_create) を使用してストレージ アカウント内のコンテナーを作成します。
+アップロードする VHD を論理的に分離するには、[az storage container create](/cli/azure/storage/container) を使用してストレージ アカウント内のコンテナーを作成します。
 
 ```azurecli
 az storage container create \
@@ -136,7 +136,7 @@ az storage container create \
     --account-key ${STORAGE_KEY}
 ```
 
-最後に、次のように [az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload) を使用して VHD をアップロードします。
+最後に、次のように [az storage blob upload](/cli/azure/storage/blob) を使用して VHD をアップロードします。
 
 ```azurecli
 az storage blob upload \
@@ -149,7 +149,7 @@ az storage blob upload \
 
 
 ## <a name="create-vm-from-your-vhd"></a>VHD から VM を作成
-[サンプル スクリプト](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md)を使用して、または直接 [az vm create](/cli/azure/vm#az_vm_create) を使用して、VM を作成できます。 アップロードした OpenBSD VHD を指定するには、次のように `--image` パラメーターを使用します。
+[サンプル スクリプト](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md)を使用して、または直接 [az vm create](/cli/azure/vm) を使用して、VM を作成できます。 アップロードした OpenBSD VHD を指定するには、次のように `--image` パラメーターを使用します。
 
 ```azurecli
 az vm create \
@@ -161,7 +161,7 @@ az vm create \
     --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-次のように [az vm list-ip-addresses](/cli/azure/vm#list-ip-addresses) を使用して OpenBSD VM の IP アドレスを取得します。
+次のように [az vm list-ip-addresses](/cli/azure/vm) を使用して OpenBSD VM の IP アドレスを取得します。
 
 ```azurecli
 az vm list-ip-addresses --resource-group myResourceGroup --name myOpenBSD61
@@ -175,6 +175,6 @@ ssh azureuser@<ip address>
 
 
 ## <a name="next-steps"></a>次の手順
-OpenBSD 6.1 の Hyper-V の対応に関して詳細をお知りになりたい場合は、[OpenBSD 6.1](https://www.openbsd.org/61.html) および [hyperv.4](http://man.openbsd.org/hyperv.4) をお読みください。
+OpenBSD 6.1 の Hyper-V の対応に関して詳細をお知りになりたい場合は、[OpenBSD 6.1](https://www.openbsd.org/61.html) および [hyperv.4](https://man.openbsd.org/hyperv.4) をお読みください。
 
 マネージド ディスクから VM を作成する場合は、[az disk](/cli/azure/disk) をお読みください。 

@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: 文の長さを取得する (Ruby) - Translator Text API'
+title: クイック スタート:文の長さを取得する (Ruby) - Translator Text API
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Ruby で Translator Text API を使ってテキストに含まれる文の長さを調べます。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/22/2018
+ms.date: 02/08/2019
 ms.author: erhopf
-ms.openlocfilehash: 18ef4e20c28b783738d2be929e063e6dada412d4
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: fb448498a9622d0e3b149e4e3d4041b3a7ca580c
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49644710"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55975451"
 ---
-# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-ruby"></a>クイック スタート: Translator Text REST API を使用して文の長さを取得する (Ruby)
+# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-ruby"></a>クイック スタート:Translator Text REST API を使用して文の長さを取得する (Ruby)
 
 このクイック スタートでは、Translator Text API を使って、テキストに含まれる文の長さを調べます。
 

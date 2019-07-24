@@ -3,19 +3,19 @@ title: Azure Active Directory B2C のカスタム ポリシー | Microsoft Docs
 description: カスタム ポリシーを使用した Azure Active Directory B2C によるコンシューマー向けアプリケーションの開発。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 5/06/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 26469d735d7165e8b21665df6c169bc4668d8a5a
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.subservice: B2C
+ms.openlocfilehash: bca20bdcf682b040a2fe0b14bf06bc6ca59528b6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440520"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172582"
 ---
 # <a name="sign-up-and-sign-in-consumers-in-your-applications-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタムポリシーを使用して、アプリケーションでコンシューマーのサインアップおよびサインインを実行する
 

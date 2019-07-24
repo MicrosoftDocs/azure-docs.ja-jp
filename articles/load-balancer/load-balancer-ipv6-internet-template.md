@@ -1,5 +1,6 @@
 ---
-title: IPv6 でインターネットに接続するロード バランサーのデプロイ - Azure テンプレート | Microsoft Docs
+title: IPv6 でインターネットに接続するロード バランサーのデプロイ - Azure テンプレート
+titlesuffix: Azure Load Balancer
 description: Azure Load Balancer と負荷分散された VM に IPv6 サポートをデプロイする方法について説明します。
 services: load-balancer
 documentationcenter: na
@@ -8,16 +9,17 @@ keywords: ipv6, azure load balancer, デュアル スタック, パブリック 
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 14a28fb341692c309ff4f965628b38a767c56633
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 4a8c7309a07238ef3410e42c3d631ad525f023cc
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740750"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54039794"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>テンプレートを使用して IPv6 でインターネットに接続するロード バランサー ソリューションをデプロイする
 
@@ -131,3 +133,7 @@ Azure Resource Manager のテンプレートには複数の変数とパラメー
 | lbName |ロード バランサーの名前を指定します。 この名前はポータルに表示されるか、CLI または PowerShell コマンドを使用して参照するときに使用されます。 |
 
 テンプレート内の残りの変数には、Azure がリソースを作成するときに割り当てられている派生値が含まれます。 これらの変数は変更しないでください。
+
+## <a name="next-steps"></a>次の手順
+
+テンプレート内のロード バランサーの JSON の構文とプロパティについては、「[Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)」を参照してください。

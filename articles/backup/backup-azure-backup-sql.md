@@ -2,18 +2,18 @@
 title: DPM を使用した SQL Server ワークロード用 Azure Backup
 description: Azure Backup サービスを使用した SQL Server データベースのバックアップの概要
 services: backup
-author: adigan
-manager: Nkolli
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/18/2018
-ms.author: adigan
-ms.openlocfilehash: 232885398c996d0c744ac55b6c6967fd398eec0b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 01/30/2019
+ms.author: kasinh
+ms.openlocfilehash: d7d94c7b238f8d413d8837c3c34468c6cd653fe3
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945656"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300695"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server を Azure に DPM ワークロードとしてバックアップする
 この記事では、Azure Backup を使用して SQL Server データベースのバックアップを構成する手順について説明します。
@@ -68,7 +68,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 
     ![Initial replication method](./media/backup-azure-backup-sql/pg-manual.png)
 
-    初期バックアップ コピーでは、運用サーバー (SQL Server コンピューター) から DPM サーバーに、データ ソース (SQL Server データベース) 全体を転送する必要があります。 このデータは場合によっては大きくなり、ネットワーク経由で転送すると帯域幅を超える可能性があります。 したがって、管理者は初期バックアップを転送する際に、帯域幅の輻輳を避けるために (リムーバブル メディアを使用して) **手動で**転送するか、(指定した時刻に) **ネットワーク経由で自動で**転送するかを選択できます。
+    初期バックアップ コピーでは、運用サーバー (SQL Server コンピューター) から DPM サーバーに、データ ソース (SQL Server データベース) 全体を転送する必要があります。 このデータは場合によっては大きくなり、ネットワーク経由で転送すると帯域幅を超える可能性があります。 そのために、管理者は、初回バックアップの転送では、帯域幅の輻輳を避けるために**手動**で転送するか (リムーバブル メディアを使用)、指定した時刻に**自動 (ネットワーク経由)** で転送するかを選択できます。
 
     初期バックアップが完了した後は、残りのバックアップは初期バックアップのコピーに対する増分バックアップになります。 増分バックアップは一般に非常に小さく、ネットワーク経由で容易に転送できます。
 10. 整合性チェックをいつ実行するかを選択し、 **[次へ]** をクリックします。

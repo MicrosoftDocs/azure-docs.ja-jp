@@ -3,19 +3,19 @@ title: よく寄せられる質問 (FAQ) - Bing Image Search API
 titleSuffix: Azure Cognitive Services
 description: Bing Image Search API に関連する概念、コード、シナリオについてよく寄せられる質問の回答を見つけることができます。
 services: cognitive-services
-author: v-jerkin
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: troubleshooting
-ms.date: 10/06/2017
-ms.author: v-jerkin
-ms.openlocfilehash: cdc8d8cad26ce4807c8f7bf8fe1d33f13d5799c1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 03/04/2019
+ms.author: aahi
+ms.openlocfilehash: 20b8dbcae36555baf3913ab160575a631e204dd9
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232938"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59049427"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Bing Image Search API についてよく寄せられる質問 (FAQ)
 
@@ -25,11 +25,11 @@ Azure 上の Microsoft Cognitive Services の Bing Image Search API に関連す
 
 次のヘッダーは、Bing Image Search API からの応答に含まれる可能性があります。
 
-|||
-|-|-|
-|`X-MSEdge-ClientID`|Bing がユーザーに割り当てた一意の ID|
-|`BingAPIs-Market`|要求を満たすために使用された市場|
-|`BingAPIs-TraceId`|この要求に対する Bing API サーバー上のログ エントリ (サポート用)|
+| `Attribute`         | `Description` |
+| ------------------- | ------------- |
+| `X-MSEdge-ClientID` |Bing がユーザーに割り当てた一意の ID |
+| `BingAPIs-Market`   |要求を満たすために使用された市場 |
+| `BingAPIs-TraceId`  |この要求に対する Bing API サーバー上のログ エントリ (サポート用) |
 
 クライアント ID を保持し、後続の要求で返すことが特に重要です。 これを行うときに、検索は検索結果の順位付けに過去のコンテキストを使用し、一貫性のあるユーザー エクスペリエンスも提供します。
 
@@ -65,4 +65,4 @@ API キーはサーバー側スクリプトでのみ必要なので、このア�
 
 ## <a name="see-also"></a>関連項目
 
- [Stack Overflow: Cognitive Services](http://stackoverflow.com/questions/tagged/bing-api)
+ [Stack Overflow: Cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)

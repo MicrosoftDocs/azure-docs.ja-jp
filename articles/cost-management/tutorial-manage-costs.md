@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/31/2018
+ms.date: 03/18/2019
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 7d319c82da09ec5c960e1f40bc26edce8ee372b9
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: df4994475bf10fa902a2902b69b231821601d33b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274425"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58174343"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>チュートリアル: Cloudyn を使用してコストを管理する
 
@@ -53,13 +53,11 @@ Cloudyn は、Azure からリソース グループのタグ データを取得�
 
 カスタム コスト配賦モデルを作成するには、レポートのメニューで **[Costs]\(コスト\)** &gt; **[Cost Management]\(コスト管理\)** &gt; **[Cost Allocation 360°]\(コスト配賦 360 度\)** の順に選択します。
 
-![コスト配賦 360 度の選択](./media/tutorial-manage-costs/cost-allocation-360.png)
+![[Cost Allocation 360°]\(コスト配賦 360 度\) が選択されたダッシュボードを示す例](./media/tutorial-manage-costs/cost-allocation-360.png)
 
 **[Cost Allocation 360°]\(コスト配賦 360 度\)** ページで **[Add]\(追加\)** を選択し、コスト モデルの名前と説明を入力します。 すべてのアカウントを選択するか、または個別のアカウントを選択します。 個別のアカウントを使用する場合は、さまざまなクラウド サービス プロバイダーから複数のアカウントを選択することができます。 次に、**[Categorization]\(分類\)** をクリックして、検出されたタグの中からコスト データを分類するタグを選びます。 モデルに含めるタグ (カテゴリ) を選択してください。 次の例では、**[Unit]\(部署\)** タグが選択されています。
 
-![コスト モデルの分類の例](./media/tutorial-manage-costs/cost-model01.png)
-
-
+![コスト モデルの分類を示す例](./media/tutorial-manage-costs/cost-model01.png)
 
 この例を見ると、$19,680 が未分類 (タグなし) であることがわかります。
 
@@ -97,7 +95,7 @@ Cloudyn ポータルで、右上にある歯車アイコンをクリックして
 
 次の画像は、**Work-Load** という名前の新しいカテゴリに対して作成したルールの例を示しています。
 
-![カテゴリの例](./media/tutorial-manage-costs/category01.png)
+![新しい作業負荷のカテゴリを示す例](./media/tutorial-manage-costs/category01.png)
 
 ### <a name="tag-sources-and-reports"></a>タグのソースとレポート
 
@@ -124,7 +122,7 @@ Cloudyn エンティティ タグと手動で作成したタグは、すべて�
 
 コスト配賦の結果を表示するには、コスト分析レポートを開いて、作成済みのコスト モデルを選択します。 そのうえで、コスト モデルで選択したタグによる分類基準を追加することになります。
 
-![コスト分析レポート](./media/tutorial-manage-costs/cost-analysis.png)
+![新しいコストのデータ例を示すコスト分析レポート](./media/tutorial-manage-costs/cost-analysis.png)
 
 特定のグループによって消費された具体的なサービスに注目したレポートを簡単に作成して保存することができます。 たとえば、Azure VM を大量に使用する部門があるとします。 Azure VM を条件としてフィルタリングされたレポートを作成することで、消費量とコストを明らかにできます。
 

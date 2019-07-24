@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
-ms.author: cwatson
-ms.openlocfilehash: 4a8b2c07754b1a1c9679f7b044f112bf03dfb433
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: banders
+ms.openlocfilehash: 2468f61c187d9b10ed9fe55ccf76e5d2561d0505
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392110"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889813"
 ---
 # <a name="understand-free-service-to-meter-mapping"></a>無料サービスと測定のマッピングについて
 
@@ -53,10 +53,6 @@ ms.locfileid: "47392110"
 
 \** 共有メーターは、複数のサービスで使用できます。 たとえば、仮想マシンとストレージの両方が、データ転送 (送信) (GB) メーターに対して使用状況を出力します。
 
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-
-
-
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
-
-お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

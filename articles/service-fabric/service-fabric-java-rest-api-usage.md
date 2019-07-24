@@ -4,7 +4,7 @@ description: Service Fabric クライアント REST API 仕様を使って、Ser
 services: service-fabric
 documentationcenter: java
 author: rapatchi
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: 987959742335940dca8eb57c54d593aea90dec15
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 97bba87331965b0f7ce20ec2ee089e0e18f72457
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111186"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665102"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric Java クライアント API
 
@@ -71,7 +71,7 @@ AutoRest ツールを使って Service Fabric Java クライアント コード�
     autorest --input-file=servicefabric.json --java --output-folder=java-rest-api-code --namespace=servicefabricrest
     ```
    
-   次のコマンドは、``servicefabric.json`` 仕様ファイルを入力として受け取り、``java-rest-api-     code`` フォルダーに Java クライアント コードを生成して、コードを ``servicefabricrest`` 名前空間に配置します。 この手順の後、2 つのフォルダー ``models`` と ``implemenation``、および ``java-rest-api-code`` フォルダーに生成された 2 つのファイル ``ServiceFabricClientAPIs.java`` と ``package-info.java`` を検索します。
+   次のコマンドは、``servicefabric.json`` 仕様ファイルを入力として受け取り、``java-rest-api-     code`` フォルダーに Java クライアント コードを生成して、コードを ``servicefabricrest`` 名前空間に配置します。 この手順の後、2 つのフォルダー ``models`` と ``implementation``、および ``java-rest-api-code`` フォルダーに生成された 2 つのファイル ``ServiceFabricClientAPIs.java`` と ``package-info.java`` を検索します。
 
 
 ## <a name="include-and-use-the-generated-client-in-your-project"></a>生成されたクライアントをプロジェクトに組み込んで使用する
@@ -126,11 +126,11 @@ AutoRest ツールを使って Service Fabric Java クライアント コード�
 すべての API に対し、実装の 4 つのオーバーロードがあります。 省略可能なパラメーターがある場合は、さらに、これらの省略可能なパラメーターを含む 4 つのバリエーションがあります。 たとえば、API ``removeReplica`` を例にすると次のようになります。
  1. **public void removeReplica(String nodeName, UUID partitionId, String replicaId, Boolean forceRemove, Long timeout)**
     * これは、removeReplica API 呼び出しの同期バリエーションです
- 2. **public ServiceFuture<Void> removeReplicaAsync(String nodeName, UUID partitionId, String replicaId, Boolean forceRemove, Long timeout, final ServiceCallback<Void> serviceCallback)**
+ 2. **public ServiceFuture\<Void> removeReplicaAsync(String nodeName, UUID partitionId, String replicaId, Boolean forceRemove, Long timeout, final ServiceCallback\<Void> serviceCallback)**
     * API 呼び出しのこのバリエーションは、将来ベースの非同期プログラミングとコールバックを使いたい場合に、使うことができます
- 3. **public Observable<Void> removeReplicaAsync(String nodeName, UUID partitionId, String replicaId)**
+ 3. **public Observable\<Void> removeReplicaAsync(String nodeName, UUID partitionId, String replicaId)**
     * API 呼び出しのこのバリエーションは、リアクティブな非同期プログラミングを使いたい場合に、使うことができます
- 4. **public Observable<ServiceResponse<Void>> removeReplicaWithServiceResponseAsync(String nodeName, UUID partitionId, String replicaId)**
+ 4. **public Observable\<ServiceResponse\<Void>> removeReplicaWithServiceResponseAsync(String nodeName, UUID partitionId, String replicaId)**
     * API 呼び出しのこのバリエーションは、リアクティブな非同期プログラミングを使い、未処理の REST 応答を扱いたい場合に、使うことができます
 
 ## <a name="next-steps"></a>次の手順

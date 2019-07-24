@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 608dd6067e5c9d31f720b97453615a3e8ead0a85
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 249ed7b1be2731fc8165ca7f205ba1d94066818e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038622"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088045"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer のリリース ノート
 
@@ -27,47 +27,48 @@ ms.locfileid: "51038622"
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
 
-## <a name="version-150"></a>バージョン 1.5.0
-10/29/2018
+## <a name="version-170"></a>バージョン 1.7.0
+3/5/2019
 
-### <a name="download-azure-storage-explorer-150"></a>Azure Storage Explorer 1.5.0 をダウンロードする
-- [Windows 用 Azure Storage Explorer 1.5.0](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Mac 用 Azure Storage Explorer 1.5.0](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Linux 用 Azure Storage Explorer 1.5.0](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-170"></a>Azure Storage Explorer 1.7.0 をダウンロードする
+- [Windows 用 Azure Storage Explorer 1.7.0](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Mac 用 Azure Storage Explorer 1.7.0](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Linux 用 Azure Storage Explorer 1.7.0](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>新規
 
-* BLOB のアップロードおよびダウンロードに、[AzCopy v10 (プレビュー)](https://github.com/Azure/azure-storage-azcopy) を使用できるようになりました。 この機能を有効にするには、[試験段階] メニューに移動して、[Use AzCopy for Improved Blob Upload and Download]\(改善された BLOB のアップロードとダウンロードに AzCopy を使用する\) をクリックします。 有効な場合は、次のシナリオで AzCopy が使用されます。
-   * ツール バーか、ドラッグ アンド ドロップのいずれかで、フォルダーとファイルを BLOB コンテナーにアップロードする。
-   * ツール バーまたはコンテキスト メニューのいずれかで、フォルダーとファイルをダウンロードする。
+* ADLS Gen2 コンテナー、ファイル、またはフォルダーへのアクセスを管理する際に、所有者と所有グループを変更できるようになりました。
+* Windows では、製品内からの Storage Explorer の更新は増分インストールになりました。 これにより、更新エクスペリエンスが高速化されます。 クリーン インストールを使用する場合は、[インストーラー](https://azure.microsoft.com/en-us/features/storage-explorer/)を自分でダウンロードし、手動でインストールします。 #1089
 
-* また、AzCopy を使用する場合
-   * 使用した AzCopy コマンドをコピーして、クリップボードへの転送を実行できます。 アクティビティ ログで [Copy AzCopy Command to Clipboard]\(AzCopy コマンドをクリップボードにコピー\) をクリックするだけです。
-   * アップロードした後に、手動で BLOB エディターを更新する必要があります。
-   * BLOB を追加するためのファイルのアップロードはサポートされておらず、.vhds はページ BLOB としてアップロードされ、その他のファイルはすべてブロック BLOB としてアップロードされます。
-   * アップロードまたはダウンロード時に発生するエラーや競合は、アップロードまたはダウンロードが完了するまで提示されません。
+### <a name="preview-features"></a>プレビュー機能
 
-最後に、ファイル共有での AzCopy の使用のサポートは、今後提供される予定です。
-* 現在、Storage Explorer では Electron バージョン 2.0.11 を使用しています。
-* リースの解約は一度に 1 つの BLOB 上のみで実行することができます。 さらに、解約するリースを含む BLOB の名前を入力する必要があります。 この変更は、特に VM 用の .vhds の場合に、誤ってリースを解約する可能性を低減するために加えられました。 #394
-* サインインの問題が発生した場合、認証のリセットを試行できるようになりました。 この機能にアクセスするには、[ヘルプ] メニューに移動して [リセット] をクリックします。 #419
+* プレビューでデバイス コード フローのサインインを使用できるようになりました。 この機能を有効にするには、[プレビュー] の [Use Device Code Flow Sign-in]\(デバイス コード フローのサインインを使用する\) に移動します。 空白のサインイン ウィンドウが表示される問題が発生していた場合は、この機能の方がサインイン形式として信頼性が高い可能性があるので、試してみることをお勧めします。 #938
+* プレビューで、AzCopy と統合された Storage Explorer を使用できるようになりました。 この機能を有効にするには、[プレビュー] の [Use AzCopy for Improved Blob Upload and Download]\(向上した Blob アップロードおよびダウンロードに AzCopy を使用する\) に移動します。 AzCopy で実行される BLOB 転送では、速度とパフォーマンスが向上します。
 
-### <a name="fix"></a>解決策
+### <a name="fixes"></a>修正
 
-* 強力なユーザーのフィードバックの後、既定のエミュレーター ノードを再度有効にしています。 引き続き [接続] ダイアログからさらにエミュレーターの接続を追加することはできますが、ご利用のエミュレーターが既定のポートを使用するように構成されている場合は、[Local & Attached]\(ローカルおよびアタッチ済み\)、[ストレージ アカウント] の下で "エミュレーター * 既定のポート" ノードを使用することもできます。 #669
-* Storage Explorer では、先頭または末尾に空白がある BLOB メタデータの値を設定することはできなくなりました。 #760
-* [サインイン] ボタンは、[接続] ダイアログの同じページ上で常に有効になっていました。 必要に応じて、無効にされるようになりました。 #761
-* クイック アクセスの項目が追加されていない場合に、クイック アクセスによってコンソール内にエラーが生成されることはなくなりました。
+* AzCopy が有効なっているときに、アップロードする BLOB の種類を選択できるようになりました。 #1111
+* 以前は、ADLS Gen2 ストレージ アカウントに対して静的な Web サイトを有効化し、名前とキーをアタッチした場合、Storage Explorer では、階層型名前空間が有効になったことが検出されませんでした。 この問題は修正されています。 #1081
+* BLOB エディターで、残りの保持日数またはステータスによる並べ替えに障害が発生していました。 この問題は修正されています。 #1106
+* 1.5.0 以降の Storage Explorer では、名前変更またはコピー/貼り付け時に、サーバー側の貼り付けが完了するまで待機しないまま、操作の完了が報告されていました。 この問題は修正されています。 #976
+* 実験用の AzCopy 機能を使用する際に、[Copy command to clipboard]\(コマンドをクリップボードにコピー\) をクリックした後にコピーしたコマンドが、実行可能にならない場合がありました。 現在は、転送を手動で実行するために必要なすべてのコマンドがコピーされます。 #1079
+* 以前は、プロキシの背後にある場合、ADLS Gen2 BLOB にアクセスできませんでした。 これは、Storage SDK で使用される新しいネットワーク ライブラリのバグが原因でした。 1.7.0 では、この問題の解消が試行されましたが、一部のユーザーでは引き続きこの問題が発生する場合があります。 完全な修正プログラムは今後の更新でリリースされます。 #1090
+* 1.7.0 のファイル保存ダイアログでは、前回ファイルを保存した場所が正しく記憶されるようになりました。 #16
+* プロパティ パネルで、ストレージ アカウントの SKU レベルがアカウントの種類として表示されていました。 この問題は修正されています。 #654
+* BLOB の名前を正しく入力しても、BLOB のリースを中断できない場合がありました。 この問題は修正されています。 #1070
 
 ### <a name="known-issues"></a>既知の問題
 
+* RBAC を使用する場合、Storage Explorer は、ストレージ リソースにアクセスするために管理レイヤーのアクセス許可を必要とします。 詳細については、[トラブルシューティング ガイド](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting)を参照してください。
+* プロキシの背後にある場合に ADLS Gen2 BLOB にアクセスしようとすると、失敗する可能性があります。
 * BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳細については、#537 をご覧ください。
+* BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳細については、#537 を参照してください。
 * VS for Mac を使用しており、カスタム AAD 構成を作成したことがある場合、サインインできないことがあります。 この問題を回避するには、~/.IdentityService/AadConfigurations の内容を削除します。 これを行ってもブロックが解除されない場合は、この問題についてコメントをお寄せください。
 * Azurite は、すべての Storage API を完全に実装しているわけではありません。 そのため、開発ストレージに Azurite を使用すると、予期しないエラーや動作が発生する可能性があります。
 * まれに、ツリーのフォーカスがクイック アクセスから移動しなくなることがあります。 フォーカスを移動できるようにするには、[すべて更新] をクリックします。
-* NodeJS のバグが原因で、OneDrive フォルダーからのアップロードが機能しません。 バグは修正されましたが、Electron にまだ統合されていません。 BLOB コンテナーにアップロードまたは BLOB コンテナーからダウンロードするときに、この問題を回避するには、試験段階の AzCopy 機能を使用できます。
+* NodeJS のバグが原因で、OneDrive フォルダーからのアップロードが機能しません。 バグは修正されましたが、Electron にまだ統合されていません。 BLOB コンテナーにアップロードするとき、または BLOB コンテナーからダウンロードするときに、この問題を回避するには、試験段階の AzCopy 機能を使用できます。
 * Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
-* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、ここで説明したフィルターのキャンセル回避策を使用しているためです。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、こちらで説明したフィルターのキャンセル回避策を使用しているためです。
 * 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
 * BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
 * Azure Stack では、次の機能はサポートされません。 Azure Stack リソースを操作しているときに、これらの機能を使用しようとすると、予期しないエラーが発生する場合があります。
@@ -98,6 +99,10 @@ ms.locfileid: "51038622"
 
 ## <a name="previous-releases"></a>以前のリリース
 
+* [バージョン 1.6.2](#version-162)
+* [バージョン 1.6.1](#version-161)
+* [バージョン 1.6.0](#version-160)
+* [バージョン 1.5.0](#version-150)
 * [バージョン 1.4.4](#version-144)
 * [バージョン 1.4.3](#version-143)
 * [バージョン 1.4.2](#version-142)
@@ -129,11 +134,272 @@ ms.locfileid: "51038622"
 * [バージョン 0.7.20160105.0](#version-07201601050)
 * [バージョン 0.7.20151116.0](#version-07201511160)
 
+## <a name="version-162"></a>バージョン 1.6.2
+1/9/2019
+
+### <a name="hotfixes"></a>修正プログラム
+* 1.6.1 では、ObjectId によって ADLS Gen2 ACL に追加される、ユーザーではないエンティティは、常にグループとして追加されました。 現在は、グループのみがグループとして追加され、エンタープライズ アプリケーションやサービス プリンシパルなどのエンティティはユーザーとして追加されます。 [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
+* コンテナーを持たない ADLS Gen2 Storage アカウントが名前とキーでアタッチされた場合、Storage Explorer ではそのストレージ アカウントが ADLS Gen2 であることが検出されませんでした。 この問題は修正されています。 [#1048](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1048)
+* 1.6.0 では、コピーおよび貼り付けでの競合に対して、解決を求めるメッセージが表示されませんでした。 代わりに、競合するコピーは単に失敗しました。 現在は、最初の競合では、ユーザーに解決するかどうかを確認するメッセージが表示されます。 [#1014](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1014)
+* API の制限により、[アクセスの管理] ダイアログの ObjectId のすべての検証が無効になりました。 検証はユーザー UPN に対してのみ実行されるようになりました。 [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
+* ADLS Gen2 の [アクセスの管理] ダイアログでは、グループのアクセス許可を変更できませんでした。 この問題は修正されています。 [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
+* ADLS Gen2 エディターにドラッグ アンド ドロップによるアップロードのサポートが追加されました。 [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
+* ADLS Gen2 ファイルおよびフォルダーのプロパティ ダイアログに表示される URL プロパティに "/" が不足している場合がありました。 この問題は修正されています。 [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
+* ADLS Gen2 コンテナー、ファイル、またはフォルダーの現在のアクセス許可を取得できなかった場合、アクティビティ ログにエラーが適切に表示されるようになりました。 [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
+* Windows の MAX_PATH よりも長いパスが作成される可能性を減らすために、ファイルを開くために作成される一時パスが短くなりました。 [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
+* サインインしているユーザーがおらず、リソースがアタッチされていない場合に [接続] ダイアログが正常に表示されるようになりました。 [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
+* 1.6.0 では、HNS 以外の BLOB およびファイルのプロパティを保存すると、すべてのプロパティの値がエンコードされました。 この結果、ASCII 文字のみが含まれている値が不必要にエンコードされていました。 ASCII 以外の文字が含まれている場合にのみ、値がエンコードされるようになりました。 [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
+* 読み取りアクセス許可がない SAS を使用した場合、HNS 以外の BLOB コンテナーにフォルダーをアップロードできませんでした。 この問題は修正されています。 [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
+* AzCopy の転送のキャンセルが機能しませんでした。 この問題は修正されています。 [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
+* 名前にスペースが含まれているフォルダーを ADLS Gen2 の BLOB コンテナーからダウンロードしようとすると、AzCopy が失敗しました。 この問題は修正されています。 [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
+* 1.6.0 では、CosmosDB エディターが壊れていました。 これが修正されました。 [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
+        
+### <a name="new"></a>新規
+
+* Storage Explorer を使用して、[RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 経由で BLOB データにアクセスできるようになりました。 サインインしている場合に、自分のストレージ アカウントのキーを Storage Explorer が取得できないと、データ操作時の認証に OAuth トークンが使用されます。
+* Storage Explorer は ADLS Gen2 ストレージ アカウントをサポートするようになりました。 ストレージ アカウントに対して階層型名前空間が有効になっていることを Storage Explorer が検出すると、ストレージ アカウントの名前の横に "(ADLS Gen2 プレビュー)" と表示されます。 Storage Explorer では、サインインしている場合に階層型名前空間が有効になっているかどうかや、ストレージ アカウントに名前とキーを関連付けているかどうかを検出できます。 ADLS Gen2 ストレージ アカウントでは、Storage Explorer を使用して、以下の操作を実行できます。
+  * コンテナーの作成と削除
+  * コンテナーのプロパティとアクセス許可の管理 (左側)
+  * コンテナー内のデータの表示および移動
+  * 新しいフォルダーの作成
+  * ファイルおよびフォルダーのアップロード、ダウンロード、名前変更、削除
+  * ファイルおよびフォルダーのプロパティとアクセス許可の管理 (右側)
+    
+    論理的な削除やスナップショットなど、その他の一般的な BLOB 機能は現在使用できません。 アクセス許可の管理は、サインインしている場合にのみ使用できます。 さらに、ADLS Gen2 ストレージ アカウントで作業している場合、Storage Explorer では、すべてのアップロードおよびダウンロードに AzCopy が使用されます。また、既定ですべての操作に名前とキー資格情報が使用されます (使用可能な場合)。
+* 多数のユーザー フィードバックを受け、リースの解約をもう一度使用して、一度に複数の BLOB でリースを解約できるようになっています。
+
+### <a name="known-issues"></a>既知の問題
+
+* ADLS Gen2 ストレージ アカウントからダウンロードしているときに、転送中のファイルの 1 つが既に存在していると、AzCopy がクラッシュすることがあります。 今後の修正プログラムで修正される予定です。
+* BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳細については、#537 を参照してください。
+* VS for Mac を使用しており、カスタム AAD 構成を作成したことがある場合、サインインできないことがあります。 この問題を回避するには、~/.IdentityService/AadConfigurations の内容を削除します。 これを行ってもブロックが解除されない場合は、この問題についてコメントをお寄せください。
+* Azurite は、すべての Storage API を完全に実装しているわけではありません。 そのため、開発ストレージに Azurite を使用すると、予期しないエラーや動作が発生する可能性があります。
+* まれに、ツリーのフォーカスがクイック アクセスから移動しなくなることがあります。 フォーカスを移動できるようにするには、[すべて更新] をクリックします。
+* NodeJS のバグが原因で、OneDrive フォルダーからのアップロードが機能しません。 バグは修正されましたが、Electron にまだ統合されていません。 BLOB コンテナーにアップロードするとき、または BLOB コンテナーからダウンロードするときに、この問題を回避するには、試験段階の AzCopy 機能を使用できます。
+* Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、こちらで説明したフィルターのキャンセル回避策を使用しているためです。
+* 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
+* BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
+* Azure Stack では、次の機能はサポートされません。 Azure Stack リソースを操作しているときに、これらの機能を使用しようとすると、予期しないエラーが発生する場合があります。
+   * ファイル共有
+   * アクセス層
+   * 論理的な削除
+* Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
+* Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 のユーザーの場合、GConf をインストールする必要があります。次のコマンドを実行し、マシンを再起動して、この操作を行うことができます。
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="version-161"></a>バージョン 1.6.1
+2018/12/18
+
+### <a name="hotfixes"></a>修正プログラム
+* API の制限により、[アクセスの管理] ダイアログの ObjectId のすべての検証が無効になりました。 検証はユーザー UPN に対してのみ実行されるようになりました。 [#954](https://www.github.com/Microsoft/AzureStorageExplorer/issues/954)
+* ADLS Gen2 の [アクセスの管理] ダイアログでは、グループのアクセス許可を変更できませんでした。 この問題は修正されています。 [#958](https://www.github.com/Microsoft/AzureStorageExplorer/issues/958)
+* ADLS Gen2 エディターにドラッグ アンド ドロップによるアップロードのサポートが追加されました。 [#953](https://www.github.com/Microsoft/AzureStorageExplorer/issues/953)
+* ADLS Gen2 ファイルおよびフォルダーのプロパティ ダイアログに表示される URL プロパティに "/" が不足している場合がありました。 この問題は修正されています。 [#960](https://www.github.com/Microsoft/AzureStorageExplorer/issues/960)
+* ADLS Gen2 コンテナー、ファイル、またはフォルダーの現在のアクセス許可を取得できなかった場合、アクティビティ ログにエラーが適切に表示されるようになりました。 [#965](https://www.github.com/Microsoft/AzureStorageExplorer/issues/965)
+* Windows の MAX_PATH よりも長いパスが作成される可能性を減らすために、ファイルを開くために作成される一時パスが短くなりました。 [#93](https://www.github.com/Microsoft/AzureStorageExplorer/issues/93)
+* サインインしているユーザーがおらず、リソースがアタッチされていない場合に [接続] ダイアログが正常に表示されるようになりました。 [#944](https://www.github.com/Microsoft/AzureStorageExplorer/issues/944)
+* 1.6.0 では、HNS 以外の BLOB およびファイルのプロパティを保存すると、すべてのプロパティの値がエンコードされました。 この結果、ASCII 文字のみが含まれている値が不必要にエンコードされていました。 ASCII 以外の文字が含まれている場合にのみ、値がエンコードされるようになりました。 [#986](https://www.github.com/Microsoft/AzureStorageExplorer/issues/986)
+* 読み取りアクセス許可がない SAS を使用した場合、HNS 以外の BLOB コンテナーにフォルダーをアップロードできませんでした。 この問題は修正されています。 [#970](https://www.github.com/Microsoft/AzureStorageExplorer/issues/970)
+* AzCopy の転送のキャンセルが機能しませんでした。 この問題は修正されています。 [#943](https://www.github.com/Microsoft/AzureStorageExplorer/issues/943)
+* 名前にスペースが含まれているフォルダーを ADLS Gen2 の BLOB コンテナーからダウンロードしようとすると、AzCopy が失敗しました。 この問題は修正されています。 [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
+* 1.6.0 では、CosmosDB エディターが壊れていました。 これが修正されました。 [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
+        
+### <a name="new"></a>新規
+
+* Storage Explorer を使用して、[RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 経由で BLOB データにアクセスできるようになりました。 サインインしている場合に、自分のストレージ アカウントのキーを Storage Explorer が取得できないと、データ操作時の認証に OAuth トークンが使用されます。
+* Storage Explorer は ADLS Gen2 ストレージ アカウントをサポートするようになりました。 ストレージ アカウントに対して階層型名前空間が有効になっていることを Storage Explorer が検出すると、ストレージ アカウントの名前の横に "(ADLS Gen2 プレビュー)" と表示されます。 Storage Explorer では、サインインしている場合に階層型名前空間が有効になっているかどうかや、ストレージ アカウントに名前とキーを関連付けているかどうかを検出できます。 ADLS Gen2 ストレージ アカウントでは、Storage Explorer を使用して、以下の操作を実行できます。
+  * コンテナーの作成と削除
+  * コンテナーのプロパティとアクセス許可の管理 (左側)
+  * コンテナー内のデータの表示および移動
+  * 新しいフォルダーの作成
+  * ファイルおよびフォルダーのアップロード、ダウンロード、名前変更、削除
+  * ファイルおよびフォルダーのプロパティとアクセス許可の管理 (右側)
+    
+    論理的な削除やスナップショットなど、その他の一般的な BLOB 機能は現在使用できません。 アクセス許可の管理は、サインインしている場合にのみ使用できます。 さらに、ADLS Gen2 ストレージ アカウントで作業している場合、Storage Explorer では、すべてのアップロードおよびダウンロードに AzCopy が使用されます。また、既定ですべての操作に名前とキー資格情報が使用されます (使用可能な場合)。
+* 多数のユーザー フィードバックを受け、リースの解約をもう一度使用して、一度に複数の BLOB でリースを解約できるようになっています。
+
+### <a name="known-issues"></a>既知の問題
+
+* ADLS Gen2 ストレージ アカウントからダウンロードしているときに、転送中のファイルの 1 つが既に存在していると、AzCopy がクラッシュすることがあります。 今後の修正プログラムで修正される予定です。
+* BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳細については、#537 を参照してください。
+* VS for Mac を使用しており、カスタム AAD 構成を作成したことがある場合、サインインできないことがあります。 この問題を回避するには、~/.IdentityService/AadConfigurations の内容を削除します。 これを行ってもブロックが解除されない場合は、この問題についてコメントをお寄せください。
+* Azurite は、すべての Storage API を完全に実装しているわけではありません。 そのため、開発ストレージに Azurite を使用すると、予期しないエラーや動作が発生する可能性があります。
+* まれに、ツリーのフォーカスがクイック アクセスから移動しなくなることがあります。 フォーカスを移動できるようにするには、[すべて更新] をクリックします。
+* NodeJS のバグが原因で、OneDrive フォルダーからのアップロードが機能しません。 バグは修正されましたが、Electron にまだ統合されていません。 BLOB コンテナーにアップロードするとき、または BLOB コンテナーからダウンロードするときに、この問題を回避するには、試験段階の AzCopy 機能を使用できます。
+* Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、こちらで説明したフィルターのキャンセル回避策を使用しているためです。
+* 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
+* BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
+* Azure Stack では、次の機能はサポートされません。 Azure Stack リソースを操作しているときに、これらの機能を使用しようとすると、予期しないエラーが発生する場合があります。
+   * ファイル共有
+   * アクセス層
+   * 論理的な削除
+* Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
+* Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 のユーザーの場合、GConf をインストールする必要があります。次のコマンドを実行し、マシンを再起動して、この操作を行うことができます。
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="version-160"></a>バージョン 1.6.0
+2018/12/5
+
+### <a name="new"></a>新規
+
+* Storage Explorer を使用して、[RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 経由で BLOB データにアクセスできるようになりました。 サインインしている場合に、自分のストレージ アカウントのキーを Storage Explorer が取得できないと、データ操作時の認証に OAuth トークンが使用されます。
+* Storage Explorer は ADLS Gen2 ストレージ アカウントをサポートするようになりました。 ストレージ アカウントに対して階層型名前空間が有効になっていることを Storage Explorer が検出すると、ストレージ アカウントの名前の横に "(ADLS Gen2 プレビュー)" と表示されます。 Storage Explorer では、サインインしている場合に階層型名前空間が有効になっているかどうかや、ストレージ アカウントに名前とキーを関連付けているかどうかを検出できます。 ADLS Gen2 ストレージ アカウントでは、Storage Explorer を使用して、以下の操作を実行できます。
+  * コンテナーの作成と削除
+  * コンテナーのプロパティとアクセス許可の管理 (左側)
+  * コンテナー内のデータの表示および移動
+  * 新しいフォルダーの作成
+  * ファイルおよびフォルダーのアップロード、ダウンロード、名前変更、削除
+  * ファイルおよびフォルダーのプロパティとアクセス許可の管理 (右側)
+    
+    論理的な削除やスナップショットなど、その他の一般的な BLOB 機能は現在使用できません。 アクセス許可の管理は、サインインしている場合にのみ使用できます。 さらに、ADLS Gen2 ストレージ アカウントで作業している場合、Storage Explorer では、すべてのアップロードおよびダウンロードに AzCopy が使用されます。また、既定ですべての操作に名前とキー資格情報が使用されます (使用可能な場合)。
+* 多数のユーザー フィードバックを受け、リースの解約をもう一度使用して、一度に複数の BLOB でリースを解約できるようになっています。
+
+### <a name="known-issues"></a>既知の問題
+
+* ADLS Gen2 ストレージ アカウントからダウンロードしているときに、転送中のファイルの 1 つが既に存在していると、AzCopy がクラッシュすることがあります。 今後の修正プログラムで修正される予定です。
+* BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳細については、#537 を参照してください。
+* VS for Mac を使用しており、カスタム AAD 構成を作成したことがある場合、サインインできないことがあります。 この問題を回避するには、~/.IdentityService/AadConfigurations の内容を削除します。 これを行ってもブロックが解除されない場合は、この問題についてコメントをお寄せください。
+* Azurite は、すべての Storage API を完全に実装しているわけではありません。 そのため、開発ストレージに Azurite を使用すると、予期しないエラーや動作が発生する可能性があります。
+* まれに、ツリーのフォーカスがクイック アクセスから移動しなくなることがあります。 フォーカスを移動できるようにするには、[すべて更新] をクリックします。
+* NodeJS のバグが原因で、OneDrive フォルダーからのアップロードが機能しません。 バグは修正されましたが、Electron にまだ統合されていません。 BLOB コンテナーにアップロードするとき、または BLOB コンテナーからダウンロードするときに、この問題を回避するには、試験段階の AzCopy 機能を使用できます。
+* Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、こちらで説明したフィルターのキャンセル回避策を使用しているためです。
+* 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
+* BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
+* Azure Stack では、次の機能はサポートされません。 Azure Stack リソースを操作しているときに、これらの機能を使用しようとすると、予期しないエラーが発生する場合があります。
+   * ファイル共有
+   * アクセス層
+   * 論理的な削除
+* Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
+* Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 のユーザーの場合、GConf をインストールする必要があります。次のコマンドを実行し、マシンを再起動して、この操作を行うことができます。
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="version-150"></a>バージョン 1.5.0
+10/29/2018
+
+### <a name="new"></a>新規
+
+* BLOB のアップロードおよびダウンロードに、[AzCopy v10 (プレビュー)](https://github.com/Azure/azure-storage-azcopy) を使用できるようになりました。 この機能を有効にするには、[試験段階] メニューに移動して、[Use AzCopy for Improved Blob Upload and Download]\(改善された BLOB のアップロードとダウンロードに AzCopy を使用する\) をクリックします。 有効な場合は、次のシナリオで AzCopy が使用されます。
+   * ツール バーか、ドラッグ アンド ドロップのいずれかで、フォルダーとファイルを BLOB コンテナーにアップロードする。
+   * ツール バーまたはコンテキスト メニューのいずれかで、フォルダーとファイルをダウンロードする。
+
+* また、AzCopy を使用する場合
+   * 使用した AzCopy コマンドをコピーして、クリップボードへの転送を実行できます。 アクティビティ ログで [Copy AzCopy Command to Clipboard]\(AzCopy コマンドをクリップボードにコピー\) をクリックするだけです。
+   * アップロードした後に、手動で BLOB エディターを更新する必要があります。
+   * BLOB を追加するためのファイルのアップロードはサポートされておらず、vhd ファイルはページ BLOB としてアップロードされ、その他のファイルはすべてブロック BLOB としてアップロードされます。
+   * アップロードまたはダウンロード時に発生するエラーや競合は、アップロードまたはダウンロードが完了するまで提示されません。
+
+最後に、ファイル共有での AzCopy の使用のサポートは、今後提供される予定です。
+* 現在、Storage Explorer では Electron バージョン 2.0.11 を使用しています。
+* リースの解約は一度に 1 つの BLOB 上のみで実行することができます。 さらに、解約するリースを含む BLOB の名前を入力する必要があります。 この変更は、特に VM の場合に、誤ってリースを解約する可能性を低減するために加えられました。 #394
+* サインインの問題が発生した場合、認証のリセットを試行できるようになりました。 この機能にアクセスするには、[ヘルプ] メニューに移動して [リセット] をクリックします。 #419
+
+### <a name="fix"></a>解決策
+
+* 強力なユーザーのフィードバックの後、既定のエミュレーター ノードを再度有効にしています。 引き続き [接続] ダイアログからさらにエミュレーターの接続を追加することはできますが、ご利用のエミュレーターが既定のポートを使用するように構成されている場合は、[Local & Attached]\(ローカルおよびアタッチ済み\)、[ストレージ アカウント] の下で "エミュレーター * 既定のポート" ノードを使用することもできます。 #669
+* Storage Explorer では、先頭または末尾に空白がある BLOB メタデータの値を設定することはできなくなりました。 #760
+* [サインイン] ボタンは、[接続] ダイアログの同じページ上で常に有効になっていました。 必要に応じて、無効にされるようになりました。 #761
+* クイック アクセスの項目が追加されていない場合に、クイック アクセスによってコンソール内にエラーが生成されることはなくなりました。
+
+### <a name="known-issues"></a>既知の問題
+
+* BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳細については、#537 を参照してください。
+* VS for Mac を使用しており、カスタム AAD 構成を作成したことがある場合、サインインできないことがあります。 この問題を回避するには、~/.IdentityService/AadConfigurations の内容を削除します。 これを行ってもブロックが解除されない場合は、この問題についてコメントをお寄せください。
+* Azurite は、すべての Storage API を完全に実装しているわけではありません。 そのため、開発ストレージに Azurite を使用すると、予期しないエラーや動作が発生する可能性があります。
+* まれに、ツリーのフォーカスがクイック アクセスから移動しなくなることがあります。 フォーカスを移動できるようにするには、[すべて更新] をクリックします。
+* NodeJS のバグが原因で、OneDrive フォルダーからのアップロードが機能しません。 バグは修正されましたが、Electron にまだ統合されていません。 BLOB コンテナーにアップロードするとき、または BLOB コンテナーからダウンロードするときに、この問題を回避するには、試験段階の AzCopy 機能を使用できます。
+* Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、こちらで説明したフィルターのキャンセル回避策を使用しているためです。
+* 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
+* BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
+* Azure Stack では、次の機能はサポートされません。 Azure Stack リソースを操作しているときに、これらの機能を使用しようとすると、予期しないエラーが発生する場合があります。
+   * ファイル共有
+   * アクセス層
+   * 論理的な削除
+* Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
+* Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 のユーザーの場合、GConf をインストールする必要があります。次のコマンドを実行し、マシンを再起動して、この操作を行うことができます。
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+
 ## <a name="version-144"></a>バージョン 1.4.4
 10/15/2018
 
 ### <a name="hotfixes"></a>修正プログラム
-* Azure Resource Management の API バージョンは、Azure US Government ユーザーのブロックを解除するようにロールバックされました。 [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
+* Azure Resource Management の API バージョンは、Azure US Government ユーザーのブロックを解除するためにロールバックされました。 [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
 * 読み込みスピナーは現在、CSS アニメーションを使用して、Storage Explorer によって使用される GPU の量を削減しています。 [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
 
 ### <a name="new"></a>新規
@@ -165,9 +431,9 @@ ms.locfileid: "51038622"
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
@@ -189,7 +455,7 @@ ms.locfileid: "51038622"
 10/11/2018
 
 ### <a name="hotfixes"></a>修正プログラム
-* Azure Resource Management の API バージョンは、Azure US Government ユーザーのブロックを解除するようにロールバックされました。 [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
+* Azure Resource Management の API バージョンは、Azure US Government ユーザーのブロックを解除するためにロールバックされました。 [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
 * 読み込みスピナーは現在、CSS アニメーションを使用して、Storage Explorer によって使用される GPU の量を削減しています。 [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
 
 ### <a name="new"></a>新規
@@ -221,9 +487,9 @@ ms.locfileid: "51038622"
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
@@ -276,9 +542,9 @@ ms.locfileid: "51038622"
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
@@ -336,9 +602,9 @@ ms.locfileid: "51038622"
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
@@ -363,7 +629,7 @@ ms.locfileid: "51038622"
 * 静的な Web サイトで使用される $web コンテナーへのアクセスがサポートされるようになりました。 これにより、Web サイトで使用されるファイルとフォルダーのアップロードと管理を容易に実行できます。 [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
 * macOS のアプリ バーが再構成されています。 変更には、[ファイル] メニュー、いくつかのショートカット キーの変更、およびアプリ メニューのさまざまな新しいコマンドが含まれています。 [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
 * Azure US Government にサインインするための証明機関のエンドポイントが https://login.microsoftonline.us/ に変更されています。
-* アクセシビリティ: スクリーン リーダーがアクティブであるとき、キーボード ナビゲーションが、項目を右側に表示するために使用されるテーブルでも機能するようになりました。 方向キーを使用して行と列を移動し、Enter キーで既定のアクションを呼び出し、コンテキスト メニュー キーで項目のコンテキスト メニューを開き、Shift または Control キーで複数選択を行うことができます。 [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
+* アクセシビリティ:スクリーン リーダーがアクティブであるとき、キーボード ナビゲーションが、項目を右側に表示するために使用されるテーブルでも機能するようになりました。 方向キーを使用して行と列を移動し、Enter キーで既定のアクションを呼び出し、コンテキスト メニュー キーで項目のコンテキスト メニューを開き、Shift または Control キーで複数選択を行うことができます。 [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
 
 ### <a name="fixes"></a>修正
 *  一部のコンピュータで、子プロセスの起動に時間がかかっていました。 これが発生すると、"子プロセスを適切なタイミングで開始できませんでした" エラーが表示されました。 現在、子プロセスに割り当てられる開始時間が、20 秒から90 秒に引き上げられています。 この問題による影響がまだある場合は、リンクされた GitHub 問題でコメントしてください。 [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
@@ -371,11 +637,11 @@ ms.locfileid: "51038622"
 * コンテナーのパブリック アクセス レベルを設定すると、すべてのアクセス ポリシーが削除されました (逆の場合も同様です)。 パブリック アクセス レベルとアクセス ポリシーのどちらを設定した場合でも、両方が保持されるようになりました。 [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
 * [プロパティ] ダイアログで "AccessTierChangeTime" が切り捨てられていました。 この問題は修正されています。 [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
 * [新しいディレクトリの作成] ダイアログで "Microsoft Azure Storage Explorer -" プレフィックスが欠落していました。 この問題は修正されています。 [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
-* アクセシビリティ: ボイス オーバーを使用したときに [エンティティの追加] ダイアログに簡単に移動できませんでした。 改良が加えられています。 [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
-* アクセシビリティ: [アクション] ウィンドウと [プロパティ] ウィンドウの折りたたみ/展開ボタンの背景色が、ハイコントラスト黒テーマ表示での類似する UI コントロールと一貫性がありませんでした。 色が変更されています。 [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
-* アクセシビリティ: ハイコントラスト黒テーマ表示で、[プロパティ] ダイアログの [X] ボタンのフォーカス スタイルが見えませんでした。 この問題は修正されています。 [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
-* アクセシビリティ: [アクション] タブと [プロパティ] タブで、複数の aria 値が欠落していたため、スクリーン リーダーの質が低下していました。 欠落していた aria 値が追加されています。 [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
-* Accessibility: 左側の折り畳まれたツリー ノードに、aria 拡張値 false が指定されませんでした。 この問題は修正されています。 [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+* アクセシビリティ:ボイス オーバーを使用したときに [エンティティの追加] ダイアログに簡単に移動できませんでした。 改良が加えられています。 [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
+* アクセシビリティ:[アクション] ウィンドウと [プロパティ] ウィンドウの折りたたみ/展開ボタンの背景色が、ハイコントラスト黒テーマ表示での類似する UI コントロールと一貫性がありませんでした。 色が変更されています。 [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
+* アクセシビリティ:ハイコントラスト黒テーマ表示で、[プロパティ] ダイアログの [X] ボタンのフォーカス スタイルが見えませんでした。 この問題は修正されています。 [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
+* アクセシビリティ:[アクション] タブと [プロパティ] タブで、複数の aria 値が欠落していたため、スクリーン リーダーの質が低下していました。 欠落していた aria 値が追加されています。 [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
+* アクセシビリティ:左側の折りたたまれたツリー ノードに、aria 拡張値 false が指定されませんでした。 この問題は修正されています。 [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
 
 ### <a name="known-issues"></a>既知の問題
 * BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳しくは、[この問題](https://github.com/Microsoft/AzureStorageExplorer/issues/537)をご覧ください。
@@ -393,9 +659,9 @@ ms.locfileid: "51038622"
    * 論理的な削除
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
@@ -450,9 +716,9 @@ ms.locfileid: "51038622"
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
@@ -504,9 +770,9 @@ ms.locfileid: "51038622"
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
@@ -564,15 +830,15 @@ ms.locfileid: "51038622"
 ### <a name="known-issues"></a>既知の問題
 * まれに、ツリーのフォーカスがクイック アクセスから移動しなくなることがあります。 フォーカスを移動できるようにするには、[すべて更新] をクリックします。
 * Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
-* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、ここで説明したフィルターのキャンセル回避策を使用しているためです。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、こちらで説明したフィルターのキャンセル回避策を使用しているためです。
 * 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
 * BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
@@ -607,9 +873,9 @@ ms.locfileid: "51038622"
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
 
@@ -649,16 +915,16 @@ ms.locfileid: "51038622"
 ### <a name="known-issues"></a>既知の問題
 * Storage Explorer では ADFS アカウントがサポートされません。
 * Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
-* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、ここで説明したフィルターのキャンセル回避策を使用しているためです。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、こちらで説明したフィルターのキャンセル回避策を使用しているためです。
 * 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
 * サブスクリプションをフィルターするために資格情報の再入力が必要であると、アカウント設定パネルに表示されることがあります。
 * BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
 
@@ -696,15 +962,17 @@ ms.locfileid: "51038622"
 * Storage Explorer では ADFS アカウントがサポートされません。
 * "Explorer の表示" と "アカウント管理の表示" のショートカット キーはそれぞれ、Ctrl/Cmd + Shift + E キーと Ctrl/Cmd + Shift + A キーです。
 * Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
-* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、ここで説明したフィルターのキャンセル回避策を使用しているためです。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、こちらで説明したフィルターのキャンセル回避策を使用しているためです。
 * 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
 * サブスクリプションをフィルターするために資格情報の再入力が必要であると、アカウント設定パネルに表示されることがあります。
 * BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
-```
-./StorageExplorer --disable-gpu
-```
+
+    ```
+    ./StorageExplorer --disable-gpu
+    ```
+
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
 
     ```
@@ -758,15 +1026,17 @@ ms.locfileid: "51038622"
 * Storage Explorer では ADFS アカウントがサポートされません。
 * "Explorer の表示" と "アカウント管理の表示" のショートカット キーはそれぞれ、Ctrl/Cmd + Shift + E キーと Ctrl/Cmd + Shift + A キーです。
 * Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
-* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、ここで説明したフィルターのキャンセル回避策を使用しているためです。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、こちらで説明したフィルターのキャンセル回避策を使用しているためです。
 * 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
 * サブスクリプションをフィルターするために資格情報の再入力が必要であると、アカウント設定パネルに表示されることがあります。
 * BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
-```
-./StorageExplorer --disable-gpu
-```
+
+    ```
+    ./StorageExplorer --disable-gpu
+    ```
+
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
 
     ```
@@ -812,15 +1082,17 @@ ms.locfileid: "51038622"
 * Storage Explorer では ADFS アカウントがサポートされません。
 * "Explorer の表示" と "アカウント管理の表示" のショートカット キーはそれぞれ、Ctrl/Cmd + Shift + E キーと Ctrl/Cmd + Shift + A キーです。
 * Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
-* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、ここで説明したフィルターのキャンセル回避策を使用しているためです。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、こちらで説明したフィルターのキャンセル回避策を使用しているためです。
 * 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
 * サブスクリプションをフィルターするために資格情報の再入力が必要であると、アカウント設定パネルに表示されることがあります。
 * BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
 * Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
-```
-./StorageExplorer --disable-gpu
-```
+
+    ```
+    ./StorageExplorer --disable-gpu
+    ```
+
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
 
     ```
@@ -913,12 +1185,12 @@ ms.locfileid: "51038622"
 
 #### <a name="fixes"></a>修正
 
-* 修正: ファイルのアップロードは、メモリ不足エラーを発生させる高い可能性がありました
-* 修正: PIN/スマートカードでサインインできるようになりました
-* 修正: [ポータルで開く] が、Azure 中国、Azure ドイツ、Azure 米国政府機関、Azure Stack で機能するようになりました
-* 修正: フォルダーを BLOB コンテナーにアップロードしているときに、"無効な操作" エラーが発生する場合があります
-* 修正: スナップショットを管理しているときに、[すべて選択] が無効になっていました
-* 修正: ベース BLOB のメタデータは、そのスナップショットのプロパティを表示した後に上書きされる可能性があります
+* 修正:ファイルのアップロードは、メモリ不足エラーを発生させる高い可能性がありました
+* 修正:PIN/スマートカードでサインインできるようになりました
+* 修正済み:[ポータルで開く] が、Azure China 21Vianet、Azure Germany、Azure US Government、Azure Stack で機能するようになりました
+* 修正済み:フォルダーを BLOB コンテナーにアップロードしているときに、"無効な操作" エラーが発生する場合があります
+* 修正:スナップショットを管理しているときに、[すべて選択] が無効になっていました
+* 修正:ベース BLOB のメタデータは、そのスナップショットのプロパティを表示した後に上書きされる可能性があります
 
 #### <a name="known-issues"></a>既知の問題
 
@@ -994,7 +1266,7 @@ ms.locfileid: "51038622"
 * ストレージ エクスプローラー 0.8.9 では、更新プログラムの最新バージョンを自動的にダウンロードします。
 * 修正プログラム: ポータルで生成された SAS URL を使用して、ストレージ アカウントをアタッチすると、エラーになります。
 * BLOB スナップショットの作成、管理、および昇格を行えるようになりました。
-* Azure 中国、Azure ドイツ、Azure 米国政府機関のアカウントにサインインできるようになりました。
+* Azure China 21Vianet、Azure Germany、Azure US Government のアカウントにサインインできるようになりました。
 * ズーム レベルを変更できるようになりました。 [表示] メニューのオプションを使用して、拡大、縮小、およびズームのリセットを行います。
 * Unicode 文字が、BLOB とファイルのユーザー メタデータでサポートされるようになりました。
 * アクセシビリティが向上しました。
@@ -1027,13 +1299,13 @@ ms.locfileid: "51038622"
 
 #### <a name="fixes"></a>修正
 
-* 修正: ストレージ エクスプローラーは、Mac の信頼できるアプリになりました
-* 修正: Ubuntu 14.04 が再びサポートされるようになりました
-* 修正: サブスクリプションを読み込むときに [アカウントの追加] UI が点滅することがありました
-* 修正: 左側のナビゲーション ウィンドウにすべてのストレージ リソースが一覧表示されないことがありました
-* 修正: 操作ウィンドウに空の操作が表示されることがありました
-* 修正: 前回終了したセッションからウィンドウ サイズが維持されるようになりました
-* 修正: コンテキスト メニューを使って同じリソースに対して複数のタブを開くことができるようになりました
+* 修正:Storage Explorer は、Mac の信頼できるアプリになりました
+* 修正:Ubuntu 14.04 が再びサポートされるようになりました
+* 修正:サブスクリプションを読み込むときに [アカウントの追加] UI が点滅することがありました
+* 修正:左側のナビゲーション ウィンドウにすべてのストレージ リソースが一覧表示されないことがありました
+* 修正:操作ウィンドウに空の操作が表示されることがありました
+* 修正:前回終了したセッションからウィンドウ サイズが維持されるようになりました
+* 修正:コンテキスト メニューを使って同じリソースに対して複数のタブを開くことができるようになりました
 
 #### <a name="known-issues"></a>既知の問題
 
@@ -1055,7 +1327,7 @@ ms.locfileid: "51038622"
 * 新しく拡張されたサブ文字列の検索で範囲指定の検索を再導入したため、検索には次の 2 つのオプションがあります。
     * グローバル検索 - 検索用語を検索テキストボックスに入力するだけです
     * 範囲指定の検索 - ノードの横にある虫眼鏡アイコンをクリックして、パスの末尾に検索用語を追加するか、右クリックして [ここから検索] を選択します
-* さまざまなテーマを追加しました。明るい (既定値)、暗い、ハイコントラスト黒、ハイ コントラスト白。 [編集] &gt; [テーマ] を選んで、テーマの設定を変更します
+* さまざまなテーマを追加しました(明るい (既定値)、暗い、ハイコントラスト黒、ハイ コントラスト白)。 [編集] &gt; [テーマ] を選んで、テーマの設定を変更します
 * BLOB とファイルのプロパティを変更できます
 * エンコードされた (Base64) キュー メッセージとエンコードされていないキュー メッセージをサポートするようになりました
 * Linux では、64 ビット OS が必要になりました。 このリリースでは、 64 ビット Ubuntu 16.04.1 LTS のみをサポートします
@@ -1063,14 +1335,14 @@ ms.locfileid: "51038622"
 
 #### <a name="fixes"></a>修正
 
-* 修正: 画面がフリーズする問題
-* 修正: セキュリティの強化
-* 修正: アタッチされたアカウントが重複して表示されることがあります
-* 修正: 定義されていないコンテンツ タイプを持つ BLOB は、例外を生成する場合があります
-* 修正: 空のテーブルでクエリ パネルを開くことができませんでした
-* 修正: 検索でのさまざまなバグ
-* 修正: [Load More]\(さらに読み込む\) をクリックするときに読み込むリソース数が、50 から 100 に増えました
-* 修正: 最初の実行で、アカウントがサインインされた場合、既定でアカウントにすべてのサブスクリプションを選択するようになりました
+* 修正:画面がフリーズする問題
+* 修正:強化されたセキュリティ
+* 修正:アタッチされたアカウントが重複して表示されることがあります
+* 修正:定義されていないコンテンツ タイプを持つ BLOB は、例外を生成する場合があります
+* 修正:空のテーブルでクエリ パネルを開くことができませんでした
+* 修正:検索でのさまざまなバグ
+* 修正:[さらに読み込む] をクリックしたときに読み込まれるリソース数が 50 から 100 に増えました
+* 修正:最初の実行で、アカウントがサインインされた場合、既定でアカウントにすべてのサブスクリプションを選択するようになりました
 
 #### <a name="known-issues"></a>既知の問題
 
@@ -1091,8 +1363,8 @@ ms.locfileid: "51038622"
 #### <a name="fixes"></a>修正
 
 * 修正: 検索中の競合状態は、ノードが展開不可能になることがあります
-* 修正: アカウント名とキーでストレージ アカウントに接続している場合、"HTTP の使用" は動作しません
-* 修正: SAS キー (特にポータルで生成されたキー) は、"末尾のスラッシュ" エラーを返します
+* 修正:アカウント名とキーでストレージ アカウントに接続している場合、"HTTP の使用" は動作しません
+* 修正:SAS キー (特にポータルで生成されたキー) は、"末尾のスラッシュ" エラーを返します
 * 修正: テーブルのインポートの問題
     * パーティション キーと行キーが逆順になる場合がありました
     * "null" のパーティション キーを読み取ることができません
@@ -1138,7 +1410,7 @@ ms.locfileid: "51038622"
 
 #### <a name="fixes"></a>修正
 
-* 修正: Microsoft アカウントは、8 ～ 12 時間ごとに再認証が必要です
+* 修正:Microsoft アカウントは、8 - 12 時間ごとに再認証が必要です
 
 #### <a name="known-issues"></a>既知の問題
 
@@ -1146,7 +1418,7 @@ ms.locfileid: "51038622"
 * macOS のインストールには管理者アクセス許可が必要な場合があります
 * サブスクリプションをフィルターするために、資格情報の再入力が必要であることがアカウント設定パネルに表示されることがあります
 * ファイル共有、BLOB コンテナー、およびテーブルの名前を変更しても、ファイル共有のクォータ、パブリック アクセス レベル、またはアクセス ポリシーなど、コンテナーのメタデータやその他のプロパティを保持することはありません
-* BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます
+* BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
 * リソースのコピーまたは名前の変更は、SAS がアタッチされたアカウントで機能しません
 
 07/07/2016
@@ -1157,7 +1429,7 @@ ms.locfileid: "51038622"
 #### <a name="new"></a>新規
 
 * ストレージ アカウントはサブスクリプションごとにグループ化されます。キーまたは SAS によってアタッチされた開発ストレージとリソースは、(ローカルと接続されている) ノードに表示されます
-* [Azure アカウントの設定] パネルのアカウントからサインオフします
+* [Azure アカウントの設定] パネルのアカウントからサインアウトします
 * サインインを有効にして管理するように、プロキシ設定を構成します
 * BLOB リースの作成と中断
 * シングルクリックで、BLOB コンテナー、キュー、テーブル、およびファイルを開きます
@@ -1194,7 +1466,7 @@ ms.locfileid: "51038622"
 
 * 修正: 大きい BLOB のアップロードまたはダウンロードは、不完全なアップロードまたはダウンロードになります
 * 修正: 数値文字列 ("1") を含むエンティティの編集、追加、またはインポートは、double に変換されます
-* 修正: ローカル開発環境のテーブル ノードを展開できません
+* 修正:ローカル開発環境のテーブル ノードを展開できません
 
 #### <a name="known-issues"></a>既知の問題
 
@@ -1214,7 +1486,7 @@ ms.locfileid: "51038622"
 
 #### <a name="known-issues"></a>既知の問題
 
-* テーブル: あいまいな数値 ("1"、"1.0" など) を含むプロパティがあるエンティティを追加、編集、またはインポートしている場合、ユーザーは `Edm.String` としてエンティティを送信しようとし、値は Edm.Double としてクライアント API によって戻されます
+* テーブル:あいまいな数値 ("1"、"1.0" など) を含むプロパティがあるエンティティを追加、編集、またはインポートしている場合、ユーザーは `Edm.String` としてエンティティを送信しようとし、値は Edm.Double としてクライアント API によって戻されます
 
 03/31/2016
 
@@ -1260,7 +1532,7 @@ ms.locfileid: "51038622"
 
 * Linux Support (OSX へのパリティ機能)
 * Shared Access Signatures (SAS) キーを持つ BLOB コンテナーを追加します
-* Azure 中国用にストレージ アカウントを追加します
+* Azure China 21Vianet 用にストレージ アカウントを追加します
 * カスタム エンドポイントを持つストレージ アカウントを追加します
 * コンテンツ テキストと画像 BLOB を開いて表示します
 * BLOB のプロパティとメタデータを表示および編集します

@@ -2,19 +2,19 @@
 title: Azure Stream Analytics ジョブでログイン資格情報を交換する
 description: この記事では、Azure Stream Analytics ジョブの入力および出力シンクの資格情報を更新する方法について説明します。
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/11/2018
-ms.openlocfilehash: 362fdca3b9a54ea0a8785ae37b32b88cbe0f67ba
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 14e24c1e9a61eb7ea73a949e17ffbf8c5b768f05
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978776"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099071"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Stream Analytics ジョブの入力と出力のログイン資格情報の交換
 
@@ -27,20 +27,20 @@ Stream Analytics ジョブの入力または出力のための資格情報を再
 ### <a name="blob-storagetable-storage"></a>BLOB ストレージとテーブル ストレージ
 1. Azure Portal にサインインし、Stream Analytics ジョブの入力/出力として使ったストレージ アカウントを参照します。    
 2. 設定セクションで **[アクセス キー]** を開きます。 2 つの既定のキー (key1、key2) のうち、ジョブによって使われていない方を選んで再生成します。  
-   ![ストレージ アカウントのキーを再生成する](media/stream-analytics-login-credentials-inputs-outputs/image1.png)
+   ![ストレージ アカウントのキーを再生成する](media/stream-analytics-login-credentials-inputs-outputs/regenerate-storage-keys.png)
 3. 新しく生成されたキーをコピーします。    
 4. Azure Portal で Stream Analytics ジョブを参照し、**[停止]** を選んで、ジョブが停止するまで待ちます。    
 5. 資格情報を更新する Blob/Table Storage の入力/出力を見つけます。    
 6. **[ストレージ アカウント キー]** フィールドに新しく生成されたキーを貼り付けて、**[保存]** をクリックします。    
 7. 変更内容を保存すると、接続テストが自動的に開始され、[通知] タブでそれを確認できます。2 つの通知が表示されます。1 つは更新の保存に対応し、もう 1 つは接続のテストに対応します。  
-   ![キーを編集した後の通知](media/stream-analytics-login-credentials-inputs-outputs/image4.png)
+   ![キーを編集した後の通知](media/stream-analytics-login-credentials-inputs-outputs/edited-key-notifications.png)
 8. 「[最終停止時刻からジョブを開始する](#start-your-job-from-the-last-stopped-time)」セクションに進みます。
 
 ### <a name="event-hubs"></a>Event Hubs
 
 1. Azure Portal にサインインし、Stream Analytics ジョブの入力/出力として使ったイベント ハブを参照します。    
 2. [設定] セクションで **[共有アクセス ポリシー]** を開き、必要なアクセス ポリシーを選びます。 **[プライマリ キー]** と **[セカンダリ キー]** のうち、ジョブによって使われていない方を選んで再生成します。  
-   ![イベント ハブのキーを再生成する](media/stream-analytics-login-credentials-inputs-outputs/image2.png)
+   ![イベント ハブのキーを再生成する](media/stream-analytics-login-credentials-inputs-outputs/regenerate-event-hub-keys.png)
 3. 新しく生成されたキーをコピーします。    
 4. Azure Portal で Stream Analytics ジョブを参照し、**[停止]** を選んで、ジョブが停止するまで待ちます。    
 5. 資格情報を更新するイベント ハブの入力/出力を見つけます。    
@@ -54,7 +54,7 @@ Stream Analytics ジョブの入力または出力のための資格情報を再
 
 1. Azure Portal にサインインし、Stream Analytics ジョブの出力として使った SQL データベースを参照します。    
 2. **データ エクスプローラー**でデータベースにログイン/接続し、[承認の種類] として **[SQL Server 認証]** を選び、**[ログイン]** と **[パスワード]** の詳細を入力して、**[OK]** を選びます。  
-   ![SQL データベースの資格情報を再生成する](media/stream-analytics-login-credentials-inputs-outputs/image3.png)
+   ![SQL データベースの資格情報を再生成する](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
 
 3. クエリ タブで、次のクエリを実行して、いずれかのユーザーのパスワードを変更します (`<user_name>` はお使いのユーザー名に、`<new_password>` は新しいパスワードに置き換えてください)。  
 
@@ -79,7 +79,7 @@ Stream Analytics ジョブの入力または出力のための資格情報を再
 
 1. ジョブの **[概要]** ウィンドウに移動し、**[開始]** を選んでジョブを開始します。    
 2. **[最終停止時刻]** を選び、**[開始]** をクリックします。 [最終停止時刻] オプションは、以前にジョブを実行して何らかの出力が生成された場合にのみ表示されることに注意してください。 最後の出力値の時刻に基づいてジョブが再び開始されます。
-   ![ジョブを開始する](media/stream-analytics-login-credentials-inputs-outputs/image5.png)
+   ![Stream Analytics ジョブの開始](media/stream-analytics-login-credentials-inputs-outputs/start-stream-analytics-job.png)
 
 ## <a name="next-steps"></a>次の手順
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)

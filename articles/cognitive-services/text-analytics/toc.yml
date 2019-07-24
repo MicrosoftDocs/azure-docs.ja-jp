@@ -1,88 +1,105 @@
-items:
 - name: Text Analytics API のドキュメント
   href: index.yml
 - name: 概要
-  items:
-  - name: Text Analytics API とは
-    href: overview.md
   expanded: true
+  items:
+    - name: Text Analytics API とは
+      href: overview.md
+    - name: ユーザー シナリオの例
+      href: text-analytics-user-scenarios.md
 - name: クイック スタート
   items:
-  - name: C#
-    href: quickstarts/csharp.md
-  - name: Go
-    href: quickstarts/go.md
-  - name: Java
-    href: quickstarts/java.md
-  - name: Node.js
-    href: quickstarts/nodejs.md
-  - name: PHP
-    href: quickstarts/php.md
-  - name: Python
-    href: quickstarts/python.md
-  - name: Ruby
-    href: quickstarts/ruby.md
+    - name: 'C#'
+      href: quickstarts/csharp.md
+    - name: Go
+      href: quickstarts/go.md
+    - name: Java
+      href: quickstarts/java.md
+    - name: Node.js
+      href: quickstarts/nodejs.md
+    - name: PHP
+      href: quickstarts/php.md
+    - name: Python
+      href: quickstarts/python.md
+    - name: Ruby
+      href: quickstarts/ruby.md
 - name: チュートリアル
   items:
-  - name: Text Analytics と Power BI
-    href: Tutorials/tutorial-power-bi-key-phrases.md
-  - name: Text Analytics と Power Apps
-    href: https://powerapps.microsoft.com/tutorials/cognitive-services-api/
+    - name: Power BI を統合して顧客からのフィードバックを分析する
+      href: Tutorials/tutorial-power-bi-key-phrases.md
+    - name: Text Analytics と Power Apps
+      href: 'https://powerapps.microsoft.com/tutorials/cognitive-services-api/'
+    - name: Azure Databricks を使用した、ストリーミング データに対する感情分析
+      maintainContext: true
+      href: ../../azure-databricks/databricks-sentiment-analysis-cognitive-services.md
+    - name: Flask によるテキストの翻訳、センチメントの分析、音声の合成
+      maintainContext: true
+      href: 'https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis'
 - name: ハウツー ガイド
   items:
-  - name: サインアップ
-    href: How-tos/text-analytics-how-to-signup.md
-  - name: アクセス キーを取得する
-    href: How-tos/text-analytics-how-to-access-key.md
-  - name: Text Analytics API を呼び出す
-    href: How-tos/text-analytics-how-to-call-api.md
-  - name: 言語を検出する
-    href: How-tos/text-analytics-how-to-language-detection.md
-  - name: センチメントを分析する
-    href: How-tos/text-analytics-how-to-sentiment-analysis.md
-  - name: キー フレーズを抽出する
-    href: How-tos/text-analytics-how-to-keyword-extraction.md
-  - name: 名前付きエンティティの認識を呼び出す
-    href: How-tos/text-analytics-how-to-entity-linking.md
-  - name: コンテナーの使用
-    items:
-    - name: コンテナーのインストールと実行
-      href: how-tos/text-analytics-how-to-install-containers.md
-    - name: コンテナーの構成
-      href: text-analytics-resource-container-config.md
-  - name: Text Analytics 接続済みサービスを使用する
-    href: vs-text-connected-service.md
+    - name: サインアップ
+      href: How-tos/text-analytics-how-to-signup.md
+    - name: アクセス キーを取得する
+      href: How-tos/text-analytics-how-to-access-key.md
+    - name: Text Analytics API を呼び出す
+      href: How-tos/text-analytics-how-to-call-api.md
+    - name: 言語を検出する
+      href: How-tos/text-analytics-how-to-language-detection.md
+    - name: センチメントを分析する
+      href: How-tos/text-analytics-how-to-sentiment-analysis.md
+    - name: キー フレーズを抽出する
+      href: How-tos/text-analytics-how-to-keyword-extraction.md
+    - name: 名前付きエンティティの認識を呼び出す
+      href: How-tos/text-analytics-how-to-entity-linking.md
+    - name: コンテナーの使用
+      items:
+        - name: コンテナーのインストールと実行
+          href: how-tos/text-analytics-how-to-install-containers.md
+        - name: コンテナーを構成する
+          href: text-analytics-resource-container-config.md
+        - name: Azure Kubernetes Service での実行方法
+          href: How-tos/text-analytics-how-to-use-container-instance.md
+    - name: Text Analytics 接続済みサービスを使用する
+      href: vs-text-connected-service.md
 - name: リファレンス
   items:
-  - name: CLI リファレンス
-    href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
-  - name: PowerShell リファレンス
-    href: https://aka.ms/azure-powershell-cognitiveservices
-  - name: Text Analytics API
-    href: https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7
+    - name: CLI リファレンス
+      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+    - name: PowerShell リファレンス
+      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+    - name: Text Analytics API
+      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7'
+    - name: SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/textanalytics?view=azure-node-latest'
+        - name: Go
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics'
 - name: リソース
   items:
-  - name: 外部とコミュニティのコンテンツ
-    href: text-analytics-resource-external-community.md
-  - name: FAQ
-    href: text-analytics-resource-faq.md
-  - name: 言語とリージョンのサポート
-    href: language-support.md
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/
-  - name: リージョン別の提供状況
-    href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: スタック オーバーフロー
-    href: https://stackoverflow.com/questions/tagged/text-analytics-api
-  - name: Subscription key
-    href: https://azure.microsoft.com/try/cognitive-services/?api=text-analytics
-  - name: 試してみる
-    href: https://azure.microsoft.com/services/cognitive-services/text-analytics/
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/555922-text-analytics
-ms.openlocfilehash: 42fbfd8aa66ca59fd689e7d3d1656b912da84700
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51631339"
+    - name: MS Flow を使って Yammer グループ内のコメントのセンチメントを特定する
+      href: 'https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure'
+    - name: 外部とコミュニティのコンテンツ
+      href: text-analytics-resource-external-community.md
+    - name: FAQ
+      href: text-analytics-resource-faq.md
+    - name: 言語とリージョンのサポート
+      href: language-support.md
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
+    - name: Subscription key
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=text-analytics'
+    - name: 試してみる
+      href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/555922-text-analytics'

@@ -1,21 +1,21 @@
 ---
-title: '例: 使用開始 - Knowledge Exploration Service API'
+title: 例:使用開始 - Knowledge Exploration Service API
 titlesuffix: Azure Cognitive Services
 description: Knowledge Exploration Service (KES) API を使用して、教育パブリケーションにわたる対話形式の検索エクスペリエンスのためのエンジンを作成できます。
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 6cee339793269af0e8060cce56f94fa81db6a6c5
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 00c5ed3e3ea5c083f727d06c2ed305fe35ed03db
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124017"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523326"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Knowledge Exploration Service の作業を開始する
 
@@ -41,7 +41,7 @@ ms.locfileid: "46124017"
 }
 ```
 
-ここでは、*Title*、*Year*、および *Keyword* をそれぞれ文字列、整数および文字列属性として定義します。 著者は、ID、氏名、所属組織で表されるため、*Author* は、*Author.Id*、*Author.Name*、*Author.Affiliation* の 3 つのサブ属性の複合属性として定義します。
+ここでは、*Title*、*Year*、および *Keyword* をそれぞれ文字列、整数および文字列属性として定義します。 著者は、ID、氏名、所属組織で表されるため、*Author* は、3 つのサブ属性の複合属性として定義します (*Author.Id*、*Author.Name*、および *Author.Affiliation*)。
 
 既定では、属性は、*equals*、*starts_with*、および *is_between* を含む、そのデータ型で使用可能なすべての操作をサポートします。 author ID は識別子として内部でのみ使用されるため、既定値を上書きし、インデックス操作として *equals* のみを指定します。
 
@@ -64,7 +64,7 @@ ms.locfileid: "46124017"
 
 ## <a name="generate-data"></a>データを生成する
 
-データ ファイルは、各行が [JSON 形式](http://json.org/)で論文の属性値を指定し、インデックスを作成するパブリケーションの一覧を記述します。  次の例は、読みやすいように書式を設定したデータ ファイル *Academic.data* からの 1 行です。
+データ ファイルは、各行が [JSON 形式](https://json.org/)で論文の属性値を指定し、インデックスを作成するパブリケーションの一覧を記述します。  次の例は、読みやすいように書式を設定したデータ ファイル *Academic.data* からの 1 行です。
 
 ```
 ...
@@ -100,7 +100,7 @@ ms.locfileid: "46124017"
 
 `kes.exe build_index Academic.schema Academic.data Academic.index`
 
-Azure の外でプロトタイプを簡単に作成するために、[`kes.exe build_index`](CommandLine.md#build_index-command) は、最大 10,000 個のオブジェクトを含むデータ ファイルから小型のインデックスをローカルに構築できます。 サイズが大きいデータ ファイルの場合は、[Azure の Windows 仮想マシン](../../../articles/virtual-machines/windows/quick-create-portal.md)内から実行するか、または Azure でリモート ビルドを実行します。 詳細については、[スケールアップ](#scaling-up)に関する記事を参照してください。
+Azure の外でプロトタイプを簡単に作成するために、[`kes.exe build_index`](CommandLine.md#build_index-command) は、最大 10,000 個のオブジェクトを含むデータ ファイルから小型のインデックスをローカルに構築できます。 サイズが大きいデータ ファイルの場合は、[Azure の Windows 仮想マシン](../../../articles/virtual-machines/windows/quick-create-portal.md)内から実行するか、または Azure でリモート ビルドを実行します。 詳細については、スケールアップに関する記事を参照してください。
 
 ## <a name="use-an-xml-grammar-specification"></a>XML 文法仕様を使用する
 
@@ -110,7 +110,7 @@ Azure の外でプロトタイプを簡単に作成するために、[`kes.exe b
 <grammar root="GetPapers">
 
   <!-- Import academic data schema-->
-  <import schema="Academic.schema" name="academic"/>
+  <import schema="Academic.schema" name="academic"/>
 
   <!-- Define root rule-->
   <rule id="GetPapers">
@@ -207,11 +207,11 @@ XML 文法仕様を指定したら、[`kes.exe build_grammar`](CommandLine.md#bu
 
 ## <a name="host-the-grammar-and-index-in-a-web-service"></a>Web サービスで文法とインデックスをホストする
 
-迅速なプロトタイプ作成のため、[`kes.exe host_service`](CommandLine.md#host_service-command) を使用してローカル コンピューター上の Web サービス内の文法とインデックスをホストできます。 これにより、[web API](WebAPI.md) 経由でサービスにアクセスし、データの正確性と文法の設計を検証できます。 この例では、文法ファイル *Academic.grammar* とインデックス ファイル *Academic.index* を http://localhost:8000/ でホストします。 次のコマンドを使用します。
+迅速なプロトタイプ作成のため、[`kes.exe host_service`](CommandLine.md#host_service-command) を使用してローカル コンピューター上の Web サービス内の文法とインデックスをホストできます。 これにより、[web API](WebAPI.md) 経由でサービスにアクセスし、データの正確性と文法の設計を検証できます。 この例では、文法ファイル *Academic.grammar* とインデックス ファイル *Academic.index* を`http://localhost:8000/` でホストします。 次のコマンドを使用します。
 
 `kes.exe host_service Academic.grammar Academic.index --port 8000`
 
-これにより、Web サービスのローカル インスタンスが開始されます。 ブラウザーから `http::localhost:<port>` にアクセスすることにより、対話形式でサービスをテストできます。 詳細については、[サービスのテスト](#testing-service)に関する記事をご覧ください。
+これにより、Web サービスのローカル インスタンスが開始されます。 ブラウザーから `http::localhost:<port>` にアクセスすることにより、対話形式でサービスをテストできます。 詳細については、サービスのテストに関する記事をご覧ください。
 
 また、さまざまな [web API](WebAPI.md) を直接呼び出すことによって、自然言語の解釈、クエリの完了、構造化されたクエリの評価、およびヒストグラムの計算をテストできます。 サービスを停止するには、`kes.exe host_service` コマンド プロンプトに "quit" と入力するか、または Ctrl キーを押しながら C キーを押します。 次に例をいくつか示します。
 
@@ -220,7 +220,7 @@ XML 文法仕様を指定したら、[`kes.exe build_grammar`](CommandLine.md#bu
 * [http://localhost:8000/evaluate?expr=Composite(Author.Name=='susan t dumais')&attributes=Title,Year,Author.Name,Author.Id&count=2](http://localhost:8000/evaluate?expr=Composite%28Author.Name==%27susan%20t%20dumais%27%29&attributes=Title,Year,Author.Name,Author.Id&count=2)
 * [http://localhost:8000/calchistogram?expr=And(Composite(Author.Name=='susan t dumais'),Year>=2013)&attributes=Year,Keyword&count=4](http://localhost:8000/calchistogram?expr=And%28Composite%28Author.Name=='susan%20t%20dumais'%29,Year>=2013%29&attributes=Year,Keyword&count=4)
 
-Azure の外部では、[`kes.exe host_service`](CommandLine.md#host_service-command) は最大 10,000 個のオブジェクトのインデックスに制限されます。 その他の制限には、1 秒あたり要求 10 個の API 速度や、プロセスが自動的に終了する前に、合計 1000 要求が含まれます。 これらの制限を回避するには、[Azure の Windows 仮想マシン](../../../articles/virtual-machines/windows/quick-create-portal.md)内からコマンドを実行するか、[`kes.exe deploy_service`](CommandLine.md#deploy_service-command) コマンドを使用して Azure クラウド サービスに展開します。 詳細については、[サービスの展開](#deploying-service)に関する記事を参照してください。
+Azure の外部では、[`kes.exe host_service`](CommandLine.md#host_service-command) は最大 10,000 個のオブジェクトのインデックスに制限されます。 その他の制限には、1 秒あたり要求 10 個の API 速度や、プロセスが自動的に終了する前に、合計 1000 要求が含まれます。 これらの制限を回避するには、[Azure の Windows 仮想マシン](../../../articles/virtual-machines/windows/quick-create-portal.md)内からコマンドを実行するか、[`kes.exe deploy_service`](CommandLine.md#deploy_service-command) コマンドを使用して Azure クラウド サービスに展開します。 詳細については、サービスの展開に関する記事を参照してください。
 
 ## <a name="scale-up-to-host-larger-indices"></a>より大規模なインデックスをホストするためにスケールアップする
 
@@ -228,7 +228,7 @@ Azure の外で `kes.exe` を実行している場合は、インデックスは
 
 `kes.exe` が Azure アカウントにアクセスできるようにするには、Azure Portal から [Azure 発行設定ファイルをダウンロード](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade)します。 メッセージが表示されたら、必要な Azure アカウントにサインインします。 ファイルを、`kes.exe` を実行する作業ディレクトリに *AzurePublishSettings.xml* として保存します。
 
-大規模なインデックスを構築しホストするには、2 つの方法があります。 1 つ目の方法では、Azure の Windows 仮想マシンにスキーマとデータ ファイルを準備します。 次に、[`kes.exe build_index`](#building-index) を実行して VM 上にローカルに、サイズ制限なしでインデックスを構築します。 構築したインデックスは、迅速なプロトタイプ作成のために [`kes.exe host_service`](#hosting-service) を使用して VM 上でローカルにホストできます。 手順の詳細については、[Azure VM のチュートリアル](../../../articles/virtual-machines/windows/quick-create-portal.md)を参照してください。
+大規模なインデックスを構築しホストするには、2 つの方法があります。 1 つ目の方法では、Azure の Windows 仮想マシンにスキーマとデータ ファイルを準備します。 次に、`kes.exe build_index` を実行して VM 上にローカルに、サイズ制限なしでインデックスを構築します。 構築したインデックスは、迅速なプロトタイプ作成のために `kes.exe host_service` を使用して VM 上でローカルにホストできます。 手順の詳細については、[Azure VM のチュートリアル](../../../articles/virtual-machines/windows/quick-create-portal.md)を参照してください。
 
 2 つ目の方法では、`--remote` パラメーターを指定した [`kes.exe build_index`](CommandLine.md#build_index-command) を使用して、リモートで Azure ビルドを実行します。 これにより、Azure VM のサイズが指定されます。 `--remote` パラメーターを指定すると、コマンドは、そのサイズで一時的な Azure VM を作成します。 次に、VM 上にインデックスが構築され、インデックスがターゲット BLOB ストレージにアップロードされ、完了時に VM が削除されます。 インデックスが構築されると、VM のコストが Azure サブスクリプションに課金されます。
 
@@ -238,7 +238,7 @@ Azure の外で `kes.exe` を実行している場合は、インデックスは
 
 `kes.exe build_index http://<account>.blob.core.windows.net/<container>/Academic.schema http://<account>.blob.core.windows.net/<container>/Academic.full.data http://<account>.blob.core.windows.net/<container>/Academic.full.index --remote <vm_size>`
 
-インデックスを構築するための一時 VM をプロビジョニングするには、5 ～ 10 分かかる場合があります。 迅速にプロトタイプを作成するため、次のことができます。
+インデックスを構築するための一時 VM をプロビジョニングするには、5 分から 10 分かかる場合があります。 迅速にプロトタイプを作成するため、次のことができます。
 - 任意のコンピューター上でローカルにサイズの小さいデータ セットを使用して開発します。
 - 手動で [Azure VM を作成](../../../articles/virtual-machines/windows/quick-create-portal.md)し、リモート デスクトップを使用して[接続し](../../../articles/virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)、[Knowledge Exploration Service SDK](https://www.microsoft.com/en-us/download/details.aspx?id=51488) をインストール、VM 内 から [`kes.exe`](CommandLine.md) を実行します。
 
@@ -252,7 +252,7 @@ Azure の外で `kes.exe` を実行している場合は、インデックスは
 
 ステージング スロットの内容を運用スロットの内容と[スワップ](../../../articles/cloud-services/cloud-services-nodejs-stage-application.md)し、新しく展開されたサービスにライブ トラフィックを転送します。 新しいデータでサービスの更新バージョンを展開するときには、この処理を繰り返すことができます。 他のすべての Azure クラウド サービスと同様、Azure Portal を使用して[自動スケーリング](../../../articles/cloud-services/cloud-services-how-to-scale-portal.md)を設定できます。
 
-この例では、*<vm_size>* の VM の既存のクラウド サービスのステージング スロットに、*Academic* インデックスを展開します。 次のコマンドを使用します。
+この例では、*\<vm_size>* の VM の既存のクラウド サービスのステージング スロットに、*Academic* インデックスを展開します。 次のコマンドを使用します。
 
 `kes.exe deploy_service http://<account>.blob.core.windows.net/<container>/Academic.grammar http://<account>.blob.core.windows.net/<container>/Academic.index <serviceName> <vm_size> --slot Staging`
 
@@ -262,7 +262,7 @@ Azure の外で `kes.exe` を実行している場合は、インデックスは
 
 ## <a name="test-the-service"></a>サービスをテストする
 
-ライブ サービスをデバッグするには、Web ブラウザーからホスト コンピューターを参照します。 [host_service](#hosting-service) 経由で展開されているローカル サービスの場合は、`http://localhost:<port>/` を参照してください。  [deploy_service](#deploying-service) 経由で展開されている Azure クラウド サービスの場合は、`http://<serviceName>.cloudapp.net/` を参照してください。
+ライブ サービスをデバッグするには、Web ブラウザーからホスト コンピューターを参照します。 host_service 経由で展開されているローカル サービスの場合は、`http://localhost:<port>/` にアクセスします。  deploy_service 経由で展開されている Azure クラウド サービスの場合は、`http://<serviceName>.cloudapp.net/` にアクセスします。
 
 このページには、基本的な API 呼び出しの統計情報だけでなく、このサービスでホストされている文法とインデックスに関する情報へのリンクが含まれています。 このページには、web API の使用方法を示す対話形式の検索インターフェイスも含まれています。 検索ボックスにクエリを入力し、API 呼び出しの[解釈](interpretMethod.md)、[評価](evaluateMethod.md)、および [calchistogram](calchistogramMethod.md) の結果を確認してください。 このページの基になる HTML ソースは、web API をアプリに統合し、対話型の多機能な検索エクスペリエンスを作成する方法の例としても機能します。
 

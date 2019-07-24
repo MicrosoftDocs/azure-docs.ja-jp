@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 6d84c83efa194543ed10aaed82362021b7053476
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: b8bb3db58538263ea60520d4537a76c6ebb6abf7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576206"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112519"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager への IaaS リソースの移行計画
 Azure Resource Manager には多くの優れた機能が用意されていますが、移行をスムーズに進めるには工程をしっかりと計画することが重要です。 時間をかけて計画すると、移行アクティビティの実行中に問題が発生することはありません。
@@ -79,8 +79,8 @@ Azure Resource Manager には多くの優れた機能が用意されています
 
   スムーズな移行を行うための最善の方法は、正確なシナリオ (コンピューティング、ネットワーク、およびストレージ) のラボ テストを実施することです。 これにより、次のメリットが得られます。
 
-  - 完全に独立したラボまたは既存の非運用環境をテストに使用できます。 繰り返し移行可能であり、破壊的な変更が可能な、完全に独立したラボの使用をお勧めします。  実際のサブスクリプションからメタデータを収集およびハイドレートするスクリプトについては後述します。
-  - 別のサブスクリプションでラボを作成することをお勧めします。 これは、ラボが繰り返し解体されるためであり、個別の独立したサブスクリプションを用意することで、実際に使用する項目が誤って削除される可能性を削減できます。
+- 完全に独立したラボまたは既存の非運用環境をテストに使用できます。 繰り返し移行可能であり、破壊的な変更が可能な、完全に独立したラボの使用をお勧めします。  実際のサブスクリプションからメタデータを収集およびハイドレートするスクリプトについては後述します。
+- 別のサブスクリプションでラボを作成することをお勧めします。 これは、ラボが繰り返し解体されるためであり、個別の独立したサブスクリプションを用意することで、実際に使用する項目が誤って削除される可能性を削減できます。
 
   これは、AsmMetadataParser ツールを使用して実施できます。 [このツールについては、こちらをご覧ください](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)。
 
@@ -88,7 +88,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
 
 大規模な移行の多くで検出された問題を以下に示します。 これは包括的なリストではないため、詳しくは「[サポートされていない機能と構成](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#unsupported-features-and-configurations)」をご覧ください。  これらの技術的な問題が発生するかどうかはわかりませんが、問題が発生した場合は、移行の前に解決しておくと、移行をスムーズに行うことができます。
 
-- **検証/準備/ドライ ランの中止の実施** - これはおそらく、クラシックから Azure Resource Manager への移行を成功させるための最も重要な手順です。 移行 API には 3 つの主要な手順 (検証、準備、コミット) があります。 検証では、クラシック環境の状態を把握して、すべての問題の結果を返します。 ただし、一部の問題は Azure Resource Manager スタックに存在する可能性があるため、すべての問題を検証で取得できるわけではありません。 移行プロセスの次の手順である準備では、これらの問題を公開します。 準備では、クラシックから Azure Resource Manager にメタデータを移動しますが、移動をコミットしません。また、クラシック側で何かを削除または変更することもありません。 ドライ ランでは移行の準備を行ってから、移行の準備を中止します (**コミットしません**)。 検証/準備/ドライ ランの中止の目的は、Azure Resource Manager スタック内のすべてのメタデータを確認し、(*プログラムを使用して、またはポータルで*) 調査し、すべてが正しく移行されたかどうかを検証して、技術的な問題に対処することです。  また、移行期間の感覚をつかむことができるため、それに応じたダウンタイムを計画できます。  検証/準備/中止ではユーザー ダウンタイムが発生しないため、アプリケーションの使用が中断されることはありません。
+- **検証/準備/ドライ ランの中止の実施** - これはおそらく、クラシックから Azure Resource Manager への移行を成功させるための最も重要な手順です。 移行 API には、次の 3 つの主要ステップがあります:検証、準備、コミット。 検証では、クラシック環境の状態を把握して、すべての問題の結果を返します。 ただし、一部の問題は Azure Resource Manager スタックに存在する可能性があるため、すべての問題を検証で取得できるわけではありません。 移行プロセスの次の手順である準備では、これらの問題を公開します。 準備では、クラシックから Azure Resource Manager にメタデータを移動しますが、移動をコミットしません。また、クラシック側で何かを削除または変更することもありません。 ドライ ランでは移行の準備を行ってから、移行の準備を中止します (**コミットしません**)。 検証/準備/ドライ ランの中止の目的は、Azure Resource Manager スタック内のすべてのメタデータを確認し、(*プログラムを使用して、またはポータルで*) 調査し、すべてが正しく移行されたかどうかを検証して、技術的な問題に対処することです。  また、移行期間の感覚をつかむことができるため、それに応じたダウンタイムを計画できます。  検証/準備/中止ではユーザー ダウンタイムが発生しないため、アプリケーションの使用が中断されることはありません。
   - ドライ ランの前に以下の項目を解決する必要がありますが、ドライ ラン テストは、準備の手順が失敗しても安全に進められます。 エンタープライズでの移行中に、ドライ ランが移行の準備のための安全かつ貴重な方法であることがわかりました。
   - 準備の実施中は、コントロール プレーン (Azure の管理操作) が仮想ネットワーク全体に対してロックされるため、検証/準備/中止の際に VM のメタデータを変更することはできません。  ただし、それ以外のアプリケーション機能 (RD、VM の使用など) が影響を受けることはありません。  ドライ ランが実施されていることは VM のユーザーにはわかりません。
 
@@ -98,7 +98,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
   - 移行中に DNS サーバーへの接続が失われた場合は、移行準備前のすべての VM から BGInfo バージョン 1.\* を除くすべての VM 拡張機能を削除し、Azure Resource Managerの移行後に VM に追加し直す必要があります。  **これは実行中の VM の場合のみです。**  VM が割り当てを解除した状態で停止している場合、VM 拡張機能を削除する必要はありません。
 
   > [!NOTE]
-  > Azure 診断やセキュリティ センターの監視などの多くの拡張機能は、移行後に再インストールされるため、削除しても問題ありません。
+  > Azure Diagnostics やセキュリティ センターの監視などの多くの拡張機能は、移行後に再インストールされるため、削除しても問題ありません。
 
   - また、ネットワーク セキュリティ グループが送信インターネット アクセスを制限していないことを確認してください。 これは、一部のネットワーク セキュリティ グループ構成で発生することがあります。 VM 拡張機能を Azure Resource Manager に移行するには、送信インターネット アクセス (および DNS) が必要です。
   - BGInfo 拡張機能には 2 つのバージョンが存在し、バージョン 1 とバージョン 2 と呼ばれます。  
@@ -122,32 +122,34 @@ Azure Resource Manager には多くの優れた機能が用意されています
     > 移行対象の現在の環境と同じリージョンでは、これらの制限を引き上げる必要があります。
     >
 
-    - ネットワーク インターフェイス
-    - ロード バランサー
-    - パブリック IP
-    - 静的パブリック IP
-    - コア
-    - ネットワーク セキュリティ グループ
-    - ルート テーブル
+  - ネットワーク インターフェイス
+  - ロード バランサー
+  - パブリック IP
+  - 静的パブリック IP
+  - コア
+  - ネットワーク セキュリティ グループ
+  - ルート テーブル
 
     最新バージョンの Azure PowerShell で次のコマンドを使用すると、現在の Azure Resource Manager のクォータを確認できます。
+    
+    [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
     **コンピューティング** *(コア、可用性セット)*
 
     ```powershell
-    Get-AzureRmVMUsage -Location <azure-region>
+    Get-AzVMUsage -Location <azure-region>
     ```
 
     **ネットワーク** *(仮想ネットワーク、静的パブリック IP、パブリック IP、ネットワーク セキュリティ グループ、ネットワーク インターフェイス、ロード バランサー、ルート テーブル)*
 
     ```powershell
-    Get-AzureRmUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
+    Get-AzUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
     ```
 
     **ストレージ** *(ストレージ アカウント)*
 
     ```powershell
-    Get-AzureRmStorageUsage
+    Get-AzStorageUsage
     ```
 
 - **Azure Resource Manager API 調整制限** - 環境の規模が十分に大きい ( VNET に 400 台を超える VM がある環境など) 場合は、Azure Resource Manager における既定の書き込みの API 調整制限 (現時点では `1200 writes/hour`) に達する可能性があります。 移行を開始する前に、サブスクリプション用にこの制限を引き上げるためのサポート チケットを作成する必要があります。
@@ -201,11 +203,11 @@ Azure Resource Manager には多くの優れた機能が用意されています
 
 Azure Resource Manager で有効にするサービスを、目的を持って選択してください。  多くのお客様は、Azure 環境について、以下のような魅力的な機能を活用しています。
 
-- [ロールベースのアクセス制御](../../azure-resource-manager/resource-group-overview.md#access-control)。
+- [ロールベースのアクセス制御](../../role-based-access-control/overview.md)。
 - [より詳細に制御されたデプロイを簡単に行うための Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-overview.md#template-deployment)。
 - [タグ](../../azure-resource-manager/resource-group-using-tags.md)。
 - [アクティビティ コントロール](../../azure-resource-manager/resource-group-audit.md)
-- [Azure のポリシー](../../azure-policy/azure-policy-introduction.md)
+- [Azure のポリシー](../../governance/policy/overview.md)
 
 ### <a name="pitfalls-to-avoid"></a>回避すべき問題
 

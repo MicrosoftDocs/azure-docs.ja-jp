@@ -2,18 +2,19 @@
 title: パーティション分割された Azure Service Bus のキューおよびトピックの作成 | Microsoft Docs
 description: 複数のメッセージ ブローカーを使用して Service Bus のキューとトピックをパーティション分割する方法について説明します。
 services: service-bus-messaging
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/06/2018
-ms.author: spelluru
-ms.openlocfilehash: 2ca2063158634dfa42da094b77c70a2730e82176
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.date: 02/06/2019
+ms.author: aschhab
+ms.openlocfilehash: 699581c7ccd3f36da0cd0c1def623607b7c0a13b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423172"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891122"
 ---
 # <a name="partitioned-queues-and-topics"></a>パーティション分割されたキューとトピック
 
@@ -26,9 +27,9 @@ Azure Service Bus では、メッセージを処理する複数のメッセー�
 
 ## <a name="how-it-works"></a>動作のしくみ
 
-パーティション分割されたキューまたはトピックはそれぞれ、複数のフラグメントで構成されます。 フラグメントはそれぞれ別々のメッセージング ストアに格納され、別々のメッセージ ブローカーで処理されます。 パーティション分割されたキューまたはトピックにメッセージが送信されると、Service Bus はそのメッセージをいずれかのフラグメントに割り当てます。 対象のフラグメントは、Service Bus によってランダムに選択されるか、送信側で指定できるパーティション キーによって選択されます。
+パーティション分割されたキューまたはトピックはそれぞれ、複数のパーティションで構成されます。 パーティションはそれぞれ別々のメッセージング ストアに格納され、別々のメッセージ ブローカーで処理されます。 パーティション分割されたキューまたはトピックにメッセージが送信されると、Service Bus はそのメッセージをいずれかのパーティションに割り当てます。 対象のフラグメントは、Service Bus によってランダムに選択されるか、送信側で指定できるパーティション キーによって選択されます。
 
-クライアントがパーティション分割されたキューからのメッセージまたはサブスクリプションからパーティション分割されたトピックへのメッセージを受信する場合、Service Bus はすべてのフラグメントを照会してメッセージを探し、いずれかのメッセージング ストアから取得された最初のメッセージを受信側に返します。 Service Bus は、追加の受信要求を受信すると、他のメッセージをキャッシュして返します。 受信側クライアントはパーティション分割を認識しません。パーティション分割されたキューやトピックの動作 (読み込み、完了、遅延、配信不能、プリフェッチなど) は、クライアント側には通常のエンティティの動作と同じに見えます。
+クライアントがパーティション分割されたキューからのメッセージまたはサブスクリプションからパーティション分割されたトピックへのメッセージを受信する場合、Service Bus はすべてのパーティションを照会してメッセージを探し、いずれかのメッセージング ストアから取得された最初のメッセージを受信側に返します。 Service Bus は、追加の受信要求を受信すると、他のメッセージをキャッシュして返します。 受信側クライアントはパーティション分割を認識しません。パーティション分割されたキューやトピックの動作 (読み込み、完了、遅延、配信不能、プリフェッチなど) は、クライアント側には通常のエンティティの動作と同じに見えます。
 
 パーティション分割されたキューやトピックとのメッセージの送受信に追加費用は発生しません。
 
@@ -36,9 +37,9 @@ Azure Service Bus では、メッセージを処理する複数のメッセー�
 
 Azure Service Bus でパーティション分割されたキューとトピックを使用するには、Azure SDK Version 2.2 以降を使用するか、HTTP 要求で `api-version=2013-10` 以降を指定します。
 
-### <a name="standard"></a>標準
+### <a name="standard"></a>Standard
 
-Standard メッセージング レベルでは、Service Bus キューおよびトピックは、1 GB、2 GB、3 GB、4 GB、5 GB で作成できます (既定値は 1 GB)。 パーティション分割が有効な場合、Service Bus は指定した GB 数に対して 1 GB ごとにエンティティの 16 個のコピー (16 個のパーティション) を作成します。 そのため、サイズが 5 GB のキューを作成すると、パーティションが 16 個であるため、最大キュー サイズは 5 \* 16 = 80 GB になります。 パーティション分割したキューまたはトピックの最大サイズは、[Azure Portal][Azure portal] のそのエンティティの **[概要]** ブレードで確認できます。
+Standard メッセージング レベルでは、Service Bus キューおよびトピックは、1 GB、2 GB、3 GB、4 GB、5 GB で作成できます (既定値は 1 GB)。 パーティション分割が有効な場合、Service Bus は指定されたサイズごとにエンティティの 16 個のコピー (16 個のパーティション) を作成します。 そのため、サイズが 5 GB のキューを作成すると、パーティションが 16 個であるため、最大キュー サイズは 5 \* 16 = 80 GB になります。 パーティション分割したキューまたはトピックの最大サイズは、[Azure Portal][Azure portal] のそのエンティティの **[概要]** ブレードで確認できます。
 
 ### <a name="premium"></a>Premium
 
@@ -60,33 +61,33 @@ ns.CreateTopic(td);
 
 ## <a name="use-of-partition-keys"></a>パーティション キーの使用
 
-パーティション分割されたキューまたはトピックにメッセージがエンキューされると、Service Bus はパーティション キーが存在するかどうかを調べます。 パーティション キーが見つかった場合は、そのキーに基づいてフラグメントを選択します。 パーティション キーが見つからない場合は、内部アルゴリズムに基づいてフラグメントを選択します。
+パーティション分割されたキューまたはトピックにメッセージがエンキューされると、Service Bus はパーティション キーが存在するかどうかを調べます。 パーティション キーが見つかった場合は、そのキーに基づいてパーティションを選択します。 パーティション キーが見つからない場合は、内部アルゴリズムに基づいてパーティションを選択します。
 
 ### <a name="using-a-partition-key"></a>パーティション キーを使用する場合
 
-セッションやトランザクションなどの一部のシナリオでは、メッセージを特定のフラグメントに格納する必要があります。 このようなシナリオでは必ず、パーティション キーを使用する必要があります。 同じパーティション キーを使用するメッセージはすべて、同じフラグメントに割り当てられます。 そのフラグメントが一時的に使用できなくなると、Service Bus はエラーを返します。
+セッションやトランザクションなどの一部のシナリオでは、メッセージを特定のパーティションに格納する必要があります。 このようなシナリオでは必ず、パーティション キーを使用する必要があります。 同じパーティション キーを使用するメッセージはすべて、同じパーティションに割り当てられます。 そのパーティションが一時的に使用できなくなると、Service Bus はエラーを返します。
 
 以下に示すように、シナリオに応じて、さまざまなメッセージ プロパティがパーティション キーとして使用されます。
 
 **SessionId**: メッセージに [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) プロパティが設定されている場合、Service Bus はパーティション キーとして **SessionID** を使用します。 このように、同じセッションに属するメッセージはすべて、同じメッセージ ブローカーによって処理されます。 セッションでは、Service Bus はメッセージの順序と、セッション状態の整合性を保証することができます。
 
-**PartitionKey**: メッセージに [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) プロパティは設定されているが、[SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) プロパティは設定されていない場合、Service Bus は [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) プロパティ値をパーティション キーとして使用します。 メッセージで [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) プロパティと [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) プロパティが両方とも設定されている場合、この 2 つのプロパティの値は同じである必要があります。 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) プロパティが [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) プロパティとは異なる値に設定されている場合、Service Bus は無効操作例外を返します。 セッションを認識しないトランザクション メッセージを送信側が送信する場合は、[PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) プロパティを使用する必要があります。 パーティション キーを使用することにより、トランザクション内で送信されるすべてのメッセージを同じメッセージング ブローカーで処理することができます。
+**PartitionKey**:メッセージに [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) プロパティは設定されているが、[SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) プロパティは設定されていない場合、Service Bus は [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) プロパティ値をパーティション キーとして使用します。 メッセージで [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) プロパティと [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) プロパティが両方とも設定されている場合、この 2 つのプロパティの値は同じである必要があります。 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) プロパティが [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) プロパティとは異なる値に設定されている場合、Service Bus は無効操作例外を返します。 セッションを認識しないトランザクション メッセージを送信側が送信する場合は、[PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) プロパティを使用する必要があります。 パーティション キーを使用することにより、トランザクション内で送信されるすべてのメッセージを同じメッセージング ブローカーで処理することができます。
 
-**MessageId**: キューまたはトピックで [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) プロパティが **true** に設定され、 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) プロパティまたは [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) プロパティが設定されていない場合は、[MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) プロパティ値がパーティション キーとしての役割を果たします。 (送信元のアプリケーションでメッセージ ID が割り当てられていない場合は、Microsoft .NET および AMQP のライブラリで自動的に割り当てられます)。この場合は、同じメッセージのすべてのコピーが同じメッセージ ブローカーによって処理されます。 この ID により、Service Bus は重複したメッセージの検出と削除ができるようになります。 [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) プロパティが **true** に設定されていない場合、Service Bus は [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) プロパティをパーティション キーと見なしません。
+**MessageId**: キューまたはトピックで [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) プロパティが **true** に設定され、[SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) プロパティまたは [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) プロパティが設定されていない場合は、[MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) プロパティ値がパーティション キーとしての役割を果たします。 (送信元のアプリケーションでメッセージ ID が割り当てられていない場合は、Microsoft .NET および AMQP のライブラリで自動的に割り当てられます)。この場合は、同じメッセージのすべてのコピーが同じメッセージ ブローカーによって処理されます。 この ID により、Service Bus は重複したメッセージの検出と削除ができるようになります。 [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) プロパティが **true** に設定されていない場合、Service Bus は [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) プロパティをパーティション キーと見なしません。
 
 ### <a name="not-using-a-partition-key"></a>パーティション キーを使用しない場合
 
-パーティション キーが存在しない場合、Service Bus は、ラウンドロビン方式で、パーティション分割されたキューまたはトピックのすべてのフラグメントにメッセージを配信します。 選択されたフラグメントが使用できない場合、Service Bus はメッセージを別のフラグメントに割り当てます。 このように、メッセージング ストアが一時的に使用できなくても送信操作は成功します。 ただし、パーティション キーで提供される保証された順序にはなりません。
+パーティション キーが存在しない場合、Service Bus は、ラウンドロビン方式で、パーティション分割されたキューまたはトピックのすべてのパーティションにメッセージを配信します。 選択されたパーティションが使用できない場合、Service Bus はメッセージを別のパーティションに割り当てます。 このように、メッセージング ストアが一時的に使用できなくても送信操作は成功します。 ただし、パーティション キーで提供される保証された順序にはなりません。
 
 可用性 (パーティション キーなし) と一貫性 (パーティション キーを使用) の間のトレードオフの詳細については、[こちらの記事](../event-hubs/event-hubs-availability-and-consistency.md)を参照してください。 この情報は、パーティション分割された Service Bus エンティティにも同様に適用されます。
 
-Service Bus が別のフラグメントにメッセージをエンキューする時間を確保するには、メッセージの送信元のクライアントによって指定される [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) 値が 15 秒を超える必要があります。 [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) プロパティを既定値の 60 秒に設定することをお勧めします。
+Service Bus が別のパーティションにメッセージをエンキューする時間を確保するには、メッセージの送信元のクライアントによって指定される [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) 値が 15 秒を超える必要があります。 [OperationTimeout](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) プロパティを既定値の 60 秒に設定することをお勧めします。
 
-パーティション キーは、メッセージを特定のフラグメントに "ピン留め" します。 このフラグメントを保持しているメッセージング ストアを使用できない場合、Service Bus はエラーを返します。 パーティション キーが存在しない場合、Service Bus は異なるフラグメントを選択できるので、操作は成功します。 したがって、パーティション キーが必要でない場合は、パーティション キーを指定しないことをお勧めします。
+パーティション キーは、メッセージを特定のパーティションに "ピン留め" します。 このパーティションを保持しているメッセージング ストアを使用できない場合、Service Bus はエラーを返します。 パーティション キーが存在しない場合、Service Bus は異なるパーティションを選択できるので、操作は成功します。 したがって、パーティション キーが必要でない場合は、パーティション キーを指定しないことをお勧めします。
 
 ## <a name="advanced-topics-use-transactions-with-partitioned-entities"></a>高度なトピック: パーティション分割されたエンティティでのトランザクションの使用
 
-トランザクションの一部として送信されるメッセージでは、パーティション キーを指定する必要があります。 キーには [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid)、[PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)、または [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) プロパティのいずれかを設定できます。 同じトランザクションの一部として送信されるすべてのメッセージで、同じパーティション キーを指定する必要があります。 トランザクション内でパーティション キーなしのメッセージを送信しようとすると、Service Bus は無効操作例外を返します。 同じトランザクション内で異なるパーティション キーを持つ複数のメッセージを送信しようとすると、Service Bus は無効操作例外を返します。 例: 
+トランザクションの一部として送信されるメッセージでは、パーティション キーを指定する必要があります。 キーは次のプロパティのいずれかです: [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid)、[PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)、または [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid)。 同じトランザクションの一部として送信されるすべてのメッセージで、同じパーティション キーを指定する必要があります。 トランザクション内でパーティション キーなしのメッセージを送信しようとすると、Service Bus は無効操作例外を返します。 同じトランザクション内で異なるパーティション キーを持つ複数のメッセージを送信しようとすると、Service Bus は無効操作例外を返します。 例: 
 
 ```csharp
 CommittableTransaction committableTransaction = new CommittableTransaction();
@@ -100,7 +101,7 @@ using (TransactionScope ts = new TransactionScope(committableTransaction))
 committableTransaction.Commit();
 ```
 
-パーティション キーとなるプロパティが設定されている場合、Service Bus はメッセージを特定のフラグメントに "ピン留め" します。 この動作は、トランザクションが使用されているかどうかにかかわらず起こります。 必要でない限り、パーティション キーを指定しないことをお勧めします。
+パーティション キーとなるプロパティが設定されている場合、Service Bus はメッセージを特定のパーティションに "ピン留め" します。 この動作は、トランザクションが使用されているかどうかにかかわらず起こります。 必要でない限り、パーティション キーを指定しないことをお勧めします。
 
 ## <a name="using-sessions-with-partitioned-entities"></a>パーティション分割されたエンティティでのセッションの使用
 
@@ -125,16 +126,16 @@ committableTransaction.Commit();
 Service Bus では、パーティション分割されたエンティティを送信元または送信先とするメッセージの自動転送、およびパーティション分割されたエンティティ間でのメッセージの自動転送をサポートしています。 メッセージの自動転送を有効にするには、ソース キューまたはサブスクリプションで [QueueDescription.ForwardTo][QueueDescription.ForwardTo] プロパティを設定する必要があります。 メッセージでパーティション キー ([SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid)、[PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)、[MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid)) が指定されている場合、そのパーティション キーが出力先エンティティで使用されます。
 
 ## <a name="considerations-and-guidelines"></a>考慮事項とガイドライン
-* **高い整合性機能**: パーティション キーの明示的制御、重複データ検出、セッションといった機能が使用されるエンティティの場合、メッセージング操作は常に特定のフラグメントにルーティングされます。 いずれかのフラグメントにトラフィックが集中した場合や、基になるストアに異常が生じた場合、それらの操作は失敗し、可用性が低下します。 それでも全体として堅牢性は、パーティション分割されていないエンティティと比べれば、はるかに高くなります。問題が発生するのはトラフィックの一部だけです。すべてのトラフィックで問題が発生するわけではありません。 詳細については、「[Event Hubs における可用性と一貫性](../event-hubs/event-hubs-availability-and-consistency.md)」を参照してください。
-* **管理**: 作成、更新、削除といった操作は、エンティティのすべてのフラグメントに対して実行する必要があります。 異常のあるフラグメントが 1 つでもあると、それらの操作は失敗します。 Get 操作に関して言えば、メッセージ数などの情報は、全フラグメントから集計する必要があります。 いずれかのフラグメントに異常があった場合、そのエンティティの可用性ステータスは "制限あり" として報告されます。
-* **メッセージ ボリュームの削減に伴うシナリオ**: 特に HTTP プロトコルを使用している場合は、すべてのメッセージを取得するために、複数の受信操作を実行しなければならないことがあります。 受信要求の場合、フロント エンドは、すべてのフラグメントを受信し、返されたすべての応答をキャッシュします。 以降、同じ接続上で行われる受信要求でこのキャッシュを利用できるため、受信で発生する遅延は小さくなります。 ただし複数の接続が存在する場合や、HTTP を使用している場合は、要求ごとに新しい接続が確立されます。 そのため、要求元と同じノードに応答が届く保証はありません。 既存のメッセージがすべてロックされ、別のフロント エンドでキャッシュされている場合は、受信操作から **null**が返されます。 最終的にはメッセージの有効期限が切れ、再度受信できる状態になります。 HTTP キープアライブの使用をお勧めします。
-* **メッセージの参照/ピーク**: 従来の [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) ライブラリのみで使用可能です。 [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) は、必ずしも [MessageCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.messagecount) プロパティに指定された数のメッセージを返すとは限りません。 一般に、この動作には 2 つの理由があります。 1 つ目は、メッセージのコレクションの総サイズが、最大サイズである 256 KB を超えていることです。 2 つ目は、キューまたはトピックの [EnablePartitioning プロパティ](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning)が **true** に設定されている場合に、要求されたメッセージ数を満たすだけのメッセージがパーティションにない可能性があります。 通常、アプリケーションは、決まった数のメッセージを受信する必要がある場合、そのメッセージ数に達するまで、または読み取るメッセージがなくなるまで、[PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) を繰り返し呼び出す必要があります。 コード サンプルを含む詳細については、[QueueClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) または [SubscriptionClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.peekbatch) に関する API ドキュメントをご覧ください。
+* **高い整合性機能**: パーティション キーの明示的制御、重複データ検出、セッションといった機能が使用されるエンティティの場合、メッセージング操作は常に特定のパーティションにルーティングされます。 いずれかのパーティションにトラフィックが集中した場合や、基になるストアに異常が生じた場合、それらの操作は失敗し、可用性が低下します。 それでも全体として堅牢性は、パーティション分割されていないエンティティと比べれば、はるかに高くなります。問題が発生するのはトラフィックの一部だけです。すべてのトラフィックで問題が発生するわけではありません。 詳細については、「[Event Hubs における可用性と一貫性](../event-hubs/event-hubs-availability-and-consistency.md)」を参照してください。
+* **管理**: 作成、更新、削除といった操作は、エンティティのすべてのパーティションに対して実行する必要があります。 異常のあるパーティションが 1 つでもあると、それらの操作は失敗します。 Get 操作に関して言えば、メッセージ数などの情報は、全パーティションから集計する必要があります。 いずれかのパーティションに異常があった場合、そのエンティティの可用性ステータスは "制限あり" として報告されます。
+* **低量メッセージのシナリオ**: このようなシナリオの場合、特に HTTP プロトコルの使用時には、すべてのメッセージを取得するために、複数の受信操作を実行する必要が生じることがあります。 受信要求の場合、フロント エンドは、すべてのパーティションを受信し、返されたすべての応答をキャッシュします。 以降、同じ接続上で行われる受信要求でこのキャッシュを利用できるため、受信で発生する遅延は小さくなります。 ただし複数の接続が存在する場合や、HTTP を使用している場合は、要求ごとに新しい接続が確立されます。 そのため、要求元と同じノードに応答が届く保証はありません。 既存のメッセージがすべてロックされ、別のフロント エンドでキャッシュされている場合は、受信操作から **null**が返されます。 最終的にはメッセージの有効期限が切れ、再度受信できる状態になります。 HTTP キープアライブの使用をお勧めします。
+* **メッセージの参照/ピーク**: 従来の [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) ライブラリでのみ使用可能です。 [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) は、必ずしも [MessageCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.messagecount) プロパティに指定された数のメッセージを返すとは限りません。 一般に、この動作には 2 つの理由があります。 1 つ目は、メッセージのコレクションの総サイズが、最大サイズである 256 KB を超えていることです。 2 つ目は、キューまたはトピックの [EnablePartitioning プロパティ](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning)が **true** に設定されている場合に、要求されたメッセージ数を満たすだけのメッセージがパーティションにない可能性があります。 通常、アプリケーションは、決まった数のメッセージを受信する必要がある場合、そのメッセージ数に達するまで、または読み取るメッセージがなくなるまで、[PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) を繰り返し呼び出す必要があります。 コード サンプルを含む詳細については、[QueueClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) または [SubscriptionClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.peekbatch) に関する API ドキュメントをご覧ください。
 
 ## <a name="latest-added-features"></a>最近追加された機能
 
 * パーティション分割エンティティで、ルールの追加と削除がサポートされました。 通常の (パーティション分割されていない) エンティティとは異なり、トランザクションでは、これらの操作がサポートされません。 
 * パーティション分割されたエンティティとの間で行われるメッセージの送受信で AMQP がサポートされます。
-* 今後は、[Batch Send](/dotnet/api/microsoft.servicebus.messaging.queueclient.sendbatch)、[Batch Receive](/dotnet/api/microsoft.servicebus.messaging.queueclient.receivebatch)、[Receive by Sequence Number](/dotnet/api/microsoft.servicebus.messaging.queueclient.receive)、[Peek](/dotnet/api/microsoft.servicebus.messaging.queueclient.peek)、[Renew Lock](/dotnet/api/microsoft.servicebus.messaging.queueclient.renewmessagelock)、[Schedule Message](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync)、[Cancel Scheduled Message](/dotnet/api/microsoft.azure.servicebus.queueclient.cancelscheduledmessageasync)、[Add Rule](/dotnet/api/microsoft.azure.servicebus.ruledescription)、[Remove Rule](/dotnet/api/microsoft.azure.servicebus.ruledescription)、[Session Renew Lock](/dotnet/api/microsoft.servicebus.messaging.messagesession.renewlock)、[Set Session State](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate)、[Get Session State](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate)、[Enumerate Sessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions) の各操作で AMQP がサポートされます。
+* AMQP は、次の操作でサポートされるようになりました: [Batch Send](/dotnet/api/microsoft.servicebus.messaging.queueclient.sendbatch)、[Batch Receive](/dotnet/api/microsoft.servicebus.messaging.queueclient.receivebatch)、[Receive by Sequence Number](/dotnet/api/microsoft.servicebus.messaging.queueclient.receive)、[Peek](/dotnet/api/microsoft.servicebus.messaging.queueclient.peek)、[Renew Lock](/dotnet/api/microsoft.servicebus.messaging.queueclient.renewmessagelock)、[Schedule Message](/dotnet/api/microsoft.azure.servicebus.queueclient.schedulemessageasync)、[Cancel Scheduled Message](/dotnet/api/microsoft.azure.servicebus.queueclient.cancelscheduledmessageasync)、[Add Rule](/dotnet/api/microsoft.azure.servicebus.ruledescription)、[Remove Rule](/dotnet/api/microsoft.azure.servicebus.ruledescription)、[Session Renew Lock](/dotnet/api/microsoft.servicebus.messaging.messagesession.renewlock)、[Set Session State](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate)、[Get Session State](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate)、[Enumerate Sessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions)。
 
 ## <a name="partitioned-entities-limitations"></a>パーティション分割されたエンティティの制限事項
 

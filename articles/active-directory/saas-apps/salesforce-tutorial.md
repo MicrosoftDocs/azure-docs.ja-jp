@@ -1,60 +1,56 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Salesforce の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Salesforce の統合 | Microsoft Docs
 description: Azure Active Directory と Salesforce の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: joflore
+manager: daveba
+ms.reviewer: barbkess
 ms.assetid: d2d7d420-dc91-41b8-a6b3-59579e043b35
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/04/2018
+ms.topic: tutorial
+ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 36f1bd9c11c8932968a3501ef22fdb7153411256
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 27a61205426cbf43fd3b3b549909ffa13ff07dc7
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867563"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500364"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>チュートリアル: Azure Active Directory と Salesforce の統合
+# <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>チュートリアル:Azure Active Directory と Salesforce の統合
 
 このチュートリアルでは、Salesforce と Azure Active Directory (Azure AD) を統合する方法について説明します。
-
 Salesforce と Azure AD の統合には、次の利点があります。
 
-- Salesforce にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで Salesforce に自動的にサインオン (シングル サインオン) できるように設定できます。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* Salesforce にアクセスする Azure AD ユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Salesforce に自動的にサインイン (シングル サインオン) できるようにすることができます。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure AD と Salesforce の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション
-- Salesforce でのシングル サインオンが有効なサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
+* Salesforce でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-1. ギャラリーからの Salesforce の追加
-2. Azure AD シングル サインオンの構成とテスト
+* Salesforce では、**SP** によって開始される SSO がサポートされます
+
+* Salesforce では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+
+* Salesforce では、[**自動化された**ユーザー プロビジョニング](salesforce-provisioning-tutorial.md)がサポートされます
 
 ## <a name="adding-salesforce-from-the-gallery"></a>ギャラリーからの Salesforce の追加
 
@@ -62,125 +58,131 @@ Azure AD への Salesforce の統合を構成するには、ギャラリーか�
 
 **ギャラリーから Salesforce を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure Active Directory のボタン][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード][2]
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![[新しいアプリケーション] ボタン][3]
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
 4. 検索ボックスに「**Salesforce**」と入力し、結果パネルで **[Salesforce]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
-    ![結果一覧の Salesforce](./media/salesforce-tutorial/tutorial_salesforce_addfromgallery.png)
+    ![結果一覧の Salesforce](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Salesforce で Azure AD のシングル サインオンを構成し、テストします。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Salesforce ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Salesforce の関連ユーザーの間で、リンク関係が確立されている必要があります。
-
-Salesforce で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユーザー名\)** の値として割り当ててリンク関係を確立します。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Salesforce で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと Salesforce 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Salesforce で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Salesforce テスト ユーザーの作成](#create-a-salesforce-test-user)** - Salesforce で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+2. **[Salesforce シングル サインオンの構成](#configure-salesforce-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[Salesforce テスト ユーザーの作成](#create-salesforce-test-user)** - Salesforce で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、Salesforce アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-**Salesforce で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+Salesforce で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. Azure Portal の **Salesforce** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **Salesforce** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![シングル サインオン構成のリンク][4]
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-2. 画面上部の **[シングル サインオン モードの変更]** をクリックして、**[SAML]** モードを選択します。
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-    ![シングル サインオン構成のリンク](./media/salesforce-tutorial/tutorial_general_300.png)
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. **[シングル サインオン方式の選択]** ダイアログで、**[SAML]** モードの **[選択]** をクリックして、シングル サインオンを有効にします。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    ![シングル サインオン構成のリンク](./media/salesforce-tutorial/tutorial_general_301.png)
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
-   
-    ![シングル サインオン構成のリンク](./media/salesforce-tutorial/tutorial_general_302.png)
+4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-5. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
-
-    ![[Salesforce のドメインと URL] のシングル サインオン情報](./media/salesforce-tutorial/tutorial_salesforce_url.png)
+    ![[Salesforce のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
     a. **[サインオン URL]** ボックスに、次のパターンを使用して値を入力します。
 
-    エンタープライズ アカウント: `https://<subdomain>.my.salesforce.com`
+    エンタープライズ アカウント:  `https://<subdomain>.my.salesforce.com`
 
-    開発者アカウント: `https://<subdomain>-dev-ed.my.salesforce.com`
+    開発者アカウント:  `https://<subdomain>-dev-ed.my.salesforce.com`
 
     b. **[識別子]** ボックスに、次の形式で値を入力します。
 
-    エンタープライズ アカウント: `https://<subdomain>.my.salesforce.com`
+    エンタープライズ アカウント:  `https://<subdomain>.my.salesforce.com`
 
-    開発者アカウント: `https://<subdomain>-dev-ed.my.salesforce.com`
+    開発者アカウント:  `https://<subdomain>-dev-ed.my.salesforce.com`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Salesforce クライアント サポート チーム](https://help.salesforce.com/support)に問い合わせてください。
 
-6. **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして**フェデレーション メタデータの XML** をダウンロードしてから、コンピューターに XML ファイルを保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](./media/salesforce-tutorial/tutorial_salesforce_certificate.png) 
+    ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-7. ブラウザーで新しいタブを開き、Salesforce の管理者アカウントにログインします。
+6. **[Salesforce のセットアップ]** セクションで、要件どおりの適切な URL をコピーします。
 
-8. ページの右上隅の**設定アイコン**の下の **[Setup]\(セットアップ\)** をクリックします。
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
+
+    a. ログイン URL
+
+    b. Azure AD 識別子
+
+    c. ログアウト URL
+
+### <a name="configure-salesforce-single-sign-on"></a>Salesforce のシングル サインオンを構成する
+
+1. ブラウザーで新しいタブを開き、Salesforce の管理者アカウントにサインインします。
+
+2. ページの右上隅の**設定アイコン**の下の **[Setup]\(セットアップ\)** をクリックします。
 
     ![Configure single sign-on](./media/salesforce-tutorial/configure1.png)
 
-9. ナビゲーション ウィンドウの **[SETTINGS]\(設定\)** まで下へスクロールし、**[Identity]\(ID\)** をクリックして、関連セクションを展開します。 次に、**[シングル サインオンの設定]** をクリックします。
+3. ナビゲーション ウィンドウの **[SETTINGS]\(設定\)** まで下へスクロールし、**[Identity]\(ID\)** をクリックして、関連セクションを展開します。 次に、**[シングル サインオンの設定]** をクリックします。
 
     ![Configure single sign-on](./media/salesforce-tutorial/sf-admin-sso.png)
 
-10. **[シングル サインオンの設定]** ページで、**[編集]** ボタンをクリックします。
+4. **[シングル サインオンの設定]** ページで、**[編集]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/salesforce-tutorial/sf-admin-sso-edit.png)
 
     > [!NOTE]
     > Salesforce アカウント用のシングル サインオン設定を有効にできない場合は、必要に応じて、[Salesforce クライアント サポート チーム](https://help.salesforce.com/support)にお問い合わせください。
 
-11. **[SAML 有効]** を選択し、**[保存]** をクリックします。
+5. **[SAML 有効]** を選択し、**[保存]** をクリックします。
 
       ![Configure single sign-on](./media/salesforce-tutorial/sf-enable-saml.png)
 
-12. SAML のシングル サインオン設定を構成するには、**[New from Metadata File]\(メタデータ ファイルから新規)** をクリックします。
+6. SAML のシングル サインオン設定を構成するには、**[New from Metadata File]\(メタデータ ファイルから新規)** をクリックします。
 
     ![Configure single sign-on](./media/salesforce-tutorial/sf-admin-sso-new.png)
 
-13. **[ファイルの選択]** をクリックして、Azure portal からダウンロードしたメタデータ XML ファイルをアップロードし、**[作成]** をクリックします。
+7. **[ファイルの選択]** をクリックして、Azure portal からダウンロードしたメタデータ XML ファイルをアップロードし、**[作成]** をクリックします。
 
     ![Configure single sign-on](./media/salesforce-tutorial/xmlchoose.png)
 
-14. **[SAML シングル サインオンの設定]** ページでは、フィールドは自動的に入力されます。[保存] をクリックします。
+8. **[SAML シングル サインオンの設定]** ページでは、フィールドは自動的に入力されます。[保存] をクリックします。
 
     ![Configure single sign-on](./media/salesforce-tutorial/salesforcexml.png)
 
-15. Salesforce の左側のナビゲーション ウィンドウで、**[Company Settings]\(会社の設定\)** をクリックして関連するセクションを展開し、**[My Domain]\(マイ ドメイン\)** をクリックします。
+9. Salesforce の左側のナビゲーション ウィンドウで、**[Company Settings]\(会社の設定\)** をクリックして関連するセクションを展開し、**[My Domain]\(マイ ドメイン\)** をクリックします。
 
     ![Configure single sign-on](./media/salesforce-tutorial/sf-my-domain.png)
 
-16. **[認証の構成]** セクションまで下へスクロールし、**[編集]** ボタンをクリックします。
+10. **[認証の構成]** セクションまで下へスクロールし、**[編集]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
-17. **[Authentication Configuration]\(認証の構成\)** セクションで、SAML SSO 構成の **[Authentication Service]\(認証サービス\)** として **[AzureSSO]** をオンにし、**[Save]\(保存\)** をクリックします。
+11. **[Authentication Configuration]\(認証の構成\)** セクションで、SAML SSO 構成の **[Authentication Service]\(認証サービス\)** として **[AzureSSO]** をオンにし、**[Save]\(保存\)** をクリックします。
 
     ![Configure single sign-on](./media/salesforce-tutorial/sf-auth-config.png)
 
@@ -193,82 +195,66 @@ Salesforce で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-    ![Azure AD ユーザーの作成][100]
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
 2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/salesforce-tutorial/create_aaduser_01.png) 
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
 3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/salesforce-tutorial/create_aaduser_02.png)
+    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに、**brittasimon@yourcompanydomain.extension** と入力します  
-    たとえば、BrittaSimon@contoso.com のように指定します。
+    b. **[ユーザー名]** フィールドに「`brittasimon\@yourcompanydomain.extension`」と入力します。 たとえば、「 BrittaSimon@contoso.com 」のように入力します。
 
-    c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
-
-### <a name="create-a-salesforce-test-user"></a>Salesforce テスト ユーザーの作成
-
-このセクションでは、Britta Simon というユーザーを Salesforce に作成します。 Salesforce では、Just-In-Time プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ Salesforce に存在しない場合は、Salesforce にアクセスしようとしたときに新しいユーザーが作成されます。 Salesforce は、自動ユーザー プロビジョニングもまたサポートしています。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](salesforce-provisioning-tutorial.md)をご覧ください。
+    d. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に Salesforce へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200]
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Salesforce]** を選択します。
 
-**Salesforce に Britta Simon を割り当てるには、次の手順を実行します。**
-
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
-
-    ![ユーザーの割り当て][201]
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
 2. アプリケーションの一覧で **[Salesforce]** を選択します。
 
-    ![アプリケーションの一覧の Salesforce リンク](./media/salesforce-tutorial/tutorial_salesforce_app.png)
+    ![アプリケーションの一覧の Salesforce リンク](common/all-applications.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![[ユーザーとグループ] リンク][202]
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
-4. **[ユーザーの追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[割り当ての追加] ウィンドウ][203]
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+
+### <a name="create-salesforce-test-user"></a>Salesforce テスト ユーザーの作成
+
+このセクションでは、Britta Simon というユーザーを Salesforce に作成します。 Salesforce では、Just-In-Time プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ Salesforce に存在しない場合は、Salesforce にアクセスしようとしたときに新しいユーザーが作成されます。 Salesforce は、自動ユーザー プロビジョニングもまたサポートしています。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](salesforce-provisioning-tutorial.md)をご覧ください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Salesforce] タイルをクリックすると、Salesforce アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネル上で [Salesforce] タイルをクリックすると、SSO を設定した Salesforce に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-* [[ユーザー プロビジョニングの構成]](salesforce-provisioning-tutorial.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/salesforce-tutorial/tutorial_general_01.png
-[2]: ./media/salesforce-tutorial/tutorial_general_02.png
-[3]: ./media/salesforce-tutorial/tutorial_general_03.png
-[4]: ./media/salesforce-tutorial/tutorial_general_04.png
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-[100]: ./media/salesforce-tutorial/tutorial_general_100.png
-
-[200]: ./media/salesforce-tutorial/tutorial_general_200.png
-[201]: ./media/salesforce-tutorial/tutorial_general_201.png
-[202]: ./media/salesforce-tutorial/tutorial_general_202.png
-[203]: ./media/salesforce-tutorial/tutorial_general_203.png
+- [[ユーザー プロビジョニングの構成]](salesforce-provisioning-tutorial.md)

@@ -2,17 +2,17 @@
 title: Azure Event Grid のイベント ソース
 description: Azure Event Grid でサポートされるイベント ソースについて説明します
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 09/19/2018
-ms.author: tomfitz
-ms.openlocfilehash: adef9d2f2d859c62d3b3b3a542536698fa668f9a
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.date: 02/12/2019
+ms.author: spelluru
+ms.openlocfilehash: b6abb0048dcc722241a2cd87354224b0fd7fa2f9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498302"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234188"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure Event Grid のイベント ソース
 
@@ -26,7 +26,7 @@ Azure サブスクリプションでのリソースの変更に対応するた�
 
 |タイトル |説明  |
 |---------|---------|
-| [チュートリアル: Azure Automation と Event Grid および Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |イベントを送信する仮想マシンを作成します。 このイベントは、仮想マシンをタグ付けする Automation Runbook をトリガーし、Microsoft Teams チャネルに送信されるメッセージをトリガーします。 |
+| [チュートリアル:Azure Automation と Event Grid および Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |イベントを送信する仮想マシンを作成します。 このイベントは、仮想マシンをタグ付けする Automation Runbook をトリガーし、Microsoft Teams チャネルに送信されるメッセージをトリガーします。 |
 | [方法: ポータルを使用したイベントのサブスクライブ](subscribe-through-portal.md) | ポータルを使用して Azure サブスクリプションのイベントにサブスクライブします。 |
 | [Azure CLI: Azure サブスクリプションのイベントのサブスクライブ](./scripts/event-grid-cli-azure-subscription.md) |Azure サブスクリプションへの Event Grid サブスクリプションを作成し、イベントを Webhook に送信するサンプル スクリプト。 |
 | [PowerShell: Azure サブスクリプションのイベントのサブスクライブ](./scripts/event-grid-powershell-azure-subscription.md)| Azure サブスクリプションへの Event Grid サブスクリプションを作成し、イベントを Webhook に送信するサンプル スクリプト。 |
@@ -113,8 +113,8 @@ Capture ファイル イベントに対応するために、Event Hubs のイベ
 
 |タイトル  |説明  |
 |---------|---------|
-| [チュートリアル: Azure Service Bus と Azure Event Grid の統合の例](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid は、Service Bus トピックから関数アプリとロジック アプリにメッセージを送信します。 |
-| [概要: Azure Service Bus と Event Grid の統合](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Service Bus と Event Grid の統合の概要です。 |
+| [チュートリアル:Azure Service Bus の Azure Event Grid への統合の例](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid は、Service Bus トピックから関数アプリとロジック アプリにメッセージを送信します。 |
+| [概要:Azure Service Bus の Event Grid への統合](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Service Bus と Event Grid の統合の概要です。 |
 | [イベント スキーマ](event-schema-service-bus.md) | Service Bus イベントのフィールドを示します。 |
 
 ## <a name="storage"></a>Storage
@@ -128,9 +128,19 @@ BLOB の作成および削除のイベントに対応するために、Blob Stor
 | [クイック スタート: Azure portal を使用した Blob Storage イベントの作成とルーティング](blob-event-quickstart-portal.md) | ポータルを使って Blob Storage イベントを Webhook に送信する方法を示します。 |
 | [Azure CLI: Blob Storage アカウントのイベントのサブスクライブ](./scripts/event-grid-cli-blob.md) | BLOB ストレージ アカウントのイベントにサブスクライブするサンプル スクリプトです。 Webhook にイベントを送信します。 |
 | [PowerShell: Blob Storage アカウントのイベントのサブスクライブ](./scripts/event-grid-powershell-blob.md) | BLOB ストレージ アカウントのイベントにサブスクライブするサンプル スクリプトです。 Webhook にイベントを送信します。 |
-| [Resource Manager テンプレート: BLOB ストレージとサブスクリプションの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Azure Blob Storage アカウントをデプロイし、そのストレージ アカウントのイベントをサブスクライブします。 Webhook にイベントを送信します。 |
+| [Resource Manager テンプレート:BLOB ストレージとサブスクリプションの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Azure Blob Storage アカウントをデプロイし、そのストレージ アカウントのイベントをサブスクライブします。 Webhook にイベントを送信します。 |
 | [概要: Blob Storage イベントへの対応](../storage/blobs/storage-blob-event-overview.md) | Blob Storage と Event Grid の統合の概要です。 |
 | [イベント スキーマ](event-schema-blob-storage.md) | Blob Storage イベントのフィールドを示します。 |
+
+## <a name="maps"></a>マップ
+ジオフェンス イベントに応答するには、Azure Maps イベントをサブスクライブします。 たとえば、デバイスがジオフェンスに入ったり出たりするたびに、アプリケーションは電子メール通知を配信できます。
+
+|タイトル  |説明  |
+|---------|---------|
+| [Event Grid を使用して Azure Maps イベントに反応する](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure Maps と Event Grid の統合の概要。 |
+| [チュートリアル:ジオフェンスを設定する](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | このチュートリアルでは、Azure Maps を使用してジオフェンスを設定するための基本的な手順について説明します。 Azure Event Grid を使用してジオフェンスの結果をストリーミングし、ジオフェンスの結果に基づいて通知を設定します。 |
+| [イベント スキーマ](event-schema-azure-maps.md) | Azure Maps イベントでのフィールドを示します。 |
+
 
 ## <a name="next-steps"></a>次の手順
 

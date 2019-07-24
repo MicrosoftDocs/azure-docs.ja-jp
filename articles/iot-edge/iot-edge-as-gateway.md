@@ -1,19 +1,20 @@
 ---
-title: Azure IoT Edge デバイスをゲートウェイとして使用する | Microsoft Docs
+title: ダウンストリーム デバイスのゲートウェイ - Azure IoT Edge | Microsoft Docs
 description: Azure IoT Edge を使って、複数のダウンストリーム デバイスからクラウドにデータを送信する、またはデータをローカルに処理する、透過的デバイス、非透過的デバイス、またはプロキシ ゲートウェイ デバイスを作成します。
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2017
+ms.date: 02/25/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 53f0f1e77f8879807b2fb93b86d825e3bd044f41
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: e0aafc6e5a6926ad70aa5df335f45b841955cab9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567215"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877598"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>IoT Edge デバイスをゲートウェイとして使用する方法
 
@@ -26,7 +27,7 @@ IoT ソリューションのゲートウェイは、デバイス接続とエッ�
 * **プロトコル変換** – 非透過的ゲートウェイ パターンとしても知られているものであり、MQTT、AMQP、または HTTP をサポートしていないデバイスは、ゲートウェイ デバイスを使って IoT Hub にデータを送信できます。 ゲートウェイは、ダウンストリーム デバイスによって使用されているプロトコルを認識します。ただし、ゲートウェイは IoT Hub 内で ID を持つ唯一のデバイスです。 すべての情報は、1 つのデバイスつまりゲートウェイから送信されているように見えます。 クラウド アプリケーションでデバイスごとにデータを分析する必要がある場合、ダウンストリーム デバイスは追加の識別情報をメッセージに埋め込む必要があります。 さらに、ツインやメソッドのような IoT Hub プリミティブを使うことができるのはゲートウェイ デバイスのみであり、ダウンストリーム デバイスは使えません。
 * **ID 変換** - IoT Hub に接続できないデバイスは、代わりにゲートウェイ デバイスに接続できます。 ゲートウェイは、ダウンストリーム デバイスに代わって IoT Hub ID とプロトコルの変換機能を提供します。 ゲートウェイは、ダウンストリーム デバイスによって使われているプロトコルを認識し、ダウンストリーム デバイスに ID を提供し、IoT Hub のプリミティブを変換できるほど十分にスマートです。 ダウンストリーム デバイスは、ツインとメソッドを備えたファースト クラスのデバイスとして IoT Hub に認識されます。 ユーザーは、中間のゲートウェイ デバイスを意識せずに IoT Hub 内のデバイスを操作できます。
 
-![ゲートウェイのパターンの図](./media/iot-edge-as-gateway/edge-as-gateway.png)
+![ダイアグラム - 透過、プロトコル、および ID ゲートウェイ パターン](./media/iot-edge-as-gateway/edge-as-gateway.png)
 
 ## <a name="use-cases"></a>ユース ケース
 すべてのゲートウェイ パターンには次の利点があります。
@@ -53,4 +54,4 @@ ID 変換を行うゲートウェイを使うと、プロトコル変換の利�
 非透過的なゲートウェイ (プロトコル変換) パターンを使用する場合、そのゲートウェイを介して接続するすべてのデバイスは、同一のクラウドからデバイスのキューを共有します。これには最大で 50 のメッセージを含めることができます。 したがって、各フィールド ゲートウェイを介して接続するデバイスが非常に少なく、クラウドからデバイスへのトラフィックが少ない場合にのみ、非透過的なゲートウェイ パターンを使用する必要があります。
 
 ## <a name="next-steps"></a>次の手順
-IoT Edge デバイスを[透過的ゲートウェイ](how-to-create-transparent-gateway-linux.md)として構成する方法を学習してください。
+IoT Edge デバイスを[透過的ゲートウェイ](how-to-create-transparent-gateway.md)として構成する方法を学習してください。

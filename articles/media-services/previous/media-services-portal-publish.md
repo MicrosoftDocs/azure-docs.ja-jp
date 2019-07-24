@@ -4,7 +4,7 @@ description: このチュートリアルでは、Azure Portal を使用してコ
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 92c364eb-5a5f-4f4e-8816-b162c031bb40
 ms.service: media-services
@@ -12,20 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 71b7e724158255cc979e9a08cd14c7f4412c4382
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2639d47a6c9d8da53c9d6bccde0d317698d5d9fd
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253399"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58257971"
 ---
-# <a name="publish-content-in-the-azure-portal"></a>Azure Portal でコンテンツを発行する
+# <a name="publish-content-in-the-azure-portal"></a>Azure Portal でコンテンツを発行する  
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)
-> * [REST ()](media-services-rest-deliver-streaming-content.md)
+> * [REST](media-services-rest-deliver-streaming-content.md)
 > 
 > 
 
@@ -89,7 +89,7 @@ Azure Portal のコンテンツ プレーヤーでビデオをテストできま
 いくつかの考慮事項が適用されます。
 
 * ビデオが発行されたことを確認します。
-* Azure Portal のメディア プレーヤーは、既定のストリーミング エンドポイントから再生を行います。 既定以外のストリーミング エンドポイントから再生する場合は、URL を選択してコピーし、別のプレーヤーに貼り付けます。 たとえば、[Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) でビデオをテストすることができます。
+* Azure Portal のメディア プレーヤーは、既定のストリーミング エンドポイントから再生を行います。 既定以外のストリーミング エンドポイントから再生する場合は、URL を選択してコピーし、別のプレーヤーに貼り付けます。 たとえば、[Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) でビデオをテストすることができます。
 * ストリーミング元となるストリーミング エンドポイントが実行されている必要があります。  
 
 ## <a name="provide-feedback"></a>フィードバックの提供

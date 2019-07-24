@@ -1,13 +1,10 @@
 ---
-title: VM (クラシック) のプライベート IP アドレスの構成 - Azure クラシック CLI | Microsoft Docs
+title: VM (クラシック) のプライベート IP アドレスの構成 - Azure クラシック CLI
+titlesuffix: Azure Virtual Network
 description: Azure クラシック コマンドライン インターフェイス (CLI) を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
-editor: tysonn
-tags: azure-service-management
-ms.assetid: 17386acf-c708-4103-9b22-ff9bf04b778d
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,13 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f340b9843ed5763a20d2035e3add86123a1298e8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2f71dc2bcd5463f81ae286bbe3099124eb3fa539
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971146"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023891"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して仮想マシン (クラシック) のプライベート IP アドレスを構成する
 
@@ -75,7 +71,7 @@ ms.locfileid: "46971146"
    * **TestService**。 VM の作成先となるクラウド サービスの名前です。
    * **bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012R2-x64-v14.2**。 VM の作成に使用されるイメージです。
    * **adminuser**。 Windows VM のローカル管理者です。
-   * **AdminP@ssw0rd**こともできます。 Windows VM のローカル管理者のパスワードです。
+   * <strong>AdminP@ssw0rd</strong>こともできます。 Windows VM のローカル管理者のパスワードです。
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>VM 用の静的プライベート IP アドレス情報を取得する方法
 上記のスクリプトで作成された VM の静的プライベート IP アドレス情報を表示するには、次の Azure CLI コマンドを実行し、 *Network StaticIP*の値を確認します。

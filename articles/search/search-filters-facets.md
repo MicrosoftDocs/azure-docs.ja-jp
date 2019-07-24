@@ -1,6 +1,6 @@
 ---
-title: Azure Search のファセット フィルター | Microsoft Docs
-description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search で、ユーザーのセキュリティ ID、言語、地理的な場所、または数値で条件をフィルター処理してクエリの検索結果を減らします。
+title: アプリ内の検索ナビゲーション用ファセット フィルター - Azure Search
+description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search で、ユーザーのセキュリティ ID、地理的な場所、または数値で条件をフィルター処理してクエリの検索結果を減らします。
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: heidist
-ms.openlocfilehash: 3f2cfea52d3c3f4bfc75364d0662a4218219152d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: seodec2018
+ms.openlocfilehash: 8793f6f4d135d6099541d24aa5f5cfc0b6c21b30
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792411"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339433"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Azure Search でファセット フィルターを作成する方法 
 
@@ -44,7 +45,7 @@ ms.locfileid: "31792411"
 + Edm.DateTimeOffset
 + Edm.Boolean
 + Edm.Collections
-+ 数値フィールド タイプ: Edm.Int32、Edm.Int64、Edm.Double
++ 数値フィールド タイプ:Edm.Int32、Edm.Int64、Edm.Double
 
 ファセット ナビゲーションで Edm.GeographyPoint を使用することはできません。 ファセットは、人間が判読できるテキストまたは数字で構成されます。 そのため、ファセットは地理座標ではサポートされていません。 場所でファセットするには、都市フィールドまたは地域フィールドが必要です。
 
@@ -83,7 +84,7 @@ ms.locfileid: "31792411"
 
 ## <a name="build-and-load-an-index"></a>インデックスの作成と読み込み
 
-(言うまでもありませんが) 中間の手順として、クエリを作成する前に[インデックスを作成して設定する](https://docs.microsoft.com/azure/search/search-create-index-dotnet#create-the-index)必要があります。 ここでは、完全を期すためにこの手順に触れました。 インデックスを使用できるかどうかを判断する 1 つの方法として、[ポータル](https://portal.azure.com)でインデックスの一覧を確認します。
+(言うまでもありませんが) 中間の手順として、クエリを作成する前に[インデックスを作成して設定する](https://docs.microsoft.com/azure/search/search-create-index-dotnet#3---construct-index)必要があります。 ここでは、完全を期すためにこの手順に触れました。 インデックスを使用できるかどうかを判断する 1 つの方法として、[ポータル](https://portal.azure.com)でインデックスの一覧を確認します。
 
 ## <a name="add-facet-filters-to-a-query"></a>クエリへのファセット フィルターの追加
 
@@ -127,4 +128,3 @@ Azure Search のファセット ナビゲーションの課題の 1 つは、現
 + [Azure Search のフィルター](search-filters.md)
 + [Index REST API の作成](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
-

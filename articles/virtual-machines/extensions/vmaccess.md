@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: roiyz
-ms.openlocfilehash: 638ca5d1b1b68896ff5dcad70fedf27261ae96cb
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 71aecc1748e70e2119b1f54c21a0f705afc5d5d0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452056"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731310"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>VMAccess 拡張機能と Azure CLI を使用して、Linux VM 上の管理ユーザー、SSH を管理し、ディスクをチェックまたは修復する
 ## <a name="overview"></a>概要
@@ -36,7 +36,7 @@ Linux VM 上のディスクがエラーを示しています。 何らかの理�
 
 VMAccess 拡張機能は、次の Linux ディストリビューションに対して実行することができます。
 
-| ディストリビューション | バージョン |
+| ディストリビューション | Version |
 |---|---|
 | Ubuntu | 16.04 LTS、14.04 LTS、12.04 LTS |
 | Debian | Debian 7.9+、8.2+ |
@@ -53,7 +53,7 @@ Linux VM で VMAccess 拡張機能を使用する方法は 2 つあります。
 * Azure CLI と必要なパラメーターを使用する。
 * [VMAccess 拡張機能が処理して、動作の基となる未加工の JSON ファイル](#use-json-files-and-the-vmaccess-extension)を使用する。
 
-次の例では、[az vm user](/cli/azure/vm/user) コマンドを使用します。 これらの手順を実行するには、[Azure CLI](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインする必要があります。
+次の例では、[az vm user](/cli/azure/vm/user) コマンドを使用します。 これらの手順を実行するには、[Azure CLI](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/reference-index) を使用して Azure アカウントにログインする必要があります。
 
 ## <a name="update-ssh-key"></a>SSH キーを更新する
 次の例では、`myVM` という名前の VM 上のユーザー `azureuser` の SSH キーを更新します。
@@ -66,7 +66,7 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-> **注:** `az vm user update` コマンドは、VM 上の管理者ユーザーの `~/.ssh/authorized_keys` ファイルに新しい公開キー テキストを追加します。 これにより、既存の SSH キーが置き換えられたり、削除されたりすることはありません。 これにより、デプロイ時や VMAccess 拡張機能での以降の更新時に設定された以前のキーが削除されることはありません。
+> **注:**`az vm user update` コマンドは、VM 上の管理者ユーザーの `~/.ssh/authorized_keys` ファイルに新しい公開キー テキストを追加します。 これにより、既存の SSH キーが置き換えられたり、削除されたりすることはありません。 これにより、デプロイ時や VMAccess 拡張機能での以降の更新時に設定された以前のキーが削除されることはありません。
 
 ## <a name="reset-password"></a>[パスワードのリセット]
 次の例では、`myVM` という名前の VM 上のユーザー `azureuser` のパスワードをリセットします。
@@ -110,7 +110,7 @@ az vm user delete \
 ```
 
 ## <a name="use-json-files-and-the-vmaccess-extension"></a>JSON ファイルと VMAccess 拡張機能の使用
-次の例では、未加工の JSON ファイルを使用します。 [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) を使用して JSON ファイルを呼び出します。 これらの JSON ファイルは、Azure テンプレートから呼び出すこともできます。 
+次の例では、未加工の JSON ファイルを使用します。 [az vm extension set](/cli/azure/vm/extension) を使用して JSON ファイルを呼び出します。 これらの JSON ファイルは、Azure テンプレートから呼び出すこともできます。 
 
 ### <a name="reset-user-access"></a>ユーザー アクセスのリセット
 Linux VM 上でルートへのアクセスが失われた場合は、VMAccess スクリプトを起動して、ユーザーの SSH キーまたはパスワードを更新できます。

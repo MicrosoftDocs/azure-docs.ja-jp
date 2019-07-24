@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: da486b25a9a35cb4f00d6e5a4689d5be3d270e36
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c92a55ec1d56b83457167fc2db0bd7897a447852
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013277"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974847"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>HDInsight で ScaleR と SparkR を組み合わせる
 
 このドキュメントは、**ScaleR** ロジスティック回帰モデルを使用して、フライト到着遅延の予測方法を示しています。 例では **SparkR** を使用してフライト遅延や気象データを組合せて使用しています。
 
-どちらのパッケージも Hadoop の Spark 実行エンジンで動作しますが、それぞれ固有の Spark セッションが必要になることから、両者がメモリ内でデータを共有することはできません。 その点が今後 ML Server のバージョンアップで改善されるまでは、それぞれの Spark セッションを別々に維持し、中間ファイルを介してデータを交換するのが回避策になります。 ここで紹介する方法を使えば、これらの要件は簡単に満たすことができます。
+どちらのパッケージも Apache Hadoop の Spark 実行エンジンで動作しますが、それぞれ固有の Spark セッションが必要になることから、両者がメモリ内でデータを共有することはできません。 その点が今後 ML Server のバージョンアップで改善されるまでは、それぞれの Spark セッションを別々に維持し、中間ファイルを介してデータを交換するのが回避策になります。 ここで紹介する方法を使えば、これらの要件は簡単に満たすことができます。
 
-この例は、Mario Inchiosa と Roni Burd による Strata 2016 での講演で最初に共有されました。 この講演の内容は、[Building a Scalable Data Science Platform with R(R を使用してスケーラブルなデータ サイエンス プラットフォームを構築する)](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio) にあります。
+この例は、Mario Inchiosa と Roni Burd による Strata 2016 での講演で最初に共有されました。 この講演の内容は、[Building a Scalable Data Science Platform with R(R を使用してスケーラブルなデータ サイエンス プラットフォームを構築する)](https://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio) にあります。
 
 これから紹介するコードは、元は Azure の HDInsight クラスター内の Spark で動作する ML Server 向けに書かれたものです。 しかし SparkR と ScaleR を 1 つのスクリプトで組み合わせて使う概念は、オンプレミス環境においても有効です。
 
@@ -29,9 +29,9 @@ ms.locfileid: "51013277"
 
 ## <a name="the-airline-and-weather-datasets"></a>航空データセットと気象データセット
 
-フライト データは[米国政府のアーカイブ](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)からダウンロードできます。 [AirOnTimeCSV.zip](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip) から、zip ファイルとしても入手可能です。
+フライト データは[米国政府のアーカイブ](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)からダウンロードできます。 [AirOnTimeCSV.zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip) から、zip ファイルとしても入手可能です。
 
-気象データについては、[米国海洋大気庁のリポジトリ](http://www.ncdc.noaa.gov/orders/qclcd/)から、月ごとの生データを zip ファイルとしてダウンロードできます。 この例では、2007 年 5 月～2012 年 12 月のデータをダウンロードします。 1 時間ごとのデータ ファイルと各zip 内の `YYYYMMMstation.txt` ファイルを使用します。 
+気象データについては、[米国海洋大気庁のリポジトリ](https://www.ncdc.noaa.gov/orders/qclcd/)から、月ごとの生データを zip ファイルとしてダウンロードできます。 この例では、2007 年 5 月～2012 年 12 月のデータをダウンロードします。 1 時間ごとのデータ ファイルと各zip 内の `YYYYMMMstation.txt` ファイルを使用します。 
 
 ## <a name="setting-up-the-spark-environment"></a>Spark 環境のセットアップ
 
@@ -41,7 +41,7 @@ Spark 環境を設定するには、次のコードを使用します。
 workDir        <- '~'  
 myNameNode     <- 'default' 
 myPort         <- 0
-inputDataDir   <- 'wasb://hdfs@myAzureAcccount.blob.core.windows.net'
+inputDataDir   <- 'wasb://hdfs@myAzureAccount.blob.core.windows.net'
 hdfsFS         <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 
 # create a persistent Spark session to reduce startup times 
@@ -506,7 +506,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>外部でのスコア付け
 
-データのスコア付けのモデルは、別のプラットフォームに移して使うこともできます。 その場合は、モデルを RDS ファイルに保存し、それを移行先のスコア付け環境 (SQL Server R Services など) に転送してインポートします。 スコア付けの対象となるデータのファクター レベルは、モデルが構築された環境と確実に合わせることが重要です。 この要件は、モデリング データに関連付けられている列情報を ScaleR の `rxCreateColInfo()` 関数で抽出して保存し、その列情報を予測の入力データ ソースに適用することで満たすことができます。 次のコードでは、テスト データセットからいくつかの行を保存し、そのサンプルから列情報を抽出して予測スクリプトに使用しています。
+データのスコア付けのモデルは、別のプラットフォームに移して使うこともできます。 その場合は、モデルを RDS ファイルに保存し、それを移行先のスコア付け環境 (MIcrosoft SQL Server R Services など) に転送してインポートします。 スコア付けの対象となるデータのファクター レベルは、モデルが構築された環境と確実に合わせることが重要です。 この要件は、モデリング データに関連付けられている列情報を ScaleR の `rxCreateColInfo()` 関数で抽出して保存し、その列情報を予測の入力データ ソースに適用することで満たすことができます。 次のコードでは、テスト データセットからいくつかの行を保存し、そのサンプルから列情報を抽出して予測スクリプトに使用しています。
 
 ```
 # save the model and a sample of the test dataset 
@@ -535,7 +535,7 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 
 ## <a name="next-steps-and-more-information"></a>次のステップと詳細情報
 
-- Spark での ML Server の使用について詳しくは、[概要のガイダンス](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)をご覧ください。
+- Apache Spark での ML Server の使用について詳しくは、[概要のガイダンス](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)を参照してください。
 
 - ML Server の一般情報については、[R の基礎](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node)に関する記事をご覧ください。
 
@@ -543,6 +543,6 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 
 SparkR の使い方について詳しくは、次のドキュメントをご覧ください。
 
-- [Apache SparkR のドキュメント](https://spark.apache.org/docs/2.1.0/sparkr.html)
+- [Apache SparkR のドキュメント](https://spark.apache.org/docs/2.1.0/sparkr.html)。
 
-- [SparkR の概要](https://docs.databricks.com/spark/latest/sparkr/overview.html) (Databricks のサイト)
+- [SparkR の概要](https://docs.databricks.com/spark/latest/sparkr/overview.html) (Databricks のサイト)。

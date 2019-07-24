@@ -1,28 +1,29 @@
 ---
-title: 'Azure AD Connect 同期: スケジューラ | Microsoft Docs'
+title: 'Azure AD Connect 同期: スケジューラ |Microsoft Docs'
 description: このトピックでは、Azure AD Connect 同期の組み込みのスケジューラ機能について説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 6b1a598f-89c0-4244-9b20-f4aaad5233cf
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: d8deb03d03446c1452d73a7c08df4cf14ffcd5b5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1d5f4dec48d81b032de293bb6c68ad62ac48d475
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46304561"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193060"
 ---
-# <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同期: スケジューラ
+# <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同期: Scheduler
 このトピックでは、Azure AD Connect 同期の組み込みのスケジューラ ( 同期エンジンとも言います) について説明します。
 
 この機能は、ビルド 1.1.105.0 (2016 年 2 月リリース) で導入されました。
@@ -54,7 +55,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 * **PurgeRunHistoryInterval**。 操作ログを保持する時間です。 ログは Synchronization Service Manager で参照できます。 既定では、ログは 7 日間保持されます。
 * **SyncCycleEnabled**。 スケジューラが、その操作の一部としてインポート、同期、およびエクスポート処理を実行しているかどうかを示します。
 * **MaintenanceEnabled**。 メンテナンス処理が有効になっているかどうかを示します。 メンテナンス処理では、証明書/キーの更新と、操作ログの消去が行われます。
-* **StagingModeEnabled**。 [ステージング モード](how-to-connect-sync-operations.md#staging-mode) が有効になっているかどうかを示します。 この設定が有効になっている場合、エクスポートは実行されませんが、インポートと同期は引き続き実行されます。
+* **StagingModeEnabled**。 [ステージング モード](how-to-connect-sync-staging-server.md) が有効になっているかどうかを示します。 この設定が有効になっている場合、エクスポートは実行されませんが、インポートと同期は引き続き実行されます。
 * **SchedulerSuspended**。 アップグレード中にスケジューラの実行を一時的にブロックするために Connect によって設定されます。
 
 これらの設定のいくつかは、 `Set-ADSyncScheduler`を使用して変更できます。 次のパラメーターに変更を加えることができます。
@@ -71,7 +72,7 @@ Azure AD Connect の以前のビルドでは、**isStagingModeEnabled** は Set-
 
 ### <a name="customizedsynccycleinterval"></a>CustomizedSyncCycleInterval
 構文: `Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
-d - 日数、HH - 時間数、mm - 分数、ss - 秒数
+ d - 日数、HH - 時間数、mm - 分数、ss - 秒数
 
 例: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00`  
 スケジューラが 3 時間ごとに実行されるように変更されます。
@@ -92,7 +93,7 @@ d - 日数、HH - 時間数、mm - 分数、ss - 秒数
 スケジューラは、既定では 30 分ごとに実行されます。 場合によっては、スケジュールされたサイクル間に同期サイクルを実行したり、別の種類を実行する必要があったりします。
 
 **差分同期サイクル**  
-差分同期サイクルには、以下の手順が含まれています。
+ 差分同期サイクルには、以下の手順が含まれています。
 
 * すべてのコネクタでの差分インポート
 * すべてのコネクタでの差分同期
@@ -165,7 +166,7 @@ Get-ADSyncConnectorRunStatus
 ```
 
 ![Connector Run Status](./media/how-to-connect-sync-feature-scheduler/getconnectorrunstatus.png)  
-上の図の 1 行目は、同期エンジンがアイドル状態であることを示しています。 2 行目は、Azure AD コネクタが実行されていることを示しています。
+ 上の図の 1 行目は、同期エンジンがアイドル状態であることを示しています。 2 行目は、Azure AD コネクタが実行されていることを示しています。
 
 ## <a name="scheduler-and-installation-wizard"></a>スケジューラとインストール ウィザード
 インストール ウィザードを開始すると、スケジューラは一時的に中断されます。 この動作は、構成が変更されても、同期エンジンがアクティブに実行されていると、この設定を適用できないためです。 このようなしくみになっているので、インストール ウィザードを開いたままにしないでください。開いたままにすると、同期エンジンが同期操作を実行できません。

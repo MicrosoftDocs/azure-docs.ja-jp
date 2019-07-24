@@ -1,21 +1,22 @@
 ---
-title: Python クイック スタート - モデルの変更と LUIS アプリのトレーニング
-titleSuffix: Azure Cognitive Services
-description: この Python クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。 発話の例は、意図にマッピングされる会話形式のユーザー テキストです。 意図に対する発話の例を与えるには、ユーザーによって入力されるどのようなテキストが、どの意図に属しているかを LUIS に学習させます。
+title: 変更、アプリのトレーニング、Python
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: この Python クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: ff076954d51605935bb41488ec6a757c2f7806a1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: a5ab90baf06dce79248d5da90b01b8651ab498b1
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040178"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873327"
 ---
 # <a name="quickstart-change-model-using-python"></a>クイック スタート: Python を使ってモデルを変更する
 
@@ -27,7 +28,7 @@ ms.locfileid: "47040178"
 * [Python 3.6](https://www.python.org/downloads/) 以降。
 * [Visual Studio Code](https://code.visualstudio.com/)
 
-[!INCLUDE [Code is available in LUIS-Samples Github repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
 
 ## <a name="example-utterances-json-file"></a>発話の例の JSON ファイル
 
@@ -46,7 +47,7 @@ Python 3.6 を使用してコマンドラインからアプリケーションを
 
 引数を指定せずに add-utterance を呼び出すと、アプリに発話は追加されますが、トレーニングは実行されません。
 
-```CMD
+```console
 > python add-utterances-3-6.py
 ```
 
@@ -83,7 +84,7 @@ Python 3.6 を使用してコマンドラインからアプリケーションを
 }
 ```
 
-```JSON
+```json
 Requested training status.
 [
    {

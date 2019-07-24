@@ -3,8 +3,8 @@ title: セキュリティ強化のための Azure Security Center Standard へ�
 description: " セキュリティを強化するために、Azure Security Center Standard にオンボードする方法について説明します。 "
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: MBaldwin
+author: monhaber
+manager: barbkess
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/02/2018
-ms.author: rkarlin
-ms.openlocfilehash: d5a4cfa3a91b82aa0f5b1725f86c732fecf632d4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.date: 19/02/2019
+ms.author: monhaber
+ms.openlocfilehash: ef6b476e2c85715e86ef4c1cfe1194bb25cade28
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405448"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665493"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>セキュリティ強化のための Azure Security Center Standard へのオンボード
-ハイブリッド クラウドのワークロードで強化されたセキュリティ管理と脅威保護を利用するには、Security Center Standard にアップグレードします。  Standard は 60 日間無料で試用できます。 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください。
+ハイブリッド クラウドのワークロードで強化されたセキュリティ管理と脅威保護を利用するには、Security Center Standard にアップグレードします。  Standard は無料で試用できます。 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください。
 
 Security Center Standard は次の機能を備えています。
 
@@ -33,7 +33,7 @@ Security Center Standard は次の機能を備えています。
 ## <a name="detecting-unprotected-resources"></a>保護されていないリソースの検出     
 Security Center では、Security Center Standard に対応していない Azure サブスクリプションまたはワークスペースが自動的に検出されます。 これには、Security Center Free を使用する Azure サブスクリプションと、セキュリティ ソリューションが有効になっていないワークスペースが含まれます。
 
-Azure サブスクリプション全体を Standard レベルにアップグレードできます。この場合、サブスクリプション内のすべてのリソースが Standard レベルを継承します。また、特定のリソース グループだけをアップグレードする固有のポリシーを定義することもできます。 リソース グループのポリシー設定が固有の場合、サブスクリプションを Standard レベルにアップグレードしたときに価格ポリシーはオーバーライドされません。 Standard レベルをサブスクリプションに適用すると、Security Center によって作成されたワークスペースに報告する、サブスクリプション内の VM にのみ適用されます。 Standard レベルをワークスペースに適用すると、ワークスペースに報告するすべてのリソースに適用されます。
+Azure サブスクリプション全体を Standard レベルにアップグレードできます。この場合、サブスクリプション内のサポートされるすべてのリソースによって継承されます。 Standard レベルをワークスペースに適用すると、ワークスペースに報告するすべてのリソースに適用されます。
 
 > [!NOTE]
 > ソリューションを特定のエージェント セットに制限することで、コストを管理し、ソリューション用に収集されるデータの量を制限することもできます。 [ソリューションのターゲット設定](../operations-management-suite/operations-management-suite-solution-targeting.md)を使用すると、ソリューションにスコープを適用し、ワークスペース内のコンピューターのサブセットをターゲットにすることができます。  ソリューションのターゲット設定を使用している場合、Security Center はソリューションがないものとしてワークスペースを表示します。
@@ -45,7 +45,7 @@ Azure サブスクリプション全体を Standard レベルにアップグレ�
 1. Security Center メイン メニューの **[使用の開始]** を選択します。
   ![使用の開始](./media/security-center-onboarding/get-started.png)
 2. Security Center の **[アップグレード]** に、オンボードの対象となるサブスクリプションとワークスペースが一覧表示されます。 
-   - 展開可能な **[Apply your trial] (試用版を適用)** をクリックすると、すべてのサブスクリプションとワークスペースの一覧を各試用版の資格の状態と共に表示できます。
+   - 展開可能な **[Apply your trial] \(試用版を適用)** をクリックすると、すべてのサブスクリプションとワークスペースの一覧を各試用版の資格の状態と共に表示できます。
    -    試用版の対象にならないサブスクリプションとワークスペースをアップグレードできます。
    -    対象となるワークスペースとサブスクリプションを選択すると、ご自身の試用版を開始できます。
 3.  **[無料体験する]** をクリックして、選択したサブスクリプションでご自身の試用版を開始します。
@@ -53,7 +53,7 @@ Azure サブスクリプション全体を Standard レベルにアップグレ�
 
 
    > [!NOTE]
-   > Security Center の Free レベルの機能は Azure VM にのみ適用されます。 Free レベルの機能は、Azure 以外のコンピューターには適用されません。 Standard を選択した場合、ワークスペースに報告するすべての Azure VM と Azure 以外のコンピューターに Standard レベルの機能が適用されます。 Azure リソースと Azure 以外のリソースに高度なセキュリティを提供するために、Standard を適用することをお勧めします。
+   > Security Center の Free レベルの機能は Azure VM と VMSS にのみ適用されます。 Free レベルの機能は、Azure 以外のコンピューターには適用されません。 Standard を選択した場合、ワークスペースに報告するすべての Azure VM、VM スケール セット、および Azure 以外のコンピューターに Standard レベルの機能が適用されます。 Azure リソースと Azure 以外のリソースに高度なセキュリティを提供するために、Standard を適用することをお勧めします。
    >
    >
 
@@ -63,13 +63,13 @@ Security Center では、Azure 以外のコンピューターのセキュリテ�
 ### <a name="add-new-non-azure-computers-from-getting-started"></a>**[使用の開始]** から新しい Azure 以外のコンピューターを追加する
 
 1. **[使用の開始]** に戻ります。   
-2. **[Get started] (使用の開始)** タブを選択します。
+2. **[作業の開始]** タブを選択します。
 
-  ![Azure 以外](./media/security-center-onboarding/non-azure.png)
+   ![Azure 以外](./media/security-center-onboarding/non-azure.png)
 
 3. **[Azure 以外のコンピューターの新規追加]** で **[構成]** をクリックします。 Log Analytics ワークスペースの一覧が表示されます。 該当する場合、一覧には、自動プロビジョニングが有効になっているときに Security Center によって作成された既定のワークスペースが含まれます。 このワークスペースまたは使用する別のワークスペースを選択します。
 
-  ![Azure 以外のコンピューターの追加][7]
+   ![Azure 以外のコンピューターの追加][7]
 
 既存のワークスペースがある場合は、**[Add new Non-Azure computers]\(新しい Azure 以外のコンピューターの追加\)** に一覧表示されます。 コンピューターを既存のワークスペースに追加することも、新しいワークスペースを作成することもできます。 新しいワークスペースを作成するには、**[add a new workspace]\(新しいワークスペースを追加\)** リンクをクリックします。
 
@@ -82,8 +82,8 @@ Security Center では、Azure 以外のコンピューターのセキュリテ�
    ![新しいワークスペースの追加][4]
 
 2. **[セキュリティおよび監査]** で、**[OMS ワークスペース]** を選択して新しいワークスペースを作成します。
-> [!NOTE]
-> OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。
+   > [!NOTE]
+   > OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。
 3. **[OMS ワークスペース]** で、ワークスペースの情報を入力します。
 4. **[OMS ワークスペース]** で **[OK]** をクリックします。  [OK] をクリックすると、Windows または Linux エージェントをダウンロードするためのリンクと、エージェントの構成時に使用するワークスペース ID のキーが提供されます。
 5. **[セキュリティおよび監査]** で **[OK]** をクリックします。
@@ -105,7 +105,7 @@ Security Center では、Azure 以外のコンピューターのセキュリテ�
 
    ![コンピューターの追加][7]
 
- **[直接エージェント]** ブレードには、Windows または Linux エージェントをダウンロードするためのリンクや、エージェントの構成で使用するワークスペース ID とキーが表示されます。   
+   **[直接エージェント]** ブレードには、Windows または Linux エージェントをダウンロードするためのリンクや、エージェントの構成で使用するワークスペース ID とキーが表示されます。   
 
 ## <a name="next-steps"></a>次の手順
 この記事では、Security Center の高度なセキュリティのメリットを得るために、Azure リソースと Azure 以外のリソースをオンボードする方法について説明しました。  オンボードされたリソースを活用するには、以下を参照してください。

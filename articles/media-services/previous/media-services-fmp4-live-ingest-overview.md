@@ -4,7 +4,7 @@ description: この仕様では、Azure Media Services 用 Fragmented MP4 ベー
 services: media-services
 documentationcenter: ''
 author: cenkdin
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 43fac263-a5ea-44af-8dd5-cc88e423b4de
 ms.service: media-services
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 03/18/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: c6ff386913ed66cf4f74cb577bb8ca58e6932ada
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b3357436d068396c5c3c4fae10ed6857759c5aed
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228880"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189344"
 ---
-# <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services の Fragmented MP4 ライブ インジェスト仕様
+# <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services の Fragmented MP4 ライブ インジェスト仕様 
+
 この仕様では、Azure Media Services 用 Fragmented MP4 ベースのライブ ストリーミング インジェストのプロトコルと形式について説明します。 Media Services は、顧客が Azure をクラウド プラットフォームとして使用して、ライブ イベントをストリーム配信し、リアルタイムでコンテンツをブロードキャストできるライブ ストリーミング サービスを提供しています。 このドキュメントでは、冗長性の高い、堅牢なライブ インジェスト メカニズムを構築する上でのベスト プラクティスについても説明します。
 
 ## <a name="1-conformance-notation"></a>1.適合性の表記
@@ -82,17 +83,17 @@ Media Services 用 ISO Fragmented MP4 ベースのライブ インジェスト�
 
 オーディオ – 128 kbps
 
-### <a name="option-1-all-tracks-in-one-stream"></a>オプション 1: すべてのトラックを 1 つのストリームに配置する
+### <a name="option-1-all-tracks-in-one-stream"></a>オプション 1:すべてのトラックを 1 つのストリームに配置する
 このオプションでは、1 つのエンコーダーですべてのオーディオ トラックとビデオ トラックを生成し、1 つの Fragmented MP4 ビットストリームにバンドルします。 Fragmented MP4 ビットストリームは、その後、1 つの HTTP POST 接続を経由して送信されます。 この例では、このライブ プレゼンテーションには 1 つのストリームだけがあります。
 
 ![1 ストリームのトラック][image2]
 
-### <a name="option-2-each-track-in-a-separate-stream"></a>オプション 2: 各トラックを個別のストリームに配置する
+### <a name="option-2-each-track-in-a-separate-stream"></a>オプション 2:各トラックを個別のストリームに配置する
 このオプションでは、エンコーダーは各 Fragment MP4 ビットストリームにトラックを 1 つずつ配置して、すべてのストリームを個別の HTTP 接続を経由して送信します。 これは、1 つのエンコーダーでも複数のエンコーダーでも実行できます。 ライブ インジェストの観点では、このライブ プレゼンテーションは次の 4 つのストリームで構成されます。
 
 ![個別ストリームのトラック][image3]
 
-### <a name="option-3-bundle-audio-track-with-the-lowest-bitrate-video-track-into-one-stream"></a>オプション 3: 最も低いビットレートのビデオ トラックにオーディオ トラックをバンドルし 1 つのストリームに配置する
+### <a name="option-3-bundle-audio-track-with-the-lowest-bitrate-video-track-into-one-stream"></a>オプション 3: オーディオ トラックを最も低いビットレートのビデオ トラックにバンドルして 1 つのストリームに配置する
 このオプションでは、顧客は最も低いビットレートのビデオ トラックとオーディオ トラックを 1 つの Fragment MP4 ビットストリームにバンドルし、その他の 2 つのビデオ トラックは個別のストリームとして残しています。 
 
 ![オーディオ トラックとビデオ トラックのストリーム][image4]

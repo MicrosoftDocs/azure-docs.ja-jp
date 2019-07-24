@@ -3,17 +3,17 @@ title: Azure IoT Hub Device Provisioning サービスにおけるセキュリテ
 description: デバイス プロビジョニング サービスと IoT Hub を備えたデバイスに固有のセキュリティ プロビジョニングの概念を説明します。
 author: nberdy
 ms.author: nberdy
-ms.date: 03/30/2018
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 92a30f0754decc3052bf53a64da13325ddc4f954
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e35330874c647eba2cddde694563c8a1d9e83df5
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946563"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59786729"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub デバイス プロビジョニング サービスのセキュリティの概念 
 
@@ -29,7 +29,7 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 デバイス プロビジョニング サービスでは、次の形式の構成証明がサポートされます。
 * 標準の X.509 証明書の認証フローに基づく**X.509 証明書**。
 * nonce チャレンジに基づく**トラステッド プラットフォーム モジュール (TPM)**。キーの TPM 標準を使用し、署名された Shared Access Signature (SAS) トークンを提示します。 この形式の構成証明では、デバイス上の物理 TPM は必須ではありませんが、[TPM 仕様](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)に従って保証キーを使用して証明するために、サービスからは物理 TPM が期待されます。
-* 共有アクセス署名 (SAS) の[セキュリティ トークン](../iot-hub/iot-hub-devguide-security.md#security-tokens)に基づく**対称キー**。ハッシュ処理された署名と埋め込みの有効期限が含まれています。 詳細については、「[Symmetric key attestation](concepts-symmetric-key-attestation.md)」(対称キーの構成証明) を参照してください。
+* 共有アクセス署名 (SAS) の[セキュリティ トークン](../iot-hub/iot-hub-devguide-security.md#security-tokens)に基づく**対称キー**。ハッシュ処理された署名と埋め込みの有効期限が含まれています。 詳細については、「[対称キーの構成証明](concepts-symmetric-key-attestation.md)」を参照してください。
 
 
 ## <a name="hardware-security-module"></a>ハードウェア セキュリティ モジュール
@@ -77,7 +77,11 @@ X.509 証明書を構成証明メカニズムとして使用することは、�
 
 ### <a name="end-entity-leaf-certificate"></a>エンド エンティティ "リーフ" 証明書
 
-リーフ証明書、つまりエンドエンティティ証明書は、証明書の所有者を識別します。 リーフ証明書には、証明書チェーン内のルート証明書と 0 個以上の中間証明書が含まれます。 リーフ証明書は、他の証明書の署名には使用されません。 プロビジョニング サービスに対してデバイスを一意に識別し、デバイス証明書と呼ばれることもあります。 デバイスは認証時に、この証明書に関連付けられた秘密キーを使用して、サービスからの所有証明チャレンジに応答します。 詳細については、「[X.509 CA 証明書で署名されたデバイスを認証する](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates)」をご覧ください。
+リーフ証明書、つまりエンドエンティティ証明書は、証明書の所有者を識別します。 リーフ証明書には、証明書チェーン内のルート証明書と 0 個以上の中間証明書が含まれます。 リーフ証明書は、他の証明書の署名には使用されません。 プロビジョニング サービスに対してデバイスを一意に識別し、デバイス証明書と呼ばれることもあります。 デバイスは認証時に、この証明書に関連付けられた秘密キーを使用して、サービスからの所有証明チャレンジに応答します。
+
+[個別の登録](./concepts-service.md#individual-enrollment)エントリで使用されるリーフ証明書には、**サブジェクト名**を個別の登録エントリの登録 ID に設定しなければならないという要件があります。 [登録グループ](./concepts-service.md#enrollment-group)エントリで使用されるリーフ証明書では、**サブジェクト名**が、登録グループ内にある認証済みデバイスの**登録レコード**に表示されているご希望のデバイス ID に設定される必要があります。
+
+詳細については、「[X.509 CA 証明書で署名されたデバイスを認証する](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates)」をご覧ください。
 
 ## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>X.509 証明書を使用してプロビジョニング サービスへのデバイスのアクセスを制御する
 

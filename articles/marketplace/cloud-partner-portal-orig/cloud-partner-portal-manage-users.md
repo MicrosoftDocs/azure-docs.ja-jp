@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d24cf56a898a4f4f8317246cbc2317e926256a77
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 56c646c2ab1f733c37a20cf6e6a5945b223beec4
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807796"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447277"
 ---
 <a name="managing-users-on-cloud-partner-portal"></a>クラウド パートナー ポータルでのユーザーの管理
 ======================================
@@ -59,7 +59,8 @@ o Cloud パートナー ポータルで提供されるメール ID が、Microso
 <a name="step-4-select-the-publisher-name-you-want-to-add-to-the-new-user-then-click-add-to-complete-user-addition"></a>手順 4. 新しいユーザーに追加する発行者名を選択し、[追加] をクリックしてユーザーの追加を完了します。
 ----------------------------------------------------------------------------------------------------------------------------
 
-> `NOTE: The ‘publisher names’ for which your email is added as an owner or contributor will show up in the drop-down list of Publisher for selection.`
+> [!NOTE]
+> 所有者または共同作成者として追加する、電子メールの対象となる '発行者名' が選択の候補として [発行元] ドロップダウン リストに表示されます。
 
 ![ロールの割り当て - 発行元を選択する](./media/cloud-partner-portal-how-to-manage-users/assignselectpublisher.png)
 

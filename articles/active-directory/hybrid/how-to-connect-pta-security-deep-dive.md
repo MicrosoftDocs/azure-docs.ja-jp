@@ -5,21 +5,22 @@ services: active-directory
 keywords: Azure AD Connect パススルー認証, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/19/2018
-ms.component: hybrid
+ms.topic: conceptual
+ms.date: 04/15/2019
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c0729fd4c6d5e387b38c310a708505c3395ea41f
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7f5e2443a285e065426e3dba0312ef6420097ef1
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284882"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617218"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory パススルー認証のセキュリティの詳細
 
@@ -41,7 +42,7 @@ ms.locfileid: "52284882"
 - 認証エージェントから Azure AD への送信通信で使用されるのは、標準ポート (80 と 443) のみです。 ファイアウォールで受信ポートを開く必要はありません。 
   - 認証済みのすべての送信通信でポート 443 が使用されます。
   - ポート 80 が使用されるのは、証明書失効リスト (CRL) をダウンロードして、この機能で使用される証明書が失効していないことを確認する場合のみです。
-  - ネットワーク要件の完全な一覧については、「[Azure Active Directory パススルー認証: クイック スタート](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)」をご覧ください。
+  - ネットワーク要件の完全な一覧については、「[Azure Active Directory パススルー認証:クイック スタート](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)」を参照してください。
 - ユーザーがサインイン時に指定するパスワードは、Active Directory に対する検証でオンプレミスの認証エージェントに受け入れられる前に、クラウドで暗号化されます。
 - Azure AD とオンプレミスの認証エージェント間の HTTPS チャネルは、相互認証を使用して保護されます。
 - 多要素認証 (MFA) を含む、[Azure AD 条件付きアクセス ポリシー](../active-directory-conditional-access-azure-portal.md)と[レガシ認証のブロック](../conditional-access/conditions.md)、[フィルター処理によるブルート フォース パスワード攻撃の除外](../authentication/howto-password-smart-lockout.md)により、作業を中断されずに、ユーザー アカウントを保護できます。
@@ -49,11 +50,11 @@ ms.locfileid: "52284882"
 ## <a name="components-involved"></a>関連するコンポーネント
 
 Azure AD の運用、サービス、データのセキュリティに関する一般的な詳細については、[Trust Center](https://azure.microsoft.com/support/trust-center/) のページをご覧ください。 ユーザー サインインにパススルー認証を使用する場合には、次のコンポーネントが関連します。
-- **Azure AD STS**: ステートレスなセキュリティ トークン サービス (STS)。サインイン要求を処理し、ユーザーのブラウザー、クライアント、または必要に応じてサービスにセキュリティ トークンを発行します。
-- **Azure Service Bus**: エンタープライズ メッセージングと中継通信を使用するクラウド対応通信を提供し、オンプレミスのソリューションをクラウドに接続するのに役立ちます。
-- **Azure AD Connect 認証エージェント**: パスワード検証要求のリッスンと応答を行うオンプレミス コンポーネント。
-- **Azure SQL Database**: メタデータや暗号化キーを含む、テナントの認証エージェントに関する情報が保持されています。
-- **Active Directory**: ユーザー アカウントとそのパスワードが格納されるオンプレミスの Active Directory。
+- **Azure AD STS**:ステートレスなセキュリティ トークン サービス (STS)。サインイン要求を処理し、ユーザーのブラウザー、クライアント、または必要に応じてサービスにセキュリティ トークンを発行します。
+- **Azure Service Bus**:エンタープライズ メッセージングと中継通信を使用するクラウド対応通信を提供し、オンプレミスのソリューションをクラウドに接続するのに役立ちます。
+- **Azure AD Connect 認証エージェント**:パスワード検証要求をリッスンして応答するオンプレミス コンポーネント。
+- **Azure SQL Database**:メタデータや暗号化キーを含む、テナントの認証エージェントに関する情報が保持されています。
+- **Active Directory**:ユーザー アカウントとそのパスワードが格納されるオンプレミスの Active Directory。
 
 ## <a name="installation-and-registration-of-the-authentication-agents"></a>認証エージェントのインストールと登録
 
@@ -97,8 +98,8 @@ Azure AD の運用、サービス、データのセキュリティに関する�
 5. 次に、Azure AD はデジタル ID 証明書に署名して、認証エージェントに送信します。
     - Azure AD 内のルート CA は証明書の署名に使用されます。 
 
-     >[!NOTE]
-     > この CA は、Windows の信頼されたルート証明機関ストアには _存在しません_。
+      > [!NOTE]
+      > この CA は、Windows の信頼されたルート証明機関ストアには _存在しません_。
     - この CA はパススルー認証機能でのみ使用されます。 この CA は、認証エージェントを登録するときの CSR への署名でのみ使用されます。
     -  その他の Azure AD サービスはこの CA を使用しません。
     - 証明書の件名 (識別名または DN) はテナント ID に設定されます。 この DN はテナントを一意に識別する GUID です。 この DN により、証明書の範囲がテナントのみでの使用に限定されます。
@@ -135,7 +136,7 @@ Azure AD の運用、サービス、データのセキュリティに関する�
 4. ユーザーが **[ユーザー サインイン]** ページにユーザー名を入力し、**[次へ]** ボタンを選択します。
 5. ユーザーが **[ユーザー サインイン]** ページにパスワードを入力し、**[サインイン]** ボタンを選択します。
 6. ユーザー名とパスワードが HTTPS POST 要求で Azure AD STS に送信されます。
-7. Azure AD STS が、Azure SQL Database から、テナントで登録されたすべての認証エージェントの公開キーを取得し、それらを使用してパスワードを暗号化します。 
+7. Azure AD STS が、Azure SQL Database から、テナントで登録されたすべての認証エージェントの公開キーを取得し、それらを使用してパスワードを暗号化します。
     - テナントで登録された "N" 個の認証エージェントに対し、"N" 個の暗号化されたパスワード値が生成されます。
 8. Azure AD STS が、ユーザー名と暗号化されたパスワードの値で構成されるパスワード検証要求を、テナントに固有の Service Bus キューに配置します。
 9. 初期化された認証エージェントは Service Bus キューに永続的に接続されるため、使用可能な認証エージェントのいずれかがパスワード検証要求を取得します。
@@ -144,6 +145,9 @@ Azure AD の運用、サービス、データのセキュリティに関する�
     - この API は、フェデレーション サインイン シナリオでユーザーのサインイン時に Active Directory フェデレーション サービス (AD FS) によって使用されるものと同じ API です。
     - この API は、Windows Server の標準的な解決プロセスに従ってドメイン コントローラーを検索します。
 12. 認証エージェントが Active Directory から結果を受け取ります。成功、ユーザー名またはパスワードが正しくない、パスワードの期限が切れているなどです。
+
+   > [!NOTE]
+   > 認証エージェントがサインイン プロセスの間に失敗した場合は、サインイン要求全体が破棄されます。 ある認証エージェントからオンプレミスの別の認証エージェントに、サインイン要求が引き継がれることはありません。 これらのエージェントはクラウドのみと通信し、相互には通信しません。
 13. 認証エージェントは、ポート 443 を介して相互認証された送信 HTTPS チャネル経由で Azure AD STS に結果を戻します。 相互認証では、登録時に認証エージェントに対して以前に発行された証明書を使用します。
 14. Azure AD STS は、この結果がテナントの特定のサインイン要求と関連していることを確認します。
 15. Azure AD STS は、構成どおりにサインインの手順を続行します。 たとえば、パスワードの検証が成功した場合、ユーザーは Multi-Factor Authentication のためにチャレンジされるか、アプリケーションにリダイレクトされることがあります。
@@ -180,7 +184,7 @@ Azure AD の運用、サービス、データのセキュリティに関する�
 
 ## <a name="auto-update-of-the-authentication-agents"></a>認証エージェントの自動更新
 
-アップデーター アプリケーションは、新しいバージョンがリリースされたときに自動的に認証エージェントを更新します。 このアプリケーションでは、テナントのパスワード検証要求は処理されません。 
+新しいバージョンが (バグ修正またはパフォーマンスの強化が行われて) リリースされると、アップデーター アプリケーションによって認証エージェントが自動的に更新されます。 アップデーター アプリケーションでは、テナントに対するパスワード検証要求は処理されません。
 
 Azure AD は、新しいバージョンのソフトウェアを、署名済みの **Windows インストーラー パッケージ (MSI)** としてホストします。 MSI への署名は、ダイジェスト アルゴリズムに SHA256 を指定した [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) を使用することによって行われます。 
 
@@ -194,24 +198,24 @@ Azure AD は、新しいバージョンのソフトウェアを、署名済み�
 3. アップデーターは、MSI が Microsoft によって署名されていることを確認します。
 4. アップデーターは MSI を実行します。 この操作では次の手順を実行します。
 
- > [!NOTE]
- > アップデーターは[ローカル システム](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx)権限で実行されます。
+   > [!NOTE]
+   > アップデーターは[ローカル システム](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx)権限で実行されます。
 
     - 認証エージェント サービスの停止
     - 新しいバージョンの認証エージェントのサーバーへのインストール
     - 認証エージェント サービスの再起動
 
 >[!NOTE]
->テナントに複数の認証エージェントが登録されている場合、Azure AD がそれらの証明書を同時に更新することはありません。 代わりに、Azure AD は段階的に更新し、サインイン要求の高可用性を確保します。
+>テナントに複数の認証エージェントが登録されている場合、Azure AD がそれらの証明書を同時に更新することはありません。 代わりに、Azure AD では一度に 1 つずつ行われて、サインイン要求の高可用性が保証されます。
 >
 
 
 ## <a name="next-steps"></a>次の手順
-- [現在の制限](how-to-connect-pta-current-limitations.md): サポートされているシナリオと、サポートされていないシナリオを確認します。
+- [現時点での制限事項](how-to-connect-pta-current-limitations.md):サポートされているシナリオと、サポートされていないシナリオを確認します。
 - [クイック スタート](how-to-connect-pta-quick-start.md): Azure AD パススルー認証を起動および実行します。
 - [AD FS からパススルー認証への移行](https://aka.ms/adfstoptadpdownload) - AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行するための詳細なガイドです。
-- [スマート ロックアウト](../authentication/howto-password-smart-lockout.md): ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成します。
-- [しくみ](how-to-connect-pta-how-it-works.md): Azure AD パススルー認証のしくみの基礎を確認します。
-- [よく寄せられる質問](how-to-connect-pta-faq.md): よく寄せられる質問とその回答です。
-- [トラブルシューティング](tshoot-connect-pass-through-authentication.md): パススルー認証機能に関する一般的な問題を解決する方法を確認します。
-- [Azure AD シームレス SSO](how-to-connect-sso.md): この補完的な機能の詳細を確認します。
+- [スマート ロックアウト](../authentication/howto-password-smart-lockout.md):ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成します。
+- [しくみ](how-to-connect-pta-how-it-works.md):Azure AD パススルー認証のしくみの基礎を確認します。
+- [よく寄せられる質問](how-to-connect-pta-faq.md):よく寄せられる質問の回答を探します。
+- [トラブルシューティング](tshoot-connect-pass-through-authentication.md): パススルー認証機能に関する一般的な問題を解決する方法について説明します。
+- [Azure AD シームレス SSO](how-to-connect-sso.md):この補完的な機能の詳細について説明します。

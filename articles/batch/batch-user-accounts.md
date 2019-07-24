@@ -1,8 +1,8 @@
 ---
-title: Azure Batch のユーザー アカウントでのタスク実行 | Microsoft Docs
+title: ユーザー アカウントでタスクを実行する - Azure Batch | Microsoft Docs
 description: Azure Batch でタスクを実行するためのユーザー アカウントを構成する
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 tags: ''
@@ -13,13 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: danlep
-ms.openlocfilehash: d5ec76a62b56769ee3065cac3542f5a94df4a1c6
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 000495ab84990f15885c254b472be7863c75da58
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133505"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58877518"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Batch のユーザー アカウントでタスクを実行する
 
@@ -65,7 +66,7 @@ Azure Batch には、タスクを実行するためのユーザー アカウン�
 
 既定では、タスクは自動ユーザー アカウントのもとで、Batch で実行されます。このユーザーは特権アクセスのない標準ユーザーで、タスク スコープがあります。 自動ユーザーの仕様がタスク スコープで構成されている場合、Batch サービスはそのタスク専用の自動ユーザー アカウントを作成します。
 
-タスク スコープのほかに、プール スコープというものがあります。 タスクの自動ユーザーの仕様がプール スコープで構成されている場合は、プール内のどのタスクでも利用可能な自動ユーザー アカウントでタスクが実行されます。 プール スコープの詳細については、[プール スコープのある自動ユーザーとしてのタスクの実行](#run-a-task-as-the-autouser-with-pool-scope)に関するセクションを参照してください。   
+タスク スコープのほかに、プール スコープというものがあります。 タスクの自動ユーザーの仕様がプール スコープで構成されている場合は、プール内のどのタスクでも利用可能な自動ユーザー アカウントでタスクが実行されます。 プール スコープの詳細については、プール スコープのある自動ユーザーとしてのタスクの実行に関するセクションを参照してください。   
 
 既定のスコープは、Windows ノードと Linux ノードとで異なります。
 
@@ -327,8 +328,8 @@ Batch サービス バージョン 2017-01-01.4.0 では、以前のバージョ
 
 | コードが次の場合                      | 次のように更新                                                                                                                       |
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| `run_elevated=True`                       | `user_identity=user`、ここで <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin)) `                |
-| `run_elevated=False`                      | `user_identity=user`、ここで <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.nonadmin)) `             |
+| `run_elevated=True`                       | `user_identity=user`、ここで <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin))`                |
+| `run_elevated=False`                      | `user_identity=user`、ここで <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.nonadmin))`             |
 | `run_elevated` の指定なし | 更新の必要なし                                                                                                                                  |
 
 

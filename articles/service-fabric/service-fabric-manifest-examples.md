@@ -3,8 +3,8 @@ title: Azure Service Fabric コンテナー アプリケーション マニフ�
 description: Service Fabric アプリケーションのアプリケーションとサービス マニフェストの設定を構成する方法について説明します。
 services: service-fabric
 documentationcenter: na
-author: rwike77
-manager: timlt
+author: peterpogorski
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
-ms.author: ryanwi
-ms.openlocfilehash: 8336f0a63f74aa0db176adbb3baf462c903ba2ec
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.author: pepogors
+ms.openlocfilehash: 85a3066095cfc30da19b06d26f41bdc156f85832
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095581"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664694"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Service Fabric のアプリケーションとサービス マニフェストの例
 このセクションでは、アプリケーションとサービス マニフェストの例を示します。 これらの例は、重要なシナリオを示すことを意図しているわけではなく、利用可能なさまざまな設定とその使用方法を示します。 
 
 以下に、機能のインデックスと、それに含まれるサンプル マニフェストを示します。
 
-|Feature|Manifest|
+|機能|Manifest|
 |---|---|
 |[リソース ガバナンス](service-fabric-resource-governance.md)|[Reliable Services アプリケーション マニフェスト](service-fabric-manifest-example-reliable-services-app.md#application-manifest)、[コンテナー アプリケーション マニフェスト](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[ローカル管理者アカウントとしてサービスを実行する](service-fabric-application-runas-security.md)|[Reliable Services アプリケーション マニフェスト](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|

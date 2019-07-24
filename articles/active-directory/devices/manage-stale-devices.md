@@ -1,29 +1,30 @@
 ---
-title: Azure AD でデバイスのライフサイクルを管理する方法 | Microsoft Docs
-description: デバイス管理を利用して、環境内のリソースにアクセスしているデバイスを管理する方法について説明します。
+title: Azure AD で古いデバイスを管理する方法 | Microsoft Docs
+description: デバイスの紛失、盗難、破損、OS の再インストールなどの理由で、環境には古いデバイスが存在しているのが一般的です。 Azure Active Directory (Azure AD) の登録済みデバイスのデータベースから古いデバイスを削除する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
-manager: mtillman
+author: MicrosoftGuyJFlo
+manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: devices
+ms.subservice: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/03/2018
-ms.author: markvi
+ms.date: 01/30/2019
+ms.author: joflore
 ms.reviewer: spunukol
-ms.openlocfilehash: 1b8a6e6a6b5f482a4e3575c4da18a02a958c4081
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5c4aa4d3a4425c93cb495d27d0fe38d329ddea7a
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249368"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521535"
 ---
-# <a name="how-to-manage-the-stale-devices-in-azure-ad"></a>方法: Azure AD で古いデバイスを管理する
+# <a name="how-to-manage-stale-devices-in-azure-ad"></a>方法:Azure AD で古いデバイスを管理する
 
 ライフサイクルを完了するためには、不要になった時点で登録済みデバイスを登録解除するのが理想的です。 しかし、紛失、盗難、デバイスの破損、OS の再インストールなどの理由で、古いデバイスが環境に存在しているのが一般的です。 実際に管理が必要なデバイスの管理に IT 管理者がリソースを集中できるよう、古いデバイスを削除する方法が必要です。
 
@@ -122,7 +123,7 @@ Azure AD をクリーンアップするには:
 
 - **Windows 10 デバイス** - オンプレミス AD で Windows 10 デバイスを無効化または削除し、Azure AD Connect によって、変更されたデバイス ステータスを Azure AD に同期します。
 
-- **Windows 7/8** - Azure AD で Windows 10 デバイスを無効化または削除します。 Azure AD Connect を使用して Azure AD で Windows 7/8 デバイスを無効化または削除することはできません。
+- **Windows 7/8** - Azure AD で Windows 7/8 デバイスを無効化または削除します。 Azure AD Connect を使用して Azure AD で Windows 7/8 デバイスを無効化または削除することはできません。
 
 
 

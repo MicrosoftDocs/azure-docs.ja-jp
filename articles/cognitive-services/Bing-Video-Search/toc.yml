@@ -1,87 +1,111 @@
-- name: Bing Video Search のドキュメント
+items:
+- name: Bing Video Search API ドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Bing Video Search とは
-      href: search-the-web.md
-- name: REST API のクイック スタート
+  - name: Bing Video Search API とは
+    href: overview.md
+  - name: Bing Search API を比較する
+    href: ../Bing-Web-Search/bing-api-comparison.md
+    maintainContext: true
   expanded: true
+- name: REST API のクイック スタート
   items:
-    - name: 作業開始
-      href: quick-start.md
-    - name: 'C#'
-      href: csharp.md
-    - name: Java
-      href: java.md
-    - name: Node.js
-      href: nodejs.md
-    - name: PHP
-      href: php.md
-    - name: Python
-      href: python.md
-    - name: Ruby
-      href: ruby.md
-- name: SDK のクイック スタート
-  items:
-    - name: SDK のサンプルの概要
-      href: sdk.md
-    - name: 'Video Search SDK C# のクイック スタート'
-      href: video-search-sdk-quickstart.md
-    - name: Video Search SDK Node のクイック スタート
-      href: video-search-sdk-node-quickstart.md
-    - name: Video Search SDK Python のクイック スタート
-      href: video-sdk-python-quickstart.md
-    - name: Video Search SDK Java のクイック スタート
-      href: video-sdk-java-quickstart.md
+  - name: REST API
+    items:
+    - name: C# の使用
+      href: quickstarts/csharp.md
+    - name: Java の使用
+      href: quickstarts/java.md
+    - name: Node.js の使用
+      href: quickstarts/nodejs.md
+    - name: PHP の使用
+      href: quickstarts/php.md
+    - name: Python の使用
+      href: quickstarts/python.md
+    - name: Ruby の使用
+      href: quickstarts/ruby.md
+  - name: SDK
+    items:
+    - name: C# の使用
+      href: quickstarts/sdk-csharp-quickstart.md
+    - name: Node.js の使用
+      href: quickstarts/sdk-node-quickstart.md
+    - name: Python の使用
+      href: quickstarts/sdk-python-quickstart.md
+    - name: Java の使用
+      href: quickstarts/sdk-java-quickstart.md
+  expanded: true
 - name: チュートリアル
   items:
-    - name: 単一ページの Web アプリ
-      href: tutorial-bing-video-search-single-page-app.md
-    - name: 単一ページの Web アプリ (ソース コード)
-      href: tutorial-bing-video-search-single-page-app-source.md
+  - name: シングルページ Web アプリの作成
+    href: tutorial-bing-video-search-single-page-app.md
 - name: サンプル
   items:
-    - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Video+Search'
+  - name: コード サンプル
+    href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Video+Search
 - name: ハウツー ガイド
   items:
-    - name: 使用と表示の要件
-      href: UseAndDisplayRequirements.md
-    - name: ビデオの分析情報の取得
-      href: video-insights.md
-    - name: 急上昇中の動画の取得
-      href: trending-videos.md
-    - name: ビデオのページング
-      href: paging-videos.md
-    - name: サムネイルのサイズ変更とトリミング
-      href: resize-and-crop-thumbnails.md
-    - name: v5 から v7 へのアップグレード
-      href: bing-video-upgrade-guide-v5-to-v7.md
+  - name: ビデオの分析情報の取得
+    href: video-insights.md
+  - name: 急上昇中の動画の取得
+    href: trending-videos.md
+  - name: ビデオのページング
+    href: paging-videos.md
+  - name: サムネイルのサイズ変更とトリミング
+    href: resize-and-crop-thumbnails.md
+  - name: v5 から v7 へのアップグレード
+    href: bing-video-upgrade-guide-v5-to-v7.md
+- name: 概念
+  items:
+  - name: Web からの動画の取得
+    href: concepts/get-videos.md
+  - name: 検索要求の送信
+    href: concepts/sending-requests.md
 - name: リファレンス
   items:
-    - name: Bing Video Search API v7
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference'
-    - name: Bing Video Search API v5
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference'
+  - name: Bing Video Search API v7
+    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference
+  - name: Bing Video Search API v5
+    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference
+  - name: SDK
+    items:
+    - name: .NET
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvideo?view=azure-dotnet
+    - name: Java
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/videosearch?view=azure-java-stable
+    - name: Python
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/videosearch?view=azure-python
+    - name: Node.js
+      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/videosearch?view=azure-node-latest
+    - name: Go
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/videosearch
+  - name: 使用と表示の要件
+    href: ../Bing-Web-Search/use-display-requirements.md
+    maintainContext: true
 - name: リソース
   items:
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/video/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/911452-bing-video-search-api'
-    - name: スタック オーバーフロー
-      href: 'https://stackoverflow.com/search?q=bing+video+search'
-    - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: サポート技術情報
-      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
-    - name: API キーを取得する
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-video-search-api'
-    - name: 試してみる
-      href: 'https://dev.cognitive.microsoft.com/docs/services/56b43f3ccf5ff8098cef3809/operations/58113fe5e31dac0a1ce6b0a8'
-    - name: Bing Video Search エンドポイント
-      href: video-search-endpoints.md
-    - name: Bing Video Search API 用の分析
-      href: bing-video-stats.md
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/search-api/video/
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/911452-bing-video-search-api
+  - name: スタック オーバーフロー
+    href: https://stackoverflow.com/search?q=bing+video+search
+  - name: リージョン別の提供状況
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+  - name: ナレッジ ベース
+    href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
+  - name: API キーを取得する
+    href: https://azure.microsoft.com/try/cognitive-services/?api=bing-video-search-api
+  - name: 試してみる
+    href: https://dev.cognitive.microsoft.com/docs/services/56b43f3ccf5ff8098cef3809/operations/58113fe5e31dac0a1ce6b0a8
+  - name: Bing Video Search API 用の分析
+    href: bing-video-stats.md
+ms.openlocfilehash: 9192f6aaa94d2aff310e8d12a66ac8ab75f772e2
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568037"

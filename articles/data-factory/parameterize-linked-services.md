@@ -3,21 +3,20 @@ title: Azure Data Factory のリンクされたサービスのパラメーター
 description: Azure Data Factory のリンクされたサービスをパラメーター化し、実行時に動的な値を渡す方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/22/2018
-ms.author: douglasl
-ms.openlocfilehash: 99efd29165f381b9038758c3384774a65da91501
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.date: 12/18/2018
+author: gauravmalhot
+ms.author: gamal
+manager: craigg
+ms.openlocfilehash: 0239c53f98fba201b6d70e1e2212eea36134e30d
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649416"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57574629"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Azure Data Factory のリンクされたサービスのパラメーター化
 
@@ -34,7 +33,7 @@ ms.locfileid: "49649416"
 
 ## <a name="supported-data-stores"></a>サポートされているデータ ストア
 
-現在のところ、リンクされたサービスのパラメーター化は、次のデータ ストアを対象に、Azure portal の Data Factory UI でサポートされています。 その他のすべてのデータ ストアについては、パイプライン タブで**コード** アイコンを選択し、JSON エディターを使用することで、リンクされたサービスをパラメーター化できます。
+現在のところ、リンクされたサービスのパラメーター化は、次のデータ ストアを対象に、Azure portal の Data Factory UI でサポートされています。 その他のすべてのデータ ストアについては、**[接続]** タブで **[コード]** アイコンを選択し、JSON エディターを使用することで、リンクされたサービスをパラメーター化できます。
 - Azure SQL Database
 - Azure SQL Data Warehouse
 - SQL Server

@@ -1,0 +1,51 @@
+items:
+- name: Anomaly Detector のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+  - name: Anomaly Detector API とは
+    href: overview.md
+  expanded: true
+- name: クイック スタート
+  items:
+  - name: データの異常を検出する
+    items:
+    - name: C# の使用
+      href: quickstarts/detect-data-anomalies-csharp.md
+    - name: Java の使用
+      href: quickstarts/detect-data-anomalies-java.md
+    - name: Python の使用
+      href: quickstarts/detect-data-anomalies-python.md
+  expanded: true
+- name: ハウツー ガイド
+  items:
+  - name: データの異常を特定する
+    href: how-to/identify-anomalies.md
+- name: 概念
+  items:
+  - name: Anomaly Detection API のベスト プラクティス
+    href: concepts/anomaly-detection-best-practices.md
+- name: リファレンス
+  items:
+  - name: REST API リファレンス
+    href: https://aka.ms/anomaly-detector-rest-api-ref
+  - name: SDK
+    items:
+    - name: .NET
+      href: https://aka.ms/anomaly-detector-dotnet-ref
+- name: リソース
+  items:
+  - name: 価格
+    href: https://aka.ms/anomaly-detector-pricing
+  - name: リージョン別の提供状況
+    href: https://aka.ms/anomaly-detector-region
+  - name: ソリューション アーキテクチャの参照
+    href: https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/
+  - name: スタック オーバーフロー
+    href: https://stackoverflow.com/questions/tagged/azure-anomaly-detection
+ms.openlocfilehash: 84e9317e3eb20181dcf1003718eb33acddbd84fa
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59786983"

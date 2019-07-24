@@ -2,20 +2,20 @@
 title: Durable Functions でのチェックポイントと再生 - Azure
 description: Azure Functions の Durable Functions 拡張機能でチェックポイントと再生がどのように動作するかを説明します。
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ce930adc4cb2c635b54b3d41ea4a3ac272541698
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b1fd31a758501620129fdbbc532b8defcf927045
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52638237"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607351"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Durable Functions でのチェックポイントと再生 - (Azure Functions)
 
@@ -27,7 +27,7 @@ Durable Functions のキー属性の 1 つが**信頼性の高い実行**です�
 
 次のオーケストレーター関数があるとします。
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -45,7 +45,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
 
 ```javascript
 const df = require("durable-functions");
@@ -56,6 +56,7 @@ module.exports = df.orchestrator(function*(context) {
     output.push(yield context.df.callActivity("E1_SayHello", "Seattle"));
     output.push(yield context.df.callActivity("E1_SayHello", "London"));
 
+    // returns ["Hello Tokyo!", "Hello Seattle!", "Hello London!"]
     return output;
 });
 ```
@@ -77,47 +78,48 @@ Durable Task Framework は、`await` (C#) または `yield` (JavaScript) ステ�
 
 完了すると、Azure Table Storage の上記の関数の履歴は次のようになります (わかりやすくするために一部省略されています)。
 
-| PartitionKey (InstanceId)                     | EventType             | Timestamp               | 入力 | Name             | 結果                                                    | Status | 
-|----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|---------------------| 
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     | 
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     | 
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     | 
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     | 
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     | 
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201Z |       |                  | """Hello Tokyo!"""                                        |                     | 
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435Z |       | E1_SayHello      |                                                           |                     | 
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435Z |       |                  |                                                           |                     | 
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     | 
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763Z |       |                  | """Hello Seattle!"""                                      |                     | 
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.857Z |       | E1_SayHello      |                                                           |                     | 
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     | 
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     | 
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | """Hello London!"""                                       |                     | 
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokyo!"",""Hello Seattle!"",""Hello London!""]" | 完了           | 
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     | 
+| PartitionKey (InstanceId)                     | EventType             | Timestamp               | 入力 | Name             | 結果                                                    | Status |
+|----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
+| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201Z |       |                  | """Hello Tokyo!"""                                        |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763Z |       |                  | """Hello Seattle!"""                                      |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.857Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | """Hello London!"""                                       |                     |
+| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokyo!"",""Hello Seattle!"",""Hello London!""]" | 完了           |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     |
 
 列の値に関する注意点:
-* **PartitionKey**: オーケストレーションのインスタンス ID が含まれます。
-* **EventType**: イベントの種類を表します。 次のいずれかの種類です。
-    * **OrchestrationStarted**: オーケストレーター関数が await から再実行されました。または初回実行中です。 `Timestamp` 列は、[CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) API の決定論的な値を設定するときに使用されます。
-    * **ExecutionStarted**: オーケストレーター関数は初めて実行を開始しました。 このイベントには、`Input` 列の関数入力も含まれています。
-    * **TaskScheduled**: アクティビティ関数がスケジュールされました。 アクティビティ関数の名前は `Name` 列でキャプチャされます。
-    * **TaskCompleted**: アクティビティ関数が完了しました。 関数の結果は `Result` 列に含まれます。
-    * **TimerCreated**: 持続的タイマーが作成されました。 `FireAt` 列には、タイマーが期限切れになるスケジュールされた UTC 時間が含まれます。
-    * **TimerFired**: 持続的タイマーが開始されました。
-    * **EventRaised**: 外部イベントがオーケストレーション インスタンスに送信されました。 `Name` 列は、イベントの名前をキャプチャし、`Input` 列は、イベントのペイロードをキャプチャします。
-    * **OrchestratorCompleted**: オーケストレーター関数が待機状態になりました。
-    * **ContinueAsNew**: オーケストレーター関数が完了し、新しい状態で再実行されました。 `Result` 列には、再起動されたインスタンスで入力として使用される値が含まれます。
-    * **ExecutionCompleted**: オーケストレーター関数が実行され、完了 (または失敗) しました。 関数またはエラーの詳細の出力は `Result` 列に格納されます。
-* **Timestamp**: 履歴イベントの UTC タイムスタンプ。
-* **Name**: 呼び出された関数の名前。
-* **Input**: 関数の JSON 形式の入力。
-* **Result**: 関数の出力、つまり、戻り値。
+
+* **PartitionKey**:オーケストレーションのインスタンス ID が含まれます。
+* **EventType**:イベントの種類を表します。 次のいずれかの種類です。
+  * **OrchestrationStarted**:オーケストレーター関数が await から再実行されました。または初回実行中です。 `Timestamp` 列は、[CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) API の決定論的な値を設定するときに使用されます。
+  * **ExecutionStarted**:オーケストレーター関数は初めて実行を開始しました。 このイベントには、`Input` 列の関数入力も含まれています。
+  * **TaskScheduled**:アクティビティ関数がスケジュールされました。 アクティビティ関数の名前は `Name` 列でキャプチャされます。
+  * **TaskCompleted**:アクティビティ関数が完了しました。 関数の結果は `Result` 列に含まれます。
+  * **TimerCreated**:持続的タイマーが作成されました。 `FireAt` 列には、タイマーが期限切れになるスケジュールされた UTC 時間が含まれます。
+  * **TimerFired**:持続的タイマーが開始されました。
+  * **EventRaised**:外部イベントがオーケストレーション インスタンスに送信されました。 `Name` 列は、イベントの名前をキャプチャし、`Input` 列は、イベントのペイロードをキャプチャします。
+  * **OrchestratorCompleted**:オーケストレーター関数が待機状態になりました。
+  * **ContinueAsNew**:オーケストレーター関数が完了し、新しい状態で再実行されました。 `Result` 列には、再起動されたインスタンスで入力として使用される値が含まれます。
+  * **ExecutionCompleted**:オーケストレーター関数が実行され、完了 (または失敗) しました。 関数またはエラーの詳細の出力は `Result` 列に格納されます。
+* **Timestamp**:履歴イベントの UTC タイムスタンプ。
+* **Name**:呼び出された関数の名前。
+* **入力**:関数の JSON 形式の入力。
+* **Result**:関数の出力、つまり、戻り値。
 
 > [!WARNING]
-> これはデバッグ ツールとしては便利ですが、このテーブルにあまり依存しないようにしてください。 Durable Functions 拡張機能が今後改善されると、これは変更される可能性があります。
+> これはデバッグ ツールとしては便利ですが、このテーブルにあまり依存しないようにしてください。 Durable Functions 拡張機能の刷新に伴って変更される可能性があります。
 
-`await` から関数が再実行されるたびに、Durable Task Framework は、オーケストレーター関数をゼロから再実行し、 再実行のたびに、実行履歴を調べて、現在の非同期操作が実行されているかどうかを確認します。  操作が実行されている場合、フレームワークはその操作の出力をすぐに再生し、次の `await` に移動します。 このプロセスは、履歴全体が再生されるまで継続的に実行され、全体が再生された時点で、オーケストレーター関数のすべてのローカル変数が以前の値に復元されます。
+`await` (C#) または `yield` (JavaScript) から関数が再実行されるたびに、Durable Task Framework は、オーケストレーター関数をゼロから再実行し、 再実行のたびに、実行履歴を調べて、現在の非同期操作が実行されているかどうかを確認します。  操作が実行されている場合、フレームワークはその操作の出力をすぐに再生し、次の `await` (C#) または `yield` (JavaScript) に移動します。 このプロセスは、履歴全体が再生されるまで継続的に実行され、全体が再生された時点で、オーケストレーター関数のすべてのローカル変数が以前の値に復元されます。
 
 ## <a name="orchestrator-code-constraints"></a>オーケストレーター コードの制約
 
@@ -125,26 +127,36 @@ Durable Task Framework は、`await` (C#) または `yield` (JavaScript) ステ�
 
 * オーケストレーター コードは**決定論的**である必要があります。 複数回再生され、毎回結果が同じでなければなりません。 たとえば、現在の日付/時刻の取得、乱数の取得、ランダム GUID の生成、またはリモート エンドポイントへの呼び出しを行うための直接呼び出しは行わないでください。
 
-  オーケストレーター コードが現在の日付/時刻を取得する必要がある場合は、安全に再生できる [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) API を使用する必要があります。
+  オーケストレーター コードが現在の日付/時刻を取得する必要がある場合は、安全に再生できる [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (.NET) または `currentUtcDateTime` (JavaScript) API を使用する必要があります。
 
-  オーケストレーター コードでランダムな GUID を生成する必要がある場合は、安全に再生できる [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) API を使用する必要があります。
+  オーケストレーター コードで、ランダムな GUID を生成する必要がある場合、安全に再生できる [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.NET) API を使用するか、またはこの例のように、アクティビティ関数 (JavaScript) に GUID の生成を委任する必要があります。
+
+  ```javascript
+  const uuid = require("uuid/v1");
+
+  module.exports = async function(context) {
+    return uuid();
+  }
+  ```
 
   非決定論的な操作は、アクティビティ関数で行う必要があります。 これには、他の入力または出力バインドとのすべての対話が含まれ、 これにより、最初の実行時、および実行履歴への保存時に、非決定論的なすべての値が生成されます。 以降の実行では、保存された値が自動的に使用されます。
 
-* オーケストレーター コードは**非ブロッキング**である必要があります。 これは、たとえば `Thread.Sleep` または同等の API に対して I/O および呼び出しがないことを意味します。
+* オーケストレーター コードは**非ブロッキング**である必要があります。 これは、たとえば `Thread.Sleep` (.NET) または同等の API に対して I/O および呼び出しがないことを意味します。
 
-  オーケストレーターに遅延が必要な場合は、[CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) API を使用できます。
+  オーケストレーターに遅延が必要な場合は、[CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) (.NET) または `createTimer` (JavaScript) API を使用できます。
 
-* オーケストレーター コードで**非同期操作を開始しないでください** ([DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) API を使用する場合を除く)。 たとえば、`Task.Run`、`Task.Delay`、`HttpClient.SendAsync` といった非同期操作です。 Durable Task Framework は、オーケストレーター コードを 1 つのスレッドで実行しており、他の非同期 API でスケジュールされている他のスレッドとは対話できません。
+* オーケストレーター コードで**非同期操作を開始しないでください** ([DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) API または `context.df` オブジェクトの APIを使用する場合を除く)。 たとえば、.NET では `Task.Run`、`Task.Delay`、または `HttpClient.SendAsync` を開始せず、JavaScript では `setTimeout()` および `setInterval()` を開始しません。 Durable Task Framework は、オーケストレーター コードを 1 つのスレッドで実行しており、他の非同期 API でスケジュールされている他のスレッドとは対話できません。
 
-* オーケストレーター コードでは**無限ループが発生しないようにしてください**。 Durable Task Framework では、オーケストレーション関数の進行状況に応じて実行履歴が保存されるため、無限ループが発生すると、オーケストレーター インスタンスによってメモリが不足する可能性があります。 無限ループ シナリオでは、[ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) などの API を使用して、関数の実行を再開して、前の実行履歴を破棄してください。
+* オーケストレーター コードでは**無限ループが発生しないようにしてください**。 Durable Task Framework では、オーケストレーション関数の進行状況に応じて実行履歴が保存されるため、無限ループが発生すると、オーケストレーター インスタンスによってメモリが不足する可能性があります。 無限ループ シナリオでは、[ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) (.NET) または `continueAsNew` (JavaScript) などの API を使用して、関数の実行を再開して、前の実行履歴を破棄してください。
+
+* JavaScript オーケストレーター関数は、`async` にできません。 これらは、同期ジェネレーター関数として宣言する必要があります。
 
 これらの制約は一見大変なように感じますが、実際のところ、それほど苦労せずに従うことができます。 Durable Task Frameworkは上記の規則違反の検出を試み、`NonDeterministicOrchestrationException` をスローします。 ただし、この検出動作はベスト エフォートであるため、これに頼りすぎないようにしてください。
 
 > [!NOTE]
 > こうした規則はすべて、`orchestrationTrigger` バインドでトリガーされる関数にのみ適用されます。 `activityTrigger` バインドでトリガーされるアクティビティ関数と、`orchestrationClient` バインドを使用する関数には、こうした制限はありません。
 
-## <a name="durable-tasks"></a>持続的なタスク
+## <a name="durable-tasks-net"></a>持続的なタスク (.NET)
 
 > [!NOTE]
 > このセクションでは、Durable Task Framework の内部実装について詳しく説明します。 この情報は、Durable Functions を使用するうえで必ずしも必要とは限りませんが、 再生動作を理解するうえでは役に立ちます。

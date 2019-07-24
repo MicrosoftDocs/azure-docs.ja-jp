@@ -3,18 +3,18 @@ title: Azure Automation Grpahical Runbook SDK の概要
 description: この記事では、Azure Automation Graphical Runbook SDK の使用方法について説明します。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 07/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 702af8311887afc94e7127704d3377e944503324
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: bc9f1feff6d8d45e52c8621d1ec4b36e0a4a4a76
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39240459"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434259"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Azure Automation Grpahical Runbook SDK を使用する
 
@@ -103,7 +103,7 @@ var initializeRunbookVariable = runbook.AddActivity(
 |WorkflowScriptActivity     | Runbook のコンテキストで、(Runbook の種類に応じて) PowerShell または PowerShell Workflow コードのブロックを実行します。 これは強力なツールですが、使いすぎないようにしてください。UI には、このスクリプト ブロックがテキストとして表示されます。実行エンジンは指定されたブロックをブラック ボックスとして扱い、基本的な構文チェックを除き、内容を分析しません。 単一の PowerShell コマンドを呼び出すだけの場合は、CommandActivity を使用することをお勧めします。        |
 
 > [!NOTE]
-> 指定されたクラスから独自のアクティビティを派生させないでください。Azure Automation では、カスタム アクティビティ タイプの Runbook を使用できません。
+> 指定のクラスから独自のアクティビティを派生させることはしないでください。Azure Automation では、カスタムのアクティビティ タイプで Runbook を実行できません。
 
 CommandActivity および InvokeRunbookActivity パラメーターは、直接の値ではなく値記述子として指定する必要があります。 値記述子には、実際のパラメーター値の生成方法を指定します。 現在、次の値記述子が用意されています。
 
@@ -119,7 +119,7 @@ CommandActivity および InvokeRunbookActivity パラメーターは、直接�
 |PowerShellExpressionValueDescriptor     | アクティビティを呼び出す直前に評価される自由形式の PowerShell 式を指定します。  <br/>これは強力なツールですが、使いすぎないようにしてください。UI には、この式がテキストとして表示されます。実行エンジンは指定されたブロックをブラック ボックスとして扱い、基本的な構文チェックを除き、内容を分析しません。 可能であれば、より具体的な値記述子を使用することお勧めします。      |
 
 > [!NOTE]
-> 指定されたクラスから独自の値記述子を派生させないでください。Azure Automation では、カスタム値記述子タイプの Runbook を使用できません。
+> 指定のクラスから独自の値記述子を派生させないでください。Azure Automation では、カスタムの値記述子タイプで Runbook を実行できません。
 
 アクティビティを接続するリンクをインスタンス化し、Runbook に追加します。
 
@@ -146,3 +146,4 @@ var serialized = RunbookSerializer.Serialize(runbook);
 ## <a name="next-steps"></a>次の手順
 
 Azure Automation のグラフィック Runbook の詳細については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください
+

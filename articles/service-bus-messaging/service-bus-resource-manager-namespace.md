@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/06/2018
+ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: c616ad86e6846800d214feeaf100f63e311f78b0
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 4471c9d5b6c09bcf4d9100cccfa725f36cf9a3f8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282732"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59045084"
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Service Bus 名前空間の作成
 このクイック スタートでは、**Standard** の SKU で **Messaging** タイプの Service Bus 名前空間を作成する Azure Resource Manager テンプレートを作成します。 また、デプロイの実行用に指定するパラメーターについても取り上げます。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。 テンプレートの作成の詳細については、「[Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」をご覧ください。 完全なテンプレートについては、GitHub の [Service Bus 名前空間テンプレート][Service Bus namespace template]に関するページを参照してください。
@@ -34,6 +34,9 @@ ms.locfileid: "51282732"
 > 
 > 最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][Azure Quickstart Templates]」ギャラリーで "Service Bus" を検索してください。
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="quick-deployment"></a>高速なデプロイ
 JSON を記述したり PowerShell/CLI コマンドを実行したりすることなくサンプルを実行するには、次のボタンを選択します。
 
@@ -44,7 +47,7 @@ JSON を記述したり PowerShell/CLI コマンドを実行したりするこ�
 ## <a name="prerequisites"></a>前提条件
 このクイック スタートを完了するには、Azure サブスクリプションが必要です。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-**Azure PowerShell** を使用して Resource Manager テンプレートをデプロイするには、[Azure PowerShell をインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0)します。
+**Azure PowerShell** を使用して Resource Manager テンプレートをデプロイするには、[Azure PowerShell をインストール](https://docs.microsoft.com/powershell/azure/install-Az-ps)します。
 
 **Azure CLI** を使用して Resource Manager テンプレートをデプロイするには、[Azure CLI をインストール]( /cli/azure/install-azure-cli)します。
 
@@ -53,7 +56,7 @@ JSON を記述したり PowerShell/CLI コマンドを実行したりするこ�
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "serviceBusNamespaceName": {
@@ -96,7 +99,7 @@ JSON を記述したり PowerShell/CLI コマンドを実行したりするこ�
 }
 ```
 
-このテンプレートは、標準の Service Bus 名前空間を作成します。
+このテンプレートは、標準の Service Bus 名前空間を作成します。 JSON の構文とプロパティについては、[namespaces](/azure/templates/microsoft.servicebus/namespaces) テンプレート リファレンスを参照してください。
 
 ## <a name="create-the-parameters-json"></a>パラメーター JSON を作成する
 前の手順で作成したテンプレートには、`Parameters` というセクションがあります。 パラメーターは、デプロイするプロジェクトやターゲット環境に応じて異なる値に対して定義します。 このテンプレートでは、**serviceBusNamespaceName**、**serviceBusSku**、および **location** のパラメーターを定義します。 Service Bus の SKU の詳細については、作成する [Service Bus の SKU](https://azure.microsoft.com/pricing/details/service-bus/) に関するページを参照してください。
@@ -109,7 +112,7 @@ JSON を記述したり PowerShell/CLI コマンドを実行したりするこ�
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "serviceBusNamespaceName": {
@@ -134,12 +137,12 @@ JSON を記述したり PowerShell/CLI コマンドを実行したりするこ�
 2. 次のコマンドを実行して、Azure にサインインします。
 
    ```azurepowershell
-   Login-AzureRmAccount
+   Login-AzAccount
    ```
 3. 次のコマンドを発行して、現在のサブスクリプション コンテキストを設定します。
 
    ```azurepowershell
-   Select-AzureRmSubscription -SubscriptionName "<YourSubscriptionName>" 
+   Select-AzSubscription -SubscriptionName "<YourSubscriptionName>" 
    ```
 
 ### <a name="deploy-resources"></a>リソースのデプロイ
@@ -156,12 +159,12 @@ Azure PowerShell を使用してリソースをデプロイするには、JSON �
 2. Azure リソース グループを作成します。
 
     ```azurepowershell
-    New-AzureRmResourceGroup $resourceGroupName -location 'East US'
+    New-AzResourceGroup $resourceGroupName -location 'East US'
     ```
 3. Resource Manager テンプレートをデプロイします。 デプロイ自体、リソース グループ、テンプレート用の JSON ファイル、パラメーター用の JSON ファイルの名前を指定します
 
     ```azurepowershell
-    New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName $resourceGroupName -TemplateFile MyServiceBusNamespace.json -TemplateParameterFile MyServiceBusNamespace-Parameters.json
+    New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName $resourceGroupName -TemplateFile MyServiceBusNamespace.json -TemplateParameterFile MyServiceBusNamespace-Parameters.json
     ```
 
 ## <a name="use-azure-cli-to-deploy-the-template"></a>Azure CLI を使用してテンプレートをデプロイする
@@ -183,7 +186,7 @@ Azure PowerShell を使用してリソースをデプロイするには、JSON �
 Azure CLI を使用してリソースをデプロイするには、JSON ファイルがあるフォルダーに移動し、次のコマンドを実行します。
 
 > [!IMPORTANT]
-> az group create コマンドで Azure リソース グループの名前を指定します。 。
+> az group create コマンドで Azure リソース グループの名前を指定します 。
 
 1. Azure リソース グループを作成します。 
     ```azurecli
@@ -205,6 +208,6 @@ Azure CLI を使用してリソースをデプロイするには、JSON ファ�
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Service Bus namespace template]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
-[Service Bus pricing and billing]: service-bus-pricing-billing.md
+[Service Bus pricing and billing]: https://azure.microsoft.com/pricing/details/service-bus/
 [Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
 [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 0011ee646215c01e84aec71c7b992afca1ca3c2a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 34dad39e3784dd0bc73e3be108d6b31d4f479a1e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997167"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543272"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Azure CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する
 以下の手順では、Azure コマンド ライン インターフェイス (CLI) コマンドを使用して、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイ モデルから Azure Resource Manager デプロイ モデルに移行する方法を説明します。 この記事では、[Azure クラシック CLI](../../cli-install-nodejs.md) が必要です。 Azure CLI は、Azure Resource Manager リソースにのみ適用されるため、この移行には使用できません。
@@ -35,7 +35,7 @@ ms.locfileid: "46997167"
 
 ![Screenshot that shows the migration steps](../windows/media/migration-classic-resource-manager/migration-flow.png)
 
-## <a name="step-1-prepare-for-migration"></a>手順 1. 移行を準備する
+## <a name="step-1-prepare-for-migration"></a>手順 1:移行を準備する
 ここでは、クラシックから Resource Manager への IaaS リソースの移行を評価するときに推奨できるベスト プラクティスをいくつか紹介します。
 
 * [サポートされていない構成または機能の一覧](../windows/migration-classic-resource-manager-overview.md)をご確認ください。 サポートされていない構成または機能を使用する仮想マシンがある場合、機能または構成のサポートが発表されるまで待つことをお勧めします。 または、必要に応じて、その機能を削除するか、その構成を外して、移行を可能にすることもできます。
@@ -48,7 +48,7 @@ ms.locfileid: "46997167"
 > 
 > 
 
-## <a name="step-2-set-your-subscription-and-register-the-provider"></a>手順 2. サブスクリプションを設定し、プロバイダーを登録する
+## <a name="step-2-set-your-subscription-and-register-the-provider"></a>手順 2:ご自分のサブスクリプションを設定し、プロバイダーを登録する
 移行のシナリオの場合、クラシックと Resource Manager の両方に合わせて環境をセットアップする必要があります。 [Azure CLI をインストール](../../cli-install-nodejs.md)し、[サブスクリプションを選択](/cli/azure/authenticate-azure-cli)します。
 
 アカウントにサインインします。
@@ -62,7 +62,7 @@ ms.locfileid: "46997167"
 > [!NOTE]
 > 登録は 1 回限りの手順ですが、移行を試みる前に実行する必要があります。 登録を行わないと、次のエラー メッセージが表示されます 
 > 
-> "*BadRequest : 移行の対象サブスクリプションが登録されていません。*" 
+> *BadRequest: 移行の対象サブスクリプションが登録されていません。* 
 > 
 > 
 
@@ -78,14 +78,14 @@ ms.locfileid: "46997167"
 
     azure config mode asm
 
-## <a name="step-3-make-sure-you-have-enough-azure-resource-manager-virtual-machine-vcpus-in-the-azure-region-of-your-current-deployment-or-vnet"></a>手順 3: 現在のデプロイまたは VNET の Azure リージョンで Azure Resource Manager 仮想マシンの vCPU 数が十分にあることを確認する
+## <a name="step-3-make-sure-you-have-enough-azure-resource-manager-virtual-machine-vcpus-in-the-azure-region-of-your-current-deployment-or-vnet"></a>手順 3:現在のデプロイまたは VNET の Azure リージョンで Azure Resource Manager 仮想マシンの vCPU 数が十分にあることを確認する
 この手順では、`arm` モードに切り替える必要があります。 これを行うには、次のコマンドを使用します。
 
 ```
 azure config mode arm
 ```
 
-Azure Resource Manager での現在の vCPU 数は、次の CLI コマンドを使用して確認できます。 vCPU クォータの詳細については、「[制限と Azure Resource Manager](../../azure-subscription-service-limits.md#limits-and-the-azure-resource-manager)」を参照してください。
+Azure Resource Manager での現在の vCPU 数は、次の CLI コマンドを使用して確認できます。 vCPU クォータの詳細については、「[制限と Azure Resource Manager](../../azure-subscription-service-limits.md#limits-and-azure-resource-manager)」を参照してください。
 
 ```
 azure vm list-usage -l "<Your VNET or Deployment's Azure region"
@@ -96,7 +96,7 @@ azure vm list-usage -l "<Your VNET or Deployment's Azure region"
     azure config mode asm
 
 
-## <a name="step-4-option-1---migrate-virtual-machines-in-a-cloud-service"></a>手順 4. オプション 1 - クラウド サービスの仮想マシンを移行する
+## <a name="step-4-option-1---migrate-virtual-machines-in-a-cloud-service"></a>手順 4:オプション 1 - クラウド サービス内の仮想マシンを移行する
 次のコマンドを使用してクラウド サービスの一覧を取得し、移行するクラウド サービスを選択します。 クラウド サービスの VM が仮想ネットワーク内にある場合、または Web/worker ロールを持つ場合は、エラー メッセージが返されます。
 
     azure service list
@@ -135,7 +135,7 @@ CLI または Azure ポータルを使用して、準備したリソースの構
 
 
 
-## <a name="step-4-option-2----migrate-virtual-machines-in-a-virtual-network"></a>手順 4. オプション 2 - 仮想ネットワーク内の仮想マシンを移行する
+## <a name="step-4-option-2----migrate-virtual-machines-in-a-virtual-network"></a>手順 4:オプション 2 - 仮想ネットワーク内の仮想マシンを移行する
 移行する仮想ネットワークを選択します。 仮想ネットワークに Web/worker ロールが含まれる場合、またはサポートされない構成の VM が含まれる場合は、検証エラー メッセージが返されます。
 
 次のコマンドを使用して、サブスクリプションのすべての仮想ネットワークを取得します。
@@ -166,7 +166,7 @@ CLI または Azure ポータルを使用して、準備した仮想マシンの
 
     azure network vnet commit-migration <virtualNetworkName>
 
-## <a name="step-5-migrate-a-storage-account"></a>手順 5. ストレージ アカウントを移行する
+## <a name="step-5-migrate-a-storage-account"></a>手順 5:ストレージ アカウントを移行する
 仮想マシンの移行が完了したら、ストレージ アカウントを移行することをお勧めします。
 
 次のコマンドを使用して、移行対象のストレージ アカウントを準備します

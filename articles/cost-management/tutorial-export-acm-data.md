@@ -5,19 +5,19 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/21/2018
+ms.date: 04/10/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: e671c75b1ceee0e42b3af9ddc149edf2f3b0040c
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.custom: seodec18
+ms.openlocfilehash: df893683c387f8d694500ae1ace93a5a146ea352
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822366"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496796"
 ---
-# <a name="tutorial-create-and-manage-exported-data"></a>チュートリアル: データをエクスポートし、管理する
+# <a name="tutorial-create-and-manage-exported-data"></a>チュートリアル:データをエクスポートし、管理する
 
 コスト分析のチュートリアルをお読みになっていれば、コスト管理データを手動でダウンロードできます。 その一方で、コスト管理データを Azure Storage に対して毎日、毎週、または毎月、自動的にエクスポートする定期タスクを作成することができます。 エクスポートしたデータは CSV 形式になり、コスト管理で収集したすべての情報がそれに含まれます。 エクスポート後は、Azure Storage に格納されたそのデータを外部システムで利用したり、独自のデータと組み合わせたりできます。 また、エクスポートしたデータを、ダッシュボードやその他の金融システムのような外部システムで利用できます。
 
@@ -30,8 +30,7 @@ ms.locfileid: "51822366"
 > * データが収集されたことを確認する
 
 ## <a name="prerequisites"></a>前提条件
-
-データのエクスポートは、すべての [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) のお客様が利用できます。 ユーザーおよびグループによるデータのエクスポートについては、サブスクリプションに従い、次の Azure のアクセス許可がサポートされています。
+データのエクスポートは、[Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) のお客様など、さまざまな Azure アカウントの種類で使用できます。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](understand-cost-mgt-data.md)」を参照してください。 ユーザーおよびグループによるデータのエクスポートについては、サブスクリプションに従い、次の Azure のアクセス許可、またはスコープがサポートされています。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 
 - 所有者: サブスクリプションのスケジュールされたエクスポートを作成、変更、または削除できます。
 - 共同作成者: スケジュールされたエクスポートを作成、変更、または削除できます。 他のユーザーが作成したスケジュールされたエクスポートの名前を変更できます。
@@ -46,15 +45,15 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com/)) にサイ�
 
 ## <a name="create-a-daily-export"></a>毎日のエクスポートを作成する
 
-コスト管理 + 課金 &gt; コスト管理 &gt; サブスクリプションを選択するか、サブスクリプション内のリソース グループを選択する &gt; エクスポート &gt; **追加**。
+データ エクスポートを作成または表示する場合、またはエクスポートをスケジュールする場合は、Azure portal で目的のスコープを開き、メニューで **[コスト分析]** を選択します。 たとえば、**[サブスクリプション]** に移動し、一覧からサブスクリプションを選択して、メニューから **[コスト分析]** を選択します。 [コスト分析] ページの上部にある **[エクスポート]** をクリックしてから、エクスポート オプションを選択します。 たとえば、**[エクスポートのスケジュール]** をクリックします。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 
-エクスポートの名前を入力し、[Daily export of month-to-date costs]\(過去 1 か月間のコストを毎日エクスポート\) オプションを選択します。  **[次へ]** をクリックします。
+**[追加]** をクリックし、エクスポートの名前を入力し、**[Daily export of month-to-date costs]\(過去 1 か月間のコストを毎日エクスポート\)** オプションを選択します。 **[次へ]** をクリックします。
 
-![新しいエクスポート: エクスポートの種類](./media/tutorial-export-acm-data/basics_exports.png)
+![エクスポートの種類を示す新しいエクスポートの例](./media/tutorial-export-acm-data/basics_exports.png)
 
-Azure Storage アカウントのサブスクリプションを指定して、お使いのストレージ アカウントを選択します。  エクスポート ファイルの保存先となるストレージ コンテナーとディレクトリ パスを指定します。   **[次へ]** をクリックします。
+Azure Storage アカウントのサブスクリプションを指定して、お使いのストレージ アカウントを選択します。  エクスポート ファイルの保存先となるストレージ コンテナーとディレクトリ パスを指定します。  **[次へ]** をクリックします。
 
-![新しいエクスポート: ストレージ](./media/tutorial-export-acm-data/storage_exports.png)
+![ストレージ アカウントの詳細を示す新しいエクスポートの例](./media/tutorial-export-acm-data/storage_exports.png)
 
 エクスポートの詳細を確認して **[作成]** をクリックします。
 
@@ -62,21 +61,42 @@ Azure Storage アカウントのサブスクリプションを指定して、お
 
 初期段階では、エクスポートを実行するまで 1 から 2 時間かかることがあります。 ただし、エクスポート済みファイルにデータが表示されるまで最大 4 時間かかることがあります。
 
+### <a name="export-schedule"></a>エクスポート スケジュール
+
+スケジュールされたエクスポートは、エクスポートを最初に作成したときの時刻と曜日の影響を受けます。 スケジュールされたエクスポートを作成すると、それ以降、毎回同じ時刻にエクスポートが実行されます。 たとえば、毎日のエクスポートを午後 1 時に作成したとします。 次回のエクスポートは、翌日の午後 1 時に実行されます。 現在時刻は、他のすべてのエクスポート タイプにも同じように影響します。つまり、エクスポートを最初に作成したときと同じ時刻にエクスポートが常に実行されます。 別の例として、月曜日の午後 4 時に毎週のエクスポートを作成したとします。 次回のエクスポートは、次の月曜日の午後 4 時に実行されます。 *"エクスポートされたデータは、実行時から 4 時間以内に使用できます。"*
+
+エクスポートごとに新しいファイルが作成されるため、古いエクスポートは上書きされません。
+
+エクスポート オプションには、次の 3 種類があります。
+
+**[月度累計コストの日単位のエクスポート]** - 最初のエクスポートはすぐに実行されます。 後続のエクスポートは、翌日の最初のエクスポートと同じ時刻に実行されます。 最新のデータは、以前の毎日のエクスポートから集計されます。
+
+**[過去 7 日間のコストの週単位のエクスポート]** - 最初のエクスポートはすぐに実行されます。 後続のエクスポートは、最初のエクスポートと同じ曜日および時刻に実行されます。 コストは、過去 7 日分のコストです。
+
+**[カスタム]** - 毎週および毎月のエクスポートを、週累計および月度累計オプションを使用してスケジュールできます。 *"最初のエクスポートはすぐに実行されます。"*
+
+従量課金制、MSDN、または Visual Studio サブスクリプションがある場合、請求書の請求期間がカレンダー月と合わない場合があります。 それらのサブスクリプションとリソース グループの種類の場合、請求期間またはカレンダー月に合わせたエクスポートを作成できます。 請求月に合わせたエクスポートを作成するには、**[カスタム]** を選択し、**[請求期間の累計]** を選択します。  カレンダー月に合わせたエクスポートを作成するには、**[月度累計]** を選択します。
+>
+>
+
+![新しいエクスポート - [カスタム] と [週累計] が選択された [基本] タブ](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
+
 ## <a name="verify-that-data-is-collected"></a>データが収集されたことを確認する
 
 コスト管理データが収集されていることは簡単に確認できます。また、Azure Storage Explorer を利用し、エクスポートした CSV データを簡単に表示できます。
 
 エクスポートの一覧で、ストレージ アカウント名をクリックします。 ストレージ アカウント ページで、[Explorer で開く] をクリックします。 確認ボックスが表示されたら、**[はい]** をクリックし、Azure Storage Explorer でファイルを開きます。
 
-![ストレージ アカウント ページ](./media/tutorial-export-acm-data/storage-account-page.png)
+![情報の例と、[Explorer で開く] へのリンクを示すストレージ アカウント ページ](./media/tutorial-export-acm-data/storage-account-page.png)
 
 ストレージ エクスプローラーで、開くコンテナーに移動し、当月のフォルダーを選択します。 CSV ファイルの一覧が表示されます。 ファイルを選択して **[開く]** をクリックします。
 
-![ストレージ エクスプローラー](./media/tutorial-export-acm-data/storage-explorer.png)
+![ストレージ エクスプローラーに表示される情報の例](./media/tutorial-export-acm-data/storage-explorer.png)
 
 ファイルは、CSV ファイル拡張子を開くように設定されているプログラムまたはアプリケーションで開きます。 今回の例では Excel が使用されます。
 
-![データのエクスポート例](./media/tutorial-export-acm-data/example-export-data.png)
+![Excel に表示されるエクスポートした CSV データの例](./media/tutorial-export-acm-data/example-export-data.png)
+
 
 ## <a name="access-exported-data-from-other-systems"></a>エクスポートしたデータに他のシステムからアクセスする
 

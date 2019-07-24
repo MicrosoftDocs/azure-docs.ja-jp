@@ -15,16 +15,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: maghan
-ms.openlocfilehash: 2b2f5a441209b76f4c90c1a4682215d388b2d53a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 29e851772e665b4130ee58b04c264d55bcd54523
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242893"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317784"
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Azure Virtual Machines での SQL Server Business Intelligence
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 
 Microsoft Azure 仮想マシン ギャラリーには、SQL Server インストールを含むイメージが用意されています。 ギャラリー イメージでサポートされている SQL Server のエディションは、オンプレミスのコンピューターにも仮想マシンにもインストールできるインストール ファイルです。 このトピックでは、イメージにインストールされている SQL Server Business Intelligence (BI) 機能の概要と、仮想マシンのプロビジョニング後に必要な構成手順について説明します。 また、BI 機能用にサポートされているデプロイ トポロジとベスト プラクティスについても説明します。
 
@@ -78,9 +78,9 @@ SQL Server でサポートされているエディションと機能の詳細に
 
 | SQL Server BI 機能 | ギャラリー イメージにインストールされているかどうか | メモ |
 | --- | --- | --- |
-| **Reporting Services ネイティブ モード** |[はい] |インストールされていますが、レポート マネージャー URL などの構成が必要です。 「 [Reporting Services の構成](#configure-reporting-services)」をご覧ください。 |
+| **Reporting Services ネイティブ モード** |はい |インストールされていますが、レポート マネージャー URL などの構成が必要です。 「 [Reporting Services の構成](#configure-reporting-services)」をご覧ください。 |
 | **Reporting Services SharePoint モード** |いいえ  |Microsoft Azure 仮想マシン ギャラリー イメージには、SharePoint も SharePoint インストール ファイルも含まれていません。 <sup>1</sup> |
-| **Analysis Services 多次元およびデータ マイニング (OLAP)** |[はい] |インストールされ、既定の Analysis Services インスタンスとして構成されています。 |
+| **Analysis Services 多次元およびデータ マイニング (OLAP)** |はい |インストールされ、既定の Analysis Services インスタンスとして構成されています。 |
 | **Analysis Services 表形式** |いいえ  |SQL Server 2012、2014、および 2016 のイメージでサポートされていますが、既定ではインストールされていません。 Analysis Services の別のインスタンスをインストールします。 このトピックの「SQL Server のその他のサービスと機能のインストール」をご覧ください。 |
 | **Analysis Services Power Pivot for SharePoint** |いいえ  |Microsoft Azure 仮想マシン ギャラリー イメージには、SharePoint も SharePoint インストール ファイルも含まれていません。 <sup>1</sup> |
 
@@ -217,7 +217,7 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 構成を確認するには、VM 上でレポート マネージャーを参照します。
 
 1. VM で、管理者特権を使用して Internet Explorer を起動します。
-2. VM の http://localhost/reports を参照します。
+2. VM 上の http:\//localhost/reports を参照します。
 
 ### <a name="to-connect-to-remote-web-portal-or-report-manager-for-2014-and-2012"></a>リモート Web ポータル、または 2014 および 2012 用のレポート マネージャーに接続するには
 リモート コンピューターから仮想マシン上の Web ポータル、または 2014 および 2012 用のレポート マネージャーに接続する場合は、新しい仮想マシン TCP エンドポイントを作成します。 既定では、レポート サーバーは **ポート 80**で HTTP 要求をリッスンします。 別のポートを使用するようにレポート サーバーの URL を構成した場合は、次の手順でそのポート番号を指定する必要があります。
@@ -226,22 +226,22 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 2. 仮想マシンのファイアウォールでポート 80 を開きます。
 3. URL 内のサーバー名として Azure 仮想マシンの **DNS 名** を使用して、Web ポータルまたはレポート マネージャーを参照します。 例: 
    
-    **レポート サーバー**: http://uebi.cloudapp.net/reportserver **Web ポータル**: http://uebi.cloudapp.net/reports
+    **レポート サーバー**:http://uebi.cloudapp.net/reportserver  **Web ポータル**: http://uebi.cloudapp.net/reports
    
     [レポート サーバー アクセスに対するファイアウォールの構成](https://msdn.microsoft.com/library/bb934283.aspx)
 
 ### <a name="to-create-and-publish-reports-to-the-azure-virtual-machine"></a>レポートを作成して Azure 仮想マシンに発行するには
 Microsoft Azure 仮想マシンでホストされているレポート サーバーに、オンプレミスのコンピューターから既存のレポートを発行する際に使用できるオプションの一部を次に示します。
 
-* **レポート ビルダー**: 仮想マシンには、SQL 2014 および 2012 用の Microsoft SQL Server レポート ビルダーの ClickOnce バージョンが含まれています。 仮想マシン上で SQL 2016 を使用してレポート ビルダーを初めて起動するときは、次の手順を実行します。
+* **レポート ビルダー**:仮想マシンには、SQL 2014 および 2012 用の ClickOnce バージョンの Microsoft SQL Server レポート ビルダーが含まれています。 仮想マシン上で SQL 2016 を使用してレポート ビルダーを初めて起動するときは、次の手順を実行します。
   
   1. 管理者特権でブラウザーを起動します。
   2. 仮想マシン上で Web ポータルを参照し、右上の **[ダウンロード]** アイコンを選択します。
   3. **[レポート ビルダー]** を選択します。
      
      詳細については、「 [レポート ビルダーの起動](https://msdn.microsoft.com/library/ms159221.aspx)」を参照してください。
-* **SQL Server Data Tools**: VM: SQL Server Data Tools は仮想マシンにインストールされます。このツールを使用して、仮想マシンで**レポート サーバー プロジェクト**とレポートを作成できます。 SQL Server Data Tools では、仮想マシン上のレポート サーバーにレポートを発行できます。
-* **SQL Server Data Tools: Remote**: ローカル コンピューター上の SQL Server Data Tools で、Reporting Services レポートを含む Reporting Services プロジェクトを作成します。 Web サービス URL に接続するようにプロジェクトを構成します。
+* **SQL Server Data Tools**:VM:SQL Server Data Tools は仮想マシンにインストールされます。このツールを使用して、仮想マシンで**レポート サーバー プロジェクト**とレポートを作成できます。 SQL Server Data Tools では、仮想マシン上のレポート サーバーにレポートを発行できます。
+* **SQL Server Data Tools:Remote**:ローカル コンピューター上の SQL Server Data Tools で、Reporting Services レポートを含む Reporting Services プロジェクトを作成します。 Web サービス URL に接続するようにプロジェクトを構成します。
   
     ![SSRS プロジェクトの SSDT プロジェクト プロパティ](./media/virtual-machines-windows-classic-ps-sql-bi/IC650114.gif)
 * レポートを格納する .VHD ハード ドライブを作成し、ドライブをアップロードして接続します。
@@ -317,7 +317,7 @@ Analysis Services の **名前付きインスタンス** の場合、ポート �
   * アスタリスク (*) が付いているポートの仮想マシン エンドポイントを作成します。
 * 仮想マシンが Azure Virtual Networking などの VPN トンネルを使用してドメインに参加している場合、エンドポイントは不要です。 ただし、VM 上のファイアウォールでポートを開いてください。
   
-  | ポート | type | 説明 |
+  | ポート | Type | 説明 |
   | --- | --- | --- |
   | **80** |TCP |レポート サーバー リモート アクセス (*)。 |
   | **1433** |TCP |SQL Server Management Studio (*)。 |
@@ -329,7 +329,7 @@ Analysis Services の **名前付きインスタンス** の場合、ポート �
 エンドポイントの作成の詳細については、次のトピックをご覧ください。
 
 * エンドポイントの作成:[仮想マシンに対してエンドポイントを設定する方法](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-* SQL Server: 「 [Azure での SQL Server 仮想マシンのプロビジョニング](../sql/virtual-machines-windows-portal-sql-server-provision.md)」の「別のコンピューターにある SQL Server Management Studio を使用して仮想マシンに接続するための構成手順を完了する」をご覧ください。
+* SQL Server:「[Azure での SQL Server 仮想マシンのプロビジョニング](../sql/virtual-machines-windows-portal-sql-server-provision.md)」の「別のコンピューターにある SQL Server Management Studio を使用して仮想マシンに接続するための構成手順を完了する」をご覧ください。
 
 次の図は、VM 上の機能とコンポーネントへのリモート アクセスを可能にするために、VM のファイアウォールで開くポートを示しています。
 

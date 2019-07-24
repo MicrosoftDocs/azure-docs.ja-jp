@@ -1,25 +1,165 @@
 ---
-title: Speech Service SDK のドキュメント
+title: リリース ノート - Speech Services
 titlesuffix: Azure Cognitive Services
-description: リリース ノート - 最新リリースの変更点
+description: Azure Speech Services に関する機能リリース、改善、バグ修正、既知の問題を時系列で掲載しています。
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 4/5/2019
 ms.author: wolfma
-ms.openlocfilehash: 706f51ae1e2d81e2003f2fcd637def95c7a42f8e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: e40d9a2ac0e95ae72aed927f8a527eb1e092079d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567538"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549407"
 ---
 # <a name="release-notes"></a>リリース ノート
 
-## <a name="speech-service-sdk-110"></a>Speech Service SDK 1.1.0
+## <a name="speech-sdk-141"></a>Speech SDK 1.4.1
+
+これは、JavaScript のみのリリースです。 機能は追加されていません。 以下の修正が行われました。
+
+* Webpack でHTTPS プロキシ エージェントが読み込まれないようにしました。
+
+## <a name="speech-sdk-140-2019-april-release"></a>Speech SDK 1.4.0: 2019 年 4 月リリース
+
+**新機能** 
+
+* SDK で、ベータ版としてテキスト読み上げサービスがサポートされるようになりました。 Windows および Linux デスクトップの C++ および C# からサポートされます。 詳しくは、[テキスト読み上げの概要](text-to-speech.md#get-started-with-text-to-speech)に関する記事をご覧ください。
+* SDK で、ストリーム入力ファイルとして MP3 および Opus/Ogg オーディオ ファイルがサポートされるようになりました。 この機能は、Linux の C++ と C# からのみ使用でき、現在はベータ版です (詳しくは[こちら](how-to-use-compressed-audio-input-streams.md))。
+* Java、.NET Core、C++、Objective-C 用の Speech SDK で、macOS がサポートされるようになりました。 Objective-C での MacOS のサポートは、現在ベータ版です。
+* iOS:iOS (Objective-C) 用の Speech SDK が、CocoaPod としても公開されるようになりました。
+* JavaScript:入力デバイスとしての既定以外のマイクのサポート。
+* JavaScript:Node.js に対するプロキシのサポート。
+
+**サンプル**
+
+* macOS の C++ および Objective-C での Speech SDK の使用のサンプルが追加されました。
+* テキスト読み上げサービスの使用方法を示すサンプルが追加されました。
+
+**機能強化/変更**
+
+* Python: 認識結果の追加のプロパティが、`properties` プロパティで公開されるようになりました。
+* 開発とデバッグの追加サポートでは、SDK のログ記録と診断情報をログ ファイルにリダイレクトすることができます (詳しくは[こちら](how-to-use-logging.md))。
+* JavaScript:オーディオ処理のパフォーマンスが向上しました。
+
+**バグの修正**
+
+* Mac/iOS:Speech Service への接続を確立できないときに長い待機時間が発生する原因のバグを修正しました。
+* Python: Python コールバックでの引数のエラー処理が向上しました。
+* JavaScript:RequestSession で終了した音声の正しくない状態レポートが修正されました。
+
+## <a name="speech-sdk-131-2019-february-refresh"></a>Speech SDK 1.3.1:2019 年 2 月更新
+
+これはバグ修正リリースで、ネイティブ/マネージド SDK にのみ影響します。 JavaScript バージョンの SDK には影響しません。
+
+**バグ修正**
+
+* マイク入力を使用する際のメモリ リークを修正しました。 ストリーム ベースの入力やファイル入力には影響しません。
+
+## <a name="speech-sdk-130-2019-february-release"></a>Speech SDK 1.3.0: 2019-February リリース
+
+**新機能**
+
+* Speech SDK では、AudioConfig クラスによって入力マイクの選択がサポートされます。 これにより、既定以外のマイクから Speech Services にオーディオ データをストリーミングできます。 詳しくは、[オーディオ入力デバイスの選択](how-to-select-audio-input-devices.md)に関する記事をご覧ください。 これは、JavaScript からはまだ使用できません。
+* Speech SDK では、ベータ版で Unity がサポートされるようになりました。 [GitHub サンプル リポジトリ](https://aka.ms/csspeech/samples)の問題セクションでフィードバックをお送りください。 このリリースでは、Windows x86 と x64 (デスクトップまたはユニバーサル Windows プラットフォーム アプリケーション) および Android (ARM32/64、x86) での Unity がサポートされています。 詳しくは、[Unity のクイック スタート](quickstart-csharp-unity.md)に関する記事をご覧ください。
+* (以前のリリースで提供されていた) `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` ファイルは不要になりました。 この機能はコア SDK に統合されました。
+
+
+**サンプル**
+
+[サンプル リポジトリ](https://aka.ms/csspeech/samples)で次の新しいコンテンツを利用できます。
+
+* AudioConfig.FromMicrophoneInput の追加サンプル。
+* 意図認識と翻訳に関する追加の Python サンプル。
+* iOS での Connection オブジェクトの使用に関する追加サンプル。
+* オーディオ出力での翻訳に関する追加の Java サンプル。
+* [Batch Transcription REST API](batch-transcription.md) の使用に関する新しいサンプル。
+
+**機能強化/変更**
+
+* Python
+  * SpeechConfig でのパラメーター検証とエラー メッセージが強化されました。
+  * Connection オブジェクトのサポートが追加されました。
+  * Windows での 32 ビット Python (x86) のサポート。
+  * Python 用 Speech SDK がベータ版ではなくなりました。
+* iOS
+  * SDK のビルド対象が iOS SDK バージョン 12.1 になりました。
+  * SDK が、iOS バージョン 9.2 以降をサポートするようになりました。
+  * リファレンス ドキュメントが改善され、いくつかのプロパティ名が修正されました。
+* JavaScript
+  * Connection オブジェクトのサポートが追加されました。
+  * バンドルされている JavaScript の型定義ファイルが追加されました
+  * 語句ヒントの最初のサポートと実装。
+  * 認識に対するサービス JSON でプロパティのコレクションが返されます
+* Windows の DLL に、バージョン リソースが含まれるようになりました。
+* 認識エンジン `FromEndpoint` を作成した場合は、エンドポイント URL に直接パラメーターを追加できます。 `FromEndpoint` を使用した場合、標準の構成プロパティを通じて認識エンジンを構成することはできません。
+
+**バグの修正**
+
+* 空のプロキシ ユーザー名とプロキシ パスワードが、正しく処理されませんでした。 このリリースでは、プロキシ ユーザー名とプロキシ パスワードを空の文字列に設定した場合は、プロキシに接続したときに送信されません。
+* SDK によって作成された SessionId が、一部の言語&nbsp;/環境で本当にランダムではないことがありました。 乱数ジェネレーターの初期化を追加して解決しました。
+* 認可トークンの処理が向上します。 認可トークンを使用する場合、SpeechConfig で指定し、サブスクリプション キーを空のままにします。 その後、通常どおり認識エンジンを作成します。
+* 場合によっては、Connection オブジェクトが正しく解放されませんでした。 この問題は修正されています。
+* 翻訳合成も Safari 上にある場合にオーディオ出力をサポートするよう、JavaScript のサンプルが修正されました。
+
+## <a name="speech-sdk-121"></a>Speech SDK 1.2.1
+
+これは、JavaScript のみのリリースです。 機能は追加されていません。 以下の修正が行われました。
+
+* speech.end ではなく turn.end でストリームの終了が発生します。
+* 現在の送信が失敗した場合に、次の送信がスケジュールされなかった、オーディオ ポンプのバグを修正しました。
+* 認証トークンでの継続的な認識を修正しました。
+* 別の認識エンジン/エンドポイントのバグ修正。
+* ドキュメントの改善。
+
+## <a name="speech-sdk-120-2018-december-release"></a>Speech SDK 1.2.0:2018-December リリース
+
+**新機能**
+
+* Python
+  * このリリースで、Python サポート (3.5 以降) のベータ版を使用できるようになりました。 詳しくは、こちら (quickstart-python.md) をご覧ください。
+* JavaScript
+  * Speech SDK for JavaScript はオープンソースで提供されています。 ソース コードは [GitHub](https://github.com/Microsoft/cognitive-services-speech-sdk-js)から入手できます。
+  * Node.js のサポートを開始しました。詳細については、[こちら](quickstart-js-node.md)を参照してください。
+  * 音声セッションの長さの制限がなくなり、再接続は背後で自動的に実行されるようになります。
+* Connection オブジェクト
+  * 認識機能から、Connection オブジェクトにアクセスできます。 このオブジェクトを使用すると、サービスの接続を明示的に開始し、接続イベントと切断イベントをサブスクライブすることができます
+    (これは JavaScript と Python からはまだ使用できません)。
+* Ubuntu 18.04 のサポート。
+* Android
+  * APK 生成時の ProGuard サポートが有効になりました。
+
+**機能強化**
+
+* 内部スレッドの使用方法を改善し、スレッド、ロック、相互排他の数を減らしました。
+* エラー報告や情報を改善しました。 一部のケースでは、エラー メッセージがまったく伝達されていませんでした。
+* 最新のモジュールを使用するように JavaScript の開発依存関係を更新しました。
+
+**バグの修正**
+
+* RecognizeAsync の型の不一致によるメモリ リークを修正しました。
+* 場合によっては、例外がリークしていました。
+* 翻訳イベント引数のメモリ リークを修正しました。
+* 長時間実行中のセッションでの再接続に関するロックの問題を修正しました。
+* 翻訳が失敗した場合に最終的な結果が失われる可能性がある問題を修正しました。
+* C#:メイン スレッドで非同期操作が待機されていない場合、非同期タスクが完了する前に認識機能が破棄される可能性がありました。
+* Java:Java VM がクラッシュする原因となる問題を修正しました。
+* Objective-C: RecognizingIntent ではなく RecognizedIntent が返されるという列挙型のマッピングを修正しました。
+* JavaScript:SpeechConfig で既定の出力形式を 'simple' に設定します。
+* JavaScript:JavaScript と他の言語の config オブジェクトのプロパティ間にある不整合を解消しました。
+
+**サンプル**
+
+* いくつかのサンプルを更新および修正しました (たとえば、翻訳のための出力音声など)。
+* [サンプル リポジトリ](https://aka.ms/csspeech/samples)に Node.js サンプルを追加しました。
+
+## <a name="speech-sdk-110"></a>Speech SDK 1.1.0
 
 **新機能**
 
@@ -31,7 +171,7 @@ ms.locfileid: "51567538"
 
 * 認識エンジンの構成に検証が追加され、エラー メッセージが追加されました。
 * オーディオ ファイル中の長時間のサイレント状態の処理が強化されました。
-* NuGet パッケージ: .NET Framework プロジェクトが AnyCPU 構成でビルドされることを防ぎます。
+* NuGet パッケージ: .NET Framework プロジェクトの場合、AnyCPU 構成でビルドされることを防ぎます。
 
 **バグの修正**
 
@@ -50,7 +190,7 @@ ms.locfileid: "51567538"
 
 * プルおよびプッシュ ストリームの使用のための C++ と C# のサンプルを[サンプル リポジトリ](https://aka.ms/csspeech/samples)に追加しました。
 
-## <a name="speech-service-sdk-101"></a>Speech Service SDK 1.0.1
+## <a name="speech-sdk-101"></a>Speech SDK 1.0.1
 
 信頼性の向上とバグ修正
 
@@ -110,7 +250,7 @@ ms.locfileid: "51567538"
 * Windows 上の .NET Standard 2.0 をサポートします。 [.NET Core クイック スタート](quickstart-csharp-dotnetcore-windows.md)をチェックアウトします。
 * 試験段階: Windows 上での UWP のサポート (バージョン 1709 以降)。
   * [UWP のクイック スタート](quickstart-csharp-uwp.md)に関するページをご覧ください。
-  * 注: Speech SDK で構築された UWP アプリは、まだ Windows アプリ認定キット (WACK) に合格していません。
+  * 注:Speech SDK で構築された UWP アプリは、まだ Windows アプリ認定キット (WACK) に合格していません。
 * 自動再接続を使用して、実行時間の長い認識をサポートします。
 
 **機能の変更点**

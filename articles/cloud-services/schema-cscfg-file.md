@@ -25,7 +25,7 @@ ms.locfileid: "39007024"
 
 サービス モデルは、[Cloud Service (クラシック) 定義スキーマ](schema-csdef-file.md)に関するページで説明されています。
 
-既定では、Azure 診断構成スキーマ ファイルは `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` ディレクトリにインストールされます。 `<version>` は、インストールされている [Azure SDK](https://azure.microsoft.com/downloads/) バージョンで置き換えてください。
+既定では、Azure Diagnostics 構成スキーマ ファイルは `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` ディレクトリにインストールされます。 `<version>` は、インストールされている [Azure SDK](https://azure.microsoft.com/downloads/) バージョンで置き換えてください。
 
 サービスでのロール構成の詳細については、[クラウド サービス モデルとは何か](cloud-services-model-and-package.md)に関するページをご覧ください。
 

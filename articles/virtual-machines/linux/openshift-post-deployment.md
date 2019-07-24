@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: ''
+ms.date: 02/02/2019
 ms.author: haroldw
-ms.openlocfilehash: 8436b530ac01f03e071604e5023b50f8de6989fd
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: cf3a3ca1f751ce9eed5ee5c5397c1d9c864a1dd6
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034809"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903677"
 ---
 # <a name="post-deployment-tasks"></a>デプロイ後タスク
 
 OpenShift クラスターをデプロイした後に、追加の項目を構成することができます。 この記事には、次の内容が含まれます。
 
 - Azure Active Directory (Azure AD) を使用してシングル サインオンを構成する方法
-- OpenShift を監視する Log Analytics を構成する方法
+- OpenShift を監視する Azure Monitor ログを構成する方法
 - メトリックとログを構成する方法
 - Open Service Broker for Azure (OSBA) をインストールする方法
 
@@ -39,11 +39,11 @@ OpenShift クラスターをデプロイした後に、追加の項目を構成�
 
 以下の手順では、Azure CLI を使用してアプリの登録を作成し、GUI (Portal) を使用してアクセス許可を設定します。 アプリの登録を作成するには、次の 5 つの情報が必要です。
 
-- 表示名: アプリの登録名 (例: OCPAzureAD)
-- ホーム ページ: OpenShift コンソール URL (例: https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- 識別子 URI: OpenShift コンソール URL (例: https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- 応答 URL: マスター パブリック URL とアプリの登録名 (例: https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
-- パスワード: セキュリティで保護されたパスワード (強力なパスワードを使用する)
+- 表示名:アプリの登録名 (例: OCPAzureAD)
+- ホーム ページ:OpenShift コンソール URL (例: https://masterdns343khhde.westus.cloudapp.azure.com/console)
+- 識別子 URI:OpenShift コンソール URL (例: https://masterdns343khhde.westus.cloudapp.azure.com/console)
+- 応答 URL:マスター パブリック URL とアプリの登録名 (例: https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
+- Password (パスワード):強力なパスワードを使用
 
 次の例では、上記の情報を使用してアプリの登録を作成します。
 
@@ -75,23 +75,23 @@ az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.
 
 Azure Portal で次の操作を行います。
 
-1.  **[Azure Active Directory]** > **[アプリの登録]** の順に選択します。
-2.  アプリの登録を検索します (例: OCPAzureAD)。
-3.  結果のアプリの登録をクリックします。
-4.  **[設定]** の **[必要なアクセス許可]** を選択します
-5.  **[必要なアクセス許可]** の **[追加]** を選択します。
+1. **[Azure Active Directory]** > **[アプリの登録]** の順に選択します。
+2. アプリの登録を検索します (例: OCPAzureAD)。
+3. 結果のアプリの登録をクリックします。
+4. **[設定]** の **[必要なアクセス許可]** を選択します
+5. **[必要なアクセス許可]** の **[追加]** を選択します。
 
-  ![アプリケーションの登録](media/openshift-post-deployment/app-registration.png)
+   ![アプリケーションの登録](media/openshift-post-deployment/app-registration.png)
 
-6.  [手順 1: API の選択]、**[Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)]** の順にクリックします。 下部にある **[選択]** をクリックします。
+6. [手順 1:API の選択]、**[Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)]** の順にクリックします。 下部にある **[選択]** をクリックします。
 
-  ![[アプリの登録] の [API の選択]](media/openshift-post-deployment/app-registration-select-api.png)
+   ![[アプリの登録] の [API の選択]](media/openshift-post-deployment/app-registration-select-api.png)
 
-7.  [手順 2: アクセス許可の選択] で、**[委任されたアクセス許可]** の **[サインインとユーザー プロファイルの読み取り]** を選択し、**[選択]** をクリックします。
+7. [手順 2:アクセス許可の選択] で、**[委任されたアクセス許可]** の **[サインインとユーザー プロファイルの読み取り]** を選択し、**[選択]** をクリックします。
 
-  ![[アプリの登録] のアクセス](media/openshift-post-deployment/app-registration-access.png)
+   ![[アプリの登録] のアクセス](media/openshift-post-deployment/app-registration-access.png)
 
-8.  **[完了]** を選択します。
+8. **[完了]** を選択します。
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>Azure AD 認証用に OpenShift を構成する
 
@@ -147,7 +147,7 @@ oauthConfig:
         token: https://login.microsoftonline.com/<tenant Id>/oauth2/token
 ```
 
-identityProviders の下にテキストを正確に揃えて配置します。 テナント ID を確認するには、次の CLI コマンドを使用します。```az account show```
+identityProviders の下にテキストを正確に揃えて配置します。 テナント ID を確認するには、次の CLI コマンドを使用します。 ```az account show```
 
 すべてのマネージャーで OpenShift マスター サービスを再起動します。
 
@@ -179,11 +179,11 @@ sudo systemctl restart origin-master
 
 OpenShift Console に、認証のオプションが 2 つ表示されるようになります (htpasswd_auth と [アプリの登録])。
 
-## <a name="monitor-openshift-with-log-analytics"></a>Log Analytics を使用して OpenShift を監視する
+## <a name="monitor-openshift-with-azure-monitor-logs"></a>Azure Monitor ログを使用して OpenShift を監視する
 
 OpenShift に Log Analytics エージェントを追加するには 3 つの方法があります。
 - OpenShift の各ノードに直接 Log Analytics エージェント for Linux をインストールする
-- OpenShift の各ノードで Log Analytics VM 拡張機能を有効にする
+- OpenShift の各ノードで Azure Monitor VM 拡張機能を有効にする
 - Log Analytics エージェントを OpenShift デーモン セットとしてインストールする
 
 完全な手順はこちらにあります: https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift。

@@ -1,5 +1,5 @@
 ---
-title: Docker API での Azure Swarm クラスターの管理
+title: (非推奨) Docker API での Azure Swarm クラスターの管理
 description: Azure Container Service の Docker Swarm クラスターにコンテナーをデプロイします
 services: container-service
 author: rgardler
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 3f8d18bc053bc303ab124ba38c8621d4ee2e8cb8
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 04cc9048271d653bd77fd7f2707c8f510ea8c29f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
-ms.locfileid: "26331547"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997961"
 ---
-# <a name="container-management-with-docker-swarm"></a>Docker Swarm でのコンテナーの管理
+# <a name="deprecated-container-management-with-docker-swarm"></a>(非推奨) Docker Swarm でのコンテナーの管理
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Docker Swarm は、コンテナーにまとめたワークロードをプールされた Docker ホストのセット全体にデプロイする環境を提供します。 Docker Swarm では、ネイティブの Docker API を使用します。 Docker Swarm 上のコンテナーを管理するワークフローは、1 つのコンテナー ホスト上の場合とほぼ同じです。 このドキュメントでは、Docker Swarm の Azure コンテナー サービス インスタンスで、コンテナーにまとめたワークロードをデプロイする簡単な例について説明します。 Docker Swarm の詳細なドキュメントについては、 [Docker.com の Docker Swarm](https://docs.docker.com/swarm/)を参照してください。
 
@@ -110,6 +112,6 @@ caf185d221b7        adtd/web:0.1        "apache2-foreground"   2 minutes ago    
 
 当然ながら、`docker-compose ps` を使用すると、`compose.yml` ファイルに定義されているコンテナーのみを確認することができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Docker Swarm の詳細](https://docs.docker.com/swarm/)
 

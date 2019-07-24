@@ -1,25 +1,26 @@
 ---
 title: 画像の種類の検出 - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Computer Vision API を使用した画像種類の検出に関連する概念。
+description: Computer Vision API の画像の種類の検出機能に関連する概念。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: ecdbdd60af41ee14070f2f45dfe50875e38ac3b3
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 37cdac16a51a30bdaf1ba0266bab7fdd1f2990f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342009"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895449"
 ---
-# <a name="detecting-image-types"></a>イメージの種類の検出
+# <a name="detecting-image-types-with-computer-vision"></a>Computer Vision での画像の種類の検出
 
-Computer Vision は、画像のコンテンツの種類を分析して、画像がクリップ アートかどうか、可能性を評価したスケール、または線画かどうかを示すことができます。
+Computer Vision は、[画像分析](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API を使用して、画像のコンテンツの種類を分析し、画像がクリップ アートか線画かを示すことができます。
 
 ## <a name="detecting-clip-art"></a>クリップ アートの検出
 
@@ -36,7 +37,7 @@ Computer Vision は、次の表に示すように、画像を分析して、画�
 
 次の JSON 応答では、サンプル画像がクリップ アートである可能性を評価するときに Computer Vision が返すものを示します。
 
-![Vision Analyze チーズのクリップ アート](./Images/cheese_clipart.png)
+![一切れのチーズのクリップ アート画像](./Images/cheese_clipart.png)
 
 ```json
 {
@@ -53,7 +54,7 @@ Computer Vision は、次の表に示すように、画像を分析して、画�
 }
 ```
 
-![Vision Analyze 家の庭](./Images/house_yard.png)
+![青い家と前庭](./Images/house_yard.png)
 
 ```json
 {
@@ -78,7 +79,7 @@ Computer Vision は画像を分析し、画像が線画かどうかを示すブ�
 
 次の JSON 応答では、サンプル画像が線画かどうかを示すときに Computer Vision が返すものを示します。
 
-![Vision Analyze ライオンの線画](./Images/lion_drawing.png)
+![ライオンの線画画像](./Images/lion_drawing.png)
 
 ```json
 {
@@ -95,7 +96,7 @@ Computer Vision は画像を分析し、画像が線画かどうかを示すブ�
 }
 ```
 
-![Vision Analyze 花](./Images/flower.png)
+![白い花と緑の背景](./Images/flower.png)
 
 ```json
 {
@@ -114,4 +115,4 @@ Computer Vision は画像を分析し、画像が線画かどうかを示すブ�
 
 ## <a name="next-steps"></a>次の手順
 
-[イメージへのタグ付け](concept-tagging-images.md)および[イメージの分類](concept-categorizing-images.md)に関する概念を確認します。
+画像の種類を検出する方法については、[画像分析](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)のリファレンス ドキュメントを参照してください。

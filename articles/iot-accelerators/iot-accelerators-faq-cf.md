@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: e9e88fc9aa3aad902c140ac176e31571b9e55ee3
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: ed429d923cad2c715621990c146d4cf3a23e7bca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353743"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904755"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>接続済みファクトリ ソリューション アクセラレータに関してよく寄せられる質問
 
@@ -27,7 +27,7 @@ IoT ソリューション アクセラレータの一般的な [FAQ](iot-acceler
 
 ### <a name="what-is-opc-ua"></a>OPC UA とは
 
-OPC Unified Architecture (UA) は、プラットフォームに依存しないサービス指向の相互運用性の標準規格として、2008 年にリリースされました。 OPC UA は、さままざまな産業システムやデバイス (例: 産業用 PC、PLC、センサー) で使用されています。 OPC UA では、セキュリティを組み込まれた 1 つの拡張可能なフレームワークに、OPC Classic 仕様の機能が統合されています。 これは、OPC Foundation によって主導されている標準です。 [OPC Foundation](http://opcfoundation.org/) は440 社以上の会員が参加する非営利組織です。 組織の目標は、OPC 仕様によってマルチ ベンダー、マルチ プラットフォーム、および安全性と信頼性の高い相互運用を促進することにあります。
+OPC Unified Architecture (UA) は、プラットフォームに依存しないサービス指向の相互運用性の標準規格として、2008 年にリリースされました。 OPC UA は、さままざまな産業システムやデバイス (例: 産業用 PC、PLC、センサー) で使用されています。 OPC UA では、セキュリティを組み込まれた 1 つの拡張可能なフレームワークに、OPC Classic 仕様の機能が統合されています。 これは、OPC Foundation によって主導されている標準です。 [OPC Foundation](https://opcfoundation.org/) は440 社以上の会員が参加する非営利組織です。 組織の目標は、OPC 仕様によってマルチ ベンダー、マルチ プラットフォーム、および安全性と信頼性の高い相互運用を促進することにあります。
 
 * インフラストラクチャ
 * 仕様
@@ -78,7 +78,7 @@ www.azureiotsolutions.com からソリューションをデプロイした場合
 1. すべてのシミュレーション コンテナーを開始するには、次のようにします。
     * シェル変数を **IOTHUB_CONNECTIONSTRING** という名前でエクスポートします。 `<name of your deployment>.config.user` ファイルの **IotHubOwnerConnectionString** 設定の値を使用します。 例: 
 
-        ```
+        ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
         ```
 
@@ -142,13 +142,13 @@ IoT Hub に送信されるデータが表示されない場合は、シミュレ
 
 接続済みファクトリ ソリューション内でインタラクティブ マップを有効にするには、Azure Maps アカウントが必要です。
 
-[www.azureiotsolutions.com](http://www.azureiotsolutions.com) からデプロイするときに、デプロイ プロセスによって、ソリューション アクセラレータ サービスを含むリソース グループに Azure Maps アカウントが追加されます。
+[www.azureiotsolutions.com](https://www.azureiotsolutions.com) からデプロイするときに、デプロイ プロセスによって、ソリューション アクセラレータ サービスを含むリソース グループに Azure Maps アカウントが追加されます。
 
 接続済みファクトリの GitHub リポジトリにある `build.ps1` スクリプトを使ってデプロイする場合は、ビルド ウィンドウの環境変数 `$env:MapApiQueryKey` を [Azure Maps アカウントのキー](../azure-maps/how-to-manage-account-keys.md)に設定します。 このようにすると、インタラクティブ マップが自動的に有効になります。
 
 デプロイ後に、ソリューション アクセラレータに Azure Maps アカウント キーを追加することもできます。 Azure Portal に移動し、接続済みファクトリの展開の App Service リソースにアクセスします。 **[アプリケーション設定]** に移動し、**[アプリケーション設定]** セクションを探します。 **MapApiQueryKey** を [Azure Maps アカウントのキー](../azure-maps/how-to-manage-account-keys.md)に設定します。 設定を保存した後、**[概要]** に移動して、App Service を再起動します。
 
-### <a name="how-do-i-create-a-azure-maps-account"></a>Azure Maps アカウントを作成するにはどうすればいいですか
+### <a name="how-do-i-create-an-azure-maps-account"></a>Azure Maps アカウントを作成するにはどうすればいいですか
 
 「[Azure Maps のアカウントとキーを管理する方法](../azure-maps/how-to-manage-account-keys.md)」をご覧ください。
 

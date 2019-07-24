@@ -5,14 +5,14 @@ author: ganganarayanan
 ms.author: gangan
 ms.date: 6/13/2018
 ms.topic: article
-ms.service: microsoft-docs
+ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 1be05ac7216a65922927b94d1cc4ba2a893433b2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 204deaf3a67984c0dd5eca5352686719e7767885
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250987"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792295"
 ---
 # <a name="resource-manager-vcpu-quota-increase-requests"></a>Resource Manager の vCPU クォータを増やす要求
 

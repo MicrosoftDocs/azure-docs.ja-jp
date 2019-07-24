@@ -3,21 +3,21 @@ title: Azure Data Lake Storage Gen1 に格納されているデータのセキ�
 description: グループおよびアクセス制御リストを使用して Azure Data Lake Storage Gen1 内のデータをセキュリティ保護する方法を説明します
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: ca35e65f-3986-4f1b-bf93-9af6066bb716
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: nitinme
-ms.openlocfilehash: 15ef1e1b96a0da24714b4ddbda6b24f1f6f33ae0
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.author: twooley
+ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296738"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58885674"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 に格納されているデータのセキュリティ保護
 Azure Data Lake Storage Gen1 のデータをセキュリティで保護するには 3 つの手順が必要です。  ユーザーとセキュリティ グループに対してデータへのアクセスを完全に有効にするには、ロールベースのアクセス制御 (RBAC) とアクセス制御リスト (ACL) の両方を設定する必要があります。
@@ -33,7 +33,7 @@ Azure Data Lake Storage Gen1 のデータをセキュリティで保護するに
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Data Lake Storage Gen1 アカウント**。 これを作成する手順については、[Azure Data Lake Storage Gen1 の使用開始](data-lake-store-get-started-portal.md)に関するページをご覧ください
+* **Data Lake Storage Gen1 アカウント**。 これを作成する手順については、[Azure Data Lake Storage Gen1 の使用開始](data-lake-store-get-started-portal.md)に関するページを参照してください。
 
 ## <a name="create-security-groups-in-azure-active-directory"></a>Azure Active Directory でセキュリティ グループを作成する
 AAD セキュリティ グループを作成する手順および AAD セキュリティ グループにユーザーを追加する手順については、「 [Azure Active Directory のセキュリティ グループの管理](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)」を参照してください。
@@ -106,7 +106,7 @@ AAD セキュリティ グループを作成する手順および AAD セキュ�
    
     ![グループにアクセス許可を割り当てる](./media/data-lake-store-secure-data/adl.acl.4.png "グループにアクセス許可を割り当てる")
    
-    Data Lake Storage Gen1 でのアクセス許可と既定/アクセス ACL の詳細については、[Data Lake Storage Gen1 のアクセス制御](data-lake-store-access-control.md)に関するページをご覧ください。
+    Data Lake Storage Gen1 でのアクセス許可と既定/アクセス ACL の詳細については、[Data Lake Storage Gen1 のアクセス制御](data-lake-store-access-control.md)に関するページを参照してください。
 6. **[アクセス許可の選択]** ブレードで **[OK]** をクリックすると、新しく追加されたグループと、関連付けられたアクセス許可が **[アクセス]** ブレードに表示されます。
    
     ![グループにアクセス許可を割り当てる](./media/data-lake-store-secure-data/adl.acl.5.png "グループにアクセス許可を割り当てる")

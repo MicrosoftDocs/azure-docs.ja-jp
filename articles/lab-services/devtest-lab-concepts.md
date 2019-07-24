@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: ce0c51a3b97c57095a336128919c5e27f860905b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 1e35513d5a5a799b1f5e45cf9a5aa97c083e2087
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38676472"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725203"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest ラボの概念
 ## <a name="overview"></a>概要
@@ -29,7 +29,7 @@ ms.locfileid: "38676472"
 ラボとは、Virtual Machines (VM) などのリソース グループを包含するインフラストラクチャで、制限とクォータを指定することでこれらのリソースをより適切に管理することができます。
 
 ## <a name="virtual-machine"></a>仮想マシン
-Azure VM は、Azure が提供する数種類の[スケーラブルなオンデマンド コンピューティング リソース](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm)の 1 つです。 Azure VM は、その VM を実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。ただし、VM を維持するために、そこで実行するソフトウェアの構成、修正、インストールなど、引き続き特定のタスクを実行する必要があります。
+Azure VM は、Azure が提供する数種類の[スケーラブルなオンデマンド コンピューティング リソース](https://docs.microsoft.com/azure/app-service/overview-compare)の 1 つです。 Azure VM は、その VM を実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。ただし、VM を維持するために、そこで実行するソフトウェアの構成、修正、インストールなど、引き続き特定のタスクを実行する必要があります。
 
 「[Azure における Windows 仮想マシンの概要](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview)」では、VM を作成する前に検討する必要のある事項、VM の作成方法、VM の管理方法に関する情報を提供します。
 

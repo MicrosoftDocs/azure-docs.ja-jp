@@ -1,5 +1,6 @@
 ---
-title: Azure Load Balancer の概要 | Microsoft Docs
+title: Azure Load Balancer の概要
+titlesuffix: Azure Load Balancer
 description: Azure Load Balancer の機能の概要、アーキテクチャ、実装。 Load Balancer の動作とクラウドでの活用について説明します。
 services: load-balancer
 documentationcenter: na
@@ -8,16 +9,17 @@ ms.service: load-balancer
 Customer intent: As an IT administrator, I want to learn more about the Azure Load Balancer service and what I can use it for.
 ms.devlang: na
 ms.topic: overview
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/2018
+ms.date: 01/11/2019
 ms.author: kumud
-ms.openlocfilehash: 6368b47400f6ea06babfe538cf6f58b18cc49117
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: c2f6a614524f0dfb242db11618fda94ce57e6e6a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219581"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111533"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer の概要
 
@@ -27,7 +29,7 @@ Load Balancer は、ロード バランサーのフロントエンドで到着�
 
 さらに、パブリック ロード バランサー は、プライベート IP アドレスをパブリック IP アドレスに変換することによって、仮想ネットワーク内の仮想マシン (VM) の送信接続を提供できます。
 
-Azure Load Balancer は、Basic と Standard の 2 種類の SKU で使用できます。 両者の間には、スケール、機能、および料金の違いがあります。 Basic Load Balancer で可能なシナリオをすべて、Standard Load Balancer でも作成できますが、アプローチは若干異なる場合があります。 Load Balancer について学習するときは、基礎および SKU 固有の違いを理解することが重要です。
+Azure Load Balancer は、2 つの SKU であるBasic と Standard で使用できます。 両者の間には、スケール、機能、および料金の違いがあります。 Basic Load Balancer で可能なシナリオをすべて、Standard Load Balancer でも作成できますが、アプローチは若干異なる場合があります。 Load Balancer について学習するときは、基礎および SKU 固有の違いを理解することが重要です。
 
 ## <a name="why-use-load-balancer"></a>ロード バランサーを使用する理由 
 
@@ -62,11 +64,11 @@ Load Balancer リソースはオブジェクトであり、その中では、ユ
 
     ![ハッシュベースの分散](./media/load-balancer-overview/load-balancer-distribution.png)
 
-    *図; ハッシュベースの分散*
+    *図: ハッシュベースの分散*
 
 * **ポート フォワーディング**
 
-    Load Balancer では、受信 NAT 規則を作成して、特定のフロントエンド IP アドレスの特定のポートから、仮想ネットワーク内の特定のバックエンド インスタンスの特定のポートに、トラフィックをポート転送できます。 これも、負荷分散と同じハッシュ ベースの分散によって実現されます。 この機能の一般的なシナリオは、Azure Virtual Network 内の個別の VM インスタンスへのリモート デスクトップ プロトコル (RDP) または Secure Shell (SSH) セッションです。 複数の内部エンドポイントを、同じフロントエンド IP アドレスのさまざまなポートにマップできます。 フロントエンド IP アドレスを使って、追加のジャンプ ボックスがなくても、インターネット経由で VM をリモート管理できます。
+    Load Balancer では、受信 NAT 規則を作成して、特定のフロントエンド IP アドレスの特定のポートから、仮想ネットワーク内の特定のバックエンド インスタンスの特定のポートに、トラフィックをポート転送できます。 これも、負荷分散と同じハッシュ ベースの分散によって実現されます。 この機能の一般的なシナリオは、Azure Virtual Network 内の個別の VM インスタンスへのリモート デスクトップ プロトコル (RDP) または Secure Shell (SSH) セッションです。 複数の内部エンドポイントを、同じフロントエンド IP アドレスのさまざまなポートにマップできます。 フロントエンド IP アドレスを使用すると、ジャンプ ボックスを追加しなくても、インターネット経由で VM をリモート管理できます。
 
 * **アプリケーションに対する独立性と透過性**
 
@@ -92,8 +94,8 @@ Load Balancer リソースはオブジェクトであり、その中では、ユ
 
     仮想ネットワーク内のプライベート IP アドレスから、インターネット上のパブリック IP アドレスへのすべての送信フローは、Load Balancer のフロントエンド IP アドレスに変換できます。 パブリック フロントエンドが負荷分散規則によってバックエンドの VM に関連付けられていると、Azure は送信接続がパブリック フロントエンドの IP アドレスに自動的に変換されるようにプログラムします。
 
-    * フロントエンドを別のサービス インスタンスに動的にマップできるため、サービスのアップグレードやディザスター リカバリーが簡単にできます。
-    * 容易なアクセス制御リスト (ACL) の管理。 フロントエンド IP で表わされる ACL は、サービスをスケールアップ、スケールダウン、または再デプロイしても変更されません。  送信接続をマシンより少ない数の IP アドレスに変換すると、ホワイトリストの作業負荷を軽減できます。
+  * フロントエンドを別のサービス インスタンスに動的にマップできるため、サービスのアップグレードやディザスター リカバリーが簡単にできます。
+  * 容易なアクセス制御リスト (ACL) の管理。 フロントエンド IP で表わされる ACL は、サービスをスケールアップ、スケールダウン、または再デプロイしても変更されません。  送信接続をマシンより少ない数の IP アドレスに変換すると、ホワイトリストの作業負荷を軽減できます。
 
     詳しくは、[送信接続](load-balancer-outbound-connections.md)に関するページをご覧ください。
 
@@ -144,14 +146,20 @@ Load Balancer は、Basic と Standard 両方の SKU をサポートし、シナ
 * **仮想ネットワーク内**: 仮想ネットワーク内の VM から、同じ仮想ネットワーク内に存在する一連の VM に負荷を分散する。
 * **クロスプレミス仮想ネットワークの場合**: オンプレミスのコンピューターから、同じ仮想ネットワーク内に存在する一連の VM に負荷を分散する。 
 * **多層アプリケーションの場合**: バックエンド層がインターネットに接続しない、インターネットに接続する多層アプリケーションの負荷を分散する。 バックエンド層では、インターネットに接続する層からのトラフィックを負荷分散する必要があります (次の図を参照)。
-* **基幹業務アプリケーションの場合**: ロード バランサーのハードウェアやソフトウェアを追加せずに、Azure でホストされている基幹業務アプリケーションの負荷を分散する。 このシナリオには、トラフィックが負荷分散されるコンピューターのセットに含まれるオンプレミスのサーバーが含まれます。
+* **基幹業務アプリケーション**: 負荷分散用のハードウェアやソフトウェアの追加を伴わずに、Azure でホストされている基幹業務アプリケーションの負荷を分散する。 このシナリオには、トラフィックが負荷分散されるコンピューターのセットに含まれるオンプレミスのサーバーが含まれます。
 
 ![内部ロード バランサーの例](./media/load-balancer-overview/IC744147.png)
 
 *図: パブリック ロード バランサーと内部ロード バランサーの両方を使った、多層アプリケーションの負荷分散*
 
 ## <a name="pricing"></a>価格
-Standard Load Balancer の使用には、構成済みの負荷分散規則の数と、処理された受信および送信データの量に基づいて課金されます。 Standard Load Balancer の価格の情報については、[Load Balancer の価格](https://azure.microsoft.com/pricing/details/load-balancer/)に関するページをご覧ください。
+
+Standard Load Balancer の使用量は課金されます。
+
+- 構成されている負荷分散規則とアウトバウンド規則の数 (インバウンド NAT 規則はルールの総数にカウントされません)
+- 規則に関係なくインバウンドとアウトバウンドで処理されたデータの量 
+
+Standard Load Balancer の価格の情報については、[Load Balancer の価格](https://azure.microsoft.com/pricing/details/load-balancer/)に関するページをご覧ください。
 
 Basic Load Balancer は無料で提供されます。
 

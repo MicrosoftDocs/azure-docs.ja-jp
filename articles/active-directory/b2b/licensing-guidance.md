@@ -1,53 +1,41 @@
 ---
-title: Azure Active Directory B2B コラボレーションのライセンスに関するガイダンス | Microsoft Docs
+title: B2B コラボレーションのライセンスに関するガイダンス - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory B2B コラボレーションでは、Azure AD 有料ライセンスは必要ありませんが、B2B ゲスト ユーザー用の有料機能を利用することもできます。
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: mal
-ms.openlocfilehash: d80794511f334cd6dc5af418e24fc774b7d8728f
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7fa01a6bf522061e54e9622cb9201f81c699a8ec
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867512"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56668454"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Azure Active Directory B2B コラボレーションのライセンスに関するガイダンス
 
 Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーション機能を使用すると、有料の Azure AD サービスを使用できるように、外部ユーザー (つまり "ゲスト ユーザー") を招待できます。 ユーザーに割り当てる有料の Azure AD ライセンスごとに、外部ユーザー無料利用分に従って最大 5 人までのゲスト ユーザーを招待できます。
 
-ゲスト ユーザーとは、お客様の組織またはお客様の組織の関連会社のメンバーではないユーザーのことです。 ゲスト ユーザーは、サインインに使用する資格情報ではなく、組織との関係によって定義されます。 実際には、ゲスト ユーザーは、外部 ID でサインインしたり、お客様の組織が所有する資格情報でサインインしたりできます。
-
-次のユーザーはゲスト ユーザーでは*ありません*。
-- お客様の組織の従業員、オンサイトの請負業者、またはオンサイトの代理業者
-- 従業員、オンサイトの請負業者、または関連会社のオンサイトの代理業者
-
 B2B ユーザーのライセンスは、1:5 の割合に基づいて自動的に計算され、報告されます。 現在のところ、B2B ゲスト ユーザー ライセンスをゲスト ユーザーに直接割り当てることはできません。
 
-1:5 の外部ユーザー無料利用分を使用しているゲスト ユーザーが報告されていないという状況もあります。 ゲスト ユーザーがそのユーザー自身の組織で既に有料の Azure AD ライセンスを所有している場合、そのユーザーはお客様の B2B ゲスト ユーザー ライセンスのいずれかを使用しません。 さらに、ゲスト ユーザーは、追加のライセンス要件なしで Azure AD の無料の機能を使用できます。 ゲスト ユーザーは、お客様が Azure AD の有料ライセンスを所有していない場合でも、Azure AD の無料の機能にアクセスできます。 
+さらに、ゲスト ユーザーは、追加のライセンス要件なしで Azure AD の無料の機能を使用できます。 ゲスト ユーザーは、お客様が Azure AD の有料ライセンスを所有していない場合でも、Azure AD の無料の機能にアクセスできます。 
 
-## <a name="examples-calculating-guest-user-licenses"></a>例: ゲスト ユーザー ライセンスの計算
+## <a name="examples-calculating-guest-user-licenses"></a>次に例を示します。ゲスト ユーザー ライセンスの計算
 Azure AD の有料サービスにアクセスする必要があるゲスト ユーザーの数を判断したら、必要な 1:5 の割合でゲスト ユーザーに対応するのに十分な Azure AD 有料ライセンスを所有していることを確認してください。 次に例をいくつか示します。
 
 - Azure AD のアプリやサービスに 100 人のゲスト ユーザーを招待したいと考えていて、すべてのゲスト ユーザーにアクセス管理とプロビジョニングを割り当てたいと考えています。 また、それらのゲスト ユーザーのうちの 50 人には、MFA と条件付きアクセスも必要にしたいと考えています。 この組み合わせに対応するには、10 個の Azure AD Basic ライセンスと 10 個の Azure AD Premium P1 ライセンスが必要になります。 お客様がゲスト ユーザーに対して Identity Protection の機能を使用する場合は、ゲスト ユーザーに対応するために同じ 1:5 の割合で Azure AD Premium P2 ライセンスが必要になります。
 - 全員が MFA を必要とするゲスト ユーザーを 60 人招待したいと考えているため、少なくとも 12 個の Azure AD Premium P1 ライセンスが必要です。 お客様には、Azure AD Premium P1 ライセンスを持つ従業員が 10 人います。これらの従業員は、1:5 のライセンス割合に従い、最大 50 人のゲスト ユーザーを許容できます。 10 人の追加のゲスト ユーザーに対応するには、2 つの追加の Premium P1 ライセンスを購入する必要があります。
 
-## <a name="using-the-b2b-collaboration-api-to-invite-users-from-your-affiliates"></a>B2B コラボレーション API を使用して関連会社からユーザーを招待する
-
-定義上、B2B ゲスト ユーザーは、Azure AD の有料のアプリやサービスを使用できるように、お客様が招待する外部ユーザーです。 お客様の会社または関連会社のいずれかの従業員、オンサイトの請負業者、またはオンサイトの代理業者は、B2B 機能を使用する場合でも、B2B コラボレーションの対象ではありません。 次に例をいくつか示します。 
-- お客様は、お客様の組織の従業員であるユーザーを招待するために、外部資格情報 (ソーシャル ID など) を使用したいと考えています。 このシナリオはライセンス要件に準拠しておらず、許可されていません。 外部資格情報は、従業員を外部ユーザーにするものではありません。  
-- お客様は、B2B API を使用して、お客様の組織の関連会社のいずれかからユーザーを招待したいと考えています。 このシナリオでは B2B API を使用してユーザーを招待しますが、これは B2B コラボレーションとは見なされません。 関連会社のユーザーは外部ユーザーではないためには、これはライセンス要件に準拠してしません。 
-
-このどちらのシナリオでも、より適切なソリューションは、B2B API を使用してユーザーをメンバーとして (invitedUserType = メンバー) 招待し、それぞれに Azure AD のライセンスを割り当てることです。 
-
 ## <a name="next-steps"></a>次の手順
 
 Azure AD B2B コラボレーションに関する以下のリソースを参照してください。
 
+* [Azure Active Directory の料金](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Azure AD B2B コラボレーションとは](what-is-b2b.md)
 * [Azure Active Directory B2B コラボレーションに関してよく寄せられる質問 (FAQ)](faq.md)

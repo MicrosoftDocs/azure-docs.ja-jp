@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 1e5fcbee664271058ac1c7fa80bb285e09b8579a
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: b837aab871827c468295a365727a282f6c8a1a4b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
-ms.locfileid: "27862198"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086022"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Azure Automation を使用してジョブをトリガーする
 
@@ -34,7 +34,7 @@ ms.locfileid: "27862198"
 
 開始する前に、次の要件が満たされていることを確認します。
 
-*   Azure PowerShell がクライアント コンピューターにインストールされている。 [Azure PowerShell をダウンロードする](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。
+*   Azure PowerShell がクライアント コンピューターにインストールされている。 [Azure PowerShell をダウンロードする](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)。
 *   リソース グループ内の StorSimple Data Manager サービスに正しく構成されたジョブ定義がある。
 *   GitHub リポジトリから [`DataTransformationApp.zip`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) ファイルをダウンロードしてある。 
 *   GitHub リポジトリから [`Trigger-DataTransformation-Job.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1) スクリプトをダウンロードしてある。
@@ -53,20 +53,20 @@ ms.locfileid: "27862198"
 
 3. **[Automation アカウントの追加]** で、次のようにします。
 
-    1. Automation アカウントの **[名前]** を指定します。
-    2. StorSimple Data Manager サービスにリンクされている **[サブスクリプション]** を選びます。
-    3. 新しいリソース グループを作成するか、既存のリソース グループを選択します。
-    4. **[場所]** を選択します。
-    5. **[Create Run As account]\(実行アカウントの作成\)** オプションは既定値の選択状態のままにします。
-    6. ダッシュボードでのクイック アクセス用のリンクを取得するには、**[ダッシュボードにピン留めする]** をオンにします。 **Create** をクリックしてください。
+   1. Automation アカウントの **[名前]** を指定します。
+   2. StorSimple Data Manager サービスにリンクされている **[サブスクリプション]** を選びます。
+   3. 新しいリソース グループを作成するか、既存のリソース グループを選択します。
+   4. **[場所]** を選択します。
+   5. **[Create Run As account]\(実行アカウントの作成\)** オプションは既定値の選択状態のままにします。
+   6. ダッシュボードでのクイック アクセス用のリンクを取得するには、**[ダッシュボードにピン留めする]** をオンにします。 **Create** をクリックしてください。
 
-    ![Automation 実行アカウントを作成する](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
+      ![Automation 実行アカウントを作成する](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
-    Automation アカウントが正常に作成されると、その旨が通知されます。
+      Automation アカウントが正常に作成されると、その旨が通知されます。
     
-    ![Automation アカウントの展開の通知](./media/storsimple-data-manager-job-using-automation/deployment-automation-account-notification1.png)
+      ![Automation アカウントの展開の通知](./media/storsimple-data-manager-job-using-automation/deployment-automation-account-notification1.png)
 
-    詳しくは、[実行アカウントの作成](../automation/automation-create-runas-account.md)に関するページをご覧ください。
+      詳しくは、[実行アカウントの作成](../automation/automation-create-runas-account.md)に関するページをご覧ください。
 
 3. 新しく作成されたアカウントで、**[共有リソース] > [モジュール]** に移動し、**[+ モジュールの追加]** をクリックします。
 

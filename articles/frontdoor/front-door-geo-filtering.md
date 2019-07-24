@@ -3,27 +3,27 @@ title: Azure Front Door Service のドメインに対する geo フィルタリ�
 description: この記事では、Azure Front Door Service の geo フィルタリング ポリシーについて説明します。
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: KumudD
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/09/2018
-ms.author: sharadag
-ms.openlocfilehash: e36253600dd8039940209cb5912cb2e4c2e0fbcf
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 03/21/2019
+ms.author: kumud;tyao
+ms.openlocfilehash: 1d6343705e8d27fb2d22827cf792de332861456e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988619"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007969"
 ---
-# <a name="geo-filtering-geographic-based-access-control-to-azure-front-door-service-frontends"></a>geo フィルタリング: Azure Front Door Service フロントエンドに対する地理ベースのアクセスの制御
+# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Azure Front Door のドメインに対する geo フィルタリングとは
 
-既定では、Azure Front Door Service は、要求を行っているユーザーの場所に関係なくユーザーの要求に応答します。 ただし、場合によっては、国ごとに Web アプリケーションへのアクセスを制限しなければならないことも考えられます。 Azure Front Door のアプリケーション レイヤー セキュリティでは、エンドポイントの特定のパスに対するカスタム保護ルールを使用してポリシーを定義することにより、指定した国からのアクセスを許可したりブロックしたりすることができます。 
+既定では、Azure Front Door Service は、要求を行っているユーザーの場所に関係なくユーザーの要求に応答します。 ただし、場合によっては、国ごとに Web アプリケーションへのアクセスを制限しなければならないことも考えられます。 Front Door の Web アプリケーション ファイアウォール (WAF) では、エンドポイントの特定のパスに対するカスタム アクセス ルールを使用してポリシーを定義することにより、指定した国からのアクセスを許可したりブロックしたりすることができます。 
 
-アプリケーション セキュリティ ポリシーには通常、一連のカスタム ルールが含まれています。 ルールは、一致条件、アクション、優先順位で構成されます。 一致条件には、一致の変数、演算子、一致の値を定義します。  geo フィルタリング ルールの場合、一致変数は REMOTE_ADDR で、演算子は GeoMatch、値は対象となる 2 文字の国別コードです。 GeoMatch 条件と REQUEST_URI 文字列の一致条件を組み合わせて、パス ベースの geo フィルタリング ルールを作成することができます。
+WAF ポリシーには通常、一連のカスタム ルールが含まれています。 ルールは、一致条件、アクション、優先順位で構成されます。 一致条件には、一致の変数、演算子、一致の値を定義します。  geo フィルタリング ルールの場合、一致変数は REMOTE_ADDR で、演算子は GeoMatch、値は対象となる 2 文字の国別コードです。 GeoMatch 条件と REQUEST_URI 文字列の一致条件を組み合わせて、パス ベースの geo フィルタリング ルールを作成することができます。
 
 Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](front-door-tutorial-geo-filtering.md) を使用するか、または Microsoft から提供されている[クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)を使用して構成できます。
 
@@ -31,7 +31,7 @@ Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](fr
 
 |国番号 | 国名 |
 | ----- | ----- |
-| AD | ロシア |
+| AD | アンドラ |
 | AE | アラブ首長国連邦|
 | AF | アフガニスタン|
 | AG | アンティグア・バーブーダ|
@@ -132,15 +132,15 @@ Front Door の geo フィルタリング ポリシーは、[Azure PowerShell](fr
 | LT | リトアニア|
 | LU | ルクセンブルク|
 | LV | ラトビア|
-| LY | リビア|
+| LY | リビア |
 | MA | モロッコ|
 | MD | モルドバ|
 | MG | マダガスカル|
-| MK | マケドニア|
+| MK | 北マケドニア|
 | ML | マリ|
 | MM | ミャンマー|
 | MN | モンゴル|
-| MO | マカオ|
+| MO | 中華人民共和国マカオ特別行政区|
 | MQ | マルティニーク|
 | MR | モーリタニア|
 | MT | マルタ|

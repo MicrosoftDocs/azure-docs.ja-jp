@@ -1,22 +1,23 @@
 ---
-title: Azure ExpressRoute Direct について | Microsoft Docs
-description: このページでは、ExpressRoute Direct (プレビュー) の概要を示します。
+title: ExpressRoute Direct について - Azure | Microsoft Docs
+description: このページでは、ExpressRoute Direct の概要を示します
 services: expressroute
-author: mialdrid
+author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/01/2018
-ms.author: mialdrid
-ms.openlocfilehash: 3b46f24edf10fee7001b35ffdd9fa218aa438e19
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.date: 02/25/2019
+ms.author: jaredro
+ms.custom: seodec18
+ms.openlocfilehash: fb9dc5116ba23d57c7f2fe543e734759e8bbcc7b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959679"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881602"
 ---
-# <a name="about-expressroute-direct-preview"></a>ExpressRoute Direct (プレビュー) について
+# <a name="about-expressroute-direct"></a>ExpressRoute Direct について
 
-ExpressRoute Direct では、世界中に戦略的に分散されたピアリングの場所で Microsoft のグローバル ネットワークに直接接続する機能がお客様に提供されます。 ExpressRoute Direct では、大規模なアクティブ/アクティブ接続をサポートするデュアル 100 Gbps 接続が提供されます。
+ExpressRoute Direct を使用すると、世界中に戦略的に分散されたピアリングの場所で Microsoft のグローバル ネットワークに直接接続できます。 ExpressRoute Direct では、大規模なアクティブ/アクティブ接続をサポートするデュアル 100 Gbps 接続が提供されます。
 
 以下に、ExpressRoute Direct で提供される主な機能の一部を示します。
 
@@ -24,14 +25,9 @@ ExpressRoute Direct では、世界中に戦略的に分散されたピアリン
 * 規制対象となっていて、専用の分離された接続が必要な、銀行、政府機関、小売などの業種に向けた物理的な分離性
 * 事業単位に基づいた回線配分の詳細な制御
 
-> [!IMPORTANT]
-> ExpressRoute Direct は現在プレビューの段階です。
->
-> このパブリック プレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
+## <a name="onboard-to-expressroute-direct"></a>ExpressRoute Direct へのオンボード
 
-## <a name="enroll-in-the-preview"></a>プレビューに登録する
-
-ExpressRoute Direct を利用する前に、まず、プレビューにサブスクリプションを登録する必要があります。 登録するには、以下の詳細を含め、サブスクリプション ID を記載して、<ExpressRouteDirect@microsoft.com> にメールを送信します。
+ExpressRoute Direct を利用する前に、まず、サブスクリプションを登録する必要があります。 登録するには、以下の詳細を含め、サブスクリプション ID を記載して、<ExpressRouteDirect@microsoft.com> にメールを送信します。
 
 * **ExpressRoute Direct** で実行しようとしているシナリオ
 * 場所設定。すべての場所の完全なリストについては、[パートナーとピアリングの場所](expressroute-locations-providers.md)に関するページを参照してください。
@@ -57,7 +53,7 @@ Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提
 
 ## <a name="circuit-skus"></a>回線 SKU
 
-ExpressRoute Direct では、Azure Storage やその他のビッグ データ サービスへの大量のデータ インジェスト シナリオがサポートされます。 また、ExpressRoute Direct の ExpressRoute 回線でも、**40 Gbps** および **100 Gbps** の回線 SKU がサポートされるようになりました。
+ExpressRoute Direct では、Azure Storage やその他のビッグ データ サービスへの大量のデータ インジェスト シナリオがサポートされます。 また、ExpressRoute Direct の ExpressRoute 回線でも、**40 Gbps** および **100 Gbps** の回線 SKU がサポートされるようになりました。 物理ポートのペアは **100 Gbps** のみであり、5 Gbps、10 Gbps、40 Gbps、100 Gbps の帯域幅で、任意の組み合わせで最大 200 Gbps まで複数の仮想回線を持つことができます。 
 
 ## <a name="vlan-tagging"></a>VLAN タグ付け
 
@@ -69,11 +65,11 @@ ExpressRoute Direct では、QinQ と Dot1Q の両方の VLAN タグ付けがサ
 
 ## <a name="workflow"></a>ワークフロー
 
-![workflow](./media/expressroute-erdirect-about/workflow1.png)
+[![ワークフロー](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
 
 ## <a name="sla"></a>SLA
 
-ExpressRoute Direct では、Microsoft グローバル ネットワークへのアクティブ/アクティブ冗長接続でも同じエンタープライズ レベルの SLA が提供されます。 ExpressRoute インフラストラクチャは冗長です。Microsoft グローバル ネットワークへの接続は冗長かつ多様であり、顧客要件に応じてスケーリングされます。 プレビュー期間中は、SLA はなく、非運用環境のワークロードの場合にのみ考慮する必要があります。
+ExpressRoute Direct では、Microsoft グローバル ネットワークへのアクティブ/アクティブ冗長接続でも同じエンタープライズ レベルの SLA が提供されます。 ExpressRoute インフラストラクチャは冗長です。Microsoft グローバル ネットワークへの接続は冗長かつ多様であり、顧客要件に応じてスケーリングされます。 
 
 ## <a name="next-steps"></a>次の手順
 

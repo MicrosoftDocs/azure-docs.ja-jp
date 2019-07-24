@@ -4,20 +4,21 @@ titleSuffix: Azure Cognitive Services
 description: QnA Maker は、モデル変更、音声例、公開、エンドポイント クエリからのデータ収集の最適な反復サイクルを学習します。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 04/05/2019
 ms.author: tulasim
-ms.openlocfilehash: ec5e9f92114e9bae1aaa840a1d02f5a42b2fd7bf
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18
+ms.openlocfilehash: 4acecb9d15f820ba092f36d8fa3ea204658d2dba
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857173"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276781"
 ---
-# <a name="knowledge-base-lifecycle"></a>ナレッジ ベースのライフサイクル
+# <a name="knowledge-base-lifecycle-in-qna-maker"></a>QnA Maker におけるナレッジ ベースのライフサイクル
 QnA Maker は、モデル変更、音声例、公開、エンドポイント クエリからのデータ収集の最適な反復サイクルを学習します。 
 
 ![作成サイクル](../media/qnamaker-concepts-lifecycle/kb-lifecycle.png)
@@ -26,9 +27,15 @@ QnA Maker は、モデル変更、音声例、公開、エンドポイント ク
 QnA Maker ナレッジ ベース (KB) エンドポイントでは、KB のコンテンツに基づいて、ユーザー クエリに対する最も一致する回答を提供します。 ナレッジ ベースの作成は、質問、回答、関連付けられているメタデータのコンテンツ リポジトリを設定する場合に行う 1 回限りの操作です。 ナレッジ ベースは、FAQ ページ、製品マニュアル、構造化された Q と A のペアなど、既存のコンテンツをクロールすることで作成できます。 [ナレッジ ベースの作成](../How-To/create-knowledge-base.md)方法を確認してください。
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>ナレッジ ベースのテストと更新
-編集または自動抽出を行ってナレッジ ベースにコンテンツを取り込んだら、テストすることができます。 テストは **[テスト]** パネルから行うことができます。その場合、一般的なユーザー クエリを入力し、返された応答が予期したものであり、その信頼度スコアが十分であることを確認します。 低い信頼度スコアを修正するために代わりの質問を追加できます。 また、クエリで "KB に一致するものが見つかりません" という既定の応答が返された場合、新しい回答を追加することもできます。 結果に満足するまで、このテストと更新の短いループが続きます。 [ナレッジ ベースのテスト](../How-To/test-knowledge-base.md)方法を確認してください。
 
-大規模な KB の場合は、generateAnswer API を使用して、テストを自動化することができます。 
+編集または自動抽出を行ってナレッジ ベースにコンテンツを取り込んだら、テストすることができます。 対話型のテストは、QnA Maker ポータル内で **[テスト]** パネルから実行できます。その際、一般的なユーザー クエリを入力し、正し応答と十分な信頼度スコアによって応答が返されたことを確認します。 
+
+* **低い信頼度スコアを修正するには**: 別の質問を追加します。 
+* **クエリから誤って[既定の応答](confidence-score.md#change-default-answer)が返された場合**: 正しい質問に新しい回答を追加します。 
+
+結果に満足するまで、このテストと更新の短いループが続きます。 [ナレッジ ベースのテスト](../How-To/test-knowledge-base.md)方法を確認してください。
+
+大規模な KB には、[generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) と、公開されているナレッジ ベースではなく `test` ナレッジ ベースを照会する `isTest=true` クエリ文字列パラメーターを利用して、自動化されたテストを使用します。 
 
 ## <a name="publish-the-knowledge-base"></a>ナレッジ ベースの公開
 ナレッジ ベースのテストが完了したら、それを公開することができます。 公開時に、テスト済みのナレッジ ベースの最新バージョンが、**公開済み**のナレッジ ベースを表す専用の Azure Search インデックスにプッシュされます。 また、アプリケーションやチャット ボットで呼び出すことができるエンドポイントが作成されます。
@@ -37,7 +44,7 @@ QnA Maker ナレッジ ベース (KB) エンドポイントでは、KB のコン
 
 これらのナレッジ ベースをそれぞれ別個にテスト対象とすることができます。 API を使用して、generateAnswer 呼び出しで `isTest=true` フラグを指定し、ナレッジ ベースのテスト バージョンを対象とすることができます。
 
-[ナレッジ ベースの公開](../How-To/publish-knowledge-base.md)方法を確認してください。
+[ナレッジ ベースの公開](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)方法を確認してください。
 
 ## <a name="monitor-usage"></a>使用状況の監視
 サービスのチャット ログを記録できるようにするには、[QnA Maker サービスを作成する](../How-To/set-up-qnamaker-service-azure.md)際に Application Insights を有効にする必要があります。

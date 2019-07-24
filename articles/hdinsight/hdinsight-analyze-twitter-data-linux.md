@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: d037c4fc65bc32ff183ddc7a8925cd2f51411ea0
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 600b18997ced80a63b7e86f66bc447ddd7932687
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034628"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310746"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>HDInsight で Apache Hive と Apache Hadoop を使用して Twitter データを分析する
 
-Apache Hive を使用して Twitter データを処理する方法を説明します。 結果として、特定の単語が含まれた最も多くのツイートを送信した Twitter ユーザーのリストが返されます。
+[Apache Hive](https://hive.apache.org/) を使用して Twitter データを処理する方法を説明します。 結果として、特定の単語が含まれた最も多くのツイートを送信した Twitter ユーザーのリストが返されます。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの手順は、HDInsight 3.6 でテストされています。
 >
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="get-the-data"></a>データを取得する
 
-Twitter では、REST API を使用して、JavaScript Object Notation (JSON) ドキュメントとして各ツイートのデータを取得できます。 [OAuth](http://oauth.net) が必要です。
+Twitter では、REST API を使用して、JavaScript Object Notation (JSON) ドキュメントとして各ツイートのデータを取得できます。 [OAuth](https://oauth.net) が必要です。
 
 ### <a name="create-a-twitter-application"></a>Twitter アプリケーションを作成する
 
@@ -39,9 +39,9 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
    | フィールド | 値 |
    |:--- |:--- |
-   | Name |MyHDInsightApp |
+   | 名前 |MyHDInsightApp |
    | 説明 |MyHDInsightApp |
-   | Web サイト |http://www.myhdinsightapp.com |
+   | Web サイト |https:\//www.myhdinsightapp.com |
 
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
 
@@ -59,7 +59,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
 次の Python コードは、Twitter から 10,000 個のツイートをダウンロードし、**tweets.txt** いう名前のファイルに保存します。
 
-> [!NOTE]
+> [!NOTE]  
 > Python が既にインストールされているので、次の手順は HDInsight クラスターで実行します。
 
 1. SSH を使用して HDInsight クラスターに接続します。
@@ -70,7 +70,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
     詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-3. 次のコマンドを使用して、[Tweepy](http://www.tweepy.org/)、[Progressbar](https://pypi.python.org/pypi/progressbar/2.2)、およびその他の必要なパッケージをインストールします。
+3. 次のコマンドを使用して、[Tweepy](https://www.tweepy.org/)、[Progressbar](https://pypi.python.org/pypi/progressbar/2.2)、およびその他の必要なパッケージをインストールします。
 
    ```bash
    sudo apt install python-dev libffi-dev libssl-dev
@@ -145,7 +145,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
    twitterStream.filter(track=["azure","cloud","hdinsight"])
    ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 次の項目のプレースホルダー テキストを、twitter アプリケーションからの情報に置き換えます。
     >
     > * `consumer_secret`
@@ -153,7 +153,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
     > * `access_token`
     > * `access_token_secret`
 
-    > [!TIP]
+    > [!TIP]  
     > よく使われているキーワードを追跡するには、最後の行のトピック フィルターを調整してください。 スクリプトの実行時によく使用されているキーワードを使用すると、高速にデータをキャプチャできます。
 
 6. **Ctrl + X** キーを押した後、**Y** キーを押してファイルを保存します。
@@ -166,7 +166,7 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
     進行状況のインジケーターが表示されます。 このインジケーターは、ツイートのダウンロードの進行状況を 100% になるまでカウントします。
 
-   > [!NOTE]
+   > [!NOTE]  
    > 進行が遅い場合は、フィルターを変更してトレンド トピックを追跡することをお勧めします。 フィルターしたトピックに関するツイートが多いほど、必要な 10000 ツイートをすばやく取得できます。
 
 ### <a name="upload-the-data"></a>データのアップロード
@@ -182,7 +182,7 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
 
 ## <a name="run-the-hiveql-job"></a>HiveQL ジョブの実行
 
-1. 次のコマンドを使用して、HiveQL ステートメントを含むファイルを作成します。
+1. 次のコマンドを使用して、[HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) ステートメントを含むファイルを作成します。
 
    ```bash
    nano twitter.hql
@@ -317,18 +317,18 @@ hdfs dfs -put tweets.txt /tutorials/twitter/data/tweets.txt
 
     このクエリでは、メッセージ テキストに **Azure** という単語が含まれた最大 10 個のツイートが返されます。
 
-    > [!NOTE]
+    > [!NOTE]  
     > `gettweets.py` スクリプトのフィルターを変更した場合は、**Azure** を、使用したフィルターのいずれかで置き換えてください。
 
 ## <a name="next-steps"></a>次の手順
 
-ここでは、構造化されていない JSON データ セットを構造化された Hive テーブルに変換する方法を学習しました。 HDInsight での Hive の詳細については、次のドキュメントを参照してください。
+ここでは、構造化されていない JSON データ セットを構造化された [Apache Hive](https://hive.apache.org/) テーブルに変換する方法を学習しました。 HDInsight での Hive の詳細については、次のドキュメントを参照してください。
 
 * [HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [HDInsight を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data-linux.md)
 
-[curl]: http://curl.haxx.se
-[curl-download]: http://curl.haxx.se/download.html
+[curl]: https://curl.haxx.se
+[curl-download]: https://curl.haxx.se/download.html
 
 [apache-hive-tutorial]: https://cwiki.apache.org/confluence/display/Hive/Tutorial
 

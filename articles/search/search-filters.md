@@ -1,5 +1,5 @@
 ---
-title: Azure Search のフィルター | Microsoft Docs
+title: インデックスでの検索結果の範囲指定用フィルター - Azure Search
 description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search で、ユーザーのセキュリティ ID、言語、地理的な場所、または数値でフィルター処理してクエリの検索結果を減らします。
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: 9f891dbe3f051f2fb5bfd242830f3c30abede487
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.custom: seodec2018
+ms.openlocfilehash: a9e8d2cbc067fd92208fac778ba17c58bdc7a5e4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32191368"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079147"
 ---
 # <a name="filters-in-azure-search"></a>Azure Search のフィルター 
 
@@ -31,17 +32,17 @@ ms.locfileid: "32191368"
 
 1. フィルターを使用して、インデックスのデータ値に基づいてインデックスをスライスします。 市区町村、住宅の種類、および設備が設定つれたスキーマがある場合、条件 (シアトル、コンドミニアム、ウォーターフロント) を満たすドキュメントを明示的に選択するフィルターを作成できます。 
 
-  同じ入力を使用したフルテキスト検索からは、多くの場合、似た結果が生成されますが、フィルターはインデックスのコンテンツに対してフィルター用語との完全一致を必須とするため、より正確です。 
+   同じ入力を使用したフルテキスト検索からは、多くの場合、似た結果が生成されますが、フィルターはインデックスのコンテンツに対してフィルター用語との完全一致を必須とするため、より正確です。 
 
 2. 検索エクスペリエンスにフィルター要件がある場合はフィルターを使用します。
 
- * [ファセット ナビゲーション](search-faceted-navigation.md)では、フィルターを使用して、ユーザーが選択したファセット カテゴリが渡されます。
- * geo 検索では、"近くを検索" アプリで現在地の座標を渡すためにフィルターを使用します。 
- * セキュリティ フィルターはセキュリティ識別子をフィルター条件として渡します。インデックスの一致は、ドキュメントに対するアクセス権のプロキシとして機能します。
+   * [ファセット ナビゲーション](search-faceted-navigation.md)では、フィルターを使用して、ユーザーが選択したファセット カテゴリが渡されます。
+   * geo 検索では、"近くを検索" アプリで現在地の座標を渡すためにフィルターを使用します。 
+   * セキュリティ フィルターはセキュリティ識別子をフィルター条件として渡します。インデックスの一致は、ドキュメントに対するアクセス権のプロキシとして機能します。
 
 3. 数値フィールドに対する検索条件が必要な場合は、フィルターを使用します。 
 
-  数値フィールドはドキュメントで取得可能で、検索結果に表示することができますが、個々に検索することはできません (フルテキスト検索のため)。 数値データに基づく選択条件が必要な場合は、フィルターを使用します。
+   数値フィールドはドキュメントで取得可能で、検索結果に表示することができますが、個々に検索することはできません (フルテキスト検索のため)。 数値データに基づく選択条件が必要な場合は、フィルターを使用します。
 
 ### <a name="alternative-methods-for-reducing-scope"></a>スコープを減らすための代替方法
 
@@ -95,7 +96,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ## <a name="filter-design-patterns"></a>フィルターの設計パターン
 
-フィルター シナリオのいくつかの設計パターン例を紹介します。 その他のアイデアについては、[「OData expression syntax」(OData 式の構文) > 「Examples」(例)](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#bkmk_examples) を参照してください。
+フィルター シナリオのいくつかの設計パターン例を紹介します。 その他のアイデアについては、[「OData expression syntax」(OData 式の構文) > 「Examples」(例)](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) を参照してください。
 
 + クエリ文字列がないスタンドアロンの **$filter**。関係があるドキュメントをフィルター式で完全に修飾できる場合に役立ちます。 クエリ文字列がない場合、字句または言語の分析、スコア付け、優先度付けはありません。 検索文字列が空である点に注目してください。
 
@@ -140,10 +141,8 @@ REST API では、フィルター可能の設定は既定で*オン*です。 �
 
 フィールドがフィルター可能ではなく、フィルター可能にしたい場合は、新しいフィールドを追加するか、既存のフィールドを再構築する必要があります。 フィールド定義を変更すると、インデックスの物理構造が変わります。 Azure Search の場合、クエリを高速にするために、すべての許可されているパスのインデックスが作成されます。そのため、フィールド定義が変更されると、データ構造の再構築が必要になります。 
 
-個々のフィールドの再構築は影響度の低い操作の可能性があります。既存のドキュメント キーと関連する値をインデックスに送信するマージ操作のみが必要で、各ドキュメントのその他の部分はそのままです。 再構築の要件が生じた場合は、次のリンクの手順を参照してください。
+個々のフィールドの再構築は影響度の低い操作の可能性があります。既存のドキュメント キーと関連する値をインデックスに送信するマージ操作のみが必要で、各ドキュメントのその他の部分はそのままです。 リビルドが必要になった場合には、[インデックス作成操作 (upload、merge、mergeOrUpload、delete)](search-what-is-data-import.md#indexing-actions) に関するセクションでオプションの一覧を参照してください。
 
- + [.NET SDK を利用するインデックス作成アクション](https://docs.microsoft.com/azure/search/search-import-data-dotnet#decide-which-indexing-action-to-use)
- + [REST API を利用するインデックス作成アクション](https://docs.microsoft.com/azure/search/search-import-data-rest-api#decide-which-indexing-action-to-use)
 
 ## <a name="text-filter-fundamentals"></a>テキスト フィルターの基礎
 
@@ -154,7 +153,7 @@ REST API では、フィルター可能の設定は既定で*オン*です。 �
 テキスト文字列は大文字と小文字が区別されます。 大文字の単語の小文字化処理はないため、`$filter=f eq 'Sunny day'` で "sunny day" は検索されません。
 
 
-| アプローチ | [説明] | 
+| アプローチ | 説明 | 
 |----------|-------------|
 | [search.in()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | 指定されたフィールドに文字列のコンマ区切りの一覧を提供する関数。 この文字列はフィルター条件で構成され、クエリのスコープ内にある各フィールドに適用されます。 <br/><br/>`search.in(f, ‘a, b, c’)` は意味的には `f eq ‘a’ or f eq ‘b’ or f eq ‘c’` と同じですが、値の一覧が大きい場合、実行ははるかに速くなります。<br/><br/>[セキュリティ フィルター](search-security-trimming-for-azure-search.md)や、指定されたフィールドの値に対してマッチング処理を行う未加工のテキストで構成されたるフィルターには、**search.in** 関数を使用することをお勧めします。 このアプローチは、速度を目的に設計されています。 数百から数千単位の値であれば、1 秒未満の応答時間を期待できます。 関数に渡すことができる項目数に明示的な制限はありませんが、指定する文字列数に比例して待機時間は長くなります。 | 
 | [search.ismatch()](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) | フルテキスト検索操作と、厳格なブール型フィルター操作を同じフィルター式に混在させることができる関数です。 1 つの要求で複数のクエリとフィルターを組み合わせることができます。 また、*contains* フィルターに使用して、大きな文字列内の一部の文字列をフィルターすることができます。 |  
@@ -191,7 +190,7 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=city gt 'Seattle'
 ```
 
-その他の例については、[「OData Filter Expression Syntax」(OData フィルター式の構文) > 「Examples」(例)](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#bkmk_examples) を参照してください。
+その他の例については、[「OData Filter Expression Syntax」(OData フィルター式の構文) > 「Examples」(例)](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) を参照してください。
 
 ## <a name="see-also"></a>関連項目
 

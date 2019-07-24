@@ -1,33 +1,28 @@
 ---
-title: Machine Learning でモデル結果を解釈する | Microsoft Docs
+title: モデル結果の解釈
+titleSuffix: Azure Machine Learning Studio
 description: モデルのスコア付け出力を使用して視覚化し、アルゴリズムに最適なパラメーター セットを選択する方法。
 services: machine-learning
-documentationcenter: ''
-author: heatherbshapiro
-ms.author: hshapiro
-manager: hjerez
-editor: cgronlun
-ms.assetid: 6230e5ab-a5c0-4c21-a061-47675ba3342c
 ms.service: machine-learning
-ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.subservice: studio
+ms.topic: conceptual
+author: xiaoharper
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: e62f4716a95a6c1840afde27361eeb756abff335
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: c46f22fb5c906aaffa48f39a0c643ca2a48573f9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837006"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877277"
 ---
-# <a name="interpret-model-results-in-azure-machine-learning"></a>Azure Machine Learning でモデル結果を解釈する
+# <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 内でモデル結果を解釈する
 このトピックでは、Azure Machine Learning Studio で予測結果を視覚化し、解釈する方法について説明します。 モデルのトレーニングと予測 (「モデルのスコア付け」) が完了したら、予測結果を理解し、解釈する必要があります。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
-Azure Machine Learning には、主に次の 4 種類の機械学習モデルがあります。
+
+Azure Machine Learning Studio には、主に次の 4 種類の機械学習モデルがあります。
 
 * 分類
 * クラスタリング
@@ -40,11 +35,11 @@ Azure Machine Learning には、主に次の 4 種類の機械学習モデルが
 * [クラスターへの割り当て][assign-to-clusters]モジュールはクラスタリングに使用します。
 * [スコア マッチ ボックス レコメンダー][score-matchbox-recommender]は推奨システムに使用します。
 
-このドキュメントでは、これらのモジュールの各予測結果を解釈する方法について説明します。 これらのモデルの概要については、[Azure Machine Learning でアルゴリズムを最適化するためにパラメーターを選択する方法](algorithm-parameters-optimize.md)に関するページをご覧ください。
+このドキュメントでは、これらのモジュールの各予測結果を解釈する方法について説明します。 これらのモデルの概要については、[Azure Machine Learning Studio でアルゴリズムを最適化するためにパラメーターを選択する方法](algorithm-parameters-optimize.md)に関するページをご覧ください。
 
-このトピックでは、モデルの評価ではなく、予測の解釈について説明します。 モデルを評価する方法の詳細については、「[Azure Machine Learning でモデルのパフォーマンスを評価する方法](evaluate-model-performance.md)」をご覧ください。
+このトピックでは、モデルの評価ではなく、予測の解釈について説明します。 モデルを評価する方法の詳細については、「[Azure Machine Learning Studio でモデルのパフォーマンスを評価する方法](evaluate-model-performance.md)」をご覧ください。
 
-Azure Machine Learning を初めて使用する場合は、手始めとして単純な実験を作成する方法について、[Azure Machine Learning Studio での簡単な実験の作成](create-experiment.md)に関するページをご覧ください。
+Azure Machine Learning Studio を初めて使用する場合は、手始めとして単純な実験を作成する方法について、[Azure Machine Learning Studio での簡単な実験の作成](create-experiment.md)に関するページをご覧ください。
 
 ## <a name="classification"></a>分類
 分類問題には 2 つのサブ カテゴリがあります。
@@ -52,12 +47,12 @@ Azure Machine Learning を初めて使用する場合は、手始めとして単
 * 2 つのクラス (2 クラスまたは二項分類) のみに関する問題
 * 3 つ以上のクラス (多クラス分類) に関する問題
 
-Azure Machine Learning には、これらの分類を処理するモジュールがそれぞれ用意されていますが、予測結果を解釈する方法に違いはほとんどありません。
+Azure Machine Learning Studio には、これらの分類を処理するモジュールがそれぞれ用意されていますが、予測結果を解釈する方法に違いはほとんどありません。
 
 ### <a name="two-class-classification"></a>2 クラス分類
 **実験例**
 
-2 クラス分類問題の例では、あやめの分類を使用します。 ここでのタスクは、特徴に基づいてあやめを分類することです。 Azure Machine Learning に用意されているあやめのデータセットは、最もよく利用されている[あやめデータセット](http://en.wikipedia.org/wiki/Iris_flower_data_set)のサブセットです。これに含まれているインスタンスは、2 種類の花の品種 (クラス 0 とクラス 1) のみです。 それぞれの花には 4 種類の特徴 (がくの長さ、がくの幅、花弁の長さ、花弁の幅) があります。
+2 クラス分類問題の例では、あやめの分類を使用します。 ここでのタスクは、特徴に基づいてあやめを分類することです。 Azure Machine Learning Studio に用意されているあやめのデータセットは、最もよく利用されている[あやめデータセット](https://en.wikipedia.org/wiki/Iris_flower_data_set)のサブセットです。これに含まれているインスタンスは、2 種類の花の品種 (クラス 0 とクラス 1) のみです。 それぞれの花には 4 種類の特徴 (がくの長さ、がくの幅、花弁の長さ、花弁の幅) があります。
 
 ![あやめの実験のスクリーンショット](./media/interpret-model-results/1.png)
 
@@ -79,7 +74,7 @@ Azure Machine Learning には、これらの分類を処理するモジュール
 
 **Web サービスの発行**
 
-予測結果を理解し、結果の妥当性が確認できたら、実験を Web サービスとして発行できます。発行すると、さまざまなアプリケーションでデプロイして呼び出し、新しいあやめに関するクラスの予測を取得できます。 トレーニング実験をスコア付け実験に変換し、Web サービスとして発行する方法については、[Azure Machine Learning Web サービスの発行](walkthrough-5-publish-web-service.md)に関するページをご覧ください。 この手順に従うと、図 3 で示すスコア付け実験を実行できます。
+予測結果を理解し、結果の妥当性が確認できたら、実験を Web サービスとして発行できます。発行すると、さまざまなアプリケーションでデプロイして呼び出し、新しいあやめに関するクラスの予測を取得できます。 トレーニング実験をスコア付け実験に変換し、Web サービスとして発行する方法については、[チュートリアル 3: 信用リスク モデルのデプロイ](tutorial-part3-credit-risk-deploy.md)を参照してください。 この手順に従うと、図 3 で示すスコア付け実験を実行できます。
 
 ![スコア付け実験のスクリーンショット](./media/interpret-model-results/3.png)
 
@@ -102,7 +97,7 @@ Web サービスを実行し、テスト インスタンスの特徴の値を入
 ### <a name="multi-class-classification"></a>多クラス分類
 **実験例**
 
-この実験では、多クラス分類の例として、文字認識タスクを実行します。 分類子は、手書きの画像から抽出されたいくつかの手書き属性値に基づいて、特定の文字 (クラス) を予測しようとします。
+この実験では、多クラス分類の例として、文字認識タスクを実行します。 分類器は、手書きの画像から抽出されたいくつかの手書き属性値に基づいて、特定の文字 (クラス) を予測しようとします。
 
 ![文字の認識の例](./media/interpret-model-results/5_1.png)
 
@@ -231,7 +226,7 @@ Web サービスを実行して返された結果は、図 19 のようになり
 * 顧客の特徴データ
 * レストラン特徴データ
 
-Azure Machine Learning の[マッチボックス レコメンダーのトレーニング][train-matchbox-recommender] モジュールを使用し、次のようなことを処理できます。
+Azure Machine Learning Studio の[マッチボックス レコメンダーのトレーニング][train-matchbox-recommender] モジュールを使用し、次のようなことを処理できます。
 
 * 特定のユーザーと項目の評価を予測する
 * 特定のユーザーに項目を推奨する
@@ -242,7 +237,7 @@ Azure Machine Learning の[マッチボックス レコメンダーのトレー�
 
 ![マッチボックス レコメンダー](./media/interpret-model-results/19_1.png)
 
-レコメンダー システム用の一般的な Azure Machine Learning の実験は、図 20 のようになります。 これらのレコメンダー システム モジュールの使用方法については、「[Train Matchbox Recommender (マッチボックス レコメンダーのトレーニング)][train-matchbox-recommender]」と「[Score Matchbox Recommender (スコア マッチボックス レコメンダーのスコア付け)][score-matchbox-recommender]」をご覧ください。
+レコメンダー システム用の一般的な Azure Machine Learning Studio の実験は、図 20 のようになります。 これらのレコメンダー システム モジュールの使用方法については、「[Train Matchbox Recommender (マッチボックス レコメンダーのトレーニング)][train-matchbox-recommender]」と「[Score Matchbox Recommender (スコア マッチボックス レコメンダーのスコア付け)][score-matchbox-recommender]」をご覧ください。
 
 ![レコメンダー システムの実験](./media/interpret-model-results/20.png)
 

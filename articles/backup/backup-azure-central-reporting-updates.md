@@ -2,24 +2,18 @@
 title: Azure Backup Central Reporting コンテンツ パックの更新
 description: Power BI での Azure Backup コンテンツ パックに対する更新に関する情報です
 services: backup
-documentationcenter: ''
-author: adigan
-manager: shivamg
-editor: ''
-ms.assetid: 59df5bec-d959-457d-8731-7b20f7f1013e
+author: kasinh
+manager: vvithal
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 07/24/2018
-ms.author: adigan;
-ms.openlocfilehash: 73a5e8126ebe6223d790a5b58db7bd5d04b5350f
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.topic: conceptual
+ms.date: 01/30/2019
+ms.author: kasinh
+ms.openlocfilehash: 87bc7ed3bb59266484858f534080fa87a7230981
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267312"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55293963"
 ---
 # <a name="update-the-azure-backup-central-reporting-content-pack"></a>Azure Backup Central Reporting コンテンツ パックの更新 
 
@@ -42,30 +36,30 @@ Azure Backup コンテンツ パックに付属している事前構成済みの
 
 ### <a name="summary"></a>まとめ
    
-![まとめ](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Summary.png)
+![まとめ](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Summary.png)
 
 ### <a name="billing"></a>課金
 
-![課金](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Billing.png)
+![課金](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Billing.png)
 
 ### <a name="compliance"></a>コンプライアンス
 
-![コンプライアンス](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Compliance.png)
+![コンプライアンス](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Compliance.png)
 
 ### <a name="storage"></a>Storage
 
-![Storage](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Storage.png)
+![Storage](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Storage.png)
 
 ### <a name="backup-items"></a>[バックアップ項目]
-![[バックアップ項目]](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-BackupItem.png)
+![[バックアップ項目]](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-BackupItem.png)
 
 ### <a name="alerts"></a>アラート
 
-![アラート](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Alerts.png)
+![アラート](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Alerts.png)
 
 ### <a name="jobs"></a>[ジョブ]
 
-![[ジョブ]](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Jobs.png)
+![[ジョブ]](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Jobs.png)
     
 
 ## <a name="next-steps"></a>次の手順

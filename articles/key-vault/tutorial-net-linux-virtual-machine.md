@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - .NET で Azure Linux 仮想マシンを使用して Azure Key Vault を使用する方法 | Microsoft Docs
+title: チュートリアル - .NET で Azure Linux 仮想マシンを使用して Azure Key Vault を使用する方法 - Azure Key Vault | Microsoft Docs
 description: 'チュートリアル: キー コンテナーからシークレットを読み取るように ASP.Net Core アプリケーションを構成する'
 services: key-vault
 documentationcenter: ''
@@ -9,21 +9,21 @@ ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: key-vault
 ms.topic: tutorial
-ms.date: 09/05/2018
+ms.date: 12/21/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 928339a245525933ae142a5d73137ce699cf1f7c
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 354ffb14eb95e7f09256f337ffea069cff14b226
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712332"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306563"
 ---
-# <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-net"></a>チュートリアル: .NET で Azure Linux 仮想マシンを使用して Azure Key Vault を使用する方法
+# <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-net"></a>チュートリアル:.NET で Azure Linux 仮想マシンを使用して Azure Key Vault を使用する方法
 
 Azure Key Vault は、API キーや、アプリケーション、サービス、IT リソースへのアクセスに必要なデータベース接続文字列などのシークレットを保護するのに役立ちます。
 
-このチュートリアルでは、Azure リソースのマネージド ID を使用して Azure Key Vault から情報を読み取るようにコンソール アプリケーションを設定するために必要な手順を学習します。 このチュートリアルは、[Azure Web Apps](../app-service/app-service-web-overview.md) に基づいています。 ここでは、次の操作を行う方法について学習します。
+このチュートリアルでは、Azure リソースのマネージド ID を使用して Azure Key Vault から情報を読み取るようにコンソール アプリケーションを設定するために必要な手順を学習します。 ここでは、次の操作を行う方法について学習します。
 
 > [!div class="checklist"]
 > * Key Vault を作成します。
@@ -34,7 +34,7 @@ Azure Key Vault は、API キーや、アプリケーション、サービス、
 > * キー コンテナーからデータを読み取るために必要な権限をコンソール アプリケーションに付与する。
 > * キー コンテナーからシークレットを取得する
 
-先に進む前に、[基本概念](key-vault-whatis.md#basic-concepts)を確認してください。
+先に進む前に、[基本概念](key-vault-whatis.md#basic-concepts)をご確認ください。
 
 ## <a name="prerequisites"></a>前提条件
 * すべてのプラットフォーム:
@@ -45,6 +45,7 @@ Azure Key Vault は、API キーや、アプリケーション、サービス、
 このチュートリアルでは、マネージド サービス ID を使用します
 
 ## <a name="what-is-managed-service-identity-and-how-does-it-work"></a>マネージド サービス ID とは何か、およびそのしくみ
+
 本題に入る前に、MSI について理解しましょう。 Azure Key Vault を使用すると、資格情報を安全に保存することができます。したがって、コードには資格情報を含めませんが、資格情報を取得するために Azure Key Vault に対して認証する必要があります。 そして、Key Vault に対して認証するには資格情報が必要になります。 これは、古典的なブートストラップ問題です。 MSI は、Azure と Azure AD を利用して "ブートストラップ ID" を提供します。これにより、物事がはるかに簡単になります。
 
 そのしくみについて説明しましょう。 Virtual Machines、App Service、Functions などの Azure サービスに対して MSI を有効にすると、Azure によってサービス インスタンスの[サービス プリンシパル](key-vault-whatis.md#basic-concepts)が Azure Active Directory に作成され、サービス プリンシパルの資格情報がサービスのインスタンスに挿入されます。 
@@ -54,9 +55,9 @@ Azure Key Vault は、API キーや、アプリケーション、サービス、
 次に、ユーザーのコードが、Azure リソース上で利用可能なローカル メタデータ サービスを呼び出してアクセス トークンを取得します。
 コードは、ローカルの MSI_ENDPOINT から取得したアクセス トークンを使用して、Azure Key Vault サービスに対して認証します。 
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure CLI を使用して Azure にログインするには、次のように入力します。
+Azure CLI を使用して Azure にサインインするには、次のように入力します。
 
 ```azurecli
 az login
@@ -80,9 +81,9 @@ az group create --name "<YourResourceGroupName>" --location "West US"
 
 次に、前の手順で作成したリソース グループにキー コンテナーを作成します。 次の情報を指定します。
 
-* キー コンテナー名: 名前の文字数は 3 から 24 文字です。使用できる文字は 0-9、a-z、A-Z、および - のみです。
+* キー コンテナー名:名前の文字数は 3 から 24 文字です。使用できる文字は 0-9、a-z、A-Z、および - のみです。
 * リソース グループ名。
-* 場所: **米国西部**。
+* 場所:**米国西部**。
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -101,7 +102,7 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンを作成する
 
-[az vm create](/cli/azure/vm#az_vm_create) コマンドで VM を作成します。
+[az vm create](/cli/azure/vm) コマンドで VM を作成します。
 
 次の例では、*myVM* という名前の VM を作成し、*azureuser* という名前のユーザー アカウントを追加します。 SSH キーを自動的に生成するために `--generate-ssh-keys` パラメーターが使用され、キーは既定のキーの場所 (*~/.ssh*) に配置されます。 代わりに特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。
 
@@ -132,6 +133,7 @@ VM とサポートするリソースを作成するには数分かかります�
 作成した VM からの出力に含まれる実際の `publicIpAddress` を記録しておいてください。 このアドレスは、次の手順で VM にアクセスするために使います。
 
 ## <a name="assign-identity-to-virtual-machine"></a>仮想マシンに ID を割り当てる
+
 この手順では、次のコマンドを実行して、仮想マシンに対するシステム割り当て ID を作成しています
 
 ```
@@ -148,21 +150,23 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 ```
 
 ## <a name="give-vm-identity-permission-to-key-vault"></a>Key Vault に VM ID のアクセス許可を付与する
+
 ここで、次のコマンドを実行して、上記の手順で作成した ID のアクセス許可を Key Vault に付与することができます
 
 ```
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-## <a name="login-to-the-virtual-machine"></a>仮想マシンにログインする
+## <a name="sign-in-to-the-virtual-machine"></a>仮想マシンへのサインイン
 
-ここで、ターミナルを使用して仮想マシンにログインします
+ここで、ターミナルを使用して仮想マシンにサインインします
 
 ```
 ssh azureuser@<PublicIpAddress>
 ```
 
 ## <a name="install-dot-net-core-on-linux"></a>Linux に .NET Core をインストールする
+
 ### <a name="register-the-microsoft-product-key-as-trusted-run-the-following-two-commands"></a>Microsoft プロダクト キーを信頼済みとして登録します。 次の 2 つのコマンドを実行します
 
 ```
@@ -171,14 +175,8 @@ sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 ```
 
 ### <a name="set-up-desired-version-host-package-feed-based-on-operating-system"></a>オペレーティング システムに基づいて、目的のバージョンのホスト パッケージのフィードを設定します
+
 ```
-# Ubuntu 17.10
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-artful-prod artful main" > /etc/apt/sources.list.d/dotnetdev.list'
-sudo apt-get update
- 
-# Ubuntu 17.04
-sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-zesty-prod zesty main" > /etc/apt/sources.list.d/dotnetdev.list'
-sudo apt-get update
  
 # Ubuntu 16.04 / Linux Mint 18
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
@@ -209,6 +207,7 @@ dotnet run
 ```
 
 ## <a name="edit-console-app"></a>コンソール アプリを編集する
+
 Program.cs ファイルを開き、次のパッケージを追加します
 ```
 using System;
@@ -218,8 +217,10 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
-クラス ファイルを変更して、次のコードを含めます。 これは 2 段階のプロセスです。 
-1. VM 上でローカル MSI エンドポイントからトークンを取得し、次に Azure Active Directory からトークンを取得します
+
+クラス ファイルを変更して、次のコードを含めます。 これは 2 段階のプロセスです。
+
+1. VM 上のローカル MSI エンドポイントからトークンをフェッチし、次にその VM が Azure Active Directory からトークンをフェッチします
 2. トークンを Key Vault に渡し、シークレットを取得します 
 
 ```
@@ -268,7 +269,6 @@ using Newtonsoft.Json.Linq;
 ```
 
 上記のコードは、Azure Linux 仮想マシンで Azure Key Vault を操作する方法を示しています。 
-
 
 ## <a name="next-steps"></a>次の手順
 

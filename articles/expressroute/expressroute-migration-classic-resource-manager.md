@@ -1,37 +1,32 @@
 ---
-title: 'クラシックから Resource Manager への ExpressRoute 回線および関連する仮想ネットワークの移行: PowerShell | Microsoft Docs'
-description: このページでは、回線の移行後に、関連する仮想ネットワークを Resource Manager に移行する方法について説明します。
-documentationcenter: na
+title: '仮想ネットワークをクラシックから Resource Manager に移行する - ExpressRoute: Azure: PowerShell | Microsoft Docs'
+description: このページでは、ExpressRoute 回線の移行後に、そこに関連付けられた仮想ネットワークを Resource Manager に移行する方法について説明します。
 services: expressroute
 author: ganesr
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/06/2017
+ms.topic: conceptual
+ms.date: 01/17/2019
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 336f68308f7d4b4dd3c7476a4fabd793939e9e85
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: seodec18
+ms.openlocfilehash: 2e33454ac0ee97385386043706f4b8b73090f57a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23013207"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112553"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>クラシックから Resource Manager への ExpressRoute 回線および関連する仮想ネットワークの移行
 
-この記事では、Azure ExpressRoute 回線の移行後に、ExpressRoute 回線に関連する仮想ネットワークをクラシック デプロイメント モデルから Azure Resource Manager デプロイメント モデルに移行する方法について説明します。 
-
+この記事では、ExpressRoute 回線の移行後に、そこに関連付けられた仮想ネットワークをクラシック デプロイ モデルから Azure Resource Manager デプロイ モデルに移行する方法について説明します。 
 
 ## <a name="before-you-begin"></a>開始する前に
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 * Azure PowerShell モジュールの最新バージョンがあることを確認します。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 * 構成を開始する前に、必ず、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、および[ワークフロー](expressroute-workflows.md)を確認してください。
 * [クラシックから Resource Manager への ExpressRoute 回線の移行](expressroute-move.md)に関する記事に記載されている情報を確認してください。 制限および制約事項について完全に理解していることを確認します。
-* 回路がクラシック デプロイメント モデルで完全に動作できることを確認します。
+* 回路がクラシック デプロイ モデルで完全に動作できることを確認します。
 * Resource Manager デプロイ モデルで作成したリソース グループがあることを確認します。
 * 次のリソースの移行に関するドキュメントを確認します。
 
@@ -42,10 +37,11 @@ ms.locfileid: "23013207"
 
 ## <a name="supported-and-unsupported-scenarios"></a>サポートされているシナリオとサポートされていないシナリオ
 
-* ExpressRoute 回線は、ダウンタイムなしでクラシック環境から Resource Manager 環境に移行できます。 ExpressRoute 回線は、ダウンタイムなしでクラシック環境から Resource Manager 環境にすべて移動できます。 [PowerShell を使用してクラシック デプロイメント モデルから Resource Manager デプロイメント モデルに ExpressRoute 回線を移行する方法](expressroute-howto-move-arm.md)に関するページの手順に従ってください。 これは、仮想ネットワークに接続されているリソースを移動するための前提条件です。
+* ExpressRoute 回線は、ダウンタイムなしでクラシック環境から Resource Manager 環境に移行できます。 ExpressRoute 回線は、ダウンタイムなしでクラシック環境から Resource Manager 環境にすべて移動できます。 [PowerShell を使用してクラシック デプロイ モデルから Resource Manager デプロイ モデルに ExpressRoute 回線を移行する方法](expressroute-howto-move-arm.md)に関するページの手順に従ってください。 これは、仮想ネットワークに接続されているリソースを移動するための前提条件です。
 * 同じサブスクリプションの ExpressRoute 回線に接続されている仮想ネットワーク、ゲートウェイ、および仮想ネットワーク内の関連するデプロイは、ダウンタイムなしに Resource Manager 環境に移行できます。 後で説明する手順に従って、仮想ネットワーク、ゲートウェイ、および仮想ネットワーク内にデプロイされた仮想マシンなどのリソースを移行できます。 これらのリソースを移行する前に、仮想ネットワークが正しく構成されていることを確認する必要があります。 
 * ExpressRoute 回線と異なるサブスクリプションの仮想ネットワーク、ゲートウェイ、および仮想ネットワーク内の関連するデプロイを移行する場合は、ダウンタイムが伴います。 このドキュメントの最後のセクションに、これらのリソースを移行するための手順を説明します。
 * ExpressRoute ゲートウェイと VPN Gateway の両方を含んだ仮想ネットワークは移行できません。
+* ExpressRoute 回線のサブスクリプション間の移行はサポートされません。 詳細については、「[移動不可能なサービス](../azure-resource-manager/resource-group-move-resources.md#services-that-cannot-be-moved)」を参照してください。
 
 ## <a name="move-an-expressroute-circuit-from-classic-to-resource-manager"></a>クラシックから Resource Manager への ExpressRoute 回線の移動
 ExpressRoute 回線に接続されているリソースを移行する前に、ExpressRoute 回線をクラシックから Resource Manager 環境に移動する必要があります。 このタスクを行うには、次の記事を参照してください。
@@ -67,26 +63,26 @@ ExpressRoute 回線に接続されているリソースを移行する前に、E
 2. 仮想ネットワークが移行用に適切に準備されていることを確認します。
 3. リソースの移行用にサブスクリプションを登録します。 リソースの移行用にサブスクリプションを登録するには、次の PowerShell スニペットを使用します。
 
-  ```powershell 
-  Select-AzureRmSubscription -SubscriptionName <Your Subscription Name>
-  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
-  Get-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
-  ```
+   ```powershell 
+   Select-AzSubscription -SubscriptionName <Your Subscription Name>
+   Register-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
+   Get-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
+   ```
 4. 検証、準備、および移行を行います。 仮想ネットワークを移動するには、次の PowerShell スニペットを使用します。
 
-  ```powershell
-  Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName
-  Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
-  Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
-  ```
+   ```powershell
+   Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName
+   Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
+   Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
+   ```
 
-  次の PowerShell コマンドレットを実行すると、移行を中止できます。
+   次の PowerShell コマンドレットを実行すると、移行を中止できます。
 
-  ```powershell
-  Move-AzureVirtualNetwork -Abort $vnetName
-  ```
+   ```powershell
+   Move-AzureVirtualNetwork -Abort $vnetName
+   ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
 * [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 * [FAQ: プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)

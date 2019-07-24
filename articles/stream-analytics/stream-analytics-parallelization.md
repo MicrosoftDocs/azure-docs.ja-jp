@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 83fbebc07be3a61d7fd54953f842a320a537a7ac
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 0b68819ba032d7655433aadd30fe2852941096ce
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985014"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000548"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Azure Stream Analytics でのクエリの並列処理の活用
 この記事では、Azure Stream Analytics で並列処理を活用する方法を示します。 入力パーティションの構成と分析クエリ定義のチューニングによって Stream Analytics ジョブをスケールする方法について説明します。
@@ -41,17 +41,18 @@ Azure Stream Analytics を使用するときは、出力でパーティション
 -   Azure Functions
 -   Azure テーブル
 -   Blob Storage (パーティション キーを明示的に設定できます)
--   CosmosDB (パーティション キーを明示的に設定する必要があります)
--   EventHub (パーティション キーを明示的に設定する必要があります)
+-   Cosmos DB (パーティション キーを明示的に設定する必要があります)
+-   Event Hubs (パーティション キーを明示的に設定する必要があります)
 -   IoT Hub (パーティション キーを明示的に設定する必要があります)
 -   Service Bus
+- オプションのパーティション分割を使用した SQL および SQL Data Warehouse: 詳細については、[Azure SQL Database への出力](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf)に関するページを参照してください。
 
-PowerBI、SQL、SQL Data-Warehouse の出力では、パーティション分割はサポートされません。 ただし、[このセクション](#multi-step-query-with-different-partition-by-values)の説明に従って入力をパーティション分割することはできます 
+Power BI では、パーティション分割がサポートされていません。 ただし、[このセクション](#multi-step-query-with-different-partition-by-values)の説明に従って入力をパーティション分割することはできます 
 
 パーティションの詳細については、次の記事をご覧ください。
 
 * [Event Hubs の機能の概要](../event-hubs/event-hubs-features.md#partitions)
-* [データのパーティション分割](https://docs.microsoft.com/azure/architecture/best-practices/data-partitioning#partitioning-azure-blob-storage)
+* [データのパーティション分割](https://docs.microsoft.com/azure/architecture/best-practices/data-partitioning)
 
 
 ## <a name="embarrassingly-parallel-jobs"></a>驚異的並列ジョブ
@@ -75,27 +76,31 @@ PowerBI、SQL、SQL Data-Warehouse の出力では、パーティション分割
 
 ### <a name="simple-query"></a>単純なクエリ
 
-* 入力: 8 個のパーティションがあるイベント ハブ
-* 出力: 8 個のパーティションがあるイベント ハブ
+* 次の内容を入力します。8 個のパーティションがあるイベント ハブ
+* 出力:8 個のパーティションがあるイベント ハブ
 
 クエリ:
 
+```SQL
     SELECT TollBoothId
     FROM Input1 Partition By PartitionId
     WHERE TollBoothId > 100
+```
 
 このクエリは単純なフィルターです。 そのため、イベント ハブに送信される入力のパーティション分割を気にする必要はありません。 このクエリには **PARTITION BY PartitionId** が含まれているので、前述の要件 2. を満たしています。 出力については、パーティション キーが **PartitionId** に設定されたイベント ハブ出力をジョブで構成する必要があります。 最後に、入力パーティションと出力パーティションの数が同じであることを確認します。
 
 ### <a name="query-with-a-grouping-key"></a>グループ化キーが含まれたクエリ
 
-* 入力: 8 個のパーティションがあるイベント ハブ
-* 出力: Blob Storage
+* 次の内容を入力します。8 個のパーティションがあるイベント ハブ
+* 出力:BLOB ストレージ
 
 クエリ:
 
+```SQL
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+```
 
 このクエリにはグループ化キーが含まれています。 そのため、グループ化されたイベントは、同じイベント ハブ パーティションに送信される必要があります。 この例では TollBoothID でグループ化するので、イベントがイベント ハブに送信されるときに、パーティション キーとして TollBoothID が使用されることを確認する必要があります。 その後 ASA で、**PARTITION BY PartitionId** を使用して、このパーティション構成から継承し、完全な並列処理を有効にすることができます。 出力は Blob Storage であるため、要件 4. に記載されているように、パーティション キー値の構成を気にする必要はありません。
 
@@ -104,23 +109,24 @@ PowerBI、SQL、SQL Data-Warehouse の出力では、パーティション分割
 前のセクションでは、驚異的並列のシナリオをいくつか紹介しました。 このセクションでは、驚異的並列のすべての要件を満たしているわけではないシナリオについて説明します。 
 
 ### <a name="mismatched-partition-count"></a>パーティション数の不一致
-* 入力: 8 個のパーティションがあるイベント ハブ
-* 出力: 32 個のパーティションがあるイベント ハブ
+* 次の内容を入力します。8 個のパーティションがあるイベント ハブ
+* 出力:32 個のパーティションがあるイベント ハブ
 
 この場合、クエリの内容は問題ではありません。 入力パーティション数と出力パーティション数が一致しない場合、トポロジは驚異的並列ではありません。ただし、一部のレベルまたは並列処理は利用できます。
 
 ### <a name="query-using-non-partitioned-output"></a>パーティション分割されていない出力を使用したクエリ
-* 入力: 8 個のパーティションがあるイベント ハブ
-* 出力: PowerBI
+* 次の内容を入力します。8 個のパーティションがあるイベント ハブ
+* 出力:Power BI
 
-現在、PowerBI 出力ではパーティション分割をサポートしていません。 そのため、このシナリオは驚異的並列ではありません。
+現在、Power BI 出力ではパーティション分割がサポートされていません。 そのため、このシナリオは驚異的並列ではありません。
 
 ### <a name="multi-step-query-with-different-partition-by-values"></a>PARTITION BY 値が異なる複数ステップのクエリ
-* 入力: 8 個のパーティションがあるイベント ハブ
-* 出力: 8 個のパーティションがあるイベント ハブ
+* 次の内容を入力します。8 個のパーティションがあるイベント ハブ
+* 出力:8 個のパーティションがあるイベント ハブ
 
 クエリ:
 
+```SQL
     WITH Step1 AS (
     SELECT COUNT(*) AS Count, TollBoothId, PartitionId
     FROM Input1 Partition By PartitionId
@@ -130,6 +136,7 @@ PowerBI、SQL、SQL Data-Warehouse の出力では、パーティション分割
     SELECT SUM(Count) AS Count, TollBoothId
     FROM Step1 Partition By TollBoothId
     GROUP BY TumblingWindow(minute, 3), TollBoothId
+```
 
 ご覧のように、2 番目のステップは **TollBoothId** をパーティション キーとして使用しています。 このステップは最初のステップと異なるので、シャッフルを実行する必要があります。 
 
@@ -143,6 +150,7 @@ Stream Analytics ジョブで使用できるストリーミング ユニット�
 
 クエリ:
 
+```SQL
     WITH Step1 AS (
         SELECT COUNT(*) AS Count, TollBoothId
         FROM Input1 Partition By PartitionId
@@ -151,6 +159,7 @@ Stream Analytics ジョブで使用できるストリーミング ユニット�
     SELECT SUM(Count) AS Count, TollBoothId
     FROM Step1
     GROUP BY TumblingWindow(minute,3), TollBoothId
+```
 
 このクエリには 2 つのステップがあります。
 
@@ -182,20 +191,25 @@ Stream Analytics ジョブで使用できるストリーミング ユニット�
 
 次のクエリでは、3 つのブースがある料金所を 3 分間に通過する車の台数を計算します。 このクエリは、最大 6 個の SU にスケールできます。
 
+```SQL
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+```
 
 クエリに使用する SU を増やすには、入力データ ストリームとクエリの両方をパーティション分割する必要があります。 データ ストリーム パーティションが 3 に設定されているので、変更を加えた次のクエリを最大 18 個の SU にスケールできます。
 
+```SQL
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+```
 
 クエリがパーティション分割されている場合、入力イベントは処理されて個々のパーティション グループに集計されます。 出力イベントは、それぞれのグループに対しても生成されます。 **GROUP BY** フィールドが入力データ ストリームのパーティション キーでない場合、パーティション分割を実行すると予期しない結果になることがあります。 たとえば、前のクエリの **TollBoothId** フィールドは **Input1** のパーティション キーではありません。 そのため、TollBooth 1 のデータが複数のパーティションに分散される可能性があります。
 
 **Input1** の各パーティションは、Stream Analytics によって個別に処理されます。 その結果、同じタンブリング ウィンドウで同じ料金所ブースの複数の通過台数レコードが作成されます。 入力パーティション キーを変更できない場合は、次の例のように、パーティション分割されていないステップを追加してパーティション間の値を集計すると、この問題を解決できます。
 
+```SQL
     WITH Step1 AS (
         SELECT COUNT(*) AS Count, TollBoothId
         FROM Input1 Partition By PartitionId
@@ -205,6 +219,7 @@ Stream Analytics ジョブで使用できるストリーミング ユニット�
     SELECT SUM(Count) AS Count, TollBoothId
     FROM Step1
     GROUP BY TumblingWindow(minute, 3), TollBoothId
+```
 
 このクエリは 24 個の SU にスケールできます。
 

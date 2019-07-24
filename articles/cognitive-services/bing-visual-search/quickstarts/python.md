@@ -1,27 +1,27 @@
 ---
-title: 'クイック スタート: 視覚検索クエリを作成する (Python) - Bing Visual Search'
+title: クイック スタート:Bing Visual Search REST API と Python を使用して画像に関する分析情報を取得する
 titleSuffix: Azure Cognitive Services
-description: Bing Visual Search API にイメージをアップロードし、そのイメージに関する分析情報を取得する方法を示します。
+description: Bing Visual Search API に画像をアップロードし、画像に関する分析情報を取得する方法について説明します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 5/16/2018
+ms.date: 4/02/2019
 ms.author: scottwhi
-ms.openlocfilehash: 3a0d92e42eed097e244118a60ec0a4223c9cedf5
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 7ec37b4c3bdeb924b3e35dbcb5d07a478611f631
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52440943"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047128"
 ---
-# <a name="quickstart-your-first-bing-visual-search-query-in-python"></a>クイック スタート: Python での最初の Bing Visual Search クエリ
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>クイック スタート:Bing Visual Search REST API と Python を使用して画像に関する分析情報を取得する
 
-Bing Visual Search API は、提供された画像に関する情報を返します。 イメージを提供するには、イメージの URL または分析情報トークンを使用するか、イメージをアップロードします。 これらのオプションの詳細については、「[Bing Visual Search API とは](../overview.md)」を参照してください。 この記事では、イメージのアップロードについて説明します。 よく知られているランドマークの写真を撮影し、それに関する情報を取得するモバイル シナリオで、イメージのアップロードは便利であると考えられます。 たとえば、分析情報にはランドマークに関する雑学が含まれることがあります。 
+このクイック スタートを使用すると、Bing Visual Search API への最初の呼び出しを行い、結果を表示することができます。 この Python アプリケーションは、API に画像をアップロードし、返された情報を表示するものです。 このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
-ローカル イメージをアップロードする場合は、次に示すフォーム データを POST の本文に含める必要があります。 フォーム データには Content-Disposition ヘッダーが含まれる必要があります。 その `name` パラメーターには "image" を設定する必要があり、`filename` パラメーターには任意の文字列を設定できます。 フォームの内容は、イメージのバイナリです。 アップロードできるイメージの最大サイズは、1 MB です。 
+ローカルの画像をアップロードする際には、フォーム データに `Content-Disposition` ヘッダーが含まれている必要があります。 その `name` パラメーターは "image" に設定する必要があります。`filename` パラメーターは任意の文字列に設定できます。 フォームの内容には、画像のバイナリ データが含まれます。 アップロードできる画像の最大サイズは、1 MB です。
 
 ```
 --boundary_1234-abcd
@@ -32,85 +32,66 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 --boundary_1234-abcd--
 ```
 
-この記事では、Bing Visual Search API 要求を送信し、JSON 検索結果を表示するシンプルなコンソール アプリケーションを紹介します。 このアプリケーションは Python で記述されていますが、API は、HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある RESTful Web サービスです。 
-
 ## <a name="prerequisites"></a>前提条件
 
-このコードを実行するには、[Python 3](https://www.python.org/) が必要です。
+* [Python 3.x](https://www.python.org/)
 
-このクイック スタートでは、「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/)」に記載されている S9 価格帯のサブスクリプションを開始する必要があります。 
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-Azure portal でサブスクリプションを開始するには、次の手順に従います。
-1. Azure portal の一番上の "`Search resources, services, and docs`" と表示されているテキスト ボックスに「BingSearchV7」と入力します。  
-2. ドロップダウン リストの [Marketplace] から `Bing Search v7` を選択します。
-3. 新しいリソースの名前を [`Name`] に入力します。
-4. `Pay-As-You-Go` サブスクリプションを選択します。
-5. `S9` 価格レベルを選択します。
-6. [`Enable`] をクリックしてサブスクリプションを開始します。
+## <a name="initialize-the-application"></a>アプリケーションを初期化する
 
-## <a name="running-the-walkthrough"></a>チュートリアルの実行
+1. 好みの IDE またはエディターで新しい Python ファイルを作成し、次の `import` ステートメントを追加します。
 
-このアプリケーションを実行するには、次の手順に従います。
+    ```python
+    import requests, json
+    ```
 
-1. 普段ご利用の IDE またはエディターで新しい Python プロジェクトを作成します。
-2. visualsearch.py という名前のファイルを作成し、このクイック スタートにあるコードを追加します。
-3. `SUBSCRIPTION_KEY` 値を、サブスクリプション キーに置き換えます。
-3. `imagePath` 値を、アップロードするイメージのパスに置き換えます。
-4. プログラムを実行します。
+2. サブスクリプション キー、エンドポイント、およびアップロードしている画像へのパスのための変数を作成します。
 
+    ```python
 
+    BASE_URI = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch'
+    SUBSCRIPTION_KEY = 'your-subscription-key'
+    imagePath = 'your-image-path'
+    ```
 
-次のコードは、Python 内のマルチパート フォーム データを使用してメッセージを送信する方法を示しています。
+3. 要求のヘッダー情報を保持するディクショナリ オブジェクトを作成します。 次に示すように、文字列 `Ocp-Apim-Subscription-Key` にサブスクリプション キーをバインドします。
 
-```python
-"""Bing Visual Search upload image example"""
+    ```python
+    HEADERS = {'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY}
+    ```
 
-# Download and install Python at https://www.python.org/
-# Run the following in a command console window
-# pip3 install requests
+4. 画像を格納するための別のディクショナリを作成します。この画像は、要求を送信するときに開かれてアップロードされます。
 
-import requests, json
+    ```python
+    file = {'image' : ('myfile', open(imagePath, 'rb'))}
+    ```
 
+## <a name="parse-the-json-response"></a>JSON 応答を解析します
 
-BASE_URI = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch'
+1. `print_json()` という名前のメソッドを作成します。このメソッドは、API 応答を取り込み、JSON を出力します。
 
-SUBSCRIPTION_KEY = '<yoursubscriptionkeygoeshere>'
+    ```python
+    def print_json(obj):
+        """Print the object as json"""
+        print(json.dumps(obj, sort_keys=True, indent=2, separators=(',', ': ')))
+    ```
 
-HEADERS = {'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY}
+## <a name="send-the-request"></a>要求を送信する
 
-imagePath = '<pathtoyourimagetouploadgoeshere>'
+1. `requests.post()` を使用して、要求を Bing Visual Search API に送信します。 エンドポイント、ヘッダー、およびファイル情報の文字列を含めます。 `print_json()` を使用して `response.json()` を出力します
 
-file = {'image' : ('myfile', open(imagePath, 'rb'))}
-
-def main():
-    
+    ```python
     try:
         response = requests.post(BASE_URI, headers=HEADERS, files=file)
         response.raise_for_status()
         print_json(response.json())
-
+    
     except Exception as ex:
         raise ex
-
-
-def print_json(obj):
-    """Print the object as json"""
-    print(json.dumps(obj, sort_keys=True, indent=2, separators=(',', ': ')))
-
-
-
-# Main execution
-if __name__ == '__main__':
-    main()
-```
-
+    ```
 
 ## <a name="next-steps"></a>次の手順
 
-[分析情報トークンを使用してイメージに関する分析情報を取得する](../use-insights-token.md)  
-[Bing Visual Search 画像アップロードのチュートリアル](../tutorial-visual-search-image-upload.md)
-[Bing Visual Search シングルページ アプリのチュートリアル](../tutorial-bing-visual-search-single-page-app.md)  
-[Bing Visual Search の概要](../overview.md)  
-[試してみる](https://aka.ms/bingvisualsearchtryforfree)  
-[無料試用版のアクセス キーを入手する](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
-[Bing Visual Search API のリファレンス](https://aka.ms/bingvisualsearchreferencedoc)
+> [!div class="nextstepaction"]
+> [Visual Search のシングルページ Web アプリを作成する](../tutorial-bing-visual-search-single-page-app.md)

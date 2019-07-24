@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 10/03/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: f2890fa4d8260485fa76478571aa66abe1efd35e
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: b8d57a2bbaa53a0291dc9c05ab234c3238322a71
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515405"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605446"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure Functions の概要  
 Azure Functions は、小規模なコード ("関数") をクラウドで手軽に実行できるソリューションです。 目の前の問題に必要なコードだけを記述すればよく、アプリケーション全体や、コードを実行するインフラストラクチャのことを考える必要がありません。 Functions は開発の生産性をさらに向上させることができ、またユーザーは C#、F#、Node.js、Java、PHP などの任意の開発言語を使用できます。 コードが実行された時間に対してだけ料金を支払えばよく、必要に応じてスケールできます。 Azure Functions を使用すると、Microsoft Azure で[サーバー不要](https://azure.microsoft.com/solutions/serverless/)のアプリケーションを作成できます。
@@ -33,7 +33,7 @@ Functions の主要な機能を次に示します。
 * **独自の依存関係を使用** - Azure Functions では NuGet と NPM をサポートしているので、お気に入りのライブラリを使用できます。  
 * **セキュリティの統合** - Azure Active Directory、Facebook、Google、Twitter、Microsoft アカウントなどの OAuth プロバイダーにより、HTTP によってトリガーされる関数を保護できます。  
 * **簡単な手順で統合** - Azure サービスと、サービスとしてのソフトウェア (SaaS) のプランを簡単に活用できます。 例については、「[統合](#integrations)」セクションをご覧ください。  
-* **柔軟な開発** - 関数をポータル内で直接作成することも、継続的インテグレーションを設定し、[GitHub](../app-service/scripts/app-service-cli-continuous-deployment-github.md) や [Azure DevOps Services](../app-service/scripts/app-service-cli-continuous-deployment-vsts.md) などの [サポート対象開発ツール](../app-service/app-service-deploy-local-git.md)を使ってコードをデプロイすることもできます。  
+* **柔軟な開発** - 関数をポータル内で直接作成することも、継続的インテグレーションを設定し、[GitHub](../app-service/scripts/cli-continuous-deployment-github.md) や [Azure DevOps Services](../app-service/scripts/cli-continuous-deployment-vsts.md) などの [サポート対象開発ツール](../app-service/deploy-local-git.md)を使ってコードをデプロイすることもできます。  
 * **オープン ソース** - Azure Functions ランタイムはオープン ソースであり、 [GitHub](https://github.com/azure/azure-webjobs-sdk-script)で提供されています。  
 
 ## <a name="what-can-i-do-with-functions"></a>Functions でできること
@@ -82,6 +82,6 @@ Azure Functions には、2 種類の価格プランがあります。 ニーズ�
   関数をテストするための各種ツールと手法について説明します。
 * [Azure Functions のスケーリング方法](functions-scale.md)  
   Azure Functions で利用できるサービス プラン (従量課金ホスティング プランを含む) と、適切なプランを選択する方法について説明します。 
-* [Azure App Service とは](../app-service/app-service-web-overview.md)  
+* [Azure App Service とは](../app-service/overview.md)  
   Azure Functions では、デプロイ、環境変数、診断などの主要な機能に Azure App Service を活用しています。 
 

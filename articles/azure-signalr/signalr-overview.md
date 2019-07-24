@@ -1,23 +1,17 @@
 ---
-title: Azure SignalR とは | Microsoft Docs
+title: Azure SignalR サービスとは
 description: Azure SignalR サービスの概要。
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
 ms.service: signalr
-ms.devlang: na
 ms.topic: overview
-ms.workload: tbd
-ms.date: 09/13/2018
+ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: a159833936ec4762213f063e235fa4f9237af95b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 198eb0ff6c9f8de311cc2d39ba8fb7c8b6ed3a11
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951102"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57552089"
 ---
 # <a name="what-is-azure-signalr-service"></a>Azure SignalR サービスとは
 
@@ -25,7 +19,7 @@ Azure SignalR サービスは、リアルタイムの Web 機能を HTTP 経由�
 
 この記事では、Azure SignalR サービスの概要について説明します。
 
-## <a name="what-is-azure-signalr-service-used-for"></a>Azure SignalR サービスの用途 
+## <a name="what-is-azure-signalr-service-used-for"></a>Azure SignalR サービスの用途
 
 リアルタイムのコンテンツ更新を必要とするアプリケーションの種類は多数あります。 以下に、Azure SignalR サービスを使用するのに適した候補例を示します。
 
@@ -42,7 +36,6 @@ SignalR はさらに、サーバーが、すべての接続、または特定の
 
 現在、Azure SignalR サービスを使用する方法は 3 つあります。
 
-- **[ASP.NET Core SignalR アプリをスケールする](signalr-overview-scale-aspnet-core.md)** - Azure SignalR サービスを ASP.NET Core SignalR アプリケーションと統合し、数十万の接続までスケール アウトします。
-- **[サーバーレスのリアルタイム アプリを構築する](signalr-overview-azure-functions.md)** - Azure Functions の Azure SignalR サービスとの統合を使用して、JavaScript、C#、Java などの言語でサーバーレスのリアルタイム アプリケーションを構築します。
+- **[ASP.NET Core SignalR アプリをスケールする](signalr-concept-scale-aspnet-core.md)** - Azure SignalR サービスを ASP.NET Core SignalR アプリケーションと統合し、数十万の接続までスケール アウトします。
+- **[サーバーレスのリアルタイム アプリを構築する](signalr-concept-azure-functions.md)** - Azure Functions の Azure SignalR サービスとの統合を使用して、JavaScript、C#、Java などの言語でサーバーレスのリアルタイム アプリケーションを構築します。
 - **[REST API を介してサーバーからクライアントにメッセージを送信する](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md)** - Azure SignalR サービスには、アプリケーションが、SignalR サービスで接続されているクライアントに、REST 対応の任意のプログラミング言語でメッセージを投稿できるようにする REST API が用意されています。
-

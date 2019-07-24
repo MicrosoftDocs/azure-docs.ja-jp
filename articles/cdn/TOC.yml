@@ -1,180 +1,193 @@
+items:
 - name: CDN のドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Azure CDN とは
-      href: cdn-overview.md
-    - name: 製品の特徴の比較
-      href: cdn-features.md
+  - name: Azure CDN とは
+    href: cdn-overview.md
+  - name: 製品の特徴の比較
+    href: cdn-features.md
 - name: クイック スタート
   items:
-    - name: プロファイルとエンドポイントの作成
-      href: cdn-create-new-endpoint.md
-    - name: ストレージ アカウントの統合
-      href: cdn-create-a-storage-account-with-cdn.md
+  - name: プロファイルとエンドポイントの作成
+    href: cdn-create-new-endpoint.md
+  - name: ストレージ アカウントの統合
+    href: cdn-create-a-storage-account-with-cdn.md
+  - name: Azure Resource Manager テンプレートを使用したプロファイルの作成
+    href: create-profile-resource-manager-template.md
 - name: チュートリアル
   items:
-    - name: Web アプリに Azure CDN を追加する
-      href: cdn-add-to-web-app.md
-    - name: カスタム ドメインを使用している BLOB に HTTPS 経由でアクセスする
-      href: cdn-storage-custom-domain-https.md
-    - name: カスタム ドメインの追加
-      href: cdn-map-content-to-custom-domain.md
-    - name: カスタム ドメインで HTTPS を構成する
-      href: cdn-custom-ssl.md
-    - name: キャッシュ規則の設定
-      href: cdn-caching-rules-tutorial.md
+  - name: Web アプリに Azure CDN を追加する
+    href: cdn-add-to-web-app.md
+  - name: カスタム ドメインを使用している BLOB に HTTPS 経由でアクセスする
+    href: cdn-storage-custom-domain-https.md
+  - name: カスタム ドメインの追加
+    href: cdn-map-content-to-custom-domain.md
+  - name: カスタム ドメインで HTTPS を構成する
+    href: cdn-custom-ssl.md
+  - name: キャッシュ規則の設定
+    href: cdn-caching-rules-tutorial.md
 - name: サンプル
   items:
-    - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?service=cdn'
+  - name: コード サンプル
+    href: https://azure.microsoft.com/resources/samples/?service=cdn
 - name: 概念
   items:
-    - name: キャッシュのしくみ
-      href: cdn-how-caching-works.md
-    - name: 中国でのコンテンツ配信
-      href: cdn-china-delivery.md
-    - name: HTTP/2 のサポート
-      href: cdn-http2.md
-    - name: Verizon POP リストの取得
-      href: cdn-pop-list-api.md
-    - name: Standard Verizon から Premium Verizon への移行
-      href: cdn-migrate.md
+  - name: キャッシュのしくみ
+    href: cdn-how-caching-works.md
+  - name: 中国でのコンテンツ配信
+    href: cdn-china-delivery.md
+  - name: HTTP/2 のサポート
+    href: cdn-http2.md
+  - name: Verizon POP リストの取得
+    href: cdn-pop-list-api.md
+  - name: Standard Verizon から Premium Verizon への移行
+    href: cdn-migrate.md
+  - name: DDoS Protection
+    href: cdn-ddos.md
 - name: ハウツー ガイド
   items:
-    - name: コンテンツの最適化
-      href: cdn-optimization-overview.md
+  - name: コンテンツの最適化
+    href: cdn-optimization-overview.md
+    items:
+    - name: 大きなファイルの最適化
+      href: cdn-large-file-optimization.md
+    - name: メディア ストリーミングの最適化
+      href: cdn-media-streaming-optimization.md
+    - name: 動的サイト アクセラレーション
+      href: cdn-dynamic-site-acceleration.md
+  - name: 管理
+    items:
+    - name: エンドポイントの作成
+      href: cdn-create-endpoint-how-to.md
+    - name: Azure PowerShell を使用して管理する
+      href: cdn-manage-powershell.md
+    - name: 国ごとにアクセスを制限する
+      href: cdn-restrict-access-by-country.md
+    - name: ファイル圧縮によるパフォーマンスの向上
+      href: cdn-improve-performance.md
+    - name: キャッシュ動作の制御
       items:
-        - name: 大きなファイルの最適化
-          href: cdn-large-file-optimization.md
-        - name: メディア ストリーミングの最適化
-          href: cdn-media-streaming-optimization.md
-        - name: 動的サイト アクセラレーション
-          href: cdn-dynamic-site-acceleration.md
-    - name: '[管理]'
+      - name: キャッシュ規則によるキャッシュ動作の制御
+        href: cdn-caching-rules.md
+      - name: クエリ文字列によるコンテンツのキャッシュ
+        items:
+        - name: Standard レベル
+          href: cdn-query-string.md
+        - name: Premium レベル
+          href: cdn-query-string-premium.md
+      - name: キャッシュしたアセットを消去する
+        href: cdn-purge-endpoint.md
+      - name: キャッシュしたアセットを事前に読み込む
+        href: cdn-preload-endpoint.md
+    - name: Time to Live を構成する
       items:
-        - name: エンドポイントの作成
-          href: cdn-create-endpoint-how-to.md
-        - name: Azure PowerShell を使用して管理する
-          href: cdn-manage-powershell.md
-        - name: 国ごとにアクセスを制限する
-          href: cdn-restrict-access-by-country.md
-        - name: ファイル圧縮によるパフォーマンスの向上
-          href: cdn-improve-performance.md
-        - name: キャッシュ動作の制御
-          items:
-            - name: キャッシュ規則によるキャッシュ動作の制御
-              href: cdn-caching-rules.md
-            - name: クエリ文字列によるコンテンツのキャッシュ
-              items:
-                - name: Standard レベル
-                  href: cdn-query-string.md
-                - name: Premium レベル
-                  href: cdn-query-string-premium.md
-            - name: キャッシュしたアセットを消去する
-              href: cdn-purge-endpoint.md
-            - name: キャッシュしたアセットを事前に読み込む
-              href: cdn-preload-endpoint.md
-        - name: Time to Live を構成する
-          items:
-            - name: Azure Web コンテンツ
-              href: cdn-manage-expiration-of-cloud-service-content.md
-            - name: Azure BLOB ストレージ
-              href: cdn-manage-expiration-of-blob-content.md
-        - name: 認証トークン
-          href: cdn-token-auth.md
-        - name: SAS ストレージのサポート
-          href: cdn-sas-storage-support.md
-        - name: クロス オリジン リソース共有
-          href: cdn-cors.md
-        - name: リソースの監視
-          href: cdn-resource-health.md
-        - name: 規則に従って動作をオーバーライドする
-          href: cdn-rules-engine.md
-        - name: Traffic Manager の使用
-          href: cdn-traffic-manager.md
-    - name: 分析
-      href: cdn-log-analysis.md
+      - name: Azure Web コンテンツ
+        href: cdn-manage-expiration-of-cloud-service-content.md
+      - name: Azure BLOB ストレージ
+        href: cdn-manage-expiration-of-blob-content.md
+    - name: 認証トークン
+      href: cdn-token-auth.md
+    - name: SAS ストレージのサポート
+      href: cdn-sas-storage-support.md
+    - name: クロス オリジン リソース共有
+      href: cdn-cors.md
+    - name: リソースの監視
+      href: cdn-resource-health.md
+    - name: 規則に従って動作をオーバーライドする
+      href: cdn-rules-engine.md
+    - name: Traffic Manager の使用
+      href: cdn-traffic-manager.md
+  - name: 分析
+    href: cdn-log-analysis.md
+    items:
+    - name: Azure Diagnostics ログ
+      href: cdn-azure-diagnostic-logs.md
+    - name: Azure CDN from Verizon の分析ツール
       items:
-        - name: Azure 診断ログ
-          href: cdn-azure-diagnostic-logs.md
-        - name: Azure CDN from Verizon の分析ツール
-          items:
-            - name: Verizon からのコア レポート
-              href: cdn-analyze-usage-patterns.md
-            - name: Verizon からのカスタム レポート
-              href: cdn-verizon-custom-reports.md
-        - name: Azure CDN Premium from Verizon の分析ツール
-          items:
-            - name: 詳細な HTTP レポートを生成する
-              href: cdn-advanced-http-reports.md
-            - name: リアルタイム統計情報を表示する
-              href: cdn-real-time-stats.md
-            - name: エッジ ノードのパフォーマンスを分析する
-              href: cdn-edge-performance.md
-            - name: リアルタイムでアラートを受け取る
-              href: cdn-real-time-alerts.md
-    - name: 開発
+      - name: Verizon からのコア レポート
+        href: cdn-analyze-usage-patterns.md
+      - name: Verizon からのカスタム レポート
+        href: cdn-verizon-custom-reports.md
+    - name: Azure CDN Premium from Verizon の分析ツール
       items:
-        - name: .NET
-          href: cdn-app-dev-net.md
-        - name: Node.js
-          href: cdn-app-dev-node.md
-    - name: トラブルシューティング
-      items:
-        - name: 404 状態
-          href: cdn-troubleshoot-endpoint.md
-        - name: ファイル圧縮
-          href: cdn-troubleshoot-compression.md
-        - name: 許可された証明機関
-          href: cdn-troubleshoot-allowed-ca.md
+      - name: 詳細な HTTP レポートを生成する
+        href: cdn-advanced-http-reports.md
+      - name: リアルタイム統計情報を表示する
+        href: cdn-real-time-stats.md
+      - name: エッジ ノードのパフォーマンスを分析する
+        href: cdn-edge-performance.md
+      - name: リアルタイムでアラートを受け取る
+        href: cdn-real-time-alerts.md
+  - name: 開発
+    items:
+    - name: .NET
+      href: cdn-app-dev-net.md
+    - name: Node.js
+      href: cdn-app-dev-node.md
+  - name: トラブルシューティング
+    items:
+    - name: 404 状態
+      href: cdn-troubleshoot-endpoint.md
+    - name: ファイル圧縮
+      href: cdn-troubleshoot-compression.md
+    - name: 許可された証明機関
+      href: cdn-troubleshoot-allowed-ca.md
 - name: リファレンス
   items:
-    - name: ルール エンジンのリファレンス
-      href: cdn-rules-engine-reference.md
-      items:
-        - name: ルール エンジンの条件式
-          href: cdn-rules-engine-reference-conditional-expressions.md
-        - name: ルール エンジンの一致条件
-          href: cdn-rules-engine-reference-match-conditions.md
-        - name: ルール エンジンの機能
-          href: cdn-rules-engine-reference-features.md
-        - name: HTTP 変数
-          href: cdn-http-variables.md
-    - name: Verizon 固有 HTTP ヘッダー
-      href: cdn-verizon-http-headers.md
-      items:
-        - name: X-EC-Debug ヘッダー
-          href: cdn-http-debug-headers.md
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.cdn
-    - name: .NET
-      href: /dotnet/api/microsoft.azure.management.cdn
-    - name: Java
-      href: /java/api/com.microsoft.azure.management.cdn
-    - name: REST ()
-      href: /rest/api/cdn/
+  - name: ルール エンジンのリファレンス
+    href: cdn-rules-engine-reference.md
+    items:
+    - name: ルール エンジンの条件式
+      href: cdn-rules-engine-reference-conditional-expressions.md
+    - name: ルール エンジンの一致条件
+      href: cdn-rules-engine-reference-match-conditions.md
+    - name: ルール エンジンの機能
+      href: cdn-rules-engine-reference-features.md
+    - name: HTTP 変数
+      href: cdn-http-variables.md
+  - name: Verizon 固有 HTTP ヘッダー
+    href: cdn-verizon-http-headers.md
+    items:
+    - name: X-EC-Debug ヘッダー
+      href: cdn-http-debug-headers.md
+  - name: Azure PowerShell
+    href: /powershell/module/az.cdn
+  - name: .NET
+    href: /dotnet/api/microsoft.azure.management.cdn
+  - name: Java
+    href: /java/api/com.microsoft.azure.management.cdn
+  - name: REST
+    href: /rest/api/cdn/
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.cdn/allversions
 - name: リソース
   items:
-    - name: Azure CDN の POP の場所
-      items:
-        - name: リージョン別の POP の場所
-          href: cdn-pop-locations.md
-        - name: 略称別の POP の場所
-          href: cdn-pop-abbreviations.md
-    - name: Azure CDN での課金について
-      href: cdn-billing.md
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=azurecdn'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/cdn/'
-    - name: 料金計算ツール
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: サービスの更新情報
-      href: 'https://azure.microsoft.com/updates/?product=cdn'
-    - name: スタック オーバーフロー
-      href: 'http://stackoverflow.com/questions/tagged/azure-cdn'
-    - name: ビデオ
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=cdn'
+  - name: Azure CDN の POP の場所
+    items:
+    - name: リージョン別の POP の場所
+      href: cdn-pop-locations.md
+    - name: 略称別の POP の場所
+      href: cdn-pop-abbreviations.md
+  - name: Azure CDN での課金について
+    href: cdn-billing.md
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+  - name: MSDN フォーラム
+    href: https://social.msdn.microsoft.com/Forums/home?forum=azurecdn
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/cdn/
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: サービスの更新情報
+    href: https://azure.microsoft.com/updates/?product=cdn
+  - name: スタック オーバーフロー
+    href: https://stackoverflow.com/questions/tagged/azure-cdn
+  - name: ビデオ
+    href: https://azure.microsoft.com/documentation/videos/index/?services=cdn
+ms.openlocfilehash: ae458ff96b209af011d01738211fd9baf2da21b4
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664609"

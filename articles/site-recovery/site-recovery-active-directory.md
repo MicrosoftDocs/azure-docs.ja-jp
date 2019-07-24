@@ -7,14 +7,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: f96ed8659fc2f49b89199a813f9fab9d5f4af5a1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 58e360bb355c7faf9608b00dd65b14f27aca4367
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232173"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59790545"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Active Directory と DNS のディザスター リカバリーを設定する
 
@@ -31,10 +31,10 @@ SharePoint、Dynamics AX、SAP などのエンタープライズ アプリケー
 
 ## <a name="replicate-the-domain-controller"></a>ドメイン コントローラーのレプリケート
 
-- ドメイン コントローラーまたは DNS をホストする少なくとも 1 つの VM で、[Site Recovery レプリケーション](#enable-protection-using-site-recovery)をセットアップする必要があります。
-- 環境に[複数のドメイン コントローラー](#environment-with-multiple-domain-controllers)がある場合は、ターゲット サイトで[追加のドメイン コントローラー](#protect-active-directory-with-active-directory-replication)をセットアップする必要もあります。 追加のドメイン コントローラーは、Azure またはオンプレミス データセンターに配置できます。
+- ドメイン コントローラーまたは DNS をホストする少なくとも 1 つの VM で、Site Recovery レプリケーションをセットアップする必要があります。
+- 環境に複数のドメイン コントローラーがある場合は、ターゲット サイトで追加のドメイン コントローラーをセットアップする必要もあります。 追加のドメイン コントローラーは、Azure またはオンプレミス データセンターに配置できます。
 - アプリケーションの数が少なく、ドメイン コントローラーが 1 つしかない場合は、サイト全体をまとめてフェールオーバーするとよいでしょう。 このケースでは、Site Recovery を使用して、ターゲット サイト (Azure またはセカンダリ オンプレミス データセンター) にドメイン コントローラーをレプリケートすることをお勧めします。 レプリケートされた同じドメイン コントローラーまたは DNS 仮想マシンを、[テスト フェールオーバー](#test-failover-considerations)にも使用できます。
-- - 環境に多数のアプリケーションと複数のドメイン コントローラーがある場合、または少数のアプリケーションを一度にフェールオーバーすることを検討している場合は、Site Recovery でドメイン コントローラーの仮想マシンをレプリケートすることに加え、[追加のドメイン コントローラー](#protect-active-directory-with-active-directory-replication)をターゲット サイト (Azure またはセカンダリ オンプレミス データセンター) にセットアップすることをお勧めします。 [テスト フェールオーバー](#test-failover-considerations)には、Site Recovery によってレプリケートされたドメイン コントローラーを使用できます。 フェールオーバーには、ターゲット サイト上の追加のドメイン コントローラーを使用できます。
+- - 環境に多数のアプリケーションと複数のドメイン コントローラーがある場合、または少数のアプリケーションを一度にフェールオーバーすることを検討している場合は、Site Recovery でドメイン コントローラーの仮想マシンをレプリケートすることに加え、追加のドメイン コントローラーをターゲット サイト (Azure またはセカンダリ オンプレミス データセンター) にセットアップすることをお勧めします。 [テスト フェールオーバー](#test-failover-considerations)には、Site Recovery によってレプリケートされたドメイン コントローラーを使用できます。 フェールオーバーには、ターゲット サイト上の追加のドメイン コントローラーを使用できます。
 
 ## <a name="enable-protection-with-site-recovery"></a>Site Recovery による保護の有効化
 
@@ -106,9 +106,9 @@ Site Recovery を使用してレプリケートされたドメイン コント�
 Windows Server 2012 以降では、[Active Directory Domain Services (AD DS)に追加のセーフガードが組み込まれています](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)。 土台となるハイパーバイザー プラットフォームが **VM-GenerationID** に対応している場合、これらのセーフガードによって USN ロールバックから仮想ドメイン コントローラーを保護できます。 Azure は **VM-GenerationID** に対応しています。 そのため、Azure 仮想マシン上で Windows Server 2012 以降を実行しているドメイン コントローラーには、これらの追加のセーフガードが備わっています。
 
 
-**VM-GenerationID** がリセットされると、AD DS データベースの **InvocationID** 値もリセットされます。 さらに、RID プールが破棄され、SYSVOL が権限なしとしてマークされます。 詳細については、[Active Directory Domain Services の仮想化の概要](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)に関するページと、「[Safely virtualizing DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/)」(DFSR の安全な仮想化) をご覧ください。
+**VM-GenerationID** がリセットされると、AD DS データベースの **InvocationID** 値もリセットされます。 さらに、RID プールが破棄され、sysvol フォルダーが権限なしとしてマークされます。 詳細については、[Active Directory Domain Services の仮想化の概要](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)に関するページと、「[Safely virtualizing DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/)」(DFSR の安全な仮想化) をご覧ください。
 
-Azure にフェールオーバーすると、**VM-GenerationID** がリセットされることがあります。 **VM-GenerationID** がリセットされると、Azure でのドメイン コントローラー仮想マシンの起動時に追加のセーフガードがトリガーされます。 これが原因で、ユーザーがドメイン コントローラー仮想マシンにログインできるまでに*かなり時間がかかる*可能性があります。
+Azure にフェールオーバーすると、**VM-GenerationID** がリセットされることがあります。 **VM-GenerationID** がリセットされると、Azure でのドメイン コントローラー仮想マシンの起動時に追加のセーフガードがトリガーされます。 これが原因で、ユーザーがドメイン コントローラー仮想マシンにサインインできるまでに "*かなり時間がかかる*" 可能性があります。
 
 このドメイン コントローラーはテスト フェールオーバー専用であるため、仮想化のセーフガードは必要ありません。 ドメイン コントローラー仮想マシンの **VM-GenerationID** が変更されないようにするには、オンプレミス ドメイン コントローラーで次の DWORD の値を **4** に変更します。
 
@@ -128,11 +128,11 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
 
     ![呼び出し ID の変更](./media/site-recovery-active-directory/Event1109.png)
 
-* SYSVOL 共有と NETLOGON 共有が使用不可
+* Sysvol フォルダー共有と NETLOGON 共有が使用不可。
 
-    ![SYSVOL 共有](./media/site-recovery-active-directory/sysvolshare.png)
+    ![Sysvol フォルダーの共有](./media/site-recovery-active-directory/sysvolshare.png)
 
-    ![NtFrs SYSVOL](./media/site-recovery-active-directory/Event13565.png)
+    ![NtFrs sysvol フォルダー](./media/site-recovery-active-directory/Event13565.png)
 
 * DFSR データベースが削除
 
@@ -146,7 +146,7 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
 >
 >
 
-1. コマンド プロンプトで次のコマンドを実行して、SYSVOL フォルダーと NETLOGON フォルダーが共有されているかどうかを確認します。
+1. コマンド プロンプトで次のコマンドを実行して、sysvol フォルダーと NETLOGON フォルダーが共有されているかどうかを確認します。
 
     `NET SHARE`
 
@@ -165,8 +165,8 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
 1. ドメイン コントローラーの Authoritative Restore を実行します。 次の情報を考慮してください。
     * [FRS レプリケーション](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/)は推奨されませんが、FRS レプリケーションを使用している場合は、次の手順に従って Authoritative Restore を行います。 プロセスについては、「[BurFlags レジストリ キーを使用してファイル レプリケーション サービスのレプリカ セットを再初期化する](https://support.microsoft.com/kb/290762)」をご覧ください。
 
-        BurFlags の詳細については、ブログ記事「[D2 and D4: What is it for?](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/)」(D2 と D4: 何のために使用するか?) をご覧ください。
-    * DFSR レプリケーションを使用している場合は、次の手順で Authoritative Restore を行います。 プロセスについては、「[Force an authoritative and non-authoritative sync for DFSR-replicated SYSVOL (like "D4/D2" for FRS)](https://support.microsoft.com/kb/2218556)」(DFSR でレプリケートされた SYSVOL (FRS の "D4/D2" など) の権限のある/権限のない同期を強制実行する) をご覧ください。
+        BurFlags の詳細については、ブログ記事「[D2 and D4:What is it for? (D2 と D4: 何のために使用するか?)](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/)」をご覧ください。
+    * DFSR レプリケーションを使用している場合は、次の手順で Authoritative Restore を行います。 プロセスについては、「[Force an authoritative and non-authoritative sync for DFSR-replicated sysvol folder (like "D4/D2" for FRS) (DFSR でレプリケートされた sysvol フォルダー (FRS の "D4/D2" など) の権限のある/権限のない同期を強制実行する)](https://support.microsoft.com/kb/2218556)」をご覧ください。
 
         PowerShell 関数を使用することもできます。 詳細については、「[DFSR-SYSVOL authoritative/non-authoritative restore PowerShell functions](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/)」(DFSR-SYSVOL の権限のある/権限のない復元の PowerShell 関数) をご覧ください。
 
@@ -174,7 +174,7 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
 
-    詳細については、「[Troubleshoot DNS Event ID 4013: The DNS server was unable to load AD integrated DNS zones](https://support.microsoft.com/kb/2001093)」(DNS イベント ID 4013: DNS サーバーは AD 統合された DNS ゾーンを読み込めませんでした) をご覧ください。
+    詳しくは、「[DNS イベント ID 4013 のトラブルシューティング:DNS サーバーは、AD と統合した DNS ゾーンをロードすることができませんでした。](https://support.microsoft.com/kb/2001093)」をご覧ください。
 
 3. ユーザーのログインを検証するためにグローバル カタログ サーバーを利用可能にする要件を無効にします。 これを行うには、オンプレミス ドメイン コントローラーで、次のレジストリ キーを **1** に設定します。 この DWORD 値が存在しない場合は、**Lsa** ノードの下に作成できます。
 

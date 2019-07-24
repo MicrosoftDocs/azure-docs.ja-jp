@@ -3,65 +3,66 @@ title: パフォーマンスのための Spark ジョブの最適化 - Azure HDI
 description: Spark クラスターのパフォーマンスを最適にするための一般的な戦略を示します。
 services: hdinsight
 ms.service: hdinsight
-author: maxluk
-ms.author: maxluk
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/11/2018
-ms.openlocfilehash: 4a7777be01cc15ed5cc4c9c091230afe1ddfa897
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 04/03/2019
+ms.openlocfilehash: b846b19d180bf19a0d023a9cd0b92393132f47d4
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047444"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59283071"
 ---
-# <a name="optimize-spark-jobs"></a>Spark ジョブの最適化
+# <a name="optimize-apache-spark-jobs"></a>Apache Spark ジョブを最適化する
 
-Spark クラスター構成を特定のワークロード用に最適化する方法を説明します。  最もよくある課題は、不適切な構成 (特に不適切なサイズの実行プログラム)、実行時間の長い操作、およびデカルト演算を生じるタスクが原因の、メモリ不足です。 ジョブは、適切なキャッシュを使用し、[データ スキュー](#optimize-joins-and-shuffles)を可能にすることで、高速化することができます。 最適なパフォーマンスを得るためには、実行時間が長くリソースを多く消費する Spark ジョブの実行を監視し、確認します。
+[Apache Spark](https://spark.apache.org/) クラスター構成を特定のワークロード用に最適化する方法を説明します。  最もよくある課題は、不適切な構成 (特に不適切なサイズの実行プログラム)、実行時間の長い操作、およびデカルト演算を生じるタスクが原因の、メモリ不足です。 ジョブは、適切なキャッシュを使用し、[データ スキュー](#optimize-joins-and-shuffles)を可能にすることで、高速化することができます。 最適なパフォーマンスを得るためには、実行時間が長くリソースを多く消費する Spark ジョブの実行を監視し、確認します。
 
 次のセクションでは、一般的な Spark ジョブの最適化と推奨事項について説明します。
 
 ## <a name="choose-the-data-abstraction"></a>データ抽象化の選択
 
-Spark 1.x は RDD を使用してデータを抽象化します。その後、Spark 2.x で DataFrames と DataSets が導入されました。 次の相対的な利点を考慮してください。
+以前のバージョンの Spark では、データの抽象化に RDD が使用されていましたが、Spark 1.3 と 1.6 では、DataFrames と DataSets がそれぞれ導入されました。 次の相対的な利点を考慮してください。
 
 * **DataFrames**
-    * ほとんどの状況で最適な選択肢
-    * Catalyst を介してクエリを最適化
-    * ステージ全体のコード生成
+    * ほとんどの状況で最適な選択肢。
+    * Catalyst を介してクエリを最適化。
+    * ステージ全体のコード生成。
     * ダイレクト メモリ アクセス
-    * ガベージ コレクション (GC) のオーバーヘッドが低い
-    * コンパイル時のチェックやドメイン オブジェクトのプログラミングがないため、開発者にとっては DataSets ほど使いやすくない
+    * ガベージ コレクション (GC) のオーバーヘッドが低い。
+    * コンパイル時のチェックやドメイン オブジェクトのプログラミングがないため、開発者にとっては DataSets ほど使いやすくない。
 * **DataSets**
-    * パフォーマンスへの影響が許容範囲内である複雑な ETL パイプラインに適している
-    * パフォーマンスへの影響が非常に大きい可能性のある集計には適さない
-    * Catalyst を介してクエリを最適化
-    * ドメイン オブジェクトのプログラミングとコンパイル時のチェックを提供することにより、開発者にっとって使いやすい
-    * シリアル化/逆シリアル化のオーバーヘッドを追加
-    * GC のオーバーヘッドが高い
-    * ステージ全体のコード生成を中断する
+    * パフォーマンスへの影響が許容範囲内である複雑な ETL パイプラインに適している。
+    * パフォーマンスへの影響が非常に大きい可能性のある集計には適さない。
+    * Catalyst を介してクエリを最適化。
+    * ドメイン オブジェクトのプログラミングとコンパイル時のチェックを提供することにより、開発者にっとって使いやすい。
+    * シリアル化/逆シリアル化のオーバーヘッドを追加。
+    * GC のオーバーヘッドが高い。
+    * ステージ全体のコード生成を中断する。
 * **RDD**
-    * Spark 2.x では、新しいカスタム RDD を構築する必要がある場合を除き、RDD を使用する必要がない
-    * Catalyst を介したクエリ最適化がない
-    * ステージ全体のコード生成がない
-    * GC のオーバーヘッドが高い
-    * Spark 1.x のレガシ API を使用する必要がある
+    * 新しいカスタム RDD を構築する必要がある場合を除き、RDD を使用する必要がない。
+    * Catalyst を介したクエリ最適化がない。
+    * ステージ全体のコード生成がない。
+    * GC のオーバーヘッドが高い。
+    * Spark 1.x のレガシ API を使用する必要がある。
 
 ## <a name="use-optimal-data-format"></a>最適なデータ形式の使用
 
-Spark では、csv、json、xml、parquet、orc、avro など、多くの形式がサポートされています。 Spark は、外部データ ソースを使用して他の多くの形式をサポートするように拡張できます。詳細については、[Spark パッケージ](https://spark-packages.org)を参照してください。
+Spark では、csv、json、xml、parquet、orc、avro など、多くの形式がサポートされています。 Spark は、外部データ ソースを使用して他の多くの形式をサポートするように拡張できます。詳細については、[Apache Spark パッケージ](https://spark-packages.org)を参照してください。
 
 パフォーマンスのために最適な形式は *Snappy で圧縮*した Parquet であり、これが Spark 2.x の既定値です。 Parquet はデータを列形式で格納し、Spark で高度に最適化されています。
 
 ## <a name="select-default-storage"></a>既定のストレージの選択
 
-新しい Spark クラスターを作成する際は、クラスターの既定のストレージとして Azure Blob Storage または Azure Data Lake Store を選択するためのオプションがあります。 どちらのオプションにも一時的なクラスター用の長期ストレージの利点があるため、クラスターを削除しても、データは自動的には削除されません。 一時的なクラスターを再作成して、引き続きデータにアクセスできます。
+新しい Spark クラスターを作成する際は、クラスターの既定のストレージとして Azure Blob Storage または Azure Data Lake Storage を選択するためのオプションがあります。 どちらのオプションにも一時的なクラスター用の長期ストレージの利点があるため、クラスターを削除しても、データは自動的には削除されません。 一時的なクラスターを再作成して、引き続きデータにアクセスできます。
 
 | ストアの種類 | ファイル システム | 速度 | 一時的 | ユース ケース |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb:**//url/ | **Standard** | [はい] | 一時的なクラスター |
-| Azure Data Lake Store | **adl:**//url/ | **より高速** | [はい] | 一時的なクラスター |
+| Azure Blob Storage | **wasb[s]:**//url/ | **Standard** | はい | 一時的なクラスター |
+| Azure Data Lake Storage Gen 2| **abfs[s]:**//url/ | **より高速** | はい | 一時的なクラスター |
+| Azure Data Lake Storage Gen 1| **adl:**//url/ | **より高速** | はい | 一時的なクラスター |
 | ローカルの HDFS | **hdfs:**//url/ | **最も高速** | いいえ  | 24 時間 365 日の対話型クラスター |
 
 ## <a name="use-the-cache"></a>キャッシュの使用
@@ -73,7 +74,7 @@ Spark は、`.persist()`、`.cache()`、`CACHE TABLE` などのさまざまな�
     * パーティション分割では機能しない (Spark の将来の リリースで変更の可能性あり)。
 
 * ストレージ レベルのキャッシュ (推奨)
-    * [Alluxio](http://www.alluxio.org/) を使用して実装可能。
+    * [Alluxio](https://www.alluxio.org/) を使用して実装可能。
     * メモリ内と SSD のキャッシュを使用。
 
 * ローカルの HDFS (推奨)
@@ -94,7 +95,7 @@ Spark はデータをメモリ内に配置することで動作するため、�
 
 ### <a name="spark-memory-considerations"></a>Spark メモリに関する考慮事項
 
-YARN を使用する場合は、YARN が Spark の各ノード上のすべてのコンテナーで使用される最大合計メモリを制御します。  次の図は、重要なオブジェクトとそれらの関連性を示しています。
+[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) を使用する場合は、YARN が Spark の各ノード上のすべてのコンテナーで使用される最大合計メモリを制御します。  次の図は、重要なオブジェクトとそれらの関連性を示しています。
 
 ![YARN の Spark メモリの管理](./media/apache-spark-perf/yarn-spark-memory.png)
 
@@ -120,7 +121,7 @@ Spark ジョブは分散されるため、パフォーマンスを最適にす�
 いくつかの高度なバケット機能を、次に示します。
 
 * バケットのメタ情報に基づくクエリの最適化
-* 最適化された集計
+* 最適化された集計。
 * 最適化された結合
 
 パーティション分割とバケットは同時に使用することができます。
@@ -175,8 +176,8 @@ Spark クラスターのワークロードによっては、既定以外の Spar
     1. 実行プログラム間の通信オーバーヘッドを削減します。
     2. 大きいクラスター (実行プログラムが 100 より多い) 上の実行プログラム (N2) の間で開いている接続の数を減らします。
     3. メモリを大量に使用するタスクに合わせて、ヒープ サイズを増やします。
-    4. オプション: 実行プログラムあたりのメモリ オーバーヘッドを減らします。
-    5. オプション: CPU をオーバーサブスクライブすることで、使用率と同時実行を増やします。
+    4. 省略可能:実行プログラムあたりのメモリ オーバーヘッドを減らします。
+    5. 省略可能:CPU をオーバーサブスクライブすることで、使用率とコンカレンシーを増やします。
 
 実行プログラムのサイズを選択する際の一般的な目安:
     
@@ -202,7 +203,7 @@ Spark クラスターのワークロードによっては、既定以外の Spar
 パフォーマンスの問題の場合は、実行中のジョブを定期的に監視します。 特定の問題について詳細に知る必要がある場合は、次のパフォーマンスのプロファイル ツールのいずれかを検討してください。
 
 * [Intel PAL ツール](https://github.com/intel-hadoop/PAT)は、CPU、ストレージ、およびネットワーク帯域幅の使用率を監視します。
-* [Oracle Java 8 Mission Control](http://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) は、Spark と実行プログラムのコードをプロファイルします。
+* [Oracle Java 8 Mission Control](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) は、Spark と実行プログラムのコードをプロファイルします。
 
 Spark 2.x クエリのパフォーマンスに重要なものは、ステージ全体のコード生成に依存する Tungsten エンジンです。 場合によっては、ステージ全体のコード生成を利用できないことがあります。 たとえば、集計式で変更できない型 (`string`) を使用すると、`HashAggregate` ではなく `SortAggregate`が表示されます。 たとえば、パフォーマンスを向上させるために、次を実行してから、コード生成を再度有効にします。
 
@@ -212,9 +213,9 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure HDInsight で実行される Spark ジョブのデバッグ](apache-spark-job-debugging.md)
-* [HDInsight での Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
-* [Spark REST API を使用してリモート ジョブを Spark クラスターに送信する](apache-spark-livy-rest-interface.md)
-* [Spark のチューニング](https://spark.apache.org/docs/latest/tuning.html)
-* [Spark を適切に機能させるための実際のチューニング方法](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
+* [Azure HDInsight で実行される Apache Spark ジョブのデバッグ](apache-spark-job-debugging.md)
+* [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
+* [Apache Spark REST API を使用してリモート ジョブを Apache Spark クラスターに送信する](apache-spark-livy-rest-interface.md)
+* [Apache Spark のチューニング](https://spark.apache.org/docs/latest/tuning.html)
+* [Apache Spark を適切に機能させるための実際のチューニング方法](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
 * [Kryo シリアル化](https://github.com/EsotericSoftware/kryo)

@@ -1,184 +1,92 @@
 ---
-title: 'クイック スタート: Custom Search SDK, C#'
+title: クイック スタート:C# SDK を使用して Bing Custom Search エンドポイントを呼び出す | Microsoft Docs
 titleSuffix: Azure Cognitive Services
 description: Custom Search SDK C# コンソール アプリケーションの設定。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 09/06/2018
 ms.author: scottwhi
-ms.openlocfilehash: 7ac298ad5c5b93b5dce0ce2dd59ffe541888db88
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 100f1d4ed96f04f8208fd544d410f227561343e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307765"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57871587"
 ---
-# <a name="quickstart-using-the-bing-custom-search-sdk-with-c"></a>クイック スタート: C# による Bing Custom Search SDK の使用
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-c-sdk"></a>クイック スタート:C# SDK を使用して Bing Custom Search エンドポイントを呼び出す 
 
-Bing Custom Search SDK は、Bing Custom Search REST API よりも簡単なプログラミング モデルを提供します。 このセクションでは、C# SDK を使用して、最初のカスタム検索呼び出しを行う方法について説明します。
+このクイック スタートでは、C# SDK を使用して、Bing Custom Search インスタンスに検索結果を要求します。 Bing Custom Search には、ほとんどのプログラミング言語に対応した REST API があり、Bing Custom Search SDK を使用すれば、既存のアプリケーションに対して簡単にサービスを統合することができます。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch) にあります。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、次のものが必要です。
+- Bing Custom Search インスタンス。 「[クイック スタート:初めての Bing Custom Search インスタンスを作成する](quick-start.md)」で詳細を確認する。
+- Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
+- [Visual Studio 2017](https://www.visualstudio.com/downloads/) のいずれかのエディション
+- Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
+- [NuGet Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) パッケージがインストール済みであること。 
+    - Visual Studio でソリューション エクスプ ローラーから、プロジェクトを右クリックして、メニューから `Manage NuGet Packages` を選択します。 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` パッケージをインストールします。 NuGet Custom Search パッケージをインストールすると、次のアセンブリもインストールされます。
+        - Microsoft.Rest.ClientRuntime
+        - Microsoft.Rest.ClientRuntime.Azure
+        - Newtonsoft.Json
 
-- すぐに使用できるカスタム検索インスタンス。 「[Create your first Bing Custom Search instance](quick-start.md)」 (最初の Bing Custom Search インスタンスを作成する) を参照してください。  
-  
-- サブスクリプション キー。 [無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)をアクティブにすると、サブスクリプション キーを取得できます。または Azure ダッシュボードから有料のサブスクリプション キーを使用することもできます ([Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を参照してください)。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
-  
-- Visual Studio 2017 がインストール済みであること。 お持ちでない場合は、**無料版の** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードできます。  
-  
-- [NuGet Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) パッケージがインストール済みであること。 Visual Studio でソリューション エクスプ ローラーから、プロジェクトを右クリックして、メニューから `Manage NuGet Packages` を選択します。 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` パッケージをインストールします。
-
-NuGet Custom Search パッケージをインストールすると、次のアセンブリもインストールされます。
-
-* Microsoft.Rest.ClientRuntime
-* Microsoft.Rest.ClientRuntime.Azure
-* Newtonsoft.Json
+[!INCLUDE [cognitive-services-bing-news-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
 
+## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
-## <a name="run-the-code"></a>コードの実行
+1. Visual Studio で、新しい C# コンソール アプリケーションを作成します。 次のパッケージをプロジェクトに追加します。
 
-> [!TIP]
-> 最新のコードを Visual Studio ソリューションとして [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch) から取得してください。
-
-この例を実行するには、次の手順に従います。
-
-1. Visual Studio 2017 を開きます。
-  
-2. **[ファイル]** メニューをクリックして、**[新規]**、**[プロジェクト]**、**Visual C# コンソール アプリケーション** テンプレートをクリックします。
-  
-3. ソリューションに CustomSearchSolution と名前を付け、それを配置するフォルダーを参照します。
-  
-4. [OK] をクリックしてソリューションを作成します。  
-  
-4. ソリューション エクスプローラーで、プロジェクト (ソリューションと同じ名前を持つ) を右クリックして、`Manage NuGet Packages` を選択します。 NuGet パッケージ マネージャーで **[参照]** をクリックします。 検索ボックスに Microsoft.Azure.CognitiveServices.Search.CustomSearch と入力し、Enter キーを押します。 パッケージを選択し、[インストール] をクリックします。  
-  
-4. Program.cs ファイルで次のコードをコピーします。 **YOUR-SUBSCRIPTION-KEY** と **YOUR-CUSTOM-CONFIG-ID** を、自分のサブスクリプション キーと構成 ID に置き換えます。  
-  
     ```csharp
     using System;
     using System.Linq;
     using Microsoft.Azure.CognitiveServices.Search.CustomSearch;
+    ```
 
-    namespace CustomSrchSDK
+2. アプリケーションのメイン メソッドで、必要な API キーを使用して検索クライアントをインスタンス化します。
+
+    ```csharp
+    var client = new CustomSearchAPI(new ApiKeyServiceClientCredentials("YOUR-SUBSCRIPTION-KEY"));
+    ```
+
+## <a name="send-the-search-request-and-receive-a-response"></a>検索要求を送信して応答を受信する
+    
+1. クライアントの `SearchAsync()` メソッドを使用して検索クエリを送信し、応答を保存します。 `YOUR-CUSTOM-CONFIG-ID` を自分のインスタンスの構成の ID で置き換えます (この ID は [Bing Custom Search ポータル](https://www.customsearch.ai/)にあります)。 この例では、"Xbox" を検索します。
+
+    ```csharp
+    // This will look up a single query (Xbox).
+    var webData = client.CustomInstance.SearchAsync(query: "Xbox", customConfig: Int32.Parse("YOUR-CUSTOM-CONFIG-ID")).Result;
+    ```
+
+2. `SearchAsync()` メソッドが `WebData` オブジェクトを返します。 このオブジェクトを使用して、検出された `WebPages` を反復処理します。 このコードは、最初の Web ページの結果を検索し、Web ページの `Name` と `URL` を印刷します。
+
+    ```csharp
+    if (webData?.WebPages?.Value?.Count > 0)
     {
-        class Program
+        // find the first web page
+        var firstWebPagesResult = webData.WebPages.Value.FirstOrDefault();
+
+        if (firstWebPagesResult != null)
         {
-            static void Main(string[] args)
-            {
-
-                var client = new CustomSearchAPI(new ApiKeyServiceClientCredentials("YOUR-SUBSCRIPTION-KEY"));
-
-                try
-                {
-                    // This will look up a single query (Xbox).
-                    var webData = client.CustomInstance.SearchAsync(query: "Xbox", customConfig: Int32.Parse("YOUR-CUSTOM-CONFIG-ID")).Result;
-                    Console.WriteLine("Searched for Query# \" Xbox \"");
-
-                    //WebPages
-                    if (webData?.WebPages?.Value?.Count > 0)
-                    {
-                        // find the first web page
-                        var firstWebPagesResult = webData.WebPages.Value.FirstOrDefault();
-
-                        if (firstWebPagesResult != null)
-                        {
-                            Console.WriteLine("Number of webpage results {0}", webData.WebPages.Value.Count);
-                            Console.WriteLine("First web page name: {0} ", firstWebPagesResult.Name);
-                            Console.WriteLine("First web page URL: {0} ", firstWebPagesResult.Url);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Couldn't find web results!");
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Didn't see any Web data..");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Encountered exception. " + ex.Message);
-                }
-
-                Console.WriteLine("Press any key to exit...");
-                Console.ReadKey();
-            }
-
+            Console.WriteLine("Number of webpage results {0}", webData.WebPages.Value.Count);
+            Console.WriteLine("First web page name: {0} ", firstWebPagesResult.Name);
+            Console.WriteLine("First web page URL: {0} ", firstWebPagesResult.Url);
         }
-    }
-    ```  
-  
-5. ソリューションをビルドして実行 (デバッグ) します。 
-
-
-
-
-## <a name="breaking-it-down"></a>分解
-
-NuGet カスタム検索パッケージをインストールしたら、そのディレクティブを使用して追加する必要があります。
-
-```csharp
-using Microsoft.Azure.CognitiveServices.Search.CustomSearch;
-```
-
-次に、検索要求を行うために使用するカスタム検索クライアントをインスタンス化します。 必ず `YOUR-SUBSCRIPTION-KEY` を自分のキーで置き換えます。
-
-```csharp
-var client = new CustomSearchAPI(new ApiKeyServiceClientCredentials("YOUR-CUSTOM-SEARCH-KEY"));
-```
-
-検索要求を送信するのにクライアントを使用できるようになりました。 `YOUR-CUSTOM-CONFIG-ID` を自分のインスタンスの構成の ID で置き換えます (この ID は [Custom Search ポータル](https://www.customsearch.ai/)にあります)。 この例では、Xbox を検索します。 必要に応じて更新します。
-
-```csharp
-var webData = client.CustomInstance.SearchAsync(query: "Xbox", customConfig: Int32.Parse("YOUR-CUSTOM-CONFIG-ID")).Result;
-```
-
-`SearchAsync` メソッドが `WebData` オブジェクトを返します。 `WebData` を使用して、検出された `WebPages` を反復処理します。 このコードは、最初の Web ページの結果を検索し、Web ページの `Name` と `URL` を印刷します。
-
-```csharp
-//WebPages
-if (webData?.WebPages?.Value?.Count > 0)
-{
-    // find the first web page
-    var firstWebPagesResult = webData.WebPages.Value.FirstOrDefault();
-
-    if (firstWebPagesResult != null)
-    {
-        Console.WriteLine("Webpage Results#{0}", webData.WebPages.Value.Count);
-        Console.WriteLine("First web page name: {0} ", firstWebPagesResult.Name);
-        Console.WriteLine("First web page URL: {0} ", firstWebPagesResult.Url);
+        else
+        {
+            Console.WriteLine("Couldn't find web results!");
+        }
     }
     else
     {
-        Console.WriteLine("Couldn't find web results!");
+        Console.WriteLine("Didn't see any Web data..");
     }
-}
-else
-{
-    Console.WriteLine("Didn't see any Web data..");
-}
+    ```csharp
 
-```
+## Next steps
 
-
-## <a name="next-steps"></a>次の手順
-
-SDK サンプルをチェックします。 各サンプルには、前提条件と、サンプルのインストール/実行の前提条件が記載された ReadMe ファイルが含まれています。
-
-* [.NET サンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)を使ってみる 
-    * [NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0)
-    * 定義および依存関係については、[.NET ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Search/BingCustomSearch)もご覧ください。
-* [NodeJS サンプル](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)を使って作業を開始する 
-    * 定義および依存関係については、[NodeJS ライブラリ](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/customSearch)もご覧ください。
-* [Java サンプル](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)を使って作業を開始する 
-    * 定義と依存関係については、[Java ライブラリ](https://github.com/Azure/azure-sdk-for-java/tree/master/cognitiveservices/azure-customsearch)も参照してください。
-* [Python サンプル](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)を使ってみる 
-    * 定義と依存関係については、[Python ライブラリ](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-customsearch)も参照してください。
-
+> [!div class="nextstepaction"]
+> [Build a Custom Search web app](./tutorials/custom-search-web-page.md)

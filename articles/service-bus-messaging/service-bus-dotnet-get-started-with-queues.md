@@ -3,57 +3,38 @@ title: Azure Service Bus キューの使用 | Microsoft Docs
 description: Service Bus メッセージング キューを使った C# コンソール アプリケーションを作成します。
 services: service-bus-messaging
 documentationcenter: .net
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 68a34c00-5600-43f6-bbcc-fea599d500da
 ms.service: service-bus-messaging
 ms.devlang: tbd
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 09/07/2018
-ms.author: spelluru
-ms.openlocfilehash: 1dd47dea86478c76ed5bf6f8b393964f97231908
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 04/10/2019
+ms.author: aschhab
+ms.openlocfilehash: 22996b277aba96cbbfedbb3e9cc67644d1a535ca
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226959"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59799016"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Service Bus キューの使用
-
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-
-このチュートリアルに含まれる手順は次のとおりです。
-
-1. Azure Portal を使用して Service Bus 名前空間を作成する。
-2. Azure Portal を使用して Service Bus キューを作成する。
-3. キューに一連のメッセージを送信するための .NET Core コンソール アプリケーションを作成する。
-4. それらのメッセージをキューから受信する .NET Core コンソール アプリケーションを作成する。
+このチュートリアルでは、.NET Core コンソール アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信します。 
 
 ## <a name="prerequisites"></a>前提条件
 
 1. [Visual Studio 2017 Update 3 (バージョン 15.3, 26730.01)](https://www.visualstudio.com/vs) 以降。
 2. [NET Core SDK](https://www.microsoft.com/net/download/windows) バージョン 2.0 以降。
-2. Azure サブスクリプション。
-
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
-
-## <a name="create-a-namespace-using-the-azure-portal"></a>Azure Portal を使用した名前空間の作成
-
-> [!NOTE] 
-> [PowerShell](/powershell/azure/get-started-azureps) を使用して Service Bus 名前空間とメッセージング エンティティを作成することもできます。 詳細については、「[PowerShell モジュールで Service Bus リソースを管理する](service-bus-manage-with-ps.md)」を参照してください。
-
-Service Bus メッセージング名前空間を既に作成している場合は、「[Azure Portal を使用したキューの作成](#2-create-a-queue-using-the-azure-portal)」セクションに進んでください。
-
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
-## <a name="create-a-queue-using-the-azure-portal"></a>Azure Portal を使用したキューの作成
-
-Service Bus キューを既に作成している場合は、「[キューへのメッセージの送信](#3-send-messages-to-the-queue)」セクションに進んでください。
-
-[!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
+2. Azure サブスクリプション。 このチュートリアルを完了するには、Azure アカウントが必要です。 [MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
+3. 使用するキューがない場合は、「[Azure portal を使用して Service Bus キューを作成する](service-bus-quickstart-portal.md)」の記事にある手順に従って、キューを作成します。
+    1. Service Bus **キュー**の**概要**をお読みください。 
+    2. Service Bus **名前空間**を作成します。 
+    3. **接続文字列**を取得します。 
+    4. Service Bus **キュー**を作成します。 
 
 ## <a name="send-messages-to-the-queue"></a>キューへのメッセージの送信
 

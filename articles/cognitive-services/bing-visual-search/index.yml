@@ -1,64 +1,93 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cadf5640ad087cec4e668e8b709c8fcc9acda760
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49455999"
 documentType: LandingData
-title: Bing Visual Search のドキュメント
+title: Bing Visual Search API のドキュメント
 metadata:
   document_id: 230494A6-34F9-416D-A6C0-57E69E1C2590
-  title: Bing Visual Search のドキュメント - チュートリアル、API リファレンス
-  description: Bing Visual Search API を使用して、画像に関する分析情報を取得する方法について説明します。 チュートリアルでは、このサービスを使用するアプリを構築する方法を説明します。
+  title: Bing Visual Search API のドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
+  description: Bing Visual Search API を使用して画像に関する分析情報を取得する方法について説明します。
   services: cognitive-services
   author: swhite-msft
   manager: rosh
   ms.service: cognitive-services
-  ms.component: bing-visual-search
+  ms.subservice: bing-visual-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/24/2018
+  ms.date: 01/16/2019
   ms.author: scottwhi
 abstract:
-  description: Bing Visual Search API は、画像 (見た目が似ている画像、画像内にある製品のショッピング ソース、関連検索) に関する分析情報を返すことによって、Bing.com/images のような エクスペリエンスを提供します。
+  description: Bing Visual Search API は、Bing.com/images に表示されるような画像の詳細を提供します。 この API では、画像をアップロードするか画像の URL を指定することで、その画像に関するさまざまな詳細情報を特定することができます (見た目が似ている画像、ショッピング ソース、その画像が使用されている Web ページなど)。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: 画像を Bing に送信して画像に関する分析情報を取得することによって、Bing Visual Search API の使用を開始します。
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/logo_csharp.svg
-    - image:
-        src: media/index/logo_java.svg
-    - image:
-        src: media/index/logo_nodejs.svg
-    - image:
-        src: media/index/logo_python.svg
-    rows:
-    - title: 最初のクエリ
-      values:
-      - href: quickstarts/csharp
-      - href: quickstarts/java
-      - href: quickstarts/nodejs
-      - href: quickstarts/python
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: Bing Visual Search API を使用してアプリケーションを開発する方法について説明します。
-  - type: list
-    style: unordered
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/bing-visual-search/overview
+            html: <p>Bing Visual Search API について説明します</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Bing Visual Search API とは
+          - href: /azure/cognitive-services/bing-visual-search/concepts/sending-queries
+            html: <p>Bing Visual Search API に検索要求を送信する方法について説明します。</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: 検索クエリの送信
+          - href: /azure/cognitive-services/bing-visual-search/tutorial-visual-search-insights-token
+            html: <p>Bing Image Search API の分析情報トークンを使用して、画像を Bing Visual Search API にアップロードします</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: ニュースの検索
+  - title: 5 分間のクイック スタート
     items:
-    - html: <a href="tutorial-bing-visual-search-single-page-app">単一ページの Web アプリ</a> | <a href="tutorial-bing-visual-search-single-page-app-source">ソース コード</a>
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: Bing Visual Search API を使用して画像の分析情報を取得します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_csharp.svg
+            href: visual-search-sdk-c-sharp
+            text: 'C&#35;'
+          - image:
+              src: media/index/logo_java.svg
+            href: quickstarts/java
+            text: Java
+          - image:
+              src: media/index/logo_nodejs.svg
+            href: visual-search-sdk-node
+            text: Node.js
+          - image:
+              src: media/index/logo_python.svg
+            href: visual-search-sdk-python
+            text: Python
+        rows:
+          - title: ''
+            values:
+              - href: visual-search-sdk-c-sharp
+              - href: java
+              - href: visual-search-sdk-node
+              - href: visual-search-sdk-python
+  - title: ステップバイステップのチュートリアル
     items:
-    - title: REST v7 API
-      html: <p><a href="https://aka.ms/bingvisualsearchreferencedoc">API リファレンス</a></p>
+      - type: paragraph
+        text: Bing Visual Search API を使用してアプリケーションを開発する方法について説明します。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="tutorial-bing-visual-search-single-page-app">シングルページの Web アプリ</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST v7 API
+            html: '<p><a href="https://aka.ms/bingvisualsearchreferencedoc">API リファレンス</a></p>'
+          - title: SDK
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/visualsearch?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python">Python</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: CLI
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'

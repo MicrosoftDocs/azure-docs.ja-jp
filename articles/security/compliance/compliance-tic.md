@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: d52785dd7569560f4b6986080b14723762537ec8
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: bb186ab2700b147bee3a7dd81474409ccafb76fc
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388322"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341720"
 ---
 # <a name="trusted-internet-connections-guidance"></a>信頼できるインターネット接続のガイダンス
 
@@ -43,13 +43,13 @@ Azure サービスに接続するとき、主なオプションが 3 つあり�
 - 直接インターネット接続: オープンなインターネット接続を介して Azure サービスに直接接続します。 媒体と接続はパブリックです。 プライバシーの確保はアプリケーションとトランスポートのレベルの暗号化に依存します。 帯域幅は、インターネットへのサイトの接続状態によって制限されます。 複数のアクティブなプロバイダーを使用して、回復性を確保します。
 - 仮想プライベート ネットワーク (VPN): VPN ゲートウェイを使って、Azure 仮想ネットワークにプライベートに接続します。
 サイトの標準インターネット接続を通過するため媒体はパブリックですが、トンネルの接続は暗号化されてプライバシーが確保されます。 帯域幅の上限は、選択した VPN デバイスと構成に依存します。 通常、Azure のポイント対サイト接続は 100 Mbps に制限され、サイト対サイト接続は 1.25 Gbps に制限されます。
-- Microsoft Azure ExpressRoute: ExpressRoute は Microsoft のサービスに直接接続します。 分離されたファイバー チャネルを介するため、この接続は、使用される構成に基づいてパブリックまたはプライベートになります。 帯域幅は一般的に最大 10 Gbps に制限されます。
+- Azure ExpressRoute: ExpressRoute の場合、Microsoft のサービスに直接接続します。 分離されたファイバー チャネルを介するため、この接続は、使用される構成に基づいてパブリックまたはプライベートになります。 帯域幅は一般的に最大 10 Gbps に制限されます。
 
 DHS の "Trusted Internet Connections (TIC) Reference Architecture Document, Version 2.0" で指定されている TIC 付録 H (クラウドに関する考慮事項) 要件は、複数の方法で満たすことができます。 この記事では、DHS TIC ガイダンスを **TIC 2.0** と呼びます。
 
 **省庁または機関 (D/A)** の TIC を通過するようにトラフィックをルーティングすることなく、D/A から Azure または Office 365 への接続を有効にするには、D/A は暗号化トンネルかクラウド サービス プロバイダー (CSP) への専用接続を利用する必要があります。 CSP サービスは、機関の人間に直接アクセスするとき、D/A クラウド アセットへの接続が公共のインターネットに確実に提供されないようにします。
 
-Office 365 は、[Microsoft ピアリング](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains)を有効にして ExpressRoute を使用するか、TLS 1.2 ですべてのトラフィックを暗号化するインターネット接続を使用して TIC 2.0 付録 H に準拠します。 D/A ネットワークの D/A エンド ユーザーは、機関ネットワークと TIC インフラストラクチャを介してインターネット接続できます。 Office 365 へのリモート インターネット アクセスはすべてブロックされ、機関を通過するようにルーティングされます。 D/A は Microsoft ピアリングを有効にした ExpressRoute で Office 365 に接続することもできます。Microsoft ピアリングはパブリック ピアリングの一種です。  
+Office 365 は、[Microsoft ピアリング](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings)を有効にして ExpressRoute を使用するか、TLS 1.2 ですべてのトラフィックを暗号化するインターネット接続を使用して TIC 2.0 付録 H に準拠します。 D/A ネットワークの D/A エンド ユーザーは、機関ネットワークと TIC インフラストラクチャを介してインターネット接続できます。 Office 365 へのリモート インターネット アクセスはすべてブロックされ、機関を通過するようにルーティングされます。 D/A は Microsoft ピアリングを有効にした ExpressRoute で Office 365 に接続することもできます。Microsoft ピアリングはパブリック ピアリングの一種です。  
 
 Azure の場合のみ、2 番目のオプション (VPN) と 3 番目のオプション (ExpressRoute) は、インターネットへのアクセスを制限するサービスと併用するとき、これらの要件を満たすことができます。
 
@@ -63,8 +63,8 @@ TIC 参照アーキテクチャに準拠するための主な要件は、仮想�
 
 Azure IaaS TIC コンプライアンスは大きく 2 つの手順に分かれます。
 
-- ステップ 1: 構成。
-- ステップ 2: 監査。
+- 手順 1: 構成。
+- 手順 2: 監査。
 
 ### <a name="azure-iaas-tic-compliance-configuration"></a>Azure IaaS TIC コンプライアンス: 構成
 
@@ -85,7 +85,7 @@ Azure では、システム ルートが自動的に作成され、仮想ネッ�
 
 ![TIC のトンネリング強制](media/tic-diagram-c.png)
 
-すべてのトラフィックが D/A TIC を通過するには、仮想ネットワークから出るすべてのトラフィックがオンプレミス接続を確実に通過するようにします。 カスタム ルートを作成するには、ユーザー定義ルートを作成するか、オンプレミス ネットワーク ゲートウェイと Azure VPN ゲートウェイの間で Border Gateway Protocol (BGP) ルートを交換します。 ユーザー定義のルートについて詳しくは、[仮想ネットワーク トラフィック ルーティングのユーザー定義ルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined)に関するページをご覧ください。 BGP について詳しくは、[仮想ネットワーク トラフィック ルーティングの Border Gateway Protocol](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol) に関するページをご覧ください。
+すべてのトラフィックが D/A TIC を通過するには、仮想ネットワークから出るすべてのトラフィックがオンプレミス接続を確実に通過するようにします。 カスタム ルートを作成するには、ユーザー定義ルートを作成するか、オンプレミス ネットワーク ゲートウェイと Azure VPN ゲートウェイの間で Border Gateway Protocol (BGP) ルートを交換します。 ユーザー定義のルートについて詳しくは、[仮想ネットワーク トラフィックのルーティングのユーザー定義ルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined)に関するページをご覧ください。 BGP について詳しくは、[仮想ネットワーク トラフィックのルーティングの Border Gateway Protocol](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol) に関するページをご覧ください。
 
 #### <a name="add-user-defined-routes"></a>ユーザー定義ルートを追加する
 
@@ -125,7 +125,7 @@ Azure Storage などの Azure PaaS サービスにはインターネットでア
 Azure PaaS サービスが仮想ネットワークと統合されると、その仮想ネットワークからサービスにプライベート アクセスできます。 ユーザー定義ルートまたは BGP 経由で、0.0.0.0/0 に対するカスタム ルーティングを適用できます。 カスタム ルーティングにより、インターネットに送信されるすべてのトラフィックがオンプレミスにルーティングされて TIC を走査することが確実になります。 仮想ネットワークに Azure サービスを統合するには、次のパターンを使用します。
 
 - **サービスの専用インスタンスをデプロイする**: 仮想ネットワーク接続エンドポイントを使用し、専用インスタンスとしてデプロイできる PaaS サービスが増えています。 PowerApps 用 App Service Environment を "分離" モードでデプロイし、ネットワーク エンドポイントを仮想ネットワークに制約することができます。 App Service Environment は、Azure Web Apps、Azure API Management、Azure Functions など、多くの Azure PaaS サービスをホストできます。
-- **仮想ネットワーク サービス エンドポイントを使用する**: エンドポイントをパブリック アドレスではなく仮想ネットワーク プライベート IP に移動できる PaaS サービスが増えています。
+- **仮想ネットワーク サービス エンドポイントを使用する**: エンドポイントをパブリック アドレスではなく仮想ネットワークのプライベート IP に移動できる PaaS サービスが増えています。
 
 2018 年 5 月の時点で、仮想ネットワークへの専用インスタンスのデプロイまたはサービス エンドポイントの使用をサポートしているサービスを、次の表に示します。
 
@@ -157,7 +157,7 @@ Azure PaaS サービスが仮想ネットワークと統合されると、その
 |Azure Active Directory                | 一般公開               |
 |Azure Batch                           | 一般公開               |
 |App Service 環境               | 一般公開               |
-|Azure Redis Cache                     | 一般公開               |
+|Azure Cache for Redis                     | 一般公開               |
 |Azure HDInsight                       | 一般公開               |
 |仮想マシン スケール セット             | 一般公開               |
 |Azure クラウド サービス                  | 一般公開               |
@@ -198,7 +198,7 @@ Azure には、ネットワークのトラフィック フローを理解する�
 
 ### <a name="azure-policy"></a>Azure Policy
 
-[Azure Policy](https://azure.microsoft.com/services/azure-policy/) は、コンプライアンス イニシアティブを監査し、強制するためのすぐれた機能を組織に与える Azure サービスです。 Azure Policy は、現在販売されている Azure サービスのパブリック プレビューで使用できます。 Azure Policy は、Azure Government ではまだ使用できません。 お客様は、今のうちに Azure Policy のルールを計画およびテストしておき、後で TIC に確実に準拠できます。 
+[Azure Policy](../../governance/policy/overview.md) は、コンプライアンス イニシアティブを監査し、強制するためのすぐれた機能を組織に与える Azure サービスです。 お客様は、今のうちに Azure Policy のルールを計画およびテストしておき、後で TIC に確実に準拠できます。
 
 Azure Policy は、サブスクリプション レベルを対象としています。 サービスが提供する一元的なインターフェイスを使用して、次のようなコンプライアンス タスクを実行できます。
 - イニシアティブを管理する
@@ -211,15 +211,15 @@ Azure Policy は、サブスクリプション レベルを対象としていま
 
 次のサンプル ポリシーを TIC コンプライアンス シナリオに使用できます。
 
-|ポリシー  |サンプル シナリオ  |テンプレート  |
+|ポリシー  |サンプル シナリオ  |Template  |
 |---------|---------|---------|
-|ユーザー定義ルート テーブルを強制する。 | すべての仮想ネットワークの既定のルートを、オンプレミスにルーティングするための承認済み仮想ネットワーク ゲートウェイに確実にポイントするようにします。    | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/no-user-def-route-table)で今すぐ開始。 |
-|リージョンで Network Watcher が有効になっていない場合を監査する。  | 使用されているすべてのリージョンで Network Watcher が確実に有効になっているようにします。  | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/net-watch-not-enabled)で今すぐ開始。 |
-|すべてのサブネット上の NSG x。  | インターネット トラフィックをブロックする NSG (または承認済み NSG のセット) を、すべての仮想ネットワークのすべてのサブネットに確実に適用されるようにします。 | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-subnet)で今すぐ開始。 |
-|すべての NIC 上の NSG x。 | インターネット トラフィックをブロックする NSG が、すべての仮想マシンのすべての NIC に確実に適用されるようにします。 | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-nic)で今すぐ開始。 |
-|仮想マシン ネットワーク インターフェイスに対して承認された仮想ネットワークを使用する。  | すべての NIC が承認された仮想ネットワーク上に確実に配置されるようにします。 | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/use-approved-vnet-vm-nics)で今すぐ開始。 |
-|許可される場所。 | 仮想ネットワークと Network Watcher 構成が準拠しているリージョンに、すべてのリソースが確実にデプロイされるようにします。  | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/allowed-locs)で今すぐ開始。 |
-|**PublicIP** など、許可されないリソースの種類。 | コンプライアンス プランのない種類のリソースのデプロイを禁止します。 パブリック IP アドレス リソースのデプロイを禁止するには、このポリシーを使います。 NSG ルールを使って受信インターネット トラフィックを効果的にブロックできますが、パブリック IP の使用を禁止すると攻撃をさらに減らすことができます。   | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/not-allowed-res-type)で今すぐ開始。  |
+|ユーザー定義ルート テーブルを強制する。 | すべての仮想ネットワークの既定のルートを、オンプレミスにルーティングするための承認済み仮想ネットワーク ゲートウェイに確実にポイントするようにします。    | この[テンプレート](../../governance/policy/samples/no-user-defined-route-table.md)で今すぐ開始。 |
+|リージョンで Network Watcher が有効になっていない場合を監査する。  | 使用されているすべてのリージョンで Network Watcher が確実に有効になっているようにします。  | この[テンプレート](../../governance/policy/samples/network-watcher-not-enabled.md)で今すぐ開始。 |
+|すべてのサブネット上の NSG x。  | インターネット トラフィックをブロックする NSG (または承認済み NSG のセット) を、すべての仮想ネットワークのすべてのサブネットに確実に適用されるようにします。 | この[テンプレート](../../governance/policy/samples/nsg-on-subnet.md)で今すぐ開始。 |
+|すべての NIC 上の NSG x。 | インターネット トラフィックをブロックする NSG が、すべての仮想マシンのすべての NIC に確実に適用されるようにします。 | この[テンプレート](../../governance/policy/samples/nsg-on-nic.md)で今すぐ開始。 |
+|仮想マシン ネットワーク インターフェイスに対して承認された仮想ネットワークを使用する。  | すべての NIC が承認された仮想ネットワーク上に確実に配置されるようにします。 | この[テンプレート](../../governance/policy/samples/use-approved-vnet-vm-nics.md)で今すぐ開始。 |
+|許可される場所。 | 仮想ネットワークと Network Watcher 構成が準拠しているリージョンに、すべてのリソースが確実にデプロイされるようにします。  | この[テンプレート](../../governance/policy/samples/allowed-locations.md)で今すぐ開始。 |
+|**PublicIP** など、許可されないリソースの種類。 | コンプライアンス プランのない種類のリソースのデプロイを禁止します。 パブリック IP アドレス リソースのデプロイを禁止するには、このポリシーを使います。 NSG ルールを使って受信インターネット トラフィックを効果的にブロックできますが、パブリック IP の使用を禁止すると攻撃をさらに減らすことができます。   | この[テンプレート](../../governance/policy/samples/not-allowed-resource-types.md)で今すぐ開始。  |
 
 ### <a name="network-watcher-traffic-analytics"></a>Network Watcher のトラフィック分析
 
@@ -245,29 +245,29 @@ Network Watcher によって監視されているリージョン内のネット�
 
 2018 年 5 月に記述されて定義された TIC 2.0 付録 H ガイダンスに準拠するように、Microsoft Azure、Office 365、Dynamics 365 に対するアクセスを簡単に構成できます。 Microsoft は、TIC ガイダンスが変更される可能性があることを認識しています。 Microsoft は、新しいガイダンスがリリースされたときにお客様がすぐにガイダンスに対応できるよう努めています。
 
-## <a name="appendix-trusted-internet-connections-patterns-for-common-workloads"></a>付録: 一般的なワークロードの信頼できるインターネット接続のパターン
+## <a name="appendix-trusted-internet-connections-patterns-for-common-workloads"></a>付録: 一般的なワークロード向けの Trusted Internet Connections のパターン
 
 | Category | ワークロード | IaaS | 専用 PaaS/仮想ネットワーク挿入  | サービス エンドポイント  |
 |---------|---------|---------|---------|--------|
-| コンピューティング | Azure Linux 仮想マシン | [はい] | | |
-| コンピューティング | Azure Windows ウィンドウ | [はい] | | |
-| コンピューティング | 仮想マシン スケール セット | [はい] | | |
-| コンピューティング | Azure Functions | | App Service 環境 | |
+| Compute | Azure Linux 仮想マシン | はい | | |
+| Compute | Azure Windows ウィンドウ | はい | | |
+| Compute | 仮想マシン スケール セット | はい | | |
+| Compute | Azure Functions | | App Service 環境 | |
 | Web とモバイル | 内部 Web アプリケーション | | App Service 環境| |
 | Web とモバイル | 内部モバイル アプリケーション | | App Service 環境 | |
 | Web とモバイル | API アプリケーション | | App Service 環境 | |
-| Containers | Azure Container Service | | | [はい] |
-| Containers | Azure Kubernetes Service (AKS) \* | | | [はい] |
+| Containers | Azure Container Service | | | はい |
+| Containers | Azure Kubernetes Service (AKS) \* | | | はい |
 | Database | Azure SQL Database | | Azure SQL Database Managed Instance \* | Azure SQL |
-| Database | Azure Database for MySQL | | | [はい] |
-| Database | Azure Database for PostgreSQL | | | [はい] |
-| Database | Azure SQL Data Warehouse | | | [はい] |
-| Database | Azure Cosmos DB | | | [はい] |
-| Database | Azure Redis Cache | | [はい] | |
-| Storage | Azure BLOB ストレージ | [はい] | | |
-| Storage | Azure Files | [はい] | | |
-| Storage | Azure Queue Storage | [はい] | | |
-| Storage | Azure Table Storage | [はい] | | |
-| Storage | Azure Disk Storage | [はい] | | |
+| Database | Azure Database for MySQL | | | はい |
+| Database | Azure Database for PostgreSQL | | | はい |
+| Database | Azure SQL Data Warehouse | | | はい |
+| Database | Azure Cosmos DB | | | はい |
+| Database | Azure Cache for Redis | | はい | |
+| Storage | Azure BLOB ストレージ | はい | | |
+| Storage | Azure Files | はい | | |
+| Storage | Azure Queue Storage | はい | | |
+| Storage | Azure Table Storage | はい | | |
+| Storage | Azure Disk Storage | はい | | |
 
 \* 2018 年 5 現在、Azure Government ではパブリック プレビュー。

@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 05/02/2018
+ms.date: 01/02/2019
 ms.author: babanisa
-ms.openlocfilehash: cfb4dabea12f2988108d24b025e324cf05afb325
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 9464ab89e08f53f61cb6f5a4b1e91da35b785af0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301721"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54460824"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid サブスクリプション スキーマ
 
@@ -29,25 +29,25 @@ PUT /subscriptions/{subscription-id}/resourceGroups/{group-name}/providers/{reso
 PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageaccounts/examplestorage/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
-この記事は、要求の本体のプロパティとスキーマについて説明します。
- 
+イベント サブスクリプションの名前は、長さが 3 から 64 文字でなければならず、使用できるのは a から z、A から Z、0 から 9、"-" だけです。 この記事は、要求の本体のプロパティとスキーマについて説明します。
+ 
 ## <a name="event-subscription-properties"></a>イベント サブスクリプションのプロパティ
 
-| プロパティ | type | [説明] |
+| プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
 | destination | オブジェクト | エンドポイントを定義するオブジェクト。 |
 | filter | オブジェクト | イベントの種類をフィルター処理するための省略可能なフィールド。 |
 
 ### <a name="destination-object"></a>対象オブジェクト
 
-| プロパティ | type | [説明] |
+| プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
 | endpointType | 文字列 | サブスクリプションのエンドポイントの種類 (webhook/HTTP、イベント ハブ、またはキュー)。 | 
 | endpointUrl | 文字列 | このイベント サブスクリプションのイベントの送信先 URL。 | 
 
 ### <a name="filter-object"></a>フィルター オブジェクト
 
-| プロパティ | type | [説明] |
+| プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
 | includedEventTypes | array | イベント メッセージのイベントの種類がこれらのイベントの種類名のいずれかと完全に一致した場合に、適合します。 イベント名がイベント ソースに対して登録済みのイベントの種類名と一致しない場合は、エラーを発生させます。 既定では、すべてのイベントの種類と一致します。 |
 | subjectBeginsWith | 文字列 | イベント メッセージの件名フィールドに対する、プレフィックス一致のフィルター。 既定値または空の文字列はすべて一致します。 | 

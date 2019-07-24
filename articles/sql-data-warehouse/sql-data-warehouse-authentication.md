@@ -2,20 +2,20 @@
 title: Azure SQL Data Warehouse に対して認証する | Microsoft Docs
 description: Azure Active Directory (AAD) または SQL Server 認証を使用して Azure SQL Data Warehouse に対して認証する方法について説明します。
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
-ms.date: 04/12/2018
+ms.subservice: security
+ms.date: 04/02/2019
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: d082ba8bd2819450609a8a6e4ab41b4320158d4b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: a3bed9df5b62ce7f2f3df7046357dc4f2458575c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43310794"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59797037"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse に対して認証する
 Azure Active Directory (AAD) または SQL Server 認証を使用して Azure SQL Data Warehouse に対して認証する方法について説明します。
@@ -56,7 +56,7 @@ Azure Active Directory には次のような利点があります。
 * 統合 Windows 認証や、Azure Active Directory でサポートされる他の認証形式を有効にすると、パスワードが保存されません。
 * 包含データベース ユーザーを使用して、データベース レベルで ID を認証します。
 * SQL Data Warehouse に接続するアプリケーション向けにトークンベース認証をサポートしています。
-* SQL Server Management Studio の Active Directory ユニバーサル認証を介して Multi-Factor Authentication をサポートします。 Multi-Factor Authentication の説明については、「 [SQL Database と SQL Data Warehouse での Azure AD MFA のための SSMS のサポート](../sql-database/sql-database-ssms-mfa-authentication.md)」を参照してください。
+* [SQL Server Management Studio](../sql-database/sql-database-ssms-mfa-authentication.md)、[SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/azure/sql-data-warehouse/toc.json) などのさまざまなツールに対して、Active Directory ユニバーサル認証を介して Multi-Factor Authentication をサポートします。
 
 > [!NOTE]
 > Azure Active Directory はまだ比較的新しいため、制限がいくつかあります。 Azure Active Directory を環境に確実に適合させるには、「[Azure AD の機能と制限事項][Azure AD features and limitations]」の、特に「追加の考慮事項」をご覧ください。
@@ -67,7 +67,7 @@ Azure Active Directory には次のような利点があります。
 Azure Active Directory 認証を構成するには、次の手順に従います。
 
 1. Azure Active Directory を作成して設定する
-2. 省略可能: Active Directory を関連付けるか、現在 Azure サブスクリプションに関連付けられている Active Directory を変更する
+2. 省略可能:Active Directory を関連付けるか、現在 Azure サブスクリプションに関連付けられている Active Directory を変更する
 3. Azure SQL Data Warehouse 用に Azure Active Directory 管理者を作成する
 4. クライアント コンピューターを構成する
 5. Azure AD の ID にマップされている包含データベース ユーザーをデータベースに作成する

@@ -1,39 +1,40 @@
 ---
-title: 'クイック スタート: ノード Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う | Microsoft Docs'
-description: 'クイック スタート: .NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う'
+title: クイック スタート:ノード Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う - Azure Key Vault | Microsoft Docs
+description: このクイック スタートでは、.NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行います。
 services: key-vault
 author: prashanthyv
 manager: sumedhb
 ms.service: key-vault
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: a53130dcc489764ce9284f15b8de0de37e0827e5
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 346d97e6e3dad6ebacaae6c789137df4f33e2e72
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686672"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316389"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>クイック スタート: .NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>クイック スタート:.NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
-このクイック スタートでは、Azure Web アプリケーションを取得し、Azure リソースのマネージド ID を使用して Azure Key Vault から情報を読み取るために必要な手順を学習します。 学習内容は次のとおりです。
+このクイック スタートでは、Azure Web アプリケーションから、Azure リソースのマネージド ID を使用して Azure Key Vault から情報を読み取る手順を学習します。 Key Vault の使用は、情報のセキュリティ維持につながります。 学習内容は次のとおりです。
 
-> [!div class="checklist"]
-> * Key Vault を作成します。
-> * キー コンテナーにシークレットを格納する。
-> * キー コンテナーからシークレットを取得する。
-> * Azure AD Web アプリケーションを作成する。
-> * Web アプリの[マネージド サービス ID](../active-directory/managed-identities-azure-resources/overview.md) を有効にする。
-> * Web アプリケーションに必要なアクセス許可を付与して、キー コンテナーからデータを読み取る
+* Key Vault を作成します。
+* キー コンテナーにシークレットを格納する。
+* キー コンテナーからシークレットを取得する。
+* Azure AD Web アプリケーションを作成する。
+* Web アプリの[マネージド サービス ID](../active-directory/managed-identities-azure-resources/overview.md) を有効にする。
+* Web アプリケーションに必要なアクセス許可を付与して、キー コンテナーからデータを読み取る
 
-先に進む前に、[基本概念](key-vault-whatis.md#basic-concepts)を確認してください。
+先に進む前に、[Key Vault の基本概念](key-vault-whatis.md#basic-concepts)を確認してください。
 
 >[!NOTE]
 >Key Vault は、プログラムでシークレットを格納できる中央リポジトリです。 しかしこれを実行するには、アプリケーションとユーザーが最初に Key Vault に対する認証を行う (シークレットを提示する) 必要があります。 セキュリティのベスト プラクティスに従うために、最初のシークレットのローテーションが定期的に行われる必要があります。 
 >
 >[Azure リソースのマネージド サービス ID](../active-directory/managed-identities-azure-resources/overview.md) を使用すると、Azure で実行されるアプリケーションには、Azure が自動的に管理する ID が付与されます。 これにより、*シークレット導入問題*が解決されます。ユーザーとアプリケーションはベスト プラクティスに従うことができ、最初のシークレットのローテーションについて心配する必要がありません
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -77,9 +78,9 @@ az group create --name "<YourResourceGroupName>" --location "East US"
 
 次に、前の手順で作成したリソース グループにキー コンテナーを作成します。 次の情報を指定します。
 
-* キー コンテナー名: 名前の文字数は 3 から 24 文字です。使用できる文字は 0-9、a-z、A-Z、および - のみです。
+* キー コンテナー名:名前の文字数は 3 から 24 文字です。使用できる文字は 0-9、a-z、A-Z、およびハイフン (-) のみです。
 * リソース グループ名。
-* 場所: **米国東部**
+* 場所:**米国東部**。
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "East US"
@@ -143,8 +144,7 @@ Visual Studio 2017 のメイン メニューで、**[デバッグ]** > **[デバ
 
 Azure Key Vault は、資格情報およびその他のキーやシークレットを安全に保管する方法を提供しますが、コードは Key Vault に認証してそれらを取得する必要があります。 [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、Azure Active Directory (Azure AD) で自動的に管理されている ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。
 
-1. Azure CLI に戻ります。
-2. assign-identity コマンドを実行して、このアプリケーションの ID を作成します。
+Azure CLI で assign-identity コマンドを実行して、このアプリケーションの ID を作成します。
 
    ```azurecli
    az webapp identity assign --name "keyvaultdotnetcorequickstart" --resource-group "<YourResourceGroupName>"
@@ -171,10 +171,20 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 
 ```
 
-これで、アプリケーションを実行すると、取得されたシークレットの値が表示されます。 上記のコマンドでは、お使いのキー コンテナー上で **get** および **list** 操作を行うために、App Service アクセス許可の ID (MSI) を付与しています。
+これで、アプリケーションを実行すると、取得されたシークレットの値が表示されます。 上記のコマンドでは、アプリ サービスの ID に、キー コンテナーに対する **get** および **list** 操作を行うアクセス許可を付与しています。
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+リソース グループと仮想マシン、関連するすべてのリソースは、不要になったら削除してください。 そのためには、VM のリソース グループを選択し、**[削除]** を選択します。
+
+キー コンテナーは、[az keyvault delete](https://docs.microsoft.com/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-delete) コマンドを使用して削除します。
+
+```azurecli
+az keyvault delete --name
+                   [--resource-group]
+                   [--subscription]
+```
 
 ## <a name="next-steps"></a>次の手順
 
-* [Key Vault についての詳細情報](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)
-* [Azure SDK for .NET](https://github.com/Azure/azure-sdk-for-net)
-* [Azure REST API リファレンス](https://docs.microsoft.com/rest/api/keyvault/)
+> [!div class="nextstepaction"]
+> [Key Vault についての詳細情報](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)

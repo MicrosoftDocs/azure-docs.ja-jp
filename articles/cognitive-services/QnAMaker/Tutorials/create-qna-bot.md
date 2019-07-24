@@ -1,115 +1,102 @@
 ---
-title: 'チュートリアル: Azure Bot Service による QnA ボット - QnA Maker'
+title: QnA ボット - Azure Bot Service - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: このチュートリアルでは、Azure portal で Azure Bot Service v3 を使用して QnA ボットを構築する手順について説明します。
+description: 既存のナレッジ ベース用の発行ページから、QnA チャット ボットを作成します。 このボットでは、Bot Framework SDK v4 が使用されます。 ボットを構築するためにコードを記述する必要はありません。すべてのコードが自動的に提供されます。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: qna-maker`
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 04/08/2019
 ms.author: tulasim
-ms.openlocfilehash: 19c56cf05e307deca52808b0eeba65b8949ffc0b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 85b0004288a06a834b61f6e3d50017d35d66ce86
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212743"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263878"
 ---
-# <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>チュートリアル: Azure Bot Service v3 による QnA ボットの作成
+# <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>チュートリアル:Azure Bot Service v4 を使用して QnA ボットを作成する
 
-このチュートリアルでは、[Azure portal](https://portal.azure.com) でコードを書くことなく Azure Bot Service v3 を使用して QnA ボットを構築する手順について説明します。 公開されたナレッジ ベース (KB) のボットへの接続は、ボット アプリケーションの設定を変更するだけです。 
+既存のナレッジ ベース用の**発行**ページから QnA チャット ボットを作成します。 このボットでは、Bot Framework SDK v4 が使用されます。 ボットを構築するためにコードを記述する必要はありません。すべてのコードが自動的に提供されます。
 
-> [!Note] 
-> このトピックは、ボット SDK のバージョン 3 を対象にしています。 バージョン 4 については、[こちら](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&tabs=cs)をご覧ください。 
-
-**このチュートリアルで学習する内容は次のとおりです。**
+**このチュートリアルでは、以下の内容を学習します。**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * QnA Maker テンプレートを使用して Azure Bot Service を作成する
+> * 既存のナレッジ ベースから Azure ボット サービスを作成する
 > * コードが動作していることを確認するためにボットとチャットする 
-> * 公開された KB をボットに接続する
-> * 問題のボットをテストする
-
-この記事では、無料の QnA Maker [サービス](../how-to/set-up-qnamaker-service-azure.md)を使用することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアル用に公開済みのナレッジ ベースが必要です。 ない場合は、「[ナレッジ ベースの作成](../How-To/create-knowledge-base.md)」の手順に従って、質問と回答が含まれる QnA Maker サービスを作成します。
+このチュートリアル用に公開済みのナレッジ ベースが必要です。 それがない場合は、[KB の作成と KB から質問に回答](create-publish-query-in-portal.md)に関するチュートリアルの手順に従って、質問と回答が含まれる QnA Maker ナレッジ ベースを作成します。
+
+<a name="create-a-knowledge-base-bot"></a>
 
 ## <a name="create-a-qna-bot"></a>QnA ボットの作成
 
-1. Azure Portal で、**[リソースの作成]** を選択します。
+ナレッジ ベースのクライアント アプリケーションとしてボットを作成します。 
 
-    ![ボット サービスの作成](../media/qnamaker-tutorials-create-bot/bot-service-creation.png)
+1. QnA Maker ポータルで、**発行**ページに進み、ご自分のナレッジ ベースを発行します。 **[ボットを作成する]** を選択します。 
 
-2. 検索ボックスで、「**Web アプリ ボット**」を検索します。
+    ![QnA Maker ポータルで発行ページに進み、ご自分のナレッジ ベースを発行します。 [ボットを作成する] を選択します。](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)
 
-    ![ボット サービスの選択](../media/qnamaker-tutorials-create-bot/bot-service-selection.png)
+    Azure portal が開き、ボットの作成構成が表示されます。
 
-3. **[ボット サービス]** で、必要な情報を指定します。
+1.  ボットを作成するための設定を入力します。
 
-    - **[アプリ名]** にボットの名前を設定します。 この名前は、ボットがクラウドにデプロイされるときに、サブドメインとして使用されます (mynotesbot.azurewebsites.net など)。
-    - [サブスクリプション]、[リソース グループ]、[App Service プラン]、[場所] を選択します。
+    |Setting|値|目的|
+    |--|--|--|
+    |ボット名|`my-tutorial-kb-bot`|これは、ボット用の Azure リソース名です。|
+    |サブスクリプション|目的を参照。|QnA Maker リソースを作成するために使用したのと同じサブスクリプションを選択します。|
+    |リソース グループ|`my-tutorial-rg`|ボット関連の Azure リソースすべてに使用されるリソース グループ。|
+    |Location|`west us`|ボットの Azure リソースの場所。|
+    |価格レベル |`F0`|Azure ボット サービス用の Free レベル。|
+    |アプリの名前|`my-tutorial-kb-bot-app`|これは、ご利用のボットのみをサポートする Web アプリです。 これは、ご利用の QnA Maker サービスで既に使用されている名前と同じにしないでください。 QnA Maker の Web アプリを他のリソースと共有することはサポートされていません。|
+    |SDK 言語|C#|これは、ボット フレームワーク SDK によって使用される基になるプログラミング言語です。 使用する選択肢は、C# または Node.js です。|
+    |QnA 認証キー|**変更しない**|この値は自動的に入力されます。|
+    |App Service プラン/場所|**変更しない**|このチュートリアルでは、場所は重要ではありません。|
+    |Azure Storage|**変更しない**|会話データは Azure Storage テーブルに格納されます。|
+    |Application Insights|**変更しない**|ログ記録は、Application Insights に送信されます。|
+    |Microsoft アプリ ID|**変更しない**|Active Directory ユーザーとパスワードが必須です。|
 
-4. v3 テンプレートを使用するには、SDK バージョンは **SDK v3** を、SDK 言語は **C#** または **Node.js** を選択します。
+    ![これらの設定を使用して、ナレッジ ベース ボットを作成します。](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base.png)
 
-    ![ボット SDK 設定](../media/qnamaker-tutorials-create-bot/bot-v3.png)
+    ボット作成プロセスの通知によって成功が報告されるまで、数分をお待ちください。
 
-5. ボット テンプレートのフィールドで **[Question and Answer]\(質問と回答\)** テンプレートを選択し、**[選択]** を選択してテンプレート設定を保存します。
-
-    ![ボット サービスの選択](../media/qnamaker-tutorials-create-bot/bot-v3-template.png)
-
-6. 設定を確認して **[作成]** を選択します。 これによって、ボット サービスが作成され、Azure にデプロイされます。
-
-    ![ボット サービスの選択](../media/qnamaker-tutorials-create-bot/bot-blade-settings-v3.png)
-
-7. ボット サービスがデプロイされたことを確認します。
-
-    - **[通知]** (Azure portal の上端にあるベル アイコン) を選択します。 通知は、**[デプロイが開始されました]** から **[デプロイメントに成功しました]** に変わります。
-    - 通知が **[デプロイメントに成功しました]** に変わったら、その通知で **[リソースに移動]** を選択します。
+<a name="test-the-bot"></a>
 
 ## <a name="chat-with-the-bot"></a>ボットとチャットする
 
-**[リソースに移動]** を選択すると、ボットのリソースに移動します。
+1. Azure portal で、通知から新しいボット リソースを開きます。 
 
-**[Test in Web Chat]\(Web チャットでのテスト\)** を選択して、Web チャット ウィンドウを開きます。 Web チャットに "hi" と入力します。
+    ![Azure portal で、通知から新しいボット リソースを開きます。](../media/qnamaker-tutorials-create-bot/azure-portal-notifications.png)
 
-![QnA ボットの Web チャット](../media/qnamaker-tutorials-create-bot/qna-bot-web-chat.PNG)
+1. **[Bot management]\(ボット管理\)** で、**[Test in Web Chat]\(Web チャットでのテスト\)** を選択し、「`How large can my KB be?`」と入力します。 ボットの応答内容は次のとおりです。 
 
-ボットは、"Please set QnAKnowledgebaseId and QnASubscriptionKey in App Settings.  この応答は、QnA ボットがメッセージを受信したが、QnA Maker のナレッジ ベースはまだボットに関連付けられていないことを裏付けています。 
 
-## <a name="connect-your-qna-maker-knowledge-base-to-the-bot"></a>QnA Maker ナレッジ ベースをボットに接続する
+    `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment)for more details.`
 
-1. **[アプリケーション設定]** を開き、**QnAKnowledgebaseId**、**QnAAuthKey**、および **QnAEndpointHostName** の各フィールドを編集して、QnA Maker ナレッジ ベースの値を格納します。
 
-    ![アプリケーション設定](../media/qnamaker-tutorials-create-bot/application-settings.PNG)
+    ![新しいナレッジ ベースをテストします。](../media/qnamaker-tutorial-create-publish-query-in-portal/test-bot-in-web-chat-in-azure-portal.png)
 
-1. QnA Maker ポータルで、ナレッジ ベースの [設定] タブから、ナレッジ ベース ID、ホスト URL、およびエンドポイント キーを取得します。
+    Azure ボットの詳細については、「[QnA Maker を使用して質問に回答する](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&tabs=cs)」を参照してください。
 
-    - [QnA Maker](https://qnamaker.ai) にサインインする
-    - ナレッジ ベースに移動する
-    - **[設定]** タブを選択します
-    - まだの場合は、ナレッジ ベースを**発行**します。
+## <a name="related-to-qna-maker-bots"></a>QnA Maker ボット関連
 
-    ![QnA Maker の値](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
-
-> [!NOTE]
-> ナレッジ ベースのプレビュー バージョンを QnA ボットと接続する場合は、**Ocp-Apim-Subscription-Key** の値を **QnAAuthKey** に設定します。 **QnAEndpointHostName** は空のままにします。
-
-## <a name="test-the-bot"></a>ボットのテスト
-
-Azure portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** を選択してボットをテストします。 
-
-![QnA Maker ボット](../media/qnamaker-tutorials-create-bot/qna-bot-web-chat-response.PNG)
-
-QnA ボットがナレッジ ベースから回答します。
+* [ボットのサンプル](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot)として、QnA Maker ポータルで使用されている QnA Maker ヘルプ ボットを利用できます。
+    ![QnA Maker ヘルプ ボットのアイコンは赤色のロボット](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
+* [Healthcare ボット](https://docs.microsoft.com/HealthBot/qna_model_howto)は、その[言語モデル](https://docs.microsoft.com/HealthBot/qna_model_howto)の 1 つとして QnA Maker を使用します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このチュートリアルのボットを完了したら、Azure portal でボットを削除します。 ボット サービスには次のようなサービスがあります。
+このチュートリアルのボットを完了したら、Azure portal でボットを削除します。 
+
+ボットのリソースとして新しいリソース グループを作成している場合は、そのリソース グループを削除します。 
+
+新しいリソース グループを作成していない場合は、ボットに関連付けられているリソースを検索する必要があります。 ボットとボット アプリから成る名前で検索するのが最も簡単です。 ボット リソースには次のものがあります。
 
 * App Service プラン
 * Search Service

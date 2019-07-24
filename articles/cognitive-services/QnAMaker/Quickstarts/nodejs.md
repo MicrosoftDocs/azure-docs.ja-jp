@@ -4,20 +4,21 @@ titleSuffix: Azure Cognitive Services
 description: Azure 上の Microsoft Cognitive Services で Microsoft Translator Text API の使用をすぐに開始するために役立つ Node.js REST ベースの情報とコード サンプルを提供します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 02/13/2019
 ms.author: diberry
-ms.openlocfilehash: cd3d159e4482b43c6356ab7b657a79fa59159c60
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.custom: seodec18
+ms.openlocfilehash: ba4af5d3b6612614dee54db7fdb1287ff7136321
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214989"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245764"
 ---
-# <a name="qna-maker-rest-api-with-nodejs"></a>Node.js での QnA Maker REST API 
+# <a name="how-to-use-the-qna-maker-rest-api-with-nodejs"></a>Node.js で QnA Maker REST API を使用する方法 
 <a name="HOLTop"></a>
 
 この記事では、Node.js で [Microsoft QnA Maker API](../Overview/overview.md)  を使用し、次を行う方法について説明します。
@@ -34,10 +35,10 @@ ms.locfileid: "50214989"
 - [サポート技術情報を削除します。](#Delete)
 - [現在のエンドポイント キーを取得します。](#GetKeys)
 - [現在のエンドポイント キーを再生成します。](#PutKeys)
-- [現在の一連の単語変更を取得します。](#GetAlterations)
-- [現在の一連の単語変更を置換します。](#PutAlterations)
+- [大文字と小文字が区別される、現在の一連の単語変更を取得します。](#GetAlterations)
+- [大文字と小文字が区別される、現在の一連の単語変更を置換します。](#PutAlterations)
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,7 +57,7 @@ ms.locfileid: "50214989"
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -252,7 +253,7 @@ create_kb (path, content, function (result) {
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -453,7 +454,7 @@ Press any key to continue.
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -565,7 +566,7 @@ publish_kb (path, '', function (result) {
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -698,7 +699,7 @@ replace_kb (path, content, function (result) {
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -831,7 +832,7 @@ get_qna (path, function (result) {
 1. `kb` 値を、回答を求めてクエリを実行しようとするナレッジ ベースの ID に置き換えます。 このナレッジ ベースは [Publish](#Publish) メソッドを利用して公開しておく必要があります。
 1. プログラムを実行します。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -960,7 +961,7 @@ get_answers (method, content, function (result) {
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1075,7 +1076,7 @@ get_kb (path, function (result) {
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1203,7 +1204,7 @@ Press any key to continue.
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1315,7 +1316,7 @@ delete_kb (path, '', function (result) {
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1416,7 +1417,7 @@ get_keys (path, function (result) {
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1542,7 +1543,7 @@ refresh_keys (path, content, function (result) {
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1649,7 +1650,7 @@ get_alterations (path, function (result) {
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');

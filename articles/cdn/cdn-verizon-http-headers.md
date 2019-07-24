@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: magattus
-ms.openlocfilehash: 7fa76a2c5b01e623e490edd0091f7fb372b7085f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 7ce845fb272cea1d621e8ccc18203e3a071e8c29
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093240"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992017"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN ルール エンジンの Verizon 固有 HTTP ヘッダー
 
@@ -27,7 +27,7 @@ ms.locfileid: "49093240"
 
 これらのいずれかの予約済みヘッダーが配信元サーバーへの Azure CDN (Content Delivery Network) POP 要求内に追加されないようにする場合は、ルール エンジン内に[プロキシの特殊ヘッダー機能](cdn-rules-engine-reference-features.md#proxy-special-headers)に関するルールを作成する必要があります。 このルールでは、削除するヘッダーをヘッダー フィールド内の既定のヘッダーのリストから除外します。 [キャッシュ応答ヘッダーのデバッグ機能](cdn-rules-engine-reference-features.md#debug-cache-response-headers)を有効にしている場合は、必要な `X-EC-Debug` ヘッダーを追加するようにしてください。 
 
-たとえば、`Via` ヘッダーを削除するには、ルールのヘッダー フィールドに *X-Forwarded-For、X-Forwarded-Proto、X-Host、X-Midgress、X-Gateway-List、X-EC-Name、Host* のヘッダーのリストを含める必要があります。 
+たとえば、`Via`ヘッダーを削除するには、ルールのヘッダー フィールドに*X-Forwarded-For、X-Forwarded-Proto、X-Host、X-Midgress、X-Gateway-List、X-EC-Name、Host* のヘッダーのリストを含める必要があります。 
 
 ![プロキシの特殊ヘッダー ルール](./media/cdn-http-headers/cdn-proxy-special-header-rule.png)
 
@@ -41,7 +41,7 @@ X-Forwarded-Proto | 要求のプロトコルを示します。 | http
 X-Host | 要求のホスト名を示します。 | cdn.mydomain.com
 X-Midgress | 要求が追加の CDN サーバー経由でプロキシ処理されたかどうかを示します。 たとえば、POP サーバーから配信元シールド サーバーへ、または POP サーバーから ADN ゲートウェイ サーバーへです。 <br />このヘッダーは、midgress トラフィックが転送される場合にのみ要求に追加されます。 この場合、要求が追加の CDN サーバー経由でプロキシ処理されたことを示すために、ヘッダーは 1 に設定されます。| 1
 [Host](#host-request-header) | 要求されたコンテンツが見つかる可能性のあるホストとポートを識別します。 | marketing.mydomain.com:80
-[X-Gateway-List](#x-gateway-list-request-header) | ADN: 顧客配信元に割り当てられた ADN ゲートウェイ サーバーのフェールオーバー リストを識別します。 <br />Origin shield: 顧客配信元に割り当てられた配信元シールド サーバーのセットを示します。 | `icn1,hhp1,hnd1`
+[X-Gateway-List](#x-gateway-list-request-header) | ADN:顧客配信元に割り当てられた ADN ゲートウェイ サーバーのフェールオーバー リストを識別します。 <br />Origin shield:顧客配信元に割り当てられた配信元シールド サーバーのセットを示します。 | `icn1,hhp1,hnd1`
 X-EC-_&lt;name&gt;_ | *X-EC* で始まる要求ヘッダー (X-EC-Tag や [X-EC-Debug](cdn-http-debug-headers.md) など) が、CDN で使用されるために予約されます。| waf-production
 
 ## <a name="via-request-header"></a>Via 要求ヘッダー
@@ -50,18 +50,19 @@ X-EC-_&lt;name&gt;_ | *X-EC* で始まる要求ヘッダー (X-EC-Tag や [X-EC-
 `Via: Protocol from Platform (POP/ID)` 
 
 この構文で使用される用語は、次のように定義されます。
-- Protocol: 要求をプロキシ処理するために使用されるプロトコルのバージョン (HTTP/1.1 など) を示します。 
+- プロトコル:要求をプロキシ処理するために使用されるプロトコルのバージョン (HTTP/1.1 など) を示します。 
 
-- Platform: コンテンツが要求されたプラットフォームを示します。 このフィールドでは、次のコードが有効です。 
+- プラットフォーム:コンテンツが要求されたプラットフォームを示します。 このフィールドでは、次のコードが有効です。 
+
     コード | プラットフォーム
     -----|---------
     ECAcc | HTTP ラージ
     ECS   | HTTP スモール
     ECD   | Application Delivery Network (ADN)
 
-- POP: 要求を処理した [POP](cdn-pop-abbreviations.md) を示します。 
+- POP:要求を処理した [POP](cdn-pop-abbreviations.md) を示します。 
 
-- ID: 内部使用のみ。
+- ID: 内部使用専用です。
 
 ### <a name="example-via-request-header"></a>Via 要求ヘッダーの例
 

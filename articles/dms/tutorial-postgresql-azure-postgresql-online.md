@@ -1,24 +1,24 @@
 ---
-title: 'チュートリアル: Azure Database Migration Service を使用して PostgreSQL の Azure Database for MySQL へのオンライン移行を実行する | Microsoft Docs'
+title: チュートリアル:Azure Database Migration Service を使用して PostgreSQL の Azure Database for MySQL へのオンライン移行を実行する | Microsoft Docs
 description: Azure Database Migration Service を使用して、オンプレミスの PostgreSQL から Azure Database for PostgreSQL にオンライン移行を実行する方法を説明します。
 services: dms
 author: HJToland3
-ms.author: scphang
+ms.author: jtoland
 manager: craigg
-ms.reviewer: ''
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 09/26/2018
-ms.openlocfilehash: 004db061e721f0169491e98bd8e7cdd86e08bb01
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.date: 04/03/2019
+ms.openlocfilehash: ec106262653ba6d73c244f5f7c7188abf97d59c4
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963600"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59796479"
 ---
-# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>チュートリアル: DMS を使用して PostgreSQL を Azure Database for PostgreSQL にオンラインで移行する
+# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>チュートリアル:DMS を使用して PostgreSQL をオンラインで Azure Database for PostgreSQ に移行する
 Azure Database Migration Service を使用して、最小限のダウンタイムでデータベースをオンプレミスの PostgreSQL インスタンスから [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) に移行できます。 つまり、アプリケーションにとって最小限のダウンタイムで移行を実現できます。 このチュートリアルでは、Azure Database Migration Service のオンライン移行アクティビティを使用して、**DVD Rental** サンプル データベースを PostgreSQL 9.6 のオンプレミス インスタンスから Azure Database for PostgreSQL に移行します。
 
 このチュートリアルでは、以下の内容を学習します。
@@ -29,19 +29,31 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 > * 移行を実行する。
 > * 移行を監視する。
 
+> [!NOTE]
+> Azure Database Migration Service を使用してオンライン移行を実行するには、Premium 価格レベルに基づいてインスタンスを作成する必要があります。
+
 > [!IMPORTANT]
 > 最適な移行エクスペリエンスのために、ターゲット データベースと同じ Azure リージョンに Azure Database Migration Service のインスタンスを作成することをお勧めします。 リージョンや地域をまたいでデータを移動する場合、移行プロセスが遅くなり、エラーが発生する可能性があります。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するには、以下を実行する必要があります。
 
-- [PostgreSQL コミュニティ エディション](https://www.postgresql.org/download/) 9.5、9.6、または 10.3 をダウンロードしてインストールします。 ソースの PostgreSQL サーバーのバージョンが 9.5.11、9.6.7、10.3、またはそれ以降のバージョンである必要があります 詳しくは、「[サポートされている PostgreSQL Database バージョン](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)」の記事をご覧ください。
+- [PostgreSQL コミュニティ エディション](https://www.postgresql.org/download/) 9.5、9.6、または 10 をダウンロードしてインストールします。 ソースの PostgreSQL サーバーのバージョンが 9.5.11、9.6.7、10、またはそれ以降のバージョンである必要があります 詳しくは、「[サポートされている PostgreSQL Database バージョン](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)」の記事をご覧ください。
 
     また、オンプレミスの PostgreSQL のバージョンが、Azure Database for PostgreSQL のバージョンと一致する必要があります。 たとえば、PostgreSQL 9.5.11.5 は Azure Database for PostgreSQL 9.5.11 にのみ移行でき、 バージョン 9.6.7 には移行できません。
 
 - [Azure Database for PostgreSQL のインスタンスを作成します](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)。  
-- Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の VNET を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。
-- Azure Virtual Network (VNET) のネットワーク セキュリティ グループの規則によって、通信ポート 443、53、9354、445、12000 がブロックされていないことを確認します。 Azure VNET NSG トラフィックのフィルター処理の詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)」を参照してください。
+- Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Azure 仮想ネットワーク (VNET) を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。
+
+    > [!NOTE]
+    > VNET のセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用した場合、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を追加してください。
+    > - ターゲット データベース エンドポイント (SQL エンドポイント、Cosmos DB エンドポイントなど)
+    > - ストレージ エンドポイント
+    > - サービス バス エンドポイント
+    >
+    > Azure Database Migration Service にはインターネット接続がないため、この構成が必要となります。
+
+- VNET のネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への以下のインバウンド通信ポートがブロックされないことを確認します: 443、53、9354、445、12000。 Azure VNET NSG トラフィックのフィルター処理の詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)」を参照してください。
 - [データベース エンジン アクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
 - Azure Database Migration Service がソース PostgreSQL Server にアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 5432 が使用されています。
 - ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
@@ -49,7 +61,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 - CLI を呼び出すには、次の 2 つの方法があります。
     - Azure Portal の右上隅にある [Cloud Shell] ボタンを選択します。
  
-       ![Azure Portal の [Cloud Shell] ボタン](media\tutorial-postgresql-to-azure-postgresql-online\cloud-shell-button.png)
+       ![Azure Portal の [Cloud Shell] ボタン](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
  
     - CLI をローカルにインストールして実行します。 CLI 2.0 は、Azure リソースを管理するためのコマンドライン ツールです。
      
@@ -136,64 +148,64 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 ## <a name="provisioning-an-instance-of-dms-using-the-cli"></a>CLI を使用した DMS のインスタンスのプロビジョニング
 
-1.  dms の同期の拡張機能をインストールします。
-    - 次のコマンドを実行して Azure にサインインします。        
-        ```
-        az login
-        ```
+1. dms の同期の拡張機能をインストールします。
+   - 次のコマンドを実行して Azure にサインインします。        
+       ```
+       az login
+       ```
 
-    - プロンプトが表示されたら、Web ブラウザーを開き、デバイスを認証するためのコードを入力します。 記載されている手順に従います。
-    - dms の拡張機能を追加します。
-        - 使用可能な拡張機能を一覧表示するには、次のコマンドを実行します。
+   - プロンプトが表示されたら、Web ブラウザーを開き、デバイスを認証するためのコードを入力します。 記載されている手順に従います。
+   - dms の拡張機能を追加します。
+       - 使用可能な拡張機能を一覧表示するには、次のコマンドを実行します。
 
-            ```
-            az extension list-available –otable
-            ```
-        - 拡張機能をインストールするには、次のコマンドを実行します。
+           ```
+           az extension list-available –otable
+           ```
+       - 拡張機能をインストールするには、次のコマンドを実行します。
 
-            ```
-            az extension add –n dms-preview
-            ```
+           ```
+           az extension add –n dms-preview
+           ```
 
-    - dms の拡張機能が正しくインストールされていることを確認するには、次のコマンドを実行します。
+   - dms の拡張機能が正しくインストールされていることを確認するには、次のコマンドを実行します。
  
-        ```
-        az extension list -otable
-        ```
-        次の出力が表示されます。     
+       ```
+       az extension list -otable
+       ```
+       次の出力が表示されます。     
+
+       ```
+       ExtensionType    Name
+       ---------------  ------
+       whl              dms
+       ```
+
+   - DMS でサポートされているすべてのコマンドを表示するには、次のコマンドを実行します。
+       ```
+       az dms -h
+       ```
+   - 複数の Azure サブスクリプションがある場合は、次のコマンドを実行して、DMS サービスのインスタンスのプロビジョニングに使用するサブスクリプションを設定します。
 
         ```
-        ExtensionType    Name
-        ---------------  ------
-        whl              dms
+       az account set -s 97181df2-909d-420b-ab93-1bff15acb6b7
         ```
 
-    - DMS でサポートされているすべてのコマンドを表示するには、次のコマンドを実行します。
-        ```
-        az dms -h
-        ```
-    - 複数の Azure サブスクリプションがある場合は、次のコマンドを実行して、DMS サービスのインスタンスのプロビジョニングに使用するサブスクリプションを設定します。
+2. 次のコマンドを実行して、DMS のインスタンスをプロビジョニングします。
 
-         ```
-        az account set -s 97181df2-909d-420b-ab93-1bff15acb6b7
-         ```
+   ```
+   az dms create -l [location] -n <newServiceName> -g <yourResourceGroupName> --sku-name BusinessCritical_4vCores --subnet/subscriptions/{vnet subscription id}/resourceGroups/{vnet resource group}/providers/Microsoft.Network/virtualNetworks/{vnet name}/subnets/{subnet name} –tags tagName1=tagValue1 tagWithNoValue
+   ```
 
-2.  次のコマンドを実行して、DMS のインスタンスをプロビジョニングします。
+   たとえば、次の設定でサービスを作成するには、下記のコマンドを実行します。
+   - 場所:米国東部 2
+   - サブスクリプション:97181df2-909d-420b-ab93-1bff15acb6b7
+   - リソース グループ名:PostgresDemo
+   - DMS サービス名:PostgresCLI
 
-    ```
-    az dms create -l [location] -n <newServiceName> -g <yourResourceGroupName> --sku-name BusinessCritical_4vCores --subnet/subscriptions/{vnet subscription id}/resourceGroups/{vnet resource group}/providers/Microsoft.Network/virtualNetworks/{vnet name}/subnets/{subnet name} –tags tagName1=tagValue1 tagWithNoValue
-    ```
-
-    たとえば、次の設定でサービスを作成するには、下記のコマンドを実行します。
-    - 場所: East US2
-    - サブスクリプション: 97181df2-909d-420b-ab93-1bff15acb6b7
-    - リソース グループ名: PostgresDemo
-    - DMS サービス名: PostgresCLI
-
-    ```
-    az dms create -l eastus2 -g PostgresDemo -n PostgresCLI --subnet /subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-5044/subnets/Subnet-1 --sku-name BusinessCritical_4vCores
-    ```
-    DMS サービスのインスタンスを作成するには、約 10 ～ 12 分かかります。
+   ```
+   az dms create -l eastus2 -g PostgresDemo -n PostgresCLI --subnet /subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-5044/subnets/Subnet-1 --sku-name BusinessCritical_4vCores
+   ```
+   DMS サービスのインスタンスを作成するには、約 10 ～ 12 分かかります。
 
 3. DMS エージェントの IP アドレスを特定して Postgres pg_hba.conf ファイルに追加できるようにするには、次のコマンドを実行します。
 
@@ -230,103 +242,103 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
     ```
     たとえば、次のパラメーターを使用してプロジェクトを作成するには、下記のコマンドを実行します。
 
-      - 場所: 米国中西部
-      - リソース グループ名: PostgresDemo
-      - サービス名: PostgresCLI
-      - プロジェクト名: PGMigration
-      - ソース プラットフォーム: PostgreSQL
-      - ターゲット プラットフォーム: AzureDbForPostgreSql
+   - 場所:米国中西部
+   - リソース グループ名:PostgresDemo
+   - サービス名:PostgresCLI
+   - プロジェクト名:PGMigration
+   - ソース プラットフォーム:PostgreSQL
+   - ターゲット プラットフォーム:AzureDbForPostgreSql
  
-    ```
-    az dms project create -l eastus2 -n PGMigration -g PostgresDemo --service-name PostgresCLI --source-platform PostgreSQL --target-platform AzureDbForPostgreSql
-    ```
+     ```
+     az dms project create -l eastus2 -n PGMigration -g PostgresDemo --service-name PostgresCLI --source-platform PostgreSQL --target-platform AzureDbForPostgreSql
+     ```
                 
 6. 次の手順を使用して PostgreSQL 移行タスクを作成します。
 
     この手順では、接続元 IP、ユーザー ID とパスワード、接続先 IP、ユーザー ID、パスワード、およびタスクの種類を使用して接続を確立します。
 
-    - オプションの完全な一覧を表示するには、次のコマンドを実行します。
-        ```
-        az dms project task create -h
-        ```
+   - オプションの完全な一覧を表示するには、次のコマンドを実行します。
+       ```
+       az dms project task create -h
+       ```
 
-        接続元と接続先の両方について、入力パラメーターはオブジェクトの一覧を含む json ファイルを参照します。
+       接続元と接続先の両方について、入力パラメーターはオブジェクトの一覧を含む json ファイルを参照します。
  
-        PostgreSQL の接続に対する接続 JSON オブジェクトの形式。
+       PostgreSQL の接続に対する接続 JSON オブジェクトの形式。
         
-        ```
-        {
-                    "userName": "user name",    // if this is missing or null, you will be prompted
-                    "password": null,           // if this is missing or null (highly recommended) you will
-                be prompted
-                    "serverName": "server name",
-                    "databaseName": "database name", // if this is missing, it will default to the 'postgres'
-                server
-                    "port": 5432                // if this is missing, it will default to 5432
-                }
-        ```
+       ```
+       {
+                   "userName": "user name",    // if this is missing or null, you will be prompted
+                   "password": null,           // if this is missing or null (highly recommended) you will
+               be prompted
+                   "serverName": "server name",
+                   "databaseName": "database name", // if this is missing, it will default to the 'postgres'
+               server
+                   "port": 5432                // if this is missing, it will default to 5432
+               }
+       ```
 
-    - json オブジェクトを一覧表示するデータベース オプションの json ファイルもあります。 PostgreSQL の場合、データベース オプションの JSON オブジェクトの形式は次のとおりです。
+   - json オブジェクトを一覧表示するデータベース オプションの json ファイルもあります。 PostgreSQL の場合、データベース オプションの JSON オブジェクトの形式は次のとおりです。
 
-        ```
-        [
-            {
-                "name": "source database",
-                "target_database_name": "target database",
-            },
-            ...n
-        ]
-        ```
+       ```
+       [
+           {
+               "name": "source database",
+               "target_database_name": "target database",
+           },
+           ...n
+       ]
+       ```
 
-    - メモ帳で json ファイルを作成し、次のコマンドをコピーしてこのファイルに貼り付け、C:\DMS\source.json にこのファイルを保存します。
-         ```
-        {
-                    "userName": "postgres",    
-                    "password": null,           
-                be prompted
-                    "serverName": "13.51.14.222",
-                    "databaseName": "dvdrental", 
-                    "port": 5432                
-                }
-         ```
-    - target.json という別のファイルを作成し、C:\DMS\target.json として保存します。 次のコマンドを含めます。
+   - メモ帳で json ファイルを作成し、次のコマンドをコピーしてこのファイルに貼り付け、C:\DMS\source.json にこのファイルを保存します。
         ```
-        {
-                "userName": " dms@builddemotarget",    
-                "password": null,           
-                "serverName": " builddemotarget.postgres.database.azure.com",
-                "databaseName": "inventory", 
-                "port": 5432                
-            }
+       {
+                   "userName": "postgres",    
+                   "password": null,           
+               be prompted
+                   "serverName": "13.51.14.222",
+                   "databaseName": "dvdrental", 
+                   "port": 5432                
+               }
         ```
-    - 移行するデータベースとしてインベントリを一覧表示する、データベース オプションの json ファイルを作成します。
-        ``` 
-        [
-            {
-                "name": "dvdrental",
-                "target_database_name": "dvdrental",
-            }
-        ]
-        ```
-    - 次のコマンドを実行します。このコマンドは、接続元、接続先、および DB オプションの json ファイルを取り込みます。
+   - target.json という別のファイルを作成し、C:\DMS\target.json として保存します。 次のコマンドを含めます。
+       ```
+       {
+               "userName": " dms@builddemotarget",    
+               "password": null,           
+               "serverName": " builddemotarget.postgres.database.azure.com",
+               "databaseName": "inventory", 
+               "port": 5432                
+           }
+       ```
+   - 移行するデータベースとしてインベントリを一覧表示する、データベース オプションの json ファイルを作成します。
+       ``` 
+       [
+           {
+               "name": "dvdrental",
+               "target_database_name": "dvdrental",
+           }
+       ]
+       ```
+   - 次のコマンドを実行します。このコマンドは、接続元、接続先、および DB オプションの json ファイルを取り込みます。
 
-        ``` 
-        az dms project task create -g PostgresDemo --project-name PGMigration --source-platform postgresql --target-platform azuredbforpostgresql --source-connection-json c:\DMS\source.json --database-options-json C:\DMS\option.json --service-name PostgresCLI --target-connection-json c:\DMS\target.json –task-type OnlineMigration -n runnowtask    
-        ``` 
+       ``` 
+       az dms project task create -g PostgresDemo --project-name PGMigration --source-platform postgresql --target-platform azuredbforpostgresql --source-connection-json c:\DMS\source.json --database-options-json C:\DMS\option.json --service-name PostgresCLI --target-connection-json c:\DMS\target.json –task-type OnlineMigration -n runnowtask    
+       ``` 
 
-    この時点で、移行タスクが正常に送信されました。
+     この時点で、移行タスクが正常に送信されました。
 
-7.  タスクの進行状況を表示するには、次のコマンドを実行します。
+7. タスクの進行状況を表示するには、次のコマンドを実行します。
+
+   ```
+   az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
+   ```
+
+   または
 
     ```
-    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
+   az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output
     ```
-
-    または
-
-     ```
-    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output
-     ```
 
 8. 展開の出力から migrationState をクエリすることもできます。
 

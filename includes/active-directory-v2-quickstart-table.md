@@ -7,26 +7,26 @@ author: andretms
 manager: mtillman
 editor: ''
 service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/01/2018
+ms.date: 01/09/2019
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 196435a8bd260c7f1679c06127610aeee29c0fe3
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 4fc189c339e64a1f2cb3da73ea4c473425cebcbe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843576"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58051814"
 ---
-| モバイル アプリとネイティブ アプリ | Web アプリと Web API | プロトコルと直接統合する |
+| モバイル アプリとネイティブ アプリ | Web アプリと SPA | Web API |
 | --- | --- | --- |
-| [サインインを iOS アプリケーションに追加する](../articles/active-directory/develop/tutorial-v2-ios.md) | [JavaScript Single Page Application (SPA) にサインインを追加する](../articles/active-directory/develop/tutorial-v2-javascript-spa.md) |[アプリケーションを登録する](../articles/active-directory/develop/quickstart-v2-register-an-app.md) |
-| [Android アプリケーションにサインインを追加する](../articles/active-directory/develop/tutorial-v2-android.md) | [ASP.NET アプリケーションにサインインを追加する](../articles/active-directory/develop/tutorial-v2-asp-webapp.md) |[OAuth 2.0 プロトコルを使用したモバイル アプリケーション](../articles/active-directory/develop/v2-oauth2-auth-code-flow.md) |
-| [Windows デスクトップ アプリケーションにサインインを追加する](../articles/active-directory/develop/guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) |  [ASP.NET Core Web アプリケーションにサインインを追加する](https://azure.microsoft.com/resources/samples/active-directory-aspnetcore-webapp-openidconnect-v2) | [OpenID Connect プロトコルを使用した Web アプリケーション](../articles/active-directory/develop/v2-protocols-oidc.md) |
-| [マルチプラットフォームの Xamarin アプリケーションにサインインを追加する](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)| [Node.js Web アプリケーションにサインインを追加する](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) |[OpenID Connect プロトコルを使用した JavaScript SPA](../articles/active-directory/develop/v2-oauth2-implicit-grant-flow.md) |
-|  | [ASP.NET Web API を保護する](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet) | [OAuth 2.0 クライアント資格情報フローを使用したデーモン アプリケーション](../articles/active-directory/develop/v2-oauth2-client-creds-grant-flow.md) |
-|  | [ASP.NET Core Web API を保護する](https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2) | |
+|<img width="40" role="presentation" alt="iOS" src="~/articles/active-directory/develop/media/index/logo_ios.svg" data-linktype="relative-path" /><br/>[iOS アプリからサインインしてトークンを取得する](~/articles/active-directory/develop/quickstart-v2-ios.md) | <img width="40" role="presentation" alt="JavaScript" src="~/articles/active-directory/develop/media/index/logo_js.svg"/><br/>[JavaScript SPA からサインインしてトークンを取得する](~/articles/active-directory/develop/quickstart-v2-javascript.md) |<img width="40" role="presentation" alt="ASP.NET Web API" src="~/articles/active-directory/develop/media/index/logo_net.svg" /><br/> [ASP.NET Web API を保護する](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)  |
+|<img width="40" role="presentation" alt="Android" src="~/articles/active-directory/develop/media/index/logo_android.svg" /><br/>[Android アプリからサインインしてトークンを取得する](~/articles/active-directory/develop/quickstart-v2-android.md) | <img width="40" role="presentation" alt="ASP.NET" src="~/articles/active-directory/develop/media/index/logo_net.svg" /><br/>[ASP.NET アプリケーションにサインインを追加する](~/articles/active-directory/develop/quickstart-v2-aspnet-webapp.md) |<img width="40" role="presentation" alt="ASP.NET Core Web API" src="~/articles/active-directory/develop/media/index/logo_netcore.svg" /><br/>[ASP.NET Core Web API を保護する](https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2) |
+|<img width="40" role="presentation" alt="Windows Desktop" src="~/articles/active-directory/develop/media/index/logo_windows.svg" /><br/>[Windows デスクトップ アプリケーションからサインインしてトークンを取得する](~/articles/active-directory/develop/quickstart-v2-windows-desktop.md) | <img width="40" role="presentation" alt=".NET Core" src="~/articles/active-directory/develop/media/index/logo_netcore.svg" /><br/> [ASP.NET Core Web アプリケーションにサインインを追加する](~/articles/active-directory/develop/quickstart-v2-aspnet-core-webapp.md) | |
+|<img width="40" role="presentation" alt="Xamarin" src="~/articles/active-directory/develop/media/index/logo_xamarin.svg" /><br/> [マルチプラットフォームの Xamarin アプリケーションにサインインを追加する](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)| <img width="40" role="presentation" alt="Node.js" src="~/articles/active-directory/develop/media/index/logo_nodejs.svg" /><br/>[Node.js Web アプリケーションにサインインを追加する](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) | |
+|<img width="40" role="presentation" alt="Universal Windows Platform" src="~/articles/active-directory/develop/media/index/logo_windows.svg" /><br/> [UWP アプリからサインインしてトークンを取得する](~/articles/active-directory/develop/quickstart-v2-uwp.md)| | |
+|<img width="40" role="presentation" alt=".NET Core Daemon" src="~/articles/active-directory/develop/media/index/logo_netcore.svg" /><br/> [非対話型 .Net Core アプリからトークンを取得する](~/articles/active-directory/develop/quickstart-v2-netcore-daemon.md)| | |

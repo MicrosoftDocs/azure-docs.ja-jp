@@ -3,19 +3,19 @@ title: Azure Active Directory B2C カスタム ポリシーでの要求リゾル
 description: Azure Active Directory B2C 内のカスタム ポリシーで要求リゾルバーがどのように使用されるかについて説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/08/2018
+ms.date: 01/25/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: dab6b87c2785d3331817d6c191be64d406683a51
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.subservice: B2C
+ms.openlocfilehash: 44ac4a5fd14d262fdbd1f6fcd36bb2351d08f754
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49312015"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692444"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの要求リゾルバーについて
 
@@ -33,10 +33,10 @@ Azure Active Directory (Azure AD) B2C [カスタム ポリシー](active-directo
 </ClaimType>
 ```
 
-技術プロファイルでは、要求リゾルバーが要求の種類にマップされます。 Azure AD B2C では、要求リゾルバー `{context:corelationId}` の値が要求 `correlationId` に設定されて、技術プロファイルに要求が送信されます。
+技術プロファイルでは、要求リゾルバーが要求の種類にマップされます。 Azure AD B2C では、要求リゾルバー `{Context:CorrelationId}` の値が要求 `correlationId` に設定されて、技術プロファイルに要求が送信されます。
 
 ```XML
-<InputClaim ClaimTypeReferenceId="correlationId" DefaultValue="{context:corelationId}" />
+<InputClaim ClaimTypeReferenceId="correlationId" DefaultValue="{Context:CorrelationId}" />
 ```
 
 ## <a name="claim-resolver-types"></a>要求リゾルバーの種類
@@ -97,6 +97,11 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
 | {OAUTH-KV:loyalty_number} | クエリ文字列パラメーター。 | 1234 |
 | {OAUTH-KV:任意のカスタム クエリ文字列} | クエリ文字列パラメーター。 | 該当なし |
 
+### <a name="oauth2"></a>OAuth2
+
+| 要求 | 説明 | 例 |
+| ----- | ----------------------- | --------|
+| {oauth2:access_token} | アクセス トークン。 | 該当なし |
 
 ## <a name="how-to-use-claim-resolvers"></a>要求リゾルバーの使用方法
 
@@ -131,7 +136,7 @@ RESTful 技術プロファイルの例を次に示します。
 
 ### <a name="dynamic-ui-customization"></a>動的 UI のカスタマイズ
 
-Azue AD B2C を使用すると、HTML コンテンツ定義エンドポイントにクエリ文字列パラメーターを渡して、ページの内容を動的にレンダリングできます。 たとえば、Web またはモバイル アプリケーションから渡すカスタム パラメーターに基づいて、Azure AD B2C サインアップまたはサインイン ページの背景イメージを変更できます。 詳しくは、[Azure Active Directory B2C でのカスタム ポリシーを使用した UI の動的な構成](active-directory-b2c-ui-customization-custom-dynamic.md)に関するページをご覧ください。 言語パラメーターに基づいて HTML ページをローカライズしたり、クライアント ID に基づいて内容を変更したりすることもできます。
+Azure AD B2C を使用すると、HTML コンテンツ定義エンドポイントにクエリ文字列パラメーターを渡して、ページの内容を動的にレンダリングできます。 たとえば、Web またはモバイル アプリケーションから渡すカスタム パラメーターに基づいて、Azure AD B2C サインアップまたはサインイン ページの背景イメージを変更できます。 詳しくは、[Azure Active Directory B2C でのカスタム ポリシーを使用した UI の動的な構成](active-directory-b2c-ui-customization-custom-dynamic.md)に関するページをご覧ください。 言語パラメーターに基づいて HTML ページをローカライズしたり、クライアント ID に基づいて内容を変更したりすることもできます。
 
 次の例では、名前が **campaignId** で値が `hawaii` のクエリ文字列パラメーター、**language** コード `en-US`、およびクライアント ID を表す **app** を渡しています。
 

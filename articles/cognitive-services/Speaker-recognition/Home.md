@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Cognitive Services の Speaker Recognition API には、高度な話者認証および話者識別アルゴリズムが用意されています。
 services: cognitive-services
 author: dwlin
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speaker-recognition
+ms.subservice: speaker-recognition
 ms.topic: overview
 ms.date: 10/01/2018
 ms.author: dwlin
-ms.openlocfilehash: c9193a51c677b327e7d799412e389467ac5cc1c0
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 86162b4d4e752bc11c0d739f6e343c7a357ea0af
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48016859"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873718"
 ---
 # <a name="speaker-recognition-api"></a>Speaker Recognition API
 
@@ -38,7 +38,7 @@ Azure Cognitive Services の Speaker Recognition API へようこそ 話者認�
 
 検証フェーズでは、入力された音声とフレーズが、登録された声紋および語句と照合され、同一人物によって発話されているかどうか、また発話された語句が正しいかどうかが検証されます。
 
-話者認証について詳しくは、[話者 - 検証](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/563309b7778daf06340c9652)の API に関するページをご覧ください。
+話者認証の詳細については、 [話者 - 検証](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/563309b7778daf06340c9652)の API に関するページを参照してください。
 
 ## <a name="speaker-identification"></a>話者識別
 
@@ -56,4 +56,4 @@ Speaker Identification API は、オーディオ ファイル内の話者を、�
 
 認識中は、一連の予測される話者と共に、不明話者のオーディオが提供されます。 入力された音声は、それが誰の声かを特定するためにすべての話者と照合され、一致が見つかった場合は、その話者の ID が返されます。
 
-話者識別について詳しくは、[話者 - 識別](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c068e597ed22ec38f42e)の API に関するページをご覧ください。
+話者識別の詳細については、 [話者 - 識別](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c068e597ed22ec38f42e)の API に関するページを参照してください。

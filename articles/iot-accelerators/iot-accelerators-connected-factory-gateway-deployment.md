@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: ce2391014eb5e15650c0a81ebb8e2fd4a08ca96b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 99953b486fbd1daa9800aa850684447465eead9e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139226"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182100"
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>接続済みファクトリ ソリューション アクセラレータ用のエッジ ゲートウェイを Windows または Linux にデプロイする
 
@@ -39,7 +39,7 @@ ms.locfileid: "50139226"
 
 ## <a name="choose-a-gateway-device"></a>ゲートウェイ デバイスを選択する
 
-ゲートウェイ デバイスがまだない場合は、Microsoft のパートナーのいずれかから商用ゲートウェイを購入することをお勧めします。 接続済みファクトリ ソリューションと互換性のあるゲートウェイ デバイスの一覧については、 [Azure IoT デバイス カタログ](https://catalog.azureiotsuite.com/?q=opc)をご覧ください。 デバイスに付属する手順書に従って、ゲートウェイを設定します。
+ゲートウェイ デバイスがまだない場合は、Microsoft のパートナーのいずれかから商用ゲートウェイを購入することをお勧めします。 接続済みファクトリ ソリューションと互換性のあるゲートウェイ デバイスの一覧については、 [Azure IoT デバイス カタログ](https://catalog.azureiotsolutions.com/?q=opc)をご覧ください。 デバイスに付属する手順書に従って、ゲートウェイを設定します。
 
 既存のゲートウェイ デバイスを手動で設定する必要がある場合は、以下の手順に従ってください。
 
@@ -70,7 +70,7 @@ Docker コマンドで `<SharedFolder>` を参照するときは、必ずオペ�
 
 OPC コンポーネントをインストールする前に、次の手順を完了して環境を準備してください。
 
-1. ゲートウェイのデプロイを完了するには、接続済みファクトリのデプロイに IoT ハブの  **iothubowner** 接続文字列が必要です。  [Azure portal](http://portal.azure.com/) で、接続済みファクトリ ソリューションのデプロイ時に作成したリソース グループの IoT ハブに移動します。  **[共有アクセス ポリシー]** をクリックして  **iothubowner** 接続文字列にアクセスします。
+1. ゲートウェイのデプロイを完了するには、接続済みファクトリのデプロイに IoT ハブの  **iothubowner** 接続文字列が必要です。  [Azure portal](https://portal.azure.com/) で、接続済みファクトリ ソリューションのデプロイ時に作成したリソース グループの IoT ハブに移動します。  **[共有アクセス ポリシー]** をクリックして  **iothubowner** 接続文字列にアクセスします。
 
     ![IoT Hub 接続文字列を見つける](./media/iot-accelerators-connected-factory-gateway-deployment/image2.png)
 

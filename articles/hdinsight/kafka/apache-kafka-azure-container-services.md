@@ -9,20 +9,20 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: aad23f1b50a3156d01ce127270e29368f82d18b3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b9b4af353e5bbd36f1f8d7468c38542a0fabda85
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014042"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112179"
 ---
-# <a name="use-azure-kubernetes-service-with-kafka-on-hdinsight"></a>Azure Kubernetes Service で HDInsight 上の Kafka を使用する
+# <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Azure Kubernetes Service で HDInsight 上の Apache Kafka を使用する
 
-Azure Kubernetes Service (AKS) で HDInsight クラスター上の Kafka を使用する方法について説明します。 このドキュメント内の手順では、AKS でホストされている Node.js アプリケーションを使用して、Kafka との接続を検証します。 このアプリケーションでは、[kafka-node](https://www.npmjs.com/package/kafka-node) パッケージを使用して Kafka と通信します。 ブラウザー クライアントと、AKS でホストされているバックエンドとの間のイベント駆動型メッセージングには、[Socket.io](https://socket.io/) を使用します。
+Azure Kubernetes Service (AKS) で HDInsight クラスター上の [Apache Kafka](https://kafka.apache.org/) を使用する方法について説明します。 このドキュメント内の手順では、AKS でホストされている Node.js アプリケーションを使用して、Kafka との接続を検証します。 このアプリケーションでは、[kafka-node](https://www.npmjs.com/package/kafka-node) パッケージを使用して Kafka と通信します。 ブラウザー クライアントと、AKS でホストされているバックエンドとの間のイベント駆動型メッセージングには、[Socket.io](https://socket.io/) を使用します。
 
 [Apache Kafka](https://kafka.apache.org) はオープン ソースの分散ストリーム プラットフォームで、リアルタイムのストリーミング データ パイプラインとアプリケーションの構築に使用できます。 Azure Kubernetes Service は、ホストされた Kubernetes 環境を管理し、コンテナー化されたアプリケーションをすばやく簡単にデプロイできるようにします。 Azure Virtual Network を使用することで、これら 2 つのサービスを接続することができます。
 
-> [!NOTE]
+> [!NOTE]  
 > このドキュメントは、Azure Kubernetes Service が HDInsight 上の Kafka と通信できるようにするための手順に主眼を置いたものです。 ドキュメント内で示す例はあくまでも、構成が機能していることを確認するための基本的な Kafka クライアントです。
 
 ## <a name="prerequisites"></a>前提条件
@@ -49,7 +49,7 @@ HDInsight と AKS はいずれも、コンピューティング リソースの�
 
 ![仮想ネットワーク内の HDInsight、別の仮想ネットワーク内の AKS、およびピアリングを使用して接続されたネットワーク](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > ピアリングされたネットワーク間では名前解決が有効化されていないので、IP アドレス指定が使用されます。 既定では、Kafka on HDInsight はクライアント接続時に IP アドレスではなく、ホスト名を返すように構成されています。 このドキュメントの手順では、Kafka に変更を加えて、IP アドバタイズが使用されるようにします。
 
 ## <a name="create-an-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) を作成する
@@ -59,7 +59,7 @@ AKS クラスターがまだない場合は、次のいずれかのドキュメ�
 * [Azure Kubernetes Service (AKS) クラスターのデプロイ - Portal](../../aks/kubernetes-walkthrough-portal.md)
 * [Azure Kubernetes Service (AKS) クラスターのデプロイ - CLI](../../aks/kubernetes-walkthrough.md)
 
-> [!NOTE]
+> [!NOTE]  
 > AKS では、インストール時に仮想ネットワークが作成されます。 このネットワークは、次のセクションで HDInsight 用に作成するネットワークにピアリングされます。
 
 ## <a name="configure-virtual-network-peering"></a>仮想ネットワーク ピアリングを構成する
@@ -72,7 +72,7 @@ AKS クラスターがまだない場合は、次のいずれかのドキュメ�
 
 4. HDInsight 用の仮想ネットワークを作成するには、__[+ リソースの作成]__、__[ネットワーク]__、__[仮想ネットワーク]__ の順に選択します。
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > 新しい仮想ネットワークの値を入力する際には、AKS クラスター ネットワークに使用されているものと重複しないアドレス空間を使用する必要があります。
 
     AKS クラスターに使用した仮想ネットワークと同じ __場所__ を使用します。
@@ -81,26 +81,26 @@ AKS クラスターがまだない場合は、次のいずれかのドキュメ�
 
 5. HDInsight ネットワークと AKS クラスター ネットワークの間のピアリングを構成するには、仮想ネットワークを選択し、__[ピアリング]__ を選択します。 __[+ 追加]__ を選択し、次の値を使用してフォームに値を入力します。
 
-    * __[名前]__: このピアリング構成に対する一意の名前を入力します。
-    * __[仮想ネットワーク]__: このフィールドを使用して、**AKS クラスター**用の仮想ネットワークを選択します。
+   * __[名前]__:このピアリング構成の一意の名前を入力します。
+   * __仮想ネットワーク__:**AKS クラスター**用の仮想ネットワークを選択するには、このフィールドを使用します。
 
-    その他のフィールドはすべて既定値のままにし、__[OK]__ を選択してピアリングを構成します。
+     その他のフィールドはすべて既定値のままにし、__[OK]__ を選択してピアリングを構成します。
 
 6. AKS クラスター ネットワークと HDInsight ネットワークの間のピアリングを構成するには、__AKS クラスターの仮想ネットワーク__ を選択し、__[ピアリング]__ を選択します。 __[+ 追加]__ を選択し、次の値を使用してフォームに値を入力します。
 
-    * __[名前]__: このピアリング構成に対する一意の名前を入力します。
-    * __[仮想ネットワーク]__: このフィールドを使用して、__HDInsight クラスター__ 用の仮想ネットワークを選択します。
+   * __[名前]__:このピアリング構成の一意の名前を入力します。
+   * __仮想ネットワーク__:__HDInsight クラスター__ 用の仮想ネットワークを選択するには、このフィールドを使用します。
 
-    その他のフィールドはすべて既定値のままにし、__[OK]__ を選択してピアリングを構成します。
+     その他のフィールドはすべて既定値のままにし、__[OK]__ を選択してピアリングを構成します。
 
-## <a name="install-kafka-on-hdinsight"></a>Kafka on HDInsight をインストールする
+## <a name="install-apache-kafka-on-hdinsight"></a>HDInsight に Apache Kafka をインストールする
 
-Kafka HDInsight クラスターを作成する際には、先ほど HDInsight 用に作成した仮想ネットワークに参加する必要があります。 Kafka を作成する方法については、[Kafka クラスターの作成](apache-kafka-get-started.md)に関するドキュメントをご覧ください。
+Kafka HDInsight クラスターを作成する際には、先ほど HDInsight 用に作成した仮想ネットワークに参加する必要があります。 Kafka クラスターの作成の詳細については、[Apache Kafka クラスターの作成](apache-kafka-get-started.md)に関するドキュメントを参照してください。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > クラスターを作成する際には、__詳細設定__ を使用して、HDInsight 用に作成した仮想ネットワークに接続する必要があります。
 
-## <a name="configure-kafka-ip-advertising"></a>Kafka の IP アドバタイズを構成する
+## <a name="configure-apache-kafka-ip-advertising"></a>Apache Kafka の IP アドバタイズを構成する
 
 次の手順を使用して、ドメイン名の代わりに IP アドレスを提供するように Kafka を構成します。
 
@@ -152,16 +152,16 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
 この時点で、Kafka と Azure Kubernetes Service はピアリングされた仮想ネットワークを通じて通信できるようになっています。 この接続をテストするには、次の手順に従います。
 
-1. テスト アプリケーションによって使用される Kafka トピックを作成します。 Kafka クラスターを作成する方法については、[Kafka クラスターの作成](apache-kafka-get-started.md)に関するドキュメントをご覧ください。
+1. テスト アプリケーションによって使用される Kafka トピックを作成します。 Kafka トピックを作成する方法については、[Apache Kafka クラスターの作成](apache-kafka-get-started.md)に関するドキュメントをご覧ください。
 
 2. サンプル アプリケーションは [https://github.com/Blackmist/Kafka-AKS-Test](https://github.com/Blackmist/Kafka-AKS-Test) からダウンロードできます。
 
 3. `index.js` ファイルを編集し、次の行を変更します。
 
-    * `var topic = 'mytopic'`: `mytopic` を、このアプリケーションで使用される Kafka トピックの名前に置き換えます。
-    * `var brokerHost = '176.16.0.13:9092`: `176.16.0.13` を、クラスターのブローカー ホスト (いずれか 1 つ) の内部 IP アドレスに置き換えます。
+    * `var topic = 'mytopic'`:`mytopic` を、このアプリケーションで使用される Kafka トピックの名前に置き換えます。
+    * `var brokerHost = '176.16.0.13:9092`:`176.16.0.13` を、クラスターのいずれかのブローカー ホストの内部 IP アドレスに置き換えます。
 
-        クラスター内のブローカー ホスト (workernodes) の内部 IP アドレスを取得する方法については、[Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) に関するドキュメントを参照してください。 ドメイン名が `wn` で始まるいずれかのエントリの IP アドレスを選択します。
+        クラスター内のブローカー ホスト (workernodes) の内部 IP アドレスを取得する方法については、[Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) に関するドキュメントを参照してください。 ドメイン名が `wn` で始まるいずれかのエントリの IP アドレスを選択します。
 
 4. `src` ディレクトリのコマンドラインから、依存関係をインストールし、Docker を使用してデプロイ用のイメージを作成します。
 
@@ -169,7 +169,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
     docker build -t kafka-aks-test .
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > このアプリケーションで必要となるパッケージはリポジトリにチェックインされるので、`npm` ユーティリティを使用してそれらをインストールする必要はありません。
 
 5. Azure Container Registry (ACR) にログインし、loginServer 名を探します。
@@ -179,7 +179,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
     az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Azure Container Registry 名がわからない場合や、Azure CLI で Azure Kubernetes Service を操作する方法がわからない場合は、[AKS チュートリアル](../../aks/tutorial-kubernetes-prepare-app.md)に関するドキュメントを参照してください。
 
 6. ローカルの `kafka-aks-test` イメージを、ACR の loginServer にタグ付けします。 末尾には `:v1` を付加し、イメージのバージョンを示します。
@@ -217,19 +217,19 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
 12. フィールドにテキストを入力し、__[送信]__ ボタンを選択します。 データが Kafka に送信されます。 その後、アプリケーション内の Kafka コンシューマーによりメッセージが読み取られ、__[Messages from Kafka]__ セクションに追加されます。
 
-    > [!WARNING]
+    > [!WARNING]  
     > 同じメッセージが複数返されることがあります。 この問題は通常、接続後にブラウザーを更新した場合や、アプリケーションへのブラウザー接続を複数開いた場合に発生します。
 
 ## <a name="next-steps"></a>次の手順
 
 次のリンクを使用することで、HDInsight で Apache Kafka を使用する方法を知ることができます。
 
-* [HDInsight での Kafka の使用](apache-kafka-get-started.md)
+* [HDInsight での Apache Kafka の使用](apache-kafka-get-started.md)
 
-* [MirrorMaker を使用した HDInsight での Kafka のレプリカの作成](apache-kafka-mirroring.md)
+* [MirrorMaker を使用して HDInsight 上の Apache Kafka のレプリカを作成する](apache-kafka-mirroring.md)
 
-* [HDInsight での Kafka に Apache Storm を使用する](../hdinsight-apache-storm-with-kafka.md)
+* [HDInsight 上の Apache Kafka で Apache Storm を使用する](../hdinsight-apache-storm-with-kafka.md)
 
-* [HDInsight での Kafka に Apache Spark を使用する](../hdinsight-apache-spark-with-kafka.md)
+* [HDInsight 上の Apache Kafka で Apache Spark を使用する](../hdinsight-apache-spark-with-kafka.md)
 
-* [Azure Virtual Network 経由で Kafka に接続する](apache-kafka-connect-vpn-gateway.md)
+* [Azure Virtual Network 経由で Apache Kafka に接続する](apache-kafka-connect-vpn-gateway.md)

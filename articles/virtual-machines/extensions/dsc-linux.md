@@ -14,16 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 70280676453bd146102ca331daae038b947aab58
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 67f72c5b396bc935f7bec34bc8a52f63131649b1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632859"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58904476"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux 用の DSC 拡張機能 (Microsoft.OSTCExtensions.DSCForLinux)
-
-## <a name="overview"></a>概要
 
 Desired State Configuration (DSC) は、コードで構成を行って IT および開発インフラストラクチャを管理できる管理プラットフォームです。
 
@@ -36,21 +34,18 @@ DSCForLinux 拡張機能は Microsoft によって公開され、サポートさ
 - カスタム DSC モジュールを Linux VM にインストールする (Install ExtensionAction)
 - カスタム DSC モジュールを Linux VM から削除する (Remove ExtensionAction)
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-DSC Linux 拡張機能では、以下を除き、すべての[拡張機能のサポート対象 OS](https://azurewiki.cloudapp.netVMAgentExtension/extensionSupportedOSs) がサポートされます。
+DSC Linux 拡張機能では、以下を除き、[Azure で動作保証済みの Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)がすべてサポートされます。
 
-| ディストリビューション | Version |
+| ディストリビューション | バージョン |
 |---|---|
-| CentOS Linux | 6.5 以上 |
-| Ubuntu| 12.04 LTS、14.04 LTS、16.04 LTS  |
-| RHEL| 6.5 以上  |
-| openSUSE| 13.1 以上  |
-| SUSE Linux Enterprise Server| 11 SP3 以上  |
-
-  
+| Debian | すべてのバージョン |
+| Ubuntu| 18.04 |
  
 ### <a name="internet-connectivity"></a>インターネット接続
 
@@ -64,11 +59,11 @@ DSCForLinux 拡張機能では、ターゲット仮想マシンがインター�
 
 * `FileUri`: (省略可能、文字列) MOF ファイル/メタ MOF ファイル/カスタム リソース ZIP ファイルの URI。
 * `ResourceName`: (省略可能、文字列) カスタム リソース モジュールの名前
-* `ExtensionAction`: (省略可能、文字列) 拡張機能で実行されるアクションを指定します。 有効な値は、Register、Push、Pull、Install、Remove です。 これは、指定されていない場合に既定で Push アクションと見なされます。
+* `ExtensionAction`: (省略可能、文字列) 拡張機能で実行されるアクションを指定します。 有効な値は次のとおりです。Register、Push、Pull、Install、Remove。 これは、指定されていない場合に既定で Push アクションと見なされます。
 * `NodeConfigurationName`: (省略可能、文字列) 適用するノード構成の名前。
 * `RefreshFrequencyMins`: (省略可能、整数) プル サーバーからの構成の取得が DSC によって試行される頻度 (分単位) を指定します。 
        プル サーバー上の構成がターゲット ノード上の現在の構成と異なる場合、その構成は保留中ストアにコピーされてから適用されます。
-* `ConfigurationMode`: (省略可能、文字列) DSC によって構成が適用される方法を指定します。 有効な値は ApplyOnly、ApplyAndMonitor、ApplyAndAutoCorrect です。
+* `ConfigurationMode`: (省略可能、文字列) DSC によって構成が適用される方法を指定します。 有効な値は次のとおりです。ApplyOnly、ApplyAndMonitor、ApplyAndAutoCorrect。
 * `ConfigurationModeFrequencyMins`: (省略可能、整数) DSC によって構成が望ましい状態にされる頻度 (分単位) を指定します。
 
 > [!NOTE]
@@ -371,10 +366,10 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
 Azure アカウント (Azure Resource Manager モード) にログインするには、次を実行します。
 
 ```powershell>
-Login-AzureRmAccount
+Login-AzAccount
 ```
 
-Azure Resource Manager で Azure PowerShell を使用する方法について詳しく確認するには、[**こちら**](../../azure-resource-manager/powershell-azure-resource-manager.md)をクリックしてください。
+Azure Resource Manager で Azure PowerShell を使用する方法について詳しく確認するには、[**こちら**](../../azure-resource-manager/manage-resources-powershell.md)をクリックしてください。
 
 次を実行して DSCForLinux 拡張機能をデプロイできます。
 
@@ -403,7 +398,7 @@ $publicConfig = '{
 ```
 
 ```
-Set-AzureRmVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location `
+Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location `
   -Name $extensionName -Publisher $publisher -ExtensionType $extensionName `
   -TypeHandlerVersion $version -SettingString $publicConfig -ProtectedSettingString $privateConfig
 ```
@@ -424,8 +419,8 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 /var/log/azure/<extension-name>/<version>/extension.log file.
 ```
 
-エラー コード: 51 は、サポートされていないディストリビューションとサポートされていない拡張機能アクションのいずれかを表します。
-場合によっては、既に高いバージョンの OMI がマシン内に存在するときに、DSC Linux 拡張機能で OMI のインストールが失敗します  (エラー応答: (000003) ダウングレードは許可されていません)。
+エラー コード:51 は、サポートされていないディストリビューションまたはサポートされていない拡張機能アクションのいずれかを表します。
+場合によっては、既に高いバージョンの OMI がマシン内に存在するときに、DSC Linux 拡張機能で OMI のインストールが失敗します  [エラー応答:(000003) ダウングレードは許可されていません]
 
 
 

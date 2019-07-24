@@ -1,6 +1,18 @@
-
+---
+author: wesmc7777
+ms.service: redis-cache
+ms.topic: include
+ms.date: 11/21/2018
+ms.author: wesmc
+ms.openlocfilehash: dd9700c9472e07daf294eca12b766e3dc4832955
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53111675"
+---
 ### <a name="cacheskuname"></a>cacheSKUName
-新しい Azure Redis Cache の価格レベルです。
+新しい Azure Cache for Redis の価格レベルです。
 
     "cacheSKUName": {
       "type": "string",
@@ -10,7 +22,7 @@
       ],
       "defaultValue": "Basic",
       "metadata": {
-        "description": "The pricing tier of the new Azure Redis Cache."
+        "description": "The pricing tier of the new Azure Cache for Redis."
       }
     },
 
@@ -33,7 +45,7 @@ SKU のファミリです。
 
 
 ### <a name="cacheskucapacity"></a>cacheSKUCapacity
-新しい Azure Redis Cache インスタンスのサイズです。 
+新しい Azure Cache for Redis インスタンスのサイズです。 
 
     "cacheSKUCapacity": {
       "type": "int",
@@ -48,7 +60,7 @@ SKU のファミリです。
       ],
       "defaultValue": 0,
       "metadata": {
-        "description": "The size of the new Azure Redis Cache instance. "
+        "description": "The size of the new Azure Cache for Redis instance. "
       }
     }
 

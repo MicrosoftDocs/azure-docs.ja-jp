@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: bdf5b5188dd584c5eb20f72ff4a98ba6904bc53e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 6663e3fc48408de83e92f39e8c8070005818852d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702376"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097981"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure Stream Analytics の JavaScript ユーザー定義集計 (プレビュー)
  
@@ -28,7 +28,7 @@ Azure Stream Analytics は JavaScript で記述されたユーザー定義集計
 
 AccumulateOnly 集計が蓄積できるのは、その状態にとって新しいイベントだけです。このアルゴリズムでは値の処分はできません。 この集計の種類は、状態の値からのイベント情報の処分を実装できない場合に選択します。 AccumulatOnly 集計用の JavaScript テンプレートを次に示します。
 
-````JavaScript
+```JavaScript
 // Sample UDA which state can only be accumulated.
 function main() {
     this.init = function () {
@@ -43,13 +43,13 @@ function main() {
         return this.state;
     }
 }
-````
+```
 
 ### <a name="accumulatedeaccumulate-aggregates"></a>AccumulateDeaccumulate 集計
 
 AccumulateDeaccumulate 集計を使用すると、前に蓄積した値を状態から処分できます。たとえば、イベント値の一覧からキーと値のペアを削除したり、sum 集計の状態から値を減算したりできます。 AccumulateDeaccumulate 集計用の JavaScript テンプレートを次に示します。
 
-````JavaScript
+```JavaScript
 // Sample UDA which state can be accumulated and deaccumulated.
 function main() {
     this.init = function () {
@@ -72,7 +72,7 @@ function main() {
         return this.state;
     }
 }
-````
+```
 
 ## <a name="uda---javascript-function-declaration"></a>UDA - JavaScript 関数の宣言
 
@@ -129,7 +129,7 @@ JavaScript UDA のデータ型については、[JavaScript UDF の統合](strea
 1. [新しい関数] ビューで、関数の種類として **[JavaScript UDA]** を選択すると、既定の UDA テンプレートがエディターに表示されます。
 1. UDA エイリアスとして "TWA" を入力し、関数の実装を次のように変更します。
 
-    ````JavaScript
+    ```JavaScript
     // Sample UDA which calculate Time-Weighted Average of incoming values.
     function main() {
         this.init = function () {
@@ -167,7 +167,7 @@ JavaScript UDA のデータ型については、[JavaScript UDF の統合](strea
             return result;
         }
     }
-    ````
+    ```
 
 1. [保存] ボタンをクリックすると、関数リストに UDA が表示されます。
 
@@ -177,7 +177,7 @@ JavaScript UDA のデータ型については、[JavaScript UDF の統合](strea
 
 Azure portal でジョブを開き、クエリを編集して必須プレフィックス "uda." を持つ TWA() 関数を呼び出します。 例: 
 
-````SQL
+```SQL
 WITH value AS
 (
     SELECT
@@ -191,13 +191,13 @@ SELECT
     uda.TWA(value) as NoseDoseTWA
 FROM value
 GROUP BY TumblingWindow(minute, 5)
-````
+```
 
 ## <a name="testing-query-with-uda"></a>UDA でクエリをテストする
 
 ローカル JSON ファイルを下記の内容で作成して Stream Analytics ジョブにアップロードし、上記のクエリをテストします。
 
-````JSON
+```JSON
 [
   {"EntryTime": "2017-06-10T05:01:00-07:00", "NoiseLevelDB": 80, "DurationSecond": 22.0},
   {"EntryTime": "2017-06-10T05:02:00-07:00", "NoiseLevelDB": 81, "DurationSecond": 37.8},
@@ -223,7 +223,7 @@ GROUP BY TumblingWindow(minute, 5)
   {"EntryTime": "2017-06-10T05:20:00-07:00", "NoiseLevelDB": 113, "DurationSecond": 25.1},
   {"EntryTime": "2017-06-10T05:22:00-07:00", "NoiseLevelDB": 110, "DurationSecond": 5.3}
 ]
-````
+```
 
 ## <a name="get-help"></a>問い合わせ
 

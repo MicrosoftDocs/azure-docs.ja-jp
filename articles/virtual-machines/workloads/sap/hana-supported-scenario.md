@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0e9d57c224150454677a03462368038ed8c63edf
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 501c5ffa86f2360e44c187e087f7285bbf4084fd
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576495"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482965"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA L インスタンスのサポートされるシナリオ
 このドキュメントでは、HANA L インスタンス (HLI) のサポートされるシナリオとそのアーキテクチャの詳細について説明します。
@@ -31,13 +31,13 @@ HLI ユニットのプロビジョニングに進む前に、SAP またはサー
 ## <a name="terms-and-definitions"></a>用語と定義
 このドキュメントで使用されている用語と定義について理解しましょう。
 
-- SID: HANA システムのシステム識別子。
-- HLI: HANA L インスタンス。
-- DR: ディザスター リカバリー サイト。
-- 標準 DR: DR 目的にのみ使用される専用ソースによるシステム設定。
-- 多目的 DR: DR イベントに使用するように構成された実稼働インスタンスと共に、非実稼働環境を使用するように構成された DR サイトのシステム。 
-- 単一 SID: 1 つのインスタンスがインストールされているシステム。
-- マルチ SID: 複数のインスタンスが構成されているシステム。 MCOS 環境とも呼ばれます。
+- SID:HANA システムのシステム識別子。
+- HLI:HANA L インスタンス。
+- DR:ディザスター リカバリー サイト。
+- 標準 DR:DR 目的にのみ使用される専用ソースによるシステム設定。
+- 多目的 DR:DR イベントに使用するように構成された実稼働インスタンスと共に、非実稼働環境を使用するように構成された DR サイトのシステム。 
+- 単一 SID:1 つのインスタンスがインストールされているシステム。
+- マルチ SID:複数のインスタンスが構成されているシステム。 MCOS 環境とも呼ばれます。
 
 
 ## <a name="overview"></a>概要
@@ -68,10 +68,10 @@ HANA L インスタンスは、ビジネス要件を達成するためにさま�
 | b | TYPE I | eth2.tenant | eno3.tenant | ノード間 |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | STONITH |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | ノード間 |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | STONITH |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | ノード間 |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | STONITH |
 
 HLI ユニットに構成されたトポロジに基づいてインターフェイスを使用します。 たとえば、インターフェイス "B" はノード間通信用に設定されています。これは、スケールアウト トポロジが構成されている場合に便利です。 単一ノードのスケールアップ構成の場合、このインターフェイスは使用されません。 インターフェイスの使用方法の詳細については、実際に必要なシナリオを確認してください (このドキュメントで後述します)。 
 
@@ -101,7 +101,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 ストレージは、要求されたトポロジに基づいて事前に構成されています。 ボリュームのサイズとマウントポイントは、構成されているサーバー、SKU、およびトポロジの数に応じて変わります。 詳細については、実際に必要なシナリオを確認してください (このドキュメントで後述します)。 さらにストレージが必要な場合は、1 TB ずつ購入できます。
 
 >[!NOTE]
->マウントポイント /usr/sap/<SID> は、/hana/shared マウントポイントへのシンボリック リンクです。
+>マウントポイント /usr/sap/\<SID> は、/hana/shared マウントポイントへのシンボリック リンクです。
 
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
@@ -142,10 +142,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 | b | TYPE I | eth2.tenant | eno3.tenant | 構成されているが使用されていない |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
 
 ### <a name="storage"></a>Storage
 次のマウントポイントは事前に構成されています。
@@ -177,10 +177,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 | b | TYPE I | eth2.tenant | eno3.tenant | 構成されているが使用されていない |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
 
 ### <a name="storage"></a>Storage
 次のマウントポイントは事前に構成されています。
@@ -217,10 +217,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 | b | TYPE I | eth2.tenant | eno3.tenant | 構成されているが使用されていない |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
 
 ### <a name="storage"></a>Storage
 次のマウントポイントは事前に構成されています。
@@ -235,9 +235,9 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
-- MCOS の場合: ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
+- MCOS の場合:ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
 - DR: ボリュームとマウントポイントは、DR HLI ユニットの実稼働 HANA インスタンスのインストール用に構成されます ("HANA のインストールに必須" とマークされています)。 
-- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」のドキュメントを参照してください。
+- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)」のドキュメントを参照してください。
 - **SKU Type I クラス**のブート ボリュームは DR ノードです。
 
 
@@ -258,10 +258,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 | b | TYPE I | eth2.tenant | eno3.tenant | 構成されているが使用されていない |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
 
 ### <a name="storage"></a>Storage
 次のマウントポイントは事前に構成されています。
@@ -284,9 +284,9 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
-- MCOS の場合: ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
+- MCOS の場合:ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
 - DR: ボリュームとマウントポイントは、DR HLI ユニットの実稼働 HANA インスタンスのインストール用に構成されます ("HANA のインストールに必須" とマークされています)。 
-- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」のドキュメントを参照してください。 
+- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)」のドキュメントを参照してください。 
 - DR: QA インスタンスのインストール用に、QA のデータ、ログバックアップ、ログ、共有ボリューム ("QA インスタンスのインストール" とマークされています) が構成されています。
 - **SKU Type I クラス**のブート ボリュームは DR ノードです。
 
@@ -312,10 +312,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 | b | TYPE I | eth2.tenant | eno3.tenant | 構成されているが使用されていない |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | STONITH 用に使用 |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | STONITH 用に使用 |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | STONITH 用に使用 |
 
 ### <a name="storage"></a>Storage
 次のマウントポイントは事前に構成されています。
@@ -335,7 +335,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
-- MCOS の場合: ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
+- MCOS の場合:ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
 - STONITH: SBD は STONITH 設定用に構成されています。 ただし、STONITH の使用は省略可能です。
 
 
@@ -360,10 +360,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 | b | TYPE I | eth2.tenant | eno3.tenant | 構成されているが使用されていない |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | STONITH 用に使用 |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | STONITH 用に使用 |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | STONITH 用に使用 |
 
 ### <a name="storage"></a>Storage
 次のマウントポイントは事前に構成されています。
@@ -391,11 +391,11 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
-- MCOS の場合: ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
+- MCOS の場合:ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
 - STONITH: SBD は STONITH 設定用に構成されています。 ただし、STONITH の使用は省略可能です。
 - DR: プライマリおよびセカンダリ ノードのレプリケーションには、**2 セットのストレージ ボリュームが必要です**。
 - DR: ボリュームとマウントポイントは、DR HLI ユニットの実稼働 HANA インスタンスのインストール用に構成されます ("HANA のインストールに必須" とマークされています)。 
-- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」のドキュメントを参照してください。 
+- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)」のドキュメントを参照してください。 
 - DR: QA インスタンスのインストール用に、QA のデータ、ログバックアップ、ログ、共有ボリューム ("QA インスタンスのインストール" とマークされています) が構成されています。
 - **SKU Type I クラス**のブート ボリュームは DR ノードです。
 
@@ -419,10 +419,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 | b | TYPE I | eth2.tenant | eno3.tenant | ノード間通信 |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | ノード間通信 |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | ノード間通信 |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
 
 ### <a name="storage"></a>Storage
 次のマウントポイントは事前に構成されています。
@@ -460,10 +460,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 | b | TYPE I | eth2.tenant | eno3.tenant | ノード間通信 |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | ノード間通信 |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | ノード間通信 |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
 
 ### <a name="storage"></a>Storage
 次のマウントポイントは事前に構成されています。
@@ -496,10 +496,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 | b | TYPE I | eth2.tenant | eno3.tenant | ノード間通信 |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | ノード間通信 |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | ノード間通信 |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
 
 ### <a name="storage"></a>Storage
 次のマウントポイントは事前に構成されています。
@@ -535,10 +535,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 | b | TYPE I | eth2.tenant | eno3.tenant | ノード間通信 |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | ノード間通信 |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | ノード間通信 |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
 
 ### <a name="storage"></a>Storage
 次のマウントポイントは事前に構成されています。
@@ -559,7 +559,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
 -  DR: ボリュームとマウントポイントは、DR HLI ユニットの実稼働 HANA インスタンスのインストール用に構成されます ("HANA のインストールに必須" とマークされています)。 
-- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)」のドキュメントを参照してください。 
+- DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)」のドキュメントを参照してください。 
 - **SKU Type I クラス**のブート ボリュームは DR ノードです。
 
 

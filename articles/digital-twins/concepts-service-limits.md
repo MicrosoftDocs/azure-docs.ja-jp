@@ -1,19 +1,19 @@
 ---
 title: Azure Digital Twins パブリック プレビュー サービスの制限 | Microsoft Docs
-description: Azure Digital Twins パブリック プレビュー サービスの制限について説明します
+description: Azure Digital Twins パブリック プレビュー サービスの制限について説明します。
 author: dwalthermsft
 manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 01/03/2019
 ms.author: dwalthermsft
-ms.openlocfilehash: 86ae75118dd1311ea2ae92fb718fe4c58b8e5673
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: cc873ad441c93a7fce54c275e9f7d52f0b044319
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961757"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302427"
 ---
 # <a name="public-preview-service-limits"></a>パブリック プレビューのサービスの制限
 
@@ -35,21 +35,25 @@ ms.locfileid: "50961757"
 
 さらに、Azure Digital Twins の各インスタンスでは次のものを使用できます。
 
-- 1 つの **IotHub** リソース。
-- イベントの種類が **DeviceMessage** である 1 つの **EventHub** エンドポイント。
+- サービスのプロビジョニング中に自動的に作成される組み込み **IoTHub** リソースが厳密に 1 つだけ。
+- イベントの種類が **DeviceMessage** であるちょうど 1 つの **EventHub** エンドポイント。
 - イベントの種類が **SensorChange**、**SpaceChange**、**TopologyOperation**、または **UdfCustom** である、最大 3 つの **EventHub**、**ServiceBus**、または **EventGrid** エンドポイント。
 
-## <a name="management-api-limits"></a>Management API の制限
+> [!NOTE]
+> 上記の Azure IoT のエンティティの作成で通常定義されるパラメーターの一部は、パブリック プレビュー中には必要ではありません。
+> - 最新の API の仕様については、[Swagger リファレンス ドキュメント](./how-to-use-swagger.md)を参照してください。
 
-Management API に対する要求のレート制限は次のとおりです。
+## <a name="azure-digital-twins-management-api-limits"></a>Azure Digital Twins Management API の制限
 
-- Management API に対して 1 秒あたり 100 件の要求。
-- 1 つの Management API クエリで返されるオブジェクトは最大 1,000 個。 
+Azure Digital Twins Management API に対する要求のレート制限は次のとおりです。
+
+- Azure Digital Twins Management API に対して 1 秒あたり 100 件の要求。
+- 1 つの Azure Digital Twins Management API クエリで返されるオブジェクトは最大 1,000 個。
 
 > [!IMPORTANT]
 > 1,000 オブジェクトの制限を超過する場合は、エラーが発生し、クエリを簡素化する必要があります。
 
-## <a name="udf-rate-limits"></a>UDF のレート制限
+## <a name="user-defined-functions-rate-limits"></a>ユーザー定義関数のレート制限
 
 次の制限では、Azure Digital Twins インスタンスに対して行うことができるすべてのユーザー定義関数呼び出しの合計数が設定されます。
 
@@ -59,7 +63,7 @@ Management API に対する要求のレート制限は次のとおりです。
 > [!NOTE]
 > 次の操作により、追加のレート制限が一時的に適用される場合があります。
 > - トポロジ オブジェクト メタデータに対して行われる編集
-> - UDF の定義に対して行われる更新
+> - ユーザー定義関数の定義に加えられた更新
 > - 初めてテレメトリを送信するデバイス
 
 ## <a name="device-telemetry-limits"></a>デバイスのテレメトリ制限
@@ -70,4 +74,4 @@ Management API に対する要求のレート制限は次のとおりです。
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Digital Twins のサンプルを試すには、[使用可能な部屋を検索するクイック スタート](./quickstart-view-occupancy-dotnet.md)のページをご覧ください。
+- Azure Digital Twins のサンプルを試すには、[使用可能な部屋を検索するクイック スタート](./quickstart-view-occupancy-dotnet.md)のページをご覧ください。

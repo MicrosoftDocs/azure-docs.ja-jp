@@ -1,235 +1,229 @@
-items:
 - name: Data Factory V1 のドキュメント
+  href: null
 - name: 現在のバージョンのドキュメントに切り替える
   href: ../introduction.md
 - name: 概要
   items:
-  - name: Azure Data Factory の概要
-    href: data-factory-introduction.md
-  - name: 概念
-    items:
-    - name: パイプラインとアクティビティ
-      href: data-factory-create-pipelines.md
-    - name: データセット
-      href: data-factory-create-datasets.md
-    - name: スケジュールと実行
-      href: data-factory-scheduling-and-execution.md
+    - name: Azure Data Factory の概要
+      href: data-factory-introduction.md
+    - name: 概念
+      items:
+        - name: パイプラインとアクティビティ
+          href: data-factory-create-pipelines.md
+        - name: データセット
+          href: data-factory-create-datasets.md
+        - name: スケジュールと実行
+          href: data-factory-scheduling-and-execution.md
 - name: 作業の開始
-  items:
-  - name: データ コピー パイプラインの作成
-    href: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
-    items:
-    - name: コピー ウィザード
-      href: data-factory-copy-data-wizard-tutorial.md
-    - name: Azure ポータル
-      href: data-factory-copy-activity-tutorial-using-azure-portal.md
-    - name: Visual Studio
-      href: data-factory-copy-activity-tutorial-using-visual-studio.md
-    - name: Azure PowerShell
-      href: data-factory-copy-activity-tutorial-using-powershell.md
-    - name: REST API
-      href: data-factory-copy-activity-tutorial-using-rest-api.md
-    - name: .NET API
-      href: data-factory-copy-activity-tutorial-using-dotnet-api.md
-  - name: データ変換パイプラインの作成
-    href: data-factory-build-your-first-pipeline.md
-    items:
-    - name: Azure ポータル
-      href: data-factory-build-your-first-pipeline-using-editor.md
-    - name: Visual Studio
-      href: data-factory-build-your-first-pipeline-using-vs.md
-    - name: Azure PowerShell
-      href: data-factory-build-your-first-pipeline-using-powershell.md
-    - name: Azure Resource Manager テンプレート
-      href: data-factory-build-your-first-pipeline-using-arm.md
-    - name: REST API
-      href: data-factory-build-your-first-pipeline-using-rest-api.md
-  - name: オンプレミスとクラウドの間でのデータ移動
-    href: data-factory-move-data-between-onprem-and-cloud.md
-  - name: FAQ
-    href: data-factory-faq.md
   expanded: true
+  items:
+    - name: データ コピー パイプラインの作成
+      href: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
+      items:
+        - name: コピー ウィザード
+          href: data-factory-copy-data-wizard-tutorial.md
+        - name: Azure ポータル
+          href: data-factory-copy-activity-tutorial-using-azure-portal.md
+        - name: Visual Studio
+          href: data-factory-copy-activity-tutorial-using-visual-studio.md
+        - name: Azure PowerShell
+          href: data-factory-copy-activity-tutorial-using-powershell.md
+        - name: REST API
+          href: data-factory-copy-activity-tutorial-using-rest-api.md
+        - name: .NET API
+          href: data-factory-copy-activity-tutorial-using-dotnet-api.md
+    - name: データ変換パイプラインの作成
+      href: data-factory-build-your-first-pipeline.md
+      items:
+        - name: Azure ポータル
+          href: data-factory-build-your-first-pipeline-using-editor.md
+        - name: Visual Studio
+          href: data-factory-build-your-first-pipeline-using-vs.md
+        - name: Azure PowerShell
+          href: data-factory-build-your-first-pipeline-using-powershell.md
+        - name: Azure Resource Manager テンプレート
+          href: data-factory-build-your-first-pipeline-using-arm.md
+        - name: REST API
+          href: data-factory-build-your-first-pipeline-using-rest-api.md
+    - name: オンプレミスとクラウドの間でのデータ移動
+      href: data-factory-move-data-between-onprem-and-cloud.md
+    - name: FAQ
+      href: data-factory-faq.md
 - name: 方法
   items:
-  - name: データの移動
-    items:
-    - name: コピー アクティビティの概要
-      href: data-factory-data-movement-activities.md
-    - name: Data Factory コピー ウィザード
-      href: data-factory-azure-copy-wizard.md
+    - name: データの移動
       items:
-      - name: 1 TB を 15 分以内に読み込む
-        href: data-factory-load-sql-data-warehouse.md
-    - name: パフォーマンスとチューニングのガイド
-      href: data-factory-copy-activity-performance.md
-    - name: フォールト トレランス
-      href: data-factory-copy-activity-fault-tolerance.md
-    - name: セキュリティに関する考慮事項
-      href: data-factory-data-movement-security-considerations.md
-    - name: コネクタ
+        - name: コピー アクティビティの概要
+          href: data-factory-data-movement-activities.md
+        - name: Data Factory コピー ウィザード
+          href: data-factory-azure-copy-wizard.md
+          items:
+            - name: 1 TB を 15 分以内に読み込む
+              href: data-factory-load-sql-data-warehouse.md
+        - name: パフォーマンスとチューニングのガイド
+          href: data-factory-copy-activity-performance.md
+        - name: フォールト トレランス
+          href: data-factory-copy-activity-fault-tolerance.md
+        - name: セキュリティに関する考慮事項
+          href: data-factory-data-movement-security-considerations.md
+        - name: Connectors
+          items:
+            - name: Amazon Redshift
+              href: data-factory-amazon-redshift-connector.md
+            - name: Amazon S3
+              href: data-factory-amazon-simple-storage-service-connector.md
+            - name: Azure Blob Storage
+              href: data-factory-azure-blob-connector.md
+            - name: Azure Cosmos DB
+              href: data-factory-azure-documentdb-connector.md
+            - name: Azure Data Lake Storage Gen1
+              href: data-factory-azure-datalake-connector.md
+            - name: Azure Search
+              href: data-factory-azure-search-connector.md
+            - name: Azure SQL Database
+              href: data-factory-azure-sql-connector.md
+            - name: Azure SQL Data Warehouse
+              href: data-factory-azure-sql-data-warehouse-connector.md
+            - name: Azure Table Storage
+              href: data-factory-azure-table-connector.md
+            - name: Cassandra
+              href: data-factory-onprem-cassandra-connector.md
+            - name: DB2
+              href: data-factory-onprem-db2-connector.md
+            - name: ファイル システム
+              href: data-factory-onprem-file-system-connector.md
+            - name: FTP
+              href: data-factory-ftp-connector.md
+            - name: HDFS
+              href: data-factory-hdfs-connector.md
+            - name: HTTP
+              href: data-factory-http-connector.md
+            - name: MongoDB
+              href: data-factory-on-premises-mongodb-connector.md
+            - name: MySQL
+              href: data-factory-onprem-mysql-connector.md
+            - name: OData
+              href: data-factory-odata-connector.md
+            - name: ODBC
+              href: data-factory-odbc-connector.md
+            - name: Oracle
+              href: data-factory-onprem-oracle-connector.md
+            - name: PostgreSQL
+              href: data-factory-onprem-postgresql-connector.md
+            - name: Salesforce
+              href: data-factory-salesforce-connector.md
+            - name: SAP Business Warehouse
+              href: data-factory-sap-business-warehouse-connector.md
+            - name: SAP HANA
+              href: data-factory-sap-hana-connector.md
+            - name: SFTP
+              href: data-factory-sftp-connector.md
+            - name: SQL Server
+              href: data-factory-sqlserver-connector.md
+            - name: Sybase
+              href: data-factory-onprem-sybase-connector.md
+            - name: Teradata
+              href: data-factory-onprem-teradata-connector.md
+            - name: Web テーブル
+              href: data-factory-web-table-connector.md
+        - name: Data Management Gateway
+          href: data-factory-data-management-gateway.md
+    - name: データを変換する
+      href: data-factory-data-transformation-activities.md
       items:
-      - name: Amazon Redshift
-        href: data-factory-amazon-redshift-connector.md
-      - name: Amazon S3
-        href: data-factory-amazon-simple-storage-service-connector.md
-      - name: Azure Blob Storage
-        href: data-factory-azure-blob-connector.md
-      - name: Azure Cosmos DB
-        href: data-factory-azure-documentdb-connector.md
-      - name: Azure Data Lake Storage Gen1
-        href: data-factory-azure-datalake-connector.md
-      - name: Azure Search
-        href: data-factory-azure-search-connector.md
-      - name: Azure SQL Database
-        href: data-factory-azure-sql-connector.md
-      - name: Azure SQL Data Warehouse
-        href: data-factory-azure-sql-data-warehouse-connector.md
-      - name: Azure Table Storage
-        href: data-factory-azure-table-connector.md
-      - name: Cassandra
-        href: data-factory-onprem-cassandra-connector.md
-      - name: DB2
-        href: data-factory-onprem-db2-connector.md
-      - name: ファイル システム
-        href: data-factory-onprem-file-system-connector.md
-      - name: FTP
-        href: data-factory-ftp-connector.md
-      - name: HDFS
-        href: data-factory-hdfs-connector.md
-      - name: HTTP
-        href: data-factory-http-connector.md
-      - name: MongoDB
-        href: data-factory-on-premises-mongodb-connector.md
-      - name: MySQL
-        href: data-factory-onprem-mysql-connector.md
-      - name: OData
-        href: data-factory-odata-connector.md
-      - name: ODBC
-        href: data-factory-odbc-connector.md
-      - name: Oracle
-        href: data-factory-onprem-oracle-connector.md
-      - name: PostgreSQL
-        href: data-factory-onprem-postgresql-connector.md
-      - name: Salesforce
-        href: data-factory-salesforce-connector.md
-      - name: SAP Business Warehouse
-        href: data-factory-sap-business-warehouse-connector.md
-      - name: SAP HANA
-        href: data-factory-sap-hana-connector.md
-      - name: SFTP
-        href: data-factory-sftp-connector.md
-      - name: SQL Server
-        href: data-factory-sqlserver-connector.md
-      - name: Sybase
-        href: data-factory-onprem-sybase-connector.md
-      - name: Teradata
-        href: data-factory-onprem-teradata-connector.md
-      - name: Web テーブル
-        href: data-factory-web-table-connector.md
-    - name: Data Management Gateway
-      href: data-factory-data-management-gateway.md
-  - name: データを変換する
-    href: data-factory-data-transformation-activities.md
-    items:
-    - name: HDInsight Hive アクティビティ
-      href: data-factory-hive-activity.md
-    - name: HDInsight Pig アクティビティ
-      href: data-factory-pig-activity.md
-    - name: HDInsight MapReduce アクティビティ
-      href: data-factory-map-reduce.md
-    - name: HDInsight Streaming アクティビティ
-      href: data-factory-hadoop-streaming-activity.md
-    - name: HDInsight Spark アクティビティ
-      href: data-factory-spark.md
-    - name: Machine Learning バッチ実行アクティビティ
-      href: data-factory-azure-ml-batch-execution-activity.md
-    - name: Machine Learning 更新リソース アクティビティ
-      href: data-factory-azure-ml-update-resource-activity.md
-    - name: ストアド プロシージャ アクティビティ
-      href: data-factory-stored-proc-activity.md
-    - name: Data Lake Analytics U-SQL アクティビティ
-      href: data-factory-usql-activity.md
-    - name: .NET カスタム アクティビティ
-      href: data-factory-use-custom-activities.md
-    - name: R スクリプトを呼び出す
-      href: https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample
-    - name: Azure Analysis Services でモデルを再処理する
-      href: https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample
-    - name: コンピューティングのリンクされたサービス
-      href: data-factory-compute-linked-services.md
-  - name: 開発
-    items:
-    - name: Azure Resource Manager テンプレート
-      href: data-factory-how-to-use-resource-manager-templates.md
-    - name: サンプル
-      href: data-factory-samples.md
-    - name: 関数およびシステム変数
-      href: data-factory-functions-variables.md
-    - name: 名前付け規則
-      href: data-factory-naming-rules.md
-    - name: .NET API の変更ログ
-      href: data-factory-api-change-log.md
-  - name: 監視と管理
-    items:
-    - name: 監視と管理アプリ
-      href: data-factory-monitor-manage-app.md
-    - name: Azure Data Factory のパイプライン
-      href: data-factory-monitor-manage-pipelines.md
-    - name: .NET SDK の使用
-      href: data-factory-create-data-factories-programmatically.md
-    - name: Data Factory のトラブルシューティング
-      href: data-factory-troubleshoot.md
-    - name: Data Management Gateway の使用に関する問題のトラブルシューティング
-      href: data-factory-troubleshoot-gateway-issues.md
-  - name: ストアド プロシージャ アクティビティを使用した SSIS パッケージの呼び出し
-    href: how-to-invoke-ssis-package-stored-procedure-activity.md
+        - name: HDInsight Hive アクティビティ
+          href: data-factory-hive-activity.md
+        - name: HDInsight Pig アクティビティ
+          href: data-factory-pig-activity.md
+        - name: HDInsight MapReduce アクティビティ
+          href: data-factory-map-reduce.md
+        - name: HDInsight Streaming アクティビティ
+          href: data-factory-hadoop-streaming-activity.md
+        - name: HDInsight Spark アクティビティ
+          href: data-factory-spark.md
+        - name: Machine Learning バッチ実行アクティビティ
+          href: data-factory-azure-ml-batch-execution-activity.md
+        - name: Machine Learning 更新リソース アクティビティ
+          href: data-factory-azure-ml-update-resource-activity.md
+        - name: ストアド プロシージャ アクティビティ
+          href: data-factory-stored-proc-activity.md
+        - name: Data Lake Analytics U-SQL アクティビティ
+          href: data-factory-usql-activity.md
+        - name: .NET カスタム アクティビティ
+          href: data-factory-use-custom-activities.md
+        - name: R スクリプトを呼び出す
+          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample'
+        - name: Azure Analysis Services でモデルを再処理する
+          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample'
+        - name: コンピューティングのリンクされたサービス
+          href: data-factory-compute-linked-services.md
+    - name: 開発
+      items:
+        - name: Azure Resource Manager テンプレート
+          href: data-factory-how-to-use-resource-manager-templates.md
+        - name: サンプル
+          href: data-factory-samples.md
+        - name: 関数およびシステム変数
+          href: data-factory-functions-variables.md
+        - name: 名前付け規則
+          href: data-factory-naming-rules.md
+        - name: .NET API の変更ログ
+          href: data-factory-api-change-log.md
+    - name: 監視と管理
+      items:
+        - name: 監視と管理アプリ
+          href: data-factory-monitor-manage-app.md
+        - name: Azure Data Factory のパイプライン
+          href: data-factory-monitor-manage-pipelines.md
+        - name: .NET SDK の使用
+          href: data-factory-create-data-factories-programmatically.md
+        - name: Data Factory のトラブルシューティング
+          href: data-factory-troubleshoot.md
+        - name: Data Management Gateway の使用に関する問題のトラブルシューティング
+          href: data-factory-troubleshoot-gateway-issues.md
+    - name: ストアド プロシージャ アクティビティを使用した SSIS パッケージの呼び出し
+      href: how-to-invoke-ssis-package-stored-procedure-activity.md
 - name: リファレンス
   items:
-  - name: コード サンプル
-    href: https://azure.microsoft.com/resources/samples/?service=data-factory
-  - name: Azure PowerShell
-    href: /powershell/module/azurerm.datafactories
-  - name: .NET
-    href: /dotnet/api/microsoft.azure.management.datafactories.models
-  - name: REST ()
-    href: /rest/api/datafactory/
-  - name: JSON
-    href: data-factory-json-scripting-reference.md
+    - name: コード サンプル
+      href: 'https://azure.microsoft.com/resources/samples/?service=data-factory'
+    - name: Azure PowerShell
+      href: /powershell/module/az.datafactory
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.datafactories.models
+    - name: REST
+      href: /rest/api/datafactory/
+    - name: JSON
+      href: data-factory-json-scripting-reference.md
 - name: リソース
   items:
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/
-  - name: ケース スタディ
-    href: data-factory-customer-case-studies.md
-  - name: ラーニング パス
-    href: https://azure.microsoft.com/documentation/learning-paths/data-factory
-  - name: MSDN フォーラム
-    href: https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/data-factory/
-  - name: 料金計算ツール
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Data Management Gateway のリリース ノート
-    href: data-factory-gateway-release-notes.md
-  - name: 機能をリクエストする
-    href: https://feedback.azure.com/forums/270578-azure-data-factory
-  - name: サービスの更新情報
-    href: https://azure.microsoft.com/updates/?product=data-factory
-  - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-data-factory
-  - name: ビデオ
-    href: https://azure.microsoft.com/documentation/videos/index/?services=data-factory
-  - name: Data Factory と Batch を使用して大規模なデータセットを処理する
-    href: data-factory-data-processing-using-batch.md
-  - name: ケース スタディ
-    items:
-    - name: 顧客プロファイリング
-      href: data-factory-customer-profiling-usecase.md
-    - name: 製品の推奨
-      href: data-factory-product-reco-usecase.md
-ms.openlocfilehash: 5f2c249f5e822b26d7e1cd5a4fe0c340feb108bf
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363041"
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: ケース スタディ
+      href: data-factory-customer-case-studies.md
+    - name: ラーニング パス
+      href: 'https://azure.microsoft.com/documentation/learning-paths/data-factory'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/data-factory/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Data Management Gateway のリリース ノート
+      href: data-factory-gateway-release-notes.md
+    - name: 機能をリクエストする
+      href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=data-factory'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=data-factory'
+    - name: Data Factory と Batch を使用して大規模なデータセットを処理する
+      href: data-factory-data-processing-using-batch.md
+    - name: ケース スタディ
+      items:
+        - name: 顧客プロファイリング
+          href: data-factory-customer-profiling-usecase.md
+        - name: 製品の推奨
+          href: data-factory-product-reco-usecase.md

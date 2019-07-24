@@ -32,11 +32,24 @@ items:
   - name: Resource Graph を使用してご利用の Azure リソースを探索する
     displayName: vms, public ip
     href: ./concepts/explore-resources.md
+  - name: 大規模なデータ セットを処理する
+    displayName: page, first, skip, token
+    href: ./concepts/work-with-data.md
   expanded: true
 - name: リファレンス
   items:
-  - name: REST API
+  - name: Azure CLI
+    href: /cli/azure/ext/resource-graph/graph
+  - name: Azure PowerShell
+    href: /powershell/module/az.resourcegraph/
+  - name: Azure SDK for .NET
+    href: /dotnet/api/Microsoft.Azure.Management.ResourceGraph
+  - name: Azure SDK for Python
+    href: /python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph
+  - name: REST
     href: /rest/api/azureresourcegraph/resources/resources
+  - name: OpenAPI
+    href: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2018-09-01-preview
 - name: リソース
   items:
   - name: Azure のロードマップ
@@ -45,9 +58,11 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: UserVoice
     href: https://feedback.azure.com/forums/915958-azure-governance
-ms.openlocfilehash: 7f22ae5214cff0b5790e49bdf1a05c1af3277cb6
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+  - name: ガバナンスに関する YouTube チャンネル
+    href: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
+ms.openlocfilehash: 9097c3c450eada7d264e5e4c0bfa5eb281cc9601
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50245873"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726704"

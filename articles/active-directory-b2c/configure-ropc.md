@@ -3,46 +3,48 @@ title: Azure Active Directory B2C でリソース所有者のパスワード資�
 description: Azure AD B2C でリソース所有者のパスワード資格情報フローを構成する方法について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 2ea9356f1292669f115d2bb482419435320f644c
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.subservice: B2C
+ms.openlocfilehash: ca3fd76cfeb09fe4e18a04bff38e166928ef38b2
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978827"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401770"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Azure AD B2C でリソース所有者のパスワード資格情報フロー を構成する
 
 リソース所有者のパスワード資格情報 (ROPC) フローは、OAuth の標準認証フローです。アプリケーションは、証明書利用者とも呼ばれ、ID トークン、アクセス トークン、および更新トークンのユーザー ID とパスワードなどの有効な資格情報を交換します。 
 
-> [!NOTE]
-> この機能はプレビュー段階にあります。
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 Azure Active Directory (Azure AD) B2C では、次のオプションがサポートされています。
 
-- **ネイティブ クライアント**: 認証時のユーザー操作は、ユーザー側のデバイスでコードが実行されているときに発生します。 デバイスは、Android などのネイティブ オペレーティング システムで実行されているモバイル アプリケーションや、JavaScript などのブラウザーで実行されているモバイル アプリケーションの可能性があります。
-- **パブリック クライアント フロー**: アプリケーションによって収集されたユーザーの資格情報のみが API 呼び出しで送信されます。 アプリケーションの資格情報は送信されません。
-- **新しい要求の追加**新しい要求を追加するために、ID トークンの内容を変更することができます。 
+- **ネイティブ クライアント**:認証時のユーザー操作は、ユーザー側のデバイスでコードが実行されているときに発生します。 デバイスは、Android などのネイティブ オペレーティング システムで実行されているモバイル アプリケーションや、JavaScript などのブラウザーで実行されているモバイル アプリケーションの可能性があります。
+- **パブリック クライアント フロー**:アプリケーションによって収集されたユーザーの資格情報のみが API 呼び出しで送信されます。 アプリケーションの資格情報は送信されません。
+- **新しい要求の追加**:新しい要求を追加するために、ID トークンの内容を変更することができます。 
 
 次のフローはサポートされていません。
 
-- **サーバー対サーバー**: ID 保護システムは、対話の一環として、呼び出し元 (ネイティブ クライアント) から収集された信頼できる IP アドレスを必要とします。 サーバー側の API 呼び出しでは、サーバーの IP アドレスのみが使用されます。 失敗した認証の動的しきい値を超えた場合、ID 保護システムによって、繰り返される IP アドレスが攻撃者として特定される可能性があります。
-- **機密性の高いクライアント フロー**: アプリケーション クライアント ID は検証されますが、アプリケーション シークレットは検証されません。
+- **サーバー対サーバー**:ID 保護システムは、対話の一環として、呼び出し元 (ネイティブ クライアント) から収集された信頼できる IP アドレスを必要とします。 サーバー側の API 呼び出しでは、サーバーの IP アドレスのみが使用されます。 失敗した認証の動的しきい値を超えた場合、ID 保護システムによって、繰り返される IP アドレスが攻撃者として特定される可能性があります。
+- **機密性の高いクライアント フロー**:アプリケーション クライアント ID は検証されますが、アプリケーション シークレットは検証されません。
 
-##  <a name="create-a-resource-owner-policy"></a>リソース所有者のポリシーを作成する
+##  <a name="create-a-resource-owner-user-flow"></a>リソース所有者のユーザー フローを作成する
 
 1. Azure AD B2C テナントの全体管理者として、Azure portal にサインインします。
 2. Azure AD B2C テナントに切り替えるには、ポータルの右上隅で B2C ディレクトリを選択します。
-3. **[ポリシー]** で、**[リソース所有者のポリシー]** を選択します。
-4. *ROPC_Auth* など、ポリシーの名前を入力して **[アプリケーション要求]** を選択します。
-5. *[表示名]*、*[メール アドレス]*、*[ID プロバイダー]* など、アプリケーションに必要なアプリケーション要求を選択します。
-6. **[OK]** を選択し、**[作成]** を選択します。
+3. **[User Flows]** をクリックし、**[新しいユーザー フロー]** を選択します。
+4. **[すべて]** タブをクリックして、**[ROPC を使用してサインイン]** を選択します。
+5. *ROPC_Auth* など、ユーザー フローの名前を入力します。
+6. **[アプリケーション要求]** の **[さらに表示する]** をクリックします。
+7. [表示名]、[メール アドレス]、[ID プロバイダー] など、アプリケーションに必要なアプリケーション要求を選択します。
+8. **[OK]** を選択し、**[作成]** を選択します。
+9. **[ユーザー フローを実行します]** をクリックします。
 
    次の例のようなエンドポイントが表示されます。
 
@@ -57,9 +59,9 @@ Azure Active Directory (Azure AD) B2C では、次のオプションがサポー
 4. その他のすべての値はそのままにして、**[作成]** を選択します。
 5. 新しいアプリケーションを選択し、後で使用するためにアプリケーション ID をメモします。
 
-## <a name="test-the-policy"></a>ポリシーをテストする
+## <a name="test-the-user-flow"></a>ユーザー フローをテストする
 
-お気に入りの API 開発アプリケーションを使用して API 呼び出しを生成し、応答を確認して、ポリシーをデバッグします。 次の表の情報を使用して、POST 要求の本文として、このような呼び出しを作成します。
+お気に入りの API 開発アプリケーションを使用して API 呼び出しを生成し、応答を確認して、ユーザー フローをデバッグします。 次の表の情報を使用して、POST 要求の本文として、このような呼び出しを作成します。
 - *\<yourtenant.onmicrosoft.com>* は実際の B2C テナント名に置き換えます。
 - *\<B2C_1A_ROPC_Auth>* は実際のリソース所有者のパスワード資格情報ポリシーのフル ネームに置き換えます。
 - *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3>* は実際の登録のアプリケーション ID に置き換えます。
@@ -80,7 +82,7 @@ Azure Active Directory (Azure AD) B2C では、次のオプションがサポー
 実際の POST 要求は次のようになります。
 
 ```
-POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
+POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth HTTP/1.1
 Host: yourtenant.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 

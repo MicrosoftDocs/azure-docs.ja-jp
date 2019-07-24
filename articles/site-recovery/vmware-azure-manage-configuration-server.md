@@ -1,22 +1,25 @@
 ---
 title: Azure Site Recovery での VMware と物理サーバー ディザスター リカバリーのために構成サーバーを管理する | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にディザスター リカバリーするための既存の構成サーバーを管理する方法について説明します。
-author: rayne-wiselman
-manager: carmonm
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/11/2018
-ms.author: raynew
-ms.openlocfilehash: e8f41ef44adbd72e8ab16329d5fec94c08df2fe7
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.date: 04/15/2019
+ms.author: ramamill
+ms.openlocfilehash: 7fab3b05429e430b444c2a14213c524fbf19a01d
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568456"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149497"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>VMware VM のディザスター リカバリー用の構成サーバーを管理する
 
 Azure への VMware 仮想マシンと物理サーバーのディザスター リカバリーに [Azure Site Recovery](site-recovery-overview.md) を使うときは、オンプレミスの構成サーバーを設定します。 構成サーバーは、オンプレミスの VMware と Azure の間の通信を調整し、データのレプリケーションを管理します。 この記事は、展開後に構成サーバーを管理するための一般的なタスクをまとめたものです。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="access-configuration-server"></a>構成サーバーにアクセスする
 
@@ -93,25 +96,25 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
 必要な場合は、同じコンテナーに構成サーバーを再登録することができます。 構成サーバー マシンで実行されている既定のプロセス サーバーだけでなく、他のプロセス サーバー マシンがある場合は、両方のマシンを再登録します。
 
 
-  1. コンテナーで、**[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** を開きます。
-  2. **[サーバー]** で **[登録キーのダウンロード]** を選択して、コンテナーの資格情報ファイルをダウンロードします。
-  3. 構成サーバー マシンにサインインします。
-  4. **%ProgramData%\ASR\home\svsystems\bin** で、**cspsconfigtool.exe** を開きます。
-  5. **[Vault Registration]\(コンテナーの登録\)** タブで **[参照]** を選択して、ダウンロードしたコンテナー資格情報ファイルを探します。
-  6. 必要な場合は、プロキシ サーバーの詳細を指定します。 次に、**[登録]** を選択します。
-  7. 管理者の PowerShell コマンド ウィンドウを開き、次のコマンドを実行します。
+1. コンテナーで、**[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** を開きます。
+2. **[サーバー]** で **[登録キーのダウンロード]** を選択して、コンテナーの資格情報ファイルをダウンロードします。
+3. 構成サーバー マシンにサインインします。
+4. **%ProgramData%\ASR\home\svsystems\bin** で、**cspsconfigtool.exe** を開きます。
+5. **[Vault Registration]\(コンテナーの登録\)** タブで **[参照]** を選択して、ダウンロードしたコンテナー資格情報ファイルを探します。
+6. 必要な場合は、プロキシ サーバーの詳細を指定します。 次に、**[登録]** を選択します。
+7. 管理者の PowerShell コマンド ウィンドウを開き、次のコマンドを実行します。
    ```
-      $pwd = ConvertTo-SecureString -String MyProxyUserPassword
-      Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
+    $pwd = ConvertTo-SecureString -String MyProxyUserPassword
+    Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
    ```
 
-      >[!NOTE]
-      >構成サーバーからスケール アウト プロセス サーバーに**最新の証明書を取得する**には、コマンド *“<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>" --registermt* を実行します
+    >[!NOTE]
+    >構成サーバーからスケール アウト プロセス サーバーに**最新の証明書を取得する**には、コマンド *“<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>" --registermt* を実行します
 
-  8. 最後に、次のコマンドを実行して obengine を再起動します。
-  ```
-          net stop obengine
-          net start obengine
+8. 最後に、次のコマンドを実行して obengine を再起動します。
+   ```
+        net stop obengine
+        net start obengine
    ```
 
 
@@ -137,10 +140,12 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
 - 9.7、9.8、9.9、または 9.10 を実行している場合は、9.11 に直接アップグレードできます。
 - 9.6 以前を実行している場合に、9.11 にアップグレードするには、まずバージョン 9.7 にアップグレードしてから、 9.11 にアップグレードする必要があります。
 
-すべてのバージョンの構成サーバーにアップグレードするための更新プログラムのロールアップへのリンクは、[Azure の更新プログラムのページ](https://azure.microsoft.com/updates/?product=site-recovery)にあります。
+Azure Site Recovery コンポーネントのサポート ステートメントに関する詳細なガイダンスについては、[こちら](https://aka.ms/asr_support_statement)を参照してください。
+すべてのバージョンの構成サーバーにアップグレードするための更新プログラムのロールアップへのリンクは、[こちら](https://aka.ms/asr_update_rollups)にあります。
 
 > [!IMPORTANT]
-> Azure Site Recovery コンポーネントの新バージョン "N" がリリースされるたびに、"N - 4" よりも前のすべてのバージョンはサポート対象外と見なされます。 常に使用可能な最新バージョンにアップグレードすることをお勧めします。
+> Azure Site Recovery コンポーネントの新バージョン "N" がリリースされるたびに、"N - 4" よりも前のすべてのバージョンはサポート対象外と見なされます。 常に使用可能な最新バージョンにアップグレードすることをお勧めします。</br>
+> Azure Site Recovery コンポーネントのサポート ステートメントに関する詳細なガイダンスについては、[こちら](https://aka.ms/asr_support_statement)を参照してください。
 
 次のようにサーバーをアップグレードします。
 
@@ -158,6 +163,64 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
     ![アップデート](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. **[完了]** をクリックしてインストーラーを閉じます。
+8. その他の Site Recovery コンポーネントをアップグレードするには、[アップグレードのガイダンス](https://aka.ms/asr_vmware_upgrades)に関する記事を参照してください。
+
+## <a name="upgrade-configuration-serverprocess-server-from-the-command-line"></a>コマンド ラインから構成サーバー/プロセス サーバーをアップグレードする
+
+インストール ファイルを次のように実行します。
+
+  ```
+  UnifiedSetup.exe [/ServerMode <CS/PS>] [/InstallDrive <DriveLetter>] [/MySQLCredsFilePath <MySQL credentials file path>] [/VaultCredsFilePath <Vault credentials file path>] [/EnvType <VMWare/NonVMWare>] [/PSIP <IP address to be used for data transfer] [/CSIP <IP address of CS to be registered with>] [/PassphraseFilePath <Passphrase file path>]
+  ```
+
+### <a name="sample-usage"></a>使用例
+  ```
+  MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
+  cd C:\Temp\Extracted
+  UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "CS" /InstallLocation "D:\" /MySQLCredsFilePath "C:\Temp\MySQLCredentialsfile.txt" /VaultCredsFilePath "C:\Temp\MyVault.vaultcredentials" /EnvType "VMWare"
+  ```
+
+
+### <a name="parameters"></a>parameters
+
+|パラメーター名| Type | 説明| 値|
+|-|-|-|-|
+| /ServerMode|必須|構成サーバーとプロセス サーバーの両方をインストールするか、プロセス サーバーだけをインストールするかを指定します。|CS<br>PS|
+|/InstallLocation|必須|コンポーネントがインストールされているフォルダー。| コンピューター上の任意のフォルダー|
+|/MySQLCredsFilePath|必須|MySQL サーバーの資格情報が保存されているファイルのパス。|ファイルは下記の形式である必要があります。|
+|/VaultCredsFilePath|必須|コンテナーの資格情報ファイルのパス。|有効なファイル パス|
+|/EnvType|必須|保護する環境の種類 |VMware<br>NonVMware|
+|/PSIP|必須|レプリケーション データの転送に使用する NIC の IP アドレス。| 任意の有効な IP アドレス|
+|/CSIP|必須|構成サーバーがリッスンする NIC の IP アドレス。| 任意の有効な IP アドレス|
+|/PassphraseFilePath|必須|パスフレーズ ファイルの場所の完全パス。|有効なファイル パス|
+|/BypassProxy|省略可能|構成サーバーがプロキシを介さずに Azure に接続することを指定します。|この値は Venu から取得します。|
+|/ProxySettingsFilePath|省略可能|プロキシ設定 (認証を必要とする既定のプロキシ、またはカスタム プロキシ)。|ファイルは下記の形式である必要があります。|
+|DataTransferSecurePort|省略可能|レプリケーション データに使用する PSIP のポート番号。| 有効なポート番号 (既定値は 9433)|
+|/SkipSpaceCheck|省略可能|キャッシュ ディスクの領域チェックをスキップします。| |
+|/AcceptThirdpartyEULA|必須|サード パーティのライセンス条項への同意を意味するフラグ。| |
+|/ShowThirdpartyEULA|省略可能|サード パーティのライセンス条項を表示します。 入力として提供された場合、他のすべてのパラメーターが無視されます。| |
+
+
+
+### <a name="create-file-input-for-mysqlcredsfilepath"></a>MYSQLCredsFilePath のファイル入力を作成する
+
+MySQLCredsFilePath パラメーターは、入力としてファイルを受け取ります。 次の形式を使用してファイルを作成し、これを入力 MySQLCredsFilePath パラメーターとして渡します。
+```ini
+[MySQLCredentials]
+MySQLRootPassword = "Password>"
+MySQLUserPassword = "Password"
+```
+### <a name="create-file-input-for-proxysettingsfilepath"></a>ProxySettingsFilePath のファイル入力を作成する
+ProxySettingsFilePath パラメーターは、入力としてファイルを受け取ります。 次の形式を使用してファイルを作成し、これを入力 ProxySettingsFilePath パラメーターとして渡します。
+
+```ini
+[ProxySettings]
+ProxyAuthentication = "Yes/No"
+Proxy IP = "IP Address"
+ProxyPort = "Port"
+ProxyUserName="UserName"
+ProxyPassword="Password"
+```
 
 ## <a name="delete-or-unregister-a-configuration-server"></a>構成サーバーを削除または登録解除する
 
@@ -174,28 +237,28 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
 
 必要に応じて、PowerShell を使って構成サーバーを削除できます。
 
-1. Azure PowerShell モジュールを[インストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0)します。
+1. Azure PowerShell モジュールを[インストール](https://docs.microsoft.com/powershell/azure/install-Az-ps)します。
 2. 次のコマンドを使用して Azure アカウントにサインインします。
 
-    `Connect-AzureRmAccount`
+    `Connect-AzAccount`
 3. コンテナーのサブスクリプションを選びます。
 
-     `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
+     `Get-AzSubscription –SubscriptionName <your subscription name> | Select-AzSubscription`
 3.  コンテナーのコンテキストを設定します。
 
     ```
-    $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
-    Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
+    $vault = Get-AzRecoveryServicesVault -Name <name of your vault>
+    Set-AzSiteRecoveryVaultSettings -ARSVault $vault
     ```
 4. 構成サーバーを検索します。
 
-    `$fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
+    `$fabric = Get-AzSiteRecoveryFabric -FriendlyName <name of your configuration server>`
 6. 構成サーバーを削除します。
 
-    `Remove-AzureRmSiteRecoveryFabric -Fabric $fabric [-Force] `
+    `Remove-AzSiteRecoveryFabric -Fabric $fabric [-Force]`
 
 > [!NOTE]
-> Remove-AzureRmSiteRecoveryFabric で **-Force** オプションを使うと、構成サーバーを強制的に削除できます。
+> Remove-AzSiteRecoveryFabric で **-Force** オプションを使うと、構成サーバーを強制的に削除できます。
 
 ## <a name="generate-configuration-server-passphrase"></a>構成サーバーのパスフレーズを生成する
 
@@ -222,7 +285,14 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
 2. **[Configuration Server の正常性]** に有効期限日が表示されます。
 3. **[証明書の更新]** を選択します。
 
-## <a name="update-windows-licence"></a>Windows ライセンスを更新する
+## <a name="refresh-configuration-server"></a>構成サーバーを最新の情報に更新する
+
+1. Azure portal で、**[Recovery Services コンテナー]** > **[管理]** > **[Site Recovery Infrastructure]\(Site Recovery インフラストラクチャ\)** > **[For VMware & Physical machines]\(VMware および物理マシン\)** > **[構成サーバー]** の順に移動します。
+2. 最新の情報に更新する構成サーバーをクリックします。
+3. 選択した構成サーバーの詳細を含むブレードで、**[More]\(詳細\)** > **[サーバーを最新の情報に更新する]** をクリックします。
+4. **[Recovery Services コンテナー]** > **[監視]** > **[Site Recovery jobs]\(Site Recovery ジョブ\)** で、ジョブの進行状況を監視します。
+
+## <a name="update-windows-license"></a>Windows ライセンスを更新する
 
 OVF テンプレートに付属するライセンスは、180 日間有効な評価版ライセンスです。 中断なく使用するには、購入したライセンスで Windows をライセンス認証する必要があります。
 

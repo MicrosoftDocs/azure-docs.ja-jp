@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 09/26/2018
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 3187c516ef22a97d2af89e08d5b99ad7a00d875d
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 0b106e0412de972801fa8782de08269e13042191
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166459"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517914"
 ---
-# <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v-preview"></a>チュートリアル: Hyper-V で Azure Data Box Gateway をプロビジョニングする (プレビュー)
+# <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>チュートリアル:Hyper-V で Azure Data Box Gateway をプロビジョニングする
 
 ## <a name="overview"></a>概要
 
@@ -31,9 +31,6 @@ ms.locfileid: "49166459"
 > * 仮想デバイスを起動し、IP アドレスを取得する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
-> [!IMPORTANT]
-> - Data Box Gateway はプレビュー段階にあります。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -66,7 +63,7 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
 
 作業を開始する前に、次のことを行います。
 
-- Data Box Gateway をデプロイするためのネットワーク要件を確認し、その要件に従ってデータセンター ネットワークを構成します。 詳細については、[Data Box Gateway のシステム要件](data-box-gateway-system-requirements.md#networking-requirements)に関する記事を参照してください。
+- Data Box Gateway をデプロイするためのネットワーク要件を確認し、その要件に従ってデータセンター ネットワークを構成します。 詳細については、[Data Box Gateway のシステム要件](data-box-gateway-system-requirements.md#networking-port-requirements)に関する記事を参照してください。
 - インターネットの最小帯域幅が、デバイスの最適動作を可能にする 20 Mbps であることを確認します。
 
 
@@ -78,7 +75,7 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
 * ホストに接続されている Microsoft Windows クライアント上の Microsoft Hyper-V マネージャー。
 * 仮想デバイスを作成している基盤となるハードウェア (ホスト システム) で、次のリソースを仮想デバイス専用に使用できることを確認します。
 
-    * 最小で 4 コア。
+    * 少なくとも 4 つの仮想プロセッサ。
     * 少なくとも 8 GB の RAM。
     * トラフィックをインターネットにルーティングできるネットワークに接続している 1 つのネットワーク インターフェイス。 
     * 250 GB の OS ディスク。
@@ -91,63 +88,65 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
 1. Windows Server ホストで、仮想デバイスのイメージをローカル ドライブにコピーします。 この VHDX イメージは、Azure portal からダウンロードしました。 このイメージは後で使用するため、コピー先はメモしておいてください。
 2. **サーバー マネージャー**を開きます。 右上隅の **[ツール]** をクリックし、**[Hyper-V マネージャー]** を選択します。
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image1.png)  
+    ![サーバー マネージャーで Hyper-V マネージャーを選択する](./media/data-box-gateway-deploy-provision-hyperv/image1.png)  
   
 3. **Hyper-V マネージャー**のスコープ ウィンドウで、システム ノードを右クリックしてコンテキスト メニューを開き、**[新規]** > **[仮想マシン]** の順にクリックします。
 
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
+   ![Hyper-V マネージャーで新しい仮想マシンを作成する](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
 4. 仮想マシンの新規作成ウィザードの **[開始する前に]** ページで **[次へ]** をクリックします。
 5. **[名前と場所を指定]** ページで、仮想デバイスの**名前**を入力します。 **[次へ]** をクリックします。
 
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image3.png)
+   ![[名前と場所の指定] ページ](./media/data-box-gateway-deploy-provision-hyperv/image3.png)
 6. **[世代の指定]** ページで、.vhdx デバイスのイメージの種類に **[第 2 世代]** を選択し、**[次へ]** をクリックします。    
 
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image4.png)
+   ![[世代の指定] ページ](./media/data-box-gateway-deploy-provision-hyperv/image4.png)
 7. **[メモリの割り当て]** ページで、**8192 MB** 以上の**起動メモリ**を指定します。動的メモリは有効にしないでください。**[次へ]** をクリックします。
 
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image5.png) 
+   ![[メモリの割り当て] ページ](./media/data-box-gateway-deploy-provision-hyperv/image5.png) 
 8. **[ネットワークの構成]** ページで、インターネットに接続されている仮想スイッチを指定し、**[次へ]** をクリックします。
 
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image6.png)
+   ![[ネットワークの構成] ページ](./media/data-box-gateway-deploy-provision-hyperv/image6.png)
 9. **[仮想ハード ディスクの接続]** ページで、**[既存の仮想ハード ディスクを使用する]** を選択し、仮想デバイスのイメージの場所を指定して、**[次へ]** をクリックします。
 
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image7.png)
+   ![[仮想ハード ディスクの接続] ページ](./media/data-box-gateway-deploy-provision-hyperv/image7.png)
 10. **[概要]** を確認し、**[完了]** をクリックして仮想マシンを作成します。
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image8.png)
-11. 最小要件を満たすには、4 コアが必要です。 4 つの仮想プロセッサを追加するには、**[Hyper-V マネージャー]** ウィンドウでホスト システムを選択します。 右側のウィンドウの **[仮想マシン]** の一覧で、先ほど作成した仮想マシンを見つけます。 マシン名を選択して右クリックし、 **[設定]** を選択します。
+    ![[仮想マシンの新規作成ウィザードの完了] ページ](./media/data-box-gateway-deploy-provision-hyperv/image8.png)
+11. 最小要件を満たすには、4 個の仮想プロセッサが必要です。 4 つの仮想プロセッサを追加するには、**[Hyper-V マネージャー]** ウィンドウでホスト システムを選択します。 右側のウィンドウの **[仮想マシン]** の一覧で、先ほど作成した仮想マシンを見つけます。 マシン名を選択して右クリックし、 **[設定]** を選択します。
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image9.png)
+    ![仮想マシンの設定](./media/data-box-gateway-deploy-provision-hyperv/image9.png)
 12. **[設定]** ページの左側のウィンドウで **[プロセッサ]** をクリックします。 右側のウィンドウで、 **[仮想プロセッサの数]** を 4 (またはそれ以上) に設定します。 **[Apply]** をクリックします。
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image10.png)
+    ![[設定] ページで仮想プロセッサ数を設定する](./media/data-box-gateway-deploy-provision-hyperv/image10.png)
 13. 最小要件を満たすには、2 TB の仮想データ ディスクを追加する必要もあります。 **[設定]** ページで次の操作を行います。
 
     1. 左側のウィンドウで **[SCSI コントローラー]** を選択します。
     2. 右側のウィンドウで **[ハード ドライブ]** を選択し、**[追加]** をクリックします。
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image11.png)
+    ![[設定] ページでハード ドライブを追加する](./media/data-box-gateway-deploy-provision-hyperv/image11.png)
 14. **[ハード ドライブ]** ページで **[仮想ハード ディスク]** を選択し、**[新規]** をクリックします。 **仮想ハード ディスクの新規作成ウィザード**が開始されます。
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image12.png)
+    ![仮想ハード ディスクの新規作成ウィザード](./media/data-box-gateway-deploy-provision-hyperv/image12.png)
 1. 仮想ハード ディスクの新規作成ウィザードの **[開始する前に]** ページで、**[次へ]** をクリックします。
 2. **[ディスク フォーマットの選択]** ページで、既定のオプションの **[VHDX]** 形式をそのまま使用します。 **[次へ]** をクリックします。
    
 17. **[ディスクの種類の選択]** ページで、仮想ハード ディスクの種類を **[容量可変]** に設定します (推奨)。 **固定サイズ**のディスクでも動作しますが、待機時間が長くなる可能性があります。 **[差分]** は使用しないことをお勧めします。 **[次へ]** をクリックします。 
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image13.png)
+    ![[ディスクの種類の選択] ページ](./media/data-box-gateway-deploy-provision-hyperv/image13.png)
 18. **[名前と場所の指定]** ページで、データ ディスクの**名前**と**場所**を入力します (場所は参照することもできます)。 **[次へ]** をクリックします。
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
-19. **[ディスクの構成]** ページで、**[新しい空の仮想ハード ディスクを作成する]** を選択し、サイズを **2 TB** (またはそれ以上) に指定します。 2 TB は最小要件ですが、より容量の大きいディスクを常にプロビジョニングできます。 一度ディスクをプロビジョニングすると、圧縮できなくなることに注意してください。  ただし、データ ディスクを追加してディスクを拡張することができます。 **[次へ]** をクリックします。
+    ![[名前と場所の指定] ページ](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
+19. **[ディスクの構成]** ページで、**[新しい空の仮想ハード ディスクを作成する]** を選択し、サイズを **2 TB** (またはそれ以上) に指定します。 
+    
+    2 TB は最小要件ですが、より容量の大きいディスクを常にプロビジョニングできます。 一度ディスクをプロビジョニングすると、圧縮できなくなることに注意してください。 ディスクを縮小しようとすると、デバイスのローカル データすべてが失われます。 ただし、データ ディスクを追加してディスクを拡張することができます。 **[次へ]** をクリックします。
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
+    ![[ディスクの構成] ページ](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
 20. **[概要]** ページで仮想データ ディスクの詳細を確認し、問題がなければ **[完了]** をクリックしてディスクを作成します。 ウィザードが終了し、仮想ハード ディスクがコンピューターに追加されます。
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image16.png)
+    ![[仮想ハード ディスクの新規作成ウィザードの完了] ページ](./media/data-box-gateway-deploy-provision-hyperv/image16.png)
 21. **[設定]** ページに戻ります。 **[OK]** をクリックして **[設定]** ページを閉じ、[Hyper-V マネージャー] ウィンドウに戻ります。
 
-    ![](./media/data-box-gateway-deploy-provision-hyperv/image17.png)
+    ![[設定] ページ](./media/data-box-gateway-deploy-provision-hyperv/image17.png)
 
 ## <a name="start-the-virtual-device-and-get-the-ip"></a>仮想デバイスを起動して IP アドレスを取得する
 仮想デバイスを起動して接続するには、次の手順を実行します。
@@ -155,12 +154,12 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
 #### <a name="to-start-the-virtual-device"></a>仮想デバイスを起動するには
 1. 仮想デバイスを起動します。
 
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image18.png)
+   ![仮想デバイスを起動する](./media/data-box-gateway-deploy-provision-hyperv/image18.png)
 2. デバイスが起動したら、デバイスを選択して右クリックし、 **[接続]** を選択します。
 
-3. デバイスの準備ができるまでに 10 から 15 分かかる場合があります。 進行状況を示すステータス メッセージがコンソールに表示されます。 デバイスの準備ができたら **[アクション]** に移動します。 `Ctrl + Alt + Delete` キーを押して、仮想デバイスにログインします。 既定のユーザーは *EdgeUser* で、既定のパスワードは *Password1* です。
+3. デバイスの準備ができるまでに 10 から 15 分かかる場合があります。 進行状況を示すステータス メッセージがコンソールに表示されます。 デバイスの準備ができたら **[アクション]** に移動します。 `Ctrl + Alt + Delete` キーを押して、仮想デバイスにサインインします。 既定のユーザーは *EdgeUser* で、既定のパスワードは *Password1* です。
 
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image21.png)
+   ![仮想マシンにサインインする](./media/data-box-gateway-deploy-provision-hyperv/image21.png)
    
 6. 手順 5 ～ 7 は、非 DHCP 環境での起動時にのみ適用されます。 DHCP 環境の場合は、これらの手順をスキップします。 非 DHCP 環境でデバイスを起動した場合は、結果にメッセージが表示されます。
     
@@ -172,15 +171,15 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
     
 9. 初期セットアップが完了し、デバイスが再起動すると、デバイスのバナー テキストが表示されます。 デバイスを管理するため、バナー テキストに表示される IP アドレスと URL をメモしておきます。 この IP アドレスを使用して、仮想デバイスの Web UI に接続し、ローカル セットアップとアクティブ化を行います。
 
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
+   ![IP アドレスと接続 URL が含まれている仮想デバイスのバナー](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
       
 
 デバイスが最小構成要件を満たしていない場合は、バナー テキストにエラーが表示されます。 最小要件を満たすだけのリソースにコンピューターが対応できるように、デバイスの構成を変更します。 その後、再起動し、デバイスに接続します。 「[ホスト システムが仮想デバイスの最小要件を満たしていることを確認する](#check-the-host-system)」にある最小構成要件を参照してください。
 
-<!--If you face any other error during the initial configuration using the local web UI, refer to the following workflows:
+ローカル Web UI を使って初期構成を行っている間に他のエラーが発生した場合は、次のワークフローを参照してください。
 
-* Run diagnostic tests to [troubleshoot web UI setup](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
-* [Generate log package and view log files](storsimple-ova-web-ui-admin.md#generate-a-log-package).-->
+- 診断テストを実行して [Web UI のセットアップのトラブルシューティング](data-box-gateway-troubleshoot.md#run-diagnostics)を行う。
+- [ログ パッケージを生成してログ ファイルを表示する](data-box-gateway-troubleshoot.md#collect-support-package)。
 
 ## <a name="next-steps"></a>次の手順
 

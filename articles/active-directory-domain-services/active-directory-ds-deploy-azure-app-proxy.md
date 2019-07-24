@@ -1,31 +1,31 @@
 ---
-title: 'Azure Active Directory Domain Services: Azure Active Directory アプリケーション プロキシのデプロイ | Microsoft Docs'
+title: Azure Active Directory Domain Services:Azure Active Directory アプリケーション プロキシのデプロイ | Microsoft Docs
 description: Azure Active Directory Domain Services マネージド ドメインで Azure AD アプリケーション プロキシを使用します
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 96ef005f095e5ab774a88ec766080f647414a7ce
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 867d061e46494e5ef65340ce325a71638acc8dfa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155543"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099629"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに Azure AD アプリケーション プロキシをデプロイします
 Azure Active Directory (AD) アプリケーション プロキシを使用して、オンプレミス アプリケーションを発行してインターネット経由でアクセスできるようにすることで、リモート ワーカーをサポートできます。 Azure AD Domain Services を使用して、オンプレミスで実行しているレガシ アプリケーションを Azure インフラストラクチャ サービスにリフトアンドシフトできるようになりました。 その後、Azure AD アプリケーション プロキシを使用してこれらのアプリケーションを発行し、組織内のユーザーに安全なリモート アクセスを提供することができます。
 
-Azure AD アプリケーション プロキシを初めて使用する場合は、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](../active-directory/manage-apps/application-proxy.md)」で、この機能の詳細を確認してください。
+Azure AD アプリケーション プロキシを初めて使用する場合は、次の記事でこの機能の詳細を確認してください:「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](../active-directory/manage-apps/application-proxy.md)」。
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
@@ -42,7 +42,7 @@ Azure AD アプリケーション プロキシを初めて使用する場合は�
 ## <a name="task-1---enable-azure-ad-application-proxy-for-your-azure-ad-directory"></a>タスク 1 - Azure AD ディレクトリの Azure AD アプリケーション プロキシを有効にする
 AD ディレクトリの Azure AD アプリケーション プロキシを有効にするには、次の手順を実行します。
 
-1. [Azure Portal](http://portal.azure.com) に管理者としてサインインします。
+1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
 
 2. **[Azure Active Directory]** をクリックして、ディレクトリの概要を表示します。 **[エンタープライズ アプリケーション]** をクリックします。
 
@@ -75,12 +75,12 @@ Azure AD Domain Services のマネージド ドメインを有効化済みの同
 
     ![インストールの条項に同意する](./media/app-proxy/app-proxy-install-connector-terms.png)
 3. インストール時に、Azure AD ディレクトリのアプリケーション プロキシにコネクタを登録するように求められます。
-    * **Azure AD グローバル管理者の資格情報**を指定します。 グローバル管理者のテナントは、Microsoft Azure の資格情報とは異なる場合があります。
-    * コネクタの登録に使用する管理者アカウントは、アプリケーション プロキシ サービスを有効にしたディレクトリと同じディレクトリに属している必要があります。 たとえば、テナントのドメインが contoso.com の場合、管理者は admin@contoso.com またはそのドメイン上の他の有効なエイリアスであることが必要です。
-    * コネクタをインストールするサーバーで [IE セキュリティ強化の構成] がオンになっていると、登録画面がブロックされることがあります。 アクセスを許可するには、エラー メッセージに示された指示に従ってください。 Internet Explorer セキュリティ強化の構成が無効になっていることを確認します。
-    * コネクタの登録が成功しない場合は、「 [アプリケーション プロキシのトラブルシューティング](../active-directory/manage-apps/application-proxy-troubleshoot.md)」をご覧ください。
+   * **Azure AD グローバル管理者の資格情報**を指定します。 グローバル管理者のテナントは、Microsoft Azure の資格情報とは異なる場合があります。
+   * コネクタの登録に使用する管理者アカウントは、アプリケーション プロキシ サービスを有効にしたディレクトリと同じディレクトリに属している必要があります。 たとえば、テナントのドメインが contoso.com の場合、管理者は admin@contoso.com またはそのドメイン上の他の有効なエイリアスであることが必要です。
+   * コネクタをインストールするサーバーで [IE セキュリティ強化の構成] がオンになっていると、登録画面がブロックされることがあります。 アクセスを許可するには、エラー メッセージに示された指示に従ってください。 Internet Explorer セキュリティ強化の構成が無効になっていることを確認します。
+   * コネクタの登録が成功しない場合は、「 [アプリケーション プロキシのトラブルシューティング](../active-directory/manage-apps/application-proxy-troubleshoot.md)」をご覧ください。
 
-    ![コネクタのインストール完了](./media/app-proxy/app-proxy-connector-installed.png)
+     ![コネクタのインストール完了](./media/app-proxy/app-proxy-connector-installed.png)
 4. コネクタが適切に動作していることを確認するには、Azure AD アプリケーション プロキシ コネクタのトラブルシューティング ツールを実行します。 トラブルシューティング ツールを実行すると、正常であることを示すレポートが表示されます。
 
     ![トラブルシューティング ツールの正常終了](./media/app-proxy/app-proxy-connector-troubleshooter.png)

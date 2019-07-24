@@ -2,20 +2,20 @@
 title: Azure Site Recovery を使用したディザスター リカバリー中にフェールバックする | Microsoft Docs
 description: この記事では、さまざまな種類のフェールバックの概要のほか、Azure Site Recovery サービスを使用したディザスター リカバリー中に、オンプレミスにフェールバックする際に考慮すべき注意事項を示します。
 services: site-recovery
-author: rajani-janaki-ram
-manager: guaravd
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
-ms.author: rajanki
-ms.openlocfilehash: e97d736e7e117e0ccce6dc021a9de2ea15ac5484
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.topic: conceptual
+ms.date: 03/18/2019
+ms.author: raynew
+ms.openlocfilehash: 6f178ef1a0aec7f742bce4c2570962b995876026
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210144"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316271"
 ---
-# <a name="overview-of-failback"></a>フェールバックの概要
+# <a name="failback-after-disaster-recovery-of-vmware-vms"></a>VMware VM のディザスター リカバリー後のフェールバック
 
 ディザスター リカバリー プロセスの一部として Azure にフェールオーバーした後、オンプレミス サイトにフェールバックすることができます。 Azure Site Recovery で可能なフェールバックには 2 種類あります。 
 

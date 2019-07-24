@@ -8,22 +8,26 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
-ms.reviewer: carlrab
+ms.author: danil
+ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: eaeb0d7f77b6d8ab6a3e12febba33c995a10ec3f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 03/12/2019
+ms.openlocfilehash: 25a100a224984b0d5608ba933b7a4fa024c22c9d
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466553"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481163"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自動チューニングの電子メール通知
 
 SQL Database のチューニング推奨情報は、Azure SQL Database の[自動チューニング機能](sql-database-automatic-tuning.md)によって生成されます。 このソリューションは、SQL Database のワークロードを継続的に監視して分析し、個別のデータベースそれぞれについて、インデックスの作成や削除、クエリ実行プランの最適化に関するカスタマイズされたチューニング推奨情報を提供します。
 
-SQL Database 自動チューニングの推奨情報は、[REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) 呼び出しで取得するか、[T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) や [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) のコマンドを使用して、[Azure Portal](sql-database-advisor-portal.md) で確認できます。 この記事は、PowerShell スクリプトを使用して自動チューニングに関する推奨情報を取得する方法に基づいています。
+SQL Database 自動チューニングの推奨情報は、[REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) 呼び出しで取得するか、[T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) や [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction) のコマンドを使用して、[Azure Portal](sql-database-advisor-portal.md) で確認できます。 この記事は、PowerShell スクリプトを使用して自動チューニングに関する推奨情報を取得する方法に基づいています。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>自動チューニング推奨情報の電子メール通知を自動化する
 
@@ -55,7 +59,7 @@ Azure Automation を使用するには、まず Automation アカウントを作
 
 ## <a name="update-azure-automation-modules"></a>Azure Automation モジュールを更新する
 
-自動チューニング推奨情報を取得する PowerShell スクリプトは、[Get-AzureRmResource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Get-AzureRmResource) コマンドと [Get-AzureRmSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlDatabaseRecommendedAction) コマンドを使用します。これらのコマンドのためには Azure モジュールをバージョン 4 以上に更新することが必要です。
+自動チューニング推奨情報を取得する PowerShell スクリプトは、[Get-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource) コマンドと [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction) コマンドを使用します。これらのコマンドのためには Azure モジュールをバージョン 4 以上に更新することが必要です。
 
 次の手順に従って Azure PowerShell モジュールを更新します。
 
@@ -64,8 +68,6 @@ Azure Automation を使用するには、まず Automation アカウントを作
 
 ![Azure Automation モジュールを更新する](./media/sql-database-automatic-tuning-email-notifications/howto-email-02.png)
 
-AzureRM.Resources および AzureRM.Sql モジュールの必須バージョンはバージョン 4 以上です。
-
 ## <a name="create-azure-automation-runbook"></a>Azure Automation Runbook を作成する
 
 次の手順では、チューニング推奨情報を取得する PowerShell スクリプトを配置する Runbook を Azure Automation に作成します。
@@ -73,7 +75,7 @@ AzureRM.Resources および AzureRM.Sql モジュールの必須バージョン�
 次の手順に従って、新しい Azure Automation Runbook を作成します。
 
 - 前の手順で作成した Azure Automation アカウントにアクセスします。
-- Automation アカウントのウィンドウが表示されたら、左側の **[Runbook]** メニュー項目をクリックして、PowerShell スクリプトを含む新しい Azure Automation Runbook を作成します。 Automation Runbook の作成について詳しくは、「[新しい Runbook の作成](../automation/automation-creating-importing-runbook.md)」をご覧ください。
+- Automation アカウントのウィンドウが表示されたら、左側の **[Runbook]** メニュー項目をクリックして、PowerShell スクリプトを含む新しい Azure Automation Runbook を作成します。 Automation Runbook の作成について詳しくは、「[新しい Runbook の作成](../automation/manage-runbooks.md#create-a-runbook)」をご覧ください。
 - 新しい Runbook を追加するには、**[+ Runbook の追加]** メニュー オプションをクリックしてから、**[簡易作成 – 新しい Runbook の作成]** をクリックします。
 - [Runbook] ウィンドウで、Runbook の名前 (この例のためには 「**AutomaticTuningEmailAutomation**」を使用) を入力し、Runbook の種類として **PowerShell** を選択し、この Runbook の目的を示す説明を入力します。
 - **[作成]** ボタンをクリックすると、新しい Runbook の作成が完了します。
@@ -85,11 +87,11 @@ AzureRM.Resources および AzureRM.Sql モジュールの必須バージョン�
 - **[PowerShell Runbook の編集]** ウィンドウで、メニュー ツリーの **[Runbook]** を選択し、自分の Runbook の名前 (この例では "**AutomaticTuningEmailAutomation**") が表示されるまで展開します。 この Runbook を選択します。
 - [PowerShell Runbook の編集] の 1 行目 (番号 1 から開始) に、次のPowerShell スクリプト コードをコピーして貼り付けます。 この PowerShell スクリプトは作業を開始できるように提供しています。 ニーズに合わせてスクリプトを変更してください。
 
-提供された PowerShell スクリプトのヘッダーで、`<SUBSCRIPTION_ID_WITH_DATABASES>` を自分の Azure サブスクリプション ID で置き換える必要があります。 自分の Azure サブスクリプション ID を取得する方法については、「[Getting your Azure Subscription GUID](https://blogs.msdn.microsoft.com/mschray/2016/03/18/getting-your-azure-subscription-guid-new-portal/)」(Azure サブスクリプション GUID の取得) をご覧ください。
+提供された PowerShell スクリプトのヘッダーで、`<SUBSCRIPTION_ID_WITH_DATABASES>` を自分の Azure サブスクリプション ID で置き換える必要があります。 自分の Azure サブスクリプション ID を取得する方法については、「[Getting your Azure Subscription GUID](https://blogs.msdn.microsoft.com/mschray/20../../getting-your-azure-subscription-guid-new-portal/)」(Azure サブスクリプション GUID の取得) をご覧ください。
 
 複数のサブスクリプションがある場合は、スクリプトのヘッダーにある "$subscriptions" プロパティにコンマで区切って追加できます。
 
-```PowerShell
+```powershell
 # PowerShell script to retrieve Azure SQL Database Automatic tuning recommendations.
 #
 # Provided “as-is” with no implied warranties or support.
@@ -104,7 +106,7 @@ $subscriptions = ("<SUBSCRIPTION_ID_WITH_DATABASES>", "<SECOND_SUBSCRIPTION_ID_W
 
 # Get credentials
 $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 
 # Define the resource types
 $resourceTypes = ("Microsoft.Sql/servers/databases")
@@ -113,8 +115,8 @@ $results = @()
 
 # Loop through all subscriptions
 foreach($subscriptionId in $subscriptions) {
-    Select-AzureRmSubscription -SubscriptionId $subscriptionId
-    $rgs = Get-AzureRmResourceGroup
+    Select-AzSubscription -SubscriptionId $subscriptionId
+    $rgs = Get-AzResourceGroup
 
     # Loop through all resource groups
     foreach($rg in $rgs) {
@@ -122,7 +124,7 @@ foreach($subscriptionId in $subscriptions) {
 
         # Loop through all resource types
         foreach($resourceType in $resourceTypes) {
-            $resources = Get-AzureRmResource -ResourceGroupName $rgname -ResourceType $resourceType
+            $resources = Get-AzResource -ResourceGroupName $rgname -ResourceType $resourceType
 
             # Loop through all databases
             # Extract resource groups, servers and databases
@@ -151,7 +153,7 @@ foreach($subscriptionId in $subscriptions) {
 
                 # Loop through all Automatic tuning recommendation types
                 foreach ($advisor in $advisors) {
-                    $recs = Get-AzureRmSqlDatabaseRecommendedAction -ResourceGroupName $ResourceGroupName -ServerName $ServerName  -DatabaseName $DatabaseName -AdvisorName $advisor
+                    $recs = Get-AzSqlDatabaseRecommendedAction -ResourceGroupName $ResourceGroupName -ServerName $ServerName  -DatabaseName $DatabaseName -AdvisorName $advisor
                     foreach ($r in $recs) {
                         if ($r.State.CurrentValue -eq "Active") {
                             $object = New-Object -TypeName PSObject

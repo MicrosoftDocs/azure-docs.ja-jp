@@ -2,25 +2,25 @@
 title: Azure Batch での並列 R シミュレーション
 description: チュートリアル - doAzureParallel R パッケージを使用して、Azure Batch で金融のモンテ カルロ シミュレーションを実行する詳しい手順
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
 ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: fb616dc95cc7dd7dbb25f2deb832b517d0747ae4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 557e7d9a35f012d65977d3e0654b55b15ff1e28f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30315452"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106442"
 ---
-# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>チュートリアル: Azure Batch での並列 R シミュレーションの実行 
+# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>チュートリアル:Azure Batch で並列 R シミュレーションを実行する 
 
-R セッションから直接 Azure Batch を使用できる軽量な R パッケージである [doAzureParallel](http://www.github.com/Azure/doAzureParallel) を使用して、大規模な並列 R ワークロードを実行します。 doAzureParallel パッケージは、一般的な [foreach](http://cran.r-project.org/web/packages/foreach/index.html) R パッケージに基づいて作成されています。 doAzureParallel は foreach ループの各イテレーションを取得し、それを Azure Batch タスクとして送信します。
+R セッションから直接 Azure Batch を使用できる軽量な R パッケージである [doAzureParallel](https://www.github.com/Azure/doAzureParallel) を使用して、大規模な並列 R ワークロードを実行します。 doAzureParallel パッケージは、一般的な [foreach](https://cran.r-project.org/web/packages/foreach/index.html) R パッケージに基づいて作成されています。 doAzureParallel は foreach ループの各イテレーションを取得し、それを Azure Batch タスクとして送信します。
 
 このチュートリアルでは、Batch プールをデプロイし、RStudio 内で直接 Azure Batch の並列 R ジョブを実行する方法について説明します。 学習内容は次のとおりです。
  
@@ -45,7 +45,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 ## <a name="install-doazureparallel"></a>doAzureParallel のインストール
 
-RStudio コンソールで、[doAzureParallel GitHub パッケージ](http://www.github.com/Azure/doAzureParallel) をインストールします。 次のコマンドで、パッケージとその依存関係をダウンロードして、現在の R セッションにインストールします。 
+RStudio コンソールで、[doAzureParallel GitHub パッケージ](https://www.github.com/Azure/doAzureParallel) をインストールします。 次のコマンドで、パッケージとその依存関係をダウンロードして、現在の R セッションにインストールします。 
 
 ```R
 # Install the devtools package  
@@ -260,7 +260,7 @@ stopCluster(cluster)
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
-doAzureParallel をインストールし、Batch アカウントとストレージ アカウントにアクセスするよう構成する
+> doAzureParallel をインストールし、Batch アカウントとストレージ アカウントにアクセスするよう構成する
 > * Batch プールを R セッションの並列バックエンドとして作成する
 > * プールでサンプル並列シミュレーションを実行する
 

@@ -2,18 +2,18 @@
 title: Azure Backup Server を使用した SQL Server ワークロード用 Azure Backup
 description: Azure Backup Server を使用した SQL Server データベースのバックアップの概要
 services: backup
-author: pvrk
-manager: Shivamg
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.author: pullabhk
-ms.openlocfilehash: 5d0fc66ff81672116d3d98ee9970456515ab3c9e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: kasinh
+ms.openlocfilehash: 72b2368979f0c9e546e1c7ef7fc462bf1d64c947
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606394"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490467"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Azure Backup Server を使用した Azure への SQL Server のバックアップ
 この記事では、Microsoft Azure Backup Server (MABS) を使用して SQL Server データベースのバックアップを構成する手順について説明します。
@@ -66,7 +66,7 @@ SQL Server データベースの Azure へのバックアップと Azure から�
 
     ![Initial replication method](./media/backup-azure-backup-sql/pg-manual.png)
 
-    初期バックアップ コピーでは、運用サーバー (SQL Server コンピューター) から MABS に、データ ソース (SQL Server データベース) 全体を転送する必要があります。 このデータは場合によっては大きくなり、ネットワーク経由で転送すると帯域幅を超える可能性があります。 したがって、管理者は初期バックアップを転送する際に、帯域幅の輻輳を避けるために (リムーバブル メディアを使用して) **手動で**転送するか、(指定した時刻に) **ネットワーク経由で自動で**転送するかを選択できます。
+    初期バックアップ コピーでは、運用サーバー (SQL Server コンピューター) から MABS に、データ ソース (SQL Server データベース) 全体を転送する必要があります。 このデータは場合によっては大きくなり、ネットワーク経由で転送すると帯域幅を超える可能性があります。 そのために、管理者は、初回バックアップの転送では、帯域幅の輻輳を避けるために**手動**で転送するか (リムーバブル メディアを使用)、指定した時刻に**自動 (ネットワーク経由)** で転送するかを選択できます。
 
     初期バックアップが完了した後は、残りのバックアップは初期バックアップのコピーに対する増分バックアップになります。 増分バックアップは一般に非常に小さく、ネットワーク経由で容易に転送できます。
 10. 整合性チェックをいつ実行するかを選択し、 **[次へ]** をクリックします。

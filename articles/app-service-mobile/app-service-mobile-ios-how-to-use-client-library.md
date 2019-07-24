@@ -13,12 +13,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 0de561b177a1474b0ce4f0f203803e8265db5e7a
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: b6f93cc3c35ab18ecd50ccd6b3090985497baabf
+ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818348"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54121772"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Azure Mobile Apps 向け iOS クライアント ライブラリの使用方法
 
@@ -41,7 +41,7 @@ iOS SDK は、iOS バージョン 8.0 以降の Objective-C プロジェクト�
 
 このガイドでは、バックエンドとテーブルを作成済みであることを前提としています。 このガイドでは、テーブルのスキーマが、これらのチュートリアルのテーブルの場合と同じであることを前提とします。 また、コードで `MicrosoftAzureMobile.framework` を参照し、`MicrosoftAzureMobile/MicrosoftAzureMobile.h` をインポートしていることも前提となります。
 
-## <a name="create-client"></a>方法: クライアントを作成する
+## <a name="create-client"></a>方法:クライアントを作成する
 
 プロジェクトで Azure Mobile Apps バックエンドにアクセスするには、 `MSClient`を作成します。 `AppUrl` をアプリの URL に置き換えます。 `gatewayURLString` と `applicationKey` は空のままにしておいてかまいません。 認証用のゲートウェイを設定する場合は、ゲートウェイの URL で `gatewayURLString` を設定します。
 
@@ -57,7 +57,7 @@ MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl"];
 let client = MSClient(applicationURLString: "AppUrl")
 ```
 
-## <a name="table-reference"></a>方法: テーブル参照を作成する
+## <a name="table-reference"></a>方法:テーブル参照を作成する
 
 データへのアクセスやデータの更新を行うには、バックエンド テーブルへの参照を作成します。 `TodoItem` を実際のテーブルの名前に置き換えます。
 
@@ -73,7 +73,7 @@ MSTable *table = [client tableWithName:@"TodoItem"];
 let table = client.tableWithName("TodoItem")
 ```
 
-## <a name="querying"></a>方法: データをクエリする
+## <a name="querying"></a>方法:データのクエリを実行する
 
 データベース クエリを作成するには、 `MSTable` オブジェクトのクエリを実行します。 次のクエリは、 `TodoItem` 内のすべての項目を取得し、各項目のテキストをログに記録します。
 
@@ -81,7 +81,7 @@ let table = client.tableWithName("TodoItem")
 
 ```objc
 [table readWithCompletion:^(MSQueryResult *result, NSError *error) {
-        if(error) { // error is nil if no error occured
+        if(error) { // error is nil if no error occurred
                 NSLog(@"ERROR %@", error);
         } else {
                 for(NSDictionary *item in result.items) { // items is NSArray of records that match query
@@ -105,7 +105,7 @@ table.readWithCompletion { (result, error) in
 }
 ```
 
-## <a name="filtering"></a>方法: 返されるデータをフィルター処理する
+## <a name="filtering"></a>方法:返されるデータをフィルター処理する
 
 結果をフィルター処理するには、多くのオプションを使用できます。
 
@@ -145,7 +145,7 @@ table.readWithPredicate(predicate) { (result, error) in
 }
 ```
 
-## <a name="query-object"></a>方法: MSQuery を使用する
+## <a name="query-object"></a>方法:MSQuery を使用する
 
 複雑なクエリ (並べ替えとページングを含む) を実行するには、 `MSQuery` オブジェクトを直接作成するか、述語を使用して作成します。
 
@@ -174,7 +174,7 @@ let query = table.queryWithPredicate(NSPredicate(format: "complete == NO"))
 
 オブジェクトで `readWithCompletion` を呼び出して、`MSQuery` クエリを実行します。
 
-## <a name="sorting"></a>方法: MSQuery でデータを並べ替える
+## <a name="sorting"></a>方法:MSQuery でデータを並べ替える
 
 結果の並べ替えの例を見てみましょう。 "text" フィールドを昇順で並べ替えた後、"complete" を降順で並べ替えるには、次のように `MSQuery` を呼び出します。
 
@@ -210,7 +210,7 @@ query.readWithCompletion { (result, error) in
 }
 ```
 
-## <a name="selecting"></a><a name="parameters"></a>方法: MSQuery でフィールドを制限し、クエリ文字列パラメーターを展開する
+## <a name="selecting"></a><a name="parameters"></a>方法:MSQuery でフィールドを制限し、クエリ文字列パラメーターを展開する
 
 クエリで返されるフィールドを制限するには、 **selectFields** プロパティにフィールド名を指定します。 次の例では、text フィールドと completed フィールドだけが返されます。
 
@@ -243,7 +243,7 @@ query.parameters = @{
 query.parameters = ["myKey1": "value1", "myKey2": "value2"]
 ```
 
-## <a name="paging"></a>方法: ページ サイズを構成する
+## <a name="paging"></a>方法:ページ サイズを構成する
 
 Azure Mobile Apps では、バックエンド テーブルから同時に取得されるレコードの数がページ サイズで制御されます。 `pull` データの呼び出しは、このページ サイズに基づいて、プルするレコードがなくなるまで、データをバッチで追加します。
 
@@ -255,7 +255,7 @@ Azure Mobile Apps では、バックエンド テーブルから同時に取得�
 
 これも、"*バイト サイズ*" でなく、データ レコードの "*数*" で設定します。
 
-クライアントのページ サイズを増やす場合は、サーバーのページ サイズを大きくする必要があります。 そのための手順については、「[方法: テーブルのページング サイズを調整する](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
+クライアントのページ サイズを増やす場合は、サーバーのページ サイズを大きくする必要があります。 そのための手順については、「[方法:テーブルのページング サイズを調整する](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
 
 **Objective-C**:
 
@@ -280,7 +280,7 @@ table.pullWithQuery(query, queryId:nil, settings: pullSettings) { (error) in
 }
 ```
 
-## <a name="inserting"></a>方法: データを挿入する
+## <a name="inserting"></a>方法:データを挿入する
 
 新しいテーブル行を挿入するには、`NSDictionary` を作成し、`table insert` を呼び出します。 [動的スキーマ]が有効になっている場合、Azure App Service モバイル バックエンドは、`NSDictionary` に基づいて新しい列を自動的に生成します。
 
@@ -314,7 +314,7 @@ table.insert(newItem) { (result, error) in
 }
 ```
 
-## <a name="modifying"></a>方法: データを変更する
+## <a name="modifying"></a>方法:データを変更する
 
 既存の行を更新するには、次のように項目を変更して `update`を呼び出します。
 
@@ -375,7 +375,7 @@ table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
 
 更新操作を行う場合は、少なくとも `id` 属性を設定する必要があります。
 
-## <a name="deleting"></a>方法: データを削除する
+## <a name="deleting"></a>方法:データを削除する
 
 項目を削除するには、次のように、該当する項目を指定して `delete` を呼び出します。
 
@@ -431,7 +431,7 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
 
 削除操作を行う場合は、少なくとも `id` 属性を設定する必要があります。
 
-## <a name="customapi"></a>方法: カスタム API の呼び出し
+## <a name="customapi"></a>方法:カスタム API の呼び出し
 
 カスタム API を使用して、任意のバックエンド機能を公開できます。 テーブル操作にマップする必要はありません。 メッセージングを詳細に制御できるだけでなく、ヘッダーの読み取り/設定や応答本文の形式の変更も可能です。 バックエンドでカスタム API を作成する方法については、「 [カスタム API](app-service-mobile-node-backend-how-to-use-server-sdk.md#work-easy-apis)
 
@@ -472,7 +472,7 @@ client.invokeAPI("sendEmail",
         }
 ```
 
-## <a name="templates"></a>方法: プッシュ テンプレートを登録してクロス プラットフォーム通知を送信する
+## <a name="templates"></a>方法:プッシュ テンプレートを登録してクロス プラットフォーム通知を送信する
 
 テンプレートを登録するには、 **client.push registerDeviceToken** メソッドを使用してクライアント アプリにテンプレートを渡します。
 
@@ -512,7 +512,7 @@ let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
 
 セキュリティを確保するために、要求からすべてのタグが削除されます。  インストールまたはインストール内のテンプレートにタグを追加する方法については、「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作][4]」を参照してください。  これらの登録済みテンプレートを使用して通知を送信するには、[Notification Hubs API][3] を使用します。
 
-## <a name="errors"></a>方法: エラーを処理する
+## <a name="errors"></a>方法:エラーを処理する
 
 Azure App Service モバイル バックエンドを呼び出すと、完了ブロックに `NSError` パラメーターが含まれます。 エラーが発生すると、このパラメーターは null 以外の値になります。 前のコード スニペットに示すように、コードでは、このパラメーターを確認し、必要に応じてエラーを処理する必要があります。
 
@@ -544,7 +544,7 @@ if (error.code == MSErrorPreconditionFailed) {
 if (error.code == MSErrorPreconditionFailed) {
 ```
 
-## <a name="adal"></a>方法: Active Directory 認証ライブラリを使用してユーザーを認証する
+## <a name="adal"></a>方法:Active Directory 認証ライブラリを使用してユーザーを認証する
 
 Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Directory を使用しているアプリケーションにユーザーをサインインさせることができます。 ID プロバイダー SDK を使用したクライアント フローの認証は、 `loginWithProvider:completion:` メソッドを使用する方法よりも推奨されます。  クライアント フローの認証により、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になります。
 
@@ -631,7 +631,7 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
 }
 ```
 
-## <a name="facebook-sdk"></a>方法: Facebook SDK for iOS でユーザーを認証する
+## <a name="facebook-sdk"></a>方法:Facebook SDK for iOS でユーザーを認証する
 
 Facebook SDK for iOS を使用すると、Facebook でアプリケーションにユーザーをサインインさせることができます。  クライアント フローの認証の使用は、 `loginWithProvider:completion:` メソッドを使用する方法よりも推奨されます。  クライアント フローの認証により、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になります。
 
@@ -710,11 +710,11 @@ Facebook SDK for iOS を使用すると、Facebook でアプリケーション�
     }
     ```
 
-## <a name="twitter-fabric"></a>方法: Twitter Fabric for iOS でユーザーを認証する
+## <a name="twitter-fabric"></a>方法:Twitter Fabric for iOS でユーザーを認証する
 
 Fabric for iOS を使用すると、Twitter でアプリケーションにユーザーをサインインさせることができます。 クライアント フローの認証を使用すると、よりネイティブな UX が実現し、さらにカスタマイズすることが可能になるため、 `loginWithProvider:completion:` メソッドを使用する方法よりも推奨されます。
 
-1. 「 [App Service アプリケーションを Twitter ログインを使用するように構成する方法](../app-service/app-service-mobile-how-to-configure-twitter-authentication.md) 」のチュートリアルに従って、Twitter のサインイン用にモバイル アプリ バックエンドを構成します。
+1. 「 [App Service アプリケーションを Twitter ログインを使用するように構成する方法](../app-service/configure-authentication-provider-twitter.md) 」のチュートリアルに従って、Twitter のサインイン用にモバイル アプリ バックエンドを構成します。
 2. 「[Fabric for iOS - Getting Started (Fabric for iOS - 概要) (Fabric for iOS - 概要)]」ドキュメントに従ってプロジェクトに Fabric を追加し、TwitterKit をセットアップします。
 
    > [!NOTE]
@@ -792,11 +792,11 @@ Fabric for iOS を使用すると、Twitter でアプリケーションにユー
     }
     ```
 
-## <a name="google-sdk"></a>方法: Google Sign-In SDK for iOS でユーザーを認証する
+## <a name="google-sdk"></a>方法:Google Sign-In SDK for iOS でユーザーを認証する
 
 Google Sign-In SDK for iOS を使用すると、Google アカウントでユーザーをアプリケーションにサインインさせることができます。  Google は、OAuth セキュリティ ポリシーの変更を最近発表しました。  ポリシーのこれらの変更により、将来的に Google SDK を使用することが必要になります。
 
-1. [Google ログイン用に App Service を構成する方法](../app-service/app-service-mobile-how-to-configure-google-authentication.md) のチュートリアルに従って、Google のサインイン用にモバイル アプリ バックエンドを構成します。
+1. [Google ログイン用に App Service を構成する方法](../app-service/configure-authentication-provider-google.md) のチュートリアルに従って、Google のサインイン用にモバイル アプリ バックエンドを構成します。
 2. [Google Sign-In for iOS の統合の開始](https://developers.google.com/identity/sign-in/ios/start-integrating) に関するドキュメントに従って、Google SDK for iOS をインストールします。 バックエンド サーバーによる認証に関するセクションはスキップしてかまいません。
 3. ご使用の言語に応じて、デリゲートの `signIn:didSignInForUser:withError:` メソッドに次のコードを追加します。
 
@@ -899,28 +899,28 @@ Google Sign-In SDK for iOS を使用すると、Google アカウントでユー�
 [Authentication]: /develop/mobile/tutorials/get-started-with-users-ios
 [iOS SDK]: https://developer.apple.com/xcode
 [Azure Portal]: https://portal.azure.com/
-[Handling Expired Tokens]: http://go.microsoft.com/fwlink/p/?LinkId=301955
-[Live Connect SDK]: http://go.microsoft.com/fwlink/p/?LinkId=301960
-[Permissions]: http://msdn.microsoft.com/library/windowsazure/jj193161.aspx
+[Handling Expired Tokens]: https://go.microsoft.com/fwlink/p/?LinkId=301955
+[Live Connect SDK]: https://go.microsoft.com/fwlink/p/?LinkId=301960
+[Permissions]: https://msdn.microsoft.com/library/windowsazure/jj193161.aspx
 [Service-side Authorization]: mobile-services-javascript-backend-service-side-authorization.md
 [Use scripts to authorize users]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
-[動的スキーマ]: http://go.microsoft.com/fwlink/p/?LinkId=296271
+[動的スキーマ]: https://go.microsoft.com/fwlink/p/?LinkId=296271
 [How to: access custom parameters]: /develop/mobile/how-to-guides/work-with-server-scripts#access-headers
-[Create a table]: http://msdn.microsoft.com/library/windowsazure/jj193162.aspx
-[NSDictionary object]: http://go.microsoft.com/fwlink/p/?LinkId=301965
-[ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
+[Create a table]: https://msdn.microsoft.com/library/windowsazure/jj193162.aspx
+[NSDictionary object]: https://go.microsoft.com/fwlink/p/?LinkId=301965
+[ASCII control codes C0 and C1]: https://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [CLI to manage Mobile Services tables]: /cli/azure/get-started-with-az-cli2
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
 [Fabric Dashboard]: https://www.fabric.io/home
 [Fabric for iOS - Getting Started (Fabric for iOS - 概要) (Fabric for iOS - 概要)]: https://docs.fabric.io/ios/fabric/getting-started.html
 [1]: https://github.com/Azure/azure-mobile-apps-ios-client/blob/master/README.md#ios-client-sdk
-[2]: http://azure.github.io/azure-mobile-apps-ios-client/
+[2]: https://azure.github.io/azure-mobile-apps-ios-client/
 [3]: https://msdn.microsoft.com/library/azure/dn495101.aspx
 [4]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags
-[5]: http://azure.github.io/azure-mobile-services/iOS/v3/Classes/MSClient.html#//api/name/invokeAPI:data:HTTPMethod:parameters:headers:completion:
+[5]: https://azure.github.io/azure-mobile-services/iOS/v3/Classes/MSClient.html#//api/name/invokeAPI:data:HTTPMethod:parameters:headers:completion:
 [6]: https://github.com/Azure/azure-mobile-services/blob/master/sdk/iOS/src/MSError.h
-[7]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
+[7]: ../app-service/configure-authentication-provider-aad.md
 [8]:../active-directory/develop/quickstart-v1-ios.md
-[9]: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md
+[9]: ../app-service/configure-authentication-provider-facebook.md
 [10]: https://developers.facebook.com/docs/ios/getting-started

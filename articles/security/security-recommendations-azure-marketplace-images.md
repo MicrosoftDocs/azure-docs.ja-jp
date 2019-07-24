@@ -4,23 +4,23 @@ description: この記事では、Marketplace に含まれるイメージにつ�
 services: security
 documentationcenter: na
 author: barclayn
-manager: MBaldwin
+manager: barbkess
 ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2017
+ms.date: 01/11/2019
 ms.author: barclayn
-ms.openlocfilehash: 4ae36f87c29975c82bb99f713893a9dc78a249e6
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: fa521b81c95f7c0556b082e5487848ef4d7ecaf7
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
-ms.locfileid: "23465407"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111393"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Azure Marketplace イメージのセキュリティに関する推奨事項
 
-各ソリューションは、次のセキュリティ構成の推奨事項に従うことをお勧めします。 そうすれば、Azure Marketplace のパートナー ソリューション イメージのセキュリティを高いレベルに維持するのに役立ちます。
+各ソリューションで、次のセキュリティ構成の推奨事項に従うことをお勧めします。 そうすることで、Azure Marketplace のパートナー ソリューション イメージのセキュリティを高いレベルに維持することができます。
 
 これらの推奨事項は、Azure Marketplace にイメージを持たない組織にも役に立つ場合があります。 会社の Windows および Linux のイメージの構成を、次の表のガイドラインに照らして確認できます。
 
@@ -39,13 +39,13 @@ ms.locfileid: "23465407"
 | セキュリティ                                                     | LVM を使わないことをお勧めします。                                                                                                                                                                                                                                            |
 | セキュリティ                                                     | 必要なライブラリの最新バージョンを含める必要があります。 </br> - OpenSSL v1.0 以降 </br> - Python 2.5 以降 (Python 2.6 以降の使用を強くお勧めします) </br> - Python pyasn1 パッケージ (まだインストールされていない場合) </br> - d.OpenSSL v 1.0 以降                                                                |
 | セキュリティ                                                     | Bash/Shell 履歴エントリをクリアする必要があります。                                                                                                                                                                                                                                             |
-| ネットワーク                                                   | SSH Server を既定で含めるようにします。 ClientAliveInterval 180 オプションを使って、SSH キープアライブを sshd 構成に設定します。                                                                                                                                                        |
+| ネットワーク                                                   | SSH Server を既定で含めるようにします。 次のオプションを使って、SSH キープアライブを sshd 構成に設定します。ClientAliveInterval 180                                                                                                                                                        |
 | ネットワーク                                                   | イメージにカスタム ネットワーク構成を含めることはできません。 resolv.conf を削除します。`rm /etc/resolv.conf`                                                                                                                                                                                |
-| デプロイ                                                   | 最新の Azure Linux エージェントをインストールします。 </br> - エージェントは、RPM または Deb パッケージを使ってインストールする必要があります。  </br> - 手動インストール プロセスを使うこともできますが、インストーラー パッケージを優先することをお勧めします。 </br> - github リポジトリから手動でエージェントをインストールする場合は、最初に `waagent` ファイルを `/usr/sbin` にコピーし、root として実行します。 </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>エージェントの構成ファイルは `/etc/waagent.conf` に格納されます。    |
-| デプロイ                                                   | 必要な場合には Azure サポートがパートナーにシリアル コンソール出力を提供でき、クラウド ストレージからの OS ディスクのマウントに適切なタイムアウトを提供できることを確認します。 イメージでは、次のパラメーターをカーネル ブート ラインに追加する必要があります。`console=ttyS0 earlyprintk=ttyS0 rootdelay=300` |
-| デプロイ                                                   | OS ディスクにスワップ パーティションがないこと。 Linux エージェントは、ローカル リソース ディスクへのスワップの作成を要求できます。         |
-| デプロイ                                                   | OS ディスクに単一のルート パーティションを作成することをお勧めします。      |
-| デプロイ                                                   | 64 ビット オペレーティング システムだけであること。                                                                                                                                                                                                                                                          |
+| Deployment                                                   | 最新の Azure Linux エージェントをインストールします。 </br> - エージェントは、RPM または Deb パッケージを使ってインストールする必要があります。  </br> - 手動インストール プロセスを使うこともできますが、インストーラー パッケージを優先することをお勧めします。 </br> - GitHub リポジトリから手動でエージェントをインストールする場合は、最初に `waagent` ファイルを `/usr/sbin` にコピーし、root として実行します。 </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>エージェントの構成ファイルは `/etc/waagent.conf` に配置されます。    |
+| Deployment                                                   | 必要な場合には Azure サポートがパートナーにシリアル コンソール出力を提供でき、クラウド ストレージからの OS ディスクのマウントに適切なタイムアウトを提供できることを確認します。 イメージでは、次のパラメーターをカーネル ブート ラインに追加する必要があります。`console=ttyS0 earlyprintk=ttyS0 rootdelay=300` |
+| Deployment                                                   | OS ディスクにスワップ パーティションがないこと。 Linux エージェントは、ローカル リソース ディスクへのスワップの作成を要求できます。         |
+| Deployment                                                   | OS ディスクに単一のルート パーティションを作成することをお勧めします。      |
+| Deployment                                                   | 64 ビット オペレーティング システムだけであること。                                                                                                                                                                                                                                                          |
 
 ## <a name="windows-server-based-images"></a>Windows Server ベースのイメージ
 
@@ -62,4 +62,4 @@ ms.locfileid: "23465407"
 | セキュリティ                                                         | VHD イメージに、対話型ログインを許可する既定のパスワードを持たない必要なロックされたアカウントだけが含まれ、バック ドアが存在しないようにします。                             |
 | セキュリティ                                                         | ファイアウォール アプライアンスなどのアプリケーションの機能がファイアウォール規則に依存している場合を除き、ファイアウォール規則を無効にします。                                                               |
 | セキュリティ                                                         | すべての機密情報を VHD イメージから削除します。 たとえば、HOSTS ファイル、ログ ファイル、および不要な証明書は削除する必要があります。                                              |
-| デプロイ                                                       | 64 ビット オペレーティング システムだけであること。                            |
+| Deployment                                                       | 64 ビット オペレーティング システムだけであること。                            |

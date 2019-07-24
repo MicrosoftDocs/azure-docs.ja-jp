@@ -6,16 +6,16 @@ services: cognitive-services
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 6f88ff8ecd1aee588cb82c08ae2eda58fe2eb1e7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: dc45847f3dc2e11af9b7cf566fdd6780ec2b9dac
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626936"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762162"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Custom Translator ワークスペースとは
 
@@ -31,7 +31,7 @@ ms.locfileid: "51626936"
 
 カテゴリによって、プロジェクトのドメイン (使用する用語とスタイルの領域) が識別されます。 ドキュメントとの関連性が最も高いカテゴリを選択します。 場合によっては、カテゴリの選択が Custom Translator の動作に直接影響します。
 
-一般的なベースライン システムを除き、カテゴリのカスタム モデルはまだありません。 ただし、CategoryID の識別子として使用できるように、ドメインに最適なカテゴリを選択することをお勧めします。 テクノロジ ドメインのプロジェクトの場合、"テクノロジ" を選択しておくと、ベースライン モデルがリリースされたときに、プロジェクトに使用できるようになります。
+ベースライン モデルの 2 つのセットがあります。 General と Technology です。 **Technology** カテゴリを選択した場合は、Technology ベースライン モデルが使用されます。 他のカテゴリを選択すると、General ベースライン モデルが使用されます。 Technology ベースライン モデルはテクノロジ ドメインではよい結果が得られますが、翻訳に使用される文がテクノロジ ドメインに分類されない場合は、品質が低下します。 文がテクノロジ ドメインに厳密に分類される場合にのみ、Technology カテゴリを選択することをお勧めします。
 
 同じワークスペース内に、同じ言語ペアで異なるカテゴリのプロジェクトを作成できます。 Custom Translator では、言語ペアとカテゴリが同じ重複するプロジェクトを作成できません。 プロジェクトにラベルを適用することで、この制限を回避することができます。 プロジェクトに一意のラベルを追加すると、プロジェクトの CategoryID に反映されるので、複数のクライアント向けに翻訳システムを構築している場合を除き、ラベルは使用しないでください。
 

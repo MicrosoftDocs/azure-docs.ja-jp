@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 78ac8f83bceef88e89edefa0eececb058e8efe2b
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 06f65aef203b4f0d765f21b9d17b90081de85c94
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230235"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551757"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database コネクタの概要
 
@@ -40,7 +40,7 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 * オンプレミスのデータ ゲートウェイをインストールしたコンピューターで Oracle クライアントをインストールする。 必ず Oracle から 64 ビット Oracle Data Provider for .NET をインストールします。  
 
-  [64 ビット ODAC 12c Release 4 (12.1.0.2.4) for Windows x64](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
+  [64 ビット ODAC 12c Release 4 (12.1.0.2.4) for Windows x64](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 
     > [!TIP]
     > Oracle クライアントがインストールされていない場合、接続の作成または使用を試みると、エラーが発生します。 この記事の一般的なエラーに関する説明を参照してください。
@@ -95,27 +95,27 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 ## <a name="common-errors"></a>一般的なエラー
 
-#### <a name="error-cannot-reach-the-gateway"></a>**エラー**: ゲートウェイに接続できません
+#### <a name="error-cannot-reach-the-gateway"></a>**エラー**: ゲートウェイに到達できません
 
-**原因**: オンプレミスのデータ ゲートウェイがクラウドに接続できません。 
+**原因**:オンプレミスのデータ ゲートウェイがクラウドに接続できません。 
 
-**対応策**: ゲートウェイをインストールしたオンプレミスのコンピューターで、そのゲートウェイが実行されていること、およびインターネットに接続できることを確認します。  オフまたはスリープ状態のコンピューターにはゲートウェイをインストールしないことをお勧めします。 オンプレミスのデータ ゲートウェイ サービス (PBIEgwService) を再起動することもできます。
+**対応策**:ゲートウェイをインストールしたオンプレミスのコンピューターで、そのゲートウェイが実行されていること、およびインターネットに接続できることを確認します。  オフまたはスリープ状態のコンピューターにはゲートウェイをインストールしないことをお勧めします。 オンプレミスのデータ ゲートウェイ サービス (PBIEgwService) を再起動することもできます。
 
 #### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**エラー**: 使用中のプロバイダーは非推奨です: System.Data.OracleClient には Oracle クライアント ソフトウェア version 8.1.7 以降が必要です。 [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) を参照して、公式のプロバイダーをインストールしてください。
 
-**原因**: オンプレミスのデータ ゲートウェイが実行されているコンピューターに Oracle クライアント SDK がインストールされていません。  
+**原因**:オンプレミスのデータ ゲートウェイが実行されているコンピューターに Oracle クライアント SDK がインストールされていません。  
 
-**解決策**: Oracle クライアント SDK をダウンロードして、オンプレミスのデータ ゲートウェイと同じコンピューターにインストールします。
+**解決方法**:Oracle クライアント SDK をダウンロードして、オンプレミスのデータ ゲートウェイと同じコンピューターにインストールします。
 
 #### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**エラー**: テーブル '[Tablename]' には、キー列が定義されていません
 
-**原因**: テーブルに主キーがありません。  
+**原因**:テーブルに主キーがありません。  
 
-**解決策**: Oracle Database コネクタでは、主キー列が含まれるテーブルを使用する必要があります。
+**解決方法**:Oracle Database コネクタでは、主キー列が含まれるテーブルを使用する必要があります。
 
 #### <a name="currently-not-supported"></a>以下は現在サポートされていません
 
-* ビューとストアド プロシージャ 
+* ビュー 
 * 複合キーが含まれるテーブル
 * テーブル内の入れ子になったオブジェクトの種類
  

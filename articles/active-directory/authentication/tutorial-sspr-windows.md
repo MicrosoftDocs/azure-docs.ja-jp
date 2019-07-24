@@ -3,21 +3,22 @@ title: Windows 10 ログイン画面からの Azure AD SSPR
 description: このチュートリアルでは、Windows 10 のログイン画面でパスワードをリセットできるようにして、ヘルプデスクへの電話を減らします。
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/11/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: bec94e2017660e9804bbc232e0a3163afdaafcb6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0f8e0b79d5aebd1e92dd71bba72efa7430aa475b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277768"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224653"
 ---
-# <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>チュートリアル: ログイン画面からの Azure AD パスワードのリセット
+# <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>チュートリアル: ログイン画面からの Azure AD パスワード リセット
 
 このチュートリアルでは、ユーザーが Windows 10 のログイン画面から自分のパスワードをリセットできるようにします。 新しい Windows 10 April 2018 Update では、**Azure AD に参加済み**または**ハイブリッド Azure AD に参加済み**のデバイスを所有しているユーザーが、ログイン画面の "パスワードのリセット" リンクを使用できます。 このリンクをユーザーがクリックすると、使い慣れたセルフサービスによるパスワードのリセット (SSPR) 機能が利用できます。
 
@@ -28,10 +29,14 @@ ms.locfileid: "51277768"
 
 ## <a name="prerequisites"></a>前提条件
 
-* 以下の条件を満たす Windows 10 April 2018 Update 以降のクライアント。
-   * [Azure AD 参加済み](../device-management-azure-portal.md)または 
-   * [ハイブリッド Azure AD 参加済み](../device-management-hybrid-azuread-joined-devices-setup.md)
-* Azure AD のセルフ サービス パスワード リセットを有効にする必要があります。
+* Windows 10 バージョン April 2018 Update 以降を実行している必要があります。また、次のいずれかのデバイスを使用する必要があります。
+   * [Azure AD 参加済み](../device-management-azure-portal.md)または
+   * [Hybrid Azure AD 参加済み](../device-management-hybrid-azuread-joined-devices-setup.md)、さらにドメイン コントローラーへのネットワーク接続。
+* Azure AD のパスワード リセットのセルフサービスを有効にする必要があります。
+* Windows 10 デバイスがプロキシ サーバーまたはファイアウォールの内側にある場合は、HTTPS トラフィック (ポート 443) の許可される URL の一覧に URL `passwordreset.microsoftonline.com` と `ajax.aspnetcdn.com` を追加する必要があります。
+* Windows 10 の SSPR は、マシンレベルのプロキシでのみサポートされています
+* ご使用の環境でこの機能を試す前に、次の制限事項を確認してください。
+* イメージを使用している場合は、sysprep に先立って、CopyProfile 手順を実行する前に Web キャッシュがビルトイン Administrator に対してクリアされていることを確認してください。 この詳細については、[カスタムの既定のユーザー プロファイルを使用した場合のパフォーマンスの低下](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)に関するサポート記事を参照してください。
 
 ## <a name="configure-reset-password-link-using-intune"></a>Intune を使用して "パスワードのリセット" リンクを構成する
 
@@ -53,9 +58,9 @@ ms.locfileid: "51277768"
       * **OMA-URI**: `./Vendor/MSFT/Policy/Config/Authentication/AllowAadPasswordReset` に設定します。
       * **データ型**: **整数**に設定します。
       * **値**: **1** に設定します。
-      * **[OK]**
-   * **[OK]**
-4. **[作成]**
+      *  **[OK]**
+   *  **[OK]**
+4.  **[作成]**
 
 ### <a name="assign-a-device-configuration-policy-in-intune"></a>Intune でデバイス構成ポリシーを割り当てる
 
@@ -66,7 +71,7 @@ ms.locfileid: "51277768"
 3. グループの名前を入力し、**[メンバーシップの種類]** で **[割り当て済み]** を選択します。
    * **[メンバー]** で、ポリシーの適用先となる Azure AD 参加済みの Windows 10 デバイスを選択します。
    * **[選択]** をクリックします。
-4. **[作成]**
+4.  **[作成]**
 
 グループの作成の詳細については、「[Azure Active Directory のグループによるリソースへのアクセス管理](../fundamentals/active-directory-manage-groups.md)」の記事を参照してください。
 
@@ -85,7 +90,7 @@ ms.locfileid: "51277768"
 
 ## <a name="configure-reset-password-link-using-the-registry"></a>レジストリを使用して "パスワードのリセット" リンクを構成する
 
-1. 管理者の資格情報を使用して Windows PC にログインします
+1. 管理者の資格情報を使用して Windows PC にサインインします
 2. **regedit** を管理者として実行します。
 3. 次のレジストリ キーを設定します。
    * `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
@@ -97,29 +102,41 @@ ms.locfileid: "51277768"
 
 ![ログイン画面][LoginScreen]
 
-ユーザーがログインを試みると、ログイン画面に "パスワードのリセット" というリンクが表示されます。このリンクを選択することで、セルフ サービスによるパスワードのリセット機能が作動します。 ユーザーがパスワードをリセットするには、この機能を使用するだけでよく、別のデバイスを使用して Web ブラウザーにアクセスする必要はありません。
+ユーザーがサインインを試みると、ログイン画面に "パスワードのリセット" というリンクが表示されます。このリンクを選択することで、セルフ サービスによるパスワードのリセット機能が作動します。 ユーザーがパスワードをリセットするには、この機能を使用するだけでよく、別のデバイスを使用して Web ブラウザーにアクセスする必要はありません。
 
 [職場または学校アカウントのパスワードをリセットする方法](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in)に関するページで、この機能の使い方がユーザー向けに説明されています。
-
-## <a name="common-issues"></a>一般的な問題
-
-Hyper-V を使用してこの機能をテストすると、"パスワードのリセット" リンクが表示されません。
-
-* テストに使用している VM に移動して **[表示]** をクリックし、**[拡張セッション]** チェック ボックスをオフにしてください。
-
-リモート デスクトップを使用してこの機能をテストすると、"パスワードのリセット" リンクが表示されません。
-
-* リモート デスクトップからのパスワードのリセットは現在サポートされていません。
-
-Windows のロック画面がレジストリ キーまたはグループ ポリシーを使って無効にされている場合、"**パスワードのリセット**" が利用できなくなります。
-
-ポリシーにより Ctrl + Alt + Del キーが必須になっている場合、またはロック画面の通知がオフになっている場合、"**パスワードのリセット**" が正しく機能しません。
 
 Azure AD 監査ログには、パスワードのリセットが発生した IP アドレスと ClientType に関する情報が含まれます。
 
 ![Azure AD 監査ログにおけるログオン画面のパスワードのリセットの例](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
 
-お使いの Windows 10 マシンがプロキシ サーバーまたはファイアウォールの内側にある場合は、passwordreset.microsoftonline.com および ajax.aspnetcdn.com への HTTPS トラフィック (443) を許可する必要があります。
+ユーザーが Windows 10 デバイスのログイン画面から自分のパスワードをリセットすると、"defaultuser1" という低特権の一時的なアカウントが作成されます。 このアカウントは、パスワード リセット プロセスを安全に保つために使用されます。 このアカウントは、それ自体でランダムに生成されたパスワードを持ち、デバイスのサインインには表示されず、ユーザーがパスワードをリセットした後に自動的に削除されます。 複数の "defaultuser" プロファイルが存在する可能性がありますが、安全に無視することができます。
+
+## <a name="limitations"></a>制限事項
+
+Hyper-V を使用してこの機能をテストすると、"パスワードのリセット" リンクが表示されません。
+
+* テストに使用している VM に移動して **[表示]** をクリックし、**[拡張セッション]** チェック ボックスをオフにしてください。
+
+リモート デスクトップまたは拡張 VM セッションを使用してこの機能をテストすると、"パスワードのリセット" リンクが表示されません。
+
+* リモート デスクトップからのパスワードのリセットは現在サポートされていません。
+
+1809 より前のバージョンの Windows 10 のポリシーで Ctrl + Alt + Del が求められる場合、"**パスワードのリセット**" は機能しません。
+
+ロック画面の通知がオフになっている場合、"**パスワードのリセット**" は機能しません。
+
+次のポリシー設定を選択すると、パスワードのリセット機能が無効になります
+
+   * HideFastUserSwitching を有効または 1 に設定する
+   * DontDisplayLastUserName を有効または 1 に設定する
+   * NoLockScreen を有効または 1 に設定する
+   * EnableLostMode をデバイスに対して設定する
+   * Explorer.exe をカスタム シェルで置き換える
+
+この機能は、802.1x ネットワーク認証がデプロイされ、[ユーザー ログオンの直前に実行する] オプションが有効になっているネットワークでは動作しません。 802.1x ネットワーク認証がデプロイされているネットワークでこの機能を有効にするには、マシン認証を使用することをお勧めします。
+
+ハイブリッド ドメイン参加済みのシナリオでは、SSPR ワークフローは、Active Directory ドメイン コントローラーを必要とせずに正常に完了します。 リモートで作業しているときなど、Active Directory ドメイン コントローラーと通信できないときにユーザーがパスワードのリセット プロセスを完了すると、ユーザーは、デバイスがドメイン コントローラーと通信してキャッシュされた資格情報を更新するまでデバイスにサインインできなくなります。 **新しいパスワードを初めて使用するときは、ドメイン コントローラーとの接続が必要です**。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

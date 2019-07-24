@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: f2991054-8146-4718-a5f7-59b892230ad7
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
@@ -17,14 +17,15 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 23912f9d004d051c422f93e8b10f1aa6cb8b2626
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6596d1d8251bafd1ff013961555b20475e3a06d3
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959497"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544942"
 ---
-# <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>クイック スタート: サインインのための AngularJS シングルページ アプリを構築し、Azure Active Directory を使用してサインアウトする
+# <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>クイック スタート:Azure Active Directory を使用したサインインおよびサインアウトを行う AngularJS シングルページ アプリを構築する
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -45,6 +46,9 @@ Azure Active Directory (Azure AD) を使用すると、サインイン、サイ�
 2. ADAL をインストールし、シングルページ アプリを構成する。
 3. ADAL を使用して、シングルページ アプリ内のページの保護をサポートする。
 
+> [!NOTE]
+> 職場や学校のアカウントに加えて個人のアカウントのサインインを有効にする必要がある場合は、*[Microsoft ID プラットフォーム エンドポイント](azure-ad-endpoint-comparison.md)* を使用できます。 詳細については、[こちらの JavaScript SPA のチュートリアル](tutorial-v2-javascript-spa.md)と、*Microsoft ID プラットフォーム エンドポイント*を説明している[こちらの記事](active-directory-v2-limitations.md)をご覧ください。 
+
 ## <a name="prerequisites"></a>前提条件
 
 最初に、以下の前提条件を完了します。
@@ -52,7 +56,7 @@ Azure Active Directory (Azure AD) を使用すると、サインイン、サイ�
 * [アプリのスケルトンをダウンロード](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/skeleton.zip)するか、[完全なサンプルをダウンロード](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip)する。
 * ユーザーを作成してアプリケーションを登録するための Azure AD テナントがある。 テナントを所有していない場合は、「 [How to get an Azure Active Directory tenant (Azure Active Directory テナントの取得方法)](quickstart-create-new-tenant.md)」を参照して取得してください。
 
-## <a name="step-1-register-the-directorysearcher-application"></a>手順 1: DirectorySearcher アプリケーションを登録する
+## <a name="step-1-register-the-directorysearcher-application"></a>手順 1:DirectorySearcher アプリケーションを登録する
 
 アプリがユーザーを認証し、トークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録する必要があります。
 
@@ -75,7 +79,7 @@ Azure Active Directory (Azure AD) を使用すると、サインイン、サイ�
 1. アプリケーションに対してテナントのアクセス許可を付与します。 **[設定]、[必要なアクセス許可]** の順に移動し、上部のバーで **[アクセス許可の付与]** ボタンを選択します。
 1. **[はい]** を選択して確定します。
 
-## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>手順 2: ADAL をインストールし、シングルページ アプリを構成する
+## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>手順 2:ADAL をインストールし、シングルページ アプリを構成する
 
 アプリケーションを Azure AD に登録したので、adal.js をインストールし、ID 関連のコードを記述できます。
 
@@ -101,7 +105,7 @@ Azure Active Directory (Azure AD) を使用すると、サインイン、サイ�
    * `ida:Tenant` は、Azure AD テナントのドメイン (contoso.onmicrosoft.com など) です。
    * `ida:Audience` は、ポータルからコピーしたアプリケーションのクライアント ID です。
 
-## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>手順 3: ADAL を使用して、シングルページ アプリ内のページの保護をサポートする
+## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>手順 3:ADAL を使用して、シングルページ アプリ内のページの保護をサポートする
 
 adal.js には AngularJS ルートと HTTP プロバイダーが組み込まれているため、シングルページ アプリの個々のビューを保護するのに役立ちます。
 

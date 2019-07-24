@@ -1,96 +1,89 @@
-items:
 - name: Service Bus Relay のドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: リレーとは
-    href: relay-what-is-it.md
+    - name: リレーとは
+      href: relay-what-is-it.md
 - name: チュートリアル
   items:
-  - name: ハイブリッド接続と
-    items:
-    - name: メッセージの送受信 - .NET WebSocket
-      href: relay-hybrid-connections-dotnet-get-started.md
-    - name: メッセージの送受信 - .NET HTTP
-      href: relay-hybrid-connections-http-requests-dotnet-get-started.md
-    - name: メッセージの送受信 - Node WebSocket
-      href: relay-hybrid-connections-node-get-started.md
-    - name: メッセージの送受信 - Node HTTP
-      href: relay-hybrid-connections-http-requests-node-get-started.md
-  - name: Windows Communication Foundation (WCF)
-    items:
-    - name: オンプレミスの WCF サービスをクラウドの Web アプリケーションに公開する
-      href: service-bus-dotnet-hybrid-app-using-service-bus-relay.md
-    - name: オンプレミスの WCF サービスをネットワーク外部の WCF クライアントに公開する
-      href: service-bus-relay-tutorial.md
-    - name: オンプレミスの WCF REST サービスをネットワーク外部のクライアントに公開する
-      href: service-bus-relay-rest-tutorial.md
+    - name: ハイブリッド接続と
+      items:
+        - name: メッセージの送受信 - .NET WebSocket
+          href: relay-hybrid-connections-dotnet-get-started.md
+        - name: メッセージの送受信 - .NET HTTP
+          href: relay-hybrid-connections-http-requests-dotnet-get-started.md
+        - name: メッセージの送受信 - Node WebSocket
+          href: relay-hybrid-connections-node-get-started.md
+        - name: メッセージの送受信 - Node HTTP
+          href: relay-hybrid-connections-http-requests-node-get-started.md
+    - name: Windows Communication Foundation (WCF)
+      items:
+        - name: オンプレミスの WCF サービスをクラウドの Web アプリケーションに公開する
+          href: service-bus-dotnet-hybrid-app-using-service-bus-relay.md
+        - name: オンプレミスの WCF サービスをネットワーク外部の WCF クライアントに公開する
+          href: service-bus-relay-tutorial.md
+        - name: オンプレミスの WCF REST サービスをネットワーク外部のクライアントに公開する
+          href: service-bus-relay-rest-tutorial.md
 - name: サンプル
   items:
-  - name: ハイブリッド接続と
-    href: https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections
-  - name: WCF リレー
-    href: https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay
+    - name: ハイブリッド接続と
+      href: 'https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections'
+    - name: WCF リレー
+      href: 'https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay'
 - name: 概念
   items:
-  - name: 認証と権限承認
-    href: relay-authentication-and-authorization.md
-  - name: ハイブリッド接続のプロトコル
-    href: relay-hybrid-connections-protocol.md
+    - name: 認証と権限承認
+      href: relay-authentication-and-authorization.md
+    - name: ハイブリッド接続のプロトコル
+      href: relay-hybrid-connections-protocol.md
 - name: 方法
   items:
-  - name: 計画と設計
-    items:
-    - name: ACS から SAS への移行
-      href: relay-migrate-acs-sas.md
-  - name: 開発
-    items:
-    - name: 名前空間の作成
-      href: relay-create-namespace-portal.md
-    - name: WCF Relay を使用して WCF サービスを外部クライアントに公開する
-      href: relay-wcf-dotnet-get-started.md
-    - name: 利用可能な API
-      href: relay-api-overview.md
+    - name: 計画と設計
       items:
-      - name: .NET
-        href: relay-hybrid-connections-dotnet-api-overview.md
-      - name: ノード
-        href: relay-hybrid-connections-node-ws-api-overview.md
-  - name: 管理
-    items:
-    - name: Azure 監視による Azure Relay の監視
-      href: relay-metrics-azure-monitor.md
+        - name: ACS から SAS への移行
+          href: relay-migrate-acs-sas.md
+    - name: 開発
+      items:
+        - name: 名前空間の作成
+          href: relay-create-namespace-portal.md
+        - name: WCF Relay を使用して WCF サービスを外部クライアントに公開する
+          href: relay-wcf-dotnet-get-started.md
+        - name: 利用可能な API
+          href: relay-api-overview.md
+          items:
+            - name: .NET
+              href: relay-hybrid-connections-dotnet-api-overview.md
+            - name: ノード
+              href: relay-hybrid-connections-node-ws-api-overview.md
+    - name: 管理
+      items:
+        - name: Azure 監視による Azure Relay の監視
+          href: relay-metrics-azure-monitor.md
 - name: リファレンス
   items:
-  - name: .NET
-    items:
-    - name: Microsoft.Azure.Relay
-      href: /dotnet/api/microsoft.azure.relay
-    - name: Microsoft.ServiceBus
-      href: /dotnet/api/Microsoft.ServiceBus
-  - name: 例外
-    href: relay-exceptions.md
-  - name: ポートの設定
-    href: relay-port-settings.md
+    - name: .NET
+      items:
+        - name: Microsoft.Azure.Relay
+          href: /dotnet/api/microsoft.azure.relay
+        - name: Microsoft.ServiceBus
+          href: /dotnet/api/Microsoft.ServiceBus
+    - name: 例外
+      href: relay-exceptions.md
+    - name: ポートの設定
+      href: relay-port-settings.md
 - name: リソース
   items:
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/?category=enterprise-integration
-  - name: FAQ
-    href: relay-faq.md
-  - name: ブログ
-    href: https://blogs.msdn.microsoft.com/servicebus/
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/service-bus/
-  - name: 料金計算ツール
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: サンプル
-    href: https://github.com/azure/azure-relay/tree/master/samples
-  - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-servicebusrelay
-ms.openlocfilehash: 0e6f9b0a1830a570bc8388cbfb8149adb12bea11
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613701"
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
+    - name: FAQ
+      href: relay-faq.md
+    - name: ブログ
+      href: 'https://blogs.msdn.microsoft.com/servicebus/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/service-bus/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サンプル
+      href: 'https://github.com/azure/azure-relay/tree/master/samples'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-servicebusrelay'

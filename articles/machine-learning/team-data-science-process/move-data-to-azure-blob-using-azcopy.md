@@ -1,28 +1,24 @@
 ---
-title: AzCopy を使用して Azure Blob Storage 間でデータを移動する | Microsoft Docs
-description: AzCopy を使用して Azure BLOB ストレージ間でデータを移動する
-services: machine-learning,storage
-documentationcenter: ''
-author: deguhath
+title: AzCopy を使用して BLOB ストレージのデータをコピーする - Team Data Science Process
+description: AzCopy を使用して Azure Blob Storage 間でデータをコピーする
+services: machine-learning
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: c309ceb2-0e83-4a07-b16d-c997dcd62d5c
 ms.service: machine-learning
-ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: deguhath
-ms.openlocfilehash: 41e89aab65b19e22ad6f8fe0d3087c4e7f5430ab
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 6c0951eb6ad3b7651da97e1a49c5edf5ab55a199
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393406"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209576"
 ---
-# <a name="move-data-to-and-from-azure-blob-storage-using-azcopy"></a>AzCopy を使用して Azure Blob Storage 間でデータを移動する
+# <a name="copy-data-to-and-from-azure-blob-storage-using-azcopy"></a>AzCopy を使用して Azure Blob Storage 間でデータをコピーする
 AzCopy は、Microsoft Azure の BLOB、ファイル、テーブル ストレージとの間でデータをアップロード、ダウンロード、コピーすることを目的としたコマンド ライン ユーティリティです。
 
 AzCopy のインストール手順と、Azure プラットフォームでの使い方に関する情報については、「 [AzCopy コマンド ライン ユーティリティの概要](../../storage/common/storage-use-azcopy.md)」を参照してください。
@@ -69,10 +65,10 @@ Azure BLOB からファイルをダウンロードするには、次のコマン
     AzCopy /Source:https://<your_account_name>.blob.core.windows.net/<your_container_name>/<your_sub_directory_at_blob>  /Dest:<your_local_directory> /SourceKey:<your_account_key> /Pattern:<file_pattern> /S
 
 
-## <a name="transfer-blobs-between-azure-containers"></a>Azure コンテナー間で BLOB を転送する
-Azure コンテナー 間で BLOB を転送するには、次のコマンドを使用します。
+## <a name="copy-blobs-between-azure-containers"></a>Azure コンテナー間で BLOB をコピーする
+Azure コンテナー 間で BLOB をコピーするには、次のコマンドを使用します。
 
-    # Transferring blobs between Azure containers
+    # Copying blobs between Azure containers
     AzCopy /Source:https://<your_account_name1>.blob.core.windows.net/<your_container_name1>/<your_sub_directory_at_blob1> /Dest:https://<your_account_name2>.blob.core.windows.net/<your_container_name2>/<your_sub_directory_at_blob2> /SourceKey:<your_account_key1> /DestKey:<your_account_key2> /Pattern:<file_pattern> /S
 
     <your_account_name>: your storage account name
@@ -80,7 +76,7 @@ Azure コンテナー 間で BLOB を転送するには、次のコマンドを�
     <your_container_name>: your container name
     <your_sub_directory_at_blob>: the sub directory in the container
     <your_local_directory>: directory of local file system where files to be uploaded from or the directory of local file system files to be downloaded to
-    <file_pattern>: pattern of file names to be transferred. The standard wildcards are supported
+    <file_pattern>: pattern of file names to be copied. The standard wildcards are supported
 
 
 ## <a name="tips-for-using-azcopy"></a>AzCopy を使用するためのヒント

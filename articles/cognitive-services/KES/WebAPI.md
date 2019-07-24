@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Web API インターフェイスを使用し、Knowledge Exploration Service (KES) API でリッチなセマンティック検索エクスペリエンスを作成できます。
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 5be39e8dce6aeeef32d20273c56650620d6fe986
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 970db5984eedebf98bbb087cfd0b4a35a21a0f54
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122027"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861189"
 ---
 # <a name="web-api-interface"></a>Web API インターフェイス
 

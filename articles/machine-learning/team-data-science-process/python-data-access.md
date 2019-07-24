@@ -1,33 +1,29 @@
 ---
-title: Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする | Microsoft Docs
+title: Python クライアント ライブラリを使用したデータセットへのアクセス - Team Data Science Process
 description: Python クライアント ライブラリをインストールして使用し、ローカル Python 環境から Azure Machine Learning データを安全に管理します。
 services: machine-learning
-documentationcenter: python
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 9ab42272-c30c-4b7e-8e66-d64eafef22d0
 ms.service: machine-learning
-ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: deguhath
-ms.openlocfilehash: 496ffdcb5cc2e7b208a53dc8c1d8ba4c0818945f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: bf0e679ab46752d71ba4f5ef2b014e0cb2b4c6ad
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719972"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471999"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする
 Microsoft Azure Machine Learning Python クライアント ライブラリのプレビューは、ローカルの Python 環境から Azure Machine Learning データセットへの安全なアクセスを確立し、ワークスペースにおけるデータセットを作成して管理できるようにします。
 
 このトピックでは次の方法について説明します。
 
-* Machine Learning Python クライアント ライブラリをインストールする 
+* Machine Learning Python クライアント ライブラリをインストールする
 * ローカルの Python 環境から Azure Machine Learning データセットへのアクセス認証を取得するなど、データ セットにアクセスしてアップロードする
 * 実験から中間データセットにアクセスする
 * Python クライアント ライブラリを使用してデータ セットを列挙、メタデータにアクセス、データ セットのコンテンツを読み込み、新しいデータ セットを作成して既存のデータ セットを更新する
@@ -53,7 +49,7 @@ Python クライアント ライブラリは、次の環境でテストされて
 
     pip install azureml
 
-代わりに、 [github](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python)からソースをダウンロードしてインストールすることもできます。
+代わりに、[GitHub](https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python) からソースをダウンロードしてインストールすることもできます。
 
     python setup.py install
 
@@ -78,11 +74,11 @@ Python クライアント ライブラリで使用するために Studio で提�
 
 次のいずれかを実行することで認証トークンを取得できます。
 
-* 所有者からトークンをリクエストします。 所有者は Studio のワークスペースの [設定] ページから認証トークンを確認できます。 左側のウィンドウから **[設定]** を選択し、**[認証トークン]** をクリックしてプライマリとセカンダリのトークンを確認します。  プライマリとセカンダリの認証トークンのどちらもコード スニペットで使用できますが、所有者はセカンダリの認証トークンのみ共有することをお勧めします。
+* 所有者からトークンをリクエストします。 所有者は Studio のワークスペースの [設定] ページから認証トークンを確認できます。 左側のウィンドウから **[設定]** を選択し、**[認証トークン]** をクリックしてプライマリとセカンダリのトークンを確認します。 プライマリとセカンダリの認証トークンのどちらもコード スニペットで使用できますが、所有者はセカンダリの認証トークンのみ共有することをお勧めします。
 
 ![認証トークン](./media/python-data-access/ml-python-access-settings-tokens.png)
 
-* 所有者への役割の昇格を申請する  そのためにはまず、ワークスペースの現在の所有者にワークスペースから削除してもらい、その後所有者としてに再度招待してもらう必要があります。
+* 所有者への役割の昇格を申請する そのためにはまず、ワークスペースの現在の所有者にワークスペースから削除してもらい、その後所有者としてに再度招待してもらう必要があります。
 
 開発者がワークスペース ID と認証トークンを取得したら、役割に関係なく、コード スニペットを使用してワークスペースにアクセスできるようになります。
 
@@ -96,10 +92,10 @@ Python クライアント ライブラリで使用するために Studio で提�
     ![データセット][datasets]
 4. 表示されるウィンドウからコード スニペットを選択し、クリップボードにコピーします。
    
-    ![アクセス コード][dataset-access-code]
+    ![[データ アクセス コードの生成] ボタン][dataset-access-code]
 5. ローカル Python アプリケーションのノートブックにコードを貼り付けます。
    
-    ![ノートブック][ipython-dataset]
+    ![ノートブックにコードを貼り付ける][ipython-dataset]
 
 ## <a name="accessingIntermediateDatasets"></a>Machine Learning 実験から中間データセットにアクセスする
 Machine Learning Studio で実験が実行されると、モジュールの出力ノードから中間データ セットにアクセスできます。 中間データセットは、モデル ツールが実行されているときに中間手順で作成され使用されるデータです。
@@ -137,10 +133,10 @@ Machine Learning Studio で実験が実行されると、モジュールの出�
     ![コンテキスト メニュー][experiment]
 8. 表示されたウィンドウからコード スニペットを選択し、クリップボードにコピーします。
    
-    ![アクセス コード][intermediate-dataset-access-code]
+    ![コンテキスト メニューからアクセス コードを生成する][intermediate-dataset-access-code]
 9. ノートブックにコードを貼り付けます。
    
-    ![ノートブック][ipython-intermediate-dataset]
+    ![ノートブックにコードを貼り付ける][ipython-intermediate-dataset]
 10. Matplotlib を使用してデータを視覚化できます。 これは、age 列のヒストグラムで表示されます。
     
     ![ヒストグラム][ipython-histogram]

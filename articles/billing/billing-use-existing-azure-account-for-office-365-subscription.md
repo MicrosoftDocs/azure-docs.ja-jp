@@ -14,13 +14,13 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: cwatson
-ms.openlocfilehash: d48b55af705eddb42853fb236e5eb6a214d1a0ff
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: banders
+ms.openlocfilehash: b67f3c590be290515329af390b4d3d79a9746112
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394054"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339229"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Azure アカウントで Office 365 サブスクリプションにサインアップする
 Azure サブスクライバ―は、Azure アカウントを使用して、Office 365 サブスクリプションにサインアップできます。 Azure サブスクリプションがある組織に属している場合は、既存の Azure Active Directory (Azure AD) にユーザーの Office 365 サブスクリプションを作成できます。 Azure Active Directory テナントでグローバル管理者または課金管理者権限を持っているアカウントを使用して、Office 365 サブスクリプションにサインアップします。 詳細については、「[Azure AD でアカウントのアクセス許可を確認する](#RoleInAzureAD)」と「[Azure Active Directory の管理者ロールの割り当て](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
@@ -43,12 +43,13 @@ Azure サブスクライバ―は、Azure アカウントを使用して、Offic
 
     ![Office 365 の注文受付のスクリーン ショット](./media/billing-use-existing-azure-account-office-365-subscription/15-office-365-order-receipt.png)
 
-設定が完了しました。 組織のための Office 365 サブスクリプションを作成した場合は、次の手順を使用して、Azure AD ユーザーが Office 365 ユーザーになっていることを確認するます。
+設定が完了しました。
+組織のための Office 365 サブスクリプションを作成した場合は、次の手順を使用して、Azure AD ユーザーが Office 365 ユーザーになっていることを確認するます。
 
-1. Office 365 管理センターを開きます。
+1. Microsoft 365 管理センターを開きます。
 2. **[ユーザー]** を展開し、**[アクティブ ユーザー]** をクリックします。
 
-    ![Office 365 管理センターのユーザーのスクリーンショット](./media/billing-use-existing-azure-account-office-365-subscription/16-office-365-admin-center-users.png)
+    ![Microsoft 365 管理センターのユーザーのスクリーンショット](./media/billing-use-existing-azure-account-office-365-subscription/16-microsoft-365-admin-center-users.png)
 
 サインアップが完了すると、Azure サブスクリプションが属しているのと同じ Azure Active Directory に Office 365 サブスクリプションが追加されます。 詳細については、「[Azure サブスクリプションと Office 365 サブスクリプションの背景情報](billing-use-existing-office-365-account-azure-subscription.md#more-about-subs)」と「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
@@ -58,16 +59,17 @@ Azure サブスクライバ―は、Azure アカウントを使用して、Offic
 
     ![Azure ポータルでの Active Directory のスクリーンショット](./media/billing-use-existing-azure-account-office-365-subscription/billing-more-services-active-directory.png)
 3. **[ユーザーとグループ]** > **[すべてのユーザー]** をクリックします。
-4. ユーザー名を選択します。 
+4. ユーザー名を選択します。
 
     ![Azure Active Directory ユーザーの表示のスクリーン ショット](./media/billing-use-existing-azure-account-office-365-subscription/billing-users-groups.png)
 
 5. **[ディレクトリ ロール]** をクリックします。
-  
+
     ![Azure ポータルでのディレクトリ ロールの表示のスクリーン ショット](./media/billing-use-existing-azure-account-office-365-subscription/billing-user-directory-role.png)
 6.  既存の Azure Active Directory にユーザーの Office 365 サブスクリプションを作成するには、**グローバル管理者**ロール、または**制限付き管理者** > **課金管理者**ロールが必要です。
 
     ![Azure ポータルでの課金管理者ディレクトリ ロールの表示のスクリーン ショット](./media/billing-use-existing-azure-account-office-365-subscription/billing-directoryrole-limited.png)
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
-お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。 
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
+
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

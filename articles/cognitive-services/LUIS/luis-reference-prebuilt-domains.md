@@ -1,23 +1,24 @@
 ---
-title: 事前構築済みのドメインのリファレンス - Azure | Microsoft Docs
+title: 事前構築済みのドメインのリファレンス
 titleSuffix: Azure
 description: 事前構築済みのドメインのリファレンスです。事前構築済みのドメインは、Language Understanding Intelligent Service (LUIS) の意図とエンティティの事前構築済みのコレクションです。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: f424abd339bda6c29079e3d286cbe96593f16f52
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e1e579233a5ad1af1ef8ee84019cd995959d3b2b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040042"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433775"
 ---
-# <a name="prebuilt-domain-reference"></a>事前構築済みのドメインのリファレンス
+# <a name="prebuilt-domain-reference-for-your-luis-app"></a>LUIS アプリの事前構築済みのドメインのリファレンス
 このリファレンスは、[事前構築済みのドメイン](luis-how-to-use-prebuilt-domains.md)に関する情報を提供します。事前構築済みのドメインは、LUIS が提供している意図とエンティティの事前構築済みのコレクションです。
 
 対照的に、[カスタム ドメイン](luis-how-to-start-new-app.md)は意図とモデルがない状態から始まります。 任意の事前構築済みのドメインの意図とエンティティをカスタム モデルに追加できます。
@@ -102,10 +103,10 @@ Communication ドメインには、電子メール、メッセージ、電話の
 | AssignContactNickname| 連絡先にニックネームを割り当てます。|Isaac を父さんに変更して <br/>Jim のニックネームを編集して<br/>Patti Owens にニックネームを追加して|
 | CallVoiceMail| ユーザーのボイス メールに接続します。|ボイスメール ボックスに接続して。 <br/>ボイス メール<br/>ボイスメールに発信して|
 | CheckIMStatus| Skype で連絡先の状態を確認します。|Jim のオンライン状態は退席中? <br/>Carol は今チャットできる?|
-| Confirm| アクションを確認します。|[はい]<br/>OK<br/>大丈夫<br/>このメールの送信を確定します。<br/>|
+| Confirm| アクションを確認します。|はい<br/>OK<br/>大丈夫<br/>このメールの送信を確定します。<br/>|
 | Dial| 電話を発信します。|Jim に電話<br/>311 に電話をかけて<br/>|
 | FindContact| 連絡先情報を名前で検索します。|Carol の番号を検索して<br/>Carol の番号を表示して<br/>|
-| FindSpeedDial| 電話番号が設定されている短縮番号、またはその逆を検索します。|ダイヤル番号 5 は何?<br/>短縮番号は設定されている?<br/>941-5555-333 のダイヤル番号は何?|
+| FindSpeedDial| 電話番号が設定されている短縮ダイヤル番号、またはその逆のものを検索します。|ダイヤル番号 5 は何?<br/>短縮番号は設定されている?<br/>941-5555-333 のダイヤル番号は何?|
 | GetForwardingsStatus| 着信の転送の現在の状態を取得します。|着信の転送は有効?<br/>自分の通話状態がオンかオフかを教えて<br/>|
 | Goback| 前の手順に戻ります。|Twitter に戻って<br/>1 ステップ戻って<br/>Go back|
 | Ignore| 電話の着信を無視します。|応答しないで<br/>着信を無視して|
@@ -154,7 +155,7 @@ Entertainment ドメインには、映画、音楽、ゲーム、テレビ番組
 | ContentRating | 映画の G、R など、メディア コンテンツ レーティング。|子供向けビデオ。<br/>PG レーティング。|
 | Genre | 映画、ゲーム、アプリ、歌のジャンル。|コメディ<br/>ドラマ<br/>おもしろい|
 | Keyword| より詳しいメディア スロットには存在しない属性を指定する一般的な検索キーワード。|Soundtracks<br/>ムーン リバー<br/>アメリア・イアハート|
-| Language | 映画や歌の音声言語などの、メディアで使用される言語。|フランス語<br/>英語<br/>韓国語|
+| 言語 | 映画や歌の音声言語などの、メディアで使用される言語。|フランス語<br/>英語<br/>韓国語|
 | MediaFormat | メディア形式のその他の特殊な技術の種類。|HD ムービー<br/>3D ムービー<br/>ダウンロード可能|
 | MediaSource | メディアを購入するための店舗またはマーケットプレース。|Netflix<br/>Prime|
 | MediaSubTypes| 映画やゲームよりも小さなメディアの種類。|デモ<br/>Dlc<br/>予告編|
@@ -181,7 +182,7 @@ Events ドメインには、コンサート、フェスティバル、スポー�
 | Name | イベントの名前。|公園でシェイクスピア|
 | PlaceName| イベントの場所の名前。|ルーブル<br/>オペラ ハウス<br/>ブロードウェイ|
 | PlaceType | イベントが開かれる場所の種類。|カフェ<br/>劇場<br/>ライブラリ|
-| type | イベントの種類。|コンサート<br/>スポーツの試合|
+| Type | イベントの種類。|コンサート<br/>スポーツの試合|
 
 ## <a name="fitness"></a>Fitness 
 Fitness ドメインには、フィットネス アクティビティの追跡に関する意図およびエンティティが用意されています。 意図には、メモの保存、残りの時間や距離、アクティビティ結果の保存が含まれます。
@@ -241,16 +242,17 @@ HomeAutomation ドメインには、照明や家電製品などのスマート �
 MovieTickets ドメインには、映画館の映画チケットの予約に関する意図とエンティティが用意されています。
 
 ### <a name="examples"></a>例
-```
-Book me two tickets for Captain Omar and the two Musketeers
-Cancel tickets
-When is Captain Omar showing?
-```
+
+|例|
+|--|
+|「オマール大佐と 2 人の銃士」のチケットを 2 枚予約して|
+|チケットをキャンセルして|
+|「オマール大佐」の上映時間はいつ?|
 
 ### <a name="intents"></a>意図
 | 意図の名前 | 説明 | 例 |
 | ---------------- |-----------------------|----|
-| Book | 映画チケットを購入します。|「オマール大佐と 2 人の銃士」のチケットを 2 枚予約して。<br/>明日の映画のチケットを買いたい<br/>来週水曜日の「オマール大佐と 2 人の銃士」のチケットがほしい|
+| Book | 映画チケットを購入します。|「オマール大佐と 2 人の銃士」のチケットを 2 枚予約して。<br/>明日の映画のチケットを買いたい<br/>来週水曜日の「オマール大佐」パート 2 のチケットがほしい|
 |GetShowTime| 映画の上映時間を取得します。|「オマール大佐」の上映時間はいつ?|
 
 
@@ -266,11 +268,12 @@ When is Captain Omar showing?
 Music ドメインには、音楽プレーヤーでの音楽の再生に関する意図とエンティティが用意されています。
 
 ### <a name="examples"></a>例
-```
-play Beethoven
-Increase track volume
-Skip to the next song
-```
+
+|例|
+|--|
+|ベートーベンをかけて|
+|トラックの音量を上げて|
+|次の歌にスキップして|
 
 ### <a name="intents"></a>意図
 | 意図の名前 | 説明 | 例 |
@@ -297,11 +300,12 @@ Skip to the next song
 Note ドメインには、メモの作成、編集、および検索に関する意図とエンティティが用意されています。
 
 ### <a name="examples"></a>例
-```
-Add to my groceries note lettuce tomato bread coffee
-Check off bananas from my grocery list
-Remove all items from my vacation list
-```
+
+|例|
+|--|
+|買い物メモにレタス、トマト、パン、コーヒーを追加|
+|買い物リストからバナナをオフにして|
+|休暇リストからすべての項目を削除して|
 
 ### <a name="intents"></a>意図
 | 意図の名前 | 説明 | 例 |
@@ -330,11 +334,13 @@ Remove all items from my vacation list
 OnDevice ドメインには、デバイスの制御に関する意図とエンティティが用意されています。
 
 ### <a name="examples"></a>例
-```
-Close video player
-Cancel playback
-Can you make the screen brighter?
-```
+
+|例|
+|--|
+|ビデオ プレーヤーを終了して|
+|再生を取り消して|
+|画面を明るくできますか?|
+
 
 ### <a name="intents"></a>意図
 | 意図の名前 | 説明 | 例 |
@@ -381,11 +387,13 @@ Can you make the screen brighter?
 Places ドメインには、会社、施設、レストラン、公共の場所、住所など、場所に関するクエリを処理する意図が用意されています。
 
 ### <a name="examples"></a>例
-```
-Save this location to my favorites
-How far away is Holiday Inn?
-At what time does Safeway close?
-```
+
+|例|
+|--|
+|この場所をお気に入りに保存して|
+|ホリデイ インまでの距離はどのくらい?|
+|セーフウェイの閉店時間はいつ?|
+
 
 ### <a name="intents"></a>意図
 | 意図の名前 | 説明 | 例 |
@@ -404,7 +412,7 @@ At what time does Safeway close?
 |GetMenu|レストランのメニュー項目を確認します。|ズッカはビーガン料理を出している?<br/>シズラーのメニューの内容を教えて<br/>アップルビーのメニューを表示して|
 |GetPhoneNumber| 場所の電話番号を確認します。|最寄りのスターバックスの電話番号を教えて<br/>ホーム デポの番号を教えて| 
 |GetPriceRange| 場所の価格帯を確認します。|ズッカは安い?<br/>シネプレックスは水曜日に半額になる?<br/>シズラーのロブスター 1 尾付きのディナーはいくら?|
-|GetReviews|場所のレビューを確認します。|チーズケース ファクトリのレビューを表示して<br/>シネプレックスのレビューを Yelp で読む|
+|GetReviews|場所のレビューを確認します。|チーズケーキ ファクトリのレビューを表示して<br/>シネプレックスのレビューを Yelp で読む|
 |GetRoute|場所までの道案内を確認します。|徒歩でベルビュー スクエアまで行く方法<br/>ここから 8 番通と 59 番通までの最短距離を表示して<br/>カリフォルニア州マウンテン ビューまで道案内して|
 |GetStarRating|場所の星評価を確認します。|Yelp によるとズッカの評価はどのくらい?<br/>フレンチ ランドリーの星はいくつ?<br/>モンテレイの水族館は良い?|
 |GetTransportationSchedule|場所のバスのスケジュールを取得します。|商業地区までの次のバスはいつですか?<br/>キング郡のバスを表示して|
@@ -450,11 +458,13 @@ restart|
 Reminder ドメインには、リマインダーの作成、編集、および検索に関する意図とエンティティが用意されています。
 
 ### <a name="examples"></a>例
-```
-Change my interview to 9 am tomorrow
-Remind me to buy milk on my way back home
-Can you check if I have a reminder about Christine's birthday?
-```
+
+|例|
+|--|
+|面接を明日午前 9 時に変更して|
+|家に帰る途中で牛乳の購入を通知して|
+|Christine の誕生日に関するリマインダーがあるかどうかを確認できますか?|
+
 
 ### <a name="intents"></a>意図
 | 意図の名前 | 説明 | 例 |
@@ -473,11 +483,12 @@ Can you check if I have a reminder about Christine's birthday?
 RestaurantReservation ドメインには、レストラン予約の管理に関する意図とエンティティが用意されています。
 
 ### <a name="examples"></a>例
-```
-Reserve at Zucca for two for tonight
-Book a table at BJ's for tomorrow
-Table for 3 in Palo Alto at 7
-```
+
+|例|
+|--|
+|今晩、ズッカに 2 人で予約|
+|明日、BJ's の席を予約して|
+|7 時にパロ アルトに 3 人で予約|
 
 ### <a name="intents"></a>意図
 | 意図の名前 | 説明 | 例 |
@@ -502,11 +513,12 @@ Table for 3 in Palo Alto at 7
 Taxi ドメインには、タクシー予約の作成および管理に関するする意図とエンティティが用意されています。
 
 ### <a name="examples"></a>例
-```
-Get me a cab at 3 pm
-How much longer do I have to wait for my taxi?
-Cancel my Uber
-```
+
+|例|
+|--|
+|午後 3 時にタクシーを呼んで|
+|どのくらいタクシーを待つ必要がありますか?|
+|Uber をキャンセルして|
 
 ### <a name="intents"></a>意図
 | 意図の名前 | 説明 | 例 |
@@ -531,11 +543,13 @@ Cancel my Uber
 Translate ドメインには、テキストの対象言語への翻訳に関する意図とエンティティが用意されています。
 
 ### <a name="examples"></a>例
-```
-Translate to French
-Translate hello to German
-Translate this sentence to English
-```
+
+|例|
+|--|
+|フランス語に翻訳して|
+|「こんにちは」をドイツ語に翻訳して|
+|この文を英語に翻訳して|
+
 
 ### <a name="intents"></a>意図
 | 意図の名前 | 説明 | 例 |
@@ -554,11 +568,12 @@ Translate this sentence to English
 TV ドメインには、テレビを制御するための意図とエンティティが用意されています。
 
 ### <a name="examples"></a>例
-```
-Switch channel to BBC
-Show TV guide
-Watch National Geographic
-```
+
+|例|
+|--|
+|チャンネルを BBC に切り替えて|
+|テレビ ガイドを表示して|
+|ナショナル ジオグラフィックを入れて|
 
 ### <a name="intents"></a>意図
 | 意図の名前 | 説明 | 例 |
@@ -576,11 +591,13 @@ Watch National Geographic
 Utilities ドメインには、あいさつ、キャンセル、確認、ヘルプ、繰り返し、ナビゲーション、開始、停止など、多くのタスクに共通するタスクの意図が用意されています。
 
 ### <a name="examples"></a>例
-```
-Go back to Twitter
-Please help
-Repeat last question please
-```
+
+|例|
+|--|
+|Twitter に戻って|
+|助けてください|
+|最後の質問を繰り返して|
+
 
 ### <a name="intents"></a>意図
 | 意図の名前 | 説明 | 例 |
@@ -600,11 +617,13 @@ Repeat last question please
 Weather ドメインには、天気のレポートと予測を取得するための意図とエンティティが用意されています。
 
 ### <a name="examples"></a>例
-```
-weather in London in september
-What?s the 10 day forecast?
-What's the average temperature in India in september?
-```
+
+|例|
+|--|
+|ロンドンの 9 月の天気|
+|10 日間予測を教えてください|
+|9 月のインドの平均気温は?|
+
 
 ### <a name="intents"></a>意図
 | 意図の名前 | 説明 | 例 |
@@ -621,11 +640,12 @@ What's the average temperature in India in september?
 Web ドメインには、Web サイトにナビゲートする意図が用意されています。
 
 ### <a name="examples"></a>例
-```
-Navigate to facebook.com
-Go to www.twitter.com
-Navigate to www.bing.com
-```
+
+|例|
+|--|
+|facebook.com に移動して|
+|www.twitter.com にアクセスして|
+|www.bing.com に移動して|
 
 ### <a name="intents"></a>意図
 | 意図の名前 | 説明 | 例 |

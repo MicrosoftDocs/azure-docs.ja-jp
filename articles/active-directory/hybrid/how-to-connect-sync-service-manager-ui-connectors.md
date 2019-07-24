@@ -4,24 +4,25 @@ description: Azure AD Connect の Synchronization Service Manager の [コネク
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 60f1d979-8e6d-4460-aaab-747fffedfc1e
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 592fcd80b80ecbd101dd559aa8baf78a60aaa517
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306851"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431174"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Azure AD Connect の Sync Service Manager でコネクタを使用する
 
@@ -30,7 +31,7 @@ ms.locfileid: "46306851"
 [コネクタ] タブを利用し、同期エンジンが接続されているすべてのシステムを管理します。
 
 ## <a name="connector-actions"></a>コネクタのアクション
-| アクションを表示します。 | Comment (コメント) |
+| Action | Comment (コメント) |
 | --- | --- |
 | Create |使用しないでください。 その他の AD フォレストに接続するには、インストール ウィザードを使用します。 |
 | Properties |ドメインと OU フィルター処理に使用されます。 |
@@ -42,7 +43,7 @@ ms.locfileid: "46306851"
 | コネクタのインポート |使用しないでください。 |
 | コネクタの更新 |使用しないでください。 |
 | スキーマの更新 |キャッシュされたスキーマを更新します。 このアクション代わりに、インストール ウィザードのオプションを使用することをお勧めします。インストール ウィザードのオプションであれば、同期規則も更新されます。 |
-| [コネクタ スペースの検索](#search-connector-space) |オブジェクトを検索し、 [オブジェクトとそのデータをシステム全体でフォローする](#follow-an-object-and-its-data-through-the-system)ために使用されます。 |
+| [コネクタ スペースの検索](#search-connector-space) |オブジェクトを検索し、オブジェクトとそのデータをシステム全体でフォローするために使用されます。 |
 
 ### <a name="delete"></a>削除
 削除アクションには次の 2 つがあります。  

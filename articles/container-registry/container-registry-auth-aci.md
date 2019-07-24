@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: 32b1788d73e1c323d93b40b778bc64a1ba45c4ad
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 8a2d19a09233e510055e147fa1cf95dd4471768b
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855835"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390663"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Azure Container Instances から Azure Container Registry の認証を受ける
 
@@ -24,7 +24,7 @@ Azure Active Directory (Azure AD) サービス プリンシパルを使って、
 
 サービス プリンシパルは、自動的にまたはそれ以外の無人の方法でコンテナー インスタンスを作成するアプリケーションやサービスなどの**ヘッドレス シナリオ**で ACI から認証を受けるために使う必要があります。
 
-たとえば、夜間に実行され、何らかのデータを処理する[タスク ベースのコンテナー インスタンス](../container-instances/container-instances-restart-policy.md)を作成する自動スクリプトがある場合、このスクリプトでプルのみ (閲覧者) のアクセス許可を持つサービス プリンシパルを使ってレジストリへの認証を受けることができます。 その後、サービス プリンシパルの資格情報を交換したり、他のサービスやアプリケーションにまったく影響を与えずにそのアクセスを取り消したりできます。
+たとえば、夜間に実行され、何らかのデータを処理する[タスク ベースのコンテナー インスタンス](../container-instances/container-instances-restart-policy.md)を作成する自動スクリプトがある場合、このスクリプトでは、プルのみのアクセス許可を持つサービス プリンシパルを使ってレジストリへの認証を受けることができます。 その後、サービス プリンシパルの資格情報を交換したり、他のサービスやアプリケーションにまったく影響を与えずにそのアクセスを取り消したりできます。
 
 サービス プリンシパルは、レジストリの [admin ユーザー](container-registry-authentication.md#admin-account)が無効のときにも使う必要があります。
 

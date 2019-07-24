@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: テキストを翻訳する、C# - Translator Text'
+title: クイック スタート:テキストを翻訳する (C#) - Translator Text
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、C# で Translator Text API を使ってテキストを別の言語に翻訳します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 11/20/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 06e294187247636c552dfd4a7d02167eb55be19a
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: fc52512f48050c46894996d5a79b26f36fc6ad6c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334705"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183834"
 ---
-# <a name="quickstart-translate-text-with-the-translator-text-rest-api-c"></a>クイック スタート: Translator Text REST API を使用してテキストを翻訳する (C#)
+# <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-c"></a>クイック スタート:C# と Translator Text API を使用して文字列を翻訳する
 
 このクイック スタートでは、.NET Core と Translator Text REST API を使用して、テキスト文字列を英語からイタリア語とドイツ語に翻訳する方法を学習します。
 
@@ -28,7 +28,7 @@ ms.locfileid: "52334705"
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Json.NET NuGet パッケージ](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)、または任意のテキスト エディター
-* Speech Service の Azure サブスクリプション キー
+* Translator Text の Azure サブスクリプション キー
 
 ## <a name="create-a-net-core-project"></a>.NET Core プロジェクトを作成する
 
@@ -154,6 +154,8 @@ dotnet run
 ```
 
 ## <a name="sample-response"></a>応答のサンプル
+
+国の省略形は、こちらの[言語一覧](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support)で確認してください。
 
 ```json
 [

@@ -1,252 +1,123 @@
 ---
-title: 'チュートリアル: e コマース カタログのモデレーション - Content Moderator'
+title: チュートリアル:eコマース製品画像をモデレートする - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: 機械学習と AI を使用して e コマース カタログを自動的にモデレートします。
+description: アプリケーションを設定して、指定されたラベルによって製品画像を分析および分類し (Azure Computer Vision と Custom Vision を使用)、好ましくない画像にタグを付けてさらにレビューできるようにします (Azure Content Moderator を使用)。
 services: cognitive-services
-author: sanjeev3
-manager: cgronlun
+author: PatrickFarley
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 09/25/2017
-ms.author: sajagtap
-ms.openlocfilehash: 0bd61c3f1a4f660076be4e87bb5443302e5dc013
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.date: 01/10/2019
+ms.author: pafarley
+ms.openlocfilehash: 900ad8b7f676eb67f9ac0fc808600779f832a102
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363996"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539498"
 ---
-# <a name="tutorial-ecommerce-catalog-moderation-with-machine-learning"></a>チュートリアル: 機械学習による e コマース カタログのモデレーション
+# <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator を使用して eコマース製品画像をモデレートする
 
-このチュートリアルでは、マシン支援型 AI テクノロジと人によるモデレーションを組み合わせて、機械学習ベースの高度な e コマース カタログ モデレーションを実装して、高度なカタログ システムを提供する方法について説明します。
+このチュートリアルでは、Content Moderator などの Azure Cognitive Services を使用し、eコマース シナリオ用の製品画像を効果的に分類してモデレートする方法について学習します。 Computer Vision と Custom Vision を使用してさまざまなタグ (ラベル) を画像に適用したうえで、チーム レビューを作成します。これにより、Content Moderator の機械学習に基づくテクノロジが人間のレビュー チームと組み合わされ、インテリジェントなモデレーション システムが実現します。
 
-![分類された製品の画像](images/tutorial-ecommerce-content-moderator.PNG)
+このチュートリアルでは、次の操作方法について説明します。
 
-## <a name="business-scenario"></a>ビジネス シナリオ
+> [!div class="checklist"]
+> * Content Moderator にサインアップして、レビュー チームを作成します。
+> * Content Moderator の Image API を使用して、成人向けとわいせつ向けの可能性があるコンテンツをスキャンします。
+> * Computer Vision サービスを使用して、著名人のコンテンツ (または、Computer Vision で検出可能なその他のタグ) をスキャンします。
+> * Custom Vision サービスを使用して、旗、おもちゃ、ペン (またはその他のカスタム タグ) の存在をスキャンします。
+> * 人間によるレビューと最終的な意思決定のために、組み合わされたスキャン結果を表示します。
 
-マシン支援型テクノロジを使用して、次のカテゴリに製品画像を分類し、調整します。
+完全なサンプル コードは、GitHub 上の [samples-eCommerceCatalogModeration](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) リポジトリで入手できます。
 
-1. 成人向け (ヌード)
-2. わいせつ (際どい)
-3. 有名人
-4. 米国旗
-5. おもちゃ
-6. ペン
+Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-## <a name="tutorial-steps"></a>チュートリアルの手順
+## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、以下の手順について説明します。
+- Content Moderator のサブスクリプション キー。 [Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Content Moderator サービスをサブスクライブし、お客様のキーを取得してください。
+- Computer Vision のサブスクリプション キー (上記と同じ手順)。
+- [Visual Studio 2015 または 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
+- Custom Vision 分類器によって使用される各ラベル用の画像のセット (ここでは、おもちゃ、ペン、米国旗)。
 
-1. Content Moderator にサインアップしてチームを作成します。
-2. 有名人と旗の可能性があるコンテンツのためのモデレーション タグ (ラベル) を構成します。
-3. Content Moderator の Image API を使用して、成人向けとわいせつ向けの可能性があるコンテンツをスキャンします。
-4. 有名人の可能性がある画像をスキャンするには、Computer Vision API を使用します。
-5. 旗が存在する可能性がある画像をスキャンするには、Custom Vision サービスを使用します。
-6. 人によるレビューと最終的な意思決定のために、微妙なスキャン結果を表示します。
+## <a name="create-a-review-team"></a>レビュー チームを作成する
 
-## <a name="create-a-team"></a>チームを作成する
+[Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)にサインアップしてレビュー チームを作成する方法の手順については、「[Web 上で Content Moderator を試す](quick-start.md)」クイック スタートを参照してください。 **[資格情報]** ページの **[チーム ID]** を書き留めておきます。
 
-Content Moderator にサインアップしてチームを作成する方法については、[クイック スタート](quick-start.md)のページを参照してください。 **[Credentials]\(資格情報\)** ページの **[Team ID]\(チーム ID\)** をメモします。
+## <a name="create-custom-moderation-tags"></a>カスタム モデレーション タグの作成
 
-
-## <a name="define-custom-tags"></a>カスタム タグを定義する
-
-カスタム タグを追加するには、[タグ](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags)に関する記事を参照してください。 組み込みの **adult** (成人) タグと **racy** (わいせつ) タグに加えて、新しいタグを使用すると、レビュー ツールでタグのわかりやすい名前を表示できます。
-
-この例では、カスタム タグ **celebrity** (有名人)、**flag** (旗)、**us** (米国)、**toy** (おもちゃ)、**pen** (ペン) を定義しています。
+次に、レビュー ツールのカスタム タグを作成します (この手順についてヘルプが必要な場合は、[タグ](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags)に関する記事を参照してください)。 ここでは、**著名人**、**米国**、**旗**、**おもちゃ**、**ペン**の各タグを追加します。 すべてのタグが Computer Vision で検出可能なカテゴリである必要はないことに注意してください (例: **著名人**)。後で検出するために Custom Vision 分類器をトレーニングするのであれば、お客様独自のカスタム タグを追加してかまいません。
 
 ![カスタム タグを構成する](images/tutorial-ecommerce-tags2.PNG)
 
-## <a name="list-your-api-keys-and-endpoints"></a>API キーとエンドポイントを一覧表示する
+## <a name="create-visual-studio-project"></a>Visual Studio プロジェクトの作成
 
-1. このチュートリアルでは、3 つの API と、対応するキーと API エンドポイントを使用しています。
-2. API エンドポイントは、サブスクリプションのリージョンと Content Moderator Review Team ID によって異なります。
+1. Visual Studio で、[新しいプロジェクト] ダイアログを開きます。 **[インストール済み]**、**[Visual C#]** の順に展開し、**[コンソール アプリ (.NET Framework)]** を選択します。
+1. アプリケーションに「**EcommerceModeration**」という名前を付けて、**[OK]** をクリックします。
+1. このプロジェクトを既存のソリューションに追加する場合、このプロジェクトをシングル スタートアップ プロジェクトとして選択します。
 
-> [!NOTE]
-> このチュートリアルは、次のエンドポイントで表示できるリージョンのサブスクリプション キーを使用するように設計されています。 実際の API キーとリージョン キーを一致させてください。そうしないと、次のエンドポイントではお使いのキーが機能しない可能性があります。
+このチュートリアルでは、プロジェクトの中心となるコードが主に取り上げられますが、必要なすべてのコード行は網羅されません。 サンプル プロジェクト ([samples-eCommerceCatalogModeration](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)) から _Program.cs_ のすべての内容をお客様の新しいプロジェクトの _Program.cs_ ファイルにコピーします。 次に、以下のセクションの手順に従って、プロジェクトのしくみとそれを自分で使用する方法について学習してください。
 
-         // Your API keys
-        public const string ContentModeratorKey = "XXXXXXXXXXXXXXXXXXXX";
-        public const string ComputerVisionKey = "XXXXXXXXXXXXXXXXXXXX";
-        public const string CustomVisionKey = "XXXXXXXXXXXXXXXXXXXX";
+## <a name="define-api-keys-and-endpoints"></a>API キーとエンドポイントの定義
 
-        // Your end points URLs will look different based on your region and Content Moderator Team ID.
-        public const string ImageUri = "https://westus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessImage/Evaluate";
-        public const string ReviewUri = "https://westus.api.cognitive.microsoft.com/contentmoderator/review/v1.0/teams/YOURTEAMID/reviews";
-        public const string ComputerVisionUri = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0";
-        public const string CustomVisionUri = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/Prediction/XXXXXXXXXXXXXXXXXXXX/url";
+上記のとおり、このチュートリアルでは 3 つのコグニティブ サービスを使用します。そのため、対応する 3 つのキーと API エンドポイントが必要です。 **Program** クラスの次のフィールドを見てください。
 
-## <a name="scan-for-adult-and-racy-content"></a>成人向けコンテンツとわいせつなコンテンツをスキャンする
+[!code-csharp[define API keys and endpoint URIs](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=21-29)]
 
-1. この関数は、画像 URL と、キーと値のペアの配列をパラメーターとして受け取ります。
-2. この関数から Content Moderator の Image API が呼び出され、Adult と Racy のスコアが取得されます。
-3. スコアが 0.4 を超える場合 (範囲は 0 から 1)、**ReviewTags** 配列の値は **True** に設定されます。
-4. **ReviewTags** 配列は、レビュー ツール内の対応するタグを強調表示するために使用されます。
+`___Key` フィールドは、お客様のサブスクリプション キーの値で更新する必要があります (後で `CustomVisionKey` を取得します)。また、`___Uri` フィールドは、適切なリージョン識別子を含むように変更することが必要な場合があります。 `ReviewUri` フィールドの `YOURTEAMID` 部分には、お客様が先ほど作成したレビュー チームの ID を入力してください。 `CustomVisionUri` フィールドの最後の部分は後で入力します。
 
-        public static bool EvaluateAdultRacy(string ImageUrl, ref KeyValuePair[] ReviewTags)
-        {
-            float AdultScore = 0;
-            float RacyScore = 0;
+## <a name="primary-method-calls"></a>主要なメソッドの呼び出し
 
-            var File = ImageUrl;
-            string Body = $"{{\"DataRepresentation\":\"URL\",\"Value\":\"{File}\"}}";
+**Main** メソッドの次のコードを見てください。これにより、画像 URL の一覧がループ処理されます。 3 つの異なるサービスによって各画像が分析され、適用されたタグが **ReviewTags** 配列に記録されてから、人間のモデレーター用のレビューが作成されます (Content Moderator レビュー ツールに画像が送信されます)。 以下のセクションでは、これらのメソッドについて詳しく見ていきます。 どのタグが適用されたかをチェックするための条件付きステートメントで **ReviewTags** 配列を使用して、レビュー用に送信される画像をここで制御できることに注意してください。
 
-            HttpResponseMessage response = CallAPI(ImageUri, ContentModeratorKey, CallType.POST,
-                                                   "Ocp-Apim-Subscription-Key", "application/json", "", Body);
+[!code-csharp[Main: evaluate each image and create review](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=53-70)]
 
-            if (response.IsSuccessStatusCode)
-            {
-                // {“answers”:[{“answer”:“Hello”,“questions”:[“Hi”],“score”:100.0}]}
-                // Parse the response body. Blocking!
-                GetAdultRacyScores(response.Content.ReadAsStringAsync().Result, out AdultScore, out RacyScore);
-            }
+## <a name="evaluateadultracy-method"></a>EvaluateAdultRacy メソッド
 
-            ReviewTags[0] = new KeyValuePair();
-            ReviewTags[0].Key = "a";
-            ReviewTags[0].Value = "false";
-            if (AdultScore > 0.4)
-            {
-                ReviewTags[0].Value = "true";
-            }
+**Program** クラスの **EvaluateAdultRacy** メソッドを見てください。 このメソッドでは、画像 URL、およびキーと値のペアの配列がパラメーターとして受け取られます。 これによって Content Moderator の Image API が呼び出され (REST を使用)、画像の Adult と Racy のスコアが取得されます。 いずれかのスコアが 0.4 を超える場合 (範囲は 0 から 1)、**ReviewTags** 配列の対応する値が **True** に設定されます。
 
-            ReviewTags[1] = new KeyValuePair();
-            ReviewTags[1].Key = "r";
-            ReviewTags[1].Value = "false";
-            if (RacyScore > 0.3)
-            {
-                ReviewTags[1].Value = "true";
-            }
-            return response.IsSuccessStatusCode;
-        }
+[!code-csharp[define EvaluateAdultRacy method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=73-113)]
 
-## <a name="scan-for-celebrities"></a>有名人をスキャンする
+## <a name="evaluatecomputervisiontags-method"></a>EvaluateComputerVisionTags メソッド
 
-1. [Computer Vision API](https://azure.microsoft.com/services/cognitive-services/computer-vision/) の[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)にサインアップします。
-2. **[API キーの取得]** をクリックします。
-3. 使用条件に同意します。
-4. ログインするには、使用できるインターネット アカウントのリストから選択します。
-5. サービス ページに表示される API キーをメモします。
-    
-   ![Computer Vision API キー](images/tutorial-computer-vision-keys.PNG)
-    
-6. Computer Vision API を使用して画像をスキャンする関数のプロジェクト ソース コードを参照してください。
+次のメソッドでは、画像 URL とお客様の Computer Vision サブスクリプション情報が受け取られ、画像に著名人が存在するかどうかが分析されます。 1 人または複数の著名人が見つかった場合、**ReviewTags** 配列の対応する値が **True** に設定されます。
 
-         public static bool EvaluateComputerVisionTags(string ImageUrl, string ComputerVisionUri, string ComputerVisionKey, ref KeyValuePair[] ReviewTags)
-        {
-            var File = ImageUrl;
-            string Body = $"{{\"URL\":\"{File}\"}}";
+[!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=115-146)]
 
-            HttpResponseMessage Response = CallAPI(ComputerVisionUri, ComputerVisionKey, CallType.POST,
-                                                   "Ocp-Apim-Subscription-Key", "application/json", "", Body);
+## <a name="evaluatecustomvisiontags-method"></a>EvaluateCustomVisionTags メソッド
 
-            if (Response.IsSuccessStatusCode)
-            {
-                ReviewTags[2] = new KeyValuePair();
-                ReviewTags[2].Key = "cb";
-                ReviewTags[2].Value = "false";
+次に、**EvaluateCustomVisionTags** メソッドを見てください。これにより、実際の製品 (ここでは、旗、おもちゃ、ペン) が分類されます。 画像内の旗、おもちゃ、ペン (またはお客様がご自分のカスタム タグとして選択した任意のもの) の存在を検出するために、[分類器の構築方法](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)に関するガイドの手順に従って、お客様独自のカスタム画像分類器を構築します。 この例のいくつかのカテゴリをすばやくトレーニングするために、[GitHub リポジトリ](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)の **sample-images** フォルダーにある画像を使用できます。
 
-                ComputerVisionPrediction CVObject = JsonConvert.DeserializeObject<ComputerVisionPrediction>(Response.Content.ReadAsStringAsync().Result);
+![ペン、おもちゃ、旗のトレーニング画像が含まれた Custom Vision の Web ページ](images/tutorial-ecommerce-custom-vision.PNG)
 
-                if ((CVObject.categories[0].detail != null) && (CVObject.categories[0].detail.celebrities.Count() > 0))
-                {                 
-                    ReviewTags[2].Value = "true";
-                }
-            }
+お客様の分類器をトレーニングできたら、予測キーと予測エンドポイント URL を取得し (これらの取得にヘルプが必要な場合は「[URL と予測キーを取得する](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key)」を参照してください)、それらの値をお客様の `CustomVisionKey` フィールドと `CustomVisionUri` フィールドにそれぞれ割り当てます。 メソッドによってこれらの値が使用され、分類器に対してクエリが実行されます。 分類器によって画像内にカスタム タグが 1 つまたは複数見つかった場合、このメソッドによって、**ReviewTags** 配列の対応する値が **True** に設定されます。
 
-            return Response.IsSuccessStatusCode;
-        }
+[!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=148-171)]
 
-## <a name="classify-into-flags-toys-and-pens"></a>旗、おもちゃ、ペンに分類する
+## <a name="create-reviews-for-review-tool"></a>レビュー ツール用のレビューの作成
 
-1. [Custom Vision API プレビュー](https://www.customvision.ai/)に[サインイン](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)します。
-2. [クイック スタート](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)を使用して、旗、おもちゃ、ペンが存在する可能性があるコンテンツを検出するカスタム分類子を構築します。
-   ![Custom Vision のトレーニング画像](images/tutorial-ecommerce-custom-vision.PNG)
-3. カスタム分類子の[予測エンドポイント URL を取得します](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api)。
-4. 画像をスキャンするためにカスタム分類子の予測エンドポイントを呼び出す関数については、プロジェクトのソース コードを参照してください。
+これまでのセクションでは、成人向けコンテンツとわいせつなコンテンツ (Content Moderator)、著名人 (Computer Vision)、さまざまな他のオブジェクト (Custom Vision) について受信画像をスキャンするメソッドに注目しました。 次は、**CreateReview** メソッドを見てください。これによって、適用されたすべてのタグ (_Metadata_ として渡されます) と共に画像が Content Moderator レビュー ツールにアップロードされ、人間がレビューに使用できるようになります。 
 
-        public static bool EvaluateCustomVisionTags(string ImageUrl, string CustomVisionUri, string CustomVisionKey, ref KeyValuePair[] ReviewTags)
-        {
-            var File = ImageUrl;
-            string Body = $"{{\"URL\":\"{File}\"}}";
+[!code-csharp[define CreateReview method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=173-196)]
 
-            HttpResponseMessage response = CallAPI(CustomVisionUri, CustomVisionKey, CallType.POST,
-                                                   "Prediction-Key", "application/json", "", Body);
+[Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)の [レビュー] タブに画像が表示されます。
 
-            if (response.IsSuccessStatusCode)
-            {
-                // Parse the response body. Blocking!
-                SaveCustomVisionTags(response.Content.ReadAsStringAsync().Result, ref ReviewTags);
-            }
-            return response.IsSuccessStatusCode;
-        }       
- 
-## <a name="reviews-for-human-in-the-loop"></a>human-in-the-loop (人間参加) のレビュー
+![複数の画像と強調表示されたそれらのタグが含まれた Content Moderator レビュー ツールのスクリーンショット](images/tutorial-ecommerce-content-moderator.PNG)
 
-1. 前述のセクションでは、成人とわいせつ (Content Moderator)、有名人 (Computer Vision)、旗 (Custom Vision) について受信画像をスキャンしました。
-2. 各スキャンの一致しきい値に基づいて、微妙な場合にレビュー ツールで人がレビューできるようにします。
-        public static bool CreateReview(string ImageUrl, KeyValuePair[] Metadata) {
+## <a name="submit-a-list-of-test-images"></a>テスト画像の一覧の送信
 
-            ReviewCreationRequest Review = new ReviewCreationRequest();
-            Review.Item[0] = new ReviewItem();
-            Review.Item[0].Content = ImageUrl;
-            Review.Item[0].Metadata = new KeyValuePair[MAXTAGSCOUNT];
-            Metadata.CopyTo(Review.Item[0].Metadata, 0);
+**Main** メソッドを見るとわかるように、このプログラムでは、画像 URL の一覧が記載されている _Urls.txt_ ファイルが含まれた "C:Test" ディレクトリが検索されます。 このようなファイルとディレクトリを作成するか、またはパスを変更してお客様のテキスト ファイルを指定し、お客様がテストしたい画像の URL をそのファイルに入力します。
 
-            //SortReviewItems(ref Review);
+[!code-csharp[Main: set up test directory, read lines](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=38-51)]
 
-            string Body = JsonConvert.SerializeObject(Review.Item);
+## <a name="run-the-program"></a>プログラムの実行
 
-            HttpResponseMessage response = CallAPI(ReviewUri, ContentModeratorKey, CallType.POST,
-                                                   "Ocp-Apim-Subscription-Key", "application/json", "", Body);
-
-            return response.IsSuccessStatusCode;
-        }
-
-## <a name="submit-batch-of-images"></a>画像のバッチを送信する
-
-1. このチュートリアルでは、画像 URL のリストが記載されたテキスト ファイルが "C:Test" ディレクトリにあるとします。
-2. 次のコードは、ファイルの存在をチェックし、すべての URL をメモリに読み込みます。
-            // Check for a test directory for a text file with the list of Image URLs to scan var topdir = @"C:\test\"; var Urlsfile = topdir + "Urls.txt";
-
-            if (!Directory.Exists(topdir))
-                return;
-
-            if (!File.Exists(Urlsfile))
-            {
-                return;
-            }
-
-            // Read all image URLs in the file
-            var Urls = File.ReadLines(Urlsfile);
-
-## <a name="initiate-all-scans"></a>すべてのスキャンを開始する
-
-1. このトップレベル関数では、前述のテキスト ファイルに含まれるすべての画像 URL がループ処理されます。
-2. 画像 URL は各 API でスキャンされ、一致信頼度スコアが基準に該当する場合、ヒューマン モデレーター用のレビューが作成されます。
-             // for each image URL in the file... foreach (var Url in Urls) { // Initiatize a new review tags array ReviewTags = new KeyValuePair[MAXTAGSCOUNT];
-
-                // Evaluate for potential adult and racy content with Content Moderator API
-                EvaluateAdultRacy(Url, ref ReviewTags);
-
-                // Evaluate for potential presence of celebrity (ies) in images with Computer Vision API
-                EvaluateComputerVisionTags(Url, ComputerVisionUri, ComputerVisionKey, ref ReviewTags);
-
-                // Evaluate for potential presence of custom categories other than Marijuana
-                EvaluateCustomVisionTags(Url, CustomVisionUri, CustomVisionKey, ref ReviewTags);
-
-                // Create review in the Content Moderator review tool
-                CreateReview(Url, ReviewTags);
-            }
-
-## <a name="license"></a>ライセンス
-
-すべての Microsoft Cognitive Services SDK およびサンプルには、MIT ライセンスがあります。 詳細については、[ライセンス](https://microsoft.mit-license.org/)に関するページを参照してください。
-
-## <a name="developer-code-of-conduct"></a>開発者の倫理規定
-
-このクライアント ライブラリとサンプルを含め、Cognitive Services を使用する開発者は、「Developer Code of Conduct for Microsoft Cognitive Services」(Microsoft Cognitive Services の開発者の倫理規定) (http://go.microsoft.com/fwlink/?LinkId=698895) に従うものとします。
+上記の手順をすべて完了したら、プログラムによって (関連するタグについて 3 つのサービスすべてに対してクエリが実行されて) 各画像が処理され、タグ情報と共に画像が Content Moderator レビュー ツールにアップロードされます。
 
 ## <a name="next-steps"></a>次の手順
 
-Github の[プロジェクト ソース ファイル](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)を使用して、チュートリアルを構築し、拡張します。
+このチュートリアルでは、製品の種類別にタグを付けてレビュー チームがコンテンツ モデレーションに関して情報に基づいた決定を行えるようにすることを目的として、製品画像を分析するプログラムを設定しました。 次は、画像のモデレーションの詳細について学習してください。
+
+> [!div class="nextstepaction"]
+> [モデレートされた画像のレビュー](./review-tool-user-guide/review-moderated-images.md)

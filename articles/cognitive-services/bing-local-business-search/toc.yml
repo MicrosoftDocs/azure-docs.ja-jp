@@ -1,48 +1,46 @@
-items:
 - name: Bing Local Business Search API のドキュメント
   href: index.yml
   expanded: true
+  items: null
 - name: 概要
-  items:
-  - name: Bing Local Business Search API とは
-    href: overview.md
   expanded: true
+  items:
+    - name: Bing Local Business Search API とは
+      href: overview.md
+    - name: Bing Search API を比較する
+      href: ../Bing-Web-Search/bing-api-comparison.md
+      maintainContext: true
 - name: クイック スタート
   items:
-  - name: REST API
-    items:
-    - name: C# の使用
-      href: quickstarts/local-quickstart.md
-    - name: Java の使用
-      href: quickstarts/local-search-java-quickstart.md
-    - name: Node の使用
-      href: quickstarts/local-search-node-quickstart.md
-    - name: Python の使用
-      href: quickstarts/local-search-python-quickstart.md
-    expanded: true
+    - name: REST API
+      expanded: true
+      items:
+        - name: 'C# の使用'
+          href: quickstarts/local-quickstart.md
+        - name: Java の使用
+          href: quickstarts/local-search-java-quickstart.md
+        - name: Node の使用
+          href: quickstarts/local-search-node-quickstart.md
+        - name: Python の使用
+          href: quickstarts/local-search-python-quickstart.md
 - name: 概念
   items:
-  - name: クエリと応答の操作
-    href: local-search-query-response.md
-  - name: 地理的境界を設定して結果をフィルター処理する
-    href: specify-geographic-search.md
-  - name: 地元企業の検索カテゴリ
-    href: local-categories.md
+    - name: クエリと応答の操作
+      href: local-search-query-response.md
+    - name: 地理的境界を設定して結果をフィルター処理する
+      href: specify-geographic-search.md
+    - name: 地元企業の検索カテゴリ
+      href: local-categories.md
 - name: リファレンス
   items:
-  - name: 使用と表示の要件
-    href: use-display-requirements.md
-  - name: Local Business Search API リファレンス
-    href: local-search-reference.md
+    - name: 使用と表示の要件
+      href: ../Bing-Web-Search/use-display-requirements.md
+      maintainContext: true
+    - name: Local Business Search API リファレンス
+      href: local-search-reference.md
 - name: リソース
   items:
-  - name: Cognitive Services を試す
-    href: https://azure.microsoft.com/en-us/try/cognitive-services/?api=bing-web-search-api
-  - name: 料金情報
-    href: https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/
-ms.openlocfilehash: d120c19aa2b028fe54bec90c22f3e9bcf1bb4355
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748800"
+    - name: Cognitive Services を試す
+      href: 'https://azure.microsoft.com/en-us/try/cognitive-services/?api=bing-web-search-api'
+    - name: 料金情報
+      href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/'

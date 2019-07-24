@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: c7b9921d7eacb9b40e39f8e68d13357ce6bcfd78
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5d7665cbfdf855e194f61910f0c8ee2bce5469b1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241550"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852493"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>カスタム アーティファクトと Resource Manager テンプレートを格納するための Git リポジトリの追加
 
@@ -78,18 +78,18 @@ VM を作成したときに、Resource Manager テンプレートを保存し、
 
     ![リポジトリの追加ボタン](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. 2 番目の **[レポジトリ]** ページで、以下の情報を指定します。
-  1. **名前**。 リポジトリの名前を入力します。
-  2. **[Git クローン URL]**:  GitHub または Azure DevOps Services から先ほどコピーした Git HTTPS クローン URL を入力します。
-  3. **[ブランチ]**:  定義を取得するには、ブランチを入力します。
-  4. **[個人用アクセス トークン]**:  GitHub または Azure DevOps Services から先ほど取得した個人用アクセス トークンを入力します。
-  5. **[フォルダー パス]**:  アーティファクトまたは Resource Manager テンプレートの定義を含む、複製 URL を基準としたフォルダー パスを少なくとも 1 つ入力します。 サブディレクトリを指定するときは、フォルダー パスにスラッシュを含めてください。
+   1. **名前**。 リポジトリの名前を入力します。
+   2. **[Git クローン URL]**:  GitHub または Azure DevOps Services から先ほどコピーした Git HTTPS クローン URL を入力します。
+   3. **[ブランチ]**:  定義を取得するには、ブランチを入力します。
+   4. **[個人用アクセス トークン]**:  GitHub または Azure DevOps Services から先ほど取得した個人用アクセス トークンを入力します。
+   5. **[フォルダー パス]**:  アーティファクトまたは Resource Manager テンプレートの定義を含む、複製 URL を基準としたフォルダー パスを少なくとも 1 つ入力します。 サブディレクトリを指定するときは、フォルダー パスにスラッシュを含めてください。
 
-     ![[リポジトリ] 領域](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
+      ![[リポジトリ] 領域](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
 6. **[保存]** を選択します。
 
 ### <a name="related-blog-posts"></a>関連するブログ記事
 * [DevTest Labs でアーティファクトの失敗のトラブルシューティングを行う](devtest-lab-troubleshoot-artifact-failure.md)
-* [DevTest Labs で Resource Manager テンプレートを使用して既存の Active Directory ドメインに VM を参加させる](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+* [DevTest Labs で Resource Manager テンプレートを使用して既存の Active Directory ドメインに VM を参加させる](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

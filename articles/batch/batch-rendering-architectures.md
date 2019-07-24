@@ -1,18 +1,20 @@
 ---
-title: Azure レンダリング - 参照アーキテクチャ
+title: Azure レンダリング - 参照アーキテクチャ - Azure Batch
 description: クラウドにバーストすることで Azure Batch およびその他の Azure サービスを使用してオンプレミス レンダー ファームを拡張するためのアーキテクチャ
 services: batch
+ms.service: batch
 author: davefellows
 manager: jeconnoc
-ms.author: danlep
-ms.date: 08/13/2018
+ms.author: lahugh
+ms.date: 02/07/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0fe101ee6eb88094034b90c4d39f06ba509c9512
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.custom: seodec18
+ms.openlocfilehash: ae4680c948ce8e1efd32207dc37821d61182f2d8
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40099686"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791207"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Azure レンダリング向け参照アーキテクチャ
 
@@ -26,9 +28,9 @@ ms.locfileid: "40099686"
 
 * **ネットワーク** - オンプレミス: Azure ExpressRoute または VPN。 Azure: Azure VNet。
 
-* **ストレージ** - 入力ファイルと出力ファイル:Azure VM を使用した NFS または CFS。Azure File Sync または RSync を介してオンプレミス ストレージと同期されています。
+* **ストレージ** - 入力ファイルと出力ファイル: Azure VM を使用した NFS または CFS。Azure File Sync または RSync を介してオンプレミス ストレージと同期されています。 あるいは:NFS を使用してオンプレミスの NAS デバイスからファイルを入力または出力するための Avere vFXT。
 
-  ![クラウド バースティング - NFS または CFS を持つハイブリッド](./media/batch-rendering-architectures/hybrid-nfs-cfs.png)
+  ![クラウド バースティング - NFS または CFS を持つハイブリッド](./media/batch-rendering-architectures/hybrid-nfs-cfs-avere.png)
 
 ## <a name="hybrid-with-blobfuse"></a>Blobfuse を持つハイブリッド
 
@@ -38,7 +40,7 @@ ms.locfileid: "40099686"
 
 * **ネットワーク** - オンプレミス: Azure ExpressRoute または VPN。 Azure: Azure VNet。
 
-* **ストレージ** - 入力ファイルと出力ファイル: Blob Storage。Azure Blobfuse を介してコンピューティング リソースにマウントされています。
+* **ストレージ** - 入力ファイルと出力ファイル: BLOB ストレージ。Azure Blobfuse を介してコンピューティング リソースにマウントされています。
 
   ![クラウド バースティング - Blobfuse を持つハイブリッド](./media/batch-rendering-architectures/hybrid-blob-fuse.png)
 
@@ -50,9 +52,9 @@ ms.locfileid: "40099686"
 
 * **ネットワーク** - オンプレミス: Azure ExpressRoute または VPN。 Azure: Azure VNet。
 
-* **ストレージ** - クロスプレミス: Avere vFXT。 (省略可能) Azure Data Box を介した Blob Storage へのオンプレミス ファイルのアーカイブ。
+* **ストレージ** - クロスプレミス: Avere vFXT。 (省略可能) Azure Data Box を介した BLOB ストレージへのオンプレミス ファイルのアーカイブ、または NAS 高速化のためのオンプレミスの Avere FXT。
 
-  ![クラウド バースティング - ハイブリッド コンピューティングとストレージ](./media/batch-rendering-architectures/hybrid-compute-storage.png)
+  ![クラウド バースティング - ハイブリッド コンピューティングとストレージ](./media/batch-rendering-architectures/hybrid-compute-storage-avere.png)
 
 
 ## <a name="next-steps"></a>次の手順

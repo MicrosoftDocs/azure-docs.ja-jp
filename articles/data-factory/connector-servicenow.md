@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/28/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: c67f6c14dc396367e0179fe5bdb4663fcb7725da
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 234b78a97c2663121d0d585154695887a58b9522
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045968"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351745"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Azure Data Factory を使用して ServiceNow からデータをコピーする
 
@@ -42,11 +41,11 @@ ServiceNow のリンクされたサービスでは、次のプロパティがサ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **ServiceNow** に設定する必要があります。 | [はい] |
-| endpoint | ServiceNow サーバーのエンドポイント (`http://<instance>.service-now.com`)。  | [はい] |
-| authenticationType | 使用する認証の種類。 <br/>使用可能な値: **Basic**、**OAuth2** | [はい] |
-| username | Basic および OAuth2 認証で ServiceNow サーバーへの接続に使用されるユーザー名。  | [はい] |
-| password | Basic および OAuth2 認証のユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります。**ServiceNow** | はい |
+| endpoint | ServiceNow サーバーのエンドポイント (`http://<instance>.service-now.com`)。  | はい |
+| authenticationType | 使用する認証の種類。 <br/>使用できる値は、以下のとおりです。**Basic**、**OAuth2** | はい |
+| username | Basic および OAuth2 認証で ServiceNow サーバーへの接続に使用されるユーザー名。  | はい |
+| password | Basic および OAuth2 認証のユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | clientId | OAuth2 認証のクライアント ID。  | いいえ  |
 | clientSecret | OAuth2 認証のクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
@@ -77,7 +76,12 @@ ServiceNow のリンクされたサービスでは、次のプロパティがサ
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、ServiceNow データセットでサポートされるプロパティの一覧を示します。
 
-ServiceNow からデータをコピーするには、データセットの type プロパティを **ServiceNowObject** に設定します。 この種類のデータセットに追加の種類固有のプロパティはありません。
+ServiceNow からデータをコピーするには、データセットの type プロパティを **ServiceNowObject** に設定します。 次のプロパティがサポートされています。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | データセットの type プロパティは、次のように設定する必要があります。**ServiceNowObject** | はい |
+| tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
 
@@ -89,7 +93,8 @@ ServiceNow からデータをコピーするには、データセットの type 
         "linkedServiceName": {
             "referenceName": "<ServiceNow linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -104,16 +109,17 @@ ServiceNow からデータをコピーするには、コピー アクティビ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **ServiceNowSource** に設定する必要があります。 | [はい] |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Actual.alm_asset"`」のように入力します。 | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**ServiceNowSource** | はい |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Actual.alm_asset"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
-クエリで ServiceNow のスキーマと列を指定する際には、次の点に注意してください。
+クエリで ServiceNow のスキーマと列を指定するときは、次のことに注意してください。また、**コピーのパフォーマンスの影響について、「[パフォーマンスに関するヒント](#performance-tips)」を参照してください**。
 
-- **スキーマ:** ServiceNow のクエリでは、スキーマを `Actual` または `Display` として指定します。これは、[ServiceNow restful API](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET) を呼び出す際に、`sysparm_display_value` パラメーター (true または false) として確認できます。 
-- **列:** `Actual` スキーマの下の実際の値の列名は `[columne name]_value` で、`Display` スキーマの下の表示値は `[columne name]_display_value` です。 列名は、クエリで使用されているスキーマにマップされる必要があります。
+- **スキーマ:** ServiceNow のクエリでは、スキーマを `Actual` または `Display` として指定します。これは、[ServiceNow restful API](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET) を呼び出す際に、`sysparm_display_value` パラメーター (true または false) として確認できます。 
+- **列:** `Actual` スキーマの下の実際の値の列名は `[column name]_value` で、`Display` スキーマの下の表示値は `[column name]_display_value` です。 列名は、クエリで使用されているスキーマにマップされる必要があります。
 
 **サンプル クエリ:**
-`SELECT col_value FROM Actual.alm_asset` または `SELECT col_display_value FROM Display.alm_asset`
+`SELECT col_value FROM Actual.alm_asset`または  
+`SELECT col_display_value FROM Display.alm_asset`
 
 **例:**
 
@@ -146,6 +152,17 @@ ServiceNow からデータをコピーするには、コピー アクティビ�
     }
 ]
 ```
+## <a name="performance-tips"></a>パフォーマンスに関するヒント
+
+### <a name="schema-to-use"></a>使用するスキーマ
+
+ServiceNow には 2 つの異なるスキーマがあります。1 つは **"Actual"** で、実際のデータが返されます。もう 1 つは **"Display"** で、データの表示値が返されます。 
+
+クエリ内にフィルターがある場合は、コピーのパフォーマンスがよい "Actual" スキーマを使用してください。 "Actual" スキーマに対してクエリを実行すると、ServiceNow ではデータをフェッチするときにネイティブにフィルターがサポートされて、フィルター処理された結果セットのみが返されます。一方、"Display" スキーマに対してクエリを実行すると、ADF ではすべてのデータが取得されて、内部的にフィルターが適用されます。
+
+### <a name="index"></a>Index
+
+ServiceNow のテーブル インデックスは、クエリのパフォーマンスの向上に役立ちます。「[Create a table index](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/table_administration/task/t_CreateCustomIndex.html)」(テーブル インデックスを作成する) をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

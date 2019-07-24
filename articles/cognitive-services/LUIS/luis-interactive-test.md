@@ -1,23 +1,24 @@
 ---
-title: LUIS ポータル内での LUIS アプリのテスト
-titleSuffix: Azure Cognitive Services
+title: LUIS ポータルでアプリをテストする
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Language Understanding (LUIS) を使用して、アプリケーションの改善とその言語解釈の向上に継続的に取り組みます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
+ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6bb03975e36e93c2496eb4c6013be21ebc891ed1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 51c6a58567b35c9b8486d8634b0bed1af7218994
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039703"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58893625"
 ---
-# <a name="test-your-luis-app"></a>LUIS アプリのテスト
+# <a name="test-your-luis-app-in-the-luis-portal"></a>LUIS ポータルで LUIS アプリをテストする
 アプリの<a name="train-your-app"></a>
 [テスト](luis-concept-test.md)は反復処理です。 ご自身の LUIS アプリをトレーニングした後、サンプルの発話を使用して、意図とエンティティが正しく認識されるかどうかをテストします。 正しく認識されない場合は、もう一度 LUIS アプリを更新し、トレーニングおよびテストを行います。 
 
@@ -25,6 +26,7 @@ ms.locfileid: "47039703"
 <a name="test-your-app"></a>
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
+
 ## <a name="test-an-utterance"></a>発話のテスト
 
 1. **[My Apps]\(マイ アプリ\)** ページでご自身のアプリの名前を選択して、アプリにアクセスします。 
@@ -39,22 +41,17 @@ ms.locfileid: "47039703"
 
     ![対話型テストによる間違った意図の特定](./media/luis-how-to-interactive-test/test-weather-1.png)
 
-## <a name="clear-test-panel"></a>テスト パネルのクリア
-入力したすべてのテスト用の発話とその結果をテスト コンソールからクリアするには、**[Test]\(テスト\)** パネルの左上隅の **[やり直す]** を選択します。 
-
-## <a name="close-test-panel"></a>テスト パネルを閉じる
-**[Test]\(テスト\)** パネルを閉じるには、**[Test]\(テスト\)** をもう一度選択します。
-
 ## <a name="inspect-score"></a>スコアの検査
+
 テスト結果の詳細は、**[検査]** パネルで調べることができます。 
  
 1. スライド式の **[Test]\(テスト\)** パネルを開いた状態で、比較する発話の **[検査]** を選択します。 
 
-    ![[検査] ボタン](./media/luis-how-to-interactive-test/inspect.png)
+    ![テスト結果の詳細を確認するには、[検査] ボタンを選択します。](./media/luis-how-to-interactive-test/inspect.png)
 
 2. **[検査]** パネルが表示されます。 このパネルには、最もスコアの高い意図のほか、特定されたエンティティが含まれています。 パネルには、選択された発話の結果が表示されます。
 
-    ![[検査] ボタン](./media/luis-how-to-interactive-test/inspect-panel.png)
+    ![このパネルには、最もスコアの高い意図のほか、特定されたエンティティが含まれています。 パネルには、選択された発話の結果が表示されます。](./media/luis-how-to-interactive-test/inspect-panel.png)
 
 ## <a name="correct-top-scoring-intent"></a>上位スコアの意図の修正
 
@@ -71,9 +68,11 @@ ms.locfileid: "47039703"
 ![感情分析を含む [Test]\(テスト\) ウィンドウの画像](./media/luis-how-to-interactive-test/sentiment.png)
 
 ## <a name="correct-matched-patterns-intent"></a>一致したパターンの意図の修正
+
 [パターン](luis-concept-patterns.md)の使用中、発話がパターンに一致したが、予測された意図が間違っている場合は、パターンによる **[編集]** リンクを選択し、正しい意図を選択します。
 
 ## <a name="compare-with-published-version"></a>公開されたバージョンとの比較
+
 公開された[エンドポイント](luis-glossary.md#endpoint) バージョンでアプリのアクティブなバージョンをテストできます。 **[検査]** パネルで、**[Compare with published]\(公開済みのものと比較\)** を選択します。 公開されたモデルに対するテストは、お使いの Azure サブスクリプションのクォータ残量から差し引かれます。 
 
 ![公開済みとの比較](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
@@ -87,12 +86,14 @@ ms.locfileid: "47039703"
 ## <a name="additional-settings-in-test-panel"></a>テスト パネルでの追加設定
 
 ### <a name="luis-endpoint"></a>LUIS エンドポイント
+
 LUIS エンドポイントが複数ある場合は、テストの [公開済み] ウィンドウで **[追加設定]** リンクを使用して、テスト用に使用されているエンドポイントを変更します。 使用するエンドポイントがわからない場合は、既定の **Starter_Key** を選択します。 
 
 ![[追加設定] リンクが強調表示されているテスト パネル](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
 
 
 ### <a name="view-bing-spell-check-corrections-in-test-panel"></a>テスト パネルでの Bing Spell Check 修正の表示
+
 スペルの修正を表示するための要件: 
 
 * 公開済みアプリ
@@ -123,6 +124,7 @@ LUIS エンドポイントが複数ある場合は、テストの [公開済み]
 <a name="view single-point utterance data"></a>
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
+
 ## <a name="batch-testing"></a>バッチ テスト
 バッチ テストの[概念](luis-concept-batch-test.md)と、発話のバッチをテストする[方法](luis-how-to-batch-test.md)を参照してください。
 
@@ -130,5 +132,5 @@ LUIS エンドポイントが複数ある場合は、テストの [公開済み]
 
 ご自身の LUIS アプリで正しい意図とエンティティが認識されないことがテストによって示されている場合、LUIS アプリの精度を向上させるには、発話にさらに多くのラベルを付けるか、機能を追加します。 
 
-* [LUIS で推奨される発話にラベルを付ける](luis-how-to-review-endoint-utt.md) 
+* [LUIS で推奨される発話にラベルを付ける](luis-how-to-review-endpoint-utterances.md) 
 * [LUIS アプリのパフォーマンスを向上させる機能を使用する](luis-how-to-add-features.md) 

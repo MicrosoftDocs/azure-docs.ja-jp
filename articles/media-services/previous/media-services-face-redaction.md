@@ -4,23 +4,23 @@ description: このトピックでは、Azure Media Analytics で顔を編集す
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 03/18/2019
 ms.author: juliako;
-ms.openlocfilehash: 910cc246aa19e19b109fc660682c6b2dc239cbb7
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 1fe003ae13bc5f195932f4f140e17c4dc2791959
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "33784451"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188256"
 ---
-# <a name="redact-faces-with-azure-media-analytics"></a>Azure Media Analytics で顔を編集する
+# <a name="redact-faces-with-azure-media-analytics"></a>Azure Media Analytics で顔を編集する 
 ## <a name="overview"></a>概要
 **Azure Media Redactor** は、クラウドでスケーラブルな顔編集を提供する [Azure Media Analytics](media-services-analytics-overview.md) メディア プロセッサ (MP) です。 顔編集では、ビデオを編集して選択した個人の顔をぼかすことができます。 顔編集サービスは、公共の安全やニュース媒体などに使用していただけます。 複数人の顔を含んでいる映像の場合、顔編集を手作業で行うと数分の映像でも数時間かかりますが、このサービスを使えば数ステップの簡単な手順で完了します。 詳細については、[こちらの投稿](https://azure.microsoft.com/blog/azure-media-redactor/)を参照してください。
 
@@ -41,10 +41,10 @@ ms.locfileid: "33784451"
 | 出力資産 |foo_redacted.mp4 |ぼかしが適用されたビデオ |
 
 #### <a name="input-example"></a>入力例:
-[ビデオ](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fed99001d-72ee-4f91-9fc0-cd530d0adbbc%2FDancing.mp4)
+[ビデオ](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fed99001d-72ee-4f91-9fc0-cd530d0adbbc%2FDancing.mp4)
 
 #### <a name="output-example"></a>出力例:
-[ビデオ](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc6608001-e5da-429b-9ec8-d69d8f3bfc79%2Fdance_redacted.mp4)
+[ビデオ](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc6608001-e5da-429b-9ec8-d69d8f3bfc79%2Fdance_redacted.mp4)
 
 ### <a name="analyze-mode"></a>分析モード
 2 パス ワークフローの **分析** パスでは、ビデオ入力を受け取り、顔の位置の JSON ファイルと、検出された顔それぞれの jpg イメージを生成します。
@@ -125,7 +125,7 @@ Analyze パスからの出力は、元のビデオを含みません。 ビデ�
 #### <a name="example-output"></a>出力例
 これは 1 つの ID を選択した場合の IDList からの出力です。
 
-[ビデオ](http://ampdemo.azureedge.net/?url=http%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
+[ビデオ](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fad6e24a2-4f9c-46ee-9fa7-bf05e20d19ac%2Fdance_redacted1.mp4)
 
 foo_IDList.txt の例
  
@@ -135,7 +135,7 @@ foo_IDList.txt の例
 
 ## <a name="blur-types"></a>ぼかしの種類
 
-**Combined** モードまたは **Redact** モードには、**Low**、**Med**、**High**、**Box**、**Black** の 5 種類のぼかしモードがあり、JSON 入力構成で選択することができます。 既定では **Med** が使用されます。
+**Combined** または **Redact** モードでは、JSON 入力構成で選択できる **Low**、**Med**、**High**、**Box**、**Black** の 5 種類のぼかしモードがあります。 既定では **Med** が使用されます。
 
 ぼかしの種類のサンプルを以下に示します。
 
@@ -373,5 +373,5 @@ namespace FaceRedaction
 ## <a name="related-links"></a>関連リンク
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
-[Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics デモ](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

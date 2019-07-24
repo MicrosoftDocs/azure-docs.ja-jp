@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 10/01/2018
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: ea4203c45f482b990122a966fc2ec13b3fb41c84
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 85992224edd10c0a0f233de9f6274cc77e109b22
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167156"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517780"
 ---
-# <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>チュートリアル: VMware で Azure Data Box Gateway をプロビジョニングする (プレビュー)
+# <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>チュートリアル:VMware で Azure Data Box Gateway をプロビジョニングする
 
 ## <a name="overview"></a>概要
 
-このチュートリアルでは、VMware ESXi 6.0 または 6.5 を実行しているホスト システム上に Data Box Gateway をプロビジョニングする方法について説明します。 
+このチュートリアルでは、VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システム上に Data Box Gateway をプロビジョニングする方法について説明します。 
 
 仮想デバイスをプロビジョニングして、そのデバイスに接続するには、管理者特権が必要です。 プロビジョニングと初期セットアップは、完了するまでに約 10 分かかることがあります。
 
@@ -32,12 +32,10 @@ ms.locfileid: "49167156"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-> [!IMPORTANT]
-> - Data Box Gateway はプレビュー段階にあります。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮想デバイスをプロビジョニングするための前提条件は次のとおりです。
+VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システムで仮想デバイスをプロビジョニングするための前提条件は次のとおりです。
 
 ### <a name="for-the-data-box-gateway-resource"></a>Data Box Gateway リソースの場合
 
@@ -53,7 +51,7 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 
 仮想デバイスをデプロイする前に次の点を確認します。
 
-* VMware (ESXi 6.0 または 6.5) を実行し、デバイスのプロビジョニングに使用できるホスト システムへのアクセス権があること。
+* VMware (ESXi 6.0、6.5、または 6.7) を実行し、デバイスのプロビジョニングに使用できるホスト システムへのアクセス権があること。
 * ホスト システムで、次のリソースを仮想デバイスのプロビジョニング専用に使用できること。
 
   * 最小で 4 コア。
@@ -66,18 +64,18 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 
 作業を開始する前に、次のことを行います。
 
-- Data Box Gateway をデプロイするためのネットワーク要件を確認し、その要件に従ってデータセンター ネットワークを構成します。 詳細については、[Data Box Gateway のシステム要件](data-box-gateway-system-requirements.md#networking-requirements)に関する記事を参照してください。
+- Data Box Gateway をデプロイするためのネットワーク要件を確認し、その要件に従ってデータセンター ネットワークを構成します。 詳細については、[Data Box Gateway のシステム要件](data-box-gateway-system-requirements.md#networking-port-requirements)に関する記事を参照してください。
 - インターネットの最小帯域幅が、デバイスの最適動作を可能にする 20 Mbps であることを確認します。
 
 ## <a name="check-the-host-system"></a>ホスト システムをチェックする
 
 仮想デバイスを作成するには、以下が必要です。
 
-* VMware ESXi Server 6.0 または 6.5 を実行しているホスト システムにアクセスできること。 ホスト システムは、次のリソースを仮想デバイス専用にすることができます。
+* VMware ESXi Server 6.0、6.5、または 6.7 を実行しているホスト システムにアクセスできること。 ホスト システムは、次のリソースを仮想デバイス専用にすることができます。
  
-  * 最小で 4 コア。
+  * 少なくとも 4 つの仮想プロセッサ。
   * 少なくとも 8 GB の RAM。 
-  * トラフィックをインターネットにルーティングできるネットワークに接続している 1 つのネットワーク インターフェイス。 
+  * トラフィックをインターネットにルーティングできるネットワークに接続している 1 つのネットワーク インターフェイス。
   * 250 GB の OS ディスク。
   * データ用の 2 TB の仮想ディスク。
 * システムに、ESXi ホストを管理するための VMware vSphere client があること。
@@ -89,9 +87,9 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 
 1. システム上にある仮想デバイスのイメージをコピーします。 この仮想イメージ (2 つのファイル) は、Azure portal からダウンロードしています。 このイメージは後で使用するため、コピー先はメモしておいてください。
 
-2. vSphere web client を使用して、ESXi サーバーにログインします。 仮想マシンを作成するには、管理者特権が必要です。
+2. ブラウザーで URL `https://<IP address of the ESXi server>` にアクセスして ESXi サーバーにサインインします。 仮想マシンを作成するには、管理者特権が必要です。
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image1.png)
+   ![サインイン ページ](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
 3. VMDK を ESXi サーバーにアップロードします。 ナビゲーター ウィンドウで **[ストレージ]** を選択します。
 
@@ -104,65 +102,69 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
    
 5. 右クリックして **[Browse Datastore]** を選択します。
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image3.png)
+   ![データストアを参照する](./media/data-box-gateway-deploy-provision-vmware/image3.png)
 
 6. **[Datastore Browser]** ウィンドウが表示されます。
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image4.png)
+   ![データストア ブラウザー](./media/data-box-gateway-deploy-provision-vmware/image4.png)
 
 7. ツールバーの **[ディレクトリの作成]** アイコンをクリックして、新しいフォルダーを作成します。 フォルダー名を指定して、メモしておきます。 このフォルダー名は後で仮想マシンを作成するときに使用します (推奨されるベスト プラクティス)。 **[ディレクトリの作成]** をクリックします。
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image5.png)
+   ![ディレクトリを作成する](./media/data-box-gateway-deploy-provision-vmware/image5.png)
 
 8. **Datastore Browser** の左側のウィンドウに新しいフォルダーが表示されます。 **[アップロード]** アイコンをクリックし、**[ファイルのアップロード]** を選択します。
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image6.png)
+    ![ファイルをアップロードする](./media/data-box-gateway-deploy-provision-vmware/image6.png)
 
 9. ダウンロードした VMDK ファイルを参照して、ポイントします。 2 つのファイルがあります。 アップロードするファイルを選択します。
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image7.png)
+    ![アップロードするファイルを選択する](./media/data-box-gateway-deploy-provision-vmware/image7.png)
 
 10. **[開く]** をクリックします。 指定したデータストアへの VMDK ファイルのアップロードが開始されます。 ファイルのアップロードには数分かかる場合があります。
 11. アップロードが完了すると、作成したフォルダーのデータストアにファイルが表示されます。 ここで、2 つ目の VMDK ファイルを同じデータストアにアップロードします。 両方のファイルがアップロードされると、2 つのファイルは、1 つのファイルにマージされます。 ディレクトリ内に 1 つのファイルが表示されます。
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image8.png)
+    ![2 つの VMDK ファイルが 1 つのファイルにマージされる](./media/data-box-gateway-deploy-provision-vmware/image8.png)
 
 12. vSphere client のウィンドウに戻ります。 ナビゲーター ウィンドウで **[仮想マシン]** を選択します。 右側のウィンドウで、**[VM の作成/登録]** をクリックします。
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image9.png)
+    ![VM を作成または登録する](./media/data-box-gateway-deploy-provision-vmware/image9.png)
 
 13. **[New Virtual Machine]\(新しい仮想マシン\)** が表示されます。 [Select creation type]\(作成の種類の選択\) で、**[Create a new virtual machine]\(新しい仮想マシンの作成\)**  を選択し、**[Next]\(次へ\)** をクリックします。
-    ![](./media/data-box-gateway-deploy-provision-vmware/image10.png)
+    ![[Select creation type]\(作成の種類の選択\) ページ](./media/data-box-gateway-deploy-provision-vmware/image10.png)
 
 14. **[Select a Name and OS Name and Location]\(名前と OS 名と場所の選択\)**  ページで、仮想マシンの **[Name]\(名前\)** を指定します。 この名前は、手順 7 で指定したフォルダー名と一致させる必要があります (推奨されるベスト プラクティス)。 **[Guest OS family]\(ゲスト OS ファミリー\)** として [Windows] を、**[Guest OS version]\(ゲスト OS のバージョン\)** として [Microsoft Windows Server 2016 (64-bit)] を選択します。 **[次へ]** をクリックします。
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image11.png)
+    ![[Select a Name and OS Name and Location]\(名前と OS 名と場所の選択\) ページ](./media/data-box-gateway-deploy-provision-vmware/image11.png)
 
 15. **[Select storage]\(ストレージの選択\)** ページで、VM のプロビジョニングに使用するデータストアを選択します。 **[次へ]** をクリックします。
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image12.png)
-16. **[Customize settings]\(設定のカスタマイズ\)** ページで、**[CPU]** を [4] に、**[Memory]\(メモリ\)** を [8192 MB] (以上) に、**[Hard disk 1]\(ハード ディスク 1\)** を [2 TB] (以上) に設定します。 追加する **SCSI ハード _ ディスク** を選択します。 ここでは、それは LSI Logic SAS でした。 **静的 IDE ディスクはサポートされていません。** **[Hard disk 1]\(ハード ディスク 1\)** は仮想データ ディスクです。 一度ディスクをプロビジョニングすると、圧縮できなくなることに注意してください。
+    ![[Select storage]\(ストレージの選択\) ページ](./media/data-box-gateway-deploy-provision-vmware/image12.png)
+16. **[Customize settings]\(設定のカスタマイズ\)** ページで、**[CPU]** を [4] に、**[Memory]\(メモリ\)** を [8192 MB]\(以上) に、**[Hard disk 1]\(ハード ディスク 1\)** を [2 TB]\(以上) に設定します。 追加する **SCSI ハード _ ディスク** を選択します。 ここでは、それは LSI Logic SAS でした。 **静的 IDE ディスクはサポートされていません。** **[Hard disk 1]\(ハード ディスク 1\)** は仮想データ ディスクです。 一度ディスクをプロビジョニングすると、圧縮できなくなることに注意してください。 ディスクを縮小しようとすると、デバイスのローカル データすべてが失われます。 
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image13.png)
+    ![[Customize settings]\(設定のカスタマイズ\) ページ](./media/data-box-gateway-deploy-provision-vmware/image13.png)
 
     同じページで、**[Add hard disk]\(ハード ディスクの追加\)** をクリックし、**[Existing hard disk]\(既存のハード ディスク\)** を選択します。 データ ストア内の VMDK ファイルを選択します。 これにより、OS ディスクが追加されます。 
 
-     ![](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     ![Customize settings]\(設定のカスタマイズ\) ページ[](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
-    **[New hard disk]\(新しいハード ディスク\)** が表示するまで下にスクロールし、それを展開して設定を表示します。 **[Virtual Device Node]\(仮想デバイス ノード\)** を **[IDE controller 0]\(IDE コントロ―ラー 0\)** に設定します。 **[次へ]** をクリックします。
+    **[New hard disk]\(新しいハード ディスク\)** が表示するまで下にスクロールし、それを展開して設定を表示します。 **[Virtual Device Node]\(仮想デバイス ノード\)** を **[IDE controller 0]\(IDE コントロ―ラー 0\)** に設定します。
 
-     ![](./media/data-box-gateway-deploy-provision-vmware/image15.png)
+     ![[Customize settings]\(設定のカスタマイズ\) ページ](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
-27. **[Ready to Complete]** ページで、新しい仮想マシンに関連するすべての設定を確認します。 CPU に 4、メモリに 8192 MB、ネットワーク インターフェイスに 1、ハード ディスク 2 に IDE コントローラー 0 が設定されていることを確認します。 **[完了]** をクリックします。 
+17. (省略可能) *VMware ESXi Server 6.7 を実行している場合にのみ、この手順を実行します*。 **[Customize settings]\(設定のカスタマイズ\)** ページで **[VM options]\(VM のオプション\)** をクリックします。 **[Boot options]\(ブート オプション\) > [Firmware]\(ファームウェア\)** に移動し、**[BIOS]** に変更します。 既定では、値は [EFI] に設定されます。 **[次へ]** をクリックします。
+
+    ![VMware ESXi Server 6.7 を実行している場合の [Customize settings]\(設定のカスタマイズ\) ページ](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
+
+18. **[Ready to Complete]** ページで、新しい仮想マシンに関連するすべての設定を確認します。 CPU に 4、メモリに 8192 MB、ネットワーク インターフェイスに 1、ハード ディスク 2 に IDE コントローラー 0 が設定されていることを確認します。 **[完了]** をクリックします。
    
-    ![](./media/data-box-gateway-deploy-provision-vmware/image16.png)
-    ![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
+    ![[Ready to Complete]\(完了の準備完了\) ページ](./media/data-box-gateway-deploy-provision-vmware/image16.png)
+    ![[Ready to Complete]\(完了の準備完了\) ページ](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
-これで仮想マシンがプロビジョニングされました。 その趣旨の通知が表示され、新しい仮想マシンが VM の一覧に追加されます。 
+これで仮想マシンがプロビジョニングされました。 その趣旨の通知が表示され、新しい仮想マシンが VM の一覧に追加されます。
 
-![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
+![VM の一覧に追加された新しい仮想マシン](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
-次はこのマシンを起動して IP アドレスを取得します。
+次はこの VM を起動して IP アドレスを取得します。
 
 > [!NOTE]
 > (上でプロビジョニングした) 仮想デバイスには VMware ツールをインストールしないことをお勧めします。 VMware ツールをインストールすると、サポートされていない構成になります。
@@ -174,25 +176,25 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 #### <a name="to-start-the-virtual-device"></a>仮想デバイスを起動するには
 1. 仮想デバイスを起動します。 右側のウィンドウで、VM の一覧からデバイスを選択し、右クリックしてコンテキスト メニューを表示します。 **[Power]**、**[Power on]** の順に選択します。 これで、仮想マシンの電源がオンになります。 Web クライアントの下部ウィンドウで状態を確認できます。
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image19.png)
+    ![仮想マシンの電源](./media/data-box-gateway-deploy-provision-vmware/image19.png)
 
 2. もう一度 VM を選択します。 右クリックして **[Console]\(コンソール\)** を選択します。次に **[Open in a new window]\(新しいウィンドウで開く\)** を選択します。
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image20.png)
+    ![仮想デバイス コンソールを開く](./media/data-box-gateway-deploy-provision-vmware/image20.png)
 
 3. 仮想マシン コンソールが新しいウィンドウで開きます。 
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image21.png)
+    ![仮想デバイス コンソール](./media/data-box-gateway-deploy-provision-vmware/image21.png)
 
 4. デバイスが実行されたら、コンソール ウィンドウの上部中央タブをカーソルでポイントしてクリックします。 **[Guest OS] > [Send keys] > Ctrl+Alt+Delete** を選択します。 これで、VM のロックが解除されます。
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image22.png)
+   ![仮想デバイスをロック解除する](./media/data-box-gateway-deploy-provision-vmware/image22.png)
 
-5. パスワードを入力してマシンにサインインします。 既定のパスワードは Password1 です。
+5. パスワードを入力してマシンにサインインします。 既定のパスワードは *Password1* です。
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image23.png)
+   ![仮想デバイス パスワードを入力する](./media/data-box-gateway-deploy-provision-vmware/image23.png)
 
-6. 手順 5 ～ 7 は、非 DHCP 環境での起動時にのみ適用されます。 DHCP 環境の場合は、これらの手順をスキップして手順 8 に進みます。 非 DHCP 環境でデバイスを起動した場合は、**Set-hcsipaddress コマンドレットを使用してネットワークを構成してください**という趣旨のメッセージが表示されます。 
+6. 手順 5 ～ 7 は、非 DHCP 環境での起動時にのみ適用されます。 DHCP 環境の場合は、これらの手順をスキップして手順 8 に進みます。 非 DHCP 環境でデバイスを起動した場合は、"**ネットワークを構成するには、Set-HcsIPAddress コマンドレットを使用します**" という趣旨のメッセージが表示されます。 
    
 7. ネットワークを構成するには、コマンド プロンプトで `Get-HcsIpAddress` コマンドを使用して、仮想デバイスで有効なネットワーク インターフェイスの一覧を表示します。 デバイスで単一のネットワーク インターフェイスが有効になっている場合、このインターフェイスに割り当てられる既定の名前は `Ethernet`です。
 
@@ -202,14 +204,14 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 
 9. 初期セットアップが完了し、デバイスが再起動すると、デバイスのバナー テキストが表示されます。 デバイスを管理するため、バナー テキストに表示される IP アドレスと URL をメモしておきます。 この IP アドレスを使用して、仮想デバイスの Web UI に接続し、ローカル セットアップとアクティブ化を行います。
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image24.png)
+   ![仮想デバイスのバナー テキストと接続 URL](./media/data-box-gateway-deploy-provision-vmware/image24.png)
 
 デバイスが最小構成要件を満たしていない場合は、バナー テキストにエラーが表示されます (下記参照)。 最小要件を満たすための十分なリソースを確保するようにデバイスの構成を変更する必要があります。 その後、再起動し、デバイスに接続します。 「[ホスト システムが仮想デバイスの最小要件を満たしていることを確認する](#check-the-host-system)」にある最小構成要件を参照してください。
 
-<!---If you face any other error during the initial configuration using the local web UI, refer to the following workflows:
+ローカル Web UI を使って初期構成を行っている間に他のエラーが発生した場合は、次のワークフローを参照してください。
 
-* Run diagnostic tests to [troubleshoot web UI setup](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
-* [Generate log package and view log files](storsimple-ova-web-ui-admin.md#generate-a-log-package).-->
+- 診断テストを実行して [Web UI のセットアップのトラブルシューティング](data-box-gateway-troubleshoot.md#run-diagnostics)を行う。
+- [ログ パッケージを生成してログ ファイルを表示する](data-box-gateway-troubleshoot.md#collect-support-package)。
 
 ## <a name="next-steps"></a>次の手順
 

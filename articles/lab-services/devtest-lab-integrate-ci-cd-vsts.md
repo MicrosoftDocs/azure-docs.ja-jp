@@ -1,6 +1,6 @@
 ---
-title: VSTS 継続的インテグレーションと配信パイプラインへの Azure DevTest Labs の統合 | Microsoft Docs
-description: VSTS 継続的インテグレーションと配信パイプラインに Azure DevTest Labs を統合する方法を説明します
+title: Azure DevTest Labs を Azure Pipelines の継続的インテグレーションと配信パイプラインに統合する | Microsoft Docs
+description: Azure Pipelines の継続的インテグレーションと配信パイプラインに Azure DevTest Labs を統合する方法を説明します
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: b7ce07547eccd52a8b10d4cffecaf1456778da4a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 7806599c1a2f1396ff4b07d6f0538057654029d7
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301210"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738523"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>Azure DevOps 継続的インテグレーションと配信パイプラインへの Azure DevTest Labs の統合
 Azure DevOps にインストールされる *Azure DevTest Labs タスク*拡張機能を使用して、CI/CD のビルド・リリース パイプラインを Azure DevTest Labs に簡単に統合できます。 この拡張機能は、次の 3 つのタスクをインストールします。 
@@ -30,6 +30,8 @@ Azure DevOps にインストールされる *Azure DevTest Labs タスク*拡張
 このプロセスは、たとえば特定のテスト タスク用の "ゴールデン イメージ" をすばやく展開し、テストの終了時にそれを簡単に削除できるようにします。
 
 この記事では、VM の作成と展開、カスタム イメージの作成、および VM の削除について、そのすべてを 1 つの完全なパイプラインとして実行する方法を示します。 通常は、各タスクを独自のカスタムのビルド・テスト・展開パイプラインで個別に実行します。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 CI/CD パイプラインを Azure DevTest Labs に統合する前に、拡張機能を Visual Studio Marketplace からインストールする必要があります。
@@ -57,20 +59,20 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、拡張機
    ```powershell
    Param( [string] $labVmId)
 
-   $labVmComputeId = (Get-AzureRmResource -Id $labVmId).Properties.ComputeId
+   $labVmComputeId = (Get-AzResource -Id $labVmId).Properties.ComputeId
 
    # Get lab VM resource group name
-   $labVmRgName = (Get-AzureRmResource -Id $labVmComputeId).ResourceGroupName
+   $labVmRgName = (Get-AzResource -Id $labVmComputeId).ResourceGroupName
 
    # Get the lab VM Name
-   $labVmName = (Get-AzureRmResource -Id $labVmId).Name
+   $labVmName = (Get-AzResource -Id $labVmId).Name
 
    # Get lab VM public IP address
-   $labVMIpAddress = (Get-AzureRmPublicIpAddress -ResourceGroupName $labVmRgName
+   $labVMIpAddress = (Get-AzPublicIpAddress -ResourceGroupName $labVmRgName
                    -Name $labVmName).IpAddress
 
    # Get lab VM FQDN
-   $labVMFqdn = (Get-AzureRmPublicIpAddress -ResourceGroupName $labVmRgName
+   $labVMFqdn = (Get-AzPublicIpAddress -ResourceGroupName $labVmRgName
               -Name $labVmName).DnsSettings.Fqdn
 
    # Set a variable labVmRgName to store the lab VM resource group name
@@ -85,7 +87,7 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、拡張機
 
 1. ソース管理システムでスクリプトをチェックします。 **GetLabVMParams.ps1** といった名前を付けます。
 
-   このスクリプトをリリース パイプラインの一部としてエージェントで実行するときに、*Azure File Copy* や *PowerShell on Target Machines* などのタスクの手順を使用すると、スクリプトによって、アプリを VM に展開するために必要な値が収集されます。 通常は、これらのタスクを使用して、アプリを Azure VM に展開します。 タスクは、VM リソース グループ名、IP アドレス、完全修飾ドメイン名 (FDQN) などの値を必要とします。
+   このスクリプトをリリース パイプラインの一部としてエージェントで実行するときに、*Azure File Copy* や *PowerShell on Target Machines* などのタスクの手順を使用すると、スクリプトによって、アプリを VM に展開するために必要な値が収集されます。 通常は、これらのタスクを使用して、アプリを Azure VM に展開します。 タスクは、VM リソース グループ名、IP アドレス、完全修飾ドメイン名 (FQDN) などの値を必要とします。
 
 ## <a name="create-a-release-pipeline-in-release-management"></a>Release Management 内にリリース パイプラインを作成する
 リリース パイプラインを作成するには、次の手順を行います。
@@ -138,7 +140,7 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、拡張機
 1. リリース パイプラインで **[タスクの追加]** を選択し、**[展開]** タブで *[Azure PowerShell]* タスクを追加します。 次に示すようにタスクを構成します。
 
    > [!NOTE]
-   > DevTest Labs VM の詳細情報を収集するには、[展開: Azure PowerShell](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/AzurePowerShell)に関する記事を参照してスクリプトを実行します。
+   > DevTest Labs VM の詳細情報を収集するには、「[Deploy:Azure PowerShell (展開: Azure PowerShell)](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzurePowerShellV3)」を参照してスクリプトを実行してください。
 
    a. **[Azure 接続の種類]** で、**[Azure Resource Manager]** を選択します。
 

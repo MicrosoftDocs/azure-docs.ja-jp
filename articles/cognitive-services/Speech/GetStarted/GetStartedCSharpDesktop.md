@@ -6,18 +6,19 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: f79b148558e7881f852ccd57916b0b0f31a98219
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 5f3b70a2dd9816210ed61280be38504a3980d205
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342332"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670096"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-api-in-c35-for-net-on-windows"></a>クイック スタート: Windows 上の .NET 用に C&#35; で Bing Speech Recognition API を使用する
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-c35-for-net-on-windows"></a>クイック スタート:Windows 上の .NET 用に C&#35; で Bing Speech Recognition API を使用する
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
@@ -46,7 +47,7 @@ Speech API は、Cognitive Services (以前の Project Oxford) の一部です�
 >
 > * サブスクリプション キーを使用します。 提供された C# デスクトップ サンプル アプリケーションで、サンプルを実行する際、テキスト ボックスにサブスクリプション キーを貼り付けます。 詳しくは、「[サンプル アプリケーションを実行する](#step-3-run-the-sample-application)」をご覧ください。
 
-## <a name="step-1-install-the-sample-application"></a>手順 1: サンプル アプリケーションをインストールする
+## <a name="step-1-install-the-sample-application"></a>手順 1:サンプル アプリケーションをインストールする
 
 1. Visual Studio 2015 を起動し、**[ファイル]** > **[開く]** > **[プロジェクト/ソリューション]** を選択します。
 
@@ -54,7 +55,7 @@ Speech API は、Cognitive Services (以前の Project Oxford) の一部です�
 
 3. SpeechToText-WPF-Samples.sln という名前の Visual Studio 2015 ソリューション (.sln) ファイルをダブルクリックして開きます。 Visual Studio でソリューションが開きます。
 
-## <a name="step-2-build-the-sample-application"></a>手順 2: サンプル アプリケーションをビルドする
+## <a name="step-2-build-the-sample-application"></a>手順 2:サンプル アプリケーションを構築する
 
 1. *インテントを使った認識機能*を使用する場合は、最初に [Language Understanding Intelligent Service (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) にサインアップする必要があります。 その後、LUIS アプリのエンドポイント URL を使用して、samples/SpeechRecognitionServiceExample フォルダーの app.config ファイル内にあるキー `LuisEndpointUrl` の値を設定します。 LUIS アプリのエンドポイント URL について詳しくは、[アプリの発行](../../luis/luis-get-started-create-app.md#publish-your-app)に関する記事をご覧ください。
 
@@ -63,7 +64,7 @@ Speech API は、Cognitive Services (以前の Project Oxford) の一部です�
 
 2. Ctrl キーと Shift キーを押しながら B キーを押すか、リボン メニューで **[ビルド]** を選択します。 その後、**[ソリューションのビルド]** を選択します。
 
-## <a name="step-3-run-the-sample-application"></a>手順 3: サンプル アプリケーションを実行する
+## <a name="step-3-run-the-sample-application"></a>手順 3:サンプル アプリケーションの実行
 
 1. ビルドが完了したら、F5 キーを押すか、リボン メニューの **[開始]** を選択してサンプルを実行します。
 
@@ -78,9 +79,9 @@ Speech API は、Cognitive Services (以前の Project Oxford) の一部です�
 
    各カテゴリには、次の 3 つの認識モードがあります。
 
-    * **ShortPhrase モード**: 発話時間は最大 15 秒です。 データがサーバーに送信されると、クライアントは複数の部分結果と、複数の n-best 選択肢を持った 1 つの最終結果を受け取ります。
-    * **LongDictation モード**: 発話時間は最大 2 分です。 データがサーバーに送信されると、クライアントはサーバーが指定した文の区切り位置に基づいて、複数の部分結果と複数の最終結果を受け取ります。
-    * **インテント検出**: サーバーから、音声入力に関する追加の構造化情報が返されます。 インテント検出を使用するには、まず [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) を使用してモデルをトレーニングする必要があります。
+    * **ShortPhrase モード**:発話時間は最大 15 秒です。 データがサーバーに送信されると、クライアントは複数の部分結果と、複数の n-best 選択肢を持った 1 つの最終結果を受け取ります。
+    * **LongDictation モード**:発話時間は最大 2 分です。 データがサーバーに送信されると、クライアントはサーバーが指定した文の区切り位置に基づいて、複数の部分結果と複数の最終結果を受け取ります。
+    * **インテント検出**:サーバーから、音声入力に関する追加の構造化情報が返されます。 インテント検出を使用するには、まず [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) を使用してモデルをトレーニングする必要があります。
 
 このサンプル アプリケーションでは、サンプルの音声ファイルを使用します。 このファイルは、このサンプルと一緒にダウンロードしたリポジトリ内 (samples/SpeechRecognitionServiceExample フォルダー) にあります。 これらのサンプル音声ファイルは、音声入力として **[Use wav file for Shortphrase mode]\(Shortphrase モードに wav ファイルを使用する\)** または **[Use wav file for Longdictation mode]\(Longdictation モードに wav ファイルを使用する\)** を選択する際、他のファイルが選択されていなければ、自動的に実行されます。 現在のところ、サポートされているのは WAV 音声形式のみです。
 
@@ -90,9 +91,9 @@ Speech API は、Cognitive Services (以前の Project Oxford) の一部です�
 
 ### <a name="recognition-events"></a>認識イベント
 
-* **部分結果イベント**: このイベントは、ユーザーが言おうとしていることを Speech Service が予測するたびに呼び出されます。これは、ユーザーの発話 (`MicrophoneRecognitionClient` を使用した場合) やデータの送信 (`DataRecognitionClient` を使用した場合) が完了する前であっても呼び出されます。
-* **エラー イベント**: サービスがエラーを検出したときに呼び出されます。
-* **意図イベント**: 最終的な認識結果が解析され、構造化された JSON 意図が生成された後、"WithIntent" クライアント (ShortPhrase モードの場合のみ) で呼び出されます。
+* **部分結果イベント**:このイベントは、ユーザーが言おうとしていることを Speech Service が予測するたびに呼び出されます。これは、ユーザーの発話 (`MicrophoneRecognitionClient` を使用した場合) やデータの送信 (`DataRecognitionClient` を使用した場合) が完了する前であっても呼び出されます。
+* **エラー イベント**:サービスがエラーを検出したときに呼び出されます。
+* **意図イベント**:最終的な認識結果が解析され、構造化された JSON 意図が生成された後、"WithIntent" クライアント (ShortPhrase モードの場合のみ) で呼び出されます。
 * **結果イベント**:
   * `ShortPhrase` モードでは、このイベントは発話の完了後に呼び出され、n-best 結果を返します。
   * `LongDictation` モードでは、サービスによって特定された文の区切り目に基づいて、イベント ハンドラーが複数回呼び出されます。

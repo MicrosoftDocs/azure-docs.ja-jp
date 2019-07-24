@@ -10,12 +10,13 @@ ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: e265a66b841530d1133d760ebdcdf56046d1aee1
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: seodec18
+ms.openlocfilehash: c44b09e15a227e11426d2798fc071778ca47ebd3
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364131"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557465"
 ---
 # <a name="understand-data-retention-in-time-series-insights"></a>Time Series Insights のデータ保有について
 
@@ -23,7 +24,7 @@ ms.locfileid: "46364131"
 
 ## <a name="video"></a>ビデオ: 
 
-### <a name="in-this-video-we-cover-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>この動画では、Time Series Insights データの保有と、それを計画する方法を紹介します。</br>
+### <a name="in-this-video-we-cover-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>この動画では、Time Series Insights データの保有と、そのための計画方法を紹介しています。</br>
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 

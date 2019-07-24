@@ -4,29 +4,30 @@ description: Azure Active Directory の条件付きアクセスで条件を使�
 services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
-author: MarkusVi
-manager: mtillman
+author: MicrosoftGuyJFlo
+manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
-ms.author: markvi
+ms.date: 12/14/2018
+ms.author: joflore
 ms.reviewer: calebb
-ms.openlocfilehash: 9feb6ef5b708813c2f73a70a930cabfd69dff114
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f95fd85b5a0fd9e905b93b9b90f18f963dbf1690
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142432"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518237"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスの条件の概要 
 
-[Azure Active Directory (Azure AD) の条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)を使用して、承認されたユーザーがどのようにクラウド アプリにアクセスするかを制御できます。 条件付きアクセス ポリシーでは、ポリシーをトリガーする理由 ("～が発生した場合") に対する応答 ("～を実行する") を定義します。 
+[Azure Active Directory (Azure AD) の条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)を使用して、お客様のクラウド アプリにユーザーがどのようにアクセスするかを制御できます。 条件付きアクセス ポリシーでは、ポリシーをトリガーする理由 ("～が発生した場合") に対する応答 ("～を実行する") を定義します。 
 
 ![理由と応答](./media/conditions/10.png)
 
@@ -50,7 +51,7 @@ ms.locfileid: "42142432"
 
 **[ユーザーとグループの選択]** を選択すると、次のオプションを設定できます。
 
-* **[すべてのゲスト ユーザー]** では、ポリシーのターゲットを B2B ゲスト ユーザーに設定することができます。 この条件は、**userType** 属性が **guest** に設定されている任意のユーザー アカウントと一致します。 この設定は、Azure AD の招待フローでアカウントが作成されたときにすぐにポリシーを適用する必要がある場合に使用できます。
+* **[すべてのゲスト ユーザー]** では、ポリシーのターゲットを B2B ゲスト ユーザーに設定することができます。 この条件は、**userType** 属性が **guest** に設定されている任意のユーザー アカウントと一致します。 この設定は、Azure AD の招待フローでアカウントが作成されたときにすぐにポリシーを適用する必要がある場合に使用します。
 
 * **[ディレクトリ ロール]** では、ユーザーのロールの割り当てに基づいてポリシーのターゲットを設定できます。 この条件は、**グローバル管理者**または**パスワード管理者**などのディレクトリ ロールをサポートします。
 
@@ -74,7 +75,7 @@ ms.locfileid: "42142432"
 
 - ベースライン ポリシーを組織全体に適用するには、**[すべてのクラウド アプリ]** を選択します。 いずれかのクラウド アプリへのサインインにリスクが検出されたときに多要素認証を要求するポリシーの場合に、この設定を選択します。 **[すべてのクラウド アプリ]** に適用されるポリシーは、すべての Web サイトおよびサービスへのアクセスに適用されます。 この設定は、**[アプリを選択]** リストに表示されるクラウド アプリに限定されません。 
 
-- 個々のクラウド アプリ: ポリシーで特定のサービスをターゲットにすることができます。 たとえば、SharePoint Online にアクセスするには[準拠デバイス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)を使用するようユーザーに要求できます。 このポリシーは、他のサービスが SharePoint コンテンツにアクセスする際にも適用されます。 たとえば、Microsoft Teams などです。 
+- 特定のサービスをお客様のポリシーの対象にするには、**[アプリを選択]** を選択します。 たとえば、SharePoint Online にアクセスするには[準拠デバイス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)を使用するようユーザーに要求できます。 このポリシーは、他のサービスが SharePoint コンテンツにアクセスする際にも適用されます。 たとえば、Microsoft Teams などです。 
 
 ポリシーから特定のアプリを除外できます。 ただし、アクセスするサービスに適用されるポリシーがあれば、これらのアプリも影響を受けます。 
 
@@ -82,7 +83,7 @@ ms.locfileid: "42142432"
 
 ## <a name="sign-in-risk"></a>サインイン リスク
 
-サインイン リスクは、サインイン試行がユーザー アカウントの正当な所有者によって行われなかった可能性のレベル (高、中、低) を示します。 Azure AD では、ユーザーのサインイン時にサインイン リスク レベルを計算します。 計算されたサインイン リスク レベルを条件付きアクセス ポリシーの条件として利用できます。
+サインイン リスクは、サインインがユーザー アカウントの正当な所有者によって行われなかった可能性のレベル (高、中、低) を示します。 Azure AD では、ユーザーのサインイン時にサインイン リスク レベルを計算します。 計算されたサインイン リスク レベルを条件付きアクセス ポリシーの条件として利用できます。
 
 ![サインインのリスク レベル](./media/conditions/22.png)
 
@@ -93,7 +94,7 @@ ms.locfileid: "42142432"
 - サインイン リスクが高いユーザーをブロックする。 このような保護で、正当ではない可能性があるユーザーがクラウド アプリにアクセスすることを防ぐことができます。 
 - サインイン リスクが中であるユーザーに多要素認証を要求する。 多要素認証を強制的に適用することで、サインインがアカウントの正当な所有者によって実行されていることを確認し、信頼性を強化できます。
 
-詳細については、「[リスクの高いサインイン](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-security-risky-sign-ins)」を参照してください。  
+詳細については、[セッションのリスクが検出されたときにアクセスをブロックする](app-sign-in-risk.md)方法に関するページを参照してください。  
 
 ## <a name="device-platforms"></a>デバイス プラットフォーム
 
@@ -111,13 +112,12 @@ ms.locfileid: "42142432"
 
 ## <a name="device-state"></a>デバイスの状態
 
-デバイスの状態の条件では、ハイブリッド Azure AD 参加デバイスと、準拠とマークされたデバイスを条件付きアクセス ポリシーから除外します。 この条件は、追加のセッション セキュリティを提供するために、アンマネージド デバイスにのみポリシーを適用する必要がある場合に便利です。 たとえば、アンマネージド デバイスの場合にのみ、Microsoft Cloud App Security のセッション制御を実施します。 
+デバイスの状態の条件では、ハイブリッド Azure AD 参加デバイスと、準拠とマークされたデバイスを条件付きアクセス ポリシーから除外します。 
 
 
 ![デバイスの状態を構成する](./media/conditions/112.png)
 
-アンマネージド デバイスのアクセスをブロックする場合は、[デバイスベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)を実装します。
-
+この条件は、追加のセッション セキュリティを提供するために、アンマネージド デバイスにのみポリシーを適用する必要がある場合に便利です。 たとえば、アンマネージド デバイスの場合にのみ、Microsoft Cloud App Security のセッション制御を実施します。 
 
 ## <a name="locations"></a>場所
 
@@ -136,98 +136,67 @@ ms.locfileid: "42142432"
 
 ## <a name="client-apps"></a>クライアント アプリ
 
-クライアント アプリの条件を使用すると、さまざまなアプリケーションにポリシーを適用することができます。 たとえば、Web サイト、サービス、モバイル アプリ、デスクトップ アプリケーションなどです。 
+既定では、条件付きアクセス ポリシーが次のアプリに適用されます。
+
+- **[ブラウザー アプリ](technical-reference.md#supported-browsers)** -  ブラウザー アプリには、SAML、WS-Federation、または OpenID Connect の Web SSO プロトコルが使用された Web サイトが含まれます。 OAuth の機密クライアントとして登録されたあらゆる Web サイトまたは Web サービスも、これに該当します。 たとえば、Office 365 SharePoint Web サイトなどです。 
+
+- **[先進認証が使用されるモバイル アプリとデスクトップ アプリ](technical-reference.md#supported-mobile-applications-and-desktop-clients)** - これらのアプリには、Office デスクトップ アプリやスマートフォン アプリなどが該当します。 
 
 
+加えて、先進認証が使用されていない特定のクライアント アプリをポリシーの対象にすることができます。例:
 
-アプリケーションは次のように分類されます。
+- **[Exchange ActiveSync クライアント](conditions.md#exchange-activesync-clients)** - Exchange ActiveSync の使用がポリシーによってブロックされている場合、該当するユーザーには、ブロックされた理由が記載された検疫メールが 1 通届きます。 必要な場合は、デバイスを Intune に登録する手順がメールに記載されています。
 
-- Web サイトまたは Web サービス: 機密クライアントに対して Web SSO プロトコル (SAML、WS-Fed、OpenID Connect) を使用する場合。
+- **[その他のクライアント](block-legacy-authentication.md)** - これらのアプリには、基本認証とメール プロトコル (IMAP、MAPI、POP、SMTP など) が使用されるクライアントや、先進認証が使用されない以前の Office アプリが含まれます。 詳細については、「[How modern authentication works for Office 2013 and Office 2016 client apps (Office 2013 クライアント アプリと Office 2016 クライアント アプリでの先進認証のしくみ)](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016)」を参照してください。
 
-- モバイル アプリまたはデスクトップ アプリケーション: ネイティブ クライアントに対してモバイル アプリ向けの OpenID Connect を使用する場合。
+![クライアント アプリ](./media/conditions/41.png)
 
-条件付きアクセス ポリシーで使用できるクライアント アプリの一覧については、「Azure Active Directory の条件付きアクセス設定に関するリファレンス」の「[クライアント アプリの条件](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#client-apps-condition)」を参照してください。
+この条件の一般的なユース ケースには、次のような要件を含むポリシーがあります。
 
-この条件の一般的なユース ケースには、次のような保護を含むポリシーがあります。 
+- データをデバイスにダウンロードするモバイル アプリケーションやデスクトップ アプリケーションについて **[マネージド デバイスを必須にする](require-managed-devices.md)** 。 同時に、ブラウザー アクセスはすべてのデバイスに許可する。 このシナリオでは、アンマネージド デバイスへのドキュメントの保存と同期が禁止されます。 この方法を使用すると、デバイスが紛失したり盗難にあったりした場合のデータ損失の可能性を低くすることができます。
 
-- モバイル アプリやデスクトップ アプリケーションが大量のデータをデバイスにダウンロードする際に[準拠デバイス](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)の使用を必須にする。 同時に、ブラウザー アクセスはすべてのデバイスに許可する。
+- Exchange Online へのアクセスに ActiveSync が使用されるアプリについて **[マネージド デバイスを必須にする](require-managed-devices.md)** 。
+
+- Azure AD (他のクライアント) に対する **[レガシ認証をブロックする](block-legacy-authentication.md)** 。
 
 - Web アプリからのアクセスはブロックするが、モバイル アプリとデスクトップ アプリからのアクセスは許可する。
 
-この条件は、Web SSO および先進認証プロトコルに適用できます。 また、Microsoft Exchange ActiveSync を使用するメール アプリケーションに適用することもできます。 たとえば、ほとんどのスマートフォンのネイティブ メール アプリです。 
 
-このクラウド アプリの条件は、選択しているクラウド アプリが Microsoft Office 365 Exchange Online の場合にのみ選択できます。
 
-![クラウド アプリ](./media/conditions/32.png)
+### <a name="exchange-activesync-clients"></a>Exchange ActiveSync クライアント
 
-クライアント アプリの条件としての **Exchange ActiveSync** は、ポリシーに他の条件が構成されていない場合にのみ選択できます。 ただし、この条件の範囲を絞り込んで、サポートされるプラットフォームのみに適用できます。
+以下の場合、選択できるのは **Exchange ActiveSync クライアント**だけです。
 
+
+- Microsoft Office 365 Exchange Online が、お客様が選択した唯一のクラウド アプリである。
+
+    ![クラウド アプリ](./media/conditions/32.png)
+
+- ポリシーに他の条件を構成していない。 ただし、この条件の範囲を絞り込んで、[サポートされるプラットフォーム](technical-reference.md#device-platform-condition)のみに適用できます。
  
-![サポートされているプラットフォームのみにポリシーを適用する](./media/conditions/33.png)
-
-この条件をサポートされるプラットフォームのみに適用することは、[デバイス プラットフォームの条件](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online)のすべてのデバイス プラットフォームに相当します。
-
-![デバイス プラットフォームを構成する](./media/conditions/34.png)
+    ![サポートされているプラットフォームのみにポリシーを適用する](./media/conditions/33.png)
 
 
- 詳細と例については、次の記事をご覧ください。
+[マネージド デバイス](require-managed-devices.md)が必須であるためにアクセスがブロックされた場合、該当するユーザーには、Intune の使い方を案内するメールが 1 通届きます。 
+
+承認済みのアプリが必須である場合、該当するユーザーには、Outlook モバイル クライアントをインストールして使用するためのガイドラインが与えられます。
+
+その他のケースでは (MFA が必須である場合など)、該当するユーザーはブロックされます。基本認証が使用されるクライアントで MFA がサポートされないためです。
+
+この設定の対象にできるのは、ユーザーとグループだけです。 ゲストまたはロールはサポートされません。 ゲストまたはロールの条件が構成された場合、ポリシーをユーザーに適用する必要があるかどうかを条件付きアクセスでは判別できないため、すべてのユーザーがブロックされます。
+
+
+ 詳細については、次を参照してください。
 
 - [SharePoint Online と Exchange Online に Azure Active Directory の条件付きアクセスを設定する](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication)。
  
 - [Azure Active Directory のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)。 
 
 
-### <a name="legacy-authentication"></a>レガシ認証  
-
-条件付きアクセスは、先進認証をサポートしていない旧バージョンの Microsoft Office クライアントに適用されるようになりました。 また、POP、IMAP、SMTP などのメール プロトコルを使用するクライアントにも適用されます。 レガシ認証を使用すると、**他のクライアントからのアクセスをブロックする**などのポリシーを構成できます。
-
-
-![クライアント アプリを構成する](./media/conditions/160.png)  
-
-
-#### <a name="known-issues"></a>既知の問題
-
-- **その他のクライアント**を対象とするポリシーを構成すると、SPConnect などの特定のクライアントから組織全体がブロックされます。 このブロックは、旧バージョンのクライアントが想定していない方法で認証されるために発生します。 この問題は、古い Office クライアントなどの重要な Office アプリケーションには適用されません。 
-
-- ポリシーが有効になるまで、最大で 24 時間かかる可能性があります。 
-
-
-#### <a name="frequently-asked-questions"></a>よく寄せられる質問
-
-**Q:** この認証で、Microsoft Exchange Web Services はブロックされますか。
-
-Exchange Web サービスが使用する認証プロトコルによって異なります。 Exchange Web サービス アプリケーションが先進認証を使用している場合、**[モバイル アプリとデスクトップ クライアント]** クライアント アプリによって対応されます。 基本認証は、**[他のクライアント]** クライアント アプリによって対応されます。
-
-
-**Q:** **[他のクライアント]** にはどのようなコントロールを使用できますか。
-
-**[他のクライアント]** には、任意のコントロールを構成できます。 ただし、どの場合でも、エンド ユーザー エクスペリエンスのアクセスはブロックされます。 **[他のクライアント]** は、MFA、対応デバイス、ドメインへの参加などのコントロールをサポートしていません。 
- 
-**Q:** **[他のクライアント]** にはどのような条件を使用できますか。
-
-**[他のクライアント]** には、任意の条件を構成できます。
-
-**Q:** Exchange ActiveSync はすべての条件とコントロールをサポートしていますか。
-
-いいえ。 Exchange ActiveSync サポートをまとめた次の一覧を参照してください。 
-
-- Exchange ActiveSync は、ユーザーとグループのターゲット指定のみをサポートします。 ゲストまたはロールはサポートされません。 ゲストまたはロールの条件が構成されている場合、すべてのユーザーはブロックされます。 Exchange ActiveSync は、ポリシーがユーザーに適用されるかどうかを判断できないため、すべてのユーザーをブロックします。
-
-- Exchange ActiveSync は、Microsoft Exchange Online でのみクラウド アプリとして機能します。 
-
-- Exchange ActiveSync は、クライアント アプリ自体を除くすべての条件をサポートしません。 
-
-- Exchange ActiveSync は、任意のコントロールで構成できます。 デバイスのコンプライアンス以外のすべてのコントロールはブロックの原因になります。
-
-**Q:** 今後、ポリシーは、すべてのクライアント アプリに既定で適用されますか。
-
-いいえ。 ポリシーの既定の動作に変更はありません。 ポリシーは、引き続き、ブラウザーとモバイル アプリケーションとデスクトップ クライアントに既定で適用されます。
-
-
 
 ## <a name="next-steps"></a>次の手順
 
-- 条件付きアクセス ポリシーの構成方法を把握するには、「[クイック スタート: Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」を参照してください。
+- 条件付きアクセス ポリシーを構成する方法については、「[クイック スタート - Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」を参照してください。
 
 - 環境に適用する条件付きアクセス ポリシーを構成するには、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」を参照してください。 
 

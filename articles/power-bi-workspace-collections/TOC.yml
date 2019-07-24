@@ -18,7 +18,7 @@
       items:
         - name: 一般的なシナリオ
           href: scenarios.md
-    - name: '[管理]'
+    - name: 管理
       items:
         - name: データ ソースへの接続
           href: connect-datasource.md
@@ -43,7 +43,7 @@
     - name: コード サンプル
       href: 'https://azure.microsoft.com/resources/samples/?service=power-bi-embedded'
     - name: PowerShell
-      href: /powershell/module/azurerm.powerbiembedded
+      href: /powershell/module/az.powerbiembedded
     - name: .NET Azure Resource Manager
       href: /dotnet/api/microsoft.azure.management.powerbiembedded
     - name: .NET SDK ダウンロード
@@ -65,10 +65,10 @@
     - name: 'Power BI C# の Git リポジトリ'
       href: 'https://github.com/Microsoft/PowerBI-CSharp'
     - name: Power BI コミュニティ
-      href: 'http://community.powerbi.com/t5/Developer/bd-p/Developer'
+      href: 'https://community.powerbi.com/t5/Developer/bd-p/Developer'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サンプル アプリケーション
       href: 'https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/'
     - name: スタック オーバーフロー
-      href: 'http://stackoverflow.com/questions/tagged/powerbi'
+      href: 'https://stackoverflow.com/questions/tagged/powerbi'

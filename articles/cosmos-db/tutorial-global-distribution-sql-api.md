@@ -1,22 +1,18 @@
 ---
-title: SQL API の Azure Cosmos DB グローバル分散チュートリアル | Microsoft Docs
+title: SQL API 用の Azure Cosmos DB グローバル分散チュートリアル
 description: SQL API を使用して Azure Cosmos DB グローバル分散をセットアップする方法について説明します。
-services: cosmos-db
-keywords: グローバル分散
-author: rafats
-manager: kfile
+author: rimman
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
-ms.author: rafats
-ms.custom: mvc
-ms.openlocfilehash: 624c5e78287fac57b06f6b5112d2523e31256ae0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.author: rimman
+ms.reviewer: sngun
+ms.openlocfilehash: 19e0dd8a60155272f2e338c760db409d20a9f755
+ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049770"
+ms.lasthandoff: 01/09/2019
+ms.locfileid: "54157243"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>SQL API を使用して Azure Cosmos DB グローバル分散をセットアップする
 
@@ -96,7 +92,7 @@ SDK はコードに変更を加えることなく使用できます。 この場
 
 NodeJS/Javascript のコード例を以下に示します。 Python と Java では同じパターンを使用します。
 
-```java
+```JavaScript
 // Creating a ConnectionPolicy object
 var connectionPolicy = new DocumentBase.ConnectionPolicy();
 

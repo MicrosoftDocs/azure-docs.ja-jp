@@ -1,272 +1,59 @@
 ---
-title: Bing News Search とは
+title: Bing News Search API とは
 titlesuffix: Azure Cognitive Services
-description: Bing News Search API を使用して Web でニュースを検索する方法について説明します。
+description: Bing News Search API を使用して、ヘッドラインやトレンド トピックなど、複数のカテゴリにおける最新ヘッドラインについて Web 検索する方法について説明します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: overview
-ms.date: 06/21/2016
+ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7a5df20358198e7ccb44ccc60be3ab7716f71ba6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: a28445199c47c666fb2323a70317f81f3302c765
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227860"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877101"
 ---
-# <a name="what-is-bing-news-search"></a>Bing News Search とは
+# <a name="what-is-the-bing-news-search-api"></a>Bing News Search API とは
 
-Bing News Search API は、[Bing News](https://www.bing.com/news) に似た (ただし、厳密に同じではありません) エクスペリエンスを提供します。 Bing News Search API を使うと、検索クエリを Bing に送信し、関連するニュース記事の一覧を取得できます。
+Bing News Search API を使用すると、Bing のコグニティブ ニュース検索機能を簡単にアプリケーションに統合することができます。 [Bing News](https://www.bing.com/news) と同様のエクスペリエンスを API から利用して検索クエリを送信し、関連するニュース記事を受信することができます。
 
-ユーザーの検索クエリと関連性の高いニュースを探し出すことを目的として、ニュースのみの検索結果ページを作成する場合は、より汎用性の高い [Bing Web Search API](../bing-web-search/search-the-web.md) ではなく、こちらの API を呼び出してください。 ニュースだけでなく、Web ページや画像、動画など、他の種類のコンテンツも対象にする場合は、Bing Web Search API を呼び出します。
+Bing News Search API で得られるのはニュース検索の結果だけであることに注意してください。 他の種類の Web コンテンツについては、[Bing Web Search API](../bing-web-search/search-the-web.md)、[Video Search API](../bing-video-search/search-the-web.md)、[Image Search API](../bing-image-search/overview.md) を使用します。
 
-## <a name="suggesting--using-search-terms"></a>検索語句の補完と使用
+## <a name="bing-news-search-api-features"></a>Bing News Search API の機能
 
-ユーザーが検索語句を入力するための検索ボックスを用意する場合は、[Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) を使用することでエクスペリエンスが向上します。 この API は、検索語句をユーザーが入力している最中に、その一部分に基づいてクエリ文字列の候補を返します。
+Bing News Search API は主に、関連するニュース記事を検索して返すものですが、同時に、インテリジェントで的を絞ったニュース検索を Web 上で行うための機能をいくつか備えています。
 
-ユーザーが検索語句を入力した後、それを URL エンコードしたうえで、[q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query) クエリ パラメーターを設定します。 たとえば「*sailing dinghies*」と入力された場合、`q` を `sailing+dinghies` または `sailing%20dinghies` に設定します。
+|機能  |説明  |
+|---------|---------|
+|[検索語句の提案と使用](concepts/search-for-news.md#suggest-and-use-search-terms)     | [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) を使用して、入力時に候補検索用語を表示することで、検索のエクスペリエンスを向上させます。         |
+|[通常のニュースを取得する](concepts/search-for-news.md#get-general-news)     | Bing News Search API に検索クエリを送信し、関連するニュース記事の一覧を取得することによってニュースを検索します。           |
+|[今日のトップ ニュース](concepts/search-for-news.md#get-todays-top-news)      | 全カテゴリからその日のトップ ニュース記事を取得します。       |
+|[カテゴリ別のニュース](concepts/search-for-news.md)     | 特定のカテゴリのニュースを検索します。        | 
+|[ヘッドライン ニュース](concepts/search-for-news.md)     | 全カテゴリのトップ記事を検索します。         |
 
-## <a name="getting-general-news"></a>通常のニュースの取得
+## <a name="workflow"></a>ワークフロー
 
-ユーザーの検索語句に関連した通常のニュース記事を Web から取得するには、次の GET 要求を送信します。
+Bing News Search API は RESTful Web サービスです。HTTP 要求を作成して JSON を解析できる任意のプログラミング言語から簡単に呼び出すことができます。 REST API または SDK のいずれかを使用してサービスを使用できます。
 
-```http
-GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies&mkt=en-us HTTP/1.1
-Ocp-Apim-Subscription-Key: 123456789ABCDE
-User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)
-X-Search-ClientIP: 999.999.999.999
-X-Search-Location: lat:47.60357;long:-122.3295;re:100
-X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
-Host: api.cognitive.microsoft.com
-```
+1. Bing Search API にアクセスできる Cognitive Services API アカウントを作成します。 Azure サブスクリプションをお持ちでない場合は、[無料でアカウントを作成](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-news-api)できます。
 
-いずれかの Bing API を初めて呼び出す場合は、クライアント ID ヘッダーを含めないでください。 クライアント ID を含めるのは、過去に Bing API を呼び出したことがあり、かつユーザーとデバイスの組み合わせに対応するクライアント ID が Bing から返されたことがある場合だけです。
+2. 有効な検索クエリを使用して API に要求を送信します。
 
-特定のドメインからニュースを取得するには、[site:](https://msdn.microsoft.com/library/ff795613.aspx) というクエリ演算子を使用します。
-
-```http
-GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
-```
-
-前のクエリに対する応答を次に示します。 それらの各ニュース記事は、応答に含まれている順序で表示する必要があります。 記事にクラスター化されている記事が含まれる場合、関連する記事が存在することを示し、ユーザーが要求した場合にそれらを表示する必要があります。
-
-```json
-{
-    "_type" : "News",
-    "readLink" : "https:\/\/api.cognitive.microsoft.com\/bing\/v5\/news\/search?q=sailing+dinghies",
-    "totalEstimatedMatches" : 88400,
-    "value" : [{
-        "name" : "Sailing Vies for Four Trophies",
-        "url" : "http:\/\/www.bing.com\/cr?IG=CCE2F06CA750455891FE99A72...",
-        "image" : {
-            "thumbnail" : {
-                "contentUrl" : "https:\/\/www.bing.com\/th?id=ON.9C23AA5...",
-                "width" : 650,
-                "height" : 341
-            }
-        },
-        "description" : "College Rankings, presented by Zim...",
-        "provider" : [{
-            "_type" : "Organization",
-            "name" : "contoso.com"
-        }],
-        "datePublished" : "2017-04-14T15:28:00"
-    },
-
-    ...
-
-    {
-        "name" : "Fabrikam Sailing Club to host Mirror Dinghy...",
-        "url" : "http:\/\/www.bing.com\/cr?IG=CCE2F06CA750455891F...",
-        "image" : {
-            "thumbnail" : {
-                "contentUrl" : "https:\/\/www.bing.com\/th?id=ON.36...",
-                "width" : 448,
-                "height" : 300
-            }
-        },
-        "description" : "The sailing club that trained Olympian Ben...",
-        "provider" : [{
-            "_type" : "Organization",
-            "name" : "Contoso"
-        }],
-        "datePublished" : "2017-04-04T11:02:00",
-        "category" : "Sports"
-    }]
-}
-```
-
-[news](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#news) 回答には、そのクエリとの関連性が高いと Bing によって判断された一連のニュース記事が格納されます。 表示できる記事の数の見積もりは、`totalEstimatedMatches` フィールドに格納されます。 記事のページングの詳細については、「[ニュースのページング](./paging-news.md)」を参照してください。
-
-このリスト内の各 [newsarticle](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#newsarticle) には、その記事の名前や説明、さらに、ホストの Web サイト上の記事への URL が含まれています。 記事に画像が含まれている場合、このオブジェクトには、その画像のサムネイルが含まれます。 ホストのサイト上にあるニュース記事にユーザーを誘導するハイパーリンクを作成するには、`name` と `url` を使用します。 記事に画像が含まれる場合は、`url` を使用して画像もクリックできるようにします。 必ず `provider` を使用して記事の帰属を示すようにしてください。
-
-Bing がニュース記事のカテゴリを決定できる場合、記事に `category` フィールドが含まれます。
-
-## <a name="getting-todays-top-news"></a>今日のトップ ニュースを取得する
-
-今日のトップ ニュース記事を取得するには、`q` を設定しない点を除き、通常のニュースを取得するのと同じ要求を行います。
-
-```http
-GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1
-Ocp-Apim-Subscription-Key: 123456789ABCDE
-User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)
-X-Search-ClientIP: 999.999.999.999
-X-Search-Location: lat:47.60357;long:-122.3295;re:100
-X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
-Host: api.cognitive.microsoft.com
-```
-
-トップ ニュースを取得する際の応答は、通常のニュースを取得する場合とほとんど同じです。 ただし、結果の数は決まっているので、`news` 応答に `totalEstimatedMatches` フィールドは含まれません。 トップ ニュース記事の数は、ニュース サイクルによって異なる場合があります。 必ず `provider` を使用して記事の帰属を示すようにしてください。
-
-## <a name="getting-news-by-category"></a>カテゴリ別のニュースを取得する
-
-トップ スポーツ、エンターテイメント記事など、カテゴリ別にニュース記事を取得するには、Bing に次の GET 要求を送信します。
-
-```http
-GET https://api.cognitive.microsoft.com/bing/v7.0/news?category=sports&mkt=en-us HTTP/1.1
-Ocp-Apim-Subscription-Key: 123456789ABCDE
-User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)
-X-Search-ClientIP: 999.999.999.999
-X-Search-Location: lat:47.60357;long:-122.3295;re:100
-X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
-Host: api.cognitive.microsoft.com
-```
-
-[category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) クエリ パラメーターを使用して、取得する記事のカテゴリを指定します。 指定可能なニュース カテゴリの一覧は、「[News Categories by Market (マーケット別ニュース カテゴリ)](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news-categories-by-market)」を参照してください。
-
-カテゴリ別にニュースを取得する際の応答は、通常のニュースの取得とほとんど同じです。 ただし、記事はすべて指定したカテゴリのものです。
-
-## <a name="getting-headline-news"></a>ヘッドライン ニュースを取得する
-
-ヘッドライン ニュース記事を要求してすべてのニュース カテゴリから記事を取得するには、Bing に次の GET 要求を送信します。
-
-```http
-GET https://api.cognitive.microsoft.com/bing/v7.0/news?mkt=en-us HTTP/1.1
-Ocp-Apim-Subscription-Key: 123456789ABCDE
-User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)
-X-MSEdge-ClientIP: 999.999.999.999
-X-Search-Location: lat:47.60357;long:-122.3295;re:100
-X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
-Host: api.cognitive.microsoft.com
-```
-
-[category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) クエリ パラメーターは含めないでください。
-
-ヘッドライン ニュースを取得する際の応答は、今日のトップ ニュースを取得する場合と同じです。 記事がヘッドライン記事である場合、`headline` フィールドが **true** に設定されます。
-
-既定では、応答には最大 12 個のヘッドライン記事が含まれます。 返されるヘッドライン記事の数を変更するには、[headlineCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#headlinecount) クエリ パラメーターを指定します。 応答には、ニュースのカテゴリ 1 つにつき最大 4 つの非ヘッドライン記事も含まれます。
-
-応答では、クラスターは 1 つの記事としてカウントされます。 クラスターには複数の記事が含まれる可能性があるため、12 を超えるヘッドライン記事や、1 つのカテゴリにつき 4 つを超える非ヘッドライン記事が応答に含まれる場合があります。
-
-## <a name="getting-trending-news"></a>トレンドのニュースを取得する
-
-ソーシャル ネットワークでトレンドになっているニュース トピックを取得するには、Bing に次の GET 要求を送信します。
-
-```http
-GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics?mkt=en-us HTTP/1.1
-Ocp-Apim-Subscription-Key: 123456789ABCDE
-User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)
-X-Search-ClientIP: 999.999.999.999
-X-Search-Location: lat:47.60357;long:-122.3295;re:100
-X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
-X-MSAPI-UserState: <blobFromPriorResponseGoesHere>
-Host: api.cognitive.microsoft.com
-```
-
-> [!NOTE]
-> トレンドのトピックは、en-US および zh-CN マーケットでのみ使用できます。
-
-前述の要求への応答は次の JSON のようになります。 各トレンドのニュース記事には、関連する画像、ニュース速報フラグ、および記事の Bing 検索結果の URL が含まれています。 `webSearchUrl` フィールドの URL を使用して、ユーザーを Bing 検索結果ページに誘導します。 または、クエリ テキストを使用して [Web Search API](../bing-web-search/search-the-web.md) を呼び出し、自分で結果を表示します。
-
-```json
-{
-    "_type" : "TrendingTopics",
-    "value" : [{
-        "name" : "Canada pot measure",
-        "image" : {
-            "url" : "https:\/\/www.bing.com\/th?id=OPN.RTNews_hHD...",
-            "provider" : [{
-                "_type" : "Organization",
-                "name" : "Contoso Images"
-            }]
-        },
-        "webSearchUrl" : "https:\/\/www.bing.com\/cr?IG=070292D8CEDD...",
-        "isBreakingNews" : false,
-        "query" : {
-            "text" : "Canada marijuana"
-        }
-    },
-    {
-        "name" : "Down on Vegas move",
-        "image" : {
-            "url" : "https:\/\/www.bing.com\/th?id=OPN.RTNews_Bfbmg8h...",
-            "provider" : [{
-                "_type" : "Organization",
-                "name" : "Contoso"
-            }]
-        },
-        "webSearchUrl" : "https:\/\/www.bing.com\/cr?IG=070292D8CEDD...",
-        "isBreakingNews" : false,
-        "query" : {
-            "text" : "Marcus Appel Las Vegas"
-        }
-    },
-
-    ...
-
-    ]
-}
-```
-
-## <a name="getting-related-news"></a>関連ニュースの取得
-
-ニュース記事に関連する他の記事がある場合、ニュース記事に [clusteredArticles](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle-clusteredarticles) フィールドが含まれる場合があります。 次に、クラスター化された記事を含む記事を示します。
-
-```json
-    {
-        "name" : "Playoffs 2017: Betting lines, point spreads...",
-        "url" : "http:\/\/www.bing.com\/cr?IG=4B7056CEC271408997D115...",
-        "image" : {
-            "thumbnail" : {
-                "contentUrl" : "https:\/\/www.bing.com\/th?id=ON.D7B1...",
-                "width" : 700,
-                "height" : 393
-            }
-        },
-        "description" : "April 14, 2017 3:37pm EDT April 14, 2017 3:34pm...",
-        "provider" : [{
-            "_type" : "Organization",
-            "name" : "Contoso"
-        }],
-        "datePublished" : "2017-04-14T19:43:00",
-        "category" : "Sports",
-        "clusteredArticles" : [{
-            "name" : "Playoffs 2017: Betting odds, favorites to win...",
-            "url" : "http:\/\/www.bing.com\/cr?IG=4B7056CEC271408997D1159E...",
-            "description" : "April 14, 2017 3:30pm EDT April 14, 2017 3:27pm...",
-            "provider" : [{
-                "_type" : "Organization",
-                "name" : "Contoso"
-            }],
-            "datePublished" : "2017-04-14T19:37:00",
-            "category" : "Sports"
-        }]
-    },
-```
-
-## <a name="throttling-requests"></a>スロットル リクエスト
-
-[!INCLUDE [cognitive-services-bing-throttling-requests](../../../includes/cognitive-services-bing-throttling-requests.md)]
+3. 返された JSON メッセージを解析して API 応答を処理します。
 
 ## <a name="next-steps"></a>次の手順
 
-実際に要求を送信してみるには、[最初の要求を行う](./quickstart.md)に関するページを参照してください。
+まず、Bing News Search API の[対話型デモ](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)をお試しください。 このデモには、検索クエリをすばやくカスタマイズして Web 上のニュースを検索する方法が紹介されています。
 
-[Bing News Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) リファレンスを活用してください。 リファレンスには、検索結果を要求する際に使用するエンドポイント、ヘッダー、クエリ パラメーターの一覧が記載されています。 また、応答オブジェクトの定義も記載されています。
+初めての API 要求を簡単に体験したい場合は、[REST API](quickstart.md) またはいずれかの [SDK](sdk.md) のクイック スタートをお試しください。
 
-検索ボックスのユーザー エクスペリエンスを高めるには、[Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) に関するページを参照してください。 ユーザーによって検索語が入力されている最中に、この API を呼び出すことで、他のユーザーによって使用された関連性の高い検索語を取得できます。
+## <a name="see-also"></a>関連項目
 
-検索結果の使用に関するルールを逸脱しないよう、[Bing の使用上および表示上の要件](./useanddisplayrequirements.md)に関するページを必ず読んでください。
+* [Bing News Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) のリファレンス セクションには、画像ベースの検索結果を要求するために使用できるエンドポイント、ヘッダー、API 応答、およびクエリ パラメーターに関する定義と情報が含まれています。
+
+* [Bing の利用と表示の要件](./useanddisplayrequirements.md)に関するトピックでは、Bing Search API を使用して得られるコンテンツと情報の許可される使用方法が指定されています。

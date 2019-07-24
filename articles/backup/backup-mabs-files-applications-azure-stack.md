@@ -2,18 +2,18 @@
 title: Azure Stack VM のファイルのバックアップ
 description: Azure Backup を使用して、Azure Stack ファイルとアプリケーションを Azure Stack 環境にバックアップし、復元します。
 services: backup
-author: adiganmsft
+author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: adigan
-ms.openlocfilehash: acbd1bb98fd9a3eb24b7b3262c3fe9fe47200385
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 67d79f2aa41bab8a14d693098538d22ffeb05a4e
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579204"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301477"
 ---
 # <a name="back-up-files-on-azure-stack"></a>Azure Stack のファイルのバックアップ
 Azure Backup を使用して、Azure Stack 上のファイルとアプリケーションを保護 (バックアップ) することができます。 ファイルとアプリケーションをバックアップするには、Microsoft Azure Backup Server を Azure Stack 上で動作する仮想マシンとしてインストールします。 同じ仮想ネットワーク内の任意の Azure Stack サーバー上のファイルを保護できます。 Azure Backup Server をインストールしたら、Azure ディスクを追加して、短期バックアップ データに使用できるローカル ストレージを増やしてください。 Azure Backup Server は、長期保有には Azure Storage を使用します。
@@ -55,7 +55,7 @@ Azure Stack 仮想マシンのファイルを保護できるように Azure Back
 
     ![新しい保護グループのウィザードが開いたところ](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
-    **[I want online protection]\(オンライン保護を利用する\)** をオンにするには、最初に **[I want short-term protection using:]\(次のものを使用した短期的な保護を利用する:\)** で [ディスク] を選択する必要があります。 Azure Backup Server はテープを使用する保護に対応していないため、短期的な保護の選択肢はディスクのみです。
+    **[オンライン保護を利用する]** をオンにするには、最初に **[次を使用して短期的な保護を行う:]** で [ディスク] を選択する必要があります。 Azure Backup Server はテープを使用する保護に対応していないため、短期的な保護の選択肢はディスクのみです。
 
 5. **[短期的な目標値の指定]** 画面で、ディスクに保存された回復ポイントの保持期間と、増分バックアップを保存するタイミングを選択します。 **[次へ]** をクリックします。
 

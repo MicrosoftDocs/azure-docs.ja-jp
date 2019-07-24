@@ -4,7 +4,7 @@ description: この記事は、Azure で運用可能なセキュリティに関�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: terrylan
-ms.openlocfilehash: d005dd01de0dff0136c0a4e9775001dbe018228f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e2678eb7d75921f43a1e51b6a8cefc9925a9adc1
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035285"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104603"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス
 Azure で運用可能なセキュリティとは、ユーザーが Azure 内のデータ、アプリケーション、その他の資産を保護するために使用できる、サービス、コントロール、機能を指します。 Azure で運用可能なセキュリティは、[セキュリティ開発ライフサイクル (SDL)](https://www.microsoft.com/sdl)、[Microsoft セキュリティ レスポンス センター](https://www.microsoft.com/msrc?rtc=1) プログラム、サイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有の機能から得られた知識が組み込まれたフレームワークを基盤としています。
@@ -55,39 +55,39 @@ Security Center では、すべての Azure リソースに関するセキュリ
 
 ネットワークの監視と使用可能なツールのベスト プラクティスを次に示します。
 
-**ベスト プラクティス**: パケット キャプチャによりリモート ネットワーク監視を自動化する。   
+**ベスト プラクティス**: パケット キャプチャを使ってリモート ネットワーク監視を自動化する。  
 **詳細**: Network Watcher を使用して、VM にログインすることなくネットワークの問題を監視して診断します。 アラートの設定により[パケット キャプチャ](../network-watcher/network-watcher-alert-triggered-packet-capture.md)をトリガーし、パフォーマンスに関する情報をパケット レベルでリアルタイムに確認可能です。 問題が起きた場合には、詳細に調査してより適切に診断できます。
 
-**ベスト プラクティス**: フロー ログを使用して、ネットワーク トラフィックに関するインサイトを取得する。   
-**詳細**: [ネットワーク セキュリティ グループのフロー ログ](../network-watcher/network-watcher-nsg-flow-logging-overview.md)により、ネットワーク トラフィックのパターンをより深く把握できます。 フロー ログの情報をもとに、コンプライアンスに関するデータを収集し、ネットワークのセキュリティ プロファイルを監査、監視できます。
+**ベスト プラクティス**: フロー ログを使用して、ネットワーク トラフィックに関する分析情報を得る。  
+**詳細**: [ネットワーク セキュリティ グループのフロー ログ](../network-watcher/network-watcher-nsg-flow-logging-overview.md)を使うと、ネットワーク トラフィックのパターンをより深く把握できます。 フロー ログの情報をもとに、コンプライアンスに関するデータを収集し、ネットワークのセキュリティ プロファイルを監査、監視できます。
 
-**ベスト プラクティス**: VPN 接続の問題を診断する。   
+**ベスト プラクティス**: VPN 接続の問題を診断する。  
 **詳細**: Network Watcher を使用して、[VPN Gateway と接続に関する最も一般的な問題を診断します](../network-watcher/network-watcher-diagnose-on-premises-connectivity.md)。 問題を識別するだけでなく、詳細なログを使用して、詳しい調査を行うこともできます。
 
 ## <a name="secure-deployment-by-using-proven-devops-tools"></a>実証済みの DevOps ツールによるセキュリティ保護されたデプロイ
 次の DevOps のベスト プラクティスを使用して、エンタープライズとチームが、生産性と効率性があることを確認します。
 
-**ベスト プラクティス**: サービスの構築とデプロイを自動化する。   
-**詳細**: [コードとしてのインフラストラクチャ](https://en.wikipedia.org/wiki/Infrastructure_as_Code)は、モジュール式インフラストラクチャの構築と管理に関連する IT 担当者の日常作業の負担を軽減する、一連の技法とプラクティスです。 これにより、ソフトウェア開発者がアプリケーション コードを構築し保守するように、IT 担当者は最新のサーバー環境を構築、維持できます。
+**ベスト プラクティス**: サービスのビルドとデプロイを自動化する。  
+**詳細**: [コードとしてのインフラストラクチャ](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code)は、モジュール式インフラストラクチャの構築と管理に関連する IT 担当者の日常作業の負担を軽減する、一連の技法とプラクティスです。 これにより、ソフトウェア開発者がアプリケーション コードを構築し保守するように、IT 担当者は最新のサーバー環境を構築、維持できます。
 
 [Azure Resource Manager](https://azure.microsoft.com/documentation/articles/resource-group-authoring-templates/) を使用して、宣言型のテンプレートを使ってアプリケーションをプロビジョニングすることができます。 1 つのテンプレートで、複数のサービスをその依存関係と共にデプロイできます。 アプリケーション ライフサイクルの各ステージで、同じテンプレートを使用してアプリケーションを繰り返しデプロイします。
 
-**ベスト プラクティス**: Azure Web アプリまたはクラウド サービスに自動的にビルドし、デプロイする。   
-**詳細**: Visual Studio Team Services (VSTS) チーム プロジェクトを[自動的にビルドして Azure Web アプリまたはクラウド サービスにデプロイ](https://www.visualstudio.com/docs/build/overview)するように構成できます。 コードをチェックインするたびに、VSTS が、Azure へビルドを実行し、バイナリを自動的にデプロイします。 パッケージのビルド プロセスは、Visual Studio の Package コマンドに相当し、発行手順は Visual Studio の Publish コマンドに相当します。
+**ベスト プラクティス**: Azure Web アプリまたはクラウド サービスに自動的にビルドし、デプロイする。  
+**詳細**: Azure Pipelines を使用して、Azure Web アプリまたはクラウド サービスに[自動的にビルドし、デプロイする](https://docs.microsoft.com/azure/devops/pipelines/index?view=vsts)ことができます。 コードをチェックインするたびに、Azure Pipelines では、Azure へビルドを実行した後、バイナリを自動的にデプロイします。 パッケージのビルド プロセスは、Visual Studio の Package コマンドに相当し、発行手順は Visual Studio の Publish コマンドに相当します。
 
-**ベスト プラクティス**: リリース管理を自動化する。   
-**詳細**: Visual Studio [Release Management](https://msdn.microsoft.com/library/vs/alm/release/overview) は、複数の段階にわかれた展開を自動化し、リリース プロセスを管理するためのソリューションです。 継続的で管理されたデプロイメント パイプラインを作成し、すばやく、簡単に、頻繁にリリースできます。 Release Management を使用することにより、リリース プロセスを自動化し、承認ワークフローを事前定義できます。 オンプレミスまたはクラウドに展開し、必要に応じて拡張、カスタマイズできます。
+**ベスト プラクティス**: 継続的なデプロイを使用する。  
+**詳細**: [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/index?view=vsts) は、複数の段階に分かれたデプロイを自動化し、リリース プロセスを管理するためのソリューションです。 継続的で管理されたデプロイメント パイプラインを作成し、すばやく、簡単に、頻繁にリリースできます。 Azure Pipelines を使用すると、リリース プロセスを自動化し、承認ワークフローを事前定義できます。 オンプレミスまたはクラウドに展開し、必要に応じて拡張、カスタマイズできます。
 
-**ベスト プラクティス**: アプリを起動する前または更新プログラムを運用環境にデプロイする前に、パフォーマンスを確認する。   
-**詳細**: VSTS を使用して次の作業を実行し、クラウド ベースの[ロード テスト](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing)を実行します。
+**ベスト プラクティス**: アプリを起動する前または更新プログラムを運用環境にデプロイする前に、パフォーマンスを確認する。  
+**詳細**: Azure Test Plans を使用して、クラウド ベースの[ロード テスト](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test?view=vsts)を実行します。
 
 - アプリのパフォーマンスの問題を見つけます。
 - デプロイの品質を向上します。
 - アプリが常に使用可能であることを確認します。
 - アプリが、次の立ち上げ、またはマーケティング キャンペーン時のトラフィックに対応できることを確認します。
 
-**ベスト プラクティス**: アプリケーションのパフォーマンスを監視する。   
-**詳細**: [Azure Application Insights](../application-insights/app-insights-overview.md) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 Application Insights を使用して、実行中の Web アプリケーションを監視します。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。
+**ベスト プラクティス**: アプリケーションのパフォーマンスを監視する。  
+**詳細**: [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 Application Insights を使用して、実行中の Web アプリケーションを監視します。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。
 
 ## <a name="mitigate-and-protect-against-ddos"></a>DDoS に対する被害軽減と保護
 分散型サービス拒否 (DDoS) は、アプリケーションのリソースを枯渇させようとする攻撃の種類です。 目的は、正当な要求を処理するアプリケーションの可用性と能力に影響を与えることです。 これらの攻撃は、いっそう高度なものになり、規模と影響も大きくなっています。 この攻撃は、インターネット経由で一般に到達可能なすべてのエンドポイントで実行できます。
@@ -96,19 +96,19 @@ DDoS に対する回復性を設計しビルドするときは、さまざまな
 
 Azure の DDoS 回復性のサービスをビルドするためのベスト プラクティスを次に示します。
 
-**ベスト プラクティス**: 設計と実装から、デプロイと運用まで、アプリケーションのライフ サイクル全体を通して、セキュリティを優先する。 アプリケーションには、比較的少量の要求によって大量のリソースを使用し、結果としてサービスを停止させるような、バグが含まれる可能性があります。    
+**ベスト プラクティス**: 設計と実装から、デプロイと運用まで、アプリケーションのライフ サイクル全体を通して、セキュリティを優先する必要があります。 アプリケーションには、比較的少量の要求によって大量のリソースを使用し、結果としてサービスを停止させるような、バグが含まれる可能性があります。  
 **詳細**: Microsoft Azure で実行されるサービスを保護するには、お客様は、自分のアプリケーションのアーキテクチャをよく理解し、[ソフトウェア品質の 5 つの重要な要素](https://docs.microsoft.com/azure/architecture/guide/pillars)に注目する必要があります。 お客様は、標準的なトラフィックの量、アプリケーションと他のアプリケーションの間の接続モデル、パブリック インターネットに公開されるサービス エンドポイントについて知っておく必要があります。
 
 アプリケーション自体を対象とするサービス拒否攻撃に対処するのに十分な回復力をアプリケーションに持たせることが、最も重要です。 Azure プラットフォームには、[セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL)](https://www.microsoft.com/en-us/sdl) からセキュリティとプライバシーが組み込まれるようになっています。 SDL は、すべての開発段階でセキュリティに対処し、Azure がいっそう安全になるように継続的に更新されることを保証します。
 
-**ベスト プラクティス**: [水平方向にスケーリングする](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out)ようにアプリケーションを設計し、増加した負荷の需要を満たす (特に、DDoS 攻撃の場合)。 アプリケーションがサービスの 1 つのインスタンスに依存する場合は、単一障害点が発生します。 複数のインスタンスをプロビジョニングすると、システムの回復力と拡張性が高まります。   
-**詳細**: [Azure App Service](../app-service/app-service-value-prop-what-is.md) の場合は、複数のインスタンスを提供する [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)を選択してください。
+**ベスト プラクティス**: [水平方向にスケーリングする](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out)ようにアプリケーションを設計し、増加した負荷の需要を満たす (特に、DDoS 攻撃の場合)。 アプリケーションがサービスの 1 つのインスタンスに依存する場合は、単一障害点が発生します。 複数のインスタンスをプロビジョニングすると、システムの回復力と拡張性が高まります。  
+**詳細**: [Azure App Service](../app-service/app-service-value-prop-what-is.md) の場合は、複数のインスタンスを提供する [App Service プラン](../app-service/overview-hosting-plans.md)を選択してください。
 
 Azure Cloud Services の場合は、[複数インスタンス](../cloud-services/cloud-services-choose-me.md)を使用するように各ロールを構成してください。
 
 [Azure Virtual Machines](../virtual-machines/windows/overview.md) の場合は、VM アーキテクチャに 1 つ以上の VM が含まれていることと、[可用性セット](../virtual-machines/virtual-machines-windows-manage-availability.md)に各 VM が含まれていることを確認してください。 自動スケーリング機能には仮想マシン スケール セットを使うことをお勧めします。
 
-**ベスト プラクティス**: アプリケーションのセキュリティ防御を多層化して、攻撃が成功する可能性を減らす。 Azure プラットフォームの組み込み機能を使って、アプリケーションのセキュリティ保護設計を実装します。   
+**ベスト プラクティス**: アプリケーションのセキュリティ防御を多層化すると、攻撃が成功する可能性が減少します。 Azure プラットフォームの組み込み機能を使って、アプリケーションのセキュリティ保護設計を実装します。  
 **詳細**: 攻撃のリスクは、アプリケーションの規模 (攻撃対象領域) と共に大きくなります。 公開されている IP アドレス空間をホワイト リストによって閉鎖し、ロード バランサー ([Azure Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md) と [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)) に必要のないポートをリッスンすることで、攻撃対象領域を減らすことができます。
 
 [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)も、攻撃対象領域を軽減する 1 つの手段です。 [サービス タグ](../virtual-network/security-overview.md#service-tags)および[アプリケーション セキュリティ グループ](../virtual-network/security-overview.md#application-security-groups)を使用して、セキュリティ規則作成の複雑さを軽減し、アプリケーションの構造の自然な延長としてネットワーク セキュリティを構成することができます。
@@ -125,8 +125,8 @@ Azure には、ネットワーク攻撃からの保護を提供する 2 つの D
 - 標準保護は、ネットワーク攻撃に対する高度な DDoS 軽減機能を提供します。 この機能は、お客様固有の Azure リソースを保護するために自動的に調整されます。 保護は、仮想ネットワークの作成時に簡単に有効にできます。 作成の後で行うこともでき、アプリケーションまたはリソースを変更する必要はありません。
 
 ## <a name="next-steps"></a>次の手順
-Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure security best practices and patterns](security-best-practices-and-patterns.md)」 (Azure セキュリティのベスト プラクティスとパターン) を参照してください。
+Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](security-best-practices-and-patterns.md)」を参照してください。
 
 Azure のセキュリティとそれに関連する Microsoft サービスの一般情報については、以下のリソースを参照してください。
-* [Azure セキュリティ チーム ブログ](https://blogs.msdn.microsoft.com/azuresecurity/) – Azure のセキュリティに関する最新情報を提供しています
-* [Microsoft セキュリティ レスポンス センター](https://technet.microsoft.com/library/dn440717.aspx) - このサイトでは、Azure に関する問題を含め、マイクロソフトのセキュリティの脆弱性を報告できます。メールの場合は、secure@microsoft.com 宛に報告してください
+* [Azure セキュリティ チーム ブログ](https://blogs.msdn.microsoft.com/azuresecurity/) – Azure のセキュリティに関する最新情報を提供しています。
+* [Microsoft セキュリティ レスポンス センター](https://technet.microsoft.com/library/dn440717.aspx) - このサイトでは、Azure に関する問題を含め、マイクロソフトのセキュリティの脆弱性を報告できます。メールの場合は、secure@microsoft.com 宛に報告してください。

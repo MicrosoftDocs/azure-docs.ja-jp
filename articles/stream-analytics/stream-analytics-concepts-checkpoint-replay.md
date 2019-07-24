@@ -2,25 +2,25 @@
 title: Azure Stream Analytics でのチェックポイントおよび再生のジョブの回復の概念
 description: この記事では、Azure Stream Analytics でのチェックポイントおよび再生のジョブの回復の概念について説明します。
 services: stream-analytics
-author: zhongc
-ms.author: zhongc
-manager: kfile
+author: mamccrea
+ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/12/2018
-ms.openlocfilehash: 32970ff37d202cc73e7ab7aa1bf3d737dae895c1
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 9dcfbd4b5fcc8462c88b16f585424166ecd3d499
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936719"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088257"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブでのチェックポイントと再生の概念
 この記事では、Azure Stream Analytics の内部チェックポイントおよび再生の概念と、これらがジョブの回復に与える影響について説明します。 Stream Analytics ジョブが実行されるたびに、状態情報が内部的に維持されます。 状態情報は、チェックポイントに定期的に保存されます。 一部のシナリオでは、ジョブ エラーまたはアップグレードが発生した場合にチェックポイント情報がジョブの回復に使用されます。 その他の状況では、チェックポイントを回復に使用できず、再生が必要です。
 
-## <a name="stateful-query-logic-in-temporal-elements"></a>一時的な要素のステートフルなクエリ ロジック
-Azure Stream Analytics ジョブの固有の機能の 1 つに、ウィンドウ集計、一時的な結合、一時的な分析関数などのステートフル処理の実行があります。 ジョブの実行時には、これらの各演算子によって状態情報が保持されます。 これらのクエリ要素の最大ウィンドウ サイズは 7 日間です。 
+## <a name="stateful-query-logicin-temporal-elements"></a>一時的な要素のステートフルなクエリ ロジック
+Azure Stream Analytics ジョブの固有の機能の 1 つに、ウィンドウ集計、一時的な結合、一時的な分析関数などのステートフル処理の実行があります。 ジョブの実行時には、これらの各演算子によって状態情報が保持されます。 これらのクエリ要素の最大ウィンドウ サイズは 7 日間です。 
 
 テンポラル ウィンドウの概念は、いくつかの Stream Analytics クエリ要素に現れます。
 1. ウィンドウ集計 (タンブリング ウィンドウ、ホッピング ウィンドウ、スライディング ウィンドウの GROUP BY)
@@ -70,6 +70,6 @@ Stream Analytics ジョブが実行されるたびに、そのジョブが複数
 
 ## <a name="next-steps"></a>次の手順
 信頼性とスケーラビリティについて詳しくは、以下の記事をご覧ください。
-- [Azure Stream Analytics ジョブのアラートを設定する](stream-analytics-set-up-alerts.md)
+- [チュートリアル: Azure Stream Analytics ジョブのアラートを設定する](stream-analytics-set-up-alerts.md)
 - [スループット向上のために Azure Stream Analytics ジョブをスケーリングする](stream-analytics-scale-jobs.md)
 - [サービス更新中における Stream Analytics ジョブの信頼性を保証する](stream-analytics-job-reliability.md)

@@ -1,55 +1,103 @@
-items:
-- name: Azure SignalR サービスのドキュメント
+- name: Azure SignalR Service のドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: Azure SignalR サービスについて
-    href: signalr-overview.md
+    - name: Azure SignalR サービスについて
+      href: signalr-overview.md
 - name: クイック スタート
+  expanded: true
   items:
-  - name: ASP.NET Core
-    href: signalr-quickstart-dotnet-core.md
-  - name: Azure Functions - JavaScript
-    href: signalr-quickstart-azure-functions-javascript.md
-  - name: Azure Functions - C#
-    href: signalr-quickstart-azure-functions-csharp.md
-  - name: REST API
-    href: signalr-quickstart-rest-api.md
+    - name: 'ASP.NET Core - C#'
+      href: signalr-quickstart-dotnet-core.md
+    - name: Azure Functions - JavaScript
+      href: signalr-quickstart-azure-functions-javascript.md
+    - name: 'Azure Functions - C#'
+      href: signalr-quickstart-azure-functions-csharp.md
+    - name: Azure Functions - Java
+      href: signalr-quickstart-azure-functions-java.md
+    - name: REST API
+      href: signalr-quickstart-rest-api.md
 - name: チュートリアル
   items:
-  - name: ASP.NET Core Identity と統合する
-    href: signalr-authenticate-oauth.md
-  - name: 認証を使用してサーバーレスのリアルタイム アプリをビルドする
-    href: signalr-authenticate-azure-functions.md
+    - name: 認証を使用してサーバーレスのリアルタイム アプリを構築する
+      href: signalr-tutorial-authenticate-azure-functions.md
 - name: サンプル
   items:
-  - name: コード サンプル
-    href: https://github.com/aspnet/AzureSignalR-samples
-  - name: Azure CLI
-    href: signalr-cli-samples.md
+    - name: コード サンプル
+      href: 'https://github.com/aspnet/AzureSignalR-samples'
+    - name: Azure CLI
+      href: signalr-reference-cli.md
 - name: 概念
   items:
-  - name: ASP.NET Core SignalR をスケーリングする
-    href: signalr-overview-scale-aspnet-core.md
-  - name: Azure Functions を使用してリアルタイム アプリをビルドする
-    href: signalr-overview-azure-functions.md
+    - name: Azure SignalR Service の内部
+      href: signalr-concept-internals.md
+    - name: ASP.NET Core SignalR をスケーリングする
+      href: signalr-concept-scale-aspnet-core.md
+    - name: サーバーレス
+      items:
+        - name: Azure Functions を使用してリアルタイム アプリを構築する
+          href: signalr-concept-azure-functions.md
+        - name: サーバーレスの SignalR Service アプリを開発して構成する
+          href: signalr-concept-serverless-development-config.md
+        - name: Azure Functions 用の SignalR Service バインドのリファレンス
+          href: ../azure-functions/functions-bindings-signalr-service.md
+    - name: 高可用性
+      items:
+        - name: 回復性とディザスター リカバリー
+          href: signalr-concept-disaster-recovery.md
+    - name: メッセージと接続
+      href: signalr-concept-messages-and-connections.md
+    - name: パフォーマンスに関する考慮事項
+      href: signalr-concept-performance.md
+    - name: Authentication
+      href: signalr-concept-authenticate-oauth.md
+- name: ハウツー ガイド
+  items:
+    - name: スケール
+      items:
+        - name: 複数のインスタンス
+          href: signalr-howto-scale-multi-instances.md
+    - name: セキュリティ保護
+      items:
+        - name: アクセス キーのローテーション
+          href: signalr-howto-key-rotation.md
+    - name: 統合
+      items:
+        - name: Azure Functions のバインド
+          href: signalr-concept-azure-functions.md
+- name: 参照
+  items:
+    - name: Azure CLI
+      href: signalr-reference-cli.md
+    - name: REST API
+      href: 'https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md'
+    - name: ASP.NET Core SignalR
+      href: 'https://docs.microsoft.com/aspnet/core/signalr'
+    - name: Azure SignalR Service のプロトコル
+      href: 'https://github.com/Azure/azure-signalr/blob/dev/specs/ServiceProtocol.md'
 - name: リソース
   items:
-  - name: SignalR のロードマップ
-    href: https://github.com/aspnet/Home/wiki/Roadmap
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/signalr-service/
-  - name: ビデオ
-    href: https://www.youtube.com/results?search_query=Azure+SignalR+Core
-  - name: StackOverflow
-    href: https://stackoverflow.com/search?q=signalr+service
-  - name: ASP.NET フォーラム
-    href: https://forums.asp.net/1254.aspx
-  - name: Twitter
-    href: https://twitter.com/SignalR
-ms.openlocfilehash: e67749dfa19999658cbb3f63fcd6653d37a1a5f7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946359"
+    - name: 解決方法
+      href: 'https://docs.microsoft.com/azure/architecture/'
+    - name: 顧客事例
+      href: 'https://customers.microsoft.com/en-us/search?sq=signalr'
+    - name: SignalR のロードマップ
+      href: 'https://github.com/aspnet/Home/wiki/Roadmap'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/'
+    - name: 利用可能なリージョン
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=signalr-service'
+    - name: FAQ
+      href: signalr-resource-faq.md
+    - name: SignalR Service のサブスクリプション レベルの制限
+      href: 'https://docs.microsoft.com/azure/azure-subscription-service-limits#signalr-service-limits'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/signalr-service/'
+    - name: ビデオ
+      href: 'https://www.youtube.com/results?search_query=Azure+SignalR+Core'
+    - name: StackOverflow
+      href: 'https://stackoverflow.com/search?q=signalr+service'
+    - name: Twitter
+      href: 'https://twitter.com/SignalR'
+    - name: ASP.NET フォーラム
+      href: 'https://forums.asp.net/1254.aspx'

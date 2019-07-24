@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Kantega SSO for Bamboo の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Kantega SSO for Bamboo の統合 | Microsoft Docs
 description: Azure Active Directory と Kantega SSO for Bamboo の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: e238b574-9e9b-43b7-ab98-d2a87ff89d48
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 5e6e534aaa833d7c66216896765d20cdcf50a461
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7900d07114007e77dadc3e5985408289176cf06e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568202"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176290"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>チュートリアル: Azure Active Directory と Kantega SSO for Bamboo の統合
+# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>チュートリアル:Azure Active Directory と Kantega SSO for Bamboo の統合
 
 このチュートリアルでは、Kantega SSO for Bamboo と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -173,7 +174,7 @@ Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成し�
 
     a. **[App ID URI]\(アプリの ID URI\)** の値をコピーして、Azure Portal の **[Kantega SSO for Bamboo のドメインと URL]** セクションの**識別子、応答 URL、サインオン URL** として使います。
 
-    b.  **[次へ]** をクリックします。
+    b. **[次へ]** をクリックします。
 
 1. **[Metadata import]\(メタデータのインポート\)** セクションで、次の手順を実行します。
 
@@ -181,7 +182,7 @@ Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成し�
 
     a. **[Metadata file on my computer]\(コンピューターにあるメタデータ ファイル\)** を選び、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
 
-    b.  **[次へ]** をクリックします。
+    b. **[次へ]** をクリックします。
 
 1. **[Name and SSO location]\(名前と SSO の場所\)** セクションで、次の手順を実行します。
 
@@ -189,7 +190,7 @@ Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成し�
 
     a. **[Identity provider name]\(ID プロバイダー名\)** ボックスに、ID プロバイダーの名前 (例: Azure AD) を追加します。
 
-    b.  **[次へ]** をクリックします。
+    b. **[次へ]** をクリックします。
 
 1. 署名証明書を確認し、**[Next]\(次へ\)** をクリックします。   
 
@@ -201,7 +202,7 @@ Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成し�
 
     a. **[Create users in Bamboo's internal Directory if needed]\(必要に応じて Bamboo の内部ディレクトリにユーザーを作成する\)** を選択して、ユーザー グループの適切な名前を入力します (グループはコンマで区切られた複数の番号 になる場合があります)。
 
-    b.  **[次へ]** をクリックします。
+    b. **[次へ]** をクリックします。
 
 1. **[完了]** をクリックします。
 
@@ -218,7 +219,7 @@ Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成し�
     c. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -249,7 +250,7 @@ Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成し�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-kantega-sso-for-bamboo-test-user"></a>Kantega SSO for Bamboo テスト ユーザーの作成
 
@@ -273,7 +274,7 @@ Azure AD ユーザーが Bamboo にログインできるようにするには、
 
     c. **[Confirm Password]\(パスワードの確認\)** ボックスに、ユーザーのパスワードを再入力します。
     
-    d. **[Full Name]\(フル ネーム\)** ボックスに、ユーザーの氏名 (Britta Simon など) を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Full Name]\(フル ネーム\)** ボックスに、ユーザーの氏名 (Britta Simon など) を入力します。
     
     e. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
     

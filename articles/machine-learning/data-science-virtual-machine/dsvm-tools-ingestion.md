@@ -1,30 +1,31 @@
 ---
 title: データ サイエンス仮想マシンのデータ取り込みツール - Azure | Microsoft Docs
-description: データ サイエンス仮想マシンのデータ取り込みツール
+description: Data Science Virtual Machine にプレインストールされているデータ インジェスト ツールとユーティリティについて説明します。
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 7aeb0476fffb8c9e5cf2b0b5d89a2a387bd6364a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 92ff5d21fc30d8fcafe97a2b452ff157a2cd5f86
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31411347"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997027"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>データ サイエンス仮想マシンのデータ取り込みツール
 
-データ サイエンスまたは AI プロジェクトの最初の技術的ステップの 1 つは、使用するデータセットを識別し、それらを分析環境に取り込むことです。 データ サイエンス仮想マシン (DSVM) は、DSVM 上のローカルの分析データ ストレージに、あるいはクラウドまたは内部設置型のデータ プラットフォームに、さまざまなソースからデータを取り込むためのツールおよびライブラリを提供します。 
+データ サイエンスまたは AI プロジェクトの最初の技術的ステップの 1 つは、使用するデータセットを識別し、それらを分析環境に取り込むことです。 Data Science Virtual Machine (DSVM) は、DSVM 上のローカルの分析データ ストレージに、あるいはクラウドまたは内部設置型のデータ プラットフォームに、さまざまなソースからデータを取り込むためのツールおよびライブラリを提供します。 
 
 ここでは、DSVM で提供しているデータ移動ツールの一部を示します。 
 

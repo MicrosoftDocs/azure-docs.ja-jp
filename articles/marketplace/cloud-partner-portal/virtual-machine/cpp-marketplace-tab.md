@@ -14,16 +14,16 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: aa43a6f1f7c757366e321e7da0fb1e47d4928cee
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: b1b62c68ef4e18f4d4d36a78078ad7431717b754
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639105"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995642"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>仮想マシンの [Marketplace] タブ
 
-**[新しいプラン]** ページの **[Marketplace]** タブでは、マーケティング、販売、および法律に関する情報と契約を見込み客に提供できるほか、マーケットプレースによって生成されるリードを管理できます。 この長いフォームは、**[概要]**、**[Marketing Artifacts]\(マーケティングの成果物\)**、**[リードの管理]**、**[法的情報]** の 4 つのセクションに分かれています。 
+**[新しいプラン]** ページの **[Marketplace]** タブでは、マーケティング、販売、および法律に関する情報と契約を見込み客に提供できるほか、マーケットプレースによって生成されるリードを管理できます。 この長いフォームは、4 つのセクションに分かれています: **[概要]**、**[Marketing Artifacts]\(マーケティングの成果物\)**、**[Lead Management]\(潜在顧客の管理\)**、**[法的情報]**。 
 
 ## <a name="overview-section"></a>[概要] セクション
 このセクションでは、Azure Marketplace プランについての一般的な情報を入力します。  フィールド名に付いているアスタリスク (*) は、そのフィールドが必須であることを示します。
@@ -38,15 +38,17 @@ ms.locfileid: "49639105"
 | **まとめ**               | ソリューションの簡潔な目的または機能。  最大長は 100 文字です。 |
 | **Long Summary (長い要約)**          | ソリューションの目的または機能。  最大長は 256 文字です。 |
 | **説明**           | ソリューションの説明。  最大長は 3,000 文字で、単純な HTML 書式がサポートされています。 |
+| **Microsoft CSP Reseller channel (Microsoft CSP リセラー チャネル)** | クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。  Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[Cloud Solution Providers (クラウド ソリューション プロバイダー)](../../cloud-solution-providers.md)」を参照してください。 |
 | **Marketing Identifier (マーケティング識別子)**  | このプランに関連付ける一意の URL。通常、組織およびソリューションの名前が含まれ、最大長は 50 文字です。  例:  <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **Preview Subscription IDs (プレビュー サブスクリプション ID)** | 1 から 100 個のプレビューアーのサブスクリプション識別子を追加します。 ホワイトリストに登録されたこれらのサブスクリプションは、プランの発行後、運用が開始される前にプランにアクセスできます。 |
-| **役に立つリンク**          | プランが最もよく当てはまる、複数選択が可能なビジネスおよび技術のカテゴリ。  最大で 5 個設定できます。  |
+| **役に立つリンク**          | ドキュメント、リリース ノート、FAQ などに URL を追加します。 |
+| **推奨されるカテゴリ (最大 5 個)** | プランが最もよく当てはまる、複数選択が可能なビジネスおよび技術のカテゴリ。  最大で 5 個設定できます。  |
 |  |  |
 
 
-## <a name="marketing-artifacts-section"></a>[Marketing Artifacts]\(マーケティングの成果物\) セクション
+## <a name="marketing-artifacts-section"></a>[マーケティングの成果物] セクション
 
-この 2 つ目のセクションは、**[ロゴ]**、**[スクリーンショット]**、**[ビデオ]** の 3 つのサブセクションに分かれています。 必須のマーケティングの成果物はロゴだけですが、顧客へのアピールを最大にするために、すべて設定することをお勧めします。
+この 2 番目のセクションは、次の 3 つのサブセクションに分かれています: **[ロゴ]**、**[スクリーンショット]**、**[ビデオ]**。 必須のマーケティングの成果物はロゴだけですが、顧客へのアピールを最大にするために、すべて設定することをお勧めします。
 
 ![仮想マシン用の [新しいプラン] フォームにある [Marketplace] タブの [Marketing Artifacts]\(マーケティングの成果物\) セクション](./media/publishvm_009.png)
 
@@ -59,10 +61,10 @@ ms.locfileid: "49639105"
 | **ワイド**                  | 255 x 115 ピクセルの .ico ビットマップ                                                    |
 | **ヒーロー**                  | 815 x 290 のビットマップ。  オプション。ただし、ヒーロー アイコンはアップロードしたら削除できません。 |
 | *スクリーンショット*  | オプション。ただし、SKU あたり最大 5 つのスクリーンショット。 |
-| **名前**                  | 名前またはタイトル <!-- TODO - max char length? none specified in UI -->                               |
+| **Name**                  | 名前またはタイトル <!-- TODO - max char length? none specified in UI -->                               |
 | **Image**                 | 画面キャプチャ画像。533 x 324 ピクセル                                         |
 | *ビデオ*  |  |
-| **名前**                  | 名前またはタイトル <!-- TODO - max char length? -->                              |
+| **Name**                  | 名前またはタイトル  <!-- TODO - max char length? -->                              |
 | **リンク**                  | ビデオの URL。YouTube や Vimeo でホストされます                                        |
 | **サムネイル**             | 533 x 324 のビットマップ                                                               |
 |  |  |
@@ -70,7 +72,7 @@ ms.locfileid: "49639105"
 
 ### <a name="logo-guidelines"></a>ロゴのガイドライン
 
-<!-- TD: It seems like this section could be better located in some common area, maybe a AMP Marketing/Design section 
+<!-- TD: It seems like this section could be better located in some common area, maybe an AMP Marketing/Design section 
 +1 this should all be in a common area and referenced from here to that location.-->
 
 Cloud パートナー ポータルにアップロードされるすべてのロゴは、以下のガイドラインに従っている必要があります。
@@ -120,7 +122,7 @@ Cloud パートナー ポータルにアップロードされるすべてのロ�
 
 ## <a name="legal-section"></a>[法的情報] セクション
 
-この最後のセクションでは、各プランに必須の 2 つの法的ドキュメント (プライバシー ポリシーと利用規約) を指定することができます。
+この最後のセクションでは、各オファーに必須の次の 2 つの法的ドキュメントを指定することができます: プライバシー ポリシーと利用規約。
 
 |  **フィールド**                |     **説明**                                                          |
 |  ---------                |     ---------------                                                          |

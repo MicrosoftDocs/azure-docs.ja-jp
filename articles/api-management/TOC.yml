@@ -168,13 +168,13 @@ items:
       href: api-management-developer-portal-templates-reference.md
     - name: API
       href: api-management-api-templates.md
-    - name: '[成果物]'
+    - name: 成果物
       href: api-management-product-templates.md
-    - name: '[アプリケーション]'
+    - name: アプリケーション
       href: api-management-application-templates.md
     - name: 発行
       href: api-management-issue-templates.md
-    - name: '[User Profile]'
+    - name: User Profile
       href: api-management-user-profile-templates.md
     - name: ページ
       href: api-management-page-templates.md
@@ -214,37 +214,37 @@ items:
   items:
   - name: Azure PowerShell
     href: /powershell/azure/overview
-  - name: REST ()
+  - name: REST
     href: /rest/api/apimanagement/
   - name: REST (オリジナル)
     href: /rest/api/apimanagement/ApiManagementREST/api-management-REST
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.apimanagement/allversions
 - name: リソース
   items:
   - name: FAQ
     href: api-management-faq.md
+  - name: 価格
+    href: https://aka.ms/apimpricing
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/regions/services/
-  - name: API 設計ガイダンス
-    href: https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
-  - name: API 実装ガイダンス
-    href: https://docs.microsoft.com/azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json
+  - name: ロードマップ
+    href: https://aka.ms/apimroadmap
+  - name: 機能のリクエスト
+    href: https://aka.ms/apimwish
+  - name: ビデオ
+    href: https://azure.microsoft.com/documentation/videos/index/?services=api-management
   - name: MSDN フォーラム
     href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt
   - name: スタック オーバーフロー
     href: https://stackoverflow.com/questions/tagged/azure-api-management
-  - name: ビデオ
-    href: https://azure.microsoft.com/documentation/videos/index/?services=api-management
-  - name: ロードマップ
-    href: https://aka.ms/apimroadmap
-  - name: API Management 用の Power BI ソリューション テンプレート
-    href: https://aka.ms/apimpbi
-  - name: ブログ
-    href: https://aka.ms/apimblog
-  - name: 機能のリクエスト
-    href: https://aka.ms/apimwish
-ms.openlocfilehash: f3559e2da929ba132ee8f96c2d7e6cfdd68aa75a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+  - name: API 設計ガイダンス
+    href: https://docs.microsoft.com/azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
+  - name: API 実装ガイダンス
+    href: https://docs.microsoft.com/azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json
+ms.openlocfilehash: 637671ae4e85a7f3ed4f71af5caf580660c2b6ce
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972169"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260215"

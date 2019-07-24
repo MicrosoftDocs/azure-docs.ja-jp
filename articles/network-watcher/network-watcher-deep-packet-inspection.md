@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 7af14143e8ce4924c17a41c6bb1ff33954f4b583
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 1c30e679b250c2d6c6b03a1fe5d70dbd06acf052
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568728"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818364"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Azure Network Watcher を使用したパケット インスペクション
 
@@ -61,7 +61,7 @@ TCP 3 ウェイ ハンドシェイクで送信される最初の 2 つのパケ�
 
 Wireshark でフィルターを適用するには、キャプチャの [SYN] パケットの "Transmission Control Protocol" セグメントを展開し、TCP ヘッダーで設定されているフラグを確認します。
 
-すべての [SYN] パケットと [SYN,ACK] パケットでフィルター処理するので、フラグの下の Syn ビットが 1 に設定されていることを確認してから、その Syn ビットを右クリックして [Apply as Filter (フィルターとして適用)]、[Selected (選択)] の順にクリックします。
+すべての [SYN] パケットと [SYN, ACK] パケットでフィルター処理するので、フラグの下の Syn ビットが 1 に設定されていることを確認してから、その Syn ビットを右クリックして [Apply as Filter (フィルターとして適用)]、[Selected (選択)] の順にクリックします。
 
 ![図 7][7]
 

@@ -1,5 +1,5 @@
 ---
-title: Datadog を使用した Azure Kubernetes クラスターの監視
+title: (非推奨) Datadog を使用した Azure Kubernetes クラスターの監視
 description: Datadog を使用した Azure Container Service での Kubernetes クラスターの監視
 services: container-service
 author: bburns
@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 0a3f0baa4998dbc594023935575d659f7d45bbb9
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6a682c199b40035bfd44fc5611a7d44b49f7b3ab
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38629071"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995354"
 ---
-# <a name="monitor-an-azure-container-service-cluster-with-datadog"></a>DataDog を使用した Azure Container Service クラスターの監視
+# <a name="deprecated-monitor-an-azure-container-service-cluster-with-datadog"></a>(非推奨) DataDog を使用した Azure Container Service クラスターの監視
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルでは、[Azure Container Service を使用して Kubernetes クラスターを作成](container-service-kubernetes-walkthrough.md)したことを想定します。

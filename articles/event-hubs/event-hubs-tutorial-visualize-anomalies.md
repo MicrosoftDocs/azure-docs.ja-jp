@@ -1,20 +1,20 @@
 ---
-title: Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する | Microsoft Docs
+title: リアルタイム イベントのデータの異常を視覚化する - Azure Event Hubs | Microsoft Docs
 description: チュートリアル - Microsoft Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
 ms.author: shvija
-ms.date: 08/08/2018
 ms.topic: tutorial
 ms.service: event-hubs
-ms.custom: mvc
-ms.openlocfilehash: 04a9a3b3df44814d680f01595d70ced08a946591
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.custom: seodec18
+ms.date: 02/26/2019
+ms.openlocfilehash: 4ade1b05b1ec5c81774b5340cfdceb97e41218f3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004115"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123047"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>チュートリアル: Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
 
@@ -22,7 +22,7 @@ Azure Event Hubs では、Azure Stream Analytics を使用して受信データ�
 
 このチュートリアルでは、この例をシミュレートします。 クレジット カード トランザクションを作成してイベント ハブに送信するアプリケーションを実行します。 その後、Azure Stream Analytics を使用して、リアルタイムでデータ ストリームを読み取り、有効なトランザクションと無効なトランザクションを分離します。次に、Power BI を使用して、無効のタグが付けられたトランザクションを視覚的に特定します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > * Event Hubs 名前空間を作成します
 > * イベント ハブの作成
@@ -33,6 +33,8 @@ Azure Event Hubs では、Azure Stream Analytics を使用して受信データ�
 このチュートリアルを完了するには、Azure サブスクリプションが必要です。 お持ちでない場合は、開始する前に[無料アカウントを作成][]してください。
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -112,7 +114,7 @@ echo "Connection string = " $connectionString
 
 ```azurepowershell-interactive
 # Log in to Azure account.
-Login-AzureRMAccount
+Login-AzAccount
 
 # Set the values for the location and resource group.
 $location = "West US"
@@ -120,7 +122,7 @@ $resourceGroup = "ContosoResourcesEH"
 
 # Create the resource group to be used  
 #   for all resources for this tutorial.
-New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+New-AzResourceGroup -Name $resourceGroup -Location $location
 
 # The Event Hubs namespace name must be globally unique, so add a random number to the end.
 $eventHubNamespace = "contosoEHNamespace$(Get-Random)"
@@ -131,12 +133,12 @@ $eventHubName = "contosoEHhub$(Get-Random)"
 Write-Host "Event hub Name is " $eventHubName
 
 # Create the Event Hubs namespace.
-New-AzureRmEventHubNamespace -ResourceGroupName $resourceGroup `
+New-AzEventHubNamespace -ResourceGroupName $resourceGroup `
      -NamespaceName $eventHubNamespace `
      -Location $location
 
 # Create the event hub.
-$yourEventHub = New-AzureRmEventHub -ResourceGroupName $resourceGroup `
+$yourEventHub = New-AzEventHub -ResourceGroupName $resourceGroup `
     -NamespaceName $eventHubNamespace `
     -Name $eventHubName `
     -MessageRetentionInDays 3 `
@@ -144,7 +146,7 @@ $yourEventHub = New-AzureRmEventHub -ResourceGroupName $resourceGroup `
 
 # Get the event hub key, and retrieve the connection string from that object.
 # You need this to run the app that sends test messages to the event hub.
-$eventHubKey = Get-AzureRmEventHubKey -ResourceGroupName $resourceGroup `
+$eventHubKey = Get-AzEventHubKey -ResourceGroupName $resourceGroup `
     -Namespace $eventHubNamespace `
     -AuthorizationRuleName RootManageSharedAccessKey
 
@@ -176,7 +178,7 @@ GitHub の Event Hubs の[サンプル](https://github.com/Azure/azure-event-hub
 
    **[ジョブ名]**: 「**contosoEHjob**」を使用します。 このフィールドはジョブの名前で、グローバルに一意でなければなりません。
 
-   **[サブスクリプション]**: ご使用のサブスクリプションを選択します。
+   **サブスクリプション**:サブスクリプションを選択します。
 
    **[リソース グループ]**: イベント ハブと同じリソース グループ (**ContosoResourcesEH**) を使用します。
 
@@ -201,7 +203,7 @@ Steam Analytics ジョブの入力は、イベント ハブからのクレジッ
 
    **[入力のエイリアス]**: 「**contosoinputs**」を使用します。 このフィールドは、データのクエリを定義するときに使用する入力ストリームの名前です。
 
-   **[サブスクリプション]**: ご使用のサブスクリプションを選択します。
+   **サブスクリプション**:サブスクリプションを選択します。
 
    **[Event Hubs 名前空間]**: Event Hubs 名前空間 ($**eventHubNamespace**) を選択します。 
 
@@ -322,12 +324,14 @@ Stream Analytics ジョブで、**[開始]**、**[今すぐ]**、**[開始]** �
 
     ![ダッシュボード タイルのタイトルとサブタイトルを指定しているスクリーンショット。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
+    > [!IMPORTANT]
+    > サンプル アプリケーションを実行してイベント ハブにデータをストリーム配信すると、このタイルの数値が刻々と (毎秒) 変化します。 これは、Stream Analytics クエリによって実際に **1 秒ごとに**値が更新されているためです。 直近数分の合計を表示したければ、クエリのタンブリング ウィンドウを 3 分に更新してください。 
 11. 別の視覚化を追加します。 最初のいくつかの手順をもう一度繰り返します。
 
-   * **[タイルの追加]** をクリックします。
-   * **[カスタム ストリーミング データ]** を選択します。 
-   * **[次へ]** をクリックします。
-   * データセットを選択し、**[次へ]** をクリックします。 
+    * **[タイルの追加]** をクリックします。
+    * **[カスタム ストリーミング データ]** を選択します。 
+    * **[次へ]** をクリックします。
+    * データセットを選択し、**[次へ]** をクリックします。 
 
 12. **[視覚化タイプ]** で、**[折れ線グラフ]** を選択します。
 
@@ -361,15 +365,15 @@ az group delete --name $resourceGroup
 
 ### <a name="clean-up-resources-using-powershell"></a>PowerShell を使用してリソースをクリーンアップする
 
-リソース グループを削除するには、 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) コマンドを使います。
+リソース グループを削除するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使います。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 > [!div class="checklist"]
 > * Event Hubs 名前空間を作成します
 > * イベント ハブの作成

@@ -1,53 +1,59 @@
 ---
-title: '例: 予測エンドポイントを使用してプログラムで分類子を指定してテストする - Custom Vision'
+title: 予測エンドポイントを使用してプログラムで分類器を指定してテストする - Custom Vision
 titlesuffix: Azure Cognitive Services
-description: API を使用して、Custom Vision Service の分類子によるイメージのテストをプログラムから行う方法を説明します。
+description: API を使用して、Custom Vision Service の分類器によるイメージのテストをプログラムから行う方法を説明します。
 services: cognitive-services
 author: anrothMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: custom-vision
-ms.topic: sample
-ms.date: 05/03/2018
+ms.subservice: custom-vision
+ms.topic: article
+ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 3a81f3cef6aaeb5c98022d9fc93f4d84f3f58a6e
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 1ee6edbf49bbcd2014afcf29ed3b737168a3b5bc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363651"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046072"
 ---
-# <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>予測エンドポイントを利用し、Custom Vision Service の分類子を使用してプログラムからイメージをテストします
+# <a name="use-your-model-with-the-prediction-api"></a>Prediction API でモデルを使用する
 
-モデルをトレーニングした後、イメージを Prediction API に送信することで、プログラムからイメージをテストできます。 
+モデルをトレーニングした後、イメージを Prediction API エンドポイントに送信することで、プログラムからイメージをテストできます。
 
 > [!NOTE]
-> このドキュメントでは、C# を使用して Prediction API にイメージを送信する方法を示します。 この API の詳細と使用例については、[Prediction API のリファレンス](https://go.microsoft.com/fwlink/?linkid=865445)を参照してください。
+> このドキュメントでは、C# を使用して Prediction API にイメージを送信する方法を示します。 詳細および例については、[Prediction API リファレンス](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)に関するページを参照してください。
+
+## <a name="publish-your-trained-iteration"></a>トレーニング済みイテレーションを発行する
+
+[Custom Vision の Web ページ](https://customvision.ai)から自分のプロジェクトを選択し、__[Performance]__ \(パフォーマンス) タブを選択します。
+
+Prediction API にイメージを送信するには、まず予測のイテレーションを発行する必要があり、これは __[Publish]__ \(発行\) を選択して、発行されたイテレーションの名前を指定して実行できます。 これにより、モデルが、Custom Vision Azure リソースの Prediction API にアクセスできるようになります。
+
+![[Publish]\(発行\) ボタンが赤い四角形で囲まれた、パフォーマンス タブが表示されます。](./media/use-prediction-api/unpublished-iteration.png)
+
+モデルが正常に発行されると、左側のサイドバー内のイテレーションの横に [発行済み] ラベルが表示されます。また、イテレーションの名前がイテレーションの説明内に表示されます。
+
+![発行済みラベルと発行済みイテレーションの名前が赤い四角形で囲まれた、パフォーマンス タブが表示されます。](./media/use-prediction-api/published-iteration.png)
 
 ## <a name="get-the-url-and-prediction-key"></a>URL と予測キーを取得する
 
-[Custom Vision の Web ページ](https://customvision.ai)から自分のプロジェクトを選択し、__[Performance]__ \(パフォーマンス) タブを選択します。__予測キー__ を含む Prediction API の使用に関する情報を表示するには、__[Prediction URL]\(Prediction の URL\)__ を選択します。 Azure リソースに関連付けられているプロジェクトの場合、__予測キー__ は、関連付けられている Azure リソースの [Azure portal](https://portal.azure.com) ページの __[キー]__ で確認することもできます。 アプリケーションで使用するため、次の情報をコピーします。
+モデルが発行されたら、必要な情報を取得するために __[Prediction URL]__ を選択します。 これにより、ダイアログが開き、__Prediction URL__ や __Prediction-Key__ などの Prediction API を使用するための情報が表示されます。
 
-* __[URL]__: __イメージファイル__ を使用するため。
-* __[Prediction-key]__(予測キー) の値。
+![[Prediction URL] ボタンが赤色の四角形で囲まれた、パフォーマンス タブが表示されます。](./media/use-prediction-api/published-iteration-prediction-url.png)
+
+![イメージ ファイルと Prediction-Key 値を使用するための Prediction URL が赤い四角形で囲まれた、パフォーマンス タブが表示されます。](./media/use-prediction-api/prediction-api-info.png)
 
 > [!TIP]
-> 複数のイテレーションがある場合は、既定値として設定することで、どのイテレーションを使用するかを制御できます。 __[Iterations]__(イテレーション) セクションから目的のイテレーションを選択し、ページの上部にある __[Make default]__(既定値に設定) を選択します。
+> __Prediction-Key__ は、[Azure portal](https://portal.azure.com) ページのプロジェクトに関連付けられている Custom Vision Azure リソースの __[キー]__ ブレードでも見つけることができます。
 
-![パフォーマンスのタブが、[Prediction URL]\(Prediction の URL) を囲む赤色の四角形と共に表示されています。](./media/use-prediction-api/prediction-url.png)
+このガイドでは、ローカル イメージを使用します。そのため、**[If you have an image file]\(イメージ ファイルがある場合\)** の下にある URL を一時的な場所にコピーします。 対応する __Prediction-Key__ 値もコピーします。
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
 
-1. Visual Studio から、新しい C# コンソール アプリケーションを作成します。
+1. Visual Studio で、新しい C# コンソール アプリケーションを作成します。
 
-2. __Program.cs__ ファイルの本文として次のコードを使用します。
-
-    > [!IMPORTANT]
-    > 次の情報を変更します。
-    >
-    > * __namespace__ はプロジェクトの名前に設定します。
-    > * 前に受け取った __予測キー__ の値を、`client.DefaultRequestHeaders.Add("Prediction-Key",` で始まる行の中に設定します。
-    > * 前に受け取った __URL__ の値を、`string url =` で始まる行の中に設定します。
+1. __Program.cs__ ファイルの本文として次のコードを使用します。
 
     ```csharp
     using System;
@@ -56,37 +62,30 @@ ms.locfileid: "46363651"
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
 
-    namespace CSPredictionSample
+    namespace CVSPredictionSample
     {
-        static class Program
+        public static class Program
         {
-            static void Main()
+            public static void Main()
             {
                 Console.Write("Enter image file path: ");
                 string imageFilePath = Console.ReadLine();
 
                 MakePredictionRequest(imageFilePath).Wait();
 
-                Console.WriteLine("\n\n\nHit ENTER to exit...");
+                Console.WriteLine("\n\nHit ENTER to exit...");
                 Console.ReadLine();
             }
 
-            static byte[] GetImageAsByteArray(string imageFilePath)
-            {
-                FileStream fileStream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read);
-                BinaryReader binaryReader = new BinaryReader(fileStream);
-                return binaryReader.ReadBytes((int)fileStream.Length);
-            }
-
-            static async Task MakePredictionRequest(string imageFilePath)
+            public static async Task MakePredictionRequest(string imageFilePath)
             {
                 var client = new HttpClient();
 
-                // Request headers - replace this example key with your valid subscription key.
-                client.DefaultRequestHeaders.Add("Prediction-Key", "13hc77781f7e4b19b5fcdd72a8df7156");
+                // Request headers - replace this example key with your valid Prediction-Key.
+                client.DefaultRequestHeaders.Add("Prediction-Key", "<Your prediction key>");
 
-                // Prediction URL - replace this example URL with your valid prediction URL.
-                string url = "http://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/prediction/d16e136c-5b0b-4b84-9341-6a3fff8fa7fe/image?iterationId=f4e573f6-9843-46db-8018-b01d034fd0f2";
+                // Prediction URL - replace this example URL with your valid Prediction URL.
+                string url = "<Your prediction URL>";
 
                 HttpResponseMessage response;
 
@@ -100,27 +99,45 @@ ms.locfileid: "46363651"
                     Console.WriteLine(await response.Content.ReadAsStringAsync());
                 }
             }
+
+            private static byte[] GetImageAsByteArray(string imageFilePath)
+            {
+                FileStream fileStream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read);
+                BinaryReader binaryReader = new BinaryReader(fileStream);
+                return binaryReader.ReadBytes((int)fileStream.Length);
+            }
         }
     }
     ```
 
-## <a name="use-the-application"></a>アプリケーションを使用する
+1. 次の情報を変更します。
+   * `namespace` フィールドには、プロジェクトの名前を設定します。
+   * プレースホルダー `<Your prediction key>` は、前に取得したキー値に置き換えます。
+   * プレースホルダー `<Your prediction URL>` は、前に取得した URL に置き換えます。
 
-アプリケーションを実行するときには、イメージ ファイルへのパスを入力します。 そのイメージが API に送信され、結果が JSON ドキュメントとして返されます。 次の JSON ドキュメントは応答の例です
+## <a name="run-the-application"></a>アプリケーションの実行
+
+アプリケーションを実行すると、イメージ ファイルのパスをコンソールに入力するように求められます。 これにより、イメージが Prediction API に送信され、予測結果が JSON 形式の文字列として返されます。 応答の例を次に示します。
 
 ```json
 {
-    "Id":"3f76364c-b8ae-4818-a2b2-2794cfbe377a",
-    "Project":"2277aca4-7aff-4742-8afb-3682e251c913",
-    "Iteration":"84105bfe-73b5-4fcc-addb-756c0de17df2",
-    "Created":"2018-05-03T14:15:22.5659829Z",
+    "Id":"7796df8e-acbc-45fc-90b4-1b0c81b73639",
+    "Project":"8622c779-471c-4b6e-842c-67a11deffd7b",
+    "Iteration":"59ec199d-f3fb-443a-b708-4bca79e1b7f7",
+    "Created":"2019-03-20T16:47:31.322Z",
     "Predictions":[
-        {"TagId":"35ac2ad0-e3ef-4e60-b81f-052a1057a1ca","Tag":"dog","Probability":0.102716163},
-        {"TagId":"28e1a872-3776-434c-8cf0-b612dd1a953c","Tag":"cat","Probability":0.02037274}
+        {"TagId":"d9cb3fa5-1ff3-4e98-8d47-2ef42d7fb373","TagName":"cat", "Probability":1.0},
+        {"TagId":"9a8d63fb-b6ed-4462-bcff-77ff72084d99","TagName":"dog", "Probability":0.1087869}
     ]
 }
 ```
 
 ## <a name="next-steps"></a>次の手順
 
-[モバイル利用のためにモデルをエクスポートする](export-your-model.md)
+このガイドでは、C# SDK を使用して、カスタム画像分類器/検出器にイメージを送信し、応答をプログラムで受信する方法について説明しました。 次は、C# を使用してエンドツーエンドのシナリオを完了したり、さまざまな言語の SDK を使用して作業を開始したりする方法について説明します。
+
+* [クイック スタート: .NET SDK](csharp-tutorial.md)
+* [クイック スタート:Python SDK](python-tutorial.md)
+* [クイック スタート:Java SDK](java-tutorial.md)
+* [クイック スタート:Node SDK](node-tutorial.md)
+* [クイック スタート:Go SDK](go-tutorial.md)

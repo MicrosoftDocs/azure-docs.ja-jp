@@ -1,21 +1,21 @@
 ---
 title: Text Analytics API へのサインアップ
 titleSuffix: Azure Cognitive Services
-description: テキスト解析を使用するためのサインアップ手順と限度内で運用するための手引き
+description: サインアップして Text Analytics サービスを使用するための手順。
 services: cognitive-services
-author: HeidiSteen
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/12/2018
-ms.author: heidist
-ms.openlocfilehash: a369d6028cc2957113de01dab0371ad5305a0c68
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: 53532a19482a33f8727e71d44ae169225b5b1c98
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605533"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449965"
 ---
 # <a name="how-to-sign-up-for-the-text-analytics-api"></a>Text Analytics API へのサインアップ方法
 

@@ -1,21 +1,20 @@
 ---
-title: 'クイック スタート: Power BI で SQL クエリを使用してデータを視覚化する'
+title: クイック スタート:Power BI で SQL クエリを使用して Azure Data Explorer のデータを視覚化する
 description: Power BI のデータは 3 とおりの方法を使用して視覚化できます。このクイック スタートでは、そのうちの 1 つである Azure Data Explorer クラスターに対して SQL クエリを使用する方法を説明します。
-services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: 4eb6fdd5b5a78f0afb00265ebd957231464a9083
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 4a3a688adaae8fe66c336617cdd0a4807f16ec68
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977286"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59045509"
 ---
-# <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>クイック スタート: Power BI 用 Azure Data Explorer コネクタを使用してデータを視覚化する
+# <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>クイック スタート:Power BI 用 Azure Data Explorer コネクタを使用してデータを視覚化する
 
 Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Power BI はビジネス分析ソリューションであり、データを視覚化して、組織全体で結果を共有することができます。
 
@@ -67,7 +66,7 @@ Azure Data Explorer ではネイティブの照会言語を使用するのが一
 
 1. ヘルプ クラスターへの接続がまだない場合は、サインインしてください。 Microsoft アカウントでサインインし、**[接続]** を選択します。
 
-    ![[サインイン]](media/power-bi-sql-query/sign-in.png)
+    ![サインイン](media/power-bi-sql-query/sign-in.png)
 
 1. **[help.kusto.windows.net: Samples]** 画面で **[読み込み]** を選択します。
 
@@ -86,4 +85,4 @@ Azure Data Explorer ではネイティブの照会言語を使用するのが一
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [クイック スタート: Power BI にインポートされたクエリを使用してデータを視覚化する](power-bi-connector.md)
+> [クイック スタート:Power BI にインポートされたクエリを使用してデータを視覚化する](power-bi-connector.md)

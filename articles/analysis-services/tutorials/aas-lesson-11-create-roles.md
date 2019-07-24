@@ -1,19 +1,19 @@
 ---
-title: 'Azure Analysis Services チュートリアル - レッスン 11: ロールを作成する | Microsoft Docs'
+title: 'Azure Analysis Services チュートリアルのレッスン 11: ロールを作成する | Microsoft Docs'
 description: この Azure Analysis Services チュートリアル プロジェクトでロールを作成する方法を説明します。
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1a9ecea835e42c90ce7d71617666d210182fe465
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 5b89051cab7e89f79a2b62a392173e6dc234e48d
+ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428907"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54189747"
 ---
 # <a name="create-roles"></a>ロールを作成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "49428907"
 このレッスンの推定所要時間: **15 分**  
   
 ## <a name="prerequisites"></a>前提条件  
-このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンの作業を実行する前に、前のレッスン「[レッスン 10: パーティションを作成する](../tutorials/aas-lesson-10-create-partitions.md)」を終えている必要があります。  
+このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンのタスクを実行する前に、前のレッスン「[レッスン 10: パーティションを作成する](../tutorials/aas-lesson-10-create-partitions.md)」を完了する必要があります。  
   
 ## <a name="create-roles"></a>ロールを作成する  
   
@@ -51,7 +51,7 @@ ms.locfileid: "49428907"
 
     ![aas-lesson11-new-role](../tutorials/media/aas-lesson11-new-role.png) 
   
-5.  任意: **[メンバー]** タブをクリックし、**[追加]** をクリックします。 **Select Users また Groups** ダイアログ ボックスでこのロールに含める社内 Windows ユーザーまたはグループを入力します｡  
+5.  省略可能:**[メンバー]** タブをクリックし、**[追加]** をクリックします。 **Select Users また Groups** ダイアログ ボックスでこのロールに含める社内 Windows ユーザーまたはグループを入力します｡  
   
 #### <a name="to-create-a-sales-analyst-us-user-role"></a>Sales Analyst US ユーザー ロールを作成する  
   
@@ -70,7 +70,7 @@ ms.locfileid: "49428907"
     Row Filter 式の結果は ブール値 (真/偽) をとる必要があります｡ この式を使用して､Country Region Code 値が｢US｣の行のみユーザーに見えるように指定します｡  
     ![aas-lesson11-role-filter](../tutorials/media/aas-lesson11-role-filter.png) 
   
-6.  任意: **[メンバー]** タブをクリックし、**[追加]** をクリックします。 **Select Users また Groups** ダイアログ ボックスでこのロールに含める社内 Windows ユーザーまたはグループを入力します｡  
+6.  省略可能:**[メンバー]** タブをクリックし、**[追加]** をクリックします。 **Select Users また Groups** ダイアログ ボックスでこのロールに含める社内 Windows ユーザーまたはグループを入力します｡  
   
 #### <a name="to-create-an-administrator-user-role"></a>Administrator ユーザー ロールを作成する  
   
@@ -80,11 +80,11 @@ ms.locfileid: "49428907"
   
 3.  このロールに**管理者**権限を付与します｡  
   
-4.  任意: **[メンバー]** タブをクリックし、**[追加]** をクリックします。 **Select Users また Groups** ダイアログ ボックスでこのロールに含める社内 Windows ユーザーまたはグループを入力します｡ 
+4.  省略可能:**[メンバー]** タブをクリックし、**[追加]** をクリックします。 **Select Users また Groups** ダイアログ ボックスでこのロールに含める社内 Windows ユーザーまたはグループを入力します｡ 
   
   
 ## <a name="whats-next"></a>次の手順
-[レッスン 12: Excel で分析する](../tutorials/aas-lesson-12-analyze-in-excel.md)
+[レッスン 12: Excel で分析する](../tutorials/aas-lesson-12-analyze-in-excel.md)。
 
   
   

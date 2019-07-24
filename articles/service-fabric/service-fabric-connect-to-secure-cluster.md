@@ -3,8 +3,8 @@ title: Azure Service Fabric クラスターへの安全な接続 | Microsoft Doc
 description: Service Fabric クラスターへのクライアント アクセスを認証する方法、およびクライアントとクラスター間の通信をセキュリティで保護する方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: rwike77
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: 759a539e-e5e6-4055-bff5-d38804656e10
 ms.service: service-fabric
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/18/2018
-ms.author: ryanwi
-ms.openlocfilehash: f2a181fbae8ab1e08669021c42c5b4be08f66172
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.date: 01/29/2019
+ms.author: aljo
+ms.openlocfilehash: 42c8fa15c6b1e7c98ae47180bec5cc61236a7c44
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364813"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666530"
 ---
 # <a name="connect-to-a-secure-cluster"></a>セキュリティ保護されたクラスターに接続する
 
@@ -33,7 +33,13 @@ Service Fabric CLI (sfctl) を使用してセキュリティで保護された�
 
 `sfctl cluster select` コマンドを使用してクラスターに接続できます。
 
-証明書とキーのペアとして、または単一の pem ファイルとして、2 つの異なる方法でクライアント証明書を指定できます。 パスワードで保護された `pem` ファイルの場合、自動的にパスワードの入力が求められます。
+証明書とキーのペアとして、または単一の PFX ファイルとして、2 つの異なる方法でクライアント証明書を指定できます。 パスワードで保護された PEM ファイルの場合、自動的にパスワードの入力が求められます。 クライアント証明書を PFX ファイルとして入手した場合は、最初に次のコマンドを使用して PFX ファイルを PEM ファイルに変換します。 
+
+```bash
+openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
+```
+
+.pfx ファイルがパスワードで保護されていない場合は、最後のパラメーターとして -passin pass: を使用します。
 
 クライアント証明書を pem ファイルとして指定するには、`--pem` 引数でファイル パスを指定します。 例: 
 
@@ -168,7 +174,7 @@ FabricClient fabricClient = new FabricClient();
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>セキュリティで保護されたクラスターにクライアント証明書を使用して接続する
 
-クラスター内のノードには、[FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) で設定された [RemoteCommonNames プロパティ](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials#System_Fabric_X509Credentials_RemoteCommonNames)に共通名または SAN の DNS 名が表示される、有効な証明書が必要です。 このプロセスに従うことで、クライアントとクラスター ノードの間の相互認証が可能になります。
+クラスター内のノードには、[FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) で設定された [RemoteCommonNames プロパティ](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials)に共通名または SAN の DNS 名が表示される、有効な証明書が必要です。 このプロセスに従うことで、クライアントとクラスター ノードの間の相互認証が可能になります。
 
 ```csharp
 using System.Fabric;
@@ -341,7 +347,7 @@ static string GetAccessToken(AzureActiveDirectoryMetadata aad)
 
 完全な URL は Azure Portal の [Cluster Essentials] ウィンドウにもあります。
 
-ブラウザーを使用して Windows または OS X のセキュリティで保護されたクラスターに接続する場合、クライアント証明書をインポートすると、ブラウザーによって、クラスターへの接続に使用する証明書を要求されます。  Linux マシンでは、高度なブラウザーの設定 (ブラウザーによってしくみが異なる) を使用して証明書をインポートし、ディスク上の証明書の場所をポイントする必要があります。
+ブラウザーを使用して Windows または OS X のセキュリティで保護されたクラスターに接続する場合、クライアント証明書をインポートすると、ブラウザーによって、クラスターへの接続に使用する証明書を要求されます。  Linux マシンでは、高度なブラウザーの設定 (ブラウザーによってしくみが異なる) を使用して証明書をインポートし、ディスク上の証明書の場所をポイントする必要があります。 詳細については、[クライアント証明書の設定](#connectsecureclustersetupclientcert)に関するページを参照してください。
 
 ### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>セキュリティで保護されたクラスターに Azure Active Directory を使用して接続する
 
@@ -360,24 +366,28 @@ AAD でセキュリティ保護されているクラスターに接続するに�
 自動的に、クライアント証明書を選択するように求められます。
 
 <a id="connectsecureclustersetupclientcert"></a>
+
 ## <a name="set-up-a-client-certificate-on-the-remote-computer"></a>リモート コンピューター上でクライアント証明書を設定する
+
 クラスターをセキュリティで保護するには、少なくとも 2 つの証明書 (クラスターおよびサーバー用の証明書と、クライアント アクセス用の証明書) を使用する必要があります。  追加のセカンダリ証明書とクライアント アクセス用証明書も使用することをお勧めします。  証明書セキュリティを使用して、クライアントとクラスター ノード間の通信をセキュリティで保護するには、クライアント証明書を取得してインストールします。 この証明書は、現在のユーザーまたはローカル コンピューターの個人用 (マイ) ストアにインストールすることができます。  クライアントがクラスターを認証できるように、サーバー証明書の拇印も必要になります。
 
-次の PowerShell コマンドレットを実行して、クラスターへのアクセスに使用するコンピューターでクライアント証明書を設定します。
+* Windows の場合:PFX ファイルをダブルクリックし、プロンプトに従って個人用ストア `Certificates - Current User\Personal\Certificates` に証明書をインストールします。 または、PowerShell コマンドを使用できます。
 
-```powershell
-Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
-        -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
-        -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
-```
+    ```powershell
+    Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
+            -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
+            -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
+    ```
 
-これが自己署名証明書である場合は、セキュリティで保護されたクラスターへの接続にこの証明書を使用する前に、コンピューターの "信頼されたユーザー" ストアにインポートする必要があります。
+    これが自己署名証明書である場合は、セキュリティで保護されたクラスターへの接続にこの証明書を使用する前に、コンピューターの "信頼されたユーザー" ストアにインポートする必要があります。
 
-```powershell
-Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPeople `
--FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
--Password (ConvertTo-SecureString -String test -AsPlainText -Force)
-```
+    ```powershell
+    Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPeople `
+    -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
+    -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
+    ```
+
+* Mac の場合:PFX ファイルをダブルクリックし、プロンプトに従ってキーチェーンに証明書をインストールします。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,0 +1,434 @@
+items:
+- name: StorSimple のドキュメント
+  href: index.md
+- name: StorSimple Virtual Array
+  items:
+  - name: 概要
+    items:
+    - name: ソリューションとは
+      href: storsimple-ova-overview.md
+  - name: 作業開始
+    items:
+    - name: プラン
+      items:
+      - name: 要件を確認する
+        href: storsimple-ova-system-requirements.md
+      - name: 制限を理解する
+        href: storsimple-ova-limits.md
+      - name: ベスト プラクティスを確認する
+        href: storsimple-ova-best-practices.md
+    - name: デプロイ
+      items:
+      - name: デプロイを準備する
+        href: storsimple-virtual-array-deploy1-portal-prep.md
+        items:
+        - name: StorSimple Manager サービスをデプロイする
+          href: storsimple-virtual-array-manage-service.md
+        - name: 新しい認証
+          href: storsimple-virtual-array-aad-registration-key.md
+      - name: Hyper-V でプロビジョニングする
+        href: storsimple-virtual-array-deploy2-provision-hyperv.md
+      - name: VMware でプロビジョニングする
+        href: storsimple-virtual-array-deploy2-provision-vmware.md
+      - name: ファイル サーバーとして設定する
+        href: storsimple-virtual-array-deploy3-fs-setup.md
+      - name: iSCSI サーバーとして設定する
+        href: storsimple-virtual-array-deploy3-iscsi-setup.md
+  - name: 方法
+    items:
+    - name: Azure Portal で管理する
+      href: storsimple-virtual-array-manager-service-administration.md
+      items:
+      - name: 最新の更新プログラムをインストールする
+        href: storsimple-virtual-array-install-update-11.md
+        items:
+        - name: Update 1 をインストールする
+          href: storsimple-virtual-array-install-update-1.md
+        - name: Update 0.6 をインストールする
+          href: storsimple-virtual-array-install-update-06.md
+        - name: アーカイブ
+          items:
+          - name: Update 0.5 をインストールする
+            href: storsimple-virtual-array-install-update-05.md
+          - name: Update 0.4 をインストールする
+            href: storsimple-virtual-array-install-update-04.md
+          - name: Update 0.3 をインストールする
+            href: storsimple-virtual-array-install-update.md
+      - name: バックアップを作成および管理する
+        href: storsimple-virtual-array-backup.md
+      - name: バックアップから複製する
+        href: storsimple-virtual-array-clone.md
+      - name: フェールオーバーと DR
+        href: storsimple-virtual-array-failover-dr.md
+      - name: 非アクティブ化して削除する
+        href: storsimple-virtual-array-deactivate-and-delete-device.md
+      - name: 共有の管理
+        href: storsimple-virtual-array-manage-shares.md
+      - name: ボリュームを管理する
+        href: storsimple-virtual-array-manage-volumes.md
+      - name: サービスの概要を表示する
+        href: storsimple-virtual-array-service-summary.md
+      - name: デバイスの概要を表示する
+        href: storsimple-virtual-array-device-summary.md
+      - name: ストレージ アカウントを管理する
+        href: storsimple-virtual-array-manage-storage-accounts.md
+      - name: ACR を管理する
+        href: storsimple-virtual-array-manage-acrs.md
+      - name: ジョブの管理
+        href: storsimple-virtual-array-manage-jobs.md
+      - name: デバイスのパスワードを変更する
+        href: storsimple-virtual-array-change-device-admin-password.md
+      - name: アラートを使用した監視
+        href: storsimple-virtual-array-manage-alerts.md
+      - name: 診断とトラブルシューティング
+        href: storsimple-virtual-array-diagnose-problems.md
+      - name: サポート リクエストを記録する
+        href: storsimple-virtual-array-log-support-ticket.md
+    - name: ローカル Web UI で構成する
+      href: storsimple-ova-web-ui-admin.md
+  - name: リリース ノート
+    items:
+    - name: Update 1.1 - 最新
+      href: storsimple-virtual-array-update-11-release-notes.md
+    - name: Update 1
+      href: storsimple-virtual-array-update-1-release-notes.md
+    - name: Update 0.6
+      href: storsimple-virtual-array-update-06-release-notes.md
+    - name: アーカイブ
+      items:
+      - name: Update 0.5
+        href: storsimple-virtual-array-update-05-release-notes.md
+      - name: Update 0.4
+        href: storsimple-virtual-array-update-04-release-notes.md
+      - name: Update 0.3
+        href: storsimple-ova-update-03-release-notes.md
+      - name: Update 0.2 および 0.1
+        href: storsimple-ova-update-01-release-notes.md
+- name: StorSimple 8000 シリーズ (Azure Portal)
+  items:
+  - name: 概要
+    items:
+    - name: ソリューションとは
+      href: storsimple-overview.md
+    - name: データ転送オプションの比較
+      href: storsimple-8000-choose-storage-solution.md
+    - name: StorSimple 学習マップ
+      href: https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/
+    - name: セキュリティに関する考慮事項
+      href: storsimple-8000-security.md
+    - name: 利用可能なリージョン
+      href: storsimple-regions.md
+  - name: 作業開始
+    items:
+    - name: プラン
+      items:
+      - name: 要件を確認する
+        href: storsimple-8000-system-requirements.md
+      - name: 技術仕様を確認する
+        href: storsimple-8000-technical-specifications-and-compliance.md
+      - name: 制限を理解する
+        href: storsimple-8000-limits.md
+      - name: ベスト プラクティス
+        href: https://gallery.technet.microsoft.com/Azure-StorSimple-8000-72b01b68
+    - name: Install
+      items:
+      - name: 安全性を確認する
+        href: storsimple-8000-safety.md
+      - name: 8100 を開梱、ラック設置、ケーブル接続する
+        href: storsimple-8100-hardware-installation.md
+      - name: 8600 を開梱、ラック設置、ケーブル接続する
+        href: storsimple-8600-hardware-installation.md
+      - name: 10 GbE ネットワーク インターフェイス用にサポートされるハードウェア
+        href: storsimple-supported-hardware-for-10-gbe-network-interfaces.md
+    - name: デプロイ
+      items:
+      - name: StorSimple デバイス マネージャー サービス
+        href: storsimple-8000-manage-service.md
+      - name: サービス向けの新しい認証
+        href: storsimple-8000-aad-registration-key.md
+      - name: Azure の物理デバイス
+        href: storsimple-8000-deployment-walkthrough-u2.md
+      - name: Government ポータルの物理デバイス
+        href: storsimple-8000-deployment-walkthrough-gov-u2.md
+      - name: Azure のクラウド アプライアンス
+        href: storsimple-8000-cloud-appliance-u2.md
+      - name: StorSimple Snapshot Manager
+        href: storsimple-snapshot-manager-deployment.md
+      - name: SharePoint 用 StorSimple アダプター
+        href: storsimple-adapter-for-sharepoint.md
+  - name: 方法
+    items:
+    - name: 管理
+      items:
+      - name: StorSimple Manager サービスの使用
+        href: storsimple-8000-manager-service-administration.md
+        items:
+        - name: バックアップから復元する
+          href: storsimple-8000-restore-from-backup-set-u2.md
+        - name: ボリュームを複製する
+          href: storsimple-8000-clone-volume-u2.md
+        - name: デバイスにリモート接続する
+          href: storsimple-8000-remote-connect.md
+        - name: デバイスを非アクティブ化して削除する
+          href: storsimple-8000-deactivate-and-delete-device.md
+        - name: デバイスをフェールオーバーする
+          href: storsimple-8000-device-failover-disaster-recovery.md
+          items:
+          - name: 物理デバイスにフェールオーバーする
+            href: storsimple-8000-device-failover-physical-device.md
+          - name: クラウド アプライアンスにフェールオーバーする
+            href: storsimple-8000-device-failover-cloud-appliance.md
+          - name: 同じデバイスにフェールオーバーする
+            href: storsimple-8000-device-failover-same-device.md
+        - name: バックアップ カタログを管理する
+          href: storsimple-8000-manage-backup-catalog.md
+        - name: バックアップ ポリシーを管理する
+          href: storsimple-8000-manage-backup-policies-u2.md
+        - name: ストレージ アカウントを管理する
+          href: storsimple-8000-manage-storage-accounts.md
+        - name: ボリューム コンテナーを管理する
+          href: storsimple-8000-manage-volume-containers.md
+        - name: ボリュームを管理する - 最新
+          href: storsimple-8000-manage-volumes-u2.md
+          items:
+          - name: 'よくあるご質問: ローカル固定ボリューム'
+            href: storsimple-8000-local-volume-faq.md
+        - name: ロールベースのアクセス制御
+          href: storsimple-8000-role-based-access-control.md
+        - name: ACR を管理する
+          href: storsimple-8000-manage-acrs.md
+        - name: 帯域幅テンプレートを管理する
+          href: storsimple-8000-manage-bandwidth-templates.md
+        - name: ジョブを表示して管理する
+          href: storsimple-8000-manage-jobs-u2.md
+        - name: デバイスのモードを変更する
+          href: storsimple-8000-device-modes.md
+        - name: デバイスのパスワードを変更する
+          href: storsimple-8000-change-passwords.md
+        - name: デバイスの構成を変更する
+          href: storsimple-8000-modify-device-config.md
+        - name: オンとオフを切り替える
+          href: storsimple-turn-device-on-or-off.md
+        - name: Windows Server ホストで MPIO を構成する
+          href: storsimple-8000-configure-mpio-windows-server.md
+        - name: Linux ホストで MPIO を構成する
+          href: storsimple-configure-mpio-on-linux.md
+        - name: CHAP を構成する
+          href: storsimple-8000-configure-chap.md
+      - name: StorSimple 用 Windows PowerShell の使用
+        href: storsimple-8000-windows-powershell-administration.md
+        items:
+        - name: デバイス コントローラーを管理する
+          href: storsimple-8000-manage-device-controller.md
+        - name: 'Web プロキシの '
+          href: storsimple-8000-configure-web-proxy.md
+        - name: DATA 0 設定を変更する
+          href: storsimple-8000-modify-data-0.md
+      - name: StorSimple Snapshot Manager の使用
+        href: storsimple-snapshot-manager-admin.md
+        items:
+        - name: StorSimple Snapshot Manager について
+          href: storsimple-what-is-snapshot-manager.md
+        - name: StorSimple Snapshot Manager インターフェイスについて
+          href: storsimple-use-snapshot-manager.md
+        - name: StorSimple Snapshot Manager でデバイスを管理する
+          href: storsimple-snapshot-manager-manage-devices.md
+        - name: StorSimple Snapshot Manager でバックアップ ポリシーを管理する
+          href: storsimple-snapshot-manager-manage-backup-policies.md
+        - name: StorSimple Snapshot Manager でボリューム グループを管理する
+          href: storsimple-snapshot-manager-manage-volume-groups.md
+        - name: StorSimple Snapshot Manager でバックアップ カタログを管理する
+          href: storsimple-snapshot-manager-manage-backup-catalog.md
+        - name: StorSimple Snapshot Manager でバックアップ ジョブを管理する
+          href: storsimple-snapshot-manager-manage-backup-jobs.md
+        - name: StorSimple Snapshot Manager でボリュームを管理する
+          href: storsimple-snapshot-manager-manage-volumes.md
+        - name: StorSimple Snapshot Manager での MMC アクションを使用する
+          href: storsimple-snapshot-manager-mmc-menu.md
+    - name: 自動化
+      items:
+      - name: Azure PowerShell サンプル スクリプトの使用
+        href: storsimple-8000-automation-azurerm-scripts.md
+      - name: Azure Automation Runbook の使用
+        href: storsimple-8000-automation-azurerm-runbook.md
+    - name: ソリューションを構築する
+      items:
+      - name: StorSimple と Veeam
+        href: storsimple-configure-backup-target-veeam.md
+      - name: StorSimple と Veritas Backup Exec
+        href: storsimple-configure-backup-target-using-backup-exec.md
+      - name: StorSimple と Veritas NetBackup
+        href: storsimple-configure-backuptarget-netbackup.md
+      - name: Azure へのファイル サーバー DR を自動化する
+        href: storsimple-disaster-recovery-using-azure-site-recovery.md
+      - name: Express Route を使用した StorSimple
+        href: https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content
+      - name: StorSimple と VMware
+        href: https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463
+      - name: StorSimple と Hyper-V
+        href: https://gallery.technet.microsoft.com/Deploy-Hyper-V-with-Azure-0d1c6df6
+      - name: 分散されたグローバル名前空間
+        href: https://www.microsoft.com/download/details.aspx?id=45507
+    - name: 監視
+      items:
+      - name: サービスの概要の使用
+        href: storsimple-8000-service-dashboard.md
+      - name: デバイスの概要の使用
+        href: storsimple-8000-device-dashboard.md
+      - name: 監視グラフの使用
+        href: storsimple-8000-monitor-device.md
+      - name: サービス アラートの使用
+        href: storsimple-8000-manage-alerts.md
+      - name: ハードウェアの状態の使用
+        href: storsimple-8000-monitor-hardware-status.md
+      - name: 監視 LED の使用
+        href: storsimple-monitoring-indicators.md
+    - name: トラブルシューティング
+      items:
+      - name: デプロイの問題
+        href: storsimple-8000-troubleshoot-deployment.md
+      - name: 診断ツールの使用
+        href: storsimple-8000-diagnostics.md
+      - name: 操作上の問題
+        href: storsimple-troubleshoot-operational-device.md
+      - name: ハードウェア交換
+        href: storsimple-8000-hardware-component-replacement.md
+        items:
+        - name: デバイス コントローラーを交換する
+          href: storsimple-8000-controller-replacement.md
+        - name: EBOD コントローラーを交換する
+          href: storsimple-8000-ebod-controller-replacement.md
+        - name: PCM を交換する
+          href: storsimple-8000-power-cooling-module-replacement.md
+        - name: ディスク ドライブを交換する
+          href: storsimple-8000-disk-drive-replacement.md
+        - name: バックアップ バッテリを交換する
+          href: storsimple-8000-battery-replacement.md
+        - name: シャーシを交換する
+          href: storsimple-8000-chassis-replacement.md
+      - name: サポートに問い合わせる
+        href: storsimple-8000-contact-microsoft-support.md
+        items:
+        - name: サポート パッケージを作成する
+          href: storsimple-8000-create-manage-support-package.md
+    - name: 移行
+      items:
+      - name: サブスクリプションとストレージ アカウント
+        href: storsimple-8000-migrate-classic-azure-portal.md
+      - name: 5000 シリーズまたは 7000 シリーズのデバイスから
+        href: storsimple-8000-migration-options.md
+        items:
+        - name: StorSimple 8000 シリーズ デバイスへ
+          href: storsimple-8000-migrate-from-5000-7000.md
+        - name: Azure File Sync へ
+          href: storsimple-5000-7000-afs-migration.md
+      - name: 他のストレージ デバイスから
+        href: https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf
+    - name: アップデート
+      items:
+      - name: Update 5 をインストールする - 最新
+        href: storsimple-8000-install-update-5.md
+      - name: Update 4 をインストールする
+        href: storsimple-8000-install-update-4.md
+  - name: リリース ノート
+    items:
+    - name: Update 5 - 最新
+      href: storsimple-update5-release-notes.md
+    - name: Update 4
+      href: storsimple-update4-release-notes.md
+    - name: アーカイブ
+      items:
+      - name: Update 3
+        href: storsimple-update3-release-notes.md
+      - name: Update 2.2
+        href: storsimple-update21-release-notes.md
+      - name: Update 2
+        href: storsimple-update2-release-notes.md
+      - name: Update 1
+        href: storsimple-update1-release-notes.md
+      - name: Update 0.3
+        href: storsimple-february-2015-release-notes.md
+      - name: Update 0.2
+        href: storsimple-january-2015-release-notes.md
+      - name: Update 0.1
+        href: storsimple-october-2014-release-notes.md
+      - name: リリース - GA
+        href: storsimple-july-2014-release-notes.md
+  - name: リファレンス
+    items:
+    - name: REST API
+      href: https://docs.microsoft.com/rest/api/storsimple
+    - name: StorSimple 用 Windows PowerShell のコマンドレット
+      href: https://technet.microsoft.com/library/dn688168.aspx
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.storsimple/allversions
+- name: StorSimple Data Manager
+  items:
+  - name: 概要
+    items:
+    - name: ソリューションとは
+      href: storsimple-data-manager-overview.md
+  - name: 作業開始
+    items:
+    - name: StorSimple Data Manager の使用
+      href: storsimple-data-manager-ui.md
+  - name: 方法
+    items:
+    - name: .NET を使用したジョブの開始
+      href: storsimple-data-manager-dotnet-jobs.md
+    - name: Automation を使用したジョブの開始
+      href: storsimple-data-manager-job-using-automation.md
+    - name: 既定の BLOB パスの変更
+      href: storsimple-data-manager-change-default-blob-path.md
+- name: パートナー向け StorSimple
+  items:
+  - name: 概要
+    items:
+    - name: ソリューションとは
+      href: storsimple-partner-csp-overview.md
+  - name: 作業開始
+    items:
+    - name: CSP の仮想アレイをデプロイする
+      href: storsimple-partner-csp-deploy.md
+  - name: リリース ノート
+    items:
+    - name: StorSimple のリリース ノート
+      href: https://aka.ms/storsimple-virtual-array-latest-relnote
+    - name: CSP のリリース ノート
+      href: https://partner.microsoft.com/Support/whats-new
+    - name: 'CSP 向け StorSimple: FAQ'
+      href: storsimple-partner-csp-faq.md
+- name: 関連項目
+  items:
+  - name: StorSimple 5000/7000 シリーズ
+    href: http://onlinehelp.storsimple.com
+- name: リソース
+  items:
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+  - name: マーケティング ブログ
+    href: http://blogs.technet.com/b/cis/
+  - name: Marketing
+    href: https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx
+  - name: StorSimple サポート オプション
+    href: storsimple-8000-support-options.md
+  - name: MSDN フォーラム
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/storsimple/
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: サービスの更新情報
+    href: https://azure.microsoft.com/updates/?product=storsimple
+  - name: サポート ブログ
+    href: https://blogs.msdn.com/b/storsimple/
+  - name: サード パーティに関する通知
+    href: https://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip
+  - name: ビデオ
+    href: https://azure.microsoft.com/documentation/videos/index/?services=storsimple
+ms.openlocfilehash: 6879dd240dc070483a7d97536a5fa365108af5f1
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341137"

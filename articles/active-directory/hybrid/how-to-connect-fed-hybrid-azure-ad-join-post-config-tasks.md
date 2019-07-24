@@ -1,26 +1,27 @@
 ---
-title: 'Azure AD Connect: ハイブリッド Azure AD 参加の構成後タスク | Microsoft Docs'
+title: Azure AD Connect:Hybrid Azure AD 参加の構成後タスク | Microsoft Docs
 description: このドキュメントでは、ハイブリッド Azure AD 参加を完了するために必要な構成後のタスクについて詳しく説明します
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: billmath
 ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/10/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2306c03480956a63859355428cbffe0706f43cbc
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a9af969700f4f2dfbedc4833badd7e7349696302
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306641"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199733"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の構成後のタスク
 
@@ -30,12 +31,12 @@ Azure AD Connect を実行してハイブリッド Azure AD 参加用に組織�
 Windows 10 および Windows Server 2016 を搭載するすべてのドメイン参加済みデバイスは、すべての構成手順が完了すると、Azure AD に自動的に登録します。 この自動登録ではなく、制御されたロールアウトの方がよい場合は、グループ ポリシーを使って、自動ロールアウトを選択的に有効または無効にすることができます。  このグループ ポリシーは、他の構成手順を開始する前に設定する必要があります。
 * Active Directory でグループ ポリシー オブジェクトを作成します。
 * グループ ポリシーの名前を設定します (例: ハイブリッド Azure AD 参加)。
-* 編集して、[コンピューターの構成] > [ポリシー] > [管理用テンプレート] > [Windows コンポーネント] > [デバイス登録] の順に移動します。
+* 編集と移動:[コンピューターの構成] > [ポリシー] > [管理用テンプレート] > [Windows コンポーネント] > [デバイス登録]。
 
 >[!NOTE]
 >2012R2 の場合、ポリシーの設定は **[コンピューターの構成] > [ポリシー] > [管理用テンプレート] > [Windows コンポーネント] > [社内参加] > [Automatically workplace join client computers]\(クライアント コンピューターを自動的に社内参加させる\)** にあります。
 
-* [ドメインに参加しているコンピューターをデバイスとして登録する] を無効にします。
+* この設定を無効にする:ドメインに参加しているコンピューターをデバイスとして登録します。
 * 適用して [OK] をクリックします。
 * GPO を任意の場所 (組織単位、セキュリティ グループ、またはすべてのデバイスのドメイン) にリンクします。
 
@@ -69,7 +70,7 @@ Azure AD への登録のため、組織ネットワーク内のコンピュー�
 ダウンレベルの Windows デバイスを登録するには、Azure AD のポリシーにおいてユーザーがデバイスを登録できるようになっている必要があります。 
 
 * Azure portal でアカウントにログインします。
-* [Azure Active Directory] > [デバイス] > [デバイスの設定] に移動します。
+* 参照先:[Azure Active Directory] > [デバイス] > [デバイスの設定]
 * [ユーザーはデバイスを Azure AD に登録できます] を [すべて] に設定します。
 * [保存] をクリックします。
 
@@ -77,7 +78,7 @@ Azure AD への登録のため、組織ネットワーク内のコンピュー�
 
 デバイスの認証時に証明書の指定を求めるメッセージが表示されないように、ダウンレベルの Windows デバイス上のローカル イントラネット ゾーンに、Azure AD デバイス認証エンドポイントを追加します。 https://device.login.microsoftonline.com 
 
-[シームレス SSO](https://aka.ms/hybrid/sso) を使っている場合は、そのゾーンで [スクリプトを介したステータス バーの更新を許可する] も有効にして、次のエンドポイントを追加します。 https://autologon.microsoftazuread-sso.com 
+[シームレス SSO](how-to-connect-sso.md) を使っている場合は、そのゾーンで [スクリプトを介したステータス バーの更新を許可する] も有効にして、次のエンドポイントを追加します。 https://autologon.microsoftazuread-sso.com 
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9.ダウンレベルの Windows デバイスに Microsoft Workplace Join をインストールする
 
@@ -87,8 +88,8 @@ Azure AD への登録のため、組織ネットワーク内のコンピュー�
 
 * Active Directory でグループ ポリシー オブジェクトを作成します (まだ作成されていない場合)。
 * グループ ポリシーの名前を設定します (例: ハイブリッド Azure AD 参加)。
-* 編集して、[コンピューターの構成] > [ポリシー] > [管理用テンプレート] > [Windows コンポーネント] > [デバイス登録] の順に移動します。
-* [ドメインに参加しているコンピューターをデバイスとして登録する] を有効にします
+* 編集と移動:[コンピューターの構成] > [ポリシー] > [管理用テンプレート] > [Windows コンポーネント] > [デバイス登録]
+* 有効にする:ドメインに参加しているコンピューターをデバイスとして登録します
 * 適用して [OK] をクリックします。
 * GPO を任意の場所 (組織単位、セキュリティ グループ、またはすべてのデバイスのドメイン) にリンクします。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure DC/OS クラスターの監視 - ELK スタック
+title: (非推奨) Azure DC/OS クラスターを監視する - ELK スタック
 description: ELK (Elasticsearch、Logstash、Kibana) を使って Azure Container Service クラスター内の DC/OS クラスターを監視します。
 services: container-service
 author: sauryadas
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 03/27/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: dc863894d8846e066c90bdf7b309f141d32a1186
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 342cf23db2df7d7c79a2b56df96d1a78d6ba215e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32163182"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998132"
 ---
-# <a name="monitor-an-azure-container-service-cluster-with-elk"></a>ELK を使って Azure Container Service クラスターを監視します
+# <a name="deprecated-monitor-an-azure-container-service-cluster-with-elk"></a>(非推奨) ELK を使って Azure Container Service クラスターを監視します
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 この記事では、Azure Container Service の DC/OS クラスター上に ELK (Elasticsearch、Logstash、Kibana) スタックをデプロイする方法について説明します。 
 

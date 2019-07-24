@@ -1,5 +1,5 @@
 ---
-title: PIM で Azure リソース ロール割り当てを延長または更新する | Microsoft Docs
+title: PIM で Azure リソース ロール割り当てを延長または更新する - Azure Active Directory | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) で Azure リソース ロール割り当てを延長または更新する方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -11,20 +11,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: pim
+ms.subservice: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 3294bddea867e061d01e8dc72f4e47f3238b6c4d
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8aef7d4ac37109233af4ffb364b6f3e4c9b291ac
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344087"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578392"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-pim"></a>PIM で Azure リソース ロール割り当てを延長または更新する
 
-Azure リソース向けの Privileged Identity Management (PIM) には、Azure リソースへのアクセスと割り当てのライフサイクルを管理するための新しいコントロールが導入されています。 管理者は、[開始日時] と [終了日時] プロパティを使用してメンバーシップを割り当てることができます。 割り当ての終了日時が近づくと、PIM は、影響を受けるユーザーまたはグループに電子メール通知を送信します。 適切なアクセスが維持されることを保証するためにリソースの管理者にも電子メール通知を送信します。 アクセスが延長されなかった場合でも、割り当てを更新して、最大 30 日間、期限切れの状態のままで表示できます。
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) には、Azure リソースへのアクセスと割り当てのライフサイクルを管理するための新しいコントロールが導入されています。 管理者は、[開始日時] と [終了日時] プロパティを使用してメンバーシップを割り当てることができます。 割り当ての終了日時が近づくと、PIM は、影響を受けるユーザーまたはグループに電子メール通知を送信します。 適切なアクセスが維持されることを保証するためにリソースの管理者にも電子メール通知を送信します。 アクセスが延長されなかった場合でも、割り当てを更新して、最大 30 日間、期限切れの状態のままで表示できます。
 
 ## <a name="who-can-extend-and-renew"></a>延長と更新を実行できるのは誰か
 
@@ -48,7 +49,7 @@ PIM は、14 日以内に期限切れになるロールの管理者と影響を�
 
 割り当ての終了日時が 14 日以内にある場合は、ユーザー インターフェイスの**延長**ボタンがアクティブ リンクになります。 次の例では、現在の日付が 3 月 27 日であると想定しています。
 
-![[拡張] ボタン](media/azure-pim-resource-rbac/aadpim_rbac_extend_within_14.png)
+![[Extend]\(延長\) ボタン](media/azure-pim-resource-rbac/aadpim_rbac_extend_within_14.png)
 
 このロールの割り当ての延長を要求するには、**延長**をクリックして要求フォームを開きます。
 
@@ -63,11 +64,11 @@ PIM は、14 日以内に期限切れになるロールの管理者と影響を�
 
 リソース管理者は、延長要求の確認を求める電子メール通知をすぐに受信します。 延長要求が既に送信されている場合は、Azure Portal の上部に、エラーの理由を説明するトースト通知が表示されます。
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_failed_existing_request.png)
+![通知を説明するエラー](media/azure-pim-resource-rbac/aadpim_rbac_extend_failed_existing_request.png)
 
 左側のペインから**保留中の要求**タブに移動して、要求の状態を確認します。要求をキャンセルすることもできます。
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_cancel_request.png)
+![保留中の要求](media/azure-pim-resource-rbac/aadpim_rbac_extend_cancel_request.png)
 
 ### <a name="admin-approve"></a>管理者の承認
 
@@ -79,7 +80,7 @@ PIM は、14 日以内に期限切れになるロールの管理者と影響を�
 
 管理者が**承認**または**拒否**を選択すると、要求の詳細が、監査ログ用の理由を入力するフィールドと共に表示されます。
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_blade.png)
+![ロールの割り当て要求を承認する](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_blade.png)
 
 要求を承認してロールの割り当てを延長するとき、リソース管理者は、新しい開始日時、終了日時、および割り当ての種類を選択できます。 管理者が特定のタスク を完了するためのアクセス制限 を指定する (たとえば 1 日だけ延長する) 場合は、割り当ての種類の変更が必要になることがあります。 この例では、管理者は、割り当ての種類を**有資格**から**アクティブ**に変更できます。 つまり、アクティブ化の必要がないアクセスを要求者に提供できます。
 

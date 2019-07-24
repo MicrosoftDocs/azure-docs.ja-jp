@@ -1,23 +1,25 @@
 ---
 title: Ethereum Proof-of-Authority Consortium
-description: Etherereum Proof-of-Authority Consortium ソリューションを使用してマルチメンバー コンソーシアム型 Ethereum ネットワークをデプロイおよび構成する
+description: Etherereum Proof-of-Authority Consortium ソリューションを使用してマルチメンバー コンソーシアム型 Ethereum ネットワークをデプロイして構成する
 services: azure-blockchain
 keywords: ''
 author: CodyBorn
 ms.author: coborn
-ms.date: 8/2/2018
+ms.date: 04/08/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 12fab05ef7c459419c8aaf319098fddaae1416e6
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 3531b43e6aee1eedef811e81e192873c5b5ed561
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242127"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59274792"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum Proof-of-Authority Consortium
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>概要
 [このソリューション](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium)は、Azure と Ethereum の最小限の知識で、マルチメンバー コンソーシアム型 Proof-of-Authority Ethereum ネットワークを簡単にデプロイ、構成、および管理できるように設計されています。
@@ -38,15 +40,15 @@ Azure Portal でいくつかの項目を入力し、1 回のクリックでデ�
 
 ### <a name="proof-of-authority"></a>Proof-of-Authority
 
-ブロックチェーン コミュニティに参加したばかりなら、このソリューションのリリースをきっかけにしてこの技術を学習してください。Azure 上で簡単に、また構成しながら学習できます。 Proof-of-Work は、計算コストを利用してネットワークを自己規制し、公正な参加を可能にする Sybil 攻撃対策メカニズムです。 これは、暗号通貨を得るための競争によってネットワーク上のセキュリティが推進される、匿名のオープンなブロックチェーン ネットワークでは良好に機能します。 しかし、プライベート/コンソーシアム ネットワークにおいて、基盤となる Ether が何の価値も持ちません。 すべてのコンセンサス参加者が既知であり信頼できる許可型のネットワークには、代替プロトコルの 1 つである Proof-of-Authority のほうが適しています。 マイニングを必要としない Proof-of-Authority では、ビザンチン フォールトトレランスを維持しながら、より高い効率が得られます。
+ブロックチェーン コミュニティに参加したばかりなら、このソリューションのリリースをきっかけにしてこの技術を学習してください。Azure 上で簡単に、また構成しながら学習できます。 Proof-of-Work は、計算コストを利用してネットワークを自己規制し、公正な参加を可能にする Sybil 攻撃対策メカニズムです。 これは、暗号通貨を得るための競争によってネットワーク上のセキュリティが推進される、匿名のオープンなブロックチェーン ネットワークでは良好に機能します。 しかし、プライベート/コンソーシアム ネットワークにおいて、基盤となる Ether が何の価値も持ちません。 すべてのコンセンサス参加者が既知であり信頼できる許可済みネットワークの場合は、代替プロトコルの 1 つである Proof-of-Authority のほうが適しています。 マイニングを必要としない Proof-of-Authority では、ビザンチン フォールトトレランスを維持しながら、より高い効率が得られます。
 
 ### <a name="consortium-governance"></a>コンソーシアムのガバナンス
 
-Proof-of-Authority は、ネットワークの正常性を維持するために許可されたネットワーク機関のリストに依存するので、この許可リストに変更を加えるための公正なメカニズムを提供することが重要です。 各デプロイには、この許可リストのオンチェーン ガバナンスのための一連のスマート コントラクトとポータルが付属しています。 提案された変更がコンソーシアム メンバーによる投票で過半数に達すると、変更が適用されます。 これにより、新しいコンセンサス参加者の追加や危害を受けた参加者の削除を透明な方法で行うことができ、誠実なネットワークが促進されます。
+Proof-of-Authority は、ネットワーク機関の許可済みリストによってネットワークの正常性を維持するため、この許可リストに変更を加えるための公正なメカニズムを提供することが重要です。 各デプロイには、この許可済みリストのオンチェーン ガバナンスのための一連のスマート コントラクトとポータルが付属しています。 提案された変更がコンソーシアム メンバーによる投票で過半数に達すると、変更が適用されます。 これにより、新しいコンセンサス参加者の追加や危害を受けた参加者の削除を透明な方法で行うことができ、誠実なネットワークが促進されます。
 
 ### <a name="admin-account"></a>管理者アカウント
 
-Proof-of-Authority ノードのデプロイ時には、管理者 Ethereum アドレスの入力を求められます。 この Ethereum アカウントは、いくつかの異なるメカニズムを使用して生成およびセキュリティ保護することができます。 このアドレスがネットワーク上で機関として追加されると、このアカウントを使用してガバナンスに参加できるようになります。 この管理者アカウントは、デプロイの一環として作成されたバリデーター ノードにコンセンサスへの参加を委任するときにも使用されます。 パブリックな Ethereum アドレスのみを使用するため、各管理者が、希望するセキュリティ モデルに準拠した方法で自分の秘密キーを柔軟にセキュリティで保護できます。
+Proof-of-Authority ノードのデプロイ時には、管理者 Ethereum アドレスの入力を求められます。 この Ethereum アカウントは、いくつかの異なるメカニズムを使用して生成およびセキュリティ保護することができます。 このアドレスがネットワーク上で機関として追加されると、このアカウントを使用してガバナンスに参加できるようになります。 この管理者アカウントは、デプロイの一環として作成されたバリデーター ノードにコンセンサスへの参加を委任するときにも使用されます。 パブリックな Ethereum アドレスのみを使用するため、各管理者が、必要とされるセキュリティ モデルに従って自分の秘密キーを柔軟にセキュリティで保護できます。
 
 ### <a name="validator-node"></a>バリデーター ノード
 
@@ -55,7 +57,7 @@ Proof-of-Authority プロトコルでは、バリデーター ノードが従来
 
 ### <a name="identity-store"></a>ID ストア
 
-各メンバーが同時に実行されるバリデーター ノードを持ち、各ノードが許可された ID を持つ必要があるため、バリデーターがネットワーク上でアクティブな一意の ID を安全に取得できることが重要です。 それを容易にするために、各メンバーのサブスクリプションにデプロイされ、生成された Ethereum ID を安全に保持する ID ストアが構築されています。 デプロイ時に、オーケストレーション コンテナーは各バリデーター用の Ethereum 秘密キーを生成し、Azure Key Vault に格納します。 パリティ ノードは起動前に、まず未使用の ID に対してリースを取得し、その ID が別のノードによって取得されないようにします。 その ID は、ブロックの作成を開始する権限をパリティ ノードに与えるクライアントに提供されます。 ホスト VM で障害が発生した場合は、ID のリースがリリースされ、置換ノードが後でその ID を再開できるようになります。
+各メンバーが検証ノードを同時に実行し、各ノードが許可された ID を持つ必要があるため、検証コントロールがネットワーク上でアクティブな一意の ID を安全に取得できることが重要です。 これを容易にするために、Microsoft は、生成された Ethereum ID を安全に保持する各メンバーのサブスクリプションにデプロイされる ID ストアを構築しました。 デプロイ時に、オーケストレーション コンテナーは各検証コントロール用の Ethereum 秘密キーを生成し、Azure Key Vault に格納します。 パリティ ノードは起動前に、まず未使用の ID に対してリースを取得し、その ID が別のノードによって取得されないようにします。 その ID は、ブロックの作成を開始する権限をパリティ ノードに与えるクライアントに提供されます。 ホスト VM で障害が発生した場合は、ID のリースがリリースされ、置換ノードが後でその ID を再開できるようになります。
 
 ### <a name="bootnode-registrar"></a>ブートノード レジストラー
 
@@ -148,7 +150,7 @@ Proof-of-Authority の中核をなすのは分散型ガバナンスです。 ガ
 MetaMask をインストールした後、ブラウザーのガバナンス DApp に移動します。  URL は確認の電子メールまたはデプロイの出力で Azure ポータルで見つけることができます。  ブラウザー内のウォレットをインストールしていない場合、どのアクションも実行できませんが、管理者の状態を読み取ることはできます。  
 
 #### <a name="becoming-an-admin"></a>管理者になる
-ネットワークにデプロイした最初のユーザが自動的に管理者になり、そのパリティ ノードが検証コントロールとしてリストされます。  ネットワークに参加している場合、既存の管理者セットの多数 (50%超) によって管理者として投票される必要があります。  管理者にならない選択をした場合でも、ノードは、ブロックチェーンとの同期状態を保ち、これを検証しますが、ブロック作成プロセスに参加することはありません。 管理者になる投票プロセスを開始するには、__[申請]__ をクリックし、Ethereum アドレスおよび別名を入力します。
+ネットワークにデプロイした最初のメンバーが自動的に管理者になり、そのパリティ ノードが検証コントロールとしてリストされます。  ネットワークに参加している場合、既存の管理者セットの多数 (50% 超) によって管理者として投票される必要があります。  管理者にならない選択をした場合でも、ノードは、ブロックチェーンとの同期状態を保ち、これを検証しますが、ブロック作成プロセスに参加することはありません。 管理者になる投票プロセスを開始するには、__[申請]__ をクリックし、Ethereum アドレスおよび別名を入力します。
 
 ![申請](./media/ethereum-poa-deployment/governance-dapp-nominate.png)
 
@@ -159,12 +161,12 @@ __[候補]__ タブを選択すると、現在の管理者候補が表示され�
 
 
 #### <a name="admins"></a>管理者
-__[管理者]__ タブに現在の管理者が表示され、反対投票を行う機能が提供されます。  管理者が 50% のサポートを失うと、ネットワークの管理者から削除されます。  この管理者が所有している検証コントロール ノードは検証コントロールのステータスを失い、ネットワークのトランザクション ノードになります。  管理者が削除される理由はさまざまですが、これは事前にポリシーに同意するコンソーシアム次第です。
+__[管理者]__ タブに現在の管理者が表示され、反対投票を行う機能が提供されます。  管理者が 50% を超すサポートを得られなくなると、ネットワークの管理者から削除されます。  この管理者が所有している検証コントロール ノードは検証コントロールのステータスを失い、ネットワークのトランザクション ノードになります。  管理者が削除される理由はさまざまですが、これは事前にポリシーに同意するコンソーシアム次第です。
 
 ![管理者](./media/ethereum-poa-deployment/governance-dapp-admins.png)
 
 #### <a name="validators"></a>検証コントロール
-左側のメニューの __[検証コントロール]__ タブを選択すると、このインスタンスに現在デプロイされているパリティ ノードおよびその現在のステータス (ノード タイプ) が表示されます。  それぞれのコンソーシアム メンバーには、このリストに異なる検証コントロール セットが入っています。このビューは現在デプロイされているコンソーシアム メンバーを表すためです。  これが新しくデプロイされたインスタンスで、検証コントロールをまだ追加していない場合、「Add Validators」 (検証コントロールの追加) のオプションが表示されます。  これを選択すると、地域的にバランスの取れたパリティ ノードのセットが自動的に選択され、これらが検証コントロール セットに割り当てられます。  許可されている容量を超えるノードをデプロイした場合、残りのノードはネットワークのトランザクション ノードになります。
+左側のメニューの __[検証コントロール]__ タブを選択すると、このインスタンスに現在デプロイされているパリティ ノードおよびその現在のステータス (ノード タイプ) が表示されます。  このビューは現在デプロイされているコンソーシアム メンバーを表しているので、このリストに含まれる検証コントロールのセットはコンソーシアム メンバーごとに異なったものになります。  これが新しくデプロイされたインスタンスで、検証コントロールをまだ追加していない場合は、[Add Validators (検証コントロールの追加)] オプションが表示されます。  これを選択すると、リージョン負荷分散されたパリティ ノードのセットが自動的に選択され、これらが検証コントロール セットに割り当てられます。  許可されている容量を超えるノードをデプロイした場合、残りのノードはネットワークのトランザクション ノードになります。
 
 検証コントロールそれぞれのアドレスは Azure の [ID ストア](#identity-store)によって自動的に割り当てられます。  ノードがダウンした場合は、その ID を放棄し、デプロイ内の別のノードに引き継ぎます。  これにより、合意への参加の高可用性が保たれます。
 
@@ -209,14 +211,14 @@ __[管理者]__ タブに現在の管理者が表示され、反対投票を行�
 パラメーター名|説明|使用できる値|既定値
 ---|---|---|---
 Create a new network or join existing network? (ネットワークの新規作成または既存のネットワークに参加)|新しいネットワークを作成するか、既存のコンソーシアム ネットワークに参加します|[新規作成] または [Join Existing]\(既存に参加\)|Create New
-電子メール アドレス (省略可能)|デプロイの完了時に、デプロイに関する情報を含んだ電子メール通知が送信されます。|有効な電子メール アドレス|該当なし
-VM ユーザー名|デプロイされた各 VM の管理者ユーザー名 (英数字のみ)|1 - 64 文字|該当なし
+電子メール アドレス (省略可能)|デプロイの完了時に、デプロイに関する情報を含んだ電子メール通知が送信されます。|有効な電子メール アドレス|NA
+VM ユーザー名|デプロイされた各 VM の管理者ユーザー名 (英数字のみ)|1 - 64 文字|NA
 認証の種類|仮想マシンに対して認証する方法。|[パスワード] または [SSH 公開キー]|パスワード
-パスワード ([認証の種類] = [パスワード])|デプロイされた各仮想マシンの管理者アカウントのパスワード。  パスワードには、小文字、大文字、数字、特殊文字の 4 種類のうち 3 種類を使用する必要があります。 VM にはすべて、最初の段階で同じパスワードが与えられます。プロビジョニング後にそのパスワードを変更できます。|12 - 72 文字|該当なし
-SSH キー ([認証の種類] = [公開キー])|リモート ログインに使用される Secure Shell キー。||該当なし
-サブスクリプション|コンソーシアム ネットワークをデプロイするサブスクリプション||該当なし
-リソース グループ|コンソーシアム ネットワークをデプロイするリソース グループ||該当なし
-Location|リソース グループの Azure リージョン。||該当なし
+パスワード ([認証の種類] = [パスワード])|デプロイされた各仮想マシンの管理者アカウントのパスワード。  パスワードには、小文字、大文字、数字、特殊文字の 4 種類のうち 3 種類を使用する必要があります。 VM にはすべて、最初の段階で同じパスワードが与えられます。プロビジョニング後にそのパスワードを変更できます。|12 - 72 文字|NA
+SSH キー ([認証の種類] = [公開キー])|リモート ログインに使用される Secure Shell キー。||NA
+サブスクリプション|コンソーシアム ネットワークをデプロイするサブスクリプション||NA
+リソース グループ|コンソーシアム ネットワークをデプロイするリソース グループ||NA
+Location|リソース グループの Azure リージョン。||NA
 
 デプロイの例を次に示します: ![基本 ブレード](./media/ethereum-poa-deployment/basic-blade.png)
 
@@ -229,11 +231,11 @@ Location|リソース グループの Azure リージョン。||該当なし
   パラメーター名|説明|使用できる値|既定値
   ---|---|---|---
   Number of region(s) (リージョン数)|コンソーシアム ネットワークをデプロイするリージョンの数|1、2、3、4、5|1
-  First region (リージョン 1)|コンソーシアム ネットワークをデプロイする 1 つ目のリージョン|許可されているすべての Azure リージョン|該当なし
-  Second region (リージョン 2)|コンソーシアム ネットワークをデプロイする 2 つ目のリージョン (リージョン数を 2 以上に指定した場合にのみ表示されます)|許可されているすべての Azure リージョン|該当なし
-  Third region (リージョン 3)|コンソーシアム ネットワークをデプロイする 3 つ目のリージョン (リージョン数を 3 以上に指定した場合にのみ表示されます)|許可されているすべての Azure リージョン|該当なし
-  Fourth region (リージョン 4)|コンソーシアム ネットワークをデプロイする 4 つ目のリージョン (リージョン数を 4 以上に指定した場合にのみ表示されます)|許可されているすべての Azure リージョン|該当なし
-  Fifth region (リージョン 5)|コンソーシアム ネットワークをデプロイする 5 つ目のリージョン (リージョン数を 5 に指定した場合にのみ表示されます)|許可されているすべての Azure リージョン|該当なし
+  First region (リージョン 1)|コンソーシアム ネットワークをデプロイする 1 つ目のリージョン|許可されているすべての Azure リージョン|NA
+  Second region (リージョン 2)|コンソーシアム ネットワークをデプロイする 2 つ目のリージョン (リージョン数を 2 以上に指定した場合にのみ表示されます)|許可されているすべての Azure リージョン|NA
+  Third region (リージョン 3)|コンソーシアム ネットワークをデプロイする 3 つ目のリージョン (リージョン数を 3 以上に指定した場合にのみ表示されます)|許可されているすべての Azure リージョン|NA
+  Fourth region (リージョン 4)|コンソーシアム ネットワークをデプロイする 4 つ目のリージョン (リージョン数を 4 以上に指定した場合にのみ表示されます)|許可されているすべての Azure リージョン|NA
+  Fifth region (リージョン 5)|コンソーシアム ネットワークをデプロイする 5 つ目のリージョン (リージョン数を 5 に指定した場合にのみ表示されます)|許可されているすべての Azure リージョン|NA
 
 デプロイの例を次に示します: ![[deployment regions]\(デプロイ リージョン\)](./media/ethereum-poa-deployment/deployment-regions.png)
 
@@ -256,7 +258,7 @@ Location|リソース グループの Azure リージョン。||該当なし
 
 仮想マシンとストレージ層はネットワークのパフォーマンスに影響します。  必要なコスト効率に基づいて次の SKU をお勧めします。
 
-  仮想マシン SKU|ストレージ層|料金|Throughput|Latency
+  仮想マシン SKU|ストレージ層|料金|スループット|Latency
   ---|---|---|---|---
   F1|Standard SSD|低|低|高
   D2_v3|Standard SSD|中|中|中
@@ -272,28 +274,30 @@ Location|リソース グループの Azure リージョン。||該当なし
 
   パラメーター名|説明|使用できる値|既定値
   ---|---|---|---
-Consortium Member ID (コンソーシアム メンバー ID)|コンソーシアム ネットワークに参加する各メンバーに関連付けられている ID。競合を回避するように IP アドレス 空間を構成するために使用されます。 プライベート ネットワークの場合、メンバー ID は同じネットワーク内のさまざまな組織全体で一意である必要があります。  同じ組織が複数のリージョンにデプロイする場合でも、一意のメンバー ID が必要です。 競合が発生しないように、他の参加メンバーと共有する必要があるため、このパラメーターの値を書き留めておきます。|0 - 255|該当なし
+Consortium Member ID (コンソーシアム メンバー ID)|コンソーシアム ネットワークに参加する各メンバーに関連付けられている ID。競合を回避するように IP アドレス 空間を構成するために使用されます。 プライベート ネットワークの場合、メンバー ID は同じネットワーク内のさまざまな組織全体で一意である必要があります。  同じ組織が複数のリージョンにデプロイする場合でも、一意のメンバー ID が必要です。 競合が発生しないように他の参加メンバーと共有する必要があるため、このパラメーターの値を書き留めておきます。|0 - 255|NA
 ネットワーク ID|デプロイされているコンソーシアム Ethereum ネットワークのネットワーク ID。  各 Ethereum ネットワークには独自のネットワーク ID があり、1 はパブリック ネットワークの ID を示します。|5 から 999,999,999|10101010
-Admin Ethereum Address (管理者 Ethereum アドレス)|PoA ガバナンスに参加するために使用される Ethereum アカウントのアドレス。  Ethereum アドレスの生成には MetaMask を使用することをお勧めします。|0x で始まる 42 文字の英数字|該当なし
+Admin Ethereum Address (管理者 Ethereum アドレス)|PoA ガバナンスに参加するために使用される Ethereum アカウントのアドレス。  Ethereum アドレスの生成には MetaMask を使用することをお勧めします。|0x で始まる 42 文字の英数字|NA
 詳細オプション|Ethereum 設定の詳細オプション|[Enable]\(有効\) または [Disable]\(無効\)|Disable
 [パブリック IP] ([詳細オプション] = [Enable]\(有効\))|VNet ゲートウェイの背後でネットワークをデプロイし、ピアリング アクセスを排除します。 このオプションを選択した場合、接続に互換性を持たせるためにすべてのメンバーが VNet ゲートウェイを使用する必要があります。|パブリック IP またはプライベート VNet|パブリック IP
-[Block Gas Limit] (ブロック ガスの制限) ([詳細オプション] = [Enable]\(有効\))|ネットワークの開始ブロック ガスの制限|任意の数値|50,000,00
+[Block Gas Limit] (ブロック ガスの制限) ([詳細オプション] = [Enable]\(有効\))|ネットワークの開始ブロック ガスの制限|任意の数値|50000000
 ブロック再シール期間 (秒)|ネットワーク上のトランザクションがない場合に空のブロックが作成される頻度。 頻度が高いとパフォーマンスが向上しますが、ストレージ コストが増加します。|任意の数値|15
-[Transaction Permission Contract]\(トランザクションのアクセス許可コントラクト\) ([詳細オプション] = [Enable]\(有効\))|トランザクションのアクセス許可コントラクトのバイトコード。 スマート コントラクトのデプロイと実行を、許可された Ethereum アカウントのリストのみに制限します。|コントラクトのバイトコード|該当なし
+[Transaction Permission Contract]\(トランザクションのアクセス許可コントラクト\) ([詳細オプション] = [Enable]\(有効\))|トランザクションのアクセス許可コントラクトのバイトコード。 スマート コントラクトのデプロイと実行を、許可された Ethereum アカウントのリストのみに制限します。|コントラクトのバイトコード|NA
 
 デプロイの例を次に示します: ![[Ethereum settings]\(Ethereum の設定\)](./media/ethereum-poa-deployment/ethereum-settings.png)
 
 #### <a name="monitoring"></a>監視
 
-監視ブレードでは、ネットワークの Log Analytics リソースを構成できます。 監視エージェントは、ネットワークから役に立つメトリックとログを収集して表示し、ネットワークの正常性やデバッグの問題をすばやく確認できるようにします。
+監視ブレードを使用すると、使用するネットワークの Azure Monitor ログ リソースを構成できます。 監視エージェントは、ネットワークから役に立つメトリックとログを収集して表示し、ネットワークの正常性やデバッグの問題をすばやく確認できるようにします。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
   パラメーター名|説明|使用できる値|既定値
   ---|---|---|---
 監視|監視を有効にするオプション|[Enable]\(有効\) または [Disable]\(無効\)|有効化
-Connect to existing Log Analytics (既存の Log Analytics に接続する)|新しい Log Analytics インスタンスを作成するか、既存のインスタンスに参加します|[新規作成] または [Join existing]\(既存に参加\)|新規作成
-Monitor Location (既存の Log Analytics= Create new に接続する)|新しい Log Analytics インスタンスがデプロイされる領域|Log Analytics のすべての領域|該当なし
-Existing Log Analytics Workspace Id (既存の Log Analytics = Join Existing に接続する)|既存の Log Analytics インスタンスのワークスペース ID||該当なし
-Existing Log Analytics Primary Key (既存の Log Analytics = Join Existing に接続する)|既存の Log Analytics インスタンスへの接続に使用される主キー||該当なし
+既存の Azure Monitor ログへの接続|新しい Azure Monitor ログ インスタンスを作成するか、既存のインスタンスに参加します|[新規作成] または [Join existing]\(既存に参加\)|新規作成
+Monitor の場所 (既存の Azure Monitor ログへの接続 = 新規作成)|新しい Azure Monitor ログ インスタンスがデプロイされるリージョン|すべての Azure Monitor ログ リージョン|NA
+既存のログ分析ワークスペース ID (既存の Azure Monitor ログへの接続 = 既存に参加)|既存の Azure Monitor ログ インスタンスのワークスペース ID||NA
+既存のログ分析主キー (既存の Azure Monitor ログへの接続 = 既存に参加)|既存の Azure Monitor ログ インスタンスへの接続に使用される主キー||NA
 
 
 デプロイの例を次に示します: ![[Azure Monitor]](./media/ethereum-poa-deployment/azure-monitor.png)
@@ -308,7 +312,7 @@ Existing Log Analytics Primary Key (既存の Log Analytics = Join Existing に�
 
 ##### <a name="deployment-output"></a>デプロイの出力
 
-デプロイが完了したら、確認の電子メールまたは Azure portal から必要なパラメーターにアクセスできます。 これらのパラメーターには以下が含まれています。
+デプロイが完了すると、確認メールか Azure portal から必要なパラメーターにアクセスできます。 これらのパラメーターには以下が含まれています。
 
 -   Ethereum RPC エンドポイント
 
@@ -328,7 +332,7 @@ Existing Log Analytics Primary Key (既存の Log Analytics = Join Existing に�
 
 ##### <a name="portal"></a>ポータル
 
-デプロイが正常に完了し、すべてのリソースがプロビジョニングされたら、リソース グループ内の出力パラメーターを表示できます。
+デプロイが正常に完了し、すべてのリソースがプロビジョニングされると、リソース グループ内の出力パラメーターを表示できます。
 
 1.  ポータルで目的のリソース グループを探します
 
@@ -341,7 +345,7 @@ Existing Log Analytics Primary Key (既存の Log Analytics = Join Existing に�
 ### <a name="growing-the-consortium"></a>コンソーシアムの拡張
 
 コンソーシアムを拡張するには、まず物理ネットワークを接続する必要があります。
-パブリック IP ベースのデプロイを使用する場合、この最初の手順はシームレスです。 VPN の背後でデプロイする場合は、「[VNet ゲートウェイの接続](#connecting-vnet-gateways)」セクションを参照し、新しいメンバーのデプロイの一部としてネットワーク接続を実行してください。  デプロイが完了したら、[ガバナンス DApp](#governance-dapp) を使用してネットワーク管理者になります。
+パブリック IP ベースのデプロイを使用する場合、この最初の手順はシームレスです。 VPN の背後でデプロイする場合は、「[VNet Gateway の接続](#connecting-vnet-gateways)」セクションを参照し、新しいメンバーのデプロイの一部としてネットワーク接続を実行してください。  デプロイが完了したら、[ガバナンス DApp](#governance-dapp) を使用してネットワーク管理者になります。
 
 #### <a name="new-member-deployment"></a>新しいメンバーのデプロイ
 
@@ -359,7 +363,7 @@ Existing Log Analytics Primary Key (既存の Log Analytics = Join Existing に�
 
     -  公正な代表制を保証するために、残りのメンバーと同数のバリデーター ノードを選択します
 
-    -  [前の手順](#step-1-add-the-new-admin)で提供されたのと同じ Ethereum アドレスを使用します
+    -  前の手順で提供されたのと同じ Ethereum アドレスを使用します
 
     -  提供された *[Consortium Data Url]\(コンソーシアム データの URL\)* を、*[Ethereum Settings]\(Ethereum の設定\)* で渡します
 
@@ -367,7 +371,7 @@ Existing Log Analytics Primary Key (既存の Log Analytics = Join Existing に�
 
 #### <a name="connecting-vnet-gateways"></a>VNet ゲートウェイの接続
 
-既定のパブリック IP 設定を使用してデプロイした場合は、この手順を無視できます。 プライベート ネットワークの場合は、さまざまなメンバーが VNet ゲートウェイ接続を使用して接続されます。 メンバーがネットワークに参加してトランザクション トラフィックを表示する前に、既存のメンバーが最終的な構成をVPN ゲートウェイで実行し、接続を受け入れる必要があります。 つまり、参加メンバーの Ethereum ノードは接続が確立するまで実行されません。 単一障害点が生じる可能性を減らすために、冗長なネットワーク接続 (メッシュ) をコンソーシアムに作成することをお勧めします。
+既定のパブリック IP 設定を使用してデプロイした場合は、この手順を無視できます。 プライベート ネットワークの場合は、さまざまなメンバーが VNet ゲートウェイ接続を使用して接続されます。 メンバーがネットワークに参加してトランザクション トラフィックを表示する前に、既存のメンバーが最終的な構成を VPN ゲートウェイで実行し、接続を受け入れる必要があります。 つまり、参加メンバーの Ethereum ノードは接続が確立するまで実行されません。 単一障害点が生じる可能性を減らすために、冗長なネットワーク接続 (メッシュ) をコンソーシアムに作成することをお勧めします。
 
 新しいメンバーのデプロイ後に、既存のメンバーは新しいメンバーへの VNet ゲートウェイ接続を設定して、双方向接続を完成させる必要があります。 そのためには、この既存メンバーに次のものが必要です。
 
@@ -393,7 +397,7 @@ $MyGatewayName = $splitValue[8]
 
 ## $otherGatewayResourceid tells me what the subscription and VNet GatewayName are
 $OtherGatewayName = $OtherGatewayResourceId.Split('/')[8]
-$Subscription=Select-AzureRmSubscription -SubscriptionId $MySubscriptionid
+$Subscription=Select-AzSubscription -SubscriptionId $MySubscriptionid
 
 ## create a PSVirtualNetworkGateway instance for the gateway I want to connect to
 $OtherGateway=New-Object Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
@@ -403,10 +407,10 @@ $OtherGateway.GatewayType = "Vpn"
 $OtherGateway.VpnType = "RouteBased"
 
 ## get a PSVirtualNetworkGateway instance for my gateway
-$MyGateway = Get-AzureRmVirtualNetworkGateway -Name $MyGatewayName -ResourceGroupName $MyResourceGroup
+$MyGateway = Get-AzVirtualNetworkGateway -Name $MyGatewayName -ResourceGroupName $MyResourceGroup
 
 ## create the connection
-New-AzureRmVirtualNetworkGatewayConnection -Name $ConnectionName -ResourceGroupName $MyResourceGroup -VirtualNetworkGateway1 $MyGateway -VirtualNetworkGateway2 $OtherGateway -Location $MyGateway.Location -ConnectionType Vnet2Vnet -SharedKey $SharedKey -EnableBgp $True
+New-AzVirtualNetworkGatewayConnection -Name $ConnectionName -ResourceGroupName $MyResourceGroup -VirtualNetworkGateway1 $MyGateway -VirtualNetworkGateway2 $OtherGateway -Location $MyGateway.Location -ConnectionType Vnet2Vnet -SharedKey $SharedKey -EnableBgp $True
 ```
 
 ### <a name="service-monitoring"></a>サービスの監視
@@ -425,7 +429,7 @@ Azure Monitor ポータルを表示するには、デプロイ電子メールに
 
 ![ネットワークの統計](./media/ethereum-poa-deployment/network-stats.png)
 
-#### <a name="sample-log-analytics-queries"></a>Log Analytics クエリの例
+#### <a name="sample-kusto-queries"></a>サンプル Kusto クエリ
 
 これらのダッシュボードの背後には、一連のクエリ可能な生ログがあります。 これらの生ログを、ダッシュボードのカスタマイズ、エラーの調査、アラートのしきい値の設定に使用できます。 ログ検索ツールで実行できるいくつかのクエリの例を以下に示します。
 
@@ -451,7 +455,7 @@ ParityLog_CL
 
 ### <a name="ssh-access"></a>SSH アクセス
 
-セキュリティ上の理由から、既定では、SSH ポートのアクセスはネットワーク グループ セキュリティ ルールによって 拒否されます。 PoA ネットワークで仮想マシン インスタンスにアクセスするには、このルールを \"[許可]\" に変更する必要があります
+セキュリティ上の理由から、既定では、SSH ポートのアクセスはネットワーク グループ セキュリティ ルールによって 拒否されます。 PoA ネットワークで仮想マシン インスタンスにアクセスするには、このルールを \"[許可]\" に変更する必要があります。
 
 1.  まず、Azure portal で、デプロイされているリソース グループの [概要] セクションを選択します。
 
@@ -461,15 +465,15 @@ ParityLog_CL
 
     ![SSH の NSG](./media/ethereum-poa-deployment/ssh-nsg.png)
 
-3.  \"[allow-ssh]\" ルールを選択します
+3.  [allow-ssh] ルールを選択します
 
     ![ssh-allow](./media/ethereum-poa-deployment/ssh-allow.png)
 
-4.  \"[アクション]\" を [許可] に変更します
+4.  [アクション] を [許可] に変更します
 
     ![SSH 有効化を許可](./media/ethereum-poa-deployment/ssh-enable-allow.png)
 
-5.  \"[保存]\" をクリックします (変更が適用されるまでに数分かかることがあります)
+5.  [保存] をクリックします (変更が適用されるまでに数分かかることがあります)
 
 これで、指定した管理者ユーザー名とパスワード/SSH キーを利用して、SSH 経由でバリデーター ノードの仮想マシンにリモート接続できます。
 1 番目の検証コントロール ノードにアクセスするために実行する SSH コマンドは、'SSH\_TO\_FIRST\_VL\_NODE\_REGION1' (サンプル デプロイの場合は ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com) というテンプレート デプロイ出力パラメーターに指定されています。 トランザクション ノードを追加するには、ポート番号を 1 ずつ増やします (たとえば、最初のトランザクション ノードはポート 4000 です)。
@@ -490,7 +494,7 @@ Traffic Manager プロファイルを作成すると、プロファイルの DNS
 
 #### <a name="creating-a-traffic-manager-profile"></a>Traffic Manager プロファイルの作成
 
-Azure portal で \"[Create a resource]\(リソースの作成\)\" ボタンをクリックした後に、\"[Traffic Manager プロファイル]\" を検索して選択します。
+Azure portal で [Create a resource]\(リソースの作成\) ボタンをクリックした後に、[Traffic Manager プロファイル] を検索して選択します。
 
 ![Azure Traffic Manager の検索](./media/ethereum-poa-deployment/traffic-manager-search.png)
 
@@ -498,7 +502,7 @@ Azure portal で \"[Create a resource]\(リソースの作成\)\" ボタンを�
 
 ![Traffic Manager の作成](./media/ethereum-poa-deployment/traffic-manager-create.png)
 
-デプロイが完了したら、リソース グループでインスタンスを選択します。 Traffic Manager にアクセスするための DNS 名は、[概要] タブで確認できます。
+デプロイが完了したら、リソース グループでそのインスタンスを選択します。 Traffic Manager にアクセスするための DNS 名は、[概要] タブで確認できます。
 
 ![Traffic Manager の DNS の確認](./media/ethereum-poa-deployment/traffic-manager-dns.png)
 
@@ -506,7 +510,7 @@ Azure portal で \"[Create a resource]\(リソースの作成\)\" ボタンを�
 
 ![Traffic Manager のルーティング](./media/ethereum-poa-deployment/traffic-manager-routing.png)
 
-同じ手順を、デプロイ済みのネットワークのリージョンごとに繰り返します。 エンドポイントは、"\"有効\"" 状態になると自動的に読み込まれ、Traffic Manager の DNS 名でリージョン負荷分散されます。 これで、ドキュメントの他の手順で \[CONSORTIUM\_DATA\_URL\] パラメーターの代わりにこの DNS を使用できます。
+同じ手順を、デプロイ済みのネットワークのリージョンごとに繰り返します。 エンドポイントは、状態が \"[有効]\" になると自動的に読み込まれ、Traffic Manager の DNS 名でリージョン負荷分散されます。 これで、ドキュメントの他の手順で \[CONSORTIUM\_DATA\_URL\] パラメーターの代わりにこの DNS を使用できます。
 
 ### <a name="data-api"></a>データ API
 
@@ -514,13 +518,13 @@ Azure portal で \"[Create a resource]\(リソースの作成\)\" ボタンを�
 
 `<CONSORTIUM_DATA_URL>/networkinfo`
 
-応答には、参加するメンバーに役立つ情報 (ジェネシス ブロック、バリデーター セットのコントラクト ABI、ブートノード) だけでなく、既存のメンバーに役立つ情報 (バリデーターのアドレス) も含まれています。 複数のクラウド プロバイダーにわたってコンソーシアムを拡張するときは、この標準化を使用することをお勧めします。 この API では、次の構造を持つ JSON 形式の応答が返されます。
+応答には、参加するメンバーに役立つ情報 (ジェネシス ブロック、検証コントロール セットのコントラクト ABI、ブートノード) と、既存のメンバーに役立つ情報 (検証コントロールのアドレス) も含まれています。 複数のクラウド プロバイダーにわたってコンソーシアムを拡張するときは、この標準化を使用することをお勧めします。 この API では、次の構造を持つ JSON 形式の応答が返されます。
 ```json
 {
   "$id": "",
   "type": "object",
   "definitions": {},
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft-07/schema#",
   "properties": {
     "majorVersion": {
       "$id": "/properties/majorVersion",
@@ -744,7 +748,7 @@ $ truffle migrate --network poa
 
 ### <a name="debug-smart-contract-with-truffle"></a>Truffle でスマート コントラクトをデバッグします
 
-Truffle には、スマート コントラクトのデバッグに使用できるローカルな開発ネットワークがあります。 詳細なチュートリアルについては、[こちら](http://truffleframework.com/tutorials/debugging-a-smart-contract)を参照してください。
+Truffle には、スマート コントラクトのデバッグに使用できるローカルな開発ネットワークがあります。 詳細なチュートリアルについては、[こちら](https://truffleframework.com/tutorials/debugging-a-smart-contract)を参照してください。
 
 ### <a name="webassembly-wasm-support"></a>WebAssembly (WASM) のサポート
 

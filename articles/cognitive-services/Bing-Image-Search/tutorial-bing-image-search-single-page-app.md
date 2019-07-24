@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: 単一ページの Web アプリを作成する - Bing Image Search API'
+title: チュートリアル:単一ページの Web アプリを作成する - Bing Image Search API
 titleSuffix: Azure cognitive services
 description: Bing Image Search API を使用すると、Web 上で高品質で関連性の高い画像を検索できます。 このチュートリアルを使用して、検索クエリを API に送信し、Web ページ内に結果を表示できる単一ページの Web アプリケーションを構築します。
 services: cognitive-services
-author: aahi
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 9/12/2018
+ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: e37cb9b9412d257ab238f23b90e4a1077070b2b6
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 353641c514c9171e211221b84b13c5f09a413a48
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297453"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341224"
 ---
-# <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>チュートリアル: Bing Image Search API を使用して単一ページの Web アプリを作成する
+# <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>チュートリアル:Bing Image Search API を使用して単一ページのアプリを作成する
 
 Bing Image Search API を使用すると、Web 上で高品質で関連性の高い画像を検索できます。 このチュートリアルを使用して、検索クエリを API に送信し、Web ページ内に結果を表示できる単一ページの Web アプリケーションを構築します。 このチュートリアルは、Bing Web Search の[対応するチュートリアル](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md)と似ています。
 

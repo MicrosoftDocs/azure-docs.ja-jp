@@ -1,25 +1,24 @@
 ---
-title: Visual Studio Code 用 Azure IoT Toolkit 拡張機能を使用した Azure IoT デバイスの管理 | Microsoft Docs
-description: Azure IoT Hub デバイスの管理に Visual Studio Code 用 Azure IoT Toolkit 拡張機能を使用します。この拡張機能では、ダイレクト メソッドとデバイス ツインの必要なプロパティを管理するためのオプションを使用できます。
+title: Visual Studio Code 用 Azure IoT Tools を使用した Azure IoT デバイスの管理 | Microsoft Docs
+description: Azure IoT Hub デバイスの管理に、ダイレクト メソッドやツインの必要なプロパティの管理オプションなどの機能がある Visual Studio Code 用 Azure IoT ツールを使用します。
 author: formulahendry
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.tgt_pltfrm: arduino
-ms.date: 8/3/2018
+ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: d79e5b0b5281d502523cd92fbdb21106ffde0c21
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 03df2ceb2df4d857e48f1790703a1d87647e43d0
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040135"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445273"
 ---
-# <a name="use-azure-iot-toolkit-extension-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Azure IoT Hub デバイスの管理に Visual Studio Code 用 Azure IoT Toolkit 拡張機能を使用する
+# <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Azure IoT Hub デバイスの管理に Visual Studio Code 用 Azure IoT Tools を使用する
 
 ![エンド ツー エンド ダイアグラム](media/iot-hub-get-started-e2e-diagram/2.png)
 
-[Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) は、IoT Hub の管理を容易にする便利な Visual Studio Code 拡張機能です。 さまざまなタスクを実行するために使用できる管理オプションが付属しています。
+[Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) は、IoT Hub の管理と IoT アプリケーションの開発を容易にする便利な Visual Studio Code 拡張機能です。 さまざまなタスクを実行するために使用できる管理オプションが付属しています。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -34,20 +33,22 @@ ms.locfileid: "48040135"
 
 デバイス ツインは、デバイスの状態に関する情報 (メタデータ、構成、状態) を格納する JSON ドキュメントです。 IoT Hub は、IoT Hub に接続する各デバイスにデバイス ツインを保持します。 デバイス ツインの詳細については、「[デバイス ツインの使用](iot-hub-node-node-twin-getstarted.md)」を参照してください。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="what-you-learn"></a>学習内容
 
-さまざまな管理オプションを指定して、開発マシンに対して Visual Studio Code 用 Azure IoT Toolkit 拡張機能を使用する方法について学びます。
+さまざまな管理オプションを指定して、開発マシンに対して Visual Studio Code 用 Azure IoT Tools を使用する方法について学びます。
 
 ## <a name="what-you-do"></a>作業内容
 
-さまざまな管理オプションを使用して、Visual Studio Code 用 Azure IoT Toolkit 拡張機能を実行します。
+さまざまな管理オプションを使用して、Visual Studio Code 用 Azure IoT Tools を実行します。
 
 ## <a name="what-you-need"></a>必要なもの
 
 * 有効な Azure サブスクリプション
 * サブスクリプションの Azure IoT Hub。
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure IoT ツールキット](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
+* [VS Code 用の Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) または [Visual Studio Code でこのリンクを開きます](vscode:extension/vsciot-vscode.azure-iot-tools)。
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>サインインして IoT ハブにアクセスする
 
@@ -70,7 +71,7 @@ ms.locfileid: "48040135"
 
 2. 入力ボックスにメソッド名とペイロードを入力します。
 
-3. 結果が、**[OUTPUT]\(出力\)** > **[Azure IoT Toolkit]\(Azure IoT Toolkit\)** ビューに表示されます。
+3. 結果が、**[OUTPUT]\(出力\)** > **[Azure IoT Hub Toolkit]** ビューに表示されます。
 
 ## <a name="read-device-twin"></a>デバイス ツインの読み取り
 
@@ -94,10 +95,10 @@ IoT Hub からデバイスにメッセージを送信するには、次の手順
 
 2. 入力ボックスにメッセージを入力します。
 
-3. 結果が、**[OUTPUT]\(出力\)** > **[Azure IoT Toolkit]\(Azure IoT Toolkit\)** ビューに表示されます。
+3. 結果が、**[OUTPUT]\(出力\)** > **[Azure IoT Hub Toolkit]** ビューに表示されます。
 
 ## <a name="next-steps"></a>次の手順
 
-ここでは、さまざまな管理オプションを使用して、Visual Studio Code 用 Azure IoT Toolkit 拡張機能を実行する方法について学びました。
+ここでは、さまざまな管理オプションを使って、Visual Studio Code 用 Azure IoT Tools 拡張機能を使用する方法について学びました。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

@@ -1,25 +1,71 @@
 ---
 title: Azure Digital Twins でのエグレスとエンドポイント | Microsoft Docs
-description: Azure Digital Twins を使用してエンドポイントを作成する方法のガイドラインです
+description: Azure Digital Twins を使用してエンドポイントを作成する方法のガイドラインです。
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 12/31/2018
 ms.author: alinast
-ms.openlocfilehash: c94d29f16c011a9ff9951d064d7496d3a87f70ef
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: e93811a56f934a95dde45633c4fb64312b3696df
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636307"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994827"
 ---
 # <a name="egress-and-endpoints"></a>エグレスとエンドポイント
 
-Azure Digital Twins では、**エンドポイント**の概念がサポートされます。 各エンドポイントは、ユーザーの Azure サブスクリプション内のメッセージまたはイベント ブローカーを表します。 イベントとメッセージは、Azure Event Hubs、Azure Event Grid、および Azure Service Bus のトピックに送信できます。
+Azure Digital Twins の*エンドポイント*は、ユーザーの Azure サブスクリプション内のメッセージ ブローカーまたはイベント ブローカーを表します。 イベントとメッセージは、Azure Event Hubs、Azure Event Grid、および Azure Service Bus のトピックに送信できます。
 
-イベントは、ルーティングの定義済み優先設定に従ってエンドポイントに送信されます。 ユーザーは、次のいずれかのイベントを受信する必要があるエンドポイントを指定できます。 
+イベントは、ルーティングの定義済み優先設定に従ってエンドポイントにルーティングされます。 ユーザーは、各エンドポイントが受け取る可能性がある*イベントの種類*を指定します。
+
+イベント、ルーティング、イベント タイプについて詳しくは、「[Azure Digital Twins でのルーティング イベントおよびメッセージ](./concepts-events-routing.md)」をご覧ください。
+
+## <a name="events"></a>events
+
+イベントは、Azure のメッセージ ブローカーおよびイベント ブローカーで処理するために IoT オブジェクト (デバイス、センサーなど) によって送信されます。 イベントは、次の [Azure Event Grid イベント スキーマ リファレンス](../event-grid/event-schema.md)によって定義されます。
+
+```JSON
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "subject": "ExtendedPropertyKey",
+  "data": {
+    "SpacesToNotify": [
+      "3a16d146-ca39-49ee-b803-17a18a12ba36"
+    ],
+    "Id": "00000000-0000-0000-0000-000000000000",
+      "Type": "ExtendedPropertyKey",
+    "AccessType": "Create"
+  },
+  "eventType": "TopologyOperation",
+  "eventTime": "2018-04-17T17:41:54.9400177Z",
+  "dataVersion": "1",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/YOUR_TOPIC_NAME"
+}
+```
+
+| Attribute | type | 説明 |
+| --- | --- | --- |
+| id | string | イベントの一意識別子。 |
+| subject | string | 発行元が定義したイベントの対象のパス。 |
+| data | オブジェクト | リソース プロバイダーに固有のイベント データ。 |
+| eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
+| eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| dataVersion | string | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
+| metadataVersion | string | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
+| topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+
+Event Grid イベント スキーマの詳細については、
+
+- [Azure Event Grid イベント スキーマ リファレンス](../event-grid/event-schema.md)に関するページを参照してください。
+- [Azure EventGrid Node.js SDK EventGridEvent リファレンス](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest)に関するページをお読みください。
+
+## <a name="event-types"></a>イベントの種類
+
+イベントの種類はイベントの性質を分類し、 **eventType** フィールドに設定されます。 使用可能なイベントの種類の一覧を、次に示します。
 
 - TopologyOperation
 - UdfCustom
@@ -27,15 +73,11 @@ Azure Digital Twins では、**エンドポイント**の概念がサポート�
 - SpaceChange
 - DeviceMessage
 
-イベントのルーティングとイベントの種類の基本については、「[ルーティング イベントおよびメッセージ](concepts-events-routing.md)」をご覧ください。
-
-## <a name="event-types-description"></a>イベントの種類の説明
-
-各イベントの種類のイベント形式について、以下のセクションで説明します。
+それぞれのイベントの種類のイベント形式については、以下のサブセクションで詳しく説明します。
 
 ### <a name="topologyoperation"></a>TopologyOperation
 
-**TopologyOperation** は、グラフの変更に適用されます。 **subject** プロパティは、影響を受けるオブジェクトの種類を指定します。 次のオブジェクトの種類によって、このイベントがトリガーされる可能性があります。 
+**TopologyOperation** は、グラフの変更に適用されます。 **subject** プロパティは、影響を受けるオブジェクトの種類を指定します。 次のオブジェクトの種類によって、このイベントがトリガーされる可能性があります。
 
 - Device
 - DeviceBlobMetadata
@@ -86,7 +128,7 @@ Azure Digital Twins では、**エンドポイント**の概念がサポート�
 
 ### <a name="udfcustom"></a>UdfCustom
 
-**UdfCustom** は、ユーザー定義関数 (UDF) によって送信されるイベントです。 
+**UdfCustom** は、ユーザー定義関数 (UDF) によって送信されるイベントです。
   
 > [!IMPORTANT]  
 > このイベントは、UDF 自体から明示的に送信する必要があります。
@@ -195,10 +237,19 @@ Azure Digital Twins では、**エンドポイント**の概念がサポート�
 
 ## <a name="configure-endpoints"></a>エンドポイントを構成する
 
-エンドポイントの管理は、Endpoints API を使用して行います。 次の例は、サポートされているさまざまなエンドポイントの構成方法を示しています。 イベントの種類の配列は、エンドポイントのルーティングを定義しているので、特に注意してください。
+エンドポイントの管理は、Endpoints API を使用して行います。
+
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
+
+次の例は、サポートされているエンドポイントの構成方法を示しています。
+
+>[!IMPORTANT]
+> **eventTypes** 属性に注意してください。 これはエンドポイントによって処理されるイベントの種類を定義するため、ルーティングを決定します。
+
+認証済みの HTTP POST 要求
 
 ```plaintext
-POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
+YOUR_MANAGEMENT_API_URL/endpoints
 ```
 
 - Service Bus イベントの種類へのルート **SensorChange**、**SpaceChange**、**TopologyOperation**:

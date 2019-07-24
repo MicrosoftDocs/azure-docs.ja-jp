@@ -1,30 +1,25 @@
 ---
-title: Azure Machine Learning Web サービスを使用する方法 | Microsoft Docs
-description: 機械学習サービスがデプロイされると、利用可能になっている RESTFul Web サービスを、リアルタイムの要求応答サービスまたはバッチ実行サービスのいずれかとして使用できます。
+title: Web サービスを使用する
+titleSuffix: Azure Machine Learning Studio
+description: Azure Machine Learning Studio から機械学習サービスがデプロイされると、リアルタイムの要求応答サービスまたはバッチ実行サービスのいずれかとして、RESTFul Web サービスを使用できます。
 services: machine-learning
-documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
-editor: cgronlun
-ms.assetid: 804f8211-9437-4982-98e9-ca841b7edf56
 ms.service: machine-learning
-ms.component: studio
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
+ms.subservice: studio
+ms.topic: conceptual
+author: xiaoharper
+ms.author: amlstudiodocs
+ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: b89fb0fbb499fa06c9e56f02937b1c586efde9b6
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a537227a7003391122e10f7f39233040cef49db3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833379"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57870063"
 ---
-# <a name="how-to-consume-an-azure-machine-learning-web-service"></a>Azure Machine Learning Web サービスを使用する方法
+# <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Azure Machine Learning Studio Web サービスを使用する方法
 
-Azure Machine Learning の予測モデルを Web サービスとしてデプロイすると、REST API を使用してデータを送信し、予測を取得することができます。 リアルタイムまたはバッチ モードでデータを送信できます。
+Azure Machine Learning Studio の予測モデルを Web サービスとしてデプロイすると、REST API を使用してデータを送信し、予測を取得することができます。 リアルタイムまたはバッチ モードでデータを送信できます。
 
 Machine Learning Studio を使用して Machine Learning Web サービスを作成してデプロイする方法の詳細については、次を参照してください。
 
@@ -32,19 +27,19 @@ Machine Learning Studio を使用して Machine Learning Web サービスを作�
 * Web サービスをデプロイする方法の詳細については、「 [Azure Machine Learning Web サービスをデプロイする](publish-a-machine-learning-web-service.md)」をご覧ください。
 * Machine Learning 全般の詳細については、 [Machine Learning ドキュメント センター](https://azure.microsoft.com/documentation/services/machine-learning/)をご覧ください。
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="overview"></a>概要
 Azure Machine Learning Web サービスを使用して、外部のアプリケーションが Machine Learning のワークフローのスコア付けモデルとリアルタイムで通信します。 Machine Learning Web サービスの呼び出しは、予測結果を外部のアプリケーションに返します。 Machine Learning Web サービスの呼び出しを実行するために、予測のデプロイ時に作成される API キーを渡します。 Machine Learning Web サービスは、Web プログラミング プロジェクトでよく選択されるアーキテクチャの REST に基づいています。
 
-Azure Machine Learning には、2 種類のサービスがあります。
+Azure Machine Learning Studio には、2 種類のサービスがあります。
 
 * 要求応答サービス (RRS) – 待ち時間が短く拡張性の高い、Machine Learning Studio から作成およびデプロイされるステートレスなモデルへのインターフェイスを提供するサービス。
 * バッチ実行サービス (BES) – データ レコードのバッチをスコア付けする非同期のサービス。
 
 Machine Learning Web サービスの詳細については、「[Azure Machine Learning Web サービスをデプロイする](publish-a-machine-learning-web-service.md)」をご覧ください。
 
-## <a name="get-an-azure-machine-learning-authorization-key"></a>Azure Machine Learning の承認キーを取得する
+## <a name="get-an-azure-machine-learning-studio-authorization-key"></a>Azure Machine Learning Studio の承認キーを取得する
 実験をデプロイすると、Web サービスの API キーが生成されます。 複数の場所からキーを取得できます。
 
 ### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>Microsoft Azure Machine Learning Web サービス ポータルを使用する
@@ -75,7 +70,7 @@ Machine Learning Web サービスの詳細については、「[Azure Machine Le
 ## <a id="connect"></a>Machine Learning Web サービスに接続する
 HTTP 要求と応答をサポートする任意のプログラミング言語を使用して、Machine Learning Web サービスに接続することができます。 Machine Learning Web サービス ヘルプ ページから、C#、Python、および R の例を表示できます。
 
-**Machine Learning API ヘルプ** Machine Learning API ヘルプは、Web サービスをデプロイするときに作成されます。 「 [Azure Machine Learning チュートリアル - Web サービスをデプロイする](walkthrough-5-publish-web-service.md)」を参照してください。
+**Machine Learning API ヘルプ** Machine Learning API ヘルプは、Web サービスをデプロイするときに作成されます。 [チュートリアル 3: 信用リスク モデルのデプロイ](tutorial-part3-credit-risk-deploy.md)を参照してください。
 Machine Learning API ヘルプには、予測 Web サービスの詳細が含まれます。
 
 1. 使用する Web サービスをクリックします。
@@ -101,14 +96,14 @@ Machine Learning Web サービスに接続するには、**Microsoft.AspNet.WebA
 
 **Microsoft.AspNet.WebApi.Client NuGet in Visual Studio をインストールする**
 
-1. 「UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」Web サービスを発行します。
+1. Web Service "UCI からデータセットをダウンロード: Adult 2 class dataset" を公開します。
 2. **[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順にクリックします。
 3. **[Install-Package Microsoft.AspNet.WebApi.Client]** を選択します。
 
 **サンプル コードを実行するには**
 
-1. Machine Learning サンプル コレクションに含まれる「サンプル 1: UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」実験を発行します。
-2. Web サービスからのキーを持つ apiKey を割り当てます。 前述の「 **Azure Machine Learning の承認キーを取得する** 」をご覧ください。
+1. Machine Learning サンプル コレクションに含まれる "サンプル 1: UCI からデータセットをダウンロード: Adult 2 class dataset" 実験を公開します。
+2. Web サービスからのキーを持つ apiKey を割り当てます。 上の「**Azure Machine Learning Studio の承認キーを取得する**」をご覧ください。
 3. 要求の URI を含む serviceUri を割り当てます。
 
 **完成した要求は次のようになります。**
@@ -166,7 +161,7 @@ namespace CallRequestResponseService
                 client.BaseAddress = new Uri(apiUri);
 
                 // WARNING: The 'await' statement below can result in a deadlock
-                // if you are calling this code from the UI thread of an ASP.Net application.
+                // if you are calling this code from the UI thread of an ASP.NET application.
                 // One way to address this would be to call ConfigureAwait(false)
                 // so that the execution does not attempt to resume on the original context.
                 // For instance, replace code such as:
@@ -185,7 +180,7 @@ namespace CallRequestResponseService
                 {
                     Console.WriteLine(string.Format("The request failed with status code: {0}", response.StatusCode));
 
-                    // Print the headers - they include the requert ID and the timestamp,
+                    // Print the headers - they include the request ID and the timestamp,
                     // which are useful for debugging the failure
                     Console.WriteLine(response.Headers.ToString());
 
@@ -203,8 +198,8 @@ Machine Learning Web サービスに接続するには、Python 2.X の場合は
 
 **サンプル コードを実行するには**
 
-1. Machine Learning サンプル コレクションに含まれる「サンプル 1: UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」実験をデプロイします。
-2. Web サービスからのキーを持つ apiKey を割り当てます。 この記事の冒頭の「**Azure Machine Learning の承認キーを取得する**」セクションをご覧ください。
+1. Machine Learning サンプル コレクションに含まれる "Sample 1: UCI からデータセットをダウンロード: Adult 2 class dataset" 実験を公開します。
+2. Web サービスからのキーを持つ apiKey を割り当てます。 この記事の冒頭の「**Azure Machine Learning Studio の承認キーを取得する**」セクションをご覧ください。
 3. 要求の URI を含む serviceUri を割り当てます。
 
 **完成した要求は次のようになります。**
@@ -246,7 +241,7 @@ try:
 except urllib2.HTTPError, error: 
     print("The request failed with status code: " + str(error.code))
 
-    # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
+    # Print the headers - they include the request ID and the timestamp, which are useful for debugging the failure
     print(error.info())
     print(json.loads(error.read())) 
 ```
@@ -298,7 +293,7 @@ if (httpStatus >= 400)
 {
 print(paste("The request failed with status code:", httpStatus, sep=" "))
 
-# Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
+# Print the headers - they include the request ID and the timestamp, which are useful for debugging the failure
 print(headers)
 }
 

@@ -3,19 +3,19 @@ title: Azure Active Directory B2C でのカスタム ポリシーのトラブル
 description: Azure Active Directory B2C でカスタム ポリシーを使って作業するときに発生するエラーを解決する方法について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 32692cbe7959650d5181c9e9dfcd7dd5ee55a46e
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.subservice: B2C
+ms.openlocfilehash: b33b76175558c71720c15a2a4e206e26a60f1f95
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024595"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58880646"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Azure AD B2C のカスタム ポリシーと Identity Experience Framework のトラブルシューティング
 
@@ -44,7 +44,7 @@ XML ルールのレビューが役に立つ可能性があります。 Azure AD 
 エラー スニペット: `... makes a reference to ClaimType with id "displaName" but neither the policy nor any of its base policies contain such an element`
 * ClaimType 値のスペルが間違っているか、スキーマに存在しない可能性があります。
 * ClaimType 値は、ポリシー内の少なくとも 1 つのファイルで定義されている必要があります。 
-    次に例を示します。` <ClaimType Id="socialIdpUserId">`
+    次に例を示します。`<ClaimType Id="socialIdpUserId">`
 * ClaimType が拡張ファイルで定義されているが、ベース ファイルの TechnicalProfile でも使用される場合、ベース ファイルのアップロードでエラーが発生します。
 
 エラー スニペット: `...makes a reference to a ClaimsTransformation with id...`
@@ -56,11 +56,11 @@ XML ルールのレビューが役に立つ可能性があります。 Azure AD 
 ## <a name="troubleshoot-the-runtime"></a>ランタイムのトラブルシューティング
 
 * `Run Now` と `https://jwt.io` を使用して、Web アプリケーションまたはモバイル アプリケーションとは別にポリシーをテストします。 この Web サイトは、証明書利用者アプリケーションと同様に動作します。 このサイトには、Azure AD B2C ポリシーによって生成される JSON Web トークン (JWT) の内容が表示されます。 Identity Experience Framework でテスト アプリケーションを作成するには、次の値を使用します。
-    * 名前: TestApp
-    * Web アプリ/Web API: なし
-    * ネイティブ クライアント: なし
+    * 名前:TestApp
+    * Web アプリ/Web API:いいえ 
+    * ネイティブ クライアント:いいえ 
 
-* クライアント ブラウザーと Azure AD B2C の間でのメッセージ交換をトレースするには、[Fiddler](http://www.telerik.com/fiddler) を使用します。 これにより、オーケストレーション手順のどこでユーザー体験が失敗するか、ヒントを得ることができます。
+* クライアント ブラウザーと Azure AD B2C の間でのメッセージ交換をトレースするには、[Fiddler](https://www.telerik.com/fiddler) を使用します。 これにより、オーケストレーション手順のどこでユーザー体験が失敗するか、ヒントを得ることができます。
 
 * **開発モード**で **Application Insights** を使用して、Identity Experience Framework のユーザー体験のアクティビティをトレースします。 **開発モード**では、技術プロファイルで定義された各種要求プロバイダーと Identity Experience Framework の間で行われる要求の交換を観察できます。この要求プロバイダーには、ID プロバイダー、API ベースのサービス、Azure AD B2C ユーザー ディレクトリのほか、Azure Multi-Factor Authentication などのサービスがあります。  
 

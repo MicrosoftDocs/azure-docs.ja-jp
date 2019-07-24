@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 71715640ecaac3f180d6c2fe9f3935ec8944ee5a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: a3ccf76b2722c04a9353fcc7020ff1387bc454c6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164292"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125235"
 ---
-<!--author=alkohli last changed: 07/07/17-->
-
 #### <a name="to-install-an-update-from-the-azure-portal"></a>Azure ポータルから 更新プログラムをインストールするには
 
 1. StorSimple サービス ページでデバイスを選択します。
@@ -37,7 +35,7 @@ ms.locfileid: "50164292"
    * **ハードウェア コンポーネントの正常性チェック** では、StorSimple デバイスのすべてのハードウェア コンポーネントが正常であることを確認します。
    * **DATA 0 チェック** では、デバイスで DATA 0 が有効であることを確認します。 このインターフェイスが有効でない場合は、有効にしてから再試行する必要があります。
 
-    すべてのチェックが正常に完了した場合にのみ、更新プログラムがダウンロードされてインストールされます。 チェックが実行中のときは通知されます。 事前チェックに失敗した場合、失敗の理由が表示されます。 それらの問題を解決してから操作をやり直してください。 これらの問題に自分で対処できない場合、Microsoft サポートに連絡することが必要になる場合があります。
+     すべてのチェックが正常に完了した場合にのみ、更新プログラムがダウンロードされてインストールされます。 チェックが実行中のときは通知されます。 事前チェックに失敗した場合、失敗の理由が表示されます。 それらの問題を解決してから操作をやり直してください。 これらの問題に自分で対処できない場合、Microsoft サポートに連絡することが必要になる場合があります。
 
 7. 事前チェックが正常に完了したら、更新ジョブが作成されます。 更新ジョブが正常に作成されると、通知されます。
    
@@ -55,5 +53,5 @@ ms.locfileid: "50164292"
 
 10. ジョブが完了したら、**[デバイスの設定]、[デバイスの更新プログラム]** の順に移動します。 ソフトウェアのバージョンが更新されています。
 
-    ![Update job creation](./media/storsimple-8000-install-update4-via-portal/update9.png)
+   ![Update job creation](./media/storsimple-8000-install-update4-via-portal/update9.png)
 

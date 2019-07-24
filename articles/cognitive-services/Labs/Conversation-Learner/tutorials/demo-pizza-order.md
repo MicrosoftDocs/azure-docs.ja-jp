@@ -6,27 +6,27 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: e23ff60a0a2ea10ace09130ba115e72b4e1c9ad7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3fe11bef6c505771ee1e3f2e12e647eafc7c45d1
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249814"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212445"
 ---
-# <a name="demo-pizza-order"></a>デモ - ピザの注文
-このデモでは、ピザ注文ボットの例を紹介します。 次の機能を使ってピザの単品を注文することができます。
+# <a name="demo-pizza-order"></a>デモ:ピザの注文
+このデモでは、次のことを行って 1 回のピザの注文をサポートするピザ注文ボットを紹介します。
 
-- ユーザーの発話からピザのトッピングを認識する
-- ピザのトッピングがストックされているかどうかを確認し、それに応じた応答を返す
-- 過去の注文からピザのトッピングを察知して提供する (同じトッピングで新しい注文を開始する)
+- ユーザーの発話からピザのトッピングを認識します
+- トッピングのインベントリを管理して、適切に応答します
+- 以前の注文を記憶して、同じピザの再注文の時間を短縮します
 
 ## <a name="video"></a>ビデオ
 
-[![ピザのデモのプレビュー](https://aka.ms/cl-demo-pizza-preview)](https://aka.ms/blis-demo-pizza)
+[![ピザのデモのプレビュー](https://aka.ms/cl_Tutorial_v3_DemoPizzaOrder_Preview)](https://aka.ms/cl_Tutorial_v3_DemoPizzaOrder)
 
 ## <a name="requirements"></a>必要条件
 このチュートリアルでは、ピザ注文ボットが実行されている必要があります。
@@ -39,72 +39,66 @@ Web UI の [モデル] 一覧で、[TutorialDemo Pizza Order] (TutorialDemo ピ�
 
 ## <a name="entities"></a>エンティティ
 
-3 つのエンティティを作成しました。
+モデルには、3 つのエンティティが含まれています。
 
-- Toppings: このエンティティは、ユーザーが頼んだトッピングを累積します。 ストックされている有効なトッピングが対象となります。 トッピングがストックされているかどうかがチェックされます。
-- OutofStock: このエンティティは、選択されたトッピングが品切れであることをユーザーに伝えるために使用されます。
-- LastToppings: 注文が出された後、このエンティティを使用して、注文されたトッピングの一覧をユーザーに提供します。
+- "Toppings" では、ユーザー指定のトッピングがある場合に蓄積されます。
+- "OutofStock" では、選択したトッピングの在庫がないことがユーザーに通知されます
+- "LastToppings" には、以前の注文でのトッピングの履歴が含まれます
 
 ![](../media/tutorial_pizza_entities.PNG)
 
 ### <a name="actions"></a>Actions
 
-ピザに乗せるものをユーザーに尋ねたり、これまでに追加されたものをユーザーに伝えたりするなどの、一連のアクションを作成しました。
+モデルには、ユーザーにトッピングの選択を尋ねたり、トッピングを累積したりする、一連のアクションが含まれます。
 
-また、次の 2 つの API 呼び出しが存在します。
+2 つの API 呼び出しも用意されています。
 
-- FinalizeOrder: ピザを注文します。
-- UseLastToppings: 前の注文のトッピングを引き継ぎます。 
+- "FinalizeOrder" では、注文に対応する処理が行われます
+- "UseLastToppings" では、過去のトッピング情報が処理されます
 
 ![](../media/tutorial_pizza_actions.PNG)
 
 ### <a name="training-dialogs"></a>トレーニング会話
-少数のトレーニング会話を定義しました。 
+
+モデルには複数のトレーニング会話が含まれます。
 
 ![](../media/tutorial_pizza_dialogs.PNG)
 
-例として、学習セッションを試してみましょう。
+別のトレーニング会話を作成して、もう少しモデルをトレーニングしてみましょう。
 
-1. [Train Dialogs]\(トレーニング会話\) をクリックし、[New Train Dialog]\(新しいトレーニング会話\) をクリックします。
-1. 「order a pizza」と入力します。
-2. [Score Action]\(アクションのスコア付け\) をクリックします。
-3. [what would you like on your pizza?] をクリックして選択します。
-4. 「mushrooms and cheese」と入力します。
-    - LUIS により、どちらも Toppings としてラベル付けされていることに注目してください。 これが正しくなかった場合は、クリックして強調表示することで修正できます。
-    - エンティティの横にある "+" 記号は、それが一連のトッピングに追加されることを意味します。
-5. [Score Action]\(アクションのスコア付け\) をクリックします。
-    - `mushrooms` と `cheese` が Toppings のメモリ内にないことに注意してください。
-3. [you have $Toppings on your pizza] をクリックして選択します。
-    - これは非待機アクションであるため、ボットから次のアクションを求められることに注目してください。
-6. [Would you like anything else?] を選択します。
-7. 「remove mushrooms and add peppers」と入力します。
-    - `mushroom` は、削除対象であるため、その横に '-' 記号が付いていることに注意してください。 また `peppers` は、トッピングに追加するために、その横に '+' 記号が付いています。
-2. [Score Action]\(アクションのスコア付け\) をクリックします。
-    - `peppers` は、新規であるため、太字になっていることに注意してください。 また、`mushrooms` は取り消されています。
-8. [you have $Toppings on your pizza] をクリックして選択します。
-6. [Would you like anything else?] を選択します。
-7. 「add peas」と入力します。
-    - `Peas` は、品切れのトッピングの例です。 まだトッピングとしてラベルが付いています。
-2. [Score Action]\(アクションのスコア付け\) をクリックします。
-    - `Peas` が OutOfStock として表示されます。
-    - これがどのようにして起こったかを確認するには、コードの `C:\<\installedpath>\src\demos\demoPizzaOrder.ts` の部分を開きます。 EntityDetectionCallback メソッドを調べます。 各トッピングの後にこのメソッドが呼び出されて、ストックされているかどうかが確認されます。 ストック切れのトッピングは、一連のトッピングからクリアされ、OutOfStock エンティティに追加されます。 ストックされているトッピングのリストは、このメソッドの上に定義されている inStock 変数に格納されます。
-6. [We don't have $OutOfStock] を選択します。
-7. [Would you like anything else?] を選択します。
-8. 「no」と入力します。
-9. [Score Action]\(アクションのスコア付け\) をクリックします。
-10. [FinalizeOrder] という API 呼び出しを選択します。 
-    - ここから、コードに定義されている "FinalizeOrder" 関数が呼び出されます。 これにより、toppings がクリアされ、"your order is on its way" が返されます。 
-2. 「order another」と入力します。 新しい注文を開始します。
-9. [Score Action]\(アクションのスコア付け\) をクリックします。
-    - 'cheese' と 'peppers' は、最後の注文からトッピングとしてメモリ内にあります。
-1. [Would you like $LastToppings] を選択します。
-2. 「yes」と入力します。
-3. [Score Action]\(アクションのスコア付け\) をクリックします。
-    - ボットは UseLastToppings アクションの実行を要求します。 これは 2 つあるコールバック メソッドの 2 つ目です。 前回の注文のトッピングを toppings にコピーして、前回のトッピングをクリアします。 このようにして前回の注文が記憶され、ユーザーがもう 1 枚ピザが欲しいと言った場合には、それらのトッピングがオプションとして提供されます。
-2. [you have $Toppings on your pizza] をクリックして選択します。
-3. [Would you like anything else?] を選択します。
-8. 「no」と入力します。
-4. [Done Teaching]\(学習の完了\) をクリックします。
+1. 左側のパネルで、[Train Dialogs]\(トレーニング会話\) をクリックしてから、[New Train Dialog]\(新しいトレーニング会話\) ボタンをクリックします。
+2. [Type your message...]\(メッセージを入力...\) と表示されているチャット パネルに、「Order a pizza with cheese」(チーズのピザを注文する) と入力します
+    - "cheese" (チーズ) という単語が、エンティティ抽出機能によって抽出されました。
+3. [Score Actions]\(アクションのスコア付け\) ボタンをクリックします。
+4. "You have cheese on your pizza" (ピザにチーズをトッピングします) という応答を選択します。
+5. "Would you like anything else?" (他にありますか?) という応答を選択します。
+6. [Type your message...]\(メッセージを入力...\) と表示されているチャット パネルに、「add mushrooms and peppers」(マッシュルームとペッパーを追加) と入力します
+7. [Score Actions]\(アクションのスコア付け\) ボタンをクリックします。
+8. "You have cheese, mushrooms and peppers on your pizza" (ピザにチーズ、マッシュルーム、ペッパーをトッピングします) という応答を選択します。
+9. "Would you like anything else?" (他にありますか?) という応答を選択します。
+10. [Type your message...]\(メッセージを入力...\) と表示されているチャット パネルに、「remove peppers and add sausage」(ペッパーをやめてソーセージを追加) と入力します
+11. [Score Actions]\(アクションのスコア付け\) ボタンをクリックします。
+12. "You have cheese, mushrooms and sausage on your pizza" (ピザにチーズ、マッシュルーム、ソーセージをトッピングします) という応答を選択します。
+13. "Would you like anything else?" (他にありますか?) という応答を選択します。
+14. [Type your message...]\(メッセージを入力...\) と表示されているチャット パネルで、「add yam」(サツマイモを追加) と入力します
+15. [Score Actions]\(アクションのスコア付け\) ボタンをクリックします。
+    - "yam" (サツマイモ) という値は、サポートされているどの具材とも一致しなかったため、エンティティ検出コールバック コードによって "OutofStock" に追加されました。
+16. "OutOfStock" (在庫なし) という応答を選択します
+17. "Would you like anything else?" (他にありますか?) という応答を選択します。
+18. [Type your message...]\(メッセージを入力...\) と表示されているチャット パネルに、「no」(いいえ) と入力します
+    - "no" は、どの種類の意図としてもマークされません。 代わりに、現在のコンテキストに基づいて関連するアクションを選択します。
+19. [Score Actions]\(アクションのスコア付け\) ボタンをクリックします。
+20. "FinalizeOrder" (注文確定) という応答を選択します
+    - このアクションを選択すると、客の現在のトッピングが "LastToppings" エンティティに保存され、FinalizeOrder コールバック コードによって "Toppings" エンティティが削除されます。
+21. [Type your message...]\(メッセージを入力...\) と表示されているチャット パネルに、「order another」(別の注文) と入力します
+22. [Score Actions]\(アクションのスコア付け\) ボタンをクリックします。
+23. "Would you like cheese, mushrooms and sausage?" (チーズ、マッシュルーム、ソーセージをトッピングしますか?) という応答を選択します。
+    - このアクションは、"LastToppings" エンティティが設定されているため利用可能になります。
+24. [Type your message...]\(メッセージを入力...\) と表示されているチャット パネルに、「yes」(はい) と入力します
+25. [Score Actions]\(アクションのスコア付け\) ボタンをクリックします。
+26. "UseLastToppings" (最後のトッピングを使用) という応答を選択します
+27. "You have cheese, mushrooms and sausage on your pizza" (ピザにチーズ、マッシュルーム、ソーセージをトッピングします) という応答を選択します。
+28. "Would you like anything else?" (他にありますか?) という応答を選択します。
 
 ![](../media/tutorial_pizza_callbackcode.PNG)
 
@@ -113,4 +107,4 @@ Web UI の [モデル] 一覧で、[TutorialDemo Pizza Order] (TutorialDemo ピ�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [デモ - VR アプリ起動ツール](./demo-vr-app-launcher.md)
+> [Conversation Learner ボットのデプロイ](../deploy-to-bf.md)

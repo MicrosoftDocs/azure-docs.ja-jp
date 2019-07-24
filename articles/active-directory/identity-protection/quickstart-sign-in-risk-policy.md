@@ -4,26 +4,27 @@ description: このクイック スタートでは、Azure Active Directory (Azu
 services: active-directory
 keywords: identity protection, アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
-author: MarkusVi
-manager: mtillman
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: identity-protection
+ms.subservice: identity-protection
 ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/13/2018
-ms.author: markvi
-ms.reviewer: raluthra
-ms.openlocfilehash: 6879822e8451e6170bf17fff4ab66b672f711a93
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: joflore
+ms.reviewer: sahandle
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4f5127342f97a90103ef56efbd7465832440ec0f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632389"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521814"
 ---
-# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>クイック スタート: Azure Active Directory Identity Protection を使用して、セッションのリスクが検出されたときにアクセスをブロックする  
+# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>クイック スタート:Azure Active Directory Identity Protection を使用して、セッションのリスクが検出されたときにアクセスをブロックする  
 
 環境を保護された状態で維持するために、疑わしいユーザーによるサインインをブロックすることができます。 Azure Active Directory (Azure AD) Identity Protection では、各サインインを分析して、サインイン試行がユーザー アカウントの正当な所有者によって行われなかった可能性を算出します。 可能性 (低、中、高) は、サインイン リスク レベルと呼ばれる計算値の形で示されます。 サインイン リスクの条件を設定することで、特定のサインイン リスク レベルに応じたサインイン リスク条件付きアクセス ポリシーを構成できます。 
 
@@ -122,6 +123,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - Azure AD ユーザーの削除方法がわからない場合は、[新しいユーザーの追加または削除](../fundamentals/add-users-azure-active-directory.md#delete-a-user)に関するページを参照してください。
 
-- Tor Browser を削除する手順については、「[Uninstalling (アンインストール)](https://tb-manual.torproject.org/en-US/uninstalling.html)」を参照してください。
+- Tor Browser を削除する手順については、「[Uninstalling (アンインストール)](https://tb-manual.torproject.org/uninstalling/)」を参照してください。
 
 

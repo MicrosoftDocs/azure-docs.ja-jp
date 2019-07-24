@@ -3,7 +3,7 @@ title: Azure Cloud Shell ウィンドウの使用 | Microsoft Docs
 description: Azure Cloud Shell ウィンドウの使用方法の概要について説明します。
 services: azure
 documentationcenter: ''
-author: jluk
+author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
-ms.author: juluk
-ms.openlocfilehash: 43da2bf5b66ff7db03a6fb5c2e1ceaebe322bcbb
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: damaerte
+ms.openlocfilehash: a02642540e6eb39f35b9cc0d38d187a7afa36b7a
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28919996"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243450"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>Azure Cloud Shell ウィンドウの使用
 
@@ -53,14 +53,14 @@ Cloud Shell では、各セッションが別の Bash プロセスとして存�
 * ツールバーの上端をクリックしてから、上下にドラッグして Cloud Shell ウィンドウのサイズを変更します。
 
 ## <a name="scrolling-text-display"></a>テキスト表示のスクロール
-* マウスまたはタッチパッドを使用してスクロールし、端末のテキストを移動します。
+* マウスまたはタッチパッドを使用して、端末のテキストをスクロールできます。
 
 ## <a name="changing-the-text-size"></a>テキスト サイズの変更
 ![](media/using-the-shell-window/text-size.png)
 * ウィンドウの左上の設定アイコンをクリックし、[文字のサイズ] オプションをポイントして、目的のテキスト サイズを選びます。 選択内容は、セッション間で保持されます。
 
 ## <a name="exit-command"></a>exit コマンド
-`exit` を実行すると、アクティブなセッションが終了します。 この動作は既定では 20 分後に発生します (操作が行われない場合)。
+`exit` を実行すると、アクティブなセッションが終了します。 この動作は、操作が行われていない状態で 20 分経過した場合も発生します。
 
 ## <a name="next-steps"></a>次の手順
 

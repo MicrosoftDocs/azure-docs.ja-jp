@@ -4,10 +4,10 @@ description: 設定とアプリ データの同期に関する質問とその答
 services: active-directory
 keywords: Enterprise State Roaming の設定, Windows クラウド, Enterprise State Roaming に関してよく寄せられる質問
 documentationcenter: ''
-author: MarkusVi
-manager: mtillman
+author: MicrosoftGuyJFlo
+manager: daveba
 editor: ''
-ms.component: devices
+ms.subservice: devices
 ms.assetid: f45d0515-99f7-42ad-94d8-307bc0d07be5
 ms.service: active-directory
 ms.workload: identity
@@ -15,19 +15,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: 3825d527e520fae87d0dd2712df767090adad4e5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cce60769ffae399062a50e1b2c28c1cd6e49a47e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248423"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58904255"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming の設定のトラブルシューティング
 
 このトピックでは、Enterprise State Roaming の問題のトラブルシューティングと診断の方法について説明するとともに、既知の問題の一覧を示します。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="preliminary-steps-for-troubleshooting"></a>トラブルシューティングのための準備作業 
 
@@ -42,11 +45,11 @@ ms.locfileid: "50248423"
 ## <a name="information-to-include-when-you-need-help"></a>ヘルプが必要な場合に含める情報
 以下のガイダンスを使用しても問題を解決できない場合は、サポート エンジニアにお問い合わせください。 サポートにお問い合わせいただく際は、次の情報をお知らせください。
 
-* **エラーの概要** – エラー メッセージが表示されましたか。 エラー メッセージが表示されなかった場合は、気が付いた予期しない動作について詳しく説明してください。 どの機能で同期が有効になっていますか。また、同期することが求められるのはどのような機能ですか。 同期しないのは複数の機能ですか。または 1 つの機能ですか。
+* **エラーの概要**:ユーザーにエラー メッセージは表示されましたか。 エラー メッセージが表示されなかった場合は、気が付いた予期しない動作について詳しく説明してください。 どの機能で同期が有効になっていますか。また、同期することが求められるのはどのような機能ですか。 同期しないのは複数の機能ですか。または 1 つの機能ですか。
 * **影響を受けるユーザー** – 同期が機能、または機能しないのは、1 人のユーザーですか。それとも複数のユーザーですか。 ユーザー 1 人当たりに関係するデバイスは何台ですか。 すべてのデバイスが同期しませんか。それとも同期するデバイスもあれば、同期しないデバイスもありますか。
 * **ユーザーに関する情報** – ユーザーはどの ID を使用してデバイスにログインしていますか。 どのような方法でデバイスにログインしていますか。 ユーザーは、同期が許可されている選択されたセキュリティ グループの一部ですか。 
 * **デバイスに関する情報** – デバイスは Azure AD に参加していますか。またはドメインに参加していますか。 どのビルドがデバイスにインストールされていますか。 最新の更新プログラムは何ですか。
-- **日付 / 時刻 / タイム ゾーン** – エラーが表示された正確な日時を教えてください (タイム ゾーンを含む)。
+* **日付 / 時刻 / タイム ゾーン** – エラーが表示された正確な日時を教えてください (タイム ゾーンを含む)。
 
 これらの情報を含めることで、迅速に問題を解決するのに役立ちます。
 
@@ -58,10 +61,10 @@ ms.locfileid: "50248423"
 1. Enterprise State Roaming を許可するよう構成されたドメインに Windows 10 PC を参加させたら、職場アカウントを使ってサインオンします。 **[設定]** > **[アカウント]** > **[設定の同期]** に移動して、同期と個々の設定がオンになっており、設定ページの最上部に、職場アカウントを使って同期していることが示されていることを確認します。 **[設定]** > **[アカウント]** > **[Your Info (ユーザー情報)]** で、同じアカウントがログイン アカウントとしても使われていることを確認します。 
 1. 同期元のコンピューターで変更 (タスクバーを画面の右端や上部に移動するなど) を行い、複数のコンピューター間で同期が機能することを確認します。 5 分以内に、2 つ目のコンピューターに変更が反映されることを確認します。 
 
-  * 画面をロックまたはロック解除 (Win + L) すると、同期をトリガーできる場合があります。
-  * Enterprise State Roaming はコンピューター アカウントではなくユーザー アカウントに関連付けられているため、同期が機能するには、両方の PC で同じアカウントでサインインする必要があります。
+   * 画面をロックまたはロック解除 (Win + L) すると、同期をトリガーできる場合があります。
+   * Enterprise State Roaming はコンピューター アカウントではなくユーザー アカウントに関連付けられているため、同期が機能するには、両方の PC で同じアカウントでサインインする必要があります。
 
-**潜在的な問題**: **[設定]** ページでコントロールが利用できず、"Windows の一部の機能は、Microsoft アカウントまたは職場アカウントを使用している場合にのみ利用できます" のメッセージが表示される場合があります。 この問題は、デバイスをドメインに参加するよう設定して Azure AD に登録したものの、Azure AD に正常に認証されていない場合に発生することがあります。 考えられる原因としては、デバイス ポリシーを適用する必要があるものの、アプリケーションが非同期的に動作して、数時間の遅延が発生した可能性があります。 
+**潜在的な問題**:**[設定]** ページでコントロールを使用できず、"Windows の一部の機能は、Microsoft アカウントまたは職場アカウントを使用している場合にのみ利用できます" というメッセージが表示されます。 この問題は、デバイスをドメインに参加するよう設定して Azure AD に登録したものの、Azure AD に正常に認証されていない場合に発生することがあります。 考えられる原因としては、デバイス ポリシーを適用する必要があるものの、アプリケーションが非同期的に動作して、数時間の遅延が発生した可能性があります。 
 
 ### <a name="verify-the-device-registration-status"></a>デバイスの登録状態を確認する
 
@@ -71,18 +74,18 @@ Enterprise State Roaming では、デバイスを Azure AD に登録する必要
 2.  コマンド プロンプトが開いたら、「*dsregcmd.exe /status*」を入力します。
 3.  期待する出力を得るには、**AzureAdJoined** フィールド値を "YES"、**WamDefaultSet** フィールド値を "YES"、**WamDefaultGUID** フィールド値を末尾が "(AzureAd)" である GUID にする必要があります。
 
-**潜在的な問題**: **WamDefaultSet** と **AzureAdJoined** の両方のフィールド値が "NO" になっており、デバイスはドメインに参加して Azure AD に登録されていますが、同期しません。このような場合は、デバイスにポリシーが適用されるまで待機する必要があるか、Azure AD に接続するときにデバイスの認証に失敗したと考えられます。 ポリシーが適用されるまでには数時間かかる場合があります。 その他のトラブルシューティング手順としては、サインアウトしてからサインインし直してもう一度自動登録をしてみるか、タスク スケジューラでタスクを起動することなどが挙げられます。 場合によっては、管理者特権で開いたコマンド プロンプト画面で "*dsregcmd.exe /leave*" を実行して再起動し、登録し直すことが問題の解決に役立つことがあります。
+**潜在的な問題**:**WamDefaultSet** と **AzureAdJoined** の両方のフィールド値が "NO" になっており、デバイスはドメインに参加して Azure AD に登録されていますが、同期しません。このような場合は、デバイスにポリシーが適用されるまで待機する必要があるか、Azure AD に接続するときにデバイスの認証に失敗したと考えられます。 ポリシーが適用されるまでには数時間かかる場合があります。 その他のトラブルシューティング手順としては、サインアウトしてからサインインし直してもう一度自動登録をしてみるか、タスク スケジューラでタスクを起動することなどが挙げられます。 場合によっては、管理者特権で開いたコマンド プロンプト画面で "*dsregcmd.exe /leave*" を実行して再起動し、登録し直すことが問題の解決に役立つことがあります。
 
 
-**潜在的な問題**: **SettingsUrl** のフィールドが空で、デバイスが同期しません。最後にデバイスにログインしたのが、Azure Active Directory ポータルで Enterprise State Roaming が有効になる前だった可能性があります。 デバイスを再起動してログインします。 必要に応じて、ポータルの **[Azure Active Directory]** > **[デバイス]** > **[Enterprise State Roaming]** に移動し、**[デバイス間での設定とアプリ データの同期が許可されるユーザー]** を無効にしてから再度有効にするよう、IT 管理者に依頼してください。 その後、デバイスを再起動してログインします。 問題が解決されない場合、デバイスの証明書が不適切であれば、**SettingsUrl** が空になることがあります。 この場合、管理者特権で開いたコマンド プロンプト画面で "*dsregcmd.exe /leave*" を実行して再起動し、登録し直すと問題の解決に役立つことがあります。
+**潜在的な問題**:**SettingsUrl** のフィールドが空で、デバイスが同期しません。最後にデバイスにログインしたのが、Azure Active Directory ポータルで Enterprise State Roaming が有効になる前だった可能性があります。 デバイスを再起動してログインします。 必要に応じて、ポータルの **[Azure Active Directory]** > **[デバイス]** > **[Enterprise State Roaming]** に移動し、**[デバイス間での設定とアプリ データの同期が許可されるユーザー]** を無効にしてから再度有効にするよう、IT 管理者に依頼してください。 その後、デバイスを再起動してログインします。 問題が解決されない場合、デバイスの証明書が不適切であれば、**SettingsUrl** が空になることがあります。 この場合、管理者特権で開いたコマンド プロンプト画面で "*dsregcmd.exe /leave*" を実行して再起動し、登録し直すと問題の解決に役立つことがあります。
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming と Multi-Factor Authentication 
 
 Azure Multi-Factor Authentication が構成されている場合、特定の条件下で Enterprise State Roaming がデータの同期に失敗する可能性があります。 このような場合の詳細については、サポート ドキュメント [KB3193683](https://support.microsoft.com/kb/3193683) を参照してください。 
 
-**潜在的な問題**: お使いのデバイスが Azure Active Directory ポータルで Multi-Factor Authentication を要求するように構成されている場合、パスワードを使用して Windows 10 デバイスにサインインしている状態で設定の同期が失敗することがあります。 このタイプの Multi-Factor Authentication 構成は、Azure 管理者アカウントの保護を意図したものです。 管理者ユーザーは、Microsoft Passport for Work の PIN を使用するか、他の Azure サービス (Office 365 など) にアクセスしている状態で Multi-Factor Authentication を行い、Windows 10 デバイスにサインインすることで同期を実行できる場合があります。
+**潜在的な問題**:お使いのデバイスが Azure Active Directory ポータルで Multi-Factor Authentication を要求するように構成されている場合、パスワードを使用して Windows 10 デバイスのサインインしている状態で設定の同期が失敗することがあります。 このタイプの Multi-Factor Authentication 構成は、Azure 管理者アカウントの保護を意図したものです。 管理者ユーザーは、Microsoft Passport for Work の PIN を使用するか、他の Azure サービス (Office 365 など) にアクセスしている状態で Multi-Factor Authentication を行い、Windows 10 デバイスにサインインすることで同期を実行できる場合があります。
 
-**潜在的な問題**: 管理者が Active Directory Federation Services Multi-Factor Authentication 条件付きアクセス ポリシーを構成し、デバイスのアクセス トークンの有効期限が切れている場合は、同期が失敗することがあります。 一度サインアウトしてから Microsoft Passport for Work の PIN を使用してサインインし直すか、または他の Azure サービス (Office 365 など) にアクセスしている状態で Multi-Factor Authentication を行ってください。
+**潜在的な問題**:管理者が Active Directory Federation Services Multi-Factor Authentication 条件付きアクセス ポリシーを構成し、デバイスのアクセス トークンの有効期限が切れている場合は、同期が失敗することがあります。 一度サインアウトしてから Microsoft Passport for Work の PIN を使用してサインインし直すか、または他の Azure サービス (Office 365 など) にアクセスしている状態で Multi-Factor Authentication を行ってください。
 
 ### <a name="event-viewer"></a>イベント ビューアー
 
@@ -166,7 +169,7 @@ Windows 10 バージョン 1511 クライアントに、累積的な更新プロ
 
 ---
 
-### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>イベント ID 6065: 80070533 このアカウントは現在無効に設定されているため、このユーザーはサインインできません  
+### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>イベント ID 6065:80070533 このアカウントは現在無効に設定されているため、このユーザーはサインインできません  
 
 ユーザーの資格情報の期限が切れている場合、SettingSync/デバッグ ログのイベント ビューアーにこのエラーが表示される場合があります。 しかも、この状況は、テナントで AzureRMS が自動的にプロビジョニングされなかったときに起こる可能性があります。 
 
@@ -175,13 +178,13 @@ Windows 10 バージョン 1511 クライアントに、累積的な更新プロ
 
 ---
 
-### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>イベント ID 1098: エラー: 0xCAA5001C トークン ブローカーの操作が失敗しました  
+### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>イベント ID 1098:エラー:0xCAA5001C トークン ブローカーの操作が失敗しました  
 
-AAD/操作ログのイベント ビューアーに、イベント 1104 とともに、"AAD クラウドの AP プラグイン呼び出しでトークンの取得がエラーを返しました: 0xC000005F" というエラーが表示されることがあります。 アクセス許可や所有権の属性が欠落している場合にこの問題が起こります。  
+AAD/操作ログのイベント ビューアーに、イベント 1104 とともに、"AAD クラウドの AP プラグイン呼び出しでトークンの取得がエラーを返しました:0xC000005F" というエラーが表示されることがあります。 アクセス許可や所有権の属性が欠落している場合にこの問題が起こります。  
 
 **推奨される操作**  
 [KB3196528](https://support.microsoft.com/kb/3196528) に示された手順を実行します。  
 
 ## <a name="next-steps"></a>次の手順
 
-概要については、[Enterprise State Roaming の概要](enterprise-state-roaming-overview.md)に関するページを参照してください。
+概要については、「[Enterprise State Roaming の概要](enterprise-state-roaming-overview.md)」を参照してください。

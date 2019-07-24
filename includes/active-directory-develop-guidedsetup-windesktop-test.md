@@ -4,22 +4,22 @@ description: インクルード ファイル
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2018
+ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: ac4f826ed1d27ee39d8e35605a3baa7f94b33e64
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a11b291ab89dc9f8159e00e1f2304706f041068e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50035212"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59804479"
 ---
 ## <a name="test-your-code"></a>コードのテスト
 
@@ -39,14 +39,13 @@ Visual Studio で、お使いのプロジェクトを実行するには、**F5**
 
 ### <a name="view-application-results"></a>アプリケーションの結果を表示する
 
-サインインしたら、Microsoft Graph API の呼び出しによって返されたユーザー プロファイル情報が表示されます。 結果は、**[API Call Results]\(API コールの結果\)** ボックスに表示されます。 `AcquireTokenAsync` または `AcquireTokenSilentAsync` の呼び出しを介して取得されたトークンに関する基本情報は、**[Token Info]\(トークン情報\)** ボックスに表示されます。 結果には、以下のプロパティが含まれます。
+サインインしたら、Microsoft Graph API の呼び出しによって返されたユーザー プロファイル情報が表示されます。 結果は、**[API Call Results]\(API コールの結果\)** ボックスに表示されます。 `AcquireTokenInteractive` または `AcquireTokenSilent` の呼び出しを介して取得されたトークンに関する基本情報は、**[Token Info]\(トークン情報\)** ボックスに表示されます。 結果には、以下のプロパティが含まれます。
 
 |プロパティ  |形式  |説明 |
 |---------|---------|---------|
-|**名前** |ユーザーのフルネーム |ユーザーの姓と名。|
-|**ユーザー名** |<span>user@domain.com</span> |ユーザーの識別に使用されているユーザー名。|
-|**Token Expires** |Datetime |トークンの有効期限が切れる時刻。 MSAL は、必要に応じてトークンを更新することで、有効期限日を延長します。|
-|**Access Token** |String |*Authorization ヘッダー*を必要とする HTTP 要求に送信されるトークン文字列。|
+
+|**Username** |<span>user@domain.com</span> |ユーザーを識別するために使用されるユーザー名。| |**Token Expires** |DateTime |トークンの有効期限が切れる日時。 MSAL では、必要に応じてトークンを更新することで、有効期限日を延長します。|
+
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>スコープと委任されたアクセス許可の詳細

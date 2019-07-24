@@ -3,20 +3,20 @@ title: Azure Virtual Machines で入れ子になった仮想化を有効にす�
 description: Azure Virtual Machines で入れ子になった仮想化を有効にする方法
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
-ms.author: zarhoads
+ms.author: cynthn
 ms.date: 10/09/2017
-ms.topic: howto
+ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: e9b05751166ac200f4a9cdab4c7fe3ed797f2a10
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: f90ca51349eef92bd25095f5a2a10d7d181fdb2c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465250"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766531"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM で入れ子になった仮想化を有効にする方法
 
@@ -51,10 +51,10 @@ Dv3 または Ev3 シリーズの仮想マシンのリージョン別提供状�
 ## <a name="enable-the-hyper-v-feature-on-the-azure-vm"></a>Azure VM の Hyper-V 機能を有効にする
 この設定は手動で構成するか、用意されている PowerShell スクリプトを使って自動で構成できます。
 
-### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>オプション 1: PowerShell スクリプトを使用して、入れ子になった仮想化を構成する
+### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>選択肢 1: PowerShell スクリプトを使用して、入れ子になった仮想化を構成する
 Windows Server 2016 ホストの入れ子になった仮想化を有効にする PowerShell スクリプトは [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) でご利用いただけます。 スクリプトは、前提条件をチェックし、Azure VM で入れ子になった仮想化を構成します。 構成を完了するには、Azure VM を再起動する必要があります。 このスクリプトは他の環境で動作する可能性はありますが、保証されません。 Azure のブログ記事と、Azure で実行されている入れ子になった仮想化のライブ ビデオ デモをご確認ください  https://aka.ms/AzureNVblog
 
-### <a name="option-2-configure-nested-virtualization-manually"></a>オプション 2: 入れ子になった仮想化を手動で構成する
+### <a name="option-2-configure-nested-virtualization-manually"></a>選択肢 2: 入れ子になった仮想化を手動で構成する
 
 1. Azure VM で、PowerShell を管理者として開きます。 
 
@@ -134,7 +134,7 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 IP アドレスをゲスト仮想マシンに割り当てるには、ゲスト仮想マシンで静的 IP アドレスを手動で設定するか、IP アドレスが動的に割り当てられるように Azure VM で DHCP を構成します。
 
-###  <a name="option-1-configure-dhcp-to-dynamically-assign-an-ip-address-to-the-guest-virtual-machine"></a>オプション 1: IP アドレスがゲスト仮想マシンに動的に割り当てられるように DHCP を構成する
+###  <a name="option-1-configure-dhcp-to-dynamically-assign-an-ip-address-to-the-guest-virtual-machine"></a>選択肢 1: IP アドレスがゲスト仮想マシンに動的に割り当てられるように DHCP を構成する
 動的アドレス割り当てのためにホスト仮想マシンで DHCP を構成するには、次の手順に従ってください。
 
 #### <a name="install-dchp-server-on-the-azure-vm"></a>Azure VM で DCHP サーバーをインストールする
@@ -157,11 +157,11 @@ IP アドレスをゲスト仮想マシンに割り当てるには、ゲスト�
   
 4. DHCP サーバーの IP 範囲を定義します (192.168.0.100 ～ 192.168.0.200 など)。
   
-5. [デフォルト ゲートウェイ] ページが表示されるまで、**[次へ]** をクリックします。 既定のゲートウェイとして前に作成した IP アドレス (192.168.0.1 など) を入力します。
+5. [デフォルト ゲートウェイ] ページが表示されるまで、**[次へ]** をクリックします。 既定のゲートウェイとして前に作成した IP アドレス (192.168.0.1 など) を入力し、**[追加]** をクリックします。
   
 6. ウィザードが完了するまで、すべて既定値のままにして **[次へ]** をクリックし、**[完了]** をクリックします。
     
-### <a name="option-2-manually-set-a-static-ip-address-on-the-guest-virtual-machine"></a>オプション 2: ゲスト仮想マシンで静的 IP アドレスを手動で設定する
+### <a name="option-2-manually-set-a-static-ip-address-on-the-guest-virtual-machine"></a>選択肢 2: ゲスト仮想マシンに静的 IP アドレスを手動で設定する
 IP アドレスがゲスト仮想マシンに動的に割り当てられるように DHCP を構成しなかった場合は、次の手順を実行して静的 IP アドレスを設定します。
 
 1. Azure VM で、PowerShell を管理者として開きます。
@@ -180,3 +180,7 @@ IP アドレスがゲスト仮想マシンに動的に割り当てられるよ�
 
 ゲスト仮想マシンで、ブラウザーを開いて Web ページに移動します。
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
+
+## <a name="set-up-intranet-connectivity-for-the-guest-virtual-machine"></a>ゲスト仮想マシンのイントラネット接続を設定する
+
+ゲスト VM と Azure VM との間で透過的接続を有効にする手順については、[こちらのドキュメント](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization-azure-virtual-network)を参照してください。

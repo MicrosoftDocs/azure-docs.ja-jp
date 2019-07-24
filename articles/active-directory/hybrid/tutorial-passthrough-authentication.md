@@ -3,21 +3,22 @@ title: 'チュートリアル: パススルー認証 (PTA) を使用して単一
 description: パススルー認証を使用してハイブリッド ID 環境を設定する方法について説明します。
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/18/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: df4a1ef30997bef6b83e66182404d0e2659a5d51
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b951cc81d2f957214eb4c78125bde36b61ff64b8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422306"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098044"
 ---
-# <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>チュートリアル: パススルー認証 (PTA) を使用して単一の AD フォレストを統合する
+# <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>チュートリアル: パススルー認証 (PTA) を使用して単一 AD フォレストを統合する
 
 ![Create](media/tutorial-passthrough-authentication/diagram.png)
 
@@ -79,7 +80,7 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 
 1. Hyper-V マネージャーで仮想マシンをダブルクリックします。
 2. [スタート] ボタンをクリックします。
-3.  "Press any key to boot from CD or DVD" というメッセージが表示されます。 キーを押して続行します。
+3. "Press any key to boot from CD or DVD" というメッセージが表示されます。 キーを押して続行します。
 4. Windows Server の起動画面で言語を選択し、**[次へ]** をクリックします。
 5. **[今すぐインストール]** をクリックします。
 6. ライセンス キーを入力し、**[次へ]** をクリックします。
@@ -226,7 +227,7 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 ![PTA](media/tutorial-passthrough-authentication/pta1.png)</b>
 7. [Azure AD に接続] 画面で、上で作成した全体管理者のユーザー名とパスワードを入力し、**[次へ]** をクリックします。
 2. [ディレクトリの接続] 画面で、**[ディレクトリの追加]** をクリックします。  次に **[新しい AD アカウントを作成]** を選択し、contoso\Administrator のユーザー名とパスワードを入力して **[OK]** をクリックします。
-3.  **[次へ]** をクリックします。
+3. **[次へ]** をクリックします。
 4. [Azure AD サインインの構成] 画面で、**[一部の UPN サフィックスが確認済みドメインに一致していなくても続行する]** を選択し、**[次へ]** をクリックします。
 5. [ドメインと OU のフィルタリング] 画面で、**[次へ]** をクリックします。
 6. [一意のユーザー識別] 画面で、**[次へ]** をクリックします。
@@ -249,9 +250,9 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>いずれかのユーザーでサインインをテストする
 
-1.  [https://myapps.microsoft.com](httpss://myapps.microsoft.com) に移動します。
+1. [https://myapps.microsoft.com](https://myapps.microsoft.com) に移動します。
 2. 新しいテナントで作成されたユーザー アカウントを使用してサインインします。  user@domain.onmicrosoft.com の形式を使用してサインインする必要があります。 ユーザーがオンプレミスでのサインインに使用するのと同じパスワードを使用します。
-![確認](media/tutorial-password-hash-sync/verify1.png)
+   ![確認](media/tutorial-password-hash-sync/verify1.png)
 
 これでハイブリッド ID 環境を正常に設定できました。この環境は、Azure で提供されるサービスをテストしたり理解したりするために使用できます。
 

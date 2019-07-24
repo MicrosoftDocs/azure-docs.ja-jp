@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 58ba44488e8ef211e7c318fc9ba6497a5b1b69bb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 9a4e47143515c7f9c21d701809c35d61853d91ec
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523276"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471914"
 ---
 # <a name="troubleshooting-the-azure-importexport-tool"></a>Azure Import/Export ツールのトラブルシューティング
 Microsoft Azure Import/Export ツールでは、問題が発生するとエラー メッセージが返されます。 この記事では、ユーザーがよく経験する問題について説明します。  
@@ -24,7 +24,7 @@ Microsoft Azure Import/Export ツールでは、問題が発生するとエラ�
  ネットワーク シェアが一時的にオフラインだったが、今はオンラインに戻っているなど、エラーが再試行可能な場合、コピー セッションを再開できます。 コマンド ライン パラメータ―に誤ったソース ファイル ディレクトリを指定したなど、エラーが再試行できない場合、コピー セッションを中断する必要があります。 コピー セッションの再開と中断に関する詳細は、「[インポート ジョブ用のハード ドライブを準備する](../storage-import-export-tool-preparing-hard-drives-import-v1.md)」をご覧ください。  
   
 ## <a name="i-cant-resume-or-abort-a-copy-session"></a>コピー セッションを中断または再開できません。  
- ドライブのコピー セッションがはじめての場合、「The first copy session cannot be resumed or aborted (最初のコピー セッションを再開または中断できません) 」というエラー メッセージが表示されます。 この場合、古いジャーナル ファイルを削除し、コマンドを再実行できます。  
+ ドライブのコピー セッションが初めての場合、"The first copy session cannot be resumed or aborted (最初のコピー セッションを再開または中断できません)" というエラー メッセージが表示されます。 この場合、古いジャーナル ファイルを削除し、コマンドを再実行できます。  
   
  ドライブのコピー セッションが 2 回目以降の場合、常に再開または中断できます。  
   

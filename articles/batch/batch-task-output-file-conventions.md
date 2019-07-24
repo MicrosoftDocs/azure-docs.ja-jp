@@ -3,7 +3,7 @@ title: .NET 用のファイル規則ライブラリを使用した Azure Storage
 description: .NET 用の Azure Batch ファイル規則ライブラリを使用して、Azure Storage にバッチ タスクとジョブの出力を保持し、Azure Portal で永続化された出力を表示する方法を説明します。
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
@@ -12,28 +12,26 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 06/16/2017
-ms.author: danlep
+ms.date: 11/14/2018
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0b4ff1799f77581452859d1dbc0e6e9cc47062e4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: d30a5ca0910c5ceebb38dec7b4cdbffd9b3cf27e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128051"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58916786"
 ---
-# <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持 
+# <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
 
-タスクのデータを保持する方法の 1 つに [.NET 用の Azure Batch ファイル規則ライブラリ][nuget_package]があります。 ファイル規則ライブラリにより、タスク出力データを Azure Storage に保存し、取得する処理が簡素化されます。 ファイル規則ライブラリはタスク コードでも、クライアント コードでも使用できます。タスク コードではファイルを保持するために、クライアント コードではファイルを一覧で取得するために使用されます。 [タスクの依存関係](batch-task-dependencies.md)のシナリオのように、上流のタスクの出力を取得するためにタスク コードでライブラリを使用することもできます。 
+タスクのデータを保持する方法の 1 つに [.NET 用の Azure Batch ファイル規則ライブラリ][nuget_package]があります。 ファイル規則ライブラリにより、タスク出力データを Azure Storage に保存し、取得する処理が簡素化されます。 ファイル規則ライブラリはタスク コードでも、クライアント コードでも使用できます。タスク コードではファイルを保持するために、クライアント コードではファイルを一覧で取得するために使用されます。 [タスクの依存関係](batch-task-dependencies.md)のシナリオのように、上流のタスクの出力を取得するためにタスク コードでライブラリを使用することもできます。
 
 ファイル規則ライブラリを使用して出力ファイルを取得する際は、ファイル名や場所がわからなくても、ID と目的で出力を一覧表示することで、 特定のジョブまたはタスクのファイルを容易に特定できます。 たとえば、ファイル規則ライブラリを利用すれば、特定のタスクのすべての中間ファイルを一覧表示したり、特定のジョブのプレビュー ファイルを取得したりすることができます。
 
 > [!TIP]
 > バージョン 2017-05-01 以降では、仮想マシン構成で作成されたプール上で実行されるタスクやジョブ マネージャー タスクについて、Batch サービス API で Azure Storage への出力データの保持がサポートされています。 Batch サービス API は、タスクを作成するコード内からの出力を保持し、ファイル規則ライブラリの代わりに使用できる簡単な方法です。 Batch クライアント アプリケーションを変更して、タスクを実行中のアプリケーションを更新する必要なしに出力を保持することもできます。 詳細については、「[Persist task data to Azure Storage with the Batch service API (Batch サービス API を使用した Azure Storage へのタスクのデータの保持)](batch-task-output-files.md)」を参照してください。
-> 
-> 
 
 ## <a name="when-do-i-use-the-file-conventions-library-to-persist-task-output"></a>どのような場合にファイル規則ライブラリをタスク出力に保持するか
 
@@ -42,27 +40,27 @@ Azure Batch にはタスク出力を保持する方法が複数用意されて�
 - タスクを実行中のアプリケーションのコードを簡単に変更し、ファイル規則ライブラリを使用してファイルを保持したい場合。
 - タスクの実行中に Azure Storage にデータをストリーミングしたい場合。
 - クラウド サービス構成または仮想マシン構成のどちらで作成されたプールからもデータを保持する必要がある。
-- クライアント アプリケーションまたはジョブ内のその他のタスクを ID または目的で探し、タスク出力ファイルをダウンロードする必要がある場合。 
+- クライアント アプリケーションまたはジョブ内のその他のタスクを ID または目的で探し、タスク出力ファイルをダウンロードする必要がある場合。
 - Azure ポータルでタスク出力を表示したい場合。
 
-上記以外の場合には、別のアプローチを検討する必要があります。 タスク出力を保持するその他の方法の詳細については、「[Azure Storage への完了したジョブおよびタスクの結果の保持](batch-task-output.md)」を参照してください。 
+上記以外の場合には、別のアプローチを検討する必要があります。 タスク出力を保持するその他の方法の詳細については、「[Azure Storage への完了したジョブおよびタスクの結果の保持](batch-task-output.md)」を参照してください。
 
 ## <a name="what-is-the-batch-file-conventions-standard"></a>Batch ファイル規則の標準
 
 [Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)は、出力ファイルの書き込み先となる保存先コンテナーや BLOB パスの名前付けスキームを示します。 ファイル規則の標準に従った Azure Storage にファイルを保存すると、自動的に Azure ポータルで表示できるようになります。 Azure ポータルは名前付け規則を認識するため、その規則に従ってファイルを表示することができます。
 
-.NET 用ファイル規則ライブラリは、ファイル規則の標準に従ってストレージ コンテナーとタスク出力ファイルに自動的に名前を付けます。 また、ジョブ ID、タスク ID、または目的に従って、Azure Storage 内の出力ファイルに関するクエリを実行する手段を提供します。   
+.NET 用ファイル規則ライブラリは、ファイル規則の標準に従ってストレージ コンテナーとタスク出力ファイルに自動的に名前を付けます。 また、ジョブ ID、タスク ID、または目的に従って、Azure Storage 内の出力ファイルに関するクエリを実行する手段を提供します。
 
-.NET 以外の開発言語を使用する場合、ファイル規則の標準を独自にアプリケーションに実装できます。 詳細については、「[Batch File Conventions standard (Batch ファイル規則の標準)](batch-task-output.md#about-the-batch-file-conventions-standard)」を参照してください。
+.NET 以外の開発言語を使用する場合、ファイル規則の標準を独自にアプリケーションに実装できます。 詳細については、「[Batch ファイル規則の標準を実装する](batch-task-output.md#implement-the-batch-file-conventions-standard)」を参照してください。
 
 ## <a name="link-an-azure-storage-account-to-your-batch-account"></a>Azure Storage アカウントを Batch アカウントにリンクする
 
 ファイル規則ライブラリを使用して Azure Storage への出力データを保持するには、先に Azure Storage アカウントを Batch アカウントにリンクする必要があります。 まだリンクしていない場合は、[Azure Portal](https://portal.azure.com) で Storage アカウントを Batch アカウントにリンクします。その方法は以下のとおりです。
 
-1. Azure Portal の Batch アカウントに移動します。 
-2. **[設定]** で **[ストレージ アカウント]** を選択します。
-3. まだ Storage アカウントを Batch アカウントに関連付けていない場合は、**[Storage Account (None)]\(ストレージ アカウント (なし)\)** をクリックします。
-4. サブスクリプションの一覧から Storage アカウントを選択します。 最適なパフォーマンスを得るには、タスクを実行している Batch アカウントと同じリージョンにある Azure Storage アカウントを使用します。
+1. Azure Portal の Batch アカウントに移動します。
+1. **[設定]** で **[ストレージ アカウント]** を選択します。
+1. まだ Storage アカウントを Batch アカウントに関連付けていない場合は、**[Storage Account (None)]\(ストレージ アカウント (なし)\)** をクリックします。
+1. サブスクリプションの一覧から Storage アカウントを選択します。 最適なパフォーマンスを得るには、タスクを実行している Batch アカウントと同じリージョンにある Azure Storage アカウントを使用します。
 
 ## <a name="persist-output-data"></a>出力データの保持
 
@@ -72,12 +70,10 @@ Azure Storage でのコンテナーと BLOB の操作の詳細については、
 
 > [!WARNING]
 > ファイル規則ライブラリを使用したジョブとタスクの出力はすべて同じコンテナーに格納されるため、 大量のタスクで同時にファイルを保持しようとすると、[ストレージのスロットルの制限](../storage/common/storage-performance-checklist.md#blobs)が適用される場合があります。
-> 
-> 
 
 ### <a name="create-storage-container"></a>ストレージ コンテナーの作成
 
-Azure Storage にタスク出力を保持するには、まず [CloudJob][net_cloudjob].[PrepareOutputStorageAsync][net_prepareoutputasync] を呼び出してコンテナーを作成します。 この拡張メソッドは [CloudStorageAccount][net_cloudstorageaccount] オブジェクトをパラメーターとして受け取り、 コンテナーを作成します。このコンテナーには、Azure Portal またはこれ以降に説明する取得メソッドで内容を検出できるように、ファイル規則の標準に従って名前が付けられます。
+Azure Storage にタスク出力を保持するには、まず [CloudJob][net_cloudjob].[PrepareOutputStorageAsync][net_prepareoutputasync] を呼び出してコンテナーを作成します。 この拡張メソッドは [CloudStorageAccount][net_cloudstorageaccount] オブジェクトをパラメーターとして受け取り、 コンテナーを作成します。このコンテナーには、Azure portal またはこれ以降に説明する取得メソッドで内容を検出できるように、ファイル規則の標準に従って名前が付けられます。
 
 通常、クライアント アプリケーション (プール、ジョブ、タスクを作成するアプリケーション) でコンテナーを作成するために以下のコードを配置します。
 
@@ -114,14 +110,12 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskOutput, "frame_full_res.jpg
 await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg");
 ```
 
-保持されたファイルは [TaskOutputStorage](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.aspx).[SaveAsync](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync.aspx) メソッドの `kind` パラメーターによって分類されます。 [TaskOutputKind][net_taskoutputkind] として、事前に定義された 4 つの種類が存在します。`TaskOutput``TaskPreview``TaskLog``TaskIntermediate.` です。カスタム出力カテゴリを定義することもできます。
+保持されたファイルは [TaskOutputStorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage).[SaveAsync](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync#overloads) メソッドの `kind` パラメーターによって分類されます。 [TaskOutputKind][net_taskoutputkind] として、事前に定義された 4 つの種類が存在します。`TaskOutput``TaskPreview``TaskLog``TaskIntermediate.` です。カスタム出力カテゴリを定義することもできます。
 
-これらの出力の種類を使用すれば、後で Batch に対してクエリを実行し、特定のタスクの保持された出力を取得するときに、どの種類の出力を一覧表示するかを指定することができます。 つまり、タスク出力を一覧表示したとき、出力の種類に基づいて一覧をフィルター処理することができます。 たとえば、"タスク *109* の出力の "*プレビュー*" を閲覧する" といったことが可能です。 一覧の表示と出力の取得については、この記事の後ろのセクションの「 [出力の取得](#retrieve-output) 」で詳しく説明します。
+これらの出力の種類を使用すれば、後で Batch に対してクエリを実行し、特定のタスクの保持された出力を取得するときに、どの種類の出力を一覧表示するかを指定することができます。 つまり、タスク出力を一覧表示したとき、出力の種類に基づいて一覧をフィルター処理することができます。 たとえば、"タスク *109* の出力の "*プレビュー*" を閲覧する" といったことが可能です。 出力の一覧表示と取得については、この記事の後ろのセクションの「出力の取得」で詳しく説明します。
 
 > [!TIP]
-> 出力の種類によって、特定のファイルが Azure Portal のどこに表示されるかも指定されます。*TaskOutput* に分類されたファイルは **[Task output files]\(タスク出力ファイル)\** に表示され、*TaskLog* に分類されたファイルは **[Task logs]\(タスクのログ\)** に表示されます。
-> 
-> 
+> 出力の種類によって、特定のファイルが Azure portal のどこに表示されるかも指定されます。*TaskOutput* に分類されたファイルは **[Task output files]\(タスク出力ファイル\)** に表示され、 *TaskLog* に分類されたファイルは **[Task logs]\(タスク ログ\)** に表示されます。
 
 ### <a name="store-job-outputs"></a>ジョブの出力の格納
 
@@ -174,8 +168,6 @@ using (ITrackedSaveOperation stdout =
 
 > [!NOTE]
 > **SaveTrackedAsync** でファイルの追跡を有効にすると、追跡されているファイルへの "*追加分*" だけが Azure Storage で保持されます。 このメソッドは、ローテーションのないログ ファイルの追跡か、ファイルの末尾への追加操作によって書き込まれる他のファイルの追跡のみに使用してください。
-> 
-> 
 
 ## <a name="retrieve-output-data"></a>出力データの取得
 
@@ -205,8 +197,8 @@ Azure Portal では、[Batch ファイル規則の標準](https://github.com/Azu
 
 ポータルで出力ファイルの表示を有効にするには、次の要件を満たす必要があります。
 
-1. [Link an Azure Storage account](#requirement-linked-storage-account) 必要があります。
-2. 出力を保持する際は、ストレージ コンテナーとファイルの事前定義された名前付け規則に準拠します。 これらの規則の定義は、ファイル規則ライブラリの [README][github_file_conventions_readme] に記載されています。 出力の保持に [Azure Batch ファイル規則][nuget_package]ライブラリを使用した場合、ファイルはファイル規則の標準に従って保持されます。
+1. Azure ストレージ アカウントを Batch アカウントにリンクします。
+1. 出力を保持する際は、ストレージ コンテナーとファイルの事前定義された名前付け規則に準拠します。 これらの規則の定義は、ファイル規則ライブラリの [README][github_file_conventions_readme] に記載されています。 出力の保持に [Azure Batch ファイル規則][nuget_package]ライブラリを使用した場合、ファイルはファイル規則の標準に従って保持されます。
 
 Azure Portal でタスク出力ファイルとログを表示するには、目的の出力を行ったタスクに移動し、**[保存された出力ファイル]** または **[保存されたログ]** をクリックします。 次の図は、IDが "007" のタスクの **保存された出力ファイル** を示しています。
 
@@ -258,7 +250,7 @@ Azure Portal でタスク出力ファイルとログを表示するには、目�
 [nuget_manager]: https://docs.nuget.org/consume/installing-nuget
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [portal]: https://portal.azure.com
-[storage_explorer]: http://storageexplorer.com/
+[storage_explorer]: https://storageexplorer.com/
 
 [1]: ./media/batch-task-output/task-output-01.png "Saved output files and Saved logs selectors in portal"
 [2]: ./media/batch-task-output/task-output-02.png "Task outputs blade in the Azure portal"

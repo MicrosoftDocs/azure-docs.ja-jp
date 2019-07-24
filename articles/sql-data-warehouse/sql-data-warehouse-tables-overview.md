@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
-ms.date: 04/17/2018
+ms.subservice: implement
+ms.date: 03/15/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: f09b9a93956c9d23e17c742c5f6ec4730591933b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 1073e1b4ad38c4b05c9195cf4ea16ade7416fbce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302315"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58133409"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのテーブルの設計
 
@@ -32,20 +32,18 @@ Azure SQL Data Warehouse でのテーブル設計について重要な概念を�
 - **統合テーブル**は、統合またはステージング データの場所を提供します。 統合テーブルは、通常のテーブル、外部テーブル、または一時テーブルとして作成できます。 たとえば、ステージング テーブルにデータを読み込み、ステージングでデータの変換を実行してから、データを運用環境テーブルに挿入できます。
 
 ## <a name="schema-and-table-names"></a>スキーマとテーブルの名前
-SQL Data Warehouse では、データ ウェアハウスはデータベースの一種です。 データ ウェアハウス内のすべてのテーブルが同じデータベースに格納されます。  複数のデータ ウェアハウス間でテーブルを結合することはできません。 この動作は、データベース間結合をサポートする SQL Server とは異なります。 
-
-SQL Server データベースでは、スキーマ名に fact、dim、または integrate を使用できます。 SQL Server データベースを SQL Data Warehouse に移行している場合は、ファクト テーブル、ディメンション テーブル、および統合テーブルのすべてを SQL Data Warehouse の 1 つのスキーマに移行することが最適です。 たとえば、すべてのテーブルを、wwi と呼ばれる 1 つのスキーマ内の [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap) サンプル データ ウェアハウスに格納できます。 次のコードは、wwi と呼ばれる[ユーザー定義スキーマ](/sql/t-sql/statements/create-schema-transact-sql)を作成します。
+スキーマは、同じ方法で使用されるテーブルをグループ化するのに良い方法です。  複数のデータベースをオンプレミス ソリューションから SQL Data Warehouse に移行する場合は、ファクト テーブル、ディメンション テーブル、および統合テーブルのすべてを SQL Data Warehouse 内の 1 つのスキーマに移行すると一番うまくいきます。 たとえば、すべてのテーブルを、wwi と呼ばれる 1 つのスキーマ内の [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap) サンプル データ ウェアハウスに格納できます。 次のコードは、wwi と呼ばれる[ユーザー定義スキーマ](/sql/t-sql/statements/create-schema-transact-sql)を作成します。
 
 ```sql
 CREATE SCHEMA wwi;
 ```
 
-SQL Data Warehouse 内のテーブルの構成を表示するには、テーブル名のプレフィックスとして fact、dim、および int を使用できます。 次の表に、WideWorldImportersDW のスキーマ名とテーブル名の一部を示します。 ここでは、SQL Server 内の名前を SQL Data Warehouse 内の名前と比較しています。 
+SQL Data Warehouse 内のテーブルの構成を表示するには、テーブル名のプレフィックスとして fact、dim、および int を使用できます。 次の表に、WideWorldImportersDW のスキーマ名とテーブル名の一部を示します。  
 
-| WideWorldImportersDW テーブル  | テーブルの種類 | SQL Server | SQL Data Warehouse |
+| WideWorldImportersDW テーブル  | テーブルの種類 | SQL Data Warehouse |
 |:-----|:-----|:------|:-----|
-| City | Dimension | Dimension.City | wwi.DimCity |
-| 順序 | ファクト | Fact.Order | wwi.FactOrder |
+| City | Dimension | wwi.DimCity |
+| 順序 | ファクト | wwi.FactOrder |
 
 
 ## <a name="table-persistence"></a>テーブルの永続性 
@@ -61,19 +59,19 @@ CREATE TABLE MyTable (col1 int, col2 int );
 ```
 
 ### <a name="temporary-table"></a>一時テーブル
-一時テーブルは、セッション中のみ存在します。 一時テーブルを使用して、一時的な結果を他のユーザーが確認できないようにしたり、クリーンアップの必要性を減らしたりすることもできます。  一時テーブルはローカル ストレージも活用するため、一部の操作でパフォーマンスを向上させることができます。  詳しくは、[一時テーブル](sql-data-warehouse-tables-temporary.md)に関する記事をご覧ください。
+一時テーブルは、セッション中のみ存在します。 一時テーブルを使用して、一時的な結果を他のユーザーが確認できないようにしたり、クリーンアップの必要性を減らしたりすることもできます。  一時テーブルはローカル ストレージを使用して高速のパフォーマンスを提供します。  詳しくは、[一時テーブル](sql-data-warehouse-tables-temporary.md)に関する記事をご覧ください。
 
 ### <a name="external-table"></a>外部テーブル
 外部テーブルは、Azure Storage BLOB または Azure Data Lake Store にあるデータを指します。 CREATE TABLE AS SELECT ステートメントと組み合わせて使用する場合は、外部テーブルから選択するとデータが SQL Data Warehouse にインポートされます。 このため、外部テーブルはデータを読み込むのに役立ちます。 読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)」をご覧ください。
 
 ## <a name="data-types"></a>データの種類
-SQL Data Warehouse では、最もよく使用されるデータ型がサポートされています。 サポートされるデータ型の一覧については、CREATE TABLE ステートメントの「[data types in CREATE TABLE reference (CREATE TABLE 内のデータ型のリファレンス)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes)」を参照してください。 データ型のサイズを最小限に抑えることは、クエリのパフォーマンス向上に役立ちます。 データ型の使用に関するガイダンスについては、「[データ型](sql-data-warehouse-tables-data-types.md)」を参照してください。
+SQL Data Warehouse では、最もよく使用されるデータ型がサポートされています。 サポートされるデータ型の一覧については、CREATE TABLE ステートメントの「[data types in CREATE TABLE reference (CREATE TABLE 内のデータ型のリファレンス)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes)」を参照してください。 データ型の使用に関するガイダンスについては、「[データ型](sql-data-warehouse-tables-data-types.md)」を参照してください。
 
 ## <a name="distributed-tables"></a>分散テーブル
-SQL Data Warehouse の基本的な機能は、60 の[ディストリビューション](massively-parallel-processing-mpp-architecture.md#distributions)にわたるテーブルを格納し、それらに対して動作できる方法にあります。  これらのテーブルは、ラウンドロビン、ハッシュ、またはレプリケーションの方法を使用して分散されます。
+SQL Data Warehouse の基本的特徴は、[複数のディストリビューション](massively-parallel-processing-mpp-architecture.md#distributions)にわたるテーブルを格納して操作できる方法にあります。  SQL Data Warehouse では、データを分散するための 3 つの方法 (ラウンド ロビン (既定値)、ハッシュ、レプリケート) がサポートされています。
 
 ### <a name="hash-distributed-tables"></a>ハッシュ分散テーブル
-ハッシュ分散は、ディストリビューション列内の値に基づいて行を分散させます。 ハッシュ分散テーブルは、大規模なテーブルでのクエリ結合で高パフォーマンスを実現するように設計されています。 ディストリビューション列の選択に影響する要因がいくつかあります。 
+ハッシュ分散テーブルは、ディストリビューション列内の値に基づいて行を分散します。 ハッシュ分散テーブルは、大規模なテーブルのクエリでハイパフォーマンスを達成するように設計されています。 ディストリビューション列を選択する際に検討すべきいくつかの要素があります。 
 
 詳細については、「[Design guidance for distributed tables (分散テーブルの設計ガイダンス)](sql-data-warehouse-tables-distribute.md)」を参照してください。
 
@@ -87,7 +85,6 @@ SQL Data Warehouse の基本的な機能は、60 の[ディストリビューシ
 
 詳細については、「[Design guidance for distributed tables (分散テーブルの設計ガイダンス)](sql-data-warehouse-tables-distribute.md)」を参照してください。
 
-
 ### <a name="common-distribution-methods-for-tables"></a>テーブルの一般的な分散方法
 テーブル カテゴリは、多くの場合、テーブルの分散について選択するオプションを決定します。 
 
@@ -98,15 +95,19 @@ SQL Data Warehouse の基本的な機能は、60 の[ディストリビューシ
 | ステージング        | ステージング テーブルにはラウンド ロビンを使用します。 CTAS での読み込みが高速です。 データがステージング テーブルに格納されたら、INSERT...SELECT を使用してデータを運用環境テーブルに移動します。 |
 
 ## <a name="table-partitions"></a>テーブルのパーティション
-パーティション テーブルでは、データ範囲に基づいてテーブル行が格納され、操作が実行されます。 たとえば、day、month、または year でテーブルをパーティション分割できます。 クエリ スキャンをあるパーティション内のデータに制限するパーティション除外によってクエリ パフォーマンスを向上させることができます。 パーティションを切り替えてデータを維持することもできます。 SQL Data Warehouse のデータは既に分散されているため、パーティションが多すぎるとクエリ パフォーマンスが低下することがあります。 詳しくは、[パーティション分割のガイダンス](sql-data-warehouse-tables-partition.md)に関する記事をご覧ください。
+パーティション テーブルでは、データ範囲に基づいてテーブル行が格納され、操作が実行されます。 たとえば、day、month、または year でテーブルをパーティション分割できます。 クエリ スキャンをあるパーティション内のデータに制限するパーティション除外によってクエリ パフォーマンスを向上させることができます。 パーティションを切り替えてデータを維持することもできます。 SQL Data Warehouse のデータは既に分散されているため、パーティションが多すぎるとクエリ パフォーマンスが低下することがあります。 詳しくは、[パーティション分割のガイダンス](sql-data-warehouse-tables-partition.md)に関する記事をご覧ください。  空でないテーブル パーティションにパーティションを切り替えるとき、既存のデータが切り詰められる場合は、[ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) ステートメントに TRUNCATE_TARGET オプションを使用することを検討してください。 以下のコードは、既存のデータを上書きして、変換された 1 日のデータを SalesFact にスイッチインします。 
+
+```sql
+ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
+```
 
 ## <a name="columnstore-indexes"></a>列ストア インデックス
-既定では、SQL Data Warehouse には、テーブルがクラスター化列ストア インデックスとして格納されます。 この形式のデータ ストレージでは、大きなテーブルに対する高いデータ圧縮およびクエリ パフォーマンスが実現されます。  クラスター化列ストア インデックスは、通常は最適な選択肢ですが、場合によっては、クラスター化インデックスまたはヒープが適切なストレージ構造体の場合もあります。
+既定では、SQL Data Warehouse には、テーブルがクラスター化列ストア インデックスとして格納されます。 この形式のデータ ストレージでは、大きなテーブルに対する高いデータ圧縮およびクエリ パフォーマンスが実現されます。  クラスター化列ストア インデックスは、通常は最適な選択肢ですが、場合によっては、クラスター化インデックスまたはヒープが適切なストレージ構造体の場合もあります。  ヒープ テーブルは、最終的なテーブルに変換されるステージング テーブルなどの一時的なデータを読み込むのに特に役立ちます。
 
-列ストア機能の一覧については[列ストア インデックスの新機能](/sql/relational-databases/indexes/columnstore-indexes-whats-new)に関する記事をご覧ください。 列ストア インデックスのパフォーマンスを向上させるには、[列ストア インデックスの行グループの品質の最大化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)に関する記事をご覧ください。
+列ストア機能の一覧については[列ストア インデックスの新機能](/sql/relational-databases/indexes/columnstore-indexes-what-s-new)に関する記事をご覧ください。 列ストア インデックスのパフォーマンスを向上させるには、[列ストア インデックスの行グループの品質の最大化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)に関する記事をご覧ください。
 
 ## <a name="statistics"></a>統計
-クエリ オプティマイザーでは、クエリ実行のプランの作成時に列レベルの統計が使用されます。 クエリのパフォーマンスを向上させるには、個々の列の統計を作成することが重要です。クエリの結合で使用される列では特に重要です。 統計の作成と更新は自動的には行われません。 テーブルの作成後に[統計を作成](/sql/t-sql/statements/create-statistics-transact-sql)します。 大量の行が追加または変更された後に統計を更新します。 たとえば、読み込みの後に統計を更新します。 詳しくは、[統計のガイダンス](sql-data-warehouse-tables-statistics.md)に関する記事をご覧ください。
+クエリ オプティマイザーでは、クエリ実行のプランの作成時に列レベルの統計が使用されます。 クエリのパフォーマンスを向上させるには、個々の列、特にクエリの結合で使用される列の統計を作成することが重要です。 [統計の作成](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistics)は、自動的に行われます。  ただし、統計の更新は自動的には行われません。 大量の行が追加または変更された後に統計を更新します。 たとえば、読み込みの後に統計を更新します。 詳しくは、[統計のガイダンス](sql-data-warehouse-tables-statistics.md)に関する記事をご覧ください。
 
 ## <a name="commands-for-creating-tables"></a>テーブルを作成するためのコマンド
 テーブルは、新しい空のテーブルとして作成することができます。 テーブルを作成し、SELECT ステートメントの結果を使用して値を設定することもできます。 テーブルを作成するための T-SQL コマンドを次に示します。
@@ -133,7 +134,7 @@ SQL Data Warehouse では他のデータベースで提供されるテーブル�
 - [インデックス付きビュー](/sql/relational-databases/views/create-indexed-views)
 - [シーケンス](/sql/t-sql/statements/create-sequence-transact-sql)
 - [スパース列](/sql/relational-databases/tables/use-sparse-columns)
-- [代理キー]()。 [Identity](sql-data-warehouse-tables-identity.md)で実装されます。
+- 代理キー。 [Identity](sql-data-warehouse-tables-identity.md)で実装されます。
 - [シノニム](/sql/t-sql/statements/create-synonym-transact-sql)
 - [トリガー](/sql/t-sql/statements/create-trigger-transact-sql)
 - [一意のインデックス](/sql/t-sql/statements/create-index-transact-sql)

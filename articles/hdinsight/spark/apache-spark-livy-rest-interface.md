@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 86a047fe291c7872fe275ba7246b9f3e59044723
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 62056b27669f334f1d8007d5284979ac4701f9d9
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236825"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650509"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Apache Spark REST API を使用してリモート ジョブを HDInsight Spark クラスターに送信する
 
-Apache Spark REST API の Livy を使用する方法について説明します。これを使用して、リモート ジョブを Azure HDInsight Spark クラスターに送信します。 詳細なドキュメントについては、 [http://livy.incubator.apache.org/](http://livy.incubator.apache.org/) に関するページを参照してください。
+[Apache Spark](https://spark.apache.org/) REST API の [Apache Livy](https://livy.incubator.apache.org/) を使用する方法について説明します。これを使用して、リモート ジョブを Azure HDInsight Spark クラスターに送信します。 詳細なドキュメントについては、 [https://livy.incubator.apache.org/](https://livy.incubator.apache.org/) に関するページを参照してください。
 
 Livy を使用すると、対話型の Spark シェルを実行したり、Spark で実行されるバッチ ジョブを送信したりすることができます。 この記事では、Livy を使用してバッチ ジョブを送信する方法について説明します。 この記事のスニペットでは、cURL を使用して、Livy Spark エンドポイントへの REST API 呼び出しを行います。
 
@@ -26,10 +26,10 @@ Livy を使用すると、対話型の Spark シェルを実行したり、Spark
 
 * HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
 
-* [cURL](http://curl.haxx.se/)。 この記事では、cURL を使用して、HDInsight Spark クラスターに対して REST API 呼び出しを行う方法を説明します。
+* [cURL](https://curl.haxx.se/)。 この記事では、cURL を使用して、HDInsight Spark クラスターに対して REST API 呼び出しを行う方法を説明します。
 
-## <a name="submit-a-livy-spark-batch-job"></a>Livy Spark バッチ ジョブの送信
-バッチ ジョブを送信する前に、クラスターに関連付けられているクラスター ストレージにアプリケーション jar をアップロードする必要があります。 コピーには、[**AzCopy**](../../storage/common/storage-use-azcopy.md) コマンドライン ユーティリティを使用できます。 データのアップロードに使用できるクライアントは、他にも多数あります。 詳細については、「 [HDInsight での Hadoop ジョブ用データのアップロード](../hdinsight-upload-data.md)」を参照してください。
+## <a name="submit-an-apache-livy-spark-batch-job"></a>Apache Livy Spark バッチ ジョブの送信
+バッチ ジョブを送信する前に、クラスターに関連付けられているクラスター ストレージにアプリケーション jar をアップロードする必要があります。 コピーには、[**AzCopy**](../../storage/common/storage-use-azcopy.md) コマンドライン ユーティリティを使用できます。 データのアップロードに使用できるクライアントは、他にも多数あります。 詳細については、[HDInsight での Apache Hadoop ジョブ用データのアップロード](../hdinsight-upload-data.md)に関するページを参照してください。
 
     curl -k --user "<hdinsight user>:<user password>" -v -H <content-type> -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
 
@@ -172,9 +172,9 @@ Spark クラスターへのリモート ジョブ送信に Livy を使用する�
 
 ### <a name="using-an-external-jar-from-the-additional-storage-is-not-supported"></a>追加のストレージからの外部 jar の使用がサポートされない
 
-**問題:** Livy Spark ジョブがクラスターに関連付けられている追加のストレージ アカウントから外部 jar を参照すると、ジョブが失敗します。
+**問題**:Livy Spark ジョブがクラスターに関連付けられている追加のストレージ アカウントから外部 jar を参照すると、ジョブが失敗します。
 
-**解決方法:** 使用する jar が、HDInsight クラスターに関連付けられている既定のストレージで使用可能か確認してください。
+**解決策:** 使用する jar が、HDInsight クラスターに関連付けられている既定のストレージで使用可能か確認してください。
 
 
 
@@ -182,7 +182,7 @@ Spark クラスターへのリモート ジョブ送信に Livy を使用する�
 
 ## <a name="next-step"></a>次のステップ
 
-* [Livy REST API ドキュメント](http://livy.incubator.apache.org/docs/latest/rest-api.html)
+* [Apache Livy REST API ドキュメント](https://livy.incubator.apache.org/docs/latest/rest-api.html)
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](apache-spark-job-debugging.md)
 

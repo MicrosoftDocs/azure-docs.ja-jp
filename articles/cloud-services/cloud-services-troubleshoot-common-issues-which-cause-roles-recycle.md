@@ -46,7 +46,7 @@ Azure は 64 ビット環境です。 そのため、32 ビット ターゲッ�
 [Run] メソッドは無限に実行するように設計されています。 [Run] メソッドをオーバーライドする場合は、無期限にスリープ状態となるようにコードを記述する必要があります。 [Run] メソッドから制御が戻った場合、ロールはリサイクルされます。
 
 ## <a name="incorrect-diagnosticsconnectionstring-setting"></a>DiagnosticsConnectionString の設定に誤りがある
-アプリケーションで Azure 診断を使用している場合、サービス構成ファイルで `DiagnosticsConnectionString` 構成設定を指定する必要があります。 この設定で、Azure にある該当ストレージ アカウントへの HTTPS 接続を指定します。
+アプリケーションで Azure Diagnostics を使用している場合、サービス構成ファイルで `DiagnosticsConnectionString` 構成設定を指定する必要があります。 この設定で、Azure にある該当ストレージ アカウントへの HTTPS 接続を指定します。
 
 アプリケーション パッケージを Azure にデプロイする前に `DiagnosticsConnectionString` が正しく設定されていることを確かめるために、次の点を確認してください。  
 

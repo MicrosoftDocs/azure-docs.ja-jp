@@ -8,12 +8,12 @@ ms.author: jejiang
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 11/22/2017
-ms.openlocfilehash: 53859f5a81cf1d797ec93e83d75df5a329590dce
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6c234ad6756f4e65e172bf0ffc0ae5a1d35d109b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051634"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087484"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Visual Studio Code で Azure Data Lake Analytics の Python、R、および C# を使用して U-SQL を開発する
 Visual Studio Code (VSCode) を使用して、U-SQL で Python、R、および C# 分離コードを記述し、Azure Data Lake サービスにジョブを送信する方法について説明します。 Data Lake Tools for VSCode の詳細については、「[Azure Data Lake Tools for Visual Studio Code の使用](data-lake-analytics-data-lake-tools-for-vscode.md)」を参照してください。
@@ -30,10 +30,10 @@ ADL アカウントで Python および R の拡張機能アセンブリを登�
 3. **[U-SQL Extensions をインストールする]** を選択します。 
 4. U-SQL 拡張機能のインストール後に、確認メッセージが表示されます。 
 
-  ![Python および R 用の環境の設定](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
+   ![Python および R 用の環境の設定](./media/data-lake-analytics-data-lake-tools-for-vscode/setup-the-enrionment-for-python-and-r.png)
 
-  > [!Note]
-  > Python および R 言語サービスで最適なエクスペリエンスを実現するには、VSCode Python および R 拡張機能をインストールしてください。 
+   > [!Note]
+   > Python および R 言語サービスで最適なエクスペリエンスを実現するには、VSCode Python および R 拡張機能をインストールしてください。 
 
 ## <a name="develop-python-file"></a>Python ファイルの開発
 1. ワークスペースで **[新しいファイル]** をクリックします。
@@ -58,7 +58,7 @@ ADL アカウントで Python および R の拡張機能アセンブリを登�
         USING Outputters.Csv();
     ```
     
-3. スクリプト ファイルを右クリックし、**[ADL: Generate Python Code Behind File]\(ADL: Python 分離コード ファイルの生成\)** を選択します。 
+3. スクリプト ファイルを右クリックし、**[ADL:Generate Python Code Behind File]\(ADL: Python 分離コード ファイルの生成\)** を選択します。 
 4. 作業フォルダーに **xxx.usql.py** ファイルが生成されます。 Python ファイルでコードを記述します。 サンプル コードを次に示します。
 
     ```Python
@@ -115,7 +115,7 @@ ADL アカウントで Python および R の拡張機能アセンブリを登�
     TO @OutputFilePredictions
     USING Outputters.Tsv();
     ```
-3. **USQL** ファイルを右クリックし、**[ADL: Generate R Code Behind File]\(ADL: R 分離コード ファイルの生成\)** を選択します。 
+3. **USQL** ファイルを右クリックし、**[ADL:Generate R Code Behind File]\(ADL: R 分離コード ファイルの生成\)** を選択します。 
 4. 作業フォルダーに **xxx.usql.r** ファイルが生成されます。 R ファイルでコードを記述します。 サンプル コードを次に示します。
 
     ```R
@@ -125,7 +125,7 @@ ADL アカウントで Python および R の拡張機能アセンブリを登�
 5. **USQL** ファイルを右クリックし、**[スクリプトをコンパイル]** をクリックするか、**[ジョブの送信]** をクリックしてジョブを実行します。
 
 ## <a name="develop-c-file"></a>C# ファイルの開発
-分離コード ファイルは、1 つの U-SQL スクリプトに関連付けられている C# ファイルです。 分離コード ファイルでは、スクリプト専用の UDO、UDA、UDT、UDF を定義できます。 UDO、UDA、UDT、UDF は、アセンブリを先に登録しなくても、スクリプト内で直接使用できます。 分離コード ファイルは、対になる U-SQL スクリプト ファイルと同じフォルダーに置かれます。 スクリプトに xxx.usql という名前が付けられた場合、分離コードの名前は xxx.usql.cs となります。 分離コード ファイルを手動で削除すると、関連付けられている U-SQL スクリプトの分離コード機能が無効になります。 U-SQL スクリプト用のカスタム コードを記述する方法の詳細については、「[Writing and Using Custom Code in U-SQL – User-Defined Functions (U-SQL でのカスタム コードの記述と使用 - ユーザー定義関数)]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/)」を参照してください。
+分離コード ファイルは、1 つの U-SQL スクリプトに関連付けられている C# ファイルです。 分離コード ファイルでは、スクリプト専用の UDO、UDA、UDT、UDF を定義できます。 UDO、UDA、UDT、UDF は、アセンブリを先に登録しなくても、スクリプト内で直接使用できます。 分離コード ファイルは、対になる U-SQL スクリプト ファイルと同じフォルダーに置かれます。 スクリプトに xxx.usql という名前が付けられた場合、分離コードの名前は xxx.usql.cs となります。 分離コード ファイルを手動で削除すると、関連付けられている U-SQL スクリプトの分離コード機能が無効になります。 U-SQL スクリプト用のカスタム コードを記述する方法の詳細については、[U-SQL でのカスタム コードの記述と使用:ユーザー定義関数]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/)に関するページを参照してください。
 
 1. ワークスペースで **[新しいファイル]** をクリックします。
 2. U-SQL ファイルでコードを記述します。 サンプル コードを次に示します。
@@ -157,7 +157,7 @@ ADL アカウントで Python および R の拡張機能アセンブリを登�
         TO @"/output/SearchLogtest.txt" 
         USING Outputters.Tsv();
     ```
-3. **USQL** ファイルを右クリックし、**[ADL: Generate CS Code Behind File]\(ADL: CS 分離コード ファイルの生成\)** を選択します。 
+3. **USQL** ファイルを右クリックし、**[ADL:Generate CS Code Behind File]\(ADL: CS 分離コード ファイルの生成\)** を選択します。 
 4. 作業フォルダーに **xxx.usql.cs** ファイルが生成されます。 CS ファイルでコードを記述します。 サンプル コードを次に示します。
 
     ```CS

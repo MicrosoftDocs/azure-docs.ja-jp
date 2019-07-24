@@ -1,23 +1,32 @@
 ---
 title: FAQ - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker サービスについてよく寄せられる質問の一覧
+description: QnA Maker サービスについてきわめて多く寄せられる質問を精選した一覧です。サービスの採用にかかる期間を短縮し、成果を上げるためにお役立てください。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 04/11/2019
 ms.author: tulasim
-ms.openlocfilehash: 2e4a5d9b7ee2a1a88bcfe819be6540385458108f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.custom: seodec18
+ms.openlocfilehash: 8104497a1808aa4e92d62f45e37525dba2f47742
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622365"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607171"
 ---
-# <a name="frequently-asked-questions"></a>よく寄せられる質問
+# <a name="frequently-asked-questions-for-qna-maker"></a>QnA Maker に関してよく寄せられる質問
+
+QnA Maker サービスについてきわめて多く寄せられる質問を精選した一覧です。サービスの採用にかかる期間を短縮し、成果を上げるためにお役立てください。
+
+## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>QnA Maker ポータルでヘルプ ボットを使用する
+
+QnA Maker では、QnA Maker ポータルで役に立つ**ヘルプ** ボットが提供されています。 ヘルプ ボットは、すべての Web ページで利用できます。 ボットでは、QnA Maker を使用して回答が提供されます。ボットには [C# Bot Framework コード プロジェクト](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot)が用意されているので、独自の応答ボットをすばやく稼働させることができます。 
+
+![![QnA Maker では、QnA Maker ポータルで役に立つ**ヘルプ** ボットが提供されています。](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 
 ## <a name="manage-the-knowledge-base"></a>ナレッジ ベースの管理
 
@@ -25,7 +34,7 @@ ms.locfileid: "51622365"
 
 質問と回答のペア、ファイル、URL、カスタムの質問と回答、ナレッジ ベース、Azure リソースを含め、削除はすべて永続的です。 ナレッジ ベースの一部を削除する前に、**[設定]** ページから確実にナレッジ ベースをエクスポートしてください。 
 
-### <a name="why-is-my-urlsfiles-is-not-extracting-question-answer-pairs"></a>指定した URL/ファイルから質問とその回答のペアが抽出されません。なぜでしょうか?
+### <a name="why-is-my-urlsfiles-not-extracting-question-answer-pairs"></a>指定した URL/ファイルから質問とその回答のペアが抽出されません。なぜでしょうか。
 
 QnA Maker は、有効な FAQ URL であっても、一部の Q&A (QnA) コンテンツを自動抽出できない場合があります。 そのような場合は、QnA コンテンツを .txt ファイルに貼り付けて、ツールによる取り込みが可能かどうかを確認できます。 または、[QnA Maker ポータル](https://qnamaker.ai)経由でナレッジ ベースに編集という形でコンテンツを追加することもできます。
 
@@ -41,13 +50,13 @@ QnA Maker は、有効な FAQ URL であっても、一部の Q&A (QnA) コン�
 
 共有は、QnA Maker サービス レベルで行われます。つまり、サービス内のすべてのナレッジ ベースが共有されます。 ナレッジ ベースの共同作業の方法については、[こちら](./How-To/collaborate-knowledge-base.md)を参照してください。
 
-### <a name="can-you-share-a-kb-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-kb"></a>KB を変更するために、同じ AAD テナントに含まれない共同作成者と KB を共有できますか? 
+### <a name="can-you-share-a-knowledge-base-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-knowledge-base"></a>ナレッジ ベースを変更するために、同じ AAD テナントに含まれない共同作成者とナレッジ ベースを共有できますか。 
 
 共有は Azure ロールベースのアクセス制御 (RBAC) に基づきます。 Azure で他のユーザーと _任意の_ リソースを共有できる場合、QnA Maker を共有することもできます。
 
-### <a name="if-you-have-an-app-service-plan-with-5-qnamaker-kbs-can-you-assign-readwrite-rights-to-5-different-users-so-each-of-them-can-access-only-1-qnamaker-kb"></a>5 つの QnAMaker KB で 1 つの App Service プランがある場合。 それぞれ 1 つだけの QnAMaker KB にアクセスできるように、5 人のユーザーに読み取り/書き込み権限を割り当てることができますか?
+### <a name="if-you-have-an-app-service-plan-with-5-qnamaker-knowledge-bases-can-you-assign-readwrite-rights-to-5-different-users-so-each-of-them-can-access-only-1-qnamaker-knowledge-base"></a>5 つの QnAMaker ナレッジ ベースがある 1 つの App Service プランがある場合、 5 人のユーザーに、それぞれが 1 つだけの QnAMaker ナレッジ ベースにアクセスできるように、読み取り/書き込み権限を割り当てることができますか。
 
-個々の KB ではなく、QnAMaker サービス全体を共有できます。
+個々のナレッジ ベースではなく、QnAMaker サービス全体を共有できます。
 
 ### <a name="how-can-i-change-the-default-message-when-no-good-match-is-found"></a>適切な一致が見つからなかったときの既定のメッセージを変更するにはどうすればよいですか?
 
@@ -65,8 +74,7 @@ QnA Maker は、有効な FAQ URL であっても、一部の Q&A (QnA) コン�
 
 ### <a name="why-is-my-sharepoint-link-not-getting-extracted"></a>SharePoint リンクが抽出されません。なぜでしょうか?
 
-このツールで解析されるのはパブリック URL だけです。認証を伴うデータ ソースは、現時点ではサポートされません。 ファイルをダウンロードし、ファイルのアップロード オプションを使用して、質問とその回答を抽出することもできます。
-
+詳細については、「[Data source locations (データ ソースの場所)](./Concepts/data-sources-supported.md#data-source-locations)」を参照してください。
 
 ### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>ナレッジ ベースに対して行った更新が発行時に反映されません。 なぜでしょうか?
 
@@ -94,9 +102,13 @@ QnA Maker は、有効な FAQ URL であっても、一部の Q&A (QnA) コン�
 
 エンドポイント キーの更新は、鍵漏えいのおそれがある場合に行ってください。
 
-### <a name="can-i-use-the-same-azure-search-resource-for-kbs-using-multiple-languages"></a>複数の言語を使用した KB に同じ Azure Search リソースを使用できますか?
+### <a name="can-i-use-the-same-azure-search-resource-for-knowledge-bases-using-multiple-languages"></a>複数の言語を使用したナレッジ ベースに同じ Azure Search リソースを使用できますか。
 
-複数の言語と複数の KB を使用するには、言語ごとに QnA Maker リソースを作成する必要があります。 これにより、言語ごとに個別の Azure Search サービスが作成されます。 1 つの Azure Search サービスに異なる言語の KB を混在させると、結果の関連性が低下します。
+複数の言語と複数のナレッジ ベースを使用するには、言語ごとに QnA Maker リソースを作成する必要があります。 これにより、言語ごとに個別の Azure Search サービスが作成されます。 1 つの Azure Search サービスに異なる言語のナレッジ ベースを混在させると、結果の関連性が低下します。
+
+### <a name="how-can-i-change-the-name-of-the-azure-search-resource-used-by-qna-maker"></a>QnA Maker で使用される Azure Search リソースの名前を変更するには、どうすればよいですか。
+
+Azure Search リソースの名前は、QnA Maker リソース名の後にいくつかのランダムな文字が追加されたものです。 そのため、QnA Maker の複数の Search リソースを識別することが難しくなります。 別の Azure Search サービスを作成し (任意の方法で名前を付け)、それを QnA サービスに接続します。 手順は、[Azure Search をアップグレードする](How-To/upgrade-qnamaker-service.md#upgrade-azure-search-service)ために必要な手順と同様です。
 
 ## <a name="integrate-with-other-services-including-bots"></a>ボットなどの他のサービスとの統合
 

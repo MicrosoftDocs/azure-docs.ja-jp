@@ -4,7 +4,7 @@ description: アプリケーションを Cloud Services から Service Fabric �
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 0b87b1d3-88ad-4658-a465-9f05a3376dee
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 35ab4a9bdd66bf3571e7f189191550f88e17cee2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4682e47e664384a6869e1a74e3de6d9083db082b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206484"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669454"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>アプリケーションの移行前に、Cloud Services と Service Fabric の違いについて学習する。
 Microsoft Azure Service Fabric は、拡張性、信頼性の高い分散アプリケーションのための次世代クラウド アプリケーション プラットフォームです。 分散クラウド アプリケーションのパッケージ化、デプロイ、アップグレード、および管理用に、多数の新機能が導入されています。 
@@ -29,7 +29,7 @@ Microsoft Azure Service Fabric は、拡張性、信頼性の高い分散アプ�
 ## <a name="applications-and-infrastructure"></a>アプリケーションとインフラストラクチャ
 Cloud Services と Service Fabric の基本的な違いは、VM、ワークロード、およびアプリケーション間の関係です。 ここでのワークロードとは、特定のタスクを実行したり、サービスを提供したりするために記述されたコードと定義しています。
 
-* **Cloud Services は、アプリケーションを VM としてデプロイすることと関係しています。** 記述するコードは、Web または Worker ロールなどの VM インスタンスに密結合されます。 Cloud Services にワークロードをデプロイすることは、ワークロードを実行する 1 つ以上の VM インスタンスをデプロイすることです。 アプリケーションと VM の区別はなく、従ってアプリケーションの正式な定義はありません。 アプリケーションは、Cloud Services デプロイメント内の Web または Worker ロール インスタンスのセット、または Cloud Services デプロイメント全体と考えることができます。 この例では、アプリケーションはロール インスタンスのセットとして示されています。
+* **Cloud Services は、アプリケーションを VM としてデプロイすることと関係しています。**  記述するコードは、Web または Worker ロールなどの VM インスタンスに密結合されます。 Cloud Services にワークロードをデプロイすることは、ワークロードを実行する 1 つ以上の VM インスタンスをデプロイすることです。 アプリケーションと VM の区別はなく、従ってアプリケーションの正式な定義はありません。 アプリケーションは、Cloud Services デプロイメント内の Web または Worker ロール インスタンスのセット、または Cloud Services デプロイメント全体と考えることができます。 この例では、アプリケーションはロール インスタンスのセットとして示されています。
 
 ![Cloud Services アプリケーションおよびトポロジ][1]
 
@@ -73,7 +73,7 @@ Service Fabric アプリケーションの完全なアプリケーションで�
 
  直接的な通信は、Service Fabric の一般的な通信モデルです。 Service Fabric と Cloud Services の主な違いは、Cloud Services の場合は VM に接続するのに対し、Service Fabric では、サービスに接続します。 この違いは次のいくつかの理由により重要です。
 
-* Service Fabric のサービスは、それをホストする VM にはバインドされておらず、クラスター内で移動します。つまり、リソースの分散、フェールオーバー、アプリケーションとインフラストラクチャのアップグレード、および配置または負荷の制約など、さまざまな理由で移動することが期待されています。 これは、サービス インスタンスのアドレスが常に変わることを意味します。 
+* Service Fabric 内のサービスは、それをホストする VM にバインドされていません。サービスはクラスター内を移動する可能性があり、実際、次のようなさまざまな理由で移動することが予想されます: リソースの分散、フェールオーバー、アプリケーションとインフラストラクチャのアップグレード、配置または負荷の制約など。 これは、サービス インスタンスのアドレスが常に変わることを意味します。 
 * Service Fabric の VM は、それぞれが固有のエンドポイントを持つ複数のサービスをホストできます。
 
 Service Fabric には、サービスのエンドポイント アドレスを解決するために使用できる、命名サービスというサービス検出メカニズムがあります。 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c78a54d5002972339994d9590c0a3e23b5c69bd9
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: a029477dfd8046863ebfe34cd839562a0b1f3d87
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807869"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607797"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>仮想マシン プランの価格
 ==================================
@@ -102,7 +102,7 @@ ms.locfileid: "48807869"
 
 次の表は、カスタマイズされたコア価格に対して指定できるさまざまなリージョンと、それぞれに対応する通貨コードを示します。
 
-| **[リージョン]** | **名前**             | **通貨コード** |
+| **[リージョン]** | **Name**             | **通貨コード** |
 |------------|----------------------|-------------------|
 | DZ         | アルジェリア              | DZD               |
 | AR         | アルゼンチン            | ARS               |
@@ -149,7 +149,7 @@ ms.locfileid: "48807869"
 | LI         | リヒテンシュタイン        | CHF               |
 | LT         | リトアニア            | EUR               |
 | LU         | ルクセンブルク           | EUR               |
-| MK         | マケドニア (旧ユーゴスラビア共和国)       | MKD               |
+| MK         | 北マケドニア      | MKD               |
 | MY         | マレーシア             | MYR               |
 | MT         | マルタ                | EUR               |
 | MX         | メキシコ               | MXN               |

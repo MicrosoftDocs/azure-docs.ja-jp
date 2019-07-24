@@ -1,23 +1,24 @@
 ---
-title: 'チュートリアル: 画像処理アプリをビルドする - C#'
+title: サンプル:画像処理アプリの探索 (C#)
 titleSuffix: Computer Vision - Cognitive Services - Azure
 description: Microsoft Cognitive Services で Computer Vision API を使用する基本的な Windows アプリについて説明します。 OCR を実行し、サムネイルを作成して、イメージ内の視覚的な特徴を操作します。
 services: cognitive-services
 author: PatrickFarley
 manager: nolachar
 ms.service: cognitive-services
-ms.component: computer-vision
-ms.topic: article
-ms.date: 08/28/2018
+ms.subservice: computer-vision
+ms.topic: sample
+ms.date: 02/08/2019
 ms.author: pafarley
-ms.openlocfilehash: d1fa468874cdc51bad3421f700a69f3ffb268635
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: a23e45cb1e75305f41c81077c90282352327b72d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342655"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310945"
 ---
-# <a name="tutorial-build-an-image-processing-app---c35"></a>チュートリアル: 画像処理アプリをビルドする - C&#35;
+# <a name="sample-explore-an-image-processing-app-with-c"></a>サンプル:画像処理アプリの探索 (C#)
 
 Computer Vision を使用して、光学文字認識 (OCR) を実行し、スマートにトリミングされたサムネイルを作成するほか、画像内の視覚的な特徴 (顔など) を検出、分類、タグ付け、および記述する、基本的な Windows アプリケーションについて詳しく説明します。 下の例では、イメージ URL またはローカルに保存されたファイルを送信できます。 このオープン ソースの例をテンプレートとして使用し、Computer Vision API と、.NET Framework の一部である Windows Presentation Foundation (WPF) を使用して、Windows 用の独自アプリをビルドできます。
 
@@ -97,11 +98,8 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windo
    |Recognize Text V2 (English) (テキストを認識する V2 (英語)) | [Recognize Text (テキストの認識)](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) 操作と [Get Recognize Text Operation Result (テキストの認識操作の結果の取得)](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) 操作を使用して、画像から印刷テキストまたは手書きテキストを非同期的に認識して抽出します。 |
    |Get Thumbnail (サムネイルを取得する) | [Get Thumbnail (サムネイルの取得)](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) 操作を使用して、ローカルまたはリモートの画像のサムネイルを生成します。 |
 
-   > [!IMPORTANT]
-   > Microsoft は、ユーザーがアップロードしたイメージを受け取り、Computer Vision API および関連サービスを改善するためにそれらを使用することがあります。 イメージを送信することにより、[開発者の倫理規定](https://azure.microsoft.com/support/legal/developer-code-of-conduct/)に従っていることを確認します。
-
    次のスクリーンショットは、Analyze Image (画像を分析する) シナリオでサンプル画像を分析した後に表示されるページです。
-   ![Analyze Image (画像を分析する) シナリオのページ](../Images/Analyze_Image_Example.PNG)
+   ![[画像分析] ページのスクリーン ショット](../Images/Analyze_Image_Example.PNG)
 
 ## <a name="explore-the-sample-app"></a>サンプル アプリを調べる
 

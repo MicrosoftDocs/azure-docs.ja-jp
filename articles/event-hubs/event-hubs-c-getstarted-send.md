@@ -1,6 +1,6 @@
 ---
-title: C を使用して Azure Event Hubs にイベントを送信する | Microsoft Docs
-description: C を使用して Azure Event Hubs にイベントを送信する
+title: C を使用してイベントを送信する - Azure Event Hubs | Microsoft Docs
+description: この記事では、Azure Event Hubs にイベントを送信する C アプリケーションを作成するためのチュートリアルを提供します。
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: c
 ms.devlang: csharp
 ms.topic: article
-ms.date: 10/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 32345b0f064aa78dbf1cbb84cb2309138e7bf4f7
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 6cb1f788f41fe07516d759b177e1d76405dd2bf8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49455387"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57529727"
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>C を使用して Azure Event Hubs にイベントを送信する
 
@@ -34,8 +35,15 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
 * C の開発環境。 このチュートリアルでは、Ubuntu 14.04 での Azure Linux VM 上の GCC スタックを想定しています。
 * [Microsoft Visual Studio](https://www.visualstudio.com/)。
 
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs 名前空間とイベント ハブを作成する
+最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順に従います。
+
+次の記事の手順に従って、イベント ハブ用のアクセス キーの値を取得します:[接続文字列を取得する](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 このチュートリアルの後半で記述するコードで、このアクセス キーを使用します。 既定のキー名は次のとおりです:**RootManageSharedAccessKey**。
+
+このチュートリアルでは、以下の手順に進みます。
+
 ## <a name="write-code-to-send-messages-to-event-hubs"></a>Event Hubs にメッセージを送信するコードの記述
-このセクションでは、イベントをイベント ハブに送信する C アプリの作成方法を示します。 コードでは、[Apache Qpid プロジェクト](http://qpid.apache.org/)の Proton AMQP ライブラリを使用します。 これは、[この例](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)に示すように、C の AMQP を Service Bus キューとトピックと共に使用するのに似ています。 詳しくは、[Qpid Proton のドキュメント](http://qpid.apache.org/proton/index.html)をご覧ください。
+このセクションでは、イベントをイベント ハブに送信する C アプリの作成方法を示します。 コードでは、[Apache Qpid プロジェクト](https://qpid.apache.org/)の Proton AMQP ライブラリを使用します。 これは、[この例](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)に示すように、C の AMQP を Service Bus キューとトピックと共に使用するのに似ています。 詳しくは、[Qpid Proton のドキュメント](https://qpid.apache.org/proton/index.html)をご覧ください。
 
 1. [Qpid AMQP Messenger ページ](https://qpid.apache.org/proton/messenger.html)で、環境に応じた Qpid Proton をインストールするための指示に従ってください。
 2. Proton ライブラリをコンパイルするには、次のパッケージをインストールします。
@@ -43,10 +51,10 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
     ```shell
     sudo apt-get install build-essential cmake uuid-dev openssl libssl-dev
     ```
-3. [Qpid Proton ライブラリ](http://qpid.apache.org/proton/index.html)をダウンロードし、次のように抽出します。
+3. [Qpid Proton ライブラリ](https://qpid.apache.org/proton/index.html)をダウンロードし、次のように抽出します。
    
     ```shell
-    wget http://archive.apache.org/dist/qpid/proton/0.7/qpid-proton-0.7.tar.gz
+    wget https://archive.apache.org/dist/qpid/proton/0.7/qpid-proton-0.7.tar.gz
     tar xvfz qpid-proton-0.7.tar.gz
     ```
 4. build ディレクトリを作成し、コンパイルとインストールを行います。
@@ -58,7 +66,7 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     sudo make install
     ```
-5. 作業ディレクトリに **sender.c** と呼ばれる新しいファイルを次のコードを使用して作成します。 SAS キー/名前、イベント ハブの名前、名前空間の値を忘れずに置換してください。 前に作成した **SendRule** のキーの URL でエンコードされたバージョンも代入する必要があります。 [ここ](http://www.w3schools.com/tags/ref_urlencode.asp)で URL でエンコードすることができます。
+5. 作業ディレクトリに **sender.c** と呼ばれる新しいファイルを次のコードを使用して作成します。 SAS キー/名前、イベント ハブの名前、名前空間の値を忘れずに置換してください。 前に作成した **SendRule** のキーの URL でエンコードされたバージョンも代入する必要があります。 [ここ](https://www.w3schools.com/tags/ref_urlencode.asp)で URL でエンコードすることができます。
    
     ```c
     #include "proton/message.h"

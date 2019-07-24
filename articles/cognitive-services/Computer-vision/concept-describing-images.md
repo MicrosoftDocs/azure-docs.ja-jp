@@ -1,31 +1,32 @@
 ---
 title: 画像の説明 - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Computer Vision API を使用した画像の記述に関連する概念。
+description: Computer Vision API の画像説明機能に関連する概念。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/11/2019
 ms.author: pafarley
-ms.openlocfilehash: 423d1be57bc800108a08a81b72587ca2711bbc3d
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 91618b211fdd869daf74491b175d6359ffa3f30c
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342417"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312193"
 ---
-# <a name="describing-images"></a>イメージの説明
+# <a name="describe-images-with-human-readable-language"></a>人間が判読できる言語で画像を説明する
 
-Computer Vision のアルゴリズムでは、画像の内容が分析されます。 この分析では、完全な文章で人間が判読できる言語として表示される "説明" の基礎が形成されます。 説明には、イメージで検出された内容の概要が示されます。 Computer Vision のアルゴリズムでは、画像で識別された視覚的特徴に基づいて、さまざまな説明が生成されます。 各説明は評価されて、信頼度スコアが生成されます。 その後、信頼度スコアが最も高いものから最も低いものの順に並べられたリストが返されます。
+Computer Vision では、イメージを分析し、人間が判読できる言語で、その内容を説明する文を生成できます。 実際には、アルゴリズムにより、さまざまな視覚化機能に基づいて複数の説明が返されます。各説明には、信頼度スコアが付与されます。 最終的には、各説明を信頼度の高い順に並べたリストが出力されます。
 
 ## <a name="image-description-example"></a>画像の説明の例
 
 次の JSON 応答は、視覚的特徴に基づいてサンプル画像を説明するときに、Computer Vision から返される内容を示します。
 
-![白黒のビル](./Images/bw_buildings.png)
+![マンハッタンのビル群の白黒写真](./Images/bw_buildings.png)
 
 ```json
 {

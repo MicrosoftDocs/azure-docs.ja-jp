@@ -1,210 +1,225 @@
 ---
-title: 'チュートリアル: Azure Active Directory と StatusPage の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と StatusPage の統合 | Microsoft Docs
 description: Azure Active Directory と StatusPage の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: f6ee8bb3-df43-4c0d-bf84-89f18deac4b9
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/11/2017
+ms.topic: tutorial
+ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: e79eb2473760fd1eb7ccc3816ac73cce7c801f3e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 49f77da5843bc2438ea7f82475b4faf753b66f09
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445366"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565206"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>チュートリアル: Azure Active Directory と StatusPage の統合
+# <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>チュートリアル:Azure Active Directory と StatusPage の統合
 
 このチュートリアルでは、StatusPage と Azure Active Directory (Azure AD) を統合する方法について説明します。
-
 StatusPage と Azure AD の統合には、次の利点があります。
 
-- StatusPage にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に StatusPage にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます
+* StatusPage にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントで StatusPage に自動的にサインイン (シングル サインオン) するように設定できます。
+* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 StatusPage と Azure AD の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション
-- StatusPage でのシングル サインオンが有効なサブスクリプション
-
-> [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
-
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
+* StatusPage でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの StatusPage の追加
-1. Azure AD シングル サインオンの構成とテスト
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+
+* StatusPage では、**IDP** Initiated SSO がサポートされます
 
 ## <a name="adding-statuspage-from-the-gallery"></a>ギャラリーからの StatusPage の追加
+
 Azure AD への StatusPage の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に StatusPage を追加する必要があります。
 
 **ギャラリーから StatusPage を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Active Directory][1]
+    ![Azure Active Directory のボタン](common/select-azuread.png)
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** オプションを選択します。
 
-    ![[アプリケーション]][2]
-    
-1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-    ![[アプリケーション]][3]
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-1. 検索ボックスに、「 **StatusPage**」と入力します。
+    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-    ![Azure AD のテスト ユーザーの作成](./media/statuspage-tutorial/tutorial_statuspage_search.png)
+4. 検索ボックスに「**StatusPage**」と入力し、結果パネルで **[StatusPage]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
-1. 結果ウィンドウで **[StatusPage]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+    ![結果一覧の StatusPage](common/search-new-app.png)
 
-    ![Azure AD のテスト ユーザーの作成](./media/statuspage-tutorial/tutorial_statuspage_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、StatusPage で Azure AD のシングル サインオンを構成し、テストします。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する StatusPage ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと StatusPage の関連ユーザーの間で、リンク関係が確立されている必要があります。
-
-StatusPage で、Azure AD の **[ユーザー名]** の値を **[Username]** の値として割り当ててリンク関係を確立します。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、StatusPage で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと StatusPage 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 StatusPage で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[StatusPage のテスト ユーザーの作成](#creating-a-statuspage-test-user)** - StatusPage で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
-1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[StatusPage のシングル サインオンの構成](#configure-statuspage-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[StatusPage のテスト ユーザーの作成](#create-statuspage-test-user)** - StatusPage で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、StatusPage アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-**StatusPage で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+StatusPage で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. Azure Portal の **StatusPage** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **StatusPage** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![Configure single sign-on][4]
+    ![シングル サインオン構成のリンク](common/select-sso.png)
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_samlbase.png)
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-1. **[StatusPage のドメインと URL]** セクションで、次の手順を実行します。
+    ![シングル サインオン選択モード](common/select-saml-option.png)
 
-    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_url.png)
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    a. **[識別子]** ボックスに、次のパターンで URL を入力します。
+    ![基本的な SAML 構成を編集する](common/edit-urls.png)
+
+4. **[SAML でシングル サインオンをセットアップします]** ページで、次の手順を実行します。
+
+    ![[StatusPage のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+
+    a. **[識別子]** ボックスに、次の形式で URL を入力します。
+    
     | |
     |--|
-    | `https://<subdomain>.statuspagestaging.com/` |
-    | `https://<subdomain>.statuspage.io/` |
+    | `https://<subdomain>.statuspagestaging.com/`|
+    | `https://<subdomain>.statuspage.io/`|
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 
+    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+    
     | |
     |--|
-    | `https://<subdomain>.statuspagestaging.com/sso/saml/consume` |
-    | `https://<subdomain>.statuspage.io/sso/saml/consume` |
+    | `https://<subdomain>.statuspagestaging.com/sso/saml/consume`|
+    | `https://<subdomain>.statuspage.io/sso/saml/consume`|
 
     > [!NOTE]
     > シングル サインオンを構成するために必要なメタデータは、StatusPage サポート チーム ( [SupportTeam@statuspage.io](mailto:SupportTeam@statuspage.io)) に連絡して入手してください。 
     >
-    >a. メタデータから発行者の値をコピーし、**[識別子]** ボックスに貼り付けます。
+    > a. メタデータから発行者の値をコピーし、**[識別子]** ボックスに貼り付けます。
     >
-    >b. メタデータから応答 URL をコピーし、**[応答 URL]** ボックスに貼り付けます。
+    > b. メタデータから応答 URL をコピーし、**[応答 URL]** ボックスに貼り付けます。
 
-1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
-    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_certificate.png) 
+    ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-1. **[保存]** ボタンをクリックします。
+6. **[StatusPage のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
 
-    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_general_400.png)
+    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-1. **[StatusPage 構成]** セクションで、**[StatusPage を構成する]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+    a. ログイン URL
 
-    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_configure.png) 
+    b. Azure AD 識別子
 
-1. 別の Web ブラウザー ウィンドウで、管理者として StatusPage 企業サイトにサインオンします。
+    c. ログアウト URL
+
+### <a name="configure-statuspage-single-sign-on"></a>StatusPage のシングル サインオンの構成
+
+1. 別のブラウザー ウィンドウで、管理者として StatusPage 企業サイトにサインインします。
 
 1. メイン ツール バーで、 **[Manage Account]** をクリックします。
-   
-    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_06.png) 
 
-1. **[Single Sign-on]** タブをクリックします。 
-   
-    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_07.png) 
+    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_06.png)
+
+1. **[Single Sign-on]** タブをクリックします。
+
+    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_07.png)
 
 1. [SSO Setup] ページで、次の手順に従います。
-   
-    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_08.png) 
 
-    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_09.png) 
- 
-    a. **[SSO ターゲット URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_08.png)
 
-    b. ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[Certificate]** ボックスに貼り付けます。 
+    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_09.png)
+
+    a. **[SSO Target URL]\(SSO ターゲット URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+
+    b. ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[Certificate]** ボックスに貼り付けます。
 
     c. **[構成の保存]** をクリックします。
 
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
-> 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-![Azure AD ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
 
-1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/statuspage-tutorial/create_aaduser_01.png) 
+    ![[新しいユーザー] ボタン](common/new-user.png)
 
-1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
-    
-    ![Azure AD のテスト ユーザーの作成](./media/statuspage-tutorial/create_aaduser_02.png) 
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
- 
-    ![Azure AD のテスト ユーザーの作成](./media/statuspage-tutorial/create_aaduser_03.png) 
+    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
- 
-    ![Azure AD のテスト ユーザーの作成](./media/statuspage-tutorial/create_aaduser_04.png) 
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。  
+    たとえば、BrittaSimon@contoso.com のように指定します。
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
-
-    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
     d. **Create** をクリックしてください。
- 
-### <a name="creating-a-statuspage-test-user"></a>StatusPage のテスト ユーザーの作成
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+
+このセクションでは、Britta Simon に StatusPage へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[StatusPage]** を選択します。
+
+    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+
+2. アプリケーションの一覧で **[StatusPage]** を選択します。
+
+    ![アプリケーションの一覧の StatusPage のリンク](common/all-applications.png)
+
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
+
+    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
+
+4. **[ユーザーの追加]** をクリックし、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+
+    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
+
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+
+6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+
+7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+
+### <a name="create-statuspage-test-user"></a>StatusPage のテスト ユーザーの作成
 
 このセクションの目的は、StatusPage で Britta Simon というユーザーを作成することです。
 
-StatusPage では、ジャストインタイム プロビジョニングがサポートされています。 この機能は、「 [Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)」で既に有効にしています。
+StatusPage では、ジャストインタイム プロビジョニングがサポートされています。 この機能は、「[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)」で既に有効にしています。
 
 **StatusPage で Britta Simon というユーザーを作成するには、次の手順に従います。**
 
@@ -214,76 +229,32 @@ StatusPage では、ジャストインタイム プロビジョニングがサ�
 
     ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_06.png)
 
-1. **[チーム メンバー]** タブをクリックします。 
-   
+1. **[チーム メンバー]** タブをクリックします。
+  
     ![Azure AD のテスト ユーザーの作成](./media/statuspage-tutorial/tutorial_statuspage_10.png) 
 
-1. **[チーム メンバーの追加]** をクリックします。 
-   
+1. **[チーム メンバーの追加]** をクリックします。
+  
     ![Azure AD のテスト ユーザーの作成](./media/statuspage-tutorial/tutorial_statuspage_11.png) 
 
 1. プロビジョニングする有効なユーザーの**電子メール アドレス**、**名**、**姓**を、対応するテキスト ボックスに入力します。 
-   
+
     ![Azure AD のテスト ユーザーの作成](./media/statuspage-tutorial/tutorial_statuspage_12.png) 
 
 1. **[Role]** で **[Client Administrator]** を選択します。
 
 1. **[アカウントの作成]** をクリックします。
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
-このセクションでは、Britta Simon に StatusPage へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-![ユーザーの割り当て][200] 
-
-**Britta Simon を StatusPage に割り当てるには、次の手順に従います。**
-
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
-
-    ![ユーザーの割り当て][201] 
-
-1. アプリケーションの一覧で **[StatusPage]** を選択します。
-
-    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_app.png) 
-
-1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
-
-    ![ユーザーの割り当て][202] 
-
-1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![ユーザーの割り当て][203]
-
-1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
-
-1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
-
-1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
-
-このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
-
-アクセス パネルで [StatusPage] タイルをクリックすると、自動的に StatusPage アプリケーションにサインオンします。
+アクセス パネル上で [StatusPage] タイルをクリックすると、SSO を設定した StatusPage に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/statuspage-tutorial/tutorial_general_01.png
-[2]: ./media/statuspage-tutorial/tutorial_general_02.png
-[3]: ./media/statuspage-tutorial/tutorial_general_03.png
-[4]: ./media/statuspage-tutorial/tutorial_general_04.png
-
-[100]: ./media/statuspage-tutorial/tutorial_general_100.png
-
-[200]: ./media/statuspage-tutorial/tutorial_general_200.png
-[201]: ./media/statuspage-tutorial/tutorial_general_201.png
-[202]: ./media/statuspage-tutorial/tutorial_general_202.png
-[203]: ./media/statuspage-tutorial/tutorial_general_203.png
-
+- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

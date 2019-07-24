@@ -1,32 +1,45 @@
-items:
 - name: Project Acoustics のドキュメント
 - name: 概要
   items:
-  - name: Project Acoustics とは
-    href: what-is-acoustics.md
+    - name: Project Acoustics とは
+      href: what-is-acoustics.md
 - name: クイック スタート
   items:
-  - name: Getting Started (概要)
-    href: getting-started.md
+    - name: Unity でのクイック スタート
+      href: unity-quickstart.md
+    - name: Unreal でのクイック スタート
+      href: unreal-quickstart.md
+- name: チュートリアル
+  items:
+    - name: Unity
+      items:
+        - name: Unity での音響のベイク処理
+          href: unity-baking.md
+        - name: Unity デザイン ワークフロー
+          href: unity-workflow.md
+    - name: Unreal/Wwise
+      items:
+        - name: Unreal/Wwise での音響のベイク処理
+          href: unreal-baking.md
+        - name: Unreal/Wwise デザイン ワークフロー
+          href: unreal-workflow.md
+- name: 概念
+  items:
+    - name: Acoustics シミュレーションによる設計概念
+      href: design-process.md
+    - name: ベイク精度
+      href: bake-resolution.md
 - name: 方法
   items:
-  - name: Azure Batch アカウントの作成
-    href: create-azure-account.md
-  - name: Acoustics の作成
-    href: bake-ui-walkthrough.md
-  - name: Acoustics の設計
-    href: design-process.md
+    - name: Azure Batch アカウントの作成
+      href: create-azure-account.md
+    - name: Project Acoustics を Unity に統合する
+      href: unity-integration.md
+    - name: Project Acoustics を Unreal/Wwise に統合する
+      href: unreal-integration.md
 - name: リソース
   items:
-  - name: Acoustics のサンプル シーン
-    href: sample-walkthrough.md
-  - name: よく寄せられる質問
-    href: faq.md
-  - name: 既知の問題
-    href: known-issues.md
-ms.openlocfilehash: 225d620cddfd68f3d5fb6d6d841c8f33254f1309
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181836"
+    - name: よく寄せられる質問
+      href: faq.md
+    - name: 既知の問題
+      href: known-issues.md

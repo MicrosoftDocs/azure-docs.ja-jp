@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f6849bf8b4070f018f0b410bd8aedc73755c2c62
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985630"
 documentType: LandingData
 title: Azure Security Center のドキュメント
 metadata:
   title: Azure Security Center のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  meta.description: Azure Security Center provides unified security management and advanced threat protection across hybrid cloud workloads. Learn how to get started with Security Center, apply security policies across your workloads, limit your exposure to threats, and detect and respond to attacks with our quickstarts and tutorials..
+  meta.description: 'Azure Security Center provides unified security management and advanced threat protection across hybrid cloud workloads. Learn how to get started with Security Center, apply security policies across your workloads, limit your exposure to threats, and detect and respond to attacks with our quickstarts and tutorials..'
   services: security-center
   author: cmcclister
   manager: carolz
@@ -22,68 +16,73 @@ metadata:
 abstract:
   description: Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を実現します。 Microsoft が提供するクイックスタートとチュートリアルを使用して、Security Center の使用を開始する方法、ワークロード全体でセキュリティ ポリシーを適用する方法、脅威にさらされる状態を軽減する方法、攻撃を検出して対応する方法を確認してください。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: Security Center に VM やコンピューターをオンボードし、セキュリティ ソリューションを接続する方法について説明します。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        src: /media/common/i_subscription.svg
-      text: Azure サブスクリプションのオンボード
-      href: /azure/security-center/security-center-get-started
-    - image:
-        src: /media/logos/logo_Windows.svg
-      text: Windows コンピューターのオンボード
-      href: /azure/security-center/quick-onboard-windows-computer
-    - image:
-        src: /media/logos/logo_linux.svg
-      text: Linux コンピューターのオンボード
-      href: /azure/security-center/quick-onboard-linux-computer
-    - image:
-        src: /media/common/i_multi-connect.svg
-      text: セキュリティ ソリューションの接続
-      href: /azure/security-center/quick-security-solutions
-- title: ステップバイステップのチュートリアル
-  items:
-  - type: paragraph
-    text: セキュリティ ポリシーを定義する方法、悪意のあるアクティビティからリソースを保護する方法、セキュリティのアラートおよびインシデントに対応する方法について説明します。
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: Security Center に VM やコンピューターをオンボードし、セキュリティ ソリューションを接続する方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /media/common/i_subscription.svg
+            text: Azure サブスクリプションのオンボード
+            href: /azure/security-center/security-center-get-started
+          - image:
+              src: /media/logos/logo_Windows.svg
+            text: Windows コンピューターのオンボード
+            href: /azure/security-center/quick-onboard-windows-computer
+          - image:
+              src: /media/logos/logo_linux.svg
+            text: Linux コンピューターのオンボード
+            href: /azure/security-center/quick-onboard-linux-computer
+          - image:
+              src: /media/common/i_multi-connect.svg
+            text: セキュリティ ソリューションの接続
+            href: /azure/security-center/quick-security-solutions
+  - title: ステップバイステップのチュートリアル
     items:
-    - html: <a href="/azure/security-center/tutorial-security-policy">セキュリティ ポリシーの定義と評価</a>
-    - html: <a href="/azure/security-center/tutorial-protect-resources">リソースの保護</a>
-    - html: <a href="/azure/security-center/tutorial-security-incident">セキュリティ インシデントへの対応</a>
-- title: Microsoft Learn でスキルを身に付ける
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: セキュリティ ポリシーを定義する方法、悪意のあるアクティビティからリソースを保護する方法、セキュリティのアラートおよびインシデントに対応する方法について説明します。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/security-center/tutorial-security-policy">セキュリティ ポリシーの定義と評価</a>
+          - html: <a href="/azure/security-center/tutorial-protect-resources">リソースの保護</a>
+          - html: <a href="/azure/security-center/tutorial-security-incident">セキュリティ インシデントへの対応</a>
+  - title: Microsoft Learn でスキルを身に付ける
     items:
-    - title: "  Azure のセキュリティの概要"
-      href: /learn/modules/intro-to-security-in-azure/
-      image:
-        src: /learn/achievements/intro-to-security-in-azure.svg
-        href: /learn/modules/intro-to-security-in-azure/
-  - type: paragraph
-    text: <a href="/learn/browse/?term=security">対話型学習の詳細...</a>
-- title: 無料のビデオ トレーニング
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: "\_\_Azure のセキュリティの概要"
+            href: /learn/modules/intro-to-security-in-azure/
+            image:
+              src: /learn/achievements/intro-to-security-in-azure.svg
+              href: /learn/modules/intro-to-security-in-azure/
+      - type: paragraph
+        text: <a href="/learn/browse/?term=security">対話型学習の詳細...</a>
+  - title: 無料のビデオ トレーニング
     items:
-    - title: Azure Security Center の基礎
-      href: https://mva.microsoft.com/en-US/training-courses/hybrid-cloud-workload-protection-with-azure-security-center-18173?l=Ld0LK42jE_006218965
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_azure.svg
-        href: https://mva.microsoft.com/en-US/training-courses/hybrid-cloud-workload-protection-with-azure-security-center-18173?l=Ld0LK42jE_006218965
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure Security Center を使用してクラウド リソースの保護を合理化する - Ignite 2018
+            href: 'https://youtu.be/0txX1Y0GXDc'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_azure.svg'
+              href: 'https://youtu.be/0txX1Y0GXDc'
+          - title: Azure Security Center を使用してサーバー ワークロードをセキュリティ保護する - Ignite 2018
+            href: 'https://youtu.be/Kb_xeIJVROo'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_azure.svg'
+              href: 'https://youtu.be/Kb_xeIJVROo'
+  - title: リファレンス
     items:
-    - html: <a href="https://msdn.microsoft.com/library/mt704034(Azure.100).aspx">REST API リファレンスに関するページ</a>
-    - html: <a href="https://azure.microsoft.com/updates/?product=security-center">サービスの更新情報</a>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - html: '<a href="https://docs.microsoft.com/rest/api/securitycenter/">REST API リファレンス</a>'
+          - html: '<a href="https://azure.microsoft.com/updates/?product=security-center">サービスの更新情報</a>'

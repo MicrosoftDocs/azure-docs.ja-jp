@@ -9,13 +9,13 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.component: queues
-ms.openlocfilehash: 38da370e8e3cd81e209d0fd592d6b2afa8c82e44
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.subservice: queues
+ms.openlocfilehash: 31f0be804085643d048a35dd61da9156f291f7da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138515"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006454"
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>Node.js から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -64,7 +64,7 @@ var azure = require('azure-storage');
 ## <a name="setup-an-azure-storage-connection"></a>Azure のストレージ接続文字列の設定
 Azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT と AZURE\_STORAGE\_ACCESS\_KEY、または AZURE\_STORAGE\_CONNECTION\_STRING を読み取ります。 これらの環境変数が設定されていない場合、 **createQueueService**を呼び出すときにアカウント情報を指定する必要があります。
 
-## <a name="how-to-create-a-queue"></a>方法: キューを作成する
+## <a name="how-to-create-a-queue"></a>方法:キューを作成する
 次のコードは、 **QueueService** オブジェクトを作成し、これによってキューを操作できるようにします。
 
 ```javascript
@@ -105,7 +105,7 @@ var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var queueSvc = azure.createQueueService().withFilter(retryOperations);
 ```
 
-## <a name="how-to-insert-a-message-into-a-queue"></a>方法: メッセージをキューに挿入する
+## <a name="how-to-insert-a-message-into-a-queue"></a>方法:メッセージをキューに挿入する
 キューにメッセージを挿入するには、 **createMessage** メソッドを使用し、新しいメッセージを作成してキューに追加します。
 
 ```javascript
@@ -116,7 +116,7 @@ queueSvc.createMessage('myqueue', "Hello world!", function(error, results, respo
 });
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>方法: 次のメッセージをピークする
+## <a name="how-to-peek-at-the-next-message"></a>方法:次のメッセージをピークする
 **peekMessages** メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。 既定では、 **peekMessages** は 1 つのメッセージを対象としてピークします。
 
 ```javascript
@@ -134,7 +134,7 @@ queueSvc.peekMessages('myqueue', function(error, results, response){
 > 
 > 
 
-## <a name="how-to-dequeue-the-next-message"></a>方法: 次のメッセージをデキューする
+## <a name="how-to-dequeue-the-next-message"></a>方法:次のメッセージをデキューする
 メッセージは、次の 2 段階のプロセスで処理されます。
 
 1. メッセージをデキューする。
@@ -164,7 +164,7 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 > 
 > 
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>方法: キューに配置されたメッセージの内容を変更する
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>方法:キューに配置されたメッセージの内容を変更する
 **updateMessage**を使用すると、キュー内のメッセージの内容をインプレースで変更できます。 次に、メッセージのテキストを更新する例を示します。
 
 ```javascript
@@ -181,7 +181,7 @@ queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
 });
 ```
 
-## <a name="how-to-additional-options-for-dequeuing-messages"></a>方法: メッセージをデキューするための追加オプション
+## <a name="how-to-additional-options-for-dequeuing-messages"></a>方法:メッセージをデキューするためのその他のオプション
 キューからのメッセージの取得をカスタマイズする方法は 2 つあります。
 
 * `options.numOfMessages` - メッセージをバッチで取得する (最大 32 個)。
@@ -206,7 +206,7 @@ queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, 
 });
 ```
 
-## <a name="how-to-get-the-queue-length"></a>方法: キューの長さを取得する
+## <a name="how-to-get-the-queue-length"></a>方法:キューの長さを取得する
 **getQueueMetadata** は、キューで待機中のおおよそのメッセージ数など、キューに関するメタデータを返します。
 
 ```javascript
@@ -217,7 +217,7 @@ queueSvc.getQueueMetadata('myqueue', function(error, results, response){
 });
 ```
 
-## <a name="how-to-list-queues"></a>方法: キューを一覧表示する
+## <a name="how-to-list-queues"></a>方法:キューを一覧表示する
 キューの一覧表示を取得するには、 **listQueuesSegmented**を使用します。 特定のプレフィックスでフィルター処理した一覧を取得するには、 **listQueuesSegmentedWithPrefix**を使用します。
 
 ```javascript
@@ -230,7 +230,7 @@ queueSvc.listQueuesSegmented(null, function(error, results, response){
 
 すべてのキューを返すことができない場合は、`result.continuationToken` を **listQueuesSegmented** の最初のパラメーターとして使うか、**listQueuesSegmentedWithPrefix** の 2 つ目のパラメーターとして使って、さらに多くの結果を取得することができます。
 
-## <a name="how-to-delete-a-queue"></a>方法: キューを削除する
+## <a name="how-to-delete-a-queue"></a>方法:キューを削除する
 キューおよびキューに含まれているすべてのメッセージを削除するには、キュー オブジェクトに対して **deleteQueue** メソッドを呼び出します。
 
 ```javascript
@@ -243,7 +243,7 @@ queueSvc.deleteQueue(queueName, function(error, response){
 
 すべてのメッセージを削除せずにキューからクリアするには、 **clearMessages**を使用します。
 
-## <a name="how-to-work-with-shared-access-signatures"></a>方法: 共有アクセス署名を操作する
+## <a name="how-to-work-with-shared-access-signatures"></a>方法:Shared Access Signature を操作する
 共有アクセス署名 (SAS) は、ストレージ アカウントの名前またはキーを指定せずにキューへの細密なアクセスを提供する安全な方法です。 SAS は、モバイル アプリによるメッセージの送信を許可する場合など、キューへの制限されたアクセスを提供する場合によく使用されます。
 
 クラウドベースのサービスなどの信頼されたアプリケーションは、**QueueService** の **generateSharedAccessSignature** を使って SAS を生成し、信頼されていないか、部分的に信頼されたアプリケーションにこれを提供します。 たとえば、モバイル アプリなどです。 SAS は、SAS が有効である期間の開始日と終了日のほか、SAS の保有者に付与されたアクセス レベルを示したポリシーを使用して生成されます。
@@ -335,7 +335,7 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 
 [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
 
-[using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
+[using the REST API]: https://msdn.microsoft.com/library/azure/hh264518.aspx
 
 [Azure Portal]: https://portal.azure.com
 
@@ -343,6 +343,6 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 
 [Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)
 
-[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
+[Azure Storage Team Blog]: https://blogs.msdn.com/b/windowsazurestorage/
 
 [Build and deploy a Node.js web app to Azure using Web Matrix]: https://www.microsoft.com/web/webmatrix/

@@ -2,24 +2,25 @@
 title: Azure Active Directory ポータルのリスクの高いサインイン レポート | Microsoft Docs
 description: Azure Active Directory ポータルのリスクの高いサインイン レポートについて説明します。
 services: active-directory
-author: priyamohanram
-manager: mtillman
+author: MarkusVi
+manager: daveba
 ms.assetid: 7728fcd7-3dd5-4b99-a0e4-949c69788c0f
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2e4406a75ea1d9f1968d994ae2294b39ca7613d5
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 40e125f8e1e7909c5866a03c0571f49ec42d690a
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623861"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437936"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのリスクの高いサインイン レポート
 
@@ -61,9 +62,9 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 Azure AD の Free および Basic エディションでは、管理対象ユーザーに関して検出された、リスクの高いサインインの一覧を提供します。 各レコードには、次の属性が含まれています。
 
-- **ユーザー** - サインイン操作中に使用されたユーザーの名前
-- **IP** - Azure Active Directory への接続に使用されたデバイスの IP アドレス
-- **場所** - Azure Active Directory への接続に使用された場所
+- **ユーザー** - サインイン操作中に使用されたユーザーの名前。
+- **IP** - Azure Active Directory への接続に使用されたデバイスの IP アドレス。
+- **場所** - Azure Active Directory への接続に使用された場所。 これは、トレース、レジストリ データ、逆引き参照、およびその他の情報に基づくベスト エフォートに似ています。
 - **サインイン時刻** - サインインが実行された時刻
 - **状態** - サインインの状態
 
@@ -85,12 +86,11 @@ Azure AD の Free および Basic エディションでは、管理対象ユー�
 
 ![リスクの高いサインイン](./media/concept-risky-sign-ins/93.png)
 
-
 ## <a name="risky-sign-ins-report-for-azure-ad-premium-editions"></a>Azure AD Premium エディションにおける危険なサインイン レポート
 
 Azure AD Premium エディションのリスクの高いサインイン レポートでは、次の情報を提供しています。
 
-- 検出された[リスク イベントの種類](concept-risk-events.md)に関する集計情報
+- 検出された[リスク イベントの種類](concept-risk-events.md)に関する集計情報。 **Azure AD Premium P1 エディション**では、ライセンスに含まれない検出は、**追加のリスクが検出されたサインイン**というリスク イベントとして表示されます。 **Azure AD Premium P2 エディション**では、基になるすべての検出に関する最も詳細な情報を取得できます。
 
 - レポートをダウンロードするオプション
 
@@ -107,6 +107,9 @@ Azure AD Premium エディションのリスクの高いサインイン レポ�
 - リスク イベントを手動で閉じる。 
 
 ![リスクの高いサインイン](./media/concept-risky-sign-ins/457.png)
+
+> [!IMPORTANT]
+> 場合によっては、[サインイン レポート](concept-sign-ins.md)に対応するサインイン エントリがないリスク イベントが見つかることがあります。 これは、Identity Protection が **対話型**と**非対話型**の両方のサインインのリスクを評価する一方、サインイン レポートには対話型サインインのみが表示されるためです。
 
 ユーザーを選択すると、そのユーザーの詳細なレポート ビューが表示されます。ここから次の機能を利用できます。
 

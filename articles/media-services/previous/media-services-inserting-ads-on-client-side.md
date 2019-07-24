@@ -4,7 +4,7 @@ description: このトピックでは、クライアント側で広告を挿入�
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 65c9c747-128e-497e-afe0-3f92d2bf7972
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 71ac963f00993f8a66d41a8d6f3f67528d9c0583
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 8b0f5cdcf5a24513b89a2523be71dd74a1a2859b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625151"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484833"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>クライアント側での広告の挿入
 この記事では、クライアント側でさまざまな種類の広告を挿入する方法について説明します。
@@ -51,7 +51,7 @@ Azure Media Services では、Windows メディア プラットフォームの�
 VAST ファイルは、表示する広告を指定します。 次の XML に、線形広告の VAST ファイルの例を示します。
 
 ```xml
-    <VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
+    <VAST version="2.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
       <Ad id="115571748">
         <InLine>
           <AdSystem version="2.0 alpha">Atlas</AdSystem>
@@ -75,10 +75,10 @@ VAST ファイルは、表示する広告を指定します。 次の XML に、
                   <ClickTracking id="Spare"></ClickTracking>
                 </VideoClicks>
                 <MediaFiles>
-                  <MediaFile apiFramework="Windows Media" id="windows_progressive_200" maintainAspectRatio="true" scaleable="true"  delivery="progressive" bitrate="200" width="400" height="300" type="video/x-ms-wmv">
+                  <MediaFile apiFramework="Windows Media" id="windows_progressive_200" maintainAspectRatio="true" scalable="true"  delivery="progressive" bitrate="200" width="400" height="300" type="video/x-ms-wmv">
                     <![CDATA[http://www.myserver.com/media/myad_200_4x3.wmv]]>
                   </MediaFile>
-                  <MediaFile apiFramework="Windows Media" id="windows_progressive_300" maintainAspectRatio="true" scaleable="true"  delivery="progressive" bitrate="300" width="400" height="300" type="video/x-ms-wmv">
+                  <MediaFile apiFramework="Windows Media" id="windows_progressive_300" maintainAspectRatio="true" scalable="true"  delivery="progressive" bitrate="300" width="400" height="300" type="video/x-ms-wmv">
                     <![CDATA[http://www.myserver.com/media/myad_300_4x3.wmv]]>
                   </MediaFile>
                 </MediaFiles>
@@ -94,12 +94,12 @@ VAST ファイルは、表示する広告を指定します。 次の XML に、
     </VAST>
 ```
 
-線形広告は、<**Linear**> 要素で記述されます。 この要素は、広告の期間、追跡イベント、クリック スルー、クリック追跡、多くの **MediaFile** 要素を指定します。 追跡イベントは、<**TrackingEvents**> 要素内で指定され、広告サーバーが広告の表示中に発生するさまざまなイベントを追跡できるようにします。 この場合、開始、中間、完了、拡大の各イベントが追跡されます。 開始イベントは、広告が表示されたときに発生します。 中間イベントは、広告の時系列が 50% 以上表示されたときに発生します。 完了イベントは、広告が最後まで実行されたときに発生します。 拡大イベントは、ユーザーがビデオ プレーヤーをフル スクリーンに拡大したときに表示されます。 Clickthroughs は、<**VideoClicks**> 要素内の <**ClickThrough**> 要素で指定され、ユーザーが広告をクリックしたときに表示するリソースに対する URI を指定します。 ClickTracking は、<**ClickTracking**> 要素と <**VideoClicks**> 要素内で指定され、ユーザーが広告をクリックしたときに要求する追跡リソースをプレーヤーに対して指定します。 <**MediaFile**> 要素は、広告の特定のエンコードに関する情報を指定します。 複数の <**MediaFile**> 要素がある場合、ビデオ プレーヤーはプラットフォームに最適なエンコードを選択できます。 
+線形広告は、<**Linear**> 要素で記述されます。 この要素は、広告の期間、追跡イベント、クリック スルー、クリック追跡、多くの **MediaFile** 要素を指定します。 追跡イベントは、<**TrackingEvents**> 要素内で指定され、広告サーバーが広告の表示中に発生するさまざまなイベントを追跡できるようにします。 この場合、開始、中間、完了、拡大の各イベントが追跡されます。 開始イベントは、広告が表示されたときに発生します。 中間イベントは、広告の時系列が 50% 以上表示されたときに発生します。 完了イベントは、広告が最後まで実行されたときに発生します。 拡大イベントは、ユーザーがビデオ プレーヤーをフル スクリーンに拡大したときに表示されます。 Clickthroughs は、<**VideoClicks**> 要素内の <**ClickThrough**> 要素で指定され、ユーザーが広告をクリックしたときに表示するリソースに対する URI を指定します。 ClickTracking は、<**ClickTracking**> 要素と <**VideoClicks**> 要素内で指定され、ユーザーが広告をクリックしたときに要求する追跡リソースをプレーヤーに対して指定します。 <**MediaFile**> 要素は、広告の特定のエンコードに関する情報を指定します。 複数の <**MediaFile**> 要素がある場合、ビデオ プレーヤーはプラットフォームに最適なエンコードを選択できます。
 
-線形広告は、指定された順序で表示できます。 これを行うには、VAST ファイルに <Ad> 要素を追加し、sequence 属性を使用して順序を指定します。 次の例を使って説明します。
+線形広告は、指定された順序で表示できます。 これを行うには、VAST ファイルに `<Ad>` 要素を追加し、sequence 属性を使用して順序を指定します。 次の例を使って説明します。
 
 ```xml
-    <VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
+    <VAST version="2.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
       <Ad id="1" sequence="0">
         <InLine>
           <AdSystem version="2.0 alpha">Atlas</AdSystem>
@@ -143,7 +143,7 @@ VAST ファイルは、表示する広告を指定します。 次の XML に、
     </VAST>
 ```
 
-非線形広告は、<Creative> 要素でも指定されます。 次の例は、非線形広告を記述する <Creative> 要素を示しています。
+非線形広告は、`<Creative>` 要素でも指定されます。 次の例は、非線形広告を記述する `<Creative>` 要素を示しています。
 
 ```xml
     <Creative id="video" sequence="1" AdID="">
@@ -170,7 +170,7 @@ Application/x-shockwave-flash – リソースが Flash プレーヤーで表示
 
 **IFrameResource** は、IFrame で表示可能な HTML リソースを記述します。 **HTMLResource** は、Web ページに挿入可能な HTML コードを記述します。 **TrackingEvents** は、追跡イベントと、イベント発生時に要求する URI を指定します。 このサンプルでは、acceptInvitation イベントと collapse イベントが追跡されます。 **NonLinearAds** 要素とその子の詳細については、「IAB.NET/VAST」を参照してください。 **TrackingEvents** 要素は、**NonLinear** 要素ではなく **NonLinearAds** 要素にある点に注意してください。
 
-コンパニオン広告は、<CompanionAds> 要素内で定義されます。 <CompanionAds> 要素には、1 つ以上の <Companion> 要素を含めることができます。 各 <Companion> 要素は、コンパニオン広告を記述します。また、非線形広告でも同じように指定される <StaticResource>、<IFrameResource>、<HTMLResource> を含めることができます。 VAST ファイルには、複数のコンパニオン広告を含めることができ、プレーヤー アプリケーションは表示する最適な広告を選択できます。 VAST の詳細については、「[VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)」をご覧ください。
+コンパニオン広告は、`<CompanionAds>` 要素内で定義されます。 `<CompanionAds>` 要素には、1 つ以上の `<Companion>` 要素を含めることができます。 各 `<Companion>` 要素は、コンパニオン広告を記述します。また、非線形広告でも同じように指定される `<StaticResource>`、`<IFrameResource>`、`<HTMLResource>` を含めることができます。 VAST ファイルには、複数のコンパニオン広告を含めることができ、プレーヤー アプリケーションは表示する最適な広告を選択できます。 VAST の詳細については、「[VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)」をご覧ください。
 
 ### <a name="using-a-digital-video-multiple-ad-playlist-vmap-file"></a>Digital Video Multiple Ad Playlist (VMAP) ファイルの使用
 VMAP ファイルを使用すると、広告の中断がいつ発生するか、各中断の長さ、中断中に表示できる広告の数、中断中に表示できる広告の種類を指定できます。 1 つの広告の中断を定義する VMAP ファイルの例を次に示します。
@@ -180,7 +180,7 @@ VMAP ファイルを使用すると、広告の中断がいつ発生するか、
       <vmap:AdBreak breakType="linear" breakId="mypre" timeOffset="start">
         <vmap:AdSource allowMultipleAds="true" followRedirects="true" id="1">
           <vmap:VASTData>
-            <VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
+            <VAST version="2.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
               <Ad id="115571748">
                 <InLine>
                   <AdSystem version="2.0 alpha">Atlas</AdSystem>
@@ -188,22 +188,22 @@ VMAP ファイルを使用すると、広告の中断がいつ発生するか、
                   <Description>Unknown</Description>
                   <Survey></Survey>
                   <Error></Error>
-                  <Impression id="Atlas"><![CDATA[http://view.atdmt.com/000/sview/115571748/direct;ai.201582527;vt.2/01/634364885739970673]]></Impression>
+                  <Impression id="Atlas"><![CDATA[https://view.atdmt.com/000/sview/115571748/direct;ai.201582527;vt.2/01/634364885739970673]]></Impression>
                   <Creatives>
                     <Creative id="video" sequence="0" AdID="">
                       <Linear>
                         <Duration>00:00:32</Duration>
                         <MediaFiles>
-                          <MediaFile apiFramework="Windows Media" id="windows_progressive_200" maintainAspectRatio="true" scaleable="true"  delivery="progressive" bitrate="200" width="400" height="300" type="video/x-ms-wmv">
+                          <MediaFile apiFramework="Windows Media" id="windows_progressive_200" maintainAspectRatio="true" scalable="true"  delivery="progressive" bitrate="200" width="400" height="300" type="video/x-ms-wmv">
                             <![CDATA[http://smf.blob.core.windows.net/samples/ads/media/XBOX_HD_DEMO_700_1_000_200_4x3.wmv]]>
                           </MediaFile>
-                          <MediaFile apiFramework="Windows Media" id="windows_progressive_300" maintainAspectRatio="true" scaleable="true"  delivery="progressive" bitrate="300" width="400" height="300" type="video/x-ms-wmv">
+                          <MediaFile apiFramework="Windows Media" id="windows_progressive_300" maintainAspectRatio="true" scalable="true"  delivery="progressive" bitrate="300" width="400" height="300" type="video/x-ms-wmv">
                             <![CDATA[http://smf.blob.core.windows.net/samples/ads/media/XBOX_HD_DEMO_700_2_000_300_4x3.wmv]]>
                           </MediaFile>
-                          <MediaFile apiFramework="Windows Media" id="windows_progressive_500" maintainAspectRatio="true" scaleable="true"  delivery="progressive" bitrate="500" width="400" height="300" type="video/x-ms-wmv">
+                          <MediaFile apiFramework="Windows Media" id="windows_progressive_500" maintainAspectRatio="true" scalable="true"  delivery="progressive" bitrate="500" width="400" height="300" type="video/x-ms-wmv">
                             <![CDATA[http://smf.blob.core.windows.net/samples/ads/media/XBOX_HD_DEMO_700_1_000_500_4x3.wmv]]>
                           </MediaFile>
-                          <MediaFile apiFramework="Windows Media" id="windows_progressive_700" maintainAspectRatio="true" scaleable="true" delivery="progressive" bitrate="700" width="400" height="300" type="video/x-ms-wmv">
+                          <MediaFile apiFramework="Windows Media" id="windows_progressive_700" maintainAspectRatio="true" scalable="true" delivery="progressive" bitrate="700" width="400" height="300" type="video/x-ms-wmv">
                             <![CDATA[http://smf.blob.core.windows.net/samples/ads/media/XBOX_HD_DEMO_700_2_000_700_4x3.wmv]]>
                           </MediaFile>
                         </MediaFiles>
@@ -224,14 +224,14 @@ VMAP ファイルを使用すると、広告の中断がいつ発生するか、
     </vmap:VMAP>
 ```
 
-VMAP ファイルの先頭は、1 つ以上の <AdBreak> 要素 (それぞれ広告の中断を定義) を含む <VMAP> 要素になっています。 各広告の中断は、中断の種類、中断 ID、時間オフセットを指定します。 BreakType 属性は、中断中に再生できる広告の種類 (線形、非線形、表示) を指定します。 表示広告は、VAST のコンパニオン広告に対応します。 コンマ (スペースなし) 区切りリストで複数の広告の種類を指定できます。 breakID は、広告のオプションの識別子です。 timeOffset は、広告をいつ表示するかを指定します。 これは、次のいずれかの方法で指定できます。
+VMAP ファイルの先頭は、1 つ以上の `<AdBreak>` 要素 (それぞれ広告の中断を定義) を含む `<VMAP>` 要素になっています。 各広告の中断は、中断の種類、中断 ID、時間オフセットを指定します。 BreakType 属性は、中断中に再生できる広告の種類 (線形、非線形、表示) を指定します。 表示広告は、VAST のコンパニオン広告に対応します。 コンマ (スペースなし) 区切りリストで複数の広告の種類を指定できます。 breakID は、広告のオプションの識別子です。 timeOffset は、広告をいつ表示するかを指定します。 これは、次のいずれかの方法で指定できます。
 
 1. 時間 – hh:mm:ss または hh:mm:ss.mmm 形式。ここで、.mmm はミリ秒です。 この属性の値は、ビデオの時系列の先頭から広告の中断の先頭までの時間を指定します。
 2. パーセント – n% 形式。ここで、n は広告再生前に再生するビデオの時系列のパーセントです。
 3. 開始/終了 – ビデオを表示する前または後に広告を表示することを指定します。
 4. 位置 – 広告の中断のタイミングが不明なとき (ライブ ストリーミングなど) に、広告の中断の順序を指定します。 各広告の中断の順序は、#n 形式で指定されます。n は整数 1 以上です。 1 は、広告を最初のチャンスに再生することを意味し、2 は広告を 2 番目のチャンスに再生することを意味し、それ以降も同様です。
 
-<AdBreak> 要素内には、<**AdSource**> 要素を 1 つ配置できます。 <**AdSource**> 要素には、次の属性が含まれています。
+`<AdBreak>` 要素内には、<**AdSource**> 要素を 1 つ配置できます。 <**AdSource**> 要素には、次の属性が含まれています。
 
 1. Id – 広告ソースの識別子を指定します。
 2. allowMultipleAds – 広告の中断中に複数の広告を表示できるかどうかを指定するブール値。
@@ -239,11 +239,11 @@ VMAP ファイルの先頭は、1 つ以上の <AdBreak> 要素 (それぞれ広
 
 <**AdSource**> 要素は、インライン広告応答または広告応答への参照をプレーヤーに提供します。 これには、次のいずれかの要素を含めることができます。
 
-* <VASTAdData> - VAST 広告応答が VMAP ファイル内に埋め込まれていることを示します。
-* <AdTagURI> - 別のシステムからの広告応答を参照する URI。
-* <CustomAdData> - VAST 以外の応答を表す任意の文字列。
+* `<VASTAdData>` - VAST 広告応答が VMAP ファイル内に埋め込まれていることを示します。
+* `<AdTagURI>` - 別のシステムからの広告応答を参照する URI。
+* `<CustomAdData>` - VAST 以外の応答を表す任意の文字列。
 
-この例では、VAST 広告応答が含まれる <VASTAdData> 要素を使用してインライン広告応答が指定されます。 他の要素の詳細については、「 [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap)」をご覧ください。
+この例では、VAST 広告応答が含まれる `<VASTAdData>` 要素を使用してインライン広告応答が指定されます。 他の要素の詳細については、「 [VMAP](http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap)」をご覧ください。
 
 <**AdBreak**> 要素には、1 つの <**TrackingEvents**> 要素を含めることもできます。 <**TrackingEvents**> 要素を使用すると、広告の中断の開始と終了を追跡したり、広告の中断中にエラーが発生したかどうかを追跡することができます。 <**TrackingEvents**> 要素には、1 つ以上の <**Tracking**> 要素が含まれており、それぞれ追跡イベントと追跡 URI を指定します。 指定できる追跡イベントは、次のとおりです。
 
@@ -282,7 +282,7 @@ VMAP ファイルの先頭は、1 つ以上の <AdBreak> 要素 (それぞれ広
 MAST ファイルを使用すると、広告がいつ表示されるかを定義するトリガーを指定できます。 プリロール広告、ミッドロール広告、ポストロール広告のトリガーを含む MAST ファイルの例を次に示します。
 
 ```xml
-    <MAST xsi:schemaLocation="http://openvideoplayer.sf.net/mast http://openvideoplayer.sf.net/mast/mast.xsd" xmlns="http://openvideoplayer.sf.net/mast" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <MAST xsi:schemaLocation="http://openvideoplayer.sf.net/mast http://openvideoplayer.sf.net/mast/mast.xsd" xmlns="http://openvideoplayer.sf.net/mast" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
       <triggers>
         <trigger id="preroll" description="preroll every item"  >
           <startConditions>
@@ -325,16 +325,16 @@ MAST ファイルを使用すると、広告がいつ表示されるかを定義
 ```
 
 
-MAST ファイルの先頭は、**triggers** 要素が 1 つ含まれる **MAST** 要素です。 <triggers> 要素には、広告をいつ再生するかを定義する 1 つ以上の **trigger** 要素が含まれています。 
+MAST ファイルの先頭は、**triggers** 要素が 1 つ含まれる **MAST** 要素です。 `<triggers>` 要素には、広告をいつ再生するかを定義する 1 つ以上の **trigger** 要素が含まれています。
 
-**trigger** 要素には、広告の再生をいつ開始するかを指定する **startConditions** 要素が含まれています。 **startConditions** 要素には、1 つ以上の <condition> 要素が含まれています。 各 <condition> が true と評価された場合、<condition> が **startConditions** 要素または **endConditions** 要素のどちらに含まれているかに応じて、トリガーが開始されるか取り消されます。 複数の <condition> 要素が存在する場合、それらは暗黙的な OR として扱われるため、いずれかの条件が true と評価されるとトリガーが開始されます。 <condition> 要素はネストできます。 子の <condition> 要素がプリセットされている場合、それらは暗黙的な AND として扱われるため、トリガーが開始されるにはすべての条件が true と評価される必要があります。 <condition> 要素には、条件を定義する次の属性が含まれています。 
+**trigger** 要素には、広告の再生をいつ開始するかを指定する **startConditions** 要素が含まれています。 **startConditions** 要素には、1 つ以上の `<condition>` 要素が含まれています。 各 `<condition>` が true と評価された場合、`<condition>` が **startConditions** 要素または **endConditions** 要素のどちらに含まれているかに応じて、トリガーが開始されるか取り消されます。 複数の `<condition>` 要素が存在する場合、それらは暗黙的な OR として扱われるため、いずれかの条件が true と評価されるとトリガーが開始されます。 `<condition>` 要素はネストできます。 子の `<condition>` 要素がプリセットされている場合、それらは暗黙的な AND として扱われるため、トリガーが開始されるにはすべての条件が true と評価される必要があります。 `<condition>` 要素には、条件を定義する次の属性が含まれています。
 
 1. **type** – 条件、イベント、またはプロパティの種類を指定します
 2. **name** – 評価時に使用するイベントまたはプロパティの名前。
 3. **value** – プロパティが評価される値。
 4. **operator** – 評価時に使用する演算。EQ (等しい)、NEQ (等しくない)、GTR (より大きい)、GEQ (以上)、LT (より小さい)、LEQ (以下)、MOD (モジュロ) です。
 
-**endConditions** には <condition> 要素を含めることもできます。 条件が true と表示された場合、トリガーはリセットされます。 <trigger> 要素には、1 つ以上の <source> 要素が含まれる <sources> 要素を含めることもできます。 <source> 要素は、広告応答への URI と広告応答の種類を定義します。 次の例では、VAST 応答への URI が指定されています。 
+**endConditions** には `<condition>` 要素を含めることもできます。 条件が true と表示された場合、トリガーはリセットされます。 `<trigger>` 要素には、1 つ以上の `<source>` 要素が含まれる `<sources>` 要素を含めることもできます。 `<source>` 要素は、広告応答への URI と広告応答の種類を定義します。 次の例では、VAST 応答への URI が指定されています。
 
 ```xml
     <trigger id="postroll" description="postroll"  >
@@ -352,7 +352,7 @@ MAST ファイルの先頭は、**triggers** 要素が 1 つ含まれる **MAST*
 ### <a name="using-video-player-ad-interface-definition-vpaid"></a>Video Player Ad Interface Definition (VPAID) の使用
 VPAID は、実行可能広告ユニットがビデオ プレーヤーとやり取りできるようにするための API です。 これにより、インタラクティブ性の高い広告の操作性が実現します。 ユーザーは、広告を操作でき、広告はビューアーにより実行されたアクションに応答できます。 たとえば、ユーザーが広告の詳細情報やロング バージョンを参照できるボタンを広告に表示することができます。 ビデオ プレーヤーで VPAID API がサポートされていて、実行可能広告に API が実装されている必要があります。 プレーヤーが広告サーバーから広告を要求すると、サーバーは VPAID 広告を含む VAST 応答で応答できます。
 
-実行可能広告は、Web ブラウザーで実行可能な Adobe Flash™ や JavaScript などのランタイム環境で実行する必要があるコードで作成されます。 広告サーバーが VPAID 広告を含む VAST 応答を返す場合、<MediaFile> 要素内の apiFramework 属性の値は "VPAID" にする必要があります。 この属性は、含まれている広告が VPAID 実行可能広告であることを指定します。 type 属性は、実行可能ファイルの MIME タイプ ("application/x-shockwave-flash" や "application/x-javascript" など) に設定する必要があります。 次の XML スニペットは、VPAID 実行可能広告を含む VAST 応答からの <MediaFile> 要素を示しています。 
+実行可能広告は、Web ブラウザーで実行可能な Adobe Flash™ や JavaScript などのランタイム環境で実行する必要があるコードで作成されます。 広告サーバーが VPAID 広告を含む VAST 応答を返す場合、`<MediaFile>` 要素内の apiFramework 属性の値は "VPAID" にする必要があります。 この属性は、含まれている広告が VPAID 実行可能広告であることを指定します。 type 属性は、実行可能ファイルの MIME タイプ ("application/x-shockwave-flash" や "application/x-javascript" など) に設定する必要があります。 次の XML スニペットは、VPAID 実行可能広告を含む VAST 応答からの `<MediaFile>` 要素を示しています。
 
 ```xml
     <MediaFiles>
@@ -363,10 +363,10 @@ VPAID は、実行可能広告ユニットがビデオ プレーヤーとやり�
     </MediaFiles>
 ```
 
-実行可能広告は、VAST 応答で <Linear> 要素または <NonLinear> 要素内の <AdParameters> 要素を使用して初期化できます。 <AdParameters> 要素の詳細については、「[VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)」をご覧ください。 Graph API の詳細については、「 [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)」をご覧ください。
+実行可能広告は、VAST 応答で `<Linear>` 要素または `<NonLinear>` 要素内の `<AdParameters>` 要素を使用して初期化できます。 `<AdParameters>` 要素の詳細については、「[VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)」をご覧ください。 Graph API の詳細については、「 [VPAID 2.0](http://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)」をご覧ください。
 
 ## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>広告をサポートする Windows または Windows Phone 8 プレーヤーの実装
-Microsoft Media Platform: Player Framework for Windows 8 and Windows Phone 8 には、このフレームワークを使用してビデオ プレーヤー アプリケーションを実装する方法を示すサンプル アプリケーションのコレクションが含まれています。 Player Framework とサンプルは、 [Player Framework for Windows 8 and Windows Phone 8](https://playerframework.codeplex.com)サイトからダウンロードできます。
+Microsoft Media Platform:Player Framework for Windows 8 and Windows Phone 8 には、このフレームワークを使用してビデオ プレーヤー アプリケーションを実装する方法を示すサンプル アプリケーションのコレクションが含まれています。 Player Framework とサンプルは、 [Player Framework for Windows 8 and Windows Phone 8](https://playerframework.codeplex.com)サイトからダウンロードできます。
 
 Microsoft.PlayerFramework.Xaml.Samples ソリューションを開くと、多数のフォルダーがプロジェクト内に表示されます。 Advertising フォルダーには、広告をサポートするビデオ プレーヤーの作成に関連するサンプル コードが含まれています。 Advertising フォルダーには、広告を挿入するさまざまな方法を示した XAML/CS ファイルが含まれています。 次の一覧で、これらのファイルについて説明します。
 
@@ -383,7 +383,7 @@ Microsoft.PlayerFramework.Xaml.Samples ソリューションを開くと、多�
 これらの各サンプルでは、プレーヤー フレームワークで定義されている MediaPlayer クラスを使用します。 また、ほとんどのサンプルで、さまざまな広告応答形式のサポートを追加するプラグインを使用します。 ProgrammaticAdPage サンプルでは、MediaPlayer インスタンスをプログラムから操作します。
 
 ### <a name="adpodpage-sample"></a>AdPodPage サンプル
-以下は、AdSchedulerPlugin を使用して、広告を表示するタイミングを定義するサンプルです。 この例では、ミッドロール広告が 5 秒後に再生されようにスケジュールを設定します。 広告ポッド (順番に表示する広告のグループ) は、広告サーバーから返される VAST ファイルで指定されます。 VAST ファイルの URI は、<RemoteAdSource> 要素で指定します。
+以下は、AdSchedulerPlugin を使用して、広告を表示するタイミングを定義するサンプルです。 この例では、ミッドロール広告が 5 秒後に再生されようにスケジュールを設定します。 広告ポッド (順番に表示する広告のグループ) は、広告サーバーから返される VAST ファイルで指定されます。 VAST ファイルの URI は、`<RemoteAdSource>` 要素で指定します。
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -405,10 +405,10 @@ Microsoft.PlayerFramework.Xaml.Samples ソリューションを開くと、多�
     </mmppf:MediaPlayer>
 ```
 
-AdSchedulerPlugin の詳細については、「 [Advertising in the Player Framework on Windows 8 and Windows Phone 8 (Windows 8 および Windows Phone 8 のプレーヤー フレームワーク内の広告)](http://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
+AdSchedulerPlugin の詳細については、「 [Advertising in the Player Framework on Windows 8 and Windows Phone 8 (Windows 8 および Windows Phone 8 のプレーヤー フレームワーク内の広告)](https://playerframework.codeplex.com/wikipage?title=Advertising&referringTitle=Windows%208%20Player%20Documentation)
 
 ### <a name="adschedulingpage"></a>AdSchedulingPage
-このサンプルでも、AdSchedulerPlugin を使用します。 このサンプルでは、プレロール広告、ミッドロール広告、ポストロール広告の 3 つ広告のスケジュールを設定します。 各広告の VAST への URI は、<RemoteAdSource> 要素で指定します。
+このサンプルでも、AdSchedulerPlugin を使用します。 このサンプルでは、プレロール広告、ミッドロール広告、ポストロール広告の 3 つ広告のスケジュールを設定します。 各広告の VAST への URI は、`<RemoteAdSource>` 要素で指定します。
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -530,7 +530,7 @@ ProgrammaticAdPage.xaml.cs ファイルは、AdHandlerPlugin を作成し、Time
 ```
 
 ### <a name="vastlinearcompanionpage"></a>VastLinearCompanionPage
-このサンプルには、AdSchedulerPlugin を使用して、ミッドロールの線形広告とコンパニオン広告のスケジュールを設定する方法を示しています。 <RemoteAdSource> 要素で、VAST ファイルの場所を指定します。
+このサンプルには、AdSchedulerPlugin を使用して、ミッドロールの線形広告とコンパニオン広告のスケジュールを設定する方法を示しています。 `<RemoteAdSource>` 要素で、VAST ファイルの場所を指定します。
 
 ```xml
     <mmppf:MediaPlayer Grid.Row="1"  x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -552,7 +552,7 @@ ProgrammaticAdPage.xaml.cs ファイルは、AdHandlerPlugin を作成し、Time
 ```
 
 ### <a name="vastlinearnonlinearpage"></a>VastLinearNonLinearPage
-このサンプルは、AdSchedulerPlugin を使用して、線形広告と非線形広告のスケジュールを指定します。 VAST ファイルの場所は、<RemoteAdSource> 要素で指定します。
+このサンプルは、AdSchedulerPlugin を使用して、線形広告と非線形広告のスケジュールを指定します。 VAST ファイルの場所は、`<RemoteAdSource>` 要素で指定します。
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -574,7 +574,7 @@ ProgrammaticAdPage.xaml.cs ファイルは、AdHandlerPlugin を作成し、Time
 ```
 
 ### <a name="vmappage"></a>VMAPPage
-このサンプルでは、VmapSchedulerPlugin を使用して、VMAP ファイルを使用する広告のスケジュールを設定します。 VMAP ファイルへの URI は、<VmapSchedulerPlugin> 要素の Source 属性で指定します。
+このサンプルでは、VmapSchedulerPlugin を使用して、VMAP ファイルを使用する広告のスケジュールを設定します。 VMAP ファイルへの URI は、`<VmapSchedulerPlugin>` 要素の Source 属性で指定します。
 
 ```xml
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4">
@@ -586,7 +586,7 @@ ProgrammaticAdPage.xaml.cs ファイルは、AdHandlerPlugin を作成し、Time
 ```
 
 ## <a name="implementing-an-ios-video-player-with-ad-support"></a>広告をサポートする IOS ビデオ プレーヤーの実装
-Microsoft Media Platform: Player Framework for iOS には、このフレームワークを使用してビデオ プレーヤー アプリケーションを実装する方法を示すサンプル アプリケーションのコレクションが含まれています。 Player Framework とサンプルは、 [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework)からダウンロードできます。 github ページには、Player Framework に関する追加情報とプレーヤー サンプルの概要が記載された Wiki へのリンク ( [Azure Media Player Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)) があります。
+Microsoft Media Platform: Player Framework for iOS には、このフレームワークを使用してビデオ プレーヤー アプリケーションを実装する方法を示すサンプル アプリケーションのコレクションが含まれています。 Player Framework とサンプルは、 [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework)からダウンロードできます。 GitHub ページには、Player Framework に関する追加情報とプレーヤー サンプルの概要が記載された Wiki へのリンク ([Azure Media Player Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)) があります。
 
 ### <a name="scheduling-ads-with-vmap"></a>VMAP を使用した広告のスケジュール設定
 次のサンプルは、VMAP ファイルを使用して広告のスケジュールを設定する方法を示しています。
@@ -595,7 +595,7 @@ Microsoft Media Platform: Player Framework for iOS には、このフレーム�
     // How to schedule an Ad using VMAP.
     //First download the VMAP manifest
 
-    if (![framework.adResolver downloadManifest:&manifest withURL:[NSURL URLWithString:@"http://portalvhdsq3m25bf47d15c.blob.core.windows.net/vast/PlayerTestVMAP.xml"]])
+    if (![framework.adResolver downloadManifest:&manifest withURL:[NSURL URLWithString:@"https://portalvhdsq3m25bf47d15c.blob.core.windows.net/vast/PlayerTestVMAP.xml"]])
             {
                 [self logFrameworkError];
             }
@@ -605,7 +605,7 @@ Microsoft Media Platform: Player Framework for iOS には、このフレーム�
                 if (![framework scheduleVMAPWithManifest:manifest])
                 {
                     [self logFrameworkError];
-                }          
+                }
             }
 ```
 
@@ -619,7 +619,7 @@ Microsoft Media Platform: Player Framework for iOS には、このフレーム�
     adLinearTime.startTime = 13;
     adLinearTime.duration = 0;
     // Specify the URI of the VAST file
-    NSString *vastAd1=@"http://portalvhdsq3m25bf47d15c.blob.core.windows.net/vast/PlayerTestVAST.xml";
+    NSString *vastAd1=@"https://portalvhdsq3m25bf47d15c.blob.core.windows.net/vast/PlayerTestVAST.xml";
     // Create an AdInfo object
      AdInfo *vastAdInfo1 = [[[AdInfo alloc] init] autorelease];
     // set URL to VAST file
@@ -645,7 +645,7 @@ Microsoft Media Platform: Player Framework for iOS には、このフレーム�
 ```csharp
     //Example:4 Schedule an early binding VAST ad
     //Download the VAST file
-    if (![framework.adResolver downloadManifest:&manifest withURL:[NSURL URLWithString:@"http://portalvhdsq3m25bf47d15c.blob.core.windows.net/vast/PlayerTestVAST.xml"]])
+    if (![framework.adResolver downloadManifest:&manifest withURL:[NSURL URLWithString:@"https://portalvhdsq3m25bf47d15c.blob.core.windows.net/vast/PlayerTestVAST.xml"]])
     {
         [self logFrameworkError];
     }

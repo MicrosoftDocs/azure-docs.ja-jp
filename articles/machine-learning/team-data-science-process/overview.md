@@ -1,26 +1,22 @@
 ---
-title: Team Data Science Process とは | Microsoft Docs
+title: Team Data Science Process とは
 description: 予測分析ソリューションとインテリジェント アプリケーションを実現するデータ サイエンス手法について説明します。
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: b1f677bb-eef5-4acb-9b3b-8a5819fb0e78
 ms.service: machine-learning
-ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 10/20/2017
-ms.author: deguhath
-ms.openlocfilehash: e6e6b8e03102825a15035adbea80ac5e9f3fa404
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: tdsp
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 3b4e8c78d7402c254c91c3e100814e1f3eafc41b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996453"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867203"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Team Data Science Process とは
 
@@ -67,7 +63,7 @@ TDSP におけるライフサイクルの各ステージの目標、タスク、
 
 次の図は、これらの役割 (縦軸) ごとにライフサイクルの各ステージ (横軸) に関連付けられたタスク (青色) とアーティファクト (緑色) をグリッド形式で示したものです。 
 
-[ ![TDSP の役割とタスク](./media/overview/tdsp-tasks-by-roles.png) ](./media/overview/tdsp-tasks-by-roles.png#lightbox)
+[![TDSP のロールとタスク](./media/overview/tdsp-tasks-by-roles.png)](./media/overview/tdsp-tasks-by-roles.png#lightbox)
 
 ## <a name="standardized-project-structure"></a>標準プロジェクト構造
 
@@ -81,7 +77,7 @@ Microsoft では、必要なドキュメントとフォルダー構造のテン�
 - モデルのパフォーマンス メトリック (ROC 曲線、MSE など)
 
 
-[ ![TDSP のディレクトリ](./media/overview/tdsp-dir-structure.png) ](./media/overview/tdsp-dir-structure.png#lightbox)
+[![TDSP のディレクトリ](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
 
 このディレクトリ構造は、[GitHub](https://github.com/Azure/Azure-TDSP-ProjectTemplate) から複製することができます。
 
@@ -90,7 +86,7 @@ Microsoft では、必要なドキュメントとフォルダー構造のテン�
 TDSP には、共有の分析およびストレージ インフラストラクチャを管理するうえでの推奨事項が示されています。その例を次に示します。
 
 - データセットを格納するためのクラウド ファイル システム 
-- データベース
+- databases
 - ビッグ データ (Hadoop または Spark) クラスター 
 - Machine Learning サービス 
 
@@ -98,7 +94,7 @@ TDSP には、共有の分析およびストレージ インフラストラク�
 
 以下に示したのは、クラウド分析インフラストラクチャのさまざまな構成要素を共有しながら複数のプロジェクトに取り組むチームの例です。
 
-[ ![TDSP インフラストラクチャ](./media/overview/tdsp-analytics-infra.png) ](./media/overview/tdsp-analytics-infra.png#lightbox) 
+[![TDSP インフラストラクチャ](./media/overview/tdsp-analytics-infra.png)](./media/overview/tdsp-analytics-infra.png#lightbox) 
 
 
 ## <a name="tools-and-utilities-for-project-execution"></a>プロジェクト実行のツールとユーティリティ
@@ -108,4 +104,4 @@ TDSP には、共有の分析およびストレージ インフラストラク�
 
 ## <a name="next-steps"></a>次の手順
 
-「[Team Data Science Process: Roles and tasks (Team Data Science Process: 役割とタスク)](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md)」に、このプロセスを標準化するデータ サイエンス チームの主な人員の役割とそれに関連したタスクが概説されています。 
+「[Team Data Science Process:Roles and tasks (Team Data Science Process: 役割とタスク)](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md)」に、このプロセスを標準化するデータ サイエンス チームの主な人員の役割とそれに関連したタスクが概説されています。 

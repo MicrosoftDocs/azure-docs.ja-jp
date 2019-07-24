@@ -2,24 +2,25 @@
 title: Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポート | Microsoft Docs
 description: Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポートについて説明します。
 services: active-directory
-author: priyamohanram
-manager: mtillman
+author: MarkusVi
+manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c43497a69b3188b4bc38e91b6ff9b1cc8b6bd21a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7209f468f493e226fae22ccd260e8ceb2e570494
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624150"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439143"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでリスクのフラグ付きユーザーを修復する
 
@@ -31,7 +32,7 @@ Microsoft は、お客様の環境のセキュリティの保持に努めてい�
 
 ## <a name="access-the-users-flagged-for-risk-report"></a>リスクのフラグ付きユーザー レポートへのアクセス
 
-リスクのフラグ付きユーザーは、Azure portal の[リスク レポートに示されたユーザー](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk)から確認できます。 Azure AD をお持ちでない場合は、[https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) の無料試用版にサインアップできます。 
+リスクのフラグ付きユーザーは、Azure portal の[リスク レポートに示されたユーザー](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers)から確認できます。 Azure AD をお持ちでない場合は、[https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) の無料試用版にサインアップできます。 
 
 リスクのフラグ付きユーザー レポートから、各ユーザーに対して次のアクションを実行できます。
 
@@ -45,7 +46,7 @@ Microsoft は、お客様の環境のセキュリティの保持に努めてい�
 
 Office 365 の資格情報を使用して **Azure 管理センター**にアクセスすることもできます。 Azure AD へのアクセスをアクティブにすると、Azure AD ポータルにリダイレクトされます。 Basic サブスクリプション レベルでは、レポートで提供される詳細情報の量が限定されます。 追加のデータと分析を使用できるのは、Azure Premium サブスクライバーのみです。
 
-Office 365 管理センターで**リスクのフラグ付きユーザー**のレポートにアクセスするには:
+Microsoft 365 管理センターで**リスクのフラグ付きユーザー**のレポートにアクセスするには:
 
 1.  左側のナビゲーション メニューで、**[管理センター]** を選択します。 
 2.  **[Azure AD ]** を選びます。
@@ -58,9 +59,9 @@ Office 365 管理センターで**リスクのフラグ付きユーザー**の�
 
 影響を受けたアカウントの問題を解決し、環境を保護するために、以下の操作を実行してください。
 
-1.  多要素認証とセルフサービスのパスワード リセットに関する[情報が正しいことを検証](http://aka.ms/MFAValid)します。 
-2.  すべてのユーザーの[多要素認証を有効](http://aka.ms/MFAuth)にします。 
-3.  この[修復スクリプト](http://aka.ms/remediate)を使用すると、影響を受けたすべてのアカウントに対して、以下の手順を自動的に実行します。 
+1.  多要素認証とセルフサービスのパスワード リセットに関する[情報が正しいことを検証](https://aka.ms/MFAValid)します。 
+2.  すべてのユーザーの[多要素認証を有効](https://aka.ms/MFAuth)にします。 
+3.  この[修復スクリプト](https://aka.ms/remediate)を使用すると、影響を受けたすべてのアカウントに対して、以下の手順を自動的に実行します。 
 
     a. パスワードをリセットしてアカウントを保護し、アクティブなセッションを強制終了します。
 
@@ -84,10 +85,10 @@ Office 365 管理センターで**リスクのフラグ付きユーザー**の�
 
 他にも、以下の作業が必要です。
 
-- [異常なアクティビティへの対処に関するこのガイダンス](http://aka.ms/fixaccount)を読み、実装します。 
-- テナントでのアクティビティの分析に役立てるために、[監査パイプラインを有効](http://aka.ms/improvesecurity)にします。 完了すると、監査ストアはアクティビティ ログの読み込みを開始します。 この時点で、[セキュリティ/コンプライアンス センターの検索と調査のリソース](http://aka.ms/sccsearch)を活用することもできます。 
-- すべてのアカウントに対して、この[スクリプトを使用してメールボックスの監査を有効](http://aka.ms/mailboxaudit1)にします。 
-- すべてのメールボックスの代理人のアクセス許可とメール転送ルールを確認します。 この [PowerShell スクリプト](http://aka.ms/delegateforwardrules)を使用して、この作業を実行することができます。 
+- [異常なアクティビティへの対処に関するこのガイダンス](https://aka.ms/fixaccount)を読み、実装します。 
+- テナントでのアクティビティの分析に役立てるために、[監査パイプラインを有効](https://aka.ms/improvesecurity)にします。 完了すると、監査ストアはアクティビティ ログの読み込みを開始します。 この時点で、[セキュリティ/コンプライアンス センターの検索と調査のリソース](https://aka.ms/sccsearch)を活用することもできます。 
+- すべてのアカウントに対して、この[スクリプトを使用してメールボックスの監査を有効](https://aka.ms/mailboxaudit1)にします。 
+- すべてのメールボックスの代理人のアクセス許可とメール転送ルールを確認します。 この [PowerShell スクリプト](https://aka.ms/delegateforwardrules)を使用して、この作業を実行することができます。 
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights の問題を診断して解決する | Microsoft Docs
+title: Azure Time Series Insights の問題の診断、トラブルシューティング、解決 | Microsoft Docs
 description: この記事では、Azure Time Series Insights 環境内で発生する可能性がある一般的な問題を診断、トラブルシューティング、および解決する方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,92 +10,109 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 04/09/2018
-ms.openlocfilehash: 399c7b000360a73a9bab06b046be21c9d93a1c70
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: seodec18
+ms.openlocfilehash: 36ea2b8d3649fbda5a5cd6cc5f2cd05cdc095902
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367130"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555814"
 ---
-# <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>Time Series Insights 環境の問題を診断して解決する
+# <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Time Series Insights 環境の問題を診断して解決する
 
-この記事では、Time Series Insights 環境で発生する可能性があるいくつかの問題について説明します。 ここでは、考えられる原因と解決のためのソリューションを示します。
+この記事では、Azure Time Series Insights 環境で発生する可能性があるいくつかの問題について説明します。 この記事では、考えられる原因と解決のためのソリューションを示します。
 
 ## <a name="video"></a>ビデオ: 
 
-### <a name="in-this-video-we-cover-common-time-series-insights-customer-challenges-and-mitigationsbr"></a>この動画では、Time Series Insights でお客様が直面する一般的な課題とその軽減策を紹介します。</br>
+この動画では、Time Series Insights でお客様が直面する一般的な課題とその軽減策を紹介します。</br>
 
 > [!VIDEO https://www.youtube.com/embed/7U0SwxAVSKw]
 
-## <a name="problem-1-no-data-is-shown"></a>問題 1: データが表示されない
-[Azure Time Series Insights エクスプローラー](https://insights.timeseries.azure.com)でデータが表示されない一般的な理由はいくつかあります。
+## <a name="problem-1-no-data-is-shown"></a>問題 1:データが表示されない
 
-### <a name="possible-cause-a-event-source-data-is-not-in-json-format"></a>考えられる原因 A: イベント ソース　データが JSON 形式でない
-Azure Time Series Insights は JSON データのみをサポートしています。 JSON のサンプルについては、「[サポートされている JSON 構造](time-series-insights-send-events.md#supported-json-shapes)」を参照してください。
+以下のいくつかの一般的な理由で、[Azure Time Series Insights エクスプローラー](https://insights.timeseries.azure.com)にデータが表示されません。
 
-### <a name="possible-cause-b-event-source-key-is-missing-a-required-permission"></a>考えられる原因 B: イベント ソース キーに必要なアクセス許可がありません。
-* IoT Hub の場合は、**サービス接続**アクセス許可を備えたキーを指定する必要があります。
+### <a name="cause-a-event-source-data-isnt-in-json-format"></a>原因 A:イベント ソース データが JSON 形式でない
 
-   ![IoT Hub のサービス接続アクセス許可](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)
+Azure Time Series Insights は JSON データのみをサポートしています。 JSON のサンプルについては、「[サポートされている JSON 構造](./how-to-shape-query-json.md)」を参照してください。
 
-   上の図に示すように、ポリシー **iothubowner** と **service** は両方とも**サービス接続**アクセス許可が設定されているため、どちらも使用できます。
+### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>原因 B:イベント ソース キーに必要なアクセス許可がない
 
-* イベント ハブの場合は、**リッスン** アクセス許可を持つキーを指定する必要があります。
+* Azure IoT Hub の IoT Hub の場合は、**サービス接続**アクセス許可を備えたキーを指定する必要があります。 **iothubowner** ポリシーと**サービス** ポリシーは、どちらも**サービス接続**アクセス許可があるため、どちらでも使用できます。
+
+   ![IoT Hub サービス接続のアクセス許可](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)
+
+
+* Azure Event Hubs のイベント ハブの場合は、**リッスン** アクセス許可を持つキーを指定する必要があります。 **読み取り**ポリシーと**管理**ポリシーは、どちらも**リッスン** アクセス許可があるため、どちらでも使用できます。
 
    ![イベント ハブのリッスン アクセス許可](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)
 
-   上の図に示すように、ポリシー **read** と **manage** は両方とも**リッスン** アクセス許可が設定されているため、どちらも使用できます。
+### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>原因 C:指定したコンシューマー グループが Time Series Insights 専用ではない
 
-### <a name="possible-cause-c-the-consumer-group-provided-is-not-exclusive-to-time-series-insights"></a>考えられる原因 C: 指定したコンシューマー グループが Time Series Insights 専用でない
-IoT Hub またはイベント ハブの登録時に、データを読み取るために使用する必要があるコンシューマー グループを指定します。 このコンシューマー グループは共有**できません**。 コンシューマー グループを共有すると、基盤となるイベント ハブによってリーダーのいずれかがランダムに自動的に切断されます。 Time Series Insights が読み取る一意のコンシューマー グループを指定します。
+IoT Hub またはイベント ハブを登録するときに、データの読み取りに使用するコンシューマー グループを設定する必要があります。 このコンシューマー グループは*共有できません*。 コンシューマー グループを共有すると、基盤となる IoT Hub またはイベント ハブによってリーダーのいずれかが自動的にランダムに切断されます。 Time Series Insights が読み取る一意のコンシューマー グループを指定します。
 
-## <a name="problem-2-some-data-is-shown-but-some-is-missing"></a>問題 2: 表示されるデータと表示されないデータがある
-データを部分的に表示できるが、タイム ラグがある場合、いくつかの可能性が考えられます。
+## <a name="problem-2-some-data-is-shown-but-data-is-missing"></a>問題 2:表示されるデータと表示されないデータがある
 
-### <a name="possible-cause-a-your-environment-is-getting-throttled"></a>考えられる原因 A: 環境が調整されている
-これは、データを持つイベント ソースの作成後に環境がプロビジョニングされたときによくある問題です。  Azure IoT Hub と Event Hubs は、データを最大 7 日間格納します。  TSI はイベント ソース内で常に最も古いイベントから開始します (FIFO)。  したがって、単一ユニットの TSI 環境である S1 に接続したときにイベント ソースに 500 万イベントが存在した場合、TSI は 1 日あたり約 100 万イベントを読み取ります。  これは一見すると、TSI に 5 日間の待機時間が発生しているように見えることがあります。  実際に起こっているのは、環境が調整されているということです。  イベント ソースに古いイベントがある場合、2 つのうちいずれかの方法を使用できます。
+データが一部しか表示されず、データにタイムラグが生じているように思われる場合は、いくつかの可能性を考慮する必要があります。
 
-- イベント ソースのリテンション期間を変更して、TSI に表示したくない古いイベントが除去されやすくなるようにします
-- プロビジョニングする環境サイズを大きくして (ユニット数の観点で)、古いイベントのスループットを増やします。  上記の例を使用して、同じ S1 環境を 1 日あたり 5 ユニットに増やした場合、環境はその日のうちに現時点までの遅れを取り戻すはずです。  安定状態でのイベント生成が 1 日あたり 1 M 以下の場合、遅れを取り戻した後でイベントの容量を 1 ユニットに戻すことができます。  
+### <a name="cause-a-your-environment-is-being-throttled"></a>原因 A:環境が調整されている
 
-環境の SKU のタイプと容量に基づいて調整制限が適用されます。 環境内のすべてのイベント ソースで、この容量が共有されます。 IoT Hub またはイベント ハブのイベント ソースが適用される制限を超えるデータをプッシュしている場合は、調整が行われ、タイム ラグが発生します。
+調整は、データを持つイベント ソースを作成した後で、環境をプロビジョニングするときの一般的な問題です。 Azure IoT Hub と Azure Event Hubs は、データを最長 7 日間格納します。 Time Series Insights は常に、イベント ソース内の最も古いイベントから開始します (先入れ先出し (*FIFO*))。 
+
+たとえば、単一ユニットの Time Series Insights 環境である S1 に接続するときに、イベント ソースに 500 万イベントがある場合、Time Series Insights は 1 日あたり約 100 万イベントを読み取ります。 Time Series Insights に 5 日の待ち時間が発生しているように見えます。 ただし、起こっているのは、環境が調整されているということです。 
+
+イベント ソースに古いイベントがある場合、次の 2 つのうちいずれかの方法で調整にアプローチできます。
+
+- イベント ソースのリテンション期間を変更して、Time Series Insights に表示したくない古いイベントが除去されやすくなるようにします。
+- プロビジョニングする環境サイズを大きくして (ユニット数)、古いイベントのスループットを増やします。 前の例を使用して、同じ S1 環境を 1 日あたり 5 ユニットに増やした場合、環境は 1 日のうちに追いつくはずです。 安定状態でのイベント生成が 1 日あたり 100 万イベント以下である場合、追いついた後でイベントの容量を 1 ユニットまで減らすことができます。
+
+環境の SKU のタイプと容量に基づいて調整制限が適用されます。 環境内のすべてのイベント ソースで、この容量が共有されます。 IoT Hub またはイベント ハブのイベント ソースが適用される制限を超えるデータをプッシュする場合は、調整が行われ、タイム ラグが発生します。
 
 次の図は、SKU が S1 で容量が 3 の Time Series Insights 環境を示しています。 この環境は、1 日あたり 300 万イベントを受信できます。
 
 ![環境の SKU の現在の容量](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)
 
-たとえば、この環境はイベント ハブからメッセージを取り込んでいるとします。 次の図に示す受信レートを観察します。
+たとえば、この環境はイベント ハブからメッセージを取り込むとします。 次の図は、受信レートを示します。
 
 ![イベント ハブの受信レートの例](media/diagnose-and-solve-problems/eventhub-ingress-rate.png)
 
-図に示すように、1 日の受信レートは約 67,000 メッセージです。 このレートは毎分およそ 46 メッセージに相当します。 各イベント ハブ メッセージが 1 つの Time Series Insights イベントにフラット化されている場合、この環境では調整は行われません。 各イベント ハブ メッセージが 100 個の Time Series Insights イベントにフラット化されている場合は、毎分 4,600 イベントを受信することになります。 容量 3 の S1 SKU 環境は、毎分 2,100 イベントしか受信できません (100 万イベント/日 = 700 イベント/分 × 3 ユニット = 2,100 イベント/分)。 そのため、調整によるタイム ラグが発生します。 
+1 日の受信レートは、最大 67,000 メッセージです。 このレートは毎分およそ 46 メッセージに相当します。 各イベント ハブ メッセージが 1 つの Time Series Insights イベントにフラット化されている場合、調整は行われません。 各イベント ハブ メッセージが 100 個の Time Series Insights イベントにフラット化されている場合は、毎分 4,600 イベントを受信することになります。 容量 3 の S1 SKU 環境は、毎分 2,100 イベントしか受信できません (100 万イベント/日 = 700 イベント/分 × 3 ユニット = 2,100 イベント/分)。 この設定の場合、調整によるタイム ラグが発生します。 
 
-フラット化のロジックのしくみについては、「[サポートされている JSON 構造](time-series-insights-send-events.md#supported-json-shapes)」を参照してください。
+フラット化のロジックのしくみについては、「[サポートされている JSON 構造](./how-to-shape-query-json.md)」を参照してください。
 
-### <a name="recommended-resolution-steps-for-excessive-throttling"></a>調整が過剰な場合の推奨される解決手順
-タイム ラグを解消するには、環境の SKU 容量を増やします。 詳細については、「[Time Series Insights 環境をスケーリングする方法](time-series-insights-how-to-scale-your-environment.md)」を参照してください。
+#### <a name="recommended-resolutions-for-excessive-throttling"></a>調整が過剰な場合の推奨される解決
 
-### <a name="possible-cause-b-initial-ingestion-of-historical-data-is-causing-slow-ingress"></a>考えられる原因 B: 履歴データの初期の取り込みで受信の遅延が発生している
-既存のイベント ソースを接続している場合は、IoT Hub またはイベント ハブに既にデータがある可能性があります。 環境はイベント ソース メッセージのリテンション期間の始めからデータをプルし始めます。
+タイム ラグを解消するには、環境の SKU 容量を増やします。 詳細については、[Time Series Insights 環境のスケーリング](time-series-insights-how-to-scale-your-environment.md)に関するページを参照してください。
 
-この動作は既定の動作であり、オーバーライドできません。 調整を適用できますが、履歴データの受信の遅れを取り戻すのに時間がかかることがあります。
+### <a name="cause-b-initial-ingestion-of-historical-data-slows-ingress"></a>原因 B:履歴データの初回取り込みで受信が遅くなる
 
-#### <a name="recommended-resolution-steps-of-large-initial-ingestion"></a>大規模な初期の取り込みの推奨される解決方法の手順
-タイム ラグを解消するには、次の手順を実行します。
-1. SKU 容量を許可される最大値 (この場合は 10) まで増やします。 容量を増やすと、より短い時間で受信プロセスが追いつくようになります。 どれくらいの時間で追いつくかを、[Time Series Insights エクスプローラー](https://insights.timeseries.azure.com)の可用性グラフで視覚化できます。 なお、容量の増加分には料金が発生します。
-2. タイム ラグが解消したら、SKU 容量を通常の受信レートに戻します。
+既存のイベント ソースを接続している場合は、IoT Hub またはイベント ハブに既にデータが含まれている可能性があります。 環境はイベント ソース メッセージのリテンション期間の始めからデータをプルし始めます。 これは既定の処理であり、上書きできません。 調整に関与できます。 調整は履歴データを取り込むので、追いつくまでしばらく時間がかかる可能性があります。
 
-## <a name="problem-3-my-event-sources-timestamp-property-name-setting-doesnt-work"></a>問題 3: イベント ソースの*タイムスタンプ プロパティ名*設定が機能しない
-名前と値が次の規則に準拠していることを確認してください。
-* タイムスタンプ プロパティ名は _大文字と小文字が区別されます_。
-* イベント ソースから JSON 文字列として取得されるタイムスタンプ プロパティ値は、_yyyy-MM-ddTHH:mm:ss.FFFFFFFK_ の形式である必要があります。 例: 2008-04-12T12:53Z
+#### <a name="recommended-resolutions-for-large-initial-ingestion"></a>大規模な初期の取り込みの推奨される解決方法
 
-*タイムスタンプ プロパティ名*がキャプチャされて正しく動作していることを確認する最も簡単な方法は、TSI エクスプローラーを使用することです。  TSI エクスプローラー内でグラフを使用して、*タイムスタンプのプロパティ名*を指定した後で期間を選択します。  選択内容を右クリックして、*[explore events (イベントの探索)]* オプションを選択します。  最初の列見出しは*タイムスタンプのプロパティ名*であり、*Timestamp* という単語の横に *($ts)* が記載されている必要があり、次のようになっていないはずです。
-- *(abc)* の場合は、TSI がデータ値を文字列として読み取っていることを示しています
-- *予定表アイコン*の場合は、TSI がデータ値を*日時*として読み取っていることを示しています
-- *#* の場合は、TSI がデータ値を整数として読み取っていることを示しています
+ラグを解消するには:
+
+1. SKU 容量を最大許容値 (この場合は 10) に増やします。 容量を増やすと、受信プロセスが開始しより短い時間で追いつくようになります。 なお、容量の増加分には料金が発生します。 どれくらいの時間で追いつくかを視覚化するために、[Time Series Insights エクスプローラー](https://insights.timeseries.azure.com)の可用性グラフを表示できます。 
+
+2. ラグが解消したら、SKU 容量は通常の受信レートまで低下します。
+
+## <a name="problem-3-my-event-sources-timestamp-property-name-setting-doesnt-work"></a>問題 3:イベント ソースのタイムスタンプ プロパティ名設定が機能しない
+
+タイムスタンプ プロパティの名前と値が次の規則に準拠していることを確認してください。
+* タイムスタンプ プロパティ名では大文字と小文字が区別されます。
+* イベント ソースから JSON 文字列として取得されるタイムスタンプ プロパティ値は、_yyyy-MM-ddTHH:mm:ss.FFFFFFFK_ の形式である必要があります。 たとえば、**2008-04-12T12:53Z** となります。
+
+タイムスタンプ プロパティ名がキャプチャされて正しく動作していることを確認する最も簡単な方法は、Azure Time Series Insights エクスプローラーを使用することです。 Time Series Insights エクスプローラー内でグラフを使用して、タイムスタンプのプロパティ名を入力した後で期間を選択します。 選択内容を右クリックして、**[イベントの探索]** オプションを選択します。 
+
+最初の列見出しは、タイムスタンプ プロパティ名になるはずです。 **タイムスタンプ**の語の横に **($ts)** と表示されるはずです。 
+
+次の値は表示されません。
+- *(abc)*:Time Series Insights が文字列としてデータ値を読み取っていることを示します。
+- *カレンダー アイコン*:Time Series Insights が*日時*としてデータ値を読み取っていることを示します。
+- *#*:Time Series Insights が整数としてデータ値を読み取っていることを示します。
 
 
 ## <a name="next-steps"></a>次の手順
-- 追加の支援については、[MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights)または [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights) でメッセージの交換を始めてください。 
-- サポート オプションについては、[Azure サポート](https://azure.microsoft.com/support/options/)を利用することもできます。
+
+- サポートが必要な場合は、[MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights)または [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights) で会話を始めてください。 
+- サポート オプションについては、[Azure サポート](https://azure.microsoft.com/support/options/)を使用します。

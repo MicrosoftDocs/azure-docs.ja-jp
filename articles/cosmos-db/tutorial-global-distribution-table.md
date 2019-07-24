@@ -1,23 +1,19 @@
 ---
-title: Table API の Azure Cosmos DB グローバル分散チュートリアル | Microsoft Docs
+title: Table API による Azure Cosmos DB グローバル分散のチュートリアル
 description: Table API を使用して Azure Cosmos DB グローバル分散を設定する方法を学習します。
-services: cosmos-db
-keywords: グローバル分散, Table
-author: SnehaGunda
-manager: kfile
+author: wmengmsft
+ms.author: wmeng
 ms.service: cosmos-db
-ms.component: cosmosdb-table
-ms.devlang: na
+ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 12/13/2017
-ms.author: sngun
-ms.custom: mvc
-ms.openlocfilehash: 7baa1e5b4b50d1f420b514854fa4d4c9ef786c99
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.reviewer: sngun
+ms.openlocfilehash: d7d68c2dbdf5ca32fb2936e92daafac838c97a06
+ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582137"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54042531"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Table API を使用して Azure Cosmos DB グローバル分散を設定する
 

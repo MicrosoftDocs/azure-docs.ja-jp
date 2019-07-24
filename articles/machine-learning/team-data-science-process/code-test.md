@@ -1,28 +1,24 @@
 ---
-title: UCI 成人収入予測データセットを使用した Azure でのデータ サイエンス コード テスト - Team Data Science Process と Azure DevOps Services
-description: UCI 成人収入予測データを使用したデータ サイエンス コード テスト
-services: machine-learning, team-data-science-process
-documentationcenter: ''
-author: weig
-manager: deguhath
+title: Azure DevOps Services でデータ サイエンス コードをテストする - Team Data Science Process
+description: Azure 上で Team Data Science Process と Azure DevOps Services を使用して UCI 成人収入予測データセットでデータ サイエンス コードをテストします
+services: machine-learning
+author: marktab
+manager: cgronlun
 editor: cgronlun
-ms.assetid: b8fbef77-3e80-4911-8e84-23dbf42c9bee
 ms.service: machine-learning
-ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 05/19/2018
-ms.author: weig
-ms.openlocfilehash: ad0a8b5b0bb9afbbe626c9481961f20ccd4797bf
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: tdsp
+ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
+ms.openlocfilehash: 10692fcb720be819dcf94a8ecbc541983ffc8853
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44294697"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478034"
 ---
-# <a name="data-science-code-testing-with-the-uci-adult-income-prediction-dataset"></a>UCI 成人収入予測データセットを使用したデータ サイエンス コード テスト
+# <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Team Data Science Process と Azure DevOps Services を使用した Azure でのデータ サイエンス コードのテスト
 この記事では、データ サイエンス ワークフローでコードをテストするうえでの予備的ガイドラインについて取り上げます。 このようなテストにより、データ サイエンティストは、秩序立った効率的な方法で、自分のコードの品質と期待される成果をチェックすることができます。 ここでは、[UCI 成人収入データセットを使用した Team Data Science Process (TDSP) プロジェクト](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)を用います。以前、コード テストの実行方法を紹介する際に発行したものです。 
 
 ## <a name="introduction-on-code-testing"></a>コード テストの概要

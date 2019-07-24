@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 97ca4f69f4bf2aa814d51cc17970c1aead8399e8
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: adf4d8d5cfcef2dde8193ce1b7f2805a44e2d93d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414405"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58793273"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Git を使用して API Management サービス構成を保存および構成する方法
 
@@ -44,6 +44,8 @@ Git を使用して API Management サービス インスタンスを管理す�
 
 この記事では、Git を有効にして使用し、サービス構成を管理する方法について説明します。また、Git リポジトリ内のファイルとフォルダーに関するリファレンス情報も提供します。
 
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+
 ## <a name="access-git-configuration-in-your-service"></a>サービスの Git 構成にアクセスする
 
 Git 構成設定を表示して構成するには、**[セキュリティ]** メニューをクリックし、**[構成リポジトリ]** タブに移動します。
@@ -51,11 +53,11 @@ Git 構成設定を表示して構成するには、**[セキュリティ]** メ
 ![Enable GIT][api-management-enable-git]
 
 > [!IMPORTANT]
-> プロパティとして定義されていないシークレットはすべて、リポジトリに格納され、Git アクセスを無効にしてから再度有効にするまで履歴に残ります。 プロパティは、すべての API 構成とポリシーの定数文字列値 (シークレットなど) を管理するための安全な場所を提供します。そのため、定数文字列値をポリシー ステートメントに直接格納する必要はありません。 詳細については、「[Azure API Management ポリシーのプロパティの利用方法](api-management-howto-properties.md)」を参照してください。
-> 
-> 
+> 名前付きの値として定義されていないシークレットはすべて、リポジトリに格納され、Git アクセスを無効にしてから再度有効にするまで履歴に残ります。 名前付きの値は、すべての API 構成とポリシーの定数文字列値 (シークレットなど) を管理するための安全な場所を提供します。そのため、定数文字列値をポリシー ステートメントに直接格納する必要がありません。 詳細については、「[Azure API Management ポリシーでの名前付きの値の使用方法](api-management-howto-properties.md)」を参照してください。
+>
+>
 
-REST API を使用して Git アクセスを有効または無効にする方法については、「 [Enable or disable Git access using the REST API (REST API を使用して Git アクセスを有効または無効にする)](https://msdn.microsoft.com/library/dn781420.aspx#EnableGit)」を参照してください。
+REST API を使用して Git アクセスを有効または無効にする方法については、「 [Enable or disable Git access using the REST API (REST API を使用して Git アクセスを有効または無効にする)](/rest/api/apimanagement/tenantaccess?EnableGit)」を参照してください。
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>サービス構成を Git リポジトリに保存するには
 
@@ -67,19 +69,19 @@ REST API を使用して Git アクセスを有効または無効にする方法
 
 構成がリポジトリに保存されたら、そのリポジトリを複製できます。
 
-REST API を使用してこの操作を実行する方法については、「 [Commit configuration snapshot using the REST API (REST API を使用して構成スナップショットをコミットする)](https://msdn.microsoft.com/library/dn781420.aspx#CommitSnapshot)」を参照してください。
+REST API を使用してこの操作を実行する方法については、「 [Commit configuration snapshot using the REST API (REST API を使用して構成スナップショットをコミットする)](/rest/api/apimanagement/tenantaccess?CommitSnapshot)」を参照してください。
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>ローカル コンピューターにリポジトリを複製するには
 
-リポジトリを複製するには、リポジトリの URL、ユーザー名、パスワードが必要です。 ユーザー名と他の資格情報を取得するには、ページの上部にある **[アクセス資格情報]** をクリックします。  
- 
+リポジトリを複製するには、リポジトリの URL、ユーザー名、パスワードが必要です。 ユーザー名と他の資格情報を取得するには、ページの上部にある **[アクセス資格情報]** をクリックします。
+
 パスワードを生成するには、希望する有効期限の日時を **[有効期限]** に設定してから、**[生成]** をクリックします。
 
 > [!IMPORTANT]
 > このパスワードを書き留めておいてください。 このページから移動すると、パスワードが再度表示されることはありません。
-> 
+>
 
-次の例では [Git for Windows](http://www.git-scm.com/downloads) の Git Bash ツールを使用していますが、使い慣れた Git ツールも使用できます。
+次の例では [Git for Windows](https://www.git-scm.com/downloads) の Git Bash ツールを使用していますが、使い慣れた Git ツールも使用できます。
 
 Git ツールを目的のフォルダーで開き、次のコマンドを実行して、Git リポジトリをローカル マシンに複製します (コマンドは Azure Portal で提供されます)。
 
@@ -170,12 +172,12 @@ REST API を使用してこの操作を実行する方法については、「 [
 
 > [!NOTE]
 > 次のエンティティは、Git リポジトリに含まれないため、Git を使用して構成することはできません。
-> 
-> * ユーザー
-> * サブスクリプション
-> * Properties
+>
+> * [ユーザー](https://docs.microsoft.com/en-us/rest/api/apimanagement/user)
+> * [サブスクリプション](https://docs.microsoft.com/en-us/rest/api/apimanagement/subscription)
+> * [名前付きの値](https://docs.microsoft.com/en-us/rest/api/apimanagement/property)
 > * スタイル以外の開発者ポータルのエンティティ
-> 
+>
 
 ### <a name="root-api-management-folder"></a>api-management ルート フォルダー
 `api-management` ルート フォルダーには、`configuration.json` ファイルがあります。このファイルには、サービス インスタンスに関する最上位の情報が次の形式で含まれています。
@@ -221,7 +223,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 ### <a name="apis-folder"></a>apis フォルダー
 `apis` フォルダーには、サービス インスタンス内の各 API のフォルダーがあります。API のフォルダーには次の項目が含まれます。
 
-* `apis\<api name>\configuration.json` - これは API の構成で、バックエンド サービス URL と操作に関する情報が含まれています。 この情報は、[特定の API の取得](https://docs.microsoft.com/rest/api/apimanagement/api/get)を `application/json` 形式で `export=true` を指定して呼び出した場合に返される情報と同じです。
+* `apis\<api name>\configuration.json` - これは API の構成で、バックエンド サービス URL と操作に関する情報が含まれています。 この情報は、[特定の API の取得](https://docs.microsoft.com/rest/api/apimanagement/apis/get)を `application/json` 形式で `export=true` を指定して呼び出した場合に返される情報と同じです。
 * `apis\<api name>\api.description.html` - これは API の説明で、[API エンティティ](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property)の `description` プロパティに対応します。
 * `apis\<api name>\operations\` - このフォルダーには、API での操作に対応する `<operation name>.description.html` ファイルが含まれています。 各ファイルには、API での 1 つの操作の説明が含まれています。この操作は、REST API の[操作エンティティ](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties)の `description` プロパティに対応します。
 
@@ -264,7 +266,7 @@ REST API を使用してこの操作を実行する方法については、「 [
   * [Azure API Management Deployment Cmdlets (Azure API Management のデプロイ コマンドレット)](https://docs.microsoft.com/powershell/module/wds)
   * [Azure API Management Service Management Cmdlets (Azure API Management のサービス管理コマンドレット)](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
 * REST API を使用したサービス インスタンスの管理
-  * [API Management REST (API Management REST)](https://msdn.microsoft.com/library/azure/dn776326.aspx)
+  * [API Management REST (API Management REST)](/rest/api/apimanagement/)
 
 
 [api-management-enable-git]: ./media/api-management-configuration-repository-git/api-management-enable-git.png

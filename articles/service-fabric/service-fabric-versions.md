@@ -3,8 +3,8 @@ title: Azure Service Fabric クラスターのバージョンについて | Micr
 description: サポートされている Azure Service Fabric クラスターのバージョン
 services: service-fabric
 documentationcenter: .net
-author: twhitney
-manager: jpconnock
+author: aljo-microsoft
+manager: chakdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/24/2018
-ms.author: TylerMSFT
-ms.openlocfilehash: 1041f37486c556ae29eed47728336a1ccb518e78
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.author: aljo
+ms.openlocfilehash: de5522e68d1329ce2b80a4d3c7045d38c13169e5
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040368"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191649"
 ---
 # <a name="supported-service-fabric-versions"></a>サポートされている Service Fabric のバージョン
 
@@ -27,8 +27,8 @@ ms.locfileid: "48040368"
 
 サポートされている Service Fabric のバージョンをクラスターで実行し続ける方法の詳細については、次のドキュメントを参照してください。
 
-- [Azure クラスターで Service Fabric のバージョンをアップグレードする](service-fabric-cluster-upgrade.md)
-- [スタンドアロンの Windows Server クラスターで Service Fabric のバージョンをアップグレードする](service-fabric-cluster-upgrade-windows-server.md)
+- [Azure クラスターの Service Fabric のバージョンをアップグレードする](service-fabric-cluster-upgrade.md)
+- [スタンドアロン Windows Server クラスターの Service Fabric のバージョンをアップグレードする](service-fabric-cluster-upgrade-windows-server.md)
 
 サポートされている Service Fabric のバージョンとそのサポートの終了日の一覧を次に示します。
 
@@ -42,5 +42,6 @@ ms.locfileid: "48040368"
 | 5.7.* | 5.4.164.* |バージョン 2.7 以前 |2017 年 12 月 15 日  |
 | 6.0.* | 5.6.205.* |バージョン 2.8 以前 |2018 年 3 月 30 日     |
 | 6.1.* | 5.7.221.* |バージョン 3.0 以前 |2018 年 7 月 15 日      |
-| 6.2.* | 6.0.232.* |バージョン 3.1 以前 |2018 年 10 月 26 日 |
-| 6.3.* | 6.1.480.* |バージョン 3.2 以前 |最新バージョンのため、終了日はありません |
+| 6.2.* | 6.0.232.* |バージョン 3.1 以前 |2018 年 10 月 26 日   |
+| 6.3.* | 6.1.480.* |バージョン 3.2 以前 |2019 年 3 月 31 日  |
+| 6.4.* | 6.2.301.* |バージョン 3.3 以前 |最新バージョンのため、終了日はありません |

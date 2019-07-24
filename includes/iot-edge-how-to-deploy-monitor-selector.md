@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 6/15/2018
 ms.author: chrisgre
 ms.custom: include file
-ms.openlocfilehash: 3e48d94f49240961c1b23198378b4ee7bc9f42da
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: f24566769a4d92d7d3fd7847b999dd732404db37
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
+ms.lasthandoff: 12/21/2018
 ms.locfileid: "37032131"
 ---
 > [!div class="op_single_selector"]

@@ -3,29 +3,30 @@ title: Azure AD ギャラリー アプリケーションのパスワード シ�
 description: Azure AD アプリケーション ギャラリーに既に表示されている場合に、セキュリティで保護されたパスワード ベースのシングル サインオン用にアプリケーションを構成する方法
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
-ms.openlocfilehash: 6f1e8efb63f62152c183035e1bb6289fc5db56dd
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.author: celested
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 64fc7104427fd14bcb6989298a2896ec82c34f17
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355957"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082247"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションのパスワード シングル サインオンを構成する方法
 
-[Azure AD アプリケーション ギャラリー](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery)からアプリケーションを追加する場合、そのアプリケーションへのユーザーのサインイン方法を選ぶことができます。 この選択肢は、[Azure Portal](https://portal.azure.com/) のエンタープライズ アプリケーションで **[シングル サインオン]** ナビゲーション項目を選択することによっていつでも構成できます。
+[Azure AD アプリケーション ギャラリー](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)からアプリケーションを追加する場合、そのアプリケーションへのユーザーのサインイン方法を選ぶことができます。 この選択肢は、[Azure Portal](https://portal.azure.com/) のエンタープライズ アプリケーションで **[シングル サインオン]** ナビゲーション項目を選択することによっていつでも構成できます。
 
-使用できるシングル サインオン方法の 1 つは、[[パスワードベースのシングル サインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) オプションです。 これは、Azure AD へのアプリケーションの統合を迅速に開始する優れた方法で、以下のことを実現します。
+使用できるシングル サインオン方法の 1 つは、[[パスワードベースのシングル サインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) オプションです。 これは、Azure AD へのアプリケーションの統合を迅速に開始する優れた方法で、以下のことを実現します。
 
 -   Azure AD と統合したアプリケーションのユーザー名とパスワードを安全に保存し、再生して、**ユーザーのシングル サインオン**を有効にする
 
@@ -41,7 +42,7 @@ ms.locfileid: "44355957"
 
 -   **管理者**が、[アプリケーションにグループを割り当てる](#assign-an-application-to-a-group-directly)ときに [資格情報の更新] 機能を使用して、グループで使用される共有ユーザー名とパスワードを指定できるようにする
 
-次のセクションでは、既に [Azure AD アプリケーション ギャラリー](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery)に存在するアプリケーションに対して [[パスワードベースのシングル サインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) を有効にする方法について説明します。
+次のセクションでは、既に [Azure AD アプリケーション ギャラリー](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)に存在するアプリケーションに対して [[パスワードベースのシングル サインオン]](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) を有効にする方法について説明します。
 
 ## <a name="overview-of-steps-required"></a>必要な手順の概要
 Azure AD ギャラリーからアプリケーションを構成するには、以下の手順を実行する必要があります。
@@ -50,7 +51,7 @@ Azure AD ギャラリーからアプリケーションを構成するには、�
 
 -   [パスワード シングル サインオンに対応するようにアプリケーションを構成する](#configure-the-application-for-password-single-sign-on)
 
--   [アプリケーションをユーザーまたはグループに割り当てる](#assign-the-application-to-a-user-or-a-group)
+-   アプリケーションをユーザーまたはグループに割り当てる
 
     -   [アプリケーションにユーザーを直接割り当てる](#assign-a-user-to-an-application-directly)
 
@@ -84,25 +85,25 @@ Azure AD ギャラリーからアプリケーションを追加するには、�
 
 アプリケーションのシングル サインオンを構成するには、次の手順に従います。
 
-1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
+1. [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
-4.  Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
+4. Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
-5.  **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
+5. **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
-  * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
+   * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
 
-6.  シングル サインオンを構成するアプリケーションを選択します。
+6. シングル サインオンを構成するアプリケーションを選択します。
 
-7.  アプリケーションが読み込まれたら、アプリケーションの左側のナビゲーション メニューから **[シングル サインオン]** をクリックします。
+7. アプリケーションが読み込まれたら、アプリケーションの左側のナビゲーション メニューから **[シングル サインオン]** をクリックします。
 
-8.  **[パスワード ベースのサインオン]** モードを選択します。
+8. **[パスワード ベースのサインオン]** モードを選択します。
 
-9.  [アプリケーションにユーザーを割り当てます](#assign-a-user-to-an-application-directly)。
+9. [アプリケーションにユーザーを割り当てます](#assign-a-user-to-an-application-directly)。
 
 10. さらに、ユーザーの行を選び、**[資格情報の更新]** をクリックしてユーザーに代わってユーザー名とパスワードを入力すると、ユーザーに代わって資格情報を提供することもできます。 そうしないと、起動時に自分で資格情報を入力するように求めるプロンプトがユーザーに表示されます。
 
@@ -110,25 +111,25 @@ Azure AD ギャラリーからアプリケーションを追加するには、�
 
 1 人以上のユーザーをアプリケーションに直接割り当てるには、次の手順に従います。
 
-1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
+1. [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
-4.  Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
+4. Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
-5.  **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
+5. **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
-  * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
+   * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
 
-6.  ユーザーを割り当てるアプリケーションを一覧から選びます。
+6. ユーザーを割り当てるアプリケーションを一覧から選びます。
 
-7.  アプリケーションが読み込まれたら、アプリケーションの左側のナビゲーション メニューから **[ユーザーとグループ]** をクリックします。
+7. アプリケーションが読み込まれたら、アプリケーションの左側のナビゲーション メニューから **[ユーザーとグループ]** をクリックします。
 
-8.  **[ユーザーとグループ]** 一覧の上部にある **[追加]** ボタンをクリックして、**[割り当ての追加]** ウィンドウを開きます。
+8. **[ユーザーとグループ]** 一覧の上部にある **[追加]** ボタンをクリックして、**[割り当ての追加]** ウィンドウを開きます。
 
-9.  **[割り当ての追加]** ウィンドウから **[ユーザーとグループ]** セレクターをクリックします。
+9. **[割り当ての追加]** ウィンドウから **[ユーザーとグループ]** セレクターをクリックします。
 
 10. 割り当てる対象のユーザーの**フル ネーム**または**電子メール アドレス**を **[名前または電子メール アドレスで検索]** 検索ボックスに入力します。
 
@@ -146,25 +147,25 @@ Azure AD ギャラリーからアプリケーションを追加するには、�
 
 1 つ以上のグループをアプリケーションに直接割り当てるには、次の手順に従います。
 
-1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
+1. [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
+2. 左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
-3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
+3. フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
-4.  Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
+4. Azure Active Directory の左側のナビゲーション メニューから **[エンタープライズ アプリケーション]** をクリックします。
 
-5.  **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
+5. **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
-  * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
+   * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
 
-6.  ユーザーを割り当てるアプリケーションを一覧から選びます。
+6. ユーザーを割り当てるアプリケーションを一覧から選びます。
 
-7.  アプリケーションが読み込まれたら、アプリケーションの左側のナビゲーション メニューから **[ユーザーとグループ]** をクリックします。
+7. アプリケーションが読み込まれたら、アプリケーションの左側のナビゲーション メニューから **[ユーザーとグループ]** をクリックします。
 
-8.  **[ユーザーとグループ]** 一覧の上部にある **[追加]** ボタンをクリックして、**[割り当ての追加]** ウィンドウを開きます。
+8. **[ユーザーとグループ]** 一覧の上部にある **[追加]** ボタンをクリックして、**[割り当ての追加]** ウィンドウを開きます。
 
-9.  **[割り当ての追加]** ウィンドウから **[ユーザーとグループ]** セレクターをクリックします。
+9. **[割り当ての追加]** ウィンドウから **[ユーザーとグループ]** セレクターをクリックします。
 
 10. **[名前または電子メール アドレスで検索]** 検索ボックスに、割り当てるグループの**完全なグループ名**を入力します。
 

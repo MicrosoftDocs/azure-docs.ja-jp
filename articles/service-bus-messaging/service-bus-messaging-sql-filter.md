@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 7bac115ab3215a7dde625f194bdf325f9e0af318
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: e490c7c24ed38e2988c1f097b09b508746f08178
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392858"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118137"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter 構文
 
@@ -119,9 +119,9 @@ ms.locfileid: "47392858"
   
 `<pattern>` は、文字列として評価される式である必要があります。 これは LIKE 演算子のパターンとして使用されます。      次のワイルドカード文字を含めることができます。  
   
--   `%`: 0 個以上の文字から成る任意の文字列。  
+-   `%`:0 個以上の文字から成る任意の文字列。  
   
--   `_`: 1 つの任意の文字。  
+-   `_`:任意の 1 文字を表します。  
   
 ## <a name="escapechar"></a>escape_char  
   
@@ -223,29 +223,29 @@ ms.locfileid: "47392858"
   
 ### <a name="property-evaluation-semantics"></a>プロパティ評価セマンティクス  
   
--   存在しないシステム プロパティを評価しようとすると、[FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) 例外がスローされます。  
+- 存在しないシステム プロパティを評価しようとすると、[FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) 例外がスローされます。  
   
--   存在しないプロパティは、内部的に **unknown** として評価されます。  
+- 存在しないプロパティは、内部的に **unknown** として評価されます。  
   
- 算術演算子での unknown 評価は次のとおりです。  
+  算術演算子での unknown 評価は次のとおりです。  
   
--   2 項演算子では、左側または右側あるいは左右のオペランドが **unknown** と評価された場合、結果は **unknown** になります。  
+- 2 項演算子では、左側または右側あるいは左右のオペランドが **unknown** と評価された場合、結果は **unknown** になります。  
   
--   単項演算子では、オペランドが **unknown** と評価された場合、結果は **unknown** になります。  
+- 単項演算子では、オペランドが **unknown** と評価された場合、結果は **unknown** になります。  
   
- 2 項比較演算子での unknown 評価は次のとおりです。  
+  2 項比較演算子での unknown 評価は次のとおりです。  
   
--   左側または右側あるいは左右のオペランドが **unknown** と評価された場合、結果は **unknown** になります。  
+- 左側または右側あるいは左右のオペランドが **unknown** と評価された場合、結果は **unknown** になります。  
   
- `[NOT] LIKE` での unknown 評価は次のとおりです。  
+  `[NOT] LIKE` での unknown 評価は次のとおりです。  
   
--   いずれかのオペランドが **unknown** と評価された場合、結果は **unknown** になります。  
+- いずれかのオペランドが **unknown** と評価された場合、結果は **unknown** になります。  
   
- `[NOT] IN` での unknown 評価は次のとおりです。  
+  `[NOT] IN` での unknown 評価は次のとおりです。  
   
--   左側のオペランドが **unknown** と評価された場合、結果は **unknown** になります。  
+- 左側のオペランドが **unknown** と評価された場合、結果は **unknown** になります。  
   
- **AND** 演算子での unknown 評価は次のとおりです。  
+  **AND** 演算子での unknown 評価は次のとおりです。  
   
 ```  
 +---+---+---+---+  

@@ -8,20 +8,22 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: dobett
-ms.openlocfilehash: 5faa91f054e62e2b3d9d317efe57f2d3f659cee6
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 91d4eda566c8b534daa10c62637db28ccb01bbb6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829836"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628325"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>デバイスをリモート監視ソリューション アクセラレータに接続する (Linux)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-このチュートリアルでは、リモート監視ソリューション アクセラレータに物理デバイスを接続する方法について説明します。
+このチュートリアルでは、実デバイスをリモート監視ソリューション アクセラレータに接続する方法を示します。
 
 制限付きのデバイス上で実行される多くの組み込みアプリケーションと同様に、デバイス アプリケーションのためのクライアント コードは C で書かれています。このチュートリアルでは、Ubuntu (Linux) を実行しているコンピューターでアプリケーションを構築します。
+
+デバイスをシミュレートする場合は、「[新しいシミュレートされたデバイスの作成とテスト](iot-accelerators-remote-monitoring-create-simulated-device.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,7 +45,7 @@ ms.locfileid: "48829836"
 
 ## <a name="build-and-run-the-application"></a>アプリケーションの構築と実行
 
-次の手順では、 *CMake* を使用してクライアント アプリケーションをビルドする方法について説明します。 リモート監視クライアント アプリケーションは、SDK のビルド プロセスの一環として構築されます。
+次の手順では、*CMake* を使用してクライアント アプリケーションをビルドする方法について説明します。 リモート監視クライアント アプリケーションは、SDK のビルド プロセスの一環として構築されます。
 
 1. **remote_monitoring.c** ファイルを編集し、`<connectionstring>` を、ソリューション アクセラレータにデバイスを追加したときにこのハウツー ガイドの冒頭でメモしたデバイス接続文字列に置き換えます。
 

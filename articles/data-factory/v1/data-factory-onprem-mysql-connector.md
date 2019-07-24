@@ -9,22 +9,21 @@ ms.assetid: 452f4fce-9eb5-40a0-92f8-1e98691bea4c
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 34de57188dffb7375889ed9ed89a759238b035ac
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: de1263d68e96a23bd6b5eca4297e74b56ba22e40
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046886"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021642"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して MySQL からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](data-factory-onprem-mysql-connector.md)
-> * [バージョン 2 (現在のバージョン)](../connector-mysql.md)
+> * [バージョン 2 (最新バージョン)](../connector-mysql.md)
 
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の MySQL コネクタ](../connector-mysql.md)に関するページを参照してください。
@@ -51,8 +50,8 @@ Data Management Gateway で MySQL Database に接続するには、[MySQL コネ
 ## <a name="getting-started"></a>使用の開始
 さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。 
 
-- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。 
-- 次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。 
+- また、次のツールを使用してパイプラインを作成することもできます。**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -60,7 +59,7 @@ Data Management Gateway で MySQL Database に接続するには、[MySQL コネ
 2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの MySQL データ ストアからデータをコピーするために使用するデータ ファクトリ エンティティに関する JSON 定義のサンプルについては、[JSON の使用例: MySQL から Azure Blob へのデータのコピー](#json-example-copy-data-from-mysql-to-azure-blob)に関するこのページをご覧ください。 
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの MySQL データ ストアからデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON の使用例: MySQL から Azure BLOB にデータをコピーする](#json-example-copy-data-from-mysql-to-azure-blob)」セクションを参照してください。 
 
 次のセクションでは、MySQL データ ストアに固有のデータ ファクトリ エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
@@ -69,14 +68,14 @@ Data Management Gateway で MySQL Database に接続するには、[MySQL コネ
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティを **OnPremisesMySql** |[はい] |
-| [サーバー] |MySQL サーバーの名前です。 |[はい] |
-| [データベース] |MySQL データベースの名前です。 |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**OnPremisesMySql** |はい |
+| server |MySQL サーバーの名前です。 |はい |
+| database |MySQL データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 |いいえ  |
-| authenticationType |MySQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。`Basic` |[はい] |
-| username |MySQL データベースに接続するユーザー名を指定します。 |[はい] |
-| password |指定したユーザー アカウントのパスワードを指定します。 |[はい] |
-| gatewayName |Data Factory サービスが、オンプレミスの MySQL データベースへの接続に使用するゲートウェイの名前です。 |[はい] |
+| authenticationType |MySQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。`Basic` |はい |
+| username |MySQL データベースに接続するユーザー名を指定します。 |はい |
+| password |指定したユーザー アカウントのパスワードを指定します。 |はい |
+| gatewayName |Data Factory サービスが、オンプレミスの MySQL データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
@@ -96,10 +95,10 @@ Data Management Gateway で MySQL Database に接続するには、[MySQL コネ
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |いいえ (**データセット**の **tableName** が指定されている場合) |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |いいえ (**データセット**の **tableName** が指定されている場合) |
 
 
-## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON の使用例: MySQLから Azure BLOB にデータをコピーする
+## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON の使用例:MySQL から Azure BLOB にデータをコピーする
 次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 このサンプルでは、オンプレミスの MySQL データベースから Azure BLOB ストレージにデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。
 
 > [!IMPORTANT]
@@ -183,7 +182,7 @@ Data Management Gateway で MySQL Database に接続するには、[MySQL コネ
 
 **Azure BLOB の出力データセット:**
 
-データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
+データは新しい BLOB に 1 時間おきに書き込まれます (frequency: hour、interval: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
 
 ```JSON
     {
@@ -304,13 +303,13 @@ MySQL にデータを移動する場合、MySQL 型から .NET 型に対する�
 | --- | --- |
 | 符号なしの bigint |Decimal |
 | bigint |Int64 |
-| ビット |Decimal |
+| bit |Decimal |
 | BLOB |Byte[] |
-| bool |ブール |
+| bool |Boolean |
 | char |String |
 | date |DateTime |
 | Datetime |DateTime |
-| 小数点 |Decimal |
+| decimal |Decimal |
 | double precision |Double |
 | Double |Double |
 | enum |String |
@@ -332,7 +331,7 @@ MySQL にデータを移動する場合、MySQL 型から .NET 型に対する�
 | set |String |
 | 符号なしの smallint |Int32 |
 | smallint |Int16 |
-| テキスト |String |
+| text |String |
 | time |timespan |
 | timestamp |DateTime |
 | tinyblob |Byte[] |

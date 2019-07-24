@@ -1,26 +1,27 @@
 ---
-title: 'Azure AD Connect: 宣言型プロビジョニングについて | Microsoft Docs'
+title: Azure AD Connect:宣言型プロビジョニングについて | Microsoft Docs
 description: Azure AD Connect における宣言型のプロビジョニングの構成モデルについて説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: cfbb870d-be7d-47b3-ba01-9e78121f0067
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9242ffc0c87ee9f314745463b8287ad7531a982d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310291"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171827"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect 同期: 宣言型のプロビジョニングについて
 このトピックでは、Azure AD Connect の構成モデルについて説明します。 このモデルは宣言型のプロビジョニングと呼ばれ、構成の変更を簡単に実行することができます。 このトピックで説明する多くの内容は高度であるため、ほとんどの顧客シナリオで必要ありません。
@@ -37,7 +38,7 @@ ms.locfileid: "46310291"
 * Source (ソース): ソース オブジェクト
 * [Scope (スコープ)](#scope): スコープ内のすべての同期規則を特定
 * [Join (結合)](#join): コネクタ スペースとメタバースの間の関係を決定
-* [Transform (変換)](#transform): 属性の変換とフローの方法を計算
+* Transform (変換): 属性の変換とフローの方法を計算
 * [Precedence (優先順位)](#precedence): 属性のコントリビューションの競合を解決
 * Target (ターゲット): ターゲット オブジェクト
 
@@ -65,7 +66,7 @@ ms.locfileid: "46310291"
 | ISBITSET、ISNOTBITSET |特定のビットが設定されているかどうかを評価します。 たとえば、userAccountControl 内のビットを評価して、ユーザーが有効であるか無効であるかを確認するために使用できます。 |
 | ISMEMBEROF、ISNOTMEMBEROF |この値には、コネクタ スペース内のグループに対する DN が含まれている必要があります。 オブジェクトが指定されたグループのメンバーである場合、規則はスコープに含まれます。 |
 
-## <a name="join"></a>Join
+## <a name="join"></a>結合
 同期パイプライン内の結合モジュールは、ソース内のオブジェクトとターゲット内のオブジェクトの関係を特定するためのものです。 受信規則では、この関係は、メタバース内のオブジェクトに対する関係を見つけるためのコネクタ スペース内のオブジェクトです。  
 ![Join between cs and mv](./media/concept-azure-ad-connect-sync-declarative-provisioning/join1.png)  
 その目的は、関連付ける必要のある、別のコネクタによって作成されたオブジェクトが既にメタバースに存在するかどうかを確認することです。 たとえば、account-resource フォレストでは、account フォレストのユーザーを resource フォレストのユーザーと結合する必要があります。
@@ -158,9 +159,9 @@ ImportedValue 関数は、属性名を角かっこではなく引用符で囲む
 
 **概要トピック**
 
-* [Azure AD Connect sync: 同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同期:同期を理解してカスタマイズする](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)
 
 **参照トピック**
 
-* [Azure AD Connect Sync: 関数リファレンス](reference-connect-sync-functions-reference.md)
+* [Azure AD Connect 同期:関数参照](reference-connect-sync-functions-reference.md)

@@ -1,21 +1,21 @@
 ---
-title: チュートリアル - Azure Container Registry タスクを使用してコンテナー イメージ ビルドを自動化する
-description: このチュートリアルでは、Git リポジトリにソース コードをコミットしたときにクラウドでコンテナー イメージ ビルドを自動的にトリガーするようにタスクを構成する方法を説明します。
+title: チュートリアル - コンテナー イメージ ビルドを自動化する - Azure Container Registry タスク
+description: このチュートリアルでは、Git リポジトリにソース コードをコミットしたときにクラウドでコンテナー イメージ ビルドを自動的にトリガーするように Azure Container Registry タスクを構成する方法を説明します。
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 27dbee3b292a9139ce53ef7b09a4cceba56082e4
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 5aa637938433eb1f906f0a4d81038cec0d6c6dcc
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857229"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "58893012"
 ---
-# <a name="tutorial-automate-container-image-builds-with-azure-container-registry-tasks"></a>チュートリアル: Azure Container Registry タスクを使用してコンテナー イメージ ビルドを自動化する
+# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>チュートリアル: ソース コードのコミット時にクラウドでコンテナー イメージ ビルドを自動化する
 
 [クイック タスク](container-registry-tutorial-quick-task.md)に加えて、ACR タスクは、*ビルド タスク*での自動 Docker コンテナー イメージ ビルドをサポートしています。 このチュートリアルでは、Git リポジトリにソース コードをコミットするとクラウドでイメージのビルドを自動的にトリガーするタスクを、Azure CLI を使って作成します。
 
@@ -41,7 +41,7 @@ ms.locfileid: "48857229"
 
 ### <a name="container-registry"></a>コンテナー レジストリ
 
-このチュートリアルを行うには、Azure サブスクリプションに Azure コンテナー レジストリが必要です。 レジストリが必要な場合は、[前のチュートリアル](container-registry-tutorial-quick-task.md)または「[クイック スタート: Azure CLI を使用したコンテナー レジストリの作成](container-registry-get-started-azure-cli.md)」をご覧ください。
+このチュートリアルを行うには、Azure サブスクリプションに Azure コンテナー レジストリが必要です。 レジストリが必要な場合は、[前のチュートリアル](container-registry-tutorial-quick-task.md)または [Azure CLI を使用したコンテナー レジストリの作成に関するクイック スタート](container-registry-get-started-azure-cli.md)を参照してください。
 
 ## <a name="overview-of-acr-tasks"></a>ACR タスクの概要
 
@@ -51,6 +51,8 @@ ACR タスクでは、現在以下のトリガーがサポートされていま�
 
 * Git リポジトリへのコミット
 * 基本イメージの更新
+
+このチュートリアルの ACR タスクでは、Dockerfile で指定されている単一のコンテナー イメージをビルドしてプッシュします。 ACR タスクでは、[複数ステップ タスク](container-registry-tasks-multi-step.md)を実行することもできます。その場合、YAML ファイルを使用して、複数のコンテナーをビルド、プッシュ、および (必要に応じて) テストする手順を定義します。
 
 ## <a name="create-a-build-task"></a>ビルド タスクを作成する
 
@@ -99,7 +101,7 @@ az acr task create \
 > [!IMPORTANT]
 > 以前、プレビュー期間中に `az acr build-task` コマンドを使用してタスクを作成した場合、それらのタスクは [az acr task][az-acr-task] コマンドを使用して再作成する必要があります。
 
-このタスクでは、`--context` で指定されているリポジトリの *master* ブランチにコードがコミットされたら常に、ACR タスクがそのブランチのコードからコンテナー イメージをビルドすることが指定されています。 リポジトリ ルートから `--file` で指定された Dockerfile が使用されます。 `--image` 引数では、イメージのタグのバージョン部分に対する `{{.Run.ID}}` のパラメーター化された値が指定されており、ビルドされたイメージが特定のビルドに関連付けられ、一意にタグ付けされることを保証します。
+このタスクでは、`--context` で指定されているリポジトリの *master* ブランチにコードがコミットされたら常に、ACR タスクがそのブランチのコードからコンテナー イメージをビルドすることが指定されています。 `--file` によって指定されているリポジトリ ルートの Dockerfile を使用して、イメージがビルドされます。 `--image` 引数では、イメージのタグのバージョン部分に対する `{{.Run.ID}}` のパラメーター化された値が指定されており、ビルドされたイメージが特定のビルドに関連付けられ、一意にタグ付けされることを保証します。
 
 [az acr task create][az-acr-task-create] コマンドが成功した場合、出力は次のようになります。
 
@@ -155,7 +157,7 @@ $ az acr task create \
           "branch": "master",
           "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node",
           "sourceControlAuthProperties": null,
-          "sourceControlType": "Github"
+          "sourceControlType": "GitHub"
         },
         "sourceTriggerEvents": [
           "commit"
@@ -324,10 +326,10 @@ da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-task]: /cli/azure/acr#az-acr-task
-[az-acr-task-create]: /cli/azure/acr#az-acr-task-create
-[az-acr-task-run]: /cli/azure/acr#az-acr-task-run
-[az-acr-task-list-runs]: /cli/azure/acr#az-acr-task-list-runs
+[az-acr-task]: /cli/azure/acr
+[az-acr-task-create]: /cli/azure/acr
+[az-acr-task-run]: /cli/azure/acr
+[az-acr-task-list-runs]: /cli/azure/acr
 [az-login]: /cli/azure/reference-index#az-login
 
 <!-- IMAGES -->

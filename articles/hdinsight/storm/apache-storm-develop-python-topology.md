@@ -10,18 +10,18 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: b46fa5eb9772a19a5613fc276071167d884f6057
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 87d13f8b0df4d9a357218b34035993663dfda8b3
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008761"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634594"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>HDInsight での Python を使用した Apache Storm トポロジの開発
 
-Python コンポーネントを使用する Apache Storm トポロジを作成する方法について説明します。 Apache Storm では複数の言語がサポートされています。これにより、1 つのトポロジでの複数の言語からのコンポーネントの結合も可能になります。 Flux フレームワーク (Storm 0.10.0 で導入) では、Python コンポーネントを使用するソリューションを簡単に作成することができます。
+Python コンポーネントを使用する [Apache Storm](https://storm.apache.org/) トポロジを作成する方法について説明します。 Apache Storm では複数の言語がサポートされています。これにより、1 つのトポロジでの複数の言語からのコンポーネントの結合も可能になります。 [Flux](https://storm.apache.org/releases/current/flux.html) フレームワーク (Storm 0.10.0 で導入) では、Python コンポーネントを使用するソリューションを簡単に作成することができます。
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > このドキュメントの情報は、HDInsight 3.6 で Storm を使用してテストされました。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 このプロジェクトのコードは [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) で利用できます。
@@ -32,9 +32,9 @@ Python コンポーネントを使用する Apache Storm トポロジを作成�
 
 * Java JDK 1.8 以上
 
-* Maven 3
+* [Apache Maven 3](https://maven.apache.org/download.cgi)
 
-* (省略可能) ローカルの Storm 開発環境。 ローカルの Storm 環境は、トポロジをローカルで実行する場合にのみ必要です。 詳細については、「[Setting up a development environment (開発環境のセットアップ)](http://storm.apache.org/releases/1.1.2/Setting-up-development-environment.html)」を参照してください。
+* (省略可能) ローカルの Storm 開発環境。 ローカルの Storm 環境は、トポロジをローカルで実行する場合にのみ必要です。 詳細については、「[Setting up a development environment (開発環境のセットアップ)](https://storm.apache.org/releases/1.1.2/Setting-up-development-environment.html)」を参照してください。
 
 ## <a name="storm-multi-language-support"></a>Storm の複数言語サポート
 
@@ -92,8 +92,8 @@ mvn clean compile package
 storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.yaml
 ```
 
-> [!NOTE]
-> このコマンドは、ローカルの Storm 開発環境を必要とします。 詳細については、「[Setting up a development environment (開発環境のセットアップ)](http://storm.apache.org/releases/current/Setting-up-development-environment.html)」を参照してください。
+> [!NOTE]  
+> このコマンドは、ローカルの Storm 開発環境を必要とします。 詳細については、「[Setting up a development environment (開発環境のセットアップ)](https://storm.apache.org/releases/current/Setting-up-development-environment.html)」を参照してください。
 
 トポロジが開始されると、次のような情報がローカル コンソールに出力されます。
 
@@ -137,7 +137,7 @@ storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.
 
 3. Storm UI を使用して、クラスターのトポロジを表示できます。 Storm UI は https://mycluster.azurehdinsight.net/stormui にあります。 `mycluster` をクラスター名に置き換えます。
 
-> [!NOTE]
+> [!NOTE]  
 > Storm トポロジは、開始すると停止するまで実行されます。 トポロジを停止するには、次のいずれかの方法を使用します。
 >
 > * コマンドラインから `storm kill TOPOLOGYNAME` コマンドを実行する
@@ -149,4 +149,4 @@ storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.
 HDInsight で Phthon を使用する他の方法については、次のドキュメントを参照してください。
 
 * [HDInsight 用 Python ストリーミング プログラムの開発](../hadoop/apache-hadoop-streaming-python.md)
-* [HDInsight における Python と Hive および Pig の使用](../hadoop/python-udf-hdinsight.md)
+* [Apache Hive と Apache Pig で Python ユーザー定義関数 (UDF) を使用する](../hadoop/python-udf-hdinsight.md)

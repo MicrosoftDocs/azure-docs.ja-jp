@@ -1,30 +1,31 @@
 ---
-title: 'クイック スタート: Java 用 Bing Image Search SDK を使用して画像を検索する'
+title: クイック スタート:イメージを検索する - Bing Image Search SDK for Java
 description: このクイック スタートを利用し、Bing Image Search SDK を使用して最初の画像検索を行います。この SDK は、API のラッパーであり、同じ機能を含んでいます。 このシンプルな Java アプリケーションは、画像検索クエリを送信し、JSON 応答を解析して、返された最初のイメージの URL を表示します。
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 81bd7356579b3e4f7b82497bb2163c85374fd0d9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: dd2bf11781a6dd013f033fc535b068d449dd04d4
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316329"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238132"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-java"></a>クイック スタート: Bing Image Search SDK と Java を使用して画像を検索する
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-java"></a>クイック スタート:Bing Image Search SDK for Java を使用してイメージを検索する
 
 このクイック スタートを利用し、Bing Image Search SDK を使用して最初の画像検索を行います。この SDK は、API のラッパーであり、同じ機能を含んでいます。 このシンプルな Java アプリケーションは、画像検索クエリを送信し、JSON 応答を解析して、返された最初のイメージの URL を表示します。
 
 このサンプルのソース コードは、追加のエラー処理と注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch/Quickstart) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
-**[検索]** で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
+**[検索]** で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。  「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
 最新バージョンの [Java Development Kit](https://aka.ms/azure-jdks) (JDK)
 
@@ -62,9 +63,10 @@ Maven、Gradle、または別の依存関係管理システムを使用して Bi
     BingImageSearchAPI client = BingImageSearchManager.authenticate(subscriptionKey);
     ```
 
-## <a name="send-a-search-request-to-the-bing-image-search-api"></a>Bing Image Search API に検索要求を送信します。
+## <a name="send-a-search-request-to-the-api"></a>API に検索要求を送信します。
 
 1. `bingImages().search()` を使用して、検索クエリを含む HTTP 要求を送信します。 応答を `ImagesModel` として保存します。
+
    ```java
     ImagesModel imageResults = client.bingImages().search()
                 .withQuery(searchTerm)

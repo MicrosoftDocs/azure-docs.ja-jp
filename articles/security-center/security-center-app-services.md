@@ -3,8 +3,8 @@ title: Azure Security Center で App Services を保護する | Microsoft Docs
 description: この記事は、Azure Security Center で App Services の保護を開始する際に役立ちます。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: mbaldwin
+author: monhaber
+manager: barbkess
 editor: ''
 ms.assetid: e8518710-fcf9-44a8-ae4b-8200dfcded1a
 ms.service: security-center
@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: 062d3ce75372cd09e617fb984208542a31cb8e4a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 1/27/2019
+ms.author: monhaber
+ms.openlocfilehash: ea738535ae9326109a7c3fdd0b5d0c4f4691fdf0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019860"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878632"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>Azure Security Center で App Service を保護する
 この記事は、Azure Security Center を使用し、App Service 上で実行されているアプリケーションを監視し、保護する際に役立ちます。
 
-App Service を使用すると、インフラストラクチャを管理することなく、任意のプログラミング言語で Web アプリケーションを構築し、ホストできます。 App Service では、自動スケールと高可用性が実現されるほか、Windows と Linux の両方がサポートされています。さらに、GitHub、Visual Studio Team Services、または任意の Git リポジトリからの自動デプロイが可能になります。 
+App Service を使用すると、インフラストラクチャを管理することなく、任意のプログラミング言語で Web アプリケーションを構築し、ホストできます。 App Service では自動スケールと高可用性が提供され、Windows と Linux の両方がサポートされるほか、GitHub、Azure DevOps、または任意の Git リポジトリからの自動化されたデプロイも可能です。 
 
-Web アプリケーションの脆弱性は攻撃者に悪用されることがたびたびあります。インターネット上のほとんどすべての組織に対して共通の動的インターフェイスが使用されるためです。 App Service の上で実行されるアプリケーションに対する要求は、世界中の Azure データセンターにデプロイされているいくつかのゲートウェイを通過します。このデータセンターは、各要求を該当するアプリケーションに送信する役目を担います。 
+Web アプリケーションの脆弱性は攻撃者に悪用されることがたびたびあります。インターネット上のほとんどすべての組織に対して共通の動的インターフェイスが使用されるためです。 App Service の上で実行されるアプリケーションに対する要求は、世界中の Azure データ センター内にデプロイされているいくつかのゲートウェイを通過します。このデータ センターは、各要求を該当するアプリケーションに送信する役目を担います。 
 
 Azure Security Center では、VM のサンドボックスまたはオンデマンド インスタンスの App Service で実行されているアプリケーションを評価したり、推奨したりできます。 Azure にクラウド プロバイダーとして与えられている可視性を活用することで、Security Center では App Service の内部ログを分析し、しばしば複数の標的に対して実行される悪名高い Web アプリ攻撃がないか監視します。
 
@@ -34,7 +34,7 @@ Security Center では、クラウドの規模を活用して App Service アプ
 
 ## <a name="prerequisites"></a>前提条件
 
-App Service を監視し、セキュリティで保護するには、専用のコンピューターに関連付けられている App Service プランを用意する必要があります。 プランには、Basic、Standard、Premium、Isolated、Linux があります。 Azure Security Center では、Free プラン、Shared プラン、Consumption プランがサポートされていません。 詳細については、[Azure App Service プラン](https://azure.microsoft.com/pricing/details/app-service/plans/)に関するページを参照してください。
+App Service を監視し、セキュリティで保護するには、専用のコンピューターに関連付けられている App Service プランを用意する必要があります。 これらのプランは、Basic、Standard、Premium、Isolated、または Linux です。 Azure Security Center では、Free プラン、Shared プラン、Consumption プランがサポートされていません。 詳細については、[Azure App Service プラン](https://azure.microsoft.com/pricing/details/app-service/plans/)に関するページを参照してください。
 
 ## <a name="security-center-protection"></a>Security Center の保護
 
@@ -63,8 +63,9 @@ App Service の監視と推奨を無効にするには、このプロセスを�
 ## <a name="see-also"></a>関連項目
 この記事では、Azure Security Center での監視機能の使用方法について説明しました。 Azure セキュリティ センターの詳細については、次を参照してください。
 
-* 「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」: Azure Security Center でセキュリティ設定を構成する方法について説明します。
-* 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」: セキュリティの警告の管理と対応の方法について説明しています。
-* 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」: パートナー ソリューションの正常性状態を監視する方法について説明しています。
-* 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」: このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/): Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+* [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md): Azure Security Center でセキュリティ設定を構成する方法について説明します。
+* [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md): セキュリティの警告の管理と対応の方法について説明しています。
+* [App Service](security-center-virtual-machine-protection.md#app-services):App Service Environment と正常性の概要を一覧で表示します。
+* [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md): パートナー ソリューションの正常性状態を監視する方法について説明しています。
+* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md): このサービスの使用に関してよく寄せられる質問が記載されています。
+* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/): Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

@@ -4,16 +4,16 @@ description: Azure Storage は、Microsoft のクラウド ストレージ ソ�
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: get-started-article
-ms.date: 07/11/2018
+ms.topic: conceptual
+ms.date: 01/02/2019
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: b1fb9be6c05edbd85a709632a001fe1c1b8b4c6c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: ae2384d0ac6773ccd362778d2913cdcaa9cb4d6c
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247791"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446726"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure Storage の概要
 
@@ -22,17 +22,17 @@ Azure Storage は、最新のデータ ストレージ シナリオ用の Micros
 - **持続性と高可用性。** 冗長性により、一時的なハードウェア障害が発生した場合でも、データが安全に保たれます。 地域的な災害または自然災害から保護するために、データセンターまたは地理的リージョンにまたがってデータをレプリケートすることもできます。 この方法でレプリケートされたデータは、予期しない停止が発生した場合でも高可用性を維持します。 
 - **セキュリティ保護。** Azure Storage に書き込まれたすべてのデータは、サービスによって暗号化されます。 Azure Storage では、データにアクセスできるユーザーをきめ細かく制御できます。
 - **スケーラブル。** Azure Storage には、今日のアプリケーションのデータ ストレージとパフォーマンスに関するニーズを満たすために、高度にスケーラブルな設計が採用されています。 
-- **マネージド。** メンテナンスや重大な問題は、Microsoft Azure がお客様に代わって処理します。
+- **マネージド。** Microsoft Azure では、ユーザーに代わって、ハードウェアのメンテナンス、更新、および重大な問題が処理されます。
 - **アクセス可能。** Azure Storage 内のデータには、世界中のどこからでも HTTP または HTTPS 経由でアクセスできます。 Microsoft では、.NET、Java、Node.js、Python、PHP、Ruby、Go などのさまざまな言語の Azure Storage 用の SDK と、成熟した REST API を提供しています。 Azure Storage では、Azure PowerShell または Azure CLI によるスクリプトの実行がサポートされます。 また、Azure Portal と Azure Storage Explorer により、データを操作するための使いやすい視覚的ソリューションが提供されます。  
 
 ## <a name="azure-storage-services"></a>Azure Storage サービス
 
 Azure Storage には、次のデータ サービスが含まれます。 
 
-- [Azure BLOB](../blobs/storage-blobs-introduction.md): テキストおよびバイナリ データのための高度にスケーラブルなオブジェクト ストア。
-- [Azure Files](../files/storage-files-introduction.md): クラウドまたはオンプレミスのデプロイ用のマネージド ファイル共有。
-- [Azure キュー](../queues/storage-queues-introduction.md): アプリケーション コンポーネント間の信頼性の高いメッセージングのためのメッセージング ストア。 
-- [Azure テーブル](../tables/table-storage-overview.md): 構造化データのスキーマレス ストレージのための NoSQL ストア。
+- [Azure BLOB](../blobs/storage-blobs-introduction.md):テキストおよびバイナリ データのための高度にスケーラブルなオブジェクト ストア。
+- [Azure ファイル](../files/storage-files-introduction.md):クラウドまたはオンプレミスのデプロイ用のマネージド ファイル共有。
+- [Azure キュー](../queues/storage-queues-introduction.md):アプリケーション コンポーネント間の信頼性の高いメッセージングのためのメッセージング ストア。 
+- [Azure テーブル](../tables/table-storage-overview.md):構造化データのスキーマレス ストレージのための NoSQL ストア。
 
 それぞれのサービスには、ストレージ アカウントを通じてアクセスします。 作業を開始するには、「[ストレージ アカウントの作成](storage-quickstart-create-account.md)」を参照してください。
 
@@ -48,9 +48,9 @@ BLOB ストレージは、次の目的に最適です。
 * バックアップと復元、ディザスター リカバリー、アーカイブのためのデータを格納する。
 * オンプレミス サービスまたは Azure ホステッド サービスで分析するデータを格納する。
 
-BLOB ストレージ内のオブジェクトには、世界中のどこからでも HTTP または HTTPS 経由でアクセスできます。 ユーザーまたはクライアント アプリケーションは、URL、[Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage)、[Azure CLI](https://docs.microsoft.com/cli/azure/storage)、または Azure Storage クライアント ライブラリを介して BLOB にアクセスできます。 ストレージ クライアント ライブラリは、[.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client)、[Java](https://docs.microsoft.com/java/api/overview/azure/storage/client)、[Node.js](http://azure.github.io/azure-storage-node)、[Python](https://azure-storage.readthedocs.io/)、[PHP](http://azure.github.io/azure-storage-php/)、[Ruby](http://azure.github.io/azure-storage-ruby) など、さまざまな言語で利用できます。
+BLOB ストレージ内のオブジェクトには、世界中のどこからでも HTTP または HTTPS 経由でアクセスできます。 ユーザーまたはクライアント アプリケーションは、URL、[Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage)、[Azure CLI](https://docs.microsoft.com/cli/azure/storage)、または Azure Storage クライアント ライブラリを介して BLOB にアクセスできます。 ストレージ クライアント ライブラリは、[.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client)、[Java](https://docs.microsoft.com/java/api/overview/azure/storage/client)、[Node.js](https://azure.github.io/azure-storage-node)、[Python](https://azure-storage.readthedocs.io/)、[PHP](https://azure.github.io/azure-storage-php/)、[Ruby](https://azure.github.io/azure-storage-ruby) など、さまざまな言語で利用できます。
 
-BLOB ストレージの詳細については、「[Introduction to object storage on Azure (Azure のオブジェクト ストレージの概要)](../blobs/storage-blobs-introduction.md)」を参照してください。
+Blob Storage の詳細については、「[Blob Storage の概要](../blobs/storage-blobs-introduction.md)」をご覧ください。
 
 ## <a name="azure-files"></a>Azure Files
 [Azure Files](../files/storage-files-introduction.md) では、標準的なサーバー メッセージ ブロック (SMB) プロトコルを使用してアクセスできる可用性の高いネットワーク ファイル共有を設定することができます。 つまり、複数の VM が、読み取りアクセス権と書き込みアクセス権の両方を使用して同じファイルを共有できます。 また、REST インターフェイスまたはストレージ クライアント ライブラリを使用してファイルを読み取ることもできます。
@@ -89,48 +89,19 @@ Azure Storage には、仮想マシンで使用されるマネージド ディ�
 
 ## <a name="types-of-storage-accounts"></a>ストレージ アカウントの種類
 
-次の表は各種のストレージ アカウントと、それぞれのストレージ アカウントで使用できるオブジェクトとを示したものです。
+[!INCLUDE [storage-account-types-include](../../../includes/storage-account-types-include.md)]
 
-|**ストレージ アカウントの種類**|**汎用 (Standard)**|**汎用 (Premium)**|**Blob Storage (ホット アクセス レベルとクール アクセス レベル)**|
-|-----|-----|-----|-----|
-|**サポートされるサービス**| Blob service、File サービス、Queue サービス、Table service | Blob service | Blob service|
-|**サポートされる BLOB の種類**|ブロック BLOB、ページ BLOB、追加 BLOB | ページ blob | ブロック BLOB と追加 BLOB|
+ストレージ アカウントの種類の詳細については、[Azure Storage アカウントの概要](storage-account-overview.md)に関するページを参照してください。 
 
-### <a name="general-purpose-storage-accounts"></a>汎用ストレージ アカウント
+## <a name="securing-access-to-storage-accounts"></a>ストレージ アカウントへのアクセスのセキュリティを確保する
 
-汎用ストレージ アカウントは 2 種類存在します。
+Azure Storage に対するすべての要求が承認される必要があります。 Azure Storage では、次の認証方法がサポートされています。
 
-#### <a name="standard-storage"></a>Standard Storage
-
-最も一般的に使用されているストレージ アカウントが Standard ストレージ アカウントであり、あらゆるタイプのデータに使用できます。 Standard ストレージ アカウントでは、磁気媒体を使ってデータが保存されます。
-
-#### <a name="premium-storage"></a>Premium Storage
-
-Premium Storage はページ BLOB 向けのハイパフォーマンスのストレージであり、主に VHD ファイルに使用されます。 Premium ストレージ アカウントでは、SSD を使ってデータが保存されます。 Microsoft では、あらゆる VM に Premium Storage の使用を推奨しています。
-
-### <a name="blob-storage-accounts"></a>BLOB ストレージ アカウント
-
-BLOB ストレージ アカウントは、ブロック BLOB と追加 BLOB の格納に特化したストレージ アカウントです。 これらのアカウントにページ BLOB を格納することはできません。したがって VHD ファイルを格納することはできません。 これらのアカウントでは、アクセス レベルを "ホット" または "クール" に設定することができ、レベルはいつでも変更できます。
-
-ホット アクセス レベルは、アクセス頻度の高いファイルに使用します。対価としてのストレージ コストは高くなりますが、BLOB へのアクセス コストは大幅に削減されます。 クール アクセス レベルに BLOB を保存した場合、BLOB へのアクセス コストは大きくなりますが、ストレージ コストは大幅に削減されます。
-
-## <a name="accessing-your-blobs-files-and-queues"></a>BLOB、ファイル、キューへのアクセス
-
-各ストレージ アカウントには認証キーが 2 つあり、どちらを使っても、すべての操作を実行することができます。 キーが 2 つあるため、キーを時折ロール オーバーしてセキュリティを強化することができます。 アカウント名と共にキーを手に入れると、ストレージ アカウントのあらゆるデータに無制限でアクセスできるため、キーを安全に保つことがきわめて重要となります。
-
-このセクションでは、ストレージ アカウントとそのデータのセキュリティを確保する 2 つの方法について説明します。 ストレージ アカウントとデータのセキュリティについて詳しくは、「[Azure Storage security guide (Azure Storage セキュリティ ガイド)](storage-security-guide.md)」を参照してください。
-
-### <a name="securing-access-to-storage-accounts-using-azure-ad"></a>Azure AD を使ってストレージ アカウントへのアクセスのセキュリティを確保する
-
-ストレージ データへのアクセスのセキュリティを確保する方法の 1 つとして、ストレージ アカウント キーへのアクセスを制御する方法が考えられます。 Resource Manager のロールベースのアクセス制御 (RBAC) を使って、ユーザー、グループ、アプリケーションのいずれかにロールを割り当てることができます。 これらのロールは、ひとまとめにして許可または禁止される一連の操作に関連付けられます。 RBAC を使ってストレージ アカウントへのアクセスを許可する場合、対象となるのは、そのストレージ アカウントの管理操作だけです (アクセス レベルを変更するなど)。 RBAC を使って、データ オブジェクト (特定のコンテナー、特定のファイル共有など) へのアクセスを許可することはできません。 ただし RBAC を使ってストレージ アカウント キーへのアクセスを許可したうえで、そのキーをデータ オブジェクトの読み取りに使用することはできます。
-
-### <a name="securing-access-using-shared-access-signatures"></a>Shared Access Signature を使ってアクセスのセキュリティを確保する
-
-データ オブジェクトのセキュリティは、Shared Access Signature と保存されているアクセス ポリシーを使って確保できます。 Shared Access Signature (SAS) は、セキュリティ トークンを含む文字列です。資産の URI にセキュリティ トークンをアタッチすることで、特定のストレージ オブジェクトへのアクセスを委任し、アクセス許可やアクセスの日時の範囲などの制約を指定することができます。 この機能には、さまざまな可能性があります。 詳細については、「[Using Shared Access Signatures (SAS) (Shared Access Signature (SAS) の使用)](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
-
-### <a name="public-access-to-blobs"></a>BLOB へのパブリック アクセス
-
-Blob service を通じて、コンテナーとその BLOB (または特定の BLOB) へのパブリック アクセスを提供することができます。 コンテナーまたは BLOB をパブリックとして指定すると、認証が不要になり、すべてのユーザーが匿名でリソースを読み取ることができます。 たとえば、Blob Storage に格納されている画像やビデオ、ドキュメントを使った Web サイトがある場合などにこの方法を利用できます。 詳細については、「[コンテナーと BLOB への匿名読み取りアクセスを管理する](../blobs/storage-manage-access-to-resources.md)」を参照してください。
+- **BLOB とキュー データ用の Azure Active Directory (Azure AD) 統合。** Azure Storage は、ロールベースのアクセス制御 (RBAC) を使用して、BLOB サービスと Queue サービスの Azure AD の資格情報による認証と承認をサポートします。 優れたセキュリティと使いやすさのため、Azure AD による要求の承認をお勧めします。 詳細については、[Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを認証する](storage-auth-aad.md)方法に関するページを参照してください。
+- **SMB を使用した Azure Files の Azure Active Directory 認証 (プレビュー)。** Azure Files は、Azure Active Directory Domain Services を使用した、SMB (Server Message Block) 経由の ID ベースの認証をサポートします。 ドメインに参加している Windows 仮想マシン (VM) は、Azure AD の資格情報を使用して Azure ファイル共有にアクセスできます。 詳細については、「[SMB を使用した Azure Files の Azure Active Directory 認証の概要 (プレビュー)](../files/storage-files-active-directory-overview.md)」を参照してください。
+- **共有キーによる承認。** Azure Storage Blob、Queue、および Table サービスと Azure Files では、共有キーによる承認がサポートされています。共有キー承認を使用するクライアントは、ストレージ アカウントのアクセス キーを使用して署名されたすべての要求でヘッダーを渡します。 詳細については、[共有キーによる承認](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)に関するページを参照してください。
+- **Shared Access Signature (SAS) を使用した承認。** Shared Access Signature (SAS) は、ストレージ リソースの URI に追加できるセキュリティ トークンを含む文字列です。 セキュリティ トークンには、アクセスの許可や間隔などの制約をカプセル化します。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+- **コンテナーおよび BLOB への匿名アクセス。** コンテナーとその BLOB は一般公開されることがあります。 コンテナーまたは BLOB をパブリックとして指定すると、認証が不要になり、すべてのユーザーが匿名でリソースを読み取ることができます。 詳細については、「[コンテナーと BLOB への匿名読み取りアクセスを管理する](../blobs/storage-manage-access-to-resources.md)」を参照してください。
 
 ## <a name="encryption"></a>暗号化
 
@@ -151,26 +122,17 @@ SSE は、すべてのパフォーマンス レベル (Standard および Premiu
 
 クライアント側の暗号化の詳細については、[.NET による Microsoft Azure Storage のクライアント側の暗号化](storage-client-side-encryption.md)に関するページを参照してください。
 
-## <a name="replication"></a>レプリケーション
+## <a name="redundancy"></a>冗長性
 
-Azure Storage は、データの持続性を確保するために、データの複数のコピーをレプリケートします。 レプリケーションの種類は、ストレージ アカウントをセットアップするときに選択します。 この設定は、ほとんどの場合、ストレージ アカウントが作成された後で変更することができます。 
+Azure Storage は、データの持続性を確保するために、データの複数のコピーをレプリケートします。 冗長性オプションは、ストレージ アカウントを設定するときに選択します。 
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
-ディザスター リカバリーについては、「[Azure Storage の停止が発生した場合の対処方法](storage-disaster-recovery-guidance.md)」を参照してください。
+ディザスター リカバリーの詳細については、「[Azure Storage の停止が発生した場合の対処方法](storage-disaster-recovery-guidance.md)」を参照してください。
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>Azure Storage との間のデータ転送
 
-AzCopy コマンド ライン ユーティリティを使用して、BLOB やファイルのデータを同じストレージ アカウント内で、または別のストレージ アカウントとの間でコピーすることができます。 詳しくは、次のいずれかの記事を参照してください。
-
-* [AzCopy for Windows を使ったデータの転送](storage-use-azcopy.md)
-* [AzCopy for Linux を使ったデータの転送](storage-use-azcopy-linux.md)
-
-AzCopy は [Azure Data Movement Library](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/) を基盤として構築されています。このライブラリは現時点ではプレビューとして公開されています。
-
-Azure Import/Export サービスを利用すると、ストレージ アカウントとの間で大量の BLOB データをインポートまたはエクスポートできます。 複数のハード ドライブを用意して Azure データ センターに発送すると、そのデータ センターで、ハード ドライブにデータを転送 (またはハード ドライブからデータを転送) して返送してくれます。 Import/Export サービスの詳細については、「 [Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](../storage-import-export-service.md)」を参照してください。
-
-大量の BLOB データを短時間で、経済的に、かつ信頼性の高い方法でストレージ アカウントにインポートする手段としては、Azure Data Box Disk を使用することもできます。 Microsoft から地域の運送業者を通じて、容量 40 TB の暗号化された SSD (Solid State Disk) を最大 5 台、お客様のデータセンターに発送します。 お客様はそのディスクを速やかに構成し、USB 接続でデータをディスクにコピーしてから、Azure にディスクを返送することになります。 そのデータは、Azure のデータセンターにてドライブからクラウドへと自動的にアップロードされます。 このソリューションの詳細については、[Azure Data Box Disk の概要](https://docs.microsoft.com/azure/databox/data-box-disk-overview)に関するページを参照してください。
+Azure Storage へのデータの移動または Azure Storage からのデータの移動には、いくつかのオプションがあります。 どのオプションを選択するかは、データセットとネットワーク帯域幅のサイズによって異なります。 詳細については、「[データ転送用の Azure ソリューションを選択する](storage-choose-data-transfer-solution.md)」を参照してください。
 
 ## <a name="pricing"></a>価格
 
@@ -199,7 +161,7 @@ Azure Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語�
 * [.NET 用 Storage Data Movement クライアント ライブラリ](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement)
 
 ### <a name="tools-and-utilities"></a>ツールとユーティリティ
-* [ストレージ用 Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azure.storage)
+* [ストレージ用 Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.storage)
 * [ストレージ用 Azure CLI コマンドレット](https://docs.microsoft.com/cli/azure/storage)
 * [AzCopy コマンド ライン ユーティリティ](https://aka.ms/downloadazcopy)
 * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。

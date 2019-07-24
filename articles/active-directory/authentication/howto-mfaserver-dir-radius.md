@@ -1,21 +1,22 @@
 ---
-title: RADIUS 認証と Azure MFA Server | Microsoft Docs
+title: RADIUS 認証と Azure MFA Server - Azure Active Directory
 description: RADIUS 認証と Azure Multi-Factor Authentication Server のデプロイ。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 651035430695c0c5082e443dabd998a196e0eefa
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0c1a05cc25be7a5763a8891b92e870a92792191d
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158303"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372184"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>RADIUS 認証と Azure Multi-Factor Authentication Server の統合
 
@@ -26,9 +27,10 @@ RADIUS は、認証要求を承認してそれらの要求を処理する標準�
 >
 > この構成では、MFA Server は他のプロトコルを使用して正常な RADIUS チャレンジ応答を開始できないため、一方向の SMS および OATH トークンは機能しません。
 
-![RADIUS 認証](./media/howto-mfaserver-dir-radius/radius.png)
+![MFA Server での Radius 認証](./media/howto-mfaserver-dir-radius/radius.png)
 
 ## <a name="add-a-radius-client"></a>RADIUS クライアントの追加
+
 RADIUS 認証を構成するには、Azure Multi-Factor Authentication Server を Windows サーバーにインストールします。 Active Directory 環境を使用している場合は、サーバーをネットワーク内のドメインに参加させる必要があります。 次の手順に従って Azure Multi-Factor Authentication Server を構成します。
 
 1. Azure Multi-Factor Authentication Server で、左側のメニューの [RADIUS 認証] アイコンをクリックします。
@@ -37,9 +39,9 @@ RADIUS 認証を構成するには、Azure Multi-Factor Authentication Server �
 4. **[追加]** をクリックします。
 5. Azure Multi-Factor Authentication Server に対して認証するアプライアンス/サーバーの IP アドレス、アプリケーション名 (省略可能)、共有シークレットを入力します。
 
-  アプリケーション名はレポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
+   アプリケーション名はレポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
 
-  共有シークレットは、Azure Multi-Factor Authentication Server とアプライアンス/サーバーの両方で同じである必要があります。
+   共有シークレットは、Azure Multi-Factor Authentication Server とアプライアンス/サーバーの両方で同じである必要があります。
 
 6. すべてのユーザーを Server にインポート済みであり、多要素認証の対象となる場合は、**[Multi-Factor Authentication のユーザー照合が必要]** チェック ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、または 2 段階認証から除外される場合、ボックスはオフのままにします。
 7. バックアップ手段として、モバイル認証アプリの OATH パスコードを使用する場合は、**[代替の OATH トークンを有効にする]** チェック ボックスをオンにします。
@@ -50,25 +52,24 @@ RADIUS 認証を構成するには、Azure Multi-Factor Authentication Server �
 ## <a name="configure-your-radius-client"></a>RADIUS クライアントの構成
 
 1. **[ターゲット]** タブをクリックします。
-2. Azure MFA Server を Active Directory 環境のドメインに参加しているサーバーにインストールする場合は、[Windows ドメイン] を選択します。
-3. ユーザーを LDAP ディレクトリに対して認証する必要がある場合は、**[LDAP バインド]** を選択します。
+   * Azure MFA Server を Active Directory 環境のドメインに参加しているサーバーにインストールする場合は、**[Windows ドメイン]** を選択します。
+   * ユーザーを LDAP ディレクトリに対して認証する必要がある場合は、**[LDAP バインド]** を選択します。
+      [ディレクトリの統合] アイコンを選択し、[設定] タブで LDAP 構成を編集して、Server を指定のディレクトリにバインドできるようにします。 LDAP を構成する手順については、[LDAP プロキシの構成ガイド](howto-mfaserver-dir-ldap.md)をご覧ください。
+   * 別の RADIUS サーバーに対してユーザーを認証する必要がある場合は、**[RADIUS サーバー]** を選択します。
+1. **[追加]** をクリックして、Azure MFA Server が RADIUS 要求をプロキシするサーバーを構成します。
+1. [RADIUS サーバーの追加] ダイアログ ボックスで、RADIUS サーバーの IP アドレスと共有シークレットを入力します。
 
-  [ディレクトリの統合] アイコンを選択し、[設定] タブで LDAP 構成を編集して、Server を指定のディレクトリにバインドできるようにします。 LDAP を構成する手順については、[LDAP プロキシの構成ガイド](howto-mfaserver-dir-ldap.md)をご覧ください。
+   共有シークレットは、Azure Multi-Factor Authentication Server と RADIUS サーバーの両方で同じである必要があります。 RADIUS サーバーで異なるポートが使用されている場合は、認証ポートとアカウンティング ポートを変更します。
 
-4. 別の RADIUS サーバーに対してユーザーを認証する必要がある場合は、[RADIUS サーバー] を選択します。
-5. **[追加]** をクリックして、Azure MFA Server が RADIUS 要求をプロキシするサーバーを構成します。
-6. [RADIUS サーバーの追加] ダイアログ ボックスで、RADIUS サーバーの IP アドレスと共有シークレットを入力します。
-
-  共有シークレットは、Azure Multi-Factor Authentication Server と RADIUS サーバーの両方で同じである必要があります。 RADIUS サーバーで異なるポートが使用されている場合は、認証ポートとアカウンティング ポートを変更します。
-
-7. Click **OK**.
-8. Azure MFA Server から受け取ったアクセス要求を処理できるように、Azure MFA Server を RADIUS クライアントとして他の RADIUS サーバーに追加します。 Azure Multi-Factor Authentication Server で構成されている同じ共有シークレットを使用します。
+1. Click **OK**.
+1. Azure MFA Server から受け取ったアクセス要求を処理できるように、Azure MFA Server を RADIUS クライアントとして他の RADIUS サーバーに追加します。 Azure Multi-Factor Authentication Server で構成されている同じ共有シークレットを使用します。
 
 さらに別の RADIUS サーバーを追加するには、上記の手順を繰り返します。 **[上へ移動]** ボタンと **[下へ移動]** ボタンを使用して Azure MFA Server が呼び出すサーバーの順序を構成します。
 
-Azure Multi-Factor Authentication Server の構成は以上です。 Server が構成されたポートを使用して、構成されたクライアントからの RADIUS アクセス要求をリッスンするようになります。   
+Azure Multi-Factor Authentication Server の構成は以上です。 Server が構成されたポートを使用して、構成されたクライアントからの RADIUS アクセス要求をリッスンするようになります。
 
 ## <a name="radius-client-configuration"></a>RADIUS クライアントの構成
+
 RADIUS クライアントを構成するには、ガイドラインに従います。
 
 * RADIUS 経由で Azure Multi-Factor Authentication Server の IP アドレスに対して認証するように機器/サーバーを構成します。これにより、RADIUS サーバーとして機能します。

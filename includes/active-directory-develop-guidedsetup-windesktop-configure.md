@@ -4,57 +4,49 @@ description: インクルード ファイル
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2018
+ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: b26b88d0e089217fa9915bdbdcb8f913731bcc67
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 5eaee4f932c4e42f6fed3d839314346b3a93f360
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988195"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59799544"
 ---
 ## <a name="register-your-application"></a>アプリケーションの登録
 
 2 つのどちらかの方法でアプリケーションを登録できます。
 
-### <a name="option-1-express-mode"></a>オプション 1: 簡易モード
+### <a name="option-1-express-mode"></a>オプション 1:簡易モード
 
 次の手順を実行すると、アプリケーションをすばやく登録できます。
-1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=windowsDesktop&step=configure)に移動します。
+1. [Azure portal の [アプリケーションの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs) に移動します。
+1. アプリケーションの名前を入力し、**[登録]** を選択します。
+1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 
-2. **[アプリの追加]** を選択します。
-
-3. **[アプリケーション名]** ボックスに、アプリケーションの名前を入力します。
-
-4. **[Guided Setup]\(ガイド付きセットアップ\)** チェック ボックスがオンになっていることを確認し、**[作成]** を選択します。
-
-5. 手順に従ってアプリケーション ID を取得し、それをコードに貼り付けます。
-
-### <a name="option-2-advanced-mode"></a>オプション 2: 詳細モード
+### <a name="option-2-advanced-mode"></a>オプション 2:詳細設定モード
 
 アプリケーションを登録し、ソリューションにアプリケーション登録情報を追加するには、次の手順を実行します。
-1. アプリケーションをまだ登録していない場合は、[Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app)に移動します。
-
-2. **[アプリの追加]** を選択します。
-
-3. **[アプリケーション名]** ボックスに、アプリケーションの名前を入力します。
-
-4. **[Guided Setup]\(ガイド付きセットアップ\)** チェック ボックスがオフになっていることを確認し、**[作成]** を選択します。
-
-5. **[プラットフォームの追加]**、**[ネイティブ アプリケーション]**、**[保存]** の順に選択します。
-
-6. **[アプリケーション ID]** ボックスで、GUID をコピーします。
-
-7. Visual Studio に移動し、*App.xaml.cs* ファイルを開き、`your_client_id_here` を登録してコピーしたアプリケーション ID に置き換えます。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. ご利用のアカウントで複数のテナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的の Azure AD テナントに設定します。
+1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページに移動します。
+1. **[新規登録]** を選択します。
+   - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `Win-App-calling-MsGraph`)。
+   - **[サポートされているアカウントの種類]** セクションで、**[Accounts in any organizational directory and personal Microsoft accounts (for example, Skype, Xbox, Outlook.com)]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント (例: Skype、Xbox、Outlook.com)\)** を選択します。
+   - **[登録]** を選択して、アプリケーションを作成します。
+1. アプリのページの一覧から **[認証]** を選択します。
+1. **[リダイレクト URL]** セクションで、**[パブリック クライアント (モバイル、デスクトップ) に推奨されるリダイレクト URI]** セクションを探し、**["urn:ietf:wg:oauth:2.0:oob]** を選択します。
+1. **[保存]** を選択します。
+1. Visual Studio に移動し、*App.xaml.cs* ファイルを開き、`Enter_the_Application_Id_here` を登録してコピーしたアプリケーション ID に置き換えます。
 
     ```csharp
-    private static string ClientId = "your_application_id_here";
+    private static string ClientId = "Enter_the_Application_Id_here";
     ```
