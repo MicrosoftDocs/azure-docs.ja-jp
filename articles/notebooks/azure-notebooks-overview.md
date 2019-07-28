@@ -79,7 +79,7 @@ Azure Notebooks には、基本ディストリビューションの他に、追�
 
 ## <a name="pre-configured-jupyter-extensions"></a>事前構成済みの Jupyter の拡張機能
 
-Azure Notebooks では、次の Jupyter の拡張機能が事前構成されています。
+Azure Notebooks では、次の Jupyter の拡張機能が事前に構成されています。
 
 - [RISE](https://github.com/damianavila/RISE): Jupyter のスライド ショー拡張機能 (live_reveal とも呼ばれます)。 詳細については、「[Run a notebook slideshow](present-jupyter-notebooks-slideshow.md)」(ノートブックのスライドショーを実行する) を参照してください。
 - [JupyterLab](https://github.com/jupyterlab/jupyterlab): Jupyter Notebook を操作するための完全なコンピューティング環境。
