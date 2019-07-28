@@ -30,7 +30,7 @@ Jupyter Notebook で面白い仕事を行うには、データが必要です。
 
 ## <a name="rest-apis"></a>REST API
 
-一般に、インターネットから使用できる膨大な量のデータには、ファイルではなく、REST API を介してアクセスします。 幸いノートブックのセルにはどのようなコードでも含めることができるので、コードを使用して、要求を送信し、JSON データを受信することができます。 その後、その JSON を、Pandas データフレームなどの任意の形式に変換して使用できます。
+一般に、インターネットから使用できる膨大な量のデータには、ファイルではなく、REST API を介してアクセスします。 幸いノートブックのセルにはどのようなコードでも含めることができるので、コードを使用して、要求を送信し、JSONデータを受信することができます。 その後、受信したJSONデータを、Pandas データフレームなどの任意の形式に変換して使用できます。
 
 REST API を使用してデータにアクセスするには、他の任意のアプリケーションで使用するのと同じコードをノートブックのコード セルで使用します。 要求ライブラリを使用する一般的な構造は次のとおりです。
 
@@ -53,7 +53,7 @@ if response.status_code == 200:
 
 pyodbc または pymssql ライブラリを利用して、SQL Server データベースにアクセスできます。
 
-「[Python を使用して Azure SQL データベースに照会する](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)」では、AdventureWorks のデータを含むデータベースを作成する方法と、そのデータのクエリを行う方法が示されています。 この記事のサンプルのノートブックには同じコードがあります。
+「[Python を使用して Azure SQL データベースに照会する](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)」では、AdventureWorks のデータを含むデータベースを作成する方法と、そのデータのクエリを実行する方法が示されています。 この記事のサンプルのノートブックには同じコードがあります。
 
 ## <a name="azure-storage"></a>Azure Storage
 
