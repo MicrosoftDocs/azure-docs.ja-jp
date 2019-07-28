@@ -3,7 +3,7 @@ title: B2B コラボレーションのためのセルフサービス サイン�
 description: Azure Active Directory B2B コラボレーションは、会社のアプリケーションにビジネス パートナーが選択的にアクセスできるようにすることで会社間のリレーションシップをサポートします
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: sample
 ms.date: 05/08/2018
 ms.author: mimart

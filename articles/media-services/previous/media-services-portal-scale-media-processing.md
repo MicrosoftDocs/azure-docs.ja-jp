@@ -3,7 +3,7 @@ title: Azure Portal を使用したメディア処理のスケール設定 | Mic
 description: このチュートリアルでは、Azure Portal を使用したメディア処理のスケール設定の手順について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: e500f733-68aa-450c-b212-cf717c0d15da

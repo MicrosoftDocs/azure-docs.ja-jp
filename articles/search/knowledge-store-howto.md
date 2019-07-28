@@ -2,7 +2,7 @@
 title: ナレッジ マイニングの使用を開始する方法 (プレビュー) - Azure Search
 description: Azure Search 内で AI インデックス作成パイプラインによって作成されるエンリッチメントされたドキュメントを Azure ストレージ アカウント内のナレッジ ストアに送信する手順について説明します。 そこから、Azure Search および他のアプリケーション内のエンリッチメントされたドキュメントを表示、整形、および使用することができます。
 manager: cgronlun
-author: HeidiSteen
+author: heidisteen
 services: search
 ms.service: search
 ms.topic: quickstart

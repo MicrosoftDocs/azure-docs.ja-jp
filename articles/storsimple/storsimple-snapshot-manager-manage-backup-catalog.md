@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager のバックアップ カタログ | Microsof
 description: StorSimple Snapshot Manager MMC スナップインを使用して、バックアップ カタログを表示および管理する方法について説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: shars
 manager: timlt
 editor: ''
 ms.assetid: 6abdbfd2-22ce-45a5-aa15-38fae4c8f4ec

@@ -3,7 +3,7 @@ title: Azure 仮想マシン (VM) 上で SAP HANA システム レプリケー�
 description: Azure 仮想マシン (VM) 上で SAP HANA の高可用性を実現します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: MSSedusch
+author: mssedusch
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux

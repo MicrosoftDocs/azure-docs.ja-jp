@@ -3,7 +3,7 @@ title: Azure の Red Hat Enterprise Linux イメージ | Microsoft Docs
 description: Microsoft Azure の Red Hat Enterprise Linux イメージについて説明します
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
+author: borisb2015
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux

@@ -7,7 +7,7 @@ ms.subservice: conditional-access
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: joflore
-author: MicrosoftGuyJFlo
+author: microsoftguyjflo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management

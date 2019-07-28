@@ -2,7 +2,7 @@
 title: Azure Stream Analytics でのストリーミング ユニットの理解と調整
 description: この記事では、Azure Stream Analytics のパフォーマンスに影響するストリーミング ユニットの設定とその他の要因について説明します。
 services: stream-analytics
-author: JSeb225
+author: jseb225
 ms.author: jeanb
 manager: kfile
 ms.reviewer: jasonh

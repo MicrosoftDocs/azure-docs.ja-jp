@@ -2,7 +2,7 @@
 title: Azure Cosmos DB の一般的なユース ケースとシナリオ
 description: Azure Cosmos DB の上位 5 つのユース ケースとして、ユーザーが生成したコンテンツ、イベントのログ記録、カタログ データ、ユーザー設定のデータ、およびモノのインターネット (IoT) について説明します。
 ms.service: cosmos-db
-author: SnehaGunda
+author: snehagunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019

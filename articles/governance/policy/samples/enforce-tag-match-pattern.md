@@ -1,7 +1,7 @@
 ---
 title: サンプル - タグ一致パターンを強制する
 description: このサンプル ポリシー定義は、タグ値に対する一致パターンを満たしていることをリソースに要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

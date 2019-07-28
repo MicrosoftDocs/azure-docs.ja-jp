@@ -3,7 +3,7 @@ title: Azure Blockchain Workbench のトラブルシューティング
 description: Azure Blockchain Workbench アプリケーションのトラブルシューティング方法。
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/09/2019
 ms.topic: article

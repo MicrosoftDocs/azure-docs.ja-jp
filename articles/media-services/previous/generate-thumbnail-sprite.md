@@ -3,7 +3,7 @@ title: Azure Media Services でサムネイル スプライトを生成する | 
 description: このトピックでは、Azure Media Services でサムネイル スプライトを生成する方法を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

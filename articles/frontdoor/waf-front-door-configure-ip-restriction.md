@@ -3,7 +3,7 @@ title: Azure Front Door Service 用の Web アプリケーション ファイア
 description: 既存の Azure Front Door Service エンドポイントの IP アドレスを制限する Web アプリケーション ファイアウォール規則を構成する方法について説明します。
 services: frontdoor
 documentationcenter: ''
-author: KumudD
+author: kumudd
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article

@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager の MMC メニュー操作 | Microsoft Docs
 description: StorSimple Snapshot Manager で、Microsoft 管理コンソール (MMC) の標準のメニュー操作を使用する方法について説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: shars
 manager: timlt
 editor: ''
 ms.assetid: 78ef81af-0d3a-4802-be54-ad192f9ac8a6

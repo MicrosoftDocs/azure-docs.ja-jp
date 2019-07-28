@@ -9,7 +9,7 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
-ms.subservice: B2C
+ms.subservice: b2c
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 0c855a3e0280e1fadf2362f2d8959beff2f5d00a
 ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076

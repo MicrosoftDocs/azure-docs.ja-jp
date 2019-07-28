@@ -1,7 +1,7 @@
 ---
 title: Azure CLI を使用して初めてのクエリを実行する
 description: この記事では、Azure CLI の Resource Graph 拡張機能を有効にして、最初のクエリを実行する手順について説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 10/22/2018
 ms.topic: quickstart

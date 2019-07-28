@@ -1,7 +1,7 @@
 ---
 title: Azure CLI を使用して準拠していないリソースに対するポリシーを作成する
 description: Azure CLI を使用して Azure Policy の割り当てを作成し、準拠していないリソースを特定します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 01/23/2019
 ms.topic: quickstart

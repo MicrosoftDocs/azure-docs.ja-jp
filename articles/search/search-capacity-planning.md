@@ -1,7 +1,7 @@
 ---
 title: クエリとインデックス作成のためのパーティションとレプリカのスケーリング - Azure Search
 description: Azure Search のパーティションとレプリカのコンピューティング リソースを調整します。各リソースは課金対象の検索単位で価格設定されます。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 services: search
 ms.service: search

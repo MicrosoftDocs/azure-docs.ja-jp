@@ -2,7 +2,7 @@
 title: ナレッジ ストアの紹介と概要 (プレビュー) - Azure Search
 description: Azure ストレージにエンリッチメントされたドキュメントを送信し、そこで Azure Search および他のアプリケーション内のエンリッチメントされたドキュメントを表示、整形、および使用することができます。
 manager: cgronlun
-author: HeidiSteen
+author: heidisteen
 services: search
 ms.service: search
 ms.devlang: NA

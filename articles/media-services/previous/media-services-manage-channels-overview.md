@@ -3,7 +3,7 @@ title: Azure Media Services を使用したライブ ストリーミングの概
 description: このトピックでは、Azure Media Services を使用したライブ ストリーミングの概要を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: fb63502e-914d-4c1f-853c-4a7831bb08e8

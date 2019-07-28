@@ -2,7 +2,7 @@
 title: SQL Data Warehouse ビジネス インテリジェンス パートナー | Microsoft Docs
 description: SQL Data Warehouse をサポートするソリューションを提供するサードパーティのビジネス インテリジェンス パートナーの一覧。
 services: sql-data-warehouse
-author: mabasile-MSFT
+author: mabasile-msft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

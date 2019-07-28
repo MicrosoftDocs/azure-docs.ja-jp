@@ -3,7 +3,7 @@ title: Azure パブリック IP アドレスの作成、変更、削除 | Micros
 description: パブリック IP アドレスの作成、変更、削除の方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

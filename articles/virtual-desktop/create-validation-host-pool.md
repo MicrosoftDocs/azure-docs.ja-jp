@@ -2,7 +2,7 @@
 title: サービスの更新プログラムを検証するための Windows Virtual Desktop プレビューのホスト プールを作成する - Azure
 description: 運用環境に更新プログラムを展開する前にサービスの更新プログラムを監視する検証ホスト プールを作成する方法。
 services: virtual-desktop
-author: ChJenk
+author: chjenk
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 05/08/2019

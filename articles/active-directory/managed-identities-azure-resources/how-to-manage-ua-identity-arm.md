@@ -3,7 +3,7 @@ title: Azure Resource Manager を使用してユーザー割り当てマネー�
 description: Azure Resource Manager を使用して、ユーザー割り当てマネージド ID を作成および削除する手順について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.service: active-directory

@@ -3,7 +3,7 @@ title: SAP NetWeaver のための Azure Virtual Machines の計画と実装 | Mi
 description: SAP NetWeaver のための Azure Virtual Machines の計画と実装
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
-author: MSSedusch
+author: mssedusch
 manager: gwallace
 editor: ''
 tags: azure-resource-manager

@@ -1,7 +1,7 @@
 ---
 title: Azure Marketplace にマネージド サービス オファーを発行する
 description: Azure の委任されたリソース管理に顧客をオンボードするマネージド サービス オファーを発行する方法について説明します。
-author: JnHs
+author: jnhs
 ms.author: jenhayes
 ms.service: lighthouse
 ms.date: 07/11/2019

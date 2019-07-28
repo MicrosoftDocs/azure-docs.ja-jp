@@ -8,7 +8,7 @@ ms.author: marsma
 ms.date: 11/05/2018
 ms.topic: conceptual
 ms.service: active-directory
-ms.subservice: B2C
+ms.subservice: b2c
 ms.openlocfilehash: 95002eb73277176d4a8aeaa40deea4d96c39a755
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT

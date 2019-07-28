@@ -3,7 +3,7 @@ title: Azure Front Door Service のドメインに対する geo フィルタリ�
 description: この記事では、Azure Front Door Service の geo フィルタリング ポリシーについて説明します。
 services: frontdoor
 documentationcenter: ''
-author: KumudD
+author: kumudd
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services

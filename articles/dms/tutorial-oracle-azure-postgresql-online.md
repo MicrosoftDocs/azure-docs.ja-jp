@@ -2,7 +2,7 @@
 title: チュートリアル:Azure Database Migration Service を使用して Oracle の Azure Database for PostgreSQL へのオンライン移行を実行する | Microsoft Docs
 description: Azure Database Migration Service を使用して、オンプレミスまたは仮想マシンの Oracle から Azure Database for PostgreSQL にオンライン移行を実行する方法を説明します。
 services: dms
-author: HJToland3
+author: hjtoland3
 ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg

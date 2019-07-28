@@ -3,7 +3,7 @@ title: Azure クイック スタート - Azure portal を使用したイベン�
 description: このクイック スタートでは、Azure portal を使用して Azure イベント ハブを作成したうえで、.NET Standard SDK を使用してイベントの送受信を行う方法について説明します。
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: quickstart

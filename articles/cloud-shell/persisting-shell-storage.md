@@ -3,7 +3,7 @@ title: Azure Cloud Shell の Bash でファイルを永続化する | Microsoft 
 description: Azure Cloud Shell の Bash でファイルを永続化する方法についてのチュートリアルです。
 services: azure
 documentationcenter: ''
-author: maertendMSFT
+author: maertendmsft
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''

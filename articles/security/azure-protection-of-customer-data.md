@@ -3,7 +3,7 @@ title: Azure での顧客データの保護
 description: この記事では、Azure で顧客データを保護する方法を示します。
 services: security
 documentationcenter: na
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e

@@ -3,7 +3,7 @@ title: コンテナーのインストールと実行
 titlesuffix: Face - Azure Cognitive Services
 description: このチュートリアルでは、Face のコンテナーをダウンロード、インストール、および実行します。
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services

@@ -3,7 +3,7 @@ title: Recommendations API とは?
 titlesuffix: Azure Cognitive Services
 description: Preview API はサポートが終了し、Recommendations Solution テンプレートに置き換えられました。
 services: cognitive-services
-author: LuisCabrer
+author: luiscabrer
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: recommendations

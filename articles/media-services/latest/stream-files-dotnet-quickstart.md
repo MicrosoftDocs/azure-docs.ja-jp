@@ -3,7 +3,7 @@ title: Azure Media Services で動画ファイルをストリーム配信する 
 description: このチュートリアルの手順に従って、新しい Azure Media Services アカウントを作成し、ファイルをエンコードして、Azure Media Player にストリーム配信します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 keywords: Azure Media Services, ストリーム配信

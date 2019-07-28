@@ -1,7 +1,7 @@
 ---
 title: バックアップから Azure Cosmos DB データを復元する方法
 description: この記事では、バックアップから Azure Cosmos DB データを復元する方法、Azure サポートに連絡してデータを復元する方法、およびデータが復元された後に実行する手順について説明します。
-author: kanshiG
+author: kanshig
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019

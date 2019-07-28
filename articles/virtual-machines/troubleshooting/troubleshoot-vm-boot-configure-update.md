@@ -3,7 +3,7 @@ title: VM の起動が停止し、"Windows の準備をしています。 コン
 description: 次のメッセージで停止する問題をトラブルシューティングするためのステップを紹介します。VM の起動が停止し、"Windows の準備をしています。 コンピューターの電源を切らないでください。" が表示される
 services: virtual-machines-windows
 documentationcenter: ''
-author: Deland-Han
+author: deland-han
 manager: willchen
 editor: ''
 tags: azure-resource-manager

@@ -1,7 +1,7 @@
 ---
 title: サンプル - タグとその既定値の適用
 description: このサンプル ポリシー定義は、指定されたタグがない場合、そのタグ名と値を付加します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

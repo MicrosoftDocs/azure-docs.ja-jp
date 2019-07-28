@@ -1,7 +1,7 @@
 ---
 title: Microsoft Azure Site Recovery Provider のアップグレード エラーのトラブルシューティング | Microsoft Docs
 description: 理解を深める
-author: vDonGlover
+author: vdonglover
 manager: jarrettr
 ms.service: site-recovery
 ms.topic: troubleshooting

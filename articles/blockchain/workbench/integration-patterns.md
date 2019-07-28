@@ -3,7 +3,7 @@ title: Azure Blockchain Workbench のスマート コントラクトの統合パ
 description: Azure Blockchain Workbench のスマート コントラクトの統合パターンについて概要を説明します。
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/09/2019
 ms.topic: article

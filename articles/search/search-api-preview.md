@@ -2,7 +2,7 @@
 title: Azure Search 2019-05-06-Preview 向けの REST API のプレビュー - Azure Search
 description: Azure Search Service REST API バージョン 2019-05-06-Preview には、ナレッジ ストアや顧客管理の暗号化キーなどの試験的機能が含まれています。
 services: search
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 ms.service: search
 ms.devlang: rest-api

@@ -2,7 +2,7 @@
 title: PowerShell を使用したイベント ハブの作成 - Azure Event Hubs | Microsoft Docs
 description: このクイック スタートでは、Azure PowerShell を使用してイベント ハブを作成したうえで、.NET Standard SDK を使用してイベントの送受信を行う方法について説明します。
 services: event-hubs
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.service: event-hubs

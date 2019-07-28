@@ -3,7 +3,7 @@ title: Azure PowerShell スクリプト サンプル - ネットワーク仮想�
 description: Azure PowerShell スクリプト サンプル - ファイアウォール ネットワーク仮想アプライアンス経由のトラフィックのルーティング。
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: ''

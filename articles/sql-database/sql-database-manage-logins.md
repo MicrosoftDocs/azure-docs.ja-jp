@@ -8,7 +8,7 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: VanMSFT
+author: vanmsft
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg

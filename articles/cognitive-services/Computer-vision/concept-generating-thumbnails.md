@@ -3,7 +3,7 @@ title: サムネイルの生成 - Computer Vision
 titleSuffix: Azure Cognitive Services
 description: Computer Vision API を使用するイメージ サムネイルの生成に関する概念。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

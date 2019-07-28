@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB でパフォーマンスとストレージのメトリックを監視する
 description: パフォーマンス メトリック (要求やサーバー エラーなど) と使用状況メトリック (ストレージ消費など) を利用して、Azure Cosmos DB アカウントを監視する方法について説明します。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019

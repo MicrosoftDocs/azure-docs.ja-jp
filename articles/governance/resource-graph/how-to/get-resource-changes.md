@@ -2,7 +2,7 @@
 title: リソースの変更の取得
 description: いつリソースが変更されたかを知り、変更されたプロパティの一覧を取得する方法を理解します。
 services: resource-graph
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 05/10/2019
 ms.topic: conceptual

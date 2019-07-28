@@ -4,7 +4,7 @@ description: 相互に接続されているすべての仮想ネットワーク�
 services: terraform
 ms.service: azure
 keywords: terraform, ハブとスポーク, ネットワーク, ハイブリッド ネットワーク, devops, 仮想マシン, Azure, VNet ピアリング,
-author: VaijanathB
+author: vaijanathb
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial

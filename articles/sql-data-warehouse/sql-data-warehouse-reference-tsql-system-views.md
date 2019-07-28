@@ -2,7 +2,7 @@
 title: システム ビュー - Azure SQL Data Warehouse | Microsoft Docs
 description: Azure SQL Data Warehouse でサポートされるシステム ビューのドキュメントにリンクします。
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: xiaoyumsft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

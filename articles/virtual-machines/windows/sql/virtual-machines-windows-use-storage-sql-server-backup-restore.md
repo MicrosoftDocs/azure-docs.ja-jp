@@ -3,7 +3,7 @@ title: Azure Storage を使用した SQL Server のバックアップと復元�
 description: SQL Server を Azure Storage に バックアップする方法について説明します。 SQL データベースを Azure Storage にバックアップする利点について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: MikeRayMSFT
+author: mikeraymsft
 manager: craigg
 tags: azure-service-management
 ms.assetid: 0db7667d-ef63-4e2b-bd4d-574802090f8b

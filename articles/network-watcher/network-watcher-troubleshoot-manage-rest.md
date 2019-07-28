@@ -3,7 +3,7 @@ title: Azure Network Watcher を使用した仮想ネットワーク ゲート�
 description: このページでは、Azure Network Watcher で REST を使用して仮想ネットワーク ゲートウェイと接続のトラブルシューティングを行う方法について説明します
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: e4d5f195-b839-4394-94ef-a04192766e55

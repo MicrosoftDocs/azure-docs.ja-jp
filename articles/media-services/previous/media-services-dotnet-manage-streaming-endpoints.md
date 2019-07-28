@@ -3,7 +3,7 @@ title: .NET SDK を使用してストリーミング エンドポイントを管
 description: この記事では、Azure ポータルを使ってストリーミング エンドポイントを管理する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 writer: juliako
 manager: femila
 editor: ''

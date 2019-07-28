@@ -3,7 +3,7 @@ title: Anomaly Detector API 用のコンテナーを構成する方法
 titleSuffix: Azure Cognitive Services
 description: Anomaly Detector API コンテナーのランタイム環境を構成するには、`docker run` コマンドの引数を使用します。 このコンテナーには、いくつかの必須の設定と省略可能な設定があります。
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector

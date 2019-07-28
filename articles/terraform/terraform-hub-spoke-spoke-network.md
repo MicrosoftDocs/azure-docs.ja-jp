@@ -4,7 +4,7 @@ description: ハブスポーク トポロジー内に 1 つのハブに接続さ
 services: terraform
 ms.service: azure
 keywords: Terraform, ハブとスポーク, ネットワーク, ハイブリッド ネットワーク, DevOps, 仮想マシン, Azure, VNet ピアリング, スポーク, ハブスポーク
-author: VaijanathB
+author: vaijanathb
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial

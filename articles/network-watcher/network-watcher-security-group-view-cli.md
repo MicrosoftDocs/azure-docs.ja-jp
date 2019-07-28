@@ -3,7 +3,7 @@ title: Azure Network Watcher のセキュリティ グループ ビューを使�
 description: この記事では、Azure CLI を使用して、セキュリティ グループ ビューで仮想マシンのセキュリティを分析する方法について説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: a986ff4f-7e0c-4994-95e1-4ac824986500

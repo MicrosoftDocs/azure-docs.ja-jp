@@ -3,7 +3,7 @@ title: Azure Event Hubs とは - ビッグ データ インジェスト サー�
 description: 1 秒間に百万単位のイベントを取り込むビッグ データ ストリーミング サービスである Azure Event Hubs について説明します。
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: overview

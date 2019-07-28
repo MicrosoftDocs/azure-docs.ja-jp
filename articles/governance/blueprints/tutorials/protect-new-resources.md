@@ -1,7 +1,7 @@
 ---
 title: チュートリアル - Blueprints のリソース ロックを使用して新しいリソースを保護する
 description: このチュートリアルでは、Azure Blueprints のリソース ロックの "読み取り専用" と "削除禁止" のオプションを使用して、新しくデプロイされたリソースを保護する方法を学習します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 03/28/2019
 ms.topic: tutorial

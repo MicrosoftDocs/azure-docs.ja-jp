@@ -3,7 +3,7 @@ title: 'クイック スタート: Azure portal を使用してサインイン �
 description: Azure portal を使用してサインイン レポートをダウンロードする方法について説明します
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: 9131f208-1f90-4cc1-9c29-085cacd69317

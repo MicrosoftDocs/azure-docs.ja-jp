@@ -3,7 +3,7 @@ title: AlwaysOn 可用性グループ リスナーの構成 – Microsoft Azure 
 description: 1 つ以上の IP アドレスを持つ内部ロード バランサーを使用して、Azure Resouce Manager モデルで可用性グループ リスナーを構成します。
 services: virtual-machines
 documentationcenter: na
-author: MikeRayMSFT
+author: mikeraymsft
 manager: craigg
 editor: monicar
 ms.assetid: 14b39cde-311c-4ddf-98f3-8694e01a7d3b

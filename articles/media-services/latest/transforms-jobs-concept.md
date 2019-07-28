@@ -3,7 +3,7 @@ title: Azure Media Services の Transform と Job | Microsoft Docs
 description: Media Services を使用するときは、ビデオを処理するためのルールまたは仕様を説明する Transform を作成する必要があります。 この記事では、Transform とその使用方法の概要を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

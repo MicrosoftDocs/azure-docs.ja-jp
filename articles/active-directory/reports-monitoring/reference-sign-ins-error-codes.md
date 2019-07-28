@@ -3,7 +3,7 @@ title: Azure Active Directory ポータルのサインイン アクティビテ�
 description: サインイン アクティビティ レポートのエラー コードのリファレンス。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75

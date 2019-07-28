@@ -3,7 +3,7 @@ title: Azure Network Watcher | Microsoft Docs
 description: 仮想ネットワーク内のリソースを対象とする Azure Network Watcher の監視、診断、メトリック、ログの機能について説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 Customer intent: As someone with basic Azure network experience, I want to understand how Azure Network Watcher can help me resolve some of the network-related problems I've encountered and provide insight into how I use Azure networking.

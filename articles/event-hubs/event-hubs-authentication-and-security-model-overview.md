@@ -3,7 +3,7 @@ title: 認証とセキュリティ モデル - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs の認証とセキュリティ モデルについて説明します。
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: 93841e30-0c5c-4719-9dc1-57a4814342e7

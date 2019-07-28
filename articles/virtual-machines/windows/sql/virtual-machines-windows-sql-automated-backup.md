@@ -3,7 +3,7 @@ title: SQL Server 2014 Azure Virtual Machines の自動バックアップ | Micr
 description: Azure で実行されている SQL Server 2014 VM の自動バックアップ機能について説明します。 この記事は、Resource Manager を使用する VM のみにあてはまります。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 tags: azure-resource-manager
 ms.assetid: bdc63fd1-db49-4e76-87d5-b5c6a890e53c

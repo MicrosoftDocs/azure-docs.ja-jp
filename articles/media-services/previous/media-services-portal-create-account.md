@@ -3,7 +3,7 @@ title: Azure Portal での Azure Media Services アカウントの作成 | Micro
 description: このチュートリアルでは、Azure Portal で Azure Media Services アカウントを作成する手順について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: c551e158-aad6-47b4-931e-b46260b3ee4c

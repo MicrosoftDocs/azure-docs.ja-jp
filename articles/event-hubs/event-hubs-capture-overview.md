@@ -3,7 +3,7 @@ title: ストリーミング イベントをキャプチャする - Azure Event 
 description: この記事では、Azure Event Hubs でイベントのストリーミングをキャプチャするキャプチャ機能の概要を示します。
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: e53cdeea-8a6a-474e-9f96-59d43c0e8562

@@ -2,7 +2,7 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: load balancer
-author: KumudD
+author: kumudd
 ms.service: load-balancer
 ms.topic: include
 ms.date: 02/08/2018

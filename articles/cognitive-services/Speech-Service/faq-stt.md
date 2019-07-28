@@ -3,7 +3,7 @@ title: Azure の音声テキスト変換についてよく寄せられる質問
 titleSuffix: Azure Cognitive Services
 description: 音声テキスト変換に関してよく寄せられる質問に対する回答を紹介します。
 services: cognitive-services
-author: PanosPeriorellis
+author: panosperiorellis
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service

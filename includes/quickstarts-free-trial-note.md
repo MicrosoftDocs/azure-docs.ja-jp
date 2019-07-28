@@ -1,5 +1,5 @@
 ---
-author: SyntaxC4
+author: syntaxc4
 ms.service: cloud-services
 ms.topic: include
 ms.date: 11/25/2018

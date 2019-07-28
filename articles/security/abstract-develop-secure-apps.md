@@ -3,7 +3,7 @@ title: セキュリティで保護されたクラウド アプリケーション
 description: クラウド用のアプリケーションを開発する際に、ソフトウェア開発ライフサイクルの各段階で考慮するセキュリティの問題と制御に関するガイドです。
 services: azure-security
 documentationcenter: na
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: ''
 ms.assetid: ''

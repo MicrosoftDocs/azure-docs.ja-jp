@@ -3,7 +3,7 @@ title: キャプチャを有効化したイベント ハブの作成 - Azure Eve
 description: Azure Resource Manager テンプレートを使用して、1 つのイベント ハブを含んだ Azure Event Hubs 名前空間を作成して Capture を有効にします
 services: event-hubs
 documentationcenter: .net
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: 8bdda6a2-5ff1-45e3-b696-c553768f1090

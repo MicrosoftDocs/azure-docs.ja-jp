@@ -2,7 +2,7 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: iot-central
-author: BryanLa
+author: bryanla
 ms.service: iot-central
 ms.topic: include
 ms.date: 03/20/2019

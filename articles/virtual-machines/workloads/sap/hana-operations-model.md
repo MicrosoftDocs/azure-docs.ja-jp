@@ -3,7 +3,7 @@ title: SAP HANA on Azure (L インスタンス) の運用モデル | Microsoft D
 description: SAP HANA on Azure (L インスタンス) の運用モデル。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
+author: rickstercdn
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux

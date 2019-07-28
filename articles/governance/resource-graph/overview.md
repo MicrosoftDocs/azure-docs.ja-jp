@@ -1,7 +1,7 @@
 ---
 title: Azure Resource Graph の概要
 description: Azure Resource Graph サービスによってリソースの複雑なクエリの大規模な実行がどのように実現されるかについて理解します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 05/06/2019
 ms.topic: overview

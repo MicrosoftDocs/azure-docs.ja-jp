@@ -1,7 +1,7 @@
 ---
 title: Azure Front Door 用の Web アプリケーション ファイアウォールのカスタム規則
 description: Web アプリケーション ファイアウォール (WAF) のカスタム規則を使用して、悪意のある攻撃から Web アプリケーションを保護する方法を説明します。
-author: KumudD
+author: kumudd
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article

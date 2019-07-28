@@ -3,7 +3,7 @@ title: Red Hat Update Infrastructure | Microsoft Docs
 description: Microsoft Azure のオンデマンド Red Hat Enterprise Linux インスタンス用の Red Hat Update Infrastructure について説明します
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
+author: borisb2015
 manager: gwallace
 editor: ''
 ms.assetid: f495f1b4-ae24-46b9-8d26-c617ce3daf3a

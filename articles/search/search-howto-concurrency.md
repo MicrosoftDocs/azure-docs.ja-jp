@@ -1,7 +1,7 @@
 ---
 title: リソースへの同時書き込みを管理する方法 - Azure Search
 description: オプティミスティック コンカレンシーを使用して、Azure Search インデックス、インデクサー、データ ソースの更新または削除の競合を回避します。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 services: search
 ms.service: search

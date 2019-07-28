@@ -3,7 +3,7 @@ title: Azure Storage を使用して PaaS アプリケーションをセキュ�
 description: PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure Storage のセキュリティ ベスト プラクティスについて説明します。
 services: security
 documentationcenter: na
-author: TomShinder
+author: tomshinder
 manager: barbkess
 editor: ''
 ms.assetid: ''

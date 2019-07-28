@@ -3,7 +3,7 @@ title: REST を使用してメディア プロセッサ インスタンスを取
 description: メディア プロセッサ コンポーネントを作成し、Azure Media Services 用にメディア コンテンツのエンコード、形式の変換、暗号化、または復号化を行う方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: f9ff1997-0da6-4528-aaed-792837e5be41

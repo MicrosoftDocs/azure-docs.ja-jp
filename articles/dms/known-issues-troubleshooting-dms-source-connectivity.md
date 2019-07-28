@@ -2,7 +2,7 @@
 title: ソース データベースへの Azure Database Migration Service の接続に関連した既知の問題/エラーのトラブルシューティングに関する記事 | Microsoft Docs
 description: ソース データベースへの Azure Database Migration Service の接続に関連した既知の問題/エラーをトラブルシューティングする方法について学習します。
 services: database-migration
-author: HJToland3
+author: hjtoland3
 ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg

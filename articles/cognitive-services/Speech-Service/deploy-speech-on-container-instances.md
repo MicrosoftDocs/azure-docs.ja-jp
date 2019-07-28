@@ -3,7 +3,7 @@ title: Azure Container Instances の実行
 titleSuffix: Azure Cognitive Services
 description: Speech Service コンテナーを Azure Container Instance にデプロイし、Web ブラウザーでテストします。
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service

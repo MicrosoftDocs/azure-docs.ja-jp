@@ -1,7 +1,7 @@
 ---
 title: 管理者 API キーとクエリ API キーの作成、管理、およびセキュリティ保護 - Azure Search
 description: API キーは、サービス エンドポイントへのアクセスを制御します。 管理者キーは、書き込みアクセス権を付与します。 読み取り専用アクセスのために、クエリ キーを作成できます。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 tags: azure-portal
 services: search

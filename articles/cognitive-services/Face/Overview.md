@@ -2,7 +2,7 @@
 title: Face API とは
 titleSuffix: Azure Cognitive Services
 description: Face サービスを使用して、画像内の顔を検出し、分析する方法について説明します。
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api

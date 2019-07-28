@@ -4,7 +4,7 @@ description: Azure SQL Data Warehouse 用に Visual Studio と SQL Server Develo
 services: sql-data-warehouse
 ms.custom: vs-azure
 ms.workload: azure-vs
-author: XiaoyuL-Preview
+author: xiaoyul-preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

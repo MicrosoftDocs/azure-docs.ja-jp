@@ -3,7 +3,7 @@ author: devinrader
 ms.service: multiple
 ms.topic: include
 ms.date: 11/25/2018
-ms.author: MicrosoftHelp@twilio.com
+ms.author: microsofthelp@twilio.com
 ms.openlocfilehash: 8acb75f1cac83595da88a4a5ffa33102136266f2
 ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT

@@ -8,7 +8,7 @@ ms.topic: article
 ms.workload: identity
 ms.date: 04/12/2019
 ms.author: joflore
-author: MicrosoftGuyJFlo
+author: microsoftguyjflo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management

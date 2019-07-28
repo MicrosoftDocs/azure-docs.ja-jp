@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB SQL API 用の SQL クエリ メトリック
 description: Azure Cosmos DB 要求の SQL クエリをインストルメント化し、SQL クエリのパフォーマンスをデバッグする方法について説明します。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual

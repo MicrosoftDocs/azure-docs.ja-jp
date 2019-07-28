@@ -1,7 +1,7 @@
 ---
 title: 大規模なデータ セットを処理する
 description: Azure Resource Graph の使用時に大きなデータ セットを取得して制御する方法について説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 04/01/2019
 ms.topic: conceptual

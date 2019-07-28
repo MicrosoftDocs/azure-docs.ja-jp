@@ -2,7 +2,7 @@
 title: Azure Resource Manager テンプレートを使用した Windows Virtual Desktop プレビューのホスト プールの作成 - Azure
 description: Azure Resource Manager テンプレートを使用して Windows Virtual Desktop プレビューにホスト プールを作成する方法。
 services: virtual-desktop
-author: Heidilohr
+author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/05/2019

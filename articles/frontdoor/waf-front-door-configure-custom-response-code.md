@@ -2,7 +2,7 @@
 title: Azure Front Door で Web アプリケーション ファイアウォールに対するカスタム応答を構成する
 description: Web アプリケーション ファイアウォール (WAF) が要求をブロックした場合のカスタム応答コードとメッセージを構成する方法について説明します。
 services: frontdoor
-author: KumudD
+author: kumudd
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article

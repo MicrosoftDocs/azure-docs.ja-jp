@@ -3,7 +3,7 @@ title: Azure Blockchain Workbench でのブロックチェーン アプリケー
 description: Azure Blockchain Workbench でのアプリケーション バージョンの使用方法。
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 04/15/2019
 ms.topic: article

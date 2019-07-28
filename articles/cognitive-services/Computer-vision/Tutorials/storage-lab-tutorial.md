@@ -3,7 +3,7 @@ title: チュートリアル:Azure の画像のメタデータを生成する
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、Azure Computer Vision サービスを Web アプリに統合して、画像のメタデータを生成する方法について学習します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

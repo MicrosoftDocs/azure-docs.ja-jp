@@ -3,7 +3,7 @@ title: マルチビットレートのストリームを作成するオンプレ�
 description: このトピックでは、オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルの設定方法について説明します。 ストリームでは、1 つ以上のストリーミング エンドポイントを介し、次のアダプティブ ストリーミング プロトコルのいずれかを使用してクライアントの再生アプリケーションに送信できます:HLS、スムーズ ストリーミング、DASH。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: d9f0912d-39ec-4c9c-817b-e5d9fcf1f7ea

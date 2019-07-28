@@ -1,7 +1,7 @@
 ---
 title: HDInsight を使用して YARN で Spark から Azure Cosmos DB Cassandra API にアクセスする
 description: この記事では、HDInsight を使って YARN で Spark から Azure Cosmos DB Cassandra API を使用する方法について説明します
-author: kanshiG
+author: kanshig
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db

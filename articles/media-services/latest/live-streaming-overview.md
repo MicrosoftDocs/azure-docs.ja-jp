@@ -3,7 +3,7 @@ title: Azure Media Services v3 を使用したライブ ストリーミングの
 description: この記事では、Azure Media Services v3 を使用したライブ ストリーミングの概要を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

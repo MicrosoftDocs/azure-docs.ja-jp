@@ -3,7 +3,7 @@ title: Azure Media Services でのフェールオーバー ストリーミング
 description: このトピックでは、フェールオーバー ストリーミング シナリオの実装方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

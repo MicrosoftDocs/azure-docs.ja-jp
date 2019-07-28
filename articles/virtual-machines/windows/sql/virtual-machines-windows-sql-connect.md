@@ -3,7 +3,7 @@ title: SQL Server 仮想マシンへの接続 (リソース マネージャー) 
 description: Azure の仮想マシンで実行されている SQL Server に接続する方法について説明します。 このトピックでは、クラシック デプロイ モデルを使用します。 シナリオは、ネットワーク構成とクライアントの場所によって異なります。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03

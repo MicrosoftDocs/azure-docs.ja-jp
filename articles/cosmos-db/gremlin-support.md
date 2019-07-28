@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB での Gremlin のサポート
 description: Apache TinkerPop の Gremlin 言語について説明します。 Azure Cosmos DB で使用できる機能と手順について説明します。
-author: LuisBosquez
+author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview

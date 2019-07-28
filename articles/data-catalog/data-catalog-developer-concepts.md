@@ -2,7 +2,7 @@
 title: Azure Data Catalog 開発者の概念
 description: Catalog REST API によって公開される Azure Data Catalog 概念モデルの主要な概念の概要を説明します。
 services: data-catalog
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog

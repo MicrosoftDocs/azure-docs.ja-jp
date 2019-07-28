@@ -3,7 +3,7 @@ title: クイック スタート:ローカル画像の分析 - REST、Python
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Python で Computer Vision API を使用してローカル画像を分析します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

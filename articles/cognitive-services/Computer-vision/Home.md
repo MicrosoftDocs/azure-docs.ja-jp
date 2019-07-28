@@ -3,7 +3,7 @@ title: Computer Vision API とは - Computer Vision
 titlesuffix: Azure Cognitive Services
 description: Computer Vision サービスを使用すると、開発者は、イメージを処理して情報を返すための高度なアルゴリズムにアクセスできます。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

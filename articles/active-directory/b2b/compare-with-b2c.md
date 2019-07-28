@@ -3,7 +3,7 @@ title: B2B コラボレーションと B2C の比較 - Azure Active Directory | 
 description: Azure Active Directory B2B コラボレーションと Azure AD B2C の違いは何でしょうか。
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: overview
 ms.date: 01/30/2019
 ms.author: mimart

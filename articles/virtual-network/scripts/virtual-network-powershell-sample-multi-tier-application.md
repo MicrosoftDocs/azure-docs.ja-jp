@@ -3,7 +3,7 @@ title: Azure PowerShell スクリプト サンプル - 多層アプリケーシ�
 description: Azure PowerShell スクリプト サンプル - 多層アプリケーション用の仮想ネットワークの作成。
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: ''

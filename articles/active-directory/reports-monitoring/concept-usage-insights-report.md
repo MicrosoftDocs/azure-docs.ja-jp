@@ -3,7 +3,7 @@ title: Azure Active Directory ポータルの使用状況と分析情報のレ�
 description: Azure Active Directory ポータルの使用状況と分析情報のレポートの概要
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: 3fba300d-18fc-4355-9924-d8662f563a1f

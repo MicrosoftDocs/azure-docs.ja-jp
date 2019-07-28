@@ -3,7 +3,7 @@ title: Azure DNS と Traffic Manager を使用したディザスター リカバ
 description: Azure DNS と Traffic Manager を使用したディザスター リカバリー ソリューションの概要
 services: dns
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

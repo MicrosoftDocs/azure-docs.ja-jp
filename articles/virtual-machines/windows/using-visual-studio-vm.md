@@ -3,7 +3,7 @@ title: Azure 仮想マシンでの Visual Studio の使用| Microsoft Docs
 description: Azure 仮想マシンでの Visual Studio の使用。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: PhilLee-MSFT
+author: phillee-msft
 manager: cathys
 editor: tysonn
 tags: azure-resource-manager

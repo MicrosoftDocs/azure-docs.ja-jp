@@ -3,7 +3,7 @@ title: SAP NetWeaver のための Azure Virtual Machines のデプロイ | Micro
 description: Azure の Linux 仮想マシンに SAP ソフトウェアをデプロイする方法について説明します。
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
-author: MSSedusch
+author: mssedusch
 manager: gwallace
 editor: ''
 tags: azure-resource-manager

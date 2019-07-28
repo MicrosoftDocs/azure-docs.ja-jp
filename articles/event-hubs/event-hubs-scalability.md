@@ -3,7 +3,7 @@ title: スケーラビリティ - Azure Event Hubs | Microsoft Docs
 description: Azure Event Hubs のスケーリングする方法について説明します。
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.service: event-hubs

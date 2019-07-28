@@ -3,7 +3,7 @@ title: マネージド ID VM 拡張機能の使用を止めて Azure Instance Me
 description: VM 拡張機能の使用を止めて、認証用の Azure Instance Metadata Service (IMDS) の使用を開始する手順を順を追って説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.service: active-directory

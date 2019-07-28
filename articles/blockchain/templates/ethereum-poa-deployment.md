@@ -3,7 +3,7 @@ title: Ethereum Proof-of-Authority Consortium
 description: Etherereum Proof-of-Authority Consortium ソリューションを使用してマルチメンバー コンソーシアム型 Ethereum ネットワークをデプロイして構成する
 services: azure-blockchain
 keywords: ''
-author: CodyBorn
+author: codyborn
 ms.author: coborn
 ms.date: 04/08/2019
 ms.topic: article

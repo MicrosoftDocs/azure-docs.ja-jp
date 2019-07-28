@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB の Cassandra API の概要
 description: Azure Cosmos DB を使用して既存のアプリケーションを "リフトアンドシフト" し、使い慣れた Cassandra ドライバーと CQL および Cassandra API を使用して新しいアプリケーションを構築する方法について説明します。
-author: kanshiG
+author: kanshig
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview

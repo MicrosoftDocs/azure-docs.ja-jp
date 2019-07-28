@@ -3,7 +3,7 @@ title: Azure Cloud Shell の制限 | Microsoft Docs
 description: Azure Cloud Shell の制限の概要
 services: azure
 documentationcenter: ''
-author: maertendMSFT
+author: maertendmsft
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''

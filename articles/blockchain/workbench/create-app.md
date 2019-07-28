@@ -3,7 +3,7 @@ title: Azure Blockchain Workbench でブロックチェーン アプリケーシ
 description: Azure Blockchain Workbench でブロックチェーン アプリケーションを作成する方法についてのチュートリアル。
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/30/2019
 ms.topic: tutorial

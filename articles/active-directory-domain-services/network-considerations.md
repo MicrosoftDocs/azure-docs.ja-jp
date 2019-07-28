@@ -3,7 +3,7 @@ title: Azure AD Domain Services:ネットワークのガイドライン | Micros
 description: Azure Active Directory Domain Services のネットワークに関する考慮事項
 services: active-directory-ds
 documentationcenter: ''
-author: MikeStephens-MS
+author: mikestephens-ms
 manager: daveba
 editor: curtand
 ms.assetid: 23a857a5-2720-400a-ab9b-1ba61e7b145a

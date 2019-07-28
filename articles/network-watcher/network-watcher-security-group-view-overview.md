@@ -3,7 +3,7 @@ title: Azure Network Watcher のセキュリティ グループ ビューの概�
 description: このページでは、Network Watcher のセキュリティ ビュー機能の概要を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: ad27ab85-9d84-4759-b2b9-e861ef8ea8d8

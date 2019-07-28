@@ -9,7 +9,7 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/24/2019
 ms.author: marsma
-ms.subservice: B2C
+ms.subservice: b2c
 ms.openlocfilehash: 9d3ce15ac9899fe09d907296976db15ed0babb35
 ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT

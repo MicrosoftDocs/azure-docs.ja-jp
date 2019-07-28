@@ -3,7 +3,7 @@ title: Azure Linux 仮想マシンにおける SQL Server の概要 | Microsoft 
 description: Azure の Linux 仮想マシンで各 SQL Server エディションを実行する方法について説明します。 すべての Linux SQL Server VM イメージと関連コンテンツへのダイレクト リンクが記載されています。
 services: virtual-machines-linux
 documentationcenter: ''
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql

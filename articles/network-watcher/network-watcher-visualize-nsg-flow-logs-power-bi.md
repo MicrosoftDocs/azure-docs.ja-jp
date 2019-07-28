@@ -3,7 +3,7 @@ title: Azure ネットワーク セキュリティ グループのフロー ロ�
 description: このページでは、NSG フロー ログを Power BI で視覚化する方法について説明しています。
 services: network-watcher
 documentationcenter: na
-author: mattreatMSFT
+author: mattreatmsft
 manager: vitinnan
 editor: ''
 ms.assetid: 1e4f95fa-f5f0-4e03-bc25-008fbfc4934c

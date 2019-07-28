@@ -3,7 +3,7 @@ title: Azure トラフィック分析についてよく寄せられる質問 | M
 description: トラフィック分析についてよく寄せられる質問の回答を確認します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.service: network-watcher

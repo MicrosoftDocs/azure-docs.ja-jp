@@ -3,7 +3,7 @@ title: Azure Active Directory レポートに関する FAQ | Microsoft Docs
 description: Azure Active Directory レポートに関するよく寄せられる質問。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory

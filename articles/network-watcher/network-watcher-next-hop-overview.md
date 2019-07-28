@@ -3,7 +3,7 @@ title: Azure Network Watcher の次ホップの概要 | Microsoft Docs
 description: この記事では、Network Watcher の次ホップ機能の概要を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: febf7bca-e0b7-41d5-838f-a5a40ebc5aac

@@ -3,7 +3,7 @@ title: Immersive Reader SDK リファレンス
 titleSuffix: Azure Cognitive Services
 description: Immersive Reader SDK のリファレンス
 services: cognitive-services
-author: metanMSFT
+author: metanmsft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader

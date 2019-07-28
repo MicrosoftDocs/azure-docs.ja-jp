@@ -3,7 +3,7 @@ title: Azure のネットワーク セキュリティ | Microsoft Docs
 description: クラウドベースのコンピューティング サービスについて学びます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。
 services: security
 documentationcenter: na
-author: UnifyCloud
+author: unifycloud
 manager: barbkess
 editor: TomSh
 ms.assetid: ''
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
-ms.author: TomSh
+ms.author: tomsh
 ms.openlocfilehash: f684a9d7bca77a8aa3aa60f5079dda0ce3b58a1c
 ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT

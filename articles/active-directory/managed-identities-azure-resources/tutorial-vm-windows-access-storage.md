@@ -3,7 +3,7 @@ title: Windows VM システムに割り当てられたマネージド ID を使�
 description: Windows VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: daveba
 ms.service: active-directory

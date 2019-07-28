@@ -2,7 +2,7 @@
 title: Azure Site Recovery Deployment Planner のバージョン履歴
 description: 既知のさまざまな Site Recovery Deployment Planner のバージョンの修正および既知の制限事項とそれらのリリース日。
 services: site-recovery
-author: Daya-Patil
+author: daya-patil
 manager: carmonm
 ms.topic: article
 ms.service: site-recovery

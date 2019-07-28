@@ -3,7 +3,7 @@ title: Azure Live Streaming REST 呼び出し用の Postman コレクション�
 description: この記事では、Azure Media Services REST 呼び出しのための Postman コレクションの定義を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

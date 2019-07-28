@@ -3,7 +3,7 @@ title: Docker コンテナーのレシピ
 titleSuffix: Azure Cognitive Services
 description: これらのコンテナーのレシピを使用して、再利用できる Cognitive Services コンテナーを作成します。 コンテナーの起動時に必要にならないように、一部またはすべての構成設定を使用してコンテナーをビルドすることができます。 (設定を使用して) この新しいレイヤーのコンテナーを用意し、それをローカルでテストした後は、コンテナー レジストリにコンテナーを保存できます。 コンテナーが起動するときは、コンテナーに現在保存されていないそれらの設定のみが必要になります。
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services

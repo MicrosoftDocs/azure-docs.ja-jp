@@ -1,7 +1,7 @@
 ---
 title: キー値ストアとしての Azure Cosmos DB に対する要求ユニット料金
 description: Azure Cosmos DB がキー/値ストアとして使用されているとき、シンプルな書き込みと読み取り操作を行う際に発生する要求ユニット料金について説明しています。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019

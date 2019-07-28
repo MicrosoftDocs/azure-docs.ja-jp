@@ -3,7 +3,7 @@ title: B2B コラボレーション ユーザーを一括で招待するため�
 description: このチュートリアルでは、PowerShell と CSV ファイルを使用して、外部の Azure AD B2B コラボレーション ユーザーに招待状を一括送信する方法について説明します。
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: tutorial
 ms.date: 08/14/2018
 ms.author: mimart

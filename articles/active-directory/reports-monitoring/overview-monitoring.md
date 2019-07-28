@@ -3,7 +3,7 @@ title: Azure Active Directory 監視とは | Microsoft Docs
 description: Azure Active Directory 監視の概要について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: e2b3d8ce-708a-46e4-b474-123792f35526

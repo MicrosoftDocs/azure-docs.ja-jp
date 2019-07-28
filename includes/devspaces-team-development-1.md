@@ -5,7 +5,7 @@ ms.custom: include file
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.subservice: azds-kubernetes
-author: DrEsteban
+author: dresteban
 ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: include

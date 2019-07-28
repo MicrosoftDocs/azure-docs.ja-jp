@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager 管理 | Microsoft Docs
 description: StorSimple Snapshot Manager ソリューションの管理タスクとワークフローの概要とこれらに関する詳細情報へのリンクを示します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: shars
 manager: timlt
 editor: ''
 ms.assetid: 1cdbb61d-bd16-4be4-ade2-ceab11508acb

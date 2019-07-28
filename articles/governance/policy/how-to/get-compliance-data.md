@@ -1,7 +1,7 @@
 ---
 title: ポリシーのコンプライアンス データを取得する
 description: Azure Policy の評価と効果によって、コンプライアンスが決まります。 コンプライアンスの詳細を取得する方法を説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 02/01/2019
 ms.topic: conceptual

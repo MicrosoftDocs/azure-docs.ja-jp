@@ -3,7 +3,7 @@ title: Azure インフラストラクチャの整合性
 description: この記事では、Azure インフラストラクチャの整合性について説明します。
 services: security
 documentationcenter: na
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e

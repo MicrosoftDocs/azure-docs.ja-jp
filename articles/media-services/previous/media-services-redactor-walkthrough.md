@@ -3,7 +3,7 @@ title: Azure Media Analytics での顔編集チュートリアル | Microsoft Do
 description: このトピックでは、Azure Media Services Explorer (AMSE) と Azure Media Redactor Visualizer (オープン ソース ツール) を使用して編集ワークフロー全体を実行する方法について詳しく説明します。
 services: media-services
 documentationcenter: ''
-author: Lichard
+author: lichard
 manager: femila
 editor: ''
 ms.assetid: d6fa21b8-d80a-41b7-80c1-ff1761bc68f2

@@ -2,7 +2,7 @@
 title: Azure Database for MySQL へのオンライン移行に関する既知の問題と移行の制限事項に関する記事 | Microsoft Docs
 description: Azure Database for MySQL へのオンライン移行に関する既知の問題と移行の制限事項について学習します。
 services: database-migration
-author: HJToland3
+author: hjtoland3
 ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg

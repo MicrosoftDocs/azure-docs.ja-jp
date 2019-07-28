@@ -3,7 +3,7 @@ title: B2B コラボレーションの制限 - Azure Active Directory | Microsof
 description: Azure Active Directory B2B コラボレーションの現在の制限事項
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: mimart

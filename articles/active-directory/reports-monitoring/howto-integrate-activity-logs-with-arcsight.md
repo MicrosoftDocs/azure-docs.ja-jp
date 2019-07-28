@@ -3,7 +3,7 @@ title: Azure Monitor を使用して Azure Active Directory のログを ArcSigh
 description: Azure Monitor を使用して Azure Active Directory のログを ArcSight と統合する方法について説明します
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: b37bef0d-982e-4e28-86b2-6c61ca524ae1

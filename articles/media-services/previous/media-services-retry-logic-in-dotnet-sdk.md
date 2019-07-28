@@ -1,7 +1,7 @@
 ---
 title: Media Services SDK for .NET の再試行ロジック | Microsoft Docs
 description: このトピックでは、Media Services SDK for .NET の再試行ロジックの概要を説明します。
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 services: media-services

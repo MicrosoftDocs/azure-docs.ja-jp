@@ -7,7 +7,7 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: go
 ms.topic: quickstart
-author: David-Engel
+author: david-engel
 ms.author: craigg
 ms.reviewer: MightyPen
 manager: craigg

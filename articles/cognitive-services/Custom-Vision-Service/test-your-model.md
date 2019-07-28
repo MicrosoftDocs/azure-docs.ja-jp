@@ -3,7 +3,7 @@ title: モデルをテストおよび再トレーニングする - Custom Vision
 titlesuffix: Azure Cognitive Services
 description: イメージをテストし、それを使ってモデルを再トレーニングする方法について説明します。
 services: cognitive-services
-author: anrothMSFT
+author: anrothmsft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision

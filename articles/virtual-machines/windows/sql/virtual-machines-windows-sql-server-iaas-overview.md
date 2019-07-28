@@ -3,7 +3,7 @@ title: Azure Windows 仮想マシンでの SQL Server の概要 | Microsoft Docs
 description: Azure Virtual Machines で各 SQL Server エディションを実行する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 tags: azure-service-management
 ms.assetid: c505089e-6bbf-4d14-af0e-dd39a1872767

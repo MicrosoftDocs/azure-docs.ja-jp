@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: このチュートリアルでは、Azure Portal を使用してルート テーブルでネットワーク トラフィックをルーティングする方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

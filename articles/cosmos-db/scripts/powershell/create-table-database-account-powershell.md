@@ -1,7 +1,7 @@
 ---
 title: Azure PowerShell スクリプト - Azure Cosmos DB の Table API アカウントを作成する
 description: Azure PowerShell サンプル スクリプト - Azure Cosmos DB の Table API アカウントを作成する
-author: SnehaGunda
+author: snehagunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table

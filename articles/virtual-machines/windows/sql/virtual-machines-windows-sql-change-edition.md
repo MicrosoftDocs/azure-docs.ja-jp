@@ -3,7 +3,7 @@ title: Azure VM で SQL Server のエディションのインプレース アッ
 description: Azure で SQL Server VM のエディションを変更する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: mashamsft
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql

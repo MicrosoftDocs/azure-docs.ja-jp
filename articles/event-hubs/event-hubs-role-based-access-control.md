@@ -3,7 +3,7 @@ title: ロールベースのアクセス制御のプレビュー - Azure Event H
 description: この記事では、Azure Event Hubs のロールベースのアクセス制御について説明します。
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na

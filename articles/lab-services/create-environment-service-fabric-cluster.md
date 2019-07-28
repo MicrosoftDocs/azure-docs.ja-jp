@@ -3,7 +3,7 @@ title: Azure DevTest Labs で Service Fabric クラスターがある環境を�
 description: 自己完結型 Service Fabric クラスターがある環境を作成し、そのクラスターをスケジュールを使用して開始および停止する方法について説明します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
-author: EMaher
+author: emaher
 manager: femila
 editor: spelluru
 ms.assetid: ''

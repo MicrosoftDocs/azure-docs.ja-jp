@@ -3,7 +3,7 @@ title: Azure 仮想ネットワークを計画する | Microsoft Docs
 description: 分離、接続、場所の要件に基づいて仮想ネットワークを計画する方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: 3a4a9aea-7608-4d2e-bb3c-40de2e537200

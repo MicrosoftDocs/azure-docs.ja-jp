@@ -3,7 +3,7 @@ title: Azure リソースのマネージド ID
 description: Azure リソースのマネージド ID の概要。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370

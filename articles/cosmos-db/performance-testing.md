@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB のパフォーマンスとスケールのテスト
 description: Azure Cosmos DB のスケーリングとパフォーマンスをテストする方法について説明します。 ハイパフォーマンス アプリケーション シナリオ用の Azure Cosmos DB の機能を評価できます。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019

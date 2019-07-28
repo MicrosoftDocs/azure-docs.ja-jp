@@ -3,7 +3,7 @@ title: Azure Network Watcher を使用したネットワーク セキュリテ�
 description: このページでは、PowerShell を使用して Azure Network Watcher でネットワーク セキュリティ グループのフローのログを管理する方法を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: 2dfc3112-8294-4357-b2f8-f81840da67d3

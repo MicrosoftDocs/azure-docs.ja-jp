@@ -3,7 +3,7 @@ title: ユーザー データをエクスポートまたは削除する - Conten
 titlesuffix: Azure Cognitive Services
 description: Content Moderator のデータをエクスポートまたは削除する方法について説明します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator

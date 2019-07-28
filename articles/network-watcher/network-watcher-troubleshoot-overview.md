@@ -3,7 +3,7 @@ title: Azure Network Watcher のリソース トラブルシューティング�
 description: このページでは、Network Watcher のリソース トラブルシューティング機能の概要を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: c1145cd6-d1cf-4770-b1cc-eaf0464cc315

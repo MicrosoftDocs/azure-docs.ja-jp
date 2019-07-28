@@ -3,7 +3,7 @@ title: API リファレンス - Face API
 titleSuffix: Azure Cognitive Services
 description: API リファレンスでは、Person、LargePersonGroup/PersonGroup、LargeFaceList/FaceList、Face アルゴリズム API に関する情報を説明します。
 services: cognitive-services
-author: SteveMSFT
+author: stevemsft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api

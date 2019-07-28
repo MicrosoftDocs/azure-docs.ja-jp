@@ -3,7 +3,7 @@ title: Linux 仮想マシンにおける SAP の使用 | Microsoft Docs
 description: Microsoft Azure での Linux 仮想マシン (VM) における SAP の使用について説明します
 services: virtual-machines-linux,virtual-network,storage
 documentationcenter: saponazure
-author: MSSedusch
+author: mssedusch
 manager: gwallace
 editor: ''
 tags: azure-service-management

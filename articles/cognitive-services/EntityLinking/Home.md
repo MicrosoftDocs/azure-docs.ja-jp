@@ -3,7 +3,7 @@ title: Entity Linking Intelligence Service API の概要
 titlesuffix: Azure Cognitive Services
 description: エンティティ リンク設定タスクで、Entity Linking Intelligence Service API を使用する方法を説明します。
 services: cognitive-services
-author: DavidLiCIG
+author: davidlicig
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: entity-linking-intelligence

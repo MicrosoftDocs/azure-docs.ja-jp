@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager のバックアップ ポリシー | Microsof
 description: StorSimple Snapshot Manager MMC スナップインを使用して、スケジュールされたバックアップを管理するバックアップ ポリシーを作成し、管理する方法について説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: shars
 manager: timlt
 editor: ''
 ms.assetid: 04415d0b-42f0-4737-8afa-257fb2dbe5d0

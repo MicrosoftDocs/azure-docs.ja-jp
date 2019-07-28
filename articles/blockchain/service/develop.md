@@ -3,7 +3,7 @@ title: Azure Blockchain Service の開発の概要
 description: Azure Blockchain Service でのソリューションの開発の概要です。
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/02/2019
 ms.topic: article

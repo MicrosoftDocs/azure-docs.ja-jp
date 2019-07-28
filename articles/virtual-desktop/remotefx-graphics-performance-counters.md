@@ -2,7 +2,7 @@
 title: リモート デスクトップでグラフィックスのパフォーマンスの問題を診断する - Azure
 description: この記事では、リモート デスクトップ プロトコル セッションで RemoteFX グラフィックス カウンターを使用して、Windows Virtual Desktop のグラフィックスに関するパフォーマンスの問題を診断する方法について説明します。
 services: virtual-desktop
-author: ChJenk
+author: chjenk
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019

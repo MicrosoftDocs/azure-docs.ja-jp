@@ -3,7 +3,7 @@ title: RDP を使用して Azure VM に接続するときの認証エラーの�
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
-author: Deland-Han
+author: deland-han
 manager: cshepard
 editor: ''
 tags: ''

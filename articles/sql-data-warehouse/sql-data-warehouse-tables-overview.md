@@ -2,7 +2,7 @@
 title: テーブルの設計 - Azure SQL Data Warehouse | Microsoft Docs
 description: Azure SQL Data Warehouse でのテーブル設計の概要。
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: xiaoyumsft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

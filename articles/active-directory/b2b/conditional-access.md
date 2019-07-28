@@ -3,7 +3,7 @@ title: B2B コラボレーション ユーザーの条件付きアクセス - Az
 description: Azure Active Directory B2B コラボレーションでは、会社のアプリケーションへの選択的なアクセスのために、多要素認証 (MFA) をサポートしています
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mimart

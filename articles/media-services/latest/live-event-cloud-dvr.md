@@ -3,7 +3,7 @@ title: Azure Media Services のライブ イベントとクラウド DVR | Micro
 description: この記事では、ライブ出力の概要とクラウド DVR の使用方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

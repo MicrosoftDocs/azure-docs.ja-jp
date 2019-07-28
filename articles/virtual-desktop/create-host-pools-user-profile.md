@@ -2,7 +2,7 @@
 title: Windows Virtual Desktop プレビュー ホスト プールのユーザー プロファイル共有を設定する - Azure
 description: Windows Virtual Desktop プレビュー ホスト プールの FSLogix プロファイル コンテナーを設定する方法。
 services: virtual-desktop
-author: Heidilohr
+author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/05/2019

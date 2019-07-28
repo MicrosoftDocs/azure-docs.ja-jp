@@ -1,8 +1,8 @@
 ---
 title: Azure のネットワーク セキュリティの要約
 description: Azure のネットワーク セキュリティのホワイト ペーパーの要約。
-author: TomShinder
-ms.author: TomSh
+author: tomshinder
+ms.author: tomsh
 ms.date: 08/08/2018
 ms.topic: article
 ms.service: security

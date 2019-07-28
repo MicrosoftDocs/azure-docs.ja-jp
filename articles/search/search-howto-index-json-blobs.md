@@ -2,7 +2,7 @@
 title: Azure Blob インデクサーから JSON BLOB のインデックスを作成する - Azure Search
 description: Azure Search Blob インデクサーを使用してテキスト コンテンツのために Azure JSON BLOB をクロールします。 インデクサーにより、選択したデータ ソース (Azure Blob Storage など) のデータ インジェストが自動化されます。
 ms.date: 05/02/2019
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 ms.author: heidist
 services: search

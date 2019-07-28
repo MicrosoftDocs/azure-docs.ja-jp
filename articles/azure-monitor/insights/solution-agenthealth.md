@@ -3,7 +3,7 @@ title: Azure Monitor における Agent Health ソリューション | Microsoft
 description: この記事の目的は、Log Analytics または System Center Operations Manager に対して直接報告を行うエージェントの正常性を Agent Health ソリューションで監視する方法についてわかりやすく説明することです。
 services: operations-management-suite
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''

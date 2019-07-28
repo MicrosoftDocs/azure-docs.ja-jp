@@ -3,7 +3,7 @@ title: Linux VM のシステム割り当てマネージド ID を使用して Az
 description: Linux VM のシステム割り当てマネージド ID を使用して Azure Resource Manager にアクセスするプロセスについて説明するクイック スタートです。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: bryanla
 ms.service: active-directory

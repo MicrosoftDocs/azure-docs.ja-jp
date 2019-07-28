@@ -3,7 +3,7 @@ title: Linux VM デプロイのトラブルシューティング | Microsoft Doc
 description: Azure で新しい Linux 仮想マシンを作成するときに発生する Resource Manager デプロイメントの問題のトラブルシューティング
 services: virtual-machines-linux, azure-resource-manager
 documentationcenter: ''
-author: JiangChen79
+author: jiangchen79
 manager: gwallace
 editor: ''
 tags: top-support-issue, azure-resource-manager

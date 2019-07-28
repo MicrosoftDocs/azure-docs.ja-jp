@@ -3,7 +3,7 @@ title: リモート ツールを使用して Azure VM の問題をトラブル�
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
-author: Deland-Han
+author: deland-han
 manager: cshepard
 editor: ''
 tags: ''

@@ -3,7 +3,7 @@ title: Azure Application Insights でのユーザー、セッション、イベ�
 description: Web アプリのユーザーの統計分析について説明します。
 services: application-insights
 documentationcenter: ''
-author: NumberByColors
+author: numberbycolors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd

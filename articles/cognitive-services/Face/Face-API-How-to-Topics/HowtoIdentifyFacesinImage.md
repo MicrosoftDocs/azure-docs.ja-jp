@@ -3,7 +3,7 @@ title: 例:画像内の顔を識別する - Face API
 titleSuffix: Azure Cognitive Services
 description: Face API を使用して画像内の顔を識別します。
 services: cognitive-services
-author: SteveMSFT
+author: stevemsft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api

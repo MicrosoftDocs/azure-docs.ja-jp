@@ -3,7 +3,7 @@ title: Microsoft Trust Center および Azure セキュリティ情報 | Microso
 description: Microsoft Trust Center は、サービスを実行する Azure プラットフォームが安全であることを確信できるために必要な情報を提供します。
 services: security
 documentationcenter: na
-author: TomShinder
+author: tomshinder
 manager: barbkess
 editor: TomSh
 ms.assetid: 0b94f9a3-8648-4860-812c-be689b0b327b

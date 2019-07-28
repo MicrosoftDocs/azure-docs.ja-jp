@@ -1,7 +1,7 @@
 ---
 title: Azure データ カタログを作成する
 description: Azure Data Catalog を作成する方法についてのクイック スタート。
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart

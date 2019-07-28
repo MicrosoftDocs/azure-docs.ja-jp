@@ -3,7 +3,7 @@ title: Azure Active Directory レポートの待機時間 | Microsoft ドキュ�
 description: Azure Portal にレポート イベントが表示されるのにかかる時間について学習します
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: 9b88958d-94a2-4f4b-a18c-616f0617a24e

@@ -3,7 +3,7 @@ title: Azure Custom Vision とは
 titlesuffix: Azure Cognitive Services
 description: Custom Vision サービスを使用して、Azure クラウド内にカスタム画像分類器を構築する方法について説明します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision

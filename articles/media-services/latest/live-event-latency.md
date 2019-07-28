@@ -3,7 +3,7 @@ title: Azure Media Services 内の LiveEvent の待機時間 | Microsoft Docs
 description: このトピックでは、LiveEvent の待機時間の概要を説明し、低待機時間を設定する方法を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

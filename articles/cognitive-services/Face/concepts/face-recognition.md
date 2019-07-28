@@ -3,7 +3,7 @@ title: 顔認識の概念
 titleSuffix: Azure Cognitive Services
 description: 顔認識に関する概念について説明します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitime
 ms.service: cognitive-services
 ms.subservice: face-api

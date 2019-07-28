@@ -7,7 +7,7 @@ ms.subservice: devices
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: joflore
-author: MicrosoftGuyJFlo
+author: microsoftguyjflo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management

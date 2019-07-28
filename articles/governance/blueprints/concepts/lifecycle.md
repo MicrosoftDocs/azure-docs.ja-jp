@@ -1,7 +1,7 @@
 ---
 title: ブループリントのライフサイクルの概要
 description: ブループリントが経過するライフサイクルと各ステージの詳細について説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 02/01/2019
 ms.topic: conceptual

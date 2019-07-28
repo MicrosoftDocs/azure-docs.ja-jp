@@ -3,7 +3,7 @@ title: Storage Explorer を使用して Azure Blob Storage リソースを管理
 description: Storage Explorer を使用して Azure BLOB コンテナーと BLOB を管理する
 services: storage
 documentationcenter: na
-author: cawaMS
+author: cawams
 manager: paulyuk
 editor: ''
 ms.assetid: 2f09e545-ec94-4d89-b96c-14783cc9d7a9

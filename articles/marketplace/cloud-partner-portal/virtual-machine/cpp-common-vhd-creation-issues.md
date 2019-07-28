@@ -2,7 +2,7 @@
 title: Azure Marketplace の VHD 作成における一般的な問題 (FAQ)
 description: VHD 作成と関連する問題に関してよく寄せられる質問。
 services: Azure Marketplace
-author: HannibalSII
+author: hannibalsii
 ms.service: marketplace
 ms.topic: article
 ms.date: 10/02/2018

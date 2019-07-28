@@ -3,7 +3,7 @@ title: .NET SDK を使用して資産配信ポリシーを構成する | Microso
 description: このトピックでは、Azure Media Services .NET SDK を利用し、さまざまな資産配信ポリシーを構成する方法を示します。
 services: media-services
 documentationcenter: ''
-author: Mingfeiy
+author: mingfeiy
 manager: femila
 editor: ''
 ms.assetid: 3ec46f58-6cbb-4d49-bac6-1fd01a5a456b

@@ -3,7 +3,7 @@ title: Azure Media Services テレメトリ | Microsoft Docs
 description: この記事では、Azure Media Services テレメトリの概要を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: 95c20ec4-c782-4063-8042-b79f95741d28

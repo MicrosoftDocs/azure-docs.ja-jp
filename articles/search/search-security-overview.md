@@ -1,7 +1,7 @@
 ---
 title: セキュリティとデータ プライバシー - Azure Search
 description: Azure Search は、SOC 2、HIPAA、およびその他の認定に準拠しています。 接続とデータの暗号化、認証、および ID は、Azure Search フィルターのユーザーとグループのセキュリティ識別子を介してアクセスします。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 services: search
 ms.service: search

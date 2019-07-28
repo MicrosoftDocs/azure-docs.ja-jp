@@ -3,7 +3,7 @@ title: Azure Web アプリケーション ファイアウォール - よく寄�
 description: このページでは、Azure Front Door Service に関してよく寄せられる質問の回答を示します
 services: frontdoor
 documentationcenter: ''
-author: KumudD
+author: kumudd
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article

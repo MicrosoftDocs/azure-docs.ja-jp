@@ -3,7 +3,7 @@ title: Video Indexer にサインアップして最初のビデオをアップ�
 titlesuffix: Azure Media Services
 description: Video Indexer ポータルを使用して、サインアップと最初のビデオのアップロードを行う方法について説明します。
 services: media-services
-author: Juliako
+author: juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer

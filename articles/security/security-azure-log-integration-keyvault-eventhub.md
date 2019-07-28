@@ -9,7 +9,7 @@ ms.assetid: ''
 ms.service: security
 ms.topic: article
 ms.date: 05/28/2019
-ms.author: Barclayn
+ms.author: barclayn
 ms.custom: AzLog
 ms.openlocfilehash: 5614cc6fa01ddd10d670fdf429051a8e024550fc
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada

@@ -1,7 +1,7 @@
 ---
 title: 高度なクエリのサンプル
 description: Azure Resource Graph を使用して、VMSS の容量、使用されているすべてのタグの一覧、正規表現と一致する仮想マシンなど、高度なクエリを実行します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 01/23/2019
 ms.topic: quickstart

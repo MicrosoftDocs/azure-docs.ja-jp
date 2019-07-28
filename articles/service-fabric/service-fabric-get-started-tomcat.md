@@ -3,7 +3,7 @@ title: Linux 上で Apache Tomcat サーバー用の Azure Service Fabric コン
 description: Linux コンテナーを作成して、Azure Service Fabric で Apache Tomcat サーバー上で実行しているアプリケーションを公開します。 ご利用のアプリケーションと Apache Tomcat サーバーを使用して Docker イメージを構築し、そのイメージをコンテナー レジストリにプッシュし、Service Fabric コンテナー アプリケーションをビルドおよびデプロイします。
 services: service-fabric
 documentationcenter: .net
-author: JimacoMS2
+author: jimacoms2
 manager: chackdan
 editor: ''
 ms.assetid: ''

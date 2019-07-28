@@ -1,7 +1,7 @@
 ---
 title: サンプル - タグとその値を強制
 description: このサンプル ポリシー定義は、タグの名前と値がそれぞれパラメーターとして設定されていることを要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

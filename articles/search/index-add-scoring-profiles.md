@@ -5,7 +5,7 @@ ms.date: 05/02/2019
 services: search
 ms.service: search
 ms.topic: conceptual
-author: Brjohnstmsft
+author: brjohnstmsft
 ms.author: brjohnst
 ms.manager: cgronlun
 translation.priority.mt:

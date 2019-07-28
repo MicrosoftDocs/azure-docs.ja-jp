@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: この記事では、Azure CLI を使用して Azure 仮想ネットワーク内に IPv6 デュアル スタック アプリケーションをデプロイする方法を説明します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 ms.service: virtual-network
 ms.devlang: na

@@ -3,7 +3,7 @@ title: 'Azure Status Monitor v2 API リファレンス: トレースの開始 | 
 description: Status Monitor v2 API リファレンス。 トレースの開始。 Status Monitor と Application Insights SDK から ETW のログを収集します。
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: ms-timothymothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights

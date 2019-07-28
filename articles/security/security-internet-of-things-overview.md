@@ -3,7 +3,7 @@ title: Azure IoT (モノのインターネット) のセキュリティ保護 | 
 description: " Azure IoT (モノのインターネット) サービスには、さまざまな機能が用意されています。 この記事では、Azure の IoT ソリューションをセキュリティで保護する方法について説明します。 "
 services: security
 documentationcenter: na
-author: TomShinder
+author: tomshinder
 manager: barbkess
 editor: TomSh
 ms.assetid: 1473c8dd-8669-48fb-86db-b3c50e2eaf59

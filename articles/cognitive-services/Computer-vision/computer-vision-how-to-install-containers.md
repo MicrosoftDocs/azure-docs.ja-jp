@@ -3,7 +3,7 @@ title: コンテナーをインストールして実行する方法 - Computer V
 titlesuffix: Azure Cognitive Services
 description: このチュートリアルでの Computer Vision のコンテナーのダウンロード、インストール、および実行方法。
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

@@ -7,7 +7,7 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: sachinpMSFT
+author: sachinpmsft
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 manager: craigg

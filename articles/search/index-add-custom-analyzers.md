@@ -5,7 +5,7 @@ ms.date: 02/14/2019
 services: search
 ms.service: search
 ms.topic: conceptual
-author: Yahnoosh
+author: yahnoosh
 ms.author: jlembicz
 ms.manager: cgronlun
 translation.priority.mt:

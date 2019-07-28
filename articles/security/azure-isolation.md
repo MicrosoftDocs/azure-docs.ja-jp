@@ -3,7 +3,7 @@ title: Azure Public Cloud での分離 | Microsoft Docs
 description: クラウドベースのコンピューティング サービスについて学びます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。
 services: security
 documentationcenter: na
-author: UnifyCloud
+author: unifycloud
 manager: barbkess
 editor: TomSh
 ms.assetid: ''
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
-ms.author: TomSh
+ms.author: tomsh
 ms.openlocfilehash: b8142551d9c20c18d83c256b3f07a0deb291577c
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT

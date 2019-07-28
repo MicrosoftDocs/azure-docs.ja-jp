@@ -2,7 +2,7 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: ''
-author: KumudD
+author: kumudd
 ms.service: ''
 ms.topic: include
 ms.date: 05/09/2019

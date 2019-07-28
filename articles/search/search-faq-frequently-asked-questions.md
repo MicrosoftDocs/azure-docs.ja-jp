@@ -1,7 +1,7 @@
 ---
 title: よく寄せられる質問 (FAQ) - Azure Search
 description: Microsoft Azure のホスト型クラウド検索サービスである、Microsoft Azure Search Service についてよく寄せられる質問とその回答が掲載されています。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 services: search
 ms.service: search

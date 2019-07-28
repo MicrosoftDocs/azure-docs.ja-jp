@@ -3,7 +3,7 @@ title: B2B コラボレーションのトラブルシューティング - Azure 
 description: Azure Active Directory B2B コラボレーションの一般的な問題の対処方法
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: mimart

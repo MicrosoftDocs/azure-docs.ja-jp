@@ -3,7 +3,7 @@ title: Azure Application Insights のファネル
 description: ファネルを使って、顧客によるアプリケーションの操作状況を把握する方法を説明します。
 services: application-insights
 documentationcenter: ''
-author: NumberByColors
+author: numberbycolors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd

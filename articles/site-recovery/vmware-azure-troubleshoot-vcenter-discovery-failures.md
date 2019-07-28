@@ -1,7 +1,7 @@
 ---
 title: Azure Site Recovery を使用した VMware VM の Azure へのディザスター リカバリー時のオンプレミスへのフェールバックのトラブルシューティング | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用して VMware VM を Azure にディザスター リカバリーするときのフェールバックと再保護の問題をトラブルシューティングする方法について説明します。
-author: vDonGlover
+author: vdonglover
 manager: JarrettRenshaw
 ms.service: site-recovery
 ms.topic: conceptual

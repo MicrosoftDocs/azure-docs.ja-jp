@@ -2,7 +2,7 @@
 title: Azure Data Catalog で関連するデータ資産を表示する方法
 description: この記事では、Azure Data Catalog で選択したデータ資産に関連するデータ資産を表示する方法について説明します。
 services: data-catalog
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual

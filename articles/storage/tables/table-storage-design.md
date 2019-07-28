@@ -2,7 +2,7 @@
 title: Azure テーブル ストレージでスケーラビリティとパフォーマンスに優れたテーブルを設計する | Microsoft Docs
 description: Azure テーブル ストレージでスケーラビリティとパフォーマンスに優れたテーブルを設計する
 services: storage
-author: SnehaGunda
+author: snehagunda
 ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018

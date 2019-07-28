@@ -3,7 +3,7 @@ title: Reliable Services の WCF 通信スタック | Microsoft Docs
 description: Service Fabric の組み込み WCF 通信スタックは、Reliable Services にクライアント サービス WCF 通信を提供します。
 services: service-fabric
 documentationcenter: .net
-author: BharatNarasimman
+author: bharatnarasimman
 manager: chackdan
 editor: vturecek
 ms.assetid: 75516e1e-ee57-4bc7-95fe-71ec42d452b2

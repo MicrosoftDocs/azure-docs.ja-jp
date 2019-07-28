@@ -3,7 +3,7 @@ title: Azure PowerShell での SQL Server 仮想マシンの作成 (クラシッ
 description: SQL Server 仮想マシン ギャラリー のイメージを使用して Azure VM を作成するための手順と PowerShell スクリプトを提供します。 このトピックでは、クラシック デプロイメント モードを使用します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 tags: azure-service-management
 ms.assetid: b73be387-9323-4e08-be53-6e5928e3786e

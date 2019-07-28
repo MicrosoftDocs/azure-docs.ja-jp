@@ -2,7 +2,7 @@
 title: チュートリアル:Azure Database Migration Service を使用して、Azure SQL Database または Azure SQL Database マネージド インスタンスへの RDS SQL Server のオンライン移行を行う | Microsoft Docs
 description: Azure Database Migration Service を使用して、RDS SQL Server から Azure SQL Database または Azure SQL Database マネージド インスタンスへのオンライン移行を実行する方法について学習します。
 services: dms
-author: HJToland3
+author: hjtoland3
 ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg

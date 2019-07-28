@@ -3,7 +3,7 @@ title: Azure における SQL Server のセキュリティに関する考慮事�
 description: このトピックでは、Azure の仮想マシンで実行されている SQL Server をセキュリティで保護するための一般的なガイダンスを示します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 editor: ''
 tags: azure-service-management

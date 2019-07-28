@@ -3,7 +3,7 @@ title: Azure CLI スクリプト サンプル - 高可用性アプリケーシ�
 description: Azure CLI スクリプト サンプル - 高可用性アプリケーションのためのトラフィックのルーティング
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
+author: kumudd
 manager: timlt
 editor: tysonn
 tags: azure-infrastructure

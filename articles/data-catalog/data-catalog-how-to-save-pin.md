@@ -2,7 +2,7 @@
 title: Azure Data Catalog での検索条件の保存とデータ資産のピン留め
 description: データ ソースとデータ資産を後で使用できるように保存する Azure Data Catalog の機能を説明する、操作方法に関する記事。
 services: data-catalog
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.assetid: 6bd00a81-820d-4b7c-91fa-ab09e575474c
 ms.service: data-catalog

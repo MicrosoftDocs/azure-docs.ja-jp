@@ -3,7 +3,7 @@ title: Porlicy のサンプル テンプレート | Microsoft Docs
 description: 仮想ネットワーク用の Azure Policy のサンプル テンプレート。
 services: virtual-network
 documentationcenter: ''
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: ''

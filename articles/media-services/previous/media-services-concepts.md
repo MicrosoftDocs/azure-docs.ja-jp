@@ -3,7 +3,7 @@ title: Azure Media Services の概念 | Microsoft Docs
 description: このトピックでは、Azure Media Services の概念の概要を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

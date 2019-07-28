@@ -1,8 +1,8 @@
 ---
 title: 要約 - Azure で運用可能なセキュリティ
 description: ホワイト ペーパー「Azure Operational Security (Azure で運用可能なセキュリティ)」の要約。
-author: TomShinder
-ms.author: TomSh
+author: tomshinder
+ms.author: tomsh
 ms.date: 09/05/2018
 ms.topic: article
 ms.service: security

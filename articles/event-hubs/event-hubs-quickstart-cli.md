@@ -2,7 +2,7 @@
 title: Azure CLI を使用したイベント ハブの作成 - Azure Event Hubs | Microsoft Docs
 description: このクイック スタートでは、Azure CLI を使用してイベント ハブを作成したうえで、Java を使用してイベントの送受信を行う方法について説明します。
 services: event-hubs
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: java

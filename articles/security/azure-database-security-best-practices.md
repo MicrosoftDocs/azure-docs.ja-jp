@@ -3,7 +3,7 @@ title: データベース セキュリティに関するベスト プラクテ�
 description: この記事では、Azure のデータベース セキュリティに関するベスト プラクティス一式を提供します。
 services: security
 documentationcenter: na
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: tomsh
 ms.assetid: ''

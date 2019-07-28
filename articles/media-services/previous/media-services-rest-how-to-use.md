@@ -3,7 +3,7 @@ title: Media Services Operations REST API の概要 | Microsoft Docs
 description: Media Services REST API の概要
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: a5f1c5e7-ec52-4e26-9a44-d9ea699f68d9

@@ -2,7 +2,7 @@
 title: データの変更に対応するように Azure ストレージ テーブルを設計する | Microsoft Docs
 description: Azure テーブル ストレージのデータ変更に対応するようにテーブルを設計します。
 services: storage
-author: MarkMcGeeAtAquent
+author: markmcgeeataquent
 ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018

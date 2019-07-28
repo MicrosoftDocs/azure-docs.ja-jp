@@ -7,7 +7,7 @@ ms.subservice: compliance
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: joflore
-author: MicrosoftGuyJFlo
+author: microsoftguyjflo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management

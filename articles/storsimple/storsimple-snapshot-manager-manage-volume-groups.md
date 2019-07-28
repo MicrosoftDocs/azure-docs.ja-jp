@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager のボリューム グループ | Microsoft D
 description: StorSimple Snapshot Manager MMC スナップインを使用して、ボリューム グループを作成および管理する方法について説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: shars
 manager: carmonm
 editor: ''
 ms.assetid: 7a232414-6a28-4b81-bd7b-cf61e28b33d7

@@ -2,7 +2,7 @@
 title: Azure Search インデックスの再構築または検索可能なコンテンツの更新 - Azure Search
 description: 完全に再構築された、または一部増分インデックスに新しい要素を追加、既存の要素またはドキュメントを更新、または古いドキュメントを削除して、Azure Search インデックスを更新します。
 services: search
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 ms.service: search
 ms.topic: conceptual

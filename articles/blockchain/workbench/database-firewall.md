@@ -3,7 +3,7 @@ title: Azure Blockchain Workbench SQL DB ファイアウォールを構成する
 description: Azure Blockchain Workbench SQL DB ファイアウォールを構成する方法を説明します。
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/09/2019
 ms.topic: article

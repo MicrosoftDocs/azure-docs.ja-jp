@@ -3,7 +3,7 @@ title: コード サンプル - Content Moderator (C#)
 titlesuffix: Azure Cognitive Services
 description: アプリケーションから REST API 呼び出しを通じて Content Moderator を使用します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator

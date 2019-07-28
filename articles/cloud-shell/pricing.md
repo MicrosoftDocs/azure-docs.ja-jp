@@ -3,7 +3,7 @@ title: Azure Cloud Shell の価格 | Microsoft Docs
 description: Azure Cloud Shell の価格の概要
 services: ''
 documentationcenter: ''
-author: maertendMSFT
+author: maertendmsft
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''

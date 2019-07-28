@@ -3,7 +3,7 @@ title: Azure Blockchain Workbench のデータベース ビュー
 description: Azure Blockchain Workbench SQL DB データベース ビューの概要を説明します。
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/28/2019
 ms.topic: article

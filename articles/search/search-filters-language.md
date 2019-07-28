@@ -1,7 +1,7 @@
 ---
 title: 検索ボックスでの多言語対応コンテンツの言語フィルター処理 - Azure Search
 description: クエリ実行の範囲を言語固有のフィールドに設定して、多言語検索をサポートするための条件をフィルター処理します。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 services: search
 ms.service: search

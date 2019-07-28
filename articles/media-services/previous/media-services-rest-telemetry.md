@@ -3,7 +3,7 @@ title: REST での Azure Media Services テレメトリの構成 | Microsoft Doc
 description: この記事では、REST API を使用して Azure Media Services テレメトリを使用する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: e1a314fb-cc05-4a82-a41b-d1c9888aab09

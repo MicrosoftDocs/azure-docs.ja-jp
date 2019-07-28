@@ -2,7 +2,7 @@
 title: Azure Search サービスとは - Azure Search
 description: Azure Search は、Microsoft が提供するフルマネージド ホストのクラウド検索サービスです。 機能の説明、開発ワークフロー、Azure Search と Microsoft の他の検索製品との比較、および開始する方法を確認します。
 manager: cgronlun
-author: HeidiSteen
+author: heidisteen
 services: search
 ms.service: search
 ms.topic: overview

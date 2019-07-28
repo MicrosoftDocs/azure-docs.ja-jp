@@ -3,7 +3,7 @@ title: Azure PowerShell でネットワーク トラフィックをルーティ�
 description: この記事では、PowerShell を使用してルート テーブルでネットワーク トラフィックをルーティングする方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

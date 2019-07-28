@@ -3,7 +3,7 @@ title: Azure Blockchain Workbench データベースに関する詳細の取得
 description: Azure Blockchain Workbench データベースおよびデータベース サーバーに関する情報の取得方法を説明しています。
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/09/2019
 ms.topic: article

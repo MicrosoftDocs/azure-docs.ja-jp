@@ -2,7 +2,7 @@
 title: Azure SQL Data Warehouse の開発のベスト プラクティス | Microsoft Docs
 description: Azure SQL Data Warehouse のソリューションを開発する際に知っておく必要がある推奨事項とベスト プラクティス。
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: xiaoyumsft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

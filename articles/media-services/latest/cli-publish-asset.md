@@ -3,7 +3,7 @@ title: Azure CLI のサンプル スクリプト - 資産の公開 | Microsoft D
 description: Azure CLI スクリプトを使用して資産を公開します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: ''

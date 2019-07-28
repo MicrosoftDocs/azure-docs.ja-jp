@@ -1,7 +1,7 @@
 ---
 title: 'サンプル: ユーザー定義ルート テーブルがない'
 description: このサンプル ポリシー定義は、仮想ネットワークがユーザー定義のルート テーブルを使ってデプロイされることを禁止します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

@@ -3,7 +3,7 @@ title: Azure リソースのマネージド ID 使用して VM を構成する�
 description: Azure SDK を使用して、Azure VM で Azure リソースのマネージド ID を構成および使用するため手順について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.service: active-directory

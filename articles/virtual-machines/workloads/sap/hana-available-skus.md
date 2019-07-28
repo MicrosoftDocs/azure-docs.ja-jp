@@ -3,7 +3,7 @@ title: SAP HANA on Azure (L インスタンス) の SKU | Microsoft Docs
 description: SAP HANA on Azure (L インスタンス) のSKU。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
+author: rickstercdn
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux

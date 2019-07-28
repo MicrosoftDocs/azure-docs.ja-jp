@@ -3,7 +3,7 @@ title: 言語サポート - Computer Vision
 titleSuffix: Azure Cognitive Services
 description: Computer Vision 機能でサポートされる自然言語の一覧。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

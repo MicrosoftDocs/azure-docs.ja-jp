@@ -3,7 +3,7 @@ title: チュートリアル - Azure Active Directory ログを Azure イベン�
 description: Azure Active Directory のログをイベント ハブにプッシュするよう Azure Diagnostics を設定する方法について説明します
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: 045f94b3-6f12-407a-8e9c-ed13ae7b43a3

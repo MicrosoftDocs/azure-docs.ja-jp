@@ -2,7 +2,7 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: search
-author: HeidiSteen
+author: heidisteen
 ms.service: search
 ms.topic: include
 ms.date: 05/06/2019

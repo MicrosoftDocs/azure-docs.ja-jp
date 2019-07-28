@@ -3,7 +3,7 @@ title: JavaScript を使用して Azure で最初の Durable Functions を作成
 description: Visual Studio Code を使用して Azure Durable Functions を作成して発行します。
 services: functions
 documentationcenter: na
-author: ColbyTresness
+author: colbytresness
 manager: jeconnoc
 keywords: Azure Functions, 関数, イベント処理, コンピューティング, サーバーなしのアーキテクチャ
 ms.service: azure-functions

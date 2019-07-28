@@ -3,7 +3,7 @@ title: castLabs を使用して Azure Media Services に Widevine ライセン�
 description: この記事では、PlayReady と Widevine DRM の両方を使用して AMS で動的に暗号化されたストリームを、Azure Media Services (AMS) を使用して配信する方法について説明します。 PlayReady ライセンスは Media Services PlayReady サーバーから取得し、Widevine ライセンスは castLabs ライセンス サーバーから取得します。
 services: media-services
 documentationcenter: ''
-author: Mingfeiy
+author: mingfeiy
 manager: femila
 editor: ''
 ms.assetid: 2a9a408a-a995-49e1-8d8f-ac5b51e17d40
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: Mingfeiy;willzhan;Juliako
+ms.author: mingfeiy;willzhan;juliako
 ms.openlocfilehash: dfb82e91b0f65b85d34b7e20d57ed9929469321f
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT

@@ -3,7 +3,7 @@ title: メッセージングの例外 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs メッセージングの例外と推奨アクションの一覧を示します。
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na

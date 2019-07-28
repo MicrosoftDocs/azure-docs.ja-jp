@@ -1,7 +1,7 @@
 ---
 title: Azure Data Catalog のよく寄せられる質問
 description: データ ソースの検出、注釈、管理など、Azure Data Catalog についてのよく寄せられる質問です。
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual

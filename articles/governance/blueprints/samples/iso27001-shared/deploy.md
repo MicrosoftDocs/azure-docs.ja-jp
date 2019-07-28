@@ -1,7 +1,7 @@
 ---
 title: サンプル - ISO 27001 共有サービスのブループリント - デプロイ手順
 description: ISO 27001 共有サービスのブループリント サンプルのデプロイ手順。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample

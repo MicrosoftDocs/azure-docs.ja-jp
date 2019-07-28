@@ -3,7 +3,7 @@ title: 画像の種類の検出 - Computer Vision
 titleSuffix: Azure Cognitive Services
 description: Computer Vision API の画像の種類の検出機能に関連する概念。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

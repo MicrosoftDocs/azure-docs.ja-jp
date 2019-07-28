@@ -3,7 +3,7 @@ title: パケット キャプチャを使用してアラートと Azure Function
 description: この記事では、Azure Network Watcher を使用して、アラートでトリガーされるパケット キャプチャを作成する方法について説明します
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11

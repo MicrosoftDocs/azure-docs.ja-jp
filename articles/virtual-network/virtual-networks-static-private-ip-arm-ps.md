@@ -3,7 +3,7 @@ title: 静的プライベート IP アドレスを持つ VM を作成する - Az
 description: PowerShell を使用してプライベート IP アドレスを持つ仮想マシンを作成する方法を説明します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

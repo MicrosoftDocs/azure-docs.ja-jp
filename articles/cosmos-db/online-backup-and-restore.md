@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB での自動オンライン バックアップとオンデマンドのデータ復元
 description: この記事では、Azure Cosmos DB での自動オンライン バックアップとオンデマンドのデータ復元が動作するしくみを説明します。
-author: kanshiG
+author: kanshig
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019

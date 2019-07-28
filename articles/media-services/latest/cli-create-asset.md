@@ -3,7 +3,7 @@ title: Azure CLI スクリプトの例 - Azure Media Services 資産を作成す
 description: このトピックの Azure CLI スクリプトは、コンテンツのアップロード先の Media Services 資産を作成する方法を示しています。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: ''

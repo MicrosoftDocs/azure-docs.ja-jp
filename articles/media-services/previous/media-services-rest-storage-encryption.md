@@ -3,7 +3,7 @@ title: AMS REST API を使用したストレージ暗号化によるコンテン
 description: AMS REST API を使用したストレージ暗号化によるコンテンツの暗号化について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: a0a79f3d-76a1-4994-9202-59b91a2230e0

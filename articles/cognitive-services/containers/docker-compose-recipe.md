@@ -3,7 +3,7 @@ title: Docker Compose コンテナーのレシピ
 titleSuffix: Azure Cognitive Services
 description: 複数の Cognitive Services コンテナーをデプロイする方法について説明します。 この手順では、Docker Compose を使用して複数の Docker コンテナー イメージを調整する方法について説明します。
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services

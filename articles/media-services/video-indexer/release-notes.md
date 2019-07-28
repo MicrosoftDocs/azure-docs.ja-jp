@@ -3,7 +3,7 @@ title: Azure Media Services Video Indexer リリース ノート | Microsoft Doc
 description: 常に最新の開発情報を把握していただけるよう、この記事では Azure Media Services Video Indexer の最新の更新情報を提供します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

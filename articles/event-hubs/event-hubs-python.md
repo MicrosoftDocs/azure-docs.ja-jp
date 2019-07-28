@@ -4,7 +4,7 @@ description: Python を使用して、Event Hubs にイベントを送信する�
 keywords: ''
 documentationcenter: ''
 services: event-hubs
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: ''
 editor: ''
 ms.assetid: ''

@@ -2,7 +2,7 @@
 title: SQL Data Warehouse データ統合パートナー | Microsoft Docs
 description: Azure SQL Data Warehouse をサポートするデータ統合ソリューションを提供するサードパーティのパートナーの一覧。
 services: sql-data-warehouse
-author: mabasile-MSFT
+author: mabasile-msft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

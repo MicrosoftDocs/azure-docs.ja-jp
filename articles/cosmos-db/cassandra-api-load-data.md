@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:Java アプリケーションを使用して Azure Cosmos DB 内の Cassandra API テーブルにサンプル データを読み込む
 description: このチュートリアルでは、Java アプリケーションを使用して Azure Cosmos DB 内の Cassandra API テーブルにサンプル ユーザー データを読み込む方法を示します。
-author: kanshiG
+author: kanshig
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial

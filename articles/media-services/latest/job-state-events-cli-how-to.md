@@ -3,7 +3,7 @@ title: CLI を使用した Event Grid による Azure Media Services イベン�
 description: この記事では、Azure Media Services イベントを監視するために Event Grid をサブスクライブする方法を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

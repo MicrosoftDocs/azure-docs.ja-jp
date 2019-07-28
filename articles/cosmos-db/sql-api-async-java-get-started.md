@@ -1,7 +1,7 @@
 ---
 title: 'チュートリアル: Async Java SDK を使って Java アプリを構築し Azure Cosmos DB の SQL API アカウントを管理する'
 description: このチュートリアルでは、Async Java アプリケーションを使用して、Azure Cosmos DB の SQL API アカウント内にデータを格納し、そのデータにアクセスする方法を示します。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java

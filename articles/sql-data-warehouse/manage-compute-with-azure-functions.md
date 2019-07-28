@@ -2,7 +2,7 @@
 title: チュートリアル:Azure SQL Data Warehouse で Azure Functions を使用してコンピーティングを管理する| Microsoft Docs
 description: Azure Functions を使用してデータ ウェアハウスのコンピューティングを管理する方法。
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: kavithajonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

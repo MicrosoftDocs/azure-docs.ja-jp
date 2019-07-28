@@ -3,7 +3,7 @@ title: Azure Network Watcher のインスタンスの作成 | Microsoft Docs
 description: Azure リージョンで Network Watcher を有効にする方法について説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: b1314119-0b87-4f4d-b44c-2c4d0547fb76

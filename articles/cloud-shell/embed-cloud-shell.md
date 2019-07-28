@@ -3,7 +3,7 @@ title: Azure Cloud Shell の埋め込み | Microsoft Docs
 description: Azure Cloud Shell を埋め込む方法について説明します。
 services: cloud-shell
 documentationcenter: ''
-author: maertendMSFT
+author: maertendmsft
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''

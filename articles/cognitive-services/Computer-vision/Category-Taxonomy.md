@@ -3,7 +3,7 @@ title: 画像のカテゴリの分類 - Computer Vision
 titlesuffix: Azure Cognitive Services
 description: Azure Cognitive Services で Computer Vision API の 86 カテゴリの分類を取得します。
 services: cognitive-services
-author: KellyDF
+author: kellydf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

@@ -3,7 +3,7 @@ title: Azure CLI スクリプト サンプル - 2 つの仮想ネットワーク
 description: Azure CLI スクリプト サンプル - 2 つの仮想ネットワークのピアリング
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: kumudd
 manager: timlt
 editor: tysonn
 tags: ''

@@ -3,7 +3,7 @@ title: 'トラブルシューティング: Azure Active Directory アクティ�
 description: Azure Active Directory アクティビティ ログにデータが見つからない問題の解決策を提供します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: 7cbe4337-bb77-4ee0-b254-3e368be06db7

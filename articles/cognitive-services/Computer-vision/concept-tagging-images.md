@@ -3,7 +3,7 @@ title: コンテンツ タグを画像に適用する - Computer Vision
 titleSuffix: Azure Cognitive Services
 description: Computer Vision API の画像タグ付け機能に関連する概念について説明します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

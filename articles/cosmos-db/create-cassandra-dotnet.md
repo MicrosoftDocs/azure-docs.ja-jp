@@ -3,7 +3,7 @@ title: 'クイック スタート: Cassandra API と .NET - Azure Cosmos DB'
 description: このクイックスタートでは、Azure Cosmos DB の Cassandra API を使用して、Azure Portal と .NET でプロファイル アプリケーションを作成する方法を示します。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-author: SnehaGunda
+author: snehagunda
 ms.author: sngun
 ms.devlang: dotnet
 ms.topic: quickstart

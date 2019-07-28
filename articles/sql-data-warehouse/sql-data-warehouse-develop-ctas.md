@@ -2,7 +2,7 @@
 title: Azure SQL Data Warehouse での CREATE TABLE AS SELECT (CTAS) | Microsoft Docs
 description: ソリューションを開発するための、Azure SQL Data Warehouse での CREATE TABLE AS SELECT (CTAS) ステートメントに関する説明と例。
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: xiaoyumsft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

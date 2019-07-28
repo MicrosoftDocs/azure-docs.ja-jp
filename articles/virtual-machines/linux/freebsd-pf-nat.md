@@ -3,7 +3,7 @@ title: FreeBSD のパケット フィルターを使用してAzure 内にファ�
 description: FreeBSD の PF を使用して NAT ファイアウォールを Azure にデプロイする方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: KylieLiang
+author: kylieliang
 manager: gwallace
 editor: ''
 tags: azure-resource-manager

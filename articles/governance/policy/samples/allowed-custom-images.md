@@ -1,7 +1,7 @@
 ---
 title: サンプル - 承認された VM イメージ
 description: このサンプル ポリシー定義は、承認されたカスタム イメージのみが環境にデプロイされることを要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

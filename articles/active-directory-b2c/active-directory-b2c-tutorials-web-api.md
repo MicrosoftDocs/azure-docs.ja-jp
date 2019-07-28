@@ -9,7 +9,7 @@ ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
-ms.subservice: B2C
+ms.subservice: b2c
 ms.openlocfilehash: 339b118e48a01469312a40e6b0652a4ffb90291a
 ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
 ms.translationtype: HT

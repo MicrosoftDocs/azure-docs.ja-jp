@@ -3,7 +3,7 @@ title: Azure CLI を使用して Azure Blockchain Service を管理する
 description: Azure CLI を使用して Azure Blockchain Service を作成および管理する方法
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/02/2019
 ms.topic: article

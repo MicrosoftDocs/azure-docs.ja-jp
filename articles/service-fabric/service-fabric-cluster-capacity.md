@@ -3,7 +3,7 @@ title: Service Fabric クラスターの容量計画 | Microsoft Docs
 description: Service Fabric クラスターの容量計画に関する考慮事項。 ノード タイプ, 操作, 持続性レベルと信頼性レベル
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: chackdan
 manager: chackdan
 editor: ''
 ms.assetid: 4c584f4a-cb1f-400c-b61f-1f797f11c982

@@ -7,7 +7,7 @@ ms.subservice: conditional-access
 ms.topic: tutorial
 ms.date: 06/13/2018
 ms.author: joflore
-author: MicrosoftGuyJFlo
+author: microsoftguyjflo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management

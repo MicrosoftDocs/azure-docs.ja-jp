@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB SQL API アカウントで地理空間データを扱う
 description: Azure Cosmos DB と SQL API を使用した空間オブジェクトの作成、インデックス作成、クエリの方法について説明します。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019

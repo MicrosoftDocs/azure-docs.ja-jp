@@ -3,7 +3,7 @@ title: .NET Framework を使用してイベントを送受信する - Azure Even
 description: この記事では、Azure Event Hubs にイベントを送信する .NET Framework アプリケーションを作成するためのチュートリアルを提供します。
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: c4974bd3-2a79-48a1-aa3b-8ee2d6655b28

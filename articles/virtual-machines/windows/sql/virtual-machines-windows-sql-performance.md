@@ -3,7 +3,7 @@ title: Azure における SQL Server のパフォーマンスに関するガイ�
 description: Microsoft Azure VM で SQL Server のパフォーマンスを最適化するためのガイドラインを紹介します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 editor: ''
 tags: azure-service-management

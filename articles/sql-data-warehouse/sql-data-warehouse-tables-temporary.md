@@ -2,7 +2,7 @@
 title: SQL Data Warehouse の一時テーブル | Microsoft Docs
 description: セッション レベルの一時テーブルの原則を中心に、一時テーブルの基本的な利用方法について説明します。
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: xiaoyumsft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

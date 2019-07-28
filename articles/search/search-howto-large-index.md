@@ -2,7 +2,7 @@
 title: 組み込みのインデクサーを使用して大容量のデータ セットのインデックスを作成する - Azure Search
 description: 大容量データのインデックス作成またはバッチ モードでの計算負荷の高いインデックス作成の戦略と、リソース管理と、スケジュール設定されたインデックス作成、並列インデックス作成、および分散インデックス作成のためのテクニックとについて説明します。
 services: search
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 ms.service: search
 ms.topic: conceptual

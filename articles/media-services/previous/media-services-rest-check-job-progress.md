@@ -3,7 +3,7 @@ title: REST API によるジョブの進行状況のチェック方法 | Microso
 description: ジョブの進行状況を追跡する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: a1a1f956-c035-448a-af9c-5ac15fcce9dd

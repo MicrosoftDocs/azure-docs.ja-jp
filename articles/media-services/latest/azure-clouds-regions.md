@@ -3,7 +3,7 @@ title: Azure Media Services v3 を使用できるクラウドとリージョン 
 description: この記事では、Azure Media Services v3 を使用できる Azure クラウドとリージョンについて説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

@@ -3,7 +3,7 @@ title: Azure PowerShell を使用してユーザー割り当てマネージド I
 description: Azure PowerShell を使用して、ユーザー割り当てマネージド ID を作成、一覧表示、削除する手順を説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.service: active-directory

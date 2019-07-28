@@ -3,7 +3,7 @@ title: インフォメーション ワーカーとして B2B コラボレーシ�
 description: B2B コラボレーションを利用して、インフォメーション ワーカーおよびアプリ所有者がアクセスのために Azure AD にゲスト ユーザーを追加する | Microsoft Docs
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: mimart

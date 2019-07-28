@@ -7,7 +7,7 @@ ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: MightyPen
+author: mightypen
 ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg

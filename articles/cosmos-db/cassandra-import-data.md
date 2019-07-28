@@ -1,7 +1,7 @@
 ---
 title: 'チュートリアル: チュートリアル: Azure Cosmos DB の Cassandra API アカウントにデータを移行する'
 description: このチュートリアルでは、CQL Copy コマンドと Spark を使用して、Apache Cassandra から Azure Cosmos DB の Cassandra API アカウントにデータをコピーする方法について説明します。
-author: kanshiG
+author: kanshig
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db

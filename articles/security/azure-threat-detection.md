@@ -3,7 +3,7 @@ title: Azure の高度な脅威検出 | Microsoft Docs
 description: Azure AD Identity Protection とその機能について説明します。
 services: security
 documentationcenter: na
-author: UnifyCloud
+author: unifycloud
 manager: barbkess
 editor: TomSh
 ms.assetid: ''
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
-ms.author: TomSh
+ms.author: tomsh
 ms.openlocfilehash: 2a6a0e6219a45821e2a4416a4e563aa6edb86eba
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT

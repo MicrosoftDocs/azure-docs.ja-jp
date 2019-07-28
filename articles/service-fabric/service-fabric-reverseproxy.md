@@ -3,7 +3,7 @@ title: Azure Service Fabric のリバース プロキシ | Microsoft Docs
 description: Service Fabric のリバース プロキシを使用して、クラスターの内外からマイクロサービスとの通信を行います。
 services: service-fabric
 documentationcenter: .net
-author: BharatNarasimman
+author: bharatnarasimman
 manager: chackdan
 editor: vturecek
 ms.assetid: 47f5c1c1-8fc8-4b80-a081-bc308f3655d3

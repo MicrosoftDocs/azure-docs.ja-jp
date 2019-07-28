@@ -2,7 +2,7 @@
 title: Windows Virtual Desktop プレビューでテナントを作成する - Azure
 description: Windows Virtual Desktop プレビューのテナントを Azure Active Directory に設定する方法を説明します。
 services: virtual-desktop
-author: Heidilohr
+author: heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019

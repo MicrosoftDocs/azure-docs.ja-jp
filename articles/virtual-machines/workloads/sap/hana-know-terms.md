@@ -3,7 +3,7 @@ title: SAP HANA on Azure (L インスタンス) のアーキテクチャの用�
 description: SAP HANA on Azure (L インスタンス) のアーキテクチャの用語を確認します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
+author: rickstercdn
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux

@@ -3,7 +3,7 @@ title: Azure ネットワーク セキュリティ グループ フロー ログ
 description: Network Watcher と Graylog を使用して、Azure のネットワーク セキュリティ グループ フロー ログを管理および分析する方法について説明します。
 services: network-watcher
 documentationcenter: na
-author: mattreatMSFT
+author: mattreatmsft
 manager: vitinnan
 editor: ''
 tags: azure-resource-manager

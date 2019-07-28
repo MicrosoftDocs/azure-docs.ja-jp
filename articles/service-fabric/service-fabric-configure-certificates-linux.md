@@ -3,7 +3,7 @@ title: Linux 上の Azure Service Fabric アプリケーション用に証明書
 description: Linux クラスター上の Service Fabric ランタイムを使用するアプリ用に証明書を構成します
 services: service-fabric
 documentationcenter: NA
-author: JimacoMS2
+author: jimacoms2
 manager: chackdan
 editor: ''
 ms.assetid: ''

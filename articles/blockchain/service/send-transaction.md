@@ -3,7 +3,7 @@ title: Azure Blockchain Service を使用してトランザクションを送信
 description: Azure Blockchain Service を使用してスマート コントラクトをデプロイし、プライベート トランザクションを送信する方法に関するチュートリアルです。
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/29/2019
 ms.topic: tutorial

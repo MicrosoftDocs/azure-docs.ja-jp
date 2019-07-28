@@ -3,7 +3,7 @@ title: よく寄せられる質問 - Computer Vision
 titlesuffix: Azure Cognitive Services
 description: Azure Cognitive Services の Computer Vision API についてよく寄せられる質問とその回答を紹介します。
 services: cognitive-services
-author: KellyDF
+author: kellydf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

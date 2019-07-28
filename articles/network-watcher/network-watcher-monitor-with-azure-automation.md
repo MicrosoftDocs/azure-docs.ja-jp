@@ -3,7 +3,7 @@ title: Azure Network Watcher のトラブルシューティングを使用した
 description: この記事では、Azure Automation と Network Watcher を使用してオンプレミスの接続を診断する方法について説明します
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.service: network-watcher

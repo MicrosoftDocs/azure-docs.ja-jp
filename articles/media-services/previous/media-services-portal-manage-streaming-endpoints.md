@@ -3,7 +3,7 @@ title: Azure Portal を使用したストリーミング エンドポイント�
 description: このトピックでは、Azure ポータルを使用してストリーミング エンドポイントを管理する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 writer: juliako
 manager: femila
 editor: ''

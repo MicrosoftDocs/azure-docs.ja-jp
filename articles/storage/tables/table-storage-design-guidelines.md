@@ -2,7 +2,7 @@
 title: Azure ストレージ テーブル設計のガイドライン | Microsoft Docs
 description: 読み取り操作を効率的にサポートするように Azure テーブル サービスを設計します。
 services: storage
-author: SnehaGunda
+author: snehagunda
 ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018

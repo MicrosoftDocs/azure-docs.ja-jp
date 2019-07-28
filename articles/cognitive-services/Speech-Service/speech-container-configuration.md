@@ -3,7 +3,7 @@ title: 音声コンテナーを構成する
 titleSuffix: Azure Cognitive Services
 description: 音声コンテナー
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service

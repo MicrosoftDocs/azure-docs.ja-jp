@@ -3,7 +3,7 @@ title: 既存のプレーヤーを使用したコンテンツの再生 - Azure |
 description: このトピックでは、コンテンツの再生に使用できる既存のプレーヤーを示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: 7e9fcf89-0fb6-4fa4-96cb-666320684d69

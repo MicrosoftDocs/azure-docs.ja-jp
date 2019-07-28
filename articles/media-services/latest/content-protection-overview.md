@@ -3,7 +3,7 @@ title: Media Services 動的暗号化を使用してコンテンツを保護す�
 description: この記事では、動的暗号化を使用したコンテンツ保護の概要について説明します。 ストリーミング プロトコルと暗号化の種類についても説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

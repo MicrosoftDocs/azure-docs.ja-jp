@@ -3,7 +3,7 @@ title: Azure クイック スタート テンプレートを使用して Azure V
 description: Azure クイック スタート テンプレートを使用して、Windows フェールオーバー クラスターを作成し、SQL Server VM をそのクラスターに参加させ、リスナーを作成し、Azure で内部ロード バランサーを構成します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03

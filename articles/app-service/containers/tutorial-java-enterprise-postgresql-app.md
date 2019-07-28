@@ -1,7 +1,7 @@
 ---
 title: Linux 上で Java Enterprise Web アプリを構築する - Azure App Service | Microsoft Docs
 description: Azure App Service on Linux 上の Wildfly で動作する Java Enterprise アプリを取得する方法について説明します。
-author: JasonFreeberg
+author: jasonfreeberg
 manager: routlaw
 ms.service: app-service-web
 ms.workload: web

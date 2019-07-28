@@ -3,7 +3,7 @@ title: ハイブリッド組織向けの B2B コラボレーション - Azure Ac
 description: Azure AD B2B コラボレーションによって、パートナーがオンプレミスのリソースとクラウド リソースの両方にアクセスできるようにします。
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: mimart

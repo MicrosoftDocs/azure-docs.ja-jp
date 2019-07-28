@@ -3,7 +3,7 @@ title: Azure Media Services REST API 呼び出し用の Postman の構成
 description: Media Services REST API 呼び出し用に Postman を構成する方法を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

@@ -3,7 +3,7 @@ title: チュートリアル:Android SDK を使用して画像内の顔を検出
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、Face API を使用して画像内の顔を検出し、フレームに収めるシンプルな Android アプリを作成します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api

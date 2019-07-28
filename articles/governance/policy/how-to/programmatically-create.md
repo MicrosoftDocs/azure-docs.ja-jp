@@ -1,7 +1,7 @@
 ---
 title: ポリシーをプログラムで作成してコンプライアンス データを表示する
 description: この記事では、Azure Policy のポリシーをプログラムで作成して管理する方法について説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 01/31/2019
 ms.topic: conceptual

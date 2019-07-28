@@ -2,7 +2,7 @@
 title: Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを展開する | Microsoft Docs
 description: この記事では、Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを展開する方法について説明します
 services: site-recovery
-author: Rajeswari-Mamilla
+author: rajeswari-mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article

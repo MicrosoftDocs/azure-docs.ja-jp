@@ -7,8 +7,8 @@ ms.subservice: security
 ms.custom: active directory
 ms.devlang: ''
 ms.topic: conceptual
-author: GithubMirek
-ms.author: MirekS
+author: githubmirek
+ms.author: mireks
 ms.reviewer: GeneMi
 ms.date: 03/12/2019
 manager: craigg

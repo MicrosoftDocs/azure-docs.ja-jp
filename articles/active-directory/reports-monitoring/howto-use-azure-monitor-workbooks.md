@@ -2,7 +2,7 @@
 title: Azure Active Directory レポートに Azure Monitor ブックを使用する | Microsoft Docs
 description: Azure Active Directory レポートに Azure Monitor ブックを使用する方法について説明します。
 services: active-directory
-author: MarkusVi
+author: markusvi
 manager: daveba
 ms.assetid: 4066725c-c430-42b8-a75b-fe2360699b82
 ms.service: active-directory

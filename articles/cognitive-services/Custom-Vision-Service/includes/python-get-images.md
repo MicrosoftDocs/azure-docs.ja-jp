@@ -1,5 +1,5 @@
 ---
-author: PatrickFarley
+author: patrickfarley
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: include

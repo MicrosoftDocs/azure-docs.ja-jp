@@ -1,7 +1,7 @@
 ---
 title: Azure IoT Hub を使用した大規模な自動デバイス管理 | Microsoft Docs
 description: 複数の IoT デバイスに構成を割り当てるには、Azure IoT Hub の自動デバイス管理を使用します。
-author: ChrisGMsft
+author: chrisgmsft
 manager: bruz
 ms.service: iot-hub
 services: iot-hub

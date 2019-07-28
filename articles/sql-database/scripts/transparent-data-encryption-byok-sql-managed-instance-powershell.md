@@ -7,7 +7,7 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: MladjoA
+author: mladjoa
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 manager: craigg

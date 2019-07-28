@@ -2,7 +2,7 @@
 title: インデクサーのスケジュールを設定する方法 - Azure Search
 description: Azure Search インデクサーのスケジュールを設定して、定期的に、または特定の時間にコンテンツのインデックスを作成します。
 ms.date: 05/31/2019
-author: RobDixon22
+author: robdixon22
 manager: HeidiSteen
 ms.author: v-rodixo
 services: search

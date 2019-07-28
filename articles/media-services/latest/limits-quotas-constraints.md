@@ -3,7 +3,7 @@ title: Azure Media Services v3 のクォータと制限 | Microsoft Docs
 description: このトピックでは、Azure Media Services v3 のクォータと制限について説明します
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

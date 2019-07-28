@@ -3,7 +3,7 @@ title: Azure Media Indexer によるメディア ファイルのインデック�
 description: Azure Media Indexer を使用すると、メディア ファイルのコンテンツを検索対応にしたり、字幕やキーワード用にフルテキストのトランスクリプトを生成したりできます。 このトピックでは、Media Indexer の使用方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Asolanki
+author: asolanki
 manager: femila
 editor: ''
 ms.assetid: 827a56b2-58a5-4044-8d5c-3e5356488271

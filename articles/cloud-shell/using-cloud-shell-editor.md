@@ -3,7 +3,7 @@ title: Azure Cloud Shell エディターの使用 | Microsoft Docs
 description: Azure Cloud Shell エディターの使用方法の概要。
 services: azure
 documentationcenter: ''
-author: maertendMSFT
+author: maertendmsft
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''

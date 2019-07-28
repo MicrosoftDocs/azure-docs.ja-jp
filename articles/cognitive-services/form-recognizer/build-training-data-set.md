@@ -2,7 +2,7 @@
 title: カスタム モデルのトレーニング データ セットを作成する方法 - Form Recognizer
 titleSuffix: Azure Cognitive Services
 description: お使いのトレーニング データ セットが Form Recognizer モデルのトレーニングに最適化されていることを確認する方法を学習します。
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer

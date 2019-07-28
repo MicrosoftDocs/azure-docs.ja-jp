@@ -2,7 +2,7 @@
 title: Storage Explorer の概要 | Microsoft Docs
 description: Storage Explorer を使用して Azure Storage リソースを管理する
 services: storage
-author: cawaMS
+author: cawams
 ms.service: storage
 ms.devlang: multiple
 ms.topic: article

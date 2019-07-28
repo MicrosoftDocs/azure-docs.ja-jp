@@ -2,7 +2,7 @@
 title: Azure Data Catalog 用のキーボード ショートカット
 description: この記事では、Azure Data Catalog 用のキーボード ショートカットについて説明します。
 services: data-catalog
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.assetid: 00b77c88-fbca-4e6f-a175-d40b5cbbf144
 ms.service: data-catalog

@@ -3,7 +3,7 @@ title: VM の SQL Server への SQL Server データベースの移行 | Microso
 description: オンプレミスのユーザー データベースを Azure 仮想マシンの SQL Server に移行する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 editor: ''
 tags: azure-service-management

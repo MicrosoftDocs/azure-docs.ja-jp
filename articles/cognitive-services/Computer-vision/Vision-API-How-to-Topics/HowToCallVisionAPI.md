@@ -3,7 +3,7 @@ title: 例:画像分析 API を呼び出す - Computer Vision
 titlesuffix: Azure Cognitive Services
 description: Azure Cognitive Services で REST を使用して Computer Vision API を呼び出す方法について説明します。
 services: cognitive-services
-author: KellyDF
+author: kellydf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

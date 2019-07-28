@@ -3,7 +3,7 @@ title: Analyzer の名前付け構造 - Linguistic Analysis API
 titlesuffix: Azure Cognitive Services
 description: Linguistic Analysis API Analyzer のアナライザーの名前付け構造によって､どのように柔軟性と精度の両方が実現されているかについて説明します。
 services: cognitive-services
-author: RichardSunMS
+author: richardsunms
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: linguistic-analysis

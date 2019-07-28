@@ -3,7 +3,7 @@ title: Media Services エンティティのフィルター処理、順序付け�
 description: この記事では、Azure Media Services エンティティのフィルター処理、順序付け、ページングについて説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

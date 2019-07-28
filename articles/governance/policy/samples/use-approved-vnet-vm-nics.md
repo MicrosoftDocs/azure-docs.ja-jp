@@ -1,7 +1,7 @@
 ---
 title: サンプル - VM ネットワーク インターフェイスに承認された vNet を使用する
 description: このサンプル ポリシー定義は、承認された仮想ネットワークの使用をネットワーク インターフェイスに要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

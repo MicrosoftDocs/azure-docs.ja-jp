@@ -2,7 +2,7 @@
 title: サンプル - PCI-DSS v3.2.1 ブループリント - コントロール マッピング
 description: Payment Card Industry Data Security Standard v3.2.1 ブループリント サンプルの Azure Policy と RBAC へのコントロール マッピング。
 services: blueprints
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual

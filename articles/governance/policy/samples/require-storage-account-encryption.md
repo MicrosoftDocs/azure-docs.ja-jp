@@ -1,7 +1,7 @@
 ---
 title: 'サンプル: ストレージ アカウントの暗号化が必要'
 description: このサンプル ポリシー定義は、BLOB 暗号化の使用をストレージ アカウントに要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

@@ -1,7 +1,7 @@
 ---
 title: Azure portal を使用して Azure Cosmos のアカウント、コンテナー、および項目を作成します。
 description: Azure portal を使用して Azure Cosmos のアカウント、コンテナー、および項目を作成します。
-author: SnehaGunda
+author: snehagunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql

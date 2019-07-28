@@ -3,7 +3,7 @@ title: Azure Blockchain Workbench 構成リファレンス
 description: Azure Blockchain Workbench アプリケーションの構成の概要。
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 04/15/2019
 ms.topic: article

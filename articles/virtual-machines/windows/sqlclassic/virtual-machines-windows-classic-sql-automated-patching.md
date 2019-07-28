@@ -3,7 +3,7 @@ title: SQL Server VM の自動修正 (クラシック) | Microsoft Docs
 description: Azure でクラシック デプロイメント モデルを使用して実行されている SQL Server Virtual Machines の自動修正機能について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 editor: ''
 tags: azure-service-management

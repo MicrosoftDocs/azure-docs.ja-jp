@@ -3,7 +3,7 @@ title: .NET での Azure Media Services テレメトリの構成 | Microsoft Doc
 description: この記事では、.NET SDK を使用して Azure Media Services テレメトリを使用する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: f8f55e37-0714-49ea-bf4a-e6c1319bec44

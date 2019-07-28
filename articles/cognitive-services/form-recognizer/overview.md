@@ -2,7 +2,7 @@
 title: Form Recognizer とは
 titleSuffix: Azure Cognitive Services
 description: Form Recognizer を使用してフォームとテーブルのデータを解析する方法を学習します。
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer

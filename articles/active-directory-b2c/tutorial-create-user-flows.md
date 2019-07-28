@@ -9,7 +9,7 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/01/2019
 ms.author: marsma
-ms.subservice: B2C
+ms.subservice: b2c
 ms.openlocfilehash: fd8aefa924b927d9a55d0e91f35f40060097c53b
 ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT

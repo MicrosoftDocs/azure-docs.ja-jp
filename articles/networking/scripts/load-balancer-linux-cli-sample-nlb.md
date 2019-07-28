@@ -3,7 +3,7 @@ title: Azure CLI スクリプト サンプル - 高可用性の VM への負荷�
 description: Azure CLI スクリプト サンプル - 高可用性の VM への負荷分散トラフィック
 services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
+author: kumudd
 manager: timlt
 editor: tysonn
 tags: ''

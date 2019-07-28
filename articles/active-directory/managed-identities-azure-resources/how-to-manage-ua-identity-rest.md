@@ -3,7 +3,7 @@ title: REST を使用して Azure ユーザー割り当てマネージド ID を
 description: REST API 呼び出すためのユーザー割り当てマネージド ID を作成、一覧表示、削除する詳細な手順。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.service: active-directory

@@ -1,7 +1,7 @@
 ---
 title: Azure Database for PostgreSQL の移行パートナー
 description: Azure Database for PostgreSQL をサポートするソリューションを提供するサードパーティの移行パートナーの一覧。
-author: HJToland3
+author: hjtoland3
 ms.author: jtoland
 manager: craigg
 ms.service: postgresql

@@ -3,7 +3,7 @@ title: Visual Studio での傾向の分析 | Microsoft Docs
 description: Visual Studio で、Application Insights テレメトリの傾向を分析、視覚化、調査します。
 services: application-insights
 documentationcenter: .net
-author: NumberByColors
+author: numberbycolors
 manager: carmonm
 ms.assetid: 3150c6fc-2691-44f6-a290-fc5cd68e692a
 ms.service: application-insights

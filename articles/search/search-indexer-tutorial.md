@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:C# サンプル コードで Azure SQL データベースのデータにインデックスを付ける - Azure Search
 description: C# コード例で、Azure SQL データベースに接続し、検索可能なデータを抽出して、それを Azure Search インデックスに読み込む方法を示します。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 services: search
 ms.service: search

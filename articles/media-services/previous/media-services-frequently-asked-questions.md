@@ -3,7 +3,7 @@ title: Azure Media Services のよく寄せられる質問 | Microsoft Docs
 description: よく寄せられる質問 (FAQ)
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

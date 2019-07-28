@@ -3,7 +3,7 @@ title: Azure Media Services 開発環境の設定 | Microsoft Docs
 description: Azure Media Services を使用した開発用に環境をセットアップします。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: 0258a633-8b42-4853-acc7-3b5162d1d8cd

@@ -2,7 +2,7 @@
 title: IDENTITY を使用して代理キーを作成する - Azure SQL Data Warehouse | Microsoft Docs
 description: IDENTITY プロパティを使用して Azure SQL Data Warehouse のテーブルに代理キーを作成する場合の推奨事項と例。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: xiaoyul-preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

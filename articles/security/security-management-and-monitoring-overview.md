@@ -3,7 +3,7 @@ title: 管理および監視セキュリティ機能 - Microsoft Azure | Microso
 description: この記事では、Azure クラウド サービスと仮想マシンの管理と監視を支援するために Azure が提供するセキュリティ機能とサービスの概要を説明します。
 services: security
 documentationcenter: na
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: 5cf2827b-6cd3-434d-9100-d7411f7ed424

@@ -3,7 +3,7 @@ title: クイック スタート:印刷されたテキストの抽出 - REST、J
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Java と Computer Vision API を使って、画像内の印刷されたテキストを抽出します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

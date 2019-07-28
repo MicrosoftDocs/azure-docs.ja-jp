@@ -3,7 +3,7 @@ title: SQL Server の高可用性とディザスター リカバリー | Microso
 description: Azure Virtual Machines で実行されている SQL Server に対するさまざまな種類の HADR 戦略についての説明。
 services: virtual-machines-windows
 documentationcenter: na
-author: MikeRayMSFT
+author: mikeraymsft
 manager: craigg
 editor: ''
 tags: azure-service-management

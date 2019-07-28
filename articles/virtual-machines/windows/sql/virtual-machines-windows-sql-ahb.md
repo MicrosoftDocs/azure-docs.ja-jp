@@ -3,7 +3,7 @@ title: Azure で SQL Server VM のライセンス モデルを変更する方法
 description: Azure での SQL 仮想マシンのライセンスを切り替える方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03

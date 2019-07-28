@@ -1,7 +1,7 @@
 ---
 title: 'Azure Cosmos DB: SQL API の .NET のサンプル'
 description: CRUD 操作など、Azure Cosmos DB SQL API を使う一般的なタスクについては、GitHub の C# .NET のサンプルを参照してください。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample

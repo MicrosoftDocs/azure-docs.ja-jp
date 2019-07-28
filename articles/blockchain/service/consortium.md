@@ -3,7 +3,7 @@ title: Azure Blockchain Service のコンソーシアム
 description: ''
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/02/2019
 ms.topic: article

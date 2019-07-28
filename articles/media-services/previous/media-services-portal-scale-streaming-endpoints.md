@@ -3,7 +3,7 @@ title: Azure Portal を使用したストリーミング エンドポイント�
 description: このチュートリアルでは、Azure ポータルを使用したストリーミング エンドポイントのスケール設定の手順について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: 1008b3a3-2fa1-4146-85bd-2cf43cd1e00e

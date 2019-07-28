@@ -3,7 +3,7 @@ title: Video Indexer の概念
 titlesuffix: Azure Media Services
 description: このトピックでは、Video Indexer サービスのいくつかの概念について説明します。
 services: media-services
-author: Juliako
+author: juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer

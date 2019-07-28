@@ -2,7 +2,7 @@
 title: Azure SQL Data Warehouse の接続文字列 | Microsoft Docs
 description: SQL Data Warehouse の接続文字列
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: xiaoyul-preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

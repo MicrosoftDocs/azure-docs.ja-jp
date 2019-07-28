@@ -3,7 +3,7 @@ title: Azure で AlwaysOn 可用性グループの ILB リスナーを構成す�
 description: このチュートリアルでは、クラシック デプロイ モデルを使用して作成されたリソースを使用し、内部ロード バランサーを使用して Azure で AlwaysOn 可用性グループ リスナーを作成します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MikeRayMSFT
+author: mikeraymsft
 manager: craigg
 editor: ''
 tags: azure-service-management

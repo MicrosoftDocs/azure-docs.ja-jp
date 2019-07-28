@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:複数のデータ ソースにインデックスを付ける - Azure Search
 description: 複数のデータ ソースから 1 つの Azure Search インデックスにデータをインポートする方法を学習します。
-author: RobDixon22
+author: robdixon22
 manager: HeidiSteen
 services: search
 ms.service: search

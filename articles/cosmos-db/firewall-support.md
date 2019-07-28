@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos アカウントの IP ファイアウォール
 description: ファイアウォール サポートに IP アクセス制御ポリシーを使用して、Azure Cosmos DB データを保護する方法について説明します。
-author: kanshiG
+author: kanshig
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019

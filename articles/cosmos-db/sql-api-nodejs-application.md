@@ -1,7 +1,7 @@
 ---
 title: 'チュートリアル: JavaScript SDK を使用して Node.js Web アプリをビルドして Azure Cosmos DB SQL API データを管理する'
 description: この Node.js チュートリアルでは、Microsoft Azure Cosmos DB を使用して、Microsoft Azure App Service の Web Apps 機能にホストされた Node.js Express Web アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs

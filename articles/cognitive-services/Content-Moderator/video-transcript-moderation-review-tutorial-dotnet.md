@@ -3,7 +3,7 @@ title: チュートリアル:ビデオとトランスクリプトを .NET でモ
 titlesuffix: Azure Cognitive Services
 description: このチュートリアルは、マシン支援型のモデレーションと人間参加型レビューの作成を含む完全なビデオとトランスクリプトのモデレーション ソリューションをビルドする方法を理解するうえで役立ちます。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator

@@ -3,7 +3,7 @@ title: Azure Service Fabric Reliable Services のライフサイクル | Microso
 description: Service Fabric Reliable Services のライフサイクル イベントについて説明します。
 services: service-fabric
 documentationcenter: java
-author: PavanKunapareddyMSFT
+author: pavankunapareddymsft
 manager: chackdan
 ms.assetid: ''
 ms.service: service-fabric

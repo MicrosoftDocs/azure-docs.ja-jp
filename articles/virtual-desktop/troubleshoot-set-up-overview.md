@@ -2,7 +2,7 @@
 title: Windows Virtual Desktop トラブルシューティングの概要、フィードバック、サポート - Azure
 description: Windows Virtual Desktop テナント環境の設定時の問題の解決方法の概要
 services: virtual-desktop
-author: ChJenk
+author: chjenk
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019

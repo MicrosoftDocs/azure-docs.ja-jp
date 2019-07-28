@@ -1,7 +1,7 @@
 ---
 title: Azure Policy の概要
 description: Azure Policy は Azure のサービスであり、Azure 環境でのポリシー定義の作成、割り当て、管理に使うことができます。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 12/06/2018
 ms.topic: overview

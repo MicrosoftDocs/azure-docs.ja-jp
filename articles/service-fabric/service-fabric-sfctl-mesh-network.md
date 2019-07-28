@@ -3,7 +3,7 @@ title: Azure Service Fabric CLI- sfctl mesh network | Microsoft Docs
 description: Service Fabric CLI sfctl mesh network のコマンドについて説明します。
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: christina-kang
 manager: chackdan
 editor: ''
 ms.assetid: ''

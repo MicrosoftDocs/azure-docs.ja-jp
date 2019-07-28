@@ -2,7 +2,7 @@
 title: Azure Data Catalog へのアクセスをセキュリティで保護する方法
 description: この記事では、データ カタログとそのデータ資産をセキュリティで保護する方法について説明します。
 services: data-catalog
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual

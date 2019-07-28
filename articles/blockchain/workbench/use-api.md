@@ -3,7 +3,7 @@ title: Azure Blockchain Workbench REST API を使用する
 description: Azure Blockchain Workbench REST API を使用する方法を示すシナリオ
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 04/15/2019
 ms.topic: article

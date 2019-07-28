@@ -1,7 +1,7 @@
 ---
 title: Spark からの Azure Cosmos DB Cassandra API での DDL 操作
 description: この記事では、Spark からの Azure Cosmos DB Cassandra API に対するキースペースとテーブルの DDL 操作について詳しく説明します。
-author: kanshiG
+author: kanshig
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db

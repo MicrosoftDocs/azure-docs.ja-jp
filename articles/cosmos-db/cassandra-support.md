@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能とコマンド
 description: Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能について説明します
-author: kanshiG
+author: kanshig
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db

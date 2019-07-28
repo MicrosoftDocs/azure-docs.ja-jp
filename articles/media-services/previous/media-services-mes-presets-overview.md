@@ -1,7 +1,7 @@
 ---
 title: Media Encoder Standard (MES) 用のタスク プリセット | Microsoft Docs
 description: このトピックでは、Media Encoder Standard (MES) 用のサービスが定義されたサンプル プリセットの概要を説明します。
-author: Juliako
+author: juliako
 manager: femila
 editor: johndeu
 services: media-services

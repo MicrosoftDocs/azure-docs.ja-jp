@@ -3,7 +3,7 @@ title: Front Door 用のカスタム規則と既定の規則セットで Web ア
 description: 既存の Front Door エンドポイントに対するカスタム規則とマネージド規則の両方で構成される WAF ポリシーを構成する方法を説明します。
 services: frontdoor
 documentationcenter: ''
-author: KumudD
+author: kumudd
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article

@@ -3,7 +3,7 @@ title: Azure CLI のサンプル スクリプト - ジョブの作成と送信 |
 description: このトピックの Azure CLI スクリプトは、HTTPs URL を使用して、単純なエンコード変換にジョブを送信する方法を示しています。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: ''

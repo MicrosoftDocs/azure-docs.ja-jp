@@ -3,7 +3,7 @@ title: Azure 仮想ネットワーク ピアリングの作成、変更、削除
 description: 仮想ネットワーク ピアリングを作成、変更、削除する方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

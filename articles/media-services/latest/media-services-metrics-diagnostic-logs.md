@@ -3,7 +3,7 @@ title: Azure Monitor を使用した Azure Media Services のメトリックと�
 description: この記事では、Azure Monitor を使用して Azure Media Services のメトリックと診断ログを監視する方法の概要を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

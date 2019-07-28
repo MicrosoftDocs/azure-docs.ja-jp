@@ -3,7 +3,7 @@ title: Azure Media Services v3 のよく寄せられる質問 | Microsoft Docs
 description: この記事では、Azure Media Services v3 のよく寄せられる質問に対する回答を提供します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

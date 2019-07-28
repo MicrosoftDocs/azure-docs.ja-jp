@@ -3,7 +3,7 @@ title: コンテナー サポート
 titleSuffix: Azure Cognitive Services
 description: Docker コンテナーを使用して Cognitive Services をデータに近い場所に配置する方法について説明します。
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services

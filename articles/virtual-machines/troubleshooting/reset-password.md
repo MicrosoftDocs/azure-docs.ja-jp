@@ -3,7 +3,7 @@ title: Azure VM 上でローカルの Linux パスワードをリセットする
 description: Azure VM 上でローカルの Linux パスワードをリセットする手順を紹介します
 services: virtual-machines-linux
 documentationcenter: ''
-author: Deland-Han
+author: deland-han
 manager: cshepard
 editor: ''
 tags: ''

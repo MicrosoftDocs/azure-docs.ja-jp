@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB でインデックス作成ポリシーを管理する
 description: Azure Cosmos DB でインデックス作成ポリシーを管理する方法について説明します
-author: ThomasWeiss
+author: thomasweiss
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 06/27/2019

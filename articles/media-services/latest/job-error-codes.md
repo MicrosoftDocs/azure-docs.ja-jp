@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services ジョブの (エンコードおよび分析) エラー コード | Microsoft Docs
 description: この記事では、ジョブ エラー コードの参照トピックへのリンクを掲載し、関連トピックへの便利なリンクを提供しています。
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 services: media-services

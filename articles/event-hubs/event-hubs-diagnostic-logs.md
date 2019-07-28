@@ -4,7 +4,7 @@ description: Azure のイベント ハブのアクティビティ ログおよ�
 keywords: ''
 documentationcenter: ''
 services: event-hubs
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: ''
 editor: ''
 ms.assetid: ''

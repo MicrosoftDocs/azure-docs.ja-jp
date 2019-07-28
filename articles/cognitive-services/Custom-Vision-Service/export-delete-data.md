@@ -3,7 +3,7 @@ title: データをエクスポートまたは削除する Custom Vision Service
 titlesuffix: Azure Cognitive Services
 description: Custom Vision Service のデータをエクスポートまたは削除する方法について説明します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision

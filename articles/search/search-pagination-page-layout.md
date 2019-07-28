@@ -1,7 +1,7 @@
 ---
 title: 検索結果を操作する方法 - Azure Search
 description: Azure Search において、検索結果の構成と並べ替え、ドキュメント数の取得、および検索結果へのコンテンツ ナビゲーションの追加を行います。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 services: search
 ms.service: search

@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB:Python と SQL API によるアプリの構築
 description: Azure Cosmos DB SQL API への接続とクエリに使用できる Python コード サンプルについて説明します
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python

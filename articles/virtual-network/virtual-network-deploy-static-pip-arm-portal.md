@@ -3,7 +3,7 @@ title: 静的パブリック IP アドレスを持つ VM を作成する - Azure
 description: Azure Portal を使用して、静的パブリック IP アドレスを持つ VM を作成する方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

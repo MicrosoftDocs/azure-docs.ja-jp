@@ -2,7 +2,7 @@
 title: Azure Data Catalog でのデータ ソースの登録
 description: この記事では、Azure Data Catalog でデータ ソースを登録する方法について、登録中に抽出されるメタデータ フィールドを含め重点的に説明しています。
 services: data-catalog
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.assetid: bab89906-186f-4d35-9ffd-61b1d903905d
 ms.service: data-catalog

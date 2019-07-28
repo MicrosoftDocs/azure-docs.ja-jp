@@ -1,7 +1,7 @@
 ---
 title: System Center Configuration Manager を使用した VMware VM と物理サーバーの Azure へのディザスター リカバリーのために Azure Site Recovery モビリティ サービスのインストールを自動化する | Microsoft Docs
 description: この記事は、Site Recovery を使用した VMware VM と物理サーバーの Azure へのディザスター リカバリーのために、System Center Configuration Manager を使用してモビリティ サービスのインストールを自動化するのに役立ちます。
-author: Rajeswari-Mamilla
+author: rajeswari-mamilla
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/14/2019

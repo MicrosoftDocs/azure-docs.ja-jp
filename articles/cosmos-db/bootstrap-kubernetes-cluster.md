@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB で Azure Kubernetes を使用する方法
 description: Azure Cosmos DB (プレビュー) を使用して Azure での Kubernetes クラスターのブートストラップする方法について説明します
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/06/2019

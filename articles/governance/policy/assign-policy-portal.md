@@ -1,7 +1,7 @@
 ---
 title: 準拠していないリソースに対するポリシーを作成する
 description: この記事では、ポリシー定義を作成して、準拠していないリソースを特定する手順について説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 12/06/2018
 ms.topic: quickstart

@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: Azure Virtual Network で Azure CLI を使用して IPv6 エンドポイントを有効にします。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 ms.service: virtual-network
 ms.devlang: NA

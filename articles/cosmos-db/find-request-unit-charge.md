@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB の要求ユニット (RU) 使用量を確認する
 description: Azure Cosmos コンテナーに対して実行した操作の要求ユニット (RU) 使用量を確認する方法について説明します。
-author: ThomasWeiss
+author: thomasweiss
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 06/14/2019

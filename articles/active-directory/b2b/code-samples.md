@@ -3,7 +3,7 @@ title: B2B コラボレーション コードと PowerShell サンプル - Azure
 description: Azure Active Directory B2B コラボレーションのコードと PowerShell サンプル
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: sample
 ms.date: 04/11/2017
 ms.author: mimart

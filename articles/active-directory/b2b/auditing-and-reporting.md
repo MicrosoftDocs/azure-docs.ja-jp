@@ -3,7 +3,7 @@ title: B2B コラボレーション ユーザーの監査およびレポート -
 description: ゲスト ユーザーは、Azure Active Directory B2B コラボレーションで構成できます
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: mimart

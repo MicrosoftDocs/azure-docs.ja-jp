@@ -1,7 +1,7 @@
 ---
 title: サンプル - ISO 27001 共有サービスのブループリント - コントロール マッピング
 description: ISO 27001 共有サービスのブルー プリント サンプルから Azure Policy と RBAC へのコントロール マッピング。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample

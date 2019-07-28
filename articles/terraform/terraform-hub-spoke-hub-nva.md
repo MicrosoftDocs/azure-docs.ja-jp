@@ -4,7 +4,7 @@ description: 他のすべてのネットワーク間の共通の接続ポイン�
 services: terraform
 ms.service: azure
 keywords: terraform, ハブとスポーク, ネットワーク, ハイブリッド ネットワーク, devops, 仮想マシン, Azure, VNet ピアリング, ハブとスポーク, ハブ
-author: VaijanathB
+author: vaijanathb
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial

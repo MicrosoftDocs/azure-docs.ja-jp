@@ -3,7 +3,7 @@ title: Azure CLI で Media Services アカウントを作成する - Azure | Mic
 description: Azure Media Services アカウントを作成するには、このクイック スタートの手順に従います。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

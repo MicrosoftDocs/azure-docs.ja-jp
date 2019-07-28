@@ -2,7 +2,7 @@
 title: イベント データを SQL Data Warehouse に移行する - Azure Event Hubs | Microsoft Docs
 description: このチュートリアルでは、Event Grid によってトリガーされる Azure 関数を使用して、イベント ハブからデータを SQL Data Warehouse にキャプチャする方法を示します。
 services: event-hubs
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: ''
 ms.author: shvija
 ms.custom: seodec18

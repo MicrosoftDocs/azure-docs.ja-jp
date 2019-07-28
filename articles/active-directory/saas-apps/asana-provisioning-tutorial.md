@@ -3,7 +3,7 @@ title: チュートリアル:Asana を構成し、Azure Active Directory を使�
 description: Azure Active Directory を構成して、ユーザー アカウントを Asana に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: ArvindHarinder1
+author: arvindharinder1
 manager: CelesteDG
 ms.assetid: 0b38ee73-168b-42cb-bd8b-9c5e5126d648
 ms.service: active-directory

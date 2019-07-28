@@ -3,7 +3,7 @@ title: Azure PowerShell を使用して Azure Blockchain Service コンソーシ
 description: Azure PowerShell を使用して Azure Blockchain Service コンソーシアムのメンバーを管理する方法について説明します。
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/10/2019
 ms.topic: article

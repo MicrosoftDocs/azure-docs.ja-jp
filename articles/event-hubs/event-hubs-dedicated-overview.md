@@ -3,7 +3,7 @@ title: 専用イベント ハブの概要 - Azure Event Hubs | Microsoft Docs
 description: この記事では、イベント ハブのシングル テナント デプロイを提供する専用の Azure Event Hubs の概要について説明します。
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''

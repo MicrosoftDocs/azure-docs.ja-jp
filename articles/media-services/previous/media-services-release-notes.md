@@ -3,7 +3,7 @@ title: Media Services リリース ノート | Microsoft Docs
 description: Media Services リリース ノート
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

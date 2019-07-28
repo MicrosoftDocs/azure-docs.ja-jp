@@ -2,7 +2,7 @@
 title: Windows 10 または Windows 7 から Windows Virtual Desktop プレビューに接続する - Azure
 description: Windows 10 または Windows 7 から Windows Virtual Desktop プレビューに接続する方法。
 services: virtual-desktop
-author: Heidilohr
+author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/24/2019

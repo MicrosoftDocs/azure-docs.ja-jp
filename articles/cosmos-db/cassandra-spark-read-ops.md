@@ -2,7 +2,7 @@
 title: Spark を使用して Cassandra API のテーブル データを読み取る
 titleSufix: Azure Cosmos DB
 description: この記事では、Azure Cosmos DB 内の Cassandra API テーブルからデータを読み取る方法について説明します。
-author: kanshiG
+author: kanshig
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db

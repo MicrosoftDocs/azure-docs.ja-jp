@@ -2,7 +2,7 @@
 title: Azure Data Lake Analytics のディザスター リカバリーのガイダンス
 description: Azure Data Lake Analytics アカウントのディザスター リカバリーを計画する方法について説明します。
 services: data-lake-analytics
-author: MikeRys
+author: mikerys
 ms.author: mrys
 ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics

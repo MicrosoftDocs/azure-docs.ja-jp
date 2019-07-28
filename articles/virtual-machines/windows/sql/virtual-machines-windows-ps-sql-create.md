@@ -3,7 +3,7 @@ title: Azure PowerShell を使用して SQL Server VM をプロビジョニン�
 description: SQL Server 仮想マシン ギャラリー のイメージを使用して Azure VM を作成するための手順と PowerShell コマンドを提供します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 editor: ''
 tags: azure-resource-manager

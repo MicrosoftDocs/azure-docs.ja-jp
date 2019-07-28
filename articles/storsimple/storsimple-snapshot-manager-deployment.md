@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager のデプロイ | Microsoft Docs
 description: StorSimple Snapshot Manager、MMC スナップインをダウンロードしてインストールし、StorSimple データ保護およびバックアップ機能を管理する方法を説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: shars
 manager: timlt
 editor: ''
 ms.assetid: f0128f57-519e-49ec-9187-23575809cdbe

@@ -1,7 +1,7 @@
 ---
 title: Az.Search モジュールを使用した PowerShell スクリプト - Azure Search
 description: PowerShell を使用して Azure Search サービスを作成および構成します。 サービスをスケールアップまたはスケールダウンしたり、管理者とクエリの API キーを管理したり、システム情報のクエリを実行したりできます。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 services: search
 ms.service: search

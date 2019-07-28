@@ -3,7 +3,7 @@ title: Azure Network Watcher 機能を使用するために必要なアクセス
 description: Network Watcher 機能を使用するために必要な、Azure ロールベースのアクセス制御のアクセス許可について説明します。
 services: network-watcher
 documentationcenter: ''
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: ''

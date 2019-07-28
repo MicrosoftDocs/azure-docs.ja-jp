@@ -2,7 +2,7 @@
 title: Python を使用してイベントを送受信する - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs にイベントを送信する Python アプリケーションを作成するためのチュートリアルを提供します。
 services: event-hubs
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: femila
 ms.service: event-hubs
 ms.workload: core

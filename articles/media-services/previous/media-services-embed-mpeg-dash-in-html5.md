@@ -1,7 +1,7 @@
 ---
 title: DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み | Microsoft Docs
 description: このトピックでは、DASH.js を使用した HTML5 アプリケーションに MPEG-DASH アダプティブ ストリーミング ビデオを埋め込む方法を説明します。
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 services: media-services

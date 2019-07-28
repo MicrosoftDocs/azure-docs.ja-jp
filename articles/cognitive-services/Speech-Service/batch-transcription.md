@@ -3,7 +3,7 @@ title: バッチ文字起こしの使用方法 - Speech Services
 titlesuffix: Azure Cognitive Services
 description: バッチ文字起こしは、Azure BLOB などのストレージにある大量の音声を文字起こしする場合に理想的です。 専用の REST API を使用すると、Shared Access Signatures (SAS) URI でオーディオ ファイルを示して、非同期に文字起こしを受け取ることができます。
 services: cognitive-services
-author: PanosPeriorellis
+author: panosperiorellis
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service

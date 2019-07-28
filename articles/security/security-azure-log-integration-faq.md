@@ -3,7 +3,7 @@ title: Azure ログ統合の FAQ | Microsoft Docs
 description: この記事は、Azure ログ統合について寄せられる質問とその回答です。
 services: security
 documentationcenter: na
-author: TomShinder
+author: tomshinder
 manager: MBaldwin
 editor: TerryLanfear
 ms.assetid: d06d1ac5-5c3b-49de-800e-4d54b3064c64

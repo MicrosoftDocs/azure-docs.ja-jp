@@ -2,7 +2,7 @@
 title: Table Storage の概要 - Azure のオブジェクト ストレージ | Microsoft Docs
 description: NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。
 services: storage
-author: SnehaGunda
+author: snehagunda
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: overview

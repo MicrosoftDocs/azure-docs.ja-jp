@@ -3,7 +3,7 @@ title: Azure Active Directory レポートの概要 | Microsoft Docs
 description: Azure Active Directory レポートの概要について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: 6141a333-38db-478a-927e-526f1e7614f4

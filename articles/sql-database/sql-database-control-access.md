@@ -7,7 +7,7 @@ ms.subservice: security
 ms.custom: sql-data-warehouse
 ms.devlang: ''
 ms.topic: conceptual
-author: VanMSFT
+author: vanmsft
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg

@@ -3,7 +3,7 @@ title: SQL VM (クラシック) での管理タスクの自動化 | Microsoft Do
 description: このトピックでは、SQL Server Agent 拡張機能を管理して、SQL Server の特定の管理機能を自動化する方法について説明します。 自動バックアップ、自動修正、および Azure Key Vault の統合が含まれます。 このトピックでは、クラシック デプロイ モードを使用します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 editor: ''
 tags: azure-service-management

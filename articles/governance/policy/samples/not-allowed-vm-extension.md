@@ -1,7 +1,7 @@
 ---
 title: サンプル - 許可されていない VM 拡張機能
 description: このサンプル ポリシー定義は、仮想マシンに対する特定の拡張機能の使用を禁止します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

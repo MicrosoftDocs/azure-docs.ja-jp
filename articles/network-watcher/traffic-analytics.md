@@ -3,7 +3,7 @@ title: Azure トラフィック分析 | Microsoft Docs
 description: トラフィック分析を使用して、Azure ネットワーク セキュリティ グループ フロー ログを分析する方法について説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.service: network-watcher

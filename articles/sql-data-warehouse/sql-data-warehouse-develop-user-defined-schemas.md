@@ -2,7 +2,7 @@
 title: SQL Data Warehouse でのユーザー定義スキーマの使用 |Microsoft Docs
 description: Azure SQL Data Warehouse でソリューションを開発するための T-SQL ユーザー定義スキーマの使用に関するヒント。
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: xiaoyumsft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

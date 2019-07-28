@@ -2,7 +2,7 @@
 title: Azure Table Storage の概要 | Microsoft Docs
 description: Azure portal で Azure Storage Table service テーブルを作成します。
 services: storage
-author: MarkMcGeeAtAquent
+author: markmcgeeataquent
 ms.service: storage
 ms.topic: quickstart
 ms.date: 04/23/2018

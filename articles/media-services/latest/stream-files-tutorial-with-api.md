@@ -3,7 +3,7 @@ title: Azure Media Services v3 を使用してアップロード、エンコー�
 description: Media Services v3 を使用してファイルのアップロード、ビデオのエンコード、コンテンツのストリーム配信を行うには、このチュートリアルの手順に従います。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

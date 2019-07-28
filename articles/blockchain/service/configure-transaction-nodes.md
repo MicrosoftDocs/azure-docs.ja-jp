@@ -3,7 +3,7 @@ title: Azure Blockchain Service のトランザクション ノードを構成�
 description: Azure Blockchain Service のトランザクション ノードを構成する方法です
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/02/2019
 ms.topic: article

@@ -3,7 +3,7 @@ title: B2B コラボレーション ユーザーの要求マッピング - Azure
 description: Azure Active Directory (Azure AD) B2B ユーザーの SAML トークンで発行されたユーザー要求をカスタマイズします。
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: mimart

@@ -1,7 +1,7 @@
 ---
 title: Azure portal を使用して検索インデックスにデータをインポートする - Azure Search
 description: Azure portal でデータのインポート ウィザードを使用して、Cosmos DB、Blob Storage、Table Storage、SQL Database、Azure VM 上の SQL Server から Azure データをクロールします。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 services: search
 ms.service: search

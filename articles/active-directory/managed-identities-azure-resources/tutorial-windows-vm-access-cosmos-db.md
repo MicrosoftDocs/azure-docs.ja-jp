@@ -3,7 +3,7 @@ title: Windows VM のシステム割り当てマネージド ID を使用して 
 description: Windows VM 上でシステム割り当てマネージド ID を使用して Azure Cosmos DB にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: daveba
 ms.service: active-directory

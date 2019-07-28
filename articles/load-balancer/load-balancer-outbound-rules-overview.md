@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: アウトバウンド規則を使用して、アウトバウンド ネットワーク アドレス変換を定義します。
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: kumudd
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article

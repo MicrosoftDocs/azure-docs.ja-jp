@@ -3,7 +3,7 @@ title: Azure VM でゲスト OS 上のファイアウォール規則を有効ま
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
-author: Deland-Han
+author: deland-han
 manager: willchen
 editor: ''
 tags: ''

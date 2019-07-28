@@ -1,5 +1,5 @@
 ---
-author: IEvangelist
+author: ievangelist
 ms.author: dapine
 ms.date: 06/25/2019
 ms.service: cognitive-services

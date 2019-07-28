@@ -1,5 +1,5 @@
 ---
-author: MashaMSFT
+author: mashamsft
 ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 05/13/2019

@@ -3,7 +3,7 @@ title: Azure Container Instances の実行
 titleSuffix: Azure Cognitive Services
 description: Text Analytics コンテナーを感情分析イメージと一緒に Azure Container Instance にデプロイし、それを Web ブラウザーでテストします。
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics

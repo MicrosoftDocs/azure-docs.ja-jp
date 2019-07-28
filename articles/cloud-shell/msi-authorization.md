@@ -3,7 +3,7 @@ title: Azure Cloud Shell で Azure リソースのマネージド ID を使用�
 description: Azure Cloud Shell の MSI でコードを認証する
 services: azure
 documentationcenter: ''
-author: maertendMSFT
+author: maertendmsft
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''

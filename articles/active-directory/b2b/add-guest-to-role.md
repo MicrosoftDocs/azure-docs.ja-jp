@@ -3,7 +3,7 @@ title: B2B コラボレーション ユーザーをロールに追加する - Az
 description: Azure Active Directory でゲスト ユーザーをロールに追加します
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.author: mimart

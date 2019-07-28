@@ -2,7 +2,7 @@
 title: データ型の定義 - Azure SQL Data Warehouse | Microsoft Docs
 description: Azure SQL Data Warehouse におけるテーブルのデータ型の定義に関する推奨事項。
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: xiaoyumsft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

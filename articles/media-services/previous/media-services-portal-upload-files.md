@@ -3,7 +3,7 @@ title: Azure Portal での Media Services アカウントへのファイルの�
 description: このチュートリアルでは、Azure Portal で Media Services アカウントにファイルをアップロードする手順について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: 3ad3dcea-95be-4711-9aae-a455a32434f6

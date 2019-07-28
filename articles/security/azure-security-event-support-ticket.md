@@ -3,7 +3,7 @@ title: セキュリティ イベント サポート チケットをログに記�
 description: セキュリティ イベントの可能性があるイベントを確認したため、Azure Marketplace を利用する販売者として適切なチケットをログに記録する方法を知る必要があります。
 services: security
 documentationcenter: na
-author: DavidBosland
+author: davidbosland
 manager: lakoch
 editor: v-dabosl
 ms.assetid: f1ffde66-98f0-4c3e-ad94-fee1f97cae03

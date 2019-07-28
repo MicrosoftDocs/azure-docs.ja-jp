@@ -3,7 +3,7 @@ title: Azure Content Moderator とは
 titlesuffix: Azure Cognitive Services
 description: ユーザーによって生成されたコンテンツに含まれる不適切な素材の追跡、フラグ設定、評価、フィルタリングを Content Moderator を使用して行う方法について説明します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator

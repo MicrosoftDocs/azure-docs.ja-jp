@@ -3,7 +3,7 @@ title: Linux Azure Virtual Machines における SQL Server に関する FAQ | M
 description: この記事では、Linux Azure VM で SQL Server を実行することに関してよく寄せられる質問に対する回答を示します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql

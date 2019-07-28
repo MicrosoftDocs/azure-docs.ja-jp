@@ -3,7 +3,7 @@ title: クイック スタート:Python でテキストの内容を分析する 
 titlesuffix: Azure Cognitive Services
 description: Content Moderator SDK for Python を使用してさまざまな好ましくない要素を検出するためにテキスト コンテンツを分析する方法
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator

@@ -3,7 +3,7 @@ title: ドメイン固有のコンテンツを検出する - Computer Vision
 titleSuffix: Azure Cognitive Services
 description: 画像に関する詳細な情報を返すための画像分類ドメインを指定する方法について説明します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

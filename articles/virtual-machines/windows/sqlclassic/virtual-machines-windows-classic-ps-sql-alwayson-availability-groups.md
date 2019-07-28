@@ -3,7 +3,7 @@ title: PowerShell を使用した Azure VM での AlwaysOn 可用性グループ
 description: このチュートリアルでは、クラシック デプロイ モデルを使用して作成されたリソースを使用します。 PowerShell を使用して、Azure に AlwaysOn 可用性グループを作成します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MikeRayMSFT
+author: mikeraymsft
 manager: craigg
 editor: ''
 tags: azure-service-management

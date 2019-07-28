@@ -3,7 +3,7 @@ title: チュートリアル:B2B の多要素認証 - Azure Active Directory | M
 description: Azure AD B2B を使用して外部ユーザーやパートナー組織とコラボレーションするときに、多要素認証 (MFA) を要求する方法について説明します。
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: mimart

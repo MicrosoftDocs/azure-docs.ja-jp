@@ -2,7 +2,7 @@
 title: 'Python のチュートリアル: インデックス パイプラインで Cognitive Services を呼び出す - Azure Search'
 description: Jupyter Python ノートブックを使用した Azure Search でのデータ抽出、自然言語、画像の AI 処理の例を順に確認します。 抽出されたデータにはインデックスが付けられ、クエリで簡単にアクセスできるようになります。
 manager: cgronlun
-author: LisaLeib
+author: lisaleib
 services: search
 ms.service: search
 ms.devlang: python

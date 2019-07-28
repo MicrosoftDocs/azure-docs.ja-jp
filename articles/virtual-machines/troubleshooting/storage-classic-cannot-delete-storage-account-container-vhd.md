@@ -2,7 +2,7 @@
 title: Azure のクラシック ストレージ アカウント、コンテナー、VHD の削除時に発生するエラーのトラブルシューティング | Microsoft Docs
 description: 接続された VHD を含むストレージ リソースを削除するときの問題をトラブルシューティングする方法について説明します。
 services: storage
-author: AngshumanNayakMSFT
+author: angshumannayakmsft
 tags: top-support-issue,azure-service-management
 ms.service: storage
 ms.topic: troubleshooting

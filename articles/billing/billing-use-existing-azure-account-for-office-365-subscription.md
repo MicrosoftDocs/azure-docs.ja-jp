@@ -3,7 +3,7 @@ title: Azure アカウントで Office 365 にサインアップする | Microso
 description: Azure アカウントを使用して、Office 365 サブスクリプションを作成する方法を説明します
 services: ''
 documentationcenter: ''
-author: JiangChen79
+author: jiangchen79
 manager: adpick
 editor: ''
 tags: billing,top-support-issue

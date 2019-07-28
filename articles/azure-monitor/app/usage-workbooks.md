@@ -3,7 +3,7 @@ title: Azure Monitor ブックを使用した対話型レポートの作成 | Mi
 description: 作成済みのブックやパラメーター化されたカスタム ブックを使用して複雑なレポート作成を簡素化します。
 services: application-insights
 documentationcenter: ''
-author: NumberByColors
+author: numberbycolors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd

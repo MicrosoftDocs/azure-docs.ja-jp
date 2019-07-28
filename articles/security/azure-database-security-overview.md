@@ -3,7 +3,7 @@ title: Azure のデータベース セキュリティの概要 | Microsoft Docs
 description: この記事では、Azure のデータベース セキュリティ機能の概要について説明します。
 services: security
 documentationcenter: na
-author: UnifyCloud
+author: unifycloud
 manager: barbkess
 editor: TomSh
 ms.assetid: ''
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
-ms.author: TomSh
+ms.author: tomsh
 ms.openlocfilehash: 7e0e93c82279ec1a4fbecbbf27c7a1866286b2f8
 ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT

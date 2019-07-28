@@ -3,7 +3,7 @@ title: StorSimple デバイスの更新 | Microsoft Docs
 description: StorSimple の更新プログラムの機能を使用して、通常またはメンテナンス モードの更新プログラムや修正プログラムをインストールする方法について説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: shars
 manager: carmonm
 editor: ''
 ms.assetid: 786059f5-2a38-4105-941d-0860ce4ac515

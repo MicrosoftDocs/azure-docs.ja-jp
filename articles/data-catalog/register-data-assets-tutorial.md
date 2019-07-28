@@ -1,7 +1,7 @@
 ---
 title: Azure Data Catalog でのデータ資産の登録
 description: Azure データ カタログにデータ資産を登録する方法
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial

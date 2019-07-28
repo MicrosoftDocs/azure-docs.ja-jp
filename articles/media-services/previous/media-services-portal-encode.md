@@ -3,7 +3,7 @@ title: Azure Portal での Media Encoder Standard を使用した資産のエン
 description: このチュートリアルでは、Azure Portal で Media Encoder Standard を使用して資産をエンコードする手順について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: 107d9e9a-71e9-43e5-b17c-6e00983aceab

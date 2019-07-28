@@ -2,7 +2,7 @@
 title: ネットワーク セキュリティのベスト プラクティス - Microsoft Azure
 description: この記事では、Azure の組み込み機能を利用した、ネットワーク セキュリティに関する一連のベスト プラクティスについて説明します。
 services: security
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: TomShinder
 ms.assetid: 7f6aa45f-138f-4fde-a611-aaf7e8fe56d1
@@ -12,7 +12,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
-ms.author: TomSh
+ms.author: tomsh
 ms.openlocfilehash: 137b23432a80d3ceeb0f96cd863514c9ee824c9c
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT

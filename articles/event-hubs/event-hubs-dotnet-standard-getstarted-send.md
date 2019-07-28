@@ -3,7 +3,7 @@ title: .NET Core を使用してイベントを送受信する - Azure Event Hub
 description: この記事では、Azure Event Hubs にイベントを送信する .NET Core アプリケーションを作成するためのチュートリアルを提供します。
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''

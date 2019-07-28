@@ -3,7 +3,7 @@ title: Azure CLI のサンプル | Microsoft Docs
 description: Azure CLI のサンプル
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: kumudd
 manager: timlt
 editor: tysonn
 tags: ''

@@ -3,7 +3,7 @@ title: B2B 用 AD FS との直接フェデレーションの設定 - Azure Activ
 description: ご自身の Azure AD アプリにゲストがサインインできるようにするために、AD FS を直接フェデレーションの ID プロバイダーとして設定する方法について説明します
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: mimart

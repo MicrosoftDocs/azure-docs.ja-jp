@@ -3,7 +3,7 @@ title: Azure 仮想マシンで使用するセキュリティ機能 - Azure セ�
 description: この記事では、Azure 仮想マシンで使用できる Azure のコア セキュリティ機能の概要について説明します。
 services: security
 documentationcenter: na
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: 467b2c83-0352-4e9d-9788-c77fb400fe54

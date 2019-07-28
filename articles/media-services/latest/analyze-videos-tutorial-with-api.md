@@ -3,7 +3,7 @@ title: Azure Media Services を使用してビデオを分析する | Microsoft 
 description: Azure Media Services を使用してビデオを分析するには、このチュートリアルの手順に従います。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

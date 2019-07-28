@@ -2,7 +2,7 @@
 title: Azure Monitor リソース グループの分析情報 | Microsoft Docs
 description: Azure Monitor によるリソース グループ レベルで分散アプリケーションとサービスの正常性とパフォーマンスの概要
 services: azure-monitor
-author: NumberByColors
+author: numberbycolors
 manager: carmonm
 ms.service: azure-monitor
 ms.workload: tbd

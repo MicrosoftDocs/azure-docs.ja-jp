@@ -3,7 +3,7 @@ title: Video Indexer の分析情報の表示と編集
 titlesuffix: Azure Media Services
 description: このトピックでは、Video Indexer の分析情報を表示および編集する方法を示します。
 services: media-services
-author: Juliako
+author: juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer

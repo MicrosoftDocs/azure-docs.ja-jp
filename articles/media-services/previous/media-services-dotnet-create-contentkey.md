@@ -3,7 +3,7 @@ title: .NET を使用したコンテンツ キーの作成
 description: アセットに安全にアクセスできる ContentKey を作成する方法について学習します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: 225b05e5-7d30-409c-b5b7-3ef0634310c7

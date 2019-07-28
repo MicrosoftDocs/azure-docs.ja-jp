@@ -3,7 +3,7 @@ title: SQL Server 可用性グループ - Azure Virtual Machines - チュート�
 description: このチュートリアルでは、Azure Virtual Machines に SQL Server Always On 可用性グループを作成する方法を説明します。
 services: virtual-machines
 documentationCenter: na
-author: MikeRayMSFT
+author: mikeraymsft
 manager: craigg
 editor: monicar
 tags: azure-service-management

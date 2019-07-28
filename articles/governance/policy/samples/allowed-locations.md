@@ -1,7 +1,7 @@
 ---
 title: サンプル - 許可される場所
 description: このサンプル ポリシー定義は、すべてのリソースを承認済みの場所にデプロイすることを要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

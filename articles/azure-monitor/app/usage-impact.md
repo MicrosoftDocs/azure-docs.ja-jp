@@ -3,7 +3,7 @@ title: Azure Application Insights の使用の影響 | Microsoft Docs
 description: さまざまなプロパティがアプリの各部のコンバージョン率に潜在的に及ぼす影響について分析します。
 services: application-insights
 documentationcenter: ''
-author: NumberByColors
+author: numberbycolors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd

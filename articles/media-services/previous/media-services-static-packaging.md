@@ -3,7 +3,7 @@ title: Azure Media Packager を使用して静的パッケージ タスクを実
 description: このトピックでは、Azure Media Packager で実行されるさまざまなタスクについて説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: 0582628e-a525-4a78-90ac-9f7fc1cd909f

@@ -3,7 +3,7 @@ title: Azure Cloud Shell の機能 | Microsoft Docs
 description: Azure Cloud Shell での Bash の機能の概要
 services: Azure
 documentationcenter: ''
-author: maertendMSFT
+author: maertendmsft
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''

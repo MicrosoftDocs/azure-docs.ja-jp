@@ -2,7 +2,7 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: azure-policy
-author: DCtheGeek
+author: dcthegeek
 ms.service: azure-policy
 ms.topic: include
 ms.date: 10/29/2018

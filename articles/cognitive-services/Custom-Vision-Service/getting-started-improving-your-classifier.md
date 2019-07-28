@@ -3,7 +3,7 @@ title: 分類子の改善 - Custom Vision Service
 titlesuffix: Azure Cognitive Services
 description: 分類子の品質を改善する方法について説明します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision

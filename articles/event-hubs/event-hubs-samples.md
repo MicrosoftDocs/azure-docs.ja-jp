@@ -3,7 +3,7 @@ title: サンプル - Azure Event Hubs | Microsoft Docs
 description: この記事では、GitHub にある Azure Event Hubs のサンプルの一覧を示します。
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''

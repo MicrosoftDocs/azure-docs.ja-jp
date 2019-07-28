@@ -1,7 +1,7 @@
 ---
 title: ポータルでの Azure Search のサービス管理 - Azure Search
 description: Azure portal を使用して、Microsoft Azure のホスト型クラウド検索サービスである Azure Search を管理します。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 tags: azure-portal
 services: search

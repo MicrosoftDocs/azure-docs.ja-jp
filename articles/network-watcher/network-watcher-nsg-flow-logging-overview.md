@@ -3,7 +3,7 @@ title: Azure Network Watcher を使用したネットワーク セキュリテ�
 description: この記事では Azure Network Watcher の機能である NSG のフロー ログの使用方法について説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: 47d91341-16f1-45ac-85a5-e5a640f5d59e

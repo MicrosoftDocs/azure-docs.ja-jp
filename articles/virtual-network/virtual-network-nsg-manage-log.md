@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: Azure ネットワーク セキュリティ グループのイベントとルール カウンター診断ログを有効にする方法を説明します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 ms.service: virtual-network
 ms.devlang: na

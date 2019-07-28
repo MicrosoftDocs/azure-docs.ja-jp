@@ -1,7 +1,7 @@
 ---
 title: オンプレミスの物理サーバーの Azure へのディザスター リカバリーのためのターゲット環境を設定する | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用した物理サーバーのディザスター リカバリーのためのターゲット Azure 環境を設定する方法について説明します。
-author: Rajeswari-Mamilla
+author: rajeswari-mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual

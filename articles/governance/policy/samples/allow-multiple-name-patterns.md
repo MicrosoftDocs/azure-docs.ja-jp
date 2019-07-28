@@ -1,7 +1,7 @@
 ---
 title: サンプル - 複数の名前パターン
 description: このサンプル ポリシー定義は、指定した名前パターンのいずれかに一致することをリソースに要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

@@ -3,7 +3,7 @@ title: Network Watcher と Grafana を使用したネットワーク セキュ�
 description: Network Watcher と Grafana を使用して Azure のネットワーク セキュリティ グループのフロー ログを管理および分析します。
 services: network-watcher
 documentationcenter: na
-author: mattreatMSFT
+author: mattreatmsft
 manager: vitinnan
 editor: ''
 tags: azure-resource-manager

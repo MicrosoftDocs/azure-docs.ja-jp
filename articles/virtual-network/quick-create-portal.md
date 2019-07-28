@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: このクイック スタートでは、Azure Portal を使用した仮想ネットワークの作成について説明します。 仮想ネットワークにより、仮想マシンなどの Azure リソースは、相互に、またはインターネットと、安全に通信することができます
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: kumudd
 tags: azure-resource-manager
 Customer intent: I want to create a virtual network so that virtual machines can securely communicate with each other and with the internet.
 ms.service: virtual-network

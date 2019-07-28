@@ -3,7 +3,7 @@ title: Azure 仮想ネットワーク ピアリングの作成 - 異なるデプ
 description: 同じ Azure サブスクリプションに存在する、異なる Azure デプロイメント モデルで作成された仮想ネットワーク間に、仮想ネットワーク ピアリングを作成する方法について説明します。
 services: virtual-network
 documentationcenter: ''
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

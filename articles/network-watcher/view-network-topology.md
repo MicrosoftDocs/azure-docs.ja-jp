@@ -3,7 +3,7 @@ title: Azure 仮想ネットワーク トポロジを表示する | Microsoft Do
 description: 仮想ネットワーク内のリソースと、リソース間のリレーションシップを表示する方法について説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: ''

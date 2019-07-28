@@ -3,7 +3,7 @@ title: Azure Media Services でのライブ ストリーミングの概念 - ラ
 description: この記事では、Azure Media Services v3 でのライブ ストリーミングの概念の概要を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

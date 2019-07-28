@@ -4,7 +4,7 @@ description: Azure で異なるネットワーク間の共通接続ポイント�
 services: terraform
 ms.service: azure
 keywords: Terraform, ハブとスポーク, ネットワーク, ハイブリッド ネットワーク, devops, 仮想マシン, Azure, VNet ピアリング, ハブとスポーク, ハブ
-author: VaijanathB
+author: vaijanathb
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial

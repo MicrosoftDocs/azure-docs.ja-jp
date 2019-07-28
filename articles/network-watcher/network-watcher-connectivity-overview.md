@@ -3,7 +3,7 @@ title: Azure Network Watcher との接続のトラブルシューティングの
 description: このページでは、Network Watcher の接続のトラブルシューティング機能の概要を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.service: network-watcher

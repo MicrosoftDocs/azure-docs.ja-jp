@@ -2,7 +2,7 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: media-services
-author: Juliako
+author: juliako
 ms.service: media-services
 ms.topic: include
 ms.date: 05/01/2019

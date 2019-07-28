@@ -3,7 +3,7 @@ title: 予測エンドポイントを使用してプログラムで分類器を�
 titlesuffix: Azure Cognitive Services
 description: API を使用して、Custom Vision Service の分類器によるイメージのテストをプログラムから行う方法を説明します。
 services: cognitive-services
-author: anrothMSFT
+author: anrothmsft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision

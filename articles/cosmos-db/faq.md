@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 description: グローバル分散型のマルチモデル データベース サービスである Azure Cosmos DB についてよく寄せられる質問の回答が得られます。 容量、パフォーマンス レベル、スケーリングについて説明します。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019

@@ -3,7 +3,7 @@ title: Office 365 の外部共有と B2B コラボレーション - Azure Active
 description: O365 および Azure Active Directory B2B コラボレーションを使用する外部パートナーとのリソースの共有について説明します。
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 05/24/2017
 ms.author: mimart

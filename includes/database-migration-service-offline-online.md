@@ -1,5 +1,5 @@
 ---
-author: douglaslMS
+author: douglaslms
 ms.service: sql-database
 ms.topic: include
 ms.date: 11/25/2018

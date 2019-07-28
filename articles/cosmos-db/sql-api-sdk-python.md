@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB:SQL Python API、SDK、およびリソース
 description: リリース日、提供終了日、Azure Cosmos DB Python SDK の各バージョン間の変更など、SQL Python API と SDK に関するあらゆる詳細を提供します。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python

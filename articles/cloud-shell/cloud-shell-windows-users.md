@@ -3,7 +3,7 @@ title: Windows ユーザー用 Azure Cloud Shell | Microsoft Docs
 description: Linux システムに慣れていないユーザー向けのガイド
 services: azure
 documentationcenter: ''
-author: maertendMSFT
+author: maertendmsft
 manager: hemantm
 tags: azure-resource-manager
 ms.assetid: ''

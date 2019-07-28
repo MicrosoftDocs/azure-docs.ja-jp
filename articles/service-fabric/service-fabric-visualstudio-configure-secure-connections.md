@@ -3,7 +3,7 @@ title: セキュリティ保護された Azure Service Fabric クラスター接
 description: Visual Studio を使用して、Azure Service Fabric クラスターでサポートされているセキュリティで保護された接続を構成する方法について説明します。
 services: service-fabric
 documentationcenter: na
-author: cawaMS
+author: cawams
 manager: paulyuk
 editor: tglee
 ms.assetid: 80501867-dd7a-4648-8bd6-d4f26b68402d

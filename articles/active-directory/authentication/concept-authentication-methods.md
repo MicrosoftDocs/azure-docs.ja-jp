@@ -7,7 +7,7 @@ ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: joflore
-author: MicrosoftGuyJFlo
+author: microsoftguyjflo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management

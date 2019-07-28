@@ -1,5 +1,5 @@
 ---
-author: MikeRayMSFT
+author: mikeraymsft
 ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 11/25/2018

@@ -3,7 +3,7 @@ title: AlwaysOn 可用性グループの外部リスナーの構成 | Microsoft 
 description: このチュートリアルでは、関連付けられているクラウド サービスのパブリック仮想 IP アドレスを使用して外部からアクセスできる、AlwaysOn 可用性グループ リスナーを Azure で作成する手順について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MikeRayMSFT
+author: mikeraymsft
 manager: craigg
 editor: ''
 tags: azure-service-management

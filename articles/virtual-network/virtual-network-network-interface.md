@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: ネットワーク インターフェイスとは何かを説明し、その作成、設定変更、および削除を行う方法を示します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 ms.service: virtual-network
 ms.devlang: NA

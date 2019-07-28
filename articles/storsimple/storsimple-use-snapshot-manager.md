@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager のユーザー インターフェイス | Mi
 description: StorSimple Snapshot Manager のユーザー インターフェイスについて説明し、これを使用してバックアップ ジョブとバックアップ カタログを管理する方法を説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: shars
 manager: timlt
 editor: ''
 ms.assetid: c7d91892-2881-41a2-a7a2-908dc3646493

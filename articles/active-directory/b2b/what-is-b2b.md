@@ -3,7 +3,7 @@ title: Azure Active Directory B2B コラボレーションとは - Azure Active 
 description: Azure Active Directory B2B コラボレーションでは、リソースを外部パートナーと安全に共有してコラボレーションできるように、ゲスト ユーザー アクセスをサポートしています。
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: overview
 ms.date: 09/14/2018
 ms.author: mimart

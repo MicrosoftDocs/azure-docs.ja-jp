@@ -3,7 +3,7 @@ title: Azure VM の割り当てエラーのトラブルシューティング | M
 description: Azure で VM を作成、再起動、またはサイズ変更するときの割り当てエラーのトラブルシューティング
 services: virtual-machines
 documentationcenter: ''
-author: JiangChen79
+author: jiangchen79
 manager: felixwu
 editor: ''
 tags: top-support-issue,azure-resource-manager,azure-service-management

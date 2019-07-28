@@ -3,7 +3,7 @@ title: Azure CLI スクリプトのサンプル - コンテナーへのファイ
 description: Azure CLI スクリプトを使用して、ローカル ファイルをストレージ コンテナーにアップロードします。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: ''

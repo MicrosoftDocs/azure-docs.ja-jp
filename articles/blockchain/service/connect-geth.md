@@ -3,7 +3,7 @@ title: Geth を使用して Azure Blockchain Service に接続する
 description: Geth を使用して Azure Blockchain Service ネットワークに接続する
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/02/2019
 ms.topic: quickstart

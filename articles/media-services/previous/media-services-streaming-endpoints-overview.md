@@ -3,7 +3,7 @@ title: Azure Media Services ストリーミング エンドポイントの概要
 description: このトピックでは、Azure Media Services ストリーミング エンドポイントの概要を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 writer: juliako
 manager: femila
 editor: ''

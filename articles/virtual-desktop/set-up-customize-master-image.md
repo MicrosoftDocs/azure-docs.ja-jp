@@ -2,7 +2,7 @@
 title: マスター VHD イメージを準備してカスタマイズする - Azure
 description: Windows Virtual Desktop プレビューのマスター イメージを準備、カスタマイズし、Azure にアップロードする方法。
 services: virtual-desktop
-author: Heidilohr
+author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/03/2019

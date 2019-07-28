@@ -3,7 +3,7 @@ title: 例:リアルタイムのビデオ分析 - Face API
 titleSuffix: Azure Cognitive Services
 description: ライブ ビデオ ストリームから取得したフレームに対し、Face API を使用して、ほぼリアルタイムに分析を実行します。
 services: cognitive-services
-author: SteveMSFT
+author: stevemsft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api

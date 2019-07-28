@@ -3,7 +3,7 @@ title: Media Services v3 CLI を使用するカスタム変換のエンコード
 description: このトピックでは、Azure Media Services v3 で CLI を使用してカスタム変換をエンコードする方法を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

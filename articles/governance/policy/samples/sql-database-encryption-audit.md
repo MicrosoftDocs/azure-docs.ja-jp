@@ -1,7 +1,7 @@
 ---
 title: サンプル - SQL Database の Transparent Data Encryption の監査
 description: このサンプル ポリシー定義は、SQL Database で Transparent Data Encryption が有効になっていないかどうかを監査します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

@@ -3,7 +3,7 @@ title: Azure Service Fabric のノードの種類と仮想マシン スケール
 description: Azure Service Fabric のノードの種類を仮想マシン スケール セットに関連付ける方法のほか、スケール セット インスタンスまたはクラスター ノードにリモートで接続する方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: ChackDan
+author: chackdan
 manager: chackdan
 editor: ''
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48

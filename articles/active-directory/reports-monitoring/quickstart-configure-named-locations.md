@@ -3,7 +3,7 @@ title: Azure Active Directory でネームド ロケーションを構成する 
 description: ネームド ロケーションを構成する方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 ms.assetid: f56e042a-78d5-4ea3-be33-94004f2a0fc3
 ms.service: active-directory

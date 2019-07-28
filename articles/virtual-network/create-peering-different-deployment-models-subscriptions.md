@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: 異なる Azure サブスクリプションに存在する、異なる Azure デプロイメント モデルで作成された仮想ネットワーク間に、仮想ネットワーク ピアリングを作成する方法について説明します。
 services: virtual-network
 documentationcenter: ''
-author: KumudD
+author: kumudd
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article

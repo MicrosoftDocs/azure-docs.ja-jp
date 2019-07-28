@@ -1,7 +1,7 @@
 ---
 title: Azure Database for MySQL の SSL 接続
 description: SSL 接続を適切に使用できるように、Azure Database for MySQL と関連アプリケーションを構成するための情報
-author: JasonMAnderson
+author: jasonmanderson
 ms.author: janders
 ms.service: mysql
 ms.topic: conceptual

@@ -3,7 +3,7 @@ title: Azure File Storage での Storage Explorer の使用 | Microsoft Docs
 description: Storage Explorer を使用してファイル共有やファイルを操作する方法について説明します。
 services: storage
 documentationcenter: na
-author: cawaMS
+author: cawams
 manager: paulyuk
 editor: ''
 ms.assetid: ''

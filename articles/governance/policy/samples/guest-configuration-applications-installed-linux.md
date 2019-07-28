@@ -1,7 +1,7 @@
 ---
 title: サンプル - アプリケーションが Linux VM 内にインストールされていないかどうかを監査する
 description: このサンプル Policy ゲスト構成のイニシアチブと定義は、指定したアプリケーションが Linux 仮想マシン内にインストールされていないかどうかを監査します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

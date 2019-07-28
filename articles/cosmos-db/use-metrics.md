@@ -2,7 +2,7 @@
 title: Azure Cosmos DB のメトリックを使用した監視とデバッグ
 description: Azure Cosmos DB のメトリックを使用して、一般的な問題をデバッグし、データベースを監視します。
 ms.service: cosmos-db
-author: kanshiG
+author: kanshig
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 06/18/2019

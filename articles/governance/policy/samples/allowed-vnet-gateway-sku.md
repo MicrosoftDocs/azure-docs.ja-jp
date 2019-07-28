@@ -1,7 +1,7 @@
 ---
 title: サンプル - 許可されている仮想ネットワーク ゲートウェイ SKU
 description: このサンプル ポリシー定義は、適切な SKU とゲートウェイの種類を使用するよう仮想ネットワーク ゲートウェイに要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

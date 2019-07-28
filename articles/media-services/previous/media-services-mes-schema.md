@@ -1,7 +1,7 @@
 ---
 title: Media Encoder Standard スキーマ | Microsoft Docs
 description: この記事では、Media Encoder Standard スキーマの概要を示します。
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 services: media-services

@@ -3,7 +3,7 @@ title: 仮想ネットワーク用の Azure Resource Manager テンプレート 
 description: Azure Virtual Network のデプロイに使用できるさまざまな Azure Resource Manager テンプレートについて説明します。
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: ''

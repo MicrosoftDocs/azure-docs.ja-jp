@@ -1,7 +1,7 @@
 ---
 title: サンプル - リソース グループのカスタム VM イメージの許可
 description: このサンプル ポリシー定義は、カスタム イメージが、承認されたリソース グループに属したものであることを要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

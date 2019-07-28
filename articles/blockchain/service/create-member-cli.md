@@ -3,7 +3,7 @@ title: Azure CLI を使用して Azure Blockchain Service を作成する
 description: Azure Blockchain Service を使用し、Azure CLI を使用してブロックチェーン メンバーを作成します。
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/29/2019
 ms.topic: quickstart

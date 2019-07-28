@@ -3,7 +3,7 @@ title: Azure Portal でのコンテンツの発行 | Microsoft Docs
 description: このチュートリアルでは、Azure Portal を使用してコンテンツを発行する手順について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: 92c364eb-5a5f-4f4e-8816-b162c031bb40

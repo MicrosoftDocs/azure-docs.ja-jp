@@ -3,7 +3,7 @@ title: オンプレミスの Kubernetes を使用する
 titleSuffix: Azure Cognitive Services
 description: Kubernetes と Helm を使って音声テキスト変換とテキスト読み上げのコンテナー イメージを定義し、Kubernetes パッケージを作成します。 このパッケージは、オンプレミスの Kubernetes クラスターに展開されます。
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service

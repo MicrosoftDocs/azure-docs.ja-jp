@@ -2,7 +2,7 @@
 title: Azure Storage Explorer トラブルシューティング ガイド | Microsoft Docs
 description: Azure Storage Explorer のデバッグ手法の概要
 services: virtual-machines
-author: Deland-Han
+author: deland-han
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018

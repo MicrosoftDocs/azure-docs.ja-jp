@@ -2,7 +2,7 @@
 title: クイック スタート:Python で REST API を使用してモデルをトレーニングしてフォーム データを抽出する - Form Recognizer
 titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、Python で Form Recognizer REST API を使用してモデルをトレーニングし、フォームからデータを抽出します。
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer

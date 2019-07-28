@@ -3,7 +3,7 @@ title: Azure CLI を使用して Azure リソースにマネージド ID アク�
 description: Azure CLI を使用して、1 つのリソースにマネージド ID を割り当て、別のリソースにアクセスを割り当てる方法について、ステップ バイ ステップで説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.service: active-directory

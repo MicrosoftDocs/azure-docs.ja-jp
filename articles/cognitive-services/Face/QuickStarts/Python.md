@@ -3,7 +3,7 @@ title: クイック スタート:Azure REST API と Python を使用して画像
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Azure Face REST API と Python を使用して、画像内の顔を検出します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api

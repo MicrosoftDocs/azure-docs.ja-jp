@@ -2,7 +2,7 @@
 title: Azure Data Catalog 開発者向けサンプル
 description: この記事では、Data Catarog REST API で使用可能な開発者向けサンプルの概要を説明します。
 services: data-catalog
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.assetid: 0dc23edd-04d8-49fc-841e-d132fb109ce7
 ms.service: data-catalog

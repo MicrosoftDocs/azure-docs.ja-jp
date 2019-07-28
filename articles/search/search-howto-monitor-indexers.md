@@ -2,7 +2,7 @@
 title: インデクサーの状態と結果を監視する方法 - Azure Search
 description: REST API または .NET SDK を使用し、Azure portal で Azure Search インデクサーの状態、進捗状況、結果を監視します。
 ms.date: 06/28/2019
-author: RobDixon22
+author: robdixon22
 manager: HeidiSteen
 ms.author: v-rodixo
 services: search

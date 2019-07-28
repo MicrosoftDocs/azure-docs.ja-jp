@@ -3,7 +3,7 @@ title: 仮想マシン ネットワーク トラフィック フィルターの�
 description: このクイック スタートでは、Azure Network Watcher の IP フローの確認機能を使って、仮想マシンのネットワーク トラフィック フィルターの問題を診断する方法について説明します。
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

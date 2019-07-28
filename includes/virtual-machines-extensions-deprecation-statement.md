@@ -2,7 +2,7 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: virtual-machines-linux
-author: RicksterCDN
+author: rickstercdn
 ms.service: virtual-machines-linux
 ms.topic: include file
 ms.date: 04/20/2018

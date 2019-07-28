@@ -3,7 +3,7 @@ title: Video Indexer についてよく寄せられる質問 - Azure
 titlesuffix: Azure Media Services
 description: Video Indexer についてよく寄せられる質問とその回答を紹介します。
 services: media-services
-author: Juliako
+author: juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer

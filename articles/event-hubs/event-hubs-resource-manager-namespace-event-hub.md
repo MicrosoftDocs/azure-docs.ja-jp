@@ -3,7 +3,7 @@ title: コンシューマー グループを含むイベント ハブを作成�
 description: イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を Azure Resource Manager テンプレートで作成する
 services: event-hubs
 documentationcenter: .net
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: 28bb4591-1fd7-444f-a327-4e67e8878798

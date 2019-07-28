@@ -3,7 +3,7 @@ title: Azure Portal で Azure Active Directory のユーザー アクティビ�
 description: Azure Portal で Azure Active Directory のアクティビティ レポートがある場所について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.service: active-directory

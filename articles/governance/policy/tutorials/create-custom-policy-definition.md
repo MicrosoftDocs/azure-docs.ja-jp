@@ -1,7 +1,7 @@
 ---
 title: カスタム ポリシー定義の作成
 description: カスタム ビジネス ルールを適用するための Azure Policy のカスタム ポリシー定義を作成します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 04/23/2019
 ms.topic: tutorial

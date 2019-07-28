@@ -3,7 +3,7 @@ title: インクルード ファイル
 description: インクルード ファイル
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
+author: celestedg
 manager: mtillman
 editor: ''
 ms.service: active-directory

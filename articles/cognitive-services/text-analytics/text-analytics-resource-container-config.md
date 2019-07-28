@@ -3,7 +3,7 @@ title: コンテナーを構成する
 titlesuffix: Text Analytics - Azure Cognitive Services
 description: Text Analytics ではコンテナーごとに一般的な構成フレームワークが提供されているので、コンテナーのストレージ、ログとテレメトリ、セキュリティの設定を簡単に構成して、管理できます。
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services

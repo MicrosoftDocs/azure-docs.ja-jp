@@ -3,7 +3,7 @@ title: Video Indexer API の使用 - Azure
 titlesuffix: Azure Media Services
 description: この記事では、Video Indexer API 基本的な使用方法について説明します。
 services: media-services
-author: Juliako
+author: juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer

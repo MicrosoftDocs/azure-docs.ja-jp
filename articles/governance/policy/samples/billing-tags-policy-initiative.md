@@ -1,7 +1,7 @@
 ---
 title: サンプル - 課金タグ ポリシーのイニシアティブ
 description: このサンプル ポリシー定義セットは、コスト センターと製品名に対して指定したタグ値を要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

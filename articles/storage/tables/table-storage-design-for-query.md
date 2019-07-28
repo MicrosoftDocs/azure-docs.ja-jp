@@ -2,7 +2,7 @@
 title: クエリに対応した Azure ストレージ テーブルの設計 | Microsoft Docs
 description: Azure テーブル ストレージで、クエリに対応したテーブルを設計します。
 services: storage
-author: MarkMcGeeAtAquent
+author: markmcgeeataquent
 ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018

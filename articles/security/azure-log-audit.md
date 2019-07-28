@@ -3,7 +3,7 @@ title: Azure のログと監査 | Microsoft Docs
 description: ログ データを使用して、アプリケーションに関する深い洞察を得る方法について説明します。
 services: security
 documentationcenter: na
-author: UnifyCloud
+author: unifycloud
 manager: barbkess
 editor: TomSh
 ms.assetid: ''
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
-ms.author: TomSh
+ms.author: tomsh
 ms.openlocfilehash: edadb369461bb3865dd6894c3329e7079fa9d13f
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT

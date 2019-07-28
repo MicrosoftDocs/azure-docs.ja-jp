@@ -3,7 +3,7 @@ title: チュートリアル:.NET SDK を使用して画像内の顔データを
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、Face API を使用して画像内の顔を検出し、フレームに収める Windows アプリを作成します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api

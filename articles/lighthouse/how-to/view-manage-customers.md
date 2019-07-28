@@ -1,7 +1,7 @@
 ---
 title: 顧客と委任されたリソースを Azure portal で表示し、管理する
 description: Azure の委任されたリソース管理を使用するサービス プロバイダーは、Azure portal の [マイ カスタマー] を使用して、自社に委任された顧客のリソースとサブスクリプションをすべて表示できます。
-author: JnHs
+author: jnhs
 ms.author: jenhayes
 ms.service: lighthouse
 ms.date: 07/11/2019

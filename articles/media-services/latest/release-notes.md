@@ -3,7 +3,7 @@ title: Azure Media Services v3 リリース ノート | Microsoft Docs
 description: 常に最新の開発情報を把握していただけるよう、この記事では Azure Media Services v3 の最新の更新情報を提供します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

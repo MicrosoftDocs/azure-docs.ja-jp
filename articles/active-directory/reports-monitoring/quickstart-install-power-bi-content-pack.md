@@ -3,7 +3,7 @@ title: Azure AD Power BI コンテンツ パックをインストールする | 
 description: Azure AD Power BI コンテンツ パックをインストールする方法について説明します
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 ms.assetid: fd5604eb-1334-4bd8-bfb5-41280883e2b5
 ms.service: active-directory

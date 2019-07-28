@@ -1,7 +1,7 @@
 ---
 title: サンプル - 許可されるリソースの種類
 description: このサンプル ポリシー定義を適用すると、承認されているリソースの種類のみがデプロイされます。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

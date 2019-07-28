@@ -1,7 +1,7 @@
 ---
 title: Microsoft Azure Backup Server v3 のリリース ノート
 description: この記事では、既知の問題と MABS v3 の回避策に関する情報を提供します。
-author: JYOTHIRMAISURI
+author: jyothirmaisuri
 manager: vvithal
 ms.service: backup
 ms.topic: conceptual

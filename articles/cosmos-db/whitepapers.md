@@ -2,7 +2,7 @@
 title: Azure Cosmos DB の概念について説明したホワイトペーパー
 description: これらのホワイトペーパーでは、Azure Cosmos DB の概念が詳しく説明されています。
 ms.service: cosmos-db
-author: SnehaGunda
+author: snehagunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/28/2019

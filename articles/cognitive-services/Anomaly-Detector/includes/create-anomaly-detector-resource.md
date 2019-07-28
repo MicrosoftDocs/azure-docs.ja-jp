@@ -2,7 +2,7 @@
 title: コンテナー サポート
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include

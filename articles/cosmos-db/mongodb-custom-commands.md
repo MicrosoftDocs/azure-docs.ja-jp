@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB の MongoDB 用 API に格納されているデータを管理するための MongoDB 拡張コマンド
 description: この記事では、MongoDB 拡張コマンドを使用して、Azure Cosmos DB の MongoDB 用 API に格納されているデータを管理する方法について説明します。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019

@@ -2,7 +2,7 @@
 title: Azure Custom Providers プレビューを使用したリソース プロバイダーの作成
 description: リソース プロバイダーを作成し、そのカスタム リソースの種類をデプロイする方法について説明します。
 services: managed-applications
-author: MSEvanhi
+author: msevanhi
 ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 05/01/2019

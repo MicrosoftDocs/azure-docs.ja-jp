@@ -2,7 +2,7 @@
 title: 1 つのサービスでコンテンツを分離するためのマルチテナントのモデル化 - Azure Search
 description: Azure Search の使用時のマルチテナント SaaS アプリケーションの一般的な設計パターンについて説明します。
 manager: jlembicz
-author: LiamCavanagh
+author: liamcavanagh
 services: search
 ms.service: search
 ms.devlang: NA

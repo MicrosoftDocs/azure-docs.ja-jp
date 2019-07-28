@@ -3,7 +3,7 @@ title: ネットワーク トラフィックのフィルター処理 - Azure CLI
 description: この記事では、ネットワーク セキュリティ グループと Azure CLI を使用して、サブネットに対するネットワーク トラフィックをフィルター処理する方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

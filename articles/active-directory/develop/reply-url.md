@@ -1,7 +1,7 @@
 ---
 title: リダイレクト URI および応答 URL に関する制約と制限 - Microsoft ID プラットフォーム
 description: リダイレクト URI および応答 URL に関する制約と制限
-author: SureshJa
+author: sureshja
 ms.author: sureshja
 manager: CelesteDG
 ms.date: 06/29/2019

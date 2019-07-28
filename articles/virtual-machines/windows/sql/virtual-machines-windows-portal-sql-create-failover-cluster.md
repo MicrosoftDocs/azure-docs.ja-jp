@@ -3,7 +3,7 @@ title: SQL Server FCI - Azure Virtual Machines | Microsoft Docs
 description: この記事では、Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを作成する方法について説明します。
 services: virtual-machines
 documentationCenter: na
-author: MikeRayMSFT
+author: mikeraymsft
 manager: craigg
 editor: monicar
 tags: azure-service-management

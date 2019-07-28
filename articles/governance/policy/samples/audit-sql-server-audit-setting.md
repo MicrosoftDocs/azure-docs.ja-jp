@@ -1,7 +1,7 @@
 ---
 title: サンプル - SQL Server レベルの監査設定の監査
 description: このサンプル ポリシー定義は、SQL Server の監査設定が指定された設定と一致しない場合に、この設定の監査を行います。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

@@ -1,7 +1,7 @@
 ---
 title: 'サンプル: Express Route ネットワークへのネットワークピアリングがない'
 description: このサンプル ポリシー定義は、指定されたリソース グループ内の 1 つのネットワークに、ネットワーク ピアリングを関連付けることを禁止します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

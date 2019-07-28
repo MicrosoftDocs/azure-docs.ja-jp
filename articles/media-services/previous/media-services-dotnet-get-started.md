@@ -3,7 +3,7 @@ title: .NET を使用したオンデマンド コンテンツ配信の概要 | M
 description: このチュートリアルでは、Azure Media Services と .NET を使用したオンデマンド コンテンツ配信アプリケーションの実装手順を紹介します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: 388b8928-9aa9-46b1-b60a-a918da75bd7b

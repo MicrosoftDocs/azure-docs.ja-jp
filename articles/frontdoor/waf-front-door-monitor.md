@@ -2,7 +2,7 @@
 title: Azure Web アプリケーション ファイアウォールの監視とログ記録
 description: Front Door の監視とログ記録での Web アプリケーション ファイアウォール (WAF) について説明します
 services: frontdoor
-author: KumudD
+author: kumudd
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article

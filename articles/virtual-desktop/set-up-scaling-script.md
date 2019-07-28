@@ -2,7 +2,7 @@
 title: Windows Virtual Desktop プレビューのセッション ホストの自動スケール - Azure
 description: Windows Virtual Desktop プレビューのセッション ホストの自動スケール スクリプトを設定する方法について説明します。
 services: virtual-desktop
-author: Heidilohr
+author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019

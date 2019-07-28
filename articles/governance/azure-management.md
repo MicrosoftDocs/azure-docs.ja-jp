@@ -1,7 +1,7 @@
 ---
 title: Azure 管理の概要 - Azure のガバナンス
 description: Azure 管理ツールに関するコンテンツへのリンクを含む、Azure のアプリケーションおよびリソースの管理の領域の概要です。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: governance
 ms.topic: article

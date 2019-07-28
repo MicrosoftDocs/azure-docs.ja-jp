@@ -3,7 +3,7 @@ title: 例:顔を PersonGroup に追加する方法 - Face API
 titleSuffix: Azure Cognitive Services
 description: Face API を使用して画像に顔を追加します。
 services: cognitive-services
-author: SteveMSFT
+author: stevemsft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api

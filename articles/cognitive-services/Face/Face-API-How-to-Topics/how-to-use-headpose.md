@@ -2,7 +2,7 @@
 title: HeadPose 属性を使用する
 titleSuffix: Azure Cognitive Services
 description: HeadPose 属性を使用して、顔の四角形を自動的に回転する方法、または頭のジェスチャをビデオ フィードから検出する方法について説明します。
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api

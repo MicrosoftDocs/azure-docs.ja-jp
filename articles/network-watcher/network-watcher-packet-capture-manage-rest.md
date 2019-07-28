@@ -3,7 +3,7 @@ title: Azure Network Watcher でパケット キャプチャを管理する - RE
 description: このページでは、Azure REST API を使用して Network Watcher のパケット キャプチャ機能を管理する方法を説明します
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: 53fe0324-835f-4005-afc8-145eeb314aeb

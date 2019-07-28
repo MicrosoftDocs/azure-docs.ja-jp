@@ -3,7 +3,7 @@ title: Azure Functions のデプロイ テクノロジ | Microsoft Docs
 description: Azure Functions にコードをデプロイするさまざまな方法について学習します。
 services: functions
 documentationcenter: .net
-author: ColbyTresness
+author: colbytresness
 manager: dariac
 ms.service: azure-functions
 ms.custom: vs-azure

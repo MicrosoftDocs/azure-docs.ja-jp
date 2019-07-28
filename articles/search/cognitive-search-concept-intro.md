@@ -2,7 +2,7 @@
 title: コグニティブ検索、データ抽出、自然言語 AI 処理 - Azure Search
 description: 認知スキルと AI アルゴリズムを使用したコンテンツ抽出、自然言語処理 (NLP) および画像処理を実行することにより、Azure Search インデックスで検索可能なコンテンツを作成します。
 manager: cgronlun
-author: HeidiSteen
+author: heidisteen
 services: search
 ms.service: search
 ms.devlang: NA

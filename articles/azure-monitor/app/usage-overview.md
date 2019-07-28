@@ -3,7 +3,7 @@ title: Azure Application Insights による利用状況分析 | Microsoft docs
 description: ユーザーを理解し、提供しているアプリでユーザーが何を実行するかを理解します。
 services: application-insights
 documentationcenter: ''
-author: NumberByColors
+author: numberbycolors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd

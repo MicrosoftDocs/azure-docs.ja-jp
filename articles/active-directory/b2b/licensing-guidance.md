@@ -3,7 +3,7 @@ title: B2B コラボレーションのライセンスに関するガイダンス
 description: Azure Active Directory B2B コラボレーションでは、Azure AD 有料ライセンスは必要ありませんが、B2B ゲスト ユーザー用の有料機能を利用することもできます。
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: mimart

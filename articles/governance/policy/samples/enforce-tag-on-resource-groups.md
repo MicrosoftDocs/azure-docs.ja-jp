@@ -1,7 +1,7 @@
 ---
 title: 'サンプル: リソース グループへのタグと値の強制'
 description: このサンプル ポリシー定義は、1 つのリソース グループに 1 つのタグと値を使用することを要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

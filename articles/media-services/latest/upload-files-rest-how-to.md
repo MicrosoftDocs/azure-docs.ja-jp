@@ -3,7 +3,7 @@ title: REST を使用した Azure Media Services アカウントへのファイ�
 description: 資産を作成し、アップロードすることによって、Media Services にメディア コンテンツを取得する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

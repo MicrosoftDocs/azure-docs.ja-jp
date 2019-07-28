@@ -2,7 +2,7 @@
 title: Azure SQL Data Warehouse でストアド プロシージャを使用する | Microsoft Docs
 description: ソリューション開発のための Azure SQL Data Warehouse でのストアド プロシージャの実装に関するヒント。
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: xiaoyumsft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

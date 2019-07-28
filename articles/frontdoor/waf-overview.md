@@ -3,7 +3,7 @@ title: Azure Front Door 用の Azure Web アプリケーション ファイア�
 description: Azure Front Door Service 用の Azure Web アプリケーション ファイアウォールによって、Web アプリケーションが悪意のある攻撃からどのように保護されるのかを説明します。
 services: frontdoor
 documentationcenter: ''
-author: KumudD
+author: kumudd
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article

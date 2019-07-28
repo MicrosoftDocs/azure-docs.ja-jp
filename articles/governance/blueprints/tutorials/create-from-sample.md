@@ -1,7 +1,7 @@
 ---
 title: ブループリント サンプルから環境を作成する
 description: ブループリント サンプルを使用して、2 つのリソース グループを設定し、それぞれにロールの割り当てを構成するブループリント定義を作成します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 03/05/2019
 ms.topic: tutorial

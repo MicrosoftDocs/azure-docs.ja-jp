@@ -3,7 +3,7 @@ title: ギャラリー以外のアプリケーションのパスワード SSO �
 description: Azure AD アプリケーション ギャラリーに含まれていないカスタム アプリのパスワード シングル サインオン (SSO) を構成するときに発生する一般的な問題です。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
+author: celestedg
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory

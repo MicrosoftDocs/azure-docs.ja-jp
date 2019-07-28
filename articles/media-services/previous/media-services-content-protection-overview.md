@@ -3,7 +3,7 @@ title: Azure Media Services を使用してコンテンツを保護する | Micr
 description: この記事では、Media Services でのコンテンツ保護の概要について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: 81bc00e1-dcda-4d69-b9ab-8768b793422b

@@ -1,7 +1,7 @@
 ---
 title: Azure リソースの配列プロパティのポリシーを作成する
 description: Azure Policy 定義ルールを使用して、配列パラメーターを作成し、配列の言語式のルールを作成し、[*] エイリアスを評価し、既存の配列に要素を付加する方法について説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 03/06/2019
 ms.topic: conceptual

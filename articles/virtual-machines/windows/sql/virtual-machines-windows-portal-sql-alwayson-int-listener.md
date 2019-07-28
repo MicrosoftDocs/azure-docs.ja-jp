@@ -3,7 +3,7 @@ title: SQL Server 可用性グループ リスナーを Azure 仮想マシンに
 description: Azure Virtual Machines に SQL Server の AlwaysOn 可用性グループのリスナーを作成する手順を説明します。
 services: virtual-machines
 documentationcenter: na
-author: MikeRayMSFT
+author: mikeraymsft
 manager: craigg
 editor: monicar
 ms.assetid: d1f291e9-9af2-41ba-9d29-9541e3adcfcf

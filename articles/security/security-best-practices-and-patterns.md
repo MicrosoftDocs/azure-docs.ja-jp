@@ -3,7 +3,7 @@ title: セキュリティのベスト プラクティスとパターン - Micros
 description: この記事では、さまざまな Azure リソースに対するセキュリティのベストプラクティスとパターンのリンクを提供します。
 services: azure-security
 documentationcenter: na
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: 1cbbf8dc-ea94-4a7e-8fa0-c2cb198956c5

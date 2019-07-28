@@ -1,7 +1,7 @@
 ---
 title: 'サンプル: サーバー レベルの脅威検出設定の監査'
 description: このサンプル ポリシー定義は、SQL サーバー セキュリティ アラート ポリシーが指定した状態に設定されていない場合、このポリシーの監査を行います。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

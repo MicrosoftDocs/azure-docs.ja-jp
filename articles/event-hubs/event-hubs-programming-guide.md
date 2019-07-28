@@ -3,7 +3,7 @@ title: プログラミング ガイド - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure .NET SDK を使用して Azure Event Hubs 用のコードを記述する方法について説明します。
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 ms.service: event-hubs
 ms.custom: seodec18
 ms.topic: article

@@ -3,7 +3,7 @@ title: Azure CLI のスクリプト サンプル - Azure CLI による複数の 
 description: Azure CLI のスクリプト サンプル - 同じ仮想マシンへの複数の Web サイトの負荷分散
 services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
+author: kumudd
 manager: timlt
 editor: tysonn
 tags: ''

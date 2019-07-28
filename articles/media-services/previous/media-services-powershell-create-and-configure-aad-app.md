@@ -3,7 +3,7 @@ title: Azure Media Services API にアクセスする Azure AD アプリを Powe
 description: PowerShell で Azure Active Directory (Azure AD) アプリを作成し、Azure Media Services API にアクセスするよう設定する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

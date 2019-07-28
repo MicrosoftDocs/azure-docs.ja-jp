@@ -1,7 +1,7 @@
 ---
 title: スロットルされた要求に関するガイダンス
 description: Azure Resource Graph への要求のスロットルを回避するための適切なクエリの作成について説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 06/19/2019
 ms.topic: conceptual

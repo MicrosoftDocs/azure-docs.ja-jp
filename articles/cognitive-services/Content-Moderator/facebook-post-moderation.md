@@ -3,7 +3,7 @@ title: チュートリアル:Facebook のコンテンツをモデレートする
 titlesuffix: Azure Cognitive Services
 description: このチュートリアルでは、機械学習ベースの Content Moderator を使用して Facebook の投稿とコメントをモデレートする方法について説明します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator

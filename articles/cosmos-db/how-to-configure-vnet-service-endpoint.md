@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB アカウント用の仮想ネットワークとサブネット ベースのアクセスを構成する
 description: このドキュメントでは、Azure Cosmos DB の仮想ネットワーク サービス エンドポイントのセットアップに必要な手順について説明します。
-author: kanshiG
+author: kanshig
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019

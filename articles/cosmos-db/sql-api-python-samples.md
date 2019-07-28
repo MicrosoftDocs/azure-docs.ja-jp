@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB の SQL API の Python サンプル
 description: CRUD 操作など、Azure Cosmos DB の一般的なタスクについては、GitHub の Python のサンプルを参照してください。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python

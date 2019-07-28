@@ -1,7 +1,7 @@
 ---
 title: "\"単純な\" 検索構文を利用したクエリの例 - Azure Search"
 description: フルテキスト検索、フィルター検索、地理検索、ファセット検索、および Azure Search インデックスのクエリに使用されるその他のクエリ文字列の単純なクエリの例。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 tags: Simple query analyzer syntax
 services: search

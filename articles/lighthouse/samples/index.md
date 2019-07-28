@@ -1,7 +1,7 @@
 ---
 title: Azure Lighthouse のサンプルとテンプレートのインデックス
 description: Azure Lighthouse のサンプルとテンプレートのインデックス
-author: JnHs
+author: jnhs
 manager: carmonm
 ms.service: lighthouse
 ms.topic: sample

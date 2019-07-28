@@ -3,7 +3,7 @@ title: Azure Storage で使用できるセキュリティ機能 | Microsoft Docs
 description: この記事では、Azure Storage で使用できる Azure のコア セキュリティ機能の概要について説明します。
 services: security
 documentationcenter: na
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8

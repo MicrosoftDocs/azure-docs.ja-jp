@@ -1,7 +1,7 @@
 ---
 title: ポータルでブループリントを作成する
 description: Azure Blueprints を使用して、Azure portal から成果物を作成、定義、デプロイします。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 03/11/2019
 ms.topic: quickstart

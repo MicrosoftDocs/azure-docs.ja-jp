@@ -2,7 +2,7 @@
 title: Windows Virtual Desktop プレビューとは  - Azure
 description: Windows Virtual Desktop プレビューの概要です。
 services: virtual-desktop
-author: Heidilohr
+author: heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 07/17/2019

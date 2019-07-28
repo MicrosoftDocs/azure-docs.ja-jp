@@ -2,7 +2,7 @@
 title: Azure Database Migration Service の使用に関連した一般的な問題やエラーの既知のトラブルシューティングに関する記事 | Microsoft Docs
 description: Azure Database Migration Service の使用に関連した一般的な既知の問題やエラーのトラブルシューティング方法について説明します。
 services: database-migration
-author: HJToland3
+author: hjtoland3
 ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg

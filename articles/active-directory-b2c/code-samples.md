@@ -9,7 +9,7 @@ ms.date: 01/23/2018
 ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
-ms.subservice: B2C
+ms.subservice: b2c
 ms.openlocfilehash: 5db3b978193ab51fc60f1bcb97d83b4d24037b54
 ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
 ms.translationtype: HT

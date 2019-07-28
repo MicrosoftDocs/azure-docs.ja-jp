@@ -2,7 +2,7 @@
 title: Azure Search サービスの価格レベルまたは SKU の選択 - Azure Search
 description: Azure Search をプロビジョニングできる SKU は、Free、Basic、および Standard です。Standard は、さまざまなリソース構成および容量レベルで使用できます。
 services: search
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 tags: azure-portal
 ms.service: search

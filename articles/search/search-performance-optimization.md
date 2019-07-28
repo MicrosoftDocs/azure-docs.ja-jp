@@ -1,7 +1,7 @@
 ---
 title: パフォーマンスの最適化のためのデプロイ戦略とベスト プラクティス - Azure Search
 description: Azure Search のパフォーマンスを調整し、最適なスケールを構成するためのベスト プラクティスについて説明します。
-author: LiamCavanagh
+author: liamcavanagh
 manager: jlembicz
 services: search
 ms.service: search

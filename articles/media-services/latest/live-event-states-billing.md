@@ -3,7 +3,7 @@ title: Azure Media Services における LiveEvent の状態と課金 | Microsof
 description: このトピックでは、Azure Media Services における LiveEvent の状態と課金について、その概要を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

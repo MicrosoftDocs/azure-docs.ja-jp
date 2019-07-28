@@ -3,7 +3,7 @@ title: クイック スタート:手書きのテキストを抽出する - SDK�
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Computer Vision Windows C# クライアント ライブラリを使って、画像からテキストを抽出します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

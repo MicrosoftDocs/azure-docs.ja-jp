@@ -2,7 +2,7 @@
 title: Azure SQL Data Warehouse への接続 (SSMS) | Microsoft Docs
 description: SQL Server Management Studio (SSMS) を使用して Azure SQL Data Warehouse に接続し、クエリを実行します。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: xiaoyul-preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

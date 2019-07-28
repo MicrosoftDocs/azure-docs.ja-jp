@@ -3,7 +3,7 @@ title: Azure Service Fabric での Java を使用したサービスのリモー�
 description: Service Fabric のリモート処理では、クライアントとサービスがリモート プロシージャ コールを使用して Java のサービスと通信できるようにします。
 services: service-fabric
 documentationcenter: java
-author: PavanKunapareddyMSFT
+author: pavankunapareddymsft
 manager: chackdan
 ms.assetid: ''
 ms.service: service-fabric

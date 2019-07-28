@@ -3,7 +3,7 @@ title: Video Indexer のシーン、ショット、キーフレーム - Azure
 titlesuffix: Azure Media Services
 description: このトピックでは、Video Indexer サービスのシーン、ショット、キーフレームの概要を説明します。
 services: media-services
-author: Juliako
+author: juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer

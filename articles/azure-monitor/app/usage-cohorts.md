@@ -3,7 +3,7 @@ title: Azure Application Insights の使用のコーホート | Microsoft Docs
 description: 共通点を持つさまざまなユーザー セット、セッション セット、イベント セット、または操作セットを分析します。
 services: application-insights
 documentationcenter: ''
-author: NumberByColors
+author: numberbycolors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd

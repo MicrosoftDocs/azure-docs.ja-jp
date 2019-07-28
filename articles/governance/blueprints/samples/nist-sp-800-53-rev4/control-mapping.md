@@ -1,7 +1,7 @@
 ---
 title: サンプル - NIST SP 800-53 R4 ブループリント - コントロール マッピング
 description: NIST SP 800-53 R4 ブループリント サンプルの Azure Policy に対するコントロール マッピング。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: sample

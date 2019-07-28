@@ -1,7 +1,7 @@
 ---
 title: サンプル - リージョンで Network Watcher が有効になっていない場合の監査
 description: このサンプル ポリシー定義は、特定のリージョンで Network Watcher が有効になっていない場合に監査を行います
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

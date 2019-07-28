@@ -3,7 +3,7 @@ title: Azure Application Insights でユーザー フローを使用してユー
 description: ユーザーが Web アプリのページ間および機能間をどのように移動しているかを分析します。
 services: application-insights
 documentationcenter: ''
-author: NumberByColors
+author: numberbycolors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd

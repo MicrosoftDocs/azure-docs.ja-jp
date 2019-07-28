@@ -2,7 +2,7 @@
 title: クイック スタート:Azure SQL データ ウェアハウスを作成する - Azure PowerShell | Microsoft Docs
 description: Azure PowerShell を使用して、SQL Database の論理サーバー、サーバーレベルのファイアウォール規則、データ ウェアハウスをすばやく作成します。
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: xiaoyumsft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart

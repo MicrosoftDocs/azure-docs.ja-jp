@@ -3,7 +3,7 @@ title: Azure Media Services を使用して URL に基づいてリモート フ�
 description: Azure Media Services で REST を使用して URL に基づいてファイルをエンコードし、コンテンツをストリーム配信します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

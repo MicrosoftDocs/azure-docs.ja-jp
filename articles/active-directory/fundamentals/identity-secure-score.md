@@ -7,7 +7,7 @@ ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: joflore
-author: MicrosoftGuyJFlo
+author: microsoftguyjflo
 manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management

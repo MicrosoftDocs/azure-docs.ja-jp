@@ -7,7 +7,7 @@ ms.subservice: devices
 ms.topic: troubleshooting
 ms.date: 06/28/2019
 ms.author: joflore
-author: MicrosoftGuyJFlo
+author: microsoftguyjflo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management

@@ -3,7 +3,7 @@ title: Azure Application Insights - Azure Functions でサポートされる機�
 description: Azure Functions でサポートされる Application Insights の機能
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: ms-timothymothra
 manager: ''
 ms.service: application-insights
 ms.workload: TBD

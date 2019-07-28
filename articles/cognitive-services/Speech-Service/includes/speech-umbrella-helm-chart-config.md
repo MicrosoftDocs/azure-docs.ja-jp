@@ -3,7 +3,7 @@ title: Speech コンテナーをインストールする
 titleSuffix: Azure Cognitive Services
 description: 音声アンブレラ helm チャートの構成オプションについて説明します。
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service

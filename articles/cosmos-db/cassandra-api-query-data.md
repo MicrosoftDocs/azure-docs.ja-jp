@@ -2,7 +2,7 @@
 title: チュートリアル:Azure Cosmos DB の Cassandra API アカウントに対するデータのクエリを実行する
 description: このチュートリアルでは、Java アプリケーションを使用して、Azure Cosmos DB の Cassandra API アカウントに対するユーザー データのクエリを実行する方法について説明します。
 ms.service: cosmos-db
-author: kanshiG
+author: kanshig
 ms.author: govindk
 ms.reviewer: sngun
 ms.subservice: cosmosdb-cassandra

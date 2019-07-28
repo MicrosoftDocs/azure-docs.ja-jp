@@ -3,7 +3,7 @@ title: NSG フロー ログの読み取り | Microsoft Docs
 description: この記事では、NSG フロー ログの解析方法を説明します
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.service: network-watcher

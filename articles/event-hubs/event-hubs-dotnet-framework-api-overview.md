@@ -2,7 +2,7 @@
 title: Azure Event Hubs .NET Framework API の概要 | Microsoft Docs
 description: 主要な Event Hubs .NET Framework クライアント API のまとめ。
 services: event-hubs
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: dotnet

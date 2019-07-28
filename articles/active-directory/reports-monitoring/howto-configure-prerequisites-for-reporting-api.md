@@ -3,7 +3,7 @@ title: Azure Active Directory レポート API にアクセスするための前
 description: Azure AD Reporting API にアクセスするための前提条件の詳細
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252

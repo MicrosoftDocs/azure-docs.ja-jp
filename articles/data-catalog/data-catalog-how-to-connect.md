@@ -2,7 +2,7 @@
 title: Azure Data Catalog でデータ ソースに接続する方法
 description: Azure Data Catalog で検出されたデータ ソースへの接続方法を説明する操作方法に関する記事
 services: data-catalog
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.assetid: 4e6b27a5-cf75-4012-b88c-333c1fe638e8
 ms.service: data-catalog

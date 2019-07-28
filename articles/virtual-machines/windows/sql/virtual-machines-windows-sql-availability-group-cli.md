@@ -3,7 +3,7 @@ title: Azure SQL VM CLI を使用して Azure VM で SQL Server の Always On �
 description: 'Azure CLI を使用して、Azure の SQL Server VM で Windows フェールオーバー クラスター、可用性グループ リスナー、および内部ロード バランサーを作成します。 '
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql

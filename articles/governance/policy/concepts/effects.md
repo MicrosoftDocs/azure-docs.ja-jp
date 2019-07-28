@@ -1,7 +1,7 @@
 ---
 title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 03/29/2019
 ms.topic: conceptual

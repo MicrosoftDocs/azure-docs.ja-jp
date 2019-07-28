@@ -3,7 +3,7 @@ title: Azure 実稼働ネットワークの管理 - Microsoft Azure
 description: この記事では、Microsoft による Azure データセンターのセキュリティを確保するための Azure 実稼働ネットワークの管理と運用方法について説明します。
 services: security
 documentationcenter: n
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e

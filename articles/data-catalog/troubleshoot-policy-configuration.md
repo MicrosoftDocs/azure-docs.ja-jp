@@ -1,7 +1,7 @@
 ---
 title: Azure Data Catalog をトラブルシューティングする方法
 description: この記事では、Azure Data Catalog リソースのトラブルシューティングに関する一般的な考慮事項について説明します。
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: troubleshooting

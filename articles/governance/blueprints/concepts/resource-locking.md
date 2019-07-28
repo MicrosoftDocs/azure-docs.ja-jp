@@ -1,7 +1,7 @@
 ---
 title: リソース ロックについて
 description: ブループリントを割り当てるときにリソースを保護するロック オプションについて説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 04/24/2019
 ms.topic: conceptual

@@ -3,7 +3,7 @@ title: Azure Portal で B2B コラボレーション ユーザーを追加する
 description: 管理者が Azure Active Directory (Azure AD) B2B コラボレーションを使用してパートナー組織からディレクトリにゲスト ユーザーを追加する方法を説明します。
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: mimart

@@ -2,7 +2,7 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: cdn
-author: SyntaxC4
+author: syntaxc4
 ms.service: azure-cdn
 ms.topic: include
 ms.date: 04/13/2018

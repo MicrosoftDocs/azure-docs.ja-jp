@@ -3,7 +3,7 @@ title: Log Analytics のアラートを使用してイベントに応答する |
 description: このチュートリアルでは、ワークスペース内の重要な情報の識別、問題に関する事前の通知、または問題を修正するためのアクションの呼び出しを行うために使用できる Log Analytics のアラートについて理解します。
 services: log-analytics
 documentationcenter: log-analytics
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2

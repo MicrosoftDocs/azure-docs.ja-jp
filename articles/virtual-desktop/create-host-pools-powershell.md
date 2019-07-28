@@ -2,7 +2,7 @@
 title: PowerShell を使用した Windows Virtual Desktop プレビューのホスト プールの作成 - Azure
 description: PowerShell コマンドレットを使用して Windows Virtual Desktop プレビューにホスト プールを作成する方法。
 services: virtual-desktop
-author: Heidilohr
+author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019

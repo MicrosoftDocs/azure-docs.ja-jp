@@ -2,7 +2,7 @@
 title: Windows Virtual Desktop での FSLogix プロファイル コンテナーと Azure Files - Azure
 description: この記事では、Windows Virtual Desktop での FSLogix プロファイル コンテナーと Azure のファイルについて説明します。
 services: virtual-desktop
-author: ChJenk
+author: chjenk
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/16/2019

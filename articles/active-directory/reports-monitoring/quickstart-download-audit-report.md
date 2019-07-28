@@ -3,7 +3,7 @@ title: 'クイック スタート: Azure portal を使用して監査レポー�
 description: Azure portal を使用して監査レポートをダウンロードする方法を説明します
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: 4de121ea-f4aa-4c8a-aae4-700c2c5e97a2

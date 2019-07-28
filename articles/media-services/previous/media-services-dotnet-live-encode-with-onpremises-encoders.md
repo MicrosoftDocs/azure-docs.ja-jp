@@ -3,7 +3,7 @@ title: .NET を使用してオンプレミス エンコーダーでライブ ス
 description: このトピックでは、.NET を使用して、オンプレミス エンコーダーでライブ エンコードを実行する方法について紹介します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

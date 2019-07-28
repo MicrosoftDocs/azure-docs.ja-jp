@@ -1,7 +1,7 @@
 ---
 title: サンプル - ストレージ アカウントおよび仮想マシンに対して許可されている SKU
 description: このサンプル ポリシー定義は、承認された SKU の使用をストレージ アカウントと仮想マシンに要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

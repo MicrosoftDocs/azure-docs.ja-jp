@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: heidist
 manager: cgronlun
-author: HeidiSteen
+author: heidisteen
 ms.custom: seodec2018
 ms.openlocfilehash: f76d944f614f07a4428d4e4100f6a08a375d96dc
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada

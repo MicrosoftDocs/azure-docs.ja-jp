@@ -2,7 +2,7 @@
 title: Azure Active Directory ポータルのリスクの高いサインイン レポート | Microsoft Docs
 description: Azure Active Directory ポータルのリスクの高いサインイン レポートについて説明します。
 services: active-directory
-author: MarkusVi
+author: markusvi
 manager: daveba
 ms.assetid: 7728fcd7-3dd5-4b99-a0e4-949c69788c0f
 ms.service: active-directory

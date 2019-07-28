@@ -1,7 +1,7 @@
 ---
 title: Azure Key Vault (プレビュー) で保存時の暗号化に顧客が管理するキーを使用する - Azure Search
 description: Azure Key Vault 内で作成して管理するキーを使用して、Azure Search 内でインデックスとシノニム マップによるサーバー側暗号化を補完します。
-author: NatiNimni
+author: natinimni
 manager: jlembicz
 ms.author: natinimn
 services: search

@@ -3,7 +3,7 @@ title: Azure 仮想マシンの複数の IP アドレス - PowerShell | Microsof
 description: PowerShell を使用して仮想マシンに複数の IP アドレスを割り当てる方法を説明します。 | Resource Manager
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

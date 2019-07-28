@@ -2,7 +2,7 @@
 title: Azure Site Recovery を使用した VMware VM および物理サーバーのフェールバックのために Azure でプロセス サーバーを設定する | Microsoft Docs
 description: この記事では、Azure VM を VMware にフェールバックするために Azure でプロセス サーバーを設定する方法について説明します。
 services: site-recovery
-author: Rajeswari-Mamilla
+author: rajeswari-mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article

@@ -3,7 +3,7 @@ title: Azure Service Fabric アプリをテストするためにクラスター 
 description: フォールト挿入を使い、クラスター ノードを起動および停止することによって、Service Fabric アプリケーションをテストする方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: LMWF
+author: lmwf
 manager: rsinha
 editor: ''
 ms.assetid: f4e70f6f-cad9-4a3e-9655-009b4db09c6d

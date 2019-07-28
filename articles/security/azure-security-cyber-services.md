@@ -3,7 +3,7 @@ title: サイバーセキュリティの Microsoft サービス | Microsoft Docs
 description: この記事では、サイバーセキュリティに関連する Microsoft サービスの概要と、これらのサービスに関する詳細情報を取得する方法を示します。
 services: security
 documentationcenter: na
-author: TomShinder
+author: tomshinder
 manager: barbkess
 editor: TomSh
 ms.assetid: 925ba3c6-fe35-413a-98ea-e1a1461f3022

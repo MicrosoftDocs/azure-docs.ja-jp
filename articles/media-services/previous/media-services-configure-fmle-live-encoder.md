@@ -3,7 +3,7 @@ title: FMLE エンコーダーを構成して単一ビットレートのライ�
 description: このトピックでは、Flash Media Live Encoder (FMLE) エンコーダーを構成して、ライブ エンコードが有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: 3113f333-517a-47a1-a1b3-57e200c6b2a2

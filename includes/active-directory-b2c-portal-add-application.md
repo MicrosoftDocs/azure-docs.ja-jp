@@ -1,5 +1,5 @@
 ---
-author: PatAltimore
+author: pataltimore
 ms.service: active-directory-b2c
 ms.topic: include
 ms.date: 11/03/2016

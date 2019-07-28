@@ -3,7 +3,7 @@ title: クイック スタート:REST API と Go を使用して画像内の顔�
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Go で Face API を使って画像から顔を検出します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api

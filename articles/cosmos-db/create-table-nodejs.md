@@ -1,7 +1,7 @@
 ---
 title: 'クイック スタート: Node.js での Table API の使用 - Azure Cosmos DB'
 description: このクイックスタートでは、Azure Cosmos DB Table API を使用して Azure Portal と Node.js でアプリケーションを作成する方法を示します
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs

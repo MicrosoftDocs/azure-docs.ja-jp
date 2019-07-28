@@ -3,7 +3,7 @@ title: 仮想ネットワーク ピアリングを使用して仮想ネットワ
 description: この記事では、Azure CLI を使って仮想ネットワーク ピアリングで仮想ネットワークを接続する方法を説明します。
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

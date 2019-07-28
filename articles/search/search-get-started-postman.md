@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:Postman と REST API を使用してインデックスの作成、読み込み、クエリの実行を行う - Azure Search
 description: Postman、サンプル データ、および定義を使用して Azure Search REST API を呼び出す方法について説明します。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 services: search
 ms.service: search

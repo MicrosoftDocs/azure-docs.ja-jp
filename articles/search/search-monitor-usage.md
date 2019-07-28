@@ -1,7 +1,7 @@
 ---
 title: 検索サービスのリソースの使用状況とクエリのメトリックを監視する - Azure Search
 description: ログ記録を有効にし、Azure Search サービスからクエリ アクティビティのメトリック、リソースの使用状況、およびその他のシステム データを取得します。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 tags: azure-portal
 services: search

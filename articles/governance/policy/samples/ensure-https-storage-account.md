@@ -1,7 +1,7 @@
 ---
 title: サンプル - ストレージ アカウントのみに対する HTTPS トラフィックの確認
 description: このサンプル ポリシー定義は、HTTPS トラフィックを使用するようストレージ アカウントに要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

@@ -3,7 +3,7 @@ title: Linux VM のシステム割り当てマネージド ID を使用して SA
 description: Linux VM のシステム割り当てマネージド ID を使用して、ストレージ アカウント アクセス キーではなく、SAS 資格情報で Azure Storage にアクセスする方法を示すチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: daveba
 ms.service: active-directory

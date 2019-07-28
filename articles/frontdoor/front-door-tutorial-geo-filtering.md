@@ -3,7 +3,7 @@ title: チュートリアル - Azure Front Door サービスの geo フィルタ
 description: このチュートリアルでは、単純な geo フィルタリング ポリシーを作成して、既存の Front Door フロントエンド ホストに関連付ける方法を説明します。
 services: frontdoor
 documentationcenter: ''
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.service: frontdoor

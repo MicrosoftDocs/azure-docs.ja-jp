@@ -3,7 +3,7 @@ title: 仮想ネットワーク用の Azure CLI サンプル | Microsoft Docs
 description: 仮想ネットワーク用の Azure CLI サンプル。
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: ''

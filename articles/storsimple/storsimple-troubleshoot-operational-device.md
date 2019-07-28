@@ -3,7 +3,7 @@ title: デプロイ済みの StorSimple デバイスのトラブルシューテ�
 description: デプロイし、現在運用している StorSimple デバイスに発生するエラーを診断して修正する方法について説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: shars
 manager: carmonm
 editor: ''
 ms.assetid: ea5d89ae-e379-423f-b68b-53785941d9d0

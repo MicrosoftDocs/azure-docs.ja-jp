@@ -3,7 +3,7 @@ title: Azure DDoS Protection Standard の概要 | Microsoft Docs
 description: Azure DDoS Protection サービスについて説明します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

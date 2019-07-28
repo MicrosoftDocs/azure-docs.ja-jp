@@ -3,7 +3,7 @@ title: Kubernetes Service の実行
 titleSuffix: Text Analytics -  Azure Cognitive Services
 description: 実行するサンプルを使って言語検出コンテナーを Azure Kubernetes Service にデプロイし、Web ブラウザーでテストします。
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics

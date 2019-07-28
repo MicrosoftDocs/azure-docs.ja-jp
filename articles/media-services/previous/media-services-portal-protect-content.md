@@ -3,7 +3,7 @@ title: Azure Portal を使用したコンテンツ保護ポリシーの構成 | 
 description: この記事では、Azure ポータルを使用してコンテンツ保護ポリシーを構成する方法を説明します。 また、アセットに対して動的な暗号化を有効にする方法についても説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: 270b3272-7411-40a9-ad42-5acdbba31154

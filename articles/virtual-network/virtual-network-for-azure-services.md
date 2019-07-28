@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: 仮想ネットワークにリソースをデプロイすることの利点について説明します。 仮想ネットワークに置いたリソースは互いに通信できるほか、オンプレミスのリソースと通信できます。トラフィックがインターネットを通過することがありません。
 services: virtual-network
 documentationcenter: na
-author: malopMSFT
+author: malopmsft
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article

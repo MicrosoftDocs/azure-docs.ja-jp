@@ -3,7 +3,7 @@ title: Azure Active Directory レポートを使用してサインイン エラ�
 description: Azure Portal で Azure Active Directory レポートを使用してサインイン エラーをトラブルシューティングする方法について説明します
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.service: active-directory

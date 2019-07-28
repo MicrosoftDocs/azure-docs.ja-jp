@@ -3,7 +3,7 @@ title: Office 365 アカウントを使用して Azure にサインアップす�
 description: Office 365 アカウントを使用して、Azure サブスクリプションを作成する方法を説明します
 services: ''
 documentationcenter: ''
-author: JiangChen79
+author: jiangchen79
 manager: adpick
 editor: ''
 tags: billing,top-support-issue

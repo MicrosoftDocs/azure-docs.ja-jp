@@ -1,7 +1,7 @@
 ---
 title: Spark からの Azure Cosmos DB Cassandra API でのテーブル コピー操作。
 description: この記事では、Azure Cosmos DB Cassandra API でのテーブル間のデータ コピー方法について説明します
-author: kanshiG
+author: kanshig
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db

@@ -2,7 +2,7 @@
 title: Azure SQL Data Warehouse のトランザクションの最適化 | Microsoft Docs
 description: ロールバックに長時間かかるリスクを最小限に抑えながら、Azure SQL Data Warehouse でトランザクション コードのパフォーマンスを最適化する方法について説明します。
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: xiaoyumsft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

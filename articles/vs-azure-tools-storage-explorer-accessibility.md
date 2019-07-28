@@ -3,7 +3,7 @@ title: Azure Storage Explorer のアクセシビリティ (プレビュー) | Mi
 description: Azure Storage Explorer のアクセシビリティ (プレビュー)
 services: storage
 documentationcenter: na
-author: MrayermannMSFT
+author: mrayermannmsft
 manager: jinglouMSFT
 editor: ''
 ms.assetid: 1ed0f096-494d-49c4-ab71-f4164ee19ec8

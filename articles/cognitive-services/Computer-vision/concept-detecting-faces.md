@@ -3,7 +3,7 @@ title: 顔の検出 - Computer Vision
 titleSuffix: Azure Cognitive Services
 description: Computer Vision API の顔検出機能に関連する概念について説明します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

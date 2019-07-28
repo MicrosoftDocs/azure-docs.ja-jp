@@ -1,7 +1,7 @@
 ---
 title: パラメーターを使用して動的ブループリントを作成する
 description: 静的パラメーターと動的パラメーターについて、およびこれらを使用して動的ブループリントを作成する方法について説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 03/12/2019
 ms.topic: conceptual

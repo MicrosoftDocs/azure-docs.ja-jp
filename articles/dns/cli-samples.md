@@ -3,7 +3,7 @@ title: Traffic Manager の Azure CLI サンプル | Microsoft Docs
 description: Traffic Manager の Azure CLI サンプル
 services: traffic-manager
 documentationcenter: traffic-manager
-author: WenJason
+author: wenjason
 manager: digimoblie
 editor: ''
 tags: ''

@@ -3,7 +3,7 @@ title: Azure CLI のサンプル スクリプト - アカウント資格情報�
 description: Azure CLI スクリプトを使用して、アカウントの資格情報をリセットし、app.config 設定を取得します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: ''

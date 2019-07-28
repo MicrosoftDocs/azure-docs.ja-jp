@@ -3,7 +3,7 @@ title: B2B 外部コラボレーション設定の有効化 - Azure Active Direc
 description: Active Directory の B2B 外部コラボレーションを有効にして、ゲスト ユーザーを招待できるユーザーを管理する方法について説明します。 ゲスト招待元ロールを使用して、招待を委任します。
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: mimart

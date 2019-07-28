@@ -3,7 +3,7 @@ title: Azure Monitor を使用して Azure Active Directory のログを Splunk 
 description: Azure Monitor を使用して Azure Active Directory のログを SumoLogic と統合する方法について説明します
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593

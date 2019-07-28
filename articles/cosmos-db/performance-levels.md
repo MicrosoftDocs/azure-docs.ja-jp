@@ -1,7 +1,7 @@
 ---
 title: 提供が中止された Azure Cosmos DB のパフォーマンス レベル
 description: Azure Cosmos DB で以前に提供されていた、S1、S2、S3 パフォーマンス レベルについて説明します。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018

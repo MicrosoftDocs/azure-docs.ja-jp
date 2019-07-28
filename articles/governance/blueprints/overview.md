@@ -1,7 +1,7 @@
 ---
 title: Azure Blueprint の概要
 description: Azure Blueprints サービスによって Azure 環境でのアーティファクトの作成、定義、デプロイがどのように実現されるかについて理解します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 02/08/2019
 ms.topic: overview

@@ -3,7 +3,7 @@ title: Azure Network Watcher のセキュリティ グループ ビューを使�
 description: このページでは、ネットワーク セキュリティ グループの監査を構成する方法について説明します
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: 78a01bcf-74fe-402a-9812-285f3501f877

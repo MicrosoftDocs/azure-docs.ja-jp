@@ -2,7 +2,7 @@
 title: Azure Data Catalog でデータ ソースを文書化する方法
 description: この記事では、Azure Data Catalog でデータ資産を文書化する方法について重点的に説明しています。
 services: data-catalog
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.assetid: 053b1701-b848-4ada-b726-6f485caa9961
 ms.service: data-catalog

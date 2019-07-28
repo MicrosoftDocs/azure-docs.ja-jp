@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: Azure で仮想ネットワークを作成、変更、削除する方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article

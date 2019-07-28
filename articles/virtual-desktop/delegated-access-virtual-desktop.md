@@ -2,7 +2,7 @@
 title: Windows Virtual Desktop プレビューにおける委任されたアクセス - Azure
 description: Windows Virtual Desktop プレビューのデプロイで管理機能を委任する方法 (例を含む)。
 services: virtual-desktop
-author: Heidilohr
+author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019

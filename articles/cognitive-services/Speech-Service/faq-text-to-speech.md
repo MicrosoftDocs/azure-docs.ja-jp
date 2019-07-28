@@ -3,7 +3,7 @@ title: Azure のテキスト読み上げについてよく寄せられる質問
 titleSuffix: Azure Cognitive Services
 description: テキスト読み上げサービスについてよく寄せられる質問 (FAQ) とその回答を紹介します。
 services: cognitive-services
-author: PanosPeriorellis
+author: panosperiorellis
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service

@@ -3,7 +3,7 @@ title: Analyze メソッド - Linguistic Analysis API
 titlesuffix: Azure Cognitive Services
 description: Linguistic Analysis API で Analyze メソッドを使用して特定の自然言語入力を分析する方法。
 services: cognitive-services
-author: RichardSunMS
+author: richardsunms
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: linguistic-analysis

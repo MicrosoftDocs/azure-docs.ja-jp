@@ -2,7 +2,7 @@
 title: T-SQL ステートメント - Azure SQL Data Warehouse | Microsoft Docs
 description: Azure SQL Data Warehouse でサポートされる T-SQL ステートメントのドキュメントにリンクします。
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: xiaoyumsft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

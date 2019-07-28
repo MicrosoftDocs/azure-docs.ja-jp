@@ -2,13 +2,13 @@
 title: クイック スタート:Azure SQL Data Warehouse のコンピューティングをスケールアウトする - Azure Portal | Microsoft Docs
 description: Azure Portal で Azure SQL Data Warehouse のコンピューティングをスケーリングします。 コンピューティングをスケールアウトしてパフォーマンスを向上させます。または、コンピューティングをスケールバックしてコストを削減します。
 services: sql-data-warehouse
-author: Antvgski
+author: antvgski
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: implement
 ms.date: 04/17/2018
-ms.author: Anthony.vanGemert
+ms.author: anthony.vangemert
 ms.reviewer: jrasnick
 ms.openlocfilehash: 7c3e48cc57613b107e82cb0fbcb7d69aceb6cf0a
 ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a

@@ -3,7 +3,7 @@ title: ネットワーク間の通信に関する問題を診断する - チュ�
 description: Azure 仮想ネットワークと、Azure 仮想ネットワーク ゲートウェイを介して接続されているオンプレミスまたはその他の仮想ネットワークの間の通信に関する問題を、Network Watcher の VPN の診断機能を使用して診断する方法を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 Customer intent: I need to determine why resources in a virtual network can't communicate with resources in a different network.

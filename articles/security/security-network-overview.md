@@ -3,7 +3,7 @@ title: ネットワーク セキュリティの概念および Azure におけ�
 description: この記事では、ネットワーク セキュリティの中核をなす概念と要件の基本的な説明と、各分野で Azure が提供している事柄に関する情報を提供します。
 services: security
 documentationcenter: na
-author: TomShinder
+author: tomshinder
 manager: barbkess
 editor: TomSh
 ms.assetid: bedf411a-0781-47b9-9742-d524cf3dbfc1

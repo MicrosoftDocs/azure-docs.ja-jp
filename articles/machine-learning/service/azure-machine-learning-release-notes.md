@@ -7,7 +7,7 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
-author: Blackmist
+author: blackmist
 ms.date: 05/14/2019
 ms.custom: seodec18
 ms.openlocfilehash: d43bef902b66976c32735b6d45029f41bb5e3264

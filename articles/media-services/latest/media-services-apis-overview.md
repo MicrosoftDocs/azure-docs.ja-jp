@@ -3,7 +3,7 @@ title: v3 API を使用した開発 - Azure | Microsoft Docs
 description: この記事では、Media Services v3 を使用して開発を行う際にエンティティと API に適用される規則について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

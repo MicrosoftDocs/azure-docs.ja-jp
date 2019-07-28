@@ -3,7 +3,7 @@ title: コンテナーのインストールと実行
 titleSuffix: Text Analytics -  Azure Cognitive Services
 description: このチュートリアルでの Text Analytics のコンテナーのダウンロード、インストール、および実行方法。
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services

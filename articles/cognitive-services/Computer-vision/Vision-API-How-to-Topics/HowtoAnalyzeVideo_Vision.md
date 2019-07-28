@@ -3,7 +3,7 @@ title: 例:リアルタイムのビデオ分析 - Computer Vision
 titlesuffix: Azure Cognitive Services
 description: ライブ ビデオ ストリームから取得したフレームに対して、Computer Vision API を使用して、ほぼリアルタイムに分析を実行します。
 services: cognitive-services
-author: KellyDF
+author: kellydf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

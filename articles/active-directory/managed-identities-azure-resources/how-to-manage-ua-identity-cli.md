@@ -3,7 +3,7 @@ title: Azure CLI を使用してユーザー割り当てマネージド ID を�
 description: Azure CLI を使用してユーザー割り当てマネージド ID を作成、一覧表示、および削除する方法の順を追った説明。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.service: active-directory

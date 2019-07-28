@@ -3,7 +3,7 @@ title: 印刷されたテキストと手書きのテキストの認識、Compute
 titleSuffix: Azure Cognitive Services
 description: 画像に含まれる印刷されたテキストと手書きのテキストの Computer Vision API を使用した認識に関する概念。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

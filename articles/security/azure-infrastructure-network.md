@@ -3,7 +3,7 @@ title: Azure ネットワーク アーキテクチャ
 description: この記事では、Microsoft Azure インフラストラクチャ ネットワークの一般的な説明を行います。
 services: security
 documentationcenter: na
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e

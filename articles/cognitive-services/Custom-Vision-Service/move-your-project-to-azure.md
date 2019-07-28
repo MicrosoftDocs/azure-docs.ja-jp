@@ -3,7 +3,7 @@ title: 期間限定試用版プロジェクトを Azure に移行する
 titlesuffix: Azure Cognitive Services
 description: 期間限定試用版プロジェクトを Azure に移行する方法について説明します。
 services: cognitive-services
-author: anrothMSFT
+author: anrothmsft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision

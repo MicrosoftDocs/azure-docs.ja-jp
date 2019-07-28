@@ -2,7 +2,7 @@
 title: Azure SQL Data Warehouse での動的 SQL の使用 | Microsoft Docs
 description: ソリューション開発のための Azure SQL Data Warehouse での動的 SQL  の使用に関するヒント。
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: xiaoyumsft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

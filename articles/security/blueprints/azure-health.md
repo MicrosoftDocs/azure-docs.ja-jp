@@ -3,7 +3,7 @@ title: Azure Health Analytics のブループリント
 description: HIPAA/HITRUST Health Analytics のブループリントのデプロイに関するガイダンス
 services: security
 documentationcenter: na
-author: RajeevRangappa
+author: rajeevrangappa
 ms.assetid: 26566e0a-0a54-49f4-a91d-48e20b7cef71
 ms.service: security
 ms.topic: article

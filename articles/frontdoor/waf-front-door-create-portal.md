@@ -4,7 +4,7 @@ titlesuffix: Azure web application firewall
 description: Azure portal を使用して Web アプリケーション ファイアウォール (WAF) ポリシーを作成する方法について説明します。
 services: frontdoor
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 ms.service: frontdoor
 ms.devlang: na

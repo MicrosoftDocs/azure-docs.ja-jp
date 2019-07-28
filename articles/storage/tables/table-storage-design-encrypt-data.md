@@ -2,7 +2,7 @@
 title: Azure ストレージ テーブルのデータを暗号化する | Microsoft Docs
 description: Azure Storage のテーブル データの暗号化について説明します。
 services: storage
-author: MarkMcGeeAtAquent
+author: markmcgeeataquent
 ms.service: storage
 ms.topic: article
 ms.date: 04/11/2018

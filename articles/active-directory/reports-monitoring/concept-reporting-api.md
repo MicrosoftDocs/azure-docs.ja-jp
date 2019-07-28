@@ -3,7 +3,7 @@ title: Azure AD レポート API の概要 | Microsoft Docs
 description: Azure Active Directory Reporting API の概要について説明します
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: 8813b911-a4ec-4234-8474-2eef9afea11e

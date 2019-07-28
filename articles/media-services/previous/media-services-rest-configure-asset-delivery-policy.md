@@ -3,7 +3,7 @@ title: Media Services REST API を使用した資産配信ポリシーの構成 
 description: このトピックでは、Media Services REST API を使用して、さまざまな資産配信ポリシーを構成する方法を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: cfowler
 editor: ''
 ms.assetid: 5cb9d32a-e68b-4585-aa82-58dded0691d0

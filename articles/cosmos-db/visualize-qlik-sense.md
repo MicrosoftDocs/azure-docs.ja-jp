@@ -2,7 +2,7 @@
 title: Qlik Sense を Azure Cosmos DB に接続してデータを可視化する
 description: この記事では、Azure Cosmos DB を Qlik Sense に接続してデータを可視化するのに必要な手順を説明します。
 ms.service: cosmos-db
-author: SnehaGunda
+author: snehagunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/23/2019

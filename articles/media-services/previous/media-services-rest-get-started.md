@@ -3,7 +3,7 @@ title: REST を使用したオンデマンド コンテンツ配信の概要 | M
 description: このチュートリアルでは、Azure Media Services と REST API を使用したオンデマンド コンテンツ配信アプリケーションの実装手順を紹介します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: 88194b59-e479-43ac-b179-af4f295e3780

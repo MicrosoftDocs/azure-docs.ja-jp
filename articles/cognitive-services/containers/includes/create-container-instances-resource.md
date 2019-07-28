@@ -3,7 +3,7 @@ title: コンテナー サポート
 titleSuffix: Azure Cognitive Services
 description: Azure コンテナー インスタンス リソースを作成する方法を説明します。
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include

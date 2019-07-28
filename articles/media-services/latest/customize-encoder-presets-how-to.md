@@ -3,7 +3,7 @@ title: Media Services v3 .NET を使用したカスタム変換のエンコー�
 description: このトピックでは、Azure Media Services v3 で .NET を使用してカスタム変換をエンコードする方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

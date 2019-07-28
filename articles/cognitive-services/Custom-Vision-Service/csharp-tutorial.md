@@ -3,7 +3,7 @@ title: クイック スタート:Custom Vision SDK for C# を使って画像分�
 titlesuffix: Azure Cognitive Services
 description: NET SDK と C# を使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、予測を行います。
 services: cognitive-services
-author: anrothMSFT
+author: anrothmsft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision

@@ -1,7 +1,7 @@
 ---
 title: 仮想マシンのコンテンツを監査する方法の概要
 description: Azure Policy が Rego および Open Policy Agent を使用して、Azure Kubernetes Service 上でクラスターを管理する方法について説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual

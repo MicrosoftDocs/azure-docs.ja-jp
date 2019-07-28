@@ -7,7 +7,7 @@ ms.subservice: scenario
 ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
-author: MightyPen
+author: mightypen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg

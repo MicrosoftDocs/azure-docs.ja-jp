@@ -1,7 +1,7 @@
 ---
 title: 一般的なエラーのトラブルシューティング
 description: ブループリントの作成、割り当て、および削除で発生する問題を解決する方法について説明します
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 12/11/2018
 ms.topic: troubleshooting

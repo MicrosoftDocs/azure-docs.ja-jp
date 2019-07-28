@@ -3,7 +3,7 @@ title: 2 層アプリケーションを使用するハイブリッド接続 |Mic
 description: 仮想アプライアンスと UDR をデプロイして Azure 内に多層アプリケーション環境を作成する方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: carmonm
 editor: tysonn
 ms.assetid: 1f509bec-bdd1-470d-8aa4-3cf2bb7f6134

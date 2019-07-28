@@ -3,7 +3,7 @@ title: クイック スタート:C# を使用してイマーシブ リーダー�
 titlesuffix: Azure Cognitive Services
 description: このクイックスタートでは、Web アプリを一から構築してイマーシブ リーダー API 機能を追加します。
 services: cognitive-services
-author: metanMSFT
+author: metanmsft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader

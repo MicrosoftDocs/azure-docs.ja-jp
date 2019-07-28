@@ -1,7 +1,7 @@
 ---
 title: Azure portal でサービス プロバイダーを表示して管理する
 description: サービス プロバイダー、サービス プロバイダーのオファー、委任したリソースに関する情報は、顧客が Azure portal の [サービス プロバイダー] ページを使用して確認できます。
-author: JnHs
+author: jnhs
 ms.author: jenhayes
 ms.service: lighthouse
 ms.date: 07/11/2019

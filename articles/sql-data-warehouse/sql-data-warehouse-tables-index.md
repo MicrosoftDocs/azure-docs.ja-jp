@@ -2,7 +2,7 @@
 title: Azure SQL Data Warehouse でのテーブルのインデックス作成 | Microsoft Azure
 description: Azure SQL Data Warehouse でのテーブル のインデックス作成に関する推奨事項と例。
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: xiaoyumsft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

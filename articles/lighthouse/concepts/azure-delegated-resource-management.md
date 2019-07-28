@@ -1,7 +1,7 @@
 ---
 title: Azure の委任されたリソース管理 - Azure Lighthouse
 description: マネージド サービス オファーにより、サービス プロバイダーは、Azure Marketplace で顧客にリソース管理オファーを販売することができます。
-author: JnHs
+author: jnhs
 ms.service: lighthouse
 ms.author: jenhayes
 ms.date: 07/11/2019

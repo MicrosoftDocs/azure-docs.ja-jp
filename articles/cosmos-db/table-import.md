@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB の Table API アカウントに既存のデータを移行する
 description: Azure Cosmos DB の Azure Table API アカウントに、オンプレミスまたはクラウドのデータを移行またはインポートする方法について説明します。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial

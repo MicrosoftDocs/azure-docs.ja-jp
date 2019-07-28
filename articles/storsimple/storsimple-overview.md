@@ -3,7 +3,7 @@ title: StorSimple 8000 シリーズ ソリューションの概要 | Microsoft D
 description: StorSimple 階層化と、デバイス、仮想デバイス、サービス、およびストレージの管理について説明し、StorSimple で使用される主な用語を紹介します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: shars
 manager: timlt
 editor: ''
 ms.assetid: 7144d218-db21-4495-88fb-e3b24bbe45d1

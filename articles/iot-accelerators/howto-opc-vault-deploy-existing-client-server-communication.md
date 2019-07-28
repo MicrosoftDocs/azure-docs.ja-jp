@@ -125,7 +125,7 @@ opcclient-123456 | [13:40:12 INF] Session successfully created with Id ns=3;i=94
 opcclient-123456 | [13:40:12 INF] The session to endpoint 'opc.tcp://opcplc-123456:50000/' has 4 entries in its namespace array:
 opcclient-123456 | [13:40:12 INF] Namespace index 0: http://opcfoundation.org/UA/
 opcclient-123456 | [13:40:12 INF] Namespace index 1: urn:OpcPlc:opcplc-123456
-opcclient-123456 | [13:40:12 INF] Namespace index 2: http://microsoft.com/Opc/OpcPlc/
+opcclient-123456 | [13:40:12 INF] Namespace index 2: https://microsoft.com/Opc/OpcPlc/
 opcclient-123456 | [13:40:12 INF] Namespace index 3: http://opcfoundation.org/UA/Diagnostics
 opcclient-123456 | [13:40:12 INF] The server on endpoint 'opc.tcp://opcplc-123456:50000/' supports a minimal sampling interval of 0 ms.
 opcclient-123456 | [13:40:12 INF] Execute 'OpcClient.OpcTestAction' action on node 'i=2258' on endpoint 'opc.tcp://opcplc-123456:50000/' with security.

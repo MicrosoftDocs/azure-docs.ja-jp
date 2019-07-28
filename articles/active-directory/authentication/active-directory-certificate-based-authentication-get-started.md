@@ -7,7 +7,7 @@ ms.subservice: authentication
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: joflore
-author: MicrosoftGuyJFlo
+author: microsoftguyjflo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management

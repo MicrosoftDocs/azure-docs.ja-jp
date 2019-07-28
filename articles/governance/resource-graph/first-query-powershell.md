@@ -1,7 +1,7 @@
 ---
 title: Azure PowerShell を使用して最初のクエリを実行する
 description: この記事では、Azure PowerShell の Resource Graph モジュールを有効にして、最初のクエリを実行する手順について説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 01/23/2019
 ms.topic: quickstart

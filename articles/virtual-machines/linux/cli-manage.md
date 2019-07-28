@@ -3,7 +3,7 @@ title: 一般的な Azure CLI コマンド | Microsoft Docs
 description: Azure Resource Manager モードで VM を管理する際に使用する一般的な Azure CLI コマンドについて説明します
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
+author: rickstercdn
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager

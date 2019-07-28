@@ -3,7 +3,7 @@ title: Azure 用の SAP LaMa コネクタ | Microsoft Docs
 description: SAP LaMa を使用して Azure で SAP システムを管理する
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
-author: MSSedusch
+author: mssedusch
 manager: timlt
 editor: ''
 tags: azure-resource-manager

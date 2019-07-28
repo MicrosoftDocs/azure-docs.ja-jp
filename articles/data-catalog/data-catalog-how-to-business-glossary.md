@@ -1,7 +1,7 @@
 ---
 title: Azure Data Catalog でビジネス用語集を設定する
 description: Azure Data Catalog のビジネス用語集で、一般的なビジネス語彙を定義および使用して、登録したデータ資産にタグを付ける方法について取り上げた記事です。
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual

@@ -1,7 +1,7 @@
 ---
 title: Azure Blueprints の関数
 description: Azure Blueprints の定義と割り当てで使用する関数について説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 04/15/2019
 ms.topic: reference

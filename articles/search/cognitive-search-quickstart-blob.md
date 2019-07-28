@@ -2,7 +2,7 @@
 title: クイック スタート:Azure portal 内で AI を活用したインデックスを構築する - Azure Search
 description: Azure portal とサンプル データを使用した、Azure Search インデックス作成ポータルでのデータ抽出、自然言語および画像の処理スキル。
 manager: cgronlun
-author: HeidiSteen
+author: heidisteen
 services: search
 ms.service: search
 ms.topic: quickstart

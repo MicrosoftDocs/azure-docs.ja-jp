@@ -2,7 +2,7 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: lighthouse
-author: DCtheGeek
+author: dcthegeek
 ms.service: lighthouse
 ms.topic: include
 ms.date: 06/26/2019

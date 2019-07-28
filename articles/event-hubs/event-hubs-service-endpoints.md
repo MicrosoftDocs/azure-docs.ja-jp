@@ -3,7 +3,7 @@ title: 仮想ネットワーク サービス エンドポイント - Azure Event
 description: この記事では、Microsoft.EventHub サービス エンドポイントを仮想ネットワークに追加する方法について説明します。
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na

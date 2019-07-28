@@ -3,7 +3,7 @@ title: オンプレミスの AlwaysOn 可用性グループの Azure への拡�
 description: このチュートリアルでは、クラシック デプロイ モデルを使用して作成されたリソースを使用し、SQL Server Management Studio (SSMS) のレプリカの追加ウィザードを使用して、Azure に AlwaysOn 可用性グループ レプリカを追加する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MikeRayMSFT
+author: mikeraymsft
 manager: craigg
 editor: ''
 tags: azure-service-management

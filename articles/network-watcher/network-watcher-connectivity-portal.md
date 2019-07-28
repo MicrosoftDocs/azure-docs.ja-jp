@@ -3,7 +3,7 @@ title: Azure Network Watcher との接続のトラブルシューティング - 
 description: Azure Portal を使用して Azure Network Watcher の接続のトラブルシューティング機能を使用する方法を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.service: network-watcher

@@ -1,7 +1,7 @@
 ---
 title: サンプル - ストレージ アカウントのクール アクセス層の拒否
 description: このサンプル ポリシー定義は、BLOB ストレージ アカウントにクール アクセス層の使用を禁止します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

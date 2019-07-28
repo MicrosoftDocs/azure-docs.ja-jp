@@ -3,7 +3,7 @@ title: 資産を保護するためのセキュリティに関するベスト プ
 description: この記事では、Azure 内のデータ、アプリケーション、その他の資産を保護するための運用可能な一連のベスト プラクティスについて説明します。
 services: security
 documentationcenter: na
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: tomsh
 ms.assetid: ''

@@ -1,7 +1,7 @@
 ---
 title: Azure 仮想ネットワーク サービス エンドポイントを使用して Azure Cosmos DB アカウントへのアクセスをセキュリティ保護する
 description: このドキュメントでは、Azure Cosmos アカウントの仮想ネットワークとサブネット アクセス制御について説明します。
-author: kanshiG
+author: kanshig
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019

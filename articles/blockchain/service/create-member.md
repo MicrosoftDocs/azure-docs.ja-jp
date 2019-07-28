@@ -3,7 +3,7 @@ title: Azure portal を使用して Azure Blockchain Service を作成する
 description: Azure Blockchain サービスを使用してコンソーシアム メンバーを作成します。
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/29/2019
 ms.topic: quickstart

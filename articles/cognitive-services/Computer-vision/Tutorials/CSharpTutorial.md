@@ -3,7 +3,7 @@ title: サンプル:画像処理アプリの探索 (C#)
 titleSuffix: Azure Cognitive Services
 description: Azure Cognitive Services で Computer Vision API を使用する基本的な Windows アプリについて説明します。 OCR を実行し、サムネイルを作成して、イメージ内の視覚的な特徴を操作します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: computer-vision

@@ -1,7 +1,7 @@
 ---
 title: Azure Databricks から Azure Cosmos DB Cassandra API にアクセスする
 description: この記事では、Azure Databricks から Azure Cosmos DB Cassandra API を使用する方法について説明します。
-author: kanshiG
+author: kanshig
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db

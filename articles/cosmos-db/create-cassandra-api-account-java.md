@@ -1,7 +1,7 @@
 ---
 title: 'チュートリアル: Java アプリを使用して Cassandra API アカウントを作成する - Azure Cosmos DB'
 description: このチュートリアルでは、Java アプリケーションを使用して、Cassandra API アカウントの作成、データベース (キースペースとも呼ばれます) の追加、そのアカウントへのテーブルの追加を行う方法について説明します。
-author: kanshiG
+author: kanshig
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db

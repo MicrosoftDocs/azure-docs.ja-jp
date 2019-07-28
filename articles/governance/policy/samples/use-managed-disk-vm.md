@@ -1,7 +1,7 @@
 ---
 title: サンプル - マネージド ディスクを使用して VM を作成する
 description: このサンプル ポリシー定義は、仮想マシンにマネージド ディスクの使用を要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

@@ -1,7 +1,7 @@
 ---
 title: サンプル - NIST SP 800-53 R4 ブループリント - 概要
 description: NIST SP 800-53 R4 のブループリント サンプルの概要。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: sample

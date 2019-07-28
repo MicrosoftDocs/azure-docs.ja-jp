@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services ダイナミック パッケージの概要 | Microsoft Docs
 description: このトピックでは、ダイナミック パッケージの概要について説明します。
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 services: media-services

@@ -3,7 +3,7 @@ title: Azure Cloud Shell の Bash のクイックスタート | Microsoft Docs
 description: Cloud Shell の Bash のクイックスタート
 services: ''
 documentationcenter: ''
-author: maertendMSFT
+author: maertendmsft
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''

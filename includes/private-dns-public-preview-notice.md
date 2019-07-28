@@ -4,7 +4,7 @@ description: Azure DNS Private Zone パブリック プレビュー通知のイ�
 services: dns
 author: subsarma
 ms.service: dns
-ms.topic: include file for Azure DNS Private Zone public preview notice
+ms.topic: include file for azure dns private zone public preview notice
 ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for Azure DNS Private Zone public preview notice

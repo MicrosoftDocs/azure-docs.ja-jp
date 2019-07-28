@@ -3,7 +3,7 @@ title: SQL Server Virtual Machines の自動バックアップ (クラシック)
 description: 'Azure Virtual Machines で実行されている SQL Server に対する、Resource Manager を使用した自動バックアップ機能について説明します。 '
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 editor: ''
 tags: azure-service-management

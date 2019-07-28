@@ -9,7 +9,7 @@ ms.workload: identity
 ms.topic: quickstart
 ms.date: 10/24/2018
 ms.author: marsma
-ms.subservice: B2C
+ms.subservice: b2c
 ms.openlocfilehash: 47df2cbdf0b083cf672353471d1ef51e03507475
 ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT

@@ -3,7 +3,7 @@ title: Azure Resource Manager VM の高可用性を設定する | Microsoft Docs
 description: このチュートリアルでは、Azure Resource Manager モードの Azure 仮想マシンで Always On 可用性グループを作成する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MikeRayMSFT
+author: mikeraymsft
 manager: craigg
 editor: ''
 tags: azure-resource-manager

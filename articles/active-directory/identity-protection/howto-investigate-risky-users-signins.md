@@ -4,7 +4,7 @@ description: Azure Active Directory Identity Protection (更新版) で危険な
 services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
 documentationcenter: ''
-author: MicrosoftGuyJFlo
+author: microsoftguyjflo
 manager: mtillman
 ms.author: joflore
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1

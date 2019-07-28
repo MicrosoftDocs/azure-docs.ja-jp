@@ -3,7 +3,7 @@ title: 顧客へのコンテンツ配信 | Microsoft Docs
 description: このトピックでは、Azure Media Services を使用したコンテンツの配信の概要を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: 89ede54a-6a9c-4814-9858-dcfbb5f4fed5

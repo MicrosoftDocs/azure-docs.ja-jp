@@ -1,7 +1,7 @@
 ---
 title: H264 Multiple Bitrate 16x9 SD | Microsoft Docs
 description: このトピックでは、**H264 Multiple Bitrate 16x9 SD** タスク プリセットの概要を説明します。
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 services: media-services

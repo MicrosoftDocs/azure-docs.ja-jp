@@ -3,7 +3,7 @@ title: Azure VM でゲスト OS ファイアウォールを無効にする |Micr
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
-author: Deland-Han
+author: deland-han
 manager: willchen
 editor: ''
 tags: ''

@@ -8,7 +8,7 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: larryfr
-author: Blackmist
+author: blackmist
 ms.date: 07/10/2019
 ms.custom: seodec18
 ms.openlocfilehash: 0f28397717d5c89e5a5bcd5e7bdc17b4feb49577

@@ -2,7 +2,7 @@
 title: Azure Cosmos DB で日付を扱う
 description: Azure Cosmos DB で日付を扱う方法について説明します。
 ms.service: cosmos-db
-author: SnehaGunda
+author: snehagunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 07/23/2019

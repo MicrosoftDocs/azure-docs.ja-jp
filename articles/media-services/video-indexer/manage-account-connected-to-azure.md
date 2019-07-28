@@ -3,7 +3,7 @@ title: Video Indexer アカウントの管理
 titlesuffix: Azure Media Services
 description: この記事では、Azure に接続された Video Indexer アカウントを管理する方法について説明します。
 services: media-services
-author: Juliako
+author: juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer

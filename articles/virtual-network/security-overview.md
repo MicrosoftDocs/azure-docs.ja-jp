@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: ネットワークとアプリケーションのセキュリティ グループについて説明します。 セキュリティ グループは、フィルターを使って Azure リソース間のネットワーク トラフィックを絞り込む際に役立つものです。
 services: virtual-network
 documentationcenter: na
-author: malopMSFT
+author: malopmsft
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article

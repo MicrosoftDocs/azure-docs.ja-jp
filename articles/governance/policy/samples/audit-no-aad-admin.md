@@ -1,7 +1,7 @@
 ---
 title: サンプル - Azure AD 管理者の不在を監査する
 description: このサンプル ポリシー定義は、Azure Active Directory 管理者が SQL サーバーに割り当てられていない場合に、監査を行います。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

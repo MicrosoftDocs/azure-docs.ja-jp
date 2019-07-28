@@ -1,7 +1,7 @@
 ---
 title: Resource Manager テンプレートを使用したポリシー割り当ての作成
 description: この記事では、Resource Manager テンプレートを使用して、準拠していないリソースを特定するためのポリシー割り当てを作成する手順について説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 03/13/2019
 ms.topic: quickstart

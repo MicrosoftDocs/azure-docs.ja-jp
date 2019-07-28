@@ -3,7 +3,7 @@ title: Azure セキュリティの概要 | Microsoft Docs
 description: Azure.com の Microsoft Azure セキュリティ情報サイトでは、Azure のセキュリティに関する疑問の技術的な回答を得ることができます。
 services: security
 documentationcenter: na
-author: TomShinder
+author: tomshinder
 manager: barbkess
 editor: TomSh
 ms.assetid: 2fd82e9f-7072-4548-a888-82bd7e9c729c

@@ -3,7 +3,7 @@ title: Azure Media Services v3 の概要 | Microsoft Docs
 description: この記事では、Media Services の概要を説明し、詳細についての記事へのリンクを示します。
 services: media-services
 documentationcenter: na
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 tags: ''

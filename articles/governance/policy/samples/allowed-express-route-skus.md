@@ -1,7 +1,7 @@
 ---
 title: サンプル - 許可された ExpressRoute の SKU
 description: このサンプル ポリシー定義は、承認された SKU の使用を ExpressRoute に要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

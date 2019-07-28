@@ -3,7 +3,7 @@ title: Azure Network Watcher のセキュリティ グループ ビューを使�
 description: この記事では、PowerShell を使用して、セキュリティ グループ ビューで仮想マシンのセキュリティを分析する方法について説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: 04e76b49-6a1b-4d0f-9a9b-51cf2f4df5a2

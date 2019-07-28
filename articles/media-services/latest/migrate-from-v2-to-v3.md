@@ -3,7 +3,7 @@ title: Azure Media Services v2 から v3 への移行 | Microsoft Docs
 description: この記事では、Azure Media Services v3 で導入された変更点と、2 つのバージョンの違いについて説明します。 Media Services v2 から v3 への移行のガイダンスも提供します。
 services: media-services
 documentationcenter: na
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 tags: ''

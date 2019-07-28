@@ -3,7 +3,7 @@ title: Azure Network Watcher のパケット キャプチャの概要 | Microsof
 description: このページでは、Network Watcher のパケット キャプチャ機能の概要を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: 3a81afaa-ecd9-4004-b68e-69ab56913356

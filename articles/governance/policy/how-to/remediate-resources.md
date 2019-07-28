@@ -1,7 +1,7 @@
 ---
 title: 準拠していないリソースを修復する
 description: このハウツーでは、Azure Policy のポリシーに準拠していないリソースを修復する手順を説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 01/23/2019
 ms.topic: conceptual

@@ -3,7 +3,7 @@ title: Windows VM のシステム割り当てマネージド ID を使用して 
 description: Windows VM のシステム割り当てマネージド ID を使用して Azure SQL にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: bryanla
 ms.service: active-directory

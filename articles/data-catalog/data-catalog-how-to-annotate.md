@@ -2,7 +2,7 @@
 title: Azure Data Catalog でデータ ソースに注釈を付ける方法
 description: Azure Data Catalog でデータ資産に注釈を付ける方法を説明する操作方法に関する記事 (フレンドリ名、タグ、説明、エキスパートを含む)
 services: data-catalog
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.assetid: 5a7e6bb2-863c-4eca-b614-1c814920d9ed
 ms.service: data-catalog

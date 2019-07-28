@@ -3,7 +3,7 @@ title: Azure セキュリティの技術的な概要 | Microsoft Docs
 description: この記事では、さまざまな Azure リソースに対する Azure セキュリティの技術的な概要に関する精選された一覧を示します。
 services: azure-security
 documentationcenter: na
-author: TomShinder
+author: tomshinder
 manager: barbkess
 editor: TomSh
 ms.assetid: ''

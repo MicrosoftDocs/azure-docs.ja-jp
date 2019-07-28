@@ -2,7 +2,7 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: storage
-author: MarkMcGeeAtAquent
+author: markmcgeeataquent
 ms.service: storage
 ms.topic: include
 ms.date: 04/06/2018

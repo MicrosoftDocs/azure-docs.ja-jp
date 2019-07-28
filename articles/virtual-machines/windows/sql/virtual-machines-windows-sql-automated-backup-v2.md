@@ -3,7 +3,7 @@ title: SQL Server 2016/2017 Azure VM の自動バックアップ v2 | Microsoft 
 description: Azure で実行されている SQL Server 2016/2017 VM の自動バックアップ機能について説明します。 この記事は、Resource Manager を使用する VM のみにあてはまります。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7

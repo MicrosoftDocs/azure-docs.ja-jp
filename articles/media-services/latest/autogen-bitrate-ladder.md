@@ -3,7 +3,7 @@ title: Media Services の標準エンコーダーを使用してビデオをエ�
 description: このトピックでは、Media Services の標準エンコーダーを使用して、入力解像度とビットレートに基づく自動生成されたビットレート ラダーを持つ入力ビデオをエンコードする方法を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

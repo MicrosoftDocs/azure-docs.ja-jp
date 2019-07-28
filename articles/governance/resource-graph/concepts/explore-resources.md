@@ -1,7 +1,7 @@
 ---
 title: Azure リソースの探索
 description: Resource Graph のクエリ言語を使用して、リソースを探索し、どのように接続されているかを確認する方法について学習します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 04/23/2019
 ms.topic: conceptual

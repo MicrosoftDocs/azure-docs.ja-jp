@@ -2,7 +2,7 @@
 title: Azure PowerShell スクリプト - Azure Cosmos DB の Gremlin API アカウントを作成する
 description: Azure PowerShell サンプル スクリプト - Azure Cosmos DB の Gremlin API アカウントを作成する
 ms.service: cosmos-db
-author: SnehaGunda
+author: snehagunda
 ms.author: sngun
 ms.subservice: cosmosdb-graph
 ms.devlang: PowerShell

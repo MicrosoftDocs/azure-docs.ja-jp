@@ -3,7 +3,7 @@ title: Azure リソースのマネージド ID に関する FAQ と既知の問�
 description: Azure リソースのマネージド ID に関する既知の問題。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: 2097381a-a7ec-4e3b-b4ff-5d2fb17403b6

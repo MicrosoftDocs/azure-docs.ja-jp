@@ -1,7 +1,7 @@
 ---
 title: Azure Managed Applications でジャストインタイム アクセスの構成と承認を行う
 description: Azure Managed Applications のお客様が、マネージド アプリケーションへのジャストインタイム アクセス要求を承認する方法について説明します。
-author: MSEvanhi
+author: msevanhi
 ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 06/03/2019

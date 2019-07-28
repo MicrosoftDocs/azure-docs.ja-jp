@@ -3,7 +3,7 @@ title: イマーシブ リーダー API とは
 titleSuffix: Azure Cognitive Services
 description: イマーシブ リーダー API について説明します。
 services: cognitive-services
-author: metanMSFT
+author: metanmsft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader

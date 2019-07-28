@@ -3,7 +3,7 @@ title: Azure Media Services REST 呼び出し用の Postman 環境のインポ�
 description: このトピックでは、Azure Media Services REST 呼び出し用の Postman 環境の定義を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

@@ -1,7 +1,7 @@
 ---
 title: H264 Single Bitrate High Quality SD for Android | Microsoft Docs
 description: このトピックでは、**H264 Single Bitrate High Quality SD for Android** タスク プリセットの概要を説明します。
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 services: media-services

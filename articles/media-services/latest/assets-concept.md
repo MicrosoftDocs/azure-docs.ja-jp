@@ -3,7 +3,7 @@ title: Azure Media Services の資産 | Microsoft Docs
 description: この記事では、アセットとは何かについて説明し、Azure Media Services によるそれらの使用方法についても説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

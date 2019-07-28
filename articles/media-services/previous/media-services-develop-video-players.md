@@ -1,7 +1,7 @@
 ---
 title: ビデオ プレーヤー アプリケーションの開発
 description: このトピックでは、Media Services からのストリーミング メディアを使用する独自のクライアント アプリケーションの開発に使用できるプレーヤー フレームワークとプラグインへのリンクを提供します。
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 services: media-services

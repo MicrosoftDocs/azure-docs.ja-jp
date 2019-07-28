@@ -2,7 +2,7 @@
 title: SQL Data Warehouse データ管理パートナー | Microsoft Docs
 description: SQL Data Warehouse をサポートするソリューションを提供するサードパーティのデータ管理パートナーの一覧。
 services: sql-data-warehouse
-author: mabasile-MSFT
+author: mabasile-msft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

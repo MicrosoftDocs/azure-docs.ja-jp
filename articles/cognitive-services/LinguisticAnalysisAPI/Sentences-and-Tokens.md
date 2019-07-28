@@ -3,7 +3,7 @@ title: 文章とトークン - Linguistic Analysis API
 titlesuffix: Azure Cognitive Services
 description: Linguistic Analysis API での文の分割とトークン化について説明します。
 services: cognitive-services
-author: DavidLiCIG
+author: davidlicig
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: linguistic-analysis

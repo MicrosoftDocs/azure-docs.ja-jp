@@ -3,7 +3,7 @@ title: Azure Portal での Windows SQL Server VM のプロビジョニング ガ
 description: このハウツー ガイドでは、Azure Portal で Windows SQL Server 2017 仮想マシンを作成するためのオプションについて説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e

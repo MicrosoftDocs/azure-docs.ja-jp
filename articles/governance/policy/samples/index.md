@@ -1,7 +1,7 @@
 ---
 title: ポリシーのサンプルのインデックス
 description: Azure Policy のサンプルのインデックス。 カテゴリには、名前付け、タグ、Key Vault、ネットワーク、ストレージなどがあります。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

@@ -3,7 +3,7 @@ title: Azure Application Insights の使用量とコストを管理する | Micr
 description: Application Insights でテレメトリの量を管理し、コストを監視します。
 services: application-insights
 documentationcenter: ''
-author: DaleKoetke
+author: dalekoetke
 manager: carmonm
 ms.assetid: ebd0d843-4780-4ff3-bc68-932aa44185f6
 ms.service: application-insights

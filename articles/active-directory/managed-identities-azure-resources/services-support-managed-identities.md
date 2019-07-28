@@ -2,7 +2,7 @@
 title: Azure リソースのマネージド ID をサポートする Azure サービス
 description: Azure リソースのマネージド ID と Azure AD 認証をサポートするサービスの一覧
 services: active-directory
-author: MarkusVi
+author: markusvi
 ms.author: markvi
 ms.date: 06/19/2019
 ms.topic: conceptual

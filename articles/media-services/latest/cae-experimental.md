@@ -3,7 +3,7 @@ title: コンテンツに対応したエンコードの試験的プリセット 
 description: この記事では、Azure Media Services でのコンテンツに対応したエンコードについて説明します
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

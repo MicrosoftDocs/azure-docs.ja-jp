@@ -2,7 +2,7 @@
 title: Cognitive Services リソースをスキルセットにアタッチする - Azure Search
 description: Azure Search で Cognitive Services オールインワン サブスクリプションをコグニティブ エンリッチメント パイプラインにアタッチする手順。
 manager: cgronlun
-author: LuisCabrer
+author: luiscabrer
 services: search
 ms.service: search
 ms.devlang: NA

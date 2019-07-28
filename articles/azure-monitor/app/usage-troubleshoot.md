@@ -3,7 +3,7 @@ title: Azure Application Insights のユーザー動作分析ツールをトラ�
 description: トラブルシューティング ガイド - Application Insights でのサイトとアプリの利用状況の分析。
 services: application-insights
 documentationcenter: ''
-author: NumberByColors
+author: numberbycolors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd

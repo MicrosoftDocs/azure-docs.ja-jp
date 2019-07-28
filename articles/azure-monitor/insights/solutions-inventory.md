@@ -3,7 +3,7 @@ title: Azure での監視ソリューションのインベントリ | Microsoft 
 description: Azure Monitor の監視ソリューションには、特定の問題点に関するメトリックを提供するロジックや視覚化、データ取得規則が集約されています。  この記事では、Microsoft から利用できる管理ソリューションの一覧を示し、データ収集の手法および頻度に関する詳細について説明します。
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: f029dd6d-58ae-42c5-ad27-e6cc92352b3b

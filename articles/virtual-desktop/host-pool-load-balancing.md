@@ -2,7 +2,7 @@
 title: Windows Virtual Desktop プレビューのホスト プールの負荷分散方法 - Azure
 description: Windows Virtual Desktop プレビュー環境でのホスト プールの負荷分散方法。
 services: virtual-desktop
-author: Heidilohr
+author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019

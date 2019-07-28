@@ -3,7 +3,7 @@ title: VM への送受信ネットワーク トラフィック フローのロ�
 description: Network Watcher の NSG フロー ログ機能を使用して、VM への送受信ネットワーク トラフィック フローをログに記録する方法を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

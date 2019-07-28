@@ -1,8 +1,8 @@
 ---
 title: 要約 - Azure Functions とサーバーレス プラットフォームのセキュリティ
 description: Azure Functions とサーバーレス プラットフォームのセキュリティに関するホワイト ペーパーの要約。
-author: TomShinder
-ms.author: TomSh
+author: tomshinder
+ms.author: tomsh
 ms.date: 06/21/2018
 ms.topic: article
 ms.service: security

@@ -3,7 +3,7 @@ title: REST を使用したコンテンツ キー承認ポリシーの構成 - A
 description: Media Services REST API を利用し、コンテンツ キー承認ポリシーを構成する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: 7af5f9e2-8ed8-43f2-843b-580ce8759fd4

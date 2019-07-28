@@ -3,7 +3,7 @@ title: Analyzers メソッド - Lingistic Analysis API
 titlesuffix: Azure Cognitive Services
 description: アナライザの REST API は、Linguistic Analysis API が現在サポートしているアナライザーの一覧を表示します。
 services: cognitive-services
-author: RichardSunMS
+author: richardsunms
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: linguistic-analysis

@@ -2,7 +2,7 @@
 title: Azure Database Migration Service の使用に関する FAQ | Microsoft Docs
 description: データベース移行を実行するための Azure Database Migration Service の使用に関するよく寄せられる質問に答えます。
 services: database-migration
-author: HJToland3
+author: hjtoland3
 ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg

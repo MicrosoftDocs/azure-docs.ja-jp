@@ -3,7 +3,7 @@ title: Docker コンテナーの設定
 titleSuffix: Language Understanding - Azure Cognitive Services
 description: LUIS コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 LUIS には、いくつかの必須の設定と省略可能な設定があります。
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services

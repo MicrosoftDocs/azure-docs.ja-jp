@@ -3,7 +3,7 @@ title: モデルをモバイルにエクスポートする - Custom Vision Servi
 titlesuffix: Azure Cognitive Services
 description: モバイル アプリケーションの作成で利用する目的でモデルをエクスポートする方法について説明します。
 services: cognitive-services
-author: anrothMSFT
+author: anrothmsft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision

@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services エラー コード | Microsoft Docs
 description: このトピックでは、Azure Media Services エラー コードの概要を説明します。
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 services: media-services

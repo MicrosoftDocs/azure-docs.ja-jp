@@ -1,7 +1,7 @@
 ---
 title: サンプル - 許可されるストレージ アカウントの SKU
 description: このサンプル ポリシー定義は、適切な SKU の使用をストレージ アカウントに要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

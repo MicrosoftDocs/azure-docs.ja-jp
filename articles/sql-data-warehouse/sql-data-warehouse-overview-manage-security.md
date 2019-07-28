@@ -2,7 +2,7 @@
 title: SQL Data Warehouse でのデータベースの保護 | Microsoft Docs
 description: ソリューション開発のための Azure SQL Data Warehouse でのデータベース保護に関するヒント。
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: kavithajonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

@@ -3,7 +3,7 @@ title: Azure Monitor での Azure Active Directory アクティビティ ログ 
 description: Azure Monitor での Azure Active Directory アクティビティ ログの概要です
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75

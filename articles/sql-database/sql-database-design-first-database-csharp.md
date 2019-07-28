@@ -5,7 +5,7 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.topic: tutorial
-author: MightyPen
+author: mightypen
 ms.author: genemi
 ms.reviewer: carlrab
 manager: craigg-msft

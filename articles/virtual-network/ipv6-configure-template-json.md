@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: この記事では、Azure Resource Manager VM テンプレートを使用して Azure 仮想ネットワークで IPv6 デュアル スタック アプリケーションを展開する方法を示します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 ms.service: virtual-network
 ms.devlang: NA

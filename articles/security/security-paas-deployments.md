@@ -3,7 +3,7 @@ title: セキュリティで保護された PaaS デプロイのベスト プラ
 description: Azure 上でセキュリティで保護されたクラウド アプリケーションを設計、構築、管理するためのベスト プラクティスについて学習し、さらに PaaS と他のクラウド サービス モデルを比較し、セキュリティ上のメリットについて理解します。
 services: security
 documentationcenter: na
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: techlake
 ms.assetid: ''

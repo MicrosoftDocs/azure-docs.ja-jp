@@ -3,7 +3,7 @@ title: Azure AD にレポート データが保存される期間 | Microsoft Do
 description: Azure でさまざまな種類のレポート データが保存される期間について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: 183e53b0-0647-42e7-8abe-3e9ff424de12

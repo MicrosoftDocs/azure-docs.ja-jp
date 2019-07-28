@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB:SQL API の非同期 Java のサンプル
 description: CRUD 操作など、Azure Cosmos DB SQL API を使う一般的なタスクについては、GitHub の非同期 Java のサンプルを参照してください。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: sample

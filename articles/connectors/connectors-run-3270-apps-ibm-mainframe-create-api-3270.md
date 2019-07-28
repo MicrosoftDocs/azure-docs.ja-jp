@@ -4,7 +4,7 @@ description: Azure Logic Apps と IBM 3270 コネクタを使用することに�
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: ChristopherHouser
+author: christopherhouser
 ms.author: chrishou
 ms.reviewer: estfan, valthom
 ms.topic: article

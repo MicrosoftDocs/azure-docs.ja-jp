@@ -3,7 +3,7 @@ title: Azure CLI で Azure AD アプリを作成し、Azure Media Services API �
 description: このトピックでは、Azure CLI を使用して Azure AD アプリを作成し、Azure Media Services API にアクセスするよう構成する方法を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

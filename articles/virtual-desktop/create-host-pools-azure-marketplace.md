@@ -2,7 +2,7 @@
 title: Azure Marketplace を使用して Windows Virtual Desktop プレビューのホスト プールを作成する - Azure
 description: Azure Marketplace を使用して Windows Virtual Desktop プレビューのホスト プールを作成する方法。
 services: virtual-desktop
-author: Heidilohr
+author: heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/05/2019

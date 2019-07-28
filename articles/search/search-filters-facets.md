@@ -1,7 +1,7 @@
 ---
 title: アプリ内の検索ナビゲーション用ファセット フィルター - Azure Search
 description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search で、ユーザーのセキュリティ ID、地理的な場所、または数値で条件をフィルター処理してクエリの検索結果を減らします。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 services: search
 ms.service: search

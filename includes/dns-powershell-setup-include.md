@@ -4,7 +4,7 @@ description: Azure DNS 用の PowerShell のインクルード ファイル
 services: dns
 author: subsarma
 ms.service: dns
-ms.topic: include file for PowerShell for Azure DNS
+ms.topic: include file for powershell for azure dns
 ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for PowerShell for Azure DNS

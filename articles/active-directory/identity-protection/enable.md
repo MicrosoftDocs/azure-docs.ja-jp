@@ -7,7 +7,7 @@ ms.subservice: identity-protection
 ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: joflore
-author: MicrosoftGuyJFlo
+author: microsoftguyjflo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management

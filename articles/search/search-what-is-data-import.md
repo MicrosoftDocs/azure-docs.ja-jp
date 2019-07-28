@@ -1,7 +1,7 @@
 ---
 title: 検索インデックスにデータを取り込むのためのデータのインポート - Azure Search
 description: 外部データソースから Azure Search のインデックスにデータを取り込んだりアップロードしたりする方法について説明します。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 services: search
 ms.service: search

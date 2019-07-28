@@ -3,7 +3,7 @@ title: SAP HANA on Azure (L インスタンス) のデータ階層化と拡張�
 description: SAP HANA on Azure (L インスタンス) のデータ階層化と拡張ノード。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
+author: rickstercdn
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux

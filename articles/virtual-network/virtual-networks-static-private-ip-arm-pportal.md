@@ -3,7 +3,7 @@ title: VM のプライベート IP アドレスの構成 - Azure Portal | Micros
 description: Azure Portal を使用して仮想マシンのプライベート IP アドレスを構成する方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: tysonn
 tags: azure-resource-manager

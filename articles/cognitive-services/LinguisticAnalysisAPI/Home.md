@@ -3,7 +3,7 @@ title: Linguistic Analysis API とは
 titlesuffix: Azure Cognitive Services
 description: Linguistic Analysis API で、テキストの構造を識別する自然言語処理 (NLP) ツールにアクセスできるようにする方法について説明します。
 services: cognitive-services
-author: RichardSunMS
+author: richardsunms
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: linguistic-analysis

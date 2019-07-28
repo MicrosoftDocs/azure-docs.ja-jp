@@ -2,7 +2,7 @@
 title: Database Migration Service および PowerShell を使用して SQL Server を Azure SQL Database に移行する | Microsoft Docs
 description: Azure PowerShell を使用してオンプレミスの SQL Server から Azure SQL Database に移行する方法について説明します。
 services: database-migration
-author: HJToland3
+author: hjtoland3
 ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg

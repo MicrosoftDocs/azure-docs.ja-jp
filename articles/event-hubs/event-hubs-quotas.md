@@ -3,7 +3,7 @@ title: クォータと制限 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs の制限とクォータについて説明します
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: b9855dd5-f007-4dd2-89d1-aa6f9b241dc0

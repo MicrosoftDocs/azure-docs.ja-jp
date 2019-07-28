@@ -1,7 +1,7 @@
 ---
 title: Azure Site Recovery を使用した VMware VM と物理サーバーのディザスター リカバリーのためのモビリティ サービスについて | Microsoft Docs
 description: Azure Site Recovery を使用して VMware VM と物理サーバーを Azure にディザスター リカバリーするためのモビリティ サービス エージェントについて説明します。
-author: Rajeswari-Mamilla
+author: rajeswari-mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual

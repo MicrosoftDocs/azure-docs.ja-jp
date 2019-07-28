@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB Table API の概要
 description: Azure Tables API と Azure Cosmos DB を使用して、大量のキー値データを低遅延で格納および照会する方法を説明します。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: overview

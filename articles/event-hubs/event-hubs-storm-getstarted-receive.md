@@ -3,7 +3,7 @@ title: Apache Storm を使用してイベントを受信する - Azure Event Hub
 description: この記事では、Apache Storm を使用して Azure Event Hubs からイベントを受信する方法について説明します。
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''

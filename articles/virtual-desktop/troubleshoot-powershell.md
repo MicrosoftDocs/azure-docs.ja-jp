@@ -2,7 +2,7 @@
 title: Windows Virtual Desktop PowerShell - Azure
 description: Windows Virtual Desktop テナント環境の設定時に PowerShell の問題を解決する方法。
 services: virtual-desktop
-author: ChJenk
+author: chjenk
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019

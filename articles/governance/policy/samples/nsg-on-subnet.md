@@ -1,7 +1,7 @@
 ---
 title: サンプル - すべてのサブネット上の NSG x
 description: このサンプル ポリシー定義は、すべての仮想サブネットで特定のネットワーク セキュリティ グループが使用されることを要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

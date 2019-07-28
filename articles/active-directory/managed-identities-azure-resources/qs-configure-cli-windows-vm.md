@@ -3,7 +3,7 @@ title: Azure CLI を使用して Azure VM 上でシステム割り当てマネ�
 description: Azure CLI を使用して、Azure VM 上にシステム割り当てマネージド ID とユーザー割り当てマネージド ID を構成する順を追った説明。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.service: active-directory

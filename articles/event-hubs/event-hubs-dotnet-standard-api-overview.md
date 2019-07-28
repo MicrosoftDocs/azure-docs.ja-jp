@@ -3,7 +3,7 @@ title: Azure Event Hubs .NET Standard API の概要 | Microsoft Docs
 description: .NET Standard API の概要
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: article

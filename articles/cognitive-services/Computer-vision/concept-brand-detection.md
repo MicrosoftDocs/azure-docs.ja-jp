@@ -3,7 +3,7 @@ title: ブランド検出 - Computer Vision
 titleSuffix: Azure Cognitive Services
 description: Computer Vision API を使用したブランド/ロゴの検出に関連する概念。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

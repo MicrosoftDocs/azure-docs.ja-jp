@@ -3,7 +3,7 @@ title: v2 API によって生成される Azure Media Services Video Indexer の
 titlesuffix: Azure Media Services
 description: このトピックでは、v2 API によって生成される Video Indexer の出力を調べます。
 services: media-services
-author: Juliako
+author: juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer

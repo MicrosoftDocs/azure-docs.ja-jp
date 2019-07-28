@@ -3,7 +3,7 @@ title: Azure Application Insights による Web アプリケーションのユ�
 description: アプリに戻るユーザーの数を分析します。
 services: application-insights
 documentationcenter: ''
-author: NumberByColors
+author: numberbycolors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd

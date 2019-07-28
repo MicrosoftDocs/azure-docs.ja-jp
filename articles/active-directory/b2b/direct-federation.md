@@ -3,7 +3,7 @@ title: B2B 用の ID プロバイダーとの直接フェデレーションの�
 description: ご自身の Azure AD アプリにゲストがサインインできるようにするために、SAML または WS-Fed ID プロバイダーと直接連携します
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: mimart

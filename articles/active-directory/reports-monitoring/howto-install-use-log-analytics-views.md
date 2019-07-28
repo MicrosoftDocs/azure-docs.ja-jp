@@ -3,7 +3,7 @@ title: Azure Active Directory のログ分析ビューをインストールし�
 description: Azure Active Directory のログ分析ビューをインストールして使用する方法について説明します
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: 2290de3c-2858-4da0-b4ca-a00107702e26

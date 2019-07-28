@@ -1,7 +1,7 @@
 ---
 title: サンプル -許可されている ExpressRoute ピアリングの場所
 description: このサンプル ポリシー定義は、指定したピアリングの場所が ExpressRoute で使用されていることを要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

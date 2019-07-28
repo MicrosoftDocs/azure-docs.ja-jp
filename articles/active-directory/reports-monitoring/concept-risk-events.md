@@ -3,7 +3,7 @@ title: Azure Active Directory リスク イベント | Microsoft Docs
 description: この記事では、リスク イベントの詳細な概要を示します。
 services: active-directory
 keywords: azure active directory identity protection, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
-author: MarkusVi
+author: markusvi
 manager: daveba
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory

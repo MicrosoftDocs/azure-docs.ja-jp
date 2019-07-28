@@ -2,7 +2,7 @@
 title: データベース移行シナリオの状態 | Microsoft Docs
 description: Azure Database Migration Service によってサポートされる移行シナリオの状態について学習します。
 services: database-migration
-author: HJToland3
+author: hjtoland3
 ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg

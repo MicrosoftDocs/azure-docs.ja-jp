@@ -3,7 +3,7 @@ title: Video Indexer を使用してビデオをアップロードしてイン�
 titlesuffix: Azure Media Services
 description: このトピックでは、API を使用して Video Indexer でビデオをアップロードし、インデックスを付ける方法を示します。
 services: media-services
-author: Juliako
+author: juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer

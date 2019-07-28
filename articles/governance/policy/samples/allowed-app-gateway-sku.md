@@ -1,7 +1,7 @@
 ---
 title: サンプル - 許可されているアプリケーション ゲートウェイ SKU
 description: このサンプル ポリシー定義は、アプリケーション ゲートウェイに適切な SKU を使用することを要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

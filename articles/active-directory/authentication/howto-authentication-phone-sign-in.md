@@ -7,7 +7,7 @@ ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: joflore
-author: MicrosoftGuyJFlo
+author: microsoftguyjflo
 manager: daveba
 ms.reviewer: librown
 ms.custom: seo-update-azuread-jan

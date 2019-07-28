@@ -2,7 +2,7 @@
 title: Azure でのデータ ウェアハウスの開発に関するリソース | Microsoft Docs
 description: SQL Data Warehouse に関する開発コンセプト、設計上の決定、推奨事項、およびコーディング技法。
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: xiaoyumsft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

@@ -3,7 +3,7 @@ title: Key Vault と Azure の Windows VM 上の SQL Server との統合 (クラ
 description: Azure Key Vault で使用するために SQL Server 暗号化の構成を自動化する方法について説明します。 このトピックでは、クラシック デプロイ モデルで作成される SQL Server 仮想マシンで Azure Key Vault 統合を使用する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 editor: ''
 tags: azure-service-management

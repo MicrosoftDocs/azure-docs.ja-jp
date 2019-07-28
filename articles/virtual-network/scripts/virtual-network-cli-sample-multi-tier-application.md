@@ -3,7 +3,7 @@ title: Azure CLI スクリプト サンプル - 多層アプリケーション�
 description: Azure CLI スクリプト サンプル - 多層アプリケーション用の仮想ネットワークの作成
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: ''

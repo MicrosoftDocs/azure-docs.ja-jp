@@ -1,7 +1,7 @@
 ---
 title: Azure Site Recovery を使用して VMware VM および物理サーバーの Azure へのディザスター リカバリーに使用されるプロセス サーバーを管理する | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用して、VMware VM および物理サーバーを Azure にディザスター リカバリーするために設定されたプロセス サーバーを管理する方法について説明します。
-author: Rajeswari-Mamilla
+author: rajeswari-mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual

@@ -3,7 +3,7 @@ title: マイクロソフトのグローバル ネットワーク - Azure
 description: マイクロソフトが高速で信頼性の高いグローバル ネットワークを構築する方法について説明します
 services: networking
 documentationcenter: ''
-author: KumudD
+author: kumudd
 manager: ''
 ms.service: networking
 ms.devlang: ''

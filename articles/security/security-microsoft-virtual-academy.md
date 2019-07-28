@@ -3,7 +3,7 @@ title: Microsoft Virtual Academy の Azure セキュリティ関連コース | M
 description: この記事には、Microsoft Virtual Academy から、Azure のセキュリティ関連のコースを精選して集めてあります。  Microsoft Virtual Academy は、開発者、IT およびデータの専門家、学生が最新テクノロジを学習し、スキルを身に付け、キャリアを積めるように支援する、無料のオンライン トレーニングを提供します。
 services: security
 documentationcenter: na
-author: TomShinder
+author: tomshinder
 manager: barbkess
 editor: TomSh
 ms.assetid: f1d7da18-bfd1-4338-abbb-2c558fb780f9

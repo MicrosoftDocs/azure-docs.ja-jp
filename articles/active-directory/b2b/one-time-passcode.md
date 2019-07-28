@@ -3,7 +3,7 @@ title: B2B ゲスト ユーザーのワンタイム パスコード認証 - Azur
 description: 電子メール ワンタイム パスコードを使用して、Microsoft アカウントを必要とせずに B2B ゲスト ユーザーを認証する方法について説明します。
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mimart

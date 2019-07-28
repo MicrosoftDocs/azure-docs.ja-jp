@@ -3,7 +3,7 @@ title: Azure Application Insights にユーザー コンテキスト ID を送�
 description: Application Insights で各ユーザーに一意の永続 ID 文字列を割り当てて、サービスにおけるユーザーの行動を追跡します。
 services: application-insights
 documentationcenter: ''
-author: NumberByColors
+author: numberbycolors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd

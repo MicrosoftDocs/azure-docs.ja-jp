@@ -2,7 +2,7 @@
 title: Azure Service Fabric CLI (sfctl) を使用した Azure Service Fabric アプリケーションの管理
 description: Azure Service Fabric CLI を使用して Azure Service Fabric クラスターにアプリケーションをデプロイまたは Azure Service Fabric クラスターからアプリケーションを削除する方法について説明します。
 services: service-fabric
-author: Christina-Kang
+author: christina-kang
 manager: chackdan
 ms.service: service-fabric
 ms.topic: conceptual

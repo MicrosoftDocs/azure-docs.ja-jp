@@ -6,7 +6,7 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: MayMSFT
+author: maymsft
 ms.author: sihhu
 ms.reviewer: trbye
 ms.date: 07/16/2019

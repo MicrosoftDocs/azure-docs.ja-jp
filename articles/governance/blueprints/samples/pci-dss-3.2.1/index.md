@@ -2,7 +2,7 @@
 title: サンプル - PCI-DSS v3.2.1 のブループリント - 概要
 description: Payment Card Industry Data Security Standard v3.2.1 のブループリント サンプルの概要。
 services: blueprints
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual

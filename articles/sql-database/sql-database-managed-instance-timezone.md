@@ -6,7 +6,7 @@ ms.service: sql-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: MladjoA
+author: mladjoa
 ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg

@@ -1,7 +1,7 @@
 ---
 title: 検索トラフィックの分析を実装する - Azure Search
 description: テレメトリおよびユーザーによって開始されたイベントをログ ファイルに追加するため、Azure Search の検索トラフィックの分析を有効にします。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 services: search
 ms.service: search

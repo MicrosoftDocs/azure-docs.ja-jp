@@ -1,5 +1,5 @@
 ---
-author: Rajeswari-Mamilla
+author: rajeswari-mamilla
 ms.service: site-recovery
 ms.topic: include
 ms.date: 04/28/2019

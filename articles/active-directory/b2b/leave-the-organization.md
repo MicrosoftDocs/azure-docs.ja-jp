@@ -3,7 +3,7 @@ title: ゲスト ユーザーとして組織を脱退する - Azure Active Direc
 description: Azure AD B2B のゲスト ユーザーがアクセス パネルから組織を脱退する方法について説明します。
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: mimart

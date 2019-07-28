@@ -1,7 +1,7 @@
 ---
 title: ポータルから既存の割り当てを更新する方法
 description: Azure Blueprints でポータルから既存の割り当てを更新するためのメカニズムについて学習します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 10/25/2018
 ms.topic: conceptual

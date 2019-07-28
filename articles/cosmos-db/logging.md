@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB での診断ログ
 description: Azure Cosmos DB に格納されているデータをログ記録および監視するさまざまな方法について説明します。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019

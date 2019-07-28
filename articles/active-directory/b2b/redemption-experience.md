@@ -3,7 +3,7 @@ title: B2B コラボレーションの招待の利用 - Azure Active Directory |
 description: プライバシー条件への同意など、エンド ユーザー向けの Azure AD B2B コラボレーションの招待の利用エクスペリエンスについて説明します。
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: mimart

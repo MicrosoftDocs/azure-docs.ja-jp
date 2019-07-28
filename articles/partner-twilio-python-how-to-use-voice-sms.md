@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2015
-ms.author: MicrosoftHelp@twilio.com
+ms.author: microsofthelp@twilio.com
 ms.openlocfilehash: e6cfd9e72dc1a38e4ed0c11320336ccc4b44a2c0
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT

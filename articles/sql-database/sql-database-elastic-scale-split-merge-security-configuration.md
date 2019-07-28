@@ -7,7 +7,7 @@ ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: VanMSFT
+author: vanmsft
 ms.author: vanto
 ms.reviewer: sstein
 manager: craigg

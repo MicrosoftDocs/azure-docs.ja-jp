@@ -4,7 +4,7 @@ description: この Azure 用語集を使えば、Azure プラットフォーム
 keywords: Azure 辞書, クラウド用語, Azure 用語集, 用語の定義, クラウドの用語
 services: na
 documentationcenter: na
-author: MonicaRush
+author: monicarush
 manager: jhubbard
 editor: ''
 ms.assetid: d7ac12f7-24b5-4bcd-9e4d-3d76fbd8d297

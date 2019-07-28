@@ -3,7 +3,7 @@ title: クイック スタート:手書きのテキストを抽出する - REST�
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Python と Computer Vision API を使って、画像から手書きテキストを抽出します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

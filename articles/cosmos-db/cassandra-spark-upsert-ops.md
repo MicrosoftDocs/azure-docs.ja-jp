@@ -1,7 +1,7 @@
 ---
 title: Spark からの Azure Cosmos DB Cassandra API にデータをアップサートする
 description: この記事では、Spark から Azure Cosmos DB Cassandra API のテーブルにアップサートする方法について説明します。
-author: kanshiG
+author: kanshig
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db

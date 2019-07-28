@@ -1,7 +1,7 @@
 ---
 title: Blueprints サンプルのインデックス
 description: Azure Blueprints を使用してデプロイするためのコンプライアンスおよび標準環境のインデックス。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: blueprints
 ms.topic: sample

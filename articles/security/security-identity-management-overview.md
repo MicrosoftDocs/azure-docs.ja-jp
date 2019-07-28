@@ -3,7 +3,7 @@ title: ID 管理に役立つ Azure のセキュリティ機能 | Microsoft Docs
 description: " この記事は、ID 管理に役立つ Azure のコア セキュリティ機能の概要を説明します。 Microsoft ID およびアクセス管理ソリューションは、IT が企業のデータ センター全体とクラウドのアプリケーションとリソースへのアクセスを保護するのに役立ち、多要素認証や条件付きアクセス ポリシーなどの追加レベルの検証を可能にします。 "
 services: security
 documentationcenter: na
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: 5aa0a7ac-8f18-4ede-92a1-ae0dfe585e28

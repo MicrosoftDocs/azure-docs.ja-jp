@@ -1,7 +1,7 @@
 ---
 title: サンプル - 類似パターンを強制する
 description: このサンプル ポリシー定義は、名前付け規則に対する類似パターンを満たしていることをリソースに要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

@@ -1,7 +1,7 @@
 ---
 title: サンプル - Data Lake Store の暗号化が必要
 description: このサンプル ポリシー定義は、Data Lake Store の暗号化が有効になっていることを要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

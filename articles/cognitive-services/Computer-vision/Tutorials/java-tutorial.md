@@ -3,7 +3,7 @@ title: イメージの操作を実行する - Java
 titlesuffix: Azure Cognitive Services
 description: Microsoft Cognitive Services の Computer Vision API を使用する基本的な Java Swing アプリを探索します。 OCR を実行し、サムネイルを作成して、イメージ内の視覚的な特徴を操作します。
 services: cognitive-services
-author: KellyDF
+author: kellydf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

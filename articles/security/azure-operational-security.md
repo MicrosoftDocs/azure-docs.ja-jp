@@ -3,7 +3,7 @@ title: Azure で運用可能なセキュリティ | Microsoft Docs
 description: Microsoft Azure Monitor ログおよびそのサービスとしくみについて説明します。
 services: security
 documentationcenter: na
-author: UnifyCloud
+author: unifycloud
 manager: barbkess
 editor: TomSh
 ms.assetid: ''
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
-ms.author: TomSh
+ms.author: tomsh
 ms.openlocfilehash: ab5b50433b85416ff471546171998e992293b0ea
 ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT

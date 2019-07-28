@@ -3,7 +3,7 @@ title: Azure PowerShell で SQL Server Windows VM を作成する | Microsoft Do
 description: このチュートリアルでは、Azure PowerShell で Windows SQL Server 2017 仮想マシンを作成する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql

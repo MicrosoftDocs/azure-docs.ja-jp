@@ -2,7 +2,7 @@
 title: Azure Service Fabric CLI の概要
 description: Azure Service Fabric CLI の使用方法について説明します。 クラスターに接続して、アプリケーションを管理する方法についても説明します。
 services: service-fabric
-author: Christina-Kang
+author: christina-kang
 manager: chackdan
 ms.service: service-fabric
 ms.topic: conceptual

@@ -3,7 +3,7 @@ title: Azure Blockchain Workbench でのアプリケーションの使用
 description: Azure Blockchain Workbench でのアプリケーション コントラクトの使用方法に関するチュートリアル。
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 04/15/2019
 ms.topic: tutorial

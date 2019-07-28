@@ -3,7 +3,7 @@ title: Azure Blockchain の制限事項
 description: Azure Blockchain Service でのサービスと機能の制限に関する概要です
 services: azure-blockchain
 keywords: ブロックチェーン
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/02/2019
 ms.topic: article

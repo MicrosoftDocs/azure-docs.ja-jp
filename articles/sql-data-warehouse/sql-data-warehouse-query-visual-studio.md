@@ -2,7 +2,7 @@
 title: Azure SQL Data Warehouse への接続 (VSTS) | Microsoft Docs
 description: Visual Studio で SQL Data Warehouse に対してクエリを実行します。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: xiaoyul-preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

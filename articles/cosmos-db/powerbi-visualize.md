@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB コネクタ用 Power BI チュートリアル
 description: この Power BI のチュートリアルでは、JSON をインポートしたり、洞察に富むレポートを作成したり、Cosmos DB および Power BI コネクタを使用してデータを視覚化する方法を説明します。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019

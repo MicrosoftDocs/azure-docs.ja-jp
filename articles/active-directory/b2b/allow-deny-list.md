@@ -3,7 +3,7 @@ title: 特定組織からの招待を許可またはブロックする - Azure A
 description: 管理者が Azure Portal または PowerShell を使用して、B2B ユーザーの特定ドメインへのアクセスを許可またはブロックするアクセス リストまたは拒否リストを設定する方法を示します。
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: mimart

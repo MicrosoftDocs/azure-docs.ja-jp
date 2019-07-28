@@ -3,7 +3,7 @@ title: Azure Portal を使用してメディアを分析する | Microsoft Docs
 description: このトピックでは、Azure Portal を使用して Media Analytics メディア プロセッサ (MP) でメディアを処理する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601

@@ -3,7 +3,7 @@ title: インクルード ファイル
 description: インクルード ファイル
 services: cosmos-db
 documentationcenter: ''
-author: SnehaGunda
+author: snehagunda
 manager: kfile
 editor: ''
 tags: ''

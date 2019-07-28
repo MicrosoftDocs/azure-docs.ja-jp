@@ -1,7 +1,7 @@
 ---
 title: Azure Managed Applications でジャストインタイム アクセスを有効にして要求する
 description: Azure Managed Applications の発行元が、マネージド アプリケーションへのジャストインタイム アクセスを要求する方法について説明します。
-author: MSEvanhi
+author: msevanhi
 ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 06/03/2019

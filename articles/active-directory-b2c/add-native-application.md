@@ -9,7 +9,7 @@ ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
-ms.subservice: B2C
+ms.subservice: b2c
 ms.openlocfilehash: b4e9b95cb226aeec686816d0ed7160062e110c62
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT

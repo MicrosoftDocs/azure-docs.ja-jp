@@ -3,7 +3,7 @@ title: Custom Speech Service から Speech Services に移行する
 titlesuffix: Azure Cognitive Services
 description: Custom Speech Service は Speech Services の一部になっています。 Speech Services に切り替えると、品質と機能の最新の更新によるベネフィットがあります。
 services: cognitive-services
-author: PanosPeriorellis
+author: panosperiorellis
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service

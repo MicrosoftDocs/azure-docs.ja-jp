@@ -3,7 +3,7 @@ title: 分類子を構築する - Custom Vision Service
 titlesuffix: Azure Cognitive Services
 description: Custom Vision Web サイトを使用して画像分類モデルを作成する方法について説明します。
 services: cognitive-services
-author: anrothMSFT
+author: anrothmsft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision

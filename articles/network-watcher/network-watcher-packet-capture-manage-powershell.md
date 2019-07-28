@@ -3,7 +3,7 @@ title: Azure Network Watcher でパケット キャプチャを管理する - Po
 description: このページでは、PowerShell を使用して Network Watcher のパケット キャプチャ機能を管理する方法を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: 04d82085-c9ea-4ea1-b050-a3dd4960f3aa

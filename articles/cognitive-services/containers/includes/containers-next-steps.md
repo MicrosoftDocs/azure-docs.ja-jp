@@ -1,7 +1,7 @@
 ---
 title: コンテナーの次の手順
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include

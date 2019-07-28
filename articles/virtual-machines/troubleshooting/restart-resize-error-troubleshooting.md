@@ -3,7 +3,7 @@ title: Azure での VM の再起動またはサイズ変更に関する問題 | 
 description: Azure での既存の仮想マシンの再起動またはサイズ変更に関する Resource Manager デプロイメントの問題のトラブルシューティング
 services: virtual-machines
 documentationcenter: ''
-author: Deland-Han
+author: deland-han
 manager: felixwu
 editor: ''
 tags: top-support-issue

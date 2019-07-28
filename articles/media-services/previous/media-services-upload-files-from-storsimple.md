@@ -3,7 +3,7 @@ title: Azure StorSimple から Azure Media Services アカウントへのファ�
 description: この記事では、Azure StorSimple Data Manager の概要を説明します。 また、StorSimple からデータを抽出し、そのデータを資産として Azure Media Services アカウントにアップロードする方法を紹介するチュートリアルへのリンクも掲載しています。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: 1dd09328-262b-43ef-8099-73241b49a925

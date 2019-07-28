@@ -1,5 +1,5 @@
 ---
-author: IEvangelist
+author: ievangelist
 ms.author: dapine
 ms.service: cognitive-services
 ms.topic: include

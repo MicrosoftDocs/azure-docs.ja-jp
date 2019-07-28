@@ -3,7 +3,7 @@ title: クイック スタート:サムネイルの生成 - SDK、C#
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Computer Vision Windows C# クライアント ライブラリを使って、画像からサムネイルを生成します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

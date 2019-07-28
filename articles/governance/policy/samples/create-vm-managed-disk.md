@@ -1,7 +1,7 @@
 ---
 title: サンプル - マネージド ディスクを使用していない VM の監査
 description: この JSON サンプルの定義では、マネージド ディスクを使用しない仮想マシンが作成されたときに監査が行われます。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

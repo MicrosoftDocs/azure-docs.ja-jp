@@ -3,7 +3,7 @@ title: MetaMask を Azure Blockchain Service ネットワークに接続する
 description: MetaMask を使用して Azure Blockchain Service ネットワークに接続し、スマート コントラクトをデプロイします。
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/02/2019
 ms.topic: quickstart

@@ -2,7 +2,7 @@
 title: Azure での VM のブート診断 | Microsoft Docs
 description: Azure 内の仮想マシンに対する 2 つのデバッグ機能の概要
 services: virtual-machines
-author: Deland-Han
+author: deland-han
 manager: gwallace
 editor: ''
 tags: azure-resource-manager

@@ -3,7 +3,7 @@ title: Azure Network Watcher とオープン ソース ツールでネットワ�
 description: このページでは、Network Watcher のパケット キャプチャ機能と CapAnalysis を使用して、VM の送受信トラフィックのパターンを視覚化する方法について説明しています。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: 936d881b-49f9-4798-8e45-d7185ec9fe89

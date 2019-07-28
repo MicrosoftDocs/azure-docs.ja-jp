@@ -1,5 +1,5 @@
 ---
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.topic: include
 ms.date: 03/23/2019

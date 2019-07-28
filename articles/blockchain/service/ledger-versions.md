@@ -3,7 +3,7 @@ title: Azure Blockchain Service でサポートされる台帳のバージョン
 description: システム修正プログラムの適用やシステム管理およびユーザー管理のアップグレードに関するポリシーなど、Azure Blockchain Service でサポートされている台帳のバージョンの概要です。
 services: azure-blockchain
 keywords: ブロックチェーン
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/02/2019
 ms.topic: article

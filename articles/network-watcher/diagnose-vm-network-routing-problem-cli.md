@@ -3,7 +3,7 @@ title: 仮想マシン ネットワークのルーティングの問題を診断
 description: この記事では、Azure Network Watcher の次ホップ機能を使用して、仮想マシン ネットワークのルーティングの問題を診断する方法について説明します。
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

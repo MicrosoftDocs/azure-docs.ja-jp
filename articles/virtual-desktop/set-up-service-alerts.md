@@ -2,7 +2,7 @@
 title: Windows Virtual Desktop のサービス アラートを設定する - Azure
 description: Windows Virtual Desktop のサービス通知を受信するように Azure Service Health を設定する方法。
 services: virtual-desktop
-author: ChJenk
+author: chjenk
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/11/2019

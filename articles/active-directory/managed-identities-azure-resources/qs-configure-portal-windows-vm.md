@@ -3,7 +3,7 @@ title: Azure portal を使用して Azure VM で Azure リソースのマネー�
 description: Azure portal を使用して、Azure VM で Azure リソースのマネージド ID を構成するための詳細な手順について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.service: active-directory

@@ -2,7 +2,7 @@
 title: シノニム C# の例 - Azure Search
 description: この C# の例では、Azure Search のインデックスにシノニム機能を追加する方法を学習します。 シノニム マップとは、同等の用語の一覧です。 シノニムをサポートするフィールドでは、ユーザー指定の用語とそれに関連するすべてのシノニムを含むように、クエリが拡張されます。
 manager: cgronlun
-author: HeidiSteen
+author: heidisteen
 services: search
 ms.service: search
 ms.topic: conceptual

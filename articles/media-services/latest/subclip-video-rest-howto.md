@@ -3,7 +3,7 @@ title: Azure Media Services REST API を使用してエンコードを実行す�
 description: このトピックでは、Azure Media Services を REST で使用してエンコードを実行する際にビデオをサブクリップする方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

@@ -1,7 +1,7 @@
 ---
 title: PowerShell を使用した割り当ての管理方法
 description: 公式の Azure Blueprints PowerShell モジュールである Az.Blueprint でブループリント割り当てを管理する方法について説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: conceptual

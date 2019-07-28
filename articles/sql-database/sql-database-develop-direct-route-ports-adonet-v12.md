@@ -7,7 +7,7 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: MightyPen
+author: mightypen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg

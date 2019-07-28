@@ -2,7 +2,7 @@
 title: Azure PowerShell スクリプト - MongoDB 用の Azure Cosmos DB API アカウントを作成する
 description: Azure PowerShell サンプル スクリプト - MongoDB 用の Azure Cosmos DB API アカウントを作成する
 ms.service: cosmos-db
-author: SnehaGunda
+author: snehagunda
 ms.author: sngun
 ms.devlang: PowerShell
 ms.subservice: cosmosdb-mongo

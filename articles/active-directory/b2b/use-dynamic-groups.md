@@ -3,7 +3,7 @@ title: 動的グループと B2B コラボレーション - Azure Active Directo
 description: Azure Active Directory B2B コラボレーションを Azure AD の動的グループと共に使用する方法について説明します。
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: mimart

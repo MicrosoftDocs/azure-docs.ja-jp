@@ -2,7 +2,7 @@
 title: リアルタイム イベントのデータの異常を視覚化する - Azure Event Hubs | Microsoft Docs
 description: チュートリアル - Microsoft Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
 services: event-hubs
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 ms.author: shvija
 ms.topic: tutorial

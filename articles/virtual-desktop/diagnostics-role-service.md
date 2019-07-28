@@ -2,7 +2,7 @@
 title: Windows Virtual Desktop プレビューの診断機能を使用して問題を特定する - Azure
 description: Windows Virtual Desktop プレビューの診断機能とその使用方法について説明します。
 services: virtual-desktop
-author: Heidilohr
+author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019

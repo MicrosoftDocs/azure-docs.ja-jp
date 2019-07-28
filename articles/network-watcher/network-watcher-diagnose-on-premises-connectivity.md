@@ -3,7 +3,7 @@ title: Azure Network Watcher を使用して VPN Gateway 経由でオンプレ�
 description: この記事では、Azure Network Watcher のリソース トラブルシューティングを使用して、VPN Gateway 経由でオンプレミスの接続を診断する方法を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: aeffbf3d-fd19-4d61-831d-a7114f7534f9

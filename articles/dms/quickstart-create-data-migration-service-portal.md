@@ -2,7 +2,7 @@
 title: クイック スタート:Azure ポータルを使用して Azure Database Migration Service インスタンスを作成する | Microsoft Docs
 description: Azure ポータルを使用して Azure Database Migration Service のインスタンスを作成します。
 services: database-migration
-author: HJToland3
+author: hjtoland3
 ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg

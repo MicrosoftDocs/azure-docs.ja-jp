@@ -3,7 +3,7 @@ title: コグニティブ検索のドキュメント リソース - Azure Search
 description: Azure Search でのコグニティブ検索ワークロードに関する記事、チュートリアル、サンプル、およびブログ記事の注釈付きの一覧です。
 services: search
 manager: cgronlun
-author: HeidiSteen
+author: heidisteen
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual

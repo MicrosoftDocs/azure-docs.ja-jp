@@ -3,7 +3,7 @@ title: B2B コラボレーションのユーザー トークンについて - Az
 description: Azure Active Directory B2B コラボレーションのユーザー トークン リファレンス
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.author: mimart

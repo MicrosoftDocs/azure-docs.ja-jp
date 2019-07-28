@@ -3,7 +3,7 @@ title: Azure Media Indexer 用のタスク プリセット
 description: このトピックでは、Azure Media Indexer のタスク プリセットの概要について説明します。
 services: media-services
 documentationcenter: ''
-author: Asolanki
+author: asolanki
 manager: femila
 editor: ''
 ms.service: media-services

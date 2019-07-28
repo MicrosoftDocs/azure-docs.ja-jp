@@ -1,7 +1,7 @@
 ---
 title: Azure PowerShell を使用して準拠していないリソースに対するポリシーを作成する
 description: Azure PowerShell を使用して、準拠していないリソースを識別するための Azure Policy の割り当てを作成します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 03/11/2019
 ms.topic: quickstart

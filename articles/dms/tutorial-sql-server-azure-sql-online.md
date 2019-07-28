@@ -2,7 +2,7 @@
 title: チュートリアル:Azure Database Migration Service を使用して SQL Server から Azure SQL Database の単一データベース/プールされたデータベースにオンラインで移行する | Microsoft Docs
 description: Azure Database Migration Service を使用して、オンプレミスの SQL Server から Azure SQL Database の単一データベースまたはプールされたデータベースへのオンライン移行を実行する方法について学習します。
 services: dms
-author: HJToland3
+author: hjtoland3
 ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg

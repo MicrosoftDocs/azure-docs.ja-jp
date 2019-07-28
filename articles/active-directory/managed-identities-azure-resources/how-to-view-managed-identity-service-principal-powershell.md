@@ -3,7 +3,7 @@ title: PowerShell を使用してマネージド ID のサービス プリンシ
 description: PowerShell を使用してマネージド ID のサービス プリンシパルを表示するための段階的手順。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.service: active-directory

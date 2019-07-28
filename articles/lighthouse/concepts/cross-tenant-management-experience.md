@@ -1,7 +1,7 @@
 ---
 title: Azure Lighthouse を使用したテナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
-author: JnHs
+author: jnhs
 ms.service: lighthouse
 ms.author: jenhayes
 ms.date: 07/11/2019

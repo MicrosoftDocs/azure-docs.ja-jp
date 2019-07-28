@@ -3,7 +3,7 @@ title: Azure Media Services v3 API に接続する - .NET
 description: .NET を使用して Media Services v3 API に接続する方法について学習します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

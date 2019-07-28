@@ -3,7 +3,7 @@ title: Azure を使用して安全な医療ソリューションを設計する�
 description: " この記事では、Azure サービスおよび機能を構成および使用して医療ソリューションのセキュリティを向上させる方法について説明します。 "
 services: security
 documentationcenter: na
-author: TomShinder
+author: tomshinder
 manager: barbkess
 editor: TomSh
 ms.assetid: 7e5b082d-dc9c-4d4f-b3f1-75edcdafbd8f

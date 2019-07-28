@@ -1,7 +1,7 @@
 ---
 title: Azure Data Catalog の概要
 description: この記事では、Microsoft Azure Data Catalog の概要 (機能や対処する問題など) について説明します。 Data Catalog を使用すると、すべてのユーザーが、データ ソースを登録し、検出し、理解し、利用することができます。
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: overview

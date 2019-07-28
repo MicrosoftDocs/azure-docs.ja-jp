@@ -2,7 +2,7 @@
 title: Azure Database Migration Service を使用して移行アクティビティを監視する | Microsoft Docs
 description: Azure Database Migration Service を使用して移行アクティビティを監視する方法について説明します。
 services: database-migration
-author: HJToland3
+author: hjtoland3
 ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg

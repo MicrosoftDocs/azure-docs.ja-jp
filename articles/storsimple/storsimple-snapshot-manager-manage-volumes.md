@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager とボリューム | Microsoft Docs
 description: StorSimple Snapshot Manager MMC スナップインを使用して、ボリュームを表示および管理する方法について説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: shars
 manager: carmonm
 editor: ''
 ms.assetid: 78896323-e57c-431e-bbe2-0cbde1cf43a2

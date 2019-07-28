@@ -2,7 +2,7 @@
 title: Windows Virtual Desktop プレビューの負荷分散方法を構成する - Azure
 description: Windows Virtual Desktop 環境での負荷分散方法を構成する方法。
 services: virtual-desktop
-author: Heidilohr
+author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019

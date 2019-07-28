@@ -3,7 +3,7 @@ title: B2B コラボレーションのサポートの利用 - Azure Active Direc
 description: Azure Active Directory B2B コラボレーションのサポート エクスペリエンスとは
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: reference
 ms.date: 05/26/2017
 ms.author: mimart

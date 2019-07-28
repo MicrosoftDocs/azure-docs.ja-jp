@@ -3,7 +3,7 @@ title: Azure Dev Spaces と共に CI/CD を使用する
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-author: DrEsteban
+author: dresteban
 ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: conceptual

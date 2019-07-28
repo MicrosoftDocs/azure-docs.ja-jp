@@ -3,7 +3,7 @@ title: Azure コンテナー インスタンスのレシピ
 titleSuffix: Azure Cognitive Services
 description: Azure コンテナー インスタンスに Cognitive Services コンテナーをデプロイする方法について説明します
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services

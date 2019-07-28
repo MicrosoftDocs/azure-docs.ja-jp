@@ -2,7 +2,7 @@
 title: データ移行のサービスとツールのマトリックス - Azure | Microsoft Docs
 description: データベースを移行したりそのプロセスのさまざまなフェーズを支援したりする目的で提供されているサービスとツールについて説明します。
 services: database-migration
-author: HJToland3
+author: hjtoland3
 ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg

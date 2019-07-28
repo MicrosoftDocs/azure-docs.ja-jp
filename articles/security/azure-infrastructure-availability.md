@@ -3,7 +3,7 @@ title: Azure インフラストラクチャの可用性 - Azure セキュリテ�
 description: この記事では、Azure インフラストラクチャをセキュリティで保護し、顧客データの可用性を最大限にするために Microsoft が行っている事柄についての情報を提供します。
 services: security
 documentationcenter: na
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e

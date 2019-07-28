@@ -3,7 +3,7 @@ title: サービス プロバイダー向け Azure Monitor | Microsoft Docs
 description: Azure Monitor は、マネージド サービス プロバイダー (MSP)、大企業、独立系ソフトウェア ベンダー (ISV)、およびホスティング サービス プロバイダーが、顧客のオンプレミス型またはクラウド型インフラストラクチャのサーバーを管理および監視するのに役立ちます。
 services: log-analytics
 documentationcenter: ''
-author: MeirMen
+author: meirmen
 manager: jochan
 editor: ''
 ms.assetid: c07f0b9f-ec37-480d-91ec-d9bcf6786464

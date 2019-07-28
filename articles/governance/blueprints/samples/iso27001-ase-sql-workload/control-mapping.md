@@ -1,7 +1,7 @@
 ---
 title: サンプル - ISO 27001 ASE/SQL ワークロード ブループリント - コントロール マッピング
 description: Azure Policy と RBAC に対する ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルのコントロール マッピング。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample

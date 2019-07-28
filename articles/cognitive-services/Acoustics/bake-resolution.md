@@ -3,7 +3,7 @@ title: Project Acoustics のベイク精度
 titlesuffix: Azure Cognitive Services
 description: この概念的概要では、音響のベイク操作をする際の粗分解能と細分解能の違いについて説明します。
 services: cognitive-services
-author: KyleStorck
+author: kylestorck
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics

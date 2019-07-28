@@ -3,7 +3,7 @@ title: Azure でのリモート管理セキュリティの強化 | Microsoft Doc
 description: この記事では、クラウド サービスや仮想マシン、カスタム アプリケーションをはじめとする Microsoft Azure 環境の管理という観点で、リモート管理のセキュリティを強化するための手順を説明します。
 services: security
 documentationcenter: na
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: 2431feba-3364-4a63-8e66-858926061dd3

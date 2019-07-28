@@ -3,7 +3,7 @@ title: Azure Event Hubs API の概要 | Microsoft Docs
 description: 使用可能な Azure Event Hubs API の概要
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: 3f221a0c-182d-4e39-9f3d-3a3c16c5c6ed

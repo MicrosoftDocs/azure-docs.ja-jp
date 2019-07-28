@@ -3,7 +3,7 @@ title: SQL Server 可用性グループ - Azure Virtual Machines - 概要 | Micr
 description: この記事では、Azure Virtual Machines での SQL Server 可用性グループについて説明します。
 services: virtual-machines
 documentationCenter: na
-author: MikeRayMSFT
+author: mikeraymsft
 manager: craigg
 editor: monicar
 tags: azure-service-management

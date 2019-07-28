@@ -3,7 +3,7 @@ title: Azure Blockchain Service のセキュリティ
 description: Azure Blockchain Service のデータ アクセスとセキュリティの概念です
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/02/2019
 ms.topic: article

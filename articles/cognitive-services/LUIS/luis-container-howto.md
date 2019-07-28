@@ -3,7 +3,7 @@ title: Docker コンテナー
 titleSuffix: Language Understanding - Azure Cognitive Services
 description: LUIS コンテナーでは、お客様のトレーニング済みアプリまたは発行済みアプリを Docker コンテナーに読み込んで、コンテナーの API エンドポイントからクエリ予測を利用することができます。
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services

@@ -1,7 +1,7 @@
 ---
 title: .NET 用の Azure Cosmos DB のパフォーマンスに関するヒント
 description: Azure Cosmos DB データベースのパフォーマンスを向上させるクライアント構成オプションについて説明します
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2019

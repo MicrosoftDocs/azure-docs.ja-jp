@@ -1,7 +1,7 @@
 ---
 title: 'サンプル: ストレージ ファイルの暗号化の確認'
 description: このサンプル ポリシー定義は、ファイルの暗号化がストレージ アカウントに対して有効になっていることを要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

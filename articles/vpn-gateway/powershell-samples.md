@@ -3,7 +3,7 @@ title: VPN Gateway の Azure PowerShell サンプル | Microsoft Docs
 description: VPN Gateway に関する Azure PowerShell のサンプルです。
 services: vpn-gateway
 documentationcenter: ''
-author: WenJason
+author: wenjason
 manager: digimobile
 editor: ''
 tags: ''

@@ -3,7 +3,7 @@ title: SQL Server 可用性グループ - Azure Virtual Machines - ディザス�
 description: この記事では、別のリージョンのレプリカを使って、Azure Virtual Machines に SQL Server 可用性グループを構成する方法について説明します。
 services: virtual-machines
 documentationCenter: na
-author: MikeRayMSFT
+author: mikeraymsft
 manager: craigg
 editor: monicar
 tags: azure-service-management

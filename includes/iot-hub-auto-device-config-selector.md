@@ -2,7 +2,7 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: iot-hub
-author: ChrisGMsft
+author: chrisgmsft
 ms.service: iot-hub
 ms.topic: include
 ms.date: 6/18/2018

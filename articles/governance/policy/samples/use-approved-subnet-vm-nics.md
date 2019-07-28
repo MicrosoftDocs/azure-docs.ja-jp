@@ -1,7 +1,7 @@
 ---
 title: サンプル - VM ネットワーク インターフェイスに承認されたサブネットを使用する
 description: このサンプル ポリシー定義は、承認されたサブネットの使用をネットワーク インターフェイスに要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

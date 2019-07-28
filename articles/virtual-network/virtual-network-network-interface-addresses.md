@@ -3,7 +3,7 @@ title: Azure ネットワーク インターフェイスの IP アドレスの�
 description: ネットワーク インターフェイスのプライベート IP アドレスとパブリック IP アドレスを追加、変更、削除する方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

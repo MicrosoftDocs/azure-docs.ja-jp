@@ -1,7 +1,7 @@
 ---
 title: サンプル - 許可された ExpressRoute の帯域幅
 description: このサンプル ポリシー定義は、指定した一連の帯域幅の使用を ExpressRoute に要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

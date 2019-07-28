@@ -2,7 +2,7 @@
 title: SQL Data Warehouse で、ラベルを使用してクエリをインストルメント化 | Microsoft Docs
 description: ソリューション開発のための Azure SQL Data Warehouse でのラベルを使用してクエリのインストルメント化に関するヒント。
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: xiaoyumsft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

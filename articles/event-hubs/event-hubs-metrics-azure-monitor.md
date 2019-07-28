@@ -3,7 +3,7 @@ title: Azure Monitor でのメトリック - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Monitoring を使用して Azure Event Hubs を監視する方法について説明します。
 services: event-hubs
 documentationcenter: .NET
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''

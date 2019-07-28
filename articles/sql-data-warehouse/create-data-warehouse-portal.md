@@ -2,7 +2,7 @@
 title: クイック スタート:Azure SQL データ ウェアハウスの作成とクエリ - Azure portal | Microsoft Docs
 description: Azure Portal で Azure SQL Data Warehouse を使用してデータ ウェアハウスを作成し、クエリを実行します。
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: xiaoyumsft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart

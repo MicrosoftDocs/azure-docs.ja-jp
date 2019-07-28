@@ -1,5 +1,5 @@
 ---
-author: CelesteDG
+author: celestedg
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: include

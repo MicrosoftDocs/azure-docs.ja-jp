@@ -3,7 +3,7 @@ title: 'クイック スタート: Python SDK を使用して画像内の顔を�
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Face API を使用してリモート画像内の顔を検出してフレームに収める、Python スクリプトを作成します。
 services: cognitive-services
-author: SteveMSFT
+author: stevemsft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api

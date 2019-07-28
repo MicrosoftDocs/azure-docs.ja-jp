@@ -2,7 +2,7 @@
 title: Azure SQL Data Warehouse で T-SQL ビューを使う | Microsoft Docs
 description: ソリューション開発のための、Azure SQL Data Warehouse での T-SQL ビューの使用に関するヒント。
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: xiaoyumsft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

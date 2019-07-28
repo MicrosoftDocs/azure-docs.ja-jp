@@ -1,7 +1,7 @@
 ---
 title: Spark からの Azure Cosmos DB Cassandra API テーブルに対する集計操作
 description: この記事では、Spark から Azure Cosmos DB Cassandra API テーブルに対する基本的な集計操作について説明します。
-author: kanshiG
+author: kanshig
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db

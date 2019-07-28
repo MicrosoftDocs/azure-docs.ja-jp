@@ -3,7 +3,7 @@ title: アプリケーションに Video Indexer ウィジェットを埋め込�
 titlesuffix: Azure Media Services
 description: アプリケーションに Video Indexer ウィジェットを埋め込む方法について説明します。
 services: media-services
-author: Juliako
+author: juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer

@@ -3,7 +3,7 @@ title: 仮想マシン上で Azure リソースのマネージド ID を使用�
 description: 仮想マシン上で Azure リソースのマネージド ID を使用して OAuth アクセス トークンを取得する手順と例について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.service: active-directory

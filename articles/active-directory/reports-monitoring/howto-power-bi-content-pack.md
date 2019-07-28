@@ -2,7 +2,7 @@
 title: Azure Active Directory Power BI コンテンツ パックの使用方法 | Microsoft Docs
 description: Azure Active Directory Power BI コンテンツ パックの使用方法について説明します。
 services: active-directory
-author: MarkusVi
+author: markusvi
 manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory

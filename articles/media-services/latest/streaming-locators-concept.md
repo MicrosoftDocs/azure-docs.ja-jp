@@ -3,7 +3,7 @@ title: Azure Media Services のストリーミング ロケーター | Microsoft
 description: この記事では、ストリーミング ロケーターとは何か、および Azure Media Services でそれらを使用する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

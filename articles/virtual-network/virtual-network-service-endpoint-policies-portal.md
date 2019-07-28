@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: この記事では、Azure portal を使用してサービス エンドポイント ポリシーを設定し、関連付ける方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: kumudd
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article

@@ -3,7 +3,7 @@ title: Azure での Windows VM デプロイのトラブルシューティング 
 description: Azure で新しい Windows 仮想マシンを作成するときに発生する Resource Manager デプロイメントの問題のトラブルシューティング
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
-author: JiangChen79
+author: jiangchen79
 manager: gwallace
 editor: ''
 tags: top-support-issue, azure-resource-manager

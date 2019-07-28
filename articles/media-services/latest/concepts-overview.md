@@ -3,7 +3,7 @@ title: Azure Media Services の用語と概念 - Azure | Microsoft Docs
 description: このトピックでは、Azure Media Services の用語と概念を簡単に説明し、詳細情報へのリンクを提供します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

@@ -3,7 +3,7 @@ title: Azure CLI のサンプル スクリプト - 変換の作成 | Microsoft D
 description: Azure CLI スクリプトを使用して変換を作成します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: ''

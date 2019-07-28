@@ -1,7 +1,7 @@
 ---
 title: 仮想マシンのコンテンツを監査する方法の概要
 description: Azure Policy でゲスト構成を使用して、Azure の仮想マシン内で設定を監査する方法を理解します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 03/18/2019
 ms.topic: conceptual

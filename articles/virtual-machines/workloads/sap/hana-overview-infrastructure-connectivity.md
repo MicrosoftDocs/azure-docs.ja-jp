@@ -3,7 +3,7 @@ title: SAP HANA on Azure (L インスタンス) のインフラストラクチ�
 description: SAP HANA on Azure (L インスタンス) を使用するために必要な接続インフラストラクチャを構成します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
+author: rickstercdn
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux

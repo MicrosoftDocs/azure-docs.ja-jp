@@ -3,7 +3,7 @@ title: ポータルを使用した Event Grid による Azure Media Services イ
 description: この記事では、Azure Media Services イベントを監視するために Event Grid をサブスクライブする方法を説明します。
 services: media-services
 documentationcenter: na
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 tags: ''

@@ -3,7 +3,7 @@ title: Azure Active Directory (Azure AD) 監査アクティビティ リファ�
 description: Azure Active Directory (Azure AD) で監査ログに記録できる監査アクティビティの概要を示します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161

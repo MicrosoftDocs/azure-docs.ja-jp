@@ -2,7 +2,7 @@
 title: ポータルで Azure Search サービスを作成する - Azure Search
 description: Azure portal で Azure Search リソースをプロビジョニングします。 リソース グループ、リージョン、および SKU または価格レベルを選択します。
 manager: cgronlun
-author: HeidiSteen
+author: heidisteen
 services: search
 ms.service: search
 ms.topic: quickstart

@@ -1,5 +1,5 @@
 ---
-author: kumudD
+author: kumudd
 ms.service: load-balancer
 ms.topic: include
 ms.date: 11/09/2018

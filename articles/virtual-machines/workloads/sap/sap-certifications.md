@@ -3,7 +3,7 @@ title: SAP 用の Microsoft Azure の認定 | Microsoft Docs
 description: 現在の構成と、Azure プラットフォーム上の SAP の認定の最新の一覧です。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
+author: rickstercdn
 manager: gwallace
 editor: ''
 tags: azure-resource-manager

@@ -1,7 +1,7 @@
 ---
 title: Async Java の Azure Cosmos DB パフォーマンスに関するヒント
 description: Azure Cosmos DB データベースのパフォーマンスを向上させるクライアント構成オプションについて説明します
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual

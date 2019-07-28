@@ -2,7 +2,7 @@
 title: Azure Data Catalog でデータ プロファイリングのデータ ソースを使用する方法
 description: この記事では、Azure Data Catalog でデータ ソースを登録するときにテーブル レベルのデータ プロファイルと列レベルのデータ プロファイルを含める方法と、データ プロファイルを基にデータ ソースについて理解する方法について説明します。
 services: data-catalog
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.assetid: 94a8274b-5c9c-4962-a4b1-2fed38a3d919
 ms.service: data-catalog

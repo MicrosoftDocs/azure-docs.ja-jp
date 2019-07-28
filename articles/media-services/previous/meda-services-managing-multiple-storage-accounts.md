@@ -3,7 +3,7 @@ title: 複数のストレージ アカウントでの Media Services 資産の�
 description: この記事では、複数のストレージ アカウントで Media Services の資産を管理する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

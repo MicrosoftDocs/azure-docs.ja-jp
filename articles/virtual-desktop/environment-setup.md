@@ -2,7 +2,7 @@
 title: Windows Virtual Desktop プレビュー環境 - Azure
 description: Windows Virtual Desktop プレビュー環境の基本的な要素。
 services: virtual-desktop
-author: Heidilohr
+author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/12/2019

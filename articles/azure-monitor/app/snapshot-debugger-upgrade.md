@@ -2,7 +2,7 @@
 title: .NET アプリ向けの Azure Application Insights スナップショット デバッガーのアップグレード | Microsoft Docs
 description: Azure App Services で、または Nuget パッケージを使用して、スナップショット デバッガーを最新バージョンにアップグレードする方法
 services: application-insights
-author: MarioHewardt
+author: mariohewardt
 manager: carmonm
 ms.service: application-insights
 ms.topic: conceptual

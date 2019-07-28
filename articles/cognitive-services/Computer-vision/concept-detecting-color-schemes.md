@@ -3,7 +3,7 @@ title: 配色の検出 - Computer Vision
 titleSuffix: Azure Cognitive Services
 description: Computer Vision API を使用したイメージの配色の検出に関連する概念。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

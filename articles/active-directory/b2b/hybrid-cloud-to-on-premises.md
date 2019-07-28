@@ -3,7 +3,7 @@ title: B2B ユーザーにオンプレミスのアプリへのアクセスを許
 description: Azure AD B2B Collaboration を使用してクラウド B2B ユーザーにオンプレミスのアプリへのアクセスを許可する方法について説明します。
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mimart

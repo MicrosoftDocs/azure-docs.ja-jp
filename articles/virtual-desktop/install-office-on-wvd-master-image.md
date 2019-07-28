@@ -2,7 +2,7 @@
 title: マスター VHD イメージに Office をインストールする - Azure
 description: Azure への Windows Virtual Desktop プレビューのマスター イメージに Office をインストールし、カスタマイズする方法。
 services: virtual-desktop
-author: ChJenk
+author: chjenk
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019

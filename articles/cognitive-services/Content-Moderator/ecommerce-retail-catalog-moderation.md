@@ -3,7 +3,7 @@ title: チュートリアル:eコマース製品画像をモデレートする -
 titlesuffix: Azure Cognitive Services
 description: アプリケーションを設定して、指定されたラベルで製品画像を分析および分類します (Azure Computer Vision と Custom Vision を使用)。 さらに確認されるように好ましくない画像にタグを付けます (Azure Content Moderator を使用)。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator

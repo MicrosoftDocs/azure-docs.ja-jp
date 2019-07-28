@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:JSON BLOB で半構造化されたデータのインデックスを作成する - Azure Search
 description: Azure Search REST API と Postman を使用して、半構造化された Azure JSON BLOB のインデックスを作成し、検索する方法について説明します。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 services: search
 ms.service: search

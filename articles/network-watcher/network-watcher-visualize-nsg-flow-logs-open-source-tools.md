@@ -3,7 +3,7 @@ title: Network Watcher と Elastic Stack を使用してネットワーク セ�
 description: Network Watcher と Elastic Stack を使用して Azure のネットワーク セキュリティ グループ フロー ログを管理および分析します。
 services: network-watcher
 documentationcenter: na
-author: mattreatMSFT
+author: mattreatmsft
 manager: vitinnan
 editor: ''
 ms.assetid: e9b2dcad-4da4-4d6b-aee2-6d0afade0cb8

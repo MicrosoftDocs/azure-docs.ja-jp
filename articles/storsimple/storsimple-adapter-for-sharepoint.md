@@ -3,7 +3,7 @@ title: SharePoint 用 StorSimple アダプターのインストール | Microsof
 description: SharePoint サーバー ファームに SharePoint 用 StorSimple アダプターをインストールして構成または削除する方法について説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: shars
 manager: timlt
 editor: ''
 ms.assetid: 36c20b75-f2e5-4184-a6b5-9c5e618f79b2

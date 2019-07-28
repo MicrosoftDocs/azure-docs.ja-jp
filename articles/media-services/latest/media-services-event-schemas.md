@@ -3,7 +3,7 @@ title: Media Services 用の Azure Event Grid スキーマ
 description: Azure Event Grid で Media Services イベント用に用意されているプロパティについて説明します
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

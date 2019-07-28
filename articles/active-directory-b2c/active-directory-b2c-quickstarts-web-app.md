@@ -9,7 +9,7 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/30/2018
 ms.author: marsma
-ms.subservice: B2C
+ms.subservice: b2c
 ms.openlocfilehash: 647ea3bdeb914b97fe131d32078ddb610d4d163e
 ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT

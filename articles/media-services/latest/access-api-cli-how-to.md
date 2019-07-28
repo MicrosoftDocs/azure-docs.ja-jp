@@ -3,7 +3,7 @@ title: Azure Media Services API にアクセスする - Azure CLI | Microsoft Do
 description: Azure Media Services API にアクセスするには、このハウツー記事の手順に従います。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

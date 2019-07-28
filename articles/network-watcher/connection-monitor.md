@@ -3,7 +3,7 @@ title: ネットワーク通信の監視 - チュートリアル - Azure Portal 
 description: Azure Network Watcher の接続モニター機能によって 2 つの仮想マシン間のネットワーク通信を監視する方法を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

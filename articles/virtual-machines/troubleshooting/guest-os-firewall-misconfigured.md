@@ -3,7 +3,7 @@ title: Azure VM のゲスト OS のファイアウォールが正しく構成さ
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
-author: Deland-Han
+author: deland-han
 manager: willchen
 editor: ''
 tags: ''

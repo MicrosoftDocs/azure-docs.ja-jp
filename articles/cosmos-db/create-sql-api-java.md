@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB ドキュメント データベースを Java で作成する
 description: Azure Cosmos DB SQL API への接続とクエリに使用できる Java コード サンプルについて説明します
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java

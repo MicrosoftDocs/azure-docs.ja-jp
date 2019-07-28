@@ -3,7 +3,7 @@ title: 制限とクォータ - Custom Vision Service
 titlesuffix: Azure Cognitive Services
 description: Custom Vision Service の制限とクォータについて説明します。
 services: cognitive-services
-author: anrothMSFT
+author: anrothmsft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision

@@ -3,7 +3,7 @@ title: B2B コラボレーションの FAQ - Azure Active Directory | Microsoft 
 description: Azure Active Directory B2B コラボレーションに関してよく寄せられる質問への回答を示します。
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: reference
 ms.date: 04/10/2019
 ms.author: mimart

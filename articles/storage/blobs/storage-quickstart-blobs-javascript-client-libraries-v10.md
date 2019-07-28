@@ -3,7 +3,7 @@ title: クイック スタート - ブラウザーで JavaScript と HTML を使
 description: BlobService のインスタンスを使用し、HTML ページで JavaScript を使用して BLOB をアップロード、一覧表示、および削除する方法について説明します。
 services: storage
 keywords: ストレージ, JavaScript, HTML
-author: KarlErickson
+author: karlerickson
 ms.custom: mvc
 ms.service: storage
 ms.author: karler

@@ -2,7 +2,7 @@
 title: サンプル - UK OFFICIAL および UK NHS のブループリント - コントロール マッピング
 description: UK OFFICIAL および UK NHS のブループリント サンプルのコントロール マッピング。
 services: blueprints
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual

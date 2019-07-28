@@ -7,7 +7,7 @@ ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: sachinpMSFT
+author: sachinpmsft
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
 manager: craigg

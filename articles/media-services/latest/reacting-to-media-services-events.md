@@ -3,7 +3,7 @@ title: Azure Media Services イベントへの対応 | Microsoft Docs
 description: Media Services イベントをサブスクライブするには、Azure Event Grid を使います。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

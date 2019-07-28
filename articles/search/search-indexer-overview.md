@@ -1,7 +1,7 @@
 ---
 title: インデックス作成時にデータ ソースをクロールするためのインデクサー - Azure Search
 description: Azure SQL データベース、Azure Cosmos DB、または Azure Storage をクロールして検索可能なデータを抽出し、Azure Search インデックスを作成します。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 services: search
 ms.service: search

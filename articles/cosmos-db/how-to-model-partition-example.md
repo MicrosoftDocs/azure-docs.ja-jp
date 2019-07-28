@@ -1,7 +1,7 @@
 ---
 title: 現実の例を使用して Azure Cosmos DB のデータをモデル化およびパーティション分割する方法
 description: Azure Cosmos DB Core API を使用して現実の例をモデル化およびパーティション分割する方法について説明します
-author: ThomasWeiss
+author: thomasweiss
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019

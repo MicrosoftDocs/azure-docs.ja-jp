@@ -3,7 +3,7 @@ title: Front Door 用の Web アプリケーション ファイアウォール�
 description: 既存の Front Door エンドポイント用のレート制限ルールの構成方法について説明します。
 services: frontdoor
 documentationcenter: ''
-author: KumudD
+author: kumudd
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article

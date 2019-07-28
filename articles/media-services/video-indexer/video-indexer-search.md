@@ -3,7 +3,7 @@ title: ビデオ内の正確な場面の検出 - Video Indexer
 titlesuffix: Azure Media Services
 description: このトピックでは、Video Indexer を使用して、ビデオ内の正確な場面を見つける方法を示します。
 services: media-services
-author: Juliako
+author: juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer

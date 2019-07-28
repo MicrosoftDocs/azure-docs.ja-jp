@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: Azure が仮想ネットワーク トラフィックをルーティングするしくみと、Azure のルーティングをカスタマイズする方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: malopMSFT
+author: malopmsft
 manager: ''
 editor: v-miegge
 tags: ''

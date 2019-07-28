@@ -1,7 +1,7 @@
 ---
 title: コンプライアンス違反の原因の特定
 description: リソースのコンプライアンス違反には多くの理由が考えられます。 コンプライアンス違反の原因を確認する方法について説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 04/26/2019
 ms.topic: conceptual

@@ -4,7 +4,7 @@ description: Dynamics 365 (オンライン) REST API と Azure Logic Apps を使
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: Mattp123
+author: mattp123
 ms.author: matp
 ms.reviewer: estfan, LADocs
 ms.topic: article

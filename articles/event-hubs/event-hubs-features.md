@@ -3,7 +3,7 @@ title: 機能の概要 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs の機能と用語に関する詳細を示します。
 services: event-hubs
 documentationcenter: .net
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na

@@ -1,5 +1,5 @@
 ---
-author: MightyPen
+author: mightypen
 ms.service: sql-database
 ms.topic: include
 ms.date: 11/09/2018

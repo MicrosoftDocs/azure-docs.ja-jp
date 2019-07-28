@@ -2,7 +2,7 @@
 title: 品詞のタグ付け - Linguistic Analysis API
 description: Linguistic Analysis API の品詞タグ付け機能でテキストの各単語のカテゴリまたは品詞を識別する方法について説明します。
 services: cognitive-services
-author: RichardSunMS
+author: richardsunms
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: linguistic-analysis

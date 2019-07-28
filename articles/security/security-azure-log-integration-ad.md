@@ -3,7 +3,7 @@ title: Azure Active Directory 監査ログとの Azure ログ統合 | Microsoft 
 description: Azure ログ統合サービスをインストールし、Azure 監査ログを統合する方法について説明します
 services: security
 documentationcenter: na
-author: Barclayn
+author: barclayn
 manager: barbkess
 editor: TomShinder
 ms.assetid: ''

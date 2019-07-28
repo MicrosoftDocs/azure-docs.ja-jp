@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB 変更フィードを使用してリアルタイムのデータ分析を視覚化する
 description: この記事では、小売企業が変更フィードを活用してユーザーのパターンを理解し、リアルタイムでのデータ分析を実行して、視覚化する方法について説明します。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual

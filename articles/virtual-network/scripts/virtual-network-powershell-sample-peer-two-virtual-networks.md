@@ -3,7 +3,7 @@ title: Azure PowerShell スクリプト サンプル - 2 つの仮想ネット�
 description: Azure PowerShell スクリプト サンプル - 2 つの仮想ネットワークのピアリング
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: ''

@@ -3,7 +3,7 @@ title: Azure ポータルで Azure AD 認証を開始する | Microsoft Docs
 description: Azure ポータルを使用して Azure Active Directory (Azure AD) 認証にアクセスして Azure Media Services API を利用する方法を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

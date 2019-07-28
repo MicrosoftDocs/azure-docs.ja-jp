@@ -1,7 +1,7 @@
 ---
 title: ポリシー定義の構造の詳細
 description: Azure Policy でリソース ポリシー定義を使用して、ポリシーが適用されるタイミングとその効果を示すことで、組織でのリソースの規則を確立する方法について説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 03/13/2019
 ms.topic: conceptual

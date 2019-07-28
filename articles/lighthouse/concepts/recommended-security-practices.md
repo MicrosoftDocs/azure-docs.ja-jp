@@ -1,7 +1,7 @@
 ---
 title: Azure Lighthouse で推奨されるセキュリティ プラクティス
 description: Azure の委任されたリソース管理を使用する場合は、セキュリティとアクセスの制御を考慮することが大切です。
-author: JnHs
+author: jnhs
 ms.service: lighthouse
 ms.author: jenhayes
 ms.date: 07/11/2019

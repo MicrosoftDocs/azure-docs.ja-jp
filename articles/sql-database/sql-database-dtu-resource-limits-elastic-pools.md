@@ -7,7 +7,7 @@ ms.subservice: elastic-pools
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: sachinpMSFT
+author: sachinpmsft
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg

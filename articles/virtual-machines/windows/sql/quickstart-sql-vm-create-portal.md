@@ -3,7 +3,7 @@ title: ポータルで SQL Server Windows VM を作成する | Microsoft Docs
 description: このチュートリアルでは、Azure Portal で Windows SQL Server 2017 仮想マシンを作成する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql

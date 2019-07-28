@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager を使用したデバイス管理 | Microsoft
 description: StorSimple Snapshot Manager MMC スナップインを使用して、StorSimple デバイスを接続および管理する方法について説明します。
 services: storsimple
 documentationcenter: ''
-author: SharS
+author: shars
 manager: timlt
 editor: ''
 ms.assetid: 966ecbe3-a7fa-4752-825f-6694dd949946

@@ -3,7 +3,7 @@ title: Azure SQL Database のセキュリティ機能
 description: この記事では、Azure の Azure SQL Database で顧客データを保護する方法についての概要を説明します。
 services: security
 documentationcenter: na
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e

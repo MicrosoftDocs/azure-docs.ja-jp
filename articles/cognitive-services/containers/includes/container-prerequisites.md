@@ -1,7 +1,7 @@
 ---
 title: コンテナーの前提条件
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 description: コンテナーの一般的な前提条件
 ms.service: cognitive-services

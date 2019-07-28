@@ -7,7 +7,7 @@ ms.subservice: devices
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: joflore
-author: MicrosoftGuyJFlo
+author: microsoftguyjflo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management

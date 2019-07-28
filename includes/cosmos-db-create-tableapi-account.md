@@ -2,7 +2,7 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: cosmos-db
-author: MarkMcGeeAtAquent
+author: markmcgeeataquent
 ms.service: cosmos-db
 ms.topic: include
 ms.date: 04/06/2018

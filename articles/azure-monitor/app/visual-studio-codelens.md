@@ -3,7 +3,7 @@ title: Visual Studio の CodeLens における Application Insights Telemetry | 
 description: Visual Studio の CodeLens を使用して Application Insights の要求と例外のテレメトリにすばやくアクセスします。
 services: application-insights
 documentationcenter: .net
-author: NumberByColors
+author: numberbycolors
 manager: carmonm
 ms.assetid: 93559e44-23cb-4b9d-8425-60f7f0d0a82c
 ms.service: application-insights

@@ -7,7 +7,7 @@ ms.subservice: conditional-access
 ms.topic: quickstart
 ms.date: 12/14/2018
 ms.author: joflore
-author: MicrosoftGuyJFlo
+author: microsoftguyjflo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management

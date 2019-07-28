@@ -3,7 +3,7 @@ title: Azure Security の概要 | Microsoft Docs
 description: Azure のセキュリティ、サービス、およびそのしくみについて説明します。
 services: security
 documentationcenter: na
-author: UnifyCloud
+author: unifycloud
 manager: barbkess
 editor: TomSh
 ms.assetid: ''
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
-ms.author: TomSh
+ms.author: tomsh
 ms.openlocfilehash: ed57d72d32ba82a37036c9af77590bd4e93db8d9
 ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT

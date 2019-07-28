@@ -1,7 +1,7 @@
 ---
 title: インデックスでの検索結果の範囲指定用フィルター - Azure Search
 description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search で、ユーザーのセキュリティ ID、言語、地理的な場所、または数値でフィルター処理してクエリの検索結果を減らします。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 services: search
 ms.service: search

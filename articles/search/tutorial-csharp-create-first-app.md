@@ -5,7 +5,7 @@ services: search
 ms.service: search
 ms.topic: tutorial
 ms.author: v-pettur
-author: PeterTurcan
+author: peterturcan
 ms.date: 05/01/2019
 ms.openlocfilehash: d569437a3e6f6f05ddb9c6fa85f62c77ac51f72b
 ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b

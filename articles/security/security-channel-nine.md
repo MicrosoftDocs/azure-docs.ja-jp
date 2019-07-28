@@ -3,7 +3,7 @@ title: Channel 9 で配信中の Azure セキュリティに関するビデオ |
 description: この記事では、Channel 9 の Azure セキュリティに関するプレゼンテーションを精選した一覧を示します。 Channel 9 は、製品を使用するユーザーと製品を提供する側の人たちを結び付けるコミュニティです。
 services: security
 documentationcenter: na
-author: TomShinder
+author: tomshinder
 manager: barbkess
 editor: TomSh
 ms.assetid: 9e5e14aa-11d7-4242-8b7e-49fd0e79817a

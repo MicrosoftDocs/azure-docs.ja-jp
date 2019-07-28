@@ -3,7 +3,7 @@ title: Azure でのセキュリティの技術的な機能 | Microsoft Azure
 description: クラウド内のデータ、リソース、およびアプリケーションの保護に役立つ、Azure でのセキュリティ サービスの概要。
 services: security
 documentationcenter: na
-author: UnifyCloud
+author: unifycloud
 manager: barbkess
 editor: TomSh
 ms.assetid: ''
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
-ms.author: TomSh
+ms.author: tomsh
 ms.openlocfilehash: c28c87339bbfda7cc47e329c8fe6cebdee4a7843
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT

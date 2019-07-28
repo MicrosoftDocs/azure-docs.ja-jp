@@ -3,7 +3,7 @@ title: Azure での SQL Server 2008 および SQL Server 2008 R2 のサポート
 description: Azure への SQL Server インスタンスの移行、またはオンプレミスでインスタンスを保持する延長サポートの購入によって、SQL Server 2008 および SQL Server 2008 R2 のサポートを延長する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql

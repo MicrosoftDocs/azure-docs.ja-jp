@@ -1,7 +1,7 @@
 ---
 title: Azure Monitor から Azure Cosmos DB メトリックを入手する
 description: ''
-author: SnehaGunda
+author: snehagunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual

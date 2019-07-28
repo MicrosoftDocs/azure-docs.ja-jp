@@ -2,7 +2,7 @@
 title: チュートリアル:DMS を使用して Azure SQL Database マネージド インスタンスに移行する | Microsoft Docs
 description: Azure Database Migration Service を使用して、オンプレミスの SQL Server から Azure SQL Database マネージド インスタンスに移行する方法を学習します。
 services: dms
-author: HJToland3
+author: hjtoland3
 ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg

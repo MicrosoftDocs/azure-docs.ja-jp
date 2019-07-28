@@ -1,7 +1,7 @@
 ---
 title: デプロイ シーケンス順序について
 description: ブループリント定義が経過するライフサイクルと各ステージの詳細について説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 03/25/2019
 ms.topic: conceptual

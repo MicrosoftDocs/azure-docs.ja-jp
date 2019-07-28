@@ -3,7 +3,7 @@ title: Azure Network Watcher の IP フロー検証の概要 | Microsoft Docs
 description: このページでは、Network Watcher の IP フロー検証機能の概要を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: d352fb2d-4b4f-4ac4-9c2e-1cfccf0e7e03

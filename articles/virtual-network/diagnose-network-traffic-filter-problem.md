@@ -3,7 +3,7 @@ title: 仮想マシン ネットワーク トラフィック フィルターの�
 description: 仮想マシンの有効なセキュリティ規則を表示することによって、仮想マシンのネットワーク トラフィック フィルターに関する問題を診断する方法を説明します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

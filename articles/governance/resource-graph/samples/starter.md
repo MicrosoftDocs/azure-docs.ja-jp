@@ -1,7 +1,7 @@
 ---
 title: 初歩的なクエリのサンプル
 description: Azure Resource Graph を使用して、リソースのカウント、リソースの並べ替え、特定のタグによるクエリなど、いくつかの初歩的なクエリを実行します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 04/23/2019
 ms.topic: quickstart

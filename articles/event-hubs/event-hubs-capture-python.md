@@ -3,7 +3,7 @@ title: Python アプリからキャプチャしたデータを読み取る - Azu
 description: Azure Python SDK を用いて、Event Hubs Capture 機能の使用方法を示すサンプル。
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: bdff820c-5b38-4054-a06a-d1de207f01f6

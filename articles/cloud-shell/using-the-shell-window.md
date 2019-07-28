@@ -3,7 +3,7 @@ title: Azure Cloud Shell ウィンドウの使用 | Microsoft Docs
 description: Azure Cloud Shell ウィンドウの使用方法の概要について説明します。
 services: azure
 documentationcenter: ''
-author: maertendMSFT
+author: maertendmsft
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''

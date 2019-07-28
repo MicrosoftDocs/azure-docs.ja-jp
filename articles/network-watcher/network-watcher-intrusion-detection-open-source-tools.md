@@ -3,7 +3,7 @@ title: Azure Network Watcher とオープン ソース ツールを使用した�
 description: この記事では、Azure Network Watcher とオープン ソース ツールを使用してネットワーク不正侵入検出を実行する方法について説明します
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681

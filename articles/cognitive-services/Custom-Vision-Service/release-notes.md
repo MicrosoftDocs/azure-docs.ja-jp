@@ -2,7 +2,7 @@
 title: リリース ノート - Custom Vision Service
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
-author: anrothMSFT
+author: anrothmsft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision

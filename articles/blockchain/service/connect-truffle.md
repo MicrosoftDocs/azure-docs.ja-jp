@@ -3,7 +3,7 @@ title: Truffle を使用して接続する
 description: Truffle を使用して Azure Blockchain Service ネットワークに接続する
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/29/2019
 ms.topic: quickstart

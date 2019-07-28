@@ -1,7 +1,7 @@
 ---
 title: ディザスター リカバリーのためのレプリケーションを有効にする際のモビリティ サービスのプッシュ インストールに関する問題のトラブルシューティング | Microsoft Docs
 description: ディザスター リカバリーのためのレプリケーションを有効にする際のモビリティ サービスのインストールに関するエラーのトラブルシューティング
-author: Rajeswari-Mamilla
+author: rajeswari-mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual

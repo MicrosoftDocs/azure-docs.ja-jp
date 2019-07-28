@@ -3,7 +3,7 @@ title: クイック スタート:Python SDK
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、画像の分析、説明の取得、テキストの認識、サムネイルの生成などの一般的なタスクに Python SDK を使用する方法を学習します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

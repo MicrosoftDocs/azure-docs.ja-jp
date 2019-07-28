@@ -3,7 +3,7 @@ title: Azure リソースのマネージド ID - Azure Event Hubs | Microsoft Do
 description: この記事では、Azure Event Hubs で Azure リソースのマネージド ID を使用する方法について説明します
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na

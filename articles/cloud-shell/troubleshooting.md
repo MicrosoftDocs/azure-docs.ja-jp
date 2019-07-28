@@ -3,7 +3,7 @@ title: Azure Cloud Shell のトラブルシューティング | Microsoft Docs
 description: Azure Cloud Shell のトラブルシューティング
 services: azure
 documentationcenter: ''
-author: maertendMSFT
+author: maertendmsft
 manager: hemantm
 tags: azure-resource-manager
 ms.assetid: ''

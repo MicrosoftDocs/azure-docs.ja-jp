@@ -3,7 +3,7 @@ title: コンテナー サポート
 titleSuffix: Azure Cognitive Services
 description: 感情分析コンテナー インスタンスを検証する方法を学びます。
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include

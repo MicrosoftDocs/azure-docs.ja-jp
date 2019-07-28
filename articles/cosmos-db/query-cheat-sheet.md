@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB PDF クエリ チート シート
 description: Azure Cosmos DB の SQL、MongoDB、グラフ、およびテーブル API を使用してデータをクエリするのに役立つ印刷可能な PDF チート シート
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019

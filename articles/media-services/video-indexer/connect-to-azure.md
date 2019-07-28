@@ -3,7 +3,7 @@ title: Azure Portal で Video Indexer アカウントを作成する
 titlesuffix: Azure Media Services
 description: この記事では、Azure Portal で Video Indexer アカウントを作成する方法について説明します。
 services: media-services
-author: Juliako
+author: juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer

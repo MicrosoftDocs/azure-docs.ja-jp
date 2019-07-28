@@ -3,7 +3,7 @@ title: Azure Active Directory アクセスを構成する方法
 description: Azure Active Directory アクセスで Azure Blockchain Service を構成する方法です
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: seal
 ms.date: 05/02/2019
 ms.topic: article

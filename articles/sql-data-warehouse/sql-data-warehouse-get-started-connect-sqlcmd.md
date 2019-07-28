@@ -2,7 +2,7 @@
 title: Azure SQL Data Warehouse への接続 (sqlcmd) | Microsoft Docs
 description: sqlcmd コマンド ライン ユーティリティを使用して Azure SQL Data Warehouse に接続し、クエリを実行します。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: xiaoyul-preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

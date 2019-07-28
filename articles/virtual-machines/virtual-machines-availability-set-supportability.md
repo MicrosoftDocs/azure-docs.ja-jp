@@ -3,7 +3,7 @@ title: 既存の可用性セットへの Azure VM の追加のサポート | Mic
 description: 既存の可用性セットへの Azure VM の追加のサポートについて説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: Deland-Han
+author: deland-han
 manager: cshepard
 editor: ''
 ms.assetid: ''

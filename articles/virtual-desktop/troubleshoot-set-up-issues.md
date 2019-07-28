@@ -2,7 +2,7 @@
 title: Windows Virtual Desktop テナントとホスト プールの作成 - Azure
 description: Windows Virtual Desktop テナント環境のセットアップ中にテナントとホスト プールの問題をトラブルシューティングおよび解決する方法。
 services: virtual-desktop
-author: ChJenk
+author: chjenk
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019

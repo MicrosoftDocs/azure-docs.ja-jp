@@ -3,7 +3,7 @@ title: Azure Network Watcher を使用したパケット インスペクショ�
 description: この記事では、Network Watcher を使用して、VM から収集されたディープ パケット インスペクションを実行する方法について説明します
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: 7b907d00-9c35-40f5-a61e-beb7b782276f

@@ -3,7 +3,7 @@ title: クイック スタート:サムネイルの生成 - REST、Node.js
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Computer Vision API と Node.js を使って、画像からサムネイルを生成します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

@@ -3,7 +3,7 @@ title: 侵入テスト | Microsoft Docs
 description: この記事では、侵入テスト プロセスの概要と、Azure インフラストラクチャで実行されているアプリに対して侵入テストを行う方法について提供します。
 services: security
 documentationcenter: na
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: 695d918c-a9ac-4eba-8692-af4526734ccc

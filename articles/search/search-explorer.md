@@ -2,7 +2,7 @@
 title: Azure portal でデータを問い合わせるための Search エクスプローラー ツール - Azure Search
 description: Azure Search で Search エクスプローラーなどの Azure portal ツールを使用して、インデックスのクエリを実行します。 検索用語や、高度な構文を含む完全修飾の検索文字列を入力します。
 manager: cgronlun
-author: HeidiSteen
+author: heidisteen
 services: search
 ms.service: search
 ms.topic: conceptual

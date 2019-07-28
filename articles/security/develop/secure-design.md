@@ -1,7 +1,7 @@
 ---
 title: セキュリティで保護されたアプリケーションを Microsoft Azure 上で設計する
 description: この記事では、Web アプリケーション プロジェクトの要件と設計のフェーズ中に考慮すべきベスト プラクティスについて説明します。
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 ms.author: terrylan
 ms.date: 06/11/2019

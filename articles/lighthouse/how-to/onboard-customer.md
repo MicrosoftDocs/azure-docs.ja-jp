@@ -1,7 +1,7 @@
 ---
 title: Azure の委任されたリソース管理に顧客をオンボードする - Azure Lighthouse
 description: Azure の委任されたリソース管理に顧客をオンボードする方法について説明します。これにより、自分のテナントからそれらのリソースにアクセスして管理できるようになります。
-author: JnHs
+author: jnhs
 ms.author: jenhayes
 ms.service: lighthouse
 ms.date: 07/11/2019

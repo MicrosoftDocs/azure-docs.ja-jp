@@ -3,7 +3,7 @@ title: Azure Media Services のストリーミング エンドポイント (配�
 description: Azure Media Services では、ストリーミング エンドポイント (配信元) は、コンテンツをクライアント プレーヤー アプリケーションや、再配布のための Content Delivery Network (CDN) に直接配信できるダイナミック パッケージおよびストリーミング サービスを表します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

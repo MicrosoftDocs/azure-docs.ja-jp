@@ -2,7 +2,7 @@
 title: Windows Virtual Desktop でのリモート デスクトップ クライアント接続 - Azure
 description: Windows Virtual Desktop テナント環境でクライアント接続を設定するときの問題を解決する方法です。
 services: virtual-desktop
-author: ChJenk
+author: chjenk
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019

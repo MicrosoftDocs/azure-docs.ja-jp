@@ -3,7 +3,7 @@ title: イベント プロセッサ ホストを使用してイベントを受�
 description: この記事では、チェックポイント処理、リース、および並列でのイベントの読み込みの管理を簡素化する、Azure Event Hubs のイベント プロセッサ ホストについて説明します。
 services: event-hubs
 documentationcenter: .net
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.service: event-hubs

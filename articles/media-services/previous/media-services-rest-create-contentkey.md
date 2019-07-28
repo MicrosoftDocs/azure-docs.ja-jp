@@ -3,7 +3,7 @@ title: REST でコンテンツ キーを作成する | Microsoft Docs
 description: アセットに安全にアクセスできる ContentKey を作成する方法について学習します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: 95e9322b-168e-4a9d-8d5d-d7c946103745

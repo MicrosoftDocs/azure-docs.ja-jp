@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: このチュートリアルでは、ネットワーク セキュリティ グループと Azure portal を使用して、サブネットに対するネットワーク トラフィックをフィルター処理する方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: kumudd
 tags: azure-resource-manager
 Customer intent: I want to filter network traffic to virtual machines that perform similar functions, such as web servers.
 ms.service: virtual-network

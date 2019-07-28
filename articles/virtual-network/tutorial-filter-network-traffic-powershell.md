@@ -3,7 +3,7 @@ title: ネットワーク トラフィックをフィルター処理する - Azu
 description: この記事では、ネットワーク セキュリティ グループと PowerShell を使用して、サブネットに対するネットワーク トラフィックをフィルター処理する方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

@@ -3,7 +3,7 @@ title: 'チュートリアル: Azure AD Reporting API と証明書を使って�
 description: このチュートリアルでは、Azure AD Reporting API と証明書の資格情報を使い、ユーザーの介入なしでディレクトリからデータを取得する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory

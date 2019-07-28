@@ -1,7 +1,7 @@
 ---
 title: Azure Data Catalog の用語集
 description: この記事では、Azure Data Catalog のドキュメントで使用される概念と用語について説明します。
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual

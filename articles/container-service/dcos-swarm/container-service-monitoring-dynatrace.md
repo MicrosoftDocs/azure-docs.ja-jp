@@ -2,7 +2,7 @@
 title: (非推奨) Azure DC/OS クラスターの監視 - Dynatrace
 description: Dynatrace で Azure Container Service (DC/OS) クラスターを監視します。 DC/OS ダッシュボードを使用して Dynatrace OneAgent をデプロイします。
 services: container-service
-author: MartinGoodwell
+author: martingoodwell
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article

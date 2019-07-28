@@ -3,7 +3,7 @@ title: Azure 仮想マシンのルーティングに関する問題の診断 | M
 description: 仮想マシンの有効なルートを表示することによって仮想マシンのルーティングに関する問題を診断する方法を説明します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

@@ -3,7 +3,7 @@ title: SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用
 description: SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性
 services: virtual-machines-linux
 documentationcenter: ''
-author: MSSedusch
+author: mssedusch
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux

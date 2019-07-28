@@ -2,7 +2,7 @@
 title: Windows Virtual Desktop プレビューのサービス プリンシパルとロールの割り当てを PowerShell を使って作成する - Azure
 description: Windows Virtual Desktop プレビューで PowerShell を使用してサービス プリンシパルを作成する方法とロールを割り当てる方法を説明します。
 services: virtual-desktop
-author: Heidilohr
+author: heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019

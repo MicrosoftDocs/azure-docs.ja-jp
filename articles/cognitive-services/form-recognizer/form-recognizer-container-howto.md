@@ -2,7 +2,7 @@
 title: Form Recognizer 向けコンテナーのインストールと実行
 titleSuffix: Azure Cognitive Services
 description: Form Recognizer コンテナーを使用してフォームとテーブルのデータを解析する方法を学習します。
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer

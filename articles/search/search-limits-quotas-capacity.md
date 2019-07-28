@@ -1,7 +1,7 @@
 ---
 title: レベルおよび SKU のサービスの制限 - Azure Search
 description: 容量計画で使用されるサービス上限と、Azure Search の要求および応答の上限について説明します。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 services: search
 ms.service: search

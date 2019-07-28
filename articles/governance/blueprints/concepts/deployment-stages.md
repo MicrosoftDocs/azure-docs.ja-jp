@@ -1,7 +1,7 @@
 ---
 title: ブループリント デプロイのステージ
 description: デプロイ中、Azure ブループリント サービスが通過する手順について説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: conceptual

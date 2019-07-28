@@ -3,7 +3,7 @@ title: Azure Log Integration の使用を開始する | Microsoft Docs
 description: Azure Log Integration サービスをインストールし、Azure Storage のログ、Azure 監査ログ、および Azure Security Center のアラートを統合する方法について説明します。
 services: security
 documentationcenter: na
-author: Barclayn
+author: barclayn
 manager: barbkess
 editor: TomShinder
 ms.assetid: 53f67a7c-7e17-4c19-ac5c-a43fabff70e1

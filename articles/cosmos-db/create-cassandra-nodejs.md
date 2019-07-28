@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:Cassandra API (Node.js) - Azure Cosmos DB
 description: このクイックスタートでは、Azure Cosmos DB の Cassandra API を使って、Node.js でプロファイル アプリケーションを作成する方法を示します
-author: SnehaGunda
+author: snehagunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra

@@ -3,7 +3,7 @@ title: C を使用してイベントを送信する - Azure Event Hubs | Microso
 description: この記事では、Azure Event Hubs にイベントを送信する C アプリケーションを作成するためのチュートリアルを提供します。
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''

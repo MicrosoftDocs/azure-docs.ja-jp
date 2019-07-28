@@ -3,7 +3,7 @@ title: Google を B2B の ID プロバイダーとして追加する - Azure Act
 description: Google とのフェデレーションを行って、ゲスト ユーザーが独自の Gmail アカウントを使用して Azure AD アプリにサインインできるようにします
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: mimart

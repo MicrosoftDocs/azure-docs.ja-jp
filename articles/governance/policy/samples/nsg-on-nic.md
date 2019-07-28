@@ -1,7 +1,7 @@
 ---
 title: サンプル - すべての NIC 上の NSG x
 description: このサンプル ポリシー定義は、すべての仮想ネットワーク インターフェイスで特定のネットワーク セキュリティ グループを使用することを要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

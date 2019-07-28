@@ -2,7 +2,7 @@
 title: チュートリアル:Azure Database Migration Service を使用して MySQL の Azure Database for MySQL へのオンライン移行を実行する | Microsoft Docs
 description: Azure Database Migration Service を使用して、オンプレミスの MySQL から Azure Database for MySQL にオンライン移行を実行する方法を説明します。
 services: dms
-author: HJToland3
+author: hjtoland3
 ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg

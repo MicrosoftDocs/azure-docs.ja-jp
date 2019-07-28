@@ -3,7 +3,7 @@ title: Azure VM 上の Azure リソースのマネージド ID を使用して�
 description: Azure リソース サービス プリンシパルの Azure VM マネージド ID を使用して、スクリプト クライアントのサインインとリソースへのアクセスを行うための手順を追った説明と例。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.service: active-directory

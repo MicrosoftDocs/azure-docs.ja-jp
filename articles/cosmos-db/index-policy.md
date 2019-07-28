@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB インデックス作成ポリシー
 description: Azure Cosmos DB でのインデックス作成の自動化とパフォーマンス向上のために、既定のインデックス作成ポリシーを構成および変更する方法について説明します。
-author: ThomasWeiss
+author: thomasweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/14/2019

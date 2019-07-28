@@ -3,7 +3,7 @@ title: Azure Media Services を使用したビデオおよびオーディオ フ
 description: Azure Media Services を使用すると、AudioAnalyzerPreset と VideoAnalyzerPreset を使用して、音声と画像のコンテンツを分析できます。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

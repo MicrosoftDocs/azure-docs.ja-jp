@@ -1,7 +1,7 @@
 ---
 title: Azure Database for MySQL の移行パートナー | Microsoft Docs
 description: Azure Database for MySQL をサポートするソリューションを提供するサードパーティの移行パートナーの一覧。
-author: HJToland3
+author: hjtoland3
 ms.author: jtoland
 ms.service: mysql
 ms.topic: conceptual

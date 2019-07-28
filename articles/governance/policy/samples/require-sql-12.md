@@ -1,7 +1,7 @@
 ---
 title: サンプル - SQL Server バージョン 12.0 が必要
 description: このサンプルのポリシーの定義は、SQL Server バージョン 12.0 が実行されていることを要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

@@ -2,7 +2,7 @@
 title: Web ブラウザーから Windows Virtual Desktop プレビューに接続する - Azure
 description: Web ブラウザーから Windows Virtual Desktop プレビューに接続する方法。
 services: virtual-desktop
-author: Heidilohr
+author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/12/2019

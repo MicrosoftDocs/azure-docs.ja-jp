@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services のパッケージ化と配信元エラー | Microsoft Docs
 description: このトピックでは、Azure Media Services ストリーミング エンドポイント (配信元) サービスから通知されることがあるエラーについて説明します。
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 services: media-services

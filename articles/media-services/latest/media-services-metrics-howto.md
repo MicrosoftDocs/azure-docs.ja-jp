@@ -3,7 +3,7 @@ title: Azure Monitor でメトリックを表示する
 description: この記事では、Azure portal のグラフと Azure CLI を使用してメトリックを監視する方法を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

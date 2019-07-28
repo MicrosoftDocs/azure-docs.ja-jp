@@ -3,7 +3,7 @@ title: Anomaly Detector API を使用するためのコンテナーをインス�
 titleSuffix: Azure Cognitive Services
 description: Anomaly Detector API の高度なアルゴリズムを利用し、時系列データ内の異常を特定します。
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector

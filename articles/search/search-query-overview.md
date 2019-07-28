@@ -1,7 +1,7 @@
 ---
 title: クエリの種類と構成 - Azure Search
 description: Azure Search で検索結果のフィルター処理、選択、並べ替えを行うためのパラメーターを使って検索クエリを作成するための基本的な事柄について説明します。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 ms.author: heidist
 services: search

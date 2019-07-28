@@ -3,7 +3,7 @@ title: オブジェクトの検出 - Computer Vision
 titleSuffix: Azure Cognitive Services
 description: Computer Vision API のオブジェクト検出機能に関連する概念と、使用方法および制限について説明します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

@@ -3,7 +3,7 @@ title: コンテナーの構成
 titlesuffix: Face - Azure Cognitive Services
 description: コンテナーの構成設定。
 services: cognitive-services
-author: IEvangelist
+author: ievangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services

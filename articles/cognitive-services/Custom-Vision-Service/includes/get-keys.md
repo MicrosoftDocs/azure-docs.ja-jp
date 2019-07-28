@@ -1,5 +1,5 @@
 ---
-author: PatrickFarley
+author: patrickfarley
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/07/2019

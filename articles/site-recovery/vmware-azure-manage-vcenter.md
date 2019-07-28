@@ -1,7 +1,7 @@
 ---
 title: Azure Site Recovery を使用した VMware VM の Azure へのディザスター リカバリーのために VMware vCenter サーバーを管理する | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用した VMware VM の Azure へのディザスター リカバリーのために VMware vCenter を追加して管理する方法について説明します。
-author: Rajeswari-Mamilla
+author: rajeswari-mamilla
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2019

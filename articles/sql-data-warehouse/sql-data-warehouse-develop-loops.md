@@ -2,7 +2,7 @@
 title: Azure SQL Data Warehouse で T-SQL のループを使う | Microsoft Docs
 description: ソリューションを開発するための、Azure SQL Data Warehouse での T-SQL のループの使用とカーソルの置換に関するヒントです。
 services: sql-data-warehouse
-author: XiaoyuMSFT
+author: xiaoyumsft
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

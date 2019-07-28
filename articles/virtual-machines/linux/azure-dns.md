@@ -3,7 +3,7 @@ title: Azure での Linux 仮想マシンの DNS 名前解決のオプション
 description: Azure IaaS での Linux 仮想マシンの名前解決のシナリオを示します (提供される DNS サービス、ハイブリッド外部 DNS、独自 DNS サーバーの使用など)。
 services: virtual-machines
 documentationcenter: na
-author: RicksterCDN
+author: rickstercdn
 manager: gwallace
 editor: tysonn
 ms.assetid: 787a1e04-cebf-4122-a1b4-1fcf0a2bbf5f

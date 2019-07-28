@@ -3,7 +3,7 @@ title: SQL Server Management Studio で Azure Blockchain Workbench データを�
 description: SQL Server Management Studio 内から Azure Blockchain ワークベンチの SQL データベースに接続する方法を説明します。
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/09/2019
 ms.topic: article

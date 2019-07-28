@@ -3,7 +3,7 @@ title: Azure のアーキテクチャ設計へのセキュリティの統合 | M
 description: " この記事は、Azure のアプリケーションとサービスのアーキテクチャを理解するのに役立ち、設計および実装にセキュリティを統合しやすくします。 "
 services: security
 documentationcenter: na
-author: TomShinder
+author: tomshinder
 manager: barbkess
 editor: TomSh
 ms.assetid: 4f2d9386-bda3-4ec8-8b1a-cd0c11242ffc

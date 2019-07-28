@@ -2,7 +2,7 @@
 title: Azure Stream Analytics ジョブでのスケールアップとスケールアウト
 description: この記事では、入力データのパーティション分割、クエリのチューニング、ジョブ ストリーミング ユニットの設定によって、Stream Analytics ジョブをスケーリングする方法について説明します。
 services: stream-analytics
-author: JSeb225
+author: jseb225
 ms.author: jeanb
 manager: kfile
 ms.reviewer: jasonh

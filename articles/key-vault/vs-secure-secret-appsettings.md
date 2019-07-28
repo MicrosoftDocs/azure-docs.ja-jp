@@ -2,7 +2,7 @@
 title: Web アプリケーション用のシークレット アプリケーション設定の安全な保存 - Azure Key Vault | Microsoft Docs
 description: ASP.NET Core Key Vault Provider、User Secret、または .NET 4.7.1 構成ビルダーを使用して Azure 資格情報またはサード パーティ製 API キーなどのシークレット アプリケーション設定を安全に保存する方法
 services: visualstudio
-author: cawaMS
+author: cawams
 manager: paulyuk
 editor: ''
 ms.service: key-vault

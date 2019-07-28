@@ -3,7 +3,7 @@ title: Azure Blockchain Workbench を展開する
 description: Azure Blockchain Workbench を展開する方法
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/06/2019
 ms.topic: article

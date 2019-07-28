@@ -3,7 +3,7 @@ title: 仮想マシン スケール セットで Azure リソースのマネー�
 description: Azure portal を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成するための詳細な手順。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.service: active-directory

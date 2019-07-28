@@ -3,7 +3,7 @@ title: Linux VM のユーザー割り当てマネージド ID を使用して Az
 description: Linux VM 上でユーザー割り当てマネージド ID を使用して Azure Resource Manager にアクセスするプロセスについて説明するチュートリアル。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: daveba
 ms.service: active-directory

@@ -3,7 +3,7 @@ title: Azure Active Directory のログを Azure Monitor ログにストリー�
 description: Azure Active Directory のログを Azure Monitor ログと統合する方法について説明します
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593

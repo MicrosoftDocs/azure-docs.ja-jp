@@ -3,7 +3,7 @@ title: 仮想ネットワークのビジネス継続性 | Microsoft Docs
 description: Azure Virtual Networks に影響を与える Azure サービスの中断が発生した場合の対処方法について説明します。
 services: virtual-network
 documentationcenter: ''
-author: NarayanAnnamalai
+author: narayanannamalai
 manager: jefco
 editor: ''
 ms.assetid: ad260ab9-d873-43b3-8896-f9a1db9858a5

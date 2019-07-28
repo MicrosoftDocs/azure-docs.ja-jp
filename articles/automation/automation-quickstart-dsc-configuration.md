@@ -5,7 +5,7 @@ services: automation
 ms.service: automation
 ms.subservice: dsc
 keywords: dsc, 構成, オートメーション
-author: KrisBash
+author: krisbash
 ms.author: krbash
 ms.date: 11/06/2018
 ms.topic: quickstart

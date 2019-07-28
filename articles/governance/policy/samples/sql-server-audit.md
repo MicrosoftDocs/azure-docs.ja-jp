@@ -1,7 +1,7 @@
 ---
 title: サンプル - SQL Server の監査設定の監査
 description: このサンプル ポリシー定義は、SQL サーバーの監査設定を auditIfNotExists で監査します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

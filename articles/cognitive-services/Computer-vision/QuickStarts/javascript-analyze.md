@@ -3,7 +3,7 @@ title: クイック スタート:リモート画像の分析 - REST、JavaScript
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、JavaScript と Computer Vision API を使用して画像を分析します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

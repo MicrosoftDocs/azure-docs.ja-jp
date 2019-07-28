@@ -3,7 +3,7 @@ title: Azure portal を使用した Azure 内の SQL Server VM の管理 | Micro
 description: Azure でホストされている SQL Server VM 用の Azure portal 内の SQL 仮想マシン リソースにアクセスする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql

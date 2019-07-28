@@ -3,7 +3,7 @@ title: スループットユニットを自動的にスケールアップする 
 description: 名前空間の自動インフレを有効にしてスループット単位を自動的にスケールアップします
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''

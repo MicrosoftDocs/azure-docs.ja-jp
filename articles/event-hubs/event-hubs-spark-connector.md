@@ -3,7 +3,7 @@ title: Apache Spark との統合 - Azure Event Hubs | Microsoft Docs
 description: Apache Spark と統合して、Event Hubs での構造化ストリームを有効にします
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.service: event-hubs

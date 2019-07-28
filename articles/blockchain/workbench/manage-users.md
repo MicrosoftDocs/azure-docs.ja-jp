@@ -3,7 +3,7 @@ title: Azure Blockchain Workbench でのユーザーの管理
 description: Azure Blockchain Workbench でユーザーを管理する方法について説明します。
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/09/2019
 ms.topic: article

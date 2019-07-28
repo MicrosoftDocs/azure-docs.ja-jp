@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: Azure Virtual Network で PowerShell を使用して IPv6 エンドポイントを有効する
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 ms.service: virtual-network
 ms.devlang: NA

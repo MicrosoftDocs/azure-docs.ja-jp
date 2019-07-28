@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: 仮想マシンにパブリック IP アドレスを関連付ける方法について説明します。
 services: virtual-network
 documentationcenter: ''
-author: KumudD
+author: kumudd
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article

@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: Azure 仮想ネットワーク内の IPv6 エンドポイントおよびデータ パスを IPv6 の観点から説明します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 ms.service: virtual-network
 ms.devlang: NA

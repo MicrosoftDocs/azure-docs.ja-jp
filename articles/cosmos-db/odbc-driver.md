@@ -1,7 +1,7 @@
 ---
 title: BI 分析ツールを使用して Azure Cosmos DB に接続する
 description: Azure Cosmos DB の ODBC ドライバーを使用して表とビューを作成し、正規化されたデータを BI とデータ分析ソフトウェアで表示できるようにする方法について説明します。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019

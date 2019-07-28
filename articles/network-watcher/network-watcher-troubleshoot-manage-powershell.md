@@ -3,7 +3,7 @@ title: Azure 仮想ネットワーク ゲートウェイと接続のトラブル
 description: このページでは、Azure Network Watcher を使用して PowerShell コマンドレットのトラブルシューティングを行う方法を説明します。
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 ms.assetid: f6f0a813-38b6-4a1f-8cfc-1dfdf979f595

@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: Microsoft Azure 仮想ネットワークについてよく寄せられる質問に回答します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 ms.service: virtual-network
 ms.devlang: na

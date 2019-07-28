@@ -2,7 +2,7 @@
 title: Durable Functions のディザスター リカバリーと地理的分散 - Azure
 description: Durable Functions のディザスター リカバリーと地理的分散について説明します。
 services: functions
-author: MS-Santi
+author: ms-santi
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions

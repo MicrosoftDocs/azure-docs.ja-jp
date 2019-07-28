@@ -3,7 +3,7 @@ title: データ セキュリティと暗号化のベスト プラクティス -
 description: この記事では、 Azure の組み込み機能を利用した、データ セキュリティと暗号化に関する一連のベスト プラクティスについて説明します。
 services: security
 documentationcenter: na
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: 17ba67ad-e5cd-4a8f-b435-5218df753ca4

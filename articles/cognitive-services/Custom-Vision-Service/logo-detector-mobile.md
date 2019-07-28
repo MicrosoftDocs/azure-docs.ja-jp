@@ -3,7 +3,7 @@ title: チュートリアル:カスタム ロゴ検出器を使用して Azure �
 titlesuffix: Azure Cognitive Services
 description: このチュートリアルでは、ロゴ検出シナリオの一部として Azure Custom Vision を使用するサンプル アプリについて見ていきます。 Custom Vision を他のコンポーネントと共に使用してエンド ツー エンドのアプリケーションを提供する方法を学習します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: custom-vision

@@ -1,7 +1,7 @@
 ---
 title: サンプル - ISO 27001 ASE/SQL ワークロード ブループリント - 概要
 description: ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルの概要とアーキテクチャ
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample

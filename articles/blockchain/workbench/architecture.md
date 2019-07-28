@@ -3,7 +3,7 @@ title: Azure Blockchain Workbench アーキテクチャ
 description: Azure Blockchain Workbench アーキテクチャとそのコンポーネントの概要。
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/20/2019
 ms.topic: article

@@ -3,7 +3,7 @@ title: PowerShell を使用してクラウド サービス コンテナーを作
 description: この記事では、PowerShell を使用してクラウド サービス コンテナーを作成する方法について説明します。 コンテナーは、Web ロールと worker ロールをホストします。
 services: cloud-services
 documentationcenter: .net
-author: cawaMS
+author: cawams
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article

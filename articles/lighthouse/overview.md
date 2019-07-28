@@ -1,7 +1,7 @@
 ---
 title: Azure Lighthouse とは
 description: サービス プロバイダーは Azure Lighthouse を通じて、自動化と効率を大規模に高めたマネージド サービスを顧客に提供することができます。
-author: JnHs
+author: jnhs
 ms.author: jenhayes
 ms.date: 07/11/2019
 ms.topic: overview

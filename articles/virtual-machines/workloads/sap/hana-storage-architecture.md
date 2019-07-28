@@ -3,7 +3,7 @@ title: SAP HANA on Azure (L インスタンス) のストレージ アーキテ�
 description: SAP HANA on Azure (L インスタンス) をデプロイする方法のストレージ アーキテクチャ。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
+author: rickstercdn
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux

@@ -3,7 +3,7 @@ title: Azure Active Directory ポータルの監査アクティビティ レポ�
 description: Azure Active Directory ポータルの監査アクティビティ レポートの概要
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161

@@ -1,7 +1,7 @@
 ---
 title: インデックスの定義と概念を作成する - Azure Search
 description: 構成要素や物理的構造など、Azure Search でのインデックスの用語と概念の概要を説明します。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 ms.author: heidist
 services: search

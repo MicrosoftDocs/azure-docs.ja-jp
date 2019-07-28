@@ -1,7 +1,7 @@
 ---
 title: Category 階層でファセット ナビゲーションを実装する方法 - Azure Search
 description: Microsoft Azure のホスト型クラウド検索サービスである Azure Search と統合するアプリケーションにファセット ナビゲーションを追加します。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 services: search
 ms.service: search

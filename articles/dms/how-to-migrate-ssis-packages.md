@@ -2,7 +2,7 @@
 title: SQL Server Integration Services パッケージを Azure SQL Database に再デプロイする | Microsoft Docs
 description: SQL Server Integration Services パッケージを Azure SQL Database に移行する方法について説明します。
 services: database-migration
-author: HJToland3
+author: hjtoland3
 ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg

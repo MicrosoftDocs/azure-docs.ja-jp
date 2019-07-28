@@ -1,7 +1,7 @@
 ---
 title: Azure Data Catalog 導入のためのアプローチとプロセス
 description: この記事では、Azure Data Catalog の導入を検討している組織向けのアプローチとプロセスを紹介します。具体的には、ビジョンの定義、主要なビジネス ユース ケースの特定、パイロット プロジェクトの選択などを取り上げます。
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual

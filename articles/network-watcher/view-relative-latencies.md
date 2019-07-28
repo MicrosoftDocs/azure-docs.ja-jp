@@ -3,7 +3,7 @@ title: 特定の場所から Azure リージョンへの相対待機時間を確
 description: 特定の場所から Azure リージョンへのインターネット プロバイダー全体の相対的な待機時間を確認する方法について説明します。
 services: network-watcher
 documentationcenter: ''
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: azure-resource-manager

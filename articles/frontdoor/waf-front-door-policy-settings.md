@@ -2,7 +2,7 @@
 title: Azure Front Door での Web アプリケーション ファイアウォールのポリシーの設定
 description: Web アプリケーション ファイアウォール (WAF) について説明します。
 services: frontdoor
-author: KumudD
+author: kumudd
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article

@@ -3,7 +3,7 @@ title: B2B の招待メールの要素 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory B2B コラボレーションの招待メール テンプレート
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: mimart

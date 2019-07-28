@@ -3,7 +3,7 @@ title: 画像の中にある顔を検出する - Face API
 titleSuffix: Azure Cognitive Services
 description: 顔検出機能によって返されるさまざまなデータの使用方法について説明します。
 services: cognitive-services
-author: SteveMSFT
+author: stevemsft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api

@@ -3,7 +3,7 @@ title: Azure Monitor を使用した Media Services 診断ログの監視 | Micr
 description: この記事では、Azure Monitor を使用して診断ログをルーティングおよび表示する方法を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

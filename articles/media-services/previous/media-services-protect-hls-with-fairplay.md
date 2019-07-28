@@ -3,7 +3,7 @@ title: Microsoft PlayReady または Apple FairPlay を使用した HLS コン�
 description: このトピックでは、Azure Media Services を使用して HTTP Live Streaming (HLS) コンテンツを Apple FairPlay で動的に暗号化する方法の概要を説明します。 また、Media Services ライセンス配信サービスを使用して FairPlay ライセンスをクライアントに配信する方法も示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

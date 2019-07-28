@@ -1,7 +1,7 @@
 ---
 title: Spark から Azure Cosmos DB Cassandra API を使用する
 description: この記事は、Spark からの Cosmos DB Cassandra API 統合のメイン ページです。
-author: kanshiG
+author: kanshig
 ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db

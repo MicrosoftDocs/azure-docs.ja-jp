@@ -3,7 +3,7 @@ title: Azure VM における SQL Server のバックアップと復元 | Microso
 description: Azure Virtual Machines で実行されている SQL Server データベースのバックアップと復元に関する考慮事項について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MikeRayMSFT
+author: mikeraymsft
 manager: craigg
 editor: ''
 tags: azure-resource-management

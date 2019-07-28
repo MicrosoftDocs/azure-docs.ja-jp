@@ -3,7 +3,7 @@ title: 可用性と一貫性 - Azure Event Hubs | Microsoft Docs
 description: パーティションを使用して Azure Event Hubs で最大限の可用性と一貫性を実現する方法
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: 8f3637a1-bbd7-481e-be49-b3adf9510ba1

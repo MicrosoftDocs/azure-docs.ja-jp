@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services 入力メタデータのスキーマ | Microsoft Docs
 description: このトピックでは、Azure Media Services 入力メタデータのスキーマの概要を説明します。
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 services: media-services

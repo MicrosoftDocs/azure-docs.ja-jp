@@ -2,7 +2,7 @@
 title: Azure Database Migration Service を使用するための前提条件の概要 | Microsoft Docs
 description: データベースの移行に Azure Database Migration Service を使用するための前提条件の概要について説明します。
 services: database-migration
-author: HJToland3
+author: hjtoland3
 ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg

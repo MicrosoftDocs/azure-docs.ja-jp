@@ -3,7 +3,7 @@ title: Azure portal を使用してストリーミング イベントをキャ�
 description: この記事では、Azure portal を使用し、Azure Event Hubs からストリーム配信されるイベントのキャプチャを有効にする方法について説明します。
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''

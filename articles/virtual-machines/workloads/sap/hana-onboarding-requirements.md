@@ -3,7 +3,7 @@ title: SAP HANA on Azure (L インスタンス) のオンボードの要件 | Mi
 description: SAP HANA on Azure (L インスタンス) のオンボードの要件。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
+author: rickstercdn
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux

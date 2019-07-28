@@ -3,7 +3,7 @@ title: SQL Server IaaS Agent 拡張機能を使用して Azure Virtual Machines 
 description: この記事では、SQL Server エージェント拡張機能を管理して、SQL Server の特定の管理機能を自動化する方法について説明します。 自動バックアップ、自動修正、および Azure Key Vault の統合が含まれます。
 services: virtual-machines-windows
 documentationcenter: ''
-author: MashaMSFT
+author: mashamsft
 manager: jroth
 editor: ''
 tags: azure-resource-manager

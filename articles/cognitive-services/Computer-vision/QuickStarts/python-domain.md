@@ -3,7 +3,7 @@ title: クイック スタート:ドメイン固有のコンテンツ - REST、P
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、ドメイン モデルを利用し、Python と Computer Vision API を使って画像内の著名人やランドマークを識別します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision

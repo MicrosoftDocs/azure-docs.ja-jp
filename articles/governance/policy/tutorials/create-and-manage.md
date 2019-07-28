@@ -1,7 +1,7 @@
 ---
 title: コンプライアンスを強制するポリシーの作成と管理
 description: Azure Policy を使用して、標準を強制し、規制遵守および監査の要件を満たし、コストを制御し、セキュリティとパフォーマンスの一貫性を維持し、企業全体の設計原則を適用します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 02/04/2019
 ms.topic: tutorial

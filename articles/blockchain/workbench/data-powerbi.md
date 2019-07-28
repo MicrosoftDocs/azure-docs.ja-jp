@@ -3,7 +3,7 @@ title: Microsoft Power BI で Azure Blockchain Workbench データを使用す�
 description: Microsoft Power BI で Azure Blockchain Workbench SQL DB のデータを読み込んで表示する方法を説明します。
 services: azure-blockchain
 keywords: ''
-author: PatAltimore
+author: pataltimore
 ms.author: patricka
 ms.date: 05/09/2019
 ms.topic: article

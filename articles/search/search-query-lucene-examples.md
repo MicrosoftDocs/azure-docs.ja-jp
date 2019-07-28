@@ -1,7 +1,7 @@
 ---
 title: Lucene クエリの例 - Azure Search
 description: Azure Search サービスでのあいまい検索、近接検索、用語ブースト、正規表現検索、およびワイルドカード検索の Lucene クエリ構文。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 tags: Lucene query analyzer syntax
 services: search

@@ -3,7 +3,7 @@ title: Webhook - Speech Services
 titlesuffix: Azure Cognitive Services
 description: Webhook は、長期実行ファイルのインポート、適応、正確性テスト、文字起こしなど、長期実行プロセスを扱うときのソリューションの最適化に理想的な HTTP コール バックです。
 services: cognitive-services
-author: PanosPeriorellis
+author: panosperiorellis
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service

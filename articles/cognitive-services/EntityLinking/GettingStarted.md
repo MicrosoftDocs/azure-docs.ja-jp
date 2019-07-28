@@ -3,7 +3,7 @@ title: チュートリアル:エンティティ リンク アプリを構築す�
 titlesuffix: Azure Cognitive Services
 description: Entity Linking API を使用して、テキストを分析し、名前付きエンティティをナレッジ ベースの関連エントリにリンクします。
 services: cognitive-services
-author: DavidLiCIG
+author: davidlicig
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: entity-linking-intelligence

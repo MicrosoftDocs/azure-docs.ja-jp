@@ -1,7 +1,7 @@
 ---
 title: サンプル - 仮想ネットワーク エンドポイントがない Key Vault の監査
 description: このサンプル ポリシー定義では、仮想ネットワーク サービス エンドポイントがないインスタンスを検出するために、Key Vault のコンテナーを監査します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

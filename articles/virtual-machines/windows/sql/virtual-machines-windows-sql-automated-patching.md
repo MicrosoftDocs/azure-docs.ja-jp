@@ -3,7 +3,7 @@ title: SQL Server VM の自動修正 (Resource Manager) | Microsoft Docs
 description: Azure で実行されている SQL Server Virtual Machines に対する、Resource Manager を使用した自動修正機能について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 editor: ''
 tags: azure-resource-manager

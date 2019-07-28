@@ -3,7 +3,7 @@ title: 仮想ネットワーク用の Azure PowerShell サンプル | Microsoft 
 description: 仮想ネットワーク用の Azure PowerShell サンプル。
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: ''

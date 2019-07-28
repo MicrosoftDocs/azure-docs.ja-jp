@@ -3,7 +3,7 @@ title: クイック スタート - PowerShell を使用してゲスト ユーザ
 description: このクイック スタートでは、PowerShell を使用して、外部の Azure AD B2B コラボレーション ユーザーに招待状を送信する方法について説明します。
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: mimart

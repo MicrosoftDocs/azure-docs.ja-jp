@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB (NoSQL) への移行とアプリケーション開発のパートナー
 description: Azure Cosmos DB 対応の移行ソリューションを提供する Microsoft パートナーのリスト。
-author: SnehaGunda
+author: snehagunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual

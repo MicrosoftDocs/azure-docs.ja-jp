@@ -3,7 +3,7 @@ title: Media Services によるクラウド内のエンコード - Azure | Micro
 description: このトピックでは、Azure Media Services を使用する場合のエンコード処理について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

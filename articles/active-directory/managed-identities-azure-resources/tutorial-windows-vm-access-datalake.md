@@ -3,7 +3,7 @@ title: Windows VM のシステム割り当てマネージド ID を使用して 
 description: Windows VM のシステム割り当てマネージド ID を使用して Azure Data Lake Store にアクセスする方法を説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.service: active-directory

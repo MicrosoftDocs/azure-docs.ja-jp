@@ -1,7 +1,7 @@
 ---
 title: サンプル - 特定の VM プラットフォーム イメージのみの許可
 description: このサンプル ポリシー定義は、特定のバージョンの UbuntuServer を使用することを仮想マシンに要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

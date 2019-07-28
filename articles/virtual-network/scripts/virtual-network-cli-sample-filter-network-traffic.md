@@ -3,7 +3,7 @@ title: Azure CLI スクリプト サンプル - VM ネットワーク トラフ�
 description: Azure CLI スクリプト サンプル - VM ネットワークの着信トラフィックおよび送信トラフィックのフィルター処理
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: kumudd
 manager: twooley
 editor: ''
 tags: ''

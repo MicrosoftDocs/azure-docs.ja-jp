@@ -2,7 +2,7 @@
 title: Azure SQL Data Warehouse への接続 | Microsoft Docs
 description: Azure SQL Data Warehouse に接続します。
 services: sql-data-warehouse
-author: XiaoyuL-Preview
+author: xiaoyul-preview
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual

@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB のインデックス作成
 description: Azure Cosmos DB のインデックス作成のしくみを説明します。
-author: ThomasWeiss
+author: thomasweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019

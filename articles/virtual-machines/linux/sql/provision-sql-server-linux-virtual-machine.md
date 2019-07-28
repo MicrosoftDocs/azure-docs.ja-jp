@@ -2,7 +2,7 @@
 title: Azure で Linux SQL Server 2017 VM を作成する | Microsoft Docs
 description: このチュートリアルでは、Azure Portal で Linux SQL Server 2017 仮想マシンを作成する方法について説明します。
 services: virtual-machines-linux
-author: MashaMSFT
+author: mashamsft
 manager: craigg
 ms.date: 12/5/2018
 ms.topic: conceptual

@@ -3,7 +3,7 @@ title: Azure の暗号化の概要 | Microsoft Docs
 description: Azure でのさまざまな暗号化オプションの詳細について
 services: security
 documentationcenter: na
-author: Barclayn
+author: barclayn
 manager: barbkess
 editor: TomShinder
 ms.assetid: ''

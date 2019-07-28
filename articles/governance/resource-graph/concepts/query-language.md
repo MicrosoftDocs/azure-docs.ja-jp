@@ -1,7 +1,7 @@
 ---
 title: クエリ言語を理解する
 description: Azure Resource Graph で使用可能な Kusto の演算子と関数について説明します。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 04/22/2019
 ms.topic: conceptual

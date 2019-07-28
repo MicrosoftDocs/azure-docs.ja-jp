@@ -4,7 +4,7 @@ description: ローカル リソースを格納するオンプレミス VNet を
 services: terraform
 ms.service: azure
 keywords: Terraform, ハブとスポーク, ネットワーク, ハイブリッド ネットワーク, devops, 仮想マシン, Azure, VNet ピアリング, オンプレミス
-author: VaijanathB
+author: vaijanathb
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial

@@ -3,7 +3,7 @@ title: Azure CLI を使用してマネージド ID のサービス プリンシ�
 description: Azure CLI を使用してマネージド ID のサービス プリンシパルを表示するための段階的手順。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.service: active-directory

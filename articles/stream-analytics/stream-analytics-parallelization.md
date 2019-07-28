@@ -2,7 +2,7 @@
 title: Azure Stream Analytics でのクエリの並列処理とスケールの使用
 description: この記事では、Stream Analytics ジョブをスケールするために入力パーティションの構成、クエリ定義のチューニング、およびジョブのストリーミング ユニットの設定を行う方法について説明します。
 services: stream-analytics
-author: JSeb225
+author: jseb225
 ms.author: jeanb
 manager: kfile
 ms.reviewer: jasonh

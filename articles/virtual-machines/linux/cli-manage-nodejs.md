@@ -3,7 +3,7 @@ title: Linux および Mac 用の基本的な Azure クラシック CLI コマ�
 description: Linux および Mac で、Azure Resource Manager モードで VM を管理する際に使用する基本的な Azure クラシック CLI コマンド
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
+author: rickstercdn
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager

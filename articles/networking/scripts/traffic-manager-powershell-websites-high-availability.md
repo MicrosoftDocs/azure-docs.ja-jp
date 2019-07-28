@@ -3,7 +3,7 @@ title: Azure PowerShell スクリプト サンプル - 高可用性アプリケ�
 description: Azure PowerShell スクリプト サンプル - 高可用性アプリケーションのためのトラフィックのルーティング
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
+author: kumudd
 manager: timlt
 editor: georgewallace
 tags: azure-infrastructure

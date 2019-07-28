@@ -2,7 +2,7 @@
 title: 管理ツールのデプロイ - Azure
 description: Windows Virtual Desktop プレビューのリソースを管理するためのユーザー インターフェイス ツールをインストールする方法。
 services: virtual-desktop
-author: ChJenk
+author: chjenk
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019

@@ -3,7 +3,7 @@ title: Microsoft Azure Media Services のシナリオとデータ センター�
 description: このトピックでは、Microsoft Azure Media Services のシナリオの概要のほか、データ センターにおける機能とサービスの可用性について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

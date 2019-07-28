@@ -3,7 +3,7 @@ title: Azure Media Services LiveEvent の種類 |Microsoft Docs
 description: この記事では、LiveEvent の種類を比較する詳細な表を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

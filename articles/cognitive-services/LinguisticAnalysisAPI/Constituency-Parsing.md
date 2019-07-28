@@ -3,7 +3,7 @@ title: 構成素解析 - Linguistic Analysis API
 titlesuffix: Azure Cognitive Services
 description: 構成素解析 ("語句構文解析" とも呼ばれます) で、テキスト内の語句を特定する方法について説明します。
 services: cognitive-services
-author: RichardSunMS
+author: richardsunms
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: linguistic-analysis

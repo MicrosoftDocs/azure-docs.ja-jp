@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: Azure コマンド ライン インターフェイス (CLI) を使用して仮想マシンに複数の IP アドレスを割り当てる方法を説明します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 manager: twooley
 ms.service: virtual-network
 ms.devlang: na

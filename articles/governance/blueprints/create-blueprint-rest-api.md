@@ -1,7 +1,7 @@
 ---
 title: REST API を使用してブループリントを作成する
 description: Azure Blueprints と REST API を使用して、成果物を作成、定義、デプロイします。
-author: DCtheGeek
+author: dcthegeek
 ms.author: dacoulte
 ms.date: 02/04/2019
 ms.topic: quickstart

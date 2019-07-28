@@ -2,7 +2,7 @@
 title: Azure Data Catalog の一般的なシナリオ
 description: 高価値のデータ ソースの登録と検出、セルフ サービス ビジネス インテリジェンスの有効化、データ ソースとプロセスに関する既存の組織固有の知識のキャプチャなど、Azure Data Catalog の一般的なシナリオの概要を説明します。
 services: data-catalog
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.assetid: 60930d78-d2d4-4d5d-9651-bdda50b0da0e
 ms.service: data-catalog

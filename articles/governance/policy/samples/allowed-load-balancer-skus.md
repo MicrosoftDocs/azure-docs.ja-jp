@@ -1,7 +1,7 @@
 ---
 title: サンプル - 許可されているロード バランサーの SKU
 description: このサンプル ポリシー定義は、承認された SKU をロード バランサーで使用することを要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

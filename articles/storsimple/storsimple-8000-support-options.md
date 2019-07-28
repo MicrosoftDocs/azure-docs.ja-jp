@@ -3,7 +3,7 @@ title: StorSimple サポート条件 | Microsoft Docs
 description: StorSimple 8000 シリーズ エンタープライズ ストレージのお客様のサポート オプションについて説明します。
 services: storsimple
 documentationcenter: NA
-author: GabiSocoteanu
+author: gabisocoteanu
 manager: jeconnoc
 editor: ''
 ms.assetid: ''

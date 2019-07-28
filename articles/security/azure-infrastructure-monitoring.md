@@ -3,7 +3,7 @@ title: Azure インフラストラクチャの監視
 description: この記事では、Azure の運用環境ネットワークの監視について説明します。
 services: security
 documentationcenter: na
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e

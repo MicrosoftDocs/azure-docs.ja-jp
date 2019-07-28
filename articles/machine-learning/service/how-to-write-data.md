@@ -7,7 +7,7 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: sihhu
-author: MayMSFT
+author: maymsft
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 05/02/2019

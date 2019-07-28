@@ -3,7 +3,7 @@ title: チュートリアル:Cerner Central を構成し、Azure Active Director
 description: Azure Active Directory を構成して、Cerner Central のリストに自動でユーザーをプロビジョニングする方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: ArvindHarinder1
+author: arvindharinder1
 manager: CelesteDG
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory

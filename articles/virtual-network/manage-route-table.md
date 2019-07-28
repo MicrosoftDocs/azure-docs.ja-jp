@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: ルート テーブルの作成、変更、削除の方法について説明します。
 services: virtual-network
 documentationcenter: na
-author: KumudD
+author: kumudd
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article

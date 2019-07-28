@@ -3,7 +3,7 @@ title: ストレージ アクセス キーをローリングした後に Media S
 description: この記事は、ストレージ アクセス キーをローリングした後に Media Services を更新する際のガイダンスについて説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: a892ebb0-0ea0-4fc8-b715-60347cc5c95b

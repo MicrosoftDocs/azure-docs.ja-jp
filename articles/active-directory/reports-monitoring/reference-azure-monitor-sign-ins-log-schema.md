@@ -3,7 +3,7 @@ title: Azure Monitor の Azure Active Directory サインイン ログ スキー
 description: Azure Monitor で使用する Azure AD サインイン ログ スキーマについて説明します
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75

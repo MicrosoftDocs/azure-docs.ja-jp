@@ -6,7 +6,7 @@ ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: article
 ms.date: 05/01/2019
-author: MicrosoftGuyJFlo
+author: microsoftguyjflo
 manager: daveba
 ms.author: joflore
 ms.reviewer: sahandle

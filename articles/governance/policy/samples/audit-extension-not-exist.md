@@ -1,7 +1,7 @@
 ---
 title: サンプル - 拡張機能が存在しない場合の監査
 description: このサンプル ポリシー定義は、仮想マシンに拡張機能がデプロイされていないかどうかを監査します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

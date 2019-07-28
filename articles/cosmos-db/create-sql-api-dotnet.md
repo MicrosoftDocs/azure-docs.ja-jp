@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB SQL API リソースを管理する .NET コンソール アプリを構築する
 description: Azure Cosmos DB SQL API アカウント リソースを管理する .NET コンソール アプリを構築する方法について説明します。
-author: SnehaGunda
+author: snehagunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql

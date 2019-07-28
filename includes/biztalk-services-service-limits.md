@@ -2,7 +2,7 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: biztalk-services
-author: MandiOhlinger
+author: mandiohlinger
 ms.service: biztalk-services
 ms.topic: include
 ms.date: 11/09/2017

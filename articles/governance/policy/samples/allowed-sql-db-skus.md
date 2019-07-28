@@ -1,7 +1,7 @@
 ---
 title: サンプル - 許可された SQL DB の SKU
 description: このサンプル ポリシー定義は、適切な SKU の使用を SQL データベースに要求します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

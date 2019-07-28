@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos コンテナーの一意のキーを定義する
 description: Azure Cosmos コンテナーの一意のキーを定義する方法について説明する
-author: ThomasWeiss
+author: thomasweiss
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 05/23/2019

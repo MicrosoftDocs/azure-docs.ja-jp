@@ -1,7 +1,7 @@
 ---
 title: サンプル - Azure Hybrid Use Benefit を拒否する
 description: このサンプル ポリシー定義は、Azure Hybrid Use Benefit (AHUB) の使用を禁止します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

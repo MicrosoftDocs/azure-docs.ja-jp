@@ -3,7 +3,7 @@ title: SAP HANA on Azure (L インスタンス) の監視 | Microsoft Docs
 description: SAP HANA on Azure (L インスタンス) を監視します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
+author: rickstercdn
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux

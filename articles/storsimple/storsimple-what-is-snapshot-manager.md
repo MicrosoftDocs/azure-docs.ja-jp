@@ -3,7 +3,7 @@ title: StorSimple Snapshot Manager について | Microsoft Docs
 description: StorSimple Snapshot Manager の概要、アーキテクチャ、および機能について説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: shars
 manager: timlt
 editor: ''
 ms.assetid: 6094c31e-e2d9-4592-8a15-76bdcf60a754

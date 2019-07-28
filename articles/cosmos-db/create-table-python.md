@@ -1,7 +1,7 @@
 ---
 title: 'クイック スタート: Python での Table API の使用 - Azure Cosmos DB'
 description: このクイックスタートでは、Azure Cosmos DB Table API を使って Azure Portal と Python でアプリケーションを作成する方法を示します
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: python

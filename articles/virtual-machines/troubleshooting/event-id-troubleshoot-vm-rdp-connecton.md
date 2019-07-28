@@ -3,7 +3,7 @@ title: イベント ID を使用した、Azure VM の RDP 接続に関する問�
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
-author: Deland-Han
+author: deland-han
 manager: cshepard
 editor: ''
 tags: ''

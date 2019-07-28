@@ -3,7 +3,7 @@ title: StorSimple 8000 シリーズ Update 2 リリース ノート | Microsoft 
 description: StorSimple 8000 シリーズ Update 2 における新機能、問題、回避策について説明します。
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: shars
 manager: carmonm
 editor: ''
 ms.assetid: e2c8bffd-7fc5-4b77-b632-a4f59edacc3a

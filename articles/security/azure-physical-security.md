@@ -3,7 +3,7 @@ title: Azure データセンターの物理上のセキュリティ - Microsoft 
 description: この記事では、物理インフラストラクチャ、セキュリティ、コンプライアンス サービスなど、Azure データセンターを保護するための Microsoft の取り組みについて説明します。
 services: security
 documentationcenter: na
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e

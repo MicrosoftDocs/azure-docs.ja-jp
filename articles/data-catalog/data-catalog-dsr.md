@@ -2,7 +2,7 @@
 title: Azure Data Catalog でサポートされるデータ ソース
 description: この記事では、現在サポートされているデータ ソースの仕様を示します。
 services: data-catalog
-author: JasonWHowell
+author: jasonwhowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual

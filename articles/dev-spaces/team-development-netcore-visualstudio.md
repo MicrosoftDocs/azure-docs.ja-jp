@@ -5,7 +5,7 @@ services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
-author: DrEsteban
+author: dresteban
 ms.author: stevenry
 ms.date: 12/09/2018
 ms.topic: tutorial

@@ -3,7 +3,7 @@ title: Azure Portal を使用したビデオ オン デマンド配信の概要 
 description: このチュートリアルでは、Azure Portal での Azure Media Services アプリケーションによる基本的なビデオ オン デマンド コンテンツ配信サービスの実装手順を紹介します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.assetid: 6c98fcfa-39e6-43a5-83a5-d4954788f8a4

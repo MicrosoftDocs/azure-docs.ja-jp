@@ -8,7 +8,7 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: Ninarn
+author: ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg

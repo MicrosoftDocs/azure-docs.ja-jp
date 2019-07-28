@@ -3,7 +3,7 @@ title: Azure Data Lake Tools for Visual Studio Code の使用
 description: Azure Data Lake Tools for Visual Studio Code を使用して U-SQL スクリプトを作成、テスト、実行する方法について説明します。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: Jejiang
+author: jejiang
 ms.author: jejiang
 ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2

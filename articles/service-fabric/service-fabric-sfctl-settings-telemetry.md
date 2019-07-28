@@ -3,7 +3,7 @@ title: Azure Service Fabric CLI- sfctl settings telemetry | Microsoft Docs
 description: Service Fabric CLI の sfctl settings telemetry コマンドについて説明します。
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: christina-kang
 manager: chackdan
 editor: ''
 ms.assetid: ''

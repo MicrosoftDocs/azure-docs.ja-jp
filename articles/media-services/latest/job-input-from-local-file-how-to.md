@@ -3,7 +3,7 @@ title: ローカル ファイルから Azure Media Services ジョブの入力�
 description: このトピックでは、ローカル ファイルからジョブの入力を作成する方法を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

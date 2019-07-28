@@ -3,7 +3,7 @@ title: SAP HANA on Azure (L インスタンス) のネットワーク アーキ�
 description: SAP HANA on Azure (L インスタンス) をデプロイする方法のネットワーク アーキテクチャ。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
+author: rickstercdn
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux

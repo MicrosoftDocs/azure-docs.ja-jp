@@ -2,7 +2,7 @@
 title: インデックス パイプラインで Cognitive Services APIs を呼び出す C# チュートリアル - Azure Search
 description: このチュートリアルでは、データの抽出と変換のために Azure Search のインデックス作成で行われる、データ抽出、自然言語、画像の AI 処理の例を段階的に説明していきます。
 manager: eladz
-author: MarkHeff
+author: markheff
 services: search
 ms.service: search
 ms.devlang: NA

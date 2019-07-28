@@ -2,7 +2,7 @@
 title: Azure VM の SQL Server リリース ノート | Microsoft Docs
 description: Azure VM 上の SQL Server の新機能と機能改善について説明します。
 services: virtual-machines-windows
-author: MashaMSFT
+author: mashamsft
 ms.author: mathoma
 manager: craigg
 tags: azure-service-management

@@ -1,7 +1,7 @@
 ---
 title: 検索インデックスのための Azure SQL 仮想マシンの VM 接続 - Azure Search
 description: 暗号化された接続を有効にして、Azure Search のインデクサーから Azure の仮想マシン (VM) 上の SQL Server に接続できるようにファイアウォールを構成します。
-author: HeidiSteen
+author: heidisteen
 manager: cgronlun
 services: search
 ms.service: search

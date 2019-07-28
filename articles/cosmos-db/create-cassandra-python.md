@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:Cassandra API (Python) - Azure Cosmos DB
 description: このクイック スタートでは、Azure Cosmos DB の Apache Cassandra API を使って、Python でプロファイル アプリケーションを作成する方法を示します
-author: SnehaGunda
+author: snehagunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra

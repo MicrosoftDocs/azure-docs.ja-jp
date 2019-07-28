@@ -7,7 +7,7 @@ ms.subservice: scenario
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: AyoOlubeko
+author: ayoolubeko
 ms.author: craigg
 ms.reviewer: sstein
 manager: craigg

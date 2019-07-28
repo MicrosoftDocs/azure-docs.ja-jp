@@ -2,7 +2,7 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: cosmos-db
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.topic: include
 ms.date: 04/05/2019

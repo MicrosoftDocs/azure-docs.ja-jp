@@ -7,7 +7,7 @@ ms.subservice: security
 ms.custom: sql-data-warehouse
 ms.devlang: ''
 ms.topic: conceptual
-author: GithubMirek
+author: githubmirek
 ms.author: mireks
 ms.reviewer: vanto
 manager: craigg

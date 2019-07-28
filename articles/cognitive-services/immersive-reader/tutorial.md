@@ -3,7 +3,7 @@ title: チュートリアル:Node.js を使用して Immersive Reader を起動�
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、イマーシブ リーダーを起動する Node.js アプリケーションを作成します。
 services: cognitive-services
-author: metanMSFT
+author: metanmsft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader

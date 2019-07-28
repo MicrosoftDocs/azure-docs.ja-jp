@@ -2,7 +2,7 @@
 title: Go を使用してイベントを送受信する - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs からイベントを送信する Go アプリケーションを作成するためのチュートリアルを提供します。
 services: event-hubs
-author: ShubhaVijayasarathy
+author: shubhavijayasarathy
 manager: kamalb
 ms.service: event-hubs
 ms.workload: core

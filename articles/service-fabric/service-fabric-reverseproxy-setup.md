@@ -3,7 +3,7 @@ title: Azure Service Fabric でのリバース プロキシの設定 | Microsoft
 description: Service Fabric のリバース プロキシを設定して構成する方法について説明します。
 services: service-fabric
 documentationcenter: na
-author: jimacoMS2
+author: jimacoms2
 manager: chackdan
 editor: ''
 ms.assetid: ''

@@ -3,7 +3,7 @@ title: Azure リソースのログを SIEM システムと統合する | Microso
 description: Azure Log Integration の主な機能としくみについて説明します。
 services: security
 documentationcenter: na
-author: TomShinder
+author: tomshinder
 manager: barbkess
 editor: TerryLanfear
 ms.assetid: 9c1346e1-baf8-4975-b2f2-42ae05b2dc0a
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/28/2019
-ms.author: TomSh
+ms.author: tomsh
 ms.custom: azlog
 ms.openlocfilehash: 65e256b476c1e459ae937d9f6cbb43e0020fd9fe
 ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada

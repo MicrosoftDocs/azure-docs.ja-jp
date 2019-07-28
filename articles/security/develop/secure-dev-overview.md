@@ -1,7 +1,7 @@
 ---
 title: Microsoft Azure での安全な開発のベスト プラクティス
 description: より安全なコードを開発し、より安全なアプリケーションをクラウドにデプロイするために役立つベスト プラクティス。
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 ms.author: terrylan
 ms.date: 06/11/2019

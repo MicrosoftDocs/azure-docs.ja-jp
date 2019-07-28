@@ -3,7 +3,7 @@ title: REST を使用して Azure VMSS でシステム割り当てマネージ�
 description: REST API を呼び出す CURL を使用して、Azure VMSS でシステム割り当てマネージド ID とユーザー割り当てマネージド ID を構成する方法をステップ バイ ステップで説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.service: active-directory

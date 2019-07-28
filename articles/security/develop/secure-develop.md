@@ -1,7 +1,7 @@
 ---
 title: セキュリティで保護されたアプリケーションを Microsoft Azure 上で開発する
 description: この記事では、Web アプリケーション プロジェクトの実装と検証のフェーズ中に考慮すべきベスト プラクティスについて説明します。
-author: TerryLanfear
+author: terrylanfear
 manager: barbkess
 ms.author: terrylan
 ms.date: 06/12/2019

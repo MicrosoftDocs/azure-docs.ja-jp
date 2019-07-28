@@ -1,7 +1,7 @@
 ---
 title: Azure Site Recovery による Azure へのディザスター リカバリーのために VMware VM のレプリケーションを有効にする | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用して、ディザスター リカバリーのための Azure へのレプリケーションに対して VMware VM を有効にする方法について説明します。
-author: Rajeswari-Mamilla
+author: rajeswari-mamilla
 ms.service: site-recovery
 ms.date: 06/28/2019
 ms.topic: conceptual

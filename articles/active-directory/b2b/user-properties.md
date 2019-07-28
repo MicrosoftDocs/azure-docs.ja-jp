@@ -3,7 +3,7 @@ title: B2B ゲスト ユーザーのプロパティ - Azure Active Directory | M
 description: 招待に応じる前と後の Azure Active Directory B2B ゲスト ユーザーのプロパティと状態
 services: active-directory
 ms.service: active-directory
-ms.subservice: B2B
+ms.subservice: b2b
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mimart

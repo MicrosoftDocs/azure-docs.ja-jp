@@ -3,7 +3,7 @@ title: 例:大規模機能を使用する方法 - Face API
 titleSuffix: Azure Cognitive Services
 description: Face API で大規模機能を使用します。
 services: cognitive-services
-author: SteveMSFT
+author: stevemsft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api

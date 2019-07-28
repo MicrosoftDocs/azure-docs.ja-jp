@@ -3,7 +3,7 @@ title: SAP HANA on Azure (L インスタンス) のサイズ変更 | Microsoft D
 description: SAP HANA on Azure (L インスタンス) のサイズ変更。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
+author: rickstercdn
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux

@@ -1,7 +1,7 @@
 ---
 title: サンプル - 許可されないリソースの種類
 description: このサンプル ポリシー定義は、指定されたリソースの種類のデプロイを禁止します。
-author: DCtheGeek
+author: dcthegeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample

@@ -1,7 +1,7 @@
 ---
 title: Azure Cosmos DB 向けの ASP.NET Core MVC チュートリアル:Web アプリケーション開発
 description: Azure Cosmos DB を使用して MVC Web アプリケーションを作成するための ASP.NET Core MVC チュートリアル。 JSON を格納し、Azure App Service 上でホストされている ToDo アプリからデータにアクセスします - ASP.NET Core MVC チュートリアル ステップ バイ ステップ。
-author: SnehaGunda
+author: snehagunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet

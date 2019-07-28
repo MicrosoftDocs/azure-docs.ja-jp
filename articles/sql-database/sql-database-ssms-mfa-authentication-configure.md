@@ -7,7 +7,7 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: GithubMirek
+author: githubmirek
 ms.author: mireks
 ms.reviewer: vanto
 manager: craigg

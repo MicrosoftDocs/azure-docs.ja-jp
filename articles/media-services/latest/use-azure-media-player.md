@@ -3,7 +3,7 @@ title: Azure Media Player での再生 - Azure | Microsoft Docs
 description: このトピックでは、Azure Media Player の概要を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

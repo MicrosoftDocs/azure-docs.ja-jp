@@ -3,7 +3,7 @@ title: Azure Service Fabric で Java を使ってサービス リモート処理
 description: Azure Service Fabric クラスターで実行されている Java Reliable Services のサービス リモート処理ベースの通信をセキュリティで保護する方法について説明します。
 services: service-fabric
 documentationcenter: java
-author: PavanKunapareddyMSFT
+author: pavankunapareddymsft
 manager: chackdan
 ms.assetid: ''
 ms.service: service-fabric

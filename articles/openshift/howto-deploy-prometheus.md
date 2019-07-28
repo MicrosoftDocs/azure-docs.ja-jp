@@ -1,7 +1,7 @@
 ---
 title: Azure Red Hat OpenShift クラスターにスタンドアロンの Prometheus をデプロイする | Microsoft Docs
 description: アプリケーションのメトリックを監視するために Azure Red Hat OpenShift クラスターに Prometheus インスタンスを作成する方法を説明します。
-author: Makdaam
+author: makdaam
 ms.author: b-lejaku
 ms.service: container-service
 ms.topic: conceptual

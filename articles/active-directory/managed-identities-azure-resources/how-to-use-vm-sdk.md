@@ -3,7 +3,7 @@ title: Azure SDK を使用して Azure VM で Azure リソースのマネージ�
 description: Azure リソースのマネージド ID を持つ Azure VM に対して Azure SDK を使用するコード サンプル。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.service: active-directory

@@ -3,7 +3,7 @@ title: Azure Monitor ログを使用して Azure Active Directory アクティ�
 description: Azure Monitor ログを使用して Azure Active Directory アクティビティ ログを分析する方法について説明します
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: markusvi
 manager: daveba
 editor: ''
 ms.assetid: 4535ae65-8591-41ba-9a7d-b7f00c574426

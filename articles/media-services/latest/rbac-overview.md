@@ -3,7 +3,7 @@ title: Media Services アカウント用のロールベースのアクセス制�
 description: この記事では、Azure Media Services アカウント用のロールベースのアクセス制御 (RBAC) について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: juliako
 manager: femila
 editor: ''
 ms.service: media-services

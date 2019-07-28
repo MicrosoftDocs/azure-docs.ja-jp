@@ -3,7 +3,7 @@ title: 顔検出と顔属性の概念
 titleSuffix: Azure Cognitive Services
 description: 顔検出と顔属性の概念について説明します。
 services: cognitive-services
-author: PatrickFarley
+author: patrickfarley
 manager: nitime
 ms.service: cognitive-services
 ms.subservice: face-api
