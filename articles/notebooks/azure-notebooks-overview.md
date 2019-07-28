@@ -22,7 +22,7 @@ ms.locfileid: "59280113"
 ---
 # <a name="overview-of-azure-notebooks"></a>Azure Notebooks の概要
 
-Azure Notebooks は、インストールせずにクラウド上で Jupyter ノートブックを作成、実行するための無料でホストされているサービスです。 [Jupyter](https://jupyter.org/) (旧称 IPython) は、マークダウン テキスト、実行可能コード、永続データ、グラフィックス、およびグラフを組み合わせて "*ノートブック*" (画像提供: jupyter.org) と呼ばれる 1 つの共有可能なキャンバスを簡単に作成できるオープン ソース プロジェクトです。
+Azure Notebooks は、インストールせずにクラウド上で Jupyter ノートブックを作成・実行することが出来る無料で利用可能なサービスです。 [Jupyter](https://jupyter.org/) (旧称 IPython) は、マークダウン テキスト、実行可能コード、永続データ、グラフィックス、およびグラフを組み合わせて "*ノートブック*" (画像提供: jupyter.org) と呼ばれる 1 つの共有可能なキャンバスを簡単に作成できるオープン ソース プロジェクトです。
 
 [![Jupyter Notebooks の例](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
