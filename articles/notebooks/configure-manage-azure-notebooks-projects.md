@@ -37,7 +37,7 @@ Azure Notebooks のプロジェクトは、基本的には、Jupyter ノート�
 
 ## <a name="compute-tier"></a>コンピューティング レベル
 
-既定で、プロジェクトは **Free コンピューティング** レベルで実行しますが、このレベルは不正使用を回避するために、4 GB のメモリと 1 GB のデータに制限されます。 これらの制限をバイパスしてコンピューティング能力を向上させるには、Azure サブスクリプションでプロビジョニングした別の仮想マシンを使用します。 詳細については、「[How to use Data Science Virtual Machines (Data Science Virtual Machines の使用方法)](use-data-science-virtual-machine.md)」を参照してください。
+プロジェクトはデフォルトでは **Free コンピューティング** レベルで実行しますが、このレベルは不正使用を回避するために、4 GB のメモリと 1 GB のデータに制限されます。 これらの制限を回避してコンピューティング能力を向上させるには、Azure サブスクリプションでプロビジョニングした別の仮想マシンを使用します。 詳細については、「[How to use Data Science Virtual Machines (Data Science Virtual Machines の使用方法)](use-data-science-virtual-machine.md)」を参照してください。
 
 ## <a name="edit-project-metadata"></a>プロジェクト メタデータを編集する
 
