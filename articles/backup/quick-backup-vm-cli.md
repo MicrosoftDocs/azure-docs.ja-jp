@@ -75,7 +75,7 @@ az backup protection enable-for-vm \
 ```
 
 ## <a name="start-a-backup-job"></a>バックアップ ジョブを開始する
-スケジュールされた時刻にジョブを実行する既定のポリシーを待機するのではなく、バックアップを今すぐ開始するには、[az backup protection backup-now](https://docs.microsoft.com/cli/azure/backup/protection#az-backup-protection-backup-now) を使用します。 この最初のバックアップ ジョブによって、完全な復旧ポイントが作成されます。 初回のバックアップ後のバックアップ ジョブでは、増分復元ポイントが作成されます。 増分復旧ポイントでは、前回のバックアップ以降に行われた変更のみを転送対象とすることで、高い保存効率と時間効率を実現します。
+既定のポリシーでスケジュール済みのジョブが実行されるのを待たずに、バックアップを今すぐ開始するには、[az backup protection backup-now](https://docs.microsoft.com/cli/azure/backup/protection#az-backup-protection-backup-now) を使用します。 この最初のバックアップ ジョブによって、完全な復旧ポイントが作成されます。 初回のバックアップ後のバックアップ ジョブでは、増分復元ポイントが作成されます。 増分復旧ポイントでは、前回のバックアップ以降に行われた変更のみを転送対象とすることで、高い保存効率と時間効率を実現します。
 
 VM のバックアップには、次のパラメーターが使用されます。
 
